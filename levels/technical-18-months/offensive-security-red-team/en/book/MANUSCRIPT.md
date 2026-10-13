@@ -569,7 +569,7 @@ Each entry point gets a short list of WSTG themes: auth, session, access control
 
 Entry points are the public website, journey planner API and staff VPN. Fare validators are not entry points for ENG-512; listing them as interesting is a model error. Entry-point lists that include fare validators are corrected before kickoff. Each of the three gets its own WSTG theme list, so VPN checks never borrow web input-handling tests.
 
-Scripting field discipline links each job hash to a method card in the notebook index so examiners can trace automation. Handover schedules jump-host walkthroughs plus vault paths because email alone fails the transfer gate.
+For the staff VPN the themes stop at authentication and session handling, because input handling belongs to the website and journey planner API. Keeping the lists separate also makes the coverage statement precise: the report can say which themes were exercised on which entry point and which were left out.
 
 ### 6.3 Assumptions
 
@@ -775,7 +775,7 @@ Owner asks stop; unexplained outage; fare system alerts anywhere; personal data 
 
 Each condition has a one-line stop message prepared on the ROE card, so Sam posts it without composing under stress. Any one is enough; Sam does not finish one more objective first. Fare system alerts anywhere — even unrelated — stop ENG-512 until operations clears the line. Sam does not argue correlation in the moment.
 
-Model dates older than the last architecture change invalidate the window until the picture is redrawn and reconfirmed. Sam repeats specialised-fare boundaries when managers ask for a quick look at validators during planning.
+Personal data turning up in a ticket is a stop even though nothing is broken, because the ticket system may be read by people the agreement never covered. A tool caught in a loop is a stop for a different reason: it can push traffic past the agreed rate before anyone notices.
 
 ### 8.3 Safe tool failure
 
@@ -1116,11 +1116,7 @@ List findings, methods, owners' go-live notes, window.
 
 Retest plan for ENG-512 uses the same method cards and pinned tool versions. lab_retest-style status shows F1 open->closed FIXED, F2 open->open STILL OPEN, F3 open->closed FIXED — fixed: 2 open: 1.
 
-Auth cards hard-cap attempts per minute and fail closed when caps trip rather than slowing quietly past the budget.
-
-Pinned tools and identical cards produce the teaching split: F1 FIXED, F2 STILL OPEN, F3 FIXED — two fixed, one open.
-
-The notebook pastes the fixed-two open-one summary beside the pinned tool digests for examiners.
+Using the same cards and tool versions is what makes the split meaningful: if F2 is still open, the cause is the fix and not a change in how Sam looked. The notebook places the two-fixed, one-open summary beside the digests of the pinned tools, so an examiner can see that the retest and the original test used identical inputs.
 
 ### 11.2 Before/after
 
@@ -1148,11 +1144,7 @@ fixed: 2 open: 1
 
 Before/after evidence hashes sit on the ticket. FIXED without a MATCH hash on the after artefact is not closure at NMT. Before/after hashes on the ticket prove the artefact changed with the fix. FIXED without after-hash is incomplete.
 
-WSTG picks skip fare-backed checks on ordinary ENG-512 stacks focused on session handling and authentication.
-
-After-artefact hashes on the ticket prove the file changed with the fix; FIXED without them stays incomplete.
-
-Before and after digests sit on the same ticket row as the FIXED mark.
+Each transition is written with its date and the evidence that justified it, for example F1 moving from open to closed FIXED with an after-artefact whose digest matches the vaulted copy. A status that changes without a recorded reason cannot be audited later, and NMT's examiners sample exactly these rows when they review closed tickets.
 
 ### 11.3 Partial fixes
 
@@ -1160,11 +1152,7 @@ F2 still open means the ticket stays open with new evidence.
 
 Partial fixes that leave F2 STILL OPEN stay on the tracker with an owner and due date. Sam does not close the engagement as clean while open items remain.
 
-Banner-only tool hits stay discovery until exposure and impact are shown with evidence a peer can reproduce.
-
-F2 keeps an owner and due date in the tracker; hiding STILL OPEN on a clean slide fails supervisor review.
-
-Partial closure language is banned; F2 stays explicitly STILL OPEN with a due date.
+The supervisor review checks that the summary slide shows F2 as STILL OPEN with its owner and due date rather than hiding it under a clean headline. Wording such as partly fixed is not used; the ticket either meets the check on its method card or it does not, and the new evidence explains which part of the fix is missing.
 
 ### 11.4 Closure
 
@@ -1172,27 +1160,13 @@ Closed means FIXED with evidence, or accepted risk with CISO signature — not s
 
 Closure requires owner sign-off and verified status FIXED with evidence. Verbal done in chat is rejected in the weekly review.
 
-Unpinned scanners make FIXED versus STILL OPEN into setup arguments instead of honest fix arguments with owners.
-
-Owner sign-off plus FIXED with evidence closes items; chat saying done is reopened at the weekly review.
-
-Weekly review reopens anything closed on chat enthusiasm without vaulted evidence.
-
-Vaulted hashes plus owner ink are the only closure pair weekly review accepts.
+Risk acceptance is the only other route, and it needs the CISO's signature on the ticket rather than an agreement in a meeting. The weekly review reopens any item that was closed on enthusiasm without vaulted evidence. The pair the review accepts is a stored hash of the after-artefact plus the owner's sign-off.
 
 ### 11.5 Scope freeze
 
 No new hunt during retest unless authorized.
 
-Scope freeze during retest means no new hosts. Sam will not expand ENG-512 mid-retest because a tool suggested another listener. Lab_retest statuses therefore cover only listeners from the original ENG-512 list, and nothing discovered on the way. Tool-suggested listeners become next-ROE candidates only.
-
-Forbidden lists on card-library covers include password spraying and any fare touch for kickoff reading aloud.
-
-Mid-retest host additions are rejected; tool suggestions become candidates for the next ROE only.
-
-Scope freeze text is read at retest kickoff so nobody widens hosts mid-flight.
-
-Anyone proposing a new host mid-retest is pointed at the next-ROE parking lot.
+During retest the scope is frozen: no new hosts are added to ENG-512, even when a tool suggests another listener. The retest statuses therefore cover only listeners from the original list. The freeze text is read aloud at retest kickoff, and any newly suggested host is written into a parking list as a candidate for the next ROE, where owners can decide whether to authorise it. Retesting a new host without that decision would produce a result nobody had agreed to receive.
 
 ### 11.6 Communicate
 
@@ -1200,13 +1174,7 @@ Send a short retest report to owners the same day.
 
 Communicate retest results to the SOC and owners the same day. STILL OPEN on F2 is not buried until the monthly pack.
 
-Cards without twelve-month reviews retire to archive before they can enter an ENG-512 Saturday stack.
-
-SOC and owners receive STILL OPEN notice the same day rather than inside a monthly pack.
-
-Same-day STILL OPEN mail goes to SOC lead and the finding owner together.
-
-Mail timestamps for STILL OPEN notice are kept beside the ticket for exam packs.
+Sam sends one message to the SOC lead and the finding owner together, so both hear about F2 at the same moment and neither learns it second-hand. The message timestamps are kept beside the ticket for exam packs. Waiting for the monthly pack would leave the owner a month behind on a weakness that is still open.
 
 ### 11.7 Same method
 
@@ -1214,11 +1182,7 @@ Retest uses the same method card, not a stronger one. Switching methods mid-rete
 
 Same method on retest: if F1 was a cookie flag check, retest uses that card, not a different scanner profile that invents a new pass.
 
-Crossing the SOC noise budget is a celebrated stop rather than treated as a badge of thoroughness.
-
-Cookie issues retest with the cookie card; swapping scanner profiles to invent a pass is forbidden.
-
-Method-card identity on retest is checked by peer initials on the ticket.
+If the original check used the cookie card, a different scanner profile might simply not test the same flag and report a pass that means nothing. A peer initials the ticket to confirm that the method card on the retest matches the one used for the finding. Changing the method is a new test, and it needs its own card and ROE line.
 
 ### 11.8 Owner demo
 
@@ -1226,11 +1190,7 @@ When helpful, Sam invites the owner to watch the successful retest once — seei
 
 Owner demo on staging shows the FIXED state before Sam marks closure. Screenshots alone without the owner present are weak for examiner packs.
 
-Mid-window cleverness without a written card is rejected even when the tool output makes the check look easy.
-
-Staging demos with the owner present beat screenshot-only closure when examiners ask who saw FIXED.
-
-Calendar invites for owner demos are filed as evidence of who witnessed FIXED.
+The owner sees the FIXED state on staging with their own eyes, which makes later disputes about whether the fix was real much less likely. The calendar invitation for the demo is filed as evidence of who witnessed it. Screenshots still go into the vault, but they support the demo rather than replace it.
 
 ### 11.9 11.x Field discipline
 
@@ -1242,11 +1202,7 @@ Field discipline for verification is same method, hashed before/after, owner dem
 
 If all findings FIX on first retest, Sam still records the methods and hashes. Easy wins deserve the same evidence trail as stubborn ones, especially when examiners sample closed tickets.
 
-Closing note: verification is how NMT trusts ENG-512. Sam's reputation is the STILL OPEN honesty, not a forced zero-open slide. Sam's verification reputation is STILL OPEN honesty. Forced zero-open narratives are programme defects.
-
-Config tickets quote baseline and drift with owners named so vague harden lines never open engineering work.
-
-Sam's verification reputation is honest open counts; forced zero-open stories are programme defects.
+The closing note for ENG-512 makes the same point: verification is how NMT comes to trust the programme. Sam's reputation rests on reporting honest open counts, including F2, rather than producing a zero-open slide. A programme that pushes testers towards forced zero-open stories has a defect of its own, and supervisors are expected to name it.
 
 ### Worked example (synthetic NMT)
 
@@ -1285,13 +1241,7 @@ You will (1) run labs 2, 5 and 11 under supervision; (2) assemble a lab notebook
 
 Paste outputs of lab_ports, lab_hash, lab_retest with timestamps and your initials.
 
-Notebook for Lab I holds inventory, method cards used, hashes and stop messages. Ink or append-only digital — Sam does not erase pauses. Lab I notebooks are append-only with pause lines kept. Erasing a bad minute fails integrity review.
-
-Fare vendor decompilation stays forbidden even when curiosity about validators runs high among juniors.
-
-Lab I pages stay append-only so paused minutes remain visible when stop discipline is graded later.
-
-Paused minutes stay inked so Lab I stop-discipline grading has something to read.
+The Lab I notebook holds the inventory, the method cards used, the hashes and every stop message. It is kept in ink or in an append-only digital file, so a paused minute stays visible when stop discipline is graded later. Erasing an awkward entry fails the integrity review, because a real evidence pack would lose exactly the record an examiner most wants to see. Corrections are added as new dated lines that point back to the entry they correct.
 
 ### 12.2 Peer check
 
@@ -1311,89 +1261,51 @@ Those two boxes fail closed; everything else in peer check is secondary.
 
 Supervisor plants a MISMATCH file; learner must refuse to attach it.
 
-Planted fault in the lab inventory teaches finding NOT APPROVED listeners. Sam's planted 3389/rdp must appear in the report or the lab fails. The supervisor adds 3389/rdp to the inventory without telling the learner, so only lab_ports output reveals it as NOT APPROVED. Missing the plant fails the lab regardless of prose quality.
-
-Unowned fixes cannot reach FIXED language in retest status tables that supervisors read on Monday.
-
 A report that lists the plant must also say what Sam would do next: stop, notify the owner and log the listener.
+
+The supervisor adds a 3389/rdp listener to the lab inventory without telling Sam, so only the lab_ports output reveals it as NOT APPROVED. Sam's report must list the planted listener, or the lab fails. The planted MISMATCH file tests the evidence habit in the same way: attaching it would mean a finding rests on an artefact whose digest no longer matches.
 
 ### 12.4 Time box
 
 Ninety minutes, hard stop.
 
-Time box for Lab I matches a short ENG window. When the clock stops, Sam vaults and stops typing. When the Lab I clock stops, vault and hands off keyboard. Silent overtime is scored as a window discipline fail.
-
-Looks-bad language is rewritten into baseline drift language before tickets leave the technician team.
-
-When the Lab I clock ends, Sam vaults artefacts and leaves the keyboard; silent overtime is a discipline fail.
-
-Hands-off at the Lab I bell is scored; typing after the bell is a fail.
+The ninety minutes match the length of a short ENG-512 window on a Saturday. When the clock stops, Sam vaults the artefacts and takes his hands off the keyboard, and the supervisor scores that moment. Typing after the bell counts as silent overtime, a window-discipline failure, because on a real engagement work past the agreed end would be outside the authorisation. Learning to stop mid-task, with a note of what was left undone, is harder than learning to work fast, which is why the bell is scored separately from the findings.
 
 ### 12.5 No production
 
 Any attempt to scan NMT production fails the lab.
 
-No production data in Lab I. Synthetic inventories only; rider PII never enters the classroom pack. Synthetic inventories only — no rider exports in the classroom pack. Production data is a hard zero.
-
-Post-CDN cookie regressions open tickets between windows rather than waiting for the next Saturday ENG slot.
-
-Classroom packs use synthetic inventories only; rider exports are a hard zero even for illustration.
-
-Even illustrative screenshots in Lab I must be synthetic inventories, never rider extracts.
+Lab I uses synthetic inventories only, and rider exports are a hard zero even as illustrations or screenshots. Keeping production data out of the classroom pack means no rider's personal data can leak from a learner's laptop or a shared forum. The rule also keeps the exercise honest about what it can teach: decision habits, not facts about NMT's live estate. A learner who needs a realistic-looking record builds one from the synthetic inventory instead.
 
 ### 12.6 Sign-off
 
 Supervisor signs the notebook if peer check and planted fault were handled correctly.
 
-Sign-off needs supervisor signature after peer check. Without it the lab stays practice and out of Sam's portfolio. Supervisor signature after peer check gates portfolio entry. Unsigned labs stay practice.
-
-Untested rollback keeps risky-fix tickets open until staging proves recovery can actually run.
-
-Portfolio entry waits on supervisor signature after peer check; unsigned labs remain practice only.
-
-Practice labs without supervisor ink never enter Sam's examined portfolio folder.
-
-Examined portfolio folders reject practice-only labs without that ink.
+Without that signature the lab stays practice and does not enter Sam's examined portfolio folder. The peer check comes first, so the supervisor signs work that another learner has already checked for the emergency contact and fare exclusion. Requiring both steps mirrors a real engagement, where evidence is reviewed by a peer before anyone signs it off. The supervisor also confirms that the planted fault was found before signing.
 
 ### 12.7 Notebook integrity
 
 Altering lab outputs to look better fails the course. Supervisors may re-run the labs and compare hashes.
 
-Notebook integrity means dated pages and hash of the final export. Quiet edits after sign-off are refused. Final notebook export is hashed and dated. Edits after sign-off require a new review cycle.
-
-Amber retests finish before any production change claim is written for examiners or the CISO pack.
-
-The final notebook export is hashed and dated; edits after sign-off restart the review cycle.
-
-Hash-of-export plus date is the integrity pair peers verify after sign-off.
+Integrity also covers the notebook itself: pages are dated, and the final export is hashed. Peers verify that hash and date after sign-off, and any edit made later restarts the review cycle. A supervisor who reruns a lab and finds a different digest knows the output was changed, whatever the reason given. The learner then explains the change in a new review cycle rather than in a quiet correction.
 
 ### 12.8 Quiet channel
 
 During the lab, only ROE and stop messages go to the shared channel — no spoilers for peers still working.
 
-Quiet channel for lab questions is the course forum, not personal SMS with credentials. Sam never pastes tst-sam-web secrets into chat. Course forum holds lab questions; SMS with passwords is forbidden. tst-sam-web secrets never leave the vault path.
-
-Config field discipline rejects tickets missing baseline, owner, staging-first or tested rollback evidence.
-
-Questions go to the course forum; SMS never carries tst-sam-web secrets out of the vault path.
+Lab questions go to the course forum rather than personal SMS. Sam never pastes the tst-sam-web credentials into any chat, because they belong only on the vault path. Keeping questions in one channel also gives the supervisor a record of what was asked, which helps when grading whether learners stayed within the ROE. Answers posted there also help peers who hit the same question later in the session.
 
 ### 12.9 12.x Field discipline
 
 Laboratory I is graded on discipline, not on finding exotic issues. Learners who race ahead to invent attacks on the synthetic data but skip hashing fail. Learners who are slow but refuse the planted mismatch and classify ports correctly pass. Sam reminds peers of that grading bar at the start so competition does not push people toward unsafe habits.
 
-Field discipline for Lab I is notebook, peer check, planted fault found, time box, synthetic only. Those five gate portfolio entry.
-
-Closing notes never promise fare coverage Sam did not touch during the ENG-512 window just completed.
+The five field-discipline gates for portfolio entry are the notebook, the peer check, finding the planted fault, keeping to the time box and using synthetic data only. Each gate is marked pass or fail with no partial credit. A learner who meets all five but finds nothing unusual has done exactly what the lab asks.
 
 ### 12.10 12.y Closing note
 
 Learners submit the notebook as a single PDF or markdown bundle with a table of contents. Missing initials or timestamps cost points because real evidence packs need attribution.
 
-Closing note: Lab I builds ENG-512 habits without touching real riders. Sam treats the planted 3389 line as seriously as a live finding. Lab I exists to make ENG-512 habits muscle memory without riders in the blast radius.
-
-Retest output teaches fixed-two open-one honesty with pinned tools and the same method cards as discovery.
-
-Lab I exists so ENG-512 habits form before real riders sit in the blast radius of mistakes.
+Lab I exists so that ENG-512 habits form before any real rider is affected by a mistake. Sam treats the planted 3389 line as seriously as a live finding, writing it up with the same fields and evidence. The retest part of the lab teaches the same honesty with pinned tools and identical method cards: two fixed, one open.
 
 ### Worked example (synthetic NMT)
 
@@ -1456,13 +1368,9 @@ Known-good rollback is a script path in the notebook, not a memory of flags.
 
 Symptom, steps, screenshots, time, what you already ruled out.
 
-Escalation packet holds ticket id, last good hash, stop message text and owner contact. Five minutes to assemble beats a long verbal story. Escalation packets hold ticket, last good hash, stop text and owner contact — assembled in five minutes.
-
-Chat-only done is reopened in weekly review until evidence returns to the ticket with hashes.
-
 The last good hash tells on-call which evidence file was intact before the problem, so nobody re-collects it blindly.
 
-On-call receives the four-field packet; novels in chat are not escalations.
+Sam's ENG-512 escalation packet has four fields: the ticket identifier, the last good hash, the exact stop message that was posted and the owner's contact details. It takes about five minutes to assemble and saves the on-call engineer a long verbal story. Listing what has already been ruled out stops the engineer repeating checks Sam made an hour earlier.
 
 ### 13.4 Workarounds
 
@@ -1740,13 +1648,7 @@ You will (1) map third-party dependencies; (2) know when their testing needs sep
 
 Map tiles, SMS notifier, payment deep links, cloud email.
 
-Dependencies include map-tile CDNs and identity providers. Sam lists them so ENG-512 does not treat a CDN timeout as an NMT API finding. Map-tile CDN timeouts are correlated with ENG times before Sam calls them API findings. Dependency lists prevent false blame.
-
-Escalation packets assemble ticket, last good hash, stop text and contact inside five minutes for the on-call.
-
-SMS notifier and payment deep links get the same treatment, because their failures surface inside NMT's rider screens.
-
-Correlation worksheets sit beside CDN tickets so false API blame is visible.
+Dependencies also include map-tile CDNs and identity providers, and Sam lists them so ENG-512 does not report a CDN timeout as a finding against NMT's API. He compares each timeout with the ENG-512 activity times before deciding where it belongs, and keeps that comparison beside the CDN ticket. The SMS notifier and payment deep links get the same treatment, because their failures appear inside NMT's rider screens. Sam records an external contact for each dependency where one is known, so a ticket can go straight to the party that can fix it.
 
 ### 15.2 Separate auth
 
@@ -1947,15 +1849,7 @@ Cards for decommissioned hosts move to archive the same week so stale checks can
 
 Write for a technician who was out sick during the last engagement.
 
-Audience is technicians and SOC, not marketing. Runbooks avoid swagger language and keep stop conditions in plain words. Each runbook step is written so a technician who missed ENG-512 can follow it at night without calling Sam. Swagger marketing language is edited out.
-
-Idempotent reporters upsert by listener key so re-runs do not double tickets in the tracker.
-
-Technician and SOC readers get plain stop language; marketing swagger is edited out before publish.
-
-Plain-language stop examples replace slogans in the technician edition of the runbook.
-
-Technician edition examples show halt posts, not marketing adjectives.
+The readers are technicians and the SOC, not marketing, so each step is written so that a technician who missed ENG-512 can follow it at night without calling Sam. Stop conditions appear in plain words, with an example of the halt message to post. Slogans and praise for tools are edited out before the technician edition is published, because they add length without helping anyone decide what to do.
 
 ### 16.6 Review cadence
 
@@ -2251,15 +2145,7 @@ The project delivers diagram, ROE checklist, lab_ports, hashes, FIXED/STILL OPEN
 
 Fifteen minutes to the supervisor and a SOC observer.
 
-Presentation to the supervisor leads with exclusions and STILL OPEN honesty, then evidence. Swagger slides without hashes fail. The SOC observer checks that the stop path in the slides matches the one the SOC actually received. Hashless swagger fails.
-
-Real rider screens never illustrate procedures in teaching screenshots stored in the course materials.
-
-Supervisor slides open on exclusions and open items; hashless swagger fails the presentation gate.
-
-Open-item honesty leads the slide deck; tool praise is appendix material only.
-
-Appendix slides may praise tools only after open items are stated up front.
+Sam's presentation opens with the exclusions and the items still open, such as F2, and only then moves to the evidence. Slides that praise tools without hashes behind them fail the presentation gate; any tool praise belongs in an appendix. The SOC observer checks that the stop path shown on the slides matches the one the SOC actually received during the window. Questions from the supervisor about any open item are answered from the evidence, not from memory.
 
 ### 18.3 Handover
 
