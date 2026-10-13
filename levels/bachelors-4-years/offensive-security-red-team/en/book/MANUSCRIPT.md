@@ -1249,57 +1249,85 @@ You will (1) minimise customer data in evidence; (2) redact; (3) respect retenti
 
 Proof beats bulk extracts of customer tables.
 
+A tester needs to show that a weakness exists, not to collect what it exposes. If an API returns other customers' balances, one response containing a synthetic account's balance proves the flaw just as well as ten thousand real ones, and it creates no new copy of real customer data. Every extra record captured has to be stored, protected, reported and deleted, and it may itself become a reportable breach. Sam stops a test as soon as he has the first response that proves the issue. He records how many records the endpoint could have returned, rather than retrieving them to prove it.
+
 ### 14.2 Redaction
 
 Mask account numbers; keep digits that prove the issue if needed.
+
+Redaction should remove identity while keeping the proof. A screenshot showing that customer A's session displayed customer B's statement only needs the last four digits of each account number to show that the two differ. The full numbers add risk and no evidence. Names, addresses and balances are blacked out with solid boxes. Blur can sometimes be reversed and cropping can leave text in image metadata. Sam redacts on a copy, keeps the unredacted original in the vault under its retention date, and hashes both, so a reviewer can confirm the redacted image came from the original evidence.
 
 ### 14.3 Purpose limitation
 
 Engagement evidence is not a marketing analytics source.
 
+Customers' data reached the testing team for one reason, which was to check the bank's security under a signed agreement. Using the same screenshots to study how customers use the app, or to illustrate a sales deck, is a new purpose the customers never expected and the agreement never covered. Privacy law in many jurisdictions treats that change of purpose as needing its own legal basis. The practical rule at TRB is simple. Evidence answers questions about the engagement it came from, and any other question needs separate data that was collected for that purpose.
+
 ### 14.4 Access
 
 Need-to-know on evidence vaults.
+
+The evidence for one engagement is read by its testers, its reviewer and the custodian, and by nobody else by default. A developer fixing a finding sees the finding's description and the redacted proof, not the raw capture. A manager sees status and severity. Access requests outside those roles go to the engagement lead with a reason and an end date. Need-to-know also limits damage. If one tester's account is compromised, the attacker reaches one engagement's evidence, not every screenshot the team has taken in five years.
 
 ### 14.5 Cross-border
 
 Cloud regions may implicate rules; legal advises.
 
+Evidence stored in a cloud service sits in a particular region, and backups or support access may reach others. If the evidence contains personal data about customers in one country and the storage or the vendor's support staff are in another, data-transfer rules may apply, along with the bank's own commitments to its regulator. Testers are not expected to interpret those rules themselves. They are expected to notice when evidence is about to cross a boundary, for example uploading to a new tool or sharing with an overseas vendor, and to ask legal before doing it.
+
 ### 14.6 Breach risk
 
 Evidence vaults are high-value targets; protect them.
 
-### 14.7 14.7 Applied note
+A testing team's vault holds the bank's weaknesses, proof of how to reach them and samples of the data behind them, which together make an attacker's roadmap. The vault therefore gets controls at least as strong as the systems it describes: multi-factor authentication, logged access, encryption at rest, short retention and its own place in the incident plan. If the vault were compromised, the bank would have to treat every unfixed finding in it as potentially known to an attacker. That is why TRB prioritises fixes for weaknesses recorded in an exposed vault, whatever their original severity.
+
+### 14.7 Re-identification drills
 
 Re-identification drills pair a redacted screenshot with public org charts. If a peer can name the person, redaction fails the gate. Sam now prefers synthetic personas in most teaching screenshots.
 
-### 14.8 14.8 Synthetic evidence library
+The drill tests what a reader can work out, not just what was blacked out. A screenshot of an internal admin page might hide a name but leave a job title, a branch code and a timestamp, and together with a public organisation chart those identify one person. Peers get ten minutes and only public sources. A successful identification is not counted as a mistake by the redactor. It shows that the redaction rule missed a kind of field, and the rule is updated.
+
+### 14.8 A library of synthetic evidence
 
 A library of synthetic screenshots covers common findings so learners need not handle real customer pixels. Sam contributes one new synthetic each term.
 
-### 14.9 14.9 Purpose tags
+Each entry recreates a typical finding on a mock-up of TRB's interfaces, such as a statement page showing the wrong customer, an error message leaking a stack trace or an admin panel reachable without login, using invented data throughout. Training, report templates and conference talks draw from the library instead of from engagement folders. Building an entry takes a few hours, and it permanently removes the temptation to redact a real screenshot for a slide.
+
+### 14.9 Purpose tags on evidence
 
 Evidence files tagged with purpose; secondary use requires a new tag and approval. Marketing cannot "just borrow" engagement screenshots.
 
-### 14.10 14.11 Scene
+The tag is set at upload. In most cases it is engagement evidence, and for a few files it is engagement evidence plus approved training use. FindingsDesk checks the tag whenever a file is copied to another workspace or attached to anything other than a finding, and blocks the action if the purposes do not match. Adding a purpose requires the engagement lead's approval and a privacy check. The tag turns a policy sentence into a check that runs every time a file moves.
+
+### 14.10 Learners choose the synthetic example
 
 Synthetic screenshot library item SS-17 shows a fake customer "Ada Example" with account ••••4242. Learners prefer it to redacting real screens. Sam measures that preference and funds more synthetic art.
 
-### 14.11 14.12 Extension
+The preference is practical as well as ethical. Redacting a real screenshot properly takes a learner twenty minutes and a reviewer's check, while the synthetic one is ready to use and carries no risk if it ends up in the wrong place. Sam tracks how often each library item is used. The most-used items show which findings learners write about most, and those are the next ones turned into synthetic versions.
+
+### 14.11 A blocked copy to a design folder
 
 Purpose tags blocked a well-meaning trainee from dropping engagement screenshots into a UX redesign folder. The refusal felt petty and protected a hundred customers.
 
-### 14.12 14.14 Note 11
+The trainee's idea was reasonable on its face. The screenshots showed real confusing screens that the design team wanted to improve. They also showed real customers' names and partial balances, and the design folder was shared with an external agency. The fix took one afternoon. The trainee described each confusing screen in words and the design team rebuilt it with synthetic data. The agency got what it needed and no customer data left the bank.
+
+### 14.12 Keeping synthetic personas obviously fake
 
 Synthetic Ada Example has a style guide so artists keep her obviously fake.
 
-### 14.13 14.16 Pad
+A synthetic persona that looks too real causes the problems it was meant to prevent. Readers may assume it is a redacted real customer, or the details may accidentally match a real person. The style guide fixes the giveaways: names from an agreed invented list, account numbers ending in well-known test digits, addresses on streets that do not exist in TRB's region, and dates in a reserved test year. Anyone who sees those markers can recognise teaching material at a glance.
+
+### 14.13 Agreements with illustrators
 
 Artists sign a CLA that Ada Example may not resemble real customers. Legal insisted; Sam agreed happily.
 
-### 14.14 14.18 Final
+Illustrators sometimes base faces and handwriting on people they know or on stock photographs of real people. In a bank's training material, a persona that resembles a real customer could imply that the customer's account was involved in a security finding. The contributor agreement makes the artist confirm that every likeness is invented, and gives TRB the rights to reuse and change the artwork. That second part matters as much as the first, because synthetic examples must be updated when the real interfaces change.
+
+### 14.14 Desk visits for new analysts
 
 Privacy coaches at TRB include a five-minute desk visit when a new analyst first opens the evidence vault. Sam scripts the visit: show retention dates, show access list, show one redaction fail example, ask the analyst to repeat the minimisation rule in their own words. Desk visits catch bravado better than LMS modules. Analysts sign a tiny card that stays in the vault foyer.
+
+A rule learned from a document is easily forgotten. A rule shown at the desk on the analyst's own screen, with their own engagement's retention date, tends to stick. The redaction failure example is chosen to be uncomfortable: a screenshot that looked clean until a colleague named the person in it. Asking the analyst to restate the rule shows whether they understood it or just nodded along.
 
 ### Worked example (synthetic TRB)
 
@@ -1337,57 +1365,85 @@ You will (1) hash evidence; (2) choose non-vanity metrics; (3) keep custody.
 
 Detect accidental edits before filing.
 
+A cryptographic hash such as SHA-256 turns a file into a short fingerprint that changes completely if even one byte changes. Sam hashes each evidence file when he captures it, and again when he attaches it to a finding. If the values differ, something touched the file in between, perhaps an image editor that re-saved it, a sync tool that converted line endings or a careless redaction on the original. Catching that before the report goes out is easy. Explaining it after a client disputes the finding is much harder, because a changed file looks the same as a doctored one.
+
 ### 15.2 Metrics
 
 Assets touched, cards run, owners assigned — not raw finding counts.
+
+A count of findings mostly measures how hard the testers looked and how they split issues into separate records. A rise from forty to sixty could mean the bank got worse, the scope grew or one weakness was logged per host instead of once. More useful measures describe the work and its effect: how many in-scope assets were actually tested, how many planned test methods were completed, how many findings have a named owner and a due date, and how long fixes take. PulseMap reports these, so a manager can tell whether a quiet quarter means safety or little testing.
 
 ### 15.3 Custody
 
 Who/when/where for each artifact.
 
+A chain-of-custody record lists every point at which evidence changed hands or location: captured by Sam on a testing laptop at 21:14, uploaded to FindingsDesk at 21:20, read by the reviewer the next morning, exported in redacted form for the report. Each entry has a person, a time and a place. If a finding is challenged months later, the record shows that the evidence presented is the evidence captured and who could have altered it. Gaps are recorded as gaps. An honest note that a file sat on a laptop for two days is better than a record that hides it.
+
 ### 15.4 Integrity vs truth
 
 Matching hash ≠ live system still vulnerable.
+
+A matching hash proves only that the evidence file has not changed since it was captured. It says nothing about whether the weakness still exists, whether the evidence was correctly understood, or whether the test was valid. A screenshot can be perfectly preserved and still show a misreading. A server that was vulnerable in March may have been patched in April. That is why TRB separates evidence integrity, checked with hashes, from finding status, checked by a retest. Report statements are dated to the moment of testing, for example that the endpoint returned another customer's data on 4 March, not that it does so now.
 
 ### 15.5 Sampling
 
 Sample closed tickets for verification evidence.
 
+Checking every closed ticket is rarely affordable, and checking only the ones that someone flags misses quiet failures. A random sample avoids both problems. Because the sample is chosen by chance, teams cannot predict which tickets will be checked, so every ticket needs evidence that the fix works, such as a retest result, a configuration diff or a scan. If the sample turns up missing evidence, the share missing in the sample estimates the share missing overall, and the interval methods used for detection rates apply to this proportion too.
+
 ### 15.6 PulseMap
 
 Coverage views must show denominators.
 
-### 15.7 15.7 Applied note
+A green tile that reads ninety per cent coverage hides the question that matters, ninety per cent of what. If PulseMap counts only the hosts in the asset inventory, and the inventory lacks a cloud account set up last quarter, the real coverage is lower than the tile suggests. Each coverage view therefore shows the count behind the percentage, such as forty-five of fifty registered web applications, and names the source of the total. Readers can then see when the denominator itself looks too small, which is often the most important finding on the dashboard.
+
+### 15.7 Random sampling of closed tickets
 
 Closed-ticket sampling is five tickets per month, chosen by RNG. Missing verification evidence reopens the ticket automatically. Sam publishes the reopen count so gaming the metric is visible.
 
-### 15.8 15.8 Metric dictionary
+The random draw is logged with its seed, so anyone can confirm that the five tickets were not hand-picked. Automatic reopening keeps the consequence impersonal. It is not Sam accusing a team, it is the rule applying itself. Publishing the reopen count makes improvement visible too. When one business unit's reopens fell from three a month to zero, the falling count showed its fixes were now being verified, not merely closed.
+
+### 15.8 A dictionary for metric terms
 
 A shared dictionary defines "touched", "validated" and "closed". Sam refuses PulseMap tiles that use undefined words.
 
-### 15.9 15.9 Touched definition
+The same word can mean different things to different teams. To a developer closed may mean the code was merged, to operations that it was deployed, and to the testers that a retest passed. A tile counting closed findings is meaningless until the word is fixed. Each dictionary entry gives a definition, the data field it maps to, an example and a counter-example. When a new tile is proposed, its labels are checked against the dictionary before it is published.
+
+### 15.9 What counts as touched
 
 "Touched" means a method card finished with evidence, not a ping. Sam's dictionary fight on that word was worth a week.
 
-### 15.10 15.11 Scene
+Under the loose definition, a host answered a network sweep and so counted as covered. Under the strict one, a planned test method was completed against it and left evidence. The difference was large. Coverage measured by sweeps was close to one hundred per cent, while coverage measured by completed methods was about sixty. The strict definition was less flattering and far more useful, because it showed which assets had never really been tested.
+
+### 15.10 A green tile with two data points
 
 PulseMap's tile subtitle "n=2" next to a green check teaches more than a lecture on sample size. Sam deliberately leaves a small-n green tile in the training environment to provoke questions.
 
-### 15.11 15.12 Extension
+The tile shows that both of two sampled tickets had verification evidence, which is a hundred per cent with almost no information. Learners who see it usually start by saying the control is working, and then someone notices the n. The discussion that follows covers what two observations can support, how wide the interval is and what tile design would prevent the misreading. That last question led to the rule that tiles with very small samples cannot turn green.
+
+### 15.11 Signing off the definitions
 
 Dictionary fight ended when CISO signed the definitions. Sam frames the signed PDF in the team wiki. Words are controls.
 
-### 15.12 15.14 Note 11
+The signature settled the argument by making the definitions bank policy rather than the testing team's preference. Teams that disagreed could still propose changes, but through a review with a version number, not by quietly using their own meaning on a dashboard. Each PulseMap tile now cites the dictionary version it uses. When a definition changes, old and new figures are not plotted on the same line without a marker, so a jump caused by redefinition is not mistaken for real change.
+
+### 15.12 Definitions on paper
 
 Signed metric definitions hang next to the team coffee machine — paper still works.
 
-### 15.13 15.16 Pad
+A printed page on the wall is seen by people who would never open the wiki, including visitors from other teams who come to ask what a number means. Its main use is in quick conversations. When someone says a finding is closed, a colleague can point to the definition and ask whether the retest passed. The page carries its version number and date, so an out-of-date printout is easy to spot and replace when the signed version changes.
+
+### 15.13 A yellow state for undefined terms
 
 Undefined-word tiles show a yellow "define me" state instead of green. Yellow is harder to ignore.
 
-### 15.14 15.18 Final
+A tile using a term missing from the dictionary still shows its number, but it cannot be green, because nobody can say what green would mean. The yellow state names the undefined word and links to the form for proposing a definition. This avoids two worse options. Hiding the tile loses information, and showing it green gives false reassurance. In practice most yellow tiles are fixed within a week, usually by mapping the label to an existing term.
+
+### 15.14 Measurement office hours
 
 Measurement office hours run Thursdays. Anyone may bring a tile that feels misleading. Sam's most common fix is adding n to the subtitle or changing green to yellow. He tracks how many tiles change colour each month as a quality metric of the metrics.
+
+Office hours give people a low-stakes way to question a number without accusing whoever built the tile. Many complaints turn out to be about labels rather than data. A tile reading incidents may really be counting alerts, and the fix is a better title. Tracking colour changes shows whether the dashboard is becoming more honest over time. A month with no changes either means the tiles are good or that people have stopped coming.
 
 ### Worked example (synthetic TRB)
 
@@ -1425,6 +1481,8 @@ You will (1) draw TRB zones; (2) enforce flow matrices; (3) fail closed.
 
 Internet, DMZ, corporate, payments-adjacent (restricted), assessment.
 
+A zone groups systems that share a level of trust and the same rules for what may reach them. TRB's internet zone is untrusted. The DMZ holds the public banking front end, which must talk to both the internet and the core. The corporate zone holds staff laptops and email. The payments-adjacent zone is restricted because it borders the SWIFT gateway and the ledger, and the assessment zone holds the testing platform. Testers read a finding through the zones it crosses. A path from the corporate zone straight into the payments-adjacent zone is serious even when the system at the far end is only moderately sensitive.
+
 ### 16.2 Flows
 
 Approved matrix is authoritative; lab_flows flags web→ledger-db.
@@ -1447,53 +1505,79 @@ web        -> ledger-db  UNAPPROVED
 jump       -> ledger-db  approved
 ```
 
+The register is the bank's statement of intent, and observed traffic is evidence of what actually happens. The lab compares the two and reports flows that were seen but never approved. A direct path from the web tier to the ledger database bypasses the core API, which is where authorization and input checks live, so anything that compromises the web server could reach the ledger without those checks. The finding records when the flow was observed, its source and destination, and the fact that no register entry or change ticket covers it.
+
 ### 16.3 Fail closed
 
 Proxies and TrackScope deny when policy missing.
+
+A control that fails closed blocks traffic or actions when it cannot decide, for example because its policy file is missing, its database is unreachable or a rule is malformed. A control that fails open lets everything through in those cases, which is convenient during an outage and disastrous if an attacker can trigger the failure. Sam tests the behaviour safely in staging. He renames TrackScope's policy file and confirms that the platform refuses to start a test, rather than running without scope checks. The proxy test works the same way: with its rule set unavailable, outbound requests must be refused.
 
 ### 16.4 Conduits
 
 Owned firewall rules.
 
+A conduit is the approved path between two zones, made up of the firewall rules, ports and protocols that let one zone talk to another. Every conduit needs an owner, the person who can explain why the path exists, approve changes and decide whether it is still needed. Rules without owners pile up: a port opened for a migration years ago remains because nobody knows whether removing it will break something. When Sam finds traffic using a conduit, the first question is not whether the rule allows it but who owns the rule, because only that person can say whether the traffic is intended.
+
 ### 16.5 Third parties
 
 Processors need their own authorization.
+
+TRB uses outside companies for SMS one-time codes, card processing and cloud hosting. Their systems sit in TRB's architecture diagrams, but TRB does not own them and cannot authorise anyone to test them. Testing a vendor's service usually requires the vendor's written permission under its own terms, and some cloud providers publish rules about what customers may test in their own tenancy. Sam can test how TRB's systems use a third-party service, for example whether the bank validates the vendor's responses, while leaving the vendor's infrastructure alone unless that vendor has signed off.
 
 ### 16.6 Diagrams
 
 Dated and owned.
 
-### 16.7 16.7 Applied note
+An architecture diagram is a claim about how systems are connected at a particular time, and an undated one invites testers and auditors to trust a picture that may be years old. Every TRB diagram carries a date, an owner and the version of the flow register it reflects. Before an engagement, Sam checks that the diagram's date is later than the last major change to the systems in scope. If it is not, the first task is to confirm the current layout with the owner. Testing against an outdated diagram can mean missing new paths or, worse, probing addresses that now belong to something out of scope.
+
+### 16.7 Detecting rule changes during an engagement
 
 Matrix excerpts are hashed and stored beside the ROE. If network changes mid-engagement, Sam diffs the live rules against the hash and pauses if they diverge without a change ticket.
 
-### 16.8 16.8 Conduit owners on-call
+The hash fixes the environment the authorization was written for. If rules change during the window, the test may now reach places the scope assumed were unreachable, or results may reflect a temporary configuration rather than the normal one. Pausing gives the conduit owner time to confirm that the change was intended. If it was, the scope is re-checked against the new rules. If it was not, an unexpected change is itself something the bank needs to know about.
+
+### 16.8 Contacting conduit owners
 
 Each conduit lists an on-call. During tests Sam messages the conduit on-call, not a general IT inbox, when rules misbehave.
 
-### 16.9 16.9 Third-party column
+A general inbox is read by whoever is free, possibly hours later, and that person may not know the conduit or have the authority to change it. During a testing window both delays matter. If a firewall rule unexpectedly blocks the test, or unexpectedly allows something it should not, the person who owns that conduit can decide quickly whether to pause, correct the rule or continue. The on-call contact is listed in the flow register next to the conduit, so testers do not have to work out who to call while something is going wrong.
+
+### 16.9 Marking flows that need third-party authorization
 
 Flow matrices include a column "third-party auth needed?". Yes rows cannot be tested under TRB ROE alone.
 
-### 16.10 16.11 Scene
+The column makes a legal boundary visible at the place testers plan their work. A flow from TRB's core API to the SMS vendor's endpoint is marked yes. Sam may observe what TRB sends and receives, but may not probe the vendor's endpoint for weaknesses. The column is filled in by whoever registers the flow, not by the testers, so the decision is made by people who know the contracts. When a yes row matters to an engagement, the plan includes requesting the vendor's permission or noting the gap in the report.
+
+### 16.10 A temporary rule with no expiry
 
 When lab_flows shows web→ledger-db, network claims the rule is temporary. Sam asks for the change ticket and kill-date. Neither exists. Temporary without expiry becomes F3's twin process finding.
 
-### 16.11 16.12 Extension
+The technical finding is the open path. The process finding is that a rule could be added as temporary without any mechanism to remove it. Fixing only the first would close this rule and leave the next temporary one just as likely to persist. The process finding recommends that the firewall change workflow require an expiry date for temporary rules and alert the owner a week before it.
+
+### 16.11 Pointing a curious tester to the vendor's programme
 
 Third-party column "yes" blocked a curious scan of the SMS vendor. Sam sent the vendor's bug bounty link instead. Boundaries can still be helpful.
 
-### 16.12 16.14 Note 11
+The colleague's curiosity was reasonable, since the vendor's endpoint looked dated and probably had problems. Scanning it from TRB's network under TRB's rules would have been unauthorised testing of another company. The vendor's bug bounty sets out what researchers may test, how and with what legal protection. Following it, from personal equipment and on personal time where the programme allows, kept the interest legitimate and kept TRB out of it.
+
+### 16.12 Making expiry dates visible
 
 Kill-date calendar invites include the CISO alias as optional attendee for visibility.
 
-### 16.13 16.16 Pad
+The invite is created when a temporary rule is approved and falls on its expiry date. The owner is the required attendee. The CISO's office is optional, which means it is not expected to act but can see the full list of temporary rules simply by opening the calendar. On the day, the owner removes the rule or extends it with a new approval and a new date. An invite nobody acts on remains on the shared calendar as a past event with no change ticket, which makes the miss easy to find.
+
+### 16.13 Linking technical and process findings
 
 Twin process findings link to F3 with a related-id field. Boards see technical and process debt together.
 
-### 16.14 16.18 Final
+Without the link, the two findings travel separately. The technical one is fixed quickly and disappears from reports, while the process one waits in a governance backlog with no visible connection to any real exposure. The related-id field keeps them together, so a board report shows that a serious open path existed and why it could exist. Reviewers do not close the technical finding as resolved at its root while its process twin is still open.
+
+### 16.14 Architecture office hours
 
 Architecture office hours use a projector and a red pen. Unowned conduits get circled until an owner appears in the register. Sam refuses to schedule tests through unowned conduits even if the firewall rule exists. Ownership is part of authorization.
+
+A circled conduit stays on the projected diagram from week to week, which puts gentle public pressure on the team whose firewall rule it is. Refusing to test through unowned conduits is not obstruction. Without an owner there is nobody who can accept the risk of the test, pause it or explain unexpected results, so the precondition for authorised testing is missing.
 
 ### Worked example (synthetic TRB)
 
@@ -1531,53 +1615,79 @@ You will (1) state what TLS does; (2) protect evidence at rest; (3) avoid invent
 
 Confidentiality and integrity of sessions — not app AuthZ.
 
+TLS keeps someone on the network path from reading or silently altering traffic between a customer's browser and TRB's servers, and it lets the browser check that it is talking to the bank's real domain. It does nothing about what happens once the request arrives. If the application gives customer A customer B's statement, it does so over a perfectly encrypted connection. Findings keep the two apart. An outdated protocol version or a weak cipher suite is a transport finding. A missing ownership check is an application finding, and fixing the TLS settings would leave it untouched.
+
 ### 17.2 At rest
 
 Evidence vault encryption and key access logs.
+
+Encrypting the vault's storage protects against someone obtaining the disks, backups or snapshots without going through the application, for example a misconfigured storage bucket or a discarded drive. It does not protect against anyone who can log in to the vault normally, because the application decrypts data for them. The key that unlocks the storage is the real asset, which is why its use is logged separately from file access. A burst of key-use events with no matching vault logins would suggest that someone is reading storage directly, which is the scenario encryption at rest exists to stop.
 
 ### 17.3 Hashes
 
 SHA-256 for evidence integrity, not for password storage design lectures here.
 
+A general-purpose hash such as SHA-256 is designed to be fast, which suits fingerprinting evidence files: hashing a large screenshot archive takes seconds and any change shows up. The same speed makes it a poor choice for storing passwords, where slowness is a deliberate defence against guessing. Password storage needs dedicated functions such as Argon2 or bcrypt, a topic for the identity chapters. In this book SHA-256 answers one question, whether this is the same file that was captured, and testers should not assume a system is secure because it uses a hash somewhere.
+
 ### 17.4 Anti-patterns
 
 Homegrown crypto for TrackScope tokens is forbidden.
+
+An early TrackScope prototype built session tokens by base64-encoding the tester's name and a timestamp, then XORing the result with a fixed string. It looked unreadable and offered no protection. Anyone who saw two tokens could recover the fixed string and forge new tokens. The rule since then is to use the framework's signed-token library or a vetted standard such as signed JWTs with a key held in the vault, and never invent an algorithm or encoding. When Sam sees opaque tokens in a system under test, he checks whether they change predictably between requests, which is a common sign of homemade schemes.
 
 ### 17.5 Key custody
 
 Platform keys in HSM or vault with dual control where required.
 
+Whoever holds a signing key can impersonate the system that uses it. TRB's most important keys, such as the one that signs TrackScope's scope files and the vault's master key, sit in a hardware security module. The HSM performs operations with the key but does not hand the key out. Dual control means sensitive operations, such as exporting a key or changing who may use it, need two authorised people acting together, so no single compromised or careless account can do them alone. Less critical keys live in the software vault, still with logged access and named owners.
+
 ### 17.6 Limits
 
 Crypto does not stop authorized malicious admins with valid keys.
 
-### 17.7 17.7 Applied note
+Encryption, signing and hashing protect against people without the keys. An administrator who legitimately holds a key can decrypt, sign or alter data, and the cryptography will faithfully confirm their actions as valid. Controls against insiders are therefore procedural and detective: separation of duties, dual control for the most sensitive operations, logging that the administrator cannot erase, and reviews of key use. When a report says data is protected by encryption, Sam adds who can decrypt it, because that list is where the remaining risk sits.
+
+### 17.7 Testing the key export denial
 
 HSM export ceremonies for platform keys require two people and a reason code. Sam's intern role cannot export. He tested the denial by attempting an export in staging and filing the deny log as evidence that the control works.
 
-### 17.8 17.8 Token lifetime
+The test was cleared in advance with the HSM owner and run against a staging key that protects nothing real, so a failure would have had no consequences. The deny log records the account, the requested operation, the time and the reason for refusal. An auditor can rely on that record rather than on a statement that the policy exists. It also gives a reference point if the control's behaviour ever changes.
+
+### 17.8 Short-lived platform tokens
 
 Platform tokens expire within the window plus one hour. Sam tests that expired tokens cannot file findings. Lingering tokens are findings against the platform.
 
-### 17.9 17.9 Key ceremony notes
+A token that outlives its purpose is a credential waiting to be stolen. The extra hour lets testers finish writing up after the window closes, and anything longer only adds exposure. The test is straightforward. Sam keeps a token from a finished window, waits past its expiry and tries to create a finding with it. The platform must refuse, and the refusal must appear in the log. If the attempt succeeds, the finding names the platform component that failed to check expiry.
+
+### 17.9 Recording key ceremonies
 
 Ceremony notes list attendees and key ids, never secret material. Sam files notes in the vault with the same retention as evidence.
 
-### 17.10 17.11 Scene
+A key ceremony is the formal event in which a key is created, rotated or exported under dual control. Its notes show that the event followed procedure, covering who was present, which key was involved, which reason code applied and what each person checked. Secret values never appear, even partially, because the notes are read by auditors and reviewers who should not be able to rebuild a key. Keeping the notes with the evidence retention schedule means they are available as long as anything signed with that key might be questioned.
+
+### 17.10 A key-shaped string blocked in CI
 
 Sam attempts to commit a "temporary" base64 blob that looks like a key. CI fails. He is glad. The failure message links to the key ceremony doc. Guardrails should teach, not only block.
 
-### 17.11 17.12 Extension
+The blob was a test fixture copied from staging, and Sam meant to remove it before merging. A secret scanner in the pipeline does not trust intentions. Once a key is in version history it is in every clone of the repository, and deleting it in a later commit does not remove it. The message's link explained how to request a proper test key, which fixed the immediate problem and showed the correct route next time.
+
+### 17.11 When short token lifetimes inconvenience people
 
 Token lifetime plus one hour once bit an analyst writing late. Better a re-auth than a token in a stolen laptop weeks later.
 
-### 17.12 17.16 Pad
+The analyst lost a few minutes of unsaved text when the token expired mid-sentence. The reasonable response was to fix the inconvenience without lengthening the lifetime. FindingsDesk now saves drafts locally in encrypted form and asks the user to sign in again before submitting, rather than discarding the work. Security controls that cost people effort tend to be worked around, so reducing the cost without weakening the control is part of designing it.
+
+### 17.12 Keeping denials as evidence
 
 Ceremony deny logs are retained as positive evidence for examiners who ask whether intern roles are enforced.
 
-### 17.13 17.20 Extra
+Examiners often ask how the bank knows a restriction is enforced rather than merely written down. A configuration export shows the intended setting. A dated record of a real attempt being refused shows the setting in effect. The deny logs are filed with the control they relate to and refreshed whenever the HSM software or role definitions change, so the evidence never describes an older version of the system than the one being examined.
+
+### 17.13 Using denial records in onboarding
 
 Positive deny evidence packets are reused in onboarding week one.
+
+New staff learn more from seeing a real control refuse a real request than from reading that keys are protected. Each packet pairs the request, the refusal and the policy that caused it, and shows how to read the log. It also sets expectations. New interns see on day one that their role cannot export keys and that trying leaves a record, which makes the rule concrete. The packets contain only staging data and are reviewed before reuse.
 
 ### Worked example (synthetic TRB)
 
