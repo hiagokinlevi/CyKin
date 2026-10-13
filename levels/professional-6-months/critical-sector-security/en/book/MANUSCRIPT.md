@@ -267,7 +267,6 @@ Use the hospital table as a model: for each dependency, record the answer, its s
 - Mapping systems instead of functions — a list of servers is not a dependency map.
 - Forgetting people as dependencies (a single expert, a single on-call manager).
 - Treating "must be told" stakeholders as optional until an incident.
-- Speaking your own sector's jargon to another sector.
 - Dependency maps go stale; date them and set a review owner.
 
 - Accepting a critical customer's coping time without seeing the plan it comes from, as the coordinator avoided with the hospital's six hours.
@@ -664,13 +663,12 @@ Write your rewrite in the same form as the coordinator's report on the CPG self-
 ### 5.7 Common errors and limits
 
 - Running several frameworks in parallel without mapping.
-- Reporting percentages without scope and method.
 - Choosing metrics because data is easy to get.
 - Treating supplier marketing ("62443-compliant") as an assessment of your installation.
 - Forgetting that frameworks and baselines are revised; cite version and date.
 
 - Counting a goal as met because a policy exists, as the CPG self-assessment did, without asking whether it is in use or shown to work.
-- Leaving out part of the service, such as the twelve stations, and still reporting one figure for the whole utility.
+- Leaving out part of the service, such as the twelve stations, and still reporting one figure for the whole utility, or reporting percentages without scope and method.
 - Repeating an assessment result to the executive before asking when it was done and what has changed since.
 
 ### Exercises — chapter 5
@@ -1357,14 +1355,12 @@ Write the symptom as a precise fact with times or counts, as in the hospital exa
 
 ### 10.7 Common errors and limits
 
-- Reporting exercise success as speed alone.
 - Concluding "human error" and stopping.
-- Fixes that are exhortations ("communicate better").
 - Actions without verification, closed on the owner's word.
 - Over-correcting with heavy process that slows real responses; keep fixes proportionate.
 
-- Fixing the symptom, such as reminding staff to call the hospital, while the RACI still lists two responsible people.
-- Counting a fast decision as good when no rationale was recorded, as with the KW-04 switch to manual in DRY CREEK.
+- Fixing the symptom with an exhortation ("communicate better"), such as reminding staff to call the hospital, while the RACI still lists two responsible people.
+- Reporting exercise success as speed alone, counting a fast decision as good when no rationale was recorded, as with the KW-04 switch to manual in DRY CREEK.
 - Tracking actions in several places so that nobody can see which are overdue.
 
 ### Exercises — chapter 10

@@ -15,6 +15,7 @@ Use this **one skill for the whole 6 months course**. The course has one princip
 - [English chapter index](../en/SUBJECTS.md): subject order, chapter links and draft status.
 - [English draft manuscript](../en/book/MANUSCRIPT.md): all 12 chapters, five labs, EX001–EX060 and [worked results](../en/book/MANUSCRIPT.md#worked-results).
 - [Authored Portuguese (PT-BR) book draft](../pt/book/MANUSCRIPT.md): same chapters, labs, outputs and exercise numbers as the English draft; use it for Portuguese-speaking learners; where a chapter is not yet in Portuguese, use the English draft; review is pending.
+- [Authored Spanish book draft](../es/book/MANUSCRIPT.md): same chapters, labs, outputs and exercise numbers as the English draft; use it for Spanish-speaking learners; where a chapter is not yet in Spanish, use the English draft; review is pending.
 - [English book plan](../en/book/PLAN.md): chapter summaries linked to the draft.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/critical-sector-security/README.md): source-linked practice.

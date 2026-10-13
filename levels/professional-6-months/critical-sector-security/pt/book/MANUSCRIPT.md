@@ -269,7 +269,6 @@ Use a tabela do hospital como modelo: para cada dependência, registre a respost
 - Mapear sistemas em vez de funções — uma lista de servidores não é um mapa de dependências.
 - Esquecer as pessoas como dependências (um único especialista, um único gerente de plantão).
 - Tratar as partes interessadas que "precisam ser informadas" como opcionais até um incidente.
-- Falar o jargão do próprio setor com outro setor.
 - Mapas de dependências envelhecem; date-os e defina um responsável pela revisão.
 
 - Aceitar o tempo de autonomia de um cliente crítico sem ver o plano de onde ele vem, como a coordenadora evitou com as seis horas do hospital.
@@ -666,13 +665,12 @@ Escreva a sua reescrita na mesma forma do relatório da coordenadora sobre a aut
 ### 5.7 Erros comuns e limites
 
 - Usar vários frameworks em paralelo sem mapeamento.
-- Relatar percentuais sem escopo e método.
 - Escolher métricas porque os dados são fáceis de obter.
 - Tratar o marketing de um fornecedor ("conforme a 62443") como uma avaliação da sua instalação.
 - Esquecer que frameworks e linhas de base são revisados; cite a versão e a data.
 
 - Contar uma meta como atendida porque existe uma política, como fez a autoavaliação pelos CPGs, sem perguntar se ela está em uso ou se comprovadamente funciona.
-- Deixar de fora parte do serviço, como as doze estações, e ainda assim relatar um único número para a empresa inteira.
+- Deixar de fora parte do serviço, como as doze estações, e ainda assim relatar um único número para a empresa inteira, ou relatar percentuais sem escopo e método.
 - Repetir um resultado de avaliação à diretoria antes de perguntar quando ela foi feita e o que mudou desde então.
 
 ### Exercícios — capítulo 5
@@ -1359,14 +1357,12 @@ Escreva o sintoma como um fato preciso, com horários ou contagens, como no exem
 
 ### 10.7 Erros comuns e limites
 
-- Relatar o sucesso de um exercício apenas pela rapidez.
 - Concluir "erro humano" e parar por aí.
-- Correções que são exortações ("comunicar melhor").
 - Ações sem verificação, encerradas pela palavra do dono.
 - Corrigir em excesso com processos pesados que atrasam as respostas reais; mantenha as correções proporcionais.
 
-- Corrigir o sintoma, como lembrar a equipe de ligar para o hospital, enquanto a RACI ainda lista duas pessoas responsáveis.
-- Contar uma decisão rápida como boa quando nenhuma justificativa foi registrada, como na passagem da KW-04 para o manual no DRY CREEK.
+- Corrigir o sintoma com uma exortação ("comunicar melhor"), como lembrar a equipe de ligar para o hospital, enquanto a RACI ainda lista duas pessoas responsáveis.
+- Relatar o sucesso de um exercício apenas pela rapidez, contando uma decisão rápida como boa quando nenhuma justificativa foi registrada, como na passagem da KW-04 para o manual no DRY CREEK.
 - Acompanhar as ações em vários lugares, de modo que ninguém consegue ver quais estão atrasadas.
 
 ### Exercícios — capítulo 10
