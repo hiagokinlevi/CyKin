@@ -1,5 +1,5 @@
 import type { Catalog, Course } from './catalog';
-import { siteLanguage, ui } from './i18n';
+import { editionLanguage, siteLanguage, ui } from './i18n';
 
 export function initializeCourseMenus(): void {
   const menus = [...document.querySelectorAll<HTMLDetailsElement>('.catalog-menu')];
@@ -31,13 +31,13 @@ export function initializeCourseMenus(): void {
           results.replaceChildren();
           const directory = document.createElement('a');
           directory.className = 'catalog-menu-directory';
-          directory.href = `${mode === 'level' ? '/levels/' : '/subjects/'}${key}/?lang=${siteLanguage()}`;
+          directory.href = `${mode === 'level' ? '/levels/' : '/subjects/'}${key}/?lang=${editionLanguage()}&ui=${siteLanguage()}`;
           directory.textContent = ui('View this group →');
           results.append(directory);
           const courses: Course[] = data.courses.filter(course => mode === 'level' ? course.level === key : course.area === key);
           for (const course of courses) {
             const item = document.createElement('a'); item.className = 'catalog-menu-course';
-            item.href = `/courses/${course.level}/${course.area}/?lang=${siteLanguage()}`;
+            item.href = `/courses/${course.level}/${course.area}/?lang=${editionLanguage()}&ui=${siteLanguage()}`;
             const number = document.createElement('span'); number.textContent = String(course.number).padStart(3, '0');
             const label = document.createElement('span'); label.textContent = mode === 'level' ? ui(course.title) : data.level_names[course.level][siteLanguage()] || data.level_names[course.level].en;
             item.append(number, label); results.append(item);

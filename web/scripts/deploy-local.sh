@@ -30,7 +30,7 @@ npm run build
 uv run pytest -q
 uv run pywrangler deploy
 
-curl_options=()
+curl_options=(--connect-timeout 12)
 if ! curl --fail --silent --output /dev/null https://cykin.org/api/health; then
   # A newly created custom domain can be visible at Cloudflare while this
   # computer still has a cached negative DNS answer. Verify through public DNS.

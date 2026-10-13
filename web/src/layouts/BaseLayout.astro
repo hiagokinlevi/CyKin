@@ -19,7 +19,8 @@ const path = Astro.url.pathname;
     <script is:inline>
       try { document.documentElement.dataset.theme = localStorage.getItem('cykin-theme') || 'dark'; } catch (_) { document.documentElement.dataset.theme = 'dark'; }
       const supported = ['en', 'pt', 'es'];
-      const requested = new URLSearchParams(location.search).get('lang')?.slice(0, 2).toLowerCase();
+      const parameters = new URLSearchParams(location.search);
+      const requested = (parameters.get('ui') || parameters.get('lang'))?.slice(0, 2).toLowerCase();
       const saved = (() => { try { return localStorage.getItem('cykin-language'); } catch (_) { return null; } })();
       const browser = navigator.languages?.map(value => value.slice(0, 2).toLowerCase()).find(value => supported.includes(value)) || navigator.language.slice(0, 2).toLowerCase();
       const language = supported.includes(requested) ? requested : supported.includes(saved) ? saved : supported.includes(browser) ? browser : 'en';
@@ -56,19 +57,19 @@ const path = Astro.url.pathname;
       </div>
     </footer>
     <script>
-      import { translatePage, siteLanguage } from '../lib/i18n';
+      import { translatePage, siteLanguage, editionLanguage } from '../lib/i18n';
       import { initializeCourseMenus } from '../lib/course-menu';
       const selector = document.getElementById('site-language') as HTMLSelectElement;
       selector.value = siteLanguage();
       selector.addEventListener('change', () => {
         try { localStorage.setItem('cykin-language', selector.value); } catch (_) { /* private mode */ }
         const next = new URL(location.href);
-        if (next.searchParams.has('lang')) next.searchParams.set('lang', selector.value);
+        next.searchParams.set('ui', selector.value);
         location.href = next.href;
       });
       translatePage();
       for (const anchor of document.querySelectorAll<HTMLAnchorElement>('a[data-language-link]')) {
-        const target = new URL(anchor.href); target.searchParams.set('lang', siteLanguage()); anchor.href = target.href;
+        const target = new URL(anchor.href); target.searchParams.set('lang', editionLanguage()); target.searchParams.set('ui', siteLanguage()); anchor.href = target.href;
       }
       initializeCourseMenus();
       const toggle = document.getElementById('theme-toggle');

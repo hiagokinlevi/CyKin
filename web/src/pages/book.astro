@@ -17,7 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     if (!/^[a-z0-9-]+$/.test(level) || !/^[a-z0-9-]+$/.test(area) || !/^[a-z]{2}$/.test(lang)) {
       status.textContent = 'Choose a course from the study guide.';
     } else {
-      const route = new URLSearchParams({ lang });
+      const route = new URLSearchParams({ lang, ...(q.has('ui') ? { ui: q.get('ui')! } : {}) });
       guide.href = `/courses/${level}/${area}/?${route}`;
       try {
         const response = await fetch(`/api/courses/${level}/${area}/${lang}`);

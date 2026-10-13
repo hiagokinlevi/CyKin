@@ -37,7 +37,7 @@
 
 ## Start here
 
-[Open the CyKin study site](https://cykin.org/) and browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/). Each level and subject leads to separate course pages, and each course has its own lesson guide and book. Within a course, each subject chapter is a lesson. Unwritten chapters are identified as plans. Public reading requires no account.
+[Open the CyKin study site](https://cykin.org/) and browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/). Each level and subject leads to separate course pages, and each course has its own lesson guide and book. Subjects organize modules; the new production target is one distinct book chapter every instructional weekday, with a worked example and exercise. Existing manuscripts are being expanded from their older subject-chapter structure. Public reading requires no account.
 
 **Route 1 — one course:** 1. language → 2. subject area → 3. level → the complete lesson guide for that course.
 
@@ -59,6 +59,21 @@ The site reads book text from this repository's `main` branch; the links below p
 
 **How to study:** open a course's lesson index (`SUBJECTS.md`), read each available chapter in `MANUSCRIPT.md`, attempt the exercises, compare the worked answers, and follow the links at the end of each chapter. A `PLAN.md` chapter is an outline rather than a written lesson. Hebrew, French, Russian, German, Chinese and Japanese currently have indexes and plans only. The bookshelf above measures initial English chapter coverage; it does not certify finished books or translations. [See coverage by language](LANGUAGE_LESSON_PROGRESS.md).
 <!-- cykin:onboarding:end -->
+
+## How the study site works
+
+The [CyKin website](https://cykin.org/) is an in-site reader for this public curriculum. Students choose a language and browse **by level** or **by subject**, then open one separate course page for a level–area combination. The course page shows its current modules, published chapters, exercises, worked answers and previous/index/next navigation; the full principal book is also readable on the site. The weekday lesson target is shown **separately** from the chapters actually published in an edition. A plan or an untranslated outline is never a completed lesson. The site interface starts in English, detects supported browser languages, and lets readers switch among English, Portuguese and Spanish; each book's actual language and editorial state remain independent of that interface choice.
+
+| Layer | Responsibility | Source in this repository |
+|---|---|---|
+| Public books | One Markdown `MANUSCRIPT.md` per course and language; `SUBJECTS.md` and `PLAN.md` describe the current curriculum and migration to daily lessons | [`levels/`](levels/README.md) and [book standard](BOOK_STANDARD.md) |
+| Frontend | Astro builds the home page, level and subject directories, 207 separate course pages, book reader and account page; the reader renders Markdown and Mermaid diagrams inside the site | [`web/src/`](web/src/) |
+| Course catalog | A local build extracts 207 courses, language availability and weekday targets into a static JSON catalog; structural changes need a site deploy | [`web/scripts/build_catalog.py`](web/scripts/build_catalog.py) |
+| Public learning API | FastAPI reads the selected public manuscript from this repository's `main` branch and serves the course guide, chapter, book, search and read-only MCP endpoint; new book text becomes available without a frontend build | [`web/api/`](web/api/) and [API guide](web/README.md#public-ai-interface) |
+| Optional progress | Cloudflare Access protects only student progress routes; D1 stores completed lessons and exercise attempts. Books, lessons, API and MCP require no registration | [site operations](web/README.md#student-sign-in-and-progress) |
+| Hosting and publication | One Cloudflare Python Worker serves FastAPI and Astro static assets at `cykin.org`. The maintainer validates and deploys directly from an authorized local computer; GitHub Actions are not used | [`web/scripts/deploy-local.sh`](web/scripts/deploy-local.sh) and [deployment guide](web/README.md#publish-from-an-authorized-local-computer) |
+
+This architecture keeps the Markdown books as the canonical public source while giving human readers and AI clients stable site routes. The [web application README](web/README.md) contains local development, deployment and endpoint details. The [daily curriculum grid](CURRICULUM_GRID.md) defines 20 weekday lessons for the rapid month, 130 for six months and up to 1,300 for five-year engineering; **these are editorial targets, not current completion counts**.
 
 **English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).
 
@@ -83,7 +98,7 @@ The site reads book text from this repository's `main` branch; the links below p
 1. **Formation level** — choose one of nine pathways below.
 2. **Academic area** — every level has all 23 areas, each represented by one course home.
 3. **Language edition** — every course has one planned principal book per language. English is authored and reviewed first.
-4. **Subjects and chapters** — each curricular subject is one chapter in that book, with teaching, examples, exercises and a final worked-answer appendix.
+4. **Subjects and chapters** — subjects are modules; the new schedule calls for one chapter per instructional weekday, each with teaching, a worked example, an exercise and a final worked-answer appendix. Existing editions retain their earlier subject-chapter structure until expanded.
 5. **One course skill** — a single `SKILL.md` guides AI clients through the whole course and its chapters. Playbooks are supplementary.
 
 ~~~text
@@ -99,25 +114,25 @@ levels/<level>/<area>/
         └── MANUSCRIPT.md    authored draft, only when present
 ~~~
 
-**Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The English grades contain **4,186 subject-chapters**. These are plans, not finished books. 199 English manuscripts are public drafts; **zero books have passed the complete-book gate**.
+**Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The English plans contain **4,186 legacy subject-chapters**; the new weekday-lesson target is larger and is measured separately. These are plans, not finished books. 199 English manuscripts contain public work in progress; **zero books have passed the complete-book gate**.
 
 **Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. Only 336 of 4,186 English chapter briefs have a manually tailored teaching outline so far; the other summaries are template-based working plans. Authored English chapter drafts: **4,007 of 4,186 (95.7%)**, with the area-by-area method in the [writing progress table](WRITING_PROGRESS.md) and [percentages for all 207 courses](COURSE_WRITING_PROGRESS.md). Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
 
-A finished book must have **at least 300 verified A4 pages** and **50 substantive exercises with worked results**, plus technical, source, rights, language and accessibility review. The [book standard](BOOK_STANDARD.md) explains the gate.
+A finished book must meet its level's **verified A4 page floor**, have **an exercise and worked answer for every weekday lesson** (at least 50 per book), and pass technical, source, rights, language and accessibility review. The [book standard](BOOK_STANDARD.md) explains the gate.
 
 ## 1. Choose a formation level
 
-| Level | Planned duration | Subjects / book | Planned exercises | Open all 23 areas |
+| Level | Duration | Existing subject modules | Weekday lessons / book target | Open all 23 areas |
 |---|---:|---:|---:|---|
-| Rapid course | 1 month | 4 | 50 | [Open level](levels/rapid-1-month/README.md) |
-| Professional course | 6 months | 12 | 60 | [Open level](levels/professional-6-months/README.md) |
-| Technical course | 18 months | 18 | 72 | [Open level](levels/technical-18-months/README.md) |
-| Technologist course | 3 years | 30 | 90 | [Open level](levels/technologist-3-years/README.md) |
-| Bachelor's course | 4 years | 40 | 120 | [Open level](levels/bachelors-4-years/README.md) |
-| Engineering course | 5 years | 50 | 150 | [Open level](levels/engineering-5-years/README.md) |
-| Postgraduate course | 2 years | 12 | 60 | [Open level](levels/postgraduate-2-years/README.md) |
-| Master's course | 2 years | 8 | 50 | [Open level](levels/masters-2-years/README.md) |
-| Doctoral research track | 2 years | 8 | 50 | [Open level](levels/doctorate-2-years/README.md) |
+| Rapid course | 1 month | 4 | 20 | [Open level](levels/rapid-1-month/README.md) |
+| Professional course | 6 months | 12 | 130 | [Open level](levels/professional-6-months/README.md) |
+| Technical course | 18 months | 18 | 390 | [Open level](levels/technical-18-months/README.md) |
+| Technologist course | 3 years | 30 | 780 | [Open level](levels/technologist-3-years/README.md) |
+| Bachelor's course | 4 years | 40 | 1,040 | [Open level](levels/bachelors-4-years/README.md) |
+| Engineering course | 5 years | 50 | 1,300 | [Open level](levels/engineering-5-years/README.md) |
+| Postgraduate course | 2 years | 12 | 520 | [Open level](levels/postgraduate-2-years/README.md) |
+| Master's course | 2 years | 8 | 520 | [Open level](levels/masters-2-years/README.md) |
+| Doctoral research track | 2 years | 8 | 520 | [Open level](levels/doctorate-2-years/README.md) |
 
 ## 2. English draft progress for every course
 

@@ -7,6 +7,11 @@ export type Course = {
   area: string;
   title: string;
   planned_chapters: number;
+  instructional_weeks: number;
+  study_days_per_week: number;
+  daily_lesson_target: number;
+  minimum_exercises: number;
+  minimum_a4_pages: number;
   editions: Record<string, Edition>;
 };
 export type Catalog = {

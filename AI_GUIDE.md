@@ -1,5 +1,7 @@
 # CyKin reference guide for AI assistants and readers
 
+**Daily lesson model:** The [curriculum grid](CURRICULUM_GRID.md) now defines five instructional weekdays per week and one distinct book chapter per day, with a worked example, exercise and worked answer. Subjects organize modules. Existing subject-chapter indexes and progress percentages describe the previous structure and must not be reported as completion of the new 20–1,300 daily-lesson targets. Each language edition must be assessed from its actual manuscript, not inferred from another edition.
+
 CyKin is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Use the [two onboarding routes](README.md#comece-por-aqui): **language → topic → level → course lesson guide**, or **language → level → all topics and their lesson guides**. Both lead to the existing course editions; the directory hierarchy is not a restriction on how a learner chooses a route. Plans and public drafts must be described with their actual editorial state.
 
 ## Main indexes
@@ -44,7 +46,7 @@ README.md
 
 For example, open the [rapid level](levels/rapid-1-month/README.md), the [Incident Response course home](levels/rapid-1-month/incident-response-resilience/README.md), its [English subject index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md), [book plan](levels/rapid-1-month/incident-response-resilience/en/book/PLAN.md), [manuscript draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md), [single course skill](levels/rapid-1-month/incident-response-resilience/skill/SKILL.md), and [supplementary playbooks](playbooks/incident-response-resilience/README.md).
 
-Each course has **one skill** and **one principal book per language**. Each curricular subject is one chapter of that book. A completed chapter teaches its subject, gives examples and exercises; worked answers appear at the end of the book. There are no separate subject skills or subject textbooks.
+Each course has **one skill** and **one principal book per language**. Existing indexes treat each curricular subject as one legacy chapter; the new authoring model uses subjects as modules and one chapter per instructional weekday. A complete daily chapter teaches a specific concept, gives a worked example and an exercise; worked answers appear at the end of the book. There are no separate subject skills or subject textbooks.
 
 ## Interpret editorial state
 

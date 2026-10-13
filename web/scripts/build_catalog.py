@@ -28,7 +28,18 @@ LEVELS = {
     "masters-2-years": {"en": "Master's", "pt": "Mestrado", "es": "Máster"},
     "doctorate-2-years": {"en": "Doctoral research", "pt": "Pesquisa doutoral", "es": "Investigación doctoral"},
 }
-ANCHOR = re.compile(r'^<a id="ch-(\d{2})"></a>$', re.M)
+INSTRUCTIONAL_WEEKS = {
+    "rapid-1-month": 4,
+    "professional-6-months": 26,
+    "technical-18-months": 78,
+    "technologist-3-years": 156,
+    "bachelors-4-years": 208,
+    "engineering-5-years": 260,
+    "postgraduate-2-years": 104,
+    "masters-2-years": 104,
+    "doctorate-2-years": 104,
+}
+ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>$', re.M)
 NUMBER = re.compile(r'Course\s+(\d{3})\s+of\s+207')
 
 
@@ -58,6 +69,11 @@ def build() -> dict:
             "area": area,
             "title": title,
             "planned_chapters": chapters,
+            "instructional_weeks": INSTRUCTIONAL_WEEKS[level],
+            "study_days_per_week": 5,
+            "daily_lesson_target": INSTRUCTIONAL_WEEKS[level] * 5,
+            "minimum_exercises": max(50, INSTRUCTIONAL_WEEKS[level] * 5),
+            "minimum_a4_pages": 300 + INSTRUCTIONAL_WEEKS[level] * 5 - 20,
             "editions": editions,
             "github": f"https://github.com/hiagokinlevi/CyKin/tree/main/levels/{level}/{area}",
         })

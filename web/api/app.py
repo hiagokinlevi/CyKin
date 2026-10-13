@@ -21,12 +21,12 @@ app = FastAPI(title="CyKin public learning API", version="0.1.0", docs_url="/api
 GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/CyKin/main/"
 GITHUB_VIEW = "https://github.com/hiagokinlevi/CyKin/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
-ANCHOR = re.compile(r'^<a id="ch-(\d{2})"></a>\s*$', re.M)
-EXERCISE = re.compile(r'\bEX(\d{3})\b')
-ANSWER = re.compile(r'^###\s+EX(\d{3})\b.*$', re.M)
+ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>\s*$', re.M)
+EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
+ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$', re.M)
 MCP_VERSION = "2025-06-18"
 ALLOWED_ORIGINS = {"https://cykin.org", "https://www.cykin.org", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
-MAX_SOURCE_CHARS = 3_000_000
+MAX_SOURCE_CHARS = 24_000_000
 PUBLIC_ORIGINS = {"https://cykin.org", "https://www.cykin.org"}
 
 
@@ -34,12 +34,12 @@ class LessonProgress(BaseModel):
     level: str = Field(pattern=r"^[a-z0-9-]+$", max_length=50)
     area: str = Field(pattern=r"^[a-z0-9-]+$", max_length=80)
     language: str = Field(pattern=r"^[a-z]{2}$")
-    chapter: int = Field(ge=1, le=99)
+    chapter: int = Field(ge=1, le=9999)
     status: str = Field(pattern=r"^(in_progress|completed)$")
 
 
 class ExerciseAttempt(LessonProgress):
-    exercise_id: str = Field(pattern=r"^EX[0-9]{3}$")
+    exercise_id: str = Field(pattern=r"^EX[0-9]{3,4}$")
     answer: str = Field(default="", max_length=20_000)
     status: str = Field(pattern=r"^(attempted|completed)$")
 
@@ -174,6 +174,25 @@ def worked_answers(book: str, chapter: str) -> str:
     return "\n\n".join(pieces)
 
 
+def course_schedule(subjects: str) -> tuple[str, dict[int, tuple[int, str]]]:
+    """Read the published curricular periods and subject names from SUBJECTS.md."""
+    period_kind = "Module"
+    schedule: dict[int, tuple[int, str]] = {}
+    for line in subjects.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        if cells[0] in {"Week", "Month", "Semester", "Term", "Year", "Module"}:
+            period_kind = cells[0]
+            continue
+        chapter = re.search(r"\[(\d{2,4})\]\(book/PLAN\.md#ch-\d{2,4}\)", cells[1])
+        if cells[0].isdigit() and chapter:
+            schedule[int(chapter.group(1))] = (int(cells[0]), cells[2])
+    return period_kind, schedule
+
+
 async def course_details(request: Request, level: str, area: str, language: str) -> dict[str, Any]:
     item = get_course(await catalog(request), level, area, language)
     plan_path = book_path(level, area, language, "PLAN.md")
@@ -182,23 +201,38 @@ async def course_details(request: Request, level: str, area: str, language: str)
     plan = await source_text(request, plan_path)
     if plan is None:
         raise HTTPException(502, "Course plan is unavailable")
+    try:
+        subjects = await source_text(request, f"levels/{level}/{area}/{language}/SUBJECTS.md")
+    except HTTPException:
+        subjects = None
+    period_kind, schedule = course_schedule(subjects or "")
     planned = chapter_sections(plan)
     authored = chapter_sections(book) if book is not None else {}
+    daily_schedule_ready = len(planned) >= item["daily_lesson_target"]
     lessons = []
-    for number in sorted(planned):
-        title = authored.get(number, planned[number])["title"]
+    modules: list[dict[str, Any]] = []
+    for number in sorted(planned.keys() | authored.keys()):
+        title = (authored[number] if number in authored else planned[number])["title"]
+        period, subject = ((number - 1) // 5 + 1, title) if daily_schedule_ready else schedule.get(number, (1, title))
         lessons.append({
             "chapter": number,
             "title": title,
+            "subject": subject,
+            "module": period,
             "published": number in authored,
             "source_url": GITHUB_VIEW + (manuscript_path if number in authored else plan_path) + f"#ch-{number:02d}",
         })
+        if not modules or modules[-1]["number"] != period:
+            modules.append({"number": period, "kind": "Week" if daily_schedule_ready else period_kind, "chapters": []})
+        modules[-1]["chapters"].append(number)
     return {
         "course": item,
         "language": language,
         "lessons": lessons,
-        "published_chapters": sum(number in authored for number in planned),
-        "planned_chapters": len(planned),
+        "modules": modules,
+        "published_chapters": len(authored),
+        "planned_chapters": len(planned.keys() | authored.keys()),
+        "daily_schedule_ready": daily_schedule_ready,
         "book_url": GITHUB_VIEW + manuscript_path if authored else None,
         "source_branch": "main",
         "notice": "A published lesson may still need editorial review. A plan is not a lesson.",
@@ -207,16 +241,17 @@ async def course_details(request: Request, level: str, area: str, language: str)
 
 async def lesson_details(request: Request, level: str, area: str, language: str, chapter: int) -> dict[str, Any]:
     get_course(await catalog(request), level, area, language)
-    if chapter < 1 or chapter > 99:
+    if chapter < 1 or chapter > 9999:
         raise HTTPException(404, "Unknown chapter")
     path = book_path(level, area, language, "MANUSCRIPT.md")
     book = await source_text(request, path)
     if book is None:
         raise HTTPException(404, "This edition has no authored manuscript yet")
-    section = chapter_sections(book).get(chapter)
+    sections = chapter_sections(book)
+    section = sections.get(chapter)
     if section is None:
         raise HTTPException(404, "This chapter is still a plan")
-    chapters = sorted(chapter_sections(book))
+    chapters = sorted(sections)
     return {
         "course": {"level": level, "area": area, "language": language},
         "chapter": chapter,

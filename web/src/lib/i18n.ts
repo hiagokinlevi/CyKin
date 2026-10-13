@@ -5,6 +5,11 @@ export function siteLanguage(): Language {
   return selected === 'pt' || selected === 'es' ? selected : 'en';
 }
 
+export function editionLanguage(): string {
+  const requested = new URLSearchParams(location.search).get('lang');
+  return requested && ['en', 'pt', 'es', 'he', 'fr', 'ru', 'de', 'zh', 'ja'].includes(requested) ? requested : siteLanguage();
+}
+
 // Interface text only. Course manuscripts and quoted reference documents retain
 // the language of their published edition.
 const copy: Record<string, [string, string]> = {
@@ -56,6 +61,21 @@ const copy: Record<string, [string, string]> = {
   'All courses at this level →': ['Todos os cursos deste nível →', 'Todos los cursos de este nivel →'],
   'Other levels in this subject →': ['Outros níveis deste tema →', 'Otros niveles de este tema →'],
   'Course language': ['Idioma do curso', 'Idioma del curso'],
+  'COURSE CONTENTS': ['CONTEÚDO DO CURSO', 'CONTENIDO DEL CURSO'],
+  'Modules and lessons': ['Módulos e aulas', 'Módulos y lecciones'],
+  'Published chapters and current curriculum blocks.': ['Capítulos publicados e blocos curriculares atuais.', 'Capítulos publicados y bloques curriculares actuales.'],
+  'WEEKDAY STUDY PLAN': ['PLANO DE ESTUDO EM DIAS ÚTEIS', 'PLAN DE ESTUDIO DE LUNES A VIERNES'],
+  'One chapter each Monday–Friday: learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.': ['Um capítulo de segunda a sexta: aprenda o conceito, acompanhe um exemplo resolvido e faça um exercício. O plano vale para todos os idiomas.', 'Un capítulo de lunes a viernes: aprende el concepto, sigue un ejemplo resuelto y haz un ejercicio. El plan se aplica a todos los idiomas.'],
+  'Mon': ['Seg', 'Lun'], 'Tue': ['Ter', 'Mar'], 'Wed': ['Qua', 'Mié'], 'Thu': ['Qui', 'Jue'], 'Fri': ['Sex', 'Vie'],
+  'One course, one book. The study target is one chapter each weekday, with a worked example and an exercise. Read the chapters already published below.': ['Um curso, um livro. A meta é um capítulo por dia útil, com exemplo resolvido e exercício. Leia abaixo os capítulos já publicados.', 'Un curso, un libro. La meta es un capítulo por día hábil, con ejemplo resuelto y ejercicio. Lee abajo los capítulos ya publicados.'],
+  'Follow the subjects in their curricular order.': ['Siga as matérias na ordem curricular.', 'Sigue las materias en orden curricular.'],
+  '← Course overview': ['← Visão geral do curso', '← Vista general del curso'],
+  'Course overview': ['Visão geral do curso', 'Vista general del curso'],
+  'Your course roadmap': ['Seu roteiro do curso', 'Tu recorrido del curso'],
+  'Read lesson →': ['Ler aula →', 'Leer lección →'],
+  'Not published': ['Ainda não publicada', 'Aún no publicada'],
+  'This lesson has not been published in this edition yet. Choose another available lesson or return to the course overview.': ['Esta aula ainda não foi publicada nesta edição. Escolha outra aula disponível ou volte à visão geral do curso.', 'Esta lección aún no se ha publicado en esta edición. Elige otra disponible o vuelve a la vista general del curso.'],
+  'Jump to exercises ↓': ['Ir para os exercícios ↓', 'Ir a los ejercicios ↓'],
   'One course, one book. Read its lessons in order, or open the full book. Each lesson keeps its exercises and worked answers together.': ['Um curso, um livro. Leia as aulas em ordem ou abra o livro completo. Cada aula reúne exercícios e respostas comentadas.', 'Un curso, un libro. Lee las lecciones en orden o abre el libro completo. Cada lección reúne ejercicios y respuestas desarrolladas.'],
   'Choose a chapter to read on this page.': ['Escolha um capítulo para ler nesta página.', 'Elige un capítulo para leer en esta página.'],
   'Loading this course…': ['Carregando este curso…', 'Cargando este curso…'],
@@ -141,7 +161,7 @@ const copy: Record<string, [string, string]> = {
   'Catalog loaded. Each lesson is read from the current public manuscript.': ['Catálogo carregado. Cada aula vem do manuscrito público atual.', 'Catálogo cargado. Cada lección proviene del manuscrito público actual.'],
   'FROM CONCEPT TO PRACTICE': ['DO CONCEITO À PRÁTICA', 'DEL CONCEPTO A LA PRÁCTICA'],
   'Learning you can verify.': ['Aprendizado que você pode verificar.', 'Aprendizaje que puedes verificar.'],
-  'Each subject is one chapter in its course book. The lesson page brings together explanations, examples, exercises and worked answers, with links to the previous chapter, index and next chapter.': ['Cada matéria é um capítulo do livro do curso. A página da aula reúne explicações, exemplos, exercícios e respostas comentadas, com links para o capítulo anterior, índice e próximo capítulo.', 'Cada materia es un capítulo del libro del curso. La página de la lección reúne explicaciones, ejemplos, ejercicios y respuestas desarrolladas, con enlaces al capítulo anterior, índice y siguiente capítulo.'],
+  'Each course has one book. Subjects organize modules, and the study target is one chapter every weekday, with a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.': ['Cada curso tem um livro. As matérias organizam módulos; a meta é um capítulo por dia útil, com exemplo resolvido e exercício. O leitor mostra o que foi publicado e mantém a navegação entre aulas.', 'Cada curso tiene un libro. Las materias organizan módulos; la meta es un capítulo por día hábil, con ejemplo resuelto y ejercicio. El lector muestra lo publicado y mantiene la navegación entre lecciones.'],
   'Read the editorial standard →': ['Leia o padrão editorial →', 'Lee el estándar editorial →'],
   'Transparent source': ['Fonte transparente', 'Fuente transparente'],
   'Open text with its course and edition identified.': ['Texto aberto com curso e edição identificados.', 'Texto abierto con curso y edición identificados.'],
@@ -277,6 +297,47 @@ const copy: Record<string, [string, string]> = {
 };
 
 function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null {
+  const bareModule = english.match(/^Module (\d+)$/);
+  if (bareModule) return `Módulo ${bareModule[1]}`;
+  const weeks = english.match(/^(\d+) instructional weeks$/);
+  if (weeks) return lang === 'pt' ? `${weeks[1]} semanas letivas` : `${weeks[1]} semanas lectivas`;
+  const target = english.match(/^(\d+) daily lessons planned$/);
+  if (target) return lang === 'pt' ? `${target[1]} aulas diárias previstas` : `${target[1]} lecciones diarias previstas`;
+  const current = english.match(/^(\d+) current chapters published$/);
+  if (current) return lang === 'pt' ? `${current[1]} capítulos atuais publicados` : `${current[1]} capítulos actuales publicados`;
+  const directoryTarget = english.match(/^(\d+) weekday lessons planned · (\d+) current curriculum chapters$/);
+  if (directoryTarget) return lang === 'pt' ? `${directoryTarget[1]} aulas por dia útil previstas · ${directoryTarget[2]} capítulos curriculares atuais` : `${directoryTarget[1]} lecciones por día hábil previstas · ${directoryTarget[2]} capítulos curriculares actuales`;
+  const weeklyTitle = english.match(/^(\d+) weeks · (\d+) daily lessons$/);
+  if (weeklyTitle) return lang === 'pt' ? `${weeklyTitle[1]} semanas · ${weeklyTitle[2]} aulas diárias` : `${weeklyTitle[1]} semanas · ${weeklyTitle[2]} lecciones diarias`;
+  const dailyAvailability = english.match(/^(\d+) of (\d+) daily chapters published in this edition\. Unpublished lessons are not available yet\.$/);
+  if (dailyAvailability) return lang === 'pt' ? `${dailyAvailability[1]} de ${dailyAvailability[2]} capítulos diários publicados nesta edição. Aulas não publicadas ainda não estão disponíveis.` : `${dailyAvailability[1]} de ${dailyAvailability[2]} capítulos diarios publicados en esta edición. Las lecciones no publicadas aún no están disponibles.`;
+  const legacyAvailability = english.match(/^(\d+) current chapters published\. These older subject chapters are not yet the (\d+) distinct daily lessons required by the new schedule\.$/);
+  if (legacyAvailability) return lang === 'pt' ? `${legacyAvailability[1]} capítulos atuais publicados. Esses capítulos antigos de matérias ainda não são as ${legacyAvailability[2]} aulas diárias distintas exigidas pelo novo plano.` : `${legacyAvailability[1]} capítulos actuales publicados. Estos capítulos antiguos de materias aún no son las ${legacyAvailability[2]} lecciones diarias distintas exigidas por el nuevo plan.`;
+  const introLegacy = english.match(/^(\d+) current chapters are published\. Daily chapters are being developed toward the (\d+)-lesson target\.$/);
+  if (introLegacy) return lang === 'pt' ? `${introLegacy[1]} capítulos atuais publicados. As aulas diárias estão em desenvolvimento rumo à meta de ${introLegacy[2]}.` : `${introLegacy[1]} capítulos actuales publicados. Las lecciones diarias están en desarrollo hacia la meta de ${introLegacy[2]}.`;
+  const module = english.match(/^Module (\d+) · (Week|Month|Semester|Term|Year|Module) \d+$/);
+  if (module) {
+    const names: Record<string, [string, string]> = { Week: ['Semana', 'Semana'], Month: ['Mês', 'Mes'], Semester: ['Semestre', 'Semestre'], Term: ['Período', 'Período'], Year: ['Ano', 'Año'], Module: ['Módulo', 'Módulo'] };
+    const kind = names[module[2]][lang === 'pt' ? 0 : 1];
+    return `${lang === 'pt' ? 'Módulo' : 'Módulo'} ${module[1]} · ${kind} ${module[1]}`;
+  }
+  const moduleLesson = english.match(/^Module (\d+) · (Week|Month|Semester|Term|Year|Module) \d+ · Lesson (\d+) of (\d+)$/);
+  if (moduleLesson) {
+    const label = dynamic(`Module ${moduleLesson[1]} · ${moduleLesson[2]} ${moduleLesson[1]}`, lang);
+    return `${label} · ${lang === 'pt' ? 'Aula' : 'Lección'} ${moduleLesson[3]} ${lang === 'pt' ? 'de' : 'de'} ${moduleLesson[4]}`;
+  }
+  const simpleLesson = english.match(/^Lesson (\d+) of (\d+)$/);
+  if (simpleLesson) return lang === 'pt' ? `Aula ${simpleLesson[1]} de ${simpleLesson[2]}` : `Lección ${simpleLesson[1]} de ${simpleLesson[2]}`;
+  const moduleCount = english.match(/^(\d+) modules$/);
+  if (moduleCount) return `${moduleCount[1]} módulos`;
+  const lessonCount = english.match(/^(\d+) lessons$/);
+  if (lessonCount) return lang === 'pt' ? `${lessonCount[1]} aulas` : `${lessonCount[1]} lecciones`;
+  const availableCount = english.match(/^(\d+) lessons available$/);
+  if (availableCount) return lang === 'pt' ? `${availableCount[1]} aulas disponíveis` : `${availableCount[1]} lecciones disponibles`;
+  const availableModule = english.match(/^(\d+) of (\d+) lessons available$/);
+  if (availableModule) return lang === 'pt' ? `${availableModule[1]} de ${availableModule[2]} aulas disponíveis` : `${availableModule[1]} de ${availableModule[2]} lecciones disponibles`;
+  const exerciseCount = english.match(/^(\d+) exercises · Worked answers below$/);
+  if (exerciseCount) return lang === 'pt' ? `${exerciseCount[1]} exercícios · Respostas comentadas abaixo` : `${exerciseCount[1]} ejercicios · Respuestas desarrolladas abajo`;
   const levelDirectory = english.match(/^LEVEL (\d{2}) · 23 COURSES$/);
   if (levelDirectory) return lang === 'pt' ? `NÍVEL ${levelDirectory[1]} · 23 CURSOS` : `NIVEL ${levelDirectory[1]} · 23 CURSOS`;
   const subjectDirectory = english.match(/^SUBJECT · 9 SEPARATE COURSES$/);

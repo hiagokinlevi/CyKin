@@ -8,13 +8,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { renderMarkdown, sourceUrlFor } from '../lib/reader';
     const path = new URLSearchParams(location.search).get('path') || '';
     const status = document.getElementById('reference-status')!;
-    if (!path.endsWith('.md') || path.includes('..') || path.startsWith('/')) status.textContent = 'Choose a document from a course page.';
+    const plan = path.match(/^levels\/([a-z0-9-]+)\/([a-z0-9-]+)\/(en|pt|es|he|fr|ru|de|zh|ja)\/book\/PLAN\.md$/);
+    if (plan) {
+      const [, level, area, lang] = plan;
+      const chapter = location.hash.match(/^#ch-(\d{2,4})$/)?.[1];
+      location.replace(`/courses/${level}/${area}/?${new URLSearchParams({ lang, ...(chapter ? { chapter: String(Number(chapter)) } : {}) })}`);
+    } else if (!path.endsWith('.md') || path.includes('..') || path.startsWith('/')) status.textContent = 'Choose a document from a course page.';
     else {
       try {
         const response = await fetch('/api/source?' + new URLSearchParams({ path }));
         if (!response.ok) throw new Error('This reference is unavailable.');
         const markdown = await response.text();
-        const lang = path.match(/\/(en|pt|es)\//)?.[1] || document.documentElement.lang.slice(0,2) || 'en';
+        const lang = path.match(/\/(en|pt|es|he|fr|ru|de|zh|ja)\//)?.[1] || document.documentElement.lang.slice(0,2) || 'en';
         await renderMarkdown(document.getElementById('reference-content')!, markdown, sourceUrlFor(path), lang, 'reference');
         document.getElementById('reference-title')!.textContent = path.split('/').at(-1)!.replace('.md','').replaceAll('_',' ');
         status.textContent = 'Public document · linked course references open within CyKin.';

@@ -17,20 +17,24 @@ const levelName = catalog.level_names[course.level].en;
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>
       <div class="eyebrow">COURSE {String(course.number).padStart(3, '0')} · <span>{levelName}</span></div>
       <h1>{course.title}</h1>
-      <p>One course, one book. Read its lessons in order, or open the full book. Each lesson keeps its exercises and worked answers together.</p>
+      <p>One course, one book. The study target is one chapter each weekday, with a worked example and an exercise. Read the chapters already published below.</p>
       <div class="course-heading-actions">
-        <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option></select></div>
+        <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
         <a class="button secondary" href={levelPath(course.level)} data-language-link>All courses at this level →</a>
       </div>
       <p id="course-status" class="status" role="status">Loading this course…</p>
+      <div id="course-facts" class="course-facts" hidden></div>
     </div></section>
     <section class="course-workspace shell">
-      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE GUIDE</div><h2>Lessons in this course</h2><p>Choose a chapter to read on this page.</p></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
+      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE CONTENTS</div><h2>Modules and lessons</h2><p>Published chapters and current curriculum blocks.</p><a id="course-overview-link" href="?lang=en">← Course overview</a></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
       <div class="card course-reader">
+        <div id="course-lesson-top" class="course-lesson-top" hidden><span id="course-position"></span><a id="course-top-overview" href="?lang=en">Course overview</a></div>
         <div id="course-kicker" class="reader-kicker">COURSE {String(course.number).padStart(3, '0')}</div>
         <h2 id="course-reader-title">{course.title}</h2>
         <p id="course-intro" class="muted">Loading the current book and lesson guide…</p>
+        <div id="course-overview" class="course-overview"></div>
+        <nav id="course-lesson-nav-top" class="lesson-nav course-nav-top" aria-label="Lesson navigation at top" hidden></nav>
         <div id="course-source" class="source-bar"></div>
         <article id="course-markdown" class="prose" hidden></article>
         <section id="course-answers" class="answer-section" hidden><details><summary>View worked answers</summary><div id="course-answer-markdown" class="prose"></div></details></section>
@@ -48,8 +52,9 @@ const levelName = catalog.level_names[course.level].en;
     import { renderMarkdown } from '../../../../lib/reader';
     import { siteLanguage } from '../../../../lib/i18n';
 
-    type Lesson = { chapter: number; title: string; published: boolean; source_url: string };
-    type Details = { lessons: Lesson[]; published_chapters: number; planned_chapters: number; book_url: string | null };
+    type Lesson = { chapter: number; title: string; subject: string; module: number; published: boolean; source_url: string };
+    type Module = { number: number; kind: string; chapters: number[] };
+    type Details = { course: { instructional_weeks: number; study_days_per_week: number; daily_lesson_target: number; minimum_exercises: number; minimum_a4_pages: number }; lessons: Lesson[]; modules: Module[]; published_chapters: number; planned_chapters: number; daily_schedule_ready: boolean; book_url: string | null };
     type LessonData = { chapter: number; title: string; markdown: string; worked_answers: string; exercise_ids: string[]; source_url: string };
     const $ = (id: string) => document.getElementById(id)!;
     const root = $('course-root');
@@ -58,7 +63,7 @@ const levelName = catalog.level_names[course.level].en;
     const query = new URLSearchParams(location.search);
     const selector = $('course-language') as HTMLSelectElement;
     let language = query.get('lang') || siteLanguage();
-    if (!['en', 'pt', 'es'].includes(language)) language = 'en';
+    if (!['en', 'pt', 'es', 'he', 'fr', 'ru', 'de', 'zh', 'ja'].includes(language)) language = 'en';
     selector.value = language;
     let details: Details | null = null;
     let currentChapter: number | null = null;
@@ -66,6 +71,7 @@ const levelName = catalog.level_names[course.level].en;
 
     function chapterUrl(chapter: number | null) {
       const params = new URLSearchParams({ lang: language });
+      if (query.has('ui')) params.set('ui', query.get('ui')!);
       if (chapter !== null) params.set('chapter', String(chapter));
       return location.pathname + '?' + params;
     }
@@ -76,35 +82,96 @@ const levelName = catalog.level_names[course.level].en;
     function link(label: string, href: string, className = 'button secondary') {
       const a = document.createElement('a'); a.href = href; a.className = className; a.textContent = label; return a;
     }
+    function moduleLabel(module: Module) { return module.kind === 'Module' ? `Module ${module.number}` : `Module ${module.number} · ${module.kind} ${module.number}`; }
+    function moduleFor(chapter: number) { return details?.modules.find(module => module.chapters.includes(chapter)); }
+    function lessonLink(lesson: Lesson, className: string) {
+      const item = link('', chapterUrl(lesson.chapter), className);
+      const number = document.createElement('span'); number.className = 'lesson-number'; number.textContent = String(lesson.chapter).padStart(2, '0');
+      const subject = document.createElement('span'); subject.className = 'lesson-subject'; subject.textContent = lesson.subject;
+      const state = document.createElement('span'); state.className = 'lesson-state'; state.textContent = lesson.published ? 'Read lesson →' : 'Not published';
+      item.append(number, subject, state);
+      item.addEventListener('click', event => { event.preventDefault(); void openLesson(lesson.chapter, true); });
+      return item;
+    }
     function renderIndex() {
       if (!details) return;
-      const nav = $('course-lessons'); nav.replaceChildren();
-      for (const lesson of details.lessons) {
-        const item = link(`${String(lesson.chapter).padStart(2, '0')} · ${lesson.title}`, chapterUrl(lesson.chapter), 'course-lesson' + (currentChapter === lesson.chapter ? ' active' : ''));
-        item.setAttribute('aria-current', currentChapter === lesson.chapter ? 'page' : 'false');
-        const state = document.createElement('span'); state.className = 'course-lesson-state'; state.textContent = lesson.published ? '●' : '○';
-        item.prepend(state);
-        item.title = lesson.published ? 'Open published lesson' : 'Planned chapter';
-        item.addEventListener('click', event => { event.preventDefault(); void openLesson(lesson.chapter, true); });
-        nav.append(item);
+      const nav = $('course-lessons');
+      const expanded = new Set([...nav.querySelectorAll<HTMLDetailsElement>('details[open]')].map(item => Number(item.dataset.module)));
+      nav.replaceChildren();
+      for (const module of details.modules) {
+        const section = document.createElement('details'); section.className = 'course-module'; section.dataset.module = String(module.number);
+        section.open = expanded.has(module.number) || module.number === (moduleFor(currentChapter || 1)?.number || details.modules[0]?.number);
+        const summary = document.createElement('summary');
+        const label = document.createElement('span'); label.textContent = moduleLabel(module);
+        const count = document.createElement('span'); count.textContent = `${module.chapters.length} lessons`;
+        summary.append(label, count); section.append(summary);
+        for (const chapter of module.chapters) {
+          const lesson = details.lessons.find(item => item.chapter === chapter);
+          if (!lesson) continue;
+          const item = lessonLink(lesson, 'course-lesson' + (currentChapter === chapter ? ' active' : ''));
+          if (currentChapter === chapter) item.setAttribute('aria-current', 'page');
+          section.append(item);
+        }
+        nav.append(section);
+      }
+    }
+    function renderOverview() {
+      if (!details) return;
+      const overview = $('course-overview'); overview.replaceChildren();
+      const cadence = document.createElement('section'); cadence.className = 'course-cadence';
+      const cadenceLabel = document.createElement('div'); cadenceLabel.className = 'eyebrow'; cadenceLabel.textContent = 'WEEKDAY STUDY PLAN';
+      const cadenceTitle = document.createElement('h3'); cadenceTitle.textContent = `${details.course.instructional_weeks} weeks · ${details.course.daily_lesson_target} daily lessons`;
+      const cadenceCopy = document.createElement('p'); cadenceCopy.textContent = 'One chapter each Monday–Friday: learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.';
+      const weekdays = document.createElement('div'); weekdays.className = 'course-weekdays';
+      for (const day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']) { const chip = document.createElement('span'); chip.textContent = day; weekdays.append(chip); }
+      const availability = document.createElement('p'); availability.className = 'course-availability'; availability.textContent = details.daily_schedule_ready
+        ? `${details.published_chapters} of ${details.course.daily_lesson_target} daily chapters published in this edition. Unpublished lessons are not available yet.`
+        : `${details.published_chapters} current chapters published. These older subject chapters are not yet the ${details.course.daily_lesson_target} distinct daily lessons required by the new schedule.`;
+      cadence.append(cadenceLabel, cadenceTitle, cadenceCopy, weekdays, availability); overview.append(cadence);
+      const heading = document.createElement('h3'); heading.textContent = 'Your course roadmap'; overview.append(heading);
+      const modules = document.createElement('div'); modules.className = 'course-module-grid';
+      for (const module of details.modules) {
+        const card = document.createElement('section'); card.className = 'course-module-card';
+        const title = document.createElement('h4'); title.textContent = moduleLabel(module);
+        const count = document.createElement('p');
+        const available = module.chapters.filter(chapter => details!.lessons.find(item => item.chapter === chapter)?.published).length;
+        count.textContent = `${available} of ${module.chapters.length} lessons available`;
+        card.append(title, count);
+        const list = document.createElement('div'); list.className = 'course-module-list';
+        for (const chapter of module.chapters) {
+          const lesson = details.lessons.find(item => item.chapter === chapter);
+          if (lesson) list.append(lessonLink(lesson, 'course-overview-lesson'));
+        }
+        card.append(list); modules.append(card);
+      }
+      overview.append(modules);
+    }
+    function renderFacts() {
+      if (!details) return;
+      const facts = $('course-facts'); facts.replaceChildren(); facts.hidden = false;
+      for (const value of [`${details.course.instructional_weeks} instructional weeks`, `${details.course.daily_lesson_target} daily lessons planned`, `${details.published_chapters} current chapters published`]) {
+        const fact = document.createElement('span'); fact.textContent = value; facts.append(fact);
       }
     }
     function renderNavigation(chapter: number | null) {
-      const nav = $('course-lesson-nav'); nav.replaceChildren();
       if (!details) return;
-      if (chapter === null) {
-        const first = details.lessons.find(item => item.published);
-        if (first) nav.append(link('Start first published lesson →', chapterUrl(first.chapter)));
-        return;
-      }
-      const index = details.lessons.findIndex(item => item.chapter === chapter);
-      const previous = details.lessons[index - 1], next = details.lessons[index + 1];
-      if (previous) nav.append(link('← Previous lesson', chapterUrl(previous.chapter)));
-      nav.append(link('Course guide', chapterUrl(null)));
-      if (next) nav.append(link('Next lesson →', chapterUrl(next.chapter)));
-      else if (root.dataset.next) nav.append(link('Next course →', root.dataset.next + `?lang=${language}`));
-      for (const anchor of nav.querySelectorAll<HTMLAnchorElement>('a[href^="' + location.pathname + '"]')) {
-        anchor.addEventListener('click', event => { event.preventDefault(); const value = new URL(anchor.href).searchParams.get('chapter'); void openLesson(value ? Number(value) : null, true); });
+      for (const nav of [$('course-lesson-nav-top'), $('course-lesson-nav')]) {
+        nav.replaceChildren(); nav.hidden = nav.id === 'course-lesson-nav-top' && chapter === null;
+        if (chapter === null) {
+          const first = details.lessons.find(item => item.published);
+          if (first) nav.append(link('Start first published lesson →', chapterUrl(first.chapter), 'button gold'));
+        } else {
+          const index = details.lessons.findIndex(item => item.chapter === chapter);
+          const previous = details.lessons[index - 1], next = details.lessons[index + 1];
+          if (previous) nav.append(link('← Previous lesson', chapterUrl(previous.chapter)));
+          nav.append(link('Course overview', chapterUrl(null)));
+          if (next) nav.append(link('Next lesson →', chapterUrl(next.chapter)));
+          else if (root.dataset.next) nav.append(link('Next course →', root.dataset.next + `?${new URLSearchParams({ lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}`));
+        }
+        for (const anchor of nav.querySelectorAll<HTMLAnchorElement>('a')) {
+          if (!anchor.href.startsWith(location.origin + location.pathname)) continue;
+          anchor.addEventListener('click', event => { event.preventDefault(); const value = new URL(anchor.href).searchParams.get('chapter'); void openLesson(value ? Number(value) : null, true); });
+        }
       }
     }
     async function showProgress(lesson: LessonData) {
@@ -143,31 +210,39 @@ const levelName = catalog.level_names[course.level].en;
       if (chapter !== null && !item) return;
       currentChapter = chapter; updateLocation(chapter, push); renderIndex(); renderNavigation(chapter);
       $('course-markdown').hidden = true; $('course-answers').hidden = true; $('course-progress').hidden = true;
+      $('course-overview').hidden = chapter !== null;
+      $('course-lesson-top').hidden = chapter === null;
+      $('course-reader-title').hidden = Boolean(item?.published);
       const source = $('course-source'); source.replaceChildren();
+      if (push) $('course-reader-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (!item) {
         $('course-kicker').textContent = `COURSE ${String(number).padStart(3, '0')}`;
         $('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
-        $('course-intro').textContent = `${details.published_chapters} of ${details.planned_chapters} chapters have published lesson text in this edition. A planned chapter may not yet have a lesson.`;
-        const href = details.book_url ? `/book/?${new URLSearchParams({ level, area, lang: language })}` : `/read/?${new URLSearchParams({ path: `levels/${level}/${area}/${language}/book/PLAN.md` })}`;
-        source.append(link(details.book_url ? 'Read the full book here →' : 'Read the course plan here →', href));
+        $('course-intro').textContent = details.daily_schedule_ready
+          ? `${details.published_chapters} of ${details.course.daily_lesson_target} daily chapters are published in this edition.`
+          : `${details.published_chapters} current chapters are published. Daily chapters are being developed toward the ${details.course.daily_lesson_target}-lesson target.`;
+        if (details.book_url) source.append(link('Read the full book here →', `/book/?${new URLSearchParams({ level, area, lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}`));
+        renderOverview();
         return;
       }
+      const module = moduleFor(chapter);
+      $('course-position').textContent = `${module ? moduleLabel(module) + ' · ' : ''}Lesson ${chapter} of ${details.planned_chapters}`;
       $('course-kicker').textContent = `LESSON ${String(chapter).padStart(2, '0')} · COURSE ${String(number).padStart(3, '0')}`;
-      $('course-reader-title').textContent = item.title;
-      const href = item.published ? `/book/?${new URLSearchParams({ level, area, lang: language })}#ch-${String(chapter).padStart(2, '0')}` : `/read/?${new URLSearchParams({ path: `levels/${level}/${area}/${language}/book/PLAN.md` })}#ch-${String(chapter).padStart(2, '0')}`;
-      source.append(link(item.published ? 'Read this chapter in the book →' : 'Read the chapter plan →', href));
-      if (!item.published) { $('course-intro').textContent = 'This subject is in the course plan. Its lesson text has not been published in this edition.'; return; }
+      $('course-reader-title').textContent = item.subject;
+      if (item.published) source.append(link('Read the full book here →', `/book/?${new URLSearchParams({ level, area, lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}#ch-${String(chapter).padStart(2, '0')}`));
+      if (!item.published) { $('course-intro').textContent = 'This lesson has not been published in this edition yet. Choose another available lesson or return to the course overview.'; return; }
       $('course-intro').textContent = 'Loading the published lesson…';
       try {
         const response = await fetch(`/api/lessons/${level}/${area}/${language}/${chapter}`);
         if (!response.ok) throw new Error('The lesson is temporarily unavailable.');
         const lesson = await response.json() as LessonData;
         if (id !== requestId) return;
-        $('course-reader-title').textContent = lesson.title;
-        $('course-intro').textContent = `${lesson.exercise_ids.length} exercise(s) found in this lesson · Public book edition`;
+        $('course-intro').textContent = `${lesson.exercise_ids.length} exercises · Worked answers below`;
         await renderMarkdown($('course-markdown'), lesson.markdown, lesson.source_url, language);
         if (id !== requestId) return;
         $('course-markdown').hidden = false;
+        const exerciseHeading = [...$('course-markdown').querySelectorAll('h2,h3,h4')].find(element => /chapter\s+\d+\s+exercises/i.test(element.textContent || ''));
+        if (exerciseHeading) { exerciseHeading.id = 'lesson-exercises'; source.append(link('Jump to exercises ↓', '#lesson-exercises')); }
         if (lesson.worked_answers) { await renderMarkdown($('course-answer-markdown'), lesson.worked_answers, lesson.source_url, language); $('course-answers').hidden = false; }
         if (id === requestId) void showProgress(lesson);
         $('course-status').textContent = `Lesson ${chapter} loaded from the public book.`;
@@ -175,14 +250,19 @@ const levelName = catalog.level_names[course.level].en;
     }
     selector.addEventListener('change', () => {
       try { localStorage.setItem('cykin-language', selector.value); } catch { /* private mode */ }
-      location.href = location.pathname + '?' + new URLSearchParams({ lang: selector.value, ...(currentChapter ? { chapter: String(currentChapter) } : {}) });
+      location.href = location.pathname + '?' + new URLSearchParams({ lang: selector.value, ...(query.has('ui') ? { ui: query.get('ui')! } : {}), ...(currentChapter ? { chapter: String(currentChapter) } : {}) });
     });
+    for (const anchor of [$('course-overview-link'), $('course-top-overview')] as HTMLAnchorElement[]) {
+      anchor.href = chapterUrl(null);
+      anchor.addEventListener('click', event => { event.preventDefault(); void openLesson(null, true); });
+    }
     window.addEventListener('popstate', () => { const chapter = Number(new URLSearchParams(location.search).get('chapter')) || null; void openLesson(chapter); });
     try {
       const response = await fetch(`/api/courses/${level}/${area}/${language}`);
       if (!response.ok) throw new Error('This course could not be loaded.');
       details = await response.json() as Details;
       $('course-status').textContent = 'Course guide loaded.';
+      renderFacts();
       await openLesson(Number(query.get('chapter')) || null);
     } catch (error) { $('course-status').textContent = String(error); $('course-intro').textContent = 'This course is temporarily unavailable. Please try again shortly.'; }
   </script>
