@@ -2361,21 +2361,31 @@ client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
 client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 ```
 
+The scraper stands out on both measures: 600 queries gives a robust z above 30, and a distinct-input ratio near one in ten shows it repeats a fixed grid of 61 values. Ordinary clients sit between 40 and 89 queries with ratios around half. Using the median and MAD keeps the scraper's own volume from raising the threshold it is judged against.
+
 ### 31.2 Data-pipeline integrity
 
 Hash data at ingestion; keep immutable versions; require reviewed merges for label changes; run automated checks for duplicates, class balance shifts and suspicious feature–label correlations (possible triggers); quarantine new sources until reviewed.
+
+Each check targets a poisoning route. Hashes and immutable versions stop silent edits. Reviewed label merges catch a contractor flipping labels. Balance and correlation checks look for the signature of a backdoor, such as a feature that predicts one class almost perfectly in new data but not in old. Quarantine gives reviewers time to sample a new source before any model learns from it, which is far cheaper than retraining afterwards.
 
 ### 31.3 Secure model loading and update
 
 Load only signed artefacts whose manifest digests match; use tensor-only formats; verify on the target device; keep the previous version for rollback; record which version served each request.
 
+The sequence is checked in order on the device: signature, then digests, then format. Loading fails closed if any step fails, and the device keeps running the previous verified version. Recording the version for each request lets investigators connect a strange output to the exact model that produced it, which matters when a supplier later reports a faulty release and NRS needs to know which inspections it affected.
+
 ### 31.4 Logging and alerting
 
 Correlate request IDs across model, policy and tool services. Alerts should be specific ("client99 robust z = 30.6; distinct-input ratio 0.10") and routed to an owner with a runbook. Avoid logging sensitive prompt content in full; log hashes or redacted forms when possible, consistent with data-protection obligations.
 
+A specific alert lets the on-call engineer judge severity at once; 'unusual activity' forces them to repeat the analysis. Runbooks state the first checks, such as confirming whether the client is a known partner, and when to escalate.
+
 ### 31.5 Worked example (synthetic NRS case)
 
 NRS opened a limited TrackEye API to a partner. Sam deployed the monitoring rules: robust z-score above 3.5 on daily volume, or distinct-input ratio below 0.2 with high volume, triggers review. In the first month one partner script was flagged; it was a misconfigured retry loop, not an attack, and the partner fixed it. Sam kept the rule and documented the false positive.
+
+A retry loop and an extraction sweep both produce high volume, so the second rule, a low distinct-input ratio, helps tell them apart: a retry loop resends the same few inputs, while extraction spreads queries systematically. Documenting the false positive gives the next reviewer a known pattern to check first.
 
 ### 31.6 Errors and limits
 
@@ -2383,6 +2393,7 @@ NRS opened a limited TrackEye API to a partner. Sam deployed the monitoring rule
 - Logging full prompts with personal data indefinitely.
 - Updates loaded without signature checks.
 
+A mean-based threshold rises with every heavy user, so a large scraper can lift the bar above its own volume and escape the flag. Full prompts kept indefinitely become a store of personal data that is itself a target and may breach retention rules. Unsigned updates let anyone who reaches the device replace the model. Each of these appears in Sam's monitoring review as a yes-or-no question with evidence attached.
 
 ### 31.6b Testing alerts end to end
 
@@ -2414,27 +2425,39 @@ You will (1) define reliability for AI components (consistent correct behaviour 
 
 Classical reliability asks how often a component fails. For AI, "failure" includes wrong outputs that look normal. Reliability therefore includes accuracy across conditions (stratified error rates), *calibration* (does 90% confidence mean 90% correct?), stability across versions and availability of the service.
 
+A crashed service is noticed at once; a model that quietly misses more defects at dawn is not. Reliability measures for AI must therefore look at outputs over time and by condition, not just at uptime. Stability across versions matters because a model update can change decisions on cases that used to be right, and operators who learned to trust the old behaviour may not notice.
+
 ### 32.2 Calibration
 
 A calibrated model's confidence matches its accuracy. Overconfident models make downstream automation brittle: if TrackEye says 99% "no defect" but is right only 95% of the time at that confidence, operators trust it too much. Measure calibration with reliability diagrams or expected calibration error; recalibrate with simple methods such as temperature scaling on held-out data.
+
+Temperature scaling divides the model's raw scores by a single fitted number before converting them to probabilities. It does not change which class wins, so accuracy stays the same, but confidences move closer to observed accuracy. Calibration must be checked per condition stratum too, because a model can be well calibrated overall and badly overconfident at dawn.
 
 ### 32.3 Redundancy and degradation
 
 Redundancy can be *diverse* (a different model or a rule-based check) or *repeated* (a second inference). Diverse redundancy helps against shared failure modes and some attacks, because an adversarial input crafted for one model may not transfer perfectly. Graceful degradation defines what happens when a component fails or is uncertain: TrackEye flags segments for manual review rather than marking them clear.
 
+Repeated inference on the same model helps only against random faults, such as a transient hardware error, since the same input gives the same mistake.
+
 ### 32.4 Reliability or attack?
 
 When error rates change, ask: did inputs change (drift), did the model change (version), or did someone act (attack)? Look at timing, affected strata, correlation with specific sources and logs. Many apparent attacks are drift; some apparent drift is an attack.
 
+Evidence decides, not instinct. A drift typically starts gradually or at a known change, affects many inputs in a condition, and correlates with environment or version. An attack often starts abruptly, concentrates on particular sources or targets, and may avoid conditions that would make it obvious. Sam's triage checklist records each observation, so a later reviewer can see why an incident was classified one way and revisit it if new evidence appears.
+
 ### 32.5 Worked example (synthetic NRS case)
 
 Pulse's false-negative rate rose on one route. Logs showed the rise coincided with a sensor-firmware update that changed units on two axles — a reliability failure, not an attack. Sam added unit checks at ingestion and a diverse rule-based threshold check that would have caught the extreme readings regardless of the model.
+
+The timing pointed to the firmware update, and only the two affected axles changed, which fits a configuration change rather than an attacker. The fixes address both the cause and the class of failure: unit checks reject impossible values at once, and the rule-based check does not depend on the model at all.
 
 ### 32.6 Errors and limits
 
 - Treating confidence scores as probabilities without calibration.
 - Redundancy with identical models (shared failure).
 - Jumping to "attack" without checking drift and changes.
+
+Uncalibrated scores mislead anyone who sets thresholds or explains decisions with them. Identical redundant models fail together, so they add cost without adding safety. Calling every change an attack wastes investigation effort and can damage trust with suppliers and partners, while calling every change drift can let a real attack continue. The habit Sam teaches is to collect evidence for both explanations before deciding.
 
 ### Exercises
 
@@ -2462,27 +2485,39 @@ You will (1) design AI systems that remain safe when components fail or are atta
 
 Every AI decision path needs a defined safe state: manual inspection, a conservative default, refusing an action, or escalating to a human. Safety cases argue, with evidence, that hazards are controlled to acceptable levels — including hazards caused by adversaries.
 
+For TrackEye, the safe state is manual inspection of the affected segment; for Wrench, it is refusing the tool action and telling the technician why. Choosing safe states is a design decision with costs: manual inspection uses staff time, and refusals slow work. The safety case states these costs and shows that they are acceptable, which also makes clear what would happen if an attacker deliberately forced the system into its safe state repeatedly.
+
 ### 33.2 Resilience
 
 Resilience is the ability to anticipate, withstand, recover from and adapt to adverse conditions. For AI: anticipate with threat models and monitoring; withstand with layered controls; recover with rollback, retraining from verified data and credential revocation; adapt by updating tests and controls after incidents. The NIST AI RMF lists *secure and resilient* as a characteristic of trustworthy AI.
+
+Recovery depends on preparation done earlier. Retraining from verified data is only possible if data versions and hashes were kept. Revoking credentials quickly needs a tested procedure and narrow credentials that can be revoked without stopping everything. Adaptation means each incident leaves a trace in the system: a new test in the suite, a changed threshold or an updated runbook, so the same failure is less likely next time.
 
 ### 33.3 Effective human oversight
 
 Oversight fails when humans approve by habit ("automation bias") or lack information. Effective oversight shows the evidence behind a proposal (sources, confidence, what is unusual), limits volume so reviewers can concentrate, and tracks approval quality (for example, inserting known-bad test proposals to measure catch rates, with reviewers' consent and clear policy). The EU AI Act requires high-risk systems to be designed for effective human oversight (Article 14).
 
+Known-bad proposals must be clearly identifiable afterwards so they never execute. Results are shared with reviewers as a group, never used to rank individuals.
+
 ### 33.4 Misuse of generative capabilities
 
 Generative systems can be misused to produce harmful content or to assist attacks. NIST AI 600-1 discusses risks including information security and dangerous content, with suggested actions. Engineering responses include usage policies, abuse monitoring, refusal training, rate limits and restricting high-risk capabilities to authenticated, accountable users.
 
+Restricting capabilities to authenticated users makes misuse attributable, which deters it and supports investigation. For Wrench, the risk is modest, since its tools are narrow, but a general text generator connected to internal documents could be asked to draft convincing phishing using real supplier names. Abuse monitoring looks for such patterns, and usage policies tell staff what is acceptable before anyone needs to enforce them.
+
 ### 33.5 Worked example (synthetic NRS case)
 
-Sam measured that planners approved 97% of Wrench's work-order proposals in a median of 4 seconds. With the planners' agreement, a monthly exercise inserted clearly marked synthetic test proposals with wrong assets; only 60% were rejected. The team redesigned the approval screen to highlight assets outside the planner's usual routes and any instruction-like source text; the catch rate in the next exercise rose to 88%.
+Sam measured that technicians approved 97% of Wrench's work-order proposals in a median of 4 seconds. With the technicians' agreement, a monthly exercise inserted clearly marked synthetic test proposals with wrong assets; only 60% were rejected. The team redesigned the approval screen to highlight assets outside the technician's usual routes and any instruction-like source text; the catch rate in the next exercise rose to 88%.
+
+The high approval rate and four-second median were the warning signs, since nobody reads a source document in four seconds. A catch rate of 60% meant two in five wrong proposals would have been approved. The redesign made the important information visible instead of asking people to try harder, and the next exercise measured the effect rather than assuming it.
 
 ### 33.6 Errors and limits
 
 - Human review as a checkbox.
 - No defined safe state.
 - Recovery plans that assume clean data is available without having kept it.
+
+A checkbox review creates the appearance of control while approving almost everything. Without a defined safe state, a failing component may continue in an unsafe mode or stop in an unplanned one. Recovery plans fail on the day if the clean data, signed models or credentials they rely on were never kept. Each of these is checked by exercise, not by reading the plan, because plans often assume things nobody has tested.
 
 ### Exercises
 
