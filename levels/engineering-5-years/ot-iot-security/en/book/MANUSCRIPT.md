@@ -2829,9 +2829,13 @@ You will (1) budget for policy and dependency updates; (2) keep adapters thin; (
 
 ATT&CK for ICS techniques, PLC firmwares and vendor HMI support matrices change. Budget calendar time for updates; pin versions and watch advisories.
 
+At ABP, Lena keeps a dependency page listing the ATT&CK for ICS release used by the mapper, the firmware revisions of PLC-A and SIS-B, and the HMI vendor's supported versions. A subscription to vendor advisories feeds a weekly review, and each pinned version has a review date. When the technique list changes, the coverage plan is rebuilt from the new release before the next assessment, so the 44 planned techniques never silently refer to an outdated catalogue.
+
 ### 39.2 Thin adapters
 
 Isolate third-party SDKs behind interfaces so upgrades do not rewrite the finding store core.
+
+Lena's team learned this from the screen-scraping alarm adapter, which broke with each HMI update and touched code far beyond its purpose. CNHP now places every vendor library behind a small interface owned by the team, with contract tests that use recorded vendor output. When a vendor changes its library, only the adapter and its tests change; the permit function, finding store and dossier code stay untouched, and the release notes can say exactly which part moved.
 
 ### 39.3 Ownership
 
@@ -2839,9 +2843,13 @@ Every service has a named owning squad and a backup. CODEOWNERS enforces review.
 
 > **Synthetic case — Ashford Batch Plant.** The ATT&CK for ICS mapper is an adapter; upgrading the technique list is a data PR, not a rewrite.
 
+At ABP each CNHP service page names an owner and a backup by person, not by team alias. Before a release, the pages are checked against the leave calendar, and a release with no cover during the next window is held until someone is trained.
+
 ### 39.4 Errors and limits
 
 Orphan tools rot into fail-open museums.
+
+The screen-scraping alarm adapter at ABP is the example Lena uses: one engineer understood it, it needed eleven fixes in a year, and it failed silently whenever the HMI changed. A tool with no owner stops being patched, and when it breaks nobody notices whether it is failing closed or open. Lena's rule is that a tool without an owner and backup is either adopted by a named person within a month or retired with a published deletion date.
 
 ### Practice note
 
@@ -2854,6 +2862,8 @@ Announce API deprecations with dates; keep dual-run periods. Maintainability inc
 
 
 Ownership pages list vacation coverage by name. Treat missing coverage as a release blocker equal to a failing test. Cross-training sessions use the same synthetic fixtures as Lab I.
+
+Lena applies this plan to every CNHP tool, including the replaced adapter. Its retirement was announced in advance.
 
 ### Field note — vacation blocker
 
@@ -2898,6 +2908,8 @@ You will (1) verify end-to-end flow from frame to ticket to coverage; (2) inject
 
 Synthetic frame to monitor decision to event to finding ticket to coverage update. Record hashes at each hop.
 
+In ABP's Lab II, Lena replays a synthetic frame on the bench and follows it through each step: the permit function's decision with its reason code, the alert, the maintenance-system work order, the finding ticket and the coverage update. A hash is recorded at each hop, so the dossier can prove that the ticket describes the same event the monitor saw. A chain that cannot be traced hop by hop is not counted as passing, even when the final result looks right.
+
 ### 40.2 Faults
 
 Kill finding store mid-flow; confirm monitor still denies and drafts queue. Corrupt an evidence file; confirm hash mismatch alert. Feed a flat (unsafe) edge list; confirm reachability fails the SIS check.
@@ -2928,15 +2940,21 @@ flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_
 zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
 ```
 
+Lena's Lab II faults also include collector power loss, which raised the visibility-degraded alert in 40 seconds, and 90 seconds of clock skew on the bench copy of PLC-A. Each fault is injected separately and then in pairs, because a failure that is harmless alone can corrupt evidence when combined with another.
+
 ### 40.3 Sign-off
 
 Release candidate checklist signed by implementer and reviewer; safety rows must be green.
 
 > **Synthetic case — Ashford Batch Plant.** Lab II found coverage updated before ticket create on retry — fixed ordering with an outbox.
 
+At ABP the Lab II sign-off lists every row with its result and any open defect with an owner, such as the event mis-ordering caused by clock skew. Lena's ordering fix ensures the ticket is written before the coverage board updates, so a retry cannot count a finding that was never recorded.
+
 ### 40.4 Errors and limits
 
 E2E without fault injection only proves the happy path.
+
+Lena's first end-to-end run at ABP passed every row, yet Lab II with faults injected found that clock skew mis-ordered two events in the dossier and that a retry updated coverage before the ticket existed. Neither defect would appear on a clean run, because both depend on timing failures that only occur when something breaks. Lab II sign-off therefore requires each fault script to have run and its result recorded, and a run with no faults is reported as a smoke test.
 
 ### Practice note
 
@@ -2949,6 +2967,8 @@ Lab II enables debug logs temporarily but seals a redacted copy. Leaving debug o
 
 
 Happy-path green with malicious-pack red still fails Lab II sign-off. Fault-injection scripts are checked into the lab folder and pinned by SHA in the report. Environment parity gaps explain green-in-lab red-in-window surprises.
+
+Lena's sign-off checks for parity gaps.
 
 ### Field note — malicious pack
 
@@ -2993,9 +3013,13 @@ You will (1) profile OT security pipelines ethically; (2) optimize under cycle-t
 
 Measure where time goes: decode, permit eval, event write. Optimize the dominant term. Synthetic load only.
 
+At ABP, Lena profiled the monitor on the bench before any optimisation was approved. Replaying a recorded day of trunk traffic, she measured how long decoding, permit evaluation and event writing each took, and found event writing dominated. Batching writes cut overall latency without changing a single permit rule. She uses synthetic or replayed load only, because profiling against live equipment would add exactly the risk the monitor exists to reduce, and the bench copy of PLC-A behaves closely enough for timing work.
+
 ### 41.2 Constraint-preserving
 
 Caching AllowListVersion is fine if invalidation on publish is correct. Caching allow decisions across stations is not — stations differ.
+
+In CNHP the allow-list is cached in memory with its version number, and every publish clears the cache before the new version is used, so stale rules cannot linger. Caching individual decisions was rejected, because HMI-1 and the engineering workstation are allowed different registers, and a decision cached for one would be wrong for the other. Lena's tests include a publish during heavy load to confirm that the first decision after publishing always uses the new version.
 
 ### 41.3 Safety veto
 
@@ -3023,9 +3047,13 @@ cycle budget 50 ms -> fits
 
 > **Synthetic case — Ashford Batch Plant.** Caching signed allow-lists in memory cut latency; invalidation on publish kept safety. A proposal to skip register checks for known good HMIs was vetoed.
 
+Lena records each vetoed proposal at ABP with its expected speedup and the reason it was rejected. The decision log means the same idea is not reopened every quarter without new safety arguments.
+
 ### 41.4 Errors and limits
 
 Benchmarks on laptops do not predict plant trunks.
+
+At ABP, a decoder that ran easily on a developer laptop fell behind when Lena tested it on the bench copy of the RS-485 trunk with real timing and frame sizes. Laptops have faster processors and none of the serial timing limits that matter on the plant. Lena now accepts performance figures only from the bench, and each benchmark report states the trunk's 21 ms polling cycle and the 50 ms stop next to the measured result, so readers can judge the margin.
 
 ### Practice note
 
@@ -3038,6 +3066,8 @@ Under overload, shed discovery work before shedding deny evaluation. Chatty tick
 
 
 Reject optimization PRs that remove reason codes from logs even if latency improves. Benchmarks cite the cycle-time budget next to the achieved rate so unconstrained benches are obvious.
+
+Lena's reviews apply each rule. At ABP, Lena tested overload by replaying traffic at triple speed: discovery paused first while deny decisions continued at full rate and stayed well under the cycle budget.
 
 ### Field note — safety paragraph
 
@@ -3078,9 +3108,13 @@ You will (1) frame a research question about OT security programmes; (2) choose 
 
 Does dual-approval reduce conduit-widen incidents? Does showing denominators change stakeholder interpretation of coverage? Not new bypass against PLC brand X.
 
+Lena's applied research at ABP followed this pattern: she asked how many days of baseline traffic a new-conduit detector needs before false alerts drop below one per week. The question could be answered with recorded traffic and would directly change how the plant configures its monitor. She declined a suggestion to study bypasses against a particular PLC brand, because that would produce attack knowledge without improving how ABP runs its defences.
+
 ### 42.2 Design
 
 Pre-register measures; use synthetic or consented operational data; report intervals and attack classes (Urbina et al.; Giraldo et al.). Replication beats novelty theatre.
+
+Lena registered her measures, baseline lengths and threshold before analysing ABP's 60 days of recorded traffic. Her amendment log records one change: the ERP upgrade on day 33 added new traffic, so that day was analysed separately rather than dropped. Results are reported with intervals for each baseline length, so readers can see where the evidence is weak. She would rather confirm an earlier finding carefully than claim a new one that nobody can reproduce.
 
 ### 42.3 Disclosure
 
@@ -3088,9 +3122,13 @@ If research accidentally finds a live issue, follow responsible disclosure — n
 
 > **Synthetic case — Ashford Batch Plant.** Lena's applied study compared ticket reopen rates before/after requiring re-test evidence; pre-registered, synthetic+anonymized.
 
+Lena's research plan named the vendor's product security team as the first contact for any flaw found in a product, and it set publication only after the vendor responded. The thesis would describe a fault only in general terms. Her supervisor reviewed the plan before any traffic was analysed.
+
 ### 42.4 Errors and limits
 
 Course projects are not human-subjects work; avoid collecting personal operator data.
+
+Lena's research at ABP used traffic between devices, not records of what individual operators did, so no person could be identified from her data. Where operator actions appeared in logs, such as acknowledgements on HMI-1, she removed user names before analysis. Studying people properly needs ethics review that a course project does not have, so any question about operator behaviour is left for future work with the appropriate approvals rather than answered with data collected informally.
 
 ### Practice note
 
@@ -3103,6 +3141,8 @@ Even synthetic-plus-anonymized operational metrics need a written agreement with
 
 
 State the dual-use boundary in the thesis ethics section with a concrete refusal example. Negative results get the same figure quality as positive ones in the thesis template.
+
+Lena's thesis reports which baselines failed the threshold. Lena's host agreement for ABP's data was signed before analysis, and her thesis reports the baseline lengths that never reached the threshold with full figures.
 
 ### Field note — amendment log
 
@@ -3147,9 +3187,13 @@ You will (1) adapt CNHP engineering to a host organization's constraints; (2) wr
 
 In industry or public service, work-permit templates, residency and procurement differ. Your job is still fail-closed tooling and honest measurement — not clever unauthorized tests.
 
+On her placement at a contract manufacturer, Lena found different permit forms, a different procurement process and stricter rules on where data could be stored than at ABP. She adapted her methods to the host's process instead of importing ABP's forms. What did not change was the core of her practice: tools that stop safely when unsure, measurements with their denominators, and tests run only within the scope the host had approved in writing.
+
 ### 43.2 Sanitized reporting
 
 Course deliverables use synthetic names and aggregates. Real plant identifiers stay inside the host's systems.
+
+Lena's placement report described the vendor laptop risk without naming the host, its plants or its devices. Addresses and host names stayed inside the host's systems, and figures were given only as counts or ranges. The host's clearance review checked the report before it reached the university, and her supervisor graded the sanitized version, so nothing identifying left the organisation. Lena kept the originals on the host's systems.
 
 ### 43.3 Translation
 
@@ -3157,9 +3201,13 @@ Process safety hears independence and SIL. Ops hears windows and alarms. Enginee
 
 > **Synthetic case — Ashford Batch Plant.** Lena's placement memo used only ABP synthetic figures; real partner plant names were omitted.
 
+In her placement memo, Lena wrote the same laptop finding three ways: for process safety, as a threat to the independence of the line controllers; for operations, as a scheduling need for updates; and for engineering, as a configuration change. Each reader got the version they needed.
+
 ### 43.4 Errors and limits
 
 I can't tell you what I did is not a practice report — use synthetic reconstruction agreed with the host.
+
+Lena's placement report could not include the host's real network details, so she agreed a synthetic reconstruction with her host mentor that kept the structure of the finding but replaced every identifying detail. Her constraints appendix stated what she had not been allowed to examine. This gave the university something to assess without exposing the host, and it is the standard for any placement where the work itself cannot be described directly.
 
 ### Practice note
 
@@ -3172,6 +3220,8 @@ Public-service placements may involve clearances. Course artefacts stay at the l
 
 
 Agree the sanitized reconstruction with the host mentor in writing before writing the practice report. If the host forbids even sanitized metrics, use a fully synthetic twin scenario labelled as such.
+
+Lena's own appendix followed this rule. Lena's agreement with her host mentor was written before drafting began, and it named the figures she could use and the ones she could not.
 
 ### Field note — constraints appendix
 
@@ -3212,9 +3262,13 @@ You will (1) propose a capstone that ships a measurable CNHP improvement; (2) de
 
 Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
+Lena's Capstone I proposal was a zone-and-conduit policy compiler that reads ABP's zone model and emits firewall rules plus test vectors. Its requirements put safety first: SIS-B must stay unreachable from every routed zone. Her milestones, lab plan and ethics paragraph were reviewed before coding began. The project needed no exploit work, because its job was to prove that rules match the design, not to break into anything on the plant.
+
 ### 44.2 Non-goals
 
 Explicitly list what you will not build (exploit modules, live plant scanning, ML risk oracles, empty scores).
+
+Lena's non-goals were written into her proposal and signed by her supervisor: no live deployment, no configuration of SIS-B and no active scanning. When a classmate suggested adding automatic scanning to check deployed rules, she pointed to the frozen list and kept the compiler's checks working on exports instead. Writing the non-goals down early gave her a clear answer for every tempting extension during the term.
 
 ### 44.3 Milestone 1
 
@@ -3222,9 +3276,13 @@ Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤3
 
 > **Synthetic case — Ashford Batch Plant.** Capstone I proposals that mentioned auto-pwn were returned; signed allow-list distribution with fail-closed advanced.
 
+Other proposals in Lena's cohort built signed allow-list distribution. Lena's own milestone 1 for the compiler met reachability for all nine of ABP's conduits but produced test vectors for only seven rules. The demo ran entirely on synthetic exports, and the gap became the opening item for milestone 2.
+
 ### 44.4 Errors and limits
 
 Scope creep is the main killer — freeze non-goals.
+
+During Lena's capstone, reviewers suggested adding a dashboard, live firewall pushes and support for a second plant. Each would have taken weeks and none was needed to prove the compiler matched the design. She answered each suggestion with the frozen non-goals and placed them in a future-work list instead. The two missing vectors from milestone 1 became her first milestone 2 task, so the remaining time went to finishing what she had promised. Her final scope matched the proposal.
 
 ### Practice note
 
@@ -3237,6 +3295,8 @@ Define two metrics you will show at defense (e.g. deny-all time, percent of merg
 
 
 Risk register for the capstone: scope creep, dependency delay, reviewer unavailability, ethics boundary confusion — each with early warning and mitigation. Milestone demos that skip fail-closed are graded zero for that checkpoint.
+
+Lena's two metrics were conduit reachability and vector coverage. Both appear in her defense.
 
 ### Field note — ethics early
 
