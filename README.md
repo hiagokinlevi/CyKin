@@ -33,6 +33,31 @@
   +------------------------------------------------------------------+
 ~~~
 
+<!-- cyberabc:onboarding:start -->
+
+## Comece por aqui
+
+Escolha uma rota e o idioma. Em cada curso, **uma matéria corresponde a um capítulo/aula**. O guia mostra a sequência completa e os links para avançar; abra o livro para estudar os exemplos e fazer os exercícios disponíveis. Capítulos que só têm plano são identificados como tal.
+
+**Trilha 1 — um curso:** 1. idioma → 2. tema → 3. nível → guia de todas as aulas daquele curso.
+
+**Trilha 2 — um nível inteiro:** 1. idioma → 2. nível → 3. todos os 23 temas daquele nível, com seus cursos e aulas em ordem. Comece no primeiro tema e siga o link para o próximo curso no fim de cada guia.
+
+| Idioma | Trilha 1: escolha o tema | Trilha 2: escolha o nível |
+|---|---|---|
+| English | [Tema → nível](onboarding/en/themes.md) | [Nível → todos os temas](onboarding/en/levels.md) |
+| Português | [Tema → nível](onboarding/pt/themes.md) | [Nível → todos os temas](onboarding/pt/levels.md) |
+| Español | [Tema → nível](onboarding/es/themes.md) | [Nível → todos os temas](onboarding/es/levels.md) |
+| עברית | [Tema → nível](onboarding/he/themes.md) | [Nível → todos os temas](onboarding/he/levels.md) |
+| Français | [Tema → nível](onboarding/fr/themes.md) | [Nível → todos os temas](onboarding/fr/levels.md) |
+| Русский | [Tema → nível](onboarding/ru/themes.md) | [Nível → todos os temas](onboarding/ru/levels.md) |
+| Deutsch | [Tema → nível](onboarding/de/themes.md) | [Nível → todos os temas](onboarding/de/levels.md) |
+| 中文 | [Tema → nível](onboarding/zh/themes.md) | [Nível → todos os temas](onboarding/zh/levels.md) |
+| 日本語 | [Tema → nível](onboarding/ja/themes.md) | [Nível → todos os temas](onboarding/ja/levels.md) |
+
+**Como estudar:** abra o **guia de aulas** (`SUBJECTS.md`), leia cada capítulo disponível no `MANUSCRIPT.md`, faça os exercícios e confira as respostas no livro; siga a navegação ao fim do capítulo. Quando houver apenas `PLAN.md`, a aula ainda não foi escrita. As edições em hebraico, francês, russo, alemão, chinês e japonês têm apenas índices e planos neste momento. O placar acima mede cobertura inicial em inglês, e não certifica livros concluídos nem traduções. [Veja a cobertura por idioma](LANGUAGE_LESSON_PROGRESS.md).
+<!-- cyberabc:onboarding:end -->
+
 **English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).
 
 **Public lessons in three languages:** [open the English, Portuguese and Spanish lesson coverage table](LANGUAGE_LESSON_PROGRESS.md). It links each existing book or its plan and counts authored chapters, explicit examples, exercises, navigation and diagrams separately. A public manuscript is readable now; books with pending technical, language or A4 review are identified by the [publication gate](BOOK_STANDARD.md).
