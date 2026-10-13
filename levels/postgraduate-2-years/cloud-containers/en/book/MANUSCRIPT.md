@@ -50,6 +50,10 @@ Inês Carvalho leads cloud security at the fictional insurer Beacon Mutual and i
 
 Inês must choose how Beacon enforces workload security from now on. Option A: built-in Pod Security admission only. Option B: admission plus a policy engine for checks the built-in profiles do not cover, such as image registry and signature rules. Option C: B plus runtime monitoring of container behaviour.
 
+Section one point two develops advanced security decision-making with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section one point two, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
 ### Lab — Lab — expected costs
 
 ```python
@@ -75,17 +79,39 @@ C admission + engine + runtime monitoring  control  210k + risk    27k =   237k
 
 With synthetic estimates, A costs 40k a year plus an expected incident cost of 90k (10% × 900k) = 130k. B costs 95k plus 36k = 131k. C costs 210k plus 27k = 237k. A and B are almost equal on expected cost; C costs much more for a small further reduction.
 
+Section one point three develops advanced security decision-making with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section one point three, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
 ### 1.4 Beyond expected cost
 
 A and B tie on numbers, but B also covers registry and signature rules that regulators ask about, and reduces dependence on correct namespace labels. It also gives one policy language for future checks. Expected cost ignores how bad the worst case is and how confident the estimates are.
+
+Section one point four develops advanced security decision-making with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section one point four, Prof. Sunita Rao expects advanced claims to carry owners and dates.
 
 ### 1.5 Sensitivity
 
 Inês varies the incident probability for A from 5% to 15%. A's total ranges from 85k to 175k; B's from 113k to 149k. B's narrower range is attractive for a risk-averse insurer.
 
+Section one point five develops advanced security decision-making with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section one point five, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section one point five treats the opening case the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Recording
 
 The decision record lists options, estimates, sources, sensitivity, the choice (B) and conditions that would reopen it.
+
+Section one point six develops advanced security decision-making with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section one point six, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section one point six treats the opening case the as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Beacon Mutual will not accept advanced work without a written trail.
 
 ### Worked example
 
@@ -125,29 +151,81 @@ You will (1) survey current practice in workload security, identity and posture 
 
 Kubernetes now provides Pod Security admission with Privileged, Baseline and Restricted profiles applied by namespace labels. Many organisations add a policy engine for custom rules. NIST SP 800-190 remains the reference for container risk areas: image, registry, orchestrator, container and host.
 
+Section two point one develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point one treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Identity
 
 Current practice favours federated human access with multi-factor authentication and workload identity for services, issuing short-lived credentials instead of stored keys. NIST SP 800-210 and SP 800-207 provide the access control and zero trust framing.
+
+Section two point two develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point two treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Posture management
 
 Organisations continuously compare cloud configuration with benchmarks such as the CIS Benchmarks and control catalogues such as CSA CCM v4, alerting on drift.
 
+Section two point three develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point three treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
+
+For section two point three, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 2.4 Supply chain for images
 
 Signing images, verifying at admission and keeping images in private registries are increasingly common, along with scanning and inventories of components.
+
+Section two point four develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point four treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Beacon Mutual will not accept cloud work without a written trail.
 
 ### 2.5 Shared responsibility
 
 Provider documentation from AWS, Microsoft and Google stresses that customers own workload and identity configuration; Google's "shared fate" language adds provider responsibility for secure defaults.
 
+Section two point five develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point five treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 2.6 Where Beacon differs
 
 Beacon has workload identity in two clusters, no image signing, posture checks on accounts but not clusters, and incomplete Pod Security labels.
 
+Section two point six develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point six, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point six treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 2.7 Critical view
 
 Practice is shaped by vendors; Inês distinguishes what standards require from what products market.
+
+Section two point seven develops cloud and container security current with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section two point seven, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section two point seven treats workload security identity posture as testable only when evidence and ticket IDs are recorded.
+
+For section two point seven, Beacon Mutual will not accept cloud work without a written trail.
 
 ### Learning from peers
 
@@ -191,6 +269,12 @@ You will (1) gather specialist evidence about workload security across clusters;
 
 To plan the fix, Inês needs to know exactly which namespaces enforce which profile in each cluster. The audit gave a summary; she needs the detail.
 
+Section three point one develops cloud and container security specialist with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section three point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section three point one treats evidence needed lab result as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — enforcement coverage
 
 ```python
@@ -223,17 +307,43 @@ estate 4/11 = 36%
 
 claims-prod enforces on 2 of 3 namespaces (batch unenforced). quotes-prod enforces on 0 of 2 (quotes and pricing). shared-prod enforces on 2 of 4 (ingress at Baseline, web at Restricted; monitoring is labelled Privileged, which enforces nothing; api unenforced). analytics enforces on 0 of 2. Across the estate, 4 of 11 namespaces enforce Baseline or Restricted, 36%.
 
+Section three point two develops cloud and container security specialist with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section three point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
 ### 3.3 Interpreting
 
 Unenforced namespaces include pricing and quotes, which handle customer data. monitoring's Privileged label is deliberate for its node agents but should be confined to that namespace.
+
+Section three point three develops cloud and container security specialist with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section three point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section three point three treats evidence needed lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 3.4 Evidence quality
 
 The data come from live namespace labels exported on one date; Inês records the export time and checks a sample manually.
 
+Section three point four develops cloud and container security specialist with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section three point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section three point four treats evidence needed lab result as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 3.5 Communicating
 
 For the risk committee, a single coverage figure and a list of customer-data namespaces unenforced; for engineers, the full table.
+
+Section three point five develops cloud and container security specialist with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section three point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section three point five treats evidence needed lab result as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Beacon Mutual will not accept cloud work without a written trail.
 
 ### Behaviour tests
 
@@ -277,25 +387,65 @@ You will (1) assess risk across the cloud estate with uncertainty; (2) consider 
 
 For each unenforced namespace, Inês estimates likelihood and impact as ranges, noting the evidence for each. Pricing and quotes hold customer data and face the internet, so their impact range is high; analytics runs user code, so its likelihood range is higher.
 
+Section four point one develops advanced risk and ethics with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section four point one, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section four point one treats risk with uncertainty duties as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Duties to policyholders
 
 Beacon holds health and claims information. Policyholders cannot protect themselves from configuration gaps; Beacon has a duty of care to fix them promptly and to report breaches honestly.
+
+Section four point two develops advanced risk and ethics with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section four point two, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section four point two treats risk with uncertainty duties as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Duties to staff
 
 The audit finding could be framed as someone's failure. Inês frames it as a process gap: the upgrade checklist lacked a step for the PodSecurityPolicy replacement. Blame would discourage people from reporting future problems.
 
+Section four point three develops advanced risk and ethics with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section four point three, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section four point three treats risk with uncertainty duties as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Disclosure
 
 No misuse was detected, so regulatory notification is not required, but Beacon's board and the regulator's supervisory contact are informed in the regular risk report, as Beacon's policy requires for significant control gaps.
+
+Section four point four develops advanced risk and ethics with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section four point four, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section four point four treats risk with uncertainty duties as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Proportionality
 
 Controls must not stop claims processing; changes are staged to avoid harming policyholders waiting for payments.
 
+Section four point five develops advanced risk and ethics with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section four point five, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section four point five treats risk with uncertainty duties as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Beacon Mutual will not accept advanced work without a written trail.
+
 ### 4.6 Recording judgements
 
 Each ethical judgement, such as the disclosure decision, is written with reasons and who made it.
+
+Section four point six develops advanced risk and ethics with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section four point six, Prof. Sunita Rao expects advanced claims to carry owners and dates.
+
+Section four point six treats risk with uncertainty duties as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Beacon Mutual will not accept advanced work without a written trail.
 
 ### Reviewing the risk view
 
@@ -339,29 +489,85 @@ You will (1) compare designs for enforcing workload security across clusters; (2
 
 Design 1: Pod Security admission labels set by each team. Design 2: labels set centrally by GitOps, with a cluster-wide default of Restricted for unlabelled namespaces. Design 3: Design 2 plus a policy engine for extra rules, its policies distributed from one repository.
 
+Section five point one develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point one treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Central versus local
 
 Local control lets teams move quickly but recreates the original gap: labels forgotten. Central defaults make the safe choice automatic.
+
+Section five point two develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point two treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
+For section five point two, Beacon Mutual will not accept cloud work without a written trail.
 
 ### 5.3 Default level
 
 Kubernetes allows configuring cluster-wide defaults for the admission controller. Setting the default to Restricted means a new namespace is protected unless an exception is approved.
 
+Section five point three develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point three treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 5.4 Failure modes
 
 If the policy engine fails, Design 3 can fail closed for production namespaces; built-in admission runs inside the API server and has no separate availability risk.
+
+Section five point four develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point four treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Beacon Mutual will not accept cloud work without a written trail.
 
 ### 5.5 Exceptions
 
 Monitoring and node agents need Privileged; they get their own namespace with an exception record.
 
+Section five point five develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point five treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 5.6 Choice
 
 Design 3, with built-in admission as the foundation and the engine for registry and signature rules.
 
+Section five point six develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point six, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point six treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 5.7 Rollout
 
 Audit and warn modes first, then enforce.
+
+Section five point seven develops cloud and container security design with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section five point seven, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section five point seven treats alternatives central versus local as testable only when evidence and ticket IDs are recorded.
+
+For section five point seven, Beacon Mutual will not accept cloud work without a written trail.
+
+Section five point seven fails closed if cloud evidence is missing rather than guessing.
 
 ### Testing the design on paper
 
@@ -409,9 +615,23 @@ You will (1) evaluate policy sets on a labelled corpus; (2) measure recall and f
 
 Before enforcing, Inês compares two policy-engine rule sets on past deployments: P1, a broad set copied from an example, and P2, tuned to Beacon's workloads.
 
+Section six point one develops cloud and container security controlled with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section six point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section six point one treats the question corpus lab as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Corpus
 
 200 synthetic deployment manifests based on Beacon's recent changes, each labelled risky or not by two reviewers who agreed on the label guide beforehand.
+
+Section six point two develops cloud and container security controlled with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section six point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section six point two treats the question corpus lab as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Beacon Mutual will not accept cloud work without a written trail.
 
 ### Lab — Lab — policy evaluation
 
@@ -439,17 +659,47 @@ corpus 200 deployments, 24 risky
 
 Of 200 deployments, 24 are risky. P1 catches 18 (recall 0.75) with 10 false rejections (precision 0.64). P2 catches 22 (recall 0.92) with 1 false rejection (precision 0.96). P2 is better on both measures: it covers Beacon's actual risky patterns and avoids rules that misfire on Beacon's normal workloads.
 
+Section six point three develops cloud and container security controlled with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section six point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section six point three treats the question corpus lab as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Fairness of comparison
 
 Both sets run on the same corpus, labels were fixed before running, and the tuning of P2 used a different sample to avoid fitting the test set.
+
+Section six point four develops cloud and container security controlled with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section six point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section six point four treats the question corpus lab as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Remaining misses
 
 Two risky deployments pass both sets; both use a host path volume pattern not yet covered, which becomes a new rule.
 
+Section six point five develops cloud and container security controlled with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section six point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section six point five treats the question corpus lab as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 6.6 Decision
 
 Enforce P2, add the new rule, and re-evaluate quarterly.
+
+Section six point six develops cloud and container security controlled with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section six point six, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section six point six treats the question corpus lab as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Beacon Mutual will not accept cloud work without a written trail.
+
+Section six point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Reporting the evaluation
 
@@ -493,29 +743,79 @@ You will (1) integrate cluster security into Beacon's governance; (2) assign own
 
 The platform team owns the central policies; each product team owns its namespace exceptions; the security team owns evaluation and assurance; the risk committee owns acceptance of residual risk.
 
+Section seven point one develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point one treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Change management
 
 Cluster upgrades now include a checklist step: confirm admission configuration and run the behaviour tests before and after. The change board will not approve an upgrade without the test record.
+
+Section seven point two develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point two treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Risk reporting
 
 A monthly metric: share of namespaces enforced at the intended level, open exceptions and their age.
 
+Section seven point three develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point three treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 7.4 Framework mapping
 
 Beacon maps the controls to CSA CCM v4 domains and NIST SP 800-190 recommendations, so auditors can see coverage without new documents.
+
+Section seven point four develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point four treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Beacon Mutual will not accept cloud work without a written trail.
 
 ### 7.5 Shared responsibility
 
 Beacon uses a managed Kubernetes service; the provider secures the control plane, while Beacon configures admission and workloads. The provider's shared responsibility page is cited in the control record.
 
+Section seven point five develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point five treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
+
 ### 7.6 Training
 
 Short guidance for product teams explains levels and how to request exceptions.
 
+Section seven point six develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point six, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point six treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 7.7 Funding
 
 Option B's budget covers one engineer for a year; ongoing work goes into the platform team's plan.
+
+Section seven point seven develops cloud and container security organizational with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section seven point seven, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section seven point seven treats ownership change management risk as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, Beacon Mutual will not accept cloud work without a written trail.
 
 ### Auditor walkthrough
 
@@ -559,25 +859,69 @@ You will (1) handle conflicts between enforcement and operations; (2) manage leg
 
 Claims batch jobs run as root using an old image. Rewriting takes months. Inês grants a time-limited exception with compensating controls: dedicated nodes, no network access beyond the database, and monitoring.
 
+Section eight point one develops cloud and container security difficult with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eight point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section eight point one treats legacy batch vendor agent as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Vendor agent
 
 A vendor monitoring agent needs privileged access. Inês asks the vendor for documentation on why, limits it to its own namespace, and records the exception with annual review.
+
+Section eight point two develops cloud and container security difficult with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eight point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section eight point two treats legacy batch vendor agent as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Incident pressure
 
 During a claims outage, an engineer wants to disable enforcement to deploy a debug pod. The runbook gives a break-glass path: a pre-approved debug namespace at Baseline, logged and removed afterwards.
 
+Section eight point three develops cloud and container security difficult with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eight point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section eight point three treats legacy batch vendor agent as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Analytics notebooks
 
 Analysts need flexible environments. Restricted applies, and common needs are met by preapproved images.
+
+Section eight point four develops cloud and container security difficult with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eight point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section eight point four treats legacy batch vendor agent as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Beacon Mutual will not accept cloud work without a written trail.
 
 ### 8.5 Exceptions register
 
 Each exception has an owner, reason, compensating controls and expiry date.
 
+Section eight point five develops cloud and container security difficult with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eight point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section eight point five treats legacy batch vendor agent as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 8.6 Expiry
 
 Expired exceptions are flagged in the monthly metric.
+
+Section eight point six develops cloud and container security difficult with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eight point six, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section eight point six treats legacy batch vendor agent as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Beacon Mutual will not accept cloud work without a written trail.
+
+Section eight point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Patterns across cases
 
@@ -625,9 +969,25 @@ You will (1) lead the programme across teams; (2) provide assurance with measure
 
 Inês chairs a fortnightly working group with platform and product leads, keeping a visible plan and celebrating milestones.
 
+Section nine point one develops cloud and container security leadership with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section nine point one, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section nine point one treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 9.2 Assurance
 
 Each quarter the security team runs behaviour tests on 15 sample namespaces, measures exception age and counts exceptions.
+
+Section nine point two develops cloud and container security leadership with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section nine point two, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section nine point two treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Beacon Mutual will not accept cloud work without a written trail.
 
 ### Lab — Lab — quarterly assurance
 
@@ -651,17 +1011,49 @@ Q3: enforced 15/15 (100%), median days risky config live 12, open exceptions 4
 
 Q1: 6/15 namespaces pass (40%), mean exception age 61 days, 21 exceptions. Q2: 11/15 (73%), 38 days, 9. Q3: 15/15 (100%), 12 days, 4. Improvement is steady; the sample is small, so the board report gives counts and notes the sampling method.
 
+Section nine point three develops cloud and container security leadership with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section nine point three, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section nine point three treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Independent check
 
 Internal audit repeats the Q3 tests on a different sample and finds the same result.
+
+Section nine point four develops cloud and container security leadership with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section nine point four, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section nine point four treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Beacon Mutual will not accept cloud work without a written trail.
 
 ### 9.5 Board report
 
 A one-page summary: what happened, what changed, measured results, remaining exceptions.
 
+Section nine point five develops cloud and container security leadership with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section nine point five, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section nine point five treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Beacon Mutual will not accept cloud work without a written trail.
+
 ### 9.6 Sustaining
 
 Assurance continues quarterly; results feed the risk register.
+
+Section nine point six develops cloud and container security leadership with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section nine point six, Prof. Sunita Rao expects cloud claims to carry owners and dates.
+
+Section nine point six treats leadership assurance lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Beacon Mutual will not accept cloud work without a written trail.
+
+Section nine point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Reading the trend carefully
 
@@ -707,25 +1099,71 @@ You will (1) read research on cloud security critically; (2) judge relevance to 
 
 Inês reads Burns et al. (2016) on Borg, Omega and Kubernetes, Shu et al. (2017) on Docker Hub image vulnerabilities and Rahman et al. (2019) on security smells in infrastructure as code.
 
+Section ten point one develops research reading and critique with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section ten point one, Prof. Sunita Rao expects research claims to carry owners and dates.
+
+Section ten point one treats choosing papers burns shu as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Burns 2016
 
 Explains the design history of cluster managers. Useful context for why namespaces and admission exist; not a security evaluation.
+
+Section ten point two develops research reading and critique with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section ten point two, Prof. Sunita Rao expects research claims to carry owners and dates.
+
+Section ten point two treats choosing papers burns shu as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Beacon Mutual will not accept research work without a written trail.
 
 ### 10.3 Shu 2017
 
 Measured vulnerabilities in public images. Supports Beacon's registry rules; the data is several years old, so figures should not be quoted as current.
 
+Section ten point three develops research reading and critique with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section ten point three, Prof. Sunita Rao expects research claims to carry owners and dates.
+
+Section ten point three treats choosing papers burns shu as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Beacon Mutual will not accept research work without a written trail.
+
 ### 10.4 Rahman 2019
 
 Identified recurring security smells such as hard-coded secrets in scripts. Supports scanning Beacon's GitOps repository.
+
+Section ten point four develops research reading and critique with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section ten point four, Prof. Sunita Rao expects research claims to carry owners and dates.
+
+Section ten point four treats choosing papers burns shu as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Beacon Mutual will not accept research work without a written trail.
 
 ### 10.5 Standards
 
 NIST SP 800-190 and SP 800-207 give frameworks; they are guidance, not evidence of effectiveness.
 
+Section ten point five develops research reading and critique with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section ten point five, Prof. Sunita Rao expects research claims to carry owners and dates.
+
+Section ten point five treats choosing papers burns shu as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Beacon Mutual will not accept research work without a written trail.
+
 ### 10.6 Critique
 
 For each, Inês notes method, data age, and whether results transfer to a managed service.
+
+Section ten point six develops research reading and critique with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section ten point six, Prof. Sunita Rao expects research claims to carry owners and dates.
+
+Section ten point six treats choosing papers burns shu as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Beacon Mutual will not accept research work without a written trail.
 
 ### A structured critique template
 
@@ -771,25 +1209,79 @@ You will (1) plan and complete a substantial project; (2) define scope, method a
 
 Inês's final project: a reusable cluster security baseline for Beacon, with central labels, policy engine rules, upgrade checklist and assurance tests.
 
+Section eleven point one develops applied project with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eleven point one, Prof. Sunita Rao expects applied claims to carry owners and dates.
+
+Section eleven point one treats project scope method evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Beacon Mutual will not accept applied work without a written trail.
+
 ### 11.2 Scope
 
 Four clusters; excludes provider control plane and developer laptops.
+
+Section eleven point two develops applied project with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eleven point two, Prof. Sunita Rao expects applied claims to carry owners and dates.
+
+Section eleven point two treats project scope method evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Beacon Mutual will not accept applied work without a written trail.
+
+Section eleven point two fails closed if applied evidence is missing rather than guessing.
 
 ### 11.3 Method
 
 Build in staging, evaluate on the corpus, roll out by cluster in audit, warn, enforce order.
 
+Section eleven point three develops applied project with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eleven point three, Prof. Sunita Rao expects applied claims to carry owners and dates.
+
+Section eleven point three treats project scope method evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Beacon Mutual will not accept applied work without a written trail.
+
 ### 11.4 Evaluation
 
 Success means P2-level recall on the corpus, all four clusters enforced, and quarterly assurance at least 90%.
+
+Section eleven point four develops applied project with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eleven point four, Prof. Sunita Rao expects applied claims to carry owners and dates.
+
+Section eleven point four treats project scope method evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Beacon Mutual will not accept applied work without a written trail.
 
 ### 11.5 Outcome
 
 All criteria met by Q3; two exceptions remain with expiry dates.
 
+Section eleven point five develops applied project with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eleven point five, Prof. Sunita Rao expects applied claims to carry owners and dates.
+
+Section eleven point five treats project scope method evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Beacon Mutual will not accept applied work without a written trail.
+
+Section eleven point five fails closed if applied evidence is missing rather than guessing.
+
 ### 11.6 Presentation
 
 She presents to Fenwick examiners and Beacon's risk committee, with limits stated.
+
+Section eleven point six develops applied project with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section eleven point six, Prof. Sunita Rao expects applied claims to carry owners and dates.
+
+Section eleven point six treats project scope method evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Beacon Mutual will not accept applied work without a written trail.
+
+Section eleven point six fails closed if applied evidence is missing rather than guessing.
 
 ### Project timeline
 
@@ -839,21 +1331,63 @@ You will (1) review the course; (2) transfer methods to other contexts; (3) plan
 
 The course moved from an audit finding to a decision, evidence, design, evaluation, integration, difficult cases, assurance, research and a project.
 
+Section twelve point one develops final review and transfer with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section twelve point one, Prof. Sunita Rao expects final claims to carry owners and dates.
+
+Section twelve point one treats review transfer next steps as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Beacon Mutual will not accept final work without a written trail.
+
 ### 12.2 Transfer
 
 The same pattern applies to other cloud controls: storage access, identity, network policy.
+
+Section twelve point two develops final review and transfer with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section twelve point two, Prof. Sunita Rao expects final claims to carry owners and dates.
+
+Section twelve point two treats review transfer next steps as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Beacon Mutual will not accept final work without a written trail.
 
 ### 12.3 Next steps
 
 Inês plans to apply the method to identity permissions next.
 
+Section twelve point three develops final review and transfer with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section twelve point three, Prof. Sunita Rao expects final claims to carry owners and dates.
+
+Section twelve point three treats review transfer next steps as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Beacon Mutual will not accept final work without a written trail.
+
 ### 12.4 Learning
 
 She keeps reading standards updates and Kubernetes release notes for removed features.
 
+Section twelve point four develops final review and transfer with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section twelve point four, Prof. Sunita Rao expects final claims to carry owners and dates.
+
+Section twelve point four treats review transfer next steps as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Beacon Mutual will not accept final work without a written trail.
+
 ### 12.5 Sharing
 
 She writes an anonymised case for the practitioners' group.
+
+Section twelve point five develops final review and transfer with a Beacon Mutual note Inês Carvalho can demo offline.
+
+Under section twelve point five, Prof. Sunita Rao expects final claims to carry owners and dates.
+
+Section twelve point five treats review transfer next steps as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Beacon Mutual will not accept final work without a written trail.
+
+Section twelve point five fails closed if final evidence is missing rather than guessing.
 
 ### Self-assessment
 
