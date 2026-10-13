@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 118, engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090, suas resoluções com rubricas de 0 a 3 e três dos quatro laboratórios (capítulos 22, 28 e 29); os capítulos 31–50 (EX091–EX150) e o quarto laboratório estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120, suas resoluções com rubricas de 0 a 3 e os quatro laboratórios (capítulos 22, 28, 29 e 32); os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar a governança de dados de medidores e sensores de uma companhia de saneamento.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios rastreiam a linhagem a montante e lacunas de titularidade em um grafo sintético de *pipeline*, calculam taxas de aprovação de três regras de leitura de medidores, medem a pontualidade dos fluxos em relação a um nível de serviço às 06:00 e conciliam leituras de campo sintéticas com o faturamento. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1319,12 +1319,435 @@ Passar em testes com erros injetados não prova completude; declare os limites.
 - **EX088 — Contagem de detecções.** Quantos erros injetados foram detectados no início? *Rubrica:* 3 = dez de doze;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX089 — Correção das colunas trocadas.** Que verificação pega colunas trocadas? *Rubrica:* 3 = comparar a distribuição de cada coluna com o histórico;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX090 — Verificação versus validação.** A que pergunta a verificação responde? *Rubrica:* 3 = se os controles foram construídos do jeito certo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+<a id="ch-31"></a>
+
+## Capítulo 31 — Governança de dados: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar metadados e entradas de catálogo para dados governados; (2) automatizar a titularidade e a classificação; (3) tornar a governança visível para os usuários.
+
+### 31.1 O catálogo
+
+Kofi implanta um catálogo de dados para a cadeia de perdas. Cada conjunto de dados ganha uma entrada com sua descrição, dono, curador, classificação, regras de qualidade, vínculos de linhagem, agenda de atualização e prazo de retenção. Ele preenche as entradas dos sete nós a montante e do número do conselho e, depois, acrescenta os sistemas de origem. Quem procura o volume fornecido agora encontra uma única entrada oficial, em vez de várias tabelas parecidas com diferenças pouco claras. Ele explica que o catálogo transforma decisões de governança em informação que as pessoas encontram justamente quando estão procurando dados.
+
+### 31.2 Automatizando os metadados
+
+Entradas de catálogo mantidas à mão ficam desatualizadas. Kofi automatiza o que é possível: detalhes de esquema, horários de atualização e resultados de qualidade são puxados toda noite do *data warehouse* e da biblioteca de regras. Donos e descrições continuam manuais, mas são verificados quanto à defasagem; entradas sem revisão há um ano são sinalizadas aos curadores. Ele observa que a automação mantém corretos os fatos técnicos, enquanto a revisão humana mantém correto o significado, e que os dois exigem processos de manutenção diferentes, porque mudam por motivos diferentes e em ritmos diferentes. Os curadores tratam as entradas sinalizadas todo mês.
+
+### 31.3 A classificação na prática
+
+Cada conjunto de dados é classificado como público, interno, confidencial ou restrito. Os volumes de faturamento de clientes são confidenciais; o cadastro de serviços prioritários é restrito. Kofi vincula as classificações às políticas de acesso do *data warehouse*, de modo que mudar uma classificação muda quem pode ler os dados sem pedidos separados. Quando um analista cria uma tabela derivada que cruza dados confidenciais de faturamento, a classificação é herdada automaticamente. Ele testa a herança com tabelas sintéticas para confirmar que dados derivados nunca recebem classificação inferior à de suas entradas. Os pedidos de acesso caem, porque as permissões acompanham a classificação.
+
+### 31.4 Governança visível
+
+Kofi acrescenta selos de qualidade às entradas do catálogo, mostrando a taxa de aprovação mais recente em todas as regras e o desempenho em relação ao nível de serviço. Os usuários conseguem ver se um conjunto de dados está confiável no momento, antes de usá-lo. Os engenheiros de rede passam a consultar os selos antes de planejar reparos e a questionar os donos sobre notas ruins. A Profa. Varga observa que a visibilidade cria uma pressão saudável, porque os donos preferem corrigir os problemas a deixar que colegas vejam notas ruins persistentes, e os usuários ganham a informação de que precisam para julgar a adequação. Os selos apontam para a descrição das regras por trás de cada nota.
+
+### Exemplo resolvido
+
+Kofi monta as entradas de catálogo da cadeia de perdas, automatiza os metadados técnicos com verificação de entradas defasadas, vincula a classificação ao acesso com herança e acrescenta selos de qualidade que os engenheiros consultam.
+
+> **Caso sintético.** O catálogo é sintético.
+
+### Erros e limites
+
+Selos podem enganar quando as regras são fracas; vincule-os à descrição das regras.
+
+### Exercícios
+
+- **EX091 — Campos automatizados.** Quais metadados são puxados automaticamente? *Rubrica:* 3 = detalhes de esquema, horários de atualização e resultados de qualidade;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
+- **EX092 — Regra de herança.** Que classificação recebe uma tabela derivada? *Rubrica:* 3 = nunca inferior à de suas entradas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX093 — Efeito dos selos.** Como os selos mudaram o comportamento dos engenheiros? *Rubrica:* 3 = eles consultam os selos e questionam os donos sobre notas ruins;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Governança de dados: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) conciliar dados entre sistemas; (2) quantificar as lacunas de conciliação; (3) atribuir e acompanhar as quebras de conciliação.
+
+### 32.1 Por que conciliar
+
+O número de perdas subtrai o volume faturado do volume fornecido. Se o faturamento perde leituras de medidores, o volume faturado cai e as perdas parecem maiores do que realmente são. Kofi concilia as leituras de campo dos medidores com as leituras registradas no faturamento, para medir com que confiabilidade os dados passam de um sistema ao outro. A conciliação é um dos controles de dados mais antigos, usado na contabilidade muito antes dos computadores, e continua eficaz porque compara registros independentes dos mesmos fatos, em vez de confiar em qualquer um deles. Kofi a executa todo mês.
+
+### Laboratório — Conciliando 8.000 leituras de campo com os registros de faturamento
+
+```python
+"""Reconcile monthly meter reads between field app and billing system (stdlib only)."""
+import random
+random.seed(27)
+field = {f"M{i:05d}": round(random.uniform(10, 40), 1) for i in range(8000)}
+billing = dict(field)
+for k in random.sample(list(field), 120): del billing[k]                    # lost in transfer
+for k in random.sample(list(billing), 60): billing[k] = round(billing[k] * 10, 1)  # unit error
+missing = [k for k in field if k not in billing]
+mismatch = [k for k in billing if abs(billing[k] - field[k]) > 0.05]
+print(f"field reads {len(field)}; missing in billing {len(missing)}; value mismatches {len(mismatch)}")
+print(f"reconciled share {100*(len(field)-len(missing)-len(mismatch))/len(field):.2f}%")
+```
+
+Execute com `python3 lab_reconcile.py`. Saída verificada:
+
+```text
+field reads 8000; missing in billing 120; value mismatches 60
+reconciled share 97.75%
+```
+
+### 32.2 Resultados da conciliação
+
+O laboratório compara oito mil leituras de campo sintéticas com o faturamento. Cento e vinte leituras simplesmente não existem no faturamento, e sessenta aparecem com valor diferente. A parcela conciliada, isto é, leituras presentes e com valores coincidentes, é de 97,75 por cento. Kofi explica que os dois tipos de quebra têm causas e donos diferentes: leituras ausentes costumam vir de falhas de transferência, enquanto divergências de valor costumam vir de correções manuais feitas no faturamento que não foram aplicadas de volta ao repositório de dados dos medidores. Cada tipo de quebra é contado separadamente.
+
+### 32.3 Efeito sobre as perdas
+
+Kofi estima o efeito das leituras ausentes sobre o número de perdas. Como cada leitura ausente reduz o volume faturado, as perdas ficam superestimadas. Ele calcula o volume associado às leituras ausentes nos dados sintéticos e mostra que ele eleva visivelmente as perdas nos dois distritos com mais quebras. Isso explica por que esses distritos pareciam perder mais água do que distritos vizinhos com tubulações semelhantes, e evita que equipes de reparo sejam enviadas aos lugares errados. Os números corrigidos são compartilhados com os planejadores.
+
+### 32.4 Acompanhando as quebras
+
+Cada quebra vira um registro com dono, causa e situação. As falhas de transferência vão para a equipe de integração; as divergências, para o faturamento. Kofi define a meta de resolver as quebras em dez dias úteis e informa o envelhecimento toda semana. Quebras mais antigas que a meta são escaladas ao comitê de governança. A Profa. Varga explica que conciliação sem acompanhamento das quebras mede os problemas sem corrigi-los, e que os relatórios de envelhecimento mostram se as equipes estão dando conta ou ficando para trás. O primeiro relatório de envelhecimento mostra que a maioria das quebras é fechada dentro da meta.
+
+### Exemplo resolvido
+
+Kofi concilia 8.000 leituras de campo, encontra 120 ausentes no faturamento e 60 divergências, com 97,75 por cento conciliados, relaciona as quebras às perdas superestimadas e acompanha as quebras por dono e por idade.
+
+> **Caso sintético.** As leituras são sintéticas; as saídas vêm de lab_reconcile.py.
+
+### Erros e limites
+
+Conciliar um sistema consigo mesmo não prova nada; use registros independentes.
+
+### Exercícios
+
+- **EX094 — Parcela conciliada.** Que parcela das leituras foi conciliada? *Rubrica:* 3 = 97,75%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX095 — Efeito das leituras ausentes.** Como as leituras ausentes afetam as perdas? *Rubrica:* 3 = elas as superestimam;; 2 = correto;; 1 = subestimam;; 0 = nenhuma.
+- **EX096 — Dono das divergências.** Quem é dono das divergências de valor? *Rubrica:* 3 = o faturamento;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Governança de dados: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar a governança de dados à segurança física; (2) projetar um suprimento de dados resiliente para a operação; (3) planejar modos degradados.
+
+### 33.1 Dados e segurança
+
+Alguns dados da Tidewater afetam a segurança física. As leituras de pressão e vazão orientam decisões de manobra de válvulas; as leituras de cloro protegem a saúde pública. Kofi distingue esses dados relevantes para a segurança dos dados de negócio. Mudanças em suas regras de qualidade, fontes ou processamento exigem a revisão do engenheiro de segurança operacional, além da do dono dos dados. Ele explica que um processo de governança desenhado para dados de faturamento, em que os erros podem ser corrigidos depois, não basta para dados cujos erros podem levar a ações inseguras. Kofi lista esses conjuntos de dados explicitamente.
+
+### 33.2 Suprimento resiliente
+
+Os operadores precisam dos dados dos sensores durante incidentes, justamente quando redes e sistemas estão sob estresse. Kofi revisa a resiliência do suprimento de dados dos sensores: caminhos de comunicação redundantes para os locais críticos, painéis locais nas estações de tratamento e um segundo servidor de histórico em outro prédio. Ele descobre que o painel de perdas depende de um único servidor do *data warehouse*, o que é aceitável para o planejamento, mas não para a resposta a incidentes. Ele recomenda que a resposta a incidentes nunca dependa da plataforma analítica para leituras críticas. Os operadores aprovam a recomendação por escrito.
+
+### 33.3 Modos degradados
+
+Kofi escreve procedimentos para modos degradados: o que os operadores fazem quando os dados dos sensores estão ausentes, atrasados ou sob suspeita de erro. Os procedimentos incluem usar leituras manuais feitas pela equipe local, comparar com sensores vizinhos e marcar no registro de operação as decisões tomadas com dados degradados. Ele testa os procedimentos em um exercício de mesa com os operadores, que apontam que as leituras manuais precisam de formulários e unidades padronizados para serem utilizáveis, o que ele acrescenta ao procedimento. Um segundo exercício, com os formulários revisados, transcorre sem problemas, e os operadores guardam cópias na sala de controle.
+
+### 33.4 Aprendendo com incidentes
+
+Depois de cada incidente operacional, Kofi propõe uma revisão de dados que pergunta se os dados contribuíram, se os controles de qualidade detectaram os problemas e se os procedimentos de modo degradado funcionaram. As constatações retroalimentam controles e procedimentos. A Profa. Varga relaciona isso à prática da engenharia de segurança, em que aprender com incidentes sem buscar culpados é essencial, e observa que a governança de dados em contextos de segurança deve tomar emprestadas essas práticas, em vez de depender só de verificações de conformidade. A primeira revisão desse tipo, depois do rompimento de uma adutora, constata que um alarme de pressão foi ignorado porque já havia disparado falsamente muitas vezes.
+
+### Exemplo resolvido
+
+Kofi separa os dados relevantes para a segurança, com revisão adicional, avalia a resiliência do suprimento dos sensores, escreve e testa procedimentos de modo degradado e acrescenta revisões de dados após incidentes.
+
+> **Caso sintético.** Os cenários são sintéticos.
+
+### Erros e limites
+
+Tratar dados de segurança como dados de negócio subestima o dano.
+
+### Exercícios
+
+- **EX097 — Revisor adicional.** Quem mais revisa mudanças em dados relevantes para a segurança? *Rubrica:* 3 = o engenheiro de segurança operacional;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX098 — Dependência do painel.** Por que a resposta a incidentes não deve depender do painel de perdas? *Rubrica:* 3 = ele depende de um único servidor do *data warehouse*;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX099 — Constatação do exercício de mesa.** O que os operadores apontaram? *Rubrica:* 3 = as leituras manuais precisam de formulários e unidades padronizados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Governança de dados: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar os controles de governança entre equipes e sistemas; (2) gerenciar mudanças nas interfaces; (3) testar de ponta a ponta.
+
+### 34.1 Juntando as peças
+
+A esta altura Kofi já tem donos, regras, linhagem, entradas de catálogo, conciliação e relatórios de serviço, construídos em sistemas diferentes por equipes diferentes. Integrar significa garantir que funcionem juntos: as falhas de regras aparecem nos selos do catálogo, a linhagem aponta para os donos, as quebras de conciliação chegam às filas certas e os relatórios de serviço incluem as causas vindas das revisões de incidentes. Ele constrói um mapa de integração que mostra cada conexão entre os componentes de governança e o sistema que implementa cada uma. O mapa mostra quais conexões são automáticas e quais dependem de alguém se lembrar de um passo manual, e esses passos manuais viram candidatos à automação.
+
+### 34.2 Mudanças nas interfaces
+
+Kofi introduz um processo de aviso de mudança para as interfaces da cadeia de perdas. Qualquer equipe que altere um campo, uma agenda ou um formato deve avisar os donos afetados com duas semanas de antecedência, junto com um arquivo de teste. Quando o fornecedor dos medidores planeja uma atualização de *firmware* que muda a precisão dos carimbos de tempo, o aviso permite que o faturamento ajuste seu analisador antes de a mudança entrar em produção. Antes, mudanças assim só eram descobertas depois das falhas, quando leituras já tinham sido perdidas ou atribuídas errado. O fornecedor aceita o processo e indica um contato para os avisos.
+
+### 34.3 Testes de ponta a ponta
+
+Kofi projeta um teste de ponta a ponta que empurra um dia sintético de dados, vindo de medidores e sensores simulados, por todos os sistemas até o número de perdas. O teste verifica se os valores esperados aparecem em cada etapa, se os controles disparam diante de erros injetados e se os selos do catálogo são atualizados. A primeira execução revela que os resultados da conciliação chegam à fila de quebras, mas não ao catálogo, de modo que o selo mostra números defasados. Ele corrige a conexão e executa o teste de novo com sucesso. Agora o teste roda automaticamente depois de cada versão.
+
+### 34.4 Titularidade da integração
+
+Kofi observa que os problemas de integração ficam entre as equipes, então por padrão ninguém é dono deles. Ele propõe que o líder de governança de dados seja dono do teste de ponta a ponta e do mapa de integração, e que cada equipe seja dona de seus componentes. A Profa. Varga explica que a titularidade da integração evita a falha comum em que cada componente funciona isoladamente, mas o conjunto falha, e que alguém precisa responder por como as peças funcionam juntas através das fronteiras organizacionais. O comitê de governança confirma a atribuição e acrescenta o resultado do teste de ponta a ponta ao seu painel mensal de saúde da governança.
+
+### Exemplo resolvido
+
+Kofi mapeia as conexões entre os componentes de governança, introduz avisos de mudança que capturam uma alteração nos carimbos de tempo, constrói um teste de ponta a ponta que encontra um selo defasado e atribui a titularidade da integração.
+
+> **Caso sintético.** Os sistemas são sintéticos.
+
+### Erros e limites
+
+Testes de componentes aprovados não significam que o sistema funciona.
+
+### Exercícios
+
+- **EX100 — Prazo do aviso.** Com quanta antecedência as mudanças de interface precisam ser avisadas? *Rubrica:* 3 = duas semanas, com um arquivo de teste;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX101 — Constatação de ponta a ponta.** O que a primeira execução de ponta a ponta revelou? *Rubrica:* 3 = os resultados da conciliação não chegavam ao catálogo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX102 — Dono da integração.** Quem é dono do teste de ponta a ponta? *Rubrica:* 3 = o líder de governança de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar a governança de uma nova fonte de dados; (2) aplicar as lições do primeiro ateliê; (3) defender o projeto sob questionamento.
+
+### 35.1 A nova fonte
+
+O segundo ateliê de projeto introduz uma nova fonte de dados: registradores acústicos que escutam vazamentos nas tubulações e enviam resumos diários de ruído. A Tidewater planeja instalar dois mil registradores. Kofi precisa projetar a governança dos dados desses registradores, incluindo donos, regras, linhagem até o processo de perdas, questões de privacidade e retenção. O enunciado exige que o projeto reaproveite os componentes existentes sempre que possível e justifique qualquer componente novo, refletindo a lição de que a governança deve escalar sem reconstruir tudo. A instalação está prevista para dois anos.
+
+### 35.2 Reaproveitando componentes
+
+Kofi reaproveita a biblioteca de regras para as verificações de faixa e de completude, o catálogo para os metadados, o processo de aviso de mudança para a interface com o fornecedor e o padrão de conciliação para comparar os alertas dos registradores com os vazamentos confirmados pelas equipes de reparo. Ele acrescenta um único componente novo: um *model card* que descreve como o algoritmo do fornecedor transforma ruído em probabilidade de vazamento, incluindo sua taxa conhecida de falsos positivos. Ele explica que saídas algorítmicas precisam de documentação própria, porque sua qualidade depende de dados de treinamento que os usuários não conseguem ver. O fornecedor informa a taxa.
+
+### 35.3 Questões de privacidade
+
+Registradores instalados em tubulações em frente a residências poderiam captar sons além do ruído da tubulação. Kofi consulta a especificação do fornecedor e confirma que o dispositivo registra apenas resumos de frequência, não áudio. Ele registra isso na avaliação de impacto sobre a proteção de dados e exige que o fornecedor avise qualquer mudança que passe a captar áudio. A banca questiona se os resumos poderiam revelar padrões de atividade doméstica. Ele admite a possibilidade para registradores próximos a uma única residência e propõe agregar os resumos diários antes que os analistas os vejam. A banca aceita a proposta com uma cláusula de revisão.
+
+### 35.4 Defendendo o projeto
+
+A banca testa o projeto de Kofi com cenários: uma atualização de *firmware* aumenta os falsos positivos, os registradores de um distrito param de reportar e um jornalista pergunta se a Tidewater escuta as casas. Ele responde a cada um usando os componentes e registros de seu projeto. A banca nota uma melhora em relação ao primeiro ateliê, sobretudo na antecipação de falhas e das preocupações das pessoas. A Profa. Varga comenta que os melhores projetos mostram seu raciocínio, para que os revisores possam testá-los em vez de simplesmente confiar no projetista. A banca aprova o projeto, pedindo pequenas mudanças de redação.
+
+### Exemplo resolvido
+
+Kofi projeta a governança dos registradores acústicos reaproveitando regras, catálogo, avisos e conciliação, acrescenta um *model card*, trata a privacidade com resumos e agregação e defende o projeto diante de cenários.
+
+> **Caso sintético.** Os registradores são sintéticos.
+
+### Erros e limites
+
+Garantias de fornecedores precisam de verificação; consulte as especificações.
+
+### Exercícios
+
+- **EX103 — Componente novo.** Que componente novo Kofi acrescentou? *Rubrica:* 3 = um *model card* para o algoritmo de vazamentos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX104 — Verificação de áudio.** Os registradores gravam áudio? *Rubrica:* 3 = não, apenas resumos de frequência;; 2 = correto;; 1 = sim;; 0 = nenhuma.
+- **EX105 — Elogio da banca.** Que melhora a banca notou? *Rubrica:* 3 = a antecipação de falhas e das preocupações das pessoas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Governança de dados: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) manter os controles de governança eficientes à medida que os dados crescem; (2) medir o custo dos controles; (3) priorizar os controles pelo valor.
+
+### 36.1 Crescimento
+
+As leituras dos medidores inteligentes passam de diárias a horárias à medida que a Tidewater atualiza os medidores, o que multiplica o volume por vinte e quatro. Os registradores acústicos acrescentam ainda mais. Kofi estima que a biblioteca de regras levaria muito mais tempo por noite no novo volume se fosse executada sem mudanças. Ele explica que os controles de governança são cargas de trabalho com custos, e que projetos que funcionam na escala de hoje podem falhar quando os volumes aumentam, provocando verificações atrasadas ou controles pulados que minam toda a abordagem de governança. Kofi apresenta a estimativa antes de a troca de medidores começar, para que as mudanças fiquem prontas a tempo.
+
+### 36.2 Tornando os controles eficientes
+
+Kofi altera as regras para processar apenas registros novos e alterados, em vez de históricos completos, particiona os dados por distrito para que as verificações rodem em paralelo e leva as verificações simples de faixa para a etapa de ingestão, onde os dados já estão sendo lidos. Ele mede o tempo de execução em um conjunto de dados sintético no novo volume e confirma que as verificações noturnas agora terminam bem antes do prazo da manhã. Ele documenta as escolhas de projeto para que futuros engenheiros entendam por que as verificações estão estruturadas assim. As verificações de faixa na ingestão também rejeitam leituras ruins mais cedo.
+
+### 36.3 Custo dos controles
+
+Kofi registra o custo computacional e o tempo de pessoal de cada controle. Uma comparação detalhada de distribuições em todas as colunas custa muito mais do que suas constatações justificam para tabelas de baixo risco. Ele propõe uma frequência baseada em risco: dados de alto risco verificados continuamente, de risco médio diariamente e de baixo risco semanalmente. O comitê de governança aprova a abordagem. Ele observa que a governança disputa recursos com outros trabalhos, de modo que mostrar o valor em relação ao custo ajuda a manter o apoio dos gestores que precisam financiá-la. O nível de risco de cada conjunto de dados fica registrado no catálogo, para que a agenda decorra automaticamente da classificação.
+
+### 36.4 O valor dos controles
+
+Para priorizar, Kofi lista, para cada controle, os problemas que ele detectou em seis meses e o impacto deles. Alguns controles não encontraram nada, o que pode significar que o risco não existe ou que o controle é fraco. Ele testa os controles silenciosos por injeção antes de aposentar qualquer um, e aposenta dois que duplicam verificações mais fortes. A Profa. Varga enfatiza que controles que nunca disparam devem ser testados, e não presumidos inúteis, já que o silêncio pode refletir sucesso ou falha. Os demais controles silenciosos permanecem, porque a injeção mostrou que cada um ainda detecta os erros para os quais foi projetado.
+
+### Exemplo resolvido
+
+Kofi prepara os controles para os dados horários dos medidores com verificações incrementais, particionadas e antecipadas, registra o custo dos controles, aplica frequência baseada em risco e testa os controles silenciosos antes de aposentar os duplicados.
+
+> **Caso sintético.** Os volumes são sintéticos.
+
+### Erros e limites
+
+Aposentar controles silenciosos sem testá-los pode remover uma proteção necessária.
+
+### Exercícios
+
+- **EX106 — Crescimento do volume.** Por quanto a leitura horária multiplica o volume? *Rubrica:* 3 = vinte e quatro vezes;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX107 — Mudança de eficiência.** Cite uma mudança de eficiência. *Rubrica:* 3 = processamento incremental, partições por distrito ou verificações na ingestão;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX108 — Controles silenciosos.** O que Kofi fez antes de aposentar controles silenciosos? *Rubrica:* 3 = testou-os por injeção;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Governança de dados: operação
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir a governança como operação diária; (2) tratar incidentes de dados; (3) manter *runbooks* e plantão.
+
+### 37.1 Operação diária
+
+A governança precisa de rotinas. Kofi define um ciclo diário: os controles noturnos rodam, os alertas chegam aos donos até as sete da manhã, os curadores fazem a triagem dos alertas até as nove e a visão matinal das perdas é publicada com os selos de qualidade. Toda semana, os donos revisam as tendências e o envelhecimento das quebras. Todo mês, o comitê de governança revisa os relatórios de serviço e as decisões. Ele documenta o ciclo em um calendário de operação, para que todos saibam quando esperar informações e quando precisam agir sobre elas. O calendário é compartilhado com todos os donos e curadores, e lembretes são enviados automaticamente antes de cada reunião de revisão.
+
+### 37.2 Incidentes de dados
+
+Um incidente de dados é um evento em que a qualidade ou a disponibilidade dos dados cai a ponto de afetar decisões. Kofi define níveis de severidade, desde a falta de dados de um único distrito até um número de perdas errado enviado ao regulador. Cada nível tem tempos de resposta, regras de comunicação e um líder. Quando uma extração do faturamento falha em um dia de envio de relatório, o líder do incidente avisa o contato do regulador de que os números chegarão com um dia de atraso, em vez de enviar números estimados em silêncio. O contato do regulador agradece à Tidewater pelo aviso antecipado.
+
+### 37.3 Runbooks
+
+Para os alertas mais comuns, Kofi escreve *runbooks*: guias passo a passo que explicam como confirmar o problema, as causas prováveis, as correções e quem deve ser informado. O *runbook* de um sensor de vazão travado explica como comparar com os sensores vizinhos, pedir uma visita ao local e marcar os dados afetados. Ele testa os *runbooks* pedindo a um curador que não os escreveu que siga cada um diante de um incidente sintético, e revisa os passos que causam confusão durante o teste. Os *runbooks* ficam guardados junto aos alertas que cobrem, de modo que o link aparece em cada mensagem de alerta.
+
+### 37.4 Plantão
+
+Alertas de dados podem ocorrer de madrugada. Kofi propõe uma escala de plantão entre os engenheiros de dados para os dados críticos, como os fluxos de sensores relevantes para a segurança, com escalonamento claro para os engenheiros de operação. Alertas não críticos esperam até a manhã. Ele revisa o volume de alertas para garantir que o pessoal de plantão não seja acordado por questões que poderiam esperar. A Profa. Varga observa que uma operação sustentável exige atenção à carga de trabalho das pessoas, porque engenheiros de plantão exaustos cometem erros e vão embora. Os limiares que acordam pessoas sem necessidade são ajustados depois de cada revisão mensal dos alertas noturnos e de seus desfechos.
+
+### Exemplo resolvido
+
+Kofi define rotinas de governança diárias, semanais e mensais, estabelece a severidade dos incidentes de dados com comunicação ao regulador, testa os *runbooks* com um curador e desenha uma escala de plantão sustentável.
+
+> **Caso sintético.** A operação é sintética.
+
+### Erros e limites
+
+Enviar estimativas em silêncio destrói a confiança; comunique os atrasos.
+
+### Exercícios
+
+- **EX109 — Horário da triagem.** Até quando os curadores fazem a triagem dos alertas? *Rubrica:* 3 = até as nove da manhã;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX110 — Falha no dia do relatório.** O que o líder do incidente fez quando uma extração falhou no dia do relatório? *Rubrica:* 3 = avisou o regulador de que os números atrasariam um dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX111 — Teste dos runbooks.** Como os *runbooks* são testados? *Rubrica:* 3 = um curador que não os escreveu os segue diante de um incidente sintético;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Governança de dados: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar a governança com as pessoas que usam os dados; (2) reunir evidências de utilidade; (3) fazer ajustes com base nas constatações.
+
+### 38.1 Perguntas de validação
+
+A verificação mostrou que os controles funcionam como projetados; a validação pergunta se o projeto atende aos usuários. Kofi entrevista engenheiros de rede, analistas de faturamento, a gerente de relatórios regulatórios e duas pessoas da operação. Ele pergunta se confiam mais no número de perdas do que há um ano, se os selos e alertas ajudam no trabalho e o que ainda causa problemas. Ele também verifica se as equipes de reparo encontraram vazamentos nos distritos que o número aprimorado priorizou, o que é uma medida de resultado. As entrevistas seguem um roteiro escrito, para que as respostas possam ser comparadas com justiça.
+
+### 38.2 Constatações
+
+Os usuários relatam mais confiança e citam os selos e a conciliação. Os engenheiros de rede dizem que as perdas por distrito agora batem melhor com a experiência de campo. Porém, os analistas de faturamento acham alguns alertas confusos, porque os nomes das regras são técnicos. A equipe de operação raramente usa o catálogo e prefere ligar para colegas. As equipes de reparo encontraram vazamentos confirmados a uma taxa maior nos distritos priorizados do que antes, embora Kofi observe que outras mudanças, como novas equipes, também podem explicar parte da melhora. Kofi relata essas constatações ao comitê de governança, incluindo as negativas, para que o quadro seja equilibrado e crível.
+
+### 38.3 Ajustes
+
+Kofi reescreve as mensagens de alerta em linguagem simples, com ações sugeridas. Para a equipe de operação, ele leva as informações principais do catálogo para o painel da sala de controle que ela já usa, em vez de esperar que visite o catálogo. Ele planeja uma revisão de acompanhamento em seis meses. Ele observa que a validação às vezes mostra que bons controles ficam sem uso porque não se encaixam no modo como as pessoas trabalham, e que adaptar a forma de entrega pode importar tanto quanto aprimorar os controles. Os analistas de faturamento confirmam que é muito mais fácil agir com base nos alertas reescritos.
+
+### 38.4 Evidências de valor
+
+Kofi reúne as evidências de validação para o comitê de governança: os temas das entrevistas, a comparação das confirmações de vazamento com suas ressalvas e o uso dos selos e do catálogo. A Profa. Varga lembra-o de separar o que os usuários disseram do que foi medido, e de evitar afirmar que a governança causou a melhora na localização de vazamentos sem evidências mais fortes. O comitê aceita as evidências como animadoras e pede um desenho de comparação melhor para o ano seguinte. Kofi concorda em trabalhar com a equipe de análise em uma comparação que leve em conta as mudanças de equipes e os padrões sazonais.
+
+### Exemplo resolvido
+
+Kofi entrevista usuários e verifica as confirmações de vazamento, encontra mais confiança, mas alertas confusos e um catálogo sem uso, reescreve os alertas, leva informações aos painéis da sala de controle e relata as evidências com ressalvas.
+
+> **Caso sintético.** As entrevistas e os resultados são sintéticos.
+
+### Erros e limites
+
+A satisfação dos usuários, sozinha, não demonstra eficácia; combine-a com medidas de resultado.
+
+### Exercícios
+
+- **EX112 — Queixa do faturamento.** O que confundia os analistas de faturamento? *Rubrica:* 3 = os nomes técnicos das regras nos alertas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX113 — Correção para a operação.** Como Kofi alcançou a equipe de operação? *Rubrica:* 3 = com as informações principais do catálogo no painel da sala de controle;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX114 — Cautela causal.** Contra o que a Profa. Varga alertou? *Rubrica:* 3 = afirmar que a governança causou a melhora na localização de vazamentos sem evidências mais fortes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Governança de dados: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) manter a governança sustentável enquanto pessoas e sistemas mudam; (2) gerenciar a transferência de conhecimento; (3) aposentar controles e dados obsoletos.
+
+### 39.1 As pessoas mudam
+
+Donos e curadores mudam de função. Kofi descobre que, quando a curadora do faturamento saiu, ninguém atualizou os dados de referência das tarifas por dois meses. Ele propõe listas de verificação de passagem para os papéis de governança, substitutos para cada dono e curador e uma confirmação anual de que os ocupantes ainda exercem seus papéis. Os registros de titularidade no catálogo são vinculados ao diretório de funcionários, de modo que um desligamento dispara um lembrete ao líder de governança para designar um sucessor. Os substitutos participam das revisões mensais dos donos, e assim já conhecem as questões em aberto quando precisam assumir um papel.
+
+### 39.2 Transferência de conhecimento
+
+Muito do conhecimento de governança está na cabeça das pessoas: por que um limiar foi definido, qual contato do fornecedor de fato resolve os problemas. Kofi incentiva os donos a escrever notas curtas nos registros de decisão e nos *runbooks*. Ele conduz uma sessão em que curadores que saem e que chegam percorrem juntos as quebras em aberto. Ele explica que uma governança manutenível depende de razões registradas, pois, sem elas, as pessoas novas desfazem escolhas sensatas ou preservam escolhas ultrapassadas sem saber por que existem. A sessão é registrada em notas e repetida sempre que um papel de curador muda de mãos.
+
+### 39.3 Aposentando coisas
+
+Conjuntos de dados e controles que não são mais necessários continuam custando esforço e carregando risco. Kofi introduz uma revisão anual das entradas do catálogo, aposentando os conjuntos de dados sem uso recente depois de consultar os donos e aplicar as regras de retenção. Ele encontra extrações antigas com dados de clientes usadas pela última vez há anos e providencia sua eliminação, com registro das aprovações. A aposentadoria de controles segue a abordagem do teste por injeção dos capítulos anteriores. A revisão também encontra três tabelas que ninguém sabe explicar, que são arquivadas e sinalizadas até que se identifique um dono ou que possam ser eliminadas.
+
+### 39.4 Sustentando o esforço
+
+Kofi mede o esforço de governança: as horas gastas por donos e curadores a cada mês. Ele constata que o esforço está concentrado em poucas pessoas, o que traz risco de esgotamento e de pontos únicos de falha. Ele propõe distribuir as tarefas de curadoria e automatizar as verificações repetitivas. A Profa. Varga observa que a governança muitas vezes fracassa não por mau projeto, mas por cansaço, quando os participantes entusiasmados do início se esgotam, e que o esforço sustentável precisa ser planejado tão deliberadamente quanto qualquer controle. O comitê de governança concorda em incluir o tempo de curadoria nos planos de trabalho, para que esse trabalho seja reconhecido, e não feito por cima das outras tarefas.
+
+### Exemplo resolvido
+
+Kofi acrescenta listas de passagem, substitutos e vínculos com o diretório, registra as razões para transferir conhecimento, aposenta extrações antigas com aprovação e distribui o esforço de curadoria para evitar o cansaço.
+
+> **Caso sintético.** Os papéis são sintéticos.
+
+### Erros e limites
+
+Uma governança que depende de poucos entusiastas é frágil; planeje a rotatividade.
+
+### Exercícios
+
+- **EX115 — Saída da curadora.** O que aconteceu quando a curadora do faturamento saiu? *Rubrica:* 3 = os dados de referência das tarifas ficaram dois meses sem atualização;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX116 — Gatilho do desligamento.** O que dispara a designação de um sucessor? *Rubrica:* 3 = os vínculos com o diretório, que lembram o líder de governança;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX117 — Risco do esforço.** Que risco o esforço concentrado criava? *Rubrica:* 3 = esgotamento e pontos únicos de falha;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) reverificar a cadeia governada depois das mudanças; (2) comparar com o primeiro laboratório; (3) relatar as lacunas residuais.
+
+### 40.1 Escopo
+
+O segundo laboratório de verificação repete os testes do primeiro e acrescenta novos para os componentes construídos desde então: herança de classificação no catálogo, encaminhamento das quebras de conciliação, avisos de mudança, modos degradados e regras para os dados dos registradores. Kofi atualiza o plano de verificação com cada requisito, controle, teste e critério de aprovação. Ele inclui também testes para o volume de dados horário, já que mudanças de desempenho poderiam fazer os controles perderem seus prazos e, portanto, falharem mesmo com a lógica correta. Kofi acrescenta ainda um inventário de todas as ferramentas que podem ler ou gravar dados governados, que passa a fazer parte do plano.
+
+### 40.2 Resultados
+
+Todos os doze erros injetados originalmente são detectados, o que confirma que as correções do primeiro laboratório continuam eficazes. Dos testes novos, a maioria passa. Dois falham: uma tabela derivada criada por uma ferramenta pouco usada não herdou a classificação, e um alerta de modo degradado chegou à equipe errada por causa de uma lista de contatos desatualizada. Os testes de desempenho mostram que as verificações terminam antes do prazo no volume horário, com folga para crescer. Kofi observa que as duas falhas envolvem partes do sistema que foram acrescentadas ou alteradas fora do processo principal de versões, o que sugere que falta ali uma etapa de revisão.
+
+### 40.3 Corrigindo as lacunas
+
+Kofi trabalha com a equipe do *data warehouse* para aplicar a herança de classificação à ferramenta pouco usada e substitui a lista de contatos por links para a escala de plantão. Ele executa os dois testes de novo, com sucesso. Ele observa que as duas falhas vieram de componentes fora do caminho principal, que os testes costumam deixar escapar, e recomenda que as verificações futuras incluam um inventário de todas as ferramentas e pontos de contato que tocam dados governados. O inventário é montado durante o laboratório e encontra mais duas ferramentas, um suplemento de relatórios e um utilitário de exportação, que entram no plano de testes e passam nos testes.
+
+### 40.4 Comparação e relatório
+
+O relatório compara o primeiro e o segundo laboratórios: mais requisitos cobertos, mais controles, menos falhas em relação ao número de testes e correções mais rápidas. Ele lista as lacunas residuais, como os testes limitados do algoritmo dos registradores. A Profa. Varga observa que repetir a verificação depois de mudanças é essencial, porque os sistemas se desviam, e que comparar os resultados ao longo do tempo mostra se a governança está amadurecendo ou apenas acumulando papelada. O relatório é apresentado ao comitê de governança com um resumo curto para não especialistas, e o comitê decide que a verificação será repetida todo ano e depois de qualquer mudança importante na cadeia de perdas.
+
+### Exemplo resolvido
+
+Kofi reverifica a cadeia, detecta todos os erros originais, encontra uma lacuna de herança e uma lista de contatos desatualizada, corrige ambas e relata o progresso e as lacunas residuais em relação ao primeiro laboratório.
+
+> **Caso sintético.** O laboratório é sintético.
+
+### Erros e limites
+
+Testar só o caminho principal deixa escapar rotas laterais para os dados governados.
+
+### Exercícios
+
+- **EX118 — Falhas novas.** Quantos testes novos falharam? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX119 — Correção dos contatos.** O que substituiu a lista de contatos desatualizada? *Rubrica:* 3 = links para a escala de plantão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX120 — Lição das rotas laterais.** De onde vieram as duas falhas? *Rubrica:* 3 = de componentes fora do caminho principal;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de 2,16 milhões de leituras por dia.
 
@@ -1505,6 +1928,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** Comparar a distribuição de cada coluna com seu histórico.
 
 **EX090.** Se construímos os controles do jeito certo.
+
+**EX091.** Detalhes de esquema, horários de atualização e resultados de qualidade.
+
+**EX092.** Nunca inferior à de sua entrada mais sensível.
+
+**EX093.** Eles consultam os selos antes de usar os dados e questionam os donos sobre notas ruins.
+
+**EX094.** 97,75 por cento.
+
+**EX095.** Elas fazem as perdas parecerem maiores do que são.
+
+**EX096.** O faturamento.
+
+**EX097.** O engenheiro de segurança operacional.
+
+**EX098.** Ele depende de um único servidor do *data warehouse*.
+
+**EX099.** As leituras manuais precisam de formulários e unidades padronizados.
+
+**EX100.** Duas semanas, com um arquivo de teste.
+
+**EX101.** Os resultados da conciliação não chegavam aos selos do catálogo.
+
+**EX102.** O líder de governança de dados.
+
+**EX103.** Um *model card* que descreve o algoritmo de vazamentos do fornecedor.
+
+**EX104.** Não, apenas resumos de frequência.
+
+**EX105.** Melhor antecipação de falhas e das preocupações das pessoas.
+
+**EX106.** Vinte e quatro vezes.
+
+**EX107.** Processar apenas os registros novos e alterados.
+
+**EX108.** Testou-os por injeção de erros.
+
+**EX109.** Até as nove da manhã.
+
+**EX110.** Informou o contato do regulador sobre um atraso de um dia.
+
+**EX111.** Outro curador os segue durante um incidente sintético.
+
+**EX112.** Alertas com nomes técnicos de regras.
+
+**EX113.** Acrescentando as informações principais do catálogo ao painel da sala de controle.
+
+**EX114.** Afirmar que a governança causou a melhora sem evidências mais fortes.
+
+**EX115.** Os dados de referência das tarifas ficaram dois meses sem atualização.
+
+**EX116.** Um desligamento no diretório de funcionários dispara um lembrete.
+
+**EX117.** Esgotamento e pontos únicos de falha.
+
+**EX118.** Dois.
+
+**EX119.** Links para a escala de plantão.
+
+**EX120.** Componentes fora do caminho principal.
 
 <a id="references"></a>
 ## Referências
