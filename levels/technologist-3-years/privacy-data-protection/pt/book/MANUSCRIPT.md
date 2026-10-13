@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 073, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 30 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–30 (EX076–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a verificar como sistemas reais tratam dados pessoais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios inspecionam os fluxos de SDKs de um aplicativo sintético, testam a completude da exportação de um pedido de acesso, varrem arquivos sintéticos em busca de padrões de dados pessoais, conferem a retenção de imagens de CFTV e automatizam a exclusão de contas inativas, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Regulamento (UE) 2016/679 (GDPR), artigos 5, 9, 15, 28, 30, 32, 33 e 35; Lei nº
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
-
-Capítulos 26–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1149,11 +1147,211 @@ As equipes podem deixar de lado a visão dos alunos; teste com alunos.
 - **EX074 — Papéis.** Cite dois papéis. *Rubrica:* 3 = pesquisa, design, desenvolvimento, testes;; 2 = dois;; 1 = um;; 0 = nenhuma.
 - **EX075 — Resultado.** O que melhorou? *Rubrica:* 3 = a explicação do compartilhamento com as telas das aulas;; 2 = correta;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-26"></a>
+
+## Capítulo 26 — Privacidade e proteção de dados: transição para a operação
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar os controles à equipe de operações; (2) escrever runbooks; (3) confirmar os responsáveis.
+
+### 26.1 Runbooks
+
+Aisha escreve runbooks para as verificações do CFTV, as revisões de SDKs, os pedidos de acesso e as exclusões. Cada runbook descreve a finalidade da tarefa, quando executá-la, os passos, os resultados esperados, o que fazer se os resultados forem inesperados e quem procurar. Ela os escreve para a equipe de operações, e não para especialistas, então evita jargão e usa capturas de tela do ambiente de teste sintético, e não dos sistemas reais. O runbook do CFTV, por exemplo, traz o caminho no menu do gravador, a idade esperada do vídeo mais antigo e o telefone a ligar quando ela passar de trinta e cinco dias.
+
+### 26.2 Responsáveis
+
+Cada runbook nomeia um responsável em operações: o do CFTV pertence ao gerente de operações; a revisão de SDKs, ao líder do aplicativo; os pedidos de acesso, à líder do atendimento; a exclusão de contas, ao gerente de serviços de TI. Cada responsável tem um substituto nomeado para as férias. Sempre que possível, a responsabilidade é escrita na descrição do cargo, para sobreviver às mudanças de função. Sem responsáveis nomeados, a verificação da exclusão do CFTV dependeria de quem se lembrasse dela, que foi exatamente como a falha do firmware passou despercebida por seis semanas.
+
+### 26.3 Treinamento
+
+Aisha treina os responsáveis e os observa executando cada tarefa. Enquanto o responsável executa o runbook, ela anota onde ele hesita ou lê um passo errado. A líder do atendimento tem dificuldade com a busca das transcrições do chat no fornecedor, então Aisha acrescenta passos mais claros e o nome de um contato no fornecedor. No runbook de exclusão, o gerente de serviços de TI entende mal qual confirmação do fornecedor esperar, e o passo passa a mostrar um exemplo da mensagem de confirmação. A observação revela lacunas que a simples revisão do documento deixaria passar.
+
+### 26.4 Confirmação
+
+Os responsáveis assinam a aceitação, o que significa que concordam que o runbook está correto e que conseguem executá-lo. O encarregado guarda as aceitações assinadas. Aisha marca um acompanhamento três meses depois para conferir se as tarefas estão rodando e deixa seus contatos para dúvidas. A transição só termina quando as tarefas rodam sem a ajuda dela. Três meses depois, as quatro tarefas rodaram no prazo sem a participação de Aisha, e seu papel se encerra. O Sr. Reilly observa que a transição para a operação é o que mantém os controles vivos depois do fim de um projeto.
+
+### Exemplo resolvido
+
+Aisha escreve quatro runbooks, nomeia os responsáveis, treina-os e obtém sua aceitação.
+
+> **Caso sintético.** Os runbooks são sintéticos.
+
+### Erros e limites
+
+Runbooks envelhecem; revise-os todo ano.
+
+### Exercícios
+
+- **EX076 — Runbooks.** Cite dois runbooks. *Rubrica:* 3 = verificações do CFTV, revisões de SDKs, pedidos de acesso, exclusões;; 2 = dois;; 1 = um;; 0 = nenhuma.
+- **EX077 — Treinamento.** Como Aisha confirmou que os responsáveis conseguiam executar as tarefas? *Rubrica:* 3 = observou-os executando cada tarefa;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX078 — Finalidade.** Por que fazer a transição? *Rubrica:* 3 = mantém os controles vivos depois do projeto;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar mudanças de privacidade; (2) validá-las; (3) reverter com segurança.
+
+### 27.1 Implantação
+
+A nova página de configurações e a versão do aplicativo sem o SDK de anúncios são implantadas em etapas: primeiro para cinco por cento dos alunos, depois para metade e, por fim, para todos, ao longo de duas semanas. A implantação em etapas limita o impacto dos erros. A equipe do aplicativo acompanha os relatórios de falhas e os contatos com o suporte em cada etapa, e Aisha monitora o tráfego de rede de aparelhos de teste em busca de fluxos de dados inesperados. Na etapa de cinco por cento, ela não vê tráfego para a rede de anúncios em nenhum aparelho de teste.
+
+### 27.2 Validação
+
+Aisha valida a versão com contas sintéticas e inspeção de rede. A validação repete os testes de fluxo anteriores na nova versão, com as mesmas contas e os mesmos passos, para que os resultados possam ser comparados com os achados anteriores. Ela confere cada domínio contatado pelo aplicativo e os campos enviados. Também confere que o novo padrão do compartilhamento da frequência cardíaca é desligado para as contas novas: uma conta de teste criada no dia do lançamento confirma que a chave começa na posição desligada. Todos os resultados correspondem ao plano, e ela os registra para a decisão de ampliar a implantação.
+
+### 27.3 Reversão
+
+Um plano de reversão está pronto caso apareçam erros graves e seja preciso voltar à versão anterior. Aisha aponta um problema de privacidade na reversão: a versão anterior continha o SDK de anúncios, então voltar a ela reativaria o fluxo prejudicial. A equipe prepara uma versão anterior corrigida, sem o SDK, para usar em qualquer reversão. Essa versão é testada com antecedência, para que uma reversão feita sob pressão não reintroduza o fluxo para a rede de anúncios. Ela observa que os planos de reversão costumam ser escritos pensando só na estabilidade, e raramente na privacidade.
+
+### 27.4 Resultado
+
+A versão chega a todos os alunos sem erros graves. Os testes de rede não mostram tráfego para a rede de anúncios nem campos de frequência cardíaca saindo para terceiros além do fornecedor contratado das cintas. A validação confirma que nenhum dado de frequência cardíaca vai para anunciantes. Aisha registra os resultados com datas, versão do aplicativo e aparelhos de teste, para que o encarregado possa mostrar evidências se um aluno ou o regulador perguntar; nada fica sem documentação. O Sr. Reilly observa que a validação comprova a mudança, e não apenas a intenção de mudar.
+
+### Exemplo resolvido
+
+Aisha implanta em etapas, valida com contas sintéticas e confirma que não há fluxos para anunciantes.
+
+> **Caso sintético.** A implantação é sintética.
+
+### Erros e limites
+
+As implantações em etapas podem misturar versões.
+
+### Exercícios
+
+- **EX079 — Validação.** Como a validação é feita? *Rubrica:* 3 = contas sintéticas e inspeção de rede;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX080 — Reversão.** Por que ter um plano de reversão? *Rubrica:* 3 = para se recuperar de erros;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Resultado.** O que a validação confirmou? *Rubrica:* 3 = nenhum dado de frequência cardíaca vai para anunciantes;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as habilidades nas unidades; (2) conversar com a equipe; (3) registrar as observações.
+
+### 28.1 Visitas
+
+Aisha visita cinco unidades para conferir telas, placas de CFTV e registros. Cada visita segue uma lista: telas da recepção bloqueadas quando ninguém está por perto, nenhuma lista de alunos à vista, placas de CFTV presentes e legíveis, gravadores em salas trancadas, Wi-Fi de visitantes separado e formulário de comunicação conhecido pela equipe. Ela escolhe unidades de tamanhos e idades diferentes, incluindo duas com gravadores antigos, para cobrir condições variadas. Cada visita leva cerca de noventa minutos, e ela fotografa apenas placas e portas de salas, nunca telas ou pessoas.
+
+### 28.2 Equipe
+
+Aisha conversa com a equipe sobre o guia e a comunicação de incidentes. Os funcionários são simpáticos e falam abertamente das dificuldades. Vários dizem que o formulário é fácil, mas uma unidade nunca tinha ouvido falar dele, porque o gerente era novo. Os trainers gostam do novo campo de anotações. A recepção pede um jeito rápido de responder aos alunos que perguntam que dados a Quayside guarda, então Aisha redige um roteiro curto. O roteiro orienta a equipe a indicar o formulário de pedido de acesso no aplicativo, em vez de ler os dados em voz alta no balcão.
+
+### 28.3 Observações
+
+Duas unidades não tinham placas de CFTV, que as Diretrizes 3/2019 do EDPB esperam como primeira camada de informação. As diretrizes descrevem a placa de aviso como a primeira camada de transparência, que informa sobre o monitoramento antes de a pessoa entrar na área, com informações mais completas em outro lugar. Sem as placas, os alunos entram em áreas monitoradas sem aviso. As duas unidades tinham retirado as placas antigas durante uma pintura e nunca as recolocaram. Outras observações incluem uma tela da recepção desbloqueada num horário de pico e uma sala de gravador usada como depósito, com a porta aberta.
+
+### 28.4 Acompanhamento
+
+As placas são instaladas em duas semanas, o depósito é esvaziado e trancado, e o gerente novo recebe uma apresentação do formulário de comunicação. Aisha acrescenta a lista às visitas de rotina dos gerentes regionais, para que as verificações de campo continuem depois do estágio. Ela compartilha os achados comuns com todas as unidades, sem nomear funcionários. Os gerentes regionais reportam os resultados a cada trimestre, e achados repetidos na mesma unidade levam a uma conversa com o gerente. O Sr. Reilly observa que as visitas de campo encontram o que as verificações remotas deixam passar.
+
+### Exemplo resolvido
+
+Aisha visita cinco unidades, descobre a falta de placas de CFTV em duas e faz com que sejam instaladas.
+
+> **Caso sintético.** As visitas são sintéticas; as Diretrizes 3/2019 do EDPB são reais.
+
+### Erros e limites
+
+As visitas são retratos de um momento.
+
+### Exercícios
+
+- **EX082 — Unidades visitadas.** Quantas unidades Aisha visitou? *Rubrica:* 3 = cinco;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX083 — Placas.** O que faltava em duas unidades? *Rubrica:* 3 = placas de CFTV;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Valor.** Por que as visitas de campo importam? *Rubrica:* 3 = encontram o que as verificações remotas deixam passar;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um kit de ferramentas de privacidade; (2) combinar os laboratórios; (3) documentá-lo.
+
+### 29.1 Kit de ferramentas
+
+Aisha combina num kit os scripts dos laboratórios anteriores: a revisão dos fluxos de SDKs, a verificação da cobertura dos pedidos de acesso, o varredor de arquivos, a verificação da retenção do CFTV e a rotina das contas inativas. Ela lhes dá uma estrutura comum, formatos de saída consistentes e um arquivo de configuração compartilhado para os limites, para que a equipe de privacidade os execute sempre do mesmo jeito. Limites como trinta dias para as imagens e dois anos para as contas inativas ficam no arquivo de configuração, e não no código, para que possam mudar sem reescrever nada.
+
+### 29.2 Documentação
+
+Cada script tem finalidade, entradas, saídas e limites documentados. No varredor, a seção de limites diz claramente que informações de saúde em texto livre não são detectadas; na verificação do CFTV, que o script lê um índice, e não as imagens. A documentação explica também como mudar os limites e onde as saídas ficam guardadas. Aisha a escreve para pessoas que não fizeram seu curso. Cada seção de limites é um aviso direto, por exemplo: uma varredura limpa não significa que o arquivo não contenha informações de saúde. Um exemplo resolvido com arquivos sintéticos mostra a saída esperada de cada script.
+
+### 29.3 Testes
+
+Aisha testa todos os scripts com dados sintéticos. Cada script tem um conjunto de arquivos de entrada sintéticos com resultados corretos conhecidos, para que qualquer pessoa confirme que ele continua funcionando depois de mudanças. Os testes incluem casos extremos, como arquivos vazios, datas ausentes e contas ao mesmo tempo inativas e com dívida; neste último caso, o teste confirma que a retenção prevalece sobre a exclusão. Todos os testes passam antes da entrega, e os resultados ficam guardados com o kit, para que a próxima pessoa saiba exatamente o que era esperado.
+
+### 29.4 Entrega
+
+O kit é entregue à equipe de privacidade da Quayside, que nomeia um responsável e combina uma revisão anual. Aisha explica que scripts escritos para uma versão de um sistema podem quebrar quando os sistemas mudam. Lembra também que o kit usa apenas as bibliotecas padrão do Python, o que simplifica a manutenção e evita dependências extras. A equipe de privacidade executa cada script uma vez com Aisha observando, e a data da primeira revisão anual é marcada. O Sr. Reilly observa que as ferramentas precisam de manutenção, e que uma ferramenta sem responsável logo deixa de ser confiável.
+
+### Exemplo resolvido
+
+Aisha constrói e documenta um kit de cinco scripts testado com dados sintéticos.
+
+> **Caso sintético.** O kit é sintético.
+
+### Erros e limites
+
+Ferramentas precisam de responsáveis.
+
+### Exercícios
+
+- **EX085 — Scripts.** Quantos scripts são combinados? *Rubrica:* 3 = cinco;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX086 — Documentação.** O que a documentação de cada script inclui? *Rubrica:* 3 = finalidade, entradas, saídas, limites;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
+- **EX087 — Dados.** Que dados são usados nos testes? *Rubrica:* 3 = sintéticos;; 2 = correta;; 1 = reais;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar seu projeto final; (2) responder a perguntas; (3) refletir.
+
+### 30.1 Apresentação
+
+Aisha apresenta seu trabalho na Quayside ao Sr. Reilly e ao encarregado. A apresentação segue o curso: inventário, fluxos, direitos, retenção, monitoramento e transição para a operação. Para cada área, ela mostra um achado, a correção e a evidência. Os slides são simples e usam números dos laboratórios, como os 47 de 287 registros da primeira resposta de acesso e os 292 vídeos além da retenção numa unidade. Ela termina com as lacunas restantes: as anotações de saúde em texto livre, os dez gravadores antigos e o monitoramento manual dos fornecedores. Os avaliadores destacam a honestidade.
+
+### 30.2 Perguntas
+
+Os avaliadores perguntam sobre os limites, como as anotações de saúde em texto livre. O encarregado pergunta como a Quayside detectaria um novo risco desse tipo, e Aisha explica a abordagem de treinamento e amostragem. O Sr. Reilly pergunta o que ela faria diferente. Ela responde que teria começado o monitoramento mais cedo, porque vários problemas existiam havia meses antes de alguém olhar para eles. Acrescenta que teria testado o processo de pedidos de acesso já no primeiro mês, porque o resultado de 16% de cobertura mudou a forma como a equipe enxergava todos os outros controles.
+
+### 30.3 Reflexão
+
+Aisha reflete que muitos problemas vieram do trabalho comum: sistemas lentos, atualizações de firmware, arquivos esquecidos e SDKs que vinham embutidos. As verificações técnicas os encontraram porque compararam o que os sistemas faziam de fato com o que as políticas diziam. Ela também aprendeu que as correções precisam de responsáveis e de monitoramento, senão voltam a falhar em silêncio, como a exclusão do CFTV mostrou duas vezes. Sua lição mais forte é que um aluno sintético que percorre um processo inteiro, do cadastro à exclusão, revela mais do que qualquer lista de verificação.
+
+### 30.4 Próximos passos
+
+Depois do curso, a Quayside oferece a Aisha um cargo de tecnóloga de privacidade júnior. Ela planeja estudar governança, riscos e compliance, para entender como suas verificações técnicas se encaixam em sistemas de gestão mais amplos. Sua primeira tarefa no novo cargo é repetir o teste dos pedidos de acesso. O Sr. Reilly encerra observando que o trabalho de privacidade continua depois do curso e que as perguntas que ela aprendeu a fazer continuarão úteis quaisquer que sejam as tecnologias que a Quayside adotar nos próximos anos, porque elas tratam de comportamento, e não de ferramentas.
+
+### Exemplo resolvido
+
+Aisha apresenta o trabalho, responde a perguntas sobre os limites e reflete sobre as verificações técnicas.
+
+> **Caso sintético.** A avaliação é sintética.
+
+### Erros e limites
+
+A reflexão deve ser honesta sobre as falhas.
+
+### Exercícios
+
+- **EX088 — Banca.** Quem avaliou? *Rubrica:* 3 = o Sr. Reilly e o encarregado;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+- **EX089 — Limite perguntado.** Sobre que limite perguntaram? *Rubrica:* 3 = as anotações de saúde em texto livre;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Próximo passo.** O que Aisha planeja a seguir? *Rubrica:* 3 = estudar governança;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX075 (as de EX076–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sistema de matrículas, aplicativo, vestíveis e CFTV (também a catraca e as reservas das unidades).
 
@@ -1304,6 +1502,36 @@ Respostas-modelo para EX001–EX075 (as de EX076–EX090 estão na edição em i
 **EX074.** Pesquisa e design.
 
 **EX075.** O compartilhamento com as telas das aulas passou a ser explicado com clareza.
+
+**EX076.** Verificações do CFTV e revisões de SDKs.
+
+**EX077.** Observou-os executando cada tarefa.
+
+**EX078.** Para que os controles continuem depois do projeto.
+
+**EX079.** Com contas sintéticas e inspeção de rede.
+
+**EX080.** Para se recuperar rapidamente de erros.
+
+**EX081.** Nenhum dado de frequência cardíaca chega aos anunciantes.
+
+**EX082.** Visitou cinco unidades.
+
+**EX083.** Placas de CFTV.
+
+**EX084.** Revelam problemas que as verificações remotas deixam passar.
+
+**EX085.** Cinco scripts foram combinados.
+
+**EX086.** Finalidade, entradas, saídas e limites.
+
+**EX087.** Dados sintéticos.
+
+**EX088.** O Sr. Reilly e o encarregado.
+
+**EX089.** Detectar as anotações de saúde em texto livre que o varredor deixa passar.
+
+**EX090.** Estudar governança.
 
 <a id="references"></a>
 ## Referências
