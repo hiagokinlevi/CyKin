@@ -3483,7 +3483,7 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
-The rule of three gives an upper bound near 0.3% for zero failures in 1,000 attempts, slightly below the Wilson figure of about 0.4% in her report.
+The reused Lab I table supports her first answer: in the toy agent, treating retrieved content purely as data stops all 20 exfiltration calls (0/20) because the agent's instructions never come from documents, whereas keyword filtering, which depends on spotting the attack, still lets 10 of 20 through. The table does not show the statistics; for those, the rule of three gives an upper bound near 0.3% (3/1,000) for zero failures in 1,000 attempts, slightly below the Wilson figure of about 0.4% in her report.
 
 ### 40.7 Errors and limits
 

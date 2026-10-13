@@ -3041,7 +3041,7 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
-La regla del tres da un límite superior cercano al 0,3 % con cero fallos en 1000 intentos, algo por debajo de la cifra de Wilson de aproximadamente el 0,4 % de su informe.
+La tabla reutilizada del Laboratorio I respalda su primera respuesta: en el agente de juguete, tratar el contenido recuperado puramente como datos detiene las 20 llamadas de exfiltración (0/20), porque las instrucciones del agente nunca proceden de los documentos, mientras que el filtrado por palabras clave, que depende de reconocer el ataque, sigue dejando pasar 10 de 20. La tabla no muestra la estadística; para ella, la regla del tres da un límite superior cercano al 0,3 % (3/1000) con cero fallos en 1000 intentos, algo por debajo de la cifra de Wilson de aproximadamente el 0,4 % de su informe.
 
 ### 40.7 Errores y límites
 
