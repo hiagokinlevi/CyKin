@@ -1,6 +1,6 @@
 # Cryptography and trust services — Rapid course — English
 
-**Duration:** 1 month · **Editorial state:** structured; authored teaching pending.
+**Duration:** 1 month · **Editorial state:** authored draft; technical, editorial and A4 review pending.
 
 [Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/cryptography-trust/README.md)
 
