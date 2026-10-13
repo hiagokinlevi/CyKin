@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 121, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de conscientização e de reporte em segurança como um sistema sociotécnico projetado.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios modelam reportes semanais, esquecimento, taxas, triagem, filas, confiabilidade, orçamentos e testes exatos sobre dados sintéticos; nenhum funcionário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, aprovada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -503,11 +503,393 @@ Mesmo simulações éticas podem incomodar alguns funcionários. As regras preci
 - **EX029 — Iscas proibidas.** Que temas de isca são excluídos? *Rubrica:* 3 = medos sobre salário, saúde, família e demissão;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Regra da sala de controle.** Por que evitar simulações nos consoles da sala de controle durante os turnos? *Rubrica:* 3 = a distração poderia afetar a segurança do tratamento da água;; 2 = segurança;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como a autenticação de e-mail ajuda os usuários; (2) relacionar os sinais dos protocolos ao que os usuários veem; (3) desenhar avisos sobre os quais as pessoas consigam agir.
+
+### 11.1 Autenticação de e-mail
+
+Aiko estuda como o e-mail trafega pelas redes e como os domínios publicam registros que permitem aos servidores de destino verificar se uma mensagem realmente veio deles. Quando as verificações falham, o sistema de destino pode marcar ou rejeitar a mensagem. Na Greyford, muitos e-mails de phishing imitam o próprio domínio da companhia. Verificações de domínio robustas barram boa parte deles antes que os funcionários os vejam. Aiko observa que cada ataque barrado por um protocolo é um ataque que nenhuma pessoa precisa julgar, e essa é a forma mais confiável de projeto em fatores humanos.
+
+### 11.2 Os sinais que os usuários veem
+
+Algumas verificações resultam em sinais exibidos aos usuários, como uma faixa dizendo que a mensagem veio de fora da organização. Aiko examina como os funcionários leem essa faixa. Entrevistas mostram que, como quase todo e-mail de fornecedor a exibe, os funcionários a ignoram. O sinal é tecnicamente correto, mas carrega pouca informação. Ela propõe mostrar um aviso mais forte apenas para remetentes externos que usam nomes parecidos com os de funcionários internos, o que é mais raro e mais significativo. Testa a ideia em um mês de logs sintéticos de e-mail e descobre que o aviso mais forte apareceria em cerca de duas mensagens por pessoa por mês, raro o bastante para ser notado.
+
+### 11.3 Avisos acionáveis
+
+Aiko aplica lições da pesquisa em segurança utilizável. Whitten e Tygar (1999) mostraram que interfaces de segurança confundem os usuários quando exigem a compreensão de conceitos que eles não têm. Um bom aviso diz em palavras simples o que está errado e oferece uma única ação clara, como reportar o e-mail. Aiko rascunha um aviso: "Este remetente é de fora da Greyford, mas usa o nome de um colega da Greyford. Se tiver dúvida, pressione Reportar." Ela o testa com dez funcionários, dos quais oito escolhem corretamente reportar. Dois perguntaram o que significava colega da Greyford, então ela acrescenta um exemplo.
+
+### Exemplo resolvido
+
+Aiko explica as verificações de domínio, encontra uma faixa de remetente externo ignorada e desenha um aviso mais raro e acionável, testado com funcionários.
+
+> **Caso sintético.** Os avisos e os testes são sintéticos; Whitten e Tygar (1999) é real.
+
+### Erros e limites
+
+A detecção de nomes parecidos tem falsos positivos. Avisos perdem força quando usados em excesso.
+
+### Exercícios
+
+- **EX031 — Valor dos protocolos.** Por que ataques barrados por protocolos são valiosos para os fatores humanos? *Rubrica:* 3 = nenhuma pessoa precisa julgá-los;; 2 = sem julgamento;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Faixa ignorada.** Por que os funcionários ignoram a faixa de remetente externo? *Rubrica:* 3 = quase todo e-mail de fornecedor a exibe;; 2 = frequente demais;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Teste do aviso.** Quantos de dez funcionários escolheram reportar com o novo aviso? *Rubrica:* 3 = oito;; 2 = 8;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) examinar como os prompts do sistema operacional afetam o comportamento; (2) reduzir prompts de segurança desnecessários; (3) desenhar padrões de menor privilégio que as pessoas aceitem.
+
+### 12.1 Prompts e hábitos
+
+Aiko conta os prompts de segurança que os notebooks administrativos da Greyford exibem em uma semana: lembretes de atualização, pedidos de permissão, avisos de certificado e prompts de administrador. Os funcionários veem dezenas. A maioria é rotineira, então as pessoas clicam adiante por hábito. Quando aparece um prompt raro e perigoso, o hábito se mantém. Herley (2009) argumentou que pedir aos usuários que avaliem avisos frequentes, em sua maioria inofensivos, é um mau negócio para eles. Reduzir os prompts rotineiros faz os importantes se destacarem. Ela registra a contagem semanal por notebook como linha de base antes de mudar qualquer coisa, para que o efeito das mudanças posteriores possa ser medido.
+
+### 12.2 Remover prompts
+
+Aiko trabalha com a equipe de TI para remover prompts. As atualizações passam a ser instaladas automaticamente fora do horário de trabalho. Softwares comuns são pré-aprovados, de modo que os funcionários não precisam pedir direitos de administrador para instalá-los. Os avisos de certificado dos sistemas internos são eliminados com a correção dos certificados internos. Depois das mudanças, os prompts semanais por notebook caem bruscamente. Os funcionários notam menos interrupções, e a equipe de TI recebe menos chamados sobre prompts. Ela mede a mudança contando os prompts em dez notebooks durante uma semana antes e uma depois, e compartilha os resultados com os funcionários, junto com uma explicação curta de quais prompts ainda importam e por que devem ser lidos.
+
+### 12.3 Menor privilégio aceito
+
+Retirar os direitos de administrador local costuma encontrar resistência. Aiko desenha uma abordagem que os funcionários aceitam: um catálogo de autoatendimento para softwares aprovados, uma via rápida de pedidos para todo o resto, com resposta em até uma hora útil, e direitos temporários para engenheiros que precisem deles em tarefas específicas. O menor privilégio dá certo quando seus custos para os funcionários são baixos. Ela mede a aceitação contando pedidos e reclamações durante um mês após a mudança. Também pede aos representantes dos funcionários que revisem a abordagem antes do lançamento, e eles sugerem incluir no catálogo ferramentas de engenharia de uso comum, o que reduz os pedidos no primeiro mês.
+
+### Exemplo resolvido
+
+Aiko conta os prompts semanais, remove os rotineiros por meio de automação e pré-aprovação e desenha o menor privilégio com um catálogo e pedidos rápidos.
+
+> **Caso sintético.** As contagens e os processos são sintéticos; Herley (2009) é real.
+
+### Erros e limites
+
+Atualizações automáticas podem quebrar softwares. Direitos temporários precisam de verificações de expiração.
+
+### Exercícios
+
+- **EX034 — Risco do hábito.** Por que prompts rotineiros e frequentes são perigosos? *Rubrica:* 3 = o clique por hábito se estende aos prompts raros e perigosos;; 2 = hábito;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Correção de certificados.** Como os avisos de certificado internos foram removidos? *Rubrica:* 3 = com a correção dos certificados internos;; 2 = corrigir certificados;; 1 = ignorar;; 0 = nenhuma.
+- **EX036 — Desenho da aceitação.** O que torna o menor privilégio aceitável para os funcionários? *Rubrica:* 3 = catálogo de autoatendimento, pedidos em uma hora e direitos temporários;; 2 = custo baixo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar um modelo de dados para informações de conscientização e de reportes; (2) aplicar minimização e retenção; (3) prevenir o mau uso de dados de comportamento.
+
+### 13.1 Um modelo de dados
+
+Aiko desenha um pequeno banco de dados para o programa de conscientização da Greyford. As tabelas guardam campanhas, classificações de dificuldade das iscas, resultados agregados por grupo e impressões digitais dos e-mails reportados. Ela omite deliberadamente uma tabela que ligue funcionários individuais aos cliques em simulações. A Profa. Kerr pergunta por quê; Aiko explica que registros individuais de cliques convidam ao mau uso, como aparecer em avaliações de desempenho, e não são necessários para avaliar o programa. Escolhas de projeto em sistemas de dados codificam decisões de política sobre como as pessoas serão tratadas. Ela apresenta o esquema ao RH e aos representantes dos funcionários antes de construí-lo.
+
+### 13.2 Minimização e retenção
+
+Quando dados individuais são inevitáveis, como a conclusão de treinamentos exigida por regulação, Aiko guarda apenas as datas de conclusão, e não as notas dos questionários. Os registros são apagados dois anos depois que a pessoa sai da empresa. Os resultados agregados são mantidos por mais tempo para análise de tendências. Ela documenta a finalidade e a retenção de cada campo em um dicionário de dados. A ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) espera que as informações sejam tratadas segundo regras acordadas, e um dicionário de dados é uma forma simples de mostrar quais são as regras. Ela revisa o dicionário com o encarregado de proteção de dados, que o aprova.
+
+### 13.3 Prevenir o mau uso
+
+Aiko acrescenta controles: só dois funcionários da segurança podem consultar o banco; toda consulta é registrada; e resultados de grupos com menos de vinte pessoas são suprimidos. Ela também redige uma declaração de política, aprovada pelo RH e pelos representantes dos funcionários, de que os dados de conscientização não serão usados para fins disciplinares. Controles técnicos e de política, juntos, constroem a confiança que mantém os funcionários reportando os próprios erros, o comportamento de que o programa mais precisa. Ela também agenda uma revisão anual dos logs de consulta por alguém de fora da equipe de segurança, para que qualquer tentativa de buscar indivíduos ou contornar o limite de vinte pessoas seja notada e questionada.
+
+### Exemplo resolvido
+
+Aiko desenha um banco de dados de conscientização sem registros individuais de cliques, define regras de minimização e retenção e acrescenta limites de acesso, de registro e de uso.
+
+> **Caso sintético.** O banco de dados é sintético; a ISO/IEC 27001:2022 é real.
+
+### Erros e limites
+
+Reguladores podem exigir registros individuais. Limites de agregação podem ser contornados com consultas repetidas.
+
+### Exercícios
+
+- **EX037 — Tabela omitida.** Que tabela Aiko omitiu deliberadamente? *Rubrica:* 3 = funcionários individuais ligados aos cliques em simulações;; 2 = tabela de cliques;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Registro de conclusão.** O que é guardado para a conclusão obrigatória de treinamentos? *Rubrica:* 3 = apenas datas de conclusão, sem notas de questionários;; 2 = datas;; 1 = notas;; 0 = nenhuma.
+- **EX039 — Política de uso.** O que dizia a declaração de política aprovada? *Rubrica:* 3 = os dados de conscientização não serão usados para fins disciplinares;; 2 = sem punição;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o design centrado no usuário a um recurso de segurança; (2) conduzir testes de usabilidade; (3) acompanhar defeitos de usabilidade como quaisquer outros defeitos.
+
+### 14.1 Design centrado no usuário
+
+A Greyford quer um novo botão de reporte em seu sistema de e-mail. Aiko segue um processo centrado no usuário: entrevistar usuários, esboçar opções, testar protótipos e refinar. As entrevistas mostram que os engenheiros de campo leem e-mails sobretudo no celular, muitas vezes de luvas ou sob luz forte. Um ícone pequeno escondido em um menu não funcionaria para eles. O desenho dela coloca um botão de reporte grande no topo de cada mensagem, tanto no computador quanto no celular. As práticas de engenharia de software se aplicam aos recursos de segurança exatamente como a qualquer outro recurso.
+
+### 14.2 Testes de usabilidade
+
+Aiko testa o protótipo com oito funcionários de funções diferentes. Cada um é convidado a reportar um e-mail suspeito enquanto ela observa sem ajudar. Ela registra o tempo gasto e os erros. Os usuários de computador reportam em menos de cinco segundos; dois usuários de celular têm dificuldade porque o botão sai da tela ao rolar. Ela corrige o botão para que ele permaneça visível. Testes pequenos com usuários reais encontram problemas que os projetistas não conseguem ver, porque já sabem como o recurso funciona. Ela repete o teste no celular depois da correção, e os oito participantes têm sucesso rapidamente.
+
+### 14.3 Acompanhar defeitos de usabilidade
+
+Aiko registra os problemas de usabilidade no mesmo rastreador de defeitos usado para bugs funcionais, com severidade definida por quantos usuários falham e pela importância da tarefa. O botão que some ao rolar é um defeito de alta severidade, porque reportar é a finalidade principal do recurso. Tratar problemas de usabilidade como defeitos garante que sejam corrigidos antes do lançamento, em vez de ficarem como questões de gosto. Sasse, Brostoff e Weirich (2001) argumentaram que uma segurança que as pessoas não conseguem usar de forma eficaz não é uma segurança eficaz. O defeito é corrigido antes do lançamento.
+
+### Exemplo resolvido
+
+Aiko desenha um botão de reporte com entrevistas e protótipos, testa-o com oito usuários, corrige um defeito no celular e acompanha a usabilidade como defeitos.
+
+> **Caso sintético.** Os testes são sintéticos; Sasse et al. (2001) é real.
+
+### Erros e limites
+
+Oito testadores deixam passar problemas raros. Testes em laboratório diferem das condições reais de campo.
+
+### Exercícios
+
+- **EX040 — Condições de campo.** Que condições afetam o uso de e-mail pelos engenheiros de campo? *Rubrica:* 3 = celular, luvas e luz forte;; 2 = condições;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Defeito no celular.** Que defeito de usabilidade o teste encontrou? *Rubrica:* 3 = o botão de reporte no celular saía da tela ao rolar;; 2 = rolagem;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Severidade do defeito.** Por que o problema de rolagem era de alta severidade? *Rubrica:* 3 = reportar é a finalidade principal do recurso;; 2 = tarefa central;; 1 = cosmético;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar os conceitos centrais de segurança ao comportamento humano; (2) reconhecer técnicas de engenharia social; (3) mapear as ameaças dirigidas a pessoas na Greyford.
+
+### 15.1 Conceitos e pessoas
+
+Aiko liga confidencialidade, integridade e disponibilidade a ações humanas. Um engenheiro de campo que compartilha uma senha prejudica a confidencialidade; um operador que age com base em uma instrução forjada prejudica a integridade; uma infecção por ransomware iniciada por um anexo malicioso prejudica a disponibilidade. As pessoas aparecem em todas as partes da segurança, como atacantes, alvos e defensores. Ver as pessoas também como defensoras muda as prioridades de projeto, que passam a apoiar o bom comportamento em vez de apenas restringir o mau. Ela escreve um exemplo de pessoa como defensora para cada objetivo, como um engenheiro que reporta uma ligação estranha de um fornecedor antes de agir.
+
+### 15.2 Engenharia social
+
+Aiko estuda como os atacantes manipulam pessoas. Os princípios de influência de Cialdini (2021), como autoridade, urgência, escassez, reciprocidade, afinidade e prova social, explicam por que as iscas funcionam. Hadnagy (2018) descreve como engenheiros sociais combinam pesquisa sobre os alvos com esses princípios. Uma mensagem falsa do diretor-presidente pedindo um pagamento urgente usa autoridade e urgência ao mesmo tempo. Reconhecer os princípios ajuda os funcionários a perceber a pressão e ajuda os projetistas a acrescentar pausas onde a pressão é provável. Ela monta uma tabela de uma página que liga cada princípio a uma isca típica e a uma pausa simples que a interrompe, e a tabela passa a fazer parte do treinamento posterior.
+
+### 15.3 Ameaças na Greyford
+
+Aiko mapeia as ameaças dirigidas a pessoas: phishing de credenciais de acesso remoto, ligações telefônicas de falsos fornecedores pedindo aos operadores que mudem configurações, fraude de faturas contra o setor financeiro e caronas na entrada dos depósitos. Para cada uma, registra o princípio de influência usado e o controle que elimina a dependência do julgamento, como a verificação por retorno de ligação para pedidos de fornecedores. O Verizon Data Breach Investigations Report (2024) é uma fonte anual que acompanha o elemento humano nas violações, e ela o cita como contexto, e não como dado da Greyford. Mantém o mapa curto o bastante para ser revisado a cada trimestre.
+
+### Exemplo resolvido
+
+Aiko liga os objetivos de segurança a ações humanas, aplica os princípios de influência às iscas e mapeia quatro ameaças dirigidas a pessoas, com seus controles.
+
+> **Caso sintético.** As ameaças na Greyford são sintéticas; Cialdini (2021), Hadnagy (2018) e o Verizon DBIR (2024) são reais.
+
+### Erros e limites
+
+Os princípios de influência explicam, mas não preveem, o comportamento individual. Relatórios do setor podem não corresponder aos riscos de uma companhia de saneamento.
+
+### Exercícios
+
+- **EX043 — Pessoas como defensoras.** Por que ver as pessoas também como defensoras? *Rubrica:* 3 = desloca o projeto para apoiar o bom comportamento;; 2 = apoio;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Isca do diretor-presidente.** Que princípios um falso pedido urgente de pagamento do diretor-presidente combina? *Rubrica:* 3 = autoridade e urgência;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Controle para ligações de fornecedores.** Que controle trata das falsas ligações de fornecedores? *Rubrica:* 3 = verificação por retorno de ligação a um número conhecido;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) tratar as pessoas como componentes de um sistema sociotécnico; (2) alocar funções entre pessoas e máquinas; (3) escrever requisitos que incluam o desempenho humano.
+
+### 16.1 Sistemas sociotécnicos
+
+A Profa. Kerr apresenta a engenharia de sistemas: definir necessidades, requisitos, arquitetura, verificação e operação ao longo de todo o ciclo de vida. Aiko aprende que um sistema de segurança na Greyford inclui pessoas, procedimentos e tecnologia trabalhando juntos. Um sistema de acesso remoto não é só software; ele inclui os engenheiros que o usam, o service desk que redefine suas contas e o gestor que aprova o acesso. Tratar as pessoas como parte do sistema, e não como usuários externos, faz com que seus limites e pontos fortes entrem no projeto desde o início, em vez de serem considerados depois.
+
+### 16.2 Alocar funções
+
+Uma pergunta clássica da engenharia de sistemas é quais tarefas cabem às máquinas e quais cabem às pessoas. Aiko a aplica à defesa contra phishing. Filtrar e-mails sabidamente maliciosos, verificar domínios de remetentes e agrupar reportes duplicados são tarefas adequadas às máquinas, que são rápidas e consistentes. Julgar pedidos incomuns, mas plausíveis, como uma instrução inesperada de um fornecedor, é tarefa adequada a pessoas que conhecem o contexto. Ela aloca cada função e observa que não se deve pedir às pessoas que façam o que as máquinas fazem melhor, como conferir cada link manualmente.
+
+### 16.3 Requisitos de desempenho humano
+
+Aiko escreve requisitos que incluem pessoas: um engenheiro de campo deve conseguir reportar um e-mail suspeito em menos de dez segundos pelo celular; um atendente do service desk deve verificar a identidade de quem liga com um procedimento que leve menos de dois minutos; um operador nunca deve ser obrigado a digitar uma senha enquanto reconhece um alarme crítico. Cada requisito é mensurável e testável. A NIST SP 800-160 Vol. 1 Rev. 1 descreve a engenharia de segurança de sistemas ao longo do ciclo de vida, e Aiko observa que o desempenho humano pertence a esses requisitos, ao lado dos técnicos.
+
+### Exemplo resolvido
+
+Aiko trata as pessoas como componentes do sistema, aloca as funções de defesa contra phishing entre máquinas e pessoas e escreve requisitos mensuráveis de desempenho humano.
+
+> **Caso sintético.** Os requisitos são sintéticos; a SP 800-160 Vol. 1 Rev. 1 é real.
+
+### Erros e limites
+
+A alocação de funções muda à medida que as ferramentas melhoram. Limites de tempo podem não servir para todos os funcionários.
+
+### Exercícios
+
+- **EX046 — Pessoas como componentes.** O que muda ao tratar as pessoas como componentes do sistema? *Rubrica:* 3 = seus limites e pontos fortes passam a fazer parte do projeto;; 2 = insumo de projeto;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Funções das máquinas.** Que funções de defesa contra phishing cabem às máquinas? *Rubrica:* 3 = filtrar e-mails maliciosos conhecidos, verificar domínios, agrupar reportes;; 2 = duas;; 1 = julgar contexto;; 0 = nenhuma.
+- **EX048 — Requisito do alarme.** O que o requisito do operador proíbe? *Rubrica:* 3 = digitar uma senha enquanto reconhece um alarme crítico;; 2 = senha no alarme;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar malhas de realimentação ao comportamento de segurança; (2) desenhar um retorno oportuno para os reportes; (3) evitar realimentações instáveis ou punitivas.
+
+### 17.1 Malhas de realimentação
+
+Na engenharia de controle, uma malha de realimentação mede uma saída e ajusta uma entrada para manter o sistema no alvo. Aiko aplica essa ideia ao comportamento. Quando os funcionários reportam um e-mail suspeito, eles agem; se não recebem nenhuma resposta, a malha fica aberta e eles podem parar de reportar. Se recebem um agradecimento rápido e depois ficam sabendo o que era o e-mail, a malha se fecha e o reporte é reforçado. Ela esboça o processo de reportes da Greyford como uma malha e descobre que, hoje, quem reporta não recebe resposta alguma.
+
+### 17.2 Desenhar um retorno oportuno
+
+Aiko desenha um retorno em três partes: um agradecimento automático em até um minuto, uma mensagem curta quando a equipe de segurança confirma se o e-mail era malicioso ou seguro, e um resumo mensal mostrando como os reportes ajudaram. A rapidez importa: um retorno semanas depois pouco faz para reforçar o comportamento. Ela estima que a automação pode entregar as duas primeiras partes sem tempo extra da equipe. O desenho espelha princípios de controle: medir rápido, responder rápido e manter a malha simples. Ela escreve as três mensagens em linguagem simples e pergunta a cinco funcionários se as achariam úteis, ajustando a redação depois dos comentários.
+
+### Laboratório — Simulação de reportes com e sem retorno
+
+```python
+# Illustrative simulation of monthly reporting rate with and without feedback (synthetic dynamics).
+def run(feedback, months=12, r=0.30):
+    out = []
+    for _ in range(months):
+        target = 0.60 if feedback else 0.15
+        r += 0.35 * (target - r) if feedback else 0.12 * (target - r)
+        out.append(r)
+    return out
+for name, fb in (("no feedback", False), ("quick feedback", True)):
+    s = run(fb); print(f"{name:14} month 3 {s[2]:.0%}, month 6 {s[5]:.0%}, month 12 {s[11]:.0%}")
+```
+
+Execute com `python3 lab_feedback.py`. Saída verificada:
+
+```text
+no feedback    month 3 25%, month 6 22%, month 12 18%
+quick feedback month 3 52%, month 6 58%, month 12 60%
+```
+
+### 17.3 Malhas instáveis ou punitivas
+
+O retorno também pode causar dano. Se os funcionários que clicam em uma simulação recebem mensagens duras ou são denunciados aos gestores, aprendem a esconder os erros, e a malha conduz ao comportamento errado. Um retorno excessivo, como e-mails diários, faz as pessoas ignorarem todas as mensagens. O laboratório simula os reportes sem retorno e com retorno rápido, mostrando que, com retorno, a taxa de reporte sobe e se estabiliza, enquanto sem ele a taxa vai caindo. Aiko observa que as premissas da simulação são ilustrativas, e não medidas. Recomenda um limite mensal para as mensagens de retorno.
+
+### Exemplo resolvido
+
+Aiko modela o reporte como uma malha de realimentação, desenha um retorno oportuno em três partes e simula seu efeito, advertindo contra malhas punitivas ou excessivas.
+
+> **Caso sintético.** Os parâmetros da simulação são sintéticos.
+
+### Erros e limites
+
+Modelos de malha simples omitem as influências sociais. Agradecimentos automáticos podem parecer pouco sinceros.
+
+### Exercícios
+
+- **EX049 — Malha aberta.** O que acontece quando quem reporta não recebe resposta? *Rubrica:* 3 = a malha fica aberta e os reportes podem diminuir;; 2 = queda;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Partes do retorno.** Quais são as três partes do desenho de retorno? *Rubrica:* 3 = agradecimento imediato, confirmação do veredito e resumo mensal;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Resultado do laboratório.** Como os reportes diferiram no laboratório após 12 meses? *Rubrica:* 3 = 60% com retorno contra 18% sem;; 2 = maior;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) situar os fatores humanos na arquitetura de segurança; (2) desenhar defesas em camadas que tolerem o erro humano; (3) usar as ideias de zero trust para reduzir a dependência da vigilância.
+
+### 18.1 Fatores humanos na arquitetura
+
+Aiko estuda como as escolhas de arquitetura moldam o que as pessoas precisam fazer. Se uma única senha roubada dá acesso a tudo, todos os funcionários precisam ser perfeitos o tempo todo. Se o acesso é segmentado e verificado continuamente, um único erro tem impacto limitado. A NIST SP 800-207 descreve o zero trust como a eliminação da confiança implícita baseada na localização na rede e a avaliação de cada pedido de acesso. Aiko o vê como um projeto de fatores humanos: ele reduz o custo dos erros individuais, que são inevitáveis em uma força de trabalho grande. Ela explica essa visão à equipe de TI.
+
+### 18.2 Defesas em camadas
+
+Aiko desenha camadas para o acesso remoto da Greyford: a filtragem de e-mail remove a maior parte do phishing; a autenticação resistente a phishing com chaves de segurança impede que senhas roubadas funcionem; verificações de dispositivo bloqueiam notebooks não gerenciados; o monitoramento detecta acessos incomuns; e os reportes dos funcionários fornecem um alerta precoce. Cada camada captura algumas falhas das outras. Ela enfatiza que os funcionários são uma camada entre muitas, e não a última linha de defesa, um enquadramento que reduz a pressão e a culpa sobre os indivíduos. Desenha as camadas em um diagrama simples para o conselho, mostrando que ameaça cada camada trata e como a falha de uma é capturada por outra, para que ninguém presuma que um único controle basta.
+
+### 18.3 Reduzir a dependência da vigilância
+
+Aiko lista os pontos em que a Greyford depende de que os funcionários percebam algo: conferir nomes de remetentes, identificar páginas de login falsas e verificar mudanças de dados de pagamento. Para cada um, pergunta se a arquitetura pode eliminar essa necessidade. Chaves de segurança tornam ineficazes as páginas de login falsas, porque a chave não se autentica no site errado. Mudanças de pagamento exigem verificação por retorno de ligação feita por uma segunda pessoa. Saltzer e Schroeder (1975) recomendaram projetos que não dependam de usuários constantemente cuidadosos, e Aiko constata que o princípio ainda se ajusta aos sistemas modernos. Ela lista as dependências restantes para revisão.
+
+### Exemplo resolvido
+
+Aiko aplica o zero trust como projeto de fatores humanos, dispõe as defesas em camadas para que os funcionários sejam uma camada entre muitas e elimina várias dependências da vigilância.
+
+> **Caso sintético.** O projeto da Greyford é sintético; a SP 800-207 e Saltzer e Schroeder (1975) são reais.
+
+### Erros e limites
+
+Camadas acrescentam custo e complexidade. Eliminar a necessidade de vigilância pode reduzir o engajamento dos funcionários se for mal explicado.
+
+### Exercícios
+
+- **EX052 — Risco da senha única.** O que acontece se uma única senha roubada dá acesso a tudo? *Rubrica:* 3 = todos os funcionários precisam ser perfeitos o tempo todo;; 2 = perfeição;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Funcionários como camada.** Como Aiko posiciona os funcionários no desenho em camadas? *Rubrica:* 3 = como uma camada entre muitas, não a última linha de defesa;; 2 = uma camada;; 1 = última linha;; 0 = nenhuma.
+- **EX054 — Benefício da chave de segurança.** Como as chaves de segurança reduzem a dependência da vigilância? *Rubrica:* 3 = não se autenticam em páginas de login falsas;; 2 = resistentes a phishing;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar métodos de autenticação por usabilidade e segurança; (2) explicar por que a autenticação resistente a phishing ajuda as pessoas; (3) planejar com os usuários a implantação de um método de autenticação.
+
+### 19.1 Comparar métodos
+
+Aiko compara opções de autenticação para a Greyford: senhas, códigos por SMS, aprovações em aplicativo, códigos em aplicativo e chaves de segurança. Avalia cada uma quanto à resistência a phishing, rapidez, custo e modos de falha. Senhas são fáceis de capturar por phishing e muitas vezes reutilizadas. Códigos por SMS podem ser interceptados ou capturados por phishing em tempo real. Aprovações em aplicativo podem ser abusadas com prompts repetidos até que um usuário cansado aceite. Chaves de segurança resistem ao phishing porque usam criptografia vinculada ao site legítimo e são rápidas depois que os funcionários aprendem a usá-las. Ela resume a comparação em uma tabela.
+
+### 19.2 A criptografia que os usuários nunca veem
+
+Aiko explica aos funcionários que uma chave de segurança guarda uma chave privada que nunca sai do dispositivo. No login, o site envia um desafio, a chave o assina, e o site confere a assinatura com a chave pública correspondente. A chave também verifica a identidade do site, de modo que um site falso não recebe nada de útil. Os funcionários não precisam entender isso para se beneficiar; basta tocar a chave. Um bom projeto criptográfico esconde a complexidade e, ao mesmo tempo, elimina um julgamento que os usuários faziam mal.
+
+### 19.3 Implantar com os usuários
+
+Aiko planeja uma implantação: piloto com vinte voluntários, coleta de problemas, duas chaves por pessoa com uma guardada em local seguro, uma via rápida de recuperação nos depósitos e um treinamento de cinco minutos com um vídeo curto. Ela evita códigos por SMS como alternativa, porque reintroduziriam o risco de phishing. Marca a implantação fora do inverno, quando canos estourados deixam as equipes de campo mais ocupadas. Planejar em torno do trabalho das pessoas é tão importante quanto escolher a tecnologia certa. Ela também combina que os voluntários do piloto atuem como apoio local em cada depósito, já que os colegas muitas vezes preferem perguntar a um par antes de ligar para o service desk.
+
+### Exemplo resolvido
+
+Aiko compara cinco métodos de autenticação, explica as chaves de segurança em termos simples e planeja uma implantação em etapas, com reservas, recuperação e escolha da estação do ano.
+
+> **Caso sintético.** O plano de implantação é sintético.
+
+### Erros e limites
+
+Chaves de segurança exigem logística de reposição. Alguns sistemas talvez ainda não as suportem.
+
+### Exercícios
+
+- **EX055 — Abuso de prompts.** Como as aprovações em aplicativo podem ser abusadas? *Rubrica:* 3 = prompts repetidos até que um usuário cansado aceite;; 2 = fadiga de prompts;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Chave e site falso.** Por que um site falso não obtém nada de útil de uma chave de segurança? *Rubrica:* 3 = a chave verifica a identidade do site antes de assinar;; 2 = verificação de origem;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Sem SMS como alternativa.** Por que evitar códigos por SMS como alternativa? *Rubrica:* 3 = reintroduziriam o risco de phishing;; 2 = phishing;; 1 = custo;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Fatores humanos e política cibernética: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o campo de fatores humanos e política cibernética; (2) relacionar as políticas às decisões de engenharia; (3) identificar as partes interessadas na Greyford.
+
+### 20.1 Definir o campo
+
+Aiko começa a parte especializada do curso. Fatores humanos e política cibernética estuda como as pessoas interagem com a segurança e como regras, programas e leis moldam essa interação. O campo abrange a usabilidade das ferramentas de segurança, a conscientização e o treinamento, a cultura organizacional, a engenharia social e o desenho de políticas. Sasse, Brostoff e Weirich (2001) defenderam uma abordagem que trata os usuários como parceiros e projeta a segurança em torno deles. Aiko observa que o campo é tanto engenharia quanto psicologia, porque produz requisitos, projetos e medições. Ela escreve uma definição de um parágrafo em seu caderno.
+
+### 20.2 Política e engenharia
+
+As políticas definem requisitos que os engenheiros precisam atender. A política de segurança da informação da Greyford exige treinamento anual de conscientização, autenticação forte para acesso remoto e reporte de incidentes. A NIST SP 800-50 Rev. 1 trata a conscientização e o treinamento como um programa de aprendizagem, com levantamento de necessidades, desenho, execução e avaliação. Aiko percebe que as escolhas de engenharia determinam se a política é viável: um requisito de reporte pouco significa sem um botão de reporte fácil. Ela decide ler as políticas como um conjunto de restrições e objetivos de projeto. Marca cada cláusula da política com o recurso de projeto que a torna alcançável e encontra duas cláusulas sem nenhum recurso de apoio.
+
+### 20.3 Partes interessadas
+
+Aiko lista as partes interessadas: operadores, engenheiros de campo, equipe administrativa, gestores, a equipe de segurança, o RH, os representantes dos funcionários, o regulador dos serviços de água e o público que depende de água segura. Cada uma tem seus interesses. Os operadores querem o mínimo de interrupções; o RH quer tratamento justo; o regulador quer evidências de boas práticas; o público quer água segura e confiável. Ela registra isso em uma tabela de partes interessadas. A Profa. Kerr observa que o trabalho em fatores humanos fracassa quando serve a uma só parte interessada, geralmente a direção, e ignora as demais. Depois de um lembrete, ela acrescenta os terceirizados.
+
+### Exemplo resolvido
+
+Aiko define o campo, lê as políticas como restrições de projeto e mapeia nove grupos de partes interessadas com seus interesses.
+
+> **Caso sintético.** A política da Greyford é sintética; Sasse et al. (2001) e a SP 800-50 Rev. 1 são reais.
+
+### Erros e limites
+
+Listas de partes interessadas podem omitir grupos discretos, como os terceirizados. Resumos de políticas simplificam deveres legais.
+
+### Exercícios
+
+- **EX058 — Escopo do campo.** Cite três temas de fatores humanos e política cibernética. *Rubrica:* 3 = usabilidade, conscientização e treinamento, cultura, engenharia social, desenho de políticas;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Políticas como restrições.** Como Aiko escolhe ler as políticas? *Rubrica:* 3 = como restrições e objetivos de projeto;; 2 = restrições;; 1 = só regras;; 0 = nenhuma.
+- **EX060 — Modo de falha.** Quando o trabalho em fatores humanos fracassa, segundo a Profa. Kerr? *Rubrica:* 3 = quando serve a uma só parte interessada;; 2 = uma parte interessada;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se os reportes ainda estão subindo, se estabilizaram ou estão recuando depois de uma campanha.
 
@@ -568,6 +950,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 **EX029.** Iscas que exploram medos sobre salário, saúde, família ou demissão.
 
 **EX030.** Porque distrair um operador poderia afetar o tratamento da água, que é crítico para a segurança.
+
+**EX031.** Porque nenhuma pessoa precisa reconhecer e julgar essas mensagens.
+
+**EX032.** Porque aparece em quase todo e-mail de fornecedor e, por isso, carrega pouca informação.
+
+**EX033.** Oito dos dez funcionários.
+
+**EX034.** Porque o hábito de clicar adiante se mantém quando aparece um prompt raro e perigoso.
+
+**EX035.** Corrigindo os certificados internos, de modo que os avisos deixaram de aparecer.
+
+**EX036.** Um catálogo de autoatendimento, pedidos respondidos em até uma hora e direitos temporários por tarefa.
+
+**EX037.** Uma tabela que ligasse funcionários individuais aos cliques em simulações.
+
+**EX038.** Apenas as datas de conclusão, sem as notas dos questionários.
+
+**EX039.** Que os dados de conscientização não serão usados para fins disciplinares.
+
+**EX040.** Leitura no celular, muitas vezes de luvas ou sob luz forte.
+
+**EX041.** No celular, o botão de reporte saía da tela ao rolar.
+
+**EX042.** Porque reportar é a finalidade principal do recurso.
+
+**EX043.** Porque desloca o projeto para apoiar o bom comportamento, em vez de apenas restringi-lo.
+
+**EX044.** Autoridade e urgência.
+
+**EX045.** Verificação por retorno de ligação a um número conhecido para pedidos de fornecedores.
+
+**EX046.** Seus limites e pontos fortes passam a fazer parte do projeto, em vez de serem considerados depois.
+
+**EX047.** Filtrar e-mails sabidamente maliciosos, verificar domínios e agrupar reportes duplicados.
+
+**EX048.** Exigir a digitação de uma senha enquanto se reconhece um alarme crítico.
+
+**EX049.** A malha fica aberta, e os funcionários podem parar de reportar.
+
+**EX050.** Um agradecimento automático, a confirmação de se o e-mail era malicioso e um resumo mensal.
+
+**EX051.** Com retorno, a taxa subiu para 60% no mês 12; sem retorno, caiu para 18%.
+
+**EX052.** Todos os funcionários precisariam ser perfeitos o tempo todo.
+
+**EX053.** Como uma camada entre muitas, e não como a última linha de defesa.
+
+**EX054.** Elas se recusam a autenticar no site errado, então as páginas de login falsas fracassam.
+
+**EX055.** Enviando prompts repetidos até que um usuário cansado aceite um deles.
+
+**EX056.** Porque a chave verifica a identidade do site e não assina para o site errado.
+
+**EX057.** Porque trariam de volta ao sistema o risco de phishing.
+
+**EX058.** Usabilidade das ferramentas de segurança, conscientização e treinamento, e cultura organizacional, entre outros.
+
+**EX059.** Como um conjunto de restrições e objetivos de projeto para a engenharia.
+
+**EX060.** Quando serve a uma só parte interessada, geralmente a direção, e ignora as demais.
 
 <a id="references"></a>
 ## Referências
