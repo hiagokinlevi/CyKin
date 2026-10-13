@@ -2880,7 +2880,7 @@ Why is A not a pass? “No DB receipt” is an **unknown**, even when the policy
 
 ### 17.3 Reproducible gate and negative variant
 
-The Python 3 listing prints the table's gate outcomes. Its strings describe a simulation; no service is contacted. A variant changes only A's DB receipt to True in a copy. That raises A to LAB_PASS, but **still** says nothing about real authorization or deployment.
+The Python 3 listing prints the table's gate outcomes. Its strings describe a simulation; no service is contacted. A variant copies A and sets its DB receipt to True and its R42 result to False, the two values A was missing. That raises A to LAB_PASS, but **still** says nothing about real authorization or deployment.
 
 ~~~python
 candidates = {
