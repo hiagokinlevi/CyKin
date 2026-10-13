@@ -1534,9 +1534,13 @@ You will (1) draw an entity model for engagements, scopes and findings; (2) choo
 
 Engagement 1—* ScopeVersion; Engagement 1—* Finding; Finding *—* EvidenceObject (by hash); TechniqueTag *—* Finding. Cardinality mistakes (many scopes active without a version pointer) cause auditors to ask "which ROE was live?"
 
+A version pointer on every finding answers which ROE was live without a scavenger hunt through mail. Many-to-many evidence links let one hash support several tickets when scanners overlap. Sam rejects schemas that allow two active ScopeVersions without naming which one TrackScope loads. Auditors ask for the live ROE first; the version pointer is the answer that keeps the rest of the dossier coherent.
+
 ### 22.2 Keys
 
 Finding ids are ULID/UUID. Evidence is content-addressed by SHA-256. ScopeVersion has (engagement_id, version_int). Never key findings by title — titles change.
+
+ULIDs sort by time and stay unique across services. Content-addressed evidence means renaming a file cannot fork history. Titles are labels for humans, never joins. Sam's migration guide forbids title-based foreign keys even in temporary scripts. A title rename during editing must not orphan evidence links, which is why content hashes and ULIDs carry the joins. Reviewers reject import jobs that still match on title even when labelled temporary or one-off.
 
 ### 22.3 Forbidden attributes
 
@@ -1544,21 +1548,31 @@ No attribute for payload, password or shell command. EvidenceObject stores bytes
 
 > **Synthetic case — Riverstone Transit.** An early schema had `notes` as free text; people pasted passwords. Sam replaced it with structured fields plus an evidence hash, and a linter rejects password-like strings in titles.
 
+Schema validation is the last line when a tired engineer invents a custom field. Sealed bytes plus hash keep recipes out of the ticket body that gets mailed around. Retention class drives purge without ad-hoc deletes. Sam's CI fails if a migration adds a banned column name.
+
 ### 22.4 Errors and limits
 
 Models that try to encode all of ATT&CK as mandatory fields force junk tags. Keep technique tags optional and reviewed.
+
+Mandatory ATT&CK fields produce junk tags that pollute coverage charts. Optional, reviewed tags keep PulseMap honest. Sam's weekly tag review merges synonyms and drops tags nobody can define, and a tag without a one-line definition cannot be applied to a new finding. Tag definitions live in the same repo as PulseMap queries, so a deleted meaning cannot linger in charts.
 
 ### 22.2b Time and actors
 
 Every mutable entity needs `created_at`, `created_by`, and for state changes `updated_at`/`updated_by` or an append-only event. Wall-clock alone is not an audit trail. Prefer UTC with an explicit offset in exports so shift handovers across time zones do not reorder history.
 
+Append-only events survive disputes about who changed severity. UTC with explicit offsets stops a London and a New York handoff from looking reversed. Wall-clock screenshots without actor ids are not enough for an audit. Sam's export job refuses rows that lack created_by.
+
 ### 22.3b Soft delete vs purge
 
 Findings are rarely hard-deleted during retention; they soft-delete with an actor and reason. Purge jobs honour retention class and emit an audit event. A silent DELETE FROM findings is a repudiation gift to anyone challenging the dossier later.
 
+Soft delete keeps the story for the retention window; purge is a deliberate, logged act. Silent SQL deletes are how dossiers lose findings that counsel later needs. Actor and reason on soft delete answer who hid a ticket and why. Sam alerts when a purge job runs outside its schedule.
+
 ### 22.1b Attachment size limits
 
 Evidence objects need size caps and media-type allow-lists. Unbounded uploads become availability attacks on the store and tempt dumping of bulk personal data. Large artefacts stay in the sealed bucket with streaming hash computation.
+
+Caps stop a bulk dump of personal data disguised as evidence. Media-type allow-lists block surprise executables in the bucket. Streaming hashes handle large artefacts without loading them into FindingsDesk memory. Sam posts the size cap in the tester guide so people do not discover it at upload time.
 
 ### Exercises
 
@@ -1586,9 +1600,13 @@ You will (1) enumerate failures of the assessment platform itself; (2) use a lig
 
 TrackScope failing open, FindingsDesk losing deny events, PulseMap counting coverage without a denominator — these are threats to *safety and honesty*, not only to confidentiality of the tool.
 
+A fail-open scope check hurts the client more than a slow UI. Lost deny events hide ROE breaches until the report. Coverage without a denominator is a marketing chart. Sam ranks these failures beside confidentiality threats in every design review. Design reviews spend equal time on honesty failures and on data-leak failures, with separate owners for each class.
+
 ### 23.2 STRIDE on the platform
 
 Spoofing: fake assessment account. Tampering: edit finding severity after seal. Repudiation: no actor on deny events. Information disclosure: evidence bucket world-readable. Denial of service: scanner floods client. Elevation: operator role can widen scope alone. Each row gets a mitigation requirement.
+
+Each row becomes a mitigation with an owner, not a slide. Spoofed accounts need strong IdP binding; severity edits after seal need immutability or dual control; missing actors need mandatory fields. Scanner floods are ROE and rate-limit problems as much as availability ones. Sam tracks the six rows in the backlog until each has a test.
 
 ### 23.3 Engagement threats stay in scope docs
 
@@ -1596,26 +1614,37 @@ Threats *to the client* belong in the engagement's threat-led scenario (if any),
 
 > **Synthetic case — Riverstone Transit.** STRIDE row "fail open" became safety requirement S-3 (Chapter 21). Row "solo scope widen" became the dual-approval gate (Chapter 14).
 
+Keeping client-scenario threats out of the product backlog stops TrackScope from growing an exploit engine. Threat-led exercises belong in the engagement pack with their own authorization. Sam closes feature requests that smuggle engagement tactics into platform epics.
+
 ### 23.4 Errors and limits
 
 STRIDE is a prompt, not a proof. Revisit after architecture changes.
+
+A STRIDE pass from last year misses a new SaaS adapter's trust boundary. Revisit is triggered by architecture change, not by calendar alone. Sam books a threat pass when any new egress or identity provider is added, and he keeps the old list so reviewers can see what was already accepted. The threat list's change log cites the pull request that added each adapter, which makes stale rows obvious.
 
 ### 23.2b Abuse cases vs misuse cases
 
 Abuse cases are intentional adversary actions against the platform (forge a policy signature). Misuse cases are honest operators making dangerous mistakes (paste a CIDR that includes a partner). Design controls for both; training alone does not stop misuse when the UI makes widen-scope a single click.
 
+A single-click widen-scope button is a misuse magnet even among honest staff. Forging a policy signature is abuse and needs cryptographic checks. Training without UI friction fails the first busy Friday. Sam requires a second person or a delay on every widen action.
+
 ### 23.3b Feeding backlog
 
 STRIDE rows become issues with links to requirements. Unowned rows are theatre. Review the threat list when adding a new trust boundary (for example, a new SaaS adapter) — not only at programme start.
+
+Unowned STRIDE rows are decoration. Links to requirement ids make mitigations shipable. New trust boundaries reopen the list even mid-programme. Sam's definition of done for a threat row includes a merged test or an accepted risk with an executive name. Sprint boards show threat rows beside feature rows so safety work cannot hide in a separate spreadsheet.
 
 ### 23.1b Assuming breach of the jumphost
 
 Include "jumphost compromised" in the platform threat model: short-lived credentials, egress allow-lists, and rapid revocation. If your response is only "trust the jumphost", the analysis is incomplete.
 
+Short-lived credentials and egress allow-lists assume the host will be stolen someday. Rapid revocation is practised, not hoped for. Trust without those controls is hope. Sam's tabletop always includes a stolen jumphost hour. Revocation drills use a spare jumphost image so production engagements are not interrupted by the exercise. Spare images are rebuilt from the golden branch after every drill so leftovers cannot accumulate.
 
 ### 23.4b Ranking platform threats
 
 Sam ranks the STRIDE findings by consequence to the client: a tampered scope file that lets testing reach an excluded rail signalling host is first; a spoofed dashboard login that leaks coverage charts is lower. The ranking decides which mitigations land before the next engagement.
+
+Consequence to the client beats cleverness of the attack. Signalling hosts outrank dashboard vanity metrics. Ranking drives the order of mitigations before the next window. Sam publishes the top five on the team board during planning.
 
 ### Exercises
 
@@ -1643,9 +1672,13 @@ You will (1) sequence pre-engagement → discovery → validation → reporting 
 
 Pre-engagement produces the signed ROE. Discovery enumerates in-scope assets by agreed methods. Validation confirms configuration issues with least privilege. Reporting delivers findings and evidence hashes. Skipping pre-engagement is how unauthorized testing happens.
 
+Signed ROE before discovery is the whole safety story in one sentence. Validation with least privilege keeps the engagement inside granted roles. Reporting with hashes makes findings checkable. Sam's gate in TrackScope refuses discovery actions until a ROE hash is recorded. TrackScope's pre-check is covered by a CI test that attempts discovery with a missing ROE hash and expects denial.
+
 ### 24.2 Method cards
 
 Each method card: name, purpose, required privilege, noisy?, stop conditions, expected artefacts. "Authenticated configuration review" is a card; "weaponised exploit" is not in this programme's deck.
+
+Privilege, noise and stop conditions on one card stop improvisation under pressure. Artefacts tell reviewers what done looks like. Weaponised exploits stay out of the catalogue by policy. Sam rejects a card that cannot name its stop condition in observable terms. Cards that survive review are numbered and frozen for the window; drafts stay in a separate catalogue branch.
 
 ### 24.3 Done means artefacts
 
@@ -1692,26 +1725,37 @@ events=8 phases=7
 
 > **Synthetic case — Riverstone Transit.** The timeline lab shows a stop at 11:10 and resume after confirmation — the method card required that path.
 
+Feelings do not survive handoff; files do. Inventory, excerpts, drafts and coverage updates are the checklist. Sam's method runner marks done only when each path exists and hashes are stored. Partial artefact sets leave the method in progress and block the next dependent method in the planner.
+
 ### 24.4 Errors and limits
 
 Copying someone else's method list without matching authorization is cargo-cult PTES.
+
+Borrowed method lists ignore local authorization and local fragility. Matching the card to the signed ROE is the real planning work. Sam starts from the ROE verbs and only then opens the catalogue, and a card whose privilege line exceeds the ROE is removed before the schedule is published. Depot-link capacity figures from the physics chapter feed the veto, so the refusal is numeric rather than taste. Numeric vetoes appear in the schedule UI beside the method name so planners see the constraint early.
 
 ### 24.2b Quiet vs noisy methods
 
 Quiet methods (authenticated reads, config export) fit daytime windows on shared systems. Noisy methods (broad service enumeration) need tighter rate limits and often off-peak hours. The method card's "noisy?" field drives the schedule; leaving it blank is how morning dispatch windows get congested.
 
+Daytime shared systems need quiet cards; broad enumeration needs off-peak and tighter rates. The noisy flag drives the calendar automatically when filled. Blank flags are how dispatch windows clog. Sam blocks schedule publish while any card still has a blank noise field.
+
 ### 24.3b Method freeze
 
 During an engagement window, adding a new method mid-flight needs the same authorization path as a scope widen. "While we were here we also tried…" is how ROE drift happens. Park ideas in the next engagement's planning backlog.
+
+Mid-flight additions are scope drift with better branding. The widen path exists for a reason and applies to methods too. Parking ideas keeps the current window auditable. Sam logs freeze breaks as incidents even when the client later approves the method. Incident tickets for freeze breaks include the time, the method name and whether traffic already left the assessment zone.
 
 ### 24.1b Method dependencies
 
 Some methods require outputs of others (inventory before authenticated review). Encode dependencies in the plan so the timeline does not schedule the review on day one against an empty asset list. PulseMap can show blocked-by links for planned techniques.
 
+Review on day one against an empty inventory wastes the window and tempts shortcuts. Encoded dependencies make the planner refuse impossible orders. PulseMap's blocked-by links show why a technique waits. Sam renders the dependency graph in kickoff so the client sees the critical path.
 
 ### 24.4b Reviewing a method card
 
 Before a method card enters the catalogue, a second engineer reads it as if they had never seen the method: is the purpose clear, are stop conditions observable, does it name the evidence it produces? Sam's first card for passive service inventory came back with one change: the stop condition "if the network seems slow" became "if the client's monitoring reports latency above the agreed threshold."
+
+A cold reader finds fuzzy stop conditions before production does. Observable thresholds replace vibes about slowness. Sam keeps the review comment next to the card version that fixed it.
 
 ### Exercises
 
@@ -1739,9 +1783,13 @@ You will (1) sketch TrackScope's allow/deny pipeline; (2) justify trade-offs in 
 
 Design the pipeline: input action → load ScopeVersion → evaluate predicate → emit event → return decision. Competitors: embed policy in code vs data file; sync vs async events.
 
+The pipeline sketch forces students to name where policy loads and where events go. Embed-versus-file and sync-versus-async are real Riverstone debates. Sam supplies a blank ADR template so the studio ends with writing, not only a whiteboard photo. Teams submit the ADR before the gallery walk; photos alone are archived as informal notes only. Informal photos may help memory but never replace the written decision for grading or for operations.
+
 ### 25.2 Trade-offs
 
 Policy-as-data lets ROE updates ship without redeploying binaries but needs signature verification. Async events scale but can reorder; for deny-list hits, prefer sync alert.
+
+Unsigned policy-as-data is a tampering gift; signatures cost key management. Async deny alerts that reorder can page late; sync costs latency. Sam's rubric scores whether the team named both sides before choosing. Scoring rubrics award points for stating the rejected option's strongest argument in the writers' own words. That single sentence often exposes a choice made on familiarity alone.
 
 ### 25.3 Decision record
 
@@ -1749,21 +1797,31 @@ One page: context, options, decision, consequences, date, owners. Store next to 
 
 > **Synthetic case — Riverstone Transit.** Studio chose policy-as-signed-JSON, sync path for denies, async bulk for allows. ADR-004 captures it.
 
+One page beats a slide deck nobody diffs. Consequences and owners make the decision revisitable. Storing it next to code means reviewers see it in the same pull request. Sam links the ADR from the README of the service it affects. README links use the ADR filename, so a rename without an update breaks the doc build and gets noticed.
+
 ### 25.4 Errors and limits
 
 Studios that skip safety requirements produce pretty diagrams that fail open.
+
+Pretty boxes that omit fail-closed paths fail the studio even if the arrows are neat. Safety requirements are checked before aesthetics. Sam's facilitators are briefed to ask the missing-policy question early, and a sketch that cannot answer it is returned for revision rather than polished. Facilitators keep a tally of returned sketches; more than two returns in a studio triggers a short lesson on fail-closed paths. The tally is wiped each term so it measures the room, not ancient history.
 
 ### 25.2b Sketch quality bar
 
 A studio sketch must name trust boundaries, data stores, and the fail-closed path in writing — not only boxes and arrows. If a reviewer cannot point to where DENY happens when policy is missing, the sketch is incomplete. Ten minutes of labelling beats an hour of aesthetic layout.
 
+Written fail-closed paths survive when arrows are redrawn. Trust boundaries and stores must be labelled for a reviewer to attack the design. Ten minutes of labels prevent hour-long layout bikesheds. Sam rejects unlabelled sketches at the door of the gallery.
+
 ### 25.3b Facilitator role
 
 Studios need a facilitator who watches for safety omissions and empty scores while teams debate latency. The facilitator can pause the room with a single question: "Where do we DENY if policy is missing?" If nobody can answer, architecture is not ready.
 
+Someone has to defend safety while the room optimises latency. The pause question resets the debate to DENY paths. Sam rotates facilitators so every student practises the role. After each studio the facilitator writes three sentences on what the room almost missed, filed with the ADRs.
+
 ### 25.1b Constraint cards
 
 Hand each studio team physical or digital constraint cards: residency, two-engineer ops, fail-closed, no empty scores. Designs that violate a card are rejected before aesthetic debate starts. Cards rotate across studios so teams practice different constraints.
+
+Physical cards make residency and fail-closed hard to forget under time pressure. Rejecting violators before aesthetics saves the afternoon. Rotating cards builds fluency across constraint sets. Sam prints the cards on different colours for quick room scans. Digital card decks shuffle automatically so neighbouring teams rarely share the same constraint order.
 
 ### Practice note
 
@@ -1795,9 +1853,13 @@ You will (1) compare monolith vs service split for assessment tools; (2) evaluat
 
 A: monolith on a hardened jump host. B: TrackScope / FindingsDesk / PulseMap as separate services. C: SaaS scanner with client data leaving the premises. Each serves different constraints.
 
+Three options keep the analysis honest: local monolith, split services, and SaaS leaving the premises. Constraints differ by residency and ops skill. Sam forbids a fourth mystery option introduced in the last five minutes of debate. A parking-lot list captures late ideas for the next alternatives pass instead of bending the current scores.
+
 ### 26.2 Criteria
 
 Authorization clarity, data residency, fail-closed behaviour, operability by two engineers, cost. Weight safety and residency above novelty.
+
+Weighting safety and residency above novelty stops a shiny SaaS demo from winning on vibes. Operability by two engineers matches Riverstone's real headcount. Sam publishes weights before scoring so nobody moves the goalposts after seeing totals, and each scorer writes one sentence on the decisive criterion. Process-failure notes are read aloud at the next studio so weight-gaming does not become a habit. Reading those notes aloud is awkward on purpose; social cost is part of the control.
 
 ### 26.3 Decision
 
@@ -1805,21 +1867,31 @@ Riverstone rejected C because fare and staff identity logs must not leave the re
 
 > **Synthetic case — Riverstone Transit.** A vendor demo of C looked slick; counsel blocked it on residency. ADR-011 records the rejection so the question is not reopened monthly.
 
+Rejecting C protects fare and staff logs under residency rules. B scales reporting without forcing every tool to share fate; A remains the offline escape hatch. Sam's ADR quotes the residency clause that killed C.
+
 ### 26.4 Errors and limits
 
 Alternatives analysis that ignores the ROE's data clauses is theatre.
+
+Ignoring ROE data clauses produces an architecture the client cannot legally run. Sam checks those clauses before scoring novelty, cost or developer joy, and any alternative that needs a residency waiver is marked blocked until counsel answers in writing. Waiver requests open a counsel ticket with a due date; engineering does not speculate on the answer in the ADR. Due dates that slip are escalated the same way as open critical findings.
 
 ### 26.2b Switching costs
 
 Architecture alternatives include the cost of changing your mind later. A monolith that already exports signed policy files can grow into services; a SaaS contract with residency exceptions is harder to unwind mid-incident. Prefer options that keep an offline escape hatch for deny/allow.
 
+Offline escape hatches keep deny/allow alive when SaaS or networks die. Contracts with residency exceptions are sticky in an incident. Prefer growth paths that preserve signed policy export. Sam asks each option how a Friday outage would still enforce DENY.
+
 ### 26.3b Exit criteria for alternatives
 
 An alternatives analysis ends with a decision, rejected options with reasons, and a revisit trigger ("reopen if residency law changes"). Without a revisit trigger, people re-argue C every sprint.
 
+Revisit triggers stop endless re-litigation of SaaS. Rejected reasons must be specific enough to falsify later. Sam puts the trigger sentence in the ADR header. Measurable triggers include a named law change, a residency audit finding or a sustained ops-staffing drop below two. Staffing triggers use a four-week average so a single sick week cannot reopen SaaS debates.
+
 ### 26.1b Cost models
 
 Include rough annual cost (compute, seats, staff time for dual approval). An alternative that needs six FTEs to operate fail-closed is not free because the license was cheap. Cost belongs in the decision record beside safety.
+
+Staff time for dual approval is a real annual cost. Cheap licences that need six FTEs fail the operability criterion. Sam's spreadsheet sits beside the ADR, not in a private folder. When costs spike, the next lead opens the same sheet and sees which assumption broke, without a scavenger hunt.
 
 ### Practice note
 
@@ -1851,9 +1923,13 @@ You will (1) design preventive, detective and corrective controls for the platfo
 
 Preventive: scope predicate before action. Detective: alert on deny-list hit. Corrective: auto-disable assessment account at window end. Each maps to a requirement id.
 
+Mapping each kind to a requirement id makes gaps visible. Preventive without detective leaves silent failure; detective without corrective leaves accounts open after the window. Sam's control table has three columns and refuses empty cells on Must rows. Window-end account disable is tested by leaving a canary account enabled in staging and watching corrective control fire. Staging canaries are named clearly so nobody mistakes them for production assessment accounts.
+
 ### 27.2 Operator skill
 
 Controls must be operable by engineers who follow runbooks — not only by exploit specialists. A control that needs a custom shellcode to verify is the wrong control for this programme.
+
+Runbook-operable controls survive night shifts and new hires. Exploit-only verification excludes the engineers this programme trains. Sam rewrites any control whose verify step needs custom offensive tooling. Verify steps are rewritten until a new hire can perform them from the runbook in under fifteen minutes. Timing the new-hire run is part of accepting the control, recorded next to the owner field.
 
 ### 27.3 Compensation
 
@@ -1901,21 +1977,31 @@ action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrenc
 
 > **Synthetic case — Riverstone Transit.** Password-spray-lab is denied unless approved — preventive gate with a detective event when someone tries without approval.
 
+Legacy gaps are honest when named in the ROE with monitoring and approval attached. Hidden gaps become incidents. Sam lists compensations in the kickoff deck so the client accepts them explicitly. Kickoff slides that omit a listed compensation are corrected before signatures, not after the first deny storm.
+
 ### 27.4 Errors and limits
 
 Stacks of compensating controls without an owner become ignored alerts.
+
+Unowned alert piles train people to ignore pages. Every compensating control needs a name and a review date. Sam deletes or re-homes orphans monthly, and an alert that fired without an owner for a week is raised in the leadership pack as a control defect. Leadership packs include a one-line orphan-alert count so silence cannot be mistaken for health. A rising orphan count is discussed before feature velocity in the same leadership meeting.
 
 ### 27.2b Control ownership
 
 Every control has an owner who receives its alerts and a review date. Orphan detective controls become noise; orphan preventive controls become folklore nobody dares to change. Put owner and review date in the same repo as the control code.
 
+Owner plus review date in-repo beats a wiki nobody updates. Alerts without owners are noise; preventive folklore blocks needed change. Sam's CODEOWNERS maps control paths to people who get the pages. Remapping owners is a reviewed config change, with a week of shadowed pages before the old owner drops off.
+
 ### 27.3b Testing controls
 
 Each control needs a negative test: remove it or break it in a lab and show the bad outcome is caught by a higher control or by fail-closed defaults. Untested controls are wishes.
 
+Negative tests prove the higher layer catches a broken preventive control. Untested controls are wishes with dashboards. Sam schedules the break-it lab quarterly and files gaps as P1s. Open P1s from the lab appear on the engagement readiness dashboard beside ROE and version pins. Readiness dashboards go red on open P1s and stay red until the fix merges and the lab is re-run.
+
 ### 27.1b Detecting control bypass
 
 Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design.
+
+Break-glass without logs is a hidden single control. Weekly review keeps emergency paths exceptional. Sam graphs break-glass counts next to engagement volume. Design reviews of dual-control paths invite a client liaison when counts rise for two weeks running. Two weeks is long enough to see a pattern and short enough to act before the next window.
 
 ### Practice note
 
@@ -1946,6 +2032,8 @@ You will (1) implement allowed() with explicit reason codes; (2) add tests for e
 ### 28.1 Implementation shape
 
 Pure function: inputs host, port, ScopeVersion → (allow: bool, reason: str). No network I/O inside the predicate; I/O belongs to the caller. That keeps tests fast and free of client contact.
+
+Keeping I/O out of the predicate makes synthetic tests complete. Callers handle network and files; the function stays a pure decision. Sam benchmarks the predicate to keep it under a millisecond for burst denies. Burst tests send ten thousand synthetic denies and fail if p95 latency crosses the millisecond budget.
 
 ### 28.2 Clause tests
 
@@ -1999,27 +2087,39 @@ target=8.8.8.8:80 decision=DENY reasons=outside-cidr
 target=192.168.1.10:80 decision=DENY reasons=outside-cidr
 ```
 
+Per-clause files show which rule regressed. Mutation breaking a clause must fail CI or the suite is theatre. Synthetic fixtures keep client networks out. Sam's review checks that each ROE clause has a file. Unimplemented clauses block release trains even when a manual demo passed on a laptop build. Laptop demos can be attached as extras but they never green-light a train by themselves.
+
 ### 28.3 Logging
 
 Log decision, reason, policy version, actor. Do not log tokens or passwords. Redact query parameters that might contain secrets.
 
 > **Synthetic case — Riverstone Transit.** Implementation I shipped reason codes that the timeline UI shows — operators finally saw *why* a probe stopped.
 
+Policy version and actor make a DENY explainable months later. Tokens in logs are incidents. Redaction of query parameters is tested with a fixture that tries to sneak a password through. Sam fails builds that print Authorization headers. Secret-sneak fixtures run on every commit, not only on release candidates, so redaction regressions fail fast.
+
 ### 28.4 Errors and limits
 
 Stringly-typed reasons drift; use an enum shared with PulseMap.
+
+Reason codes that invent new strings every week break dashboards and training. A catalogue with stable ids keeps operators fluent. Sam rejects pull requests that add a reason without a catalogue row and a unit test, and he archives retired codes instead of recycling their ids so old logs stay readable. Archived codes remain in a read-only table queried by the log UI when analysts open old engagements. Read-only archive access is granted to analysts for the engagement retention period only.
 
 ### 28.2b Reason-code catalogue
 
 Publish the enum of reason codes as a versioned document PulseMap and operators share: `outside-cidr`, `deny-list`, `port-not-in-scope`, `outside-hours`, `concurrency`, `needs-approval`, `policy-unavailable`. Unknown codes must fail closed in consumers, not display as "OK".
 
+Stable codes let PulseMap and training docs speak one language. Human text can change; ids should not. Sam versions the catalogue and requires a migration note when meanings change. Yearly metric notebooks pin the catalogue version so a meaning change cannot silently reshape trends. Notebooks that omit the pin fail the metrics review the same way unpinned tool versions fail kickoff.
+
 ### 28.3b Fuzzing inputs
 
 Feed the predicate random hosts, ports and broken UTF-8. It must DENY or error closed, never throw uncaught and never ALLOW on parse failure. A five-minute fuzz harness in CI catches embarrassing crashes before an engagement does.
 
+Garbage hosts and ports must deny closed, not crash open. Fuzzing the predicate catches panics that would fail open in a wrapper. Sam runs a nightly fuzz job on allowed() with a crash-as-fail gate. Release notes list fuzz hours and crash counts beside feature highlights for visibility.
+
 ### 28.1b Property-based hours
 
 For the hours gate, generate random timestamps across a week and assert DENY outside the ROE window and ALLOW inside (with other clauses satisfied). Example tests miss timezone edges that property tests catch.
+
+Hours clauses fail at boundaries: 08:59 versus 09:00. Property tests over time zones catch gaps example tests miss. Sam includes a case just inside and just outside the window in every hours file. Hours-change tickets paste the boundary table from the suite so reviewers see what will be asserted.
 
 ### Practice note
 
