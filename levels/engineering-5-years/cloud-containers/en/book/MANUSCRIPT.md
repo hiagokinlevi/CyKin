@@ -1610,29 +1610,43 @@ You will (1) write testable security requirements for meterhub; (2) derive them 
 
 A requirement says what the system must do in a way that can be tested: "Pods in production namespaces must not run as root" is testable; "the cluster must be secure" is not. Each requirement names its scope, condition and expected behaviour.
 
+Scope says where the requirement applies, such as production namespaces only; the condition says when, such as at admission; the expected behaviour says what must happen, such as rejection of the pod. With all three, two engineers reading the same requirement would write the same test. Without them, one might check only new pods and another every running pod, and both would claim the requirement was met while measuring different things.
+
 ### 21.2 Sources
 
 Risks from the key-leak review, the Kubernetes Pod Security Standards, CIS Benchmark recommendations for managed Kubernetes, CSA CCM v4 controls and the energy regulator's data rules. Each requirement cites its source so its purpose is clear.
+
+Citing the source protects a requirement from being quietly dropped. If a developer asks why pods cannot run as root, the answer points to the Pod Security Standards and to the opening incident review, not to someone's preference. Sources also show when a requirement may need revisiting: a new CIS Benchmark version or a change in the regulator's rules flags every requirement drawn from it for review.
 
 ### 21.3 Examples
 
 R1: workloads obtain cloud credentials only through workload identity with lifetimes under one hour. R2: every production namespace has a default-deny ingress and egress network policy. R3: production namespaces enforce the Restricted Pod Security profile. R4: only images signed by the pipeline are admitted. R5: storage holding readings cannot be made public. R6: high-risk configuration changes raise an alert within 15 minutes.
 
+Each example is phrased so a machine or a person can check it. R1 names a mechanism and a lifetime; R2 names a policy type and a scope; R4 states what the admission controller must refuse. Elena writes R5 as an outcome rather than a mechanism, because the provider offers several ways to block public storage and the team should be free to choose the one that suits each account.
+
 ### 21.4 Prioritising
 
 Requirements are ranked by risk reduced and effort. R1 and R5 directly address the opening case; R2 addresses the missing network policies.
+
+R1 removes the kind of long-lived key that leaked; R5 stops readings from being exposed even if access settings are later misconfigured. Both directly prevent a repeat of the opening incident. R2 follows because flat networking would let a single compromised pod reach the database. Lower-ranked requirements still matter but can wait until the most direct risks are closed.
 
 ### 21.5 Exceptions
 
 Some workloads, such as the node agent, need privileges. Requirements allow documented, time-limited exceptions approved by the platform lead.
 
+Time limits force a review: an exception granted for six months must be justified again, so temporary needs do not become permanent holes. Documentation records why the workload needs the privilege and what compensating controls apply, such as running the node agent only on dedicated nodes. Approval by the platform lead makes one person accountable for each exception. Expired exceptions fail the admission check automatically.
+
 ### 21.6 Verification link
 
 Each requirement has a verification: an admission test, a configuration query, or an alert test with synthetic events.
 
+An admission test tries to deploy a non-compliant pod and expects rejection. A configuration query lists every namespace and checks for the default-deny policy. An alert test injects a synthetic event, such as a public storage change in the test account, and measures how fast the alert arrives. Each method produces a recorded result that can go into evidence. Results are stored with dates and versions.
+
 ### 21.7 Change control
 
 Requirements change only through review, with the reason recorded.
+
+Without review, requirements drift as people bend them to fit what was built. Recording the reason for a change helps later readers understand whether it reflected new risk information or simply convenience. When a requirement changes, its verification is updated at the same time, so tests always match the current version. Rosa approves requirement changes, and each change gets a short entry in the requirements file history explaining what changed, why, and which tests were updated alongside it.
 
 ### Ownership
 
@@ -1674,25 +1688,37 @@ You will (1) model meterhub's components, identities and data flows; (2) classif
 
 Components: load balancer, ingest service, message queue, time-series database, API, billing export job, analytics workspace, metrics stack, pipeline, image registry, secret manager, backup account.
 
+Listing every component, including less obvious ones like the backup account and secret manager, ensures none is left out of later analysis. Each becomes a node in the data-flow and identity models. Elena checks the list against the cloud inventory and the cluster's running workloads, and finds an old reporting job nobody had mentioned. The job is added and given an owner.
+
 ### 22.2 Identity model
 
 Each component has an identity: Kubernetes service accounts mapped to cloud roles, pipeline federated identity, human roles. The model lists what each identity can do, which reveals over-broad roles.
+
+Writing down what each identity can do often reveals surprises. The billing export job's role allows writing to every bucket in the account, though it only needs one. A pipeline role has rights to delete clusters that no pipeline task uses. Each over-broad permission is a risk if that identity is compromised, so the model drives a clean-up list.
 
 ### 22.3 Data model
 
 Data classes: readings (personal, high), customer details (personal, high), aggregated statistics (internal), logs (may contain personal data), images (internal, may contain secrets). Each class has storage, retention and access rules.
 
+Classifying data decides how it is handled. High-sensitivity personal data gets the strictest access and shortest retention; internal statistics can be shared more widely. Logs and images are classed as possibly sensitive because they can contain personal data or secrets by accident, which justifies scanning them. Elena tags each storage location in the cloud account with its data class, so rules can be checked automatically.
+
 ### 22.4 Data flows
 
 Meters to load balancer to ingest to queue to database; database to API to customer portal; database to billing export to billing system; database to analytics as aggregates.
+
+Drawing flows shows every path readings take and every system that touches them. The analytics flow receives aggregates, not raw readings, which limits exposure. The billing export is a flow out of the platform to another system, so its protection depends on both sides. Elena draws the flows on one page and numbers them, so later tables and tests can refer to each flow by number instead of describing it again.
 
 ### 22.5 Trust boundaries
 
 Marked where data crosses between identities, networks or accounts. Shostack-style questions are asked at each: what can go wrong here?
 
+At each boundary, asking what can go wrong prompts specific threats: could a caller pretend to be another service, could data be altered in transit, could a request be denied without trace? The questions are simple but, asked systematically, they surface issues that a general review overlooks. Answers are written beside each boundary on the diagram. Where a question has no good answer yet, such as how a fake meter would be noticed, it becomes an open item with an owner and a date.
+
 ### 22.6 Using the model
 
 For each flow, Elena checks: is it authenticated, authorised, encrypted, logged? Missing marks become work items.
+
+A simple table with four columns per flow makes gaps obvious. Elena finds that the billing export is authenticated and encrypted but not logged on the receiving side, so the team could not show later who received which file. That gap becomes a work item with an owner. She completes the table for all numbered flows in one afternoon with Rosa, who supplies details Elena could not find in the exports.
 
 ### Generating the model
 
@@ -1734,25 +1760,37 @@ You will (1) analyse threats and failures for meterhub systematically; (2) use S
 
 Using the STRIDE categories Shostack (2014) teaches: spoofing (a fake meter or service), tampering (altered readings or images), repudiation (unlogged admin changes), information disclosure (public buckets, leaked keys), denial of service (ingest floods), elevation of privilege (privileged pods reaching the node).
 
+STRIDE gives a checklist so that threats are considered systematically rather than only the ones people happen to remember. For each component and flow, Elena asks which categories apply. A fake meter is spoofing; altered readings are tampering; a privileged pod reaching the node is elevation of privilege.
+
 ### 23.2 Failure analysis
 
 Not all problems are attacks. Failures include expired certificates stopping ingest, a policy change blocking legitimate traffic, a node pool upgrade evicting pods and a misconfigured lifecycle rule deleting data early.
+
+Failures can cause harm just as attacks do: an expired certificate stops ingestion and loses readings; a lifecycle rule set to thirty days instead of thirteen months deletes billing data. Including failures in the same analysis gives a complete view of risk and often leads to the same controls, such as monitoring and change review.
 
 ### 23.3 Scenarios
 
 Each scenario names a cause, a path and an impact: "A developer pushes an image with an embedded key to a public registry; the key allows reading three buckets; readings could be exposed." Scenarios stay at outcome level, without procedures.
 
+Scenarios make risks concrete enough to discuss with managers. Each names who or what causes the problem, how it unfolds and what is lost. Keeping them at outcome level avoids writing attack instructions while still conveying the risk and guiding control choices.
+
 ### 23.4 Ranking
 
 Likelihood and impact are rated with evidence such as past incidents and exposure.
+
+Evidence-based ratings carry more weight than intuition. The key leak raised the likelihood of credential exposure, since it had already happened once. A public-facing ingest endpoint raises exposure to floods. Ratings are explained in a sentence each, so others can challenge them. A simple three-level scale, low, medium and high, is used for both likelihood and impact, with written definitions for each level so different raters apply them the same way. Elena and Rosa rate scenarios separately, then discuss any disagreement until they agree.
 
 ### 23.5 Linking controls
 
 Each scenario lists preventive, detective and recovery controls and their requirement IDs.
 
+Linking each scenario to controls and requirements shows how defences combine. The key-leak scenario links to secret scanning (detective), workload identity (preventive) and fast revocation (recovery). Scenarios with no linked controls are gaps that need attention. The table also shows which controls protect against several scenarios at once, such as workload identity, which reduces both credential leaks and over-broad access. Those shared controls get extra attention, since losing one would weaken many defences together. Elena colours rows without a detective control.
+
 ### 23.6 Review
 
 The analysis is repeated when the architecture changes.
+
+Architecture changes alter risks: adding a new external integration introduces new flows and threats. Repeating the analysis keeps it current. Elena sets a rule that any design record introducing a new component must include an update to the threat analysis. A full review also happens once a year even without changes, because the threat landscape moves: new techniques appear, and old assumptions about attackers' interest in energy data may no longer hold. The review is dated, and the previous version is kept for comparison so changes in ratings are visible.
 
 ### Using the ranking
 
@@ -1798,6 +1836,8 @@ You will (1) design default-deny network policies; (2) compute reachability befo
 
 Start from the documented and observed flows (chapter 11), apply a default-deny policy to the namespace, then add allow rules for each legitimate flow. The Kubernetes network policy documentation explains that once a pod is selected by a policy, traffic not allowed by some policy is denied.
 
+Starting with default deny means anything not explicitly allowed is blocked, so forgotten flows fail visibly rather than staying open silently. Adding allows one by one from the observed list documents every permitted path. Each allow rule can reference the flow it supports, which helps later reviewers.
+
 ### Lab — Lab — network reachability
 
 ```python
@@ -1823,21 +1863,31 @@ web->db reachable: False
 
 With no policies, all 12 directed pod pairs among web, api, db and metrics are reachable. With default deny plus four allows, only 4 of 12 are: api->db, metrics->api, metrics->db and web->api. web->db is no longer reachable, so a flaw in the web pod could not reach the database directly.
 
+Going from twelve reachable pairs to four removes two-thirds of possible paths. The key result is that web can no longer reach the database directly. If the web pod were compromised, an attacker would have to go through the API, which authenticates requests and limits what can be read.
+
 ### 24.3 Egress too
 
 Default deny should cover egress as well as ingress; DNS egress must be allowed explicitly or name resolution fails.
+
+Without egress rules, a compromised pod could still send data out freely even if no one can reach it. Forgetting DNS is a common mistake: pods cannot resolve service names, which looks like a broken application. Elena includes a DNS allow in her policy template for every namespace. Allowed external destinations, such as the image registry, are listed by name with the reason for each.
 
 ### 24.4 Testing safely
 
 Policies are applied first in the test cluster, with connection tests for every allowed and a sample of denied pairs. Some network plugins offer audit modes; otherwise staged rollout by namespace is used.
 
+Testing every allowed pair confirms nothing legitimate is broken; testing a sample of denied pairs confirms the policy actually blocks. Audit modes log what would be blocked without blocking it, which is ideal for finding missed flows. Staged rollout limits disruption if something was missed. Each test result is recorded with the policy version applied.
+
 ### 24.5 Labels
 
 Policies select pods by labels; inconsistent labels cause surprises, so label standards are enforced in the pipeline.
 
+A policy selecting pods with app=api will not apply to a pod labelled application=api, leaving it unprotected or blocked unexpectedly. Enforcing a label standard in the pipeline catches such differences before deployment. Elena adds a check that every pod carries the required labels. The standard defines a small set of keys, such as app, tier and team, with allowed values. Pipelines reject manifests missing them, so policies can rely on the labels being present and spelled consistently.
+
 ### 24.6 Monitoring
 
 Denied connection logs show legitimate traffic that was missed.
+
+Denied connections after rollout usually mean a legitimate flow was missed, such as a monthly report job. Logs give the source, destination and port, so the team can add the right allow quickly. Unexpected denials that do not match any known service may indicate misuse. Elena sets an alert when denials for one namespace rise sharply after a policy change, and the alert links to the change that preceded it. In the first week after rollout, the team reviews every distinct denied pair daily, then weekly once the list stabilises.
 
 ### Rollout order
 
@@ -1879,25 +1929,37 @@ You will (1) design an end-to-end secure deployment path for meterhub in a team;
 
 Teams design how code becomes a running meterhub workload: build, scan, sign, store, admit, deploy and observe, meeting requirements R1 to R6.
 
+The brief covers the whole path from code to running pod, because weaknesses often appear between steps. An image could be scanned but not signed, or signed but not checked at admission. Teams must show how each requirement is met along the path. Each team presents its design as a sequence of steps with the requirement met at each step and the evidence that would prove it. Teams also list which steps could fail and what happens to a deployment when one does.
+
 ### 25.2 Alternatives
 
 Team A proposes push-based deployment from the pipeline with a production deployer identity. Team B proposes pull-based GitOps, where a controller in the cluster pulls approved manifests. Elena's team compares them on credentials exposed, auditability and recovery.
+
+Push-based deployment gives the pipeline a credential that can change production, which becomes a high-value target. Pull-based GitOps keeps that power inside the cluster. Comparing them on agreed criteria keeps the discussion grounded rather than based on familiarity. Elena's team scores both options against the three criteria and notes the evidence for each score.
 
 ### 25.3 Comparison
 
 Pull-based deployment means the pipeline never holds cluster credentials, and the cluster's state is always reconciled to the repository. Push-based is simpler to adopt. Both can verify signatures at admission.
 
+Pull-based design reduces credential exposure and makes drift self-correcting, but it needs teams to learn a new workflow. Push-based is familiar but concentrates risk in the pipeline. Signature checks at admission protect both, since only signed images run regardless of how they were deployed. The team recommends pull-based GitOps for production and push-based for the test cluster, where speed matters more.
+
 ### 25.4 Review package
 
 Diagram, requirement trace, threat scenarios addressed, open risks and a test plan.
+
+Each item lets reviewers check a different aspect: the diagram shows structure, the trace shows requirements met, threat scenarios show risks addressed, open risks show honesty, and the test plan shows how claims will be proved. Missing items are noted in the critique. Teams submit the package two days before the critique session, so critics can read it carefully. Elena's team keeps it to eight pages plus diagrams, with each open risk naming who would accept it and why.
 
 ### 25.5 Critique
 
 Studio critics ask how emergency fixes work if the repository is unavailable, and who can change the GitOps controller itself.
 
+Both questions target hidden dependencies. If the repository is down, can urgent fixes still be deployed safely? Whoever controls the GitOps controller effectively controls production, so its own configuration needs strong protection. Good critique finds such weak points before deployment. The critics also ask how a new engineer would learn the process. Elena's team had no answer and adds a short onboarding guide to the design, with a worked example of deploying a change end to end.
+
 ### 25.6 Revision
 
 The design adds a documented break-glass path with alerts, and restricts controller changes to a separate reviewed repository.
+
+A break-glass path allows urgent changes when normal channels fail, but every use raises an alert and must be reviewed afterwards. Keeping controller configuration in a separate repository with its own review limits who can change the most powerful component. The revisions close the gaps the critique found. The team tests the break-glass path on the test cluster to confirm the alert fires and the change is recorded properly.
 
 ### Studio process
 
