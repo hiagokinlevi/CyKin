@@ -2057,7 +2057,7 @@ output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
 output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 ```
 
-Rina ran all four on her laptop with the stated seeds and compared each line with the expected output before writing anything. All matched. When a classmate's evasion run differed in the third decimal place, the cause was a different library version, which they recorded in the setup notes. Checking against expected output first catches such differences before they reach a report or a marker.
+Rina ran all four on her laptop with the stated seeds and compared each line with the expected output before writing anything. All matched. When a classmate's evasion run differed in the third decimal place, the cause was a different Python version, which they recorded in the setup notes. Checking against expected output first catches such differences before they reach a report or a marker.
 
 ### 25.3 Interpreting
 
