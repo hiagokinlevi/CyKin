@@ -1782,21 +1782,31 @@ You will (1) compare build, buy and community-platform options for CTI; (2) run 
 
 Option A: extend Lantern in-house. Option B: buy a commercial threat-intelligence platform. Option C: adopt an open-source community platform such as MISP and integrate it with BEN's controls. Each can ingest feeds and share with partners; they differ in cost, control, staffing and support.
 
+Kofi describes each option by what BEN would have to do itself. In-house means BEN writes and maintains everything. A commercial product shifts maintenance to a vendor but limits how far BEN can change it. A community platform brings a large user base and free software, while BEN still runs and secures the servers.
+
 ### 26.2 Criteria and weights
 
 Kofi agrees criteria with stakeholders before scoring: interoperability (STIX/TAXII 2.1), TLP enforcement, OT approval workflow, total cost over five years, staffing burden, data residency, and exit cost. Weights sum to 100. Agreeing weights first prevents the favourite option from shaping the criteria.
+
+Kofi ran the weighting session with the CTI lead, the network operations manager and the privacy officer, and each argued for the criteria closest to their work. The final weights were recorded with a sentence explaining each, so later readers can see why OT workflow counted for more than user-interface polish.
 
 ### 26.3 Portability
 
 If a platform cannot export everything as standard STIX 2.1 bundles, leaving it later means losing history. Exit cost is a real criterion, not a footnote.
 
+Kofi tested portability for each option with the synthetic dataset: load a few thousand objects, export them and compare the export with the original. One option dropped relationship objects on export, which would have broken the links analysts depend on. That result lowered its score more than any feature list could have raised it. The test takes an afternoon and should be repeated before any contract is signed.
+
 ### 26.4 Hybrid answers
 
 Trade studies often end in hybrids: a community platform for partner sharing plus a thin in-house service for OT approvals and firewall pushes. Hybrids add integration work, which must be scored too.
 
+In the worked example the hybrid wins, but the integration it needs is real work: the community platform must hand approved blocks to the in-house service, and both must agree on identifiers. Kofi estimated that effort in engineer-weeks and added it to the cost criterion. Without that step a hybrid looks like the best of both options at no extra price, which is rarely true.
+
 ### 26.5 Review dates
 
 Markets and staffing change. The decision record sets a review date — for example in two years — and the triggers that would force an earlier review, such as loss of the only engineer who knows the in-house code.
+
+Kofi also lists what evidence the review would need: costs actually incurred, partner feedback on sharing and time spent on maintenance. Collecting those figures from the start makes the review a comparison rather than a debate. A decision that is never revisited tends to be defended long after it stops fitting.
 
 ### Worked example
 
@@ -1834,6 +1844,8 @@ You will (1) implement TLP 2.0 as an enforceable dissemination control; (2) fail
 
 FIRST TLP 2.0 defines who may receive information: CLEAR without restriction; GREEN within the community; AMBER within the recipient organisation and its clients on a need-to-know basis; AMBER+STRICT within the organisation only; RED to named recipients only. Lantern turns those definitions into a gate on every export and every analyst view.
 
+Kofi's gate reads the label from the object and the audience from the request, then checks the pair against a table derived from the definitions. Keeping the table separate from the code means a reviewer can compare it line by line with the published standard.
+
 ### Lab 5 — dissemination gate
 
 ```python
@@ -1869,17 +1881,25 @@ R-5 TLP:PURPLE -> team BLOCK unknown label
 
 GREEN to the public is blocked; AMBER to the organisation is allowed; RED to a team is blocked because only named recipients qualify; CLEAR to the public is allowed; an unknown label, TLP:PURPLE, is blocked. The lab simplifies audiences into categories; production rules also check recipient identity.
 
+Those checks matter for RED in particular. A category such as team would let anyone in the team through, while the label allows only the people named. Kofi's production gate looks up the recipient list stored with each RED report and compares it with the person requesting access.
+
 ### 27.3 Fail closed
 
 Unknown or missing labels must block, not allow. A typo in a label should never publish restricted content.
+
+The lab shows this with the invented label, which the gate blocks rather than treating as permissive. Kofi's gate also blocks objects with no label at all, objects whose label has extra spaces and objects with two conflicting labels. Each block writes a reason, so the analyst who hit it can ask the source to correct the label. Allowing on error would turn every data-quality problem into a possible leak, which is the worst way for the gate to fail.
 
 ### 27.4 Approval gates
 
 Pushes to OT firewalls, sharing beyond the community and deleting indicators are high-impact. Each requires a named approver, and the approval is recorded with the object version.
 
+Kofi's approval service shows the approver exactly what will change: the rules to be added or removed, the source of each and the segments affected. Approvers cannot approve their own requests. If the object changes after approval, the approval no longer applies and must be given again, which closes the gap between what was reviewed and what was sent.
+
 ### 27.5 Audit
 
 Every allow and block decision is logged with requester, label, audience and time. Auditors and partners can then verify that agreements were honoured.
+
+Kofi tested the log by asking a colleague to pick ten past decisions at random and trace each one back to the request and the label. All ten could be traced. The log is kept in a store analysts cannot edit, and its retention follows the longest sharing agreement, so a partner's question about how their material was handled can be answered for as long as the material was kept.
 
 ### Training the humans
 
@@ -1921,21 +1941,31 @@ You will (1) implement a TAXII 2.1 client stage against a synthetic server stub;
 
 The client discovers the API root, lists permitted collections, and requests objects added after the last saved checkpoint. It follows pagination until complete and stores the new checkpoint only after the batch is safely written, so a crash causes a re-fetch rather than a gap.
 
+The order matters, as the worked example shows. A checkpoint saved before writing marks objects as received when they are not. Saving after writing means a crash between the two steps fetches some objects twice, which the store handles because writes are keyed by identifier and repeated writes change nothing.
+
 ### 28.2 Validation and normalisation
 
 Validation enforces STIX required properties and identifier format. Normalisation applies the documented rules from Chapter 13. Both stages emit rejects with reasons.
+
+Running validation before normalisation means that rules about formats are checked on what the partner actually sent. Normalising first could hide a malformed value by turning it into something that looks valid. Kofi's stage logs show counts per source and per reason, which become the partner quality reports. A record rejected here never reaches the store, so an analyst never sees a half-cleaned value.
 
 ### 28.3 Queues
 
 Bounded queues connect stages. If enrichment slows, validation fills its output queue and waits; the client pauses. This protects memory and makes slowness visible.
 
+Kofi chose queue sizes from measured memory use per object and a limit that leaves room for the rest of the host. When a queue stays full for more than a few minutes, an alert tells the operator which stage is slow. Unbounded queues would hide the slowness until memory ran out and the whole collector stopped at once.
+
 ### 28.4 Metrics from day one
 
 Objects received, accepted, rejected per source; queue depths; checkpoint age; poll duration. Metrics are cheap to add early and expensive to retrofit.
 
+Kofi added these counters in the first week, before any performance work. They showed within days that one partner's polls took far longer than the others, which turned out to be a slow server on the partner side, not a problem in Lantern. Without the poll duration metric the team might have spent days profiling the wrong code. Each metric has a short description and an owner on the dashboard.
+
 ### 28.5 Synthetic server stub
 
 Development uses a local stub that serves synthetic STIX bundles in TAXII 2.1 form. No development traffic touches partner servers, protecting partners and keeping tests reproducible.
+
+The stub serves fixed bundles from files, including malformed ones for error tests, and can be told to respond slowly or refuse requests. That lets the team test timeouts and back-off without asking a partner for a broken server. Because the bundles are fixed, a test that passes today will pass tomorrow unless the code changed.
 
 ### Configuration of partners
 
@@ -1977,6 +2007,8 @@ You will (1) measure feed quality with precision, recall and F1 against a labell
 
 To measure a feed, compare it with ground truth: indicators confirmed malicious in BEN's incidents or in trusted partner investigations, plus confirmed benign values. Labels come from completed investigations, not from the feed itself, to avoid circularity.
 
+Using the feed's own entries as truth would make any feed look perfect. Kofi's labelled set draws on closed investigations where an analyst confirmed whether a value was hostile. Benign labels come from BEN's allow-list of known suppliers and from values investigated and cleared. Each label records who assigned it and when.
+
 ### Lab 6 — feed evaluation
 
 ```python
@@ -2000,17 +2032,25 @@ precision=0.50 recall=0.60 F1=0.55
 
 Three of the feed's six entries are confirmed malicious (precision 0.50); it found three of five known malicious values (recall 0.60); F1 is 0.55. Half the feed would be noise if blocked directly.
 
+The scores answer different questions. Precision tells BEN how many blocks from this feed would be mistaken. Recall tells how much of the known hostile activity the feed would have caught. A feed with high recall and low precision can still help as an enrichment source, which is how the worked example ends up using it.
+
 ### 29.3 Timeliness and uniqueness
 
 A feed that lists indicators a week after BEN saw them is of little operational value. Measure median lead time relative to first internal sighting. Uniqueness — indicators no other source provides — shows marginal value.
+
+Kofi measures lead time as the difference between the feed's publication time and BEN's first sighting of the same value. A positive lead means the feed warned BEN in advance; a negative one means it arrived after the fact. Uniqueness is measured against all other sources in Lantern over the same period, since a feed that duplicates others adds little even if its quality is high.
 
 ### 29.4 Limits
 
 Ground truth is incomplete: unknown malicious values count as false positives when they are merely unconfirmed. Report the evaluation period, set size and labelling method with every number.
 
+For that reason Kofi reports precision as a lower bound when unconfirmed entries are counted as false. He also notes how many of the feed's entries could not be labelled at all. With a small set, a single relabelled value can move the scores noticeably, so the report gives the counts behind each ratio. Readers can then judge how much weight the numbers deserve.
+
 ### 29.5 Using results
 
 Metrics feed source weights in Lantern's confidence model and inform renewal decisions for paid feeds. They are shared with partners in aggregate when agreements allow, supporting the reciprocity NIST SP 800-150 describes.
+
+Kofi changes source weights in small steps and records the evaluation that justified each change. A paid feed's renewal depends on the scores over a full contract period, not one quarter. When BEN shares aggregate results with a partner, the partner learns how its feed performs in BEN's environment, which helps it improve without exposing BEN's incident details.
 
 ### Sampling for labels
 
@@ -2052,21 +2092,31 @@ You will (1) write verification procedures that trace to requirements; (2) execu
 
 Verification checks that Lantern meets its written requirements. Validation, in Chapter 38, checks that it meets stakeholders' real needs. A platform can pass verification and still fail validation if the requirements were wrong.
 
+Kofi keeps the two activities in separate plans with separate owners. Verification is run by the engineering team against the requirements document. Validation involves the people who use Lantern and asks whether it helps their work. A requirement that passes verification but fails validation is evidence that the requirement itself needs changing.
+
 ### 30.2 Procedures
 
 Each procedure names the requirement, preconditions, steps, expected result and pass criteria. "Load bundle S-07 containing 1,000 indicators of which 12 lack valid_from; expect 988 stored, 12 rejected with reason; pass if counts match exactly."
+
+The example shows the level of detail needed: a named bundle, exact counts and a clear pass rule. Two people following it should get the same result. Kofi writes the procedure before running it, so the expected result cannot be shaped by what the system happens to produce on the day.
 
 ### 30.3 Coverage
 
 The traceability matrix shows which requirements have procedures. Uncovered requirements are listed explicitly; an untested requirement is an open risk, not a silent pass.
 
+Kofi's coverage report lists every requirement with its procedures and last result. At the first run, several requirements had no procedure, mostly non-functional ones such as retention. Each gap was either filled with a procedure or recorded as an accepted risk with an owner and a date for review. Nobody was allowed to mark an untested requirement as met.
+
 ### 30.4 Deviations
 
 When a result differs, record a deviation with severity and owner. Do not edit the expected result to match the output without a requirement change.
 
+Each deviation records the procedure, what was expected, what happened and the evidence. Severity follows the effect on users: a TLP gate failure is high because it could leak restricted data; a missing metric is lower. Kofi reviews open deviations weekly with the team, and closes each only after the procedure has been rerun and passed.
+
 ### 30.5 Evidence
 
 Logs, metric snapshots and output hashes are stored with the procedure run. A reviewer can rerun the same procedure with the same synthetic data and compare hashes.
+
+Hashes make comparison quick: if the output file has the same hash as the stored run, the result is identical. Kofi keeps the synthetic data, the code version and the configuration with each run, so a reviewer months later can reproduce it exactly. Evidence that cannot be reproduced has much less weight in an audit.
 
 ### Regression suite
 
