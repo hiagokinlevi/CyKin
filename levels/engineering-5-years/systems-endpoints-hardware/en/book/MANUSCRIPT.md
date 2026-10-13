@@ -2065,10 +2065,6 @@ The choice is explained to librarians in plain words: computers clear patron fil
 
 Mateo checks whether changing one score would alter the choice. Only a large change in cost would favour C, so the decision is robust.
 
-### Documentation
-
-The decision record includes the scoring table.
-
 ### Agreement
 
 Marta and Dr Novak agree with the choice.
@@ -2564,10 +2560,6 @@ After enforcement, each block is logged. A weekly review checks for new needed t
 ### Communicating
 
 Librarians are told what patrons will see if a program is blocked and how to request additions.
-
-### Second audit week
-
-The second audit week confirms only unwanted installers are blocked.
 
 ### Fairness
 
