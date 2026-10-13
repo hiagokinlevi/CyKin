@@ -1146,7 +1146,7 @@ You will (1) choose measures that show whether security is improving; (2) collec
 
 "We ran the scanner 400 times" is activity. "Secrets reaching the public repository fell from 2 to 0 per term" is an outcome. Outcomes show whether risk changed.
 
-Activity measures are still useful for checking that a control is running, but they cannot show that it works. Lena keeps both kinds and labels them, so nobody mistakes a busy scanner for a safer project. Lena keeps both kinds of measure but labels them clearly, so nobody mistakes a busy scanner for a safer project.
+Activity measures are still useful for checking that a control is running, but they cannot show that it works. Lena keeps both kinds and labels them, so nobody mistakes a busy scanner for a safer project. Her term report puts the 400 scanner runs under control health and the fall from 2 secrets to 0 under risk outcomes.
 
 ### 15.2 Measures for CampusEats
 
