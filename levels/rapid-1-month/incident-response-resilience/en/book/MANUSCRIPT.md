@@ -6283,6 +6283,65 @@ for label, rows in VARIANTS:
 
 Predict the eight baseline receipts and three two-row variants in the [supplemental worked transcript](#ir-rapid-ch03-mq3-intake-result). Explain why `MQ-02` is not yet a verified duplicate *effect*, why a held/stale first attempt still reserves its key's intent for conflict review, and why two competing new intents cannot be safely ordered by whichever file is read first. This in-memory check cannot authenticate approvals, guarantee atomic writes, resolve Branch P's two unnamed requests or certify durable exactly-once processing. In a real system, conditional state updates and key-to-result records would require a controlled, durable consistency design.
 
+### 3.13a Safe return to service is a conjunction, not a single green result
+
+**Learning objective:** Explain why a successful configuration change, a quiet audit query, correct booking values, accessible user functions and reliable attribution are **different acceptance dimensions**. A beginner does not need to implement transaction isolation or perform a live restore, but should be able to state what evidence would prevent premature reopening.
+
+A session-revocation control may have the intended narrow protective effect without making booking state correct. A staff-write pause may block one known route while a scheduled job or alternate API still changes the same booking. An isolated backup comparison may match the owner-approved P1 target on B17/B18 but fail B19/B20. An authorized test may succeed while the audit record has no actor. These are not interchangeable observations, and an owner's acceptance should state its tested service scope and remaining compensating controls.
+
+Define **protection acceptance** as evidence that the harmful or prohibited operation is constrained within the specified *tested* routes and interval. Define **business acceptance** as evidence that a permitted booking function remains usable under declared workflow conditions. Define **data correctness** against an independently approved target, not against an old backup merely because that copy has a matching digest. Define **audit adequacy** as the attribution and time fields required for the particular authorized test. A **queue-reconciliation gate**, where a pause generated manual requests, requires the service owner to know what is pending, approved, duplicated, conflicting or held. Finally, **owner acceptance** is a separate human decision about limited or unrestricted mode; it does not follow automatically from a test script.
+
+**Contrastive worked case A (Branch S after proper release):** At 09:45 the identity administrator reports that the current `desk-a` session was revoked, with a narrow no-later-edit result in its queried range. That supports a bounded *session-action report* and a limited query observation, not a claim that every write path or all bookings are safe. Later P1/C1 reveals B19/B20 mismatches; later V1 tests one permitted and one denied operation but has a **blank actor**. Even after these releases, unrestricted service acceptance fails the stated data and audit checks. A responsible lead can propose monitored restricted operation only after a separate service-owner decision and a documented next review.
+
+**Contrastive worked case B (Branch P, not Branch S):** The later branch card reports two **unnamed pending manual requests**, a fifteen-minute pause starting at 09:45, and no writes within a bounded audit interval. Those requests are not bookings already applied. Their receipt IDs, expected versions, authorizations and latest authoritative states are unavailable; therefore a student cannot decide which to replay. A queue owner must obtain a restricted manifest, detect a reused operation key or stale state, assign a supported disposition to each request, and retain unresolvable ones for owner review. The separate MQ3 fixture demonstrates these hazards with invented X-bookings, **not** the two Branch P requests. Reaching a nominal 10:00 expiry does not prove writes automatically resumed or that a queue item was accepted.
+
+A deliberately important comparison: a **verified duplicate receipt** need not create a second business effect, whereas a **different operation using the same key** demands a conflict hold. Even if all pending items have dispositions, the service still needs independent booking, access and audit gates. The [NIST SP 800-184 recovery guide](https://csrc.nist.gov/pubs/sp/800/184/final) emphasizes planning, testing and improvement, not a one-signal recovery declaration. The following classroom condition checker is a teaching model rather than NIST-mandated acceptance logic.
+
+#### R3X offline lab — mandatory gates and a queue that remains pending
+
+This standard-library Python 3 fixture is wholly invented. Each row is an independent reset; `True`, `False` and `None` mean declared pass, declared failure and untested, not authenticated receipts. No file, service, network or real booking is touched.
+
+~~~python
+def accept(protection, service, data, audit, queue, owner):
+    if protection is False: return "PROTECTION_FAIL"
+    if service is False: return "SERVICE_FAIL"
+    if data is False: return "DATA_FAIL"
+    if audit is False: return "AUDIT_FAIL"
+    if queue is False: return "QUEUE_UNRECONCILED"
+    if None in (protection, service, data, audit, queue):
+        return "MANDATORY_GATE_NOT_TESTED"
+    if owner is not True: return "OWNER_ACCEPTANCE_PENDING"
+    return "SYNTHETIC_SCOPED_GATES_PASS_ONLY"
+
+rows = [
+    ("NO_TEST", (None, None, None, None, None, None)),
+    ("B19_WRONG", (True, True, False, True, True, True)),
+    ("MISSING_ACTOR", (True, True, True, False, True, True)),
+    ("QUEUE_PENDING", (True, True, True, True, False, True)),
+    ("NO_OWNER", (True, True, True, True, True, None)),
+    ("TOY_SCOPED_PASS", (True, True, True, True, True, True)),
+]
+for name, flags in rows:
+    print(name, accept(*flags))
+~~~
+
+**Exact tested output:**
+
+~~~text
+NO_TEST MANDATORY_GATE_NOT_TESTED
+B19_WRONG DATA_FAIL
+MISSING_ACTOR AUDIT_FAIL
+QUEUE_PENDING QUEUE_UNRECONCILED
+NO_OWNER OWNER_ACCEPTANCE_PENDING
+TOY_SCOPED_PASS SYNTHETIC_SCOPED_GATES_PASS_ONLY
+~~~
+
+**Adversarial interpretation:** Even when the other Boolean inputs are declared pass, `B19_WRONG` and `MISSING_ACTOR` are mandatory failures. `QUEUE_PENDING` refuses an automatic restart merely because the technical block is over. `TOY_SCOPED_PASS` only shows that the *declared toy fields* are internally favorable; there is no approved copy, validated source clock, verified actor, independent production route test or actual owner decision. An unobserved path cannot be converted to a pass.
+
+**Reproducible task:** Write a five-column plan listing the required owner, source, expected observation, failure action and status of each gate. Then reproduce all six lines, identify a failed data gate and a failed audit gate after the later P1/C1 and V1 releases, and state what the queue owner would need **before** reading either pending Branch P request. A full result refuses to borrow W1, MQ3 or RTE3 synthetic outcomes as Harbor Library operations and keeps incident root cause and identity questions open.
+
+**Synthesis:** A temporary successful control, an accepted limited operating mode, and an eradicated cause are different decisions. Chapter 4 tests whether the learner can maintain these boundaries while cards are gradually released and the receiving shift lacks the author's explanations.
+
 ### Chapter 3 exercises
 
 Use the synthetic case only. R1–R24 are available for all twelve exercises; P1/C1 and V1 are available only where an exercise explicitly calls for the Chapter 3 recovery lab. The Chapter 4 branches are **not** evidence at the 09:37 decision point. R17's 09:22 task list names B17/B18 only; the later B20 edit in R18 is evaluated against that already supplied list, not known to the training owner in advance. For each response, first name its record IDs and decision time; then separate observed fact from inference or proposal; finally name an authorized owner, an observable check and a limit. Submit the requested matrix, note or test plan so a reader can reproduce the reasoning from this book alone. The worked results at the end provide examples, while alternative choices pass when their assumptions and verification are explicit.
