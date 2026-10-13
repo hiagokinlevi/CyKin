@@ -1670,10 +1670,6 @@ For CLINIC2-SRV the entry reads, in effect: missing heartbeat after a patch rebo
 
 Analysts handle simple cases; problems needing collector or SIEM changes go to Copperleaf's engineer with the diagnosis so far, saving repeated checks.
 
-### Preventing repeats
-
-The patch system now checks agent health after updates.
-
 ### Worked example
 
 Before calling the client about CLINIC2-SRV, Mei checks the last events received: an update installation and a reboot request from the patch system at 12:24, a minute before its last heartbeat at 12:25, and nothing suspicious. She records "probable failed agent start after update" and calls the IT contractor, who confirms and reinstalls the agent.
@@ -2333,7 +2329,7 @@ The journal gives the tutor evidence of learning that Raj's evaluation alone wou
 
 Raj's evaluation covers technical skill, judgement, communication and reliability.
 
-Each criterion links to things Raj saw during the placement. Technical skill shows in triage and onboarding checks, judgement in decisions such as when to call a client, communication in her calls and drafts, and reliability in handover notes and promised calls kept. The evaluation and the journal together go to her polytechnic. Raj bases each judgement on specific cases from the placement, so Mei and her tutor can see the evidence behind every comment. Mei's handover notes, with promised calls at the top, are among the evidence for the reliability criterion.
+Each criterion links to things Raj saw during the placement. Technical skill shows in triage and onboarding checks, judgement in decisions such as when to call a client, communication in her calls and drafts, and reliability in handover notes and promised calls kept. The evaluation and the journal together go to her polytechnic. Raj bases each judgement on specific cases from the placement, so Mei and her tutor can see the evidence behind every comment.
 
 ### Shift handover
 
