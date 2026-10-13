@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -731,7 +731,345 @@ Publique siempre las afirmaciones de detección con un recuento, un denominador 
 
 ### Siga estudiando — capítulo 12 de 40
 
-[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidad y acceso
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diseñar cuentas nominativas basadas en roles para operadores, ingenieros y proveedores; (2) explicar el requisito fundamental de IEC 62443 de control de identificación y autenticación; (3) separar los privilegios de «ver», «operar» e «ingeniería»; y (4) diseñar un acceso de proveedores acotado en el tiempo.
+
+### 13.1 Las cuentas compartidas rompen la atribución
+
+Históricamente, las salas de control usaban un único inicio de sesión por turno. Cuando cambia un punto de consigna, el registro muestra «operator», no qué operador. IEC 62443-3-3 agrupa los requisitos en siete requisitos fundamentales; el FR 1, control de identificación y autenticación, pide que los usuarios humanos se identifiquen de forma única. Las cuentas nominativas permiten que una investigación separe un error honesto de un uso indebido. En LDHP, antes del rediseño de Maya, HMI-1 usaba un único inicio de sesión compartido por turno, así que un cambio de punto de consigna a las 02:00 no podía atribuirse a una persona; el registro solo decía «operator». El rediseño dio a cada operador una cuenta nominativa, de modo que la investigación del capítulo 15 puede preguntar a una persona concreta qué cambió.
+
+### 13.2 Roles que corresponden al trabajo
+
+En LDHP bastan tres roles para HMI-1: *ver* (tendencias y alarmas), *operar* (reconocer alarmas, cambiar puntos de consigna dentro de los límites) e *ingeniería* (cambiar límites, descargar lógica desde la estación de ingeniería). El FR 2, control de uso, cubre la aplicación de esos privilegios. Mínimo privilegio significa que un contratista que revisa tendencias recibe solo *ver*. El diseño de Maya sigue estos roles. Un operador de turno puede mover el punto de consigna de impulsión dentro de los límites de 70–110 °C de PLC-H; solo un ingeniero puede cambiar esos límites o descargar lógica desde EWS-1. La cuenta de diagnóstico del proveedor es de solo lectura salvo que una incidencia la eleve para una sesión. El FR 2 es donde se aplica esa regla.
+
+### 13.3 Acceso de emergencia
+
+Una planta no puede dejar fuera a los operadores durante una emergencia porque un servidor de directorio esté caído. Diseñe cuentas de emergencia (break-glass): credenciales selladas, autenticación local, alerta inmediata al usarlas y revisión posterior al evento. Esta es la disponibilidad y la seguridad funcional dando forma al diseño de identidades. El diseño de Maya guarda el sobre de emergencia de LDHP en la caja fuerte del jefe de turno. Su uso dispara una alerta al ingeniero de guardia, y tras cada uso se cambia la contraseña y se vuelve a sellar el sobre. La revisión pregunta por qué falló el inicio de sesión basado en el directorio, no quién abrió la caja fuerte.
+
+### 13.4 Acceso remoto de proveedores
+
+Los proveedores necesitan acceso remoto para el diagnóstico. El aviso de CISA AA21-042A, sobre el compromiso en 2021 del sistema de control de una planta de tratamiento de agua de EE. UU. a través de software de acceso remoto, recomendó la autenticación multifactor, contraseñas robustas para las credenciales de escritorio remoto, la auditoría de las conexiones remotas y el cierre de los puertos RDP no utilizados. Un diseño más seguro: un servidor de salto en la DMZ, autenticación multifactor, sesiones habilitadas por el jefe de turno durante una ventana fija y grabación.
+
+El punto de partida de LDHP se parecía al caso de 2021: una herramienta de escritorio remoto siempre activa para el proveedor. El diseño de Maya la sustituyó por sesiones a través del servidor de salto de la DMZ, habilitadas durante cuatro horas por incidencia, grabadas y revisadas semanalmente.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya documenta la práctica actual: un inicio de sesión compartido en el HMI y acceso del proveedor mediante una herramienta de escritorio remoto siempre activa. Su diseño: cuentas nominativas en tres roles; sobre de emergencia en la caja fuerte del jefe de turno; sesiones del proveedor a través del servidor de salto de la DMZ, habilitadas durante cuatro horas por incidencia, grabadas y revisadas semanalmente.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las cuentas y el proveedor de LDHP son inventados; el aviso citado describe un incidente real.
+
+### Errores y límites
+
+La MFA en una consola de sala de control puede ralentizar la respuesta ante emergencias; úsela para el acceso remoto y de ingeniería, y confíe en la seguridad física de la sala de control para la operación local cuando esté justificado.
+
+### Ejercicios — capítulo 13
+
+- **EX037 — Asignar un rol.** Un contratista de mantenimiento de calderas necesita revisar las tendencias de combustión durante una semana. ¿Qué rol y qué límite de tiempo? *Rúbrica:* 3 = solo ver, con caducidad al terminar la semana, cuenta nominativa; 2 = rol correcto; 1 = operar; 0 = ingeniería.
+- **EX038 — Revisión del acceso de emergencia.** Enumere tres cosas que hay que comprobar después de usar la cuenta de emergencia. *Rúbrica:* 3 = quién la usó y por qué, acciones realizadas, credencial rotada; 2 = dos; 1 = una; 0 = nada.
+- **EX039 — Lecciones de AA21-042A.** Nombre dos medidas de acceso remoto recomendadas en el aviso sobre la planta de agua que se apliquen a LDHP. *Rúbrica:* 3 = dos medidas correctas; 2 = una; 1 = un genérico «usar antivirus»; 0 = nada.
+
+### Síntesis del capítulo
+
+La identidad en TO debe hacer que cada acción sea atribuible, que cada privilegio corresponda a un trabajo y que cada emergencia sea superable.
+
+### Siga estudiando — capítulo 13 de 40
+
+[← Capítulo 12 (borrador)](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 (borrador) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) reconocer datos personales en los flujos de contadores inteligentes y de automatización de edificios; (2) aplicar la minimización de datos y la limitación de la finalidad; (3) elegir intervalos de agregación que sirvan a las operaciones sin revelar el comportamiento de los hogares; y (4) relacionar la privacidad con la disposición 5.8 de ETSI EN 303 645.
+
+### 14.1 Los contadores de calor revelan vidas
+
+Los contadores IoT de LDHP comunican el consumo de calor de cada hogar. Las lecturas horarias muestran cuándo los residentes se levantan, cocinan, viajan o están fuera: el mismo problema de inferencia que hizo polémicos los contadores eléctricos inteligentes. En muchas jurisdicciones, esas lecturas son datos personales porque se refieren a un hogar identificable. Un perfil horario de un contador de LDHP puede mostrar un hogar que deja de calentar durante diez días en febrero, lo que indica a cualquiera que lo lea que la vivienda está vacía. Facturación no necesita nada de eso. Por eso la petición del equipo de analítica de lecturas de cada hogar cada cinco minutos encontró resistencia en el caso de Maya: con esa resolución, los datos muestran rutinas diarias, no solo consumo.
+
+### 14.2 Minimización y finalidad
+
+Facturación necesita un total mensual. El equilibrado de la red necesita el caudal del barrio, no el detalle de cada casa. La detección de fallos puede necesitar lecturas individuales, pero quizá diarias y conservadas durante semanas, no años. Escribir la finalidad junto a cada flujo de datos obliga a plantear la pregunta «¿necesitamos esta granularidad?». La respuesta de Maya a la petición del equipo de analítica de datos de cada hogar cada cinco minutos puso una finalidad junto a cada flujo: totales mensuales para facturación, lecturas diarias por hogar conservadas 60 días para detectar fugas y agregados horarios por calle para el equilibrado. Los datos de cinco minutos no se recogieron en absoluto, porque no se había definido ninguna finalidad.
+
+### 14.3 La agregación como control
+
+Agregar 40 hogares de un tramo de calle antes de que los datos salgan de la pasarela elimina los patrones individuales y conserva la señal operativa. La agregación no es perfecta: si una vivienda domina el tramo, su patrón sigue siendo visible, así que los ingenieros comprueban el tamaño mínimo del grupo. El diseño de Maya fija el mínimo en 20 viviendas por agregado para los datos de equilibrado. Un tramo de calle con menos viviendas, o con un edificio grande que consume la mayor parte del calor, se fusiona con su vecino antes de que el agregado horario salga de la pasarela, de modo que ningún agregado sea en la práctica la lectura de un solo hogar.
+
+### 14.4 La base de referencia del IoT de consumo
+
+La disposición 5.8 de ETSI EN 303 645 pide que los datos personales en tránsito entre un dispositivo y los servicios asociados estén protegidos (por ejemplo, cifrados), y la disposición 6 aborda la protección de datos de forma más general: informar a los consumidores de qué datos se tratan y por qué. Un contador de calefacción urbana no siempre es «IoT de consumo», pero las disposiciones son una lista de comprobación útil. Para los contadores de LDHP, la 5.8 apunta al enlace de radio y al enlace ascendente de la pasarela, que transportan ambos lecturas de los hogares; la disposición 6 apunta a informar a los residentes de qué se recoge y por qué, algo que la lista de finalidades de Maya ya hace.
+
+### Ejemplo resuelto (LDHP sintética)
+
+El equipo de analítica pide lecturas de cada hogar cada cinco minutos «para futuro aprendizaje automático». La respuesta de Maya: totales mensuales para facturación; lecturas diarias por hogar conservadas 60 días para detectar fugas; agregados horarios por calle (mínimo 20 viviendas) para el equilibrado; los datos de cada hogar cada cinco minutos no se recogen sin una finalidad definida y una evaluación de impacto en la privacidad.
+
+> **Caso sintético — Lakeside District Heating Plant.** La petición de analítica y los plazos de conservación son ejemplos inventados.
+
+### Errores y límites
+
+Seudonimizar los identificadores de los contadores no los anonimiza si las direcciones se guardan en otro lugar. La legislación de privacidad varía; este capítulo es una orientación, no asesoramiento jurídico.
+
+### Ejercicios — capítulo 14
+
+- **EX040 — Inferir la ocupación.** Dé dos cosas que un observador podría inferir de las lecturas horarias de calor de un piso. *Rúbrica:* 3 = dos inferencias plausibles (ausencia, rutina diaria, número de ocupantes); 2 = una; 1 = vago; 0 = nada.
+- **EX041 — Granularidad según la finalidad.** Para la detección de fugas, proponga un intervalo de lectura y un plazo de conservación y justifique ambos. *Rúbrica:* 3 = diario (u horario) con conservación del orden de semanas y razonamiento; 2 = solo los valores; 1 = guardarlo todo; 0 = nada.
+- **EX042 — Cuando la agregación falla.** ¿Por qué un tramo que contiene un colegio grande y cinco pisos podría fallar como agregado de privacidad? *Rúbrica:* 3 = el colegio domina; los patrones de los pisos se pierden pero el del colegio se revela / grupo demasiado pequeño; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Los datos operativos del IoT a menudo son datos personales: recójalos para una finalidad, con la granularidad útil más gruesa, y protéjalos en tránsito y en reposo.
+
+### Siga estudiando — capítulo 14 de 40
+
+[← Capítulo 13 (borrador)](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 (borrador) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidencia y medición
+
+### Resultados de aprendizaje
+
+Usted podrá (1) corregir el desfase de reloj al combinar registros; (2) preservar la cadena de custodia de la evidencia exportada; (3) distinguir observación, inferencia e hipótesis en una cronología; y (4) enunciar la incertidumbre de una medición.
+
+### 15.1 Los relojes discrepan
+
+Los controladores, los HMI y los historiadores suelen tener relojes independientes, y un PLC sin hora de red puede desviarse minutos al mes. Antes de ordenar los eventos, mida el desfase —por ejemplo, comparando un evento conocido (un cambio de punto de consigna de un operador) en ambos registros— y anote cómo se midió.
+
+```python
+"""Lab 15: align two synthetic logs with a measured clock offset."""
+from datetime import datetime, timedelta
+hmi = [("2026-03-02T10:00:07", "operator changed SP TT-101 to 95"), ("2026-03-02T10:02:40", "alarm TT-101 HI")]
+plc = [("2026-03-02T09:58:52", "SP write accepted"), ("2026-03-02T10:01:30", "valve CV-11 to 80%")]
+offset = timedelta(seconds=75)  # measured: PLC clock is 75 s behind the reference
+ev = [(datetime.fromisoformat(t), "HMI", m) for t, m in hmi] + [(datetime.fromisoformat(t) + offset, "PLC", m) for t, m in plc]
+for t, src, m in sorted(ev):
+    print(t.time(), src, m)
+```
+
+Ejecútelo con `python3 lab_clock.py`. Salida verificada:
+
+```text
+10:00:07 HMI operator changed SP TT-101 to 95
+10:00:07 PLC SP write accepted
+10:02:40 HMI alarm TT-101 HI
+10:02:45 PLC valve CV-11 to 80%
+```
+
+En LDHP, el evento conocido fue un cambio de punto de consigna de un operador en HMI-1 a las 10:00:07, que también aparece en el registro de PLC-H como «SP write accepted». Al cotejar ambos se obtuvo un desfase de 75 segundos, con una incertidumbre de unos dos segundos debida a la resolución de los registros.
+
+### 15.2 Lo que muestra la cronología corregida
+
+Tras sumar el desfase medido de 75 segundos, el «SP write accepted» del PLC coincide con la entrada del HMI a las 10:00:07, lo que respalda la hipótesis de que la escritura vino de HMI-1. Sin la corrección, el evento del PLC aparece 75 segundos antes de que actuara el operador: una secuencia que podría malinterpretarse como una escritura externa seguida de una reacción del operador. La corrección cambia la historia, no solo los números. Un directivo que leyera los registros sin corregir podría concluir que alguien fuera de la sala de control escribió el punto de consigna y que el operador reaccionó después, lo que desencadenaría un incidente de seguridad. La cronología corregida muestra un cambio ordinario del operador, siempre que se cumpla la hipótesis sobre el desfase.
+
+### 15.3 Cadena de custodia
+
+Para cada archivo exportado, registre quién lo exportó, desde qué sistema, cuándo, con qué método y su hash SHA-256. Guarde el original en modo de solo lectura y trabaje sobre copias. Así es como una cronología se convierte en evidencia en la que pueden confiar un directivo, una aseguradora o un tribunal. Para la cronología de Maya, el registro diría: registro de eventos de HMI-1, exportado por el ingeniero de turno a las 11:20 con la cuenta de solo lectura, SHA-256 registrado; registro de diagnóstico de PLC-H, exportado desde EWS-1 por el ingeniero de control, SHA-256 registrado; ambos originales guardados en modo de solo lectura en el recurso compartido de la investigación, y la cronología corregida de Maya construida solo a partir de copias. Si una aseguradora pregunta más tarde si se editó el registro del PLC, el hash lo responde.
+
+### 15.4 Observación, inferencia, hipótesis
+
+Etiquete cada entrada de la cronología. «Línea del registro del PLC a las 09:58:52, hora local del PLC» es una observación. «La escritura se originó en HMI-1» es una inferencia. «El desfase del reloj del PLC fue constante toda la mañana» es una hipótesis. Mezclarlas es el defecto más común de los informes de incidentes. La tabla de Maya añade una columna de etiqueta precisamente para esto. Su fila del desfase está marcada como A, porque «75 s ± 2 s, medido cotejando el cambio de punto de consigna de las 10:00:07» depende de que el desfase se mantenga constante de 09:30 a 10:30. Si alguien encuentra después un ajuste del reloj del PLC a las 10:15, solo hay que revisar las filas que dependen de esa hipótesis.
+
+### Ejemplo resuelto (LDHP sintética)
+
+La tabla de Maya tiene tres columnas —hora corregida, fuente, enunciado— más una cuarta para la etiqueta (O/I/A). La fila del desfase dice: «Desfase de 75 s ± 2 s, medido cotejando el cambio de punto de consigna del HMI de las 10:00:07 con el mensaje de aceptación del PLC (A: desfase constante durante 09:30–10:30)».
+
+> **Caso sintético — Lakeside District Heating Plant.** Las líneas de registro y el desfase son inventados.
+
+### Errores y límites
+
+Un evento cotejado da una sola medición del desfase; la deriva durante el periodo puede hacerla incorrecta más tarde. Las zonas horarias y los cambios de horario de verano son una fuente de error aparte.
+
+### Ejercicios — capítulo 15
+
+- **EX043 — Aplicar el desfase.** Una línea del registro del PLC dice 10:04:10. ¿Cuál es la hora corregida? *Rúbrica:* 3 = 10:05:25; 2 = sentido correcto, error aritmético; 1 = resta; 0 = nada.
+- **EX044 — Etiquetar entradas de la cronología.** Etiquete O, I o A: (a) «CV-11 pasó al 80 % a las 10:02:45», (b) «el movimiento de la válvula fue una acción de control automático», (c) «ningún otro equipo escribió en PLC-H». *Rúbrica:* 3 = O, I, A; 2 = dos correctas; 1 = una; 0 = nada.
+- **EX045 — Campos de custodia.** Enumere cinco campos de un registro de custodia para el registro del PLC exportado. *Rúbrica:* 3 = cinco campos pertinentes, incluido el hash; 2 = cuatro; 1 = sin hash; 0 = nada.
+
+### Síntesis del capítulo
+
+La evidencia en TO solo es tan buena como sus relojes, su registro de custodia y su honestidad sobre lo que se vio frente a lo que se concluyó.
+
+### Siga estudiando — capítulo 15 de 40
+
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitectura de seguridad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) situar los activos de LDHP en los niveles de referencia de Purdue; (2) diseñar una DMZ entre las zonas corporativa y de control; (3) asignar niveles de seguridad objetivo a las zonas con los conceptos de IEC 62443-3-2; y (4) explicar la defensa en profundidad sin afirmar que una sola capa sea suficiente.
+
+### 16.1 Los niveles de Purdue como mapa inicial
+
+El modelo de Purdue numera los niveles desde el proceso físico (0), pasando por sensores y actuadores (1), control de supervisión (2) y operaciones del emplazamiento (3), hasta la empresa (4–5). Es antiguo e imperfecto —los servicios en la nube y las pasarelas de IIoT difuminan los niveles—, pero ofrece un vocabulario compartido. En LDHP, los transmisores y la caldera están en los niveles 0–1, PLC-H y SIS-H en el nivel 1, el SCADA y el HMI en el nivel 2, HIST-1 en el nivel 3, y facturación y correo electrónico en el nivel 4.
+
+El valor del mapa está en los dispositivos de LDHP que no encajan: las pasarelas de contadores y la nube de facturación quedan fuera de los niveles, y SIS-H comparte el nivel 1 con PLC-H aunque necesita permanecer independiente de él.
+
+### 16.2 La DMZ industrial
+
+Entre los niveles 3 y 4 se sitúa una zona desmilitarizada que alberga los sistemas que necesitan ambos lados: una réplica del historiador, un servidor de parches, un servidor de salto para el acceso remoto. La regla es que ninguna sesión atraviesa la DMZ de extremo a extremo; los usuarios corporativos se conectan a servicios de la DMZ, y los sistemas de la zona de control envían datos a los servicios de la DMZ o estos los recogen. NIST SP 800-82r3 describe este patrón en su análisis de la arquitectura de defensa en profundidad.
+
+En LDHP, la DMZ albergaría la réplica del historiador que leen facturación y analítica, el servidor de parches para HMI-1 y el servidor de salto al que llegan las sesiones de los proveedores antes de cualquier sistema de la zona de control.
+
+### 16.3 Niveles de seguridad
+
+IEC 62443 define los niveles de seguridad SL 1–4 según el atacante al que debe resistir una zona, desde la vulneración casual o fortuita (SL 1) hasta medios sofisticados con recursos amplios (SL 4). La evaluación de riesgos fija un nivel objetivo (SL-T) por zona; los componentes necesitan entonces capacidades (SL-C) que, junto con medidas compensatorias, lo alcancen (SL-A). La propuesta de Maya fija SL-T 3 para la zona de control de calderas, porque su compromiso puede cortar el calor a miles de hogares, SL-T 2 para la zona de contadores y ningún conducto enrutable para SIS-H. El SL-C propio de PLC-H es bajo, ya que no puede autenticar a los clientes Modbus, así que alcanzar SL-A 3 depende de los controles compensatorios que lo rodean.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya propone SL-T 3 para la zona de control de calderas (PLC-H, HMI-1), SL-T 2 para la zona de contadores IoT, y mantiene SIS-H como zona propia sin ningún conducto enrutable. Justificación: el compromiso de la zona de control puede provocar la pérdida de calefacción en miles de hogares; el compromiso de los contadores afecta sobre todo a la facturación y a la privacidad; el SIS debe seguir siendo independiente de ambas.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las elecciones de nivel de seguridad ilustran el razonamiento; una evaluación real sigue el proceso documentado de IEC 62443-3-2.
+
+### Errores y límites
+
+Una DMZ con una regla de cortafuegos «any → any» entre sus dos mitades es un dibujo, no un control. Los niveles de Purdue no dictan la confianza; un sensor de IIoT puede hablar directamente con un servicio en la nube y debe zonificarse según sus propias características.
+
+### Ejercicios — capítulo 16
+
+- **EX046 — Situar la pasarela de contadores.** ¿Dónde situaría la pasarela de contadores IoT de LDHP en el modelo de Purdue o a su alrededor, y por qué no encaja limpiamente? *Rúbrica:* 3 = zona propia (a menudo junto al nivel 3/DMZ) porque une dispositivos de campo y un servicio en la nube; 2 = nivel sin motivo; 1 = nivel 1 dentro de la zona de control; 0 = nada.
+- **EX047 — Un conjunto de reglas para la DMZ.** Escriba dos reglas de cortafuegos que permitan a los usuarios corporativos ver los datos del historiador sin alcanzar HIST-1. *Rúbrica:* 3 = HIST-1 → réplica en la DMZ (envío) y Enterprise → réplica (lectura), sin Enterprise → HIST-1; 2 = una; 1 = regla directa; 0 = nada.
+- **EX048 — Justificar SL-T 3.** Justifique en dos frases SL-T 3 para la zona de control de calderas. *Rúbrica:* 3 = gravedad de la consecuencia y atacante cualificado plausible; 2 = uno de los dos; 1 = «es importante»; 0 = nada.
+
+### Síntesis del capítulo
+
+La arquitectura es el arte de decidir qué sesiones pueden existir; las zonas, los conductos, una DMZ real y los niveles de seguridad hacen esas decisiones explícitas y comprobables.
+
+### Siga estudiando — capítulo 16 de 40
+
+[← Capítulo 15 (borrador)](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 (borrador) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceptos de criptografía
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar los códigos de autenticación de mensajes y por qué en TO la integridad suele importar más que el secreto; (2) usar `hmac` y `hashlib` de la biblioteca estándar; (3) impedir la reproducción con contadores; y (4) enumerar los costes operativos de la criptografía en dispositivos con recursos limitados.
+
+### 17.1 La integridad primero
+
+La lectura de un contador de calor no es secreta para su propietario, pero una lectura falsificada cambia una factura y una orden de control falsificada cambia un proceso. Un código de autenticación de mensajes (MAC) permite a un receptor que comparte una clave secreta verificar que un mensaje procede de alguien que posee la clave y que no fue alterado. HMAC con SHA-256 es una construcción muy utilizada, normalizada en FIPS 198-1. En LDHP lo que está en juego es una factura y una caldera. Una lectura de contador falsificada reduce la factura de un hogar; una escritura falsificada en el registro 100 de PLC-H cambia el calor suministrado a todos los hogares. El laboratorio de HMAC usa lecturas de contadores porque ahí la cuestión de la integridad es más clara.
+
+### 17.2 Reproducción
+
+Un mensaje válido capturado ayer sigue siendo criptográficamente válido hoy. Incluir un contador estrictamente creciente (o una marca de tiempo comprobada dentro de una ventana) en los datos autenticados permite al receptor rechazar las repeticiones.
+
+```python
+"""Lab 17: HMAC-protected meter readings with a replay counter (synthetic key)."""
+import hmac, hashlib
+KEY = b"synthetic-lab-key-not-for-use"
+def tag(ctr, kwh): return hmac.new(KEY, f"{ctr}|{kwh}".encode(), hashlib.sha256).hexdigest()[:16]
+last = 0
+msgs = [(1, 120.5, tag(1, 120.5)), (2, 121.0, tag(2, 121.0)), (2, 121.0, tag(2, 121.0)), (3, 99.0, tag(3, 121.4))]
+for ctr, kwh, t in msgs:
+    if not hmac.compare_digest(t, tag(ctr, kwh)): print(ctr, kwh, "REJECT bad tag")
+    elif ctr <= last: print(ctr, kwh, "REJECT replay")
+    else: last = ctr; print(ctr, kwh, "accept")
+```
+
+Ejecútelo con `python3 lab_hmac.py`. Salida verificada:
+
+```text
+1 120.5 accept
+2 121.0 accept
+2 121.0 REJECT replay
+3 99.0 REJECT bad tag
+```
+
+En el laboratorio de HMAC, una lectura aceptada una vez con el contador 2 se rechaza cuando los mismos bytes vuelven a llegar, aunque su etiqueta sea correcta; solo cambia el significado del contador. Para los contadores de LDHP, esto impide que un inquilino con equipos de radio reproduzca la lectura más baja del mes pasado, que es el caso de abuso descrito en el capítulo 26.
+
+### 17.3 Leer la ejecución
+
+El mensaje 2 se acepta una vez y se rechaza la segunda como reproducción, aunque su etiqueta sea correcta. El mensaje 3 lleva una etiqueta calculada para 121,4 kWh pero declara 99,0 kWh, así que la verificación falla. Observe `hmac.compare_digest`, que compara en tiempo constante y evita filtrar cuántos caracteres iniciales coincidieron. Para LDHP, el segundo rechazo es el escenario del inquilino: una lectura más baja capturada y reproducida para la factura del mes siguiente falla por su contador, aunque cada byte de la etiqueta sea auténtico. El tercer rechazo es la manipulación en tránsito: una pasarela o un atacante que cambie 121,4 kWh por 99,0 kWh sin la clave del contador no puede producir una etiqueta que coincida.
+
+### 17.4 Costes operativos
+
+Las claves deben aprovisionarse por dispositivo, rotarse y revocarse; un contador sustituido tras una avería necesita una clave nueva, y una clave compartida por toda la flota significa que una sola clave extraída falsifica todos los contadores. Los dispositivos con recursos limitados pueden carecer de hardware para el almacenamiento seguro de claves. La disposición 5.4 de ETSI EN 303 645 pide que los parámetros de seguridad sensibles se almacenen de forma segura y que no se usen parámetros críticos de seguridad codificados de forma fija en el software del dispositivo.
+
+La estimación de tamaño de Maya sitúa el coste de radio en 1,5 MB al día para 4.000 contadores; el proceso de gestión de claves es el coste mayor.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya calcula la sobrecarga de tamaño: una etiqueta truncada de 16 caracteres hexadecimales (64 bits) más un contador de 8 bytes añaden 16 bytes por lectura. Con una lectura por hora y contador en 4.000 contadores, eso supone 1,5 MB al día: trivial para la red, pero el proceso de gestión de claves es el coste real.
+
+> **Caso sintético — Lakeside District Heating Plant.** La clave del laboratorio es una cadena de relleno; nunca incruste claves en el código.
+
+### Errores y límites
+
+Truncar los MAC reduce la resistencia a la falsificación; 64 bits es un mínimo habitual en diseños de este tipo. Un hash por sí solo (sin clave) no proporciona autenticación. El cifrado sin protección de la integridad puede ser maleable.
+
+### Ejercicios — capítulo 17
+
+- **EX049 — Detectar el reinicio de un contador.** Tras una actualización del firmware de un contador, el contador de mensajes vuelve a empezar en 1. ¿Qué hace el receptor del laboratorio y cómo debería tratarlo el diseño? *Rúbrica:* 3 = lo rechaza como reproducción; cambiar la clave o conservar el contador con un campo de época de clave; 2 = solo el comportamiento; 1 = lo acepta; 0 = nada.
+- **EX050 — ¿Por qué no SHA-256 sin más?** Explique por qué añadir SHA-256(lectura) no impide la falsificación. *Rúbrica:* 3 = no hay secreto: cualquiera puede recalcular el hash de un valor falsificado; 2 = parcial; 1 = «SHA-256 es débil»; 0 = nada.
+- **EX051 — Riesgo de una clave común a toda la flota.** Describa la consecuencia de que los 4.000 contadores compartan una sola clave HMAC. *Rúbrica:* 3 = extraerla de un contador permite falsificar lecturas de cualquier contador; las claves por dispositivo limitan el radio de impacto; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Para los datos de TO, la integridad autenticada con protección frente a la reproducción es el principal objetivo criptográfico, y la gestión de claves —no el algoritmo— decide si funciona.
+
+### Siga estudiando — capítulo 17 de 40
+
+[← Capítulo 16 (borrador)](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 (borrador) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de investigación I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) convertir una preocupación vaga en una pregunta investigable; (2) elegir entre diseños descriptivos, comparativos y experimentales; (3) definir variables, medidas y amenazas a la validez; y (4) buscar y evaluar literatura revisada por pares sobre seguridad de TO.
+
+### 18.1 De la preocupación a la pregunta
+
+«¿Son buenos nuestros detectores?» no es una pregunta que se pueda responder. «Con los datos sintéticos de temperatura de impulsión de LDHP, ¿alcanza un detector CUSUM una tasa de falsas alarmas menor que una banda fija con igual tasa de detección para rampas lentas?» sí lo es. Nombra la población (datos sintéticos), la comparación, las medidas de resultado y la clase de ataque. La versión de Maya de esta pregunta se convirtió en su plan de investigación: CUSUM frente a una banda fija sobre datos simulados de temperatura de impulsión, 40 semillas por condición, con falsas alarmas por ejecución, detección en 100 muestras y retardo medio como medidas, y la rampa lenta de 0,08 °C por muestra como clase de ataque.
+
+### 18.2 Elecciones de diseño
+
+Los estudios descriptivos caracterizan lo que existe (inventario de protocolos en una red). Los estudios comparativos contrastan grupos o métodos sin controlar la asignación. Los experimentos manipulan una variable —el tipo de detector— manteniendo fijas las demás, normalmente mediante simulación en TO, porque experimentar con plantas en funcionamiento no es seguro. El estudio de detectores de Maya es un experimento en este sentido: el tipo de detector es la variable manipulada, y el nivel de ruido, la pendiente del ataque y las semillas se mantienen fijos entre condiciones. Ejecutarlo sobre el propio PLC-H supondría desviar deliberadamente la temperatura de impulsión de una red de calefacción urbana en funcionamiento, algo que ningún permiso permitiría.
+
+### 18.3 Validez
+
+La validez interna pregunta si la diferencia medida se debe a la variable manipulada; la validez externa, si los resultados se generalizan más allá de la planta sintética. La validez de constructo pregunta si la «tasa de falsas alarmas por ejecución» mide realmente la carga de los operadores. Nombre cada amenaza y lo que hizo al respecto. Maya nombró dos amenazas en su plan: el ruido es gaussiano, lo que puede no ocurrir en los sensores reales de temperatura de impulsión (validez externa), y ajustó los umbrales a mano (validez interna). Su proyecto final aborda después la segunda ajustando con un conjunto separado de 50 semillas y congelando el umbral.
+
+### 18.4 Leer la literatura
+
+Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245) revisan la detección de ataques basada en la física en los CPS y señalan que muchos artículos evalúan detectores sin un modelo de adversario coherente. Urbina et al. (CCS 2016, doi:10.1145/2976749.2978388) proponen evaluar los detectores por el impacto que un atacante sigiloso todavía puede causar sin ser detectado, en lugar de solo por la tasa de detección. Estos dos artículos enmarcan el laboratorio de detectores del capítulo 25. Para el estudio de Maya, la pregunta de Urbina et al. se convierte en: ¿cuán lenta puede ser una rampa para quedarse por debajo del umbral de CUSUM, y hasta dónde podría desviarse la temperatura de impulsión antes de que salte la alarma? Por eso ella reduce después la pendiente a la mitad.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya redacta: Pregunta: la comparación de CUSUM frente a la banda descrita arriba. Diseño: experimento de simulación, 40 semillas por condición. Medidas: falsas alarmas por ejecución, detección en 100 muestras, retardo medio. Amenazas: el ruido sintético es gaussiano (validez externa); umbrales ajustados a mano (validez interna).
+
+> **Caso sintético — Lakeside District Heating Plant.** El plan de investigación es un ejercicio didáctico que usa solo datos simulados.
+
+### Errores y límites
+
+Buscar solo en libros blancos de fabricantes produce marketing, no evidencia. No cite un artículo que no haya abierto; verifique que los DOI se resuelven.
+
+### Ejercicios — capítulo 18
+
+- **EX052 — Afinar una pregunta vaga.** Reescriba «¿Es segura la red de contadores IoT?» como una pregunta investigable. *Rúbrica:* 3 = población, medida y comparación enunciadas; 2 = dos; 1 = sigue siendo vaga; 0 = nada.
+- **EX053 — Nombrar una amenaza a la validez.** Identifique una amenaza a la validez externa en el diseño de Maya y una mitigación. *Rúbrica:* 3 = ruido gaussiano/una sola planta; añadir perfiles de ruido real o un segundo modelo; 2 = solo la amenaza; 1 = amenaza interna; 0 = nada.
+- **EX054 — La métrica de Urbina en una frase.** Enuncie la idea de evaluación de Urbina et al. (2016). *Rúbrica:* 3 = medir el impacto máximo que puede lograr un atacante no detectado (sigiloso), no solo la tasa de detección; 2 = parcial; 1 = incorrecto; 0 = nada.
+
+### Síntesis del capítulo
+
+La investigación empieza con una pregunta precisa, un diseño que se ajuste a ella, amenazas a la validez enunciadas con honestidad y fuentes que usted haya leído de verdad.
+
+### Siga estudiando — capítulo 18 de 40
+
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
 
 <a id="worked-results"></a>
 
@@ -810,6 +1148,42 @@ Respuestas modelo para EX001–EX120. Lakeside District Heating Plant, Maya Chen
 **EX035.** Por cada 500 días: 0,95 alertas verdaderas y 499 × 0,01 = 4,99 alertas falsas; precisión = 0,95 / 5,94 ≈ 0,16, así que solo alrededor del 16 % de las alertas son reales.
 
 **EX036.** Los días consecutivos comparten meteorología, carga y personal, así que el comportamiento de un detector el día 12 predice su comportamiento el día 13; las observaciones están positivamente correlacionadas y el tamaño muestral efectivo es menor que 40, lo que hace que la cota superior real sea mayor que el 7,5–8,8 %.
+
+**EX037.** Una cuenta nominativa de *ver* en HMI-1 (o en la réplica del historiador en la DMZ), configurada para caducar al final de la semana; sin privilegios de operar ni de ingeniería.
+
+**EX038.** (1) Identificar a la persona y la emergencia que justificaron el uso; (2) revisar en los registros cada acción realizada durante la sesión; (3) rotar y volver a sellar la credencial y confirmar que la alerta se disparó según lo diseñado.
+
+**EX039.** Dos cualesquiera de: usar autenticación multifactor; usar contraseñas robustas para las credenciales de RDP; auditar la red en busca de RDP y cerrar los puertos RDP no utilizados; registrar y auditar todos los intentos de conexión remota; migrar a un sistema operativo con soporte.
+
+**EX040.** Dos cualesquiera: cuándo el piso está vacío durante días (vacaciones), las horas a las que los residentes se levantan y se acuestan, si alguien trabaja desde casa, aproximadamente cuántas personas viven allí.
+
+**EX041.** Totales diarios por hogar conservados unos 60 días: una fuga se manifiesta como un aumento sostenido del consumo a lo largo de días, así que los datos diarios la detectan, y dos meses bastan para compararla con el periodo anterior antes de borrar los datos.
+
+**EX042.** El consumo del colegio es tan superior que el agregado es en la práctica el perfil del colegio, lo que revela su ocupación, mientras que los cinco pisos son demasiado pocos para formar un grupo significativo; hacen falta un tamaño mínimo de grupo y una comprobación de dominancia (ningún punto de suministro por encima, por ejemplo, del 30 % del total).
+
+**EX043.** 10:04:10 + 75 s = 10:05:25, hora de referencia.
+
+**EX044.** (a) O: es una observación registrada (tras la corrección); (b) I: se infiere de la lógica y la temporización del controlador; (c) A: es una hipótesis salvo que se haya revisado la captura de red que cubre el periodo.
+
+**EX045.** Nombre de quien exportó, sistema de origen y método de exportación, fecha y hora de la exportación, hash SHA-256 del archivo, ubicación de almacenamiento del original de solo lectura (más cualquier transferencia posterior, con firmas).
+
+**EX046.** En su propia zona IoT conectada a la DMZ (aproximadamente el nivel 3.5), porque recoge datos de campo como un dispositivo de nivel 1–2 y, sin embargo, habla con un servicio externo en la nube como un sistema de nivel 4; forzarla dentro de la zona de control daría a la nube una ruta hacia PLC-H.
+
+**EX047.** Regla A: permitir HIST-1 (zona de control) → HIST-R (DMZ) solo en el puerto de replicación, iniciada desde HIST-1. Regla B: permitir usuarios de Enterprise → HIST-R por HTTPS. La denegación implícita bloquea cualquier sesión Enterprise → HIST-1.
+
+**EX048.** Manipular PLC-H podría interrumpir la calefacción de miles de hogares en invierno, una consecuencia pública grave. Son plausibles atacantes con habilidades específicas de ICS y recursos moderados —del tipo descrito en el aviso de CISA AA22-103A sobre herramientas dirigidas a dispositivos ICS/SCADA—, que es el perfil de atacante de SL 3.
+
+**EX049.** El contador `last` del receptor sigue alto, así que cada mensaje nuevo con contador ≤ last se rechaza como reproducción y el contador de calor queda en silencio. Corrección de diseño: conservar el contador entre actualizaciones, o incluir un número de época de clave para que un contador con clave nueva empiece un nuevo espacio de contadores que el receptor acepte.
+
+**EX050.** SHA-256 no tiene ninguna entrada secreta: un atacante que cambia la lectura simplemente recalcula el SHA-256 del nuevo valor, así que el receptor ve un hash que coincide; solo un MAC con clave vincula la etiqueta a un secreto que el atacante no tiene.
+
+**EX051.** Extraer la clave de un contador físicamente accesible permite a un atacante producir etiquetas válidas para las lecturas de cualquier contador, así que un solo compromiso socava la integridad de la facturación de todo el distrito; las claves por dispositivo derivadas de una clave maestra protegida limitan el daño a un contador.
+
+**EX052.** «De las 4.000 configuraciones sintéticas de contadores de LDHP, ¿qué proporción cumple las disposiciones 5.1, 5.3 y 5.5 de ETSI EN 303 645, y difiere esa proporción entre los dos fabricantes de contadores?».
+
+**EX053.** Amenaza: el ruido es gaussiano idealizado, así que los resultados pueden no mantenerse con datos reales de planta con deriva y cuantificación. Mitigación: añadir perfiles de ruido extraídos de datos de proceso publicados (o un segundo modelo simulado con ruido autocorrelacionado) e informar de si cambia la clasificación.
+
+**EX054.** Urbina et al. evalúan un detector por cuánto daño puede seguir causando un atacante manteniéndose por debajo de su umbral de alarma, de modo que un detector con menos falsas alarmas pero un gran margen de impacto indetectable se considera más débil.
 
 <a id="references"></a>
 
