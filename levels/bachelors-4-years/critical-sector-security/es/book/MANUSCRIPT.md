@@ -50,10 +50,10 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 12. [Probabilidad y estadística](#ch-12)
 13. [Identidad y acceso](#ch-13)
 14. [Fundamentos de privacidad](#ch-14)
-15. [Evidencia y medición](../../en/book/MANUSCRIPT.md#ch-15)
-16. [Arquitectura de seguridad](../../en/book/MANUSCRIPT.md#ch-16)
-17. [Conceptos de criptografía](../../en/book/MANUSCRIPT.md#ch-17)
-18. [Métodos de investigación I](../../en/book/MANUSCRIPT.md#ch-18)
+15. [Evidencia y medición](#ch-15)
+16. [Arquitectura de seguridad](#ch-16)
+17. [Conceptos de criptografía](#ch-17)
+18. [Métodos de investigación I](#ch-18)
 19. [Infraestructura crítica y seguridad sectorial: alcance y teoría](../../en/book/MANUSCRIPT.md#ch-19)
 20. [Infraestructura crítica y seguridad sectorial: casos fundacionales](../../en/book/MANUSCRIPT.md#ch-20)
 21. [Infraestructura crítica y seguridad sectorial: modelos de sistemas](../../en/book/MANUSCRIPT.md#ch-21)
@@ -1151,7 +1151,290 @@ La privacidad pregunta si el tratamiento de datos sobre las personas es apropiad
 <!-- cyberabc:chapter-navigation:start ch-14 -->
 ### Siga estudiando — capítulo 14 de 40
 
-[← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](../../en/book/MANUSCRIPT.md#ch-15)
+[← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidencia y medición
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) distinguir una medición, un indicador y una afirmación; (2) juzgar la evidencia por su fuente, su método, su actualidad y su independencia; (3) diseñar una métrica de seguridad válida, fiable y difícil de manipular; y (4) usar el análisis de sensibilidad para decidir si una evidencia incierta es suficiente para una decisión. Se apoya en los capítulos 1, 4 y 12 y prepara el capítulo 18 (métodos de investigación), el capítulo 27 (verificación) y el capítulo 37 (revisión de la evidencia).
+
+### 15.1 Qué cuenta como evidencia
+
+Una **afirmación** es un enunciado de que algo es cierto («nuestras copias de seguridad pueden restaurar el sistema de despacho en cuatro horas»). La **evidencia** es lo que la respalda o la debilita. La evidencia varía en solidez. Una **demostración** (un simulacro de restauración cronometrado sobre la configuración de producción, el mes pasado) es más sólida que un **documento** (una política de copias de seguridad), que a su vez es más sólido que una **aseveración** («el fabricante dice que funciona»). Hágale cuatro preguntas a cualquier evidencia: *Fuente*: ¿quién la produjo y tiene interés en la respuesta? *Método*: ¿cómo se produjo y podría alguien repetirlo? *Actualidad*: ¿sigue describiendo el sistema tal como es ahora? *Independencia*: ¿la comprobó alguien distinto de quien hizo la afirmación?
+
+### 15.2 Medición y métricas
+
+Una **medición** es un valor obtenido mediante un procedimiento definido (el tiempo de restauración en minutos, medido desde el inicio hasta la primera transacción de despacho correcta). Un **indicador** o **métrica** es una medición que se usa para seguir algo que nos importa. Las buenas métricas son **válidas** (miden lo que importa: el porcentaje de activos críticos con una restauración probada, no el número de trabajos de copia), **fiables** (dos personas que miden obtienen el mismo resultado), **oportunas** y **difíciles de manipular**. Se aplica la advertencia de Goodhart: en cuanto una medida se convierte en objetivo, la gente optimiza la medida. Una métrica de parcheo como el «porcentaje de sistemas parcheados en 30 días» incentiva excluir del denominador los sistemas difíciles; informe el denominador y las exclusiones.
+
+### 15.3 Incertidumbre y sensibilidad
+
+La mayor parte de la evidencia de seguridad es incierta: muestras pequeñas (capítulo 12), estimaciones (capítulo 1), indicadores indirectos. El **análisis de sensibilidad** pregunta cuánto cambia la decisión cuando cambia una entrada incierta. Si una recomendación se mantiene en todo el intervalo plausible, la evidencia es adecuada para esa decisión aunque sea imprecisa. Si se invierte, hay que reunir mejor evidencia sobre esa entrada o tomar una decisión robusta (elegir la opción que es aceptable en todo el intervalo). Es un antídoto práctico tanto contra la falsa precisión como contra la parálisis.
+
+El Lab 1 es el modelo: B sigue por delante cuando cualquiera de las probabilidades se reduce a la mitad o se duplica.
+
+### 15.4 Ejemplo resuelto: ¿se puede restaurar el despacho del CEDC? (sintético)
+
+**Este caso es sintético.** El consejo del CEDC pregunta: «¿Podemos restaurar el despacho asistido por ordenador en cuatro horas tras un ransomware?». Evidencia disponible:
+
+| Evidencia | Tipo | Fuente | Actualidad | ¿Independiente? |
+|---|---|---|---|---|
+| La política de copias indica copias nocturnas y un objetivo de restauración de 4 h | Documento | Equipo de TI | 2024 | No |
+| El software de copias informa de 362/365 trabajos correctos | Medición (de la copia, no de la restauración) | Herramienta | Último año | No |
+| Simulacro de restauración: base de datos restaurada en 2 h 40 min, aplicación no probada | Demostración parcial | Equipo de TI | Hace 8 meses | No |
+| Declaración del fabricante: «una restauración completa suele tardar menos de 3 horas» | Aseveración | Fabricante | Sin fecha | No |
+
+Valoración: ninguna evidencia demuestra la *afirmación*: una restauración de todo el servicio de despacho, incluidos los servidores de aplicaciones, las integraciones y las credenciales, en condiciones de ransomware (en las que el propio servidor de copias puede estar cifrado). La respuesta honesta al consejo es «desconocido, con evidencia parcial de que la base de datos por sí sola se restaura en menos de cuatro horas». Recomendación: un simulacro de restauración de extremo a extremo en un entorno aislado, observado por auditoría interna, que mida el tiempo hasta el primer despacho de prueba correcto; y la confirmación de que al menos una copia está fuera de línea o es inmutable.
+
+### 15.5 Actividad práctica
+
+Tome una afirmación sobre un servicio que use («mi teléfono hace copia de seguridad de mis fotos»). Enumere la evidencia que tiene, clasifique cada elemento por tipo, fuente, actualidad e independencia, y diseñe una prueba que demostraría la afirmación. No ejecute nada en sistemas que no sean de su propiedad. Para la copia de un teléfono, la prueba más sólida es restaurar una foto en otro dispositivo de su propiedad, cronometrando y anotando la fecha. El «última copia: hoy» de una aplicación de copias es una medición de la copia, no de la restauración.
+
+### 15.6 Errores comunes y límites
+
+- Tratar el éxito de la copia como evidencia de restauración.
+- Métricas que cuentan actividad en lugar de resultados.
+- Denominadores que excluyen en silencio los casos más difíciles.
+- Ignorar el interés de la fuente de la evidencia.
+- Exigir una precisión que la decisión no necesita, o aceptar una confianza que no se ha ganado.
+
+La tabla de evidencia del CEDC muestra el primero: 362 de 365 trabajos correctos no dicen nada sobre restaurar la aplicación. El segundo aparece cuando un equipo informa del número de trabajos de copia en lugar de las restauraciones probadas. El tercero es la métrica de parcheo con los sistemas difíciles fuera. El cuarto es el «menos de 3 horas» sin fecha del fabricante. El quinto corta en ambos sentidos: el consejo no necesita minutos, pero no puede aceptar un «probablemente bien».
+
+### Ejercicios — capítulo 15
+
+**EX029 — Calificar la evidencia.** *Objetivo:* aplicar las cuatro preguntas. *Entradas:* la afirmación «el servicio de tarjetas de Calder Mutual conmuta a su segundo centro de datos en 15 minutos»; evidencia: diagrama de arquitectura (2025), el informe de la prueba de conmutación del año pasado elaborado por el equipo de operaciones (14 min), una nota del auditor de que la prueba se anunció con una semana de antelación. *Pasos:* califique cada elemento e indique lo que la evidencia muestra y lo que no. *Evidencia esperada:* tabla y dos frases. *Rúbrica:* 3 = reconoce la prueba como una demostración real pero anunciada y no independiente, y pide una prueba no anunciada u observada de forma independiente con carga realista; 2 = parcial; 1 = acepta la afirmación; 0 = nada.
+
+**EX030 — Corregir una métrica.** *Objetivo:* diseñar una métrica válida y difícil de manipular. *Entradas:* «número de cursos de concienciación sobre phishing completados». *Pasos:* proponga una métrica mejor para el riesgo de robo de credenciales por phishing, defina su medición y nombre una forma en que podría manipularse. *Evidencia esperada:* definición y riesgo de manipulación. *Rúbrica:* 3 = métrica orientada a resultados (p. ej., proporción de cuentas privilegiadas con autenticación resistente al phishing, o tasa de notificación en simulaciones autorizadas) con procedimiento definido y un riesgo de manipulación honesto; 2 = mejor pero poco definida; 1 = métrica de actividad; 0 = nada.
+
+### Síntesis del capítulo
+
+La evidencia tiene una fuente, un método, una fecha y un grado de independencia. Mida resultados en lugar de actividad, informe los denominadores y use el análisis de sensibilidad para decidir si una evidencia incierta es suficiente. «Desconocido, con evidencia parcial» suele ser la respuesta más honesta y útil.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Siga estudiando — capítulo 15 de 40
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitectura de seguridad
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) aplicar los principios de diseño clásicos: mínimo privilegio, valores predeterminados a prueba de fallos, economía de mecanismos, mediación completa y separación de privilegios; (2) describir una arquitectura de referencia por capas para un operador de servicios críticos, desde la empresa hasta el campo; (3) explicar la defensa en profundidad y la confianza cero, y sus límites en la tecnología operativa; y (4) diseñar un acceso remoto seguro para fabricantes. Se apoya en los capítulos 7, 11 y 13 y prepara el capítulo 21 (modelos de sistemas) y el capítulo 24 (controles).
+
+### 16.1 Principios que perduran
+
+Los principios de Saltzer y Schroeder de 1975 siguen enmarcando la arquitectura de seguridad ([Saltzer and Schroeder](https://doi.org/10.1109/PROC.1975.9939)): **economía de mecanismos** (mantenerlo lo bastante simple como para poder verificarlo); **valores predeterminados a prueba de fallos** (denegar salvo que se permita); **mediación completa** (comprobar cada acceso); **diseño abierto** (la seguridad no debe depender del secreto del diseño); **separación de privilegios** (exigir más de una condición: dos personas, dos llaves); **mínimo privilegio**; **mínimo mecanismo común** (minimizar los componentes compartidos); y **aceptabilidad psicológica** (si es demasiado difícil de usar, la gente lo esquiva). Cada uno es una lente para revisar un diseño: «¿qué no está mediado aquí?, ¿qué se comparte?, ¿qué esquivarán los operadores a las 03:00?».
+
+### 16.2 Una arquitectura de referencia por capas
+
+Los operadores de servicios críticos suelen separar: la zona **corporativa** (correo electrónico, ofimática, sistemas de negocio); una **DMZ** para el intercambio de datos (réplicas del historiador, servidores de parches, servidores de salto para el acceso remoto); **operaciones/control** (servidores SCADA, HMI, estaciones de trabajo de ingeniería); **campo** (controladores, RTU, relés de protección); y los sistemas de **seguridad funcional**, que actúan de forma independiente para evitar daños. El tráfico entre capas pasa por conductos con reglas explícitas (capítulo 7). La guía de TO del NIST y la serie ISA/IEC 62443 describen estas arquitecturas ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). Lo importante no es el dibujo, sino la **propiedad** que debe garantizar: ninguna vía directa desde internet o el correo electrónico hasta nada que controle un proceso físico.
+
+### 16.3 Defensa en profundidad y confianza cero
+
+La **defensa en profundidad** superpone controles independientes para que una sola falla no sea catastrófica: segmentación, bastionado, autenticación, supervisión, copias de seguridad, respaldo manual. Su debilidad es el **modo común**: las capas que comparten una cuenta de administrador o un servidor de gestión caen juntas. La **confianza cero** elimina la confianza implícita basada en la ubicación en la red; cada solicitud se autentica y autoriza por recurso ([NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final)). En la TI corporativa es una dirección sólida. En la TO, muchos dispositivos no pueden autenticar solicitudes individuales, por lo que las ideas de confianza cero se aplican sobre todo en los límites (usuarios, estaciones de trabajo de ingeniería, acceso remoto), mientras la segmentación protege a los dispositivos que no pueden protegerse por sí mismos.
+
+### 16.4 Acceso remoto
+
+Los fabricantes y los ingenieros necesitan acceso remoto; el acceso remoto sin control es una de las vías de entrada más comunes a la TO. Un patrón defendible: el acceso termina en un **servidor de salto** en la DMZ, nunca directamente en la zona de control; autenticación **multifactor resistente al phishing**; **aprobación por sesión** de los fabricantes por parte del operador de turno; cuentas de **tiempo limitado**; **grabación de sesiones**; y un **interruptor de corte** que la sala de control pueda usar. Cada elemento responde a una falla concreta.
+
+El rediseño de CPN usa todos los elementos: un servidor de salto en la DMZ, cuentas de fabricantes activadas por ticket durante un máximo de cuatro horas, MFA resistente al phishing, sesiones grabadas y un interruptor en la sala de control. Lo que no puede impedir es el mal uso dentro de una sesión de fabricante aprobada de cuatro horas.
+
+### 16.5 Ejemplo resuelto: el acceso remoto de CPN (sintético)
+
+**Este caso es sintético.** El diseño actual de CPN: la pasarela VPN-G expuesta a internet (capítulo 5) coloca a los usuarios directamente en la red de control; tres fabricantes tienen cuentas permanentes; solo contraseñas. Rediseño: VPN-G actualizada y trasladada para terminar en un servidor de salto en la DMZ; cuentas de fabricantes desactivadas por defecto y activadas por ticket por el supervisor de la sala de control durante un máximo de cuatro horas; MFA resistente al phishing para el personal; sesiones grabadas en un servidor que los fabricantes no pueden alcanzar; un interruptor físico en la sala de control que desactiva el conducto de acceso remoto. Riesgo residual, declarado: una sesión de fabricante aprobada sigue gozando de confianza durante su ventana; la grabación facilita la detección y la rendición de cuentas, pero no impide el mal uso en tiempo real.
+
+### 16.6 Actividad práctica
+
+Dibuje la arquitectura de Calder Water del capítulo 7 con sus zonas y los tres conductos permitidos. Anote en cada conducto el principio al que sirve y el control que lo aplica. Marque el componente cuyo compromiso haría más daño y explique por qué. En la arquitectura de CW, cada conducto sirve a un principio: la vista HTTPS de la red corporativa a la DMZ aplica el mínimo privilegio, la lectura OPC UA del recolector de la DMZ aplica la mediación completa en el conducto, y el sondeo Modbus del SCADA al campo se apoya en los valores predeterminados a prueba de fallos al denegar todo lo demás. El servidor SCADA es un firme candidato a ser el componente cuyo compromiso más daño haría, porque puede ver y dar órdenes a todos los controladores de campo.
+
+### 16.7 Errores comunes y límites
+
+- Diagramas de arquitectura que muestran las conexiones previstas, no las reales.
+- Máquinas con «doble conexión» que unen zonas y esquivan el conducto.
+- Capas que comparten administradores, credenciales o herramientas de gestión.
+- Aplicar eslóganes de confianza cero a dispositivos que no pueden autenticarse.
+
+En el caso de CW, la conexión RDP del Lab 4 desde la red corporativa directamente al control es el primer error: una vía que el diagrama no muestra. Un portátil de ingeniería con doble conexión es la causa habitual. El servidor de gestión del CVH que administra cortafuegos, protección de endpoints y copias de seguridad con una sola cuenta (EX032) es el tercero. El cuarto se aplica a las RTU y los PLC.
+
+### Ejercicios — capítulo 16
+
+**EX031 — Revisión por principios.** *Objetivo:* usar los principios como lentes de revisión. *Entradas:* el diseño original de acceso remoto de CPN del ejemplo resuelto de este capítulo. *Pasos:* nombre cuatro principios de Saltzer–Schroeder que infringe y cómo. *Evidencia esperada:* cuatro pares principio–infracción. *Rúbrica:* 3 = cuatro correctos (mínimo privilegio, valores predeterminados a prueba de fallos, mediación completa, separación de privilegios o mínimo mecanismo común) con una explicación específica; 2 = tres; 1 = uno o dos; 0 = nada.
+
+**EX032 — Modo común.** *Objetivo:* encontrar dependencias compartidas ocultas. *Entradas:* el CVH tiene cortafuegos de segmentación, protección de endpoints y copias de seguridad, todo administrado desde un único servidor de gestión con una única cuenta de administrador del dominio. *Pasos:* explique el riesgo de modo común y proponga dos cambios. *Evidencia esperada:* explicación y cambios. *Rúbrica:* 3 = el compromiso de la cuenta o del servidor desactiva las tres capas; cambios como niveles y credenciales de administración separados y copias fuera de línea; 2 = un cambio; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La arquitectura convierte los principios en propiedades aplicadas: ninguna vía directa desde internet hasta nada que mueva el mundo físico. Superponga controles independientes, vigile los modos comunes, aplique la confianza cero donde los dispositivos pueden participar y segmente donde no pueden, y trate el acceso remoto como el conducto más importante que hay que diseñar bien.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Siga estudiando — capítulo 16 de 40
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceptos de criptografía
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar qué garantiza y qué no garantiza cada uno de estos elementos: el hash, el cifrado simétrico, los códigos de autenticación de mensajes, el cifrado de clave pública y las firmas digitales; (2) explicar por qué la integridad y la autenticidad, más que el secreto, son las necesidades criptográficas de los sistemas de control; (3) usar HMAC con un número de secuencia para rechazar órdenes alteradas y reproducidas; y (4) hacer que un registro deje evidencia de manipulación con una cadena de hashes y un ancla externa. Se apoya en los capítulos 5 y 8 y prepara el capítulo 24 (controles) y el capítulo 29 (operaciones).
+
+### 17.1 Las herramientas y sus garantías
+
+Una **función hash criptográfica** como SHA-256 transforma cualquier entrada en un resumen de tamaño fijo; es inviable encontrar dos entradas con el mismo resumen o recuperar la entrada ([FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)). Un hash por sí solo no demuestra nada sobre *quién* produjo los datos: cualquiera puede volver a calcularlo. El **cifrado simétrico** (p. ej., AES, [FIPS 197](https://csrc.nist.gov/pubs/fips/197/final)) proporciona confidencialidad con una clave compartida. Un **código de autenticación de mensajes** (MAC) como HMAC ([RFC 2104](https://www.rfc-editor.org/rfc/rfc2104); [FIPS 198-1](https://csrc.nist.gov/pubs/fips/198-1/final)) permite a quien tiene la clave compartida verificar que un mensaje lo produjo otro poseedor de la clave y que no se alteró. La criptografía de **clave pública** ([Diffie and Hellman, 1976](https://doi.org/10.1109/TIT.1976.1055638); [Rivest, Shamir and Adleman, 1978](https://doi.org/10.1145/359340.359342)) permite las **firmas digitales**: cualquiera con la clave pública puede verificar y solo quien tiene la clave privada puede firmar, lo que constituye la base del firmware firmado y de los certificados. Protocolos como TLS 1.3 combinan estos elementos para ofrecer canales autenticados y cifrados ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)).
+
+### 17.2 Lo que necesitan los sistemas de control
+
+En una orden a un interruptor, el secreto rara vez es lo importante; lo son la **autenticidad** (procede del centro de control), la **integridad** (no se alteró) y la **frescura** (no es una orden antigua reproducida). Un MAC proporciona las dos primeras. La frescura necesita un **número de secuencia** o una marca de tiempo dentro del mensaje autenticado, y un receptor que rechace todo lo que no sea más reciente que el último valor aceptado. Sin frescura, un atacante que grabó ayer una orden «OPEN» válida puede reproducirla hoy.
+
+El Lab 8 demuestra ambas cosas: el nombre del interruptor alterado no supera el MAC y la secuencia 41 se rechaza una vez que ya se ha aceptado.
+
+### 17.3 Las claves son la parte difícil
+
+La criptografía traslada el problema de proteger los datos a proteger las claves. Quién genera las claves, dónde se almacenan, cómo se rotan y revocan, y qué ocurre cuando se filtra la clave de un dispositivo de campo: esto es lo que determina la seguridad real. Las claves nunca deben estar incrustadas en código publicado (la clave del Lab 8 es pública a propósito), nunca deben compartirse entre todos los dispositivos y, cuando sea posible, deben residir en hardware. Planificar con antelación también importa: el NIST finalizó sus primeras normas de criptografía poscuántica en 2024 ([NIST, 2024](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards)), y una infraestructura con vidas útiles de 20 años necesita la capacidad de cambiar de algoritmo («agilidad criptográfica»).
+
+### 17.4 Ejemplo resuelto y Lab 8 (sintético)
+
+**Este caso es sintético.** CPN autentica las órdenes a los interruptores con HMAC-SHA-256 sobre un mensaje que contiene un número de secuencia, y mantiene un registro encadenado por hashes de las acciones de los operadores cuya cabeza más reciente se copia cada hora en un servidor separado (el **ancla**).
+
+```python
+# Lab 8 - HMAC message authentication and a hash-chained log (synthetic; DEMO KEY ONLY, offline)
+import hmac, hashlib
+KEY = b"demo-key-published-in-a-textbook-never-use"
+def tag(msg): return hmac.new(KEY, msg, hashlib.sha256).hexdigest()[:16]
+cmd = b"seq=41;breaker=F7;op=OPEN"
+t = tag(cmd)
+print("tag:", t)
+print("valid original:", hmac.compare_digest(t, tag(cmd)))
+print("valid altered :", hmac.compare_digest(t, tag(b"seq=41;breaker=F2;op=OPEN")))
+last_seq = 41
+print("replay of seq 41 accepted?", 41 > last_seq)
+# hash chain: each entry commits to the previous head
+def chain(entries):
+    head, heads = "0" * 64, []
+    for e in entries:
+        head = hashlib.sha256((head + e).encode()).hexdigest(); heads.append(head)
+    return heads
+log = ["08:00 login ana", "08:05 setpoint PS2 4.1m", "08:09 logout ana"]
+good = chain(log)
+log[1] = "08:05 setpoint PS2 2.0m"
+bad = chain(log)
+print("anchored head:", good[-1][:12], "| recomputed after edit:", bad[-1][:12])
+print("first differing entry:", next(i for i, (a, b) in enumerate(zip(good, bad)) if a != b))
+```
+
+Salida esperada:
+
+```text
+tag: 347e6a26d1844d03
+valid original: True
+valid altered : False
+replay of seq 41 accepted? False
+anchored head: c5754d1d1639 | recomputed after edit: 65e0b2a20fac
+first differing entry: 1
+```
+
+El nombre del interruptor alterado no supera la verificación; el número de secuencia reproducido se rechaza; el registro editado ya no coincide con la cabeza anclada, y la comparación muestra la primera entrada alterada. Truncar la etiqueta a 64 bits mantiene breve la salida impresa; los sistemas reales usan la etiqueta completa o un truncamiento normalizado. La cadena de hashes detecta la edición **solo** si el ancla está fuera del alcance de quien edita: alguien que controla tanto el registro como el ancla puede reconstruir toda la cadena.
+
+### 17.5 Errores comunes y límites
+
+- Usar un hash simple donde se necesita un MAC o una firma.
+- Autenticar mensajes sin frescura.
+- Comparar etiquetas con `==` en lugar de con una comparación de tiempo constante.
+- Una sola clave compartida para todos los dispositivos.
+- Creer que el cifrado hace digno de confianza un extremo comprometido.
+
+En el Lab 8, un SHA-256 simple de la orden permitiría a cualquiera que la cambie calcular un resumen nuevo. El MAC sin `seq=` aceptaría la orden OPEN de ayer. El laboratorio usa `hmac.compare_digest` en lugar de `==`. Una sola clave en todas las RTU significa que una clave filtrada compromete la red. Y el cifrado no ayudaría si la propia HMI del centro de control envía órdenes falsificadas.
+
+### Ejercicios — capítulo 17
+
+**EX033 — Elegir la primitiva.** *Objetivo:* asociar necesidades con herramientas. *Entradas:* (a) actualizaciones de firmware del fabricante para las bombas de infusión del CVH; (b) órdenes del centro de control de CPN a sus propias RTU; (c) historias clínicas en un portátil perdido; (d) detectar ediciones en un registro de auditoría. *Pasos:* elija una primitiva para cada caso y justifíquela. *Evidencia esperada:* cuatro elecciones. *Rúbrica:* 3 = firmas, MAC con frescura (o un canal autenticado), cifrado simétrico con protección de la clave, cadena de hashes con ancla externa; 2 = una errónea; 1 = dos erróneas; 0 = nada.
+
+**EX034 — Romper el ancla.** *Objetivo:* razonar sobre la confianza en el ancla. *Entradas:* Lab 8. *Pasos:* explique cómo un administrador con acceso de escritura tanto al servidor de registros como al ancla podría ocultar una edición, y proponga dos cambios de diseño que lo impidan. *Evidencia esperada:* descripción del ataque y cambios. *Rúbrica:* 3 = recalcular la cadena y sobrescribir el ancla; cambios: ancla custodiada por otro equipo u otro sistema con almacenamiento de solo anexado, publicación externa periódica o marcas de tiempo firmadas; 2 = un cambio; 1 = solo la descripción; 0 = nada.
+
+### Síntesis del capítulo
+
+Cada primitiva garantiza algo concreto: los hashes detectan cambios solo frente a una referencia de confianza, los MAC y las firmas dan autenticidad, los números de secuencia dan frescura y el cifrado da secreto. En los sistemas de control, lo que más importa es la autenticidad, la integridad y la frescura, y la seguridad real depende de la gestión de claves y de mantener las anclas fuera del alcance de un atacante.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Siga estudiando — capítulo 17 de 40
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de investigación I
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) convertir un tema en una pregunta investigable; (2) elegir entre diseños descriptivos, comparativos, experimentales y de estudio de caso; (3) buscar, cribar y resumir la bibliografía de forma sistemática y registrar cómo lo hizo; y (4) identificar las amenazas a la validez en un estudio de seguridad. Se apoya en los capítulos 4, 12 y 15 y prepara el capítulo 23 (métodos de riesgo), el capítulo 33 (métodos de investigación II) y la propuesta del proyecto final (capítulo 35).
+
+### 18.1 Del tema a la pregunta
+
+«El ransomware en los hospitales» es un tema. Una **pregunta de investigación** es lo bastante específica como para que la evidencia pueda responderla y alguien pueda discrepar: «En los incidentes de ransomware notificados públicamente que afectaron a hospitales entre 2017 y 2024, ¿con qué frecuencia describieron los informes un recurso a procesos en papel y qué límites de ese recurso mencionaron?». Una buena pregunta nombra la población (qué hospitales, qué incidentes), las variables (recurso descrito, límites mencionados), el marco temporal y el tipo de respuesta (una proporción y unos temas). En el nivel de grado, las preguntas que comparan (opciones, sectores, métodos) se ajustan mejor al resultado del curso que las que pretenden descubrir algo nuevo.
+
+### 18.2 Diseños
+
+Los estudios **descriptivos** dicen lo que hay (una encuesta de inventario; un recuento de avisos por sector). Los estudios **comparativos** contrastan grupos u opciones con los mismos criterios. Los estudios **experimentales** cambian una cosa de forma deliberada y miden el efecto, idealmente frente a un control (el experimento con el umbral del detector del capítulo 27). Los **estudios de caso** examinan uno o unos pocos casos en profundidad, con varias fuentes; explican el cómo y el porqué, pero generalizan con cautela. Elija el diseño que necesita la pregunta, no el que parece más científico.
+
+Para la pregunta sobre las copias de seguridad del CEDC, el diseño adecuado es el comparativo: tres estrategias puntuadas con los mismos criterios. Un experimento compararía simulacros en condiciones controladas, y un estudio de caso examinaría a fondo una restauración pasada. Cada uno responde a una pregunta distinta, así que elija el diseño después de redactar la pregunta.
+
+### 18.3 La bibliografía, de forma sistemática
+
+Buscar fuentes es en sí un método y debe registrarse: bases de datos y sitios consultados, términos de búsqueda, fecha, criterios de inclusión y exclusión, cantidades encontradas y conservadas. Distinga las fuentes **primarias** (un aviso de una agencia, el informe de un regulador, un estudio revisado por pares) de las **secundarias** (un artículo de prensa o un blog que las resume). Prefiera las primarias, cite lo que ha leído (capítulo 4) y registre por qué excluyó lo que excluyó para que otra persona pueda repetir el cribado. Basta con una hoja de cálculo sencilla: fuente, tipo, fecha, pertinencia, hallazgo clave, límites.
+
+### 18.4 Validez
+
+Cuatro amenazas clásicas. **Validez de constructo**: ¿capta la medida el concepto? (Contar los «incidentes notificados» mide la notificación, no los incidentes). **Validez interna**: ¿es la causa alegada realmente la causa? (Los hospitales con más personal de seguridad pueden notificar más incidentes porque detectan más). **Validez externa**: ¿se generaliza el resultado? (Los hallazgos de grandes hospitales urbanos pueden no aplicarse a clínicas rurales). **Fiabilidad**: ¿obtendría otro investigador el mismo resultado? (Dos codificadores que clasifican informes de incidentes deberían coincidir; mida su concordancia). La crítica de Sommer y Paxson a la detección de intrusiones con aprendizaje automático es un ejemplo clásico de problemas de validez externa en la investigación en seguridad ([Sommer and Paxson, 2010](https://doi.org/10.1109/SP.2010.25)).
+
+### 18.5 Ejemplo resuelto: una pregunta comparativa (plan sintético)
+
+**Este plan es sintético.** Un estudiante del programa de prácticas de la CRP pregunta: «¿Cuál de tres estrategias de copia de seguridad respalda mejor la restauración en cuatro horas del servicio de despacho del CEDC?». Diseño: comparativo, con los mismos criterios (tiempo de restauración medido en un simulacro aislado, resiliencia frente al compromiso del servidor de copias, carga operativa, coste). Datos: tres restauraciones cronometradas en un entorno de pruebas aislado proporcionado por el CEDC con autorización escrita, documentación del fabricante y entrevistas con dos administradores. Notas de validez: tres simulacros son una muestra pequeña (informar intervalos, capítulo 37); el entorno de pruebas puede diferir de producción (validez externa: documentar las diferencias); el estudiante diseñó los simulacros (fiabilidad: pedir a un administrador que repita uno). Resultado: una recomendación con las suposiciones declaradas, no una afirmación universal sobre productos de copia de seguridad.
+
+### 18.6 Actividad práctica
+
+Redacte tres preguntas de investigación sobre un tema de su elección en seguridad de sectores críticos: una descriptiva, una comparativa y una de estudio de caso. Para cada una, nombre la población, las variables, el marco temporal y el tipo de evidencia que necesitaría. Por ejemplo, sobre dispositivos médicos sin soporte: descriptiva, «¿cuántos dispositivos clínicos del CVH habían superado el fin del soporte en 2026?»; comparativa, «¿cuál de tres enfoques reduce más la exposición dentro de un presupuesto?»; estudio de caso, «¿cómo gestionó un hospital sus estaciones de trabajo de imagen durante un retraso en la sustitución?». Anote para cada una si la evidencia puede obtenerse con autorización.
+
+### 18.7 Errores comunes y límites
+
+- Preguntas demasiado amplias para responderlas o demasiado estrechas para que importen.
+- Búsquedas bibliográficas no registradas que no pueden repetirse.
+- Generalizar en exceso a partir de un solo caso.
+- Confundir la correlación en los datos de incidentes con la causa.
+- Recoger datos sobre personas o sistemas reales sin aprobación ética ni autorización (capítulo 10).
+
+El plan sobre las copias del CEDC evita estos errores al nombrar la población (el servicio de despacho del CEDC), limitar la afirmación a tres estrategias, registrar las fuentes y tratar tres simulacros como una muestra pequeña. Un estudio sobre «el ransomware en los hospitales» no superaría la primera prueba. Un estudiante que entrevistara a administradores del CEDC sin consentimiento no superaría la quinta, fuera cual fuera la calidad del análisis.
+
+### Ejercicios — capítulo 18
+
+**EX035 — Afinar la pregunta.** *Objetivo:* hacer investigable un tema. *Entradas:* el tema «el phishing en el sector energético». *Pasos:* redacte una pregunta de investigación con población, variables, marco temporal y tipo de respuesta; indique qué diseño encaja. *Evidencia esperada:* pregunta y diseño. *Rúbrica:* 3 = específica, respondible con evidencia obtenible, diseño justificado; 2 = específica, pero con evidencia no obtenible; 1 = sigue siendo un tema; 0 = nada.
+
+**EX036 — Nombrar la amenaza.** *Objetivo:* identificar amenazas a la validez. *Entradas:* «Los hospitales que compraron el producto X tuvieron un 40 % menos de incidentes de ransomware notificados, así que X previene el ransomware». *Pasos:* nombre y explique tres amenazas a la validez. *Evidencia esperada:* tres amenazas. *Rúbrica:* 3 = de constructo (notificados frente a reales), interna (factores de confusión como el presupuesto o la madurez, selección), externa (qué hospitales) o fiabilidad; 2 = dos; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+La investigación empieza con una pregunta lo bastante específica como para ser respondida y discutida. Elija el diseño que necesita la pregunta, busque y criba la bibliografía de un modo que otra persona pueda repetir, y nombre las amenazas a la validez antes de que lo haga un revisor.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Siga estudiando — capítulo 18 de 40
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 →](../../en/book/MANUSCRIPT.md#ch-19)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1217,6 +1500,22 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX027.** Diseño minimizado: registrar el ID del miembro del personal, el identificador de la historia clínica del paciente (no el nombre ni el diagnóstico), la estación de trabajo, la marca de tiempo y el tipo de acceso; conservar 2 años (o el plazo que fije la política del hospital), con acceso restringido al responsable de privacidad y a dos auditores con nombre; finalidad declarada como detección de accesos inapropiados; personal informado mediante la política y un aviso al iniciar sesión; reidentificación del paciente solo en investigaciones confirmadas.
 
 **EX028.** Riesgos: en los códigos postales pequeños, un tipo de inmueble único (p. ej., la única casa unifamiliar aislada) identifica un hogar; los patrones horarios revelan la ocupación, las rutinas y las ausencias. Mitigaciones: publicar solo agregados sobre un número mínimo de contadores (p. ej., ≥ 10), reducir el detalle temporal (diario) o de ubicación; facilitar los datos detallados solo con acuerdos de acceso a investigadores aprobados.
+
+**EX029.** Diagrama (2025): documento, producido por el equipo, de hace un año, no independiente; solo muestra la intención del diseño. Informe de la prueba de conmutación (14 min): demostración, de operaciones, del año pasado, no independiente; evidencia real de que la conmutación *puede* funcionar. Nota del auditor: independiente, reciente; muestra que la prueba se anunció, de modo que el personal estaba preparado y las condiciones eran favorables. Conclusión: hay evidencia de que la conmutación puede cumplir los 15 minutos en condiciones preparadas; no de que lo haría durante una falla no anunciada y con carga. Pida una prueba no anunciada u observada de forma independiente, con la carga registrada.
+
+**EX030.** Métrica: «proporción de cuentas privilegiadas y de acceso remoto que usan autenticación resistente al phishing», medida cada mes desde el sistema de identidades como (cuentas con autenticadores resistentes al phishing) / (todas las cuentas privilegiadas y de acceso remoto), informando el denominador y las exclusiones. Riesgo de manipulación: reclasificar cuentas como no privilegiadas para reducir el denominador, mitigado con una definición independiente de privilegio. (También es aceptable una tasa de notificación en simulaciones autorizadas, con manipulación mediante simulaciones predecibles).
+
+**EX031.** Mínimo privilegio: los usuarios remotos llegan a toda la red de control; valores predeterminados a prueba de fallos: cuentas de fabricantes activadas de forma permanente; mediación completa: no hay comprobación por sesión de quién se conecta ni por qué; separación de privilegios: una contraseña por sí sola da acceso, sin segundo factor ni aprobación del operador; mínimo mecanismo común: una sola pasarela compartida por todos los usuarios y fabricantes, directamente hacia el control.
+
+**EX032.** El compromiso de una cuenta o un servidor desactiva a la vez las reglas del cortafuegos, la protección de endpoints y las copias de seguridad: las tres «capas» comparten un único mecanismo. Cambios: niveles administrativos y credenciales (y equipos de gestión) separados para los sistemas de red, de endpoints y de copias, con MFA resistente al phishing; mantener al menos una copia fuera de línea o inmutable y gestionada fuera del dominio.
+
+**EX033.** (a) Firmas digitales: cualquiera puede verificar, solo el fabricante puede firmar. (b) MAC con números de secuencia (o un canal con autenticación mutua como TLS, donde los dispositivos lo admitan): autenticidad, integridad y frescura. (c) Cifrado simétrico del disco con la clave protegida por hardware y por la autenticación del usuario. (d) Cadena de hashes con un ancla custodiada externamente (o entradas de registro firmadas).
+
+**EX034.** Un administrador con acceso al registro y al ancla edita una entrada, recalcula todas las cabezas siguientes y sobrescribe el ancla con la nueva cabeza; la verificación entonces se supera. Prevención: custodiar el ancla en un sistema administrado por otro equipo con almacenamiento de solo anexado; publicar o refrendar periódicamente las cabezas con un servicio de sellado de tiempo de confianza; alertar ante cualquier reescritura del ancla.
+
+**EX035.** Ejemplo: «Entre los operadores de distribución eléctrica de [un país] que publicaron informes de incidentes o informes anuales entre 2020 y 2025, ¿con qué frecuencia se mencionan incidentes iniciados por phishing y qué mitigaciones describen los informes?»: descriptiva con un elemento comparativo (las mitigaciones), con evidencia procedente de informes públicos. Otra opción es una pregunta comparativa sobre dos enfoques de autenticación resistente al phishing en un laboratorio.
+
+**EX036.** De constructo: los «incidentes notificados» miden la notificación y la detección, no los ataques. Interna: los hospitales que compran X también pueden tener presupuestos mayores, más personal o una exposición distinta (confusión); selección: los compradores difieren de forma sistemática. Externa: los hallazgos de los hospitales estudiados pueden no ser trasladables. Fiabilidad: definiciones distintas de «incidente de ransomware» entre hospitales.
 
 <a id="glossary"></a>
 
