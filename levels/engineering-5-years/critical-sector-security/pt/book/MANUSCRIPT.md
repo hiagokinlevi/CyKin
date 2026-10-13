@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções; os capítulos 11–50 (EX021–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–14 de 50 já estão escritos em português, com os exercícios EX001–EX028 e suas resoluções; os capítulos 15–50 (EX029–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -45,10 +45,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 8. [Arquitetura de computadores](#ch-08)
 9. [Programação II](#ch-09)
 10. [Ética e segurança em engenharia](#ch-10)
+11. [Redes e protocolos](#ch-11)
+12. [Sistemas operacionais](#ch-12)
+13. [Sistemas de dados](#ch-13)
+14. [Engenharia de software](#ch-14)
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 15–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-15), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX020. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX028. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -805,7 +809,317 @@ A segurança pública vem primeiro, relatada com honestidade. A segurança opera
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 50
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) explicar o modelo em camadas e os papéis de Ethernet, IP, TCP, UDP e dos protocolos de aplicação; (2) descrever protocolos industriais (Modbus/TCP, DNP3, IEC 60870-5-104, OPC UA) e quais propriedades de segurança cada um oferece ou não oferece; (3) montar um orçamento de latência para a telemetria; e (4) expressar a segmentação como zonas e condutos e conferir os fluxos observados contra ela. Ele se apoia nos capítulos 3 e 4 e prepara os capítulos 18 (arquitetura de segurança) e 26 (alternativas de arquitetura).
+
+### 11.1 As camadas e o que elas prometem
+
+As redes são construídas em camadas: física e de enlace (quadros Ethernet num segmento), de rede (pacotes IP roteados entre segmentos), de transporte (o TCP, com fluxos de bytes confiáveis e ordenados; o UDP, com datagramas sem garantia de entrega — o TCP é especificado na [RFC 9293](https://www.rfc-editor.org/rfc/rfc9293)) e de aplicação (o protocolo que carrega o significado). Cada camada promete algo limitado. O TCP garante ordem e retransmissão, não autenticidade. O IP roteia, mas endereços de origem podem ser forjados em muitas redes. As propriedades de segurança precisam ser acrescentadas deliberadamente, em geral com TLS ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)), IPsec ou autenticação na camada de aplicação.
+
+### 11.2 Protocolos industriais
+
+Os protocolos industriais clássicos foram projetados para redes seriais fechadas. O **Modbus/TCP** (porta 502) transporta códigos de função, como leitura e escrita de registradores, sem autenticação; qualquer um que alcance a porta 502 pode emitir escritas. O **DNP3** é amplamente usado em água e eletricidade; sua extensão Secure Authentication acrescenta autenticação por desafio e resposta para comandos críticos, mas não está implantada universalmente. O **IEC 60870-5-104** é comum nos sistemas elétricos europeus, com extensões de segurança definidas na IEC 62351. O **OPC UA** foi projetado com modos de segurança que oferecem assinatura e cifração, mas eles precisam ser configurados — "None" é uma política válida. A lição é consistente: capacidade do protocolo não é implantação. Verifique o que está configurado.
+
+### 11.3 Latência, jitter e varredura cíclica (polling)
+
+A telemetria costuma ser consultada ciclicamente: o mestre SCADA interroga cada RTU por vez. A latência de ponta a ponta, de um evento físico até a tela de um operador, é a soma da atualização do sensor, da varredura da RTU, da ida e volta no enlace, da espera pela consulta do mestre, do processamento e da atualização da tela. O **jitter** é a variação da latência. Escreva um orçamento, meça cada elemento e compare o total com o requisito; o Capítulo 36 acrescenta as filas. O orçamento da LRWA no Laboratório 5 soma a varredura da RTU, a ida e volta na LTE, a espera pela consulta e a atualização da tela para chegar a um segundo, contra um requisito de 1,5 segundo, mas a espera pela consulta é o elemento que mais varia, e o EX022 mostra como ela domina o pior caso.
+
+### 11.4 Zonas, condutos e listas de permissões
+
+A segmentação divide uma rede em **zonas** com requisitos de segurança semelhantes e controla os **condutos** entre elas. Esse vocabulário vem da [série ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards). Uma política de conduto é uma **lista de permissões** (allowlist): zona de origem, zona de destino, protocolo e porta específicos, e todo o resto negado. Verificar não é ler a configuração do firewall; é conferir os fluxos observados contra a política pretendida, porque as configurações derivam e caminhos não documentados (o modem de acesso remoto de um fornecedor, um laptop com duas interfaces de rede) contornam os firewalls. A revisão de fluxos da LRWA, abaixo, mostra por quê.
+
+### 11.5 Exemplo resolvido: revisão de fluxos da LRWA (sintético)
+
+A LRWA define as zonas: *enterprise* (corporativa), *dmz*, *control* (servidores SCADA), *field* (RTUs) e *eng* (estações de engenharia). Os condutos pretendidos estão listados no Laboratório 5. Uma semana de registros de fluxo mostra três violações: um host corporativo falando Modbus diretamente com uma RTU de campo (um script de relatório esquecido que contorna a DMZ), uma estação de engenharia abrindo SSH diretamente para uma RTU em vez de passar pelo jump host da zona de controle, e um servidor SCADA fazendo consultas DNS a um resolvedor público. Cada uma é uma constatação com um dono: remover o script e servir seus dados a partir do historiador da DMZ; encaminhar o acesso de engenharia pelo jump host; apontar o DNS do SCADA para um resolvedor interno, ou para nenhum.
+
+### 11.6 Atividade prática: Laboratório 5
+
+```python
+# Lab 5 - check observed flows against a zone-conduit allowlist (synthetic, offline)
+RULES = [  # (src_zone, dst_zone, protocol, port)
+    ("control", "field", "tcp", 502), ("control", "dmz", "tcp", 443), ("dmz", "enterprise", "tcp", 443),
+    ("eng", "control", "tcp", 22), ("field", "control", "udp", 20000)]
+ZONE = {"10.1.0.": "control", "10.2.0.": "field", "10.3.0.": "dmz", "10.4.0.": "enterprise", "10.5.0.": "eng"}
+def zone(ip): return next((z for p, z in ZONE.items() if ip.startswith(p)), "unknown")
+FLOWS = [("10.1.0.5", "10.2.0.31", "tcp", 502), ("10.4.0.77", "10.2.0.31", "tcp", 502),
+         ("10.2.0.31", "10.1.0.5", "udp", 20000), ("10.3.0.9", "10.4.0.20", "tcp", 443),
+         ("10.5.0.12", "10.2.0.33", "tcp", 22), ("10.1.0.5", "8.8.8.8", "udp", 53),
+         ("10.1.0.6", "10.3.0.9", "tcp", 443)]
+for s, d, p, port in FLOWS:
+    ok = (zone(s), zone(d), p, port) in RULES
+    print(f"{s:>10} {zone(s):>10} -> {d:<10} {zone(d):<10} {p}/{port:<5} {'allowed' if ok else 'VIOLATION'}")
+budget = {"rtu_scan": 120, "lte_rtt": 180, "scada_poll_wait": 500, "operator_view": 200}
+print("end-to-end latency budget ms:", sum(budget.values()), "vs requirement 1500")
+```
+
+Saída esperada:
+
+```text
+  10.1.0.5    control -> 10.2.0.31  field      tcp/502   allowed
+ 10.4.0.77 enterprise -> 10.2.0.31  field      tcp/502   VIOLATION
+ 10.2.0.31      field -> 10.1.0.5   control    udp/20000 allowed
+  10.3.0.9        dmz -> 10.4.0.20  enterprise tcp/443   allowed
+ 10.5.0.12        eng -> 10.2.0.33  field      tcp/22    VIOLATION
+  10.1.0.5    control -> 8.8.8.8    unknown    udp/53    VIOLATION
+  10.1.0.6    control -> 10.3.0.9   dmz        tcp/443   allowed
+end-to-end latency budget ms: 1000 vs requirement 1500
+```
+
+Três dos sete fluxos são violações, e cada uma corresponde a uma constatação do exemplo resolvido: o script de relatório corporativo falando Modbus com uma RTU de campo, a estação de engenharia abrindo SSH diretamente para uma RTU em vez de passar pelo jump host, e um servidor SCADA consultando um resolvedor DNS público. A linha do orçamento de latência mostra um total de um segundo contra o requisito de 1,5 segundo, mas esse valor usa valores típicos, então trate-o como ponto de partida para a análise de pior caso do EX022, e não como evidência de que R7 foi atendido.
+
+### 11.7 Erros comuns e limites
+
+- Igualar a cifração numa camada à proteção de ponta a ponta.
+- Supor que a segurança opcional de um protocolo industrial está habilitada.
+- Verificar a segmentação apenas lendo configurações.
+- Orçamentos de latência com médias em vez de piores casos.
+- Listas de permissões por host em vez de por função, que se tornam impossíveis de manter.
+
+A revisão de fluxos da LRWA ilustra diretamente o terceiro erro: a configuração do firewall parecia correta, mas uma semana de registros de fluxo mostrou três violações. Ler as configurações não teria encontrado nenhuma delas. Listas de permissões escritas por host também teriam exigido edições constantes à medida que as RTUs fossem acrescentadas.
+
+### Exercícios — capítulo 11
+
+**EX021 — Estenda a verificação da política.** *Objetivo:* encontrar violações por função. *Entradas:* Laboratório 5. *Passos:* (1) acrescente um fluxo de `10.2.0.31` para `10.4.0.77` em TCP/445; (2) acrescente uma regra para que a estação de engenharia só alcance as RTUs por um jump host na zona de controle, e modele os dois saltos; (3) execute de novo e relate. *Evidência esperada:* mudanças no código e saída. *Rubrica:* 3 = nova violação detectada, modelo de dois saltos correto, nenhuma regra enfraquece a proteção do campo; 2 = um problema; 1 = não executado; 0 = nada.
+
+**EX022 — Latência contra o requisito.** *Objetivo:* orçar a latência de pior caso. *Entradas:* varredura da RTU de 120 ms, ida e volta na LTE de 180 ms típicos / 900 ms no percentil 99, espera pela consulta de até um ciclo completo de 1,3 s (Laboratório 13), atualização da tela do operador de 200 ms; requisito: 95% dos alarmes na tela em até 1,5 s e todos em até 5 s. *Passos:* calcule os totais típico e de pior caso; julgue as duas cláusulas; proponha uma mudança de projeto. *Evidência esperada:* tabela. *Rubrica:* 3 = somas corretas, espera pela consulta reconhecida como dominante, mudança proposta (relato por exceção ou alarmes não solicitados); 2 = uma soma errada; 1 = apenas o típico; 0 = nada.
+
+### Síntese do capítulo
+
+Cada camada de rede promete algo estreito; a autenticidade precisa ser acrescentada. Os protocolos industriais variam em capacidade de segurança, e capacidade não é configuração. Orce a latência com piores casos. Expresse a segmentação como zonas e condutos com listas de permissões e verifique-a contra os fluxos observados, e não contra as configurações pretendidas.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 50
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) explicar processos, threads, escalonamento, gerenciamento de memória e sistemas de arquivos; (2) distinguir sistemas operacionais de propósito geral e de tempo real e escolher entre eles; (3) aplicar os mecanismos de segurança do sistema operacional — contas, permissões, isolamento, registro em log, aplicação de correções — aos servidores do centro de controle e às estações de engenharia; e (4) planejar a aplicação de correções e o endurecimento sob as restrições de disponibilidade da tecnologia operacional. Ele se apoia no Capítulo 8 e prepara os capítulos 18 e 39.
+
+### 12.1 O que um sistema operacional faz
+
+Um sistema operacional multiplexa o hardware entre os programas e oferece abstrações: **processos** (espaços de endereçamento isolados), **threads** (execução concorrente dentro de um processo), **memória virtual**, **arquivos** e **dispositivos**. O kernel executa com privilégios; as aplicações pedem serviços por meio de chamadas de sistema. O escalonador decide qual thread executa; sua política determina a latência. Na LRWA, os servidores SCADA e as estações de engenharia executam sistemas operacionais de propósito geral, enquanto a lógica de proteção das bombas executa nas RTUs e nos PLCs de cada estação. Saber qual código executa onde diz quais máquinas precisam de garantias de tempo real e quais precisam de endurecimento, aplicação de correções e registro em log do tipo descrito abaixo.
+
+### 12.2 Sistemas operacionais de tempo real
+
+Um sistema operacional de **tempo real** garante resposta limitada: as tarefas com prazos são escalonadas de modo que, se a análise disser que elas cabem, elas cumprem seus prazos. O escalonamento por prioridade fixa com atribuição de prioridades rate-monotonic é uma abordagem clássica; a análise de Liu e Layland dá um limite suficiente de utilização para tarefas periódicas sob essa política. Os sistemas operacionais de propósito geral (Windows, Linux de desktop) otimizam a vazão e a equidade; sua latência de pior caso não é limitada sem configuração especial. Regra: as funções de proteção executam em controladores de tempo real; as funções de supervisão (IHM, historiador) podem executar em sistemas de propósito geral.
+
+### 12.3 Mecanismos de segurança do sistema operacional
+
+- **Privilégio mínimo:** os serviços executam sob contas dedicadas, apenas com os direitos necessários; nada de contas de administrador compartilhadas. [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939) apresentaram o privilégio mínimo, os padrões à prova de falhas, a mediação completa e a economia de mecanismo como princípios de projeto que continuam válidos.
+- **Controle de acesso:** permissões de arquivos e de objetos; controle de acesso obrigatório onde estiver disponível.
+- **Lista de permissões de aplicações:** apenas executáveis aprovados executam — prático em hosts de TO de propósito único, cujo software raramente muda.
+- **Registro em log:** autenticação, uso de privilégios, mudanças de serviços e criação de processos, encaminhados para fora do host.
+- **Endurecimento:** remover serviços não usados, fechar portas não usadas, desabilitar a execução automática de mídias removíveis.
+- **Aplicação de correções:** aplicar as atualizações de segurança, testadas e agendadas.
+
+### 12.4 Aplicação de correções sob restrições de disponibilidade
+
+Sistemas de TO muitas vezes não podem ser reiniciados à vontade, e os fornecedores podem suportar apenas níveis específicos de correções. A aplicação de correções é, portanto, baseada em risco: avalie a explorabilidade de cada vulnerabilidade na sua arquitetura (o serviço vulnerável é alcançável?), sua consequência e o risco para a disponibilidade de aplicá-la; depois corrija, mitigue (bloqueie a porta, desabilite o recurso) ou aceite com uma data de revisão. Mantenha um sistema de teste que espelhe a produção para validar as correções. O [guia de TO do NIST (SP 800-82 Rev. 3)](https://csrc.nist.gov/pubs/sp/800/82/r3/final) discute esses compromissos.
+
+### 12.5 Exemplo resolvido: endurecendo os servidores SCADA (sintético)
+
+Os dois servidores SCADA da LRWA executam um sistema operacional de propósito geral. A linha de base do TMRP: contas de serviço dedicadas; os operadores entram com contas nominais; administrador local desabilitado, exceto uma conta de emergência (break-glass) cuja senha fica lacrada e cujo uso gera alarme; lista de permissões habilitada após um período de aprendizado de duas semanas num ambiente de teste; armazenamento USB bloqueado; logs encaminhados ao coletor da DMZ; uma janela mensal de correções alternando entre os servidores, para que um deles esteja sempre em funcionamento. O risco residual — o fornecedor certifica as correções 30 dias após o lançamento — é mitigado por regras de rede que expõem ao campo e à DMZ apenas as portas da aplicação SCADA.
+
+### 12.6 Atividade prática
+
+Numa máquina virtual Linux que seja sua, liste os serviços em escuta (`ss -tulpn`), as contas locais com shell de login e os serviços habilitados. Escreva uma nota de endurecimento: quais serviços você desabilitaria num host historiador de propósito único e por quê. Não execute isso contra nenhum sistema que não seja seu. Registre a saída com a data e o nome da máquina e, para cada serviço que você desabilitaria, anote o que quebraria se você estivesse errado. Um host historiador na LRWA precisaria de seu serviço de banco de dados e do encaminhamento de logs, mas raramente de um servidor de e-mail ou de um serviço de compartilhamento de arquivos. Compare sua lista com as medidas de endurecimento do exemplo do SCADA e explique qualquer diferença. O exercício treina o hábito de perguntar por que cada serviço está em execução antes de decidir se ele deveria estar.
+
+### 12.7 Erros comuns e limites
+
+- Executar a lógica de proteção num sistema operacional de propósito geral.
+- Contas compartilhadas, que destroem a responsabilização.
+- Aplicar correções pelo calendário sem avaliar a explorabilidade — ou nunca aplicá-las porque "a TO é especial".
+- Logs mantidos apenas no host que um atacante controla.
+- Lista de permissões ligada em produção sem um período de aprendizado.
+
+O endurecimento do SCADA da LRWA evita cada um desses erros: contas nominais substituem as compartilhadas, os logs saem do host, a lista de permissões veio após duas semanas de aprendizado num ambiente de teste, e a janela mensal de correções alterna entre os dois servidores. O risco residual está registrado.
+
+### Exercícios — capítulo 12
+
+**EX023 — Verificação rate-monotonic.** *Objetivo:* testar a escalonabilidade com o limite de Liu–Layland. *Entradas:* três tarefas periódicas numa RTU: (C=2 ms, T=10 ms), (C=4 ms, T=40 ms), (C=10 ms, T=100 ms). *Passos:* calcule a utilização; calcule o limite $n(2^{1/n}-1)$ para $n = 3$; conclua. *Evidência esperada:* números e conclusão. *Rubrica:* 3 = U = 0,40, limite ≈ 0,780, escalonável pelo teste suficiente, com a ressalva de que ultrapassar o limite não provaria a não escalonabilidade; 2 = ressalva ausente; 1 = erro aritmético; 0 = nada.
+
+**EX024 — Decisão de correção.** *Objetivo:* tomar uma decisão de correção baseada em risco. *Entradas:* uma vulnerabilidade de execução remota de código no serviço de compartilhamento de arquivos do sistema operacional; o serviço está habilitado no historiador, mas bloqueado pelo firewall da zona de controle para todas as zonas exceto a de engenharia; a certificação da correção pelo fornecedor está a 30 dias. *Passos:* recomende corrigir / mitigar / aceitar, com controles provisórios e uma data de revisão. *Evidência esperada:* nota de decisão. *Rubrica:* 3 = mitigação agora (desabilitar o serviço ou restringir mais), correção após a certificação, monitoramento, data; 2 = sem controle provisório; 1 = "corrigir imediatamente", ignorando o suporte do fornecedor, ou "aceitar" sem raciocínio; 0 = nada.
+
+### Síntese do capítulo
+
+O sistema operacional determina tanto a temporização quanto a linha de base de segurança. Coloque os prazos em plataformas de tempo real. Aplique privilégio mínimo, lista de permissões, endurecimento e registro em log fora do host. Aplique correções com base no risco avaliado, com procedimentos testados e controles compensatórios quando ainda não puder corrigir, e mantenha um ambiente espelho para tornar isso possível.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 50
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) projetar modelos de dados relacionais e de séries temporais para dados operacionais; (2) explicar transações, consistência e replicação; (3) proteger a integridade dos dados com restrições, proveniência e cadeias de hashes, e dizer exatamente o que cada um detecta; e (4) planejar fluxos de dados entre os sistemas de controle e a análise de dados corporativa sem abrir um caminho para dentro do controle. Ele se apoia nos capítulos 9 e 11 e prepara os capítulos 22 (modelos de dados) e 29 (medição).
+
+### 13.1 Modelos para dados operacionais
+
+[Codd (1970)](https://doi.org/10.1145/362384.362685) introduziu o modelo relacional: dados como relações (tabelas) com chaves, manipulados por operações de conjuntos. Cadastros de ativos, ordens de serviço e contas de usuários se encaixam bem nele. Os dados de processo — milhares de tags amostradas a cada segundo — costumam ir para um **historiador**, um repositório de séries temporais otimizado para acréscimos e consultas por intervalo, muitas vezes com uma compressão que descarta mudanças menores do que uma banda morta. Saiba o que seu historiador descarta: a análise forense pode precisar de valores que ele nunca armazenou. O historiador da LRWA armazena o nível de Hollin Hill com compressão por banda morta, então as mudanças menores do que a banda morta nunca são guardadas.
+
+### 13.2 Transações, consistência e replicação
+
+Uma **transação** agrupa operações de modo que todas aconteçam ou nenhuma aconteça (atomicidade), deixando os dados válidos (consistência), sem interferência de transações concorrentes (isolamento) e sobrevivendo a quedas (durabilidade). A replicação copia os dados para a disponibilidade; quando as réplicas podem discordar, os sistemas escolhem entre consistência e disponibilidade durante uma partição da rede. Para as operações: um alarme reconhecido por um operador não pode reaparecer como não reconhecido após a troca para o servidor reserva (failover); uma mudança de setpoint não pode ser aplicada duas vezes. No par SCADA da LRWA, o failover é o momento em que essas propriedades são testadas: os testes de integração devem confirmar que os alarmes reconhecidos e os setpoints aplicados sobrevivem à troca exatamente uma vez.
+
+### 13.3 Integridade: o que cada mecanismo detecta
+
+- As **restrições** (tipos, faixas, chaves estrangeiras) rejeitam valores impossíveis na entrada.
+- Os campos de **proveniência** (origem, hora da coleta, transformação) permitem rastrear um número até sua origem.
+- As **somas de verificação** (checksums) detectam corrupção acidental.
+- As **cadeias de hashes** ligam cada registro ao anterior, de modo que editar qualquer registro muda todos os hashes posteriores. Elas detectam modificações *se* você tiver uma cópia confiável de um hash posterior (uma **âncora**) guardada em algum lugar que o atacante não consiga alterar. Elas não detectam o truncamento do final, a menos que a âncora inclua a contagem de registros, e não provam que os dados originais eram verdadeiros.
+- As **assinaturas digitais** ou os MACs sobre registros ou âncoras os vinculam a quem detém a chave.
+
+### 13.4 Tirar os dados sem deixar os ataques entrarem
+
+As equipes corporativas querem os dados de controle para relatórios e análises. O padrão seguro é empurrar os dados para fora — da zona de controle para uma réplica do historiador na DMZ — e deixar os usuários corporativos consultarem a réplica, nunca o historiador de controle. Onde a consequência de um comprometimento da zona de controle é grave, gateways unidirecionais (diodos de dados) impõem fisicamente o fluxo apenas para fora. A violação do Laboratório 5 — um script corporativo consultando diretamente uma RTU — é o antipadrão. Na LRWA, a réplica do historiador na DMZ atende às equipes de finanças e de ativos, e o script corporativo esquecido, encontrado na revisão de fluxos, está sendo aposentado em favor dela.
+
+### 13.5 Exemplo resolvido: protegendo a linha do tempo do incidente (sintético)
+
+Após uma queda inexplicada do nível do reservatório em 4 de março, no registro sintético, a LRWA precisa preservar o extrato do historiador para a investigação. O Laboratório 6 encadeia por hashes seis leituras diárias e guarda o hash da cabeça no chamado do incidente (a âncora). A edição do valor de 4 de março é detectada no índice 3 e em todos os registros posteriores. A exclusão do último registro não é detectada comparando apenas as cabeças se o atacante também substituir a cabeça armazenada — e é por isso que a âncora vai para um sistema fora do alcance do atacante, junto com a contagem de registros.
+
+### 13.6 Atividade prática: Laboratório 6
+
+```python
+# Lab 6 - a hash-chained historian extract detects edits, not deletions at the tail (offline)
+import hashlib, json
+recs = [{"t": f"2026-03-0{d} 06:00", "tag": "HOLLIN_LVL", "v": v} for d, v in zip(range(1, 7), [78.1, 77.4, 79.0, 41.2, 76.5, 77.9])]
+def chain(rs):
+    prev, out = "0" * 64, []
+    for r in rs:
+        h = hashlib.sha256((prev + json.dumps(r, sort_keys=True)).encode()).hexdigest()
+        out.append(h); prev = h
+    return out
+anchor = chain(recs)
+print("head:", anchor[-1][:16])
+tampered = [dict(r) for r in recs]; tampered[3]["v"] = 74.0
+bad = [i for i, (a, b) in enumerate(zip(anchor, chain(tampered))) if a != b]
+print("first mismatch at index:", bad[0], "mismatches:", len(bad))
+print("truncated head matches stored index 4:", chain(recs[:5])[-1] == anchor[4])
+```
+
+Saída esperada:
+
+```text
+head: a8407870e41914c1
+first mismatch at index: 3 mismatches: 3
+truncated head matches stored index 4: True
+```
+
+O hash da cabeça é o que a LRWA guarda no chamado do incidente. Editar a leitura de 4 de março para esconder a queda muda o hash no índice três e em todos os registros posteriores, então a edição é detectada onde quer que ocorra. A última linha mostra a fraqueza: uma cadeia construída a partir dos cinco primeiros registros coincide com o hash armazenado no índice quatro, então um atacante que exclua o registro final e substitua a cabeça armazenada passaria despercebido. O EX025 fecha essa lacuna acrescentando a contagem de registros à âncora.
+
+### 13.7 Erros comuns e limites
+
+- Tratar os dados do historiador como completos quando a compressão ou as bandas mortas descartam detalhes.
+- Cadeias de hashes sem uma âncora armazenada de forma independente.
+- Acreditar que os mecanismos de integridade provam a verdade; eles provam a não modificação desde a ancoragem.
+- Conexões bidirecionais de "relatório" para dentro da zona de controle.
+- Perder as informações de fuso horário e de fonte do relógio.
+
+A investigação de 4 de março depende de evitar cada um desses erros, das lacunas de compressão a um fuso horário ausente. Um historiador que descarta pequenas mudanças pode ter descartado justamente os valores que mostrariam com que rapidez o nível caiu, uma âncora mantida no servidor do historiador poderia ser reescrita pelo mesmo administrador, e carimbos de tempo sem fuso tornam impossível alinhar a queda com o registro do operador.
+
+### Exercícios — capítulo 13
+
+**EX025 — Truncamento do final.** *Objetivo:* fechar a lacuna de truncamento. *Entradas:* Laboratório 6. *Passos:* (1) mostre que `chain(recs[:5])` coincide com o hash armazenado no índice 4; (2) modifique a âncora para incluir a contagem de registros e mostre que o truncamento é detectado; (3) diga onde a âncora deve ser guardada na LRWA e por quê. *Evidência esperada:* código e saída. *Rubrica:* 3 = demonstração e correção certas, âncora guardada fora do alcance dos administradores do controle e do historiador; 2 = correção incompleta; 1 = não executado; 0 = nada.
+
+**EX026 — Projeto de fluxo de dados.** *Objetivo:* projetar com segurança o acesso para análises. *Entradas:* a equipe de finanças quer dados horários de energia das bombas; a equipe de ativos quer dados de pressão ao vivo para um painel. *Passos:* desenhe (em texto) os fluxos, as zonas e o sentido; diga qual componente impõe o sentido e o que acontece se a réplica da DMZ for comprometida. *Evidência esperada:* descrição dos fluxos e análise das consequências. *Rubrica:* 3 = empurrar para a DMZ, nada entrando no controle, consequência limitada à confidencialidade/integridade dos dados da réplica; 2 = sentido não imposto; 1 = consulta direta ao historiador de controle; 0 = nada.
+
+### Síntese do capítulo
+
+Modele os dados operacionais deliberadamente, saiba o que seu historiador descarta e use transações e replicação com o failover em mente. Cada mecanismo de integridade detecta algo específico: as restrições rejeitam o impossível, as cadeias de hashes detectam edições em relação a uma âncora armazenada de forma independente, as assinaturas vinculam a quem detém a chave — nenhum deles prova a verdade. Mova os dados para fora, para uma DMZ, e nunca deixe que os relatórios se tornem um caminho para dentro do controle.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) aplicar um ciclo de vida de desenvolvimento seguro de software ao software de infraestrutura; (2) gerenciar requisitos, revisões de projeto, revisão de código e inspeções; (3) gerenciar dependências e a cadeia de suprimentos de software com SBOMs e proveniência; e (4) planejar versões e atualizações para software embarcado e de TO de vida longa. Ele se apoia nos capítulos 5 e 9 e prepara os capítulos 28, 31 e 39.
+
+### 14.1 Por que o processo importa
+
+[Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) defendeu que as dificuldades essenciais do software — complexidade, conformidade, mutabilidade, invisibilidade — não admitem um avanço único e decisivo. O processo não as remove; ele torna os erros visíveis cedo, quando corrigi-los é barato, e deixa evidências de que o trabalho foi feito. Em infraestrutura crítica, a evidência faz parte do produto: reguladores, seguradoras e donos de ativos vão pedi-la. No gateway do TMRP, essa evidência inclui a revisão do modelo de ameaças, os resultados dos testes e a compilação assinada, que vão todos para o dossiê.
+
+### 14.2 Um ciclo de vida de desenvolvimento seguro
+
+O [NIST Secure Software Development Framework (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final) agrupa as práticas em preparar a organização, proteger o software, produzir software bem protegido e responder a vulnerabilidades. Concretamente: requisitos de segurança e modelos de ameaças com cada funcionalidade; padrões de codificação segura; revisão por pares; análise estática automatizada e testes na integração contínua; sistemas de compilação protegidos; recebimento e divulgação de vulnerabilidades; e correções com avisos claros. Os princípios de [Secure by Design da CISA](https://www.cisa.gov/securebydesign) acrescentam que os fabricantes devem assumir a responsabilidade pelos resultados de segurança dos clientes — padrões seguros, nenhuma senha padrão, linguagens com segurança de memória onde for viável.
+
+### 14.3 Revisões e inspeções
+
+[Fagan (1976)](https://doi.org/10.1147/sj.153.0182) descreveu inspeções formais de projeto e de código, com papéis e listas de verificação definidos, relatando que elas encontravam defeitos mais cedo e de forma mais barata do que os testes. A revisão de código moderna é mais leve, mas mantém os princípios: uma segunda pessoa competente lê cada mudança, com uma lista de verificação que inclui validação de entradas, autenticação, tratamento de erros e registro em log. Métricas de complexidade, como a complexidade ciclomática de McCabe ([McCabe, 1976](https://doi.org/10.1109/TSE.1976.233837)), sinalizam funções difíceis de testar. Na LRWA, cada mudança no código do gateway é lida por um segundo engenheiro com uma lista de verificação.
+
+### 14.4 Dependências e a cadeia de suprimentos
+
+A maior parte do software é montada a partir de componentes de terceiros. Uma **lista de materiais de software (SBOM)** os relaciona para que, quando uma vulnerabilidade for anunciada, você saiba se é afetado ([recursos de SBOM da CISA](https://www.cisa.gov/sbom)). A **proveniência** — evidência verificável de como e a partir de quê um artefato foi construído — protege contra compilações adulteradas; o [framework SLSA](https://slsa.dev/) define níveis de integridade da compilação, e as [compilações reprodutíveis](https://reproducible-builds.org/) permitem que partes independentes confirmem que um binário corresponde ao seu código-fonte.
+
+### 14.5 Versões para sistemas de vida longa
+
+O software de TO pode ser mantido por vinte anos. Planeje: atualizações assinadas; reversão (rollback); implantação em etapas (bancada de teste, uma instalação, frota); janelas de compatibilidade; datas de fim de suporte publicadas com antecedência; e um processo de atualização que funcione quando uma instalação só é alcançável de forma intermitente. Um mecanismo de atualização é ele próprio uma superfície de ataque e precisa ser autenticado. No TMRP, o plano é concreto: o gateway passa da bancada para a PS2 e depois para a PS1, uma imagem de reversão é mantida em cada etapa, e as atualizações precisam chegar a estações que só são alcançáveis de forma intermitente pela LTE. Como os gateways estão registrados como dívida técnica com horizonte de três anos, a data de fim de suporte é publicada desde o início.
+
+### 14.6 Exemplo resolvido: o projeto do gateway de telemetria (sintético)
+
+O TMRP precisa construir um pequeno gateway que acrescente autenticação HMAC para as RTUs legadas da PS1 e da PS2. O plano: requisitos R1, R2 e R7 rastreados até os testes; um modelo de ameaças revisado por um segundo engenheiro; apenas a biblioteca padrão do Python, evitando dependências de terceiros; análise estática e testes unitários na integração contínua; compilações num executor dedicado, com artefatos assinados e um SBOM (trivialmente curto aqui); implantação numa bancada, depois na PS2, depois na PS1; e uma imagem de reversão mantida. Cada etapa deixa um registro no dossiê de evidências (Capítulo 48).
+
+### 14.7 Atividade prática
+
+Escreva um plano de uma página, mapeado ao SSDF, para uma pequena ferramenta que você tenha escrito: para cada um dos quatro grupos de práticas, liste duas práticas concretas e a evidência que cada uma produz. Escolha algo real que você tenha escrito, como o seu interpretador do Laboratório 3, para que as práticas sejam concretas. Para cada prática, nomeie a evidência que ela deixa: um registro de revisão, um relatório de teste, uma compilação assinada ou um modelo de aviso. Se uma prática não deixar nenhuma evidência, mude-a ou admita que ela é apenas uma intenção. Compare seu plano com o plano do gateway do TMRP e anote uma prática que você acrescentaria.
+
+### 14.8 Erros comuns e limites
+
+- Documentos de processo sem as práticas que eles descrevem.
+- Revisão de código sem lista de verificação ou sem autoridade para bloquear.
+- Dependências baixadas no momento da compilação sem fixação de versão nem proveniência.
+- Mecanismos de atualização sem autenticação ou reversão.
+- Nenhuma data de fim de suporte publicada.
+
+O plano do gateway do TMRP foi escrito para evitar cada um desses erros. Ele usa apenas a biblioteca padrão, então não há dependências sem versão fixada; as revisões seguem uma lista de verificação; as compilações são assinadas, com um SBOM; a implantação mantém uma imagem de reversão; e os gateways têm um horizonte publicado de três anos.
+
+### Exercícios — capítulo 14
+
+**EX027 — Lista de verificação de revisão.** *Objetivo:* criar uma lista de verificação de revisão para código de infraestrutura. *Entradas:* o código dos laboratórios 3 e 8. *Passos:* escreva uma lista de verificação de dez itens e aplique-a aos dois laboratórios, registrando uma constatação para cada um. *Evidência esperada:* lista de verificação e duas constatações. *Rubrica:* 3 = lista específica (validação de entradas, comparação em tempo constante, tratamento de chaves, caminhos de erro, registro em log, limites) e constatações reais; 2 = lista genérica; 1 = sem constatações; 0 = nada.
+
+**EX028 — Simulação de resposta com SBOM.** *Objetivo:* usar um SBOM numa resposta a vulnerabilidade. *Entradas:* um SBOM sintético que lista `libmodbus 3.1.6`, `openssl 3.0.8`, `zlib 1.2.13` para o firmware da RTU-B, e um aviso sobre um deles. *Passos:* descreva os passos de triagem, do aviso à decisão, incluindo como você determina a explorabilidade na sua implantação. *Evidência esperada:* procedimento. *Rubrica:* 3 = correspondência, análise de alcançabilidade, contato com o fornecedor, controle compensatório, comunicação; 2 = sem alcançabilidade; 1 = "atualizar tudo"; 0 = nada.
+
+### Síntese do capítulo
+
+O processo torna os erros visíveis cedo e deixa evidências. Use um framework reconhecido de desenvolvimento seguro, revise com listas de verificação, meça a complexidade e trate as dependências e as compilações como parte da sua superfície de ataque, com SBOMs e proveniência. Projete versões e atualizações para décadas, com autenticação, implantação em etapas e reversão.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (inglês) →](../../en/book/MANUSCRIPT.md#ch-15)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -814,7 +1128,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX020; as de EX021–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX028; as de EX029–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -875,6 +1189,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX019.** Perigo: um operador bloqueado durante uma emergência não consegue agir; um atacante pode bloquear os operadores deliberadamente (negação de serviço). Alternativa: nenhum bloqueio nas IHMs da sala de controle; em vez disso, atraso progressivo após falhas, alertas para falhas repetidas, contas nominais com autenticação forte, controle de acesso físico à sala de controle e uma liberação de emergência com presença física e registro em log. Verifique por teste (tentativas malsucedidas produzem atrasos e alertas, nunca bloqueio) e por exercício (o operador consegue entrar sob estresse).
 
 **EX020.** Não visite, não sonde e não tente entrar na página, e não compartilhe a captura de tela. Notifique a concessionária de forma privada pelo seu contato de segurança publicado ou, se não houver, por um programa de divulgação coordenada como o da CISA, relatando apenas o que você observou e onde. O trabalho do curso pode descrever o padrão ("interfaces de gerenciamento expostas em documentos de compras") sem nomear a concessionária, o fornecedor, o modelo ou o local.
+
+### Capítulo 11
+
+**EX021.** O novo fluxo field → enterprise em TCP/445 é uma VIOLATION. Modele o jump host: acrescente a regra ("control", "field", "tcp", 22); então eng `10.5.0.12` → jump host `10.1.0.20` em TCP/22 é permitido; jump host → RTU `10.2.0.33` em TCP/22 é permitido; o acesso direto eng → RTU em TCP/22 continua sendo uma VIOLATION. Nenhuma regra dá à zona de engenharia acesso direto ao campo.
+
+**EX022.** Típico: 120 + 180 + até 1.300 + 200 ≈ 1,8 s se um evento acabou de perder sua consulta (≈ 1,15 s em média, com espera de meio ciclo). Pior caso: 120 + 900 + 1.300 + 200 ≈ 2,5 s. A cláusula de 95% em até 1,5 s está em risco porque a espera pela consulta domina; a cláusula de 5 s é atendida. Mudança: relato por exceção (respostas não solicitadas) para os alarmes, para que não esperem pela consulta.
+
+### Capítulo 12
+
+**EX023.** U = 2/10 + 4/40 + 10/100 = 0,40. Limite para n = 3: 3(2^{1/3} − 1) ≈ 0,780. U ≤ limite, então o conjunto é escalonável sob prioridades rate-monotonic. O teste é suficiente, não necessário: um conjunto que ultrapasse o limite ainda poderia ser escalonável (uma análise exata do tempo de resposta decidiria).
+
+**EX024.** Mitigar agora: desabilitar o serviço de compartilhamento de arquivos no historiador, se não for necessário, ou restringi-lo a um único host de engenharia nomeado; monitorar tentativas de conexão; aplicar a correção após a certificação do fornecedor, na janela de manutenção seguinte; data de revisão na certificação + 14 dias. Aceitar sem nenhuma ação ignora o caminho alcançável a partir da zona de engenharia.
+
+### Capítulo 13
+
+**EX025.** `chain(recs[:5])[-1] == anchor[4]` → True: um atacante que exclua o último registro e substitua a cabeça armazenada por `anchor[4]` passa despercebido. Incluir a contagem — âncora = H(cabeça ‖ n) — torna o truncamento detectável (verificado: a âncora truncada é diferente). Guarde a âncora no sistema de chamados de incidentes e num arquivo de gravação única fora da zona de controle e fora dos privilégios dos administradores do historiador.
+
+**EX026.** O historiador de controle empurra os dados horários de energia e os valores de pressão ao vivo para uma réplica na DMZ (apenas para fora, imposto por firewall ou por um gateway unidirecional); finanças e o painel consultam a réplica. Nenhuma conexão de entrada na zona de controle. Se a réplica for comprometida, os atacantes podem ler ou falsificar os dados de relatório e os painéis — um problema de integridade e confidencialidade dos dados —, mas não ganham nenhum caminho para dentro do controle.
+
+### Capítulo 14
+
+**EX027.** Lista de verificação: comprimento da entrada verificado antes da indexação; integridade verificada antes do uso; comparação de segredos em tempo constante; nenhum segredo no código-fonte; caminhos de erro que rejeitam; exceções não engolidas; limites para laços e tamanhos; registro das rejeições em log sem segredos; ordem de bytes explícita; testes para cada caminho de rejeição. Constatações: Laboratório 3 — quadros truncados informam "crc" em vez de formato (clareza do diagnóstico); Laboratório 8 — chave fixada no código-fonte (aceitável apenas como demonstração rotulada).
+
+**EX028.** Faça a correspondência do aviso com as entradas e versões do SBOM; confirme se a função ou o recurso vulnerável está presente e alcançável na configuração da RTU-B (por exemplo, o servidor TLS está habilitado? o interpretador vulnerável da biblioteca é usado?); peça ao fornecedor uma avaliação e um firmware corrigido; aplique controles compensatórios (restringir o conduto, desabilitar o recurso); comunique às operações; agende a atualização por meio da implantação em etapas; registre a decisão.
 
 <a id="glossary"></a>
 
