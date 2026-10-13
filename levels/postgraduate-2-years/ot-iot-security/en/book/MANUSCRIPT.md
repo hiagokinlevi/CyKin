@@ -818,7 +818,7 @@ Keep a short log of what you read and what you changed because of it, such as a 
 
 ### Worked example (synthetic BWRP)
 
-Daniel's transfer brief begins: "Open: D-2026-14 revisit if broker attestation lapses (due June). Assurance: G1 supported since February via E5; E4 restore drill expires May 2027 — schedule now. Metrics: RTU inventory 23/23 since March; vendor-session review 37/37. Weak spot: lift-station router firmware patching has no window agreed with operations."
+Daniel's transfer brief begins: "Open: D-2026-14 revisit if the vendor incident frequency estimate exceeds 0.06 per year or after any remote-access incident. Assurance: G1 supported since February via E5; E4 restore drill expires May 2027 — schedule now. Metrics: RTU inventory 23/23 since March; vendor-session review 37/37. Weak spot: lift-station router firmware patching has no window agreed with operations."
 
 > **Synthetic case — Bayside Water Reclamation Plant.** All brief contents are invented.
 

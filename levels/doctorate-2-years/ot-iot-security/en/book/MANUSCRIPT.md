@@ -756,7 +756,7 @@ claims = [
  {"id": "C1", "text": "Residual CUSUM detects replay on Plant A tank model", "evidence": "Lab3 100/100", "scope": "simulated tank, single-sensor replay", "falsifier": "replay+flow"},
  {"id": "C2", "text": "Method secures water utilities", "evidence": "", "scope": "", "falsifier": ""},
  {"id": "C3", "text": "Band alarms miss replay", "evidence": "Lab3 0/100", "scope": "band +/-1.5", "falsifier": ""},
- {"id": "C4", "text": "Detection holds on testbed T2", "evidence": "Ch5 table 5.2", "scope": "T2, 3 attack classes", "falsifier": "coordinated multi-sensor spoof"},
+ {"id": "C4", "text": "Detection holds on testbed T2", "evidence": "Ch5 table 5.2", "scope": "T2, class A replay", "falsifier": "class B: flow meter also spoofed"},
 ]
 overreach = ("secures", "prevents all", "guarantees", "real-world")
 for c in claims:
@@ -776,7 +776,7 @@ C4 PASS
 
 C2 must be deleted or narrowed; C3 needs a falsifier (for example "a band narrow enough to catch replay would exceed the shift false-alarm budget"). A keyword list is a crude check; the human audit still reads every claim.
 
-The keyword list in Lab 8 is deliberately short, so passing it proves little. A human audit should also catch C4's scope, which mentions three attack classes although the study defines only class A and class B; narrow it to the classes actually tested on T2 before the defense. Repeat the audit after every revision of the abstract or conclusion, and keep each run's output in the claim register's history so examiners can see how the claims narrowed.
+The keyword list in Lab 8 is deliberately short, so passing it proves little. A human audit should still read C4 against the T2 results: its scope is class A replay because class B evaded detection on T2, and the 18 of 20 recall belongs beside the claim, not only in the results chapter. Repeat the audit after every revision of the abstract or conclusion, and keep each run's output in the claim register's history so examiners can see how the claims narrowed.
 
 ### 8.2 Examiner question families
 
