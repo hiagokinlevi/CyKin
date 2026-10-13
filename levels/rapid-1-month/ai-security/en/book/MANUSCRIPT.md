@@ -136,7 +136,7 @@ At Tallis & Co, Omar created five test mailboxes with synthetic clients, so no r
 
 ### 2.4 Evidence and measurement
 
-For each test, record date, system version, steps, input, what the assistant did (drafts, actions, data shown), and screenshots or logs. Repeat tests and report rates with uncertainty: 0 failures in 20 tries still allows a true rate of up to about 15%.
+For each test, record date, system version, steps, input, what the assistant did (drafts, actions, data shown), and screenshots or logs. Repeat tests and report rates with uncertainty: 0 failures in 20 tries still allows a true rate of up to about 16%.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
