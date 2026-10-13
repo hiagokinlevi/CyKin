@@ -29,7 +29,7 @@ Los capítulos 1–19 construyen fundamentos aplicados a la TO desde la primera 
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1169,7 +1169,360 @@ Zonas, límites del acceso de ingeniería y límites honestos de lo que un gemel
 
 ### Siga estudiando — capítulo 18 de 50
 
-[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidad y criptografía
+
+### Resultados de aprendizaje
+
+Usted podrá (1) evaluar la identidad en TO sin atacar la criptografía; (2) usar funciones hash para la integridad de la evidencia; (3) manejar con seguridad las credenciales de ingeniería.
+
+### 19.1 La identidad en la planta
+
+Pregunte: ¿qué cuentas existen en los HMI, los historiadores y los equipos de ingeniería? ¿Cuáles usan contraseñas compartidas? ¿Cuáles se integran con el directorio del sitio? La MFA en los servidores de salto de L4 es habitual; en un HMI heredado puede ser imposible: documente los controles compensatorios (acceso físico, grabación de sesiones). La revisión de identidades de Lena en ABP enumeró cada cuenta de HMI-1, del historiador y de eng-WS-1, con su responsable y si era compartida. La contraseña compartida de ingeniería fue el hallazgo más claro y se sustituyó por cuentas nominales. Donde no se pudo añadir MFA a un HMI heredado, registró los controles compensatorios, como el acceso cerrado a la sala de control y la grabación de sesiones en el servidor de salto, y nombró a quién los comprueba.
+
+### 19.2 Hash de la evidencia
+
+Calcule el hash de las exportaciones de configuración y de los archivos de evidencia (SHA-256); guarde los resúmenes en el ticket. Vuelva a calcularlos más tarde para detectar manipulaciones. Acompañe los hashes con el identificador del actor y la versión del permiso de trabajo. Lena calcula el hash de cada exportación del cortafuegos en el momento de recogerla y guarda el resumen en el ticket con la hora, su cuenta y la versión del permiso de trabajo. Las revisiones posteriores vuelven a calcular el hash del archivo almacenado y lo comparan. Una discrepancia se investiga antes de usar la evidencia, porque una exportación modificada podría indicar una manipulación, una edición descuidada o simplemente el archivo equivocado. El manifiesto nombra el algoritmo utilizado.
+
+### 19.3 Secretos
+
+Las credenciales de ingeniería viven en una bóveda; retiradas de corta duración; rotación al final de la ventana. Nada de secretos en git, en capturas de pantalla ni en el chat. Las cuentas de servicio de los historiadores reciben contraseñas únicas y un uso monitorizado.
+
+> **Caso sintético — Ashford Batch Plant.** Una contraseña compartida de «ingeniero» en eng-WS-1 se sustituyó por cuentas nominales tras la revisión de identidades del CNHP. La retirada de los archivos del proyecto del PLC registra ahora a la persona, no a un mítico usuario compartido.
+
+En ABP, las credenciales de ingeniería del proyecto del PLC-A se retiran de la bóveda para una ventana y se rotan después.
+
+### 19.4 Errores y límites
+
+Los hashes detectan cambios, no si fueron malintencionados o accidentales. Acompáñelos con los registros de acceso. No intente descifrar hashes de contraseñas de planta en este curso. Un hash coincidente solo demuestra que un archivo no ha cambiado desde que se calculó su hash, no que se recogiera legalmente ni que se interpretara correctamente. Lena acompaña las comprobaciones de hash con el registro de acceso del almacén de evidencia, que muestra quién tocó cada archivo y cuándo. Los hallazgos sobre contraseñas se notifican a partir de la configuración y de las listas de cuentas; descifrar hashes queda fuera del programa y fuera de cualquier permiso que ella tenga.
+
+### Nota práctica
+
+Las cuentas de emergencia para situaciones críticas de la planta necesitan doble control para recuperarlas y rotación automática tras su uso. Una contraseña de emergencia sin usar pegada bajo un teclado no es un control.
+
+### 19.1b Certificados y cuentas de emergencia
+
+Para los historiadores y servidores de salto con TLS, registre los certificados presentados bajo autorización. Los certificados caducados o que no coinciden son hallazgos de operaciones. El registro de certificados de Lena enumera, para cada equipo, el sujeto, el emisor, la fecha de caducidad y la fecha de observación, de modo que un certificado a punto de caducar en la réplica del historiador se convierte en un ticket con fecha y no en una interrupción por sorpresa. Prefiera SHA-256 para los manifiestos de evidencia; documente el algoritmo en el manifiesto.
+
+
+
+La elección del algoritmo de los manifiestos es un campo de versión, no un cambio silencioso a mitad de ventana. Cuando cambia el algoritmo, los manifiestos existentes conservan su campo de algoritmo original y se vuelven a calcular en un manifiesto nuevo en lugar de editarse.
+
+### Ejercicios — capítulo 19
+
+- **EX055 — Preguntas.** Cinco preguntas de identidad para los equipos de ingeniería de ABP. Rúbrica: 3 = cinco concretas; 2 = tres; 1 = una; 0 = nada.
+- **EX056 — Hash.** ¿Qué hace cuando el hash de una exportación sellada del cortafuegos no coincide? Rúbrica: 3 = restaurar/volver a exportar, investigar las escrituras, hallazgo de proceso; 2 = solo el archivo; 1 = vago; 0 = ignorarlo.
+- **EX057 — Regla sobre secretos.** Política en una línea para las contraseñas de proyectos de PLC en los tickets. Rúbrica: 3 = nunca en el ticket; referencia a la bóveda; 2 = no compartir; 1 = débil; 0 = permite pegarlas.
+
+### Síntesis del capítulo
+
+Lea la configuración de identidades; calcule el hash de la evidencia; guarde los secretos en una bóveda.
+
+### Siga estudiando — capítulo 19 de 50
+
+[← Capítulo 18 (borrador)](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 (borrador) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Seguridad de TO, IoT y sistemas ciberfísicos: contexto de ingeniería
+
+### Resultados de aprendizaje
+
+Usted podrá (1) situar la ingeniería de seguridad de TO entre SP 800-82, ISA/IEC 62443 y ATT&CK for ICS; (2) definir lo que construye este programa de grado; (3) enunciar el límite de seguridad para todos los capítulos posteriores.
+
+### 20.1 Mapa de la disciplina
+
+NIST SP 800-82 orienta la seguridad de los ICS. ISA/IEC 62443 estructura zonas, conductos y niveles de seguridad. ATT&CK for ICS nombra técnicas adversarias para la planificación y la cobertura, no como puntuación de riesgo residual. Las especificaciones de Modbus definen el protocolo sobre el que se construye la lista de permitidos. Las revisiones académicas (Giraldo et al.; Urbina et al.) advierten contra los detectores evaluados solo con ataques fáciles. Los ingenieros construyen las plataformas y los procesos que hacen operativas esas fuentes bajo las restricciones de la seguridad de procesos.
+
+Lena usa cada fuente para aquello en lo que es buena y cita la revisión exacta.
+
+### 20.2 Qué construimos
+
+El CNHP de Ashford Batch Plant es el ejemplo conductor: zonificación, listas de permitidos, detectores con métricas honestas, ventanas de parches, expedientes de evidencia. Los egresados diseñan, verifican y operan programas de este tipo; no inventan exploits contra PLC. Los resultados del programa son concretos: una red por zonas con alcanzabilidad probada, listas de permitidos aplicadas al tráfico Modbus, detectores con intervalos de falsas alarmas publicados, un calendario de parches con aplazamientos fechados y un expediente que un auditor puede verificar. Cada capítulo posterior añade una parte de ese sistema y muestra cómo Lena la construyó y la comprobó en ABP sin poner en peligro ningún lote.
+
+### 20.3 Límite de seguridad
+
+Nada de cargas útiles de exploits, nada de acceso no autorizado a plantas, nada de datos personales o de lotes propietarios reales en los laboratorios, que solo usan datos locales sintéticos. Las solicitudes de doble uso se rechazan (capítulo 10). Las condiciones de parada de seguridad de procesos siempre prevalecen. Este límite es un requisito en cada revisión de diseño de los capítulos 21-50.
+
+> **Caso sintético — Ashford Batch Plant.** La dirección pidió un equipo rojo que hackeara la planta. Lena reformuló el mandato: un programa autorizado de bastionado que aplica zonas y mide la detección sin poner en peligro los lotes.
+
+Lena contrasta cada diseño con este límite.
+
+### 20.4 Errores y límites
+
+Los marcos evolucionan; vuelva a comprobar las URL y las versiones antes de citarlos en una tesis. Este capítulo orienta; no sustituye la lectura de las fuentes primarias. La lista de fuentes de Lena registra la revisión y la fecha de acceso de cada norma y artículo usados en los documentos del CNHP. Antes de citar un marco en su tesis, comprueba si existe una revisión más reciente y anota cualquier cambio que afecte a su argumento. El capítulo solo da la orientación suficiente para empezar; leer las fuentes primarias forma parte del trabajo.
+
+### Nota práctica
+
+Mantenga en la carpeta del CNHP una lista de una página de «fuentes que realmente usamos», con las fechas de acceso. Los examinadores y los auditores preguntan a qué revisión de 62443 se refería; «la de ISA» no es una respuesta.
+
+### 20.1b Cursos vecinos y entregables
+
+Este libro de ingeniería presupone soltura con el cálculo, la probabilidad y la ingeniería de software de los capítulos anteriores. El libro de TO de licenciatura es más amplio; el de tecnólogo pone el énfasis en los ejercicios de implementación. Los operadores necesitan procedimientos operativos y tickets; los ingenieros necesitan esquemas, pruebas y registros de decisiones de arquitectura (ADR). La evaluación del proyecto final busca ambos. Cada entregable nombra a su lector previsto en la primera página. Los entregables de Lena en ABP incluyen ambos tipos. Sus procedimientos operativos y tickets sirven a los operadores que hacen funcionar la planta cada día, mientras que los esquemas, las pruebas y los registros de decisiones sirven a los ingenieros que mantendrán las herramientas después de ella. Los evaluadores buscan ambos.
+
+### Ejercicios — capítulo 20
+
+- **EX058 — Encaje de marcos.** Empareje cada necesidad con SP 800-82 / 62443 / ATT&CK ICS / especificación Modbus. Rúbrica: 3 = cuatro pares sensatos; 2 = tres; 1 = dos; 0 = nada.
+- **EX059 — Mandato.** Reescriba «hackear la planta» como una frase de mandato de ingeniería. Rúbrica: 3 = autorización + bastionado/medición + seguridad funcional; 2 = parcial; 1 = sigue centrada en el ataque; 0 = nada.
+- **EX060 — Límite.** Tres elementos concretos fuera del alcance de este programa. Rúbrica: 3 = tres claros; 2 = dos; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+Los ingenieros hacen posible el bastionado autorizado de la TO; no sustituyen la seguridad de procesos por ingenio.
+
+### Siga estudiando — capítulo 20 de 50
+
+[← Capítulo 19 (borrador)](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 (borrador) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Seguridad de TO, IoT y sistemas ciberfísicos: requisitos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) obtener requisitos de seguridad de procesos, de operaciones y de seguridad de la información; (2) separar los requisitos funcionales, de seguridad funcional y de medición; (3) redactar criterios de aceptación que un probador pueda ejecutar con datos de prueba sintéticos.
+
+### 21.1 Fuentes
+
+Seguridad de procesos quiere capas de protección independientes. Operaciones quiere visualizar sin tiempo de parada. Seguridad de la información quiere conductos con denegación por defecto. Las entrevistas de obtención producen enunciados con «deberá» etiquetados por su fuente. Los conflictos (visualización por conveniencia frente a aislamiento del SIS) se registran, no se disimulan. En ABP, Lena entrevistó por separado al ingeniero de seguridad de procesos, a los jefes de turno, a los ingenieros de control y al equipo de red de TI, y después llevó los conflictos a una reunión conjunta. El conflicto más claro fue la regla de visualización remota FW-12, que operaciones valoraba y seguridad funcional no podía aceptar. Se registró con ambas posturas, y la solución, visualizar a través de la réplica de la DMZ, se convirtió en un requisito con responsable.
+
+### 21.2 Tres familias
+
+Funcional: «El monitor serie deberá decodificar Modbus RTU en la línea troncal A y emitir decisiones de permitir/denegar». Seguridad funcional: «Si el archivo de la lista de permitidos no se carga, el monitor deberá fallar de forma cerrada (descartar todo el tráfico no esencial, o generar una alarma y exigir una acción humana, según el diseño)». Medición: «El CNHP deberá informar de la cobertura de técnicas de ATT&CK for ICS planificada frente a observada, con denominadores». En caso de empate, ganan los requisitos de seguridad funcional.
+
+Lena etiqueta cada requisito del CNHP con su familia, para que las revisiones puedan comprobar que los de seguridad funcional se prueban primero. Los empates se resuelven por escrito.
+
+### 21.3 Criterios de aceptación
+
+Cada requisito tiene un Dado/Cuando/Entonces sobre datos sintéticos. Ejemplo: Dado que se deniega L2 a L1-SIS, Cuando se ejecuta la alcanzabilidad desde L4, Entonces L1-SIS no está en el conjunto alcanzable. Los criterios que requieren una escritura en una planta en servicio se rechazan en la revisión.
+
+> **Caso sintético — Ashford Batch Plant.** El requisito de seguridad funcional S-1, «fallar de forma cerrada si falta la lista de permitidos», no superó su prueba de aceptación cuando una ruta con una errata devolvió PASS. La corrección se publicó antes de cualquier ventana en la planta.
+
+Los criterios se revisan con el responsable del requisito. Cada criterio es una prueba.
+
+### 21.4 Errores y límites
+
+Las partes interesadas inventan requisitos a mitad de ventana; apárquelos en una lista de pendientes con un ticket AUTH; no parchee en caliente los monitores de producción durante un lote. Cuando alguien pide una nueva regla de monitor durante un lote, Lena la registra en la lista de pendientes con un ticket de autorización y la evalúa después de la ventana. Cambiar un monitor de producción a mitad de lote arriesga una interrupción o un error de fallo abierto que nadie ha probado. El elemento pendiente nombra quién lo pidió, por qué y cuándo se revisará, para que la solicitud no se pierda y quien la planteó vea que se atiende.
+
+### Nota práctica
+
+Las pruebas de aceptación llevan el nombre de los identificadores de los requisitos y hacen fallar la integración continua cuando se omiten. Los requisitos Must huérfanos se prueban o se aplazan formalmente con un responsable de la dirección.
+
+### 21.1b MoSCoW bajo seguridad funcional
+
+La priorización Must/Should/Could sigue colocando todos los requisitos de seguridad funcional en Must. Un Could que debilita un Must (la denegación opcional de los códigos de escritura) se reclasifica o se rechaza. Los gestores de producto no ganan por votación al fallo cerrado. Los campos de registro llevan también el identificador del requisito (req=S-1), para que un evento de denegación pueda trazarse hasta el requisito que aplica. En ABP, S-1 y R-12 son ambos elementos Must, y ninguna decisión de producto puede bajarlos de nivel. Una solicitud para hacer opcionales, por conveniencia, las denegaciones de códigos de escritura se rechazó por este motivo, y el rechazo se registra con el requisito que habría debilitado.
+
+### Ejercicios — capítulo 21
+
+- **EX061 — Obtención.** Escriba un requisito funcional y uno de seguridad funcional con «deberá» a partir de «la oficina no debe alcanzar el SIS». Rúbrica: 3 = ambos comprobables; 2 = uno; 1 = vago; 0 = nada.
+- **EX062 — Aceptación.** Dado/Cuando/Entonces para el fallo cerrado cuando falta la lista de permitidos. Rúbrica: 3 = completo, con la denegación/alarma esperada; 2 = parcial; 1 = idea; 0 = nada.
+- **EX063 — Conflicto.** Visualización de L4 a L2 por conveniencia frente a zonificación: registre el conflicto y la regla elegida. Rúbrica: 3 = conflicto nombrado + regla que antepone la seguridad funcional, vía DMZ; 2 = solo la regla; 1 = elige la conveniencia; 0 = nada.
+
+### Síntesis del capítulo
+
+Los requisitos vienen de las personas, se dividen en familias y se entregan con pruebas de aceptación sobre datos de prueba sintéticos.
+
+### Siga estudiando — capítulo 21 de 50
+
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Seguridad de TO, IoT y sistemas ciberfísicos: modelos de sistemas y de datos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) dibujar un modelo de entidades para activos, zonas, conductos y hallazgos; (2) elegir claves y cardinalidades; (3) mantener el contenido de explotación fuera del modelo.
+
+### 22.1 Entidades
+
+Plant 1—* Unit; Unit 1—* Asset; Zone 1—* Asset; Conduit *—* Zone (origen/destino); Finding *—* EvidenceObject (por hash); TechniqueTag *—* Finding. Los errores de cardinalidad (muchos conjuntos de conductos activos sin un puntero de versión) llevan a los auditores a preguntar qué reglas estaban vigentes. El modelo de Lena da a cada ConduitSet una versión y registra qué versión estaba vigente en cada momento, de modo que un auditor puede ver las reglas que se aplicaban un día determinado. Cada Finding se vincula a su evidencia por hash, y las etiquetas de técnica se vinculan a los hallazgos solo después de la revisión.
+
+### 22.2 Claves
+
+Los identificadores de los hallazgos son UUID. La evidencia se direcciona por contenido mediante SHA-256. ConduitSet tiene (plant_id, version_int). Nunca use el título como clave de los hallazgos: los títulos cambian. El esquema de Lena usa estas claves en todo el CNHP. Un hallazgo sobre FW-12 conservó su identificador cuando se reformuló su título tras la revisión, y su historial siguió intacto. La evidencia indexada por su hash no puede sustituirse en silencio, ya que un archivo distinto tendría una clave distinta. El número de versión de ConduitSet aumenta con cada cambio publicado y nunca reutiliza un valor antiguo.
+
+### 22.3 Atributos prohibidos
+
+Ningún atributo para cargas útiles, shellcode ni ataques paso a paso. EvidenceObject guarda los bytes en un repositorio sellado; el modelo solo guarda el hash, el tipo de medio y la clase de conservación.
+
+> **Caso sintético — Ashford Batch Plant.** Un esquema inicial tenía notas como texto libre; la gente pegaba contraseñas de ingeniería. Lena lo sustituyó por campos estructurados más un hash de evidencia, y un linter rechaza las cadenas con aspecto de contraseña en los títulos.
+
+El linter de Lena aplica la lista. Se ejecuta con cada registro creado o importado, incluidas las importaciones masivas desde escáneres, y rechaza las cadenas con aspecto de contraseña en los títulos. Los registros rechazados devuelven un error que explica qué campo se rechazó.
+
+### 22.4 Errores y límites
+
+Los modelos que imponen cada técnica de ATT&CK for ICS como campo obligatorio generan etiquetas basura. Mantenga las etiquetas de técnica como opcionales y revisadas. En ABP, un analista añade las etiquetas de técnica después de redactar el hallazgo, y una segunda persona las revisa. Un hallazgo sin una técnica adecuada se deja sin etiqueta en lugar de forzarlo a la más cercana. Esto mantiene honestas las cifras de cobertura, porque una etiqueta basura contaría como cobertura observada de una técnica que nadie probó realmente. Las etiquetas se revisan cuando cambia la versión de ATT&CK for ICS.
+
+### Nota práctica
+
+Haga borrados lógicos de los hallazgos con actor y motivo; purgue físicamente solo mediante trabajos de conservación que emitan eventos de auditoría. Un DELETE FROM findings silencioso es un regalo para el repudio.
+
+### 22.1b Límites de los adjuntos y tiempo
+
+Los objetos de evidencia necesitan límites de tamaño y listas de tipos de medio permitidos. Las subidas sin límite se convierten en ataques a la disponibilidad e invitan a volcar datos propietarios en masa. Toda entidad mutable necesita created_at, created_by y, para los cambios de estado, updated_at/updated_by o un evento de solo anexado. En las exportaciones, prefiera UTC con desplazamientos explícitos. Las exportaciones indican su zona horaria una vez en la cabecera del archivo, además de en cada marca de tiempo. A los clientes de la API que emiten DELETE en bucle durante un reintento defectuoso se les revocan las credenciales tras superar un umbral.
+
+### 22.5 Ejemplo resuelto: modelar un hallazgo sin filtrar la planta (ABP sintética)
+
+El modelo de datos de Lena para los hallazgos del CNHP tiene las entidades Asset, Zone, Conduit, Finding y Evidence. Un Finding referencia un Asset por clave, nunca incrusta su dirección IP ni sus credenciales, y guarda la evidencia como un hash más un puntero al almacén de evidencia controlado. La lista de atributos prohibidos (contraseñas, cargas útiles completas de paquetes, valores de recetas) se aplica mediante una comprobación del esquema que rechaza cualquier registro que contenga esos campos. Cuando un hallazgo sobre el puerto Modbus abierto del PLC-A se exporta para la dirección, dice «Asset PLC-A, Conduit L2→L1, ATT&CK for ICS T0869 Standard Application Layer Protocol, severidad alta»: suficiente para actuar, no para atacar.
+
+### Ejercicios — capítulo 22
+
+- **EX064 — Cardinalidad.** ¿Por qué ConduitSet tiene versiones en lugar de editarse en el sitio? Rúbrica: 3 = auditoría de lo que estaba autorizado y cuándo; 2 = versionado vago; 1 = «buena práctica»; 0 = nada.
+- **EX065 — Clave.** ¿Por qué direccionar la evidencia por contenido? Rúbrica: 3 = integridad + deduplicación + evidencia de manipulación; 2 = una razón; 1 = vago; 0 = nada.
+- **EX066 — Prohibido.** Validación que impida contraseñas en el título. Rúbrica: 3 = heurística/linter + proceso; 2 = uno; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Modele activos, zonas, versiones, hallazgos y hashes, no ataques.
+
+### Siga estudiando — capítulo 22 de 50
+
+[← Capítulo 21 (borrador)](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 (borrador) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Seguridad de TO, IoT y sistemas ciberfísicos: análisis de amenazas y fallos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) enumerar los fallos del propio programa de seguridad de TO; (2) aplicar una pasada ligera de STRIDE sobre las herramientas; (3) incorporar los resultados a los requisitos sin construir módulos de explotación.
+
+### 23.1 El programa puede fallar de forma peligrosa
+
+Listas de permitidos que fallan de forma abierta, integración continua de alcanzabilidad omitida, detectores con tormentas silenciosas de falsas alarmas, aplazamientos de parches sin fecha: todo ello amenaza la seguridad de procesos y la honestidad, no solo la confidencialidad de una herramienta. Lena enumera primero estos fallos en el análisis de amenazas del CNHP porque podrían dañar la planta a través de las herramientas destinadas a protegerla. Un monitor que falla de forma abierta dejaría que escrituras no autorizadas llegaran al PLC-A mientras todos creen que están bloqueadas. Una comprobación de alcanzabilidad omitida en la integración continua dejaría fusionar sin que nadie lo viera un nuevo conducto hacia el SIS-B. Cada fallo recibe un requisito y una prueba.
+
+### 23.2 STRIDE sobre las herramientas del CNHP
+
+Suplantación (spoofing): cuenta de ingeniería falsa. Manipulación (tampering): editar la exportación del cortafuegos después del sellado. Repudio: eventos de denegación sin actor. Divulgación de información: réplica del historiador legible por cualquiera. Denegación de servicio: un escáner inunda una línea troncal. Elevación de privilegios: una sola persona puede publicar un conducto hacia el SIS. Cada fila recibe un requisito de mitigación. Lena realiza el análisis sobre cada herramienta del CNHP y registra las filas en la lista de pendientes con sus responsables. En ABP, las filas más graves fueron el monitor que falla de forma abierta y una sola persona que publica un conducto hacia el SIS-B; se convirtieron en el requisito S-1 y en el control de doble aprobación de los cambios de conductos. Cada fila se revisa de nuevo cuando se entrega su mitigación.
+
+### 23.3 Las amenazas a la planta se quedan en el análisis de peligros
+
+Las amenazas al proceso pertenecen al análisis de peligros del proceso de la planta y al HAZOP informado por la ciberseguridad, no a las funciones de una herramienta de estudiante. No construya explotación automatizada para satisfacer una fila de STRIDE.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Salida esperada:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+> **Caso sintético — Ashford Batch Plant.** La fila de STRIDE «fallo abierto» se convirtió en el requisito de seguridad funcional S-1. La fila «publicación de un conducto por una sola persona» se convirtió en el control de doble aprobación.
+
+Lena traslada las amenazas a la planta al ingeniero de seguridad de procesos para el análisis de peligros. Ella aporta hechos sobre las herramientas y la red, como qué zonas pueden alcanzar el PLC-A, y el ingeniero juzga las consecuencias para el proceso. Nada en las herramientas del CNHP simula un ataque al proceso.
+
+### 23.4 Errores y límites
+
+STRIDE es un estímulo, no una demostración. Vuelva a él cuando añada un nuevo límite de confianza (por ejemplo, un historiador SaaS de un proveedor). Lena repite el análisis cada vez que el CNHP añade un límite de confianza, como una nueva vía de acceso remoto para un proveedor o un cambio en el destino de las alertas. Las filas de revisiones anteriores se conservan, para que el equipo pueda ver qué amenazas se añadieron, qué mitigaciones se construyeron y cuáles siguen abiertas. Una tabla STRIDE nunca demuestra que una herramienta sea segura; eso lo hacen las pruebas y las revisiones.
+
+### Nota práctica
+
+Incluya en el modelo la amenaza «servidor de salto comprometido»: credenciales de corta duración, listas de salida permitida, revocación rápida. Si la respuesta es solo «confiar en el servidor de salto», el análisis está incompleto.
+
+### 23.1b Abuso frente a mal uso y lista de pendientes
+
+Los casos de abuso son acciones intencionadas de un adversario contra las herramientas del CNHP. Los casos de mal uso son operadores honestos que cometen errores peligrosos (pegar un CIDR que incluye a un socio). Diseñe controles para ambos. Las filas de STRIDE se convierten en incidencias vinculadas a requisitos. Las filas de mal uso suelen convertirse en reglas de validación; las de abuso, en controles de acceso. Alimentar la lista de pendientes significa que cada fila de STRIDE tiene un responsable y una fecha límite. En ABP, el caso de mal uso de un ingeniero que pega el CIDR de un socio en el archivo de conductos se convirtió en una regla de validación que rechaza los rangos fuera del plan de direcciones de la planta.
+
+Ambos tipos alimentan la lista de pendientes.
+
+### Ejercicios — capítulo 23
+
+- **EX067 — Fallo abierto.** Una prueba que demuestre el fallo cerrado. Rúbrica: 3 = quitar la política, esperar denegación + alerta; 2 = idea; 1 = vago; 0 = nada.
+- **EX068 — STRIDE.** Mitigación del repudio en los eventos de denegación. Rúbrica: 3 = actor autenticado + registro inmutable; 2 = solo registro; 1 = vago; 0 = nada.
+- **EX069 — Límite.** ¿Por qué el STRIDE del programa no justifica un módulo de explotación? Rúbrica: 3 = objetivo distinto/límite de seguridad; 2 = parcial; 1 = lo justifica; 0 = nada.
+
+### Síntesis del capítulo
+
+Analice cómo su programa puede dañar la planta o mentir; mitigue eso primero.
+
+### Siga estudiando — capítulo 23 de 50
+
+[← Capítulo 22 (borrador)](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 (borrador) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) encadenar permiso de trabajo, descubrimiento, validación e informe; (2) elegir métodos que se ajusten a la autorización y al riesgo de proceso; (3) definir cuándo está terminado un método sin escribir en un PLC.
+
+### 24.1 Secuencia
+
+Primero, el permiso de trabajo. El descubrimiento enumera activos y conductos mediante métodos acordados. La validación confirma los problemas de configuración con mínimo privilegio. El informe entrega los hallazgos y los hashes de la evidencia. Saltarse el permiso es la forma en que se producen las pruebas no autorizadas. En ABP, cada actividad del CNHP empieza con un permiso de trabajo firmado que nombra las unidades, los métodos, las ventanas y las condiciones de parada. El descubrimiento usa captura pasiva y exportaciones del proyecto de ingeniería; la validación usa revisión de configuración y pruebas en banco. Los hallazgos se notifican con los hashes de la evidencia, y nada pasa al paso siguiente hasta que el anterior ha producido sus artefactos.
+
+### 24.2 Fichas de método
+
+Cada ficha: nombre, propósito, privilegio, ¿ruidoso?, impacto en el proceso, condiciones de parada, artefactos. La revisión de configuración autenticada es una ficha; un exploit de PLC convertido en arma no está en la baraja de este programa. Lena guarda las fichas de método de ABP en el repositorio, junto a la plantilla del permiso de trabajo. Un permiso solo puede enumerar métodos que tengan ficha, y cada ficha indica si el método es ruidoso y qué impacto podría tener en el proceso. Los revisores contrastan las condiciones de parada de la ficha con el permiso, de modo que un método no pueda usarse en condiciones más débiles que las que exige su ficha.
+
+### 24.3 Terminado significa artefactos
+
+Un método está terminado cuando existen el CSV de inventario, los hashes de configuración, los borradores de hallazgos y las actualizaciones de cobertura, no cuando alguien siente que ha acabado.
+
+> **Caso sintético — Ashford Batch Plant.** La ficha de método para la verificación serie de la lista de permitidos exige modo de solo escucha, parada si el tiempo de ciclo llega a 50 ms y, como artefacto, una tabla de decisiones al estilo del laboratorio.
+
+La lista de comprobación de Lena para cada método enumera sus artefactos obligatorios. Para la verificación serie de la lista de permitidos en ABP, eso significa la tabla de decisiones, el hash de la captura, los borradores de hallazgos que haya y el tablero de cobertura actualizado. Un método al que le faltan artefactos se reabre, no se cierra con una nota que promete entregarlos más tarde. Lena revisa la lista al final de cada ventana.
+
+### 24.4 Errores y límites
+
+Copiar la lista de métodos de otra persona sin la autorización correspondiente es 62443 de culto al cargamento. Una lista de métodos copiada de otra planta o de una guía publicada puede suponer autorizaciones, equipos o tolerancias del proceso que ABP no tiene. Lena adapta cada método al permiso propio de ABP, escribe una ficha para él y hace que ingeniería de control la revise antes de usarla. Un método prestado sin esa revisión se trata como no autorizado, por prestigiosa que sea su fuente, y queda fuera del permiso hasta que se revise.
+
+### Nota práctica
+
+Congele los métodos durante una ventana igual que congela los conductos: los métodos nuevos necesitan la vía AUTH, no un «ya que estábamos, también probamos».
+
+### 24.1b Métodos silenciosos frente a ruidosos y dependencias
+
+Los métodos silenciosos (decodificación de solo escucha, exportación de configuración) caben en más ventanas. Los métodos ruidosos necesitan límites de tasa más estrictos y, a menudo, horas de baja actividad. Codifique las dependencias entre métodos en el plan, para que no se programen revisiones contra una lista de activos vacía. El plan de Lena enumera, para cada método, los métodos anteriores cuyos artefactos necesita. Las fichas de método sin un campo «ruidoso» son la causa de que se congestionen las ventanas de los lotes matutinos. Los métodos ruidosos se reservan frente al calendario de lotes con una semana de antelación, fuera de la fase de carga de R-101, y cada reserva nombra la línea troncal y su parada por tiempo de ciclo de 50 ms.
+
+Lena programa primero los métodos silenciosos.
+
+### Nota de campo: congelación de métodos en la práctica
+
+Durante la ventana W-17 de ABP, un proveedor pidió probar una función de diagnóstico adicional a mitad de turno. Lena aparcó la solicitud en la lista de planificación del siguiente encargo y mantuvo congelada la ficha de método. El lote terminó sin tráfico inexplicado, y el diagnóstico se evaluó al mes siguiente con un nuevo permiso de trabajo y sus propias condiciones de parada.
+
+### Ejercicios — capítulo 24
+
+- **EX070 — Ficha.** Escriba una ficha de método para la decodificación Modbus de solo escucha. Rúbrica: 3 = todos los campos rellenados de forma segura; 2 = falta uno; 1 = incluye escrituras/exploits; 0 = nada.
+- **EX071 — Secuencia.** ¿Qué tiene de malo el descubrimiento antes de un permiso de trabajo firmado? Rúbrica: 3 = pruebas no autorizadas; 2 = proceso vago; 1 = «orden incorrecto»; 0 = nada.
+- **EX072 — Terminado.** Enumere cuatro artefactos que cierran un método de revisión de zonificación. Rúbrica: 3 = cuatro concretos; 2 = dos; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+Los métodos están autorizados, tienen ficha y están terminados cuando existen los artefactos.
+
+### Siga estudiando — capítulo 24 de 50
+
+[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](../../en/book/MANUSCRIPT.md#ch-25)
 
 <a id="worked-results"></a>
 
@@ -1284,6 +1637,42 @@ Respuestas modelo para EX001–EX150. Ashford Batch Plant, Lena Okafor, el CNHP 
 **EX053.** Los datos de recetas salen de la vía controlada de TO/TI hacia una cuenta personal no autorizada, lo que rompe la confidencialidad y la conservación.
 
 **EX054.** Las pruebas usaron un entorno sintético que refleja la configuración de ABP; los resultados respaldan afirmaciones sobre esa configuración bajo el permiso de trabajo, no sobre el comportamiento del proceso en servicio ni sobre los datos de producción.
+
+**EX055.** ¿Cuentas nominales o compartidas? ¿Locales o de directorio? ¿Pertenencia al grupo de administradores? ¿Último cambio de contraseña? ¿Procedimiento de emergencia? ¿Grabación de sesiones en los servidores de salto?
+
+**EX056.** Vuelva a exportar desde el dispositivo o restaure la copia sellada; vuelva a verificar los hashes; compruebe quién escribió después de la hora del sellado; abra un hallazgo de proceso sobre ediciones no controladas.
+
+**EX057.** Los secretos de planta y de ingeniería nunca se pegan en tickets, chat ni git; los tickets guardan solo un identificador de referencia de la bóveda y la marca de tiempo de la última rotación.
+
+**EX058.** Ejemplo: orientación de seguridad de ICS con SP 800-82; zonas/conductos/SL con 62443; vocabulario de técnicas con ATT&CK ICS; detalles de los códigos de función con Modbus Application Protocol.
+
+**EX059.** Diseñar y operar un programa autorizado de bastionado de la red de control que aplique zonas y listas de permitidos, mida la detección con honestidad y nunca ponga en peligro la seguridad de procesos ni exceda el permiso de trabajo firmado.
+
+**EX060.** Exploits operativos contra PLC; escanear plantas en servicio sin permiso de trabajo; exportar la genealogía de lotes propietarios a los laboratorios; desactivar el SIS para facilitar una prueba.
+
+**EX061.** Funcional: «Ninguna exportación del cortafuegos deberá contener un camino de L4 a L1-SIS; se verifica mediante la integración continua de alcanzabilidad». Seguridad funcional: «Si la política no puede cargarse, el punto de aplicación deberá denegar las sesiones nuevas y generar una alarma en menos de 30 s».
+
+**EX062.** Dado que la ruta de la lista de permitidos está configurada pero falta el archivo; Cuando se produce cualquier llamada a permit(); Entonces el resultado es DENY con el motivo policy-unavailable y se dispara una alerta; no se reenvía ninguna trama de escritura.
+
+**EX063.** Conflicto: los operadores quieren visualizar directamente de L4 a L2; seguridad funcional y de la información no quieren ninguna arista de L4 a L2. Regla elegida: visualización solo a través de la réplica del historiador en L3.5; regla directa prohibida; el acceso de emergencia se documenta aparte.
+
+**EX064.** Las ediciones en el sitio borran qué conductos estaban vigentes en el instante t; el versionado permite que un hallazgo apunte al conjunto de reglas que estaba autorizado cuando se hizo la observación.
+
+**EX065.** Volver a calcular el hash detecta los cambios; los archivos idénticos se fusionan; los tickets referencian bytes inmutables.
+
+**EX066.** Rechazar los títulos que coincidan con patrones de asignación de contraseñas o con secretos de alta entropía; los revisores siguen comprobando; solo referencias a la bóveda en los metadatos de la evidencia.
+
+**EX067.** Despliegue con la ruta de la lista de permitidos apuntando a un montaje vacío; llame a permit(); espere DENY policy-unavailable y una alerta; no se reenvía ninguna trama.
+
+**EX068.** Cada evento de denegación guarda el identificador del actor autenticado y la versión de la política; el almacenamiento es de solo anexado; los borrados exigen doble control de emergencia.
+
+**EX069.** El STRIDE del programa protege la integridad de la evaluación y la seguridad de procesos; los módulos de explotación aumentan el daño de doble uso y violan el límite del curso: no son mitigaciones.
+
+**EX070.** Nombre: decodificación Modbus de solo escucha. Propósito: verificar las decisiones de la lista de permitidos. Privilegio: acceso a la derivación, sin inyección. Ruidoso: bajo. Impacto: solo latencia. Parada: tiempo de ciclo >50 ms o alarma de proceso. Artefactos: tabla de decisiones, hash de configuración, registro del tiempo de ciclo.
+
+**EX071.** Las acciones sin un permiso de trabajo firmado no están autorizadas; es un fallo legal, ético y de seguridad de procesos, sea cual sea la intención.
+
+**EX072.** Hash del diagrama de zonas actualizado; informe de alcanzabilidad; hash de la exportación del cortafuegos; borradores de hallazgos o un «ninguno encontrado» explícito con nota de cobertura.
 
 <a id="references"></a>
 
