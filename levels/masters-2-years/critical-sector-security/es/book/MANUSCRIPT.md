@@ -42,7 +42,7 @@ Cada enunciado factual sobre una ley, una norma, un incidente público o un estu
 ## Contenido
 
 1. [Pregunta de investigación y método de revisión de la literatura](#ch-01) — del tema a una pregunta respondible, alcance de la afirmación, búsqueda documentada entre disciplinas y en la literatura gris, deduplicación, cribado doble y la matriz de conceptos.
-2. [Infraestructura crítica y seguridad sectorial: seminario avanzado](../../en/book/MANUSCRIPT.md#ch-02) — perfiles sectoriales y unidades de consecuencia, lo que los catálogos públicos de incidentes pueden y no pueden decirle, lectura y presentación de un artículo sectorial y casos documentados cuyo primer relato fue revisado.
+2. [Infraestructura crítica y seguridad sectorial: seminario avanzado](#ch-02) — perfiles sectoriales y unidades de consecuencia, lo que los catálogos públicos de incidentes pueden y no pueden decirle, lectura y presentación de un artículo sectorial y casos documentados cuyo primer relato fue revisado.
 3. [Diseño del estudio, ética y reproducibilidad](../../en/book/MANUSCRIPT.md#ch-03) — elección entre diseños cuasiexperimentales y cualitativos, análisis del diseño antes de los datos, revisión ética, protección de datos y sensibilidad de la información de infraestructura, y un proyecto reproducible.
 4. [Infraestructura crítica y seguridad sectorial: explicaciones rivales](../../en/book/MANUSCRIPT.md#ch-04) — múltiples hipótesis de trabajo, diagramas causales, regiones de comparación, controles negativos, pruebas placebo y dosis-respuesta como evidencia discriminante.
 5. [Propuesta y piloto](../../en/book/MANUSCRIPT.md#ch-05) — la propuesta como contrato, cronograma y registro de riesgos, acuerdos de acceso a datos, pilotos de viabilidad con criterios de continuar o no continuar declarados de antemano y una auditoría de los datos del piloto.
@@ -336,7 +336,219 @@ Una tesis se sostiene sobre su pregunta. Pase del tema al problema y a la pregun
 <!-- cyberabc:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 08
 
-[← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](../../en/book/MANUSCRIPT.md#ch-02)
+[← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-02"></a>
+
+## Capítulo 2 — Infraestructura crítica y seguridad sectorial: seminario avanzado
+
+### Resultados de aprendizaje y conexión
+
+Al final de este capítulo, el estudiante será capaz de:
+
+1. Describir, para cada sector principal, su unidad de consecuencia característica, sus reservas, los instrumentos que lo rigen y la evidencia que un investigador de maestría puede obtener de forma realista.
+2. Distinguir las **cascadas de dependencias** (un proveedor falla y sus dependientes fallan cuando se agotan sus reservas) del **desbordamiento por transferencia de carga** (los pares absorben la demanda de una unidad que falló), y reconocer cuál mide un estudio.
+3. Tratar los catálogos públicos de incidentes como datos con un proceso de selección y cuantificar cómo una divulgación que aumenta con la gravedad infla la gravedad aparente y cómo un cambio en las reglas de notificación crea una tendencia espuria.
+4. Codificar incidentes cuyo primer relato público se revisó después, sin repetir el primer relato ni borrarlo.
+5. Leer un artículo sectorial con un protocolo crítico fijo y presentarlo en un seminario de modo que la discusión trate de la evidencia y no de opiniones.
+
+Este capítulo amplía el mapa de la evidencia construido en el capítulo 1 de un sector al campo entero. El [capítulo sobre la frontera de la investigación](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md#ch-02) del libro doctoral recorre las normas como hipótesis y las familias de modelos de interdependencia; este seminario no repite ese recorrido. Se concentra en lo que necesita un investigador principiante: en qué se diferencian los sectores en las consecuencias que producen y en la evidencia que dejan, cómo leer la evidencia que existe y cómo discutirla con los pares.
+
+### 2.1 Para qué sirve el seminario
+
+Un seminario de investigación entrena tres hábitos que una tesis necesita y que las clases magistrales no entrenan: leer un artículo por lo que puede respaldar, presentar con justicia el trabajo de otra persona antes de criticarlo y aceptar la crítica de la propia lectura. Cada sesión de este curso sigue el mismo protocolo, que usted reutilizará al redactar la revisión de la literatura del capítulo 7:
+
+1. **Afirmación.** ¿Qué afirma el artículo y con qué alcance? Cite la frase.
+2. **Evidencia.** ¿Qué datos, de qué unidades y durante qué periodo?
+3. **Garantía.** ¿Por qué esa evidencia respalda esa afirmación? ¿Qué lógica de diseño las conecta?
+4. **Rivales.** ¿Qué otra cosa podría haber producido la misma evidencia? ¿Qué rivales aborda el artículo y cómo?
+5. **Transferencia.** ¿A qué otras unidades, sectores o jurisdicciones podría aplicarse el resultado y en qué condiciones?
+6. **Y qué.** ¿Qué decisión o estudio posterior informa?
+7. **Siguiente estudio.** ¿Qué estudio reduciría más la incertidumbre restante?
+
+El presentador responde las preguntas 1–3 y 5–6 en los términos del propio artículo y abre después la 4 y la 7 al grupo. La crítica de un artículo publicado no es un veredicto sobre sus autores; la mayoría de las limitaciones se derivan de los datos que existían.
+
+### 2.2 Perfiles sectoriales
+
+Los sectores se diferencian en lo que se pierde, con qué rapidez y para quién, en quién los regula y en qué evidencia llega al registro público. Los siguientes perfiles son un punto de partida; cada instrumento se cita con su versión y su fecha y debe verificarse de nuevo antes de basarse en él.
+
+| Sector | Unidad de consecuencia típica | Reservas principales | Ejemplos de instrumentos que lo rigen | Evidencia que un estudiante de maestría suele poder obtener | Caso público tratado en este libro |
+|---|---|---|---|---|---|
+| Salud | Pacientes retrasados, desviados o dañados; procedimientos y citas aplazados | Procedimientos de funcionamiento sin sistemas, registros en papel, personal, ayuda mutua regional, capacidad de otros hospitales | Los [HPH Cybersecurity Performance Goals](https://hphcyber.hhs.gov/performance-goals.html) de EE. UU. (voluntarios, enero de 2024); la salud es un sector de [NIS2](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/) en la UE | Datos agregados de actividad (con aprobación), declaraciones públicas, auditorías, entrevistas | Dameff et al. (2023); WannaCry y el NHS; Synnovis (2024); Change Healthcare (2024) |
+| Energía — electricidad | Clientes y horas-cliente sin suministro; cargas críticas perdidas | Generadores, almacenamiento, operación manual, maniobras de conmutación | [Normas NERC CIP](https://www.nerc.com/pa/Stand/Pages/CIPStandards.aspx) (obligatorias para el sistema eléctrico de transmisión de América del Norte); sector energético de NIS2 | Estadísticas de interrupciones, informes públicos posteriores a la acción; rara vez datos operativos | Ucrania 2015 (véase el libro doctoral, capítulo 1) |
+| Energía — petróleo y gas, oleoductos | Producto no entregado; escasez de suministro | Inventarios, transporte alternativo | Directivas de seguridad de oleoductos emitidas por la Transportation Security Administration de EE. UU. tras Colonial Pipeline, según describe [CISA (2023)](https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years) | Cronologías públicas, informes de situación de organismos energéticos, datos de precios y suministro | Colonial Pipeline (2021) |
+| Agua | Personas sin agua segura o sin presión; avisos emitidos | Almacenamiento, dosificación manual, interconexiones | La [America's Water Infrastructure Act of 2018](https://www.epa.gov/waterresilience/americas-water-infrastructure-act-2018-risk-assessments-and-emergency-response-plans) de EE. UU., que exige a los sistemas comunitarios de agua que abastecen a más de 3300 personas completar evaluaciones de riesgo y resiliencia y planes de respuesta a emergencias | Avisos, resúmenes de reguladores, encuestas a empresas pequeñas | Oldsmar (2021) y su revisión posterior |
+| Finanzas | Transacciones no procesadas; liquidación retrasada; clientes que no pueden pagar | Procesamiento manual, sitios de respaldo, canales de pago alternativos | El [Reglamento de Resiliencia Operativa Digital de la UE, Reglamento (UE) 2022/2554](https://eur-lex.europa.eu/eli/reg/2022/2554/oj); la [guía CPMI–IOSCO](https://www.bis.org/cpmi/publ/d146.htm) (junio de 2016) para las infraestructuras del mercado financiero | Publicaciones de supervisión, estadísticas agregadas; casi nunca datos de empresas | La interrupción de pagos y reclamaciones de Change Healthcare (2024), donde se encuentran la salud y las finanzas |
+| Comunicaciones y TI compartida | Usuarios u organizaciones sin servicio; servicios dependientes degradados | Enlaces redundantes, procedimientos de contingencia | Reglas de telecomunicaciones específicas del sector; los [CPG de CISA](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals), intersectoriales | Declaraciones de proveedores, informes de interrupciones | La actualización defectuosa de software de seguridad de julio de 2024 (no maliciosa) |
+| Servicios públicos y de emergencia | Llamadas no atendidas, respuestas retrasadas | Centros de despacho vecinos, despacho manual | Reglas nacionales de comunicaciones de emergencia; [CER](https://eur-lex.europa.eu/eli/dir/2022/2557/oj) y NIS2 en la UE | Agregados de despacho y de EMS, informes posteriores a la acción | Desvío del EMS del condado comunicado por Dameff et al. (2023) |
+
+Dos rasgos de la tabla importan para el diseño de la investigación. Primero, la **unidad de consecuencia** difiere según el sector, de modo que un estudio intersectorial que compara el «impacto» sin una unidad común está comparando cosas inconmensurables; elija una unidad funcional común (personas sin un servicio durante un tiempo enunciado) o manténgase dentro de un sector. Segundo, la **disponibilidad de la evidencia** está inversamente relacionada con la sensibilidad: los sectores cuyos datos operativos responderían a las mejores preguntas son los que tienen menos probabilidades de divulgarlos. Un proyecto de maestría realista elige una pregunta que puedan responder datos agregados, públicos o consentidos.
+
+### 2.3 Cómo los incidentes sectoriales se vuelven regionales
+
+#### 2.3.1 Dos mecanismos de propagación
+
+El libro doctoral modela las **cascadas de dependencias**: un proveedor falla y cada dependiente falla cuando se agota su reserva; un hospital pierde la presión del agua horas después de que una planta de tratamiento pierda la electricidad. El Estudio de Desbordamiento mide un mecanismo distinto, el **desbordamiento por transferencia de carga**: una unidad falla o se retira y su demanda pasa a pares que no fallaron. Las ambulancias desviadas de Kestrel llegan a Alder Point; los pacientes que no pueden obtener un medicamento en una farmacia van a otra; los clientes de un procesador de pagos caído hacen cola en los bancos. La transferencia de carga suele ser más rápida que una cascada de dependencias (empieza en cuanto la unidad se retira) y está limitada por la **capacidad sobrante** de los pares y no por las reservas.
+
+| Rasgo | Cascada de dependencias | Desbordamiento por transferencia de carga |
+|---|---|---|
+| Trayectoria | Proveedor → dependiente | Unidad que falló → pares |
+| Momento | Después de agotarse la reserva del dependiente | Inmediatamente tras la retirada |
+| Factor limitante | Tamaño de la reserva y tiempo de restablecimiento | Capacidad sobrante de los pares y distancia |
+| Medición típica | Tiempo hasta el impacto, horas de servicio perdidas | Demanda excedente en los pares, tiempos de espera, rechazos |
+| Ejemplo en fuentes públicas | La parada de Colonial Pipeline y sus efectos en la distribución de combustible ([Departamento de Energía de EE. UU.](https://www.energy.gov/ceser/colonial-pipeline-cyber-incident)) | Aumento del volumen en los SU adyacentes a un sistema atacado ([Dameff et al., 2023](https://doi.org/10.1001/jamanetworkopen.2023.12270)) |
+
+Los eventos reales suelen implicar ambos. Durante el ataque de ransomware contra el laboratorio de patología Synnovis en junio de 2024, la dependencia eran los servicios de laboratorio de los que dependían los hospitales; [NHS England informó](https://www.england.nhs.uk/london/2024/06/14/update-on-cyber-incident-clinical-impact-in-south-east-london-friday-14-june-2024/) de que en la primera semana (3–9 de junio) el King's College Hospital y Guy's and St Thomas' aplazaron 814 procedimientos programados y 861 citas ambulatorias hospitalarias y comunitarias, y el trabajo se redirigió a otros proveedores: transferencia de carga. Una tesis debe nombrar qué mecanismo mide, porque el diseño, el resultado y las implicaciones de política difieren.
+
+#### 2.3.2 Concentración y servicios compartidos
+
+Cuando muchas organizaciones dependen de un mismo proveedor de servicios, un incidente en el proveedor se vuelve simultáneo en todas ellas. La [encuesta de la AHA](https://www.aha.org/2024-03-15-aha-survey-change-healthcare-cyberattack-significantly-disrupts-patient-care-hospitals-finances) a casi 1000 hospitales en marzo de 2024 informó de que el 94 % sufrió un impacto financiero por el ciberataque contra Change Healthcare, que interrumpió el procesamiento de reclamaciones y pagos. Un ejemplo no malicioso ilustra el mismo punto estructural: Microsoft [estimó](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/) que una actualización defectuosa de software de seguridad en julio de 2024 afectó a 8,5 millones de dispositivos Windows —menos del uno por ciento de todas las máquinas Windows—, pero interrumpió servicios de forma generalizada porque las máquinas afectadas se concentraban en empresas que operan servicios críticos. Para los investigadores, los incidentes de concentración son experimentos naturales con muchas unidades expuestas simultáneamente, pero puede no existir un grupo de comparación no expuesto del mismo tipo.
+
+### 2.4 Los catálogos públicos de incidentes son muestras, no poblaciones
+
+La mayor parte de la evidencia intersectorial proviene de catálogos compilados a partir de informes públicos: noticias, notificaciones regulatorias de brechas, declaraciones de empresas y avisos de organismos. [Neprash et al. (2022)](https://doi.org/10.1001/jamahealthforum.2022.4873) construyeron una base de datos de este tipo para los ataques de ransomware contra organizaciones prestadoras de atención sanitaria de EE. UU. e informaron de 374 ataques entre 2016 y 2021, un recuento anual que más que se duplicó, de 43 a 91, y de interrupción operativa en el 44,4 % de los ataques, incluido el desvío de ambulancias en 16 (4,3 %). Los autores presentan sus recuentos como ataques que llegaron a conocerse públicamente. Ese encuadre importa, porque el contenido de un catálogo está moldeado por dos procesos que no tienen nada que ver con la incidencia verdadera:
+
+1. **Divulgación dependiente de la gravedad.** Las interrupciones largas y visibles tienen más probabilidades de comunicarse que las cortas absorbidas internamente. La gravedad media del catálogo es, por tanto, mayor que la de la población.
+2. **Cambios en las reglas de notificación y en la atención.** Una nueva obligación de notificar, un cambio en la práctica de publicación de un regulador o un aumento de la atención mediática incrementan la fracción de incidentes que se hacen públicos. Los recuentos suben aunque la incidencia no lo haga.
+
+Ninguno de los dos procesos hace inútiles los catálogos. Los hacen adecuados para algunas preguntas (qué tipos de interrupción han ocurrido; qué características aparecen entre los eventos comunicados; cómo cambiaron los eventos comunicados tras una regla) e inadecuados para otras (con qué frecuencia ocurren los incidentes; qué gravedad tiene un incidente típico; si la incidencia está aumentando), salvo que se modele el proceso de divulgación. El laboratorio 2 muestra el tamaño de ambas distorsiones en una población sintética.
+
+### 2.5 Cuando se revisa el primer relato
+
+Los registros públicos de incidentes de infraestructura se revisan a medida que avanzan las investigaciones. Dos casos documentados muestran por qué un investigador debe registrar **qué se afirmó, quién lo afirmó, cuándo y cómo se revisó después**.
+
+- **Oldsmar, Florida, febrero de 2021.** Las primeras declaraciones públicas describieron a un intruso remoto que elevaba el punto de consigna de hidróxido de sodio en una planta de tratamiento de agua, y CISA emitió un aviso conjunto, [AA21-042A, "Compromise of U.S. Water Treatment Facility"](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-042a). En abril de 2023, quien era entonces administrador de la ciudad dijo que el FBI había concluido que el incidente probablemente lo causó un empleado, y un portavoz del FBI dijo que la investigación «no pudo confirmar que este incidente se iniciara por una intrusión cibernética dirigida» ([WUSF, 13 de abril de 2023](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021)). El incidente sigue apareciendo en muchas listas de ciberataques contra el sector del agua.
+- **Düsseldorf, Alemania, septiembre de 2020.** Un ataque de ransomware interrumpió el hospital universitario, una paciente fue trasladada a un hospital más distante y murió, y la fiscalía abrió una investigación por homicidio imprudente que atrajo la atención mundial como posiblemente la primera muerte causada por ransomware. En noviembre de 2020, la fiscalía concluyó que el retraso no fue decisivo para el desenlace ([MIT Technology Review, 12 de noviembre de 2020](https://www.technologyreview.com/2020/11/12/1012015/ransomware-did-not-kill-a-german-hospital-patient/)).
+
+Ninguna de las dos revisiones muestra que el riesgo subyacente sea imaginario. Ambas muestran que un catálogo que codifica el primer relato como un hecho —«intrusión cibernética en una planta de agua», «muerte causada por ransomware»— contiene errores que se propagan a todo análisis que lo use. Un esquema de codificación sólido almacena, para cada incidente, la afirmación, su fuente, el tipo de fuente (oficial, empresa, medios), la fecha de la afirmación, el estado actual (confirmado, disputado, revisado, desconocido) y la fecha de la última comprobación. Una fuente secundaria que repite el primer relato no es una confirmación independiente de él.
+
+### 2.6 Leer un artículo sectorial: un seminario resuelto
+
+El protocolo del seminario (§2.1) aplicado a [Dameff et al. (2023)](https://doi.org/10.1001/jamanetworkopen.2023.12270), usando solo lo que afirman el resumen y el artículo publicados:
+
+1. **Afirmación.** Los hospitales adyacentes a organizaciones prestadoras de atención sanitaria atacadas con ransomware «pueden ver aumentos del censo de pacientes y pueden sufrir limitaciones de recursos que afecten a la atención sensible al tiempo», y esos ataques deberían considerarse un desastre regional.
+2. **Evidencia.** Dos SU urbanos académicos del condado de San Diego; 19 857 visitas a los SU; tres fases de cuatro semanas en torno a un ataque contra otra organización que empezó el 1 de mayo de 2021: antes (3–30 de abril), ataque y recuperación (1–28 de mayo), después (29 de mayo–25 de junio). La organización atacada representaba alrededor de una cuarta parte de las altas hospitalarias de la región.
+3. **Garantía.** Si nada más cambió entre fases, las diferencias entre fases están asociadas con el ataque.
+4. **Rivales (para el grupo).** El cambio estacional de abril a junio; la evolución de la situación de la COVID-19 en la primavera de 2021; otros eventos regionales; muchos resultados comparados, lo que aumenta la probabilidad de que algunas diferencias surjan por azar. El diseño compara fases dentro de los mismos SU; no incluye una región de comparación no afectada, que es la principal aportación que podría hacer un estudio de seguimiento.
+5. **Transferencia.** A regiones donde una organización concentra una gran parte de la capacidad, de modo que su retirada desplaza una carga considerable; menos a regiones con muchos proveedores pequeños.
+6. **Y qué.** La planificación regional ante ciberdesastres, la ayuda mutua y los protocolos de desvío del EMS —la conclusión del propio artículo— y el argumento para medir los efectos regionales en otros eventos.
+7. **Siguiente estudio.** Un diseño controlado: los mismos resultados en SU comparables no afectados durante las mismas semanas, más un gradiente de distancia. Ese es el diseño del Estudio de Desbordamiento.
+
+Fíjese en el tono. El artículo hizo la primera medición publicada de un efecto regional; la crítica del seminario identifica lo que puede añadir un estudio *siguiente*, no lo que los autores «hicieron mal».
+
+### 2.7 Presentar en el seminario
+
+Una presentación de diez minutos tiene una forma fija: una diapositiva para la pregunta y por qué importa; una para el diseño (unidades, exposición, comparación, resultado, periodo); una para el resultado principal en palabras de los autores, con su incertidumbre; una para lo que el diseño descarta y lo que deja abierto; una para el siguiente estudio. Ponga los rivales en la diapositiva como preguntas, no como acusaciones. Cuando le pregunten, separe tres tipos de respuesta: «el artículo dice…», «yo infiero…» y «no lo sé; haría falta…». Los mismos tres registros le servirán en la defensa oral (capítulo 8).
+
+### 2.8 Ejemplo resuelto: una contradicción aparente (ejercicio de seminario)
+
+En el seminario, un participante objeta: «Ghafur et al. encontraron que WannaCry *redujo* la actividad hospitalaria y el NHS no vio ningún aumento de las muertes; Dameff et al. encontraron que el ransomware *aumentó* la actividad. La evidencia se contradice». El seminario lo resuelve con la matriz de conceptos:
+
+| Dimensión | [Ghafur et al., 2019](https://doi.org/10.1038/s41746-019-0161-6) | [Dameff et al., 2023](https://doi.org/10.1001/jamanetworkopen.2023.12270) |
+|---|---|---|
+| Unidades medidas | *Trusts* infectados (y todos los *trusts*) | SU no afectados adyacentes a la organización atacada |
+| Dirección esperada | Las unidades infectadas hacen menos (citas canceladas, menos ingresos) | Los vecinos absorben la demanda desplazada |
+| Sistema de salud | NHS de Inglaterra, mayo de 2017 | Condado de San Diego, mayo de 2021 |
+| Duración | Una semana de interrupción aguda | Ataque y recuperación de un mes |
+| Resultado de daño | Muertes en A&E: ningún cambio detectable, descrito por los autores como una medida tosca | Indicadores de atención del ictus y tiempos de proceso |
+
+Los hallazgos son complementarios: la actividad de una unidad atacada cae y la de sus vecinos sube. Juntos sugieren el mecanismo del Estudio de Desbordamiento. El resultado de «ningún cambio en la mortalidad» tampoco es evidencia de ausencia de daño; es la ausencia de un cambio detectado en un resultado tosco durante una semana. La [investigación de la NAO](https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/) añade alcance: al menos 81 de 236 *trusts* de Inglaterra se vieron afectados, junto con 603 organizaciones de atención primaria y otras del NHS, y NHS England registró 6912 citas canceladas, aunque estimó que se cancelaron más de 19 000 en total; un recordatorio de que los recuentos registrados y los totales estimados son cantidades distintas.
+
+### 2.9 Actividad práctica: lo que un catálogo hace a la gravedad y a la tendencia
+
+El laboratorio crea una población sintética de 2400 incidentes que interrumpen servicios, 400 por año durante seis años, de modo que la incidencia verdadera es constante. Las duraciones de las interrupciones son log-normales con una mediana de 6 horas. Cada incidente se divulga con una probabilidad que aumenta con la duración (50 % a las 24 horas), y una obligación de notificar a partir del año 4 multiplica la divulgación por 1,8.
+
+```python
+# Lab 2 - what a public incident catalogue does to severity and trend (offline, standard library only)
+# Synthetic population of service-disrupting incidents over six years. Each has an outage duration (hours).
+# Disclosure probability rises with duration; a reporting mandate raises disclosure from year 4.
+import math, random
+
+rng = random.Random(42)
+TRUE_PER_YEAR = 400                      # constant true incidence: there is NO real trend
+
+def p_report(hours, year):
+    base = 1 / (1 + math.exp(-(math.log(hours) - math.log(24)) * 1.5))   # 50% at 24 h
+    return min(1.0, base * (1.0 if year < 4 else 1.8))                   # mandate from year 4
+
+pop = []
+for year in range(1, 7):
+    for _ in range(TRUE_PER_YEAR):
+        hours = rng.lognormvariate(math.log(6), 1.2)                       # median 6 h
+        pop.append((year, hours, rng.random() < p_report(hours, year)))
+
+def summary(rows):
+    h = sorted(r[1] for r in rows)
+    n = len(h)
+    med = h[n // 2] if n % 2 else (h[n // 2 - 1] + h[n // 2]) / 2
+    return n, sum(h) / n, med, sum(x > 24 for x in h) / n
+
+print("set           n     mean_h  median_h  share>24h")
+for label, rows in (("population", pop), ("catalogue", [r for r in pop if r[2]])):
+    n, mean, med, big = summary(rows)
+    print(f"{label:12} {n:5d}  {mean:7.1f}  {med:8.1f}  {big:9.2f}")
+print("year  true  catalogued")
+for y in range(1, 7):
+    print(f"{y:4d}  {sum(r[0] == y for r in pop):4d}  {sum(r[0] == y and r[2] for r in pop):10d}")
+```
+
+Salida esperada:
+
+```text
+set           n     mean_h  median_h  share>24h
+population    2400     12.8       6.1       0.13
+catalogue      646     29.2      18.4       0.40
+year  true  catalogued
+   1   400          99
+   2   400          73
+   3   400          90
+   4   400         125
+   5   400         133
+   6   400         126
+```
+
+Lea ambas tablas. La interrupción media del catálogo (29,2 h) es más del doble de la de la población (12,8 h); su mediana es tres veces mayor; y la proporción de incidentes de más de 24 horas sube del 13 % al 40 %. Un estudio que describiera los incidentes «típicos» a partir del catálogo los exageraría mucho. Los recuentos anuales muestran un salto de unos 87 por año a unos 128 por año tras la obligación: un «aumento» del 47 % en una población cuya incidencia nunca cambió. Un análisis honesto de un catálogo se limita a preguntas que la selección no distorsiona, modela el proceso de divulgación con supuestos enunciados o usa un denominador externo (por ejemplo, todos los incidentes notificados en virtud de una obligación cuya exhaustividad se conoce).
+
+### 2.10 Errores habituales y límites
+
+- Comparar el «impacto» entre sectores sin una unidad de consecuencia común.
+- Confundir las cascadas de dependencias con el desbordamiento por transferencia de carga y, por tanto, medir el resultado equivocado.
+- Tratar los recuentos de un catálogo público como incidencia, o los promedios del catálogo como gravedad típica.
+- Interpretar un aumento de los incidentes notificados tras una obligación como un aumento de los ataques.
+- Codificar un relato público temprano como un hecho y no volver a revisarlo nunca.
+- Tratar una fuente secundaria que repite un primer relato como confirmación independiente.
+- Criticar un artículo por no hacer lo que sus datos nunca podrían respaldar, en lugar de identificar el siguiente estudio.
+- Tratar «ningún cambio detectado» en un resultado tosco como evidencia de ausencia de efecto.
+
+El límite de un seminario es que solo lee lo que se publicó. La evidencia no publicada —incidentes nunca divulgados, datos operativos nunca liberados— queda fuera de él, y el seminario debe decirlo en lugar de suponer que el registro publicado está completo.
+
+### Ejercicios — capítulo 2
+
+**EX008 — Perfil sectorial.** *Objetivo:* perfilar un sector como contexto de investigación. *Entradas:* la tabla del §2.2. *Restricciones:* elija un sector distinto de la salud; cite al menos dos fuentes primarias para sus instrumentos y un caso público documentado. *Pasos:* (1) defina la unidad de consecuencia; (2) enumere las reservas; (3) nombre los instrumentos que lo rigen con su versión y su fecha; (4) enumere la evidencia que un estudiante de maestría podría obtener legalmente; (5) proponga una pregunta respondible que esta evidencia pueda respaldar. *Evidencia esperada:* perfil de una página. *Rúbrica:* 3 = unidad de consecuencia precisa, instrumentos citados con exactitud, evidencia realista, pregunta ajustada a la evidencia; 2 = un elemento vago; 1 = sin citas; 0 = nada.
+
+**EX009 — Distorsión del catálogo.** *Objetivo:* separar el sesgo de tendencia que crea una obligación de notificar del sesgo de gravedad que crea la divulgación selectiva en un catálogo de incidentes. *Entradas:* el código del laboratorio 2. *Restricciones:* sin conexión; no cambie la semilla. *Pasos:* (1) ejecute el laboratorio y anote la salida; (2) fije el multiplicador de la obligación en 1.0 e informe la media, la mediana, la proporción por encima de 24 horas y los recuentos anuales del catálogo; (3) explique por qué la distorsión de la gravedad persiste sin la obligación; (4) proponga una pregunta que este catálogo *sí* puede responder sin modelar la divulgación. *Evidencia esperada:* salidas y dos párrafos. *Rúbrica:* 3 = salidas correctas, distorsión de la gravedad atribuida a la divulgación dependiente de la gravedad, distorsión de la tendencia atribuida a la obligación, una pregunta respondible y defendible; 2 = falta una explicación; 1 = no ejecutado; 0 = nada.
+
+**EX010 — Protocolo del seminario.** *Objetivo:* aplicar el protocolo de siete preguntas. *Entradas:* [Ghafur et al. (2019)](https://doi.org/10.1038/s41746-019-0161-6). *Restricciones:* use solo lo que afirma el artículo; cite su afirmación. *Pasos:* responda las siete preguntas del §2.1; señale qué rivales aborda el artículo y cómo. *Evidencia esperada:* una página. *Rúbrica:* 3 = afirmación citada, diseño descrito con exactitud (fuente de datos, comparación, resultados), rivales concretos, siguiente estudio factible; 2 = una pregunta pobre; 1 = opinión en lugar de evidencia; 0 = nada.
+
+**EX011 — Clasificación de mecanismos.** *Objetivo:* distinguir los mecanismos de propagación. *Entradas:* (a) la parada de Colonial Pipeline y sus efectos en el suministro de combustible (página del DOE); (b) Synnovis y los procedimientos aplazados (NHS England); (c) Change Healthcare y la liquidez de los hospitales (AHA); (d) el desvío de Kestrel y las llegadas a Alder Point (sintético). *Restricciones:* use el §2.3.1. *Pasos:* clasifique cada uno como cascada de dependencias, desbordamiento por transferencia de carga o ambos; nombre la unidad de consecuencia; nombre el factor limitante. *Evidencia esperada:* tabla. *Rúbrica:* 3 = clasificaciones justificadas, «ambos» reconocido cuando la sustitución sigue a un fallo de dependencia, factores limitantes concretos; 2 = una clasificación errónea; 1 = sin justificación; 0 = nada.
+
+**EX012 — Codificar un incidente revisado.** *Objetivo:* diseñar una entrada de catálogo que sobreviva a la revisión. *Entradas:* las fuentes sobre Oldsmar del §2.5. *Restricciones:* como mínimo, los campos del §2.5. *Pasos:* (1) escriba la entrada tal como habría quedado en marzo de 2021; (2) actualícela a abril de 2023; (3) indique cómo debería tratar la entrada un análisis que cuente «intrusiones confirmadas en empresas de agua»; (4) indique cómo comprobaría el estado de la entrada antes de usarla en 2026. *Evidencia esperada:* dos entradas y un párrafo. *Rúbrica:* 3 = ambas entradas conservan la fuente, la fecha y el estado, regla de análisis explícita, procedimiento de nueva comprobación concreto; 2 = historial perdido en la actualización; 1 = la entrada afirma una causa; 0 = nada.
+
+**EX013 — Contradicción aparente.** *Objetivo:* resolver hallazgos que parecen contradictorios. *Entradas:* las afirmaciones «WannaCry redujo la actividad en los *trusts* infectados del NHS» y «el ransomware aumentó el volumen en los SU vecinos de San Diego». *Restricciones:* use una matriz de conceptos con al menos cinco dimensiones. *Pasos:* (1) construya la matriz; (2) indique si los hallazgos se contradicen; (3) indique qué estudio podría poner a prueba el mecanismo combinado. *Evidencia esperada:* matriz y párrafo. *Rúbrica:* 3 = unidades y dirección distinguidas, limitación de la medida de daño señalada, el estudio combinado mide tanto las unidades atacadas como las vecinas; 2 = falta una dimensión; 1 = afirma la contradicción; 0 = nada.
+
+**EX014 — Presentación en el seminario.** *Objetivo:* presentar un artículo con justicia. *Entradas:* un artículo sectorial publicado de su elección con un resultado cuantitativo. *Restricciones:* cinco diapositivas como en el §2.7; rivales planteados como preguntas. *Pasos:* (1) prepare las diapositivas; (2) escriba tres preguntas que espera y sus respuestas en los tres registros («el artículo dice», «yo infiero», «no lo sé; haría falta»); (3) tras presentar ante sus pares, registre un punto en el que cambió su lectura. *Evidencia esperada:* esquema de las diapositivas, hoja de preguntas y reflexión. *Rúbrica:* 3 = resumen justo antes de la crítica, rivales precisos, registros usados correctamente, reflexión honesta; 2 = la crítica precede al resumen; 1 = basada en opiniones; 0 = nada.
+
+### Síntesis del capítulo
+
+Los sectores se diferencian en lo que pierden, con qué rapidez y para quién; en quién los rige; y en qué evidencia llega a la vista del público. Elija una unidad de consecuencia común o manténgase dentro de un sector. Distinga las cascadas de dependencias del desbordamiento por transferencia de carga y mida el mecanismo que afirma. Los catálogos públicos son muestras moldeadas por la divulgación dependiente de la gravedad y por los cambios en las reglas de notificación: sus promedios exageran la gravedad típica y sus tendencias pueden ser artefactos. Los primeros relatos públicos se revisan —Oldsmar y Düsseldorf son ejemplos documentados—, así que codifique las afirmaciones con su fuente, su fecha y su estado, y vuelva a comprobarlas antes de usarlas. Lea los artículos con un protocolo fijo, resuma con justicia antes de criticar y convierta la crítica en el diseño del siguiente estudio.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Siga estudiando — capítulo 02 de 08
+
+[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](../../en/book/MANUSCRIPT.md#ch-03)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -372,6 +584,31 @@ El punto clave de la rúbrica es (b): la adopción de simulacros la eligen los h
 **EX006 — Matriz de conceptos.** Fila de la NAO: *unidad* — organizaciones del NHS en Inglaterra; *exposición* — WannaCry, mayo de 2017; *comparación* — ninguna en sentido estadístico; una investigación de lo que ocurrió y por qué; *resultados* — al menos 81 de 236 *trusts* afectados, más 603 organizaciones de atención primaria y otras del NHS (entre ellas 595 consultorios de medicina general); 6912 citas registradas como canceladas y más de 19 000 estimadas en total; *diseño* — investigación de auditoría; *respalda* — la escala de la interrupción y la brecha entre las cancelaciones registradas y las estimadas; *rivales planteados o abiertos* — registro incompleto; desconexión preventiva de organizaciones no afectadas. Párrafo modelo: «La evidencia sobre los efectos regionales proviene de tres tipos de estudio. Las investigaciones de auditoría (NAO, 2017) establecen la escala de la interrupción, pero se basan en recuentos registrados que subestiman los totales. Los análisis de datos administrativos (Ghafur et al., 2019) cuantifican la reducción de la actividad en los *trusts* infectados —alrededor de un 6 % menos de ingresos por hospital infectado y por día— y no encuentran diferencias en las muertes en A&E, una medida que los autores califican de tosca. Un estudio antes-después de SU vecinos (Dameff et al., 2023) asocia un periodo de ataque con un aumento del volumen en vecinos no afectados. Ningún estudio compara todavía a los vecinos con una región no afectada ni examina la distancia…». La rúbrica premia la distinción entre lo registrado y lo estimado y la organización por concepto.
 
 **EX007 — Memorando de estimando y alcance.** Estimando de PI1: «Para cada uno de Alder Point, Brookfield y Calloway: exp(β₂) − 1, la diferencia porcentual entre la media diaria de llegadas de ambulancias durante los días 0–20 y las llegadas esperadas a partir de la tendencia previa al evento del SU ajustada por el cambio simultáneo en las llegadas agrupadas de Wexmoor». PI2: «el patrón de estas tres estimaciones frente a la distancia, resumido como la diferencia entre la estimación del SU más cercano y la media de las estimaciones de los dos SU más distantes, con intervalos». Estimandos alternativos que podría calcular un analista descuidado: el aumento del primer día (solo capta el choque inicial); el aumento respecto a los mismos días del año pasado (confundido por un año de tendencia y una estación distinta); el número total de pacientes adicionales en 21 días (otra escala, sensible al tamaño de la línea base). Afirmación esperada como en el §1.2.1; fuera del alcance: los resultados en pacientes, el efecto del ransomware como algo distinto del desvío, otras regiones.
+
+### Capítulo 2: EX008–EX014
+
+**EX008 — Perfil sectorial (ejemplo: agua).** Unidad de consecuencia: personas abastecidas por un sistema sin agua que cumpla un umbral enunciado de presión o de calidad, durante un tiempo enunciado, y el número y la duración de los avisos. Reservas: almacenamiento, dosificación y vigilancia manuales, interconexiones con sistemas vecinos, distribución de agua embotellada. Instrumentos: la America's Water Infrastructure Act of 2018 (evaluaciones de riesgo y resiliencia y planes de respuesta a emergencias para los sistemas comunitarios de agua que abastecen a más de 3300 personas, según la página de la EPA); en la UE, el agua potable es un sector de NIS2 y un sector de CER. Evidencia: avisos (públicos), resúmenes del organismo estatal competente, encuestas a empresas, entrevistas; rara vez datos operativos. Pregunta: «En un estado, ¿cuántos avisos de hervir el agua emitidos en cinco años atribuyó el organismo competente a fallos de equipos o de sistemas de control, y cuánto duraron?». Caso público: Oldsmar, codificado con su revisión (§2.5). La máxima calificación exige citas exactas de los instrumentos y una pregunta ajustada a evidencia pública o agregada.
+
+**EX009 — Distorsión del catálogo.** (1) Salida como en el §2.9. (2) Con el multiplicador en 1.0: población sin cambios; catálogo `n=491, mean 31.8 h, median 18.9 h, share>24h 0.42`; recuentos anuales catalogados 99, 73, 90, 75, 77, 77. (3) La distorsión de la gravedad persiste porque la causa la divulgación dependiente de la gravedad, que actúa todos los años con independencia de la obligación; la obligación solo cambia cuántos incidentes se divulgan, no cuáles se ven favorecidos. (La media del catálogo sube ligeramente sin la obligación porque la obligación admite proporcionalmente más incidentes cortos). La tendencia desaparece: los años 4–6 se parecen ahora a los años 1–3, salvo por el ruido. (4) Pregunta respondible: «Entre los incidentes catalogados, ¿cambió tras la obligación la proporción que presenta una característica concreta (por ejemplo, el desvío de ambulancias)?»; sigue afectada si la obligación cambia *qué* incidentes se divulgan, así que las respuestas más seguras describen características dentro del catálogo y no tasas. La rúbrica premia atribuir cada distorsión a su mecanismo.
+
+**EX010 — Protocolo del seminario sobre Ghafur et al. (2019).** *Afirmación (citada del resumen):* «Entre los hospitales infectados con el ransomware WannaCry, hubo una disminución significativa del número de atenciones e ingresos, que correspondió a 5,9 millones de libras en actividad hospitalaria perdida. No se informó de ningún aumento de la mortalidad, aunque esta es una medida tosca del daño a los pacientes». *Evidencia:* Hospital Episode Statistics de los *trusts* del NHS en Inglaterra, del 1 de abril al 30 de junio de 2017, agregadas a hospital-día; 34 *trusts* infectados comparados con *trusts* no infectados. *Diseño:* diferencias en diferencias por mínimos cuadrados ordinarios con efectos fijos de hospital y términos de día de la semana y de festivo, comparando la semana de WannaCry con semanas de referencia; los resultados fueron citas de consultas externas canceladas, ingresos programados y urgentes, atenciones en A&E y muertes en A&E. *Garantía:* los *trusts* no infectados muestran lo que habrían hecho los infectados esa semana. *Rivales que aborda el artículo:* la fluctuación nacional (se modelan las semanas anteriores y posteriores y se muestra que el cambio en todos los *trusts* está dentro de la volatilidad normal); las diferencias invariables en el tiempo entre hospitales (efectos fijos). *Rivales que plantea o deja abiertos:* el fallo de registro en los *trusts* infectados —los propios autores señalan que, si los sistemas usados para codificar los datos administrativos estaban caídos, puede que los datos no reflejen plenamente los hechos, un rival de medición propio de los estudios sobre interrupciones informáticas—; los *trusts* «afectados» pero no infectados que se desconectaron como precaución, que complican el grupo de comparación (el artículo los analiza por separado); y la transferencia de carga a los vecinos, que el artículo nombra como una laguna («no tenemos ninguna comprensión del efecto de red»). *Transferencia:* a sistemas de salud centralizados con datos comparables y ataques cortos. *Y qué:* incluso un ataque corto tuvo costos de actividad y financieros medibles. *Siguiente estudio:* la actividad de los hospitales vecinos durante cierres y desvíos, que es precisamente la pregunta del Estudio de Desbordamiento. La máxima calificación incluye el rival del fallo de registro y una descripción exacta de la comparación.
+
+**EX011 — Clasificación de mecanismos.**
+
+| Caso | Mecanismo | Unidad de consecuencia | Factor limitante |
+|---|---|---|---|
+| (a) Colonial Pipeline | Cascada de dependencias (la distribución de combustible depende del oleoducto), con transferencia de carga a rutas de suministro alternativas | Producto no entregado; déficits de suministro | Inventarios y capacidad de transporte alternativo |
+| (b) Synnovis | Ambos: los hospitales dependían de los servicios de patología (cascada); el trabajo se redirigió a otros proveedores (transferencia de carga) | Procedimientos y citas aplazados | Capacidad de laboratorio en otros lugares |
+| (c) Change Healthcare | Cascada de dependencias a través del procesamiento de reclamaciones y pagos | Interrupción de la liquidez; reclamaciones retrasadas | Procesadores alternativos y reservas de efectivo |
+| (d) Desvío de Kestrel | Desbordamiento por transferencia de carga | Llegadas excedentes y tiempo de espera en los vecinos | Capacidad sobrante y rutas de los vecinos |
+
+La rúbrica premia reconocer «ambos» cuando la sustitución sigue a un fallo de dependencia.
+
+**EX012 — Codificar un incidente revisado.** Entrada de marzo de 2021: *afirmación* — «un usuario remoto no autorizado cambió el punto de consigna de hidróxido de sodio en la planta de tratamiento de agua de Oldsmar»; *fuente* — aviso de CISA AA21-042A y declaraciones públicas de las autoridades locales; *tipo de fuente* — oficial; *fecha de la afirmación* — febrero de 2021; *estado* — comunicado, en investigación; *última comprobación* — marzo de 2021. Actualización de abril de 2023: conservar la afirmación original y sus fuentes, añadir *revisión* — «el exadministrador de la ciudad declaró que el FBI concluyó que el evento probablemente lo causó un empleado; el FBI dijo que no pudo confirmar una intrusión dirigida» (WUSF, 13 de abril de 2023); *estado* — disputado (o «no confirmado»); *última comprobación* — abril de 2023. Regla de análisis: un análisis que cuente intrusiones confirmadas excluye la entrada, mientras que un análisis de sensibilidad que incluya las entradas disputadas comunica ambos recuentos. Procedimiento de nueva comprobación para 2026: buscar declaraciones oficiales posteriores a abril de 2023 (registros del FBI, actualizaciones del aviso de CISA) y registrar lo encontrado y la fecha.
+
+**EX013 — Contradicción aparente.** Dimensiones de la matriz: unidades (*trusts* infectados frente a vecinos no afectados), dirección esperada (la actividad cae frente a sube), sistema de salud y año (NHS 2017 frente a San Diego 2021), duración (alrededor de una semana frente a un mes), resultados (ingresos, atenciones, cancelaciones, muertes en A&E frente a censo, llegadas, esperas, indicadores de ictus), diseño (datos administrativos con referencia y comparación infectados/no infectados frente a antes-después dentro de los vecinos). No se contradicen: miden extremos opuestos de la misma transferencia de carga. Un estudio combinado mediría tanto la actividad perdida por la organización atacada como la actividad ganada por los vecinos en el mismo evento, con una región de comparación no afectada, de modo que puedan estimarse juntos el efecto regional neto y su redistribución.
+
+**EX014 — Presentación en el seminario.** Se evalúa con la rúbrica. Una entrega de máxima calificación resume el artículo en sus propios términos antes de la crítica; enuncia los rivales como preguntas («¿Podría el cambio de abril a mayo reflejar la estación?»); y usa los tres registros en las respuestas preparadas, por ejemplo: «El artículo dice que la organización atacada gestionaba alrededor de una cuarta parte de las altas de la región. Infiero que la retirada de una organización más pequeña desplazaría menos carga. No sé en qué diferiría el resultado en una región con muchos proveedores; haría falta una comparación entre varias regiones». La reflexión nombra un cambio concreto en la lectura provocado por los pares.
 
 <a id="glossary"></a>
 
