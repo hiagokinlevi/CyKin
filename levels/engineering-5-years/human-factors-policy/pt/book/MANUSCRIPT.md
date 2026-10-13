@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 121, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 14 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os dezenove laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de conscientização e de reporte em segurança como um sistema sociotécnico projetado.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios modelam reportes semanais, esquecimento, taxas, triagem, filas, confiabilidade, orçamentos e testes exatos sobre dados sintéticos; nenhum funcionário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, aprovada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
-
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1795,11 +1793,464 @@ Reproduções sintéticas não capturam a confusão real. Verificações ao vivo
 - **EX119 — Carga no laboratório.** Quão rápidos foram os vereditos durante a reprodução da campanha? *Rubrica:* 3 = 99% em até uma hora; o mais lento em 104 minutos;; 2 = atendido;; 1 = nada;; 0 = nenhuma.
 - **EX120 — Fator não testado.** O que a reprodução não incluiu? *Rubrica:* 3 = a confusão de uma campanha real;; 2 = efeitos ao vivo;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-41"></a>
+
+## Capítulo 41 — Fatores humanos e política cibernética: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) otimizar o programa com um orçamento fixo; (2) comparar os benefícios marginais dos investimentos; (3) evitar otimizar uma única medida em detrimento do todo.
+
+### 41.1 Um orçamento fixo
+
+O conselho da Greyford concede ao programa um orçamento fixo para o próximo ano e pergunta a Aiko como gastá-lo para obter a maior redução de risco. As opções incluem mais simulações, um segundo analista de triagem, chaves de segurança para o pessoal do setor financeiro e da sala de controle, uma filtragem de e-mail melhor e mais conteúdo de reciclagem. Cada opção tem um custo e um efeito estimado sobre as perdas esperadas. Otimizar, aqui, significa escolher a combinação que traz o maior benefício dentro do orçamento, respeitando restrições como o ônus para os funcionários e as regras éticas das simulações.
+
+### 41.2 Benefício marginal
+
+O laboratório ordena as opções pela redução estimada de perdas por unidade de custo e as seleciona de forma gulosa até o orçamento acabar. As chaves de segurança para o pessoal do setor financeiro e da sala de controle dão o maior benefício por unidade de custo, porque eliminam o risco de roubo de credenciais nas funções mais visadas. Mais simulações dão o menor benefício por unidade de custo, já que o programa as realiza mensalmente. Aiko apresenta o resultado como orientação, e não como resposta precisa, porque as estimativas de efeito vêm de julgamento informado pelas evidências da avaliação.
+
+### Laboratório — Seleção gulosa de investimentos dentro de um orçamento
+
+```python
+# Greedy selection of programme investments by benefit per cost under a budget of 100 units (synthetic).
+opts = [("security keys", 40, 120), ("filtering", 30, 60), ("peak analyst", 25, 45), ("refresher content", 15, 18), ("more simulations", 20, 10)]
+budget = 100; spent = 0; chosen = []
+for name, cost, benefit in sorted(opts, key=lambda o: o[2] / o[1], reverse=True):
+    print(f"{name}: benefit/cost {benefit / cost:.2f}")
+    if spent + cost <= budget: chosen.append(name); spent += cost
+print("chosen:", chosen, "spent:", spent)
+```
+
+Execute com `python3 lab_budget.py`. Saída verificada:
+
+```text
+security keys: benefit/cost 3.00
+filtering: benefit/cost 2.00
+peak analyst: benefit/cost 1.80
+refresher content: benefit/cost 1.20
+more simulations: benefit/cost 0.50
+chosen: ['security keys', 'filtering', 'peak analyst'] spent: 95
+```
+
+### 41.3 Visão do sistema como um todo
+
+Aiko alerta contra a otimização de uma única medida. Gastar tudo para reduzir as taxas de clique nas simulações poderia produzir um bom gráfico, mas pouca redução nas perdas reais. Herley (2009) argumentou que os conselhos de segurança muitas vezes custam aos usuários mais esforço do que o dano que evitam, e a otimização deve contar o esforço dos funcionários como um custo real. Por isso, ela inclui as horas estimadas de trabalho dos funcionários em cada opção. O plano final compra chaves de segurança, um segundo analista nos horários de pico e melhorias na filtragem, e mantém as simulações no nível mensal atual.
+
+### Exemplo resolvido
+
+Aiko ordena os investimentos por benefício por custo dentro de um orçamento fixo, inclui o esforço dos funcionários como custo e seleciona chaves, um analista e filtragem.
+
+> **Caso sintético.** Os custos e efeitos são sintéticos; Herley (2009) é real.
+
+### Erros e limites
+
+As estimativas de efeito são incertas. A seleção gulosa nem sempre é ótima.
+
+### Exercícios
+
+- **EX121 — Melhor relação.** Que opção teve o maior benefício por custo? *Rubrica:* 3 = chaves de segurança para as funções visadas;; 2 = chaves;; 1 = simulações;; 0 = nenhuma.
+- **EX122 — Seleção no laboratório.** O que o laboratório selecionou dentro do orçamento? *Rubrica:* 3 = chaves, filtragem e analista de pico por 95 de 100 unidades;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX123 — O argumento de Herley.** Que custo Aiko incluiu seguindo Herley (2009)? *Rubrica:* 3 = o esforço dos funcionários;; 2 = esforço;; 1 = só dinheiro;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Fatores humanos e política cibernética: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa aplicada a partir de dados operacionais; (2) desenhar um estudo ético dentro do programa; (3) compartilhar os achados com responsabilidade.
+
+### 42.1 Formular a pergunta
+
+Os dados da operação levantam uma pergunta de pesquisa: acrescentar à mensagem de veredito uma frase curta sobre por que o e-mail era perigoso melhora a precisão dos reportes posteriores, em comparação com um veredito simples? Aiko formula a pergunta com precisão, define a precisão dos reportes como a proporção dos reportes de uma pessoa que são ameaças genuínas e escolhe um horizonte de seis meses. Ela consulta os trabalhos publicados e descobre que o conteúdo do retorno é pouco estudado em comparação com o conteúdo do treinamento, de modo que a pergunta pode acrescentar conhecimento útil para além da Greyford. A Profa. Kerr aprova a pergunta.
+
+### 42.2 Desenho ético
+
+Aiko desenha um estudo que sorteia equipes, e não indivíduos, para receber o veredito simples ou o explicado, de modo que os colegas compartilhem uma única versão. As duas versões são inofensivas e a mudança é pequena. Ela busca a aprovação do comitê de ética da universidade e a concordância dos representantes dos funcionários, informa aos funcionários que a redação do retorno está sendo comparada e permite que qualquer equipe se exclua. Os dados são analisados apenas no nível da equipe. O desenho segue os mesmos princípios das regras de simulação: respeito, transparência e nenhuma consequência individual.
+
+### 42.3 Compartilhar os achados
+
+Depois de seis meses, as equipes com o veredito explicado mostram uma precisão de reporte um pouco maior, mas a diferença está dentro do esperado pelo acaso, dado o número de equipes. Aiko relata honestamente o resultado como inconclusivo e sugere um estudo maior, com várias organizações. Ela compartilha os achados primeiro com os funcionários, depois com o regulador e, por fim, em um artigo curto com ilustrações sintéticas em vez de dados brutos. A Profa. Kerr lembra que resultados inconclusivos merecem publicação, porque resultados nulos não publicados distorcem o registro da pesquisa.
+
+### Exemplo resolvido
+
+Aiko formula uma pergunta sobre a redação do retorno, sorteia equipes com aprovação ética e relata abertamente um resultado inconclusivo.
+
+> **Caso sintético.** O estudo é sintético.
+
+### Erros e limites
+
+Poucas equipes dão baixo poder estatístico. Pode haver contaminação entre equipes.
+
+### Exercícios
+
+- **EX124 — Unidade de randomização.** Que unidade foi sorteada? *Rubrica:* 3 = equipes;; 2 = equipe;; 1 = indivíduos;; 0 = nenhuma.
+- **EX125 — Definição de precisão.** Como a precisão dos reportes foi definida? *Rubrica:* 3 = proporção dos reportes de uma pessoa que são ameaças genuínas;; 2 = proporção genuína;; 1 = nada;; 0 = nenhuma.
+- **EX126 — Resultado nulo.** Por que publicar o resultado inconclusivo? *Rubrica:* 3 = nulos não publicados distorcem o registro da pesquisa;; 2 = registro;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar dentro das restrições de uma organização de serviço público; (2) dialogar com reguladores e com o público; (3) refletir sobre a prática profissional.
+
+### 43.1 Restrições do serviço público
+
+A Greyford é uma concessionária de serviço público com o dever de fornecer água segura e de reportar incidentes aos reguladores. Aiko aprende que as decisões demoram mais do que em empresas privadas, porque os gastos precisam da aprovação do conselho e das regras de compras. Entre os funcionários há operadores de longa data que desconfiam de iniciativas novas. Ela se adapta planejando as mudanças em torno dos ciclos orçamentários, envolvendo os operadores desde cedo e explicando a ligação com a segurança pública. Trabalhar dentro dessas restrições faz parte da prática profissional, e não é um obstáculo a ser lamentado ou contornado por atalhos informais.
+
+### 43.2 Reguladores e o público
+
+O regulador pergunta como a Greyford gere o lado humano do risco cibernético. Aiko prepara um resumo curto das evidências: o estatuto, as medidas, os resultados de verificação e validação e as regras éticas das simulações. O regulador aprecia a honestidade sobre os limites. A Greyford também publica uma breve declaração aos clientes explicando que nunca pedirá dados bancários por e-mail, apoiando os clientes contra golpes de falsificação de identidade. O diálogo para além da organização reconhece que os atacantes miram clientes e fornecedores, além dos funcionários. A declaração também é impressa nas contas.
+
+### 43.3 Prática reflexiva
+
+Aiko mantém um diário reflexivo durante o estágio, registrando decisões, surpresas e o que faria de forma diferente. Ela anota que seus primeiros desenhos subestimavam o tempo de que os operadores precisam para confiar em um processo novo, e que as conversas informais na sala de controle lhe ensinaram mais do que os questionários. As diretrizes de cultura de cibersegurança da ENISA enfatizam entender a cultura existente antes de mudá-la, e o diário mostra quanto desse entendimento veio de ouvir, e não de medir. O diário passa a fazer parte de seu portfólio profissional.
+
+### Exemplo resolvido
+
+Aiko se adapta às restrições do serviço público, prepara evidências para o regulador, apoia os clientes contra golpes e mantém um diário reflexivo.
+
+> **Caso sintético.** O estágio é sintético; as diretrizes da ENISA são reais.
+
+### Erros e limites
+
+Diários reflexivos podem virar autojustificação. Declarações públicas precisam ser atualizadas.
+
+### Exercícios
+
+- **EX127 — Adaptação às restrições.** Como Aiko se adaptou às decisões lentas? *Rubrica:* 3 = planejando em torno dos ciclos orçamentários e envolvendo os operadores desde cedo;; 2 = planejamento;; 1 = contornando as regras;; 0 = nenhuma.
+- **EX128 — Declaração aos clientes.** O que a declaração aos clientes prometia? *Rubrica:* 3 = a Greyford nunca pedirá dados bancários por e-mail;; 2 = nunca;; 1 = nada;; 0 = nenhuma.
+- **EX129 — Maior lição.** O que o diário mostrou sobre aprender a cultura? *Rubrica:* 3 = a maior parte do entendimento veio de ouvir;; 2 = ouvir;; 1 = questionários;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir um problema de projeto final; (2) levantar requisitos e restrições; (3) planejar o projeto e a avaliação.
+
+### 44.1 O problema do projeto final
+
+O projeto final de Aiko enfrenta uma lacuna encontrada durante o estágio: terceirizados e temporários, cerca de um quinto da força de trabalho, estão fora da maior parte do programa. Eles não têm o botão de reporte em dispositivos pessoais, não recebem reciclagens e muitas vezes são alvo de mensagens falsas de fornecedores. O projeto pergunta como estender os reportes, os controles e o retorno aos terceirizados de forma justa e proporcional ao acesso que têm. Ela define o sucesso como terceirizados reportando a uma taxa semelhante à dos funcionários em até seis meses, sem acrescentar ônus significativo.
+
+### 44.2 Requisitos e restrições
+
+Aiko entrevista oito terceirizados e quatro gestores. Os terceirizados querem uma forma simples de reportar a partir de qualquer dispositivo e não querem ser mais monitorados do que os funcionários. Os gestores querem que os terceirizados sigam as mesmas regras de verificação para pagamentos e acessos. As restrições incluem contratos que limitam o tempo de treinamento e dispositivos que a Greyford não controla. Ela escreve os requisitos, incluindo um formulário web e um endereço de encaminhamento para reportes, um módulo de integração de dez minutos e regras de verificação idênticas, e confere cada um com a equipe de compras em relação às restrições.
+
+### 44.3 Plano de projeto e avaliação
+
+Aiko planeja o projeto em duas partes: uma via de reporte independente do dispositivo e uma integração que cubra as três perguntas do capítulo 35 e as etapas de verificação. A avaliação comparará mensalmente as taxas de reporte dos terceirizados com as dos funcionários, usando um teste de significância adequado a grupos pequenos, e medirá o ônus por questionário depois de três meses. Ela escreve um cronograma com marcos para projeto, revisão, piloto e avaliação. A Profa. Kerr pede que ela defina de antemão que resultado a levaria a abandonar o projeto, e ela acrescenta isso ao plano.
+
+### Exemplo resolvido
+
+Aiko define um projeto final sobre reportes de terceirizados, levanta as necessidades de terceirizados e gestores e planeja o projeto e a avaliação com uma regra de parada.
+
+> **Caso sintético.** O projeto final é sintético.
+
+### Erros e limites
+
+A rotatividade dos terceirizados complica a avaliação. Grupos pequenos geram incerteza ampla.
+
+### Exercícios
+
+- **EX130 — Lacuna tratada.** Que grupo o projeto final tratou? *Rubrica:* 3 = terceirizados e temporários;; 2 = terceirizados;; 1 = nada;; 0 = nenhuma.
+- **EX131 — Preocupação dos terceirizados.** O que os terceirizados não queriam? *Rubrica:* 3 = mais monitoramento do que os funcionários;; 2 = monitoramento;; 1 = nada;; 0 = nenhuma.
+- **EX132 — Regra de parada.** O que a Profa. Kerr pediu a Aiko que definisse de antemão? *Rubrica:* 3 = o resultado que a levaria a abandonar o projeto;; 2 = abandonar;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder aos achados dos revisores; (3) registrar decisões e riscos residuais.
+
+### 45.1 Preparar a revisão
+
+Aiko submete o projeto para terceirizados a uma banca de revisão independente: um arquiteto de segurança de outra concessionária, um pesquisador de fatores humanos e um representante dos terceirizados. Ela fornece os requisitos, o projeto, o plano de avaliação e os riscos conhecidos. A revisão independente traz perspectivas que o projetista não consegue oferecer, porque os projetistas tendem a ver o que pretendiam, e não o que construíram. Ela pede aos revisores que se concentrem na usabilidade, na justiça e em saber se os controles deteriam os ataques identificados no capítulo 24. Os revisores recebem o pacote duas semanas antes da reunião.
+
+### 45.2 Achados dos revisores
+
+A banca levanta seis achados. O arquiteto observa que o endereço de encaminhamento poderia ser falsificado (spoofing) para enviar vereditos falsos; o projeto é alterado para que os vereditos cheguem apenas pela conta do formulário web. O pesquisador observa que o módulo de integração testa a memorização, mas não as decisões, e sugere perguntas com cenários. O representante dos terceirizados observa que as agências podem não repassar os materiais, por isso a integração deve ser enviada diretamente. O laboratório totaliza os achados por severidade e as ações tomadas, mostrando quais continuam abertos após a resposta.
+
+### Laboratório — Total de achados da revisão por severidade e situação
+
+```python
+# Review findings tally (synthetic).
+f = [("high", "closed"), ("high", "closed"), ("medium", "closed"), ("medium", "open"), ("low", "closed"), ("low", "closed")]
+for s in ("high", "medium", "low"):
+    print(s, "closed", sum(1 for a, b in f if a == s and b == "closed"), "open", sum(1 for a, b in f if a == s and b == "open"))
+print("total closed", sum(b == "closed" for _, b in f), "open", sum(b == "open" for _, b in f))
+```
+
+Execute com `python3 lab_review.py`. Saída verificada:
+
+```text
+high closed 2 open 0
+medium closed 1 open 1
+low closed 2 open 0
+total closed 5 open 1
+```
+
+### 45.3 Registrar o risco residual
+
+Aiko registra cada achado, decisão e risco remanescente em um log de revisão. Um achado médio continua aberto: terceirizados que usam dispositivos pessoais podem não receber os vereditos rapidamente. Ela o aceita como risco residual, com revisão depois do piloto, e o dono do risco assina a aceitação. Registrar abertamente os riscos residuais, em linha com a abordagem de gestão de riscos da NIST SP 800-30r1, garante que as decisões de aceitar riscos sejam tomadas pelas pessoas certas e possam ser revistas depois. O log é compartilhado com a banca.
+
+### Exemplo resolvido
+
+Aiko submete seu projeto a revisores independentes, trata os achados sobre spoofing, integração e distribuição, e registra um risco residual aceito.
+
+> **Caso sintético.** A revisão é sintética; a NIST SP 800-30r1 é real.
+
+### Erros e limites
+
+Os revisores podem deixar passar problemas. Riscos aceitos podem ser esquecidos.
+
+### Exercícios
+
+- **EX133 — Achado de spoofing.** O que o arquiteto encontrou? *Rubrica:* 3 = o endereço de encaminhamento poderia ser falsificado para enviar vereditos falsos;; 2 = spoofing;; 1 = nada;; 0 = nenhuma.
+- **EX134 — Total no laboratório.** Quantos achados continuaram abertos após a resposta? *Rubrica:* 3 = 5 fechados, 1 médio aberto;; 2 = um aberto;; 1 = nada;; 0 = nenhuma.
+- **EX135 — Aceitação do residual.** Quem assinou a aceitação do risco residual? *Rubrica:* 3 = o dono do risco;; 2 = dono;; 1 = o projetista;; 0 = nenhuma.
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) pilotar o projeto final; (2) analisar resultados de grupos pequenos com um teste exato; (3) decidir se o projeto deve ganhar escala.
+
+### 46.1 Conduzir o piloto
+
+Aiko pilota o projeto para terceirizados com sessenta terceirizados ao longo de três meses. Eles recebem a integração diretamente da Greyford, podem reportar pelo formulário web ou pelo endereço de encaminhamento e seguem as mesmas regras de verificação de pagamentos e acessos que os funcionários. Ela acompanha os reportes de e-mails maliciosos reais, os tempos de veredito e as pontuações de ônus. Dois terceirizados saem e três entram durante o piloto, o que ela registra. O piloto inclui um mês de simulações anunciadas sob as regras éticas vigentes, com representantes dos terceirizados na banca de aprovação dos modelos.
+
+### 46.2 Analisar os resultados
+
+No mês de simulação, os terceirizados reportaram 21 de 60 e-mails simulados, e os funcionários em funções comparáveis reportaram 26 de 60. O laboratório calcula o teste exato de Fisher, adequado a grupos pequenos, e não encontra evidência clara de diferença. Aiko relata as duas taxas com o resultado do teste e observa que o piloto era pequeno demais para detectar diferenças modestas. As pontuações de ônus dos terceirizados são semelhantes às dos funcionários, e a mediana do tempo de veredito para os reportes deles fica dentro do nível de serviço de uma hora, atendendo aos principais critérios de sucesso definidos de antemão.
+
+### Laboratório — Teste exato comparando os reportes de terceirizados e funcionários
+
+```python
+# Fisher's exact test (two-sided) for contractor vs employee reporting in simulations (synthetic).
+from math import comb
+a, n1, b, n2 = 21, 60, 26, 60
+K, N = a + b, n1 + n2
+def p(x): return comb(n1, x) * comb(n2, K - x) / comb(N, K)
+p0 = p(a)
+pv = sum(p(x) for x in range(max(0, K - n2), min(K, n1) + 1) if p(x) <= p0 * (1 + 1e-9))
+print(f"contractors {a}/{n1} = {a / n1:.0%}, employees {b}/{n2} = {b / n2:.0%}, two-sided p = {pv:.2f}")
+```
+
+Execute com `python3 lab_fisher.py`. Saída verificada:
+
+```text
+contractors 21/60 = 35%, employees 26/60 = 43%, two-sided p = 0.45
+```
+
+### 46.3 Decisão de escala
+
+A regra de parada definida no capítulo 44 teria sido acionada se os reportes dos terceirizados caíssem abaixo da metade da taxa dos funcionários; isso não aconteceu. Aiko recomenda estender o programa a todos os terceirizados, com o risco residual dos dispositivos pessoais revisto depois de mais três meses. O conselho aprova. Ela observa que a decisão se apoia no cumprimento de critérios predefinidos, e não em um resultado significativo, o que é adequado porque o objetivo era a paridade, e não a superioridade. Planejar a regra de decisão de antemão a impediu de interpretar os resultados ao sabor de suas esperanças.
+
+### Exemplo resolvido
+
+Aiko pilota os reportes de terceirizados com sessenta terceirizados, não encontra diferença clara em relação aos funcionários com o teste exato de Fisher e amplia a escala com base em critérios predefinidos.
+
+> **Caso sintético.** Os dados do piloto são sintéticos.
+
+### Erros e limites
+
+Pilotos pequenos não demonstram equivalência com precisão. A rotatividade dos terceirizados afeta os resultados.
+
+### Exercícios
+
+- **EX136 — Taxas do piloto.** Quais foram as taxas de reporte na simulação? *Rubrica:* 3 = terceirizados 21/60 e funcionários 26/60;; 2 = 35% contra 43%;; 1 = nada;; 0 = nenhuma.
+- **EX137 — Teste no laboratório.** Que valor-p o teste exato de Fisher deu? *Rubrica:* 3 = cerca de 0,45;; 2 = não significativo;; 1 = 0,05;; 0 = nenhuma.
+- **EX138 — Base da decisão.** Em que se baseou a decisão de escala? *Rubrica:* 3 = critérios predefinidos, incluindo a regra de parada;; 2 = critérios;; 1 = significância;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um ensaio de falha do sistema de reportes e verificação; (2) conduzi-lo com segurança; (3) aprender com o que falhou.
+
+### 47.1 Planejar o ensaio
+
+Aiko planeja um ensaio para testar como o programa se comporta quando partes dele falham. Os cenários incluem a ferramenta de triagem ficar fora do ar durante uma campanha, o segundo analista financeiro estar ausente no fim do mês e a equipe de segurança estar inacessível à noite. O ensaio é anunciado a todos os participantes, marcado para um horário tranquilo e aprovado pelos gestores de operações e de segurança operacional. Nenhum funcionário é enganado; o ensaio testa sistemas e procedimentos, e não indivíduos. Cada cenário tem início, observador e condição de parada definidos para garantir a segurança.
+
+### 47.2 Conduzir o ensaio
+
+No primeiro cenário, a ferramenta de triagem é tirada do ar por uma hora. Os reportes se acumulam na caixa postal como previsto, mas os funcionários não recebem mensagens de agradecimento e alguns reportam duas vezes. No segundo, o bloqueio financeiro é escalado corretamente para um analista substituto. No terceiro, a sala de controle alcança o contato de segurança fora do expediente em dez minutos usando a escala de plantão. O laboratório resume o tempo de recuperação de cada cenário em relação à sua meta, mostrando que apenas a queda da triagem excedeu a meta. Os observadores cronometram cada etapa.
+
+### Laboratório — Tempos de recuperação em relação às metas em três cenários de falha
+
+```python
+# Recovery times against targets (minutes, synthetic).
+s = [("triage outage", 60, 30), ("finance backup", 15, 60), ("out-of-hours contact", 10, 15)]
+for name, t, target in s: print(f"{name}: {t} min vs target {target} -> {'MISSED' if t > target else 'met'}")
+```
+
+Execute com `python3 lab_recovery.py`. Saída verificada:
+
+```text
+triage outage: 60 min vs target 30 -> MISSED
+finance backup: 15 min vs target 60 -> met
+out-of-hours contact: 10 min vs target 15 -> met
+```
+
+### 47.3 Aprender com a falha
+
+Aiko conduz uma revisão sem culpados (blameless). A queda da triagem revelou que o mecanismo de contingência não tinha confirmação automática, de modo que os funcionários ficaram em dúvida se os reportes haviam chegado. A equipe acrescenta uma resposta automática simples da própria caixa postal, independente da ferramenta de triagem. Aiko observa que falhas encontradas em ensaios planejados são muito mais baratas do que as encontradas durante ataques reais. Ela atualiza a tabela de verificação com um novo requisito de confirmação durante quedas, fechando o ciclo entre o ensaio e o projeto. A resposta é testada mensalmente.
+
+### Exemplo resolvido
+
+Aiko conduz um ensaio de falha anunciado com cenários de triagem, setor financeiro e fora do expediente, encontra a falta de confirmação durante quedas e acrescenta um requisito.
+
+> **Caso sintético.** O ensaio é sintético.
+
+### Erros e limites
+
+Ensaios planejados são menos estressantes do que falhas reais. Ensaios em horários tranquilos não capturam os efeitos de pico.
+
+### Exercícios
+
+- **EX139 — Ética do ensaio.** O que o ensaio testa? *Rubrica:* 3 = sistemas e procedimentos, e não indivíduos;; 2 = sistemas;; 1 = a vigilância dos funcionários;; 0 = nenhuma.
+- **EX140 — Recuperação no laboratório.** Que cenário excedeu sua meta no laboratório? *Rubrica:* 3 = a queda da triagem, 60 minutos contra 30;; 2 = triagem;; 1 = nada;; 0 = nenhuma.
+- **EX141 — Correção acrescentada.** Que correção se seguiu à queda da triagem? *Rubrica:* 3 = uma resposta automática da própria caixa postal;; 2 = confirmação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê de evidências do programa; (2) ligar afirmações a evidências; (3) declarar limitações e perguntas em aberto.
+
+### 48.1 Montar o dossiê
+
+Aiko monta um dossiê de evidências para sua avaliação de engenharia e para o regulador da Greyford. Ele contém os requisitos, a justificativa do projeto, as tabelas de verificação, os resultados da validação, a análise do piloto, o relatório do ensaio de falha, o log de revisão e as regras éticas. Cada documento é versionado e datado. O dossiê é organizado em torno de afirmações, como a de que o programa encurta a exposição a e-mails maliciosos, com as evidências de cada afirmação listadas logo abaixo. Essa estrutura ajuda os leitores a ver o que se afirma e com que força isso é sustentado. Um índice lista todos os itens.
+
+### 48.2 Afirmações e evidências
+
+Para cada afirmação, Aiko declara a evidência e sua força. A afirmação sobre a exposição se apoia na comparação antes e depois e na análise de filas, que ela classifica como moderada, porque o desenho não descarta mudanças nos ataques. A afirmação sobre fraude de pagamento se apoia nas tentativas barradas e na análise de confiabilidade. A afirmação de justiça para os terceirizados se apoia no piloto e nas entrevistas. O laboratório conta as afirmações por força de evidência. Ela evita afirmar que o programa mudou a cultura, porque suas evidências não medem a cultura diretamente.
+
+### Laboratório — Afirmações por força de evidência
+
+```python
+# Claims by evidence strength (synthetic).
+claims = {"shorter exposure": "moderate", "payment fraud caught": "strong", "contractor fairness": "moderate", "low staff burden": "moderate", "lasting effect": "weak"}
+for s in ("strong", "moderate", "weak"): print(s, sum(v == s for v in claims.values()))
+```
+
+Execute com `python3 lab_dossier.py`. Saída verificada:
+
+```text
+strong 1
+moderate 3
+weak 1
+```
+
+### 48.3 Limites e perguntas em aberto
+
+O dossiê termina com limitações e perguntas em aberto: se os efeitos duram mais de dois anos, se os resultados se manteriam em uma concessionária maior e se a redação do retorno importa, dado o estudo inconclusivo. Ela lista os dados que responderiam a cada pergunta. A banca elogia a honestidade do dossiê. A Profa. Kerr lembra que um dossiê é um registro vivo e deve ser atualizado à medida que o programa continua, para que as decisões futuras se apoiem em evidências atuais, e não no retrato tirado para a avaliação.
+
+### Exemplo resolvido
+
+Aiko monta um dossiê baseado em afirmações, classifica a força das evidências e lista as perguntas em aberto.
+
+> **Caso sintético.** O dossiê é sintético.
+
+### Erros e limites
+
+As classificações de força são julgamentos. Os dossiês ficam desatualizados.
+
+### Exercícios
+
+- **EX142 — Organização.** Como o dossiê é organizado? *Rubrica:* 3 = em torno de afirmações, com as evidências abaixo de cada uma;; 2 = afirmações;; 1 = por data;; 0 = nenhuma.
+- **EX143 — Forças no laboratório.** O que o laboratório contou? *Rubrica:* 3 = 1 afirmação forte, 3 moderadas e 1 fraca;; 2 = contagens;; 1 = nada;; 0 = nenhuma.
+- **EX144 — Afirmação evitada.** Que afirmação Aiko evitou? *Rubrica:* 3 = que o programa mudou a cultura;; 2 = cultura;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar uma tese de engenharia sobre um programa de fatores humanos; (2) apresentar projeto, verificação e validação de forma coerente; (3) escrever com citação e cautela adequadas.
+
+### 49.1 Estrutura da tese
+
+A tese de Aiko se intitula "Projetando um programa de segurança centrado em reportes para uma concessionária de água". Seus capítulos cobrem o problema e o contexto, a literatura, os requisitos, as alternativas de projeto e a escolha, a implementação, a verificação, a validação, o projeto final com terceirizados e as conclusões. Cada capítulo termina com um resumo curto que leva ao seguinte. A estrutura segue o ciclo de vida de engenharia, o que ajuda os examinadores a rastrear cada decisão de projeto do requisito à evidência. Os apêndices trazem as tabelas de verificação, o código dos laboratórios e as aprovações éticas, com exemplos sintéticos no lugar de dados sensíveis. A tese tem noventa páginas.
+
+### 49.2 Argumento coerente
+
+A tese argumenta que um programa centrado em reportes, retorno rápido e controles de apoio reduz a exposição com mais eficácia do que um programa guiado pela conformidade, respeitando ao mesmo tempo os funcionários. Aiko sustenta isso com seus resultados de validação e do piloto, e com literatura como Adams e Sasse (1999), Sasse, Brostoff e Weirich (2001) e Bada, Sasse e Nurse (2019). Ela tem o cuidado de separar o que seus dados mostram do que a literatura sugere, e apresenta seus resultados antes e depois como compatíveis com o argumento, e não como prova dele.
+
+### 49.3 Citação e cautela
+
+Aiko confere cada citação com a fonte original e registra DOIs apenas quando os confirmou. Ela usa linguagem cautelosa: os resultados sugerem, em vez de provar, e os efeitos são descritos com sua incerteza. Ela reconhece que seu caso é uma única concessionária e que outras organizações podem diferir. A Profa. Kerr lê uma versão completa e pede uma única mudança: levar as regras éticas das simulações de um apêndice para o texto principal, porque elas são centrais ao projeto, e não um detalhe administrativo.
+
+### Exemplo resolvido
+
+Aiko estrutura sua tese segundo o ciclo de vida de engenharia, separa suas evidências da literatura e declara os resultados com cautela.
+
+> **Caso sintético.** A tese é sintética; as obras citadas são reais.
+
+### Erros e limites
+
+Um único caso limita a generalização. A literatura pode não se ajustar ao contexto da concessionária.
+
+### Exercícios
+
+- **EX145 — Base da estrutura.** O que a estrutura da tese segue? *Rubrica:* 3 = o ciclo de vida de engenharia;; 2 = ciclo de vida;; 1 = nada;; 0 = nenhuma.
+- **EX146 — Separação.** O que Aiko mantém separado? *Rubrica:* 3 = o que seus dados mostram e o que a literatura sugere;; 2 = separação;; 1 = nada;; 0 = nenhuma.
+- **EX147 — Mudança pedida.** Que mudança a Profa. Kerr pediu? *Rubrica:* 3 = levar as regras éticas das simulações para o texto principal;; 2 = ética;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar uma defesa final de engenharia; (2) responder perguntas sobre projeto e ética; (3) refletir sobre a contribuição e os próximos passos.
+
+### 50.1 Preparação
+
+Aiko prepara uma apresentação de vinte minutos que cobre o problema, a escolha de projeto, a verificação, a validação, o projeto final com terceirizados e os limites. Ela ensaia com colegas que fazem perguntas difíceis sobre custo, ética e evidências. Prepara slides de reserva sobre a análise de confiabilidade, o modelo de filas e o ensaio de falha. Também prepara um resumo de uma página das regras éticas das simulações, esperando perguntas sobre o tema. A preparação se concentra em explicar o raciocínio com clareza, já que os examinadores avaliam a compreensão, e não o acabamento dos slides. Ela também cronometra cada ensaio.
+
+### 50.2 Perguntas
+
+Um examinador pergunta se as simulações deveriam sequer ser usadas, dado o risco à confiança. Aiko responde que a Greyford as usa com parcimônia, sob regras anunciadas e acordadas, sem iscas de sofrimento pessoal e sem consequências individuais, e que elas servem de calibração, e não de medida principal. Outro examinador pergunta como o projeto falharia; ela cita a queda da triagem e o risco de causa comum no fim do mês. Um terceiro pergunta sobre custo; ela apresenta a análise orçamentária com as horas dos funcionários incluídas. Os examinadores notam seu foco constante nas evidências.
+
+### 50.3 Contribuição e próximos passos
+
+Aiko resume sua contribuição: um projeto testado de segurança centrada em reportes para uma concessionária, métodos para verificá-lo e validá-lo e uma extensão justa aos terceirizados. Ela lista os próximos passos: um estudo multicêntrico sobre a redação do retorno, um acompanhamento de dois anos e o compartilhamento do projeto com outras concessionárias por meio do fórum do setor. Os examinadores concedem o grau com distinção. A Profa. Kerr reflete que o projeto mostra como a disciplina de engenharia e o respeito pelas pessoas podem trabalhar juntos em segurança, que era o objetivo do curso.
+
+### Exemplo resolvido
+
+Aiko defende sua tese, responde perguntas sobre a ética das simulações, falhas e custo, e resume sua contribuição e os próximos passos.
+
+> **Caso sintético.** A defesa é sintética.
+
+### Erros e limites
+
+As defesas testam a comunicação, além da substância. Os próximos passos precisam de financiamento.
+
+### Exercícios
+
+- **EX148 — Papel das simulações.** Como Aiko descreve o papel das simulações? *Rubrica:* 3 = calibração parcimoniosa sob regras acordadas, e não a medida principal;; 2 = calibração;; 1 = medida principal;; 0 = nenhuma.
+- **EX149 — Exemplos de falha.** Que modos de falha Aiko citou? *Rubrica:* 3 = a queda da triagem e a causa comum no fim do mês;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX150 — Próximo passo.** Cite um próximo passo listado por Aiko. *Rubrica:* 3 = estudo multicêntrico sobre a redação do retorno;; 2 = estudo;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se os reportes ainda estão subindo, se estabilizaram ou estão recuando depois de uma campanha.
 
@@ -2040,6 +2491,66 @@ Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em i
 **EX119.** 99% dos reportes receberam veredito em até uma hora, e o mais lento esperou 104 minutos.
 
 **EX120.** A confusão de uma campanha real, como as ligações para o service desk.
+
+**EX121.** Chaves de segurança para o pessoal do setor financeiro e da sala de controle.
+
+**EX122.** Chaves de segurança, filtragem e um analista nos horários de pico, custando 95 de 100 unidades do orçamento.
+
+**EX123.** As horas dos funcionários, já que o esforço dos usuários é um custo real dos conselhos de segurança.
+
+**EX124.** Equipes, para que os colegas compartilhem uma única versão.
+
+**EX125.** A proporção dos reportes de uma pessoa que eram ameaças genuínas.
+
+**EX126.** Porque deixar resultados nulos sem publicação distorce o registro da pesquisa.
+
+**EX127.** Planejando em torno dos ciclos orçamentários, envolvendo os operadores desde cedo e ligando o tema à segurança pública.
+
+**EX128.** Que a Greyford nunca pedirá dados bancários aos clientes por e-mail.
+
+**EX129.** Que a maior parte do entendimento veio de ouvir na sala de controle, e não de medir.
+
+**EX130.** Terceirizados e temporários, cerca de um quinto da força de trabalho.
+
+**EX131.** Ser mais monitorados do que os funcionários.
+
+**EX132.** O resultado que a levaria a abandonar o projeto.
+
+**EX133.** Que o endereço de encaminhamento poderia ser falsificado para enviar vereditos falsos.
+
+**EX134.** Cinco achados foram fechados e um achado médio continuou aberto.
+
+**EX135.** O dono do risco.
+
+**EX136.** Terceirizados 21 de 60 (35%) e funcionários 26 de 60 (43%).
+
+**EX137.** Cerca de 0,45, portanto sem evidência clara de diferença.
+
+**EX138.** Em critérios definidos de antemão, incluindo a regra de parada, e não em um resultado significativo.
+
+**EX139.** Sistemas e procedimentos, sem nenhum funcionário enganado.
+
+**EX140.** A queda da triagem, com 60 minutos contra uma meta de 30.
+
+**EX141.** Uma confirmação automática da caixa postal de reportes, independente da ferramenta de triagem.
+
+**EX142.** Em torno de afirmações, com as evidências de apoio listadas abaixo de cada uma.
+
+**EX143.** Uma afirmação forte, três moderadas e uma fraca.
+
+**EX144.** Que o programa mudou a cultura, porque a cultura não foi medida diretamente.
+
+**EX145.** O ciclo de vida de engenharia, do requisito à evidência.
+
+**EX146.** O que seus próprios dados mostram e o que a literatura sugere.
+
+**EX147.** Levar as regras éticas das simulações de um apêndice para o texto principal.
+
+**EX148.** Como calibração parcimoniosa sob regras anunciadas e acordadas, e não como a medida principal.
+
+**EX149.** A queda da triagem e o risco de causa comum no fim do mês.
+
+**EX150.** Um estudo multicêntrico sobre a redação do retorno, um acompanhamento de dois anos ou o compartilhamento pelo fórum do setor.
 
 <a id="references"></a>
 ## Referências
