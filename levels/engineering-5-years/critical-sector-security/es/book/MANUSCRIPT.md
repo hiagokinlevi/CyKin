@@ -73,12 +73,12 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 35. [Taller de diseño II](#ch-35)
 36. [Infraestructura crítica y seguridad sectorial: desempeño y escala](#ch-36)
 37. [Infraestructura crítica y seguridad sectorial: operaciones](#ch-37)
-38. [Infraestructura crítica y seguridad sectorial: validación](../../en/book/MANUSCRIPT.md#ch-38)
-39. [Infraestructura crítica y seguridad sectorial: mantenibilidad](../../en/book/MANUSCRIPT.md#ch-39)
-40. [Laboratorio de verificación II](../../en/book/MANUSCRIPT.md#ch-40)
-41. [Infraestructura crítica y seguridad sectorial: optimización del sistema](../../en/book/MANUSCRIPT.md#ch-41)
-42. [Infraestructura crítica y seguridad sectorial: investigación aplicada](../../en/book/MANUSCRIPT.md#ch-42)
-43. [Práctica en la industria o en el servicio público](../../en/book/MANUSCRIPT.md#ch-43)
+38. [Infraestructura crítica y seguridad sectorial: validación](#ch-38)
+39. [Infraestructura crítica y seguridad sectorial: mantenibilidad](#ch-39)
+40. [Laboratorio de verificación II](#ch-40)
+41. [Infraestructura crítica y seguridad sectorial: optimización del sistema](#ch-41)
+42. [Infraestructura crítica y seguridad sectorial: investigación aplicada](#ch-42)
+43. [Práctica en la industria o en el servicio público](#ch-43)
 44. [Proyecto final de ingeniería I](../../en/book/MANUSCRIPT.md#ch-44)
 45. [Revisión independiente del diseño](../../en/book/MANUSCRIPT.md#ch-45)
 46. [Proyecto final de ingeniería II](../../en/book/MANUSCRIPT.md#ch-46)
@@ -2895,7 +2895,451 @@ Las operaciones de seguridad de la TO empiezan por la seguridad del proceso y en
 <!-- cyberabc:chapter-navigation:start ch-37 -->
 ### Siga estudiando — capítulo 37 de 50
 
-[← Capítulo 36](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 →](../../en/book/MANUSCRIPT.md#ch-38)
+[← Capítulo 36](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Infraestructura crítica y seguridad sectorial: validación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) distinguir la validación (el sistema adecuado para la necesidad) de la verificación (el sistema construido conforme a su especificación); (2) validar con las partes interesadas mediante demostraciones, ensayos operativos y ejercicios; (3) usar la trazabilidad para mostrar qué necesidades están respaldadas por evidencia y cuáles no; y (4) informar con honestidad de los resultados de la validación, incluidos los resultados parciales. Se apoya en los capítulos 16, 24 y 30 y prepara los capítulos 40 y 48.
+
+### 38.1 La verificación no es validación
+
+Un sistema puede superar todas las pruebas frente a su especificación y aun así fallar a sus usuarios si la especificación era errónea o incompleta. La validación pregunta si el sistema satisface las necesidades de las partes interesadas en su entorno previsto: ¿pueden los operadores manejar de verdad el modo manual local de noche? ¿Recibe de verdad el hospital agua dentro de su reserva cuando se pierde PS4? La evidencia de validación procede del uso realista: ensayos operativos, demostraciones con las partes interesadas, ejercicios y primeros datos de operación.
+
+Para el TMRP, el ejercicio nocturno del modo manual local es la actividad de validación que responde a la primera pregunta.
+
+### 38.2 La trazabilidad como mapa de evidencia
+
+Trace las necesidades hasta los requisitos, los requisitos hasta las pruebas y las pruebas hasta los resultados. Después, haga tres preguntas: ¿qué requisitos no tienen prueba (afirmaciones no probadas)? ¿Qué pruebas fallaron o no se ejecutaron (afirmaciones no respaldadas)? ¿Qué necesidades dependen solo de requisitos que aún no están verificados (necesidades no validadas)? El laboratorio 14 calcula estas respuestas para el expediente del TMRP. Para el TMRP, las preguntas son concretas. R4 no tiene prueba porque su demostración nunca se programó. R9, la alarma independiente de dosificación, no tiene ninguna prueba: la tabla de requisitos indica una prueba como método de verificación, pero nunca se escribió una prueba para él. La única prueba registrada de R3 es la que falló en v1, y la prueba de R8 no se ha ejecutado. N1 depende de R4, por lo que no puede declararse validada hasta que se realice el ejercicio nocturno. El laboratorio 14 imprime estas lagunas directamente.
+
+### 38.3 Validación con las partes interesadas
+
+Implique a las personas a las que sirve el sistema. Los operadores validan los procedimientos y las pantallas; el personal de mantenimiento valida la reparabilidad y los repuestos; el hospital valida que las disposiciones de suministro satisfacen sus necesidades; los reguladores validan el razonamiento de cumplimiento. Registre sus hallazgos como registraría los hallazgos de una revisión, con respuestas. Para el TMRP, los operadores validan el procedimiento manual local y las nuevas alarmas de seguridad, el personal de mantenimiento comprueba que las pasarelas pueden sustituirse con repuestos, y el hospital confirma que las disposiciones de suministro y su reserva de cuatro horas satisfacen sus necesidades. Sus hallazgos se incorporan al mismo registro de respuestas que los hallazgos de la revisión de diseño.
+
+### 38.4 Informar de resultados parciales
+
+Informe del estado de validación por necesidad: validada, parcialmente validada (con lo que falta) o no validada. No redondee al alza. «N1 parcialmente validada: el ensayo de pérdida de PS4 cumplió la reserva de 4 h; la pérdida combinada de PS4 y del alimentador F1 de la red aún no se ha ensayado». El mapa de evidencia del TMRP lo hace concreto: N1 depende de R4, que aún no se ha demostrado, por lo que N1 se declara no validada hasta que se realice el ejercicio nocturno, aunque la mayoría de sus demás requisitos hayan superado sus pruebas. El estado se actualiza después del ejercicio.
+
+### 38.5 Ejemplo resuelto: mapa de evidencia del TMRP (sintético)
+
+El laboratorio 14 muestra: R4 (operación manual local) no tiene prueba; se planificó como demostración y nunca se programó; R3 tiene una prueba fallida (en v1; la repetición de la prueba en v2 aún no se ha introducido en la matriz); la prueba T6 de R8 no se ha ejecutado. R9 (alarma independiente de dosificación) tampoco tiene prueba: su método de verificación es «Prueba», pero nunca se le asignó un identificador de prueba, de modo que la evidencia de que dispone es una intención de diseño, no un resultado. Verificados: 5 de 9 requisitos (55,6 %). Consecuencia para la validación: N1 (suministro al hospital) depende de R4, por lo que N1 no puede declararse validada; el ejercicio nocturno de operación manual local se programa como actividad de validación. La matriz también pone al descubierto una laguna administrativa (debe registrarse la repetición de T3 en v2), que es exactamente el tipo de incoherencia que encuentran los examinadores y los auditores.
+
+### 38.6 Actividad práctica: laboratorio 14
+
+```python
+# Lab 14 - requirements traceability: what is claimed but not shown? (synthetic TMRP dossier, offline)
+REQS = ["R1 auth telemetry", "R2 replay reject", "R3 setpoint bounds", "R4 local manual", "R5 24h hold-up",
+        "R6 restore 8h", "R7 alarm 60s", "R8 log integrity", "R9 dosing alarm"]
+TESTS = {"T1": ["R1"], "T2": ["R1", "R2"], "T3": ["R3"], "T4": ["R5"], "T5": ["R7"], "T6": ["R8"], "T7": ["R6"]}
+RESULT = {"T1": "pass", "T2": "pass", "T3": "fail", "T4": "pass", "T5": "pass", "T6": "not run", "T7": "pass"}
+ids = [r.split()[0] for r in REQS]
+cov = {r: [t for t, rs in TESTS.items() if r in rs] for r in ids}
+verified = [r for r in ids if cov[r] and all(RESULT[t] == "pass" for t in cov[r])]
+print("untested:", [r for r in ids if not cov[r]])
+print("tested but not passing:", [r for r in ids if cov[r] and r not in verified])
+print(f"verified {len(verified)}/{len(ids)} = {100*len(verified)/len(ids):.1f}%")
+```
+
+Salida esperada:
+
+```text
+untested: ['R4', 'R9']
+tested but not passing: ['R3', 'R8']
+verified 5/9 = 55.6%
+```
+
+La salida muestra que R4 y R9 no tienen prueba, que R3 y R8 están probados pero no superan las pruebas, y que cinco de los nueve requisitos están verificados. El estado de R3 está desactualizado más que realmente fallido: la repetición de la prueba en v2 se superó, pero nadie la introdujo en la matriz, que es exactamente la laguna administrativa sobre la que advierte el ejemplo resuelto. El EX075 actualiza el mapa. R9 es la lección más difícil: la alarma de dosificación aparece en el conjunto de requisitos, en la tabla de riesgos y en los controles de dosificación, así que parece cubierta, y sin embargo nunca se le asignó una prueba. Una versión anterior de esta matriz omitía R9 por completo de la lista, lo que elevaba la proporción verificada de cinco de nueve a cinco de ocho sin ninguna evidencia nueva. Una matriz debe enumerar todos los requisitos definidos, porque un requisito que omite no puede declararse como no probado.
+
+### 38.7 Errores comunes y límites
+
+- Llamar «validación» a un conjunto de pruebas superado.
+- Partes interesadas consultadas solo al principio.
+- Redondear una validación parcial al alza hasta «validada».
+- Mapas de evidencia que no se actualizan tras repetir las pruebas.
+
+El propio mapa del TMRP muestra el último error: la repetición de T3 en v2 se superó, pero la matriz nunca se actualizó. Las partes interesadas, como los operadores y el hospital, participan durante todo el proceso, no solo cuando se redactaron los requisitos, y el mapa de evidencia se actualiza cada vez que una repetición de prueba o una demostración produce un resultado, de modo que el estado de validación declarado nunca se adelanta a la evidencia.
+
+### Ejercicios — capítulo 38
+
+**EX075 — Actualizar el mapa.** *Objetivo:* mantener la trazabilidad. *Entradas:* laboratorio 14. *Pasos:* (1) añada T3b (repetición de la prueba en v2) que cubre R3 con resultado «pass» y elimine el vínculo de T3 con R3 por quedar sustituido; (2) añada la demostración T8 que cubre R4 con resultado «pass»; (3) ejecute T6 con resultado «pass»; vuelva a calcular. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = ocho de nueve verificados (88,9 %), R9 sigue figurando como no probado porque no existe una prueba de la alarma de dosificación, con una nota de que verificación ≠ validación; 2 = falta un cambio; 1 = no ejecutado; 0 = nada.
+
+**EX076 — Plan de validación para N1.** *Objetivo:* planificar la validación con las partes interesadas. *Entradas:* N1 «el hospital no debe quedarse sin agua > 4 h». *Pasos:* proponga dos actividades de validación con partes interesadas, condiciones realistas, observaciones y criterios de éxito. *Evidencia esperada:* plan. *Rúbrica:* 3 = actividades realistas (ejercicio nocturno de operación manual local con la plantilla real; aislamiento planificado de PS4 con supervisión del hospital), criterios ligados a la reserva de 4 h, partes interesadas nombradas por su función; 2 = criterios vagos; 1 = pruebas rebautizadas como validación; 0 = nada.
+
+### Síntesis del capítulo
+
+La verificación pregunta si el sistema se construyó bien; la validación pregunta si es el sistema adecuado. Use la trazabilidad como mapa de evidencia para encontrar afirmaciones no probadas, no respaldadas y no validadas, valide con las personas a las que sirve el sistema en condiciones realistas e informe de los resultados parciales como parciales.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Siga estudiando — capítulo 38 de 50
+
+[← Capítulo 37](#ch-37) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Infraestructura crítica y seguridad sectorial: mantenibilidad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) diseñar para la mantenibilidad a lo largo de ciclos de vida largos: actualizaciones, repuestos, competencias y documentación; (2) gestionar la deuda técnica y la obsolescencia en la TO; (3) planificar la agilidad criptográfica y la transición a la criptografía poscuántica; y (4) planificar de forma segura la retirada de servicio. Se apoya en los capítulos 8, 14 y 31 y prepara los capítulos 41 y 44.
+
+### 39.1 Ciclos de vida largos
+
+Los activos de infraestructura duran décadas; el software y las amenazas cambian en meses. La mantenibilidad significa que el sistema puede mantenerse seguro y funcional durante toda su vida: componentes sustituibles sin rediseño; actualizaciones posibles sin interrupciones largas; documentación al día; competencias disponibles. Entre las decisiones de diseño que perjudican la mantenibilidad están los protocolos propietarios con un único proveedor, el código a medida sin documentar y el hardware sin vía de actualización. Para el TMRP, las RTU que se instalan ahora pueden seguir funcionando en la década de 2040, de modo que el diseño de las pasarelas, el formato de los mensajes y la gestión de claves deben ser mantenibles durante todo ese periodo.
+
+### 39.2 Deuda técnica y obsolescencia
+
+La deuda técnica es el coste futuro de los atajos que se toman ahora: una configuración codificada de forma fija, una prueba omitida, una pasarela construida «temporalmente» para RTU heredadas. Registre los elementos de deuda con su responsable, el coste de corregirlos y el riesgo de dejarlos. La gestión de la obsolescencia sigue las fechas de fin de venta y de fin de soporte de cada componente y planifica la sustitución antes de que termine el soporte, manteniendo repuestos cuando la sustitución es lenta.
+
+Las pasarelas del TMRP para las unidades RTU-A heredadas de PS1 y PS2 se registran como deuda con un horizonte de tres años. Los repuestos se compran antes del fin de venta.
+
+### 39.3 Agilidad criptográfica
+
+Los algoritmos se debilitan y las normas cambian. La agilidad criptográfica es la capacidad de cambiar algoritmos y tamaños de clave sin rediseñar el sistema: identificadores de algoritmo en los formatos de mensaje, vías de actualización del firmware y una gestión de claves capaz de aprovisionar nuevos tipos de clave. El NIST publicó sus primeras normas de criptografía poscuántica (FIPS 203, 204 y 205) en agosto de 2024 ([anuncio del NIST](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards)); el equipamiento de infraestructura que se compra ahora puede seguir funcionando cuando sean plausibles adversarios con capacidad cuántica, por lo que los mecanismos de clave pública de los dispositivos de vida larga necesitan una vía de migración. Los MAC simétricos como HMAC-SHA256 se ven mucho menos afectados; es en el intercambio de claves y en las firmas donde la migración importa.
+
+### 39.4 Retirada de servicio segura
+
+Los dispositivos retirados contienen claves, configuraciones y detalles de la red. Pasos de la retirada de servicio: revocar claves y certificados; eliminar cuentas; borrar o destruir el almacenamiento según la política; actualizar el inventario, los modelos y las listas de permitidos; y eliminar las reglas de cortafuegos que daban servicio al dispositivo. Las reglas obsoletas de dispositivos retirados son una vía clásica para los atacantes que colocan un dispositivo nuevo en una dirección antigua. La revisión de mantenibilidad del TMRP constató que no existía un procedimiento de retirada de servicio, así que se redactó uno y se vinculó a la gestión de cambios. Se usará por primera vez cuando se sustituyan la RTU-A heredada de PS2 y su pasarela, como describe el EX078.
+
+### 39.5 Ejemplo resuelto: revisión de mantenibilidad del TMRP (sintético)
+
+La revisión constata: (1) las pasarelas de PS1/PS2 son deuda técnica con un horizonte de tres años, registrada con un plan de sustitución; (2) el formato de mensaje del laboratorio 8 carece de identificador de algoritmo: se modifica para incluir un ID de conjunto de un byte (versión 1 = HMAC-SHA256-128) antes del despliegue en la flota, con un coste de un byte por mensaje; (3) la firma del firmware de la RTU-B usa un esquema de firma clásico: se pide al fabricante, como condición contractual, una hoja de ruta de migración poscuántica; (4) no se mantienen módems LTE de repuesto y el modelo llega al fin de venta el año próximo: se compran repuestos ahora y se planifica la sustitución; (5) falta el procedimiento de retirada de servicio: se redacta y se vincula a la gestión de cambios.
+
+### 39.6 Actividad práctica
+
+Construya un registro de obsolescencia para los componentes del TMRP (RTU, pasarelas, módems, servidores SCADA, sistema operativo, HSM) con fechas supuestas, estado del soporte, repuestos disponibles y plan de sustitución. Incluya todos los componentes que menciona la revisión del TMRP: RTU-A y RTU-B, las pasarelas, los módems LTE, los servidores SCADA y su sistema operativo, y el módulo de seguridad de hardware. Para cada uno, registre las fechas supuestas de fin de venta y de fin de soporte, los repuestos disponibles y el plan de sustitución. Señale cualquier componente cuyo soporte termine antes de su sustitución prevista, como constató la revisión para los módems LTE. Mantenga el registro bajo control de cambios para que siga al día.
+
+### 39.7 Errores comunes y límites
+
+- Diseños que requieren al proveedor original para siempre.
+- Deuda técnica que no se registra.
+- Formatos de mensaje sin versionado ni identificadores de algoritmo.
+- Dispositivos retirados que dejan atrás claves y reglas de cortafuegos.
+
+La revisión del TMRP encontró el tercer error en la trama del laboratorio 8 y lo corrigió con un identificador de conjunto de un byte antes del despliegue en la flota. También registró las pasarelas heredadas como deuda y redactó el procedimiento de retirada de servicio que faltaba. Los módems LTE de repuesto se compran antes del fin de venta del modelo. El nuevo procedimiento revoca las claves y elimina las reglas de cortafuegos obsoletas.
+
+### Ejercicios — capítulo 39
+
+**EX077 — Incorporar agilidad.** *Objetivo:* añadir agilidad criptográfica. *Entradas:* formato de trama del laboratorio 8. *Pasos:* añada un ID de conjunto de un byte y una política del receptor que acepte solo los conjuntos configurados; muestre cómo podría introducirse el conjunto 2 (un MAC diferente) durante un periodo de transición y cómo se retiraría el conjunto 1. *Evidencia esperada:* diseño y un breve esbozo de código. *Rúbrica:* 3 = ID de conjunto autenticado (dentro del MAC), política de conjuntos permitidos por estación, prevención de la degradación, paso de retirada; 2 = ID de conjunto no autenticado; 1 = solo descripción; 0 = nada.
+
+**EX078 — Lista de comprobación de retirada de servicio.** *Objetivo:* retirar un dispositivo de forma segura. *Entradas:* la RTU-A heredada de PS2 y su pasarela, que se sustituyen por una RTU-B. *Pasos:* redacte una lista de comprobación de al menos ocho pasos con la evidencia de cada uno. *Evidencia esperada:* lista de comprobación. *Rúbrica:* 3 = claves revocadas, cuentas eliminadas, almacenamiento borrado, inventario/modelo/lista de permitidos actualizados, reglas de cortafuegos eliminadas, líneas base de supervisión actualizadas, destino de los repuestos, aprobación final; 2 = faltan las reglas o las claves; 1 = genérica; 0 = nada.
+
+### Síntesis del capítulo
+
+Diseñe para décadas: componentes sustituibles, software actualizable, documentación al día, competencias disponibles. Registre la deuda técnica, gestione la obsolescencia antes del fin del soporte, incorpore la agilidad criptográfica en los formatos y en las vías de actualización con un plan de migración poscuántica, y retire los dispositivos de modo que nada (claves, cuentas, reglas) sobreviva al dispositivo.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Siga estudiando — capítulo 39 de 50
+
+[← Capítulo 38](#ch-38) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratorio de verificación II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) diseñar y ejecutar una campaña de inyección de fallos con semilla contra un control de seguridad; (2) clasificar los resultados y calcular las tasas de detección por clase de fallo; (3) encontrar las lagunas entre lo que detecta un control y lo que necesita un requisito; y (4) informar de una campaña de forma reproducible. Amplía el capítulo 30 a los fallos del entorno y a los ataques y prepara el proyecto final (capítulos 44–47).
+
+### 40.1 Inyección de fallos
+
+La inyección de fallos introduce deliberadamente fallos (mensajes corrompidos, descartados, retrasados, reproducidos o reordenados; reinicios de procesos; saltos de reloj; agotamiento de recursos) para observar cómo se comporta un sistema. Pone a prueba el tratamiento de errores al que las pruebas ordinarias rara vez llegan. Una campaña especifica el modelo de fallos (qué fallos y con qué tasas), el sistema bajo prueba, el oráculo (cuál es el comportamiento correcto ante cada fallo) y las mediciones. Para el TMRP, la campaña sobre el receptor de este capítulo inyecta corrupción, reproducción, retraso y descartes. Cada fallo tiene un oráculo. Los resultados se cuentan por clase.
+
+### 40.2 Oráculos y clasificación
+
+Para cada fallo inyectado, defina el resultado esperado: corrompido → rechazado como corrupto; reproducido → rechazado como reproducción; retrasado más allá de la ventana de frescura → rechazado como obsoleto; descartado → detectado como un hueco (o no, si el diseño no detecta huecos). Clasifique los resultados observados frente a los esperados. Un fallo que produce «ok» cuando debería haberse rechazado es un **fallo silencioso**, la clase más importante que hay que encontrar. Para el receptor del TMRP, la clase de descartes es aquella en la que el oráculo puso al descubierto una laguna: el diseño no tenía un resultado esperado para un mensaje perdido, porque nadie había preguntado qué debía ocurrir.
+
+### 40.3 Semillas, tasas y cobertura
+
+Fije la semilla del generador de fallos, regístrela e informe de los recuentos por clase de fallo. Elija tasas que produzcan suficientes eventos de cada clase para que sean significativos; una campaña de 500 mensajes con un 5 % por clase de fallo da unos 25 eventos de cada una, suficientes para encontrar fallos sistemáticos, pero no para estimar con precisión los raros. Amplíe la campaña para las clases que preocupen especialmente. La campaña del TMRP usa la semilla cuarenta, quinientos mensajes y un cinco por ciento por clase de fallo, de modo que cada clase produce suficientes eventos para mostrar un comportamiento sistemático. El proyecto final amplía la campaña a diez mil mensajes en siete clases de fallo, incluidos el reinicio y la reordenación.
+
+### 40.4 Ejemplo resuelto: campaña sobre el receptor de telemetría (sintético)
+
+El laboratorio 15 envía 500 mensajes con la semilla 40; cada uno tiene un 80 % de probabilidad de no tener fallo y un 5 % de cada uno de los siguientes: corrupción, reproducción de un mensaje válido anterior, un retraso de 120 s (ventana de frescura de 60 s) y descarte. Resultados: todos los mensajes corrompidos se rechazaron como corruptos; todas las reproducciones, como reproducción; todos los mensajes retrasados, como obsoletos; ningún fallo produjo un «ok» silencioso. Pero **los descartes son invisibles para el receptor**: se perdieron 21 mensajes y el receptor no señaló nada. La comprobación de contadores del receptor rechaza los contadores antiguos, pero no alarma ante los huecos. El requisito R7 (alarmas en 60 s) implica que la pérdida de los datos de una estación debe ser visible en sí misma. Cambio de diseño: alarmar cuando no llegue ningún mensaje válido de una estación durante 60 s y registrar los huecos de contador. La campaña se vuelve a ejecutar tras el cambio con la misma semilla.
+
+### 40.5 Actividad práctica: laboratorio 15
+
+```python
+# Lab 15 - fault-injection campaign against the telemetry receiver (synthetic, seeded, offline)
+import random, hmac, hashlib, struct
+KEY = b"k" * 32
+def seal(c, lvl, ts):
+    b = struct.pack(">QHI", c, lvl, ts); return b + hmac.new(KEY, b, hashlib.sha256).digest()[:16]
+def receive(m, state, now, max_age=60):
+    b, tag = m[:14], m[14:]
+    if len(m) != 30 or not hmac.compare_digest(tag, hmac.new(KEY, b, hashlib.sha256).digest()[:16]): return "corrupt"
+    c, lvl, ts = struct.unpack(">QHI", b)
+    if c <= state["last"]: return "replay"
+    if now - ts > max_age: return "stale"
+    state["last"] = c; return "ok"
+rng = random.Random(40); state = {"last": 0}; tally = {}; sent = []
+for i in range(1, 501):
+    now = 10 * i; m = seal(i, 300, now); fault = rng.choices(["none", "corrupt", "replay", "delay", "drop"], [80, 5, 5, 5, 5])[0]
+    if fault == "corrupt": m = m[:5] + bytes([m[5] ^ 0x10]) + m[6:]
+    if fault == "replay" and sent: m = rng.choice(sent)
+    if fault == "drop": tally[("drop", "lost")] = tally.get(("drop", "lost"), 0) + 1; continue
+    arrive = now + (120 if fault == "delay" else 1)
+    out = receive(m, state, arrive)
+    tally[(fault, out)] = tally.get((fault, out), 0) + 1
+    if fault == "none": sent.append(m)
+for k in sorted(tally): print(k, tally[k])
+```
+
+Salida esperada:
+
+```text
+('corrupt', 'corrupt') 14
+('delay', 'stale') 22
+('drop', 'lost') 21
+('none', 'ok') 419
+('replay', 'replay') 24
+```
+
+Todos los mensajes corrompidos, reproducidos y retrasados acabaron en la clase que predecía su oráculo, y ningún fallo produjo una aceptación silenciosa. Los mensajes descartados son el hallazgo: se perdieron veintiuno y el receptor no señaló nada, porque las comprobaciones de contadores solo rechazan mensajes antiguos. Ese resultado dio lugar a la alarma de estación sin datos, que salta cuando no llega ningún mensaje válido de una estación durante sesenta segundos, y al hallazgo de revisión F2. Después, la campaña se vuelve a ejecutar con la misma semilla para confirmar el cambio.
+
+### 40.6 Errores comunes y límites
+
+- Modelos de fallos limitados a lo que esperaba el diseñador.
+- Sin oráculo, de modo que los resultados no pueden juzgarse.
+- Campañas sin semilla.
+- Tratar «no se observaron fallos silenciosos» como una prueba.
+- No volver a ejecutar la campaña después de las correcciones.
+
+La primera campaña del TMRP mostró el primer error: los descartes eran silenciosos porque los diseñadores nunca incluyeron la pérdida de datos entre los fallos que su receptor debía advertir. Volver a ejecutarla tras añadir la alarma de estación sin datos es la forma de confirmar la corrección. Su semilla está registrada, así que la nueva ejecución es comparable. La clase de descartes se mantiene ahora en todas las ejecuciones.
+
+### Ejercicios — capítulo 40
+
+**EX079 — Detección de huecos.** *Objetivo:* cerrar la laguna de los descartes. *Entradas:* laboratorio 15. *Pasos:* añada la detección de huecos (un salto de contador mayor que 1 registra `gap`) y vuelva a ejecutar con la misma semilla; informe de cuántos eventos de hueco se registran y de por qué el número puede diferir del número de descartes. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = implementado correctamente; explica que los descartes consecutivos producen un único evento de hueco y que las reproducciones y los mensajes rechazados también afectan a la continuidad de los contadores; 2 = implementado, sin explicación; 1 = no ejecutado; 0 = nada.
+
+**EX080 — Ampliar el modelo de fallos.** *Objetivo:* añadir fallos. *Entradas:* laboratorio 15. *Pasos:* añada dos clases de fallo, la reordenación (intercambiar dos mensajes consecutivos) y el reinicio del receptor (restablecer `state`), defina los oráculos, ejecute e informe de los fallos silenciosos. *Evidencia esperada:* código, oráculos y resultados. *Rúbrica:* 3 = la reordenación hace que el mensaje anterior se rechace como reproducción (aceptable o no, de forma argumentada), el reinicio permite reproducciones (fallo silencioso) salvo que el estado se conserve; 2 = una clase; 1 = sin oráculo; 0 = nada.
+
+### Síntesis del capítulo
+
+La inyección de fallos ejercita el tratamiento de errores que las pruebas ordinarias no alcanzan. Defina de antemano el modelo de fallos y el oráculo, fije la semilla y cuente, clasifique los resultados y busque los fallos silenciosos. El laboratorio 15 muestra el resultado típico: el control rechaza lo que se diseñó para rechazar y es ciego a lo que nadie incluyó en la lista, aquí la pérdida de datos.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Siga estudiando — capítulo 40 de 50
+
+[← Capítulo 39](#ch-39) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Infraestructura crítica y seguridad sectorial: optimización de sistemas
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) formular la inversión en seguridad como un problema de optimización con objetivos y restricciones; (2) resolver problemas pequeños de forma exacta y entender por qué las heurísticas voraces pueden fallar; (3) tratar objetivos múltiples y la incertidumbre con el análisis de Pareto y la sensibilidad; y (4) presentar los resultados de la optimización como apoyo a la decisión, no como decisiones. Se apoya en los capítulos 25, 32 y 36 y prepara el proyecto final.
+
+### 41.1 Formular el problema
+
+Elija un conjunto de controles $S$ que maximice el beneficio $\sum_{c\in S} b_c$ sujeto al coste $\sum_{c\in S} k_c \le B$. Este es el problema de la mochila 0/1. Los beneficios pueden ser la reducción de la pérdida anual esperada, la reducción de las personas-hora sin agua o la reducción de la probabilidad del evento cima. Los problemas reales añaden restricciones (dependencias entre controles, límites de personal, fases) e interacciones (dos controles que abordan el mismo escenario no suman sus beneficios).
+
+Para la fase 1 del TMRP, los beneficios del laboratorio 16 son estimaciones sintéticas de la reducción de la pérdida anual esperada.
+
+### 41.2 Soluciones exactas y heurísticas
+
+Con un puñado de candidatos, enumere todos los subconjuntos ($2^n$). La programación dinámica resuelve los problemas de la mochila de forma exacta en un tiempo proporcional a $n \times B$ para costes enteros. La heurística **voraz** (elegir por la razón beneficio/coste hasta agotar el presupuesto) es rápida e intuitiva, pero puede dejar presupuesto sin usar o pasar por alto combinaciones mejores. Para problemas mayores, los solucionadores de programación entera son lo habitual. El laboratorio 16 muestra el fallo de la heurística voraz con los siete candidatos del TMRP. La heurística voraz dejó presupuesto sin usar y omitió las RTU de repuesto, una laguna que la búsqueda exhaustiva encontró de inmediato.
+
+### 41.3 Objetivos múltiples e incertidumbre
+
+Las inversiones en seguridad ponderan el coste, la reducción del riesgo, la operabilidad y otros bienes. Una solución es **óptima de Pareto** si ninguna otra solución es mejor en un objetivo sin ser peor en otro; presente el conjunto de Pareto en lugar de una única respuesta ponderada. Los beneficios son estimaciones inciertas; compruebe si el conjunto óptimo cambia cuando los beneficios varían dentro de rangos plausibles. Las elecciones robustas (las que son buenas en todos los escenarios) suelen ser preferibles a las elecciones que solo son óptimas con estimaciones puntuales.
+
+Para el TMRP, la comprobación de robustez del EX082 varía cada beneficio un veinte por ciento y constata que tres de las catorce ejecuciones cambian el óptimo, de modo que la última parte de la cartera es un casi empate.
+
+### 41.4 Interacciones
+
+Los beneficios rara vez son aditivos. La telemetría autenticada y la supervisión de red reducen ambas el riesgo de órdenes falsificadas; una vez implantada la autenticación, el beneficio adicional de la supervisión para ese escenario es menor. Modele las interacciones calculando el beneficio a partir del modelo de escenarios (p. ej., el árbol de fallos) para cada conjunto candidato, en lugar de sumar cifras por control. En el laboratorio 16 los beneficios simplemente se suman, lo cual es una simplificación: la telemetría autenticada y el sensor de detección de red reducen ambos el riesgo de órdenes falsificadas, de modo que su valor combinado es menor que la suma. Un modelo mejor vuelve a calcular el beneficio a partir del árbol de fallos para cada conjunto candidato.
+
+### 41.5 Ejemplo resuelto: cartera de la fase 1 del TMRP (sintético)
+
+Siete controles candidatos con costes y beneficios sintéticos, presupuesto de 250 k (laboratorio 16). La heurística voraz por razón elige las copias de seguridad desconectadas, el modo manual local, la telemetría autenticada y el bastionado de la estación de ingeniería: coste 215 k, beneficio 480 k. La búsqueda exhaustiva encuentra un conjunto mejor (telemetría autenticada, modo manual local, copias de seguridad desconectadas y RTU de repuesto) con un coste de 250 k y un beneficio de 530 k. La heurística voraz tomó pronto el bastionado barato de la estación de trabajo y después no pudo costear las RTU de repuesto. El equipo presenta ambos resultados, señala que las estimaciones de beneficio tienen una incertidumbre amplia y muestra que, cuando cada beneficio varía individualmente un ±20 %, la telemetría autenticada y el modo manual local permanecen en todos los óptimos, mientras que tres ejecuciones sustituyen las copias de seguridad desconectadas y las RTU de repuesto por el generador de respaldo (EX082): una comprobación de robustez, no una demostración.
+
+### 41.6 Actividad práctica: laboratorio 16
+
+```python
+# Lab 16 - choose controls under a budget: exhaustive search beats greedy here (synthetic, offline)
+from itertools import combinations
+C = {  # control: (cost k$, expected annual loss reduction k$)
+    "auth_telemetry": (120, 260), "backup_gen_PS4": (90, 150), "local_manual_mode": (40, 110),
+    "offline_backups": (30, 70), "eng_ws_hardening": (25, 40), "ndr_sensor": (100, 120), "spare_rtus": (60, 90)}
+B = 250
+best = max((s for r in range(len(C)+1) for s in combinations(C, r) if sum(C[c][0] for c in s) <= B),
+           key=lambda s: sum(C[c][1] for c in s))
+print("optimal:", sorted(best), "cost", sum(C[c][0] for c in best), "benefit", sum(C[c][1] for c in best))
+g, spent = [], 0
+for c in sorted(C, key=lambda c: C[c][1] / C[c][0], reverse=True):
+    if spent + C[c][0] <= B: g.append(c); spent += C[c][0]
+print("greedy :", sorted(g), "cost", spent, "benefit", sum(C[c][1] for c in g))
+```
+
+Salida esperada:
+
+```text
+optimal: ['auth_telemetry', 'local_manual_mode', 'offline_backups', 'spare_rtus'] cost 250 benefit 530
+greedy : ['auth_telemetry', 'eng_ws_hardening', 'local_manual_mode', 'offline_backups'] cost 215 benefit 480
+```
+
+El óptimo exhaustivo gasta todo el presupuesto en la telemetría autenticada, el modo manual local, las copias de seguridad desconectadas y las RTU de repuesto. La heurística voraz elige pronto el bastionado de la estación de trabajo por su buena razón, deja demasiado poco dinero para las RTU de repuesto y termina con menos beneficio y algo de presupuesto sin usar. Con siete candidatos, la búsqueda exhaustiva es instantánea, así que no hay motivo para aceptar la respuesta voraz; con cientos de candidatos, un solucionador de programación entera sustituiría a ambas. Registre ambos resultados. Anote el presupuesto sin usar.
+
+### 41.7 Errores comunes y límites
+
+- Sumar los beneficios de controles que interactúan.
+- Presentar un único óptimo sin sensibilidad.
+- Heurísticas voraces usadas sin compararlas con las soluciones exactas en instancias pequeñas.
+- Resultados de la optimización presentados como decisiones en lugar de como insumos para las decisiones.
+- Cifras de beneficio sin una base declarada.
+
+La cartera del TMRP evita el tercer error comparando la heurística voraz con la búsqueda exhaustiva, y presenta ambos resultados con la comprobación de robustez al responsable de la decisión. Cada cifra de beneficio se etiqueta como estimación sintética, y el resultado se ofrece como apoyo a la decisión. Las interacciones se señalan.
+
+### Ejercicios — capítulo 41
+
+**EX081 — Barrido de presupuesto.** *Objetivo:* ver cómo cambia el óptimo con el presupuesto. *Entradas:* laboratorio 16. *Pasos:* calcule el conjunto óptimo y el beneficio para presupuestos de 150, 200, 250, 300 y 350 k; represente gráficamente o tabule el beneficio marginal por cada 50 k adicionales. *Evidencia esperada:* tabla. *Rúbrica:* 3 = óptimos correctos (ejecute el código), beneficio marginal decreciente observado e interpretado; 2 = un error; 1 = un solo presupuesto; 0 = nada.
+
+**EX082 — Robustez.** *Objetivo:* comprobar la sensibilidad del óptimo. *Entradas:* laboratorio 16. *Pasos:* para cada control, multiplique su beneficio por 0,8 y por 1,2 (los demás sin cambios), vuelva a calcular el óptimo e informe de cualquier cambio. *Evidencia esperada:* tabla de 14 ejecuciones. *Rúbrica:* 3 = resultados correctos y conclusión sobre la robustez; 2 = parcial; 1 = no ejecutado; 0 = nada.
+
+### Síntesis del capítulo
+
+Formule las decisiones de inversión como una optimización con objetivos y restricciones explícitos, resuelva los problemas pequeños de forma exacta y desconfíe de los atajos voraces, modele las interacciones en lugar de sumar beneficios, presente conjuntos de Pareto y la sensibilidad, y ofrezca el resultado como apoyo estructurado para una decisión humana.
+
+<!-- cyberabc:chapter-navigation:start ch-41 -->
+### Siga estudiando — capítulo 41 de 50
+
+[← Capítulo 40](#ch-40) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Infraestructura crítica y seguridad sectorial: investigación aplicada
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) plantear una pregunta de ingeniería que necesita evidencia nueva; (2) diseñar un pequeño estudio aplicado (experimento en un banco de pruebas, estudio de simulación o medición de campo) con controles y reproducibilidad; (3) usar de forma responsable los conjuntos de datos y bancos de pruebas públicos; y (4) informar de los resultados con sus límites. Es la contrapartida de ingeniería de los libros de investigación de maestría y de doctorado y prepara el proyecto final y la tesis (capítulos 44–49).
+
+### 42.1 Investigación de ingeniería frente a investigación académica
+
+La investigación aplicada de este curso responde a una pregunta de diseño para un sistema concreto, con evidencia suficiente para una decisión de ingeniería. Difiere del [libro de maestría](../../../../masters-2-years/critical-sector-security/es/book/MANUSCRIPT.md), que enseña a diseñar y defender un estudio empírico con revisión ética, y del [libro de doctorado](../../../../doctorate-2-years/critical-sector-security/es/book/MANUSCRIPT.md), que exige una contribución original al conocimiento validada de forma independiente. Un estudio de ingeniería tiene éxito si cambia o confirma una decisión de diseño con evidencia que un revisor pueda comprobar.
+
+### 42.2 Diseñar un estudio pequeño
+
+Formule la pregunta y la decisión a la que informa; defina la medición (capítulo 29); elija un diseño (comparación de alternativas en un banco de pruebas, un barrido de parámetros en simulación o la medición de un sistema existente); fije el análisis antes de ejecutar; controle los factores de confusión (la misma carga, el mismo hardware, las mismas semillas); repita las ejecuciones para medir la variabilidad; y registre todo para permitir la reproducción ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)). El estudio del detector del TMRP sigue este patrón, con su regla de análisis fijada antes de cualquier ejecución. Sus semillas quedan registradas.
+
+### 42.3 Conjuntos de datos y bancos de pruebas públicos
+
+Los conjuntos de datos y bancos de pruebas públicos de seguridad industrial permiten experimentar sin tocar infraestructuras reales. El conjunto de datos del banco de pruebas Secure Water Treatment (SWaT) descrito por [Goh et al. (2017)](https://doi.org/10.1007/978-3-319-71368-7_8) y la competición BATADAL sobre redes de distribución de agua de la que informan [Taormina et al. (2018)](https://doi.org/10.1061/(ASCE)WR.1943-5452.0000969) se usan ampliamente. Conozca sus límites: los bancos de pruebas son más pequeños y limpios que las plantas reales, los conjuntos de ataques los eligen los investigadores, y el rendimiento en un banco de referencia no se transfiere automáticamente. Lea sobre los errores de evaluación antes de declarar resultados ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp); [Sommer y Paxson, 2010](https://doi.org/10.1109/SP.2010.25)).
+
+### 42.4 Ética y autorización
+
+La investigación aplicada sobre sistemas reales requiere la autorización escrita del propietario y, cuando intervienen personas o datos personales, una revisión ética (capítulo 10). Los resultados que revelan debilidades de sistemas concretos van al propietario, no a un congreso. Para el TMRP, el estudio del detector usa simulación y los datos del propio historiador de la LRWA bajo la autoridad del programa. Cualquier hallazgo sobre el producto de un fabricante se comunicaría a ese fabricante en privado antes de escribir nada para un público más amplio, y ninguna estación real se usa como sujeto experimental.
+
+### 42.5 Ejemplo resuelto: ¿merece la pena desplegar el detector acumulativo? (sintético)
+
+Pregunta: ¿debería el TMRP desplegar en Hollin Hill el detector acumulativo de balance de masa del capítulo 17? Decisión a la que informa: desplegarlo, con qué umbral y con qué intervalo de recalibración. Diseño del estudio: barrido de simulación sobre niveles de ruido (0,005–0,02 m), deriva del caudalímetro (0–1 %) y umbrales (0,02–0,08 m), 100 ejecuciones con semilla por celda, midiendo las falsas alarmas al mes y el tiempo de detección de ataques en rampa de 0,01–0,1 m/h. Análisis fijado de antemano: elegir el umbral con menos de una falsa alarma al mes al nivel de ruido medido e informar del tiempo de detección con ese umbral. Validación: comparar el ruido simulado con dos semanas de datos del historiador. Límites: modelo de depósito de mezcla perfecta; un atacante que controle los caudalímetros queda fuera del alcance.
+
+### 42.6 Actividad práctica
+
+Implemente una versión reducida del §42.5 usando el laboratorio 7: tres umbrales × tres niveles de ruido × 20 semillas; informe de las falsas alarmas y de los tiempos de detección de la rampa en una tabla con su variabilidad. Fije su regla de análisis antes de ejecutar: por ejemplo, elija el umbral más bajo sin falsas alarmas en las ejecuciones sin ataque para cada nivel de ruido. Fije la semilla de cada ejecución y registre las semillas. Informe del número de falsas alarmas y del tiempo de detección de la rampa para cada celda con su dispersión entre semillas, no solo la media. Después, declare un límite del estudio reducido, como unos caudalímetros perfectos, y la dirección en la que sesga sus resultados.
+
+### 42.7 Errores comunes y límites
+
+- Estudios que no informan ninguna decisión.
+- Análisis elegido después de ver los resultados.
+- Ejecuciones únicas presentadas como resultados.
+- Rendimiento en un banco de referencia del que se afirma que se transfiere a plantas reales.
+- Debilidades de sistemas reales publicadas sin coordinación.
+
+El estudio del detector acumulativo del ejemplo resuelto evita cada uno de ellos: informa una decisión de despliegue, fija de antemano su regla de análisis, usa cien ejecuciones por celda, valida su modelo de ruido frente a dos semanas de datos del historiador de la LRWA y declara que un atacante que controle los caudalímetros queda fuera del alcance.
+
+### Ejercicios — capítulo 42
+
+**EX083 — Protocolo del estudio.** *Objetivo:* redactar un protocolo especificado de antemano. *Entradas:* §42.5. *Pasos:* redacte un protocolo de una página: pregunta, decisión, diseño, mediciones, regla de análisis, validación, límites. *Evidencia esperada:* protocolo. *Rúbrica:* 3 = completo, regla de análisis fijada de antemano, validación frente a datos reales de ruido, límites honestos; 2 = análisis vago; 1 = sin decisión; 0 = nada.
+
+**EX084 — Límites de un conjunto de datos.** *Objetivo:* evaluar la transferencia desde un banco de pruebas. *Entradas:* un fabricante afirma un 99 % de detección en un conjunto de datos público de un banco de pruebas de agua. *Pasos:* enumere cinco preguntas que haría antes de aceptarlo para la LRWA. *Evidencia esperada:* lista. *Rúbrica:* 3 = tasa base y tasa de falsas alarmas en operación, realismo del conjunto de ataques, protocolo de evaluación (ajuste por puntos, fuga de datos), escala/diferencia de la planta, adaptación a los adversarios; 2 = tres buenas preguntas; 1 = genérica; 0 = nada.
+
+### Síntesis del capítulo
+
+La investigación de ingeniería responde a una pregunta de diseño con evidencia comprobable. Especifique el estudio de antemano, controle los factores de confusión, repita las ejecuciones, use los bancos de pruebas públicos dentro de sus límites, obtenga autorización para cualquier cosa real e informe de los resultados con sus fronteras.
+
+<!-- cyberabc:chapter-navigation:start ch-42 -->
+### Siga estudiando — capítulo 42 de 50
+
+[← Capítulo 41](#ch-41) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prácticas en la industria o en el servicio público
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) planificar y completar una estancia de prácticas supervisada en un operador, un fabricante, un integrador, un regulador o un organismo público; (2) trabajar dentro de las normas de autorización, confidencialidad y seguridad de la estancia; (3) llevar un diario de práctica reflexiva que vincule el trabajo observado con los métodos del curso; y (4) elaborar un informe de la estancia que sea útil para la entidad de acogida y seguro de compartir. Aplica todo el curso a la práctica real y prepara el proyecto final.
+
+### 43.1 Finalidad de las prácticas
+
+Las prácticas ponen de manifiesto las restricciones que los libros de texto suavizan: los ciclos de contratación, la dotación de personal, los equipos heredados, los plazos regulatorios, los convenios sindicales, los presupuestos y la distancia entre el procedimiento y la práctica. Los ingenieros que han visto una sala de control de noche diseñan de forma distinta a los que no. El caso del TMRP de este libro es sintético; una estancia es donde se ve hasta qué punto las restricciones de una empresa de servicios real difieren de él. Fíjese en cómo se toman realmente las decisiones, en quién es responsable del riesgo operativo y en cuánto tarda un cambio sencillo, porque esas observaciones condicionarán cómo delimita el alcance de su proyecto final.
+
+### 43.2 Acuerdo de la estancia
+
+Antes de empezar, acuerde por escrito: el supervisor de la entidad de acogida y el supervisor académico; el alcance del trabajo; los sistemas a los que puede acceder y cómo; la confidencialidad y el tratamiento de los datos; la formación inicial en seguridad; lo que puede publicar en su informe; y cómo se gestionan los hallazgos incidentales. Usted trabaja bajo la autoridad y las políticas de la entidad de acogida; su curso no le da autoridad para probar ni acceder a nada.
+
+La entidad de acogida del ejemplo resuelto aprobó el texto del informe final antes de que saliera de la organización. Acordar de antemano la norma de publicación evitó cualquier discusión sobre lo que podía incluir el informe.
+
+### 43.3 Diario de práctica reflexiva
+
+Lleve un diario semanal con cuatro entradas: **observación** (lo que vio, sin juzgarlo), **conexión** (con qué método de qué capítulo se relaciona), **diferencia** (en qué se apartó la práctica del método y por qué tenía sentido localmente) y **pregunta** (qué investigaría). La reflexión convierte la experiencia en un criterio transferible. No registre detalles sensibles en el diario; registre patrones. En el ejemplo resuelto que sigue, la observación del estudiante sobre las versiones de firmware sigue exactamente este patrón y no contiene nombres de dispositivos. Las entradas semanales mantienen el hábito.
+
+### 43.4 Trabajo habitual en las estancias
+
+Tareas típicas para un estudiante de ingeniería: actualizar un inventario de activos y conciliarlo con los datos de red (capítulo 22); redactar o revisar una guía de actuación (capítulo 37); apoyar una evaluación de riesgos (capítulo 24); preparar un procedimiento de prueba para una puesta en servicio (capítulo 31); evaluar avisos de seguridad frente al inventario (capítulo 12). Cada una produce un entregable para la entidad de acogida y un artefacto de aprendizaje depurado para el curso. El estudiante del ejemplo resuelto realizó la primera tarea: conciliar un registro de activos con los datos de supervisión. Su entregable para la entidad de acogida fue un cambio en el formulario de órdenes de trabajo.
+
+### 43.5 Ejemplo resuelto: un informe de estancia depurado (sintético)
+
+Un estudiante en prácticas en una distribuidora eléctrica regional (sintética) redacta una sección del informe: «Observación: las versiones de firmware de las RTU de subestación que figuraban en el registro de activos diferían de las observadas mediante supervisión pasiva en el 18 % de una muestra de 60 dispositivos. Conexión: la conciliación de múltiples fuentes de inventario del capítulo 22. Diferencia: el registro se actualiza en las visitas de mantenimiento anuales, mientras que los cambios de firmware se producen durante reparaciones no programadas; el personal de campo no tenía una forma sencilla de notificar los cambios. Recomendación (aceptada por la entidad de acogida): añadir un campo de firmware al formulario de órdenes de trabajo de reparación y una conciliación trimestral con los datos de supervisión». No aparecen nombres de dispositivos, direcciones ni ubicaciones; la entidad de acogida aprobó el texto.
+
+### 43.6 Actividad práctica
+
+Redacte un acuerdo de estancia para una estancia hipotética de cuatro meses en una empresa de servicios de agua, que cubra todos los puntos del §43.2. Use una empresa de agua como la LRWA como modelo mental, pero mantenga el acuerdo lo bastante general como para que una entidad de acogida real pueda firmarlo. Nombre a ambos supervisores por su función, enumere los sistemas que puede ver y cómo, y declare claramente que no puede probar ni explorar nada. Indique cómo se notifican los hallazgos incidentales y quién aprueba su informe antes de que salga de la entidad de acogida. Añada una fecha para la formación inicial en seguridad y los datos que puede llevarse, que normalmente no deberían ser ninguno.
+
+### 43.7 Errores comunes y límites
+
+- Empezar sin un alcance y un acuerdo de tratamiento de datos por escrito.
+- Tratar el acceso de la estancia como permiso para explorar.
+- Diarios que contienen detalles sensibles.
+- Informes que critican a la entidad de acogida sin entender las restricciones locales.
+
+El ejemplo resuelto evita cada uno de ellos: su alcance se acordó, su diario registró patrones en lugar de detalles de dispositivos y su recomendación tuvo en cuenta por qué el registro iba por detrás de las reparaciones. Su crítica del registro se planteó en torno a una laguna del proceso, no en torno al personal de campo, y la entidad de acogida aceptó la recomendación porque encajaba con la forma en que realmente se hacían las reparaciones.
+
+### Ejercicios — capítulo 43
+
+**EX085 — Acuerdo de la estancia.** *Objetivo:* definir los límites de la estancia. *Entradas:* §43.6. *Pasos:* redacte el acuerdo. *Evidencia esperada:* de una a dos páginas. *Rúbrica:* 3 = todos los puntos del §43.2, prohibición explícita de las pruebas fuera del alcance, vía para los hallazgos incidentales, aprobación de la publicación; 2 = falta uno; 1 = genérico; 0 = nada.
+
+**EX086 — Entrada reflexiva.** *Objetivo:* reflexionar de forma útil. *Entradas:* una observación: «los operadores llevaban un cuaderno en papel con los cambios de consigna junto al registro del SCADA». *Pasos:* redacte una entrada del diario en cuatro partes. *Evidencia esperada:* entrada. *Rúbrica:* 3 = observación neutral, vínculo con los capítulos 13/37, racionalidad local (confianza, interrupciones, traspaso de turno), pregunta de investigación; 2 = enjuiciadora; 1 = solo la observación; 0 = nada.
+
+### Síntesis del capítulo
+
+Las prácticas enseñan las restricciones que dan forma a los diseños reales. Trabaje dentro de un acuerdo escrito y bajo la autoridad de la entidad de acogida, registre observaciones, conexiones, diferencias y preguntas sin detalles sensibles, y aporte valor a la entidad de acogida de una forma que sea seguro compartir.
+
+<!-- cyberabc:chapter-navigation:start ch-43 -->
+### Siga estudiando — capítulo 43 de 50
+
+[← Capítulo 42](#ch-42) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 44 →](../../en/book/MANUSCRIPT.md#ch-44)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -3127,6 +3571,42 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX073.** Debilidades: «no coincide con una acción del operador» es ambiguo; defínalo como la ausencia de una orden registrada del operador para esa estación y ese parámetro en los 5 min anteriores; no hay datos de contacto: añada los números del jefe de turno y del responsable de seguridad de guardia; restablecer las consignas a distancia podría usar el camino comprometido: especifique el restablecimiento local por parte del técnico de turno si hay fallos de MAC en la pasarela.
 
 **EX074.** Qué ocurrió: un técnico conectó un portátil a la red de PS3 para descargar registros. Por qué tenía sentido: la ruta por el servidor de salto es lenta y exige un ticket; los registros se necesitaban para una llamada con el fabricante esa misma tarde. Defensas que fallaron: sin seguridad de puertos en el conmutador; sin una vía sencilla y aprobada para los registros; el procedimiento suponía que el servidor de salto siempre estaba disponible. Cambios: ofrecer un colector de registros en la DMZ para que los técnicos no tengan que conectarse; habilitar la seguridad de puertos; proporcionar un conjunto de portátiles de mantenimiento analizados; simplificar el acceso por el servidor de salto para la obtención de registros de solo lectura.
+
+### Capítulo 38
+
+**EX075.** Con T3b superada para R3, T8 superada para R4 y T6 superada para R8: no probados ['R9'], probados pero sin superar [], verificados 8/9 (88,9 %). R9 sigue sin verificar hasta que se escriba y se supere una prueba de la alarma independiente de dosificación (por ejemplo, detener la dosificación en el banco de pruebas y cronometrar la alarma en el registrador independiente frente a 15 min). La verificación está completa para los otros ocho requisitos; la validación de N1 aún necesita las actividades con partes interesadas del EX076.
+
+**EX076.** (1) Ejercicio nocturno: el personal de operaciones pasa PS3 y PS4 a manual local con la plantilla nocturna real; se observan el tiempo y los errores; éxito: operación manual en menos de 1 h y presión de suministro mantenida. (2) Aislamiento planificado de PS4 en un periodo de baja demanda, con el responsable de instalaciones del hospital supervisando el almacenamiento in situ y la presión; éxito: suministro mantenido desde el depósito sin que el almacenamiento baje nunca del nivel que da 4 h de reserva. Partes interesadas: jefe de operaciones, instalaciones del hospital, ingeniería del TMRP.
+
+### Capítulo 39
+
+**EX077.** Trama: ID de conjunto (1 byte) ‖ contador ‖ estación ‖ valor ‖ etiqueta, con el MAC calculado también sobre el ID de conjunto (para que no pueda alterarse). El receptor mantiene los conjuntos permitidos por estación, p. ej., {1} → {1, 2} durante la transición → {2}. Prevención de la degradación: en cuanto una estación ha enviado el conjunto 2, se rechaza el conjunto 1 procedente de ella. Retirada: eliminar el conjunto 1 de todos los conjuntos permitidos una vez que todas las estaciones hayan migrado y revocar las claves del conjunto 1.
+
+**EX078.** Revocar la clave de la estación y eliminarla del HSM; eliminar las cuentas de la pasarela; borrar el almacenamiento de la pasarela y de la RTU (o destruirlo); actualizar el inventario, el modelo del sistema y el expediente; eliminar las entradas de la lista de permitidos y las reglas de cortafuegos de las direcciones antiguas; actualizar las líneas base de supervisión; dar de baja o poner en cuarentena los repuestos; registrar la aprobación final de operaciones y de seguridad.
+
+### Capítulo 40
+
+**EX079.** Con la semilla 40, la detección de huecos registra 67 eventos de hueco que cubren 81 contadores ausentes. Los números difieren de los 21 descartes porque todo mensaje que no se acepta (corrompidos (14), retrasados y obsoletos (22), descartados (21) y las posiciones en las que se reprodujo una trama antigua en lugar de la actual (24)) deja su contador sin usar; 14 + 22 + 21 + 24 = 81. Los contadores ausentes consecutivos producen un único evento de hueco, por lo que hay menos eventos que contadores ausentes.
+
+**EX080.** Con las clases de reordenación y reinicio (5 % cada una, semilla 40): los mensajes reordenados que llegan después de su sucesor se rechazan como reproducciones (17); es aceptable si se documenta, puesto que se descartan datos obsoletos y ya se dispone del valor más reciente, pero debe registrarse. Los reinicios del receptor no producen ningún error visible (26 aceptados con normalidad), y ese es el peligro: tras un restablecimiento, cualquier reproducción que llegue antes del siguiente mensaje fresco se aceptaría. Por azar, la campaña no muestra ningún caso así; una prueba determinista (reinicio y, después, reproducción) lo pone al descubierto: un fallo silencioso salvo que el receptor conserve el estado.
+
+### Capítulo 41
+
+**EX081.** 150 k: telemetría autenticada + copias de seguridad desconectadas → 330; 200 k: + modo manual local → 440 (coste 190); 250 k: + RTU de repuesto → 530; 300 k: telemetría autenticada, generador de respaldo, modo manual local, copias de seguridad desconectadas → 590 (coste 280); 350 k: + RTU de repuesto → 680 (coste 340). Beneficio marginal por cada 50 k adicionales: 110, 90, 60, 90; decreciente a grandes rasgos, pero irregular porque los controles son indivisibles.
+
+**EX082.** De las 14 ejecuciones, tres cambian el óptimo a {telemetría autenticada, generador de respaldo de PS4, modo manual local} (coste 250, beneficio 520 con los valores de referencia): beneficio del generador de respaldo × 1,2, copias de seguridad desconectadas × 0,8 o RTU de repuesto × 0,8. Todas las demás ejecuciones mantienen el conjunto de referencia. Conclusión: la telemetría autenticada y el modo manual local son elecciones robustas; los últimos 90 k del presupuesto son un casi empate entre {copias de seguridad desconectadas + RTU de repuesto} y el generador de respaldo, por lo que esa parte de la decisión debe basarse en mejores estimaciones o en criterios no monetarios.
+
+### Capítulo 42
+
+**EX083.** El protocolo incluye: pregunta (¿ofrece el detector acumulativo con el umbral θ < 1 falsa alarma al mes con el ruido medido, detectando a la vez rampas de 0,05 m/h en menos de 2 h?); decisión (desplegarlo y fijar θ y el intervalo de recalibración); diseño (barrido de simulación, 100 semillas por celda); mediciones; regla de análisis fijada de antemano; validación frente a dos semanas de ruido del historiador; límites (mezcla perfecta, caudalímetros honestos, un único depósito).
+
+**EX084.** ¿Qué tasa de falsas alarmas al día veríamos con nuestra tasa de eventos? ¿Qué ataques había en el conjunto de prueba y quién los eligió? ¿Se evaluó con ajuste por puntos o sin fuga de datos (división entrenamiento/prueba por tiempo)? ¿En qué medida se parece el banco de pruebas a nuestra planta en escala y ruido? ¿Cómo se mantiene el rendimiento frente a un atacante adaptativo que conoce el detector?
+
+### Capítulo 43
+
+**EX085.** Se evalúa con la rúbrica; el acuerdo debe nombrar a los supervisores, el alcance, el método de acceso, la confidencialidad, la formación inicial en seguridad, la aprobación de la publicación, la vía para los hallazgos incidentales y una declaración explícita de que el estudiante no probará ni explorará sistemas fuera de las tareas acordadas.
+
+**EX086.** Observación: los operadores registran los cambios de consigna en un cuaderno en papel además de en el SCADA. Conexión: capítulo 13 (procedencia) y capítulo 37 (operaciones). Diferencia: la práctica duplica el registro electrónico; es localmente racional porque el cuaderno sobrevive a las interrupciones del SCADA, facilita el traspaso de turno y goza de confianza. Pregunta: ¿discrepan alguna vez los dos registros y podría el cuaderno servir como comprobación de integridad independiente?
 
 <a id="glossary"></a>
 
