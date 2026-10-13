@@ -4065,6 +4065,58 @@ assert EVENTS == SOURCE_SNAPSHOT
 
 Predict the six baseline and four additional output lines; explain the three original rejected variants and the two new empty-selection controls before checking the [MIN2 worked result](#ir-rapid-ch02-min2-result) in the final appendix. The fixture contains no real personal data. The returned projected view is for the approved fictional review role only; `READY` does not establish source authenticity, complete collection or real custodian permission.
 
+### 2.24a Evidence availability is not the same as event time
+
+**Learning outcome:** Before making a triage or preservation decision, distinguish when a fact allegedly occurred, when the producer recorded it, when a custodian acquired it, and when the responder could actually use it. The same record can have a very early event time and still be **unavailable at a prior decision**. This is not a pedantic issue: the ability to defend a proportionate decision depends on knowing which facts the decision maker could have seen.
+
+At the first 09:05 checkpoint, R1–R8 are supplied. R9 describes an edit at 09:03 but is withheld until Round B. The analyst cannot treat that event as observed at 09:05 simply because its clock precedes the review time. At 09:20, R1–R16 make the B19 question visible; R17's later approved-task detail has not yet been released. At 09:37, the R1–R24 release supports a containment **proposal**, not a completed change. P1/C1 and V1 are later exercise cards and cannot justify that proposal.
+
+When building an evidence ledger, record these separate attributes: **source event time**, **ingestion/indexing time** where known, **case acquisition or receipt**, **learner/facilitator release**, **role authorized to view**, **source-query coverage**, and **status of the asserted observation**. A blank value remains unknown rather than a value silently supplied from another card. A negative query needs declared source and clock coverage; “no result” is not evidence that nothing occurred outside the selected window or after the ingestion cutoff.
+
+**Contrastive example:** A participant prepares a 09:05 note saying "R9 proves an unauthorized B19 edit." This fails twice: R9 was not released and it does not identify an unauthorized human. A valid note says "R1–R8 show the named booking events and the possibility of scheduled training; ask the service owner whether the work was permitted and set a bounded review." When R9 becomes available, the participant versions the note and adds B19 as a new reported edit, preserving the earlier snapshot. A second false shortcut uses R17 to pronounce at 09:20 that all authorized tasks are known. The later task list cannot cure the earlier uncertainty retroactively.
+
+**Why privacy matters:** An authorized, source-complete producer copy and a minimized analyst view are different objects. A non-privileged learner can receive a pseudonymized booking/state projection without obtaining raw patron contacts or every identity field. A projection must retain its query, transformation, source object identifier, date and limitations. If the source was never collected, a tidy projection with plausible rows is no substitute. The analysis should never reconstruct withheld identity data from guesses to make its graph feel complete.
+
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) provides the current risk-management setting for incident response; [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final), published in 2006, supplies foundational but dated discussion of forensic source handling. The release schedule below is an original CyberABC teaching rule, not a NIST timetabling requirement.
+
+#### R2X offline lab — prove the decision's evidence horizon
+
+Use Python 3 offline, with no imports, files or network. The values are **pedagogical release levels** for selected case cards, not actual service event times. The two D stages are intentionally separated: D1 is the branch-only checkpoint, D2 follows P1/C1 release. V1 remains a later independent card.
+
+~~~python
+FIRST = {"R1": 0, "R9": 1, "R17": 2, "P1": 4}
+LEVEL = {"A": 0, "B": 1, "C": 2, "D1": 3, "D2": 4}
+
+def release(stage, card):
+    return "RELEASED" if LEVEL[stage] >= FIRST[card] else "WITHHELD"
+
+cases = [
+    ("EVENT_BEFORE_RELEASE", "A", "R9"),
+    ("ROUND_B_R9", "B", "R9"),
+    ("PREMATURE_R17", "B", "R17"),
+    ("PREMATURE_P1", "C", "P1"),
+    ("LATER_P1", "D2", "P1"),
+]
+for label, stage, card in cases:
+    print(label, release(stage, card))
+~~~
+
+**Literal tested output:**
+
+~~~text
+EVENT_BEFORE_RELEASE WITHHELD
+ROUND_B_R9 RELEASED
+PREMATURE_R17 WITHHELD
+PREMATURE_P1 WITHHELD
+LATER_P1 RELEASED
+~~~
+
+**Adversarial challenge:** An analyst substitutes R9's **event time** for its Round B **release stage** and incorrectly calls EVENT_BEFORE_RELEASE a pass. This is a semantic failure, not a clock-parsing bug. A second challenge promotes P1's 09:40 owner-target time into a 09:37 decision; the classifier correctly says WITHHELD. The code does not authenticate a source, approve collection or determine whether a reported edit was malicious.
+
+**Reproducible practice:** Produce the five printed lines, a two-snapshot note at 09:05 and 09:20 and a one-paragraph comparison of source acquisition, learner release and actual query coverage. Award full credit when the learner preserves the earlier decision version and identifies a bounded owner-approved next source request without copying personal data. This laboratory creates no new EX identifier, event, evidence receipt or booking change.
+
+**Synthesis:** More data at a later checkpoint can improve the next decision. It cannot establish that an earlier decision was supported by information the responder did not yet have.
+
 ### Chapter 2 exercises
 
 Use only records R1–R16 and the fictional authority described here; the exercise-only T1 card is available **only** where a question names it. No answer may claim to have queried a real service, received an unprovided identity detail, proved compromise or completed an export that the learner did not make. For each exercise, cite the relevant record IDs, state the observation before the inference, and give a bounded next action or test. The named output is the artifact to submit; the worked results at the end show acceptable reasoning.
