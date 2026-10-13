@@ -99,6 +99,10 @@ A busca exaustiva é apenas um ataque; uma chave longa não ajuda se for mal arm
 
 - **EX003 — Por que começar em 128.** Por que Aiyana recomenda chaves de pelo menos 128 bits para os medidores? *Rubrica:* 3 = o trabalho esperado de 2^127 é inviável com margem; coincide com o mínimo do FIPS 197;; 2 = "mais seguro";; 1 = 56 bits bastam;; 0 = nenhuma.
 
+### Síntese
+
+O cálculo dá aos engenheiros o vocabulário do crescimento; espaços de chaves exponenciais, comparados por meio de logaritmos, explicam por que as chaves modernas começam em 128 bits.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
@@ -166,6 +170,10 @@ O RSA de brinquedo é um recurso didático. Copiá-lo para um software, mesmo co
 
 - **EX006 — Por que o preenchimento.** Por que o RSA de livro-texto é inseguro mesmo com primos grandes? *Rubrica:* 3 = sem preenchimento nem aleatoriedade, vaza estrutura; a RFC 8017 exige OAEP/PSS;; 2 = "simples demais";; 1 = é seguro;; 0 = nenhuma.
 
+### Síntese
+
+A aritmética modular, os inversos e o teorema de Fermat explicam a matemática da chave pública, mas os sistemas reais dependem de esquemas padronizados e de bibliotecas avaliadas.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
@@ -203,6 +211,10 @@ A resistência a canais laterais não pode ser confirmada apenas lendo o código
 - **EX008 — Comparação com saída antecipada.** Por que uma comparação byte a byte que para cedo vaza segredos? *Rubrica:* 3 = o tempo revela quantos bytes iniciais coincidiram;; 2 = mais lenta;; 1 = não vaza;; 0 = nenhuma.
 
 - **EX009 — Papel do SP 800-90A.** O que o SP 800-90A especifica, e por que isso importa para os medidores? *Rubrica:* 3 = geradores determinísticos de bits aleatórios semeados por entropia, para que os medidores não produzam chaves idênticas;; 2 = aleatoriedade;; 1 = cifração;; 0 = nenhuma.
+
+### Síntese
+
+A criptografia roda em dispositivos físicos; o tempo, o consumo de energia e a entropia determinam se um algoritmo sólido continua seguro num medidor instalado num porão.
 
 <a id="ch-04"></a>
 
@@ -242,6 +254,10 @@ Hash não é cifração: qualquer pessoa pode calcular um digest. Misturar texto
 
 - **EX012 — Litros inteiros.** Por que o formato canônico usa litros inteiros? *Rubrica:* 3 = 18342.0 e 18342 produzem bytes e digests diferentes;; 2 = floats são imprecisos;; 1 = estilo;; 0 = nenhuma.
 
+### Síntese
+
+A programação criptográfica correta começa com bytes, codificações explícitas, vetores de teste verificados e um formato canônico com que os dois lados concordam.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
@@ -280,6 +296,10 @@ Simplificar demais pode enganar: dizer "cifrado" quando os dados estão apenas a
 
 - **EX015 — Chaves por medidor.** Que consequência das chaves por medidor o registro destaca? *Rubrica:* 3 = roubar a chave de um medidor só permite forjar aquele medidor, não a frota;; 2 = limita o dano;; 1 = mais barato;; 0 = nenhuma.
 
+### Síntese
+
+Uma comunicação clara e honesta e registros de decisão tornam as escolhas criptográficas compreensíveis para quem decide e duráveis diante das mudanças na equipe.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
@@ -317,6 +337,10 @@ A aproximação supõe independência e p pequeno; falhas correlacionadas, como 
 - **EX017 — Correção com expm1.** Por que 1 - exp(-1e-18) imprimiu zero, e o que corrigiu isso? *Rubrica:* 3 = arredondamento ao subtrair números quase iguais; usar -math.expm1(-x);; 2 = arredondamento;; 1 = fórmula errada;; 0 = nenhuma.
 
 - **EX018 — Falha correlacionada.** Quando a hipótese de independência falha gravemente? *Rubrica:* 3 = falhas correlacionadas, como uma semente aleatória ruim compartilhada entre medidores;; 2 = correlação;; 1 = nunca;; 0 = nenhuma.
+
+### Síntese
+
+As séries e os limites explicam como riscos minúsculos por operação se acumulam em escala, e uma numérica cuidadosa mantém essas estimativas honestas.
 
 <a id="ch-07"></a>
 
@@ -384,6 +408,10 @@ O limite do aniversário supõe aleatoriedade uniforme; geradores enviesados col
 
 - **EX021 — Ler um limite.** Cite as três perguntas que Aiyana faz a uma afirmação probabilística. *Rubrica:* 3 = capacidades do atacante, operações contadas, evento de falha;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
+### Síntese
+
+O limite do aniversário transforma o risco de colisão em requisitos de tamanho em bits, e a leitura cuidadosa das afirmações probabilísticas evita um falso conforto.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
@@ -421,6 +449,10 @@ A resistência a violação aumenta o custo do atacante, mas não é absoluta. A
 - **EX023 — Vazamento pelo cache.** Como um cache pode vazar segredos? *Rubrica:* 3 = o tempo de acesso depende dos dados em cache; acessos dependentes de segredos revelam chaves a um programa que compartilha a máquina;; 2 = tempo mencionado;; 1 = não vaza;; 0 = nenhuma.
 
 - **EX024 — Valor do elemento seguro.** O que um elemento seguro impede, em comparação com chaves na flash? *Rubrica:* 3 = extrair a memória de um medidor aberto não revela sua chave;; 2 = protege a chave;; 1 = cifra os dados;; 0 = nenhuma.
+
+### Síntese
+
+A arquitetura molda a segurança criptográfica: instruções de hardware, o comportamento do cache e os elementos seguros decidem quão bem as chaves sobrevivem em dispositivos reais.
 
 <a id="ch-09"></a>
 
@@ -460,6 +492,10 @@ Wrappers podem esconder bugs tanto quanto complexidade; eles precisam ser revisa
 
 - **EX027 — Testes negativos ausentes.** Contra que perigo os testes negativos protegem? *Rubrica:* 3 = um verificador que sempre devolve verdadeiro passar em todos os testes positivos;; 2 = bugs;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+A programação criptográfica segura encapsula bibliotecas avaliadas, revela pouco nas falhas e comprova o comportamento com testes positivos e negativos.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
@@ -497,6 +533,10 @@ Tratar todo controle de segurança como falha fechada pode criar riscos à segur
 - **EX029 — Caminho da divulgação.** Como foi tratada a falha da bateria fraca? *Rubrica:* 3 = relatada a Marcus e ao fornecedor por divulgação coordenada, mantida confidencial, não testada em medidores em operação;; 2 = relatada;; 1 = publicada abertamente;; 0 = nenhuma.
 
 - **EX030 — Modo de falha do firmware.** A verificação do firmware deve falhar aberta ou fechada, e por quê? *Rubrica:* 3 = fechada: manter o firmware atual em vez de instalar código não verificado;; 2 = fechada;; 1 = aberta;; 0 = nenhuma.
+
+### Síntese
+
+A engenharia criptográfica ética protege o público ao planejar como os controles falham e ao divulgar as fraquezas de forma responsável.
 
 <a id="ch-11"></a>
 
@@ -536,6 +576,10 @@ O TLS não autentica a origem dos dados além da ponta da conexão; controles no
 
 - **EX033 — Por que também HMAC.** Por que acrescentar tags HMAC quando o TLS já é usado? *Rubrica:* 3 = o TLS termina no gateway; o HMAC permite ao banco de dados detectar leituras alteradas por intermediários comprometidos;; 2 = estratificação;; 1 = redundante;; 0 = nenhuma.
 
+### Síntese
+
+Segurança de redes significa mapear os atacantes de cada salto e sobrepor proteções de transporte e de mensagem, para que nenhum ponto final receba confiança cega.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
@@ -573,6 +617,10 @@ O travamento de memória e a supressão de dumps dependem da plataforma e são i
 - **EX035 — random versus secrets.** Por que as chaves nunca podem vir do módulo random do Python? *Rubrica:* 3 = ele é previsível e reconstruível; o secrets usa o CSPRNG do sistema operacional;; 2 = previsível;; 1 = mais lento;; 0 = nenhuma.
 
 - **EX036 — Aplicação de faturamento comprometida.** O que um atacante que compromete a aplicação de faturamento não consegue fazer? *Rubrica:* 3 = ler as chaves brutas, já que o serviço de chaves separado as guarda sob privilégio mínimo;; 2 = limitado;; 1 = tudo;; 0 = nenhuma.
+
+### Síntese
+
+O isolamento do sistema operacional, a aleatoriedade segura e o privilégio mínimo protegem as chaves onde acontece a maioria dos roubos reais: na memória e no disco.
 
 <a id="ch-13"></a>
 
@@ -612,6 +660,10 @@ A cifração em repouso não impede o roubo pelo nível da aplicação. Um hash 
 
 - **EX039 — Benefício do envelope.** Que benefício a cifração envelopada oferece? *Rubrica:* 3 = rotacionar a chave de cifração de chaves recifra apenas as pequenas chaves de dados;; 2 = rotação mais fácil;; 1 = consultas mais rápidas;; 0 = nenhuma.
 
+### Síntese
+
+Associar hash, cifração e tokenização a cada campo, com hash de senhas resistente em memória e cifração envelopada, protege os dados armazenados de forma proporcional.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
@@ -649,6 +701,10 @@ Checklists podem virar mera formalidade; os revisores precisam entender cada ite
 - **EX041 — Regra de dependências.** O que a equipe combinou sobre código de fóruns? *Rubrica:* 3 = nunca copiar código criptográfico de fóruns; usar uma biblioteca mantida ou levar à revisão de projeto;; 2 = evitar;; 1 = permitido;; 0 = nenhuma.
 
 - **EX042 — O que o checklist pegou.** O que o checklist pegou no primeiro mês? *Rubrica:* 3 = um auxiliar de testes que desativava a verificação de certificados e estava prestes a entrar em produção;; 2 = problema de TLS;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A criptografia se torna confiável quando é um requisito testado, suas bibliotecas são gerenciadas ativamente e as revisões procuram usos indevidos conhecidos.
 
 <a id="ch-15"></a>
 
@@ -688,6 +744,10 @@ Modelos de ameaça envelhecem; revise-os quando os sistemas mudarem. Uma autenti
 
 - **EX045 — Correção da autorização.** Que verificação corrigiu a falha de autorização? *Rubrica:* 3 = vincular cada chave a um identificador de medidor, para que os medidores só enviem as próprias leituras;; 2 = vinculação;; 1 = cifração;; 0 = nenhuma.
 
+### Síntese
+
+Os fundamentos de segurança dão o enquadramento da criptografia: associe-a a propriedades explícitas e a modelos de atacante e mantenha a autenticação separada da autorização.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
@@ -725,6 +785,10 @@ Diagramas se afastam da realidade; revise-os em relação ao que está implantad
 - **EX047 — Interface com a fábrica.** Como as chaves são protegidas a caminho da fábrica? *Rubrica:* 3 = cifradas sob uma chave de transporte, nunca em claro;; 2 = cifradas;; 1 = por e-mail;; 0 = nenhuma.
 
 - **EX048 — Lição sobre a propriedade.** Que falha passada motivou a tabela de responsabilidades? *Rubrica:* 3 = a revogação ficou entre equipes, e chaves comprometidas continuaram ativas por meses;; 2 = etapa sem dono;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Tratar o gerenciamento de chaves como um sistema com interfaces que têm dono e requisitos rastreados impede que algoritmos fortes sejam minados por processos fracos.
 
 <a id="ch-17"></a>
 
@@ -764,6 +828,10 @@ Limiares definidos sem linha de base criam ruído. A revogação automática sem
 
 - **EX051 — Uso da histerese.** O que a histerese impede aqui? *Rubrica:* 3 = alertas oscilando ou revogação/reprovisionamento repetidos de medidores instáveis;; 2 = intermitência;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Laços de realimentação com limiares baseados em linhas de base, histerese e portões humanos mantêm os sistemas criptográficos saudáveis sem afogar os operadores em ruído.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
@@ -801,6 +869,10 @@ Raízes offline são tão seguras quanto os procedimentos das cerimônias. A pro
 - **EX053 — Proteção contra rollback.** Como o projeto impede o rollback do firmware? *Rubrica:* 3 = os medidores exigem que o número de versão aumente, além de uma cadeia válida;; 2 = verificação de versão;; 1 = só a assinatura;; 0 = nenhuma.
 
 - **EX054 — Insider regional.** O que um insider num site regional consegue afetar no projeto escolhido? *Rubrica:* 3 = apenas as chaves derivadas de vida curta daquela região;; 2 = limitado;; 1 = tudo;; 0 = nenhuma.
+
+### Síntese
+
+As arquiteturas devem nomear suas âncoras de confiança, proteger as chaves em camadas e equilibrar o controle central com a disponibilidade, com exposição regional limitada.
 
 <a id="ch-19"></a>
 
@@ -868,6 +940,10 @@ O HMAC não consegue provar a um terceiro qual lado criou uma mensagem. Certific
 
 - **EX057 — Irretratabilidade.** Por que o HMAC não oferece irretratabilidade? *Rubrica:* 3 = as duas partes compartilham a chave, então qualquer uma poderia ter feito a tag;; 2 = chave compartilhada;; 1 = ele oferece;; 0 = nenhuma.
 
+### Síntese
+
+A identidade combina chaves, certificados e revogação; o HMAC autentica mensagens de alto volume entre detentores de chaves, enquanto os certificados escalam a verificação.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Criptografia e serviços de confiança: contexto de engenharia
@@ -905,6 +981,10 @@ Medidas de sucesso podem ser manipuladas se ignorarem a qualidade; associe cada 
 - **EX059 — Percepção dos técnicos.** O que os técnicos revelaram, e por que isso importa? *Rubrica:* 3 = medidores trocados entre endereços durante consertos, afetando o vínculo entre chave e identidade;; 2 = troca;; 1 = nada;; 0 = nenhuma.
 
 - **EX060 — Medida do firmware.** Enuncie a medida de sucesso do firmware. *Rubrica:* 3 = 99 por cento dos medidores atualizados em até trinta dias;; 2 = 99 por cento;; 1 = sempre;; 0 = nenhuma.
+
+### Síntese
+
+A engenharia criptográfica começa enquadrando a escala, as restrições, as partes interessadas e as metas mensuráveis de todo o serviço de confiança.
 
 <a id="ch-21"></a>
 
@@ -944,6 +1024,10 @@ Especificar demais a implementação pode bloquear projetos melhores; especifica
 
 - **EX063 — Exemplo de garantia.** Dê dois requisitos de garantia. *Rubrica:* 3 = dois entre bibliotecas mantidas, HSMs validados, testes independentes de falsificação, cerimônias com testemunhas;; 2 = um;; 1 = item funcional;; 0 = nenhuma.
 
+### Síntese
+
+Bons requisitos criptográficos são verificáveis, fundamentados em normas, prontos para a migração e acompanhados de evidências de garantia.
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Criptografia e serviços de confiança: modelos de sistema e de dados
@@ -982,6 +1066,10 @@ Inventários se degradam sem descoberta automatizada. Um modelo de estados só �
 
 - **EX066 — Chave desativada.** O que uma chave desativada ainda pode fazer, e o que não pode? *Rubrica:* 3 = verificar dados antigos, mas não criar novas tags ou assinaturas;; 2 = só verificar;; 1 = tudo;; 0 = nenhuma.
 
+### Síntese
+
+Modelos de dados claros, um inventário completo e uma máquina de estados de chave imposta tornam as chaves gerenciáveis, em vez de passivos escondidos.
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Criptografia e serviços de confiança: análise de ameaças e falhas
@@ -1019,6 +1107,10 @@ Pontuações são julgamentos, não medições; registre o raciocínio. Ignorar 
 - **EX068 — Exemplo de falha.** Dê dois modos de falha não maliciosos. *Rubrica:* 3 = dois entre expiração de certificado, deriva de relógio, perda do HSM, RNG defeituoso;; 2 = um;; 1 = um ataque;; 0 = nenhuma.
 
 - **EX069 — Tratamento da perda do HSM.** Como a perda do HSM é tratada? *Rubrica:* 3 = backup cifrado sob custódia dividida;; 2 = backup;; 1 = aceitar;; 0 = nenhuma.
+
+### Síntese
+
+Combinar a análise de ameaças com a análise de falhas e com tratamentos explícitos dá um quadro de riscos equilibrado e com donos para o serviço de confiança.
 
 <a id="ch-24"></a>
 
@@ -1092,6 +1184,10 @@ O HKDF não acrescenta entropia; uma chave mestra fraca gera chaves derivadas fr
 
 - **EX072 — Projeto da string info.** O que Aiyana coloca nas strings info, e por que incluir a versão? *Rubrica:* 3 = finalidade, identificador do medidor, versão; a versão permite a rotação sem mudar a chave mestra;; 2 = parcial;; 1 = aleatório;; 0 = nenhuma.
 
+### Síntese
+
+O HKDF deriva muitas chaves separadas e rotacionáveis a partir de uma chave mestra bem protegida, e os vetores de teste confirmam o uso correto.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
@@ -1129,6 +1225,10 @@ O truncamento reduz a resistência à falsificação; nunca trunque abaixo do qu
 - **EX074 — Defesa contra replay.** Como o projeto impede leituras repetidas? *Rubrica:* 3 = contador monotonicamente crescente verificado pelo faturamento;; 2 = contador;; 1 = só timestamps;; 0 = nenhuma.
 
 - **EX075 — Correção da substituição.** Como a equipe corrigiu a reinicialização dos contadores nos medidores substitutos? *Rubrica:* 3 = acrescentou a versão da chave, para que os contadores recomecem com as novas chaves;; 2 = versão;; 1 = ignorar;; 0 = nenhuma.
+
+### Síntese
+
+A crítica de ateliê transforma um projeto aparentemente correto num projeto operável, ao expor lacunas de substituição, de ordenação e de monitoramento.
 
 <a id="ch-26"></a>
 
@@ -1168,6 +1268,10 @@ Notas escondem premissas; explique-as. A custódia em nuvem precisa de controles
 
 - **EX078 — Condição de reversão.** Dê uma condição que reverteria a decisão sobre as leituras. *Rubrica:* 3 = quadros de rádio maiores, tornando as assinaturas viáveis;; 2 = quadros maiores;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Comparar arquiteturas abertamente, com critérios, pontuações e condições de reversão, leva a uma combinação defensável de projetos simétricos e de chave pública.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Criptografia e serviços de confiança: projeto de controles
@@ -1205,6 +1309,10 @@ Cerimônias falham se os roteiros forem ignorados sob pressão de tempo. Control
 - **EX080 — Propósito da cerimônia.** Qual é o propósito da cerimônia de chaves? *Rubrica:* 3 = produzir evidências de que nenhuma pessoa sozinha jamais teve a chave raiz;; 2 = evidências;; 1 = velocidade;; 0 = nenhuma.
 
 - **EX081 — Lacuna encontrada.** Que lacuna o mapa de riscos revelou, e como ela foi fechada? *Rubrica:* 3 = a deriva de relógio só tinha controle corretivo; acrescentou-se um controle detectivo que acompanha o desvio;; 2 = lacuna nomeada;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Controles preventivos, detectivos e corretivos equilibrados, evidenciados por cerimônias e associados aos riscos, mantêm o serviço de confiança resiliente.
 
 <a id="ch-28"></a>
 
@@ -1275,6 +1383,10 @@ Um hash sem assinatura não autentica nada diante de um atacante ativo. Os dois 
 
 - **EX084 — Manifesto não assinado.** Por que o manifesto precisa ser assinado? *Rubrica:* 3 = do contrário, um atacante troca a imagem e o manifesto juntos;; 2 = troca;; 1 = não é preciso;; 0 = nenhuma.
 
+### Síntese
+
+A verificação do firmware liga um hash da imagem a um manifesto assinado, conferido antes da instalação e na inicialização, com slots seguros de reversão.
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Criptografia e serviços de confiança: medição
@@ -1344,6 +1456,10 @@ Métricas podem estimular manipulação, como renomear chaves para zerar sua ida
 
 - **EX087 — Métrica de vaidade.** Dê um exemplo de métrica de vaidade que Aiyana evita. *Rubrica:* 3 = contar as chaves geradas;; 2 = semelhante;; 1 = métrica real;; 0 = nenhuma.
 
+### Síntese
+
+Medir a adesão aos criptoperíodos e outras métricas de saúde das chaves, com donos e metas, transforma as normas em ação.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
@@ -1382,6 +1498,10 @@ Testes de bancada usam condições idealizadas; o comportamento em campo pode se
 
 - **EX090 — Limites da aprovação.** O que passar em todos os testes mostra? *Rubrica:* 3 = ausência de defeitos conhecidos nas condições testadas, não de todos os defeitos;; 2 = limitado;; 1 = prova a segurança;; 0 = nenhuma.
 
+### Síntese
+
+Testes negativos planejados, com evidências arquivadas, encontram falhas reais cedo e sustentam afirmações de garantia honestas.
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Criptografia e serviços de confiança: implementação II
@@ -1419,6 +1539,10 @@ O TLS mútuo aumenta o trabalho de gerenciamento de certificados; a automação 
 - **EX092 — Local da geração das chaves.** Onde são geradas as chaves privadas dos concentradores, e por quê? *Rubrica:* 3 = no concentrador, para que as chaves nunca saiam do dispositivo;; 2 = localmente;; 1 = centralmente;; 0 = nenhuma.
 
 - **EX093 — Armadilha das raízes.** Por que não confiar em raízes públicas para os certificados de dispositivos? *Rubrica:* 3 = qualquer pessoa com um certificado público poderia se autenticar como dispositivo; confiar apenas na autoridade da Ridgeway;; 2 = pessoas de fora;; 1 = tudo bem;; 0 = nenhuma.
+
+### Síntese
+
+O TLS mútuo com certificados automatizados e gerados nos dispositivos e com configurações testadas protege os enlaces dos coletores sem trabalho manual.
 
 <a id="ch-32"></a>
 
@@ -1484,6 +1608,10 @@ As premissas de independência falham se os custodiantes viajarem juntos ou trab
 
 - **EX096 — Implementação da divisão.** Quem implementa a divisão da chave, e por quê? *Rubrica:* 3 = o recurso do fornecedor do HSM, evitando a criptografia caseira;; 2 = fornecedor;; 1 = Aiyana;; 0 = nenhuma.
 
+### Síntese
+
+Projetos de quórum e de redundância mantêm as chaves disponíveis sem concentrar poder, desde que construídos sobre mecanismos avaliados e testados.
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Criptografia e serviços de confiança: segurança e resiliência
@@ -1521,6 +1649,10 @@ As raízes de reserva precisam ser protegidas com tanto cuidado quanto as primá
 - **EX098 — Comprometimento da intermediária.** Resuma a resposta a um vazamento da chave intermediária do firmware. *Rubrica:* 3 = revogação assinada pela raiz, nova intermediária em cerimônia, nova assinatura do firmware, envio da nova confiança;; 2 = parcial;; 1 = ignorar;; 0 = nenhuma.
 
 - **EX099 — Raiz de reserva.** Por que os medidores guardam uma raiz de reserva? *Rubrica:* 3 = a perda ou o comprometimento da raiz primária continua contornável;; 2 = resiliência;; 1 = nenhum motivo;; 0 = nenhuma.
+
+### Síntese
+
+Um comportamento seguro diante de falhas, uma resposta a comprometimentos ensaiada e uma resiliência planejada permitem que os sistemas criptográficos se degradem de forma controlada.
 
 <a id="ch-34"></a>
 
@@ -1560,6 +1692,10 @@ Os contratos se desviam se não forem testados automaticamente. Os testes de pon
 
 - **EX102 — Encaminhamento da revogação.** O que os testes de ponta a ponta revelaram sobre a revogação, e o que corrigiu isso? *Rubrica:* 3 = as revogações chegavam ao monitoramento, mas não ao faturamento; encaminhá-las por uma fila que todos os verificadores assinam;; 2 = só o achado;; 1 = só a correção;; 0 = nenhuma.
 
+### Síntese
+
+A integração com contratos explícitos e testes de ponta a ponta faz o serviço de confiança funcionar entre sistemas sem vazar chaves nem perder eventos.
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
@@ -1597,6 +1733,10 @@ Esquemas híbridos aumentam a complexidade e o tamanho; precisam ser projetados 
 - **EX104 — Regra híbrida.** Como o esquema híbrido proposto aceita o firmware? *Rubrica:* 3 = só quando as assinaturas ECDSA e ML-DSA forem ambas verificadas;; 2 = ambas;; 1 = qualquer uma;; 0 = nenhuma.
 
 - **EX105 — Passo do bootloader.** Por que o plano começa com uma atualização do bootloader? *Rubrica:* 3 = verificar assinaturas PQ exige um bootloader atualizado, ele próprio assinado de forma clássica;; 2 = bootloader;; 1 = pular;; 0 = nenhuma.
+
+### Síntese
+
+A prontidão pós-quântica para dispositivos de vida longa exige uma migração antecipada, escalonada e híbrida, fundamentada em medições e em normas.
 
 <a id="ch-36"></a>
 
@@ -1636,6 +1776,10 @@ Reduzir o custo do hash de senhas para economizar capacidade enfraquece a prote�
 
 - **EX108 — Jitter da renovação.** Por que acrescentar jitter às renovações de certificados? *Rubrica:* 3 = para evitar que todos os concentradores renovem ao mesmo tempo e sobrecarreguem os serviços;; 2 = espalhar a carga;; 1 = segurança;; 0 = nenhuma.
 
+### Síntese
+
+Em escala, o desempenho criptográfico depende de estimar a carga, ajustar os custos deliberados e programar os picos, mais do que da velocidade bruta dos algoritmos.
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Criptografia e serviços de confiança: operações
@@ -1673,6 +1817,10 @@ Períodos de sobreposição que nunca terminam deixam chaves antigas ativas. Os 
 - **EX110 — Validade sobreposta.** Como as chaves das leituras são rotacionadas sem indisponibilidade? *Rubrica:* 3 = enviar a v4 em ondas, o faturamento aceita v3 e v4, desativar a v3 depois que todos confirmam;; 2 = sobreposição;; 1 = tudo de uma vez;; 0 = nenhuma.
 
 - **EX111 — Ferramenta portátil perdida.** Por que a ferramenta perdida não exigiu rotação nos medidores? *Rubrica:* 3 = as ferramentas guardam apenas blobs cifrados, nunca chaves de medidor;; 2 = sem chaves;; 1 = sorte;; 0 = nenhuma.
+
+### Síntese
+
+Runbooks testados, rotação com sobreposição e projetos que limitam o que os componentes guardam tornam as operações criptográficas tranquilas e os incidentes pequenos.
 
 <a id="ch-38"></a>
 
@@ -1712,6 +1860,10 @@ A validação num distrito pode não representar toda a área de atendimento. Os
 
 - **EX114 — Meta do firmware não atingida.** Que resultado do firmware ficou abaixo da meta, e por quê? *Rubrica:* 3 = 97 por cento em trinta dias contra 99, por causa de medidores inalcançáveis em caixas inundadas;; 2 = número;; 1 = motivo;; 0 = nenhuma.
 
+### Síntese
+
+A validação em campo, os testes independentes e o relato honesto das falhas mostram se o serviço de confiança realmente atende às suas partes interessadas.
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Criptografia e serviços de confiança: manutenibilidade
@@ -1749,6 +1901,10 @@ A agilidade pode introduzir ataques de rebaixamento se opções fracas continuar
 - **EX116 — Passos da obsolescência.** Quais são os três passos para aposentar um algoritmo? *Rubrica:* 3 = parar de criar novas chaves, migrar os usos existentes, remover a verificação depois da carência;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
 - **EX117 — Risco de conhecimento.** Por que a gestão do conhecimento é um controle de segurança? *Rubrica:* 3 = incidentes começam quando ninguém lembra por que os projetos foram escolhidos;; 2 = memória;; 1 = não é;; 0 = nenhuma.
+
+### Síntese
+
+A agilidade, a descontinuação rotineira e o conhecimento mantido conservam um serviço de confiança seguro ao longo de décadas de mudanças de algoritmos e de equipe.
 
 <a id="ch-40"></a>
 
@@ -1788,6 +1944,10 @@ Os testes de canal lateral são limitados pelo orçamento e pela técnica. As de
 
 - **EX120 — Exemplo de risco residual.** Dê um risco residual aceito e sua justificativa. *Rubrica:* 3 = extração da chave de um medidor por atacante avançado, limitada pelas chaves por medidor (ou perda dos dois data centers, recuperação offline);; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+Testes físicos, injeção de falhas e declarações de risco residual assinadas completam a verificação com um relato honesto do que resta.
+
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Criptografia e serviços de confiança: otimização do sistema
@@ -1825,6 +1985,10 @@ Otimizações que reduzem as margens de segurança costumam parecer atraentes is
 - **EX122 — Segurança da automação.** Como a própria automação é protegida? *Rubrica:* 3 = credenciais do serviço ACME no serviço de chaves e logs de emissão monitorados;; 2 = logs;; 1 = desnecessário;; 0 = nenhuma.
 
 - **EX123 — Corte de tag rejeitado.** Por que encurtar as tags para 8 bytes foi rejeitado? *Rubrica:* 3 = resistência à falsificação de 64 bits abaixo da meta do modelo de ameaça e economia marginal;; 2 = segurança;; 1 = custo;; 0 = nenhuma.
+
+### Síntese
+
+A otimização precisa economizar energia, dinheiro ou trabalho sem sair dos requisitos de segurança, e as ideias rejeitadas também merecem registro.
 
 <a id="ch-42"></a>
 
@@ -1864,6 +2028,10 @@ Correlação não prova causa; um teste controlado a fortaleceria. Compartilhar 
 
 - **EX126 — Recomendação.** O que ela recomendou em vez de ampliar a tolerância? *Rubrica:* 3 = sincronização periódica e autenticada do horário a partir dos concentradores;; 2 = sincronização;; 1 = ampliar;; 0 = nenhuma.
 
+### Síntese
+
+A pesquisa aplicada transforma enigmas operacionais em estudos pequenos e planejados de antemão, cujos achados melhoram o sistema sem enfraquecer os controles.
+
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
@@ -1901,6 +2069,10 @@ Estágios podem virar observação passiva; defina tarefas e revisões concretas
 - **EX128 — Lição do controle de mudanças.** Que evento mostrou o valor do controle de mudanças? *Rubrica:* 3 = uma mudança não revisada no gateway desativou as verificações de certificados de cliente em homologação, pega antes da produção;; 2 = evento;; 1 = nenhum;; 0 = nenhuma.
 
 - **EX129 — Lacuna de competência.** Que competências ela identificou para desenvolver? *Rubrica:* 3 = negociar requisitos de segurança com fornecedores e explicar riscos a gestores;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A prática mostra que o controle disciplinado de mudanças, runbooks claros e a reflexão importam tanto quanto o conhecimento de projeto.
 
 <a id="ch-44"></a>
 
@@ -1940,6 +2112,10 @@ Projetos finais costumam ter escopo grande demais; exclusões firmes protegem a 
 
 - **EX132 — Risco do projeto.** Cite um risco do projeto e sua mitigação. *Rubrica:* 3 = por exemplo, conflito com a atualização do serviço de chaves, mitigado por uma reunião cedo;; 2 = só o risco;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+Um trabalho de conclusão bem delimitado, com marcos sustentados por evidências e seu próprio registro de riscos, pratica a engenharia profissional sobre uma necessidade real de segurança.
+
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
@@ -1977,6 +2153,10 @@ Pacotes de revisão que escondem premissas recebem revisões superficiais. Trata
 - **EX134 — Revogação forjada.** Por que as mensagens de revogação não autenticadas foram um achado bloqueante? *Rubrica:* 3 = atacantes na rede interna poderiam forjar revogações, causando negação de serviço;; 2 = falsificação;; 1 = menor;; 0 = nenhuma.
 
 - **EX135 — Correção offline.** Como o projeto revisado trata os verificadores que estiveram offline? *Rubrica:* 3 = baixam a lista completa de revogação na reconexão e comparam seu hash com o valor publicado;; 2 = baixar;; 1 = ignorar;; 0 = nenhuma.
+
+### Síntese
+
+Uma revisão independente com um pacote completo encontra falhas que os projetistas deixam passar, especialmente a confiança depositada em mensagens internas.
 
 <a id="ch-46"></a>
 
@@ -2016,6 +2196,10 @@ O desempenho em homologação pode diferir do de produção. Uma passagem sem pr
 
 - **EX138 — Condição da passagem.** O que as operações fizeram antes de aceitar o sistema? *Rubrica:* 3 = executaram elas mesmas um exercício de revogação;; 2 = exercício;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um trabalho de conclusão se comprova pelo desempenho medido em relação aos requisitos e por uma passagem que deixa as operações capazes de executá-lo.
+
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
@@ -2053,6 +2237,10 @@ Exercícios com condições irreais dão uma falsa confiança. Usar chaves de pr
 - **EX140 — Quórum na prática.** Como o projeto de quórum ajudou durante o ensaio? *Rubrica:* 3 = só três de cinco custodiantes estavam disponíveis, o suficiente para a recuperação;; 2 = quórum;; 1 = não ajudou;; 0 = nenhuma.
 
 - **EX141 — Achados do ensaio.** Cite dois achados da revisão posterior ao ensaio. *Rubrica:* 3 = dois entre firmware desatualizado do HSM sobressalente, telefone errado, passo de inventário ausente;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+### Síntese
+
+Testes de recuperação realistas, com revisão sem culpa, revelam as pequenas lacunas operacionais que paralisariam uma emergência real.
 
 <a id="ch-48"></a>
 
@@ -2092,6 +2280,10 @@ Dossiês que escondem evidências fracas perdem credibilidade quando os avaliado
 
 - **EX144 — Atas das cerimônias.** O que as atas das cerimônias incluem e excluem? *Rubrica:* 3 = identificadores de chave e impressões digitais, nunca material de chave;; 2 = impressões digitais;; 1 = chaves;; 0 = nenhuma.
 
+### Síntese
+
+Um dossiê de evidências organizado por requisito, honesto quanto aos limites e cuidadoso com o material sensível torna as afirmações de segurança auditáveis.
+
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
@@ -2130,6 +2322,10 @@ Teses que listam atividades em vez de argumentar afirmações são fracas. Afirm
 
 - **EX147 — Limites da tese.** Cite dois limites que Aiyana declara. *Rubrica:* 3 = dois entre uma única companhia, piloto e não implantação completa, implementações de fornecedores não inspecionadas;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+Uma tese de engenharia é um argumento fundamentado e sustentado por evidências, com contribuições claras e limites honestos.
+
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
@@ -2167,6 +2363,10 @@ Defender todas as decisões como perfeitas mina a credibilidade; reconheça os t
 - **EX149 — Mitigações do risco central.** Que mitigações ela citou para o risco central das chaves? *Rubrica:* 3 = HSMs, derivação por medidor, monitoramento, controle duplo;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
 - **EX150 — Responsabilidade da engenheira.** Como Aiyana descreve sua responsabilidade contínua? *Rubrica:* 3 = deixar um sistema que outros consigam entender, operar, testar e mudar com segurança, com documentação e evidências;; 2 = parcial;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Uma defesa demonstra domínio ao explicar os compromissos com honestidade, e a responsabilidade de engenharia continua por toda a vida do sistema.
 
 <a id="worked-results"></a>
 
