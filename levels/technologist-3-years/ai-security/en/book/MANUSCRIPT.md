@@ -840,7 +840,7 @@ Jonas's lab scores Brightwell's systems on these five factors. Ask Brightwell ra
 
 ### 11.4 Keeping it current
 
-Add inventory checks to change management: new model, new tool, new data source or new prompt → update the entry. Scan for shadow AI: vendor features turned on, staff using public chatbots with company data. Brightwell found its fourth AI system, the marketing email writer, only by looking beyond the systems engineering had listed. The customer-service agents pasting emails into a public chatbot, found later during a placement, were shadow use that no system scan could detect. At Brightwell the inventory review found the email writer, and the placement found the public chatbot use.
+Add inventory checks to change management: new model, new tool, new data source or new prompt → update the entry. Scan for shadow AI: vendor features turned on, staff using public chatbots with company data. Brightwell found its fourth AI system, the marketing email writer, only by looking beyond the systems engineering had listed. The customer-service agents pasting emails into a public chatbot, found later during a placement, were shadow use that no system scan could detect. Jonas therefore added a question to each quarterly inventory review asking every team which AI features or chatbots they use with company data.
 
 ### 11.4b Inventory fields
 
@@ -1018,7 +1018,7 @@ Jonas builds 120 injection cases for Ask Brightwell on staging: 40 direct, 80 in
 - Only using public jailbreak strings.
 - Tuning and reporting on the same cases.
 
-Jonas's suite avoids these. It grades from tool logs rather than replies, writes indirect cases specific to Ask Brightwell's reviews and policy pages instead of relying on public jailbreak strings, and keeps 40 cases held out from tuning. A suite built only from public strings would mostly measure whether the vendor had seen them before. Tuning on held-out cases would make reported rates look better than they are. Grading from tool logs is the remedy for the first.
+Jonas's suite avoids these. It grades from tool logs rather than replies, writes indirect cases specific to Ask Brightwell's reviews and policy pages instead of relying on public jailbreak strings, and keeps 40 cases held out from tuning. A suite built only from public strings would mostly measure whether the vendor had seen them before. Tuning on held-out cases would make reported rates look better than they are. In the first run, reading replies by eye would have missed several of the 31 indirect successes, whose replies looked helpful.
 
 ### Exercises
 
@@ -1092,7 +1092,7 @@ eps=0.75 accuracy=0.660
 eps=1.00 accuracy=0.505
 ```
 
-Accuracy falls from 0.985 to 0.505 as the perturbation budget grows. Control: do not let a single model score make irreversible decisions; add rules and human review. For ReturnGuard, this supports Jonas's recommendation that a high fraud score leads to human review rather than an automatic refusal. For ReturnGuard, the features a fraudster can actually change, such as return reason and timing, are fewer and coarser than the lab's free perturbation, so the lab shows the direction of the risk rather than its size. Jonas states in his ReturnGuard write-up that the lab shows direction, not size, so nobody reads the lab's evasion rate as the live rate.
+Accuracy falls from 0.985 to 0.505 as the perturbation budget grows. Control: do not let a single model score make irreversible decisions; add rules and human review. For ReturnGuard, this supports Jonas's recommendation that a high fraud score leads to human review rather than an automatic refusal. For ReturnGuard, the features a fraudster can actually change, such as return reason and timing, are fewer and coarser than the lab's free perturbation, so the lab shows the direction of the risk rather than its size. The size is measured instead by the Chapter 14 evasion tests, which change only the reason, the timing and the split of real fraud cases.
 
 ### 15.3 Poisoning and backdoors
 
@@ -1184,7 +1184,7 @@ k= 5 attack_auc=0.521 best_advantage=0.073
 k=25 attack_auc=0.520 best_advantage=0.060
 ```
 
-When the model sees records once (k=1), the attack's advantage is 0.20; it falls as k grows in this setup. Control: limit output detail, test for leakage, consider differential privacy (Abadi et al., arXiv:1607.00133). For ReturnGuard, the lesson is to limit what the scoring service reveals: a label is safer than a detailed score. The lab's setup is small, so the falling advantage is a property of this toy, not a general law. ReturnGuard now returns only review or accept to the store front, not a score.
+When the model's score comes from a single nearest neighbour (k=1), the attack's advantage is 0.20; it falls as k grows in this setup. Control: limit output detail, test for leakage, consider differential privacy (Abadi et al., arXiv:1607.00133). For ReturnGuard, the lesson is to limit what the scoring service reveals: a label is safer than a detailed score. The lab's setup is small, so the falling advantage is a property of this toy, not a general law. ReturnGuard now returns only review or accept to the store front, not a score.
 
 ### 15.5 Extraction
 
