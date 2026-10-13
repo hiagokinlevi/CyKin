@@ -378,7 +378,7 @@ You will (1) explain processes, users, file permissions and isolation; (2) use c
 
 ### 6.1 Processes and permissions
 
-Every service runs as a process under a user account. If the orchestrator runs as root, a bug becomes a full system compromise. Run each component as its own low-privilege user, with read access only to the files it needs. For Ask Brightwell, the orchestrator, retrieval service and tool services each run under their own account, so a bug in the orchestrator cannot read the order database directly. The order tool's account can read orders but not change them, and the returns tool's account can create returns but cannot read other tables. That separation means a compromised orchestrator in Ask Brightwell still cannot read or change the order database directly.
+Every service runs as a process under a user account. If the orchestrator runs as root, a bug becomes a full system compromise. Run each component as its own low-privilege user, with read access only to the files it needs. For Ask Brightwell, the orchestrator, retrieval service and tool services each run under their own account, so a bug in the orchestrator cannot read the order database directly. The order tool's account can read orders but not change them, and the returns tool's account can create returns but cannot read other tables. Jonas confirms this on staging by sending a query to the orders table as the orchestrator's account and checking that the database refuses it.
 
 ### 6.2 Containers and virtual machines
 
@@ -707,7 +707,7 @@ Decide in advance what counts as success for the attacker. For an agent this is 
 
 ### 9.5 Worked example (synthetic Brightwell case)
 
-ReturnGuard flags fraudulent returns. Jonas finds fraud in about 1% of returns; the model's false-positive rate is 5%. Using the lab, precision is about 16%: five of six flagged customers are honest. He recommends a 1% false-positive threshold (precision about 49%) and human review before any refusal. The recommendation does not claim the model is bad; it shows that a rare event makes most alerts wrong at that threshold. Human review protects honest customers from the errors that remain at the stricter threshold too. Review also keeps honest customers from being refused by a score alone.
+ReturnGuard flags fraudulent returns. Jonas finds fraud in about 1% of returns; the model's false-positive rate is 5%. Using the lab, precision is about 16%: five of six flagged customers are honest. He recommends a 1% false-positive threshold (precision about 49%) and human review before any refusal. The recommendation does not claim the model is bad; it shows that a rare event makes most alerts wrong at that threshold. Human review protects honest customers from the errors that remain at the stricter threshold too. At the 1% threshold the lab still gives a precision of 0.490, so reviewers see roughly one honest customer for every fraudster flagged.
 
 ### 9.6 Errors and limits
 
