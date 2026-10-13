@@ -184,6 +184,8 @@ You will (1) assess authentication settings; (2) identify weak methods; (3) prop
 
 Daniel reviews authentication settings. Multi-factor authentication is enabled but optional, and 41 of 60 staff use it. Text message codes are the most common method. The password policy forces changes every 45 days and requires symbols. Two partners and the office manager have no second factor at all. He records each setting with the export that shows it. A clear picture of the current state lets him compare it with guidance and explain differences to partners without relying on opinion.
 
+Forty-one of sixty is about 68 percent, and the gap includes two partners, whose accounts are among the most valuable to an attacker.
+
 ### 4.2 Comparing with guidance
 
 NIST SP 800-63B favours longer passwords screened against known-compromised lists, without forced periodic changes unless compromise is suspected, and treats text codes as a restricted method. Phishing-resistant authenticators, such as passkeys built on WebAuthn, give the strongest protection. Daniel notes that forced 45-day changes tend to produce predictable passwords, and that partners without a second factor are the highest-value targets because they can see every client's records and approve payments. He summarises the comparison in a short table showing each setting, the guidance and the gap, with the export that proves the current value.

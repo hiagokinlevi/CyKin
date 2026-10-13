@@ -693,6 +693,8 @@ overall  108/140 77.1%
 
 The synthetic export shows overall coverage of 108 of 140, or 77.1 percent. Teams differ sharply: finance is at 93.3 percent, office and housing in the mid-eighties, administrators at 80 percent and repairs at 55 percent. The one administrator without multi-factor is the most urgent single gap, because administrator accounts can change everything. The repairs gap is the largest in number. Elena presents both, explaining that priority depends on harm as well as size, so the IT lead can plan which to tackle first.
 
+Fixing the one administrator account takes minutes, while the repairs gap needs devices and training, so the two fixes run on different timescales.
+
 ### 15.3 Presenting measures
 
 Elena presents measures with their definition, the current value with count and base, the previous value and a short comment. She uses a simple bar chart sorted by value so the lowest team stands out. She avoids decorative charts and unnecessary decimals. Each figure is dated and linked to the export it came from. Clear, consistent presentation lets managers compare months quickly and builds trust that changes in the numbers reflect real changes at Greenhill. Each chart has a short caption explaining what changed.
@@ -868,6 +870,8 @@ Identity and access management covers how identities are created, verified and r
 ### 19.2 Least privilege and separation of duties
 
 Saltzer and Schroeder (1975) described least privilege: each person or program should have only the access needed for its job. Separation of duties adds that no single person should complete a sensitive task alone, such as setting up a new supplier and paying them. In Greenhill's finance system, Elena finds one officer who can do both. She reports it, and the finance manager agrees that a second person will approve new suppliers, a small change that removes a serious risk.
+
+The same check is worth repeating whenever finance staff change roles, since a mover can quietly end up holding both permissions.
 
 ### 19.3 Access control models
 
@@ -1215,6 +1219,8 @@ worst: ['L07', 'L04', 'L10']
 ### 26.2 Reading the delays
 
 The synthetic baseline of ten leavers shows a median of 1.5 days, but a maximum of 31 days, and five of ten miss the one-day target. The worst cases, L07 at 31 days, L04 at 14 and L10 at 6, all left during holiday periods, when HR's email waited in an absent colleague's inbox. This confirms the weak point found in the model: email-based handover fails when people are away. Elena uses these cases to explain to managers why the evening HR comparison matters.
+
+Five of ten missing the target shows that the median of 1.5 days hides a process that fails half the time.
 
 ### 26.3 Improving movers
 
