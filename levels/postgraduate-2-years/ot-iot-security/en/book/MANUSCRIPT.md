@@ -44,6 +44,8 @@ You will (1) frame an OT security decision with options, criteria, uncertainty a
 
 At postgraduate level the deliverable is rarely a vulnerability list; it is a decision someone with budget and accountability must take. At the synthetic Bayside Water Reclamation Plant (BWRP), OT security lead Daniel Osei must decide how vendors reach the chemical-dosing controller PLC-D. A decision frame names the owner (the plant director), the options, the criteria, what is uncertain and the date by which the decision must be taken.
 
+For the vendor-access decision the frame also needs the deadline that forces it, such as the expiry of the current VPN contract, and the people who must be consulted: operations, the vendor manager and engineering. Writing the frame before the analysis keeps Daniel from choosing criteria after he knows which option they favour.
+
 ### 1.2 Expected loss is necessary but not sufficient
 
 Expected annual loss — probability times loss, summed over scenarios — lets options with different costs be compared on one scale. But public utilities are not risk-neutral: a rare event that contaminates discharge to a bay, triggers regulatory action and erodes public trust may be unacceptable at any probability above a threshold. Leaders therefore report expected loss alongside the worst credible case and any regulatory or safety constraint that is binding regardless of arithmetic.
@@ -73,9 +75,13 @@ C no remote access   cost= 90,000 expected_loss=   14,000 total=  104,000 worst_
 
 Option B has the lowest total (59,500) because its control cost buys a large reduction in incident probability. Option C eliminates more risk but costs more than it saves under these estimates. All three share the same worst case because the catastrophic scenario remains possible through other paths; no remote-access choice removes it. That observation sends the leader to look at independent safeguards, not more remote-access spending.
 
+The numbers also show how sensitive the ranking is. Option A loses because of its incident probabilities; if both of its estimates were halved, A's total would fall to 55,000 and overtake B's 59,500. That is why Daniel's record names a revisit trigger tied to the incident estimate, and why the next question is how firm those probabilities really are.
+
 ### 1.4 Value of information
 
 If the probability estimates are contested — and for targeted attacks they always are — ask whether the decision would change if they moved within their plausible range. If B wins across that range, decide now. If the ranking flips, a short study (vendor log review, a tabletop) may be worth more than an immediate purchase.
+
+For BWRP, the question is whether B still wins if Option A's vendor-incident probability is lower than estimated. Daniel can test that in the lab by changing one number at a time and noting where the ranking flips. If a flip needs an estimate outside what sector peers report, the decision stands; if not, two weeks reviewing vendor logs may be the better first spend.
 
 ### Worked example (synthetic BWRP)
 
@@ -115,17 +121,25 @@ You will (1) benchmark an organisation's OT security programme against NIST SP 8
 
 NIST SP 800-82r3 organises an OT security programme around governance, risk management, architecture, and the security capabilities applied to OT systems, and it maps OT considerations onto the NIST Cybersecurity Framework functions. IEC 62443-2-1 specifies requirements for an asset owner's security programme. Neither is a checklist to be ticked; both describe capabilities a mature programme demonstrates.
 
+In a review, use each document to generate questions rather than a score. For BWRP that means asking, for example, how remote access is governed, how assets are inventoried and how incidents in the dosing system would be handled. The answers then go into the gap list with evidence, so the review reports what the plant can show rather than how many clauses it claims.
+
 ### 2.2 Documented versus performed
 
 A policy saying "remote access is reviewed monthly" is documented practice. A log showing the last three monthly reviews, with findings closed, is performed practice. Postgraduate assessors look for the second. At BWRP Daniel samples evidence for each claimed practice rather than accepting interview answers.
+
+Sampling has to be chosen before looking, or it drifts toward the cases that look good. Daniel picks five practices that sit on paths to consequence and asks, for each, for the most recent artefact that proves it was done. An interview answer can point to evidence, but it never replaces it in the gap list.
 
 ### 2.3 Building the gap list
 
 For each capability: what the guidance expects, what BWRP documents, what evidence shows is performed, the gap, the consequence of the gap and a proposed owner. Remote lift stations connected over cellular RTUs are a common blind spot: they appear in the asset register as "pumping stations" but not as network endpoints.
 
+Each row should be specific enough that its owner can act on it. For BWRP's inventory gap that means naming the nine lift-station RTUs not yet listed, the consequence that they cannot be monitored or patched, and the person who will add them. A row that only says inventory incomplete gives nobody a task.
+
 ### 2.4 Prioritising
 
 Prioritise gaps that sit on paths to consequence (dosing, discharge quality) and those that are cheap to close. A missing inventory of cellular RTUs blocks several other capabilities — monitoring, patching, incident scoping — so it ranks high even though it is "only documentation".
+
+Write the ranking with its reason, so the plant director can see why an inventory task outranks a new tool. At BWRP the remote-access review comes next, because it has not been performed since March and vendors can reach PLC-D. Restore testing for PLC logic follows, since backups whose restore has never been tried may fail when needed.
 
 ### Worked example (synthetic BWRP)
 
@@ -176,6 +190,8 @@ CISA ICS advisories describe affected products, versions, CVSS scores and mitiga
 ### 3.4 Confidence statements
 
 State confidence explicitly: high (multiple independent sources agree), moderate (one strong source, no contradiction), low (inference from indirect data). Leaders act differently on each.
+
+Attach the level to each conclusion, not to the report as a whole, and say which sources support it. Daniel's 14:02 finding is high confidence because the capture, the program comparison and the key-switch log agree. A conclusion resting on the key-switch log alone would be moderate, and a guess about who was on site, before checking rosters, would be low.
 
 ### Worked example (synthetic BWRP)
 
@@ -234,17 +250,25 @@ baseline           mean=  68,613 p95=  592,662 p99=  814,425 P(loss>0)=0.151
 with segmentation  mean=  18,590 p95=  129,339 p99=  493,624 P(loss>0)=0.059
 ```
 
+The simulation needs only a few inputs: how likely an incident is in a year, how long it lasts, and what each hour costs. Each should come with its source and a plausible range. Lab 4 uses a fixed seed so that the board can see the same numbers when the run is repeated, and so that a change in result can be traced to a change in assumptions.
+
 ### 4.2 Reading the tail
 
 Segmentation cuts the mean loss from about 68,600 to 18,600 and the probability of any loss from 15.1 % to 5.9 %. The 99th percentile drops less sharply (814,000 to 494,000) because when an incident does happen it can still last two days. If the board's tolerance is "no more than a 1 % chance of losing over 600,000 a year", only the segmented design meets it under these assumptions.
+
+These figures depend on assumptions that deserve their own line on the slide: the incident probabilities, the duration ranges and a single cost per hour. Changing the segmented design's maximum duration from 48 to 72 hours would raise its tail. The board should see which assumption drives the tolerance result before treating the 600,000 threshold as met.
 
 ### 4.3 Who bears the risk
 
 Residual risk at a reclamation plant is not borne only by the utility. Residents near outfalls and the bay ecosystem bear discharge-quality risk; ratepayers bear cost risk. Ethically, a leader should identify these parties, ask whether the regulator or elected body has accepted the risk on their behalf, and avoid accepting on others' behalf what the organisation has no mandate to accept.
 
+At BWRP the board minutes made this explicit by noting that discharge-quality risk to residents falls under the regulator's permit conditions. Daniel's role is to make the affected parties visible in the risk record and to state who has accepted risk on their behalf. Where nobody has that mandate, the risk is escalated rather than quietly accepted.
+
 ### 4.4 Transparency versus exposure
 
 Publishing a detailed security assessment builds public trust but may give attackers a map. A defensible practice is layered disclosure: publish the governance, the risk-acceptance decisions and progress metrics; share technical detail with regulators and sector information-sharing bodies under confidentiality; disclose incidents according to legal duty and promptly to affected people.
+
+For BWRP that could mean publishing the decision to adopt brokered vendor sessions and segmentation progress figures, while sharing the lift-station network design only with the regulator and the sector sharing group. The choice of what goes where should be recorded and reviewed, so that later requests from journalists or residents meet a consistent answer.
 
 ### Worked example (synthetic BWRP)
 
@@ -284,17 +308,25 @@ You will (1) generate genuinely different design alternatives for securing remot
 
 BWRP's 23 lift stations pump wastewater to the plant. Each has an RTU with a cellular modem reporting levels and pump status to SCADA and accepting start/stop commands. Some modems have public IP addresses, which places them in the exposure category ATT&CK for ICS names T0883 *Internet Accessible Device*.
 
+The commands matter most. A false level reading could hide an overflow, but a remote stop sent to a pump during a storm could cause one. Any design therefore has to answer two questions: who can reach the RTUs, and whether remote commands are needed at all. The answers differ by station, which is why the alternatives are compared station by station.
+
 ### 5.2 Three alternatives
 
 Alternative 1 — private APN: the carrier provides a private access point name so modems have no public addresses; traffic reaches BWRP through a carrier-managed tunnel. Alternative 2 — RTU-side VPN: each RTU (or a small router beside it) builds an IPsec tunnel to a BWRP concentrator in the DMZ. Alternative 3 — monitoring-only uplink with local control: remote commands are removed; RTUs run local level control and report only, and operators dispatch crews for exceptions.
+
+Each alternative changes a different thing. The first removes public addresses but leaves trust in the carrier. The second adds BWRP's own encryption and authentication at the cost of more equipment. The third removes the riskiest capability, remote commands, and accepts slower response. They are genuinely different, which is what makes comparing them useful.
 
 ### 5.3 Evaluating them
 
 Alternative 1 is quick and cheap but trusts the carrier's isolation. Alternative 2 gives BWRP its own cryptographic boundary but adds 23 devices to patch and certificates to manage. Alternative 3 shrinks the attack surface most — no remote commands means no remote manipulation of pumps — but lengthens response to some faults, which operations must accept. In 62443 terms, each alternative defines a different conduit between the lift-station zones and the SCADA zone, with different security capabilities.
 
+Put the evaluation in a table with the same criteria for each alternative, such as time to deploy, cost over five years, effect on response to overflows and remaining exposure. Score each station class separately, because a beach-side station with high overflow consequence justifies more than an inland station whose overflow is contained.
+
 ### 5.4 Recording rejections
 
 A design record lists rejected alternatives and the reason. Future reviewers otherwise re-propose them without knowing the history.
+
+For BWRP the record notes that Alternative 3 was rejected because remote pump starts prevented three overflows last year. If operations later change, for example by adding local storage or automatic control at the high-consequence stations, the reason may no longer hold, and the record tells the next reviewer exactly which condition to check. Date the record and name who agreed to the rejection.
 
 ### Worked example (synthetic BWRP)
 
@@ -365,17 +397,25 @@ B recall=0.850 false-alert rate=0.037
 recall difference B-A 95% bootstrap CI: [0.000, 0.388]
 ```
 
+The test plan should be written before the replay is built, naming the attack behaviours, how many windows each gets and who labels them. Ideally the person who injects attacks did not design either rule set. Lab 6 stands in for this with seeded random outcomes, so its numbers show the method rather than the real performance of BWRP's rules.
+
 ### 6.2 Reading the result
 
 B's recall is 0.85 against A's 0.65, and its false-alert rate is lower (3.7 % vs 6.9 %). The bootstrap interval for the recall difference runs from 0.000 to 0.388: the lower end touches zero. With only 40 attack windows, we cannot rule out that B is no better at recall than A, even though the point estimate favours it strongly. Paired methods (each window evaluated by both rule sets) would give a tighter interval; the bootstrap above resamples windows, preserving pairing.
+
+Report the counts beside the rates so a reader can judge the evidence: 34 of 40 against 26 of 40 attack windows, and 6 against 11 of 160 normal windows. With so few attack windows a handful of different outcomes would change the picture. That is the main reason Daniel asks for a larger and independently built replay before the next review.
 
 ### 6.3 Making the call
 
 Leaders rarely need statistical certainty to act; they need to know the risk of each choice. B is cheaper in false alerts and probably better at recall. The downside of switching — if B were truly no better — is small. Daniel recommends switching, while expanding the attack-window set to 120 before the next review.
 
+The decision is easier because B also produces fewer false alerts, which operators notice every shift. Daniel records the recommendation with its uncertainty, sets the next review date and names the colleague who will build the 120 attack windows. If the larger replay shows no recall advantage, the decision is revisited rather than defended.
+
 ### 6.4 Threats to validity
 
 Injected attacks reflect the test author's imagination; real adversaries may differ. Replay omits operator reaction. Rule set B was designed after seeing some of these attack types, which favours it.
+
+Each threat has a partial remedy. Ask a colleague who did not design B to write new attack windows. Note that replay measures alerts, not whether operators act on them. Record which attack types informed B's design and report B's results on those separately from the rest, so a reader can see whether its advantage holds on unseen behaviour.
 
 ### Worked example (synthetic BWRP)
 
@@ -415,17 +455,25 @@ You will (1) design OT security roles and responsibilities across IT, operations
 
 In many utilities IT owns the network up to a firewall, operations owns the process, engineering owns the controllers and nobody owns the space where they meet. NIST SP 800-82r3 recommends a cross-functional team for OT security, with clearly assigned authority. Integration means writing down who decides, not only who advises.
 
+At BWRP that space includes the DMZ firewall, the vendor broker and the cellular links to lift stations. Each needs a named owner with authority to approve changes and to act in an incident. Writing it down often reveals that two teams believed the other owned it, which is exactly the gap an attacker or a fault exploits.
+
 ### 7.2 A RACI for three processes
 
 For remote-access approval: the shift supervisor is Responsible for enabling sessions; the OT security lead is Accountable for the policy; the vendor manager is Consulted; IT security is Informed of each session. For PLC logic change: control engineer Responsible, engineering manager Accountable, operations Consulted, OT security Informed and alerted. For OT incident declaration: shift supervisor Responsible for raising, plant director Accountable, OT security and IT Consulted, regulator Informed when thresholds are met.
+
+Check each row for exactly one Accountable party and at least one person who does the work. Share the table with every role it names and ask whether they agree; a role that learns from the table that it is Accountable for something has not yet accepted it. Review the RACI after organisational changes and after any incident that tested it.
 
 ### 7.3 Change management
 
 Every change to an OT system passes a change board that already exists for safety and reliability. Adding three security questions to its form — does this change add a conduit, change an account, or alter firmware? — integrates security without a parallel bureaucracy.
 
+Each yes answer then triggers a defined action: a new conduit needs a firewall rule and an owner; a changed account needs a review of who can use it; altered firmware needs a check against vendor advisories and a backup taken first. The board already understands safety and reliability questions, so the security questions should be phrased the same way.
+
 ### 7.4 Metrics
 
 Measure what you want more of. "Number of vulnerabilities" rewards not looking. Better: percentage of OT assets in the inventory with known firmware versions; median days to apply high-risk OT patches within available windows; percentage of vendor sessions with recordings reviewed. Each metric names a denominator.
+
+Each metric also needs a baseline and a target date. BWRP's dashboard starts from 14 of 23 RTUs in the inventory and 0 of 37 vendor sessions reviewed since March, so progress is visible from the first report. Review each definition with the people it measures, so that the metric changes behaviour rather than reporting.
 
 ### Worked example (synthetic BWRP)
 
@@ -469,13 +517,19 @@ Suppose evidence suggests an intruder on BWRP's SCADA server during a storm, whe
 
 An unexplained local change at a dosing panel (Chapter 3's example) might be a technician's well-meant adjustment or sabotage. Treat it as a process deviation first, collect evidence without accusation, involve human resources and legal counsel before interviews, and remember that blame cultures make staff hide mistakes, which is worse for security.
 
+At BWRP the evidence already pointed to a local change during a period when the panel was in local mode. The next step is to check rosters and work orders for that window, and to ask the technician what they were doing, with the conversation handled as a process review. Only if the explanation does not fit does it become a disciplinary or legal matter.
+
 ### 8.3 Supplier compromise
 
 If a SCADA vendor announces that its update server distributed tampered software, every utility using it must determine exposure. Leaders need an inventory of installed versions and a record of where updates came from. Sector information sharing helps; so does an existing relationship with the vendor's security team.
 
+For BWRP the first question would be which SCADA servers and engineering workstations received updates from the affected source, and when. That needs records kept before the announcement, which is why the inventory work in the gap list matters. Contacts with the vendor's security team and the sector sharing group should be established before a crisis, not during one.
+
 ### 8.4 Communicating under uncertainty
 
 Tell regulators what you know, what you do not, what you are doing and when you will update. Avoid both reassurance you cannot support and speculation about attribution.
+
+At BWRP the holding statement at 01:00 on the storm night followed this pattern: an unfamiliar session from the SCADA server, crews at the beach-side stations, the external path cut, and the time of the next update. It made no claim about who was responsible. Prepare templates for such statements in advance so they can be issued quickly without careless wording.
 
 ### Worked example (synthetic BWRP)
 
@@ -544,21 +598,31 @@ G6 writes monitored                UNSUPPORTED
 G4 recovery tested                 supported
 ```
 
+Writing the argument this way makes the board's question precise. Instead of asking whether OT security is good, it asks which claims are supported and which are not. Each piece of evidence also needs an owner and a date, so the case can be refreshed. BWRP's argument in Lab 9 is deliberately small, to show the structure before it grows.
+
 ### 9.2 Reading the check
 
 G6 "writes monitored" has no evidence and no sub-claims, so it is unsupported. G3 depends on G6 and therefore fails, and the top claim G1 fails with it. G2 and G4 are supported. The check is strict on purpose: a top claim cannot be partly true for a board.
+
+The check only tests structure. It cannot tell whether E3's bench test was the right test, or whether E2's sample of session logs was large enough. Those are judgements for a reviewer. Use the mechanical check to find gaps quickly, then read each piece of evidence to see whether it really supports its claim.
 
 ### 9.3 Assurance is not compliance
 
 Compliance shows that required controls exist. Assurance argues that risk is acceptable given the system's actual threats and consequences. A plant can be compliant with a checklist and still have an unsupported claim on its most important loop — dosing integrity here.
 
+BWRP could pass a checklist that asks whether remote access is controlled and recovery is tested, because G2 and G4 are supported, while the claim that matters most to residents, dosing integrity, remains unsupported. Assurance puts that gap at the top of the board paper, where a compliance report would have hidden it among passed items.
+
 ### 9.4 Evidence freshness
 
 Evidence ages. A restore drill from 2025-11 supports G4 today; in two years it will not. Mature assurance cases attach a validity period to each item and fail claims whose evidence has expired.
 
+Set the validity period by how quickly the evidence could become wrong. A broker configuration review may need repeating after every major change, while a restore drill might be valid for a year. Add the expiry dates to the argument itself, so that the check in Lab 9 can mark a claim unsupported when its evidence lapses.
+
 ### 9.5 Reporting to a board
 
 Report: top claim status (not yet supported), which sub-claim blocks it, what evidence is planned and when. Avoid red-amber-green colours without the underlying claims; colour hides reasoning.
+
+Daniel's board paper follows this structure. It says plainly that G1 is not yet supported, names G6 as the blocking claim, gives the date by which evidence will exist and identifies the compensating evidence until then. A board member can ask a sharper question of that paper than of a single amber light.
 
 ### Worked example (synthetic BWRP)
 
@@ -598,21 +662,31 @@ You will (1) critique a peer-reviewed OT security paper's threat model, method a
 
 Read primary research that addresses a live decision. For BWRP's detection programme two papers frame the field: Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245), a survey of physics-based attack detection in cyber-physical systems, and Urbina et al. (2016, ACM CCS, doi:10.1145/2976749.2978388), which argues for evaluating detectors by the impact an undetected attacker can achieve.
 
+Start from a decision on the table, such as how to evaluate BWRP's planned dosing monitor, and choose papers that bear on it. A survey gives the map, and a focused paper gives a method to test. Note why each paper was chosen, so the reading list can be revisited when the decision changes.
+
 ### 10.2 Critiquing the threat model
 
 Ask what the attacker can observe, change and know. Urbina et al. consider an attacker who knows the detector and stays below its threshold — a strong but realistic assumption for well-resourced actors. A paper that tests only naïve attacks overstates detector value.
+
+For BWRP, the relevant attacker is one who can change dosing values or the readings that report them. Write that attacker's capabilities in the critique and compare them with the paper's. If a paper assumes the attacker cannot see the detector, say whether that is plausible for a vendor-access path that reaches PLC-D.
 
 ### 10.3 Critiquing method and evaluation
 
 Check the testbed or dataset (simulated, laboratory or operational), the metrics, the baselines compared, and whether thresholds were tuned on evaluation data. Surveys like Giraldo et al. are especially useful for spotting field-wide habits — for example inconsistent metrics that make papers hard to compare.
 
+Write down what each paper's evaluation actually measures, and compare it with what BWRP needs to know. A detector evaluated by accuracy on balanced data says little about false alerts in a plant where attacks are rare. Note also whether the authors report the impact an attacker could achieve while staying undetected, the measure Urbina et al. argue for.
+
 ### 10.4 Transfer to practice
 
 Even a sound paper may not transfer. Physics-based detection needs a model of the process; BWRP's biological treatment is slow and nonlinear, unlike the faster loops in many testbeds. Transfer requires asking: does our process have the dynamics, sensors and data quality the method assumes?
 
+Answer each question with evidence from BWRP: which sensors exist on the dosing loop, how often they report and how noisy the readings are. If the answers fall short of what the method needs, the transfer may require new instruments or a different model. The critique should say which, rather than recommending the method on the strength of its published results.
+
 ### 10.5 Writing the critique
 
 Structure: question and claim; threat model; method; evidence; transfer to BWRP; what we would test first. Keep it to two pages for practitioners.
+
+Each part should be short and concrete. The transfer paragraph is the most important for practitioners, because it says what would need to be true at BWRP for the paper's results to apply. End with one test the organisation can run, such as measuring the maximum undetected dosing deviation on its own replay.  Ask an operator to read it before it is circulated.
 
 ### Worked example (synthetic BWRP)
 
@@ -652,21 +726,31 @@ You will (1) scope an applied OT security project inside a real organisational c
 
 A postgraduate applied project should change something in an organisation, with the owner's written agreement, and be finishable in one term. At BWRP, Daniel's project is "passive write monitoring for the dosing network": it closes the unsupported claim G6 from Chapter 9, uses the evaluation method from Chapter 6 and the impact measure from Chapter 10.
 
+The monitoring project fits these tests. Operations and engineering own the systems it touches and can agree to it in writing. It can be finished in twelve weeks. It closes a named gap in the assurance case, and its result will be measurable. A project that only produces a report, with nothing changed, would not meet the standard.
+
 ### 11.2 Stakeholders and constraints
 
 Operations must approve the monitoring tap (passive, on a mirror port, installed in a maintenance window). Engineering provides the register map. IT provides log storage. The regulator need not approve but will see the results in the next assurance report. The constraint list includes: no active traffic on the dosing network, no change to PLC-D, and data retention of 90 days.
+
+Write each constraint as a test that can fail, and check them at each milestone. If the mirror port cannot be installed without touching PLC-D's configuration, the constraint wins and the plan changes. Keep a short stakeholder log of who agreed what and when, because the dossier will need it.
 
 ### 11.3 Milestones and risks
 
 Weeks 1–2: agreement, tap installed and capture validated. Weeks 3–6: baseline and rules. Weeks 7–9: controlled evaluation with an independently authored attack replay. Weeks 10–12: dossier and handover. Risks: mirror-port packet loss (mitigation: monitor loss counters), operator alert fatigue (mitigation: alerts to OT security first for 4 weeks), staff turnover (mitigation: written runbook).
 
+Review the risks at each milestone and record whether each mitigation is working. If capture loss cannot be brought under control by week 2, later results would be unreliable, so the plan pauses rather than carrying a weak baseline forward. Protect weeks 7 to 9 in particular, because evaluation is the first phase to be squeezed when earlier work slips.
+
 ### 11.4 Success measures
 
 Defined in advance: capture loss below 0.1 % over a week; recall at least 0.8 on the independent replay with false-alert rate below 2 % of normal windows; maximum undetected dosing deviation reported; runbook accepted by operations.
 
+Record these measures in the project agreement, with the date and the stakeholders who accepted them. The maximum undetected dosing deviation has no target because it is a finding, not a pass mark, but it must be reported whatever it shows. Failing a measure is reported as a failure, as Daniel does at week 9.
+
 ### 11.5 The dossier
 
 The evidence dossier contains the agreement, configuration, test reports, evaluation results with intervals, open issues and handover. It becomes evidence E5 in the assurance case.
+
+Organise the dossier so that a reviewer can follow the project from agreement to handover without asking questions. Include the capture-loss figures, the evaluation counts, the week-9 miss on false alerts and the re-run. When it becomes evidence in the assurance case, it carries a date, so its validity period starts then.  Keep it in the plant's controlled records.
 
 ### Worked example (synthetic BWRP)
 
@@ -706,17 +790,25 @@ You will (1) review the course's decisions as a portfolio; (2) transfer methods 
 
 Across the course, BWRP took a set of decisions: brokered vendor access (Ch. 1), gap priorities (Ch. 2), segmentation justified by tail risk (Ch. 4), tiered lift-station protection (Ch. 5), rule set B (Ch. 6), RACI and metrics (Ch. 7), storm-night response (Ch. 8), the assurance case (Ch. 9) and the monitoring project (Ch. 11). Reviewing them together shows whether they are consistent: for example, dosing integrity appears in Chapters 3, 9, 10 and 11 — a sign it is the plant's central concern.
 
+Look for tension as well as consistency. For example, the segmentation decision and the lift-station design both depend on firewall and conduit changes, so their schedules should be aligned. The vendor-access choice and the assurance case both rely on broker evidence. Listing such links shows where a slip in one decision would undermine another.
+
 ### 12.2 Transfer to another sector
 
 Methods transfer; parameters do not. Moving to a district heating operator or a food factory, the decision frame, loss distributions, controlled evaluation and assurance structure all apply. What changes: the consequence model (heat loss or product contamination instead of discharge quality), the regulators, the dominant protocols and the safety standards in force.
+
+Before transferring, write down the assumptions each method made at BWRP: incident probabilities from water-sector peers, a cost per hour of outage, and attack behaviours in the replay. Each needs replacing with figures from the new sector. The structure of a decision record or assurance case moves unchanged; the numbers inside them must not.
 
 ### 12.3 Transfer brief
 
 A successor needs: the open decisions and their revisit triggers, the assurance case with expired or missing evidence highlighted, the metrics and their baselines, relationships (vendors, regulator contacts, sector information-sharing groups) and known weak spots. Two pages, with links to the full records.
 
+Write the brief for a reader who has never met Daniel. Each open item should name its trigger and date, each metric its denominator and baseline, each relationship a contact and its last use. Link to the full records rather than repeating them, and date the brief on its first line.
+
 ### 12.4 Continuing development
 
 The field moves: NIST SP 800-82 was revised in 2023; IEC 62443 parts are periodically updated; MITRE ATT&CK for ICS adds techniques; CISA publishes advisories weekly. Plan: follow advisories for your vendors, re-read a standard's change summary when a new edition appears, and present one case study a year to peers.
+
+Keep a short log of what you read and what you changed because of it, such as a revised assumption or a new question for a vendor. Review the log once a year with a peer. Development that changes nothing in practice is reading; development that leaves a trace in your decisions is what keeps a lead credible.
 
 ### Worked example (synthetic BWRP)
 
