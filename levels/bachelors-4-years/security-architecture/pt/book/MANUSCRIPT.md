@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 099, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 40 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–40 (EX085–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–34 de 40 já estão escritos em português, com os exercícios EX001–EX102 e suas resoluções com rubricas de 0 a 3 e 10 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 35–40 (EX103–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que aprendem a projetar, avaliar e operar a arquitetura de segurança de organizações reais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios avaliam lógica, buscam caminhos de ataque, calculam intervalos amostrais, pseudonimizam, medem cobertura, contam dependências, verificam o menor privilégio, ajustam uma regra de detecção, estimam uma diferença em diferenças e ponderam opções, tudo sobre dados sintéticos; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) |
 
-Capítulos 29–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
+Capítulos 35–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-35), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1285,11 +1285,308 @@ Sem culpados não significa sem responsáveis; os responsáveis pelas correçõe
 
 - **EX084 — Prova posterior.** O que mostrou que as melhorias funcionaram? *Rubrica:* 3 = o alerta captou um erro de conversão de moeda;; 2 = alerta;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-29"></a>
+
+## Capítulo 29 — Arquitetura e engenharia de segurança: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever as atividades operacionais que mantêm uma arquitetura eficaz; (2) projetar um ritmo de operação leve para a Fernway; (3) lidar com mudanças sem perder a segurança.
+
+### 29.1 A arquitetura em operação
+
+Lucas aprende que uma arquitetura se deteriora sem operação. As contas acumulam direitos, os certificados expiram, os fornecedores mudam e surgem novas ferramentas. O NIST SP 800-37 Rev. 2 chama a parte contínua de monitoramento contínuo: verificar se os controles ainda funcionam e se o risco continua aceitável. Para a Fernway, isso não pode significar uma equipe grande. Lucas lista as atividades que mais importam: revisões de acesso, aplicação de patches, testes de backup, revisão de logs, verificações de fornecedores e simulados de incidente. Cada uma tem uma frequência e um responsável, e cada uma produz uma pequena evidência.
+
+### 29.2 Um ritmo de operação
+
+Lucas projeta um calendário. Semanal: Hannah confere os alertas de identidade e o status dos patches. Mensal: o verificador de menor privilégio do capítulo 25 é executado e os resultados são revisados; testa-se a restauração de um backup. Trimestral: revisão da lista de fornecedores, exercício de mesa (tabletop) e um relatório ao conselho com as métricas do capítulo 15. Anual: atualização da visão geral da arquitetura e revisão de riscos. Ele estima o total em cerca de quatro horas por semana. Registrar o ritmo por escrito faz com que as tarefas sobrevivam a férias e trocas de pessoal, porque é o calendário, e não a memória, que as carrega.
+
+### 29.3 Mudar com segurança
+
+A Fernway muda com frequência: novas lojas, funcionários temporários e novos fornecedores. Lucas acrescenta perguntas de segurança ao formulário de mudança existente: esta mudança acrescenta um fornecedor, dados novos, um novo cruzamento de fronteira ou um novo acesso privilegiado? Um sim dispara uma breve revisão com Hannah. A maioria das mudanças responde não e passa rapidamente. Durante o estágio dele, as perguntas pegam um novo aplicativo de fidelidade que teria recebido a lista completa de associados. A integração é reprojetada para enviar apenas os números dos associados e os saldos de pontos, que é tudo de que o aplicativo precisa.
+
+### Exemplo resolvido
+
+Lucas lista as atividades operacionais, projeta um ritmo de quatro horas por semana e acrescenta quatro perguntas de segurança ao formulário de mudança, pegando um aplicativo de fidelidade que compartilhava dados demais.
+
+> **Caso sintético.** O ritmo e o aplicativo são sintéticos; o SP 800-37 Rev. 2 é real.
+
+### Erros e limites
+
+Os ritmos escorregam sob pressão de trabalho. As perguntas de mudança dependem de respostas honestas.
+
+### Exercícios
+
+- **EX085 — Por que um calendário.** Por que registrar o ritmo de operação por escrito? *Rubrica:* 3 = as tarefas sobrevivem a férias e trocas de pessoal;; 2 = continuidade;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX086 — Gatilho de mudança.** O que dispara uma revisão de segurança de uma mudança? *Rubrica:* 3 = acrescentar um fornecedor, dados novos, um cruzamento de fronteira ou acesso privilegiado;; 2 = gatilho;; 1 = todas as mudanças;; 0 = nenhuma.
+
+- **EX087 — Correção do aplicativo de fidelidade.** Como o aplicativo de fidelidade foi reprojetado? *Rubrica:* 3 = para receber apenas números de associados e saldos de pontos;; 2 = minimizar;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) simular a revisão de logs em busca de logins suspeitos; (2) ajustar uma regra de detecção simples; (3) medir falsos positivos e falhas de detecção em dados sintéticos.
+
+### 30.1 A tarefa
+
+O segundo laboratório pede que Lucas escreva uma regra de detecção para logins suspeitos usando logs sintéticos do sistema de identidade da Fernway. Cada registro tem um usuário, um horário, um país e um resultado. Ele começa com uma regra que sinaliza logins vindos de um país diferente do habitual do usuário. Os dados sintéticos incluem eventos rotulados, alguns deles ataques genuínos plantados pelo Dr. Bellini, para que Lucas possa medir o quão bem sua regra funciona. Todos os dados são gerados, então nenhuma atividade real de funcionários é examinada.
+
+### Laboratório — Ajuste de uma regra de impossible travel
+
+```python
+# Tune a sign-in rule on labelled synthetic logs: (user, hour, country, attack?)
+logs = [("ana", 9, "UK", 0), ("ana", 10.5, "BR", 1), ("ben", 8, "UK", 0), ("ben", 20, "FR", 0),
+        ("cai", 7, "UK", 0), ("cai", 8.5, "RU", 1), ("dee", 9, "UK", 0), ("dee", 15, "ES", 0),
+        ("eli", 12, "UK", 0), ("eli", 13.5, "CN", 1), ("fay", 9, "DE", 0), ("fay", 18, "DE", 0),
+        ("gus", 9, "UK", 0), ("gus", 30, "IT", 0), ("hal", 9, "UK", 0), ("hal", 9.8, "US", 1)]
+home = "UK"
+def evaluate(name, flags):
+    tp = sum(1 for i in flags if logs[i][3]); fp = len(flags) - tp
+    miss = sum(r[3] for r in logs) - tp
+    print(f"{name}: flagged {len(flags)}, attacks caught {tp}, false positives {fp}, missed {miss}")
+evaluate("any foreign", [i for i, r in enumerate(logs) if r[2] != home])
+def travel(window):
+    out = []
+    for i, r in enumerate(logs):
+        for j, p in enumerate(logs[:i]):
+            if p[0] == r[0] and p[2] != r[2] and r[1] - p[1] <= window: out.append(i)
+    return out
+evaluate("2-hour travel", travel(2)); evaluate("1-hour travel", travel(1))
+```
+
+Execute com `python3 lab_detect.py`. Saída verificada:
+
+```text
+any foreign: flagged 9, attacks caught 4, false positives 5, missed 0
+2-hour travel: flagged 4, attacks caught 4, false positives 0, missed 0
+1-hour travel: flagged 1, attacks caught 1, false positives 0, missed 3
+```
+
+### 30.2 Ajuste
+
+A primeira regra sinaliza todo login do exterior, inclusive de compradores em viagens a fornecedores, produzindo muitos alarmes falsos. Lucas acrescenta uma condição: sinalizar apenas quando dois logins bem-sucedidos do mesmo usuário vêm de países diferentes em até duas horas, o que é rápido demais para viajar. O laboratório mostra a mudança: os falsos positivos caem drasticamente, enquanto os ataques plantados continuam sendo detectados. Ele também testa uma janela mais estreita, de uma hora, e descobre que ela deixa passar três dos quatro ataques, então mantém duas horas. O ajuste é uma troca entre ruído e falhas de detecção, medida em dados rotulados.
+
+### 30.3 Relato
+
+Lucas relata o desempenho da regra em dados sintéticos e avisa que os dados reais serão diferentes. Ele recomenda um teste de duas semanas na ferramenta de identidade da Fernway em modo apenas de alerta, com Hannah registrando quais alertas eram reais. Ele observa que a regra não detecta atacantes que fazem login do mesmo país do usuário, então ela complementa, e não substitui, a autenticação resistente a phishing. O Dr. Bellini observa que declarar o que uma regra não consegue detectar é tão importante quanto sua taxa de detecção, porque, do contrário, os defensores confiam demais nela.
+
+### Exemplo resolvido
+
+Lucas escreve e ajusta uma regra de impossible travel em logs sintéticos rotulados, compara janelas por falsos positivos e falhas de detecção e planeja um teste.
+
+> **Caso sintético.** Os logs e os ataques são sintéticos.
+
+### Erros e limites
+
+Os dados sintéticos raramente reproduzem o ruído real. VPNs e aplicativos de viagem podem confundir regras de localização.
+
+### Exercícios
+
+- **EX088 — Problema da primeira regra.** O que havia de errado em sinalizar todos os logins do exterior? *Rubrica:* 3 = compradores em viagem causaram muitos alarmes falsos;; 2 = falsos positivos;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX089 — Escolha da janela.** Por que manter duas horas em vez de uma? *Rubrica:* 3 = uma hora deixou passar três dos quatro ataques;; 2 = falha de detecção;; 1 = mais rápido;; 0 = nenhuma.
+
+- **EX090 — Ponto cego da regra.** O que a regra não detecta? *Rubrica:* 3 = atacantes fazendo login do próprio país do usuário;; 2 = mesmo país;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Arquitetura e engenharia de segurança: casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar uma migração para zero trust na Fernway; (2) ponderar o projeto de resiliência para as altas temporadas; (3) avaliar trade-offs em projetos avançados.
+
+### 31.1 Zero trust para uma cooperativa
+
+Hannah se pergunta se o zero trust se aplica à Fernway. Lucas lê o NIST SP 800-207 e explica sua ideia central: nenhuma confiança implícita baseada na localização na rede; cada solicitação de acesso é avaliada usando a identidade, o estado do dispositivo e o contexto. Para a Fernway, isso significa aposentar a VPN do escritório para a maioria dos usos e colocar o sistema de estoque e os aplicativos da equipe atrás de um proxy de acesso ciente de identidade. Ele planeja uma migração em fases, começando pelo aplicativo financeiro, que tem poucos usuários e alto valor, para que as lições sejam aprendidas antes de incluir as lojas movimentadas.
+
+### 31.2 Resiliência para a alta temporada
+
+A Fernway obtém um terço de sua receita online nas seis semanas antes do inverno. Lucas usa ideias do NIST SP 800-160 Vol. 2 Rev. 1 sobre ciber-resiliência: antecipar, resistir, recuperar e adaptar. Ele propõe um congelamento pré-temporada das mudanças não essenciais, um failover testado da loja para uma segunda região de hospedagem, um processo manual de pedidos ensaiado caso o pagamento falhe e monitoramento extra durante o pico. Cada medida é dimensionada ao risco: o failover custa dinheiro o ano inteiro, então ele o compara com a receita perdida numa indisponibilidade num dia de pico antes de recomendá-lo.
+
+### 31.3 Ponderar os trade-offs
+
+Projetos avançados trazem custos. O proxy de acesso acrescenta uma dependência do provedor de identidade, que já é um ponto único de falha desde o capítulo 22. O congelamento de mudanças atrasa funcionalidades que o marketing quer. Lucas apresenta cada trade-off abertamente: o que se ganha, o que se perde e quem arca com o custo. O conselho aprova o proxy para o financeiro e o congelamento, mas adia a segunda região de hospedagem para o orçamento do próximo ano, aceitando o risco por uma temporada com o processo manual de pedidos como contingência. Lucas registra a decisão e sua data de revisão.
+
+### Exemplo resolvido
+
+Lucas planeja uma migração para zero trust em fases, começando pelo financeiro, aplica os objetivos de resiliência à alta temporada e apresenta os trade-offs que levam a uma decisão registrada do conselho.
+
+> **Caso sintético.** Os planos e os custos são sintéticos; o SP 800-207 e o SP 800-160 Vol. 2 Rev. 1 são reais.
+
+### Erros e limites
+
+Zero trust é uma direção, e não um produto. A resiliência adiada deixa a temporada exposta.
+
+### Exercícios
+
+- **EX091 — Por que o financeiro primeiro.** Por que começar o zero trust pelo aplicativo financeiro? *Rubrica:* 3 = poucos usuários e alto valor, então as lições são aprendidas com segurança;; 2 = piloto;; 1 = lojas primeiro;; 0 = nenhuma.
+
+- **EX092 — Quatro objetivos de resiliência.** Que quatro objetivos de resiliência Lucas usou? *Rubrica:* 3 = antecipar, resistir, recuperar e adaptar;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX093 — Item adiado.** O que o conselho adiou, e com qual contingência? *Rubrica:* 3 = a segunda região de hospedagem; processo manual de pedidos;; 2 = adiado;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Arquitetura e engenharia de segurança: interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar com colegas do jurídico, do financeiro e de operações em decisões de segurança; (2) traduzir a segurança para a linguagem de cada disciplina; (3) resolver prioridades conflitantes.
+
+### 32.1 Linguagens diferentes
+
+Lucas percebe que cada departamento da Fernway ouve a segurança de um jeito diferente. O gerente financeiro pensa em custos e perdas; o gerente de operações pensa em vazão e tempo da equipe; a assessora jurídica da cooperativa pensa em obrigações e responsabilidade. Quando Lucas apresentou o proxy de acesso em termos técnicos, ninguém se engajou. Quando o descreveu ao financeiro como redução da chance de fraude em pagamentos, a operações como a eliminação da etapa de VPN que atrasa a equipe das lojas e ao jurídico como apoio aos deveres de proteção de dados, cada pessoa viu um motivo para apoiá-lo.
+
+### 32.2 Trabalhar com o jurídico e a privacidade
+
+A assessora jurídica pergunta se a regra de detecção de logins do capítulo 30 é lícita perante as normas de proteção de dados, já que trata dados de localização dos funcionários. Lucas e a assessora documentam a finalidade, os dados minimizados ao nível de país, o prazo de retenção e o aviso aos funcionários, e registram uma avaliação de interesse legítimo. A ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) espera que tais obrigações sejam identificadas e cumpridas. O trabalho atrasa o teste em duas semanas, mas o torna defensável. Lucas aprende que envolver o jurídico cedo sai mais barato do que reprojetar depois de uma objeção.
+
+### 32.3 Resolver conflitos
+
+Operações quer que os funcionários temporários comecem a trabalhar em até uma hora após a chegada; a segurança quer as contas aprovadas e o treinamento feito antes. Lucas negocia um meio-termo: as contas temporárias são pré-criadas com direitos limitados de caixa, ativadas na chegada por um gerente de loja e expiram no fim da temporada. O treinamento é um vídeo de cinco minutos no caixa. Os dois lados obtêm a maior parte do que precisam. Ele registra o meio-termo como uma decisão de projeto, para que não seja reaberto a cada temporada. O trabalho interdisciplinar consiste sobretudo em encontrar projetos que sirvam a vários objetivos ao mesmo tempo.
+
+### Exemplo resolvido
+
+Lucas traduz o proxy de acesso para os termos do financeiro, de operações e do jurídico, documenta uma base legal para a detecção e negocia um meio-termo para as contas temporárias.
+
+> **Caso sintético.** Os departamentos e as decisões são sintéticos; a ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) é real.
+
+### Erros e limites
+
+A tradução pode exagerar os benefícios. Os meios-termos precisam de revisão se as condições mudarem.
+
+### Exercícios
+
+- **EX094 — Enquadramento para o financeiro.** Como Lucas enquadrou o proxy para o financeiro? *Rubrica:* 3 = redução da chance de fraude em pagamentos;; 2 = fraude;; 1 = termos técnicos;; 0 = nenhuma.
+
+- **EX095 — Detecção e lei.** O que Lucas e a assessora documentaram para a regra de detecção? *Rubrica:* 3 = finalidade, minimização ao nível de país, retenção, aviso e uma avaliação de interesse legítimo;; 2 = três itens;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX096 — Meio-termo temporário.** Qual foi o meio-termo para as contas temporárias? *Rubrica:* 3 = contas limitadas pré-criadas, ativadas na chegada e que expiram no fim da temporada;; 2 = limitadas;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar os dados do quase-experimento do capítulo 18; (2) tratar as ameaças à validade; (3) relatar os achados com a cautela adequada.
+
+### 33.1 Analisar os dados
+
+Lucas coleta seis meses de contagens agregadas do botão de denúncia. As lojas que receberam as orientações mostram uma taxa mensal de denúncias por funcionário antes e depois das orientações; as lojas de comparação mostram o mesmo nos mesmos meses. Ele calcula a variação em cada grupo e a diferença entre essas variações, um difference-in-differences simples. O laboratório abaixo executa o cálculo sobre as contagens sintéticas. As lojas orientadas subiram mais do que as de comparação, o que sugere que as orientações ajudaram, embora a estimativa dependa da suposição de que os dois grupos, de outro modo, teriam seguido tendências semelhantes.
+
+### Laboratório — Difference-in-differences nas taxas de denúncia
+
+```python
+# Difference-in-differences on report rates (reports per staff per month), synthetic.
+briefed = {"before": [0.20, 0.25, 0.22], "after": [0.55, 0.58, 0.51]}
+compare = {"before": [0.21, 0.19, 0.24], "after": [0.27, 0.25, 0.22]}
+m = lambda xs: sum(xs) / len(xs)
+db = m(briefed["after"]) - m(briefed["before"]); dc = m(compare["after"]) - m(compare["before"])
+print(f"briefed change {db:+.2f}, comparison change {dc:+.2f}, difference-in-differences {db - dc:+.2f}")
+```
+
+Execute com `python3 lab_did.py`. Saída verificada:
+
+```text
+briefed change +0.32, comparison change +0.03, difference-in-differences +0.29
+```
+
+### 33.2 Ameaças à validade
+
+Lucas usa as categorias de Wohlin e colegas (2012). Validade interna: as lojas orientadas foram escolhidas pelos gerentes regionais, talvez porque já fossem engajadas. Validade de construto: o uso do botão de denúncia mede a disposição de denunciar, e não a capacidade de detectar. Validade externa: as lojas da Fernway podem diferir das de outros varejistas. Validade de conclusão: com poucas lojas, o resultado pode surgir por acaso. Ele trata algumas ameaças verificando que as tendências anteriores às orientações eram semelhantes e declara as demais abertamente, em vez de escondê-las num apêndice. Cada ameaça é listada com a provável direção do viés.
+
+### 33.3 Relatar com cautela
+
+Lucas escreve que as lojas orientadas mostraram uma alta maior nas denúncias do que as lojas de comparação, o que é consistente com um benefício das orientações, mas que o desenho não consegue descartar outras explicações. Ele recomenda uma implantação aleatorizada na próxima rodada, com as lojas designadas por sorteio, que a Fernway concorda em experimentar. Hannah usa o resultado cauteloso para manter as orientações enquanto o estudo mais forte acontece. O Dr. Bellini dá nota alta ao relatório por ajustar a força das afirmações à força das evidências.
+
+### Exemplo resolvido
+
+Lucas executa um difference-in-differences sobre taxas sintéticas de denúncia, lista quatro ameaças à validade e relata um achado cauteloso com um acompanhamento aleatorizado.
+
+> **Caso sintético.** As contagens são sintéticas; Wohlin et al. (2012) é real.
+
+### Erros e limites
+
+Poucas unidades tornam as estimativas instáveis. As tendências paralelas não podem ser provadas, apenas verificadas.
+
+### Exercícios
+
+- **EX097 — Resultado do DiD.** Qual foi o difference-in-differences no laboratório? *Rubrica:* 3 = 0,29 denúncia por funcionário por mês;; 2 = positivo;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX098 — Ameaça de construto.** Que ameaça à validade de construto Lucas apontou? *Rubrica:* 3 = o uso do botão mede a disposição, e não a capacidade de detecção;; 2 = construto;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX099 — Desenho mais forte.** O que Lucas recomendou em seguida? *Rubrica:* 3 = implantação aleatorizada por sorteio;; 2 = aleatorizar;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar duas opções de arquitetura para o acesso da equipe da Fernway; (2) usar critérios ponderados; (3) testar a sensibilidade da escolha.
+
+### 34.1 As opções
+
+A Fernway precisa escolher como a equipe das lojas faz login no aplicativo de estoque em tablets compartilhados. A opção A são senhas individuais com tempo curto de expiração da sessão. A opção B é aproximar o crachá mais um PIN curto, com os crachás vinculados ao provedor de identidade. Lucas as compara como seu projeto comparativo. Ele define os critérios com Hannah e os gerentes de loja: segurança contra o uso indevido de credenciais compartilhadas, rapidez no caixa, custo, facilidade de remover quem sai e acessibilidade para funcionários com deficiência. Definir os critérios antes da pontuação impede que a opção favorita molde os critérios.
+
+### Laboratório — Comparação ponderada com verificação de sensibilidade
+
+```python
+# Weighted comparison of two sign-in options with a sensitivity check (synthetic).
+crit = ["security", "speed", "cost", "leavers", "access"]
+w = {"security": 0.30, "speed": 0.25, "cost": 0.15, "leavers": 0.15, "access": 0.15}
+score = {"A": {"security": 3, "speed": 2, "cost": 5, "leavers": 3, "access": 3},
+         "B": {"security": 4, "speed": 5, "cost": 2, "leavers": 5, "access": 4}}
+def totals(wt):
+    s = sum(wt.values()); return {o: sum(wt[c] * score[o][c] for c in crit) / s for o in score}
+print("base:", {o: f"{v:.2f}" for o, v in totals(w).items()})
+w2 = dict(w, cost=0.30); print("cost weight doubled:", {o: f"{v:.2f}" for o, v in totals(w2).items()})
+```
+
+Execute com `python3 lab_weighted.py`. Saída verificada:
+
+```text
+base: {'A': '3.05', 'B': '4.10'}
+cost weight doubled: {'A': '3.30', 'B': '3.83'}
+```
+
+### 34.2 Pontuação ponderada
+
+Cada critério recebe um peso acordado pelo grupo, e cada opção recebe uma nota de um a cinco em cada critério. O laboratório calcula os totais ponderados: a opção B pontua mais, principalmente em rapidez e na remoção de quem sai, enquanto a opção A é mais barata. Lucas registra quem deu cada nota e por quê, para que as notas possam ser contestadas. Ele observa que a pontuação esconde incerteza, então uma diferença pequena não justificaria uma recomendação forte sem mais evidências, como um piloto numa loja.
+
+### 34.3 Sensibilidade
+
+Lucas verifica se a escolha muda quando os pesos se deslocam. O laboratório dobra o peso do custo e descobre que a opção B continua vencendo, embora por menos. A opção A só vence se o custo pesar mais do que a segurança e a rapidez juntas. Como ninguém na Fernway acredita que o custo importe tanto aqui, a recomendação é robusta. Ele apresenta o resultado com a verificação de sensibilidade, que convence o gerente financeiro mais do que os totais sozinhos. Um piloto numa loja confirma que o login por crachá leva cerca de quatro segundos.
+
+### Exemplo resolvido
+
+Lucas compara duas opções de login em tablets compartilhados com cinco critérios ponderados, verifica a sensibilidade ao peso do custo e confirma com um piloto.
+
+> **Caso sintético.** As opções, os pesos e as notas são sintéticos.
+
+### Erros e limites
+
+Os pesos refletem opiniões. As notas de um grupo pequeno podem compartilhar vieses.
+
+### Exercícios
+
+- **EX100 — Critérios primeiro.** Por que definir os critérios antes da pontuação? *Rubrica:* 3 = para que a opção favorita não possa moldá-los;; 2 = viés;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX101 — Totais.** Quais foram os totais ponderados no laboratório? *Rubrica:* 3 = A 3,05, B 4,10;; 2 = B maior;; 1 = A maior;; 0 = nenhuma.
+
+- **EX102 — Resultado da sensibilidade.** O que aconteceu quando o peso do custo dobrou? *Rubrica:* 3 = B continuou vencendo, 3,83 a 3,30;; 2 = B vence;; 1 = A vence;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX084 (as de EX085–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX102 (as de EX103–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** M OR (S AND R), e (M OR S) AND R.
 
@@ -1458,6 +1755,42 @@ Respostas-modelo para EX001–EX084 (as de EX085–EX120 estão na edição em i
 **EX083.** Porque qualquer pessoa com a mesma pressão e as mesmas ferramentas poderia ter cometido o mesmo erro.
 
 **EX084.** O novo alerta captou uma conversão de moeda equivocada antes que os clientes a vissem.
+
+**EX085.** Para que as tarefas sejam carregadas pelo calendário e sobrevivam a férias e trocas de pessoal.
+
+**EX086.** Um sim a qualquer pergunta sobre novos fornecedores, dados, cruzamentos de fronteira ou acesso privilegiado.
+
+**EX087.** Para receber apenas os números dos associados e os saldos de pontos, em vez da lista completa de associados.
+
+**EX088.** Compradores viajando a fornecedores causaram muitos alarmes falsos.
+
+**EX089.** Porque a janela de uma hora deixou passar três dos quatro ataques plantados.
+
+**EX090.** Atacantes que fazem login do mesmo país do usuário.
+
+**EX091.** Porque tem poucos usuários e alto valor, o que permite aprender lições antes da migração das lojas movimentadas.
+
+**EX092.** Antecipar, resistir, recuperar e adaptar.
+
+**EX093.** A segunda região de hospedagem, com o processo manual de pedidos ensaiado como contingência por uma temporada.
+
+**EX094.** Como redução da chance de fraude em pagamentos.
+
+**EX095.** A finalidade, os dados ao nível de país, a retenção, o aviso aos funcionários e uma avaliação de interesse legítimo.
+
+**EX096.** Contas de caixa limitadas pré-criadas, ativadas por um gerente na chegada e que expiram no fim da temporada.
+
+**EX097.** As lojas orientadas subiram 0,29 denúncia a mais por funcionário por mês do que as lojas de comparação.
+
+**EX098.** Que o uso do botão de denúncia mede a disposição de denunciar, e não a capacidade de detectar.
+
+**EX099.** Uma implantação aleatorizada em que as lojas são designadas por sorteio.
+
+**EX100.** Para que a opção preferida não influencie o que é medido.
+
+**EX101.** A opção A obteve 3,05 e a opção B, 4,10.
+
+**EX102.** A opção B continuou vencendo, 3,83 a 3,30.
 
 <a id="references"></a>
 ## Referências
