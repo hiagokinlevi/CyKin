@@ -848,7 +848,7 @@ Run with `python3 lab_failed.py`. Verified output:
 
 ### 11.3 Reading the result
 
-The 203.0.113.0/24 network produced 6 failures across 7 distinct usernames — many accounts, few attempts each, the pattern of credential stuffing. 198.51.100.0/24 shows 2 failures and a success for one user: a customer mistyping a password.
+The 203.0.113.0/24 network produced 6 failures, one each against six usernames, and touched 7 distinct usernames in all once u5's success is counted — many accounts, few attempts each, the pattern of credential stuffing. 198.51.100.0/24 shows 2 failures and a success for one user: a customer mistyping a password.
 
 The pattern matters more than the totals. Many usernames with one attempt each suggests someone working through a list of leaked credentials, hoping some customers reused passwords. A single username with a couple of failures and then a success looks like an ordinary person who forgot which password they used. A rule that only counted failures would treat both networks alike and miss that distinction.
 
@@ -4098,7 +4098,7 @@ Model answers for EX001–EX150. Amara Osei, Paolo Ricci, Kingsbridge Engineerin
 
 **EX031.** Attackers spread attempts across many addresses in the same networks, so grouping reveals bursts per-address counts hide.
 
-**EX032.** 203.0.113.0/24, because it shows failures across seven distinct usernames with few attempts each.
+**EX032.** 203.0.113.0/24, because its six failures hit six different usernames, one attempt each, and seven usernames appear there in all.
 
 **EX033.** It requested an address change at 10:07, suggesting the account was taken over.
 
