@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–14 de 50 já estão escritos em português, com os exercícios EX001–EX028 e suas resoluções; os capítulos 15–50 (EX029–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–18 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções; os capítulos 19–50 (EX037–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -49,10 +49,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 12. [Sistemas operacionais](#ch-12)
 13. [Sistemas de dados](#ch-13)
 14. [Engenharia de software](#ch-14)
+15. [Fundamentos de segurança](#ch-15)
+16. [Engenharia de sistemas](#ch-16)
+17. [Fundamentos de controle e realimentação](#ch-17)
+18. [Arquitetura de segurança](#ch-18)
 
-Capítulos 15–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-15), até a chegada dos próximos lotes.
+Capítulos 19–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-19), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX028. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX036. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -1119,7 +1123,297 @@ O processo torna os erros visíveis cedo e deixa evidências. Use um framework r
 <!-- cyberabc:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 50
 
-[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (inglês) →](../../en/book/MANUSCRIPT.md#ch-15)
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) definir confidencialidade, integridade e disponibilidade e explicar por que sua prioridade é diferente em infraestrutura; (2) descrever ameaças, vulnerabilidades, risco e controles e relacioná-los numa avaliação de riscos; (3) aplicar princípios de projeto da literatura de segurança; e (4) mapear os controles de um sistema a um framework reconhecido. Ele integra os capítulos 1–14 e prepara os capítulos de arquitetura de segurança e de identidade (18–19) e os capítulos setoriais (do 20 em diante).
+
+### 15.1 As propriedades
+
+A **confidencialidade** limita quem pode ler a informação; a **integridade** garante que a informação e os sistemas não sejam alterados sem autorização; a **disponibilidade** garante acesso oportuno e confiável. Na TI corporativa, a confidencialidade costuma vir na frente. Em infraestrutura, o processo físico vem em primeiro lugar: integridade e disponibilidade do controle, depois a segurança operacional, depois a confidencialidade — embora a confidencialidade dos projetos de rede e das credenciais proteja as demais. [Avizienis et al. (2004)](https://doi.org/10.1109/TDSC.2004.2) colocam a segurança ao lado da confiabilidade, da segurança operacional e da manutenibilidade como atributos da dependabilidade; sua taxonomia de faltas, erros e falhas é usada ao longo de todo este livro.
+
+### 15.2 Ameaça, vulnerabilidade, risco
+
+Uma **ameaça** é uma causa potencial de dano (um ator com capacidade e intenção, ou um perigo natural); uma **vulnerabilidade** é uma fraqueza que uma ameaça pode explorar; o **risco** combina probabilidade e consequência. O [NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final) descreve a avaliação de riscos como a identificação de fontes e eventos de ameaça, vulnerabilidades, probabilidade e impacto. Em infraestrutura, comece pela consequência: quais são as piores coisas que poderiam acontecer ao serviço e às pessoas? O método [Consequence-driven Cyber-informed Engineering (CCE)](https://inl.gov/national-security/cce/), do Idaho National Laboratory, começa assim, perguntando qual perda ou uso indevido de funções seria inaceitável e trabalhando de trás para a frente até o que um adversário precisaria.
+
+### 15.3 Controles e princípios
+
+Os controles são preventivos, detectivos, corretivos ou compensatórios, e técnicos, procedimentais ou físicos. Princípios de projeto de [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939): economia de mecanismo, padrões à prova de falhas, mediação completa, projeto aberto, separação de privilégios, privilégio mínimo, mínimo mecanismo comum e aceitabilidade psicológica. Acrescente a **defesa em profundidade** (camadas cujas falhas são independentes) e a **presunção de violação** (assume breach: projetar de modo que o comprometimento de uma camada seja detectado e contido). No projeto do TMRP, o modo manual local com uma chave seletora física é um exemplo de separação de privilégios, e o analisador de cloro independente é uma camada de detecção fora dos sistemas que ele observa.
+
+### 15.4 Frameworks
+
+Os frameworks dão estrutura e um vocabulário comum. O [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) organiza os resultados em Govern, Identify, Protect, Detect, Respond e Recover. O catálogo [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) lista controles; a [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) especifica requisitos para sistemas e componentes de automação industrial, com níveis de segurança; o [NCSC Cyber Assessment Framework](https://www.ncsc.gov.uk/collection/caf), do Reino Unido, é baseado em resultados para serviços essenciais. Um framework é uma lista de verificação de resultados, não uma evidência de que um projeto os alcança.
+
+### 15.5 Exemplo resolvido: a primeira tabela de riscos do TMRP (sintético)
+
+| Consequência | Evento de ameaça | Vulnerabilidade | Controle existente | Controle proposto |
+|---|---|---|---|---|
+| Hospital perde o abastecimento por > 4 h | Comandos de parada forjados para a PS3/PS4 | Modbus sem autenticação sobre LTE | Cifração da operadora | Telemetria autenticada (R1/R2), modo manual local |
+| Níveis de cloro inseguros | Setpoint de dosagem manipulado | Nenhum limite de setpoint no controlador | Observação do operador | Limites no lado do controlador (R3), alarme do analisador independente (R9) |
+| Perda de visibilidade | Queda da telemetria durante a falta de energia da rede | Bateria do armário com 6 h no fim da vida útil | Nenhum | Bateria de 24 h (R5) |
+| Recuperação lenta | Ransomware nos servidores SCADA | Backups on-line, no mesmo domínio | Backups noturnos | Backups off-line, restauração testada (R6) |
+
+Cada linha nomeia primeiro uma consequência em termos de serviço. A tabela é uma hipótese a ser refinada nos capítulos 23 e 27.
+
+### 15.6 Atividade prática
+
+Mapeie cada controle proposto na §15.5 a uma função do CSF 2.0 e a uma família de controles do SP 800-53, citando os documentos. Para cada linha da tabela de riscos do TMRP, escolha a função do CSF que melhor descreve o propósito principal do controle proposto e anote onde um controle serve a duas. A telemetria autenticada é principalmente protetiva, o alarme do analisador independente é principalmente detectivo, e os backups off-line testados apoiam a recuperação. Cite os documentos dos frameworks com suas versões. Depois escreva uma frase para cada linha explicando o que o mapeamento não lhe diz, porque um mapeamento correto ainda não é evidência de que o controle funciona na LRWA.
+
+### 15.7 Erros comuns e limites
+
+- Copiar as prioridades corporativas para a TO.
+- Registros de riscos que listam vulnerabilidades sem consequências.
+- Camadas de "defesa em profundidade" que compartilham um único ponto de falha.
+- Tratar o mapeamento a um framework como prova de segurança.
+- Notas de probabilidade sem base declarada.
+
+A primeira tabela de riscos do TMRP evita esses erros ao nomear primeiro cada consequência em termos de serviço, de modo que toda vulnerabilidade fique ligada a um dano, e ao tratar suas probabilidades como hipóteses a refinar nos capítulos seguintes. Suas camadas são conferidas quanto a dependências compartilhadas antes de serem chamadas de independentes.
+
+### Exercícios — capítulo 15
+
+**EX029 — Auditoria de princípios.** *Objetivo:* aplicar princípios de projeto. *Entradas:* o Laboratório 8 e a máquina de estados da bomba da §9.5. *Passos:* para cada um, identifique dois princípios de Saltzer–Schroeder aplicados e um violado ou não tratado, e proponha uma correção. *Evidência esperada:* tabela. *Rubrica:* 3 = princípios atribuídos corretamente, com uma lacuna crível (por exemplo, a chave fixada no código do Laboratório 8 viola a separação/o privilégio mínimo; o projeto aberto é respeitado pelo HMAC); 2 = uma atribuição errada; 1 = apenas nomes; 0 = nada.
+
+**EX030 — Cenário a partir da consequência.** *Objetivo:* começar pela consequência. *Entradas:* o serviço da LRWA. *Passos:* identifique duas consequências inaceitáveis e, para cada uma, as funções que um adversário precisaria usar indevidamente e o controle de engenharia mais barato que tornaria a consequência fisicamente impossível ou limitada. *Evidência esperada:* meia página. *Rubrica:* 3 = consequências em termos de serviço, funções específicas, pelo menos um limite físico projetado (por exemplo, alívio mecânico de sobrepressão, limite por fiação dedicada na bomba de cloro); 2 = todos os controles digitais; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+A segurança de infraestrutura protege um serviço físico: a integridade e a disponibilidade do controle e a segurança operacional vêm na frente. Comece pela consequência, depois as ameaças e as vulnerabilidades, depois os controles. Aplique princípios de projeto duradouros, empilhe defesas cujas falhas sejam independentes, presuma a violação e use os frameworks como listas de verificação estruturadas — não como evidência.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) aplicar o ciclo de vida da engenharia de sistemas — concepção, requisitos, arquitetura, projeto, integração, verificação, validação, operação, desativação — a um programa de segurança; (2) decompor as necessidades das partes interessadas em requisitos de sistema e de subsistema com rastreabilidade; (3) gerenciar interfaces e configuração; e (4) integrar a engenharia de segurança à engenharia de sistemas, em vez de acoplá-la depois. Ele se apoia nos capítulos 5 e 14 e enquadra toda a segunda metade do livro.
+
+### 16.1 O ciclo de vida e o V
+
+A engenharia de sistemas gerencia a complexidade passando das necessidades aos requisitos, à arquitetura e aos componentes, e depois subindo de volta pela integração e pela verificação. O **modelo em V** emparelha cada nível de decomposição, à esquerda, com um nível de verificação, à direita: necessidades das partes interessadas com validação, requisitos de sistema com verificação do sistema, projeto de subsistemas com testes de integração, componentes com testes unitários. O [NASA Systems Engineering Handbook](https://www.nasa.gov/reference/systems-engineering-handbook/) descreve esse ciclo de vida e suas revisões técnicas. O desenvolvimento iterativo não abole o V; ele executa Vs menores com mais frequência.
+
+### 16.2 Necessidades, requisitos, rastreabilidade
+
+As necessidades das partes interessadas são o que as pessoas precisam que o sistema alcance, na linguagem delas: "o hospital não pode ficar sem água por mais de quatro horas". Os requisitos de sistema traduzem as necessidades em afirmações verificáveis sobre o sistema (Capítulo 5). A **rastreabilidade** liga cada requisito, para cima, a uma necessidade e, para baixo, a elementos de projeto e à verificação. Um requisito sem pai é excesso de enfeite ou uma necessidade oculta; uma necessidade sem requisito é uma lacuna; um requisito sem verificação é uma afirmação sem sustentação (Capítulo 38 e Laboratório 14).
+
+### 16.3 Interfaces e configuração
+
+A maioria das falhas de sistemas acontece nas interfaces — entre subsistemas, organizações ou pessoas. Um **documento de controle de interface** (ICD) especifica dados, temporização, protocolos, energia, conexões físicas e responsabilidades de cada lado. A **gestão de configuração** identifica cada item (hardware, versões de firmware, parâmetros, documentos), controla as mudanças por meio de revisão e mantém registros, para que o sistema como construído seja conhecido. Em segurança, uma configuração desconhecida é uma superfície de ataque desconhecida. Os três documentos de controle de interface do TMRP cobrem RTU para gateway, gateway para SCADA e SCADA para DMZ. Cada um nomeia um dono de cada lado.
+
+### 16.4 A segurança como disciplina da engenharia de sistemas
+
+O [NIST SP 800-160 Vol. 1 Rev. 1](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) enquadra a engenharia de segurança de sistemas como atividades de segurança embutidas nos processos técnicos da engenharia de sistemas: necessidades de proteção das partes interessadas, requisitos de segurança, projeto arquitetural para a segurança, verificação das afirmações de segurança, e operação e descarte seguros. Seu volume companheiro, o [SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1), trata da ciber-resiliência: antecipar, resistir, recuperar-se e adaptar-se a condições adversas, incluindo ataques. O TMRP segue essa abordagem: N2 é uma necessidade de proteção decomposta em R1 e R2, e cada um tem uma verificação planejada.
+
+### 16.5 Exemplo resolvido: o TMRP como sistema (sintético)
+
+As necessidades de nível mais alto do TMRP: N1 manter o hospital abastecido (interrupção ≤ 4 h em cenários plausíveis); N2 detectar e conter o uso indevido do controle remoto; N3 recuperar a operação remota em até um dia útil; N4 manter a visibilidade do operador durante faltas de energia da rede. Elas se decompõem nos requisitos R1–R9 apresentados até aqui (telemetria autenticada, rejeição de repetições, limites de setpoint, modo manual local, autonomia de 24 h do armário, restauração em até 8 h, alarmes em até 60 s, integridade dos logs, alarme de dosagem independente). A equipe escreve documentos de controle de interface para RTU–gateway, gateway–SCADA e SCADA–DMZ, e coloca todas as versões de firmware e os arquivos de configuração das RTUs sob controle de mudanças. Cada requisito agora tem uma necessidade-pai e um método de verificação planejado.
+
+### 16.6 Atividade prática
+
+Desenhe uma matriz de rastreabilidade N1–N4 × R1–R9 e marque o(s) pai(s) de cada requisito. Identifique qualquer necessidade com cobertura fraca. Use uma grade simples com as necessidades nas colunas e os requisitos nas linhas, e marque o pai ou os pais de cada requisito. Alguns requisitos servem a mais de uma necessidade: R5 apoia a visibilidade durante faltas de energia da rede, e R1 apoia tanto a contenção quanto o abastecimento do hospital. Quando terminar, conte os requisitos sob cada necessidade. Uma necessidade sustentada por um único requisito merece um segundo olhar, porque um único teste reprovado a deixaria sem sustentação no dossiê.
+
+### 16.7 Erros comuns e limites
+
+- Requisitos escritos depois do projeto para justificá-lo.
+- Interfaces sem dono.
+- Configuração conhecida apenas pelo engenheiro de comissionamento.
+- Requisitos de segurança num documento separado, nunca rastreados nem verificados.
+- Tratar o modelo em V como uma desculpa em cascata para adiar os testes.
+
+No TMRP, cada um desses erros tem uma contramedida: os requisitos são rastreados até N1–N4, cada interface tem um dono, e o firmware e a configuração das RTUs estão sob controle de mudanças. A verificação é planejada para cada requisito antes do início do projeto, então o V não é usado como motivo para adiar os testes.
+
+### Exercícios — capítulo 16
+
+**EX031 — Rastreie e encontre lacunas.** *Objetivo:* construir e analisar uma matriz de rastreabilidade. *Entradas:* §16.5. *Passos:* atribua cada um de R1–R9 à(s) sua(s) necessidade(s)-pai; identifique qual necessidade depende do menor número de requisitos e proponha um requisito adicional. *Evidência esperada:* matriz e proposta. *Rubrica:* 3 = mapeamento defensável, necessidade mais fraca identificada, com um novo requisito verificável; 2 = erros de mapeamento; 1 = sem proposta; 0 = nada.
+
+**EX032 — Controle de interface.** *Objetivo:* especificar uma interface por completo. *Entradas:* a interface gateway–SCADA. *Passos:* liste pelo menos oito atributos da interface, com valores de exemplo (itens de dados, codificação, taxa, latência, autenticação, tratamento de erros, fonte de tempo, propriedade, processo de mudança). *Evidência esperada:* tabela. *Rubrica:* 3 = completa e coerente com os laboratórios 8 e 13; 2 = faltam atributos de segurança ou de propriedade; 1 = apenas dados; 0 = nada.
+
+### Síntese do capítulo
+
+A engenharia de sistemas vai das necessidades a sistemas verificados e validados por meio de requisitos rastreáveis, interfaces gerenciadas e configuração controlada. A segurança pertence a esses processos: as necessidades de proteção se tornam requisitos, os requisitos se tornam arquitetura e projeto, e toda afirmação de segurança precisa de evidência de verificação.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) descrever o controle em malha aberta e em malha fechada, setpoints, erro e limites dos atuadores; (2) explicar o controle proporcional-integral (PI) e a saturação do integrador (wind-up); (3) analisar como dados falsos de sensores — uma injeção de dados falsos — levam um controlador correto a um estado inseguro; e (4) projetar uma detecção baseada em resíduos usando medições físicas independentes e declarar seus pontos cegos. Ele se apoia no Capítulo 6 e prepara os capítulos 27 e 33.
+
+### 17.1 Realimentação
+
+Um controlador em **malha fechada** mede uma variável de processo, compara-a com um setpoint e ajusta um atuador para reduzir o erro. A realimentação torna os sistemas robustos a perturbações e a erros de modelo — e os faz confiar totalmente em seus sensores. O livro [*Feedback Systems*, de Åström e Murray](https://fbswiki.org/wiki/index.php/Main_Page), disponível gratuitamente on-line, é o texto de referência deste capítulo. Em Hollin Hill, o controlador PI ajusta a vazão de entrada da PS3 para manter o nível do reservatório no setpoint. Ele só vê o reservatório pelo transmissor de nível, então o que esse transmissor informar é, para o controlador, a verdade. O restante deste capítulo acompanha a consequência dessa confiança.
+
+### 17.2 Controle PI
+
+Um controlador proporcional define a saída do atuador como $u = K_p e$; ele deixa um erro em regime permanente quando uma perturbação constante precisa ser equilibrada. Acrescentar um termo integral, $u = K_p e + K_i\int e\,dt$, elimina o erro em regime permanente, porque a integral continua crescendo até o erro ser zero. Os atuadores saturam — uma bomba não consegue entregar mais do que sua vazão máxima — e, enquanto saturado, a integral continua crescendo (**wind-up**), causando sobressinal quando o atuador sai da saturação. O anti-wind-up interrompe a integração durante a saturação.
+
+### 17.3 Dados falsos e o controlador crédulo
+
+Se um atacante soma um viés $b$ à medição de nível, o controlador regula o nível *medido* no setpoint, de modo que o nível *real* se estabiliza no setpoint menos $b$. O controlador funciona perfeitamente; o processo, não. Esse é o núcleo dos ataques conscientes do processo: o Stuxnet, como analisado por [Langner (2011)](https://doi.org/10.1109/MSP.2011.67), manipulou as velocidades das centrífugas enquanto reproduzia para os operadores valores de aparência normal. As defesas não podem depender do mesmo fluxo de sensores que o atacante controla. Em Hollin Hill, um transmissor de nível com viés baixaria o nível real enquanto a tela do operador mostrasse o setpoint, então a defesa precisa vir de uma medição independente.
+
+### 17.4 Detecção baseada em resíduos
+
+Um **resíduo** é a diferença entre o que uma medição diz e o que um modelo independente prevê. Para um reservatório, o balanço de massa prevê a variação de nível a partir das vazões de entrada e de saída medidas de forma independente: $\Delta h = (q_{in} - q_{out})\Delta t / A$. Dois detectores: um **resíduo de passo** compara a variação do nível medido com a variação prevista num passo; um **resíduo cumulativo** compara o nível medido com o nível integrado a partir das vazões desde a última calibração confiável. O detector de passo pega um viés abrupto, mas não uma deriva lenta; o detector cumulativo pega a deriva, mas acumula o erro dos medidores, então precisa de recalibração periódica e de um limiar acima da deriva normal dos medidores. Um atacante que também controle os medidores de vazão derrota ambos — a independência dos caminhos de medição é o verdadeiro controle.
+
+### 17.5 Exemplo resolvido: ataque ao nível de Hollin Hill (sintético)
+
+O Laboratório 7 simula o controle PI de Hollin Hill (área em planta de 1.000 m², setpoint de 3,0 m, vazão de saída de 300 m³/h, bomba de entrada de 0–600 m³/h) por 48 h. Um viés em degrau de +1,5 m às 10 h leva o nível real para 1,5 m; os dois detectores alarmam em 10,0 h. Um viés de +0,04 m — pequeno o bastante para parecer erro do sensor — só é pego pelo detector cumulativo. Uma rampa lenta de 0,05 m/h escapa inteiramente do detector de passo; o detector cumulativo alarma em 10,6 h, quando o viés é de cerca de 0,03 m. Sem detecção, a rampa deixa o nível real em 1,1 m após 48 h.
+
+### 17.6 Atividade prática: Laboratório 7
+
+```python
+# Lab 7 - PI level control under sensor-bias attacks, and two residual detectors (synthetic, offline)
+def run(attack=None, hours=48, dt=0.1):
+    A = 1000.0                         # m2 reservoir plan area: level h (m), volume A*h (m3)
+    h, integ, sp, kp, ki = 3.0, 7.5, 3.0, 400.0, 40.0   # integ preloaded so u = 300 at start
+    est = h                            # mass-balance estimate from independently metered flows
+    prev_meas, step_t, cum_t, hmin = h, None, None, h
+    for k in range(int(hours / dt)):
+        t = k * dt
+        b = attack(t) if attack else 0.0
+        meas = h + b
+        err = sp - meas
+        u = kp * err + ki * integ
+        q_in = min(max(u, 0.0), 600.0)              # pump limits 0..600 m3/h
+        if 0.0 < u < 600.0: integ += err * dt         # anti-windup
+        q_out = 300.0
+        if k > 0 and step_t is None and abs((meas - prev_meas) - (est - est_prev)) > 0.05: step_t = round(t, 1)
+        if cum_t is None and abs(meas - est) > 0.03: cum_t = round(t, 1)
+        prev_meas, est_prev = meas, est
+        h += (q_in - q_out) / A * dt; est += (q_in - q_out) / A * dt
+        hmin = min(hmin, h)
+    return round(h, 2), round(hmin, 2), step_t, cum_t
+print("columns: true final level m, true min level m, step-detector alarm h, cumulative-detector alarm h")
+print("no attack        ", run())
+print("step bias +1.5 m ", run(lambda t: 1.5 if t >= 10 else 0.0))
+print("step bias +0.04 m", run(lambda t: 0.04 if t >= 10 else 0.0))
+print("ramp 0.05 m/h    ", run(lambda t: 0.05 * (t - 10) if t >= 10 else 0.0))
+```
+
+Saída esperada:
+
+```text
+columns: true final level m, true min level m, step-detector alarm h, cumulative-detector alarm h
+no attack         (3.0, 3.0, None, None)
+step bias +1.5 m  (1.5, 1.4, 10.0, 10.0)
+step bias +0.04 m (2.96, 2.95, None, 10.0)
+ramp 0.05 m/h     (1.1, 1.1, None, 10.6)
+```
+
+Leia as quatro linhas à luz do exemplo resolvido. Sem ataque, o nível fica em três metros e nenhum detector dispara. O viés em degrau grande é pego pelos dois detectores ao mesmo tempo, e o nível real se estabiliza um metro e meio abaixo. O degrau pequeno e a rampa lenta são onde os detectores diferem: só o detector cumulativo os vê, e a rampa, se deixada em paz, arrasta o nível real para cerca de um metro. Lembre-se de que os medidores de vazão do laboratório são perfeitos, então os tempos reais de detecção seriam mais tardios.
+
+### 17.7 Erros comuns e limites
+
+- Igualar "o controlador funcionou" a "o processo está seguro".
+- Detecção que usa o mesmo caminho de dados da malha de controle.
+- Limiares definidos sem medir o ruído e a deriva normais.
+- Ignorar o wind-up e a saturação no raciocínio de segurança operacional.
+- Resultados de simulação apresentados como comportamento da planta; o Laboratório 7 é um modelo simplificado, com medidores de vazão perfeitos.
+
+Para Hollin Hill, o EX034 mostra claramente o problema da dependência: o sensor de nível e o medidor de vazão de entrada estão ambos ligados à RTU3, então comprometer uma única RTU derrota os dois lados do resíduo.
+
+### Exercícios — capítulo 17
+
+**EX033 — Compromisso do limiar.** *Objetivo:* ajustar um detector. *Entradas:* Laboratório 7. *Passos:* (1) acrescente ruído gaussiano com desvio-padrão de 0,01 m ao nível medido (semente 17) e conte os falsos alarmes do detector cumulativo no caso sem ataque com os limiares 0,03 e 0,05; (2) informe o tempo de detecção da rampa nos dois limiares; (3) recomende um limiar. *Evidência esperada:* tabela e recomendação. *Rubrica:* 3 = experimento implementado corretamente, compromisso explicado, recomendação ligada ao tempo de resposta; 2 = apenas um limiar; 1 = não executado; 0 = nada.
+
+**EX034 — Argumento de independência.** *Objetivo:* argumentar a independência da detecção. *Entradas:* a arquitetura da LRWA: sensor de nível e medidor de vazão de entrada ambos ligados à RTU3; medidor de vazão de saída na PS4, na RTU4. *Passos:* identifique quais posições do atacante derrotam o detector de resíduos e proponha uma mudança de arquitetura que melhore a independência. *Evidência esperada:* meia página. *Rubrica:* 3 = comprometer a RTU3 derrota nível e vazão de entrada, a mudança propõe um caminho separado (por exemplo, transmissor de nível independente para um registrador separado ou conferência física da régua); 2 = parcial; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+A realimentação torna os sistemas robustos e crédulos. Um sensor com viés leva um controlador correto a um estado físico incorreto. Detecte com resíduos construídos a partir de física independente, use testes de passo e cumulativos para ataques abruptos e lentos, defina os limiares a partir do ruído medido e lembre-se de que a independência dos caminhos de medição — e não a engenhosidade do algoritmo — é o que derrota um atacante capaz.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) descrever arquiteturas de referência para a tecnologia operacional, incluindo modelos em camadas e DMZs; (2) aplicar os princípios de confiança zero onde eles cabem na TO e explicar onde não cabem; (3) projetar arquiteturas de acesso remoto, registro em log e monitoramento; e (4) avaliar uma arquitetura pela consequência, e não apenas pela contagem de controles. Ele se apoia nos capítulos 11, 12 e 15 e prepara os capítulos 26 e 27.
+
+### 18.1 Arquiteturas de TO em camadas
+
+As arquiteturas de TO costumam ser descritas em níveis: processo físico (nível 0), sensores e atuadores com controle básico (1), controle supervisório (2), operações da instalação (3), uma zona desmilitarizada e o nível corporativo (4–5). O modelo, que descende da arquitetura de referência de Purdue e aparece no [guia de TO do NIST](https://csrc.nist.gov/pubs/sp/800/82/r3/final), é uma ferramenta para posicionar ativos e condutos, não uma lei. Os sistemas modernos borram os níveis: sensores conectados à nuvem, serviços remotos de fornecedores e dispositivos de campo com enlaces celulares diretos. Na LRWA, os servidores SCADA ficam na zona de controle, as RTUs na zona de campo e a réplica do historiador na DMZ.
+
+### 18.2 A DMZ e a intermediação de dados
+
+A DMZ de TO fica entre as redes de controle e corporativa. Nenhum tráfego direto a atravessa: os sistemas corporativos falam com serviços da DMZ (réplica do historiador, servidor de correções, gateway de acesso remoto), que falam com os sistemas de controle. Um teste útil: se qualquer host corporativo for comprometido, ele consegue enviar um pacote que chegue a um controlador? Se sim, a DMZ é decorativa. Na LRWA, a revisão de fluxos aplicou esse teste e reprovou: um script de relatório corporativo alcançava diretamente uma RTU de campo. Mover esses dados para a réplica do historiador na DMZ é o modo como a LRWA torna sua DMZ real, e não decorativa, e o teste é repetido depois que cada novo conduto é acrescentado.
+
+### 18.3 Confiança zero na TO
+
+A confiança zero, como descrita no [NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final), remove a confiança implícita baseada na localização na rede; todo acesso é autenticado, autorizado e avaliado por sessão. Na TO, o princípio é valioso para o acesso humano e de engenharia — identidades nominais, autenticação forte, privilégio sob demanda (just-in-time), gravação de sessões — e para dispositivos novos que o suportem. Ele se encaixa mal onde controladores legados não conseguem autenticar de forma alguma e onde as malhas de controle não toleram um ponto de decisão de política no seu caminho. A resposta de engenharia é aplicar a confiança zero nas fronteiras em que for possível (acesso de engenharia, intermediação de dados, gateways) e usar segmentação e monitoramento em torno do que não consegue autenticar.
+
+### 18.4 Acesso remoto
+
+O acesso remoto de fornecedores e da equipe é um dos principais caminhos de entrada na TO. Projete-o assim: um gateway de acesso na DMZ; autenticação multifator; contas nominais; acesso aprovado por sessão; conexões a um jump host, nunca diretamente aos controladores; gravação das sessões; e expiração automática. O [incidente na estação de tratamento de água de Oldsmar](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-042a) foi inicialmente atribuído a acesso remoto não autorizado por meio de software de compartilhamento de área de trabalho; declarações posteriores, relatadas pela [WUSF Public Media (2023)](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021), indicaram que provavelmente foi erro de um funcionário. De um modo ou de outro, o caso ilustra por que o compartilhamento de área de trabalho sem controle nas estações dos operadores é uma fraqueza de arquitetura, e por que os relatos iniciais de incidentes devem ser tomados como provisórios.
+
+### 18.5 Arquitetura de monitoramento
+
+O monitoramento de segurança de rede na TO costuma ser passivo: cópias do tráfego, vindas de portas espelhadas dos switches ou de taps, alimentam sensores que entendem protocolos industriais e estabelecem uma linha de base do comportamento normal. Os logs de servidores, firewalls e gateways vão para um coletor na DMZ ou numa zona de segurança dedicada. O monitoramento não pode criar novos caminhos para dentro do controle: os sensores recebem apenas cópias, e as interfaces de gerenciamento ficam numa rede separada. Na LRWA, os taps passivos ficam no switch da zona de controle e no head-end da LTE, e suas interfaces de gerenciamento são mantidas fora da rede monitorada.
+
+### 18.6 Exemplo resolvido: a arquitetura-alvo do TMRP (sintético)
+
+O alvo da LRWA: corporativo — firewall — DMZ (réplica do historiador, gateway de acesso remoto com MFA, preparação de correções, coletor de logs) — firewall — zona de controle (par SCADA, jump host de engenharia) — conduto de campo sobre LTE privada com autenticação na camada de aplicação (gateways para as RTUs legadas) — RTUs e painéis de controle locais com modo manual. Os taps de monitoramento passivo ficam no switch da zona de controle e no head-end da LTE. A arquitetura é avaliada pelas consequências: comandos forjados exigem comprometer uma chave de gateway de campo ou os servidores SCADA; o comprometimento do corporativo rende os dados da réplica do historiador, mas nenhum caminho de pacotes até os dispositivos de campo; a perda da LTE deixa as instalações em modo automático local ou manual, com baterias de telemetria de 24 h.
+
+### 18.7 Atividade prática
+
+Desenhe a arquitetura-alvo em texto ou num diagrama simples e anote em cada conduto as entradas da lista de permissões do Laboratório 5. Depois aplique o teste da DMZ da §18.2. Marque cada conduto com seu sentido e seu protocolo, e mostre onde ficam os taps passivos. Para cada entrada da lista de permissões, pergunte qual zona inicia a conexão e se o teste da DMZ ainda passa caso essa zona seja comprometida. Depois acrescente o caminho de engenharia pelo jump host e verifique que nenhuma regra deixa uma estação de engenharia alcançar diretamente uma RTU de campo, que foi uma das três violações de fluxo da LRWA. Um diagrama que esconde o sentido não consegue mostrar se a DMZ realmente funciona.
+
+### 18.8 Erros comuns e limites
+
+- DMZs com regras diretas "temporárias".
+- Confiança zero alegada para sistemas que não conseguem autenticar.
+- Acesso remoto que contorna o gateway (modems de fornecedores, ferramentas de compartilhamento de área de trabalho).
+- Sensores de monitoramento com interfaces de gerenciamento na rede monitorada.
+- Arquiteturas julgadas pelo número de controles, e não pelas consequências evitadas.
+
+Na LRWA, o terceiro e o primeiro erros são os mais prováveis: um fornecedor querendo acesso rápido à RTU-B para diagnósticos, e uma regra direta temporária acrescentada durante uma interrupção. A arquitetura-alvo responde aos dois com o gateway de acesso da DMZ e o controle de mudanças em cada conduto.
+
+### Exercícios — capítulo 18
+
+**EX035 — Teste da DMZ.** *Objetivo:* testar um projeto de DMZ. *Entradas:* uma regra proposta que permite ao servidor de ERP corporativo escrever o estado das ordens de serviço diretamente no banco de dados do SCADA por TCP/1433. *Passos:* aplique o teste da DMZ; proponha um projeto alternativo que atenda à necessidade do negócio. *Evidência esperada:* análise e projeto. *Rubrica:* 3 = regra rejeitada com o motivo, a alternativa intermedeia os dados pela DMZ, com o lado do controle buscando os dados ou com uma exportação unidirecional; 2 = a alternativa ainda é de entrada; 1 = aceita a regra; 0 = nada.
+
+**EX036 — Arquitetura de acesso remoto.** *Objetivo:* projetar o acesso de fornecedores. *Entradas:* o fornecedor da RTU-B precisa de acesso trimestral para diagnósticos. *Passos:* especifique o caminho de acesso, a autenticação, a aprovação, o monitoramento e a expiração; liste as evidências que mostrariam que o projeto funciona. *Evidência esperada:* especificação e lista de evidências. *Rubrica:* 3 = gateway, MFA, aprovação por sessão, jump host, gravação, expiração, e evidências (logs, teste do caminho direto negado); 2 = sem evidências; 1 = VPN direta para o controle; 0 = nada.
+
+### Síntese do capítulo
+
+Use modelos em camadas para posicionar ativos e condutos, torne a DMZ real não permitindo nenhuma travessia direta, aplique a confiança zero onde os sistemas conseguem autenticar e a segmentação onde não conseguem, faça todo acesso remoto passar por um gateway controlado, monitore de forma passiva sem criar caminhos e julgue a arquitetura pelas consequências que ela torna difíceis de causar.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (inglês) →](../../en/book/MANUSCRIPT.md#ch-19)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1128,7 +1422,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX028; as de EX029–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX036; as de EX037–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -1213,6 +1507,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX027.** Lista de verificação: comprimento da entrada verificado antes da indexação; integridade verificada antes do uso; comparação de segredos em tempo constante; nenhum segredo no código-fonte; caminhos de erro que rejeitam; exceções não engolidas; limites para laços e tamanhos; registro das rejeições em log sem segredos; ordem de bytes explícita; testes para cada caminho de rejeição. Constatações: Laboratório 3 — quadros truncados informam "crc" em vez de formato (clareza do diagnóstico); Laboratório 8 — chave fixada no código-fonte (aceitável apenas como demonstração rotulada).
 
 **EX028.** Faça a correspondência do aviso com as entradas e versões do SBOM; confirme se a função ou o recurso vulnerável está presente e alcançável na configuração da RTU-B (por exemplo, o servidor TLS está habilitado? o interpretador vulnerável da biblioteca é usado?); peça ao fornecedor uma avaliação e um firmware corrigido; aplique controles compensatórios (restringir o conduto, desabilitar o recurso); comunique às operações; agende a atualização por meio da implantação em etapas; registre a decisão.
+
+### Capítulo 15
+
+**EX029.** Laboratório 8: aplica o projeto aberto (a segurança repousa na chave, não no segredo do algoritmo) e a mediação completa (toda mensagem é verificada); viola o privilégio mínimo/a separação no sentido de que a chave de demonstração está no código-fonte e é compartilhada entre as estações — correção: chaves por estação vindas de armazenamento protegido. Máquina de estados (§9.5): aplica padrões à prova de falhas (eventos não listados são rejeitados) e a separação de privilégios (o reset precisa de um operador local); não tratado: a economia de mecanismo, se for implementada com flags espalhadas — correção: implementação guiada por tabela.
+
+**EX030.** Consequência 1: hospital sem água por > 4 h — funções usadas indevidamente: partida/parada das bombas na PS3/PS4, posições de válvulas; limite projetado: reservação própria do hospital mais uma lógica local de religamento automático que um comando remoto não consegue desabilitar. Consequência 2: superdosagem de cloro — funções: setpoint de dosagem e velocidade da bomba; limite projetado: bomba dosadora fisicamente dimensionada para que o curso máximo na vazão máxima não consiga ultrapassar uma concentração nociva, mais um desarme por fiação dedicada para residual alto.
+
+### Capítulo 16
+
+**EX031.** Um mapeamento: N1 ← R3, R4, R5 (em parte), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 depende do menor número. Proposta: "R10 — Backups off-line das configurações do SCADA e dos controladores deverão ser feitos semanalmente, guardados fora dos domínios de controle e corporativo, e ter a restauração testada trimestralmente."
+
+**EX032.** Itens de dados (ID da estação, contador, nível, pressão, alarmes); codificação (binária, big-endian, quadro de 28 bytes mais o ID da suíte); taxa (1 a cada 10 s por estação, mais alarmes por exceção); latência (≤ 1 s no gateway); autenticação (HMAC-SHA256-128, chave por estação); tratamento de erros (rejeitar e registrar em log; alarme após 3 rejeições em 10 min; alarme de estação inativa em 60 s); fonte de tempo (NTP interno por um conduto da lista de permissões; carimbos de tempo em UTC); propriedade (gateway: engenharia do TMRP; lado do SCADA: operações); processo de mudança (revisão do ICD sob controle de configuração, com aprovação dos dois donos).
+
+### Capítulo 17
+
+**EX033.** Semente 17, ruído σ = 0,01 m, 48 h: limiar de 0,03 m → 2 episódios de falso alarme sem ataque (≈ 1 por dia), primeiro alarme na rampa de 0,05 m/h em 10,7 h; limiar de 0,05 m → 0 episódios de falso alarme, primeiro alarme da rampa em 10,9 h. Recomendação: 0,05 m — o atraso de detecção de 0,2 h é pequeno diante de horas de autonomia, enquanto falsos alarmes diários ensinariam os operadores a ignorar o detector. Confira de novo com dados reais de ruído.
+
+**EX034.** Comprometer a RTU3 permite ao atacante falsificar tanto o nível quanto a vazão de entrada, de modo que o balanço de massa pode ser tornado coerente e o resíduo fica pequeno; comprometer apenas a RTU4 falsifica a vazão de saída e é detectável. Melhoria: um transmissor de nível independente ligado a um registrador separado (controlador e caminho de comunicação diferentes), ou uma leitura física regular da régua comparada com o SCADA.
+
+### Capítulo 18
+
+**EX035.** A regra reprova no teste da DMZ: um servidor de ERP comprometido poderia enviar pacotes diretamente ao banco de dados do SCADA. Alternativa: o ERP escreve o estado das ordens de serviço num serviço da DMZ; um processo da zona de controle busca as atualizações (ou as recebe por um intermediário com validação estreita), validando formato e conteúdo; nenhuma conexão de entrada do corporativo para o controle.
+
+**EX036.** Caminho: fornecedor → gateway de acesso da DMZ (MFA, contas nominais do fornecedor) → sessão aprovada a cada pedido pelo gerente de plantão → jump host na zona de controle → apenas a interface de diagnóstico da RTU-B; sessão gravada; o acesso expira no fim da janela aprovada; conta do fornecedor desabilitada entre as sessões. Evidências: logs do gateway e do jump host, sessões gravadas, um teste mostrando que a conexão direta do fornecedor às RTUs é bloqueada e uma revisão trimestral das contas.
 
 <a id="glossary"></a>
 
