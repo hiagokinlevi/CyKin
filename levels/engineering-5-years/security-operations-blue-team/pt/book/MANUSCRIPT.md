@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 50 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–50 (EX085–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–32 de 50 já estão escritos em português, com os exercícios EX001–EX096 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 33–50 (EX097–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) |
 
-Capítulos 29–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
+Capítulos 33–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-33), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1852,11 +1852,298 @@ Implemente por meio de ambientes em etapas, configuração sob controle de vers�
 
 [← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
 
+<a id="ch-29"></a>
+
+## Capítulo 29 — Operações de segurança e blue team: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir métricas de SOC ligadas a objetivos; (2) calcular resumos robustos dos tempos de resposta; (3) evitar métricas que distorcem o comportamento; (4) apresentar as medições com contexto.
+
+### 29.1 Por que medir
+
+Knerler, Parker e Zimmerman (2022) tratam a medição como uma estratégia: "meça o desempenho para melhorar o desempenho". As métricas mostram se as mudanças ajudam e para onde o esforço deve ir. Sem medição, um SOC não consegue saber se uma nova regra reduziu o dano ou só acrescentou ruído, nem se uma mudança na equipe ajudou. As medidas também sustentam conversas honestas com a direção sobre o que a equipe consegue entregar. O objetivo é a melhoria, não julgar indivíduos, o que afeta como as métricas são escolhidas e compartilhadas. A Lindqvist começa com um punhado de medidas e só acrescenta outras quando há uma pergunta clara a responder.
+
+### 29.2 Escolhendo métricas
+
+Boas métricas de SOC se ligam a objetivos: tempo da detecção ao reconhecimento, fração de incidentes detectados internamente em vez de relatados por clientes, cobertura das técnicas prioritárias e taxas de alertas falsos por regra. Cada métrica deve responder a uma pergunta que alguém de fato faz. O tempo até o reconhecimento diz ao CISO com que rapidez o SOC reage; a detecção interna versus a relatada por clientes mostra se o monitoramento encontra os problemas primeiro; a cobertura de técnicas mostra a amplitude; as taxas de alertas falsos por regra mostram onde é preciso ajustar. Coletar métricas que ninguém usa desperdiça esforço e polui os relatórios.
+
+### Laboratório — resumos dos tempos de resposta
+
+```python
+"""Median and 90th percentile of detection-to-acknowledgement minutes (synthetic)."""
+import statistics
+minutes = [3, 4, 4, 5, 5, 6, 6, 7, 8, 9, 11, 12, 14, 18, 41]
+q = statistics.quantiles(minutes, n=10, method="inclusive")
+print(f"n={len(minutes)} mean={statistics.mean(minutes):.1f} median={statistics.median(minutes)} p90={q[8]:.1f}")
+```
+
+Execute com `python3 lab_latency.py`. Saída verificada:
+
+```text
+n=15 mean=10.2 median=7 p90=16.4
+```
+
+### 29.3 Lendo o resultado
+
+Quinze tempos de reconhecimento dão uma média de 10,2 minutos, mas uma mediana de 7 e um percentil 90 de 16,4. Um único caso de 41 minutos puxa a média para cima. A mediana descreve o caso típico; o percentil 90, a cauda lenta que importa para o requisito de 15 minutos. Relatar só a média sugeriria que a equipe costuma levar dez minutos, quando a maioria dos reconhecimentos acontece em cerca de sete. Relatar só a mediana esconderia que um décimo dos casos leva mais de dezesseis minutos, além do requisito. Amara examina o caso de 41 minutos separadamente e descobre que ele chegou durante uma passagem de turno, o que aponta para uma correção de processo.
+
+### 29.4 Métricas que distorcem
+
+Kokulu et al. (2019) constataram que desalinhamentos de métricas são comuns nos SOCs. Recompensar o fechamento rápido pode produzir fechamento descuidado. Combine as métricas de velocidade com verificações de qualidade, como amostras revisadas de alertas fechados. Quando um número vira meta, as pessoas encontram formas de movê-lo que não refletem melhoria real. Se os analistas são julgados por alertas fechados por hora, fechamentos rápidos sem investigação se tornam racionais. Usar várias métricas juntas torna qualquer uma delas mais difícil de manipular. A amostra de alertas fechados é sorteada a cada semana, para que os analistas não consigam prever quais fechamentos serão revisados.
+
+### 29.5 Contexto
+
+Uma métrica sem contexto engana: o tempo de reconhecimento subiu no mês passado porque a equipe noturna diminuiu, e não porque os analistas ficaram mais lentos. Os relatórios incluem essas explicações. Um gráfico mostrando reconhecimentos mais lentos poderia levar os gestores a culpar os analistas ou exigir horas extras. Com a explicação de que a equipe noturna caiu de dois para um, a conversa passa para as decisões de pessoal. Amara acrescenta ao relatório mensal uma coluna curta de observações para eventos como mudanças de equipe, incidentes e novas regras. Os relatórios comparam cada mês com o mesmo mês do ano anterior quando há padrões sazonais.
+
+### 29.6 Qualidade dos dados
+
+As métricas dependem dos carimbos de tempo do sistema de casos; analistas que reconhecem tarde na ferramenta, mas agem cedo, tornam os dados errados. Treinamento e ferramentas corrigem isso. Se os analistas começam a investigar a partir de uma notificação por e-mail e só clicam em reconhecer depois, o sistema de casos registra um tempo mais lento do que o real. A métrica então engana no sentido oposto. Tornar o reconhecimento automático quando o analista abre o alerta, e treinar a equipe sobre por que os carimbos de tempo importam, alinha os dados com o que de fato aconteceu. Amara confere uma amostra de casos contra os logs de *chat*.
+
+### Métricas de cobertura
+
+A cobertura das técnicas prioritárias do ATT&CK é medida como a fração que tem pelo menos uma detecção testada. Detecções não testadas não contam, porque uma regra que nunca disparou num evento de teste seguro pode não funcionar. A Lindqvist relata essa fração a cada trimestre, com a lista de lacunas anexada, para que o número não possa esconder quais técnicas faltam.
+
+### Exemplo resolvido
+
+Amara relata: "Mediana de reconhecimento de 7 minutos, percentil 90 de 16,4 contra uma meta de 15 minutos. O caso mais lento (41 minutos) ocorreu durante uma passagem de turno; propomos sobrepor as passagens de turno em 15 minutos."
+
+> **Caso sintético.** Os tempos vêm do script do laboratório.
+
+### Erros e limites
+
+Quinze valores são poucos; percentis de amostras pequenas são instáveis.
+
+### Exercícios
+
+- **EX085 — Resumos do laboratório.** Informe a média, a mediana e o percentil 90. *Rubrica:* 3 = 10,2, 7, 16,4; 2 = dois; 1 = um; 0 = nada.
+- **EX086 — Por que a mediana.** Por que descrever o reconhecimento com mediana e percentil, e não com a média? *Rubrica:* 3 = assimétrico; o valor atípico puxa a média; a cauda importa para a meta; 2 = parcial; 1 = a média serve; 0 = nada.
+- **EX087 — Proteção contra distorção.** Como evitar que uma métrica de velocidade cause fechamentos descuidados? *Rubrica:* 3 = combiná-la com verificações de qualidade por revisão de alertas fechados; 2 = parcial; 1 = eliminar métricas; 0 = nada.
+
+### Síntese
+
+Meça o que se liga aos objetivos, resuma de forma robusta, proteja-se contra a distorção e sempre relate o contexto.
+
+### Continue estudando — capítulo 29 de 50
+
+[← Capítulo 28 (rascunho)](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 (rascunho) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar a lógica de detecção com testes unitários automatizados; (2) verificar o comportamento do *pipeline* com eventos sintéticos seguros; (3) registrar a evidência de verificação; (4) distinguir verificação de validação.
+
+### 30.1 Verificação versus validação
+
+A verificação pergunta "construímos certo?" — a regra se comporta como especificado? A validação pergunta "construímos a coisa certa?" — ela ajuda a detectar ameaças reais em operação? Este laboratório se concentra na verificação. Uma regra pode passar em todos os testes de verificação e ainda assim ser inútil, se mirar um comportamento que os atacantes não usam ou se os ataques reais forem diferentes dos dados de teste. A validação responde a essa pergunta mais tarde, com evidência operacional. Manter as duas separadas impede que uma equipe afirme que uma regra "funciona" quando só mostrou que ela corresponde à sua especificação.
+
+### 30.2 O laboratório
+
+O laboratório é um SIEM de teste isolado da produção, com logs sintéticos reproduzidos. Não se usam dados reais de clientes nem ferramentas de ataque; os eventos de teste são registros de log fabricados que se parecem com o comportamento que a regra mira. O isolamento impede que os eventos de teste cheguem aos analistas de produção e desperdicem seu tempo. Os logs sintéticos reproduzidos dão volume e variedade realistas sem expor dados de clientes. Os registros fabricados permitem ao testador controlar exatamente quais condições estão presentes, e é assim que os casos de fronteira são testados com precisão. O laboratório é reconstruído a partir da configuração, para que seu estado seja conhecido antes de cada execução.
+
+### Laboratório — testes unitários da regra de rajada
+
+```python
+"""Unit tests for a detection function, run with the standard library (synthetic cases)."""
+import io, unittest
+def burst(users_failed, any_success, threshold=5):
+    return users_failed >= threshold and any_success
+class T(unittest.TestCase):
+    def test_fires_at_threshold(self): self.assertTrue(burst(5, True))
+    def test_quiet_below(self): self.assertFalse(burst(4, True))
+    def test_needs_success(self): self.assertFalse(burst(9, False))
+    def test_zero(self): self.assertFalse(burst(0, False))
+if __name__ == "__main__":
+    r = unittest.TextTestRunner(stream=io.StringIO(), verbosity=0).run(unittest.defaultTestLoader.loadTestsFromTestCase(T))
+    print("tests run", r.testsRun, "failures", len(r.failures))
+```
+
+Execute com `python3 lab_unittest.py`. Saída verificada:
+
+```text
+tests run 4 failures 0
+```
+
+### 30.3 Lendo o resultado
+
+Quatro testes rodam e nenhum falha: a regra dispara com exatamente 5 usuários distintos falhando e um sucesso, fica em silêncio com 4, fica em silêncio sem um sucesso mesmo com 9 usuários e fica em silêncio sem atividade. Esses testes codificam a fronteira e a cláusula de sucesso decididas nos capítulos 9 e 24. Cada teste confere um aspecto do comportamento. Disparar com cinco e ficar em silêncio com quatro fixa o limiar com exatidão; ficar em silêncio com nove sem um sucesso mostra que a cláusula de sucesso é de fato exigida; ficar em silêncio sem atividade mostra que a regra não dispara por engano em janelas vazias. Juntos, os quatro testes aprovados descrevem o comportamento pretendido da regra.
+
+### 30.4 Testes do *pipeline*
+
+Os testes unitários conferem a lógica; os testes do *pipeline* conferem se um registro sintético que entra no coletor produz um alerta no sistema de casos com os campos corretos. Amara injeta três registros e confere cada campo do alerta resultante. Uma regra pode estar correta enquanto o *pipeline* em volta dela quebra: um campo renomeado pelo analisador, uma regra de roteamento que envia os alertas para a fila errada ou um erro de conversão de horário. Conferir cada campo do alerta final, como o ID do cliente, a rede de origem e as ações subsequentes, confirma que a cadeia inteira funciona, e não só a lógica da regra.
+
+### 30.5 Evidência
+
+O registro do laboratório lista o teste, a versão, a entrada, os resultados esperado e obtido, a data e o testador. Registrar a versão da regra liga cada resultado a uma configuração exata, para que uma mudança posterior possa ser comparada. Os resultados esperado e obtido lado a lado tornam as falhas evidentes. O nome do testador e a data mostram quem responde pelo teste. Esses registros passam a fazer parte da evidência de que a regra foi verificada antes de entrar em produção. Os testes que falharam continuam no registro depois de corrigidos, ao lado da nova execução, para que o histórico mostre o que deu errado e como foi corrigido.
+
+### 30.6 Repetibilidade
+
+Os testes rodam automaticamente a cada mudança de regra, de modo que a verificação é contínua, e não pontual. As regras mudam com frequência por ajustes, atualizações de analisadores e renomeações de campos. Um teste rodado só uma vez, na criação, não diz nada sobre a regra seis meses depois. Rodar a bateria a cada mudança pega regressões de imediato, e um teste que falha bloqueia a implantação até que alguém corrija a regra ou justifique a mudança do teste. A bateria leva menos de dois minutos, então os engenheiros a rodam localmente antes de propor uma mudança, e o *pipeline* compartilhado a roda de novo antes da incorporação.
+
+### Higiene dos dados de teste
+
+Os registros de teste sintéticos trazem um campo marcador, para que nunca se misturem com alertas ou métricas reais.
+
+### Exemplo resolvido
+
+O teste do *pipeline* revela que o alerta não traz o ID do cliente: o modelo de roteamento fazia referência a um nome de campo antigo. Amara corrige o modelo, roda de novo e registra tanto a falha quanto a correção. Só os testes unitários jamais teriam encontrado isso.
+
+> **Caso sintético.** Os testes e os registros são sintéticos.
+
+### Erros e limites
+
+Passar na verificação não mostra que a regra pega atacantes reais; isso é validação, tratada no capítulo 38.
+
+### Exercícios
+
+- **EX088 — V e V.** Distinga verificação de validação. *Rubrica:* 3 = construir certo vs construir a coisa certa; especificação vs eficácia real; 2 = parcial; 1 = são iguais; 0 = nada.
+- **EX089 — Quatro testes.** O que os quatro testes unitários conferem? *Rubrica:* 3 = fronteira do limiar 5/4, cláusula de sucesso, entrada vazia; 2 = três; 1 = um; 0 = nada.
+- **EX090 — Constatação do *pipeline*.** O que o teste do *pipeline* pegou que os testes unitários não conseguiam? *Rubrica:* 3 = ID do cliente ausente por causa do nome de campo no modelo; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Verifique a lógica com testes unitários e o *pipeline* inteiro com eventos sintéticos seguros, registrando cada resultado.
+
+### Continue estudando — capítulo 30 de 50
+
+[← Capítulo 29 (rascunho)](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (rascunho) →](#ch-31)
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Operações de segurança e blue team: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o monitoramento das redes dos depósitos a partir do projeto do ateliê; (2) integrar os logs do *firewall* e a política de lista de permissões; (3) implementar o enriquecimento dos ativos dos depósitos; (4) gerenciar a implantação em muitos locais.
+
+### 31.1 Do ateliê à produção
+
+O projeto dos depósitos do capítulo 25 agora se torna real: restringir o tráfego entre depósitos e negócio a cinco serviços, registrar as negações e alertar sobre tentativas repetidas a destinos novos. Cinco serviços cobrem o que os depósitos legitimamente precisam dos sistemas de negócio, como atualizações de entrega e consultas de estoque. Todo o resto é negado e registrado. Alertar sobre tentativas repetidas a destinos novos filtra erros pontuais e ainda pega um dispositivo que tenta com insistência alcançar sistemas que não deveria, que é o comportamento que o projeto pretendia revelar.
+
+### 31.2 Enriquecimento dos ativos
+
+A detecção precisa saber quais endereços são de depósitos. Amara trabalha com a TI para acrescentar as sub-redes e os tipos de dispositivo dos depósitos ao inventário de ativos e, depois, às tabelas de enriquecimento. Sem enriquecimento, um log de negação mostra apenas um endereço, e um analista precisa procurar a que depósito e dispositivo ele pertence. Com as sub-redes e os tipos de dispositivo dos depósitos no inventário, os alertas chegam mostrando de imediato "leitor portátil, Depósito 14". O trabalho no inventário também ajuda as operações de TI, que antes não tinham uma lista completa dos dispositivos dos depósitos.
+
+### 31.3 Implantação em fases
+
+Quarenta depósitos não podem mudar de uma vez. Três depósitos-piloto vão primeiro; os problemas encontrados ali são corrigidos antes que os demais sigam em grupos de dez. Os três depósitos-piloto são escolhidos para cobrir tamanhos e equipamentos diferentes, de modo que problemas que afetam só alguns tipos de depósito tendam a aparecer. Grupos de dez depois disso mantêm administrável o número de depósitos afetados por qualquer problema novo. Cada grupo só começa depois que o anterior rodou sem problemas por um período definido. As lições são registradas depois de cada grupo.
+
+### 31.4 Constatações do piloto
+
+No piloto, uma impressora de etiquetas num depósito precisa alcançar um servidor de impressão que não está na lista de permissões. O *firewall* a bloqueia, a impressão para e o depósito liga para a TI. A equipe acrescenta o serviço de impressão, documenta o porquê e confere os outros depósitos em busca das mesmas impressoras antes do grupo seguinte. O problema da impressora mostra por que a lista de permissões precisa de contribuições de quem conhece as operações dos depósitos, e não só dos diagramas de rede. Conferir os outros depósitos antes do grupo seguinte evita a mesma interrupção em outros lugares. Documentar por que o serviço de impressão foi acrescentado mantém a lista de permissões compreensível, para que futuros revisores não o removam como uma exceção sem explicação.
+
+### 31.5 Coordenação
+
+Os gerentes dos depósitos recebem um aviso antes das mudanças, um número de contato e uma promessa de reversão. Os gerentes dos depósitos tocam locais movimentados, onde uma interrupção sem explicação pode atrasar entregas. Um aviso antecipado lhes permite planejar em torno da mudança; um número de contato lhes dá alguém para quem ligar; uma promessa de reversão os tranquiliza de que um problema será revertido rapidamente, em vez de debatido. Uma boa coordenação facilita as implantações seguintes, porque a confiança foi construída. Depois, pergunta-se aos gerentes como a mudança correu. Suas respostas moldam o aviso seguinte.
+
+### 31.6 Monitorando a implantação
+
+Um painel mostra as negações por depósito por hora; um pico depois de uma mudança sinaliza um serviço legítimo esquecido. Antes de uma mudança, as negações num depósito ficam perto de zero, porque o tráfego não era restrito. Uma alta brusca logo depois da mudança costuma significar que um serviço legítimo foi esquecido, como no caso da impressora. Acompanhar o painel durante cada janela de implantação permite à equipe reagir em minutos, em vez de esperar reclamações dos funcionários do depósito. Um pico fora de uma janela de implantação é tratado, em vez disso, como um possível evento de segurança.
+
+### 31.7 Encerramento
+
+Depois de todos os depósitos, a equipe revisa as taxas de negação e o volume de alertas em relação às estimativas do projeto. Comparar os resultados reais com as estimativas confere se as premissas do projeto se sustentaram. Se as negações forem muito maiores do que o esperado, a lista de permissões ainda pode estar sem alguns serviços; se os alertas forem muito maiores, os limiares podem precisar de ajuste. A revisão é registrada por escrito e ligada ao documento de projeto, fechando o ciclo do ateliê à operação. Paolo a lê antes de o projeto ser encerrado, e os números finais passam a ser a linha de base do monitoramento rotineiro do tráfego dos depósitos dali em diante.
+
+### Documentando as exceções
+
+Todo serviço permitido tem um responsável e um motivo no arquivo de política.
+
+### Exemplo resolvido
+
+Depois da implantação, as negações dos depósitos ficam em média em 40 por dia somando todos os locais, a maioria de dispositivos tentando de novo um servidor de atualização antigo. O alerta de destino novo dispara duas vezes na primeira semana; nas duas, é o *laptop* de um prestador de serviço conectado à rede de um depósito. O segundo leva a TI a impor o controle de acesso à rede para dispositivos visitantes.
+
+> **Caso sintético.** Os depósitos, os dispositivos e as contagens são inventados.
+
+### Erros e limites
+
+Restringir o tráfego pode quebrar dependências desconhecidas; os pilotos reduzem esse risco, mas não o eliminam.
+
+### Exercícios
+
+- **EX091 — Implantação em fases.** Por que fazer o piloto primeiro em três depósitos? *Rubrica:* 3 = encontrar problemas como a dependência da impressora antes de um impacto mais amplo; 2 = parcial; 1 = velocidade; 0 = nada.
+- **EX092 — Problema da impressora.** Como o problema da impressora foi tratado? *Rubrica:* 3 = serviço de impressão acrescentado, documentado, outros depósitos conferidos antes do grupo seguinte; 2 = parcial; 1 = restrição removida; 0 = nada.
+- **EX093 — Alerta do prestador.** O que os alertas de destino novo revelaram, e o que veio depois? *Rubrica:* 3 = *laptop* de um prestador na rede do depósito; controle de acesso à rede imposto; 2 = parcial; 1 = alarmes falsos; 0 = nada.
+
+### Síntese
+
+Implemente mudanças em todos os locais com enriquecimento, pilotos, coordenação e monitoramento dos efeitos colaterais.
+
+### Continue estudando — capítulo 31 de 50
+
+[← Capítulo 30 (rascunho)](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 (rascunho) →](#ch-32)
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Operações de segurança e blue team: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir metas de confiabilidade para o *pipeline* de monitoramento; (2) identificar pontos únicos de falha; (3) projetar redundância e degradação controlada; (4) medir a disponibilidade e a completude dos dados.
+
+### 32.1 Metas de confiabilidade
+
+O *pipeline* tem como meta 99,5% de disponibilidade e 99,9% de completude das fontes prioritárias. A completude — a fração dos eventos esperados que chega — importa tanto quanto o tempo no ar, porque um *pipeline* funcionando com dados faltando ainda deixa o SOC às cegas. O tempo no ar sozinho engana: um *pipeline* pode estar rodando enquanto descarta em silêncio uma parte dos eventos. A completude mede o que de fato chega. Para fontes prioritárias, como os logs de autenticação, 99,9% significa no máximo um evento perdido em mil, o que mantém baixa a chance de perder o evento-chave de um ataque e ainda é alcançável com uma engenharia razoável.
+
+### 32.2 Pontos únicos de falha
+
+O *pipeline* da Lindqvist tem um coletor por local e uma única alimentação de logs do balanceador de carga. Se qualquer um falhar, uma fonte inteira desaparece. Um coletor por local significa que um defeito de *hardware* ali silencia todas as fontes daquele local até ser consertado. A alimentação única do balanceador de carga significa que a detecção de tomada de conta depende de um único caminho. Listar esses pontos é o primeiro passo; decidir quais eliminar depende do custo e das detecções que cada um sustenta. Amara lista os dois na análise de falhas, com as detecções que cada um sustenta, o que mostra que a alimentação carrega a detecção mais importante.
+
+### 32.3 Redundância
+
+Dois coletores por local, em modo ativo-passivo, e um segundo caminho de alimentação para os logs do balanceador eliminam os principais pontos únicos. A redundância custa dinheiro, então vai primeiro para onde o valor de detecção é maior. Ativo-passivo significa que um coletor trabalha enquanto o outro espera, assumindo se o primeiro falhar. Isso é mais simples do que dividir a carga entre os dois e evita eventos duplicados. Começar pelos locais e alimentações que sustentam as detecções mais importantes dá a maior proteção por unidade de orçamento, e as fontes de menor valor vêm depois, se o orçamento permitir.
+
+### 32.4 Degradação controlada
+
+Quando o SIEM está sobrecarregado, o *pipeline* deve descartar primeiro os logs de depuração de baixo valor, e não os logs de autenticação. Filas de prioridade implementam isso. Quando falta capacidade, algo precisa ser perdido; a pergunta é o quê. Os logs de depuração raramente são necessários para a detecção, enquanto os de autenticação são centrais. As filas de prioridade permitem ao *pipeline* descartar primeiro os eventos de baixa prioridade sob pressão. O descarte é registrado, para que o SOC saiba quais dados faltam naquele período. As prioridades são definidas por fonte na configuração do *pipeline* e revisadas quando novas fontes entram.
+
+### 32.5 Medindo a completude
+
+Comparar os eventos contados nas fontes com os eventos armazenados no SIEM mostra a perda. Um relatório diário de reconciliação lista as fontes abaixo de 99,9%. As fontes podem informar quantos eventos enviaram, e o SIEM sabe quantos armazenou; a diferença é a perda no caminho. Onde as fontes não conseguem informar contagens, os coletores podem contar o que receberam. O relatório diário lista a razão de cada fonte, e qualquer uma abaixo da meta é investigada pelo responsável pela fonte. O relatório vai aos responsáveis pelas fontes toda manhã e é resumido semanalmente para Paolo.
+
+### 32.6 Orçamentos de erro
+
+Se a disponibilidade cair abaixo da meta, os novos recursos ficam em pausa e o trabalho de confiabilidade tem prioridade até que o orçamento se recupere. Uma meta de 99,5% deixa 0,5% do tempo como margem para indisponibilidade. Isso dá uma regra clara e acordada de antemão para equilibrar trabalho novo e estabilidade, em vez de uma nova discussão cada vez que algo quebra. O orçamento é reiniciado a cada trimestre; com 99,5%, a margem é de cerca de onze horas por trimestre. Os gerentes de produto e os líderes do SOC acordam essa regra de antemão, para que pausar o trabalho em recursos quando o orçamento se esgota seja rotina, e não uma disputa.
+
+### 32.7 Caso
+
+Na primeira semana de reconciliação, os servidores web do portal mostram 99,95% de completude; o *firewall* dos depósitos mostra 97,8%, por causa de um caminho de syslog sobre UDP que descarta pacotes sob carga. O syslog sobre UDP envia mensagens sem confirmação, então os pacotes descartados sob carga simplesmente se perdem. Uma perda de 2,2% significa que cerca de uma negação em quarenta e cinco nunca chega ao SIEM. Mudar o *firewall* dos depósitos para TCP ou para um agente de encaminhamento com confirmação e *buffer* resolveria o problema, e o relatório de reconciliação vai mostrar se a completude sobe acima da meta.
+
+### Monitorando os monitores
+
+Coletores, analisadores e o próprio SIEM informam métricas de saúde — profundidade das filas, erros de análise, atraso de ingestão — a um sistema de monitoramento separado. Se o SIEM não está saudável, não se pode confiar nele para alertar sobre a própria falha, então os alertas de saúde seguem por um caminho independente até o engenheiro de plantão.
+
+### Exemplo resolvido
+
+Amara passa o *firewall* dos depósitos para o encaminhamento de logs sobre TCP, com um *buffer* local. A completude sobe para 99,96%. Ela acrescenta a mudança ao registro de confiabilidade e mantém o relatório de reconciliação rodando diariamente.
+
+> **Caso sintético.** Os números são inventados.
+
+### Erros e limites
+
+As verificações de completude dependem de contagens exatas nas fontes, que alguns dispositivos não fornecem.
+
+### Exercícios
+
+- **EX094 — Completude.** Por que a completude é tão importante quanto a disponibilidade? *Rubrica:* 3 = o *pipeline* pode rodar com dados faltando e ainda deixar o SOC às cegas; 2 = parcial; 1 = menos importante; 0 = nada.
+- **EX095 — Ordem de degradação.** Sob sobrecarga, que logs devem ser descartados primeiro? *Rubrica:* 3 = depuração de baixo valor antes de autenticação; filas de prioridade; 2 = parcial; 1 = aleatório; 0 = nada.
+- **EX096 — Correção do *firewall*.** O que causou os 97,8% de completude, e o que os corrigiu? *Rubrica:* 3 = descartes do syslog sobre UDP; encaminhamento TCP com *buffer*; 99,96%; 2 = parcial; 1 = ignorado; 0 = nada.
+
+### Síntese
+
+Um monitoramento confiável precisa de metas tanto para o tempo no ar quanto para a completude, de redundância onde o valor é maior e de degradação controlada.
+
+### Continue estudando — capítulo 32 de 50
+
+[← Capítulo 31 (rascunho)](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 (rascunho) →](#ch-33)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX096 (as de EX097–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -2025,6 +2312,30 @@ Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em i
 **EX083.** Um campo extra vindo de uma atualização do balanceador; o analisador foi ampliado e as linhas foram mantidas como casos de teste.
 
 **EX084.** Torna cada mudança revisável, reversível e consistente entre os ambientes.
+
+**EX085.** Média de 10,2 minutos, mediana de 7 minutos, percentil 90 de 16,4 minutos.
+
+**EX086.** Os tempos são assimétricos; um caso longo infla a média, enquanto a mediana mostra o caso típico e o percentil 90, a cauda que ameaça a meta.
+
+**EX087.** Combiná-la com medidas de qualidade, como a revisão regular de uma amostra de alertas fechados.
+
+**EX088.** A verificação confere se a regra corresponde à sua especificação; a validação confere se ela de fato ajuda a detectar ameaças reais em operação.
+
+**EX089.** Que a regra dispara com 5 usuários e um sucesso, fica em silêncio com 4, exige um sucesso mesmo com 9 usuários e fica em silêncio sem atividade.
+
+**EX090.** O alerta não trazia o ID do cliente porque o modelo de roteamento usava um nome de campo antigo.
+
+**EX091.** Para descobrir problemas, como a dependência da impressora, antes que afetem os quarenta depósitos.
+
+**EX092.** O serviço de impressão foi permitido com um motivo documentado, e os outros depósitos foram conferidos em busca das mesmas impressoras antes do grupo seguinte.
+
+**EX093.** O *laptop* de um prestador numa rede de depósito; a TI então impôs o controle de acesso à rede para dispositivos visitantes.
+
+**EX094.** Porque um *pipeline* pode estar no ar enquanto perde eventos em silêncio, deixando o SOC às cegas.
+
+**EX095.** Os logs de depuração de baixo valor devem ser descartados antes dos de autenticação e de outros logs prioritários, usando filas de prioridade.
+
+**EX096.** O syslog sobre UDP descartava pacotes sob carga; mudar para o encaminhamento TCP com um *buffer* local elevou a completude para 99,96%.
 
 <a id="references"></a>
 ## Referências
