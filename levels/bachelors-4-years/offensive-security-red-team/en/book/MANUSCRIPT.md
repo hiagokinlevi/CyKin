@@ -2275,7 +2275,7 @@ Mandatory backup-owner fields block ticket closeout. Sam loves blocking closeout
 
 Change tickets that open temporary flows cannot close until the backup acknowledgement exists. Blocking closeout is more reliable than sending reminders, because delivery pressure already focuses on closing tickets. The block is visible in the same place project managers already look. Sam's preference for blocks over reminders comes from watching reminder-based processes fail whenever the team is busy.
 
-Delivery pressure dissolves hallway agreements. The countersignature forces a second person to say the environment can take more load, which is the control.
+Delivery pressure dissolves hallway agreements. The block forces the named backup owner to acknowledge the flow before the change ticket can close, which is the control.
 
 ### 22.14 Postmortems for expired flows
 
