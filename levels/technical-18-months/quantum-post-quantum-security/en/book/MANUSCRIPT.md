@@ -1486,7 +1486,7 @@ Write the plan on one page. Name the scope reference, list steps with the eviden
 
 Follow change control; save evidence; verify from both sides; update documents. Ask for help early when blocked.
 
-Keep a dated log of what you did and what evidence was saved. At HHG, the channel SFTP project followed change control for the production change and verified from both client and server sides. Update runbooks and the dashboard as you go, not at the end. If a step fails, stop and record it before trying again. Ask for help early. Record any deviation from the plan.
+Keep a dated log of what you did and what evidence was saved. At HHG, the channel SFTP project followed change control for the production change and verified from both client and server sides. Update runbooks and the dashboard as you go, not at the end. If a step fails, stop and record it before trying again. Record any deviation from the plan.
 
 ### 18.4 Report and handover
 

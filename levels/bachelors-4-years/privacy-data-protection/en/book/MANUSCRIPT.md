@@ -514,7 +514,7 @@ During her placement Elena has access to synthetic data and to real system confi
 
 ### 10.3 Requests outside authority
 
-A head teacher asks Elena to check whether a parent's complaint about a data breach is justified by looking at email logs. Elena explains that investigating a complaint requires authority from the data protection lead and access she does not have. She refers the request to the lead. She learns that good intentions do not create authority, and that stepping outside her role could harm the people she wants to help and undermine trust in the investigation. She refers the request onwards.
+A head teacher asks Elena to check whether a parent's complaint about a data breach is justified by looking at email logs. Elena explains that investigating a complaint requires authority from the data protection lead and access she does not have. She refers the request to the lead and gives the head teacher the lead's contact details, so the parent's complaint is not left waiting. She learns that good intentions do not create authority, and that stepping outside her role could harm the people she wants to help and undermine trust in the investigation.
 
 ### 10.4 Professional values
 
@@ -1867,7 +1867,7 @@ You will (1) support a community organisation's data protection; (2) adapt advic
 
 ### 36.1 Community placement
 
-Elena spends a term volunteering with a fictional parents' association that runs holiday clubs. It keeps children's names, ages, allergies and emergency contacts in a shared spreadsheet. Volunteers change often. Elena helps the association understand its duties as a controller, even as a small volunteer group, and adapts advice to its limited time and money. Its holiday clubs rely on volunteer leaders and a parent committee. Some records were kept on volunteers' phones. Phones get lost.
+Elena spends a term volunteering with a fictional parents' association that runs holiday clubs. It keeps children's names, ages, allergies and emergency contacts in a shared spreadsheet. Volunteers change often. Elena helps the association understand its duties as a controller, even as a small volunteer group, and adapts advice to its limited time and money. Its holiday clubs rely on volunteer leaders and a parent committee. Some records were kept on volunteers' phones, and phones get lost. Allergy details are health data about children, so a lost phone holding the sheet is more serious than a lost list of names.
 
 ### 36.2 Practical steps
 

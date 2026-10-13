@@ -3217,7 +3217,7 @@ In the booking-platform comparison, the totals differ by less than a tenth of a 
 
 For the recommended strategy, construct a scenario where it performs worse. If you cannot, you probably have not stressed it enough. Report the counterexample and how the organization would manage it.
 
-For P-Fast, the counterexample is S2: a false high-risk alert at Monday clinic opening disables staff accounts just as patients arrive. That is what led to the hybrid recommendation of automatic session revocation, which is reversible and low in disruption, with gated disablement. For P-Gated, a fast automated exfiltration during a night shift with no approver available would be the counterexample. Each counterexample should come with how the organization would manage it.
+For P-Fast, the counterexample is S2: a false high-risk alert at Monday clinic opening disables staff accounts just as patients arrive. That is what led to the hybrid recommendation of automatic session revocation, which is reversible and low in disruption, with gated disablement. For P-Gated, a fast automated exfiltration during a night shift with no approver available would be the counterexample.
 
 ### 34.6 Worked example (synthetic): two playbooks, one service
 

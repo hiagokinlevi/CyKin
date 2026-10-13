@@ -426,7 +426,7 @@ For each failure mode, Amina asks how Fenwick would notice. Missed files would s
 
 ### 8.3 Register entries
 
-Amina records the main failure modes in Fenwick's risk register with owners and detection checks. For example, the certificate expiry failure mode is owned by the IT lead, with a monthly expiry check. She learns that recording failure modes makes them part of governance, so checks are scheduled and reviewed rather than relying on someone remembering. A monthly expiry check owned by the IT lead turns the certificate failure mode into a recurring task instead of a surprise. Linking each failure mode to a named check also tells an assessor which evidence to ask for.
+Amina records the main failure modes in Fenwick's risk register with owners and detection checks. For example, the certificate expiry failure mode is owned by the IT lead, with a monthly expiry check. She learns that recording failure modes makes them part of governance, so checks are scheduled and reviewed rather than relying on someone remembering. Linking each failure mode to a named check also tells an assessor which evidence to ask for. If a monthly check is skipped, the missing entry shows up when the register is reviewed, before a certificate actually expires.
 
 ### Worked example
 

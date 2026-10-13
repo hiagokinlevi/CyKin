@@ -1326,7 +1326,7 @@ The firewall's public profile is the one that matters off site, which is why the
 
 Staff reach the file server through a VPN with multi-factor authentication. Tomás recommends replacing the outside company's shared VPN account with individual accounts, each with multi-factor authentication, so actions are traceable and access can be removed per person.
 
-Multi-factor authentication on the VPN means a stolen staff password alone is not enough to reach the file server. The shared supplier account is the exception the recommendation targets, since four engineers use one password and no individual can be held to account or removed.
+The shared supplier account is the exception the recommendation targets, since four engineers use one password and no individual can be held to account or removed. With individual accounts, the VPN log shows which engineer connected and when, and an engineer who leaves the supplier can be removed without changing anyone else's password.
 
 ### 21.3 Personal devices
 

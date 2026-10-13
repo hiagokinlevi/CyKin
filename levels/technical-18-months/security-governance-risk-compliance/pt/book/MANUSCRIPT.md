@@ -398,7 +398,7 @@ Para cada modo de falha, Amina pergunta como a Fenwick perceberia. Os arquivos q
 
 ### 8.3 Entradas no registro
 
-Amina registra os principais modos de falha no registro de riscos da Fenwick, com donos e verificações de detecção. Por exemplo, o modo de falha da expiração de certificados tem como dono o líder de TI, com uma verificação mensal de validade. Ela aprende que registrar os modos de falha os torna parte da governança, de modo que as verificações sejam agendadas e revisadas, em vez de depender da memória de alguém. Uma verificação mensal com dono transforma o modo de falha dos certificados numa tarefa recorrente, e não numa surpresa. Ligar cada modo de falha a uma verificação nomeada também diz ao avaliador que evidência pedir.
+Amina registra os principais modos de falha no registro de riscos da Fenwick, com donos e verificações de detecção. Por exemplo, o modo de falha da expiração de certificados tem como dono o líder de TI, com uma verificação mensal de validade. Ela aprende que registrar os modos de falha os torna parte da governança, de modo que as verificações sejam agendadas e revisadas, em vez de depender da memória de alguém. Ligar cada modo de falha a uma verificação nomeada também diz ao avaliador que evidência pedir. Se uma verificação mensal for pulada, a entrada ausente aparece quando o registro é revisado, antes que um certificado de fato expire.
 
 ### Exemplo resolvido
 

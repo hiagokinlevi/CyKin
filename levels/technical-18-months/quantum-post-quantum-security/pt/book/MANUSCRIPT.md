@@ -1554,7 +1554,7 @@ Escreva o plano em uma página. Nomeie a referência de escopo, liste os passos 
 
 Siga o controle de mudanças; salve as evidências; verifique dos dois lados; atualize os documentos. Peça ajuda cedo quando estiver bloqueado.
 
-Mantenha um registro datado do que você fez e de quais evidências foram salvas. No HHG, o projeto do SFTP dos canais seguiu o controle de mudanças para a mudança em produção e verificou dos lados do cliente e do servidor. Atualize os runbooks e o painel à medida que avança, não no final. Se um passo falhar, pare e registre-o antes de tentar de novo. Peça ajuda cedo. Registre qualquer desvio do plano.
+Mantenha um registro datado do que você fez e de quais evidências foram salvas. No HHG, o projeto do SFTP dos canais seguiu o controle de mudanças para a mudança em produção e verificou dos lados do cliente e do servidor. Atualize os runbooks e o painel à medida que avança, não no final. Se um passo falhar, pare e registre-o antes de tentar de novo. Registre qualquer desvio do plano.
 
 ### 18.4 Relatório e passagem
 

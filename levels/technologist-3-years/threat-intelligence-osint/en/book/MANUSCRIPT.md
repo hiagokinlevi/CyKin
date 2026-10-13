@@ -667,7 +667,7 @@ The observation can be checked by anyone with access to the proxy log, while the
 
 "500 indicators imported" counts activity. "Two staff were stopped from reaching the fraud page by the DNS block" counts an outcome. Lena reports both but leads with outcomes in the monthly summary.
 
-The number of indicators imported says nothing about whether anyone was protected, and a large number may only mean a noisy feed. The DNS block that stopped two staff members from reaching the fraud page shows a specific effect. Leading with outcomes keeps the monthly summary about value rather than volume.
+The number of indicators imported says nothing about whether anyone was protected, and a large number may only mean a noisy feed. Two blocked visits can be checked against the DNS log and named in the summary, which a raw import count never can. Leading with outcomes keeps the monthly summary about value rather than volume.
 
 ### 9.4 Negative results
 

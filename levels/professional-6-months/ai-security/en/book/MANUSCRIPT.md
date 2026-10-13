@@ -550,7 +550,7 @@ At Meridian, each of Sofia's three findings has an owner and due date. Review op
 
 Model updates, prompt edits, new document sources, new tools and configuration changes all alter behaviour. Route them through change management with a re-test before release.
 
-At Meridian, a prompt edit a month after testing brought back finding 1, which only a re-test caught. Write which tests must be re-run for each kind of change, and keep the results with the change record. Treat prompt edits, model updates, new tools and new document sources as changes that need review. A change record should name the tests re-run and their results.
+At Meridian, a prompt edit a month after testing brought back finding 1, which only a re-test caught. Write which tests must be re-run for each kind of change, and keep the results with the change record. A model update usually calls for the full suite, while a new document source calls at least for the retrieval and injection tests on that source.
 
 ### 6.5 Working with operations
 
