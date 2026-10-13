@@ -917,7 +917,7 @@ Os ataques plantados podem ser mais fáceis que os reais. Os dados de localizaç
 
 - **EX067 — Resultado da regra B.** Quais foram os resultados da regra B? *Rubrica:* 3 = 3 alertas, 3 ataques detectados, 0 alarme falso;; 2 = números;; 1 = vago;; 0 = nenhuma.
 
-- **EX068 — Ponto cego.** O que a regra B deixaria passar? *Rubrica:* 3 = uma senha roubada usada no horário de trabalho a partir de uma cidade habitual;; 2 = horário de trabalho;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Ponto cego.** O que a regra B deixaria passar? *Rubrica:* 3 = uma senha roubada usada no horário de trabalho a partir de uma cidade habitual;; 2 = horário de trabalho;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

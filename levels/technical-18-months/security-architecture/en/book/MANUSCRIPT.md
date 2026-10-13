@@ -930,7 +930,7 @@ Planted attacks may be easier than real ones. Location data can be wrong.
 - **EX065 — Normal first.** What did Nadia describe before writing rules? *Rubric:* 3 = normal behaviour: five towns, 7am to 7pm;; 2 = normal;; 1 = vague;; 0 = none.
 - **EX066 — Rule A result.** What were Rule A's results? *Rubric:* 3 = 4 alerts, 3 attacks caught, 1 false alarm;; 2 = numbers;; 1 = vague;; 0 = none.
 - **EX067 — Rule B result.** What were Rule B's results? *Rubric:* 3 = 3 alerts, 3 attacks caught, 0 false alarms;; 2 = numbers;; 1 = vague;; 0 = none.
-- **EX068 — Blind spot.** What would Rule B miss? *Rubric:* 3 = a stolen password used in working hours from a usual town;; 2 = working hours;; 1 = nothing;; 0 = none.
+- **EX068 — Blind spot.** What would Rule B miss? *Rubric:* 3 = a stolen password used in working hours from a usual town;; 2 = working hours;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

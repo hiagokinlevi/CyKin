@@ -1198,7 +1198,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 - **EX053 — Automate list.** Name three good automation candidates. *Rubric:* 3 = three from chapter; 2 = two; 1 = one; 0 = none.
 - **EX054 — Never automate.** Name two things Sam must not automate. *Rubric:* 3 = exploitation and scope decisions; 2 = one; 1 = hashing; 0 = none.
 - **EX055 — Retry cap.** Why do automation retries need caps? *Rubric:* 3 = prevent lockouts/log storms/loops; 2 = partial; 1 = unlimited better; 0 = none.
-- **EX056 — Human gate.** What always needs a human before a finding is filed? *Rubric:* 3 = validation of automated candidates; 2 = partial; 1 = nothing; 0 = none.
+- **EX056 — Human gate.** What always needs a human before a finding is filed? *Rubric:* 3 = validation of automated candidates; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1291,7 +1291,7 @@ Live transit systems and fare equipment are never tested without a separate, spe
 - **EX057 — Separate auth example.** Give one dependency Sam must not test without vendor auth. *Rubric:* 3 = SMS vendor / map tiles / payment; 2 = partial; 1 = NMT website; 0 = none.
 - **EX058 — NMT-side finding.** Why is a leaked SMS API key in NMT staging an NMT finding? *Rubric:* 3 = NMT stores/handles the secret; 2 = partial; 1 = vendor only; 0 = none.
 - **EX059 — Vendor outage.** Vendor times out during the window. What does Sam do? *Rubric:* 3 = stop related checks; note dependency; do not hammer; 2 = partial; 1 = retry storm; 0 = none.
-- **EX060 — Matrix.** What does a responsibility matrix solve? *Rubric:* 3 = right owner for each finding; 2 = partial; 1 = nothing; 0 = none.
+- **EX060 — Matrix.** What does a responsibility matrix solve? *Rubric:* 3 = right owner for each finding; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

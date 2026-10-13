@@ -314,7 +314,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX010 — Rewrite.** Turn "stupid password reuse" into professional finding language. *Rubric:* 3 = system condition + impact + no insult; 2 = partial; 1 = keeps insult; 0 = none.
 - **EX011 — Speculative claim.** How should Sam label "attackers already stole funds"? *Rubric:* 3 = speculative/unconfirmed; separate from facts; 2 = partial; 1 = as fact; 0 = none.
-- **EX012 — Citation rule.** What must Sam never invent when citing? *Rubric:* 3 = DOIs / fake references; 2 = partial; 1 = nothing; 0 = none.
+- **EX012 — Citation rule.** What must Sam never invent when citing? *Rubric:* 3 = DOIs / fake references; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1342,7 +1342,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX040 — Minimisation.** Why not export the full customer table for a finding? *Rubric:* 3 = privacy/purpose/ROE; 2 = partial; 1 = need it; 0 = none.
-- **EX041 — Redaction.** What does Sam redact in the screenshot example? *Rubric:* 3 = account numbers except last four / personal identifiers; 2 = partial; 1 = nothing; 0 = none.
+- **EX041 — Redaction.** What does Sam redact in the screenshot example? *Rubric:* 3 = account numbers except last four / personal identifiers; 2 = partial; 1 = vague; 0 = none.
 - **EX042 — Vault.** Why protect evidence vaults strongly? *Rubric:* 3 = concentrated sensitive proof data; 2 = partial; 1 = no need; 0 = none.
 
 ### Synthesis
@@ -1818,7 +1818,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX052 — Bad question.** Why is "is security good?" a poor research question? *Rubric:* 3 = not measurable/specific; 2 = partial; 1 = fine; 0 = none.
-- **EX053 — Pre-register.** What should be written before results? *Rubric:* 3 = metric and threshold (and design); 2 = partial; 1 = nothing; 0 = none.
+- **EX053 — Pre-register.** What should be written before results? *Rubric:* 3 = metric and threshold (and design); 2 = partial; 1 = vague; 0 = none.
 - **EX054 — Staff phishing.** What approvals before simulated phishing? *Rubric:* 3 = CISO/HR (and ROE); 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
@@ -2057,7 +2057,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX058 — Fact vs guess.** Label: "staff reported reuse" vs "nation-state has the hash". *Rubric:* 3 = fact vs guess; 2 = partial; 1 = both facts; 0 = none.
 - **EX059 — Personal mail.** Why not read the staffer's personal email? *Rubric:* 3 = out of scope/privacy; 2 = partial; 1 = should; 0 = none.
-- **EX060 — Escalate trigger.** What triggers same-day CISO escalation here? *Rubric:* 3 = credential reuse risking bank access/payments; 2 = partial; 1 = nothing; 0 = none.
+- **EX060 — Escalate trigger.** What triggers same-day CISO escalation here? *Rubric:* 3 = credential reuse risking bank access/payments; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2780,7 +2780,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX076 — Minimum proof.** What does minimum proof mean? *Rubric:* 3 = stop once impact shown; no extra pivot; 2 = partial; 1 = full takeover always; 0 = none.
 - **EX077 — Payment-near.** What extra step before payment-adjacent tests? *Rubric:* 3 = extra approvals/ROE check; 2 = partial; 1 = vague; 0 = none.
-- **EX078 — Chain doc.** What belongs in the chain appendix? *Rubric:* 3 = steps/times/evidence links; 2 = partial; 1 = nothing; 0 = none.
+- **EX078 — Chain doc.** What belongs in the chain appendix? *Rubric:* 3 = steps/times/evidence links; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4025,7 +4025,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX106 — Sanitise.** What must academic write-ups remove? *Rubric:* 3 = customer identifiers / sensitive specifics; 2 = partial; 1 = nothing; 0 = none.
+- **EX106 — Sanitise.** What must academic write-ups remove? *Rubric:* 3 = customer identifiers / sensitive specifics; 2 = partial; 1 = vague; 0 = none.
 - **EX107 — Journal trio.** What three lines go in the weekly journal? *Rubric:* 3 = learned, broken assumption, question; 2 = two; 1 = one; 0 = none.
 - **EX108 — Leave-behind.** Name a useful leave-behind. *Rubric:* 3 = runbook improvement / checklist; 2 = partial; 1 = malware; 0 = none.
 

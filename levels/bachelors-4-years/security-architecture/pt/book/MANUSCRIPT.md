@@ -831,7 +831,7 @@ As visões gerais simplificam; os detalhes ficam em documentos de apoio. Os atri
 
 - **EX047 — Uso dos atributos.** Como o mapa de atributos ajuda quando alguém propõe cortar um serviço? *Rubrica:* 3 = mostra qual valor de negócio seria enfraquecido;; 2 = valor;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Efeito no conselho.** O que a visão geral mudou para o conselho da Fernway? *Rubrica:* 3 = passaram a ver a segurança como um projeto coerente, e não como compras;; 2 = coerente;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Efeito no conselho.** O que a visão geral mudou para o conselho da Fernway? *Rubrica:* 3 = passaram a ver a segurança como um projeto coerente, e não como compras;; 2 = coerente;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -957,7 +957,7 @@ Os princípios podem entrar em conflito, como o menor privilégio versus a aceit
 
 - **EX056 — Aceitabilidade.** Por que a aceitabilidade psicológica importa nas lojas? *Rubrica:* 3 = controles que não se encaixam nas rotinas são contornados;; 2 = contorno;; 1 = vago;; 0 = nenhuma.
 
-- **EX057 — Achado do aplicativo de escalas.** O que os princípios revelaram sobre o aplicativo de escalas? *Rubrica:* 3 = todo gerente podia ver todas as lojas, violando o menor privilégio;; 2 = menor privilégio;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Achado do aplicativo de escalas.** O que os princípios revelaram sobre o aplicativo de escalas? *Rubrica:* 3 = todo gerente podia ver todas as lojas, violando o menor privilégio;; 2 = menor privilégio;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1107,7 +1107,7 @@ Os mapas de dependências deixam de fora as quartas partes, os fornecedores dos 
 
 ### Exercícios
 
-- **EX064 — Pasta misturada.** O que havia de errado com a pasta misc? *Rubrica:* 3 = registros confidenciais de funcionários ao lado de imagens públicas, legíveis pelo marketing;; 2 = classes misturadas;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Pasta misturada.** O que havia de errado com a pasta misc? *Rubrica:* 3 = registros confidenciais de funcionários ao lado de imagens públicas, legíveis pelo marketing;; 2 = classes misturadas;; 1 = vago;; 0 = nenhuma.
 
 - **EX065 — Dependência mais ampla.** Que serviços sustentaram mais funções no laboratório? *Rubrica:* 3 = identidade e hospedagem, 5 funções cada;; 2 = identidade;; 1 = feed de preços;; 0 = nenhuma.
 
@@ -1151,7 +1151,7 @@ As escalas qualitativas escondem a incerteza. Equipes pequenas podem compartilha
 
 - **EX067 — Por que uma gerente de loja.** Por que Lucas envolveu uma gerente de loja? *Rubrica:* 3 = as pessoas que operam o processo sabem onde ele falha;; 2 = conhecimento local;; 1 = vago;; 0 = nenhuma.
 
-- **EX068 — Diferenças de classificação.** O que a comparação das classificações independentes revelou? *Rubrica:* 3 = erros passados na retirada conhecidos só pela gerente da loja;; 2 = informação nova;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Diferenças de classificação.** O que a comparação das classificações independentes revelou? *Rubrica:* 3 = erros passados na retirada conhecidos só pela gerente da loja;; 2 = informação nova;; 1 = vago;; 0 = nenhuma.
 
 - **EX069 — Tratamento da retirada pela pessoa errada.** Como a retirada pela pessoa errada foi tratada? *Rubrica:* 3 = um código de retirada por SMS conferido no balcão;; 2 = código;; 1 = vago;; 0 = nenhuma.
 
@@ -1504,7 +1504,7 @@ Os dados sintéticos raramente reproduzem o ruído real. VPNs e aplicativos de v
 
 - **EX089 — Escolha da janela.** Por que manter duas horas em vez de uma? *Rubrica:* 3 = uma hora deixou passar três dos quatro ataques;; 2 = falha de detecção;; 1 = mais rápido;; 0 = nenhuma.
 
-- **EX090 — Ponto cego da regra.** O que a regra não detecta? *Rubrica:* 3 = atacantes fazendo login do próprio país do usuário;; 2 = mesmo país;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Ponto cego da regra.** O que a regra não detecta? *Rubrica:* 3 = atacantes fazendo login do próprio país do usuário;; 2 = mesmo país;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

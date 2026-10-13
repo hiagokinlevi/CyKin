@@ -1765,7 +1765,7 @@ Integrations depend on details clients forget to update; verify them regularly.
 ### Exercises
 
 - **EX061 — Escalation profile.** Describe BrightSmile's escalation for high severity at night. *Rubric:* 3 = office manager by phone, then IT contractor; 2 = partial; 1 = email; 0 = none.
-- **EX062 — Message safety.** What must automated messages avoid? *Rubric:* 3 = sensitive data like patient names; details in portal; 2 = partial; 1 = nothing; 0 = none.
+- **EX062 — Message safety.** What must automated messages avoid? *Rubric:* 3 = sensitive data like patient names; details in portal; 2 = partial; 1 = vague; 0 = none.
 - **EX063 — SMS failure.** Why did the SMS fail and what changed? *Rubric:* 3 = number changed; quarterly contact confirmation added; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
@@ -2118,7 +2118,7 @@ Pilots with one client show feasibility, not typical timing.
 ### Exercises
 
 - **EX073 — Role split.** How did the team divide the work? *Rubric:* 3 = data flows/verification, firewall/VPN, automation; 2 = two; 1 = one; 0 = none.
-- **EX074 — Critique response.** What did the account manager's critique add? *Rubric:* 3 = reminder step and waiting-on-client status; 2 = partial; 1 = nothing; 0 = none.
+- **EX074 — Critique response.** What did the account manager's critique add? *Rubric:* 3 = reminder step and waiting-on-client status; 2 = partial; 1 = vague; 0 = none.
 - **EX075 — Pilot result.** What happened in the pilot? *Rubric:* 3 = verified day 12; delay from client approval visible; 2 = partial; 1 = failed; 0 = none.
 
 ### Synthesis
@@ -2196,7 +2196,7 @@ Runbooks cannot cover every variation; analysts must escalate when unsure.
 ### Exercises
 
 - **EX076 — Runbook contents.** List the runbook sections. *Rubric:* 3 = meaning, first checks, decisions, allowed actions, closure; 2 = four; 1 = two; 0 = none.
-- **EX077 — Training check.** What did the lab check reveal and how was it fixed? *Rubric:* 3 = analyst isolated on contractor-window alert; runbook clarified; 2 = partial; 1 = nothing; 0 = none.
+- **EX077 — Training check.** What did the lab check reveal and how was it fixed? *Rubric:* 3 = analyst isolated on contractor-window alert; runbook clarified; 2 = partial; 1 = vague; 0 = none.
 - **EX078 — Go-live timing.** Why go live on a Monday morning? *Rubric:* 3 = problems found while staff available; 2 = partial; 1 = random; 0 = none.
 
 ### Synthesis
@@ -2353,7 +2353,7 @@ Placements vary by host; tutors ensure learning goals are met.
 
 - **EX082 — Daily work.** List three daily tasks Mei performed. *Rubric:* 3 = triage, drafting advice, onboarding checks, noise review (three); 2 = two; 1 = one; 0 = none.
 - **EX083 — Week-three mistake.** What was Mei's mistake and her response? *Rubric:* 3 = closed without checking business hours; added to checklist; 2 = partial; 1 = vague; 0 = none.
-- **EX084 — Call lesson.** What did the defensive client teach Mei? *Rubric:* 3 = frame as routine check first; 2 = partial; 1 = nothing; 0 = none.
+- **EX084 — Call lesson.** What did the defensive client teach Mei? *Rubric:* 3 = frame as routine check first; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

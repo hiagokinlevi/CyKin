@@ -123,7 +123,7 @@ Mapas de jornada simplificam o trabalho real. Leitores de cartão custam dinheir
 
 ### Exercícios
 
-- **EX004 — Interação mais fraca.** Por que uma política forte de senhas pouco importa em um caso? *Rubrica:* 3 = se os computadores do balcão ficam logados;; 2 = logados;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Interação mais fraca.** Por que uma política forte de senhas pouco importa em um caso? *Rubrica:* 3 = se os computadores do balcão ficam logados;; 2 = logados;; 1 = vago;; 0 = nenhuma.
 - **EX005 — Adams e Sasse.** O que Adams e Sasse (1999) mostraram sobre os usuários? *Rubrica:* 3 = não são o inimigo e têm dificuldade com mecanismos que não se encaixam;; 2 = encaixe;; 1 = descuidados;; 0 = nenhuma.
 - **EX006 — Correção sugerida.** Que correção Nadia sugeriu para as telas desbloqueadas? *Rubrica:* 3 = bloqueio automático curto com desbloqueio por cartão de aproximação;; 2 = cartão de aproximação;; 1 = senhas mais longas;; 0 = nenhuma.
 
@@ -197,7 +197,7 @@ Linhas quebradas podem esconder problemas reais. Testes pequenos não provam a c
 ### Exercícios
 
 - **EX007 — Uso do dicionário.** Por que um dicionário é adequado para contar por unidade? *Rubrica:* 3 = associa cada unidade à sua contagem;; 2 = associação;; 1 = ordem da lista;; 0 = nenhuma.
-- **EX008 — Unidade no topo.** Que unidade mais reportou no laboratório? *Rubrica:* 3 = Central, com 14;; 2 = Central;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Unidade no topo.** Que unidade mais reportou no laboratório? *Rubrica:* 3 = Central, com 14;; 2 = Central;; 1 = vago;; 0 = nenhuma.
 - **EX009 — Linhas quebradas.** Como o script trata uma linha com um campo faltando? *Rubrica:* 3 = pula a linha com um aviso;; 2 = pula;; 1 = trava;; 0 = nenhuma.
 
 ### Síntese
@@ -236,9 +236,9 @@ Ressalvas podem virar imprecisão. Os relatórios atualizam seus números todo a
 
 ### Exercícios
 
-- **EX010 — Contra-argumento.** Que contra-argumento Nadia precisa enfrentar? *Rubrica:* 3 = muitas violações envolvem ações humanas;; 2 = elemento humano;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Contra-argumento.** Que contra-argumento Nadia precisa enfrentar? *Rubrica:* 3 = muitas violações envolvem ações humanas;; 2 = elemento humano;; 1 = vago;; 0 = nenhuma.
 - **EX011 — Sasse et al.** O que Sasse, Brostoff e Weirich (2001) argumentaram? *Rubrica:* 3 = a segurança deve ser projetada em torno das capacidades humanas;; 2 = design;; 1 = os usuários são descuidados;; 0 = nenhuma.
-- **EX012 — Cautela com o DBIR.** Por que o número do DBIR não mostra que os funcionários são descuidados? *Rubrica:* 3 = combina erros, uso indevido e engenharia social;; 2 = combinado;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Cautela com o DBIR.** Por que o número do DBIR não mostra que os funcionários são descuidados? *Rubrica:* 3 = combina erros, uso indevido e engenharia social;; 2 = combinado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -276,9 +276,9 @@ As táticas evoluem. Na prática, as categorias se sobrepõem.
 
 ### Exercícios
 
-- **EX013 — Três níveis.** Que três níveis a SP 800-16 distinguiu? *Rubrica:* 3 = conscientização, treinamento e educação;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Três níveis.** Que três níveis a SP 800-16 distinguiu? *Rubrica:* 3 = conscientização, treinamento e educação;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Pretexting.** O que é pretexting? *Rubrica:* 3 = inventar uma história crível para enganar;; 2 = história;; 1 = phishing;; 0 = nenhuma.
-- **EX015 — Falha das campanhas.** Por que as campanhas muitas vezes falham, segundo Bada et al. (2019)? *Rubrica:* 3 = supõem que o conhecimento leva ao comportamento;; 2 = suposição;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Falha das campanhas.** Por que as campanhas muitas vezes falham, segundo Bada et al. (2019)? *Rubrica:* 3 = supõem que o conhecimento leva ao comportamento;; 2 = suposição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -339,8 +339,8 @@ As rotas reais de reporte são informais. Tempos de ociosidade podem incomodar o
 ### Exercícios
 
 - **EX016 — União de conjuntos.** Que união de conjuntos descreve os exportadores permitidos? *Rubrica:* 3 = gestores e pessoal de TI;; 2 = união;; 1 = voluntários;; 0 = nenhuma.
-- **EX017 — Funcionários inalcançáveis.** Quantos funcionários não alcançavam a TI no laboratório? *Rubrica:* 3 = 11, em Quay e Elm;; 2 = 11;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Lacuna da sessão.** Que lacuna o teste lógico revelou? *Rubrica:* 3 = um novo visitante herda uma sessão aberta;; 2 = herdar;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Funcionários inalcançáveis.** Quantos funcionários não alcançavam a TI no laboratório? *Rubrica:* 3 = 11, em Quay e Elm;; 2 = 11;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Lacuna da sessão.** Que lacuna o teste lógico revelou? *Rubrica:* 3 = um novo visitante herda uma sessão aberta;; 2 = herdar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -378,9 +378,9 @@ As etiquetas passam a ser ignoradas se tudo for externo. As verificações depen
 
 ### Exercícios
 
-- **EX019 — Remetente forjado.** Por que o remetente exibido pode ser forjado? *Rubrica:* 3 = o e-mail básico foi projetado para a cooperação, e não para a segurança;; 2 = projeto;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Limites das verificações.** O que as verificações de autenticação não conseguem impedir? *Rubrica:* 3 = domínios parecidos e contas comprometidas;; 2 = domínios parecidos;; 1 = nada;; 0 = nenhuma.
-- **EX021 — Whitten e Tygar.** O que Whitten e Tygar (1999) mostraram? *Rubrica:* 3 = software de segurança pode ser difícil demais para usuários comuns;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Remetente forjado.** Por que o remetente exibido pode ser forjado? *Rubrica:* 3 = o e-mail básico foi projetado para a cooperação, e não para a segurança;; 2 = projeto;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Limites das verificações.** O que as verificações de autenticação não conseguem impedir? *Rubrica:* 3 = domínios parecidos e contas comprometidas;; 2 = domínios parecidos;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Whitten e Tygar.** O que Whitten e Tygar (1999) mostraram? *Rubrica:* 3 = software de segurança pode ser difícil demais para usuários comuns;; 2 = usabilidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -448,9 +448,9 @@ Linhas puladas podem enviesar os resultados. As taxas de unidades pequenas são 
 
 ### Exercícios
 
-- **EX022 — Proteção contra zero.** Por que se proteger contra divisão por zero? *Rubrica:* 3 = uma unidade pode não ter registros de funcionários;; 2 = unidade nova;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Proteção contra zero.** Por que se proteger contra divisão por zero? *Rubrica:* 3 = uma unidade pode não ter registros de funcionários;; 2 = unidade nova;; 1 = vago;; 0 = nenhuma.
 - **EX023 — Maior taxa.** Que unidade teve a maior taxa de reporte no laboratório? *Rubrica:* 3 = Quay, com 60 por cem;; 2 = Quay;; 1 = Central;; 0 = nenhuma.
-- **EX024 — Linhas puladas.** Por que informar o número de linhas puladas? *Rubrica:* 3 = para que nada fique escondido;; 2 = transparência;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Linhas puladas.** Por que informar o número de linhas puladas? *Rubrica:* 3 = para que nada fique escondido;; 2 = transparência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -509,9 +509,9 @@ Remover os nomes impede alguns acompanhamentos. Os rótulos de categoria podem s
 
 ### Exercícios
 
-- **EX025 — Nome excluído.** Por que a tabela exclui os nomes de quem reporta? *Rubrica:* 3 = a análise precisa apenas de contagens por unidade e os nomes criam risco;; 2 = minimização;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Nome excluído.** Por que a tabela exclui os nomes de quem reporta? *Rubrica:* 3 = a análise precisa apenas de contagens por unidade e os nomes criam risco;; 2 = minimização;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Categoria no topo.** Que categoria maliciosa foi a mais comum no laboratório? *Rubrica:* 3 = fatura;; 2 = faturas;; 1 = encomenda;; 0 = nenhuma.
-- **EX027 — Efeito do reporte.** O que Nadia deve verificar quando a contagem de uma unidade é alta? *Rubrica:* 3 = se reflete mais ataques ou mais reportes;; 2 = reportes;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Efeito do reporte.** O que Nadia deve verificar quando a contagem de uma unidade é alta? *Rubrica:* 3 = se reflete mais ataques ou mais reportes;; 2 = reportes;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -549,9 +549,9 @@ As regras podem ser ignoradas sob pressão. Organizações pequenas podem não t
 
 ### Exercícios
 
-- **EX028 — Direitos dos participantes.** O que os participantes devem poder fazer? *Rubrica:* 3 = saber, concordar livremente e desistir;; 2 = consentimento;; 1 = nada;; 0 = nenhuma.
-- **EX029 — A confiança como ativo.** Por que o engano deve ser usado com parcimônia? *Rubrica:* 3 = pode prejudicar a confiança, que é um ativo de segurança;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
-- **EX030 — Tipo de isca proibido.** Que iscas as regras proíbem? *Rubrica:* 3 = as que exploram sofrimento pessoal, como salário ou saúde;; 2 = sofrimento;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Direitos dos participantes.** O que os participantes devem poder fazer? *Rubrica:* 3 = saber, concordar livremente e desistir;; 2 = consentimento;; 1 = vago;; 0 = nenhuma.
+- **EX029 — A confiança como ativo.** Por que o engano deve ser usado com parcimônia? *Rubrica:* 3 = pode prejudicar a confiança, que é um ativo de segurança;; 2 = confiança;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Tipo de isca proibido.** Que iscas as regras proíbem? *Rubrica:* 3 = as que exploram sofrimento pessoal, como salário ou saúde;; 2 = sofrimento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -589,8 +589,8 @@ Atualizações noturnas falham se os dispositivos estiverem desligados. Remover 
 
 ### Exercícios
 
-- **EX031 — Problema da conta compartilhada.** Qual é o problema das contas compartilhadas do balcão? *Rubrica:* 3 = ninguém consegue saber quem fez o quê;; 2 = responsabilização;; 1 = nada;; 0 = nenhuma.
-- **EX032 — Orçamento de compliance.** O que o orçamento de compliance descreve? *Rubrica:* 3 = disposição limitada para gastar esforço com segurança;; 2 = esforço;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Problema da conta compartilhada.** Qual é o problema das contas compartilhadas do balcão? *Rubrica:* 3 = ninguém consegue saber quem fez o quê;; 2 = responsabilização;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Orçamento de compliance.** O que o orçamento de compliance descreve? *Rubrica:* 3 = disposição limitada para gastar esforço com segurança;; 2 = esforço;; 1 = vago;; 0 = nenhuma.
 - **EX033 — Transferência do ônus.** Para onde Nadia transfere o esforço das atualizações? *Rubrica:* 3 = dos indivíduos para o sistema;; 2 = sistema;; 1 = usuários;; 0 = nenhuma.
 
 ### Síntese
@@ -650,7 +650,7 @@ Os intervalos supõem respostas independentes. Uma simulação é um retrato ún
 ### Exercícios
 
 - **EX034 — Intervalo geral.** Qual foi o intervalo de 95% para 18 de 120? *Rubrica:* 3 = cerca de 9,7% a 22,5%;; 2 = faixa;; 1 = exatamente 15%;; 0 = nenhuma.
-- **EX035 — Comparação entre unidades.** Por que não elogiar Central em detrimento de Riverside? *Rubrica:* 3 = os intervalos se sobrepõem bastante;; 2 = acaso;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Comparação entre unidades.** Por que não elogiar Central em detrimento de Riverside? *Rubrica:* 3 = os intervalos se sobrepõem bastante;; 2 = acaso;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Grupo mínimo.** Que tamanho mínimo de grupo Nadia sugeriu? *Rubrica:* 3 = vinte funcionários;; 2 = 20;; 1 = cinco;; 0 = nenhuma.
 
 ### Síntese
@@ -689,8 +689,8 @@ Chaves podem ser perdidas. Acabar com as trocas forçadas exige detecção de co
 
 ### Exercícios
 
-- **EX037 — Três tipos de fator.** Quais são os três tipos de fator? *Rubrica:* 3 = saber, ter, ser;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX038 — Efeito da troca forçada.** O que Nadia descobriu que os funcionários fazem nas trocas forçadas? *Rubrica:* 3 = acrescentam um número à senha antiga;; 2 = padrão;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Três tipos de fator.** Quais são os três tipos de fator? *Rubrica:* 3 = saber, ter, ser;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Efeito da troca forçada.** O que Nadia descobriu que os funcionários fazem nas trocas forçadas? *Rubrica:* 3 = acrescentam um número à senha antiga;; 2 = padrão;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Vantagem da chave.** Por que as chaves de segurança resistem ao phishing? *Rubrica:* 3 = verificam o site;; 2 = verificação do site;; 1 = são longas;; 0 = nenhuma.
 
 ### Síntese
@@ -729,9 +729,9 @@ Os procedimentos podem atrasar pedidos urgentes legítimos. Agregados ainda pode
 
 ### Exercícios
 
-- **EX040 — Privacidade versus segurança.** Em que a privacidade difere da segurança? *Rubrica:* 3 = a privacidade também limita o que as pessoas autorizadas fazem com os dados;; 2 = limites de uso;; 1 = nada;; 0 = nenhuma.
-- **EX041 — Procedimento telefônico.** O que o novo procedimento exige? *Rubrica:* 3 = nenhuma revelação por telefone e pedidos por escrito ao encarregado de privacidade;; 2 = por escrito;; 1 = nada;; 0 = nenhuma.
-- **EX042 — Dados dos funcionários.** Por que aplicar princípios de privacidade aos dados dos funcionários? *Rubrica:* 3 = para manter a confiança que sustenta os reportes;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Privacidade versus segurança.** Em que a privacidade difere da segurança? *Rubrica:* 3 = a privacidade também limita o que as pessoas autorizadas fazem com os dados;; 2 = limites de uso;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Procedimento telefônico.** O que o novo procedimento exige? *Rubrica:* 3 = nenhuma revelação por telefone e pedidos por escrito ao encarregado de privacidade;; 2 = por escrito;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Dados dos funcionários.** Por que aplicar princípios de privacidade aos dados dos funcionários? *Rubrica:* 3 = para manter a confiança que sustenta os reportes;; 2 = confiança;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -783,9 +783,9 @@ As medidas de resultado podem ser ruidosas. Ataques não reportados são invisí
 
 ### Exercícios
 
-- **EX043 — Validade da conclusão.** Por que as taxas de conclusão são medidas fracas? *Rubrica:* 3 = mostram que se clicou até o fim, e não o comportamento;; 2 = validade;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Resultado da mediana.** Qual foi a mediana do tempo até o primeiro reporte no laboratório? *Rubrica:* 3 = 14 minutos;; 2 = 14;; 1 = nada;; 0 = nenhuma.
-- **EX045 — Medida de ônus.** Por que medir também o esforço dos funcionários? *Rubrica:* 3 = o esforço é um custo real que afeta a sustentabilidade;; 2 = custo;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Validade da conclusão.** Por que as taxas de conclusão são medidas fracas? *Rubrica:* 3 = mostram que se clicou até o fim, e não o comportamento;; 2 = validade;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Resultado da mediana.** Qual foi a mediana do tempo até o primeiro reporte no laboratório? *Rubrica:* 3 = 14 minutos;; 2 = 14;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Medida de ônus.** Por que medir também o esforço dos funcionários? *Rubrica:* 3 = o esforço é um custo real que afeta a sustentabilidade;; 2 = custo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -823,8 +823,8 @@ As camadas acrescentam custo e complexidade. Os alertas precisam de pessoas para
 
 ### Exercícios
 
-- **EX046 — Princípio da aceitabilidade.** O que significa aceitabilidade psicológica? *Rubrica:* 3 = a proteção deve ser fácil de usar corretamente;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX047 — Funcionários como sensores.** Como os funcionários podem fortalecer a arquitetura? *Rubrica:* 3 = reportando ataques que os filtros deixam passar;; 2 = sensores;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Princípio da aceitabilidade.** O que significa aceitabilidade psicológica? *Rubrica:* 3 = a proteção deve ser fácil de usar corretamente;; 2 = usabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Funcionários como sensores.** Como os funcionários podem fortalecer a arquitetura? *Rubrica:* 3 = reportando ataques que os filtros deixam passar;; 2 = sensores;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Defesa contra site falso.** O que bloqueia um atacante depois que uma senha é digitada num site falso? *Rubrica:* 3 = o segundo fator;; 2 = fator;; 1 = backups;; 0 = nenhuma.
 
 ### Síntese
@@ -864,8 +864,8 @@ Ferramentas invisíveis podem esconder falhas. A criptografia central exige recu
 ### Exercícios
 
 - **EX049 — Finalidade da assinatura.** O que uma assinatura digital mostra? *Rubrica:* 3 = quem enviou a mensagem e que ela não foi alterada;; 2 = origem;; 1 = sigilo;; 0 = nenhuma.
-- **EX050 — Achado do estudo.** O que Whitten e Tygar constataram? *Rubrica:* 3 = a maioria não conseguiu usar a criptografia corretamente em noventa minutos;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX051 — Criptografia manual.** Por que evitar a criptografia manual de anexos? *Rubrica:* 3 = é propensa a erros dos funcionários;; 2 = erros;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Achado do estudo.** O que Whitten e Tygar constataram? *Rubrica:* 3 = a maioria não conseguiu usar a criptografia corretamente em noventa minutos;; 2 = usabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX051 — Criptografia manual.** Por que evitar a criptografia manual de anexos? *Rubrica:* 3 = é propensa a erros dos funcionários;; 2 = erros;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -904,8 +904,8 @@ Voluntários podem diferir dos demais. Questionários dependem de autorrelato ho
 ### Exercícios
 
 - **EX052 — Pergunta estreitada.** Qual foi a pergunta estreitada de Nadia? *Rubrica:* 3 = o que impede os atendentes de reportar em até uma hora;; 2 = barreiras;; 1 = como melhorar a segurança;; 0 = nenhuma.
-- **EX053 — Escolha da observação.** Por que Nadia evitou a observação encoberta? *Rubrica:* 3 = levanta preocupações éticas sem consentimento;; 2 = consentimento;; 1 = nada;; 0 = nenhuma.
-- **EX054 — Finalidade do piloto.** Por que testar o questionário num piloto? *Rubrica:* 3 = para verificar se as perguntas estão claras;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Escolha da observação.** Por que Nadia evitou a observação encoberta? *Rubrica:* 3 = levanta preocupações éticas sem consentimento;; 2 = consentimento;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Finalidade do piloto.** Por que testar o questionário num piloto? *Rubrica:* 3 = para verificar se as perguntas estão claras;; 2 = clareza;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -943,8 +943,8 @@ As teorias se sobrepõem. Os itens do questionário podem não capturar plenamen
 
 ### Exercícios
 
-- **EX055 — Mudança do campo.** Que mudança o campo mostra? *Rubrica:* 3 = de culpar os usuários a projetar para eles;; 2 = design;; 1 = nada;; 0 = nenhuma.
-- **EX056 — Partes do comportamento planejado.** Que três fatores moldam as intenções na teoria de Ajzen? *Rubrica:* 3 = atitudes, normas e controle percebido;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Mudança do campo.** Que mudança o campo mostra? *Rubrica:* 3 = de culpar os usuários a projetar para eles;; 2 = design;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Partes do comportamento planejado.** Que três fatores moldam as intenções na teoria de Ajzen? *Rubrica:* 3 = atitudes, normas e controle percebido;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX057 — Ponto comum.** Em que as teorias concordam? *Rubrica:* 3 = o comportamento depende de quão fácil e valiosa a ação segura parece;; 2 = facilidade;; 1 = conhecimento;; 0 = nenhuma.
 
 ### Síntese
@@ -983,9 +983,9 @@ Casos sintéticos podem deixar de fora detalhes reais. Regras simples têm exce�
 
 ### Exercícios
 
-- **EX058 — Tipos de pressão.** Que pressões quem ligou usou? *Rubrica:* 3 = autoridade e urgência;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Tipos de pressão.** Que pressões quem ligou usou? *Rubrica:* 3 = autoridade e urgência;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Onde estão os fatores.** Onde está a maioria dos fatores no caso? *Rubrica:* 3 = no sistema, e não na pessoa;; 2 = sistema;; 1 = a atendente;; 0 = nenhuma.
-- **EX060 — Contato nomeado.** O que faz o contato nomeado? *Rubrica:* 3 = verifica qualquer pedido oficial;; 2 = verificar;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Contato nomeado.** O que faz o contato nomeado? *Rubrica:* 3 = verifica qualquer pedido oficial;; 2 = verificar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1045,7 +1045,7 @@ As taxas das etapas são estimativas grosseiras. As etapas interagem.
 ### Exercícios
 
 - **EX061 — Visão de cadeia.** Por que modelar o reporte como uma cadeia? *Rubrica:* 3 = qualquer etapa fraca pode barrar um alerta;; 2 = elo fraco;; 1 = ato único;; 0 = nenhuma.
-- **EX062 — Sobreviventes do funil.** Quantos de 100 e-mails suspeitos se tornam reportes com resposta no laboratório? *Rubrica:* 3 = cerca de 24;; 2 = 24;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Sobreviventes do funil.** Quantos de 100 e-mails suspeitos se tornam reportes com resposta no laboratório? *Rubrica:* 3 = cerca de 24;; 2 = 24;; 1 = vago;; 0 = nenhuma.
 - **EX063 — Maior perda.** Que etapa mais perde? *Rubrica:* 3 = a decisão de reportar;; 2 = decisão;; 1 = notar;; 0 = nenhuma.
 
 ### Síntese
@@ -1084,9 +1084,9 @@ Caixas postais compartilhadas precisam de responsáveis claros. Formulários em 
 
 ### Exercícios
 
-- **EX064 — Risco do log.** Por que um log de reportes vazado é prejudicial? *Rubrica:* 3 = poderia revelar quem reportou o quê;; 2 = nomes;; 1 = nada;; 0 = nenhuma.
-- **EX065 — Dependência da TI.** Que ponto único de falha envolve a TI? *Rubrica:* 3 = uma única analista cuja caixa de entrada recebe os reportes;; 2 = uma pessoa;; 1 = nada;; 0 = nenhuma.
-- **EX066 — Confirmação.** O que a confirmação automática faz? *Rubrica:* 3 = avisa a quem reportou que a mensagem chegou;; 2 = confirmação;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Risco do log.** Por que um log de reportes vazado é prejudicial? *Rubrica:* 3 = poderia revelar quem reportou o quê;; 2 = nomes;; 1 = vago;; 0 = nenhuma.
+- **EX065 — Dependência da TI.** Que ponto único de falha envolve a TI? *Rubrica:* 3 = uma única analista cuja caixa de entrada recebe os reportes;; 2 = uma pessoa;; 1 = vago;; 0 = nenhuma.
+- **EX066 — Confirmação.** O que a confirmação automática faz? *Rubrica:* 3 = avisa a quem reportou que a mensagem chegou;; 2 = confirmação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1143,8 +1143,8 @@ Viés de resposta no questionário. A codificação continua sendo interpretativ
 ### Exercícios
 
 - **EX067 — Taxa de resposta.** Qual foi a taxa de resposta do questionário? *Rubrica:* 3 = 70%;; 2 = 84 de 120;; 1 = 84%;; 0 = nenhuma.
-- **EX068 — Barreira principal.** Qual foi a barreira principal e sua proporção? *Rubrica:* 3 = dúvida sobre se é suspeito o suficiente, 45 de 84 ou 54%;; 2 = incerteza;; 1 = nada;; 0 = nenhuma.
-- **EX069 — Segunda codificadora.** Por que uma segunda estudante codificou entrevistas? *Rubrica:* 3 = para verificar a consistência dos códigos;; 2 = consistência;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Barreira principal.** Qual foi a barreira principal e sua proporção? *Rubrica:* 3 = dúvida sobre se é suspeito o suficiente, 45 de 84 ou 54%;; 2 = incerteza;; 1 = vago;; 0 = nenhuma.
+- **EX069 — Segunda codificadora.** Por que uma segunda estudante codificou entrevistas? *Rubrica:* 3 = para verificar a consistência dos códigos;; 2 = consistência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1182,9 +1182,9 @@ As estimativas de ônus podem ser otimistas. Os nudges perdem força com a famil
 
 ### Exercícios
 
-- **EX070 — Controle de retorno.** Que controle trata a falta de retorno? *Rubrica:* 3 = a TI responde em até um dia útil;; 2 = resposta;; 1 = nada;; 0 = nenhuma.
-- **EX071 — Limites dos nudges.** Que limites se aplicam aos nudges? *Rubrica:* 3 = transparentes, ignoráveis e não baseados no medo;; 2 = limites;; 1 = nada;; 0 = nenhuma.
-- **EX072 — Momento da revisão.** Quando os controles devem ser revistos quanto ao ônus? *Rubrica:* 3 = depois de três meses;; 2 = três meses;; 1 = nada;; 0 = nenhuma.
+- **EX070 — Controle de retorno.** Que controle trata a falta de retorno? *Rubrica:* 3 = a TI responde em até um dia útil;; 2 = resposta;; 1 = vago;; 0 = nenhuma.
+- **EX071 — Limites dos nudges.** Que limites se aplicam aos nudges? *Rubrica:* 3 = transparentes, ignoráveis e não baseados no medo;; 2 = limites;; 1 = vago;; 0 = nenhuma.
+- **EX072 — Momento da revisão.** Quando os controles devem ser revistos quanto ao ônus? *Rubrica:* 3 = depois de três meses;; 2 = três meses;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1237,9 +1237,9 @@ Os voluntários não são típicos. As condições do laboratório diferem das d
 
 ### Exercícios
 
-- **EX073 — Caixa postal de teste.** Por que usar uma caixa postal de teste? *Rubrica:* 3 = para que nenhuma caixa de entrada real seja envolvida;; 2 = controlado;; 1 = nada;; 0 = nenhuma.
-- **EX074 — Tempos médios.** Quais foram os tempos médios do encaminhamento e do botão? *Rubrica:* 3 = 40 e 6 segundos;; 2 = 34 segundos economizados;; 1 = nada;; 0 = nenhuma.
-- **EX075 — Falhas de encaminhamento.** Quantos voluntários não conseguiram encaminhar corretamente? *Rubrica:* 3 = dois;; 2 = 2;; 1 = nada;; 0 = nenhuma.
+- **EX073 — Caixa postal de teste.** Por que usar uma caixa postal de teste? *Rubrica:* 3 = para que nenhuma caixa de entrada real seja envolvida;; 2 = controlado;; 1 = vago;; 0 = nenhuma.
+- **EX074 — Tempos médios.** Quais foram os tempos médios do encaminhamento e do botão? *Rubrica:* 3 = 40 e 6 segundos;; 2 = 34 segundos economizados;; 1 = vago;; 0 = nenhuma.
+- **EX075 — Falhas de encaminhamento.** Quantos voluntários não conseguiram encaminhar corretamente? *Rubrica:* 3 = dois;; 2 = 2;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1292,9 +1292,9 @@ Grupos não aleatórios podem diferir. Um mês é pouco tempo.
 
 ### Exercícios
 
-- **EX076 — Mudança mensal.** Como mudou a média mensal de reportes? *Rubrica:* 3 = de 12 para 31;; 2 = aumento de 19;; 1 = nada;; 0 = nenhuma.
-- **EX077 — Fator de confusão encontrado.** Que fator de confusão os registros da TI revelaram? *Rubrica:* 3 = os e-mails maliciosos subiram de 3 para 5 por mês;; 2 = mais ataques;; 1 = nada;; 0 = nenhuma.
-- **EX078 — Taxas dos grupos.** Que taxas as unidades adiantadas e atrasadas mostraram no mês da implantação? *Rubrica:* 3 = 26 contra 8 por cem funcionários;; 2 = adiantadas mais altas;; 1 = nada;; 0 = nenhuma.
+- **EX076 — Mudança mensal.** Como mudou a média mensal de reportes? *Rubrica:* 3 = de 12 para 31;; 2 = aumento de 19;; 1 = vago;; 0 = nenhuma.
+- **EX077 — Fator de confusão encontrado.** Que fator de confusão os registros da TI revelaram? *Rubrica:* 3 = os e-mails maliciosos subiram de 3 para 5 por mês;; 2 = mais ataques;; 1 = vago;; 0 = nenhuma.
+- **EX078 — Taxas dos grupos.** Que taxas as unidades adiantadas e atrasadas mostraram no mês da implantação? *Rubrica:* 3 = 26 contra 8 por cem funcionários;; 2 = adiantadas mais altas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1332,9 +1332,9 @@ As verificações mostram um momento no tempo. Mudanças de layout podem reintro
 
 ### Exercícios
 
-- **EX079 — Verificação versus avaliação.** O que a verificação não pergunta? *Rubrica:* 3 = se o reporte melhorou;; 2 = resultados;; 1 = nada;; 0 = nenhuma.
-- **EX080 — Problema no balcão.** Que problema apareceu nos computadores de balcão? *Rubrica:* 3 = o botão estava escondido atrás de um menu;; 2 = escondido;; 1 = nada;; 0 = nenhuma.
-- **EX081 — Registro das verificações.** Quantas das oito verificações passaram na primeira vez? *Rubrica:* 3 = seis;; 2 = 6;; 1 = nada;; 0 = nenhuma.
+- **EX079 — Verificação versus avaliação.** O que a verificação não pergunta? *Rubrica:* 3 = se o reporte melhorou;; 2 = resultados;; 1 = vago;; 0 = nenhuma.
+- **EX080 — Problema no balcão.** Que problema apareceu nos computadores de balcão? *Rubrica:* 3 = o botão estava escondido atrás de um menu;; 2 = escondido;; 1 = vago;; 0 = nenhuma.
+- **EX081 — Registro das verificações.** Quantas das oito verificações passaram na primeira vez? *Rubrica:* 3 = seis;; 2 = 6;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1390,9 +1390,9 @@ As classes de fatores se sobrepõem. Cinco quase incidentes são um conjunto peq
 
 ### Exercícios
 
-- **EX082 — Valor do quase incidente.** Por que os quase incidentes são valiosos? *Rubrica:* 3 = revelam fraquezas sem causar danos;; 2 = aprendizado;; 1 = nada;; 0 = nenhuma.
+- **EX082 — Valor do quase incidente.** Por que os quase incidentes são valiosos? *Rubrica:* 3 = revelam fraquezas sem causar danos;; 2 = aprendizado;; 1 = vago;; 0 = nenhuma.
 - **EX083 — Classe mais comum.** Que classe de fator mais apareceu no laboratório? *Rubrica:* 3 = organizacional, em 5 de 5;; 2 = organizacional;; 1 = individual;; 0 = nenhuma.
-- **EX084 — Do hábito à regra.** O que Nadia fez com o hábito do analista financeiro? *Rubrica:* 3 = transformou-o numa regra escrita;; 2 = regra;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Do hábito à regra.** O que Nadia fez com o hábito do analista financeiro? *Rubrica:* 3 = transformou-o numa regra escrita;; 2 = regra;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1431,8 +1431,8 @@ Os calendários escorregam sob pressão. Poucas simulações geram dados limitad
 ### Exercícios
 
 - **EX085 — Frequência das simulações.** Com que frequência Nadia recomenda simulações? *Rubrica:* 3 = no máximo duas vezes por ano;; 2 = duas vezes;; 1 = mensalmente;; 0 = nenhuma.
-- **EX086 — Classificação dos modelos.** Por que classificar os modelos com a Phish Scale? *Rubrica:* 3 = para que os resultados possam ser comparados entre anos;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
-- **EX087 — Modelo que incomoda.** O que acontece com um modelo que incomoda os funcionários? *Rubrica:* 3 = é retirado;; 2 = retirar;; 1 = nada;; 0 = nenhuma.
+- **EX086 — Classificação dos modelos.** Por que classificar os modelos com a Phish Scale? *Rubrica:* 3 = para que os resultados possam ser comparados entre anos;; 2 = comparação;; 1 = vago;; 0 = nenhuma.
+- **EX087 — Modelo que incomoda.** O que acontece com um modelo que incomoda os funcionários? *Rubrica:* 3 = é retirado;; 2 = retirar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1489,9 +1489,9 @@ Dados observacionais não provam causalidade. Os grupos podem diferir.
 
 ### Exercícios
 
-- **EX088 — Taxas dos grupos.** Que taxas de repetição os dois grupos mostraram? *Rubrica:* 3 = 65% após respostas rápidas e 30% após lentas ou nenhuma;; 2 = 26/40 e 9/30;; 1 = nada;; 0 = nenhuma.
+- **EX088 — Taxas dos grupos.** Que taxas de repetição os dois grupos mostraram? *Rubrica:* 3 = 65% após respostas rápidas e 30% após lentas ou nenhuma;; 2 = 26/40 e 9/30;; 1 = vago;; 0 = nenhuma.
 - **EX089 — Resultado dos intervalos.** O que os intervalos mostraram? *Rubrica:* 3 = não se sobrepuseram;; 2 = separados;; 1 = sobreposição;; 0 = nenhuma.
-- **EX090 — Cautela quanto à causalidade.** Por que o resultado não pode provar causalidade? *Rubrica:* 3 = os dados são observacionais e os grupos podem diferir;; 2 = observacionais;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Cautela quanto à causalidade.** Por que o resultado não pode provar causalidade? *Rubrica:* 3 = os dados são observacionais e os grupos podem diferir;; 2 = observacionais;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1530,7 +1530,7 @@ A proporcionalidade exige julgamento. Modelos abertos carregam risco residual.
 ### Exercícios
 
 - **EX091 — Motivação interna.** O que costuma motivar os problemas com pessoas internas, segundo o capítulo? *Rubrica:* 3 = conveniência e boa vontade, e não malícia;; 2 = conveniência;; 1 = malícia;; 0 = nenhuma.
-- **EX092 — Identificação rejeitada.** Por que Nadia rejeitou a identificação nos computadores públicos? *Rubrica:* 3 = excluiria usuários vulneráveis e criaria registros;; 2 = acesso;; 1 = nada;; 0 = nenhuma.
+- **EX092 — Identificação rejeitada.** Por que Nadia rejeitou a identificação nos computadores públicos? *Rubrica:* 3 = excluiria usuários vulneráveis e criaria registros;; 2 = acesso;; 1 = vago;; 0 = nenhuma.
 - **EX093 — Correção para voluntários.** Que correção trata o login compartilhado? *Rubrica:* 3 = uma conta de voluntário apenas com direitos de reserva;; 2 = conta por função;; 1 = proibição;; 0 = nenhuma.
 
 ### Síntese
@@ -1569,9 +1569,9 @@ A tradução pode simplificar demais. As reuniões podem ser dominadas pelas voz
 
 ### Exercícios
 
-- **EX094 — Enquadramento para os funcionários.** Como a regra foi apresentada aos funcionários? *Rubrica:* 3 = proteção contra a pressão de julgar quem liga;; 2 = alívio;; 1 = nada;; 0 = nenhuma.
+- **EX094 — Enquadramento para os funcionários.** Como a regra foi apresentada aos funcionários? *Rubrica:* 3 = proteção contra a pressão de julgar quem liga;; 2 = alívio;; 1 = vago;; 0 = nenhuma.
 - **EX095 — Preocupação do representante.** Com o que o representante dos funcionários se preocupava? *Rubrica:* 3 = a culpa;; 2 = culpa;; 1 = custo;; 0 = nenhuma.
-- **EX096 — Resultado da reunião.** Com o que a reunião concordou? *Rubrica:* 3 = log minimizado, orçamento modesto, modelos e declaração de não atribuição de culpa;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX096 — Resultado da reunião.** Com o que a reunião concordou? *Rubrica:* 3 = log minimizado, orçamento modesto, modelos e declaração de não atribuição de culpa;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1611,7 +1611,7 @@ Comparações entre organizações sofrem com fatores de confusão. As práticas
 
 - **EX097 — Abordagem da Dunmore.** Que abordagem a Dunmore usa? *Rubrica:* 3 = treinamento anual e simulações mensais;; 2 = guiada pela conformidade;; 1 = guiada pelo reporte;; 0 = nenhuma.
 - **EX098 — Definição de confiabilidade.** O que significa confiabilidade? *Rubrica:* 3 = resultados consistentes de uma medida;; 2 = consistência;; 1 = validade;; 0 = nenhuma.
-- **EX099 — O plano primeiro.** Por que escrever o plano de análise antes dos dados? *Rubrica:* 3 = para evitar vasculhar os dados atrás de resultados interessantes;; 2 = planejamento prévio;; 1 = nada;; 0 = nenhuma.
+- **EX099 — O plano primeiro.** Por que escrever o plano de análise antes dos dados? *Rubrica:* 3 = para evitar vasculhar os dados atrás de resultados interessantes;; 2 = planejamento prévio;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1667,8 +1667,8 @@ Seis meses é pouco tempo. As redes enfrentam ataques diferentes.
 
 ### Exercícios
 
-- **EX100 — Medianas no laboratório.** Que medianas de tempo até o primeiro reporte o laboratório mostrou? *Rubrica:* 3 = Ashcombe 14 e Dunmore 70 minutos;; 2 = mais rápido;; 1 = nada;; 0 = nenhuma.
-- **EX101 — Proporção reportada.** Que proporções dos e-mails maliciosos foram reportadas? *Rubrica:* 3 = Ashcombe 86% e Dunmore 52%;; 2 = maior;; 1 = nada;; 0 = nenhuma.
+- **EX100 — Medianas no laboratório.** Que medianas de tempo até o primeiro reporte o laboratório mostrou? *Rubrica:* 3 = Ashcombe 14 e Dunmore 70 minutos;; 2 = mais rápido;; 1 = vago;; 0 = nenhuma.
+- **EX101 — Proporção reportada.** Que proporções dos e-mails maliciosos foram reportadas? *Rubrica:* 3 = Ashcombe 86% e Dunmore 52%;; 2 = maior;; 1 = vago;; 0 = nenhuma.
 - **EX102 — Clique versus reporte.** O que os resultados da Dunmore sugerem? *Rubrica:* 3 = cliques baixos e reportes rápidos são diferentes;; 2 = diferentes;; 1 = iguais;; 0 = nenhuma.
 
 ### Síntese
@@ -1707,9 +1707,9 @@ O número de voluntários oscila. Amostras pequenas limitam a avaliação.
 
 ### Exercícios
 
-- **EX103 — Grupo do trabalho.** Que grupo o trabalho de conclusão trata? *Rubrica:* 3 = voluntários e funcionários de meio período;; 2 = voluntários;; 1 = nada;; 0 = nenhuma.
+- **EX103 — Grupo do trabalho.** Que grupo o trabalho de conclusão trata? *Rubrica:* 3 = voluntários e funcionários de meio período;; 2 = voluntários;; 1 = vago;; 0 = nenhuma.
 - **EX104 — Critério do guia.** Que proporção dos voluntários deve receber o guia? *Rubrica:* 3 = pelo menos dois terços;; 2 = dois terços;; 1 = metade;; 0 = nenhuma.
-- **EX105 — Preocupação com obrigação.** Que preocupação ética se aplica aos voluntários? *Rubrica:* 3 = podem se sentir obrigados a participar;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
+- **EX105 — Preocupação com obrigação.** Que preocupação ética se aplica aos voluntários? *Rubrica:* 3 = podem se sentir obrigados a participar;; 2 = pressão;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1747,9 +1747,9 @@ O retorno informal não é representativo. Os voluntários variam em confiança.
 
 ### Exercícios
 
-- **EX106 — Papel dos voluntários.** Que papel informal os voluntários desempenham? *Rubrica:* 3 = conselheiros de segurança online para os usuários;; 2 = conselheiros;; 1 = nada;; 0 = nenhuma.
-- **EX107 — Regra das senhas.** O que os voluntários nunca devem fazer? *Rubrica:* 3 = lidar com as senhas de um usuário;; 2 = senhas;; 1 = nada;; 0 = nenhuma.
-- **EX108 — Lição sobre o medo.** O que o comentário da usuária mais velha mostrou? *Rubrica:* 3 = o medo pode reduzir o uso seguro e útil da tecnologia;; 2 = medo;; 1 = nada;; 0 = nenhuma.
+- **EX106 — Papel dos voluntários.** Que papel informal os voluntários desempenham? *Rubrica:* 3 = conselheiros de segurança online para os usuários;; 2 = conselheiros;; 1 = vago;; 0 = nenhuma.
+- **EX107 — Regra das senhas.** O que os voluntários nunca devem fazer? *Rubrica:* 3 = lidar com as senhas de um usuário;; 2 = senhas;; 1 = vago;; 0 = nenhuma.
+- **EX108 — Lição sobre o medo.** O que o comentário da usuária mais velha mostrou? *Rubrica:* 3 = o medo pode reduzir o uso seguro e útil da tecnologia;; 2 = medo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1788,8 +1788,8 @@ As revisões podem deixar estudos de fora. As perguntas de qualidade são simple
 ### Exercícios
 
 - **EX109 — Achado de Lain.** O que Lain et al. constataram sobre o treinamento embutido? *Rubrica:* 3 = não melhorou os resultados;; 2 = ineficaz;; 1 = ajudou;; 0 = nenhuma.
-- **EX110 — Perguntas de qualidade.** Cite duas perguntas de qualidade usadas. *Rubrica:* 3 = número de participantes e grupo de comparação;; 2 = duas;; 1 = nada;; 0 = nenhuma.
-- **EX111 — Lacuna conhecida.** O que se sabe menos? *Rubrica:* 3 = efeitos de longo prazo do retorno e organizações pequenas;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+- **EX110 — Perguntas de qualidade.** Cite duas perguntas de qualidade usadas. *Rubrica:* 3 = número de participantes e grupo de comparação;; 2 = duas;; 1 = vago;; 0 = nenhuma.
+- **EX111 — Lacuna conhecida.** O que se sabe menos? *Rubrica:* 3 = efeitos de longo prazo do retorno e organizações pequenas;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1828,8 +1828,8 @@ Contagens não mostram a leitura. Formulários podem ser mal utilizados.
 ### Exercícios
 
 - **EX112 — Acesso ao formulário.** Como os voluntários acessam o formulário? *Rubrica:* 3 = com um código de voluntário, a partir de qualquer dispositivo;; 2 = código;; 1 = e-mail de funcionário;; 0 = nenhuma.
-- **EX113 — Proporção da distribuição.** Que proporção dos voluntários recebeu o guia? *Rubrica:* 3 = 31 de 40, cerca de 78%;; 2 = 78%;; 1 = nada;; 0 = nenhuma.
-- **EX114 — Mudança no formulário.** Por que o formulário foi atualizado? *Rubrica:* 3 = os reportes incluíam dados pessoais de usuários;; 2 = privacidade;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Proporção da distribuição.** Que proporção dos voluntários recebeu o guia? *Rubrica:* 3 = 31 de 40, cerca de 78%;; 2 = 78%;; 1 = vago;; 0 = nenhuma.
+- **EX114 — Mudança no formulário.** Por que o formulário foi atualizado? *Rubrica:* 3 = os reportes incluíam dados pessoais de usuários;; 2 = privacidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1888,9 +1888,9 @@ Respondentes diferentes antes e depois. Efeitos sazonais.
 
 ### Exercícios
 
-- **EX115 — Contagem de reportes.** Como mudaram os reportes de voluntários e funcionários de meio período? *Rubrica:* 3 = de 4 para 15;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
-- **EX116 — Proporções de conhecimento.** Que proporções sabiam como reportar antes e depois, no laboratório? *Rubrica:* 3 = 41% e 81%;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
-- **EX117 — Cautela com os grupos.** Por que a comparação do questionário é entre grupos? *Rubrica:* 3 = os voluntários mudaram entre os questionários;; 2 = rotatividade;; 1 = nada;; 0 = nenhuma.
+- **EX115 — Contagem de reportes.** Como mudaram os reportes de voluntários e funcionários de meio período? *Rubrica:* 3 = de 4 para 15;; 2 = aumento;; 1 = vago;; 0 = nenhuma.
+- **EX116 — Proporções de conhecimento.** Que proporções sabiam como reportar antes e depois, no laboratório? *Rubrica:* 3 = 41% e 81%;; 2 = aumento;; 1 = vago;; 0 = nenhuma.
+- **EX117 — Cautela com os grupos.** Por que a comparação do questionário é entre grupos? *Rubrica:* 3 = os voluntários mudaram entre os questionários;; 2 = rotatividade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1929,8 +1929,8 @@ Um único caso limita a generalização. A reflexão pode ser seletiva.
 ### Exercícios
 
 - **EX118 — Resposta sobre simulações.** Como Nadia respondeu à pergunta sobre simulações? *Rubrica:* 3 = favorecer o retorno e o reporte fácil, simulações com parcimônia;; 2 = parcimônia;; 1 = mais simulações;; 0 = nenhuma.
-- **EX119 — Resposta sobre generalização.** Como Nadia respondeu sobre generalização? *Rubrica:* 3 = uma única rede, sugere estudos em outros lugares;; 2 = limites;; 1 = nada;; 0 = nenhuma.
-- **EX120 — Visão que mudou.** Como a visão de Nadia mudou desde o primeiro ensaio? *Rubrica:* 3 = de acreditar pela metade que os funcionários são o elo mais fraco a olhar para os sistemas;; 2 = sistemas;; 1 = nada;; 0 = nenhuma.
+- **EX119 — Resposta sobre generalização.** Como Nadia respondeu sobre generalização? *Rubrica:* 3 = uma única rede, sugere estudos em outros lugares;; 2 = limites;; 1 = vago;; 0 = nenhuma.
+- **EX120 — Visão que mudou.** Como a visão de Nadia mudou desde o primeiro ensaio? *Rubrica:* 3 = de acreditar pela metade que os funcionários são o elo mais fraco a olhar para os sistemas;; 2 = sistemas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

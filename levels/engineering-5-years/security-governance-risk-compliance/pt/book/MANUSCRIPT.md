@@ -65,8 +65,8 @@ Curvas suaves escondem dados mensais irregulares. As áreas de exposição ignor
 
 ### Exercícios
 
-- **EX001 — Tendência do backlog.** O que a taxa de variação dos achados em aberto diz ao conselho? *Rubrica:* 3 = se o backlog está diminuindo, estável ou crescendo;; 2 = tendência;; 1 = nada;; 0 = nenhuma.
-- **EX002 — Sentido do achatamento.** Por que o achatamento da curva importa? *Rubrica:* 3 = a atenção diminui e os achados difíceis ficam parados;; 2 = achados parados;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Tendência do backlog.** O que a taxa de variação dos achados em aberto diz ao conselho? *Rubrica:* 3 = se o backlog está diminuindo, estável ou crescendo;; 2 = tendência;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Sentido do achatamento.** Por que o achatamento da curva importa? *Rubrica:* 3 = a atenção diminui e os achados difíceis ficam parados;; 2 = achados parados;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Integral da exposição.** Como Nadia define a exposição acumulada? *Rubrica:* 3 = a área sob as fraquezas em aberto ao longo do tempo;; 2 = área;; 1 = contagem;; 0 = nenhuma.
 
 ### Síntese
@@ -105,9 +105,9 @@ A lógica captura as regras escritas, não a prática real. As listas de conjunt
 
 ### Exercícios
 
-- **EX004 — Choque na emergência.** Que duas políticas entram em choque durante uma interrupção? *Rubrica:* 3 = MFA obrigatória e acesso imediato de fornecedores em emergências;; 2 = conflito;; 1 = nada;; 0 = nenhuma.
-- **EX005 — Contas obsoletas.** Quantas contas obsoletas do sistema de controle a diferença de conjuntos revelou? *Rubrica:* 3 = sete;; 2 = 7;; 1 = nada;; 0 = nenhuma.
-- **EX006 — Pares proibidos.** Cite um par de permissões proibido. *Rubrica:* 3 = cadastrar fornecedor com aprovar pagamento;; 2 = par de SoD;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Choque na emergência.** Que duas políticas entram em choque durante uma interrupção? *Rubrica:* 3 = MFA obrigatória e acesso imediato de fornecedores em emergências;; 2 = conflito;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Contas obsoletas.** Quantas contas obsoletas do sistema de controle a diferença de conjuntos revelou? *Rubrica:* 3 = sete;; 2 = 7;; 1 = vago;; 0 = nenhuma.
+- **EX006 — Pares proibidos.** Cite um par de permissões proibido. *Rubrica:* 3 = cadastrar fornecedor com aprovar pagamento;; 2 = par de SoD;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -145,9 +145,9 @@ Modelos simples de calor ignoram o fluxo de ar. Os controles físicos se degrada
 
 ### Exercícios
 
-- **EX007 — Grupos de controles.** Que grupo de controles da ISO/IEC 27002:2022 cobre as áreas seguras? *Rubrica:* 3 = controles físicos;; 2 = físicos;; 1 = nada;; 0 = nenhuma.
-- **EX008 — Responsável pela refrigeração.** Quem deve ser o responsável pelo registro de risco de falha de refrigeração? *Rubrica:* 3 = facilities, não só TI;; 2 = facilities;; 1 = nada;; 0 = nenhuma.
-- **EX009 — Retardo e detecção.** Por que as subestações precisam de sensores de porta além das fechaduras? *Rubrica:* 3 = as fechaduras retardam, mas não detectam um atacante determinado;; 2 = detecção;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Grupos de controles.** Que grupo de controles da ISO/IEC 27002:2022 cobre as áreas seguras? *Rubrica:* 3 = controles físicos;; 2 = físicos;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Responsável pela refrigeração.** Quem deve ser o responsável pelo registro de risco de falha de refrigeração? *Rubrica:* 3 = facilities, não só TI;; 2 = facilities;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Retardo e detecção.** Por que as subestações precisam de sensores de porta além das fechaduras? *Rubrica:* 3 = as fechaduras retardam, mas não detectam um atacante determinado;; 2 = detecção;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -185,9 +185,9 @@ Os scripts conferem só o que está registrado. Dados errados produzem saídas e
 
 ### Exercícios
 
-- **EX010 — Campos da política.** Que campos cada registro de política contém? *Rubrica:* 3 = título, responsável, data de aprovação, data da próxima revisão;; 2 = quatro campos;; 1 = nada;; 0 = nenhuma.
-- **EX011 — Saída acionável.** Por que imprimir o título da política e o motivo, e não só uma contagem? *Rubrica:* 3 = os responsáveis podem agir sobre itens específicos;; 2 = acionável;; 1 = nada;; 0 = nenhuma.
-- **EX012 — Script como evidência.** Por que os scripts de compliance precisam ser legíveis e versionados? *Rubrica:* 3 = o script passa a fazer parte da evidência;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Campos da política.** Que campos cada registro de política contém? *Rubrica:* 3 = título, responsável, data de aprovação, data da próxima revisão;; 2 = quatro campos;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Saída acionável.** Por que imprimir o título da política e o motivo, e não só uma contagem? *Rubrica:* 3 = os responsáveis podem agir sobre itens específicos;; 2 = acionável;; 1 = vago;; 0 = nenhuma.
+- **EX012 — Script como evidência.** Por que os scripts de compliance precisam ser legíveis e versionados? *Rubrica:* 3 = o script passa a fazer parte da evidência;; 2 = evidência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -225,9 +225,9 @@ A linguagem simples pode perder nuances. Apêndices longos ficam sem leitura.
 
 ### Exercícios
 
-- **EX013 — O que o conselho precisa.** De que os conselhos precisam nas mensagens de governança? *Rubrica:* 3 = decisões, opções e consequências em linguagem simples;; 2 = decisões;; 1 = nada;; 0 = nenhuma.
+- **EX013 — O que o conselho precisa.** De que os conselhos precisam nas mensagens de governança? *Rubrica:* 3 = decisões, opções e consequências em linguagem simples;; 2 = decisões;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Afirmação revista.** Como Nadia reescreveu sua afirmação sobre o ransomware? *Rubrica:* 3 = perda esperada sob premissas declaradas, com uma faixa ampla;; 2 = incerteza;; 1 = certeza;; 0 = nenhuma.
-- **EX015 — Linha de consultados.** Por que acrescentar ao memorando quem foi consultado? *Rubrica:* 3 = as decisões de governança afetam muitas equipes;; 2 = registro;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Linha de consultados.** Por que acrescentar ao memorando quem foi consultado? *Rubrica:* 3 = as decisões de governança afetam muitas equipes;; 2 = registro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -265,9 +265,9 @@ O decaimento real é irregular. As taxas de desconto são escolhas de política.
 
 ### Exercícios
 
-- **EX016 — Causa do decaimento.** O que faz a correção dos acessos decair depois de uma revisão? *Rubrica:* 3 = funcionários que mudam de função sem atualização dos acessos;; 2 = mudanças de função;; 1 = nada;; 0 = nenhuma.
-- **EX017 — Alta rotatividade.** Que departamentos precisam de revisões mais frequentes? *Rubrica:* 3 = os de alta rotatividade de pessoal;; 2 = rotatividade;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Valor no tempo.** Por que uma perda futura evitada vale menos hoje? *Rubrica:* 3 = o dinheiro tem valor no tempo;; 2 = desconto;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Causa do decaimento.** O que faz a correção dos acessos decair depois de uma revisão? *Rubrica:* 3 = funcionários que mudam de função sem atualização dos acessos;; 2 = mudanças de função;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Alta rotatividade.** Que departamentos precisam de revisões mais frequentes? *Rubrica:* 3 = os de alta rotatividade de pessoal;; 2 = rotatividade;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Valor no tempo.** Por que uma perda futura evitada vale menos hoje? *Rubrica:* 3 = o dinheiro tem valor no tempo;; 2 = desconto;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -330,9 +330,9 @@ Estimativas únicas escondem a incerteza. As médias subestimam catástrofes rar
 
 ### Exercícios
 
-- **EX019 — Fórmula da ALE.** Como se calcula a expectativa de perda anualizada? *Rubrica:* 3 = taxa de ocorrência vezes expectativa de perda única;; 2 = ARO x SLE;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Fórmula da ALE.** Como se calcula a expectativa de perda anualizada? *Rubrica:* 3 = taxa de ocorrência vezes expectativa de perda única;; 2 = ARO x SLE;; 1 = vago;; 0 = nenhuma.
 - **EX020 — Os dois primeiros.** Que dois riscos ficaram mais altos pela ALE no laboratório? *Rubrica:* 3 = ransomware 90 mil e mau uso por fornecedores 80 mil;; 2 = ransomware primeiro;; 1 = notebooks;; 0 = nenhuma.
-- **EX021 — Forma oculta.** Por que o vazamento de cartões pode merecer mais atenção do que sua ALE sugere? *Rubrica:* 3 = é raro, mas tem um desfecho único catastrófico;; 2 = cauda;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Forma oculta.** Por que o vazamento de cartões pode merecer mais atenção do que sua ALE sugere? *Rubrica:* 3 = é raro, mas tem um desfecho único catastrófico;; 2 = cauda;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -370,9 +370,9 @@ Os inventários ficam desatualizados. As datas de suporte dos fornecedores mudam
 
 ### Exercícios
 
-- **EX022 — Escopo do inventário.** O que o inventário de ativos da Ardwell precisa incluir além de servidores e notebooks? *Rubrica:* 3 = os dispositivos do sistema de controle nas subestações;; 2 = dispositivos de OT;; 1 = nada;; 0 = nenhuma.
-- **EX023 — Risco do firmware.** Por que um firmware comprometido importa? *Rubrica:* 3 = pode contornar os controles do sistema operacional;; 2 = contornar;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Opções sem suporte.** Que opções existem para os dois dispositivos sem suporte? *Rubrica:* 3 = substituir, isolar ou aceitar com monitoramento;; 2 = três opções;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Escopo do inventário.** O que o inventário de ativos da Ardwell precisa incluir além de servidores e notebooks? *Rubrica:* 3 = os dispositivos do sistema de controle nas subestações;; 2 = dispositivos de OT;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Risco do firmware.** Por que um firmware comprometido importa? *Rubrica:* 3 = pode contornar os controles do sistema operacional;; 2 = contornar;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Opções sem suporte.** Que opções existem para os dois dispositivos sem suporte? *Rubrica:* 3 = substituir, isolar ou aceitar com monitoramento;; 2 = três opções;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -410,9 +410,9 @@ Os testes cobrem só os casos que alguém imaginou. As entradas arquivadas preci
 
 ### Exercícios
 
-- **EX025 — Divisão em módulos.** Em que três módulos Nadia dividiu sua ferramenta? *Rubrica:* 3 = leitura, verificação de regras e relatório;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX026 — Linhas puladas.** Por que pular linhas ilegíveis em silêncio é perigoso? *Rubrica:* 3 = pode esconder um risco sem responsável;; 2 = risco oculto;; 1 = nada;; 0 = nenhuma.
-- **EX027 — Cabeçalho do relatório.** O que cada relatório imprime no topo? *Rubrica:* 3 = data da execução, versão do script e resumo da entrada;; 2 = cabeçalho;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Divisão em módulos.** Em que três módulos Nadia dividiu sua ferramenta? *Rubrica:* 3 = leitura, verificação de regras e relatório;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Linhas puladas.** Por que pular linhas ilegíveis em silêncio é perigoso? *Rubrica:* 3 = pode esconder um risco sem responsável;; 2 = risco oculto;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Cabeçalho do relatório.** O que cada relatório imprime no topo? *Rubrica:* 3 = data da execução, versão do script e resumo da entrada;; 2 = cabeçalho;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -450,9 +450,9 @@ Os códigos dão princípios, não respostas. Escalar pode trazer risco pessoal.
 
 ### Exercícios
 
-- **EX028 — Dever de aprovação.** O que significa, para um engenheiro, aprovar uma avaliação de riscos? *Rubrica:* 3 = assumir a responsabilidade por sua exatidão;; 2 = responsabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Dever de aprovação.** O que significa, para um engenheiro, aprovar uma avaliação de riscos? *Rubrica:* 3 = assumir a responsabilidade por sua exatidão;; 2 = responsabilidade;; 1 = vago;; 0 = nenhuma.
 - **EX029 — Alternativa nos consoles.** O que Nadia propôs em vez do bloqueio nos consoles de controle? *Rubrica:* 3 = monitoramento e alertas com restrição do acesso físico;; 2 = monitoramento;; 1 = bloqueio;; 0 = nenhuma.
-- **EX030 — Cultura honesta.** Por que as organizações devem tornar seguro o relato honesto? *Rubrica:* 3 = punir más notícias esconde os problemas até que causem danos;; 2 = cultura;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Cultura honesta.** Por que as organizações devem tornar seguro o relato honesto? *Rubrica:* 3 = punir más notícias esconde os problemas até que causem danos;; 2 = cultura;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -490,8 +490,8 @@ Os diagramas de rede se afastam da realidade. Os testes mostram só o que foi te
 
 ### Exercícios
 
-- **EX031 — Quatro zonas.** Que quatro zonas Nadia mapeou? *Rubrica:* 3 = corporativa, pagamento, sistema de controle e acesso de fornecedores;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
-- **EX032 — Achado do desvio.** Por que a conexão direta do fornecedor foi um achado? *Rubrica:* 3 = contornava o registro e a aprovação;; 2 = desvio;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Quatro zonas.** Que quatro zonas Nadia mapeou? *Rubrica:* 3 = corporativa, pagamento, sistema de controle e acesso de fornecedores;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Achado do desvio.** Por que a conexão direta do fornecedor foi um achado? *Rubrica:* 3 = contornava o registro e a aprovação;; 2 = desvio;; 1 = vago;; 0 = nenhuma.
 - **EX033 — Novo teste.** Quando a segmentação precisa ser testada de novo? *Rubrica:* 3 = depois de mudanças, como novas regras de firewall;; 2 = depois de mudança;; 1 = nunca;; 0 = nenhuma.
 
 ### Síntese
@@ -530,9 +530,9 @@ Os baselines ficam atrás das novas versões. Os scripts de desvio não veem as 
 
 ### Exercícios
 
-- **EX034 — Alegação sobre administradores.** O que torna crível uma política que restringe os administradores? *Rubrica:* 3 = contas de administrador separadas impostas e registradas;; 2 = imposição;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Alegação sobre administradores.** O que torna crível uma política que restringe os administradores? *Rubrica:* 3 = contas de administrador separadas impostas e registradas;; 2 = imposição;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Desvios do baseline.** Como os desvios do baseline devem ser tratados? *Rubrica:* 3 = registrados com os motivos;; 2 = documentados;; 1 = ignorados;; 0 = nenhuma.
-- **EX036 — Pergunta sobre o desvio.** Qual é a verdadeira pergunta de governança sobre o desvio? *Rubrica:* 3 = com que rapidez é detectado e corrigido;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Pergunta sobre o desvio.** Qual é a verdadeira pergunta de governança sobre o desvio? *Rubrica:* 3 = com que rapidez é detectado e corrigido;; 2 = rapidez;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -600,9 +600,9 @@ A validação confere a forma, não se os riscos estão certos. As trilhas de au
 
 ### Exercícios
 
-- **EX037 — Regras de validação.** Que três regras o laboratório aplicou? *Rubrica:* 3 = responsável presente, revisão em até 180 dias, nota de 1 a 25;; 2 = três regras;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Regras de validação.** Que três regras o laboratório aplicou? *Rubrica:* 3 = responsável presente, revisão em até 180 dias, nota de 1 a 25;; 2 = três regras;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Linhas limpas.** Quantas das seis linhas estavam limpas? *Rubrica:* 3 = duas;; 2 = 2;; 1 = seis;; 0 = nenhuma.
-- **EX039 — Risco à integridade.** O que poderia acontecer sem histórico de mudanças? *Rubrica:* 3 = riscos rebaixados para parecer menores antes das reuniões do conselho;; 2 = manipulação;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Risco à integridade.** O que poderia acontecer sem histórico de mudanças? *Rubrica:* 3 = riscos rebaixados para parecer menores antes das reuniões do conselho;; 2 = manipulação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -640,9 +640,9 @@ As revisões variam em profundidade. As listas de componentes deixam escapar as 
 
 ### Exercícios
 
-- **EX040 — Normas para o desenvolvimento.** A que duas normas Nadia mapeou o desenvolvimento seguro? *Rubrica:* 3 = ISO/IEC 27002:2022 e PCI DSS v4.0;; 2 = duas;; 1 = nada;; 0 = nenhuma.
-- **EX041 — Caminho emergencial.** O que Nadia recomendou para as correções emergenciais? *Rubrica:* 3 = um caminho documentado com revisão em até dois dias úteis;; 2 = revisão posterior;; 1 = nada;; 0 = nenhuma.
-- **EX042 — Risco das bibliotecas.** Por que as bibliotecas de código aberto são uma preocupação de governança? *Rubrica:* 3 = suas vulnerabilidades e licenças se tornam risco da Ardwell;; 2 = fornecedor;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Normas para o desenvolvimento.** A que duas normas Nadia mapeou o desenvolvimento seguro? *Rubrica:* 3 = ISO/IEC 27002:2022 e PCI DSS v4.0;; 2 = duas;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Caminho emergencial.** O que Nadia recomendou para as correções emergenciais? *Rubrica:* 3 = um caminho documentado com revisão em até dois dias úteis;; 2 = revisão posterior;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Risco das bibliotecas.** Por que as bibliotecas de código aberto são uma preocupação de governança? *Rubrica:* 3 = suas vulnerabilidades e licenças se tornam risco da Ardwell;; 2 = fornecedor;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -681,8 +681,8 @@ A ordem dos objetivos pode ser contestada. Na prática, as classificações se c
 ### Exercícios
 
 - **EX043 — Prioridade dos medidores.** Que objetivo importa mais para as leituras dos medidores? *Rubrica:* 3 = integridade;; 2 = integridade, sem justificativa;; 1 = confidencialidade;; 0 = nenhuma.
-- **EX044 — Partes do risco.** Que vulnerabilidade Nadia identificou no acesso de fornecedores? *Rubrica:* 3 = uma senha compartilhada;; 2 = senha compartilhada;; 1 = nada;; 0 = nenhuma.
-- **EX045 — Exemplo corretivo.** Dê o controle corretivo do acesso de fornecedores. *Rubrica:* 3 = procedimento testado para revogar o acesso durante incidentes;; 2 = revogar;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Partes do risco.** Que vulnerabilidade Nadia identificou no acesso de fornecedores? *Rubrica:* 3 = uma senha compartilhada;; 2 = senha compartilhada;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Exemplo corretivo.** Dê o controle corretivo do acesso de fornecedores. *Rubrica:* 3 = procedimento testado para revogar o acesso durante incidentes;; 2 = revogar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -720,8 +720,8 @@ As visões sistêmicas podem virar burocracia. A rastreabilidade exige manutenç
 
 ### Exercícios
 
-- **EX046 — Finalidade do programa.** Qual é a finalidade do programa de governança da Ardwell visto como sistema? *Rubrica:* 3 = manter o risco dentro do apetite e demonstrar compliance;; 2 = finalidade;; 1 = nada;; 0 = nenhuma.
-- **EX047 — Lacunas do rastreio.** Que lacunas uma matriz de rastreabilidade revela? *Rubrica:* 3 = requisitos sem controles e controles sem testes;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Finalidade do programa.** Qual é a finalidade do programa de governança da Ardwell visto como sistema? *Rubrica:* 3 = manter o risco dentro do apetite e demonstrar compliance;; 2 = finalidade;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Lacunas do rastreio.** Que lacunas uma matriz de rastreabilidade revela? *Rubrica:* 3 = requisitos sem controles e controles sem testes;; 2 = lacunas;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Etapa esquecida.** Que etapa do ciclo de vida costuma ser esquecida em controles e políticas? *Rubrica:* 3 = a desativação;; 2 = desativação;; 1 = desenho;; 0 = nenhuma.
 
 ### Síntese
@@ -760,9 +760,9 @@ As organizações não são sistemas lineares. Os indicadores podem ser manipula
 
 ### Exercícios
 
-- **EX049 — Setpoint.** O que atua como setpoint na malha de governança da Ardwell? *Rubrica:* 3 = o apetite a riscos do conselho;; 2 = apetite;; 1 = nada;; 0 = nenhuma.
-- **EX050 — Malha anual.** O que aconteceu com o backlog quando revisado anualmente em vez de trimestralmente? *Rubrica:* 3 = oscilou para mais longe da meta;; 2 = oscilações maiores;; 1 = nada;; 0 = nenhuma.
-- **EX051 — Remédio para a oscilação.** O que ajuda os gestores a evitar respostas oscilantes? *Rubrica:* 3 = regras de decisão proporcionais e documentadas;; 2 = regras;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Setpoint.** O que atua como setpoint na malha de governança da Ardwell? *Rubrica:* 3 = o apetite a riscos do conselho;; 2 = apetite;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Malha anual.** O que aconteceu com o backlog quando revisado anualmente em vez de trimestralmente? *Rubrica:* 3 = oscilou para mais longe da meta;; 2 = oscilações maiores;; 1 = vago;; 0 = nenhuma.
+- **EX051 — Remédio para a oscilação.** O que ajuda os gestores a evitar respostas oscilantes? *Rubrica:* 3 = regras de decisão proporcionais e documentadas;; 2 = regras;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -800,9 +800,9 @@ Os princípios podem entrar em conflito. Registros de decisão longos demais fic
 
 ### Exercícios
 
-- **EX052 — Lista de princípios.** Cite dois princípios de arquitetura de Nadia. *Rubrica:* 3 = minimizar o escopo dos dados sensíveis; intermediar o acesso externo;; 2 = princípios;; 1 = nada;; 0 = nenhuma.
-- **EX053 — Problema da plataforma.** O que havia de errado no projeto da plataforma de medição? *Rubrica:* 3 = nomes guardados com as leituras, acessíveis pelos notebooks do escritório;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
-- **EX054 — Conteúdo do registro.** O que contém um registro de decisão de arquitetura? *Rubrica:* 3 = contexto, decisão, alternativas e consequências;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Lista de princípios.** Cite dois princípios de arquitetura de Nadia. *Rubrica:* 3 = minimizar o escopo dos dados sensíveis; intermediar o acesso externo;; 2 = princípios;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Problema da plataforma.** O que havia de errado no projeto da plataforma de medição? *Rubrica:* 3 = nomes guardados com as leituras, acessíveis pelos notebooks do escritório;; 2 = escopo;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Conteúdo do registro.** O que contém um registro de decisão de arquitetura? *Rubrica:* 3 = contexto, decisão, alternativas e consequências;; 2 = quatro partes;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -841,8 +841,8 @@ A automação falha quando os dados de RH estão errados. Os inventários de cha
 ### Exercícios
 
 - **EX055 — Transição frágil.** Que transição de identidade é o ponto fraco da Ardwell? *Rubrica:* 3 = a movimentação;; 2 = quem muda de função;; 1 = desligamento;; 0 = nenhuma.
-- **EX056 — Regra de criptografia.** Que dados a classificação da Ardwell exige criptografar? *Rubrica:* 3 = dados de pagamento e dados pessoais em notebooks;; 2 = classificação;; 1 = nada;; 0 = nenhuma.
-- **EX057 — Risco do certificado.** Por que o certificado de um único engenheiro era um risco? *Rubrica:* 3 = sem backup nem controle de vencimento, poderia vencer sem ninguém notar;; 2 = responsável;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Regra de criptografia.** Que dados a classificação da Ardwell exige criptografar? *Rubrica:* 3 = dados de pagamento e dados pessoais em notebooks;; 2 = classificação;; 1 = vago;; 0 = nenhuma.
+- **EX057 — Risco do certificado.** Por que o certificado de um único engenheiro era um risco? *Rubrica:* 3 = sem backup nem controle de vencimento, poderia vencer sem ninguém notar;; 2 = responsável;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -880,8 +880,8 @@ As obrigações legais precisam de revisão jurídica. Os papéis variam entre o
 
 ### Exercícios
 
-- **EX058 — Papel da governança.** O que a governança define? *Rubrica:* 3 = direção, responsabilização e supervisão;; 2 = direção;; 1 = nada;; 0 = nenhuma.
-- **EX059 — Independência.** Por que quem opera os controles não deve julgar se eles funcionam? *Rubrica:* 3 = cria um conflito de interesses que enfraquece a garantia;; 2 = independência;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Papel da governança.** O que a governança define? *Rubrica:* 3 = direção, responsabilização e supervisão;; 2 = direção;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Independência.** Por que quem opera os controles não deve julgar se eles funcionam? *Rubrica:* 3 = cria um conflito de interesses que enfraquece a garantia;; 2 = independência;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Compulsório ou voluntário.** O alinhamento da Ardwell à ISO/IEC 27001:2022 é compulsório? *Rubrica:* 3 = não, é uma escolha do conselho;; 2 = voluntário;; 1 = compulsório;; 0 = nenhuma.
 
 ### Síntese
@@ -920,8 +920,8 @@ A redação testável pode perder a intenção. As prioridades mudam com os inci
 
 ### Exercícios
 
-- **EX061 — Do apetite ao requisito.** Que requisito decorreu da declaração de apetite de quatro horas? *Rubrica:* 3 = um requisito de recuperação para backups e sobressalentes do sistema de controle;; 2 = recuperação;; 1 = nada;; 0 = nenhuma.
-- **EX062 — Partes testáveis.** O que cada requisito testável nomeia? *Rubrica:* 3 = responsável, frequência, condição mensurável e evidência;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
+- **EX061 — Do apetite ao requisito.** Que requisito decorreu da declaração de apetite de quatro horas? *Rubrica:* 3 = um requisito de recuperação para backups e sobressalentes do sistema de controle;; 2 = recuperação;; 1 = vago;; 0 = nenhuma.
+- **EX062 — Partes testáveis.** O que cada requisito testável nomeia? *Rubrica:* 3 = responsável, frequência, condição mensurável e evidência;; 2 = quatro partes;; 1 = vago;; 0 = nenhuma.
 - **EX063 — Prioridade máxima.** Que requisitos ficaram no topo? *Rubrica:* 3 = segurança do fornecimento e obrigações contratuais de cartão;; 2 = segurança;; 1 = eficiência;; 0 = nenhuma.
 
 ### Síntese
@@ -960,9 +960,9 @@ Os modelos simplificam uma realidade bagunçada. A qualidade dos dados limita o 
 
 ### Exercícios
 
-- **EX064 — Lista de entidades.** Cite quatro entidades centrais do modelo. *Rubrica:* 3 = ativos, riscos, controles, obrigações;; 2 = entidades;; 1 = nada;; 0 = nenhuma.
-- **EX065 — Achados em cascata.** Por que um controle que falha pode gerar achados em várias auditorias? *Rubrica:* 3 = ele atende várias obrigações;; 2 = muitos-para-muitos;; 1 = nada;; 0 = nenhuma.
-- **EX066 — Consulta de exemplo.** Dê uma pergunta de governança que o modelo responde depressa. *Rubrica:* 3 = que riscos dependem só de controles que falharam nos testes;; 2 = consulta;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Lista de entidades.** Cite quatro entidades centrais do modelo. *Rubrica:* 3 = ativos, riscos, controles, obrigações;; 2 = entidades;; 1 = vago;; 0 = nenhuma.
+- **EX065 — Achados em cascata.** Por que um controle que falha pode gerar achados em várias auditorias? *Rubrica:* 3 = ele atende várias obrigações;; 2 = muitos-para-muitos;; 1 = vago;; 0 = nenhuma.
+- **EX066 — Consulta de exemplo.** Dê uma pergunta de governança que o modelo responde depressa. *Rubrica:* 3 = que riscos dependem só de controles que falharam nos testes;; 2 = consulta;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1000,9 +1000,9 @@ As listas de cenários nunca estão completas. A análise de falhas leva tempo.
 
 ### Exercícios
 
-- **EX067 — Partes do cenário.** Que partes cada cenário nomeia? *Rubrica:* 3 = fonte de ameaça, evento, vulnerabilidades e impacto;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
-- **EX068 — Falha oculta.** Que modo de falha da revisão de acessos ficava sem verificação? *Rubrica:* 3 = remoções aprovadas e nunca executadas;; 2 = acompanhamento;; 1 = nada;; 0 = nenhuma.
-- **EX069 — Risco combinado.** Por que um cenário que depende de um controle com modo de falha não detectado é mais arriscado? *Rubrica:* 3 = a defesa pode ter parado de funcionar em silêncio;; 2 = falha oculta;; 1 = nada;; 0 = nenhuma.
+- **EX067 — Partes do cenário.** Que partes cada cenário nomeia? *Rubrica:* 3 = fonte de ameaça, evento, vulnerabilidades e impacto;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
+- **EX068 — Falha oculta.** Que modo de falha da revisão de acessos ficava sem verificação? *Rubrica:* 3 = remoções aprovadas e nunca executadas;; 2 = acompanhamento;; 1 = vago;; 0 = nenhuma.
+- **EX069 — Risco combinado.** Por que um cenário que depende de um controle com modo de falha não detectado é mais arriscado? *Rubrica:* 3 = a defesa pode ter parado de funcionar em silêncio;; 2 = falha oculta;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1064,7 +1064,7 @@ A independência exagera o efeito combinado. As estimativas de eficácia são su
 ### Exercícios
 
 - **EX070 — Definição de residual.** Como o risco residual difere do inerente? *Rubrica:* 3 = é o que resta depois dos controles;; 2 = depois dos controles;; 1 = antes;; 0 = nenhuma.
-- **EX071 — Residual do ransomware.** Quanto os controles reduziram a perda do ransomware no laboratório? *Rubrica:* 3 = 76%, para 21,6 mil;; 2 = 76%;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Residual do ransomware.** Quanto os controles reduziram a perda do ransomware no laboratório? *Rubrica:* 3 = 76%, para 21,6 mil;; 2 = 76%;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Maior residual.** Que risco teve a maior perda residual, e por quê? *Rubrica:* 3 = mau uso por fornecedores, 80 mil, sem tratamento;; 2 = fornecedores;; 1 = ransomware;; 0 = nenhuma.
 
 ### Síntese
@@ -1103,9 +1103,9 @@ Os projetos de ateliê pulam o detalhamento de custos. As entrevistas com as par
 
 ### Exercícios
 
-- **EX073 — O que as partes querem.** O que o engenheiro de controle queria? *Rubrica:* 3 = fornecedores conectados em minutos durante as interrupções;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
-- **EX074 — Limite da sessão.** Quanto tempo uma sessão de fornecedor pode durar antes de terminar automaticamente? *Rubrica:* 3 = quatro horas;; 2 = 4 h;; 1 = nada;; 0 = nenhuma.
-- **EX075 — Revisão das gravações.** Como as gravações serão revisadas? *Rubrica:* 3 = amostra mensal de dez por cento, com foco nas emergências;; 2 = amostragem;; 1 = nada;; 0 = nenhuma.
+- **EX073 — O que as partes querem.** O que o engenheiro de controle queria? *Rubrica:* 3 = fornecedores conectados em minutos durante as interrupções;; 2 = rapidez;; 1 = vago;; 0 = nenhuma.
+- **EX074 — Limite da sessão.** Quanto tempo uma sessão de fornecedor pode durar antes de terminar automaticamente? *Rubrica:* 3 = quatro horas;; 2 = 4 h;; 1 = vago;; 0 = nenhuma.
+- **EX075 — Revisão das gravações.** Como as gravações serão revisadas? *Rubrica:* 3 = amostra mensal de dez por cento, com foco nas emergências;; 2 = amostragem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1143,7 +1143,7 @@ Os pesos refletem opiniões. As alegações dos fornecedores precisam ser verifi
 
 ### Exercícios
 
-- **EX076 — Três opções.** Quais são as três alternativas? *Rubrica:* 3 = planilhas com scripts, plataforma comercial, ferramentas baseadas em tickets;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX076 — Três opções.** Quais são as três alternativas? *Rubrica:* 3 = planilhas com scripts, plataforma comercial, ferramentas baseadas em tickets;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX077 — Critérios mais pesados.** Que critérios receberam os maiores pesos? *Rubrica:* 3 = integridade dos dados e esforço dos responsáveis;; 2 = integridade;; 1 = custo;; 0 = nenhuma.
 - **EX078 — Nota de sensibilidade.** O que uma ponderação que favorecesse os relatórios ao conselho teria escolhido? *Rubrica:* 3 = a plataforma comercial;; 2 = plataforma;; 1 = planilhas;; 0 = nenhuma.
 
@@ -1183,9 +1183,9 @@ Os catálogos são genéricos. As descrições podem retratar a intenção, e n�
 
 ### Exercícios
 
-- **EX079 — Papel do objetivo.** Por que todo controle deve começar por um objetivo? *Rubrica:* 3 = para continuar ligado ao risco que reduz;; 2 = objetivo;; 1 = nada;; 0 = nenhuma.
-- **EX080 — Registro da seleção.** Com que documento da ISO/IEC 27001:2022 o registro da seleção se parece? *Rubrica:* 3 = a declaração de aplicabilidade;; 2 = SoA;; 1 = nada;; 0 = nenhuma.
-- **EX081 — Teste da descrição.** Como Nadia confere uma descrição de controle? *Rubrica:* 3 = um testador independente conseguiria verificá-lo só com a descrição;; 2 = testabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX079 — Papel do objetivo.** Por que todo controle deve começar por um objetivo? *Rubrica:* 3 = para continuar ligado ao risco que reduz;; 2 = objetivo;; 1 = vago;; 0 = nenhuma.
+- **EX080 — Registro da seleção.** Com que documento da ISO/IEC 27001:2022 o registro da seleção se parece? *Rubrica:* 3 = a declaração de aplicabilidade;; 2 = SoA;; 1 = vago;; 0 = nenhuma.
+- **EX081 — Teste da descrição.** Como Nadia confere uma descrição de controle? *Rubrica:* 3 = um testador independente conseguiria verificá-lo só com a descrição;; 2 = testabilidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1223,9 +1223,9 @@ Os planos encontram surpresas. Os controles compensatórios podem se tornar perm
 
 ### Exercícios
 
-- **EX082 — Fase um.** O que a fase um cobre? *Rubrica:* 3 = levar ao broker os dois fornecedores de maior risco;; 2 = dois fornecedores;; 1 = nada;; 0 = nenhuma.
-- **EX083 — Aprovações noturnas.** Como a fadiga de aprovações à noite foi tratada? *Rubrica:* 3 = janelas de manutenção pré-aprovadas;; 2 = janelas;; 1 = nada;; 0 = nenhuma.
-- **EX084 — Controle compensatório.** Que controle compensatório cobriu o fornecedor cujo equipamento não podia usar o broker? *Rubrica:* 3 = sessões supervisionadas com um engenheiro da Ardwell;; 2 = supervisão;; 1 = nada;; 0 = nenhuma.
+- **EX082 — Fase um.** O que a fase um cobre? *Rubrica:* 3 = levar ao broker os dois fornecedores de maior risco;; 2 = dois fornecedores;; 1 = vago;; 0 = nenhuma.
+- **EX083 — Aprovações noturnas.** Como a fadiga de aprovações à noite foi tratada? *Rubrica:* 3 = janelas de manutenção pré-aprovadas;; 2 = janelas;; 1 = vago;; 0 = nenhuma.
+- **EX084 — Controle compensatório.** Que controle compensatório cobriu o fornecedor cujo equipamento não podia usar o broker? *Rubrica:* 3 = sessões supervisionadas com um engenheiro da Ardwell;; 2 = supervisão;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1287,9 +1287,9 @@ Os agregados escondem as áreas fracas. As medidas convidam à manipulação.
 
 ### Exercícios
 
-- **EX085 — Tipos de medida.** Que três tipos de medida Nadia separou? *Rubrica:* 3 = atividade, desempenho e resultado;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX085 — Tipos de medida.** Que três tipos de medida Nadia separou? *Rubrica:* 3 = atividade, desempenho e resultado;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX086 — Famílias vermelhas.** Que duas famílias de controles ficaram em vermelho? *Rubrica:* 3 = patching 78% e mudanças 72%;; 2 = duas vermelhas;; 1 = backup;; 0 = nenhuma.
-- **EX087 — Risco do agregado.** Por que os 85% gerais enganam? *Rubrica:* 3 = escondem duas famílias vermelhas;; 2 = escondem;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Risco do agregado.** Por que os 85% gerais enganam? *Rubrica:* 3 = escondem duas famílias vermelhas;; 2 = escondem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1327,9 +1327,9 @@ As cópias de laboratório diferem da produção. Os testes cobrem só os casos 
 
 ### Exercícios
 
-- **EX088 — Cópia de laboratório.** Por que testar numa cópia de laboratório? *Rubrica:* 3 = para não perturbar a produção;; 2 = segurança;; 1 = nada;; 0 = nenhuma.
-- **EX089 — Campos da evidência.** O que Nadia registra para cada teste? *Rubrica:* 3 = data, testador, passos, resultado e artefatos;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
-- **EX090 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = uma sessão aprovada conseguia alcançar um segundo dispositivo;; 2 = roteamento;; 1 = nada;; 0 = nenhuma.
+- **EX088 — Cópia de laboratório.** Por que testar numa cópia de laboratório? *Rubrica:* 3 = para não perturbar a produção;; 2 = segurança;; 1 = vago;; 0 = nenhuma.
+- **EX089 — Campos da evidência.** O que Nadia registra para cada teste? *Rubrica:* 3 = data, testador, passos, resultado e artefatos;; 2 = evidência;; 1 = vago;; 0 = nenhuma.
+- **EX090 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = uma sessão aprovada conseguia alcançar um segundo dispositivo;; 2 = roteamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1367,9 +1367,9 @@ Os lembretes causam fadiga. As exceções costumam ser renovadas por hábito.
 
 ### Exercícios
 
-- **EX091 — Achados da migração.** O que a migração revelou? *Rubrica:* 3 = doze controles sem responsável e três obsoletos;; 2 = limpeza;; 1 = nada;; 0 = nenhuma.
-- **EX092 — Regra de escalonamento.** Quando as tarefas vencidas sobem para os gestores? *Rubrica:* 3 = depois de cinco dias;; 2 = cinco dias;; 1 = nada;; 0 = nenhuma.
-- **EX093 — Vencimento das exceções.** Por que as exceções precisam vencer? *Rubrica:* 3 = para forçar um novo raciocínio e manter o risco visível;; 2 = renovação;; 1 = nada;; 0 = nenhuma.
+- **EX091 — Achados da migração.** O que a migração revelou? *Rubrica:* 3 = doze controles sem responsável e três obsoletos;; 2 = limpeza;; 1 = vago;; 0 = nenhuma.
+- **EX092 — Regra de escalonamento.** Quando as tarefas vencidas sobem para os gestores? *Rubrica:* 3 = depois de cinco dias;; 2 = cinco dias;; 1 = vago;; 0 = nenhuma.
+- **EX093 — Vencimento das exceções.** Por que as exceções precisam vencer? *Rubrica:* 3 = para forçar um novo raciocínio e manter o risco visível;; 2 = renovação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1427,8 +1427,8 @@ As taxas de causa comum são difíceis de estimar. A separação acrescenta cust
 
 ### Exercícios
 
-- **EX094 — Conjunta independente.** Qual é a probabilidade de falha conjunta para camadas independentes? *Rubrica:* 3 = 0,50%;; 2 = 0,005;; 1 = nada;; 0 = nenhuma.
-- **EX095 — Conjunta com causa comum.** Qual é a probabilidade de falha conjunta com uma causa comum de 2%? *Rubrica:* 3 = 2,49%;; 2 = cerca de cinco vezes;; 1 = nada;; 0 = nenhuma.
+- **EX094 — Conjunta independente.** Qual é a probabilidade de falha conjunta para camadas independentes? *Rubrica:* 3 = 0,50%;; 2 = 0,005;; 1 = vago;; 0 = nenhuma.
+- **EX095 — Conjunta com causa comum.** Qual é a probabilidade de falha conjunta com uma causa comum de 2%? *Rubrica:* 3 = 2,49%;; 2 = cerca de cinco vezes;; 1 = vago;; 0 = nenhuma.
 - **EX096 — Melhor correção.** O que mais reduz a falha conjunta? *Rubrica:* 3 = remover a dependência compartilhada;; 2 = independência;; 1 = uma camada mais forte;; 0 = nenhuma.
 
 ### Síntese
@@ -1467,9 +1467,9 @@ Os testes são cenários ensaiados. As crises reais trazem surpresas.
 
 ### Exercícios
 
-- **EX097 — Meta do conselho.** Qual é a meta real de resiliência da Ardwell? *Rubrica:* 3 = manter a energia fluindo e restabelecer os serviços depressa;; 2 = resiliência;; 1 = nada;; 0 = nenhuma.
-- **EX098 — Lacuna da restauração.** Como o teste de restauração do faturamento se comparou à meta? *Rubrica:* 3 = nove horas contra oito;; 2 = uma hora acima;; 1 = nada;; 0 = nenhuma.
-- **EX099 — Propósito do teste.** Por que os primeiros testes de recuperação que falham são valiosos? *Rubrica:* 3 = revelam lacunas a fechar;; 2 = aprendizado;; 1 = nada;; 0 = nenhuma.
+- **EX097 — Meta do conselho.** Qual é a meta real de resiliência da Ardwell? *Rubrica:* 3 = manter a energia fluindo e restabelecer os serviços depressa;; 2 = resiliência;; 1 = vago;; 0 = nenhuma.
+- **EX098 — Lacuna da restauração.** Como o teste de restauração do faturamento se comparou à meta? *Rubrica:* 3 = nove horas contra oito;; 2 = uma hora acima;; 1 = vago;; 0 = nenhuma.
+- **EX099 — Propósito do teste.** Por que os primeiros testes de recuperação que falham são valiosos? *Rubrica:* 3 = revelam lacunas a fechar;; 2 = aprendizado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1507,9 +1507,9 @@ As escalas comuns podem apagar distinções. A integração exige esforço polí
 
 ### Exercícios
 
-- **EX100 — Benefício da integração.** O que a integração dos registros permite ao conselho? *Rubrica:* 3 = comparar o risco cibernético com os demais em pé de igualdade;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
-- **EX101 — Exemplo de tradução.** Como um cenário de ransomware foi traduzido para finanças? *Rubrica:* 3 = disrupção operacional com faixa de impacto financeiro e obrigação de comunicação;; 2 = tradução;; 1 = nada;; 0 = nenhuma.
-- **EX102 — Fracasso da integração.** Quando a integração fracassa? *Rubrica:* 3 = quando uma equipe toma o trabalho de outra;; 2 = tomada;; 1 = nada;; 0 = nenhuma.
+- **EX100 — Benefício da integração.** O que a integração dos registros permite ao conselho? *Rubrica:* 3 = comparar o risco cibernético com os demais em pé de igualdade;; 2 = comparação;; 1 = vago;; 0 = nenhuma.
+- **EX101 — Exemplo de tradução.** Como um cenário de ransomware foi traduzido para finanças? *Rubrica:* 3 = disrupção operacional com faixa de impacto financeiro e obrigação de comunicação;; 2 = tradução;; 1 = vago;; 0 = nenhuma.
+- **EX102 — Fracasso da integração.** Quando a integração fracassa? *Rubrica:* 3 = quando uma equipe toma o trabalho de outra;; 2 = tomada;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1547,9 +1547,9 @@ Voluntários não são conselheiros reais. Pacotes curtos omitem detalhes.
 
 ### Exercícios
 
-- **EX103 — O que os conselheiros querem.** O que os dois conselheiros entrevistados queriam? *Rubrica:* 3 = a direção da tendência e as decisões solicitadas;; 2 = tendência e decisões;; 1 = nada;; 0 = nenhuma.
-- **EX104 — Evitar a matriz.** Por que a equipe evitou mapas de calor sem números? *Rubrica:* 3 = Cox (2008) mostra que as matrizes de risco podem enganar;; 2 = Cox;; 1 = nada;; 0 = nenhuma.
-- **EX105 — Correção da seta.** Como a seta de tendência mal interpretada foi corrigida? *Rubrica:* 3 = setas com rótulos escritos;; 2 = rótulos;; 1 = nada;; 0 = nenhuma.
+- **EX103 — O que os conselheiros querem.** O que os dois conselheiros entrevistados queriam? *Rubrica:* 3 = a direção da tendência e as decisões solicitadas;; 2 = tendência e decisões;; 1 = vago;; 0 = nenhuma.
+- **EX104 — Evitar a matriz.** Por que a equipe evitou mapas de calor sem números? *Rubrica:* 3 = Cox (2008) mostra que as matrizes de risco podem enganar;; 2 = Cox;; 1 = vago;; 0 = nenhuma.
+- **EX105 — Correção da seta.** Como a seta de tendência mal interpretada foi corrigida? *Rubrica:* 3 = setas com rótulos escritos;; 2 = rótulos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1587,9 +1587,9 @@ As estimativas de horas são aproximadas. A automação pode falhar em silêncio
 
 ### Exercícios
 
-- **EX106 — Esforço total.** Quanto esforço, aproximadamente, o programa exige? *Rubrica:* 3 = cerca de dois funcionários em tempo integral;; 2 = dois FTE;; 1 = nada;; 0 = nenhuma.
-- **EX107 — Pessoa-gargalo.** Quem é o gargalo à medida que a Ardwell cresce? *Rubrica:* 3 = a única analista de segurança que confere as evidências;; 2 = analista;; 1 = nada;; 0 = nenhuma.
-- **EX108 — Foco humano.** Para onde deve ir a atenção humana depois que as evidências forem automatizadas? *Rubrica:* 3 = decisões, exceções e tarefas de julgamento;; 2 = julgamento;; 1 = nada;; 0 = nenhuma.
+- **EX106 — Esforço total.** Quanto esforço, aproximadamente, o programa exige? *Rubrica:* 3 = cerca de dois funcionários em tempo integral;; 2 = dois FTE;; 1 = vago;; 0 = nenhuma.
+- **EX107 — Pessoa-gargalo.** Quem é o gargalo à medida que a Ardwell cresce? *Rubrica:* 3 = a única analista de segurança que confere as evidências;; 2 = analista;; 1 = vago;; 0 = nenhuma.
+- **EX108 — Foco humano.** Para onde deve ir a atenção humana depois que as evidências forem automatizadas? *Rubrica:* 3 = decisões, exceções e tarefas de julgamento;; 2 = julgamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1627,7 +1627,7 @@ O encerramento verificado atrasa os relatórios. As revisões podem virar rotina
 
 ### Exercícios
 
-- **EX109 — Ritmo como controle.** Por que o ritmo semanal é, ele mesmo, um controle? *Rubrica:* 3 = quando ele falha, os problemas se acumulam sem ninguém ver;; 2 = ritmo;; 1 = nada;; 0 = nenhuma.
+- **EX109 — Ritmo como controle.** Por que o ritmo semanal é, ele mesmo, um controle? *Rubrica:* 3 = quando ele falha, os problemas se acumulam sem ninguém ver;; 2 = ritmo;; 1 = vago;; 0 = nenhuma.
 - **EX110 — Regra de encerramento.** Quem pode encerrar achados pela regra de Nadia? *Rubrica:* 3 = só a analista de segurança, depois de conferir a evidência;; 2 = analista;; 1 = responsável;; 0 = nenhuma.
 - **EX111 — Falhas repetidas.** O que as falhas repetidas de patch nas subestações acabaram sendo? *Rubrica:* 3 = um problema de projeto que levou à substituição dos dispositivos;; 2 = projeto;; 1 = responsável;; 0 = nenhuma.
 
@@ -1692,9 +1692,9 @@ Amostras aleatórias deixam escapar padrões raros. A validação cobre só os a
 
 ### Exercícios
 
-- **EX112 — Sentido da validação.** O que a validação pergunta que a verificação não pergunta? *Rubrica:* 3 = se o controle atinge seu propósito na operação ao longo do tempo;; 2 = operação;; 1 = nada;; 0 = nenhuma.
+- **EX112 — Sentido da validação.** O que a validação pergunta que a verificação não pergunta? *Rubrica:* 3 = se o controle atinge seu propósito na operação ao longo do tempo;; 2 = operação;; 1 = vago;; 0 = nenhuma.
 - **EX113 — Amostra mínima.** Quantos registros limpos dão um limite superior de 5%? *Rubrica:* 3 = cinquenta e nove;; 2 = 59;; 1 = 25;; 0 = nenhuma.
-- **EX114 — Estrato separado.** Por que conferir separadamente as sessões emergenciais? *Rubrica:* 3 = seguem outro caminho e poderiam esconder problemas;; 2 = estratos;; 1 = nada;; 0 = nenhuma.
+- **EX114 — Estrato separado.** Por que conferir separadamente as sessões emergenciais? *Rubrica:* 3 = seguem outro caminho e poderiam esconder problemas;; 2 = estratos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1732,9 +1732,9 @@ Os gatilhos são esquecidos. As notas de passagem ficam incompletas.
 
 ### Exercícios
 
-- **EX115 — Gatilhos de revisão.** O que dispara a revisão antecipada dos documentos de governança? *Rubrica:* 3 = grandes mudanças de sistema ou incidentes;; 2 = gatilhos;; 1 = nada;; 0 = nenhuma.
-- **EX116 — Mudança do CSF.** O que o NIST CSF 2.0 acrescentou? *Rubrica:* 3 = a função Govern;; 2 = Govern;; 1 = nada;; 0 = nenhuma.
-- **EX117 — Medida de passagem.** Que medida protege contra a perda do conhecimento da gestora que se aposenta? *Rubrica:* 3 = notas sobre as decisões e uma passagem em dupla de dois meses;; 2 = passagem;; 1 = nada;; 0 = nenhuma.
+- **EX115 — Gatilhos de revisão.** O que dispara a revisão antecipada dos documentos de governança? *Rubrica:* 3 = grandes mudanças de sistema ou incidentes;; 2 = gatilhos;; 1 = vago;; 0 = nenhuma.
+- **EX116 — Mudança do CSF.** O que o NIST CSF 2.0 acrescentou? *Rubrica:* 3 = a função Govern;; 2 = Govern;; 1 = vago;; 0 = nenhuma.
+- **EX117 — Medida de passagem.** Que medida protege contra a perda do conhecimento da gestora que se aposenta? *Rubrica:* 3 = notas sobre as decisões e uma passagem em dupla de dois meses;; 2 = passagem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1772,8 +1772,8 @@ As suítes de regressão envelhecem. Nem toda mudança dispara os testes.
 
 ### Exercícios
 
-- **EX118 — Regressão de agendamento.** O que a atualização quebrou? *Rubrica:* 3 = tarefas trimestrais viraram anuais;; 2 = frequência;; 1 = nada;; 0 = nenhuma.
-- **EX119 — Defeito do relatório.** Que erro de relatório Nadia encontrou? *Rubrica:* 3 = achados reabertos contados duas vezes;; 2 = contagem dupla;; 1 = nada;; 0 = nenhuma.
+- **EX118 — Regressão de agendamento.** O que a atualização quebrou? *Rubrica:* 3 = tarefas trimestrais viraram anuais;; 2 = frequência;; 1 = vago;; 0 = nenhuma.
+- **EX119 — Defeito do relatório.** Que erro de relatório Nadia encontrou? *Rubrica:* 3 = achados reabertos contados duas vezes;; 2 = contagem dupla;; 1 = vago;; 0 = nenhuma.
 - **EX120 — Princípio da verificação.** Que princípio o laboratório ilustra? *Rubrica:* 3 = a verificação precisa ser repetida sempre que o sistema muda;; 2 = repetir;; 1 = evento único;; 0 = nenhuma.
 
 ### Síntese
@@ -1839,7 +1839,7 @@ As estimativas são incertas. As interações entre os controles são ignoradas.
 
 - **EX121 — Melhor conjunto.** Que controles formam o melhor conjunto? *Rubrica:* 3 = MFA, backups offline e tokenização de cartões;; 2 = três;; 1 = broker;; 0 = nenhuma.
 - **EX122 — Custo do melhor.** A que custo o melhor conjunto entrega sua redução de 630 mil? *Rubrica:* 3 = 190 mil;; 2 = 190;; 1 = 200;; 0 = nenhuma.
-- **EX123 — Valor do investimento.** Segundo Gordon e Loeb, o que determina o valor do investimento em segurança? *Rubrica:* 3 = vulnerabilidade e perda potencial;; 2 = não só o custo;; 1 = nada;; 0 = nenhuma.
+- **EX123 — Valor do investimento.** Segundo Gordon e Loeb, o que determina o valor do investimento em segurança? *Rubrica:* 3 = vulnerabilidade e perda potencial;; 2 = não só o custo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1877,9 +1877,9 @@ Desenhos antes e depois confundem efeitos de época. As atas são registros inco
 
 ### Exercícios
 
-- **EX124 — Desfechos medidos.** Que desfechos Nadia mede? *Rubrica:* 3 = decisões por trimestre, tempo até a decisão e alinhamento com os maiores riscos;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX125 — Viés próprio.** Por que o papel da própria Nadia é uma ameaça à validade? *Rubrica:* 3 = ela ajudou a projetar o novo pacote;; 2 = viés;; 1 = nada;; 0 = nenhuma.
-- **EX126 — Lacuna de evidência.** O que falta nas evidências publicadas? *Rubrica:* 3 = medição direta das decisões dos conselhos;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+- **EX124 — Desfechos medidos.** Que desfechos Nadia mede? *Rubrica:* 3 = decisões por trimestre, tempo até a decisão e alinhamento com os maiores riscos;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX125 — Viés próprio.** Por que o papel da própria Nadia é uma ameaça à validade? *Rubrica:* 3 = ela ajudou a projetar o novo pacote;; 2 = viés;; 1 = vago;; 0 = nenhuma.
+- **EX126 — Lacuna de evidência.** O que falta nas evidências publicadas? *Rubrica:* 3 = medição direta das decisões dos conselhos;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1917,9 +1917,9 @@ Um estágio é um único contexto. As observações podem ser seletivas.
 
 ### Exercícios
 
-- **EX127 — Lacuna documental.** Que lacuna Nadia encontrou entre os documentos e a prática? *Rubrica:* 3 = alguns controles funcionam sem documentação, outros estão documentados mas raramente são feitos;; 2 = descompasso;; 1 = nada;; 0 = nenhuma.
-- **EX128 — Foco do estágio um.** Sobre o que os auditores perguntaram no estágio um? *Rubrica:* 3 = como as decisões de aceitação de riscos são tomadas e aprovadas;; 2 = aceitação;; 1 = nada;; 0 = nenhuma.
-- **EX129 — Foco do regulador.** Como o foco do regulador diferia do da certificação? *Rubrica:* 3 = resultados como restabelecimento e comunicação, contra processos;; 2 = resultados;; 1 = nada;; 0 = nenhuma.
+- **EX127 — Lacuna documental.** Que lacuna Nadia encontrou entre os documentos e a prática? *Rubrica:* 3 = alguns controles funcionam sem documentação, outros estão documentados mas raramente são feitos;; 2 = descompasso;; 1 = vago;; 0 = nenhuma.
+- **EX128 — Foco do estágio um.** Sobre o que os auditores perguntaram no estágio um? *Rubrica:* 3 = como as decisões de aceitação de riscos são tomadas e aprovadas;; 2 = aceitação;; 1 = vago;; 0 = nenhuma.
+- **EX129 — Foco do regulador.** Como o foco do regulador diferia do da certificação? *Rubrica:* 3 = resultados como restabelecimento e comunicação, contra processos;; 2 = resultados;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1957,9 +1957,9 @@ Os escopos crescem. As pesquisas medem percepção, não tempo.
 
 ### Exercícios
 
-- **EX130 — Controles excluídos.** Que controles ficam fora do escopo? *Rubrica:* 3 = os que exigem julgamento humano;; 2 = julgamento;; 1 = nada;; 0 = nenhuma.
-- **EX131 — Critério de cobertura.** Qual é o critério de sucesso de cobertura de evidências? *Rubrica:* 3 = pelo menos dezoito de vinte controles automatizados;; 2 = 18/20;; 1 = nada;; 0 = nenhuma.
-- **EX132 — Risco dos alertas.** Como Nadia responde ao risco de os responsáveis ignorarem os alertas? *Rubrica:* 3 = envolvendo os responsáveis no desenho dos alertas;; 2 = envolvimento;; 1 = nada;; 0 = nenhuma.
+- **EX130 — Controles excluídos.** Que controles ficam fora do escopo? *Rubrica:* 3 = os que exigem julgamento humano;; 2 = julgamento;; 1 = vago;; 0 = nenhuma.
+- **EX131 — Critério de cobertura.** Qual é o critério de sucesso de cobertura de evidências? *Rubrica:* 3 = pelo menos dezoito de vinte controles automatizados;; 2 = 18/20;; 1 = vago;; 0 = nenhuma.
+- **EX132 — Risco dos alertas.** Como Nadia responde ao risco de os responsáveis ignorarem os alertas? *Rubrica:* 3 = envolvendo os responsáveis no desenho dos alertas;; 2 = envolvimento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1997,9 +1997,9 @@ Os revisores têm tempo limitado. Os itens adiados podem ser esquecidos.
 
 ### Exercícios
 
-- **EX133 — Exemplo de premissa.** Que premissa Nadia declarou explicitamente? *Rubrica:* 3 = os sistemas de origem informam timestamps corretos;; 2 = timestamps;; 1 = nada;; 0 = nenhuma.
+- **EX133 — Exemplo de premissa.** Que premissa Nadia declarou explicitamente? *Rubrica:* 3 = os sistemas de origem informam timestamps corretos;; 2 = timestamps;; 1 = vago;; 0 = nenhuma.
 - **EX134 — Correção do silêncio.** Como foi corrigida a falha do silêncio tratado como sucesso? *Rubrica:* 3 = a evidência ausente dispara um alerta e conta como coleta falha;; 2 = falhar fechado;; 1 = aprovação;; 0 = nenhuma.
-- **EX135 — Medidas de integridade.** O que protege as evidências contra manipulação? *Rubrica:* 3 = hash e armazenamento que as equipes monitoradas não conseguem alterar;; 2 = hash;; 1 = nada;; 0 = nenhuma.
+- **EX135 — Medidas de integridade.** O que protege as evidências contra manipulação? *Rubrica:* 3 = hash e armazenamento que as equipes monitoradas não conseguem alterar;; 2 = hash;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2038,8 +2038,8 @@ Dois meses é pouco tempo. As respostas da pesquisa são autodeclaradas.
 ### Exercícios
 
 - **EX136 — Resultado de cobertura.** Quantos controles tinham evidência automatizada? *Rubrica:* 3 = dezenove de vinte;; 2 = 19;; 1 = 20;; 0 = nenhuma.
-- **EX137 — Controle manual.** Por que um controle continuou manual? *Rubrica:* 3 = seu sistema de fornecedor não tem exportação;; 2 = sem exportação;; 1 = nada;; 0 = nenhuma.
-- **EX138 — Itens da entrega.** Que itens Nadia entregou? *Rubrica:* 3 = runbook, responsáveis pelos coletores, casos de teste e problemas conhecidos;; 2 = entrega;; 1 = nada;; 0 = nenhuma.
+- **EX137 — Controle manual.** Por que um controle continuou manual? *Rubrica:* 3 = seu sistema de fornecedor não tem exportação;; 2 = sem exportação;; 1 = vago;; 0 = nenhuma.
+- **EX138 — Itens da entrega.** Que itens Nadia entregou? *Rubrica:* 3 = runbook, responsáveis pelos coletores, casos de teste e problemas conhecidos;; 2 = entrega;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2077,8 +2077,8 @@ Ensaios anunciados diferem de falhas reais. As verificações diárias acrescent
 
 ### Exercícios
 
-- **EX139 — Falhas injetadas.** Que três falhas foram injetadas? *Rubrica:* 3 = travamento do coletor, origem indisponível, arquivo de evidência alterado;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX140 — Detecção lenta.** Que falha foi detectada lentamente? *Rubrica:* 3 = o arquivo de evidência alterado, na verificação semanal;; 2 = adulteração;; 1 = nada;; 0 = nenhuma.
+- **EX139 — Falhas injetadas.** Que três falhas foram injetadas? *Rubrica:* 3 = travamento do coletor, origem indisponível, arquivo de evidência alterado;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX140 — Detecção lenta.** Que falha foi detectada lentamente? *Rubrica:* 3 = o arquivo de evidência alterado, na verificação semanal;; 2 = adulteração;; 1 = vago;; 0 = nenhuma.
 - **EX141 — Mudança na verificação.** Com que frequência as verificações de integridade rodam depois do ensaio? *Rubrica:* 3 = diariamente;; 2 = diária;; 1 = semanal;; 0 = nenhuma.
 
 ### Síntese
@@ -2140,8 +2140,8 @@ Os digests provam a mudança, não a intenção. Os manifestos também precisam 
 
 ### Exercícios
 
-- **EX142 — Dossiê como argumento.** Por que um dossiê é um argumento, e não uma pilha de arquivos? *Rubrica:* 3 = permite ao leitor rastrear as afirmações até as evidências;; 2 = rastreabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX143 — Arquivo divergente.** Que arquivo mostrou divergência? *Rubrica:* 3 = control_tests.csv;; 2 = resultados dos testes;; 1 = nada;; 0 = nenhuma.
+- **EX142 — Dossiê como argumento.** Por que um dossiê é um argumento, e não uma pilha de arquivos? *Rubrica:* 3 = permite ao leitor rastrear as afirmações até as evidências;; 2 = rastreabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX143 — Arquivo divergente.** Que arquivo mostrou divergência? *Rubrica:* 3 = control_tests.csv;; 2 = resultados dos testes;; 1 = vago;; 0 = nenhuma.
 - **EX144 — Tratamento correto.** Como um novo teste deve ser registrado? *Rubrica:* 3 = como evidência nova, com data própria;; 2 = acrescentar;; 1 = editar no arquivo;; 0 = nenhuma.
 
 ### Síntese
@@ -2180,9 +2180,9 @@ Estudos de uma só organização limitam a generalização. O fator de confusão
 
 ### Exercícios
 
-- **EX145 — Achado do conselho.** O que o estudo do conselho encontrou, e por que é incerto? *Rubrica:* 3 = mais decisões, mas um incidente grave também provocou ação;; 2 = confundido;; 1 = nada;; 0 = nenhuma.
-- **EX146 — Lista de contribuições.** Cite uma das três contribuições de Nadia. *Rubrica:* 3 = projeto testado de monitoramento contínuo de baixo custo;; 2 = contribuição;; 1 = nada;; 0 = nenhuma.
-- **EX147 — Limites da tese.** Liste dois limites da tese. *Rubrica:* 3 = uma única organização e período curto de operação;; 2 = limites;; 1 = nada;; 0 = nenhuma.
+- **EX145 — Achado do conselho.** O que o estudo do conselho encontrou, e por que é incerto? *Rubrica:* 3 = mais decisões, mas um incidente grave também provocou ação;; 2 = confundido;; 1 = vago;; 0 = nenhuma.
+- **EX146 — Lista de contribuições.** Cite uma das três contribuições de Nadia. *Rubrica:* 3 = projeto testado de monitoramento contínuo de baixo custo;; 2 = contribuição;; 1 = vago;; 0 = nenhuma.
+- **EX147 — Limites da tese.** Liste dois limites da tese. *Rubrica:* 3 = uma única organização e período curto de operação;; 2 = limites;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2220,9 +2220,9 @@ As defesas amostram o conhecimento. As reflexões podem ser idealizadas.
 
 ### Exercícios
 
-- **EX148 — Resposta sobre acomodação.** Como Nadia respondeu à preocupação com a acomodação dos responsáveis? *Rubrica:* 3 = os responsáveis continuam revisando exceções e a analista amostra;; 2 = supervisão;; 1 = nada;; 0 = nenhuma.
+- **EX148 — Resposta sobre acomodação.** Como Nadia respondeu à preocupação com a acomodação dos responsáveis? *Rubrica:* 3 = os responsáveis continuam revisando exceções e a analista amostra;; 2 = supervisão;; 1 = vago;; 0 = nenhuma.
 - **EX149 — Confiança da auditoria.** O serviço substitui os testes da auditoria externa? *Rubrica:* 3 = não, apoia, mas não substitui;; 2 = não;; 1 = sim;; 0 = nenhuma.
-- **EX150 — Plano de carreira.** O que Nadia planeja depois de se formar? *Rubrica:* 3 = entrar na equipe de governança da Ardwell;; 2 = Ardwell;; 1 = nada;; 0 = nenhuma.
+- **EX150 — Plano de carreira.** O que Nadia planeja depois de se formar? *Rubrica:* 3 = entrar na equipe de governança da Ardwell;; 2 = Ardwell;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

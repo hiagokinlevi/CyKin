@@ -119,7 +119,7 @@ Uniform counting assumes values are equally likely; real attributes cluster.
 
 - **EX004 — Combination count.** Why do many patients sit alone in their combination? *Rubric:* 3 = combinations vastly outnumber patients;; 2 = mentions numbers;; 1 = wrong;; 0 = none.
 - **EX005 — Innermost set.** Why does most Pellmore data fall in the health-data subset? *Rubric:* 3 = even appointments reveal that someone sought medical care;; 2 = mentions health;; 1 = says only records;; 0 = none.
-- **EX006 — Missing edges.** What does a missing edge in the data-flow graph usually mean? *Rubric:* 3 = an undocumented flow that is not managed;; 2 = mentions error;; 1 = nothing;; 0 = none.
+- **EX006 — Missing edges.** What does a missing edge in the data-flow graph usually mean? *Rubric:* 3 = an undocumented flow that is not managed;; 2 = mentions error;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -167,7 +167,7 @@ Cryptographic erasure depends on keys never being copied in plaintext; key manag
 
 - **EX007 — Pointer deletion.** Why does deleting a file often fail to erase the data? *Rubric:* 3 = only the pointer is removed; the physical states remain until overwritten;; 2 = mentions overwrite;; 1 = says it erases;; 0 = none.
 - **EX008 — Cryptographic erasure.** How does cryptographic erasure work? *Rubric:* 3 = data stored encrypted; destroying the key makes every copy unreadable;; 2 = mentions keys;; 1 = describes overwriting;; 0 = none.
-- **EX009 — Metadata leak.** What still leaks from an encrypted video call? *Rubric:* 3 = metadata such as time and duration reveal that a consultation happened;; 2 = mentions metadata;; 1 = nothing;; 0 = none.
+- **EX009 — Metadata leak.** What still leaks from an encrypted video call? *Rubric:* 3 = metadata such as time and duration reveal that a consultation happened;; 2 = mentions metadata;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -575,7 +575,7 @@ Captures on test builds may miss production behaviour; repeat on release builds.
 
 - **EX031 — URL identifiers.** Why must identifiers not travel in URLs? *Rubric:* 3 = URLs are logged by servers, proxies and browsers despite encryption;; 2 = mentions logs;; 1 = fine if encrypted;; 0 = none.
 - **EX032 — IP truncation.** What does truncating stored IP addresses achieve? *Rubric:* 3 = keeps attack investigation capacity while reducing long-lived location data;; 2 = mentions privacy;; 1 = deletes all logs;; 0 = none.
-- **EX033 — Processor contracts.** What does Article 28 require for third-party processors? *Rubric:* 3 = a binding contract governing processing;; 2 = mentions contract;; 1 = nothing;; 0 = none.
+- **EX033 — Processor contracts.** What does Article 28 require for third-party processors? *Rubric:* 3 = a binding contract governing processing;; 2 = mentions contract;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -621,7 +621,7 @@ Masking filters miss unusual formats; periodic searches remain necessary.
 
 ### Exercises
 
-- **EX034 — Shared export directory.** What was wrong with the export directory? *Rubric:* 3 = it was readable by every account on the server;; 2 = mentions permissions;; 1 = nothing;; 0 = none.
+- **EX034 — Shared export directory.** What was wrong with the export directory? *Rubric:* 3 = it was readable by every account on the server;; 2 = mentions permissions;; 1 = vague;; 0 = none.
 - **EX035 — Temporary reports.** How does Zara deal with leftover temporary reports? *Rubric:* 3 = secure temp functions, cleanup on start and a daily deletion job;; 2 = one measure;; 1 = ignores;; 0 = none.
 - **EX036 — Patch metric.** Why track patch delay? *Rubric:* 3 = to show a regular process for testing and maintaining security, as Article 32 expects;; 2 = mentions patching;; 1 = vague;; 0 = none.
 
@@ -751,7 +751,7 @@ Checklists become rote; rotate examples and audit samples of reviews.
 ### Exercises
 
 - **EX040 — Privacy story.** Write one privacy user story from the chapter. *Rubric:* 3 = e.g. as a patient I want recordings deleted after thirty days unless I ask otherwise;; 2 = similar story;; 1 = vague;; 0 = none.
-- **EX041 — Review catch.** What did the review checklist catch in its first month? *Rubric:* 3 = a change sending full names to a crash reporter;; 2 = mentions crash reporting;; 1 = nothing;; 0 = none.
+- **EX041 — Review catch.** What did the review checklist catch in its first month? *Rubric:* 3 = a change sending full names to a crash reporter;; 2 = mentions crash reporting;; 1 = vague;; 0 = none.
 - **EX042 — Synthetic test data.** Why replace production copies with generated patients? *Rubric:* 3 = test environments are less protected; synthetic data avoids exposing health data;; 2 = mentions safety;; 1 = uses masking only;; 0 = none.
 
 ### Synthesis
@@ -991,7 +991,7 @@ Key rotation breaks legitimate longitudinal analysis; plan it with users.
 ### Exercises
 
 - **EX055 — Plain hash weakness.** Why is a plain hash of a patient number not a pseudonym? *Rubric:* 3 = anyone can hash all possible numbers and match;; 2 = mentions reversal;; 1 = says it is secure;; 0 = none.
-- **EX056 — Recipient pseudonyms.** What do recipient-specific pseudonyms prevent? *Rubric:* 3 = joining datasets across recipients without Pellmore's keys;; 2 = mentions linkage;; 1 = nothing;; 0 = none.
+- **EX056 — Recipient pseudonyms.** What do recipient-specific pseudonyms prevent? *Rubric:* 3 = joining datasets across recipients without Pellmore's keys;; 2 = mentions linkage;; 1 = vague;; 0 = none.
 - **EX057 — Still personal.** Why are pseudonymised records still personal data? *Rubric:* 3 = attributes and keys allow re-identification;; 2 = mentions keys;; 1 = says anonymous;; 0 = none.
 
 ### Synthesis

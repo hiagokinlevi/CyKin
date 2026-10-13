@@ -3513,8 +3513,8 @@ Na revisão independente de projeto, uma revisora externa de uma empresa de sane
 ### Exercícios
 
 - **EX133 — Bloqueio.** Comentário de bloqueio para uma nova tentativa com falha aberta. Rubrica: 3 = cita o requisito de segurança + pede a correção; 2 = bloqueio vago; 1 = detalhe menor; 0 = aprova.
-- **EX134 — Checklist.** Acrescente um item para os taps seriais. Rubrica: 3 = específico; 2 = vago; 1 = nenhum; 0 = nada.
-- **EX135 — Divergência.** Uma frase de divergência registrada. Rubrica: 3 = clara; 2 = evasiva; 1 = nenhuma; 0 = nada.
+- **EX134 — Checklist.** Acrescente um item para os taps seriais. Rubrica: 3 = específico; 2 = vago; 1 = tentativa mínima; 0 = nada.
+- **EX135 — Divergência.** Uma frase de divergência registrada. Rubrica: 3 = clara; 2 = evasiva; 1 = vago; 0 = nada.
 
 ### Síntese
 
@@ -3718,8 +3718,8 @@ O cenário do ensaio: a lógica do PLC-A é corrompida (simulada carregando um p
 ### Exercícios
 
 - **EX139 — Injeção.** Uma injeção e o comportamento seguro esperado. Rubrica: 3 = os dois; 2 = só a injeção; 1 = vago; 0 = insegura.
-- **EX140 — Medida.** Medida primária para a injeção de perda da política. Rubrica: 3 = tempo até negar as escritas; 2 = disponibilidade vaga; 1 = nenhuma; 0 = nada.
-- **EX141 — Ação.** Transforme um resultado de 45 s num título de ticket corretivo. Rubrica: 3 = específico; 2 = vago; 1 = nenhum; 0 = nada.
+- **EX140 — Medida.** Medida primária para a injeção de perda da política. Rubrica: 3 = tempo até negar as escritas; 2 = disponibilidade vaga; 1 = tentativa mínima; 0 = nada.
+- **EX141 — Ação.** Transforme um resultado de 45 s num título de ticket corretivo. Rubrica: 3 = específico; 2 = vago; 1 = tentativa mínima; 0 = nada.
 
 ### Síntese
 
@@ -3968,7 +3968,7 @@ Um examinador pergunta: "O seu compilador prova que a alcançabilidade é igual 
 
 - **EX148 — Roteiro.** Roteiro da apresentação em seis tópicos. Rubrica: 3 = afirmação, demonstração, verificação, falha, limites, perguntas; 2 = parcial; 1 = discurso de fornecedor; 0 = nada.
 - **EX149 — Resposta.** 3–4 frases respondendo "qual é a sua pontuação de risco?". Rubrica: 3 = recusa a pontuação vazia + alternativas; 2 = parcial; 1 = inventa a pontuação; 0 = nada.
-- **EX150 — Erro.** Um erro real (da história sintética) e a correção. Rubrica: 3 = específico; 2 = vago; 1 = nenhum; 0 = nada.
+- **EX150 — Erro.** Um erro real (da história sintética) e a correção. Rubrica: 3 = específico; 2 = vago; 1 = tentativa mínima; 0 = nada.
 
 ### Síntese
 

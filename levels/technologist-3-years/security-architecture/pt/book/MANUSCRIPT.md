@@ -576,7 +576,7 @@ Os diagramas envelhecem rápido. Os portais acrescentam trabalho para os pequeno
 
 - **EX035 — Verificações na fronteira.** Que verificações cada cruzamento de fronteira deveria ter? *Rubrica:* 3 = autenticação do remetente, criptografia e validação do conteúdo;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
-- **EX036 — Manifesto falso.** O que um criminoso poderia fazer com o fluxo por e-mail? *Rubrica:* 3 = enviar um manifesto falso para desviar encomendas;; 2 = desviar;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Manifesto falso.** O que um criminoso poderia fazer com o fluxo por e-mail? *Rubrica:* 3 = enviar um manifesto falso para desviar encomendas;; 2 = desviar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1256,7 +1256,7 @@ Os runbooks envelhecem conforme os sistemas mudam. Equipes de duas pessoas são 
 
 - **EX076 — Por que a passagem.** Por que os controles se deterioram sem passagem? *Rubrica:* 3 = ninguém mais sabe por que existem nem como operá-los;; 2 = conhecimento;; 1 = vago;; 0 = nenhuma.
 
-- **EX077 — Teste do runbook.** O que o teste do runbook de restauração revelou? *Rubrica:* 3 = uma etapa sem a indicação de onde fica a senha;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+- **EX077 — Teste do runbook.** O que o teste do runbook de restauração revelou? *Rubrica:* 3 = uma etapa sem a indicação de onde fica a senha;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 - **EX078 — Medida da passagem.** Como se mede uma boa passagem? *Rubrica:* 3 = por quão pouco a pessoa que sai é necessária depois;; 2 = independência;; 1 = extensão;; 0 = nenhuma.
 

@@ -755,7 +755,7 @@ SQL answers what was stored; events never logged cannot be queried.
 ### Exercises
 
 - **EX025 — Lab result.** Which accounts had successful sign-ins outside GB? *Rubric:* 3 = s2047 (2), s3310 (1); 2 = one; 1 = wrong; 0 = none.
-- **EX026 — Failure then success.** What does s3310's 02:20 failure followed by 02:31 success suggest? *Rubric:* 3 = attacker obtained/retried password successfully; 2 = partial; 1 = nothing; 0 = none.
+- **EX026 — Failure then success.** What does s3310's 02:20 failure followed by 02:31 success suggest? *Rubric:* 3 = attacker obtained/retried password successfully; 2 = partial; 1 = vague; 0 = none.
 - **EX027 — User history.** Why compare with the previous 30 days? *Rubric:* 3 = shows what is normal for each user (e.g. travel); 2 = partial; 1 = no reason; 0 = none.
 
 ### Synthesis
@@ -1161,7 +1161,7 @@ Privacy law varies by country; follow your institution's legal advice.
 
 - **EX040 — Purpose limitation.** Give an example of a purpose-limitation breach. *Rubric:* 3 = using security logs to check attendance; 2 = partial; 1 = vague; 0 = none.
 - **EX041 — Minimisation.** How does the SOC apply minimisation? *Rubric:* 3 = metadata by default; content only per approved case; 2 = partial; 1 = collect all; 0 = none.
-- **EX042 — Breach outcome.** What did the DPO decide for s2047's forwarded mail? *Rubric:* 3 = three students with exposed marks informed; 2 = partial; 1 = nothing; 0 = none.
+- **EX042 — Breach outcome.** What did the DPO decide for s2047's forwarded mail? *Rubric:* 3 = three students with exposed marks informed; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1477,7 +1477,7 @@ Small studies at one university show local reasons; others may differ.
 
 - **EX052 — Method mix.** Why combine a survey with interviews? *Rubric:* 3 = survey breadth plus interview depth on reasons; 2 = partial; 1 = one enough; 0 = none.
 - **EX053 — Leading questions.** Rewrite a leading question neutrally. *Rubric:* 3 = e.g. "How do you usually handle suspicious emails?"; 2 = partial; 1 = unchanged; 0 = none.
-- **EX054 — Pilot finding.** What did the pilot reveal and how was it fixed? *Rubric:* 3 = question misread; rewritten as open scenario; 2 = partial; 1 = nothing; 0 = none.
+- **EX054 — Pilot finding.** What did the pilot reveal and how was it fixed? *Rubric:* 3 = question misread; rewritten as open scenario; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

@@ -92,7 +92,7 @@ O kappa depende da prevalência das classes e pode enganar quando uma classe dom
 
 - **EX001 — Teste de falseabilidade.** Que observação refutaria a hipótese de Amara? *Rubrica:* 3 = nenhuma redução, ou um aumento, dos defeitos de arquitetura pós-lançamento por cem mudanças de design nas equipes que adotam, em relação às equipes de comparação;; 2 = nomeia o desfecho sem comparação;; 1 = diz que não pode ser refutada;; 0 = nenhuma.
 
-- **EX002 — Crítica de Herley.** Que problema Herley e van Oorschot identificam nas afirmações de segurança? *Rubrica:* 3 = muitas afirmações não podem ser refutadas porque não nomeiam nenhuma observação que as contradiria;; 2 = afirmações não científicas;; 1 = nada;; 0 = nenhuma.
+- **EX002 — Crítica de Herley.** Que problema Herley e van Oorschot identificam nas afirmações de segurança? *Rubrica:* 3 = muitas afirmações não podem ser refutadas porque não nomeiam nenhuma observação que as contradiria;; 2 = afirmações não científicas;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Rejeição do antes e depois.** Por que um desenho simples de antes e depois é fraco aqui? *Rubrica:* 3 = não separa a prática da melhora geral ou da regressão à média;; 2 = uma rival;; 1 = desenho forte;; 0 = nenhuma.
 
@@ -148,7 +148,7 @@ As buscas na literatura deixam passar a literatura cinzenta e os trabalhos fora 
 
 ### Exercícios
 
-- **EX008 — Princípios de Saltzer.** Cite três princípios de Saltzer e Schroeder. *Rubrica:* 3 = três entre menor privilégio, padrões à prova de falha, mediação completa, economia de mecanismo, design aberto, separação de privilégios, menor mecanismo comum, aceitabilidade psicológica;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Princípios de Saltzer.** Cite três princípios de Saltzer e Schroeder. *Rubrica:* 3 = três entre menor privilégio, padrões à prova de falha, mediação completa, economia de mecanismo, design aberto, separação de privilégios, menor mecanismo comum, aceitabilidade psicológica;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX009 — Evidência dos frameworks.** Adotar o SABSA ou o TOGAF mostra, por si só, resultados melhores? *Rubrica:* 3 = não; os frameworks organizam o trabalho e o vocabulário, e os resultados exigem evidência empírica;; 2 = não;; 1 = sim;; 0 = nenhuma.
 
@@ -264,13 +264,13 @@ Um piloto com equipes voluntárias pode ser mais motivado do que as equipes típ
 
 - **EX021 — Discrepância da linha de base.** O que explicou a diferença entre 3,6 e 4,1? *Rubrica:* 3 = chamados duplicados para o mesmo defeito entre equipes no número relatado;; 2 = duplicatas;; 1 = erro de codificação;; 0 = nenhuma.
 
-- **EX022 — Risco da comparação inflada.** O que teria acontecido se o número inflado fosse usado como linha de base? *Rubrica:* 3 = a intervenção pareceria funcionar mesmo sem mudança real;; 2 = falso sucesso;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Risco da comparação inflada.** O que teria acontecido se o número inflado fosse usado como linha de base? *Rubrica:* 3 = a intervenção pareceria funcionar mesmo sem mudança real;; 2 = falso sucesso;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Piloto não é efeito.** Por que o piloto não foi usado para estimar o efeito? *Rubrica:* 3 = três equipes em três meses geram defeitos de menos;; 2 = poucos demais;; 1 = foi usado;; 0 = nenhuma.
 
-- **EX024 — Chamado perdido.** Por que um chamado sintético se perdeu, e como isso foi corrigido? *Rubrica:* 3 = estava num projeto renomeado; o mapeamento de projetos foi corrigido;; 2 = causa;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Chamado perdido.** Por que um chamado sintético se perdeu, e como isso foi corrigido? *Rubrica:* 3 = estava num projeto renomeado; o mapeamento de projetos foi corrigido;; 2 = causa;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Analogia dos chamados de teste.** Com o que os chamados sintéticos se parecem na prática criptográfica? *Rubrica:* 3 = vetores de teste de resposta conhecida;; 2 = vetores de teste;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Analogia dos chamados de teste.** Com o que os chamados sintéticos se parecem na prática criptográfica? *Rubrica:* 3 = vetores de teste de resposta conhecida;; 2 = vetores de teste;; 1 = vago;; 0 = nenhuma.
 
 - **EX026 — Mudanças grandes.** Como o protocolo foi revisado para as mudanças grandes? *Rubrica:* 3 = permitiu dividi-las em duas sessões;; 2 = divisão;; 1 = encurtado;; 0 = nenhuma.
 
@@ -352,7 +352,7 @@ As tendências paralelas podem valer antes da adoção e falhar depois. As verif
 
 - **EX027 — Codificação cega.** Por que o assistente de codificação não sabe quais equipes adotaram? *Rubrica:* 3 = para proteger a medida de desfecho do viés de expectativa;; 2 = viés;; 1 = rapidez;; 0 = nenhuma.
 
-- **EX028 — Tendências paralelas.** Que premissa a diferença em diferenças exige? *Rubrica:* 3 = tendências paralelas entre os grupos sem a intervenção;; 2 = nomeada;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Tendências paralelas.** Que premissa a diferença em diferenças exige? *Rubrica:* 3 = tendências paralelas entre os grupos sem a intervenção;; 2 = nomeada;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Estimativa do laboratório.** Que diferença em diferenças e que resultado de permutação o laboratório imprimiu? *Rubrica:* 3 = cerca de -0,77 por cem mudanças, proporção da permutação de cerca de 0,02;; 2 = só a estimativa;; 1 = positiva;; 0 = nenhuma.
 
@@ -492,7 +492,7 @@ Os conjuntos de dados sintéticos podem omitir correlações que importam para a
 
 - **EX042 — Papel dos dados sintéticos.** Por que o arquivo contém dados sintéticos, e não reais? *Rubrica:* 3 = os registros reais de defeitos são confidenciais e poderiam revelar vulnerabilidades ativas;; 2 = confidenciais;; 1 = não são necessários;; 0 = nenhuma.
 
-- **EX043 — Comentário no script.** O que a revisão da Tessaro encontrou no arquivo? *Rubrica:* 3 = um comentário de script que nomeia um sistema interno, depois removido;; 2 = comentário;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Comentário no script.** O que a revisão da Tessaro encontrou no arquivo? *Rubrica:* 3 = um comentário de script que nomeia um sistema interno, depois removido;; 2 = comentário;; 1 = vago;; 0 = nenhuma.
 
 - **EX044 — Limitação específica.** Reescreva de forma específica os resultados podem não se generalizar. *Rubrica:* 3 = a Tessaro tem um conselho central de arquitetura e rastreamento maduro; organizações sem isso podem ser diferentes;; 2 = específica;; 1 = vaga;; 0 = nenhuma.
 

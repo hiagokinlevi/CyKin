@@ -88,13 +88,13 @@ O pré-registro não impede todo viés. O kappa depende da prevalência na amost
 
 ### Exercícios
 
-- **EX001 — Desfecho falseável.** O que torna falseável a pergunta de Mireille? *Rubrica:* 3 = ela declara de antemão qual resultado mostraria que a ideia está errada;; 2 = declaração prévia;; 1 = nada;; 0 = nenhuma.
-- **EX002 — Falha da taxa de cliques.** Por que a taxa de cliques é um desfecho fraco? *Rubrica:* 3 = depende fortemente da dificuldade da isca;; 2 = dificuldade;; 1 = nada;; 0 = nenhuma.
-- **EX003 — Ferramenta de dificuldade.** Que ferramenta publicada ajuda a classificar a dificuldade das iscas? *Rubrica:* 3 = a NIST Phish Scale (Dawkins e Jacobs, 2023);; 2 = Phish Scale;; 1 = nada;; 0 = nenhuma.
-- **EX004 — Regra da página de destino.** Como o protocolo evita coletar credenciais? *Rubrica:* 3 = a página de destino registra apenas que um link foi aberto;; 2 = sem captura;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Desfecho falseável.** O que torna falseável a pergunta de Mireille? *Rubrica:* 3 = ela declara de antemão qual resultado mostraria que a ideia está errada;; 2 = declaração prévia;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Falha da taxa de cliques.** Por que a taxa de cliques é um desfecho fraco? *Rubrica:* 3 = depende fortemente da dificuldade da isca;; 2 = dificuldade;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Ferramenta de dificuldade.** Que ferramenta publicada ajuda a classificar a dificuldade das iscas? *Rubrica:* 3 = a NIST Phish Scale (Dawkins e Jacobs, 2023);; 2 = Phish Scale;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Regra da página de destino.** Como o protocolo evita coletar credenciais? *Rubrica:* 3 = a página de destino registra apenas que um link foi aberto;; 2 = sem captura;; 1 = vago;; 0 = nenhuma.
 - **EX005 — Relatórios a gestores.** Quem recebe resultados individuais das simulações? *Rubrica:* 3 = ninguém; só se reportam agregados;; 2 = agregados;; 1 = gestores;; 0 = nenhuma.
-- **EX006 — Resultado do kappa.** Que kappa a codificação piloto alcançou no laboratório? *Rubrica:* 3 = 0.80 em 50 reportes, concordância 0.90;; 2 = cerca de 0,8;; 1 = nada;; 0 = nenhuma.
-- **EX007 — Mudança na regra de codificação.** Que regra mudou após as divergências entre codificadores? *Rubrica:* 3 = newsletters com links de rastreamento passaram a ser definidas com mais clareza;; 2 = newsletters;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Resultado do kappa.** Que kappa a codificação piloto alcançou no laboratório? *Rubrica:* 3 = 0.80 em 50 reportes, concordância 0.90;; 2 = cerca de 0,8;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Mudança na regra de codificação.** Que regra mudou após as divergências entre codificadores? *Rubrica:* 3 = newsletters com links de rastreamento passaram a ser definidas com mais clareza;; 2 = newsletters;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -137,12 +137,12 @@ Mapas da literatura refletem as escolhas de quem lê. As orientações de polít
 ### Exercícios
 
 - **EX008 — Achado de Adams e Sasse.** O que Adams e Sasse (1999) constataram sobre usuários que quebravam regras? *Rubrica:* 3 = lidavam com exigências impraticáveis, não eram descuidados;; 2 = enfrentamento;; 1 = descuido;; 0 = nenhuma.
-- **EX009 — Estudo do Johnny.** O que Whitten e Tygar (1999) mostraram? *Rubrica:* 3 = usuários motivados não conseguiam usar corretamente software de criptografia;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Estudo do Johnny.** O que Whitten e Tygar (1999) mostraram? *Rubrica:* 3 = usuários motivados não conseguiam usar corretamente software de criptografia;; 2 = usabilidade;; 1 = vago;; 0 = nenhuma.
 - **EX010 — Rejeição racional.** Por que, segundo Herley (2009), usuários podem rejeitar racionalmente os conselhos? *Rubrica:* 3 = os custos superam os benefícios para eles;; 2 = custo-benefício;; 1 = ignorância;; 0 = nenhuma.
-- **EX011 — Ideia do orçamento de compliance.** O que é o orçamento de compliance? *Rubrica:* 3 = capacidade limitada de esforço de segurança que compete com o trabalho;; 2 = capacidade limitada;; 1 = nada;; 0 = nenhuma.
-- **EX012 — Silêncio dos frameworks.** O que os frameworks costumam deixar sem especificar? *Rubrica:* 3 = que desfecho avaliar;; 2 = desfecho;; 1 = nada;; 0 = nenhuma.
-- **EX013 — O que não se afirma.** O que a contribuição de Mireille não mede? *Rubrica:* 3 = se as violações diminuem;; 2 = violações;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Partes da contribuição.** Cite duas características da contribuição planejada. *Rubrica:* 3 = setor público, dificuldade de isca fixa, pré-registro, replicação, desenho escalonado;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Ideia do orçamento de compliance.** O que é o orçamento de compliance? *Rubrica:* 3 = capacidade limitada de esforço de segurança que compete com o trabalho;; 2 = capacidade limitada;; 1 = vago;; 0 = nenhuma.
+- **EX012 — Silêncio dos frameworks.** O que os frameworks costumam deixar sem especificar? *Rubrica:* 3 = que desfecho avaliar;; 2 = desfecho;; 1 = vago;; 0 = nenhuma.
+- **EX013 — O que não se afirma.** O que a contribuição de Mireille não mede? *Rubrica:* 3 = se as violações diminuem;; 2 = violações;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Partes da contribuição.** Cite duas características da contribuição planejada. *Rubrica:* 3 = setor público, dificuldade de isca fixa, pré-registro, replicação, desenho escalonado;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -184,12 +184,12 @@ Doze clusters dão poder estatístico limitado. Desenhos escalonados podem ser p
 
 ### Exercícios
 
-- **EX015 — Ordem sorteada.** Por que sortear a ordem em que os departamentos mudam? *Rubrica:* 3 = para controlar variações sazonais de ameaças que atingem todos;; 2 = sazonalidade;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Ordem sorteada.** Por que sortear a ordem em que os departamentos mudam? *Rubrica:* 3 = para controlar variações sazonais de ameaças que atingem todos;; 2 = sazonalidade;; 1 = vago;; 0 = nenhuma.
 - **EX016 — Desfecho primário.** Qual é o desfecho primário do estudo? *Rubrica:* 3 = proporção de e-mails suspeitos reais reportados em até trinta minutos;; 2 = reporte;; 1 = cliques;; 0 = nenhuma.
-- **EX017 — Motivo do agrupamento.** Por que levar o agrupamento em conta? *Rubrica:* 3 = servidores de um departamento compartilham gestores e padrões de e-mail;; 2 = contexto compartilhado;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Confusão com ataque real.** Como o protocolo evita confundir ataques reais com simulações? *Rubrica:* 3 = os e-mails simulados levam um marcador oculto conhecido pela equipe de segurança;; 2 = marcador;; 1 = nada;; 0 = nenhuma.
-- **EX019 — Alerta do profissional.** Sobre o que o profissional alertou? *Rubrica:* 3 = botões de reporte podem sobrecarregar equipes de segurança pequenas;; 2 = carga de trabalho;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Resposta com triagem.** Como Mireille respondeu à preocupação com a carga de trabalho? *Rubrica:* 3 = uma etapa de triagem automatizada que agrupa reportes duplicados;; 2 = triagem;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Motivo do agrupamento.** Por que levar o agrupamento em conta? *Rubrica:* 3 = servidores de um departamento compartilham gestores e padrões de e-mail;; 2 = contexto compartilhado;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Confusão com ataque real.** Como o protocolo evita confundir ataques reais com simulações? *Rubrica:* 3 = os e-mails simulados levam um marcador oculto conhecido pela equipe de segurança;; 2 = marcador;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Alerta do profissional.** Sobre o que o profissional alertou? *Rubrica:* 3 = botões de reporte podem sobrecarregar equipes de segurança pequenas;; 2 = carga de trabalho;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Resposta com triagem.** Como Mireille respondeu à preocupação com a carga de trabalho? *Rubrica:* 3 = uma etapa de triagem automatizada que agrupa reportes duplicados;; 2 = triagem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -231,11 +231,11 @@ Pilotos com voluntários não são representativos. Períodos de linha de base p
 
 ### Exercícios
 
-- **EX021 — Faixa de cliques na linha de base.** Que faixa as taxas de cliques mostraram na linha de base? *Rubrica:* 3 = de oito a dezenove por cento, acompanhando a dificuldade das iscas;; 2 = faixa;; 1 = nada;; 0 = nenhuma.
-- **EX022 — Reportes na linha de base.** Qual era a linha de base de reportes de e-mails suspeitos reais? *Rubrica:* 3 = cerca de um em cada quatro em até trinta minutos;; 2 = 25%;; 1 = nada;; 0 = nenhuma.
-- **EX023 — Problema no celular.** Que problema o piloto encontrou no e-mail pelo celular? *Rubrica:* 3 = o botão de reporte ficava escondido no aplicativo móvel;; 2 = celular;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Atraso no retorno.** Por que os agradecimentos chegavam atrasados? *Rubrica:* 3 = uma regra de e-mail os atrasava em duas horas;; 2 = regra de e-mail;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Log de mudanças.** Por que registrar cada mudança antes do estudo principal? *Rubrica:* 3 = a transparência gera confiança nos resultados finais;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Faixa de cliques na linha de base.** Que faixa as taxas de cliques mostraram na linha de base? *Rubrica:* 3 = de oito a dezenove por cento, acompanhando a dificuldade das iscas;; 2 = faixa;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Reportes na linha de base.** Qual era a linha de base de reportes de e-mails suspeitos reais? *Rubrica:* 3 = cerca de um em cada quatro em até trinta minutos;; 2 = 25%;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Problema no celular.** Que problema o piloto encontrou no e-mail pelo celular? *Rubrica:* 3 = o botão de reporte ficava escondido no aplicativo móvel;; 2 = celular;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Atraso no retorno.** Por que os agradecimentos chegavam atrasados? *Rubrica:* 3 = uma regra de e-mail os atrasava em duas horas;; 2 = regra de e-mail;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Log de mudanças.** Por que registrar cada mudança antes do estudo principal? *Rubrica:* 3 = a transparência gera confiança nos resultados finais;; 2 = confiança;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Limites do piloto.** Por que o piloto não é evidência de efeito? *Rubrica:* 3 = dois departamentos voluntários em seis semanas não podem mostrá-lo;; 2 = viabilidade;; 1 = efeito;; 0 = nenhuma.
 
 ### Síntese
@@ -314,12 +314,12 @@ Desfechos por departamento escondem a variação individual. Replicações em ou
 
 ### Exercícios
 
-- **EX027 — Verificações de fidelidade.** O que o monitoramento de fidelidade verificava? *Rubrica:* 3 = disponibilidade do botão, agradecimentos rápidos e dificuldade fixa das simulações;; 2 = os três;; 1 = nada;; 0 = nenhuma.
-- **EX028 — Atualização do filtro.** Por que a atualização do filtro não estragou o estudo? *Rubrica:* 3 = afetou todos os departamentos ao mesmo tempo e foi registrada;; 2 = o desenho absorve;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Estimativa do laboratório.** Que efeito o laboratório estimou? *Rubrica:* 3 = +0.157 no reporte em 30 minutos, proporção de permutações 0.000 em 2.000;; 2 = positivo;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Verificações de fidelidade.** O que o monitoramento de fidelidade verificava? *Rubrica:* 3 = disponibilidade do botão, agradecimentos rápidos e dificuldade fixa das simulações;; 2 = os três;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Atualização do filtro.** Por que a atualização do filtro não estragou o estudo? *Rubrica:* 3 = afetou todos os departamentos ao mesmo tempo e foi registrada;; 2 = o desenho absorve;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Estimativa do laboratório.** Que efeito o laboratório estimou? *Rubrica:* 3 = +0.157 no reporte em 30 minutos, proporção de permutações 0.000 em 2.000;; 2 = positivo;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Afirmação estreita.** Como Mireille enuncia o achado? *Rubrica:* 3 = reporte mais rápido nesta prefeitura com dificuldade fixa, não menos violações;; 2 = estreita;; 1 = violações caíram;; 0 = nenhuma.
 - **EX031 — Preparação da reanálise.** O que o segundo analista recebeu? *Rubrica:* 3 = dados anonimizados, pré-registro e plano, mas não o código;; 2 = sem código;; 1 = tudo;; 0 = nenhuma.
-- **EX032 — Resultado da replicação.** O que a replicação em Brenholt encontrou? *Rubrica:* 3 = um efeito menor, mas positivo;; 2 = menor;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Resultado da replicação.** O que a replicação em Brenholt encontrou? *Rubrica:* 3 = um efeito menor, mas positivo;; 2 = menor;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -361,12 +361,12 @@ Achados exploratórios podem ser ruído. Algumas preocupações dos revisores n�
 
 ### Exercícios
 
-- **EX033 — Teste dos alarmes falsos.** Como Mireille tratou a preocupação com alarmes falsos? *Rubrica:* 3 = a proporção benigna subiu pouco; a triagem manteve estável o tempo de tratamento;; 2 = dados;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Limite do mecanismo.** Por que ela não consegue separar o botão do retorno? *Rubrica:* 3 = foram introduzidos juntos;; 2 = confundidos;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Desenho futuro.** Que estudo ela propôs para a questão do mecanismo? *Rubrica:* 3 = um estudo fatorial;; 2 = fatorial;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Teste dos alarmes falsos.** Como Mireille tratou a preocupação com alarmes falsos? *Rubrica:* 3 = a proporção benigna subiu pouco; a triagem manteve estável o tempo de tratamento;; 2 = dados;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Limite do mecanismo.** Por que ela não consegue separar o botão do retorno? *Rubrica:* 3 = foram introduzidos juntos;; 2 = confundidos;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Desenho futuro.** Que estudo ela propôs para a questão do mecanismo? *Rubrica:* 3 = um estudo fatorial;; 2 = fatorial;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Tratamento dos subgrupos.** Como as análises de subgrupos foram reportadas? *Rubrica:* 3 = todas reportadas e rotuladas como exploratórias;; 2 = exploratórias;; 1 = selecionadas;; 0 = nenhuma.
-- **EX037 — Temas de isca excluídos.** Que temas de isca foram excluídos para evitar sofrimento? *Rubrica:* 3 = cortes salariais, luto, saúde e falsificação de sindicatos;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX038 — Reclamações.** Quantas reclamações foram relatadas? *Rubrica:* 3 = duas, com sua resolução;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Temas de isca excluídos.** Que temas de isca foram excluídos para evitar sofrimento? *Rubrica:* 3 = cortes salariais, luto, saúde e falsificação de sindicatos;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Reclamações.** Quantas reclamações foram relatadas? *Rubrica:* 3 = duas, com sua resolução;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -430,11 +430,11 @@ Digests provam que os arquivos não mudaram, não que estão corretos. A agrega�
 ### Exercícios
 
 - **EX039 — Contribuição geral.** Como Mireille enquadra sua contribuição geral? *Rubrica:* 3 = programas centrados em reportes melhoram a rapidez do reporte quando reportar é barato e o retorno é rápido;; 2 = condicional;; 1 = universal;; 0 = nenhuma.
-- **EX040 — Incógnitas abertas.** Cite uma questão que a tese deixa em aberto. *Rubrica:* 3 = qual componente importa, se os efeitos duram, se os incidentes caem;; 2 = uma;; 1 = nada;; 0 = nenhuma.
-- **EX041 — Verificação do manifesto.** O que o laboratório do arquivo reportou depois da edição de um arquivo? *Rubrica:* 3 = MISMATCH para o CSV editado;; 2 = divergência;; 1 = nada;; 0 = nenhuma.
-- **EX042 — Departamentos pequenos.** Como os departamentos pequenos foram protegidos? *Rubrica:* 3 = fundidos se tivessem menos de vinte servidores;; 2 = fundidos;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Revisão de privacidade.** Quem revisou o arquivo antes da divulgação? *Rubrica:* 3 = o encarregado de proteção de dados da Vantor;; 2 = DPO;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Guia para profissionais.** Por que escrever um guia curto para profissionais? *Rubrica:* 3 = para que as organizações apliquem o protocolo sem a tese inteira;; 2 = adoção;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Incógnitas abertas.** Cite uma questão que a tese deixa em aberto. *Rubrica:* 3 = qual componente importa, se os efeitos duram, se os incidentes caem;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Verificação do manifesto.** O que o laboratório do arquivo reportou depois da edição de um arquivo? *Rubrica:* 3 = MISMATCH para o CSV editado;; 2 = divergência;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Departamentos pequenos.** Como os departamentos pequenos foram protegidos? *Rubrica:* 3 = fundidos se tivessem menos de vinte servidores;; 2 = fundidos;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Revisão de privacidade.** Quem revisou o arquivo antes da divulgação? *Rubrica:* 3 = o encarregado de proteção de dados da Vantor;; 2 = DPO;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Guia para profissionais.** Por que escrever um guia curto para profissionais? *Rubrica:* 3 = para que as organizações apliquem o protocolo sem a tese inteira;; 2 = adoção;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -478,9 +478,9 @@ Recomendações de política generalizam para além de uma ou duas prefeituras. 
 
 - **EX045 — Pergunta sobre o medo.** Como Mireille respondeu à pergunta sobre reportes motivados por medo? *Rubrica:* 3 = questionário de ônus e política sem consequências, admitindo que não se pode descartar alguma ansiedade;; 2 = em parte;; 1 = negou;; 0 = nenhuma.
 - **EX046 — Conselho de avaliação.** O que as organizações devem avaliar, em vez de apenas taxas de cliques? *Rubrica:* 3 = a rapidez dos reportes;; 2 = reportes;; 1 = conclusão de cursos;; 0 = nenhuma.
-- **EX047 — Política de ética nas simulações.** Por que as políticas devem exigir revisão ética das simulações? *Rubrica:* 3 = simulações mal desenhadas prejudicam a confiança;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
-- **EX048 — Três produtos.** Que três produtos ela planeja? *Rubrica:* 3 = artigo em periódico, artigo metodológico e informe para profissionais;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX049 — Próximo estudo.** Qual é sua próxima pergunta de pesquisa? *Rubrica:* 3 = um estudo fatorial separando botão e retorno, e a ligação do reporte com o tempo de resposta;; 2 = fatorial;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Política de ética nas simulações.** Por que as políticas devem exigir revisão ética das simulações? *Rubrica:* 3 = simulações mal desenhadas prejudicam a confiança;; 2 = confiança;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Três produtos.** Que três produtos ela planeja? *Rubrica:* 3 = artigo em periódico, artigo metodológico e informe para profissionais;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Próximo estudo.** Qual é sua próxima pergunta de pesquisa? *Rubrica:* 3 = um estudo fatorial separando botão e retorno, e a ligação do reporte com o tempo de resposta;; 2 = fatorial;; 1 = vago;; 0 = nenhuma.
 - **EX050 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovada com correções menores;; 2 = aprovada;; 1 = reprovada;; 0 = nenhuma.
 
 ### Síntese

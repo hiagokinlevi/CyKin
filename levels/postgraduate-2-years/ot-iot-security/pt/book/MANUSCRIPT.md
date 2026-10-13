@@ -521,7 +521,7 @@ As tabelas RACI falham se duas partes forem Aprovadoras ao mesmo tempo. As métr
 - **EX032 — Três perguntas para o comitê de mudanças.** Reescreva as três perguntas de segurança de modo que um não especialista consiga respondê-las com sim/não. *Rubrica:* 3 = três perguntas claras de sim/não; 2 = duas; 1 = jargão; 0 = nenhum.
 - **EX033 — Uma métrica que sai pela culatra.** Explique como "zero constatações de TO em aberto" poderia sair pela culatra. *Rubrica:* 3 = desestimula relatar/encontrar; incentiva encerrar sem corrigir; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX034 — Número da completude do inventário.** Calcule a completude combinada do inventário da BWRP. *Rubrica:* 3 = 55/64 ≈ 85,9 %; 2 = fração correta; 1 = só 14/23; 0 = nenhum.
-- **EX035 — Escolha da linha de reporte.** Dê uma vantagem de o líder de segurança de TO se reportar ao diretor da planta, e não ao CISO. *Rubrica:* 3 = autoridade sobre as decisões de operações, contexto do processo; 2 = vago; 1 = nenhuma; 0 = nenhum.
+- **EX035 — Escolha da linha de reporte.** Dê uma vantagem de o líder de segurança de TO se reportar ao diretor da planta, e não ao CISO. *Rubrica:* 3 = autoridade sobre as decisões de operações, contexto do processo; 2 = vago; 1 = tentativa mínima; 0 = nenhum.
 
 ### Síntese
 
@@ -872,7 +872,7 @@ Os briefings de transferência ficam desatualizados; date-os. As revisões de po
 
 ### Exercícios
 
-- **EX056 — Detectar uma inconsistência.** Identifique uma tensão entre a decisão do Capítulo 5 e as métricas do Capítulo 7. *Rubrica:* 3 = os novos roteadores das RTUs (alternativa 2) acrescentam ativos/correções ainda não refletidos nas métricas; 2 = outra tensão plausível; 1 = nenhuma; 0 = nenhum.
+- **EX056 — Detectar uma inconsistência.** Identifique uma tensão entre a decisão do Capítulo 5 e as métricas do Capítulo 7. *Rubrica:* 3 = os novos roteadores das RTUs (alternativa 2) acrescentam ativos/correções ainda não refletidos nas métricas; 2 = outra tensão plausível; 1 = vago; 0 = nenhum.
 - **EX057 — Transferir o modelo de consequências.** Reescreva a preocupação central da BWRP para uma fábrica de alimentos. *Rubrica:* 3 = contaminação do produto/recall por manipulação da receita ou da temperatura; 2 = vago; 1 = igual à água; 0 = nenhum.
 - **EX058 — A evidência que expira.** Quando o simulado de restauração precisa ser repetido para manter G4 sustentada sob a regra dos 18 meses? *Rubrica:* 3 = antes de maio de 2027; 2 = aproximadamente; 1 = errado; 0 = nenhum.
 - **EX059 — Do que um sucessor precisa primeiro.** Escolha o item mais importante do briefing e justifique. *Rubrica:* 3 = escolha fundamentada (por exemplo, decisão em aberto com gatilho próximo ou ponto fraco); 2 = só a escolha; 1 = vago; 0 = nenhum.

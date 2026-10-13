@@ -73,11 +73,11 @@ A experiência sem métodos estruturados torna as decisões difíceis de defende
 
 - **EX002 — Equipe central.** Qual é o tamanho da equipe central de TI? *Rubrica:* 3 = quatro pessoas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX003 — Problemas do ambiente de trabalho.** Cite um problema do ambiente de trabalho que Elena traz. *Rubrica:* 3 = atrasos nas correções nas clínicas pequenas;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX003 — Problemas do ambiente de trabalho.** Cite um problema do ambiente de trabalho que Elena traz. *Rubrica:* 3 = atrasos nas correções nas clínicas pequenas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX004 — Acréscimo do curso.** O que o curso acrescenta à experiência de Elena? *Rubrica:* 3 = frameworks, medição e comunicação com o conselho;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Acréscimo do curso.** O que o curso acrescenta à experiência de Elena? *Rubrica:* 3 = frameworks, medição e comunicação com o conselho;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX005 — Evidência da meta.** Que evidência mostra que a meta do programa foi atingida? *Rubrica:* 3 = um documento do programa aprovado pelo conselho;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Evidência da meta.** Que evidência mostra que a meta do programa foi atingida? *Rubrica:* 3 = um documento do programa aprovado pelo conselho;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -115,11 +115,11 @@ As atividades sem registros não conseguem mostrar que acontecem de forma coeren
 
 ### Exercícios
 
-- **EX006 — Membros do comitê.** Quem faz parte do comitê de segurança? *Rubrica:* 3 = Elena, o diretor de operações, um líder clínico;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Membros do comitê.** Quem faz parte do comitê de segurança? *Rubrica:* 3 = Elena, o diretor de operações, um líder clínico;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Registros faltantes.** O que falta ao Moorfield, apesar de realizar as atividades? *Rubrica:* 3 = registros;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Registros faltantes.** O que falta ao Moorfield, apesar de realizar as atividades? *Rubrica:* 3 = registros;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Acréscimo do conselho.** Que limite o conselho acrescenta? *Rubrica:* 3 = nenhuma clínica sem atender pacientes por mais de meio dia;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Acréscimo do conselho.** Que limite o conselho acrescenta? *Rubrica:* 3 = nenhuma clínica sem atender pacientes por mais de meio dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX009 — Parte excluída.** O que fica excluído do escopo? *Rubrica:* 3 = o laboratório de prótese;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -161,13 +161,13 @@ As classificações não calibradas variam muito entre os avaliadores.
 
 ### Exercícios
 
-- **EX011 — Exemplo de ameaça.** Cite uma das principais ameaças identificadas. *Rubrica:* 3 = ransomware;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Exemplo de ameaça.** Cite uma das principais ameaças identificadas. *Rubrica:* 3 = ransomware;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX012 — Regra de calibração.** Quando os avaliadores discutem as diferenças? *Rubrica:* 3 = quando diferem em mais de um ponto;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Regra de calibração.** Quando os avaliadores discutem as diferenças? *Rubrica:* 3 = quando diferem em mais de um ponto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX013 — Riscos ligados.** Que dois riscos agravam o dano do ransomware? *Rubrica:* 3 = atrasos nas correções e recuperação fraca;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Riscos ligados.** Que dois riscos agravam o dano do ransomware? *Rubrica:* 3 = atrasos nas correções e recuperação fraca;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Tratamento do uso indevido.** Como o uso indevido pela equipe é tratado? *Rubrica:* 3 = revisões de acessos e alertas sobre visualizações incomuns;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX014 — Tratamento do uso indevido.** Como o uso indevido pela equipe é tratado? *Rubrica:* 3 = revisões de acessos e alertas sobre visualizações incomuns;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX015 — Método de transferência.** O que transfere parte da perda financeira? *Rubrica:* 3 = o seguro cibernético;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -207,13 +207,13 @@ Os dispositivos comprados fora das compras centrais muitas vezes escapam das cor
 
 ### Exercícios
 
-- **EX016 — Dispositivos não registrados.** Que dispositivos não registrados Elena encontra? *Rubrica:* 3 = computadores de imagem comprados por dentistas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Dispositivos não registrados.** Que dispositivos não registrados Elena encontra? *Rubrica:* 3 = computadores de imagem comprados por dentistas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Sistemas antigos.** Por que os computadores de imagem rodam sistemas antigos? *Rubrica:* 3 = os fornecedores não certificaram versões mais novas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Sistemas antigos.** Por que os computadores de imagem rodam sistemas antigos? *Rubrica:* 3 = os fornecedores não certificaram versões mais novas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Dados restritos.** Que informações são restritas? *Rubrica:* 3 = prontuários clínicos, imagens e dados de pagamento;; 2 = correto;; 1 = outras;; 0 = nenhuma.
 
-- **EX019 — Correção do fornecedor.** O que Elena recomenda para o acesso do fornecedor de imagem? *Rubrica:* 3 = contas individuais, MFA, acesso só durante as sessões;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Correção do fornecedor.** O que Elena recomenda para o acesso do fornecedor de imagem? *Rubrica:* 3 = contas individuais, MFA, acesso só durante as sessões;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX020 — Dono dos prontuários.** Quem é o dono dos prontuários dos pacientes? *Rubrica:* 3 = o líder clínico;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -287,11 +287,11 @@ Um número geral de conformidade pode esconder clínicas com lacunas graves.
 
 - **EX022 — Clínica mais baixa.** Qual é a clínica mais baixa? *Rubrica:* 3 = C19, com 50,0 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX023 — Fator comum.** O que as três clínicas mais baixas têm em comum? *Rubrica:* 3 = um contato local de TI em tempo parcial;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Fator comum.** O que as três clínicas mais baixas têm em comum? *Rubrica:* 3 = um contato local de TI em tempo parcial;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX024 — Correção do agendamento.** Como o agendamento das atualizações é alterado? *Rubrica:* 3 = hora do almoço, com reinicializações fora das consultas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Correção do agendamento.** Como o agendamento das atualizações é alterado? *Rubrica:* 3 = hora do almoço, com reinicializações fora das consultas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Controle da imagem.** Como os computadores de imagem que não podem ser corrigidos são protegidos? *Rubrica:* 3 = segmento isolado e acesso restrito;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Controle da imagem.** Como os computadores de imagem que não podem ser corrigidos são protegidos? *Rubrica:* 3 = segmento isolado e acesso restrito;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -329,15 +329,15 @@ Copiar os acessos dos colegas espalha direitos em excesso pelas clínicas.
 
 ### Exercícios
 
-- **EX026 — Visão da recepcionista.** O que as recepcionistas podem ver? *Rubrica:* 3 = as consultas e os dados de contato;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Visão da recepcionista.** O que as recepcionistas podem ver? *Rubrica:* 3 = as consultas e os dados de contato;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX027 — Revisão do acesso de emergência.** Quem revisa o uso do acesso de emergência? *Rubrica:* 3 = o líder clínico, semanalmente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Revisão do acesso de emergência.** Quem revisa o uso do acesso de emergência? *Rubrica:* 3 = o líder clínico, semanalmente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX028 — Acesso remanescente.** Que funcionários mais mantinham acessos? *Rubrica:* 3 = dentistas substitutos;; 2 = correto;; 1 = outros;; 0 = nenhuma.
 
 - **EX029 — Fator do administrador.** O que protege as contas de administrador? *Rubrica:* 3 = chaves de segurança físicas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX030 — Gateway dos fornecedores.** Como os fornecedores se conectam? *Rubrica:* 3 = gateway gerenciado com MFA e sessões gravadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Gateway dos fornecedores.** Como os fornecedores se conectam? *Rubrica:* 3 = gateway gerenciado com MFA e sessões gravadas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -412,9 +412,9 @@ Os domínios parecidos passam numa olhada rápida, então depender de que a equi
 
 - **EX033 — Mensagens dos domínios parecidos.** Quantas mensagens vieram de domínios parecidos? *Rubrica:* 3 = 23;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX034 — Distância de edição.** O que a distância de edição conta? *Rubrica:* 3 = as mudanças de um único caractere entre as cadeias;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Distância de edição.** O que a distância de edição conta? *Rubrica:* 3 = as mudanças de um único caractere entre as cadeias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Regra de pagamento.** Qual é a regra para as mudanças de pagamento? *Rubrica:* 3 = confirmar ligando para um número conhecido;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Regra de pagamento.** Qual é a regra para as mudanças de pagamento? *Rubrica:* 3 = confirmar ligando para um número conhecido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -454,7 +454,7 @@ Os backups alcançáveis com as credenciais de administrador do dia a dia podem 
 
 - **EX036 — Período imutável.** Por quanto tempo as cópias imutáveis são mantidas? *Rubrica:* 3 = trinta dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX037 — Objetivos dos prontuários.** Quais são os objetivos do sistema de prontuários? *Rubrica:* 3 = quatro horas, uma hora de dados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Objetivos dos prontuários.** Quais são os objetivos do sistema de prontuários? *Rubrica:* 3 = quatro horas, uma hora de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX038 — Primeiro teste.** Quanto tempo levou a primeira restauração? *Rubrica:* 3 = seis horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -498,15 +498,15 @@ Descobrir tarde os prazos de notificação pode transformar um incidente numa in
 
 ### Exercícios
 
-- **EX041 — Canal de comunicação.** Como os funcionários comunicam incidentes? *Rubrica:* 3 = um único número de telefone ou endereço de e-mail;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Canal de comunicação.** Como os funcionários comunicam incidentes? *Rubrica:* 3 = um único número de telefone ou endereço de e-mail;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Alinhamento ao CSF.** Que funções do CSF 2.0 orientam o processo? *Rubrica:* 3 = Responder e Recuperar;; 2 = correto;; 1 = outras;; 0 = nenhuma.
 
 - **EX043 — Parceiro na notificação.** Quem ajuda a decidir sobre a notificação? *Rubrica:* 3 = o encarregado de proteção de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX044 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = o fornecedor não era obrigado a notificar prontamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = o fornecedor não era obrigado a notificar prontamente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX045 — Resultado das revisões.** Cite uma melhoria resultante das revisões. *Rubrica:* 3 = a expiração das contas dos substitutos;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Resultado das revisões.** Cite uma melhoria resultante das revisões. *Rubrica:* 3 = a expiração das contas dos substitutos;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -550,9 +550,9 @@ As medidas que nunca mudam as decisões desperdiçam atenção.
 
 - **EX048 — Extensão do relatório.** Qual é a extensão do relatório ao conselho? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX049 — Decisão sobre a imagem.** Que decisão decorre da pergunta sobre a imagem? *Rubrica:* 3 = pressionar o fornecedor em conjunto com outros grupos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Decisão sobre a imagem.** Que decisão decorre da pergunta sobre a imagem? *Rubrica:* 3 = pressionar o fornecedor em conjunto com outros grupos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Poda.** O que Elena propõe para as medidas sem uso? *Rubrica:* 3 = interrompê-las;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Poda.** O que Elena propõe para as medidas sem uso? *Rubrica:* 3 = interrompê-las;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -592,13 +592,13 @@ Afirmar que um projeto prova a resiliência contra ataques reais exagera as evid
 
 - **EX051 — Risco do projeto final.** De que risco o projeto final trata? *Rubrica:* 3 = ransomware;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX052 — Critério por clínica.** Qual é o critério de correções por clínica? *Rubrica:* 3 = pelo menos noventa por cento em cada clínica;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Critério por clínica.** Qual é o critério de correções por clínica? *Rubrica:* 3 = pelo menos noventa por cento em cada clínica;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX053 — Critério não cumprido.** Que critério deixa de ser cumprido por pouco? *Rubrica:* 3 = a conformidade com as correções por clínica;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX054 — Recuperação final.** Quanto tempo levou a recuperação final? *Rubrica:* 3 = três horas e dez minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX055 — Próximo passo.** O que Elena recomenda em seguida? *Rubrica:* 3 = um teste independente da resposta a incidentes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Próximo passo.** O que Elena recomenda em seguida? *Rubrica:* 3 = um teste independente da resposta a incidentes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -636,15 +636,15 @@ Começar pelos detalhes técnicos faz perder a atenção de um conselho.
 
 ### Exercícios
 
-- **EX056 — Linguagem do conselho.** Que linguagem Elena usa com o conselho? *Rubrica:* 3 = clínicas capazes de atender os pacientes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Linguagem do conselho.** Que linguagem Elena usa com o conselho? *Rubrica:* 3 = clínicas capazes de atender os pacientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Principal custo novo.** Qual foi o principal custo novo? *Rubrica:* 3 = o prestador de backup;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX058 — Resultado do projeto final.** Que resultado Elena alcança? *Rubrica:* 3 = distinção;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX059 — Adoção pelo conselho.** O que o conselho adota? *Rubrica:* 3 = as medidas de Elena como relatório trimestral;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Adoção pelo conselho.** O que o conselho adota? *Rubrica:* 3 = as medidas de Elena como relatório trimestral;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Motivação da certificação.** Por que considerar a certificação ISO/IEC 27001? *Rubrica:* 3 = as seguradoras começaram a solicitá-la;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Motivação da certificação.** Por que considerar a certificação ISO/IEC 27001? *Rubrica:* 3 = as seguradoras começaram a solicitá-la;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

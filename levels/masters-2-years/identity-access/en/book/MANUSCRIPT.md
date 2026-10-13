@@ -152,9 +152,9 @@ Treating any multi-factor method as phishing-resistant ignores that typed one-ti
 - **EX008 — Assurance meaning.** What does an authentication assurance level express? *Rubric:* 3 = confidence the person controls the bound authenticator;; 2 = confidence;; 1 = speed;; 0 = none.
 - **EX009 — OTP weakness.** Why are typed one-time codes not phishing-resistant? *Rubric:* 3 = users can type them into a fake page that relays them;; 2 = relay;; 1 = they are;; 0 = none.
 - **EX010 — Private key location.** Where does the passkey private key stay? *Rubric:* 3 = on the user's device or security key;; 2 = device;; 1 = server;; 0 = none.
-- **EX011 — Origin binding.** What does origin binding prevent? *Rubric:* 3 = a look-alike site getting a usable signature;; 2 = phishing;; 1 = nothing;; 0 = none.
+- **EX011 — Origin binding.** What does origin binding prevent? *Rubric:* 3 = a look-alike site getting a usable signature;; 2 = phishing;; 1 = vague;; 0 = none.
 - **EX012 — Federation leverage.** Why introduce passkeys at the identity provider? *Rubric:* 3 = strengthens sign-in for every federated application at once;; 2 = everywhere;; 1 = cheaper;; 0 = none.
-- **EX013 — Comparative framework.** What did Bonneau and colleagues find when comparing password alternatives? *Rubric:* 3 = none dominated passwords on all benefits;; 2 = no winner;; 1 = passkeys best;; 0 = none.
+- **EX013 — Comparative framework.** What did Bonneau and colleagues find when comparing password alternatives? *Rubric:* 3 = none dominated passwords on all benefits;; 2 = no winner;; 1 = passkeys best;; 0 = no answer.
 - **EX014 — Recovery tracking.** Why track recovery requests separately? *Rubric:* 3 = risk may shift from resets to recovery;; 2 = shift;; 1 = no reason;; 0 = none.
 
 ### Synthesis
@@ -499,7 +499,7 @@ Skipping independent review leaves unexamined assumptions for examiners to find.
 
 ### Exercises
 
-- **EX045 — Reviewer concern.** What did the independent reviewer question? *Rubric:* 3 = DiD assumption for late departments with short comparison periods;; 2 = assumption;; 1 = nothing;; 0 = none.
+- **EX045 — Reviewer concern.** What did the independent reviewer question? *Rubric:* 3 = DiD assumption for late departments with short comparison periods;; 2 = assumption;; 1 = vague;; 0 = none.
 - **EX046 — Sensitivity outcome.** What did excluding late departments show? *Rubric:* 3 = similar estimate, wider interval;; 2 = similar;; 1 = reversed;; 0 = none.
 - **EX047 — Contribution summary.** How many sentences does Jonah practise for his contribution? *Rubric:* 3 = three;; 2 = few;; 1 = one;; 0 = none.
 - **EX048 — Hospital question.** How does Jonah answer the hospital question? *Rubric:* 3 = cites shared-terminal pilot findings, effect may be smaller, no overclaim;; 2 = cautious;; 1 = yes;; 0 = none.

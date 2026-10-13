@@ -292,7 +292,7 @@ A maioria dos eventos inesperados é engano ou falha; relate-os mesmo assim. Os 
 - **EX034 — Fatos do relato.** Que fatos o relato de Jonah precisa conter? *Rubrica:* 3 = o quê, onde, quando, estado atual, ações tomadas (evidências); 2 = quatro; 1 = dois; 0 = nenhum.
 - **EX035 — Mãos fora.** Por que Jonah não reinicia o SC-1 depois de perceber o comando? *Rubrica:* 3 = poderia perturbar o processo/a segurança física e destruir evidências; a decisão é da engenheira; 2 = um; 1 = deveria reiniciar; 0 = nenhum.
 - **EX036 — Superaquecimento primeiro.** Um alarme de temperatura de um rack de baterias aparece enquanto Jonah escreve o relato. O que vem primeiro? *Rubrica:* 3 = procedimento de incêndio/segurança da usina, avisar o plantão; relato depois; 2 = só avisar; 1 = terminar o relato; 0 = nenhum.
-- **EX037 — Ação com o fornecedor.** O que desabilitar a conta do portal e exigir MFA conseguiu? *Rubrica:* 3 = impediu novos usos de credenciais possivelmente roubadas; logins futuros precisam de segundo fator; 2 = parcial; 1 = nada; 0 = nenhum.
+- **EX037 — Ação com o fornecedor.** O que desabilitar a conta do portal e exigir MFA conseguiu? *Rubrica:* 3 = impediu novos usos de credenciais possivelmente roubadas; logins futuros precisam de segundo fator; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX038 — Fusos horários.** Por que Jonah deve anotar o fuso horário dos registros da nuvem? *Rubrica:* 3 = a nuvem pode registrar em UTC; horários desencontrados confundem a sequência; 2 = parcial; 1 = sem motivo; 0 = nenhum.
 
 ### Síntese
@@ -365,7 +365,7 @@ Esses hábitos reduzem o risco, mas não conseguem eliminá-lo. Os procedimentos
 - **EX044 — Momento do firmware.** Por que o firmware é aplicado em horários planejados e não imediatamente? *Rubrica:* 3 = precisa de verificação de compatibilidade e de parada segura; risco de interrupção; 2 = parcial; 1 = sem motivo; 0 = nenhum.
 - **EX045 — Ambiente de prática.** Onde Jonah deve praticar o uso de protocolos industriais? *Rubrica:* 3 = simulador/equipamento de laboratório, não a usina em operação; 2 = parcial; 1 = na usina, à noite; 0 = nenhum.
 - **EX046 — Contornar a segurança física.** Um colega sugere desabilitar a proteção da bateria para "testar" um alarme. Qual é a sua resposta? *Rubrica:* 3 = recusar; sistemas de segurança física intocados; escalar; 2 = recusar; 1 = concordar com cuidado; 0 = concordar.
-- **EX047 — Lição do exercício.** Que melhoria Jonah sugeriu depois do exercício simulado, e por que ela ajuda? *Rubrica:* 3 = acrescentar ao cartão o número de suporte do fornecedor; ligação correta mais rápida; 2 = só o item; 1 = nenhuma; 0 = nenhum.
+- **EX047 — Lição do exercício.** Que melhoria Jonah sugeriu depois do exercício simulado, e por que ela ajuda? *Rubrica:* 3 = acrescentar ao cartão o número de suporte do fornecedor; ligação correta mais rápida; 2 = só o item; 1 = vago; 0 = nenhum.
 - **EX048 — Efeito do isolamento.** Por que a zona de controle pôde continuar funcionando quando a zona das câmeras foi isolada? *Rubrica:* 3 = zonas separadas; as câmeras não são necessárias para o controle; 2 = parcial; 1 = ela parou; 0 = nenhum.
 - **EX049 — Compartilhar explorações.** Por que este curso se recusa a compartilhar código de exploração? *Rubrica:* 3 = uso dual; poderia causar dano a instalações reais; o objetivo do aprendizado é a defesa; 2 = parcial; 1 = sem motivo; 0 = nenhum.
 - **EX050 — Próximo curso.** O que o próximo curso do currículo cobre? *Rubrica:* 3 = infraestrutura crítica e segurança setorial (curso 023); 2 = vago; 1 = errado; 0 = nenhum.

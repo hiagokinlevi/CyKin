@@ -383,7 +383,7 @@ Contagens sem denominadores enganam; sempre converta em taxas. Estratificar por 
 
 - **EX023 — Por que as contagens falham.** Por que as contagens brutas de incidentes não conseguem separar as explicações? *Rubrica:* 3 = não há denominadores; as contagens podem refletir quantos certificados cada célula contém;; 2 = precisa de taxas;; 1 = amostra pequena;; 0 = nenhuma.
 
-- **EX024 — Evidência de confusão.** Que números do inventário tornam a propriedade um fator de confusão? *Rubrica:* 3 = 38 por cento dos manuais vs 21 por cento dos ACME sem dono;; 2 = direção;; 1 = nenhum;; 0 = nenhuma.
+- **EX024 — Evidência de confusão.** Que números do inventário tornam a propriedade um fator de confusão? *Rubrica:* 3 = 38 por cento dos manuais vs 21 por cento dos ACME sem dono;; 2 = direção;; 1 = vago;; 0 = nenhuma.
 
 - **EX025 — Colisões com mudanças.** Quantos incidentes ACME vieram depois de mudanças de infraestrutura, e por quê? *Rubrica:* 3 = cinco de sete; o cliente não conseguia completar o desafio, erros sem acompanhamento;; 2 = o número;; 1 = o motivo;; 0 = nenhuma.
 

@@ -247,7 +247,7 @@ Using floating-point numbers for token amounts introduces rounding errors that c
 
 - **EX010 — Undecided rule.** What rule had Jonas not decided? *Rubric:* 3 = zero-value transfers;; 2 = zero;; 1 = fees;; 0 = none.
 - **EX011 — Amount type.** Why use integers for amounts? *Rubric:* 3 = avoid floating-point rounding errors;; 2 = rounding;; 1 = speed;; 0 = none.
-- **EX012 — Fee bug.** What did failing tests reveal? *Rubric:* 3 = fee not deducted from sender;; 2 = missing deduction;; 1 = nothing;; 0 = none.
+- **EX012 — Fee bug.** What did failing tests reveal? *Rubric:* 3 = fee not deducted from sender;; 2 = missing deduction;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -467,7 +467,7 @@ Silently ignoring failed operations lets recorded state drift from reality.
 
 - **EX025 — Module split.** How does Jonas organise modules? *Rubric:* 3 = state, validation, reporting;; 2 = three modules;; 1 = one file;; 0 = none.
 - **EX026 — SWC parallel.** Which SWC weakness parallels silent errors? *Rubric:* 3 = unchecked return values from low-level calls;; 2 = unchecked return;; 1 = overflow;; 0 = none.
-- **EX027 — Property bug.** What did the property test find? *Rubric:* 3 = self-transfer doubled the balance;; 2 = self-transfer;; 1 = nothing;; 0 = none.
+- **EX027 — Property bug.** What did the property test find? *Rubric:* 3 = self-transfer doubled the balance;; 2 = self-transfer;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -686,7 +686,7 @@ Upgrading dependencies without reading changes can import bugs into code that co
 ### Exercises
 
 - **EX040 — Lifecycle difference.** What is unusual about the contract lifecycle? *Rubric:* 3 = code is hard to change after deployment;; 2 = immutability;; 1 = vague;; 0 = none.
-- **EX041 — Build record.** What is recorded for each release? *Rubric:* 3 = exact compiler version and settings;; 2 = compiler;; 1 = nothing;; 0 = none.
+- **EX041 — Build record.** What is recorded for each release? *Rubric:* 3 = exact compiler version and settings;; 2 = compiler;; 1 = vague;; 0 = none.
 - **EX042 — Dependency practice.** How are dependencies managed? *Rubric:* 3 = listed, pinned, provenance recorded;; 2 = pinned;; 1 = latest always;; 0 = none.
 
 ### Synthesis
@@ -865,7 +865,7 @@ Relying on a single control for a high-value function leaves no protection if it
 
 - **EX052 — Boundary example.** Name one trust boundary. *Rubric:* 3 = meters to gateway;; 2 = admin to contracts;; 1 = vague;; 0 = none.
 - **EX053 — Minting layers.** How many layers protect minting? *Rubric:* 3 = five;; 2 = 5;; 1 = one;; 0 = none.
-- **EX054 — Review addition.** What did reviewers ask to add? *Rubric:* 3 = coordination of validator software upgrades;; 2 = upgrades;; 1 = nothing;; 0 = none.
+- **EX054 — Review addition.** What did reviewers ask to add? *Rubric:* 3 = coordination of validator software upgrades;; 2 = upgrades;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1129,7 +1129,7 @@ Considering only well-publicised contract attacks misses operational failures li
 
 - **EX067 — Prompt sources.** What prompts contract threats? *Rubric:* 3 = SWC registry and OWASP Smart Contract Top 10;; 2 = registries;; 1 = news;; 0 = none.
 - **EX068 — Top threat.** Name a highest-ranked item. *Rubric:* 3 = compromised gateway key minting excess;; 2 = negative balances;; 1 = one validator down;; 0 = none.
-- **EX069 — Key-loss control.** How is board key loss addressed? *Rubric:* 3 = five keyholders, threshold three, replacement procedure;; 2 = 3 of 5;; 1 = nothing;; 0 = none.
+- **EX069 — Key-loss control.** How is board key loss addressed? *Rubric:* 3 = five keyholders, threshold three, replacement procedure;; 2 = 3 of 5;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1214,7 +1214,7 @@ Treating every invariant report as an attack ignores cases where the check simpl
 
 - **EX070 — Three invariants.** State the three invariants. *Rubric:* 3 = balances sum to supply, none negative, supply under cap;; 2 = three;; 1 = one;; 0 = none.
 - **EX071 — Step 5 meaning.** What does step 5 show? *Rubric:* 3 = an overdraft correctly rejected;; 2 = rejection;; 1 = attack;; 0 = none.
-- **EX072 — Step 7 meaning.** What does step 7 show? *Rubric:* 3 = supply 1,470 exceeds 1,400 cap;; 2 = cap breach;; 1 = nothing;; 0 = none.
+- **EX072 — Step 7 meaning.** What does step 7 show? *Rubric:* 3 = supply 1,470 exceeds 1,400 cap;; 2 = cap breach;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1589,7 +1589,7 @@ Leaving an initialiser callable after deployment can let someone else take contr
 
 - **EX091 — Library reuse.** Why reuse a reviewed token implementation? *Rubric:* 3 = less new code to verify;; 2 = reviewed;; 1 = cheaper only;; 0 = none.
 - **EX092 — Initialiser protection.** How is the initialiser protected? *Rubric:* 3 = called in deployment transaction, then disabled;; 2 = same transaction;; 1 = left open;; 0 = none.
-- **EX093 — Pack contents.** Name two items in the review pack. *Rubric:* 3 = models and compiler settings;; 2 = tests, docs;; 1 = nothing;; 0 = none.
+- **EX093 — Pack contents.** Name two items in the review pack. *Rubric:* 3 = models and compiler settings;; 2 = tests, docs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1761,8 +1761,8 @@ Testing contracts alone without end-to-end tests misses failures at integration 
 ### Exercises
 
 - **EX100 — Utility expectation.** What did the utility system expect? *Rubric:* 3 = fixed file format at a fixed nightly time;; 2 = file format;; 1 = API calls;; 0 = none.
-- **EX101 — First failure.** What did the first end-to-end run reveal? *Rubric:* 3 = app showed balances before finality;; 2 = pending balances;; 1 = nothing;; 0 = none.
-- **EX102 — Interface rule.** What does an interface change require? *Rubric:* 3 = update agreement, rerun end-to-end test, notify owner;; 2 = three steps;; 1 = nothing;; 0 = none.
+- **EX101 — First failure.** What did the first end-to-end run reveal? *Rubric:* 3 = app showed balances before finality;; 2 = pending balances;; 1 = vague;; 0 = none.
+- **EX102 — Interface rule.** What does an interface change require? *Rubric:* 3 = update agreement, rerun end-to-end test, notify owner;; 2 = three steps;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1965,7 +1965,7 @@ Treating a passed external review as proof of security ignores its stated limits
 ### Exercises
 
 - **EX112 — Validation question.** What does validation ask? *Rubric:* 3 = whether the right system was built;; 2 = needs;; 1 = built right;; 0 = none.
-- **EX113 — Review result.** What did the external review find? *Rubric:* 3 = no high, two medium, four informational;; 2 = two medium;; 1 = nothing;; 0 = none.
+- **EX113 — Review result.** What did the external review find? *Rubric:* 3 = no high, two medium, four informational;; 2 = two medium;; 1 = vague;; 0 = none.
 - **EX114 — Rounding fix basis.** What guidance did the rounding fix follow? *Rubric:* 3 = rounding must not create value for the initiator;; 2 = EthTrust rounding;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -2009,7 +2009,7 @@ Assuming deployed contracts need no maintenance ignores changing compilers, libr
 ### Exercises
 
 - **EX115 — Network upgrade issue.** Why check ledger software upgrades? *Rubric:* 3 = they can change code behaviour;; 2 = behaviour changes;; 1 = vague;; 0 = none.
-- **EX116 — Trial friction.** What did the trial upgrade reveal? *Rubric:* 3 = unclear responsibility for member notices;; 2 = notices;; 1 = nothing;; 0 = none.
+- **EX116 — Trial friction.** What did the trial upgrade reveal? *Rubric:* 3 = unclear responsibility for member notices;; 2 = notices;; 1 = vague;; 0 = none.
 - **EX117 — Knowledge test.** How is knowledge transfer tested? *Rubric:* 3 = partner engineer deploys to test unaided;; 2 = second person;; 1 = quiz;; 0 = none.
 
 ### Synthesis
@@ -2053,7 +2053,7 @@ Relying on a single verification method leaves requirements weakly checked.
 ### Exercises
 
 - **EX118 — Thin coverage.** Which requirement had only one method? *Rubric:* 3 = redemption reporting;; 2 = redemption;; 1 = minting;; 0 = none.
-- **EX119 — New finding.** What did the new reconciliation find? *Rubric:* 3 = a report generated twice by a scheduler retry;; 2 = duplicate;; 1 = nothing;; 0 = none.
+- **EX119 — New finding.** What did the new reconciliation find? *Rubric:* 3 = a report generated twice by a scheduler retry;; 2 = duplicate;; 1 = vague;; 0 = none.
 - **EX120 — Report claim.** What does the report claim? *Rubric:* 3 = requirements met under tested conditions, not defect-free;; 2 = bounded;; 1 = perfect;; 0 = none.
 
 ### Synthesis
@@ -2230,7 +2230,7 @@ Expanding capstone scope to include complex automatic payouts risks an unfinishe
 
 - **EX130 — Capstone feature.** What feature does the capstone build? *Rubric:* 3 = a hardship fund from donated credits;; 2 = fund;; 1 = exchange;; 0 = none.
 - **EX131 — Excluded scope.** What is excluded from scope? *Rubric:* 3 = automatic payouts;; 2 = automation;; 1 = donations;; 0 = none.
-- **EX132 — Early defect.** What did the early property test find? *Rubric:* 3 = donations accepted while paused;; 2 = paused donations;; 1 = nothing;; 0 = none.
+- **EX132 — Early defect.** What did the early property test find? *Rubric:* 3 = donations accepted while paused;; 2 = paused donations;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2405,7 +2405,7 @@ Including unredacted production configuration in an assessment dossier exposes t
 ### Exercises
 
 - **EX142 — Dossier organisation.** How is the dossier organised? *Rubric:* 3 = by lifecycle with a criteria index;; 2 = index;; 1 = by date;; 0 = none.
-- **EX143 — Sampling result.** What did the supervisor's sampling find? *Rubric:* 3 = a missing test log;; 2 = missing log;; 1 = nothing;; 0 = none.
+- **EX143 — Sampling result.** What did the supervisor's sampling find? *Rubric:* 3 = a missing test log;; 2 = missing log;; 1 = vague;; 0 = none.
 - **EX144 — Sensitive handling.** How is sensitive content handled? *Rubric:* 3 = redacted, full versions held by the cooperative;; 2 = redaction;; 1 = included;; 0 = none.
 
 ### Synthesis
@@ -2493,7 +2493,7 @@ Defending decisions by assertion rather than evidence weakens a thesis defense.
 ### Exercises
 
 - **EX148 — Assessor question.** Name one assessor question. *Rubric:* 3 = timelock lengths;; 2 = synthetic data;; 1 = hobbies;; 0 = none.
-- **EX149 — Different approach.** What would Jonas do differently? *Rubric:* 3 = involve members in usability testing earlier;; 2 = earlier members;; 1 = nothing;; 0 = none.
+- **EX149 — Different approach.** What would Jonas do differently? *Rubric:* 3 = involve members in usability testing earlier;; 2 = earlier members;; 1 = vague;; 0 = none.
 - **EX150 — Key lessons.** What did Jonas call the most important lessons? *Rubric:* 3 = requirements, layered controls, measurement and people;; 2 = process;; 1 = clever code;; 0 = none.
 
 ### Synthesis

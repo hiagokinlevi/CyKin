@@ -625,7 +625,7 @@ A friend who helped with analysis is not independent. Presenting to the communit
 - **EX053 — Correction log.** What does a correction-log entry contain? *Rubric:* 3 = what changed, why, date, effect on conclusions; 2 = two; 1 = vague; 0 = none.
 - **EX054 — Community first.** Why present to the board before public defence? *Rubric:* 3 = reciprocity/trust; agreement; chance to check aggregation; 2 = courtesy; 1 = unnecessary; 0 = none.
 - **EX055 — Deletion proof.** After marking, what must Lucía do with raw timings? *Rubric:* 3 = delete as agreed and record deletion; 2 = delete; 1 = keep; 0 = none.
-- **EX056 — Paper recheck.** What must be rechecked before turning the dissertation into a paper? *Rubric:* 3 = board conditions (aggregation, no names) still met in new text/figures; 2 = vague; 1 = nothing; 0 = none.
+- **EX056 — Paper recheck.** What must be rechecked before turning the dissertation into a paper? *Rubric:* 3 = board conditions (aggregation, no names) still met in new text/figures; 2 = vague; 1 = vague; 0 = none.
 
 ### Synthesis
 

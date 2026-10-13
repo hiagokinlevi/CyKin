@@ -1711,7 +1711,7 @@ Overstating findings under questioning damages credibility.
 ### Exercises
 
 - **EX118 — New risk.** What new risk could automation create? *Rubric:* 3 = wrong end dates disabling current staff;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX119 — Comparison answer.** Why was there no comparison organisation? *Rubric:* 3 = none was available;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX119 — Comparison answer.** Why was there no comparison organisation? *Rubric:* 3 = none was available;; 2 = correct;; 1 = vague;; 0 = no answer.
 - **EX120 — Adopted recommendation.** Which recommendation does Ashfield adopt? *Rubric:* 3 = temporary contract end dates;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>

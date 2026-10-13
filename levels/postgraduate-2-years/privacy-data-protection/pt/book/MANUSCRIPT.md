@@ -191,10 +191,10 @@ Dados sintéticos refletem premissas; pilotos reais podem mostrar resultados dif
 
 ### Exercícios
 
-- **EX011 — Valor do GPS.** O que o GPS preciso acrescentou na simulação? *Rubrica:* 3 = nada além da cidade: os mesmos 43,1% de detecção e 90 alarmes falsos;; 2 = menciona ausência de ganho;; 1 = melhorou;; 0 = nenhuma.
+- **EX011 — Valor do GPS.** O que o GPS preciso acrescentou na simulação? *Rubrica:* 3 = nada além da cidade: os mesmos 43,1% de detecção e 90 alarmes falsos;; 2 = menciona ausência de ganho;; 1 = melhorou;; 0 = sem resposta.
 - **EX012 — Custo de usar só o dispositivo.** Por que não usar apenas a novidade do dispositivo? *Rubrica:* 3 = 1.572 alarmes falsos bloqueariam muitos clientes legítimos;; 2 = menciona alarmes falsos;; 1 = é a melhor;; 0 = nenhuma.
 - **EX013 — Decisão provisória.** O que a Corvina usa até o fim do piloto? *Rubrica:* 3 = a localização por cidade;; 2 = menciona cidade;; 1 = GPS;; 0 = nenhuma.
-- **EX014 — Princípio da necessidade.** Que princípios exigem limitar os dados ao necessário? *Rubrica:* 3 = o artigo 5(1)(c) do GDPR e o art. 6º, III, da LGPD;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX014 — Princípio da necessidade.** Que princípios exigem limitar os dados ao necessário? *Rubrica:* 3 = o artigo 5(1)(c) do GDPR e o art. 6º, III, da LGPD;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Equipe resistente.** Por que a equipe antifraude aceitou o piloto? *Rubrica:* 3 = ele poderia lhe dar razão;; 2 = menciona justiça;; 1 = foi forçada;; 0 = nenhuma.
 
 ### Síntese
@@ -239,9 +239,9 @@ Notas de ética precisam de exemplos para serem usáveis; princípios abstratos 
 
 - **EX016 — Duas visões de risco.** Por que acrescentar uma coluna para o dano às pessoas? *Rubrica:* 3 = a lei se concentra nos direitos das pessoas, não só nas perdas da empresa;; 2 = menciona pessoas;; 1 = só a empresa;; 0 = nenhuma.
 - **EX017 — Inferência de eventos de vida.** Por que desaconselhar a inferência de eventos de vida a partir de transações? *Rubrica:* 3 = rompe as normas do contexto e equivale a uso secundário;; 2 = menciona invasão;; 1 = apoia;; 0 = nenhuma.
-- **EX018 — Conflito do encarregado.** Que conflito Priscila identificou para o encarregado? *Rubrica:* 3 = reportar-se a um executivo responsável pela receita de marketing;; 2 = menciona a linha de reporte;; 1 = nenhum;; 0 = nenhuma.
+- **EX018 — Conflito do encarregado.** Que conflito Priscila identificou para o encarregado? *Rubrica:* 3 = reportar-se a um executivo responsável pela receita de marketing;; 2 = menciona a linha de reporte;; 1 = vago;; 0 = nenhuma.
 - **EX019 — Artigo 38(6).** O que exige o artigo 38(6) do GDPR? *Rubrica:* 3 = as outras funções do DPO não podem gerar conflito de interesses;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
-- **EX020 — Segmentação revista.** Como a decisão de segmentação foi revista? *Rubrica:* 3 = categorias mais amplas e personalização mediante adesão;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX020 — Segmentação revista.** Como a decisão de segmentação foi revista? *Rubrica:* 3 = categorias mais amplas e personalização mediante adesão;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -286,7 +286,7 @@ Testes de banner medem comportamento, e não compreensão; acrescente verificaç
 - **EX021 — Problema do banner A.** Por que o banner A provavelmente falha? *Rubrica:* 3 = recusar é mais difícil que aceitar;; 2 = menciona facilidade;; 1 = é conforme;; 0 = nenhuma.
 - **EX022 — Aceitação menor.** Por que uma queda na aceitação não é um fracasso? *Rubrica:* 3 = as escolhas refletem preferências reais; consentimentos induzidos são frágeis;; 2 = menciona preferências;; 1 = é fracasso;; 0 = nenhuma.
 - **EX023 — Por que testar B.** Por que testar B antes de C? *Rubrica:* 3 = menor mudança provavelmente conforme e fácil de implementar;; 2 = menciona simplicidade;; 1 = aleatório;; 0 = nenhuma.
-- **EX024 — Medida de arrependimento.** Que resultado mede o arrependimento? *Rubrica:* 3 = revogações em até noventa dias;; 2 = menciona revogações;; 1 = nenhum;; 0 = nenhuma.
+- **EX024 — Medida de arrependimento.** Que resultado mede o arrependimento? *Rubrica:* 3 = revogações em até noventa dias;; 2 = menciona revogações;; 1 = vago;; 0 = nenhuma.
 - **EX025 — Lei do consentimento para cookies.** Que dispositivo exige consentimento para cookies não essenciais? *Rubrica:* 3 = o artigo 5(3) da Diretiva ePrivacy;; 2 = menciona a ePrivacy;; 1 = só o GDPR;; 0 = nenhuma.
 
 ### Síntese
@@ -351,9 +351,9 @@ Duas semanas podem não captar o comportamento sazonal; repita o teste mais tard
 ### Exercícios
 
 - **EX026 — Diferença na aceitação.** Qual foi a diferença de aceitação entre A e B? *Rubrica:* 3 = 22,0 pontos (IC de 95% de 20,0 a 24,0);; 2 = aproximadamente;; 1 = errada;; 0 = nenhuma.
-- **EX027 — Razão das revogações.** Como as revogações se compararam? *Rubrica:* 3 = 41 contra 12 por mil, mais de três vezes maior com A;; 2 = só os números;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Razão das revogações.** Como as revogações se compararam? *Rubrica:* 3 = 41 contra 12 por mil, mais de três vezes maior com A;; 2 = só os números;; 1 = vago;; 0 = nenhuma.
 - **EX028 — Ética do teste.** Por que exibir o banner A durante o teste precisa ser breve? *Rubrica:* 3 = ele é provavelmente menos conforme, justificado só para medir a melhoria;; 2 = menciona conformidade;; 1 = sem limite;; 0 = nenhuma.
-- **EX029 — Consentimento duradouro.** Que benefício de negócio o banner B oferece? *Rubrica:* 3 = consentimentos em menor número, mas mais duradouros;; 2 = menciona estabilidade;; 1 = nenhum;; 0 = nenhuma.
+- **EX029 — Consentimento duradouro.** Que benefício de negócio o banner B oferece? *Rubrica:* 3 = consentimentos em menor número, mas mais duradouros;; 2 = menciona estabilidade;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Dúvida sobre a liberdade.** Por que os consentimentos obtidos com A são questionáveis? *Rubrica:* 3 = o design empurrou os usuários, e as revogações maiores sugerem que as escolhas não refletiam preferências;; 2 = menciona indução;; 1 = são válidos;; 0 = nenhuma.
 
 ### Síntese
@@ -397,8 +397,8 @@ As perguntas da triagem podem ser respondidas sem cuidado; confira as respostas 
 ### Exercícios
 
 - **EX031 — Gatilhos da triagem.** Cite duas perguntas da triagem que acionam uma DPIA. *Rubrica:* 3 = dados novos, nova finalidade, novo fornecedor ou muitos clientes afetados;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX032 — Critérios de compras.** Que critérios de privacidade foram acrescentados às compras? *Rubrica:* 3 = contratos conformes ao artigo 28, cláusulas de exclusão, listas de suboperadores e prazos de notificação;; 2 = dois;; 1 = nenhum;; 0 = nenhuma.
-- **EX033 — O que os multiplicadores pegaram.** O que os multiplicadores identificaram cedo? *Rubrica:* 3 = capturas de tela com números de cartão no chat interno;; 2 = menciona capturas de tela;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Critérios de compras.** Que critérios de privacidade foram acrescentados às compras? *Rubrica:* 3 = contratos conformes ao artigo 28, cláusulas de exclusão, listas de suboperadores e prazos de notificação;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX033 — O que os multiplicadores pegaram.** O que os multiplicadores identificaram cedo? *Rubrica:* 3 = capturas de tela com números de cartão no chat interno;; 2 = menciona capturas de tela;; 1 = vago;; 0 = nenhuma.
 - **EX034 — Valor da coordenação.** Por que coordenar privacidade, segurança e riscos todo mês? *Rubrica:* 3 = evita duplicação e lacunas, tornando a proteção coerente;; 2 = menciona alinhamento;; 1 = desnecessário;; 0 = nenhuma.
 - **EX035 — DPIA antifraude.** Que mudança em produto existente acionou uma DPIA? *Rubrica:* 3 = as mudanças no modelo antifraude;; 2 = menciona fraude;; 1 = vago;; 0 = nenhuma.
 
@@ -511,10 +511,10 @@ Indicadores podem ser manipulados; audite os dados de origem.
 ### Exercícios
 
 - **EX041 — Indicadores vermelhos.** Que indicadores estão vermelhos? *Rubrica:* 3 = incidentes comunicados com atraso, operadores sem contrato, registros além da retenção;; 2 = dois;; 1 = errado;; 0 = nenhuma.
-- **EX042 — Indicador âmbar.** Que indicador está âmbar e por quê? *Rubrica:* 3 = treinamento vencido: 10,5%, logo acima de 10,0%;; 2 = cita-o;; 1 = nenhum;; 0 = nenhuma.
-- **EX043 — Limite vermelho.** Como o limite vermelho é definido? *Rubrica:* 3 = 1,5 vez o limite de apetite;; 2 = menciona um múltiplo;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Achado da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = número de operadores sem contrato subestimado por lacunas no registro;; 2 = menciona subestimação;; 1 = nada;; 0 = nenhuma.
-- **EX045 — História para o conselho.** Que quatro elementos Priscila usa para cada indicador vermelho? *Rubrica:* 3 = o que está errado, por que importa, o que corrige, quando;; 2 = três;; 1 = nenhum;; 0 = nenhuma.
+- **EX042 — Indicador âmbar.** Que indicador está âmbar e por quê? *Rubrica:* 3 = treinamento vencido: 10,5%, logo acima de 10,0%;; 2 = cita-o;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Limite vermelho.** Como o limite vermelho é definido? *Rubrica:* 3 = 1,5 vez o limite de apetite;; 2 = menciona um múltiplo;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Achado da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = número de operadores sem contrato subestimado por lacunas no registro;; 2 = menciona subestimação;; 1 = vago;; 0 = nenhuma.
+- **EX045 — História para o conselho.** Que quatro elementos Priscila usa para cada indicador vermelho? *Rubrica:* 3 = o que está errado, por que importa, o que corrige, quando;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -559,7 +559,7 @@ Resumos simplificam; inclua links para os originais.
 - **EX046 — Dados de transações.** Por que os dados de transações não são anônimos depois de retirar os nomes? *Rubrica:* 3 = poucas compras com horários e lugares identificam clientes;; 2 = menciona distintividade;; 1 = são anônimos;; 0 = nenhuma.
 - **EX047 — Limites da privacidade diferencial.** Onde a Corvina não pode usar privacidade diferencial? *Rubrica:* 3 = na detecção de fraudes, que precisa de dados individuais;; 2 = menciona fraude;; 1 = em todo lugar;; 0 = nenhuma.
 - **EX048 — Teste local.** Por que os profissionais precisam testar localmente as afirmações das pesquisas? *Rubrica:* 3 = os contextos das pesquisas diferem dos seus;; 2 = menciona contexto;; 1 = confiar na pesquisa;; 0 = nenhuma.
-- **EX049 — Elementos do resumo.** O que contém cada entrada do resumo de Priscila? *Rubrica:* 3 = afirmação, evidências, limites, implicações;; 2 = três;; 1 = nenhum;; 0 = nenhuma.
+- **EX049 — Elementos do resumo.** O que contém cada entrada do resumo de Priscila? *Rubrica:* 3 = afirmação, evidências, limites, implicações;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX050 — Leitura compartilhada.** Quem recebe o resumo crítico? *Rubrica:* 3 = os multiplicadores de privacidade;; 2 = menciona colegas;; 1 = o conselho;; 0 = nenhuma.
 
 ### Síntese
@@ -603,10 +603,10 @@ Números menores de retenção podem esconder repositórios não inventariados; 
 ### Exercícios
 
 - **EX051 — Resultado do projeto.** Como mudaram os registros além da retenção? *Rubrica:* 3 = de 11,0% para 3,8%;; 2 = a direção;; 1 = errado;; 0 = nenhuma.
-- **EX052 — Quase acidente.** Que quase acidente ocorreu e como foi corrigido? *Rubrica:* 3 = uma rotina quase excluiu registros sob retenção judicial; registros sem marcação agora são bloqueados;; 2 = uma parte;; 1 = nenhum;; 0 = nenhuma.
+- **EX052 — Quase acidente.** Que quase acidente ocorreu e como foi corrigido? *Rubrica:* 3 = uma rotina quase excluiu registros sob retenção judicial; registros sem marcação agora são bloqueados;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 - **EX053 — Resistência.** Como Priscila lidou com as equipes que queriam guardar dados? *Rubrica:* 3 = ofereceu estatísticas agregadas guardadas por mais tempo e explicou os riscos;; 2 = uma parte;; 1 = impôs;; 0 = nenhuma.
-- **EX054 — Benefícios colaterais.** Cite dois benefícios colaterais do projeto. *Rubrica:* 3 = custos de armazenamento menores e pedidos de titulares mais rápidos;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
-- **EX055 — Sustentação.** O que sustenta a melhoria? *Rubrica:* 3 = monitoramento e inclusão dos sistemas novos antes do lançamento;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Benefícios colaterais.** Cite dois benefícios colaterais do projeto. *Rubrica:* 3 = custos de armazenamento menores e pedidos de titulares mais rápidos;; 2 = um;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Sustentação.** O que sustenta a melhoria? *Rubrica:* 3 = monitoramento e inclusão dos sistemas novos antes do lançamento;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -648,10 +648,10 @@ A autoavaliação é enviesada; peça a opinião de colegas e auditores.
 
 ### Exercícios
 
-- **EX056 — Vermelhos remanescentes.** Que indicadores continuam vermelhos depois de dois anos? *Rubrica:* 3 = comunicação tardia de incidentes e operadores sem contrato;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX056 — Vermelhos remanescentes.** Que indicadores continuam vermelhos depois de dois anos? *Rubrica:* 3 = comunicação tardia de incidentes e operadores sem contrato;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX057 — Princípios transferíveis.** Cite três princípios transferíveis. *Rubrica:* 3 = por exemplo, separar restrições de trade-offs; testar a necessidade; reportar com honestidade;; 2 = dois;; 1 = ferramentas;; 0 = nenhuma.
 - **EX058 — Não é um modelo pronto.** Por que Priscila evita apresentar seu programa como modelo pronto? *Rubrica:* 3 = os contextos e os recursos diferem;; 2 = menciona contexto;; 1 = é universal;; 0 = nenhuma.
-- **EX059 — Normas em evolução.** Dê um exemplo de norma em evolução que ela precisa acompanhar. *Rubrica:* 3 = a edição de 2025 da ISO/IEC 27701;; 2 = menciona ISO;; 1 = nenhum;; 0 = nenhuma.
+- **EX059 — Normas em evolução.** Dê um exemplo de norma em evolução que ela precisa acompanhar. *Rubrica:* 3 = a edição de 2025 da ISO/IEC 27701;; 2 = menciona ISO;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Áreas de desenvolvimento.** Cite duas áreas de desenvolvimento que Priscila planeja. *Rubrica:* 3 = engenharia de privacidade/privacidade diferencial, interações com reguladores, mentoria;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese

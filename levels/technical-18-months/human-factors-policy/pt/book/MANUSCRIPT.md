@@ -67,11 +67,11 @@ Dois turnos podem não ser típicos. As observações não devem registrar nomes
 
 - **EX001 — Senha na parede.** Por que a senha da equipe está escrita na parede? *Rubrica:* 3 = logins individuais tomam tempo em turnos corridos;; 2 = tempo;; 1 = descuido;; 0 = nenhuma.
 
-- **EX002 — Mensagens aos motoristas.** O que os motoristas às vezes recebem? *Rubrica:* 3 = mensagens de texto que dizem vir da empresa sobre mudanças de rota;; 2 = mensagens falsas;; 1 = nada;; 0 = nenhuma.
+- **EX002 — Mensagens aos motoristas.** O que os motoristas às vezes recebem? *Rubrica:* 3 = mensagens de texto que dizem vir da empresa sobre mudanças de rota;; 2 = mensagens falsas;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Reporte atual.** Como os funcionários reportam hoje as mensagens suspeitas? *Rubrica:* 3 = avisam o supervisor, que pode avisar a TI;; 2 = supervisor;; 1 = um botão;; 0 = nenhuma.
 
-- **EX004 — Propósito da linha de base.** Por que registrar uma linha de base? *Rubrica:* 3 = para medir depois se as mudanças ajudaram;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Propósito da linha de base.** Por que registrar uma linha de base? *Rubrica:* 3 = para medir depois se as mudanças ajudaram;; 2 = comparação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -109,13 +109,13 @@ As etiquetas perdem efeito se usadas em excesso. Os motoristas podem não ler as
 
 ### Exercícios
 
-- **EX005 — Domínio parecido aprovado.** Por que o e-mail do domínio parecido passa na autenticação? *Rubrica:* 3 = o atacante é dono do domínio parecido;; 2 = propriedade;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Domínio parecido aprovado.** Por que o e-mail do domínio parecido passa na autenticação? *Rubrica:* 3 = o atacante é dono do domínio parecido;; 2 = propriedade;; 1 = vago;; 0 = nenhuma.
 
-- **EX006 — Whitten e Tygar.** O que Whitten e Tygar (1999) mostraram? *Rubrica:* 3 = interfaces de segurança sem orientação confundem os usuários;; 2 = usabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Whitten e Tygar.** O que Whitten e Tygar (1999) mostraram? *Rubrica:* 3 = interfaces de segurança sem orientação confundem os usuários;; 2 = usabilidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX007 — Teste dos avisos.** Onde os avisos foram testados primeiro? *Rubrica:* 3 = numa caixa postal de teste com mensagens sintéticas;; 2 = caixa postal de teste;; 1 = caixas postais reais;; 0 = nenhuma.
 
-- **EX008 — Regra para os motoristas.** Que regra Priya redigiu para os motoristas? *Rubrica:* 3 = as mudanças de rota só chegam pelo aplicativo de rotas;; 2 = só pelo aplicativo;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Regra para os motoristas.** Que regra Priya redigiu para os motoristas? *Rubrica:* 3 = as mudanças de rota só chegam pelo aplicativo de rotas;; 2 = só pelo aplicativo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -167,11 +167,11 @@ Crachás podem ser perdidos ou compartilhados. As datas de término podem precis
 
 ### Exercícios
 
-- **EX009 — Tempo do crachá.** Quanto tempo leva um login com crachá? *Rubrica:* 3 = cerca de dois segundos;; 2 = 2 segundos;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Tempo do crachá.** Quanto tempo leva um login com crachá? *Rubrica:* 3 = cerca de dois segundos;; 2 = 2 segundos;; 1 = vago;; 0 = nenhuma.
 
-- **EX010 — Minutos desbloqueados no laboratório.** Como mudaram os minutos desbloqueados no laboratório? *Rubrica:* 3 = de 1.920 para 85 por semana;; 2 = queda;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Minutos desbloqueados no laboratório.** Como mudaram os minutos desbloqueados no laboratório? *Rubrica:* 3 = de 1.920 para 85 por semana;; 2 = queda;; 1 = vago;; 0 = nenhuma.
 
-- **EX011 — Aceitação do bloqueio.** Por que um bloqueio de dois minutos é aceito? *Rubrica:* 3 = desbloquear só exige um toque;; 2 = custo baixo;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Aceitação do bloqueio.** Por que um bloqueio de dois minutos é aceito? *Rubrica:* 3 = desbloquear só exige um toque;; 2 = custo baixo;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Expiração dos temporários.** Como terminam as contas dos temporários? *Rubrica:* 3 = expiram automaticamente numa data de término;; 2 = expiração;; 1 = remoção manual;; 0 = nenhuma.
 
@@ -233,11 +233,11 @@ As exportações podem mudar de formato. Às vezes é possível vincular os cód
 
 - **EX013 — Motivo do módulo csv.** Por que usar o módulo csv do Python? *Rubrica:* 3 = trata as vírgulas dentro dos campos;; 2 = parsing;; 1 = split;; 0 = nenhuma.
 
-- **EX014 — Centro principal no laboratório.** Que centro de distribuição teve mais reportes no laboratório? *Rubrica:* 3 = North, com 12;; 2 = North;; 1 = nada;; 0 = nenhuma.
+- **EX014 — Centro principal no laboratório.** Que centro de distribuição teve mais reportes no laboratório? *Rubrica:* 3 = North, com 12;; 2 = North;; 1 = vago;; 0 = nenhuma.
 
-- **EX015 — Vantagem do JSON.** Por que guardar as configurações em JSON? *Rubrica:* 3 = as mudanças não exigem editar o código;; 2 = manutenibilidade;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Vantagem do JSON.** Por que guardar as configurações em JSON? *Rubrica:* 3 = as mudanças não exigem editar o código;; 2 = manutenibilidade;; 1 = vago;; 0 = nenhuma.
 
-- **EX016 — Campo removido.** Que campo foi removido da exportação? *Rubrica:* 3 = os endereços de e-mail de quem reporta;; 2 = endereços;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Campo removido.** Que campo foi removido da exportação? *Rubrica:* 3 = os endereços de e-mail de quem reporta;; 2 = endereços;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -277,11 +277,11 @@ Expansão do escopo. A coleta de evidências toma tempo.
 
 - **EX017 — Fora do escopo.** Cite um item fora do escopo. *Rubrica:* 3 = o monitoramento de funcionários individuais;; 2 = monitoramento;; 1 = caixa postal de reporte;; 0 = nenhuma.
 
-- **EX018 — Limite das simulações.** Que limite vale para o phishing simulado? *Rubrica:* 3 = nenhum é enviado durante o estágio;; 2 = nenhum;; 1 = mensal;; 0 = nenhuma.
+- **EX018 — Limite das simulações.** Que limite vale para o phishing simulado? *Rubrica:* 3 = nenhum é enviado durante o estágio;; 2 = nenhum;; 1 = mensal;; 0 = sem resposta.
 
-- **EX019 — Registro das evidências.** O que Priya registra com cada item de evidência? *Rubrica:* 3 = a fonte e a data;; 2 = procedência;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Registro das evidências.** O que Priya registra com cada item de evidência? *Rubrica:* 3 = a fonte e a data;; 2 = procedência;; 1 = vago;; 0 = nenhuma.
 
-- **EX020 — Evidências contrárias.** Por que registrar as evidências contrárias? *Rubrica:* 3 = escondê-las induziria a erro;; 2 = honestidade;; 1 = nada;; 0 = nenhuma.
+- **EX020 — Evidências contrárias.** Por que registrar as evidências contrárias? *Rubrica:* 3 = escondê-las induziria a erro;; 2 = honestidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -347,7 +347,7 @@ As taxas das etapas são estimativas. As etapas interagem.
 
 - **EX023 — Maior perda.** Que etapa perde mais? *Rubrica:* 3 = a decisão de reportar;; 2 = decisão;; 1 = perceber;; 0 = nenhuma.
 
-- **EX024 — Correção da decisão.** O que corrige a etapa de decisão? *Rubrica:* 3 = os gestores dizerem que reportes na dúvida são bem-vindos;; 2 = mensagem;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Correção da decisão.** O que corrige a etapa de decisão? *Rubrica:* 3 = os gestores dizerem que reportes na dúvida são bem-vindos;; 2 = mensagem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -389,9 +389,9 @@ Acordos podem ser esquecidos. Os logs podem estar incompletos.
 
 - **EX026 — Regra de coleta.** Que regra orienta a coleta de telemetria? *Rubrica:* 3 = coletar só o que está ligado a uma decisão;; 2 = mínimo;; 1 = tudo;; 0 = nenhuma.
 
-- **EX027 — Risco dos dados de crachá.** Que uso indevido os dados de crachá permitiriam? *Rubrica:* 3 = monitorar a produtividade;; 2 = vigilância;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Risco dos dados de crachá.** Que uso indevido os dados de crachá permitiriam? *Rubrica:* 3 = monitorar a produtividade;; 2 = vigilância;; 1 = vago;; 0 = nenhuma.
 
-- **EX028 — Limite dos dados de crachá.** A que se limitam os dados de crachá? *Rubrica:* 3 = investigações de segurança e contagens agregadas;; 2 = uso limitado;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Limite dos dados de crachá.** A que se limitam os dados de crachá? *Rubrica:* 3 = investigações de segurança e contagens agregadas;; 2 = uso limitado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -435,7 +435,7 @@ As classificações se sobrepõem. As defesas têm efeitos colaterais.
 
 - **EX031 — Defesa contra lapsos.** Como os lapsos são reduzidos? *Rubrica:* 3 = eliminando as exigências de memória;; 2 = memória;; 1 = treinamento;; 0 = nenhuma.
 
-- **EX032 — Defesa contra a fraude.** O que reduz os enganos causados por fraude? *Rubrica:* 3 = verificação que não se baseia na aparência;; 2 = retornos de ligação;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Defesa contra a fraude.** O que reduz os enganos causados por fraude? *Rubrica:* 3 = verificação que não se baseia na aparência;; 2 = retornos de ligação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -492,11 +492,11 @@ Viés de autodeclaração. Testes pequenos.
 
 - **EX033 — Taxa de resposta.** Qual foi a taxa de resposta do questionário? *Rubrica:* 3 = 70%;; 2 = 210 de 300;; 1 = 210%;; 0 = nenhuma.
 
-- **EX034 — Barreira principal no laboratório.** Qual foi a principal barreira no laboratório? *Rubrica:* 3 = não saber como reportar pelos terminais ou celulares, 88 de 210;; 2 = como;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Barreira principal no laboratório.** Qual foi a principal barreira no laboratório? *Rubrica:* 3 = não saber como reportar pelos terminais ou celulares, 88 de 210;; 2 = como;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Lacuna dos terminais.** Por que os trabalhadores do armazém não conseguiam reportar? *Rubrica:* 3 = os terminais não têm cliente de e-mail;; 2 = sem caminho;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Lacuna dos terminais.** Por que os trabalhadores do armazém não conseguiam reportar? *Rubrica:* 3 = os terminais não têm cliente de e-mail;; 2 = sem caminho;; 1 = vago;; 0 = nenhuma.
 
-- **EX036 — Mudança de rótulo.** Que rótulo substituiu incidente? *Rubrica:* 3 = Reportar algo estranho;; 2 = palavras simples;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Mudança de rótulo.** Que rótulo substituiu incidente? *Rubrica:* 3 = Reportar algo estranho;; 2 = palavras simples;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -536,11 +536,11 @@ As retenções podem atrasar alterações genuínas. Os telefones do cadastro po
 
 - **EX037 — Formulário do terminal.** O que o formulário do terminal pede? *Rubrica:* 3 = uma descrição curta e o número do terminal, sem nome;; 2 = mínimo;; 1 = nome;; 0 = nenhuma.
 
-- **EX038 — Caminho dos motoristas.** Como os motoristas reportam mensagens de texto suspeitas? *Rubrica:* 3 = encaminham-nas para um número curto da empresa;; 2 = encaminhar;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Caminho dos motoristas.** Como os motoristas reportam mensagens de texto suspeitas? *Rubrica:* 3 = encaminham-nas para um número curto da empresa;; 2 = encaminhar;; 1 = vago;; 0 = nenhuma.
 
 - **EX039 — Controle de alteração bancária.** Como uma alteração de dados bancários é confirmada? *Rubrica:* 3 = uma segunda pessoa liga para o número do cadastro;; 2 = retorno de ligação;; 1 = resposta por e-mail;; 0 = nenhuma.
 
-- **EX040 — Valor da documentação.** Por que registrar o motivo de cada configuração? *Rubrica:* 3 = para que ninguém a remova sem entender;; 2 = justificativa;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Valor da documentação.** Por que registrar o motivo de cada configuração? *Rubrica:* 3 = para que ninguém a remova sem entender;; 2 = justificativa;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -594,13 +594,13 @@ As verificações refletem um momento. Os voluntários podem não representar to
 
 ### Exercícios
 
-- **EX041 — Resultado esperado.** Por que escrever os resultados esperados antes do teste? *Rubrica:* 3 = para que fique claro se passou ou falhou;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Resultado esperado.** Por que escrever os resultados esperados antes do teste? *Rubrica:* 3 = para que fique claro se passou ou falhou;; 2 = clareza;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Problema do motorista.** Que problema o motorista encontrou? *Rubrica:* 3 = encaminhar uma mensagem de texto exigia cinco toques;; 2 = incômodo;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Problema do motorista.** Que problema o motorista encontrou? *Rubrica:* 3 = encaminhar uma mensagem de texto exigia cinco toques;; 2 = incômodo;; 1 = vago;; 0 = nenhuma.
 
 - **EX043 — Taxa de aprovação no laboratório.** Quantos controles passaram de primeira no laboratório? *Rubrica:* 3 = 5 de 7;; 2 = cinco;; 1 = 7 de 7;; 0 = nenhuma.
 
-- **EX044 — Uso da tabela.** Em que a tabela se transforma? *Rubrica:* 3 = na linha de base para nova verificação;; 2 = linha de base;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Uso da tabela.** Em que a tabela se transforma? *Rubrica:* 3 = na linha de base para nova verificação;; 2 = linha de base;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -653,13 +653,13 @@ Amostra pequena. Condições calmas.
 
 ### Exercícios
 
-- **EX045 — Isolamento.** Por que o laboratório fica desconectado dos sistemas reais? *Rubrica:* 3 = para manter os testes isolados e seguros;; 2 = isolamento;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Isolamento.** Por que o laboratório fica desconectado dos sistemas reais? *Rubrica:* 3 = para manter os testes isolados e seguros;; 2 = isolamento;; 1 = vago;; 0 = nenhuma.
 
-- **EX046 — Reportes perdidos.** O que aconteceu com dois reportes do método antigo? *Rubrica:* 3 = nunca chegaram porque o supervisor esqueceu;; 2 = lapso;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Reportes perdidos.** O que aconteceu com dois reportes do método antigo? *Rubrica:* 3 = nunca chegaram porque o supervisor esqueceu;; 2 = lapso;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Tempos do laboratório.** Que tempos médios o laboratório mostrou? *Rubrica:* 3 = antigo 260 segundos, novo 22 segundos;; 2 = mais rápido;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Tempos do laboratório.** Que tempos médios o laboratório mostrou? *Rubrica:* 3 = antigo 260 segundos, novo 22 segundos;; 2 = mais rápido;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Acompanhamento dos motoristas.** Que acompanhamento é necessário para os motoristas? *Rubrica:* 3 = uma opção de encaminhamento mais simples;; 2 = mais simples;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Acompanhamento dos motoristas.** Que acompanhamento é necessário para os motoristas? *Rubrica:* 3 = uma opção de encaminhamento mais simples;; 2 = mais simples;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -697,13 +697,13 @@ As verificações semanais exigem atenção. Os checklists podem ser pulados.
 
 ### Exercícios
 
-- **EX049 — Falha silenciosa.** Por que os trabalhadores não perceberam a falha? *Rubrica:* 3 = o formulário não mostrava erro nem confirmação;; 2 = silenciosa;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Falha silenciosa.** Por que os trabalhadores não perceberam a falha? *Rubrica:* 3 = o formulário não mostrava erro nem confirmação;; 2 = silenciosa;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Queda mal interpretada.** Como o líder de TI interpretou mal a queda? *Rubrica:* 3 = como menos mensagens suspeitas;; 2 = boa notícia;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Queda mal interpretada.** Como o líder de TI interpretou mal a queda? *Rubrica:* 3 = como menos mensagens suspeitas;; 2 = boa notícia;; 1 = vago;; 0 = nenhuma.
 
-- **EX051 — Correção do formulário.** O que o formulário mostra agora? *Rubrica:* 3 = um número de confirmação ou um erro;; 2 = retorno;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Correção do formulário.** O que o formulário mostra agora? *Rubrica:* 3 = um número de confirmação ou um erro;; 2 = retorno;; 1 = vago;; 0 = nenhuma.
 
-- **EX052 — Verificação semanal.** O que a verificação semanal compara? *Rubrica:* 3 = os reportes com as mensagens maliciosas entregues por centro;; 2 = razão;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Verificação semanal.** O que a verificação semanal compara? *Rubrica:* 3 = os reportes com as mensagens maliciosas entregues por centro;; 2 = razão;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -761,7 +761,7 @@ As listas de conhecidos precisam de atualização. As amostras podem deixar pass
 
 - **EX055 — Regra da automação.** Do que a automação deve cuidar? *Rubrica:* 3 = do que é certo e repetitivo;; 2 = rotina;; 1 = julgamento;; 0 = nenhuma.
 
-- **EX056 — Amostra mensal.** Que verificação mensal Priya acrescentou? *Rubrica:* 3 = conferir à mão dez vereditos automáticos;; 2 = amostra;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Amostra mensal.** Que verificação mensal Priya acrescentou? *Rubrica:* 3 = conferir à mão dez vereditos automáticos;; 2 = amostra;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -799,13 +799,13 @@ Reservas perdem a prática se não forem usadas. Os contratos mudam.
 
 ### Exercícios
 
-- **EX057 — Reportes dos clientes.** O que acontece com os reportes de clientes sobre mensagens de texto falsas? *Rubrica:* 3 = são encaminhados à triagem e um aviso é publicado no site;; 2 = integração;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Reportes dos clientes.** O que acontece com os reportes de clientes sobre mensagens de texto falsas? *Rubrica:* 3 = são encaminhados à triagem e um aviso é publicado no site;; 2 = integração;; 1 = vago;; 0 = nenhuma.
 
 - **EX058 — Ponto único.** Quem é o principal ponto único de falha? *Rubrica:* 3 = o líder de TI;; 2 = uma pessoa;; 1 = o prestador;; 0 = nenhuma.
 
-- **EX059 — Reserva da triagem.** Como se reduz a dependência do líder de TI? *Rubrica:* 3 = treinando uma segunda pessoa com um runbook e um rodízio;; 2 = reserva;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Reserva da triagem.** Como se reduz a dependência do líder de TI? *Rubrica:* 3 = treinando uma segunda pessoa com um runbook e um rodízio;; 2 = reserva;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Risco contratual.** Que risco de fornecedor é acompanhado no calendário? *Rubrica:* 3 = a renovação do contrato de telefonia móvel;; 2 = renovação;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Risco contratual.** Que risco de fornecedor é acompanhado no calendário? *Rubrica:* 3 = a renovação do contrato de telefonia móvel;; 2 = renovação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -843,13 +843,13 @@ As revisões são puladas. As regras precisam ser aplicadas.
 
 ### Exercícios
 
-- **EX061 — Teste dos runbooks.** Como os runbooks foram testados? *Rubrica:* 3 = um colega os seguiu sem ajuda;; 2 = simulação guiada;; 1 = nada;; 0 = nenhuma.
+- **EX061 — Teste dos runbooks.** Como os runbooks foram testados? *Rubrica:* 3 = um colega os seguiu sem ajuda;; 2 = simulação guiada;; 1 = vago;; 0 = nenhuma.
 
-- **EX062 — Iscas proibidas.** Que iscas são proibidas? *Rubrica:* 3 = salário, saúde ou estabilidade no emprego;; 2 = angústia;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Iscas proibidas.** Que iscas são proibidas? *Rubrica:* 3 = salário, saúde ou estabilidade no emprego;; 2 = angústia;; 1 = vago;; 0 = nenhuma.
 
-- **EX063 — Regra dos dados.** Onde os dados de reporte e de cliques nunca podem ser usados? *Rubrica:* 3 = em processos disciplinares ou de desempenho;; 2 = RH;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Regra dos dados.** Onde os dados de reporte e de cliques nunca podem ser usados? *Rubrica:* 3 = em processos disciplinares ou de desempenho;; 2 = RH;; 1 = vago;; 0 = nenhuma.
 
-- **EX064 — Perigo da desatualização.** Por que uma documentação desatualizada pode ser pior do que nenhuma? *Rubrica:* 3 = as pessoas confiam nela;; 2 = confiança equivocada;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Perigo da desatualização.** Por que uma documentação desatualizada pode ser pior do que nenhuma? *Rubrica:* 3 = as pessoas confiam nela;; 2 = confiança equivocada;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -901,13 +901,13 @@ Os voluntários conheciam o propósito. Grupo pequeno.
 
 ### Exercícios
 
-- **EX065 — Grupos do exercício.** Como os dois grupos foram tratados na primeira sessão? *Rubrica:* 3 = metade recebeu vereditos rápidos, metade nada;; 2 = retorno;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Grupos do exercício.** Como os dois grupos foram tratados na primeira sessão? *Rubrica:* 3 = metade recebeu vereditos rápidos, metade nada;; 2 = retorno;; 1 = vago;; 0 = nenhuma.
 
-- **EX066 — Resultado do laboratório.** O que o laboratório mostrou para o reporte da segunda sessão? *Rubrica:* 3 = 26 de 30 com retorno contra 17 de 30 sem;; 2 = maior;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Resultado do laboratório.** O que o laboratório mostrou para o reporte da segunda sessão? *Rubrica:* 3 = 26 de 30 com retorno contra 17 de 30 sem;; 2 = maior;; 1 = vago;; 0 = nenhuma.
 
-- **EX067 — Conteúdo do veredito.** O que cada veredito deve incluir brevemente? *Rubrica:* 3 = o que tornava a mensagem suspeita;; 2 = explicação;; 1 = nada;; 0 = nenhuma.
+- **EX067 — Conteúdo do veredito.** O que cada veredito deve incluir brevemente? *Rubrica:* 3 = o que tornava a mensagem suspeita;; 2 = explicação;; 1 = vago;; 0 = nenhuma.
 
-- **EX068 — Meta de resposta.** Que meta de resposta Priya recomendou? *Rubrica:* 3 = em até um dia útil;; 2 = um dia;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Meta de resposta.** Que meta de resposta Priya recomendou? *Rubrica:* 3 = em até um dia útil;; 2 = um dia;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -960,13 +960,13 @@ Seis semanas é pouco. Campanhas podem inflar os reportes.
 
 ### Exercícios
 
-- **EX069 — Caminho dos motoristas.** O que substituiu o encaminhamento para os motoristas? *Rubrica:* 3 = um botão Reportar no aplicativo de rotas;; 2 = botão no aplicativo;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Caminho dos motoristas.** O que substituiu o encaminhamento para os motoristas? *Rubrica:* 3 = um botão Reportar no aplicativo de rotas;; 2 = botão no aplicativo;; 1 = vago;; 0 = nenhuma.
 
-- **EX070 — Mudança no laboratório.** O que o laboratório mostrou para os reportes dos motoristas? *Rubrica:* 3 = de 6 para 19 reportes e mediana de 95 para 12 minutos;; 2 = alta;; 1 = nada;; 0 = nenhuma.
+- **EX070 — Mudança no laboratório.** O que o laboratório mostrou para os reportes dos motoristas? *Rubrica:* 3 = de 6 para 19 reportes e mediana de 95 para 12 minutos;; 2 = alta;; 1 = vago;; 0 = nenhuma.
 
-- **EX071 — Fator de confusão.** O que, além do botão, pode ter aumentado os reportes? *Rubrica:* 3 = uma campanha de ataque na quarta semana;; 2 = campanha;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Fator de confusão.** O que, além do botão, pode ter aumentado os reportes? *Rubrica:* 3 = uma campanha de ataque na quarta semana;; 2 = campanha;; 1 = vago;; 0 = nenhuma.
 
-- **EX072 — Próximo pedido.** O que o gerente de operações pediu em seguida? *Rubrica:* 3 = estender o botão aos coletores portáteis;; 2 = coletores;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Próximo pedido.** O que o gerente de operações pediu em seguida? *Rubrica:* 3 = estender o botão aos coletores portáteis;; 2 = coletores;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

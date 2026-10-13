@@ -73,7 +73,7 @@ As decisões precisam de continuidade. As equipes pequenas mudam com frequência
 
 ### Exercícios
 
-- **EX001 — Tamanho da organização.** Quantos funcionários e voluntários o Riverbend tem? *Rubrica:* 3 = doze funcionários e sessenta voluntários;; 2 = 72;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Tamanho da organização.** Quantos funcionários e voluntários o Riverbend tem? *Rubrica:* 3 = doze funcionários e sessenta voluntários;; 2 = 72;; 1 = vago;; 0 = nenhuma.
 
 - **EX002 — Onde os ataques chegam.** Segundo Callum, ao que a maioria dos ataques contra pequenas organizações beneficentes chega primeiro? *Rubrica:* 3 = às pessoas;; 2 = às pessoas, sem justificativa;; 1 = aos sistemas;; 0 = nenhuma.
 
@@ -81,23 +81,23 @@ As decisões precisam de continuidade. As equipes pequenas mudam com frequência
 
 - **EX004 — Causa do login compartilhado.** Por que os voluntários compartilham um único login de doações? *Rubrica:* 3 = nunca se providenciaram contas individuais;; 2 = configuração;; 1 = preguiça;; 0 = nenhuma.
 
-- **EX005 — Exemplo de autoridade.** Dê um exemplo de tática de autoridade. *Rubrica:* 3 = passar-se pelo banco ou por um grande doador;; 2 = autoridade;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Exemplo de autoridade.** Dê um exemplo de tática de autoridade. *Rubrica:* 3 = passar-se pelo banco ou por um grande doador;; 2 = autoridade;; 1 = vago;; 0 = nenhuma.
 
-- **EX006 — Exemplo de urgência.** Dê um exemplo de tática de urgência. *Rubrica:* 3 = um prazo que vence hoje;; 2 = prazo;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Exemplo de urgência.** Dê um exemplo de tática de urgência. *Rubrica:* 3 = um prazo que vence hoje;; 2 = prazo;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Ataque típico.** Que ataque típico o Riverbend poderia enfrentar? *Rubrica:* 3 = um e-mail de endereço parecido com o do atacadista com novos dados bancários;; 2 = fraude de fatura;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Ataque típico.** Que ataque típico o Riverbend poderia enfrentar? *Rubrica:* 3 = um e-mail de endereço parecido com o do atacadista com novos dados bancários;; 2 = fraude de fatura;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Fraqueza das campanhas.** Por que as campanhas de conscientização muitas vezes falham, segundo Bada et al. (2019)? *Rubrica:* 3 = o medo e a suposição de que o conhecimento leva à ação;; 2 = medo;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Fraqueza das campanhas.** Por que as campanhas de conscientização muitas vezes falham, segundo Bada et al. (2019)? *Rubrica:* 3 = o medo e a suposição de que o conhecimento leva à ação;; 2 = medo;; 1 = vago;; 0 = nenhuma.
 
 - **EX009 — Conteúdo do SP 800-50r1.** O que o SP 800-50r1 combina nos programas de aprendizagem? *Rubrica:* 3 = conscientização, treinamento por função e avaliação;; 2 = três;; 1 = palestras;; 0 = nenhuma.
 
 - **EX010 — Abordagem prática.** Que abordagem prática convém a uma pequena organização beneficente? *Rubrica:* 3 = hábitos fáceis, procedimentos claros e ajuda amigável;; 2 = hábitos;; 1 = palestras longas;; 0 = nenhuma.
 
-- **EX011 — Primeira decisão.** Qual é a primeira decisão de Ruth? *Rubrica:* 3 = ligar para os fornecedores no número do cadastro antes de alterações bancárias;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Primeira decisão.** Qual é a primeira decisão de Ruth? *Rubrica:* 3 = ligar para os fornecedores no número do cadastro antes de alterações bancárias;; 2 = retorno de ligação;; 1 = vago;; 0 = nenhuma.
 
-- **EX012 — Segunda decisão.** Qual é a segunda decisão de Ruth? *Rubrica:* 3 = dizer a todos que reportar é bem-vindo, sem culpa;; 2 = sem culpa;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Segunda decisão.** Qual é a segunda decisão de Ruth? *Rubrica:* 3 = dizer a todos que reportar é bem-vindo, sem culpa;; 2 = sem culpa;; 1 = vago;; 0 = nenhuma.
 
-- **EX013 — Terceira decisão.** Qual é a terceira decisão de Ruth? *Rubrica:* 3 = substituir o login compartilhado por contas individuais;; 2 = contas;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Terceira decisão.** Qual é a terceira decisão de Ruth? *Rubrica:* 3 = substituir o login compartilhado por contas individuais;; 2 = contas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -145,11 +145,11 @@ O escopo pode precisar de atualização. Os voluntários podem não ler os guias
 
 - **EX014 — Item fora do escopo.** Cite um item fora do escopo de Ruth. *Rubrica:* 3 = ler o e-mail de qualquer pessoa;; 2 = monitoramento;; 1 = reporte;; 0 = nenhuma.
 
-- **EX015 — Signatárias do escopo.** Quem assinou o escopo de Ruth? *Rubrica:* 3 = a gerente da organização e a presidente do conselho de curadores;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Signatárias do escopo.** Quem assinou o escopo de Ruth? *Rubrica:* 3 = a gerente da organização e a presidente do conselho de curadores;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
-- **EX016 — Ideia da coordenadora.** O que a coordenadora de voluntários sugeriu? *Rubrica:* 3 = incluir o guia no kit de integração;; 2 = integração;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Ideia da coordenadora.** O que a coordenadora de voluntários sugeriu? *Rubrica:* 3 = incluir o guia no kit de integração;; 2 = integração;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Regra dos links reportados.** O que Ruth nunca deve fazer com os links dos e-mails reportados? *Rubrica:* 3 = clicar neles;; 2 = não clicar;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Regra dos links reportados.** O que Ruth nunca deve fazer com os links dos e-mails reportados? *Rubrica:* 3 = clicar neles;; 2 = não clicar;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Campos registrados.** O que Ruth registra sobre os reportes? *Rubrica:* 3 = apenas data, tipo e desfecho;; 2 = mínimo;; 1 = nomes;; 0 = nenhuma.
 
@@ -159,15 +159,15 @@ O escopo pode precisar de atualização. Os voluntários podem não ler os guias
 
 - **EX021 — Recomendação sobre simulações.** O que Ruth recomenda agora sobre as simulações? *Rubrica:* 3 = nenhuma por enquanto;; 2 = nenhuma;; 1 = mensais;; 0 = sem resposta.
 
-- **EX022 — Temas de isca proibidos.** Que temas de isca são proibidos se algum dia houver simulações? *Rubrica:* 3 = dinheiro, comida ou dificuldades pessoais;; 2 = dificuldades;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Temas de isca proibidos.** Que temas de isca são proibidos se algum dia houver simulações? *Rubrica:* 3 = dinheiro, comida ou dificuldades pessoais;; 2 = dificuldades;; 1 = vago;; 0 = nenhuma.
 
-- **EX023 — Uso dos resultados.** Como os resultados de simulação podem ser usados? *Rubrica:* 3 = só como totais, nunca contra ninguém;; 2 = agregados;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Uso dos resultados.** Como os resultados de simulação podem ser usados? *Rubrica:* 3 = só como totais, nunca contra ninguém;; 2 = agregados;; 1 = vago;; 0 = nenhuma.
 
 - **EX024 — Prática dos procedimentos.** Como os procedimentos devem ser praticados? *Rubrica:* 3 = encenação anunciada;; 2 = encenação;; 1 = testes secretos;; 0 = nenhuma.
 
-- **EX025 — Por que os hábitos importam mais.** Por que os hábitos seguros importam ainda mais nas organizações beneficentes? *Rubrica:* 3 = os voluntários podem ir embora se sentirem desconfiança;; 2 = voluntários;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Por que os hábitos importam mais.** Por que os hábitos seguros importam ainda mais nas organizações beneficentes? *Rubrica:* 3 = os voluntários podem ir embora se sentirem desconfiança;; 2 = voluntários;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Resumo afixado.** Onde Ruth guarda seu resumo da prática segura? *Rubrica:* 3 = preso acima da sua mesa;; 2 = mesa;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Resumo afixado.** Onde Ruth guarda seu resumo da prática segura? *Rubrica:* 3 = preso acima da sua mesa;; 2 = mesa;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -235,25 +235,25 @@ Os mapas se desatualizam. Os segundos aprovadores precisam de treinamento.
 
 - **EX028 — Acesso da tesoureira.** Quantos dos cinco sistemas a tesoureira alcança no laboratório? *Rubrica:* 3 = 5;; 2 = todos;; 1 = 2;; 0 = nenhuma.
 
-- **EX029 — Ponto único nos pagamentos.** Por que a tesoureira é um ponto único de falha? *Rubrica:* 3 = só ela pode aprovar pagamentos;; 2 = aprovação;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Ponto único nos pagamentos.** Por que a tesoureira é um ponto único de falha? *Rubrica:* 3 = só ela pode aprovar pagamentos;; 2 = aprovação;; 1 = vago;; 0 = nenhuma.
 
-- **EX030 — Ligação com a pressão.** Como uma fatura à espera ajuda os atacantes? *Rubrica:* 3 = aumenta a pressão que as falsificações urgentes exploram;; 2 = urgência;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Ligação com a pressão.** Como uma fatura à espera ajuda os atacantes? *Rubrica:* 3 = aumenta a pressão que as falsificações urgentes exploram;; 2 = urgência;; 1 = vago;; 0 = nenhuma.
 
-- **EX031 — Risco das redes sociais.** Qual é o ponto único nas redes sociais? *Rubrica:* 3 = só um voluntário sabe a senha;; 2 = uma pessoa;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Risco das redes sociais.** Qual é o ponto único nas redes sociais? *Rubrica:* 3 = só um voluntário sabe a senha;; 2 = uma pessoa;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Alertas bancários.** Para onde iam originalmente os alertas bancários? *Rubrica:* 3 = só para o e-mail pessoal da tesoureira;; 2 = pessoal;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Alertas bancários.** Para onde iam originalmente os alertas bancários? *Rubrica:* 3 = só para o e-mail pessoal da tesoureira;; 2 = pessoal;; 1 = vago;; 0 = nenhuma.
 
-- **EX033 — Correção dos pagamentos.** O que corrige o ponto único nos pagamentos? *Rubrica:* 3 = um segundo curador autorizado, com retorno de ligação;; 2 = segundo aprovador;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Correção dos pagamentos.** O que corrige o ponto único nos pagamentos? *Rubrica:* 3 = um segundo curador autorizado, com retorno de ligação;; 2 = segundo aprovador;; 1 = vago;; 0 = nenhuma.
 
 - **EX034 — Correção das redes sociais.** Como as contas das redes sociais são protegidas? *Rubrica:* 3 = logins individuais com verificação em duas etapas;; 2 = duas etapas;; 1 = senha compartilhada;; 0 = nenhuma.
 
-- **EX035 — Limite dos dados de doadores.** Que limite vale para os dados dos doadores? *Rubrica:* 3 = só o necessário para as cartas de agradecimento;; 2 = mínimo;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Limite dos dados de doadores.** Que limite vale para os dados dos doadores? *Rubrica:* 3 = só o necessário para as cartas de agradecimento;; 2 = mínimo;; 1 = vago;; 0 = nenhuma.
 
-- **EX036 — Conferência das correções.** Como Ruth conferiu a correção dos alertas bancários? *Rubrica:* 3 = um alerta de teste chegou à caixa postal compartilhada;; 2 = teste;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Conferência das correções.** Como Ruth conferiu a correção dos alertas bancários? *Rubrica:* 3 = um alerta de teste chegou à caixa postal compartilhada;; 2 = teste;; 1 = vago;; 0 = nenhuma.
 
-- **EX037 — Correções não conferidas.** Por que conferir as correções, segundo Callum? *Rubrica:* 3 = mudanças bem-intencionadas muitas vezes falham em silêncio;; 2 = falha silenciosa;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Correções não conferidas.** Por que conferir as correções, segundo Callum? *Rubrica:* 3 = mudanças bem-intencionadas muitas vezes falham em silêncio;; 2 = falha silenciosa;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Lacuna de acesso à escala.** Que lacuna Ruth encontrou no acesso à escala? *Rubrica:* 3 = alguns funcionários que precisam dele não o têm;; 2 = acesso faltando;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Lacuna de acesso à escala.** Que lacuna Ruth encontrou no acesso à escala? *Rubrica:* 3 = alguns funcionários que precisam dele não o têm;; 2 = acesso faltando;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -316,25 +316,25 @@ Teste pequeno. Os planos atrasam sem revisão.
 
 - **EX039 — Reporte antigo.** Como as mensagens suspeitas eram reportadas antes? *Rubrica:* 3 = mencionadas a quem estivesse por perto;; 2 = informal;; 1 = botão;; 0 = nenhuma.
 
-- **EX040 — Promessa de resposta.** O que o voluntário de TI faz para cada reporte? *Rubrica:* 3 = responde com um veredito curto e um agradecimento;; 2 = retorno;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Promessa de resposta.** O que o voluntário de TI faz para cada reporte? *Rubrica:* 3 = responde com um veredito curto e um agradecimento;; 2 = retorno;; 1 = vago;; 0 = nenhuma.
 
 - **EX041 — Acertos no laboratório.** Quantos voluntários reportaram corretamente a mensagem suspeita no laboratório? *Rubrica:* 3 = 7 de 8;; 2 = sete;; 1 = 8 de 8;; 0 = nenhuma.
 
-- **EX042 — Mediana do tempo no laboratório.** Qual foi a mediana do tempo de reporte no laboratório? *Rubrica:* 3 = 40 segundos;; 2 = menos de um minuto;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Mediana do tempo no laboratório.** Qual foi a mediana do tempo de reporte no laboratório? *Rubrica:* 3 = 40 segundos;; 2 = menos de um minuto;; 1 = vago;; 0 = nenhuma.
 
 - **EX043 — Encaminhamento genuíno.** Como Ruth tratou o voluntário que encaminhou uma mensagem genuína? *Rubrica:* 3 = como um reporte útil;; 2 = útil;; 1 = erro;; 0 = nenhuma.
 
-- **EX044 — Correção no celular.** O que corrigiu o problema do celular? *Rubrica:* 3 = acrescentar o endereço de reporte como contato;; 2 = contato;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Correção no celular.** O que corrigiu o problema do celular? *Rubrica:* 3 = acrescentar o endereço de reporte como contato;; 2 = contato;; 1 = vago;; 0 = nenhuma.
 
-- **EX045 — Linha da dúvida.** Que linha Ruth acrescentou ao guia? *Rubrica:* 3 = na dúvida, reporte;; 2 = dúvida;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Linha da dúvida.** Que linha Ruth acrescentou ao guia? *Rubrica:* 3 = na dúvida, reporte;; 2 = dúvida;; 1 = vago;; 0 = nenhuma.
 
-- **EX046 — Semana dois.** O que acontece na semana dois do plano? *Rubrica:* 3 = contas individuais substituem o login compartilhado;; 2 = contas;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Semana dois.** O que acontece na semana dois do plano? *Rubrica:* 3 = contas individuais substituem o login compartilhado;; 2 = contas;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Semana quatro.** O que acontece na semana quatro? *Rubrica:* 3 = revisão dos reportes e dos problemas com a gerente;; 2 = revisão;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Semana quatro.** O que acontece na semana quatro? *Rubrica:* 3 = revisão dos reportes e dos problemas com a gerente;; 2 = revisão;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Estilo do plano.** Por que preferir um plano curto e concreto? *Rubrica:* 3 = tem mais chance de ser cumprido;; 2 = cumprimento;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Estilo do plano.** Por que preferir um plano curto e concreto? *Rubrica:* 3 = tem mais chance de ser cumprido;; 2 = cumprimento;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Visão sobre testes enganosos.** Qual é a visão de Ruth sobre os testes enganosos? *Rubrica:* 3 = desnecessários e podem prejudicar a confiança;; 2 = desnecessários;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Visão sobre testes enganosos.** Qual é a visão de Ruth sobre os testes enganosos? *Rubrica:* 3 = desnecessários e podem prejudicar a confiança;; 2 = desnecessários;; 1 = vago;; 0 = nenhuma.
 
 - **EX050 — Momento da revisão.** Quando Ruth deve revisar o plano? *Rubrica:* 3 = depois de três meses;; 2 = três meses;; 1 = nunca;; 0 = nenhuma.
 

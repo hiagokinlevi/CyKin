@@ -303,9 +303,9 @@ Snapshots e backups podem conter chaves; proteja-os como chaves. Corrigir um mod
 
 ### Exercícios
 
-- **EX016 — Permissões da chave.** Que problema de permissão Rosa encontrou? *Rubrica:* 3 = um arquivo de chave TLS legível por todas as contas;; 2 = legível;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Permissões da chave.** Que problema de permissão Rosa encontrou? *Rubrica:* 3 = um arquivo de chave TLS legível por todas as contas;; 2 = legível;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Falha do modelo.** O que havia de errado com o modelo de máquina virtual? *Rubrica:* 3 = continha uma chave de host SSH gerada de antemão, compartilhada por todos os clones;; 2 = chave compartilhada;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Falha do modelo.** O que havia de errado com o modelo de máquina virtual? *Rubrica:* 3 = continha uma chave de host SSH gerada de antemão, compartilhada por todos os clones;; 2 = chave compartilhada;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — getrandom.** Por que usar o getrandom nas novas máquinas virtuais? *Rubrica:* 3 = ele bloqueia até que o gerador esteja alimentado, evitando uma aleatoriedade fraca no início;; 2 = alimentado;; 1 = mais rápido;; 0 = nenhuma.
 
@@ -349,7 +349,7 @@ Uma autenticação forte não limita o que um usuário autenticado pode fazer. A
 
 - **EX020 — Duas chaves.** Por que registrar duas chaves de segurança por administrador? *Rubrica:* 3 = para que uma chave perdida não deixe o administrador sem acesso;; 2 = reserva;; 1 = segurança;; 0 = nenhuma.
 
-- **EX021 — Lacuna do desligamento.** Que lacuna Rosa encontrou no processo de desligamento? *Rubrica:* 3 = certificados de dispositivo não revogados por semanas;; 2 = atraso;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Lacuna do desligamento.** Que lacuna Rosa encontrou no processo de desligamento? *Rubrica:* 3 = certificados de dispositivo não revogados por semanas;; 2 = atraso;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -387,7 +387,7 @@ As redes internas não são automaticamente confiáveis. Mais certificados signi
 
 ### Exercícios
 
-- **EX022 — Lacuna interna.** Que lacuna o diagrama revelou atrás do gateway? *Rubrica:* 3 = tráfego encaminhado às aplicações por HTTP simples;; 2 = HTTP simples;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Lacuna interna.** Que lacuna o diagrama revelou atrás do gateway? *Rubrica:* 3 = tráfego encaminhado às aplicações por HTTP simples;; 2 = HTTP simples;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Controle do webhook.** Que controle protege os webhooks de pagamento? *Rubrica:* 3 = assinaturas HMAC do provedor de pagamentos;; 2 = HMAC;; 1 = só TLS;; 0 = nenhuma.
 
@@ -547,11 +547,11 @@ As classificações são julgamentos e devem ser revistas. Inventários montados
 
 ### Exercícios
 
-- **EX031 — Certificado obsoleto.** Que ativo desnecessário Rosa descobriu? *Rubrica:* 3 = certificado de um site de eventos desativado ainda renovado automaticamente;; 2 = certificado obsoleto;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Certificado obsoleto.** Que ativo desnecessário Rosa descobriu? *Rubrica:* 3 = certificado de um site de eventos desativado ainda renovado automaticamente;; 2 = certificado obsoleto;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Ativos críticos.** Quais dois ativos foram classificados como críticos, e por quê? *Rubrica:* 3 = chave de assinatura de documentos (decisões forjadas) e chave da AC interna (criar qualquer identidade);; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Ativos críticos.** Quais dois ativos foram classificados como críticos, e por quê? *Rubrica:* 3 = chave de assinatura de documentos (decisões forjadas) e chave da AC interna (criar qualquer identidade);; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX033 — Contexto de dez anos.** O que o requisito de dez anos implica para a assinatura? *Rubrica:* 3 = precisa de carimbos de tempo e de dados de validação arquivados para a verificação de longo prazo;; 2 = carimbos de tempo;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Contexto de dez anos.** O que o requisito de dez anos implica para a assinatura? *Rubrica:* 3 = precisa de carimbos de tempo e de dados de validação arquivados para a verificação de longo prazo;; 2 = carimbos de tempo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -591,7 +591,7 @@ Tabelas de fluxos omitem fluxos "paralelos" não documentados; pergunte aos dono
 
 - **EX034 — Escolha da tabela.** Por que Rosa usa uma tabela para os fluxos? *Rubrica:* 3 = ela pode ser ordenada e filtrada ao planejar as correções;; 2 = ordenável;; 1 = mais bonita;; 0 = nenhuma.
 
-- **EX035 — Lacuna do backup.** O que havia de errado com a cifração dos backups? *Rubrica:* 3 = a chave ficava guardada no próprio servidor de backup;; 2 = chave ao lado dos dados;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Lacuna do backup.** O que havia de errado com a cifração dos backups? *Rubrica:* 3 = a chave ficava guardada no próprio servidor de backup;; 2 = chave ao lado dos dados;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — Principal correção.** Que fluxo ficou em primeiro lugar, e que correção foi proposta? *Rubrica:* 3 = exportação de licenças por e-mail; transferência segura com TLS e cifração de cada arquivo para a chave da terceirizada;; 2 = fluxo;; 1 = correção;; 0 = nenhuma.
 
@@ -978,7 +978,7 @@ Limiares sem linhas de base criam ruído ou deixam passar problemas. Monitorar a
 
 - **EX056 — Hora do alerta.** Quando o alerta do laboratório disparou, e por quê? *Rubrica:* 3 = hora 4, depois de três horas consecutivas acima de dois por cento;; 2 = hora;; 1 = errada;; 0 = nenhuma.
 
-- **EX057 — Causa do pico.** O que causou o pico sintético? *Rubrica:* 3 = um envio de configuração removeu uma suíte de cifras de que um terminal de pagamento antigo precisava;; 2 = causa;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Causa do pico.** O que causou o pico sintético? *Rubrica:* 3 = um envio de configuração removeu uma suíte de cifras de que um terminal de pagamento antigo precisava;; 2 = causa;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1060,7 +1060,7 @@ Listas de verificação podem virar um ritual de marcar caixas; exija evidência
 
 - **EX061 — Compartilhamento do segredo.** Como o segredo de webhook precisa ser compartilhado com o fornecedor? *Rubrica:* 3 = por um canal seguro a partir do repositório de segredos, nunca por e-mail;; 2 = seguro;; 1 = e-mail;; 0 = nenhuma.
 
-- **EX062 — Verificação que falhou.** Que verificação de entrada em produção falhou? *Rubrica:* 3 = o fornecedor aceitou um webhook com uma assinatura errada;; 2 = webhook;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Verificação que falhou.** Que verificação de entrada em produção falhou? *Rubrica:* 3 = o fornecedor aceitou um webhook com uma assinatura errada;; 2 = webhook;; 1 = vago;; 0 = nenhuma.
 
 - **EX063 — Evidências.** Por que testar com casos negativos em vez de confiar nas declarações do fornecedor? *Rubrica:* 3 = as declarações podem estar erradas; os testes negativos provam que a rejeição de fato acontece;; 2 = prova;; 1 = confiança;; 0 = nenhuma.
 
@@ -1130,9 +1130,9 @@ Uma automação que falha em silêncio é pior que o trabalho manual. Os limiare
 
 - **EX064 — Resultado do planejador.** O que o planejador decidiu para o legacy-gis, e por quê? *Rubrica:* 3 = escalar; expirado a -3 dias e gerenciado manualmente;; 2 = escalar;; 1 = renovar;; 0 = nenhuma.
 
-- **EX065 — Limiar.** Que limiar dispara a renovação automática? *Rubrica:* 3 = até trinta dias da expiração;; 2 = 30;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Limiar.** Que limiar dispara a renovação automática? *Rubrica:* 3 = até trinta dias da expiração;; 2 = 30;; 1 = vago;; 0 = nenhuma.
 
-- **EX066 — Salvaguardas.** Cite duas salvaguardas em torno do planejador. *Rubrica:* 3 = duas entre simulação publicada, cliente ACME avaliado, chamados para os escalonamentos, alertas de falha;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Salvaguardas.** Cite duas salvaguardas em torno do planejador. *Rubrica:* 3 = duas entre simulação publicada, cliente ACME avaliado, chamados para os escalonamentos, alertas de falha;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1174,7 +1174,7 @@ Comparações de antes e depois podem enganar quando outros fatores mudaram. Con
 
 - **EX068 — Números de indisponibilidade.** Como mudaram as horas de indisponibilidade por certificados? *Rubrica:* 3 = de nove para zero ao longo do semestre;; 2 = números;; 1 = vago;; 0 = nenhuma.
 
-- **EX069 — Fator de confusão.** Cite um fator de confusão que Rosa anotou. *Rubrica:* 3 = período mais calmo de mudanças ou janela curta de seis meses;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Fator de confusão.** Cite um fator de confusão que Rosa anotou. *Rubrica:* 3 = período mais calmo de mudanças ou janela curta de seis meses;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1214,7 +1214,7 @@ Amostras pequenas dão resultados instáveis. Dados observacionais não consegue
 
 - **EX070 — Questão de pesquisa.** Qual era a questão de pesquisa de Rosa? *Rubrica:* 3 = quanto tempo as renovações levam depois dos alertas e que fatores preveem os atrasos;; 2 = questão;; 1 = só o tema;; 0 = nenhuma.
 
-- **EX071 — Passo ético.** Cite dois passos éticos que Rosa deu. *Rubrica:* 3 = dois entre permissão por escrito, nomes substituídos, dados mantidos nos sistemas da prefeitura, nenhum dado de cidadãos, conferência ética;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Passo ético.** Cite dois passos éticos que Rosa deu. *Rubrica:* 3 = dois entre permissão por escrito, nomes substituídos, dados mantidos nos sistemas da prefeitura, nenhum dado de cidadãos, conferência ética;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX072 — Limite da conclusão.** Por que Rosa não pode afirmar que a automação causa a renovação mais rápida? *Rubrica:* 3 = as equipes automatizadas também podem ter mais recursos; apenas associação;; 2 = fator de confusão;; 1 = pode afirmar;; 0 = nenhuma.
 
@@ -1298,7 +1298,7 @@ Runbooks escritos por especialistas costumam pular passos que eles acham óbvios
 
 - **EX076 — Significado da passagem.** O que significa a passagem neste capítulo? *Rubrica:* 3 = as operações conseguem executar, monitorar, diagnosticar e alterar sem quem construiu;; 2 = completa;; 1 = parcial;; 0 = nenhuma.
 
-- **EX077 — Achado do ensaio.** O que o primeiro ensaio revelou? *Rubrica:* 3 = o runbook pressupunha saber onde ficam os logs;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+- **EX077 — Achado do ensaio.** O que o primeiro ensaio revelou? *Rubrica:* 3 = o runbook pressupunha saber onde ficam os logs;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 - **EX078 — Credenciais.** Como as credenciais são passadas? *Rubrica:* 3 = pelo repositório de segredos, com a localização registrada, nunca em documentos;; 2 = repositório;; 1 = documentos;; 0 = nenhuma.
 
@@ -1342,7 +1342,7 @@ Mudanças feitas de uma vez só tornam as falhas difíceis de isolar. A aceitaç
 
 - **EX080 — Teste de validação.** Como Rosa confirmou que as versões antigas eram rejeitadas? *Rubrica:* 3 = conectando-se com clientes que oferecem apenas as versões antigas;; 2 = teste;; 1 = supôs;; 0 = nenhuma.
 
-- **EX081 — Causa da reversão.** Por que um endpoint foi revertido? *Rubrica:* 3 = taxa de falhas acima de dois por cento por causa de um quiosque de pagamento antigo com TLS 1.0;; 2 = causa;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Causa da reversão.** Por que um endpoint foi revertido? *Rubrica:* 3 = taxa de falhas acima de dois por cento por causa de um quiosque de pagamento antigo com TLS 1.0;; 2 = causa;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1384,7 +1384,7 @@ Registros que incluem dados sensíveis se tornam passivos. Um retorno sem reflex
 
 - **EX083 — Desativar a verificação.** Como Rosa respondeu a um pedido para desativar a verificação de certificados? *Rubrica:* 3 = explicou o risco de interceptação e propôs instalar o intermediário correto;; 2 = ambos;; 1 = atendeu;; 0 = nenhuma.
 
-- **EX084 — Mudança após o retorno.** O que Rosa mudou depois do retorno de Owen? *Rubrica:* 3 = acrescentou um resumo de três linhas às solicitações de mudança;; 2 = resumo;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Mudança após o retorno.** O que Rosa mudou depois do retorno de Owen? *Rubrica:* 3 = acrescentou um resumo de três linhas às solicitações de mudança;; 2 = resumo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1426,7 +1426,7 @@ Kits usados fora do contexto pretendido podem enganar. Testes com dados sintéti
 
 - **EX086 — Correção da revisão.** Que problema a revisão encontrou, e como foi corrigido? *Rubrica:* 3 = o resumidor travava com linhas inesperadas; agora as conta e relata;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
-- **EX087 — Seção de limites.** O que diz a seção de limites? *Rubrica:* 3 = o kit não substitui uma AC, um HSM nem uma revisão profissional;; 2 = declaração;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Seção de limites.** O que diz a seção de limites? *Rubrica:* 3 = o kit não substitui uma AC, um HSM nem uma revisão profissional;; 2 = declaração;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1464,11 +1464,11 @@ Demonstrações podem esconder fraquezas; os avaliadores devem pedir evidências
 
 ### Exercícios
 
-- **EX088 — Pedido da banca.** Que evidência a banca pediu? *Rubrica:* 3 = que o kit teria evitado um incidente real do passado;; 2 = incidente;; 1 = nada;; 0 = nenhuma.
+- **EX088 — Pedido da banca.** Que evidência a banca pediu? *Rubrica:* 3 = que o kit teria evitado um incidente real do passado;; 2 = incidente;; 1 = vago;; 0 = nenhuma.
 
-- **EX089 — Código próprio.** Por que Rosa evitou escrever sua própria verificação de certificados? *Rubrica:* 3 = as bibliotecas avaliadas tratam os casos-limite da RFC 5280 e recebem correções de segurança;; 2 = razão;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Código próprio.** Por que Rosa evitou escrever sua própria verificação de certificados? *Rubrica:* 3 = as bibliotecas avaliadas tratam os casos-limite da RFC 5280 e recebem correções de segurança;; 2 = razão;; 1 = vago;; 0 = nenhuma.
 
-- **EX090 — Plano de desenvolvimento.** Cite dois itens do plano de desenvolvimento de Rosa. *Rubrica:* 3 = dois entre certificação em operações de segurança, estudo de HSM e assinatura, orientações pós-quânticas, trabalho contínuo na prefeitura;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Plano de desenvolvimento.** Cite dois itens do plano de desenvolvimento de Rosa. *Rubrica:* 3 = dois entre certificação em operações de segurança, estudo de HSM e assinatura, orientações pós-quânticas, trabalho contínuo na prefeitura;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

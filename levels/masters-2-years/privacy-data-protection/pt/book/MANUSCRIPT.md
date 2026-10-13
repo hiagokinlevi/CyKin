@@ -309,7 +309,7 @@ As fórmulas de poder presumem pedidos independentes; requerentes repetidos viol
 
 - **EX027 — Amostra necessária.** Quantos pedidos por período detectam uma subida de 0,74 para 0,90? *Rubrica:* 3 = 90;; 2 = cerca de noventa;; 1 = errado;; 0 = nenhuma.
 - **EX028 — Sentido do resultado nulo.** Por que um resultado nulo não deve ser lido como fracasso? *Rubrica:* 3 = o estudo pode deixar passar uma melhora real menor do que a detectável;; 2 = menciona poder;; 1 = trata o nulo como prova;; 0 = nenhuma.
-- **EX029 — Erros do piloto.** Cite os dois erros de tempo que o piloto encontrou. *Rubrica:* 3 = data de encerramento em vez da data da resposta; pedidos por correio registrados na digitalização;; 2 = cita um;; 1 = nenhum;; 0 = nenhuma.
+- **EX029 — Erros do piloto.** Cite os dois erros de tempo que o piloto encontrou. *Rubrica:* 3 = data de encerramento em vez da data da resposta; pedidos por correio registrados na digitalização;; 2 = cita um;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Relógio legal.** Por que contar a partir do carimbo da sala de correspondência? *Rubrica:* 3 = o prazo corre a partir do recebimento, como as diretrizes confirmam;; 2 = menciona o recebimento;; 1 = usa a data de digitalização;; 0 = nenhuma.
 - **EX031 — Parágrafo da decisão.** O que o parágrafo da decisão acrescenta ao projeto? *Rubrica:* 3 = associa cada resultado a uma ação concreta na Brookfield;; 2 = menciona uso;; 1 = omite;; 0 = nenhuma.
 - **EX032 — Detectável versus importante.** Distinga uma mudança detectável de uma importante. *Rubrica:* 3 = a detectável depende do tamanho da amostra; a importante depende do dano aos requerentes;; 2 = define uma;; 1 = confunde as duas;; 0 = nenhuma.

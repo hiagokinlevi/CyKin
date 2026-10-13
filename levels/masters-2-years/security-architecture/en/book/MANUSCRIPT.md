@@ -99,7 +99,7 @@ Database choice limits coverage; practitioner knowledge may sit outside indexed 
 - **EX003 — Proxy limit.** What limitation does Kenji write into the question document? *Rubric:* 3 = reachability is a proxy for attacker progress, not real incidents;; 2 = proxy;; 1 = vague;; 0 = none.
 - **EX004 — Criteria first.** Why write inclusion criteria before searching? *Rubric:* 3 = to prevent selectively including agreeable studies;; 2 = bias;; 1 = no reason;; 0 = none.
 - **EX005 — Screening lab.** How many records entered screening and how many studies were included? *Rubric:* 3 = 312 records, 27 included;; 2 = one number;; 1 = wrong;; 0 = none.
-- **EX006 — Flat-network evidence.** What does Anderson (2020) contribute to Kenji's review? *Rubric:* 3 = case studies where flat networks allowed wide movement after one compromise;; 2 = cases;; 1 = nothing;; 0 = none.
+- **EX006 — Flat-network evidence.** What does Anderson (2020) contribute to Kenji's review? *Rubric:* 3 = case studies where flat networks allowed wide movement after one compromise;; 2 = cases;; 1 = vague;; 0 = none.
 - **EX007 — Comparison gap.** What gap did Kenji identify? *Rubric:* 3 = few studies compare segmentation strategies on the same networks under the same assumptions;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -299,7 +299,7 @@ No list of rivals is complete. Parameters added to model reality can multiply ru
 
 ### Exercises
 
-- **EX021 — Edge-count rival.** What does the random-edge control test? *Rubric:* 3 = whether identity's advantage comes from structure or just fewer edges;; 2 = structure;; 1 = nothing;; 0 = none.
+- **EX021 — Edge-count rival.** What does the random-edge control test? *Rubric:* 3 = whether identity's advantage comes from structure or just fewer edges;; 2 = structure;; 1 = vague;; 0 = none.
 - **EX022 — Generation artefact.** How does Kenji test the identity-rule generation artefact? *Rubric:* 3 = varies how many servers each identity may reach from one to four;; 2 = varies;; 1 = ignores;; 0 = none.
 - **EX023 — Misconfiguration parameter.** Why add a misconfiguration rate to the model? *Rubric:* 3 = real enforcement errs, and complex rule sets offer more chances for error;; 2 = errors;; 1 = not needed;; 0 = none.
 - **EX024 — Overturn thresholds.** State one pre-set condition that would overturn Kenji's expectation. *Rubric:* 3 = identity within one server of random control, or two per cent misconfiguration erasing most of the gain;; 2 = one;; 1 = vague;; 0 = none.
@@ -494,7 +494,7 @@ Direction-of-effect statements are themselves judgements. Practitioner briefs ri
 
 - **EX039 — Last sections.** Which sections are written last and why? *Rubric:* 3 = abstract, introduction, conclusion, so they match results;; 2 = named;; 1 = first;; 0 = none.
 - **EX040 — Limitation direction.** Why state the likely direction of each limitation's effect? *Rubric:* 3 = helps readers judge whether it weakens or strengthens conclusions;; 2 = direction;; 1 = not needed;; 0 = none.
-- **EX041 — SP 800-53 link.** What does Kenji's complexity result suggest regarding SP 800-53 Rev. 5 boundary controls? *Rubric:* 3 = plan for rule management, not only rule creation;; 2 = management;; 1 = nothing;; 0 = none.
+- **EX041 — SP 800-53 link.** What does Kenji's complexity result suggest regarding SP 800-53 Rev. 5 boundary controls? *Rubric:* 3 = plan for rule management, not only rule creation;; 2 = management;; 1 = vague;; 0 = none.
 - **EX042 — Field evidence gap.** What can only field evidence establish? *Rubric:* 3 = whether real attackers would exploit the modelled paths;; 2 = real attackers;; 1 = simulation shows;; 0 = none.
 - **EX043 — Brief recommendation.** What does the brief recommend Vantor do? *Rubric:* 3 = pilot on one department with rule reviews;; 2 = pilot;; 1 = full rollout;; 0 = none.
 - **EX044 — Cold reader.** What did the cold-reader check catch? *Rubric:* 3 = sentences not verifiable from a table or figure;; 2 = unsupported;; 1 = typos;; 0 = none.

@@ -191,21 +191,21 @@ Escopos podem ser estreitos demais para mostrar as dependências reais. Uma perm
 
 ### Exercícios
 
-- **EX006 — Conteúdo do escopo.** Liste os elementos que um escopo escrito deve declarar. *Rubrica:* 3 = serviços, sistemas, dados, locais, pessoas, exclusões e duração;; 2 = a maioria dos elementos;; 1 = nada;; 0 = nenhuma.
-- **EX007 — Serviços excluídos.** Quais serviços da Northstar ficam fora do primeiro escopo? *Rubrica:* 3 = gestão de casos e escala de voluntários;; 2 = os dois;; 1 = nada;; 0 = nenhuma.
-- **EX008 — Falhas de escopo.** Cite as duas falhas que um escopo claro evita. *Rubrica:* 3 = expansão não aprovada e conclusões exageradas;; 2 = as duas;; 1 = nada;; 0 = nenhuma.
-- **EX009 — Escopo versus permissão.** Explique por que saber ler logs de backup não basta. *Rubrica:* 3 = a permissão precisa vir do dono responsável;; 2 = menciona autoridade;; 1 = nada;; 0 = nenhuma.
-- **EX010 — Segundo aprovador.** Além do diretor de operações, quem precisa aprovar e por quê? *Rubrica:* 3 = o responsável pela proteção de dados, porque o banco guarda dados pessoais de clientes;; 2 = menciona privacidade;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Conteúdo do escopo.** Liste os elementos que um escopo escrito deve declarar. *Rubrica:* 3 = serviços, sistemas, dados, locais, pessoas, exclusões e duração;; 2 = a maioria dos elementos;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Serviços excluídos.** Quais serviços da Northstar ficam fora do primeiro escopo? *Rubrica:* 3 = gestão de casos e escala de voluntários;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Falhas de escopo.** Cite as duas falhas que um escopo claro evita. *Rubrica:* 3 = expansão não aprovada e conclusões exageradas;; 2 = as duas;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Escopo versus permissão.** Explique por que saber ler logs de backup não basta. *Rubrica:* 3 = a permissão precisa vir do dono responsável;; 2 = menciona autoridade;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Segundo aprovador.** Além do diretor de operações, quem precisa aprovar e por quê? *Rubrica:* 3 = o responsável pela proteção de dados, porque o banco guarda dados pessoais de clientes;; 2 = menciona privacidade;; 1 = vago;; 0 = nenhuma.
 - **EX011 — Achado fora do escopo.** Nota-se uma conta suspeita na gestão de casos. O que o engenheiro deve fazer? *Rubrica:* 3 = comunicar ao dono, sem investigar sozinho;; 2 = comunicar;; 1 = investigar;; 0 = nenhuma.
 - **EX012 — Exportações mínimas.** Como devem ser pedidas as exportações de contas? *Rubrica:* 3 = só com os campos necessários à revisão;; 2 = campos mínimos;; 1 = exportação completa;; 0 = nenhuma.
-- **EX013 — Cuidado com capturas de tela.** Que precaução vale para capturas de tela de registros de clientes? *Rubrica:* 3 = mascarar nomes de clientes;; 2 = mascaramento;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Privacidade além de vazamentos.** O que o NIST Privacy Framework lembra à equipe sobre o trabalho de revisão? *Rubrica:* 3 = uma revisão descuidada pode, ela própria, causar dano à privacidade;; 2 = risco mais amplo;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Cuidado com capturas de tela.** Que precaução vale para capturas de tela de registros de clientes? *Rubrica:* 3 = mascarar nomes de clientes;; 2 = mascaramento;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Privacidade além de vazamentos.** O que o NIST Privacy Framework lembra à equipe sobre o trabalho de revisão? *Rubrica:* 3 = uma revisão descuidada pode, ela própria, causar dano à privacidade;; 2 = risco mais amplo;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Restauração isolada.** Onde o exercício de restauração deve ser executado? *Rubrica:* 3 = em ambiente de teste isolado, nunca por cima da produção;; 2 = ambiente de teste;; 1 = produção;; 0 = nenhuma.
-- **EX016 — Bloqueio de e-mail.** Por que bloquear o e-mail de saída durante o exercício? *Rubrica:* 3 = para que agendamentos de teste não cheguem aos clientes;; 2 = proteção dos clientes;; 1 = nada;; 0 = nenhuma.
-- **EX017 — Regra de interrupção.** Que papel o plano do exercício nomeia além do operador? *Rubrica:* 3 = uma pessoa que pode interrompê-lo a qualquer momento;; 2 = autoridade para interromper;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Separação de credenciais.** Que controle evita restaurar por engano por cima do banco em produção? *Rubrica:* 3 = credenciais separadas para o ambiente de teste;; 2 = credenciais separadas;; 1 = nada;; 0 = nenhuma.
-- **EX019 — Finalidades do registro.** Declare as três finalidades do registro de atividades. *Rubrica:* 3 = repetibilidade, prova de permanência no escopo, base para decisões;; 2 = as três;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Revisão do registro.** Quem revisa o log de atividades e com que frequência? *Rubrica:* 3 = o diretor de operações, mensalmente;; 2 = mensalmente;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Bloqueio de e-mail.** Por que bloquear o e-mail de saída durante o exercício? *Rubrica:* 3 = para que agendamentos de teste não cheguem aos clientes;; 2 = proteção dos clientes;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Regra de interrupção.** Que papel o plano do exercício nomeia além do operador? *Rubrica:* 3 = uma pessoa que pode interrompê-lo a qualquer momento;; 2 = autoridade para interromper;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Separação de credenciais.** Que controle evita restaurar por engano por cima do banco em produção? *Rubrica:* 3 = credenciais separadas para o ambiente de teste;; 2 = credenciais separadas;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Finalidades do registro.** Declare as três finalidades do registro de atividades. *Rubrica:* 3 = repetibilidade, prova de permanência no escopo, base para decisões;; 2 = as três;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Revisão do registro.** Quem revisa o log de atividades e com que frequência? *Rubrica:* 3 = o diretor de operações, mensalmente;; 2 = mensalmente;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -281,21 +281,21 @@ Mapas omitem ferramentas informais usadas pela equipe. As garantias dos forneced
 
 ### Exercícios
 
-- **EX021 — Cadeia do portal.** Liste os quatro componentes por trás do portal de agendamento. *Rubrica:* 3 = web host, banco de dados de agendamento, provedor de identidade, relay de e-mail;; 2 = os quatro;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Cadeia do portal.** Liste os quatro componentes por trás do portal de agendamento. *Rubrica:* 3 = web host, banco de dados de agendamento, provedor de identidade, relay de e-mail;; 2 = os quatro;; 1 = vago;; 0 = nenhuma.
 - **EX022 — Dependência universal.** Que componente sustenta os três serviços? *Rubrica:* 3 = o provedor de identidade;; 2 = identidade;; 1 = relay de e-mail;; 0 = nenhuma.
-- **EX023 — Componentes sem dono.** Quais dois componentes não têm dono no laboratório? *Rubrica:* 3 = o relay de e-mail e a planilha da escala;; 2 = os dois;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Mudança no escopo da restauração.** Por que o mapa acrescenta o provedor de identidade ao exercício de restauração? *Rubrica:* 3 = sem autenticação, um portal restaurado continua sem reabrir;; 2 = autenticação;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Lista de decisões.** O que o mapa acrescentou à lista de decisões do diretor de operações? *Rubrica:* 3 = donos para o relay de e-mail e para a escala;; 2 = responsabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX026 — Dado sensível da consulta.** Por que o motivo da consulta é sensível? *Rubrica:* 3 = pode revelar problemas de saúde ou dificuldade financeira;; 2 = sensibilidade;; 1 = nada;; 0 = nenhuma.
-- **EX027 — Ajuste no conteúdo do e-mail.** Que mudança barata reduz o risco de privacidade nas confirmações? *Rubrica:* 3 = retirar o motivo da consulta dos e-mails;; 2 = minimizar;; 1 = nada;; 0 = nenhuma.
-- **EX028 — Campos do registro de dados.** Que fatos são registrados para cada conjunto de dados? *Rubrica:* 3 = o quê, por quê, quem vê, para onde vão as cópias, retenção;; 2 = os cinco;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Perguntas a fornecedores.** O que a Northstar pode verificar sobre fornecedores sem inspecionar seu funcionamento interno? *Rubrica:* 3 = garantias oferecidas, termos de indisponibilidade e de dados, capacidade de exportação;; 2 = os três;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Componentes sem dono.** Quais dois componentes não têm dono no laboratório? *Rubrica:* 3 = o relay de e-mail e a planilha da escala;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Mudança no escopo da restauração.** Por que o mapa acrescenta o provedor de identidade ao exercício de restauração? *Rubrica:* 3 = sem autenticação, um portal restaurado continua sem reabrir;; 2 = autenticação;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Lista de decisões.** O que o mapa acrescentou à lista de decisões do diretor de operações? *Rubrica:* 3 = donos para o relay de e-mail e para a escala;; 2 = responsabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Dado sensível da consulta.** Por que o motivo da consulta é sensível? *Rubrica:* 3 = pode revelar problemas de saúde ou dificuldade financeira;; 2 = sensibilidade;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Ajuste no conteúdo do e-mail.** Que mudança barata reduz o risco de privacidade nas confirmações? *Rubrica:* 3 = retirar o motivo da consulta dos e-mails;; 2 = minimizar;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Campos do registro de dados.** Que fatos são registrados para cada conjunto de dados? *Rubrica:* 3 = o quê, por quê, quem vê, para onde vão as cópias, retenção;; 2 = os cinco;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Perguntas a fornecedores.** O que a Northstar pode verificar sobre fornecedores sem inspecionar seu funcionamento interno? *Rubrica:* 3 = garantias oferecidas, termos de indisponibilidade e de dados, capacidade de exportação;; 2 = os três;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Posição no CSF.** Onde o NIST CSF 2.0 situa a gestão de riscos da cadeia de suprimentos? *Rubrica:* 3 = na função Govern;; 2 = Govern;; 1 = Protect;; 0 = nenhuma.
-- **EX031 — Registro de fornecedores.** O que a equipe registra para cada fornecedor? *Rubrica:* 3 = serviço sustentado, evidências disponíveis, data da última revisão;; 2 = registro;; 1 = nada;; 0 = nenhuma.
-- **EX032 — Cenário de identidade.** Escreva a lacuna de evidência do cenário do provedor de identidade. *Rubrica:* 3 = nenhuma autenticação alternativa testada;; 2 = contingência não testada;; 1 = nada;; 0 = nenhuma.
-- **EX033 — Cenário do relay.** Que consequência decorre de um relay de e-mail mal configurado? *Rubrica:* 3 = confirmações podem chegar às pessoas erradas;; 2 = desvio;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Evidência da escala.** Que evidência é pedida para o cenário da escala? *Rubrica:* 3 = sua lista de compartilhamento;; 2 = lista de compartilhamento;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Estratégia honesta.** Como os pedidos de evidência mantêm a estratégia honesta? *Rubrica:* 3 = mostram quais crenças foram verificadas e quais são premissas;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Registro de fornecedores.** O que a equipe registra para cada fornecedor? *Rubrica:* 3 = serviço sustentado, evidências disponíveis, data da última revisão;; 2 = registro;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Cenário de identidade.** Escreva a lacuna de evidência do cenário do provedor de identidade. *Rubrica:* 3 = nenhuma autenticação alternativa testada;; 2 = contingência não testada;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Cenário do relay.** Que consequência decorre de um relay de e-mail mal configurado? *Rubrica:* 3 = confirmações podem chegar às pessoas erradas;; 2 = desvio;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Evidência da escala.** Que evidência é pedida para o cenário da escala? *Rubrica:* 3 = sua lista de compartilhamento;; 2 = lista de compartilhamento;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Estratégia honesta.** Como os pedidos de evidência mantêm a estratégia honesta? *Rubrica:* 3 = mostram quais crenças foram verificadas e quais são premissas;; 2 = evidência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -368,21 +368,21 @@ Um único exercício tranquilo e anunciado superestima a prontidão real. Os tem
 
 ### Exercícios
 
-- **EX036 — Definição de sucesso.** Como o sucesso foi definido antes do exercício? *Rubrica:* 3 = equipe da recepção fazendo agendamentos de teste no portal restaurado;; 2 = agendamentos;; 1 = nada;; 0 = nenhuma.
-- **EX037 — Presença do diretor.** Por que o diretor de operações acompanhou o início e o fim? *Rubrica:* 3 = o resultado testa a premissa de quatro horas de que o diretor é dono;; 2 = responsabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Definição de sucesso.** Como o sucesso foi definido antes do exercício? *Rubrica:* 3 = equipe da recepção fazendo agendamentos de teste no portal restaurado;; 2 = agendamentos;; 1 = vago;; 0 = nenhuma.
+- **EX037 — Presença do diretor.** Por que o diretor de operações acompanhou o início e o fim? *Rubrica:* 3 = o resultado testa a premissa de quatro horas de que o diretor é dono;; 2 = responsabilidade;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Tempo total.** Quanto tempo o exercício levou no total? *Rubrica:* 3 = 245 minutos;; 2 = 4,08 horas;; 1 = 240;; 0 = nenhuma.
-- **EX039 — Diferença em relação à meta.** Por quanto o exercício perdeu a meta? *Rubrica:* 3 = cinco minutos;; 2 = 5;; 1 = nada;; 0 = nenhuma.
-- **EX040 — Etapa mais longa.** Qual etapa levou mais tempo? *Rubrica:* 3 = restaurar o banco de dados de agendamento, 70 minutos;; 2 = banco de dados;; 1 = nada;; 0 = nenhuma.
-- **EX041 — Atraso de governança.** Que atraso foi uma lacuna de governança, e não um limite técnico? *Rubrica:* 3 = 55 minutos para localizar backup e credenciais;; 2 = localização;; 1 = nada;; 0 = nenhuma.
-- **EX042 — Três melhorias.** Cite as três melhorias identificadas. *Rubrica:* 3 = local conhecido e protegido para instruções e credenciais, configuração do web host em script, etapa de identidade no procedimento;; 2 = as três;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Condições tranquilas.** Por que um evento real poderia ser mais lento que o exercício? *Rubrica:* 3 = pode ocorrer à noite, sem aviso e com atacantes presentes;; 2 = condições;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Diferença em relação à meta.** Por quanto o exercício perdeu a meta? *Rubrica:* 3 = cinco minutos;; 2 = 5;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Etapa mais longa.** Qual etapa levou mais tempo? *Rubrica:* 3 = restaurar o banco de dados de agendamento, 70 minutos;; 2 = banco de dados;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Atraso de governança.** Que atraso foi uma lacuna de governança, e não um limite técnico? *Rubrica:* 3 = 55 minutos para localizar backup e credenciais;; 2 = localização;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Três melhorias.** Cite as três melhorias identificadas. *Rubrica:* 3 = local conhecido e protegido para instruções e credenciais, configuração do web host em script, etapa de identidade no procedimento;; 2 = as três;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Condições tranquilas.** Por que um evento real poderia ser mais lento que o exercício? *Rubrica:* 3 = pode ocorrer à noite, sem aviso e com atacantes presentes;; 2 = condições;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Segundo exercício.** Quando o limite de quatro horas deve ser confirmado? *Rubrica:* 3 = depois de um segundo exercício, após as melhorias;; 2 = novo teste;; 1 = agora;; 0 = nenhuma.
-- **EX045 — Opções da decisão.** Que três opções o registro de decisão ofereceu? *Rubrica:* 3 = aceitar agora, aceitar após melhorias e novo teste, elevar para seis horas com agendamento manual;; 2 = as três;; 1 = nada;; 0 = nenhuma.
-- **EX046 — Opção recomendada.** Que opção foi recomendada e aprovada? *Rubrica:* 3 = aceitar após melhorias em trinta dias e um segundo teste;; 2 = segunda opção;; 1 = nada;; 0 = nenhuma.
-- **EX047 — Arquivamento do registro.** Por que o registro de decisão é arquivado junto com as evidências? *Rubrica:* 3 = para que o raciocínio possa ser conferido depois;; 2 = rastreabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX048 — Novo cenário.** Que cenário entrou na estratégia a partir do mapa de dependências? *Rubrica:* 3 = falha do provedor de identidade;; 2 = identidade;; 1 = nada;; 0 = nenhuma.
-- **EX049 — Sinais mensais.** Liste os sinais revisados mensalmente. *Rubrica:* 3 = tempo de restauração, falhas de backup, mudanças privilegiadas, ações atrasadas dos donos;; 2 = os quatro;; 1 = nada;; 0 = nenhuma.
-- **EX050 — Ajustar metas.** Que tentação a equipe deve evitar depois de perder a meta por minutos? *Rubrica:* 3 = mudar a meta em vez do processo;; 2 = resistir;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Opções da decisão.** Que três opções o registro de decisão ofereceu? *Rubrica:* 3 = aceitar agora, aceitar após melhorias e novo teste, elevar para seis horas com agendamento manual;; 2 = as três;; 1 = vago;; 0 = nenhuma.
+- **EX046 — Opção recomendada.** Que opção foi recomendada e aprovada? *Rubrica:* 3 = aceitar após melhorias em trinta dias e um segundo teste;; 2 = segunda opção;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Arquivamento do registro.** Por que o registro de decisão é arquivado junto com as evidências? *Rubrica:* 3 = para que o raciocínio possa ser conferido depois;; 2 = rastreabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Novo cenário.** Que cenário entrou na estratégia a partir do mapa de dependências? *Rubrica:* 3 = falha do provedor de identidade;; 2 = identidade;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Sinais mensais.** Liste os sinais revisados mensalmente. *Rubrica:* 3 = tempo de restauração, falhas de backup, mudanças privilegiadas, ações atrasadas dos donos;; 2 = os quatro;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Ajustar metas.** Que tentação a equipe deve evitar depois de perder a meta por minutos? *Rubrica:* 3 = mudar a meta em vez do processo;; 2 = resistir;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

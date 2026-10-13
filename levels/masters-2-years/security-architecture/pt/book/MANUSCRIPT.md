@@ -94,19 +94,19 @@ A escolha das bases limita a cobertura; o conhecimento dos praticantes pode esta
 
 ### Exercícios
 
-- **EX001 — Partes da pergunta.** Nomeie a população, a intervenção, a comparação e o desfecho da pergunta de Kenji. *Rubrica:* 3 = redes simuladas como a da Vantor; microssegmentação por identidade; segmentação por zonas; servidores alcançáveis a partir de um ponto de apoio;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Partes da pergunta.** Nomeie a população, a intervenção, a comparação e o desfecho da pergunta de Kenji. *Rubrica:* 3 = redes simuladas como a da Vantor; microssegmentação por identidade; segmentação por zonas; servidores alcançáveis a partir de um ponto de apoio;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 - **EX002 — Escolha da simulação.** Por que usar simulação em vez de alterar a rede da Vantor? *Rubrica:* 3 = cabe no prazo e evita riscos éticos e operacionais aos sistemas reais;; 2 = um motivo;; 1 = sem motivo;; 0 = nenhuma.
 
-- **EX003 — Limite da aproximação.** Que limitação Kenji escreve no documento da pergunta? *Rubrica:* 3 = a alcançabilidade é uma aproximação do avanço do atacante, não de incidentes reais;; 2 = aproximação;; 1 = nada;; 0 = nenhuma.
+- **EX003 — Limite da aproximação.** Que limitação Kenji escreve no documento da pergunta? *Rubrica:* 3 = a alcançabilidade é uma aproximação do avanço do atacante, não de incidentes reais;; 2 = aproximação;; 1 = vago;; 0 = nenhuma.
 
 - **EX004 — Critérios primeiro.** Por que escrever os critérios de inclusão antes de buscar? *Rubrica:* 3 = para evitar incluir seletivamente os estudos que concordam;; 2 = viés;; 1 = sem motivo;; 0 = nenhuma.
 
 - **EX005 — Laboratório da triagem.** Quantos registros entraram na triagem e quantos estudos foram incluídos? *Rubrica:* 3 = 312 registros, 27 incluídos;; 2 = um número;; 1 = errado;; 0 = nenhuma.
 
-- **EX006 — Evidência das redes planas.** O que Anderson (2020) contribui para a revisão de Kenji? *Rubrica:* 3 = estudos de caso em que redes planas permitiram movimento amplo depois de um comprometimento;; 2 = casos;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Evidência das redes planas.** O que Anderson (2020) contribui para a revisão de Kenji? *Rubrica:* 3 = estudos de caso em que redes planas permitiram movimento amplo depois de um comprometimento;; 2 = casos;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Lacuna de comparação.** Que lacuna Kenji identificou? *Rubrica:* 3 = poucos estudos comparam estratégias de segmentação nas mesmas redes sob as mesmas premissas;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Lacuna de comparação.** Que lacuna Kenji identificou? *Rubrica:* 3 = poucos estudos comparam estratégias de segmentação nas mesmas redes sob as mesmas premissas;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -154,15 +154,15 @@ O número de regras é uma aproximação grosseira da complexidade operacional. 
 
 - **EX008 — Primeiras perguntas.** Que primeira pergunta cada visão de arquitetura faz? *Rubrica:* 3 = corporativa: atributos de negócio; engenharia de sistemas: garantia ao longo do ciclo de vida; orientada a ameaças: o que pode dar errado;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
-- **EX009 — Tensão entre princípios.** Que princípio puxa contra a segmentação fina, e por quê? *Rubrica:* 3 = economia de mecanismo, porque a segmentação mais fina cria mais regras a verificar;; 2 = nomeado;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Tensão entre princípios.** Que princípio puxa contra a segmentação fina, e por quê? *Rubrica:* 3 = economia de mecanismo, porque a segmentação mais fina cria mais regras a verificar;; 2 = nomeado;; 1 = vago;; 0 = nenhuma.
 
-- **EX010 — Ameaças ao zero trust.** Cite uma ameaça às implantações de zero trust reconhecida no SP 800-207. *Rubrica:* 3 = comprometimento do ponto de decisão de política ou credenciais roubadas;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Ameaças ao zero trust.** Cite uma ameaça às implantações de zero trust reconhecida no SP 800-207. *Rubrica:* 3 = comprometimento do ponto de decisão de política ou credenciais roubadas;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX011 — Afirmação justa sobre zero trust.** Qual é a versão justa de o zero trust elimina o movimento lateral? *Rubrica:* 3 = ele pode reduzir os caminhos alcançáveis e tornar o movimento mais fácil de observar;; 2 = reduz;; 1 = elimina;; 0 = nenhuma.
 
 - **EX012 — Etiquetas de evidência.** Que quatro etiquetas a Dra. Aydın exige nas afirmações? *Rubrica:* 3 = princípio, orientação de framework, evidência de caso, resultado medido;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
-- **EX013 — Medida de complexidade.** Como Kenji mede a complexidade das regras, e qual é a fraqueza disso? *Rubrica:* 3 = número de regras de permissão distintas; aproximação grosseira;; 2 = medida;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Medida de complexidade.** Como Kenji mede a complexidade das regras, e qual é a fraqueza disso? *Rubrica:* 3 = número de regras de permissão distintas; aproximação grosseira;; 2 = medida;; 1 = vago;; 0 = nenhuma.
 
 - **EX014 — Motivo do duplo desfecho.** Por que comparar as estratégias pelo alcance e pelo número de regras juntos? *Rubrica:* 3 = uma estratégia pode reduzir o alcance mas ser impossível de gerenciar na operação;; 2 = ambos;; 1 = só alcance;; 0 = nenhuma.
 
@@ -304,15 +304,15 @@ Nenhuma lista de rivais é completa. Os parâmetros acrescentados para modelar a
 
 ### Exercícios
 
-- **EX021 — Rival do número de arestas.** O que o controle de arestas aleatórias testa? *Rubrica:* 3 = se a vantagem da identidade vem da estrutura ou só de ter menos arestas;; 2 = estrutura;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Rival do número de arestas.** O que o controle de arestas aleatórias testa? *Rubrica:* 3 = se a vantagem da identidade vem da estrutura ou só de ter menos arestas;; 2 = estrutura;; 1 = vago;; 0 = nenhuma.
 
 - **EX022 — Artefato de geração.** Como Kenji testa o artefato de geração das regras de identidade? *Rubrica:* 3 = varia de um a quatro quantos servidores cada identidade pode alcançar;; 2 = varia;; 1 = ignora;; 0 = nenhuma.
 
 - **EX023 — Parâmetro de configuração incorreta.** Por que acrescentar ao modelo uma taxa de configuração incorreta? *Rubrica:* 3 = a aplicação real erra, e conjuntos complexos de regras oferecem mais chances de erro;; 2 = erros;; 1 = não é necessário;; 0 = nenhuma.
 
-- **EX024 — Limiares de reversão.** Enuncie uma condição pré-definida que derrubaria a expectativa de Kenji. *Rubrica:* 3 = identidade a menos de um servidor do controle aleatório, ou dois por cento de configuração incorreta apagando a maior parte do ganho;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Limiares de reversão.** Enuncie uma condição pré-definida que derrubaria a expectativa de Kenji. *Rubrica:* 3 = identidade a menos de um servidor do controle aleatório, ou dois por cento de configuração incorreta apagando a maior parte do ganho;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Rival dos praticantes.** Que rival os engenheiros acrescentaram? *Rubrica:* 3 = a cópia de modelos dá a muitas estações o mesmo acesso amplo;; 2 = modelo;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Rival dos praticantes.** Que rival os engenheiros acrescentaram? *Rubrica:* 3 = a cópia de modelos dá a muitas estações o mesmo acesso amplo;; 2 = modelo;; 1 = vago;; 0 = nenhuma.
 
 - **EX026 — Sinal de maturidade.** O que a Dra. Aydın chama de sinal claro de maturidade de pesquisa? *Rubrica:* 3 = declarar de antemão o que mudaria a conclusão;; 2 = condições prévias;; 1 = tese longa;; 0 = nenhuma.
 
@@ -360,13 +360,13 @@ As estimativas de tamanho de amostra feitas com um piloto pequeno também são i
 
 ### Exercícios
 
-- **EX027 — Condição da banca.** Que condição a banca impôs à aprovação? *Rubrica:* 3 = um piloto que confirme que a simulação cabe no tempo de computação disponível;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Condição da banca.** Que condição a banca impôs à aprovação? *Rubrica:* 3 = um piloto que confirme que a simulação cabe no tempo de computação disponível;; 2 = piloto;; 1 = vago;; 0 = nenhuma.
 
-- **EX028 — Bug da resposta conhecida.** Que bug o teste de resposta conhecida encontrou? *Rubrica:* 3 = arestas de jump host adicionadas duas vezes, inflando o alcance;; 2 = jump host;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Bug da resposta conhecida.** Que bug o teste de resposta conhecida encontrou? *Rubrica:* 3 = arestas de jump host adicionadas duas vezes, inflando o alcance;; 2 = jump host;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Redes necessárias.** Quantas redes por tamanho a estimativa exigia, e quantas foram escolhidas? *Rubrica:* 3 = cerca de sessenta necessárias; duzentas escolhidas;; 2 = um número;; 1 = errado;; 0 = nenhuma.
 
-- **EX030 — Tamanho descartado.** Por que o menor tamanho de rede foi descartado? *Rubrica:* 3 = um servidor por departamento deixava iguais os alcances por zonas e por identidade;; 2 = motivo;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Tamanho descartado.** Por que o menor tamanho de rede foi descartado? *Rubrica:* 3 = um servidor por departamento deixava iguais os alcances por zonas e por identidade;; 2 = motivo;; 1 = vago;; 0 = nenhuma.
 
 - **EX031 — Faixa de configuração incorreta.** Que faixa foi definida para a configuração incorreta, e por quê? *Rubrica:* 3 = de zero a cinco por cento, considerada realista pelos engenheiros;; 2 = faixa;; 1 = dez por cento;; 0 = nenhuma.
 
@@ -446,7 +446,7 @@ Os intervalos por bootstrap descrevem a variação entre as redes geradas, e nã
 
 - **EX033 — Espiar cedo.** Por que evitar olhar os resultados antes do fim das execuções? *Rubrica:* 3 = espiar cedo tende a moldar as decisões posteriores;; 2 = viés;; 1 = sem motivo;; 0 = nenhuma.
 
-- **EX034 — Etapas do bootstrap.** Descreva o bootstrap que Kenji usa. *Rubrica:* 3 = reamostrar as redes com reposição, recalcular a diferença média, tomar os 95% centrais;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Etapas do bootstrap.** Descreva o bootstrap que Kenji usa. *Rubrica:* 3 = reamostrar as redes com reposição, recalcular a diferença média, tomar os 95% centrais;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
 
 - **EX035 — Intervalos do laboratório.** Que diferenças médias o laboratório relatou para zonas menos identidade e controle menos identidade? *Rubrica:* 3 = cerca de 2,4 e 1,6 servidor, ambos os intervalos acima de zero;; 2 = um;; 1 = errado;; 0 = nenhuma.
 
@@ -504,7 +504,7 @@ As afirmações sobre a direção do efeito também são julgamentos. Os resumos
 
 - **EX040 — Direção da limitação.** Por que declarar a provável direção do efeito de cada limitação? *Rubrica:* 3 = ajuda os leitores a julgar se ela enfraquece ou fortalece as conclusões;; 2 = direção;; 1 = não é necessário;; 0 = nenhuma.
 
-- **EX041 — Ligação com o SP 800-53.** O que o resultado de complexidade de Kenji sugere sobre os controles de fronteira do SP 800-53 Rev. 5? *Rubrica:* 3 = planejar a gestão das regras, não só a criação;; 2 = gestão;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Ligação com o SP 800-53.** O que o resultado de complexidade de Kenji sugere sobre os controles de fronteira do SP 800-53 Rev. 5? *Rubrica:* 3 = planejar a gestão das regras, não só a criação;; 2 = gestão;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Lacuna de evidência de campo.** O que só a evidência de campo pode estabelecer? *Rubrica:* 3 = se atacantes reais explorariam os caminhos modelados;; 2 = atacantes reais;; 1 = a simulação mostra;; 0 = nenhuma.
 

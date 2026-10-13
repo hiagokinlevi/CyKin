@@ -384,11 +384,11 @@ Os inventários se afastam da realidade; confirme a expiração no endpoint em f
 
 - **EX025 — Três fontes.** Que fonte mostra os certificados que uma AC emitiu para a Lumen mesmo que a Lumen não os tenha pedido? *Rubrica:* 3 = logs de transparência de certificados;; 2 = nomeia CT;; 1 = nomeia configuração;; 0 = nenhuma.
 
-- **EX026 — Linha expirada.** No laboratório, que certificado já tinha expirado, e há quantos dias? *Rubrica:* 3 = staging.lumen.example, expirado 12 dias antes da data de revisão;; 2 = só o host;; 1 = nenhum;; 0 = nenhuma.
+- **EX026 — Linha expirada.** No laboratório, que certificado já tinha expirado, e há quantos dias? *Rubrica:* 3 = staging.lumen.example, expirado 12 dias antes da data de revisão;; 2 = só o host;; 1 = vago;; 0 = nenhuma.
 
 - **EX027 — Data de revisão fixa.** Por que o laboratório usa uma data de revisão fixa? *Rubrica:* 3 = para que a saída seja reproduzível; em produção usa-se a data de hoje;; 2 = reproduzível;; 1 = nenhuma razão;; 0 = nenhuma.
 
-- **EX028 — Registro de cabeçalhos em depuração.** O que deu errado com o registro de depuração do portal? *Rubrica:* 3 = registrou cookies de sessão e uma chave de API num arquivo amplamente legível;; 2 = menciona segredos;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Registro de cabeçalhos em depuração.** O que deu errado com o registro de depuração do portal? *Rubrica:* 3 = registrou cookies de sessão e uma chave de API num arquivo amplamente legível;; 2 = menciona segredos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -428,7 +428,7 @@ As classes se sobrepõem; um certificado expirado substituído às pressas por u
 
 - **EX029 — Barulhentas e silenciosas.** Que classe de falha costuma ser silenciosa, e o que isso implica? *Rubrica:* 3 = comprometimento; exige controles de detecção, como CT e logs de acesso às chaves;; 2 = nomeia comprometimento;; 1 = nomeia expiração;; 0 = nenhuma.
 
-- **EX030 — Regra do nonce do GCM.** Que regra o AES-GCM impõe aos nonces? *Rubrica:* 3 = nunca repetir um nonce sob a mesma chave;; 2 = unicidade;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Regra do nonce do GCM.** Que regra o AES-GCM impõe aos nonces? *Rubrica:* 3 = nunca repetir um nonce sob a mesma chave;; 2 = unicidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX031 — Módulo random.** Por que o módulo random do Python é errado para chaves? *Rubrica:* 3 = é previsível; use o secrets, que encapsula o CSPRNG do sistema operacional;; 2 = previsível;; 1 = tudo bem;; 0 = nenhuma.
 
@@ -544,7 +544,7 @@ Os padrões mudam entre versões do Python e do OpenSSL; registre as versões. D
 
 - **EX039 — Correção para a raiz interna.** Como um script deve confiar na raiz interna da Lumen? *Rubrica:* 3 = carregá-la com load_verify_locations e manter todas as verificações ligadas;; 2 = carregar a raiz;; 1 = desativar as verificações;; 0 = nenhuma.
 
-- **EX040 — Antes da mudança.** O que Tomás deve conferir antes de desativar o TLS 1.1? *Rubrica:* 3 = os logs de handshake, em busca de clientes que ainda negociam versões antigas;; 2 = logs;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Antes da mudança.** O que Tomás deve conferir antes de desativar o TLS 1.1? *Rubrica:* 3 = os logs de handshake, em busca de clientes que ainda negociam versões antigas;; 2 = logs;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -655,7 +655,7 @@ O isolamento virtual pode falhar por meio de áreas de transferência compartilh
 
 ### Exercícios
 
-- **EX045 — Limites do laboratório.** Enuncie dois limites do laboratório que Tomás anota. *Rubrica:* 3 = dois entre nenhum dado real de clientes, nenhuma chave de produção, nenhuma conexão de saída para parceiros;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Limites do laboratório.** Enuncie dois limites do laboratório que Tomás anota. *Rubrica:* 3 = dois entre nenhum dado real de clientes, nenhuma chave de produção, nenhuma conexão de saída para parceiros;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX046 — Três resultados.** Quais três resultados de handshake Tomás reproduziu? *Rubrica:* 3 = o válido é verificado, o expirado falha, o sem intermediário não monta a cadeia;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
@@ -728,7 +728,7 @@ Os logs podem truncar ou omitir os motivos; as contagens podem enganar se um cli
 
 - **EX049 — Regra de um teste.** Por que mudar apenas uma coisa por teste? *Rubrica:* 3 = para que o resultado possa ser atribuído àquela mudança e a causa fique visível;; 2 = atribuição;; 1 = velocidade;; 0 = nenhuma.
 
-- **EX050 — Principal motivo da triagem.** No laboratório, que motivo e que grupo de clientes predominaram? *Rubrica:* 3 = unknown_ca vindo dos clientes handheld, 12 de 20 linhas;; 2 = só o motivo;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Principal motivo da triagem.** No laboratório, que motivo e que grupo de clientes predominaram? *Rubrica:* 3 = unknown_ca vindo dos clientes handheld, 12 de 20 linhas;; 2 = só o motivo;; 1 = vago;; 0 = nenhuma.
 
 - **EX051 — Causa no RADIUS.** O que causou as falhas de Wi-Fi dos coletores? *Rubrica:* 3 = o certificado do RADIUS renovado sob um novo intermediário desconhecido dos dispositivos;; 2 = menciona RADIUS;; 1 = certificado de cliente expirado;; 0 = nenhuma.
 
@@ -797,7 +797,7 @@ A renovação automatizada ainda depende do DNS, dos firewalls e das chaves de c
 
 - **EX053 — Papel do ACME.** O que um cliente ACME automatiza? *Rubrica:* 3 = provar o controle do domínio, solicitar e renovar certificados;; 2 = renovação;; 1 = manual;; 0 = nenhuma.
 
-- **EX054 — Chave atrasada.** No laboratório, que chave estava atrasada, e por quantos dias? *Rubrica:* 3 = a chave ssh de sftp-partner-b, atrasada 41 dias;; 2 = só a chave;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Chave atrasada.** No laboratório, que chave estava atrasada, e por quantos dias? *Rubrica:* 3 = a chave ssh de sftp-partner-b, atrasada 41 dias;; 2 = só a chave;; 1 = vago;; 0 = nenhuma.
 
 - **EX055 — Planejar, não rotacionar.** Por que o script apenas planeja as rotações? *Rubrica:* 3 = as rotações precisam ser coordenadas com parceiros e provedores;; 2 = coordenação;; 1 = preguiça;; 0 = nenhuma.
 
@@ -843,7 +843,7 @@ Os parceiros podem não suportar a sobreposição e exigir uma troca abrupta. Os
 
 - **EX058 — Ordem da sobreposição.** Dê a ordem dos passos da rotação com sobreposição. *Rubrica:* 3 = aceitar ambos, o provedor troca, confirmar que o novo é verificado, remover o antigo;; 2 = três em ordem;; 1 = fora de ordem;; 0 = nenhuma.
 
-- **EX059 — Efeito sem sobreposição.** O que dá errado sem um período de sobreposição? *Rubrica:* 3 = callbacks válidos falham e pedidos são marcados como não pagos durante a lacuna;; 2 = falhas;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Efeito sem sobreposição.** O que dá errado sem um período de sobreposição? *Rubrica:* 3 = callbacks válidos falham e pedidos são marcados como não pagos durante a lacuna;; 2 = falhas;; 1 = vago;; 0 = nenhuma.
 
 - **EX060 — Registro de versões.** Por que registrar as versões do OpenSSL e do firmware no inventário? *Rubrica:* 3 = para dizer rapidamente quais hosts um aviso afeta;; 2 = avisos;; 1 = desnecessário;; 0 = nenhuma.
 
@@ -889,7 +889,7 @@ Os runbooks envelhecem à medida que os sistemas mudam; revise-os depois de cada
 
 - **EX063 — Referência ao segredo.** Como o runbook deve se referir ao segredo dos callbacks? *Rubrica:* 3 = pelo caminho no cofre, pela conta que o acessa e pelo período de rotação, nunca pelo valor;; 2 = caminho;; 1 = inclui o valor;; 0 = nenhuma.
 
-- **EX064 — Nunca restaurar com.** Cite um atalho que as regras de segurança proíbem ao restaurar o serviço. *Rubrica:* 3 = desativar a verificação, ou mover chaves por e-mail ou chat;; 2 = um atalho;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Nunca restaurar com.** Cite um atalho que as regras de segurança proíbem ao restaurar o serviço. *Rubrica:* 3 = desativar a verificação, ou mover chaves por e-mail ou chat;; 2 = um atalho;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -959,7 +959,7 @@ Os parâmetros do laboratório são deliberadamente pequenos; a produção preci
 
 - **EX067 — Conferir o vetor primeiro.** Por que conferir primeiro o hashlib.scrypt contra o vetor da RFC 7914? *Rubrica:* 3 = para confirmar que a chamada e os parâmetros estão corretamente ligados;; 2 = correção;; 1 = desnecessário;; 0 = nenhuma.
 
-- **EX068 — Contas inativas.** Que limitação a atualização no login deixa? *Rubrica:* 3 = as contas que nunca fazem login mantêm os hashes antigos e precisam de um plano separado;; 2 = inativas;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Contas inativas.** Que limitação a atualização no login deixa? *Rubrica:* 3 = as contas que nunca fazem login mantêm os hashes antigos e precisam de um plano separado;; 2 = inativas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -997,13 +997,13 @@ As verificações por amostragem podem deixar passar dispositivos; a cobertura c
 
 ### Exercícios
 
-- **EX069 — Fora do escopo.** O que Tomás deixou fora do escopo, e por quê? *Rubrica:* 3 = o redesenho da raiz interna, porque exige a autoridade de um engenheiro;; 2 = nomeia o item;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Fora do escopo.** O que Tomás deixou fora do escopo, e por quê? *Rubrica:* 3 = o redesenho da raiz interna, porque exige a autoridade de um engenheiro;; 2 = nomeia o item;; 1 = vago;; 0 = nenhuma.
 
 - **EX070 — Metas mensuráveis.** Dê duas das metas mensuráveis de Tomás. *Rubrica:* 3 = nenhuma indisponibilidade não planejada por mudanças de certificados, renovação 30 dias antes, runbook testado (duas);; 2 = uma;; 1 = meta vaga;; 0 = nenhuma.
 
-- **EX071 — Evidências de depois.** Cite duas evidências de depois. *Rubrica:* 3 = amostra do repositório de confiança atualizado, ensaio de renovação no laboratório, alerta disparando num teste (duas);; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Evidências de depois.** Cite duas evidências de depois. *Rubrica:* 3 = amostra do repositório de confiança atualizado, ensaio de renovação no laboratório, alerta disparando num teste (duas);; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX072 — Riscos em aberto.** Que riscos em aberto a passagem listou? *Rubrica:* 3 = a chave da raiz num servidor de uso geral, dois coletores que não conseguem atualizar;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Riscos em aberto.** Que riscos em aberto a passagem listou? *Rubrica:* 3 = a chave da raiz num servidor de uso geral, dois coletores que não conseguem atualizar;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

@@ -70,10 +70,10 @@ Desenhos observacionais não provam causa. Logs de busca deixam escapar a litera
 ### Exercícios
 
 - **EX001 — Unidade de análise.** Qual é a unidade de análise no estudo de Lucas? *Rubrica:* 3 = a conta;; 2 = contas;; 1 = pessoas;; 0 = nenhuma.
-- **EX002 — Definição de excesso.** Como se define o acesso excessivo? *Rubrica:* 3 = uma permissão que o papel atual do titular não exige, segundo o catálogo de papéis;; 2 = catálogo de papéis;; 1 = nada;; 0 = nenhuma.
-- **EX003 — Medida de custo.** Como Lucas mede o custo? *Rubrica:* 3 = horas registradas pelos revisores;; 2 = horas;; 1 = nada;; 0 = nenhuma.
-- **EX004 — Limite do desenho.** Por que o estudo não consegue provar causa? *Rubrica:* 3 = as unidades escolheram a própria frequência de revisão;; 2 = observacional;; 1 = nada;; 0 = nenhuma.
-- **EX005 — Campos do log de busca.** O que Lucas registra para cada busca? *Rubrica:* 3 = data, base, string e número de resultados;; 2 = log;; 1 = nada;; 0 = nenhuma.
+- **EX002 — Definição de excesso.** Como se define o acesso excessivo? *Rubrica:* 3 = uma permissão que o papel atual do titular não exige, segundo o catálogo de papéis;; 2 = catálogo de papéis;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Medida de custo.** Como Lucas mede o custo? *Rubrica:* 3 = horas registradas pelos revisores;; 2 = horas;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Limite do desenho.** Por que o estudo não consegue provar causa? *Rubrica:* 3 = as unidades escolheram a própria frequência de revisão;; 2 = observacional;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Campos do log de busca.** O que Lucas registra para cada busca? *Rubrica:* 3 = data, base, string e número de resultados;; 2 = log;; 1 = vago;; 0 = nenhuma.
 - **EX006 — Orientação de frequência.** A ISO/IEC 27002:2022 prescreve uma frequência de revisão? *Rubrica:* 3 = não, pede intervalos planejados;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX007 — Papel das normas.** O que as normas podem fazer por essa pergunta? *Rubrica:* 3 = defini-la, mas não respondê-la;; 2 = contexto;; 1 = evidência de efeito;; 0 = nenhuma.
 
@@ -143,12 +143,12 @@ Percentuais de cobertura escondem a qualidade dos controles. Os frameworks mudam
 ### Exercícios
 
 - **EX008 — Norma certificável.** Qual dos frameworks discutidos especifica requisitos certificáveis de SGSI? *Rubrica:* 3 = ISO/IEC 27001:2022;; 2 = 27001;; 1 = CSF;; 0 = nenhuma.
-- **EX009 — Separação do COBIT.** O que o COBIT 2019 separa? *Rubrica:* 3 = governança de gestão;; 2 = governança;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Separação do COBIT.** O que o COBIT 2019 separa? *Rubrica:* 3 = governança de gestão;; 2 = governança;; 1 = vago;; 0 = nenhuma.
 - **EX010 — Número mapeado.** Quantos requisitos o laboratório encontrou mapeados? *Rubrica:* 3 = oito de dez;; 2 = 8;; 1 = 10;; 0 = nenhuma.
 - **EX011 — Cobertura evidenciada.** Que parcela dos requisitos tinha evidência? *Rubrica:* 3 = 60%;; 2 = seis;; 1 = 80%;; 0 = nenhuma.
-- **EX012 — Itens sem mapeamento.** Que requisitos estavam sem mapeamento? *Rubrica:* 3 = R3 e R8;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX013 — Ilusão de garantia.** Por que o mapeamento pode criar uma ilusão de garantia? *Rubrica:* 3 = controles mapeados podem estar mal desenhados, mal operados ou mal evidenciados;; 2 = qualidade oculta;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Tese refinada.** Como Lucas refinou sua tese depois da discussão? *Rubrica:* 3 = o mapeamento é necessário; a garantia exige evidência testada conforme o risco;; 2 = refinou;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Itens sem mapeamento.** Que requisitos estavam sem mapeamento? *Rubrica:* 3 = R3 e R8;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Ilusão de garantia.** Por que o mapeamento pode criar uma ilusão de garantia? *Rubrica:* 3 = controles mapeados podem estar mal desenhados, mal operados ou mal evidenciados;; 2 = qualidade oculta;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Tese refinada.** Como Lucas refinou sua tese depois da discussão? *Rubrica:* 3 = o mapeamento é necessário; a garantia exige evidência testada conforme o risco;; 2 = refinou;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -190,12 +190,12 @@ Fatores de confusão medidos não eliminam os não medidos. A qualidade do catá
 
 ### Exercícios
 
-- **EX015 — Tamanho dos grupos.** Quantas contas são sorteadas por grupo? *Rubrica:* 3 = 300;; 2 = trezentas;; 1 = nada;; 0 = nenhuma.
-- **EX016 — Principal fator de confusão.** Que fator de confusão poderia aumentar o acesso excessivo independentemente da frequência? *Rubrica:* 3 = a rotatividade de pessoal;; 2 = rotatividade;; 1 = nada;; 0 = nenhuma.
-- **EX017 — Aprovações necessárias.** De quem Lucas obteve aprovação? *Rubrica:* 3 = do comitê de ética do Marlow e do encarregado de proteção de dados da Tessaly;; 2 = os dois;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Tamanho dos grupos.** Quantas contas são sorteadas por grupo? *Rubrica:* 3 = 300;; 2 = trezentas;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Principal fator de confusão.** Que fator de confusão poderia aumentar o acesso excessivo independentemente da frequência? *Rubrica:* 3 = a rotatividade de pessoal;; 2 = rotatividade;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Aprovações necessárias.** De quem Lucas obteve aprovação? *Rubrica:* 3 = do comitê de ética do Marlow e do encarregado de proteção de dados da Tessaly;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 - **EX018 — Regra para achados graves.** O que acontece se for encontrado um acesso excessivo grave? *Rubrica:* 3 = é comunicado imediatamente à segurança como questão operacional;; 2 = comunicar;; 1 = ignorar;; 0 = nenhuma.
-- **EX019 — Concordância no piloto.** Em quantas das 40 contas do piloto os revisores concordaram? *Rubrica:* 3 = 36;; 2 = 90%;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Correção do catálogo.** Que regra Lucas acrescentou depois do piloto? *Rubrica:* 3 = uma regra para recursos compartilhados, como caixas de correio;; 2 = caixas compartilhadas;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Concordância no piloto.** Em quantas das 40 contas do piloto os revisores concordaram? *Rubrica:* 3 = 36;; 2 = 90%;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Correção do catálogo.** Que regra Lucas acrescentou depois do piloto? *Rubrica:* 3 = uma regra para recursos compartilhados, como caixas de correio;; 2 = caixas compartilhadas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -237,12 +237,12 @@ Algumas rivais não podem ser testadas. As medidas de diligência são grosseira
 
 ### Exercícios
 
-- **EX021 — Teste do carimbo.** Como Lucas vai detectar revisões só carimbadas? *Rubrica:* 3 = remoções por revisão e tempo por conta;; 2 = remoções;; 1 = nada;; 0 = nenhuma.
-- **EX022 — Proxy de diligência.** Que proxy Lucas usa para a diligência geral? *Rubrica:* 3 = conclusão no prazo de outros controles, como o treinamento;; 2 = treinamento;; 1 = nada;; 0 = nenhuma.
-- **EX023 — Lente de custo.** Que fonte lembra Lucas de que mais controle nem sempre compensa o custo? *Rubrica:* 3 = Gordon e Loeb (2002);; 2 = Gordon-Loeb;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Falseabilidade.** Por que Lucas cita Herley e van Oorschot? *Rubrica:* 3 = para insistir que sua hipótese possa falhar;; 2 = falseável;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Categorias de julgamento.** Que três julgamentos cada rival vai receber? *Rubrica:* 3 = menos provável, ainda plausível ou não testada;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX026 — Resultado refutador.** Que resultado contaria contra a hipótese? *Rubrica:* 3 = nenhuma diferença relevante, ou uma que desaparece com rotatividade parecida;; 2 = declarado;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Teste do carimbo.** Como Lucas vai detectar revisões só carimbadas? *Rubrica:* 3 = remoções por revisão e tempo por conta;; 2 = remoções;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Proxy de diligência.** Que proxy Lucas usa para a diligência geral? *Rubrica:* 3 = conclusão no prazo de outros controles, como o treinamento;; 2 = treinamento;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Lente de custo.** Que fonte lembra Lucas de que mais controle nem sempre compensa o custo? *Rubrica:* 3 = Gordon e Loeb (2002);; 2 = Gordon-Loeb;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Falseabilidade.** Por que Lucas cita Herley e van Oorschot? *Rubrica:* 3 = para insistir que sua hipótese possa falhar;; 2 = falseável;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Categorias de julgamento.** Que três julgamentos cada rival vai receber? *Rubrica:* 3 = menos provável, ainda plausível ou não testada;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Resultado refutador.** Que resultado contaria contra a hipótese? *Rubrica:* 3 = nenhuma diferença relevante, ou uma que desaparece com rotatividade parecida;; 2 = declarado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -312,12 +312,12 @@ A amostragem não detecta falhas sistemáticas raras. As taxas toleráveis são 
 
 ### Exercícios
 
-- **EX027 — Tamanho da proposta.** Qual é o tamanho da proposta de Lucas e de seu cronograma? *Rubrica:* 3 = doze páginas, nove meses;; 2 = 12 páginas;; 1 = nada;; 0 = nenhuma.
-- **EX028 — Taxa tolerável.** Que taxa tolerável de desvio Lucas fixou? *Rubrica:* 3 = 5%;; 2 = 0,05;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Limite da amostra limpa.** Com 60 registros e nenhum desvio, qual é o limite superior? *Rubrica:* 3 = 0,049;; 2 = abaixo de 5%;; 1 = nada;; 0 = nenhuma.
-- **EX030 — Limite com um desvio.** Quanto vale o limite com um desvio em 60? *Rubrica:* 3 = 0,077;; 2 = acima de 5%;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Tamanho da proposta.** Qual é o tamanho da proposta de Lucas e de seu cronograma? *Rubrica:* 3 = doze páginas, nove meses;; 2 = 12 páginas;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Taxa tolerável.** Que taxa tolerável de desvio Lucas fixou? *Rubrica:* 3 = 5%;; 2 = 0,05;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Limite da amostra limpa.** Com 60 registros e nenhum desvio, qual é o limite superior? *Rubrica:* 3 = 0,049;; 2 = abaixo de 5%;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Limite com um desvio.** Quanto vale o limite com um desvio em 60? *Rubrica:* 3 = 0,077;; 2 = acima de 5%;; 1 = vago;; 0 = nenhuma.
 - **EX031 — Amostra pequena.** Uma amostra de 25 com um desvio sustenta a operação eficaz? *Rubrica:* 3 = não, o limite é 0,176;; 2 = não;; 1 = sim;; 0 = nenhuma.
-- **EX032 — Tipos de desvio.** Liste os três tipos de desvio definidos por Lucas. *Rubrica:* 3 = sem assinatura, assinatura atrasada, signatário errado;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Tipos de desvio.** Liste os três tipos de desvio definidos por Lucas. *Rubrica:* 3 = sem assinatura, assinatura atrasada, signatário errado;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -385,11 +385,11 @@ A diligência continua sendo uma rival parcial. A relação custo-benefício dep
 ### Exercícios
 
 - **EX033 — Julgamentos ausentes.** Como Lucas tratou as contas que não puderam ser julgadas? *Rubrica:* 3 = registrou-as como ausentes;; 2 = ausentes;; 1 = adivinhou;; 0 = nenhuma.
-- **EX034 — Taxas dos grupos.** Que taxas de acesso excessivo cada grupo mostrou? *Rubrica:* 3 = trimestral 0,060, anual 0,130;; 2 = 18 e 39;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Intervalo bootstrap.** Dê o intervalo bootstrap de 95% para a diferença. *Rubrica:* 3 = 0,023 a 0,117;; 2 = exclui o zero;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Taxas dos grupos.** Que taxas de acesso excessivo cada grupo mostrou? *Rubrica:* 3 = trimestral 0,060, anual 0,130;; 2 = 18 e 39;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Intervalo bootstrap.** Dê o intervalo bootstrap de 95% para a diferença. *Rubrica:* 3 = 0,023 a 0,117;; 2 = exclui o zero;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Verificação por rotatividade.** O que aconteceu com a diferença entre as unidades de rotatividade intermediária? *Rubrica:* 3 = diminuiu, mas permaneceu;; 2 = permaneceu;; 1 = desapareceu;; 0 = nenhuma.
-- **EX037 — Evidência contra o carimbo.** Por que o carimbo automático parece improvável? *Rubrica:* 3 = nove remoções por revisão e quarenta segundos por conta;; 2 = remoções;; 1 = nada;; 0 = nenhuma.
-- **EX038 — Opção baseada em risco.** Que meio-termo Lucas sugere? *Rubrica:* 3 = trimestral para sistemas de alto risco, anual no restante;; 2 = baseado em risco;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Evidência contra o carimbo.** Por que o carimbo automático parece improvável? *Rubrica:* 3 = nove remoções por revisão e quarenta segundos por conta;; 2 = remoções;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Opção baseada em risco.** Que meio-termo Lucas sugere? *Rubrica:* 3 = trimestral para sistemas de alto risco, anual no restante;; 2 = baseado em risco;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -431,12 +431,12 @@ Resumos para profissionais podem simplificar demais. As ligações com os framew
 
 ### Exercícios
 
-- **EX039 — Tamanho do texto principal.** Qual é o tamanho aproximado do texto principal? *Rubrica:* 3 = cerca de 20.000 palavras;; 2 = 20 mil;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Tamanho do texto principal.** Qual é o tamanho aproximado do texto principal? *Rubrica:* 3 = cerca de 20.000 palavras;; 2 = 20 mil;; 1 = vago;; 0 = nenhuma.
 - **EX040 — Estilo dos limites.** Como Lucas apresenta cada limitação? *Rubrica:* 3 = com seu viés provável e a direção;; 2 = viés;; 1 = só uma lista;; 0 = nenhuma.
-- **EX041 — Horas autodeclaradas.** Que limitação afeta a estimativa de custo? *Rubrica:* 3 = as horas foram registradas pelos próprios revisores;; 2 = autodeclaração;; 1 = nada;; 0 = nenhuma.
-- **EX042 — Tamanho do resumo.** Qual é o tamanho do resumo para profissionais? *Rubrica:* 3 = quatro páginas;; 2 = 4;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Retorno dos gestores.** Por que Lucas reescreveu uma frase do resumo? *Rubrica:* 3 = sugeria que as unidades eram descuidadas;; 2 = culpa;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Sugestão aos conselhos.** O que Lucas sugere que os conselhos peçam? *Rubrica:* 3 = medidas de desfecho, como as taxas de acesso excessivo;; 2 = desfechos;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Horas autodeclaradas.** Que limitação afeta a estimativa de custo? *Rubrica:* 3 = as horas foram registradas pelos próprios revisores;; 2 = autodeclaração;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Tamanho do resumo.** Qual é o tamanho do resumo para profissionais? *Rubrica:* 3 = quatro páginas;; 2 = 4;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Retorno dos gestores.** Por que Lucas reescreveu uma frase do resumo? *Rubrica:* 3 = sugeria que as unidades eram descuidadas;; 2 = culpa;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Sugestão aos conselhos.** O que Lucas sugere que os conselhos peçam? *Rubrica:* 3 = medidas de desfecho, como as taxas de acesso excessivo;; 2 = desfechos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -480,10 +480,10 @@ A reprodução confere o código, não a verdade. Os resultados do estudo seguin
 
 - **EX045 — Resultado da reprodução.** A revisora independente reproduziu as tabelas? *Rubrica:* 3 = sim, exatamente, graças às sementes fixas;; 2 = sim;; 1 = não;; 0 = nenhuma.
 - **EX046 — Verificação de pior caso.** O que mostrou a verificação de pior caso dos dados ausentes? *Rubrica:* 3 = a diferença caiu um pouco, mas o intervalo continuou excluindo o zero;; 2 = robusto;; 1 = inverteu;; 0 = nenhuma.
-- **EX047 — Sem randomização.** Por que a frequência não foi randomizada? *Rubrica:* 3 = a Tessaly não podia mudar os calendários para pesquisa;; 2 = prático;; 1 = nada;; 0 = nenhuma.
-- **EX048 — Limite do desfecho.** O que o acesso excessivo não mede? *Rubrica:* 3 = se o acesso foi mal usado;; 2 = mau uso;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Sem randomização.** Por que a frequência não foi randomizada? *Rubrica:* 3 = a Tessaly não podia mudar os calendários para pesquisa;; 2 = prático;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Limite do desfecho.** O que o acesso excessivo não mede? *Rubrica:* 3 = se o acesso foi mal usado;; 2 = mau uso;; 1 = vago;; 0 = nenhuma.
 - **EX049 — Decisão da Tessaly.** Em que sistemas a Tessaly vai pilotar revisões trimestrais? *Rubrica:* 3 = gestão de armazéns e financeiro;; 2 = alto risco;; 1 = todos;; 0 = nenhuma.
-- **EX050 — Próximo estudo.** Que estudo seguinte a Dra. Solberg sugere? *Rubrica:* 3 = um estudo randomizado com várias empresas;; 2 = randomizar;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Próximo estudo.** Que estudo seguinte a Dra. Solberg sugere? *Rubrica:* 3 = um estudo randomizado com várias empresas;; 2 = randomizar;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

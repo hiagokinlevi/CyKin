@@ -75,7 +75,7 @@ Sizing an identity provider from daily averages ignores the morning peak, when f
 
 - **EX001 — Peak rate.** Why does peak rate matter more than the daily total for sizing? *Rubric:* 3 = provider must cope at the rush or block all apps;; 2 = peak;; 1 = total;; 0 = none.
 - **EX002 — Backlog growth.** At what rate does a sign-in backlog grow? *Rubric:* 3 = arrivals minus capacity;; 2 = difference;; 1 = capacity;; 0 = none.
-- **EX003 — Night failures.** What might a sudden night-time rise in failed sign-ins indicate? *Rubric:* 3 = password-guessing attempts to flag;; 2 = attack;; 1 = nothing;; 0 = none.
+- **EX003 — Night failures.** What might a sudden night-time rise in failed sign-ins indicate? *Rubric:* 3 = password-guessing attempts to flag;; 2 = attack;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -239,7 +239,7 @@ Disabling accounts directly from a script's output, without owner checks, risks 
 
 - **EX010 — Orphan count.** Which accounts does the lab flag as having no current employee? *Rubric:* 3 = jdoe and kpatel;; 2 = two;; 1 = vague;; 0 = none.
 - **EX011 — Missing account.** Which employee has no account in the lab? *Rubric:* 3 = mlee;; 2 = one;; 1 = vague;; 0 = none.
-- **EX012 — Case bug.** What did the case test reveal? *Rubric:* 3 = JDoe and jdoe treated as different;; 2 = case;; 1 = nothing;; 0 = none.
+- **EX012 — Case bug.** What did the case test reveal? *Rubric:* 3 = JDoe and jdoe treated as different;; 2 = case;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -430,7 +430,7 @@ Storing the token-signing key in an ordinary file on the server exposes the most
 ### Exercises
 
 - **EX022 — Signing key value.** Why is the token-signing key the most valuable secret? *Rubric:* 3 = anyone holding it can forge tokens every app accepts;; 2 = forge tokens;; 1 = encryption;; 0 = none.
-- **EX023 — Restart spike.** What happens if sessions are lost on restart? *Rubric:* 3 = all users sign in again, causing a load spike;; 2 = spike;; 1 = nothing;; 0 = none.
+- **EX023 — Restart spike.** What happens if sessions are lost on restart? *Rubric:* 3 = all users sign in again, causing a load spike;; 2 = spike;; 1 = vague;; 0 = none.
 - **EX024 — Failure headroom.** How does Sana plan for one server failing? *Rubric:* 3 = each server can carry full peak alone;; 2 = headroom;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -901,7 +901,7 @@ Hard lockouts let anyone who knows a username deny that person access by failing
 
 ### Exercises
 
-- **EX049 — Low threshold effect.** What happens when a lockout threshold is too low? *Rubric:* 3 = staff locked out, desk flooded;; 2 = lockouts;; 1 = nothing;; 0 = none.
+- **EX049 — Low threshold effect.** What happens when a lockout threshold is too low? *Rubric:* 3 = staff locked out, desk flooded;; 2 = lockouts;; 1 = vague;; 0 = none.
 - **EX050 — Lockout abuse.** How can hard lockouts be abused? *Rubric:* 3 = attacker fails deliberately to lock someone out;; 2 = deny service;; 1 = vague;; 0 = none.
 - **EX051 — Progressive response.** What does Sana prefer to hard lockouts? *Rubric:* 3 = progressive slowing or extra verification;; 2 = delays;; 1 = no limit;; 0 = none.
 
@@ -1808,7 +1808,7 @@ Degraded modes that are not logged and reviewed can become a permanent route aro
 ### Exercises
 
 - **EX097 — Critical example.** Name one council service where sign-in failure could endanger people. *Rubric:* 3 = emergency planning, out-of-hours social care or vulnerable tenant repairs;; 2 = one;; 1 = payroll;; 0 = none.
-- **EX098 — Recovery completion.** What must be checked before recovery is complete? *Rubric:* 3 = leavers processed during the outage;; 2 = leaver backlog;; 1 = nothing;; 0 = none.
+- **EX098 — Recovery completion.** What must be checked before recovery is complete? *Rubric:* 3 = leavers processed during the outage;; 2 = leaver backlog;; 1 = vague;; 0 = none.
 - **EX099 — Exercise finding.** What did the tabletop exercise reveal about the emergency key? *Rubric:* 3 = stored in a building locked at weekends;; 2 = inaccessible;; 1 = lost;; 0 = none.
 
 ### Synthesis
@@ -1975,7 +1975,7 @@ Load testing against production cloud identity services can breach terms and aff
 
 - **EX106 — Peak estimate.** What total peak load does the lab estimate now? *Rubric:* 3 = about 17.6 requests per second, 29%;; 2 = 17.6;; 1 = 4.4;; 0 = none.
 - **EX107 — Lifetime trade-off.** What is the trade-off in lengthening token lifetimes? *Rubric:* 3 = fewer refreshes but stolen tokens useful longer;; 2 = security vs load;; 1 = vague;; 0 = none.
-- **EX108 — Load test finding.** What did load testing reveal? *Rubric:* 3 = slow lookup for users with many nested groups;; 2 = nested groups;; 1 = nothing;; 0 = none.
+- **EX108 — Load test finding.** What did load testing reveal? *Rubric:* 3 = slow lookup for users with many nested groups;; 2 = nested groups;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2407,7 +2407,7 @@ Assuming that a proxied application cannot be reached directly leaves a path aro
 
 ### Exercises
 
-- **EX133 — Proxy finding.** What must a proxied application do according to the review? *Rubric:* 3 = reject requests not coming through the proxy;; 2 = reject direct;; 1 = nothing;; 0 = none.
+- **EX133 — Proxy finding.** What must a proxied application do according to the review? *Rubric:* 3 = reject requests not coming through the proxy;; 2 = reject direct;; 1 = vague;; 0 = none.
 - **EX134 — Residual window.** What leaver window does the revised residual risk state for scripted checks? *Rubric:* 3 = up to twenty-four hours;; 2 = 24h;; 1 = vague;; 0 = none.
 - **EX135 — Lasting change.** What lasting process change does Sana recommend? *Rubric:* 3 = independent review step for high-risk identity changes;; 2 = review step;; 1 = vague;; 0 = none.
 
@@ -2601,7 +2601,7 @@ Claiming a reduction in attacks that was never measured overstates the evidence.
 
 - **EX145 — Unmeasured claim.** Which claim does Sana avoid because she did not measure it? *Rubric:* 3 = a reduction in attacks;; 2 = attacks;; 1 = leaver time;; 0 = none.
 - **EX146 — Contribution items.** Name two parts of Sana's stated contribution. *Rubric:* 3 = verified programme, reusable requirements and tests, measured improvement, review study (two);; 2 = one;; 1 = vague;; 0 = none.
-- **EX147 — Hindsight change.** What would Sana do differently? *Rubric:* 3 = involve HR earlier;; 2 = HR;; 1 = nothing;; 0 = none.
+- **EX147 — Hindsight change.** What would Sana do differently? *Rubric:* 3 = involve HR earlier;; 2 = HR;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

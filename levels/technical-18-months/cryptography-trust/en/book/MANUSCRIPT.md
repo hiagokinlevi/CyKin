@@ -391,7 +391,7 @@ Inventories drift from reality; confirm expiry against the live endpoint. Transp
 - **EX025 — Three sources.** Which source shows certificates a CA issued for Lumen even if Lumen did not request them? *Rubric:* 3 = certificate transparency logs;; 2 = names CT;; 1 = names config;; 0 = none.
 - **EX026 — Expired row.** In the lab, which certificate had already expired and by how many days? *Rubric:* 3 = staging.lumen.example, expired 12 days before the review date;; 2 = host only;; 1 = vague;; 0 = none.
 - **EX027 — Fixed review date.** Why does the lab use a fixed review date? *Rubric:* 3 = so the output is reproducible; production uses today;; 2 = reproducible;; 1 = no reason;; 0 = none.
-- **EX028 — Debug header logging.** What went wrong with the portal's debug logging? *Rubric:* 3 = it logged session cookies and an API key into a widely readable file;; 2 = mentions secrets;; 1 = nothing;; 0 = none.
+- **EX028 — Debug header logging.** What went wrong with the portal's debug logging? *Rubric:* 3 = it logged session cookies and an API key into a widely readable file;; 2 = mentions secrets;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -550,7 +550,7 @@ Defaults change across Python and OpenSSL versions; record versions. Disabling o
 - **EX037 — Version policy.** Which TLS versions does the Lumen policy allow? *Rubric:* 3 = TLS 1.3, plus TLS 1.2 only where older clients need it; earlier disabled;; 2 = 1.3 and 1.2;; 1 = includes 1.0;; 0 = none.
 - **EX038 — Default context output.** What did the lab report for verify_mode and check_hostname? *Rubric:* 3 = CERT_REQUIRED and True;; 2 = one value;; 1 = CERT_NONE;; 0 = none.
 - **EX039 — Internal root fix.** How should a script trust Lumen's internal root? *Rubric:* 3 = load it with load_verify_locations and keep all checks on;; 2 = load root;; 1 = disable checks;; 0 = none.
-- **EX040 — Before the change.** What should Tomás check before disabling TLS 1.1? *Rubric:* 3 = handshake logs for clients still negotiating old versions;; 2 = logs;; 1 = nothing;; 0 = none.
+- **EX040 — Before the change.** What should Tomás check before disabling TLS 1.1? *Rubric:* 3 = handshake logs for clients still negotiating old versions;; 2 = logs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -855,7 +855,7 @@ Partners may not support overlap and require a hard cut-over. Advisory feeds can
 
 - **EX057 — DKIM dependency.** Which Lumen system publishes the public keys used to verify email signatures? *Rubric:* 3 = Lumen's DNS, which holds DKIM public keys;; 2 = DNS;; 1 = email server only;; 0 = none.
 - **EX058 — Overlap order.** Give the order of the overlap rotation steps. *Rubric:* 3 = accept both, provider switches, confirm new verifies, remove old;; 2 = three in order;; 1 = unordered;; 0 = none.
-- **EX059 — No overlap effect.** What goes wrong without an overlap period? *Rubric:* 3 = valid callbacks fail and orders are marked unpaid during the gap;; 2 = failures;; 1 = nothing;; 0 = none.
+- **EX059 — No overlap effect.** What goes wrong without an overlap period? *Rubric:* 3 = valid callbacks fail and orders are marked unpaid during the gap;; 2 = failures;; 1 = vague;; 0 = none.
 - **EX060 — Version records.** Why record OpenSSL and firmware versions in the inventory? *Rubric:* 3 = to tell quickly which hosts an advisory affects;; 2 = advisories;; 1 = not needed;; 0 = none.
 
 ### Synthesis

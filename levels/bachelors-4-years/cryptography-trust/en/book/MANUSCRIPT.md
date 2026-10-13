@@ -100,7 +100,7 @@ Perfect secrecy holds only for truly random, never-reused keys as long as the me
 
 - **EX001 — Defining secure.** Why is "this cipher is secure" meaningless on its own? *Rubric:* 3 = security must be defined with an attacker model and proved or reduced to an assumption;; 2 = needs definition;; 1 = it is meaningful;; 0 = none.
 - **EX002 — XOR identities.** State two XOR identities that make decryption work. *Rubric:* 3 = x XOR x = 0 and x XOR 0 = x (with associativity);; 2 = one;; 1 = wrong;; 0 = none.
-- **EX003 — Pad reuse result.** What did the lab recover, and why? *Rubric:* 3 = FINE PAID 0938, because c1 XOR c2 = p1 XOR p2 and p1 was known;; 2 = message;; 1 = nothing;; 0 = none.
+- **EX003 — Pad reuse result.** What did the lab recover, and why? *Rubric:* 3 = FINE PAID 0938, because c1 XOR c2 = p1 XOR p2 and p1 was known;; 2 = message;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -364,7 +364,7 @@ Scanning systems without permission is unethical and may be illegal. A valid cer
 
 - **EX019 — Transcript signature.** Why does the server sign the handshake transcript? *Rubric:* 3 = to prove it holds the certificate's private key and protect against tampering/downgrade;; 2 = prove key;; 1 = encrypt;; 0 = none.
 - **EX020 — Browser checks.** List three checks the browser makes on a certificate. *Rubric:* 3 = three of chain to trusted root, name match, validity dates, revocation;; 2 = two;; 1 = one;; 0 = none.
-- **EX021 — Scan finding.** What did Priya's authorised scan find? *Rubric:* 3 = staff wiki accepting TLS 1.0;; 2 = old TLS;; 1 = nothing;; 0 = none.
+- **EX021 — Scan finding.** What did Priya's authorised scan find? *Rubric:* 3 = staff wiki accepting TLS 1.0;; 2 = old TLS;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -408,7 +408,7 @@ High-level APIs still need correct key management. Tests prove only what they ch
 
 - **EX022 — High-level advantage.** Why prefer high-level cryptographic APIs? *Rubric:* 3 = safe defaults handle nonces, modes and padding, reducing misuse;; 2 = safer;; 1 = faster;; 0 = none.
 - **EX023 — Generic exception.** Why does unprotect raise one generic exception? *Rubric:* 3 = so callers or attackers cannot learn why a token failed;; 2 = hide reason;; 1 = simpler;; 0 = none.
-- **EX024 — Fresh-nonce test.** What does protecting the same data twice test? *Rubric:* 3 = tokens differ, confirming fresh nonces;; 2 = nonces;; 1 = nothing;; 0 = none.
+- **EX024 — Fresh-nonce test.** What does protecting the same data twice test? *Rubric:* 3 = tokens differ, confirming fresh nonces;; 2 = nonces;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -847,8 +847,8 @@ Layers that share a weakness, such as one admin account controlling all, do not 
 ### Exercises
 
 - **EX046 — Trust boundary.** Name two trust boundaries in Tidewell's architecture. *Rubric:* 3 = two of internet-portal, portal-database, consortium-provider;; 2 = one;; 1 = vague;; 0 = none.
-- **EX047 — Portal bug.** What would an attacker still face after exploiting a portal bug? *Rubric:* 3 = database permissions and field encryption;; 2 = one layer;; 1 = nothing;; 0 = none.
-- **EX048 — Missing keys.** What did earlier architecture documents omit and why did it matter? *Rubric:* 3 = key locations; rotation and access to decryption could not be assessed;; 2 = keys;; 1 = nothing;; 0 = none.
+- **EX047 — Portal bug.** What would an attacker still face after exploiting a portal bug? *Rubric:* 3 = database permissions and field encryption;; 2 = one layer;; 1 = vague;; 0 = none.
+- **EX048 — Missing keys.** What did earlier architecture documents omit and why did it matter? *Rubric:* 3 = key locations; rotation and access to decryption could not be assessed;; 2 = keys;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -968,7 +968,7 @@ Simulations may not reflect real behaviour under pressure. Studies with staff mu
 
 - **EX052 — Question parts.** What three elements make the question researchable? *Rubric:* 3 = population, measurable behaviour, intervention;; 2 = two;; 1 = one;; 0 = none.
 - **EX053 — Source table.** What does Priya record for each study? *Rubric:* 3 = population, method, findings (and lab versus real browsing);; 2 = two;; 1 = citation only;; 0 = none.
-- **EX054 — Committee request.** What did the ethics committee ask Priya to add? *Rubric:* 3 = ensure managers never see individual results;; 2 = anonymity;; 1 = nothing;; 0 = none.
+- **EX054 — Committee request.** What did the ethics committee ask Priya to add? *Rubric:* 3 = ensure managers never see individual results;; 2 = anonymity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1012,7 +1012,7 @@ Trusting many roots widens risk. Signatures prove approval of bytes, not intent 
 
 - **EX055 — Four services.** Name four kinds of trust service. *Rubric:* 3 = certificate authorities, timestamping, signature services, key management;; 2 = three;; 1 = one;; 0 = none.
 - **EX056 — Root weakness.** What is the main weakness of delegated trust? *Rubric:* 3 = any trusted root can issue for any name, so one bad authority undermines all;; 2 = any root;; 1 = vague;; 0 = none.
-- **EX057 — Contract misunderstanding.** What did staff misunderstand about the signed PDF? *Rubric:* 3 = assumed signature covered terms in an unsigned attachment;; 2 = coverage;; 1 = nothing;; 0 = none.
+- **EX057 — Contract misunderstanding.** What did staff misunderstand about the signed PDF? *Rubric:* 3 = assumed signature covered terms in an unsigned attachment;; 2 = coverage;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1099,7 +1099,7 @@ Models simplify; verify them against real configurations. Single points of trust
 ### Exercises
 
 - **EX061 — Licence assertion.** What do Tidewell's signed loan tokens assert to the licence server? *Rubric:* 3 = a patron may borrow a title for fourteen days;; 2 = loan permission;; 1 = identity;; 0 = none.
-- **EX062 — Internal authority risk.** What could an attacker do with the internal authority's signing key? *Rubric:* 3 = create staff device certificates;; 2 = impersonate devices;; 1 = nothing;; 0 = none.
+- **EX062 — Internal authority risk.** What could an attacker do with the internal authority's signing key? *Rubric:* 3 = create staff device certificates;; 2 = impersonate devices;; 1 = vague;; 0 = none.
 - **EX063 — Admin separation.** Which separation did Priya recommend for administration? *Rubric:* 3 = separate key-service administration from audit-log administration;; 2 = separation;; 1 = merge;; 0 = none.
 
 ### Synthesis
@@ -1567,7 +1567,7 @@ Post-quantum migration timelines are uncertain; avoid panic and complacency. End
 
 ### Exercises
 
-- **EX091 — Harvest now.** What does "harvest now, decrypt later" mean? *Rubric:* 3 = recorded traffic decrypted later when large quantum computers exist;; 2 = future decryption;; 1 = nothing;; 0 = none.
+- **EX091 — Harvest now.** What does "harvest now, decrypt later" mean? *Rubric:* 3 = recorded traffic decrypted later when large quantum computers exist;; 2 = future decryption;; 1 = vague;; 0 = none.
 - **EX092 — E2E cost.** Name two costs of end-to-end encrypted patron messaging. *Rubric:* 3 = two of message loss with devices, shared inbox difficulty, no abuse scanning;; 2 = one;; 1 = vague;; 0 = none.
 - **EX093 — Priority advice.** What did Priya advise before adopting advanced options? *Rubric:* 3 = finish basic controls first (inventory, renewal, backup encryption);; 2 = basics;; 1 = rush;; 0 = none.
 
@@ -1701,7 +1701,7 @@ Short trials miss long-term problems. Mixed approaches add complexity that must 
 
 - **EX100 — Shared computers.** Why do device certificates alone fail for branch volunteers? *Rubric:* 3 = shared computers are used by several people, so devices do not identify individuals;; 2 = shared;; 1 = they work;; 0 = none.
 - **EX101 — Criteria.** List four of Priya's criteria. *Rubric:* 3 = four of phishing resistance, staff effort, admin effort, cost, shared computers, recovery;; 2 = three;; 1 = one;; 0 = none.
-- **EX102 — Changing view.** What would change Priya's recommendation? *Rubric:* 3 = lower security-key prices (or similar evidence change);; 2 = condition;; 1 = nothing;; 0 = none.
+- **EX102 — Changing view.** What would change Priya's recommendation? *Rubric:* 3 = lower security-key prices (or similar evidence change);; 2 = condition;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1744,7 +1744,7 @@ Scanning beyond authorised hosts is not allowed even for good purposes. Overly b
 ### Exercises
 
 - **EX103 — Capstone aim.** State the capstone's aim. *Rubric:* 3 = every in-scope certificate and key listed with owner; no expiry without alerts at 30 and 7 days;; 2 = aim;; 1 = vague;; 0 = none.
-- **EX104 — Out of scope.** What is out of scope? *Rubric:* 3 = staff security keys and supplier-held keys;; 2 = one;; 1 = nothing;; 0 = none.
+- **EX104 — Out of scope.** What is out of scope? *Rubric:* 3 = staff security keys and supplier-held keys;; 2 = one;; 1 = vague;; 0 = none.
 - **EX105 — Added measure.** What change did Dr. Echeverría require? *Rubric:* 3 = add a measure of false alerts;; 2 = false alerts;; 1 = vague;; 0 = none.
 
 ### Synthesis

@@ -68,7 +68,7 @@ Starting configuration work without written scope leaves unclear who authorised 
 
 - **EX001 — Practice size.** How many surgeries and staff does Millbrook have? *Rubric:* 3 = two surgeries, 28 staff;; 2 = 28;; 1 = one;; 0 = none.
 - **EX002 — Separate accounts.** Which systems keep separate accounts? *Rubric:* 3 = dental records and payroll;; 2 = two;; 1 = email;; 0 = none.
-- **EX003 — Scope limit.** What does the scope forbid? *Rubric:* 3 = accessing patient records beyond configuration needs;; 2 = patient records;; 1 = nothing;; 0 = none.
+- **EX003 — Scope limit.** What does the scope forbid? *Rubric:* 3 = accessing patient records beyond configuration needs;; 2 = patient records;; 1 = vague;; 0 = none.
 - **EX004 — Scope benefit.** Who does written scope protect? *Rubric:* 3 = patients, the practice and Tomas;; 2 = everyone;; 1 = nobody;; 0 = none.
 
 ### Synthesis
@@ -161,7 +161,7 @@ Assuming a pushed setting applied everywhere without checking misses unenrolled 
 - **EX009 — Admin risk.** Why is a daily admin account risky? *Rubric:* 3 = harmful downloads run with full control;; 2 = full control;; 1 = slow;; 0 = none.
 - **EX010 — Lock times.** What lock times were set? *Rubric:* 3 = 5 minutes surgeries, 2 minutes reception;; 2 = five and two;; 1 = one;; 0 = none.
 - **EX011 — Missed device.** Why did one device miss the setting? *Rubric:* 3 = not enrolled;; 2 = unenrolled;; 1 = broken;; 0 = none.
-- **EX012 — Register use.** How did the register help when a nurse left? *Rubric:* 3 = showed her laptop to collect;; 2 = laptop;; 1 = nothing;; 0 = none.
+- **EX012 — Register use.** How did the register help when a nurse left? *Rubric:* 3 = showed her laptop to collect;; 2 = laptop;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -296,7 +296,7 @@ Enforcing a new MFA policy on everyone at once without report-only testing risks
 - **EX021 — Report-only purpose.** What does report-only mode do? *Rubric:* 3 = shows impact without blocking;; 2 = preview;; 1 = blocks;; 0 = none.
 - **EX022 — Strong method users.** Who gets phishing-resistant methods? *Rubric:* 3 = practice manager and IT staff;; 2 = most powerful access;; 1 = everyone;; 0 = none.
 - **EX023 — SMS role.** What role do text codes play? *Rubric:* 3 = temporary fallback during rollout;; 2 = fallback;; 1 = main;; 0 = none.
-- **EX024 — No phone.** What helps staff without suitable phones? *Rubric:* 3 = spare hardware keys;; 2 = keys;; 1 = nothing;; 0 = none.
+- **EX024 — No phone.** What helps staff without suitable phones? *Rubric:* 3 = spare hardware keys;; 2 = keys;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -652,7 +652,7 @@ Reporting only overall coverage hides a weak role behind a good total.
 - **EX045 — Total coverage.** What was total MFA coverage? *Rubric:* 3 = 23 of 28, 82%;; 2 = 82%;; 1 = 100%;; 0 = none.
 - **EX046 — Weakest role.** Which role had the lowest coverage? *Rubric:* 3 = reception, 5 of 8 (62%);; 2 = reception;; 1 = nurse;; 0 = none.
 - **EX047 — Phishing-resistant.** How many had phishing-resistant methods? *Rubric:* 3 = 6 of 28, 21%;; 2 = six;; 1 = vague;; 0 = none.
-- **EX048 — Reception concern.** Why does reception's gap matter? *Rubric:* 3 = handle patient contact data and many emails;; 2 = exposure;; 1 = nothing;; 0 = none.
+- **EX048 — Reception concern.** Why does reception's gap matter? *Rubric:* 3 = handle patient contact data and many emails;; 2 = exposure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -695,7 +695,7 @@ Leaving local passwords active after SSO preserves a path around MFA and leaver 
 ### Exercises
 
 - **EX049 — Rollback plan.** What was the rollback plan? *Rubric:* 3 = keep local passwords active until testing finished;; 2 = local passwords;; 1 = vague;; 0 = none.
-- **EX050 — Test finding.** What did testing find? *Rubric:* 3 = a nurse saw manager reports from a double-mapped group;; 2 = mapping;; 1 = nothing;; 0 = none.
+- **EX050 — Test finding.** What did testing find? *Rubric:* 3 = a nurse saw manager reports from a double-mapped group;; 2 = mapping;; 1 = vague;; 0 = none.
 - **EX051 — Bypass risk.** Why disable local passwords? *Rubric:* 3 = they bypass MFA and leaver controls;; 2 = bypass;; 1 = cost;; 0 = none.
 - **EX052 — Local exception.** Which account keeps a local sign-in? *Rubric:* 3 = emergency admin;; 2 = emergency;; 1 = all;; 0 = none.
 
@@ -742,7 +742,7 @@ Resetting passwords by reflex wastes time when the cause is device compliance or
 - **EX053 — First step.** What is the first troubleshooting step? *Rubric:* 3 = confirm the symptom and when it started;; 2 = confirm;; 1 = reset;; 0 = none.
 - **EX054 — Dentist cause.** Why did the dentist's sign-in fail? *Rubric:* 3 = device not compliant, overdue update;; 2 = compliance;; 1 = password;; 0 = none.
 - **EX055 — Group outage.** What caused the group failure? *Rubric:* 3 = expired SAML certificate;; 2 = certificate;; 1 = network;; 0 = none.
-- **EX056 — Prevention.** What prevents a repeat certificate outage? *Rubric:* 3 = calendar reminder for expiry;; 2 = reminder;; 1 = nothing;; 0 = none.
+- **EX056 — Prevention.** What prevents a repeat certificate outage? *Rubric:* 3 = calendar reminder for expiry;; 2 = reminder;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

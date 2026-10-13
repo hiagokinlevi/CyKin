@@ -444,7 +444,7 @@ A resistência a violação aumenta o custo do atacante, mas não é absoluta. A
 
 ### Exercícios
 
-- **EX022 — Benefício do AES em hardware.** Cite dois benefícios das instruções de AES em hardware. *Rubrica:* 3 = velocidade e execução em tempo constante, que resiste a vazamentos de tempo;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX022 — Benefício do AES em hardware.** Cite dois benefícios das instruções de AES em hardware. *Rubrica:* 3 = velocidade e execução em tempo constante, que resiste a vazamentos de tempo;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Vazamento pelo cache.** Como um cache pode vazar segredos? *Rubrica:* 3 = o tempo de acesso depende dos dados em cache; acessos dependentes de segredos revelam chaves a um programa que compartilha a máquina;; 2 = tempo mencionado;; 1 = não vaza;; 0 = nenhuma.
 
@@ -490,7 +490,7 @@ Wrappers podem esconder bugs tanto quanto complexidade; eles precisam ser revisa
 
 - **EX026 — Falha silenciosa.** Por que a verificação devolve apenas verdadeiro ou falso a quem chama? *Rubrica:* 3 = motivos detalhados ajudam atacantes a sondar; os detalhes vão para logs protegidos;; 2 = segurança;; 1 = mais simples;; 0 = nenhuma.
 
-- **EX027 — Testes negativos ausentes.** Contra que perigo os testes negativos protegem? *Rubrica:* 3 = um verificador que sempre devolve verdadeiro passar em todos os testes positivos;; 2 = bugs;; 1 = nenhum;; 0 = nenhuma.
+- **EX027 — Testes negativos ausentes.** Contra que perigo os testes negativos protegem? *Rubrica:* 3 = um verificador que sempre devolve verdadeiro passar em todos os testes positivos;; 2 = bugs;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -528,7 +528,7 @@ Tratar todo controle de segurança como falha fechada pode criar riscos à segur
 
 ### Exercícios
 
-- **EX028 — Risco da expiração.** Que risco à segurança das pessoas Aiyana viu em recusar o envio quando a assinatura falha? *Rubrica:* 3 = a companhia fica cega para vazamentos se um certificado expirar;; 2 = indisponibilidade;; 1 = nenhum;; 0 = nenhuma.
+- **EX028 — Risco da expiração.** Que risco à segurança das pessoas Aiyana viu em recusar o envio quando a assinatura falha? *Rubrica:* 3 = a companhia fica cega para vazamentos se um certificado expirar;; 2 = indisponibilidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Caminho da divulgação.** Como foi tratada a falha da bateria fraca? *Rubrica:* 3 = relatada a Marcus e ao fornecedor por divulgação coordenada, mantida confidencial, não testada em medidores em operação;; 2 = relatada;; 1 = publicada abertamente;; 0 = nenhuma.
 
@@ -570,7 +570,7 @@ O TLS não autentica a origem dos dados além da ponta da conexão; controles no
 
 ### Exercícios
 
-- **EX031 — Atacantes por salto.** Cite o atacante que Aiyana associa ao salto celular. *Rubrica:* 3 = a operadora celular ou qualquer pessoa na rede dela;; 2 = rede;; 1 = nenhum;; 0 = nenhuma.
+- **EX031 — Atacantes por salto.** Cite o atacante que Aiyana associa ao salto celular. *Rubrica:* 3 = a operadora celular ou qualquer pessoa na rede dela;; 2 = rede;; 1 = vago;; 0 = nenhuma.
 
 - **EX032 — Sigilo futuro.** O que significa sigilo futuro no TLS 1.3? *Rubrica:* 3 = o tráfego gravado não pode ser decifrado depois, mesmo que chaves de longo prazo vazem, graças à troca de chaves efêmera;; 2 = chaves efêmeras;; 1 = cifração;; 0 = nenhuma.
 
@@ -700,7 +700,7 @@ Checklists podem virar mera formalidade; os revisores precisam entender cada ite
 
 - **EX041 — Regra de dependências.** O que a equipe combinou sobre código de fóruns? *Rubrica:* 3 = nunca copiar código criptográfico de fóruns; usar uma biblioteca mantida ou levar à revisão de projeto;; 2 = evitar;; 1 = permitido;; 0 = nenhuma.
 
-- **EX042 — O que o checklist pegou.** O que o checklist pegou no primeiro mês? *Rubrica:* 3 = um auxiliar de testes que desativava a verificação de certificados e estava prestes a entrar em produção;; 2 = problema de TLS;; 1 = nada;; 0 = nenhuma.
+- **EX042 — O que o checklist pegou.** O que o checklist pegou no primeiro mês? *Rubrica:* 3 = um auxiliar de testes que desativava a verificação de certificados e estava prestes a entrar em produção;; 2 = problema de TLS;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -740,7 +740,7 @@ Modelos de ameaça envelhecem; revise-os quando os sistemas mudarem. Uma autenti
 
 - **EX043 — Por que a confidencialidade.** Por que a confidencialidade das leituras dos medidores importa? *Rubrica:* 3 = os padrões de consumo revelam quando as casas estão vazias;; 2 = privacidade;; 1 = nenhum motivo;; 0 = nenhuma.
 
-- **EX044 — Fora do escopo.** O que Aiyana deixou fora do escopo, e por que declarar isso? *Rubrica:* 3 = ataques de hardware de Estados-nação; um escopo explícito dá significado às afirmações;; 2 = escopo declarado;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Fora do escopo.** O que Aiyana deixou fora do escopo, e por que declarar isso? *Rubrica:* 3 = ataques de hardware de Estados-nação; um escopo explícito dá significado às afirmações;; 2 = escopo declarado;; 1 = vago;; 0 = nenhuma.
 
 - **EX045 — Correção da autorização.** Que verificação corrigiu a falha de autorização? *Rubrica:* 3 = vincular cada chave a um identificador de medidor, para que os medidores só enviem as próprias leituras;; 2 = vinculação;; 1 = cifração;; 0 = nenhuma.
 
@@ -826,7 +826,7 @@ Limiares definidos sem linha de base criam ruído. A revogação automática sem
 
 - **EX050 — Alerta de sinal ausente.** Por que alertar sobre a ausência de tentativas de renovação? *Rubrica:* 3 = falhas silenciosas, como clientes de renovação quebrados, causam indisponibilidades;; 2 = silêncio;; 1 = desnecessário;; 0 = nenhuma.
 
-- **EX051 — Uso da histerese.** O que a histerese impede aqui? *Rubrica:* 3 = alertas oscilando ou revogação/reprovisionamento repetidos de medidores instáveis;; 2 = intermitência;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Uso da histerese.** O que a histerese impede aqui? *Rubrica:* 3 = alertas oscilando ou revogação/reprovisionamento repetidos de medidores instáveis;; 2 = intermitência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -978,7 +978,7 @@ Medidas de sucesso podem ser manipuladas se ignorarem a qualidade; associe cada 
 
 - **EX058 — Restrições do problema.** Cite três restrições da declaração do problema. *Rubrica:* 3 = três entre vida da bateria, largura de banda do rádio, orçamento, disponibilidade durante indisponibilidades;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
-- **EX059 — Percepção dos técnicos.** O que os técnicos revelaram, e por que isso importa? *Rubrica:* 3 = medidores trocados entre endereços durante consertos, afetando o vínculo entre chave e identidade;; 2 = troca;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Percepção dos técnicos.** O que os técnicos revelaram, e por que isso importa? *Rubrica:* 3 = medidores trocados entre endereços durante consertos, afetando o vínculo entre chave e identidade;; 2 = troca;; 1 = vago;; 0 = nenhuma.
 
 - **EX060 — Medida do firmware.** Enuncie a medida de sucesso do firmware. *Rubrica:* 3 = 99 por cento dos medidores atualizados em até trinta dias;; 2 = 99 por cento;; 1 = sempre;; 0 = nenhuma.
 
@@ -1062,7 +1062,7 @@ Inventários se degradam sem descoberta automatizada. Um modelo de estados só �
 
 - **EX064 — Nenhum material de chave.** O que um registro de chave nunca pode conter? *Rubrica:* 3 = o próprio material de chave;; 2 = segredos;; 1 = metadados;; 0 = nenhuma.
 
-- **EX065 — Achado do inventário.** O que a construção do inventário revelou? *Rubrica:* 3 = três chaves em scripts antigos que ninguém tinha registrado;; 2 = chaves não registradas;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Achado do inventário.** O que a construção do inventário revelou? *Rubrica:* 3 = três chaves em scripts antigos que ninguém tinha registrado;; 2 = chaves não registradas;; 1 = vago;; 0 = nenhuma.
 
 - **EX066 — Chave desativada.** O que uma chave desativada ainda pode fazer, e o que não pode? *Rubrica:* 3 = verificar dados antigos, mas não criar novas tags ou assinaturas;; 2 = só verificar;; 1 = tudo;; 0 = nenhuma.
 
@@ -1686,7 +1686,7 @@ Os contratos se desviam se não forem testados automaticamente. Os testes de pon
 
 ### Exercícios
 
-- **EX100 — Fluxo ausente.** Que fluxo faltava antes da análise de integração? *Rubrica:* 3 = a ferramenta portátil solicitando uma nova chave de medidor durante a substituição;; 2 = provisionamento;; 1 = nenhum;; 0 = nenhuma.
+- **EX100 — Fluxo ausente.** Que fluxo faltava antes da análise de integração? *Rubrica:* 3 = a ferramenta portátil solicitando uma nova chave de medidor durante a substituição;; 2 = provisionamento;; 1 = vago;; 0 = nenhuma.
 
 - **EX101 — Blob da ferramenta portátil.** Por que as ferramentas portáteis recebem um blob cifrado em vez de uma chave? *Rubrica:* 3 = só o elemento seguro do medidor consegue desembrulhá-lo, então as ferramentas nunca guardam chaves;; 2 = proteger a chave;; 1 = velocidade;; 0 = nenhuma.
 
@@ -1856,7 +1856,7 @@ A validação num distrito pode não representar toda a área de atendimento. Os
 
 - **EX112 — Pergunta da validação.** Em que a validação difere da verificação? *Rubrica:* 3 = a validação confere as necessidades reais das partes interessadas; a verificação confere o que foi construído contra a especificação;; 2 = diferença parcial;; 1 = iguais;; 0 = nenhuma.
 
-- **EX113 — Extração de chave.** O que o teste independente extraiu, e o que isso confirmou? *Rubrica:* 3 = uma chave de um protótipo sem elemento seguro, confirmando o requisito de elemento seguro;; 2 = achado;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Extração de chave.** O que o teste independente extraiu, e o que isso confirmou? *Rubrica:* 3 = uma chave de um protótipo sem elemento seguro, confirmando o requisito de elemento seguro;; 2 = achado;; 1 = vago;; 0 = nenhuma.
 
 - **EX114 — Meta do firmware não atingida.** Que resultado do firmware ficou abaixo da meta, e por quê? *Rubrica:* 3 = 97 por cento em trinta dias contra 99, por causa de medidores inalcançáveis em caixas inundadas;; 2 = número;; 1 = motivo;; 0 = nenhuma.
 
@@ -1896,7 +1896,7 @@ A agilidade pode introduzir ataques de rebaixamento se opções fracas continuar
 
 ### Exercícios
 
-- **EX115 — Mecanismo de agilidade.** Cite dois mecanismos que dão agilidade. *Rubrica:* 3 = identificadores de algoritmo nas mensagens, listas de permitidos configuradas, marcação do algoritmo no inventário;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX115 — Mecanismo de agilidade.** Cite dois mecanismos que dão agilidade. *Rubrica:* 3 = identificadores de algoritmo nas mensagens, listas de permitidos configuradas, marcação do algoritmo no inventário;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX116 — Passos da obsolescência.** Quais são os três passos para aposentar um algoritmo? *Rubrica:* 3 = parar de criar novas chaves, migrar os usos existentes, remover a verificação depois da carência;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
@@ -1942,7 +1942,7 @@ Os testes de canal lateral são limitados pelo orçamento e pela técnica. As de
 
 - **EX119 — Salto do relógio.** O que a injeção do salto de relógio revelou? *Rubrica:* 3 = certificado rejeitado corretamente como ainda não válido, mas mensagem de alerta pouco clara e reescrita;; 2 = alerta;; 1 = falha;; 0 = nenhuma.
 
-- **EX120 — Exemplo de risco residual.** Dê um risco residual aceito e sua justificativa. *Rubrica:* 3 = extração da chave de um medidor por atacante avançado, limitada pelas chaves por medidor (ou perda dos dois data centers, recuperação offline);; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
+- **EX120 — Exemplo de risco residual.** Dê um risco residual aceito e sua justificativa. *Rubrica:* 3 = extração da chave de um medidor por atacante avançado, limitada pelas chaves por medidor (ou perda dos dois data centers, recuperação offline);; 2 = exemplo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2066,7 +2066,7 @@ Estágios podem virar observação passiva; defina tarefas e revisões concretas
 
 - **EX127 — Tarefas do estágio.** Cite duas tarefas que Aiyana realizou no estágio. *Rubrica:* 3 = duas entre triagem de alertas, ajuda na rotação, atualização de runbooks;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX128 — Lição do controle de mudanças.** Que evento mostrou o valor do controle de mudanças? *Rubrica:* 3 = uma mudança não revisada no gateway desativou as verificações de certificados de cliente em homologação, pega antes da produção;; 2 = evento;; 1 = nenhum;; 0 = nenhuma.
+- **EX128 — Lição do controle de mudanças.** Que evento mostrou o valor do controle de mudanças? *Rubrica:* 3 = uma mudança não revisada no gateway desativou as verificações de certificados de cliente em homologação, pega antes da produção;; 2 = evento;; 1 = vago;; 0 = nenhuma.
 
 - **EX129 — Lacuna de competência.** Que competências ela identificou para desenvolver? *Rubrica:* 3 = negociar requisitos de segurança com fornecedores e explicar riscos a gestores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
@@ -2108,9 +2108,9 @@ Projetos finais costumam ter escopo grande demais; exclusões firmes protegem a 
 
 - **EX130 — Meta do projeto final.** O que o pipeline de revogação precisa alcançar? *Rubrica:* 3 = a revogação chega a todos os verificadores em até um minuto e é auditável;; 2 = um minuto;; 1 = vago;; 0 = nenhuma.
 
-- **EX131 — Exclusão.** O que Aiyana excluiu do escopo, e por quê? *Rubrica:* 3 = mudanças no firmware dos medidores, que exigiriam envolvimento do fornecedor além do tempo disponível;; 2 = firmware;; 1 = nada;; 0 = nenhuma.
+- **EX131 — Exclusão.** O que Aiyana excluiu do escopo, e por quê? *Rubrica:* 3 = mudanças no firmware dos medidores, que exigiriam envolvimento do fornecedor além do tempo disponível;; 2 = firmware;; 1 = vago;; 0 = nenhuma.
 
-- **EX132 — Risco do projeto.** Cite um risco do projeto e sua mitigação. *Rubrica:* 3 = por exemplo, conflito com a atualização do serviço de chaves, mitigado por uma reunião cedo;; 2 = só o risco;; 1 = nenhum;; 0 = nenhuma.
+- **EX132 — Risco do projeto.** Cite um risco do projeto e sua mitigação. *Rubrica:* 3 = por exemplo, conflito com a atualização do serviço de chaves, mitigado por uma reunião cedo;; 2 = só o risco;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2194,7 +2194,7 @@ O desempenho em homologação pode diferir do de produção. Uma passagem sem pr
 
 - **EX137 — Resultados de tempo.** Informe os tempos mediano e máximo de revogação. *Rubrica:* 3 = mediana de quatro segundos, máximo de trinta e oito segundos;; 2 = um;; 1 = errado;; 0 = nenhuma.
 
-- **EX138 — Condição da passagem.** O que as operações fizeram antes de aceitar o sistema? *Rubrica:* 3 = executaram elas mesmas um exercício de revogação;; 2 = exercício;; 1 = nada;; 0 = nenhuma.
+- **EX138 — Condição da passagem.** O que as operações fizeram antes de aceitar o sistema? *Rubrica:* 3 = executaram elas mesmas um exercício de revogação;; 2 = exercício;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2236,7 +2236,7 @@ Exercícios com condições irreais dão uma falsa confiança. Usar chaves de pr
 
 - **EX140 — Quórum na prática.** Como o projeto de quórum ajudou durante o ensaio? *Rubrica:* 3 = só três de cinco custodiantes estavam disponíveis, o suficiente para a recuperação;; 2 = quórum;; 1 = não ajudou;; 0 = nenhuma.
 
-- **EX141 — Achados do ensaio.** Cite dois achados da revisão posterior ao ensaio. *Rubrica:* 3 = dois entre firmware desatualizado do HSM sobressalente, telefone errado, passo de inventário ausente;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX141 — Achados do ensaio.** Cite dois achados da revisão posterior ao ensaio. *Rubrica:* 3 = dois entre firmware desatualizado do HSM sobressalente, telefone errado, passo de inventário ausente;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2320,7 +2320,7 @@ Teses que listam atividades em vez de argumentar afirmações são fracas. Afirm
 
 - **EX146 — Declaração sobre os apêndices de laboratório.** O que a tese diz sobre os programas dos laboratórios? *Rubrica:* 3 = só biblioteca padrão sobre dados sintéticos; a produção usa bibliotecas avaliadas e HSMs;; 2 = biblioteca padrão;; 1 = código de produção;; 0 = nenhuma.
 
-- **EX147 — Limites da tese.** Cite dois limites que Aiyana declara. *Rubrica:* 3 = dois entre uma única companhia, piloto e não implantação completa, implementações de fornecedores não inspecionadas;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX147 — Limites da tese.** Cite dois limites que Aiyana declara. *Rubrica:* 3 = dois entre uma única companhia, piloto e não implantação completa, implementações de fornecedores não inspecionadas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

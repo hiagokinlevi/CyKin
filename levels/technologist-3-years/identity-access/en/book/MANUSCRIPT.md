@@ -112,7 +112,7 @@ Training staff to click through certificate warnings undermines the protection H
 ### Exercises
 
 - **EX004 — Warning risk.** Why is clicking through certificate warnings dangerous? *Rubric:* 3 = staff could be fooled by a fake site;; 2 = fake site;; 1 = slow;; 0 = none.
-- **EX005 — East clinic finding.** What did Kai find at the east clinic? *Rubric:* 3 = guest and staff Wi-Fi not separated;; 2 = shared network;; 1 = nothing;; 0 = none.
+- **EX005 — East clinic finding.** What did Kai find at the east clinic? *Rubric:* 3 = guest and staff Wi-Fi not separated;; 2 = shared network;; 1 = vague;; 0 = none.
 - **EX006 — Passkey layer.** What extra layer do passkeys add against look-alike sites? *Rubric:* 3 = they only sign for the genuine site;; 2 = site-bound;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -288,7 +288,7 @@ Granting new staff the same access as a colleague spreads excessive privilege.
 ### Exercises
 
 - **EX016 — Step type.** Seeing records you should not see is which kind of problem? *Rubric:* 3 = authorisation;; 2 = access decision;; 1 = password;; 0 = none.
-- **EX017 — Reception finding.** What did Kai find about receptionists? *Rubric:* 3 = all 22 in vets-all, able to edit clinical notes;; 2 = vets-all;; 1 = nothing;; 0 = none.
+- **EX017 — Reception finding.** What did Kai find about receptionists? *Rubric:* 3 = all 22 in vets-all, able to edit clinical notes;; 2 = vets-all;; 1 = vague;; 0 = none.
 - **EX018 — Copying risk.** Why avoid copying a colleague's access? *Rubric:* 3 = it spreads excess privilege;; 2 = spreads;; 1 = slow;; 0 = none.
 
 ### Synthesis
@@ -464,7 +464,7 @@ Creating a group for every role and location combination multiplies groups beyon
 ### Exercises
 
 - **EX028 — Separation reason.** Why keep role and location groups separate? *Rubric:* 3 = avoid a group for every combination;; 2 = combinations;; 1 = colour;; 0 = none.
-- **EX029 — Nesting finding.** What did the nested chain grant? *Rubric:* 3 = finance access to a locum vet;; 2 = finance;; 1 = nothing;; 0 = none.
+- **EX029 — Nesting finding.** What did the nested chain grant? *Rubric:* 3 = finance access to a locum vet;; 2 = finance;; 1 = vague;; 0 = none.
 - **EX030 — Nesting limit.** What nesting limit does Kai set? *Rubric:* 3 = one level;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -576,7 +576,7 @@ Creating accounts from informal emails produces accounts nobody remembers to rem
 
 - **EX034 — Lead time.** How early should HR enter a new starter? *Rubric:* 3 = at least five working days before;; 2 = five days;; 1 = on the day;; 0 = none.
 - **EX035 — Account timing.** When is the account created and enabled? *Rubric:* 3 = created three days before disabled, enabled on start date;; 2 = before;; 1 = after;; 0 = none.
-- **EX036 — Exception record.** What is recorded for an exception? *Rubric:* 3 = reason and review date, owner approval;; 2 = reason;; 1 = nothing;; 0 = none.
+- **EX036 — Exception record.** What is recorded for an exception? *Rubric:* 3 = reason and review date, owner approval;; 2 = reason;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -796,7 +796,7 @@ Wiping a whole personal phone to remove work data invades privacy and discourage
 
 - **EX049 — Clinical access rule.** Where can clinical systems be reached from? *Rubric:* 3 = managed devices only;; 2 = managed;; 1 = anywhere;; 0 = none.
 - **EX050 — Zero trust source.** Which source describes zero trust? *Rubric:* 3 = NIST SP 800-207;; 2 = 800-207;; 1 = 800-63B;; 0 = none.
-- **EX051 — Phone alternative.** What is offered to staff who prefer not to use personal phones? *Rubric:* 3 = hardware security key;; 2 = key;; 1 = nothing;; 0 = none.
+- **EX051 — Phone alternative.** What is offered to staff who prefer not to use personal phones? *Rubric:* 3 = hardware security key;; 2 = key;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1060,7 +1060,7 @@ Mapping unknown titles to the nearest role risks granting access nobody approved
 ### Exercises
 
 - **EX064 — Unmapped person.** Who went to manual review? *Rubric:* 3 = b.gray, a groomer;; 2 = b.gray;; 1 = t.ward;; 0 = none.
-- **EX065 — Guess risk.** Why not guess the groomer's role? *Rubric:* 3 = might grant clinical write access;; 2 = clinical write;; 1 = nothing;; 0 = none.
+- **EX065 — Guess risk.** Why not guess the groomer's role? *Rubric:* 3 = might grant clinical write access;; 2 = clinical write;; 1 = vague;; 0 = none.
 - **EX066 — Groomer access.** What access does role-groomer get? *Rubric:* 3 = booking and basic record viewing;; 2 = booking;; 1 = full;; 0 = none.
 
 ### Synthesis
@@ -1304,7 +1304,7 @@ Documentation that depends on one person's memory fails when that person leaves.
 
 - **EX079 — Runbook test.** How did Kai test runbooks? *Rubric:* 3 = IT person followed them without help;; 2 = follow;; 1 = read;; 0 = none.
 - **EX080 — Out of date.** How many runbooks were outdated after the booking update? *Rubric:* 3 = two;; 2 = 2;; 1 = twelve;; 0 = none.
-- **EX081 — Handover rehearsal.** What was rehearsed for handover? *Rubric:* 3 = a full leaver process using only the documents;; 2 = leaver;; 1 = nothing;; 0 = none.
+- **EX081 — Handover rehearsal.** What was rehearsed for handover? *Rubric:* 3 = a full leaver process using only the documents;; 2 = leaver;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1348,7 +1348,7 @@ Reporting activity counts rather than risk measures hides whether protection imp
 
 - **EX082 — Activity metric.** Why avoid ticket counts? *Rubric:* 3 = they do not show whether risk changed;; 2 = activity;; 1 = cost;; 0 = none.
 - **EX083 — Rollout result.** How did phishing-resistant authenticators change? *Rubric:* 3 = 12% to 41%;; 2 = rose;; 1 = fell;; 0 = none.
-- **EX084 — Report ending.** How does each report end? *Rubric:* 3 = next month's two priorities;; 2 = priorities;; 1 = nothing;; 0 = none.
+- **EX084 — Report ending.** How does each report end? *Rubric:* 3 = next month's two priorities;; 2 = priorities;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

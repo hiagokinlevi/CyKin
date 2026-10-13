@@ -344,7 +344,7 @@ Sensitivity analyses test chosen alternatives only; others may matter.
 - **EX033 — Name critique.** What critique concerned names? *Rubric:* 3 = replica may understate name variation;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX034 — Sensitivity change.** How did Nadia test name variation? *Rubric:* 3 = lowered m for names from 0.95 to 0.85;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX035 — Robust result.** What stayed the same in the sensitivity analysis? *Rubric:* 3 = the ranking of decisions by effect;; 2 = correct;; 1 = sizes;; 0 = none.
-- **EX036 — Triangulation.** What did documents show about threshold reviews? *Rubric:* 3 = none since the original choice; a proposal never scheduled;; 2 = both;; 1 = one;; 0 = none.
+- **EX036 — Triangulation.** What did documents show about threshold reviews? *Rubric:* 3 = none since the original choice; a proposal never scheduled;; 2 = both;; 1 = one;; 0 = no answer.
 - **EX037 — Structural wording.** How did Nadia revise her wording on ownership? *Rubric:* 3 = a structural gap, not personal failure;; 2 = correct;; 1 = blame;; 0 = none.
 - **EX038 — Follow-up design.** What follow-up did Nadia propose? *Rubric:* 3 = four documented releases against a comparison series;; 2 = mentions comparison;; 1 = vague;; 0 = none.
 

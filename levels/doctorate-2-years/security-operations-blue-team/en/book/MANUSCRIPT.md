@@ -544,7 +544,7 @@ Archives decay as software changes; pinned versions and a container description 
 - **EX039 — Four claims.** State the thesis's four claims. *Rubric:* 3 = benign triggers dominate; context helps; history risk; pair with counter-prompts; 2 = three; 1 = one; 0 = none.
 - **EX040 — Status tags.** Which results are confirmatory and which exploratory? *Rubric:* 3 = accuracy confirmatory; attribution and time exploratory; 2 = partial; 1 = all confirmatory; 0 = none.
 - **EX041 — Archive contents.** List six archive items. *Rubric:* 3 = six of generator, corpus, rules, logs, scripts, registration, README; 2 = four; 1 = two; 0 = none.
-- **EX042 — Archive test.** What did the clean-machine test reveal? *Rubric:* 3 = fourth-decimal rounding difference; fixed and noted; 2 = partial; 1 = nothing; 0 = none.
+- **EX042 — Archive test.** What did the clean-machine test reveal? *Rubric:* 3 = fourth-decimal rounding difference; fixed and noted; 2 = partial; 1 = vague; 0 = none.
 - **EX043 — Log anonymisation.** How were analyst logs anonymised? *Rubric:* 3 = random IDs, shifted times, free text removed; 2 = two; 1 = one; 0 = none.
 - **EX044 — Practice implication.** Give one implication for SOCs. *Rubric:* 3 = test fields singly, monitor misses, guard history fields; 2 = partial; 1 = vague; 0 = none.
 
@@ -606,7 +606,7 @@ Publication timelines depend on reviewers; plan for revision cycles.
 
 - **EX045 — Talk structure.** Outline the defense talk. *Rubric:* 3 = problem, design, results, harm, limits, contributions; 2 = four; 1 = two; 0 = none.
 - **EX046 — Trade-off answer.** How did Nadia answer the gain-versus-misses question? *Rubric:* 3 = depends on base rates and costs; capacity gain only with guard rails; operational pilot; 2 = partial; 1 = yes/no; 0 = none.
-- **EX047 — Falsification.** What would falsify the claim? *Rubric:* 3 = operational pilot with no gain or higher misses across two SOCs; 2 = partial; 1 = nothing; 0 = none.
+- **EX047 — Falsification.** What would falsify the claim? *Rubric:* 3 = operational pilot with no gain or higher misses across two SOCs; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — Publication outputs.** List the planned outputs. *Rubric:* 3 = experiment paper, corpus paper, practitioner article, open release; 2 = three; 1 = one; 0 = none.
 - **EX049 — Northgate first.** Why present to Northgate's analysts first? *Rubric:* 3 = promised in consent; respect participants; 2 = partial; 1 = marketing; 0 = none.
 - **EX050 — Strategy link.** Which MITRE strategy did the design note cite, and why? *Rubric:* 3 = Strategy 8, tools supporting analyst workflow; connects to planning language; 2 = number or name; 1 = wrong; 0 = none.

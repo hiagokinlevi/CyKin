@@ -92,13 +92,13 @@ O pré-registro não elimina todo viés. O kappa depende da frequência com que 
 
 ### Exercícios
 
-- **EX001 — Plano falseável.** O que torna falseável a pergunta de Amara? *Rubrica:* 3 = ela declara de antemão que resultados mostrariam que sua ideia está errada;; 2 = declaração prévia;; 1 = nada;; 0 = nenhuma.
-- **EX002 — Crítica de Cox.** O que Cox (2008) mostrou sobre as matrizes de risco? *Rubrica:* 3 = classificações idênticas para riscos muito diferentes e possíveis inversões de ordem;; 2 = perda de informação;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Plano falseável.** O que torna falseável a pergunta de Amara? *Rubrica:* 3 = ela declara de antemão que resultados mostrariam que sua ideia está errada;; 2 = declaração prévia;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Crítica de Cox.** O que Cox (2008) mostrou sobre as matrizes de risco? *Rubrica:* 3 = classificações idênticas para riscos muito diferentes e possíveis inversões de ordem;; 2 = perda de informação;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Neutralidade das normas.** Que abordagens a ISO/IEC 27005:2022 e o SP 800-30r1 admitem? *Rubrica:* 3 = qualitativa, semiquantitativa e quantitativa;; 2 = as três;; 1 = só quantitativa;; 0 = nenhuma.
 - **EX004 — Regra de publicação.** O que pode aparecer nos cenários publicados? *Rubrica:* 3 = apenas composições sintéticas;; 2 = sintéticos;; 1 = fraquezas reais;; 0 = nenhuma.
-- **EX005 — Declaração de interesses.** O que Amara declara? *Rubrica:* 3 = não ter interesse financeiro em produtos de quantificação de risco;; 2 = conflito;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Declaração de interesses.** O que Amara declara? *Rubrica:* 3 = não ter interesse financeiro em produtos de quantificação de risco;; 2 = conflito;; 1 = vago;; 0 = nenhuma.
 - **EX006 — Kappa de base.** Que kappa os dois avaliadores alcançaram? *Rubrica:* 3 = 0,19, concordância leve;; 2 = 0,19;; 1 = 0,62;; 0 = nenhuma.
-- **EX007 — Sentido da linha de base.** Por que a baixa concordância importa para o registro? *Rubrica:* 3 = as prioridades podem depender de quem classificou o risco;; 2 = efeito do avaliador;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Sentido da linha de base.** Por que a baixa concordância importa para o registro? *Rubrica:* 3 = as prioridades podem depender de quem classificou o risco;; 2 = efeito do avaliador;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -142,11 +142,11 @@ Mapas da literatura envelhecem depressa. Relatos da prática podem ser seletivos
 
 - **EX008 — Função Govern.** O que o CSF 2.0 acrescentou? *Rubrica:* 3 = uma função Govern;; 2 = Govern;; 1 = Detect;; 0 = nenhuma.
 - **EX009 — Resultado de Gordon e Loeb.** Que limite superior Gordon e Loeb derivaram? *Rubrica:* 3 = cerca de 37% da perda esperada;; 2 = 1/e;; 1 = 100%;; 0 = nenhuma.
-- **EX010 — Spears e Barki.** O que Spears e Barki (2010) encontraram? *Rubrica:* 3 = a participação dos usuários melhora o alinhamento com os processos de negócio;; 2 = participação;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Spears e Barki.** O que Spears e Barki (2010) encontraram? *Rubrica:* 3 = a participação dos usuários melhora o alinhamento com os processos de negócio;; 2 = participação;; 1 = vago;; 0 = nenhuma.
 - **EX011 — Por que as matrizes persistem.** Por que as matrizes continuam comuns? *Rubrica:* 3 = são fáceis de explicar e esperadas pelos auditores;; 2 = benefícios sociais;; 1 = precisão;; 0 = nenhuma.
-- **EX012 — Lacuna definida.** Que lacuna Amara estuda? *Rubrica:* 3 = evidência de campo comparando matrizes e quantificação calibrada;; 2 = evidência de campo;; 1 = nada;; 0 = nenhuma.
-- **EX013 — Pedido da orientadora.** O que a Profa. Delgado pediu que Amara declarasse? *Rubrica:* 3 = que efeitos o desenho não consegue detectar;; 2 = limites;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Tipos de evidência.** Por que Amara classifica a literatura pelo tipo de sustentação? *Rubrica:* 3 = modelos, experimentos e relatos da prática sustentam afirmações de modo diferente;; 2 = força da evidência;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Lacuna definida.** Que lacuna Amara estuda? *Rubrica:* 3 = evidência de campo comparando matrizes e quantificação calibrada;; 2 = evidência de campo;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Pedido da orientadora.** O que a Profa. Delgado pediu que Amara declarasse? *Rubrica:* 3 = que efeitos o desenho não consegue detectar;; 2 = limites;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Tipos de evidência.** Por que Amara classifica a literatura pelo tipo de sustentação? *Rubrica:* 3 = modelos, experimentos e relatos da prática sustentam afirmações de modo diferente;; 2 = força da evidência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -217,12 +217,12 @@ Modelos pequenos ilustram, não provam. Painéis de referência podem compartilh
 
 ### Exercícios
 
-- **EX015 — Três perguntas.** Sobre o que são as três perguntas de pesquisa? *Rubrica:* 3 = concordância, calibração e ordem de tratamento;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX016 — Definição de Brier.** O que é o escore de Brier? *Rubrica:* 3 = média das diferenças ao quadrado entre previsões e resultados;; 2 = erro quadrático;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Três perguntas.** Sobre o que são as três perguntas de pesquisa? *Rubrica:* 3 = concordância, calibração e ordem de tratamento;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Definição de Brier.** O que é o escore de Brier? *Rubrica:* 3 = média das diferenças ao quadrado entre previsões e resultados;; 2 = erro quadrático;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Maior risco no modelo.** Que cenário tem a maior perda esperada no laboratório? *Rubrica:* 3 = ransomware sobre prontuários, cerca de 192 mil;; 2 = ransomware;; 1 = fraude em pagamentos;; 0 = nenhuma.
 - **EX018 — Topo da matriz.** Que cenários lideram a matriz no laboratório? *Rubrica:* 3 = fraude em pagamentos e indisponibilidade de fornecedor, empatadas em 6;; 2 = empate;; 1 = ransomware;; 0 = nenhuma.
-- **EX019 — Mitigação do painel.** Como se mitiga o viés do painel de referência? *Rubrica:* 3 = três membros independentes no painel;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Acordo de participação.** O que Amara combinou por escrito com a Corvane? *Rubrica:* 3 = um nível mínimo de participação;; 2 = participação;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Mitigação do painel.** Como se mitiga o viés do painel de referência? *Rubrica:* 3 = três membros independentes no painel;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Acordo de participação.** O que Amara combinou por escrito com a Corvane? *Rubrica:* 3 = um nível mínimo de participação;; 2 = participação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -289,12 +289,12 @@ As simulações dependem dos intervalos de entrada. Os ganhos do piloto podem n�
 
 ### Exercícios
 
-- **EX021 — Tamanho da simulação.** Quantos anos simulados o laboratório executou? *Rubrica:* 3 = vinte mil;; 2 = 20.000;; 1 = nada;; 0 = nenhuma.
-- **EX022 — Perda anual média.** Que perda anual média o laboratório informou? *Rubrica:* 3 = cerca de 709 mil;; 2 = 709k;; 1 = nada;; 0 = nenhuma.
-- **EX023 — Anos sem perda.** Em que parcela aproximada dos anos não houve perda? *Rubrica:* 3 = cerca de três em quatro;; 2 = 75%;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Número de excedência.** Qual era a chance de perder mais de dois milhões? *Rubrica:* 3 = cerca de 16%;; 2 = 0,163;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Calibração no piloto.** Como as taxas de acerto dos intervalos mudaram com o treinamento? *Rubrica:* 3 = de cerca de metade para cerca de oito em dez;; 2 = melhoraram;; 1 = nada;; 0 = nenhuma.
-- **EX026 — Desfechos inalterados.** O que Amara manteve inalterado ao emendar o protocolo? *Rubrica:* 3 = os desfechos primários pré-registrados;; 2 = desfechos primários;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Tamanho da simulação.** Quantos anos simulados o laboratório executou? *Rubrica:* 3 = vinte mil;; 2 = 20.000;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Perda anual média.** Que perda anual média o laboratório informou? *Rubrica:* 3 = cerca de 709 mil;; 2 = 709k;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Anos sem perda.** Em que parcela aproximada dos anos não houve perda? *Rubrica:* 3 = cerca de três em quatro;; 2 = 75%;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Número de excedência.** Qual era a chance de perder mais de dois milhões? *Rubrica:* 3 = cerca de 16%;; 2 = 0,163;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Calibração no piloto.** Como as taxas de acerto dos intervalos mudaram com o treinamento? *Rubrica:* 3 = de cerca de metade para cerca de oito em dez;; 2 = melhoraram;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Desfechos inalterados.** O que Amara manteve inalterado ao emendar o protocolo? *Rubrica:* 3 = os desfechos primários pré-registrados;; 2 = desfechos primários;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -357,11 +357,11 @@ Trinta eventos geram incerteza ampla. Os avaliadores podem trocar informações 
 ### Exercícios
 
 - **EX027 — Alocação dos grupos.** Como os avaliadores foram distribuídos entre os métodos? *Rubrica:* 3 = aleatoriamente, quinze por grupo;; 2 = aleatória;; 1 = por antiguidade;; 0 = nenhuma.
-- **EX028 — Eventos ocorridos.** Quantos dos trinta eventos previstos aconteceram? *Rubrica:* 3 = onze;; 2 = 11;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Comparação de Brier.** Que escores de Brier os grupos alcançaram? *Rubrica:* 3 = matriz 0,180, calibrado 0,167;; 2 = calibrado menor;; 1 = nada;; 0 = nenhuma.
-- **EX030 — Sobreposição nos cinco primeiros.** Quantos dos cinco primeiros do painel cada grupo incluiu? *Rubrica:* 3 = calibrado quatro, matriz três;; 2 = quatro contra três;; 1 = nada;; 0 = nenhuma.
-- **EX031 — Efeito dos empates.** Por que os empates importam no grupo da matriz? *Rubrica:* 3 = obrigam ao julgamento informal, onde a inconsistência entra;; 2 = empates;; 1 = nada;; 0 = nenhuma.
-- **EX032 — Resultado da replicação.** O que mostrou o estudo da segunda autoridade? *Rubrica:* 3 = mesma direção, diferenças menores;; 2 = replicação parcial;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Eventos ocorridos.** Quantos dos trinta eventos previstos aconteceram? *Rubrica:* 3 = onze;; 2 = 11;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Comparação de Brier.** Que escores de Brier os grupos alcançaram? *Rubrica:* 3 = matriz 0,180, calibrado 0,167;; 2 = calibrado menor;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Sobreposição nos cinco primeiros.** Quantos dos cinco primeiros do painel cada grupo incluiu? *Rubrica:* 3 = calibrado quatro, matriz três;; 2 = quatro contra três;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Efeito dos empates.** Por que os empates importam no grupo da matriz? *Rubrica:* 3 = obrigam ao julgamento informal, onde a inconsistência entra;; 2 = empates;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Resultado da replicação.** O que mostrou o estudo da segunda autoridade? *Rubrica:* 3 = mesma direção, diferenças menores;; 2 = replicação parcial;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -403,9 +403,9 @@ Estudos com conselhos são pequenos. O reenquadramento pode enfraquecer demais a
 
 ### Exercícios
 
-- **EX033 — Ponto do estatístico.** A que o estatístico objetou? *Rubrica:* 3 = trinta eventos são poucos;; 2 = tamanho da amostra;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Resposta à auditora.** Como os métodos quantitativos podem atender às expectativas da ISO/IEC 27001:2022? *Rubrica:* 3 = registrando entradas e raciocínio num processo repetível;; 2 = documentação;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Objeção sem solução.** Que objeção os dados de Amara não conseguem resolver? *Rubrica:* 3 = se as perdas de eventos raros podem ser estimadas de forma significativa;; 2 = filosófica;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Ponto do estatístico.** A que o estatístico objetou? *Rubrica:* 3 = trinta eventos são poucos;; 2 = tamanho da amostra;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Resposta à auditora.** Como os métodos quantitativos podem atender às expectativas da ISO/IEC 27001:2022? *Rubrica:* 3 = registrando entradas e raciocínio num processo repetível;; 2 = documentação;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Objeção sem solução.** Que objeção os dados de Amara não conseguem resolver? *Rubrica:* 3 = se as perdas de eventos raros podem ser estimadas de forma significativa;; 2 = filosófica;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Resultado do bootstrap.** O que mostrou o intervalo bootstrap para a diferença de Brier? *Rubrica:* 3 = que ele inclui o zero;; 2 = incerto;; 1 = significativo;; 0 = nenhuma.
 - **EX037 — Preferência do conselho.** Que apresentação a maioria dos conselheiros preferiu? *Rubrica:* 3 = gráficos de excedência de perda depois de explicados;; 2 = excedência;; 1 = matriz;; 0 = nenhuma.
 - **EX038 — Contribuição reenquadrada.** Como Amara reenquadrou sua contribuição? *Rubrica:* 3 = evidência sobre trade-offs, não um veredito;; 2 = trade-offs;; 1 = superioridade;; 0 = nenhuma.
@@ -470,12 +470,12 @@ Os digests provam integridade, não correção. O contexto ainda pode identifica
 
 ### Exercícios
 
-- **EX039 — Custo de treinamento.** Que custo de treinamento a tese informa? *Rubrica:* 3 = noventa minutos por avaliador;; 2 = 90 minutos;; 1 = nada;; 0 = nenhuma.
-- **EX040 — Conteúdo do arquivo.** Cite os quatro arquivos depositados. *Rubrica:* 3 = protocolo, cenários, código de análise e livro de códigos;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Custo de treinamento.** Que custo de treinamento a tese informa? *Rubrica:* 3 = noventa minutos por avaliador;; 2 = 90 minutos;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Conteúdo do arquivo.** Cite os quatro arquivos depositados. *Rubrica:* 3 = protocolo, cenários, código de análise e livro de códigos;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 - **EX041 — Finalidade dos digests.** O que os digests do manifesto permitem confirmar? *Rubrica:* 3 = que os arquivos não mudaram desde a submissão;; 2 = integridade;; 1 = correção;; 0 = nenhuma.
-- **EX042 — Vazamento pelo contexto.** Como um estudo de GRC pode vazar informação sem nomes? *Rubrica:* 3 = por contexto identificador, como sistemas incomuns;; 2 = contexto;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Vazamento pelo contexto.** Como um estudo de GRC pode vazar informação sem nomes? *Rubrica:* 3 = por contexto identificador, como sistemas incomuns;; 2 = contexto;; 1 = vago;; 0 = nenhuma.
 - **EX043 — Fonte da terminologia.** Os termos de que norma Amara usa para critérios de risco e tratamento? *Rubrica:* 3 = ISO 31000:2018;; 2 = ISO 31000;; 1 = COBIT;; 0 = nenhuma.
-- **EX044 — Rastreio de afirmações.** Como Amara testou a coerência? *Rubrica:* 3 = um colega doutorando rastreou três afirmações ao acaso;; 2 = rastreio;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Rastreio de afirmações.** Como Amara testou a coerência? *Rubrica:* 3 = um colega doutorando rastreou três afirmações ao acaso;; 2 = rastreio;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -517,11 +517,11 @@ Os examinadores têm suas próprias visões. Publicar leva tempo.
 
 ### Exercícios
 
-- **EX045 — Composição da banca.** Que três perspectivas os examinadores cobriam? *Rubrica:* 3 = teoria, normas e prática;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Composição da banca.** Que três perspectivas os examinadores cobriam? *Rubrica:* 3 = teoria, normas e prática;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX046 — Resposta sobre eventos raros.** Como Amara respondeu sobre perdas catastróficas raras? *Rubrica:* 3 = a calibração é necessária, mas não suficiente;; 2 = limites;; 1 = prova;; 0 = nenhuma.
 - **EX047 — Encaixe no RMF.** Onde o método se encaixa no SP 800-37r2? *Rubrica:* 3 = nas etapas de avaliação e de monitoramento;; 2 = avaliação;; 1 = autorização;; 0 = nenhuma.
 - **EX048 — Salvaguarda contra o mau uso.** O que protege contra uma avaliação de riscos movida por interesses? *Rubrica:* 3 = governança com intervalos, premissas registradas e revisão independente;; 2 = governança;; 1 = escolha do método;; 0 = nenhuma.
-- **EX049 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovação com correções menores;; 2 = aprovação;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovação com correções menores;; 2 = aprovação;; 1 = vago;; 0 = nenhuma.
 - **EX050 — Recurso compartilhado.** O que Amara vai compartilhar com outras organizações? *Rubrica:* 3 = o conjunto de cenários sintéticos;; 2 = cenários;; 1 = dados reais;; 0 = nenhuma.
 
 ### Síntese

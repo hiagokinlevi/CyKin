@@ -161,7 +161,7 @@ Emailing exports of sign-in logs exposes staff data unnecessarily.
 - **EX011 — Collection method.** How are exports collected? *Rubric:* 3 = admin console export features within scope;; 2 = console;; 1 = copying files;; 0 = none.
 - **EX012 — Not touched.** Name one thing Daniel does not access. *Rubric:* 3 = client folders or mailboxes;; 2 = client folders;; 1 = exports;; 0 = none.
 - **EX013 — Export storage.** Where are exports stored? *Rubric:* 3 = encrypted folder for him and Helen only;; 2 = encrypted;; 1 = email;; 0 = none.
-- **EX014 — Reproducible record.** What is recorded per finding? *Rubric:* 3 = export file, date and method;; 2 = source;; 1 = nothing;; 0 = none.
+- **EX014 — Reproducible record.** What is recorded per finding? *Rubric:* 3 = export file, date and method;; 2 = source;; 1 = vague;; 0 = none.
 - **EX015 — Retention end.** What happens to exports at the end? *Rubric:* 3 = deleted except evidence kept under firm rules;; 2 = deleted;; 1 = kept forever;; 0 = none.
 
 ### Synthesis
@@ -210,7 +210,7 @@ Leaving MFA optional lets the highest-value accounts remain unprotected.
 - **EX017 — Unprotected seniors.** Who had no second factor? *Rubric:* 3 = two partners and the office manager;; 2 = seniors;; 1 = nobody;; 0 = none.
 - **EX018 — Forced change issue.** Why remove forced 45-day changes? *Rubric:* 3 = produce predictable passwords;; 2 = predictable;; 1 = security;; 0 = none.
 - **EX019 — SMS status.** How are text codes treated? *Rubric:* 3 = temporary fallback only;; 2 = fallback;; 1 = main method;; 0 = none.
-- **EX020 — Partner request.** What did the managing partner request? *Rubric:* 3 = drop-in help sessions;; 2 = help sessions;; 1 = nothing;; 0 = none.
+- **EX020 — Partner request.** What did the managing partner request? *Rubric:* 3 = drop-in help sessions;; 2 = help sessions;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -387,7 +387,7 @@ Investigating every alert in depth exhausts time needed for the few that matter.
 - **EX031 — Alert total.** How many alerts were reviewed? *Rubric:* 3 = 46;; 2 = forty-six;; 1 = 41;; 0 = none.
 - **EX032 — Triage question.** Name one triage check. *Rubric:* 3 = was MFA completed;; 2 = device known;; 1 = colour;; 0 = none.
 - **EX033 — Low concern.** What is low concern? *Rubric:* 3 = failed attempt blocked by MFA on a known person;; 2 = blocked;; 1 = success;; 0 = none.
-- **EX034 — Escalated event.** What was escalated? *Rubric:* 3 = successful unrecognised sign-in to an admin mailbox;; 2 = mailbox;; 1 = nothing;; 0 = none.
+- **EX034 — Escalated event.** What was escalated? *Rubric:* 3 = successful unrecognised sign-in to an admin mailbox;; 2 = mailbox;; 1 = vague;; 0 = none.
 - **EX035 — Containment.** Name one containment step. *Rubric:* 3 = revoke sessions;; 2 = re-register authenticators;; 1 = delete account;; 0 = none.
 
 ### Synthesis
@@ -520,11 +520,11 @@ Recording guest expiry dates without enforcing them leaves expired guests active
 
 ### Exercises
 
-- **EX041 — Guest policy.** What must each guest have? *Rubric:* 3 = sponsor and expiry within six months;; 2 = sponsor;; 1 = nothing;; 0 = none.
+- **EX041 — Guest policy.** What must each guest have? *Rubric:* 3 = sponsor and expiry within six months;; 2 = sponsor;; 1 = vague;; 0 = none.
 - **EX042 — client-b issue.** What was wrong with client-b? *Rubric:* 3 = expired but still enabled;; 2 = not enforced;; 1 = vague;; 0 = none.
 - **EX043 — consult issue.** What was wrong with consult? *Rubric:* 3 = no sponsor and no expiry;; 2 = both;; 1 = inactive;; 0 = none.
 - **EX044 — Sponsor found.** Who became consult's sponsor? *Rubric:* 3 = the managing partner;; 2 = partner;; 1 = Daniel;; 0 = none.
-- **EX045 — Process fix.** What process fix was made? *Rubric:* 3 = automatic expiry with sponsor reminders;; 2 = enforcement;; 1 = nothing;; 0 = none.
+- **EX045 — Process fix.** What process fix was made? *Rubric:* 3 = automatic expiry with sponsor reminders;; 2 = enforcement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -616,7 +616,7 @@ Fixing repeated support cases one by one without changing controls keeps them re
 - **EX052 — Partner tablet cause.** Why could the partner not reach email? *Rubric:* 3 = old app without modern authentication;; 2 = old app;; 1 = password;; 0 = none.
 - **EX053 — Proactive fix.** What proactive step was taken? *Rubric:* 3 = updated the app for two other staff;; 2 = updated;; 1 = vague;; 0 = none.
 - **EX054 — Common cause.** Name one common troubleshooting cause. *Rubric:* 3 = old apps;; 2 = phone changes;; 1 = weather;; 0 = none.
-- **EX055 — Control link.** Which improvement addresses phone changes? *Rubric:* 3 = a phone change guide;; 2 = guide;; 1 = nothing;; 0 = none.
+- **EX055 — Control link.** Which improvement addresses phone changes? *Rubric:* 3 = a phone change guide;; 2 = guide;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -661,7 +661,7 @@ A portfolio that lists activities without verification evidence does not show co
 - **EX056 — MFA result.** How did MFA coverage change? *Rubric:* 3 = 41 to 60 of 60;; 2 = full;; 1 = fell;; 0 = none.
 - **EX057 — Drift result.** What was the drift result? *Rubric:* 3 = three to one recorded exception;; 2 = reduced;; 1 = vague;; 0 = none.
 - **EX058 — Remaining gap.** Name one remaining gap. *Rubric:* 3 = tax software separate accounts;; 2 = text fallback;; 1 = vague;; 0 = none.
-- **EX059 — Handover training.** What did Daniel show the office manager? *Rubric:* 3 = how to run both scripts;; 2 = scripts;; 1 = nothing;; 0 = none.
+- **EX059 — Handover training.** What did Daniel show the office manager? *Rubric:* 3 = how to run both scripts;; 2 = scripts;; 1 = vague;; 0 = none.
 - **EX060 — Real test.** What did Helen call the real test? *Rubric:* 3 = firm can continue without him;; 2 = continuity;; 1 = grades;; 0 = none.
 
 ### Synthesis

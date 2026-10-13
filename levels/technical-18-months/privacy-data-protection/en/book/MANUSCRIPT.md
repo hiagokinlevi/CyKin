@@ -614,7 +614,7 @@ Unusual access is a signal, not proof; follow a fair procedure.
 - **EX045 — Outside views.** What share of views were outside the staff member's clinic? *Rubric:* 3 = 179 of 5,060, 3.5%;; 2 = approximate;; 1 = wrong;; 0 = none.
 - **EX046 — Outlier.** Which account stood out and with how many outside views? *Rubric:* 3 = S07 with 53;; 2 = both;; 1 = one;; 0 = none.
 - **EX047 — Explanations.** Name two possible explanations for S07's pattern. *Rubric:* 3 = regional role, temporary assignment, shared account, curiosity;; 2 = two;; 1 = one;; 0 = none.
-- **EX048 — Staff rights.** What must staff be told about audit logs? *Rubric:* 3 = access is logged and reviewed;; 2 = correct;; 1 = nothing;; 0 = none.
+- **EX048 — Staff rights.** What must staff be told about audit logs? *Rubric:* 3 = access is logged and reviewed;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 

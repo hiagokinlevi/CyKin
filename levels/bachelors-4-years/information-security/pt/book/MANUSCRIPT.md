@@ -73,7 +73,7 @@ Tratar a segurança como algo puramente técnico ignora as pessoas, as regras e 
 
 - **EX002 — Último ano.** O que o último ano inclui? *Rubrica:* 3 = gestão de mudanças, projeto em grupo, estágio, pesquisa e trabalho de conclusão;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 
-- **EX003 — Hábito semanal.** Que hábito de diário o Dr. Carrow aconselha? *Rubrica:* 3 = uma ideia de segurança por semana aplicada à Ashfield;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX003 — Hábito semanal.** Que hábito de diário o Dr. Carrow aconselha? *Rubrica:* 3 = uma ideia de segurança por semana aplicada à Ashfield;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -111,7 +111,7 @@ Maximizar um objetivo pode prejudicar os outros.
 
 ### Exercícios
 
-- **EX004 — Definição de disponibilidade.** Como a FIPS 199 define a disponibilidade? *Rubrica:* 3 = acesso e uso oportunos e confiáveis;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Definição de disponibilidade.** Como a FIPS 199 define a disponibilidade? *Rubrica:* 3 = acesso e uso oportunos e confiáveis;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX005 — Objetivo dos saldos.** Que objetivo importa mais para os saldos? *Rubrica:* 3 = integridade;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -153,11 +153,11 @@ Ignorar o papel e as pastas compartilhadas deixa muita informação sem proteç�
 
 ### Exercícios
 
-- **EX007 — Destinatários externos.** Cite um destinatário externo de informações da Ashfield. *Rubrica:* 3 = uma agência de informações de crédito;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Destinatários externos.** Cite um destinatário externo de informações da Ashfield. *Rubrica:* 3 = uma agência de informações de crédito;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX008 — Repositório sem dono.** Que repositório não tinha uma pessoa responsável? *Rubrica:* 3 = as pastas compartilhadas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX009 — Propósito da ordenação.** O que a ordenação pelo dano orienta? *Rubrica:* 3 = onde gastar o esforço de segurança;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Propósito da ordenação.** O que a ordenação pelo dano orienta? *Rubrica:* 3 = onde gastar o esforço de segurança;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -195,11 +195,11 @@ O uso diário de contas de administrador dá ao malware direitos de administrado
 
 ### Exercícios
 
-- **EX010 — Causa do administrador.** Por que alguns funcionários usam contas de administrador? *Rubrica:* 3 = uma aplicação antiga um dia precisou disso;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Causa do administrador.** Por que alguns funcionários usam contas de administrador? *Rubrica:* 3 = uma aplicação antiga um dia precisou disso;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX011 — Atraso nas atualizações.** Por que alguns computadores estão atrasados nas atualizações? *Rubrica:* 3 = os funcionários adiam as reinicializações;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Atraso nas atualizações.** Por que alguns computadores estão atrasados nas atualizações? *Rubrica:* 3 = os funcionários adiam as reinicializações;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX012 — Vias do malware.** Cite uma forma pela qual o malware chega. *Rubrica:* 3 = anexos de e-mail;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Vias do malware.** Cite uma forma pela qual o malware chega. *Rubrica:* 3 = anexos de e-mail;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -239,9 +239,9 @@ As exceções antigas de firewall muitas vezes continuam abertas muito depois de
 
 - **EX013 — Regra antiga.** Que regra antiga Aisha encontra? *Rubrica:* 3 = acesso de área de trabalho remota de qualquer lugar;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX014 — Limites da cifração em trânsito.** O que a cifração em trânsito não protege? *Rubrica:* 3 = os dados num servidor comprometido;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX014 — Limites da cifração em trânsito.** O que a cifração em trânsito não protege? *Rubrica:* 3 = os dados num servidor comprometido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX015 — Rede sem fio dos associados.** Como a rede sem fio dos associados é protegida? *Rubrica:* 3 = separada das redes da equipe;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Rede sem fio dos associados.** Como a rede sem fio dos associados é protegida? *Rubrica:* 3 = separada das redes da equipe;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -279,11 +279,11 @@ Os relatórios de segurança vazados podem ajudar os atacantes.
 
 ### Exercícios
 
-- **EX016 — Limiar de inatividade.** Que contas são sinalizadas? *Rubrica:* 3 = sem login há noventa dias;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Limiar de inatividade.** Que contas são sinalizadas? *Rubrica:* 3 = sem login há noventa dias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX017 — Datas faltantes.** Como o script trata as datas faltantes? *Rubrica:* 3 = as registra separadamente;; 2 = correto;; 1 = trava;; 0 = nenhuma.
 
-- **EX018 — Risco de vazamento.** Por que uma lista de contas inativas poderia ajudar os atacantes? *Rubrica:* 3 = ela mostra logins sem monitoramento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX018 — Risco de vazamento.** Por que uma lista de contas inativas poderia ajudar os atacantes? *Rubrica:* 3 = ela mostra logins sem monitoramento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -365,9 +365,9 @@ Citar uma norma sem sua edição deixa os leitores sem saber que versão se apli
 
 - **EX022 — Perguntas do relatório.** Que quatro perguntas um relatório deve responder? *Rubrica:* 3 = problema, importância, ação, responsável;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 
-- **EX023 — Versão para o conselho.** O que a versão para o conselho enfatiza? *Rubrica:* 3 = ex-funcionários poderiam acessar os registros;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Versão para o conselho.** O que a versão para o conselho enfatiza? *Rubrica:* 3 = ex-funcionários poderiam acessar os registros;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX024 — Citação da edição.** Por que citar a edição de uma norma? *Rubrica:* 3 = as normas mudam;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Citação da edição.** Por que citar a edição de uma norma? *Rubrica:* 3 = as normas mudam;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -405,9 +405,9 @@ Testar sistemas sem autorização por escrito pode ser crime.
 
 ### Exercícios
 
-- **EX025 — Tipos de lei.** Cite um tipo de lei que molda a segurança. *Rubrica:* 3 = a legislação de proteção de dados;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Tipos de lei.** Cite um tipo de lei que molda a segurança. *Rubrica:* 3 = a legislação de proteção de dados;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Regra dos testes.** O que os testadores precisam sempre ter? *Rubrica:* 3 = autorização assinada que defina o escopo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Regra dos testes.** O que os testadores precisam sempre ter? *Rubrica:* 3 = autorização assinada que defina o escopo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX027 — Lacuna do contrato.** O que faltava no contrato com o processador de cartões? *Rubrica:* 3 = direitos de auditoria;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
@@ -449,9 +449,9 @@ Usar um acesso autorizado por curiosidade pessoal é uma quebra de confiança.
 
 - **EX028 — Teste do monitoramento.** Qual é o teste ético central do monitoramento? *Rubrica:* 3 = proporcionalidade;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX029 — Abordagem de divulgação.** Como a fraqueza encontrada deve ser tratada? *Rubrica:* 3 = comunicada em particular pelo contato publicado;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Abordagem de divulgação.** Como a fraqueza encontrada deve ser tratada? *Rubrica:* 3 = comunicada em particular pelo contato publicado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX030 — Grupo bloqueado.** Quem é afetado injustamente pelos bloqueios de logins do exterior? *Rubrica:* 3 = os associados no exterior;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Grupo bloqueado.** Quem é afetado injustamente pelos bloqueios de logins do exterior? *Rubrica:* 3 = os associados no exterior;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -493,7 +493,7 @@ Os relatórios ao conselho cheios de contagens técnicas raramente apoiam as dec
 
 - **EX032 — Lacuna em Governar.** Que resultado da função Governar é fraco na Ashfield? *Rubrica:* 3 = a gestão de riscos da cadeia de suprimentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX033 — Efeito do apetite.** Que gasto se justifica mais facilmente? *Rubrica:* 3 = evitar a exposição de dados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Efeito do apetite.** Que gasto se justifica mais facilmente? *Rubrica:* 3 = evitar a exposição de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -531,11 +531,11 @@ Os controles que ninguém possui tendem a parar sem que ninguém perceba.
 
 ### Exercícios
 
-- **EX034 — Controles sem dono.** Cite um controle que não tinha dono. *Rubrica:* 3 = a revisão do firewall;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Controles sem dono.** Cite um controle que não tinha dono. *Rubrica:* 3 = a revisão do firewall;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Conflito de acesso.** Que conflito o gerente de TI tem? *Rubrica:* 3 = cria e aprova contas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Conflito de acesso.** Que conflito o gerente de TI tem? *Rubrica:* 3 = cria e aprova contas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX036 — Controle compensatório.** O que compensa a segregação limitada? *Rubrica:* 3 = registro das ações de administrador com revisão semanal;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Controle compensatório.** O que compensa a segregação limitada? *Rubrica:* 3 = registro das ações de administrador com revisão semanal;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -617,9 +617,9 @@ O seguro transfere parte da perda financeira, mas não o dano à reputação.
 
 - **EX040 — Fonte da avaliação.** Que publicação orienta a avaliação de riscos? *Rubrica:* 3 = NIST SP 800-30 Revisão 1;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX041 — Principais riscos.** Cite um dos três principais riscos. *Rubrica:* 3 = pedidos de pagamento falsos;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Principais riscos.** Cite um dos três principais riscos. *Rubrica:* 3 = pedidos de pagamento falsos;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Tratamento dos pagamentos.** Como o risco de pagamentos falsos é reduzido? *Rubrica:* 3 = verificação por retorno de ligação para números conhecidos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Tratamento dos pagamentos.** Como o risco de pagamentos falsos é reduzido? *Rubrica:* 3 = verificação por retorno de ligação para números conhecidos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -657,11 +657,11 @@ Os esquemas de classificação complexos muitas vezes são ignorados.
 
 ### Exercícios
 
-- **EX043 — Dispositivo esquecido.** Que ativo esquecido Aisha encontra? *Rubrica:* 3 = um dispositivo de armazenamento em rede num armário;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Dispositivo esquecido.** Que ativo esquecido Aisha encontra? *Rubrica:* 3 = um dispositivo de armazenamento em rede num armário;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX044 — Classe restrita.** Que dados são restritos? *Rubrica:* 3 = documentos de identidade e dados de cartões de pagamento;; 2 = correto;; 1 = outros;; 0 = nenhuma.
 
-- **EX045 — Manutenção do inventário.** Como o inventário é mantido atualizado? *Rubrica:* 3 = ligação às compras e aos descartes, conferência semestral;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Manutenção do inventário.** Como o inventário é mantido atualizado? *Rubrica:* 3 = ligação às compras e aos descartes, conferência semestral;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-16"></a>
 
@@ -699,11 +699,11 @@ Copiar o acesso de um colega muitas vezes concede direitos desnecessários.
 
 ### Exercícios
 
-- **EX046 — Acesso dos caixas.** De que os caixas precisam? *Rubrica:* 3 = ver os saldos, não aprovar empréstimos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Acesso dos caixas.** De que os caixas precisam? *Rubrica:* 3 = ver os saldos, não aprovar empréstimos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Problema da mudança de função.** O que acontece com o acesso antigo de quem muda de função? *Rubrica:* 3 = muitas vezes é mantido;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Problema da mudança de função.** O que acontece com o acesso antigo de quem muda de função? *Rubrica:* 3 = muitas vezes é mantido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Administrador compartilhado.** Quem compartilha a conta de administrador? *Rubrica:* 3 = os funcionários de TI e um fornecedor;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Administrador compartilhado.** Quem compartilha a conta de administrador? *Rubrica:* 3 = os funcionários de TI e um fornecedor;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-17"></a>
 
@@ -741,11 +741,11 @@ Os controles fortes de login são contornados se a recuperação da conta for fr
 
 ### Exercícios
 
-- **EX049 — Fraqueza da impressão digital.** Qual é a fraqueza das impressões digitais? *Rubrica:* 3 = não podem ser trocadas se forem copiadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Fraqueza da impressão digital.** Qual é a fraqueza das impressões digitais? *Rubrica:* 3 = não podem ser trocadas se forem copiadas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX050 — Risco do código por mensagem.** Como os códigos por mensagem de texto podem ser roubados? *Rubrica:* 3 = tomada do número de celular;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX051 — Fraqueza da recuperação.** Que verificação fraca de recuperação as agências usavam? *Rubrica:* 3 = data de nascimento e endereço;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Fraqueza da recuperação.** Que verificação fraca de recuperação as agências usavam? *Rubrica:* 3 = data de nascimento e endereço;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-18"></a>
 
@@ -854,11 +854,11 @@ Guardar as chaves ao lado dos dados cifrados anula a cifração.
 
 ### Exercícios
 
-- **EX055 — Uso da cifração simétrica.** Por que a cifração simétrica é usada para grandes volumes de dados? *Rubrica:* 3 = ela é rápida;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Uso da cifração simétrica.** Por que a cifração simétrica é usada para grandes volumes de dados? *Rubrica:* 3 = ela é rápida;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX056 — Propriedade do hash.** O que acontece quando um bit da entrada muda? *Rubrica:* 3 = a impressão digital muda por completo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Propriedade do hash.** O que acontece quando um bit da entrada muda? *Rubrica:* 3 = a impressão digital muda por completo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX057 — Chave do backup.** Onde a chave do backup estava guardada? *Rubrica:* 3 = na mesma pasta que os backups;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Chave do backup.** Onde a chave do backup estava guardada? *Rubrica:* 3 = na mesma pasta que os backups;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-20"></a>
 
@@ -898,9 +898,9 @@ Culpar os funcionários pelos cliques desestimula as comunicações que detectam
 
 - **EX058 — Tema dos caixas.** O que os caixas aprendem a identificar? *Rubrica:* 3 = a engenharia social por telefone;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX059 — Valor da comunicação.** O que a comunicação de uma caixa revelou? *Rubrica:* 3 = várias agências receberam a mesma ligação;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Valor da comunicação.** O que a comunicação de uma caixa revelou? *Rubrica:* 3 = várias agências receberam a mesma ligação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Cautela com os cliques.** Por que evitar usar apenas as taxas de cliques? *Rubrica:* 3 = dependem da dificuldade da simulação;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Cautela com os cliques.** Por que evitar usar apenas as taxas de cliques? *Rubrica:* 3 = dependem da dificuldade da simulação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-21"></a>
 
@@ -1008,11 +1008,11 @@ As senhas padrão publicadas nos manuais dão aos atacantes um acesso fácil.
 
 ### Exercícios
 
-- **EX064 — Problema do roteador.** O que havia de errado com o roteador da agência? *Rubrica:* 3 = a senha padrão de fábrica;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Problema do roteador.** O que havia de errado com o roteador da agência? *Rubrica:* 3 = a senha padrão de fábrica;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX065 — Item da linha de base.** Cite uma configuração da linha de base dos computadores de mesa. *Rubrica:* 3 = cifração de disco habilitada;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Item da linha de base.** Cite uma configuração da linha de base dos computadores de mesa. *Rubrica:* 3 = cifração de disco habilitada;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX066 — Solução do bloqueio de tela.** Que meio-termo é acordado para o bloqueio de tela? *Rubrica:* 3 = um tempo de espera mais longo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Solução do bloqueio de tela.** Que meio-termo é acordado para o bloqueio de tela? *Rubrica:* 3 = um tempo de espera mais longo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-23"></a>
 
@@ -1050,11 +1050,11 @@ Os logs guardados apenas onde os administradores podem alterá-los são evidênc
 
 ### Exercícios
 
-- **EX067 — Eventos de alerta.** Cite um evento de alerta automatizado. *Rubrica:* 3 = logins de administrador fora do horário de trabalho;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX067 — Eventos de alerta.** Cite um evento de alerta automatizado. *Rubrica:* 3 = logins de administrador fora do horário de trabalho;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX068 — Visualização em massa.** Por que uma conta visualizou muitos registros? *Rubrica:* 3 = preparava uma lista de mala direta aprovada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Visualização em massa.** Por que uma conta visualizou muitos registros? *Rubrica:* 3 = preparava uma lista de mala direta aprovada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX069 — Sincronização dos relógios.** Por que sincronizar os relógios? *Rubrica:* 3 = para ordenar os eventos entre os sistemas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Sincronização dos relógios.** Por que sincronizar os relógios? *Rubrica:* 3 = para ordenar os eventos entre os sistemas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-24"></a>
 
@@ -1096,7 +1096,7 @@ Um plano de incidentes que nunca é exercitado costuma conter lacunas.
 
 - **EX071 — Primeira contenção.** O que é isolado primeiro num caso de ransomware? *Rubrica:* 3 = o computador afetado;; 2 = correto;; 1 = a agência;; 0 = nenhuma.
 
-- **EX072 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = quem decide contatar o banco para sustar um pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = quem decide contatar o banco para sustar um pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-25"></a>
 
@@ -1134,11 +1134,11 @@ Os backups alcançáveis pela rede podem ser destruídos por um ransomware.
 
 ### Exercícios
 
-- **EX073 — Cópia faltante.** Que cópia de backup extra Aisha recomenda? *Rubrica:* 3 = uma cópia offline ou imutável longe da sede;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX073 — Cópia faltante.** Que cópia de backup extra Aisha recomenda? *Rubrica:* 3 = uma cópia offline ou imutável longe da sede;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX074 — Falhas na restauração.** Por que alguns arquivos não foram restaurados? *Rubrica:* 3 = estavam abertos durante o backup;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX074 — Falhas na restauração.** Por que alguns arquivos não foram restaurados? *Rubrica:* 3 = estavam abertos durante o backup;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX075 — Objetivos do sistema central.** Quais são os objetivos do sistema bancário central? *Rubrica:* 3 = quinze minutos de dados, quatro horas para restaurar;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Objetivos do sistema central.** Quais são os objetivos do sistema bancário central? *Rubrica:* 3 = quinze minutos de dados, quatro horas para restaurar;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-26"></a>
 
@@ -1200,11 +1200,11 @@ Armazenar senhas sem sal permite que os atacantes identifiquem senhas idênticas
 
 ### Exercícios
 
-- **EX076 — Propósito do sal.** Por que usar um sal único? *Rubrica:* 3 = impede comparar os hashes entre as contas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX076 — Propósito do sal.** Por que usar um sal único? *Rubrica:* 3 = impede comparar os hashes entre as contas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX077 — Correspondências vazadas.** Quantas senhas sintéticas estavam vazadas? *Rubrica:* 3 = seis, 2,0 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX078 — Trocas forçadas.** Por que evitar as trocas forçadas frequentes? *Rubrica:* 3 = levam a padrões previsíveis;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX078 — Trocas forçadas.** Por que evitar as trocas forçadas frequentes? *Rubrica:* 3 = levam a padrões previsíveis;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-27"></a>
 
@@ -1244,7 +1244,7 @@ A evidência de certificação só é útil se seu escopo abranger os serviços 
 
 - **EX079 — Acesso permanente.** Que fornecedor tinha acesso remoto permanente? *Rubrica:* 3 = a empresa de suporte de TI;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX080 — Cautela com o certificado.** Quando a certificação ISO/IEC 27001 é uma evidência útil? *Rubrica:* 3 = quando seu escopo abrange os serviços usados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX080 — Cautela com o certificado.** Quando a certificação ISO/IEC 27001 é uma evidência útil? *Rubrica:* 3 = quando seu escopo abrange os serviços usados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX081 — Cláusulas faltantes.** O que faltava em dois contratos? *Rubrica:* 3 = cláusulas de eliminação de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -1284,11 +1284,11 @@ Uma chave pendurada ao lado da sua fechadura não oferece proteção alguma.
 
 ### Exercícios
 
-- **EX082 — Problema da porta.** O que enfraquece a porta da área da equipe? *Rubrica:* 3 = fica escorada aberta nos dias de movimento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX082 — Problema da porta.** O que enfraquece a porta da área da equipe? *Rubrica:* 3 = fica escorada aberta nos dias de movimento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX083 — Notebook perdido.** Por que nenhum dado foi exposto com o notebook perdido? *Rubrica:* 3 = ele estava cifrado;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX083 — Notebook perdido.** Por que nenhum dado foi exposto com o notebook perdido? *Rubrica:* 3 = ele estava cifrado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX084 — Medida para o subsolo.** O que se recomenda para os equipamentos do subsolo? *Rubrica:* 3 = elevá-los acima do piso;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Medida para o subsolo.** O que se recomenda para os equipamentos do subsolo? *Rubrica:* 3 = elevá-los acima do piso;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-29"></a>
 
@@ -1330,7 +1330,7 @@ Contar os ataques bloqueados parece impressionante, mas diz pouco sobre o risco.
 
 - **EX086 — Linha de base dos desligados.** Qual é a linha de base dos desligados? *Rubrica:* 3 = dez contas ativas de desligados;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX087 — Formato do relatório.** O que o relatório ao conselho mostra para cada medida? *Rubrica:* 3 = valor, meta, tendência e comentário;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Formato do relatório.** O que o relatório ao conselho mostra para cada medida? *Rubrica:* 3 = valor, meta, tendência e comentário;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-30"></a>
 
@@ -1370,7 +1370,7 @@ Conferir que uma política existe não é o mesmo que conferir que ela é seguid
 
 - **EX088 — Resultado da amostra.** Quantos desligados da amostra foram removidos em até um dia? *Rubrica:* 3 = oito de dez;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX089 — Achado de auditoria.** Cite um achado da auditoria. *Rubrica:* 3 = nenhuma revisão dos acessos dos fornecedores;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Achado de auditoria.** Cite um achado da auditoria. *Rubrica:* 3 = nenhuma revisão dos acessos dos fornecedores;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX090 — Ciclo de melhoria.** Que ciclo mantém a segurança sensível às mudanças? *Rubrica:* 3 = planejar, fazer, checar, agir;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -1414,7 +1414,7 @@ As mudanças que pegam a equipe de surpresa muitas vezes geram soluções de con
 
 - **EX092 — Método alternativo.** O que é oferecido aos funcionários sem celulares adequados? *Rubrica:* 3 = tokens físicos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX093 — Agência atrasada.** Por que uma agência se atrasou? *Rubrica:* 3 = seu multiplicador estava de férias;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX093 — Agência atrasada.** Por que uma agência se atrasou? *Rubrica:* 3 = seu multiplicador estava de férias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-32"></a>
 
@@ -1452,9 +1452,9 @@ Apresentar benefícios incertos como economias precisas prejudica a credibilidad
 
 ### Exercícios
 
-- **EX094 — Lacuna do fim de semana.** Por que os ataques de fim de semana poderiam passar despercebidos? *Rubrica:* 3 = alertas revisados apenas nas manhãs dos dias úteis;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX094 — Lacuna do fim de semana.** Por que os ataques de fim de semana poderiam passar despercebidos? *Rubrica:* 3 = alertas revisados apenas nas manhãs dos dias úteis;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX095 — Desvantagem da escala.** Qual é a desvantagem da escala de plantão? *Rubrica:* 3 = esgotaria os dois funcionários de TI;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX095 — Desvantagem da escala.** Qual é a desvantagem da escala de plantão? *Rubrica:* 3 = esgotaria os dois funcionários de TI;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX096 — Decisão do conselho.** O que o conselho aprova? *Rubrica:* 3 = um teste de um ano;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -1494,9 +1494,9 @@ O trabalho de coordenação pode se tornar invisível nos projetos em grupo.
 
 ### Exercícios
 
-- **EX097 — Mensagem central.** Qual é a mensagem central da campanha? *Rubrica:* 3 = a Ashfield nunca vai pedir o seu código;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX097 — Mensagem central.** Qual é a mensagem central da campanha? *Rubrica:* 3 = a Ashfield nunca vai pedir o seu código;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX098 — Método do golpe.** Como os golpistas se passam pela Ashfield? *Rubrica:* 3 = ao telefone, pedindo códigos de uso único;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX098 — Método do golpe.** Como os golpistas se passam pela Ashfield? *Rubrica:* 3 = ao telefone, pedindo códigos de uso único;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX099 — Papéis de Aisha.** Que papéis Aisha assume? *Rubrica:* 3 = coordenação, relatório e entrevistas com os associados;; 2 = correto;; 1 = alguns;; 0 = nenhuma.
 
@@ -1536,9 +1536,9 @@ Uma comparação de antes e depois não consegue, por si só, provar que uma cam
 
 ### Exercícios
 
-- **EX100 — Formatos da campanha.** Cite um formato da campanha. *Rubrica:* 3 = o cartaz nas agências;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX100 — Formatos da campanha.** Cite um formato da campanha. *Rubrica:* 3 = o cartaz nas agências;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX101 — Limite do impacto.** Por que o grupo não consegue provar a causalidade? *Rubrica:* 3 = a atividade dos golpistas também varia;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX101 — Limite do impacto.** Por que o grupo não consegue provar a causalidade? *Rubrica:* 3 = a atividade dos golpistas também varia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX102 — Valor para o cliente.** O que o cliente mais valorizou? *Rubrica:* 3 = o plano de medição;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -1578,11 +1578,11 @@ Compartilhar as fraquezas de um empregador, mesmo de forma casual, pode ajudar o
 
 ### Exercícios
 
-- **EX103 — Surpresa do estágio.** O que mais surpreendeu Aisha? *Rubrica:* 3 = convencer as pessoas foi mais difícil do que os problemas técnicos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX103 — Surpresa do estágio.** O que mais surpreendeu Aisha? *Rubrica:* 3 = convencer as pessoas foi mais difícil do que os problemas técnicos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX104 — Contribuição no estágio.** Cite uma contribuição de Aisha. *Rubrica:* 3 = o procedimento simplificado de revisão de acessos;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX104 — Contribuição no estágio.** Cite uma contribuição de Aisha. *Rubrica:* 3 = o procedimento simplificado de revisão de acessos;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX105 — Habilidade a desenvolver.** Cite uma habilidade que Aisha quer desenvolver. *Rubrica:* 3 = apresentar à alta gerência;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX105 — Habilidade a desenvolver.** Cite uma habilidade que Aisha quer desenvolver. *Rubrica:* 3 = apresentar à alta gerência;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-36"></a>
 
@@ -1622,9 +1622,9 @@ Mudar as definições das medidas depois de ver os dados enviesa os resultados.
 
 - **EX106 — Pergunta de pesquisa.** Qual é a pergunta estreitada de Aisha? *Rubrica:* 3 = o processo automatizado de desligamento encurtou o tempo de remoção;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
 
-- **EX107 — Fraqueza do desenho.** O que enfraquece um desenho de antes e depois? *Rubrica:* 3 = outras mudanças ao mesmo tempo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX107 — Fraqueza do desenho.** O que enfraquece um desenho de antes e depois? *Rubrica:* 3 = outras mudanças ao mesmo tempo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX108 — Condição ética.** Cite uma condição ética. *Rubrica:* 3 = anonimização pela Ashfield;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX108 — Condição ética.** Cite uma condição ética. *Rubrica:* 3 = anonimização pela Ashfield;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-37"></a>
 
@@ -1662,9 +1662,9 @@ Escolher as análises depois de ver os resultados abre espaço para o viés.
 
 ### Exercícios
 
-- **EX109 — Parágrafo do que está em jogo.** Por que a remoção dos desligados importa? *Rubrica:* 3 = as contas antigas podem ser usadas indevidamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX109 — Parágrafo do que está em jogo.** Por que a remoção dos desligados importa? *Rubrica:* 3 = as contas antigas podem ser usadas indevidamente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX110 — Lacuna na literatura.** Que lacuna Aisha encontra? *Rubrica:* 3 = poucos estudos medindo os tempos de remoção em organizações pequenas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX110 — Lacuna na literatura.** Que lacuna Aisha encontra? *Rubrica:* 3 = poucos estudos medindo os tempos de remoção em organizações pequenas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX111 — Folga.** Qual é o tamanho da folga do cronograma? *Rubrica:* 3 = duas semanas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -1706,9 +1706,9 @@ Relatar apenas a mediana esconde as exceções que revelam lacunas de processo.
 
 - **EX112 — Mediana anterior.** Qual era a mediana do tempo de remoção antes? *Rubrica:* 3 = cinco dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX113 — Causa dos atrasos.** O que causou a maioria dos atrasos do período posterior? *Rubrica:* 3 = falta de datas de término dos temporários;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Causa dos atrasos.** O que causou a maioria dos atrasos do período posterior? *Rubrica:* 3 = falta de datas de término dos temporários;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX114 — Rival da equipe.** Como a rival da equipe de TI é enfraquecida? *Rubrica:* 3 = as remoções foram feitas automaticamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX114 — Rival da equipe.** Como a rival da equipe de TI é enfraquecida? *Rubrica:* 3 = as remoções foram feitas automaticamente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-39"></a>
 
@@ -1746,9 +1746,9 @@ Limitações vagas como são necessárias mais pesquisas acrescentam pouco.
 
 ### Exercícios
 
-- **EX115 — Seção movida.** O que é movido para os resultados? *Rubrica:* 3 = a investigação dos atrasos dos temporários;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX115 — Seção movida.** O que é movido para os resultados? *Rubrica:* 3 = a investigação dos atrasos dos temporários;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX116 — Limitação dos dados de RH.** Que limitação diz respeito às datas do RH? *Rubrica:* 3 = podem elas próprias estar atrasadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX116 — Limitação dos dados de RH.** Que limitação diz respeito às datas do RH? *Rubrica:* 3 = podem elas próprias estar atrasadas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX117 — Número de revisões.** Quantas vezes Aisha revisa? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -1788,9 +1788,9 @@ Exagerar os achados sob questionamento prejudica a credibilidade.
 
 ### Exercícios
 
-- **EX118 — Novo risco.** Que novo risco a automação poderia criar? *Rubrica:* 3 = datas de término erradas desativando funcionários atuais;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX118 — Novo risco.** Que novo risco a automação poderia criar? *Rubrica:* 3 = datas de término erradas desativando funcionários atuais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX119 — Resposta sobre a comparação.** Por que não houve uma organização de comparação? *Rubrica:* 3 = nenhuma estava disponível;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX119 — Resposta sobre a comparação.** Por que não houve uma organização de comparação? *Rubrica:* 3 = nenhuma estava disponível;; 2 = correto;; 1 = vago;; 0 = sem resposta.
 
 - **EX120 — Recomendação adotada.** Que recomendação a Ashfield adota? *Rubrica:* 3 = datas de término nos contratos temporários;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 

@@ -82,11 +82,11 @@ As estimativas de perda são incertas. As estimativas de horas podem omitir esfo
 
 ### Exercícios
 
-- **EX001 — Enquadramento da decisão.** Que elementos compõem o enquadramento da decisão de Daniel? *Rubrica:* 3 = opções, resultados, incertezas e pessoas afetadas;; 2 = enquadramento;; 1 = nada;; 0 = nenhuma.
-- **EX002 — O custo de Herley.** Por que incluir as horas dos funcionários, seguindo Herley (2009)? *Rubrica:* 3 = os conselhos de segurança impõem custos reais aos usuários;; 2 = ônus;; 1 = nada;; 0 = nenhuma.
-- **EX003 — Comparação no laboratório.** Como as duas opções se compararam em redução de perdas e horas? *Rubrica:* 3 = verificação 310k e 1.800 h; simulações 140k e 4.500 h;; 2 = verificação melhor;; 1 = nada;; 0 = nenhuma.
-- **EX004 — O que mudaria a decisão.** Que evidência faria Daniel mudar de ideia? *Rubrica:* 3 = resultados de simulação que predizem perdas reais com fraude;; 2 = predição;; 1 = nada;; 0 = nenhuma.
-- **EX005 — Finalidade da nota.** Por que documentar a justificativa? *Rubrica:* 3 = para que possa ser questionada e comparada depois com os resultados;; 2 = registro;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Enquadramento da decisão.** Que elementos compõem o enquadramento da decisão de Daniel? *Rubrica:* 3 = opções, resultados, incertezas e pessoas afetadas;; 2 = enquadramento;; 1 = vago;; 0 = nenhuma.
+- **EX002 — O custo de Herley.** Por que incluir as horas dos funcionários, seguindo Herley (2009)? *Rubrica:* 3 = os conselhos de segurança impõem custos reais aos usuários;; 2 = ônus;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Comparação no laboratório.** Como as duas opções se compararam em redução de perdas e horas? *Rubrica:* 3 = verificação 310k e 1.800 h; simulações 140k e 4.500 h;; 2 = verificação melhor;; 1 = vago;; 0 = nenhuma.
+- **EX004 — O que mudaria a decisão.** Que evidência faria Daniel mudar de ideia? *Rubrica:* 3 = resultados de simulação que predizem perdas reais com fraude;; 2 = predição;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Finalidade da nota.** Por que documentar a justificativa? *Rubrica:* 3 = para que possa ser questionada e comparada depois com os resultados;; 2 = registro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -126,9 +126,9 @@ Conversas com colegas são anedóticas. Orientação não é evidência de efeit
 
 - **EX006 — Prática comum.** Que medida domina a prática comum? *Rubrica:* 3 = taxas de clique por departamento;; 2 = cliques;; 1 = rapidez dos reportes;; 0 = nenhuma.
 - **EX007 — Etapas mais fracas.** Que etapas do programa eram as mais fracas na Calloway? *Rubrica:* 3 = avaliação de necessidades e avaliação de resultados;; 2 = duas;; 1 = entrega;; 0 = nenhuma.
-- **EX008 — Lacuna do treinamento embutido.** Que evidência conflita com o treinamento embutido da Calloway? *Rubrica:* 3 = Lain et al. constataram que ele não reduzia os cliques;; 2 = Lain;; 1 = nada;; 0 = nenhuma.
-- **EX009 — Lacuna dos cartazes.** Que prática conflita com Bada et al. (2019)? *Rubrica:* 3 = cartazes alarmantes baseados no medo;; 2 = medo;; 1 = nada;; 0 = nenhuma.
-- **EX010 — Lacuna do reporte.** Por que o reporte é fraco na Calloway? *Rubrica:* 3 = o endereço de reporte está escondido;; 2 = acesso;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Lacuna do treinamento embutido.** Que evidência conflita com o treinamento embutido da Calloway? *Rubrica:* 3 = Lain et al. constataram que ele não reduzia os cliques;; 2 = Lain;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Lacuna dos cartazes.** Que prática conflita com Bada et al. (2019)? *Rubrica:* 3 = cartazes alarmantes baseados no medo;; 2 = medo;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Lacuna do reporte.** Por que o reporte é fraco na Calloway? *Rubrica:* 3 = o endereço de reporte está escondido;; 2 = acesso;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -182,11 +182,11 @@ A transferibilidade é um julgamento. Os estudos publicados favorecem resultados
 
 ### Exercícios
 
-- **EX011 — Força do desenho de Lain.** O que dá a Lain et al. forte validade interna? *Rubrica:* 3 = condições randomizadas ao longo de quinze meses;; 2 = randomização;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Força do desenho de Lain.** O que dá a Lain et al. forte validade interna? *Rubrica:* 3 = condições randomizadas ao longo de quinze meses;; 2 = randomização;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Método de Adams e Sasse.** O que Adams e Sasse (1999) ofereceram? *Rubrica:* 3 = profundidade a partir de questionários e entrevistas;; 2 = profundidade;; 1 = tamanho de efeito;; 0 = nenhuma.
-- **EX013 — Diferença no laboratório.** Que diferença de risco o laboratório calculou? *Rubrica:* 3 = 6,0 pontos, intervalo de -7,1 a 19,1;; 2 = largo;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Significado do intervalo.** O que significa o intervalo largo? *Rubrica:* 3 = o benefício pode ser pequeno ou nulo;; 2 = incerto;; 1 = nada;; 0 = nenhuma.
-- **EX015 — Julgamento de transferência.** Por que o achado de Lain sobre reportes provavelmente se transfere? *Rubrica:* 3 = a Calloway se parece com a grande empresa intensiva em e-mail;; 2 = semelhança;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Diferença no laboratório.** Que diferença de risco o laboratório calculou? *Rubrica:* 3 = 6,0 pontos, intervalo de -7,1 a 19,1;; 2 = largo;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Significado do intervalo.** O que significa o intervalo largo? *Rubrica:* 3 = o benefício pode ser pequeno ou nulo;; 2 = incerto;; 1 = vago;; 0 = nenhuma.
+- **EX015 — Julgamento de transferência.** Por que o achado de Lain sobre reportes provavelmente se transfere? *Rubrica:* 3 = a Calloway se parece com a grande empresa intensiva em e-mail;; 2 = semelhança;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -225,10 +225,10 @@ As bancas podem aprovar conteúdo limítrofe. As revisões éticas podem virar r
 ### Exercícios
 
 - **EX016 — Vulnerabilidade da fraude.** Onde está a vulnerabilidade da fraude de pagamento? *Rubrica:* 3 = na ausência de verificação independente;; 2 = processo;; 1 = caráter dos funcionários;; 0 = nenhuma.
-- **EX017 — Modelo de bônus.** Por que o modelo de bônus é antiético? *Rubrica:* 3 = explora esperanças financeiras;; 2 = sofrimento;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Dano dos rankings.** Que dano os rankings por departamento causam? *Rubrica:* 3 = exposição pública que mina a confiança;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
-- **EX019 — Membros da banca.** Quem integra a banca de revisão dos modelos? *Rubrica:* 3 = representantes dos funcionários e o RH;; 2 = representantes;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Regra de desempenho.** Que regra se aplica aos resultados das simulações e às avaliações de desempenho? *Rubrica:* 3 = nunca são usados;; 2 = proibição;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Modelo de bônus.** Por que o modelo de bônus é antiético? *Rubrica:* 3 = explora esperanças financeiras;; 2 = sofrimento;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Dano dos rankings.** Que dano os rankings por departamento causam? *Rubrica:* 3 = exposição pública que mina a confiança;; 2 = confiança;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Membros da banca.** Quem integra a banca de revisão dos modelos? *Rubrica:* 3 = representantes dos funcionários e o RH;; 2 = representantes;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Regra de desempenho.** Que regra se aplica aos resultados das simulações e às avaliações de desempenho? *Rubrica:* 3 = nunca são usados;; 2 = proibição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -291,9 +291,9 @@ As pontuações são subjetivas. Desenhos combinados podem sobrecarregar as equi
 
 - **EX021 — Fraqueza do desenho C.** Em que o desenho C tem a menor pontuação? *Rubrica:* 3 = evidências para o regulador;; 2 = evidências;; 1 = risco;; 0 = nenhuma.
 - **EX022 — Momento dos pesos.** Quando os pesos foram acordados? *Rubrica:* 3 = antes da pontuação;; 2 = antes;; 1 = depois;; 0 = nenhuma.
-- **EX023 — Sensibilidade no laboratório.** Quão robusto foi o desenho combinado no laboratório? *Rubrica:* 3 = primeiro em 10 de 10 variações de peso;; 2 = robusto;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Fases.** Em que período o desenho combinado é implantado? *Rubrica:* 3 = dezoito meses;; 2 = 18;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Risco da combinação.** Que risco a combinação traz? *Rubrica:* 3 = sobrecarga de projetos;; 2 = sobrecarga;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Sensibilidade no laboratório.** Quão robusto foi o desenho combinado no laboratório? *Rubrica:* 3 = primeiro em 10 de 10 variações de peso;; 2 = robusto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Fases.** Em que período o desenho combinado é implantado? *Rubrica:* 3 = dezoito meses;; 2 = 18;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Risco da combinação.** Que risco a combinação traz? *Rubrica:* 3 = sobrecarga de projetos;; 2 = sobrecarga;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -361,9 +361,9 @@ Avaliações curtas não captam efeitos de longo prazo. Os escritórios diferem 
 
 - **EX026 — Ordem da implantação.** Como foi escolhida a ordem da implantação? *Rubrica:* 3 = por sorteio;; 2 = aleatória;; 1 = por tamanho;; 0 = nenhuma.
 - **EX027 — Medida de resultado.** Que resultado foi usado? *Rubrica:* 3 = proporção de e-mails maliciosos reportados por escritório por mês;; 2 = proporção reportada;; 1 = cliques;; 0 = nenhuma.
-- **EX028 — Estimativa no laboratório.** Que diferença dentro dos meses o laboratório encontrou? *Rubrica:* 3 = cerca de 14,4 pontos, proporção da permutação 0,001;; 2 = positiva;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Estimativa no laboratório.** Que diferença dentro dos meses o laboratório encontrou? *Rubrica:* 3 = cerca de 14,4 pontos, proporção da permutação 0,001;; 2 = positiva;; 1 = vago;; 0 = nenhuma.
 - **EX029 — Sem simulações.** As simulações fizeram parte da avaliação? *Rubrica:* 3 = não;; 2 = nenhuma;; 1 = sim;; 0 = sem resposta.
-- **EX030 — Atraso máximo.** Qual foi o atraso máximo para qualquer escritório? *Rubrica:* 3 = dois meses;; 2 = 2;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Atraso máximo.** Qual foi o atraso máximo para qualquer escritório? *Rubrica:* 3 = dois meses;; 2 = 2;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -401,10 +401,10 @@ A integração leva tempo. O mapeamento de frameworks pode virar papelada.
 
 ### Exercícios
 
-- **EX031 — Acordo com o RH.** O que o RH acordou sobre os dados das simulações? *Rubrica:* 3 = ficam fora dos processos de desempenho;; 2 = separação;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Acordo com o RH.** O que o RH acordou sobre os dados das simulações? *Rubrica:* 3 = ficam fora dos processos de desempenho;; 2 = separação;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Escopo da função Govern.** O que a função Govern do CSF 2.0 cobre? *Rubrica:* 3 = papéis, responsabilidades, política e supervisão;; 2 = governança;; 1 = detecção;; 0 = nenhuma.
 - **EX033 — Papel dos frameworks.** Que papel os frameworks devem ter? *Rubrica:* 3 = descrever estruturas, e não definir o sucesso;; 2 = estrutura;; 1 = resultados;; 0 = nenhuma.
-- **EX034 — Resistência do financeiro.** Por que o financeiro resistiu ao controle de verificação? *Rubrica:* 3 = atrasava os pagamentos do fim do mês;; 2 = fim do mês;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Resistência do financeiro.** Por que o financeiro resistiu ao controle de verificação? *Rubrica:* 3 = atrasava os pagamentos do fim do mês;; 2 = fim do mês;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Lição da resistência.** O que a resistência muitas vezes sinaliza? *Rubrica:* 3 = um custo real;; 2 = custo;; 1 = teimosia;; 0 = nenhuma.
 
 ### Síntese
@@ -443,9 +443,9 @@ O apoio pode ser visto como leniência. O engajamento dos executivos pode se dis
 
 ### Exercícios
 
-- **EX036 — Funções de quem clica.** Onde trabalhava a maioria de quem clicava repetidamente? *Rubrica:* 3 = funções com alto volume de e-mail externo, como sinistros;; 2 = sinistros;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Funções de quem clica.** Onde trabalhava a maioria de quem clicava repetidamente? *Rubrica:* 3 = funções com alto volume de e-mail externo, como sinistros;; 2 = sinistros;; 1 = vago;; 0 = nenhuma.
 - **EX037 — Apoio a quem clica.** Que apoio Daniel propôs a quem clica repetidamente? *Rubrica:* 3 = revisão da carga de trabalho, filtragem extra e autenticação resistente a phishing;; 2 = apoio;; 1 = treinamento corretivo;; 0 = nenhuma.
-- **EX038 — Mensagem do executivo.** O que o CEO concordou em fazer? *Rubrica:* 3 = gravar uma mensagem acolhendo as ligações de verificação;; 2 = permissão;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Mensagem do executivo.** O que o CEO concordou em fazer? *Rubrica:* 3 = gravar uma mensagem acolhendo as ligações de verificação;; 2 = permissão;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Causa do compartilhamento de senhas.** Que problema subjacente o reporte de compartilhamento de senhas revelou? *Rubrica:* 3 = falta de pessoal;; 2 = carga de trabalho;; 1 = malícia;; 0 = nenhuma.
 - **EX040 — Regra de sanção.** Quando se aplicam sanções pelos princípios de Daniel? *Rubrica:* 3 = apenas a atos deliberadamente danosos;; 2 = deliberados;; 1 = qualquer erro;; 0 = nenhuma.
 
@@ -504,8 +504,8 @@ O comprometimento dos campeões varia. Dados trimestrais são ruidosos.
 ### Exercícios
 
 - **EX041 — Finalidade do programa.** Que finalidade Daniel definiu? *Rubrica:* 3 = ajudar as pessoas a fazer escolhas seguras com facilidade e a reportar rapidamente;; 2 = finalidade;; 1 = conformidade;; 0 = nenhuma.
-- **EX042 — Dar o exemplo.** Como Daniel dá o exemplo do comportamento desejado? *Rubrica:* 3 = reportando abertamente seus próprios quase incidentes;; 2 = abertura;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Tendência no laboratório.** Como a mediana do tempo de reporte evoluiu ao longo dos trimestres? *Rubrica:* 3 = 52, 31, 19 e 14 minutos;; 2 = queda;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Dar o exemplo.** Como Daniel dá o exemplo do comportamento desejado? *Rubrica:* 3 = reportando abertamente seus próprios quase incidentes;; 2 = abertura;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Tendência no laboratório.** Como a mediana do tempo de reporte evoluiu ao longo dos trimestres? *Rubrica:* 3 = 52, 31, 19 e 14 minutos;; 2 = queda;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Significado de garantia.** O que garantia significa aqui? *Rubrica:* 3 = evidências de que os controles funcionam e os resultados melhoram;; 2 = evidências;; 1 = listas de atividades;; 0 = nenhuma.
 - **EX045 — Resposta ao conselho.** Como Daniel respondeu se a Calloway está segura? *Rubrica:* 3 = riscos específicos reduzidos, mas o engano não foi eliminado;; 2 = franqueza;; 1 = sim;; 0 = nenhuma.
 
@@ -545,11 +545,11 @@ A crítica pode descambar para a busca de defeitos. As implicações podem estic
 
 ### Exercícios
 
-- **EX046 — Foco nos métodos.** Por que Daniel lê as seções de métodos com cuidado? *Rubrica:* 3 = resumos em outras fontes muitas vezes exageram ou omitem limites;; 2 = precisão;; 1 = nada;; 0 = nenhuma.
-- **EX047 — Ponto forte do orçamento.** Cite um ponto forte do artigo sobre o orçamento de compliance. *Rubrica:* 3 = baseia-se em entrevistas em várias organizações;; 2 = fundamentação;; 1 = nada;; 0 = nenhuma.
-- **EX048 — Limite do orçamento.** Cite um limite do artigo sobre o orçamento de compliance. *Rubrica:* 3 = o orçamento é difícil de medir diretamente;; 2 = medição;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Foco nos métodos.** Por que Daniel lê as seções de métodos com cuidado? *Rubrica:* 3 = resumos em outras fontes muitas vezes exageram ou omitem limites;; 2 = precisão;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Ponto forte do orçamento.** Cite um ponto forte do artigo sobre o orçamento de compliance. *Rubrica:* 3 = baseia-se em entrevistas em várias organizações;; 2 = fundamentação;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Limite do orçamento.** Cite um limite do artigo sobre o orçamento de compliance. *Rubrica:* 3 = o orçamento é difícil de medir diretamente;; 2 = medição;; 1 = vago;; 0 = nenhuma.
 - **EX049 — Uso como lente.** Como os gestores devem tratar o orçamento de compliance? *Rubrica:* 3 = como uma lente, e não uma quantidade precisa;; 2 = lente;; 1 = número;; 0 = nenhuma.
-- **EX050 — Implicações no estatuto.** Onde Daniel registrou suas implicações? *Rubrica:* 3 = no estatuto do programa, com citações;; 2 = estatuto;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Implicações no estatuto.** Onde Daniel registrou suas implicações? *Rubrica:* 3 = no estatuto do programa, com citações;; 2 = estatuto;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -606,10 +606,10 @@ Períodos curtos enganam. A perda de chaves exige uma boa recuperação.
 
 ### Exercícios
 
-- **EX051 — Grupo-alvo.** Que funcionários receberam as chaves primeiro? *Rubrica:* 3 = pessoal de sinistros e do financeiro, 240 pessoas;; 2 = funções visadas;; 1 = nada;; 0 = nenhuma.
-- **EX052 — Duas chaves.** Por que cada pessoa registra duas chaves? *Rubrica:* 3 = como reserva, caso uma se perca;; 2 = reserva;; 1 = nada;; 0 = nenhuma.
-- **EX053 — Padrão do service desk.** O que o laboratório mostrou sobre as ligações ao service desk? *Rubrica:* 3 = subiram para 62 no primeiro mês e caíram para 31 no quarto, a partir de uma base de 45;; 2 = oscilação;; 1 = nada;; 0 = nenhuma.
-- **EX054 — Migração dos atacantes.** Para onde os atacantes podem migrar? *Rubrica:* 3 = fraude por telefone;; 2 = telefone;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Grupo-alvo.** Que funcionários receberam as chaves primeiro? *Rubrica:* 3 = pessoal de sinistros e do financeiro, 240 pessoas;; 2 = funções visadas;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Duas chaves.** Por que cada pessoa registra duas chaves? *Rubrica:* 3 = como reserva, caso uma se perca;; 2 = reserva;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Padrão do service desk.** O que o laboratório mostrou sobre as ligações ao service desk? *Rubrica:* 3 = subiram para 62 no primeiro mês e caíram para 31 no quarto, a partir de uma base de 45;; 2 = oscilação;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Migração dos atacantes.** Para onde os atacantes podem migrar? *Rubrica:* 3 = fraude por telefone;; 2 = telefone;; 1 = vago;; 0 = nenhuma.
 - **EX055 — Ordem dos públicos.** Quem ouviu os resultados primeiro? *Rubrica:* 3 = os funcionários;; 2 = funcionários;; 1 = o conselho;; 0 = nenhuma.
 
 ### Síntese
@@ -648,11 +648,11 @@ As revisões podem ser autocomplacentes. Os guias de transferência simplificam 
 
 ### Exercícios
 
-- **EX056 — Mudança do programa.** De onde e para onde o programa mudou? *Rubrica:* 3 = de simulações e rankings para reporte, retorno, verificação e chaves;; 2 = mudança;; 1 = nada;; 0 = nenhuma.
-- **EX057 — Esquema que falhou.** Que esquema inicial falhou, e por quê? *Rubrica:* 3 = campeões sem tempo reservado;; 2 = tempo;; 1 = nada;; 0 = nenhuma.
-- **EX058 — Diferença no hospital.** O que importaria mais num hospital? *Rubrica:* 3 = o ônus, por causa da pressão de tempo clínica;; 2 = ônus;; 1 = nada;; 0 = nenhuma.
-- **EX059 — Distinção na transferência.** O que a transferência precisa distinguir? *Rubrica:* 3 = por que algo funcionou de como foi feito;; 2 = princípio;; 1 = nada;; 0 = nenhuma.
-- **EX060 — Artigo sugerido.** Que artigo a Dra. Holm sugeriu? *Rubrica:* 3 = sobre a avaliação escalonada;; 2 = avaliação;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Mudança do programa.** De onde e para onde o programa mudou? *Rubrica:* 3 = de simulações e rankings para reporte, retorno, verificação e chaves;; 2 = mudança;; 1 = vago;; 0 = nenhuma.
+- **EX057 — Esquema que falhou.** Que esquema inicial falhou, e por quê? *Rubrica:* 3 = campeões sem tempo reservado;; 2 = tempo;; 1 = vago;; 0 = nenhuma.
+- **EX058 — Diferença no hospital.** O que importaria mais num hospital? *Rubrica:* 3 = o ônus, por causa da pressão de tempo clínica;; 2 = ônus;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Distinção na transferência.** O que a transferência precisa distinguir? *Rubrica:* 3 = por que algo funcionou de como foi feito;; 2 = princípio;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Artigo sugerido.** Que artigo a Dra. Holm sugeriu? *Rubrica:* 3 = sobre a avaliação escalonada;; 2 = avaliação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

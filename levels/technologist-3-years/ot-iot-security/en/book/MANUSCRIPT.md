@@ -1259,7 +1259,7 @@ Pinging fragile devices repeatedly can itself cause problems; keep checks light.
 ### Exercises
 
 - **EX058 — First three checks.** List the first three checks for stale HMI values. *Rubric:* 3 = power/link, port status/errors, protocol error on HMI (in order); 2 = two; 1 = reboot first; 0 = none.
-- **EX059 — Before rebooting.** What two things do you capture before rebooting a possibly compromised HMI-C? *Rubric:* 3 = logs export and running processes/connections; 2 = one; 1 = nothing; 0 = none.
+- **EX059 — Before rebooting.** What two things do you capture before rebooting a possibly compromised HMI-C? *Rubric:* 3 = logs export and running processes/connections; 2 = one; 1 = vague; 0 = none.
 - **EX060 — The escalation trigger.** Which observation in the second event triggered escalation and why? *Rubric:* 3 = program differs from backup without a change record; possible tampering; 2 = observation only; 1 = errors; 0 = none.
 
 ### Synthesis

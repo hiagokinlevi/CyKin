@@ -1093,7 +1093,7 @@ Hacer ping repetidamente a dispositivos frágiles puede causar problemas por sí
 ### Ejercicios — capítulo 20
 
 - **EX058 — Las tres primeras comprobaciones.** Enumere las tres primeras comprobaciones ante valores congelados en la HMI. *Rúbrica:* 3 = alimentación/enlace, estado/errores del puerto, error de protocolo en la HMI (en ese orden); 2 = dos; 1 = reiniciar primero; 0 = nada.
-- **EX059 — Antes de reiniciar.** ¿Qué dos cosas captura antes de reiniciar una HMI-C posiblemente comprometida? *Rúbrica:* 3 = exportación de registros y procesos/conexiones en ejecución; 2 = una; 1 = nada; 0 = nada.
+- **EX059 — Antes de reiniciar.** ¿Qué dos cosas captura antes de reiniciar una HMI-C posiblemente comprometida? *Rúbrica:* 3 = exportación de registros y procesos/conexiones en ejecución; 2 = una; 1 = vago; 0 = nada.
 - **EX060 — El desencadenante de la escalada.** ¿Qué observación del segundo evento desencadenó la escalada y por qué? *Rúbrica:* 3 = el programa difiere de la copia de seguridad sin registro de cambio; posible manipulación; 2 = solo la observación; 1 = errores; 0 = nada.
 
 ### Síntesis del capítulo

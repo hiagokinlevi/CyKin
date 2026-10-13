@@ -66,10 +66,10 @@ O enquadramento de negócio pode simplificar demais a tecnologia. As listas de a
 ### Exercícios
 
 - **EX001 — Prioridades dos dados dos associados.** Que objetivos de segurança mais importam para os dados das contas dos associados? *Rubrica:* 3 = confidencialidade e integridade;; 2 = C e I;; 1 = só disponibilidade;; 0 = nenhuma.
-- **EX002 — Disponibilidade do aplicativo.** Por que a disponibilidade importa para o aplicativo? *Rubrica:* 3 = os associados esperam acesso a qualquer hora;; 2 = acesso;; 1 = nada;; 0 = nenhuma.
-- **EX003 — Alvo da engenharia social.** Que equipe é alvo da fraude por engenharia social? *Rubrica:* 3 = a equipe da central de atendimento;; 2 = central;; 1 = nada;; 0 = nenhuma.
-- **EX004 — Lacunas de governança.** Cite duas lacunas de governança que Lena identificou. *Rubrica:* 3 = controles não testados e decisões de risco informais;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
-- **EX005 — Força do compliance.** Por que a experiência de Lena em compliance é útil? *Rubrica:* 3 = sua disciplina é uma base sólida;; 2 = disciplina;; 1 = nada;; 0 = nenhuma.
+- **EX002 — Disponibilidade do aplicativo.** Por que a disponibilidade importa para o aplicativo? *Rubrica:* 3 = os associados esperam acesso a qualquer hora;; 2 = acesso;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Alvo da engenharia social.** Que equipe é alvo da fraude por engenharia social? *Rubrica:* 3 = a equipe da central de atendimento;; 2 = central;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Lacunas de governança.** Cite duas lacunas de governança que Lena identificou. *Rubrica:* 3 = controles não testados e decisões de risco informais;; 2 = lacunas;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Força do compliance.** Por que a experiência de Lena em compliance é útil? *Rubrica:* 3 = sua disciplina é uma base sólida;; 2 = disciplina;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -107,11 +107,11 @@ As visões das partes interessadas mudam. As declarações de finalidade podem s
 
 ### Exercícios
 
-- **EX006 — Expectativa do regulador.** O que o regulador espera? *Rubrica:* 3 = gestão de riscos sólida e comunicação tempestiva de incidentes;; 2 = expectativas;; 1 = nada;; 0 = nenhuma.
-- **EX007 — Dever perante as bandeiras.** Que obrigação vem das bandeiras de cartão? *Rubrica:* 3 = PCI DSS v4.0;; 2 = PCI;; 1 = nada;; 0 = nenhuma.
-- **EX008 — Benefício do mapeamento.** O que o mapeamento das expectativas para as evidências revela? *Rubrica:* 3 = expectativas que a Marston ainda não consegue mostrar que atende;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
-- **EX009 — Finalidade do programa.** Qual é a finalidade do programa de GRC da Marston? *Rubrica:* 3 = manter o risco dentro do apetite, cumprir as obrigações, dar evidências confiáveis;; 2 = finalidade;; 1 = nada;; 0 = nenhuma.
-- **EX010 — Resultado de sucesso.** Cite um resultado mensurável que Lena acrescentou. *Rubrica:* 3 = nenhum achado alto em atraso;; 2 = resultado;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Expectativa do regulador.** O que o regulador espera? *Rubrica:* 3 = gestão de riscos sólida e comunicação tempestiva de incidentes;; 2 = expectativas;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Dever perante as bandeiras.** Que obrigação vem das bandeiras de cartão? *Rubrica:* 3 = PCI DSS v4.0;; 2 = PCI;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Benefício do mapeamento.** O que o mapeamento das expectativas para as evidências revela? *Rubrica:* 3 = expectativas que a Marston ainda não consegue mostrar que atende;; 2 = lacunas;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Finalidade do programa.** Qual é a finalidade do programa de GRC da Marston? *Rubrica:* 3 = manter o risco dentro do apetite, cumprir as obrigações, dar evidências confiáveis;; 2 = finalidade;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Resultado de sucesso.** Cite um resultado mensurável que Lena acrescentou. *Rubrica:* 3 = nenhum achado alto em atraso;; 2 = resultado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -149,10 +149,10 @@ A independência é relativa em equipes pequenas. O manuseio de evidências toma
 
 ### Exercícios
 
-- **EX011 — Limites de Lena.** O que Lena não pode fazer na sua função? *Rubrica:* 3 = mudar sistemas ou aprovar exceções;; 2 = limites;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Limites de Lena.** O que Lena não pode fazer na sua função? *Rubrica:* 3 = mudar sistemas ou aprovar exceções;; 2 = limites;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Acesso a dados de associados.** Quando a equipe de GRC pode acessar dados de associados? *Rubrica:* 3 = só quando necessário para uma revisão específica, com aprovação e registro;; 2 = necessidade;; 1 = sempre;; 0 = nenhuma.
-- **EX013 — Proteção das evidências.** Que proteções se aplicam às evidências? *Rubrica:* 3 = pasta restrita, nomes consistentes, registro da origem, dados minimizados;; 2 = proteção;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Conflito encontrado.** Que conflito Lena tinha? *Rubrica:* 3 = avaliar procedimentos que ela mesma escreveu;; 2 = autorrevisão;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Proteção das evidências.** Que proteções se aplicam às evidências? *Rubrica:* 3 = pasta restrita, nomes consistentes, registro da origem, dados minimizados;; 2 = proteção;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Conflito encontrado.** Que conflito Lena tinha? *Rubrica:* 3 = avaliar procedimentos que ela mesma escreveu;; 2 = autorrevisão;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Resposta ao conflito.** Como Lena geriu o conflito? *Rubrica:* 3 = declarou-o e pediu a uma colega que revisasse;; 2 = declarar;; 1 = ignorar;; 0 = nenhuma.
 
 ### Síntese
@@ -191,11 +191,11 @@ As oficinas dependem de quem participa. As declarações de apetite podem ser va
 
 ### Exercícios
 
-- **EX016 — Etapas do processo.** Cite as principais etapas do processo de riscos. *Rubrica:* 3 = contexto, identificar, analisar, avaliar, tratar, monitorar;; 2 = etapas;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Etapas do processo.** Cite as principais etapas do processo de riscos. *Rubrica:* 3 = contexto, identificar, analisar, avaliar, tratar, monitorar;; 2 = etapas;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Acima do apetite.** Que risco estava acima do apetite? *Rubrica:* 3 = tomada de conta levando a perdas dos associados;; 2 = tomada de conta;; 1 = indisponibilidades;; 0 = nenhuma.
-- **EX018 — Tolerância a indisponibilidades.** Quando as indisponibilidades do aplicativo ficam dentro do apetite? *Rubrica:* 3 = se recuperadas em até quatro horas;; 2 = 4 horas;; 1 = nada;; 0 = nenhuma.
-- **EX019 — Tratamento da tomada de conta.** Que tratamentos foram escolhidos para a tomada de conta? *Rubrica:* 3 = autenticação mais forte para novos favorecidos e monitoramento de transações;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Registro das decisões.** Por que registrar as decisões de tratamento? *Rubrica:* 3 = para mostrar que os riscos foram geridos de forma deliberada;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+- **EX018 — Tolerância a indisponibilidades.** Quando as indisponibilidades do aplicativo ficam dentro do apetite? *Rubrica:* 3 = se recuperadas em até quatro horas;; 2 = 4 horas;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Tratamento da tomada de conta.** Que tratamentos foram escolhidos para a tomada de conta? *Rubrica:* 3 = autenticação mais forte para novos favorecidos e monitoramento de transações;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Registro das decisões.** Por que registrar as decisões de tratamento? *Rubrica:* 3 = para mostrar que os riscos foram geridos de forma deliberada;; 2 = evidência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -255,9 +255,9 @@ Amostras pequenas de controles. Os revisores podem ser rigorosos demais.
 
 - **EX021 — Viés da autoavaliação.** Qual é o viés típico da autoavaliação? *Rubrica:* 3 = otimismo;; 2 = otimista;; 1 = pessimista;; 0 = nenhuma.
 - **EX022 — Maior diferença.** Que domínio teve a maior diferença? *Rubrica:* 3 = gestão de fornecedores, +1,33;; 2 = fornecedores;; 1 = backup;; 0 = nenhuma.
-- **EX023 — Menor diferença.** Por que os backups tiveram a menor diferença? *Rubrica:* 3 = os testes de restauração produzem evidências claras;; 2 = evidências;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Causa nos fornecedores.** Por que os donos da gestão de fornecedores superestimaram seus controles? *Rubrica:* 3 = os contratos tinham cláusulas, mas ninguém verificava o cumprimento;; 2 = suposição;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Recomendação.** O que Lena recomendou? *Rubrica:* 3 = definições de notas baseadas em evidências e revisão focada nas maiores diferenças;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Menor diferença.** Por que os backups tiveram a menor diferença? *Rubrica:* 3 = os testes de restauração produzem evidências claras;; 2 = evidências;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Causa nos fornecedores.** Por que os donos da gestão de fornecedores superestimaram seus controles? *Rubrica:* 3 = os contratos tinham cláusulas, mas ninguém verificava o cumprimento;; 2 = suposição;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Recomendação.** O que Lena recomendou? *Rubrica:* 3 = definições de notas baseadas em evidências e revisão focada nas maiores diferenças;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -295,11 +295,11 @@ As metas podem estimular encerramentos falsos. Os comitês podem não agir.
 
 ### Exercícios
 
-- **EX026 — Verificação no encerramento.** O que acontece quando um dono declara a conclusão? *Rubrica:* 3 = Lena verifica as evidências antes de encerrar;; 2 = evidências;; 1 = nada;; 0 = nenhuma.
-- **EX027 — Meta dos altos.** Qual é a meta para os achados altos? *Rubrica:* 3 = trinta dias;; 2 = 30;; 1 = nada;; 0 = nenhuma.
-- **EX028 — Correções longas.** Como tratar um achado alto que exige a substituição de um sistema? *Rubrica:* 3 = medida provisória e plano mais longo acordado;; 2 = provisória;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Abertura do relatório.** Por onde começa o relatório de Lena? *Rubrica:* 3 = pelos achados altos em atraso;; 2 = atrasados;; 1 = nada;; 0 = nenhuma.
-- **EX030 — Caminho de escalonamento.** Para onde os achados em atraso são escalados? *Rubrica:* 3 = para o executivo a quem o dono responde;; 2 = executivo;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Verificação no encerramento.** O que acontece quando um dono declara a conclusão? *Rubrica:* 3 = Lena verifica as evidências antes de encerrar;; 2 = evidências;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Meta dos altos.** Qual é a meta para os achados altos? *Rubrica:* 3 = trinta dias;; 2 = 30;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Correções longas.** Como tratar um achado alto que exige a substituição de um sistema? *Rubrica:* 3 = medida provisória e plano mais longo acordado;; 2 = provisória;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Abertura do relatório.** Por onde começa o relatório de Lena? *Rubrica:* 3 = pelos achados altos em atraso;; 2 = atrasados;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Caminho de escalonamento.** Para onde os achados em atraso são escalados? *Rubrica:* 3 = para o executivo a quem o dono responde;; 2 = executivo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -355,10 +355,10 @@ A amostragem aleatória deixa passar abusos direcionados. Os logs podem estar in
 ### Exercícios
 
 - **EX031 — Amostra de cinco por cento.** Quantos itens sem desvios sustentam uma taxa tolerável de 5%? *Rubrica:* 3 = cinquenta e nove;; 2 = 59;; 1 = 29;; 0 = nenhuma.
-- **EX032 — Amostra de três por cento.** Quantos são necessários para 3%? *Rubrica:* 3 = noventa e nove;; 2 = 99;; 1 = nada;; 0 = nenhuma.
-- **EX033 — Escolha da taxa.** Por que escolher aqui uma taxa tolerável de 5%? *Rubrica:* 3 = o controle protege o dinheiro dos associados;; 2 = importância;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Verificação feita.** O que Lena verificou em cada pagamento? *Rubrica:* 3 = um segundo fator bem-sucedido antes do pagamento, no log;; 2 = verificação do log;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Limites do teste.** Cite um limite da conclusão. *Rubrica:* 3 = cobre só o canal do aplicativo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Amostra de três por cento.** Quantos são necessários para 3%? *Rubrica:* 3 = noventa e nove;; 2 = 99;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Escolha da taxa.** Por que escolher aqui uma taxa tolerável de 5%? *Rubrica:* 3 = o controle protege o dinheiro dos associados;; 2 = importância;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Verificação feita.** O que Lena verificou em cada pagamento? *Rubrica:* 3 = um segundo fator bem-sucedido antes do pagamento, no log;; 2 = verificação do log;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Limites do teste.** Cite um limite da conclusão. *Rubrica:* 3 = cobre só o canal do aplicativo;; 2 = escopo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -396,11 +396,11 @@ Casos isolados podem não se generalizar. A visão retrospectiva faz as falhas p
 
 ### Exercícios
 
-- **EX036 — Gatilho do caso.** O que motivou a pergunta do regulador? *Rubrica:* 3 = exceções não revisadas no relatório de garantia do fornecedor;; 2 = exceções;; 1 = nada;; 0 = nenhuma.
-- **EX037 — Falha de processo.** Qual foi a falha no nível do processo? *Rubrica:* 3 = relatórios de garantia recebidos, mas não lidos;; 2 = não lidos;; 1 = nada;; 0 = nenhuma.
-- **EX038 — Falha de governança.** Qual foi a falha no nível da governança? *Rubrica:* 3 = ninguém era dono do risco de fornecedores e o conselho nunca o viu;; 2 = propriedade;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Gatilho do caso.** O que motivou a pergunta do regulador? *Rubrica:* 3 = exceções não revisadas no relatório de garantia do fornecedor;; 2 = exceções;; 1 = vago;; 0 = nenhuma.
+- **EX037 — Falha de processo.** Qual foi a falha no nível do processo? *Rubrica:* 3 = relatórios de garantia recebidos, mas não lidos;; 2 = não lidos;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Falha de governança.** Qual foi a falha no nível da governança? *Rubrica:* 3 = ninguém era dono do risco de fornecedores e o conselho nunca o viu;; 2 = propriedade;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Acompanhamento das exceções.** Como as exceções dos fornecedores devem ser tratadas? *Rubrica:* 3 = acompanhadas como achados;; 2 = achados;; 1 = ignoradas;; 0 = nenhuma.
-- **EX040 — Medida de sucesso.** Dê uma medida de sucesso que Lena propôs. *Rubrica:* 3 = proporção de fornecedores críticos com relatórios revisados;; 2 = medida;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Medida de sucesso.** Dê uma medida de sucesso que Lena propôs. *Rubrica:* 3 = proporção de fornecedores críticos com relatórios revisados;; 2 = medida;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -439,10 +439,10 @@ Relatórios honestos podem desgastar relações. O engajamento dos conselhos var
 ### Exercícios
 
 - **EX041 — Abertura do relatório.** Por onde começa o relatório de Lena ao conselho? *Rubrica:* 3 = pelas decisões necessárias;; 2 = decisões;; 1 = riscos;; 0 = nenhuma.
-- **EX042 — Risco de suavizar.** Por que não chamar a fraqueza de oportunidade de melhoria? *Rubrica:* 3 = poderia enganar conselheiros com deveres de supervisão;; 2 = honestidade;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Enquadramento honesto.** Como Lena apresentou a fraqueza? *Rubrica:* 3 = com o plano de remediação e o progresso;; 2 = plano;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Pedido de adiamento.** O que um gerente pediu a Lena? *Rubrica:* 3 = adiar o registro de um achado para depois da visita do regulador;; 2 = adiar;; 1 = nada;; 0 = nenhuma.
-- **EX045 — Ajuda na recusa.** O que Lena ofereceu em troca? *Rubrica:* 3 = ajuda para preparar um plano de remediação;; 2 = ajuda;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Risco de suavizar.** Por que não chamar a fraqueza de oportunidade de melhoria? *Rubrica:* 3 = poderia enganar conselheiros com deveres de supervisão;; 2 = honestidade;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Enquadramento honesto.** Como Lena apresentou a fraqueza? *Rubrica:* 3 = com o plano de remediação e o progresso;; 2 = plano;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Pedido de adiamento.** O que um gerente pediu a Lena? *Rubrica:* 3 = adiar o registro de um achado para depois da visita do regulador;; 2 = adiar;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Ajuda na recusa.** O que Lena ofereceu em troca? *Rubrica:* 3 = ajuda para preparar um plano de remediação;; 2 = ajuda;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -501,11 +501,11 @@ Números pequenos. As entrevistas podem ser defensivas.
 
 ### Exercícios
 
-- **EX046 — Contagem de atrasados.** Quantos achados abertos estavam em atraso? *Rubrica:* 3 = quatro de oito;; 2 = 4/8;; 1 = nada;; 0 = nenhuma.
-- **EX047 — Altos em atraso.** Que achados altos estavam em atraso? *Rubrica:* 3 = os de 48 e 95 dias;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX048 — Causa do órfão.** Por que o achado médio empacou? *Rubrica:* 3 = o dono saiu e ninguém o assumiu;; 2 = órfão;; 1 = nada;; 0 = nenhuma.
-- **EX049 — Correção dos órfãos.** Como os achados órfãos serão evitados? *Rubrica:* 3 = reatribuição automática quando os donos saem;; 2 = reatribuir;; 1 = nada;; 0 = nenhuma.
-- **EX050 — Correção dos baixos.** Como os achados baixos devem ser tratados? *Rubrica:* 3 = revisados por trimestre, para corrigir ou aceitar formalmente;; 2 = trimestral;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Contagem de atrasados.** Quantos achados abertos estavam em atraso? *Rubrica:* 3 = quatro de oito;; 2 = 4/8;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Altos em atraso.** Que achados altos estavam em atraso? *Rubrica:* 3 = os de 48 e 95 dias;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Causa do órfão.** Por que o achado médio empacou? *Rubrica:* 3 = o dono saiu e ninguém o assumiu;; 2 = órfão;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Correção dos órfãos.** Como os achados órfãos serão evitados? *Rubrica:* 3 = reatribuição automática quando os donos saem;; 2 = reatribuir;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Correção dos baixos.** Como os achados baixos devem ser tratados? *Rubrica:* 3 = revisados por trimestre, para corrigir ou aceitar formalmente;; 2 = trimestral;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -543,11 +543,11 @@ Os relatórios têm escopo limitado. As bridge letters dão garantia limitada.
 
 ### Exercícios
 
-- **EX051 — Lacuna de escopo.** O que estava fora do escopo do relatório? *Rubrica:* 3 = o módulo de monitoramento de fraudes;; 2 = módulo de fraudes;; 1 = nada;; 0 = nenhuma.
-- **EX052 — Período envelhecido.** Por que pedir uma bridge letter? *Rubrica:* 3 = o período do relatório terminou há nove meses;; 2 = envelhecimento;; 1 = nada;; 0 = nenhuma.
-- **EX053 — Exceções.** Que duas exceções o relatório apontou? *Rubrica:* 3 = remoção atrasada de desligados e uma varredura de vulnerabilidades não realizada;; 2 = duas;; 1 = nada;; 0 = nenhuma.
-- **EX054 — Controle complementar.** Que controle complementar a Marston nunca tinha executado? *Rubrica:* 3 = revisar o acesso dos próprios usuários ao portal do fornecedor;; 2 = revisão do portal;; 1 = nada;; 0 = nenhuma.
-- **EX055 — Erro comum.** Por que os controles complementares costumam ser esquecidos? *Rubrica:* 3 = as organizações supõem que o fornecedor cuida de tudo;; 2 = suposição;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Lacuna de escopo.** O que estava fora do escopo do relatório? *Rubrica:* 3 = o módulo de monitoramento de fraudes;; 2 = módulo de fraudes;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Período envelhecido.** Por que pedir uma bridge letter? *Rubrica:* 3 = o período do relatório terminou há nove meses;; 2 = envelhecimento;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Exceções.** Que duas exceções o relatório apontou? *Rubrica:* 3 = remoção atrasada de desligados e uma varredura de vulnerabilidades não realizada;; 2 = duas;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Controle complementar.** Que controle complementar a Marston nunca tinha executado? *Rubrica:* 3 = revisar o acesso dos próprios usuários ao portal do fornecedor;; 2 = revisão do portal;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Erro comum.** Por que os controles complementares costumam ser esquecidos? *Rubrica:* 3 = as organizações supõem que o fornecedor cuida de tudo;; 2 = suposição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -585,11 +585,11 @@ Os portfólios mostram trabalhos selecionados. Os planos mudam com as funções.
 
 ### Exercícios
 
-- **EX056 — Nota do portfólio.** Que nota acompanha cada item do portfólio? *Rubrica:* 3 = o que fez, as evidências que o sustentam, o que aprendeu;; 2 = nota;; 1 = nada;; 0 = nenhuma.
-- **EX057 — Dados no portfólio.** Que dados Lena removeu do portfólio? *Rubrica:* 3 = dados reais de associados ou funcionários;; 2 = dados reais;; 1 = nada;; 0 = nenhuma.
-- **EX058 — Questionamento da amostra.** Como Lena responderia a um regulador que questionasse o tamanho da amostra? *Rubrica:* 3 = explicaria a taxa tolerável e a confiança e se ofereceria para ampliar;; 2 = explicar;; 1 = nada;; 0 = nenhuma.
-- **EX059 — Parte mais difícil.** O que Lena achou mais difícil? *Rubrica:* 3 = resistir às pressões para suavizar relatórios mantendo as relações;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
-- **EX060 — Próxima função.** Que responsabilidade Lena vai assumir em seguida? *Rubrica:* 3 = o risco de fornecedores;; 2 = risco de fornecedores;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Nota do portfólio.** Que nota acompanha cada item do portfólio? *Rubrica:* 3 = o que fez, as evidências que o sustentam, o que aprendeu;; 2 = nota;; 1 = vago;; 0 = nenhuma.
+- **EX057 — Dados no portfólio.** Que dados Lena removeu do portfólio? *Rubrica:* 3 = dados reais de associados ou funcionários;; 2 = dados reais;; 1 = vago;; 0 = nenhuma.
+- **EX058 — Questionamento da amostra.** Como Lena responderia a um regulador que questionasse o tamanho da amostra? *Rubrica:* 3 = explicaria a taxa tolerável e a confiança e se ofereceria para ampliar;; 2 = explicar;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Parte mais difícil.** O que Lena achou mais difícil? *Rubrica:* 3 = resistir às pressões para suavizar relatórios mantendo as relações;; 2 = pressão;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Próxima função.** Que responsabilidade Lena vai assumir em seguida? *Rubrica:* 3 = o risco de fornecedores;; 2 = risco de fornecedores;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

@@ -207,7 +207,7 @@ Treating shared-ledger risk as each institution's private matter ignores harm th
 - **EX016 — Shared risk example.** Name one shared risk. *Rubric:* 3 = a contract defect affecting all balances;; 2 = compromised partner validator;; 1 = office fire at one branch;; 0 = none.
 - **EX017 — Collective control.** What shared control does Nadia propose? *Rubric:* 3 = joint incident procedures;; 2 = agreed pause criteria;; 1 = vague;; 0 = none.
 - **EX018 — Ledger data choice.** What appears on the ledger? *Rubric:* 3 = settlement amounts and pseudonymous institution references;; 2 = amounts only;; 1 = member names;; 0 = none.
-- **EX019 — Pause condition.** What must accompany any pause? *Rubric:* 3 = two institutions and a published explanation;; 2 = two approvals;; 1 = nothing;; 0 = none.
+- **EX019 — Pause condition.** What must accompany any pause? *Rubric:* 3 = two institutions and a published explanation;; 2 = two approvals;; 1 = vague;; 0 = none.
 - **EX020 — Speaking up.** How does Nadia raise the upgrade-key concern? *Rubric:* 3 = writes it into committee papers;; 2 = documents it;; 1 = stays silent;; 0 = none.
 
 ### Synthesis
@@ -331,7 +331,7 @@ Presenting detection without cost, or cost without detection, biases the decisio
 
 ### Exercises
 
-- **EX026 — Design B description.** What does design B add? *Rubric:* 3 = two reviewers from different institutions and a summary;; 2 = two reviewers;; 1 = nothing;; 0 = none.
+- **EX026 — Design B description.** What does design B add? *Rubric:* 3 = two reviewers from different institutions and a summary;; 2 = two reviewers;; 1 = vague;; 0 = none.
 - **EX027 — Detection results.** How many errors do A and B catch? *Rubric:* 3 = A 1 of 4, B 4 of 4;; 2 = 1/4 and 4/4;; 1 = both 4;; 0 = none.
 - **EX028 — Median times.** What are the median sign-off times? *Rubric:* 3 = 6 and 11.5 minutes;; 2 = 6/11.5;; 1 = equal;; 0 = none.
 - **EX029 — Weekly cost.** What weekly cost does design B add? *Rubric:* 3 = about three hours of reviewer time;; 2 = three hours;; 1 = vague;; 0 = none.

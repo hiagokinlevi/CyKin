@@ -163,7 +163,7 @@ Closure assumes memberships are current; stale data hide or invent rights. Disjo
 
 - **EX004 — Hidden right.** Which account gained tariff rights indirectly in the lab, and through how many levels? *Rubric:* 3 = contractor-07, through a chain of four groups ending in fare-admins;; 2 = account;; 1 = vague;; 0 = none.
 - **EX005 — SoD test.** How is separation of duties expressed with sets? *Rubric:* 3 = creators and approvers sets must be disjoint; intersection empty;; 2 = disjoint;; 1 = union;; 0 = none.
-- **EX006 — Collusion gap.** What does a disjoint-set check fail to prevent? *Rubric:* 3 = collusion between two different people;; 2 = collusion;; 1 = nothing;; 0 = none.
+- **EX006 — Collusion gap.** What does a disjoint-set check fail to prevent? *Rubric:* 3 = collusion between two different people;; 2 = collusion;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -559,7 +559,7 @@ Codes of ethics vary by country and body. Raising a concern does not guarantee a
 
 - **EX028 — Paramount duty.** What do engineering codes place above employer interests? *Rubric:* 3 = public safety, health and welfare;; 2 = safety;; 1 = profit;; 0 = none.
 - **EX029 — Gate default.** During a fire alarm, should fare gates fail open or closed, and why? *Rubric:* 3 = open, so passengers can evacuate; safety overrides fare protection;; 2 = open;; 1 = closed;; 0 = none.
-- **EX030 — Student action.** What could Sofia do about the premature launch? *Rubric:* 3 = raise the specific risk in writing to Daniel for escalation;; 2 = written concern;; 1 = nothing;; 0 = none.
+- **EX030 — Student action.** What could Sofia do about the premature launch? *Rubric:* 3 = raise the specific risk in writing to Daniel for escalation;; 2 = written concern;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -847,7 +847,7 @@ Traceability tables become burdensome if too detailed. Life-cycle models are sim
 
 - **EX046 — Neglected stages.** Which life-cycle stages are often neglected for security? *Rubric:* 3 = support and retirement;; 2 = both;; 1 = development;; 0 = none.
 - **EX047 — SP 800-160 flow.** What chain does SP 800-160 Vol. 1 Rev. 1 emphasise? *Rubric:* 3 = protection needs to requirements to design to assurance;; 2 = chain;; 1 = vague;; 0 = none.
-- **EX048 — Traceability value.** What does traceability show when a requirement changes? *Rubric:* 3 = which design elements and tests are affected;; 2 = affected items;; 1 = nothing;; 0 = none.
+- **EX048 — Traceability value.** What does traceability show when a requirement changes? *Rubric:* 3 = which design elements and tests are affected;; 2 = affected items;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -963,7 +963,7 @@ Layered views simplify cross-cutting concerns. Attribute traces can become paper
 
 - **EX052 — SABSA starting point.** Where does SABSA start an architecture? *Rubric:* 3 = business requirements expressed as attributes;; 2 = attributes;; 1 = technology;; 0 = none.
 - **EX053 — Gap found.** What gap did Sofia's layered view expose? *Rubric:* 3 = no operational owner for key management;; 2 = owner;; 1 = vague;; 0 = none.
-- **EX054 — Removing a control.** What does the attribute trace show when a change removes a control? *Rubric:* 3 = which business attribute is weakened;; 2 = attribute;; 1 = nothing;; 0 = none.
+- **EX054 — Removing a control.** What does the attribute trace show when a change removes a control? *Rubric:* 3 = which business attribute is weakened;; 2 = attribute;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1614,7 +1614,7 @@ Automated enrolment becomes a high-value target. Reconciliation depends on asset
 ### Exercises
 
 - **EX091 — Enrolment condition.** What must exist before a validator receives a certificate? *Rubric:* 3 = an asset record and an approved installation ticket;; 2 = both;; 1 = vague;; 0 = none.
-- **EX092 — Reconciliation purpose.** What does the daily reconciliation catch? *Rubric:* 3 = mismatches between active certificates and in-service assets from missed events;; 2 = mismatches;; 1 = nothing;; 0 = none.
+- **EX092 — Reconciliation purpose.** What does the daily reconciliation catch? *Rubric:* 3 = mismatches between active certificates and in-service assets from missed events;; 2 = mismatches;; 1 = vague;; 0 = none.
 - **EX093 — Exception contents.** What does each legacy exception include? *Rubric:* 3 = compensating controls, owner and expiry or replacement date;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -2277,7 +2277,7 @@ Success criteria can be gamed if too narrow. Lab mirrors may lack production com
 
 - **EX130 — Success criteria.** Name two of Sofia's capstone success criteria. *Rubric:* 3 = two of threats mitigated or accepted, verification tests passing, recovery time met, review with no critical findings;; 2 = one;; 1 = vague;; 0 = none.
 - **EX131 — Common failure.** Why do capstones often fail, according to Daniel? *Rubric:* 3 = evidence produced too late to fix what it reveals;; 2 = late evidence;; 1 = bad design;; 0 = none.
-- **EX132 — Charter exclusion.** What does the charter exclude? *Rubric:* 3 = production changes; work happens in a lab mirror;; 2 = production;; 1 = nothing;; 0 = none.
+- **EX132 — Charter exclusion.** What does the charter exclude? *Rubric:* 3 = production changes; work happens in a lab mirror;; 2 = production;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

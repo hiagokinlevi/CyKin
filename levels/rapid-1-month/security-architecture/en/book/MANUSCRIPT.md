@@ -230,7 +230,7 @@ Maps go stale without updates. Supplier failures can cascade through fourth part
 - **EX032 — Bureau count.** How many services depend on the service bureau? *Rubric:* 3 = four;; 2 = 4;; 1 = vague;; 0 = none.
 - **EX033 — Break-glass.** What fallback was agreed for the identity provider? *Rubric:* 3 = an offline break-glass account and tested sign-in procedure;; 2 = break-glass;; 1 = vague;; 0 = none.
 - **EX034 — Bureau fallback.** What fallback exists for the service bureau? *Rubric:* 3 = contractual recovery and a manual branch withdrawal procedure;; 2 = manual;; 1 = vague;; 0 = none.
-- **EX035 — Budgeting app.** What did the map reveal about the budgeting app? *Rubric:* 3 = a new supplier with transaction data and more identity dependency;; 2 = new supplier;; 1 = nothing;; 0 = none.
+- **EX035 — Budgeting app.** What did the map reveal about the budgeting app? *Rubric:* 3 = a new supplier with transaction data and more identity dependency;; 2 = new supplier;; 1 = vague;; 0 = none.
 - **EX036 — Board action.** How did the board respond to the budgeting app? *Rubric:* 3 = asked the vendor security questions before signing;; 2 = questions;; 1 = signed;; 0 = none.
 - **EX037 — Map payoff.** When does a simple map pay for itself? *Rubric:* 3 = the first time it shapes a decision before money is spent;; 2 = first decision;; 1 = never;; 0 = none.
 - **EX038 — Stale maps.** What limits the usefulness of the map over time? *Rubric:* 3 = it goes stale without updates;; 2 = staleness;; 1 = vague;; 0 = none.

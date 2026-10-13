@@ -114,9 +114,9 @@ Um primeiro mapa deixa escapar sistemas paralelos, como planilhas pessoais; revi
 
 ### Exercícios
 
-- **EX004 — Visão ausente.** O que o mapa de sistemas de Elena revelou? *Rubrica:* 3 = ninguém tinha uma visão completa de onde ficam os dados dos alunos;; 2 = menciona lacunas;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Visão ausente.** O que o mapa de sistemas de Elena revelou? *Rubrica:* 3 = ninguém tinha uma visão completa de onde ficam os dados dos alunos;; 2 = menciona lacunas;; 1 = vago;; 0 = nenhuma.
 - **EX005 — A nuvem não é automática.** Por que o armazenamento em nuvem não é automaticamente menos privado? *Rubrica:* 3 = uma nuvem bem configurada pode ser mais segura que um servidor escolar sem atualizações;; 2 = menciona configuração;; 1 = diz que a nuvem é pior;; 0 = nenhuma.
-- **EX006 — Controles nos dispositivos.** Que controles nos dispositivos Elena recomenda? *Rubrica:* 3 = criptografia de disco completo nos notebooks e saída automática nos tablets compartilhados;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX006 — Controles nos dispositivos.** Que controles nos dispositivos Elena recomenda? *Rubrica:* 3 = criptografia de disco completo nos notebooks e saída automática nos tablets compartilhados;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -290,8 +290,8 @@ Os modelos simplificam; o acesso real costuma ter exceções que as tabelas de f
 
 ### Exercícios
 
-- **EX016 — Comum, mas sensível.** Dê um exemplo de dado de aparência comum que pode ser de categoria especial. *Rubrica:* 3 = restrições alimentares que revelam religião ou saúde;; 2 = dá um exemplo;; 1 = nenhum;; 0 = nenhuma.
-- **EX017 — Achado na relação de acesso.** O que a relação de acesso revelou? *Rubrica:* 3 = a secretaria podia acessar planos de apoio de que não precisa;; 2 = menciona a secretaria;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Comum, mas sensível.** Dê um exemplo de dado de aparência comum que pode ser de categoria especial. *Rubrica:* 3 = restrições alimentares que revelam religião ou saúde;; 2 = dá um exemplo;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Achado na relação de acesso.** O que a relação de acesso revelou? *Rubrica:* 3 = a secretaria podia acessar planos de apoio de que não precisa;; 2 = menciona a secretaria;; 1 = vago;; 0 = nenhuma.
 - **EX018 — O elo mais fraco.** Por que um caminho de dados com várias etapas é tão protegido quanto seu elo mais fraco? *Rubrica:* 3 = os dados podem vazar em qualquer etapa, como um suboperador;; 2 = menciona etapas;; 1 = o mais forte;; 0 = nenhuma.
 
 ### Síntese
@@ -335,8 +335,8 @@ As exigências de proteção das crianças variam de país para país; consulte 
 ### Exercícios
 
 - **EX019 — Logs do filtro.** Por que os logs do filtro web são sensíveis? *Rubrica:* 3 = revelam buscas das crianças sobre saúde ou questões familiares;; 2 = menciona buscas;; 1 = não são pessoais;; 0 = nenhuma.
-- **EX020 — Retenção do filtro.** O que Elena recomendou para os logs do filtro? *Rubrica:* 3 = retenção mais curta, acesso só para os responsáveis pela proteção e transparência;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX021 — Dano do monitoramento excessivo.** Como o monitoramento excessivo pode prejudicar as crianças? *Rubrica:* 3 = pode desencorajá-las de buscar ajuda online sobre assuntos sensíveis;; 2 = menciona efeito inibidor;; 1 = nenhum;; 0 = nenhuma.
+- **EX020 — Retenção do filtro.** O que Elena recomendou para os logs do filtro? *Rubrica:* 3 = retenção mais curta, acesso só para os responsáveis pela proteção e transparência;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Dano do monitoramento excessivo.** Como o monitoramento excessivo pode prejudicar as crianças? *Rubrica:* 3 = pode desencorajá-las de buscar ajuda online sobre assuntos sensíveis;; 2 = menciona efeito inibidor;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -380,7 +380,7 @@ Os pseudônimos com chave podem ser revertidos por quem tiver a chave; proteja-a
 
 - **EX022 — Acesso por turma.** Como o aplicativo de Elena decide se um professor vê um registro? *Rubrica:* 3 = verificações de função e finalidade, mais a participação na turma;; 2 = menciona a função;; 1 = mostra tudo;; 0 = nenhuma.
 - **EX023 — Pseudonimizado, ainda pessoal.** Por que o conjunto de leitura pseudonimizado continua sendo de dados pessoais? *Rubrica:* 3 = a chave pode reidentificar os alunos;; 2 = menciona a chave;; 1 = anônimo;; 0 = nenhuma.
-- **EX024 — Acesso remanescente.** Que teste reprovado Elena corrigiu? *Rubrica:* 3 = professores que mantinham o acesso depois de deixar uma turma;; 2 = menciona acesso;; 1 = nenhum;; 0 = nenhuma.
+- **EX024 — Acesso remanescente.** Que teste reprovado Elena corrigiu? *Rubrica:* 3 = professores que mantinham o acesso depois de deixar uma turma;; 2 = menciona acesso;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -496,7 +496,7 @@ Os códigos pessoais podem ser vagos; ligue cada valor a um comportamento concre
 
 ### Exercícios
 
-- **EX028 — Proteção das crianças.** Que dispositivos enfatizam a proteção especial dos dados de crianças? *Rubrica:* 3 = o considerando 38 do GDPR e o art. 14 da LGPD;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX028 — Proteção das crianças.** Que dispositivos enfatizam a proteção especial dos dados de crianças? *Rubrica:* 3 = o considerando 38 do GDPR e o art. 14 da LGPD;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX029 — Recusar dados reais.** Por que Elena recusa a planilha real? *Rubrica:* 3 = seu estágio só autoriza dados sintéticos;; 2 = menciona autoridade;; 1 = aceita;; 0 = nenhuma.
 - **EX030 — Encaminhar a reclamação.** Por que encaminhar a investigação da reclamação ao responsável pela proteção de dados? *Rubrica:* 3 = exige autoridade e acesso que ela não tem;; 2 = menciona o papel;; 1 = investiga;; 0 = nenhuma.
 
@@ -541,7 +541,7 @@ Os métodos de apagamento seguro variam de dispositivo para dispositivo; verifiq
 ### Exercícios
 
 - **EX031 — Risco da conta compartilhada.** O que há de errado com uma única conta compartilhada de alunos? *Rubrica:* 3 = arquivos e históricos ficam visíveis para todos os alunos;; 2 = menciona compartilhamento;; 1 = está tudo bem;; 0 = nenhuma.
-- **EX032 — Pasta de proteção.** Como a pasta de proteção das crianças foi corrigida? *Rubrica:* 3 = acesso restrito aos responsáveis pela proteção, com auditoria;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Pasta de proteção.** Como a pasta de proteção das crianças foi corrigida? *Rubrica:* 3 = acesso restrito aos responsáveis pela proteção, com auditoria;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 - **EX033 — Descarte de dispositivos.** Por que excluir as contas de usuário não basta antes de vender um notebook? *Rubrica:* 3 = os dados podem continuar recuperáveis no disco;; 2 = menciona recuperação;; 1 = basta;; 0 = nenhuma.
 
 ### Síntese
@@ -606,8 +606,8 @@ Intervalos que quase não se sobrepõem são sugestivos, não um teste formal; u
 ### Exercícios
 
 - **EX034 — Intervalo da rede.** Qual é o intervalo de 95% para a consciência em toda a rede? *Rubrica:* 3 = de 22% a 29%;; 2 = aproximadamente certo;; 1 = errado;; 0 = nenhuma.
-- **EX035 — Diferença da Kelso.** O que pode explicar a consciência maior na Kelso? *Rubrica:* 3 = uma carta anual listando os aplicativos, embora a causalidade não esteja provada;; 2 = menciona a carta;; 1 = nada;; 0 = nenhuma.
-- **EX036 — Proteção dos respondentes.** Como Elena protege os respondentes da pesquisa? *Rubrica:* 3 = remove identificadores do texto livre e só relata escolas com pelo menos vinte respostas;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Diferença da Kelso.** O que pode explicar a consciência maior na Kelso? *Rubrica:* 3 = uma carta anual listando os aplicativos, embora a causalidade não esteja provada;; 2 = menciona a carta;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Proteção dos respondentes.** Como Elena protege os respondentes da pesquisa? *Rubrica:* 3 = remove identificadores do texto livre e só relata escolas com pelo menos vinte respostas;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -649,9 +649,9 @@ A integração com o RH falha se os registros do RH atrasarem; as revisões cont
 
 ### Exercícios
 
-- **EX037 — Casos de acesso remanescente.** Cite os dois casos de acesso remanescente que Elena encontrou. *Rubrica:* 3 = a antiga coordenadora de necessidades especiais com os planos de apoio; o professor que saiu com conta ativa;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX037 — Casos de acesso remanescente.** Cite os dois casos de acesso remanescente que Elena encontrou. *Rubrica:* 3 = a antiga coordenadora de necessidades especiais com os planos de apoio; o professor que saiu com conta ativa;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Resultado das revisões.** Quantas contas precisaram de mudanças na primeira e na segunda revisão? *Rubrica:* 3 = onze, depois três;; 2 = um número;; 1 = errado;; 0 = nenhuma.
-- **EX039 — Login adequado à idade.** Por que usar senhas com figuras para os alunos muito pequenos? *Rubrica:* 3 = uma segurança que eles não conseguem manejar será contornada;; 2 = menciona usabilidade;; 1 = nenhum;; 0 = nenhuma.
+- **EX039 — Login adequado à idade.** Por que usar senhas com figuras para os alunos muito pequenos? *Rubrica:* 3 = uma segurança que eles não conseguem manejar será contornada;; 2 = menciona usabilidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -695,7 +695,7 @@ A escolha da base legal depende da legislação educacional de cada país; confi
 
 - **EX040 — Fluxo contextual.** Como a integridade contextual se aplica às informações familiares compartilhadas com uma professora? *Rubrica:* 3 = não devem fluir para outros pais nem para fornecedores;; 2 = menciona normas;; 1 = podem circular livremente;; 0 = nenhuma.
 - **EX041 — Uso indevido do consentimento.** Por que o consentimento é a base errada para dados necessários ao ensino? *Rubrica:* 3 = os pais não podem de fato recusar sem consequências;; 2 = menciona escolha;; 1 = sempre consentimento;; 0 = nenhuma.
-- **EX042 — Dados de igualdade.** O que Elena descobriu sobre os dados de monitoramento da igualdade? *Rubrica:* 3 = eram guardados com os nomes quando uma análise agregada bastaria;; 2 = menciona nomes;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Dados de igualdade.** O que Elena descobriu sobre os dados de monitoramento da igualdade? *Rubrica:* 3 = eram guardados com os nomes quando uma análise agregada bastaria;; 2 = menciona nomes;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -802,7 +802,7 @@ Sistemas centrais concentram o risco; proteja-os e monitore-os de perto.
 ### Exercícios
 
 - **EX046 — Separação da proteção.** Por que manter os registros de proteção das crianças em um sistema separado? *Rubrica:* 3 = uma conta de professor comprometida não os alcança;; 2 = menciona sensibilidade;; 1 = mesmo sistema;; 0 = nenhuma.
-- **EX047 — Benefício do login único.** O que o login único dá à rede? *Rubrica:* 3 = controle central e remoção rápida do acesso a todos os aplicativos;; 2 = menciona controle;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Benefício do login único.** O que o login único dá à rede? *Rubrica:* 3 = controle central e remoção rápida do acesso a todos os aplicativos;; 2 = menciona controle;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Retenção dos backups.** Por que os backups precisam seguir as regras de retenção? *Rubrica:* 3 = os backups também guardam dados pessoais;; 2 = menciona dados;; 1 = estão isentos;; 0 = nenhuma.
 
 ### Síntese
@@ -845,8 +845,8 @@ Dados cifrados continuam sendo dados pessoais; a criptografia reduz o risco, nã
 
 ### Exercícios
 
-- **EX049 — Exportações em pen drive.** O que Elena recomendou para as exportações em pen drives? *Rubrica:* 3 = pen drives cifrados ou substituição por compartilhamento seguro;; 2 = uma opção;; 1 = nada;; 0 = nenhuma.
-- **EX050 — Um único detentor da chave.** Qual era o risco de um só técnico guardar as chaves dos backups? *Rubrica:* 3 = os backups ficariam inutilizáveis se ele saísse ou perdesse a chave;; 2 = menciona perda;; 1 = nenhum;; 0 = nenhuma.
+- **EX049 — Exportações em pen drive.** O que Elena recomendou para as exportações em pen drives? *Rubrica:* 3 = pen drives cifrados ou substituição por compartilhamento seguro;; 2 = uma opção;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Um único detentor da chave.** Qual era o risco de um só técnico guardar as chaves dos backups? *Rubrica:* 3 = os backups ficariam inutilizáveis se ele saísse ou perdesse a chave;; 2 = menciona perda;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Limites da criptografia.** Contra o que a criptografia não protege? *Rubrica:* 3 = mau uso por usuários autorizados e coleta excessiva;; 2 = um;; 1 = protege contra tudo;; 0 = nenhuma.
 
 ### Síntese
@@ -935,7 +935,7 @@ A identificabilidade depende do contexto; a mesma tabela pode ser segura para um
 
 - **EX055 — Definição de dado pessoal.** O que significa dado pessoal pelo GDPR? *Rubrica:* 3 = informação relativa a uma pessoa natural identificada ou identificável;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
 - **EX056 — Tabela sem nomes.** Como uma tabela de resultados sem nomes pode conter dados pessoais? *Rubrica:* 3 = células pequenas permitem identificar uma criança;; 2 = menciona números pequenos;; 1 = nunca;; 0 = nenhuma.
-- **EX057 — Lícito, mas prejudicial.** Dê um exemplo, tirado do capítulo, de tratamento lícito, mas prejudicial. *Rubrica:* 3 = compartilhar uma foto que mostra uma criança em angústia;; 2 = um exemplo;; 1 = nenhum;; 0 = nenhuma.
+- **EX057 — Lícito, mas prejudicial.** Dê um exemplo, tirado do capítulo, de tratamento lícito, mas prejudicial. *Rubrica:* 3 = compartilhar uma foto que mostra uma criança em angústia;; 2 = um exemplo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1023,7 +1023,7 @@ Os registros envelhecem depressa; amarre as atualizações aos processos de comp
 
 - **EX061 — Modelo por finalidade.** Por que modelar as atividades por finalidade, e não por sistema? *Rubrica:* 3 = a lei organiza os deveres em torno das finalidades; um sistema pode servir a várias;; 2 = menciona finalidade;; 1 = por sistema;; 0 = nenhuma.
 - **EX062 — Destinatário do censo.** Que papel tem uma autoridade local que recebe os dados do censo? *Rubrica:* 3 = controladora independente;; 2 = controladora;; 1 = operadora;; 0 = nenhuma.
-- **EX063 — Achado do percurso.** O que o percurso pelo dia da professora revelou? *Rubrica:* 3 = um aplicativo de mensagens com os pais, não registrado, usado para fotografias;; 2 = menciona aplicativo;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Achado do percurso.** O que o percurso pelo dia da professora revelou? *Rubrica:* 3 = um aplicativo de mensagens com os pais, não registrado, usado para fotografias;; 2 = menciona aplicativo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1089,7 +1089,7 @@ Pesos iguais tratam os critérios como igualmente importantes; as linhas vermelh
 
 - **EX064 — Aplicativos aprovados.** Quais aplicativos são aprovados, e com que pontuação? *Rubrica:* 3 = MathsQuest com 10 e Timetabler com 8;; 2 = um;; 1 = errado;; 0 = nenhuma.
 - **EX065 — Linha vermelha.** Por que tornar a publicidade para alunos uma rejeição automática? *Rubrica:* 3 = perfilar crianças para marketing contraria sua proteção especial;; 2 = menciona crianças;; 1 = só pontos;; 0 = nenhuma.
-- **EX066 — Correção do ClassChat.** O que elevou a pontuação do ClassChat para 10? *Rubrica:* 3 = assinou um contrato e acrescentou a exclusão mediante pedido;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Correção do ClassChat.** O que elevou a pontuação do ClassChat para 10? *Rubrica:* 3 = assinou um contrato e acrescentou a exclusão mediante pedido;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1248,8 +1248,8 @@ As configurações do laboratório podem se afastar das de produção; compare-a
 
 ### Exercícios
 
-- **EX073 — Acesso inesperado.** Que acesso inesperado o teste revelou? *Rubrica:* 3 = um coordenador de ano conseguia ver as anotações de proteção das crianças;; 2 = menciona proteção;; 1 = nenhum;; 0 = nenhuma.
-- **EX074 — Teste do tablet perdido.** O que a simulação do tablet perdido verificou? *Rubrica:* 3 = que o apagamento remoto funciona e que não há dados de alunos em cache no dispositivo;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX073 — Acesso inesperado.** Que acesso inesperado o teste revelou? *Rubrica:* 3 = um coordenador de ano conseguia ver as anotações de proteção das crianças;; 2 = menciona proteção;; 1 = vago;; 0 = nenhuma.
+- **EX074 — Teste do tablet perdido.** O que a simulação do tablet perdido verificou? *Rubrica:* 3 = que o apagamento remoto funciona e que não há dados de alunos em cache no dispositivo;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX075 — Áreas não testadas.** Por que registrar o que não foi testado? *Rubrica:* 3 = mostra onde falta garantia, como na exclusão pelos fornecedores;; 2 = menciona lacunas;; 1 = desnecessário;; 0 = nenhuma.
 
 ### Síntese
@@ -1357,7 +1357,7 @@ A comparação com a rede deixa passar os aplicativos usados em dispositivos de 
 
 ### Exercícios
 
-- **EX079 — Resultado da amostra.** O que a amostra de contas encontrou? *Rubrica:* 3 = duas de vinte contas com permissões extras;; 2 = só o número;; 1 = nada;; 0 = nenhuma.
+- **EX079 — Resultado da amostra.** O que a amostra de contas encontrou? *Rubrica:* 3 = duas de vinte contas com permissões extras;; 2 = só o número;; 1 = vago;; 0 = nenhuma.
 - **EX080 — Aplicativos não aprovados.** Como os aplicativos não aprovados foram encontrados? *Rubrica:* 3 = comparando os domínios acessados com a lista de aprovados;; 2 = menciona a rede;; 1 = pesquisa;; 0 = nenhuma.
 - **EX081 — Afirmação de conformidade.** Por que Elena evita afirmar conformidade total? *Rubrica:* 3 = as evidências não a sustentam e ainda há falhas;; 2 = menciona evidências;; 1 = afirma;; 0 = nenhuma.
 
@@ -1445,9 +1445,9 @@ Os pontos focais precisam de tempo e treinamento; nomeá-los não basta.
 
 ### Exercícios
 
-- **EX085 — Finalidade do calendário.** O que o calendário de operações proporciona? *Rubrica:* 3 = transforma tarefas separadas em uma rotina previsível;; 2 = menciona rotina;; 1 = nada;; 0 = nenhuma.
+- **EX085 — Finalidade do calendário.** O que o calendário de operações proporciona? *Rubrica:* 3 = transforma tarefas separadas em uma rotina previsível;; 2 = menciona rotina;; 1 = vago;; 0 = nenhuma.
 - **EX086 — Ocultação.** Por que ocultar partes dos e-mails num pedido de acesso? *Rubrica:* 3 = contêm informações sobre outros alunos;; 2 = menciona terceiros;; 1 = entregar tudo;; 0 = nenhuma.
-- **EX087 — Ponto único.** Que ponto único de falha Elena identifica? *Rubrica:* 3 = o responsável pela proteção de dados como única pessoa a conduzir as operações;; 2 = menciona o responsável;; 1 = nenhum;; 0 = nenhuma.
+- **EX087 — Ponto único.** Que ponto único de falha Elena identifica? *Rubrica:* 3 = o responsável pela proteção de dados como única pessoa a conduzir as operações;; 2 = menciona o responsável;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1489,8 +1489,8 @@ Os fornecedores podem confirmar a exclusão sem verificá-la; peça evidências 
 
 ### Exercícios
 
-- **EX088 — Lacuna do fornecedor.** O que o teste de exclusão pelos fornecedores revelou? *Rubrica:* 3 = um fornecedor mantinha dados por um ano, contra o contrato;; 2 = menciona retenção;; 1 = nada;; 0 = nenhuma.
-- **EX089 — Processo de saída.** O que Elena acrescentou ao processo de saída? *Rubrica:* 3 = confirmação de exclusão pelos fornecedores, com lembrete em duas semanas;; 2 = menciona confirmação;; 1 = nada;; 0 = nenhuma.
+- **EX088 — Lacuna do fornecedor.** O que o teste de exclusão pelos fornecedores revelou? *Rubrica:* 3 = um fornecedor mantinha dados por um ano, contra o contrato;; 2 = menciona retenção;; 1 = vago;; 0 = nenhuma.
+- **EX089 — Processo de saída.** O que Elena acrescentou ao processo de saída? *Rubrica:* 3 = confirmação de exclusão pelos fornecedores, com lembrete em duas semanas;; 2 = menciona confirmação;; 1 = vago;; 0 = nenhuma.
 - **EX090 — Fronteiras.** Por que o segundo laboratório encontrou lacunas mais graves? *Rubrica:* 3 = as falhas costumam ocorrer nas fronteiras entre sistemas e fornecedores;; 2 = menciona fronteiras;; 1 = sorte;; 0 = nenhuma.
 
 ### Síntese
@@ -1665,9 +1665,9 @@ A comparação baseada em documentos pode não captar a prática; as entrevistas
 
 ### Exercícios
 
-- **EX100 — Força da Harrow Lane.** O que a Harrow Lane faz melhor? *Rubrica:* 3 = retenção automática e atendimento mais rápido aos direitos;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX100 — Força da Harrow Lane.** O que a Harrow Lane faz melhor? *Rubrica:* 3 = retenção automática e atendimento mais rápido aos direitos;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX101 — O contexto importa.** Por que uma organização não deve simplesmente copiar a outra? *Rubrica:* 3 = o contexto é diferente, então os princípios precisam ser adaptados;; 2 = menciona contexto;; 1 = copiar;; 0 = nenhuma.
-- **EX102 — Ética da comparação.** Com o que as duas organizações concordaram antes de participar? *Rubrica:* 3 = o objetivo é aprender, e não ranquear publicamente;; 2 = menciona consentimento;; 1 = nada;; 0 = nenhuma.
+- **EX102 — Ética da comparação.** Com o que as duas organizações concordaram antes de participar? *Rubrica:* 3 = o objetivo é aprender, e não ranquear publicamente;; 2 = menciona consentimento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1709,7 +1709,7 @@ Os portais podem deslocar o risco em vez de eliminá-lo; uma violação poderia 
 
 ### Exercícios
 
-- **EX103 — Finalidade do portal.** Que problema o portal resolve? *Rubrica:* 3 = o envio de relatórios sensíveis por e-mail ao destinatário errado;; 2 = menciona e-mail;; 1 = nenhum;; 0 = nenhuma.
+- **EX103 — Finalidade do portal.** Que problema o portal resolve? *Rubrica:* 3 = o envio de relatórios sensíveis por e-mail ao destinatário errado;; 2 = menciona e-mail;; 1 = vago;; 0 = nenhuma.
 - **EX104 — Critério de justiça.** Por que incluir alternativas para os pais sem internet? *Rubrica:* 3 = para que as famílias com acesso digital limitado não sejam excluídas;; 2 = menciona justiça;; 1 = ignorar;; 0 = nenhuma.
 - **EX105 — Necessidade da DPIA.** Por que planejar uma DPIA para o portal? *Rubrica:* 3 = trata dados de crianças em grande escala, atendendo aos critérios do WP248;; 2 = menciona crianças;; 1 = desnecessária;; 0 = nenhuma.
 
@@ -1842,7 +1842,7 @@ Os códigos pelo correio atrasam a ativação; equilibre a segurança com a conv
 ### Exercícios
 
 - **EX112 — Processo de vinculação.** Como os pais são vinculados aos filhos? *Rubrica:* 3 = verificação de identidade pela secretaria e código de uso único enviado ao endereço registrado;; 2 = uma parte;; 1 = autocadastro;; 0 = nenhuma.
-- **EX113 — Erro de vinculação.** Como o erro de vinculação foi detectado e corrigido? *Rubrica:* 3 = um pai viu um nome desconhecido; foi acrescentada uma etapa de confirmação;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Erro de vinculação.** Como o erro de vinculação foi detectado e corrigido? *Rubrica:* 3 = um pai viu um nome desconhecido; foi acrescentada uma etapa de confirmação;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 - **EX114 — E-mails remanescentes.** Por que alguns funcionários ainda mandavam relatórios por e-mail? *Rubrica:* 3 = não sabiam enviar arquivos grandes;; 2 = menciona treinamento;; 1 = recusaram;; 0 = nenhuma.
 
 ### Síntese
@@ -1930,8 +1930,8 @@ A experiência de uma única rede pode não se generalizar; declare o contexto c
 ### Exercícios
 
 - **EX118 — Argumento do trabalho.** Qual é o principal argumento do trabalho de Elena? *Rubrica:* 3 = a maior parte dos riscos vinha de processos comuns, reduzidos por controles práticos e medição;; 2 = menciona processos;; 1 = só tecnologia;; 0 = nenhuma.
-- **EX119 — Resposta sobre a sustentabilidade.** Como Elena responde à pergunta sobre a sustentabilidade? *Rubrica:* 3 = responsáveis e um calendário de operações mantêm o registro e o portal;; 2 = menciona responsáveis;; 1 = nada;; 0 = nenhuma.
-- **EX120 — Trabalhos futuros.** Que trabalho futuro a banca sugeriu? *Rubrica:* 3 = envolver os alunos no desenho das informações de privacidade;; 2 = menciona alunos;; 1 = nenhum;; 0 = nenhuma.
+- **EX119 — Resposta sobre a sustentabilidade.** Como Elena responde à pergunta sobre a sustentabilidade? *Rubrica:* 3 = responsáveis e um calendário de operações mantêm o registro e o portal;; 2 = menciona responsáveis;; 1 = vago;; 0 = nenhuma.
+- **EX120 — Trabalhos futuros.** Que trabalho futuro a banca sugeriu? *Rubrica:* 3 = envolver os alunos no desenho das informações de privacidade;; 2 = menciona alunos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

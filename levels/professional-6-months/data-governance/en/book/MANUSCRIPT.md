@@ -304,7 +304,7 @@ Exact-match duplicate checks miss differences in case and spacing.
 
 - **EX026 — Distinct normalised.** How many distinct addresses remain after normalising? *Rubric:* 3 = 1,500;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX027 — Duplicates revealed.** How many duplicate records did normalising reveal? *Rubric:* 3 = 184;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX028 — Exact check result.** What did an exact duplicate check find? *Rubric:* 3 = nothing; all 1,684 distinct;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX028 — Exact check result.** What did an exact duplicate check find? *Rubric:* 3 = nothing; all 1,684 distinct;; 2 = correct;; 1 = vague;; 0 = no answer.
 - **EX029 — Supplier change.** What did the supplier enable? *Rubric:* 3 = storing emails in lowercase automatically;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX030 — Check duration.** How long should each check take? *Rubric:* 3 = less than an hour;; 2 = correct;; 1 = wrong;; 0 = none.
 

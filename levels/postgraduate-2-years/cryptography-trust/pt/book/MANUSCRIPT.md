@@ -75,7 +75,7 @@ Estruturas de decisão não substituem o julgamento; elas o tornam visível. Pre
 
 - **EX003 — Associar as regras.** Que regra de decisão convém à perda da chave raiz, e qual convém à expiração de certificados? *Rubrica:* 3 = minimax para a perda catastrófica da raiz; valor esperado para a expiração frequente;; 2 = uma;; 1 = invertidas;; 0 = nenhuma.
 
-- **EX004 — Falha do rascunho.** Que falha Leila encontrou no seu primeiro rascunho? *Rubrica:* 3 = uma premissa sobre os prazos quânticos apresentada como fato;; 2 = mistura;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Falha do rascunho.** Que falha Leila encontrou no seu primeiro rascunho? *Rubrica:* 3 = uma premissa sobre os prazos quânticos apresentada como fato;; 2 = mistura;; 1 = vago;; 0 = nenhuma.
 
 - **EX005 — Teste do registro.** Por que a Prof.ª Rao considerou o registro forte? *Rubrica:* 3 = um recém-chegado conseguiria reconstruir o raciocínio em cinco minutos;; 2 = clareza;; 1 = tamanho;; 0 = nenhuma.
 
@@ -157,7 +157,7 @@ Inventários feitos por varredura deixam passar serviços apenas internos e conf
 
 - **EX008 — Legado por unidade.** Como se distribuem os 25 endpoints que aceitam protocolos legados? *Rubrica:* 3 = ports 9, finance 4, legacy-edi 12;; 2 = duas unidades;; 1 = só o total;; 0 = nenhuma.
 
-- **EX009 — Indicador de validade.** Por que Leila trata a validade dos certificados como um indicador indireto? *Rubrica:* 3 = validades curtas indicam gerenciamento automatizado; os certificados manuais de dois anos do EDI mostram baixa maturidade;; 2 = automação;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Indicador de validade.** Por que Leila trata a validade dos certificados como um indicador indireto? *Rubrica:* 3 = validades curtas indicam gerenciamento automatizado; os certificados manuais de dois anos do EDI mostram baixa maturidade;; 2 = automação;; 1 = vago;; 0 = nenhuma.
 
 - **EX010 — Principal lacuna.** Que lacuna fica em primeiro lugar, e por quê? *Rubrica:* 3 = aceitação de protocolos legados no EDI voltado para a internet, já que os parceiros se conectam pela internet;; 2 = lacuna;; 1 = outra;; 0 = nenhuma.
 
@@ -237,7 +237,7 @@ Os tamanhos sozinhos não determinam o desempenho; a computação e a memória t
 
 - **EX013 — Parcela híbrida.** Qual é o tamanho de uma parcela híbrida do cliente com X25519 mais ML-KEM-768? *Rubrica:* 3 = 1.216 bytes;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
 
-- **EX014 — Sistemas limitados.** Quais sistemas da Corvane são os mais afetados pelos tamanhos, e por quê? *Rubrica:* 3 = telemática (celular, memória), controladores portuários (ciclos dos fornecedores), EDI (limites de mensagem);; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX014 — Sistemas limitados.** Quais sistemas da Corvane são os mais afetados pelos tamanhos, e por quê? *Rubrica:* 3 = telemática (celular, memória), controladores portuários (ciclos dos fornecedores), EDI (limites de mensagem);; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX015 — Força das evidências.** Como Leila descreve a força geral de um argumento? *Rubrica:* 3 = pelo seu elo de evidência de grau mais baixo;; 2 = elo mais fraco;; 1 = média;; 0 = nenhuma.
 
@@ -281,13 +281,13 @@ Os prazos quânticos são incertos; os cenários precisam ser revisitados. Uma d
 
 ### Exercícios
 
-- **EX016 — Desigualdade de planejamento.** Enuncie o teste x + y > z e o que ele significa. *Rubrica:* 3 = anos de sigilo mais anos de migração excedendo os anos até um computador quântico sinalizam risco desde já;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Desigualdade de planejamento.** Enuncie o teste x + y > z e o que ele significa. *Rubrica:* 3 = anos de sigilo mais anos de migração excedendo os anos até um computador quântico sinalizam risco desde já;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Escolha do conselho.** Que cenário de planejamento o conselho escolheu, com que revisão? *Rubrica:* 3 = moderado (cerca de quinze anos), revisto a cada dois anos;; 2 = cenário;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Escolha do conselho.** Que cenário de planejamento o conselho escolheu, com que revisão? *Rubrica:* 3 = moderado (cerca de quinze anos), revisto a cada dois anos;; 2 = cenário;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Ética do EDI.** Que transição Leila propôs para os pequenos parceiros do EDI? *Rubrica:* 3 = transição apoiada, com clientes atualizados gratuitos e um prazo firme e publicado;; 2 = parcial;; 1 = corte abrupto;; 0 = nenhuma.
 
-- **EX019 — Falha do fornecedor.** Que fraqueza a equipe encontrou no controlador portuário? *Rubrica:* 3 = aceita firmware assinado com um algoritmo descontinuado;; 2 = fraqueza;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Falha do fornecedor.** Que fraqueza a equipe encontrou no controlador portuário? *Rubrica:* 3 = aceita firmware assinado com um algoritmo descontinuado;; 2 = fraqueza;; 1 = vago;; 0 = nenhuma.
 
 - **EX020 — Passos da divulgação.** Liste os passos de divulgação que Leila seguiu. *Rubrica:* 3 = relato privado, prazo de correção combinado, controles compensatórios, o fornecedor informa os demais após a correção;; 2 = três;; 1 = publicar;; 0 = nenhuma.
 
@@ -364,11 +364,11 @@ Matrizes ponderadas escondem o julgamento nos pesos; teste sempre a sensibilidad
 
 - **EX022 — Pontuações de base.** Dê as três pontuações de base. *Rubrica:* 3 = nuvem 3,90, híbrida 3,65, local 3,25;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
-- **EX023 — Resultado da sensibilidade.** O que o teste de sensibilidade mostrou? *Rubrica:* 3 = com custódia 0,45 e custo 0 a híbrida vence; a escolha depende do valor da custódia;; 2 = vencedora;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Resultado da sensibilidade.** O que o teste de sensibilidade mostrou? *Rubrica:* 3 = com custódia 0,45 e custo 0 a híbrida vence; a escolha depende do valor da custódia;; 2 = vencedora;; 1 = vago;; 0 = nenhuma.
 
-- **EX024 — Pontos cegos da matriz.** Cite dois compromissos que a matriz não consegue mostrar. *Rubrica:* 3 = dois entre dependência de contrato e lei, risco de pessoa-chave, escopo de auditoria dobrado, risco da migração;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Pontos cegos da matriz.** Cite dois compromissos que a matriz não consegue mostrar. *Rubrica:* 3 = dois entre dependência de contrato e lei, risco de pessoa-chave, escopo de auditoria dobrado, risco da migração;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Condição de reversão.** O que reverteria a recomendação? *Rubrica:* 3 = provedor de nuvem oferecendo chaves controladas pelo cliente e apoiadas em HSM, que atendam aos reguladores, a custo menor;; 2 = condição;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Condição de reversão.** O que reverteria a recomendação? *Rubrica:* 3 = provedor de nuvem oferecendo chaves controladas pelo cliente e apoiadas em HSM, que atendam aos reguladores, a custo menor;; 2 = condição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -437,13 +437,13 @@ Desenhos de antes e depois sem controles são vulneráveis a mudanças simultân
 
 ### Exercícios
 
-- **EX026 — Desenho pareado.** Por que medir os mesmos locais antes e depois? *Rubrica:* 3 = o pareamento controla as diferenças entre locais, como tamanho e idade;; 2 = controle;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Desenho pareado.** Por que medir os mesmos locais antes e depois? *Rubrica:* 3 = o pareamento controla as diferenças entre locais, como tamanho e idade;; 2 = controle;; 1 = vago;; 0 = nenhuma.
 
 - **EX027 — Números da avaliação.** Informe a redução média e o valor p. *Rubrica:* 3 = 5,62 por local, p = 0,0036;; 2 = um;; 1 = errado;; 0 = nenhuma.
 
-- **EX028 — p mínimo.** Por que 0,0036 está perto do mínimo possível? *Rubrica:* 3 = oito locais permitem no mínimo 1/256 ≈ 0,0039 quando todos melhoram;; 2 = 1/256;; 1 = nada;; 0 = nenhuma.
+- **EX028 — p mínimo.** Por que 0,0036 está perto do mínimo possível? *Rubrica:* 3 = oito locais permitem no mínimo 1/256 ≈ 0,0039 quando todos melhoram;; 2 = 1/256;; 1 = vago;; 0 = nenhuma.
 
-- **EX029 — Mudança simultânea.** Que ameaça surge da falta de um grupo de controle? *Rubrica:* 3 = outras mudanças, como uma campanha de patches, poderiam explicar a melhoria;; 2 = simultânea;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Mudança simultânea.** Que ameaça surge da falta de um grupo de controle? *Rubrica:* 3 = outras mudanças, como uma campanha de patches, poderiam explicar a melhoria;; 2 = simultânea;; 1 = vago;; 0 = nenhuma.
 
 - **EX030 — Relato de custos.** Por que incluir o custo de duas semanas de engenheiro por local? *Rubrica:* 3 = permite ao conselho comparar com outros programas que disputam o orçamento;; 2 = orçamento;; 1 = irrelevante;; 0 = nenhuma.
 
@@ -489,7 +489,7 @@ Normas sem donos se degradam. Questionários de compras precisam de orientação
 
 - **EX031 — Quatro processos.** Em quais quatro processos a norma foi incorporada? *Rubrica:* 3 = revisão de arquitetura, compras, gerenciamento de mudanças, integração de novos funcionários;; 2 = três;; 1 = um;; 0 = nenhuma.
 
-- **EX032 — Padrão de propriedade.** Que padrão do inventário a propriedade nas unidades resolveu? *Rubrica:* 3 = os certificados e as chaves sem dono eram os que expiravam ou ficavam em algoritmos descontinuados;; 2 = padrão;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Padrão de propriedade.** Que padrão do inventário a propriedade nas unidades resolveu? *Rubrica:* 3 = os certificados e as chaves sem dono eram os que expiravam ou ficavam em algoritmos descontinuados;; 2 = padrão;; 1 = vago;; 0 = nenhuma.
 
 - **EX033 — Requisitos contratuais.** Liste três requisitos contratuais para os novos fornecedores. *Rubrica:* 3 = três entre TLS 1.3, gerenciamento de chaves documentado, notificação de comprometimento, roteiro pós-quântico;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
@@ -537,15 +537,15 @@ Os proxies de inspeção se tornam alvos de alto valor. A pressão durante os in
 
 ### Exercícios
 
-- **EX036 — Riscos da inspeção.** Cite dois riscos da inspeção de TLS. *Rubrica:* 3 = dois entre quebrar as garantias de ponta a ponta, concentrar a chave de assinatura, TLS desatualizado do proxy enfraquecendo as conexões;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Riscos da inspeção.** Cite dois riscos da inspeção de TLS. *Rubrica:* 3 = dois entre quebrar as garantias de ponta a ponta, concentrar a chave de assinatura, TLS desatualizado do proxy enfraquecendo as conexões;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX037 — Isenções da inspeção.** Que tráfego Leila isentou da inspeção? *Rubrica:* 3 = tráfego bancário, de saúde e dos parceiros;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Isenções da inspeção.** Que tráfego Leila isentou da inspeção? *Rubrica:* 3 = tráfego bancário, de saúde e dos parceiros;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX038 — Pedido legal.** Por que a Corvane pôde atender ao pedido aduaneiro? *Rubrica:* 3 = detém as chaves dos seus próprios dados e o pedido era válido; seguiu um procedimento documentado;; 2 = detém as chaves;; 1 = recusou;; 0 = nenhuma.
 
 - **EX039 — Falha do HSM.** O que Leila fez quando as operações pediram para exportar as chaves de assinatura? *Rubrica:* 3 = recusou a exportação em claro; ativou o HSM de reserva apesar do atraso de duas horas;; 2 = recusou;; 1 = exportou;; 0 = nenhuma.
 
-- **EX040 — Estrutura dos casos.** Que estrutura Leila usa para descrever os casos? *Rubrica:* 3 = contexto, objetivos em conflito, opções, decisão, justificativa, acompanhamento;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Estrutura dos casos.** Que estrutura Leila usa para descrever os casos? *Rubrica:* 3 = contexto, objetivos em conflito, opções, decisão, justificativa, acompanhamento;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -587,11 +587,11 @@ Métricas relatadas sem narrativa convidam a leituras erradas. Uma garantia limi
 
 ### Exercícios
 
-- **EX041 — Fases do roteiro.** Descreva as três fases do roteiro. *Rubrica:* 3 = inventário e linha de base (6 meses), consolidação de chaves (9), pilotos pós-quânticos (9), com a desativação do EDI ao longo de todo o período;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Fases do roteiro.** Descreva as três fases do roteiro. *Rubrica:* 3 = inventário e linha de base (6 meses), consolidação de chaves (9), pilotos pós-quânticos (9), com a desativação do EDI ao longo de todo o período;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Métricas do conselho.** Cite três métricas que Leila relata. *Rubrica:* 3 = três entre endpoints legados, parcela de certificados automatizados, chaves sem dono, avaliações pós-quânticas, incidentes criptográficos;; 2 = duas;; 1 = de vaidade;; 0 = nenhuma.
 
-- **EX043 — Achados da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = inventário incompleto para os serviços internos; responsáveis de duas unidades raramente comparecem;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Achados da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = inventário incompleto para os serviços internos; responsáveis de duas unidades raramente comparecem;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX044 — Pacote do regulador.** Liste três itens do pacote para o regulador. *Rubrica:* 3 = três entre norma, resumo do inventário, arquitetura, evidências dos controles, plano pós-quântico;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
@@ -639,7 +639,7 @@ As manchetes exageram; leia o artigo. Os benchmarks raramente se transferem entr
 
 - **EX046 — Método de leitura.** Quais quatro elementos o método da Prof.ª Rao identifica? *Rubrica:* 3 = afirmação, modelo de ameaça, evidências, condições;; 2 = três;; 1 = um;; 0 = nenhuma.
 
-- **EX047 — Afirmações de quebra.** Que perguntas Leila faz diante de uma manchete de "quebrado"? *Rubrica:* 3 = praticidade, recursos, algoritmo versus implementação, correções;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Afirmações de quebra.** Que perguntas Leila faz diante de uma manchete de "quebrado"? *Rubrica:* 3 = praticidade, recursos, algoritmo versus implementação, correções;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 - **EX048 — Significado do canal lateral.** Um ataque físico de canal lateral a uma implementação quebra a norma? *Rubrica:* 3 = não; ele visa uma implementação e exige acesso físico;; 2 = não;; 1 = sim;; 0 = nenhuma.
 
@@ -689,13 +689,13 @@ Prazos rígidos sem apoio prejudicam os pequenos parceiros; as exceções precis
 
 - **EX051 — Objetivo do projeto.** Enuncie o objetivo do projeto. *Rubrica:* 3 = todo endpoint EDI atende à linha de base, renovação automática, todos os parceiros ativos migram sem perda de embarques;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
 
-- **EX052 — Apoio aos pequenos despachantes.** Que apoio os pequenos despachantes receberam? *Rubrica:* 3 = clientes atualizados gratuitos, guias, um endpoint de teste, lembretes;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Apoio aos pequenos despachantes.** Que apoio os pequenos despachantes receberam? *Rubrica:* 3 = clientes atualizados gratuitos, guias, um endpoint de teste, lembretes;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX053 — Regra de desligamento.** Quando um endpoint antigo é desligado? *Rubrica:* 3 = depois que o tráfego fica em zero por duas semanas;; 2 = regra;; 1 = imediatamente;; 0 = nenhuma.
 
 - **EX054 — Resultado da migração.** Quantos parceiros migraram, e o que aconteceu com os demais? *Rubrica:* 3 = 138 de 140; dois parceiros inativos desligados;; 2 = contagem;; 1 = errado;; 0 = nenhuma.
 
-- **EX055 — Risco residual do EDI.** Cite um risco residual registrado. *Rubrica:* 3 = chaves RSA 2048 do lado dos parceiros ou limite de tamanho de mensagem do EDI para as assinaturas pós-quânticas;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Risco residual do EDI.** Cite um risco residual registrado. *Rubrica:* 3 = chaves RSA 2048 do lado dos parceiros ou limite de tamanho de mensagem do EDI para as assinaturas pós-quânticas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -737,15 +737,15 @@ Declarar vitória esconde os atrasos; relate-os. Transferências sem período de
 
 ### Exercícios
 
-- **EX056 — Metas atrasadas.** Quais duas metas atrasaram? *Rubrica:* 3 = dois controladores portuários aguardando o firmware do fornecedor; inventário interno 90 por cento completo;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Metas atrasadas.** Quais duas metas atrasaram? *Rubrica:* 3 = dois controladores portuários aguardando o firmware do fornecedor; inventário interno 90 por cento completo;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Transferência concluída.** Como se define uma transferência concluída? *Rubrica:* 3 = a equipe que recebe executa o processo por um trimestre sem a ajuda do programa;; 2 = definição;; 1 = reunião de passagem;; 0 = nenhuma.
 
 - **EX058 — Plano de melhoria.** Cite três elementos do plano de melhoria contínua. *Rubrica:* 3 = três entre revisão anual da norma, revisão bienal do cenário, métricas trimestrais, lições após incidentes;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
-- **EX059 — Próximo foco.** Em que o próximo programa deve se concentrar, e por quê? *Rubrica:* 3 = migração pós-quântica das assinaturas dos dispositivos de vida longa, por causa das dependências de fornecedores;; 2 = foco;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Próximo foco.** Em que o próximo programa deve se concentrar, e por quê? *Rubrica:* 3 = migração pós-quântica das assinaturas dos dispositivos de vida longa, por causa das dependências de fornecedores;; 2 = foco;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Erros de Leila.** Que erros Leila reconheceu? *Rubrica:* 3 = subestimar as necessidades de apoio dos parceiros e apresentar premissas como fatos;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Erros de Leila.** Que erros Leila reconheceu? *Rubrica:* 3 = subestimar as necessidades de apoio dos parceiros e apresentar premissas como fatos;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

@@ -199,7 +199,7 @@ Synthetic data reflect assumptions; real pilots may show different results.
 
 ### Exercises
 
-- **EX011 — GPS value.** What did precise GPS add in the simulation? *Rubric:* 3 = nothing beyond city-level: same 43.1% detection and 90 false alarms;; 2 = mentions no gain;; 1 = improved;; 0 = none.
+- **EX011 — GPS value.** What did precise GPS add in the simulation? *Rubric:* 3 = nothing beyond city-level: same 43.1% detection and 90 false alarms;; 2 = mentions no gain;; 1 = improved;; 0 = no answer.
 - **EX012 — Device-only cost.** Why not use device novelty alone? *Rubric:* 3 = 1,572 false alarms would block many legitimate customers;; 2 = mentions false alarms;; 1 = best;; 0 = none.
 - **EX013 — Interim decision.** What does Corvina use until the pilot ends? *Rubric:* 3 = city-level location;; 2 = mentions city;; 1 = GPS;; 0 = none.
 - **EX014 — Necessity principle.** Which principles require limiting data to what is necessary? *Rubric:* 3 = GDPR Article 5(1)(c) and LGPD Article 6(III);; 2 = one;; 1 = vague;; 0 = none.
@@ -422,7 +422,7 @@ Screening questions can be answered carelessly; spot-check answers.
 
 - **EX031 — Screening triggers.** Name two screening questions that trigger a DPIA. *Rubric:* 3 = new data, new purpose, new vendor or many customers affected;; 2 = one;; 1 = vague;; 0 = none.
 - **EX032 — Procurement criteria.** What privacy criteria were added to procurement? *Rubric:* 3 = Article 28-compliant agreements, deletion terms, sub-processor lists and breach times;; 2 = two;; 1 = vague;; 0 = none.
-- **EX033 — Champion catch.** What did champions catch early? *Rubric:* 3 = screenshots with card numbers in internal chat;; 2 = mentions screenshots;; 1 = nothing;; 0 = none.
+- **EX033 — Champion catch.** What did champions catch early? *Rubric:* 3 = screenshots with card numbers in internal chat;; 2 = mentions screenshots;; 1 = vague;; 0 = none.
 - **EX034 — Coordination value.** Why coordinate privacy, security and risk monthly? *Rubric:* 3 = avoids duplication and gaps, making protection coherent;; 2 = mentions alignment;; 1 = unnecessary;; 0 = none.
 - **EX035 — Fraud DPIA.** Which existing product change triggered a DPIA? *Rubric:* 3 = changes to the fraud model;; 2 = mentions fraud;; 1 = vague;; 0 = none.
 
@@ -646,7 +646,7 @@ Lower retention figures can hide unindexed data stores; keep discovering.
 - **EX052 — Near miss.** What near miss occurred and how was it fixed? *Rubric:* 3 = a job nearly deleted legal-hold records; untagged records now blocked;; 2 = one part;; 1 = vague;; 0 = none.
 - **EX053 — Resistance.** How did Priscila handle teams wanting to keep data? *Rubric:* 3 = offered aggregated statistics kept longer and explained risks;; 2 = one part;; 1 = forced;; 0 = none.
 - **EX054 — Side benefits.** Name two side benefits of the project. *Rubric:* 3 = lower storage costs and faster rights requests;; 2 = one;; 1 = vague;; 0 = none.
-- **EX055 — Sustaining.** What sustains the improvement? *Rubric:* 3 = monitoring and onboarding new systems before launch;; 2 = one;; 1 = nothing;; 0 = none.
+- **EX055 — Sustaining.** What sustains the improvement? *Rubric:* 3 = monitoring and onboarding new systems before launch;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

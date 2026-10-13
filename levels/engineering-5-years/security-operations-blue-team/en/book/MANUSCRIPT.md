@@ -188,7 +188,7 @@ Set logic is exact but the data is not: missing logs make sets incomplete, so em
 
 - **EX004 — Intersection.** Why does F ∩ S matter in the portal case? *Rubric:* 3 = accounts failed then succeeded from same network: possible guessed credentials; 2 = partial; 1 = set definition only; 0 = none.
 - **EX005 — Correlation count.** How many ordered 3-type sequences come from 7 event types, and what does that imply? *Rubric:* 3 = 210; exhaustive correlation explodes, choose by threat knowledge; 2 = number only; 1 = wrong number; 0 = none.
-- **EX006 — Sharper rule.** What does the second clause of Amara's rule add? *Rubric:* 3 = turns spray alert into possible-compromise alert by requiring a success; 2 = partial; 1 = nothing; 0 = none.
+- **EX006 — Sharper rule.** What does the second clause of Amara's rule add? *Rubric:* 3 = turns spray alert into possible-compromise alert by requiring a success; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -258,7 +258,7 @@ Physical analogies help intuition but telemetry noise is not random in the physi
 
 ### Exercises
 
-- **EX007 — Sampling effect.** What happens to a 20-second burst in 5-minute flow summaries? *Rubric:* 3 = smeared into one record; pace lost; 2 = partial; 1 = nothing; 0 = none.
+- **EX007 — Sampling effect.** What happens to a 20-second burst in 5-minute flow summaries? *Rubric:* 3 = smeared into one record; pace lost; 2 = partial; 1 = vague; 0 = none.
 - **EX008 — Clock drift.** Why does a 4-second clock error matter? *Rubric:* 3 = reorders events across hosts; time sync needed (SP 800-92); 2 = partial; 1 = it does not; 0 = none.
 - **EX009 — Physical capacity.** How does physics limit telemetry retention? *Rubric:* 3 = power, cooling, space and disk limit servers and storage; 2 = one factor; 1 = vague; 0 = none.
 
@@ -888,7 +888,7 @@ Aggregating by /24 can merge unrelated users of large providers; confirm with ot
 
 - **EX031 — Network aggregation.** Why aggregate failures by /24 network? *Rubric:* 3 = bursts spread over many addresses appear together; 2 = partial; 1 = no reason; 0 = none.
 - **EX032 — Stuffing pattern.** Which network shows credential stuffing, and why? *Rubric:* 3 = 203.0.113.0/24: many users, few attempts each; 2 = network only; 1 = wrong; 0 = none.
-- **EX033 — Follow-up action.** What did the successful session do next? *Rubric:* 3 = requested address change at 10:07; possible takeover; 2 = partial; 1 = nothing; 0 = none.
+- **EX033 — Follow-up action.** What did the successful session do next? *Rubric:* 3 = requested address change at 10:07; possible takeover; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1983,7 +1983,7 @@ Studio designs are untested; chapter 30's laboratory verifies them.
 ### Exercises
 
 - **EX073 — Three options.** List the three depot monitoring options considered. *Rubric:* 3 = flow monitoring, network sensor, firewall tightening with logging; 2 = two; 1 = one; 0 = none.
-- **EX074 — Critique outcome.** What did critique change in the design? *Rubric:* 3 = used existing firewall logs; cheaper than new sensor; 2 = partial; 1 = nothing; 0 = none.
+- **EX074 — Critique outcome.** What did critique change in the design? *Rubric:* 3 = used existing firewall logs; cheaper than new sensor; 2 = partial; 1 = vague; 0 = none.
 - **EX075 — Final design.** Summarise the final design and its main risk. *Rubric:* 3 = 5 services allowed, denied logged, alert on repeated new destinations, weekly review; feed failure risk; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
@@ -2397,7 +2397,7 @@ Passing verification does not show the rule catches real attackers; that is vali
 
 - **EX088 — V and V.** Distinguish verification from validation. *Rubric:* 3 = built right vs right thing; spec vs real effectiveness; 2 = partial; 1 = same; 0 = none.
 - **EX089 — Four tests.** What do the four unit tests check? *Rubric:* 3 = threshold boundary 5/4, success clause, empty input; 2 = three; 1 = one; 0 = none.
-- **EX090 — Pipeline finding.** What did the pipeline test catch that unit tests could not? *Rubric:* 3 = missing customer ID from template field name; 2 = partial; 1 = nothing; 0 = none.
+- **EX090 — Pipeline finding.** What did the pipeline test catch that unit tests could not? *Rubric:* 3 = missing customer ID from template field name; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2709,7 +2709,7 @@ Integrations multiply dependencies; each one is a new place to fail.
 
 - **EX100 — Priority mapping.** Why map SOC priorities to IT priorities explicitly? *Rubric:* 3 = shared meaning and response times across teams; 2 = partial; 1 = style; 0 = none.
 - **EX101 — Least-privilege account.** How is the identity interface account limited? *Rubric:* 3 = only hold and invalidate permissions; all calls logged; 2 = partial; 1 = admin account; 0 = none.
-- **EX102 — Test failure.** What did the first integration test reveal? *Rubric:* 3 = firewall change blocked case delivery; failure path alerted; fixed; 2 = partial; 1 = nothing; 0 = none.
+- **EX102 — Test failure.** What did the first integration test reveal? *Rubric:* 3 = firewall change blocked case delivery; failure path alerted; fixed; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2875,7 +2875,7 @@ Bytes per event vary by source; measure each source rather than using one averag
 
 - **EX106 — Sizing result.** Report average EPS, peak EPS, GB/day and 90-day hot TB. *Rubric:* 3 = 6,000; 15,000; 285.1; 25.7; 2 = three; 1 = one; 0 = none.
 - **EX107 — Volume reduction.** Name three ways to reduce stored volume. *Rubric:* 3 = filter, summarise, tier; 2 = two; 1 = one; 0 = none.
-- **EX108 — Safety check.** What did Amara check before tiering firewall events? *Rubric:* 3 = no detection uses raw firewall events older than 7 days; 2 = partial; 1 = nothing; 0 = none.
+- **EX108 — Safety check.** What did Amara check before tiering firewall events? *Rubric:* 3 = no detection uses raw firewall events older than 7 days; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3601,7 +3601,7 @@ One reviewer cannot catch everything; reviews reduce but do not remove design ri
 
 - **EX133 — Blocking finding.** Which finding was blocking, and why? *Rubric:* 3 = ignored second protocol: coverage gap; 2 = partial; 1 = wrong; 0 = none.
 - **EX134 — Drift fix.** How was approved-list drift addressed? *Rubric:* 3 = linked to asset inventory with weekly reconciliation; 2 = partial; 1 = vague; 0 = none.
-- **EX135 — Busy-day estimate.** What did the busy-day re-estimate change? *Rubric:* 3 = 3.2× volume; two depots log connection starts only to keep CPU < 2%; 2 = partial; 1 = nothing; 0 = none.
+- **EX135 — Busy-day estimate.** What did the busy-day re-estimate change? *Rubric:* 3 = 3.2× volume; two depots log connection starts only to keep CPU < 2%; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

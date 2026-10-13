@@ -73,7 +73,7 @@ Assuming devices like printers need no updates leaves known weaknesses on busy n
 
 - **EX001 — Firmware devices.** Why do printer and projector firmware matter for network security? *Rubric:* 3 = run outdated firmware on shared network, could be misused;; 2 = outdated;; 1 = not relevant;; 0 = none.
 - **EX002 — Service description.** How should a system be described for writing network rules? *Rubric:* 3 = by services offered, ports and clients served;; 2 = services;; 1 = hardware;; 0 = none.
-- **EX003 — Forgotten server.** What did the inventory reveal in the science department? *Rubric:* 3 = forgotten data-logging server on student network;; 2 = old server;; 1 = nothing;; 0 = none.
+- **EX003 — Forgotten server.** What did the inventory reveal in the science department? *Rubric:* 3 = forgotten data-logging server on student network;; 2 = old server;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -120,7 +120,7 @@ Separate wireless names that lead to the same subnet give an illusion of separat
 ### Exercises
 
 - **EX004 — Internal traffic gap.** Why does the school gateway not filter internal traffic? *Rubric:* 3 = internal traffic stays in one subnet, never reaches it;; 2 = same subnet;; 1 = misconfigured;; 0 = none.
-- **EX005 — DNS failure effect.** What happens to most applications if DNS fails? *Rubric:* 3 = stop working although network is up;; 2 = stop;; 1 = nothing;; 0 = none.
+- **EX005 — DNS failure effect.** What happens to most applications if DNS fails? *Rubric:* 3 = stop working although network is up;; 2 = stop;; 1 = vague;; 0 = none.
 - **EX006 — Wireless illusion.** Why are the school's three wireless networks not truly separate? *Rubric:* 3 = all lead to same subnet;; 2 = same subnet;; 1 = same password;; 0 = none.
 
 ### Synthesis
@@ -676,7 +676,7 @@ Scenarios that assume attackers behave exactly as designers expect miss alternat
 ### Exercises
 
 - **EX037 — Separation versus restraint.** How does the student scenario show the value of separation? *Rubric:* 3 = removes opportunity instead of relying on restraint;; 2 = removes access;; 1 = punishes;; 0 = none.
-- **EX038 — Remaining exposure.** What remains reachable for an infected staff laptop? *Rubric:* 3 = teaching file shares;; 2 = files;; 1 = nothing;; 0 = none.
+- **EX038 — Remaining exposure.** What remains reachable for an infected staff laptop? *Rubric:* 3 = teaching file shares;; 2 = files;; 1 = vague;; 0 = none.
 - **EX039 — Supplier scenario effect.** Why did the supplier scenario change priorities? *Rubric:* 3 = showed outsiders could reach whole school;; 2 = exposure;; 1 = cost;; 0 = none.
 
 ### Synthesis

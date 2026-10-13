@@ -579,7 +579,7 @@ Um digest detecta mudanças, mas não consegue dizer se o conteúdo original era
 
 - **EX039 — Afirmação da tese.** Enuncie a afirmação sintetizada da tese de Nadia. *Rubrica:* 3 = checklist+lint reduziu o uso indevido confirmado a cada dez mudanças numa empresa ao longo de um trimestre, custo de tempo modesto, sobretudo key-handling;; 2 = só o efeito;; 1 = afirmação universal;; 0 = nenhuma.
 
-- **EX040 — Exclusões do arquivo.** O que o arquivo exclui, e por quê? *Rubrica:* 3 = diffs, nomes de repositórios, tudo o que identifique sistemas da Meridian, segundo o acordo de dados;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Exclusões do arquivo.** O que o arquivo exclui, e por quê? *Rubrica:* 3 = diffs, nomes de repositórios, tudo o que identifique sistemas da Meridian, segundo o acordo de dados;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
 
 - **EX041 — Raízes do manifesto.** Informe a raiz antes e depois da edição. *Rubrica:* 3 = 4ed0159418d1b231 e depois 1fcc81b868bef821, match False;; 2 = uma raiz;; 1 = "mudou";; 0 = nenhuma.
 

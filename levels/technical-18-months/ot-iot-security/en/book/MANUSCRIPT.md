@@ -1132,7 +1132,7 @@ Change control can become a paper exercise; keep forms short and enforce the key
 ### Exercises
 
 - **EX065 — Fields of a request.** List six fields of a change request. *Rubric:* 3 = what, why, devices, who, when, risk, check, rollback (any six); 2 = four; 1 = two; 0 = none.
-- **EX066 — Breakdown edit.** The engineer edits PLC-FILL during a 2 a.m. breakdown. What must happen afterwards? *Rubric:* 3 = recorded as emergency change within shift, new backup and hash, register updated; 2 = record only; 1 = nothing; 0 = none.
+- **EX066 — Breakdown edit.** The engineer edits PLC-FILL during a 2 a.m. breakdown. What must happen afterwards? *Rubric:* 3 = recorded as emergency change within shift, new backup and hash, register updated; 2 = record only; 1 = vague; 0 = none.
 - **EX067 — Failed check.** VIS-CAM's test lets 2 of 5 bad seals through. What happens next? *Rubric:* 3 = rollback to 1.0.7, verify, record failure, contact supplier; 2 = rollback; 1 = run anyway; 0 = none.
 - **EX068 — Unrecorded change.** Why is an unrecorded change worth reporting even if it looks harmless? *Rubric:* 3 = may be unauthorised/attack sign; breaks baseline and backups; 2 = one; 1 = ignore; 0 = none.
 

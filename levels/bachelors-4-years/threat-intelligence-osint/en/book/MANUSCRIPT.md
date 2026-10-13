@@ -1343,7 +1343,7 @@ Small samples cannot support strong claims. Report method limits alongside findi
 
 - **EX052 — Sharpen a question.** Rewrite "Is CTI useful?" as a researchable question. *Rubric:* 3 = population, period, measurable outcome; 2 = two; 1 = still vague; 0 = none.
 - **EX053 — Public bias.** Describe one bias in public incident reports. *Rubric:* 3 = selection—vendors publish notable/marketable cases, so counts skew; 2 = vague; 1 = minimal attempt; 0 = none.
-- **EX054 — Interview rule.** What must Amara obtain before interviewing analysts? *Rubric:* 3 = informed consent and ethics review; avoid restricted content; 2 = consent only; 1 = nothing; 0 = none.
+- **EX054 — Interview rule.** What must Amara obtain before interviewing analysts? *Rubric:* 3 = informed consent and ethics review; avoid restricted content; 2 = consent only; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1411,7 +1411,7 @@ Kill-chain linearity breaks for insider or cloud attacks. ATT&CK reflects report
 
 - **EX055 — Model choice.** Which model would you use to ask "where could we have stopped this intrusion"? *Rubric:* 3 = kill chain, with reason; 2 = name; 1 = TLP; 0 = none.
 - **EX056 — STIX vs TAXII.** Distinguish STIX 2.1 from TAXII 2.1. *Rubric:* 3 = STIX is data format; TAXII is transport protocol over HTTPS; 2 = partial; 1 = same; 0 = none.
-- **EX057 — Without risk.** What happens when CTI is not linked to risk decisions? *Rubric:* 3 = becomes news without action/priority; 2 = vague; 1 = nothing; 0 = none.
+- **EX057 — Without risk.** What happens when CTI is not linked to risk decisions? *Rubric:* 3 = becomes news without action/priority; 2 = vague; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2708,7 +2708,7 @@ Placements expose students to restricted material; confidentiality continues aft
 
 ### Exercises
 
-- **EX106 — Missed extension.** What did Amara miss in her first HSSC draft, and why does it matter? *Rubric:* 3 = ward extension number—identifies staff/internal detail; 2 = item only; 1 = nothing; 0 = none.
+- **EX106 — Missed extension.** What did Amara miss in her first HSSC draft, and why does it matter? *Rubric:* 3 = ward extension number—identifies staff/internal detail; 2 = item only; 1 = vague; 0 = none.
 - **EX107 — Community currency.** Explain why respecting labels matters so much in a sharing community. *Rubric:* 3 = trust; breaches make members stop sharing; 2 = partial; 1 = rules only; 0 = none.
 - **EX108 — Contribution checklist.** List four qualities of a good contribution. *Rubric:* 3 = four of relevant, verified, redacted, labelled, confidence, actions; 2 = three; 1 = one; 0 = none.
 

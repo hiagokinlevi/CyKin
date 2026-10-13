@@ -616,7 +616,7 @@ Publishing a "leaderboard" of vendors' calibration from licensed data may breach
 - **EX053 — TLP of a paper.** What TLP level does a public paper effectively have, and what follows for restricted inputs? *Rubric:* 3 = CLEAR; restricted inputs only in non-reconstructable aggregate; 2 = CLEAR only; 1 = AMBER; 0 = none.
 - **EX054 — Leaderboard risk.** Give two reasons not to publish a named-vendor calibration ranking. *Rubric:* 3 = licence/agreement breach + small-sample instability (or fairness); 2 = one; 1 = vague; 0 = none.
 - **EX055 — Prospective design.** Describe the prospective follow-on study in one sentence. *Rubric:* 3 = analysts record numeric probability at writing; outcomes tracked forward; 2 = vague forward study; 1 = repeat thesis; 0 = none.
-- **EX056 — Pre-print rule.** What must a pre-print include that a conference abstract might omit? *Rubric:* 3 = full limits/validity section; 2 = methods; 1 = nothing; 0 = none.
+- **EX056 — Pre-print rule.** What must a pre-print include that a conference abstract might omit? *Rubric:* 3 = full limits/validity section; 2 = methods; 1 = vague; 0 = none.
 
 ### Synthesis
 

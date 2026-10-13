@@ -443,7 +443,7 @@ Reporting only a p-value without effect size, sample size and limits overstates 
 - **EX028 — Permutation result.** What p-value did the permutation test give? *Rubric:* 3 = 0.0146 with seed 2026;; 2 = 0.015;; 1 = 0.5;; 0 = none.
 - **EX029 — Zero counts.** How many contracts had zero residual high issues? *Rubric:* 3 = 8 of 12 checklist, 2 of 12 usual;; 2 = 8 and 2;; 1 = all;; 0 = none.
 - **EX030 — Fidelity meaning.** Why monitor fidelity? *Rubric:* 3 = to keep the procedures distinct;; 2 = separation;; 1 = speed;; 0 = none.
-- **EX031 — Validation outcome.** What did the second reviewer change? *Rubric:* 3 = downgraded two usual-arm issues to medium;; 2 = downgrades;; 1 = nothing;; 0 = none.
+- **EX031 — Validation outcome.** What did the second reviewer change? *Rubric:* 3 = downgraded two usual-arm issues to medium;; 2 = downgrades;; 1 = vague;; 0 = none.
 - **EX032 — Time cost.** What cost did the checklist add? *Rubric:* 3 = about fifteen percent longer reviews;; 2 = time;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -545,7 +545,7 @@ Releasing contract code or detailed weakness descriptions in an archive can help
 - **EX040 — Archive test.** How was the archive tested? *Rubric:* 3 = colleague reproduced results on a clean machine;; 2 = reproduction;; 1 = not tested;; 0 = none.
 - **EX041 — Archive excluded.** What does the archive exclude? *Rubric:* 3 = contract source, addresses, attack-enabling descriptions;; 2 = code;; 1 = seeds;; 0 = none.
 - **EX042 — Weakness representation.** How are seeded weaknesses described? *Rubric:* 3 = registry identifiers and categories only;; 2 = IDs;; 1 = full detail;; 0 = none.
-- **EX043 — Removed field.** What did the security review remove? *Rubric:* 3 = an over-detailed free-text reasoning field;; 2 = free text;; 1 = nothing;; 0 = none.
+- **EX043 — Removed field.** What did the security review remove? *Rubric:* 3 = an over-detailed free-text reasoning field;; 2 = free text;; 1 = vague;; 0 = none.
 - **EX044 — Contribution count.** Name one listed contribution. *Rubric:* 3 = validated codebook;; 2 = randomised comparison;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -595,7 +595,7 @@ Publishing detailed weakness examples from partner contracts could aid attackers
 - **EX045 — Presentation order.** How is the presentation ordered? *Rubric:* 3 = by argument, not chapter order;; 2 = argument;; 1 = alphabetical;; 0 = none.
 - **EX046 — Rehearsal output.** What does each rehearsal produce? *Rubric:* 3 = list of weak answers to strengthen;; 2 = weak answers;; 1 = slides;; 0 = none.
 - **EX047 — Anticipated question.** Name one anticipated question. *Rubric:* 3 = why permissioned contracts;; 2 = how severity was rated;; 1 = favourite colour;; 0 = none.
-- **EX048 — Pre-submission check.** What happens before submission? *Rubric:* 3 = partner security leads confirm nothing aids attacks;; 2 = security review;; 1 = nothing;; 0 = none.
+- **EX048 — Pre-submission check.** What happens before submission? *Rubric:* 3 = partner security leads confirm nothing aids attacks;; 2 = security review;; 1 = vague;; 0 = none.
 - **EX049 — Corrections requested.** What corrections were requested? *Rubric:* 3 = clarify severity examples, expand economic and oracle risks;; 2 = two;; 1 = vague;; 0 = none.
 - **EX050 — Follow-up work.** What follow-up is proposed? *Rubric:* 3 = study public DeFi protocols with post-fix findings;; 2 = DeFi;; 1 = vague;; 0 = none.
 

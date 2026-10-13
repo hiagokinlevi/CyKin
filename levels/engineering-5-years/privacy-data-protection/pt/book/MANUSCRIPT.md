@@ -115,7 +115,7 @@ A contagem uniforme presume valores igualmente prováveis; os atributos reais se
 
 - **EX004 — Contagem de combinações.** Por que muitos pacientes ficam sozinhos em sua combinação? *Rubrica:* 3 = as combinações superam em muito o número de pacientes;; 2 = menciona números;; 1 = errado;; 0 = nenhuma.
 - **EX005 — Conjunto mais interno.** Por que a maior parte dos dados da Pellmore cai no subconjunto dos dados de saúde? *Rubrica:* 3 = até as consultas agendadas revelam que alguém procurou atendimento médico;; 2 = menciona saúde;; 1 = diz que só os prontuários;; 0 = nenhuma.
-- **EX006 — Arestas ausentes.** O que costuma significar uma aresta ausente no grafo de fluxos de dados? *Rubrica:* 3 = um fluxo não documentado que não é gerenciado;; 2 = menciona erro;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Arestas ausentes.** O que costuma significar uma aresta ausente no grafo de fluxos de dados? *Rubrica:* 3 = um fluxo não documentado que não é gerenciado;; 2 = menciona erro;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -159,7 +159,7 @@ O apagamento criptográfico depende de as chaves nunca serem copiadas em texto c
 
 - **EX007 — Eliminação do ponteiro.** Por que apagar um arquivo muitas vezes não elimina os dados? *Rubrica:* 3 = só o ponteiro é removido; os estados físicos permanecem até serem sobrescritos;; 2 = menciona sobrescrita;; 1 = diz que elimina;; 0 = nenhuma.
 - **EX008 — Apagamento criptográfico.** Como funciona o apagamento criptográfico? *Rubrica:* 3 = os dados são guardados cifrados; destruir a chave torna ilegível cada cópia;; 2 = menciona chaves;; 1 = descreve sobrescrita;; 0 = nenhuma.
-- **EX009 — Vazamento de metadados.** O que ainda vaza de uma chamada de vídeo cifrada? *Rubrica:* 3 = metadados como horário e duração revelam que a consulta ocorreu;; 2 = menciona metadados;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Vazamento de metadados.** O que ainda vaza de uma chamada de vídeo cifrada? *Rubrica:* 3 = metadados como horário e duração revelam que a consulta ocorreu;; 2 = menciona metadados;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -401,7 +401,7 @@ Os recursos de hardware têm suas próprias falhas; a defesa em profundidade con
 
 ### Exercícios
 
-- **EX022 — Cópias ocultas.** Cite dois lugares onde um registro apagado pode persistir em um servidor. *Rubrica:* 3 = despejos de memória e swap (também caches);; 2 = cita um;; 1 = nenhum;; 0 = nenhuma.
+- **EX022 — Cópias ocultas.** Cite dois lugares onde um registro apagado pode persistir em um servidor. *Rubrica:* 3 = despejos de memória e swap (também caches);; 2 = cita um;; 1 = vago;; 0 = nenhuma.
 - **EX023 — Chaves mensais.** Como as chaves mensais tornam a retenção auditável? *Rubrica:* 3 = apagar a chave de um mês elimina as gravações daquele mês em uma operação;; 2 = menciona chaves;; 1 = omite;; 0 = nenhuma.
 - **EX024 — Evidência acima da opinião.** Por que medir a sobrecarga da criptografia? *Rubrica:* 3 = para substituir por dados as alegações de que a privacidade é lenta demais;; 2 = menciona velocidade;; 1 = pula a medição;; 0 = nenhuma.
 
@@ -447,7 +447,7 @@ Verificações centrais viram um ponto único de falha; precisam de seus própri
 
 - **EX025 — Prontuário dividido.** Por que dividir os dados de identidade e os clínicos em duas estruturas? *Rubrica:* 3 = a maioria dos serviços precisa de uma parte só, então cada um recebe apenas o que precisa;; 2 = menciona separação;; 1 = sem motivo;; 0 = nenhuma.
 - **EX026 — Finalidade no acesso.** Por que quem chama precisa declarar uma finalidade para ler um prontuário? *Rubrica:* 3 = o acesso é conferido e registrado contra a finalidade, evitando uso amplo demais;; 2 = menciona registro;; 1 = diz que é opcional;; 0 = nenhuma.
-- **EX027 — Achado do teste de propriedades.** Que defeito o teste baseado em propriedades encontrou? *Rubrica:* 3 = uma exportação que juntava as tabelas de identidade e clínica;; 2 = menciona exportação;; 1 = nenhum;; 0 = nenhuma.
+- **EX027 — Achado do teste de propriedades.** Que defeito o teste baseado em propriedades encontrou? *Rubrica:* 3 = uma exportação que juntava as tabelas de identidade e clínica;; 2 = menciona exportação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -535,7 +535,7 @@ Capturas em versões de teste podem não mostrar o comportamento em produção; 
 
 - **EX031 — Identificadores em URLs.** Por que identificadores não devem trafegar em URLs? *Rubrica:* 3 = as URLs são registradas por servidores, proxies e navegadores apesar da criptografia;; 2 = menciona logs;; 1 = tudo bem se cifrado;; 0 = nenhuma.
 - **EX032 — Truncamento de IP.** O que o truncamento dos endereços IP guardados alcança? *Rubrica:* 3 = mantém a capacidade de investigar ataques e reduz dados de localização duradouros;; 2 = menciona privacidade;; 1 = apaga todos os logs;; 0 = nenhuma.
-- **EX033 — Contratos com operadores.** O que o artigo 28 exige para operadores terceiros? *Rubrica:* 3 = um contrato vinculante que rege o tratamento;; 2 = menciona contrato;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Contratos com operadores.** O que o artigo 28 exige para operadores terceiros? *Rubrica:* 3 = um contrato vinculante que rege o tratamento;; 2 = menciona contrato;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -577,7 +577,7 @@ Filtros de mascaramento deixam passar formatos incomuns; buscas periódicas cont
 
 ### Exercícios
 
-- **EX034 — Diretório de exportação compartilhado.** O que havia de errado com o diretório de exportação? *Rubrica:* 3 = podia ser lido por qualquer conta do servidor;; 2 = menciona permissões;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Diretório de exportação compartilhado.** O que havia de errado com o diretório de exportação? *Rubrica:* 3 = podia ser lido por qualquer conta do servidor;; 2 = menciona permissões;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Relatórios temporários.** Como Zara trata os relatórios temporários esquecidos? *Rubrica:* 3 = funções temporárias seguras, limpeza na inicialização e uma tarefa diária de exclusão;; 2 = uma medida;; 1 = ignora;; 0 = nenhuma.
 - **EX036 — Métrica de correções.** Por que acompanhar o atraso das correções? *Rubrica:* 3 = para mostrar um processo regular de teste e manutenção da segurança, como espera o artigo 32;; 2 = menciona correções;; 1 = nenhum motivo;; 0 = nenhuma.
 
@@ -699,7 +699,7 @@ Listas de verificação viram rotina; alterne os exemplos e audite amostras das 
 ### Exercícios
 
 - **EX040 — História de privacidade.** Escreva uma história de usuário de privacidade do capítulo. *Rubrica:* 3 = p. ex., como paciente, quero minhas gravações eliminadas depois de trinta dias, salvo pedido em contrário;; 2 = história semelhante;; 1 = vago;; 0 = nenhuma.
-- **EX041 — Achado da revisão.** O que a lista de revisão detectou no primeiro mês? *Rubrica:* 3 = uma mudança que enviaria nomes completos a um relatório de falhas;; 2 = menciona relatório de falhas;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Achado da revisão.** O que a lista de revisão detectou no primeiro mês? *Rubrica:* 3 = uma mudança que enviaria nomes completos a um relatório de falhas;; 2 = menciona relatório de falhas;; 1 = vago;; 0 = nenhuma.
 - **EX042 — Dados de teste sintéticos.** Por que trocar as cópias de produção por pacientes gerados? *Rubrica:* 3 = os ambientes de teste são menos protegidos; dados sintéticos evitam expor dados de saúde;; 2 = menciona segurança;; 1 = só usa mascaramento;; 0 = nenhuma.
 
 ### Síntese
@@ -831,7 +831,7 @@ Os sinais podem gerar alarmes falsos; revise os limiares depois dos primeiros me
 ### Exercícios
 
 - **EX049 — Realimentação ausente.** Por que, em termos de controle, a política de retenção no papel falhou? *Rubrica:* 3 = não havia medição, então nenhuma realimentação ajustava o processo;; 2 = menciona monitoramento;; 1 = outra causa;; 0 = nenhuma.
-- **EX050 — Sinal de bisbilhotice.** Que sinal pode revelar bisbilhotice por parte da equipe? *Rubrica:* 3 = visualizações de prontuários sem consulta agendada;; 2 = menciona visualizações;; 1 = nenhum;; 0 = nenhuma.
+- **EX050 — Sinal de bisbilhotice.** Que sinal pode revelar bisbilhotice por parte da equipe? *Rubrica:* 3 = visualizações de prontuários sem consulta agendada;; 2 = menciona visualizações;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Defesa contra manipulação.** Como Zara se protege da manipulação das categorias? *Rubrica:* 3 = acompanha as mudanças de categoria e exige aprovação;; 2 = menciona monitoramento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
@@ -874,7 +874,7 @@ As zonas dos diagramas podem diferir da realidade implantada; verifique com test
 
 ### Exercícios
 
-- **EX052 — Benefício da segmentação.** Cite dois benefícios da segmentação em zonas. *Rubrica:* 3 = limita o movimento do atacante e o acesso acidental;; 2 = cita um;; 1 = nenhum;; 0 = nenhuma.
+- **EX052 — Benefício da segmentação.** Cite dois benefícios da segmentação em zonas. *Rubrica:* 3 = limita o movimento do atacante e o acesso acidental;; 2 = cita um;; 1 = vago;; 0 = nenhuma.
 - **EX053 — Finalidade pelos papéis.** Como o privilégio mínimo implementa a limitação da finalidade? *Rubrica:* 3 = cada componente só pode usar os dados que a finalidade de seu papel permite;; 2 = menciona finalidade;; 1 = sem relação;; 0 = nenhuma.
 - **EX054 — Ferramenta de suporte.** Como a ferramenta de suporte foi reprojetada? *Rubrica:* 3 = anotações visíveis só com acesso temporário concedido pelo paciente;; 2 = menciona consentimento;; 1 = remove a ferramenta;; 0 = nenhuma.
 
@@ -919,7 +919,7 @@ A rotação de chaves rompe análises longitudinais legítimas; planeje-a com os
 ### Exercícios
 
 - **EX055 — Fraqueza do hash simples.** Por que um hash simples do número do paciente não é um pseudônimo? *Rubrica:* 3 = qualquer pessoa pode calcular o hash de todos os números possíveis e comparar;; 2 = menciona reversão;; 1 = diz que é seguro;; 0 = nenhuma.
-- **EX056 — Pseudônimos por destinatário.** O que os pseudônimos específicos por destinatário impedem? *Rubrica:* 3 = juntar conjuntos de dados de destinatários diferentes sem as chaves da Pellmore;; 2 = menciona vinculação;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Pseudônimos por destinatário.** O que os pseudônimos específicos por destinatário impedem? *Rubrica:* 3 = juntar conjuntos de dados de destinatários diferentes sem as chaves da Pellmore;; 2 = menciona vinculação;; 1 = vago;; 0 = nenhuma.
 - **EX057 — Ainda pessoais.** Por que os registros pseudonimizados continuam sendo dados pessoais? *Rubrica:* 3 = atributos e chaves permitem a reidentificação;; 2 = menciona chaves;; 1 = diz que são anônimos;; 0 = nenhuma.
 
 ### Síntese
@@ -1201,7 +1201,7 @@ Multiplicar pontuações ordinais é uma convenção, não aritmética sobre gra
 ### Exercícios
 
 - **EX070 — Gatilho da DPIA.** Por que a Pellmore precisa de uma DPIA? *Rubrica:* 3 = o tratamento em grande escala de categorias especiais atende a vários critérios do WP248, indicando alto risco;; 2 = menciona dados de saúde;; 1 = não é necessária;; 0 = nenhuma.
-- **EX071 — Risco inalterado.** Que risco continua médio depois das medidas, e por quê? *Rubrica:* 3 = o vazamento de logs de chat no fornecedor, porque a Pellmore não controla diretamente a segurança dele;; 2 = cita o risco;; 1 = nenhum;; 0 = nenhuma.
+- **EX071 — Risco inalterado.** Que risco continua médio depois das medidas, e por quê? *Rubrica:* 3 = o vazamento de logs de chat no fornecedor, porque a Pellmore não controla diretamente a segurança dele;; 2 = cita o risco;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Conclusão condicional.** Por que a conclusão de "sem consulta prévia" é condicional? *Rubrica:* 3 = depende de as medidas serem implementadas, por exemplo a remoção do SDK;; 2 = menciona medidas;; 1 = incondicional;; 0 = nenhuma.
 
 ### Síntese
@@ -1334,7 +1334,7 @@ Controles demais geram sobrecarga e confusão; faça podas regularmente.
 
 - **EX079 — Tipos de controle contra bisbilhotice.** Dê um controle preventivo, um detectivo e um corretivo contra a bisbilhotice de funcionários. *Rubrica:* 3 = verificações de acesso; sinais de anomalia; procedimentos disciplinares e de comunicação;; 2 = dois;; 1 = um;; 0 = nenhuma.
 - **EX080 — Consentimento válido.** O que torna o consentimento válido segundo as Diretrizes 05/2020 do EDPB? *Rubrica:* 3 = livre, específico, informado, inequívoco e fácil de revogar;; 2 = lista alguns;; 1 = errado;; 0 = nenhuma.
-- **EX081 — Controle podado.** Que controle Zara removeu, e por quê? *Rubrica:* 3 = uma cópia noturna do banco para um antigo servidor de relatórios, sem nenhum requisito que a justificasse;; 2 = menciona a cópia;; 1 = nenhum;; 0 = nenhuma.
+- **EX081 — Controle podado.** Que controle Zara removeu, e por quê? *Rubrica:* 3 = uma cópia noturna do banco para um antigo servidor de relatórios, sem nenhum requisito que a justificasse;; 2 = menciona a cópia;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1377,7 +1377,7 @@ A documentação gerada cobre só o que está configurado; os processos manuais 
 ### Exercícios
 
 - **EX082 — Avisar e depois bloquear.** Por que registrar avisos antes de bloquear leituras sem marcação? *Rubrica:* 3 = para encontrar as marcações que faltam sem derrubar o serviço;; 2 = menciona segurança;; 1 = bloquear de imediato;; 0 = nenhuma.
-- **EX083 — O que a conciliação pegou.** O que a conciliação de consentimento descobriu? *Rubrica:* 3 = a plataforma de e-mail perdeu revogações durante uma queda;; 2 = menciona e-mail;; 1 = nada;; 0 = nenhuma.
+- **EX083 — O que a conciliação pegou.** O que a conciliação de consentimento descobriu? *Rubrica:* 3 = a plataforma de e-mail perdeu revogações durante uma queda;; 2 = menciona e-mail;; 1 = vago;; 0 = nenhuma.
 - **EX084 — Registros gerados.** Por que gerar o registro das operações a partir da configuração? *Rubrica:* 3 = ele continua alinhado ao sistema à medida que este muda;; 2 = menciona exatidão;; 1 = o manual é melhor;; 0 = nenhuma.
 
 ### Síntese
@@ -1448,7 +1448,7 @@ A contagem de campos ignora a sensibilidade; um único campo de saúde desnecess
 
 - **EX085 — Resultado da minimização.** Que parcela dos campos coletados é desnecessária? *Rubrica:* 3 = 8 de 18, 44%;; 2 = cerca de quatro em dez;; 1 = errado;; 0 = nenhuma.
 - **EX086 — Alegações de necessidade.** Por que um segundo revisor confere as alegações de necessidade? *Rubrica:* 3 = os responsáveis podem exagerar a necessidade, fazendo a medida parecer boa;; 2 = menciona viés;; 1 = confia nos responsáveis;; 0 = nenhuma.
-- **EX087 — Princípio recursivo.** O que é o princípio recursivo da engenharia de privacidade? *Rubrica:* 3 = os dados de monitoramento também devem seguir princípios de privacidade, como a minimização;; 2 = menciona métricas;; 1 = nenhum;; 0 = nenhuma.
+- **EX087 — Princípio recursivo.** O que é o princípio recursivo da engenharia de privacidade? *Rubrica:* 3 = os dados de monitoramento também devem seguir princípios de privacidade, como a minimização;; 2 = menciona métricas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1491,7 +1491,7 @@ Os testes verificam o que conferem; caminhos não testados ainda podem falhar.
 ### Exercícios
 
 - **EX088 — Resultados esperados.** Por que definir os resultados esperados antes de executar os testes? *Rubrica:* 3 = para impedir uma interpretação generosa depois de ver os resultados;; 2 = menciona viés;; 1 = não é necessário;; 0 = nenhuma.
-- **EX089 — Lacuna na eliminação.** Que armazenamento manteve dados depois da eliminação na primeira execução? *Rubrica:* 3 = o armazenamento de análise, sob o pseudônimo;; 2 = cita a análise;; 1 = nenhum;; 0 = nenhuma.
+- **EX089 — Lacuna na eliminação.** Que armazenamento manteve dados depois da eliminação na primeira execução? *Rubrica:* 3 = o armazenamento de análise, sob o pseudônimo;; 2 = cita a análise;; 1 = vago;; 0 = nenhuma.
 - **EX090 — Alegação versus evidência.** Diferencie alegação de evidência sobre a eliminação. *Rubrica:* 3 = a alegação diz que funciona; a evidência é um log de teste datado cobrindo todos os armazenamentos;; 2 = menciona logs;; 1 = equipara as duas;; 0 = nenhuma.
 
 ### Síntese
@@ -1644,7 +1644,7 @@ O acesso de emergência pode ser abusado; revise prontamente cada uso.
 ### Exercícios
 
 - **EX097 — Violação de disponibilidade.** Um ransomware sem exfiltração pode ser uma violação de dados pessoais? *Rubrica:* 3 = sim; a perda de disponibilidade é uma violação;; 2 = sim, sem justificativa;; 1 = não;; 0 = nenhuma.
-- **EX098 — Risco da restauração.** Que risco à privacidade a restauração de um backup cria, e como é tratado? *Rubrica:* 3 = dados eliminados ou vencidos voltam; reaplicar o log de eliminações e a retenção antes do serviço;; 2 = uma parte;; 1 = nenhum;; 0 = nenhuma.
+- **EX098 — Risco da restauração.** Que risco à privacidade a restauração de um backup cria, e como é tratado? *Rubrica:* 3 = dados eliminados ou vencidos voltam; reaplicar o log de eliminações e a retenção antes do serviço;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 - **EX099 — Consentimento com falha segura.** Como os sistemas devem se comportar se o serviço de consentimento cair? *Rubrica:* 3 = tratar o consentimento como ausente;; 2 = menciona cautela;; 1 = supor que existe;; 0 = nenhuma.
 
 ### Síntese
@@ -1794,7 +1794,7 @@ A composição simples é conservadora; contabilizações avançadas dão limite
 ### Exercícios
 
 - **EX106 — Erro diário.** Que erro teriam as publicações diárias? *Rubrica:* 3 = 121,7 por contagem;; 2 = mais de cem;; 1 = errado;; 0 = nenhuma.
-- **EX107 — Limite de contribuição.** Por que limitar cada paciente a uma contagem por publicação? *Rubrica:* 3 = mantém a sensibilidade em um, para que os números de erro valham;; 2 = menciona sensibilidade;; 1 = nenhum;; 0 = nenhuma.
+- **EX107 — Limite de contribuição.** Por que limitar cada paciente a uma contagem por publicação? *Rubrica:* 3 = mantém a sensibilidade em um, para que os números de erro valham;; 2 = menciona sensibilidade;; 1 = vago;; 0 = nenhuma.
 - **EX108 — Pós-processamento seguro.** Arredondar e limitar as contagens com ruído enfraquece a garantia? *Rubrica:* 3 = não; o pós-processamento não enfraquece a privacidade diferencial;; 2 = não, sem justificativa;; 1 = sim;; 0 = nenhuma.
 
 ### Síntese
@@ -1839,7 +1839,7 @@ A automação pode identificar mal quem faz o pedido; mantenha um caminho manual
 
 - **EX109 — Taxa no prazo.** Que parcela dos pedidos de direitos foi respondida no prazo? *Rubrica:* 3 = 97%;; 2 = quase todos;; 1 = errado;; 0 = nenhuma.
 - **EX110 — Prontuário de um parente.** Como é tratado o caso de um médico que consultou o prontuário de um parente? *Rubrica:* 3 = processo disciplinar e avaliação como possível violação;; 2 = uma parte;; 1 = ignorado;; 0 = nenhuma.
-- **EX111 — Ciclo de gestão.** O que a revisão trimestral proporciona? *Rubrica:* 3 = um ciclo de monitorar, analisar e melhorar, esperado de um sistema de gestão;; 2 = menciona melhoria;; 1 = nada;; 0 = nenhuma.
+- **EX111 — Ciclo de gestão.** O que a revisão trimestral proporciona? *Rubrica:* 3 = um ciclo de monitorar, analisar e melhorar, esperado de um sistema de gestão;; 2 = menciona melhoria;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1882,7 +1882,7 @@ Grupos pequenos de validação podem não representar todos os pacientes; recrut
 ### Exercícios
 
 - **EX112 — Verificação e validação.** Diferencie verificação de validação. *Rubrica:* 3 = a verificação confere se os requisitos são atendidos; a validação confere se os requisitos atendem às necessidades reais;; 2 = uma;; 1 = confunde;; 0 = nenhuma.
-- **EX113 — Expectativa sobre a eliminação.** O que a validação revelou sobre a eliminação? *Rubrica:* 3 = os pacientes esperavam a remoção total do prontuário, que a lei impede; faltava explicação;; 2 = menciona a expectativa;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Expectativa sobre a eliminação.** O que a validação revelou sobre a eliminação? *Rubrica:* 3 = os pacientes esperavam a remoção total do prontuário, que a lei impede; faltava explicação;; 2 = menciona a expectativa;; 1 = vago;; 0 = nenhuma.
 - **EX114 — Premissa refinada.** Que premissa jurídica a assessoria refinou? *Rubrica:* 3 = algumas anotações de sintomas feitas pelo paciente fazem parte do prontuário e precisam ser guardadas;; 2 = menciona anotações;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
@@ -1926,7 +1926,7 @@ Os registros de dívida precisam de revisão regular, ou viram listas que ningu�
 ### Exercícios
 
 - **EX115 — Dívida de privacidade.** Defina dívida de privacidade. *Rubrica:* 3 = atalhos que enfraquecem a privacidade, como cópias temporárias ou verificações desativadas;; 2 = só um exemplo;; 1 = dívida técnica em geral;; 0 = nenhuma.
-- **EX116 — Regressão da biblioteca.** O que a suíte de testes pegou depois de uma atualização de biblioteca? *Rubrica:* 3 = uma mudança nas novas tentativas que afetava a confiabilidade da eliminação;; 2 = menciona eliminação;; 1 = nada;; 0 = nenhuma.
+- **EX116 — Regressão da biblioteca.** O que a suíte de testes pegou depois de uma atualização de biblioteca? *Rubrica:* 3 = uma mudança nas novas tentativas que afetava a confiabilidade da eliminação;; 2 = menciona eliminação;; 1 = vago;; 0 = nenhuma.
 - **EX117 — Manutenibilidade e responsabilização.** Por que a manutenibilidade é pré-condição da responsabilização? *Rubrica:* 3 = uma organização que não consegue explicar seus controles não consegue demonstrar conformidade;; 2 = menciona explicação;; 1 = não têm relação;; 0 = nenhuma.
 
 ### Síntese
@@ -1969,7 +1969,7 @@ Passar nos testes não prova a ausência de vulnerabilidades.
 
 ### Exercícios
 
-- **EX118 — Sucesso parcial.** Que ataque adversarial teve sucesso parcial, e por quê? *Rubrica:* 3 = a inferência sobre as estatísticas de uma clínica rural, por meio de relatórios legados com contagens pequenas;; 2 = menciona a clínica rural;; 1 = nenhum;; 0 = nenhuma.
+- **EX118 — Sucesso parcial.** Que ataque adversarial teve sucesso parcial, e por quê? *Rubrica:* 3 = a inferência sobre as estatísticas de uma clínica rural, por meio de relatórios legados com contagens pequenas;; 2 = menciona a clínica rural;; 1 = vago;; 0 = nenhuma.
 - **EX119 — Regra das saídas legadas.** Que regra Zara acrescentou depois do vazamento estatístico? *Rubrica:* 3 = procurar as saídas da abordagem anterior sempre que uma nova proteção for introduzida;; 2 = menciona legado;; 1 = vago;; 0 = nenhuma.
 - **EX120 — Valor da independência.** Por que contratar testes independentes depois de testes internos rigorosos? *Rubrica:* 3 = hábitos diferentes encontram problemas diferentes, como o vazamento no preenchimento automático;; 2 = menciona independência;; 1 = desnecessário;; 0 = nenhuma.
 
@@ -2013,8 +2013,8 @@ Comparações de antes e depois podem incluir mudanças não relacionadas; anote
 
 ### Exercícios
 
-- **EX121 — Caches de nomes.** Como Zara eliminou os caches de nomes redundantes? *Rubrica:* 3 = substituiu os três caches por um serviço de nomes para chamadores autorizados;; 2 = menciona caches;; 1 = nada;; 0 = nenhuma.
-- **EX122 — Trade-off clínico.** Como a retenção dos logs de chat foi encurtada com segurança? *Rubrica:* 3 = os médicos concordaram com seis meses, com a opção de guardar os logs no prontuário quando relevantes;; 2 = menciona os médicos;; 1 = nada;; 0 = nenhuma.
+- **EX121 — Caches de nomes.** Como Zara eliminou os caches de nomes redundantes? *Rubrica:* 3 = substituiu os três caches por um serviço de nomes para chamadores autorizados;; 2 = menciona caches;; 1 = vago;; 0 = nenhuma.
+- **EX122 — Trade-off clínico.** Como a retenção dos logs de chat foi encurtada com segurança? *Rubrica:* 3 = os médicos concordaram com seis meses, com a opção de guardar os logs no prontuário quando relevantes;; 2 = menciona os médicos;; 1 = vago;; 0 = nenhuma.
 - **EX123 — Serviços com acesso.** Como mudou o número de serviços com acesso clínico? *Rubrica:* 3 = de onze para seis;; 2 = só a direção;; 1 = errado;; 0 = nenhuma.
 
 ### Síntese
@@ -2057,7 +2057,7 @@ Os voluntários podem não representar os pacientes com pouca familiaridade digi
 
 ### Exercícios
 
-- **EX124 — Critério de sucesso.** Que critério Zara fixou antes do estudo? *Rubrica:* 3 = pelo menos 80% de compreensão correta;; 2 = menciona limiar;; 1 = nenhum;; 0 = nenhuma.
+- **EX124 — Critério de sucesso.** Que critério Zara fixou antes do estudo? *Rubrica:* 3 = pelo menos 80% de compreensão correta;; 2 = menciona limiar;; 1 = vago;; 0 = nenhuma.
 - **EX125 — Efeito da pré-visualização.** Que compreensão as duas telas alcançaram? *Rubrica:* 3 = 71% na atual, 90% na pré-visualização;; 2 = um número;; 1 = errado;; 0 = nenhuma.
 - **EX126 — Ressalva do estudo.** Cite uma ressalva ao resultado de compreensão. *Rubrica:* 3 = amostra pequena, voluntários confiantes ou cenários em vez de relações reais;; 2 = ressalva vaga;; 1 = vago;; 0 = nenhuma.
 
@@ -2146,7 +2146,7 @@ O escopo estreito limita a utilidade; planeje extensões depois da verificação
 ### Exercícios
 
 - **EX130 — Limite do projeto final.** Por que limitar o projeto final a contagens e taxas de desfechos? *Rubrica:* 3 = para concluir e verificar adequadamente dentro do ano;; 2 = menciona tempo;; 1 = escopo amplo;; 0 = nenhuma.
-- **EX131 — Controle da reconstrução.** Como o projeto limita os ataques de reconstrução? *Rubrica:* 3 = um orçamento de privacidade diferencial por estudo;; 2 = menciona ruído;; 1 = nada;; 0 = nenhuma.
+- **EX131 — Controle da reconstrução.** Como o projeto limita os ataques de reconstrução? *Rubrica:* 3 = um orçamento de privacidade diferencial por estudo;; 2 = menciona ruído;; 1 = vago;; 0 = nenhuma.
 - **EX132 — Verificação primeiro.** Por que planejar a verificação antes de construir? *Rubrica:* 3 = evita um sistema que só funciona em demonstrações;; 2 = menciona qualidade;; 1 = depois;; 0 = nenhuma.
 
 ### Síntese
@@ -2189,7 +2189,7 @@ As bancas de revisão podem deixar passar problemas fora de sua especialidade; c
 
 ### Exercícios
 
-- **EX133 — Recusa em cache.** Qual era o problema das recusas em cache? *Rubrica:* 3 = pacientes que recusassem no meio do estudo poderiam continuar em resultados intermediários em cache;; 2 = menciona cache;; 1 = nenhum;; 0 = nenhuma.
+- **EX133 — Recusa em cache.** Qual era o problema das recusas em cache? *Rubrica:* 3 = pacientes que recusassem no meio do estudo poderiam continuar em resultados intermediários em cache;; 2 = menciona cache;; 1 = vago;; 0 = nenhuma.
 - **EX134 — Sensibilidade do log de consultas.** Por que proteger o log de consultas? *Rubrica:* 3 = as consultas revelam interesses sensíveis dos pesquisadores;; 2 = menciona privacidade;; 1 = desnecessário;; 0 = nenhuma.
 - **EX135 — Condições raras.** Como Zara tratou o ruído nas condições raras? *Rubrica:* 3 = agregação nacional e períodos de acumulação mais longos;; 2 = uma parte;; 1 = ignorou;; 0 = nenhuma.
 
@@ -2233,8 +2233,8 @@ Sistemas de modelos podem ser estendidos de forma insegura; revise cada novo mod
 
 ### Exercícios
 
-- **EX136 — Bug de expiração.** Que teste falhou na verificação? *Rubrica:* 3 = um estudo expirado podia rodar por causa de um formato de data com fuso horário;; 2 = menciona expiração;; 1 = nenhum;; 0 = nenhuma.
-- **EX137 — Resultado do ataque.** O que o ataque de reconstrução recuperou? *Rubrica:* 3 = nenhum dado de nenhuma pessoa;; 2 = nada;; 1 = parcial;; 0 = nenhuma.
+- **EX136 — Bug de expiração.** Que teste falhou na verificação? *Rubrica:* 3 = um estudo expirado podia rodar por causa de um formato de data com fuso horário;; 2 = menciona expiração;; 1 = vago;; 0 = nenhuma.
+- **EX137 — Resultado do ataque.** O que o ataque de reconstrução recuperou? *Rubrica:* 3 = nenhum dado de nenhuma pessoa;; 2 = nada;; 1 = parcial;; 0 = sem resposta.
 - **EX138 — Visão dos pesquisadores.** Como os pesquisadores avaliaram a abordagem por modelos? *Rubrica:* 3 = restritiva, mas viável; pediram mais um modelo;; 2 = menciona restrição;; 1 = ideal;; 0 = nenhuma.
 
 ### Síntese
@@ -2308,7 +2308,7 @@ Os exercícios usam cenários conhecidos; incidentes reais são mais confusos e 
 
 - **EX139 — Prazo.** Quando vencia o prazo de 72 horas no exercício? *Rubrica:* 3 = às 15h de 7 de março;; 2 = o dia certo;; 1 = errado;; 0 = nenhuma.
 - **EX140 — Elo fraco.** Qual foi o elo mais fraco da linha do tempo? *Rubrica:* 3 = o atraso de 35,5 horas do fornecedor para avisar a Pellmore;; 2 = menciona o fornecedor;; 1 = o processo interno;; 0 = nenhuma.
-- **EX141 — Mensagem aos pacientes.** O que a comunicação aos pacientes precisa conter? *Rubrica:* 3 = natureza da violação, consequências prováveis, medidas e ponto de contato, em linguagem clara;; 2 = lista alguns;; 1 = nada;; 0 = nenhuma.
+- **EX141 — Mensagem aos pacientes.** O que a comunicação aos pacientes precisa conter? *Rubrica:* 3 = natureza da violação, consequências prováveis, medidas e ponto de contato, em linguagem clara;; 2 = lista alguns;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2374,7 +2374,7 @@ Os resumos detectam mudança, não verdade; um arquivo de aparência correta ain
 
 ### Exercícios
 
-- **EX142 — Arquivo divergente.** Que arquivo falhou na verificação de integridade? *Rubrica:* 3 = erasure_test.log;; 2 = cita o log de eliminação;; 1 = nenhum;; 0 = nenhuma.
+- **EX142 — Arquivo divergente.** Que arquivo falhou na verificação de integridade? *Rubrica:* 3 = erasure_test.log;; 2 = cita o log de eliminação;; 1 = vago;; 0 = nenhuma.
 - **EX143 — O que a divergência mostra.** O que uma divergência de resumo prova e o que não prova? *Rubrica:* 3 = o arquivo mudou desde a aprovação; não diz quem o mudou nem por quê;; 2 = uma parte;; 1 = prova fraude;; 0 = nenhuma.
 - **EX144 — Lição sobre evidências.** Que lição de processo decorre da divergência? *Rubrica:* 3 = versionar as evidências em vez de sobrescrevê-las, com datas e motivos;; 2 = menciona versões;; 1 = vago;; 0 = nenhuma.
 

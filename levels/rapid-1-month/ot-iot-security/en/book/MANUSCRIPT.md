@@ -284,7 +284,7 @@ Most unexpected events are mistakes or faults; still report them. Logs from clou
 - **EX034 — Report facts.** Which facts must Jonah's report contain? *Rubric:* 3 = what, where, when, current state, actions taken (evidence); 2 = four; 1 = two; 0 = none.
 - **EX035 — Hands off.** Why does Jonah not reboot SC-1 after spotting the command? *Rubric:* 3 = could disturb process/safety and destroy evidence; decision belongs to engineer; 2 = one; 1 = should reboot; 0 = none.
 - **EX036 — Overheating first.** A battery rack temperature alarm appears while Jonah is writing his report. What comes first? *Rubric:* 3 = site fire/safety procedure, alert on-call; report later; 2 = alert only; 1 = finish report; 0 = none.
-- **EX037 — Vendor follow-up.** What did disabling the portal account and enforcing MFA achieve? *Rubric:* 3 = stopped further use of possibly stolen credentials; future logins need second factor; 2 = partial; 1 = nothing; 0 = none.
+- **EX037 — Vendor follow-up.** What did disabling the portal account and enforcing MFA achieve? *Rubric:* 3 = stopped further use of possibly stolen credentials; future logins need second factor; 2 = partial; 1 = vague; 0 = none.
 - **EX038 — Time zones.** Why should Jonah note the time zone of cloud log entries? *Rubric:* 3 = cloud may log UTC; mismatched times confuse sequence; 2 = partial; 1 = no reason; 0 = none.
 
 ### Synthesis

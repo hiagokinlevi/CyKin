@@ -1196,7 +1196,7 @@ O controle de mudanças pode virar um exercício de papelada; mantenha os formul
 ### Exercícios
 
 - **EX065 — Campos de uma solicitação.** Liste seis campos de uma solicitação de mudança. *Rubrica:* 3 = o quê, por quê, dispositivos, quem, quando, risco, verificação, reversão (quaisquer seis); 2 = quatro; 1 = dois; 0 = nenhum.
-- **EX066 — Edição durante a pane.** O engenheiro edita o PLC-FILL durante uma pane às 2 da manhã. O que precisa acontecer depois? *Rubrica:* 3 = registrada como mudança emergencial dentro do turno, nova cópia e hash, registro de ativos atualizado; 2 = só registrar; 1 = nada; 0 = nenhum.
+- **EX066 — Edição durante a pane.** O engenheiro edita o PLC-FILL durante uma pane às 2 da manhã. O que precisa acontecer depois? *Rubrica:* 3 = registrada como mudança emergencial dentro do turno, nova cópia e hash, registro de ativos atualizado; 2 = só registrar; 1 = vago; 0 = nenhum.
 - **EX067 — Verificação reprovada.** O teste da VIS-CAM deixa passar 2 de 5 selagens ruins. O que acontece em seguida? *Rubrica:* 3 = reverter para a 1.0.7, verificar, registrar a falha, contatar o fornecedor; 2 = reverter; 1 = rodar mesmo assim; 0 = nenhum.
 - **EX068 — Mudança não registrada.** Por que vale relatar uma mudança não registrada, mesmo que pareça inofensiva? *Rubrica:* 3 = pode ser não autorizada/sinal de ataque; quebra a linha de base e as cópias; 2 = um; 1 = ignorar; 0 = nenhum.
 

@@ -337,7 +337,7 @@ Comparison groups remove shared effects only; something affecting tuned rules al
 - **EX023 — Lab estimate.** Give both group changes and the net estimate. *Rubric:* 3 = −173.8, −37.2, −136.5; 2 = two; 1 = one; 0 = none.
 - **EX024 — Specific checks.** How was the firewall migration ruled out? *Rubric:* 3 = tuned rules do not use firewall logs; 2 = partial; 1 = assumed; 0 = none.
 - **EX025 — Parallel trends.** What assumption does the method need, and what supports it? *Rubric:* 3 = parallel trends; similar flat pre-period; 2 = assumption only; 1 = vague; 0 = none.
-- **EX026 — Residual bias.** What could still bias the estimate? *Rubric:* 3 = something affecting tuned rules only; 2 = partial; 1 = nothing; 0 = none.
+- **EX026 — Residual bias.** What could still bias the estimate? *Rubric:* 3 = something affecting tuned rules only; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -686,11 +686,11 @@ Restricting details protects the host but limits reproducibility; the archive ex
 
 ### Exercises
 
-- **EX045 — External comment.** What did the external analyst point out, and what changed? *Rubric:* 3 = assumes mature change process; scaling paragraph added; 2 = partial; 1 = nothing; 0 = none.
+- **EX045 — External comment.** What did the external analyst point out, and what changed? *Rubric:* 3 = assumes mature change process; scaling paragraph added; 2 = partial; 1 = vague; 0 = none.
 - **EX046 — Defense questions.** List three likely examiner questions. *Rubric:* 3 = randomise, holiday equality, one in eight, deploy elsewhere (three); 2 = two; 1 = one; 0 = none.
 - **EX047 — One in eight.** How did Tariq frame the one-in-eight result? *Rubric:* 3 = 12.5% of few chosen events; key point broad entry hid realistic misuse; fixed by narrowing; 2 = partial; 1 = percentage only; 0 = none.
-- **EX048 — Returning results.** What did Pelham receive, and who heard first? *Rubric:* 3 = report, policy, replay script; analysts before managers; 2 = partial; 1 = nothing; 0 = none.
-- **EX049 — Restricted appendix.** What was withheld from the public version, and why? *Rubric:* 3 = host/account names, rule details; would aid evasion; 2 = partial; 1 = nothing; 0 = none.
+- **EX048 — Returning results.** What did Pelham receive, and who heard first? *Rubric:* 3 = report, policy, replay script; analysts before managers; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Restricted appendix.** What was withheld from the public version, and why? *Rubric:* 3 = host/account names, rule details; would aid evasion; 2 = partial; 1 = vague; 0 = none.
 - **EX050 — Deploy elsewhere.** Why not reuse the allow-lists at another utility? *Rubric:* 3 = encode Pelham-specific hosts/accounts; transfer the process instead; 2 = partial; 1 = would reuse; 0 = none.
 
 ### Synthesis
