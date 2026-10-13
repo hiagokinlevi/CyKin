@@ -118,6 +118,10 @@ As buscas perdem trabalhos indexados com outras palavras, e a literatura cinzent
 
 - **EX007 — Literatura cinzenta.** Como Felipe trata os relatórios de indisponibilidade de fornecedores? *Rubrica:* 3 = registra-os separadamente, marcados como não revisados por pares, pois os métodos raramente são declarados;; 2 = marca-os;; 1 = ignora;; 0 = nenhuma.
 
+### Síntese
+
+Uma pergunta estreita com uma unidade justa, uma busca reproduzível e um registro completo de decisões são a base de um estudo de mestrado crível.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: seminário avançado
@@ -209,6 +213,10 @@ Uma amostra de oito linhas ilustra; ela não estima uma taxa. As datas de valida
 
 - **EX014 — Hipótese concorrente.** Que hipótese do seminário concorre com a pergunta principal? *Rubrica:* 3 = certificados sem dono registrado falham qualquer que seja o modo de renovação;; 2 = propriedade;; 1 = algoritmo;; 0 = nenhuma.
 
+### Síntese
+
+Os certificados são afirmações assinadas e limitadas no tempo que o TLS impõe com rigor; são as operações do ciclo de vida, e não a criptografia, que decidem se eles continuam válidos.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -294,6 +302,10 @@ Coortes observacionais não conseguem descartar a confusão; só conseguem medir
 
 - **EX020 — Ensaio.** O que o ensaio da Dra. Solberg conferiu? *Rubrica:* 3 = um colega reproduziu todas as tabelas só com o pacote;; 2 = reprodutibilidade;; 1 = estilo do código;; 0 = nenhuma.
 
+### Síntese
+
+Um desenho observacional honesto, pseudônimos com chave mantidos pelo parceiro e um pacote de reprodutibilidade testado tornam um estudo de campo ao mesmo tempo ético e verificável.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Criptografia e serviços de confiança: explicações concorrentes
@@ -377,6 +389,10 @@ Contagens sem denominadores enganam; sempre converta em taxas. Estratificar por 
 
 - **EX026 — Fator de confusão não medido.** Que fator de confusão os dados não conseguem tratar? *Rubrica:* 3 = a criticidade do serviço, não registrada de forma consistente;; 2 = "não medido";; 1 = propriedade;; 0 = nenhuma.
 
+### Síntese
+
+Explicações rivais preveem padrões diferentes; testá-las exige taxas, estratificação por fatores de confusão medidos e franqueza sobre o que continua sem medida.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
@@ -428,6 +444,10 @@ Um piloto curto demais não consegue estimar taxas e não deve tentar. Mudar as 
 - **EX031 — Modo de renovação ausente.** O que acontece com as linhas sem modo de renovação? *Rubrica:* 3 = preencher a partir dos registros da conta ACME; senão, marcar como desconhecido e relatar à parte;; 2 = marcar como desconhecido;; 1 = descartar;; 0 = nenhuma.
 
 - **EX032 — Estimativa de esforço.** Que estimativa de esforço o piloto produziu? *Rubrica:* 3 = cerca de quatro minutos por chamado, cerca de 120 chamados viáveis em um mês;; 2 = só os minutos;; 1 = vaga;; 0 = nenhuma.
+
+### Síntese
+
+Uma proposta específica, somada a um piloto voltado para falhas de extração, torna o conjunto de dados completo consistente antes que qualquer taxa seja calculada.
 
 <a id="ch-06"></a>
 
@@ -513,6 +533,10 @@ Intervalos por bootstrap a partir de pouquíssimos eventos são instáveis; com 
 
 - **EX038 — Achado nos logs.** O que os logs mostraram antes dos incidentes ACME, e que correção decorre disso? *Rubrica:* 3 = erros de renovação registrados por mais de uma semana em 4 de 5, sem monitoramento; alertar sobre falhas de renovação;; 2 = só o achado;; 1 = só a correção;; 0 = nenhuma.
 
+### Síntese
+
+Taxas, intervalos e estratos, juntos, mostram uma associação robusta entre a automação e menos expirações, e revelam a propriedade e o monitoramento como alavancas independentes.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -565,6 +589,10 @@ Recomendar mais do que as evidências sustentam é a falha mais comum das disser
 
 - **EX044 — O que ele não diz.** Dê duas coisas que o quadro de esclarecimento diz que o estudo não implica. *Rubrica:* 3 = duas entre: o TLS é fraco, estender as validades, escrever scripts de renovação próprios;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
+### Síntese
+
+Uma estrutura guiada pela afirmação, limitações específicas e recomendações graduadas pelas evidências transformam a análise numa dissertação em que os leitores podem confiar e com base na qual podem agir.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -616,6 +644,10 @@ Respostas defensivas que repetem conclusões não convencem ninguém; mostre as 
 - **EX049 — Checklist para profissionais.** Liste as três ações do resumo para profissionais. *Rubrica:* 3 = automatizar onde possível, nomear um dono, alertar sobre falhas de renovação;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
 - **EX050 — Destruição da chave.** Por que a Briarwood destrói a chave do HMAC no encerramento? *Rubrica:* 3 = para que os dados nunca possam ser religados; a força do pseudônimo depende da proteção da chave; ciclo de vida do SP 800-57;; 2 = privacidade;; 1 = espaço em disco;; 0 = nenhuma.
+
+### Síntese
+
+Uma nova execução independente, respostas serenas sobre a sensibilidade, a divulgação aos profissionais e uma destruição deliberada de chaves completam um estudo de mestrado que outros podem verificar e usar.
 
 <a id="worked-results"></a>
 
