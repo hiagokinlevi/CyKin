@@ -1545,6 +1545,8 @@ Ordinal scales such as low, medium and high are honest about precision: likeliho
 
 Threat models age. New tools, data sources, model versions and published attacks change the picture. Store the analysis next to the architecture, give it a version, and schedule review at each significant change and at least yearly. Record which threats were accepted and by whom, so that accepted risks are not forgotten.
 
+For Wrench, the trigger is concrete: when Bulletin Gate went into service, Sam's threat 1, injection via supplier bulletin, had to be re-scored, because bulletins now reach Wrench only as structured records. The likelihood fell, but a new threat appeared in its place: a poisoned update to the extraction model, which the Chapter 47 trial later tested.
+
 ### 23.5 Worked example (synthetic NRS case)
 
 Sam's top five for Wrench: (1) indirect injection via supplier bulletin → work-order tool (likelihood medium, impact high); (2) contractor-note injection (medium/high); (3) sensitive disclosure from HR documents in retrieval (medium/medium, mitigated in Chapter 13); (4) system-prompt extraction revealing tool names (high/low); (5) resource exhaustion via very long documents (medium/medium). Each was mapped to OWASP (LLM01, LLM01, LLM02, LLM07, LLM10) and to ATLAS techniques for prompt injection and denial of ML service.
@@ -1800,6 +1802,8 @@ An answer such as 'the model will ignore malicious instructions' fails, because 
 ### 25.4b Trade-off tables
 
 Present alternatives in a table with columns for security effect, safety effect, user friction, cost and residual risk. A panel can then see why an option was rejected rather than guessing. For example, "no tool access" has the lowest risk but loses most of the benefit; "free tool access" has the highest benefit and unacceptable risk; "proposal plus approval" sits between. Being explicit about what each option gives up is more persuasive than claiming any option is free.
+
+Sam's planner-assistant revision fits in such a table: "bulletins read directly into the prompt" was rejected for its residual risk, while "summarised by a low-privilege model plus two approvals for safety-critical changes" accepted some extra planner friction for a bounded worst case.
 
 ### 25.5 Worked example (synthetic NRS case)
 
@@ -2060,6 +2064,8 @@ Rules stated only in the prompt are suggestions to the model, not enforcement. U
 ### 28.6b Failing closed in the enforcement point
 
 If Wrench's policy enforcement point cannot load its rules or reach its decision service, it refuses the requested tool action and tells the technician why, rather than allowing it. NRS tests this path in every release by starting the service with a missing policy file.
+
+The test matters because the opposite failure is silent: an enforcement point that allows actions when its policy file is missing looks healthy in every functional test. In Sam's 600-bulletin replay, all 41 work-order proposals reached a technician's confirmation screen; with a fail-open service and no policy loaded, the same 41 would have become work orders with nobody checking them.
 
 ### Exercises
 
@@ -2400,6 +2406,8 @@ A mean-based threshold rises with every heavy user, so a large scraper can lift 
 ### 31.6b Testing alerts end to end
 
 Each monitoring rule for Wrench and TrackEye is tested by injecting a synthetic event in staging and checking that the alert reaches the on-call engineer with enough context to act. Rules that have never fired in a test are treated as unverified.
+
+Sam's two TrackEye API rules were tested this way before the partner went live: a synthetic client sending 600 grid-like queries in staging had to trigger the distinct-ratio rule and page the on-call engineer. The first month's real alert, the partner's misconfigured retry loop, then arrived through a path already known to work, with the client's volume and robust z-score in the message.
 
 ### Exercises
 
@@ -3053,6 +3061,8 @@ Isolated component tests miss the interactions where integrated systems fail, as
 
 When Laboratory II finds a failure, the fix is followed by the same campaign, not a smaller one, so NRS can show the fix worked without breaking other acceptance criteria. Both runs are kept in the evidence package with their dates and versions.
 
+Scenario 11 shows why. The fix for Pulse's silent 40-minute alert queue added a health check and an SMS fallback, which changed the alert path for every critical alert, not only Pulse's. Rerunning all 18 scenarios, not just scenario 11, was the only way to show that TrackEye's and Wrench's alerts still arrived on time through the changed path.
+
 ### Exercises
 
 - **EX118 — Combined scenario.** Design one combined attack-plus-failure scenario for Wrench. Rubric: 3 = specific attack + failure + expected safe behaviour + measurement; 2 = partial; 1 = vague; 0 = none.
@@ -3223,6 +3233,8 @@ A useful entry goes beyond 'I reviewed the inventory'. It notes what was hard, f
 
 Real organisations rarely start from a clean design. Legacy systems lack logs, vendors limit testing, budgets are fixed and deadlines move. Good practitioners prioritise by risk, propose the smallest control that meaningfully reduces it, and document what remains. A short, accurate risk note delivered on time is usually more valuable than a perfect assessment delivered after the decision.
 
+Sam's placement shows this. The three spreadsheets with ML add-ins had no logs and no owner on record, so the inventory entered them with an "unknown" data sensitivity and a named person to confirm it, rather than leaving them out until they could be assessed fully.
+
 ### 43.5 Worked example (synthetic NRS case)
 
 Sam's placement goal was to build the AI inventory for NRS. Using the inventory lab as a starting template, Sam catalogued 14 AI systems, including three spreadsheets with embedded ML add-ins nobody had registered. The inventory scored exposure, autonomy, data sensitivity and untrusted input; the CV-screening pilot in HR scored high and was sent for a fuller assessment, partly because recruitment systems can be high-risk under the EU AI Act.
@@ -3322,6 +3334,8 @@ Fixed roles make responsibility clear, but rotating reviews spreads understandin
 
 Even synthetic projects need an authorization note: which environments, data and accounts the team may use, and what is forbidden (production systems, real personal data, public AI services beyond their terms). If a client provides real data, agree data-protection terms in writing before receiving it.
 
+For Bulletin Gate, the note named the staging copies of Wrench and the bulletin store, synthetic or supplier-cleared bulletins only, and no connection to the production work-order system. It also covered the panel's condition: the other team writing adaptive attacks was authorised to attack only Bulletin Gate's staging instance, and its attack strings were stored with the evidence rather than shared outside the course.
+
 ### 44.5 Worked example (synthetic NRS case)
 
 Sam's team chose "Bulletin Gate": a service that ingests supplier bulletins, extracts structured maintenance facts with a quarantined model, flags instruction-like content, and passes only structured records to Wrench. Requirements included: extraction accuracy ≥ 95% on 500 held-out bulletins; zero instruction text in output records (schema-enforced); ≤ 2 s median latency; full provenance. Exclusions: image attachments (deferred). The panel approved with one condition: add an adaptive-attack test set written by another team.
@@ -3386,6 +3400,8 @@ Contesting a finding is legitimate when evidence supports it, for example a test
 
 Agree severity criteria before the review. For example: *critical* — an external attacker can cause safety impact or large-scale disclosure without user interaction; *high* — impact requires one plausible condition; *medium* — impact limited or requires unusual conditions; *low* — hardening. Shared criteria prevent arguments about labels and let findings from different reviews be compared.
 
+Applied to Sam's Crew Chat review, the retrieval finding is high rather than critical: a technician from one depot needs only one plausible condition, a well-phrased question, to reveal another depot's documents, but the attacker must already be an internal user. The missing output escaping is medium, because exploiting it requires attacker-controlled text in a rendered answer.
+
 ### 45.5 Worked example (synthetic NRS case)
 
 Sam reviewed another team's "Crew Chat" design (an assistant for track crews). High finding: the assistant's retrieval used a service account with access to all depots' documents, filtering results only in the prompt ("only answer about your depot"). Recommendation: per-user retrieval permissions enforced in the vector store query. Medium: no output escaping for a web view. Positive: excellent provenance labelling. The team fixed the high finding before the next milestone.
@@ -3449,6 +3465,8 @@ A formally accepted security defect names who accepted it, why and until when, s
 ### 46.4b Demonstrations and evidence
 
 End each increment with a short demonstration to the client that includes at least one adversarial case, not only the happy path. Save the demonstration script, inputs and outputs as evidence; they become part of the dossier in Chapter 48. Demonstrating a failure honestly, with the fix planned, builds more trust than a polished demo that hides it.
+
+Bulletin Gate's demonstration after the schema change included one of the other team's adaptive bulletins: an instruction hidden in a maintenance note, now mapped to an enumerated category with no free text in the output. Showing the accuracy drop to 95.3% at the same demo was part of the honesty the panel looked for.
 
 ### 46.5 Worked example (synthetic NRS case)
 
@@ -3525,6 +3543,8 @@ A trial that only tests whether software fails over misses the slow phone call, 
 ### 47.6b Sharing what the trial taught
 
 The after-action summary goes beyond the AI team to the rail maintenance managers who rely on TrackEye and Wrench: what failed, how long recovery took, what changes and when. Plain language and dates matter more to them than metrics.
+
+For Sam's trial, the managers' version said three things. A bad bulletin was caught in 6 minutes and Wrench's work-order access was cut in 11. A bad model update was blocked before it went live. When monitoring itself went down, a scraping attempt went unseen for 52 minutes; from the next release, Wrench and TrackEye slow down automatically when monitoring is down, so a rail maintenance manager may notice slower answers during such an outage.
 
 ### Exercises
 
@@ -4068,7 +4088,7 @@ Model answers; any answer meeting the rubric scores equally. Northgate Rail Syst
 
 **EX133.** Trust boundaries; enforcement outside the model; least-privilege tools; delegated identity; provenance/taint; output handling; supply-chain verification; data protection; monitoring and runbooks; held-out evaluation gates; human-oversight design; safe states.
 
-**EX134.** Title: Retrieval not restricted by user. Severity: High (cross-depot disclosure). Description: retrieval uses an all-depot service account; restriction is a prompt instruction. Evidence: design §4.2, DFD flow F7. Impact: users can obtain other depots' documents via manipulation. Recommendation: enforce per-user ACLs in the vector-store query. Status: open.
+**EX134.** Title: Retrieval not restricted by user. Severity: High (cross-depot disclosure). Description: retrieval uses an all-depot service account; restriction is a prompt instruction. Evidence: the retrieval part of the Crew Chat design document, DFD flow F7. Impact: users can obtain other depots' documents via manipulation. Recommendation: enforce per-user ACLs in the vector-store query. Status: open.
 
 **EX135.** The documents are already in the model's context, and the model can be persuaded or confused into using them; restriction must happen before retrieval results reach the model.
 
