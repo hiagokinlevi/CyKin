@@ -44,10 +44,10 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 6. [Cálculo II](#ch-06)
 7. [Probabilidad y estadística](#ch-07)
 8. [Arquitectura de computadoras](#ch-08)
-9. [Programación II](../../en/book/MANUSCRIPT.md#ch-09)
-10. [Ética y seguridad en ingeniería](../../en/book/MANUSCRIPT.md#ch-10)
-11. [Redes y protocolos](../../en/book/MANUSCRIPT.md#ch-11)
-12. [Sistemas operativos](../../en/book/MANUSCRIPT.md#ch-12)
+9. [Programación II](#ch-09)
+10. [Ética y seguridad en ingeniería](#ch-10)
+11. [Redes y protocolos](#ch-11)
+12. [Sistemas operativos](#ch-12)
 13. [Sistemas de datos](../../en/book/MANUSCRIPT.md#ch-13)
 14. [Ingeniería de software](../../en/book/MANUSCRIPT.md#ch-14)
 15. [Fundamentos de seguridad](../../en/book/MANUSCRIPT.md#ch-15)
@@ -727,7 +727,291 @@ La arquitectura determina tanto la temporización como la confianza. El control 
 <!-- cyberabc:chapter-navigation:start ch-08 -->
 ### Siga estudiando — capítulo 08 de 50
 
-[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](../../en/book/MANUSCRIPT.md#ch-09)
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programación II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) estructurar un programa en módulos con interfaces e invariantes claros; (2) implementar máquinas de estados sencillas para la lógica de protocolos y de equipos; (3) escribir pruebas unitarias, incluidas pruebas de límites y de fallas, y medir lo que cubren; y (4) tratar de forma deliberada los errores, el tiempo y la concurrencia. Se apoya en el capítulo 4 y prepara el capítulo 14 (ingeniería de software) y el capítulo 30 (verificación).
+
+### 9.1 Módulos, interfaces e invariantes
+
+[Parnas (1972)](https://doi.org/10.1145/361598.361623) sostuvo que un sistema debe descomponerse de modo que cada módulo oculte una decisión de diseño que probablemente cambie. En el software de infraestructura, los cambios probables incluyen el protocolo de campo, el historiador de datos y el esquema de autenticación. Oculte cada uno detrás de una interfaz: un `TelemetrySource` que entrega lecturas validadas, sea cual sea el protocolo. Cada módulo debe enunciar sus **invariantes**, propiedades que siempre son ciertas sobre su estado; por ejemplo, «el último contador aceptado de cada estación nunca disminuye». Escriba los invariantes como aserciones en las pruebas y, cuando sea barato, como comprobaciones en tiempo de ejecución que fallen de forma segura.
+
+### 9.2 Máquinas de estados
+
+Los equipos y los protocolos tienen modos: una bomba está *detenida*, *arrancando*, *en marcha*, *deteniéndose* o *disparada*; una sesión está *sin autenticar*, *autenticada* o *cerrada*. Una máquina de estados finitos enumera los estados, los eventos que provocan transiciones, las guardas de las transiciones y las acciones. Escríbala como una tabla e impleméntela a partir de la tabla, rechazando cualquier evento que no figure para el estado actual. Las transiciones no enumeradas son donde viven tanto los errores como los ataques: una orden «stop» que llega mientras la bomba está *arrancando*, o un «escribir consigna» que llega antes de la autenticación.
+
+El controlador de bombas de LRWA del ejemplo resuelto que sigue está construido exactamente así, de modo que sus pruebas pueden enumerar cada par.
+
+### 9.3 Pruebas
+
+Una prueba unitaria comprueba un comportamiento de una unidad. Los buenos conjuntos de pruebas incluyen: casos típicos; **límites** (mínimo, máximo, justo dentro, justo fuera); entradas no válidas; y pruebas de **regresión** que reproducen errores pasados. La cobertura mide qué sentencias o ramas ejecutaron las pruebas; le dice lo que *no* se probó, no que el código probado sea correcto. El módulo `unittest` de Python, incluido en la biblioteca estándar, basta para este libro. Para el controlador de bombas de LRWA, las pruebas de límites incluyen el tiempo de espera de arranque de 30 segundos exactamente a los 30 segundos y justo después, y las pruebas de regresión reproducen cada error de transición encontrado en la puesta en marcha, de modo que una falla corregida no pueda volver discretamente en una versión posterior.
+
+### 9.4 Errores, tiempo y concurrencia
+
+Decida cómo se trata cada error: rechazado con un motivo, reintentado con un límite o escalado. Nunca silencie excepciones en el código de control o de seguridad. El tiempo es una fuente recurrente de fallas: use relojes monótonos para los intervalos y la hora de reloj sincronizada (con su fuente registrada) para los registros; trate los saltos de reloj. La concurrencia (hilos, tareas asíncronas, varios clientes) crea condiciones de carrera: dos operadores que envían consignas contradictorias, o una comprobación y una acción separadas por una ventana en la que el estado cambia (*time-of-check to time-of-use*). Prefiera un único propietario para cada elemento de estado, con mensajes para cambiarlo.
+
+### 9.5 Ejemplo resuelto: una máquina de estados para una bomba (sintético)
+
+El controlador de bombas de LRWA acepta `start`, `stop`, `trip` y `reset`. La tabla: *detenida* + `start` (guarda: permiso verdadero) → *arrancando*; *arrancando* + `run_confirmed` → *en marcha*; *arrancando* + tiempo de espera de 30 s → *disparada*; *en marcha* + `stop` → *deteniéndose*; cualquier estado + `trip` → *disparada*; *disparada* + `reset` (guarda: operador local) → *detenida*. La guarda de `reset` importa: exigir una acción local tras un disparo significa que un atacante remoto que provoca un disparo no puede volver a arrancar de inmediato la bomba en la misma falla. Las pruebas cubren cada transición enumerada y verifican que todo par no enumerado (por ejemplo, *disparada* + `start`) se rechaza y se registra.
+
+### 9.6 Actividad práctica
+
+Implemente la tabla de §9.5 en unas 40 líneas de Python con un diccionario indexado por `(state, event)`. Escriba casos `unittest` para todas las transiciones enumeradas y un bucle que verifique que cada par `(state, event)` no enumerado genera un error. Cuente los pares no enumerados. Su bucle debe imprimir el número de pares no enumerados y confirmar que cada uno genera un error y escribe una línea de registro. Después añada una prueba que muestre que se rechaza un reinicio remoto tras un disparo, porque la guarda exige un operador local. Esa prueba protege la propiedad que más importa en el ejemplo resuelto: un atacante que dispara una bomba de forma remota no puede volver a arrancarla directamente en la misma falla. Mantenga la tabla y las pruebas en un solo archivo para que un revisor pueda compararlas.
+
+### 9.7 Errores comunes y límites
+
+- Implementar la lógica de estados con indicadores dispersos en lugar de una tabla explícita.
+- Ramas por defecto que aceptan eventos desconocidos.
+- Usar la hora de reloj para los tiempos de espera.
+- Pruebas que solo recorren el camino feliz; equiparar cobertura con corrección.
+- Tratamiento silencioso de las excepciones.
+
+Cada error anula una propiedad de la máquina de estados de la bomba. Los indicadores dispersos hacen imposible enumerar todas las transiciones. Una rama por defecto dejaría pasar una orden de arranque mientras la bomba está disparada. Un tiempo de espera basado en la hora de reloj podría saltar antes de tiempo o no saltar nunca tras un salto de reloj, y una excepción silenciada en el camino de reinicio dejaría la bomba en un modo desconocido.
+
+### Ejercicios — capítulo 9
+
+**EX017 — Cuente y pruebe las transiciones no enumeradas.** *Objetivo:* razonar sobre la completitud. *Entradas:* §9.5 (estados: stopped, starting, running, stopping, tripped; eventos: start, stop, trip, reset, run_confirmed, timeout, stop_confirmed; añada *stopping* + `stop_confirmed` → *stopped*). *Pasos:* cuente los pares totales, los enumerados y los no enumerados; dé tres pares no enumerados cuyo rechazo tenga una justificación de seguridad funcional o de seguridad. *Evidencia esperada:* recuentos y justificación. *Rúbrica:* 3 = recuentos correctos y justificaciones con sentido; 2 = error de recuento; 1 = sin justificación; 0 = nada.
+
+**EX018 — Invariante contra repeticiones.** *Objetivo:* expresar y probar un invariante. *Entradas:* el `Receiver` del Lab 8. *Pasos:* escriba el invariante sobre `last`, una prueba unitaria que envíe los contadores 1, 2, 2, 1, 5 y verifique los resultados de aceptación o rechazo y el estado final, e indique un modo de falla del invariante tras reiniciar el receptor. *Evidencia esperada:* código de la prueba y enunciado. *Rúbrica:* 3 = resultados esperados correctos (aceptar, aceptar, rechazar, rechazar, aceptar), problema del reinicio identificado (estado perdido → se aceptan repeticiones salvo que se persista o se roten las claves); 2 = se omite el reinicio; 1 = sin probar; 0 = nada.
+
+### Síntesis del capítulo
+
+Descomponga en torno a las decisiones que probablemente cambien y enuncie invariantes. Haga explícitos los modos como máquinas de estados y rechace todo lo que no esté enumerado. Pruebe los límites y las fallas, lea la cobertura como un mapa de lo no probado, trate los errores de forma deliberada, use el reloj adecuado y dé a cada elemento de estado compartido un único propietario.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Siga estudiando — capítulo 09 de 50
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética y seguridad en ingeniería
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) aplicar los códigos de ética profesional a las decisiones de seguridad en infraestructura; (2) explicar la relación entre seguridad funcional y seguridad, y dónde entran en conflicto; (3) reconocer los límites legales y de autorización de las pruebas y la investigación; y (4) tomar y documentar una decisión ética en condiciones de incertidumbre, incluido cuándo escalar. Se apoya en el capítulo 5 y enmarca todos los capítulos posteriores, en particular los de pruebas (capítulos 30 y 40) y práctica (capítulo 43).
+
+### 10.1 Los deberes de un ingeniero
+
+Los códigos profesionales convergen en una jerarquía: anteponer a todo la seguridad, la salud y el bienestar del público; actuar dentro de la propia competencia; ser honesto y objetivo; evitar los conflictos de intereses; proteger la información confidencial. El [NSPE Code of Ethics for Engineers](https://www.nspe.org/resources/ethics/code-ethics) hace de la seguridad pública el primer canon fundamental; el [ACM Code of Ethics and Professional Conduct](https://www.acm.org/code-of-ethics) pide a los profesionales de la computación que eviten el daño y que sean honestos sobre las capacidades y los límites de los sistemas. En la infraestructura crítica, el público es concreto: pacientes en diálisis, hogares sin agua, personas que esperan una ambulancia. El deber no se cumple siguiendo instrucciones si el resultado es un daño previsible al público.
+
+### 10.2 Seguridad funcional y seguridad, juntas
+
+La **seguridad funcional** (*safety*) protege a las personas y al ambiente del daño causado por el sistema; la **seguridad** (*security*) protege al sistema del uso indebido deliberado. En la tecnología operativa ambas interactúan. Un control de seguridad puede crear un peligro para la seguridad funcional: un bloqueo automático de cuenta en la consola de un operador durante una emergencia, o un parche que reinicia un controlador durante un proceso en curso. Un mecanismo de seguridad funcional puede ser un objetivo de ataque: el malware TRITON/TRISIS atacó controladores de sistemas instrumentados de seguridad, como describe el [informe de análisis del malware HatMan](https://www.cisa.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%20-%20Safety%20System%20Targeted%20Malware%20%28Update%20B%29.pdf) de CISA. La buena práctica trata ambas en un único análisis de peligros (capítulo 33) y da a las funciones de seguridad funcional independencia respecto de las redes y los sistemas que protegen.
+
+### 10.3 Autorización y derecho
+
+Probar un sistema que no le pertenece o que no tiene permiso escrito para probar puede ser un delito, sean cuales sean sus intenciones, y en la infraestructura puede poner en peligro a las personas. La autorización debe ser escrita, específica (sistemas, horarios, métodos), otorgada por alguien facultado para darla, e incluir condiciones de detención. La investigación con personas o con datos operativos necesita revisión ética y acuerdos sobre los datos. Las vulnerabilidades que encuentre de forma incidental deben comunicarse al propietario del activo en privado o mediante un programa de divulgación coordinada, como el [programa CVD de CISA](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program). Los laboratorios de este libro son sintéticos precisamente por estas razones.
+
+### 10.4 Decidir en condiciones de incertidumbre
+
+Un procedimiento práctico de decisión ética: (1) enuncie la decisión y a quién afecta; (2) identifique los deberes y los hechos que inciden en ellos; (3) enumere las opciones, incluidas la escalada y la negativa; (4) evalúe las consecuencias para las partes interesadas más vulnerables; (5) elija, documente el razonamiento y los desacuerdos, y fije un punto de revisión. Los ingenieros rara vez enfrentan dilemas limpios; con más frecuencia, el problema es la presión para aprobar algo que aún no se ha demostrado que funcione. «No verificado» es una respuesta honesta y suficiente.
+
+En el ejemplo resuelto que sigue, el ingeniero de verificación del TMRP usa exactamente estos cinco pasos.
+
+### 10.5 Ejemplo resuelto: la aprobación con plazo (sintético)
+
+El plazo de puesta en marcha del TMRP es el viernes. La prueba T3 (límites de consigna) ha fallado: el controlador de PS4 acepta una consigna fuera del rango seguro cuando se envía como valor NaN. El proveedor propone poner en marcha con una nota para corregirlo en la próxima versión. Como ingeniero de verificación, usted aplica el procedimiento: entre las personas afectadas están los pacientes del hospital si PS4 se comporta de forma impredecible; su deber es con la seguridad pública y con un informe honesto; las opciones son (a) firmar, (b) negarse, (c) poner en marcha con un control compensatorio (escrituras remotas de consigna deshabilitadas en la pasarela, operación solo local para PS4) y una corrección con fecha. Usted recomienda (c), registra T3 como fallida, no como dispensada, y exige repetir la prueba antes de habilitar las escrituras remotas. La decisión queda documentada y la firma el gerente de operaciones, responsable del riesgo operativo.
+
+### 10.6 Actividad práctica
+
+Escriba una plantilla de autorización de una página para una prueba de un sistema sintético: alcance, métodos excluidos, ventana temporal, condiciones de detención, contactos, tratamiento de los datos y firma. Complete la plantilla para una prueba de banco de la pasarela de telemetría de LRWA y no para una estación en servicio. Indique quién puede firmarla, enumere los métodos excluidos, como cualquier tráfico dirigido a RTU reales, y dé condiciones de detención que un probador pueda reconocer sin interpretación. Incluya un contacto que pueda detener la prueba en cualquier momento y una regla sobre qué ocurre después con los datos capturados. Una plantilla que permitiera a alguien probar PS4 en un periodo de alta demanda ha fracasado en su propósito.
+
+### 10.7 Errores comunes y límites
+
+- Tratar la ética como una lista de cumplimiento en lugar de razonar sobre el daño.
+- El «permiso verbal» para realizar pruebas.
+- Controles de seguridad diseñados sin considerar la seguridad funcional en emergencias.
+- Aprobar lo que no se ha verificado porque lo exige un calendario.
+- Divulgar públicamente debilidades de la infraestructura sin coordinación.
+
+La aprobación con plazo del ejemplo resuelto muestra varios de estos errores a la vez: presión para poner en marcha, un proveedor que ofrece una promesa verbal de corregir más tarde y una prueba fallida que fácilmente podría haberse marcado como dispensada. El ingeniero evitó cada uno registrando la falla y acordando por escrito un control compensatorio.
+
+### Ejercicios — capítulo 10
+
+**EX019 — Conflicto entre seguridad funcional y seguridad.** *Objetivo:* resolver un control que pone en peligro la operación. *Entradas:* propuesta de bloquear las cuentas de la HMI de los operadores tras cinco inicios de sesión fallidos. *Pasos:* analice el peligro, proponga una alternativa que preserve la intención de seguridad e indique cómo la verificaría. *Evidencia esperada:* análisis de media página. *Rúbrica:* 3 = peligro claro (bloqueo durante una emergencia), la alternativa mantiene la rendición de cuentas y resiste los intentos de adivinar (p. ej., limitación de frecuencia con alertas, anulación con presencia física, cuentas por turno con registro), verificación indicada; 2 = alternativa débil; 1 = solo el peligro; 0 = nada.
+
+**EX020 — Hallazgo incidental.** *Objetivo:* actuar dentro de la autorización. *Entradas:* mientras estudia para un trabajo del curso los documentos de compra de una empresa pública de servicios, observa en una captura de pantalla una página de gestión de un controlador de bombas expuesta a internet, con el proveedor y el modelo visibles. *Pasos:* indique qué no debe hacer, qué debe hacer y ante quién, y qué puede decir su trabajo del curso. *Evidencia esperada:* 150 palabras. *Rúbrica:* 3 = ningún acceso ni sondeo, notificación privada al propietario o mediante CVD, trabajo anonimizado; 2 = falta un paso; 1 = sugiere «comprobar si es real»; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad pública va primero, comunicada con honestidad. La seguridad funcional y la seguridad deben analizarse juntas, porque cada una puede anular a la otra. Pruebe solo con autorización escrita y específica; comunique en privado los hallazgos incidentales. Decida en condiciones de incertidumbre con un procedimiento documentado, y trate «no verificado» como una respuesta que usted puede, y debe, dar.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Siga estudiando — capítulo 10 de 50
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes y protocolos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) explicar el modelo de capas y las funciones de Ethernet, IP, TCP, UDP y los protocolos de aplicación; (2) describir los protocolos industriales (Modbus/TCP, DNP3, IEC 60870-5-104, OPC UA) y qué propiedades de seguridad ofrece o no ofrece cada uno; (3) construir un presupuesto de latencia para la telemetría; y (4) expresar la segmentación como zonas y conductos y contrastar con ella los flujos observados. Se apoya en los capítulos 3 y 4 y prepara los capítulos 18 (arquitectura de seguridad) y 26 (alternativas de arquitectura).
+
+### 11.1 Las capas y lo que prometen
+
+Las redes se construyen en capas: física y de enlace (tramas Ethernet en un segmento), de red (paquetes IP encaminados entre segmentos), de transporte (TCP, flujos de bytes fiables y ordenados; UDP, datagramas sin garantía de entrega; TCP se especifica en [RFC 9293](https://www.rfc-editor.org/rfc/rfc9293)) y de aplicación (el protocolo que transporta el significado). Cada capa promete algo limitado. TCP garantiza el orden y la retransmisión, no la autenticidad. IP encamina, pero en muchas redes las direcciones de origen pueden falsificarse. Las propiedades de seguridad deben añadirse de forma deliberada, normalmente con TLS ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)), IPsec o autenticación en la capa de aplicación.
+
+### 11.2 Protocolos industriales
+
+Los protocolos industriales clásicos se diseñaron para redes serie cerradas. **Modbus/TCP** (puerto 502) transporta códigos de función, como leer y escribir registros, sin ninguna autenticación; cualquiera que pueda alcanzar el puerto 502 puede emitir escrituras. **DNP3** se usa ampliamente en agua y electricidad; su extensión Secure Authentication añade autenticación por desafío y respuesta de las órdenes críticas, pero no está desplegada de forma universal. **IEC 60870-5-104** es común en los sistemas eléctricos europeos, con extensiones de seguridad definidas en IEC 62351. **OPC UA** se diseñó con modos de seguridad que ofrecen firma y cifrado, pero deben configurarse: «None» es una política válida. La lección es constante: la capacidad del protocolo no es su despliegue. Compruebe lo que está configurado.
+
+### 11.3 Latencia, fluctuación y sondeo
+
+La telemetría suele obtenerse por sondeo: el maestro SCADA pregunta a cada RTU por turno. La latencia de extremo a extremo, desde un evento físico hasta la pantalla de un operador, es la suma de la actualización del sensor, el barrido de la RTU, el viaje de ida y vuelta por el enlace, la espera de sondeo del maestro, el procesamiento y el refresco de la pantalla. La **fluctuación** (*jitter*) es la variación de la latencia. Escriba un presupuesto, mida cada elemento y compare el total con el requisito; el capítulo 36 añade las colas.
+
+El presupuesto de LRWA en el Lab 5 suma el barrido de la RTU, el viaje de ida y vuelta por LTE, la espera de sondeo y el refresco de pantalla hasta llegar a un segundo frente a un requisito de 1,5 segundos, pero la espera de sondeo es el elemento que más varía, y el EX022 muestra cómo domina el peor caso.
+
+### 11.4 Zonas, conductos y listas de permitidos
+
+La segmentación divide una red en **zonas** con requisitos de seguridad similares y controla los **conductos** entre ellas. Este vocabulario procede de la [serie ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards). Una política de conducto es una **lista de permitidos**: zona de origen, zona de destino, protocolo y puerto concretos, y todo lo demás denegado. Verificar no es leer la configuración del cortafuegos; es contrastar los flujos observados con la política prevista, porque las configuraciones derivan y los caminos no documentados (el módem de acceso remoto de un proveedor, un portátil conectado a dos redes) eluden los cortafuegos.
+
+La revisión de flujos de LRWA que sigue muestra por qué.
+
+### 11.5 Ejemplo resuelto: revisión de flujos de LRWA (sintético)
+
+LRWA define estas zonas: *enterprise* (corporativa), *dmz*, *control* (servidores SCADA), *field* (campo, las RTU) y *eng* (estaciones de ingeniería). Los conductos previstos se enumeran en el Lab 5. Una semana de registros de flujos muestra tres infracciones: un equipo corporativo que habla Modbus directamente con una RTU de campo (un script de informes olvidado que elude la DMZ), una estación de ingeniería que abre SSH directamente hacia una RTU en lugar de pasar por el servidor de salto de la zona de control, y un servidor SCADA que hace consultas DNS a un resolutor público. Cada una es un hallazgo con un responsable: eliminar el script y servir sus datos desde el historiador de la DMZ; encaminar el acceso de ingeniería a través del servidor de salto; apuntar el DNS del SCADA a un resolutor interno o a ninguno.
+
+### 11.6 Actividad práctica: Lab 5
+
+```python
+# Lab 5 - check observed flows against a zone-conduit allowlist (synthetic, offline)
+RULES = [  # (src_zone, dst_zone, protocol, port)
+    ("control", "field", "tcp", 502), ("control", "dmz", "tcp", 443), ("dmz", "enterprise", "tcp", 443),
+    ("eng", "control", "tcp", 22), ("field", "control", "udp", 20000)]
+ZONE = {"10.1.0.": "control", "10.2.0.": "field", "10.3.0.": "dmz", "10.4.0.": "enterprise", "10.5.0.": "eng"}
+def zone(ip): return next((z for p, z in ZONE.items() if ip.startswith(p)), "unknown")
+FLOWS = [("10.1.0.5", "10.2.0.31", "tcp", 502), ("10.4.0.77", "10.2.0.31", "tcp", 502),
+         ("10.2.0.31", "10.1.0.5", "udp", 20000), ("10.3.0.9", "10.4.0.20", "tcp", 443),
+         ("10.5.0.12", "10.2.0.33", "tcp", 22), ("10.1.0.5", "8.8.8.8", "udp", 53),
+         ("10.1.0.6", "10.3.0.9", "tcp", 443)]
+for s, d, p, port in FLOWS:
+    ok = (zone(s), zone(d), p, port) in RULES
+    print(f"{s:>10} {zone(s):>10} -> {d:<10} {zone(d):<10} {p}/{port:<5} {'allowed' if ok else 'VIOLATION'}")
+budget = {"rtu_scan": 120, "lte_rtt": 180, "scada_poll_wait": 500, "operator_view": 200}
+print("end-to-end latency budget ms:", sum(budget.values()), "vs requirement 1500")
+```
+
+Salida esperada:
+
+```text
+  10.1.0.5    control -> 10.2.0.31  field      tcp/502   allowed
+ 10.4.0.77 enterprise -> 10.2.0.31  field      tcp/502   VIOLATION
+ 10.2.0.31      field -> 10.1.0.5   control    udp/20000 allowed
+  10.3.0.9        dmz -> 10.4.0.20  enterprise tcp/443   allowed
+ 10.5.0.12        eng -> 10.2.0.33  field      tcp/22    VIOLATION
+  10.1.0.5    control -> 8.8.8.8    unknown    udp/53    VIOLATION
+  10.1.0.6    control -> 10.3.0.9   dmz        tcp/443   allowed
+end-to-end latency budget ms: 1000 vs requirement 1500
+```
+
+Tres de los siete flujos son infracciones, y cada una coincide con un hallazgo del ejemplo resuelto: el script corporativo de informes que habla Modbus con una RTU de campo, la estación de ingeniería que abre SSH directamente hacia una RTU en lugar de hacerlo a través del servidor de salto, y un servidor SCADA que consulta un resolutor DNS público. La línea del presupuesto de latencia muestra un total de un segundo frente al requisito de 1,5 segundos, pero esa cifra usa valores típicos, así que trátela como punto de partida para el análisis del peor caso del EX022 y no como evidencia de que R7 se cumple.
+
+### 11.7 Errores comunes y límites
+
+- Equiparar el cifrado en una capa con la protección de extremo a extremo.
+- Suponer que la seguridad opcional de un protocolo industrial está habilitada.
+- Verificar la segmentación solo leyendo configuraciones.
+- Presupuestos de latencia con promedios en lugar de peores casos.
+- Listas de permitidos por equipo en lugar de por función, que se vuelven imposibles de mantener.
+
+La revisión de flujos de LRWA ilustra directamente el tercer error: la configuración del cortafuegos parecía correcta y, sin embargo, una semana de registros de flujos mostró tres infracciones. Leer las configuraciones no habría encontrado ninguna. Las listas de permitidos escritas por equipo también habrían necesitado modificaciones constantes a medida que se añadían RTU.
+
+### Ejercicios — capítulo 11
+
+**EX021 — Amplíe la comprobación de la política.** *Objetivo:* encontrar infracciones por función. *Entradas:* Lab 5. *Pasos:* (1) añada un flujo de `10.2.0.31` a `10.4.0.77` por TCP/445; (2) añada una regla para que la estación de ingeniería pueda llegar a las RTU solo a través de un servidor de salto en la zona de control, y modele los dos saltos; (3) vuelva a ejecutar e informe. *Evidencia esperada:* cambios en el código y salida. *Rúbrica:* 3 = se detecta la nueva infracción, el modelo de dos saltos es correcto, ninguna regla debilita la protección del campo; 2 = un problema; 1 = no ejecutado; 0 = nada.
+
+**EX022 — Latencia frente al requisito.** *Objetivo:* presupuestar la latencia del peor caso. *Entradas:* barrido de la RTU de 120 ms, viaje de ida y vuelta LTE de 180 ms típico / 900 ms en el percentil 99, espera de sondeo de hasta un ciclo completo de 1,3 s (Lab 13), refresco de la vista del operador de 200 ms; requisito: el 95 % de las alarmas en pantalla en menos de 1,5 s y todas en menos de 5 s. *Pasos:* calcule los totales típico y de peor caso; juzgue ambas cláusulas; proponga un cambio de diseño. *Evidencia esperada:* tabla. *Rúbrica:* 3 = sumas correctas, se reconoce que la espera de sondeo domina, se propone un cambio (informe por excepción o alarmas no solicitadas); 2 = una suma errónea; 1 = solo el caso típico; 0 = nada.
+
+### Síntesis del capítulo
+
+Cada capa de red promete algo acotado; la autenticidad hay que añadirla. Los protocolos industriales varían en capacidad de seguridad, y la capacidad no es la configuración. Presupueste la latencia con peores casos. Exprese la segmentación como zonas y conductos con listas de permitidos, y verifíquela con los flujos observados y no con las configuraciones previstas.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Siga estudiando — capítulo 11 de 50
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operativos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) explicar los procesos, los hilos, la planificación, la gestión de memoria y los sistemas de archivos; (2) distinguir los sistemas operativos de propósito general de los de tiempo real y elegir entre ellos; (3) aplicar los mecanismos de seguridad del sistema operativo (cuentas, permisos, aislamiento, registro, parches) a los servidores del centro de control y a las estaciones de ingeniería; y (4) planificar los parches y el endurecimiento bajo las restricciones de disponibilidad de la tecnología operativa. Se apoya en el capítulo 8 y prepara los capítulos 18 y 39.
+
+### 12.1 Qué hace un sistema operativo
+
+Un sistema operativo reparte el hardware entre los programas y ofrece abstracciones: **procesos** (espacios de direcciones aislados), **hilos** (ejecución concurrente dentro de un proceso), **memoria virtual**, **archivos** y **dispositivos**. El núcleo se ejecuta con privilegios; las aplicaciones solicitan servicios mediante llamadas al sistema. El planificador decide qué hilo se ejecuta; su política determina la latencia. En LRWA, los servidores SCADA y las estaciones de ingeniería ejecutan sistemas operativos de propósito general, mientras que la lógica de protección de las bombas se ejecuta en las RTU y los PLC de cada estación. Saber qué código se ejecuta dónde le indica qué máquinas necesitan garantías de tiempo real y cuáles necesitan endurecimiento, parches y registro del tipo que se describe a continuación.
+
+### 12.2 Sistemas operativos de tiempo real
+
+Un sistema operativo de **tiempo real** garantiza una respuesta acotada: las tareas con plazos se planifican de modo que, si el análisis dice que caben, cumplen sus plazos. La planificación por prioridades fijas con asignación de prioridades monótona en la tasa (*rate-monotonic*) es un enfoque clásico; el análisis de Liu y Layland da una cota de utilización suficiente para tareas periódicas bajo esa política. Los sistemas operativos de propósito general (Windows, Linux de escritorio) optimizan el rendimiento y la equidad; su latencia de peor caso no está acotada sin una configuración especial. Regla: las funciones de protección se ejecutan en controladores de tiempo real; las funciones de supervisión (HMI, historiador) pueden ejecutarse en sistemas de propósito general.
+
+### 12.3 Mecanismos de seguridad del sistema operativo
+
+- **Mínimo privilegio:** los servicios se ejecutan con cuentas dedicadas que tienen solo los derechos necesarios; no hay cuentas de administrador compartidas. [Saltzer y Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939) formularon el mínimo privilegio, los valores predeterminados a prueba de fallos, la mediación completa y la economía de mecanismo como principios de diseño que siguen vigentes.
+- **Control de acceso:** permisos sobre archivos y objetos; control de acceso obligatorio donde esté disponible.
+- **Lista de aplicaciones permitidas:** solo se ejecutan los ejecutables aprobados; es práctico en equipos de TO de propósito único cuyo software rara vez cambia.
+- **Registro:** autenticación, uso de privilegios, cambios de servicios y creación de procesos, reenviados fuera del equipo.
+- **Endurecimiento:** eliminar los servicios no usados, cerrar los puertos no usados, deshabilitar la ejecución automática de medios extraíbles.
+- **Parches:** aplicar las actualizaciones de seguridad, probadas y programadas.
+
+### 12.4 Parches bajo restricciones de disponibilidad
+
+Los sistemas de TO a menudo no pueden reiniciarse a voluntad, y los proveedores pueden dar soporte solo a niveles de parche concretos. Por tanto, la aplicación de parches se basa en el riesgo: evalúe la explotabilidad de cada vulnerabilidad en su arquitectura (¿es alcanzable el servicio vulnerable?), su consecuencia y el riesgo para la disponibilidad de aplicarlo; después, aplique el parche, mitigue (bloquee el puerto, deshabilite la función) o acepte con una fecha de revisión. Mantenga un sistema de pruebas que refleje la producción para validar los parches. La [guía de TO del NIST (SP 800-82 Rev. 3)](https://csrc.nist.gov/pubs/sp/800/82/r3/final) analiza estas compensaciones.
+
+### 12.5 Ejemplo resuelto: endurecimiento de los servidores SCADA (sintético)
+
+Los dos servidores SCADA de LRWA ejecutan un sistema operativo de propósito general. La línea base del TMRP: cuentas de servicio dedicadas; los operadores inician sesión con cuentas nominativas; administrador local deshabilitado salvo una cuenta de emergencia (*break-glass*) cuya contraseña está sellada y cuyo uso genera una alarma; lista de aplicaciones permitidas habilitada tras un periodo de aprendizaje de dos semanas en un entorno de pruebas; almacenamiento USB bloqueado; registros reenviados al recolector de la DMZ; una ventana mensual de parches que alterna entre servidores para que uno esté siempre en funcionamiento. El riesgo residual (el proveedor certifica los parches 30 días después de su publicación) se mitiga con reglas de red que exponen al campo y a la DMZ solo los puertos de la aplicación SCADA.
+
+### 12.6 Actividad práctica
+
+En una máquina virtual Linux que le pertenezca, enumere los servicios a la escucha (`ss -tulpn`), las cuentas locales con intérprete de inicio de sesión y los servicios habilitados. Escriba una nota de endurecimiento: qué servicios deshabilitaría en un equipo de historiador de propósito único y por qué. No ejecute esto contra ningún sistema que no le pertenezca. Registre la salida con la fecha y el nombre de la máquina y, para cada servicio que deshabilitaría, anote qué se rompería si usted se equivocara. Un equipo de historiador de LRWA necesitaría su servicio de base de datos y el reenvío de registros, pero rara vez un servidor de correo o un servicio para compartir archivos. Compare su lista con las medidas de endurecimiento del ejemplo de SCADA y explique cualquier diferencia. El ejercicio entrena el hábito de preguntar por qué se ejecuta cada servicio antes de decidir si debería ejecutarse.
+
+### 12.7 Errores comunes y límites
+
+- Ejecutar la lógica de protección en un sistema operativo de propósito general.
+- Cuentas compartidas que destruyen la rendición de cuentas.
+- Aplicar parches por calendario sin evaluar la explotabilidad, o no aplicarlos nunca porque «la TO es especial».
+- Registros guardados solo en el equipo que controla el atacante.
+- Lista de aplicaciones permitidas activada en producción sin un periodo de aprendizaje.
+
+El endurecimiento del SCADA de LRWA evita cada uno de estos errores: las cuentas nominativas sustituyen a las compartidas, los registros salen del equipo, la lista de permitidos se activó tras dos semanas de aprendizaje en un entorno de pruebas y la ventana mensual de parches alterna entre los dos servidores. El riesgo residual queda registrado.
+
+### Ejercicios — capítulo 12
+
+**EX023 — Comprobación monótona en la tasa.** *Objetivo:* probar la planificabilidad con la cota de Liu–Layland. *Entradas:* tres tareas periódicas en una RTU: (C=2 ms, T=10 ms), (C=4 ms, T=40 ms), (C=10 ms, T=100 ms). *Pasos:* calcule la utilización; calcule la cota $n(2^{1/n}-1)$ para $n = 3$; concluya. *Evidencia esperada:* números y conclusión. *Rúbrica:* 3 = U = 0,40, cota ≈ 0,780, planificable según la prueba suficiente, con la salvedad de que superar la cota no probaría que no es planificable; 2 = falta la salvedad; 1 = error aritmético; 0 = nada.
+
+**EX024 — Decisión sobre un parche.** *Objetivo:* tomar una decisión de parcheo basada en el riesgo. *Entradas:* una vulnerabilidad de ejecución remota de código en el servicio para compartir archivos del sistema operativo; el servicio está habilitado en el historiador, pero el cortafuegos de la zona de control lo bloquea desde todas las zonas salvo la de ingeniería; faltan 30 días para que el proveedor certifique el parche. *Pasos:* recomiende parchear / mitigar / aceptar, con controles provisionales y una fecha de revisión. *Evidencia esperada:* nota de decisión. *Rúbrica:* 3 = mitigación inmediata (deshabilitar el servicio o restringirlo más), parche tras la certificación, monitoreo, fecha; 2 = sin control provisional; 1 = «parchear de inmediato» ignorando el soporte del proveedor, o «aceptar» sin razonamiento; 0 = nada.
+
+### Síntesis del capítulo
+
+El sistema operativo determina tanto la temporización como la línea base de seguridad. Ponga los plazos en plataformas de tiempo real. Aplique el mínimo privilegio, las listas de aplicaciones permitidas, el endurecimiento y el registro fuera del equipo. Aplique los parches según el riesgo evaluado, con procedimientos probados y controles compensatorios cuando aún no pueda parchear, y mantenga un entorno espejo que lo haga posible.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Siga estudiando — capítulo 12 de 50
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](../../en/book/MANUSCRIPT.md#ch-13)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -785,6 +1069,30 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX015.** Peor caso: la señal de aspiración baja aparece justo después de una lectura de entradas, así que se ve por primera vez en el barrido siguiente (hasta 45 ms después); la confirmación requiere un segundo barrido consecutivo (45 ms); la salida se escribe al final de ese barrido. Peor caso ≈ 45 + 45 + 45 = 135 ms (más el retardo del módulo de salida), lo que incumple los 100 ms. Corrección: reducir el barrido de peor caso, filtrar los rebotes con un temporizador en una tarea más rápida o usar un disparo cableado.
 
 **EX016.** El arranque seguro impide: (1) la instalación persistente de firmware sin firmar o modificado; (2) arrancar una imagen degradada a una versión anterior, si se aplica la protección contra reversión. No impide: (1) la explotación en tiempo de ejecución de una vulnerabilidad del firmware firmado → parches, validación de entradas, restricción de red; (2) cambios de lógica maliciosos pero legítimos a través de la interfaz de ingeniería → programación autenticada y basada en roles, con detección de cambios y registro.
+
+### Capítulo 9
+
+**EX017.** 5 estados × 7 eventos = 35 pares. Enumerados: stopped+start, starting+run_confirmed, starting+timeout, running+stop, stopping+stop_confirmed, tripped+reset (6), más `trip` desde los 5 estados (5) = 11. No enumerados: 24. Ejemplos con justificación: tripped+start (volver a arrancar en la falla; debe exigir un reinicio local); stopped+run_confirmed (una confirmación espuria o falsificada no debe crear la creencia de que la bomba está «en marcha»); running+reset (el reinicio no debe borrar un disparo inexistente y enmascarar el estado).
+
+**EX018.** Invariante: para cada estación, `last[st]` nunca disminuye y es igual al mayor contador aceptado. Secuencia 1, 2, 2, 1, 5 → aceptar, aceptar, rechazar (repetición), rechazar (repetición), aceptar; estado final `last[3] == 5`. Tras reiniciar el receptor, `last` está vacío, así que los mensajes ya vistos vuelven a aceptarse salvo que el receptor persista `last` o que las claves se roten al reiniciar.
+
+### Capítulo 10
+
+**EX019.** Peligro: un operador bloqueado durante una emergencia no puede actuar; un atacante puede bloquear deliberadamente a los operadores (denegación de servicio). Alternativa: sin bloqueo en las HMI de la sala de control; en su lugar, retardo progresivo tras los fallos, alertas ante fallos repetidos, cuentas nominativas con autenticación fuerte, control de acceso físico a la sala de control y una anulación de emergencia con presencia física y registro. Verifique mediante prueba (los intentos fallidos producen retardos y alertas, nunca bloqueo) y mediante ejercicio (el operador puede iniciar sesión bajo estrés).
+
+**EX020.** No visite, sondee ni intente iniciar sesión en la página, y no comparta la captura de pantalla. Notifique a la empresa de servicios en privado a través de su contacto de seguridad publicado o, si no existe, mediante un programa de divulgación coordinada como el de CISA, indicando solo lo que observó y dónde. El trabajo del curso puede describir el patrón («interfaces de gestión expuestas en documentos de compra») sin nombrar a la empresa, el proveedor, el modelo ni la ubicación.
+
+### Capítulo 11
+
+**EX021.** El nuevo flujo field → enterprise por TCP/445 es una VIOLATION. Modele el servidor de salto: añada la regla ("control", "field", "tcp", 22); entonces eng `10.5.0.12` → servidor de salto `10.1.0.20` por TCP/22 queda permitido; servidor de salto → RTU `10.2.0.33` por TCP/22, permitido; el acceso directo eng → RTU por TCP/22 sigue siendo una VIOLATION. Ninguna regla da a la zona de ingeniería acceso directo al campo.
+
+**EX022.** Típico: 120 + 180 + hasta 1.300 + 200 ≈ 1,8 s si un evento llega justo después de su sondeo (≈ 1,15 s de media con una espera de medio ciclo). Peor caso: 120 + 900 + 1.300 + 200 ≈ 2,5 s. La cláusula del 95 % en menos de 1,5 s está en riesgo porque domina la espera de sondeo; la cláusula de 5 s se cumple. Cambio: informe por excepción (respuestas no solicitadas) para las alarmas, de modo que no esperen al sondeo.
+
+### Capítulo 12
+
+**EX023.** U = 2/10 + 4/40 + 10/100 = 0,40. Cota para n = 3: 3(2^{1/3} − 1) ≈ 0,780. U ≤ cota, así que el conjunto es planificable con prioridades monótonas en la tasa. La prueba es suficiente, no necesaria: un conjunto que supere la cota podría seguir siendo planificable (lo decidiría un análisis exacto del tiempo de respuesta).
+
+**EX024.** Mitigar ahora: deshabilitar el servicio para compartir archivos en el historiador si no se necesita, o restringirlo a un único equipo de ingeniería identificado; monitorear los intentos de conexión; aplicar el parche tras la certificación del proveedor en la siguiente ventana de mantenimiento; fecha de revisión: certificación + 14 días. Aceptar sin hacer nada ignora el camino alcanzable desde la zona de ingeniería.
 
 <a id="glossary"></a>
 
