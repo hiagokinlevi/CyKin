@@ -2758,31 +2758,45 @@ You will (1) run AI systems in production with security operations (monitoring, 
 
 Feed AI telemetry into the security operations centre: injection-classifier flags, policy denials, unusual tool-call rates, extraction-like query patterns, model-load verification failures and drift alarms. Define severities and owners.
 
+Analysts in the security operations centre already watch identity, network and endpoint signals, so AI events become far more useful beside them: a burst of policy denials from one account may line up with a suspicious login. Each AI signal gets a severity, an owner and a runbook before it is switched on, because an alert nobody understands is soon ignored. Sam starts with a few high-value signals and adds more once the first ones are tuned and trusted.
+
 ### 37.2 AI incident runbooks
 
 Runbooks give steps for: suspected prompt injection with action taken (contain: revoke tool credentials, disable tool; investigate: trace request IDs to source document; recover: undo actions, purge poisoned documents; learn: add to tests); suspected data poisoning (freeze training, identify affected versions by lineage, roll back to verified model); suspected extraction (throttle client, preserve logs, notify legal); model integrity failure (stop loading, verify supply chain).
+
+Containment comes first in each runbook because it is fast and reversible. Investigation follows once harm has stopped.
 
 ### 37.3 Vulnerability management
 
 Track vulnerabilities in model-serving software, libraries and connectors like any software. Track model-level weaknesses (new jailbreak techniques, newly published attacks) by monitoring sources such as MITRE ATLAS case studies, vendor advisories and research. Re-test after model or prompt updates.
 
+Model-level weaknesses differ from software bugs: there is often no patch, only a mitigation such as a new test, a filter or a tighter tool permission. Each newly published technique is assessed against the system's own threat model and recorded as not applicable, mitigated or open. Re-testing after updates matters because a new model version may be weaker against an old attack that the previous version resisted.
+
 ### 37.4 Change management
 
 Changes to models, prompts, tools and retrieval sources go through the release process with security gates, canary deployment and rollback. Emergency changes (e.g., disabling a tool) are pre-approved in runbooks.
+
+A prompt edit or a new retrieval source can change security behaviour as much as new code, so all of them pass the same gate. Pre-approved emergency changes let the on-call engineer disable a tool at night without waiting for a meeting, while the change is still logged and reviewed the next day. The aim is speed for containment and care for everything else.
 
 ### 37.5 Operational metrics
 
 Report monthly: policy denials and confirmations, injection flags, incidents by type and time to contain, evaluation-suite results per release, quota breaches, and open risks. Trends matter more than single numbers.
 
+A rising number of confirmations may mean more legitimate work or a new injection campaign, and the trend alongside flags and incidents helps tell which. Time to contain shows whether runbooks work in practice. Evaluation results per release show whether security is improving or slipping as the system changes. Open risks keep accepted problems visible, so they are revisited rather than forgotten.
+
 ### 37.6 Worked example (synthetic NRS case)
 
 At 02:10 the SOC saw a burst of Wrench proposals to create work orders on one line, all confirmed by a single night-shift account within seconds. The runbook led the on-call engineer to suspend that account's Wrench tool access, trace the proposals to a bulletin uploaded at 01:55, and find it contained instruction-like text. The account owner had approved without reading. Orders were cancelled; the bulletin source was blocked; the approval UI gained a rate limit on approvals per minute.
+
+Every confirmation took seconds, a pattern no careful reviewer produces.
 
 ### 37.7 Errors and limits
 
 - AI telemetry not reaching the SOC.
 - No runbooks for model-specific incidents.
 - Emergency changes without pre-approval, causing delay.
+
+If AI telemetry stays in an engineering dashboard, nobody watches it at 02:10. Without model-specific runbooks, responders improvise, often by switching off the whole service when disabling one tool would do. Emergency changes that need a committee lose hours while an attack continues. The incident above worked because all three were in place: the alert reached the SOC, a runbook existed and suspending access was pre-approved.
 
 ### Exercises
 
@@ -2810,27 +2824,37 @@ You will (1) distinguish verification (built right) from validation (right thing
 
 Verification checks that the system meets its specified requirements. Validation checks that the requirements and the system serve stakeholders' real needs in the real environment. A system can pass every requirement and still be unsafe if the requirements missed a threat or if users behave differently than assumed.
 
+For Wrench, verification showed that the enforcement point blocks unauthorised calls. Validation asks whether technicians can do their work with it, whether they read confirmation screens and whether the threats in the model are the ones that actually appear. Both are needed: verification without validation can approve a system nobody uses safely, and validation without verification relies on impressions.
+
 ### 38.2 Operational validation
 
 Run pilots in realistic conditions: real (authorised) workloads, real users, realistic adversarial content. Observe how users interact with controls — do they read approval screens, do they work around restrictions? Measure task success and security outcomes together.
+
+Observation reveals behaviour no requirement anticipated, such as a technician who approves proposals in batches at the end of a shift, or one who copies bulletin text into chat to save time. Measuring task success with security outcomes stops a pilot from declaring success when work got faster only because people were bypassing controls. Feedback from pilot users is collected in writing, with their permission, and fed back into requirements.
 
 ### 38.3 Red teaming as validation
 
 A red team with a defined scope and authorization tries to achieve attacker goals against the integrated system, using any technique within the rules. Unlike a test suite, red teams find unanticipated paths. NIST AI 600-1 lists red-teaming among suggested actions for generative AI. Report findings with severity and fixes, and convert successful paths into regression tests.
 
+Red teams work best when independent of the developers. Developers know the intended paths and tend to test those; an outside team starts from the attacker's goal, such as an unauthorised parts order, and works backwards through whatever the system exposes. Each finding is retested after its fix.
+
 ### 38.4 Fitness for purpose
 
 The validation report states: the intended use, the conditions tested, results against stakeholder needs, red-team findings and their status, residual risks, and a recommendation (deploy, deploy with conditions, do not deploy) signed by accountable owners.
 
+Accountable owners sign because deployment is a business decision informed by engineering evidence, not an engineering decision alone. Conditions attached to a 'deploy with conditions' outcome each have an owner and a date, and the system is checked against them before the conditions are considered met. The report also states when validation must be repeated, such as after a major model change or a new integration.
+
 ### 38.5 Worked example (synthetic NRS case)
 
-Wrench passed verification. During a four-week pilot at two depots, planners asked Wrench to "do everything from the bulletin" — a usage pattern not anticipated, which raised the share of proposals derived from untrusted text. An authorised internal red team then achieved one unauthorised parts order by chaining a search result into a supplier-allowlisted e-mail with a modified part number. Validation outcome: deploy with conditions — part numbers in e-mails must match an open work order, and training for planners on bulletin-driven requests.
+Wrench passed verification. During a four-week pilot at two depots, technicians asked Wrench to "do everything from the bulletin" — a usage pattern not anticipated, which raised the share of proposals derived from untrusted text. An authorised internal red team then achieved one unauthorised parts order by chaining a search result into a supplier-allowlisted e-mail with a modified part number. Validation outcome: deploy with conditions — part numbers in e-mails must match an open work order, and training for technicians on bulletin-driven requests.
 
 ### 38.6 Errors and limits
 
 - Treating verification as validation.
 - Red teams without scope or with the developers grading themselves.
 - Recommendations without accountable sign-off.
+
+A system that meets its specification can still fail its users if the specification missed how they work, as the bulletin requests in the pilot showed. Red teams that report to the developers they test, or that work without written scope, produce findings that are easy to dismiss or dangerous to obtain. A recommendation nobody signs leaves the deployment decision unowned when something later goes wrong.
 
 ### Exercises
 
@@ -2858,31 +2882,45 @@ You will (1) design AI systems whose security can be maintained as models, data 
 
 Hosted models are updated; open models gain new versions; libraries patch vulnerabilities; attackers publish new techniques; business processes change. A secure design that cannot be updated safely will become insecure.
 
+Each source of change affects security differently. A model update may alter how readily it follows injected text; a library patch may change parsing behaviour; a new attack technique may defeat a filter that worked last month. Maintainability is the ability to absorb these changes without losing the controls that matter, which needs tests, owners and a predictable process for updates.
+
 ### 39.2 Update strategy
 
 Pin versions and update deliberately: each model or dependency update triggers the security evaluation gate, a canary deployment and a rollback plan. For hosted models that change without notice, run the evaluation suite on a schedule and alert on regressions. Keep abstraction layers so that a model can be swapped without rewriting policy enforcement.
+
+The abstraction layer means policy enforcement does not depend on any particular model's behaviour. Swapping a model then needs only the gate and canary, not a redesign of the controls around it.
 
 ### 39.3 Keeping knowledge current
 
 Assign owners for the threat model, evaluation suites, model cards and runbooks, with review dates. Add every incident and red-team finding to the regression suite. Track external sources (OWASP updates, MITRE ATLAS additions, NIST publications) and record whether each change affects your system.
 
+An owner with a review date turns 'someone should update the threat model' into a task with a name attached. Adding every finding to the regression suite means the system's tests grow from real experience rather than from guesswork. External tracking is recorded briefly, for example 'new ATLAS technique on tool-description injection: applies to connectors, test added', so later reviewers can see that changes were considered.
+
 ### 39.4 Technical debt in AI security
 
 Debt accumulates as one-off filters, exceptions and undocumented prompt tweaks. Periodically refactor: remove controls that no longer serve a threat, consolidate filters into the enforcement point, and document remaining exceptions with expiry dates.
+
+A filter added during an incident and never removed may now block legitimate requests or duplicate a control in the enforcement point. Undocumented prompt tweaks are especially risky, since nobody knows which one is holding back a known weakness. Refactoring is done with the regression suite running, so removing a control that still matters shows up as a failing test rather than an incident.
 
 ### 39.5 Retirement
 
 Retiring a model includes revoking its credentials, removing access paths, deciding what to do with weights (they may encode training data), deleting or archiving data according to retention rules, and updating inventories. ISO/IEC 42001 expects AI system lifecycle processes including retirement.
 
+Forgotten models are a real risk: an old endpoint still running with valid credentials can be found and abused long after everyone stopped using it. Weights may allow membership inference or leak training data, so they are handled under the same rules as the data itself. The inventory update closes the loop, so monitoring and audits stop expecting a system that no longer exists and notice any that should not still be running.
+
 ### 39.6 Worked example (synthetic NRS case)
 
 A hosted embedding model used for Wrench's retrieval was silently updated by the provider. The scheduled evaluation found that retrieval now ranked HR documents higher for some queries; the access-control filter still blocked them, but the team was alerted. Sam added "embedding model version" to monitoring and moved to a pinned version with scheduled upgrades.
+
+Defence in depth held: the ranking change was harmless only because access control was enforced separately from retrieval. The episode also showed a hidden dependency, since nobody had listed the embedding model as something that could change.
 
 ### 39.7 Errors and limits
 
 - No owner for the threat model or evaluation suite.
 - Exceptions without expiry dates.
 - Retirement that forgets weights and credentials.
+
+Without owners, threat models and suites stop changing while the system keeps changing, and the gap widens unseen. Exceptions without expiry accumulate until nobody knows which are still needed. Retirement that removes the interface but leaves weights and credentials behind creates an unmonitored system holding sensitive material. Sam's quarterly review checks owner names, exception dates and the inventory against what is actually running.
 
 ### Exercises
 
