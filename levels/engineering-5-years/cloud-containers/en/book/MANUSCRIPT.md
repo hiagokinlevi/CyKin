@@ -3842,25 +3842,37 @@ You will (1) write the engineering thesis; (2) present problem, design, implemen
 
 Configuration and credential weaknesses in a containerised energy-data platform, shown by the leaked key and missing network policies.
 
+The thesis opens with the concrete incident rather than a general statement about cloud risk, because a reader can follow a real chain of events: a long-lived key copied out, and namespaces with no network policies to limit where it could be used. From that case Elena states the general problem: small platform teams run powerful shared infrastructure with weak defaults, and lack a practical method for turning security standards into controls they can check and sustain.
+
 ### 49.2 Approach
 
 Requirements from risks and standards; layered architecture; implemented controls (workload identity, default-deny networking, Restricted pod security, signed images, guardrails, drift detection); secure namespace service.
+
+The approach chapter explains the order of the work as well as its parts. Risks and standards produced requirements; requirements shaped the architecture; each control was then built to meet named requirements and verified against them. The namespace service comes last because it packages the earlier controls as defaults. Presenting the method this way lets another team reuse the sequence even if their tools differ from Solent's.
 
 ### 49.3 Evaluation
 
 Coverage rose from 62% to 100% of production namespaces; long-lived workload keys from 23 to 0; time to fix risky configurations fell from 9 days to 4 hours; admission overhead about 20 ms median; trial objectives met.
 
+Each figure in the list is given its source and sample size, following Dr Wagner's comment on the draft. The overhead figure comes from twenty synthetic deployments, the time-to-fix figures from six months either side of enforcement, and the trial results from a single run of each scenario. Stating these alongside the results lets a reader judge how much weight each can bear, and stops the strongest results from lending false certainty to the weakest.
+
 ### 49.4 Contributions
 
 An engineering method combining standards, traceability and verification for small platform teams; the secure namespace service; measurement scripts reusable by others.
+
+Elena claims contributions only where she has evidence of use. The method was followed through the whole project and is documented step by step. The namespace service runs in production, with the comparison against hand-made namespaces as evidence. The scripts are published with tests, so others can rerun them. She avoids claiming novelty for individual controls, since workload identity and default-deny policies are established practice; the contribution is combining and verifying them for a small team.
 
 ### 49.5 Limits
 
 Single organisation, short observation, synthetic trial data, dependence on provider features.
 
+The limits chapter connects each limit to the claim it affects. Results from Solent may not transfer to larger organisations or different regulators. Observation after rollout lasted months, not years. Trial scenarios used synthetic data and planned failures, which are kinder than real attacks. Several controls rely on the cloud provider's identity and storage features, which could change. Naming the affected claims helps readers decide how far to trust each result and where follow-up work should begin.
+
 ### 49.6 Future work
 
 Extend the namespace service to cloud accounts; measure developer productivity effects; study multi-organisation adoption.
+
+Each item follows from a limit or an unanswered question. Cloud account settings are today checked against their templates only afterwards, by the weekly drift report, much as namespaces were checked before the service, so creating accounts from verified templates could close similar gaps there. Developer productivity was measured only through ratings and rejection counts, which says little about time lost or saved. A study across several organisations would test whether the method transfers. Elena states what data each study would need, so the proposals can be acted on.
 
 ### Writing process
 
@@ -3910,25 +3922,37 @@ You will (1) defend the engineering thesis before a panel; (2) answer technical 
 
 Dr Wagner, Rosa Delgado and an external examiner from industry.
 
+The three panellists bring different views. Dr Wagner has supervised the thesis and knows its argument in detail. Rosa knows the platform and can judge whether the work holds up in daily operation. The external examiner has seen neither, and judges whether the thesis would convince someone outside the project, which is closest to how a future employer or regulator would read it. Elena prepares for each by rereading the parts each one is likely to question.
+
 ### 50.2 Technical questions
 
 Why fail closed? Because production safety outweighs deployment convenience, backed by a reliable engine. Why namespaces rather than clusters per service? The scored decision record. How do controls handle a provider outage? Rebuild and degradation plans.
+
+Each answer points to evidence rather than opinion. For fail-closed, Elena cites the engine failure trial, where recovery took six minutes and running workloads were unaffected. For architecture, she shows the decision record's scores and its revisit triggers. For a provider outage, she describes rebuilding the platform from the declared state in version control and running degraded until the provider recovers, and admits that a full regional outage has not been tested.
 
 ### 50.3 Professional questions
 
 How did you handle developer resistance? Through exceptions with expiry, clear messages and making the secure path easy. What would you do differently? Involve developers earlier in requirements.
 
+Elena's answer on resistance is concrete: the developer survey, the change to rejection messages and the two-day exception service level. On what she would change, she explains that developers joined after the first requirements were written, and several early complaints, such as exception delays, could have been designed out from the start. The panel values the admission because it shows she learned from the project rather than defending every choice.
+
 ### 50.4 Reflection
 
 Elena writes that the most valuable skill was turning standards into testable requirements and then into evidence.
+
+She gives an example: a standard's recommendation to group containers by sensitivity became a requirement about separate clusters, then a decision record, then configuration queries and tests that showed the separation was in place. Each step made the idea more checkable. She also reflects that the hardest work was not technical but persuading teams, which took listening, clear messages and quick help more than policy writing.
 
 ### 50.5 Outcome
 
 The thesis passes; Solent offers Elena a platform security engineer role.
 
+The panel's decision rests on the evidence that the work was done well and checked honestly: traced requirements, verified controls, measured results and openly stated limits. The job offer shows the work was useful to Solent as well as academically sound. Elena's role continues the project's direction, which also means the systems she built will have their author nearby for a while, though the handover and documentation were designed so the platform does not depend on her.
+
 ### 50.6 Next steps
 
 Lead the extension of secure defaults to cloud accounts, mentor next year's student.
+
+Extending secure defaults to cloud accounts follows the future work in the thesis and uses the same pattern: reviewed templates, a narrowly scoped automation identity, verification at creation and a canary. Mentoring passes on both the methods and the habits behind them, such as writing requirements as tests and including failures in evidence. Elena plans to run next year's failure and recovery trial with new scenarios from the threat register, so the controls keep being tested as the platform changes.
 
 ### Mentoring
 
