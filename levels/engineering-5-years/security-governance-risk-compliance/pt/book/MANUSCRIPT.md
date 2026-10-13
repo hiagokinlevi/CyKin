@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 120, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de governança, riscos e compliance de segurança como um sistema de engenharia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam perda esperada, validação de registros, risco residual, taxas de aprovação de controles, falha em camadas, limites de amostragem por atributos, otimização de orçamento e digests de evidências, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -420,11 +420,401 @@ Os códigos dão princípios, não respostas. Escalar pode trazer risco pessoal.
 - **EX029 — Alternativa nos consoles.** O que Nadia propôs em vez do bloqueio nos consoles de controle? *Rubrica:* 3 = monitoramento e alertas com restrição do acesso físico;; 2 = monitoramento;; 1 = bloqueio;; 0 = nenhuma.
 - **EX030 — Cultura honesta.** Por que as organizações devem tornar seguro o relato honesto? *Rubrica:* 3 = punir más notícias esconde os problemas até que causem danos;; 2 = cultura;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear as zonas da rede no escopo da governança; (2) avaliar os caminhos de acesso remoto; (3) relacionar a segmentação aos requisitos de compliance.
+
+### 11.1 Zonas e fronteiras
+
+Nadia mapeia a rede da Ardwell em zonas: a rede corporativa do escritório, o ambiente de pagamento dos clientes, a rede do sistema de controle e uma zona para o acesso remoto de fornecedores. Cada fronteira entre zonas é um ponto onde o tráfego pode ser controlado e registrado. A governança precisa desse mapa porque as decisões de escopo dependem dele. Por exemplo, o PCI DSS v4.0 se aplica ao ambiente de dados do titular do cartão e aos sistemas conectados, então uma boa segmentação mantém pequena a zona de pagamento e reduz o número de sistemas sujeitos a seus requisitos. Uma zona própria para o acesso de fornecedores também permite registrar cada sessão num único ponto.
+
+### 11.2 Caminhos de acesso remoto
+
+Os fornecedores mantêm os equipamentos do sistema de controle por conexões remotas. Nadia rastreia cada caminho: do site do fornecedor, pela internet, até o gateway de acesso remoto da Ardwell, depois até um jump host e, por fim, até o equipamento. Ela anota quais saltos exigem autenticação multifator, quais são registrados e quem aprova cada sessão. Um fornecedor usa uma conexão direta que contorna o jump host. Ela a registra como achado, porque um caminho sem registro nem aprovação quebra as premissas de governança por trás do desenho dos controles. O Prof. Brenner pergunta que evidência a conexão direta deixa, e Nadia não encontra nenhuma: por isso ela não pode ser auditada.
+
+### 11.3 Evidência de segmentação
+
+Afirmar que há segmentação não basta; é preciso demonstrá-la. Nadia aprende que os avaliadores esperam evidências como revisões das regras de firewall e testes que mostrem que o tráfego não atravessa fronteiras que não deveria. Ela escreve um plano de testes para verificar que a rede corporativa não alcança diretamente a rede do sistema de controle. Também observa que a segmentação precisa ser testada de novo depois de mudanças, porque uma única regra nova de firewall pode ligar zonas discretamente. Executar o teste depois de cada mudança de firewall liga a evidência de segmentação à gestão de mudanças, e não a um calendário anual.
+
+### Exemplo resolvido
+
+Nadia mapeia quatro zonas de rede, rastreia os caminhos dos fornecedores, encontra um desvio e planeja testes de segmentação como evidência.
+
+> **Caso sintético.** A rede da Ardwell é sintética; o PCI DSS v4.0 é real.
+
+### Erros e limites
+
+Os diagramas de rede se afastam da realidade. Os testes mostram só o que foi testado.
+
+### Exercícios
+
+- **EX031 — Quatro zonas.** Que quatro zonas Nadia mapeou? *Rubrica:* 3 = corporativa, pagamento, sistema de controle e acesso de fornecedores;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Achado do desvio.** Por que a conexão direta do fornecedor foi um achado? *Rubrica:* 3 = contornava o registro e a aprovação;; 2 = desvio;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Novo teste.** Quando a segmentação precisa ser testada de novo? *Rubrica:* 3 = depois de mudanças, como novas regras de firewall;; 2 = depois de mudança;; 1 = nunca;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar os mecanismos do sistema operacional aos objetivos de controle; (2) definir baselines de configuração segura; (3) medir o desvio de configuração.
+
+### 12.1 Mecanismos e objetivos
+
+Nadia estuda como os sistemas operacionais gerenciam usuários, permissões, processos e logs, e liga cada mecanismo a um objetivo de controle. Contas e permissões apoiam o menor privilégio. Os logs de auditoria apoiam a responsabilização e a investigação. Os mecanismos de atualização apoiam a gestão de vulnerabilidades. Entender o mecanismo a ajuda a julgar se uma alegação de controle é crível. Uma política dizendo que os administradores são restritos significa pouco se o sistema operacional não impõe contas de administrador separadas e não registra seu uso em logs que usuários comuns não conseguem alterar. O Prof. Brenner sugere conferir se um usuário comum consegue apagar o log de segurança, porque essa única configuração decide se a alegação se sustenta.
+
+### 12.2 Baselines de configuração
+
+A Ardwell precisa de um baseline de configuração segura para os computadores do escritório e os servidores: que serviços ficam desativados, que configurações são impostas e como as atualizações são aplicadas. Nadia redige um baseline com base nas orientações dos fabricantes e o adapta às necessidades da Ardwell, registrando cada desvio com seu motivo. Um baseline transforma um requisito vago de configuração segura em configurações específicas e testáveis. Ela aprende que os baselines precisam de responsáveis e datas de revisão, como as políticas, porque as versões dos sistemas mudam. Registrar o motivo de cada desvio permite a um revisor futuro ver se ele ainda vale depois de uma atualização do sistema.
+
+### 12.3 Medir o desvio
+
+Os sistemas se afastam do baseline à medida que os administradores fazem mudanças. Nadia escreve um script que compara as configurações reais com o baseline e relata as diferenças. Num teste sintético com quarenta servidores, um quarto mostra pelo menos um desvio, quase sempre um serviço desnecessário ativado para diagnóstico e nunca desligado. Ela aprende que o desvio é normal e que a pergunta de governança é com que rapidez ele é detectado e corrigido. A medição regular transforma o baseline de documento em controle vivo, com resultado observável. Dez servidores em quarenta com desvio, a maioria por serviços de diagnóstico esquecidos, sugerem acrescentar uma etapa de remoção ao procedimento de diagnóstico.
+
+### Exemplo resolvido
+
+Nadia liga os mecanismos do sistema operacional aos objetivos, redige um baseline com desvios registrados e mede o desvio de configuração nos servidores.
+
+> **Caso sintético.** O baseline e os números de desvio são sintéticos.
+
+### Erros e limites
+
+Os baselines ficam atrás das novas versões. Os scripts de desvio não veem as configurações que não verificam.
+
+### Exercícios
+
+- **EX034 — Alegação sobre administradores.** O que torna crível uma política que restringe os administradores? *Rubrica:* 3 = contas de administrador separadas impostas e registradas;; 2 = imposição;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Desvios do baseline.** Como os desvios do baseline devem ser tratados? *Rubrica:* 3 = registrados com os motivos;; 2 = documentados;; 1 = ignorados;; 0 = nenhuma.
+- **EX036 — Pergunta sobre o desvio.** Qual é a verdadeira pergunta de governança sobre o desvio? *Rubrica:* 3 = com que rapidez é detectado e corrigido;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar um registro de riscos como dados estruturados; (2) validar automaticamente a qualidade do registro; (3) proteger a integridade dos dados de governança.
+
+### 13.1 O registro como dados
+
+O registro de riscos da Ardwell vive numa planilha editada por muitas pessoas. Nadia o modela como uma tabela com campos definidos: identificador, responsável, data da última revisão e uma nota de um a vinte e cinco na escala cinco por cinco da cooperativa. Campos definidos permitem verificações automáticas. Ela aprende com o projeto de bancos de dados que cada campo deve ter um tipo e valores permitidos, para que uma nota trinta ou um responsável em branco possam ser apanhados. Tratar o registro como dados, e não como documento, é o primeiro passo para relatórios de risco confiáveis, e ela documenta cada campo num dicionário de dados.
+
+### 13.2 Validar a qualidade
+
+O laboratório de Nadia confere seis linhas sintéticas do registro contra três regras: todo risco precisa ter responsável, as revisões não podem ter mais de cento e oitenta dias e as notas precisam ficar entre um e vinte e cinco. O laboratório encontra seis problemas em quatro linhas. Dois riscos não têm responsável. Três revisões estão vencidas, uma delas há mais de um ano. Uma nota vinte e seis está fora da escala. Só duas linhas estão limpas. Nadia envia a cada responsável uma lista específica de correções, em vez de um lembrete genérico, para que cada um saiba exatamente o que mudar.
+
+### Laboratório — Validação de um registro de riscos sintético
+
+```python
+"""Validate a synthetic risk register: missing owners, overdue reviews, scores out of range."""
+from datetime import date
+today = date(2026, 10, 1)
+reg = [("R01", "IT ops", date(2026, 6, 1), 12), ("R02", "", date(2026, 9, 1), 8),
+       ("R03", "Finance", date(2025, 8, 15), 20), ("R04", "OT eng", date(2026, 3, 20), 26),
+       ("R05", "HR", date(2026, 8, 30), 6), ("R06", "", date(2025, 11, 2), 15)]
+issues = []
+for rid, owner, last, score in reg:
+    if not owner: issues.append((rid, "no owner"))
+    if (today - last).days > 180: issues.append((rid, f"review overdue {(today-last).days} days"))
+    if not 1 <= score <= 25: issues.append((rid, f"score {score} outside 1-25"))
+for i in issues: print(*i)
+print(f"rows {len(reg)}; issues {len(issues)}; clean rows {len(reg) - len({r for r, _ in issues})}")
+```
+
+Execute com `python3 lab_register.py`. Saída verificada:
+
+```text
+R02 no owner
+R03 review overdue 412 days
+R04 review overdue 195 days
+R04 score 26 outside 1-25
+R06 no owner
+R06 review overdue 333 days
+rows 6; issues 6; clean rows 2
+```
+
+### 13.3 Integridade dos dados de governança
+
+Um registro que qualquer pessoa edita sem deixar rastro não serve como evidência. Nadia recomenda levá-lo para um sistema que registre quem mudou cada entrada e quando, com aprovação para mudanças de nota. Ela observa que edições falsificadas ou descuidadas poderiam fazer riscos parecerem menores antes de uma reunião do conselho. O histórico de versões torna essas mudanças visíveis. O Prof. Brenner acrescenta que os mesmos princípios de integridade, controle de acesso e trilha de auditoria que protegem os dados do negócio valem para os dados de governança que descrevem o risco. A aprovação de mudanças de nota também significa que um risco só pode ser rebaixado com uma pessoa identificada assumindo a decisão.
+
+### Exemplo resolvido
+
+Nadia define campos tipados no registro, encontra seis problemas em quatro de seis linhas e recomenda um sistema de registro auditado.
+
+> **Caso sintético.** As linhas do registro são sintéticas.
+
+### Erros e limites
+
+A validação confere a forma, não se os riscos estão certos. As trilhas de auditoria precisam ser revisadas.
+
+### Exercícios
+
+- **EX037 — Regras de validação.** Que três regras o laboratório aplicou? *Rubrica:* 3 = responsável presente, revisão em até 180 dias, nota de 1 a 25;; 2 = três regras;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Linhas limpas.** Quantas das seis linhas estavam limpas? *Rubrica:* 3 = duas;; 2 = 2;; 1 = seis;; 0 = nenhuma.
+- **EX039 — Risco à integridade.** O que poderia acontecer sem histórico de mudanças? *Rubrica:* 3 = riscos rebaixados para parecer menores antes das reuniões do conselho;; 2 = manipulação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar práticas de desenvolvimento seguro como controles de governança; (2) gerenciar mudanças com aprovação e rastreabilidade; (3) incluir o código de terceiros no risco.
+
+### 14.1 Desenvolvimento como controle
+
+A Ardwell desenvolve e mantém seu portal de pagamento para clientes. Nadia aprende que as práticas de desenvolvimento seguro, como revisão de código, testes de segurança e gestão de dependências, são controles de governança, além de hábitos de engenharia. A ISO/IEC 27002:2022 inclui controles para ciclos de vida de desenvolvimento seguro e codificação segura, e o PCI DSS v4.0 exige que o software sob medida dos sistemas de pagamento seja desenvolvido com segurança. Ela mapeia cada prática do fluxo de trabalho da equipe do portal a esses requisitos e anota onde já existe evidência nas ferramentas da equipe, como os registros de revisão no repositório, que podem ser reaproveitados nas auditorias.
+
+### 14.2 Gestão de mudanças
+
+Toda mudança no portal passa por um ticket, uma revisão de código e uma aprovação antes da implantação. Nadia confere um mês sintético de mudanças e descobre que a maioria é rastreável do ticket até a implantação, mas algumas correções emergenciais pularam a revisão. Ela recomenda um caminho emergencial documentado, com revisão posterior em até dois dias úteis. A gestão de mudanças rastreável permite que os auditores confirmem que o que roda em produção foi aprovado, e que os engenheiros encontrem a mudança que introduziu um problema quando algo quebra. A revisão em dois dias úteis mantém o caminho emergencial rápido sem perder a rastreabilidade.
+
+### 14.3 Código de terceiros
+
+O portal depende de dezenas de bibliotecas de código aberto. Nadia aprende que cada uma é um fornecedor cujas vulnerabilidades se tornam risco da Ardwell. Ela propõe uma lista de materiais de software (SBOM) com cada componente e sua versão, com alertas automáticos quando uma vulnerabilidade conhecida for publicada. Também anota as obrigações de licenciamento, que são uma questão de compliance por si só. O Prof. Brenner observa que as aplicações modernas são, em sua maior parte, código de outras pessoas, então a governança precisa alcançar os componentes que a equipe nunca escreveu. A SBOM também diz à Ardwell, em poucas horas, que versões do portal são afetadas quando uma vulnerabilidade de biblioteca é anunciada.
+
+### Exemplo resolvido
+
+Nadia mapeia as práticas de desenvolvimento às normas, encontra correções emergenciais sem rastreabilidade e propõe uma lista de materiais de software.
+
+> **Caso sintético.** Os registros de mudanças são sintéticos; as normas citadas são reais.
+
+### Erros e limites
+
+As revisões variam em profundidade. As listas de componentes deixam escapar as dependências transitivas.
+
+### Exercícios
+
+- **EX040 — Normas para o desenvolvimento.** A que duas normas Nadia mapeou o desenvolvimento seguro? *Rubrica:* 3 = ISO/IEC 27002:2022 e PCI DSS v4.0;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Caminho emergencial.** O que Nadia recomendou para as correções emergenciais? *Rubrica:* 3 = um caminho documentado com revisão em até dois dias úteis;; 2 = revisão posterior;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Risco das bibliotecas.** Por que as bibliotecas de código aberto são uma preocupação de governança? *Rubrica:* 3 = suas vulnerabilidades e licenças se tornam risco da Ardwell;; 2 = fornecedor;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir confidencialidade, integridade e disponibilidade para os ativos da Ardwell; (2) ligar ameaças, vulnerabilidades e impacto ao risco; (3) distinguir os tipos de controle.
+
+### 15.1 Objetivos de segurança
+
+Nadia define o que segurança significa para os principais ativos da Ardwell. Para os dados de pagamento dos clientes, a confidencialidade é o que mais importa. Para as leituras de medidores que geram as contas, a integridade. Para os sistemas de controle que mantêm a energia fluindo, a disponibilidade e a segurança das pessoas. Ela aprende que ordenar os objetivos por ativo orienta a escolha dos controles, porque um controle que reforça a confidencialidade, como um bloqueio rígido, pode enfraquecer a disponibilidade. Um bloqueio rígido nos consoles do sistema de controle, por exemplo, poderia impedir um operador de restabelecer a energia durante um incidente. Explicitar essas prioridades ajuda o conselho a entender por que os controles variam.
+
+### 15.2 Os blocos do risco
+
+Nadia aprende os blocos usados no NIST SP 800-30 Rev. 1: fontes e eventos de ameaça, vulnerabilidades e condições predisponentes, probabilidade e impacto. O risco surge quando uma ameaça pode explorar uma vulnerabilidade para causar um impacto. Ela aplica isso ao acesso remoto dos fornecedores: a ameaça é o mau uso de uma conta de fornecedor, a vulnerabilidade é uma senha compartilhada e o impacto é uma interrupção não planejada. Separar as partes mostra onde um controle pode agir, como trocar a senha compartilhada por contas nominais. As contas nominais tratam a vulnerabilidade, enquanto o registro das sessões ajudaria a detectar o evento de ameaça se a vulnerabilidade voltasse.
+
+### 15.3 Tipos de controle
+
+Os controles podem prevenir, detectar ou corrigir, e podem ser administrativos, técnicos ou físicos. Nadia classifica os controles da Ardwell para o acesso de fornecedores: as contas nominais e a aprovação são preventivas; o registro das sessões é detectivo; um procedimento testado para revogar o acesso durante um incidente é corretivo. Ela aprende que depender de um só tipo é frágil, porque a prevenção acaba falhando. Um conjunto equilibrado permite à Ardwell barrar a maioria dos problemas, perceber o restante e se recuperar, que é a base da defesa em profundidade. O procedimento de revogação só conta se tiver sido testado, porque um procedimento não testado pode falhar justamente no incidente para o qual foi escrito.
+
+### Exemplo resolvido
+
+Nadia ordena os objetivos de segurança por ativo, decompõe o risco do acesso de fornecedores com os termos do SP 800-30 e equilibra controles preventivos, detectivos e corretivos.
+
+> **Caso sintético.** Os ativos e os controles são sintéticos; o SP 800-30 Rev. 1 é real.
+
+### Erros e limites
+
+A ordem dos objetivos pode ser contestada. Na prática, as classificações se confundem.
+
+### Exercícios
+
+- **EX043 — Prioridade dos medidores.** Que objetivo importa mais para as leituras dos medidores? *Rubrica:* 3 = integridade;; 2 = integridade;; 1 = confidencialidade;; 0 = nenhuma.
+- **EX044 — Partes do risco.** Que vulnerabilidade Nadia identificou no acesso de fornecedores? *Rubrica:* 3 = uma senha compartilhada;; 2 = senha compartilhada;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Exemplo corretivo.** Dê o controle corretivo do acesso de fornecedores. *Rubrica:* 3 = procedimento testado para revogar o acesso durante incidentes;; 2 = revogar;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) tratar o programa de governança como um sistema com requisitos e interfaces; (2) rastrear os requisitos até controles e testes; (3) gerenciar o ciclo de vida do sistema.
+
+### 16.1 O programa como sistema
+
+A engenharia de sistemas trata esforços complexos como sistemas com finalidades, componentes, interfaces e ciclos de vida. Nadia aplica essa visão ao programa de governança da Ardwell. Sua finalidade é manter o risco dentro do apetite do conselho e demonstrar compliance. Seus componentes incluem políticas, o registro de riscos, os responsáveis pelos controles, o monitoramento e as auditorias. As interfaces o ligam a finanças, operações e reguladores. Ver a governança como sistema a ajuda a fazer perguntas de engenharia, como o que acontece quando um componente falha ou uma interface muda. Se o conselho muda o apetite, a interface com o monitoramento também precisa mudar, ou os relatórios medirão contra uma meta antiga.
+
+### 16.2 Rastreabilidade
+
+Uma ferramenta central da engenharia de sistemas é a matriz de rastreabilidade. Nadia liga cada requisito de governança, vindo de lei, contrato ou norma, aos controles que o atendem e aos testes que mostram que funcionam. As lacunas aparecem como requisitos sem controle ou controles sem teste. Ela reconhece aí o mesmo problema de cobertura estudado no mapeamento de compliance. A rastreabilidade permite à Ardwell responder depressa à pergunta de um auditor sobre qualquer requisito e mostra aos gestores que controles existem só para atender obrigações que podem ter caducado; um requisito cuja fonte legal caducou aparece na matriz como um controle mantido por hábito.
+
+### 16.3 Ciclo de vida
+
+Os sistemas têm ciclos de vida: concepção, desenvolvimento, operação, manutenção e desativação. Os componentes de governança também. As políticas são redigidas, aprovadas, usadas, revisadas e retiradas. Os controles são desenhados, implementados, testados e, um dia, substituídos. Nadia observa que a desativação costuma ser esquecida; controles e políticas antigos continuam no papel muito depois de deixarem de funcionar. O NIST SP 800-37 Rev. 2 enquadra a gestão de riscos como contínua ao longo do ciclo de vida, e ela adota sua ênfase no monitoramento como a etapa que mantém o sistema honesto. Uma revisão de acessos que ainda lista um sistema de faturamento desativado é um controle além do seu ponto de desativação.
+
+### Exemplo resolvido
+
+Nadia modela a governança como sistema, monta um rastreio de requisito a controle e a teste e planeja a gestão do ciclo de vida, incluindo a desativação.
+
+> **Caso sintético.** O programa da Ardwell é sintético; o SP 800-37 Rev. 2 é real.
+
+### Erros e limites
+
+As visões sistêmicas podem virar burocracia. A rastreabilidade exige manutenção.
+
+### Exercícios
+
+- **EX046 — Finalidade do programa.** Qual é a finalidade do programa de governança da Ardwell visto como sistema? *Rubrica:* 3 = manter o risco dentro do apetite e demonstrar compliance;; 2 = finalidade;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Lacunas do rastreio.** Que lacunas uma matriz de rastreabilidade revela? *Rubrica:* 3 = requisitos sem controles e controles sem testes;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Etapa esquecida.** Que etapa do ciclo de vida costuma ser esquecida em controles e políticas? *Rubrica:* 3 = a desativação;; 2 = desativação;; 1 = desenho;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever a governança como uma malha de realimentação; (2) identificar sensores, setpoints e atuadores num sistema de gestão; (3) reconhecer atrasos e oscilações nas respostas de governança.
+
+### 17.1 Governança como realimentação
+
+Na engenharia de controle, um sistema mede sua saída, compara-a com um setpoint e ajusta a entrada para reduzir a diferença. Nadia vê a mesma malha na governança. O conselho da Ardwell fixa o apetite a riscos como setpoint. O monitoramento e os indicadores-chave de risco atuam como sensores. As decisões sobre orçamentos, controles e prioridades atuam como atuadores. A ISO/IEC 27001:2022 incorpora essa malha em seus requisitos de monitoramento, auditoria interna, análise crítica pela direção e melhoria contínua, para que o sistema de gestão se corrija com o tempo. Nessa malha, a auditoria interna e a análise crítica são as etapas que comparam o risco medido com o setpoint do conselho.
+
+### 17.2 Atrasos
+
+Malhas de realimentação com atrasos longos se comportam mal. Se a Ardwell mede o desempenho dos controles uma vez por ano, os problemas crescem por meses antes de alguém reagir, e as ações corretivas chegam tarde. Nadia modela uma malha simples em que um backlog de achados é revisado trimestral ou anualmente e vê que a malha anual deixa o backlog oscilar muito mais longe da meta. Ela aprende que medir mais depressa não garante um controle melhor, mas medir devagar quase garante um controle ruim, sobretudo quando os riscos mudam rápido. O Prof. Brenner acrescenta que a revisão trimestral só ajuda se as decisões também forem trimestrais; um sensor rápido com um atuador lento continua atrasado.
+
+### 17.3 Reação exagerada
+
+Uma resposta forte demais também causa problemas. Depois de uma auditoria ruim, a gestão pode impor controles rígidos em toda parte, provocando contornos e queixas, depois afrouxá-los e depois apertá-los de novo. Os engenheiros chamam isso de oscilação. Nadia sugere respostas proporcionais ao tamanho da lacuna e à importância do ativo. O Prof. Brenner observa que a boa governança busca uma melhoria constante, e não oscilações dramáticas, e que regras de decisão documentadas ajudam os gestores a responder de forma consistente, em vez de reagir à última manchete ou ao último relatório de auditoria. Uma regra como apertar os controles só para ativos acima de uma criticidade definida amorteceria as oscilações.
+
+### Exemplo resolvido
+
+Nadia mapeia o apetite, os indicadores e as decisões numa malha de realimentação e mostra como atrasos e reações exageradas degradam a governança.
+
+> **Caso sintético.** Os modelos são ilustrativos; a ISO/IEC 27001:2022 é real.
+
+### Erros e limites
+
+As organizações não são sistemas lineares. Os indicadores podem ser manipulados.
+
+### Exercícios
+
+- **EX049 — Setpoint.** O que atua como setpoint na malha de governança da Ardwell? *Rubrica:* 3 = o apetite a riscos do conselho;; 2 = apetite;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Malha anual.** O que aconteceu com o backlog quando revisado anualmente em vez de trimestralmente? *Rubrica:* 3 = oscilou para mais longe da meta;; 2 = oscilações maiores;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Remédio para a oscilação.** O que ajuda os gestores a evitar respostas oscilantes? *Rubrica:* 3 = regras de decisão proporcionais e documentadas;; 2 = regras;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) traduzir requisitos de governança em princípios de arquitetura; (2) revisar uma arquitetura contra eles; (3) registrar as decisões de arquitetura para auditoria.
+
+### 18.1 Princípios a partir dos requisitos
+
+Nadia aprende que a arquitetura transforma requisitos em estrutura. Os requisitos de governança da Ardwell incluem manter os dados de pagamento num segmento pequeno, separar os sistemas de controle dos sistemas do escritório e controlar o acesso dos fornecedores. Ela escreve princípios de arquitetura a partir deles: minimizar o escopo dos dados sensíveis, separar as zonas por nível de confiança, intermediar todo acesso externo por pontos monitorados e projetar para a recuperação. Os princípios dão aos arquitetos uma base para as escolhas e aos auditores um modo de conferir se os projetos seguem a política. O princípio de intermediar o acesso externo, por exemplo, exclui diretamente a conexão direta de fornecedor encontrada antes.
+
+### 18.2 Revisão de arquitetura
+
+Nadia participa da revisão de uma nova plataforma proposta para os dados de medição e a confere contra cada princípio. O projeto guarda os nomes dos clientes junto com as leituras dos medidores num serviço em nuvem acessível pelos notebooks do escritório, o que amplia o escopo dos dados pessoais e cria um novo caminho até um repositório sensível. Ela recomenda pseudonimizar as leituras e restringir o acesso a uma zona de análise, o que preserva o valor analítico e tira os nomes do repositório alcançável pelos notebooks. A revisão registra cada preocupação, a resposta do arquiteto e a decisão final, para que o resultado possa ser rastreado depois.
+
+### 18.3 Registros de decisão
+
+A Ardwell adota registros curtos de decisões de arquitetura: o contexto, a decisão, as alternativas consideradas e as consequências, incluindo os riscos aceitos. Nadia escreve um para a plataforma de medição, que lista manter os nomes com as leituras como alternativa rejeitada e a pseudonimização como a escolhida. Ela aprende que os registros de decisão ajudam os auditores a ver que os riscos foram considerados, e não ignorados, e ajudam futuros engenheiros a entender por que algo é como é. Sem eles, as organizações repetem debates antigos ou desfazem boas decisões porque ninguém lembra os motivos por trás delas.
+
+### Exemplo resolvido
+
+Nadia deriva quatro princípios de arquitetura, revisa contra eles o projeto de uma plataforma de medição e registra a decisão com as alternativas.
+
+> **Caso sintético.** A plataforma e as decisões são sintéticas.
+
+### Erros e limites
+
+Os princípios podem entrar em conflito. Registros de decisão longos demais ficam sem leitura.
+
+### Exercícios
+
+- **EX052 — Lista de princípios.** Cite dois princípios de arquitetura de Nadia. *Rubrica:* 3 = minimizar o escopo dos dados sensíveis; intermediar o acesso externo;; 2 = princípios;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Problema da plataforma.** O que havia de errado no projeto da plataforma de medição? *Rubrica:* 3 = nomes guardados com as leituras, acessíveis pelos notebooks do escritório;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Conteúdo do registro.** O que contém um registro de decisão de arquitetura? *Rubrica:* 3 = contexto, decisão, alternativas e consequências;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) governar as identidades ao longo do ciclo de vida; (2) relacionar os controles criptográficos à política; (3) gerenciar as chaves como ativos governados.
+
+### 19.1 Ciclo de vida das identidades
+
+Na Ardwell, as identidades são criadas quando os funcionários entram, mudam quando eles trocam de função e precisam terminar quando eles saem. Nadia mapeia esse processo de admissão, movimentação e desligamento e descobre que a movimentação é o ponto fraco: os novos acessos são concedidos depressa, mas os antigos raramente são removidos. Ela propõe que o sistema de recursos humanos dispare automaticamente as mudanças de acesso e que os gestores confirmem os acessos de quem mudou de função em até duas semanas. Governar identidades é, sobretudo, governar essas transições, onde nasce a maior parte do acesso excessivo; quem muda de função e mantém o acesso antigo ao faturamento acumula direitos que nenhum papel concederia.
+
+### 19.2 Criptografia e política
+
+Nadia estuda como a criptografia protege dados em repouso e em trânsito e como as assinaturas digitais protegem a integridade. Ela as liga à política: a classificação de dados da Ardwell exige criptografia para os dados de pagamento dos clientes e para os dados pessoais em notebooks. A ISO/IEC 27002:2022 inclui um controle sobre o uso de criptografia que espera regras para esse uso e para a gestão de chaves. Ela aprende que a criptografia só é tão forte quanto as decisões de política sobre onde usá-la e como gerenciá-la. Para os notebooks, a política decide que a criptografia é obrigatória, e as regras de gestão de chaves decidem quem pode recuperar um aparelho bloqueado.
+
+### 19.3 Chaves como ativos
+
+As chaves precisam ser geradas, guardadas, trocadas e destruídas sob controle. Nadia lista as chaves importantes da Ardwell, incluindo os certificados do portal de pagamento, e encontra um certificado administrado por um único engenheiro, sem backup nem controle de vencimento. Se ele vencesse sem ninguém notar, o portal pararia. Ela registra num inventário o responsável, a data de vencimento e o arranjo de backup de cada chave. Aprende que as falhas de gestão de chaves costumam ser falhas de governança, como a falta de um responsável, e não fraquezas da própria criptografia. Com as datas de vencimento no inventário, o certificado do portal pode ser renovado antes que os clientes vejam uma falha.
+
+### Exemplo resolvido
+
+Nadia fecha a lacuna da movimentação com gatilhos automáticos, liga a criptografia à classificação e inventaria as chaves com responsáveis e datas de vencimento.
+
+> **Caso sintético.** As identidades, as chaves e os processos são sintéticos; a ISO/IEC 27002:2022 é real.
+
+### Erros e limites
+
+A automação falha quando os dados de RH estão errados. Os inventários de chaves ficam desatualizados.
+
+### Exercícios
+
+- **EX055 — Transição frágil.** Que transição de identidade é o ponto fraco da Ardwell? *Rubrica:* 3 = a movimentação;; 2 = quem muda de função;; 1 = desligamento;; 0 = nenhuma.
+- **EX056 — Regra de criptografia.** Que dados a classificação da Ardwell exige criptografar? *Rubrica:* 3 = dados de pagamento e dados pessoais em notebooks;; 2 = classificação;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Risco do certificado.** Por que o certificado de um único engenheiro era um risco? *Rubrica:* 3 = sem backup nem controle de vencimento, poderia vencer sem ninguém notar;; 2 = responsável;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Governança, riscos e compliance de segurança: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir governança, gestão de riscos e compliance e como se relacionam; (2) situá-las na organização da Ardwell; (3) identificar as obrigações que moldam o programa.
+
+### 20.1 Três disciplinas relacionadas
+
+Nadia começa agora as disciplinas centrais de GRC. A governança define direção, responsabilização e supervisão: quem decide, qual é o apetite a riscos e como o desempenho é monitorado. A gestão de riscos identifica, analisa, avalia e trata os riscos, seguindo um processo como o descrito na ISO 31000:2018, adotada no Brasil como ABNT NBR ISO 31000:2018. O compliance garante que a organização cumpra as obrigações vindas de leis, regulamentos, contratos e normas adotadas. As três se sobrepõem, mas diferem. O COBIT 2019 separa a governança, que avalia, direciona e monitora, da gestão, que planeja, constrói, executa e monitora. Na Ardwell, a revisão trimestral dos relatórios pelo conselho é governança no sentido do COBIT; o gestor de segurança que conduz o processo de riscos faz gestão.
+
+### 20.2 Lugar na organização
+
+Na Ardwell, o conselho aprova o apetite a riscos e recebe relatórios trimestrais. Um gestor de segurança da informação conduz o processo de riscos e se reporta ao diretor de operações. As obrigações de compliance ficam com uma responsável jurídica e de compliance, enquanto a auditoria interna dá garantia independente ao comitê de auditoria do conselho. Nadia desenha essas relações e observa que linhas de reporte claras evitam conflitos de interesse, como a pessoa que opera os controles também julgar se eles funcionam, o que enfraqueceria a garantia. É o reporte da auditoria interna ao comitê de auditoria, e não ao diretor de operações, que mantém sua garantia independente.
+
+### 20.3 Obrigações
+
+Nadia lista as obrigações da Ardwell. Os pagamentos com cartão trazem o PCI DSS v4.0, por meio dos contratos com o banco. Os dados pessoais dos clientes trazem a legislação de proteção de dados. Como distribuidora de energia, a Ardwell enfrenta regras setoriais de resiliência e de comunicação de incidentes. O conselho também escolheu se alinhar à ISO/IEC 27001:2022 e usar o NIST CSF 2.0 nos relatórios. Ela separa as obrigações compulsórias das escolhas voluntárias, porque as penalidades e a flexibilidade diferem, e registra a fonte e o responsável de cada uma num registro de obrigações. Como o PCI DSS v4.0 chega pelo contrato com o banco, seu responsável precisa ser alguém que administre essa relação contratual.
+
+### Exemplo resolvido
+
+Nadia define governança, gestão de riscos e compliance, mapeia as linhas de reporte da Ardwell e monta um registro de obrigações.
+
+> **Caso sintético.** A estrutura da Ardwell é sintética; a ISO 31000:2018 (ABNT NBR ISO 31000:2018), o COBIT 2019, o PCI DSS v4.0 e o CSF 2.0 são reais.
+
+### Erros e limites
+
+As obrigações legais precisam de revisão jurídica. Os papéis variam entre organizações.
+
+### Exercícios
+
+- **EX058 — Papel da governança.** O que a governança define? *Rubrica:* 3 = direção, responsabilização e supervisão;; 2 = direção;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Independência.** Por que quem opera os controles não deve julgar se eles funcionam? *Rubrica:* 3 = cria um conflito de interesses que enfraquece a garantia;; 2 = independência;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Compulsório ou voluntário.** O alinhamento da Ardwell à ISO/IEC 27001:2022 é compulsório? *Rubrica:* 3 = não, é uma escolha do conselho;; 2 = voluntário;; 1 = compulsório;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se o backlog de achados em aberto está diminuindo, estável ou crescendo.
 
@@ -485,6 +875,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 **EX029.** Monitoramento e alertas sobre falhas repetidas, com restrição física do acesso à sala de controle.
 
 **EX030.** Porque uma cultura que pune más notícias empurra os problemas para fora da vista até que causem danos.
+
+**EX031.** Zonas do escritório corporativo, de pagamento dos clientes, do sistema de controle e de acesso remoto de fornecedores.
+
+**EX032.** Porque contornava o jump host, então as sessões ficavam sem registro e sem aprovação.
+
+**EX033.** Depois de mudanças, porque uma única regra nova de firewall pode ligar zonas.
+
+**EX034.** Que o sistema operacional imponha contas de administrador separadas e registre seu uso em logs que os usuários não conseguem alterar.
+
+**EX035.** Cada desvio é registrado com seu motivo.
+
+**EX036.** Com que rapidez o desvio é detectado e corrigido.
+
+**EX037.** Todo risco tem responsável, as revisões não têm mais de 180 dias e as notas ficam entre 1 e 25.
+
+**EX038.** Duas.
+
+**EX039.** Edições descuidadas ou falsificadas poderiam fazer riscos parecerem menores sem que ninguém percebesse.
+
+**EX040.** ISO/IEC 27002:2022 e PCI DSS v4.0.
+
+**EX041.** Um caminho emergencial documentado, com revisão posterior em até dois dias úteis.
+
+**EX042.** Porque cada uma é um fornecedor cujas vulnerabilidades e obrigações de licença se tornam risco da Ardwell.
+
+**EX043.** Integridade, porque as leituras geram as contas.
+
+**EX044.** Uma senha compartilhada do fornecedor.
+
+**EX045.** Um procedimento testado para revogar o acesso de fornecedores durante um incidente.
+
+**EX046.** Manter o risco dentro do apetite do conselho e demonstrar compliance.
+
+**EX047.** Requisitos sem controle e controles sem teste.
+
+**EX048.** A desativação.
+
+**EX049.** O apetite a riscos do conselho.
+
+**EX050.** Oscilou muito mais longe da meta, por causa do atraso maior.
+
+**EX051.** Respostas proporcionais, guiadas por regras de decisão documentadas.
+
+**EX052.** Por exemplo, minimizar o escopo dos dados sensíveis e intermediar todo acesso externo por pontos monitorados.
+
+**EX053.** Guardava os nomes dos clientes com as leituras num serviço alcançável pelos notebooks do escritório, ampliando o escopo dos dados sensíveis.
+
+**EX054.** O contexto, a decisão, as alternativas consideradas e as consequências, incluindo os riscos aceitos.
+
+**EX055.** A movimentação, porque os acessos antigos raramente são removidos.
+
+**EX056.** Os dados de pagamento dos clientes e os dados pessoais em notebooks.
+
+**EX057.** Porque não tinha backup nem controle de vencimento e poderia vencer sem ninguém notar, derrubando o portal.
+
+**EX058.** Direção, responsabilização e supervisão, incluindo o apetite a riscos.
+
+**EX059.** Porque isso cria um conflito de interesses e enfraquece a garantia.
+
+**EX060.** Não; é uma escolha voluntária do conselho, ao contrário das obrigações contratuais do PCI DSS.
 
 <a id="references"></a>
 ## Referências
