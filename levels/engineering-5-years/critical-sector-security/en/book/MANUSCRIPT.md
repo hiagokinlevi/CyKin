@@ -2818,6 +2818,8 @@ After this chapter you can (1) carry a design from concept to detailed design wi
 
 Studio I selected a concept. Studio II details it: specific components, configurations, interfaces, procedures and verification. Every number from earlier chapters returns: hold-up times (Chapters 1, 6), battery sizing (Chapter 3), base rates (Chapter 7), latency (Chapter 11), fault tree (Chapter 23), detection metrics (Chapter 29), availability (Chapter 32), queueing (Chapter 36 preview). A detailed design is coherent when these numbers are consistent with each other and with the requirements.
 
+For TMRP, the battery sizing, the 72 hours of local automatic operation, the hospital's four-hour buffer and the recovery time must all tell the same story; EX069 shows what happens when one of them does not.
+
 ### 35.2 Assurance arguments
 
 An **assurance case** is a structured argument that a system meets a claim, supported by evidence. It has a top claim ("TMRP keeps the hospital supplied under credible scenarios including remote command forgery"), sub-claims (each requirement met; residual risks acceptable), arguments (why the sub-claims support the claim), and evidence (test results, analyses, reviews). Toulmin's model of argument — claim, data, warrant, backing, qualifier, rebuttal ([Toulmin, 1958/2003](https://doi.org/10.1017/CBO9780511840005)) — is a useful lens: what evidence supports the claim, why it is relevant, and what would defeat it. Explicit **defeaters** ("unless the SCADA centre is compromised") keep the argument honest.
@@ -2825,6 +2827,8 @@ An **assurance case** is a structured argument that a system meets a claim, supp
 ### 35.3 Studio II brief (synthetic)
 
 Produce the detailed design for TMRP phase 1 (PS2, PS3, PS4 and Hollin Hill): component list with security features; zone and conduit allowlists; key management procedure; local manual and failover procedures; alarm rationalisation for new security alarms; verification plan; and an assurance case for the top claim with at least four sub-claims and identified defeaters.
+
+The brief covers the four assets that matter most to St Brenna's: PS2 as the proven pilot, PS3 and Hollin Hill as the reservoir path, and PS4 as the direct feed. The remaining stations and the Fenwick works follow in later phases, so the assurance case for phase 1 must say clearly that it does not cover them yet.
 
 ### 35.4 Worked example: one branch of the assurance case (synthetic)
 
@@ -2834,12 +2838,16 @@ Produce the detailed design for TMRP phase 1 (PS2, PS3, PS4 and Hollin Hill): co
 
 Write the full assurance case for the Studio II brief and present it to a panel that is instructed to find defeaters.
 
+Give the panel the brief, your component list and the assurance case, and ask them to find what would defeat each sub-claim. Record every defeater they find, whether you already listed it or not, and write a response: evidence that addresses it, a design change, or an explicit acceptance with an owner. Defeaters such as a compromised SCADA centre or a stolen RTU key are expected; the panel's job is to find ones you missed, such as misuse of local manual mode.
+
 ### 35.6 Common errors and limits
 
 - Inconsistent numbers across analyses.
 - Assurance cases with claims and no evidence, or evidence with no argument.
 - Defeaters omitted to make the case look stronger.
 - Detailed design that changes requirements silently.
+
+EX069 is an example of the first error inside TMRP itself: R6 asks for eight hours, but the recovery trial measured twelve. A case that claimed R6 while citing the trial would be inconsistent, so the case records R6 as not met and explains why the hospital claim can still hold through local automatic operation.
 
 ### Exercises — chapter 35
 
@@ -2875,13 +2883,19 @@ Messages wait in queues at gateways, servers and links. [Little's law](https://d
 
 Every control costs something: bytes (Lab 8's 22-byte overhead), CPU (MAC computation, TLS handshakes), latency (policy decisions, inspection), and operator time (re-authentication, approvals). Measure them on the bench. The costs are usually small relative to network round-trips, but they matter on constrained links (low-bandwidth radio), on constrained devices (small microcontrollers), and at scale.
 
+For TMRP, the measured costs include the twenty-two extra bytes per frame, the MAC computation on each message at the SCADA-side verifier and the operator time for two-person approval of bulk setpoint changes. None is large, but the verifier's throughput limit is what the worked example has to size.
+
 ### 36.3 Peak, degraded and attack load
 
 Size for the worst credible load: storm-time alarm floods, reconnection bursts after outages (Chapter 34), failover catch-up, and deliberate floods. An attacker who can send traffic to a gateway can push utilisation toward 1 and delay legitimate alarms; defences include rate limits per source, priority queues for alarms, early rejection of unauthenticated traffic (verify the cheap check first), and capacity margins.
 
+For TMRP, the reconnection burst found in integration testing is the clearest example, and the verifier's priority queue for alarms is the defence chosen in the worked example.
+
 ### 36.4 Scale
 
 At fleet scale, manual processes fail. Key enrolment, rotation and revocation must be automated with audit; monitoring must aggregate and prioritise; updates must be staged and observable; inventory must be continuously reconciled. A procedure that takes 30 minutes per device takes three weeks of staff time for a thousand devices.
+
+LRWA has only 42 field stations today, but the same design may later be used for a much larger fleet, so TMRP automates key enrolment and rotation records from the start rather than relying on a spreadsheet maintained by one engineer.
 
 ### 36.5 Worked example: gateway sizing (synthetic)
 
@@ -2910,6 +2924,8 @@ lambda=48.0 rho=0.96 W= 500.0 ms L= 24.0 msgs
 sequential polling cycle: 7.81 s; with 6 parallel channels: 1.30 s
 ```
 
+The first four lines show delay growing sharply as arrivals approach the verifier's capacity of fifty messages a second: at twenty messages a second the average message waits about a third of a tenth of a second, while at forty-eight it waits half a second and two dozen messages are in the system. The polling lines show why LRWA uses six parallel channels: a sequential cycle of nearly eight seconds would leave alarms waiting long before they reached the verifier.
+
 ### 36.7 Common errors and limits
 
 - Sizing for average load.
@@ -2917,6 +2933,8 @@ sequential polling cycle: 7.81 s; with 6 parallel channels: 1.30 s
 - Assuming security costs are negligible without measuring them on the target device.
 - Manual procedures that do not scale.
 - M/M/1 used where arrivals are bursty or service is deterministic; treat it as a first approximation.
+
+TMRP's sizing avoids the first two errors by sizing for storm load and keeping the doubled verifier well below full utilisation, and treats the queueing results as a first approximation to be checked against bench measurements.
 
 ### Exercises — chapter 36
 
@@ -2952,13 +2970,19 @@ OT security monitoring watches network traffic, logs and process data for signs 
 
 A playbook is a short, tested procedure for a specific situation: trigger, immediate safety actions, information to collect, decisions and who makes them, communications, and return to normal. Write for a tired operator at 03:00: numbered steps, clear decision points, phone numbers, no jargon. Test each playbook in exercises and update it after every use. Incident handling guidance such as [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) provides general structure; OT playbooks add process safety steps.
 
+LRWA's playbook for an unexpected setpoint change is written to this standard.
+
 ### 37.3 Change, access and vulnerability management
 
 Daily operations keep the system in its designed state: change management (no configuration change without approval and record); access management (joiners, movers, leavers; vendor sessions approved per use); vulnerability management (track advisories such as [CISA ICS advisories](https://www.cisa.gov/news-events/ics-advisories), assess applicability, plan remediation, Chapter 12). Drift — undocumented changes accumulating — is the commonest way a well-designed system becomes insecure.
 
+At LRWA, the forgotten enterprise reporting script found in the flow review is an example of drift, and change control on every conduit is how TMRP keeps such paths from reappearing.
+
 ### 37.4 Learning without blame
 
 Incidents and near misses are evidence about the system. [Reason (2000)](https://doi.org/10.1136/bmj.320.7237.768) contrasted the person approach (blaming individuals) with the system approach (defences, barriers and latent conditions), arguing the latter is more effective. After-action reviews ask what happened, why it made sense to the people involved at the time, which defences worked or failed, and what will change. Blame suppresses reporting, and unreported near misses are lost lessons.
+
+At LRWA, the technician who connected a laptop to the PS3 network in EX074 is treated in this way: the review asks why the jump host felt too slow and what made the shortcut possible.
 
 ### 37.5 Worked example: playbook "unexpected setpoint change" (synthetic)
 
@@ -2968,12 +2992,16 @@ Incidents and near misses are evidence about the system. [Reason (2000)](https:/
 
 Run the playbook in a tabletop with a scripted inject sequence (first a single setpoint change, then MAC failures at a second station, then a phone call from the hospital about low pressure). Record decision times and ambiguities and revise the playbook.
 
+Run the injects in order and note the time of each decision. Watch in particular whether the team keeps remote telemetry running, as the playbook requires, and whether the duty manager decides on disabling remote writes across the fleet before the hospital call arrives. Record every point where someone asked what the playbook meant. After the tabletop, rewrite those steps and schedule a second run to check the revisions.
+
 ### 37.7 Common errors and limits
 
 - Security alarms routed to a team that is not staffed when they fire.
 - Playbooks written for experts, never tested.
 - Change management bypassed "temporarily".
 - After-action reviews that end with "operator error".
+
+LRWA's playbook design answers these: security alarms reach the control room, which is staffed every hour, and the security on-call is called within 30 minutes. The playbook is tested in tabletops, and change control has no temporary exceptions. After-action reviews at LRWA look for latent conditions, such as a slow jump host, rather than ending with operator error.
 
 ### Exercises — chapter 37
 
@@ -3005,17 +3033,25 @@ After this chapter you can (1) distinguish validation (right system for the need
 
 A system can pass every test against its specification and still fail its users if the specification was wrong or incomplete. Validation asks whether the system meets stakeholder needs in its intended environment: can operators actually run local manual mode at night? Does the hospital actually get water within its buffer when PS4 is lost? Validation evidence comes from realistic use: operational trials, demonstrations with stakeholders, exercises and early operating data.
 
+For TMRP, the night exercise of local manual mode is the validation activity that answers the first question.
+
 ### 38.2 Traceability as an evidence map
 
 Trace needs to requirements to tests to results. Then ask three questions: which requirements have no test (untested claims)? Which tests failed or were not run (unsupported claims)? Which needs depend only on requirements that are not yet verified (unvalidated needs)? Lab 14 computes these for the TMRP dossier.
+
+For TMRP the questions are concrete. R4 has no test because its demonstration was never scheduled. R3's only recorded test is the failed one on v1, and R8's test has not run. N1 depends on R4, so it cannot be claimed as validated until the night exercise takes place. Lab 14 prints these gaps directly.
 
 ### 38.3 Stakeholder validation
 
 Involve the people the system serves. Operators validate procedures and displays; maintenance staff validate repairability and spares; the hospital validates that the supply arrangements meet its needs; regulators validate compliance reasoning. Record their findings as you would review findings, with responses.
 
+For TMRP, operators validate the local manual procedure and the new security alarms, maintenance staff check that gateways can be replaced from spares, and the hospital confirms that the supply arrangements and its four-hour buffer meet its needs. Their findings go into the same response log as the design review findings.
+
 ### 38.4 Reporting partial results
 
 Report validation status per need: validated, partially validated (with what remains), not validated. Do not round up. "N1 partially validated: PS4 loss trial met the 4 h buffer; combined PS4 and grid F1 loss not yet trialled."
+
+TMRP's evidence map makes this concrete: N1 depends on R4, which has not yet been demonstrated, so N1 is reported as not validated until the night exercise takes place, even though most of its other requirements have passed their tests. The status is updated after the exercise.
 
 ### 38.5 Worked example: TMRP evidence map (synthetic)
 
@@ -3045,12 +3081,16 @@ tested but not passing: ['R3', 'R8']
 verified 5/8 = 62.5%
 ```
 
+The output shows that R4 has no test, that R3 and R8 are tested but not passing, and that five of eight requirements are verified. R3's status is out of date rather than truly failed: the v2 re-test passed, but nobody entered it in the matrix, which is exactly the administrative gap the worked example warns about. EX075 updates the map. Note that the matrix lists only R1 to R8, so the chlorine dosing alarm, R9, still needs its own entry.
+
 ### 38.7 Common errors and limits
 
 - Calling a passed test suite "validation".
 - Stakeholders consulted only at the start.
 - Rounding partial validation up to "validated".
 - Evidence maps not updated after re-tests.
+
+TMRP's map shows the last error itself: the T3 re-test on v2 passed, but the matrix was never updated. Stakeholders such as operators and the hospital are involved throughout, not only when the requirements were written, and the evidence map is updated every time a re-test or demonstration produces a result, so the reported validation status never runs ahead of the evidence.
 
 ### Exercises — chapter 38
 
@@ -3082,9 +3122,13 @@ After this chapter you can (1) design for maintainability over long lifecycles �
 
 Infrastructure assets last decades; software and threats change in months. Maintainability means the system can be kept secure and functional for its whole life: components replaceable without redesign; updates possible without long outages; documentation current; skills available. Design choices that harm maintainability include proprietary protocols with a single supplier, undocumented custom code, and hardware with no update path.
 
+For TMRP, RTUs installed now may still run in the 2040s, so the gateway design, the message format and the key management must all be maintainable over that span.
+
 ### 39.2 Technical debt and obsolescence
 
 Technical debt is the future cost of shortcuts taken now: a hard-coded configuration, a skipped test, a gateway built "temporarily" for legacy RTUs. Record debt items with owner, cost to fix and risk of leaving them. Obsolescence management tracks end-of-sale and end-of-support dates for every component and plans replacement before support ends, holding spares where replacement is slow.
+
+TMRP's gateways for the legacy RTU-A units at PS1 and PS2 are recorded as debt with a three-year horizon. Spares are bought before end of sale.
 
 ### 39.3 Cryptographic agility
 
@@ -3094,6 +3138,8 @@ Algorithms weaken and standards change. Cryptographic agility is the ability to 
 
 Retired devices contain keys, configurations and network details. Decommissioning steps: revoke keys and certificates; remove accounts; wipe or destroy storage according to policy; update inventory, models and allowlists; and remove firewall rules that served the device. Stale rules for decommissioned devices are a classic path for attackers who place a new device at an old address.
 
+TMRP's maintainability review found that no decommissioning procedure existed, so one was written and linked to change management. It will be used first when PS2's legacy RTU-A and its gateway are replaced, as EX078 describes.
+
 ### 39.5 Worked example: TMRP maintainability review (synthetic)
 
 The review finds: (1) the PS1/PS2 gateways are technical debt with a three-year horizon — recorded with replacement plan; (2) the message format in Lab 8 lacks an algorithm identifier — changed to include a one-byte suite ID (version 1 = HMAC-SHA256-128) before fleet roll-out, costing one byte per message; (3) RTU-B firmware signing uses a classical signature scheme — vendor asked for a post-quantum migration roadmap as a contract condition; (4) no spare LTE modems are held and the model reaches end of sale next year — buy spares now, plan replacement; (5) decommissioning procedure missing — written and linked to change management.
@@ -3102,12 +3148,16 @@ The review finds: (1) the PS1/PS2 gateways are technical debt with a three-year 
 
 Build an obsolescence register for TMRP components (RTUs, gateways, modems, SCADA servers, OS, HSM) with assumed dates, support status, spares held and replacement plan.
 
+Include every component the TMRP review mentions: RTU-A and RTU-B, the gateways, the LTE modems, the SCADA servers and their operating system, and the hardware security module. For each, record the assumed end-of-sale and end-of-support dates, the spares held and the replacement plan. Flag any component whose support ends before its planned replacement, as the review found for the LTE modems. Keep the register under change control so it stays current.
+
 ### 39.7 Common errors and limits
 
 - Designs that require the original supplier forever.
 - Technical debt that is not recorded.
 - Message formats without versioning or algorithm identifiers.
 - Decommissioned devices leaving keys and firewall rules behind.
+
+TMRP's review found the third error in the Lab 8 frame and fixed it with a one-byte suite identifier before fleet rollout. It also recorded the legacy gateways as debt and wrote the missing decommissioning procedure. Spare LTE modems are bought before the model's end of sale. The new procedure revokes keys and removes stale firewall rules.
 
 ### Exercises — chapter 39
 
@@ -3139,13 +3189,19 @@ After this chapter you can (1) design and run a seeded fault-injection campaign 
 
 Fault injection deliberately introduces faults — corrupted, dropped, delayed, replayed or reordered messages; process restarts; clock steps; resource exhaustion — to observe how a system behaves. It tests error handling that ordinary tests rarely reach. A campaign specifies the fault model (which faults, at what rates), the system under test, the oracle (what correct behaviour is for each fault) and the measurements.
 
+For TMRP, the receiver campaign in this chapter injects corruption, replay, delay and drops. Each fault has an oracle. Results are counted per class.
+
 ### 40.2 Oracles and classification
 
 For each injected fault, define the expected outcome: corrupted → rejected as corrupt; replayed → rejected as replay; delayed beyond the freshness window → rejected as stale; dropped → detected as a gap (or not, if the design does not detect gaps). Classify observed outcomes against expected ones. A fault that produces "ok" when it should have been rejected is a **silent failure** — the most important class to find.
 
+For TMRP's receiver, the drop class is the one where the oracle exposed a gap: the design had no expected outcome for a lost message, because nobody had asked what should happen.
+
 ### 40.3 Seeds, rates and coverage
 
 Seed the fault generator, record the seed, and report counts per fault class. Choose rates that produce enough events of each class to be meaningful; a campaign of 500 messages with 5% per fault class gives roughly 25 events each — enough to find systematic failures, not enough to estimate rare ones precisely. Extend the campaign for classes of special concern.
+
+TMRP's campaign uses seed forty, five hundred messages and five per cent per fault class, so each class produces enough events to show systematic behaviour. The capstone extends the campaign to ten thousand messages across seven fault classes, including restart and reordering.
 
 ### 40.4 Worked example: telemetry receiver campaign (synthetic)
 
@@ -3189,6 +3245,8 @@ Expected output:
 ('replay', 'replay') 24
 ```
 
+Every corrupted, replayed and delayed message ended in the class its oracle predicted, and no fault produced a silent acceptance. The dropped messages are the finding: twenty-one were lost and the receiver raised nothing, because counter checks only reject old messages. That result led to the stale-station alarm, which fires when no valid message arrives from a station for sixty seconds, and to review finding F2. The campaign is then rerun with the same seed to confirm the change.
+
 ### 40.6 Common errors and limits
 
 - Fault models limited to what the designer expected.
@@ -3196,6 +3254,8 @@ Expected output:
 - Unseeded campaigns.
 - Treating "no silent failures observed" as proof.
 - Not re-running the campaign after fixes.
+
+TMRP's first campaign showed the first error: drops were silent because the designers never listed loss of data as a fault their receiver should notice. Rerunning after adding the stale-station alarm is how the fix is confirmed. Its seed is recorded, so the rerun is comparable. The drop class is now kept in every run.
 
 ### Exercises — chapter 40
 
@@ -3227,17 +3287,25 @@ After this chapter you can (1) formulate security investment as an optimisation 
 
 Choose a set of controls $S$ to maximise benefit $\sum_{c\in S} b_c$ subject to cost $\sum_{c\in S} k_c \le B$. This is the 0/1 knapsack problem. Benefits might be expected annual loss reduction, reduction in people-hours without water, or reduction in top-event probability. Real problems add constraints (dependencies between controls, staffing limits, phases) and interactions (two controls addressing the same scenario do not add benefits).
 
+For TMRP's phase 1, the benefits in Lab 16 are synthetic estimates of expected annual loss reduction.
+
 ### 41.2 Exact and heuristic solutions
 
 With a handful of candidates, enumerate all subsets ($2^n$). Dynamic programming solves knapsack problems exactly in time proportional to $n \times B$ for integer costs. The **greedy** heuristic — pick by benefit/cost ratio until the budget is spent — is fast and intuitive but can leave budget unused or miss better combinations. For larger problems, integer programming solvers are standard.
+
+Lab 16 shows the greedy failure on TMRP's seven candidates. Greedy left budget unused and missed the spare RTUs, a gap exhaustive search found at once.
 
 ### 41.3 Multiple objectives and uncertainty
 
 Security investments trade off cost, risk reduction, operability and other goods. A solution is **Pareto-optimal** if no other solution is better in one objective without being worse in another; present the Pareto set rather than a single weighted answer. Benefits are uncertain estimates; test whether the optimal set changes when benefits vary within plausible ranges. Robust choices — those that are good across scenarios — are often preferable to choices optimal only under point estimates.
 
+For TMRP, the robustness check in EX082 varies each benefit by twenty per cent and finds the optimum unchanged.
+
 ### 41.4 Interactions
 
 Benefits are rarely additive. Authenticated telemetry and network monitoring both reduce forged-command risk; once authentication is in place, monitoring's additional benefit for that scenario is smaller. Model interactions by computing benefit from the scenario model (e.g., the fault tree) for each candidate set rather than adding per-control numbers.
+
+In Lab 16 the benefits are simply added, which is a simplification: authenticated telemetry and the network detection sensor both reduce forged-command risk, so their combined value is less than the sum. A better model recomputes benefit from the fault tree for each candidate set.
 
 ### 41.5 Worked example: TMRP phase 1 portfolio (synthetic)
 
@@ -3268,6 +3336,8 @@ optimal: ['auth_telemetry', 'local_manual_mode', 'offline_backups', 'spare_rtus'
 greedy : ['auth_telemetry', 'eng_ws_hardening', 'local_manual_mode', 'offline_backups'] cost 215 benefit 480
 ```
 
+The exhaustive optimum spends the whole budget on authenticated telemetry, local manual mode, offline backups and spare RTUs. Greedy chooses workstation hardening early because of its good ratio, leaving too little money for the spare RTUs and finishing with less benefit and some budget unused. On seven candidates the exhaustive search is instant, so there is no reason to accept the greedy answer; with hundreds of candidates, an integer programming solver would replace both. Record both results. Note the unused budget.
+
 ### 41.7 Common errors and limits
 
 - Adding benefits of interacting controls.
@@ -3275,6 +3345,8 @@ greedy : ['auth_telemetry', 'eng_ws_hardening', 'local_manual_mode', 'offline_ba
 - Greedy heuristics used without checking against exact solutions on small instances.
 - Optimisation results presented as decisions rather than inputs to decisions.
 - Benefit numbers with no stated basis.
+
+TMRP's portfolio avoids the third error by checking greedy against exhaustive search, and presents both results with the robustness check to the decision owner. Each benefit figure is labelled as a synthetic estimate, and the result is offered as decision support. Interactions are noted.
 
 ### Exercises — chapter 41
 
