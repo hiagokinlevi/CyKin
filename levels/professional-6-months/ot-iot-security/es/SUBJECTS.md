@@ -18,9 +18,9 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 3 | [06](book/PLAN.md#ch-06) | Exposición de los sistemas del edificio a internet | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
 | 4 | [07](book/PLAN.md#ch-07) | Acceso remoto de contratistas y proveedores | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
 | 4 | [08](book/PLAN.md#ch-08) | Segmentación de las redes del edificio | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Supervisar tendencias y registros | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Plan](book/PLAN.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Alertas y correcciones para los sistemas del edificio | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Respuesta a incidentes en los sistemas del edificio de un hospital | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Proyecto final: un informe de riesgos de los sistemas del edificio | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 046 →](../../critical-sector-security/es/SUBJECTS.md) |
+| 5 | [09](book/PLAN.md#ch-09) | Supervisar tendencias y registros | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
+| 5 | [10](book/PLAN.md#ch-10) | Alertas y correcciones para los sistemas del edificio | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Respuesta a incidentes en los sistemas del edificio de un hospital | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Proyecto final: un informe de riesgos de los sistemas del edificio | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-12) | [Curso 046 →](../../critical-sector-security/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.
