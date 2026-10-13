@@ -15,12 +15,12 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [03](book/PLAN.md#ch-03) | Avaliação de riscos para uma rede de clínicas | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Inventário de ativos e de fornecedores | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
 | 2 | [05](book/PLAN.md#ch-05) | Gestão de correções e de vulnerabilidades | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Identidade e acesso | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Plano](book/PLAN.md#ch-07) |
-| 3 | [07](book/PLAN.md#ch-07) | Phishing e segurança do e-mail | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 3 | [08](book/PLAN.md#ch-08) | Backup, ransomware e recuperação | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
-| 3 | [09](book/PLAN.md#ch-09) | Resposta a incidentes e notificação | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 4 | [10](book/PLAN.md#ch-10) | Métricas, relatórios e o conselho | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 4 | [11](book/PLAN.md#ch-11) | Projeto final | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 4 | [12](book/PLAN.md#ch-12) | Apresentação do projeto final e próximos passos | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 141 →](../../data-governance/pt/SUBJECTS.md) |
+| 2 | [06](book/PLAN.md#ch-06) | Identidade e acesso | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 3 | [07](book/PLAN.md#ch-07) | Phishing e segurança do e-mail | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 3 | [08](book/PLAN.md#ch-08) | Backup, ransomware e recuperação | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 3 | [09](book/PLAN.md#ch-09) | Resposta a incidentes e notificação | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 4 | [10](book/PLAN.md#ch-10) | Métricas, relatórios e o conselho | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 4 | [11](book/PLAN.md#ch-11) | Projeto final | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 4 | [12](book/PLAN.md#ch-12) | Apresentação do projeto final e próximos passos | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [Curso 141 →](../../data-governance/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
