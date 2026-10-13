@@ -706,7 +706,7 @@ For Noah, the secondary analyses help explain the primary result. Tag-audit agre
 
 Pre-register rules: tickets reopened within 30 days count as not lastingly remediated; tickets on decommissioned synthetic assets are excluded and listed. Report exclusion counts.
 
-Noah's rules were written before collection: reopened tickets count as not remediated, and tickets on decommissioned synthetic assets are excluded and listed. The VLAN 40 rebuild week falls under a pre-registered infrastructure exclusion, and the results table shows the difference with and without it, 18 and 16 points. Exclusion counts appear in the results table, not only in an appendix. Readers should be able to check that no other tickets were dropped and that the excluded week did not change the conclusion.
+Noah applies both rules from a script written before collection, so a reopened ticket moves to the not-remediated column without any judgement by the analyst. The VLAN 40 rebuild week falls under a pre-registered infrastructure exclusion, and the results table shows the difference with and without it, 18 and 16 points. Exclusion counts appear in the results table, not only in an appendix. Readers should be able to check that no other tickets were dropped and that the excluded week did not change the conclusion.
 
 ### 6.5 Timeline discipline
 
