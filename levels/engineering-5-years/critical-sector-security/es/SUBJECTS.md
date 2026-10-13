@@ -17,11 +17,11 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 1 | [05](book/PLAN.md#ch-05) | Comunicación en ingeniería | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
 | 2 | [06](book/PLAN.md#ch-06) | Cálculo II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
 | 2 | [07](book/PLAN.md#ch-07) | Probabilidad y estadística | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Arquitectura de computadoras | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Programación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Ética y seguridad en ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Redes y protocolos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Sistemas operativos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plan](book/PLAN.md#ch-13) |
+| 2 | [08](book/PLAN.md#ch-08) | Arquitectura de computadoras | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Programación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Ética y seguridad en ingeniería | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Redes y protocolos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Sistemas operativos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Plan](book/PLAN.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Sistemas de datos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Ingeniería de software | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Fundamentos de seguridad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |
