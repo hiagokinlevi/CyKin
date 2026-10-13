@@ -3065,7 +3065,7 @@ Under overload, shed discovery work before shedding deny evaluation. Chatty tick
 
 
 
-Reject optimization PRs that remove reason codes from logs even if latency improves. Benchmarks cite the cycle-time budget next to the achieved rate so unconstrained benches are obvious.
+The load-shedding order is written in the runbook, so the window lead knows which work pauses first.
 
 Lena's reviews apply each rule. At ABP, Lena tested overload by replaying traffic at triple speed: discovery paused first while deny decisions continued at full rate and stayed well under the cycle budget.
 
@@ -3075,7 +3075,7 @@ An optimization PR that removed reason codes from hot-path logs to save microsec
 
 
 
-Capacity headroom under the cycle budget is documented next to the token-bucket or poll schedule so the next debate starts from numbers.
+The overload replay is repeated after every release that touches the decoder.
 
 
 ### 41.5 Worked example — optimisation with a safety veto (synthetic ABP)
@@ -3108,13 +3108,13 @@ You will (1) frame a research question about OT security programmes; (2) choose 
 
 Does dual-approval reduce conduit-widen incidents? Does showing denominators change stakeholder interpretation of coverage? Not new bypass against PLC brand X.
 
-Lena's applied research at ABP followed this pattern: she asked how many days of baseline traffic a new-conduit detector needs before false alerts drop below one per week. The question could be answered with recorded traffic and would directly change how the plant configures its monitor. She declined a suggestion to study bypasses against a particular PLC brand, because that would produce attack knowledge without improving how ABP runs its defences.
+Lena's applied research at ABP followed this pattern: she chose a question about detector baselines, set out in the worked example below. The question could be answered with recorded traffic and would directly change how the plant configures its monitor. She declined a suggestion to study bypasses against a particular PLC brand, because that would produce attack knowledge without improving how ABP runs its defences.
 
 ### 42.2 Design
 
 Pre-register measures; use synthetic or consented operational data; report intervals and attack classes (Urbina et al.; Giraldo et al.). Replication beats novelty theatre.
 
-Lena registered her measures, baseline lengths and threshold before analysing ABP's 60 days of recorded traffic. Her amendment log records one change: the ERP upgrade on day 33 added new traffic, so that day was analysed separately rather than dropped. Results are reported with intervals for each baseline length, so readers can see where the evidence is weak. She would rather confirm an earlier finding carefully than claim a new one that nobody can reproduce.
+Lena registered her measures, baseline lengths and threshold before analysing ABP's 60 days of recorded traffic. Her amendment log holds the one change she made after registration, with its reason. Results are reported with intervals for each baseline length, so readers can see where the evidence is weak. She would rather confirm an earlier finding carefully than claim a new one that nobody can reproduce.
 
 ### 42.3 Disclosure
 
@@ -3142,7 +3142,7 @@ Even synthetic-plus-anonymized operational metrics need a written agreement with
 
 State the dual-use boundary in the thesis ethics section with a concrete refusal example. Negative results get the same figure quality as positive ones in the thesis template.
 
-Lena's thesis reports which baselines failed the threshold. Lena's host agreement for ABP's data was signed before analysis, and her thesis reports the baseline lengths that never reached the threshold with full figures.
+Lena's host agreement for ABP's data was signed before analysis, and her thesis reports the baseline lengths that never reached the threshold with full figures.
 
 ### Field note — amendment log
 
@@ -3150,11 +3150,11 @@ After peeking at pilot data, a student wanted to change the primary measure. The
 
 
 
-Data sharing agreements, even for anonymized metrics, are written before student theses begin — mentor said it was fine is not enough.
+The agreement names who may see the raw extracts and when they are deleted.
 
 
 
-Negative results are publishable and required in the thesis template's results section.
+Each amendment entry carries the date, the reason and the commit that changed the analysis code.
 
 
 ### 42.5 Worked example — a research question that fits the plant (synthetic ABP)
@@ -3219,7 +3219,7 @@ Public-service placements may involve clearances. Course artefacts stay at the l
 
 
 
-Agree the sanitized reconstruction with the host mentor in writing before writing the practice report. If the host forbids even sanitized metrics, use a fully synthetic twin scenario labelled as such.
+If the host forbids even sanitized metrics, use a fully synthetic twin scenario labelled as such.
 
 Lena's own appendix followed this rule. Lena's agreement with her host mentor was written before drafting began, and it named the figures she could use and the ones she could not.
 
@@ -3229,7 +3229,7 @@ A public-service host forbade foreign SaaS and required FOIA-ready logs. The pra
 
 
 
-Clearance and need-to-know rules mean course artefacts stay synthetic; never paste restricted host text into public repositories.
+The constraints appendix lists each restriction with the role at the host that imposed it.
 
 
 ### 43.5 Worked example — translating a placement finding (synthetic ABP)
@@ -3262,7 +3262,7 @@ You will (1) propose a capstone that ships a measurable CNHP improvement; (2) de
 
 Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
-Lena's Capstone I proposal was a zone-and-conduit policy compiler that reads ABP's zone model and emits firewall rules plus test vectors. Its requirements put safety first: SIS-B must stay unreachable from every routed zone. Her milestones, lab plan and ethics paragraph were reviewed before coding began. The project needed no exploit work, because its job was to prove that rules match the design, not to break into anything on the plant.
+Lena's Capstone I proposal was the policy compiler described in the worked example below. Its requirements put safety first: SIS-B must stay unreachable from every routed zone. Her milestones, lab plan and ethics paragraph were reviewed before coding began. The project needed no exploit work, because its job was to prove that rules match the design, not to break into anything on the plant.
 
 ### 44.2 Non-goals
 
@@ -3304,11 +3304,11 @@ A proposal that included a live plant scan was rejected at the ethics checkpoint
 
 
 
-Advisor checkpoints are mandatory; silent drift produces unreviewable piles at the end of term.
+A missed checkpoint is recovered with a written plan agreed with the advisor before coding resumes.
 
 
 
-Success metrics named in Capstone I are the same metrics shown at defense — no bait and switch.
+Each metric is measured with the same script at milestone 1 and at defense, so the numbers are comparable.
 
 
 ### 44.5 Worked example — capstone milestone 1 (synthetic ABP)
@@ -3383,11 +3383,11 @@ A non-hotfix UI merge on Friday evening before a Saturday window was reverted. T
 
 
 
-External reviewers once per term catch normalized deviance such as we always skip that test.
+The external reviewer's findings are filed like any other review, with requirement ids.
 
 
 
-Review SLOs prevent rubber-stamping under calendar pressure; expired merges return to draft rather than auto-merge.
+A review that misses its SLO is reported in the retrospective with the reason it was late.
 
 
 ### 45.5 Worked example — a dissent that changed the design (synthetic ABP)
@@ -3426,7 +3426,7 @@ Lena's capstone froze at v1.0 of her compiler. After the freeze, she fixed only 
 
 Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
 
-Lena reran Lab II for the compiler on a clean machine built from the v1.0 tag, using only synthetic fixtures. The run included all 214 unit tests, the conformance vector sets, the reachability equivalence check and the bench firewall replay. The checklist was signed by Lena and her reviewer, and the report named the tests that need bench hardware, so a later rerun without that hardware cannot quietly treat skipped tests as passes.
+Lena reran Lab II for the compiler on a clean machine built from the v1.0 tag, using only synthetic fixtures. The clean machine had no cached build artefacts, so every result came from the tagged source. The checklist was signed by Lena and her reviewer, and the report listed every skipped test with its reason. Lena kept the clean-machine build log with the tag, so an examiner can repeat the rerun exactly.
 
 ### 46.3 Docs
 
@@ -3454,7 +3454,7 @@ worst source before: comm loss PLC-A (38% of load)
 
 > **Synthetic case — Ashford Batch Plant.** One Capstone II team in Lena's cohort delivered signed allow-list distribution; Lab II green; runbook updated the same day.
 
-That team's project was separate from Lena's capstone, the compiler. Her documentation for the compiler included the demo script, the list of non-goals and a handover note naming which tests need bench hardware, all signed by operations before tagging.
+That team's project was separate from Lena's capstone, the compiler. Her documentation for the compiler was signed by operations before tagging, and its operator tutorial uses screenshots from the synthetic nine-conduit model only. Operations checked the tutorial by following it once on the bench.
 
 ### 46.4 Errors and limits
 
@@ -3468,11 +3468,11 @@ Silent runbook test: a second engineer follows the runbook cold on synthetic dat
 
 ### 46.1b Demo script and handover
 
-Capstone II demo follows a script on synthetic data: show fail-closed, show coverage denominator, show SIS reachability. Without ops signature the release tag is not cut. Link the silent-run recording hash in the Lab II report for advisor audit.
+Capstone II demo follows a script on synthetic data: show fail-closed, show coverage denominator, show SIS reachability. The demo ends by restoring the policy and showing traffic allowed again. Link the silent-run recording hash in the Lab II report for advisor audit.
 
 
 
-Advisor review watches the silent-run recording and files doc issues before sign-off. Capstone code without an ops owner at merge is unfinished. Demo scripts are recorded next to the lab report.
+Advisor review watches the silent-run recording and files doc issues before sign-off. Capstone code without an ops owner at merge is unfinished. Doc issues from the recording carry the timestamp where the engineer stalled.
 
 Lena's demo followed this script exactly. Her ops owner signed at merge.
 
@@ -3486,7 +3486,7 @@ Handover to ops names the owning squad in README and CODEOWNERS before Lab II si
 
 
 
-Demo scripts on synthetic data are mandatory; improvised demos skip safety.
+A demo that departs from its script is rerun from the start.
 
 
 ### 46.5 Worked example — freeze and verify (synthetic ABP)
@@ -3584,21 +3584,21 @@ Write corrective tickets against components and runbooks, not against individual
 
 
 
-Observers note timings and deviations — they do not fix things live. Schedule the next trial date before leaving the room so recurrence tests actually happen. Scoreboard photos go into the dossier.
+Observers note timings and deviations — they do not fix things live. Their timings are checked against the logs before the scoreboard is photographed. Scoreboard photos go into the dossier.
 
 ABP's tickets follow this rule. Nobody was blamed.
 
 ### Field note — zero-ticket smell
 
-A trial that produced zero tickets had skipped the flat-graph inject. Re-running with the hard inject filed three tickets and tightened the SIS reachability gate. Celebrate tickets; suspect clean scoreboards.
+A trial that produced zero tickets had skipped the flat-graph inject. Re-running with the hard inject filed three tickets and tightened the SIS reachability gate. The flat-graph inject is now mandatory in every trial.
 
 
 
-Blameless correction writes tickets against components and runbooks, not against people who followed a bad procedure.
+Each corrective ticket links the inject script and the measured value that triggered it.
 
 
 
-Recurrence tests close tickets only after the inject meets the SLO twice.
+Rotated observers are briefed on the measures before the trial, not during it.
 
 
 ### 47.5 Worked example — recovery trial on the bench (synthetic ABP)
@@ -3645,7 +3645,7 @@ No payloads, no live credentials, no proprietary batch genealogy. If it cannot b
 
 > **Synthetic case — Ashford Batch Plant.** Dossier v3 re-hashed clean after a findings.json edit incident; process note included.
 
-Lena's dossier at ABP replaces raw captures, passwords and recipe values with hashes and pointers to the controlled store. After a findings file was edited by mistake, version three was re-hashed and the process note explains how the error was found.
+Lena checks each file against the exclusion list before sealing; a single match stops the build and names the offending file. After a findings file was edited by mistake, version three was re-hashed and the process note explains how the error was found.
 
 ### 48.4 Errors and limits
 
@@ -3673,15 +3673,15 @@ make dossier ENG=2026-03-abp produces the zip and manifest. After automation, th
 
 
 
-Redaction logs record what, why and actor so future readers know a blank was intentional.
+Redactions are reviewed by a second person before the dossier is sealed.
 
 
 
-Reader checklists at the front of the dossier turn verification into a graded skill, not a guided tour.
+A failed re-hash drill is filed as a finding against the dossier build, not against the reader.
 
 
 
-Automation makes the happy path the safe path for dossiers.
+The build tag is printed on the dossier's first page beside the manifest hash.
 
 
 ### 48.5 Worked example — what goes in, what stays out (synthetic ABP)
@@ -3720,7 +3720,7 @@ Lena's own claim was about her compiler: for ABP's nine-conduit model, generated
 
 Related work, design, verification, results with intervals and attack classes, limitations, ethics.
 
-Lena's thesis follows this order. Related work cites IEC 62443-3-2 and SP 800-82r3 for the methods she used. Design explains how the compiler turns ABP's zone model into rules. Verification shows the equivalence check and conformance vectors, results report the three errors found, limitations state that a flawed zone model would be compiled faithfully, and the ethics chapter explains why no live plant was touched. Each part points to evidence.
+Lena's thesis follows this order. Related work cites the standards behind her methods, each with a how-used note. Design explains how the compiler turns ABP's zone model into rules. Verification shows the equivalence check and conformance vectors, results report the three errors found, limitations state that a flawed zone model would be compiled faithfully, and the ethics chapter explains why no live plant was touched. Each part points to evidence.
 
 ### 49.3 Citations
 
@@ -3746,9 +3746,9 @@ Cite frameworks you actually used. Padding related work with unread papers is di
 
 
 
-How-used notes stop citation padding cold in advisor review. The threats-to-validity page is graded; leaving it blank fails the thesis gate regardless of implementation quality. Examiners read that page first.
+How-used notes stop citation padding cold in advisor review. Leaving the threats-to-validity page blank fails the thesis gate regardless of implementation quality.
 
-Lena's threats page lists the compiler's reliance on a correct zone model.
+Lena's threats page lists the compiler's reliance on a correct zone model as its first threat.
 
 ### Field note — claim on page one
 
@@ -3756,11 +3756,11 @@ Examiners and advisors share the same target when the claim sentence is bold on 
 
 
 
-Reproducibility appendices ship fixture hashes, tool SHAs and scripts — available on request is insufficient.
+Lena's appendix lets an examiner replay the equivalence check in under ten minutes.
 
 
 
-Related-work honesty prefers thin accurate citations with how-used notes over unread padding.
+Each related-work entry states whether the cited method was used, compared against, or only discussed.
 
 
 ### 49.5 Worked example — a thesis claim with its evidence (synthetic ABP)
@@ -3793,7 +3793,7 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 Claim; demo on synthetic data; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
 
-Lena's defense followed this order. She stated her claim about the compiler, showed it on ABP's synthetic nine-conduit model, presented the equivalence and vector results, and described the silent stall in the vector loader and how a timeout fixed it. She then named the limitation that a wrong zone model would be compiled faithfully. Nothing in the talk touched a live system, and every number on her slides pointed to an artefact in the dossier.
+Lena's defense followed this order. She stated her claim about the compiler, showed it on ABP's synthetic nine-conduit model, presented the equivalence and vector results, and then gave her reflection on one failure. She closed with her limitations slide and one sentence on what the evidence supports. Nothing in the talk touched a live system, and every number on her slides pointed to an artefact in the dossier.
 
 ### 50.2 Likely questions
 

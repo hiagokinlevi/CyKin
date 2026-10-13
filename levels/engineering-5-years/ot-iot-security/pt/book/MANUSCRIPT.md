@@ -1,7 +1,7 @@
 # Segurança de TO, IoT e Sistemas Ciberfísicos: Engenharia de Sistemas de Controle Seguros
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito; os exercícios EX001–EX150 têm resoluções correspondentes; os laboratórios offline usam apenas a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: futuros engenheiros que vão projetar, implementar e verificar a segurança de sistemas de controle industrial, de TO e de sistemas ciberfísicos.
 - Relação com os livros vizinhos: o livro de engenharia de infraestrutura crítica enfatiza os setores; o livro de mestrado de TO enfatiza o desenho de estudos empíricos. **Este livro trata de construir a segurança de sistemas de controle**.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -67,10 +67,18 @@ Os capítulos 1–19 constroem os fundamentos, aplicados à TO desde a primeira 
 38. [Segurança de TO, IoT e sistemas ciberfísicos: validação](#ch-38)
 39. [Segurança de TO, IoT e sistemas ciberfísicos: manutenibilidade](#ch-39)
 40. [Laboratório de verificação II](#ch-40)
+41. [Segurança de TO, IoT e sistemas ciberfísicos: otimização do sistema](#ch-41)
+42. [Segurança de TO, IoT e sistemas ciberfísicos: pesquisa aplicada](#ch-42)
+43. [Prática na indústria ou no serviço público](#ch-43)
+44. [Projeto final de engenharia I](#ch-44)
+45. [Revisão independente de projeto](#ch-45)
+46. [Projeto final de engenharia II](#ch-46)
+47. [Ensaio de falha e recuperação](#ch-47)
+48. [Dossiê de evidências](#ch-48)
+49. [Tese de engenharia](#ch-49)
+50. [Defesa final](#ch-50)
 
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
-
-As [resoluções](#worked-results) contêm EX001–EX120. As [referências](#references) encerram o livro.
+As [resoluções](#worked-results) contêm EX001–EX150. As [referências](#references) encerram o livro.
 
 <a id="ch-01"></a>
 
@@ -3119,16 +3127,866 @@ Ponta a ponta com falhas; segurança física verde; duas assinaturas.
 <!-- cyberabc:chapter-navigation:start ch-40 -->
 ### Continue estudando — capítulo 40 de 50
 
-[← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 (inglês) →](../../en/book/MANUSCRIPT.md#ch-41)
+[← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Segurança de TO, IoT e sistemas ciberfísicos: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) fazer o perfilamento de pipelines de segurança de TO de forma ética; (2) otimizar sob as restrições de tempo de ciclo e das regras de engajamento; (3) rejeitar otimizações que enfraqueçam a segurança física.
+
+### 41.1 Primeiro o perfilamento
+
+Meça para onde vai o tempo: decodificação, avaliação de permit, escrita do evento. Otimize o termo dominante. Apenas carga sintética.
+
+Na ABP, Lena fez o perfilamento do monitor na bancada antes que qualquer otimização fosse aprovada. Reproduzindo um dia gravado de tráfego do tronco, ela mediu quanto tempo a decodificação, a avaliação de permit e a escrita dos eventos levavam cada uma, e descobriu que a escrita dos eventos dominava. Agrupar as escritas reduziu a latência total sem mudar uma única regra de permit. Ela usa apenas carga sintética ou reproduzida, porque perfilar contra equipamentos em operação acrescentaria exatamente o risco que o monitor existe para reduzir, e a cópia de bancada do PLC-A se comporta de forma próxima o bastante para o trabalho de temporização.
+
+### 41.2 Preservando as restrições
+
+Pôr a AllowListVersion em cache é aceitável se a invalidação na publicação estiver correta. Pôr em cache as decisões de permissão entre estações não é — as estações diferem.
+
+No CNHP, a lista de permissões fica em cache na memória com o seu número de versão, e toda publicação limpa o cache antes de a nova versão ser usada, então regras velhas não podem permanecer. Pôr em cache as decisões individuais foi rejeitado, porque a HMI-1 e a estação de engenharia têm permissão para registradores diferentes, e uma decisão guardada para uma estaria errada para a outra. Os testes de Lena incluem uma publicação sob carga pesada, para confirmar que a primeira decisão depois da publicação sempre usa a nova versão.
+
+### 41.3 Veto da segurança física
+
+Qualquer otimização que pule as verificações da lista de negação, encurte campos de auditoria ou falhe aberta é rejeitada, qualquer que seja o ganho de velocidade.
+
+```python
+"""Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
+link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
+polls = [("T-1 level", 8), ("T-2 level", 8), ("R-101 block", 40), ("pump status", 8), ("historian sweep", 120)]
+overhead = 12                                    # bytes of request+framing per poll (assumed)
+total = sum(n + overhead for _, n in polls)
+t = total * bits_per_byte / link_bps
+print(f"bytes per cycle={total} time per cycle={t*1000:.1f} ms")
+for target in (100, 50):
+    print(f"cycle budget {target} ms -> {'fits' if t*1000 <= target else 'OVERRUN'}")
+```
+
+Saída esperada:
+
+```text
+bytes per cycle=244 time per cycle=21.2 ms
+cycle budget 100 ms -> fits
+cycle budget 50 ms -> fits
+```
+
+> **Caso sintético — Ashford Batch Plant.** Pôr em cache na memória as listas de permissões assinadas reduziu a latência; a invalidação na publicação preservou a segurança física. Uma proposta de pular as verificações de registradores para IHMs "sabidamente boas" foi vetada.
+
+Lena registra cada proposta vetada na ABP com o ganho de velocidade esperado e o motivo da rejeição. O registro de decisões significa que a mesma ideia não é reaberta a cada trimestre sem novos argumentos de segurança.
+
+### 41.4 Erros e limites
+
+Benchmarks em laptops não predizem troncos de planta.
+
+Na ABP, um decodificador que rodava com folga no laptop de um desenvolvedor ficou para trás quando Lena o testou na cópia de bancada do tronco RS-485, com temporização e tamanhos de quadro reais. Os laptops têm processadores mais rápidos e nenhum dos limites de temporização serial que importam na planta. Lena agora só aceita números de desempenho vindos da bancada, e cada relatório de benchmark declara o ciclo de polling de 21 ms do tronco e a parada em 50 ms ao lado do resultado medido, para que os leitores possam julgar a margem.
+
+### Nota prática
+
+As propostas de otimização exigem um parágrafo de segurança física. As propostas sem ele são devolvidas sem leitura.
+
+### 41.1b Descarte de carga e N+1
+
+Sob sobrecarga, descarte o trabalho de descoberta antes de descartar a avaliação de negação. Atualizações tagarelas de tickets durante uma importação em massa esmagam o repositório de constatações — agrupe as escritas e meça. Mantenha folga dentro do orçamento de tempo de ciclo, para que uma tempestade de novas tentativas não o ultrapasse.
+
+A ordem de descarte de carga é escrita no runbook, para que o líder da janela saiba qual trabalho pausa primeiro.
+
+As revisões de Lena aplicam cada regra. Na ABP, Lena testou a sobrecarga reproduzindo o tráfego em velocidade tripla: a descoberta pausou primeiro, enquanto as decisões de negação continuaram em taxa plena e ficaram bem abaixo do orçamento de ciclo.
+
+### Nota de campo — parágrafo de segurança física
+
+Um PR de otimização que removia os códigos de motivo dos logs do caminho crítico para economizar microssegundos foi devolvido sem leitura por falta de um parágrafo de segurança física. O PR revisado manteve os códigos e encontrou o seu ganho em outro lugar. Os parágrafos de segurança física não são burocracia; são o mecanismo de veto.
+
+A reprodução de sobrecarga é repetida a cada versão que toca o decodificador.
+
+### 41.5 Exemplo resolvido — otimização com veto da segurança física (ABP sintética)
+
+A produção pede para encurtar o lote do R-101 aumentando a vazão de alimentação, e pede ao CNHP que relaxe o limite de taxa da função permit para escritas de setpoint de uma a cada 10 s para uma por segundo, para acomodar a receita mais rápida. Lena faz o perfilamento primeiro: só a fase de carga precisa de escritas mais rápidas. Ela propõe um limite específico por fase, aplicado apenas enquanto o estado do lote for "carga", e o submete ao engenheiro de segurança de processo, que confirma que os desarmes por temperatura alta e por nível alto do SIS-B não são afetados. O engenheiro de segurança tem poder de veto sobre qualquer otimização que toque uma malha relevante para a segurança física; esta passou, com um teste de carga na bancada.
+
+### Exercícios
+
+- **EX121 — Veto.** Uma otimização que precisa ser rejeitada. Rubrica: 3 = exemplo que enfraquece a segurança física; 2 = vago; 1 = aprova; 0 = nada.
+- **EX122 — Cache.** Quando o cache de decisões é seguro? Rubrica: 3 = mesma versão+estação+fc+registrador, TTL curto, invalidação na publicação; 2 = parcial; 1 = sempre; 0 = nada.
+- **EX123 — Descarte.** O que você descarta primeiro sob sobrecarga? Rubrica: 3 = descoberta/avaliação antes da avaliação de negação; 2 = parcial; 1 = descartar negações; 0 = nada.
+
+### Síntese
+
+Velocidade sob restrições; a segurança física tem poder de veto.
+
+<!-- cyberabc:chapter-navigation:start ch-41 -->
+### Continue estudando — capítulo 41 de 50
+
+[← Capítulo 40](#ch-40) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Segurança de TO, IoT e sistemas ciberfísicos: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa sobre programas de segurança de TO; (2) escolher medidas e linhas de base com a higiene da avaliação de detectores; (3) manter o uso dual fora da pesquisa dos estudantes.
+
+### 42.1 Perguntas que cabem
+
+A dupla aprovação reduz os incidentes de alargamento de condutos? Mostrar os denominadores muda a interpretação da cobertura pelas partes interessadas? Não "novo bypass contra o CLP da marca X".
+
+A pesquisa aplicada de Lena na ABP seguiu esse padrão: ela escolheu uma pergunta sobre linhas de base de detectores, apresentada no exemplo resolvido abaixo. A pergunta podia ser respondida com tráfego gravado e mudaria diretamente o modo como a planta configura o seu monitor. Ela recusou uma sugestão de estudar bypasses contra uma marca específica de CLP, porque isso produziria conhecimento de ataque sem melhorar o modo como a ABP opera as suas defesas.
+
+### 42.2 Desenho
+
+Pré-registre as medidas; use dados sintéticos ou operacionais consentidos; relate intervalos e classes de ataque (Urbina et al.; Giraldo et al.). A replicação vence o teatro da novidade.
+
+Lena registrou as suas medidas, os comprimentos das linhas de base e o limiar antes de analisar os 60 dias de tráfego gravado da ABP. O seu registro de emendas guarda a única mudança que ela fez depois do registro, com o motivo. Os resultados são relatados com intervalos para cada comprimento de linha de base, para que os leitores vejam onde a evidência é fraca. Ela prefere confirmar com cuidado uma constatação anterior a alegar uma nova que ninguém consegue reproduzir.
+
+### 42.3 Divulgação
+
+Se a pesquisa encontrar por acidente um problema real, siga a divulgação responsável — não um blog da turma.
+
+> **Caso sintético — Ashford Batch Plant.** O estudo aplicado de Lena comparou as taxas de reabertura de tickets antes/depois de exigir evidência de novo teste; pré-registrado, sintético+anonimizado.
+
+O plano de pesquisa de Lena nomeava a equipe de segurança de produto do fornecedor como o primeiro contato para qualquer falha encontrada num produto, e só permitia a publicação depois da resposta do fornecedor. A tese descreveria uma falha apenas em termos gerais. O seu orientador revisou o plano antes que qualquer tráfego fosse analisado.
+
+### 42.4 Erros e limites
+
+Projetos de curso não são pesquisa com seres humanos; evite coletar dados pessoais de operadores.
+
+A pesquisa de Lena na ABP usou o tráfego entre dispositivos, não registros do que operadores individuais fizeram, então nenhuma pessoa podia ser identificada pelos seus dados. Onde ações de operadores apareciam nos logs, como os reconhecimentos na HMI-1, ela removeu os nomes de usuário antes da análise. Estudar pessoas de forma adequada exige uma revisão ética que um projeto de curso não tem, então qualquer pergunta sobre o comportamento dos operadores fica para trabalhos futuros, com as aprovações apropriadas, em vez de ser respondida com dados coletados informalmente.
+
+### Nota prática
+
+O código de análise pré-registrado fica no repositório, com um commit de congelamento antes da coleta de dados. Emendar depois de espiar exige uma emenda registrada.
+
+### 42.1b Compartilhamento de dados e resultados negativos
+
+Mesmo métricas operacionais sintéticas mais anonimizadas precisam de um acordo escrito com a organização anfitriã para as teses de estudantes. A pesquisa aplicada publicável inclui resultados negativos. Esconder os negativos enviesa a turma seguinte para uma confiança vazia.
+
+Declare a fronteira do uso dual na seção de ética da tese, com um exemplo concreto de recusa. Os resultados negativos recebem a mesma qualidade de figuras que os positivos no modelo da tese.
+
+O acordo de Lena com a ABP para os dados foi assinado antes da análise, e a sua tese relata, com figuras completas, os comprimentos de linha de base que nunca atingiram o limiar.
+
+### Nota de campo — registro de emendas
+
+Depois de espiar os dados piloto, um estudante quis mudar a medida primária. O registro de emendas guardou o motivo e manteve a medida original como análise secundária. Pré-registro sem disciplina de emendas é teatro.
+
+O acordo nomeia quem pode ver as extrações brutas e quando elas são apagadas.
+
+Cada entrada de emenda traz a data, o motivo e o commit que mudou o código de análise.
+
+### 42.5 Exemplo resolvido — uma pergunta de pesquisa que cabe na planta (ABP sintética)
+
+A pesquisa aplicada de Lena pergunta: no tráfego gravado da ABP, quantos dias de linha de base são necessários para que os alertas falsos de um detector de condutos novos caiam abaixo de um por semana? O desenho usa 60 dias de tráfego sintético, mas realista, linhas de base deslizantes de 3, 7, 14 e 28 dias e um limiar pré-registrado. O registro de emendas guarda uma mudança: uma atualização do ERP acrescentou tráfego no dia 33, então esse dia é analisado separadamente, em vez de removido em silêncio. O planejamento da divulgação faz parte do desenho: se o trabalho revelar uma falha de produto, ela vai para o PSIRT do fornecedor antes da publicação.
+
+### Exercícios
+
+- **EX124 — Pergunta.** Uma pergunta de pesquisa aceitável. Rubrica: 3 = foco no programa/processo; 2 = limítrofe; 1 = foco em exploit; 0 = nada.
+- **EX125 — Medida.** Medida primária para o estudo da dupla aprovação. Rubrica: 3 = por exemplo, tentativas de alargamento não aprovadas/trimestre; 2 = vaga; 1 = "segurança"; 0 = nada.
+- **EX126 — Uso dual.** Recuse um projeto que pede um novo exploit de CLP. Rubrica: 3 = recusa + alternativa; 2 = recusa; 1 = aceita; 0 = nada.
+
+### Síntese
+
+Pesquise o programa e o processo; deixe a armamentização de lado.
+
+<!-- cyberabc:chapter-navigation:start ch-42 -->
+### Continue estudando — capítulo 42 de 50
+
+[← Capítulo 41](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) adaptar a engenharia do CNHP às restrições de uma organização anfitriã; (2) escrever um relatório de prática sem detalhes proprietários; (3) traduzir entre a segurança de processo, a operação e a engenharia.
+
+### 43.1 Estágio
+
+Na indústria ou no serviço público, os modelos de permissão de trabalho, a residência dos dados e as compras são diferentes. O seu trabalho continua sendo ferramentas com falha fechada e medição honesta — não testes engenhosos não autorizados.
+
+No estágio numa fabricante terceirizada, Lena encontrou formulários de permissão diferentes, um processo de compras diferente e regras mais rígidas sobre onde os dados podiam ser guardados do que na ABP. Ela adaptou os seus métodos ao processo da anfitriã, em vez de importar os formulários da ABP. O que não mudou foi o núcleo da sua prática: ferramentas que param com segurança na dúvida, medições com os seus denominadores e testes executados apenas dentro do escopo que a anfitriã aprovou por escrito.
+
+### 43.2 Relatório sanitizado
+
+Os entregáveis do curso usam nomes sintéticos e agregados. Os identificadores reais da planta ficam nos sistemas da anfitriã.
+
+O relatório de estágio de Lena descreveu o risco do laptop do fornecedor sem nomear a anfitriã, as suas plantas ou os seus dispositivos. Endereços e nomes de hosts ficaram nos sistemas da anfitriã, e os números foram dados apenas como contagens ou faixas. A revisão de liberação da anfitriã conferiu o relatório antes que ele chegasse à universidade, e o seu orientador avaliou a versão sanitizada, então nada identificador saiu da organização. Lena manteve os originais nos sistemas da anfitriã.
+
+### 43.3 Tradução
+
+A segurança de processo ouve independência e SIL. A operação ouve janelas e alarmes. A engenharia ouve esquemas e testes. Os mesmos fatos, três dialetos.
+
+> **Caso sintético — Ashford Batch Plant.** O memorando de estágio de Lena usou apenas números sintéticos da ABP; os nomes reais das plantas parceiras foram omitidos.
+
+No seu memorando de estágio, Lena escreveu a mesma constatação sobre o laptop de três maneiras: para a segurança de processo, como uma ameaça à independência dos controladores da linha; para a operação, como uma necessidade de agendar atualizações; e para a engenharia, como uma mudança de configuração. Cada leitor recebeu a versão de que precisava.
+
+### 43.4 Erros e limites
+
+"Não posso contar o que fiz" não é um relatório de prática — use uma reconstrução sintética acordada com a anfitriã.
+
+O relatório de estágio de Lena não podia incluir os detalhes reais da rede da anfitriã, então ela acordou com o seu mentor na anfitriã uma reconstrução sintética que manteve a estrutura da constatação, mas substituiu todo detalhe identificador. O seu apêndice de restrições declarou o que ela não teve permissão para examinar. Isso deu à universidade algo para avaliar sem expor a anfitriã, e é o padrão para qualquer estágio em que o próprio trabalho não possa ser descrito diretamente.
+
+### Nota prática
+
+Se a sua anfitriã de estágio vende scanners de TO, declare isso e ainda assim recuse as pontuações vazias. Apresentações de marketing não são medição.
+
+### 43.1b Credenciamento e conflitos
+
+Os estágios no serviço público podem envolver credenciamentos de segurança. Os artefatos do curso ficam na menor sensibilidade: reconstruções sintéticas. Nunca cole texto restrito no GitHub. Os relatórios de prática incluem um apêndice de restrições avaliado com o mesmo peso que o trabalho técnico.
+
+Se a anfitriã proibir até as métricas sanitizadas, use um cenário de gêmeo totalmente sintético, rotulado como tal.
+
+O próprio apêndice de Lena seguiu essa regra. O acordo de Lena com o seu mentor na anfitriã foi escrito antes do início da redação e nomeava os números que ela podia usar e os que não podia.
+
+### Nota de campo — apêndice de restrições
+
+Uma anfitriã do serviço público proibia SaaS estrangeiro e exigia logs prontos para pedidos de acesso à informação (FOIA). O apêndice de restrições do relatório de prática explicou por que a arquitetura C era impossível e por que a A foi escolhida. Os avaliadores deram ao apêndice o mesmo peso que ao código.
+
+O apêndice de restrições lista cada restrição com o papel, na anfitriã, que a impôs.
+
+### 43.5 Exemplo resolvido — traduzindo uma constatação de estágio (ABP sintética)
+
+No estágio numa fabricante terceirizada, Lena observa que o laptop do fornecedor usado para as atualizações dos CLPs também navega na internet. O seu relatório sanitizado omite nomes de hosts e endereços, descreve o risco em termos de planta — "um único laptop carrega tanto a exposição à internet quanto a capacidade de baixar lógica para os controladores da linha (ATT&CK for ICS T0843)" — e recomenda um laptop de engenharia dedicado, atualizado offline. A revisão de liberação da organização anfitriã aprova o relatório antes que ele chegue à universidade, e o apêndice de restrições declara o que ela não teve permissão para examinar.
+
+### Exercícios
+
+- **EX127 — Dialeto.** Traduza "falhar de forma fechada com a política ausente" para a segurança de processo. Rubrica: 3 = redação de segurança física/risco; 2 = parcial; 1 = despejo de jargão; 0 = nada.
+- **EX128 — Sanitizar.** Reescreva uma frase que vaza um nome de host real. Rubrica: 3 = substituto sintético; 2 = parcial; 1 = ainda vaza; 0 = nada.
+- **EX129 — Restrição.** Duas restrições do serviço público que mudam a arquitetura. Rubrica: 3 = por exemplo, residência, compras, FOIA; 2 = uma; 1 = vago; 0 = nada.
+
+### Síntese
+
+A prática é feita de restrições reais mais artefatos de aprendizagem sanitizados.
+
+<!-- cyberabc:chapter-navigation:start ch-43 -->
+### Continue estudando — capítulo 43 de 50
+
+[← Capítulo 42](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) propor um projeto final que entregue uma melhoria mensurável do CNHP; (2) definir o escopo e os não objetivos; (3) estabelecer um plano de verificação mapeado para as linhas do Laboratório I.
+
+### 44.1 Proposta
+
+Problema, usuários, requisitos (segurança física primeiro), esboço da arquitetura, marcos, plano do laboratório de verificação, parágrafo de ética. Projetos finais que exigem trabalho de exploit são rejeitados.
+
+A proposta de Projeto Final I de Lena foi o compilador de políticas descrito no exemplo resolvido abaixo. Os seus requisitos punham a segurança física em primeiro lugar: o SIS-B precisa continuar inalcançável a partir de toda zona roteada. Os seus marcos, o plano de laboratório e o parágrafo de ética foram revisados antes do início da codificação. O projeto não precisou de trabalho de exploit, porque o seu objetivo era provar que as regras conferem com o projeto, e não invadir nada na planta.
+
+### 44.2 Não objetivos
+
+Liste explicitamente o que você não vai construir (módulos de exploit, varredura de planta em operação, oráculos de risco por aprendizado de máquina, pontuações vazias).
+
+Os não objetivos de Lena foram escritos na sua proposta e assinados pelo orientador: nenhuma implantação ao vivo, nenhuma configuração do SIS-B e nenhuma varredura ativa. Quando um colega sugeriu acrescentar varredura automática para conferir as regras implantadas, ela apontou para a lista congelada e manteve as verificações do compilador funcionando sobre exportações. Escrever os não objetivos cedo deu a ela uma resposta clara para toda extensão tentadora ao longo do período.
+
+### 44.3 Marco 1
+
+Algo demonstrável sobre dados sintéticos na semana 3: por exemplo, o kill switch atendido em ≤30 s, com um teste.
+
+> **Caso sintético — Ashford Batch Plant.** As propostas de Projeto Final I que mencionavam "auto-pwn" foram devolvidas; a distribuição de listas de permissões assinadas com falha fechada avançou.
+
+Outras propostas na turma de Lena construíram a distribuição de listas de permissões assinadas. O marco 1 do próprio compilador de Lena atingiu a alcançabilidade para os nove condutos da ABP, mas produziu vetores de teste para apenas sete regras. A demonstração rodou inteiramente sobre exportações sintéticas, e a lacuna virou o primeiro item do marco 2.
+
+### 44.4 Erros e limites
+
+O aumento de escopo é o principal assassino — congele os não objetivos.
+
+Durante o projeto final de Lena, os revisores sugeriram acrescentar um painel, publicações ao vivo no firewall e suporte a uma segunda planta. Cada uma levaria semanas, e nenhuma era necessária para provar que o compilador conferia com o projeto. Ela respondeu a cada sugestão com os não objetivos congelados e as pôs numa lista de trabalhos futuros. Os dois vetores faltantes do marco 1 viraram a primeira tarefa do marco 2, então o tempo restante foi para terminar o que ela tinha prometido. O seu escopo final conferiu com a proposta.
+
+### Nota prática
+
+Propostas que não conseguem nomear uma linha do Laboratório I para cada requisito Must voltam para rascunho.
+
+### 44.1b Métricas de sucesso e pontos de controle
+
+Defina duas métricas que você vai mostrar na defesa (por exemplo, tempo até negar tudo, porcentagem de merges com tickets AUTH). O Projeto Final I tem pontos de controle obrigatórios: proposta aceita, demonstração do marco 1, verificação ética intermediária. Perder um ponto de controle congela a codificação até a recuperação.
+
+Registro de riscos do projeto final: aumento de escopo, atraso de dependências, indisponibilidade de revisores, confusão sobre a fronteira ética — cada um com um alerta precoce e uma mitigação. Demonstrações de marco que pulam a falha fechada recebem nota zero naquele ponto de controle.
+
+As duas métricas de Lena foram a alcançabilidade dos condutos e a cobertura de vetores. As duas aparecem na sua defesa.
+
+### Nota de campo — ética cedo
+
+Uma proposta que incluía uma varredura de planta em operação foi rejeitada no ponto de controle ético antes que qualquer código fosse escrito. Mapear os requisitos Must para as linhas do Laboratório I na mesma revisão evitou um projeto bonito que não conseguiria mostrar a falha fechada.
+
+Um ponto de controle perdido é recuperado com um plano escrito, acordado com o orientador antes que a codificação recomece.
+
+Cada métrica é medida com o mesmo script no marco 1 e na defesa, para que os números sejam comparáveis.
+
+### 44.5 Exemplo resolvido — marco 1 do projeto final (ABP sintética)
+
+O projeto final de Lena constrói um compilador verificado de políticas de zonas e condutos: ele lê um modelo de zonas e emite regras de firewall mais vetores de conformidade. Não objetivos: nenhuma implantação ao vivo, nenhuma configuração do SIS-B, nenhuma varredura ativa. Métrica de sucesso do marco 1: para o modelo de nove condutos da ABP, o compilador produz regras cuja alcançabilidade (conferida com o código de grafos do Capítulo 2) é exatamente igual à do projeto, e toda regra tem pelo menos um vetor de passagem e um de bloqueio. No ponto de controle, ele atingiu a alcançabilidade para 9/9 condutos, mas produziu vetores para apenas 7/9 regras; a lacuna é o item de abertura do marco 2.
+
+### Exercícios
+
+- **EX130 — Não objetivo.** Três não objetivos para um projeto final de painel de cobertura. Rubrica: 3 = três claros; 2 = dois; 1 = um; 0 = nada.
+- **EX131 — Marco.** Marco da semana 3 com teste de aceitação. Rubrica: 3 = demonstração + teste; 2 = só a demonstração; 1 = vago; 0 = nada.
+- **EX132 — Ética.** Parágrafo de ética de quatro frases. Rubrica: 3 = autorização, sintético, uso dual, divulgação; 2 = parcial; 1 = fraco; 0 = nada.
+
+### Síntese
+
+Entregue valor de programa relevante para a segurança física; congele os não objetivos cedo.
+
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Continue estudando — capítulo 44 de 50
+
+[← Capítulo 43](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma revisão que possa rejeitar; (2) usar um checklist ligado aos requisitos de segurança física; (3) registrar as opiniões divergentes.
+
+### 45.1 Direitos de revisão
+
+Os revisores podem bloquear o merge por caminhos de falha aberta, testes faltando, regressões de alcançabilidade do SIS ou pontuações vazias na interface. Um "LGTM" sem o checklist é inválido.
+
+Na ABP, os revisores do CNHP têm autoridade escrita para bloquear um merge por qualquer desses motivos, e o gerente da planta concordou em não anular um bloqueio para cumprir um prazo. Um revisor que aprova sem preencher o checklist não revisou a mudança, e o merge é revertido até que uma revisão adequada seja feita. Lena mantém um registro dos bloqueios e dos seus motivos, que mostrou que a maioria dos bloqueios dizia respeito a testes faltando, e não a projetos inseguros.
+
+### 45.2 Checklist
+
+Falha fechada; autenticação da política; o esquema proíbe payloads; a cobertura tem denominador; redação de segredos; caminho de reversão documentado; teste de alcançabilidade do SIS verde.
+
+O checklist de Lena na ABP tem uma linha para cada item, e cada linha se liga ao requisito que impõe, como o S-1 para o comportamento de falha fechada e o R-12 para a alcançabilidade do SIS-B. O revisor marca uma linha apenas depois de ver a evidência, como o teste que falha quando a política está ausente. A reversão é conferida nomeando a versão anterior e o comando para restaurá-la, e o teste de alcançabilidade precisa ter rodado exatamente no commit que está sendo integrado.
+
+### 45.3 Divergência
+
+Se um revisor discordar, registre a divergência no ADR mesmo que seja vencida — incidentes futuros precisam desse rastro.
+
+> **Caso sintético — Ashford Batch Plant.** Um PR com selo de cobertura foi bloqueado duas vezes sob este checklist; a terceira revisão publicou a interface honesta (Capítulo 35).
+
+Na ABP, a divergência da revisora externa sobre o coletor enviar alertas para a IHM foi registrada literalmente e, naquele caso, mudou o projeto. Lena guarda as divergências vencidas no mesmo lugar, porque um incidente posterior pode lhes dar razão.
+
+### 45.4 Erros e limites
+
+Revisões depois do merge são arqueologia, não controle.
+
+Na ABP, uma pequena mudança no formato dos alertas certa vez foi integrada antes da revisão porque o prazo estava perto, e a revisão que veio depois descobriu que ela tinha removido o código de motivo de que os operadores dependiam. A correção exigiu uma segunda versão durante uma janela. Desde então, a fila de merge do CNHP recusa qualquer mudança sem um checklist preenchido, e uma revisão pedida depois do merge é registrada como falha de processo na retrospectiva, em vez de contada como revisão.
+
+### Nota prática
+
+Os revisores rodam localmente os testes críticos, sobre dados de teste sintéticos, antes da reunião — não apenas leem o diff.
+
+### 45.1b Revisores externos e SLOs
+
+Uma vez por período, convide um engenheiro de fora da equipe para revisar um PR crítico para a segurança física. As revisões são concluídas dentro de um número acordado de dias úteis, ou a mudança expira da fila de merge (sem merge automático). Proíba merges na sexta à noite antes de janelas, a menos que seja uma correção urgente de segurança física com evidência do Laboratório I.
+
+Os comentários de bloqueio precisam citar um id de requisito ou o número de um item do checklist. Pulos repetidos do checklist pelo mesmo revisor disparam uma conversa de orientação. O calendário faz parte do projeto do controle.
+
+A revisora externa da ABP veio de uma empresa de saneamento.
+
+### Nota de campo — proibição de merges na sexta
+
+Um merge de interface que não era correção urgente, feito na sexta à noite antes de uma janela de sábado, foi revertido. A regra do calendário existe porque revisores cansados deixam passar caminhos de falha aberta. Merges heroicos de última hora são um mau sinal.
+
+As constatações da revisora externa são registradas como qualquer outra revisão, com ids de requisitos.
+
+Uma revisão que perde o seu SLO é relatada na retrospectiva, com o motivo do atraso.
+
+### 45.5 Exemplo resolvido — uma divergência que mudou o projeto (ABP sintética)
+
+Na revisão independente de projeto, uma revisora externa de uma empresa de saneamento contestou o plano de deixar o coletor de monitoramento enviar alertas diretamente para a IHM. O seu argumento: uma inundação de alertas poderia distrair os operadores durante uma perturbação, e um coletor comprometido ganharia um caminho para o L2. O item do checklist "algum componente de segurança acrescenta um conduto para uma zona de controle?" tinha sido marcado incorretamente. A divergência é registrada literalmente, o projeto muda para que os alertas vão para o SOC e para o telefone do líder de turno, e o SLO da revisão (comentários respondidos em até cinco dias úteis) é cumprido.
+
+### Exercícios
+
+- **EX133 — Bloqueio.** Comentário de bloqueio para uma nova tentativa com falha aberta. Rubrica: 3 = cita o requisito de segurança + pede a correção; 2 = bloqueio vago; 1 = detalhe menor; 0 = aprova.
+- **EX134 — Checklist.** Acrescente um item para os taps seriais. Rubrica: 3 = específico; 2 = vago; 1 = nenhum; 0 = nada.
+- **EX135 — Divergência.** Uma frase de divergência registrada. Rubrica: 3 = clara; 2 = evasiva; 1 = nenhuma; 0 = nada.
+
+### Síntese
+
+Revisões que conseguem dizer não, com um checklist e uma memória.
+
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Continue estudando — capítulo 45 de 50
+
+[← Capítulo 44](#ch-44) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) terminar a implementação conforme a proposta congelada; (2) executar o Laboratório de Verificação II; (3) entregar a documentação de operação e a titularidade operacional.
+
+### 46.1 Congelamento
+
+A data de congelamento de funcionalidades é real: depois dela, apenas correções de segurança física. Ideias novas vão para uma proposta de continuação.
+
+O projeto final de Lena congelou na v1.0 do seu compilador. Depois do congelamento, ela corrigiu apenas o travamento silencioso no carregador de vetores, porque ele podia esconder uma falha, e registrou toda ideia nova, como o suporte a uma segunda planta, numa proposta de continuação. A data de congelamento foi acordada com o orientador na fase da proposta, então ninguém podia tratá-la como uma meta flexível quando as últimas semanas ficaram corridas.
+
+### 46.2 Verificar
+
+O projeto final precisa passar no Laboratório II (Capítulo 40) sobre dados de teste sintéticos, com o checklist assinado.
+
+Lena rodou de novo o Laboratório II para o compilador numa máquina limpa construída a partir da tag v1.0, usando apenas dados de teste sintéticos. A máquina limpa não tinha artefatos de build em cache, então todo resultado veio do código-fonte marcado. O checklist foi assinado por Lena e pelo seu revisor, e o relatório listou todo teste pulado, com o motivo. Lena guardou o log de build da máquina limpa com a tag, para que um examinador possa repetir a nova execução exatamente.
+
+### 46.3 Documentação
+
+Seção do runbook, ADR, tutorial do operador com capturas de tela da interface sintética — nenhum dado da planta. A assinatura da operação é exigida antes da tag.
+
+```python
+"""Lab: alarm load per operator hour before and after rationalisation (synthetic counts)."""
+before = {"T-1 high": 140, "T-2 high": 95, "R-101 temp": 30, "pump trip": 6, "comm loss PLC-A": 210, "door open": 75}
+remove = {"comm loss PLC-A": 200, "door open": 70, "T-1 high": 110}   # chattering/duplicate alarms removed
+hours = 24 * 7
+tb = sum(before.values()); ta = tb - sum(remove.values())
+print(f"week alarms before={tb} after={ta}")
+print(f"per operator-hour before={tb/hours:.2f} after={ta/hours:.2f}")
+top = max(before, key=before.get)
+print(f"worst source before: {top} ({before[top]/tb:.0%} of load)")
+```
+
+Saída esperada:
+
+```text
+week alarms before=556 after=176
+per operator-hour before=3.31 after=1.05
+worst source before: comm loss PLC-A (38% of load)
+```
+
+> **Caso sintético — Ashford Batch Plant.** Uma equipe do Projeto Final II na turma de Lena entregou a distribuição de listas de permissões assinadas; Laboratório II verde; runbook atualizado no mesmo dia.
+
+O projeto dessa equipe era separado do projeto final de Lena, o compilador. A documentação do compilador foi assinada pela operação antes da tag, e o seu tutorial do operador usa capturas de tela apenas do modelo sintético de nove condutos. A operação conferiu o tutorial seguindo-o uma vez na bancada.
+
+### 46.4 Erros e limites
+
+A mágica de demonstração num laptop, com a falha fechada descrita só com as mãos, não passa.
+
+Na revisão do projeto final de Lena, a demonstração de um colega mostrou uma ferramenta de políticas funcionando num laptop, mas não conseguiu mostrar o que acontecia quando o arquivo de política estava ausente. Os examinadores marcaram o requisito de falha fechada como não atendido. A demonstração de Lena apagou a política na bancada e mostrou a negação com o seu código de motivo, depois a restaurou, porque as alegações sobre falha segura precisam ser mostradas sob falha, e não descritas enquanto tudo funciona.
+
+### Nota prática
+
+Teste silencioso do runbook: um segundo engenheiro segue o runbook a frio, sobre dados sintéticos, enquanto o autor fica em silêncio. Os pontos em que ele empaca viram correções da documentação.
+
+### 46.1b Roteiro da demonstração e passagem
+
+A demonstração do Projeto Final II segue um roteiro sobre dados sintéticos: mostrar a falha fechada, mostrar o denominador da cobertura, mostrar a alcançabilidade do SIS. A demonstração termina restaurando a política e mostrando o tráfego permitido de novo. Ponha o hash da gravação da execução silenciosa no relatório do Laboratório II, para a auditoria do orientador.
+
+A revisão do orientador assiste à gravação da execução silenciosa e registra problemas de documentação antes da aprovação. Um código de projeto final sem um dono operacional no merge está inacabado. Os problemas de documentação vindos da gravação trazem o timestamp em que o engenheiro empacou.
+
+A demonstração de Lena seguiu exatamente esse roteiro. O seu dono operacional assinou no merge.
+
+### Nota de campo — travamento na execução silenciosa
+
+A execução silenciosa do colega empacou na falta de documentação da chave da política de teste. A correção da documentação foi publicada no mesmo dia. O Projeto Final II não está concluído até que alguém que não escreveu o código consiga operar o caminho de parada apenas com o runbook.
+
+A passagem para a operação nomeia a equipe dona no README e no CODEOWNERS antes da aprovação do Laboratório II.
+
+Uma demonstração que se desvia do seu roteiro é refeita desde o início.
+
+### 46.5 Exemplo resolvido — congelar e verificar (ABP sintética)
+
+No congelamento do Projeto Final II, Lena marca o compilador com a tag v1.0 e roda de novo toda a verificação numa máquina limpa a partir da tag: 214 testes de unidade, 18 conjuntos de vetores de conformidade, a verificação de equivalência de alcançabilidade e a reprodução no firewall de bancada. Uma execução travou em silêncio porque a API do firewall de bancada limitou a taxa do carregador de vetores; a correção é um timeout com uma mensagem de falha explícita, em vez de um laço de novas tentativas. A documentação inclui o roteiro da demonstração, a lista de não objetivos e uma nota de passagem nomeando quais testes exigem hardware de bancada, para que um sucessor não confunda testes pulados com aprovações.
+
+### Exercícios
+
+- **EX136 — Congelamento.** O que é permitido depois do congelamento de funcionalidades? Rubrica: 3 = só correções de segurança física; 2 = defeitos; 1 = funcionalidades; 0 = nada.
+- **EX137 — Artefatos.** Cinco artefatos de entrega. Rubrica: 3 = cinco; 2 = três; 1 = só código; 0 = nada.
+- **EX138 — Operação.** Por que a assinatura da operação é exigida ao lado do Laboratório II? Rubrica: 3 = titularidade/prontidão do runbook; 2 = vago; 1 = burocracia; 0 = nada.
+
+### Síntese
+
+Congele, verifique, documente, nomeie a operação — e então opere.
+
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Continue estudando — capítulo 46 de 50
+
+[← Capítulo 45](#ch-45) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um ensaio de falha roteirizado; (2) medir o tempo de recuperação; (3) registrar ações corretivas.
+
+### 47.1 Roteiro
+
+Injetar: arquivo da lista de permissões apagado; repositório de constatações derrubado; defasagem de relógio; reprodução de eventos duplicados; grafo plano no lugar do zoneado. Observar negações, filas, alertas, reprovação da alcançabilidade.
+
+No ensaio de falha na bancada da ABP, a equipe de Lena apagou o arquivo da lista de permissões enquanto o tráfego reproduzido rodava, depois derrubou o repositório de constatações, defasou o relógio na cópia de bancada do PLC-A e reproduziu eventos duplicados. Por fim, substituiu o grafo zoneado por um plano. Os observadores registraram se as escritas foram negadas, se as constatações foram enfileiradas, se os alertas dispararam e se a verificação de alcançabilidade reprovou o grafo plano. Cada injeção foi executada separadamente antes de qualquer combinação ser tentada.
+
+### 47.2 Medidas
+
+Tempo até negar todas as escritas depois da perda da política; tempo até o alerta; tempo até a restauração; constatações perdidas (deveria ser 0 com a fila); a verificação de alcançabilidade do SIS continua falhando de forma fechada com um grafo ruim.
+
+Na ABP, o ensaio mediu 45 segundos até negar todas as escritas depois que a lista de permissões foi apagada, contra uma meta de 30 segundos. Os alertas dispararam dentro da meta, e nenhuma constatação se perdeu, porque os rascunhos foram enfileirados enquanto o repositório de constatações estava fora do ar. A verificação de alcançabilidade reprovou corretamente quando o grafo plano foi substituído, mostrando o SIS-B como alcançável. Cada medida foi registrada por um observador com cronômetro e conferida contra os logs, então os números não dependeram da memória de ninguém.
+
+### 47.3 Ações corretivas
+
+Cada falha vira um ticket com dono e prazo — não apenas um slide de lições aprendidas.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Saída esperada:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+> **Caso sintético — Ashford Batch Plant.** O ensaio mostrou 45 s até negar todas as escritas; meta de 30 s — o intervalo de consulta foi apertado.
+
+Na ABP, o tempo de negação de 45 segundos virou um ticket para o dono do monitor, com prazo. A correção encurtou o intervalo de verificação da política, e a injeção foi repetida até atingir a meta duas vezes. O ticket só foi encerrado depois da segunda execução aprovada, e a data do ensaio seguinte foi reservada antes que os observadores saíssem da sala.
+
+### 47.4 Erros e limites
+
+Ensaios em janelas de produção são proibidos; use ambientes sintéticos.
+
+Os ensaios de Lena na ABP rodam no ambiente de bancada, com tráfego sintético, nunca durante uma janela de produção. Apagar a lista de permissões no monitor em operação testaria o mesmo caminho de código, mas poderia interromper as escritas de engenharia enquanto um lote rodava no R-101. A cópia de bancada do PLC-A e o tráfego reproduzido do tronco dão a evidência de temporização necessária. As verificações em produção depois de uma correção são somente de leitura, como confirmar que a versão implantada é a que foi testada na bancada.
+
+### Nota prática
+
+Comemore os tickets registrados — eles são o produto. Um ensaio com zero tickets geralmente pulou as injeções difíceis.
+
+### 47.1b Correção sem culpa e recorrência
+
+Escreva os tickets corretivos contra componentes e runbooks, não contra indivíduos que seguiram um procedimento ruim. Depois de uma correção, repita a injeção que encontrou a lacuna. Encerre o ticket apenas quando a medida cumprir o SLO duas vezes. Os observadores fazem rodízio, para que ninguém fique permanentemente isento.
+
+Os observadores anotam tempos e desvios — eles não consertam nada ao vivo. Os seus tempos são conferidos contra os logs antes que o placar seja fotografado. As fotos do placar vão para o dossiê.
+
+Os tickets da ABP seguem essa regra. Ninguém foi culpado.
+
+### Nota de campo — o mau sinal dos zero tickets
+
+Um ensaio que produziu zero tickets tinha pulado a injeção do grafo plano. Repeti-lo com a injeção difícil gerou três tickets e apertou a barreira de alcançabilidade do SIS. A injeção do grafo plano agora é obrigatória em todo ensaio.
+
+Cada ticket corretivo se liga ao script da injeção e ao valor medido que o disparou.
+
+Os observadores em rodízio recebem as instruções sobre as medidas antes do ensaio, não durante ele.
+
+### 47.5 Exemplo resolvido — ensaio de recuperação na bancada (ABP sintética)
+
+O cenário do ensaio: a lógica do PLC-A é corrompida (simulada carregando um programa errado no controlador de bancada) durante um lote. Medidas: tempo até detectar (alerta de mudança de programa, 35 s), tempo até decidir (o líder de turno escolhe a parada segura, 4 min), tempo até restaurar a lógica verificada a partir do backup offline (22 min) e tempo até retomar (41 min no total). O ensaio revela que o hash do backup nunca tinha sido registrado, então a verificação dependeu de uma comparação manual. As ações corretivas recebem donos e datas: registrar os hashes dos backups, acrescentar um exercício de restauração ao calendário trimestral e acompanhar a recorrência.
+
+### Exercícios
+
+- **EX139 — Injeção.** Uma injeção e o comportamento seguro esperado. Rubrica: 3 = os dois; 2 = só a injeção; 1 = vago; 0 = insegura.
+- **EX140 — Medida.** Medida primária para a injeção de perda da política. Rubrica: 3 = tempo até negar as escritas; 2 = disponibilidade vaga; 1 = nenhuma; 0 = nada.
+- **EX141 — Ação.** Transforme um resultado de 45 s num título de ticket corretivo. Rubrica: 3 = específico; 2 = vago; 1 = nenhum; 0 = nada.
+
+### Síntese
+
+Quebre de propósito; meça; abra tickets para as lacunas.
+
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Continue estudando — capítulo 47 de 50
+
+[← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê cujos hashes um terceiro consiga recalcular; (2) estruturar as classes de retenção; (3) excluir material de uso dual e proprietário.
+
+### 48.1 Conteúdo
+
+PDF da permissão de trabalho, JSON do ConduitSet/lista de permissões, exportações de constatações, objetos de evidência, manifesto de hashes, versões das ferramentas, relatórios de laboratório. O leitor consegue verificar sem confiar no seu laptop.
+
+O dossiê do CNHP de Lena na ABP contém a permissão de trabalho assinada, o modelo de zonas e a lista de permissões v1.4.2 como arquivos, as exportações de constatações, os objetos de evidência, um manifesto de hashes, as versões das ferramentas e os relatórios de laboratório. Um auditor pode levar o dossiê para uma máquina limpa e conferir cada hash contra o manifesto, sem precisar de acesso ao laptop de Lena nem à sua conta. A primeira página explica como fazer isso em poucos passos.
+
+### 48.2 Retenção
+
+Classes: trabalho da janela (90 dias), evidência lacrada (anos acordados), métricas agregadas (mais tempo). As rotinas de exclusão são testadas.
+
+Na ABP, os dados de trabalho de cada janela são mantidos por 90 dias, e a evidência lacrada dos registros de mudanças relevantes para a segurança física é mantida por sete anos, seguindo a tabela de registros do site. As métricas agregadas, como a queda da taxa de alarmes de 556 para 176 por semana, são mantidas por mais tempo. Lena testa a rotina de exclusão a cada trimestre numa cópia do repositório, para que os dados de trabalho vencidos sejam de fato removidos, e não apenas presumidos apagados.
+
+### 48.3 Exclusões
+
+Nada de payloads, credenciais em uso ou genealogia proprietária de lotes. Se não puder ser compartilhado com segurança com o jurídico, não pertence ao dossiê.
+
+> **Caso sintético — Ashford Batch Plant.** O dossiê v3 teve os hashes recalculados sem divergências depois de um incidente de edição do findings.json; nota de processo incluída.
+
+Lena confere cada arquivo contra a lista de exclusões antes do lacre; uma única correspondência para o build e nomeia o arquivo culpado. Depois que um arquivo de constatações foi editado por engano, a versão três teve os hashes recalculados, e a nota de processo explica como o erro foi encontrado.
+
+### 48.4 Erros e limites
+
+Dossiês em contas pessoais de nuvem violam a residência e a retenção.
+
+Na ABP, um terceirizado certa vez copiou evidências da janela para uma pasta pessoal na nuvem para trabalhar de casa. A pasta estava fora da tabela de retenção do site e fora do local aprovado para os dados, então a cópia foi apagada e a evidência restaurada a partir do repositório lacrado. O dossiê de Lena agora fica apenas no repositório controlado, e o manifesto registra a sua localização, para que qualquer cópia em outro lugar seja claramente não oficial e possa ser identificada durante uma auditoria.
+
+### Nota prática
+
+Automatize a montagem dos dossiês a partir de tags. Arrastar arquivos à mão é como as constatações são editadas depois do lacre.
+
+### 48.1b Checklist do leitor e registro de redações
+
+Inclua no topo uma página de "como verificar este dossiê". Ao redigir, mantenha um registro de redações (o quê, por quê, ator) dentro do repositório lacrado. Entregue o dossiê a alguém de fora do projeto para um exercício de recálculo dos hashes. A geração do manifesto reprova o build se algum caminho casar com uma regex de nomes proibidos.
+
+Legibilidade para terceiros: se pessoas de fora não conseguirem encontrar o manifesto ou a versão da permissão de trabalho, o dossiê reprova. Teste uma vez por período, como exercício avaliado, a restauração a partir do dossiê numa máquina limpa.
+
+O dossiê de Lena passa nesse teste a cada período.
+
+### Nota de campo — dossiê automatizado
+
+make dossier ENG=2026-03-abp produz o zip e o manifesto. Depois da automação, a classe de incidentes de edição do findings.json depois do lacre parou. O caminho feliz virou o caminho seguro.
+
+As redações são revisadas por uma segunda pessoa antes de o dossiê ser lacrado.
+
+Um exercício de recálculo de hashes que falha é registrado como constatação contra o build do dossiê, não contra o leitor.
+
+A tag do build é impressa na primeira página do dossiê, ao lado do hash do manifesto.
+
+### 48.5 Exemplo resolvido — o que entra e o que fica de fora (ABP sintética)
+
+O dossiê de evidências do CNHP de Lena inclui o modelo de zonas e a sua versão, os resultados de conformidade, os relatórios de laboratório, o novo teste de validação, as constatações abertas com os donos e a aceitação do risco residual assinada pelo gerente da planta. Ele exclui capturas brutas de pacotes, senhas e parâmetros de receitas, substituindo-os por hashes e ponteiros para o repositório controlado; o registro de redações lista cada exclusão e o motivo. A retenção segue a tabela de registros do site: sete anos para os registros de mudanças relevantes para a segurança física. O checklist do leitor, na primeira página, diz a um auditor como verificar qualquer hash contra os originais guardados.
+
+### Exercícios
+
+- **EX142 — Manifesto.** Esboce um formato de manifesto de hashes (3 linhas). Rubrica: 3 = caminho+algoritmo+digest; 2 = só digests; 1 = vago; 0 = nada.
+- **EX143 — Classe.** Classe de retenção do PDF da permissão de trabalho versus notas de rascunho. Rubrica: 3 = lacrada versus de trabalho/excluir; 2 = parcial; 1 = iguais para sempre; 0 = nada.
+- **EX144 — Excluir.** Um estudante cola uma senha numa constatação — o que você faz? Rubrica: 3 = limpar, trocar, constatação de processo; 2 = só limpar; 1 = ignorar; 0 = publicar.
+
+### Síntese
+
+Os dossiês são verificáveis, classificados e tediosamente seguros.
+
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Continue estudando — capítulo 48 de 50
+
+[← Capítulo 47](#ch-47) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar uma tese em torno de uma afirmação sobre o programa; (2) defender as medidas e os limites; (3) citar corretamente a SP 800-82, a 62443, o ATT&CK for ICS e os artigos de avaliação.
+
+### 49.1 Afirmação
+
+Uma frase: o que você construiu/mediu e para quem. Exemplo: a distribuição de listas de permissões assinadas, com semântica de falha fechada, reduz as escritas não autorizadas encaminhadas em ensaios sintéticos.
+
+A afirmação da própria Lena foi sobre o seu compilador: para o modelo de nove condutos da ABP, as regras geradas conferiram com a alcançabilidade do projeto e pegaram três erros que a revisão manual deixou passar. A sua frase nomeia o que ela construiu, em qual modelo de planta foi testado e o que mostrou, para que um examinador possa conferir cada parte contra a evidência. Ela a reescreveu várias vezes, até que cada oração apontasse para um resultado específico no corpo do texto.
+
+### 49.2 Corpo
+
+Trabalhos relacionados, projeto, verificação, resultados com intervalos e classes de ataque, limitações, ética.
+
+A tese de Lena segue essa ordem. Os trabalhos relacionados citam as normas por trás dos seus métodos, cada uma com uma nota de como foi usada. O projeto explica como o compilador transforma o modelo de zonas da ABP em regras. A verificação mostra a verificação de equivalência e os vetores de conformidade, os resultados relatam os três erros encontrados, as limitações declaram que um modelo de zonas defeituoso seria compilado fielmente, e o capítulo de ética explica por que nenhuma planta em operação foi tocada. Cada parte aponta para evidências.
+
+### 49.3 Citações
+
+Use URLs/DOIs verificados da política de fontes; não invente artigos. Anote as datas de acesso. Giraldo et al. CSUR 2018 doi 10.1145/3203245; Urbina et al. CCS 2016 doi 10.1145/2976749.2978388.
+
+> **Caso sintético — Ashford Batch Plant.** O rascunho da tese usou apenas dados de ensaios sintéticos e citou corretamente a SP 800-82 Rev. 3.
+
+Lena conferiu cada referência da sua tese contra o DOI ou a URL oficial e registrou a data de acesso. Cada citação tem uma nota dizendo como o trabalho foi usado, então nenhuma é listada sem ter sido lida. O seu orientador conferiu as notas.
+
+### 49.4 Erros e limites
+
+Uma tese que avalia a habilidade de exploração está fora do escopo do programa.
+
+A tese de Lena mede se o seu compilador produz regras corretas, não se ela consegue invadir uma planta. O seu capítulo de ética declara que o trabalho usou apenas exportações sintéticas do modelo de zonas da ABP e o firewall de bancada, e dá um exemplo de pedido que ela recusou: testar as regras geradas contra o firewall de uma planta em operação. Os examinadores julgam a engenharia e as evidências, então a habilidade de ataque não é demonstrada nem avaliada na defesa.
+
+### Nota prática
+
+A página de ameaças à validade é avaliada. Os examinadores leem essa página primeiro. Extensão não é rigor; limites estruturados são.
+
+### 49.1b Honestidade nos trabalhos relacionados e reprodutibilidade
+
+Cite os frameworks que você de fato usou. Encher os trabalhos relacionados com artigos não lidos é descoberto na defesa. Entregue o suficiente para reproduzir os ensaios sintéticos: hashes dos dados de teste, SHAs das ferramentas, scripts. "Disponível mediante pedido" não é um apêndice de reprodutibilidade. Ponha a frase da afirmação em negrito na primeira página.
+
+As notas de "como foi usado" acabam de vez com o enchimento de citações na revisão do orientador. Deixar em branco a página de ameaças à validade reprova a tese no portão, qualquer que seja a qualidade da implementação.
+
+A página de ameaças de Lena lista, como primeira ameaça, a dependência do compilador de um modelo de zonas correto.
+
+### Nota de campo — a afirmação na primeira página
+
+Examinadores e orientadores miram o mesmo alvo quando a frase da afirmação está em negrito na primeira página. Trabalhos relacionados enxutos e precisos, com notas de como foram usados, vencem uma bibliografia inchada que desaba na primeira pergunta.
+
+O apêndice de Lena permite que um examinador reproduza a verificação de equivalência em menos de dez minutos.
+
+Cada entrada dos trabalhos relacionados declara se o método citado foi usado, comparado ou apenas discutido.
+
+### 49.5 Exemplo resolvido — uma afirmação de tese com as suas evidências (ABP sintética)
+
+A afirmação da tese de Lena, na primeira página: "Para o modelo de nove condutos da ABP, um compilador que gera regras de firewall e vetores de conformidade a partir de um modelo de zonas produziu regras equivalentes ao projeto em alcançabilidade e pegou três erros de regras que a revisão manual deixou passar." O corpo sustenta cada oração: a verificação de equivalência, os três erros com os seus vetores e os resultados da revisão manual sobre o mesmo conjunto de regras. Os trabalhos relacionados citam a IEC 62443-3-2 para o método de zonas e condutos e a NIST SP 800-82r3 para a orientação de segmentação, e declaram com clareza que existem ferramentas de verificação formal com as quais a tese não se comparou.
+
+### Exercícios
+
+- **EX145 — Afirmação.** Afirmação de tese numa frase para a dupla aprovação de condutos. Rubrica: 3 = mensurável+delimitada; 2 = vaga; 1 = afirmação de exploit; 0 = nada.
+- **EX146 — Limite.** Um parágrafo de limitações (3 frases). Rubrica: 3 = validade externa clara; 2 = parcial; 1 = nenhuma; 0 = afirma demais.
+- **EX147 — Citação.** Dê o DOI de Urbina et al. CCS 2016. Rubrica: 3 = 10.1145/2976749.2978388; 2 = só o título; 1 = errado; 0 = nada.
+
+### Síntese
+
+Uma afirmação, limites honestos, citações reais.
+
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Continue estudando — capítulo 49 de 50
+
+[← Capítulo 48](#ch-48) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar a afirmação e as evidências em 20 minutos; (2) responder a perguntas sobre segurança física e medição; (3) declarar o que você não faria de novo.
+
+### 50.1 Estrutura da apresentação
+
+Afirmação; demonstração sobre dados sintéticos; resultados da verificação; uma lição do ensaio de falha; limites; perguntas. Nada de demonstração de invasão de uma planta em operação.
+
+A defesa de Lena seguiu essa ordem. Ela declarou a sua afirmação sobre o compilador, mostrou-o no modelo sintético de nove condutos da ABP, apresentou os resultados de equivalência e de vetores e, em seguida, a sua reflexão sobre uma falha. Ela encerrou com o slide de limitações e uma frase sobre o que as evidências sustentam. Nada na apresentação tocou um sistema em operação, e todo número nos seus slides apontava para um artefato do dossiê.
+
+### 50.2 Perguntas prováveis
+
+Prova da falha fechada? Escolha do denominador? Fronteira do uso dual? Independência do SIS? O que quebrou no Laboratório II? Pratique responder com ponteiros para artefatos.
+
+Lena praticou cada pergunta com o seu orientador, respondendo com um ponteiro para um artefato, e não com uma opinião. Para o comportamento de falha fechada, ela apontou para os resultados do ensaio; para a independência do SIS, para a verificação de alcançabilidade que mostra o SIS-B inalcançável a partir de toda zona roteada. Para o Laboratório II, ela descreveu o defeito da defasagem de relógio e a sua correção. A pergunta mais difícil, o que acontece se o projeto estiver errado, recebeu mais prática do que todas.
+
+### 50.3 Reflexão
+
+Termine com um erro de projeto e a sua correção — os examinadores confiam em engenheiros que viram as próprias falhas.
+
+```python
+# Lab 1 - tank hold-up after feed pump stop (Ashford Batch Plant, synthetic)
+import math
+V0, VMIN = 12.0, 2.0   # m3 in feed tank T-1
+def outflow(t):         # m3/h to reactor; t hours after stop of makeup
+    return 1.8 + 0.4*math.sin(2*math.pi*t/6)
+def drawn(t):
+    return 1.8*t - (0.4*6/(2*math.pi))*(math.cos(2*math.pi*t/6)-1)
+lo,hi=0.0,24.0
+for _ in range(50):
+    mid=(lo+hi)/2
+    lo,hi=(mid,hi) if drawn(mid)<V0-VMIN else (lo,mid)
+print(f"time to min level: {lo:.2f} h")
+print(f"average-rate estimate: {(V0-VMIN)/1.8:.2f} h")
+```
+
+Saída esperada:
+
+```text
+time to min level: 5.53 h
+average-rate estimate: 5.56 h
+```
+
+> **Caso sintético — Ashford Batch Plant.** A defesa de Lena começou pelo laboratório de falha fechada e pela alcançabilidade do SIS, não por um slide de logotipos. Quando lhe pediram uma pontuação de risco, ela recusou e mostrou a alcançabilidade do SIS, as críticas abertas e os denominadores da cobertura.
+
+A reflexão de Lena foi o travamento silencioso durante a nova execução do congelamento: o seu carregador de vetores tentava de novo para sempre quando o firewall de bancada limitava a sua taxa, então uma execução que falhou parecia apenas lenta.
+
+### 50.4 Erros e limites
+
+A defesa não é um discurso de vendas para um fornecedor de scanners.
+
+A defesa de Lena não mencionou nomes de produtos nem recomendou ferramentas. Quando um examinador perguntou qual scanner comercial ela compraria, ela explicou que o seu trabalho produzia regras e evidências para qualquer firewall e que a escolha do produto cabia ao processo de compras da ABP. Os seus slides mostraram resultados e limitações, não logotipos, então os examinadores julgaram o trabalho pelas suas evidências, e não pelo marketing de algum fornecedor. Ela manteve essa linha do começo ao fim.
+
+### Nota prática
+
+Vinte minutos significam ensaio com cronômetro. Cortar o slide de limites para ganhar tempo é o corte errado — os examinadores precisam mais da sua honestidade do que de um quarto clique de demonstração.
+
+### 50.1b Pacote dos examinadores e acompanhamento posterior
+
+Entregue aos examinadores, com um dia de antecedência, a frase da afirmação, o resumo do Laboratório II, a medida do ensaio de falha e o parágrafo de ética. Depois da defesa, agende uma revisão de manutenção em noventa dias: equipe dona, fixações, tickets corretivos. Arquive os slides da apresentação ao lado do dossiê, com hashes correspondentes.
+
+Mantenha uma lista de espera para as ideias dos examinadores e processe-a em até uma semana. Agradeça aos operadores que rodaram os ensaios sintéticos; uma defesa sem os logs deles é contação de histórias. O último capítulo do curso é o primeiro capítulo da administração responsável do que foi construído.
+
+Lena enviou o seu pacote com um dia de antecedência.
+
+### Nota de campo — revisão de noventa dias
+
+Noventa dias depois da defesa, a equipe dona, as fixações e os tickets corretivos foram revistos. Uma correção tinha sido reaberta; foi registrada de novo com um SLO mais apertado. A administração responsável começa quando os aplausos terminam.
+
+### 50.5 Exemplo resolvido — respondendo à pergunta mais difícil da defesa (ABP sintética)
+
+Um examinador pergunta: "O seu compilador prova que a alcançabilidade é igual à do projeto. E se o projeto estiver errado?" A resposta preparada de Lena: o compilador verifica a implementação contra a intenção, não a intenção contra as ameaças; o próprio projeto veio da avaliação orientada por consequências e foi revisado de forma independente (Capítulo 45); e o novo teste de validação (Capítulo 38) encontrou uma deriva real que o compilador teria evitado. Ela encerra nomeando a limitação — um modelo de zonas defeituoso seria compilado fielmente — e o plano de noventa dias de comparar a saída do compilador com o projeto independente de uma segunda equipe.
+
+### Exercícios
+
+- **EX148 — Roteiro.** Roteiro da apresentação em seis tópicos. Rubrica: 3 = afirmação, demonstração, verificação, falha, limites, perguntas; 2 = parcial; 1 = discurso de fornecedor; 0 = nada.
+- **EX149 — Resposta.** 3–4 frases respondendo "qual é a sua pontuação de risco?". Rubrica: 3 = recusa a pontuação vazia + alternativas; 2 = parcial; 1 = inventa a pontuação; 0 = nada.
+- **EX150 — Erro.** Um erro real (da história sintética) e a correção. Rubrica: 3 = específico; 2 = vago; 1 = nenhum; 0 = nada.
+
+### Síntese
+
+Defenda a engenharia, as medidas e as recusas.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Continue estudando — capítulo 50 de 50
+
+[← Capítulo 49](#ch-49) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação. Esta edição parcial traz as resoluções de EX001–EX120; as de EX121–EX150 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (9 − 1,5) / 1,25 = 7,5 / 1,25 = 6,0 horas.
 
@@ -3369,6 +4227,66 @@ Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP 
 **EX119.** Continua permitindo/negando a partir da política local; enfileira os rascunhos; alerta sobre o crescimento da fila; nunca ALLOW em erros de política.
 
 **EX120.** O implementador da mudança e um segundo engenheiro que não escreveu o código.
+
+**EX121.** Pular as verificações de faixa de registradores para IHMs antes permitidas, ou falhar aberto quando o serviço de políticas estiver lento.
+
+**EX122.** A chave do cache inclui a versão da política, a origem, o fc e o registrador; TTL curto; invalidação rígida na publicação da política.
+
+**EX123.** Descarte a descoberta e os analytics de melhor esforço antes de descartar a avaliação de negação — os operadores podem esperar por uma varredura; não podem esperar por uma negação que nunca chega.
+
+**EX124.** Exigir um denominador nos relatórios de cobertura reduz as alegações exageradas de "percentual seguro" pelos executivos nas pesquisas pós-janela?
+
+**EX125.** Contagem de merges que alargam condutos sem ticket AUTH por trimestre (ou de tentativas bloqueadas).
+
+**EX126.** Esse projeto cruza a linha de uso dual do curso; considere estudar as taxas de falha fechada ou as políticas de novo teste.
+
+**EX127.** Se o arquivo de regras de autorização não puder ser carregado, o sistema se recusa a encaminhar o tráfego de escrita e alarma a equipe — ele não continua sob uma incerteza que poderia afetar uma camada de proteção.
+
+**EX128.** O host plc-a-prod-03 vira o host sintético PLC-A no ambiente de laboratório de Ashford.
+
+**EX129.** Residência dos dados; proibições de compra de SaaS estrangeiro; registro para retenção/FOIA; comitês consultivos de mudanças — quaisquer dois concretos.
+
+**EX130.** Nenhum selo de risco residual; nenhuma autodescoberta ATT&CK ao vivo nas redes da planta; nenhum armazenamento de payloads.
+
+**EX131.** O arquivo de kill switch para os encaminhamentos de escrita em até 30 s — aceitação: teste de unidade + laboratório V-KS verdes sobre dados sintéticos.
+
+**EX132.** O trabalho usa dados sintéticos sob as permissões de trabalho do curso. Nenhum acesso não autorizado à planta. Nenhum desenvolvimento de exploit. Problemas reais encontrados por acidente vão para a divulgação responsável, não para o apêndice do relatório.
+
+**EX133.** Bloqueio: no timeout do serviço de políticas, isto tenta de novo e então dá ALLOW — viola a falha fechada do S-1. Mudar para DENY+alerta antes do merge.
+
+**EX134.** Serial: confirma que o modo somente de escuta e a condição de parada por tempo de ciclo são testados no Laboratório I.
+
+**EX135.** Divergência: ainda prefiro alertas síncronos para todas as negações durante a primeira semana de uma nova lista de permissões; vencida no ADR-019.
+
+**EX136.** Correções de segurança física/bloqueios e correções de documentação; nenhum trabalho de funcionalidade.
+
+**EX137.** Código+testes, relatório do Laboratório II com hashes, ADR, atualização do runbook, tutorial do operador, declaração de ética — quaisquer cinco.
+
+**EX138.** Sem um dono operacional e um runbook executável, o verde do Laboratório II ainda deixa a planta sem alguém que consiga parar e retomar com segurança.
+
+**EX139.** Injeção: apagar o arquivo da lista de permissões. Esperado: DENY das escritas em até 30 s, alerta, nenhum ALLOW.
+
+**EX140.** Segundos desde a injeção até a primeira decisão de negar todas as escritas (e o disparo do alerta).
+
+**EX141.** Apertar a consulta da política do otmon de 15 s para 5 s — o "negar tudo" do ensaio levou 45 s > SLO de 30 s.
+
+**EX142.** work-permit.pdf sha256 18d7…; allow-list.json sha256 01cc…; findings.json sha256 7f5f….
+
+**EX143.** PDF da permissão de trabalho para evidência lacrada; notas de rascunho para trabalho, excluídas em 90 dias ou antes.
+
+**EX144.** Remover do repositório, trocar o segredo exposto, abrir uma constatação de processo, lacrar de novo o manifesto, notificar o dono.
+
+**EX145.** Exigir dupla aprovação e um ticket AUTH para os merges que alargam condutos reduziu a zero as tentativas de alargamento não aprovadas em 12 semanas de dados sintéticos de integração contínua da ABP.
+
+**EX146.** Os ensaios usaram dados de teste sintéticos, não tráfego real da planta. Os resultados podem não se transferir para organizações sem CODEOWNERS. Não medimos a fadiga dos revisores.
+
+**EX147.** https://doi.org/10.1145/2976749.2978388
+
+**EX148.** Afirmação; demonstração sintética; resultados do Laboratório II; lição do ensaio de falha; limites/ética; perguntas.
+
+**EX149.** Não produzo uma pontuação única de risco residual — ela não é reproduzível. Aqui estão: SIS alcançável a partir do L4 (não), as críticas abertas e a cobertura das técnicas planejadas com denominadores; é isso que acompanhamos.
+
+**EX150.** Exemplo: pusemos em cache as decisões de permissão sem a versão da política na chave; uma publicação deixou ALLOWs velhos. Correção: incluir a AllowListVersion na chave do cache e invalidar rigidamente na publicação.
 
 <a id="references"></a>
 
