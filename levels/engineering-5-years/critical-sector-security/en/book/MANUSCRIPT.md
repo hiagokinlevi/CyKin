@@ -159,6 +159,8 @@ dV/dt at t=6 h: -210.0 m3/h
 
 Euler with a one-hour step overstates the time by about 0.4 h; at 0.01 h it agrees with the exact answer to two decimals. The derivative at t = 6 h is −210 m³/h: the steepest drain in the window.
 
+Before trusting the lab, check that its numbers agree with the worked example: the exact time should match the integrated hold-up for Hollin Hill, and the average-rate line should reproduce the planner's longer estimate. If you change the start time, keep the floor at 800 cubic metres so the comparison stays fair. A result that only appears at one step size is a property of the method, not of the reservoir.
+
 ### 1.6 Common errors and limits
 
 - Using a mean rate for a time-varying flow over less than a full cycle.
@@ -252,6 +254,8 @@ states allowing run: 3 of 16
 
 Only 3 of 16 input states allow the pump to run: those with $H = S = 0$ and at least one of $P, M$.
 
+Read the impact list for feeder F1 slowly. It contains the LTE network, both RTUs and PS4, even though PS4 itself is powered from feeder F2, because PS4's RTU reaches the control room only through LTE. That is the hidden common dependency the worked example describes. The truth table result is equally concrete: three of sixteen states allow the pump to run, and every one of them needs the high-level and low-suction inputs to be false, so a forged remote permit alone can never start the pump into a trip condition.
+
 ### 2.6 Common errors and limits
 
 - Drawing arrows in mixed directions ("feeds" versus "depends on") in one graph.
@@ -259,6 +263,8 @@ Only 3 of 16 input states allow the pump to run: those with $H = S = 0$ and at l
 - Testing an interlock with "typical" cases only, when the table is small enough to test all.
 - Forgetting that a graph models *whether* something works, not *how well*: degraded modes need weights or states (Chapter 22).
 - Counter and identifier sizes chosen without counting how long until they wrap.
+
+At LRWA these mistakes have direct consequences: a graph that mixes arrow directions would report that losing PS4 harms feeder F2, and a review that stopped at the electrical drawing would have missed the shared LTE dependency entirely.
 
 ### Exercises — chapter 2
 
@@ -298,9 +304,13 @@ Signals travel through copper at a significant fraction of the speed of light, t
 
 Electronic components fail faster when hot. A widely used engineering rule of thumb, derived from the Arrhenius relation, is that many failure mechanisms roughly double in rate for each 10 °C rise; treat it as a heuristic to be replaced by the manufacturer's data. A sealed roadside cabinet in summer sun can be far hotter than the air. Design implications: derate, ventilate or cool, and monitor cabinet temperature — a sudden rise can also indicate a door left open.
 
+For LRWA's roadside cabinets, the temperature sensor should report to SCADA alongside the battery voltage, so a rising trend is visible before components age early.
+
 ### 3.4 Physics and security
 
 Physical effects leak information and allow faults. Power consumption and electromagnetic emanations can reveal cryptographic keys (side channels); voltage or clock glitches can make a processor skip instructions; DRAM rows disturbed by repeated access can flip bits in neighbours, as [Kim et al. (2014)](https://doi.org/10.1109/ISCA.2014.6853210) demonstrated. In infrastructure, physical access to field cabinets is often easier than network access, so these attacks are not exotic. Tamper switches, sealed enclosures and keys held off-device are the physical controls.
+
+At LRWA, the cabinet at each pumping station holds the RTU and, after TMRP, its key store.
 
 ### 3.5 Worked example: PS4 cabinet hold-up (synthetic)
 
@@ -310,12 +320,16 @@ LRWA's TMRP requirement R5 says field telemetry must survive a 24-hour grid outa
 
 Without code: build a spreadsheet or a ten-line script that computes battery hold-up from load (W), nominal capacity (Wh), usable fraction, efficiency and end-of-life capacity factor. Reproduce §3.5, then add a 15 W cabinet heater that runs whenever the outdoor temperature is below 0 °C and recompute.
 
+Use the 26 W cabinet load, 85% efficiency, 0.6 usable fraction and 80% end-of-life factor from the worked example, so your first result reproduces the 65 Ah choice. Then add the heater and see how much the requirement grows. Write the answer as a requirement check, not a single number: state whether the bank still meets R5's 24 hours at end of life in cold weather, and what you would change if it does not. Keep your units visible in every column.
+
 ### 3.7 Common errors and limits
 
 - Sizing for nameplate battery capacity rather than end-of-life, cold, usable capacity.
 - Forgetting that the communications path (cellular base stations, fibre repeaters) has its own power dependency outside your control.
 - Treating cryptographic protection as availability protection.
 - Rules of thumb (10 °C doubling) used as precise predictions.
+
+Each of these errors would make R5 look met on paper while failing it in practice. Sizing for a new battery is the commonest, because the shortfall only appears in year three. Forgetting the carrier's power dependency matters at LRWA because the LTE network shares feeder F1 with PS3. Treating encryption as availability protection is the misunderstanding EX006 asks you to correct, and a rule of thumb used as a prediction gives a precise-looking number with no real basis behind it.
 
 ### Exercises — chapter 3
 
@@ -361,6 +375,8 @@ A parser that reads data from a field device, a network or a file is the boundar
 
 LRWA's RTU at PS3 returns two registers: reservoir level in centimetres and outlet pressure in kPa. Lab 3 builds the request frame, then parses five responses: a good one, a single-bit flip, a Modbus exception, a value outside the physical range of the tank (65535 cm — an uninitialised register) and a truncated frame. Each bad case is rejected with a reason that an operator or log analyst can act on.
 
+Every rejection reason is written so that it points to a cause: a CRC failure suggests line noise, an exception points to the RTU's own state, and a range failure suggests a fault or an uninitialised register that maintenance should investigate.
+
 ### 4.5 Practical activity: Lab 3
 
 ```python
@@ -405,6 +421,8 @@ truncated reject: crc
 
 The truncated frame is rejected by the CRC check because its last two bytes are not a CRC; a parser that checked shape first would give a clearer reason. Both orders are safe; the important property is that nothing is accepted on partial evidence.
 
+Notice that the good response decodes to a level of 3,150 cm and a pressure of 212 kPa, both inside the physical limits configured in the parser. The out-of-range case shows why repair is dangerous: clamping 65,535 to the 4,000 cm maximum would report a full reservoir when the register had never been written. Rejecting it with the raw value in the reason gives maintenance staff the clue they need, and gives an investigator evidence that the value was not simply noise on the line.
+
 ### 4.6 Common errors and limits
 
 - Byte-order mistakes (Modbus registers are big-endian; the CRC is transmitted low byte first).
@@ -412,6 +430,8 @@ The truncated frame is rejected by the CRC check because its last two bytes are 
 - Treating a CRC as authentication.
 - "Repairing" bad input (clamping 65535 to 4000) instead of rejecting it, which hides faults and attacks.
 - Writing tests only for the happy path.
+
+Each item has a matching test in Lab 3 or EX008. A parser that passes those tests but was never checked against a truncated or malformed frame has only been tested for the happy path, and the first noisy serial line at a pumping station will show what it does with input it did not expect. Write the failure tests first, because they are the ones that matter when something goes wrong in the field.
 
 ### Exercises — chapter 4
 
@@ -451,6 +471,8 @@ A requirement is a statement the system must satisfy, written so that a test, an
 
 Report numbers with units, the method that produced them and their uncertainty or assumptions: "hold-up 14.6 h (integrated demand model, start 06:00, 85% initial level; 17.3 h if mean demand is assumed)". Prefer tables for exact values, line charts for time series, and never a chart without labelled axes and units. Avoid false precision: a battery hold-up computed from estimated loads is "about 19 h", not "18.83 h". Make figures readable in greyscale and by people with colour-vision deficiency.
 
+At LRWA, the hold-up figure in the TMRP dossier carries its start time and initial level, so nobody quotes it for a different scenario.
+
 ### 5.4 Communicating risk to different readers
 
 Operators need what to do and when; managers need consequence, cost and options; regulators need evidence of compliance and of reasoning. The same finding — "remote setpoints are accepted without authentication" — becomes, for an operator, "until patched, confirm any unexpected setpoint change by phone with the control room"; for a manager, "a forged command could start or stop pumps; fix cost 120 k, three months"; for a regulator, a mapped control gap with a dated plan. None of these versions may contradict another.
@@ -458,6 +480,8 @@ Operators need what to do and when; managers need consequence, cost and options;
 ### 5.5 Sensitive information
 
 Infrastructure documents often contain network addresses, device models, vulnerabilities and capacity limits. Mark documents by sensitivity, share on a need-to-know basis, and strip detail from versions intended for wide audiences. Public reports and student work should describe systems at the level of the [NIST Guide to OT Security (SP 800-82 Rev. 3)](https://csrc.nist.gov/pubs/sp/800/82/r3/final) — architectural patterns — not the specific weaknesses of a named operator.
+
+In this book every LRWA figure is synthetic, but practise the habit anyway: mark design notes for internal use, keep network addresses out of slides, and produce a reduced version for audiences outside the engineering team.
 
 ### 5.6 Worked example: a TMRP decision record (synthetic)
 
@@ -467,6 +491,8 @@ Infrastructure documents often contain network addresses, device models, vulnera
 
 Rewrite three vague requirements from a synthetic brief ("the system shall be resilient", "alarms shall be timely", "logs shall be protected") into verifiable form, each with a verification method.
 
+For each rewrite, name the evidence that would show the requirement is met: a test with a pass criterion, an analysis with stated assumptions, an inspection or a demonstration. Use LRWA's context where it helps. A resilient system might become a stated hold-up during a grid outage, timely alarms might become a latency target for a stated share of events, and protected logs might become integrity protection with anchors stored outside the control zone, as R8 later requires. Keep each statement to one requirement.
+
 ### 5.8 Common errors and limits
 
 - Burying the recommendation; writing a chronology instead of an argument.
@@ -474,6 +500,8 @@ Rewrite three vague requirements from a synthetic brief ("the system shall be re
 - Numbers without units, method or uncertainty.
 - Different stories for different audiences.
 - Over-sharing sensitive detail, or under-sharing to the point that reviewers cannot check the work.
+
+Most of these errors appear first in requirement sets. A requirement containing secure cannot be tested, so it will either be quietly dropped or claimed without evidence. Different stories for different audiences are just as damaging: if the operator note, manager summary and regulator statement in EX010 disagree about the PS4 battery, whoever reads two of them will trust none.
 
 ### Exercises — chapter 5
 
@@ -525,12 +553,16 @@ LRWA's Hollin Hill outlet residual is maintained at 0.8 mg/L; the synthetic oper
 
 Modify Lab 1 to include constant inflow 120 m³/h from a single surviving pump and first-order leakage $0.01V$ m³/h. Integrate with Euler at three step sizes, and find the equilibrium level analytically by setting $dV/dt = 0$ with demand replaced by its mean.
 
+Report the equilibrium level and compare it with the reservoir's capacity and floor. With one pump at 120 cubic metres per hour against a mean demand of 150, the stock must still fall unless leakage balances the difference, so check whether your analytic answer is physically possible before trusting it. Then confirm that the Euler runs converge as the step shrinks. The point of the exercise is the combination: an analytic check, a numerical result and a convergence test that agree with each other.
+
 ### 6.7 Common errors and limits
 
 - Using exponential decay where the process is not first-order.
 - Reporting a numerical solution without a step-size check.
 - Ignoring that parameters (decay rates, demand) drift with temperature and season.
 - Sensitivity on one parameter at a time when parameters interact; for strong interactions use global methods ([Saltelli et al., 2008](https://doi.org/10.1002/9780470725184)).
+
+In the chlorine example, a team that used the cool-weather decay constant all year would believe it had 27.7 hours when summer leaves about 17. R9's 15-minute alarm was chosen with that seasonal range in mind, which is why the requirement does not depend on the exact constant.
 
 ### Exercises — chapter 6
 
@@ -574,6 +606,8 @@ If one communications path is available with probability $a$ and paths fail inde
 
 If events arrive independently at average rate $\lambda$ per year, the number in a year is Poisson: $P(N=k) = e^{-\lambda}\lambda^k/k!$. With $\lambda = 0.5$ long grid outages per year, $P(N \ge 1) \approx 0.39$. Poisson assumes a constant rate and independence; storms, campaigns of attacks and ageing violate both, so treat it as a first approximation.
 
+For LRWA, a long grid outage of more than four hours is the event that tests R5 and the hospital buffer together. If outages cluster in storms, the Poisson figure understates the chance of two outages within days, so the TMRP team checks it against the distributor's outage records before using it in the fault tree.
+
 ### 7.5 Describing data honestly
 
 Report a central value with spread (median and interquartile range for skewed data such as outage durations), the sample size, and how the data were collected. A confidence interval describes sampling uncertainty under a model; it says nothing about bias in what was recorded. Small samples of rare events are especially treacherous: zero failures in 3 years of operation does not mean zero risk. The "rule of three" gives an approximate 95% upper bound of $3/n$ on a rate when 0 events are observed in $n$ trials or time units.
@@ -615,6 +649,8 @@ P(>=1 grid outage >4 h per year | lambda=0.5) = 0.393
 P(>=2) = 0.0902
 ```
 
+The first two lines repeat the base-rate result from the worked example: fewer than one alarm in ten would be a real attack, and the detector would page about once every four days. The redundancy lines show how quickly independent paths improve availability, and the beta-factor line shows how a five per cent common cause wipes out most of that gain. The Poisson lines give the chance of at least one, and at least two, long grid outages in a year at LRWA's assumed rate.
+
 ### 7.8 Common errors and limits
 
 - Reporting detector accuracy without the base rate and predictive value.
@@ -622,6 +658,8 @@ P(>=2) = 0.0902
 - Using Poisson for clustered events.
 - Treating zero observed failures as zero probability.
 - Point estimates without sample size and collection method.
+
+Each error has an LRWA example. Paging the on-call engineer for every network alarm ignores the base rate. Treating the two LTE paths as independent ignores their shared feeder. Using Poisson for storm outages hides clustering, and three quiet years at PS4 do not prove the pumps cannot fail together.
 
 ### Exercises — chapter 7
 
@@ -677,6 +715,8 @@ TMRP compares two candidate RTUs. *RTU-A:* mature, deterministic, no secure boot
 
 For a microcontroller or PLC family of your choice, read the vendor's public security manual (or a datasheet) and complete a table: privilege separation, memory protection, secure boot, signed updates, key storage, authenticated programming. Mark each "yes / no / configurable / unknown" with a source citation. Use public documents only.
 
+Record the document title, version and date for each entry, because security features change between firmware releases. Where the manual is silent, mark the feature unknown rather than guessing, and list the question you would ask the vendor. The table is the same comparison the TMRP team made between RTU-A and RTU-B, and it shows quickly whether a product can support authenticated telemetry and key storage without a gateway.
+
 ### 8.7 Common errors and limits
 
 - Equating "fast" with "deterministic".
@@ -684,6 +724,8 @@ For a microcontroller or PLC family of your choice, read the vendor's public sec
 - Ignoring the 20-year lifetime when choosing cryptographic and update features.
 - Treating hardware isolation on shared servers as absolute.
 - Treating vendor marketing as evidence; ask for documentation and test.
+
+The RTU comparison shows these errors in practice. RTU-A is deterministic but cannot protect keys, so speed alone does not make it suitable. RTU-B's secure boot does not stop a malicious but legitimately signed logic change, which is why role-based programming access is listed beside it. Both must still be supportable in the 2040s, and the pilot exists because vendor claims are not field evidence.
 
 ### Exercises — chapter 8
 
