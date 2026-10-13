@@ -2080,29 +2080,43 @@ You will (1) design detective and responsive controls with defined triggers and 
 
 A detective control finds activity; a responsive control acts on it. For portal takeover, detection is the possible-takeover rule; response is locking the account, invalidating sessions and contacting the customer.
 
+Each needs the other. A detection with no planned response leaves analysts unsure what to do at 3 a.m., while a response with no reliable detection either never triggers or triggers on the wrong accounts. Designing them together lets Amara match the strength of evidence to the strength of action: a likely takeover justifies invalidating sessions, while a mere attempt does not justify locking the customer out.
+
 ### 27.2 Playbooks
 
 A playbook lists the steps an analyst follows for an alert type: verify, scope, contain, notify, record. It names the data to check and the decision points. NIST SP 800-61r3 places such response activities within the broader risk-management cycle.
+
+Decision points are where the playbook asks the analyst to judge rather than follow: is the success from the customer's usual device? Has the address already been changed? Naming the data to check at each point stops analysts from skipping evidence under pressure. The playbook also says when to stop and escalate, so analysts know the limits of their own authority during an incident.
 
 ### 27.3 Automated actions
 
 Some steps can be automated: invalidating a session is low-risk and fast. Others, such as blocking a network range, can harm legitimate users and need a human decision.
 
+Invalidating a session forces a fresh login; if the customer is genuine, they simply sign in again, so a wrong decision costs little. Blocking a network range might cut off a mobile carrier serving thousands of customers, so a wrong decision costs a great deal. Amara sorts each candidate action by the cost of being wrong and only automates those where a mistake is cheap and easily reversed.
+
 ### 27.4 Safeguards
 
 Automation needs limits: maximum actions per hour, exclusions for critical accounts, and automatic alerts if limits are reached. A runaway automation can lock out thousands of customers.
+
+A rule bug or a flood of synthetic test events could trigger the automation thousands of times in minutes. A cap on actions per hour turns a potential disaster into a contained one. Critical accounts, such as those used by depot systems, are excluded because locking them would stop deliveries. Reaching a limit pauses the automation and pages an engineer, who decides whether to continue.
 
 ### 27.5 D3FEND mapping
 
 D3FEND names defensive techniques such as authentication event thresholding and account locking. Mapping controls to it clarifies what each control actually does and helps find gaps.
 
+Product names and marketing terms vary, which makes it hard to tell whether two tools overlap or leave gaps. D3FEND gives a shared vocabulary describing what a control does to the adversary's activity. Mapping Lindqvist's portal controls shows thresholding and account locking are present, while nothing yet analyses session behaviour after login, which suggests where to invest next.
+
 ### 27.6 Testing controls
 
 Each control is tested with safe synthetic events, and response playbooks are rehearsed in exercises.
 
+Synthetic events check that detection fires and that automation acts within its limits. Exercises check the human parts: does the analyst find the playbook, does customer service know what to tell a locked-out customer, does the escalation contact answer? Exercises often reveal small problems, such as an out-of-date phone number, that no technical test would catch. Findings from each exercise are logged with an owner and a date for the fix.
+
 ### 27.7 Case
 
 Amara designs the possible-takeover playbook with Paolo and the customer service manager.
+
+Involving customer service early matters because they will speak to customers whose accounts were locked. The manager asks for a short script explaining why access was reset and how to regain it, and for a field in the alert showing whether the customer has already been contacted. Both requests go into the playbook before it is tested. The finished playbook is rehearsed once with a synthetic alert before go-live, with the customer service manager playing the customer.
 
 ### Customer experience
 
@@ -2144,29 +2158,43 @@ You will (1) implement a detection and its pipeline changes; (2) use staged envi
 
 Implementation turns R-07 and the playbook into working parts: load-balancer log forwarding, parser updates, the rule, the alert routing and the automation.
 
+R-07 is the requirement identifier for possible-takeover detection, and keeping that label through implementation lets each component point back to why it exists. Building the parts in dependency order matters: the rule cannot be tested until the parser produces the fields it needs, and routing cannot be checked until the rule creates alerts. Amara draws up a short build plan with that order.
+
 ### 28.2 Environments
 
 Changes go first to a test SIEM with replayed synthetic data, then to production in monitor-only mode, then to alerting. Each stage has entry and exit criteria.
+
+Entry criteria say what must be true before a change enters a stage, such as passing unit tests. Exit criteria say what must be shown before it leaves, such as a week in monitor-only mode with false alerts below the limit. Skipping stages saves days but risks discovering problems in production, where they affect analysts and customers.
 
 ### 28.3 Configuration as code
 
 Parser configurations, rules and routing are stored in version control and deployed by a pipeline, not edited by hand in consoles. This makes changes reviewable and reversible.
 
+Hand edits in a console leave no clear record of who changed what and why, and they are easy to make by mistake. A pipeline applies the same reviewed configuration every time. If a change causes problems, reverting the commit and redeploying restores the previous state in minutes, with a full record of what happened.
+
 ### 28.4 Parser updates
 
 The load-balancer logs use a new format. Amara writes a parser, tests it on 1,000 sample lines, and checks that every field maps to the event model.
+
+A thousand lines include normal requests, failures, unusual characters in usernames and a few malformed lines. Amara counts how many lines parse fully, how many partly and how many fail, and checks a sample by hand against the raw text. Fields such as client address must map to the event model's source field, or the rule will group the wrong values.
 
 ### 28.5 Change management
 
 Production changes follow Lindqvist's change process: a ticket, a review, a window and a rollback plan.
 
+The ticket describes the change and its purpose; review checks the risk; the window chooses a time when problems affect the fewest people; rollback says exactly how to undo it. Detection changes are sometimes treated as low-risk, but a parser change can break many rules at once, so they follow the same process as other production changes. Amara's first ticket is reviewed by Paolo and the SIEM administrator.
+
 ### 28.6 Evidence
 
 Implementation records include commits, test results, change tickets and screenshots of monitor-only results. Auditors and future engineers use them.
 
+Months later, someone may ask when the rule went live and whether it was tested. Commits answer what changed; test results answer whether it worked; tickets answer who approved it; monitor-only results answer how it behaved on real data before alerting. Keeping these together saves time in audits and during incident reviews. Amara links all four from the requirement's row in the traceability table, so the trail starts from R-07.
+
 ### 28.7 Pairing
 
 Amara pairs with an analyst during routing configuration so alerts land where analysts expect them.
+
+Engineers think in terms of rules and queues; analysts think in terms of shifts and workloads. The analyst points out that alerts routed to a general queue would be missed at night, when only the on-call queue is watched. Pairing catches that kind of mismatch before deployment, and gives the analyst a sense of ownership of the new alerts. They finish with a test alert that the analyst opens on the on-call screen.
 
 ### Rollback rehearsal
 
@@ -2208,9 +2236,13 @@ You will (1) define SOC metrics linked to goals; (2) compute robust summaries of
 
 Knerler, Parker and Zimmerman (2022) treat measurement as a strategy: "measure performance to improve performance". Metrics show whether changes help and where effort should go.
 
+Without measurement, a SOC cannot tell whether a new rule reduced harm or just added noise, or whether a staffing change helped. Measures also support honest conversations with management about what the team can deliver. The aim is improvement, not judging individuals, which affects how metrics are chosen and shared. Lindqvist starts with a handful of measures and adds more only when a clear question needs answering.
+
 ### 29.2 Choosing metrics
 
 Good SOC metrics tie to goals: time from detection to acknowledgement, share of incidents detected internally rather than reported by customers, coverage of priority techniques, and false-alert rates per rule.
+
+Each metric should answer a question someone actually asks. Time to acknowledgement tells the CISO how quickly the SOC reacts; internal versus customer-reported detection shows whether monitoring finds problems first; technique coverage shows breadth; false-alert rates per rule show where tuning is needed. Collecting metrics nobody uses wastes effort and clutters reports.
 
 ### Lab — response-time summaries
 
@@ -2232,17 +2264,25 @@ n=15 mean=10.2 median=7 p90=16.4
 
 Fifteen acknowledgement times give a mean of 10.2 minutes but a median of 7 and a 90th percentile of 16.4. One 41-minute case pulls the mean up. The median describes the typical case, the 90th percentile the slow tail that matters for the 15-minute requirement.
 
+Reporting only the mean would suggest the team typically takes ten minutes, when most acknowledgements happen in about seven. Reporting only the median would hide that a tenth of cases take over sixteen minutes, beyond the requirement. Amara looks at the 41-minute case separately and finds it arrived during a shift handover, which points to a process fix.
+
 ### 29.4 Distorting metrics
 
 Kokulu et al. (2019) found metric mismatches common in SOCs. Rewarding fast closure can produce careless closure. Pair speed metrics with quality checks, such as reviewed samples of closed alerts.
+
+Once a number becomes a target, people find ways to move it that do not reflect real improvement. If analysts are judged by alerts closed per hour, quick closures without investigation become rational. Sampling closed alerts for quality makes careless closure visible. Using several metrics together makes any single one harder to game.
 
 ### 29.5 Context
 
 A metric without context misleads: acknowledgement time rose last month because night staffing fell, not because analysts slowed. Reports include such explanations.
 
+A chart showing slower acknowledgements could lead managers to blame analysts or demand overtime. With the explanation that night staffing fell from two to one, the conversation turns to staffing decisions instead. Amara adds a short notes column to the monthly report for events such as staffing changes, incidents and new rules. Reports compare each month with the same month last year where seasonal patterns matter.
+
 ### 29.6 Data quality
 
 Metrics depend on case-system timestamps; analysts who acknowledge late in the tool but act early make data wrong. Training and tooling fix this.
+
+If analysts start investigating from an email notification and only click acknowledge later, the case system records a slower time than reality. The metric then misleads in the opposite direction. Making acknowledgement automatic when an analyst opens the alert, and training staff on why timestamps matter, aligns the data with what actually happened. Amara checks a sample of cases against chat logs.
 
 ### Coverage metrics
 
@@ -2284,9 +2324,13 @@ You will (1) verify detection logic with automated unit tests; (2) verify pipeli
 
 Verification asks "did we build it right?" — does the rule behave as specified? Validation asks "did we build the right thing?" — does it help detect real threats in operation? This laboratory focuses on verification.
 
+A rule can pass every verification test and still be useless if it targets behaviour attackers do not use, or if real attacks look different from the test data. Validation answers that question later, with operational evidence. Keeping the two separate stops a team from claiming a rule 'works' when they have only shown it matches its specification.
+
 ### 30.2 The laboratory
 
 The laboratory is a test SIEM isolated from production, with replayed synthetic logs. No real customer data and no attack tools are used; test events are crafted log records that look like the behaviour the rule targets.
+
+Isolation stops test events from reaching production analysts and wasting their time. Replayed synthetic logs give realistic volume and variety without exposing customer data. Crafted records let the tester control exactly which conditions are present, which is how boundary cases are tested precisely. The laboratory is rebuilt from configuration so its state is known before each run.
 
 ### Lab — unit tests for the burst rule
 
@@ -2315,17 +2359,25 @@ tests run 4 failures 0
 
 Four tests run and none fail: the rule fires at exactly 6 distinct failing users with a success, stays quiet at 5, stays quiet without a success even at 9 users, and stays quiet with no activity. These encode the boundary and the success clause decided in chapters 9 and 24.
 
+Each test checks one aspect of behaviour. Firing at six and staying quiet at five pins down the threshold exactly; staying quiet at nine without a success shows that the success clause really is required; staying quiet with no activity shows the rule does not misfire on empty windows. Four passing tests together describe the rule's intended behaviour.
+
 ### 30.4 Pipeline tests
 
 Unit tests check logic; pipeline tests check that a synthetic record entering the collector produces an alert in the case system with correct fields. Amara injects three records and checks each field in the resulting alert.
+
+A rule can be correct while the pipeline around it breaks: a field renamed by the parser, a routing rule sending alerts to the wrong queue, or a time conversion error. Checking every field in the final alert, such as customer ID, source network and subsequent actions, confirms the whole chain works, not just the rule's logic.
 
 ### 30.5 Evidence
 
 The laboratory record lists the test, version, input, expected and actual results, date and tester.
 
+Recording the rule version ties each result to an exact configuration, so a later change can be compared. Expected and actual results side by side make failures obvious. The tester's name and date show accountability. These records become part of the evidence that the rule was verified before going live. Failed tests stay in the record after they are fixed, alongside the rerun, so the history shows what went wrong and how it was corrected.
+
 ### 30.6 Repeatability
 
 Tests run automatically on each rule change, so verification is continuous, not a one-off.
+
+Rules change often through tuning, parser updates and field renames. A test run only once at creation says nothing about the rule six months later. Running the suite on every change catches regressions immediately, and a failing test blocks deployment until someone fixes the rule or justifies changing the test. The suite takes under two minutes, so engineers run it locally before proposing a change, and the shared pipeline runs it again before merging.
 
 ### Test data hygiene
 
@@ -2367,29 +2419,43 @@ You will (1) implement depot network monitoring from the studio design; (2) inte
 
 The depot design from chapter 25 now becomes real: restrict depot-to-business traffic to five services, log denials, and alert on repeated attempts to new destinations.
 
+Five services cover what depots legitimately need from business systems, such as delivery updates and stock queries. Everything else is denied and logged. Alerting on repeated attempts to new destinations filters out one-off mistakes while catching a device persistently trying to reach systems it should not, which is the behaviour the design was meant to reveal.
+
 ### 31.2 Asset enrichment
 
 Detection needs to know which addresses are depots. Amara works with IT to add depot subnets and device types to the asset inventory, then to the enrichment tables.
+
+Without enrichment, a denial log shows only an address, and an analyst must look up which depot and device it belongs to. With depot subnets and device types in the inventory, alerts arrive showing 'handheld scanner, Depot 14' immediately. The inventory work also helps IT operations, who had no complete list of depot devices before.
 
 ### 31.3 Phased rollout
 
 Forty depots cannot change at once. Three pilot depots go first; issues found there are fixed before the rest follow in groups of ten.
 
+Three pilot depots are chosen to cover different sizes and equipment, so problems that affect only some depot types are likely to appear. Groups of ten after that keep the number of depots affected by any new problem manageable. Each group starts only after the previous one has run cleanly for a set period. Lessons are written up after each group.
+
 ### 31.4 Pilot findings
 
 In the pilot, a label printer at one depot needs to reach a print server not on the allowed list. The firewall denies it, printing stops and the depot calls IT. The team adds the print service, documents why, and checks other depots for the same printers before the next group.
+
+The printer problem shows why the allowed list needs input from people who know depot operations, not just network diagrams. Checking other depots before the next group prevents the same outage elsewhere. Documenting why the print service was added keeps the allowed list understandable, so future reviewers do not remove it as an unexplained exception.
 
 ### 31.5 Coordination
 
 Depot managers get a notice before changes, a contact number and a rollback promise.
 
+Depot managers run busy sites where an unexplained outage can delay deliveries. A notice in advance lets them plan around the change; a contact number gives them someone to call; a rollback promise reassures them that a problem will be reversed quickly rather than debated. Good coordination makes later rollouts easier because trust has been built. Afterwards, managers are asked how the change went. Their answers shape the next notice.
+
 ### 31.6 Monitoring the rollout
 
 A dashboard shows denials per depot per hour; a spike after a change signals a missed legitimate service.
 
+Before a change, denials at a depot are near zero because traffic was not restricted. A sharp rise immediately after the change usually means a legitimate service was missed, as with the printer. Watching the dashboard during each rollout window lets the team react within minutes rather than waiting for complaints from depot staff. A spike outside a rollout window is treated as a possible security event instead.
+
 ### 31.7 Closure
 
 After all depots, the team reviews denial rates and alert volume against the design estimates.
+
+Comparing actual results with estimates checks whether the design assumptions held. If denials are far higher than expected, the allowed list may still be missing services; if alerts are far higher, thresholds may need tuning. The review is written up and linked to the design document, closing the loop from studio to operation. Paolo reads it before the project is closed, and the final figures become the baseline for routine monitoring of depot traffic from then on.
 
 ### Documenting exceptions
 
@@ -2431,29 +2497,43 @@ You will (1) define reliability targets for the monitoring pipeline; (2) identif
 
 The pipeline has a target of 99.5% availability and 99.9% completeness of priority sources. Completeness — the share of expected events that arrive — matters as much as uptime, because a running pipeline with missing data still blinds the SOC.
 
+Uptime alone is misleading: a pipeline can be running while silently dropping a share of events. Completeness measures what actually arrives. For priority sources such as authentication logs, 99.9% means at most one event in a thousand lost, which keeps the chance of missing an attack's key event low while remaining achievable with reasonable engineering.
+
 ### 32.2 Single points of failure
 
 Lindqvist's pipeline has one collector per site and one load-balancer log feed. If either fails, a whole source disappears.
+
+One collector per site means a hardware fault there silences every source at that site until it is repaired. The single load-balancer feed means takeover detection depends on one path. Listing these points is the first step; deciding which to remove depends on cost and on the detections each one supports. Amara lists both on the failure analysis with the detections each one supports, which shows the feed carries the most important detection.
 
 ### 32.3 Redundancy
 
 Two collectors per site in active-passive mode, and a second feed path for load-balancer logs, remove the main single points. Redundancy costs money, so it goes first where detection value is highest.
 
+Active-passive means one collector works while the other waits, taking over if the first fails. That is simpler than splitting load between both and avoids duplicate events. Starting with sites and feeds that support the most important detections gives the most protection for each unit of budget, and lower-value sources follow if budget allows.
+
 ### 32.4 Graceful degradation
 
 When the SIEM is overloaded, the pipeline should drop low-value debug logs first, not authentication logs. Priority queues implement this.
+
+When capacity runs short, something must be lost; the question is what. Debug logs are rarely needed for detection, while authentication logs are central. Priority queues let the pipeline drop low-priority events first under pressure. The drop is logged, so the SOC knows which data are missing for that period. Priorities are set per source in the pipeline configuration and reviewed when new sources join.
 
 ### 32.5 Measuring completeness
 
 Comparing events counted at sources with events stored in the SIEM shows loss. A daily reconciliation report lists sources below 99.9%.
 
+Sources can report how many events they sent, and the SIEM knows how many it stored; the difference is loss in between. Where sources cannot report counts, collectors can count what they received instead. The daily report lists each source's ratio, and any below target gets investigated by the source owner. The report goes to source owners each morning and is summarised weekly for Paolo.
+
 ### 32.6 Error budgets
 
 If availability falls below target, new features pause and reliability work takes priority until the budget recovers.
 
+A 99.5% target leaves 0.5% of time as an allowance for downtime. When that allowance is used up, reliability work takes priority over new rules and features. This gives a clear, pre-agreed rule for balancing new work against stability, instead of a fresh argument each time something breaks. The budget resets each quarter. Product managers and SOC leads agree this rule in advance, so pausing feature work when the budget is spent is routine rather than a dispute.
+
 ### 32.7 Case
 
 In week one of reconciliation, the portal web servers show 99.95% completeness; the depot firewall shows 97.8% because of a UDP syslog path that drops packets under load.
+
+UDP syslog sends messages without confirmation, so packets dropped under load are simply lost. A 2.2% loss means about one denial in fifty never reaches the SIEM. Switching the depot firewall to TCP or a forwarding agent with acknowledgement and buffering would fix it, and the reconciliation report will show whether completeness rises above target.
 
 ### Monitoring the monitors
 
