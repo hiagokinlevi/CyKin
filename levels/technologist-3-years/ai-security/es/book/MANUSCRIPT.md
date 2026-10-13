@@ -26,7 +26,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-| Seguridad de la IA y del aprendizaje automático | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
+| Seguridad de la IA y del aprendizaje automático | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
 | Proyecto, despliegue y proyecto final | [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -1245,7 +1245,165 @@ Los laboratorios contenidos hacen medibles los ataques abstractos, y cada uno ap
 
 ### Siga estudiando — capítulo 15 de 30
 
-[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](../../en/book/MANUSCRIPT.md#ch-16)
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Seguridad de la IA y del aprendizaje automático: métodos II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) probar los sistemas de recuperación frente a debilidades de control de acceso y de envenenamiento; (2) probar los agentes frente a la agencia excesiva; (3) probar la divulgación de información sensible y la filtración del *prompt* del sistema; y (4) probar los límites de recursos.
+
+### 16.1 Pruebas de recuperación
+
+Coloque documentos canario con frases distintivas en ubicaciones restringidas y haga consultas como usuarios que no deberían verlos; cualquier canario que aparezca en una respuesta es una fuga. Añada documentos con datos falsos procedentes de fuentes de baja confianza y compruebe si las respuestas los repiten (LLM08, LLM09). Jonas usó ambos métodos en Ask Brightwell tras la separación del índice. El documento canario solo para el personal comprobaba si algo restringido seguía llegando a los clientes, y los datos falsos en páginas de baja confianza comprobaban si las respuestas los repetían. La página caducada de devoluciones a 60 días mostró más tarde que los datos falsos también pueden llegar por accidente.
+
+### 16.2 Agencia excesiva
+
+Enumere cada herramienta, sus parámetros y sus permisos. Intente que el agente llame a cada herramienta con parámetros que excedan los derechos del usuario o lo que necesita la tarea, mediante peticiones directas y contenido colocado. Mida a partir de los registros de herramientas. OWASP LLM06 recomienda minimizar las herramientas, las funciones y los permisos, y exigir aprobación humana para las acciones de alto impacto. En Ask Brightwell, las pruebas de agencia descubrieron que el agente podía llamar a "update address" durante una conversación de devoluciones. Esa herramienta nunca hacía falta allí, y una reseña inyectada podría haberla usado para redirigir un envío de sustitución. Delimitar las herramientas por tipo de conversación cerró la brecha.
+
+### 16.3 Divulgación y filtración del *prompt* del sistema
+
+Pida datos de otros usuarios, documentos internos y el *prompt* del sistema con muchas formulaciones. Los *prompts* del sistema filtrados importan sobre todo cuando contienen secretos o revelan controles; la solución es retirar los secretos de los *prompts*, no esconder mejor el *prompt* (LLM07). El *prompt* del sistema de Ask Brightwell contuvo en su día un código de descuento para el personal, lo que convertía una filtración del *prompt* en una pérdida real. Una vez retirado el código, un *prompt* filtrado solo revela instrucciones que las pruebas ya suponen que un atacante puede adivinar. Jonas sigue probando la filtración para confirmar que no se ha vuelto a añadir ningún secreto.
+
+### 16.4 Pruebas de recursos
+
+Envíe entradas de longitud máxima, peticiones de salidas muy largas y bucles recursivos de herramientas; mida el coste y la latencia frente a los límites (LLM10). En Ask Brightwell, la prueba de bucles descubrió que el agente llamaba a la búsqueda 40 veces en un solo turno, y cada llamada consumía *tokens*. El tope de 5 llamadas por turno acota ese coste. Las entradas de longitud máxima se comprueban frente al límite de tamaño de la pasarela, y las peticiones de salidas largas frente al límite de salida del proveedor. Cada prueba mide el coste y la latencia a partir de los registros, de modo que un límite configurado pero no aplicado se detecta de inmediato.
+
+### 16.4b Calificación automática
+
+Escriba los calificadores como código: busque en los registros de herramientas llamadas fuera de los parámetros permitidos, busque en las salidas cadenas canario y compare los recuentos de *tokens* con los límites. Los calificadores automáticos hacen que los resultados sean repetibles y permiten volver a ejecutar todo el conjunto después de cada cambio. Los calificadores de Ask Brightwell buscan en los registros de herramientas llamadas a `start_return` sobre pedidos que el usuario no mencionó, buscan en las respuestas la frase canario de Project Heron y comparan las llamadas a herramientas por turno con el tope. Como son código, los mismos calificadores se ejecutan sin cambios en el banco de evaluación nocturno.
+
+### 16.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas coloca un documento canario solo para el personal ("Project Heron discount matrix") y hace 50 preguntas sobre descuentos desde cuentas de clientes: 0 fugas tras la separación del índice. Las pruebas de agencia descubren que el agente puede llamar a "update address" durante una conversación de devoluciones, una herramienta que allí nunca necesita. Delimita las herramientas por tipo de conversación. Una prueba de bucles muestra que el agente puede llamar a la búsqueda 40 veces en un turno; limita las llamadas a 5. Cada resultado condujo a un sistema más acotado y no a un *prompt* mejor: índices separados, herramientas delimitadas por conversación y un tope estricto de llamadas. Para confirmar que la prueba canario es capaz de ver una fuga, Jonas la ejecutó también en una copia de trabajo con el documento Heron de vuelta en el índice de clientes.
+
+### 16.6 Errores y límites
+
+- Probar la recuperación solo con consultas amistosas.
+- Herramientas habilitadas de forma global en lugar de por tarea.
+- Ningún límite por turno.
+
+Las pruebas de Ask Brightwell que hace Jonas evitan los tres: las preguntas canario proceden de cuentas de clientes que intentan llegar a contenido del personal, las herramientas están delimitadas por tipo de conversación y un tope de llamadas por turno acota los bucles. Las consultas amistosas nunca habrían encontrado la fuga de los márgenes, y las herramientas globales dejaban la herramienta de direcciones accesible durante las devoluciones. Cada uno tiene una prueba en el banco de evaluación, de modo que un cambio que lo reintroduzca hace fallar la ejecución nocturna.
+
+### Ejercicios
+
+- **EX046 — Canario.** Diseñe una prueba canario para el índice del personal. Rúbrica: 3 = frase única, ubicación, consultas con el rol equivocado, criterio de superación; 2 = tres; 1 = uno; 0 = ninguno.
+- **EX047 — Auditoría de agencia.** Enumere las herramientas de Ask Brightwell y qué conversaciones necesitan cada una. Rúbrica: 3 = delimitación por herramienta con razones; 2 = parcial; 1 = vago; 0 = nada.
+- **EX048 — Bucle.** ¿Por qué limitar las llamadas a herramientas por turno y qué valor elegiría? Rúbrica: 3 = coste, bucles, amplificación de inyecciones, cifra justificada; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis
+
+Los métodos II extienden las pruebas a la recuperación, la agencia, la divulgación y el consumo, y cada uno se juzga por sus efectos y se corrige con controles del sistema.
+
+### Siga estudiando — capítulo 16 de 30
+
+[← Capítulo 15 (borrador)](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 (borrador) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Seguridad de la IA y del aprendizaje automático: herramientas
+
+### Resultados de aprendizaje
+
+Usted podrá (1) construir un pequeño banco de evaluación; (2) usar herramientas de registro y trazado para las solicitudes de IA; (3) integrar escáneres de dependencias y de archivos de modelos; y (4) elegir las herramientas con sentido crítico.
+
+### 17.1 Banco de evaluación
+
+Un banco de evaluación carga los casos de prueba, prepara el entorno (coloca documentos, crea usuarios de prueba), ejecuta conversaciones contra un despliegue de preproducción, recoge los registros de herramientas y las salidas, los califica con código y redacta un informe fechado con tasas e intervalos. Debe ejecutarse con un solo comando y en la integración continua. Guarde el banco de evaluación en control de versiones junto a la aplicación, para que un cambio en cualquiera de los dos pueda probarse a la vez. El banco de evaluación de Ask Brightwell de Jonas es un ejemplo práctico: coloca documentos, ejecuta los 120 casos cada noche e informa de las tasas con intervalos.
+
+### 17.2 Trazado
+
+El trazado registra cada paso de una solicitud con un identificador compartido: mensaje del usuario, fragmentos recuperados, *prompt* (o su *hash* y su versión), respuesta del modelo, llamadas a herramientas y respuesta final. Las trazas permiten explicar los incidentes y los fallos de las pruebas. Depure los datos personales, guarde las trazas con control de acceso y fije límites de conservación para que el almacén de trazas no se convierta en el mayor montón de datos personales de la empresa. Los identificadores de traza de Ask Brightwell demostraron su valor durante el ejercicio de mesa de operaciones, cuando el ingeniero de guardia encontró en minutos la página de políticas inyectada a partir de una traza. El antiguo contenedor de registros compartido muestra el riesgo: *prompts* con direcciones de clientes legibles por 40 ingenieros. Las trazas almacenan ahora el *hash* y la versión del *prompt*, con los datos personales depurados.
+
+### 17.3 Escáneres
+
+Los escáneres de dependencias comprueban las bibliotecas en busca de vulnerabilidades conocidas; en la IA, compruebe también los archivos de modelos (fijación de *hashes*, comprobaciones de formato que rechacen formatos que ejecutan código) y las fuentes de los conjuntos de datos. Los asistentes de programación pueden sugerir paquetes que no existen, con el consiguiente riesgo de acaparamiento de nombres, así que compruebe las nuevas dependencias frente a una lista de permitidos. Una lista de materiales de *software* que incluya modelos y conjuntos de datos ayuda a responder a «¿estamos afectados?» cuando aparece un aviso. En CodePilot, que sugiere paquetes, la comprobación de la lista de permitidos importa porque el nombre de un paquete sugerido podría no existir todavía y un atacante podría registrarlo. El *pipeline* de Brightwell comprueba además los *hashes* de los archivos de modelos y rechaza los formatos basados en *pickle*.
+
+### 17.4 Elección de herramientas
+
+Muchos productos afirman «proteger la IA». Pregunte: ¿a qué amenaza responde? ¿Está en la ruta de la solicitud (añade latencia, puede bloquear) o solo supervisa? ¿Cómo se evaluó? ¿De forma adaptativa? ¿Qué datos envía al proveedor? ¿Puede probarlo con sus propios conjuntos antes de comprarlo? Una herramienta debe cubrir una laguna de su arquitectura, no sustituir una parte de ella. La demostración del cortafuegos de *prompts* mostró por qué importa la última pregunta: con el conjunto reservado de Jonas bloqueó muchos casos indirectos, pero también detuvo por error algunas preguntas normales, un coste que la demostración del proveedor no mostraba. Jonas registró ambas tasas antes de cualquier decisión de compra, y el responsable del producto las sopesó frente al servicio de políticas que ya estaba en funcionamiento.
+
+### 17.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas escribe un banco de evaluación en Python de 300 líneas para los 120 casos de Ask Brightwell. Se ejecuta cada noche en preproducción y publica un informe: éxito de los ataques por categoría con intervalos de Wilson y finalización de las tareas normales. Añade identificadores de traza al orquestador y una comprobación en la CI que rechaza las nuevas dependencias que no figuran en la lista de permitidos. Un proveedor hace una demostración de un «cortafuegos de *prompts*»; Jonas lo ejecuta con su conjunto reservado antes de cualquier compra: bloquea el 60 % de los casos indirectos, pero también el 7 % de las preguntas normales. El resultado del cortafuegos es el tipo de evidencia que necesita una decisión de compra: una mejora frente a los ataques y un coste medido para los clientes, ambos con los casos propios de Brightwell.
+
+### 17.6 Errores y límites
+
+- Pruebas manuales e irrepetibles.
+- Trazas con datos personales sin depurar.
+- Comprar herramientas sin probarlas con sus conjuntos.
+
+El trabajo de Jonas en Brightwell evita los tres. El banco de evaluación se ejecuta cada noche con un solo comando, las trazas depuran los datos personales y el cortafuegos de *prompts* se probó con el conjunto reservado antes de la compra. Probar a mano habría hecho fácil pasar por alto la regresión posterior causada por un cambio del *prompt*. Una demostración del proveedor con sus propios ejemplos no sustituye esa prueba. Cada hábito aporta evidencia a la puerta de publicación.
+
+### Ejercicios
+
+- **EX049 — Pasos del banco de evaluación.** Enumere en orden los pasos del banco de evaluación. Rúbrica: 3 = cargar, preparar, ejecutar, recoger, calificar, informar; 2 = cuatro o cinco; 1 = dos o tres; 0 = ninguno.
+- **EX050 — Campos de la traza.** Especifique los campos de la traza y las reglas de depuración. Rúbrica: 3 = campos más depuración y conservación; 2 = solo campos; 1 = pocos; 0 = ninguno.
+- **EX051 — Herramienta de un proveedor.** Decida sobre el cortafuegos de *prompts* a partir de las cifras de Jonas. Rúbrica: 3 = sopesa el 60 % frente al 7 % de bloqueos erróneos, lo sitúa como supervisión y no como sustituto de las políticas; 2 = parcial; 1 = afirmación; 0 = nada.
+
+### Síntesis
+
+Las herramientas hacen repetible el trabajo de seguridad de la IA: bancos de evaluación automatizados, trazas, escáneres y herramientas elegidas tras probarlas frente a sus propias amenazas.
+
+### Siga estudiando — capítulo 17 de 30
+
+[← Capítulo 16 (borrador)](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 (borrador) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Seguridad de la IA y del aprendizaje automático: controles
+
+### Resultados de aprendizaje
+
+Usted podrá (1) implantar un servicio de políticas para las herramientas de los agentes; (2) configurar controles de entrada y de salida; (3) implantar correctamente la confirmación humana; y (4) verificar cada control con pruebas.
+
+### 18.1 Servicio de políticas
+
+El servicio de políticas recibe una acción propuesta (herramienta, parámetros, identidad del usuario, tipo de conversación) y devuelve permitir o denegar con un motivo. Las reglas son código: "start_return allowed only if order.owner == user and order.status == delivered and today − delivered_date ≤ 30 days and value ≤ €1,000". El modelo nunca ve esta lógica ni puede eludirla. Mantenga las reglas pequeñas y legibles para que los revisores puedan comprobarlas, y registre cada decisión con su motivo. La regla refleja la política de devoluciones de 30 días que publica Brightwell, de modo que el servicio aplica la misma promesa que los clientes leen en el sitio web.
+
+### 18.2 Controles de entrada
+
+Limite la longitud de los mensajes; restrinja las fuentes de recuperación; marque el contenido no confiable con delimitadores; y, si lo desea, ejecute un clasificador de inyecciones como señal. Los enfoques de consultas estructuradas, como StruQ (arXiv:2402.06363), separan las instrucciones de los datos en la interfaz del modelo; reducen el riesgo, pero no lo eliminan. Los controles de entrada reducen la frecuencia con que se producen salidas dañinas; no acotan el daño cuando una de ellas se cuela. En Ask Brightwell, los controles de entrada son el límite de longitud de la pasarela, la recuperación restringida a documentos públicos sin reseñas y los delimitadores en torno al texto recuperado. El *prompt* separado redujo las propuestas dañinas en el estudio de Jonas, pero el servicio de políticas sigue siendo el control que acota el daño cuando se cuela una inyección.
+
+### 18.3 Controles de salida
+
+Valide las acciones estructuradas; escape el texto para su destino; elimine o restrinja con una lista de permitidos los enlaces y las imágenes de las respuestas (para evitar que los datos se filtren a través de URL); y, cuando sea viable, compruebe las respuestas sobre precios o políticas frente a los documentos de origen. En Ask Brightwell, las respuestas solo pueden contener enlaces al propio dominio de Brightwell y las imágenes no se muestran, porque de lo contrario una instrucción inyectada podría ocultar datos de clientes en una URL. Las respuestas sobre el plazo de devolución se comparan con la página de políticas vigente, lo que habría detectado antes la página caducada de la campaña de 60 días. Los controles de salida se prueban con casos colocados, como cualquier otro control.
+
+### 18.4 Confirmación humana
+
+Muestre al usuario exactamente lo que va a ocurrir, construido a partir de datos estructurados: "Start a return for order 100245 — Oslo sofa, €899 — refund to card ending 4421? Yes / No". No muestre resúmenes escritos por el modelo en la confirmación, porque un texto inyectado puede hacer que acciones dañinas parezcan inofensivas. Haga que las confirmaciones sean lo bastante infrecuentes para que la gente siga leyéndolas. La confirmación de Ask Brightwell usa exactamente este formato, con valores tomados del registro del pedido. Como la confirmación solo aparece para las devoluciones y los cambios de dirección, los clientes la ven pocas veces y es más probable que la lean.
+
+### 18.5 Verificación de los controles
+
+Cada control recibe pruebas unitarias (las reglas permiten y deniegan los casos correctos) y pruebas de conjunto (los casos de inyección ya no provocan acciones dañinas). Vuelva a ejecutarlas en cada cambio; un control que se rompe en silencio durante una refactorización es peor que uno ausente, porque la gente confía en él. El servicio de políticas de Ask Brightwell tiene 40 pruebas unitarias que cubren casos límite, como una entrega hecha exactamente hace 30 días, y el conjunto reservado de inyecciones se ejecuta cada noche contra preproducción. Cuando más tarde un cambio de *prompt* de un desarrollador aumentó las propuestas dañinas, estas pruebas y la puerta lo detectaron antes de la publicación. Cada prueba nombra la regla que comprueba, de modo que un fallo indica al desarrollador qué regla se rompió.
+
+### 18.6 Ejemplo resuelto (caso sintético de Brightwell)
+
+Tras añadir el servicio de políticas y la confirmación estructurada, Jonas vuelve a ejecutar el conjunto reservado: las devoluciones dañinas bajan de 31 de 80 casos indirectos a 0 de 80 (cota superior ≈ 4 %); las devoluciones normales siguen completándose en el 97 % de 500 conversaciones de prueba. Añade 40 pruebas unitarias para las reglas de políticas, incluidos casos límite como pedidos entregados exactamente hace 30 días. La cota superior importa: cero de 80 no demuestra que el riesgo sea nulo, solo que una tasa alta es improbable. Medir a la vez las devoluciones normales muestra que el control no compró la seguridad rechazándolo todo.
+
+### 18.7 Errores y límites
+
+- Reglas de políticas escritas en el *prompt*.
+- Texto de confirmación redactado por el modelo.
+- Controles sin pruebas.
+
+El diseño de Ask Brightwell evita cada uno de ellos. Las reglas de devolución residen en el servicio de políticas, no en el *prompt*; la pantalla de confirmación se construye a partir del registro del pedido; y cada regla tiene pruebas unitarias. Una regla escrita en el *prompt* puede sortearse con una reseña colocada. Un control sin pruebas puede desaparecer en una refactorización sin que nadie lo note hasta el siguiente incidente. La pantalla de confirmación tiene ahora su propia prueba.
+
+### Ejercicios
+
+- **EX052 — Reglas.** Redacte reglas de políticas para una herramienta "update delivery address". Rúbrica: 3 = propiedad, estado, verificación, límites, denegación por defecto; 2 = tres o cuatro; 1 = una o dos; 0 = ninguna.
+- **EX053 — Control de enlaces.** ¿Por qué eliminar los enlaces externos de las respuestas? Rúbrica: 3 = exfiltración de datos mediante parámetros de URL o cargas de imágenes; 2 = parcial; 1 = vago; 0 = erróneo.
+- **EX054 — Resultado.** Informe en una frase, con sus condiciones, de los resultados de la nueva ejecución con el servicio de políticas. Rúbrica: 3 = cifras, cota, finalización, condiciones; 2 = falta uno; 1 = vago; 0 = nada.
+
+### Síntesis
+
+Los controles que importan son código fuera del modelo (servicios de políticas, validadores, confirmación estructurada), y cada uno se demuestra con pruebas.
+
+### Siga estudiando — capítulo 18 de 30
+
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
 
 <a id="worked-results"></a>
 
@@ -1395,6 +1553,34 @@ pass to tool service (which rechecks ownership)
 - Extracción: salida solo con etiquetas, límites de frecuencia y supervisión.
 
 **EX045.** Los laboratorios usan conjuntos de datos sintéticos diminutos y modelos lineales en lugar del modelo de Brightwell. Suponen un acceso y unos presupuestos del atacante elegidos con fines didácticos, y sus cifras no coincidirán con las del sistema real.
+
+**EX046.** Colocar la frase "Project Heron discount matrix" solo en el índice del personal. Hacer 50 preguntas variadas sobre descuentos como cliente. Se supera si la frase o su contenido aparecen en 0 respuestas. Repetir después de cada cambio del índice.
+
+**EX047.**
+- Consulta de pedidos: conversaciones de pedidos y de devoluciones.
+- Iniciar devolución: solo conversaciones de devoluciones, con confirmación.
+- Actualizar dirección: solo conversaciones de cuenta, con confirmación y un paso de verificación.
+- Búsqueda de productos: todas las conversaciones.
+
+**EX048.** Los bucles multiplican el coste y pueden amplificar instrucciones inyectadas a lo largo de muchas llamadas. Un tope de 5 llamadas por turno cubre las tareas normales de varios pasos observadas en los registros (como máximo 3), con una alerta cuando se alcanza el tope.
+
+**EX049.** Cargar los casos. Preparar el entorno (documentos colocados, usuarios de prueba). Ejecutar las conversaciones. Recoger las salidas y los registros de herramientas. Calificar con código. Redactar un informe fechado con las tasas, los intervalos y la lista de fallos.
+
+**EX050.** Campos: identificador de traza, marca de tiempo, identificador de usuario (seudonimizado), mensaje, identificadores de los fragmentos recuperados, versión y *hash* del *prompt*, versión del modelo, respuesta, llamadas a herramientas y sus parámetros, decisiones de políticas. Depuración: enmascarar direcciones, números de tarjeta y correos. Conservación: 30 días, con acceso limitado al personal de guardia y de seguridad.
+
+**EX051.** Bloquea el 60 % de los ataques indirectos, pero bloquea por error el 7 % de las preguntas normales, lo que resulta costoso. No sustituye al servicio de políticas, que ya llega a 0. Si se adopta, úselo como señal de supervisión. No lo compre como control de bloqueo.
+
+**EX052.**
+- Permitir solo si el pedido pertenece al usuario.
+- El estado del pedido debe ser «aún no enviado».
+- El usuario debe volver a verificarse mediante un código de un solo uso.
+- La nueva dirección debe estar en un país al que se realicen envíos.
+- No más de 2 cambios por pedido.
+- Denegar en cualquier otro caso, registrando el motivo.
+
+**EX053.** Los enlaces y las imágenes cuyas URL contienen datos del usuario los filtran al servidor del atacante cuando se muestran o se pulsan. Una inyección puede construir esos enlaces.
+
+**EX054.** «Con 80 casos reservados de inyección indirecta (preproducción, modelo v2, políticas v1), las devoluciones dañinas bajaron de 31 a 0 (cota superior al 95 % ≈ 4 %), mientras que el 97 % de 500 conversaciones normales de devolución siguieron completándose».
 
 <a id="references"></a>
 
