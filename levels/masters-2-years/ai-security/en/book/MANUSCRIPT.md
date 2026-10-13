@@ -102,7 +102,19 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 1. Write your topic, then three candidate questions in PICO form; pick one and justify feasibility. 2. Write a search protocol and run it, logging counts. 3. Build a ten-row evidence matrix.
 
+Section one point six develops research question and literature method with a the organisation note Leo Brandt can demo offline.
+
+Under section one point six, the mentor expects research claims to carry owners and dates.
+
+Section one point six treats from topic to question as testable only when evidence and ticket IDs are recorded.
+
 ### 1.7 Errors and limits
+Section one point seven develops research question and literature method with a the organisation note Leo Brandt can demo offline.
+
+Under section one point seven, the mentor expects research claims to carry owners and dates.
+
+Section one point seven treats from topic to question as testable only when evidence and ticket IDs are recorded.
+
 
 - Questions too broad to answer in a dissertation.
 - Searches that stop at the first page of a search engine.
@@ -140,9 +152,17 @@ You will (1) explain the main attack classes — evasion, poisoning and backdoor
 
 Each week one student presents a paper in fifteen minutes: claim, threat model, method, results, and three critical questions. The group discusses whether the evidence supports the claim. The aim is not to admire papers but to understand exactly what they show.
 
+Section two point one develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
+Under section two point one, the mentor expects ai claims to carry owners and dates.
+
+Section two point one treats the seminar format evasion as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Evasion
 
 Adversarial examples (Szegedy et al., arXiv:1312.6199) are inputs changed slightly to cause errors. FGSM (Goodfellow et al., arXiv:1412.6572) takes one step along the sign of the loss gradient; PGD (Madry et al., arXiv:1706.06083) iterates and projects back into the allowed perturbation set; adversarial training uses such examples during training. In text, "small" changes are harder to define: synonym swaps or character edits may change meaning. The toy lab shows how accuracy collapses as the budget grows.
+
+Section two point two develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
 
 ```python
 """Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
@@ -192,13 +212,21 @@ eps=1.00 accuracy=0.505
 
 Poisoning attacks control part of the training data. Availability poisoning degrades accuracy broadly; targeted and backdoor poisoning (Gu et al., arXiv:1708.06733) keep clean accuracy while a trigger causes chosen behaviour. For Harbourline, a malicious claims handler who can insert notes into the training set could teach the classifier that a phrase routes claims to fast-track approval. Defences include data provenance, filtering of outliers, and limiting who can contribute training data; none is complete.
 
+Section two point three develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
 ### 2.4 Privacy attacks
 
 Membership inference (Shokri et al., arXiv:1610.05820) decides whether a record was in training, using differences in model confidence or loss. Training-data extraction (Carlini et al., arXiv:2012.07805) recovers verbatim sequences from generative models. Differential privacy (Abadi et al., arXiv:1607.00133) bounds how much any one record can influence the model, reducing both risks at a utility cost. For an insurer, membership itself can be sensitive ("this person made a claim").
 
+Section two point four develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
 ### 2.5 Model extraction
 
 Model extraction (Tramèr et al., arXiv:1609.02943) builds a copy of a model from its API outputs. Rich outputs (full probability vectors) make it easier; rounding and returning only labels make it harder but not impossible. Extraction matters for intellectual property and because a stolen copy enables white-box attacks.
+
+Section two point five develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
+Under section two point five, the mentor expects ai claims to carry owners and dates.
 
 ```python
 """Lab X: model extraction of a toy linear scoring API by querying it.
@@ -232,6 +260,10 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 When an LLM processes untrusted text, that text may contain instructions (Greshake et al., arXiv:2302.12173). OWASP LLM 2025 ranks prompt injection first and lists related risks such as sensitive information disclosure, excessive agency and system prompt leakage. Harbourline's future plan — an assistant that reads claim e-mails and drafts responses — would inherit these risks.
 
+Section two point six develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
+Under section two point six, the mentor expects ai claims to carry owners and dates.
+
 ### 2.7 Worked example (synthetic Harbourline case)
 
 Leo presented Shokri et al. His three critical questions: (1) the shadow-model approach assumes the attacker can sample from a similar data distribution — is that realistic for insurance notes? (2) results were reported mostly as precision/accuracy; what is TPR at low FPR? (3) how much of the leakage is explained by overfitting? The group concluded that question (3) was directly relevant to his dissertation: if deduplication helps mainly by reducing overfitting, the "explanation" is generalisation, not deduplication per se — a competing explanation for Chapter 4.
@@ -240,7 +272,19 @@ Leo presented Shokri et al. His three critical questions: (1) the shadow-model a
 
 1. Present one paper using the seminar format. 2. For each attack class, write a one-line threat model for a system you know. 3. Map Harbourline's planned e-mail assistant to three OWASP LLM 2025 entries.
 
+Section two point eight develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
+Under section two point eight, the mentor expects ai claims to carry owners and dates.
+
+Section two point eight treats the seminar format evasion as testable only when evidence and ticket IDs are recorded.
+
 ### 2.9 Errors and limits
+Section two point nine develops ai and machine-learning security advanced with a the organisation note Leo Brandt can demo offline.
+
+Under section two point nine, the mentor expects ai claims to carry owners and dates.
+
+Section two point nine treats the seminar format evasion as testable only when evidence and ticket IDs are recorded.
+
 
 - Describing attacks without their threat model.
 - Assuming image-domain results transfer directly to text.
@@ -277,6 +321,8 @@ You will (1) choose a design (controlled experiment, observational study, case s
 
 Most master's projects in AI security are **controlled experiments**: you change one factor (deduplication on/off), hold others fixed, and measure outcomes. **Observational** studies analyse existing data without intervening (for example, logs of attempted prompt injections against a deployed assistant) and must worry about confounding. **Case studies** examine one system in depth and are useful when experiments are impossible, but they support weaker generalisation. Pick the strongest design you can run ethically and within time.
 
+Section three point one develops study design ethics and reproducibility with a the organisation note Leo Brandt can demo offline.
+
 ### 3.2 Variables and controls
 
 For Leo: the *independent variable* is training-set treatment (original, exact-deduplicated, near-deduplicated). *Dependent variables* are membership-inference TPR at 1% FPR, AUC, and classifier macro-F1. *Controlled variables* include model architecture, epochs, learning rate, random seeds and evaluation split. Randomise which records go into training versus held-out sets so that members and non-members come from the same distribution — otherwise an attack may detect distribution shift rather than membership, a known pitfall. Use several seeds and report variability. Estimate sample size from a pilot (Chapter 5).
@@ -288,6 +334,8 @@ When data relates to people, apply data-protection principles: lawful basis, pur
 ### 3.4 Reproducible by design
 
 Set up from day one: a version-controlled repository; pinned environment; configuration files rather than hard-coded settings; fixed seeds; a single command to run each experiment; logs written as machine-readable records; and a data card describing provenance and processing (Gebru et al., arXiv:1803.09010). The NeurIPS reproducibility programme (Pineau et al., arXiv:2003.12206) offers a checklist worth adopting. Reproducibility is far cheaper to build in than to retrofit.
+
+Section three point four develops study design ethics and reproducibility with a the organisation note Leo Brandt can demo offline.
 
 ### 3.5 Worked example (synthetic Harbourline case)
 
@@ -338,7 +386,21 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 1. Write your design with variables, controls and randomisation. 2. Draft an ethics and data-protection section. 3. Create the repository skeleton with configuration files and a seed policy.
 
+Section three point six develops study design ethics and reproducibility with a the organisation note Leo Brandt can demo offline.
+
+Under section three point six, the mentor expects study claims to carry owners and dates.
+
+Section three point six treats choosing design variables and as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, the organisation will not accept study work without a written trail.
+
 ### 3.7 Errors and limits
+Section three point seven develops study design ethics and reproducibility with a the organisation note Leo Brandt can demo offline.
+
+Under section three point seven, the mentor expects study claims to carry owners and dates.
+
+Section three point seven treats choosing design variables and as testable only when evidence and ticket IDs are recorded.
+
 
 - Members and non-members drawn from different distributions.
 - One seed per condition.
@@ -374,6 +436,8 @@ You will (1) list alternative explanations for an observed security effect; (2) 
 
 An observed effect — "deduplication lowered membership-inference advantage" — can have several causes. Deduplication might reduce memorisation of repeated records specifically; it might simply reduce effective training-set size and therefore change overfitting; it might change class balance; or the attack might be weaker on the new model for reasons unrelated to privacy. A dissertation that names and tests these alternatives is far stronger than one that reports the effect alone.
 
+Section four point one develops ai and machine-learning security competing with a the organisation note Leo Brandt can demo offline.
+
 ### 4.2 A catalogue of alternatives in AI security
 
 - **Generalisation vs. specific mechanism.** Privacy leakage correlates with the train–test gap. Compare treatments at matched generalisation gaps, or include a control that changes data size without deduplicating.
@@ -387,9 +451,13 @@ An observed effect — "deduplication lowered membership-inference advantage" �
 
 An *ablation* removes or varies one component to see its contribution. Leo's plan adds a fourth condition: *random removal* of the same number of records that deduplication would remove. If random removal gives the same privacy gain, the explanation is dataset size; if deduplication gives more, the duplicates matter. He also adds a control attack calibrated with reference models, which is known to be stronger at low FPR than a simple confidence threshold.
 
+Section four point three develops ai and machine-learning security competing with a the organisation note Leo Brandt can demo offline.
+
 ### 4.4 Reasoning about mechanisms with the labs
 
 The poisoning lab gives a clean contrast. Label flipping of up to 40% of one class barely moves a nearest-centroid model (0.965 → 0.945), because centroids average many points; a backdoor using a separate trigger feature reaches 98% attack success with 80 points while clean accuracy stays at 0.968. The *mechanism* — a new, otherwise unused feature direction — explains why clean metrics miss it. A competing explanation ("the model is just inaccurate") is ruled out by the unchanged clean accuracy.
+
+Section four point four develops ai and machine-learning security competing with a the organisation note Leo Brandt can demo offline.
 
 ```python
 """Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
@@ -451,7 +519,19 @@ In pilot data, deduplication reduced TPR at 1% FPR from 6.1% to 3.4%. Random rem
 
 1. List five competing explanations for your expected result. 2. Design one ablation and one control for each of the two most plausible. 3. Rewrite your expected conclusion at the evidence level you will have.
 
+Section four point six develops ai and machine-learning security competing with a the organisation note Leo Brandt can demo offline.
+
+Under section four point six, the mentor expects ai claims to carry owners and dates.
+
+Section four point six treats why competing explanations matter as testable only when evidence and ticket IDs are recorded.
+
 ### 4.7 Errors and limits
+Section four point seven develops ai and machine-learning security competing with a the organisation note Leo Brandt can demo offline.
+
+Under section four point seven, the mentor expects ai claims to carry owners and dates.
+
+Section four point seven treats why competing explanations matter as testable only when evidence and ticket IDs are recorded.
+
 
 - Reporting an effect without testing alternatives.
 - Ablations that change several things at once.
@@ -487,17 +567,27 @@ You will (1) write a dissertation proposal with question, background, design, an
 
 A master's proposal is typically 3,000–6,000 words. Sections: **question and motivation** (one paragraph each); **background** from your evidence matrix; **design** (Chapter 3) including competing explanations and ablations (Chapter 4); **analysis plan** with primary and secondary outcomes and the statistics you will use; **ethics and data protection**; **risks** (technical, data, schedule) with mitigations; **timeline** with milestones; and **expected contribution** stated modestly. The analysis plan is the most neglected part — write it now, before data, so later choices cannot be steered by results.
 
+Section five point one develops proposal and pilot with a the organisation note Leo Brandt can demo offline.
+
 ### 5.2 The pilot
 
 A pilot runs the full pipeline at small scale. Goals: confirm the code works end to end, measure run time, measure variability of the primary outcome, check that the attack and metrics behave sensibly (for example, the undefended model is attackable), and find surprises. Pilot results are not hypothesis tests; do not report them as findings, and keep the final test data out of the pilot.
+
+Section five point two develops proposal and pilot with a the organisation note Leo Brandt can demo offline.
 
 ### 5.3 Sample size and power
 
 For rates, the normal approximation n ≈ z² p(1−p)/h² gives the trials needed for a confidence-interval half-width h. For comparisons between conditions, power analysis asks how many repetitions you need to detect a difference d with probability (power) 0.8 at significance 0.05; for paired designs, the variance of the *differences* matters. With few seeds (typical in ML), report intervals over seeds and over evaluation items rather than relying on a single significance test.
 
+Section five point three develops proposal and pilot with a the organisation note Leo Brandt can demo offline.
+
 ### 5.4 Revising the plan
 
 Pilots usually change something: an attack too weak to separate conditions, an evaluation that takes too long, a metric with a floor effect (all conditions near zero). Record each change in a decision log with the reason. Supervisors and examiners respond well to a proposal that shows it learned from its pilot.
+
+Section five point four develops proposal and pilot with a the organisation note Leo Brandt can demo offline.
+
+Under section five point four, the mentor expects proposal claims to carry owners and dates.
 
 ### 5.5 Worked example (synthetic Harbourline case)
 
@@ -553,7 +643,23 @@ eps=1.00 accuracy=0.505
 
 1. Write your analysis plan with primary and secondary outcomes. 2. Run a pilot and fill a decision log. 3. Compute sample size for your primary outcome.
 
+Section five point six develops proposal and pilot with a the organisation note Leo Brandt can demo offline.
+
+Under section five point six, the mentor expects proposal claims to carry owners and dates.
+
+Section five point six treats the proposal the pilot as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, the organisation will not accept proposal work without a written trail.
+
 ### 5.7 Errors and limits
+Section five point seven develops proposal and pilot with a the organisation note Leo Brandt can demo offline.
+
+Under section five point seven, the mentor expects proposal claims to carry owners and dates.
+
+Section five point seven treats the proposal the pilot as testable only when evidence and ticket IDs are recorded.
+
+For section five point seven, the organisation will not accept proposal work without a written trail.
+
 
 - Proposals without an analysis plan.
 - Reporting pilot results as findings.
@@ -589,9 +695,15 @@ You will (1) run the main experiments exactly as planned and log deviations; (2)
 
 Freeze code at a tagged commit, lock the configuration files, and run conditions in an interleaved or randomised order so that time-dependent problems (a node slowing down, a library update) do not align with one condition. Each run writes a record: condition, seed, config hash, start and end time, metrics and paths to raw outputs. Keep a deviation log as in the pilot.
 
+Section six point one develops data collection and analysis with a the organisation note Leo Brandt can demo offline.
+
 ### 6.2 Data-quality checks
 
 Before computing anything, check: are all expected runs present? Do canary checks pass (the undefended model must be attackable; a model trained on shuffled labels should perform at chance)? Are there duplicates across splits? Are metric values within plausible ranges? These checks catch bugs that would otherwise become "findings".
+
+Section six point two develops data collection and analysis with a the organisation note Leo Brandt can demo offline.
+
+Under section six point two, the mentor expects data claims to carry owners and dates.
 
 ### 6.3 Primary analysis
 
@@ -642,15 +754,37 @@ The lab demonstrates the three tools. With 3 of 20 successes, the Wilson interva
 
 Every security improvement has costs: accuracy, latency, refusals of legitimate requests, compute, maintainability. Report them on the same items. A privacy defence that halves leakage but drops macro-F1 by 10 points is a different proposition from one that costs 1 point. Plot the trade-off (e.g., TPR at 1% FPR versus macro-F1) for all conditions.
 
+Section six point four develops data collection and analysis with a the organisation note Leo Brandt can demo offline.
+
+Under section six point four, the mentor expects data claims to carry owners and dates.
+
 ### 6.5 Worked example (synthetic Harbourline case)
 
 Leo's main results (synthetic, five seeds, 20,000 records): TPR at 1% FPR under the calibrated attack was 9.8% (original), 7.9% (random removal), 5.1% (exact dedup) and 4.2% (near dedup). The paired difference between near dedup and random removal was 3.7 points (bootstrap 95% CI 2.6–4.9). Macro-F1 fell from 0.912 to 0.905 under near dedup. Data-quality checks found one missing seed-4 run, rerun and logged. An exploratory analysis, labelled as such, showed leakage concentrated in records that had appeared three or more times.
+
+Section six point five develops data collection and analysis with a the organisation note Leo Brandt can demo offline.
 
 ### 6.6 Practice activities
 
 1. Write a data-quality checklist for your study and run it. 2. Produce the primary table with intervals. 3. Plot the security–utility trade-off.
 
+Section six point six develops data collection and analysis with a the organisation note Leo Brandt can demo offline.
+
+Under section six point six, the mentor expects data claims to carry owners and dates.
+
+Section six point six treats running the main study as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, the organisation will not accept data work without a written trail.
+
 ### 6.7 Errors and limits
+Section six point seven develops data collection and analysis with a the organisation note Leo Brandt can demo offline.
+
+Under section six point seven, the mentor expects data claims to carry owners and dates.
+
+Section six point seven treats running the main study as testable only when evidence and ticket IDs are recorded.
+
+For section six point seven, the organisation will not accept data work without a written trail.
+
 
 - Running all seeds of one condition before another.
 - Analysing before quality checks.
@@ -686,9 +820,15 @@ You will (1) structure a dissertation so every chapter serves the research quest
 
 A common structure: introduction (problem, question, contribution summary); background and related work (from your matrix); method (design, data, attacks, metrics, analysis plan); results (primary, secondary, exploratory clearly labelled); discussion (interpretation, competing explanations, implications); limitations; conclusion; references; appendices (artefacts, extra tables). Write the method so a peer could repeat it; write the results so a reader can find the answer to the research question in one table.
 
+Section seven point one develops dissertation writing and limitations with a the organisation note Leo Brandt can demo offline.
+
 ### 7.2 Findings versus interpretation
 
 Results state what was measured: "near deduplication reduced TPR at 1% FPR from 9.8% to 4.2%". Discussion interprets: "this suggests duplicated records drive much of the leakage, consistent with work on memorisation in language models". Keep them apart. In discussion, return to competing explanations and say which your ablations ruled out.
+
+Section seven point two develops dissertation writing and limitations with a the organisation note Leo Brandt can demo offline.
+
+Under section seven point two, the mentor expects dissertation claims to carry owners and dates.
 
 ### 7.3 Limitations by validity type
 
@@ -703,9 +843,19 @@ For each, say what you did and what remains. Limitations written this way are a 
 
 Describe attacks at the level needed for understanding and reproduction in research settings, cite the original papers, and avoid publishing operational detail that targets named live systems. Never include recovered personal data. If you found a vulnerability in a real product, follow coordinated disclosure before the dissertation is published. Label synthetic data and organisations as fiction throughout.
 
+Section seven point four develops dissertation writing and limitations with a the organisation note Leo Brandt can demo offline.
+
+Under section seven point four, the mentor expects dissertation claims to carry owners and dates.
+
 ### 7.5 Artefact appendix
 
 Include repository URL and commit, environment, commands to reproduce each table, data card for the synthetic generator, model card for any released model (Mitchell et al., arXiv:1810.03993), and hashes of key files. State what is not released and why.
+
+Section seven point five develops dissertation writing and limitations with a the organisation note Leo Brandt can demo offline.
+
+Under section seven point five, the mentor expects dissertation claims to carry owners and dates.
+
+Section seven point five treats structure findings versus interpretation as testable only when evidence and ticket IDs are recorded.
 
 ### 7.6 Worked example (synthetic Harbourline case)
 
@@ -745,7 +895,23 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 1. Write your limitations section by validity type. 2. Mark every sentence in your results chapter as finding or interpretation and move misplaced ones. 3. Draft the artefact appendix.
 
+Section seven point seven develops dissertation writing and limitations with a the organisation note Leo Brandt can demo offline.
+
+Under section seven point seven, the mentor expects dissertation claims to carry owners and dates.
+
+Section seven point seven treats structure findings versus interpretation as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, the organisation will not accept dissertation work without a written trail.
+
 ### 7.8 Errors and limits
+Section seven point eight develops dissertation writing and limitations with a the organisation note Leo Brandt can demo offline.
+
+Under section seven point eight, the mentor expects dissertation claims to carry owners and dates.
+
+Section seven point eight treats structure findings versus interpretation as testable only when evidence and ticket IDs are recorded.
+
+For section seven point eight, the organisation will not accept dissertation work without a written trail.
+
 
 - Results and discussion mixed.
 - Limitations that are generic ("more data needed").
@@ -781,17 +947,31 @@ You will (1) commission and use independent review of code and text before submi
 
 Ask a peer who did not work on the project to (a) reproduce one main table from your artefact appendix, (b) read the method and say what they could not repeat, and (c) read the abstract and say what they think you claim. Each reveals a different problem: hidden dependencies, missing method detail, and overclaiming. A short code review focusing on metric computation and data splits is worth the time; bugs there change conclusions.
 
+Section eight point one develops independent review and defense with a the organisation note Leo Brandt can demo offline.
+
 ### 8.2 The defence presentation
 
 Twenty to thirty minutes: problem and question; design and why; results with intervals and costs; competing explanations and what ruled them out; limitations; contribution and next steps. One slide should answer the research question in a sentence with a number and an interval.
+
+Section eight point two develops independent review and defense with a the organisation note Leo Brandt can demo offline.
+
+Under section eight point two, the mentor expects independent claims to carry owners and dates.
+
+Section eight point two treats independent review before submission as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Answering examiners
 
 Expect questions on design choices ("why synthetic data?"), threats to validity ("would this hold on real notes?"), statistics ("are five seeds enough?"), alternative explanations ("isn't this just overfitting?") and practice ("what should Harbourline do?"). Answer in three parts: direct answer, evidence, limit. When you do not know, say so and say how you would find out.
 
+Section eight point three develops independent review and defense with a the organisation note Leo Brandt can demo offline.
+
+Under section eight point three, the mentor expects independent claims to carry owners and dates.
+
 ### 8.4 Corrections and dissemination
 
 Examiners often require corrections. Make each change, list it in a correction table with page references, and return it promptly. Dissemination options include a workshop paper, a public repository with the synthetic generator, and a two-page practitioner summary that states the finding, the conditions and the recommended next step — mapped where relevant to frameworks the organisation uses, such as the NIST AI RMF *Measure* and *Manage* functions or its ISO/IEC 42001 risk-treatment process.
+
+Section eight point four develops independent review and defense with a the organisation note Leo Brandt can demo offline.
 
 ### 8.5 Worked example (synthetic Harbourline case)
 
@@ -835,7 +1015,23 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 1. Arrange a reproduction and abstract-reading review. 2. Build a defence deck with one answer slide. 3. Write the practitioner summary.
 
+Section eight point six develops independent review and defense with a the organisation note Leo Brandt can demo offline.
+
+Under section eight point six, the mentor expects independent claims to carry owners and dates.
+
+Section eight point six treats independent review before submission as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, the organisation will not accept independent work without a written trail.
+
 ### 8.7 Errors and limits
+Section eight point seven develops independent review and defense with a the organisation note Leo Brandt can demo offline.
+
+Under section eight point seven, the mentor expects independent claims to carry owners and dates.
+
+Section eight point seven treats independent review before submission as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, the organisation will not accept independent work without a written trail.
+
 
 - Submitting without anyone reproducing a result.
 - Answering questions defensively without evidence.
