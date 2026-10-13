@@ -53,9 +53,21 @@ Supply-chain research is full of tempting shortcuts: counting advisories, scrapi
 
 Numbers show how long exposure lasts; interviews with maintainers explain why. Yusuf plans a quantitative study of registry metadata and a qualitative study of 20 maintainers, following the interview-based approach of Wermke et al. (2022), who studied security and trust practices in open-source projects.
 
+Section one point three develops advanced research integrity and methods with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section one point three, Prof. Helen Okafor expects advanced claims to carry owners and dates.
+
+Section one point three treats the case why method as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Reliability of coding
 
 Deciding whether a project actually reaches the vulnerable code is a judgement. Two coders label each case and agreement is measured with Cohen's kappa, interpreted with the bands of Landis and Koch (1977).
+
+Section one point four develops advanced research integrity and methods with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section one point four, Prof. Helen Okafor expects advanced claims to carry owners and dates.
+
+Section one point four treats the case why method as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — coder agreement
 
@@ -79,9 +91,21 @@ observed agreement 0.90, chance 0.505, kappa 0.80
 
 On 20 synthetic advisories, the coders agree on 18 (0.90). Chance agreement is 0.505, so kappa is 0.80, "substantial" on the Landis–Koch scale, close to "almost perfect". The two disagreements become worked examples for a sharper codebook.
 
+Section one point five develops advanced research integrity and methods with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section one point five, Prof. Helen Okafor expects advanced claims to carry owners and dates.
+
+Section one point five treats the case why method as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Integrity
 
 Yusuf works only with public metadata and synthetic replicas; he never tests whether a vulnerability can be triggered in anyone's live system. Interviews have ethics approval, and quotations are anonymised. Findings about unpatched projects are reported in aggregate, so no individual maintainer is exposed.
+
+Section one point six develops advanced research integrity and methods with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section one point six, Prof. Helen Okafor expects advanced claims to carry owners and dates.
+
+Section one point six treats the case why method as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -123,25 +147,61 @@ You will (1) map the current research frontier in software supply chain security
 
 Ohm et al. (2020) reviewed real malicious packages and showed how attackers abuse install scripts, typosquatting and account takeover. Ladisa et al. (2023) built a taxonomy of attacks on open-source supply chains covering source, build, distribution and dependency stages, mapped to safeguards. Yusuf uses the taxonomy to state that his thesis concerns a defensive question about known vulnerabilities, not malicious code.
 
+Section two point one develops application and software supply chain with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section two point one, Prof. Helen Okafor expects application claims to carry owners and dates.
+
 ### 2.2 Ecosystem studies
 
 Zimmermann et al. (2019) showed that a few maintainer accounts in npm can reach a large share of packages, so risk concentrates. Decan et al. (2018) quantified vulnerability propagation. These studies motivate measuring whole dependency graphs, not single packages.
+
+Section two point two develops application and software supply chain with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section two point two, Prof. Helen Okafor expects application claims to carry owners and dates.
+
+Section two point two treats attack taxonomies ecosystem studies as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Integrity frameworks
 
 SLSA v1.0 (OpenSSF, 2023) defines build provenance levels; in-toto (Torres-Arias et al., 2019) records each supply-chain step; Sigstore (Newman et al., 2022) makes signing easy; reproducible builds (Lamb and Zacchiroli, 2022) let anyone verify a binary. Thompson's "Reflections on Trusting Trust" (1984) is the classic reminder that tools themselves can be subverted.
 
+Section two point three develops application and software supply chain with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section two point three, Prof. Helen Okafor expects application claims to carry owners and dates.
+
 ### 2.4 Process standards
 
 NIST SP 800-218, the SSDF (Souppaya et al., 2022), asks producers to respond to vulnerabilities in their components; it does not say how fast is achievable. That is a gap Yusuf's evidence can inform.
+
+Section two point four develops application and software supply chain with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section two point four, Prof. Helen Okafor expects application claims to carry owners and dates.
+
+Section two point four treats attack taxonomies ecosystem studies as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Prioritisation research
 
 EPSS (Jacobs et al., 2021) estimates the probability that a vulnerability will be exploited, which could weight exposure days by real risk.
 
+Section two point five develops application and software supply chain with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section two point five, Prof. Helen Okafor expects application claims to carry owners and dates.
+
+Section two point five treats attack taxonomies ecosystem studies as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Larchwood Foundation will not accept application work without a written trail.
+
 ### 2.6 The gap
 
 Little evidence compares exposure with and without update tooling while explaining the human reasons for lag. Yusuf's gap statement names both halves.
+
+Section two point six develops application and software supply chain with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section two point six, Prof. Helen Okafor expects application claims to carry owners and dates.
+
+Section two point six treats attack taxonomies ecosystem studies as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Larchwood Foundation will not accept application work without a written trail.
 
 ### Worked example
 
@@ -183,25 +243,65 @@ You will (1) write a contribution statement that is new, testable and useful; (2
 
 "This thesis provides the first matched comparison of vulnerable-version exposure between projects that do and do not use automated update tools in a package ecosystem, and explains residual lag through maintainer interviews, yielding evidence-based guidance for SSDF practice RV.2 (assess, prioritise and remediate vulnerabilities)."
 
+Section three point one develops original contribution proposal with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section three point one, Prof. Helen Okafor expects original claims to carry owners and dates.
+
+Section three point one treats contribution statement hypotheses sampling as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Hypotheses
 
 H1: projects using update bots have shorter median exposure. H2: among bot users, long exposure is explained by breaking-change fear, test gaps or pinned transitive dependencies. Each hypothesis states what result would count against it: H1 fails if the bootstrap interval for the difference includes zero.
+
+Section three point two develops original contribution proposal with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section three point two, Prof. Helen Okafor expects original claims to carry owners and dates.
+
+Section three point two treats contribution statement hypotheses sampling as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Sampling
 
 Projects depending directly on quillog before the fix, matched by size, age and activity, so that busy projects are not compared with abandoned ones. Abandoned projects (no commit for a year) are analysed separately.
 
+Section three point three develops original contribution proposal with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section three point three, Prof. Helen Okafor expects original claims to carry owners and dates.
+
+Section three point three treats contribution statement hypotheses sampling as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Data
 
 Registry metadata (versions, dates), manifests from public repositories, advisory records and bot configuration files. No code is executed and no system is probed.
+
+Section three point four develops original contribution proposal with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section three point four, Prof. Helen Okafor expects original claims to carry owners and dates.
+
+Section three point four treats contribution statement hypotheses sampling as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Larchwood Foundation will not accept original work without a written trail.
 
 ### 3.5 Threats to validity
 
 Selection: projects that adopt bots may already be careful. Measurement: a manifest change may not reach production. External: one ecosystem may not generalise. Each threat has a mitigation: matching, a sample check of release notes, and a replication in a second synthetic ecosystem.
 
+Section three point five develops original contribution proposal with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section three point five, Prof. Helen Okafor expects original claims to carry owners and dates.
+
+Section three point five treats contribution statement hypotheses sampling as testable only when evidence and ticket IDs are recorded.
+
 ### 3.6 Usefulness
 
 The Larchwood Foundation wants guidance it can give maintainers; Yusuf commits to a plain-language summary.
+
+Section three point six develops original contribution proposal with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section three point six, Prof. Helen Okafor expects original claims to carry owners and dates.
+
+Section three point six treats contribution statement hypotheses sampling as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Larchwood Foundation will not accept original work without a written trail.
 
 ### Feasibility
 
@@ -246,9 +346,23 @@ You will (1) replicate a published measurement before extending it; (2) run a sm
 
 Before claiming anything new, Yusuf re-runs the style of measurement used by Decan et al. (2018) on a synthetic replica of their setting, checking that his scripts reproduce the expected pattern: most vulnerable packages are fixed upstream quickly, but dependents lag.
 
+Section four point one develops baseline replication and pilot with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section four point one, Prof. Helen Okafor expects baseline claims to carry owners and dates.
+
+Section four point one treats why replicate pilot sample as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Pilot sample
 
 Twelve projects that depended on quillog, six with an update bot and six without.
+
+Section four point two develops baseline replication and pilot with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section four point two, Prof. Helen Okafor expects baseline claims to carry owners and dates.
+
+Section four point two treats why replicate pilot sample as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Larchwood Foundation will not accept baseline work without a written trail.
 
 ### Lab — Lab — exposure days
 
@@ -274,17 +388,45 @@ bot=False n=6 median=38.0 days  max=160  within 7 days=0/6
 
 Bot users: median 4.5 days, maximum 40, five of six adopted within a week. Non-users: median 38 days, maximum 160, none within a week. Project p04 is the bot user with 40 days.
 
+Section four point three develops baseline replication and pilot with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section four point three, Prof. Helen Okafor expects baseline claims to carry owners and dates.
+
+Section four point three treats why replicate pilot sample as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Investigating outliers
 
 p04's bot opened a pull request on day 1, but tests failed because quillog 2.4.1 changed a configuration default; the maintainer fixed tests on day 40. This is exactly the kind of lag H2 predicts.
+
+Section four point four develops baseline replication and pilot with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section four point four, Prof. Helen Okafor expects baseline claims to carry owners and dates.
+
+Section four point four treats why replicate pilot sample as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Protocol revisions
 
 The pilot shows that "adoption" must allow range specifiers: a manifest saying ">=2.4.0" already permits the fix if the lockfile is updated. Yusuf adds lockfiles to the data.
 
+Section four point five develops baseline replication and pilot with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section four point five, Prof. Helen Okafor expects baseline claims to carry owners and dates.
+
+Section four point five treats why replicate pilot sample as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Larchwood Foundation will not accept baseline work without a written trail.
+
 ### 4.6 Reporting the pilot
 
 The pilot is reported as a feasibility check, not evidence for H1; six projects per group cannot support strong claims.
+
+Section four point six develops baseline replication and pilot with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section four point six, Prof. Helen Okafor expects baseline claims to carry owners and dates.
+
+Section four point six treats why replicate pilot sample as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Larchwood Foundation will not accept baseline work without a written trail.
 
 ### Tooling checks
 
@@ -329,6 +471,14 @@ You will (1) run the main quantitative study; (2) estimate uncertainty with the 
 
 The main study covers 340 matched project pairs across three vulnerable packages. The analysis plan, pre-registered, uses the difference in median exposure with a bootstrap interval.
 
+Section five point one develops main study and independent validation with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section five point one, Prof. Helen Okafor expects main claims to carry owners and dates.
+
+Section five point one treats main study lab result as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Larchwood Foundation will not accept main work without a written trail.
+
 ### Lab — Lab — bootstrap interval
 
 ```python
@@ -355,21 +505,57 @@ observed difference: 33.5
 
 On the pilot data, the observed difference is 33.5 days (38 minus 4.5) and the 95% bootstrap interval runs from 8.0 to 118.5 days (5,000 resamples, seed 7). The interval excludes zero but is very wide; small samples give imprecise estimates, which is why the main study is larger.
 
+Section five point two develops main study and independent validation with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section five point two, Prof. Helen Okafor expects main claims to carry owners and dates.
+
+Section five point two treats main study lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 5.3 Main results
 
 In the synthetic main study, the median difference is 21 days with a 95% interval of 15 to 28 days. H1 is supported.
+
+Section five point three develops main study and independent validation with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section five point three, Prof. Helen Okafor expects main claims to carry owners and dates.
+
+Section five point three treats main study lab result as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Larchwood Foundation will not accept main work without a written trail.
 
 ### 5.4 Independent validation
 
 A second analyst, given only the protocol, recomputes exposure for a random 10% of pairs; 33 of 34 match exactly, the other differs by one day due to a time-zone boundary. The protocol is clarified to use UTC dates.
 
+Section five point four develops main study and independent validation with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section five point four, Prof. Helen Okafor expects main claims to carry owners and dates.
+
+Section five point four treats main study lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Interviews
 
 Twenty maintainers explain lag: test failures on bot updates (9), fear of breaking changes without tests (6), pinned transitive dependencies (3), no time (2). Coded with kappa 0.78.
 
+Section five point five develops main study and independent validation with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section five point five, Prof. Helen Okafor expects main claims to carry owners and dates.
+
+Section five point five treats main study lab result as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Larchwood Foundation will not accept main work without a written trail.
+
 ### 5.6 Integration
 
 Projects with long exposure despite bots mostly had weak tests, matching the interview themes.
+
+Section five point six develops main study and independent validation with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section five point six, Prof. Helen Okafor expects main claims to carry owners and dates.
+
+Section five point six treats main study lab result as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Larchwood Foundation will not accept main work without a written trail.
 
 ### Reporting standards
 
@@ -414,25 +600,63 @@ You will (1) invite structured critique of a supply-chain study; (2) separate fa
 
 Yusuf submits a draft paper to a workshop and shares it with two practitioners at the Larchwood Foundation. He asks each reviewer to say what would make them reject the main claim.
 
+Section six point one develops peer critique and revision with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section six point one, Prof. Helen Okafor expects peer claims to carry owners and dates.
+
+Section six point one treats seeking critique the critiques as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 The critiques
 
 Reviewer 1: projects that adopt bots may already be more security-aware, so the bot may not cause the difference. Reviewer 2: exposure ends at the manifest change, but users may run old releases for months. Practitioner: the guidance should say what to do when tests fail, not just "use a bot".
+
+Section six point two develops peer critique and revision with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section six point two, Prof. Helen Okafor expects peer claims to carry owners and dates.
 
 ### 6.3 Fatal or fixable
 
 None is fatal. Reviewer 1's point limits the causal claim; Yusuf adds a within-project comparison of exposure before and after projects adopted a bot, which shows a smaller but still clear reduction (12 days). Reviewer 2's point defines the scope: the thesis measures producer-side exposure.
 
+Section six point three develops peer critique and revision with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section six point three, Prof. Helen Okafor expects peer claims to carry owners and dates.
+
+Section six point three treats seeking critique the critiques as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Revising claims
 
 The headline changes from "bots cut exposure by 21 days" to "projects using bots had 21 days shorter median exposure; within projects, adopting a bot was followed by a 12-day reduction".
+
+Section six point four develops peer critique and revision with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section six point four, Prof. Helen Okafor expects peer claims to carry owners and dates.
+
+Section six point four treats seeking critique the critiques as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Change log
 
 Every revision is listed with the reviewer comment that prompted it and where the text changed.
 
+Section six point five develops peer critique and revision with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section six point five, Prof. Helen Okafor expects peer claims to carry owners and dates.
+
+Section six point five treats seeking critique the critiques as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Larchwood Foundation will not accept peer work without a written trail.
+
 ### 6.6 Practitioner guidance
 
 The guidance adds: invest in tests for dependency updates; treat a failing bot pull request as a security task with an owner, consistent with SSDF RV.2.
+
+Section six point six develops peer critique and revision with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section six point six, Prof. Helen Okafor expects peer claims to carry owners and dates.
+
+Section six point six treats seeking critique the critiques as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Larchwood Foundation will not accept peer work without a written trail.
 
 ### Responding to reviewers
 
@@ -477,9 +701,23 @@ You will (1) synthesise studies into a coherent thesis argument; (2) build a rep
 
 Chapter by chapter: exposure is measurable (pilot), lower with bots (main study), partly causal (within-project), and limited by tests (interviews). The final chapter links these to SSDF RV.2 and SLSA's emphasis on trustworthy, automated build and update processes.
 
+Section seven point one develops thesis synthesis and reproducibility archive with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section seven point one, Prof. Helen Okafor expects thesis claims to carry owners and dates.
+
+Section seven point one treats thesis argument archive contents as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Archive contents
 
 Scripts, synthetic replicas, the codebook, the pre-registration, a README describing how to run everything, and a manifest of SHA-256 hashes for every file.
+
+Section seven point two develops thesis synthesis and reproducibility archive with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section seven point two, Prof. Helen Okafor expects thesis claims to carry owners and dates.
+
+Section seven point two treats thesis argument archive contents as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Larchwood Foundation will not accept thesis work without a written trail.
 
 ### Lab — Lab — manifest check
 
@@ -505,17 +743,47 @@ codes.csv     MISMATCH
 
 exposure.csv matches its manifest hash; codes.csv does not. The manifest recorded coder B's first label as "N", but the file now says "R", because a late correction was made without updating the manifest.
 
+Section seven point three develops thesis synthesis and reproducibility archive with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section seven point three, Prof. Helen Okafor expects thesis claims to carry owners and dates.
+
+Section seven point three treats thesis argument archive contents as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Fixing the archive
 
 Yusuf records the correction in the change log, regenerates the manifest and tags a new archive version. Silent edits break trust even when they are right.
+
+Section seven point four develops thesis synthesis and reproducibility archive with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section seven point four, Prof. Helen Okafor expects thesis claims to carry owners and dates.
+
+Section seven point four treats thesis argument archive contents as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Larchwood Foundation will not accept thesis work without a written trail.
 
 ### 7.5 What cannot be shared
 
 Interview transcripts stay private; the archive holds the codebook and coded counts only.
 
+Section seven point five develops thesis synthesis and reproducibility archive with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section seven point five, Prof. Helen Okafor expects thesis claims to carry owners and dates.
+
+Section seven point five treats thesis argument archive contents as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Larchwood Foundation will not accept thesis work without a written trail.
+
 ### 7.6 Reproducibility check
 
 A colleague runs the archive on a clean machine from the README alone and reproduces every table.
+
+Section seven point six develops thesis synthesis and reproducibility archive with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section seven point six, Prof. Helen Okafor expects thesis claims to carry owners and dates.
+
+Section seven point six treats thesis argument archive contents as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Larchwood Foundation will not accept thesis work without a written trail.
 
 ### Licences
 
@@ -564,25 +832,69 @@ You will (1) prepare a doctoral defense on supply-chain evidence; (2) answer har
 
 Forty minutes: question, gap, methods, results, limits, contributions. Yusuf rehearses with three colleagues playing sceptical examiners.
 
+Section eight point one develops defense and publication plan with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section eight point one, Prof. Helen Okafor expects defense claims to carry owners and dates.
+
+Section eight point one treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Larchwood Foundation will not accept defense work without a written trail.
+
 ### 8.2 Hard questions
 
 "Does your result hold outside larch?" "Does a shorter manifest exposure matter if users never upgrade?" "Could bots themselves be a supply-chain risk?" For the last, he cites Ladisa et al. (2023), whose taxonomy includes compromise of tools in the dependency path, and notes that his study did not measure that risk.
+
+Section eight point two develops defense and publication plan with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section eight point two, Prof. Helen Okafor expects defense claims to carry owners and dates.
 
 ### 8.3 Honest answers
 
 "I don't know, but here is how I would find out" is better than overclaiming.
 
+Section eight point three develops defense and publication plan with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section eight point three, Prof. Helen Okafor expects defense claims to carry owners and dates.
+
+Section eight point three treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Larchwood Foundation will not accept defense work without a written trail.
+
 ### 8.4 Publications
 
 Paper 1: matched comparison. Paper 2: interview study. Practitioner report for the Larchwood Foundation. Each is mapped to thesis chapters.
+
+Section eight point four develops defense and publication plan with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section eight point four, Prof. Helen Okafor expects defense claims to carry owners and dates.
+
+Section eight point four treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Larchwood Foundation will not accept defense work without a written trail.
 
 ### 8.5 Incidental findings
 
 During data collection Yusuf noticed six synthetic projects still pinned to a vulnerable quillog version. Under the study's disclosure plan, the foundation's security team contacts the maintainers privately; the thesis reports only aggregate counts.
 
+Section eight point five develops defense and publication plan with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section eight point five, Prof. Helen Okafor expects defense claims to carry owners and dates.
+
+Section eight point five treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
+
 ### 8.6 After the defense
 
 Archive deposited, data access statement final, post-doctoral plan drafted.
+
+Section eight point six develops defense and publication plan with a Larchwood Foundation note Yusuf Demir can demo offline.
+
+Under section eight point six, Prof. Helen Okafor expects defense claims to carry owners and dates.
+
+Section eight point six treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Larchwood Foundation will not accept defense work without a written trail.
+
+Section eight point six fails closed if defense evidence is missing rather than guessing.
 
 ### Practitioner briefing
 
