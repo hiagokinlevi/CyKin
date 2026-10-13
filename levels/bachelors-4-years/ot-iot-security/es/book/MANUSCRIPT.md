@@ -410,10 +410,6 @@ Para PLC-H, que no puede autenticar a los clientes Modbus, este es todo el argum
 
 La trama 2 escribe el valor 300 en el registro 100; la trama 3 es una escritura de varios registros que empieza en el 200. Observe que el decodificador imprime la dirección inicial y el primer argumento, pero no sabe qué *significa* el registro 100: eso proviene del mapa de registros del PLC, que es documentación de la planta, no del protocolo. En el mapa de registros de LDHP, el registro 100 contiene el punto de consigna de la temperatura de impulsión en décimas de grado, así que el valor 300 significa 30,0 °C, muy por debajo del punto de funcionamiento de 90 °C. Esa es la diferencia entre «escribir un único registro» y «posible pérdida de calefacción». La nota de Maya añade una columna del mapa de registros precisamente por esta razón, y marca la escritura de varios registros de la trama 3 en el 200 como no explicada hasta que el mapa diga qué controlan los registros a partir del 200.
 
-### Ejemplo resuelto (LDHP sintética)
-
-En el mapa de registros de LDHP, el registro de retención 100 es el punto de consigna de la temperatura de impulsión en décimas de grado. Por tanto, la trama 2 fija 30,0 °C, muy por debajo del punto de funcionamiento de 90 °C. El decodificador de protocolos por sí solo habría informado «write single register, addr 100, value 300»; solo el mapa de registros lo convierte en «punto de consigna a 30 °C, posible pérdida de calefacción». Maya añade una columna de consulta del mapa de registros a su cuaderno de análisis precisamente por esta razón.
-
 > **Caso sintético — Lakeside District Heating Plant.** Las tramas del laboratorio se compusieron a mano; no se contactó con ningún dispositivo ni red.
 
 ### Errores y límites
@@ -1669,11 +1665,7 @@ LDHP tiene una ventana de mantenimiento mensual de cuatro horas. Los parches se 
 
 ### 29.4 Ejercicios de mesa
 
-Un ejercicio de mesa ensaya un escenario sobre el papel: a quién se llama, qué se decide, qué información falta. Revela carencias sin poner en riesgo el proceso. El ejercicio de mesa de LDHP partió de una alerta a las 02:10 de una noche de enero: una escritura Modbus en el registro 100 de PLC-H desde 10.20.4.17, en la VLAN de oficina. El analista llamó al jefe de turno a las 02:12, el operador restableció el punto de consigna a 90 °C a las 02:15 y el jefe de turno aprobó bloquear la dirección a las 02:18. La carencia que encontró era corriente e importante: nadie tenía el teléfono nocturno del administrador del cortafuegos. Un incidente real habría encontrado la misma carencia con menos tiempo para corregirla.
-
-### Ejemplo resuelto (LDHP sintética)
-
-Escenario del ejercicio de mesa: a las 02:10 de una noche de enero, el monitor alerta «Modbus write to PLC-H register 100 from 10.20.4.17 (office VLAN)». Recorrido: el analista llama al jefe de turno (02:12); el operador confirma que el punto de consigna de impulsión cambió a 30 °C y restablece 90 °C (02:15); el jefe de turno aprueba bloquear 10.20.4.17 en el cortafuegos (02:18); comienza la recogida de evidencia. Carencia encontrada: nadie tenía el teléfono nocturno del administrador del cortafuegos.
+Un ejercicio de mesa ensaya un escenario sobre el papel: a quién se llama, qué se decide, qué información falta. Revela carencias sin poner en riesgo el proceso. El ejercicio de mesa de LDHP partió de una alerta a las 02:10 de una noche de enero: una escritura Modbus en el registro 100 de PLC-H desde 10.20.4.17, en la VLAN de oficina. El analista llamó al jefe de turno a las 02:12, el operador confirmó que el punto de consigna de impulsión había cambiado a 30 °C y restableció 90 °C a las 02:15, y el jefe de turno aprobó bloquear la dirección a las 02:18, tras lo cual comenzó la recogida de evidencia. La carencia que encontró era corriente e importante: nadie tenía el teléfono nocturno del administrador del cortafuegos. Un incidente real habría encontrado la misma carencia con menos tiempo para corregirla.
 
 > **Caso sintético — Lakeside District Heating Plant.** Las horas, las direcciones y la carencia son inventadas.
 

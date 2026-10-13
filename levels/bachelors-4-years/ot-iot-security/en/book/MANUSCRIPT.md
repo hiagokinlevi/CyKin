@@ -434,10 +434,6 @@ Frame 2 writes value 300 to register 100; frame 3 is a multiple-register write s
 
 In LDHP's register map, register 100 holds the supply temperature setpoint in tenths of a degree, so value 300 means 30.0 °C, far below the 90 °C operating point. That is the difference between "write single register" and "potential loss of heat". Maya's note adds a register-map column for exactly this reason, and marks frame 3's multiple-register write at 200 as unexplained until the map says what registers 200 onward control.
 
-### Worked example (synthetic LDHP)
-
-In LDHP's register map, holding register 100 is the supply temperature setpoint in tenths of a degree. Frame 2 therefore sets 30.0 °C — far below the 90 °C operating point. The protocol decoder alone would have reported "write single register, addr 100, value 300"; only the register map converts that into "setpoint to 30 °C, potential loss of heat". Maya adds a register-map lookup column to her analysis notebook for exactly this reason.
-
 > **Synthetic case — Lakeside District Heating Plant.** The frames in the lab were composed by hand; no device or network was contacted.
 
 ### Errors and limits
@@ -1817,11 +1813,7 @@ For a month with a PLC-H firmware fix, an HMI-1 Windows update and a gateway pat
 
 A tabletop rehearses a scenario on paper: who is called, what is decided, what information is missing. It reveals gaps without risking the process.
 
-LDHP's tabletop started from an alert at 02:10 on a January night: a Modbus write to PLC-H register 100 by 10.20.4.17 on the office VLAN. The analyst called the shift lead at 02:12, the operator restored the setpoint to 90 °C at 02:15 and the shift lead approved blocking the address at 02:18. The gap it found was ordinary and important: nobody had the firewall administrator's night phone number. A live incident would have found the same gap with less time to fix it.
-
-### Worked example (synthetic LDHP)
-
-Tabletop scenario: at 02:10 on a January night the monitor alerts "Modbus write to PLC-H register 100 from 10.20.4.17 (office VLAN)". Walkthrough: analyst calls shift lead (02:12); operator confirms supply setpoint changed to 30 °C and restores 90 °C (02:15); shift lead approves blocking 10.20.4.17 at the firewall (02:18); evidence collection begins. Gap found: nobody had the firewall administrator's night phone number.
+LDHP's tabletop started from an alert at 02:10 on a January night: a Modbus write to PLC-H register 100 by 10.20.4.17 on the office VLAN. The analyst called the shift lead at 02:12, the operator confirmed the setpoint had been changed to 30 °C and restored 90 °C at 02:15, and the shift lead approved blocking the address at 02:18, after which evidence collection began. The gap it found was ordinary and important: nobody had the firewall administrator's night phone number. A live incident would have found the same gap with less time to fix it.
 
 > **Synthetic case — Lakeside District Heating Plant.** Times, addresses and the gap are invented.
 
