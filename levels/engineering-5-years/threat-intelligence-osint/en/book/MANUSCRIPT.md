@@ -1326,7 +1326,7 @@ Kofi keeps a register of partner credentials with their expiry dates and owners.
 
 A signature over an exported bundle lets the recipient verify that it came from Lantern and was not altered. Hash first (SHA-256), sign the hash with a private key kept in hardware, publish the public key through a trusted channel.
 
-The recipient checks the signature with the published key before loading the bundle. If the check fails, the bundle is set aside and both sides are told, because either the content changed in transit or the wrong key is in use. Kofi's export job signs automatically, and the public key's fingerprint is read aloud on a call with each new partner.
+If verification fails, the bundle is set aside and both sides are told, because either the content changed in transit or the wrong key is in use. Kofi's export job signs automatically, and the public key's fingerprint is read aloud on a call with each new partner.
 
 ### 19.3 Key life cycle
 
@@ -1480,13 +1480,13 @@ Kofi keeps the table in a spreadsheet generated from tags in the requirements do
 
 ### Practice note — Requirement reviews
 
-Requirements are reviewed with the stakeholders who own them. The SOC lead signs off on timeliness, the privacy officer on minimisation, the OT engineer on approval gates. A requirement without an owner is a candidate for deletion. Kofi also records which PIR each requirement serves, so the quarterly PIR review can see immediately which parts of Lantern would lose their justification if a question were retired. That link keeps the platform from growing features nobody asked for.
+Requirements are reviewed with the stakeholders who own them. The SOC lead signs off on timeliness, the privacy officer on minimisation, the OT engineer on approval gates. A requirement without an owner is a candidate for deletion.
 
 ### Worked example
 
 Kofi converts the OT vendor PIR into four requirements and writes a test for each, such as "Given a synthetic advisory naming vendor V, Lantern raises an alert to the OT channel within 15 minutes."
 
-> **Synthetic case.** The PIR and tests are invented.
+> **Synthetic case.** Vendor V, its advisory and the 15-minute timing are invented.
 
 ### Errors and limits
 
@@ -1562,7 +1562,7 @@ STIX is expressive; supporting everything adds complexity without value. Confide
 
 - **EX064 — Indicator extras.** Which three properties must an indicator have beyond the common ones? *Rubric:* 3 = pattern, pattern_type, valid_from; 2 = two; 1 = one; 0 = none.
 - **EX065 — Unsupported type.** How should Lantern treat a STIX type it does not support? *Rubric:* 3 = store opaquely + flag for review, not drop; 2 = flag; 1 = drop; 0 = none.
-- **EX066 — State machine.** List the indicator states and one transition trigger. *Rubric:* 3 = new/active/decayed/retired + valid trigger (decay below floor, re-sighting); 2 = states only; 1 = partial; 0 = none.
+- **EX066 — State machine.** List the indicator states and one transition trigger. *Rubric:* 3 = new/active/decayed/retired + valid trigger (no sightings over time, retirement below floor, re-sighting); 2 = states only; 1 = partial; 0 = none.
 
 ### Synthesis
 
@@ -3738,7 +3738,7 @@ Model answers for EX001–EX150. Brightwater Energy Networks, Lantern, Kofi Mens
 
 **EX065.** Store it opaquely with provenance and flag it for review, so nothing is silently lost.
 
-**EX066.** new → active → decayed → retired. Example trigger: active → decayed when confidence falls below the floor; decayed → active on a new sighting.
+**EX066.** new → active → decayed → retired. Example triggers: active → decayed as time passes without sightings; decayed → retired when confidence falls below the floor; decayed → active on a new sighting.
 
 **EX067.** 7 × 3 × 5 = 105.
 
