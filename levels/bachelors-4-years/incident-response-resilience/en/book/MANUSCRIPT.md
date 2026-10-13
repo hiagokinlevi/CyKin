@@ -1810,6 +1810,8 @@ You will be able to (1) describe how incident response developed as a discipline
 
 Organized incident response is usually dated to the Morris worm of November 1988, after which DARPA funded the Computer Emergency Response Team Coordination Center (CERT/CC) at Carnegie Mellon University. Many national and organizational CSIRTs followed, and FIRST (Forum of Incident Response and Security Teams) was formed in 1990 to connect them. Early guidance treated incidents as technical events handled by specialists. Over time the scope widened: legal, privacy, communications, business continuity and supply chains became part of response.
 
+For a student, the history explains why practice still varies so much between teams.
+
 ### 19.2 Lifecycle models
 
 NIST SP 800-61 Revision 2 (2012) described a four-phase lifecycle: preparation; detection and analysis; containment, eradication and recovery; post-incident activity. It became widely taught. SP 800-61 Revision 3 (April 2025) replaced this framing with recommendations organized around the NIST Cybersecurity Framework 2.0 functions, emphasizing that incident response is part of overall cybersecurity risk management — Govern, Identify and Protect activities prepare for incidents; Detect, Respond and Recover handle them; and lessons feed back into all. ISO/IEC 27035 provides an international series on incident management with a similar plan-detect-assess-respond-learn structure. The FIRST CSIRT Services Framework describes the services a team may provide rather than a sequence of phases.
@@ -1818,13 +1820,19 @@ NIST SP 800-61 Revision 2 (2012) described a four-phase lifecycle: preparation; 
 
 Lifecycle models assume, often implicitly: that an incident is a bounded event with a start and end; that a team has authority to act; that evidence is available; and that phases proceed roughly in order. In practice, phases overlap (containment begins before analysis ends), incidents merge and split, authority is shared with system owners and providers, and evidence is incomplete. A model is a teaching and coordination tool, not a description of reality.
 
+Harbourline shows the gap: containment of the vendor-hosted booking platform is not an action its own team can take, yet a phase model draws it as one.
+
 ### 19.4 Resilience
 
 **Resilience** shifts the question from "how do we handle the incident?" to "how does the organization keep delivering essential functions despite incidents?". It emphasizes anticipation, withstanding, recovery and adaptation (terms used in NIST's cyber-resiliency engineering guidance, SP 800-160 Vol. 2). A resilient organization may tolerate an unsolved incident for a while because it can operate in a degraded mode; a response-focused organization may solve the incident quickly yet suffer an outage because nothing was designed to degrade gracefully.
 
+For Harbourline, a resilience question would be whether clinics can keep booking patients on paper while the platform is down.
+
 ### 19.5 Coordination theory
 
 Response is a coordination problem among people with different information and authority. Ideas from emergency management — notably the Incident Command System's roles of command, operations, planning, logistics and finance — have been adapted to cyber incidents. They work best when roles are clear and rehearsed; they struggle when the "incident" is ambiguous for days.
+
+For a small organization like Harbourline, with a two-person IT team, the command roles cannot each have a dedicated person; one individual may hold several. What still matters is that everyone knows who decides, who acts and who talks to the vendor and the managed detection service, and that someone takes over when the decider is unavailable.
 
 ### 19.6 Worked example (synthetic): fitting models to Harbourline
 
@@ -1844,6 +1852,10 @@ Where each may fail: the phase model fails at the vendor boundary; the CSF frami
 - Citing Rev. 2 phases as current NIST guidance.
 - Equating resilience with backups.
 - Historical claims require sources; this chapter's history is brief and should be checked against CERT/CC and FIRST accounts.
+
+- Applying a model designed for a large team unchanged to a small organization like Harbourline, where one person may hold several roles.
+- Ignoring suppliers in the model, when much of the containment may rest with a vendor.
+- Treating resilience and response as competitors rather than complementary questions.
 
 ### Exercises — chapter 19
 
@@ -1883,17 +1895,25 @@ A single case invites storytelling; two or more cases, compared on the same dime
 
 Choose cases that differ on the factor you want to understand and are similar enough elsewhere to compare. State selection criteria; acknowledge that public cases are biased toward large, disclosed, often US-based events.
 
+The two CSRB cases differ in the factor of interest, who could act. With Log4j every organization running the library had to find and fix it; with Exchange Online most of the remedy lay with the provider. Both concern widely used technology and both were reviewed by the same board with similar methods, which makes the comparison fairer. A selection that differed in many factors at once would leave you unable to say which difference mattered.
+
 ### 20.3 Chronology and source quality
 
 Build a timeline with each entry sourced. Grade sources: primary official reviews and vendor post-incident reports (high, but check for interest); regulatory filings (high for facts they must state); reputable journalism (moderate, check for corroboration); social media (low unless primary). Record uncertainty in dates.
+
+For the CSRB cases, the board's own reports are the primary sources; a vendor's later statement about the same events is also primary but comes from an interested party, so grade it accordingly. When two sources give different dates, record both with their sources rather than choosing one silently.
 
 ### 20.4 Facts versus teaching inference
 
 Mark each statement as *sourced fact* (with citation) or *inference* (yours). Synthetic additions for teaching must be clearly labelled.
 
+In the worked comparison, the descriptions of Log4j and Exchange Online are summaries of sourced facts, and the paragraph about Harbourline is marked as fiction and teaching inference. Keeping these apart lets a reader verify the real cases against the reports without being misled by the synthetic extension. If a reader cannot tell which sentences came from the reports and which from the author, the case study has failed as evidence, however good its lessons. Put the label next to the sentence, not only in a heading.
+
 ### 20.5 Transferability
 
 A lesson transfers when the mechanism behind it exists in the target setting. "Keep detailed audit logging available" transfers broadly; "rotate a specific cloud provider's consumer signing keys" does not.
+
+Ask of each lesson: what mechanism made it matter, and does that mechanism exist here? Harbourline does not run its own identity provider for the booking platform, so lessons about key management at a provider apply only through its vendor contract. The inventory lesson from Log4j applies directly, because Harbourline, like anyone, needs to know which components its systems depend on.
 
 ### 20.6 Worked example: two public cases and a synthetic organization
 
@@ -1919,6 +1939,10 @@ Synthetic extension (*fiction, labelled*): Harbourline's vendor-hosted booking p
 - Mixing synthetic details into a "real" timeline without labels.
 - Hindsight: judging decisions using information that was not available at the time (Chapter 28).
 - Transferring a lesson whose mechanism does not exist in the target setting.
+
+- Choosing cases because they are famous rather than because they vary on the factor under study.
+- Treating a review board's recommendations as findings about your own organization.
+- Summarizing a case so briefly that its uncertainties disappear, leaving only a confident moral that the report itself does not support.
 
 ### Exercises — chapter 20
 
@@ -1954,21 +1978,31 @@ You will be able to (1) model an incident's decision flow as a coordination grap
 
 Technical evidence does not act; people decide. A socio-technical view treats the incident as a system of people, roles, tools and rules whose interactions produce the outcome. Many response failures are coordination failures: the right information existed but did not reach the person who could act, or the person who could act lacked authority.
 
+In the pharmacy-server case, the evidence at 14:05 was enough to request isolation; the delay came from who could decide and when they were available.  Reading the case only as a technical problem would miss that the fix lies in roles and options.
+
 ### 21.2 The coordination graph
 
 Draw vertices for roles (SOC analyst, incident lead, service owner, IT operations, communications, legal) and directed edges for information flows and approvals, annotated with typical delays. The **critical path** to a decision is the longest chain of required approvals and information transfers; reducing it speeds response more than working faster at any single node.
+
+In the pharmacy-server example, drawing the graph shows the critical path of 87 minutes and that 70 of them were spent waiting for the incident lead. Analysing faster in the SOC would not have shortened that path; a deputy who could decide would.
 
 ### 21.3 Role ambiguity
 
 When it is unclear who decides, decisions stall or are made twice. Typical signals: "I thought you were going to…", parallel conversations in different channels, duplicated actions. A RACI-style assignment (Responsible, Accountable, Consulted, Informed) for key decisions — containment of production systems, external communication, law-enforcement contact — reduces ambiguity, but only if rehearsed.
 
+In the pharmacy-server case, the SOC, the service owner and the incident lead each assumed someone else would break the deadlock; no deputy existed. The proposed change names a deputy and a 15-minute limit, which removes the question of who decides rather than asking people to try harder.
+
 ### 21.4 Incentives
 
 People optimize what they are measured on. A service owner measured on uptime resists containment that causes downtime; a SOC measured on ticket closure may close cases early. These are rational responses to incentives, not character flaws. Good designs make the trade-off explicit and give the decision to a role accountable for the whole risk.
 
+The pharmacy service owner was measured on order throughput, so refusing isolation during afternoon orders was rational.  The SOC, measured on detection, pushed for isolation. Both positions made sense locally; the design flaw was that nobody accountable for the whole risk was available to weigh them.
+
 ### 21.5 Handoffs
 
 Every handoff (shift change, SOC to IT, internal to vendor) can lose context. Research in healthcare on structured handover informs practice here: a minimum content standard and a read-back reduce omissions. Chapter 26 of the technologist book teaches operational handoffs.
+
+In the pharmacy-server case, the SOC's escalation to the incident lead went by chat while the lead was in a meeting, so the message waited. A handoff standard would specify a channel that reaches the person, the minimum content of the request, and confirmation that it was received, so that a decision request cannot sit unread for over an hour.
 
 ### 21.6 Worked example (synthetic): SOC versus service owner
 
@@ -1986,6 +2020,10 @@ Testable change: "For severity-2 or higher containment disputes, the duty incide
 - Adding approvers in response to every incident, lengthening the critical path.
 - RACI charts that are never exercised.
 - Simulation results may not reflect real-incident stress; validate cautiously.
+
+- Measuring only how quickly the SOC acted, while the waiting time sat elsewhere in the graph.
+- Assuming a named deputy will decide when the rule has never been exercised.
+- Proposing a process change without a way to test whether it shortened the critical path.  Simulations help, but real stress differs.
 
 ### Exercises — chapter 21
 
@@ -2021,17 +2059,25 @@ You will be able to (1) build a provenance map from source systems through trans
 
 A **provenance map** is a diagram with three layers: **sources** (systems that recorded something), **transformations** (exports, parsers, joins, enrichment) and **claims** (statements in the report). Each claim points back to the transformations and sources that support it. The map makes it visible when a claim rests on one source only, or on a transformation nobody can reproduce.
 
+In the fin-04 example, the claim "outside party" points back to the IdP sign-in through geolocation enrichment, to the help-desk ticket and to the mail audit; the map shows at once that the location part rests on enrichment of unknown version.
+
 ### 22.2 Source attributes
 
 For each source record: owner, what it records, clock and time zone, retention period, who can modify it, export method, and known gaps. A help-desk ticket system, for example, records what callers *said*, entered by an agent, with the agent's clock and typing delay.
+
+In the fin-04 case, these attributes changed the investigation: the IdP's retention had dropped to 30 days when the premium licence lapsed on 1 March, the endpoint agent recorded nothing from 9 to 11 March, and the help-desk ticket was in local time with an assumed offset.
 
 ### 22.3 Dependencies between sources
 
 Sources depend on infrastructure: a cloud audit log depends on the tenant's licence tier and settings; a host log depends on the agent running; enrichment (geolocation of addresses) depends on a third-party database version. If a dependency failed or changed, the source's silence or content changes meaning.
 
+For fin-04, the IdP log's retention depended on a licence that lapsed on 1 March, and the laptop's telemetry depended on an agent that was offline from 9 to 11 March. Neither change was an attack, but both altered what the sources could show for 10 March.
+
 ### 22.4 Weak links
 
 A conclusion is only as strong as its weakest required link. Look for: single-source claims, transformations with undocumented assumptions (time-zone defaults, geolocation), sources outside retention, and dependencies whose health in the window is unknown.
+
+In the fin-04 case, the weakest link for "outside party" is geolocation from an enrichment database of unknown version, so the report states the location as unverified. The stronger links, the forwarding rule eight minutes after sign-in and the user's account of an unsolicited call, carry the conclusion instead. Rewording a claim to rest on its strongest links is often better than dropping it.
 
 ### 22.5 Worked example (synthetic): a possible account takeover
 
@@ -2055,6 +2101,10 @@ Report wording: "Likely account takeover: sign-in at 07:12 UTC with MFA approved
 - Ignoring a source's licence- or configuration-dependent retention.
 - Treating a silent source as negative evidence when its dependency failed.
 - Provenance maps can become large; keep only the links that support or weaken report claims.
+
+- Forgetting to preserve a source whose retention is about to expire, as with the 30-day IdP log in the fin-04 case.
+- Normalizing help-desk times with an assumed offset and then treating them as precise.
+- Letting a strong link for one claim lend false strength to a different claim.
 
 ### Exercises — chapter 22
 
