@@ -73,6 +73,10 @@ Curvas suaves simplificam riscos discretos; os limites legais são restrições,
 - **EX002 — Limite do grupo pequeno.** O que acontece com uma média quando o tamanho do grupo se aproxima de um? *Rubrica:* 3 = ela vira o valor exato de uma pessoa, revelando-o;; 2 = diz que fica menos precisa;; 1 = errado;; 0 = nenhuma.
 - **EX003 — Limites do compromisso marginal.** Por que o modelo de compromisso marginal é simplista para a privacidade? *Rubrica:* 3 = o dano às pessoas não é livremente trocável e a lei fixa limites rígidos;; 2 = menciona a lei;; 1 = aceita o modelo;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 1 lê o cálculo pela ótica da privacidade. O capítulo 2 usa matemática discreta para contar identidades.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
@@ -112,6 +116,10 @@ A contagem uniforme presume valores igualmente prováveis; os atributos reais se
 - **EX004 — Contagem de combinações.** Por que muitos pacientes ficam sozinhos em sua combinação? *Rubrica:* 3 = as combinações superam em muito o número de pacientes;; 2 = menciona números;; 1 = errado;; 0 = nenhuma.
 - **EX005 — Conjunto mais interno.** Por que a maior parte dos dados da Pellmore cai no subconjunto dos dados de saúde? *Rubrica:* 3 = até as consultas agendadas revelam que alguém procurou atendimento médico;; 2 = menciona saúde;; 1 = diz que só os prontuários;; 0 = nenhuma.
 - **EX006 — Arestas ausentes.** O que costuma significar uma aresta ausente no grafo de fluxos de dados? *Rubrica:* 3 = um fluxo não documentado que não é gerenciado;; 2 = menciona erro;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 2 conta, classifica e mapeia. O capítulo 3 examina o lado físico dos dados.
 
 <a id="ch-03"></a>
 
@@ -153,6 +161,10 @@ O apagamento criptográfico depende de as chaves nunca serem copiadas em texto c
 - **EX008 — Apagamento criptográfico.** Como funciona o apagamento criptográfico? *Rubrica:* 3 = os dados são guardados cifrados; destruir a chave torna ilegível cada cópia;; 2 = menciona chaves;; 1 = descreve sobrescrita;; 0 = nenhuma.
 - **EX009 — Vazamento de metadados.** O que ainda vaza de uma chamada de vídeo cifrada? *Rubrica:* 3 = metadados como horário e duração revelam que a consulta ocorreu;; 2 = menciona metadados;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 3 fundamenta a eliminação na física. O capítulo 4 começa a programação para a privacidade.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
@@ -192,6 +204,10 @@ Um hash com chave é pseudonimização, não anonimização; quem tem a chave po
 - **EX010 — Logs de depuração.** Por que imprimir datas de nascimento nas mensagens de depuração é arriscado? *Rubrica:* 3 = os logs são guardados por mais tempo e protegidos com menos cuidado do que os bancos de dados;; 2 = menciona logs;; 1 = inofensivo;; 0 = nenhuma.
 - **EX011 — Limites do texto livre.** Que princípio do GDPR limitar o texto livre aplica? *Rubrica:* 3 = a minimização de dados do artigo 5(1)(c);; 2 = menciona minimização;; 1 = cita outro;; 0 = nenhuma.
 - **EX012 — Teste unitário de privacidade.** O que o teste unitário de privacidade de Zara verifica? *Rubrica:* 3 = que nenhuma linha de log contém um padrão de data de nascimento;; 2 = menciona logs;; 1 = omite;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 4 constrói hábitos de programação segura. O capítulo 5 treina a comunicação.
 
 <a id="ch-05"></a>
 
@@ -233,6 +249,10 @@ A linguagem simples precisa continuar precisa; uma simplificação que descreve 
 - **EX014 — Aviso no momento certo.** Por que informar quando um recurso usa dados? *Rubrica:* 3 = as decisões dependem do contexto, então a informação naquele momento é mais útil;; 2 = menciona o momento;; 1 = diz que uma vez basta;; 0 = nenhuma.
 - **EX015 — Papel do registro de decisões.** Que princípio o registro de decisões sustenta? *Rubrica:* 3 = a responsabilidade do artigo 5(2);; 2 = menciona responsabilização;; 1 = cita outro;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 5 torna a comunicação parte do desenho. O capítulo 6 volta à matemática com a acumulação.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
@@ -272,6 +292,10 @@ A medida em pacientes-dia ignora diferenças de sensibilidade entre registros; p
 - **EX016 — Pacientes-dia.** O que mede a integral do armazenamento ao longo do tempo? *Rubrica:* 3 = a exposição acumulada em pacientes-dia;; 2 = menciona área;; 1 = tamanho do armazenamento;; 0 = nenhuma.
 - **EX017 — Cautela com o decaimento.** Por que os modelos de decaimento não servem para dados de saúde? *Rubrica:* 3 = a informação de saúde mantém sua sensibilidade com o tempo;; 2 = menciona sensibilidade;; 1 = aceita o decaimento;; 0 = nenhuma.
 - **EX018 — Publicações somadas.** O que mostra a soma dos vazamentos diários? *Rubrica:* 3 = a perda total de privacidade cresce sem limite à medida que as publicações continuam;; 2 = menciona crescimento;; 1 = diz que fica pequena;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 6 acumula exposição e perda. O capítulo 7 usa probabilidade para coletar dados sensíveis com segurança.
 
 <a id="ch-07"></a>
 
@@ -337,6 +361,10 @@ O método só protege diante de quem conduz a pesquisa se os pacientes confiarem
 - **EX020 — Cálculo da estimativa.** Como a estimativa 0,189 é obtida a partir de 0,344? *Rubrica:* 3 = subtrair os 0,25 de sins aleatórios e dividir por 0,5;; 2 = descreve em parte;; 1 = errado;; 0 = nenhuma.
 - **EX021 — Razão entre erros.** Quanto maior é o erro padrão da resposta aleatorizada? *Rubrica:* 3 = 0,021 contra 0,009, mais que o dobro;; 2 = menciona que é maior;; 1 = errado;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 7 mostra trade-offs entre privacidade e precisão em uma pesquisa por questionário. O capítulo 8 examina o hardware onde os dados residem.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
@@ -376,6 +404,10 @@ Os recursos de hardware têm suas próprias falhas; a defesa em profundidade con
 - **EX022 — Cópias ocultas.** Cite dois lugares onde um registro apagado pode persistir em um servidor. *Rubrica:* 3 = despejos de memória e swap (também caches);; 2 = cita um;; 1 = nenhum;; 0 = nenhuma.
 - **EX023 — Chaves mensais.** Como as chaves mensais tornam a retenção auditável? *Rubrica:* 3 = apagar a chave de um mês elimina as gravações daquele mês em uma operação;; 2 = menciona chaves;; 1 = omite;; 0 = nenhuma.
 - **EX024 — Evidência acima da opinião.** Por que medir a sobrecarga da criptografia? *Rubrica:* 3 = para substituir por dados as alegações de que a privacidade é lenta demais;; 2 = menciona velocidade;; 1 = pula a medição;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 8 situa os dados no hardware. O capítulo 9 aprofunda a programação.
 
 <a id="ch-09"></a>
 
@@ -417,6 +449,10 @@ Verificações centrais viram um ponto único de falha; precisam de seus própri
 - **EX026 — Finalidade no acesso.** Por que quem chama precisa declarar uma finalidade para ler um prontuário? *Rubrica:* 3 = o acesso é conferido e registrado contra a finalidade, evitando uso amplo demais;; 2 = menciona registro;; 1 = diz que é opcional;; 0 = nenhuma.
 - **EX027 — Achado do teste de propriedades.** Que defeito o teste baseado em propriedades encontrou? *Rubrica:* 3 = uma exportação que juntava as tabelas de identidade e clínica;; 2 = menciona exportação;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 9 codifica a privacidade em programas. O capítulo 10 considera ética e segurança física.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
@@ -456,6 +492,10 @@ O julgamento ético varia; registrar o raciocínio permite que outros o conteste
 - **EX028 — Dever ético.** Que dever vai além da conformidade legal para Zara? *Rubrica:* 3 = prevenir danos previsíveis aos pacientes mesmo quando ninguém perceberia;; 2 = menciona dano;; 1 = só a lei;; 0 = nenhuma.
 - **EX029 — Inferência de gravidez.** Por que Zara desaconselha o recurso de inferência de gravidez? *Rubrica:* 3 = a informação de cuidado flui para o marketing, rompendo as normas do contexto e arriscando dano;; 2 = menciona invasão;; 1 = apoia o recurso;; 0 = nenhuma.
 - **EX030 — Papel do encarregado.** Por que escalar ao encarregado de proteção de dados? *Rubrica:* 3 = o encarregado aconselha e monitora a conformidade com independência, pelos artigos 38–39;; 2 = menciona o encarregado;; 1 = vai primeiro à imprensa;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 10 fundamenta as bases na ética. O capítulo 11 inicia o bloco de sistemas com as redes.
 
 <a id="ch-11"></a>
 
@@ -497,6 +537,10 @@ Capturas em versões de teste podem não mostrar o comportamento em produção; 
 - **EX032 — Truncamento de IP.** O que o truncamento dos endereços IP guardados alcança? *Rubrica:* 3 = mantém a capacidade de investigar ataques e reduz dados de localização duradouros;; 2 = menciona privacidade;; 1 = apaga todos os logs;; 0 = nenhuma.
 - **EX033 — Contratos com operadores.** O que o artigo 28 exige para operadores terceiros? *Rubrica:* 3 = um contrato vinculante que rege o tratamento;; 2 = menciona contrato;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 11 audita a rede. O capítulo 12 estuda sistemas operacionais.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
@@ -536,6 +580,10 @@ Filtros de mascaramento deixam passar formatos incomuns; buscas periódicas cont
 - **EX034 — Diretório de exportação compartilhado.** O que havia de errado com o diretório de exportação? *Rubrica:* 3 = podia ser lido por qualquer conta do servidor;; 2 = menciona permissões;; 1 = nada;; 0 = nenhuma.
 - **EX035 — Relatórios temporários.** Como Zara trata os relatórios temporários esquecidos? *Rubrica:* 3 = funções temporárias seguras, limpeza na inicialização e uma tarefa diária de exclusão;; 2 = uma medida;; 1 = ignora;; 0 = nenhuma.
 - **EX036 — Métrica de correções.** Por que acompanhar o atraso das correções? *Rubrica:* 3 = para mostrar um processo regular de teste e manutenção da segurança, como espera o artigo 32;; 2 = menciona correções;; 1 = nenhum motivo;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 12 reforça o sistema operacional. O capítulo 13 aplica a retenção nos bancos de dados.
 
 <a id="ch-13"></a>
 
@@ -610,6 +658,10 @@ A data de criação pode não ser o início certo da retenção; alguns prazos c
 - **EX038 — Pior categoria.** Que categoria tem a maior parcela vencida no laboratório? *Rubrica:* 3 = gravações de vídeo: 96 de 101;; 2 = cita o vídeo;; 1 = cita as consultas;; 0 = nenhuma.
 - **EX039 — Regra dos backups.** Como os backups são tratados no projeto de retenção? *Rubrica:* 3 = protegidos, expiram no prazo, eliminações reaplicadas na restauração;; 2 = dois pontos;; 1 = ignora os backups;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 13 transforma a política em consultas. O capítulo 14 leva a privacidade à engenharia de software.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
@@ -649,6 +701,10 @@ Listas de verificação viram rotina; alterne os exemplos e audite amostras das 
 - **EX040 — História de privacidade.** Escreva uma história de usuário de privacidade do capítulo. *Rubrica:* 3 = p. ex., como paciente, quero minhas gravações eliminadas depois de trinta dias, salvo pedido em contrário;; 2 = história semelhante;; 1 = nenhuma;; 0 = nenhuma.
 - **EX041 — Achado da revisão.** O que a lista de revisão detectou no primeiro mês? *Rubrica:* 3 = uma mudança que enviaria nomes completos a um relatório de falhas;; 2 = menciona relatório de falhas;; 1 = nada;; 0 = nenhuma.
 - **EX042 — Dados de teste sintéticos.** Por que trocar as cópias de produção por pacientes gerados? *Rubrica:* 3 = os ambientes de teste são menos protegidos; dados sintéticos evitam expor dados de saúde;; 2 = menciona segurança;; 1 = só usa mascaramento;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 14 incorpora a privacidade à entrega. O capítulo 15 trata dos fundamentos de segurança.
 
 <a id="ch-15"></a>
 
@@ -690,6 +746,10 @@ Uma autenticação forte pode excluir pacientes com acesso limitado a aparelhos;
 - **EX044 — Ações com reforço.** Que ações do paciente recebem um segundo fator, e por quê? *Rubrica:* 3 = ver prontuários e mudar contatos, as mais atraentes para atacantes;; 2 = cita uma;; 1 = só todos os logins;; 0 = nenhuma.
 - **EX045 — Violação acidental.** Um resultado anexado ao paciente errado é uma violação de dados pessoais? *Rubrica:* 3 = sim; o artigo 4(12) inclui a divulgação acidental;; 2 = sim, sem motivo;; 1 = não;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 15 relaciona a segurança à proteção de dados. O capítulo 16 adota uma visão sistêmica.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
@@ -729,6 +789,10 @@ Matrizes de rastreabilidade ficam desatualizadas se não forem revistas a cada m
 - **EX046 — Interface mais fraca.** O que é o problema da interface mais fraca? *Rubrica:* 3 = uma propriedade de privacidade ignorada em um componente, na prática, não existe;; 2 = menciona componentes;; 1 = nenhuma ideia;; 0 = nenhuma.
 - **EX047 — Lacuna da análise.** Que lacuna a matriz de rastreabilidade revelou? *Rubrica:* 3 = a área de análise não tinha requisito de retenção;; 2 = menciona a análise;; 1 = nenhuma;; 0 = nenhuma.
 - **EX048 — Divergência contratual.** Que divergência Zara encontrou no fornecedor? *Rubrica:* 3 = o fornecedor pode guardar gravações por 90 dias contra os 30 da Pellmore;; 2 = menciona retenção;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 16 faz a engenharia do sistema como um todo. O capítulo 17 aplica o controle por realimentação.
 
 <a id="ch-17"></a>
 
@@ -770,6 +834,10 @@ Os sinais podem gerar alarmes falsos; revise os limiares depois dos primeiros me
 - **EX050 — Sinal de bisbilhotice.** Que sinal pode revelar bisbilhotice por parte da equipe? *Rubrica:* 3 = visualizações de prontuários sem consulta agendada;; 2 = menciona visualizações;; 1 = nenhum;; 0 = nenhuma.
 - **EX051 — Defesa contra manipulação.** Como Zara se protege da manipulação das categorias? *Rubrica:* 3 = acompanha as mudanças de categoria e exige aprovação;; 2 = menciona monitoramento;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 17 enquadra a privacidade como controle. O capítulo 18 projeta a arquitetura.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
@@ -809,6 +877,10 @@ As zonas dos diagramas podem diferir da realidade implantada; verifique com test
 - **EX052 — Benefício da segmentação.** Cite dois benefícios da segmentação em zonas. *Rubrica:* 3 = limita o movimento do atacante e o acesso acidental;; 2 = cita um;; 1 = nenhum;; 0 = nenhuma.
 - **EX053 — Finalidade pelos papéis.** Como o privilégio mínimo implementa a limitação da finalidade? *Rubrica:* 3 = cada componente só pode usar os dados que a finalidade de seu papel permite;; 2 = menciona finalidade;; 1 = sem relação;; 0 = nenhuma.
 - **EX054 — Ferramenta de suporte.** Como a ferramenta de suporte foi reprojetada? *Rubrica:* 3 = anotações visíveis só com acesso temporário concedido pelo paciente;; 2 = menciona consentimento;; 1 = remove a ferramenta;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 18 projeta zonas e padrões. O capítulo 19 trata de identidade e criptografia.
 
 <a id="ch-19"></a>
 
@@ -850,6 +922,10 @@ A rotação de chaves rompe análises longitudinais legítimas; planeje-a com os
 - **EX056 — Pseudônimos por destinatário.** O que os pseudônimos específicos por destinatário impedem? *Rubrica:* 3 = juntar conjuntos de dados de destinatários diferentes sem as chaves da Pellmore;; 2 = menciona vinculação;; 1 = nada;; 0 = nenhuma.
 - **EX057 — Ainda pessoais.** Por que os registros pseudonimizados continuam sendo dados pessoais? *Rubrica:* 3 = atributos e chaves permitem a reidentificação;; 2 = menciona chaves;; 1 = diz que são anônimos;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 19 conclui os fundamentos de segurança. O capítulo 20 define o contexto de engenharia da proteção de dados.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Privacidade e proteção de dados: contexto de engenharia
@@ -890,6 +966,10 @@ A tabela comparativa simplifica; as leis nacionais e os reguladores acrescentam 
 - **EX059 — Controlador ou operador.** O fornecedor de vídeo é controlador ou operador, e por quê? *Rubrica:* 3 = operador; age em nome da Pellmore;; 2 = diz operador;; 1 = diz controlador;; 0 = nenhuma.
 - **EX060 — Centralidade da engenharia.** Por que os engenheiros são centrais para a proteção de dados? *Rubrica:* 3 = o comportamento dos sistemas decide se os direitos e a retenção são reais;; 2 = menciona implementação;; 1 = diz que os advogados decidem;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 20 enquadra o contexto jurídico e normativo. O capítulo 21 redige requisitos de privacidade.
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Privacidade e proteção de dados: requisitos
@@ -929,6 +1009,10 @@ A ordenação não pode adiar indefinidamente um dever legal; os itens mais abai
 - **EX061 — Marcação de finalidades.** Como Zara transforma a limitação da finalidade em requisito? *Rubrica:* 3 = marca os campos com as finalidades permitidas; os serviços leem só os campos marcados para sua finalidade;; 2 = menciona marcações;; 1 = repete o princípio;; 0 = nenhuma.
 - **EX062 — Acesso testável.** Reescreva de forma testável "os pacientes devem poder acessar seus dados". *Rubrica:* 3 = baixar todos os dados em até um minuto, em formato legível por máquina;; 2 = parcialmente mensurável;; 1 = vago;; 0 = nenhuma.
 - **EX063 — Lacuna de portabilidade.** Que lacuna os requisitos de direitos revelaram? *Rubrica:* 3 = não há formato estruturado de exportação para a portabilidade;; 2 = menciona exportação;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 21 redige requisitos. O capítulo 22 modela sistemas e fluxos de dados.
 
 <a id="ch-22"></a>
 
@@ -1007,6 +1091,10 @@ Um inventário reflete o que as pessoas informam; capturas de rede e varreduras 
 - **EX065 — Papéis na transferência.** Quem decide o mecanismo de transferência, e o que a engenheira fornece? *Rubrica:* 3 = a assessoria jurídica decide; os engenheiros fornecem os fatos sobre dados, volume, frequência e finalidade;; 2 = parcial;; 1 = a engenheira decide;; 0 = nenhuma.
 - **EX066 — Portão de implantação.** Como o inventário se torna um portão de implantação? *Rubrica:* 3 = novos fluxos não são implantados até que finalidade, base e transferência sejam revisadas;; 2 = menciona revisão;; 1 = continua sendo um documento;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 22 modela e verifica fluxos. O capítulo 23 analisa ameaças e falhas.
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Privacidade e proteção de dados: análise de ameaças e falhas
@@ -1046,6 +1134,10 @@ Listas de ameaças nunca estão completas; revise-as depois de incidentes e de m
 - **EX067 — Ameaças sem atacante.** Cite duas ameaças à privacidade que dispensam atacante. *Rubrica:* 3 = por exemplo, desconhecimento e não conformidade (e também vinculabilidade);; 2 = cita uma;; 1 = cita invasão;; 0 = nenhuma.
 - **EX068 — Falha do fornecedor.** Por que a não exclusão pelo fornecedor é difícil de detectar, e o que ajuda? *Rubrica:* 3 = a Pellmore não enxerga os sistemas do fornecedor; confirmação contratual e direitos de auditoria;; 2 = uma parte;; 1 = ignora;; 0 = nenhuma.
 - **EX069 — Monitoramento de funcionários.** Que restrição se aplica ao monitoramento dos acessos dos funcionários? *Rubrica:* 3 = precisa ser proporcional e transparente, porque trata dados dos empregados;; 2 = menciona privacidade;; 1 = ilimitado;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 23 encontra ameaças. O capítulo 24 as avalia em um RIPD.
 
 <a id="ch-24"></a>
 
@@ -1112,6 +1204,10 @@ Multiplicar pontuações ordinais é uma convenção, não aritmética sobre gra
 - **EX071 — Risco inalterado.** Que risco continua médio depois das medidas, e por quê? *Rubrica:* 3 = o vazamento de logs de chat no fornecedor, porque a Pellmore não controla diretamente a segurança dele;; 2 = cita o risco;; 1 = nenhum;; 0 = nenhuma.
 - **EX072 — Conclusão condicional.** Por que a conclusão de "sem consulta prévia" é condicional? *Rubrica:* 3 = depende de as medidas serem implementadas, por exemplo a remoção do SDK;; 2 = menciona medidas;; 1 = incondicional;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 24 avalia o risco. O capítulo 25 é o primeiro ateliê de projeto.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
@@ -1151,6 +1247,10 @@ O processamento no aparelho ainda precisa de um canal de atualização seguro e 
 - **EX073 — Opção que menos coleta.** Que alternativa coleta menos dados, e qual é sua desvantagem? *Rubrica:* 3 = a triagem no aparelho; atualizar o modelo é mais difícil e celulares antigos podem não dar conta;; 2 = uma parte;; 1 = a opção do servidor;; 0 = nenhuma.
 - **EX074 — Projeto à luz do artigo 22.** Como a equipe evita uma decisão exclusivamente automatizada? *Rubrica:* 3 = a triagem é orientação, com opção clara de falar com um profissional;; 2 = menciona pessoa;; 1 = ignora;; 0 = nenhuma.
 - **EX075 — Aprender sem guardar.** Como a equipe pode descobrir uma triagem insegura sem guardar as respostas? *Rubrica:* 3 = retorno opcional e revisão clínica com casos sintéticos;; 2 = uma parte;; 1 = guardar tudo;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 25 projeta uma funcionalidade. O capítulo 26 compara alternativas de arquitetura.
 
 <a id="ch-26"></a>
 
@@ -1192,6 +1292,10 @@ As notas dependem dos pesos; mostre a sensibilidade a pesos diferentes.
 - **EX077 — Limites das PETs.** Cite um limite de cada uma de duas tecnologias de aprimoramento da privacidade. *Rubrica:* 3 = por exemplo, a privacidade diferencial perde acurácia em grupos pequenos; a computação multipartes é complexa e lenta;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 - **EX078 — Decisão híbrida.** O que o comitê de arquitetura decidiu? *Rubrica:* 3 = federação para as comparações, mais um conjunto restrito e pseudonimizado para as auditorias de segurança;; 2 = uma parte;; 1 = centralizar;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 26 escolhe arquiteturas. O capítulo 27 projeta controles.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Privacidade e proteção de dados: projeto de controles
@@ -1232,6 +1336,10 @@ Controles demais geram sobrecarga e confusão; faça podas regularmente.
 - **EX080 — Consentimento válido.** O que torna o consentimento válido segundo as Diretrizes 05/2020 do EDPB? *Rubrica:* 3 = livre, específico, informado, inequívoco e fácil de revogar;; 2 = lista alguns;; 1 = errado;; 0 = nenhuma.
 - **EX081 — Controle podado.** Que controle Zara removeu, e por quê? *Rubrica:* 3 = uma cópia noturna do banco para um antigo servidor de relatórios, sem nenhum requisito que a justificasse;; 2 = menciona a cópia;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 27 projeta controles. O capítulo 28 os implementa.
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Privacidade e proteção de dados: implementação I
@@ -1271,6 +1379,10 @@ A documentação gerada cobre só o que está configurado; os processos manuais 
 - **EX082 — Avisar e depois bloquear.** Por que registrar avisos antes de bloquear leituras sem marcação? *Rubrica:* 3 = para encontrar as marcações que faltam sem derrubar o serviço;; 2 = menciona segurança;; 1 = bloquear de imediato;; 0 = nenhuma.
 - **EX083 — O que a conciliação pegou.** O que a conciliação de consentimento descobriu? *Rubrica:* 3 = a plataforma de e-mail perdeu revogações durante uma queda;; 2 = menciona e-mail;; 1 = nada;; 0 = nenhuma.
 - **EX084 — Registros gerados.** Por que gerar o registro das operações a partir da configuração? *Rubrica:* 3 = ele continua alinhado ao sistema à medida que este muda;; 2 = menciona exatidão;; 1 = o manual é melhor;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 28 implementa controles. O capítulo 29 os mede.
 
 <a id="ch-29"></a>
 
@@ -1338,6 +1450,10 @@ A contagem de campos ignora a sensibilidade; um único campo de saúde desnecess
 - **EX086 — Alegações de necessidade.** Por que um segundo revisor confere as alegações de necessidade? *Rubrica:* 3 = os responsáveis podem exagerar a necessidade, fazendo a medida parecer boa;; 2 = menciona viés;; 1 = confia nos responsáveis;; 0 = nenhuma.
 - **EX087 — Princípio recursivo.** O que é o princípio recursivo da engenharia de privacidade? *Rubrica:* 3 = os dados de monitoramento também devem seguir princípios de privacidade, como a minimização;; 2 = menciona métricas;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 29 mede a privacidade. O capítulo 30 verifica controles no primeiro laboratório.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
@@ -1378,6 +1494,10 @@ Os testes verificam o que conferem; caminhos não testados ainda podem falhar.
 - **EX089 — Lacuna na eliminação.** Que armazenamento manteve dados depois da eliminação na primeira execução? *Rubrica:* 3 = o armazenamento de análise, sob o pseudônimo;; 2 = cita a análise;; 1 = nenhum;; 0 = nenhuma.
 - **EX090 — Alegação versus evidência.** Diferencie alegação de evidência sobre a eliminação. *Rubrica:* 3 = a alegação diz que funciona; a evidência é um log de teste datado cobrindo todos os armazenamentos;; 2 = menciona logs;; 1 = equipara as duas;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 30 verifica controles. O capítulo 31 implementa a próxima geração de funcionalidades.
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Privacidade e proteção de dados: implementação II
@@ -1417,6 +1537,10 @@ Os formatos de portabilidade evoluem; versione o esquema e mantenha os leitores 
 - **EX091 — Alcance da portabilidade.** O que a portabilidade inclui e exclui no projeto de Zara? *Rubrica:* 3 = inclui dados fornecidos pelo paciente, como consultas e sintomas; exclui as anotações dos médicos;; 2 = uma parte;; 1 = tudo;; 0 = nenhuma.
 - **EX092 — Auxílio do operador.** Que artigo obriga o fornecedor a ajudar com os pedidos de direitos? *Rubrica:* 3 = o artigo 28;; 2 = menciona contrato;; 1 = errado;; 0 = nenhuma.
 - **EX093 — Supressão de contagens pequenas.** Por que suprimir as contagens abaixo de dez nos painéis? *Rubrica:* 3 = contagens pequenas podem apontar para pessoas;; 2 = menciona privacidade;; 1 = sem motivo;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 31 implementa mais direitos e análises. O capítulo 32 estuda a confiabilidade da eliminação.
 
 <a id="ch-32"></a>
 
@@ -1479,6 +1603,10 @@ Os logs podem superestimar o sucesso se as confirmações não forem conferidas;
 - **EX095 — Efeito da nova tentativa.** Como mudam as eliminações incompletas esperadas com uma nova tentativa? *Rubrica:* 3 = de 175 para 13 por 1.000;; 2 = só a direção;; 1 = errado;; 0 = nenhuma.
 - **EX096 — Falha silenciosa.** Por que uma falha silenciosa de eliminação é pior que uma lenta? *Rubrica:* 3 = o paciente acredita que os dados sumiram quando não sumiram;; 2 = menciona confiança;; 1 = são iguais;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 32 faz a engenharia de uma eliminação confiável. O capítulo 33 trata de segurança física e resiliência.
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Privacidade e proteção de dados: segurança operacional e resiliência
@@ -1518,6 +1646,10 @@ O acesso de emergência pode ser abusado; revise prontamente cada uso.
 - **EX097 — Violação de disponibilidade.** Um ransomware sem exfiltração pode ser uma violação de dados pessoais? *Rubrica:* 3 = sim; a perda de disponibilidade é uma violação;; 2 = sim, sem justificativa;; 1 = não;; 0 = nenhuma.
 - **EX098 — Risco da restauração.** Que risco à privacidade a restauração de um backup cria, e como é tratado? *Rubrica:* 3 = dados eliminados ou vencidos voltam; reaplicar o log de eliminações e a retenção antes do serviço;; 2 = uma parte;; 1 = nenhum;; 0 = nenhuma.
 - **EX099 — Consentimento com falha segura.** Como os sistemas devem se comportar se o serviço de consentimento cair? *Rubrica:* 3 = tratar o consentimento como ausente;; 2 = menciona cautela;; 1 = supor que existe;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 33 constrói resiliência. O capítulo 34 integra a plataforma.
 
 <a id="ch-34"></a>
 
@@ -1559,6 +1691,10 @@ Uma plataforma compartilhada concentra as falhas; monitore e teste sua disponibi
 - **EX101 — Papel do parceiro.** Por que o laboratório parceiro é um controlador independente? *Rubrica:* 3 = ele define as finalidades e os meios de seus próprios exames;; 2 = menciona independência;; 1 = operador;; 0 = nenhuma.
 - **EX102 — Detecção nas interfaces.** Como as mudanças nas interfaces são encaminhadas para revisão? *Rubrica:* 3 = uma comparação automática de esquemas aponta campos novos;; 2 = menciona automação;; 1 = só manual;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 34 integra a plataforma. O capítulo 35 é o segundo ateliê de projeto.
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
@@ -1598,6 +1734,10 @@ As perguntas reservadas podem alertar um parente controlador se forem vistas; pr
 - **EX103 — Anotações por padrão.** Por que as anotações das consultas nunca são compartilhadas por padrão? *Rubrica:* 3 = carregam normas de confidencialidade; levá-las adiante exige a escolha explícita do paciente;; 2 = menciona confidencialidade;; 1 = compartilhar tudo;; 0 = nenhuma.
 - **EX104 — Defesa contra coerção.** Que solução de projeto responde à coerção por parentes? *Rubrica:* 3 = perguntas reservadas quando o paciente está sozinho, mais as perguntas dos médicos;; 2 = uma parte;; 1 = nenhuma;; 0 = nenhuma.
 - **EX105 — Quem altera as configurações.** Quem pode alterar as configurações de compartilhamento? *Rubrica:* 3 = o paciente ou, se ele não tiver capacidade, um representante legal verificado;; 2 = só o paciente;; 1 = o cuidador;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 35 projeta para os relacionamentos. O capítulo 36 considera a escala e os orçamentos de privacidade diferencial.
 
 <a id="ch-36"></a>
 
@@ -1657,6 +1797,10 @@ A composição simples é conservadora; contabilizações avançadas dão limite
 - **EX107 — Limite de contribuição.** Por que limitar cada paciente a uma contagem por publicação? *Rubrica:* 3 = mantém a sensibilidade em um, para que os números de erro valham;; 2 = menciona sensibilidade;; 1 = nenhum;; 0 = nenhuma.
 - **EX108 — Pós-processamento seguro.** Arredondar e limitar as contagens com ruído enfraquece a garantia? *Rubrica:* 3 = não; o pós-processamento não enfraquece a privacidade diferencial;; 2 = não, sem justificativa;; 1 = sim;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 36 planeja publicações em escala. O capítulo 37 conduz a privacidade nas operações.
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Privacidade e proteção de dados: operações
@@ -1696,6 +1840,10 @@ A automação pode identificar mal quem faz o pedido; mantenha um caminho manual
 - **EX109 — Taxa no prazo.** Que parcela dos pedidos de direitos foi respondida no prazo? *Rubrica:* 3 = 97%;; 2 = quase todos;; 1 = errado;; 0 = nenhuma.
 - **EX110 — Prontuário de um parente.** Como é tratado o caso de um médico que consultou o prontuário de um parente? *Rubrica:* 3 = processo disciplinar e avaliação como possível violação;; 2 = uma parte;; 1 = ignorado;; 0 = nenhuma.
 - **EX111 — Ciclo de gestão.** O que a revisão trimestral proporciona? *Rubrica:* 3 = um ciclo de monitorar, analisar e melhorar, esperado de um sistema de gestão;; 2 = menciona melhoria;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 37 opera a privacidade. O capítulo 38 valida que o sistema atende a necessidades reais.
 
 <a id="ch-38"></a>
 
@@ -1737,6 +1885,10 @@ Grupos pequenos de validação podem não representar todos os pacientes; recrut
 - **EX113 — Expectativa sobre a eliminação.** O que a validação revelou sobre a eliminação? *Rubrica:* 3 = os pacientes esperavam a remoção total do prontuário, que a lei impede; faltava explicação;; 2 = menciona a expectativa;; 1 = nada;; 0 = nenhuma.
 - **EX114 — Premissa refinada.** Que premissa jurídica a assessoria refinou? *Rubrica:* 3 = algumas anotações de sintomas feitas pelo paciente fazem parte do prontuário e precisam ser guardadas;; 2 = menciona anotações;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 38 valida para fora. O capítulo 39 mantém o sistema sustentável.
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Privacidade e proteção de dados: manutenibilidade
@@ -1776,6 +1928,10 @@ Os registros de dívida precisam de revisão regular, ou viram listas que ningu�
 - **EX115 — Dívida de privacidade.** Defina dívida de privacidade. *Rubrica:* 3 = atalhos que enfraquecem a privacidade, como cópias temporárias ou verificações desativadas;; 2 = só um exemplo;; 1 = dívida técnica em geral;; 0 = nenhuma.
 - **EX116 — Regressão da biblioteca.** O que a suíte de testes pegou depois de uma atualização de biblioteca? *Rubrica:* 3 = uma mudança nas novas tentativas que afetava a confiabilidade da eliminação;; 2 = menciona eliminação;; 1 = nada;; 0 = nenhuma.
 - **EX117 — Manutenibilidade e responsabilização.** Por que a manutenibilidade é pré-condição da responsabilização? *Rubrica:* 3 = uma organização que não consegue explicar seus controles não consegue demonstrar conformidade;; 2 = menciona explicação;; 1 = não têm relação;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 39 mantém os controles saudáveis. O capítulo 40 é o segundo laboratório de verificação.
 
 <a id="ch-40"></a>
 
@@ -1817,6 +1973,10 @@ Passar nos testes não prova a ausência de vulnerabilidades.
 - **EX119 — Regra das saídas legadas.** Que regra Zara acrescentou depois do vazamento estatístico? *Rubrica:* 3 = procurar as saídas da abordagem anterior sempre que uma nova proteção for introduzida;; 2 = menciona legado;; 1 = nenhuma;; 0 = nenhuma.
 - **EX120 — Valor da independência.** Por que contratar testes independentes depois de testes internos rigorosos? *Rubrica:* 3 = hábitos diferentes encontram problemas diferentes, como o vazamento no preenchimento automático;; 2 = menciona independência;; 1 = desnecessário;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 40 fecha o ciclo de verificação. O capítulo 41 otimiza o sistema.
+
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Privacidade e proteção de dados: otimização do sistema
@@ -1856,6 +2016,10 @@ Comparações de antes e depois podem incluir mudanças não relacionadas; anote
 - **EX121 — Caches de nomes.** Como Zara eliminou os caches de nomes redundantes? *Rubrica:* 3 = substituiu os três caches por um serviço de nomes para chamadores autorizados;; 2 = menciona caches;; 1 = nada;; 0 = nenhuma.
 - **EX122 — Trade-off clínico.** Como a retenção dos logs de chat foi encurtada com segurança? *Rubrica:* 3 = os médicos concordaram com seis meses, com a opção de guardar os logs no prontuário quando relevantes;; 2 = menciona os médicos;; 1 = nada;; 0 = nenhuma.
 - **EX123 — Serviços com acesso.** Como mudou o número de serviços com acesso clínico? *Rubrica:* 3 = de onze para seis;; 2 = só a direção;; 1 = errado;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 41 otimiza o sistema. O capítulo 42 passa à pesquisa aplicada.
 
 <a id="ch-42"></a>
 
@@ -1897,6 +2061,10 @@ Os voluntários podem não representar os pacientes com pouca familiaridade digi
 - **EX125 — Efeito da pré-visualização.** Que compreensão as duas telas alcançaram? *Rubrica:* 3 = 71% na atual, 90% na pré-visualização;; 2 = um número;; 1 = errado;; 0 = nenhuma.
 - **EX126 — Ressalva do estudo.** Cite uma ressalva ao resultado de compreensão. *Rubrica:* 3 = amostra pequena, voluntários confiantes ou cenários em vez de relações reais;; 2 = ressalva vaga;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 42 estuda a compreensão. O capítulo 43 reflete sobre a prática.
+
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
@@ -1936,6 +2104,10 @@ Um único estágio mostra a cultura de uma única organização; outras são dif
 - **EX127 — Pedido da seguradora.** Como o pedido da seguradora foi resolvido? *Rubrica:* 3 = agregados regionais com privacidade diferencial, dentro do orçamento de publicação;; 2 = menciona agregados;; 1 = compartilhamento total;; 0 = nenhuma.
 - **EX128 — Acesso para a reclamação.** Como Zara tratou o pedido do histórico completo de um paciente? *Rubrica:* 3 = conferiu a finalidade, recuperou só os registros pertinentes e registrou o acesso;; 2 = menciona finalidade;; 1 = entregou tudo;; 0 = nenhuma.
 - **EX129 — Independência do encarregado.** Por que a independência do encarregado importou no comitê? *Rubrica:* 3 = deu uma voz que a pressão comercial não conseguia derrubar com facilidade;; 2 = menciona independência;; 1 = irrelevante;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 43 situa Zara na prática. O capítulo 44 inicia o projeto final.
 
 <a id="ch-44"></a>
 
@@ -1977,6 +2149,10 @@ O escopo estreito limita a utilidade; planeje extensões depois da verificação
 - **EX131 — Controle da reconstrução.** Como o projeto limita os ataques de reconstrução? *Rubrica:* 3 = um orçamento de privacidade diferencial por estudo;; 2 = menciona ruído;; 1 = nada;; 0 = nenhuma.
 - **EX132 — Verificação primeiro.** Por que planejar a verificação antes de construir? *Rubrica:* 3 = evita um sistema que só funciona em demonstrações;; 2 = menciona qualidade;; 1 = depois;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 44 planeja o projeto final. O capítulo 45 realiza uma revisão de desenho independente.
+
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
@@ -2017,6 +2193,10 @@ As bancas de revisão podem deixar passar problemas fora de sua especialidade; c
 - **EX134 — Sensibilidade do log de consultas.** Por que proteger o log de consultas? *Rubrica:* 3 = as consultas revelam interesses sensíveis dos pesquisadores;; 2 = menciona privacidade;; 1 = desnecessário;; 0 = nenhuma.
 - **EX135 — Condições raras.** Como Zara tratou o ruído nas condições raras? *Rubrica:* 3 = agregação nacional e períodos de acumulação mais longos;; 2 = uma parte;; 1 = ignorou;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 45 fortalece o desenho. O capítulo 46 o constrói e testa.
+
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
@@ -2056,6 +2236,10 @@ Sistemas de modelos podem ser estendidos de forma insegura; revise cada novo mod
 - **EX136 — Bug de expiração.** Que teste falhou na verificação? *Rubrica:* 3 = um estudo expirado podia rodar por causa de um formato de data com fuso horário;; 2 = menciona expiração;; 1 = nenhum;; 0 = nenhuma.
 - **EX137 — Resultado do ataque.** O que o ataque de reconstrução recuperou? *Rubrica:* 3 = nenhum dado de nenhuma pessoa;; 2 = nada;; 1 = parcial;; 0 = nenhuma.
 - **EX138 — Visão dos pesquisadores.** Como os pesquisadores avaliaram a abordagem por modelos? *Rubrica:* 3 = restritiva, mas viável; pediram mais um modelo;; 2 = menciona restrição;; 1 = ideal;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 46 entrega o projeto final. O capítulo 47 testa falhas e recuperação.
 
 <a id="ch-47"></a>
 
@@ -2126,6 +2310,10 @@ Os exercícios usam cenários conhecidos; incidentes reais são mais confusos e 
 - **EX140 — Elo fraco.** Qual foi o elo mais fraco da linha do tempo? *Rubrica:* 3 = o atraso de 35,5 horas do fornecedor para avisar a Pellmore;; 2 = menciona o fornecedor;; 1 = o processo interno;; 0 = nenhuma.
 - **EX141 — Mensagem aos pacientes.** O que a comunicação aos pacientes precisa conter? *Rubrica:* 3 = natureza da violação, consequências prováveis, medidas e ponto de contato, em linguagem clara;; 2 = lista alguns;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 47 testa a recuperação. O capítulo 48 monta o dossiê de evidências.
+
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
@@ -2190,6 +2378,10 @@ Os resumos detectam mudança, não verdade; um arquivo de aparência correta ain
 - **EX143 — O que a divergência mostra.** O que uma divergência de resumo prova e o que não prova? *Rubrica:* 3 = o arquivo mudou desde a aprovação; não diz quem o mudou nem por quê;; 2 = uma parte;; 1 = prova fraude;; 0 = nenhuma.
 - **EX144 — Lição sobre evidências.** Que lição de processo decorre da divergência? *Rubrica:* 3 = versionar as evidências em vez de sobrescrevê-las, com datas e motivos;; 2 = menciona versões;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 48 monta evidências confiáveis. O capítulo 49 redige a tese.
+
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
@@ -2230,6 +2422,10 @@ Uma afirmação delimitada ainda pode ser citada de forma errada; repita os limi
 - **EX146 — Falhas na tese.** Por que incluir o bug de expiração e o armazenamento com falha? *Rubrica:* 3 = mostram que a verificação encontrou e corrigiu problemas reais;; 2 = menciona honestidade;; 1 = escondê-los;; 0 = nenhuma.
 - **EX147 — Sem recomendação de épsilon.** Por que Zara evita recomendar valores de épsilon aos outros? *Rubrica:* 3 = os parâmetros dependem da população, das consultas e do apetite a risco de cada organização;; 2 = menciona contexto;; 1 = dá valores;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 49 redige a tese. O capítulo 50 é a defesa final.
+
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
@@ -2269,6 +2465,10 @@ Uma defesa aprovada não é o fim do aprendizado; a prática vai expor novas lac
 - **EX148 — Garantia dos modelos.** Como as garantias se mantêm quando os modelos mudam? *Rubrica:* 3 = cada novo modelo exige análise de sensibilidade e revisão;; 2 = menciona revisão;; 1 = automático;; 0 = nenhuma.
 - **EX149 — Resposta sobre o fornecedor.** Que evidência Zara citou sobre a dependência do fornecedor? *Rubrica:* 3 = o exercício de violação e a cláusula de aviso em doze horas;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 - **EX150 — Conclusão do curso.** O que Zara conclui sobre a engenharia de privacidade? *Rubrica:* 3 = é um jeito de construir sistemas com responsabilidade desde o início, e não um complemento;; 2 = menciona projeto;; 1 = especialidade;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 50 conclui o percurso de engenharia. Seguem-se as resoluções e, depois, as referências.
 
 <a id="worked-results"></a>
 

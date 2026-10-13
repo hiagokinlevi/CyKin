@@ -75,6 +75,10 @@ Probabilidades grosseiras podem criar uma falsa precisão; mostre intervalos.
 - **EX004 — Aprender com os registros.** Como os registros de decisão melhoram as decisões futuras? *Rubrica:* 3 = comparar expectativas com resultados ensina a organização;; 2 = menciona aprendizado;; 1 = só conformidade;; 0 = nenhuma.
 - **EX005 — Duas leis.** Que leis regem o tratamento da Corvina e onde? *Rubrica:* 3 = a LGPD no Brasil, o GDPR em Portugal;; 2 = uma;; 1 = errada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 1 enquadra as decisões. O capítulo 2 examina a prática atual.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Privacidade e proteção de dados: prática atual
@@ -116,6 +120,10 @@ Comparações entre leis simplificam; os regulamentos das autoridades nacionais 
 - **EX008 — Exigência mais rigorosa.** Como Priscila trata as diferenças entre as leis? *Rubrica:* 3 = desenha processos que atendem à exigência mais rigorosa;; 2 = menciona a mais rigorosa;; 1 = escolhe uma;; 0 = nenhuma.
 - **EX009 — Papel das estruturas.** Como Priscila usa as estruturas de referência? *Rubrica:* 3 = como listas de verificação organizadas, não metas de certificação;; 2 = menciona lista;; 1 = certificar;; 0 = nenhuma.
 - **EX010 — Primeira lacuna.** Por que o inventário desatualizado vem em primeiro lugar? *Rubrica:* 3 = os outros processos dependem dele;; 2 = menciona dependência;; 1 = aleatório;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 2 mapeia a prática. O capítulo 3 reúne evidências especializadas.
 
 <a id="ch-03"></a>
 
@@ -189,6 +197,10 @@ Dados sintéticos refletem premissas; pilotos reais podem mostrar resultados dif
 - **EX014 — Princípio da necessidade.** Que princípios exigem limitar os dados ao necessário? *Rubrica:* 3 = o artigo 5(1)(c) do GDPR e o art. 6º, III, da LGPD;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
 - **EX015 — Equipe resistente.** Por que a equipe antifraude aceitou o piloto? *Rubrica:* 3 = ele poderia lhe dar razão;; 2 = menciona justiça;; 1 = foi forçada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 3 testa a necessidade. O capítulo 4 trata de risco e ética.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco e ética avançados
@@ -231,6 +243,10 @@ Notas de ética precisam de exemplos para serem usáveis; princípios abstratos 
 - **EX019 — Artigo 38(6).** O que exige o artigo 38(6) do GDPR? *Rubrica:* 3 = as outras funções do DPO não podem gerar conflito de interesses;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
 - **EX020 — Segmentação revista.** Como a decisão de segmentação foi revista? *Rubrica:* 3 = categorias mais amplas e personalização mediante adesão;; 2 = uma;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 4 amplia risco e ética. O capítulo 5 compara alternativas de desenho.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Privacidade e proteção de dados: alternativas de design
@@ -272,6 +288,10 @@ Testes de banner medem comportamento, e não compreensão; acrescente verificaç
 - **EX023 — Por que testar B.** Por que testar B antes de C? *Rubrica:* 3 = menor mudança provavelmente conforme e fácil de implementar;; 2 = menciona simplicidade;; 1 = aleatório;; 0 = nenhuma.
 - **EX024 — Medida de arrependimento.** Que resultado mede o arrependimento? *Rubrica:* 3 = revogações em até noventa dias;; 2 = menciona revogações;; 1 = nenhum;; 0 = nenhuma.
 - **EX025 — Lei do consentimento para cookies.** Que dispositivo exige consentimento para cookies não essenciais? *Rubrica:* 3 = o artigo 5(3) da Diretiva ePrivacy;; 2 = menciona a ePrivacy;; 1 = só o GDPR;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 5 projeta alternativas. O capítulo 6 as avalia em um teste controlado.
 
 <a id="ch-06"></a>
 
@@ -336,6 +356,10 @@ Duas semanas podem não captar o comportamento sazonal; repita o teste mais tard
 - **EX029 — Consentimento duradouro.** Que benefício de negócio o banner B oferece? *Rubrica:* 3 = consentimentos em menor número, mas mais duradouros;; 2 = menciona estabilidade;; 1 = nenhum;; 0 = nenhuma.
 - **EX030 — Dúvida sobre a liberdade.** Por que os consentimentos obtidos com A são questionáveis? *Rubrica:* 3 = o design empurrou os usuários, e as revogações maiores sugerem que as escolhas não refletiam preferências;; 2 = menciona indução;; 1 = são válidos;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 6 avalia um desenho. O capítulo 7 integra a privacidade à organização.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Privacidade e proteção de dados: integração organizacional
@@ -378,6 +402,10 @@ As perguntas da triagem podem ser respondidas sem cuidado; confira as respostas 
 - **EX034 — Valor da coordenação.** Por que coordenar privacidade, segurança e riscos todo mês? *Rubrica:* 3 = evita duplicação e lacunas, tornando a proteção coerente;; 2 = menciona alinhamento;; 1 = desnecessário;; 0 = nenhuma.
 - **EX035 — DPIA antifraude.** Que mudança em produto existente acionou uma DPIA? *Rubrica:* 3 = as mudanças no modelo antifraude;; 2 = menciona fraude;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 7 integra a privacidade. O capítulo 8 trata de casos difíceis.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Privacidade e proteção de dados: casos difíceis
@@ -419,6 +447,10 @@ Os prazos de cada jurisdição mudam; confira os regulamentos vigentes.
 - **EX038 — Divulgação à polícia.** O que a Corvina divulgou à polícia? *Rubrica:* 3 = só as transações do período requisitado, com registro;; 2 = menciona limitação;; 1 = tudo;; 0 = nenhuma.
 - **EX039 — Incidente internacional.** Que autoridades foram notificadas no incidente do fornecedor? *Rubrica:* 3 = a autoridade de controle portuguesa pelo GDPR e a ANPD pela LGPD;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 - **EX040 — Mascaramento nos tickets.** Que correção preventiva seguiu o incidente? *Rubrica:* 3 = mascaramento automático dos dados de cartão nos tickets de suporte;; 2 = menciona mascaramento;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 8 trata de casos difíceis. O capítulo 9 oferece liderança e garantia.
 
 <a id="ch-09"></a>
 
@@ -484,6 +516,10 @@ Indicadores podem ser manipulados; audite os dados de origem.
 - **EX044 — Achado da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = número de operadores sem contrato subestimado por lacunas no registro;; 2 = menciona subestimação;; 1 = nada;; 0 = nenhuma.
 - **EX045 — História para o conselho.** Que quatro elementos Priscila usa para cada indicador vermelho? *Rubrica:* 3 = o que está errado, por que importa, o que corrige, quando;; 2 = três;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 9 lidera e garante. O capítulo 10 lê e critica pesquisas.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
@@ -525,6 +561,10 @@ Resumos simplificam; inclua links para os originais.
 - **EX048 — Teste local.** Por que os profissionais precisam testar localmente as afirmações das pesquisas? *Rubrica:* 3 = os contextos das pesquisas diferem dos seus;; 2 = menciona contexto;; 1 = confiar na pesquisa;; 0 = nenhuma.
 - **EX049 — Elementos do resumo.** O que contém cada entrada do resumo de Priscila? *Rubrica:* 3 = afirmação, evidências, limites, implicações;; 2 = três;; 1 = nenhum;; 0 = nenhuma.
 - **EX050 — Leitura compartilhada.** Quem recebe o resumo crítico? *Rubrica:* 3 = os multiplicadores de privacidade;; 2 = menciona colegas;; 1 = o conselho;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 10 critica pesquisas. O capítulo 11 entrega o projeto aplicado.
 
 <a id="ch-11"></a>
 
@@ -568,6 +608,10 @@ Números menores de retenção podem esconder repositórios não inventariados; 
 - **EX054 — Benefícios colaterais.** Cite dois benefícios colaterais do projeto. *Rubrica:* 3 = custos de armazenamento menores e pedidos de titulares mais rápidos;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
 - **EX055 — Sustentação.** O que sustenta a melhoria? *Rubrica:* 3 = monitoramento e inclusão dos sistemas novos antes do lançamento;; 2 = um;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 11 entrega a mudança. O capítulo 12 revisa e transfere o aprendizado.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -609,6 +653,10 @@ A autoavaliação é enviesada; peça a opinião de colegas e auditores.
 - **EX058 — Não é um modelo pronto.** Por que Priscila evita apresentar seu programa como modelo pronto? *Rubrica:* 3 = os contextos e os recursos diferem;; 2 = menciona contexto;; 1 = é universal;; 0 = nenhuma.
 - **EX059 — Normas em evolução.** Dê um exemplo de norma em evolução que ela precisa acompanhar. *Rubrica:* 3 = a edição de 2025 da ISO/IEC 27701;; 2 = menciona ISO;; 1 = nenhum;; 0 = nenhuma.
 - **EX060 — Áreas de desenvolvimento.** Cite duas áreas de desenvolvimento que Priscila planeja. *Rubrica:* 3 = engenharia de privacidade/privacidade diferencial, interações com reguladores, mentoria;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 12 conclui o percurso de pós-graduação. Seguem-se as resoluções e, depois, as referências.
 
 <a id="worked-results"></a>
 

@@ -74,6 +74,10 @@ As taxas de base aqui são ilustrativas; as taxas reais precisam ser estimadas.
 - **EX002 — Premissa do aplicativo popular.** Que premissa oculta há em "o aplicativo é popular, então é seguro"? *Rubrica:* 3 = a popularidade implica tratamento cuidadoso dos dados;; 2 = cita uma premissa;; 1 = nenhuma;; 0 = nenhuma.
 - **EX003 — Aplicativos marcados.** Aproximadamente que parcela dos aplicativos marcados é de fato ruim no exemplo de Elena? *Rubrica:* 3 = cerca de um em seis;; 2 = uma minoria;; 1 = a maioria;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 1 aprimora o raciocínio. O capítulo 2 examina os sistemas computacionais.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
@@ -113,6 +117,10 @@ Um primeiro mapa deixa escapar sistemas paralelos, como planilhas pessoais; revi
 - **EX004 — Visão ausente.** O que o mapa de sistemas de Elena revelou? *Rubrica:* 3 = ninguém tinha uma visão completa de onde ficam os dados dos alunos;; 2 = menciona lacunas;; 1 = nada;; 0 = nenhuma.
 - **EX005 — A nuvem não é automática.** Por que o armazenamento em nuvem não é automaticamente menos privado? *Rubrica:* 3 = uma nuvem bem configurada pode ser mais segura que um servidor escolar sem atualizações;; 2 = menciona configuração;; 1 = diz que a nuvem é pior;; 0 = nenhuma.
 - **EX006 — Controles nos dispositivos.** Que controles nos dispositivos Elena recomenda? *Rubrica:* 3 = criptografia de disco completo nos notebooks e saída automática nos tablets compartilhados;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 2 mapeia os sistemas. O capítulo 3 começa a programação.
 
 <a id="ch-03"></a>
 
@@ -154,6 +162,10 @@ Os dados sintéticos podem não ter os casos extremos reais; acrescente-os de pr
 - **EX008 — Duas saídas.** Como Elena muda a saída de frequência? *Rubrica:* 3 = contagens por turma para o uso geral; lista nominal só para o responsável pela frequência;; 2 = uma parte;; 1 = imprime nomes;; 0 = nenhuma.
 - **EX009 — Coluna inesperada.** O que o programa faz com uma coluna de saúde inesperada? *Rubrica:* 3 = para e explica;; 2 = avisa;; 1 = trata a coluna;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 3 programa com segurança. O capítulo 4 desenvolve a escrita acadêmica.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
@@ -193,6 +205,10 @@ O consentimento é uma base legal entre várias; as escolas podem se apoiar em o
 - **EX010 — Fontes originais.** Por que conferir as citações no texto legal original? *Rubrica:* 3 = fontes secundárias podem citar errado, como um blog fez sobre o consentimento para fotos;; 2 = menciona exatidão;; 1 = confia em blogs;; 0 = nenhuma.
 - **EX011 — Estrutura do parágrafo.** O que cada parágrafo argumentativo deve conter? *Rubrica:* 3 = uma afirmação, evidências e uma explicação que as ligue;; 2 = dois;; 1 = descrição;; 0 = nenhuma.
 - **EX012 — Resposta às objeções.** Como Elena responde à objeção do fortalecimento da comunidade? *Rubrica:* 3 = canais internos ou protegidos atingem a finalidade com menos exposição;; 2 = menciona alternativas;; 1 = ignora;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 4 constrói a argumentação. O capítulo 5 desenvolve o letramento em segurança.
 
 <a id="ch-05"></a>
 
@@ -234,6 +250,10 @@ Sem culpa não significa sem responsabilização; comportamentos descuidados rep
 - **EX014 — Violação acidental.** Enviar um boletim ao pai errado é uma violação? *Rubrica:* 3 = sim; a divulgação acidental conta;; 2 = sim;; 1 = não;; 0 = nenhuma.
 - **EX015 — Cultura de comunicação.** Por que agradecer aos funcionários que relatam erros depressa? *Rubrica:* 3 = o medo atrasa a comunicação, e o relógio de 72 horas exige rapidez;; 2 = menciona rapidez;; 1 = punir;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 5 constrói o letramento em segurança. O capítulo 6 apresenta as estruturas discretas.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
@@ -273,6 +293,10 @@ Os modelos simplificam; o acesso real costuma ter exceções que as tabelas de f
 - **EX016 — Comum, mas sensível.** Dê um exemplo de dado de aparência comum que pode ser de categoria especial. *Rubrica:* 3 = restrições alimentares que revelam religião ou saúde;; 2 = dá um exemplo;; 1 = nenhum;; 0 = nenhuma.
 - **EX017 — Achado na relação de acesso.** O que a relação de acesso revelou? *Rubrica:* 3 = a secretaria podia acessar planos de apoio de que não precisa;; 2 = menciona a secretaria;; 1 = nada;; 0 = nenhuma.
 - **EX018 — O elo mais fraco.** Por que um caminho de dados com várias etapas é tão protegido quanto seu elo mais fraco? *Rubrica:* 3 = os dados podem vazar em qualquer etapa, como um suboperador;; 2 = menciona etapas;; 1 = o mais forte;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 6 modela dados. O capítulo 7 trata de redes.
 
 <a id="ch-07"></a>
 
@@ -314,6 +338,10 @@ As exigências de proteção das crianças variam de país para país; consulte 
 - **EX020 — Retenção do filtro.** O que Elena recomendou para os logs do filtro? *Rubrica:* 3 = retenção mais curta, acesso só para os responsáveis pela proteção e transparência;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX021 — Dano do monitoramento excessivo.** Como o monitoramento excessivo pode prejudicar as crianças? *Rubrica:* 3 = pode desencorajá-las de buscar ajuda online sobre assuntos sensíveis;; 2 = menciona efeito inibidor;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 7 examina redes. O capítulo 8 aprofunda a programação.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
@@ -353,6 +381,10 @@ Os pseudônimos com chave podem ser revertidos por quem tiver a chave; proteja-a
 - **EX022 — Acesso por turma.** Como o aplicativo de Elena decide se um professor vê um registro? *Rubrica:* 3 = verificações de função e finalidade, mais a participação na turma;; 2 = menciona a função;; 1 = mostra tudo;; 0 = nenhuma.
 - **EX023 — Pseudonimizado, ainda pessoal.** Por que o conjunto de leitura pseudonimizado continua sendo de dados pessoais? *Rubrica:* 3 = a chave pode reidentificar os alunos;; 2 = menciona a chave;; 1 = anônimo;; 0 = nenhuma.
 - **EX024 — Acesso remanescente.** Que teste reprovado Elena corrigiu? *Rubrica:* 3 = professores que mantinham o acesso depois de deixar uma turma;; 2 = menciona acesso;; 1 = nenhum;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 8 implementa controles. O capítulo 9 estuda dados e bancos de dados.
 
 <a id="ch-09"></a>
 
@@ -424,6 +456,10 @@ Contar alunos por aplicativo conta duas vezes as crianças que usam vários apli
 - **EX026 — O mais grave.** Por que o ReadAlong é o caso mais grave? *Rubrica:* 3 = marcação de necessidades especiais, transferência para os EUA e ausência de contrato;; 2 = dois motivos;; 1 = escala;; 0 = nenhuma.
 - **EX027 — Registro vivo.** Por que manter o banco como um registro vivo? *Rubrica:* 3 = os aplicativos mudam, então consultas regulares encontram novas lacunas;; 2 = menciona atualizações;; 1 = auditoria pontual;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 9 consulta dados. O capítulo 10 discute ética e prática autorizada.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
@@ -464,6 +500,10 @@ Os códigos pessoais podem ser vagos; ligue cada valor a um comportamento concre
 - **EX029 — Recusar dados reais.** Por que Elena recusa a planilha real? *Rubrica:* 3 = seu estágio só autoriza dados sintéticos;; 2 = menciona autoridade;; 1 = aceita;; 0 = nenhuma.
 - **EX030 — Encaminhar a reclamação.** Por que encaminhar a investigação da reclamação ao responsável pela proteção de dados? *Rubrica:* 3 = exige autoridade e acesso que ela não tem;; 2 = menciona o papel;; 1 = investiga;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 10 define limites éticos. O capítulo 11 estuda sistemas operacionais.
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
@@ -503,6 +543,10 @@ Os métodos de apagamento seguro variam de dispositivo para dispositivo; verifiq
 - **EX031 — Risco da conta compartilhada.** O que há de errado com uma única conta compartilhada de alunos? *Rubrica:* 3 = arquivos e históricos ficam visíveis para todos os alunos;; 2 = menciona compartilhamento;; 1 = está tudo bem;; 0 = nenhuma.
 - **EX032 — Pasta de proteção.** Como a pasta de proteção das crianças foi corrigida? *Rubrica:* 3 = acesso restrito aos responsáveis pela proteção, com auditoria;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
 - **EX033 — Descarte de dispositivos.** Por que excluir as contas de usuário não basta antes de vender um notebook? *Rubrica:* 3 = os dados podem continuar recuperáveis no disco;; 2 = menciona recuperação;; 1 = basta;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 11 protege os sistemas. O capítulo 12 usa probabilidade e estatística.
 
 <a id="ch-12"></a>
 
@@ -565,6 +609,10 @@ Intervalos que quase não se sobrepõem são sugestivos, não um teste formal; u
 - **EX035 — Diferença da Kelso.** O que pode explicar a consciência maior na Kelso? *Rubrica:* 3 = uma carta anual listando os aplicativos, embora a causalidade não esteja provada;; 2 = menciona a carta;; 1 = nada;; 0 = nenhuma.
 - **EX036 — Proteção dos respondentes.** Como Elena protege os respondentes da pesquisa? *Rubrica:* 3 = remove identificadores do texto livre e só relata escolas com pelo menos vinte respostas;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 12 mede a conscientização. O capítulo 13 trata de identidade e acesso.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
@@ -605,6 +653,10 @@ A integração com o RH falha se os registros do RH atrasarem; as revisões cont
 - **EX038 — Resultado das revisões.** Quantas contas precisaram de mudanças na primeira e na segunda revisão? *Rubrica:* 3 = onze, depois três;; 2 = um número;; 1 = errado;; 0 = nenhuma.
 - **EX039 — Login adequado à idade.** Por que usar senhas com figuras para os alunos muito pequenos? *Rubrica:* 3 = uma segurança que eles não conseguem manejar será contornada;; 2 = menciona usabilidade;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 13 gerencia o acesso. O capítulo 14 estabelece as bases da privacidade.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos da privacidade
@@ -644,6 +696,10 @@ A escolha da base legal depende da legislação educacional de cada país; confi
 - **EX040 — Fluxo contextual.** Como a integridade contextual se aplica às informações familiares compartilhadas com uma professora? *Rubrica:* 3 = não devem fluir para outros pais nem para fornecedores;; 2 = menciona normas;; 1 = podem circular livremente;; 0 = nenhuma.
 - **EX041 — Uso indevido do consentimento.** Por que o consentimento é a base errada para dados necessários ao ensino? *Rubrica:* 3 = os pais não podem de fato recusar sem consequências;; 2 = menciona escolha;; 1 = sempre consentimento;; 0 = nenhuma.
 - **EX042 — Dados de igualdade.** O que Elena descobriu sobre os dados de monitoramento da igualdade? *Rubrica:* 3 = eram guardados com os nomes quando uma análise agregada bastaria;; 2 = menciona nomes;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 14 estabelece as bases. O capítulo 15 mede as evidências.
 
 <a id="ch-15"></a>
 
@@ -705,6 +761,10 @@ Vinte pedidos são poucos; um único atraso muda muito o percentual.
 - **EX044 — Prorrogação nas férias.** As férias escolares justificam prorrogar o prazo? *Rubrica:* 3 = não; a prorrogação é para complexidade ou volume, com aviso;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX045 — Contagens com percentuais.** Por que relatar contagens junto com os percentuais? *Rubrica:* 3 = números pequenos deixam os percentuais instáveis;; 2 = menciona tamanho;; 1 = desnecessário;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 15 mede o atendimento aos direitos. O capítulo 16 estuda arquitetura de segurança.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
@@ -744,6 +804,10 @@ Sistemas centrais concentram o risco; proteja-os e monitore-os de perto.
 - **EX046 — Separação da proteção.** Por que manter os registros de proteção das crianças em um sistema separado? *Rubrica:* 3 = uma conta de professor comprometida não os alcança;; 2 = menciona sensibilidade;; 1 = mesmo sistema;; 0 = nenhuma.
 - **EX047 — Benefício do login único.** O que o login único dá à rede? *Rubrica:* 3 = controle central e remoção rápida do acesso a todos os aplicativos;; 2 = menciona controle;; 1 = nada;; 0 = nenhuma.
 - **EX048 — Retenção dos backups.** Por que os backups precisam seguir as regras de retenção? *Rubrica:* 3 = os backups também guardam dados pessoais;; 2 = menciona dados;; 1 = estão isentos;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 16 projeta a arquitetura. O capítulo 17 trata dos conceitos de criptografia.
 
 <a id="ch-17"></a>
 
@@ -785,6 +849,10 @@ Dados cifrados continuam sendo dados pessoais; a criptografia reduz o risco, nã
 - **EX050 — Um único detentor da chave.** Qual era o risco de um só técnico guardar as chaves dos backups? *Rubrica:* 3 = os backups ficariam inutilizáveis se ele saísse ou perdesse a chave;; 2 = menciona perda;; 1 = nenhum;; 0 = nenhuma.
 - **EX051 — Limites da criptografia.** Contra o que a criptografia não protege? *Rubrica:* 3 = mau uso por usuários autorizados e coleta excessiva;; 2 = um;; 1 = protege contra tudo;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 17 explica a criptografia. O capítulo 18 apresenta os métodos de pesquisa.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
@@ -824,6 +892,10 @@ As entrevistas captam o comportamento relatado; compare-o com os registros sempr
 - **EX052 — Formulação exploratória.** Por que formular a questão como exploratória? *Rubrica:* 3 = pouco se sabe sobre o raciocínio dos professores, então as entrevistas são adequadas;; 2 = menciona novidade;; 1 = hipótese;; 0 = nenhuma.
 - **EX053 — Crianças nas transcrições.** Como Elena trata as menções a crianças nas entrevistas? *Rubrica:* 3 = pede que não as citem pelo nome e apaga os nomes das transcrições;; 2 = uma parte;; 1 = mantém;; 0 = nenhuma.
 - **EX054 — Influência do estágio.** Por que o papel de Elena no estágio pode afetar as respostas? *Rubrica:* 3 = os professores podem dizer o que acham que a rede quer ouvir;; 2 = menciona viés;; 1 = nenhum efeito;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 18 planeja a pesquisa. O capítulo 19 define o escopo e a teoria da proteção de dados.
 
 <a id="ch-19"></a>
 
@@ -865,6 +937,10 @@ A identificabilidade depende do contexto; a mesma tabela pode ser segura para um
 - **EX056 — Tabela sem nomes.** Como uma tabela de resultados sem nomes pode conter dados pessoais? *Rubrica:* 3 = células pequenas permitem identificar uma criança;; 2 = menciona números pequenos;; 1 = nunca;; 0 = nenhuma.
 - **EX057 — Lícito, mas prejudicial.** Dê um exemplo, tirado do capítulo, de tratamento lícito, mas prejudicial. *Rubrica:* 3 = compartilhar uma foto que mostra uma criança em angústia;; 2 = um exemplo;; 1 = nenhum;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 19 define o escopo. O capítulo 20 estuda casos fundamentais.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Privacidade e proteção de dados: casos fundamentais
@@ -905,6 +981,10 @@ Lições de outros domínios exigem cuidado quando transferidas para os dados de
 - **EX059 — Logs de atividade.** Por que os logs de atividade dos aplicativos de aprendizagem identificam? *Rubrica:* 3 = dados comportamentais detalhados podem ser ligados a pessoas, como as avaliações esparsas;; 2 = menciona detalhe;; 1 = não identificam;; 0 = nenhuma.
 - **EX060 — Consentimento neutro.** Que desenho de consentimento decorre da pesquisa comportamental? *Rubrica:* 3 = formulários neutros, sem caixas pré-marcadas nem pressão;; 2 = menciona desenho;; 1 = pré-marcar;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 20 aprende com casos. O capítulo 21 constrói modelos de sistemas.
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Privacidade e proteção de dados: modelos de sistema
@@ -944,6 +1024,10 @@ Os registros envelhecem depressa; amarre as atualizações aos processos de comp
 - **EX061 — Modelo por finalidade.** Por que modelar as atividades por finalidade, e não por sistema? *Rubrica:* 3 = a lei organiza os deveres em torno das finalidades; um sistema pode servir a várias;; 2 = menciona finalidade;; 1 = por sistema;; 0 = nenhuma.
 - **EX062 — Destinatário do censo.** Que papel tem uma autoridade local que recebe os dados do censo? *Rubrica:* 3 = controladora independente;; 2 = controladora;; 1 = operadora;; 0 = nenhuma.
 - **EX063 — Achado do percurso.** O que o percurso pelo dia da professora revelou? *Rubrica:* 3 = um aplicativo de mensagens com os pais, não registrado, usado para fotografias;; 2 = menciona aplicativo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 21 modela o tratamento. O capítulo 22 examina dados e dependências.
 
 <a id="ch-22"></a>
 
@@ -1006,6 +1090,10 @@ Pesos iguais tratam os critérios como igualmente importantes; as linhas vermelh
 - **EX064 — Aplicativos aprovados.** Quais aplicativos são aprovados, e com que pontuação? *Rubrica:* 3 = MathsQuest com 10 e Timetabler com 8;; 2 = um;; 1 = errado;; 0 = nenhuma.
 - **EX065 — Linha vermelha.** Por que tornar a publicidade para alunos uma rejeição automática? *Rubrica:* 3 = perfilar crianças para marketing contraria sua proteção especial;; 2 = menciona crianças;; 1 = só pontos;; 0 = nenhuma.
 - **EX066 — Correção do ClassChat.** O que elevou a pontuação do ClassChat para 10? *Rubrica:* 3 = assinou um contrato e acrescentou a exclusão mediante pedido;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 22 avalia as dependências. O capítulo 23 aplica métodos estatísticos de controle de divulgação.
 
 <a id="ch-23"></a>
 
@@ -1076,6 +1164,10 @@ A supressão em várias tabelas publicadas ainda pode ser desfeita combinando-as
 - **EX068 — Contagem suprimida.** Quantas células foram suprimidas, e por quê? *Rubrica:* 3 = quatro: duas primárias abaixo de cinco e duas complementares;; 2 = só o número;; 1 = errado;; 0 = nenhuma.
 - **EX069 — Limiar mais alto.** Quando Elena recomenda um limiar mais alto? *Rubrica:* 3 = para grupos sensíveis, como os alunos com necessidades especiais;; 2 = menciona sensibilidade;; 1 = nunca;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 23 controla a divulgação. O capítulo 24 projeta controles.
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Privacidade e proteção de dados: controles
@@ -1116,6 +1208,10 @@ As métricas de treinamento medem mais a presença que o comportamento; combine-
 - **EX071 — Retenção das fotos.** Por quanto tempo as fotografias dos boletins são mantidas na tabela? *Rubrica:* 3 = durante o ano corrente;; 2 = aproximadamente;; 1 = indefinidamente;; 0 = nenhuma.
 - **EX072 — Responsáveis importam.** Por que todo controle precisa de um responsável? *Rubrica:* 3 = controles sem responsável se deterioram em silêncio;; 2 = menciona manutenção;; 1 = opcional;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 24 projeta controles. O capítulo 25 é o primeiro laboratório.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratório I
@@ -1155,6 +1251,10 @@ As configurações do laboratório podem se afastar das de produção; compare-a
 - **EX073 — Acesso inesperado.** Que acesso inesperado o teste revelou? *Rubrica:* 3 = um coordenador de ano conseguia ver as anotações de proteção das crianças;; 2 = menciona proteção;; 1 = nenhum;; 0 = nenhuma.
 - **EX074 — Teste do tablet perdido.** O que a simulação do tablet perdido verificou? *Rubrica:* 3 = que o apagamento remoto funciona e que não há dados de alunos em cache no dispositivo;; 2 = um;; 1 = nada;; 0 = nenhuma.
 - **EX075 — Áreas não testadas.** Por que registrar o que não foi testado? *Rubrica:* 3 = mostra onde falta garantia, como na exclusão pelos fornecedores;; 2 = menciona lacunas;; 1 = desnecessário;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 25 testa controles. O capítulo 26 aplica outros métodos.
 
 <a id="ch-26"></a>
 
@@ -1217,6 +1317,10 @@ As marcações precisam ser exatas; alunos não marcados nas fotografias escapam
 - **EX077 — Fotos retidas.** Quais fotografias exigem ação? *Rubrica:* 3 = a do dia esportivo (P02) e a do coral (P05, P08);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 - **EX078 — Honestidade sobre a revogação.** O que os pais precisam saber sobre a revogação? *Rubrica:* 3 = ela interrompe o uso futuro, mas não recolhe as cópias impressas;; 2 = menciona limites;; 1 = tudo é removido;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 26 gerencia o consentimento. O capítulo 27 verifica controles.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Privacidade e proteção de dados: verificação
@@ -1256,6 +1360,10 @@ A comparação com a rede deixa passar os aplicativos usados em dispositivos de 
 - **EX079 — Resultado da amostra.** O que a amostra de contas encontrou? *Rubrica:* 3 = duas de vinte contas com permissões extras;; 2 = só o número;; 1 = nada;; 0 = nenhuma.
 - **EX080 — Aplicativos não aprovados.** Como os aplicativos não aprovados foram encontrados? *Rubrica:* 3 = comparando os domínios acessados com a lista de aprovados;; 2 = menciona a rede;; 1 = pesquisa;; 0 = nenhuma.
 - **EX081 — Afirmação de conformidade.** Por que Elena evita afirmar conformidade total? *Rubrica:* 3 = as evidências não a sustentam e ainda há falhas;; 2 = menciona evidências;; 1 = afirma;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 27 verifica. O capítulo 28 analisa falhas.
 
 <a id="ch-28"></a>
 
@@ -1297,6 +1405,10 @@ A análise de causa-raiz pode parar cedo demais; continue perguntando por quê a
 - **EX083 — Motivo da notificação.** Por que a rede notificou a autoridade de controle? *Rubrica:* 3 = os dados de necessidades especiais tornaram provável o risco aos alunos;; 2 = menciona sensibilidade;; 1 = desnecessário;; 0 = nenhuma.
 - **EX084 — Correção duradoura.** Dê uma correção duradoura recomendada por Elena. *Rubrica:* 3 = por exemplo, colunas mínimas por padrão na exportação;; 2 = um exemplo;; 1 = só retreinar;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 28 aprende com as falhas. O capítulo 29 conduz as operações.
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Privacidade e proteção de dados: operações
@@ -1336,6 +1448,10 @@ Os pontos focais precisam de tempo e treinamento; nomeá-los não basta.
 - **EX085 — Finalidade do calendário.** O que o calendário de operações proporciona? *Rubrica:* 3 = transforma tarefas separadas em uma rotina previsível;; 2 = menciona rotina;; 1 = nada;; 0 = nenhuma.
 - **EX086 — Ocultação.** Por que ocultar partes dos e-mails num pedido de acesso? *Rubrica:* 3 = contêm informações sobre outros alunos;; 2 = menciona terceiros;; 1 = entregar tudo;; 0 = nenhuma.
 - **EX087 — Ponto único.** Que ponto único de falha Elena identifica? *Rubrica:* 3 = o responsável pela proteção de dados como única pessoa a conduzir as operações;; 2 = menciona o responsável;; 1 = nenhum;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 29 conduz as operações. O capítulo 30 é o segundo laboratório.
 
 <a id="ch-30"></a>
 
@@ -1377,6 +1493,10 @@ Os fornecedores podem confirmar a exclusão sem verificá-la; peça evidências 
 - **EX089 — Processo de saída.** O que Elena acrescentou ao processo de saída? *Rubrica:* 3 = confirmação de exclusão pelos fornecedores, com lembrete em duas semanas;; 2 = menciona confirmação;; 1 = nada;; 0 = nenhuma.
 - **EX090 — Fronteiras.** Por que o segundo laboratório encontrou lacunas mais graves? *Rubrica:* 3 = as falhas costumam ocorrer nas fronteiras entre sistemas e fornecedores;; 2 = menciona fronteiras;; 1 = sorte;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 30 testa processos. O capítulo 31 examina casos avançados.
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Privacidade e proteção de dados: casos avançados
@@ -1416,6 +1536,10 @@ As regras de divulgação a familiares e à polícia variam conforme a jurisdiç
 - **EX091 — Aluna solicitante.** Como a escola deve responder ao pedido de acesso de uma aluna madura? *Rubrica:* 3 = em geral, diretamente à aluna, como titular de direitos;; 2 = menciona a aluna;; 1 = só aos pais;; 0 = nenhuma.
 - **EX092 — Verificações do pedido policial.** O que um pedido da polícia deve conter antes da divulgação? *Rubrica:* 3 = pedido escrito com finalidade e base legal, limitado aos dados necessários;; 2 = dois;; 1 = divulgar tudo;; 0 = nenhuma.
 - **EX093 — Registros de decisão.** Por que manter registros de decisão nos casos contestados? *Rubrica:* 3 = as decisões podem ser questionadas depois, e os registros mostram um raciocínio cuidadoso;; 2 = menciona questionamento;; 1 = opcional;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 31 trata de casos difíceis. O capítulo 32 explora interfaces interdisciplinares.
 
 <a id="ch-32"></a>
 
@@ -1457,6 +1581,10 @@ Traduzir entre disciplinas pode simplificar demais; confira os significados com 
 - **EX095 — Advogados e engenheiros.** O que Elena aprende trabalhando com o assessor jurídico? *Rubrica:* 3 = cada disciplina tem metade da resposta;; 2 = menciona cooperação;; 1 = os advogados decidem tudo;; 0 = nenhuma.
 - **EX096 — Acordo sobre a análise.** Que acordo sobre a análise de aprendizagem foi feito? *Rubrica:* 3 = resumos semanais por aluno guardados durante o ano letivo;; 2 = menciona resumos;; 1 = rastrear cliques;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 32 trabalha entre disciplinas. O capítulo 33 aprofunda os métodos de pesquisa.
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de pesquisa II
@@ -1496,6 +1624,10 @@ As contagens de temas dependem da codificação; um segundo codificador melhora 
 - **EX097 — Principal motivador.** Segundo as evidências combinadas, o que leva à maior parte das adoções sem verificação? *Rubrica:* 3 = o desconhecimento do processo;; 2 = menciona conhecimento;; 1 = resistência;; 0 = nenhuma.
 - **EX098 — Revisão rápida.** Que revisão rápida Elena recomendou? *Rubrica:* 3 = revisão dos aplicativos solicitados em até cinco dias letivos;; 2 = menciona rapidez;; 1 = nenhuma;; 0 = nenhuma.
 - **EX099 — Segunda entrevistadora.** Por que uma colega conduziu duas entrevistas? *Rubrica:* 3 = para verificar se o papel de Elena influenciava as respostas;; 2 = menciona viés;; 1 = sem motivo;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 33 analisa evidências. O capítulo 34 conduz um projeto comparativo.
 
 <a id="ch-34"></a>
 
@@ -1537,6 +1669,10 @@ A comparação baseada em documentos pode não captar a prática; as entrevistas
 - **EX101 — O contexto importa.** Por que uma organização não deve simplesmente copiar a outra? *Rubrica:* 3 = o contexto é diferente, então os princípios precisam ser adaptados;; 2 = menciona contexto;; 1 = copiar;; 0 = nenhuma.
 - **EX102 — Ética da comparação.** Com o que as duas organizações concordaram antes de participar? *Rubrica:* 3 = o objetivo é aprender, e não ranquear publicamente;; 2 = menciona consentimento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 34 compara práticas. O capítulo 35 propõe o projeto final.
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Proposta de projeto final
@@ -1576,6 +1712,10 @@ Os portais podem deslocar o risco em vez de eliminá-lo; uma violação poderia 
 - **EX103 — Finalidade do portal.** Que problema o portal resolve? *Rubrica:* 3 = o envio de relatórios sensíveis por e-mail ao destinatário errado;; 2 = menciona e-mail;; 1 = nenhum;; 0 = nenhuma.
 - **EX104 — Critério de justiça.** Por que incluir alternativas para os pais sem internet? *Rubrica:* 3 = para que as famílias com acesso digital limitado não sejam excluídas;; 2 = menciona justiça;; 1 = ignorar;; 0 = nenhuma.
 - **EX105 — Necessidade da DPIA.** Por que planejar uma DPIA para o portal? *Rubrica:* 3 = trata dados de crianças em grande escala, atendendo aos critérios do WP248;; 2 = menciona crianças;; 1 = desnecessária;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 35 propõe o projeto final. O capítulo 36 é a prática de campo.
 
 <a id="ch-36"></a>
 
@@ -1617,6 +1757,10 @@ A rotatividade dos voluntários desfaz as práticas; mantenha as instruções cu
 - **EX107 — Equilíbrio das alergias.** Como os dados de alergia são tratados nas atividades? *Rubrica:* 3 = cartão impresso guardado com segurança e triturado depois;; 2 = uma parte;; 1 = e-mail;; 0 = nenhuma.
 - **EX108 — Orientação proporcional.** Por que evitar estruturas complexas para a associação? *Rubrica:* 3 = os voluntários não têm tempo; poucos passos reduzem a maior parte do risco;; 2 = menciona simplicidade;; 1 = estrutura completa;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 36 serve à comunidade. O capítulo 37 revisa evidências.
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
@@ -1656,6 +1800,10 @@ Uma revisão curta pode deixar estudos de fora; registre os métodos de busca.
 - **EX109 — Desfecho menos estudado.** Que desfecho é o menos estudado nas pesquisas sobre treinamento? *Rubrica:* 3 = a redução dos incidentes;; 2 = menciona incidentes;; 1 = conhecimento;; 0 = nenhuma.
 - **EX110 — Crédito pela melhoria.** Por que o treinamento não pode receber o crédito pela queda dos e-mails enviados ao destinatário errado? *Rubrica:* 3 = mudanças técnicas aconteceram ao mesmo tempo;; 2 = menciona confusão;; 1 = crédito total;; 0 = nenhuma.
 - **EX111 — Justificar versus desenhar.** Qual é a diferença entre justificar e desenhar o treinamento? *Rubrica:* 3 = ele pode ser esperado de qualquer modo, mas as evidências devem moldar seu desenho;; 2 = menciona evidências;; 1 = são iguais;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 37 revisa evidências. O capítulo 38 implementa o projeto final.
 
 <a id="ch-38"></a>
 
@@ -1697,6 +1845,10 @@ Os códigos pelo correio atrasam a ativação; equilibre a segurança com a conv
 - **EX113 — Erro de vinculação.** Como o erro de vinculação foi detectado e corrigido? *Rubrica:* 3 = um pai viu um nome desconhecido; foi acrescentada uma etapa de confirmação;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
 - **EX114 — E-mails remanescentes.** Por que alguns funcionários ainda mandavam relatórios por e-mail? *Rubrica:* 3 = não sabiam enviar arquivos grandes;; 2 = menciona treinamento;; 1 = recusaram;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 38 implementa o portal. O capítulo 39 o avalia.
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Avaliação do projeto final
@@ -1737,6 +1889,10 @@ Um período letivo é pouco; os efeitos podem mudar quando a novidade passar.
 - **EX116 — Questão de equidade.** Por que a baixa ativação é uma questão de equidade? *Rubrica:* 3 = as famílias que não acessam o portal perdem informações oportunas;; 2 = menciona justiça;; 1 = só técnica;; 0 = nenhuma.
 - **EX117 — Nova necessidade.** Que nova necessidade a avaliação revelou? *Rubrica:* 3 = o compartilhamento seguro com profissionais externos;; 2 = menciona profissionais;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 39 avalia com honestidade. O capítulo 40 apresenta a monografia.
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Trabalho de conclusão e apresentação
@@ -1776,6 +1932,10 @@ A experiência de uma única rede pode não se generalizar; declare o contexto c
 - **EX118 — Argumento do trabalho.** Qual é o principal argumento do trabalho de Elena? *Rubrica:* 3 = a maior parte dos riscos vinha de processos comuns, reduzidos por controles práticos e medição;; 2 = menciona processos;; 1 = só tecnologia;; 0 = nenhuma.
 - **EX119 — Resposta sobre a sustentabilidade.** Como Elena responde à pergunta sobre a sustentabilidade? *Rubrica:* 3 = responsáveis e um calendário de operações mantêm o registro e o portal;; 2 = menciona responsáveis;; 1 = nada;; 0 = nenhuma.
 - **EX120 — Trabalhos futuros.** Que trabalho futuro a banca sugeriu? *Rubrica:* 3 = envolver os alunos no desenho das informações de privacidade;; 2 = menciona alunos;; 1 = nenhum;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 40 conclui o percurso de bacharelado. Seguem-se as resoluções e, depois, as referências.
 
 <a id="worked-results"></a>
 

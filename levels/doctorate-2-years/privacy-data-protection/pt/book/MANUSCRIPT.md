@@ -103,6 +103,10 @@ A unicidade em uma população sintética apenas se aproxima da unicidade na pop
 - **EX006 — Declaração de interesses.** Por que Ines declara não ter interesse comercial? *Rubrica:* 3 = os leitores podem avaliar o viés; um interesse em produto poderia inclinar a comparação de métodos;; 2 = diz que é obrigatório;; 1 = omite as razões;; 0 = nenhuma.
 - **EX007 — Valor do pré-registro.** Contra o que o pré-registro do plano de análise protege? *Rubrica:* 3 = contra escolher métricas ou limiares depois de ver resultados que favorecem um método;; 2 = menciona viés em geral;; 1 = diz que é burocracia;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 1 define uma pergunta falseável, regras de integridade e uma linha de base de unicidade. O capítulo 2 mapeia a fronteira da pesquisa, de Warren e Brandeis à privacidade diferencial.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Privacidade e proteção de dados: fronteira da pesquisa
@@ -150,6 +154,10 @@ Um mapa da literatura simplifica; a privacidade diferencial também tem variante
 - **EX012 — Sentido da sensibilidade.** O que é a sensibilidade de uma consulta de contagem, e por que ela importa? *Rubrica:* 3 = o máximo que uma pessoa pode alterá-la, um; a escala do ruído é a sensibilidade sobre épsilon;; 2 = define sensibilidade de modo vago;; 1 = cita apenas o épsilon;; 0 = nenhuma.
 - **EX013 — Conhecimento prévio.** Que vantagem a privacidade diferencial tem sobre os modelos sintáticos? *Rubrica:* 3 = sua garantia vale independentemente do conhecimento prévio do atacante;; 2 = menciona atacantes;; 1 = diz que é mais nova;; 0 = nenhuma.
 - **EX014 — Enunciado da lacuna.** Enuncie em uma frase a lacuna de pesquisa de Ines. *Rubrica:* 3 = poucos estudos comparam as duas famílias em uma publicação, com um ataque e um teste de utilidade com usuários;; 2 = menciona comparação;; 1 = diz que é preciso mais pesquisa;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 2 mapeia teoria, modelos, ataques e privacidade diferencial até chegar a uma lacuna precisa. O capítulo 3 transforma a lacuna em uma proposta com uma linha de base de generalização.
 
 <a id="ch-03"></a>
 
@@ -219,6 +227,10 @@ Três planejadores formam um painel pequeno; a aceitação é uma medida grossei
 - **EX019 — Avaliação às cegas.** Por que as tabelas dos planejadores não têm identificação? *Rubrica:* 3 = para impedir que expectativas sobre qualquer dos métodos influenciem as avaliações;; 2 = diz que é mais justo;; 1 = omite o motivo;; 0 = nenhuma.
 - **EX020 — Duas medidas de utilidade.** Por que informar tanto a aceitação dos planejadores quanto o erro absoluto médio? *Rubrica:* 3 = a aceitação mostra a utilidade real; o erro permite comparar com outros estudos;; 2 = cita uma;; 1 = diz que mais dados é melhor;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 3 fixa hipóteses, uma linha de base justa de k-anonimato e um teste de utilidade em duas partes. O capítulo 4 pilota a publicação com privacidade diferencial.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -287,6 +299,10 @@ Cinco células pequenas são poucas para estimativas precisas. Publicações rea
 - **EX024 — Erro nas células pequenas.** Que erro relativo as células pequenas mostram com épsilon 0,5? *Rubrica:* 3 = 22,0%;; 2 = cerca de um quinto;; 1 = número errado;; 0 = nenhuma.
 - **EX025 — Pergunta de composição.** Por que a Valemont precisa decidir se o épsilon vale por tabela, por dia ou por ano? *Rubrica:* 3 = publicações repetidas se compõem, então a garantia total depende da unidade de contabilização;; 2 = menciona tabelas repetidas;; 1 = ignora a composição;; 0 = nenhuma.
 - **EX026 — Contagens negativas.** Que questão de pós-processamento o piloto omite? *Rubrica:* 3 = contagens com ruído podem ser negativas ou fracionárias e precisam ser tratadas sem quebrar a garantia;; 2 = menciona arredondamento;; 1 = diz que nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 4 replica o mecanismo e expõe o erro em células pequenas e a contabilidade do orçamento. O capítulo 5 conduz o estudo principal com um ataque independente.
 
 <a id="ch-05"></a>
 
@@ -359,6 +375,10 @@ Um único modelo de atacante não representa todos os atacantes. A privacidade d
 - **EX031 — Validação às cegas.** Por que a equipe de validação trabalha sem o código de Ines? *Rubrica:* 3 = para que erros do código dela não sejam copiados e a verificação seja independente;; 2 = menciona independência;; 1 = diz que é mais rápido;; 0 = nenhuma.
 - **EX032 — Ataque não planejado.** Por que informar o ataque adicional de vários dias que enfraqueceu o k-anonimato? *Rubrica:* 3 = a validação precisa poder encontrar problemas; escondê-lo enviesaria a tese;; 2 = menciona honestidade;; 1 = omite;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 5 mede o risco sob um ataque declarado e o valida de forma independente. O capítulo 6 enfrenta a crítica dos pares e revisa as afirmações.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica dos pares e revisão
@@ -401,6 +421,10 @@ Restringir as afirmações pode ir longe demais e não deixar nada útil; Ines m
 - **EX036 — Registrar as críticas.** Por que anotar as críticas por inteiro antes de responder? *Rubrica:* 3 = para responder ao argumento real, não a uma versão mais fraca;; 2 = menciona precisão;; 1 = omite;; 0 = nenhuma.
 - **EX037 — Revisão saudável.** É uma fraqueza que duas críticas tenham mudado as afirmações dela? *Rubrica:* 3 = não; ajustar as afirmações à evidência é o propósito da revisão;; 2 = diz que está tudo bem;; 1 = diz que é um fracasso;; 0 = nenhuma.
 - **EX038 — Replicação com dados reais.** Que condições Ines impõe a uma futura replicação com dados reais? *Rubrica:* 3 = dentro do ambiente seguro, com base legal e uma avaliação de impacto (DPIA);; 2 = cita uma;; 1 = omite;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 6 mostra a crítica aprimorando as afirmações. O capítulo 7 monta a tese e um arquivo de reprodutibilidade sem vazar dados pessoais.
 
 <a id="ch-07"></a>
 
@@ -466,6 +490,10 @@ Uma verificação por palavra-chave só encontra os identificadores que foi inst
 - **EX043 — Alcance da concepção.** Por que a proteção de dados desde a concepção alcança o arquivo da pesquisa? *Rubrica:* 3 = os produtos podem vazar dados pessoais tanto quanto os sistemas;; 2 = menciona os produtos;; 1 = limita-a aos sistemas;; 0 = nenhuma.
 - **EX044 — Declaração de dados.** O que a declaração de dados de Ines deve explicar? *Rubrica:* 3 = conteúdo, exclusões e como pedir acesso a dados reais;; 2 = cita um;; 1 = omite;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 7 produz uma afirmação delimitada e um arquivo limpo. O capítulo 8 prepara a defesa e a publicação.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -508,6 +536,10 @@ Uma defesa bem-sucedida não prova uma verdade universal; outras autoridades pre
 - **EX048 — Recomendação ao conselho.** O que o informe ao conselho recomendou? *Rubrica:* 3 = interromper a publicação só com tokens, piloto de contagens com DP nas linhas movimentadas, acesso restrito nas pouco movimentadas;; 2 = duas partes;; 1 = uma parte;; 0 = nenhuma.
 - **EX049 — Papel do artigo 35.** Por que o novo processo de publicação precisa de uma DPIA? *Rubrica:* 3 = o artigo 35 a exige quando o tratamento é suscetível de resultar em alto risco;; 2 = menciona risco;; 1 = diz que é opcional;; 0 = nenhuma.
 - **EX050 — Cautela na transferência.** Que cautela Ines transmite a outras autoridades? *Rubrica:* 3 = suas populações e atacantes podem ser diferentes, então precisam validar localmente;; 2 = menciona a diferença;; 1 = diz que os resultados se transferem;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 8 encerra o percurso de doutorado com um resultado defendido e delimitado e uma decisão alterada. Seguem-se as resoluções e, depois, as referências.
 
 <a id="worked-results"></a>
 

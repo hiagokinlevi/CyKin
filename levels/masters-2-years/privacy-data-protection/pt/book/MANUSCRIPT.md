@@ -104,6 +104,10 @@ Trinta dias aproximam "um mês", cuja duração varia conforme o calendário. Um
 - **EX006 — Linha de base geral.** Que parcela de todos os pedidos de base está no prazo? *Rubrica:* 3 = 74,0%;; 2 = cerca de três quartos;; 1 = errado;; 0 = nenhuma.
 - **EX007 — Justificativa dos desfechos.** Por que ligar cada desfecho ao interesse do requerente? *Rubrica:* 3 = uma métrica fácil pode perder o que importa para quem exerce o direito;; 2 = menciona relevância;; 1 = diz que contar basta;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 1 enquadra a pergunta e a linha de base. O capítulo 2 realiza um seminário avançado sobre para que servem os direitos de acesso.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Privacidade e proteção de dados: seminário avançado
@@ -148,6 +152,10 @@ A teoria enquadra a pergunta, mas não a mede. Rotas de exceção podem virar po
 - **EX013 — Incerteza de preferências.** Como Acquisti et al. (2015) sustenta respostas de acesso claras? *Rubrica:* 3 = as pessoas têm incerteza sobre suas preferências, então ver os dados reais as ajuda a decidir;; 2 = menciona comportamento;; 1 = cita de modo errado;; 0 = nenhuma.
 - **EX014 — Padrão de completude.** Contra o que Hana julga uma resposta completa? *Rubrica:* 3 = a lista de informações exigidas pelo artigo 15;; 2 = menciona o artigo 15;; 1 = intuição;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 2 amplia o conjunto de resultados para qualidade e segurança. O capítulo 3 desenha o estudo com ética e reprodutibilidade.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -191,6 +199,10 @@ Desenhos interrompidos não descartam todas as alternativas; medir a composiçã
 - **EX019 — Código até os dados.** O que significa aqui "levar o código até os dados"? *Rubrica:* 3 = o script roda dentro da Brookfield e só saem agregados;; 2 = menciona o local;; 1 = exporta os dados;; 0 = nenhuma.
 - **EX020 — Complexidade predefinida.** Por que definir a complexidade antes de ver os resultados? *Rubrica:* 3 = para impedir que a definição seja ajustada para favorecer o portal;; 2 = menciona viés;; 1 = diz que é organizado;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 3 fixa desenho, ética e reprodutibilidade. O capítulo 4 lista explicações concorrentes para qualquer melhoria.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Privacidade e proteção de dados: explicações concorrentes
@@ -233,6 +245,10 @@ As verificações reduzem, mas raramente eliminam, as explicações concorrentes
 - **EX024 — Dados discretos.** Por que usar dados rotineiros dos chamados em vez de registros extras? *Rubrica:* 3 = registros extras poderiam mudar o comportamento da equipe e acrescentar trabalho;; 2 = menciona observação;; 1 = omite;; 0 = nenhuma.
 - **EX025 — Regra de melhora.** Enuncie a regra de melhora que Hana fixou de antemão. *Rubrica:* 3 = a conclusão no prazo sobe e nem a completude nem a segurança pioram;; 2 = duas partes;; 1 = uma parte;; 0 = nenhuma.
 - **EX026 — Concorrentes desconhecidas.** Por que uma lista de concorrentes nunca é completa? *Rubrica:* 3 = algumas explicações são desconhecidas do pesquisador;; 2 = menciona limites;; 1 = afirma completude;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 4 arma o desenho contra explicações rivais. O capítulo 5 redige a proposta e verifica o tamanho da amostra.
 
 <a id="ch-05"></a>
 
@@ -297,6 +313,10 @@ As fórmulas de poder presumem pedidos independentes; requerentes repetidos viol
 - **EX030 — Relógio legal.** Por que contar a partir do carimbo da sala de correspondência? *Rubrica:* 3 = o prazo corre a partir do recebimento, como as diretrizes confirmam;; 2 = menciona o recebimento;; 1 = usa a data de digitalização;; 0 = nenhuma.
 - **EX031 — Parágrafo da decisão.** O que o parágrafo da decisão acrescenta ao projeto? *Rubrica:* 3 = associa cada resultado a uma ação concreta na Brookfield;; 2 = menciona uso;; 1 = omite;; 0 = nenhuma.
 - **EX032 — Detectável versus importante.** Distinga uma mudança detectável de uma importante. *Rubrica:* 3 = a detectável depende do tamanho da amostra; a importante depende do dano aos requerentes;; 2 = define uma;; 1 = confunde as duas;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 5 dimensiona e pilota o estudo. O capítulo 6 coleta os dados e os analisa com um intervalo bootstrap.
 
 <a id="ch-06"></a>
 
@@ -375,6 +395,10 @@ Os intervalos por bootstrap presumem pedidos independentes e não cobrem o viés
 - **EX037 — Limites do intervalo.** O que o intervalo por bootstrap não capta? *Rubrica:* 3 = fraquezas do desenho, como a concorrente da reformulação do site;; 2 = menciona viés;; 1 = diz que capta toda a incerteza;; 0 = nenhuma.
 - **EX038 — Ordem de apresentação.** Por que apresentar primeiro os resultados estratificados? *Rubrica:* 3 = o número geral exagera o efeito do portal por causa da mudança de composição;; 2 = menciona clareza;; 1 = coloca o geral primeiro;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 6 produz um resultado delimitado e estratificado. O capítulo 7 o redige com limitações honestas.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -418,6 +442,10 @@ Um resumo curto pode perder nuances; ele deve remeter às limitações completas
 - **EX043 — Linguagem simples.** Como o resumo descreve o intervalo por bootstrap? *Rubrica:* 3 = como uma faixa em que a melhora real muito provavelmente está;; 2 = frase semelhante;; 1 = usa jargão;; 0 = nenhuma.
 - **EX044 — Revisão do encarregado.** Por que o encarregado de proteção de dados revisa o capítulo de métodos? *Rubrica:* 3 = para confirmar que não revela nada sobre clientes individuais;; 2 = menciona privacidade;; 1 = omite;; 0 = nenhuma.
 
+### Síntese
+
+O capítulo 7 redige uma dissertação delimitada e um resumo para decisão. O capítulo 8 enfrenta a revisão independente e a defesa.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -460,6 +488,10 @@ Entregar um script não garante seu uso correto; a Brookfield precisa de um resp
 - **EX048 — Pedidos sem conta.** Como são tratados os pedidos de pessoas sem conta? *Rubrica:* 3 = encaminhados à equipe com verificações proporcionais e apresentados separadamente;; 2 = menciona a equipe;; 1 = excluídos;; 0 = nenhuma.
 - **EX049 — Conjunto de monitoramento.** O que o relatório mensal da Brookfield vai incluir? *Rubrica:* 3 = conclusão dentro do prazo, completude e divulgações a pessoa errada;; 2 = dois;; 1 = um;; 0 = nenhuma.
 - **EX050 — Lição de desenho.** O que, segundo Hana, tornou o resultado crível? *Rubrica:* 3 = o desenho decidido cedo: desfecho legal, concorrentes, regra de melhora;; 2 = menciona o desenho;; 1 = diz que foi a estatística;; 0 = nenhuma.
+
+### Síntese
+
+O capítulo 8 conclui o percurso de mestrado com um resultado defendido e acompanhamento monitorado. Seguem-se as resoluções e, depois, as referências.
 
 <a id="worked-results"></a>
 
