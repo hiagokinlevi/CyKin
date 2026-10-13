@@ -118,6 +118,8 @@ Two consequences matter for security work. First, a slow link (a congested cellu
 
 Modern control centres run their SCADA servers, historians and directory on virtualization hosts, often shared between services. A shared hypervisor, directory, time source or storage array is a point where a fault in one sector becomes a fault in several. Lab 15 in Chapter 15 traces these dependencies with code; here, simply learn to mark every shared component on the diagram with the services that depend on it.
 
+At KVROC the same virtualization cluster runs scada-01, hist-02 and the hospital BMS server, so a host outage or a bad patch can affect water and healthcare monitoring together. Mark each shared component with every service that depends on it, and ask who owns the host when those services disagree about a change window.
+
 ### 1.5 Worked example: the Kestrel Vale operations centre (synthetic)
 
 You are a technical officer at the **Kestrel Vale Regional Operations Centre (KVROC)**, which runs supervisory systems for **Kestrel Water** (12 stations, KW-01 to KW-12), monitoring of building-management systems for **Kestrel General Hospital**, and the telecontrol front end for one substation (**SS-3**) of **Kestrel Grid**. Station RTUs sit in 10.10.0.0/16 (KW-*n* is 10.10.*n*.2); the control centre is 10.20.0.0/24 (SCADA server `scada-01` 10.20.0.10, engineering workstation `eng-ws-15` 10.20.0.15, historian `hist-02` 10.20.0.21); corporate desks are 10.30.0.0/16; the management network is 10.90.0.0/24 (jump host `jump-01` 10.90.0.20). All names and addresses are fictional.
@@ -166,6 +168,8 @@ The result says the requirement is already failed (11.33 s), mostly because of c
 
 Using the KVROC description, draw the control, monitoring and management paths in three colours. Mark every component that appears on more than one path, and every shared platform component. Keep the drawing: Chapters 6, 10 and 15 refine it.
 
+Use three colours or three page layers so that a shared switch or jump host stands out. Then check whether eng-ws-15 appears on both the management path and the control path: if it does, a compromise of that workstation reaches every station. Keep the drawing with Lab 1's budget, because a later tunnel or encryption proposal has to be judged against both the paths and the poll cycle.
+
 ### 1.7 Common errors and limits
 
 - Drawing only the network and forgetting the management path, which is where privilege lives.
@@ -173,6 +177,10 @@ Using the KVROC description, draw the control, monitoring and management paths i
 - Measuring link speed but not timeouts and retries; dead devices dominate poll cycles.
 - Assuming a parallel architecture fixes freshness; it changes the arithmetic, not the timeout.
 - Lab 1's model ignores retries, serial-line contention and protocol overhead; treat its numbers as a first estimate, then measure.
+
+- Forgetting that a dead station costs the full timeout on every poll, so one non-answering RTU can stretch the cycle more than a slow one.
+- Drawing the control and monitoring paths and leaving out the jump host, directory and time server.
+- Treating Lab 1's numbers as measured values rather than a first estimate that still needs retries and protocol overhead checked on site.
 
 ### Exercises — chapter 1
 
@@ -302,6 +310,8 @@ Reading the output line by line: the SCADA reads are normal; the engineering wor
 
 Decode the three frames below by hand, then add them to Lab 2 and confirm: `000900000006010100000010`, `000a0000000601050003 0000` (remove the space), `000b00000006020300640001`. Write down the function, address and quantity or value of each, and whether the unit identifier is what you expect for KW-04.
 
+Write the function, address and quantity or value for each frame, and whether the unit identifier matches what KW-04 uses. Then add the frames to Lab 2 and confirm that your hand decode matches the script. If a frame has a space in the hex, remove it before pasting; spaces are not part of the capture.
+
 ### 2.6 Common errors and limits
 
 - Treating port 502 traffic as Modbus without checking the protocol identifier and length.
@@ -309,6 +319,10 @@ Decode the three frames below by hand, then add them to Lab 2 and confirm: `0009
 - Alerting on every function-43 query, or on none; context (source, frequency) decides.
 - Forgetting that responses matter too: an exception response (function code + 0x80) tells you a request was refused (Chapter 12).
 - A decoder that sees only what the capture point sees: traffic between two devices on the same station switch never reaches a control-centre sensor.
+
+- Alerting on every write without checking whether the source is the engineering workstation named in policy.
+- Treating a malformed frame as an attack when it may be a truncated export or a non-Modbus probe; report it as malformed first.
+- Assuming a decoder at the control centre sees traffic between two devices on the same station switch.
 
 ### Exercises — chapter 2
 
@@ -440,6 +454,8 @@ A safe hardening order: (1) confirm a working key-based login for J. Tan and R. 
 
 On a virtual machine you own, run `sshd -T | sort` and compare the output with the file. Add a duplicate keyword lower in the file, reload, and confirm that the first value wins. Record the exact OpenSSH version, because behaviour of `Include` and `Match` blocks varies by version.
 
+Record the OpenSSH version and the path of every file that `sshd -T` shows as included. After you reload, open a second session before you close the first, so a bad ListenAddress or AllowGroups change cannot lock you out. Compare the effective values with Lab 3's policy table and note any keyword that appears twice in the file.
+
 ### 3.6 Common errors and limits
 
 - Reading the file instead of the effective configuration.
@@ -447,6 +463,10 @@ On a virtual machine you own, run `sshd -T | sort` and compare the output with t
 - Checking account names instead of UIDs.
 - Removing a service account's shell without checking scripts that depend on it.
 - Lab 3 handles neither `Include` files nor `Match` blocks; real audits must.
+
+- Editing PasswordAuthentication at the bottom of the file while an earlier yes still wins.
+- Removing vendor from sudo without a time-bound procedure for the next support visit.
+- Checking account names instead of UIDs, so a second root named backup2 is missed.
 
 ### Exercises — chapter 3
 
@@ -507,6 +527,8 @@ Check in an order where each step can assume the previous ones passed:
 ### 4.3 Record coordinates
 
 Every finding should say where it came from — file, line, and field — so that someone else can verify it. `csv.reader.line_num` counts physical lines read so far, including the header, so the first data row is line 2. Quoted fields containing newlines make physical lines differ from records; `line_num` reports the line where the record ended, which is still a usable coordinate.
+
+When you paste a finding into a ticket, keep the line number next to the station name, so the next person can open the export and go straight to the row. If a quoted field spans lines, say so, because the coordinate then marks the end of the record rather than its start.
 
 ### 4.4 Worked example: validating a station export (synthetic)
 
@@ -578,6 +600,8 @@ The JSON summary on the last line is deliberately machine-readable, so that a mo
 
 Add a station-identity check to Lab 4: only KW-01 to KW-12 are valid. Then add a row `KW-13,LEVEL_M,2.0,m,2026-10-12T05:58:00Z` and confirm it is rejected with its line number. Finally, make the timestamp parser accept an explicit `+00:00` offset as well as `Z` without accepting naive timestamps.
 
+Reject KW-13 with its line number and a reason that names the allowed set. For timestamps, accept both Z and an explicit plus-zero offset, and still reject a bare local time. Re-run the lab and confirm that the JSON summary's reject count rises by one for the new station.
+
 ### 4.6 Common errors and limits
 
 - Splitting CSV on commas.
@@ -586,6 +610,10 @@ Add a station-identity check to Lab 4: only KW-01 to KW-12 are valid. Then add a
 - Accepting naive timestamps and assuming local time.
 - Reporting "6 rejected" with no coordinates, which nobody can check.
 - Lab 4 checks single readings; rate-of-change and stuck values need a series (Chapter 8).
+
+- Letting nan through because comparisons with it are false, so an out-of-range check never fires.
+- Reporting only totals with no coordinates, so nobody can find the bad rows.
+- Coercing a decimal comma into a float and writing the invented value into the historian.
 
 ### Exercises — chapter 4
 
@@ -642,6 +670,8 @@ A technical scope answers, in writing, before work starts:
 
 Many questions can be answered without sending a packet: configuration exports, firewall logs, switch MAC tables, a passive capture from a mirror (SPAN) port, the historian's own records. Prefer these. When an active test is genuinely needed — for example to verify a deny rule in Chapter 11 — make it the smallest test that answers the question, from a named source, at an agreed time.
 
+Prefer a SPAN capture or a configuration export before any connect test. When an active test is needed, use a marked source address, the smallest action that answers the question, and an agreed window with operations informed at start and end.
+
 ### 5.3 What makes technical evidence usable
 
 A screenshot of a terminal proves little. Usable evidence records:
@@ -658,6 +688,8 @@ NIST's guide to integrating forensic techniques into incident response discusses
 ### 5.4 Four labels
 
 Every note you write in this course uses four labels. **Observed**: what a tool or person recorded, with source and time. **Inferred**: what you conclude, and why. **Done**: what you changed, under which change record. **Open**: what remains unknown, and who owns it. Mixing them — "the RTU was compromised" when you observed only a configuration session — is how wrong conclusions spread.
+
+A note that says only "RTU compromised" fails the test: it mixes inference with observation. Write the four labels on every working note in this course, including the KW-04 reachability check, so a reader can see what was measured and what remains open.
 
 ### 5.5 Worked example: scoping the KW-04 check (synthetic)
 
@@ -679,6 +711,8 @@ The working note after the test reads: *Observed* — connect from 10.30.99.9 to
 
 Write a scope for a passive capture on the control-centre switch's SPAN port for 24 hours. Include storage limits and who may read the capture, since it will contain process values and possibly credentials sent in clear text.
 
+State a maximum file size and a retention period, because a day of process values and clear-text credentials is both large and sensitive. Name who may read the capture and where it is stored, and say that the capture stops if the switch's mirror port affects forwarding. Mark the activity as passive and list stop conditions that include any operator request.
+
 ### 5.7 Common errors and limits
 
 - Starting work on a verbal "go ahead".
@@ -686,6 +720,10 @@ Write a scope for a passive capture on the control-centre switch's SPAN port for
 - Collecting evidence without UTC times or hashes.
 - Fixing first and collecting later.
 - Treating scope as paperwork: it is what stops a test becoming an incident.
+
+- Starting from a verbal go-ahead and writing the scope afterwards.
+- Scanning a subnet in a control network to discover devices.
+- Fixing a finding before collecting the evidence that showed it.  A scope written after the work cannot protect the process during it.
 
 ### Exercises — chapter 5
 
@@ -739,6 +777,8 @@ The common shape of a supervisory system — field, control, supervisory, operat
 
 For each **asset**: name, address, function, zone, owner, software and firmware versions, protocols spoken, management method and the physical consequence of loss or misuse. For each **conduit**: source zone, destination zone, protocol and port, direction of initiation, purpose, owner, enforcement point (which firewall rule) and monitoring point (which sensor sees it). For each **trust boundary**: what crosses it and what checks happen there.
 
+For eng-ws-15 record that it can program RTUs and that its loss or misuse has zone-wide consequence. For each conduit, name the firewall rule that should enforce it and the sensor that should see it, so a later verification knows where to look. Leave no asset without a zone and no permitted path without a conduit owner.
+
 ### 6.3 Sector differences that matter at the keyboard
 
 - **Water**: widely dispersed stations on cellular or radio links; Modbus or DNP3 telemetry; long equipment lives; small operators with limited staff. Consequences include loss of pressure, overflow and incorrect chemical dosing. CISA's advisory on attacks against internet-exposed Unitronics PLCs in water systems is a reminder that exposure plus default credentials is enough ([CISA AA23-335A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a)).
@@ -764,6 +804,8 @@ Declared conduits include: C1 Z2 scada-01 → Z1 tcp/502 read polls; C2 Z2 eng-w
 
 Extend the model with two conduits for Z3 (fep-01 to the outstation and the vendor's remote support path) and one for Z4. For each, record purpose, protocol, initiator, owner, enforcement point and monitoring point. Mark which conduits a single compromised Z5 host could abuse.
 
+For the vendor remote-support path into Z3, record whether it terminates on the jump host or reaches the outstation directly. For Z4, mark that KVROC has read access only. Then list which of those conduits a compromised jump host in Z5 could open, and which controls would still apply.
+
 ### 6.6 Common errors and limits
 
 - Zones drawn by IP subnet rather than by consequence and trust.
@@ -771,6 +813,10 @@ Extend the model with two conduits for Z3 (fep-01 to the outstation and the vend
 - Omitting the management zone because it is "IT".
 - Modelling the safety system as a normal controller.
 - A model that is never compared with observed traffic; Chapter 11 does that.
+
+- Drawing zones by subnet alone when two hosts in the same subnet have different consequences.
+- Leaving conduits without owners, so nobody can remove them later.
+- Putting a safety or protection function in the same zone as ordinary supervisory controllers.
 
 ### Exercises — chapter 6
 
@@ -884,6 +930,8 @@ Before correction, the RTU line (23:15:31Z) appeared *before* the HMI setpoint c
 
 Measure the offset of a machine you own against a public or local NTP server (for example `chronyc tracking` or `ntpq -p` on Linux, `w32tm /stripchart` on Windows), record it with the time of measurement, and repeat after 24 hours to see drift.
 
+Record the host, the reference, the offset and the time of measurement. After twenty-four hours, compare the new offset with the old one to see drift. Keep both readings with the timeline work in Lab 7, so a later investigation knows how uncertain a correction made from a single measurement would be.
+
 ### 7.6 Common errors and limits
 
 - Sorting by the text of mixed-offset timestamps.
@@ -891,6 +939,11 @@ Measure the offset of a machine you own against a public or local NTP server (fo
 - Dropping lines that do not parse; count and report them.
 - Assuming an offset measured today applied last night; drift and resynchronization change it, so state the uncertainty.
 - Assuming the absence of a log line means the absence of an event — many devices simply do not log.
+
+- Sorting mixed-offset timestamps as text and reversing the order of events.
+- Correcting clocks in the wrong direction; write corrected equals reported minus offset every time.
+- Dropping lines that do not parse instead of counting them as unparsed.
+- Treating a missing log line as proof that nothing happened.
 
 ### Exercises — chapter 7
 
@@ -958,6 +1011,8 @@ These rules are crude but transparent: when one fires, everyone can see why. Sta
 
 A value of 9.80 m on a 12 m tank passes every range check. If the previous minute read 2.96 m and the next 2.97 m, the 9.80 is impossible as a measurement. Conversely, a constant value is always "in range". Range checks protect against the absurd; **rate** and **variation** checks protect against the plausible-looking false.
 
+Use a maximum step from the process, such as half a metre per minute for a tank level, so that a single wild sample is caught even when it lies inside the instrument's range. Write the step limit next to the range limit in the tag's schema, and review both after every false alarm.
+
 ### 8.4 Worked example: four tags, twenty minutes (synthetic)
 
 **Lab 8** (save as `lab08.py`, run with `python3 lab08.py`):
@@ -1010,6 +1065,8 @@ Set thresholds from evidence, not guesses: look at a week of healthy data per ta
 
 Add a **drift** check to Lab 8: compare each tag's mean over the first five minutes with its mean over the last five minutes and flag a change larger than a tag-specific limit. Discuss why KW-01's steady rise should *not* be flagged, and what extra information (pump state, inflow) would make drift detection meaningful.
 
+KW-01's steady rise is process behaviour while a pump fills the tank, so a naive mean comparison would flag it wrongly. Drift becomes meaningful when you know the pump state or inflow, or when you compare two sensors that should agree. Set the tag-specific limit from a week of healthy data, and record the reason beside the number.
+
 ### 8.7 Common errors and limits
 
 - Treating every bad value as an attack — or none.
@@ -1017,6 +1074,10 @@ Add a **drift** check to Lab 8: compare each tag's mean over the first five minu
 - Stuck-value rules on tags that legitimately sit still.
 - Thresholds with no recorded rationale.
 - Lab 8 sees one series at a time; real investigation compares related tags (a pump running while flow is zero is a cross-tag inconsistency).
+
+- Applying a stuck-value rule to a tag that legitimately sits at zero while a pump is off.
+- Setting thresholds from a guess instead of from healthy data with a recorded rationale.
+- Investigating one series in isolation when a pump-running bit and a zero flow would show a cross-tag fault.
 
 ### Exercises — chapter 8
 
@@ -1076,6 +1137,8 @@ The CRC is **CRC-16/DNP**: polynomial 0x3D65, initial value 0, input and output 
 ### 9.3 Validate the tool first
 
 A CRC routine that is subtly wrong still produces numbers. Before using it, run a **known-answer test**: compute the CRC of `123456789` and compare with 0xEA82. Then a **negative test**: change one bit of a valid frame and confirm the check fails. Lab 9 does both — the `assert` line is the known-answer test — and record the Python version, because the result of any tool is evidence only if the tool is identified.
+
+Keep the assert that checks the catalogue value in the script, and fail the job if it does not hold after a change to the CRC function. Record the Python version next to every result that will be used as evidence. Run the negative test on a frame you corrupted yourself, so you know the checker rejects bad CRCs before you trust it on a capture.
 
 ### 9.4 Error detection is not authentication
 
@@ -1140,6 +1203,8 @@ Three frames are valid and expected. One has CRC `ffff` where `1506` was expecte
 
 Extend Lab 9 to verify the CRC of each 16-byte user-data block that follows the header. Construct a frame with 17 bytes of user data (one full block and one 1-byte block), compute both block CRCs, and corrupt one byte in the second block to show the check catches it.
 
+Construct the frame with one full sixteen-byte block and a one-byte block, each with its own CRC. Corrupt one byte in the second block and confirm that only that block's check fails. Keep the construction steps in the lab notes so a reviewer can rebuild the same frame.
+
 ### 9.7 Common errors and limits
 
 - Trusting a home-made checker without a known-answer test.
@@ -1147,6 +1212,10 @@ Extend Lab 9 to verify the CRC of each 16-byte user-data block that follows the 
 - Treating "CRC valid" as "authentic".
 - Active probing when a passive source answers the question.
 - Lab 9 checks headers only; transport and application layers carry the commands and need their own decoding.
+
+- Mixing Modbus big-endian fields with DNP3 little-endian addresses in the same decoder without stating the byte order.
+- Treating a valid CRC as proof of authenticity when the source address is unknown.
+- Active probing when a passive capture or a configuration export answers the question.
 
 ### Exercises — chapter 9
 
@@ -1273,9 +1342,13 @@ A sound change: delete R4 (after confirming with the owner what still uses it �
 
 Every configuration change in a control environment needs: the exact before and after; the reason (finding or requirement); the expected effect, written as tests; a rollback plan; the window agreed with operations; and who verifies. NIST's guide to security-focused configuration management describes baselines and change control ([SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)). The firewall export before and after is evidence; hash it (Chapter 5).
 
+Export and hash the rule set before and after the change, and keep both digests in the change record. Write the expected effect as the same tests Lab 10 runs, so verification is a re-run rather than a new invention. Agree the window with operations, and name who will confirm that SCADA polling still meets the freshness requirement after the change.
+
 ### 10.6 Practical activity
 
 Rewrite the fw-01 policy from the conduit list in Chapter 6: one rule per declared conduit, each with ticket and owner in its comment, then the default deny. Run Lab 10 on your version until all five tests pass and no rule is shadowed or redundant. Add two tests of your own for conduit C3.
+
+Put each allow above the default deny, with ticket and owner in the comment. Remove R4 and R6 rather than trying to patch them. Add two tests for conduit C3: jump host to control centre on tcp/22 allowed, and a corporate desk to the same port denied. Re-run until every test passes and no rule is shadowed or redundant.
 
 ### 10.7 Common errors and limits
 
@@ -1284,6 +1357,10 @@ Rewrite the fw-01 policy from the conduit list in Chapter 6: one rule per declar
 - Treating "looks like a duplicate" as "safe to keep".
 - Configuring supplier access as permanently enabled "for emergencies".
 - Lab 10 models a stateless first-match policy with exact containment; real firewalls add state, objects, NAT and zones, and their own analysis tools.
+
+- Reviewing a new rule without reading the rules above it that may already allow or deny the same traffic.
+- Deleting a broad rule without checking the firewall logs for current users.
+- Leaving supplier access permanently enabled for emergencies.
 
 ### Exercises — chapter 10
 
@@ -1326,6 +1403,8 @@ Chapter 10 changed configuration. A change is not finished when it is applied; i
 
 "The historian is hardened" cannot be tested. "SSH on hist-02 listens only on 10.90.0.21" can. Write each requirement so that a named test, run by someone else, could fail it. Split compound requirements: "only the SCADA server and engineering workstation reach station tcp/502" needs a positive test (SCADA still polls) **and** a negative test (another control-centre host is refused).
 
+Write each requirement so that a named test could fail it. Split compounds: only the SCADA server and engineering workstation may reach station tcp/502 needs a positive poll from the SCADA server and a negative refusal from another control-centre host. Put the requirement identifiers in the change record before the work starts.
+
 ### 11.2 Positive and negative tests
 
 **Negative tests** show a control blocks what it should; **positive tests** show it does not block what operations need. A firewall change that passes all its negative tests but stops historian collection has failed. In control environments the positive tests matter as much as the negative ones: availability is usually the first priority. NIST's testing guide discusses planning and executing technical tests ([SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)); continuous monitoring guidance stresses that control effectiveness must be re-shown over time, not assumed ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
@@ -1333,6 +1412,8 @@ Chapter 10 changed configuration. A change is not finished when it is applied; i
 ### 11.3 Evidence rules
 
 A test counts only if it has: an identifier, the requirement it verifies, the method, the time, the person, the result and an evidence file (Chapter 5). A "config review only" with no recorded output is a useful activity but not a test result. A requirement with no counted test is **untested** — not verified, and not failed. Reporting untested as verified is the single most common way verification misleads.
+
+A config review with no recorded output is useful activity but not a counted test. REQ-6 in Lab 11 stays untested until someone produces a deny line from the collector; reporting it as verified because the rule exists would hide the gap. Keep evidence files next to the test identifiers in the verification record.
 
 ### 11.4 Worked example: verifying CHG-2207 (synthetic)
 
@@ -1398,9 +1479,13 @@ Three requirements verified, two failed, one untested. REQ-3 failed because R4 w
 - Never verify a write-block by attempting a write to a live controller; verify it with a connect test and the firewall log, or against a spare device in a lab (Chapter 12).
 - Stop at the first unexpected behaviour.
 
+Prefer historian counts and firewall logs over generating traffic. When you must generate traffic, use a marked test source such as 10.30.99.9, a TCP connect with no Modbus payload, and an agreed window with operations informed. Never verify a write-block by writing to a live controller.
+
 ### 11.6 Practical activity
 
 Write a test for REQ-6 that does not touch a station: a connect attempt from the marked test desk to a control-centre port that should be denied, then a query on the collector for the matching deny line within 60 s. Add it to Lab 11 as T9 with an evidence file name and re-run.
+
+Use the marked test desk, then query the collector for the matching deny within sixty seconds. Add the test as T9 with an evidence file name and re-run Lab 11 so that REQ-6 moves from untested to verified or failed. Keep the collector query text in the evidence file so the test can be repeated.
 
 ### 11.7 Common errors and limits
 
@@ -1409,6 +1494,11 @@ Write a test for REQ-6 that does not touch a station: a connect attempt from the
 - Reporting "5 of 6 tests passed" instead of the status of each requirement.
 - Verifying once and assuming forever; re-verify after related changes.
 - Lab 11 treats any failing test as a failed requirement; a requirement can also be *partly* verified if a test covers only some of its scope — say so in words.
+
+- Running only negative tests and missing that historian collection stopped.
+- Counting a test without an evidence file.
+- Reporting five of six tests passed instead of each requirement's status.
+- Verifying once and never again after a related change.
 
 ### Exercises — chapter 11
 
@@ -1464,6 +1554,8 @@ A normal response to function 6 echoes the request. A normal response to functio
 ### 12.3 Logging inside the device
 
 The responder logs every read, every accepted write with its old and new value, and every exception. On real equipment these are exactly the records you wished you had in Chapter 7. A burst of exception 02 responses from one source is a strong sign of someone mapping the register space; a run of exception 03 is someone testing limits.
+
+On real equipment those logs are often missing, which is why the lab makes them visible. A burst of illegal-address exceptions from one source is a mapping sign; a run of illegal-value exceptions is someone testing limits. Keep the lab log with the hex responses so a reviewer can match each exception to a request.
 
 ### 12.4 Worked example: the bench responder (synthetic)
 
@@ -1548,9 +1640,13 @@ Read the hex responses. The first is a normal read: `03 06` (function 3, six byt
 
 Real devices differ: some ignore unit identifiers, some accept writes to any register, some crash on malformed requests, and few log anything. The responder handles one request at a time, has no concurrency, timeouts or partial reads. Its value is in making policy and exceptions visible, not in predicting a particular vendor's behaviour. Never use results from a lab to decide how a live device will respond to a test.
 
+Never use lab results to decide how a live device will respond to a test. Real devices differ in unit-identifier handling, write protection and logging, and many crash on malformed requests. State those gaps in the assessment, and keep live verification to scoped, authorized methods from Chapter 11.
+
 ### 12.7 Practical activity
 
 Add function 16 (write multiple registers) to the responder with the same policy: every register in the range must be writable and every value in limits, or the whole write is refused. Test four cases: all allowed; one address not writable; one value out of range; byte count inconsistent with quantity.
+
+Refuse the whole write if any register is not writable or any value is out of limits. Test all allowed, one address not writable, one value out of range, and a byte count that does not match the quantity. Record the four hex responses and the log lines next to them.
 
 ### 12.8 Common errors and limits
 
@@ -1558,6 +1654,10 @@ Add function 16 (write multiple registers) to the responder with the same policy
 - Accepting partial multi-register writes.
 - Forgetting the response for function 6 is an echo, then mis-parsing it.
 - Treating lab behaviour as vendor behaviour.
+
+- Binding a real listening socket for testing and leaving it on all interfaces.
+- Accepting a partial multi-register write that changes some registers before refusing others.
+- Treating the lab's exception behaviour as a vendor's behaviour.  State containment as a technical property in every lab report.
 
 ### Exercises — chapter 12
 
@@ -1670,9 +1770,13 @@ Chapter 10 left an open item: fw-01 denies corporate-desk traffic to stations, y
 
 Write as you go, in UTC, with the four labels: *observed*, *inferred*, *done*, *open*. A good log lets a colleague taking over at shift change continue without asking you anything, and lets an investigator later reconstruct what was changed and when. Chapter 16 gives a template; Chapter 18 seals it as project evidence.
 
+Write as you go in UTC with the four labels, so a colleague at shift change can continue without asking you anything. Include evidence references for each observation, such as the RTU config export hash and the jump-host log interval. Chapter 16 gives a template; Chapter 18 seals the log as project evidence.
+
 ### 13.6 Practical activity
 
 Add hypothesis H6 "RTU firmware crashed into a degraded mode" to Lab 13 with predictions you think it makes, and observe whether the existing observations refute it. If they do not, name the single additional read-only observation that would.
+
+If the existing observations do not refute H6, name one additional read-only check, such as a vendor diagnostic that reports firmware state, that would. Write the predictions before you invent the check, so the new observation has something to contradict. Keep H6 in the list until it is refuted or the incident process takes over.
 
 ### 13.7 Common errors and limits
 
@@ -1681,6 +1785,11 @@ Add hypothesis H6 "RTU firmware crashed into a degraded mode" to Lab 13 with pre
 - Treating a consistent hypothesis as proven; it is only *not yet refuted*.
 - Changing several things at once.
 - Lab 13 compares exact predicted values; real observations have uncertainty, and a single unreliable observation should not refute a hypothesis on its own.
+
+- Rebooting first and destroying volatile evidence.
+- Stopping at the first hypothesis that fits instead of testing predictions against all observations.
+- Treating a consistent hypothesis as proven; it is only not yet refuted.
+- Changing several things at once so that the fix cannot be attributed.
 
 ### Exercises — chapter 13
 
@@ -1791,9 +1900,13 @@ manifest digest fdea74f1d09e359c
 
 The automation account can read or change every host it manages, so: keep its credentials in a vault and rotate them; restrict where it may connect from; require review of changes to its desired state; alert on runs outside the schedule. The CISA advisory on long-term access to critical infrastructure describes actors using legitimate administration tools and valid accounts ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); an over-privileged automation account is exactly such a tool.
 
+Keep automation credentials in a vault, restrict where the account may connect from, and alert on runs outside the schedule. A tool that can change every host is as attractive to an adversary as an engineering workstation. Review changes to its desired state the same way you review firewall changes.
+
 ### 14.6 Practical activity
 
 Extend Lab 14 so that, for an unapproved change, it writes a preservation record — file name, old digest, new digest, size and modification time — into the temporary directory before printing the finding, and prints the preservation record's own SHA-256.
+
+Write the preservation record before printing the finding, and include the record's own digest in the output. That way a later investigator can show that the copy taken at detection time matches what the job claimed to save. Keep the temporary directory's cleanup after the hashes are recorded.
 
 ### 14.7 Common errors and limits
 
@@ -1802,6 +1915,11 @@ Extend Lab 14 so that, for an unapproved change, it writes a preservation record
 - Hashing only; no approved copy to compare content with.
 - Automation polling field devices aggressively and degrading the process.
 - Lab 14 ignores permissions, ownership and timestamps, which matter as much as content (a world-writable service file is drift).
+
+- Automatically reverting all drift and destroying evidence of an unapproved change.
+- Storing the manifest on the host it protects.
+- Hashing content only and ignoring permissions that make a service file world-writable.
+- Polling field devices so aggressively that the poll cycle fails.
 
 ### Exercises — chapter 14
 
@@ -1843,6 +1961,8 @@ Chapter 13 found a path to KW-04 that bypassed the firewall through a carrier ne
 ### 15.1 Interdependency
 
 Critical infrastructures depend on each other physically (power for pumps), through information (telemetry over a carrier network), geographically (shared ducts and sites) and logically (shared staff, software and administration). This classification comes from Rinaldi, Peerenboom and Kelly's widely cited paper ([Rinaldi et al., 2001](https://doi.org/10.1109/37.969131)). For a technician the most frequent surprises are *logical*: a directory, a hypervisor cluster, a time source or a monitoring collector shared by systems whose owners each think it is theirs.
+
+For a technician the most frequent surprises are logical: a directory, a hypervisor or a time source that several services share without any one owner claiming them. Draw those first, then the physical and carrier links. Lab 15 makes the shared nodes visible as counts across services.
 
 ### 15.2 Dependencies as a graph
 
@@ -1916,6 +2036,8 @@ CISA's National Critical Functions work frames these dependencies at national sc
 
 Add a `power-ups-a` node that `esx-02` and `esx-03` both need, and a `cell-carrier` node that `cell-router-kw` and `telco-mpls` both need. Re-run Lab 15 and record which components are now shared by all three services. Then propose one technical change for each.
 
+After the change, record which components are shared by all three services and propose one technical response for each, such as a second domain controller or a second power feed. Keep the new edges in the same format as the lab so that the graph stays runnable. Review the proposals with the three service owners before any change.
+
 ### 15.6 Common errors and limits
 
 - Listing direct dependencies only.
@@ -1923,6 +2045,11 @@ Add a `power-ups-a` node that `esx-02` and `esx-03` both need, and a `cell-carri
 - Assuming carriers isolate customers' private networks from each other and from corporate VPNs without checking.
 - Counting dependants instead of looking at which *services* and through which *paths*.
 - Lab 15's graph is binary (needs / does not need); real dependencies have degraded modes and timers (a cached credential works for hours; a clock drifts slowly).
+
+- Listing only direct dependencies and missing the hypervisor under the directory.
+- Treating the directory and time service as infrastructure with no service owner.
+- Assuming a carrier isolates customer private networks without checking.
+- Counting dependants without looking at which services and through which paths.
 
 ### Exercises — chapter 15
 
@@ -1999,6 +2126,8 @@ The CISA performance goals list controls on removable media and on device config
 
 Documents must not contain passwords, private keys, API tokens or one-time codes. Write "credential from vault entry `kw-rtu-eng`" instead of the credential. Network diagrams, register maps and firewall exports of critical infrastructure are sensitive: store them with access control, share them on a need-to-know basis, and remove them from tickets that go to suppliers. This book prints a few fake values only because they are fake.
 
+Write credential from vault entry rather than the credential itself. Store network diagrams, register maps and firewall exports with access control, and strip them from tickets that go to suppliers. This book prints fake values only because they are fake; treat real ones as sensitive design information.
+
 ### 16.5 Worked example: a work instruction (synthetic)
 
 **WI-KW-07 — Export KW-04 RTU configuration for drift baseline.** *Preconditions*: change record CHG-2219 approved; Kestrel Water control room informed; engineering laptop ENG-L3 scanned today (record in the media log). *Steps*: (1) at 10:00 local, call the control room; record the operator's name. (2) On ENG-L3, open the vendor tool in read-only mode; expected: status bar shows "Online — read only". (3) Export the configuration to `KW04-20261013.cfg`; expected: file size between 40 and 60 kB. (4) Run `sha256sum KW04-20261013.cfg`; record the digest in CHG-2219. (5) Disconnect; inform the control room. *Stop conditions*: any alarm at KW-04; tool requests to switch to "online edit"; operator request. *Rollback*: none needed (read-only), but if any write is suspected, inform operations immediately and open an incident. *Evidence*: file, digest, call times.
@@ -2007,6 +2136,8 @@ Documents must not contain passwords, private keys, API tokens or one-time codes
 
 Write a work instruction for the KW-04 router change from EX052, including preservation, the change, positive and negative tests, rollback and stop conditions. Ask someone else to read it and list every step where they would have to guess.
 
+Include preservation of the router's configuration before the change, positive and negative tests afterwards, rollback steps and stop conditions that include any KW-04 alarm. Ask a colleague to mark every step where they would have to guess; those steps need an expected result or a screenshot of the vendor tool. Keep the reviewed copy with the change record.
+
 ### 16.7 Common errors and limits
 
 - Steps without expected results.
@@ -2014,6 +2145,12 @@ Write a work instruction for the KW-04 router change from EX052, including prese
 - Treating a site visit as an IT task and skipping the permit or the control-room call.
 - One laptop for everything.
 - Documentation written after the work, from memory.
+
+- Writing steps without expected results.
+- Putting credentials or full firewall exports into a widely shared ticket.
+- Skipping the permit or the control-room call because the task looks like ordinary IT.
+- Using one laptop for corporate, control-centre and site work.
+- Writing the document from memory after the work.
 
 ### Exercises — chapter 16
 
@@ -2067,9 +2204,13 @@ These are deliberately simple and explainable (Chapter 8). MITRE ATT&CK for ICS 
 
 One unauthorized host may generate dozens of alerts in a minute. Grouping alerts with the same rule and source into an **episode** — extended while new alerts arrive within a window of the previous one — gives an analyst one item with a count and a time span. The window is a trade-off: too short and one activity becomes many episodes; too long and two separate activities merge. Record the chosen window and why.
 
+Record the chosen window and why. In Lab 17 a five-minute window splits the 07:12 write into its own episode, which is what you want if an analyst might otherwise think the activity had stopped. Too long a window would merge that later write with the earlier burst and hide the gap.
+
 ### 17.3 The pipeline monitors itself
 
 A detector that silently drops records it cannot parse is blind exactly where an attacker sends malformed traffic. The pipeline must account for every input: *records = parsed + dropped*, checked by an assertion, with dropped records listed and counted. The NIST continuous monitoring guidance makes the same point at programme level: monitoring must itself be monitored ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
+
+Assert that records equal parsed plus dropped, and list every dropped record with time and source. Unparseable traffic from an unknown host should still raise a new-talker finding on the source address, which Lab 17's practical activity adds. A detector that fails closed on its own accounting is fit for duty use.
 
 ### 17.4 Worked example: the 07:03 activity (synthetic)
 
@@ -2147,9 +2288,13 @@ The value 0xFFFF (65,535) to a setpoint register whose policy range is 100–400
 | Blind spots | Lists what the sensor cannot see (station-local traffic, encrypted links) | Claims full coverage |
 | Reproducibility | Output recorded with Python version | Not recorded |
 
+Score Lab 17 against each row and write one improvement for any score below three. Blind spots must include station-local traffic and any path that does not pass the control-centre sensor, as Chapter 13 found for KW-04. Keep the scored rubric with the lab output and the Python version.
+
 ### 17.6 Practical activity
 
 Change the pipeline so that a dropped (malformed) record from an unknown source raises NEW-TALKER, and add a rule that alerts on any write whose value is outside the register's policy range, using the Lab 12 policy table. Record the new output and how the episodes change.
+
+Raise NEW-TALKER for a malformed record from an unknown source, and alert on writes outside the Lab 12 policy range. Re-run and record how the episode list changes, especially whether the malformed line now appears inside the 07:03 new-talker episode. Keep both outputs so the improvement is visible.
 
 ### 17.7 Common errors and limits
 
@@ -2158,6 +2303,11 @@ Change the pipeline so that a dropped (malformed) record from an unknown source 
 - Dropping malformed records silently.
 - Believing the sensor sees everything: Chapter 13 found a path to KW-04 that did not pass this sensor.
 - The pipeline's timestamps are the sensor's; correct its clock like any other (Chapter 7).
+
+- Copying rules from a catalogue without a model statement behind them.
+- Choosing an episode window so long that separate activity disappears.
+- Dropping malformed records silently.
+- Believing the sensor sees every path to a station.
 
 ### Exercises — chapter 17
 
@@ -2200,6 +2350,8 @@ This chapter closes the course. It uses everything before it on one realistic ta
 
 A good supervised project is narrow, valuable and checkable. Examples drawn from this book: harden the corporate-to-control-centre conduit and verify it (Chapters 10–11); close the station-router bypass across all stations (Chapter 13); deploy drift detection on the control-centre servers (Chapter 14); build and test the detection pipeline against a replayed, sanitized capture (Chapter 17). Every project needs a **supervisor** (here L. Ferreira) and an **authorizer** who owns the affected systems (here A. Mensah for Kestrel Water).
 
+Agree the supervisor, the owner who signs the scope and the success criteria before day one. Pick one conduit or one class of host, not the whole programme. Write the open items you expect to leave, so honesty about limits is planned rather than improvised at assessment.
+
 ### 18.2 Phases
 
 1. **Scope** (Chapter 5): purpose, systems, actions, window, people, stops, evidence handling — signed.
@@ -2209,6 +2361,8 @@ A good supervised project is narrow, valuable and checkable. Examples drawn from
 5. **Troubleshooting log** throughout, with the four labels (Chapter 13).
 6. **Handover**: as-built record, work instructions, open items with owners (Chapter 16).
 7. **Evidence package**: everything above, sealed.
+
+Do not skip baseline digests even when the change seems small; without them you cannot prove what changed. Keep the troubleshooting log open for the whole window, including interruptions and false starts. The evidence package is last, after handover documents exist to put in it.
 
 ### 18.3 Sealing evidence
 
@@ -2284,6 +2438,8 @@ Four artefacts verify; `04-tests.csv` does not. Someone added a T10 line after s
 
 After the course, keep three habits: verify before you report, preserve before you change, and correct clocks before you order events. Keep labs contained, and never test real infrastructure without written authorization from its owner. Revisit standards and guidance when they change; every source in this book is dated October 2026.
 
+After the course, keep three habits: verify before you report, preserve before you change, and correct clocks before you order events. Keep labs contained, and never test real infrastructure without written authorization from its owner. Revisit standards and guidance when they change; every source in this book is dated October 2026.
+
 ### 18.7 Common errors and limits
 
 - Projects too broad to verify.
@@ -2291,6 +2447,11 @@ After the course, keep three habits: verify before you report, preserve before y
 - Editing sealed artefacts instead of adding new ones.
 - Reporting only successes.
 - Lab 18 uses in-memory text and a temporary directory; real packages include binary exports and large captures, which hash the same way but need storage with access control.
+
+- Choosing a project so broad that verification never finishes.
+- Storing the seal inside the package where an editor can change both.
+- Editing a sealed artefact instead of adding a dated addendum.
+- Reporting only successes and hiding untested requirements.
 
 ### Exercises — chapter 18
 
