@@ -1850,7 +1850,7 @@ An acceptance in the tracker needs two fields to be valid: the name of the perso
 
 Sometimes an owner fixes two of three accounts and asks to close the ticket. Priya's rule is to validate what was claimed, reopen or split the finding for what remains, and never let a partial fix erase the whole issue. The tracker should show residual work, not a green checkbox that hides it.
 
-The worked example shows why: F-07 reopened because ex-contractor accounts could still authenticate after a claimed fix. If an owner fixes two accounts out of three, Priya validates those two and either keeps the finding open or splits off a child ticket for the remaining account. Child tickets keep the parent finding identifier so an examiner can follow the history.
+The worked example shows why: F-07 reopened because ex-contractor accounts could still authenticate after a claimed fix, so closing it on the owner's word would have hidden live access. A child ticket split off for any remaining account keeps the parent finding identifier so an examiner can follow the history.
 
 ### Worked example
 
@@ -1950,9 +1950,7 @@ You will (1) assemble an end-to-end authorized assessment package for a syntheti
 
 1. Request and decision statement. 2. Scope lists (prefixes, names, exclusions). 3. ROE (window, allowed activities, stop list, white-team contact). 4. Method statement mapped to SP 800-115/PTES/WSTG as used. 5. Kit inventory with versions. 6. Evidence plan (what, where, retention). 7. Rating scale and bands. 8. Report template with executive table hook. 9. Retest plan. 10. Evaluation criteria.
 
-Ten build artefacts from request through retest plan are listed in order. Missing any one fails the capstone completeness score.
-
-The order follows the life of an engagement, so the completeness score walks the artefacts in the same sequence on the peer score sheet. A package with sparkling findings but no residual-risk page or retest plan is incomplete. In Priya's worked example every one of the ten artefacts is present, including exclusion of fare-payment by both prefix and hostname.
+Missing any one of the ten fails the capstone completeness score. The order follows the life of an engagement, so the completeness score walks the artefacts in the same sequence on the peer score sheet. A package with sparkling findings but no evidence plan or retest plan is incomplete. In Priya's worked example every one of the ten artefacts is present, including exclusion of fare-payment by both prefix and hostname.
 
 ### 29.2 Operate what you built
 

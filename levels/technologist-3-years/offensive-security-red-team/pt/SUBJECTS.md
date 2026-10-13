@@ -32,13 +32,13 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 4 | [20](book/PLAN.md#ch-20) | Segurança ofensiva autorizada e red team: solução de problemas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-20) | [21 · Rascunho](book/MANUSCRIPT.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Segurança ofensiva autorizada e red team: integração de serviços | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-21) | [22 · Rascunho](book/MANUSCRIPT.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Segurança ofensiva autorizada e red team: automação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-22) | [23 · Rascunho](book/MANUSCRIPT.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Segurança ofensiva autorizada e red team: avaliação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-23) | [24 · Plano](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Métodos de pesquisa aplicada | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plano](book/PLAN.md#ch-25) |
-| 5 | [25](book/PLAN.md#ch-25) | Estúdio de projeto em equipe | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plano](book/PLAN.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Segurança ofensiva autorizada e red team: passagem para operação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plano](book/PLAN.md#ch-27) |
-| 6 | [27](book/PLAN.md#ch-27) | Implantação e validação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plano](book/PLAN.md#ch-28) |
-| 6 | [28](book/PLAN.md#ch-28) | Prática de campo | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plano](book/PLAN.md#ch-29) |
-| 6 | [29](book/PLAN.md#ch-29) | Construção do projeto final | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plano](book/PLAN.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Avaliação do projeto final | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-30)) | [Curso 089 →](../../ai-security/pt/SUBJECTS.md) |
+| 5 | [23](book/PLAN.md#ch-23) | Segurança ofensiva autorizada e red team: avaliação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-23) | [24 · Rascunho](book/MANUSCRIPT.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Métodos de pesquisa aplicada | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-24) | [25 · Rascunho](book/MANUSCRIPT.md#ch-25) |
+| 5 | [25](book/PLAN.md#ch-25) | Estúdio de projeto em equipe | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-25) | [26 · Rascunho](book/MANUSCRIPT.md#ch-26) |
+| 6 | [26](book/PLAN.md#ch-26) | Segurança ofensiva autorizada e red team: passagem para operação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-26) | [27 · Rascunho](book/MANUSCRIPT.md#ch-27) |
+| 6 | [27](book/PLAN.md#ch-27) | Implantação e validação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-27) | [28 · Rascunho](book/MANUSCRIPT.md#ch-28) |
+| 6 | [28](book/PLAN.md#ch-28) | Prática de campo | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-28) | [29 · Rascunho](book/MANUSCRIPT.md#ch-29) |
+| 6 | [29](book/PLAN.md#ch-29) | Construção do projeto final | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-29) | [30 · Rascunho](book/MANUSCRIPT.md#ch-30) |
+| 6 | [30](book/PLAN.md#ch-30) | Avaliação do projeto final | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [Curso 089 →](../../ai-security/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
