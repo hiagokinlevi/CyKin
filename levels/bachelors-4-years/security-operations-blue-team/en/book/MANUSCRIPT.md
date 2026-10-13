@@ -2653,29 +2653,43 @@ You will (1) analyse quantitative and qualitative data from a SOC study; (2) use
 
 Lucas's survey on student reporting (chapter 18) received 412 responses, and he conducted five interviews.
 
+The responses came through the several channels planned in chapter 18, and Lucas recorded which faculty each respondent studied in. Five interviews are few, but they were meant to explain reasons rather than measure how common they are, which the survey does. Each interview lasted about twenty minutes and was transcribed with identifying details removed. Interviewees were recruited from survey respondents who left an address for follow-up, chosen from different faculties so that the five conversations would not all reflect one department's habits or one course's teaching about phishing.
+
 ### 33.2 Quantitative analysis
 
 61% of respondents said they would delete a suspicious email without reporting; 24% would report; 15% were unsure. With 412 responses, the margin of error is roughly ±5 percentage points, assuming responses are representative.
+
+The margin applies to each percentage separately and assumes a random sample, which a volunteer survey is not. Lucas therefore presents it as a rough guide to precision, not a guarantee. The three answers add to 100%, which confirms that every respondent chose exactly one option and none were lost in coding.
 
 ### 33.3 Qualitative coding
 
 Interview transcripts are coded into themes: "didn't know how to report" (four of five), "thought IT already knew" (three), "worried about looking foolish" (two). A second student codes two transcripts independently; they agree on most codes and discuss differences.
 
+Counts such as four of five show how often a theme came up among interviewees, not how common it is among all students; the survey does that job. Where the two coders disagreed, it was usually about whether "I wasn't sure who to tell" meant not knowing how to report, and they settled on including it.
+
 ### 33.4 Validity
 
 Volunteers may be more security-aware than average, so true reporting may be even lower. Self-reported intentions may differ from actual behaviour; log data on actual reports helps triangulate.
+
+Lucas compares the survey's faculty mix with enrolment: computing students were over-represented, which supports the concern that respondents were more aware than average. Rather than weighting the results, which needs assumptions he cannot check, he reports the imbalance and the direction in which it probably pushes the findings. Self-report is the second concern, and the log comparison below addresses it as far as the data allow.
 
 ### 33.5 Reliability
 
 Clear code definitions and double coding make qualitative results more reliable.
 
+Lucas's codebook defines each theme with an example quote and a counter-example, so the second coder knew what to exclude. After their discussion, they rewrote one definition and recoded the two shared transcripts, reaching agreement on all codes. A reader can repeat the coding using the codebook in the appendix. Reliability is not the same as validity: two coders can agree consistently on a theme that does not reflect what interviewees meant. Lucas guarded against that by checking each theme against the full transcripts, not only the coded extracts.
+
 ### 33.6 Triangulation
 
 Actual reporting rates from chapter 1 (3.0 per 1,000 students) are consistent with low reporting intentions.
 
+The two sources measure different things, intentions and actual behaviour, and both point the same way. Neither alone would be convincing: intentions may not match action, and the reporting rate does not explain why. Together, they support the conclusion that low reporting reflects not knowing how, which the interviews suggested. Lucas is careful not to overstate the match. The survey asked about intentions in general, while the reporting rate comes from one campaign, so the comparison shows consistency rather than proof of cause.
+
 ### 33.7 Reporting
 
 The report gives numbers with uncertainty, quotes that illustrate themes, and limits.
+
+Lucas's report presents each percentage with its margin, gives one anonymised quote per theme and lists limits first in a short paragraph rather than burying them at the end. Readers in the SOC wanted to know whether to trust the numbers before reading them, so putting limits early helped them judge. The appendix holds the full questionnaire and codebook. Lucas also gives the number of respondents who skipped each question, since skipped answers can change percentages and readers deserve to see how many responses each figure rests on.
 
 ### Ethical reporting
 
@@ -2721,29 +2735,43 @@ You will (1) compare SOC practices across organisations or approaches; (2) choos
 
 Lucas and two classmates compare how three universities' SOCs handle phishing reports: Riverton (internal student-staffed), a partner university using a managed provider, and a third with a regional shared SOC.
 
+Each of the three models is common among universities, which made the comparison useful to others. The team chose phishing reports because all three SOCs handle them and because Riverton's campaign gave them a detailed understanding of what good handling should achieve. Contacts at the other two came through Dr. Kim.
+
 ### 34.2 Criteria
 
 They compare time from report to acknowledgement, whether reporters get feedback, automation of mailbox searches, and staffing model, using the same definitions for each.
+
+Agreeing definitions mattered: one SOC counted acknowledgement as an automatic reply, another as a person reading the report. The team chose a person's first action, and each SOC recalculated its figure on that basis. Without the shared definition, the fastest SOC might simply have been the one with an automatic reply. Feedback was defined as a personal reply telling the reporter what happened, so an automatic acknowledgement did not count. Automation was judged by whether a reported message could be searched and removed from all mailboxes without manual steps.
 
 ### 34.3 Evidence
 
 Each SOC shares anonymised figures for one term and a description of its process. No personal data is exchanged.
 
+Each SOC provided counts and medians rather than individual reports, so no reporter or recipient could be identified. Process descriptions were checked against a short questionnaire the team wrote, which asked the same questions of each SOC in the same order. That kept answers comparable. The team also asked each SOC to describe one recent phishing report from start to finish, which brought the process descriptions to life and revealed steps the questionnaire had missed, such as manual approval before a purge at the regional SOC.
+
 ### 34.4 Findings
 
 The managed provider acknowledges fastest (median 6 minutes) but rarely gives reporters feedback; Riverton is slower (median 22 minutes in staffed hours) but replies to every reporter; the regional SOC automates mailbox purges best.
+
+Riverton's slower median reflects staffed hours: reports that arrive overnight wait until the morning, while the managed provider staffs nights. The regional SOC's purges remove reported phishing from every mailbox within minutes, which Riverton did by hand during the campaign. Each strength has a cost the team recorded alongside it.
 
 ### 34.5 Balanced conclusions
 
 No model is best on all criteria. Feedback to reporters, which Riverton does well, encourages reporting; speed and automation, which others do well, reduce exposure.
 
+The interviews in Lucas's study connect these: students said they did not know how to report or assumed IT already knew. Personal feedback addresses both by teaching reporters that reports matter. Speed and purges limit how many people click. Both matter, so a balanced conclusion recommends keeping one and adding the other. The team avoided ranking the three overall.
+
 ### 34.6 Fairness
 
 Differences in size and threat exposure limit comparison; the project states these.
 
+The managed provider serves a university twice Riverton's size, and the regional SOC serves several institutions, so their volumes and staff differ. The team reported medians and percentages rather than raw counts, and stated the differences in size beside each figure so readers could judge comparability themselves. Threat exposure also differs: the regional SOC's members include a medical school that receives targeted phishing more often. The team could not adjust for that, so they described it and advised readers to compare processes more than raw speeds.
+
 ### 34.7 Recommendations
 
 Riverton adopts automated purges of reported phishing from all mailboxes, with feedback kept.
+
+Riverton tested automated purges on a simulated phishing message in a test mailbox group before enabling them. The change keeps the personal reply to each reporter, which the team found was Riverton's distinctive strength. The purge removes copies that recipients have not yet opened, reducing exposure in the next campaign. Feedback to reporters remains a person's reply, written by the analyst who handled the report. The team also suggested that Riverton ask the managed provider's university how it handles feedback at night, since that was the one gap all three shared.
 
 ### Process of the project
 
@@ -2789,29 +2817,43 @@ You will (1) propose a capstone project addressing a real SOC need; (2) define a
 
 From the campaign review and coverage work, Lucas chooses: "Improve detection of compromised student mail accounts, measured against authorised test scenarios."
 
+The choice follows the evidence: the review showed s3310 went undetected for nearly nine hours, and coverage work found gaps in mail-related detection. Measuring against authorised scenarios means the project can show improvement without waiting for a real attack, and without touching real students' accounts. The need was confirmed with Dr. Kim, who agreed it was the SOC's top detection priority for the coming year. A capstone that matches a real priority is more likely to be used once the student has graduated.
+
 ### 35.2 Aims
 
 Aim 1: combine the correlation and keyword-deletion rules into a tested detection package. Aim 2: add detection of mass internal mailing by newly risky accounts. Aim 3: measure detection rate before and after on a set of 20 authorised test scenarios.
+
+Aim 2 addresses the behaviour that made s2047 dangerous: sending phishing to contacts from a trusted address. Aim 3 provides the evidence for the other two. Each aim can be judged separately, so a partial success, such as a good package with a weak new rule, would still be clear in the evaluation.
 
 ### 35.3 Requirements
 
 Detect at least 80% of test scenarios; no more than three false alerts per week in production; alerts within 30 minutes of the triggering activity.
 
+Each requirement has a reason. Eighty percent reflects that no rule set catches everything; three false alerts a week is what six student analysts can absorb without ignoring alerts; thirty minutes would have saved s2047 hours of sending. Stating reasons lets the evaluation discuss a near miss intelligently. Each requirement can be checked with a number at the end of the project, which is what makes it a requirement rather than a hope.
+
 ### 35.4 Test scenarios
 
 Twenty scenarios are designed with Dr. Kim: each uses university test accounts and benign actions, such as a test sign-in from a test address and creation of a forwarding rule to a test mailbox. No real accounts are touched.
+
+The scenarios vary in timing, rule type and sending volume. Dr. Kim's involvement ensures they are realistic and authorised; test accounts are clearly labelled so analysts and the service desk do not respond to them as real incidents. Each scenario is written down in advance with its expected detection.
 
 ### 35.5 Ethics and data
 
 The project uses SOC data under existing policy; personal data is not taken off university systems; the report uses aggregates only.
 
+Because Lucas is both an analyst and a researcher, the proposal states that capstone analysis uses only data the SOC already holds for security, under the same access rules. The university's ethics office confirmed that no further approval was needed since no new data about people is collected. Lucas's dual role is stated in the proposal so that the supervisor can watch for conflicts, for instance if Lucas were tempted to look at accounts beyond the scenarios to improve his results.
+
 ### 35.6 Risks
 
 Test scenarios may not resemble real attacks; mitigated by basing them on the campaign's actual behaviours. False alerts may disturb analysts; mitigated by monitor-only mode first.
 
+Other risks include delays in change approval and Lucas's exam period. The timeline below leaves weeks for analysis and report writing, so a delay in deployment would shorten the margin rather than the evaluation. Each risk names who watches for it. A risk register at the end of the proposal lists each risk, its likelihood, its effect on the project and the mitigation. Lucas reviews it at each fortnightly supervision meeting and records any changes.
+
 ### 35.7 Approval
 
 Dr. Kim and Lucas's academic supervisor sign the proposal.
+
+The two signatures cover different concerns. Dr. Kim approves the operational work, including tests in production and rule changes. The academic supervisor approves the project as assessed work, including the evaluation plan. Both receive later changes through the shared log described under supervision. Signing both before work begins also protects Lucas: if anyone later questions why test accounts were signing in from unusual addresses or creating forwarding rules, the signed proposal shows the activity was planned and authorised. Copies are stored with the capstone log and in the SOC's change records.
 
 ### Timeline
 
@@ -2857,29 +2899,43 @@ You will (1) apply SOC skills in a community setting; (2) adapt advice to small 
 
 As part of the degree, Lucas spends four weeks helping a local charity, the fictional **Eastbank Youth Centre**, which has twelve staff, a cloud mail service and no IT team.
 
+Eastbank's situation is common among small charities: cloud services set up by a volunteer years ago, shared passwords and no one whose job includes security. Four weeks is short, so Lucas agreed with the manager on three goals at the start: stronger sign-in, alerts that someone reads and staff who know what to do.
+
 ### 36.2 Understanding the setting
 
 The charity cannot run a SOC. Its risks are similar to Riverton's on a small scale: phishing, account compromise and lost devices.
+
+Lucas spent his first days asking staff how they work: who uses which devices, who has administrator rights and how they share files. Several staff used personal phones for mail. That shaped his advice, since rules requiring managed devices would be impossible for a charity with no IT budget. He also learned that the manager shared her administrator password with a volunteer, which became the first thing they changed together.
 
 ### 36.3 Practical improvements
 
 With the manager's permission, Lucas helps enable MFA for all staff, turns on the mail service's built-in alerts for suspicious sign-ins and forwarding rules, and sets alerts to go to two named staff members.
 
+These three changes reuse what the mail service already offers, so they cost nothing and need no ongoing technical work. Two named staff receive alerts so one absence does not leave them unread. Lucas tested each alert with the manager's own account before leaving, so they knew what a real one looked like.
+
 ### 36.4 Teaching
 
 He runs a 30-minute session on recognising phishing and how to report it, using examples adapted from Riverton's campaign with all identifying details removed.
+
+Adapting Riverton's campaign gave staff a realistic example: an urgent-sounding message, a look-alike link and a fake sign-in page. Lucas explained what to look for and, more importantly, that reporting quickly matters more than never clicking. Staff practised forwarding a sample email to the reporting address. Staff asked practical questions, such as what to do if they were unsure, and Lucas's answer was always to report and let someone else decide.
 
 ### 36.5 Simple procedures
 
 A one-page "what to do if" sheet covers clicked links, lost phones and strange emails, with contact numbers.
 
+The sheet is written in plain language and pinned in the office as well as shared by email. For a clicked link, it says to change the password, tell the manager and check for strange forwarding rules, with screenshots showing where to look. Lucas tested the sheet by asking a staff member to follow it. The staff member found one step confusing, which Lucas rewrote.
+
 ### 36.6 Boundaries
 
 Lucas does not access staff mailboxes or personal data; he configures settings with the manager present and leaves documentation.
 
+Working with the manager present means every change is understood by someone who stays. Lucas's documentation lists each setting changed and how to reverse it. He did not keep any administrator access after the placement, which the manager confirmed by removing his temporary account. When a staff member asked him to look into a strange email in her inbox, he talked her through checking it herself rather than opening her mailbox. That kept him within the agreed limits and left her more confident.
+
 ### 36.7 Reflection
 
 Advice must fit the organisation's capacity; a perfect plan the charity cannot maintain is worse than a simple one it can.
+
+Lucas initially drafted a ten-page security plan, then realised nobody at Eastbank would read or maintain it. The final version, three settings and one sheet, was used within two weeks. Matching advice to capacity is a skill that applies equally inside larger organisations. He also notes that the charity's staff taught him things about their work that changed his advice, such as the need to email families from personal phones during evening activities. Listening first made his recommendations usable.
 
 ### Handing over
 
@@ -2921,29 +2977,43 @@ You will (1) present evidence from projects for peer review; (2) critique others
 
 Final-year students present their capstone evidence so far. Each presentation shows claims, the evidence behind them and open questions.
 
+Students present to classmates, Dr. Kim and an academic supervisor. Questions focus on whether claims match evidence, not on how much work was done. Presenting before the final evaluation means criticism can still change the project, which is more useful than receiving it in the final examination. Each presenter receives written comments from two assigned peers in addition to spoken questions, so quieter classmates contribute too and the presenter has a record to work from afterwards.
+
 ### 37.2 Lucas's evidence
 
 He shows before-scenario results (11 of 20 detected), monitor-only false alerts (four in two weeks) and the design of the mass-mailing detection.
+
+The before result shows that existing rules caught just over half the scenarios. Four false alerts in two weeks is a rate of two a week, under the three-per-week requirement, but over a short period. The mass-mailing design was presented as a plan, since it had not yet been built. He presented each figure with its source in the project log, so peers could see which numbers were measured and which were still plans.
 
 ### 37.3 Peer critique
 
 A classmate asks whether the 20 scenarios include slow attackers like s3310. Another asks whether four false alerts in two weeks meets the "three per week" requirement or whether two weeks is too short to judge.
 
+Both questions were fair. The scenarios had been based mainly on s2047's fast behaviour, so slow attackers were under-represented. Two weeks of monitor-only data gives only a rough sense of the false-alert rate. Lucas had not considered either point carefully until classmates raised them.
+
 ### 37.4 Weak inferences
 
 Dr. Kim notes Lucas's slide says "the package will detect most compromises"; the evidence supports only "detects most test scenarios".
+
+The difference matters because test scenarios are designed by defenders and may be easier than real attacks. Claiming the package will detect most compromises would invite readers to rely on it more than the evidence warrants. Precise wording protects both the reader and the project's credibility. Lucas rewrote the slide during the seminar break, and Dr. Kim asked him to apply the same check to every claim in his draft report before submitting it.
 
 ### 37.5 Missing data
 
 Lucas has not yet recorded how long each detection took; the 30-minute requirement cannot be assessed.
 
+Detection time had been in the requirements from the start but was not being captured, because the test harness recorded only whether each scenario alerted. Lucas changed the harness to log the time of the triggering action and the alert, so the before and after runs would both have times. He also realised that the before run had to be repeated to collect times, since comparing times from only the after run would have nothing to compare against.
+
 ### 37.6 Responding
 
 Lucas adds two slow-attacker scenarios (replacing two duplicates), starts recording detection times, and changes the wording.
 
+Replacing duplicates rather than adding scenarios kept the total at twenty, so the before and after runs remain comparable. The before run was repeated with the new scenarios to keep the comparison fair. Each change was recorded in the project log with the seminar as its source. The wording change was applied across his draft report as well as the slides. He sent a short note to both classmates thanking them and listing what had changed, which also documented the response for his supervisor.
+
 ### 37.7 Critiquing others
 
 He questions a classmate's claim that a new dashboard "reduced workload" when the only evidence was analysts' impressions; he suggests counting alerts handled per shift.
+
+Lucas framed his comment as a suggestion with a method attached, not as a dismissal. The classmate agreed that impressions might reflect novelty rather than real change, and added a count of alerts handled per shift before and after the dashboard. Good critique gives the presenter something to do. Lucas also noted something the classmate had done well: the dashboard's design was based on interviews with analysts.
 
 ### Preparing for critique
 
@@ -2989,29 +3059,43 @@ You will (1) implement the capstone detection package; (2) follow change control
 
 The package contains the 6-hour correlation rule, the keyword-deletion rule and a new mass-mailing rule: alert when an account that had a risky sign-in in the past day sends to more than 50 internal recipients it has never mailed before.
 
+The mass-mailing rule's threshold of fifty new recipients comes from the campaign: s2047 mailed far more than that, while ordinary students rarely mail more than a handful of new people in a day. Restricting it to accounts with a recent risky sign-in keeps it focused on likely compromise rather than busy organisers.
+
 ### 38.2 Tests
 
 Each rule has unit tests in the SOC's test harness and a set of synthetic events. Tests run before each change.
+
+Unit tests check each rule's logic with small inputs, including boundary cases such as exactly fifty recipients. The synthetic events replay realistic sequences, such as s3310's slow deletion rule. Running both before each change catches mistakes before they reach the monitor-only stage. The harness reports pass or fail for each test and stops a change from being submitted if any fails. Lucas added tests for the two slow-attacker scenarios as soon as they were written, so they were checked throughout development.
 
 ### 38.3 Change control
 
 Lucas submits each rule through the SOC's change process with a description, test results and rollback steps. Dr. Kim approves.
 
+Rollback steps state how to disable each rule quickly if it floods analysts. Dr. Kim's approval confirms that the tests passed and the change fits the SOC's capacity. The change record also links to the capstone log, so assessors can see the operational approval for each part of the project. The process added a day or two to each change, which Lucas planned for in his timeline.
+
 ### 38.4 Staged deployment
 
 Rules run in monitor-only mode for two weeks, recording matches without alerting analysts. Lucas reviews every match.
+
+Monitor-only mode shows how rules behave on real traffic without adding work for analysts. Lucas reviewed each match against the account's activity to decide whether it was a true or false alert. The review let him adjust rules before they affected anyone, as the next finding shows. He recorded his decision for every match in a table with the account, the rule, the reason for the match and whether it was a true or false alert. The table became part of the dossier and later fed the false-alert evaluation.
 
 ### 38.5 Monitor-only findings
 
 The mass-mailing rule matches a student society officer who emailed new members after signing in from abroad on holiday. Lucas adds a check: alert only if the messages share a subject with messages already reported as phishing, or if links point to domains first seen that week.
 
+The added check uses signals specific to phishing: a subject already reported, or links to newly seen domains. The society officer's message had neither, so the revised rule stayed quiet. Lucas reran the synthetic tests after the change to confirm that the campaign-like scenarios still alerted.
+
 ### 38.6 Going live
 
 After a clean second week, the package moves to alerting for analysts.
 
+A clean week means no false alerts from the revised rules. Lucas told the student analysts about the new alerts before they appeared, with a short guide to each. Going live on a Monday, rather than before a weekend, ensured the staffed SOC could react to any early problems. Lucas stayed available during the first live week to answer analysts' questions, and recorded each question as a possible improvement to the alert text or the rule documentation.
+
 ### 38.7 Evidence
 
 Commits, test outputs, change tickets and monitor-only reviews are filed for the capstone dossier.
+
+Filing as he went meant the dossier was complete when the evaluation began. Each item is named by date and rule, and the dossier index links each requirement to the evidence for it. An assessor can follow any claim back to commits and tests without asking Lucas. Lucas also kept a short diary of decisions and their reasons. When writing the thesis months later, the diary explained choices that the commits alone did not, such as why the recipient threshold was set where it was.
 
 ### Documentation for maintainers
 
@@ -3053,6 +3137,8 @@ You will (1) evaluate the capstone against its requirements; (2) compute detecti
 
 The 20 authorised scenarios are run before (existing rules) and after (new package). Each scenario is scored detected or missed, with detection time.
 
+Running the same twenty scenarios twice, before and after, means differences come from the rules, not the scenarios. The scenarios include the two slow attackers added after the seminar. Detection time is measured from the triggering action to the alert, as the requirement states, using the harness timestamps added earlier. Lucas ran both sets on the same day with the same test accounts.
+
 ### Lab — detection rates with intervals
 
 ```python
@@ -3078,21 +3164,31 @@ after  detected 18/20 = 0.90  95% CI [0.70, 0.97]
 
 Before: 11 of 20 detected (0.55, 95% interval 0.34–0.74). After: 18 of 20 (0.90, interval 0.70–0.97). The intervals overlap only slightly; with 20 scenarios, uncertainty is large, but the improvement is consistent with the design.
 
+The slight overlap means the evidence for improvement is good but not overwhelming. With twenty scenarios, each one moves the rate by five points. Lucas states the improvement as seven more scenarios detected, which is concrete, and leaves the intervals to show how precise the rates are. He also reports which individual scenarios changed from missed to detected.
+
 ### 39.3 Misses
 
 The two missed scenarios used a forwarding rule to an internal account that then forwarded externally — a pattern none of the rules covered. They become future work.
+
+The pattern is a two-step chain: the attacker forwards to an internal account it also controls, which then forwards outside. No single rule sees an external forward from the compromised account. Lucas describes how a future rule could follow such chains through the mailbox audit log. He does not adjust the package to catch them before the evaluation ends, since that would mean tuning to the test.
 
 ### 39.4 Detection times
 
 Median detection time was 14 minutes; the slowest was 27 minutes, within the 30-minute requirement.
 
+Times came from the harness, so they are exact for test scenarios. The slowest included the deliberate wait for delayed mail audit events. Live times may differ, since real activity arrives with variable delays, which the single live detection in twenty-five minutes illustrates. Lucas reports the full list of times in an appendix rather than only the median and the maximum, so readers can see whether most detections clustered near the median or were spread across the window. Times for the slow-attacker scenarios are marked.
+
 ### 39.5 False alerts
 
 Over four weeks live, false alerts averaged 1.5 per week, below the three-per-week requirement.
 
+Each false alert was reviewed: most were staff with approved forwarding exceptions who signed in from abroad. Lucas added those exceptions to the rule's known benign matches. The rate is an average over four weeks, so a busy week could still exceed three, which the SOC will watch. Lucas reports the average as one and a half per week alongside the weekly counts, so the spread is visible. Analysts confirmed in the feedback described below that this level did not distract them from other work.
+
 ### 39.6 Requirements summary
 
 Detection ≥80%: met (90%, though the interval's lower bound is 70%). False alerts ≤3/week: met. Within 30 minutes: met.
+
+The detection line states both the result and the caveat, as the worked example below explains. False alerts and timing are met clearly. Presenting the caveat beside the claim, rather than in a footnote, lets readers see in one place what was met and how confidently. Lucas also lists the requirement on detection time with the median and the slowest value. A summary table with one row per requirement, the result and a brief caveat lets a reader see the outcome in seconds.
 
 ### Analyst feedback
 
@@ -3138,29 +3234,43 @@ You will (1) write a bachelor's thesis on the capstone; (2) present findings to 
 
 Introduction; background (campus threats, SOC practice, literature); the campaign and review; method (rules, tests, scenarios); implementation; evaluation; discussion; limitations; conclusions; references; appendices.
 
+Placing the campaign and review before the method shows readers why the work was needed. The appendices contain the rule pages, test scenarios without personal data and the analysis scripts. Lucas's supervisor reviewed the outline before he wrote, which avoided reorganising later. Each chapter opens with the question it answers and ends with what it found, so a reader can skim the thesis by reading only those paragraphs.
+
 ### 40.2 Literature in the thesis
 
 Lucas draws on Alahmadi et al. (2022) for alarm quality, Axelsson (2000) for base rates, Sundaramurthy et al. (2014) for SOC practice, NIST SP 800-61r3 for response and SigmaHQ conventions for rule documentation.
+
+Each source supports a specific part of the thesis. Base rates justify the attention to false alerts; alarm quality studies explain why analysts' trust matters; SOC practice studies support mixed methods. Lucas cites only what he uses, so the reference list stays short and relevant. He checked each citation against the original source.
 
 ### 40.3 Discussion
 
 The package improved detection of test scenarios and fit analyst capacity; reporting by people remained crucial; attackers' timing defeated early assumptions.
 
+The discussion connects results to the campaign: the package would have detected s3310's deletion rule, which went unseen for hours. It also notes what the package does not change. People reporting suspicious mail remained the first signal in the live period, which supports keeping the report button. The discussion also states what surprised him: the slow attacker, which no early design anticipated, became the most important case in the whole project.
+
 ### 40.4 Limitations
 
 One university; 20 scenarios; four weeks; scenarios designed by defenders; student population specific.
+
+Each limitation is linked to what it affects. Twenty scenarios limit precision; four weeks limit what the false-alert rate shows; defender-designed scenarios may be easier than real attacks. Stating these lets the SOC decide how far to rely on the package and what to test next. He also lists what would reduce each limitation: more scenarios, a longer live period and scenarios written by someone outside the SOC, such as the external firm that runs Riverton's purple exercise. That turns each limitation into a concrete next step the SOC can choose to fund.
 
 ### 40.5 Presentation
 
 A 15-minute talk to the department and a separate 10-minute briefing to the SOC team focusing on how to maintain the package.
 
+The two audiences need different things. The department wants the question, method, results and limits. The SOC team wants to know what each rule does, how to tell a false alert, and how to change thresholds safely. Lucas prepared separate slides for each rather than one talk for both. Both talks end with the same one-sentence result, so the message is consistent.
+
 ### 40.6 Reflection
 
 From mathematical reasoning in chapter 1 to the evaluation, the degree built habits: measure fairly, write precisely, act within authority, test assumptions.
 
+Lucas's reflection connects the first chapter's rates to the evaluation's intervals: both are about not overstating what numbers show. He also notes the habit of asking authority before acting, which shaped his work at Eastbank and in the research server case. He writes that the most useful habit was keeping observations separate from inferences, which made every later report easier to check and defend.
+
 ### 40.7 Next steps
 
 Lucas plans to apply for a junior analyst role and to keep contributing rule improvements to the SOC's repository as an alumnus volunteer under supervision.
+
+Volunteering under supervision keeps the rules maintained by someone who knows them while the next cohort learns. Lucas's access as an alumnus will be limited to the rule repository, not live logs, which Dr. Kim set as a condition. The archive described below makes his work usable without him. He also agreed to mentor next year's first student analysts during their shadowing stage.
 
 ### Archiving
 
