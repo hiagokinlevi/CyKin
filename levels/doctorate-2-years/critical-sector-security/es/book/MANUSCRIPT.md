@@ -1,7 +1,7 @@
 # Infraestructura crítica y seguridad sectorial: métodos de investigación doctoral y práctica de la tesis
 
 - Idioma: español (`es`), edición en español neutro internacional; programa de investigación doctoral, dos años; aproximadamente 1600 horas de estudio planificado (curso 207 de 207, el último curso de la [ruta de estudio](../../../../../STUDY_PATH.md)). Edición de referencia: [inglés](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **borrador parcial en español**. Los capítulos 1–6 de 8 están escritos en español, con los ejercicios EX001–EX038 y sus resultados resueltos, y sus laboratorios producen una salida idéntica a la de la edición en inglés; los capítulos 7–8 (EX039–EX050) están, por ahora, solo en la [edición en inglés](../../en/book/MANUSCRIPT.md#ch-07) y se añadirán por lotes. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
+- Estado editorial: **borrador**. Los capítulos 1–8 de 8 tienen texto didáctico escrito en español, los ejercicios EX001–EX050 y sus resultados resueltos correspondientes, y sus laboratorios producen una salida idéntica a la de la edición en inglés. Siguen abiertas la revisión independiente de la materia, la nueva verificación de las fuentes, la revisión de accesibilidad, la revisión lingüística y la verificación de 300 páginas A4. La cobertura de capítulos en borrador no es un libro terminado.
 - Público: investigadores avanzados que ya tienen experiencia de investigación y una pregunta defendible sobre la seguridad y la resiliencia de la infraestructura crítica: energía, agua, salud, transporte, comunicaciones, finanzas y servicios públicos. Conocimientos de entrada: el contenido previsto para los programas de [maestría](../../../../masters-2-years/critical-sector-security/en/book/PLAN.md) y de [posgrado](../../../../postgraduate-2-years/critical-sector-security/en/book/PLAN.md) de esta área (todavía esquemas en el momento de redactar), o experiencia profesional equivalente, además de soltura práctica en probabilidad, teoría básica de grafos, simulación y entrevistas cualitativas. El [curso doctoral complementario de seguridad de TO, IoT y sistemas ciberfísicos](../../../ot-iot-security/README.md) estudia en profundidad la capa de los sistemas de control; este libro estudia la capa *sectorial e intersectorial* que se sitúa por encima.
 - Autoría y responsabilidad editorial: [hiagokinlevi](https://github.com/hiagokinlevi). El texto didáctico original del mantenedor se dedica bajo [CC0 1.0](../../../../../LICENSE); las obras citadas conservan sus propios derechos y no se relicencian aquí.
 - Límite educativo: este programa es un plan educativo independiente. No es un programa de doctorado acreditado, no otorga ningún título y no concede autorización para acceder, escanear, probar o estudiar ninguna infraestructura, operador, conjunto de datos o persona reales. Toda organización, región, activo, persona, registro, conjunto de datos, banco de referencia y resultado numérico de un ejemplo resuelto es **sintético**, salvo que una frase cite explícitamente una fuente pública. Nada de este libro es un procedimiento operativo para una empresa de servicios real.
@@ -46,8 +46,8 @@ Cada enunciado factual sobre una norma, un reglamento, un incidente público o u
 4. [Replicación de las líneas base y piloto](#ch-04): reproducción de un modelo de inoperabilidad y de un banco de referencia de detección, trampas de la evaluación, verificación del modelo y un piloto acotado.
 5. [Estudio principal y validación independiente](#ch-05): experimentos de simulación con incertidumbre, estudios de mesa con operadores, validación frente a la historia y a expertos, y un segundo contexto.
 6. [Crítica de pares y revisión](#ch-06): circularidad modelo–política, condiciones de contorno, desajuste del modelo, resultados negativos, revisión de doble uso y acotación de las afirmaciones.
-7. [Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07): estructura argumental, divulgación de artefactos por niveles según las reglas de información de infraestructura, datos sintéticos y documentación del modelo.
-8. [Defensa y plan de publicación](../../en/book/MANUSCRIPT.md#ch-08): auditoría de las afirmaciones, preparación de la defensa, foros de publicación, divulgación coordinada, traducción a políticas y el programa de investigación posdoctoral.
+7. [Síntesis de la tesis y archivo de reproducibilidad](#ch-07): estructura argumental, divulgación de artefactos por niveles según las reglas de información de infraestructura, datos sintéticos y documentación del modelo.
+8. [Defensa y plan de publicación](#ch-08): auditoría de las afirmaciones, preparación de la defensa, foros de publicación, divulgación coordinada, traducción a políticas y el programa de investigación posdoctoral.
 
 Los [resultados resueltos](#worked-results) contienen EX001–EX050. Un [glosario](#glossary) y las [referencias](#references) cierran el libro.
 
@@ -1577,9 +1577,406 @@ La crítica forma parte del método. Las objeciones del red team se convirtieron
 <!-- cyberabc:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 08
 
-[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, el estudiante será capaz de:
+
+1. Estructurar una tesis como un argumento en el que cada afirmación está vinculada a evidencia, garantía, alcance y limitación.
+2. Decidir entre una monografía y una tesis por compendio de publicaciones e integrar cualquiera de las dos en un único argumento coherente.
+3. Diseñar un archivo de reproducibilidad por niveles que publique tanto como sea lícito y seguro, bajo la protección de la información de infraestructura.
+4. Distinguir los datos sintéticos inventados de los datos sintéticos calibrados con lugares reales, y evaluar el riesgo residual de divulgación.
+5. Documentar modelos, conjuntos de datos y estudios de simulación con estructuras reconocidas.
+6. Redactar una sección de limitaciones que informe en lugar de disculparse.
+
+El capítulo 6 produjo la afirmación acotada. Este capítulo arma la tesis en torno a ella y construye el archivo que permite a otros comprobarla sin exponer la infraestructura que estudia.
+
+### 7.1 La tesis como argumento
+
+Una tesis no es un informe de todo lo realizado; es un argumento a favor de una contribución. Un andamiaje útil es el análisis de los argumentos de Toulmin ([Toulmin, 1958/2003](https://doi.org/10.1017/CBO9780511840005)): una **afirmación** sustentada por **datos** (evidencia) mediante una **garantía** (la razón por la que la evidencia sustenta la afirmación), con un **respaldo** para la garantía, un **cualificador** (con qué fuerza) y **refutaciones** (condiciones en las que la afirmación falla). Aplicado a la investigación sobre infraestructura:
+
+| Elemento | Ejemplo del Estudio Cascada |
+|---|---|
+| Afirmación | El orden por tiempo hasta el impacto reduce la pérdida ponderada de servicios críticos respecto del orden por indicador crítico cuando los órdenes divergen, los mapas son exactos y las reservas son cortas. |
+| Datos | Simulaciones pareadas de Riverbend y Port Halvard; análisis de 200 regiones; pruebas de error del mapa y de escalado de reservas. |
+| Garantía | El simulador representa el agotamiento de las reservas y el restablecimiento secuencial de forma adecuada para clasificar órdenes. |
+| Respaldo | Pruebas de verificación; reproducción de las líneas de base; validación histórica del tiempo del agua; validez operacional frente a clasificaciones expertas. |
+| Cualificador | En regiones sintéticas, una sola clase de escenario (interrupciones de distribución que requieren restablecimiento manual secuencial), pesos declarados de antemano. |
+| Refutaciones | Errores del mapa; reservas largas; conjuntos de pesos que favorecen la ramificación; reservas humanas y tiempo de desplazamiento omitidos; frecuencia de la divergencia en el mundo real desconocida. |
+
+Cada capítulo de la tesis debe aportar un elemento identificable. Un capítulo que no aporta ninguno es candidato a apéndice.
+
+### 7.2 Monografía o tesis por compendio de publicaciones
+
+Una **monografía** presenta un único argumento integrado; una **tesis por compendio de publicaciones** reúne artículos con una introducción y una conclusión integradoras. Las tesis sobre infraestructura suelen mezclar géneros —un artículo de modelado, un estudio empírico de operadores, un análisis de políticas—, lo que se adapta bien a las tesis por compendio, pero los capítulos integradores deben hacer un trabajo real: enunciar la afirmación general, mostrar cómo aporta cada artículo datos o respaldo, conciliar las diferencias de alcance entre los artículos y presentar las limitaciones del conjunto. Las normas sobre formato, declaraciones de coautoría y publicación previa difieren entre instituciones; este itinerario educativo no otorga títulos y no puede asesorar sobre las normas de ninguna institución más allá de señalar que deben comprobarse pronto.
+
+### 7.3 Estructura de la tesis del Estudio Cascada
+
+1. **Introducción.** Problema, vacío, tipos de contribución, afirmación general y su alcance.
+2. **Marco de referencia.** Definiciones, literatura sobre interdependencia y resiliencia, práctica de restablecimiento, teoría de la programación (capítulos 1–2 de este libro).
+3. **Método.** Mecanismo, hipótesis, líneas de base, protocolo, ética y protección de la información (capítulo 3).
+4. **Verificación y líneas de base.** Reproducciones, pruebas de verificación, obtención de parámetros y piloto (capítulo 4).
+5. **Estudio principal y validación.** Simulaciones, ejercicio de mesa, validación, segunda región (capítulo 5).
+6. **Crítica y contornos.** Pruebas del red team, sensibilidad, análisis de muchas regiones, afirmación acotada, revisión de doble uso (capítulo 6).
+7. **Discusión.** Qué pueden hacer los profesionales y los responsables de las políticas con la afirmación acotada; qué sigue sin conocerse.
+8. **Limitaciones.**
+9. **Conclusión.**
+10. **Apéndices.** Prerregistro y enmiendas, bitácora de desviaciones, listado de pruebas de verificación, protocolos de obtención, materiales del ejercicio de mesa, manifiesto del archivo.
+
+### 7.4 El archivo de reproducibilidad
+
+#### 7.4.1 Objetivos y restricciones
+
+La reproducibilidad en este campo debe cumplir dos objetivos que tiran en direcciones opuestas: permitir que otros comprueben el trabajo y no publicar información que ayude a alguien a dañar la infraestructura o que identifique a personas. Los [principios FAIR](https://doi.org/10.1038/sdata.2016.18) —localizable, accesible, interoperable, reutilizable— ayudan aquí porque FAIR no significa abierto: los datos pueden ser localizables y tener sus condiciones de acceso claramente descritas mientras el acceso en sí está controlado.
+
+#### 7.4.2 Niveles de publicación
+
+| Nivel | Quién puede acceder | Qué contiene en el Estudio Cascada | Condiciones |
+|---|---|---|---|
+| T0 Público | Cualquier persona | Código del simulador, pruebas, definiciones de regiones sintéticas, semillas, salidas, scripts de análisis, materiales del ejercicio de mesa sin identificadores | Licencia indicada; identificador persistente |
+| T1 Registrado | Investigadores que se registran y aceptan las condiciones | Rangos de obtención agregados sin la identidad de los socios; conjuntos de escenarios ampliados | Las condiciones de uso prohíben la reidentificación y la selección de objetivos |
+| T2 Controlado | Investigadores aprobados bajo un acuerdo y, cuando corresponda, con aprobación ética | Transcripciones seudonimizadas del ejercicio de mesa y justificaciones codificadas | Acuerdo de uso de datos; entorno seguro; auditoría |
+| T3 Retenido | No se publica; solo se describe | Relaciones alimentador-instalación derivadas de los socios, inventarios reales de reservas, mapas | Su existencia y naturaleza se describen en la tesis para que los examinadores sepan qué falta y por qué |
+
+El **manifiesto** del archivo enumera cada archivo con un *hash* criptográfico y su nivel, de modo que cualquiera puede verificar que los archivos públicos son los que se usaron, y los examinadores pueden ver qué existe en los niveles superiores.
+
+#### 7.4.3 Actividad práctica: construir un manifiesto por niveles
+
+```python
+# Lab 7 - build a tiered reproducibility manifest for a synthetic thesis archive (offline)
+import hashlib, json, os, tempfile
+files = {
+    "code/lab5_mc.py": b"# simulation code\n",
+    "data/synthetic_riverbend_params.csv": b"feeder,customers\nF1,9000\nF2,1200\nF3,2500\nF4,6000\n",
+    "data/partner_feeder_map.csv": b"feeder,substation,gps\nF2,SUB-7,redacted\n",
+    "results/mc_summary.json": b'{"mean_dloss": -46.86}\n',
+    "docs/operator_interview_notes.txt": b"P03: we restore by customer count\n",
+}
+RULES = [  # first matching rule wins; order matters
+    ("partner_", "T3-withheld: partner-owned infrastructure detail; describe, do not release"),
+    ("interview", "T2-controlled: human-subjects data; release only under approved access agreement"),
+    ("synthetic_", "T0-public"),
+    ("code/", "T0-public"),
+    ("results/", "T0-public"),
+]
+def tier(path):
+    for key, label in RULES:
+        if key in path:
+            return label
+    return "UNCLASSIFIED: stop and review"
+with tempfile.TemporaryDirectory() as root:
+    manifest = []
+    for rel, content in sorted(files.items()):
+        p = os.path.join(root, rel)
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "wb") as fh:
+            fh.write(content)
+        manifest.append({"path": rel, "sha256": hashlib.sha256(content).hexdigest()[:16], "tier": tier(rel)})
+    print(json.dumps(manifest, indent=1))
+    print("public files:", sum(m["tier"].startswith("T0") for m in manifest), "of", len(manifest))
+```
+
+Salida esperada:
+
+```text
+[
+ {
+  "path": "code/lab5_mc.py",
+  "sha256": "e9db014f8aeb90da",
+  "tier": "T0-public"
+ },
+ {
+  "path": "data/partner_feeder_map.csv",
+  "sha256": "160cefe894e75af9",
+  "tier": "T3-withheld: partner-owned infrastructure detail; describe, do not release"
+ },
+ {
+  "path": "data/synthetic_riverbend_params.csv",
+  "sha256": "66bd4b5c8f37d273",
+  "tier": "T0-public"
+ },
+ {
+  "path": "docs/operator_interview_notes.txt",
+  "sha256": "35c6e20265ce92c5",
+  "tier": "T2-controlled: human-subjects data; release only under approved access agreement"
+ },
+ {
+  "path": "results/mc_summary.json",
+  "sha256": "7bde71d2f02e64ad",
+  "tier": "T0-public"
+ }
+]
+public files: 3 of 5
+```
+
+Dos decisiones de diseño merecen atención. Primero, las reglas están **ordenadas** y gana la primera coincidencia: si la regla «synthetic» se colocara antes que la regla «partner», un archivo llamado `synthetic_partner_feeders.csv` se publicaría. Ordene primero las reglas más restrictivas. Segundo, un archivo sin coincidencia devuelve **"UNCLASSIFIED: stop and review"** en lugar de un nivel predeterminado; un flujo de publicación debe fallar de forma cerrada. Los flujos reales también analizarían el *contenido* de los archivos (coordenadas, identificadores de activos, nombres), no solo las rutas.
+
+### 7.5 Datos sintéticos: inventados frente a calibrados
+
+Las regiones de este libro son **inventadas**: sus números se eligieron para enseñar y no corresponden a ningún lugar. Una tesis basada en un socio real produciría más probablemente datos sintéticos **calibrados**, generados para reproducir propiedades estadísticas de datos reales. La calibración preserva el valor para la investigación y también preserva cierto riesgo de divulgación: si la región real tiene un único hospital en un alimentador pequeño con una planta de agua de reserva corta, una región sintética calibrada que preserve esas relaciones todavía puede señalarla. Evalúe explícitamente el riesgo residual: ¿podría una persona informada hacer corresponder la configuración sintética con una real? ¿Revelaría esa correspondencia algo que no sea ya público? Generalizar (rangos en lugar de valores), perturbar y mezclar varias configuraciones reales reducen el riesgo; la evaluación y las medidas elegidas pertenecen a la documentación del archivo.
+
+### 7.6 Documentar modelos, datos y estudios
+
+- **Modelos.** Para los componentes basados en agentes, el protocolo ODD —visión general, conceptos de diseño, detalles— da una estructura estándar ([Grimm et al., 2006](https://doi.org/10.1016/j.ecolmodel.2006.04.023)). Para cualquier simulador, documente el propósito, las entidades y las variables de estado, los procesos y su programación, las entradas y sus fuentes, las pruebas de verificación y las limitaciones conocidas.
+- **Conjuntos de datos.** Las fichas de datos (*datasheets*) registran la motivación, la composición, el proceso de recopilación, el preprocesamiento, los usos, la distribución y el mantenimiento ([Gebru et al., 2021](https://doi.org/10.1145/3458723)).
+- **Componentes aprendidos.** Si el estudio incluye un modelo aprendido (por ejemplo, un detector), una ficha de modelo (*model card*) registra el uso previsto, las condiciones de evaluación y las limitaciones ([Mitchell et al., 2019](https://doi.org/10.1145/3287560.3287596)).
+- **Cómputo.** Fije las versiones del lenguaje y de las bibliotecas, registre las semillas, proporcione una única orden que regenere cada tabla y cada figura, e incluya las pruebas de verificación. [Sandve et al. (2013)](https://doi.org/10.1371/journal.pcbi.1003285) dan diez reglas prácticas.
+
+### 7.7 Redactar las limitaciones
+
+Una sección de limitaciones forma parte del argumento: enuncia las condiciones de refutación y su dirección probable. Las secciones de limitaciones débiles enumeran salvedades genéricas («se necesita más investigación»). Las fuertes dicen, para cada limitación, *qué* es, *cómo* podría cambiar el resultado y *en qué dirección*, y *qué estudio* la resolvería. Para el Estudio Cascada:
+
+| Limitación | Efecto posible | Dirección | Estudio que la resolvería |
+|---|---|---|---|
+| Se omiten las reservas humanas (agua en camiones, entregas de combustible, deslastre de carga) | El modelo exagera la consecuencia de todos los órdenes y el beneficio de reordenar | Hacia un beneficio menor | Modelar la ampliación de las reservas como condicionada a las telecomunicaciones y las carreteras; validar frente a registros posteriores a la acción |
+| Se omite el tiempo de desplazamiento entre alimentadores | Los órdenes que saltan entre alimentadores distantes cuestan más de lo modelado | Hacia un beneficio menor de DEP cuando los alimentadores críticos están dispersos | Añadir una matriz de tiempos de desplazamiento; volver a ejecutar |
+| Solo regiones sintéticas | Frecuencia de la divergencia en regiones reales desconocida | Desconocida | Encuesta a empresas de servicios que mida la divergencia, con protección T3 |
+| Pesos de un solo panel | Los veredictos cambian con los pesos (EX034) | Cualquiera | Varios paneles; reportar los veredictos por conjunto de pesos |
+| Muestra del ejercicio de mesa de 12 personas de 3 empresas de servicios | Evidencia de adopción débil | Hacia una exageración de la adoptabilidad | Estudio más amplio y estratificado; piloto de campo durante ejercicios |
+| Clase de escenario cibernético limitada a interrupciones de distribución que requieren restablecimiento manual | No cubre ataques contra las herramientas de restablecimiento ni contra los datos de prioridad | Desconocida | Familia de escenarios que incluya ataques a la integridad de los datos de planificación (motivada por el §6.6) |
+
+### 7.8 Ejemplo resuelto: armar el archivo
+
+El primer plan de archivo del candidato colocaba todo en T2 «por seguridad». El comité lo rechazó: la restricción excesiva impide la verificación y no es segura, solo hace el trabajo imposible de auditar. El plan revisado usó la tabla de niveles del §7.4.2, publicó todo el código y las configuraciones sintéticas en T0 con una única orden de regeneración, colocó las transcripciones del ejercicio de mesa en T2 según las condiciones de consentimiento que firmaron los participantes, y registró el material T3 de los socios en una descripción que indicaba a los examinadores exactamente qué análisis dependían de él: ninguno de los resultados confirmatorios, por diseño, porque el estudio usó regiones inventadas para todas las afirmaciones públicas y usó los datos de los socios solo para los rangos de obtención y la validez aparente. Esa decisión de diseño, tomada en el capítulo 1, es la que hizo posible un archivo en gran parte público.
+
+### 7.9 Errores habituales y límites
+
+- Redactar la tesis como un cuaderno de laboratorio cronológico en lugar de como un argumento.
+- Restringirlo todo, o publicarlo todo, en lugar de establecer niveles.
+- Equiparar FAIR con abierto.
+- Tratar los datos sintéticos calibrados como automáticamente seguros.
+- Scripts de publicación que fallan de forma abierta.
+- Secciones de limitaciones sin dirección ni estudios que las resuelvan.
+
+- Colocar todo en un nivel restrictivo por seguridad, lo que impide la verificación y hace el trabajo imposible de auditar en lugar de seguro.
+- Ordenar las reglas de publicación de modo que un patrón permisivo como synthetic coincida antes que uno restrictivo como partner.
+- Clasificar los archivos solo por su nombre, sin analizar su contenido en busca de coordenadas, identificadores de activos o nombres.
+- Dejar que los resultados confirmatorios dependan de material retenido de los socios, de modo que los examinadores no puedan comprobarlos.
+- Omitir una única orden que regenere cada tabla y cada figura a partir de los archivos públicos.
+
+### Ejercicios — capítulo 7
+
+**EX039 — Mapa del argumento.** *Objetivo:* exponer el argumento de la tesis. *Entradas:* la afirmación acotada del §6.5. *Restricciones:* use los seis elementos de Toulmin. *Pasos:* (1) cartografíe la afirmación; (2) marque qué capítulo de la tesis aporta cada elemento; (3) identifique la garantía más débil y la evidencia que la reforzaría. *Evidencia esperada:* mapa y párrafo. *Rúbrica:* 3 = mapa completo, garantía más débil correctamente identificada (adecuación del modelo para regiones reales, o reservas humanas omitidas) con un estudio específico para reforzarla; 2 = un elemento pobre; 1 = solo afirmación y datos; 0 = nada.
+
+**EX040 — Asignación de niveles.** *Objetivo:* asignar niveles a un archivo realista. *Entradas:* diez artefactos: código del simulador; pruebas de verificación; configuración de Riverbend; formularios de obtención con nombres de socios; rangos de obtención agregados; audio del ejercicio de mesa; justificaciones codificadas; formularios de consentimiento; un procedimiento de restablecimiento de un socio; figuras finales. *Restricciones:* use los cuatro niveles; justifique cada uno. *Pasos:* (1) asigne un nivel a cada artefacto; (2) justifique el nivel en una línea; (3) proponga una transformación que llevaría cada elemento restringido a un nivel más abierto. *Evidencia esperada:* tabla. *Rúbrica:* 3 = niveles sensatos (código, pruebas, configuraciones y figuras T0; rangos agregados T1; justificaciones codificadas T2, o T1 si se desidentifican; audio, formularios de consentimiento y formularios de obtención con nombres T2 o T3; procedimiento del socio T3) con transformaciones; 2 = uno o dos mal juzgados; 1 = niveles uniformes; 0 = nada.
+
+**EX041 — Manifiesto que falla de forma cerrada.** *Objetivo:* mejorar el Laboratorio 7. *Entradas:* Laboratorio 7. *Restricciones:* sin conexión. *Pasos:* (1) añada un archivo `data/synthetic_partner_feeders.csv`; (2) muestre que el orden actual de las reglas lo clasifica correctamente y explique por qué; (3) mueva la regla `synthetic_` al primer lugar, vuelva a ejecutar y registre el fallo; (4) añada una comprobación de contenido que niegue el nivel público a cualquier archivo que contenga la cadena `SUB-`. *Evidencia esperada:* código, salidas, explicación. *Rúbrica:* 3 = demuestra el peligro del orden, la comprobación de contenido funciona, la explicación se vincula al diseño que falla de forma cerrada; 2 = parcial; 1 = no se ejecutó; 0 = nada.
+
+**EX042 — Evaluación del riesgo residual de divulgación.** *Objetivo:* evaluar datos sintéticos calibrados. *Entradas:* una región sintética calibrada con un condado real con un hospital, dos plantas de agua y cinco alimentadores, que preserva qué alimentador alberga el hospital. *Restricciones:* use las preguntas del §7.5. *Pasos:* (1) evalúe el riesgo de reidentificación; (2) evalúe qué revelaría una correspondencia; (3) proponga transformaciones y evalúe su costo para el valor de la investigación. *Evidencia esperada:* evaluación de una página. *Rúbrica:* 3 = reconoce la reidentificación a través de una estructura única, propone mezcla o generalización, sopesa con honestidad el valor para la investigación; 2 = evaluación superficial; 1 = declara seguro lo sintético; 0 = nada.
+
+**EX043 — Documentación del modelo.** *Objetivo:* documentar el simulador del Laboratorio 5. *Entradas:* código del Laboratorio 5. *Restricciones:* siga los elementos del modelo del §7.6; como máximo dos páginas. *Pasos:* (1) redacte el propósito, las entidades, los procesos y su programación; (2) enumere las entradas y sus fuentes; (3) enumere las pruebas de verificación; (4) enumere las limitaciones conocidas, incluidas al menos tres del §7.7. *Evidencia esperada:* documento. *Rúbrica:* 3 = fiel al código (intervalos basados en eventos, retardo de rearranque, asignación de cuadrillas, semántica «O» para las dependencias), limitaciones específicas; 2 = inexactitudes menores; 1 = genérico; 0 = nada.
+
+**EX044 — Sección de limitaciones.** *Objetivo:* redactar limitaciones que informen. *Entradas:* su propio estudio o el Estudio Cascada. *Restricciones:* al menos cinco limitaciones, cada una con su efecto, su dirección y el estudio que la resolvería. *Pasos:* (1) enumere las limitaciones; (2) indique el efecto y la dirección de cada una; (3) nombre el estudio que resolvería cada una; (4) ordénelas según cuánto podrían cambiar la afirmación principal. *Evidencia esperada:* tabla y párrafo de ordenación. *Rúbrica:* 3 = específicas, con dirección, con estudios que las resuelvan y una ordenación justificada; 2 = faltan direcciones en algunas; 1 = salvedades genéricas; 0 = nada.
+
+### Síntesis del capítulo
+
+La tesis es un argumento: afirmación, datos, garantía, respaldo, cualificador y refutaciones, cada uno aportado por una parte identificable del trabajo. La investigación sobre infraestructura debe conciliar la reproducibilidad con la protección de la infraestructura estudiada y de las personas implicadas; los archivos por niveles con manifiestos con *hash* lo logran, y los principios FAIR describen el acceso sin implicar apertura. Las herramientas de publicación deben fallar de forma cerrada y comprobar el contenido, no solo los nombres. Los datos sintéticos inventados conllevan poco riesgo de divulgación; los datos sintéticos calibrados necesitan una evaluación explícita del riesgo residual. Documente los modelos, los datos y el cómputo con estructuras reconocidas. Las limitaciones enuncian la dirección y los estudios que las resolverían, lo que las convierte en la siguiente agenda de investigación.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 08
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Defensa y plan de publicación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, el estudiante será capaz de:
+
+1. Auditar el registro de afirmaciones de una tesis en busca de afirmaciones sin sustento, sin alcance definido o generalizadas en exceso antes de la defensa.
+2. Prepararse para una defensa anticipando las preguntas más fuertes de los examinadores y respondiendo con evidencia, alcance y límites.
+3. Planificar una secuencia de publicaciones para distintas comunidades que preserve la integridad del argumento general.
+4. Integrar la divulgación coordinada y la coordinación sectorial en el calendario de publicación cuando los hallazgos afectan a vulnerabilidades o superficies de ataque.
+5. Traducir una afirmación de investigación acotada en recomendaciones de política y práctica sin inflarla.
+6. Convertir las limitaciones de la tesis en un programa de investigación posdoctoral creíble.
+
+El capítulo 7 armó la tesis y su archivo. Este capítulo prepara al candidato para defenderla y para publicarla de forma responsable: el último paso del libro y del itinerario de estudio de 207 cursos.
+
+### 8.1 La auditoría de las afirmaciones
+
+Antes de la defensa, cada afirmación de la tesis —en el resumen, la introducción, las conclusiones de los capítulos y la conclusión general— pasa a un **registro de afirmaciones** con su evidencia, su alcance y sus limitaciones. Los resúmenes y las conclusiones son donde se acumulan las afirmaciones exageradas, porque se redactan al final, con prisa y buscando impacto.
+
+#### 8.1.1 Actividad práctica: una primera revisión automatizada
+
+```python
+# Lab 8 - audit a thesis claim register before the defense (offline)
+claims = [
+    {"id": "K1", "text": "Dependency-aware restoration reduced weighted critical-service loss in the Riverbend model",
+     "evidence": ["Ch5-MC"], "scope": "synthetic model, single crew, 4 feeders", "limits": ["model-policy circularity"], "status": "supported"},
+    {"id": "K2", "text": "The benefit persists when generator fuel buffers double",
+     "evidence": ["Ch6-boundary"], "scope": "gen_scale 2-4", "limits": [], "status": "supported"},
+    {"id": "K3", "text": "Operators would adopt the dependency-aware ordering",
+     "evidence": [], "scope": "", "limits": [], "status": "supported"},
+    {"id": "K4", "text": "Dependency-aware restoration improves resilience of US utilities",
+     "evidence": ["Ch5-MC", "Ch6-PortHalvard"], "scope": "two synthetic regions", "limits": ["no field data"], "status": "supported"},
+]
+OVERREACH = ("US utilities", "all utilities", "proves", "always")
+for c in claims:
+    problems = []
+    if c["status"] == "supported" and not c["evidence"]:
+        problems.append("no evidence for a supported claim")
+    if not c["scope"]:
+        problems.append("scope missing")
+    if not c["limits"]:
+        problems.append("no stated limitation")
+    if any(w in c["text"] for w in OVERREACH) and "synthetic" in c["scope"]:
+        problems.append("text generalizes beyond its synthetic scope")
+    print(c["id"], "OK" if not problems else "; ".join(problems))
+```
+
+Salida esperada:
+
+```text
+K1 OK
+K2 no stated limitation
+K3 no evidence for a supported claim; scope missing; no stated limitation
+K4 text generalizes beyond its synthetic scope
+```
+
+El script detecta tres fallos clásicos. K2 está sustentada, pero no enuncia ninguna limitación; sin embargo, el capítulo 6 mostró que el beneficio frente a SILO se reduce bruscamente a medida que crecen las reservas, de modo que «persiste cuando las reservas se duplican» necesita el cualificador de que el beneficio cae alrededor de un 85 % con el doble de reservas. K3 está marcada como sustentada sin evidencia: el ejercicio de mesa mostró que una visualización *puede desplazar las elecciones en un ejercicio de mesa*, lo que no es adopción. K4 generaliza de dos regiones sintéticas a «US utilities». Un filtro de palabras clave es tosco —pasaría por alto «nationwide» o «the grid»—, de modo que el script es una primera revisión; la auditoría decisiva es una persona que lea cada afirmación frente al registro.
+
+#### 8.1.2 Afirmaciones corregidas
+
+| ID | Texto corregido |
+|---|---|
+| K1 | En el modelo sintético de Riverbend, todos los órdenes conscientes de la criticidad redujeron la pérdida ponderada de servicios críticos en alrededor de un 90 % respecto del orden de clientes primero, con alrededor de un 70 % más de horas-cliente; allí, el orden por tiempo hasta el impacto no mejoró el orden por indicador crítico. |
+| K2 | La ventaja del orden consciente de la criticidad sobre el orden de clientes primero cayó alrededor de un 85 % al duplicar las reservas y desapareció con cuatro veces las reservas obtenidas. |
+| K3 | En un ejercicio de mesa con doce participantes de tres empresas de servicios sintéticas, una visualización del tiempo hasta el impacto desplazó los órdenes elegidos por siete participantes hacia el orden de menor consecuencia; no se estudió la adopción en la práctica. |
+| K4 | En dos regiones sintéticas y 200 regiones generadas, el orden por tiempo hasta el impacto mejoró el orden por indicador crítico solo donde sus órdenes divergían; se desconoce con qué frecuencia ocurre esto en regiones reales. |
+
+### 8.2 Preparar la defensa
+
+#### 8.2.1 Qué ponen a prueba los examinadores
+
+Los examinadores ponen a prueba si el candidato es un investigador independiente: si entiende los límites de su contribución mejor que nadie, si puede defender sus decisiones de diseño frente a alternativas y si conoce la literatura lo suficiente como para situar el trabajo. Espere preguntas de seis familias:
+
+| Familia | Pregunta de ejemplo para el Estudio Cascada | Qué contiene una respuesta sólida |
+|---|---|---|
+| Contribución | «¿Qué hay de nuevo aquí, si las empresas de servicios ya mantienen listas de clientes críticos?» | La afirmación acotada; las condiciones en que los tiempos aportan valor; las condiciones previas medibles (divergencia, exactitud del mapa); el planteamiento desde la teoría de la programación. |
+| Diseño | «¿Por qué una simulación y un ejercicio de mesa en lugar de un estudio de campo?» | Seguridad y ética (nunca probar en producción); rareza de los eventos reales; el uso de la validación histórica; lo que añadiría a continuación un piloto de campo durante ejercicios. |
+| Validez | «¿No es circular el resultado?» | La prueba de desajuste; un modelador independiente para Port Halvard; el análisis del generador; lo que sigue siendo circular. |
+| Valores | «¿Quién decidió que los hospitales importan cinco veces más que una central de telecomunicaciones, y por qué debería aceptarlo alguien?» | Proceso de obtención, panel, fecha, sensibilidad de los veredictos a los pesos (EX034), declaración explícita de que los pesos son una decisión de política. |
+| Ética y doble uso | «¿No acaba de decirles a los adversarios que ataquen los datos de prioridad de restablecimiento?» | La revisión de doble uso; publicación a nivel general; recomendación defensiva; coordinación antes de publicar. |
+| Conocimiento del campo | «¿Cómo se relaciona su trabajo con los enfoques de ingeniería orientados a consecuencias?» | La lógica de CCE de partir de la consecuencia; la tesis como contribución al lado de la *recuperación*; diferencias en la unidad de análisis. |
+
+#### 8.2.2 Defensas simuladas
+
+Realice al menos dos defensas simuladas: una con expertos del dominio favorables y otra con un metodólogo hostil ajeno a él. Registre las preguntas que no pudo responder bien; cada una es un vacío de la tesis (corríjalo), un vacío de su preparación (estúdielo) o una pregunta realmente abierta (dígalo en la defensa: «no lo sé, y así es como lo averiguaría» es una respuesta sólida).
+
+#### 8.2.3 Responder
+
+Responda a la pregunta formulada, luego aporte la evidencia y después enuncie el límite. Evite tres hábitos: defender una afirmación más fuerte que la que hace la tesis; conceder, por nervios, un punto que la tesis sí aborda; y llenar el silencio con especulaciones. Cuando un examinador propone una explicación alternativa que usted no puso a prueba, la mejor respuesta describe la prueba que la distinguiría y lo que significaría cada resultado.
+
+### 8.3 Plan de publicación
+
+#### 8.3.1 Secuenciar los artículos
+
+El Estudio Cascada se divide de forma natural en artículos para distintas comunidades:
+
+1. **Artículo de métodos / investigación operativa.** El orden de restablecimiento con servicios críticos limitados por reservas: el planteamiento de programación, la cota del oráculo, la heurística y sus modos de falla, el análisis de 200 regiones. Público: publicaciones de confiabilidad, riesgo e investigación operativa.
+2. **Artículo de seguridad de la infraestructura.** La integridad del mapa de dependencias como condición previa del restablecimiento consciente de la criticidad, con los resultados del desajuste y la recomendación defensiva sometida a revisión de doble uso. Público: publicaciones de protección de infraestructuras críticas y talleres de seguridad de sistemas ciberfísicos.
+3. **Artículo de factores humanos.** El ejercicio de mesa: visualización, elecciones, justificaciones y variables omitidas. Público: factores humanos y gestión de emergencias.
+4. **Nota de replicación.** La reproducción de GridWater-Sim tras corregir una ambigüedad en el orden de los parámetros, con las pruebas de verificación. Público: la comunidad del banco de referencia; también es valiosa como artículo de datos o de software.
+
+Publique los componentes T0 del archivo con identificadores persistentes junto con el primer artículo, para que los artículos posteriores citen los mismos artefactos versionados. Cada artículo debe enunciar el alcance de la afirmación general y no debe citar otro artículo de la tesis como evidencia más fuerte de lo que es.
+
+#### 8.3.2 Preprints, embargos y resultados sensibles
+
+Los *preprints* aceleran la retroalimentación y establecen la prioridad. Para los resultados que afectan a superficies de ataque, decida *antes* del preprint si se necesita coordinación (§8.4); un preprint es una publicación. Los financiadores y los socios pueden tener plazos de preaviso en sus acuerdos (capítulo 1, §1.5.3); respételos y rechace cualquier solicitud que equivalga a un veto sobre los hallazgos.
+
+### 8.4 Divulgación coordinada y coordinación sectorial
+
+La investigación sobre infraestructura puede producir tres tipos de hallazgo sensible, cada uno con su propia vía:
+
+| Hallazgo | Ejemplo | Vía |
+|---|---|---|
+| Una vulnerabilidad de un producto | Una falla en el software de gestión de interrupciones de un proveedor encontrada al construir el simulador | Divulgación coordinada de vulnerabilidades al proveedor, directamente o a través de un coordinador como el [programa CVD de CISA](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program); la práctica internacional se describe en ISO/IEC 29147 (divulgación) e ISO/IEC 30111 (gestión). |
+| Una debilidad propia de una organización | La lista de clientes críticos de un socio tiene asignaciones de alimentadores erróneas | Informe privado al socio según el acuerdo de uso de datos; nunca se publica de forma identificable. |
+| Una superficie de ataque a nivel sectorial | Los datos de prioridad de restablecimiento y los mapas de dependencias son objetivos de alto valor cuya corrupción amplifica las interrupciones | Coordinar con los socios y, cuando corresponda, con la organización sectorial de intercambio de información pertinente antes de publicar; publicar a nivel general con recomendaciones defensivas. |
+
+Incorpore el periodo de coordinación al calendario. CISA describe su proceso como uno que abarca el contacto con el proveedor, el análisis, la coordinación de la remediación y la publicación del aviso, y señala que puede divulgar tras un periodo si un proveedor no responde; lea la política vigente en lugar de confiar en un resumen. La tesis registra qué se divulgó, a quién, cuándo y qué se retuvo.
+
+### 8.5 Traducir a política y práctica
+
+Los públicos de políticas necesitan recomendaciones que se deriven de la evidencia y que digan con qué confianza se formulan. A partir de la afirmación acotada del Estudio Cascada, las recomendaciones defendibles son:
+
+1. **Hacer explícita la compensación.** Priorizar los servicios críticos en el restablecimiento cuesta a los clientes ordinarios tiempo sin electricidad; el tamaño de ese costo debe estimarse y discutirse en los planes de emergencia y, cuando corresponda, en consulta pública. (Evidencia fuerte dentro del modelo; la dirección es un resultado de la teoría de la programación).
+2. **Auditar los mapas de dependencias.** El restablecimiento consciente de la criticidad es tan bueno como el mapa alimentador-instalación y los datos de reservas que lo sustentan; las empresas de servicios y sus socios deben verificarlos con regularidad. (Evidencia fuerte de fragilidad dentro del modelo).
+3. **Proteger los datos de prioridad de restablecimiento.** Tratar las listas de clientes críticos, los mapas de dependencias y los inventarios de reservas como sensibles y críticos para la integridad. (Inferencia a partir de los resultados del desajuste y de los informes públicos de amenazas; confianza moderada).
+4. **Medir la divergencia antes de cambiar la práctica.** Una empresa de servicios puede determinar si el orden por tiempo hasta el impacto cambiaría el orden de su lista crítica actual; si no lo cambia, no gana nada adoptándolo. (Condicionado al modelo; bajo costo de comprobación).
+
+Estas recomendaciones encajan de forma natural en procesos de gestión de riesgos que ya existen —la gestión de riesgos sectoriales del NSM-22 en Estados Unidos, las evaluaciones de riesgos de las entidades críticas de la Directiva CER en la UE— sin afirmar que ninguna autoridad deba imponerlas. Un resumen de políticas ocupa dos páginas, enuncia su base de evidencia y sus límites, y enlaza con la tesis y el archivo.
+
+### 8.6 El programa posdoctoral
+
+La tabla de limitaciones del capítulo 7 es una agenda de investigación. Un programa creíble de tres estudios:
+
+1. **Encuesta sobre la divergencia en regiones reales** (empírica, protegida): medir, con protección T3, con qué frecuencia divergen los órdenes por tiempo hasta el impacto y por lista crítica en una muestra de empresas de servicios. Esto responde a la pregunta que los generadores sintéticos no pudieron responder.
+2. **Modelado de las reservas humanas** (modelo + validación): representar la ampliación de las reservas (entregas de combustible, agua en camiones) como condicionada al acceso a las telecomunicaciones y a las carreteras, validarla frente a registros posteriores a la acción y volver a poner a prueba las afirmaciones sobre el restablecimiento.
+3. **Ataques a la integridad de los datos de planificación** (seguridad + simulación): modelar la corrupción adversarial de los mapas de dependencias y de las listas de prioridades, evaluar estrategias de detección y auditoría, y estimar su valor en términos de consecuencia; una continuación directa del hallazgo de doble uso, realizada con socios sectoriales.
+
+Cada estudio tiene una afirmación falsable, un diseño seguro y un modelo de colaboración con socios, y cada uno cambiaría una decisión que alguien toma.
+
+### 8.7 Ejemplo resuelto: un intercambio en la defensa (sintético)
+
+*Examinador:* «Su región de Port Halvard se diseñó para que su método ganara. ¿Por qué debería creer algo más allá de Riverbend, donde fracasó?».
+
+*Candidato:* «Tiene razón en que Port Halvard se seleccionó para que el mecanismo pudiera actuar; los criterios de selección se prerregistraron antes de la simulación y la construyó otro modelador, pero es una prueba del mecanismo, no una estimación de con qué frecuencia ayuda el método. Por eso ejecuté el análisis de 200 regiones, en el que la ganancia sobre el orden por indicadores es exactamente cero siempre que los dos órdenes coinciden y crece con la divergencia, y por eso la tesis no afirma nada sobre la frecuencia de la divergencia en regiones reales. El fracaso de Riverbend forma parte de la afirmación: muestra que el método no aporta nada donde los órdenes coinciden o donde los pesos y la ramificación favorecen otro orden. Si quiere una estimación para empresas de servicios reales, el estudio que haría primero es la encuesta sobre la divergencia que describo en la conclusión».
+
+La respuesta concede lo que es cierto, cita la evidencia específica, reformula la afirmación acotada y nombra el siguiente estudio. No defiende la afirmación original, más amplia.
+
+### 8.8 Errores habituales y límites
+
+- Resúmenes y conclusiones que afirman más que los capítulos.
+- Tratar la defensa como una presentación y no como un examen de independencia.
+- Publicar artículos cuyas afirmaciones se desvían más allá del alcance de la tesis.
+- Publicar preprints antes de decidir si se necesita coordinación.
+- Recomendaciones de política sin niveles de confianza ni vínculos con la evidencia.
+- Planes posdoctorales que repiten la tesis en lugar de abordar sus limitaciones.
+
+- Mantener un registro de afirmaciones, pero auditarlo solo por palabras clave, lo que pasa por alto las extralimitaciones formuladas como «nationwide» o «the grid».
+- Responder a la explicación alternativa de un examinador defendiendo la afirmación original en lugar de describir la prueba que las distinguiría.
+- Publicar el artículo de seguridad de la infraestructura antes de haber consultado a los socios y al organismo sectorial de intercambio de información sobre el hallazgo de la integridad de los mapas.
+- Citar un artículo de la tesis como evidencia más fuerte de lo que es en el artículo siguiente.
+- Redactar recomendaciones de política que implican una obligación que la evidencia no sustenta.
+
+### Ejercicios — capítulo 8
+
+**EX045 — Auditoría de las afirmaciones.** *Objetivo:* auditar un registro de afirmaciones. *Entradas:* Laboratorio 8. *Restricciones:* sin conexión. *Pasos:* (1) ejecute el laboratorio y registre la salida; (2) añada una afirmación K5, "Our method makes the grid resilient to cyber attacks", con evidencia `["Ch5-MC"]`, alcance "synthetic model" y límites `["no field data"]`; (3) muestre que el script no la detecta; (4) mejore la comprobación y vuelva a ejecutar; (5) redacte un texto corregido para K5. *Evidencia esperada:* código, salidas, afirmación corregida. *Rúbrica:* 3 = demuestra la omisión, una comprobación mejorada sensata (por ejemplo, términos como "the grid" o "resilient to" combinados con un alcance sintético), afirmación corregida debidamente acotada; 2 = comprobación mejorada, pero la afirmación sigue inflada; 1 = no se ejecutó; 0 = nada.
+
+**EX046 — Banco de preguntas de los examinadores.** *Objetivo:* prepararse para la defensa. *Entradas:* su tesis o el Estudio Cascada. *Restricciones:* al menos dos preguntas de cada una de las seis familias del §8.2.1; una respuesta modelo de 120 palabras como máximo para las tres más difíciles. *Pasos:* (1) redacte al menos dos preguntas de cada familia; (2) marque las tres más difíciles; (3) redacte una respuesta modelo de 120 palabras como máximo para cada una; (4) identifique cualquier pregunta que revele un vacío de la tesis y no de su preparación. *Evidencia esperada:* banco de preguntas y respuestas. *Rúbrica:* 3 = preguntas agudas y específicas, respuestas que siguen el patrón pregunta-evidencia-límite, al menos un vacío real identificado; 2 = respuestas defensivas; 1 = preguntas genéricas; 0 = nada.
+
+**EX047 — Plan de publicación.** *Objetivo:* secuenciar los artículos con integridad. *Entradas:* el Estudio Cascada o su tesis. *Restricciones:* de tres a cinco artículos; público, afirmación y evidencia de cada uno; versionado del archivo; puntos de control de la coordinación. *Pasos:* (1) enumere los artículos con sus públicos; (2) enuncie la afirmación de cada artículo y la evidencia que usa; (3) cartografíe los artefactos compartidos y sus versiones; (4) marque dónde deben producirse la coordinación o la revisión de doble uso antes de la publicación. *Evidencia esperada:* plan con calendario. *Rúbrica:* 3 = artículos distintos y sin solapamiento en sus afirmaciones, artefactos compartidos versionados, coordinación situada antes de cualquier preprint que afecte a superficies de ataque; 2 = solapamientos o puntos de control ausentes; 1 = solo una lista de títulos; 0 = nada.
+
+**EX048 — Enrutamiento de la divulgación.** *Objetivo:* encaminar hallazgos sensibles. *Entradas:* cuatro hallazgos sintéticos: (a) la empresa de servicios socia del simulador exporta su lista de clientes críticos a una página web interna sin autenticación; (b) un producto comercial de gestión de interrupciones acepta importaciones de configuración sin firmar; (c) en tres socios, los inventarios de reservas en papel superan en un 20–40 % a los inventarios físicos; (d) los procedimientos de radio de las cuadrillas de restablecimiento dependen de un único sitio repetidor. *Restricciones:* vías del §8.4; indique el momento y lo que se publica. *Pasos:* (1) clasifique cada hallazgo por tipo; (2) elija la vía; (3) indique a quién se notifica y cuándo; (4) indique qué se publica finalmente y a qué nivel. *Evidencia esperada:* tabla. *Rúbrica:* 3 = (a) informe privado al socio, (b) CVD con el proveedor o un coordinador, (c) informes privados más la publicación general de la brecha entre los inventarios en papel y los físicos, (d) informe privado y un hallazgo general sobre los puntos únicos de falla en las comunicaciones de restablecimiento, con un calendario sólido; 2 = uno mal encaminado; 1 = dos o más; 0 = nada.
+
+**EX049 — Resumen de políticas.** *Objetivo:* traducir sin inflar. *Entradas:* la afirmación acotada del §6.5 y las recomendaciones del §8.5. *Restricciones:* dos páginas; nivel de confianza y vínculo con la evidencia para cada recomendación; un párrafo sobre lo que la investigación no muestra. *Pasos:* (1) redacte el resumen; (2) marque cada oración como evidencia, inferencia o recomendación; (3) elimine cualquier oración que no pueda rastrearse hasta la tesis. *Evidencia esperada:* resumen con marcas. *Rúbrica:* 3 = recomendaciones rastreables y matizadas, lo no hallado explícito, lenguaje accesible; 2 = algunas oraciones no rastreables; 1 = defensa de una postura sin evidencia; 0 = nada.
+
+**EX050 — Programa de investigación posdoctoral.** *Objetivo:* convertir las limitaciones en investigación. *Entradas:* su tabla de limitaciones del EX044 o el §7.7. *Restricciones:* tres estudios; cada uno con una afirmación falsable, un diseño seguro, un modelo de colaboración con socios y la decisión que cambiaría. *Pasos:* (1) elija tres limitaciones; (2) diseñe un estudio para cada una; (3) ordene los estudios por dependencia y valor; (4) indique qué resultado pondría fin al programa. *Evidencia esperada:* programa de dos páginas. *Rúbrica:* 3 = los estudios abordan directamente las limitaciones de mayor consecuencia, son falsables y seguros, y están ordenados por dependencia, con un resultado de parada honesto; 2 = un estudio débil; 1 = repite la tesis; 0 = nada.
+
+### Síntesis del capítulo
+
+La defensa examina la independencia: el candidato debe conocer los límites de la contribución mejor que nadie. Un registro de afirmaciones, auditado con un script y con lectura, elimina las afirmaciones exageradas que se acumulan en los resúmenes y las conclusiones. Las preguntas de los examinadores se agrupan en familias previsibles; responda con evidencia y límites, y nombre el estudio que resolvería lo que no sabe. Publique en secuencia para distintas comunidades con artefactos compartidos versionados, y decida sobre la coordinación antes de que cualquier preprint afecte a una superficie de ataque. Encamine de forma distinta las vulnerabilidades, las debilidades propias de una organización y las superficies de ataque a nivel sectorial. Traduzca las afirmaciones acotadas en recomendaciones con niveles de confianza. Las limitaciones se convierten en el siguiente programa de investigación: el final natural de un curso doctoral y de este itinerario de estudio.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 08
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Termine el itinerario de 207 cursos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso y del itinerario de estudio de 207 cursos.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -1715,6 +2112,41 @@ No existe ningún ciclo entre los servicios enumerados (ningún servicio de la l
 **EX037 — Decisión de doble uso.** (a) *Restringir y notificar*: específico, accionable, gran ventaja para el adversario; divulgación coordinada a través del proveedor y de un coordinador; notificar a las empresas de servicios afectadas por los canales adecuados; publicar solo hallazgos agregados tras la remediación. (b) *Publicar*: patrón general ampliamente tratado en avisos públicos; valor defensivo alto. (c) *Publicar con cuidado*: el método ayuda a los planificadores; evite publicar flujos listos para usar que ingieran datos públicos de instalaciones de lugares con nombre. (d) *Retener o restringir*: las estimaciones para hospitales con nombre son datos para seleccionar objetivos, con poco valor defensivo más allá de esos hospitales; compártalas en privado con ellos si son exactas.
 
 **EX038 — Carta de respuesta.** Respuestas modelo: (1) circularidad: *aceptada en parte*; se añaden pruebas de desajuste, la afirmación se condiciona a la exactitud del mapa y se recomienda una auditoría del mapa. (2) Reservas cortas: *aceptada como condición de contorno*; se añade el escalado de reservas y la afirmación se limita a reservas más cortas que alrededor del doble del tiempo de restablecimiento. (3) Selección del contexto: *aceptada en parte*; se añade el análisis de 200 regiones, la afirmación se limita a la divergencia medida y la frecuencia en regiones reales figura como desconocida. (4) Debilidad de la heurística: *aceptada*; la regla consciente de los pesos se presenta como trabajo futuro exploratorio, no como resultado. (5) Doble uso: *aceptada*; se añade la revisión de doble uso; la recomendación sobre los datos de prioridad de restablecimiento se publica a nivel general tras la coordinación. Cada respuesta cita la sección modificada.
+
+### Capítulo 7: EX039–EX044
+
+**EX039 — Mapa del argumento.** Afirmación, datos, garantía, respaldo, cualificador y refutaciones como en el §7.1, con los capítulos: datos (capítulos 5–6), garantía (verificación del capítulo 4 y validación del capítulo 5), respaldo (reproducciones y pruebas del capítulo 4), cualificador (alcance del capítulo 3 más las condiciones del capítulo 6), refutaciones (capítulo 6 y Limitaciones). Garantía más débil: que el modelo clasifica los órdenes de forma adecuada para regiones *reales*, ya que la validación histórica cubre un solo evento de todas las causas y omite las reservas humanas. Refuerzo: validación del tiempo de las reservas frente a varios registros posteriores a la acción, con las reservas humanas modeladas explícitamente.
+
+**EX040 — Asignación de niveles.** Código del simulador T0; pruebas de verificación T0; configuración de Riverbend T0 (inventada); formularios de obtención con nombres de socios T3 (o T2 si los socios consienten el acceso controlado): transformarlos eliminando las identidades y agregando para llevarlos a T1; rangos de obtención agregados T1 (T0 si los socios están de acuerdo y no queda ninguna estructura única); audio del ejercicio de mesa T2: destruirlo tras la transcripción si el consentimiento así lo indica; justificaciones codificadas T2, o T1 tras la desidentificación y la eliminación de las combinaciones de función y empresa de servicios; formularios de consentimiento T2 (administrativos, nunca se publican); procedimiento de restablecimiento del socio T3: describir solo su existencia y su función; figuras finales T0.
+
+**EX041 — Manifiesto que falla de forma cerrada.** Con el orden original de las reglas, `data/synthetic_partner_feeders.csv` coincide primero con `partner_` y se clasifica como T3 (correcto). Mover la regla `synthetic_` al primer lugar lo clasifica como T0-public (incorrecto): un peligro de orden. Una comprobación de contenido: antes de asignar T0, leer los bytes y negar T0 si aparece `b"SUB-"` (o cualquier patrón de una lista de formatos de identificadores de activos), devolviendo "UNCLASSIFIED: stop and review". Lección: ponga primero las reglas más restrictivas, falle de forma cerrada cuando no haya coincidencia y compruebe el contenido además de los nombres.
+
+**EX042 — Evaluación del riesgo residual de divulgación.** Riesgo: la configuración (un hospital, dos plantas de agua, cinco alimentadores, el hospital en un alimentador concreto) es una huella estructural casi única del condado; alguien con conocimiento local podría hacerla corresponder. Una correspondencia revelaría qué alimentador abastece al hospital y las reservas obtenidas: información para seleccionar objetivos. Transformaciones: mezclar estructuras de varios condados; generalizar a rangos; eliminar el vínculo alimentador-hospital y sustituirlo por una asignación aleatoria que preserve solo el estadístico de interés (por ejemplo, la distribución de la divergencia). Costo: vínculo más débil con el caso real; la tesis debe indicar qué resultados dependen de la estructura preservada.
+
+**EX043 — Documentación del modelo.** Propósito: clasificar los órdenes de restablecimiento por la pérdida ponderada de servicios críticos y las horas-cliente en interrupciones de distribución que requieren restablecimiento manual secuencial. Entidades: alimentadores (clientes, duración del restablecimiento), servicios (alimentador, reserva, peso, dependencia opcional con reserva en el sitio), cuadrillas. Procesos y programación: las cuadrillas toman los alimentadores en el orden de la política en cuanto quedan libres; los intervalos de interrupción de los servicios se calculan de forma exacta desde el vencimiento de la reserva hasta el restablecimiento más un retardo de rearranque de una hora; los intervalos de dependencia empiezan en el inicio de la interrupción del proveedor más la reserva en el sitio y terminan con el restablecimiento del proveedor; los intervalos se recortan a 72 h; las dependencias tienen semántica «O». Entradas: distribuciones triangulares procedentes de la obtención; pesos del panel de gestión de emergencias. Verificación: los invariantes y las pruebas unitarias del EX024. Limitaciones: sin tiempo de desplazamiento; sin ampliación humana de las reservas; solo semántica «O»; reservas fijas (sin dinámica de agotamiento); una sola clase de escenario.
+
+**EX044 — Sección de limitaciones.** Una respuesta sólida se parece al §7.7, con cinco o más limitaciones, cada una con su efecto, su dirección y el estudio que la resolvería, y las ordena: (1) reservas humanas omitidas (podrían reducir todos los beneficios de reordenar), (2) regiones sintéticas (frecuencia de la divergencia desconocida), (3) pesos (los veredictos cambian), (4) tiempo de desplazamiento (reduce el beneficio de DEP donde los alimentadores críticos están dispersos), (5) escala del ejercicio de mesa (adopción no demostrada).
+
+### Capítulo 8: EX045–EX050
+
+**EX045 — Auditoría de las afirmaciones.** La salida original señala K2, K3 y K4 (véase el §8.1.1). K5 se reporta como "OK" porque no aparece ninguna de las palabras clave. Comprobación mejorada: ampliar `OVERREACH` con expresiones como "the grid", "resilient to", "makes", "secure", o, mejor aún, exigir una expresión de alcance explícita («en el modelo sintético…») en el texto de cualquier afirmación cuyo campo de alcance contenga "synthetic". K5 corregida: «En dos regiones sintéticas, el orden de restablecimiento por tiempo hasta el impacto redujo la pérdida modelada de servicios críticos tras interrupciones de distribución en condiciones enunciadas; no previene ciberataques, y su efecto en redes reales no se ha probado».
+
+**EX046 — Banco de preguntas de los examinadores.** Las tres más difíciles para el Estudio Cascada, con respuestas modelo: (1) «¿No es circular el resultado?»: responda con la evidencia del desajuste y del modelador independiente, y admita lo que sigue siendo circular (ORACLE y DEP siguen compartiendo el modelo). (2) «¿Por qué debería alguien aceptar sus pesos?»: no debería hacerlo sin examinarlos; describa la obtención y la tabla de veredictos por conjunto de pesos; los pesos son una entrada de política que el método hace explícita. (3) «Sin un estudio de campo, ¿qué sabe usted de las empresas de servicios reales?»: que las condiciones del beneficio son medibles; que la encuesta sobre la divergencia es el siguiente estudio; que no se hace ninguna afirmación de campo. Un vacío real revelado: la tesis no tiene evidencia sobre si las cuadrillas pueden seguir un plan reordenado dados los tiempos de desplazamiento; es un vacío del trabajo, que debe enunciarse como limitación.
+
+**EX047 — Plan de publicación.** Como en el §8.3.1, con: el archivo T0 v1.0 publicado con el artículo 1; los artículos 2–4 citando versiones del archivo; la revisión de doble uso y la coordinación sectorial completadas antes de cualquier preprint del artículo 2; los plazos de preaviso de los socios respetados para los artículos que usan rangos de obtención; y una declaración en cada artículo de su alcance respecto de la afirmación general de la tesis.
+
+**EX048 — Enrutamiento de la divulgación.**
+
+| Hallazgo | Tipo | Vía y momento | Publicado |
+|---|---|---|---|
+| (a) El socio expone su lista de clientes críticos | Propio de una organización | Informe privado inmediato según el acuerdo de uso de datos; confirmar la corrección | Nunca de forma identificable; quizá una nota general de que las listas de prioridades necesitan control de acceso |
+| (b) Importaciones de configuración sin firmar en un producto comercial | Vulnerabilidad de un producto | CVD con el proveedor, directamente o mediante un coordinador; publicación tras la remediación o según la política del coordinador | Descripción a nivel de aviso tras la coordinación |
+| (c) Inventarios de reservas en papel frente a físicos | Propio de una organización y a nivel sectorial | Informes privados a cada socio; después, publicación general de la brecha | Hallazgo agregado sin identidades |
+| (d) Un único sitio repetidor para las radios de las cuadrillas | Propio de una organización con relevancia sectorial | Informe privado a la empresa de servicios; hallazgo general sobre los puntos únicos de falla en las comunicaciones de restablecimiento tras la coordinación | Solo el hallazgo general |
+
+**EX049 — Resumen de políticas.** Un resumen sólido abre con el problema (el orden de restablecimiento determina qué servicios críticos fallan), enuncia cuatro recomendaciones con niveles de confianza y vínculos con la evidencia (§8.5), incluye un párrafo «Lo que esta investigación no muestra» (efectos en empresas de servicios reales, frecuencia de la divergencia, adopción bajo estrés, cualquier efecto de prevención de ciberataques), usa un lenguaje llano y enlaza con la tesis y con el archivo T0. Cada oración está marcada; las oraciones que no pueden rastrearse hasta la tesis se eliminan.
+
+**EX050 — Programa de investigación posdoctoral.** Como en el §8.6: (1) encuesta sobre la divergencia: afirmación «la divergencia ocurre en al menos una cuarta parte de las empresas de servicios encuestadas», diseño con protección T3, colaboración con socios a través de asociaciones sectoriales, decisión que cambia: si promover o no el orden por tiempo hasta el impacto; (2) modelado de las reservas humanas: afirmación «incluir las entregas de combustible y de agua reduce el beneficio modelado de reordenar en menos de la mitad», validada frente a registros posteriores a la acción; (3) ataques a la integridad de los datos de planificación: afirmación «las auditorías de mapas con un 98 % de exactitud limitan a una cota enunciada la amplificación de la consecuencia de los datos de prioridad corrompidos». Orden: (1) primero, porque si la divergencia es poco frecuente, (2) y (3) importan más que seguir trabajando en el método. Resultado de parada: si la encuesta encuentra divergencia en muy pocas empresas de servicios y los errores de los mapas son poco frecuentes, el programa debería reorientarse de los métodos de ordenación a la verificación de las reservas.
 
 <a id="glossary"></a>
 
