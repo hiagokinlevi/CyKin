@@ -115,13 +115,13 @@ O primeiro rascunho de alegação de Ana era "a nossa defesa de separação impe
 
 ### 1.7 Erros e limites
 
-Cada um dos erros listados abaixo faz um resultado parecer mais forte do que é. A melhor de muitas execuções esconde a dispersão que o Laboratório S mostra entre as sementes. Ajustar no conjunto de teste o transforma em dados de treino. Uma defesa testada só contra ataques mais antigos não enfrentou o adversário adaptativo do modelo de ameaça de Ana. Nenhum ataque encontrado pode significar apenas que a busca foi fraca. Strings de exploração publicadas cedo prejudicam os usuários antes que exista uma correção.
+Cada um destes erros faz um resultado parecer mais forte do que é:
 
-- Relatar a melhor de muitas execuções como "o" resultado.
-- Ajustar prompts ou limiares no conjunto de teste.
-- Avaliar uma defesa apenas contra ataques projetados antes de ela existir.
-- Tratar "nenhum ataque encontrado" como prova de segurança.
-- Publicar strings de exploração funcionais contra um produto em produção antes que o fornecedor possa responder.
+- Relatar a melhor de muitas execuções como "o" resultado, o que esconde a dispersão que o Laboratório S mostra entre as sementes.
+- Ajustar prompts ou limiares no conjunto de teste, o que o transforma em dados de treino.
+- Avaliar uma defesa apenas contra ataques projetados antes de ela existir; essa defesa não enfrentou o adversário adaptativo do modelo de ameaça de Ana.
+- Tratar "nenhum ataque encontrado" como prova de segurança, quando isso pode significar apenas que a busca foi fraca.
+- Publicar strings de exploração funcionais contra um produto em produção antes que o fornecedor possa responder, o que prejudica os usuários antes que exista uma correção.
 
 ### Exercícios
 
@@ -899,6 +899,8 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX051.** Os ecos por encadeamento de ferramentas podem ser bloqueados por rastreamento de fluxo de informação sem perda inaceitável de utilidade? Podemos limitar o *impacto* de uma injeção bem-sucedida, e não a sua taxa? As defesas de separação se transferem para entradas multimodais (imagens, PDFs)?
 
 **EX052.** As respostas variam; uma resposta completa separa a redução medida da segurança absoluta e combina o método com limites de privilégio, confirmação e monitoramento.
+
+<a id="references"></a>
 
 ## Referências
 
