@@ -1122,21 +1122,31 @@ You will (1) define a system boundary and its stakeholders; (2) write a concept 
 
 Lantern's boundary includes collectors, store, enrichment, analyst interface and dissemination. Outside it: partner servers, BEN's firewalls and SIEM, the sector ISAC. Stakeholders include SOC analysts, OT engineers, the privacy officer, partners and executives.
 
+Drawing the line tells the team what they control and what they can only influence. A firewall outside the boundary may reject a rule Lantern sends, and Lantern must cope with that rather than assume success. Kofi found one stakeholder missing from the first draft: the network operations team, who own the firewalls and must agree to every change in how rules arrive.
+
 ### 16.2 Concept of operations
 
 A ConOps describes, in operators' words, how the system is used: "At 07:00 the duty analyst reviews overnight high-confidence indicators; automatic blocks apply to IT segments only; OT blocks await approval." It is the reference for requirements.
+
+Kofi wrote the first draft by sitting with the duty analyst for a morning and writing down what she did, then asking what she wished the system did instead. Operators corrected several steps when they read it, including the order in which they check overnight alerts. Requirements written later can each be traced to a sentence in this description, which shows why they exist.
 
 ### 16.3 Interface control
 
 Each interface — TAXII 2.1 with partners, the SIEM API, the firewall push — has an interface control document: data formats, rates, authentication, error handling and owners on both sides.
 
+Without such a document, each side assumes the other handles errors. Kofi found that the SIEM team expected Lantern to retry failed deliveries while Lantern expected the SIEM to request missing data. Writing the interface down exposed the gap before an outage did. Each document names a contact on both sides and is reviewed whenever either system changes its format or limits.
+
 ### 16.4 Life cycle
 
 Concept, requirements, design, build, verification, validation, operation and retirement. Retirement matters in CTI: decommissioning a feed means telling the partner, deleting retained restricted data and removing credentials.
 
+Kofi's plan for each feed includes its end: who tells the partner, which stored records must go under the agreement, which credentials are revoked and which firewall rules derived from the feed are reviewed. When BEN later dropped a low-value commercial feed, the plan turned what could have been a messy week into a checklist finished in two days.
+
 ### 16.5 Trade studies
 
 Build versus buy, on-premises versus cloud, open-source versus commercial threat-intelligence platforms: trade studies weigh cost, control, integration and risk with explicit criteria.
+
+Kofi's study for the platform listed criteria first and weighted them with the CTI lead before scoring any option, so that the preferred answer could not shape the weights. Integration with BEN's existing SIEM and the ability to keep restricted partner data on BEN's own servers carried the most weight. The scores and the reasoning were kept, so the decision can be revisited when circumstances change rather than argued from memory.
 
 ### Practice note — Stakeholder map
 
@@ -1178,21 +1188,31 @@ You will (1) model the intelligence cycle as a feedback loop; (2) identify senso
 
 A thermostat measures temperature, compares it with a set point, and acts. Lantern measures false-positive rates of blocks, compares them with a target, and adjusts confidence thresholds. Without measurement the loop is open and drifts.
 
+The measured quantity must be one the loop can actually change. Lantern cannot alter the quality of a partner's feed directly, but it can change how much weight that feed's indicators carry. Kofi chose the threshold as the adjustable value because moving it has a predictable effect on how many blocks reach the firewalls.
+
 ### 17.2 Parts of the loop
 
 Sensor: SOC tickets marking blocks as false positives. Controller: the rule that raises or lowers the threshold. Actuator: the block list pushed to firewalls. Disturbance: a partner suddenly publishing low-quality indicators.
+
+Naming the parts shows where errors enter. If analysts stop marking false positives because the ticket form is slow, the sensor goes quiet and the controller sees a falsely healthy system. Kofi made the marking a single click inside the alert view for that reason. The disturbance cannot be removed, but the loop can be designed to recover from it within days.
 
 ### 17.3 Lag and oscillation
 
 If the threshold changes daily based on yesterday's complaints, it can overshoot: too strict one day, too loose the next. Damping — small steps, averaging over a week — stabilises the loop.
 
+Kofi simulated both versions on a month of past tickets. Daily full-size adjustments swung the threshold up and down nearly every day, while weekly averages with steps capped at a small amount settled within two weeks. The slower loop reacts later to a real change, which is the price of stability. A sudden large problem is handled separately, by an analyst pausing the source.
+
 ### 17.4 Feedback to producers
 
 NIST SP 800-150 encourages two-way sharing relationships. Telling partners which of their indicators caused false positives improves the whole community's loop, provided it respects TLP and agreements.
 
+Kofi's feedback to a partner lists the indicator identifiers that caused trouble and what kind of trouble, such as a block on a legitimate supplier, without sending BEN's internal ticket text. Partners that receive such feedback have fixed recurring errors within weeks. Because the indicators came from the partner, sharing their identifiers back does not widen their audience.
+
 ### 17.5 Human in the loop
 
 Automated control is fine for IT perimeter blocks with low impact; for OT segments, a human approves each change, which deliberately slows the loop where mistakes are costly.
+
+Kofi measured the cost of that choice. Approved changes to substation firewalls took a median of several hours, against minutes for corporate segments. The operations manager accepted the delay because a wrong block in a substation could hide telemetry the control room needs. Fast paths exist for emergencies, but each needs a named approver who records the reason.
 
 ### Practice note — Set points from policy
 
@@ -1234,21 +1254,31 @@ You will (1) place Lantern in BEN's zones and conduits; (2) design trust boundar
 
 BEN separates corporate IT, the SOC zone, a DMZ for external exchanges and OT zones for substations. Lantern's collectors live in the DMZ; its store and analyst interface in the SOC zone; nothing of Lantern runs in OT.
 
+Keeping Lantern out of the OT zones means a compromise of the platform does not land an attacker next to substation equipment. Its influence on OT reaches only through block lists that pass approval. Collectors sit in the DMZ because they talk to outside servers, which makes them the components most exposed to hostile input.
+
 ### 18.2 Conduits
 
 Data flows from DMZ collectors to the SOC store through one inspected conduit. Block lists flow from the SOC to IT firewalls automatically and to OT firewalls through an approval service. Each conduit has an owner and a rule set.
+
+A single conduit is easier to inspect and log than many scattered connections. Kofi's flow checks compare observed traffic with this list, so any new path between zones shows up as a finding. The approval service for OT is itself a conduit with its own owner in network operations.
 
 ### 18.3 Depth
 
 Network segmentation, mutual TLS between components, signed internal messages, role-based access for analysts and audit logging provide independent layers. Compromise of a collector should not yield the store.
 
+Kofi checked this by asking what an attacker on a collector could do. They could read the collector's own configuration and send messages to the store, but those messages must be signed with a key the collector holds only in a restricted service. A forged message would fail checks and be logged.
+
 ### 18.4 Enforcement points
 
 Indicators can be enforced at DNS resolvers, web proxies, firewalls and endpoint agents. Each has different collateral risk: DNS blocks a name precisely; a firewall block on a shared address affects many sites.
 
+Kofi's routing rule sends each indicator to the most precise point that can act on it. Domains go to DNS resolvers, full web addresses go to the proxy, and only addresses with no known shared use go to firewalls. File hashes go to endpoint agents. The choice is recorded with the block, which helps when someone asks why a site was unreachable.
+
 ### 18.5 Analyst workstations
 
 Analysts open suspicious reports and samples. Their workstations need isolation from production systems and a separate browsing environment for OSINT research to avoid exposing BEN's identity.
+
+When an analyst visits a suspect site from BEN's network, the site's operator may see an address registered to an energy company and learn they are being watched. Kofi's design gives analysts a separate research environment with an unattributed connection and no access to the SOC zone. Files downloaded there are moved to the analysis sandbox through a controlled transfer, never opened on the main workstation.
 
 ### Practice note — Architecture verification
 
@@ -1290,21 +1320,31 @@ You will (1) authenticate partners and analysts with appropriate strength; (2) u
 
 TAXII 2.1 servers authenticate clients, typically with HTTP authentication over TLS or client certificates. Mutual TLS lets both sides prove identity. Credentials are per-partner so that one can be revoked without affecting others.
 
+Kofi keeps a register of partner credentials with their expiry dates and owners. When a partner's staff member leaves, the partner can ask for the credential to be replaced without stopping other feeds. Shared credentials across partners would make that impossible and would hide which partner made a given request.
+
 ### 19.2 Signatures
 
 A signature over an exported bundle lets the recipient verify that it came from Lantern and was not altered. Hash first (SHA-256), sign the hash with a private key kept in hardware, publish the public key through a trusted channel.
+
+The recipient checks the signature with the published key before loading the bundle. If the check fails, the bundle is set aside and both sides are told, because either the content changed in transit or the wrong key is in use. Kofi's export job signs automatically, and the public key's fingerprint is read aloud on a call with each new partner.
 
 ### 19.3 Key life cycle
 
 Generate, distribute, use, rotate, revoke, destroy. Certificates expire; expired certificates on a TAXII client stop collection at the worst moment. Calendar and monitor them.
 
+The worked example shows the cost of skipping this. Kofi's register lists every certificate and key with its expiry, owner and replacement steps, and alerts arrive weeks in advance. Revocation is tested once a year with a test certificate, so the team knows the steps work before they are needed. Destroyed keys are recorded with the date and method, which an auditor may ask to see.
+
 ### 19.4 Analyst access
 
 Roles map to TLP: all analysts read CLEAR and GREEN; the SOC team reads AMBER; AMBER+STRICT content is limited to BEN only; RED reports go to named individuals listed on each report. Access decisions are logged.
 
+The mapping lives in the identity system, not in Lantern's code, so changing who may read AMBER content is an access change with its own approval. Kofi reviews group membership monthly with the SOC lead. For RED reports, Lantern checks the recipient list on each report rather than a group, which matches the label's meaning of named individuals only.
+
 ### 19.5 Multi-factor
 
 Analyst access to Lantern requires MFA. ATT&CK T1078 Valid Accounts describes adversaries using legitimate credentials; MFA raises the cost.
+
+A stolen password alone then does not open the platform. Kofi chose hardware keys for analysts with access to AMBER and RED material, because codes sent by text message can be intercepted or redirected. Service accounts cannot use a second factor in the same way, so they rely on certificates and network restrictions instead. Sign-ins from new devices are logged and reviewed weekly.
 
 ### Practice note — Break-glass access
 
@@ -1346,21 +1386,31 @@ You will (1) describe the CTI life cycle as an engineered service; (2) distingui
 
 Data are raw observations: a domain in a feed. Information is organised data: the domain was seen in phishing against utilities. Intelligence is analysed information relevant to a decision: BEN should block the domain at DNS and hunt for past contacts because the campaign targets distribution operators.
 
+The difference lies in the analysis and the decision. A feed full of domains is data however large it is. Kofi asks of every Lantern product which decision it supports; if none, it is not yet intelligence.
+
 ### 20.2 Consumers and decisions
 
 Consumers include SOC analysts (block, hunt, escalate), OT engineers (approve changes), risk managers (prioritise investment), executives (accept risk) and partners (their own decisions). Each needs different formats and timeliness.
+
+Kofi lists each consumer with the decision they make, how quickly they need input and in what form. The SOC wants machine-readable indicators within minutes; executives want a quarterly page in plain language. A single product cannot serve both well. The list also shows consumers nobody was serving, such as procurement, which needed warnings about suppliers.
 
 ### 20.3 The service view
 
 Lantern is a service with inputs (feeds, OSINT, internal telemetry), processing (validation, enrichment, analysis) and outputs (blocks, reports, shared objects). Service levels apply: for example, high-confidence indicators reach IT enforcement within 30 minutes.
 
+Thinking of Lantern as a service gives it measurable promises. A promise such as the thirty-minute target can be checked from logs each week, and a missed target becomes a problem to investigate. Kofi reports performance against each service level monthly, which shows consumers what they can rely on and shows engineers where to work.
+
 ### 20.4 Mission statement
 
 "Lantern turns shared and open-source threat information into timely, trustworthy, legally collected intelligence that helps BEN prevent and detect attacks on its IT and OT environments." Every later requirement should trace to it.
 
+Kofi tests each proposed feature against the statement. A proposal to collect personal social profiles of suspected actors fails on legally collected. A feature that adds data analysts never use fails on helping BEN prevent or detect. The statement is short enough to remember, which is why it works in design meetings.
+
 ### 20.5 Frameworks as context
 
 The Diamond Model, the kill chain, ATT&CK, STIX/TAXII and TLP give a common language with partners. Engineering adopts them where they help interoperability and analysis, not as decoration.
+
+Kofi adopted the frameworks in stages. STIX and TAXII came first because partners already used them. ATT&CK tags were added once analysts were trained to assign them consistently; before that, tags were applied unevenly and comparisons across reports misled. Each framework is listed with the problem it solves for BEN, so its use can be reviewed.
 
 ### Practice note — Feedback from consumers
 
