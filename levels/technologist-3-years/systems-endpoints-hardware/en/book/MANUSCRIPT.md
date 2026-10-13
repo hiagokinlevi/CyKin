@@ -52,13 +52,21 @@ Tomás Herrera studies on the three-year technologist programme at the fictional
 
 Most problems on endpoints come from a few ordinary causes rather than clever attacks. Software is left without updates. Settings are weaker than they should be, often because a default was never changed. Accounts stay active after people leave. Too many people have administrator rights. Backups are assumed rather than checked. CIS Controls v8 is built around exactly these basics: know your assets, configure them securely, manage accounts and access, patch, and be able to recover.
 
+Section one point two develops what endpoint security covers with a Linden Schools Trust note Tomás Herrera can demo offline.
+
 ### 1.3 What started the placement
 
 Shortly before Tomás arrived, Dev noticed that a supply teacher who had left months earlier could still sign in to the trust's systems. Nothing bad had happened, but it raised a question nobody could answer quickly: how many other accounts, settings and backups were not as everyone assumed? The trust asked the college for a student who could help find out, carefully and without disrupting teaching.
 
+Section one point three develops what endpoint security covers with a Linden Schools Trust note Tomás Herrera can demo offline.
+
 ### 1.4 The shape of the course
 
 The first part of this book builds foundations: hardware, operating systems, Linux and Windows administration, networks, accounts and scripting. The middle part applies them to hardening, patching, account hygiene, backups, logging and monitoring at the trust. The final part is Tomás's placement project, in which he measures the starting point, makes agreed improvements and reports the result.
+
+Section one point four develops what endpoint security covers with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section one point four, Dev Malik expects what claims to carry owners and dates.
 
 ### Worked example
 
@@ -96,17 +104,31 @@ You will (1) name the main parts of a computer; (2) explain firmware and secure 
 
 A laptop or server has a processor, memory, storage, network interfaces and firmware. Firmware is the low-level software stored on the motherboard that starts the machine before the operating system. On modern machines this is UEFI. Storage may be a solid-state drive, which matters for encryption speed and for secure wiping when devices are disposed of.
 
+Section two point one develops hardware and firmware basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section two point one, Dev Malik expects hardware claims to carry owners and dates.
+
 ### 2.2 Secure boot and the TPM
 
 Secure Boot is a UEFI feature that checks the digital signature of each startup component, so that only trusted boot loaders and operating system kernels run. A Trusted Platform Module, or TPM, is a small security chip that can store keys and record measurements of the startup process. Windows BitLocker uses the TPM to unlock the disk only when the startup looks unchanged. NIST SP 800-147 describes how BIOS and firmware updates should be authenticated, and SP 800-193 describes firmware resiliency.
+
+Section two point two develops hardware and firmware basics with a Linden Schools Trust note Tomás Herrera can demo offline.
 
 ### 2.3 Firmware needs updates too
 
 Firmware has flaws like any software. Laptop vendors release firmware updates through their own tools or through Windows Update. Tomás checks five of the trust's laptops and finds three are several versions behind. He notes this for the patching work later, because firmware is often forgotten when people think of patching.
 
+Section two point three develops hardware and firmware basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section two point three, Dev Malik expects hardware claims to carry owners and dates.
+
 ### 2.4 Recording hardware facts
 
 For the inventory, Tomás records for each laptop the model, serial number, whether a TPM is present and enabled, Secure Boot state and firmware version. These few fields answer later questions: can this laptop use BitLocker with a TPM, is its firmware current, and is it old enough to replace?
+
+Section two point four develops hardware and firmware basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section two point four, Dev Malik expects hardware claims to carry owners and dates.
 
 ### Worked example
 
@@ -144,17 +166,29 @@ You will (1) explain what an operating system does; (2) distinguish user and adm
 
 The operating system manages hardware, runs programs, stores files and controls who can do what. It separates a privileged core, the kernel, from ordinary programs, so that one misbehaving program cannot easily take over the whole machine. The trust's laptops run Windows; the servers run a mix of Windows Server for the directory and Linux for the web, file and management system servers.
 
+Section three point one develops operating systems and privilege with a Linden Schools Trust note Tomás Herrera can demo offline.
+
 ### 3.2 Users and administrators
 
 Every action on a computer runs as some account. Standard users can run programs and change their own files. Administrators on Windows, or root on Linux, can change anything: install software, alter security settings and read other users' files. Because of this, malware that runs as an administrator can do far more damage than malware running as a standard user.
+
+Section three point two develops operating systems and privilege with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section three point two, Dev Malik expects operating claims to carry owners and dates.
 
 ### 3.3 Least privilege
 
 Saltzer and Schroeder described least privilege in 1975: every program and user should operate using the least set of privileges needed. In practice, this means teachers use standard accounts, Dev uses a separate administrator account only when needed, and services on servers run as dedicated accounts rather than root. On Linux, the sudo tool lets named users run specific commands with higher privilege, with each use logged.
 
+Section three point three develops operating systems and privilege with a Linden Schools Trust note Tomás Herrera can demo offline.
+
 ### 3.4 Finding who has admin rights
 
 Tomás checks the local administrators group on ten laptops and finds that four teachers have been added over the years, usually to install a classroom app. He records the names and reasons. Removing these rights later must come with an alternative, such as Dev installing approved apps centrally.
+
+Section three point four develops operating systems and privilege with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section three point four, Dev Malik expects operating claims to carry owners and dates.
 
 ### Worked example
 
@@ -192,17 +226,37 @@ You will (1) navigate and manage a Linux server; (2) manage packages and service
 
 Linux organises everything under one directory tree. Each file has an owner, a group and permissions for reading, writing and executing. Configuration lives mostly under /etc. Tomás learns to read permissions with the ls command and to check who owns sensitive files, such as SSH configuration, which should be writable only by root.
 
+Section four point one develops linux administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section four point one, Dev Malik expects linux claims to carry owners and dates.
+
 ### 4.2 Packages and updates
 
 Linux distributions install software through package managers such as apt or dnf. The package manager also applies security updates. On the trust's Debian-based servers, Dev uses unattended-upgrades to install security updates automatically each night, and reviews the log weekly. Tomás learns to list pending updates without installing them, which is safe to do during his placement.
+
+Section four point two develops linux administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section four point two, Dev Malik expects linux claims to carry owners and dates.
 
 ### 4.3 Services
 
 Programs that run in the background are services, managed by systemd. The systemctl command lists running and enabled services. Every running service is something to keep updated and configured, so unneeded ones should be disabled. NIST SP 800-123 recommends removing or disabling unnecessary services on servers.
 
+Section four point three develops linux administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section four point three, Dev Malik expects linux claims to carry owners and dates.
+
+Section four point three treats files and permissions packages as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Working safely
 
 Tomás works on a test virtual machine first. On live servers he only reads, using his own account with limited sudo rights granted for viewing logs and configuration. Any change is agreed with Dev and made by Dev, with a note in the change log.
+
+Section four point four develops linux administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section four point four, Dev Malik expects linux claims to carry owners and dates.
+
+Section four point four treats files and permissions packages as testable only when evidence and ticket IDs are recorded.
 
 ### Logs on Linux
 
@@ -244,17 +298,37 @@ You will (1) manage Windows devices centrally; (2) use group policy or managemen
 
 Configuring ninety laptops one by one is impossible to keep consistent. The trust's laptops are joined to the directory and managed through group policy, with newer settings delivered by a cloud management service. Policies apply settings such as password rules, screen lock and firewall state to all laptops in a group.
 
+Section five point one develops windows administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section five point one, Dev Malik expects windows claims to carry owners and dates.
+
 ### 5.2 Security baselines
 
 Microsoft publishes security baselines: recommended settings for each Windows version. The CIS Benchmarks offer a similar, independently reviewed list. Both can be imported as starting points. Dev already applies some settings, but nobody has compared them with a baseline.
+
+Section five point two develops windows administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section five point two, Dev Malik expects windows claims to carry owners and dates.
+
+Section five point two treats central management security baselines as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Reading the result
 
 Tomás uses the built-in report of resulting settings on a laptop to see which policies applied. This shows, for example, that the screen lock is set to thirty minutes, while the CIS Benchmark suggests fifteen or less. He records each difference rather than changing anything.
 
+Section five point three develops windows administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section five point three, Dev Malik expects windows claims to carry owners and dates.
+
+Section five point three treats central management security baselines as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Local accounts
 
 Windows laptops each have a built-in local administrator account. If every laptop has the same password for it, one leaked password opens them all. Microsoft's Local Administrator Password Solution, LAPS, sets a unique random password on each machine and stores it in the directory, readable only by authorised staff.
+
+Section five point four develops windows administration basics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section five point four, Dev Malik expects windows claims to carry owners and dates.
 
 ### Checking firewall state
 
@@ -296,17 +370,37 @@ You will (1) explain addressing and ports; (2) describe segmentation; (3) use ho
 
 Each device has an IP address, and each network service listens on a port: SSH on 22, web on 443, file sharing on 445. Knowing which ports a server exposes tells you which services can be reached. Tomás learns to list listening ports on a server with the ss command, a read-only check.
 
+Section six point one develops networks for endpoint work with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section six point one, Dev Malik expects networks claims to carry owners and dates.
+
 ### 6.2 Segmentation
 
 The trust's network has a staff segment, a classroom segment and a server segment. Classroom devices should not reach the management information system server directly. Segmentation limits how far a problem on one device can spread, a principle NIST SP 800-53 Rev. 5 covers under boundary protection.
+
+Section six point two develops networks for endpoint work with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section six point two, Dev Malik expects networks claims to carry owners and dates.
+
+Section six point two treats addresses and ports segmentation as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Host firewalls
 
 Each laptop and server also runs its own firewall. On Windows, Defender Firewall should be on for all profiles; on Linux, a tool such as nftables or ufw allows only needed ports. A host firewall still helps when a device joins an untrusted network, such as a teacher's home wireless.
 
+Section six point three develops networks for endpoint work with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section six point three, Dev Malik expects networks claims to carry owners and dates.
+
 ### 6.4 Remote access
 
 The outside company connects to servers over a VPN. Tomás notes that the VPN account is shared by several engineers, which makes it impossible to tell who did what. He records this for the account work later.
+
+Section six point four develops networks for endpoint work with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section six point four, Dev Malik expects networks claims to carry owners and dates.
+
+Section six point four treats addresses and ports segmentation as testable only when evidence and ticket IDs are recorded.
 
 ### Name resolution
 
@@ -348,9 +442,17 @@ You will (1) describe the account lifecycle; (2) explain multi-factor authentica
 
 Accounts should follow people: created when someone joins, changed when their role changes and disabled when they leave. In schools, supply teachers and temporary staff come and go often, which is exactly where the trust's earlier problem arose. CIS Controls v8 Control 5 covers account management and Control 6 covers access control.
 
+Section seven point one develops identity and accounts with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seven point one, Dev Malik expects identity claims to carry owners and dates.
+
 ### 7.2 Multi-factor authentication
 
 A password alone can be guessed or phished. Multi-factor authentication adds a second factor, such as an app approval or a security key. The trust uses it for email and remote access but not yet for administrator accounts on servers, which Tomás notes as a gap.
+
+Section seven point two develops identity and accounts with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seven point two, Dev Malik expects identity claims to carry owners and dates.
 
 ### Lab — Finding stale accounts
 
@@ -375,9 +477,19 @@ enabled accounts 7; stale over 90 days 4: ['k.osei', 'temp.supply', 'old.head', 
 
 The synthetic export shows seven enabled accounts, four not used for over ninety days: a former teacher, a supply account, a former head teacher's account and a shared lab administrator account. Each needs a decision. Some may be needed occasionally; most should be disabled. The disabled account a.nolan is correctly excluded.
 
+Section seven point three develops identity and accounts with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seven point three, Dev Malik expects identity claims to carry owners and dates.
+
 ### 7.4 Leavers process
 
 The fix is not only cleaning up once but making leavers trigger account disabling. Tomás drafts a simple form that the school office sends to Dev on a person's last day, with a weekly check of the stale list as a safety net.
+
+Section seven point four develops identity and accounts with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seven point four, Dev Malik expects identity claims to carry owners and dates.
+
+Section seven point four treats lifecycle multi-factor authentication reading as testable only when evidence and ticket IDs are recorded.
 
 ### Service accounts
 
@@ -419,17 +531,41 @@ You will (1) write small read-only scripts; (2) parse simple data; (3) produce c
 
 Many checks repeat: listing accounts, comparing settings, checking backup times. A short script makes them consistent and fast. Python's standard library is enough for most: csv to read exports, datetime for dates, json for configuration.
 
+Section eight point one develops scripting for checks with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eight point one, Dev Malik expects scripting claims to carry owners and dates.
+
+Section eight point one treats why script read-only first as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Read-only first
 
 Tomás's scripts only read exported data and print results. They never change systems. This makes them safe to run during the placement and easy to review: Dev can read every line.
+
+Section eight point two develops scripting for checks with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eight point two, Dev Malik expects scripting claims to carry owners and dates.
+
+Section eight point two treats why script read-only first as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Clear output
 
 A good check prints a short summary and the specific items that need attention. A wall of text is ignored. Each script ends with one line such as "late 2 of 6" so the result is clear at a glance.
 
+Section eight point three develops scripting for checks with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eight point three, Dev Malik expects scripting claims to carry owners and dates.
+
+Section eight point three treats why script read-only first as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Testing scripts
 
 Tomás tests each script with small synthetic inputs where he knows the right answer, including edge cases such as an empty file or a missing date. A script that silently skips bad rows can hide problems.
+
+Section eight point four develops scripting for checks with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eight point four, Dev Malik expects scripting claims to carry owners and dates.
+
+Section eight point four treats why script read-only first as testable only when evidence and ticket IDs are recorded.
 
 ### Scheduling checks
 
@@ -471,17 +607,39 @@ You will (1) apply defence in depth; (2) use secure defaults; (3) balance usabil
 
 No single control is perfect, so several layers are combined. For a teacher's laptop: updates reduce flaws, standard accounts limit damage, the firewall limits exposure, encryption protects lost devices, and backups allow recovery. If one layer fails, others still help.
 
+Section nine point one develops security principles in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nine point one, Dev Malik expects security claims to carry owners and dates.
+
+Section nine point one treats defence in depth secure as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Secure defaults
 
 Systems should start safe and be loosened only when needed. A new laptop arrives from the build with all baseline settings; exceptions are requested and recorded. This is easier to maintain than starting open and hoping to remember to close things.
+
+Section nine point two develops security principles in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nine point two, Dev Malik expects security claims to carry owners and dates.
+
+Section nine point two treats defence in depth secure as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Usability matters
 
 Controls that get in the way of teaching will be bypassed. A screen lock of one minute in a classroom where a teacher walks around while displaying slides will cause frustration. Tomás learns to discuss settings with staff and choose values that protect without blocking work.
 
+Section nine point three develops security principles in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nine point three, Dev Malik expects security claims to carry owners and dates.
+
 ### 9.4 Economy of mechanism
 
 Simple designs are easier to check. Saltzer and Schroeder (1975) argued for keeping security mechanisms as small and simple as possible. For the trust, this means fewer tools, each well understood, rather than many overlapping products.
+
+Section nine point four develops security principles in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nine point four, Dev Malik expects security claims to carry owners and dates.
+
+Section nine point four treats defence in depth secure as testable only when evidence and ticket IDs are recorded.
 
 ### Fail-safe thinking
 
@@ -523,17 +681,41 @@ You will (1) explain why pupil data need protection; (2) work within authorisati
 
 The management information system holds names, addresses, attendance, medical notes and safeguarding records. Children's data deserve particular care. A breach could harm families and require notifying the regulator.
 
+Section ten point one develops data protection and ethics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section ten point one, Dev Malik expects data claims to carry owners and dates.
+
+Section ten point one treats pupil data authorisation handling as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Authorisation
 
 Tomás works under a written placement agreement listing what he may access: configuration and logs on servers, exports of account and device data, but not pupil records. He never tests systems in ways that could disrupt them and never uses tools that look for weaknesses by attacking.
+
+Section ten point two develops data protection and ethics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section ten point two, Dev Malik expects data claims to carry owners and dates.
 
 ### 10.3 Handling findings
 
 When he finds something sensitive, such as a shared password in a document, he tells Dev privately and does not copy it into notes. Findings are written factually, without blame, and kept inside the trust.
 
+Section ten point three develops data protection and ethics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section ten point three, Dev Malik expects data claims to carry owners and dates.
+
+Section ten point three treats pupil data authorisation handling as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Using synthetic data
 
 For college work, Tomás replaces all real names and details with synthetic ones. His labs use invented data shaped like the real exports.
+
+Section ten point four develops data protection and ethics with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section ten point four, Dev Malik expects data claims to carry owners and dates.
+
+Section ten point four treats pupil data authorisation handling as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Linden Schools Trust will not accept data work without a written trail.
 
 ### Retention and minimisation
 
@@ -575,17 +757,43 @@ You will (1) build an asset list from several sources; (2) reconcile differences
 
 Tomás gathers the directory's computer list, the management service's device list and the purchasing records. Each is incomplete: the directory includes old computers never removed, the management service misses some classroom laptops, and purchasing lacks donated devices.
 
+Section eleven point one develops inventory in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eleven point one, Dev Malik expects inventory claims to carry owners and dates.
+
+Section eleven point one treats sources reconciling fields that as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Reconciling
 
 He matches by serial number and lists differences. Twelve directory entries are for machines long gone; four laptops are in use but not managed; two donated laptops appear nowhere. Each difference is resolved with Dev: stale entries removed, unmanaged laptops enrolled, donated laptops recorded.
+
+Section eleven point two develops inventory in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eleven point two, Dev Malik expects inventory claims to carry owners and dates.
+
+Section eleven point two treats sources reconciling fields that as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Fields that matter
 
 For each device: owner or location, operating system and version, last check-in, encryption state and support end date. These fields support the later chapters on patching, encryption and replacement.
 
+Section eleven point three develops inventory in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eleven point three, Dev Malik expects inventory claims to carry owners and dates.
+
+Section eleven point three treats sources reconciling fields that as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Keeping it current
 
 A monthly comparison, run by a script, flags new differences. Leavers' laptops are returned and recorded through the same form as account disabling.
+
+Section eleven point four develops inventory in practice with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eleven point four, Dev Malik expects inventory claims to carry owners and dates.
+
+Section eleven point four treats sources reconciling fields that as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Linden Schools Trust will not accept inventory work without a written trail.
 
 ### Disposal
 
@@ -633,9 +841,21 @@ You will (1) define an SSH baseline; (2) compare servers; (3) plan fixes.
 
 Linux servers are administered remotely over SSH. Its settings decide who can sign in and how. The CIS Benchmarks for Linux distributions recommend, among other things, disallowing direct root sign-in, using keys instead of passwords, disabling X11 forwarding where unneeded and limiting authentication attempts.
 
+Section twelve point one develops configuration baselines on linux with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twelve point one, Dev Malik expects configuration claims to carry owners and dates.
+
+Section twelve point one treats why ssh matters the as testable only when evidence and ticket IDs are recorded.
+
 ### 12.2 The baseline
 
 Tomás and Dev agree a four-item baseline for the trust's Linux servers, drawn from the CIS Benchmark: PermitRootLogin no, PasswordAuthentication no, X11Forwarding no, MaxAuthTries 4. They keep it short so it can be checked often.
+
+Section twelve point two develops configuration baselines on linux with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twelve point two, Dev Malik expects configuration claims to carry owners and dates.
+
+Section twelve point two treats why ssh matters the as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Comparing servers to the baseline
 
@@ -668,9 +888,21 @@ servers compliant: 2 of 4 | deviations 4
 
 Two of four servers comply. files01 allows root sign-in and more attempts; mis01 allows passwords and X11 forwarding. These match what Dev suspected: both servers were set up by different people at different times.
 
+Section twelve point three develops configuration baselines on linux with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twelve point three, Dev Malik expects configuration claims to carry owners and dates.
+
+Section twelve point three treats why ssh matters the as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Fixing safely
 
 Before disabling password sign-in on mis01, Dev confirms that everyone who needs access has a working key, keeps an existing session open while testing a new one, and records the change. This avoids locking himself out.
+
+Section twelve point four develops configuration baselines on linux with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twelve point four, Dev Malik expects configuration claims to carry owners and dates.
+
+Section twelve point four treats why ssh matters the as testable only when evidence and ticket IDs are recorded.
 
 ### Beyond SSH
 
@@ -714,17 +946,45 @@ You will (1) compare laptops with a baseline; (2) pilot changes; (3) measure com
 
 For laptops, Tomás and Dev pick fifteen settings from the CIS Benchmark and Microsoft security baseline that matter most for the trust: screen lock, firewall on, guest disabled, SMBv1 off, PowerShell logging, removable media scanning, LAPS, and others.
 
+Section thirteen point one develops configuration baselines on windows with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirteen point one, Dev Malik expects configuration claims to carry owners and dates.
+
+Section thirteen point one treats choosing settings measuring piloting as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Measuring
 
 The management service reports each setting's state per device. Tomás exports this and computes how many laptops meet all fifteen. At the start, 31 of 94 do.
+
+Section thirteen point two develops configuration baselines on windows with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirteen point two, Dev Malik expects configuration claims to carry owners and dates.
+
+Section thirteen point two treats choosing settings measuring piloting as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Linden Schools Trust will not accept configuration work without a written trail.
 
 ### 13.3 Piloting
 
 Changes go to ten laptops in one school for two weeks. One problem appears: an old interactive whiteboard app needs SMBv1 to reach a shared folder. The app vendor's newer version works without it, so the app is updated rather than the setting relaxed.
 
+Section thirteen point three develops configuration baselines on windows with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirteen point three, Dev Malik expects configuration claims to carry owners and dates.
+
+Section thirteen point three treats choosing settings measuring piloting as testable only when evidence and ticket IDs are recorded.
+
 ### 13.4 Rolling out
 
 The baseline then goes to all laptops in two groups a week apart. Compliance rises to 86 of 94, with the rest offline over a holiday.
+
+Section thirteen point four develops configuration baselines on windows with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirteen point four, Dev Malik expects configuration claims to carry owners and dates.
+
+Section thirteen point four treats choosing settings measuring piloting as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Linden Schools Trust will not accept configuration work without a written trail.
 
 ### Explaining changes and reaching every laptop
 
@@ -766,17 +1026,43 @@ You will (1) plan update rings; (2) measure update latency; (3) handle failures.
 
 Updates install first on Dev's and two volunteer teachers' laptops, then on everyone a few days later. NIST SP 800-40 Rev. 4 describes this kind of staged rollout as a way to balance speed with stability.
 
+Section fourteen point one develops patching operating systems with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fourteen point one, Dev Malik expects patching claims to carry owners and dates.
+
+Section fourteen point one treats rings timing in schools as testable only when evidence and ticket IDs are recorded.
+
 ### 14.2 Timing in schools
 
 Laptops are often closed at the end of the day and taken home. Updates install during the day and restart at lunchtime or at the end of the day with a deadline of three days. During exam weeks, restarts are delayed to avoid disruption.
+
+Section fourteen point two develops patching operating systems with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fourteen point two, Dev Malik expects patching claims to carry owners and dates.
+
+Section fourteen point two treats rings timing in schools as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Linux servers
 
 Security updates install automatically each night on Linux servers. Kernel updates need a reboot; Dev schedules these on Saturday mornings.
 
+Section fourteen point three develops patching operating systems with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fourteen point three, Dev Malik expects patching claims to carry owners and dates.
+
+Section fourteen point three treats rings timing in schools as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Linden Schools Trust will not accept patching work without a written trail.
+
 ### 14.4 Measuring
 
 Tomás measures days from release to installation for each laptop. In the first month, 70 of 94 install within 14 days; the rest are laptops rarely used. He lists them for follow-up.
+
+Section fourteen point four develops patching operating systems with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fourteen point four, Dev Malik expects patching claims to carry owners and dates.
+
+Section fourteen point four treats rings timing in schools as testable only when evidence and ticket IDs are recorded.
 
 ### Failed updates and emergency updates
 
@@ -820,17 +1106,45 @@ You will (1) inventory installed applications; (2) keep them updated; (3) update
 
 Browsers, PDF readers, office apps and classroom tools all receive security updates. Tomás exports installed applications from the management service and finds four versions of the same PDF reader, two out of support.
 
+Section fifteen point one develops patching applications and firmware with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fifteen point one, Dev Malik expects patching claims to carry owners and dates.
+
+Section fifteen point one treats applications central updating firmware as testable only when evidence and ticket IDs are recorded.
+
 ### 15.2 Central updating
 
 Dev packages the current PDF reader in the management service with automatic updating and removes old versions. Browsers update themselves, but Tomás checks that the update service is not disabled.
+
+Section fifteen point two develops patching applications and firmware with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fifteen point two, Dev Malik expects patching claims to carry owners and dates.
+
+Section fifteen point two treats applications central updating firmware as testable only when evidence and ticket IDs are recorded.
 
 ### 15.3 Firmware
 
 Laptop firmware updates are delivered through the vendor's tool. Dev enables firmware updates through Windows Update for supported models and records firmware versions in the inventory.
 
+Section fifteen point three develops patching applications and firmware with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fifteen point three, Dev Malik expects patching claims to carry owners and dates.
+
+Section fifteen point three treats applications central updating firmware as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Linden Schools Trust will not accept patching work without a written trail.
+
 ### 15.4 Unsupported applications
 
 One classroom app is no longer maintained. Tomás records it as an exception with an alternative to be chosen by the next school year.
+
+Section fifteen point four develops patching applications and firmware with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section fifteen point four, Dev Malik expects patching claims to carry owners and dates.
+
+Section fifteen point four treats applications central updating firmware as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Linden Schools Trust will not accept patching work without a written trail.
 
 ### Browser extensions
 
@@ -876,21 +1190,41 @@ You will (1) explain full-disk encryption; (2) verify status across laptops; (3)
 
 Full-disk encryption protects data when a device is lost or stolen while switched off. Teachers take laptops home with marking, reports and sometimes pupil details, so a stolen laptop without encryption could expose children's data. With BitLocker and a TPM, the disk is unreadable without the startup check passing or a recovery key being entered.
 
+Section sixteen point one develops disk encryption with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section sixteen point one, Dev Malik expects disk claims to carry owners and dates.
+
 ### 16.2 Turning it on centrally
 
 Dev enables BitLocker through the management service with keys automatically saved to the directory. Laptops encrypt in the background while staff keep working. Older laptops without an enabled TPM need either a firmware setting change or a start-up password, so Tomás uses the hardware fields from chapter 2 to find them before rollout.
+
+Section sixteen point two develops disk encryption with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section sixteen point two, Dev Malik expects disk claims to carry owners and dates.
 
 ### 16.3 Verifying
 
 Turning encryption on is not proof that it is on. Tomás exports the encryption state of every laptop and finds 87 of 94 fully encrypted, four still encrypting, two with protection suspended after firmware updates and one never started because its TPM is disabled. Each case gets an action, and the export is repeated weekly until every laptop shows fully encrypted and protection on.
 
+Section sixteen point three develops disk encryption with a Linden Schools Trust note Tomás Herrera can demo offline.
+
 ### 16.4 Recovery keys
 
 If a laptop's startup changes, for example after a motherboard repair, it asks for the recovery key. Keys stored in the directory let Dev help the teacher quickly. Access to keys is limited to Dev and the outside company's lead engineer, and each retrieval is logged. Tomás tests one retrieval on a spare laptop to confirm the process works.
 
+Section sixteen point four develops disk encryption with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section sixteen point four, Dev Malik expects disk claims to carry owners and dates.
+
 ### 16.5 Servers
 
 Linux servers in the locked server room use encrypted volumes for backups taken off site. Servers themselves are physically protected, so the trust decides encryption at rest on them is lower priority than on laptops.
+
+Section sixteen point five develops disk encryption with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section sixteen point five, Dev Malik expects disk claims to carry owners and dates.
+
+Section sixteen point five treats what it protects turning as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -928,9 +1262,17 @@ You will (1) design backups for servers; (2) check backup success; (3) test rest
 
 The file server holds staff documents, and the management information system holds pupil records. Both need daily backups. The directory servers replicate between each other, but still need a backup in case a mistake replicates too. CIS Controls v8 Control 11 covers data recovery, including automated backups, protection of backup data and testing.
 
+Section seventeen point one develops backups and recovery with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seventeen point one, Dev Malik expects backups claims to carry owners and dates.
+
 ### 17.2 The 3-2-1 idea
 
 A common rule is three copies, on two kinds of media, with one off site. The trust keeps nightly backups on a backup server, a weekly copy in a cloud storage service, and one copy offline that cannot be changed from the network. The offline copy matters because ransomware can encrypt anything it can reach.
+
+Section seventeen point two develops backups and recovery with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seventeen point two, Dev Malik expects backups claims to carry owners and dates.
 
 ### Lab — Checking backup age
 
@@ -958,9 +1300,17 @@ late 2 of 6: ['mis01', 'print01']
 
 Two of six servers have backups older than the one-day target: mis01 at 70 hours and print01 at 26 hours. The print server is a minor concern because it holds little data; the management system is serious. Dev finds that mis01's backup job failed when the database was locked during a software update and nobody saw the failure email.
 
+Section seventeen point three develops backups and recovery with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seventeen point three, Dev Malik expects backups claims to carry owners and dates.
+
 ### 17.4 Testing restores
 
 A backup that has never been restored is a hope, not a plan. Each term, Dev restores a sample folder from the file server and a copy of the management system database to a test machine, records how long it took and checks the data open correctly.
+
+Section seventeen point four develops backups and recovery with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section seventeen point four, Dev Malik expects backups claims to carry owners and dates.
 
 ### Worked example
 
@@ -998,21 +1348,51 @@ You will (1) choose events to collect; (2) centralise logs; (3) review them regu
 
 NIST SP 800-92 recommends deciding which events matter before collecting. For the trust, the useful events are sign-in failures and successes on servers, new accounts and group changes, security software disabled, and backup failures. These answer simple questions: who signed in, what changed, and did protection stop.
 
+Section eighteen point one develops logging and monitoring with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eighteen point one, Dev Malik expects logging claims to carry owners and dates.
+
+Section eighteen point one treats choosing events centralising weekly as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Centralising
 
 Logs on each machine can be deleted by someone who gains control of that machine. Dev forwards server logs to the outside company's log service and uses the endpoint protection console for laptop events. Times are synchronised so events across machines line up.
+
+Section eighteen point two develops logging and monitoring with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eighteen point two, Dev Malik expects logging claims to carry owners and dates.
+
+Section eighteen point two treats choosing events centralising weekly as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Weekly review
 
 A thirty-minute weekly review covers a short checklist. Tomás writes it so anyone can follow it: check the sign-in failures list, the new admin group members, the disabled protection alerts and the backup report. Each finding is either explained or turned into a task.
 
+Section eighteen point three develops logging and monitoring with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eighteen point three, Dev Malik expects logging claims to carry owners and dates.
+
+Section eighteen point three treats choosing events centralising weekly as testable only when evidence and ticket IDs are recorded.
+
 ### 18.4 Privacy
 
 Logs contain staff names and times. They are viewed only for security, kept for ninety days and accessible to Dev and the outside company. Staff are told in the acceptable use policy that security logs are kept.
 
+Section eighteen point four develops logging and monitoring with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eighteen point four, Dev Malik expects logging claims to carry owners and dates.
+
+Section eighteen point four treats choosing events centralising weekly as testable only when evidence and ticket IDs are recorded.
+
 ### 18.5 Alert fatigue
 
 If every alert demands attention, people stop reading them. Tomás suggests tuning alerts so only important events notify Dev immediately, and the rest wait for the weekly review.
+
+Section eighteen point five develops logging and monitoring with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section eighteen point five, Dev Malik expects logging claims to carry owners and dates.
+
+Section eighteen point five treats choosing events centralising weekly as testable only when evidence and ticket IDs are recorded.
 
 ### Clock synchronisation
 
@@ -1054,17 +1434,37 @@ You will (1) describe endpoint protection features; (2) check coverage; (3) resp
 
 Endpoint protection software scans files, watches behaviour and blocks known malicious programs. Microsoft Defender Antivirus is built into Windows; the trust also uses its cloud console to see alerts across laptops. On Linux servers, the main protections are minimal services, updates and file integrity checks rather than antivirus.
 
+Section nineteen point one develops endpoint protection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nineteen point one, Dev Malik expects endpoint claims to carry owners and dates.
+
 ### 19.2 Coverage
 
 Protection only helps where it is running. Tomás compares the endpoint console's device list with the inventory and finds three laptops not reporting: two were rebuilt and never onboarded, and one has protection turned off by a teacher who thought it slowed their laptop. All three are fixed, and tamper protection is enabled so staff cannot turn it off.
+
+Section nineteen point two develops endpoint protection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nineteen point two, Dev Malik expects endpoint claims to carry owners and dates.
 
 ### 19.3 Responding to alerts
 
 Most alerts are routine: a blocked download or an unwanted toolbar. Dev handles them through the console. For alerts suggesting more, such as protection being disabled or a suspicious script, he isolates the laptop from the network through the console and contacts the outside company.
 
+Section nineteen point three develops endpoint protection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nineteen point three, Dev Malik expects endpoint claims to carry owners and dates.
+
+Section nineteen point three treats what it does coverage as testable only when evidence and ticket IDs are recorded.
+
 ### 19.4 Attack surface rules
 
 Defender includes attack surface reduction rules that block risky behaviours, such as office documents launching other programs. Dev turns them on in audit mode first, reviews what would be blocked for two weeks, then enforces the rules that cause no problems.
+
+Section nineteen point four develops endpoint protection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section nineteen point four, Dev Malik expects endpoint claims to carry owners and dates.
+
+Section nineteen point four treats what it does coverage as testable only when evidence and ticket IDs are recorded.
 
 ### Linux integrity checks
 
@@ -1106,17 +1506,43 @@ You will (1) explain allowlisting; (2) choose where it fits; (3) introduce it sa
 
 Application control allows only approved programs to run. Instead of trying to recognise every bad program, it recognises the good ones. Microsoft App Control for Business and AppLocker provide this on Windows; on Linux, package-managed software and restricted permissions achieve a similar effect.
 
+Section twenty point one develops application control with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty point one, Dev Malik expects application claims to carry owners and dates.
+
+Section twenty point one treats allowlisting where it fits as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 Where it fits
 
 Allowlisting is easiest on devices with a stable set of software. The trust's office and reception PCs run a few known programs and are good candidates. Teachers' laptops change more often, so they start with a looser policy allowing anything installed by the management service.
+
+Section twenty point two develops application control with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty point two, Dev Malik expects application claims to carry owners and dates.
+
+Section twenty point two treats allowlisting where it fits as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Introducing safely
 
 Like attack surface rules, application control starts in audit mode. For three weeks, Dev collects what runs on the office PCs. The list shows the expected programs plus a printer utility and an old payroll helper. Both are added after checking they are needed.
 
+Section twenty point three develops application control with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty point three, Dev Malik expects application claims to carry owners and dates.
+
+Section twenty point three treats allowlisting where it fits as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Maintaining
 
 Each new approved program is added to the policy through a simple request. The policy is reviewed each term.
+
+Section twenty point four develops application control with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty point four, Dev Malik expects application claims to carry owners and dates.
+
+Section twenty point four treats allowlisting where it fits as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point four, Linden Schools Trust will not accept application work without a written trail.
 
 ### Explaining it to staff
 
@@ -1158,17 +1584,43 @@ You will (1) protect laptops used off site; (2) secure remote access; (3) handle
 
 Teachers work at home and on trips. Laptops off site still get updates and policies through the cloud management service. The host firewall's public profile is on, and encryption protects them if lost.
 
+Section twenty-one point one develops mobile and remote working with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-one point one, Dev Malik expects mobile claims to carry owners and dates.
+
+Section twenty-one point one treats off-site laptops remote access as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 Remote access
 
 Staff reach the file server through a VPN with multi-factor authentication. Tomás recommends replacing the outside company's shared VPN account with individual accounts, each with multi-factor authentication, so actions are traceable and access can be removed per person.
+
+Section twenty-one point two develops mobile and remote working with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-one point two, Dev Malik expects mobile claims to carry owners and dates.
+
+Section twenty-one point two treats off-site laptops remote access as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Personal devices
 
 Some staff read email on personal phones. The trust uses the email service's app protection policies, which keep school data in managed apps and allow it to be wiped without touching personal data.
 
+Section twenty-one point three develops mobile and remote working with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-one point three, Dev Malik expects mobile claims to carry owners and dates.
+
+Section twenty-one point three treats off-site laptops remote access as testable only when evidence and ticket IDs are recorded.
+
 ### 21.4 Public networks
 
 Teachers on hotel or café wireless should use the VPN for school systems. Tomás writes a short guide with three steps.
+
+Section twenty-one point four develops mobile and remote working with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-one point four, Dev Malik expects mobile claims to carry owners and dates.
+
+Section twenty-one point four treats off-site laptops remote access as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Linden Schools Trust will not accept mobile work without a written trail.
 
 ### Device loss and long trips
 
@@ -1210,17 +1662,47 @@ You will (1) control changes; (2) record configuration; (3) detect drift.
 
 NIST SP 800-128 describes security-focused configuration management: establishing baselines, controlling changes and monitoring. At the trust, each server change is recorded in a simple change log with date, who, what and why, and agreed with Dev beforehand.
 
+Section twenty-two point one develops secure configuration management with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-two point one, Dev Malik expects secure claims to carry owners and dates.
+
+Section twenty-two point one treats changes recording configuration detecting as testable only when evidence and ticket IDs are recorded.
+
 ### 22.2 Recording configuration
 
 The baselines from chapters 12 and 13, plus server role notes, form the documented configuration. They are stored in a shared folder with version history.
+
+Section twenty-two point two develops secure configuration management with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-two point two, Dev Malik expects secure claims to carry owners and dates.
+
+Section twenty-two point two treats changes recording configuration detecting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Linden Schools Trust will not accept secure work without a written trail.
 
 ### 22.3 Detecting drift
 
 The weekly check scripts compare servers and laptops with their baselines. When drift appears, Dev finds out why before reverting, because drift sometimes reveals a real need.
 
+Section twenty-two point three develops secure configuration management with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-two point three, Dev Malik expects secure claims to carry owners and dates.
+
+Section twenty-two point three treats changes recording configuration detecting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point three, Linden Schools Trust will not accept secure work without a written trail.
+
 ### 22.4 Emergency changes
 
 Urgent changes during outages are allowed but recorded afterwards within one working day.
+
+Section twenty-two point four develops secure configuration management with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-two point four, Dev Malik expects secure claims to carry owners and dates.
+
+Section twenty-two point four treats changes recording configuration detecting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Linden Schools Trust will not accept secure work without a written trail.
 
 ### Server role notes
 
@@ -1268,17 +1750,41 @@ You will (1) recognise endpoint incidents; (2) take first steps; (3) escalate.
 
 An incident is something that harms or may harm systems or data: malware detected and not blocked, a lost laptop, a suspicious sign-in, or an account used after its owner left. NIST SP 800-61 describes preparation, detection, containment, eradication, recovery and lessons learned.
 
+Section twenty-three point one develops incident basics for endpoints with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-three point one, Dev Malik expects incident claims to carry owners and dates.
+
+Section twenty-three point one treats what counts first steps as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 First steps
 
 For a suspected infected laptop: disconnect it from the network or isolate it through the console, do not switch it off if the outside company may need to examine it, record what was seen and when, and contact Dev.
+
+Section twenty-three point two develops incident basics for endpoints with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-three point two, Dev Malik expects incident claims to carry owners and dates.
+
+Section twenty-three point two treats what counts first steps as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Escalation
 
 Dev escalates to the outside company and the head teacher if pupil data may be affected. The data protection officer decides whether the regulator must be told.
 
+Section twenty-three point three develops incident basics for endpoints with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-three point three, Dev Malik expects incident claims to carry owners and dates.
+
+Section twenty-three point three treats what counts first steps as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Practising
 
 Tomás runs a tabletop exercise with Dev and the school business manager using a made-up lost-laptop scenario, finding that nobody knew the out-of-hours contact for the outside company.
+
+Section twenty-three point four develops incident basics for endpoints with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-three point four, Dev Malik expects incident claims to carry owners and dates.
+
+Section twenty-three point four treats what counts first steps as testable only when evidence and ticket IDs are recorded.
 
 ### Lessons learned and preserving information
 
@@ -1320,17 +1826,45 @@ You will (1) plan device replacement; (2) buy secure hardware; (3) dispose safel
 
 Devices go out of support when the vendor stops updates. Tomás uses support dates from the inventory to plan replacements over three years, prioritising laptops that cannot run the current Windows version.
 
+Section twenty-four point one develops hardware lifecycle and supply with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-four point one, Dev Malik expects hardware claims to carry owners and dates.
+
+Section twenty-four point one treats replacement buying disposal donated as testable only when evidence and ticket IDs are recorded.
+
 ### 24.2 Buying
 
 Purchase criteria include a TPM 2.0, Secure Boot, vendor firmware update support for at least five years and compatibility with the management service. CIS Controls and NIST SP 800-193 support choosing hardware that can protect and recover its firmware.
+
+Section twenty-four point two develops hardware lifecycle and supply with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-four point two, Dev Malik expects hardware claims to carry owners and dates.
+
+Section twenty-four point two treats replacement buying disposal donated as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Disposal
 
 Disposed devices are wiped following NIST SP 800-88 guidance, with certificates from the recycler recorded against serial numbers.
 
+Section twenty-four point three develops hardware lifecycle and supply with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-four point three, Dev Malik expects hardware claims to carry owners and dates.
+
+Section twenty-four point three treats replacement buying disposal donated as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Linden Schools Trust will not accept hardware work without a written trail.
+
 ### 24.4 Donated devices
 
 Donated laptops must meet the same criteria and be enrolled before use.
+
+Section twenty-four point four develops hardware lifecycle and supply with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-four point four, Dev Malik expects hardware claims to carry owners and dates.
+
+Section twenty-four point four treats replacement buying disposal donated as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point four, Linden Schools Trust will not accept hardware work without a written trail.
 
 ### Firmware support and warranty
 
@@ -1376,17 +1910,47 @@ You will (1) define a placement project; (2) set measures; (3) agree scope.
 
 Tomás's project is to measure and improve the trust's endpoint basics over one term: stale accounts, server SSH settings, laptop baseline compliance, encryption and backups.
 
+Section twenty-five point one develops project planning with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-five point one, Dev Malik expects project claims to carry owners and dates.
+
+Section twenty-five point one treats the project measures scope as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Linden Schools Trust will not accept project work without a written trail.
+
 ### 25.2 Measures
 
 For each area he defines one measure: stale accounts count, servers compliant with the SSH baseline, laptops meeting all baseline settings, laptops fully encrypted and servers with backups within target.
+
+Section twenty-five point two develops project planning with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-five point two, Dev Malik expects project claims to carry owners and dates.
+
+Section twenty-five point two treats the project measures scope as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Scope
 
 Out of scope: pupil records, classroom tablets' apps, and any testing that could disrupt teaching.
 
+Section twenty-five point three develops project planning with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-five point three, Dev Malik expects project claims to carry owners and dates.
+
+Section twenty-five point three treats the project measures scope as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Linden Schools Trust will not accept project work without a written trail.
+
 ### 25.4 Agreement
 
 The plan is signed by Dev, the trust's business manager and Renée Okafor.
+
+Section twenty-five point four develops project planning with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-five point four, Dev Malik expects project claims to carry owners and dates.
+
+Section twenty-five point four treats the project measures scope as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Linden Schools Trust will not accept project work without a written trail.
 
 ### Why these measures
 
@@ -1434,17 +1998,47 @@ You will (1) collect baseline data; (2) record method; (3) present results.
 
 Using the scripts, Tomás records the starting values in one week: four stale accounts, two of four servers SSH-compliant, 31 of 94 laptops baseline-compliant, 87 of 94 fully encrypted and four of six servers with backups on time.
 
+Section twenty-six point one develops measuring the starting point with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-six point one, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-six point one treats collection method notes presenting as testable only when evidence and ticket IDs are recorded.
+
 ### 26.2 Method notes
 
 For each measure, he writes the source, date and script used, so the measurement can be repeated exactly at the end.
+
+Section twenty-six point two develops measuring the starting point with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-six point two, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-six point two treats collection method notes presenting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point two, Linden Schools Trust will not accept measuring work without a written trail.
 
 ### 26.3 Presenting
 
 He shows Dev a one-page table and a short explanation of each gap.
 
+Section twenty-six point three develops measuring the starting point with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-six point three, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-six point three treats collection method notes presenting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point three, Linden Schools Trust will not accept measuring work without a written trail.
+
 ### 26.4 Unknowns
 
 Laptops offline during the week are counted separately rather than assumed compliant.
+
+Section twenty-six point four develops measuring the starting point with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-six point four, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-six point four treats collection method notes presenting as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Linden Schools Trust will not accept measuring work without a written trail.
 
 ### Checking the scripts against reality
 
@@ -1490,17 +2084,53 @@ You will (1) carry out agreed changes; (2) record each; (3) avoid disruption.
 
 Changes go in order of risk and effort: stale accounts first, then backup alerting, SSH fixes, encryption fixes and finally the laptop baseline.
 
+Section twenty-seven point one develops making improvements with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-seven point one, Dev Malik expects making claims to carry owners and dates.
+
+Section twenty-seven point one treats order recording communication problems as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point one, Linden Schools Trust will not accept making work without a written trail.
+
 ### 27.2 Recording
 
 Each change is logged with date, owner and result.
+
+Section twenty-seven point two develops making improvements with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-seven point two, Dev Malik expects making claims to carry owners and dates.
+
+Section twenty-seven point two treats order recording communication problems as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point two, Linden Schools Trust will not accept making work without a written trail.
+
+Section twenty-seven point two fails closed if making evidence is missing rather than guessing.
 
 ### 27.3 Communication
 
 Staff get short notices before visible changes.
 
+Section twenty-seven point three develops making improvements with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-seven point three, Dev Malik expects making claims to carry owners and dates.
+
+Section twenty-seven point three treats order recording communication problems as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point three, Linden Schools Trust will not accept making work without a written trail.
+
+Section twenty-seven point three fails closed if making evidence is missing rather than guessing.
+
 ### 27.4 Problems
 
 The SMBv1 issue and one locked-out admin session were handled with prepared rollback steps.
+
+Section twenty-seven point four develops making improvements with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-seven point four, Dev Malik expects making claims to carry owners and dates.
+
+Section twenty-seven point four treats order recording communication problems as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Linden Schools Trust will not accept making work without a written trail.
 
 ### Stale accounts in practice
 
@@ -1558,17 +2188,51 @@ You will (1) repeat measurements; (2) compare fairly; (3) discuss causes.
 
 Stale accounts 4 to 0, SSH compliance 2 to 4 of 4, baseline 31 to 93 of 94, encryption 87 to 94 of 94, backups on time 4 to 6 of 6.
 
+Section twenty-eight point one develops measuring the result with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-eight point one, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-eight point one treats results fairness causes remaining as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point one, Linden Schools Trust will not accept measuring work without a written trail.
+
 ### 28.2 Fairness
 
 The same scripts and sources are used.
+
+Section twenty-eight point two develops measuring the result with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-eight point two, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-eight point two treats results fairness causes remaining as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Linden Schools Trust will not accept measuring work without a written trail.
+
+Section twenty-eight point two fails closed if measuring evidence is missing rather than guessing.
 
 ### 28.3 Causes
 
 Each improvement links to a specific change, which is easier here than in larger studies because changes were separate.
 
+Section twenty-eight point three develops measuring the result with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-eight point three, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-eight point three treats results fairness causes remaining as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point three, Linden Schools Trust will not accept measuring work without a written trail.
+
 ### 28.4 Remaining gap
 
 One laptop missed the baseline due to a failed agent, since fixed.
+
+Section twenty-eight point four develops measuring the result with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-eight point four, Dev Malik expects measuring claims to carry owners and dates.
+
+Section twenty-eight point four treats results fairness causes remaining as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Linden Schools Trust will not accept measuring work without a written trail.
 
 ### Reading the numbers against targets
 
@@ -1614,17 +2278,53 @@ You will (1) write routines; (2) train others; (3) schedule reviews.
 
 Dev's weekly routine: run the check scripts, review logs and fix findings.
 
+Section twenty-nine point one develops handing over routines with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-nine point one, Dev Malik expects handing claims to carry owners and dates.
+
+Section twenty-nine point one treats weekly routine termly routine as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point one, Linden Schools Trust will not accept handing work without a written trail.
+
 ### 29.2 Termly routine
 
 Restore tests, baseline review and inventory reconciliation.
+
+Section twenty-nine point two develops handing over routines with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-nine point two, Dev Malik expects handing claims to carry owners and dates.
+
+Section twenty-nine point two treats weekly routine termly routine as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point two, Linden Schools Trust will not accept handing work without a written trail.
+
+Section twenty-nine point two fails closed if handing evidence is missing rather than guessing.
 
 ### 29.3 Training
 
 Tomás trains the business manager to read the summary outputs.
 
+Section twenty-nine point three develops handing over routines with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-nine point three, Dev Malik expects handing claims to carry owners and dates.
+
+Section twenty-nine point three treats weekly routine termly routine as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point three, Linden Schools Trust will not accept handing work without a written trail.
+
 ### 29.4 Documents
 
 Scripts, baselines, change log and routines are stored together.
+
+Section twenty-nine point four develops handing over routines with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section twenty-nine point four, Dev Malik expects handing claims to carry owners and dates.
+
+Section twenty-nine point four treats weekly routine termly routine as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Linden Schools Trust will not accept handing work without a written trail.
+
+Section twenty-nine point four fails closed if handing evidence is missing rather than guessing.
 
 ### Writing routines people can follow
 
@@ -1678,17 +2378,55 @@ You will (1) write a placement report; (2) present to the trust; (3) reflect on 
 
 Introduction, method, results, recommendations and appendices with scripts and synthetic data.
 
+Section thirty point one develops reporting and reflection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirty point one, Dev Malik expects reporting claims to carry owners and dates.
+
+Section thirty point one treats report presentation reflection next as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Linden Schools Trust will not accept reporting work without a written trail.
+
 ### 30.2 Presentation
 
 A fifteen-minute talk to the trust's leaders.
+
+Section thirty point two develops reporting and reflection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirty point two, Dev Malik expects reporting claims to carry owners and dates.
+
+Section thirty point two treats report presentation reflection next as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point two, Linden Schools Trust will not accept reporting work without a written trail.
+
+Section thirty point two fails closed if reporting evidence is missing rather than guessing.
 
 ### 30.3 Reflection
 
 Tomás reflects that most improvements needed process, not tools.
 
+Section thirty point three develops reporting and reflection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirty point three, Dev Malik expects reporting claims to carry owners and dates.
+
+Section thirty point three treats report presentation reflection next as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, Linden Schools Trust will not accept reporting work without a written trail.
+
+Section thirty point three fails closed if reporting evidence is missing rather than guessing.
+
 ### 30.4 Next steps
 
 Individual accounts, application control expansion and lifecycle plan.
+
+Section thirty point four develops reporting and reflection with a Linden Schools Trust note Tomás Herrera can demo offline.
+
+Under section thirty point four, Dev Malik expects reporting claims to carry owners and dates.
+
+Section thirty point four treats report presentation reflection next as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Linden Schools Trust will not accept reporting work without a written trail.
+
+Section thirty point four fails closed if reporting evidence is missing rather than guessing.
 
 ### Structure of the report
 
