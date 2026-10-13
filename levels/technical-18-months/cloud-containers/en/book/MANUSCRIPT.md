@@ -1,7 +1,7 @@
 # Cloud and Container Security: Technical Course
 
 - Language: English (`en`); course 059, Technical course (18 months).
-- Editorial state: **draft**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–18 of 18 have hand-written teaching text; exercises EX001–EX072 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technical students learning to configure, verify and maintain cloud storage and container security in a small IT team.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -48,19 +48,19 @@ Tomás Reyes is a technical-course student at the fictional Hollins Technical Co
 
 ### 1.2 Fairway's services
 
-Fairway runs a parcel tracking site in containers on a managed Kubernetes cluster, stores manifests and driver photos in cloud storage buckets, keeps backups in another bucket, and uses a managed database. Its website images sit in a separate assets bucket.
+Fairway runs a parcel tracking site in containers on a managed Kubernetes cluster, stores manifests and driver photos in cloud storage buckets, keeps backups in another bucket, and uses a managed database. Its website images sit in a separate assets bucket. Each of these holds different data: manifests carry customer names and addresses, driver photos are personal data, backups contain everything, and the assets bucket is meant to be public. Tomás writes the list down before looking at any settings, so that the later checks cover every bucket rather than only the one involved in March.
 
 ### 1.3 Service models
 
-NIST SP 800-145 defines infrastructure, platform and software as a service. Fairway's cluster is close to platform as a service, because the provider runs the control plane; its storage and database are managed services; its email is software as a service.
+NIST SP 800-145 defines infrastructure, platform and software as a service. Fairway's cluster is close to platform as a service, because the provider runs the control plane; its storage and database are managed services; its email is software as a service. The label matters less than what it implies for Fairway. With the managed cluster and storage, the provider runs the hardware and control software, but bucket policies, identities and workload settings are Fairway's job. The March exposure happened in exactly that customer-configured layer, through a policy change that the provider's service carried out as instructed.
 
 ### 1.4 Who runs what
 
-For each component Tomás records whether the provider, Fairway's IT team or a vendor operates it. This tells him where Fairway must configure security itself.
+For each component Tomás records whether the provider, Fairway's IT team or a vendor operates it. This tells him where Fairway must configure security itself. His table shows the provider operating the cluster control plane, the storage service and the database engine, while Fairway's IT team operates bucket policies, identities, container images and the deploy pipeline. The email service is run entirely by its vendor under Fairway's account settings. The manifests bucket's public setting sits firmly in Fairway's column, which is why the fix has to come from Fairway as well.
 
 ### 1.5 Components and connections
 
-He sketches how the tracking site reads from the database, writes manifests to storage and sends emails, so later chapters can follow data through the system.
+He sketches how the tracking site reads from the database, writes manifests to storage and sends emails, so later chapters can follow data through the system. The sketch shows the tracking site reaching the database through its private endpoint and writing manifests to the manifests bucket, while the CI pipeline uploads to the assets bucket. Partners appear only at the edge of the sketch, receiving files from Fairway. Drawing it this way makes the gap visible: nothing on the diagram showed how a partner was supposed to receive a manifest safely.
 
 ### Worked example
 
@@ -97,23 +97,23 @@ You will (1) explain HTTPS, DNS and private endpoints; (2) describe how storage 
 
 ### 2.1 HTTPS and TLS
 
-Browsers and partners reach Fairway's services over HTTPS, which uses TLS to encrypt traffic and authenticate the server. Encryption protects data on the way, but it does not decide who is allowed to read it.
+Browsers and partners reach Fairway's services over HTTPS, which uses TLS to encrypt traffic and authenticate the server. Encryption protects data on the way, but it does not decide who is allowed to read it. In March the partner's two downloads, and any other reader's, would have travelled over HTTPS just as safely as a legitimate request. TLS protected the manifest on the way while the bucket policy handed it to anyone who asked. Tomás notes this because colleagues sometimes treat the padlock in the browser as proof that data is protected from unauthorised readers.
 
 ### 2.2 DNS
 
-DNS maps names such as tracking.fairway.example to addresses. Storage buckets also have names reachable over the internet, which is why a public setting exposes them to anyone who knows or guesses the name.
+DNS maps names such as tracking.fairway.example to addresses. Storage buckets also have names reachable over the internet, which is why a public setting exposes them to anyone who knows or guesses the name. For Fairway, this means the manifests bucket's name was effectively its address on the internet. A name that seems obscure still appears in links, browser histories and partner emails, so it cannot be treated as secret. dev-sam later says he thought the link was hard to guess, and the review records that hiding the name is not a control.
 
 ### 2.3 Private endpoints
 
-Cloud providers allow services to be reached through private network endpoints, so traffic stays inside a private network. Fairway's database uses one; its buckets do not yet.
+Cloud providers allow services to be reached through private network endpoints, so traffic stays inside a private network. Fairway's database uses one; its buckets do not yet. For the buckets, moving to private endpoints would mean the tracking site reaches storage without crossing the internet. That change would not have stopped the March exposure on its own, because a public policy still applies to requests through the public storage endpoint. Tomás records private endpoints for storage as a later improvement, behind the access policy fixes.
 
 ### 2.4 Exposure
 
-A service is exposed when it can be reached from the internet without authentication. The manifests bucket was exposed for nearly three days because its policy allowed public reads.
+A service is exposed when it can be reached from the internet without authentication. The manifests bucket was exposed for nearly three days because its policy allowed public reads. Using the habit Tomás adopts, the manifests bucket during those days answered the two key questions badly: anyone could reach it and nothing checked them. The assets bucket gives the same answer by design, which is acceptable because its contents are public anyway. The difference lies in the data, so the exposure check always records what each service holds.
 
 ### 2.5 Ports and firewalls
 
-Firewalls limit which addresses can reach which ports, but storage services are reached through the provider's shared endpoints, so access policy, not firewalls, is the main control.
+Firewalls limit which addresses can reach which ports, but storage services are reached through the provider's shared endpoints, so access policy, not firewalls, is the main control. Fairway's firewall protects its office network and the cluster's internal traffic, and it does useful work there. It never saw the anonymous reads of the manifests bucket, because those requests went straight from the internet to the provider. Tomás updates the network notes so that each managed service lists access policy, not a firewall rule, as its main control.
 
 ### Checking exposure
 
@@ -154,23 +154,23 @@ You will (1) explain users, groups and service identities; (2) describe cloud id
 
 ### 3.1 Users and groups
 
-Operating systems grant permissions to users and groups. Cloud platforms do the same with identities, roles and policies, but over the internet and across many services.
+Operating systems grant permissions to users and groups. Cloud platforms do the same with identities, roles and policies, but over the internet and across many services. On a single server, Tomás would check which users belong to which group and what files the group can read. In Fairway's cloud account the same question becomes which identities, human or service, can act on each bucket and its policy. The idea is familiar, but the reach is wider, because one identity can touch every service in the account.
 
 ### 3.2 Cloud IAM
 
-Each provider's identity and access management service decides which identity may perform which action on which resource. The developer, dev-sam, had permission to change bucket policies, which is why he could make the bucket public.
+Each provider's identity and access management service decides which identity may perform which action on which resource. The developer, dev-sam, had permission to change bucket policies, which is why he could make the bucket public. Nothing in the provider's logs suggests misuse of credentials; dev-sam used a permission he had been given. That is an important point for the review, because the fix lies in what identities are allowed to do, not in catching an intruder. The permission list he shared with other developers is the first thing Tomás exports.
 
 ### 3.3 Least privilege
 
-Developers need to upload objects, not change bucket policies. Removing that permission would have prevented the incident.
+Developers need to upload objects, not change bucket policies. Removing that permission would have prevented the incident. For Fairway, least privilege means developers can upload and read objects in the buckets they work on, while changing a bucket policy needs the operator role. dev-sam's need to share a file would then have reached an operator, who could have arranged a safer method. Tomás proposes the change and agrees it with the developers before it is applied, since removing access can break routine work.
 
 ### 3.4 Service identities
 
-The CI deploy pipeline uses its own identity to upload website assets. It should be limited to the assets bucket.
+The CI deploy pipeline uses its own identity to upload website assets. It should be limited to the assets bucket. His permission list shows CI deploy could write to every bucket, including manifests and backups, although it only ever uploads website assets. A compromised pipeline token could therefore overwrite or plant files in sensitive buckets. Limiting it to site-assets removes that risk without affecting deployments, and the later troubleshooting work shows exactly which extra permission it still needs. Grace approves the narrowed scope before it is applied in staging.
 
 ### 3.5 Role-based access
 
-Sandhu et al. (1996) describe role-based access control. Fairway defines roles such as developer, operator and auditor with set permissions.
+Sandhu et al. (1996) describe role-based access control. Fairway defines roles such as developer, operator and auditor with set permissions. Roles let Fairway grant permissions to a job rather than to each person. The developer role carries object upload and read, the operator role carries policy changes, and the auditor role can read settings and logs but change nothing. Tomás uses the auditor role for his own review work, which keeps his access read-only, as the written scope requires. Each identity is assigned exactly one role, recorded in the permission list.
 
 ### Reviewing permissions
 
@@ -217,23 +217,23 @@ You will (1) read JSON, YAML and environment files; (2) write small Python check
 
 ### 4.1 Formats
 
-Cloud settings arrive as JSON, Kubernetes manifests as YAML, and application settings as environment files with KEY=value lines. Tomás learns to recognise each.
+Cloud settings arrive as JSON, Kubernetes manifests as YAML, and application settings as environment files with KEY=value lines. Tomás learns to recognise each. In Fairway's work these are concrete: the bucket settings export is JSON, the tracker's deployment file is YAML, and app.env and worker.env hold KEY=value lines. Each of these formats has its own risks for a script that reads it. JSON is strict, YAML allows many forms that simple readers miss, and environment files often hold credentials, which is why the secrets lab later reads them carefully.
 
 ### 4.2 Reading with Python
 
-Python's standard library reads JSON directly, and simple line-based formats with string methods. The labs in this course use these, with no extra packages.
+Python's standard library reads JSON directly, and simple line-based formats with string methods. The labs in this course use these, with no extra packages. Keeping to the standard library means the labs run on the college lab machines and Fairway's admin laptop without installing anything. It also means no unreviewed third-party package ever touches the exported settings. For YAML, Tomás reads only the simple key-value lines his checks need, and he notes that anything more complex would need a proper parser and a review.
 
 ### 4.3 Small checks
 
-A check loads records, compares each with an expected value and prints differences. Counts come first, then details.
+A check loads records, compares each with an expected value and prints differences. Counts come first, then details. Counts come first because a reader can see at once whether a run found nothing, a few items or something alarming. The verification lab follows this pattern, ending with '6 differences across 4 buckets' after listing each bucket. Tomás also prints which expected value each record was compared with, so a reviewer can check the policy and the result together. A check that prints nothing at all is treated as a failure, not a pass.
 
 ### 4.4 Never print secrets
 
-When a check looks for secrets, it reports the key name and file, never the value. Printed secrets end up in logs and screenshots.
+When a check looks for secrets, it reports the key name and file, never the value. Printed secrets end up in logs and screenshots. The secrets lab follows this rule: it prints DB_PASSWORD, API_TOKEN and CLOUD_SECRET_KEY by name and file only. A value printed once can end up in the pipeline logs, the team channel and a screenshot in a report, each kept longer than the secret's own lifetime. Grace checks every script's output format before it runs against real configuration.
 
 ### 4.5 Synthetic data
 
-All labs use synthetic records; values that look like secrets are written as <redacted>.
+All labs use synthetic records; values that look like secrets are written as <redacted>. Synthetic data lets Tomás practise without opening real manifests, which contain customer addresses he is not authorised to read for analysis. The labs keep realistic structure, such as bucket names and event types, while names, times and values are invented. That lets anyone at Hollins rerun the labs, and none of their outputs can leak real customer or credential data. Grace checks new lab data for anything that resembles a real record before it is shared.
 
 ### A worked check
 
@@ -280,23 +280,23 @@ You will (1) define the scope of a security review; (2) collect evidence with ti
 
 ### 5.1 Scope
 
-Grace defines Tomás's scope: Fairway's storage buckets, identities and cluster settings, using read-only access and synthetic copies where possible. Partner systems are out of scope.
+Grace defines Tomás's scope: Fairway's storage buckets, identities and cluster settings, using read-only access and synthetic copies where possible. Partner systems are out of scope. The scope covers what Fairway controls and what the March exposure touched. Read-only access means Tomás can export settings and logs but not change anything while investigating. The partner's systems are excluded because Fairway has no authority over them; any questions about the partner's copies go through the account manager, not through Tomás testing their side.
 
 ### 5.2 Authorisation
 
-The scope is written and signed by Grace and the IT manager. Tomás does not test anything outside it.
+The scope is written and signed by Grace and the IT manager. Tomás does not test anything outside it. Written scope protects both Tomás and Fairway if his work is questioned later. If someone later asks why he looked at a bucket, the signed scope answers. If he finds something interesting outside it, such as the partner's download server, he reports it to Grace rather than probing it. The scope document is stored with the evidence register so the two can be read together.
 
 ### 5.3 Evidence
 
-Evidence includes exported audit events, settings and permission lists, each saved with collection time and source.
+Evidence includes exported audit events, settings and permission lists, each saved with collection time and source. For the March work this means the storage audit events, the bucket settings export and the permission lists for dev-sam, CI deploy and Grace's account. Each export notes the account used, the time and the provider console or command. Without that note, a reviewer could not tell whether a later setting change happened before or after the export was taken. Tomás lists each export in the evidence register before he begins any analysis on it.
 
 ### 5.4 Preserving evidence
 
-Copies are stored read-only so they cannot be altered.
+Copies are stored read-only so they cannot be altered. Tomás saves each export to a folder where nobody, including himself, can edit files after saving, and records a hash of each file in the evidence register. All analysis happens on working copies made from those stored originals. If a later check shows a working copy differs from the stored original, he discards it and makes a fresh one, so the timeline always rests on unaltered records. The hash list itself is stored beside the register, so either can be checked against the other.
 
 ### 5.5 Facts and judgements
 
-Tomás separates what records show from what he concludes.
+Tomás separates what records show from what he concludes. A fact here is 'dev-sam set the policy to public-read at 16:41 on 3 March'; a judgement is 'the reads came from the partner'. The second rests on comparing source addresses with the partner's range and may be wrong. Writing them separately lets Grace and the data protection lead see which statements they can accept directly and which depend on reasoning. Tomás marks each judgement in the timeline with the facts it rests on, so a reviewer can trace the reasoning. If later evidence changes a fact, the judgements that depend on it are easy to find and revise.
 
 ### Evidence register
 
@@ -347,23 +347,23 @@ You will (1) model Fairway's cloud system with components, data and trust bounda
 
 ### 6.1 Model
 
-Tomás draws Fairway's system: users and partners on the internet; the tracking site in the cluster; buckets for manifests, assets, backups and driver photos; the database.
+Tomás draws Fairway's system: users and partners on the internet; the tracking site in the cluster; buckets for manifests, assets, backups and driver photos; the database. The diagram places partners on the internet side, where the March downloads came from, and draws the tracking site, the buckets and the database as separate components. Tomás adds arrows for every data flow he knows about. Checking the diagram against the provider's bucket list later shows that a component, the driver-photos bucket, was missing from his first draft.
 
 ### 6.2 Data
 
-He labels data by sensitivity: manifests contain customer names and addresses; driver photos are personal data; assets are public by design; backups contain everything.
+He labels data by sensitivity: manifests contain customer names and addresses; driver photos are personal data; assets are public by design; backups contain everything. These labels decide how strict each control on each bucket must be. A public read on the assets bucket is intended; the same setting on manifests, driver photos or backups would expose personal data. Backups are labelled the most sensitive because they combine every other kind of data, even though nobody accesses them day to day.
 
 ### 6.3 Boundaries
 
-Boundaries lie between the internet and the cluster, the cluster and storage, and storage and the internet.
+Boundaries lie between the internet and the cluster, the cluster and storage, and storage and the internet. In March the storage-to-internet boundary is the one that failed: a policy change let anyone on the internet read the manifests bucket. The cluster-to-storage boundary is crossed by the tracking site and the CI pipeline, which use service identities. Marking each crossing tells Tomás where an access decision is made and therefore where a control can be checked. Each boundary later gets at least one check or alert in the guardrail pack.
 
 ### 6.4 Where controls belong
 
-Public access blocks on sensitive buckets, least-privilege identities, encryption and logging belong at the storage boundary.
+Public access blocks on sensitive buckets, least-privilege identities, encryption and logging belong at the storage boundary. Placing controls there means they protect the data whichever path a request takes. A public access block works whether the request comes from a browser, a script or a partner tool, and logging records it in all cases. Controls in the tracking site's code would not have helped in March, because the anonymous reads never went through the site. The cluster boundary keeps its own controls, such as service identities and network policy, recorded separately.
 
 ### 6.5 Shared responsibility
 
-The provider secures storage infrastructure; Fairway configures access, as the providers' shared responsibility pages explain.
+The provider secures storage infrastructure; Fairway configures access, as the providers' shared responsibility pages explain. In practice the provider keeps the storage service running, encrypts disks and protects its data centres; Fairway decides who may read each bucket and whether access is logged. The March exposure sat entirely on Fairway's side: the service did exactly what the policy told it. Tomás quotes this in the review so nobody looks for the fix in the wrong place. The shared responsibility pages are cited in the policy so the division is documented, not assumed.
 
 ### Checking the model
 
@@ -414,9 +414,9 @@ You will (1) read cloud storage audit events; (2) reconstruct a timeline; (3) co
 
 ### 7.1 Audit events
 
-Cloud providers can record management actions, such as policy changes, and data access, such as object reads. Fairway had data access logging enabled on the manifests bucket, which makes the timeline possible.
+Cloud providers can record management actions, such as policy changes, and data access, such as object reads. Fairway had data access logging enabled on the manifests bucket, which makes the timeline possible. Management events, such as the PutBucketPolicy changes, are recorded by default; object reads appear only where data access logging is switched on. Without that logging on manifests, the two anonymous reads would have left no trace, and the timeline would end with an unanswerable question about who downloaded files.
 
-### Lab — Lab — storage events
+### Lab — storage events
 
 ```python
 """Summarise synthetic cloud storage audit events and flag public-access changes (stdlib only)."""
@@ -446,19 +446,19 @@ public from 2026-03-03 16:41 to 2026-03-06 10:02; anonymous reads 2
 
 ### 7.2 Reading the result
 
-Of 8 events, 4 matter. dev-sam set the bucket policy to public-read on 3 March at 16:41. Two anonymous reads followed on 5 March at 11:30 and 11:31. Grace set the policy back to private on 6 March at 10:02. The bucket was public for about two days and seventeen hours.
+Of 8 events, 4 matter. dev-sam set the bucket policy to public-read on 3 March at 16:41. Two anonymous reads followed on 5 March at 11:30 and 11:31. Grace set the policy back to private on 6 March at 10:02. The bucket was public for about two days and seventeen hours. Only the policy changes and anonymous reads matter for exposure; the other four events are routine uploads by dev-sam and CI deploy. The script counts the exposure from the public-read change to the private change, which Tomás checks by hand: 3 March 16:41 to 6 March 10:02 is two days, seventeen hours and twenty-one minutes.
 
 ### 7.3 Interpreting the reads
 
-The two anonymous reads could be the partner, who was sent the link, or someone else. The records show the source network for each request; Tomás compares them with the partner's published address range and finds they match the partner.
+The two anonymous reads could be the partner, who was sent the link, or someone else. The records show the source network for each request; Tomás compares them with the partner's published address range and finds they match the partner. Matching an address range is strong but not complete evidence, since another user on the partner's network would match as well. Tomás records the match as the basis for the conclusion and lists that limit beside it. The data protection lead then decides with both in view.
 
 ### 7.4 Limits
 
-Logs show requests that reached the service. They do not prove that no other copies exist, for example if the partner forwarded the file.
+Logs show requests that reached the service. They do not prove that no other copies exist, for example if the partner forwarded the file. The two reads are the whole picture only for this bucket and only for requests the provider logged. Copies made by the partner after downloading, or shared within their company, are outside Fairway's logs. Other buckets had no data access logging during the period, so any reads there cannot be checked at all, as the evidence register notes.
 
 ### 7.5 Reporting
 
-The timeline is written in plain words with times, sources and the limit stated.
+The timeline is written in plain words with times, sources and the limit stated. Tomás's timeline gives four lines: the public-read change by dev-sam at 16:41 on 3 March, two anonymous reads on 5 March at 11:30 and 11:31 matched to the partner, and Grace's private change at 10:02 on 6 March. Each line names its log source, so a reader can check it in the export. A closing line states that the logs cannot show copies made after download. Grace reads the draft and asks for one change: stating the time zone at the top. Tomás adds UTC with local time beside it, as the clock alignment note requires.
 
 ### Preserving the timeline
 
@@ -503,23 +503,23 @@ You will (1) explain how cloud misconfigurations happen; (2) classify causes; (3
 
 ### 8.1 How it happened
 
-The developer needed to share a file, had permission to change the policy, and no check stopped him. Three conditions combined: a missing service, broad permission and no guardrail.
+The developer needed to share a file, had permission to change the policy, and no check stopped him. Three conditions combined: a missing service, broad permission and no guardrail. Any one of those conditions missing would have stopped the incident. With a partner file service, dev-sam would not have needed a public bucket; without policy permission, he could not have set one; with an account-level block, the policy change would have been refused. The review therefore aims to restore all three barriers rather than rely on any single one.
 
 ### 8.2 Common causes
 
-Cloud failures often come from manual console changes, copied examples with insecure defaults, permissions broader than needed and lack of review.
+Cloud failures often come from manual console changes, copied examples with insecure defaults, permissions broader than needed and lack of review. Fairway's March incident was a manual console change, and the driver-photos bucket, discovered later, came from a copied example with no encryption setting. Both of those causes appear in the list of common failures above. Tomás uses the list as a prompt when reviewing other buckets and the cluster, asking for each setting whether it was set by hand, copied or reviewed.
 
 ### 8.3 Classifying
 
-Tomás groups causes as process (no partner transfer service), access (broad permissions) and technical (no public access block).
+Tomás groups causes as process (no partner transfer service), access (broad permissions) and technical (no public access block). Grouping the causes this way helps Grace assign each action to an owner. The process cause belongs to whoever arranges partner services, the access cause to the identity administrators, and the technical cause to the cloud platform team. Without grouping, every action would land on Grace by default, and the missing partner service in particular might never be fixed. Each group is written into the review with one sentence of evidence from March.
 
 ### 8.4 Matching controls
 
-Process: provide a secure way to share files. Access: remove policy permissions from developers. Technical: enable account-level public access blocking.
+Process: provide a secure way to share files. Access: remove policy permissions from developers. Technical: enable account-level public access blocking. Each control maps to one cause, and each gets an owner and a date in the action list. The signed-link service arrives later as the partner file service, developer policy permissions are removed in the configuration work, and the account-level block is the first change Tomás applies because it stops the pattern at once. Grace reviews the list at the follow-up date one month later and marks each action done or late.
 
 ### 8.5 Blameless review
 
-The review focuses on conditions, not the developer.
+The review focuses on conditions, not the developer. dev-sam made a reasonable choice with the tools and permissions he had, under pressure to help a partner. Blaming him would teach staff to hide mistakes and would leave the three conditions in place for the next person. The review notes his openness in explaining what he did, which made the causes clear quickly. The review document names conditions and controls, and does not name dev-sam as a cause. He reads the draft before it is shared with all developers and agrees with how it describes events. His explanation of the hard-to-guess link becomes a teaching point for the whole team rather than a mark against him.
 
 ### Lessons from research
 
@@ -574,23 +574,23 @@ You will (1) choose methods for checking cloud configuration; (2) use benchmarks
 
 ### 9.1 Methods
 
-Settings can be checked by reading exports, by provider policy tools, or by scanners. Tomás starts with exports and a simple script.
+Settings can be checked by reading exports, by provider policy tools, or by scanners. Tomás starts with exports and a simple script. Reading exports suits Fairway's size: four buckets and a single cluster can be checked with a short script that anyone on the team can read. Provider policy tools add rules Tomás had not thought of, and scanners cover more ground but produce more output to review. Starting simple means the team understands every result before adding tools.
 
 ### 9.2 Benchmarks
 
-The CIS Benchmarks for cloud providers include storage recommendations such as blocking public access and enabling logging. CSA CCM v4 lists matching controls.
+The CIS Benchmarks for cloud providers include storage recommendations such as blocking public access and enabling logging. CSA CCM v4 lists matching controls. Benchmarks give Fairway an outside reference, so the policy is not just Grace's and Tomás's opinion. Mapping each rule to a CIS recommendation and a CCM area lets auditors and the insurer see it matches common practice. Tomás reads the benchmark text himself rather than relying on summaries, since recommendations change between versions. The mapping is stored with the policy so auditors can follow it without asking Tomás.
 
 ### 9.3 Fairway's policy
 
-Grace and Tomás write a storage policy with four rules: block public access, encrypt, version and log access, except for the assets bucket's public read.
+Grace and Tomás write a storage policy with four rules: block public access, encrypt, version and log access, except for the assets bucket's public read. Each rule answers a gap from March or from verification: public access caused the incident, encryption and versioning were missing on driver-photos, and logging made the timeline possible. The single exception, public read for assets, is written into the policy with its reason, so the check can treat it as approved rather than as a failure.
 
 ### 9.4 Frequency
 
-Checks run daily; changes between runs are caught by the alert from chapter 14.
+Checks run daily; changes between runs are caught by the alert from chapter 14. Daily checks catch slow drift, such as a new bucket created without logging, while the alert catches the dangerous change within minutes. A public policy set at 16:41 would have waited until the next morning's check; the alert closes that window. Each daily run saves its output, so trends over weeks are visible. The daily run is scheduled early in the morning, before most developers start making changes. If the run itself fails, it posts a failure message rather than staying silent, so a broken check is noticed the same day.
 
 ### 9.5 Reviewing tools
 
-They test a provider tool but keep their script, because it is simple and understood.
+They test a provider tool but keep their script, because it is simple and understood. Their test on a staging account found the provider tool matched the script's findings and suggested two more settings, including object ownership controls. Grace keeps the script as the main check because every team member can read and change it. The tool's extra findings become candidate rules for the next policy review. Their test notes record what each method found, how long it took and how readable the output was. Those notes help the next policy review decide whether the provider tool should take on more of the checking.
 
 ### Comparing tools
 
@@ -649,27 +649,27 @@ You will (1) configure storage controls; (2) apply them safely; (3) record chang
 
 ### 10.1 Account-level block
 
-Providers offer a setting that blocks public access for all buckets in an account. Fairway enables it, with the assets bucket moved to a separate account where public reads are allowed.
+Providers offer a setting that blocks public access for all buckets in an account. Fairway enables it, with the assets bucket moved to a separate account where public reads are allowed. The account-wide block refuses any policy that grants public access, so the March change would simply have failed. Putting assets in their own account lets the block apply everywhere else without exceptions in the main account. Tomás tests the website's image loading after the move, because a broken website would push staff to ask for the block to be removed.
 
 ### 10.2 Encryption
 
-Default encryption ensures new objects are encrypted at rest.
+Default encryption ensures new objects are encrypted at rest. Driver-photos lacked it, which is why verification marked that bucket the most serious. Default encryption applies to new objects only, so existing photos need to be re-written to be encrypted. Tomás plans that copy with the bucket owner in HR and confirms the result with the verification check afterwards. The setting is applied through the configuration repository, like every other change in this work. Encryption keys are managed by the provider's key service, and only the storage service can use them. Tomás records the setting for each bucket so the verification check can confirm it daily rather than relying on memory.
 
 ### 10.3 Versioning
 
-Versioning keeps earlier copies so deleted or overwritten files can be restored.
+Versioning keeps earlier copies so deleted or overwritten files can be restored. For manifests and driver-photos, which lacked it, versioning protects against accidental overwrites and against a compromised identity deleting files. It does increase storage use, so the lifecycle rule removes old versions after ninety days. Tomás tests a restore from an earlier version in staging before relying on the setting. Versioning is enabled on manifests and driver-photos through the repository and confirmed by the verification check. Backups already had it, which is why that bucket passed. The ninety-day lifecycle rule is reviewed with the storage costs each quarter, so its period can be adjusted if needs change.
 
 ### 10.4 Logging
 
-Access logging records reads and writes for investigation.
+Access logging records reads and writes for investigation. The March timeline existed only because manifests already had access logging. Extending it to every sensitive bucket, and to site-assets, means any future exposure can be measured rather than guessed at. Logs go to a separate bucket that the identities they record cannot change, so a compromised account cannot erase its own trail. Logging is enabled bucket by bucket through the repository and confirmed by the verification check. Tomás also checks that the log bucket itself is covered by the account-level block. Retention for access logs is set long enough to cover an exposure discovered weeks after it began, which March showed can happen.
 
 ### 10.5 Change records
 
-Each change is made through the configuration repository with review, not in the console.
+Each change is made through the configuration repository with review, not in the console. Console changes leave no review and are easy to forget, which is exactly how the March policy change happened. Changes through the configuration repository show who proposed them, who reviewed them and when they were applied. The repository also becomes the declared state that the later drift check compares with what is live. Grace or another team member reviews each change before it is merged. The merge request links to the action from the incident review that the change addresses.
 
 ### 10.6 Testing
 
-Each change is tested on a staging bucket first.
+Each change is tested on a staging bucket first. Staging lets Tomás see whether a change breaks anything before customers or staff notice. For the account-level block, staging showed the website still loaded images from the new assets account. Not every breakage appears in staging; the marketing tool failure later came from a gap in staging coverage. Each test result is attached to the change record before Grace signs it off. A failed staging test sends the change back for correction rather than letting it go ahead with a note. Tomás later adds the marketing tool to staging, which closes the gap the brochure failure exposed.
 
 ### Order of changes
 
@@ -728,9 +728,9 @@ You will (1) verify that controls are in place; (2) compare bucket settings with
 
 ### 11.1 Why verify
 
-Configuring is not the same as confirming. Tomás verifies each bucket against the policy.
+Configuring is not the same as confirming. Tomás verifies each bucket against the policy. A change applied through the repository can still fail, be overridden or miss a bucket nobody knew existed. Verification compares each bucket's live settings with the four policy rules and lists every difference, without judging which ones matter. That judgement comes afterwards, with the data labels from the system model. The lab below uses synthetic settings for four buckets that mirror Fairway's real ones. Running it daily turns a one-off check into ongoing assurance.
 
-### Lab — Lab — bucket verification
+### Lab — bucket verification
 
 ```python
 """Verify synthetic bucket settings against Fairway's storage policy (stdlib only)."""
@@ -758,15 +758,15 @@ driver-photos: differs: encryption, versioning, access_logging
 
 ### 11.2 Reading the result
 
-Six differences across four buckets. Manifests lacks versioning. Site-assets has no public block, which is expected under its exception, and no access logging. Backups passes. Driver-photos lacks encryption, versioning and logging.
+Six differences across four buckets. Manifests lacks versioning. Site-assets has no public block, which is expected under its exception, and no access logging. Backups passes. Driver-photos lacks encryption, versioning and logging. The figure of six comes from one difference on manifests, two on site-assets and three on driver-photos. Only one of the six, the public access on site-assets, is intended. The remaining five are real gaps, and driver-photos alone accounts for three of them. The script reports differences in dictionary order; Tomás reorders them by sensitivity in his report.
 
 ### 11.3 Acting
 
-Driver-photos is the most serious because it holds personal data unencrypted. It is fixed first. Site-assets logging is added; its public access is recorded as the approved exception.
+Driver-photos is the most serious because it holds personal data unencrypted. It is fixed first. Site-assets logging is added; its public access is recorded as the approved exception. Order follows data sensitivity: personal data without encryption first, then the missing versioning on manifests, then logging on site-assets. Each fix goes through the repository and is tested in staging, like the earlier configuration changes. The exception is recorded with an owner and an annual review date. Driver-photos is fixed with the HR owner present, since the photos are their data.
 
 ### 11.4 Re-check
 
-After fixes, the check shows only the approved exception.
+After fixes, the check shows only the approved exception. The rerun shows one remaining difference, site-assets without a public access block, which matches the recorded exception. That result is saved with the date as evidence that the fixes took effect, not just that changes were submitted. Tomás compares it with the first run so the drop from six differences to one is documented. Each bucket owner signs the result for their bucket, and the confirmations are stored with the evidence. From then on, the daily run shows whether the count stays at one or creeps up again.
 
 ### Why verification found more
 
@@ -829,9 +829,9 @@ You will (1) search synthetic configuration files for secret-like keys; (2) hand
 
 ### 12.1 Purpose
 
-During verification Tomás saw a note mentioning a storage key. He checks whether secrets sit in configuration files.
+During verification Tomás saw a note mentioning a storage key. He checks whether secrets sit in configuration files. The note on the verification share said only that a storage key had been moved to the vault, but it raised the question of where else keys might sit. Searching configuration files by key name is a quick first pass. The lab uses synthetic copies so that no real secret value is ever read or printed during practice. The search covers environment files, deployment files and notes in the synthetic set.
 
-### Lab — Lab — secret-like keys
+### Lab — secret-like keys
 
 ```python
 """Find secret-like key names in synthetic config files without printing values (stdlib only)."""
@@ -857,19 +857,19 @@ worker.env: API_TOKEN, CLOUD_SECRET_KEY
 
 ### 12.2 Reading the result
 
-Three secret-like keys appear in two of four files: DB_PASSWORD in app.env, API_TOKEN and CLOUD_SECRET_KEY in worker.env. Values are not printed.
+Three secret-like keys appear in two of four files: DB_PASSWORD in app.env, API_TOKEN and CLOUD_SECRET_KEY in worker.env. Values are not printed. Both environment files contain credentials, while deploy.yaml and notes.txt do not match the pattern. notes.txt mentions a storage key in prose, which the pattern ignores because it looks only for KEY= lines. That is a reminder that the search finds names in assignments, not every mention of a secret. The output gives Grace exactly what she needs to plan rotation and nothing more.
 
 ### 12.3 Handling
 
-Each secret is moved to the provider's secret manager and the old values are rotated, since anyone who saw the files could have copied them.
+Each secret is moved to the provider's secret manager and the old values are rotated, since anyone who saw the files could have copied them. Moving a secret to the secret manager only stops future exposure; anyone who saw the old file may still hold the value. Rotation makes those old values useless to anyone who copied them earlier. Each rotation is planned with the owning developer, because the application must read the new reference from the vault before the old value is revoked. The old values are confirmed as no longer working before each rotation is closed.
 
 ### 12.4 Kubernetes secrets
 
-The Kubernetes good-practice guide advises encrypting secrets at rest and limiting who can read them.
+The Kubernetes good-practice guide advises encrypting secrets at rest and limiting who can read them. For Fairway's cluster, this means checking that secrets are encrypted at rest in the cluster's store and that only the tracker and worker service accounts can read their own secrets. Tomás compares the cluster's RBAC rules against that list and notes any role that can read every secret as a finding for Grace. He also checks that no secret is mounted into a container that does not need it. Any change to these rules goes through the configuration repository like other cluster settings.
 
 ### 12.5 Containment
 
-The lab uses synthetic files; the real search is run read-only by Grace.
+The lab uses synthetic files; the real search is run read-only by Grace. Tomás runs the pattern only on synthetic files during the lab. The real search across Fairway's repositories is run by Grace with read-only access, and its output, which contains file names and key names but no values, is shared with him afterwards. This arrangement keeps a learner's practice work well away from live credentials. The lab and the real search use the same pattern, so the lab's limits apply to both. Grace records the date and scope of the real search in the evidence register.
 
 ### Why secrets end up in files
 
@@ -924,27 +924,27 @@ You will (1) diagnose failures after security changes; (2) fix the specific caus
 
 ### 13.1 After the block
 
-Once the account-level public block is on, a marketing tool fails to load a brochure from the manifests account. Tomás reads the error: access denied.
+Once the account-level public block is on, a marketing tool fails to load a brochure from the manifests account. Tomás reads the error: access denied. The tool had been reading the brochure through a public link to the main account, which the block now refuses. Access denied is exactly what the block should produce, so the error confirms the control works. The question is whether the brochure belonged there, not whether the block should be relaxed. Tomás records the time, the tool and the exact error text before changing anything.
 
 ### 13.2 Method
 
-Read the error, list recent changes, reproduce in staging, find the smallest correct fix, record it.
+Read the error, list recent changes, reproduce in staging, find the smallest correct fix, record it. Applied to the brochure, the recent change was the account-level block, staging reproduced the same access-denied error, and the smallest fix was moving one file rather than altering any setting. Recording the case means the next person who sees the error finds the answer quickly. Each step is short, but skipping one tends to produce the broad fix that reopens the risk. The same method applies to the CI deploy failure that follows.
 
 ### 13.3 Finding
 
-The brochure was stored in the wrong bucket. Moving it to the assets account fixes the problem without weakening the block.
+The brochure was stored in the wrong bucket. Moving it to the assets account fixes the problem without weakening the block. The brochure is public marketing material, so it belongs with the website assets that are meant to be public. Moving it took one file copy and a change to the tool's link. The block stayed on for every other bucket, and the fix was recorded in the troubleshooting guide with a link to the change. The marketing team confirms the tool loads the brochure from its new location.
 
 ### 13.4 Another case
 
-The CI deploy pipeline fails after its permissions are narrowed: it needs to clear a cache path in site-assets. A single extra permission solves it.
+The CI deploy pipeline fails after its permissions are narrowed: it needs to clear a cache path in site-assets. A single extra permission solves it. The failure appeared because the narrowed CI deploy identity could upload to site-assets but not delete cached files there. Granting delete on that one path, not on the whole bucket, restores the deployment. Tomás checks the permission in staging first and records why it is needed, so a later review does not remove it again by mistake.
 
 ### 13.5 Rollback rule
 
-If a fix is not found within an hour during business hours, the change is reversed and retried later.
+If a fix is not found within an hour during business hours, the change is reversed and retried later. The rule balances keeping a control in place against keeping Fairway's services running. An hour is long enough for most fixes like the brochure, which took twenty minutes, but short enough that a broken service does not stay broken all afternoon. A reversed change is not abandoned; it is retried after the cause is found in staging. Both March breakages were fixed well within the hour, so no rollback was needed.
 
 ### 13.6 Guide
 
-Each case goes into a short troubleshooting guide.
+Each case goes into a short troubleshooting guide. The guide entries for March cover the brochure, which was in the wrong account, and the CI deploy cache path, which needed one extra permission. Each entry gives the symptom someone would see, the cause and the fix, with a link to the change record. A colleague who meets access denied after the next control change can check the guide before asking for a rollback. Entries are added within a day of each breakage while the details are fresh.
 
 ### Communicating breakages
 
@@ -1003,27 +1003,27 @@ You will (1) automate checks and alerts; (2) alert on public access changes; (3)
 
 ### 14.1 Daily check
 
-The verification script runs daily in the pipeline and posts results to the team channel.
+The verification script runs daily in the pipeline and posts results to the team channel. The daily run uses the same verification script as the lab, so its output looks the same: one line per bucket and a count of differences. Posting to the team channel means a new bucket created without logging is visible the next morning. If the count rises above the approved exception, someone has to explain why before the day ends. The run uses the auditor role, so it can read settings but change nothing.
 
 ### 14.2 Change alert
 
-An alert fires within minutes if any bucket policy changes to public, using the provider's event notifications.
+An alert fires within minutes if any bucket policy changes to public, using the provider's event notifications. In March the public policy stayed in place for nearly three days before anyone noticed; with the alert, the same change would be seen within minutes. The alert reads management events, which are recorded even where data access logging is off. Its message links to the runbook, so the person on call knows how to check and revert. The drill in staging measured four minutes from change to alert.
 
 ### 14.3 Pipeline rules
 
-Infrastructure code that sets public access or disables encryption is blocked before merge, with a clear message. Rahman et al. (2019) found such smells recur in infrastructure code.
+Infrastructure code that sets public access or disables encryption is blocked before merge, with a clear message. Rahman et al. (2019) found such smells recur in infrastructure code. The check reads infrastructure code in each merge request and stops it if a bucket is set public or encryption is turned off. The message explains the rule and points to the signed-link procedure for sharing files. Blocking before merge prevents the change from reaching the account at all, while the alert remains as a backstop for console changes.
 
 ### 14.4 Review
 
-Automation scripts are reviewed like application code.
+Automation scripts are reviewed like application code. A bug in the verification script could hide a public bucket as easily as a bug in the tracking site could hide an order. Each script change goes through a merge request that Grace or another team member reviews. Reviewers check both the logic and that the output never includes secret values or customer data. Review also confirms that each script still matches the current storage policy. When the policy gains a rule, such as the object ownership controls found by the provider tool, the script and its tests change in the same merge request. Script changes that arrive without passing tests are not merged into the pipeline.
 
 ### 14.5 Noise
 
-Alerts must lead to action; the assets account is excluded to avoid constant alerts.
+Alerts must lead to action; the assets account is excluded to avoid constant alerts. The assets account is public by design, so every change there would trigger the public-access alert and teach people to ignore it. Excluding that account keeps each alert meaningful for the person who receives it. The daily check still covers site-assets, recording its public access as the approved exception, so the exclusion does not leave it unwatched. Tomás reviews alert volume monthly and adjusts rules that fire without leading to action.
 
 ### 14.6 Ownership
 
-Grace owns the alert; Tomás maintains the scripts.
+Grace owns the alert; Tomás maintains the scripts. Grace decides what the alert covers and who responds to it, while Tomás keeps the scripts working and updates them when the policy changes. Clear ownership means a broken check or a noisy alert has someone responsible for it. When Tomás finishes his apprenticeship, the handover names the person who takes over the scripts. Ownership is written into the runbook and the alert message itself, so responders know whom to contact. Grace reviews the alert's scope when new buckets or accounts are added.
 
 ### Testing the automation
 
@@ -1082,27 +1082,27 @@ You will (1) provide a secure partner file service; (2) manage dependencies on e
 
 ### 15.1 The missing service
 
-The incident began because there was no approved way to share files with partners. Fairway sets up time-limited signed links that expire after 24 hours.
+The incident began because there was no approved way to share files with partners. Fairway sets up time-limited signed links that expire after 24 hours. Signed links give the partner a way to download a manifest without making any bucket public. Each link works for a single object and stops after 24 hours, so a link that leaks later is useless. dev-sam's original need was real; the new service meets it in a way the account-level block allows. Partners request links through IT, and each request is logged with the object and the expiry.
 
 ### 15.2 Partner agreement
 
-The partner agrees to download promptly and delete copies after processing.
+The partner agrees to download promptly and delete copies after processing. Prompt download keeps the 24-hour expiry practical, and deletion limits how long copies sit outside Fairway's control. The agreement is recorded in the supplier register, and the partner confirms in writing how they store and delete files. Fairway cannot check the partner's systems itself, because they are outside its authority and the review's scope. Each year the account manager checks that the partner's practices have not changed. The partner also now receives a reduced export with only parcel identifiers and postcodes, which limits what any copy could reveal.
 
 ### 15.3 Dependencies
 
-The tracking site depends on a base image, a mapping service and the email provider. Each dependency is listed with an owner.
+The tracking site depends on a base image, a mapping service and the email provider. Each dependency is listed with an owner. Each dependency can affect security: a vulnerable base image affects every container built on it, the mapping service receives delivery addresses, and the email provider sends tracking messages to customers. The dependency list records what data each one receives, so a problem at a supplier can be assessed quickly. Owners review their entries on the set date and record any change in data received.
 
 ### 15.4 Images
 
-Shu et al. (2017) found many public images contained vulnerabilities; Fairway builds its images from a maintained base in its own registry.
+Shu et al. (2017) found many public images contained vulnerabilities; Fairway builds its images from a maintained base in its own registry. Building from a maintained base in Fairway's own registry means the team knows where each image came from and can rebuild when the base is patched. Images are rebuilt monthly, and the inventory confirms the cluster runs the new version. This reduces the risk the study describes without claiming any image is free of vulnerabilities. The base image source is listed in the dependency register with its owner.
 
 ### 15.5 Container guidance
 
-NIST SP 800-190 advises using trusted registries and monitoring images for vulnerabilities.
+NIST SP 800-190 advises using trusted registries and monitoring images for vulnerabilities. Fairway applies this by pulling images only from its own registry and scanning them when built and on a schedule. The tracker image named in deploy.yaml, registry.fairway.example/tracker:4.2, is an example of an image from the trusted registry. Findings from scans are recorded with owners, like other security findings. The cluster is configured to run only images from that registry, so an image pulled from a public source is refused. Any exception needs Grace's written approval and a recorded reason in the register.
 
 ### 15.6 Reviews
 
-New dependencies require a short review.
+New dependencies require a short review. The review asks what the dependency does, what data it receives, who owns it and how it will be updated. For a new mapping or messaging service, that takes a short meeting and an entry in the dependency list. Without the review, a new service could receive customer addresses without anyone recording that it does. The review result is stored with the dependency list entry and its review date. A dependency without a review cannot be added to the tracking site's deployment.
 
 ### Managing the partner relationship
 
@@ -1161,27 +1161,27 @@ You will (1) document configurations and procedures; (2) write for the next pers
 
 ### 16.1 What to document
 
-Storage policy, exceptions, check scripts, alert runbook, partner sharing procedure.
+Storage policy, exceptions, check scripts, alert runbook, partner sharing procedure. These are the documents a colleague would need if Tomás were away when an alert fired. The storage policy says what is required, the exceptions register says what is allowed and why, the scripts show how compliance is checked, and the runbook and sharing procedure say what to do. Each document links to the others at the points where their subjects meet. Each document names an owner and a review date six months ahead.
 
 ### 16.2 Runbooks
 
-The alert runbook says what the alert means, how to check, how to revert and who to tell.
+The alert runbook says what the alert means, how to check, how to revert and who to tell. For the public-access alert, the runbook says that a bucket outside the assets account has become public, how to confirm it in the console or logs, how to revert through the repository and whom to tell. After a colleague got stuck on 'revert via IaC', the runbook now gives the exact command and file path. The runbook is linked from the alert message itself, so it opens in one click.
 
 ### 16.3 Plain writing
 
-Short sentences, numbered steps and no unexplained acronyms.
+Short sentences, numbered steps and no unexplained acronyms. The test is whether a colleague can follow a document without asking Tomás anything. Numbered steps let a reader keep their place during an alert, and spelled-out terms such as 'infrastructure as code' avoid confusion. Tomás rewrites any step that a reviewer had to ask about, rather than explaining it verbally and leaving the text unchanged. Each runbook step starts with a verb, such as 'check' or 'revert', so the action is clear. Acronyms like CI and IaC are spelled out at first use in each document.
 
 ### 16.4 Safety
 
-Documents never include secret values or customer data.
+Documents never include secret values or customer data. Examples use <redacted> for secret values and synthetic bucket contents, as the labs do. A runbook copied into a ticket or shared with the insurer should never carry a credential or a customer's address. Reviewers check this specifically, and documents with real values are corrected and the exposed values rotated. Screenshots are checked as well, since they often capture values the text avoids. The documents also restate the course boundary: defensive checks only, and nothing tested outside the written scope.
 
 ### 16.5 Review
 
-Grace reviews every document; a colleague follows each runbook once.
+Grace reviews every document; a colleague follows each runbook once. Grace's review checks accuracy and safety, and the colleague's walk-through checks that the steps work in practice. The runbook test exposed the 'revert via IaC' gap, which a reading review had missed. Each review is recorded with a date, and documents are reviewed again at their six-month review date. Comments from readers go to the document's owner, who responds within a week. A runbook that has not been followed by a colleague is marked draft until it has.
 
 ### 16.6 Location
 
-Documents live beside the code they describe.
+Documents live beside the code they describe. Keeping the runbook in the same repository as the alert code means a change to the alert and to its instructions appear in the same merge request. Reviewers can then see in one place whether the document still matches the code. Versioned with the code, the history also shows which procedure applied at any given date. Documents that are not tied to code, such as the exceptions register, live in the same repository's documentation folder.
 
 ### Documentation for auditors
 
@@ -1248,9 +1248,9 @@ You will (1) detect drift between declared and live settings; (2) decide which d
 
 ### 17.1 Drift
 
-Drift is a difference between what the repository declares and what is live, usually from manual changes.
+Drift is a difference between what the repository declares and what is live, usually from manual changes. Drift matters at Fairway because the repository is now the declared state that reviews, checks and auditors rely on. A manual change in the console, such as opening the cluster endpoint for a vendor, makes the live system differ from what everyone believes. The drift check compares the two and lists every difference. In the lab, the repository and live settings for seven items are compared with synthetic values.
 
-### Lab — Lab — drift check
+### Lab — drift check
 
 ```python
 """Compare declared (repository) settings with live settings to find drift (synthetic, stdlib only)."""
@@ -1273,19 +1273,19 @@ settings 7, drifted 3
 
 ### 17.2 Reading the result
 
-Three of seven settings drifted: site-assets access logging is off, the cluster public endpoint is on, and tracker replicas are 3 instead of 2.
+Three of seven settings drifted: site-assets access logging is off, the cluster public endpoint is on, and tracker replicas are 3 instead of 2. Each drifted item has a different cause and a different weight for security. Logging off on site-assets removes visibility, the public cluster endpoint exposes the control plane to the internet, and the extra replica only changes capacity. The other four settings, including the manifests public block and the tracker's non-root setting, match their declarations. The script prints only drifted items, so a clean night produces a single summary line.
 
 ### 17.3 Judging
 
-The public endpoint matters most; logging next; replicas were raised during a busy week and are harmless but should be declared.
+The public endpoint matters most; logging next; replicas were raised during a busy week and are harmless but should be declared. An open cluster endpoint lets anyone on the internet attempt to reach the cluster's management interface, which is far more serious than missing logs. Logging comes second because it affects whether future problems can be investigated. The replica change helped during a busy week and carries no security risk, so it only needs declaring. Tomás records each judgement with its reason before any fix is made.
 
 ### 17.4 Fixing
 
-The endpoint is restored to private through the repository; logging re-enabled; replicas updated in the repository to match.
+The endpoint is restored to private through the repository; logging re-enabled; replicas updated in the repository to match. All three changes go through the repository, so the declared and live states match again. The endpoint is closed first, then logging restored, then the replica count declared at 3. The next nightly run confirms zero drift, which supports the drift figure reported in the project results. Grace reviews the endpoint fix because it changes how the vendor reaches the cluster. The vendor's next support session uses a temporary account on the private network instead.
 
 ### 17.5 Prevention
 
-The drift check runs nightly.
+The drift check runs nightly. A nightly run means a manual change such as the vendor endpoint would be noticed the next morning rather than weeks later. Results are posted with a count, so a rising number gets attention. Together with the one-working-day rule for urgent manual changes, the check keeps the repository a reliable description of the live system. After a month of nightly runs, drift averages under one item. Each remaining item is logged with the decision taken and the date.
 
 ### Fix live or update the declaration
 
@@ -1344,27 +1344,27 @@ You will (1) complete a supervised project; (2) show measured results; (3) refle
 
 ### 18.1 Project
 
-Tomás's project: a storage guardrail pack with policy, verification, alerts, drift check, sharing procedure and runbooks.
+Tomás's project: a storage guardrail pack with policy, verification, alerts, drift check, sharing procedure and runbooks. The pack brings together the course's practical work: the storage policy, the verification script, the public-access alert, the nightly drift check, the signed-link sharing procedure and the runbooks. Each part addresses a cause found in March or a gap found afterwards. The project is supervised by Grace and assessed by Hollins tutors against criteria agreed at the start. Tomás agrees the project criteria with his tutors before starting the work.
 
 ### 18.2 Results
 
-Bucket differences fell from 6 to 1 approved exception; drift fell from 3 to 0; public change alert tested at four minutes.
+Bucket differences fell from 6 to 1 approved exception; drift fell from 3 to 0; public change alert tested at four minutes. These results come from the verification lab's six differences reduced to the one approved exception, the drift lab's three items reduced to zero, and the alert drill that arrived in four minutes. Each figure has saved, dated output behind it in the evidence folder. Tomás presents them with dates so readers can see they were measured, not estimated. The alert time comes from the staging drill rather than a real incident.
 
 ### 18.3 Limits
 
-Results cover one company and a few months.
+Results cover one company and a few months. Fairway has four buckets, one cluster and a small team, so results may not carry over to a larger company with many accounts. A few months is too short to show whether drift stays low or whether the alert holds up over time. Tomás states these limits in his report and recommends measuring again after a year. He also notes that results depend on the team keeping the drills and reviews going after he leaves.
 
 ### 18.4 Presentation
 
-He presents to Hollins tutors and Fairway's IT manager.
+He presents to Hollins tutors and Fairway's IT manager. The audience needs different things: tutors want evidence that the criteria were met, while the IT manager wants to know what Fairway now has and what it costs to keep. Tomás shows the before and after figures, a short demonstration of the alert drill and the list of handed-over scripts and runbooks. Questions from the IT manager about new accounts lead to one more checklist item. Tutors ask about limits, and he answers with the points from his report.
 
 ### 18.5 Reflection
 
-He learned that the incident was a process gap as much as a technical one.
+He learned that the incident was a process gap as much as a technical one. The technical fixes were quick once the causes were clear; the harder part was providing a safe way to share files and agreeing permission changes with developers. Without the signed-link service, someone with the next urgent partner request might have looked for another workaround. Tomás now asks first what need a risky change was meant to meet. He also learned that a check is only trusted once it has been tested.
 
 ### 18.6 Next
 
-He plans to study application security next.
+He plans to study application security next. His storage work showed how often the risk sits in code and configuration that developers write, such as the copied example behind driver-photos and the secrets in worker.env. Studying application security will help him review that kind of code before it reaches production. He keeps the habit of testing every check on synthetic data with known answers before using it. He discusses the plan with Grace, who suggests starting with the tracking site's code review. His tutors at Hollins approve application security as his next module of study.
 
 ### Assessment
 
