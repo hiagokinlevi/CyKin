@@ -407,7 +407,7 @@ The test plan should be written before the replay is built, naming the attack be
 
 ### 6.2 Reading the result
 
-B's recall is 0.85 against A's 0.65, and its false-alert rate is lower (3.7 % vs 6.9 %). The bootstrap interval for the recall difference runs from 0.000 to 0.388: the lower end touches zero. With only 40 attack windows, we cannot rule out that B is no better at recall than A, even though the point estimate favours it strongly. Paired methods (each window evaluated by both rule sets) would give a tighter interval; the bootstrap above resamples windows, preserving pairing.
+B's recall is 0.85 against A's 0.65, and its false-alert rate is lower (3.7 % vs 6.9 %). The bootstrap interval for the recall difference runs from 0.000 to 0.388: the lower end touches zero. With only 40 attack windows, we cannot rule out that B is no better at recall than A, even though the point estimate favours it strongly. Each resampled window carries both rule sets' outcomes, so the bootstrap above already preserves the pairing; an exact test on the windows where A and B disagree would be the natural cross-check.
 
 Report the counts beside the rates so a reader can judge the evidence: 34 of 40 against 26 of 40 attack windows, and 6 against 11 of 160 normal windows. With so few attack windows a handful of different outcomes would change the picture. That is the main reason Daniel asks for a larger and independently built replay before the next review.
 
