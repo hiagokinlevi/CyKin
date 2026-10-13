@@ -619,7 +619,7 @@ Probar sistemas sin permiso puede ser ilegal y puede dañar a usuarios reales. O
 
 ### 10.3 Divulgación coordinada
 
-Si encuentra una vulnerabilidad, comuníquela en privado al responsable, dé un plazo razonable para corregirla y publique solo los detalles que ayuden a los defensores. No acceda a más datos de los necesarios para demostrar el problema. En el caso de Rina, el problema del número de teléfono se demostró con un único ejemplo sintético y no comprobando muchos números reales. Su informe describía el comportamiento, las condiciones y una corrección sugerida, y lo mantuvo confidencial hasta que LCH confirmó la corrección.
+Si encuentra una vulnerabilidad, comuníquela en privado al responsable, dé un plazo razonable para corregirla y publique solo los detalles que ayuden a los defensores. No acceda a más datos de los necesarios para demostrar el problema. En el caso de Rina, el problema del número de teléfono se demostró con un único ejemplo sintético y no comprobando muchos números reales. Su informe describía el comportamiento, las condiciones y una corrección sugerida, y lo mantuvo confidencial hasta que LCH confirmó la corrección, lo que ocurrió antes de que terminara el semestre.
 
 ### 10.4 Equidad y seguridad funcional
 
