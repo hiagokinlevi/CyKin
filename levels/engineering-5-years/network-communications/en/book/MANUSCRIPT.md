@@ -61,6 +61,8 @@ A router queue grows when packets arrive faster than they can be sent. If arriva
 
 Security controls add work to the network path. A firewall inspecting traffic has a service rate; if inspection slows it, queues build at busy times. Kofi will later measure added latency, and calculus gives him the language to reason about how small increases in per-packet cost become large delays near capacity. It also helps him read rate-based alerts, such as a sudden rise in connection attempts, as changes in slope rather than raw counts.
 
+Security decisions in networks are quantitative more often than they look. Whether a link can absorb a backup and an incident response capture at once, or how quickly a log store fills, are questions of rates and totals. An engineer who can estimate them catches impossible plans early, before a control is designed that the network cannot carry.
+
 ### Worked example
 
 Given cumulative backup bytes B(t) = 2t² gigabytes for t in hours from 0 to 3, the throughput is B'(t) = 4t GB per hour, peaking at 12 GB per hour at the third hour, which Kofi compares with the inter-office link capacity.
@@ -97,17 +99,25 @@ You will (1) model networks as graphs; (2) use sets and relations for policy; (3
 
 A network is naturally a graph: devices or zones are vertices and links or permitted flows are edges. In Ashcombe's flat network, every zone can reach every other, so the zone graph is complete. Segmentation removes edges. Graph theory lets Kofi count paths, find which vertices are reachable from a compromised one and check that no unintended path exists, for example from guest Wi-Fi to the file servers through some intermediate zone.
 
+Treating zones as nodes and permitted flows as directed edges lets Kofi ask exact questions: which zones can reach the file servers, and through how many hops. Direction matters, because a rule allowing staff to reach printers does not allow printers to reach staff, and confusing the two is a common design error.
+
 ### 2.2 Sets and relations
 
 A firewall policy can be described as a relation: a set of ordered pairs of source and destination zones, each with permitted services. Set operations answer design questions. The intersection of what is allowed and what is needed shows justified rules; the difference between allowed and needed shows excess access. Kofi writes the needed flows as a set first, then designs rules to match it exactly, which is the least privilege principle of Saltzer and Schroeder expressed mathematically.
+
+Writing the allowed relation and the needed relation as sets makes review mechanical: excess access is the difference between them.
 
 ### 2.3 Reachability and closure
 
 Direct rules are not the whole story. If guest can reach a print server and the print server can reach file servers, guest has an indirect path. The transitive closure of the reachability relation captures all such paths. Kofi computes closures for candidate designs to confirm that removing one edge actually isolates a zone rather than leaving a detour.
 
+The transitive closure of the allowed relation shows every pair that can communicate through intermediate zones, including paths no single rule mentions. If a guest zone can reach a print server, and the print server can reach file servers, then guests indirectly reach files. Reviewing the closure, not just the rule list, is what exposes such chains.
+
 ### 2.4 Counting
 
 With six zones there are thirty directed pairs. Each pair can be allowed or denied for each service, so the number of possible policies is enormous. Counting shows why designs need principles, such as default deny, rather than case-by-case choices.
+
+With n zones there are n times n minus one directed pairs, so eight zones give fifty-six. Multiply by dozens of services and the space of possible rule sets is vast. Default deny reduces the decision to listing the few flows that are needed, which is both shorter to write and far easier to review than listing everything forbidden.
 
 ### Worked example
 
@@ -145,17 +155,25 @@ You will (1) relate signal propagation to latency; (2) understand wireless cover
 
 Signals in fibre travel at roughly two thirds of the speed of light, about 200 kilometres per millisecond. Between two Ashcombe offices 40 kilometres apart, one-way propagation is about 0.2 milliseconds; most observed delay comes instead from queues and processing. This tells Kofi where latency budgets go and why adding a firewall hop matters more than distance within the district.
 
+Signals travel through fibre at roughly two thirds of the speed of light, about five microseconds per kilometre. That floor cannot be engineered away, so a link between distant offices always adds delay, and protocols or controls that need many round trips feel slower across it. Measured latency well above the propagation floor points to queuing or processing instead.
+
 ### 3.2 Wireless coverage
 
 Wi-Fi signals weaken with distance and walls. Access points placed for good indoor coverage often also cover car parks, so guest and staff networks can be heard outside buildings. NIST SP 800-153 recommends considering coverage when securing wireless networks. Kofi notes that physical leakage is a reason to require strong authentication and encryption rather than relying on the building as a boundary.
+
+Radio signal strength falls quickly with distance and walls, so coverage maps never stop neatly at building edges. A guest network that is usable in a car park is reachable by anyone parked there. Engineers therefore plan access point placement and transmit power with coverage boundaries in mind, and treat wireless as reachable from outside regardless.
 
 ### 3.3 Electrical and physical layer
 
 Network cabinets in offices hold switches whose ports anyone with physical access could use. Physical security of cabinets and disabling unused ports are basic controls. Kofi records cabinet locations and port counts during site visits.
 
+The physical layer is where many security assumptions quietly rest. An unused wall port that is still patched to a switch gives anyone in the room network access, and a cable run through a shared ceiling can be tapped or disconnected. Disabling unused ports, labelling patch panels and locking wiring closets are physical controls that support every logical control above them. Engineers should record these in the same inventory as switches and rules.
+
 ### 3.4 Power and heat
 
 Firewalls and switches need stable power and cooling. A security appliance that overheats in a cupboard becomes a reliability problem. Kofi checks that each site's cabinet has ventilation and an uninterruptible power supply.
+
+Network equipment fails when power is lost or when cooling fails, so availability depends on facilities as much as configuration. Uninterruptible power supplies give minutes, not hours, and a closet without ventilation can overheat a switch on a summer weekend. Engineers estimate load in watts, check supply runtime, and decide which devices must stay up during an outage, such as core switches and the firewall, before choosing what may shut down.
 
 ### Measuring delay in practice
 
@@ -197,17 +215,25 @@ You will (1) write small Python programs to parse network data; (2) use the ipad
 
 Network engineers handle lists of addresses, rules and flows that are too long to check by hand. Kofi writes small Python programs using only the standard library, which runs on any council machine without installing packages. Each program reads synthetic data, computes a result and prints a clear summary.
 
+Manual checks do not scale: comparing a few hundred rules or addresses by eye is slow and error-prone, and the same check must be repeated after every change. A short program performs the comparison identically each time, produces output that can be saved as evidence, and lets another engineer rerun it to confirm the result. That repeatability is the real reason engineers program.
+
 ### 4.2 The ipaddress module
 
 Python's ipaddress module understands networks and addresses. It can check whether an address belongs to a subnet, split a block into smaller subnets and test whether two networks overlap. These operations are exactly what subnet planning and rule analysis need, and using a tested library avoids errors in hand-written bit manipulation.
+
+Python's standard ipaddress module parses addresses and networks, tests membership, and detects overlapping subnets correctly, including edge cases such as host bits set in a network definition. Using it avoids fragile string handling. For example, checking whether a proposed subnet overlaps any existing one becomes a loop over network objects calling overlaps, which is clear to read and easy to test.
 
 ### 4.3 Structuring a script
 
 Kofi's scripts follow one pattern: a docstring explaining purpose, input data near the top, small functions for each step and a final summary line. This makes them easy for council engineers to read and adapt.
 
+A useful script separates three parts: reading input, computing results, and printing a report. Keeping the computation in small functions with clear names lets each be tested on its own and reused later. Constants such as file names belong at the top, and the main block simply calls the functions in order. This structure makes a script readable months later, when the original author has forgotten the details.
+
 ### 4.4 Testing
 
 Each script is tested with inputs where the answer is known, including edge cases such as a /32 single address or an empty rule list. Tests are kept with the scripts.
+
+A test feeds a function a small, known input and checks the output against an answer worked out by hand. For network scripts, good test cases include an exact overlap, adjacent subnets that do not overlap, and invalid input. Writing tests before trusting a script on real data catches mistakes cheaply, and rerunning them after every change shows nothing that worked before has broken.
 
 ### Reading data files
 
@@ -249,17 +275,25 @@ You will (1) write design documents for mixed audiences; (2) draw clear network 
 
 Kofi's work will be read by council IT staff, managers and examiners. Each needs different detail. Managers need the problem, the decision and the cost; engineers need addressing, rules and procedures; examiners need method and evidence. He plans each document by asking who will read it and what they must decide.
 
+Different readers need different things from the same design. Council managers want cost, risk and disruption in plain terms; operations staff need exact steps and rollback plans; auditors need evidence that controls exist and are checked. Writing one document that tries to serve all three usually serves none, so engineers prepare a short summary, a technical design and a separate evidence record.
+
 ### 5.2 Diagrams
 
 A good network diagram shows zones, the controls between them and the direction of permitted flows, using a legend. Kofi draws a logical diagram of zones and policy separately from a physical diagram of sites and links, because mixing them makes both unreadable.
+
+A good network diagram shows zones, the boundaries between them, and the permitted flows, with a legend explaining symbols. It should omit detail that does not help the reader's decision, such as every cable, while keeping what does, such as where the firewall sits. Dating each diagram and keeping it with the design prevents people from trusting an outdated picture.
 
 ### 5.3 Trade-off tables
 
 Design choices are presented as tables of options against criteria: security, cost, complexity and operational effort. Each cell has a short justification, so readers can disagree with a judgement rather than the whole table.
 
+A trade-off table lists options as rows and criteria as columns, such as cost, security benefit, operational effort and disruption. Filling every cell forces the engineer to consider each option fairly, and stating the evidence behind each score makes the comparison checkable. Readers can then disagree with a specific cell rather than with the whole recommendation, which makes review discussions far more productive.
+
 ### 5.4 Plain language
 
 Terms like segmentation are explained once in plain words: dividing the network so a problem in one part cannot easily spread to others.
+
+Plain language means short sentences, familiar words, and defining any technical term on first use. Instead of writing that inter-VLAN routing will be restricted via ACLs, write that the network will stop guest devices from reaching staff computers. Readers who are not engineers make funding and approval decisions, so if they misunderstand the design, even an excellent technical plan may not be adopted. Testing a draft on a non-specialist colleague quickly reveals unclear passages.
 
 ### Writing a design decision record
 
@@ -301,17 +335,27 @@ You will (1) use integrals to compute totals from rates; (2) apply exponential m
 
 If throughput r(t) is known over a day, the integral gives total data transferred. Kofi integrates a fitted rate curve for the nightly backup to estimate daily volume over the inter-office link, which feeds capacity planning for the new encrypted tunnels.
 
+If a link carries data at a known rate, the total transferred is the rate multiplied by time, or the area under the rate curve when the rate varies. Engineers use this to estimate log volumes and backup sizes. For example, a sensor producing two megabytes of logs per minute generates about 2.9 gigabytes per day, which tells Kofi how much storage a retention period needs before any purchase.
+
 ### 6.2 Exponential decay and growth
 
 Some quantities change in proportion to their size. The probability that a link has not yet failed often follows an exponential model, and log volumes may grow roughly exponentially as more devices are added. Kofi uses these models carefully as approximations.
+
+Many network quantities change in proportion to their current size. Traffic that grows by a fixed percentage each month grows exponentially, so capacity that seems ample today can run out sooner than a straight-line estimate suggests. Decay works the other way: the share of devices still running an old firmware version often halves over a regular period. Fitting the right model prevents both overspending and surprise shortfalls.
 
 ### 6.3 Retention estimates
 
 Logging every allowed and denied flow creates large volumes. If flow records arrive at a rate that grows over the day, integrating gives daily volume, and multiplying by retention days gives storage needs. This helps size log storage for the ninety days the council requires.
 
+Retention planning combines daily volume, compression, and the number of days records must be kept. Thirty days of three gigabytes per day is ninety gigabytes before compression, and engineers add headroom for growth and incident surges, when logging often increases sharply. The required period comes from policy and investigation needs, not from what happens to fit on an existing disk.
+
 ### 6.4 Checking with data
 
 Models are checked against measured totals. If an integral predicts 50 GB but measurements show 70 GB, the model is wrong and Kofi revises it.
+
+Models are only useful if they match reality, so engineers compare estimates with measured values from a pilot. If measured log volume is double the estimate, the assumptions need revisiting before the full rollout.
+
+Engineers record each assumption, such as events per device per minute and average record size, so a mismatch can be traced to the specific assumption that was wrong. The corrected model then becomes the basis for the full plan.
 
 ### Growth and headroom
 
@@ -353,6 +397,8 @@ You will (1) model failures probabilistically; (2) summarise measurements; (3) r
 
 Link failures are often modelled as a Poisson process: independent events at an average rate. With six inter-office links each failing about 1.2 times a year, the total rate is 7.2 a year. The model gives the probability of any number of failures, which helps decide how much redundancy and on-call cover are needed.
 
+Hardware such as power supplies and disks fails at random times, but at fairly stable average rates. Modelling failures as random events with a known rate lets engineers estimate how often a device will be unavailable over a year. This turns vague worries into numbers that support choices such as buying a spare switch, adding redundant links, or accepting the risk for a minor office.
+
 ### Lab — Link failure probabilities
 
 ```python
@@ -381,9 +427,13 @@ P(failures >= 10) = 0.1904
 
 The most likely yearly counts are around six to eight. The chance of ten or more failures is about 19 percent, not negligible. Kofi concludes that relying on single links for critical services will regularly cause outages, which supports redundant tunnels later.
 
+A model result such as a 0.3 percent chance of two simultaneous failures in a year is an estimate under stated assumptions, not a guarantee. Kofi reports it with those assumptions, notes that failures sharing a cause such as a power cut are not independent, and explains what the number means in practical terms for council staff.
+
 ### 7.3 Summarising measurements
 
 Latency samples are summarised with median and high percentiles rather than mean alone, because a few slow packets matter to users. Kofi reports p95 as well as median.
+
+Measurements such as latency vary, so a single average hides important behaviour. The median shows the typical experience, while a high percentile such as the 95th shows how bad the slow cases get, which is often what users notice. Reporting both, along with the number of samples and the measurement period, lets readers judge whether the summary reflects normal conditions.
 
 ### Percentiles and outliers
 
@@ -429,17 +479,27 @@ You will (1) describe how network devices process packets; (2) understand fast a
 
 Switches and routers forward packets using specialised hardware that looks up destinations quickly. Firewalls do more: they track connection state and evaluate rules. Some work happens in fast hardware paths, some in a general-purpose processor.
 
+Each packet arriving at a router or firewall goes through steps: it is received, its headers are parsed, a forwarding or policy decision is made, and it is queued for output. Every step costs time and processing capacity. Understanding this pipeline explains why enabling extra inspection features reduces throughput, and why the stated capacity of a device depends on which features are switched on.
+
 ### 8.2 Fast and slow paths
 
 New connections often go through a slower path for rule evaluation; later packets of the same connection follow a fast path using cached state. A sudden surge of new connections can therefore load a firewall more than high throughput on existing ones.
+
+Many devices handle ordinary packets on a fast path, often in dedicated hardware, while unusual packets go to a slower general processor. Packets needing logging, fragmentation handling or certain options may take the slow path. If a design causes much traffic to be logged individually, the slow path can become a bottleneck, so engineers check which features force slow-path handling before enabling them widely.
 
 ### 8.3 Memory and state tables
 
 Stateful firewalls hold a table of active connections. Each entry uses memory; the table has a maximum size. Kofi notes table capacity when sizing firewalls for council sites.
 
+Stateful firewalls remember each active connection in a table. The table has a fixed size, so a sudden increase in connections, whether from a legitimate surge or a fault, can fill it, after which new connections are refused. Engineers size tables from measured peak connection counts with headroom, and monitor table usage so they are warned before it becomes full.
+
 ### 8.4 Feature cost
 
 Enabling deep inspection or decryption uses more processor time, lowering throughput. Vendors publish separate throughput figures for these features, which Kofi compares with expected load.
+
+Vendor data sheets often quote throughput with few features enabled. With deep inspection, logging and encryption switched on, real capacity can be much lower. Engineers ask for figures under the planned configuration, or test in a lab with representative synthetic traffic, before relying on a device in production.
+
+Monitoring processor and memory load after enabling a feature confirms whether the estimate held.
 
 ### Encryption offload
 
@@ -485,17 +545,29 @@ You will (1) structure larger analysis programs; (2) read configuration files sa
 
 As analysis grows, Kofi splits scripts into modules: parsing, policy evaluation and reporting. Each module has tests.
 
+As scripts grow beyond a page, structure becomes essential. Splitting code into modules by purpose, such as parsing, analysis and reporting, keeps each part small enough to understand. Clear function names, short docstrings, and avoiding global variables make it possible for a colleague to review the code and for Kofi to change one part without breaking another.
+
+A short README explaining how to run the program completes the structure.
+
 ### 9.2 Parsing configurations
 
 Exported firewall configurations are text. Kofi parses them into structured records, rejecting lines he cannot interpret rather than silently skipping them.
+
+Device configurations are text with structure: sections, indentation and keywords. A parser reads that text into data structures such as lists of rules, each with source, destination, service and action fields. Once parsed, rules can be checked automatically for problems such as overly broad sources, duplicates or unused objects. Parsers should be written for synthetic samples first and should report lines they cannot understand rather than silently skipping them.
 
 ### 9.3 Error handling
 
 Programs report clear errors on malformed input, naming the line. Silent failures could hide missing rules.
 
+Real input is messy: files are missing, lines are malformed, values are out of range. A robust script detects these cases, reports them clearly with the line number, and either continues safely or stops. Silent failure is the worst outcome, because a script that ignores a malformed rule may report a clean policy that is actually wrong. Explicit error messages make problems visible to the person running the check.
+
 ### 9.4 Reproducibility
 
 Scripts and synthetic inputs are versioned together, so any result can be regenerated.
+
+A result is reproducible when someone else can run the same script on the same input and get the same output. That requires recording the script version, the input file, and any settings, and avoiding hidden dependencies such as the current date or random values without a fixed seed. Reproducibility turns analysis into evidence that reviewers can trust.
+
+Saving the output alongside these details completes the record.
 
 ### Working with structured exports
 
@@ -545,17 +617,29 @@ You will (1) apply professional ethics; (2) work within authorisation; (3) consi
 
 Engineers hold public safety and trust. Council networks support services such as social care and emergency planning; outages can harm residents.
 
+Engineers working on public infrastructure owe duties to the people who rely on it, not only to whoever pays. That means telling the client honestly about risks, staying within competence, declaring conflicts of interest, and refusing to sign off work that is unsafe. Professional bodies publish codes of conduct that set out these duties, and students should read the one that applies to them.
+
 ### 10.2 Authorisation
 
 Kofi's project agreement lists what he may do: review configurations and logs, design, and test in a lab. He does not scan or probe council networks; tests on production happen only with council staff, in approved windows.
+
+Security work on any network needs written permission from someone entitled to give it, stating scope, timing and methods. Without it, even well-meant checks can be illegal and can disrupt services. Kofi keeps signed authorisation from the council for each activity, works only on in-scope systems, and stops and asks if he finds he needs to go beyond the agreed boundary.
 
 ### 10.3 Data care
 
 Logs contain staff and resident information. Kofi works with pseudonymised exports and synthetic data.
 
+Network data such as logs and captures can contain personal information: addresses linked to people, browsing records, or message contents. Engineers collect only what the purpose needs, store it securely, limit who can access it, and delete it when the retention period ends. For teaching and testing, synthetic data avoids these risks entirely and should be the default.
+
+Access to real data should itself be logged and periodically reviewed.
+
 ### 10.4 Change safety
 
 Network changes can cut services. Every change has a rollback plan and is scheduled with service owners.
+
+Every change to a live network carries a risk of disruption. Safe practice is to plan the change, have it reviewed, schedule it for a low-impact time, prepare a tested rollback, and verify afterwards that services still work. Recording each step creates a trail that helps later investigation if something does go wrong, and builds trust with the organisation.
+
+Changes that fail are reviewed without blame to improve the process.
 
 ### Professional codes
 
@@ -601,9 +685,13 @@ You will (1) explain addressing, routing and transport; (2) plan subnets; (3) id
 
 Networks are built in layers: physical links, Ethernet switching, IP routing, transport protocols such as TCP and UDP, and applications. Security controls work at different layers: switch port security at Ethernet, firewalls at IP and transport, TLS at application.
 
+Layered models separate network functions: physical transmission, local delivery, routing between networks, end-to-end transport and applications. Each layer relies on the one below. Security controls also sit at particular layers, such as port security at the link layer, filtering at the network layer, and authentication at the application layer. Knowing which layer a control works at shows which threats it can and cannot address.
+
 ### 11.2 Addressing plan
 
 Segmentation needs a clean addressing plan. Each zone gets its own subnet sized for its devices with growth room. Kofi uses a private block from RFC 1918 space.
+
+An addressing plan assigns each zone its own subnet with room to grow, using a consistent pattern so that an address reveals its zone. When subnets map neatly to zones, firewall rules can refer to whole subnets rather than individual hosts, which keeps rules short and makes errors easier to spot. Documenting the plan in one place prevents accidental overlaps.
 
 ### Lab — Subnet plan
 
@@ -636,9 +724,13 @@ overlaps: False
 
 The script assigns staff a /22 with 1022 usable addresses, guest and voice /23s, servers and CCTV /25s and management a /27. No subnets overlap. Each zone starts on its own /22 boundary, leaving room to grow and making firewall rules simple to write.
 
+Reading an addressing plan, an engineer checks that subnets do not overlap, that each is large enough for expected devices, and that related zones are grouped so they can be summarised. Gaps left between blocks allow future expansion without renumbering. A plan that fails these checks will cause problems once routing and rules are built on it.
+
 ### 11.4 Protocols in use
 
 Kofi lists protocols each zone needs: HTTPS and SMB for staff to servers, SIP over TLS for voice, RTSP for CCTV and SSH for management. This list becomes the basis of the policy.
+
+Before designing rules, engineers list the protocols the organisation actually relies on, such as DNS, DHCP, web traffic, file sharing, printing and voice. Each has known ports and behaviours. Writing this list from evidence, such as synthetic flow summaries in a lab, rather than from assumptions, prevents rules that block a forgotten but essential service.
 
 ### Name resolution and time
 
@@ -684,17 +776,29 @@ You will (1) understand host networking; (2) configure host firewalls; (3) secur
 
 Operating systems hold routing tables, interface settings and local firewall rules. Even within a segmented network, hosts should restrict inbound connections.
 
+Every host has its own network configuration: addresses, routes, DNS servers and active interfaces. A laptop with both wired and wireless connections may bridge networks unexpectedly. Reviewing host configuration alongside network design ensures that hosts behave as the design assumes, and that a device placed in one zone does not quietly reach another through a second interface.
+
+Engineers sample a few hosts per type to confirm this.
+
 ### 12.2 Host firewalls
 
 Windows Defender Firewall and Linux nftables let hosts allow only needed services. Defence in depth means a misconfigured network rule is not the only barrier.
+
+Host firewalls filter traffic on the device itself, adding protection even inside a zone. They are valuable because network firewalls usually do not see traffic between hosts in the same subnet. Engineers set a default that denies inbound connections except those the host's role needs, and manage the rules centrally so they stay consistent across many machines.
 
 ### 12.3 Listening services
 
 Kofi reviews which services servers listen on, using exported reports from the council team, and compares with the protocol list.
 
+A listening service is a program waiting for incoming connections. Every one is a potential entry point, so engineers inventory listening services on each host type, remove those not needed, and restrict the rest to the zones that must reach them. Comparing the inventory against the role of the host often reveals forgotten test services left running.
+
+Repeating the inventory regularly catches new services.
+
 ### 12.4 Management interfaces
 
 Management services such as SSH or remote desktop should listen only on management interfaces or accept connections only from the management zone.
+
+Management interfaces of switches, firewalls and servers give full control of the device, so they deserve the strongest protection. Good practice puts them on a separate management network, reachable only from designated administration hosts, with strong authentication and logging of every session. Exposing them to ordinary staff or guest networks gives any compromised device a route to taking over infrastructure.
 
 ### Patching network-facing services
 
@@ -740,17 +844,25 @@ You will (1) store flow and log data; (2) query efficiently; (3) manage retentio
 
 The design generates firewall logs, flow records (IPFIX, RFC 7011) and VPN logs. Each needs storage and query.
 
+Useful network data comes from several sources: firewall logs record allowed and denied connections, flow records summarise who talked to whom and how much, DNS logs show which names were looked up, and DHCP logs link addresses to devices over time. Each source answers different questions and has gaps. Engineers list what each source contains, how long it is kept, and whose clocks it uses, because combining sources only works when timestamps can be aligned reliably.
+
 ### 13.2 Schema
 
 Kofi designs a simple table: time, source zone, destination zone, port, action, bytes. Zones rather than raw addresses make queries simpler and reduce personal data.
+
+A schema defines the fields each record holds, their types and their meaning, such as timestamp in UTC, source address, destination address, port, action and bytes. Agreeing a common schema before collecting data lets records from different devices be stored together and queried consistently. Without it, one device's source field may mean something different from another's, and analysis quietly gives wrong answers that nobody notices until an investigation depends on them.
 
 ### 13.3 Queries
 
 Typical queries: denies by zone pair this week; top talkers; new destination ports. Indexes on time and zone pair keep them fast.
 
+Queries turn stored records into answers: how many denied connections came from the guest zone yesterday, or which hosts contacted a server outside working hours. Good queries state their time window and filters explicitly, and their results are checked against a small sample read by hand. Saving useful queries with a short description lets colleagues reuse them during incidents, when there is no time to write and debug new ones from scratch.
+
 ### 13.4 Retention
 
 Logs are kept ninety days, then aggregated summaries are kept longer.
+
+Retention decides how long each type of record is kept. Investigations often begin weeks after the event, so records must last long enough to answer late questions, yet personal data should not be kept longer than needed. Engineers set retention per source from policy, legal requirements and investigation experience, calculate the storage this needs, and automate deletion at the end of the period so that the rule is actually applied rather than forgotten.
 
 ### Pseudonymisation
 
@@ -796,17 +908,25 @@ You will (1) manage configuration as code; (2) review changes; (3) test configur
 
 Firewall policies can be kept as text in version control, with changes reviewed before deployment. This gives history, review and rollback.
 
+Configuration as code means keeping device and firewall settings as text files in version control, rather than editing devices by hand. Every change is then recorded with who made it, when and why, and earlier versions can be restored. Templates generate consistent configuration for similar devices, which reduces drift between offices. The approach also makes review possible, because a proposed change appears as a readable difference that colleagues can inspect before it reaches production.
+
 ### 14.2 Review
 
 Each change is reviewed by a second engineer against the needed-flows list.
+
+Peer review means a second engineer reads every proposed change before it is applied. The reviewer checks that the change does what its description says, does not open unintended access, follows naming conventions, and has a rollback plan. Review catches mistakes the author cannot see in their own work. Keeping review comments with the change record also documents the reasoning, which helps later engineers understand why a rule exists and whether it can be removed.
 
 ### 14.3 Testing
 
 Automated tests evaluate synthetic flows against the policy and check expected allow or deny results.
 
+Configuration can be tested before deployment. Syntax checks confirm the device will accept it; policy tests confirm that required flows are allowed and forbidden flows are denied, using a list of expected results; and lab trials with synthetic traffic confirm behaviour on real equipment. Automated tests run on every change, so a mistake that would block a critical service is found in minutes in the lab rather than by users on a Monday morning.
+
 ### 14.4 Deployment
 
 Approved changes are deployed in windows, with automatic backups of the previous configuration.
+
+Deployment applies an approved, tested change to production. Safe deployment proceeds in stages, starting with one low-risk device or office, checking that services work, then continuing. Each step has a defined rollback, and the deployment record notes the exact version applied. Automating deployment from version control removes manual retyping, which is a frequent source of errors, and guarantees that what runs on the device is exactly what was reviewed.
 
 ### Change review checklist
 
@@ -856,17 +976,25 @@ You will (1) apply confidentiality, integrity and availability to networks; (2) 
 
 Confidentiality: encrypt links and restrict access. Integrity: prevent tampering in transit, using protocols like TLS (RFC 8446) and IPsec (RFC 4301). Availability: redundancy and capacity.
 
+Confidentiality, integrity and availability apply directly to networks. Confidentiality means traffic is not readable by those who should not see it, which is why links between offices are encrypted. Integrity means data and configuration are not altered without authority, so changes are controlled and logged. Availability means services can be reached when needed, which requires capacity and redundancy. A good design states which of the three each control supports.
+
 ### 15.2 Least privilege
 
 Each zone gets only the flows it needs. Saltzer and Schroeder's principles apply directly to network policy.
+
+Least privilege means each user, device and zone gets only the access it needs to do its job, and no more. In networks this becomes rules that allow specific flows between specific zones on specific services, rather than broad permissions. It limits the damage when something is compromised, because the attacker inherits only the narrow access of that device. Applying it requires knowing what access is actually needed, which is why flow inventories matter.
 
 ### 15.3 Defence in depth
 
 Segmentation, host firewalls, encryption and monitoring combine so one failure is not fatal.
 
+Defence in depth layers independent controls so that the failure of one does not expose everything. Network segmentation, host firewalls, strong authentication, monitoring and backups each address threats in different ways. If a guest device evades the wireless isolation, zone rules still block it from servers, and monitoring may still detect the attempt. The layers should fail independently; two controls relying on the same configuration file are less independent than they appear.
+
 ### 15.4 Threat categories
 
 Kofi lists threats: malware spreading laterally, eavesdropping on inter-office links, misconfiguration and outages.
+
+Grouping threats into broad categories helps engineers check designs systematically. Common categories include unauthorised access, interception of traffic, tampering with data or configuration, denial of service, and misuse by authorised people. For each category, the design should name the controls that reduce it and the evidence that they work. Categories are prompts for thinking, not a complete list, so engineers also consider threats specific to the organisation.
 
 ### Attack surface
 
@@ -912,17 +1040,27 @@ You will (1) manage requirements through a lifecycle; (2) trace requirements to 
 
 Kofi follows a lifecycle: needs, requirements, design, implementation, verification, operation.
 
+The systems engineering lifecycle runs from understanding needs, through requirements, design, implementation and verification, to operation and eventual retirement. Each stage produces documents that the next one relies on. Security must be considered at every stage, not added at the end, because a weakness designed into an architecture is far costlier to fix after deployment. Reviews between stages confirm that each output is complete and consistent before work continues.
+
+Retirement also needs planning.
+
 ### 16.2 Requirements
 
 Requirements are testable statements, such as "guest devices cannot initiate connections to any internal zone".
+
+A requirement states what the system must do or how well, in terms that can be checked. Good requirements are specific, measurable, and free of design choices: guest devices must not reach staff servers is a requirement, while use a particular firewall model is a design decision. Each requirement has an identifier, a source such as a council policy, and a planned verification method, so nothing is lost or left untested.
 
 ### 16.3 Traceability
 
 Each requirement links to design elements and tests, so coverage gaps are visible.
 
+Traceability links each requirement to the design elements that satisfy it and the tests that verify it. A traceability matrix makes gaps visible: a requirement with no test is unverified, and a design element linked to no requirement may be unnecessary. When requirements change, the links show what design and tests must be revisited. Reviewers and auditors use the matrix to confirm that every promise in the requirements was actually kept.
+
 ### 16.4 Interfaces
 
 Interfaces with other systems, such as the phone provider and CCTV supplier, are documented.
+
+Interfaces are the points where systems meet: between zones, between the council network and suppliers, or between the firewall and the logging platform. Many failures occur at interfaces, because each side assumes something about the other. Interface specifications record what crosses the boundary, in which direction, in what format, and who is responsible for each side. Agreeing them in writing prevents gaps that neither team realises they own.
 
 ### Stakeholders
 
@@ -972,17 +1110,27 @@ You will (1) describe feedback loops in network operations; (2) tune thresholds;
 
 Monitoring, alerts and changes form a feedback loop: observe, decide, act, observe again.
 
+Operations form a feedback loop: monitoring measures the network, people or automation compare measurements with targets, and actions adjust the system. A good loop corrects problems quickly and steadily. A poor one reacts too slowly, so problems grow, or too aggressively, so corrections cause new problems. Seeing operations as feedback helps engineers design alert rules and automated responses that keep the network stable rather than chasing noise.
+
 ### 17.2 Thresholds
 
 Alert thresholds set when action happens. Too low creates noise; too high misses problems.
+
+A threshold turns a continuous measurement into a decision, such as alerting when link utilisation exceeds 85 percent for five minutes. Set too low, thresholds produce constant alerts that staff learn to ignore; set too high, they miss real problems. Engineers choose thresholds from measured normal behaviour, add a duration condition to avoid reacting to brief spikes, and review them periodically as traffic patterns change.
+
+Each threshold has a documented owner.
 
 ### 17.3 Oscillation
 
 Automatic responses, such as blocking sources, can oscillate if they react too quickly. Damping, such as minimum durations, helps.
 
+Oscillation happens when a control loop overcorrects repeatedly, such as traffic shifting back and forth between two links as each in turn becomes busy. It wastes capacity and makes behaviour unpredictable. Remedies include hysteresis, using different thresholds for switching on and off, and adding delay before acting again. Engineers watch for oscillation whenever an automated response feeds back into the measurement that triggers it.
+
 ### 17.4 Human loop
 
 Most council responses involve humans; clear runbooks reduce delay in the loop.
+
+Many network responses keep a person in the loop: an alert is raised, an operator investigates, and decides on action. People add judgement but also delay and fatigue. Engineers design alerts that give the operator enough context to decide quickly, document runbooks for common cases, and limit alert volume so attention stays on what matters. Measuring time from alert to action shows whether the human part of the loop is working.
 
 ### Measuring the loop
 
@@ -1040,9 +1188,13 @@ Traditional designs trust everything inside the perimeter. NIST SP 800-207 descr
 
 Controls are placed where they are most effective. Inter-zone filtering sits on a pair of firewalls at the main office and smaller firewalls at branch offices. Encryption protects links between offices. Host firewalls add depth. Logging collects decisions at each control point. Kofi draws a control placement diagram showing each control and the threat it addresses, so that gaps, such as an uncontrolled supplier connection, are visible at a glance.
 
+Each placement is recorded on the diagram with its purpose.
+
 ### 18.4 Simplicity
 
 Saltzer and Schroeder's economy of mechanism argues for designs simple enough to check. Kofi resists adding more zones than the council can manage. Six zones with clear purposes are easier to operate correctly than fifteen finely divided ones, and errors in complex policies are a known risk documented by Wool (2004).
+
+Simple designs have fewer parts to misconfigure and are easier to review and operate. Every extra zone, exception or special path adds a place for errors. Engineers prefer the simplest design that meets the requirements, and justify any added complexity by a specific need.
 
 ### Worked example
 
@@ -1080,17 +1232,25 @@ You will (1) explain certificates and keys for network devices; (2) choose VPN a
 
 Network devices prove their identity with cryptographic keys. A certificate binds a public key to a name and is signed by a certificate authority. For the council's VPN between offices, each firewall gets a certificate from the council's internal authority. This is stronger than shared passwords, which are often reused, rarely changed and hard to revoke for a single device. If one firewall is stolen, its certificate is revoked without affecting the others.
 
+Each certificate's owner and expiry date should be recorded in an inventory.
+
 ### 19.2 IPsec and IKEv2
 
 Site-to-site tunnels use IPsec (RFC 4301) with keys negotiated by IKEv2 (RFC 7296). NIST SP 800-77 Rev. 1 recommends IKEv2, certificate authentication, and modern algorithms such as AES-GCM with strong Diffie-Hellman groups. Kofi follows these recommendations and records the chosen parameters in the design, so that future reviewers can compare them with updated guidance rather than guessing what was configured.
+
+IKEv2 negotiates keys and algorithms between the two ends and re-keys periodically, so a key exposed later reveals limited traffic. Engineers choose current algorithm suites and authenticate peers with certificates rather than shared secrets where possible.
 
 ### 19.3 TLS for applications
 
 Within zones, applications such as the case management system use TLS. NIST SP 800-52 Rev. 2 recommends TLS 1.2 or 1.3 with specific cipher suites, and RFC 8446 defines TLS 1.3. Kofi checks the council's main web applications' TLS settings using reports from the council's web team and lists two older systems still allowing outdated protocol versions for remediation.
 
+TLS protects individual application connections such as web and mail. Engineers require current protocol versions, disable outdated ones, and ensure clients validate server certificates, since encryption without validation does not confirm who is on the other end.
+
 ### 19.4 Key lifecycle
 
 Keys and certificates expire and must be renewed. Expired certificates cause outages that look like network failures. Kofi adds certificate expiry dates to the monitoring and sets alerts sixty days before expiry, and documents how a certificate is revoked if a device is lost.
+
+Keys pass through generation, distribution, use, rotation and destruction. Each stage needs a defined owner and procedure. Rotation limits the exposure if a key leaks, and an inventory with expiry dates prevents outages caused by certificates silently expiring. Revocation must also be planned, so a compromised key can be withdrawn quickly.
 
 ### Worked example
 
@@ -1128,17 +1288,27 @@ You will (1) describe the council's current network; (2) identify constraints; (
 
 Ashcombe's eight offices connect over leased lines to the main office, which hosts most servers and the internet connection. Inside each office, one flat subnet holds all devices. Guest Wi-Fi shares this subnet, separated only by a captive portal. The CCTV supplier reaches cameras through a remote access appliance that bypasses the edge firewall. Kofi documents this from configuration exports and site visits, never by scanning.
 
+Kofi records this state with dated evidence so later improvements can be measured.
+
+This baseline is shared with the council.
+
 ### 20.2 Constraints
 
 The council has a limited budget, two network engineers and services that cannot be interrupted during working hours. Some devices, like older phones and cameras, cannot be reconfigured easily. Any design must be implemented in phases over a year and operated by the existing team afterwards. These constraints rule out designs that need specialist skills or continuous tuning.
+
+Constraints include budget, staff skills, existing equipment, and the need to keep services running during change. Writing them down early prevents designs that cannot be delivered.
 
 ### 20.3 The engineering problem
 
 Kofi states the problem: design and implement segmentation and secure inter-office connectivity so that guest and compromised devices cannot reach internal services, supplier access is controlled, and services remain available, within budget and team capacity. Each part of this statement becomes a group of requirements in the next chapter.
 
+Stated clearly, the problem is to separate devices into zones with only needed flows allowed, and secure links between offices, within the constraints and without disrupting services. A clear statement keeps later work focused on what matters.
+
 ### 20.4 Success measures
 
 He proposes measures: reachable zone pairs, unexpected denied flows, VPN availability, added latency and change failure rate. These will be measured before and after implementation.
+
+Success measures turn goals into checks. Examples include the number of reachable zone pairs before and after, the share of required flows working on day one, time to detect a denied connection from the guest zone, and the number of incidents caused by changes. Each measure has a baseline, a target, and a method of collection, agreed with the council before work starts so that results cannot later be reinterpreted to look better.
 
 ### Learning from the incident
 
@@ -1180,17 +1350,27 @@ You will (1) write security and operational requirements; (2) prioritise them; (
 
 Kofi writes requirements such as: R1 guest devices cannot initiate connections to internal zones; R2 traffic between zones is denied unless explicitly permitted; R3 device management is only possible from the management zone via an authenticated jump host; R4 inter-office VPNs use IKEv2 with certificate authentication; R7 CCTV cameras can reach only the video recorder.
 
+Each security requirement is linked to the threat it addresses and the test that will verify it.
+
+Vague wording is replaced with testable statements before review.
+
 ### 21.2 Operational requirements
 
 Others address operations: R5 firewall and VPN logs are retained for ninety days; R6 VPN failover completes within sixty seconds; R8 device configurations are backed up daily. Operational requirements are often forgotten in security designs but determine whether the design survives contact with daily work.
+
+Operational requirements cover what staff need to run the network: monitoring, change procedures, backup of configurations, and acceptable maintenance windows. They matter because a secure design that operators cannot manage will drift back to an insecure state.
 
 ### 21.3 Prioritisation
 
 Requirements are ranked as must, should or could, with stakeholders. Must requirements are those tied to the guest incident and supplier access; could requirements include finer segmentation of staff by department, deferred to a later phase.
 
+Not all requirements can be met at once, so engineers rank them. Common methods label each as must, should or could, based on risk reduction, legal need and cost. Ranking is agreed with the council, so if time or budget runs short, the least important work is dropped first, rather than whatever happens to be last.
+
 ### 21.4 Verification methods
 
 Each requirement has a verification method: test, inspection, analysis or demonstration. R1 is verified by test, R4 by inspection of configuration, R6 by a failover test.
+
+Each requirement is verified by one of four methods: inspection of configuration or documents, analysis such as a reachability model, demonstration in normal use, or a test with defined inputs and expected results. Choosing the method when writing the requirement makes sure it is checkable, and recording the result as evidence closes the loop between promise and proof.
 
 ### Requirement quality checks
 
@@ -1232,6 +1412,10 @@ You will (1) model zones and permitted flows; (2) compare reachability; (3) defi
 
 Kofi models the design as a directed graph of zones with permitted services on each edge. The model is derived from the needed-flows list collected from stakeholders: staff need file and web services, phones need the call server, cameras need the recorder and management needs administrative access to devices.
 
+A flow model lists every needed communication as source zone, destination zone, service and purpose. It is built from interviews and synthetic flow summaries, and becomes the basis for rules.
+
+Each flow names its owner.
+
 ### Lab — Reachability comparison
 
 ```python
@@ -1255,9 +1439,15 @@ reduction 76.7%; guest reaches internal zones: False
 
 The flat network allows all thirty directed zone pairs. The segmented design allows seven, a 76.7 percent reduction. Guest reaches no internal zone, satisfying R1. Management reaches four zones for administration, which is necessary but makes management the most sensitive zone, reinforcing R3's jump host requirement.
 
+Reading the model, Kofi looks for zones that talk to many others, which are critical, and flows without a stated purpose, which may be unnecessary. Both shape the rule design and review.
+
+Unclear flows are queried.
+
 ### 22.3 Data model for logs
 
 Each control point emits records with time, zones, service and action. Kofi defines this common format so that logs from different firewalls can be analysed together, matching the schema from chapter 13.
+
+The log data model defines which fields every firewall and VPN record must carry, such as time, zone, address, service, action and rule identifier. Including the rule identifier is especially useful, because it lets analysts see exactly which rule allowed or denied each connection, linking monitoring back to the design.
 
 ### Host-level exceptions
 
@@ -1303,17 +1493,35 @@ You will (1) analyse threats against the design; (2) analyse failure modes; (3) 
 
 Kofi walks through each conduit and asks what could go wrong: a compromised staff laptop reaching servers over permitted services, a stolen branch firewall, a misconfigured rule opening guest access, interception of inter-office traffic, and abuse of supplier access. For each, he records likelihood, impact and existing controls. This structured approach avoids focusing only on dramatic threats.
 
+Each threat is recorded with its likely source and the zones it affects.
+
+Insiders and suppliers are included alongside outside attackers.
+
+Evidence for each is cited.
+
 ### 23.2 Failure analysis
 
 Security devices can fail. A firewall failure at the main office would isolate all branches; a certificate expiry would drop tunnels; a logging server failure would blind monitoring. Kofi uses a simple failure modes and effects table, listing each failure, its effect, detection method and mitigation.
+
+Failure analysis asks what happens when parts break: a firewall, a link, a power supply. For each, engineers record the effect, how it would be detected and the planned response.
+
+Shared causes are noted.
 
 ### 23.3 Prioritisation
 
 Highest priority mitigations: redundant firewalls at the main office, certificate expiry monitoring, policy change review and supplier access through the jump host with time-limited accounts. Lower priority: redundant logging, since temporary loss of logs is less harmful than loss of connectivity.
 
+Threats and failures are ranked by likelihood and impact, using evidence where possible. High-ranked items get controls first; low-ranked ones may be accepted, with reasons recorded and reviewed later.
+
+The ranking is revisited after each incident.
+
+Changes in rank are dated.
+
 ### 23.4 Residual risk
 
 Some risk remains: compromised staff laptops can still reach servers over permitted services. This is addressed by host controls and monitoring, not segmentation, and is stated as residual risk.
+
+Residual risk is what remains after controls are applied. No design removes all risk, so engineers state what remains, why it is acceptable, and who accepted it. The council's risk owner signs the acceptance, and the list is reviewed when circumstances change, such as a new service or a new type of incident.
 
 ### Supplier access threats
 
@@ -1355,17 +1563,29 @@ You will (1) apply policy design methods; (2) derive rules from needed flows; (3
 
 Kofi derives rules directly from the needed-flows list: each flow becomes one rule specifying source zone, destination zone or host, service and a reason. The final rule is default deny. This method follows NIST SP 800-41 Rev. 1, which recommends deny-by-default policies built from documented requirements.
 
+Each needed flow in the model becomes one or more allow rules, with a final deny for everything else. Grouping addresses into named objects keeps rules readable and consistent.
+
+Every rule carries a reference back to the flow it implements, so reviewers can check that nothing was added without a documented need and that removed flows lose their rules.
+
 ### 24.2 Rule ordering
 
 In first-match firewalls, order matters. Specific rules come before general ones, and no allow rule may be shadowed by an earlier deny. Kofi checks ordering with a script that compares each rule with earlier ones.
+
+Firewalls usually apply the first matching rule, so order matters. Specific rules go before broad ones, and a broad allow placed early can silently override later denies. Engineers review order deliberately and test that each rule is actually reached.
+
+Analysis tools or simple scripts can detect shadowed rules, which are never reached because an earlier rule matches every packet they would match, and such rules should be removed or reordered.
 
 ### 24.3 Naming and documentation
 
 Each rule has an identifier, owner and reason, matching the needed-flows list. Rules without owners are a common source of later confusion.
 
+Every rule and object gets a meaningful name following a convention, such as zone, destination and service. Each rule records its purpose, the requirement or flow it serves, its owner, and a review date. Documentation lives with the configuration in version control, so it changes together with the rules. A rule whose purpose nobody can explain is a candidate for removal at the next review.
+
 ### 24.4 Review method
 
 Before deployment, a second engineer reviews each rule against the flows list using the checklist from chapter 14.
+
+Rule review follows a fixed method so nothing is skipped. The reviewer compares rules against the flow model, looking for missing needed flows, rules allowing more than needed, duplicates, rules shadowed by earlier ones, and rules with no recent hits. Each finding is recorded with a proposed action. Repeating the review on a schedule, and after major changes, keeps the rule set from slowly accumulating exceptions.
 
 ### Grouping services
 
@@ -1411,17 +1631,33 @@ You will (1) develop a detailed segmentation design; (2) present to peers; (3) i
 
 In the first design studio, Kofi turns the architecture into a detailed design: VLANs and subnets per office, firewall interfaces, routing and the policy. He presents it to peers and staff for critique.
 
+A design studio is a structured session where the engineer presents work in progress and invited peers question it. Kofi prepares diagrams, the flow model and open questions, and records every comment. Studios catch design problems while they are cheap to fix.
+
+Inviting reviewers from operations as well as design brings practical concerns, such as maintenance effort, into view early.
+
 ### 25.2 Critique
 
 Peers ask how phones that need to reach the provider's cloud are handled, and whether the CCTV recorder should sit in the server zone. Kofi adds an outbound rule for the phone provider and moves the recorder into the CCTV zone, adjusting rules accordingly.
+
+Good critique addresses the design, not the person, and explains its reasoning. Kofi treats each comment as a hypothesis to check, responding with evidence or a change rather than defending his first choice.
+
+Giving critique well also matters: specific, kind and evidence-based comments help peers more than vague praise or blunt rejection.
 
 ### 25.3 Trade-offs
 
 Placing the recorder in the CCTV zone means cameras never cross a zone boundary, but staff viewing footage must reach it from the staff zone. He adds one narrow rule for viewing.
 
+Studios often surface trade-offs, such as more zones improving isolation but increasing operational load. Kofi records each with the options, criteria and chosen direction, so the decision can be reviewed later.
+
+Making trade-offs explicit prevents later surprise, because stakeholders have seen and accepted the costs of the chosen direction. It also helps when conditions change, because the record shows which assumption drove the decision and therefore which decisions deserve to be reopened.
+
 ### 25.4 Documentation
 
 The revised design is documented with diagrams, subnet tables and the rule list.
+
+After the studio, Kofi writes a short record listing attendees, the material presented, each comment, the response, and actions with owners and dates. He shares it with participants to confirm accuracy. The record shows how the design evolved and why, which helps reviewers of the final thesis and anyone who later maintains the network and wonders why a particular choice was made.
+
+Short, prompt records are more useful than long ones written weeks later.
 
 ### Addressing and VLAN details
 
@@ -1467,17 +1703,31 @@ You will (1) compare alternative architectures; (2) evaluate against criteria; (
 
 Kofi compares three options: A) central firewalls at the main office with branches routing all inter-zone traffic there; B) firewalls at every office; C) a cloud-delivered security service with branch connectors.
 
+For each major decision, engineers consider several realistic alternatives, such as different zone counts or VPN approaches, so the final choice is a comparison rather than a default.
+
+Including a do-minimum option, such as only isolating guest Wi-Fi, gives a useful baseline: every more ambitious alternative must show enough extra benefit to justify its extra cost and disruption. Considering at least three options also guards against the common habit of comparing a preferred design with an obviously poor one.
+
 ### 26.2 Criteria
 
 Criteria: security, availability, cost, latency and operational effort.
+
+Criteria are the qualities used to compare alternatives: security benefit, cost, operational effort, disruption during rollout, and fit with existing skills and equipment. Agreeing criteria and their weights with the council before scoring prevents the analysis being shaped to favour a preferred option. Each criterion needs a clear scale, such as low, medium or high, with a short description of what each level means, so scores are consistent.
+
+Weights should reflect the council's priorities rather than the engineer's.
 
 ### 26.3 Evaluation
 
 Option A is cheapest but makes the main office a single dependency and adds latency for branch-local traffic. Option C reduces hardware but depends on internet links and a new skill set. Option B costs more but keeps local traffic local and survives WAN outages. Kofi chooses B with small firewalls at branches.
 
+Scores are recorded with brief evidence for each.
+
+Each alternative is scored against every criterion, with the evidence noted, such as lab measurements, vendor documentation or operator interviews. Weighted totals give a ranking, but Kofi also checks how sensitive the ranking is to the weights: if a small change in one weight reverses the order, the decision is close and deserves discussion rather than being presented as clear-cut.
+
 ### 26.4 Justification
 
 The choice is recorded in a decision record with the evaluation table, so future engineers understand why.
+
+The justification explains why the chosen alternative is best against the agreed criteria, acknowledges its weaknesses, and notes what evidence would change the decision. Writing it plainly lets council managers understand and approve the choice. It also helps future engineers: if conditions change, such as a large budget increase, they can see whether the original reasoning still holds and revisit the decision with confidence.
 
 ### Sensitivity of the choice
 
@@ -1523,6 +1773,8 @@ You will (1) specify firewall policies; (2) design management access; (3) design
 
 The policy is specified as a table and as code. Each rule names zones, services and action, ending in default deny.
 
+The policy specification states, for every pair of zones, which services are allowed and why, with everything else denied. It is written in a structured table that both people and scripts can read. Because it is the source of truth, the firewall configuration is checked against it, not the other way round, and changes to access start by changing the specification and getting it approved.
+
 ### Lab — Evaluating flows
 
 ```python
@@ -1557,13 +1809,25 @@ allowed 4 of 8
 
 Of eight synthetic flows, four are allowed by specific rules and four denied by the default rule, including guest to servers and staff to servers over remote desktop. The latter is a deliberate decision: remote desktop to servers is only allowed from management.
 
+Evaluating the policy against the flow model shows which needed flows are covered and which allowed flows are unneeded. Any mismatch is investigated before deployment.
+
+Typical findings include allowed flows left over from earlier testing, needed flows that the specification forgot, and rules broader than the flow requires, such as a whole subnet where one server would do. Each finding is resolved by updating either the specification or the rules.
+
 ### 27.3 Management access
 
 Management uses a jump host with multi-factor authentication; device management interfaces accept connections only from it.
 
+Management access to network devices is limited to a dedicated management zone reached only from approved administration workstations. Administrators authenticate individually, with multi-factor authentication, so actions are attributable to a person. Every session is logged. Separating management traffic this way means a compromised staff laptop cannot reach device consoles, and audit records show exactly who changed what and when.
+
+Emergency access procedures are also documented and tested.
+
 ### 27.4 Logging design
 
 All denies and a sample of allows are logged with the common schema.
+
+Logging design decides what each device records and where it goes. Firewalls log denied connections and selected allowed ones, VPN gateways log connections and authentications, and devices log configuration changes. Logs are sent promptly to a central store with synchronised clocks, so they survive if a device is wiped. The design also sets retention and access controls, since logs themselves contain sensitive information.
+
+Log volumes are estimated in advance to size storage.
 
 ### Policy for internet access
 
@@ -1609,17 +1873,31 @@ You will (1) plan phased implementation; (2) migrate a pilot office; (3) verify 
 
 Implementation proceeds office by office, starting with a small branch. Each phase: prepare configuration, test in lab, migrate during an agreed window, verify and observe for two weeks.
 
+Rolling out segmentation in phases limits risk. Each phase covers a defined set of offices or zones, with entry criteria, such as tests passed, and exit criteria, such as no unresolved service problems. Lessons from one phase change the plan for the next.
+
+A clear phase plan also helps staff know when their office will change.
+
 ### 28.2 Pilot office
 
 The pilot branch has forty devices. Kofi and the council engineers create VLANs, readdress devices and enable the new firewall in monitor mode first, logging what would be denied without blocking.
+
+The pilot uses one small office whose staff agree to report problems. It tests the design under real conditions while limiting the impact of mistakes, and provides evidence for the wider rollout.
+
+Before the pilot, Kofi confirms the office's flows with local staff, prepares the rules in monitor mode, and agrees a short daily check-in. Success criteria are set in advance, so the decision to proceed is based on evidence rather than impressions.
 
 ### 28.3 Monitor mode findings
 
 Monitor mode reveals two flows missing from the needed list: a printer sending scans to a file share and phones fetching configuration from the provider. Both are added to the flows list and rules.
 
+In monitor mode, rules log what they would block without blocking it. Reviewing these logs reveals needed flows missing from the model, which are added before enforcement.
+
+Common findings include printers reaching a print server in another office, a forgotten scheduled backup, and devices using unexpected DNS servers. Each is checked with the service owner before being approved as a needed flow, because some findings reveal behaviour that should stop rather than be allowed.
+
 ### 28.4 Enforcement
 
 After a week with no unexpected denies, enforcement is enabled.
+
+Enforcement switches rules from monitoring to actually blocking. It is scheduled for a quiet period, with staff on hand, a tested rollback, and a contact route for users who find a service broken. After switching, engineers watch denied-connection logs closely for a few days. Any unexpected block of a legitimate flow is investigated, the flow model updated with approval, and the rule corrected, rather than adding a broad emergency exception.
 
 ### Readdressing devices
 
@@ -1665,6 +1943,10 @@ You will (1) measure policy effects; (2) analyse denied flows; (3) identify issu
 
 After enforcement, Kofi measures denied flows by zone pair. Expected denies, such as guest to servers, show the policy working; unexpected denies point to missing rules or misbehaving devices.
 
+Measures follow the success criteria agreed earlier: reachable zone pairs, required flows working, denied connections from guest devices, and change-related incidents. Each is collected the same way as the baseline.
+
+Using the same collection method matters, because a change in method can produce a difference that looks like improvement but is really just a different way of counting. Kofi documents each method alongside the numbers so the comparison stays honest.
+
 ### Lab — Denied flows
 
 ```python
@@ -1693,9 +1975,17 @@ total denies 173 | to investigate 55
 
 Of 173 denies in a week, 118 are guest to servers, expected. The remaining 55 need investigation: 41 staff remote desktop attempts to servers, nine staff connections to cameras, three camera connections to staff devices and two phone connections to staff.
 
+Results are compared with baseline and target, noting uncertainty and anything unusual in the measurement period.
+
+For example, a fall in reachable zone pairs from fifty-six to nine shows segmentation is in place, but the meaning depends on whether all nine remaining pairs are needed. Results are presented with their limits, so readers do not assume more certainty than the evidence supports.
+
 ### 29.3 Investigation
 
 Remote desktop attempts come from staff who used to administer servers informally; they are directed to the jump host. Camera connections to staff are cameras trying to send email alerts; the supplier reconfigures them. Staff connections to cameras are a training issue: footage is viewed via the recorder.
+
+Where results differ from expectations, Kofi investigates causes rather than adjusting the numbers, and records findings.
+
+An investigation starts from the measurement, gathers relevant logs and configuration history, forms possible explanations, and tests each against the evidence. Findings may show a measurement error, a design gap, or an operational issue, and each leads to a different follow-up action.
 
 ### Allowed flow analysis
 
@@ -1741,17 +2031,29 @@ You will (1) verify requirements in the lab; (2) record evidence; (3) trace resu
 
 The lab replicates one office with spare equipment and virtual machines representing zones.
 
+The verification lab reproduces the design on a small scale, using spare or virtual equipment, synthetic addresses and synthetic traffic. It is isolated from the production network so tests cannot disrupt services. Its configuration is drawn from the same version-controlled files as production, so tests exercise exactly what will be deployed. Documenting the lab setup allows others to rebuild it and repeat the tests.
+
+The lab is reset before each test run.
+
 ### 30.2 Test cases
 
 Tests check R1, R2, R3 and R7 by attempting permitted and forbidden connections from test machines within the lab only.
+
+Each test case states its purpose, the requirement it verifies, the input such as a synthetic connection attempt, and the expected result such as allowed or denied. Cases cover both needed flows that must work and forbidden flows that must fail, plus edge cases such as boundary addresses. Writing expected results before running tests prevents the engineer from reinterpreting outcomes afterwards.
 
 ### 30.3 Evidence
 
 Each test records date, configuration version, expected and actual result.
 
+Evidence records what each test actually did and showed: the date, configuration version, test input, observed output, and pass or fail. Logs or screenshots are stored with the record. Good evidence lets a reviewer confirm the result without rerunning the test, and supports the thesis and the council's acceptance. Evidence that cannot be traced to a specific configuration version is much weaker, because it may describe a setup that no longer exists.
+
 ### 30.4 Results
 
 All tests pass; one test reveals a rule allowing management to cameras on an unnecessary port, which is narrowed.
+
+Results are summarised as pass rates per requirement, with every failure listed, its cause, and the fix applied and retested. A clean summary hides nothing, because reviewers trust a report that shows failures honestly more than one where everything passed first time. Remaining failures that are accepted are recorded as residual risk with an owner.
+
+Results are shared with the council in plain terms.
 
 ### Test design
 
@@ -1801,17 +2103,33 @@ You will (1) implement inter-office VPNs; (2) migrate remaining offices; (3) con
 
 Site-to-site IPsec tunnels with IKEv2 and certificates are configured between each branch and the main office, following SP 800-77 Rev. 1.
 
+Site-to-site VPN links replace unprotected links between offices one by one. Each is configured from the template, tested in the lab, then deployed in a maintenance window with rollback ready, and traffic is checked afterwards.
+
+Before each link goes live, Kofi confirms both ends use matching settings, certificates are valid, and monitoring shows the tunnel status. Afterwards, he checks that traffic between offices flows through the tunnel rather than the old path, and records the result as evidence.
+
 ### 31.2 Remaining offices
 
 Remaining offices migrate using the pilot method.
+
+Once the pilot succeeds, the remaining offices follow in planned order, usually starting with smaller sites where problems affect fewer people. Each office gets the same checklist: confirm local flows, deploy rules in monitor mode, review findings, enforce, and verify. Keeping the process identical across sites makes problems easier to spot, because any difference in outcome points to something particular to that office rather than to the method.
+
+Progress is tracked on a simple shared schedule.
 
 ### 31.3 Supplier access
 
 The CCTV supplier's appliance is removed; the supplier connects via the jump host with named, time-limited accounts.
 
+Suppliers who maintain council systems need remote access, but only to their own systems. Engineers give each supplier an individual account, restrict access to specific hosts and services, require multi-factor authentication, log sessions, and enable access only when needed. Access is reviewed regularly and removed when a contract ends.
+
+Supplier sessions are recorded where contracts permit, so actions can be reviewed after an incident. Contracts should also state security expectations, such as reporting breaches promptly and protecting credentials.
+
 ### 31.4 Communication
 
 Office managers receive notices before each migration.
+
+Staff need to know what is changing, when, and what to do if something stops working. Kofi helps the council send short notices before each office's change, naming the date, the expected effect, and a contact for problems. After the change, a brief follow-up confirms completion. Clear communication reduces the number of support calls, helps staff report genuine problems quickly, and builds trust in the security programme rather than resentment of it.
+
+Feedback channels stay open afterwards.
 
 ### Certificate management in practice
 
@@ -1861,6 +2179,10 @@ You will (1) model availability; (2) design redundancy; (3) test failover.
 
 A single tunnel with 99.5 percent availability gives about 44 hours of downtime a year.
 
+An availability model estimates the share of time a service can be reached, combining the availability of each component it depends on. Components in series multiply, so a chain of many parts is less available than any one of them; redundant parallel components improve availability. The model shows where a single failure would cut off an office.
+
+Inputs such as failure and repair times come from records or vendor data, stated as assumptions.
+
 ### Lab — Redundant tunnels
 
 ```python
@@ -1882,9 +2204,17 @@ tunnels 2: availability 0.999975; expected downtime 0.22 h/year
 
 Two independent tunnels raise availability to 99.9975 percent, about 13 minutes a year, assuming independent failures.
 
+Reading the model, Kofi identifies the components that contribute most to downtime and the single points of failure. These become candidates for redundancy, while components with little effect do not justify extra spending. He reports results with assumptions stated, such as estimated failure and repair times.
+
+Results are best presented as expected hours of downtime per year, which managers grasp more easily than percentages such as 99.9. The model is then used to compare options, such as a second internet link, by showing how much downtime each would remove relative to its cost.
+
 ### 32.3 Independence
 
 Independence requires different providers or paths. Kofi recommends a second link from a different provider at the three largest offices.
+
+Redundancy only helps if failures are independent. Two links through the same duct, or two firewalls on the same power circuit, can fail together. Engineers check for shared causes and record them, because the simple model overstates availability when components share dependencies.
+
+Where dependence cannot be removed, the risk is stated honestly. For example, if both main office links leave the building through one duct, a single excavation can cut both, and the report should say so even if the numerical model suggests high availability.
 
 ### Failover design
 
@@ -1934,17 +2264,35 @@ You will (1) protect critical services; (2) plan degraded modes; (3) exercise re
 
 Out-of-hours social care and CCTV are critical. They get priority on redundant links.
 
+Critical services are those the council cannot do without for long, such as emergency contact systems, payments and core file access. Listing them with their dependencies, including network zones, links and authentication, shows what must be protected and restored first after a disruption. Each service has an owner who agrees the acceptable outage time.
+
+This list guides both design and recovery planning, so it is reviewed annually.
+
 ### 33.2 Degraded modes
 
 If the main office is isolated, branches keep local services and phones fall back to mobile.
+
+A degraded mode is a planned way of continuing with reduced function, such as an office using a backup internet link with limited services, or staff working from paper forms. Planning degraded modes in advance means a failure leads to a known, safe fallback instead of improvisation, and that security controls still apply during the fallback.
+
+Staff practise switching to degraded modes so they know how.
 
 ### 33.3 Recovery
 
 Configuration backups allow rebuild of a failed firewall within four hours.
 
+Recovery restores normal service after a disruption. Plans list steps in order, starting with critical services, and include restoring configuration from version control, verifying rules, and checking that monitoring works again. Each step has an owner and expected time. Recovery is not complete until services are verified and the cause is understood, so the same failure is less likely to recur.
+
+Lessons are recorded and the plan updated.
+
+Timings are compared with targets.
+
 ### 33.4 Exercises
 
 A tabletop exercise walks through main office loss.
+
+Recovery plans are tested through exercises. A tabletop exercise walks through a scenario on paper, such as a firewall failure at the main office, with each participant describing their actions. A practical exercise restores a configuration in the lab and times it. Exercises reveal missing steps, outdated contacts and unrealistic timings. Findings are recorded, plans updated, and exercises repeated, so the organisation is ready when a real disruption happens.
+
+Exercises should be blameless and realistic.
 
 ### Recovery documentation
 
@@ -1994,17 +2342,35 @@ You will (1) integrate logging and monitoring; (2) integrate with identity; (3) 
 
 Firewall and VPN logs flow to the central store using syslog (RFC 5424).
 
+The new firewalls and VPN gateways must send logs into the council's existing central store. Integration means agreeing formats, timestamps in UTC, transport, and field mapping to the common schema, then testing that records arrive complete and promptly. Kofi checks a sample of synthetic events end to end, from device to query result, before relying on the logs for monitoring.
+
+Gaps found in testing are fixed before go-live.
+
 ### 34.2 Identity integration
 
 Jump host authentication uses the council directory with multi-factor authentication.
+
+Network access decisions and administrator logins should use the council's central identity system, not separate local accounts on each device. This means one place to add and remove people, consistent multi-factor authentication, and logs that link actions to named individuals. When someone leaves, removing their central account removes all their access at once, which is far more reliable than updating many devices.
+
+Local emergency accounts remain, tightly controlled and audited.
 
 ### 34.3 Teams
 
 The service desk is trained to recognise segmentation-related issues.
 
+Several council teams share responsibility for the network: infrastructure, service desk, security and application owners. Integration includes agreeing who handles which requests, who approves changes, and who responds to alerts. A simple responsibility table, reviewed with each team, prevents tasks falling between teams and avoids conflicting changes. Kofi also runs short handover sessions so staff understand the new design they will operate.
+
+Contact lists are kept current and tested regularly.
+
+Escalation paths are written down.
+
 ### 34.4 Monitoring
 
 Alerts cover tunnel down, certificate expiry and unusual deny spikes.
+
+Monitoring confirms that the new design keeps working. Dashboards show link health, firewall load, denied connections by zone, and VPN status, with alerts on agreed thresholds. Regular reports compare measures against success targets. Monitoring is assigned to named staff with documented runbooks, so it continues after Kofi's project ends, which is the real test of whether the engineering has been successfully handed over.
+
+Monitoring itself is checked for silent failures.
 
 ### Time and correlation
 
