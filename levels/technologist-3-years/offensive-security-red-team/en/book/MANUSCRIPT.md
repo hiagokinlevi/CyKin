@@ -109,17 +109,13 @@ lab_scope prints 192.0.2.10 and 198.51.100.20 as IN-SCOPE inside TRT's documente
 
 Real scopes often carve holes. TRT's fare-payment segment, 192.0.2.64/27, sits inside the larger in-scope block because of how the network was historically numbered. A checker must evaluate exclusions first; otherwise the broader inclusion wins and a forbidden system is touched.
 
-The fare carve-out 192.0.2.70 EXCLUDED sits inside a larger block on purpose. Priya's checker must honour holes, not only outer prefixes; otherwise ENG-712 would green-light fare-payment hosts. She demos the EXCLUDED line in kickoff so Northpoint sees the hole is intentional.
-
-lab_scope's EXCLUDED line for 192.0.2.70 is the teaching proof that holes matter. Priya fails any scope sheet that only lists outer CIDRs without the fare carve-out written beside them.
+The fare carve-out 192.0.2.70 EXCLUDED sits inside a larger block on purpose. Priya's checker must honour holes, not only outer prefixes; otherwise ENG-712 would green-light fare-payment hosts. She demos the EXCLUDED line in kickoff so Northpoint sees the hole is intentional, and she fails any scope sheet that lists only outer CIDRs without the fare carve-out written beside them.
 
 ### 2.3 Names versus numbers
 
 DNS records change. A hostname approved on Monday may resolve to a different address on Thursday after a migration, perhaps to a shared content-delivery address. Good practice is to approve both the name and the address, resolve again before each session, and stop if they diverge.
 
-After a CDN migration the staff-portal name resolved outside the approved addresses. Priya paused ENG-712, re-ran lab_scope, and waited for a written white-team update. Names alone never authorize; numbers on the signed list do.
-
-When the portal name drifted to a CDN address, ENG-712 paused until white team updated the number list. Priya screenshots the old and new resolutions into evidence with a HOLD note, not a guess.
+After a CDN migration the staff-portal name resolved outside the approved addresses. Priya paused ENG-712, re-ran lab_scope, and waited for a written white-team update. Names alone never authorize; numbers on the signed list do. While the session is held, Priya screenshots the old and new resolutions into evidence with a HOLD note, not a guess.
 
 ### 2.4 Typical exposed services
 
@@ -200,33 +196,25 @@ Priya automates host and finding lists so humans spend time on HOLDs and severit
 
 A function such as `verdict(addr)` in Chapter 2 answers one question and returns a small set of labels. That design makes it testable: feed it an address you already know the answer for and compare. When a function both decides and prints and writes files, a bug in one part hides in the others.
 
-verdict(addr) returns IN-SCOPE, EXCLUDED or OUT-OF-SCOPE and nothing else. That single decision is unit-tested with 192.0.2.10, 192.0.2.70 and 192.0.2.200 before every window. Multi-purpose helpers that also spray passwords fail TRT code review.
-
-Unit tests feed 192.0.2.10, 192.0.2.70 and 192.0.2.200 into verdict() every kickoff. A helper that also mutates inventories fails review because it no longer answers one decision.
+verdict(addr) returns IN-SCOPE, EXCLUDED or OUT-OF-SCOPE and nothing else. That single decision is unit-tested with 192.0.2.10, 192.0.2.70 and 192.0.2.200 before every window. A helper that also edits the inventory it reads fails TRT code review, because it no longer answers one decision and a bug in the edit would hide in the verdict.
 
 ### 3.3 Standard library first
 
 The Python standard library includes `ipaddress`, `datetime`, `hashlib`, `json`, `csv` and `collections`. These cover scope arithmetic, time windows, evidence hashing, structured records and counting. Avoiding third-party packages means no dependency review, no supply-chain surprise, and identical behaviour on the reviewer's machine.
 
-ipaddress, datetime, hashlib and json cover ENG-712's classroom labs without third-party scanners. Priya pins the standard-library choice in the kit inventory so supply-chain arguments stay about TRT tools, not random PyPI packages pulled mid-window.
-
-Kit inventory for ENG-712 lists CPython 3.x standard modules only for classroom checkers. If Northpoint later brings a commercial scanner, that tool gets its own row, owner and data-handling note.
+ipaddress, datetime, hashlib and json cover ENG-712's classroom labs without third-party scanners. Priya pins the standard-library choice in the kit inventory so supply-chain arguments stay about TRT tools, not random PyPI packages pulled mid-window. If Northpoint later brings a commercial scanner, that tool gets its own row, owner and data-handling note.
 
 ### 3.4 Failing closed
 
 If a scope file is missing or a date cannot be parsed, the safe default is "do not proceed". A checker that returns "allowed" when it hits an exception is worse than none, because it creates false confidence. Write the deny path first, then add the allow conditions.
 
-Missing scope files make the checker fail closed to "do not proceed". Returning allowed on exception would have green-lit 192.0.2.200 in a broken parse. Priya's tests assert the closed path with a deleted file fixture.
-
-Deleting the scope file in CI must yield do-not-proceed, never allowed. Priya keeps that fixture beside the ENG-712 test table so auditors can rerun the closed path.
+Missing scope files make the checker fail closed to "do not proceed". Returning allowed on exception would have green-lit 192.0.2.200 in a broken parse. Priya's tests assert the closed path with a deleted-file fixture: removing the scope file in CI must yield do-not-proceed, never allowed. The fixture sits beside the ENG-712 test table so auditors can rerun the closed path.
 
 ### 3.5 Tests as evidence
 
 A short table of inputs and expected outputs, run before each engagement, is evidence that the tooling behaves. Keep it with the engagement records so a reviewer can rerun it.
 
-The pre-engagement test table for verdict() is filed under ENG-712 beside the ROE. When Northpoint asks whether the tool drifted, she shows the table run at kickoff, not a memory of green output.
-
-Kickoff attaches the green test-table run to the ticket before tools start. Northpoint cannot claim the checker was 'probably fine' without that artefact.
+The pre-engagement test table for verdict() is filed under ENG-712 beside the ROE. When Northpoint asks whether the tool drifted, she shows the table run at kickoff, not a memory of green output. Because the run is attached to the ticket before tools start, nobody can later claim the checker was 'probably fine' without producing that artefact.
 
 ### Worked example
 
@@ -270,9 +258,7 @@ Finding F-01 needs id, asset, evidence id, severity and scenario before it may e
 
 If one tester writes "urgent", another "P1" and a third "very bad", nobody can count criticals. A fixed set — low, medium, high, critical — lets dashboards add and compare. ATT&CK IDs such as T1078 do the same job for adversary behaviour: "valid accounts" phrased five ways is still one technique.
 
-TRT's vocabulary is low, medium, high, critical — never urgent. lab_records flags F-02 for severity urgent so dashboards stay countable. Northpoint's writers get the same enum in the ROE appendix.
-
-F-02's urgent label is rejected so TRT dashboards remain comparable across providers. Priya's ROE appendix pastes the four allowed severity words for Northpoint authors.
+TRT's vocabulary is low, medium, high, critical — never urgent. lab_records flags F-02 for severity urgent so dashboards stay countable. Northpoint's writers get the same four words in the ROE appendix, so TRT dashboards remain comparable across providers and across engagements.
 
 ### 4.3 Identifiers over prose
 
@@ -284,9 +270,7 @@ In ENG-712, F-09 points at E-002 by identifier, so renaming the PNG or exporting
 
 Records are validated before they enter the report. A validator that lists every problem, rather than stopping at the first, saves round trips with the tester.
 
-The validator lists every problem on a record in one pass. F-03 missing evidence and a bad severity on another row both appear before the author rewrites. Round trips drop when the gate is complete.
-
-Authors see F-03 missing evidence and any other field errors together. One-problem-at-a-time validators wasted a day on ENG-712's first dry run; complete gates fixed that.
+The validator lists every problem on a record in one pass. F-03 missing evidence and a bad severity on another row both appear before the author rewrites. Round trips drop when the gate is complete: on ENG-712's first dry run a validator that stopped at the first problem cost a day of back-and-forth with Northpoint's authors.
 
 ### Lab B — record validator
 
@@ -481,9 +465,7 @@ When the ROE allows it, Priya's method statement includes a review of the staff 
 
 For each role on the staff portal: list the actions it needs, remove the rest, and record who can grant exceptions. The checklist is evidence that authorization was designed rather than inherited.
 
-Least privilege for portal roles is a written checklist signed by the app owner. Exceptions list who granted them and when they expire. The checklist is attached as evidence beside F-01.
-
-The portal role checklist is signed by the app owner and attached next to F-01. Unsigned checklists do not count as least-privilege evidence.
+Least privilege for portal roles is a written checklist signed by the app owner. Exceptions list who granted them and when they expire. The checklist is attached as evidence beside F-01; an unsigned checklist does not count as least-privilege evidence. At each retest Priya re-reads the exceptions list, because an expired exception that still grants rights is itself a finding.
 
 ### Worked example
 
@@ -583,9 +565,7 @@ In ENG-712 the claim about the portal banner enters the report because E-001 has
 
 For each item record who collected it, when, from where, and every hand-off. NIST SP 800-86 describes integrating forensic techniques into incident response; the same discipline of labelling and integrity checking applies to assessment evidence even when the legal stakes are lower.
 
-Custody lines for ENG-712 name who exported E-001, when, and from which host. Hand-offs to Jordan as evidence owner are logged. NIST SP 800-86 habits transfer even when the case is synthetic.
-
-Jordan's evidence-owner hand-off line lists E-001's collector and time. Missing custody blocks board-pack export even when the hash matches.
+Custody lines for ENG-712 name who exported E-001, when, and from which host. Hand-offs to Jordan as evidence owner are logged. NIST SP 800-86 habits transfer even when the case is synthetic. A missing custody line blocks the board-pack export even when the hash matches.
 
 ### 9.3 Hashing as a tamper check
 
