@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Prática Especializada para Decisões em Escala Organizacional
 
 - Idioma: português do Brasil (`pt`); curso de especialização de pós-graduação, dois anos em tempo parcial; aproximadamente 600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito; os exercícios EX001–EX060 (cinco por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: especialistas experientes em segurança — arquitetos, líderes de PKI e de redes, gestores de risco e de garantia — que já conhecem a criptografia clássica e as operações corporativas e agora precisam liderar a migração pós-quântica numa grande organização. Conhecimento de entrada: uma graduação anterior ou experiência profissional equivalente em segurança.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) constrói os fundamentos e o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta e constrói migrações; o [livro de mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) as estuda como pesquisa. **Este livro trata da prática especializada: decidir, justificar, integrar e assegurar a migração em escala organizacional.** Ele pressupõe a matemática e se concentra no julgamento sob incerteza, nos padrões de evidência e na liderança.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -29,8 +29,6 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 | Projeto e avaliação | [5 Alternativas de projeto](#ch-05) · [6 Avaliação controlada](#ch-06) |
 | Integração e garantia | [7 Integração organizacional](#ch-07) · [8 Casos difíceis](#ch-08) · [9 Liderança e garantia](#ch-09) |
 | Pesquisa e transferência | [10 Leitura e crítica de pesquisas](#ch-10) · [11 Projeto aplicado](#ch-11) · [12 Revisão final e transferência](#ch-12) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -524,16 +522,491 @@ A avaliação controlada fixa os limiares com antecedência, usa limites de conf
 <!-- cyberabc:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 12
 
-[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 (inglês) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Segurança quântica e pós-quântica: integração organizacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar a migração para PQC aos processos de arquitetura, de mudança, de compras e de risco; (2) construir agilidade criptográfica nas plataformas por meio de políticas; (3) projetar os papéis de governança e os direitos de decisão; (4) alinhar a migração aos ciclos de renovação e aos orçamentos; e (5) medir o progresso do programa de forma significativa.
+
+### 7.1 Não um projeto, uma capacidade
+
+Uma migração conduzida como um projeto separado termina com um relatório e deixa a organização tão rígida quanto antes. Integrada aos processos normais, ela deixa uma capacidade: as revisões de arquitetura perguntam sobre algoritmos e agilidade; a gestão de mudanças registra as mudanças criptográficas; as compras exigem inventários e suporte a algoritmos; a gestão de riscos acompanha a exposição quântica. O [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) enquadra isso como agilidade criptográfica tanto no nível organizacional quanto no técnico.
+
+Na NRHT, a Autoridade de Criptografia é o mecanismo para isso: ela é responsável pela norma criptográfica e revisa as decisões de arquitetura, enquanto as compras acrescentam cláusulas aos contratos. Meça a integração por se os processos normais agora fazem perguntas criptográficas sem que a equipe do programa os provoque.
+
+### 7.2 Plataformas orientadas por política
+
+As plataformas que leem as escolhas criptográficas de uma política permitem à organização mudar os algoritmos por configuração. O identificador do algoritmo precisa viajar com os dados e ser autenticado, para que um verificador possa recusar um algoritmo aposentado.
+
+O Laboratório A mostra o padrão com códigos de autenticação de mensagens, mas o mesmo projeto se aplica aos KEMs e às assinaturas. Uma plataforma construída assim consegue passar do clássico ao híbrido, e depois a um novo algoritmo, com uma mudança de política e um período de transição. Os algoritmos fixos no código exigem novas versões de código a cada mudança.
+
+### 7.3 Atividade prática — Laboratório A
+
+```python
+# Lab A (ch 7): crypto-agility through a policy-driven registry instead of hard-coded algorithms.
+import hashlib, hmac
+REGISTRY = {"hmac-sha256": lambda k, m: hmac.new(k, m, hashlib.sha256).digest(),
+            "hmac-sha3-256": lambda k, m: hmac.new(k, m, hashlib.sha3_256).digest()}
+POLICY = {"tag-algorithm": "hmac-sha256", "accept": ["hmac-sha256", "hmac-sha3-256"]}
+def protect(key, msg):
+    alg = POLICY["tag-algorithm"]; return alg, REGISTRY[alg](key, msg)
+def check(key, msg, alg, tag):
+    if alg not in POLICY["accept"]: return False            # algorithm identifier is authenticated by policy
+    return hmac.compare_digest(REGISTRY[alg](key, msg), tag)
+k, m = b"k" * 32, b"discharge summary 42"
+a1, t1 = protect(k, m)
+POLICY["tag-algorithm"] = "hmac-sha3-256"                   # migration = one policy change
+a2, t2 = protect(k, m)
+print("old tag still verifies during transition:", check(k, m, a1, t1))
+print("new tag verifies:", check(k, m, a2, t2), "| algorithms:", a1, "->", a2)
+POLICY["accept"] = ["hmac-sha3-256"]                        # retire the old algorithm
+print("old tag after retirement:", check(k, m, a1, t1))
+```
+
+Saída esperada:
+
+```text
+old tag still verifies during transition: True
+new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
+old tag after retirement: False
+```
+
+O mesmo padrão — registro, política, lista de aceitos, aposentadoria — se aplica aos KEMs e às assinaturas nas plataformas reais.
+
+O laboratório registra o identificador do algoritmo com cada tag e o confere com a lista de aceitos, para que um algoritmo aposentado possa ser recusado. Durante a transição, os dois algoritmos verificam; depois da aposentadoria, a tag antiga falha. Numa plataforma real, o identificador precisa ser protegido pela própria tag ou assinatura, para que um atacante não consiga mudá-lo. Tente aposentar o algoritmo antigo antes de trocar o padrão e anote o que quebra.
+
+### 7.4 Governança e direitos de decisão
+
+Defina quem decide a política criptográfica (uma autoridade ou um conselho de criptografia), quem é responsável pela implementação de cada plataforma, quem aprova as exceções e quem aceita o risco residual. Publique uma norma criptográfica que liste os algoritmos e parâmetros aprovados, as datas de transição e o processo de exceção.
+
+Escreva os direitos de decisão na norma e publique-os, para que os responsáveis pelas plataformas saibam a quem perguntar. As exceções devem ser limitadas no tempo e registradas num registro que a Autoridade de Criptografia revisa. Na NRHT, o CISO preside a autoridade e o executivo responsável assina as aceitações de risco residual.
+
+### 7.5 Ciclos de renovação e orçamento
+
+A maior parte do hardware é substituída em ciclos de cinco a dez anos. Alinhar os requisitos de PQC a esses ciclos evita a substituição prematura; isso exige cláusulas de compras agora, para que o equipamento comprado em 2027 não precise ser substituído em 2031. As assinaturas de software são mais rápidas; exija roteiros com datas.
+
+Associe cada plataforma do nível 1 à sua próxima data de renovação e à cláusula que vai se aplicar à sua substituição. Onde uma renovação cair depois da data em que a migração é necessária, planeje uma medida provisória, como um gateway ou uma PSK. Na NRHT, a substituição da frota de bombas de infusão em 2031 está planejada dessa forma.
+
+### 7.6 Medindo o progresso
+
+Conte resultados, e não atividades: a parcela dos fluxos do nível 1 com troca de chaves híbrida (evidência de grau A/B); a parcela dos novos contratos com cláusulas de PQC; o tempo mediano para mudar um algoritmo nas plataformas orientadas por política; a parcela de desconhecidos do nível 1. Evite métricas de vaidade, como "número de reuniões realizadas".
+
+Relate cada métrica com a sua fonte e o seu grau de evidência, e mostre as tendências ao longo dos trimestres. Na revisão do segundo ano da NRHT, a cobertura híbrida do nível 1 era de 64 % com evidência de grau A ou B, e a parcela de desconhecidos era de 7 %. Métricas sem denominador ou sem fonte não devem aparecer nos relatórios ao conselho.
+
+### 7.7 Caso resolvido
+
+A NRHT cria uma Autoridade de Criptografia presidida pelo CISO, com membros de arquitetura, PKI, engenharia clínica e compras. A sua norma (sintética) define o híbrido com ML-KEM-768 como padrão para o novo estabelecimento de chaves, exige identificadores de algoritmo nos novos formatos de dados e acrescenta cláusulas de PQC a todos os contratos acima de um limiar. As métricas de progresso são revisadas trimestralmente pelo comitê de auditoria.
+
+As primeiras decisões da autoridade são registradas com os seus motivos e datas de revisão, para que os membros posteriores vejam por que os padrões foram escolhidos. A sua norma é curta o bastante para que os responsáveis pelas plataformas a leiam e inclui o processo de exceção. A composição abrange as equipes cujos sistemas vão mudar.
+
+### 7.8 Erros comuns e limites
+
+- Tratar a migração como um projeto pontual.
+- Nenhum processo de exceção, o que leva à não conformidade silenciosa.
+- Métricas de atividade em vez de métricas de resultado.
+
+Cada erro tem uma salvaguarda. Integre as perguntas criptográficas aos processos de arquitetura, de mudança e de compras. Publique um processo de exceção com expirações. Relate resultados como a cobertura com graus de evidência, e não contagens de reuniões ou de documentos produzidos. Na NRHT, a norma da Autoridade de Criptografia inclui um processo de exceção com datas de expiração, e as suas métricas de progresso são revisadas trimestralmente pelo comitê de auditoria. Confira se cada nova métrica tem denominador e fonte antes de acrescentá-la ao relatório ao conselho.
+
+### Exercícios
+
+- **EX031 — Pontos de integração.** Nomeie quatro processos existentes nos quais os requisitos de PQC devem ser integrados, com um requisito para cada. Rubrica: 3 = quatro processos, requisitos concretos.
+- **EX032 — Direitos de decisão.** Esboce uma matriz RACI para "aprovar uma exceção à troca de chaves híbrida". Rubrica: 3 = responsável, aprovador, consultado e informado atribuídos com sensatez.
+- **EX033 — Alinhamento com a renovação.** A substituição de um PACS está programada para 2029. O que a licitação de 2026 precisa incluir? Rubrica: 3 = suporte a algoritmos, agilidade, inventário, compromissos de atualização.
+- **EX034 — Métrica de resultado.** Converta "sessões de conscientização sobre PQC realizadas" numa métrica de resultado. Rubrica: 3 = mudança mensurável de comportamento ou de estado.
+- **EX035 — Teste de agilidade.** Projete um teste trimestral que mostre que uma plataforma consegue trocar de algoritmo por política. Rubrica: 3 = procedimento, evidência, critério de aprovação.
+
+### Síntese
+
+A integração transforma a migração numa capacidade organizacional: plataformas orientadas por política, direitos de decisão claros, compras alinhadas aos ciclos de renovação e métricas de resultado.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — capítulo 07 de 12
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Segurança quântica e pós-quântica: casos difíceis
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar migrações que envolvem dispositivos médicos e embarcados, a PKI interna, arquivos de longo prazo e terceiros; (2) aplicar controles compensatórios onde a migração é impossível; (3) gerenciar as assinaturas baseadas em hash com estado; (4) planejar a validade das assinaturas de longo prazo; e (5) raciocinar sobre a resposta à quebra de um algoritmo.
+
+### 8.1 Dispositivos médicos e embarcados
+
+Os dispositivos têm aprovações regulatórias, vidas longas e firmware controlado pelo fornecedor. Mudar a criptografia pode exigir uma nova certificação. Opções: firmware do fornecedor com troca de chaves híbrida, onde oferecido; segmentação da rede e gateways que terminam os protocolos pós-quânticos na frente dos dispositivos; fluxos de dados minimizados; e requisitos de compras para as substituições. A segurança dos pacientes governa as janelas de mudança.
+
+Na NRHT, a frota de bombas de infusão ilustra as escolhas: a troca de chaves híbrida chega com uma versão de firmware do fornecedor depois de testes clínicos, enquanto a verificação de boot não pode mudar e é tratada com controles compensatórios até a substituição. Acorde as janelas de mudança com a engenharia clínica e registre os testes de segurança feitos antes de cada atualização.
+
+### 8.2 PKI interna
+
+A PKI interna ancora as VPNs, as identidades dos dispositivos e o TLS entre serviços. Um plano de PKI pós-quântica: montar uma raiz e intermediárias ML-DSA em HSMs que suportem a FIPS 204; distribuir a nova raiz às partes confiantes; emitir certificados pós-quânticos primeiro nos ecossistemas fechados; manter a hierarquia clássica em paralelo; e definir datas de término para a emissão clássica alinhadas à norma interna.
+
+Planeje a distribuição da nova raiz a todas as partes confiantes antes de emitir a partir dela; uma raiz em que os clientes não confiam quebra os serviços. Teste primeiro a emissão e a validação num laboratório com clientes representativos. Registre no plano quais ecossistemas mudam primeiro e a data em que a emissão clássica termina para cada um.
+
+### 8.3 Assinaturas baseadas em hash com estado
+
+A [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) aprova o LMS e o XMSS com o requisito de que as chaves e o estado sejam gerenciados em módulos de hardware e não sejam exportados. Elas servem para a assinatura de firmware. Planeje a capacidade de assinaturas, proteja o estado contra o retrocesso durante o failover dos HSMs e teste a recuperação de desastres para que a recuperação nunca reutilize um índice.
+
+Registre o número de assinaturas que cada chave consegue produzir e acompanhe o uso em relação a ele. Teste o failover dos HSMs de um modo que prove que o estado não pode retroceder, porque reutilizar um índice quebra a segurança. Mantenha o plano junto com o procedimento de assinatura de firmware e revise-o depois de cada mudança nos HSMs.
+
+### 8.4 Assinaturas e arquivos de longo prazo
+
+Os documentos clínicos assinados e os formulários de consentimento precisam continuar verificáveis por décadas. Os carimbos de tempo de arquivo e a renovação dos registros de evidência podem preservar a validade ao longo das transições de algoritmo, desde que a renovação aconteça enquanto o algoritmo mais antigo ainda for confiável. Os arquivos cifrados já expostos em trânsito não podem ser reparados pela recifração.
+
+Agende a renovação bem antes que o algoritmo mais antigo deixe de ser confiável, e registre cada renovação. Nos arquivos cifrados, distinga os dados em repouso, que podem ser recifrados, das cópias que atravessaram redes sob troca de chaves clássica, que não podem ser reparadas. Relate as duas no registro de riscos.
+
+### 8.5 Resposta à quebra de um algoritmo
+
+O Rainbow (Beullens, 2022) e o SIKE (Castryck e Decru, 2022) mostram que esquemas candidatos podem cair rapidamente; o KyberSlash (Bernstein et al., 2024) mostra que as implementações podem vazar. Um plano de resposta nomeia o fórum de decisão, os caminhos de configuração para desativar um algoritmo, os sistemas que precisam de novas versões ou de hardware, o fallback (os híbridos ajudam) e as comunicações aos fornecedores e aos reguladores. A seleção do HQC como KEM de reserva oferece uma alternativa futura com uma base matemática diferente.
+
+Ensaie o plano uma vez por ano com um exercício de mesa, usando um caso realista, como uma fraqueza encontrada numa implementação do ML-KEM. Registre quanto tempo leva para desativar o algoritmo em cada plataforma; as plataformas que levam mais tempo são as primeiras candidatas à agilidade orientada por política.
+
+### 8.6 Caso resolvido
+
+A frota de bombas de infusão da NRHT (sintética, 4.000 unidades) usa firmware assinado com RSA, verificado por uma ROM de boot, e ECDH com um hub de gestão. O fornecedor oferece a troca de chaves híbrida numa versão de firmware de 2027; a verificação de boot não pode mudar. Plano: segmentar as bombas numa VLAN dedicada; adotar o firmware de 2027 depois dos testes de segurança clínica; aceitar o risco residual de falsificação posterior no firmware até a substituição da frota em 2031, com controles compensatórios (lista de atualizações assinadas permitidas no hub, monitoramento de anomalias); exigir a verificação de boot com ML-DSA ou LMS na licitação da substituição.
+
+Registre o risco residual no registro com a sua expiração vinculada à substituição de 2031, e revise-o se a data da substituição atrasar. Garanta que o requisito de verificação de boot pós-quântica da licitação da substituição seja escrito nas compras agora.
+
+### 8.7 Erros comuns e limites
+
+- Aplicar as janelas de mudança de TI aos dispositivos clínicos.
+- Construir uma raiz pós-quântica sem um plano de distribuição às partes confiantes.
+- Assinatura LMS apenas em software.
+
+Cada erro tem uma salvaguarda neste capítulo. Acorde as janelas de mudança clínicas com a engenharia clínica. Escreva o plano de distribuição às partes confiantes antes de montar uma raiz pós-quântica. Mantenha as chaves e o estado do LMS e do XMSS em módulos de hardware, como a SP 800-208 exige, e teste o failover. Na NRHT, o plano de firmware das bombas foi acordado com a engenharia clínica, a raiz ML-DSA interna tem um plano de distribuição às partes confiantes, e as chaves de assinatura de firmware ficam em módulos de hardware, com o failover testado para que nenhum índice seja reutilizado.
+
+### Exercícios
+
+- **EX036 — Controles compensatórios.** Liste quatro controles compensatórios para os dispositivos que não podem migrar. Rubrica: 3 = quatro controles distintos e eficazes.
+- **EX037 — Sequência da PKI.** Ordene os passos do plano da PKI e justifique a ordem. Rubrica: 3 = raiz, distribuição, ecossistemas fechados, emissão ampla, encerramento do clássico.
+- **EX038 — Capacidade do LMS.** Uma árvore LMS com 2^15 assinaturas assina 40 imagens de firmware por ano. Quantos anos de capacidade? Rubrica: 3 = 819 anos, com comentário sobre várias árvores/failover dos HSMs.
+- **EX039 — Momento da renovação do arquivo.** Quando a NRHT deve renovar os registros de evidência do arquivo baseados em carimbos de tempo assinados com RSA? Rubrica: 3 = bem antes de uma fraqueza crível do RSA, calendário definido por política.
+- **EX040 — Simulação de quebra.** Projete um exercício de mesa para "fraqueza anunciada no ML-KEM-768". Rubrica: 3 = cenário, participantes, decisões, critérios de sucesso.
+
+### Síntese
+
+Os casos difíceis — dispositivos, PKI, assinaturas com estado, arquivos e quebras de algoritmos — precisam de controles compensatórios, sequenciamento cuidadoso, estado guardado em hardware, renovação no tempo certo e resposta ensaiada.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — capítulo 08 de 12
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Segurança quântica e pós-quântica: liderança e garantia
+
+### Objetivos de aprendizagem
+
+Você vai (1) liderar um programa de migração plurianual com objetivos claros; (2) projetar um modelo de garantia com verificação independente; (3) preparar evidências para auditores e reguladores; (4) comunicar-se com conselhos, clínicos e fornecedores; e (5) sustentar o programa diante da rotatividade da equipe e das mudanças nas orientações.
+
+### 9.1 Liderança do programa
+
+Um programa plurianual precisa de uma missão ("proteger a confidencialidade e a confiança de longo prazo contra ataques quânticos sem prejudicar os serviços clínicos"), objetivos com datas, um roteiro por nível, um envelope orçamentário com faixas e governança. O trabalho do líder é manter as prioridades alinhadas às evidências à medida que as orientações e a tecnologia mudam, e proteger o programa de ser reduzido a um checklist de conformidade.
+
+Escreva a missão e os objetivos num documento curto que o conselho aprova, e revisite-os em cada revisão anual. Mantenha o roteiro por nível, para que ele mostre o que é protegido primeiro e por quê. Quando as orientações ou a tecnologia mudarem, registre a mudança e o seu efeito sobre as prioridades.
+
+### 9.2 Três linhas de garantia
+
+A primeira linha (os responsáveis pelas plataformas) implementa e faz autotestes; a segunda linha (segurança e risco) define as normas e monitora; a terceira linha (auditoria interna) testa de forma independente. Na PQC, a verificação independente significa observar de novo os algoritmos negociados, amostrar certificados, revisar os registros de exceções e testar as alegações de agilidade, e não ler relatórios de status.
+
+Na NRHT, a auditoria interna observou de novo os fluxos do nível 1 e encontrou três com fallback clássico, que os relatórios de status não haviam mostrado. A primeira e a segunda linhas devem esperar esses achados e tratá-los como informação. Acorde com antecedência como os achados são relatados e quem age sobre eles.
+
+### 9.3 Evidências para auditores e reguladores
+
+Prepare um pacote de evidências: a norma criptográfica e a sua aprovação; o inventário com a cobertura e os graus; o método de priorização e as decisões; as métricas de progresso com as fontes; o registro de exceções e de riscos residuais com as expirações; os relatórios de testes; a garantia dos fornecedores. Cada item deve ser gerado pela operação normal, para que o pacote seja barato de atualizar.
+
+Mantenha o pacote num único local, com um índice curto e a data em que cada item foi gerado. Quando um auditor pedir algo que não está no pacote, acrescente-o ao processo normal, para que esteja lá na próxima vez. Evite criar documentos apenas para as auditorias; eles envelhecem imediatamente e não são confiáveis.
+
+### 9.4 Comunicação
+
+Os conselhos precisam de decisões e da postura de risco; os clínicos precisam da garantia de que as mudanças não vão interromper o atendimento e de janelas de mudança claras; os fornecedores precisam de requisitos e prazos claros; a equipe precisa saber o que muda para ela. As mensagens devem ser calmas e específicas; evite tanto o alarme quanto a complacência.
+
+Use os mesmos fatos para todos os públicos, mas mude a ênfase. Um documento para o conselho começa pela postura e pelas decisões necessárias; um informe clínico começa pelas janelas de mudança e pelos fallbacks; uma carta aos fornecedores começa pelos requisitos e pelas datas. Guarde cópias datadas, para que as mensagens possam ser conferidas com o que aconteceu depois.
+
+### 9.5 Sustentação
+
+As orientações vão mudar: o IR 8547 pode ser finalizado com datas diferentes; as normas do FN-DSA e do HQC vão aparecer. Incorpore ciclos de revisão à governança, mantenha registros de decisão, treine sucessores e mantenha o inventário vivo. Um programa que depende de um único especialista é frágil.
+
+Nomeie um substituto para cada papel-chave e mantenha os registros de decisão atualizados, para que uma saída não interrompa o programa. Rode o ciclo de revisão num calendário, em vez de esperar pelas notícias. Quando uma norma mudar, atualize o resumo, a norma interna e quaisquer decisões afetadas na mesma revisão.
+
+### 9.6 Caso resolvido
+
+A revisão de garantia do segundo ano da NRHT (sintética): a auditoria interna amostra 60 fluxos do nível 1 e observa de novo 57 (95 %) com o algoritmo relatado; três mostram fallback clássico por causa de uma configuração revertida — um achado que leva ao monitoramento da deriva de configuração. O registro de exceções tem 41 entradas; seis passaram da expiração sem revisão — um achado que leva ao escalonamento automático. O conselho recebe uma postura de uma página: cobertura híbrida do nível 1 de 64 % (evidência A/B), 7 % de desconhecidos, plano da PKI no prazo, dois riscos residuais altos aceitos com expiração.
+
+Cada achado leva a uma mudança de processo, e não a uma correção pontual, e a postura apresentada ao conselho mostra tanto o progresso quanto o risco residual. Registre o tamanho da amostra e o método da auditoria, para que a próxima revisão possa comparar os resultados.
+
+### 9.7 Erros comuns e limites
+
+- Garantia por relatório de status.
+- Pacotes de evidências montados especialmente antes das auditorias.
+- Programas dependentes de um único especialista.
+
+Cada erro tem uma salvaguarda. Observe de novo os algoritmos negociados em vez de ler relatórios. Gere as evidências a partir das operações normais. Treine sucessores e mantenha os registros de decisão, para que o programa continue se o seu líder sair. Na NRHT, a amostra de 60 fluxos do nível 1 da auditoria do segundo ano (9.6) é o modelo: a nova observação encontrou o que os relatórios de status não haviam mostrado. O pacote de evidências é gerado pela operação normal e atualizado a cada trimestre. Um substituto nomeado consegue conduzir cada revisão se o líder estiver ausente, e os registros de decisão explicam por que cada escolha foi feita, para que um recém-chegado consiga continuar o trabalho.
+
+### Exercícios
+
+- **EX041 — Objetivos.** Escreva três objetivos de programa datados e mensuráveis para a NRHT. Rubrica: 3 = específicos, mensuráveis, com prazo, ligados aos níveis.
+- **EX042 — Teste de auditoria.** Projete um teste independente da alegação "todos os enlaces entre locais do nível 1 usam troca de chaves híbrida". Rubrica: 3 = amostragem, método de nova observação, critério de aprovação.
+- **EX043 — Pacote de evidências.** Liste sete itens do pacote de evidências e as suas fontes. Rubrica: 3 = sete itens com fontes operacionais.
+- **EX044 — Mensagem aos clínicos.** Escreva uma mensagem de 100 palavras às lideranças clínicas sobre uma janela de mudança do PACS. Rubrica: 3 = o quê, quando, impacto, contato, tranquilização.
+- **EX045 — Continuidade.** Proponha três medidas que mantenham o programa vivo diante de uma troca de liderança. Rubrica: 3 = documentação, ciclos de governança, conhecimento distribuído.
+
+### Síntese
+
+A liderança mantém um programa plurianual alinhado às evidências; a garantia observa de novo, em vez de ler; os pacotes de evidências surgem das operações normais; e a continuidade é projetada desde o início.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — capítulo 09 de 12
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Leitura e crítica de pesquisas
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler criticamente artigos de criptoanálise, de estimativa de recursos e de implantação; (2) extrair as hipóteses e avaliar o seu realismo; (3) julgar adequadamente os preprints e as pesquisas de fornecedores; (4) traduzir a pesquisa em implicações para a prática; e (5) escrever uma crítica estruturada.
+
+### 10.1 Lendo criptoanálise
+
+Os artigos de criptoanálise declaram os modelos de ataque, a complexidade e os experimentos. Pergunte: o ataque se aplica ao conjunto de parâmetros padronizado ou a uma variante? É clássico ou quântico? A complexidade é assintótica ou concreta? Foi reproduzido? A quebra do Rainbow por Beullens (2022) se aplicava aos parâmetros submetidos, com experimentos concretos na escala de um laptop — decisiva. Muitos ataques a reticulados anunciados melhoram ligeiramente as constantes sem mudar as categorias de segurança — importantes, mas não urgentes.
+
+Registre a sua leitura numa tabela curta: esquema e conjunto de parâmetros, clássico ou quântico, concreto ou assintótico, reproduzido ou não, e a implicação prática. Compartilhe-a com a Autoridade de Criptografia quando um artigo afetar um algoritmo em uso. A maioria dos artigos não vai exigir ação; alguns vão, e a tabela mostra quais.
+
+### 10.2 Lendo estimativas de recursos
+
+Os artigos de estimativa de recursos, como Gidney e Ekerå (2021) e Gidney (2025), supõem taxas de erro físico, conectividade, distância do código, tempo de ciclo e escolhas algorítmicas. Extraia-as numa tabela. Pergunte quais hipóteses o hardware atual atende e quais não atende. Uma estimativa em queda sob hipóteses otimistas é um sinal sobre a direção do movimento, e não uma data.
+
+Mantenha a tabela de hipóteses de cada artigo e acrescente uma coluna indicando se o hardware atual atende cada uma. Compare as tabelas entre os artigos para ver quais hipóteses mudaram. Apresente o resultado ao conselho como direção do movimento, como faz a crítica da NRHT a Gidney (2025).
+
+### 10.3 Lendo estudos de implantação
+
+Os artigos de implantação relatam grupos negociados, taxas de falha e desempenho a partir de medições. Pergunte: que população, qual ponto de observação, qual período, que vieses (por exemplo, varrer apenas sites populares)? Os resultados se transferem para ambientes corporativos ou clínicos?
+
+Escreva as respostas a essas perguntas na sua crítica, e diga explicitamente se os resultados se aplicam às redes clínicas da NRHT. As medições em toda a internet podem deixar escapar os proxies de inspeção legados e os clientes embutidos, que a própria avaliação da NRHT mostrou serem importantes. Trate um artigo de implantação como uma hipótese prévia a testar localmente.
+
+### 10.4 Preprints e pesquisas de fornecedores
+
+Os preprints (arXiv, IACR ePrint) costumam ser a primeira fonte crível e são citados rotineiramente nesta área; pondere-os pelo histórico dos autores, pela reprodutibilidade e pela revisão subsequente. As pesquisas de fornecedores podem ser cuidadosas, mas têm interesses; verifique se os dados e os métodos são publicados.
+
+Anote a situação de cada fonte na sua crítica, e verifique depois se um preprint foi revisado ou publicado. Nas pesquisas de fornecedores, pergunte se os resultados podem ser reproduzidos sem o produto do fornecedor. Pondere as fontes de forma consistente, para que um resultado conveniente não receba mais crédito que um inconveniente.
+
+### 10.5 Crítica estruturada
+
+Uma crítica resume a alegação, avalia as evidências e as hipóteses, identifica o que mudaria a conclusão e declara as implicações para a prática. Mantenha-a em uma página para os profissionais.
+
+Use os mesmos títulos em todas as críticas, para que os leitores possam compará-las. Termine com uma frase sobre o que a NRHT deveria fazer de diferente, se houver algo. Guarde a crítica, datada, junto com os registros de decisão que ela informa, para que possa ser revista quando surgir um trabalho novo. Peça a um colega que verifique se o resumo da alegação é justo.
+
+### 10.6 Caso resolvido
+
+Crítica de Gidney (2025) para o conselho da NRHT, uma página: alegação — o RSA-2048 poderia ser fatorado com menos de um milhão de qubits ruidosos em menos de uma semana; hipóteses principais — taxa de erro físico em torno de 10^−3, correção de erros no estilo do código de superfície, conectividade e tempos de ciclo específicos; situação — preprint de um autor estabelecido, que se apoia em predecessores revisados por pares; implicação — a distância de recursos está diminuindo, o que apoia a decisão robusta do conselho de "agir agora nos fluxos de vida longa"; ele não dá uma data e não deve ser citado como tal.
+
+A crítica é curta, cita as hipóteses do artigo e evita convertê-las numa data. Ela também liga o artigo a uma decisão existente, em vez de propor uma nova. Arquive-a com o registro de decisão e revisite-a quando surgir uma estimativa revisada.
+
+### 10.7 Erros comuns e limites
+
+- Tratar todo novo artigo de ataque como urgente.
+- Citar estimativas de recursos como previsões.
+- Descartar os preprints em bloco.
+
+Cada erro tem uma salvaguarda. Pergunte se um novo ataque se aplica aos parâmetros padronizados antes de chamá-lo de urgente. Apresente as estimativas de recursos com as suas hipóteses e nunca como datas. Pondere os preprints pelo autor, pelo método e pela reprodução, em vez de descartá-los. Na NRHT, a crítica de Gidney (2025) foi apresentada como direção do movimento e ligada a uma decisão existente, e não como uma data. Aplique a mesma disciplina à criptoanálise: confira primeiro o conjunto de parâmetros e depois pergunte se o ataque foi reproduzido antes de elevar a urgência.
+
+### Exercícios
+
+- **EX046 — Tabela de hipóteses.** Construa uma tabela de hipóteses de cinco linhas para um artigo de estimativa de recursos. Rubrica: 3 = taxa de erro, número de qubits, tempo de execução, código, conectividade, com as fontes.
+- **EX047 — Teste de urgência.** Dê três perguntas que decidam se um novo artigo de ataque a reticulados muda os planos da NRHT. Rubrica: 3 = aplicabilidade aos parâmetros, impacto na categoria, reprodução.
+- **EX048 — Viés de implantação.** Nomeie dois vieses dos estudos de varredura de toda a internet quando aplicados a hospitais. Rubrica: 3 = vieses de população e de ponto de observação explicados.
+- **EX049 — Whitepaper de fornecedor.** Liste o que você precisaria para confiar no benchmark de um fornecedor sobre a vazão de uma VPN híbrida. Rubrica: 3 = método, configuração, disponibilidade dos dados, independência.
+- **EX050 — Crítica de uma página.** Esboce os cinco títulos do seu modelo de crítica. Rubrica: 3 = alegação, evidências, hipóteses, sensibilidades, implicações.
+
+### Síntese
+
+Os especialistas leem as pesquisas pelas suas hipóteses e pela sua aplicabilidade, ponderam as fontes por tipo e reprodutibilidade, e traduzem os achados em implicações calmas e específicas para a prática.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — capítulo 10 de 12
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) delimitar um projeto especializado aplicado com um patrocinador organizacional; (2) produzir entregas prontas para a decisão; (3) aplicar os métodos de evidência, avaliação e governança deste livro; (4) gerenciar a autorização e a proteção dos dados; e (5) avaliar o impacto.
+
+### 11.1 Tipos de projeto
+
+Projetos adequados: projetar e pilotar um programa de inventário para uma divisão; produzir uma norma criptográfica interna com um plano de transição; liderar um piloto avaliado de troca de chaves híbrida numa plataforma; projetar um roteiro de PKI pós-quântica; ou construir um processo de garantia dos fornecedores. Cada um produz artefatos que a organização vai usar.
+
+Escolha um projeto que o patrocinador vá usar qualquer que seja o resultado. Um piloto que descobre que a troca de chaves híbrida não pode ser ativada numa plataforma ainda é útil, se for avaliado segundo critérios definidos com antecedência. Evite projetos que apenas descrevem o problema.
+
+### 11.2 Delimitando com um patrocinador
+
+Acorde com um patrocinador: a decisão que o projeto apoia, o escopo, as entregas, o acesso, a autorização, os critérios de sucesso e como os resultados serão usados. A autorização escrita precisa cobrir qualquer observação ou teste; prefira laboratórios isolados para os testes ativos.
+
+Escreva o acordo e peça ao patrocinador que o assine antes de qualquer coleta de dados. Inclua o que acontece com os dados do projeto no fim e quem pode ver os resultados. Revise o escopo com o patrocinador no meio do caminho, e registre quaisquer mudanças. Guarde uma cópia com os registros do projeto.
+
+### 11.3 Entregas
+
+As entregas prontas para a decisão incluem um documento de decisão curto, as evidências por trás dele (extratos do inventário, resultados de avaliação, tabelas de hipóteses), artefatos de implementação (texto de política, linhas de base de configuração, cláusulas de compras) e um plano de transição para a operação.
+
+Cada entrega deve ter um responsável que vai usá-la depois do projeto. Na NRHT, o projeto da radiologia produziu um questionário, uma rubrica de pontuação e cláusulas contratuais, além de um documento de decisão. Teste os artefatos utilizáveis com as pessoas que vão aplicá-los antes da transição. Acorde a data da transição com cada responsável.
+
+### 11.4 Proteção dos dados
+
+Os projetos na saúde tocam sistemas sensíveis. Colete metadados, e não conteúdo; minimize os identificadores; guarde os dados do projeto com segurança; e apague-os conforme o acordo.
+
+Registre no plano do projeto quais dados serão coletados, quem pode acessá-los, onde serão guardados e quando serão apagados. Verifique se o encarregado de proteção de dados concorda antes do início da coleta. No fim, confirme a exclusão por escrito. Pseudonimize os nomes dos ativos em qualquer extrato do projeto que saia dos sistemas da NRHT, e mantenha o mapeamento apenas nos sistemas da NRHT. Relate imediatamente ao patrocinador qualquer coleta acidental de conteúdo.
+
+### 11.5 Avaliação do impacto
+
+Defina o impacto antes de começar: por exemplo, "parcela de desconhecidos do nível 1 na divisão de radiologia reduzida de 31 % para menos de 10 %" ou "questionário aos fornecedores adotado para todos os novos contratos da radiologia". Meça depois de um período definido.
+
+Defina uma medida de referência antes de começar e acorde a meta e a data para medi-la. No projeto da radiologia da NRHT, a parcela de desconhecidos começou em 31 % e foi medida de novo depois de seis meses. Relate o resultado, quer ele atinja a meta, quer não. Escolha, sempre que possível, medidas que a organização já coleta.
+
+### 11.6 Caso resolvido
+
+Projeto (sintético): "Garantia dos fornecedores quanto à prontidão pós-quântica na radiologia da NRHT." Patrocinador: diretor de TI da radiologia. Entregas: questionário, rubrica de pontuação, cláusulas contratuais, resultados para 18 fornecedores, documento de decisão. Resultados: 5 fornecedores com roteiros datados e acesso para testes; 7 com alegações sem data; 6 calados. Decisão: cláusulas de PQC obrigatórias em todas as renovações; fornecedores calados escalonados às compras; dois fornecedores convidados para pilotos conjuntos no laboratório. Impacto depois de seis meses: a parcela de desconhecidos na radiologia caiu de 31 % para 12 %.
+
+O resultado é relatado com a sua referência e a data da medição, e o documento de decisão transformou os achados em ações de compras. Guarde o questionário e a rubrica para que outras divisões possam reutilizá-los.
+
+### 11.7 Erros comuns e limites
+
+- Projetos sem uma decisão a apoiar.
+- Entregas que são apenas relatórios, sem artefatos utilizáveis.
+- Medidas de impacto definidas depois do fato.
+
+Cada erro tem uma salvaguarda. Acorde a decisão que o projeto apoia antes de começar. Entregue artefatos como texto de política, cláusulas e linhas de base de configuração junto com o relatório. Defina as medidas de impacto e as referências antes de o trabalho começar, e relate o resultado mesmo quando ficar aquém. Na NRHT, o projeto da radiologia foi ligado a uma decisão de compras, entregou um questionário, uma rubrica e cláusulas, e mediu a parcela de desconhecidos em relação a uma referência de 31 % depois de seis meses. Use essa estrutura como modelo para outras divisões.
+
+### 11.8 Lidando com a resistência
+
+Os projetos aplicados encontram resistência: responsáveis por serviços preocupados com interrupções, fornecedores relutantes em divulgar, detentores de orçamento céticos quanto a um risco que ainda não se materializou. Trate a resistência como informação. O medo de interrupção de um responsável é um requisito de implantação em estágios e de rollback; a relutância de um fornecedor é uma alavanca de compras; o ceticismo é um pedido pelo argumento da decisão robusta do Capítulo 1. Registre as objeções e como o projeto as tratou no documento de decisão, porque as mesmas objeções vão voltar quando o trabalho for ampliado para além do piloto.
+
+### Exercícios
+
+- **EX051 — Acordo com o patrocinador.** Liste oito itens do acordo com o patrocinador. Rubrica: 3 = decisão, escopo, entregas, acesso, autorização, sucesso, uso, tratamento dos dados.
+- **EX052 — Rubrica de pontuação.** Projete uma rubrica de 0 a 3 para a prontidão dos fornecedores em PQC. Rubrica: 3 = níveis claramente distinguidos pelas evidências.
+- **EX053 — Impacto.** Calcule a redução da parcela de desconhecidos de 11.6 em pontos percentuais e em termos relativos. Rubrica: 3 = 19 pontos, ≈ 61 % relativos.
+- **EX054 — Proteção dos dados.** Especifique a retenção e a exclusão dos dados do projeto. Rubrica: 3 = escopo, período, método, verificação.
+- **EX055 — Transição.** Liste o que o responsável operacional precisa na transição. Rubrica: 3 = artefatos, procedimentos, contatos, questões em aberto.
+
+### Síntese
+
+Os projetos aplicados apoiam decisões reais, entregam artefatos utilizáveis sob a autorização e a proteção de dados adequadas e medem o impacto segundo critérios definidos com antecedência.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 12
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisão final e transferência
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar o seu portfólio em relação aos objetivos do curso; (2) apresentar e defender escolhas em escala organizacional; (3) transferir os métodos para outros domínios e para futuras mudanças de algoritmo; (4) planejar o desenvolvimento profissional contínuo; e (5) deixar um legado sustentável.
+
+### 12.1 Revisão do portfólio
+
+Reúna: os registros de decisão do Capítulo 1; o resumo do estado da prática (2); o projeto e as métricas do inventário (3); a análise de risco e de ética (4); as alternativas de projeto (5); a avaliação (6); o modelo de governança (7); os planos para os casos difíceis (8); o projeto da garantia (9); as críticas de pesquisas (10); as entregas do projeto (11). Para cada um, anote que evidência mostra que o objetivo foi atingido.
+
+Apresente o portfólio na mesma ordem do curso, para que os examinadores consigam acompanhá-lo. Para cada item, inclua uma nota curta sobre o que você mudaria agora. As evidências ausentes devem ser nomeadas, e não escondidas. Peça a um colega que o leia antes da entrega.
+
+### 12.2 Defesa
+
+Espere questionamentos sobre as hipóteses (cronogramas, horizontes do dano), os valores (pesos da pontuação), os graus de evidência, a aceitação do risco residual e a situação das orientações. Defenda-se com evidências e reconheça a incerteza.
+
+Prepare uma resposta curta para cada questionamento, com uma indicação da evidência no portfólio, como o registro de decisão das datas internas ou os pesos da pontuação aprovados pelo conselho. Onde você estiver incerto, diga que evidência resolveria a questão. Ensaie com alguém que discorde das suas escolhas. Mantenha as respostas curtas e específicas. Anote qualquer pergunta que você não conseguiu responder.
+
+### 12.3 Transferência
+
+Os métodos se transferem: as decisões robustas sob incerteza, a graduação das evidências, a avaliação controlada, a agilidade orientada por política e a garantia por nova observação se aplicam a qualquer transição criptográfica futura — a quebra de um algoritmo implantado, uma nova norma como o FN-DSA ou a eventual aposentadoria dos híbridos atuais. Eles também se transferem para outros riscos de longa latência.
+
+Para mostrar a transferência, aplique um método a um caso novo no portfólio, como usar o portão de canário numa mudança planejada de algoritmo de assinatura. Anote quais partes do método precisaram de adaptação e quais não.
+
+### 12.4 Desenvolvimento contínuo
+
+Acompanhe as normas (NIST, IETF), as orientações setoriais, a criptoanálise e as pesquisas de implantação. Mantenha o seu resumo do estado da prática trimestralmente. Participe de comunidades profissionais e compartilhe lições anonimizadas.
+
+Escreva um plano com fontes específicas e um calendário, e revise-o todo ano. Mantenha um registro curto do que você leu e do que mudou na sua prática por causa disso. Compartilhe uma lição anonimizada por ano com uma comunidade profissional, e peça comentários de colegas que trabalham em outros setores, já que as transições deles podem enfrentar problemas semelhantes e oferecer comparações úteis.
+
+### 12.5 Legado
+
+Deixe a organização com um inventário vivo, uma norma criptográfica com ciclo de revisão, registros de decisão, um registro de exceções com expirações e sucessores treinados. O sucesso é um programa que continua sem você.
+
+Confira o legado pedindo a um sucessor que conduza a revisão trimestral sem você, e corrija qualquer passo que ele não tenha conseguido concluir. Registre onde cada documento-chave fica e quem é o seu responsável. Um teste conduzido pelo sucessor antes da sua saída é a melhor evidência de que o legado funciona, então agende um e registre o que precisou ser corrigido.
+
+### 12.6 Caso resolvido
+
+Na revisão final da NRHT, o líder do programa apresenta: cobertura híbrida do nível 1 de 78 % com evidência A/B; 5 % de desconhecidos; raiz interna ML-DSA em operação, com 40 % dos certificados dos serviços internos migrados; 12 riscos residuais aceitos, todos com expiração; teste de agilidade aprovado em quatro plataformas. Um examinador pergunta o que acontece se o IR 8547 for finalizado com datas mais cedo; o líder mostra o registro de decisão da definição das datas internas e o gatilho de governança para a revisão.
+
+A revisão final mostra o progresso com graus de evidência e nomeia os riscos residuais, cada um com uma expiração. A pergunta do examinador é respondida com um mecanismo de governança, e não com uma previsão, que é o tipo de resposta que um programa robusto deve ser capaz de dar.
+
+### 12.7 Erros comuns e limites
+
+- Portfólios sem evidências dos resultados.
+- Defesas que alegam certeza demais.
+- Um legado que depende do líder que está saindo.
+
+Cada erro tem uma salvaguarda. Anexe as evidências dos resultados a cada item do portfólio. Na defesa, declare as hipóteses e as incertezas com clareza. Treine sucessores e documente os processos, para que o programa continue depois da sua saída. Na NRHT, a revisão final apresentou a cobertura com graus de evidência, os riscos residuais com expirações e um teste de agilidade em quatro plataformas. A pergunta do examinador sobre o IR 8547 foi respondida com um gatilho de governança. Use essa estrutura: resultado, evidência, risco residual e o mecanismo que vai responder às mudanças depois da sua saída.
+
+### 12.8 Refletindo sobre o julgamento
+
+Encerre o portfólio com uma nota reflexiva sobre o seu próprio julgamento: uma decisão que você tomaria de novo, uma que mudaria com o que sabe agora e uma hipótese da qual tem menos certeza. Os especialistas merecem confiança não porque sempre acertam, mas porque mostram como raciocinam e se atualizam. A nota também ajuda os sucessores a entender quais partes do programa se apoiam em evidências firmes e quais em apostas ponderadas. Na NRHT, por exemplo, o plano das bombas de infusão supõe que a versão de firmware híbrido de 2027 do fornecedor chegue no prazo e passe nos testes clínicos, e dizer isso claramente mostra ao próximo líder onde olhar primeiro.
+
+### Exercícios
+
+- **EX056 — Evidência dos resultados.** Para três objetivos do curso, nomeie a evidência do portfólio que demonstra cada um. Rubrica: 3 = artefatos específicos.
+- **EX057 — Transferência.** Explique como o programa trataria um novo requisito de adotar o FN-DSA. Rubrica: 3 = política, inventário, avaliação, implantação pela agilidade.
+- **EX058 — Resposta na defesa.** Responda: "Por que você aceitou o risco residual das bombas de infusão?" Rubrica: 3 = restrições, controles compensatórios, expiração, justificativa de segurança.
+- **EX059 — Plano de desenvolvimento.** Esboce um plano de desenvolvimento contínuo de um ano. Rubrica: 3 = fontes, cadência, produtos.
+- **EX060 — Checklist do legado.** Liste seis itens que precisam existir para que o programa continue sem você. Rubrica: 3 = seis itens concretos.
+
+### Síntese
+
+A revisão final demonstra os resultados com evidências, defende as escolhas com honestidade e transfere os métodos e a capacidade, para que as futuras mudanças criptográficas encontrem uma organização preparada.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 12
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a NRHT são sintéticos. Esta edição parcial traz as resoluções de EX001–EX030; as de EX031–EX060 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a NRHT são sintéticos.
 
 **EX001.** Valor esperado com *P*(*z* = 8) = 0,1: esperar economiza ~15 % do custo do programa em 90 % dos casos, mas arrisca uma divulgação irreversível em 10 %; se o dano for muito valorizado, o valor esperado ainda favorece agir, mas o resultado depende da probabilidade inventada. Robusto: esperar falha gravemente no cenário antecipado, então é descartado; agir agora. Minimax do arrependimento: o pior arrependimento de esperar (divulgação irreversível) excede o pior arrependimento de agir (custo moderado); agir agora.
 
@@ -594,6 +1067,70 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX029.** Local A: 10/50.000 falhas; local B: 60/10.000. Agregado 70/60.000 = 0,117 %; se o limiar for de 0,15 %, o agregado passa, enquanto o local B, com 0,6 %, falha gravemente.
 
 **EX030.** Interna: mudanças concorrentes (atualizações do sistema operacional) durante os canários poderiam confundir as falhas; os padrões semanais foram tratados com durações de duas semanas. Externa: os clientes do laboratório podem não representar todos os visualizadores embutidos; o proxy de um hospital mostra que as condições dos locais diferem; os resultados se aplicam às configurações testadas.
+
+**EX031.** Revisão de arquitetura: os novos projetos precisam declarar os algoritmos e a agilidade. Gestão de mudanças: registrar as mudanças criptográficas e o rollback. Compras: cláusulas de PQC e divulgação do inventário. Gestão de riscos: exposição quântica acompanhada por nível.
+
+**EX032.** Responsável pela execução: o responsável pela plataforma prepara o pedido. Aprovador: o presidente da Autoridade de Criptografia. Consultados: arquitetura de segurança, segurança clínica (se clínico), risco. Informados: auditoria interna, central de serviços.
+
+**EX033.** Suporte aos algoritmos das FIPS 203/204 em protocolos nomeados na entrega ou com roteiro datado; configuração de algoritmos orientada por política; divulgação do inventário criptográfico; compromissos de atualização e de suporte ao longo da vida do produto; acesso para testes.
+
+**EX034.** "Parcela das equipes de plataforma cujos serviços passam no teste trimestral de agilidade" ou "parcela das solicitações de mudança do nível 1 que registram os detalhes dos algoritmos".
+
+**EX035.** Trimestralmente, trocar o algoritmo configurado de um serviço de teste (por exemplo, a ordem dos grupos preferidos ou o algoritmo de assinatura) apenas por política; verificar a negociação com clientes de teste; restaurar. Evidência: chamado de mudança, logs de negociação antes/depois. Aprovação: mudança e rollback em até um dia, sem nova versão de código.
+
+**EX036.** Segmentação em VLANs dedicadas; gateways que terminam os protocolos pós-quânticos; minimização dos dados enviados pelos dispositivos; lista de permissões e verificação fora de banda das atualizações; monitoramento reforçado.
+
+**EX037.** 1) Criar a raiz e as intermediárias ML-DSA em HSMs; 2) distribuir a raiz às partes confiantes; 3) emitir certificados pós-quânticos nos ecossistemas fechados; 4) ampliar a emissão; 5) encerrar a emissão clássica. A ordem segue as dependências da validação da cadeia.
+
+**EX038.** 2^15 = 32.768 / 40 ≈ 819 anos; a capacidade é ampla, mas planeje árvores separadas ou faixas de índices reservadas para o failover dos HSMs, para que o estado nunca seja duplicado.
+
+**EX039.** Num calendário fixo definido por política, bem antes de qualquer enfraquecimento crível do RSA — por exemplo, migrar a renovação dos carimbos de tempo para ML-DSA ou SLH-DSA assim que a TSA o suportar, e renovar os registros de evidência existentes logo em seguida.
+
+**EX040.** Cenário: um artigo crível reduz a segurança do ML-KEM-768 abaixo da categoria 3. Participantes: Autoridade de Criptografia, responsáveis pelas plataformas, contatos dos fornecedores, comunicação. Decisões: passar ao ML-KEM-1024 ou contar temporariamente com a parte clássica do híbrido; agendar as novas versões. Sucesso: decisões em até 48 horas, caminhos de configuração identificados para todas as plataformas do nível 1.
+
+**EX041.** "Até 31 de dez. de 2027, 90 % dos fluxos entre locais do nível 1 usam troca de chaves híbrida (evidência A/B)." "Até 30 de jun. de 2027, parcela de desconhecidos do nível 1 abaixo de 5 %." "Até 31 de dez. de 2028, raiz interna ML-DSA distribuída a 100 % das partes confiantes gerenciadas."
+
+**EX042.** Amostra aleatória dos enlaces do nível 1; nova observação independente dos métodos negociados, a partir dos logs dos equipamentos ou de sensores passivos, ao longo de uma semana; aprovado se ≥ 95 % confirmarem o híbrido e toda falha tiver uma exceção aprovada.
+
+**EX043.** Norma criptográfica (registros de governança); inventário com graus (repositório da CBOM); método de priorização e decisões (registros de decisão); métricas de progresso (painéis com fontes); registro de exceções (ferramenta de GRC); relatórios de testes (registros de laboratório/canário); garantia dos fornecedores (questionários e contratos).
+
+**EX044.** "Em 14 de nov., das 22h às 2h, vamos atualizar a forma como as conexões do PACS estabelecem a cifração, para proteger as imagens a longo prazo. A visualização pode pausar brevemente durante a janela; nenhuma mudança nos fluxos de trabalho. As leituras de emergência continuam no visualizador de backup. Em caso de problema, contate a central de serviços de TI pelo ramal 4444; um engenheiro de TI da radiologia estará no local."
+
+**EX045.** Registros de decisão e runbooks mantidos atualizados; ciclos de governança incorporados aos comitês (revisões trimestrais); substitutos e sucessores treinados, com responsabilidades compartilhadas.
+
+**EX046.** Taxa de erro físico (por exemplo, 10^−3); número de qubits físicos; tempo de execução; código corretor de erros e distância; conectividade e tempo de ciclo — cada um com a fonte e se o hardware atual o atende.
+
+**EX047.** O ataque se aplica aos conjuntos de parâmetros padronizados? Ele reduz a segurança abaixo da categoria do NIST visada? Foi reproduzido ou revisado por pares?
+
+**EX048.** Viés de população: as varreduras cobrem sites públicos, e não sistemas clínicos internos ou dispositivos. Viés de ponto de observação: os scanners externos não veem as redes internas, os proxies nem as VPNs.
+
+**EX049.** Configuração e hardware do teste; algoritmos e conjuntos de parâmetros; perfil do tráfego; dados e scripts publicados; reprodução independente ou teste por terceiros.
+
+**EX050.** Alegação; qualidade das evidências; hipóteses principais; o que mudaria a conclusão; implicações para a prática.
+
+**EX051.** Decisão apoiada; escopo; entregas; acesso; autorização escrita; critérios de sucesso; como os resultados serão usados; tratamento e exclusão dos dados.
+
+**EX052.** 0 = nenhuma informação; 1 = alegação sem data; 2 = roteiro datado com algoritmos/protocolos nomeados; 3 = suporte entregue e verificado em teste, mais a divulgação do inventário.
+
+**EX053.** 31 % − 12 % = 19 pontos; 19/31 ≈ 61 % de redução relativa.
+
+**EX054.** Dados do projeto limitados a metadados; retidos pela duração do projeto mais 3 meses para revisão; exclusão segura com registro de verificação assinado pelo patrocinador; resultados agregados retidos.
+
+**EX055.** Artefatos (questionário, rubrica, cláusulas, resultados), procedimentos para conduzir o processo, contatos nos fornecedores e nas compras, questões em aberto e datas.
+
+**EX056.** Decisões robustas → registros de decisão (Cap. 1); padrões de evidência → projeto da graduação do inventário (Cap. 3); avaliação controlada → relatório de canário/avaliação (Cap. 6).
+
+**EX057.** Atualizar a norma criptográfica depois que a FIPS 206 for finalizada; inventariar os usos de assinaturas em que a compacidade do FN-DSA ajuda; avaliar no laboratório e no canário; implantar pelas plataformas orientadas por política, com testes de agilidade.
+
+**EX058.** A ROM de boot não consegue verificar assinaturas pós-quânticas; a substituição está programada; os controles compensatórios reduzem a exposição; a aceitação expira na substituição; a segurança dos pacientes exige firmware validado, e não mudanças provisórias arriscadas.
+
+**EX059.** Fontes: NIST, IETF, orientações setoriais, IACR ePrint; cadência: leitura mensal, atualização trimestral do resumo; produtos: resumo atualizado, duas críticas por trimestre, uma palestra.
+
+**EX060.** CBOM viva com responsáveis; norma criptográfica com ciclo de revisão; registros de decisão; registro de exceções com expirações; runbooks de agilidade e de resposta a quebras; sucessores treinados.
+
+## Rota de ensino de doze disciplinas
+
+Este é o curso de **especialização de pós-graduação**. Ele acompanha a sintética **Northgate Regional Health Trust (NRHT)** pelas decisões em escala organizacional: escolha robusta, prática atual, graduação das evidências, ética do risco, alternativas de projeto, avaliação controlada, integração, casos difíceis, garantia, crítica de pesquisas, projeto aplicado e transferência.
 
 <a id="references"></a>
 
