@@ -269,25 +269,37 @@ You will (1) write clear, small functions; (2) handle errors explicitly; (3) rea
 
 A function should do one thing. Kwame writes fare_for(zone, passengers) that returns a price, separate from code that reads the form.
 
+Separating calculation from input handling means fare_for can be tested with plain values, without a browser or a web form, and the form code can be reviewed for validation on its own. If prices change, only one small function changes. If a flaw appears in form handling, the pricing logic is not involved. Kwame keeps each function short enough to read on one screen, which also makes the review comment he received easy to act on.
+
 ### 4.2 Explicit errors
 
 If zone is unknown, the function raises an error instead of returning zero, which would make tickets free. Failing safely is a security property.
+
+Returning zero looks harmless in a test that only checks valid zones, but in production it would quietly hand out free tickets to anyone who sent a strange zone code. An exception stops the request and leaves a log entry, so the problem is visible. The caller decides what the rider sees, usually a polite message, while the detail stays in the log for engineers.
 
 ### 4.3 Testing
 
 Each function has small tests: valid zones, unknown zone, zero passengers. Tests run on every change.
 
+The unknown-zone test is the most important of the three, because it checks the error path, which normal use rarely exercises. Running tests on every change means a later edit that breaks the error handling is caught within minutes. Kwame also adds a test with a negative passenger count, since a value nobody expects is exactly what an attacker or a buggy client might send.
+
 ### 4.4 Secure defaults
 
 Defaults should be the safe choice: deny unless allowed, escape output unless told otherwise. The template flaw in tmpl arose when one function's default skipped escaping for certain attributes.
+
+A safe default protects every caller who does not think about the issue, which is most of them. An unsafe default requires every caller to remember an extra step, and some will forget. In tmpl, developers who used the affected attributes got unescaped output without asking for it. The fix changed the default, so existing code became safe without any change by ticket-web's developers.
 
 ### 4.5 Readability
 
 Clear names and short functions make review effective; reviewers miss flaws in long, tangled code.
 
+Reviewers have limited attention. A function that fits on one screen and uses names like unescaped_title can be checked in minutes, while a long function with names like t2 hides mistakes. Readability is therefore a security property as well as a courtesy. Kwame's rule of thumb is that if he needs a comment to explain what a line does, the line should probably be rewritten with clearer names first.
+
 ### 4.6 CWE vocabulary
 
 MITRE's CWE Top 25 lists weaknesses such as improper input validation (CWE-20) and cross-site scripting (CWE-79). Learning their names early helps read advisories.
+
+The tmpl flaw is an example of CWE-79: output reached a page without proper escaping. Advisories name the CWE, and knowing it tells a reader at once what kind of mistake caused the flaw and where to look in their own code for the same pattern. Kwame keeps a short list of the CWEs relevant to ticket-web and checks new code against it during review.
 
 ### Version control
 
@@ -333,21 +345,31 @@ You will (1) write clear technical reports; (2) present security findings to mix
 
 Engineers want detail, managers want decisions and impact, the public wants reassurance and facts. Kwame writes the same finding three ways.
 
+For engineers: the tmpl version, the affected attributes and the upgrade path. For managers: the exposure period, whether data was affected and what the fix costs. For the public: that a flaw was found and fixed, and that no evidence of misuse was seen. The facts are the same in all three; only the detail and emphasis change. Kwame checks that none of the versions says anything another version contradicts.
+
 ### 5.2 Report structure
 
 Summary, context, findings, evidence, recommendations, limitations. The summary fits in five lines.
+
+The summary is written last but read first, and often it is the only part managers read. It must stand alone: what happened, what it means and what is recommended. The remaining parts support it for readers who need to check. Limitations come at the end but are never omitted, because a report that hides them loses credibility as soon as a reader finds one. Each finding links to its evidence, so a reviewer can follow any claim to its source without asking the author.
 
 ### 5.3 Diagrams
 
 Kwame's dependency graph diagram made the tmpl surprise clear to managers in one glance.
 
+The diagram showed tmpl two arrows away from ticket-web, which answered the question every manager asked: how did we not know? A diagram works when it shows one idea. Kwame removed packages unrelated to the finding, highlighted the path from ticket-web to tmpl, and labelled each arrow, so the picture could be understood without the report beside it. He also included the date of the graph, since dependencies change.
+
 ### 5.4 Uncertainty
 
 "We have no evidence the flaw was used" is different from "the flaw was not used". Ingrid insists on accurate phrasing.
 
+The first statement reports what was examined and what was found. The second claims knowledge the team does not have, since logs may not cover every request and an attacker may leave no trace. Readers make different decisions on each: the first may justify further monitoring, while the second suggests nothing more is needed. Accurate phrasing protects both the reader and the team.
+
 ### 5.5 Responsible detail
 
 Reports about flaws avoid giving step-by-step misuse instructions; they describe the weakness, its effect and the fix.
+
+Reports travel further than intended: they are forwarded, quoted and sometimes leaked. A description of the weakness and its fix lets readers act, while exploit steps help only attackers. Where engineers need technical detail to verify a fix, it goes in a restricted appendix with a list of who may read it. Kwame's reports describe the tmpl flaw as an escaping failure in certain attributes, without showing a working attack.
 
 ### Written decisions
 
@@ -393,21 +415,31 @@ You will (1) use series and growth models to reason about compounding effects; (
 
 When each component brings its own dependencies, the total can grow like a geometric series. If every package added brings, on average, 0.8 new transitive packages, adding one direct dependency adds 1 + 0.8 + 0.64 + ... = 1/(1 − 0.8) = 5 packages in expectation. This simple sum explains why a small decision can enlarge the attack surface far more than expected.
 
+The series converges only when the average is below one; at one or above, each addition could bring an ever-growing tree, which in practice is limited only by the size of the ecosystem. Kwame uses the figure as a reminder, not a forecast: before adding a dependency, the team asks what it brings with it, and looks at the actual transitive list rather than the package's own size.
+
 ### 6.2 Decay models
 
 After Coastline releases a fixed version of its mobile ticket app, users update gradually. If 10% of the remaining old installations update each day, the share still on the old version after t days is 0.9^t: about 35% after 10 days and 4% after 30. This exponential decay model helps plan how long old server-side support for the vulnerable version must continue.
+
+The model assumes each remaining user is equally likely to update on any day, which is the assumption the next comparison tests. Real riders do not behave that way.
 
 ### 6.3 Linear versus exponential
 
 Kwame fits both models to the real update data from the last app release. The exponential model fits the first two weeks well but overestimates updating later, when the remaining users are those who rarely open the app. Neither model is perfect; he reports both and the range they imply.
 
+A linear model, which assumes a fixed number of users update each day, fails in the opposite way: it predicts everyone will have updated by a certain date, which never happens. Reporting a range between the two models is more honest than choosing the one that gives the most convenient answer. The lingering tail of rare users is what security planning must cover.
+
 ### 6.4 Using the models
 
 The models inform two decisions: whether to force updates for security fixes, and how long to keep compatibility code. A forced update shortens the tail but annoys riders whose phones are old.
 
+The decision weighs exposure against cost. If a flaw lets someone tamper with tickets, a forced update after a few days may be justified; if the risk is minor, a prompt is enough. Compatibility code kept for old versions is itself a risk, since it preserves paths that the fix closed elsewhere, so its removal date is planned from the model's tail estimate.
+
 ### 6.5 Honest fit
 
 A good fit on past data does not guarantee future behaviour; holidays, app store delays and phone models change patterns. Kwame states the model's assumptions in every chart caption.
+
+Kwame also keeps the gap between prediction and outcome in view. If the model predicted 4% unpatched and reality showed 7%, he records the difference and adjusts the next forecast, rather than quietly refitting so the old prediction looks right. Captions such as 'assumes 10% of remaining users update daily; app-store review delays not modelled' tell readers when not to trust the chart.
 
 ### Worked example
 
@@ -445,9 +477,13 @@ You will (1) reason about rare events and false alarms; (2) compute and interpre
 
 Most new dependencies are legitimate. If 1 in 1,000 proposed packages were malicious and a check flagged 5% of legitimate ones, most flags would still be false alarms. This is the base-rate effect: alerts must be cheap to review or teams will ignore them.
 
+Suppose 10,000 proposals arrive in a year: about 10 are malicious and about 500 legitimate ones are flagged. Even if every malicious one is caught, only about 2% of flags are real. The check is still worthwhile if reviewing a flag takes minutes, but not if each needs a long investigation, which is why Kwame designs the review to be quick.
+
 ### 7.2 Lookalike names
 
 Ohm et al. (2020) documented malicious packages that used names close to popular ones (typosquatting). A defensive check compares each newly proposed dependency name with popular names and asks a human to look when they differ by a single character.
+
+Attackers rely on hurried developers typing a name from memory or copying it from a forum post. The check cannot judge intent; it only notices similarity and passes the decision to a person who can look at the publisher, the package's age and its download history. Popular names are taken from the packages Coastline already uses, plus a list of widely used packages in the ecosystem.
 
 ### Lab — Lab — name similarity
 
@@ -481,13 +517,19 @@ requests     REVIEW: near requestz
 
 Three of four proposed names are flagged: escape-htm1 (one character from escape-html), qr-maker (one from qr-make), and requests (one from requestz). datefmt is not near any popular name. The requests flag shows why review matters: in another ecosystem "requests" may be a well-known legitimate package, so the human reviewer checks publisher, history and download counts before deciding.
 
+The three flags show different edits: escape-htm1 swaps a letter for a digit, qr-maker adds one letter, and requests replaces the final letter. Edit distance 1 means exactly one such insertion, deletion or substitution.
+
 ### 7.4 Choosing a threshold
 
 A distance of 1 catches most single typing errors with few flags; a distance of 2 would flag many more legitimate names. Kwame measures over a month: 38 new dependency proposals, 4 flagged at distance 1, of which 1 was suspicious and blocked after review.
 
+One suspicious package out of four flags is a precision of about 25%, which is acceptable for a review that takes a few minutes each. At distance 2, Kwame's trial produced far more flags for the same single catch, so the extra review time bought nothing. The month's counts justify the choice better than intuition would, and they will be checked again as the dependency list grows.
+
 ### 7.5 Statistics for decisions
 
 Kwame reports the flag rate and the reviewed outcomes, not just "the check works". Over time these counts estimate the check's precision.
+
+Counts also show what the check cannot do. One catch in a month is too few to estimate how many malicious packages it misses, since those are never seen. Kwame states this limit and suggests a periodic manual review of a sample of unflagged additions to estimate the miss rate. Decisions about tightening or loosening the check then rest on data rather than on the memory of a single dramatic catch.
 
 ### Worked example
 
