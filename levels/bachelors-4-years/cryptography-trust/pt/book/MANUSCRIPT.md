@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 100, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–40 (EX031–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem criptografia desde os fundamentos matemáticos até a operação de serviços de confiança numa organização real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios ilustram conceitos (XOR, cifras clássicas, hash com salt, cadeias de hashes) sobre dados sintéticos; as cifras de brinquedo aparecem apenas para explicar por que falham. Sistemas de produção usam bibliotecas avaliadas; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Katz e Lindell (3ª ed.); Menezes et al., [*Handbook of Applied Cryptography*](h
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -474,11 +474,482 @@ A disponibilidade pública de dados vazados não torna ético o seu uso. Divulga
 
 - **EX030 — Passos da divulgação.** Como Priya tratou a falha de login por HTTP? *Rubrica:* 3 = parou de testar, relatou ao contato de segurança do fornecedor com prazo de noventa dias, informou o professor;; 2 = relatou;; 1 = explorou;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como os sistemas operacionais armazenam e protegem chaves; (2) usar o gerador aleatório seguro do sistema; (3) configurar com bom senso a cifração de disco completo.
+
+### 11.1 Chaves no sistema operacional
+
+Os sistemas operacionais oferecem repositórios de chaves: áreas protegidas onde as aplicações guardam chaves privadas e certificados, muitas vezes apoiadas em hardware, como um TPM (trusted platform module). Priya examina como os notebooks da equipe da Tidewell guardam os certificados usados para se conectar à wiki da equipe. A chave privada é marcada como não exportável, de modo que as aplicações podem usá-la para assinar, mas não podem copiá-la para fora. Ela aprende que esse projeto limita o dano causado por malware: um atacante pode usar a chave indevidamente enquanto está na máquina, mas não consegue levá-la para outro lugar, e remover o malware encerra o uso indevido.
+
+### 11.2 Aleatoriedade segura
+
+O sistema operacional coleta eventos imprevisíveis e oferece um gerador aleatório criptograficamente seguro. O módulo secrets do Python o usa, enquanto o módulo random não o usa e nunca deve ser usado para chaves, tokens ou salts. Priya revisa o script de um voluntário da biblioteca que gerava senhas temporárias do portal com random.choice e o substitui por secrets.choice. Ela explica que as saídas do random podem ser previstas depois de observadas em quantidade suficiente, o que permitiria a alguém adivinhar as senhas temporárias de outros leitores. O NIST SP 800-90A descreve os projetos de gerador em que os sistemas operacionais se baseiam.
+
+### 11.3 Cifração de disco completo
+
+Os notebooks da Tidewell usam cifração de disco completo, que protege os dados se um notebook for perdido enquanto está desligado. Priya confere a configuração: as chaves de recuperação ficam guardadas no sistema de gerenciamento do consórcio, e não em post-its; os notebooks exigem um PIN na inicialização, além do módulo de hardware; e o modo de suspensão é substituído pela hibernação, já que o conteúdo da memória, incluindo as chaves do disco, persiste durante a suspensão. Ela documenta que a cifração de disco completo não protege um notebook roubado enquanto está desbloqueado, de modo que o bloqueio de tela continua essencial.
+
+### Exemplo resolvido
+
+Priya confirma as chaves não exportáveis dos notebooks, substitui random.choice por secrets.choice nas senhas temporárias e reforça a cifração de disco completo com chaves de recuperação centralizadas e PINs na inicialização.
+
+> **Caso sintético.** Os notebooks da Tidewell são inventados; o SP 800-90A é real.
+
+### Erros e limites
+
+Chaves não exportáveis ainda podem ser usadas indevidamente enquanto o malware estiver rodando. A cifração de disco completo não oferece nada depois que o sistema é desbloqueado.
+
+### Exercícios
+
+- **EX031 — Benefício da não exportação.** O que uma chave não exportável impede? *Rubrica:* 3 = copiar a chave para fora da máquina, limitando o dano do malware ao uso indevido local;; 2 = cópia;; 1 = todo uso indevido;; 0 = nenhuma.
+
+- **EX032 — Senhas temporárias.** Por que substituir random.choice por secrets.choice? *Rubrica:* 3 = o random é previsível; o secrets usa o gerador seguro do sistema operacional;; 2 = previsível;; 1 = velocidade;; 0 = nenhuma.
+
+- **EX033 — Suspensão versus hibernação.** Por que preferir a hibernação à suspensão em notebooks cifrados? *Rubrica:* 3 = a memória, incluindo as chaves do disco, continua energizada durante a suspensão;; 2 = chaves na memória;; 1 = bateria;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir a força das senhas em bits; (2) comparar políticas pelo espaço de adivinhação; (3) reconhecer por que as escolhas humanas reduzem a força real.
+
+### 12.1 Espaço de adivinhação em bits
+
+A força contra a adivinhação é medida pelo número de possibilidades igualmente prováveis, expresso em bits como o logaritmo de base 2. Um segredo escolhido uniformemente entre N possibilidades tem log2(N) bits. Cada bit a mais dobra o trabalho do atacante. Priya calcula isso para as políticas de senha que a Tidewell está considerando. O cálculo supõe que todas as possibilidades são igualmente prováveis, o que vale para segredos gerados por máquina, mas raramente para as escolhas humanas. Ela mantém essa premissa visível em todas as tabelas que produz. Ela também explica os bits à equipe usando lançamentos de moeda.
+
+### Laboratório — Bits das políticas de senha
+
+```python
+"""Guessing space for password policies, in bits (synthetic policies, uniform choice assumed)."""
+import math
+POLICIES = [("8 lowercase letters", 26, 8), ("8 mixed + digits", 62, 8),
+            ("4 words from 7776-word list", 7776, 4), ("6 words from 7776-word list", 7776, 6)]
+
+def main():
+    for name, alpha, n in POLICIES:
+        print(f"{name:<30} {n * math.log2(alpha):5.1f} bits")
+    print("human-chosen passwords fall far below these uniform figures")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_entropy.py`. Saída verificada:
+
+```text
+8 lowercase letters             37.6 bits
+8 mixed + digits                47.6 bits
+4 words from 7776-word list     51.7 bits
+6 words from 7776-word list     77.5 bits
+human-chosen passwords fall far below these uniform figures
+```
+
+### 12.2 Ler a tabela
+
+Oito letras minúsculas aleatórias dão 37,6 bits; oito caracteres aleatórios entre letras e dígitos dão 47,6. Quatro palavras escolhidas ao acaso numa lista de 7.776 palavras dão 51,7 bits, e seis palavras dão 77,5. Uma frase-senha gerada aleatoriamente, portanto, supera uma senha de oito caracteres de aparência complexa e é mais fácil de lembrar. Priya enfatiza a palavra "aleatoriamente": uma frase escolhida por uma pessoa, como o título de um livro favorito, tem muito menos bits efetivos, porque os atacantes tentam primeiro as frases comuns. A última linha do laboratório enuncia esse limite. Grace pede a tabela para o boletim da equipe.
+
+### 12.3 Escolhas humanas e política
+
+Estudos reais sobre senhas mostram que as pessoas escolhem padrões previsíveis: primeira letra maiúscula, anos e pontos de exclamação. As regras de composição muitas vezes tornam as senhas mais difíceis de lembrar sem torná-las muito mais difíceis de adivinhar. Priya recomenda que a Tidewell permita frases-senha longas, confira as novas senhas contra listas de senhas comuns e vazadas, limite a taxa de tentativas de login e ofereça um gerador de frases-senha. Ela enquadra a recomendação como redução da adivinhabilidade, e não como cumprimento de regras, e anota que o hash lento de senhas do Capítulo 9 acrescenta proteção. Grace leva o plano ao conselho.
+
+### Exemplo resolvido
+
+Priya mostra que seis palavras aleatórias dão 77,5 bits contra 47,6 de oito caracteres mistos e recomenda frases-senha longas, verificação contra senhas vazadas e limitação de taxa.
+
+> **Caso sintético.** As políticas são inventadas; os cálculos são padrão.
+
+### Erros e limites
+
+Os cálculos em bits só se aplicam a escolhas uniformemente aleatórias. A limitação de taxa protege contra a adivinhação online, e não contra ataques offline a hashes roubados.
+
+### Exercícios
+
+- **EX034 — Fórmula dos bits.** Quantos bits tem um segredo escolhido uniformemente entre N possibilidades? *Rubrica:* 3 = log2(N);; 2 = logaritmo;; 1 = N;; 0 = nenhuma.
+
+- **EX035 — Resultado da frase-senha.** Compare quatro palavras aleatórias com oito caracteres mistos, a partir do laboratório. *Rubrica:* 3 = 51,7 bits contra 47,6 bits;; 2 = números;; 1 = invertido;; 0 = nenhuma.
+
+- **EX036 — Frases humanas.** Por que uma frase escolhida por uma pessoa tem menos bits efetivos? *Rubrica:* 3 = os atacantes tentam primeiro as frases comuns; as escolhas não são uniformes;; 2 = previsível;; 1 = igual;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como a criptografia sustenta a autenticação; (2) comparar senhas, códigos de uso único e chaves de segurança; (3) projetar o acesso da equipe e dos leitores.
+
+### 13.1 Fatores de autenticação
+
+A autenticação prova a identidade usando algo que você sabe, tem ou é. As senhas são conhecimento; celulares que geram códigos de uso único e chaves de segurança de hardware são posse. Priya estuda como funcionam os códigos de uso único: o celular e o servidor compartilham um segredo e calculam a partir dele e do horário atual códigos curtos usando HMAC, de modo que uma senha roubada sozinha não basta. As chaves de segurança de hardware vão além, usando assinaturas de chave pública vinculadas ao nome do site, o que impede que sites de phishing reutilizem as respostas. Priya demonstra os dois fatores numa oficina para a equipe.
+
+### 13.2 Comparar os métodos
+
+Priya compara os métodos para a equipe da Tidewell. Senhas sozinhas são vulneráveis a phishing e à reutilização. Os códigos baseados em tempo detêm muitos ataques, mas podem ser capturados por phishing em tempo real, por um site falso que retransmite os códigos. As chaves de segurança resistem ao phishing porque a chave assina um desafio que inclui a origem do site real, e a origem de um site falso produz uma assinatura inútil. Ela recomenda chaves de segurança para os administradores e para a equipe com acesso aos dados dos leitores, e códigos de uso único como alternativa, anotando os custos e a necessidade de chaves reservas.
+
+### 13.3 Projeto do acesso
+
+Para os leitores, Priya recomenda senhas ou frases-senha com códigos de uso único opcionais, já que exigir chaves de hardware excluiria muitos usuários. Para a equipe, ela projeta um acesso baseado em papéis: a equipe de cada unidade vê os leitores da sua unidade; os administradores usam contas separadas com chaves de segurança; e as contas de serviço usam certificados, em vez de senhas compartilhadas. Ela documenta que a autenticação prova quem alguém é, mas a autorização decide o que essa pessoa pode fazer, e que as duas precisam ser revistas quando alguém da equipe muda de papel ou sai. As revisões de acesso são agendadas a cada seis meses com os gerentes das unidades.
+
+### Exemplo resolvido
+
+Priya recomenda chaves de segurança para os administradores e para a equipe que lida com dados, códigos de uso único opcionais para os leitores e acesso baseado em papéis, com contas de serviço baseadas em certificados.
+
+> **Caso sintético.** Os papéis da Tidewell são inventados.
+
+### Erros e limites
+
+Uma autenticação forte não corrige permissões excessivas. Os processos de recuperação costumam ser o elo mais fraco.
+
+### Exercícios
+
+- **EX037 — Códigos de uso único.** Como são calculados os códigos de uso único baseados em tempo? *Rubrica:* 3 = HMAC sobre um segredo compartilhado e o horário atual;; 2 = HMAC;; 1 = aleatórios;; 0 = nenhuma.
+
+- **EX038 — Resistência ao phishing.** Por que as chaves de segurança resistem ao phishing? *Rubrica:* 3 = assinam um desafio vinculado à origem do site real, inútil para sites falsos;; 2 = vínculo com a origem;; 1 = não resistem;; 0 = nenhuma.
+
+- **EX039 — Acessibilidade para os leitores.** Por que não exigir chaves de hardware dos leitores? *Rubrica:* 3 = excluiria muitos usuários;; 2 = exclusão;; 1 = só o custo;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar princípios de privacidade aos dados da biblioteca; (2) usar a pseudonimização e conhecer seus limites; (3) decidir quando a cifração favorece a privacidade.
+
+### 14.1 Privacidade na biblioteca
+
+As bibliotecas têm uma longa tradição de proteger o que os leitores leem. Priya estuda a política de privacidade da Tidewell e a legislação de proteção de dados aplicável, identificando princípios: coletar apenas os dados necessários, usá-los apenas para as finalidades declaradas, mantê-los apenas pelo tempo necessário e protegê-los de forma adequada. O histórico de leitura é especialmente sensível porque pode revelar saúde, religião ou posições políticas. A criptografia sustenta esses princípios, mas não pode substituí-los; cifrar dados que não deveriam ter sido coletados ainda deixa um risco. Ela lista quais princípios cada sistema da Tidewell atende ou deixa de atender hoje.
+
+### 14.2 Pseudonimização
+
+Para um estudo sobre o uso das unidades, Grace pede os dados de empréstimos sem as identidades. Priya substitui os números dos cartões por pseudônimos com chave calculados com HMAC, usando uma chave mantida pelo consórcio. Um hash sem chave falharia, porque os números dos cartões seguem um formato conhecido e poderiam ter o hash calculado exaustivamente. Ela anota que dados pseudonimizados ainda são dados pessoais segundo muitas leis, porque quem tem a chave pode reidentificá-los, e que combinações raras, como um leitor que pega livros incomuns numa unidade pequena, podem identificar pessoas mesmo sem os números dos cartões.
+
+### 14.3 Quando a cifração ajuda
+
+Priya mapeia onde a cifração favorece a privacidade: o TLS mantém as escolhas de leitura privadas na rede, a cifração do banco de dados protege contra backups roubados e a cifração de ponta a ponta protegeria as mensagens entre leitores e bibliotecários. A cifração não ajuda quando o próprio consórcio usa os dados de forma indevida ou os guarda por tempo demais, e é por isso que os limites de retenção e os logs de acesso importam. Ela recomenda apagar os históricos de empréstimos depois da devolução, a menos que os leitores optem por mantê-los, o que elimina o risco de forma mais eficaz do que qualquer cifra. Grace leva a proposta de exclusão ao conselho para aprovação.
+
+### Exemplo resolvido
+
+Priya pseudonimiza os dados de empréstimos com HMAC sob uma chave do consórcio, sinaliza os riscos de reidentificação e recomenda apagar os históricos depois da devolução, por padrão.
+
+> **Caso sintético.** Os dados e o estudo da Tidewell são inventados.
+
+### Erros e limites
+
+Dados pseudonimizados muitas vezes podem ser reidentificados. A cifração não impede o uso indevido por quem tem acesso autorizado.
+
+### Exercícios
+
+- **EX040 — Leitura sensível.** Por que o histórico de leitura é especialmente sensível? *Rubrica:* 3 = pode revelar saúde, religião ou posições políticas;; 2 = pessoal;; 1 = não é sensível;; 0 = nenhuma.
+
+- **EX041 — Hash sem chave.** Por que o hash sem chave dos números dos cartões falha? *Rubrica:* 3 = o formato conhecido permite calcular o hash de todos e comparar;; 2 = adivinhável;; 1 = funciona;; 0 = nenhuma.
+
+- **EX042 — Exclusão por padrão.** Que padrão Priya recomenda para os históricos de empréstimos? *Rubrica:* 3 = apagar depois da devolução, a menos que os leitores optem por mantê-los;; 2 = apagar;; 1 = manter;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) tornar os logs evidentes a adulterações com cadeias de hashes; (2) medir os controles de segurança com definições claras; (3) interpretar as evidências com honestidade.
+
+### 15.1 Por que os logs precisam de proteção
+
+Quando um leitor reclama que alguém acessou seu registro, a Tidewell confere o log de acesso. Mas um insider que tivesse usado os dados indevidamente também poderia editar o log. Priya aprende que as evidências precisam ser evidentes a adulterações (tamper-evident): as mudanças precisam ser detectáveis. Uma cadeia de hashes faz isso incluindo o hash de cada entrada na entrada seguinte, de modo que editar qualquer entrada muda todos os hashes posteriores. Publicar ou guardar separadamente o hash mais recente, chamado de cabeça (head), permite a um auditor detectar edições. Os logs do Certificate Transparency, definidos na RFC 6962, usam uma estrutura relacionada, uma árvore de Merkle, em escala de internet.
+
+### Laboratório — Log de auditoria encadeado por hashes
+
+```python
+"""Tamper-evident audit log: each entry's hash includes the previous hash (SHA-256)."""
+import hashlib
+def chain(entries):
+    prev, out = "0" * 64, []
+    for e in entries:
+        prev = hashlib.sha256((prev + e).encode()).hexdigest(); out.append(prev)
+    return out
+
+def main():
+    log = ["2026-05-01 admin login", "2026-05-01 patron export", "2026-05-02 key rotated"]
+    good = chain(log)
+    print("head:", good[-1][:16])
+    log[1] = "2026-05-01 report viewed"
+    bad = chain(log)
+    print("head after editing entry 2:", bad[-1][:16])
+    print("first differing entry:", next(i + 1 for i, (x, y) in enumerate(zip(good, bad)) if x != y))
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_chain.py`. Saída verificada:
+
+```text
+head: 4492b592d8b729f0
+head after editing entry 2: c36641715cd10666
+first differing entry: 2
+```
+
+### 15.2 Ler a cadeia
+
+O log de três entradas tem uma cabeça que começa com 4492b592. Quando a segunda entrada é editada de "patron export" para "report viewed", a cabeça passa a ser c3664171, e o primeiro hash diferente está na entrada 2, mostrando exatamente onde a adulteração começou. Priya anota o limite: se um insider puder reescrever a cadeia inteira e a cabeça guardada, nada é detectado. A cabeça precisa, portanto, ser guardada onde o insider não possa alterá-la, por exemplo enviada diariamente ao sistema de um auditor separado ou assinada por outra equipe.
+
+### 15.3 Medir os controles
+
+Priya define medidas para os controles da Tidewell: a porcentagem de contas da equipe que usam chaves de segurança, o número de dias de antecedência com que os certificados são renovados antes da expiração e a proporção de entradas do log de acesso revisadas. Cada medida tem uma definição precisa e uma fonte de dados. Ela relata as linhas de base com honestidade: até agora, apenas 40 por cento da equipe usa chaves de segurança, e as revisões de log acontecem mensalmente, e não semanalmente. Ela resiste a apresentar apenas os números favoráveis, porque as decisões da direção dependem de um quadro preciso. Ela mostra cada medida como uma tendência ao longo dos meses, para que a direção veja se os controles estão melhorando ou piorando.
+
+### Exemplo resolvido
+
+Priya constrói um log encadeado por hashes, mostra que uma edição muda a cabeça de 4492b592 para c3664171 e a localiza na entrada 2, e relata as linhas de base dos controles, incluindo a adoção de 40 por cento das chaves de segurança.
+
+> **Caso sintético.** As entradas do log e as linhas de base são inventadas; a RFC 6962 é real.
+
+### Erros e limites
+
+As cadeias de hashes só detectam adulterações se a cabeça for protegida separadamente. Medidas sem definição produzem números inconsistentes.
+
+### Exercícios
+
+- **EX043 — Propriedade da cadeia.** Por que editar uma entrada muda todos os hashes posteriores? *Rubrica:* 3 = o hash de cada entrada inclui o hash anterior;; 2 = encadeamento;; 1 = não muda;; 0 = nenhuma.
+
+- **EX044 — Cabeças do laboratório.** Informe a cabeça antes e depois da edição e onde começa a diferença. *Rubrica:* 3 = 4492b592 e depois c3664171, diferindo a partir da entrada 2;; 2 = cabeças;; 1 = errado;; 0 = nenhuma.
+
+- **EX045 — Proteger a cabeça.** Onde a cabeça precisa ser guardada, e por quê? *Rubrica:* 3 = num lugar que o insider não possa alterar, por exemplo o sistema de um auditor separado ou assinada por outra equipe;; 2 = separada;; 1 = no mesmo servidor;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) posicionar os controles criptográficos numa arquitetura geral; (2) identificar as fronteiras de confiança; (3) aplicar a defesa em profundidade aos sistemas da biblioteca.
+
+### 16.1 Fronteiras de confiança
+
+Priya desenha a arquitetura da Tidewell com as fronteiras de confiança: linhas em que os dados passam entre áreas com níveis diferentes de confiança, como entre a internet e o portal, entre o portal e o banco de dados de leitores e entre o consórcio e o provedor de e-books. Os controles criptográficos se concentram nas fronteiras: TLS onde a internet encontra o portal, autenticação mútua onde o portal chama o banco de dados e mensagens assinadas onde o consórcio troca dados de empréstimos com o provedor. Desenhar as fronteiras primeiro mostra onde a criptografia é necessária e onde ela só acrescentaria complexidade.
+
+### 16.2 Defesa em profundidade
+
+Priya organiza os controles em camadas, para que uma falha não exponha os leitores. O portal usa TLS e cabeçalhos de segurança; a aplicação autentica os usuários e confere as permissões; o banco de dados cifra os campos sensíveis e só aceita conexões do portal, com certificados; os backups são cifrados; e os logs são encadeados por hashes. Se um atacante explorasse um bug no portal, ainda enfrentaria as permissões do banco de dados e a cifração dos campos. Ela documenta quais ameaças cada camada trata e evita camadas que se duplicam sem acrescentar proteção.
+
+### 16.3 Chaves na arquitetura
+
+Priya acrescenta ao diagrama o gerenciamento de chaves, que os rascunhos anteriores deixavam de fora. Um serviço gerenciado de chaves guarda as chaves do banco de dados e dos backups; a chave privada TLS do portal fica nos servidores web, com permissões restritas; e as chaves de segurança da equipe guardam as próprias chaves privadas. Ela marca o serviço de chaves como um componente de alto valor, que exige administração e monitoramento separados. Grace observa que os documentos de arquitetura anteriores nunca mostravam as chaves, o que tornava impossível planejar a rotação ou avaliar quem podia decifrar o quê. O diagrama revisado é versionado.
+
+### Exemplo resolvido
+
+O diagrama de Priya marca três fronteiras de confiança, cinco camadas de defesa e a localização de cada chave, destacando o serviço de chaves como um componente de alto valor.
+
+> **Caso sintético.** A arquitetura é inventada.
+
+### Erros e limites
+
+Camadas que compartilham uma fraqueza, como uma única conta de administrador que controla tudo, não acrescentam profundidade. Os diagramas precisam ser atualizados à medida que os sistemas mudam.
+
+### Exercícios
+
+- **EX046 — Fronteira de confiança.** Cite duas fronteiras de confiança na arquitetura da Tidewell. *Rubrica:* 3 = duas entre internet-portal, portal-banco de dados, consórcio-provedor;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX047 — Bug no portal.** O que um atacante ainda enfrentaria depois de explorar um bug no portal? *Rubrica:* 3 = as permissões do banco de dados e a cifração dos campos;; 2 = uma camada;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Chaves ausentes.** O que os documentos de arquitetura anteriores omitiam, e por que isso importava? *Rubrica:* 3 = a localização das chaves; não era possível avaliar a rotação nem o acesso à decifração;; 2 = chaves;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o princípio de Kerckhoffs; (2) mostrar por que as cifras clássicas falham; (3) definir objetivos modernos de segurança, como a indistinguibilidade.
+
+### 17.1 O princípio de Kerckhoffs
+
+Uma cifra deve continuar segura mesmo que tudo sobre ela, exceto a chave, seja público. Esse princípio, enunciado por Auguste Kerckhoffs no século XIX, orienta a criptografia moderna: o AES é integralmente publicado no FIPS 197, e sua segurança se apoia no sigilo das chaves. Priya aprende por que algoritmos secretos são uma aposta ruim: eles acabam sendo descobertos por engenharia reversa, recebem pouco escrutínio público e mudá-los é caro. Normas públicas e bem analisadas concentram a atenção dos especialistas onde as fraquezas podem ser encontradas e corrigidas cedo. Os fornecedores da Tidewell são solicitados a confirmar que usam algoritmos publicados.
+
+### Laboratório — Quebrar uma cifra de César
+
+```python
+"""Break a toy Caesar cipher by frequency analysis to show why classical ciphers fail."""
+from collections import Counter
+TEXT = "THE LIBRARY OPENS AT NINE AND THE READING ROOM CLOSES AT EIGHT EVERY EVENING"
+
+def shift(s, k):
+    return "".join(chr((ord(c) - 65 + k) % 26 + 65) if c.isalpha() else c for c in s)
+
+def main():
+    ct = shift(TEXT, 11)
+    top = Counter(c for c in ct if c.isalpha()).most_common(1)[0][0]
+    k = (ord(top) - ord("E")) % 26
+    print("ciphertext:", ct[:30], "...")
+    print("most common letter:", top, "-> guessed shift", k)
+    print("recovered:", shift(ct, -k)[:30], "...")
+    print("keys to try by brute force:", 25)
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_caesar.py`. Saída verificada:
+
+```text
+ciphertext: ESP WTMCLCJ ZAPYD LE YTYP LYO  ...
+most common letter: P -> guessed shift 11
+recovered: THE LIBRARY OPENS AT NINE AND  ...
+keys to try by brute force: 25
+```
+
+### 17.2 Por que as cifras clássicas falham
+
+O laboratório cifra uma frase sobre o horário da biblioteca com um deslocamento de César de 11. A letra mais comum do texto cifrado é P, e supor que ela representa o E, a letra mais comum do inglês, dá o deslocamento 11 e recupera o texto. Mesmo sem análise de frequência, existem apenas 25 deslocamentos, então a força bruta é instantânea. Priya amplia a lição: as cifras de substituição preservam os padrões das letras, e qualquer cifra que vaze estrutura sobre o texto claro pode ser atacada estatisticamente. O Handbook of Applied Cryptography, no capítulo 7, faz um panorama desses sistemas clássicos e de por que eles foram abandonados.
+
+### 17.3 Objetivos modernos
+
+A criptografia moderna define a segurança com precisão. Katz e Lindell descrevem a indistinguibilidade: um atacante que escolhe duas mensagens e vê a cifração de uma delas não deve conseguir dizer qual, com probabilidade significativamente melhor do que o lançamento de uma moeda. Isso exclui o vazamento de padrões, à parte o tamanho. Um esquema determinístico, em que a mesma mensagem sempre é cifrada da mesma forma, falha nessa definição, porque as mensagens repetidas ficam visíveis. É por isso que a cifração moderna usa nonces aleatórios ou únicos e por que a cifração autenticada também garante a integridade.
+
+### Exemplo resolvido
+
+Priya quebra uma cifra de César com deslocamento 11 por análise de frequência, explica o princípio de Kerckhoffs usando o FIPS 197 e mostra por que a cifração determinística falha na indistinguibilidade.
+
+> **Caso sintético.** A mensagem é inventada; o FIPS 197 e o Handbook são reais.
+
+### Erros e limites
+
+A indistinguibilidade não esconde o tamanho da mensagem. As cifras clássicas servem para a história e o ensino, nunca para a proteção.
+
+### Exercícios
+
+- **EX049 — Kerckhoffs.** Enuncie o princípio de Kerckhoffs. *Rubrica:* 3 = uma cifra deve ser segura mesmo que tudo, exceto a chave, seja público;; 2 = sigilo da chave;; 1 = algoritmo secreto;; 0 = nenhuma.
+
+- **EX050 — Quebra da cifra de César.** Como o laboratório encontrou o deslocamento? *Rubrica:* 3 = a letra mais comum, P, foi tomada como E, dando o deslocamento 11;; 2 = frequência;; 1 = só força bruta;; 0 = nenhuma.
+
+- **EX051 — Falha determinística.** Por que a cifração determinística falha na indistinguibilidade? *Rubrica:* 3 = mensagens repetidas são cifradas de forma idêntica, revelando a repetição;; 2 = padrões;; 1 = passa;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma questão pesquisável sobre a prática criptográfica; (2) buscar literatura e normas de forma sistemática; (3) planejar um pequeno estudo de forma ética.
+
+### 18.1 Uma questão pesquisável
+
+Priya quer estudar como a equipe da biblioteca reage aos avisos de certificado TLS. Ela refina um interesse vago numa questão pesquisável: "Quando lhes é mostrado um aviso de certificado simulado num site de treinamento da equipe, que proporção da equipe da Tidewell prossegue, e uma explicação de uma página reduz essa proporção?" A questão nomeia uma população, um comportamento mensurável e uma intervenção. O Dr. Echeverría aponta que uma simulação precisa ficar claramente separada dos sistemas reais, para que a equipe nunca seja posta em risco. Ela refina a redação duas vezes.
+
+### 18.2 Buscar fontes
+
+Priya busca em bases acadêmicas estudos sobre avisos de segurança, registra os termos de busca e as datas e lê a RFC 8446 e a RFC 5280 para descrever o que os avisos indicam tecnicamente. Ela mantém uma tabela das fontes, com a população, o método e os achados de cada estudo, anotando quais usaram participantes de laboratório e quais observaram a navegação real. Ela distingue estudos revisados por pares de relatórios de fornecedores e registra a citação completa de cada fonte, verificando os links antes de acrescentá-los à bibliografia. Ela também pede à bibliotecária da universidade que confira sua estratégia de busca, o que a leva a dois estudos relevantes que ela tinha deixado passar.
+
+### 18.3 Planejamento ético
+
+O estudo envolve pessoas, então Priya submete o projeto ao comitê de ética da universidade. Seu plano explica que a participação é voluntária, que as respostas são anônimas, que o aviso aparece apenas num site de treinamento sem dados reais e que os participantes recebem depois um esclarecimento (debriefing) com a explicação de por que os avisos importam. Grace confirma por escrito o apoio do consórcio. O comitê pede que ela garanta que os gerentes nunca vejam resultados individuais, o que ela acrescenta. A revisão ética molda o desenho do estudo, e não apenas a papelada. Ela também prepara uma folha de informações em linguagem simples para os participantes.
+
+### Exemplo resolvido
+
+Priya escreve uma questão específica sobre avisos de certificado, mantém uma tabela de literatura com as fontes e obtém a aprovação ética para uma simulação anônima num site de treinamento, com esclarecimento posterior.
+
+> **Caso sintético.** O estudo é inventado; a RFC 8446 e a RFC 5280 são reais.
+
+### Erros e limites
+
+As simulações podem não refletir o comportamento real sob pressão. Estudos com a equipe precisam protegê-la de consequências trabalhistas.
+
+### Exercícios
+
+- **EX052 — Partes da questão.** Que três elementos tornam a questão pesquisável? *Rubrica:* 3 = população, comportamento mensurável, intervenção;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX053 — Tabela de fontes.** O que Priya registra para cada estudo? *Rubrica:* 3 = população, método, achados (e laboratório versus navegação real);; 2 = dois;; 1 = só a citação;; 0 = nenhuma.
+
+- **EX054 — Pedido do comitê.** O que o comitê de ética pediu que Priya acrescentasse? *Rubrica:* 3 = garantir que os gerentes nunca vejam resultados individuais;; 2 = anonimato;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Criptografia e serviços de confiança: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o escopo dos serviços de confiança; (2) explicar a infraestrutura de chaves públicas como uma teoria de confiança delegada; (3) descrever o que os certificados e os carimbos de tempo afirmam.
+
+### 19.1 O que são os serviços de confiança
+
+Os serviços de confiança ajudam pessoas e sistemas a confiar em informações eletrônicas: as autoridades certificadoras emitem certificados; os serviços de carimbo de tempo provam quando os dados existiam; os serviços de assinatura ajudam a criar e validar assinaturas digitais; e os serviços de gerenciamento de chaves protegem as chaves. Priya mapeia quais deles a Tidewell usa: uma autoridade pública para seus sites, uma autoridade interna para os dispositivos da equipe e um serviço de assinatura para os contratos com as editoras. Cada serviço faz uma afirmação em que outros confiam, de modo que sua própria segurança e seus procedimentos passam a fazer parte da segurança de todos. Priya registra cada afirmação numa tabela.
+
+### 19.2 Confiança delegada
+
+A infraestrutura de chaves públicas delega a confiança. Um navegador não tem como conhecer a chave de cada site, então confia num pequeno conjunto de autoridades raiz, que respondem por intermediárias, que respondem pelos sites. A RFC 5280 define como os certificados se encadeiam e como os clientes os validam. Priya explica o ponto fraco da teoria: qualquer raiz confiável pode emitir um certificado para qualquer nome, então uma única autoridade comprometida ou descuidada pode minar todos. O Certificate Transparency, especificado na RFC 6962, responde tornando a emissão pública, para que os certificados emitidos indevidamente possam ser detectados. Ela mostra à equipe como ver as entradas de CT.
+
+### 19.3 O que as afirmações significam
+
+Um certificado afirma que uma chave pública pertence a um nome durante um período; ele não afirma que a parte nomeada é honesta. Um carimbo de tempo afirma que os dados existiam num momento, e não que os dados são verdadeiros. Uma assinatura afirma que o detentor de uma chave privada aprovou bytes específicos, e não que o detentor os entendeu. Priya escreve essas distinções para o processo de contratos da Tidewell, em que a equipe às vezes supunha que um PDF assinado significava que a editora tinha concordado com termos que, na verdade, estavam num anexo não assinado.
+
+### Exemplo resolvido
+
+Priya mapeia os serviços de confiança da Tidewell, explica a confiança delegada e o Certificate Transparency e esclarece, num caso de contrato, que uma assinatura cobre apenas os bytes assinados.
+
+> **Caso sintético.** Os serviços e o contrato da Tidewell são inventados; a RFC 5280 e a RFC 6962 são reais.
+
+### Erros e limites
+
+Confiar em muitas raízes amplia o risco. As assinaturas provam a aprovação de bytes, e não a intenção ou a compreensão.
+
+### Exercícios
+
+- **EX055 — Quatro serviços.** Cite quatro tipos de serviço de confiança. *Rubrica:* 3 = autoridades certificadoras, carimbo de tempo, serviços de assinatura, gerenciamento de chaves;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX056 — Fraqueza das raízes.** Qual é a principal fraqueza da confiança delegada? *Rubrica:* 3 = qualquer raiz confiável pode emitir para qualquer nome, então uma autoridade ruim mina todas;; 2 = qualquer raiz;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX057 — Mal-entendido do contrato.** O que a equipe entendeu mal sobre o PDF assinado? *Rubrica:* 3 = supôs que a assinatura cobria os termos de um anexo não assinado;; 2 = cobertura;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Criptografia e serviços de confiança: casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar classes documentadas de falhas de confiança; (2) extrair lições para uma organização como a Tidewell; (3) separar as causas criptográficas das procedimentais.
+
+### 20.1 Classes de falhas
+
+Priya estuda classes de falhas documentadas em fontes públicas e livros-texto. Autoridades certificadoras já emitiram certificados para as partes erradas por causa de validação fraca; organizações sofreram indisponibilidades quando certificados expiraram; softwares aceitaram certificados sem verificar os nomes; e chaves privadas vazaram por servidores mal configurados. Ela classifica as causas como criptográficas, como algoritmos fracos, ou procedimentais, como validação ou monitoramento deficientes. A maioria dos casos que ela lê é procedimental; a matemática resistiu enquanto as pessoas e os processos falharam. Ela mantém uma tabela-resumo dos casos e das causas.
+
+### 20.2 Lições para a Tidewell
+
+Para cada classe, Priya escreve uma lição: monitorar os logs do Certificate Transparency em busca de certificados emitidos para nomes da Tidewell, o que revelaria emissões indevidas; automatizar as renovações e alertar antes da expiração; testar as aplicações contra certificados com nomes errados; e manter as chaves privadas em servidores com acesso restrito e inventariá-las. Grace adota imediatamente as lições de expiração e de monitoramento, já que um certificado expirado tinha deixado o catálogo fora do ar por meio dia no ano anterior. Priya também acrescenta uma verificação trimestral que procura certificados com nomes errados, usando apenas os hosts autorizados do próprio consórcio.
+
+### 20.3 Separar as causas
+
+Priya pratica a separação das causas usando a indisponibilidade do catálogo da Tidewell. O certificado expirou porque a renovação era manual e a pessoa responsável tinha saído; não existia alerta; e a substituição levou horas porque ninguém sabia que servidor guardava a chave. Nenhuma dessas causas envolvia fraqueza criptográfica. Ela escreve uma análise curta com a linha do tempo, as causas e as ações: renovação automatizada, um dono para cada certificado e um inventário dos locais das chaves. Isso vira o modelo para as análises de falhas posteriores. O modelo é guardado na pasta compartilhada.
+
+### Exemplo resolvido
+
+Priya classifica as falhas de confiança como majoritariamente procedimentais e decompõe a indisponibilidade do catálogo da Tidewell em três causas não criptográficas, com as ações correspondentes.
+
+> **Caso sintético.** A indisponibilidade é inventada; as classes de falhas vêm da literatura pública.
+
+### Erros e limites
+
+Culpar indivíduos esconde as causas de processo. Falhas criptográficas raras ainda acontecem, então as escolhas de algoritmo também importam.
+
+### Exercícios
+
+- **EX058 — Causa dominante.** Que tipo de causa dominou os casos que Priya leu? *Rubrica:* 3 = procedimental, não criptográfica;; 2 = procedimental;; 1 = criptográfica;; 0 = nenhuma.
+
+- **EX059 — Lição do monitoramento de CT.** O que o monitoramento dos logs do Certificate Transparency revela? *Rubrica:* 3 = certificados emitidos para nomes da Tidewell, expondo emissões indevidas;; 2 = emissão indevida;; 1 = expiração;; 0 = nenhuma.
+
+- **EX060 — Causas da indisponibilidade.** Cite as três causas da indisponibilidade do catálogo. *Rubrica:* 3 = renovação manual por pessoa que saiu, nenhum alerta, local da chave desconhecido;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Raman, o Dr. Tomás Echeverría, Grace Okafor, a Ashford University, o Tidewell Public Library Consortium e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Raman, o Dr. Tomás Echeverría, Grace Okafor, a Ashford University, o Tidewell Public Library Consortium e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sem uma definição precisa da segurança e do atacante, a afirmação não pode ser provada nem testada.
 
@@ -539,6 +1010,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em i
 **EX029.** Porque eles guardam senhas e dados pessoais de pessoas reais, qualquer que seja sua disponibilidade pública.
 
 **EX030.** Ela parou de testar, relatou ao contato de segurança do fornecedor com um prazo de noventa dias e avisou seu professor.
+
+**EX031.** Impede que a chave seja copiada para outro lugar, de modo que o malware só pode usá-la indevidamente enquanto estiver naquela máquina.
+
+**EX032.** Porque a saída do random pode ser prevista, enquanto o secrets obtém valores do gerador seguro do sistema operacional.
+
+**EX033.** Durante a suspensão, a memória, incluindo as chaves de cifração do disco, continua energizada e poderia ser lida.
+
+**EX034.** O logaritmo de base 2 de N.
+
+**EX035.** Quatro palavras aleatórias dão 51,7 bits, mais do que os 47,6 bits de oito caracteres mistos aleatórios.
+
+**EX036.** As pessoas escolhem frases previsíveis que os atacantes tentam cedo, então as escolhas estão longe de ser uniformes.
+
+**EX037.** Os dois lados calculam o HMAC sobre o segredo compartilhado e a janela de tempo atual.
+
+**EX038.** A assinatura inclui a origem do site real, então um site falso recebe uma resposta que não consegue reutilizar.
+
+**EX039.** Exigi-las afastaria muitos leitores que não têm esses dispositivos ou não conseguem usá-los.
+
+**EX040.** Porque pode revelar condições de saúde, crenças religiosas ou posições políticas.
+
+**EX041.** Os números dos cartões seguem um formato conhecido, então um atacante pode calcular o hash de todos os números possíveis e comparar.
+
+**EX042.** Apagar cada registro de empréstimo depois da devolução, a menos que o leitor escolha manter um histórico.
+
+**EX043.** Cada hash cobre o hash anterior, então uma mudança se propaga pelo restante da cadeia.
+
+**EX044.** A cabeça mudou de 4492b592 para c3664171, com a primeira diferença na entrada 2.
+
+**EX045.** Fora do controle do insider, como o sistema de um auditor separado; do contrário, a cadeia inteira pode ser reescrita.
+
+**EX046.** Entre a internet e o portal, e entre o portal e o banco de dados de leitores.
+
+**EX047.** As permissões do banco de dados e a cifração no nível dos campos.
+
+**EX048.** Deixavam de fora onde as chaves ficavam, então ninguém conseguia planejar a rotação nem julgar quem podia decifrar os dados.
+
+**EX049.** Um sistema deve continuar seguro quando tudo sobre ele, exceto a chave, é publicamente conhecido.
+
+**EX050.** Tomou a letra mais frequente do texto cifrado, P, como E, o que deu um deslocamento de 11.
+
+**EX051.** Mensagens idênticas produzem textos cifrados idênticos, então um atacante consegue saber quando as mensagens se repetem.
+
+**EX052.** Uma população definida, um comportamento mensurável e uma intervenção a comparar.
+
+**EX053.** A população, o método e os achados de cada estudo, anotando se ele observou comportamento de laboratório ou real.
+
+**EX054.** Que os gerentes nunca vissem os resultados de nenhum indivíduo.
+
+**EX055.** Autoridades certificadoras, serviços de carimbo de tempo, serviços de criação e validação de assinaturas e serviços de gerenciamento de chaves.
+
+**EX056.** Toda raiz confiável pode certificar qualquer nome, então uma única autoridade comprometida pode minar todos.
+
+**EX057.** Acharam que a assinatura cobria termos de um anexo que não fazia parte dos bytes assinados.
+
+**EX058.** Causas procedimentais, como validação ou monitoramento deficientes, e não matemática quebrada.
+
+**EX059.** Qualquer certificado emitido para os nomes da Tidewell, para que os emitidos indevidamente possam ser percebidos.
+
+**EX060.** Renovação manual a cargo de alguém que tinha saído, nenhum alerta de expiração e nenhum registro de que servidor guardava a chave.
 
 <a id="references"></a>
 ## Referências
