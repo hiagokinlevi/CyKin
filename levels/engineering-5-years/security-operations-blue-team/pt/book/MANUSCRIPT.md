@@ -2405,7 +2405,7 @@ Dimensione a partir de taxas medidas, planeje para os picos e reduza o volume s�
 
 ### Continue estudando — capítulo 36 de 50
 
-[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
+[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (plano; texto em tradução) →](PLAN.md#ch-37)
 
 <a id="worked-results"></a>
 
