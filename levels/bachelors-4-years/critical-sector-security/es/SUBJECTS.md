@@ -19,11 +19,11 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [07](book/PLAN.md#ch-07) | Redes y protocolos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
 | 2 | [08](book/PLAN.md#ch-08) | Programación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Datos y bases de datos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Ética y práctica autorizada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Plan](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Sistemas operativos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Probabilidad y estadística | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plan](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Identidad y acceso | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Fundamentos de privacidad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
+| 2 | [10](book/PLAN.md#ch-10) | Ética y práctica autorizada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Sistemas operativos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Probabilidad y estadística | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Borrador](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Identidad y acceso | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Borrador](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Fundamentos de privacidad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-14) | [15 · Plan](book/PLAN.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Evidencia y medición | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |
 | 4 | [16](book/PLAN.md#ch-16) | Arquitectura de seguridad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plan](book/PLAN.md#ch-17) |
 | 4 | [17](book/PLAN.md#ch-17) | Conceptos de criptografía | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |

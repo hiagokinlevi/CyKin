@@ -46,10 +46,10 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 8. [Programación II](#ch-08)
 9. [Datos y bases de datos](#ch-09)
 10. [Ética y práctica autorizada](#ch-10)
-11. [Sistemas operativos](../../en/book/MANUSCRIPT.md#ch-11)
-12. [Probabilidad y estadística](../../en/book/MANUSCRIPT.md#ch-12)
-13. [Identidad y acceso](../../en/book/MANUSCRIPT.md#ch-13)
-14. [Fundamentos de privacidad](../../en/book/MANUSCRIPT.md#ch-14)
+11. [Sistemas operativos](#ch-11)
+12. [Probabilidad y estadística](#ch-12)
+13. [Identidad y acceso](#ch-13)
+14. [Fundamentos de privacidad](#ch-14)
 15. [Evidencia y medición](../../en/book/MANUSCRIPT.md#ch-15)
 16. [Arquitectura de seguridad](../../en/book/MANUSCRIPT.md#ch-16)
 17. [Conceptos de criptografía](../../en/book/MANUSCRIPT.md#ch-17)
@@ -847,7 +847,311 @@ La autorización define el trabajo de seguridad legítimo. Redacte reglas de enf
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Siga estudiando — capítulo 10 de 40
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operativos
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar los procesos, la protección de memoria, los permisos de archivo y los privilegios; (2) describir cómo un sistema operativo aplica el mínimo privilegio y dónde no puede hacerlo; (3) comparar los sistemas operativos de propósito general, de tiempo real y embebidos en los servicios críticos; y (4) elaborar una lista de comprobación de bastionado y una decisión de parcheo para un dispositivo que no puede reiniciarse a voluntad. Se apoya en las capas del capítulo 2 y prepara el capítulo 13 (identidad) y el capítulo 24 (controles).
+
+### 11.1 Qué hace el sistema operativo
+
+El **sistema operativo** (SO) reparte una sola máquina entre muchos programas y usuarios. Un **proceso** es un programa en ejecución con su propia memoria; el SO usa la protección de memoria del hardware para que un proceso no pueda leer ni sobrescribir la memoria de otro. El **núcleo** (*kernel*) es el componente central privilegiado que gestiona el hardware; los programas de usuario le piden servicios mediante **llamadas al sistema**. Los archivos llevan **permisos** (en los sistemas tipo Unix, lectura, escritura y ejecución para el propietario, un grupo y los demás) y el SO los comprueba en cada acceso. El **privilegio** es la capacidad de saltarse esas comprobaciones: la cuenta root de Unix, el Administrador de Windows. Los principios de **mínimo privilegio** y **mediación completa** de Saltzer y Schroeder (cada acceso comprobado, cada programa con solo los derechos que necesita) siguen siendo la base ([Saltzer and Schroeder, 1975](https://doi.org/10.1109/PROC.1975.9939)).
+
+### 11.2 Tipos de SO en los servicios críticos
+
+Los sistemas de **propósito general** (Windows, Linux, macOS) hacen funcionar servidores, estaciones de trabajo de operadores y PC de oficina; tienen muchas funciones, se parchean con frecuencia y son muy atacados. Los **sistemas operativos de tiempo real** (RTOS) garantizan que las tareas cumplan sus plazos (un relé de protección debe actuar en milisegundos) y funcionan en controladores, relés y dispositivos médicos; son pequeños y se parchean con menos frecuencia. El **firmware embebido** de sensores y dispositivos sencillos puede no tener ninguna separación entre programas. La consecuencia: las protecciones de SO más fuertes están en las máquinas más fáciles de sustituir, y las más débiles en las máquinas que más duran.
+
+### 11.3 Bastionado
+
+El **bastionado** reduce lo que un atacante puede aprovechar. Una lista de comprobación práctica: eliminar o desactivar los servicios y el software que no se usan; cambiar las cuentas y contraseñas por defecto; ejecutar los servicios con cuentas sin privilegios; activar el registro de eventos y enviar los registros fuera del equipo; restringir los soportes extraíbles; activar las listas de aplicaciones permitidas donde la carga de trabajo es estable (las estaciones de trabajo de operadores son buenas candidatas: ejecutan los mismos pocos programas durante años); mantener la hora sincronizada para poder correlacionar los registros. Cada elemento debe poder comprobarse: una norma de bastionado que no puede verificarse es un deseo.
+
+### 11.4 El parcheo en operaciones
+
+En la TI de oficina, parchear es una rutina. En una estación de trabajo de operador o en un controlador, un parche puede requerir la validación del fabricante, una ventana de mantenimiento y un plan de vuelta atrás, porque una actualización fallida puede detener el proceso. Una **decisión de parcheo basada en el riesgo** se pregunta: ¿es explotable la falla en este dispositivo tal como está desplegado (¿es alcanzable?, ¿requiere acceso local?); ¿se sabe que se está explotando; qué controla el dispositivo; qué controles compensatorios existen; cuándo es la próxima ventana? El resultado es uno de estos: parchear ya (cambio de emergencia), parchear en la próxima ventana, mitigar y supervisar hasta la sustitución, o aceptar con un responsable nombrado. La guía de TO del NIST analiza estos compromisos ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)).
+
+### 11.5 Ejemplo resuelto: estación de trabajo de señalización de CT (sintético)
+
+**Este caso es sintético.** La estación de trabajo de control de señalización de Calder Transit funciona con un SO de propósito general. Una actualización mensual corrige una falla que permite a un usuario local con pocos privilegios convertirse en administrador. La estación no tiene acceso a internet ni correo electrónico, tiene activada la lista de aplicaciones permitidas y solo inician sesión tres señalistas con nombre. El fabricante valida las actualizaciones del SO cada trimestre; el próximo paquete validado llega dentro de siete semanas. Decisión: **parchear en la próxima ventana**, porque la explotación necesita una cuenta local en una máquina estrictamente controlada; mientras tanto, confirmar que la lista de permitidos se aplica y revisar las tres cuentas. Si la falla hubiera sido explotable de forma remota a través de un servicio de red que la estación expone, la respuesta habría sido un cambio de emergencia o desactivar ese servicio.
+
+### 11.6 Actividad práctica
+
+En su propio ordenador, enumere los procesos en ejecución y la cuenta con la que se ejecuta cada uno; busque un servicio que no use y averigüe cómo podría desactivarse (no desactive nada de lo que no esté seguro). Redacte una lista de comprobación de bastionado de cinco elementos para una estación de trabajo de atención de llamadas del CEDC, cada uno con la forma de verificarlo. Para la estación del CEDC, redacte elementos como «los operadores de llamadas inician sesión con cuentas individuales sin derechos de administrador; comprobación: listar los administradores locales cada mes» o «almacenamiento USB bloqueado; comprobación: insertar una unidad de prueba durante la revisión trimestral».
+
+### 11.7 Errores comunes y límites
+
+- Ejecutarlo todo como administrador «para evitar problemas de permisos».
+- Bastionar una vez y no verificar nunca la deriva.
+- Aplicar a la TO la cadencia de parcheo de la TI de oficina sin validación ni vuelta atrás.
+- Suponer que un dispositivo sin interfaz de usuario del SO no tiene SO.
+
+La estación de señalización de CT muestra las alternativas: la lista de permitidos y tres cuentas con nombre en lugar del uso de administrador, un paquete trimestral validado por el fabricante en lugar de la cadencia mensual de la oficina, y una revisión que comprueba que la lista de permitidos se sigue aplicando. El cuarto error abarca las bombas de infusión del CVH, que funcionan con un RTOS que necesita actualizaciones del fabricante.
+
+### Ejercicios — capítulo 11
+
+**EX021 — Decisión de parcheo.** *Objetivo:* aplicar las preguntas basadas en el riesgo. *Entradas:* una falla explotable de forma remota en la interfaz web de un controlador del BMS del CVH; la interfaz es alcanzable desde la red corporativa; la corrección del fabricante requiere reiniciar el controlador durante 30 minutos; la ventilación de los quirófanos depende del BMS. *Pasos:* responda las cinco preguntas de la decisión de parcheo basada en el riesgo de este capítulo y haga una recomendación. *Evidencia esperada:* respuestas y recomendación con controles provisionales. *Rúbrica:* 3 = restringir de inmediato el acceso a la interfaz, programar el reinicio con mantenimiento de instalaciones y quirófanos en una ventana planificada, supervisar; 2 = resultado correcto, controles provisionales débiles; 1 = «parchear de inmediato» sin tener en cuenta la ventilación; 0 = nada.
+
+**EX022 — Bastionado verificable.** *Objetivo:* hacer que los controles se puedan comprobar. *Entradas:* tres elementos vagos: «proteger las cuentas», «activar el registro», «bloquear el USB». *Pasos:* reescriba cada uno como una afirmación específica y verificable, con su comprobación. *Evidencia esperada:* tres elementos reescritos. *Rúbrica:* 3 = específicos, observables, con un método de comprobación; 2 = específicos pero sin comprobación; 1 = siguen siendo vagos; 0 = nada.
+
+### Síntesis del capítulo
+
+El SO aplica la separación, los permisos y los privilegios; el mínimo privilegio y la mediación completa son sus ideas rectoras. En los servicios críticos, los dispositivos más duraderos suelen tener las protecciones más débiles, por lo que el bastionado debe ser verificable y el parcheo debe basarse en el riesgo, estar programado y ser reversible.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Siga estudiando — capítulo 11 de 40
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidad y estadística
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) aplicar las reglas de la suma, del complemento y de la multiplicación, y decir cuándo los eventos son independientes; (2) usar el teorema de Bayes para interpretar una alerta, incluido el efecto de la tasa base; (3) calcular la probabilidad de al menos una falla en ensayos repetidos y la probabilidad de que haya suficientes de $n$ unidades redundantes disponibles; y (4) resumir datos asimétricos con medianas y percentiles. Se apoya en el capítulo 1 y prepara los capítulos 15, 27 y 29.
+
+### 12.1 Reglas que usará constantemente
+
+Las probabilidades son números entre 0 y 1. La regla del **complemento**: $P(\text{not } A) = 1 - P(A)$. Para eventos **independientes**, $P(A \text{ and } B) = P(A)P(B)$. Para cualesquiera eventos, $P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)$: sumar sin restar la intersección cuenta dos veces lo mismo. Los problemas de «al menos uno» se resuelven más fácilmente por el complemento: si una copia de seguridad falla de forma silenciosa en un día dado con probabilidad $p$, de forma independiente cada día, la probabilidad de al menos una falla silenciosa en $n$ días es $1 - (1-p)^n$. La independencia es una suposición, a menudo falsa: dos generadores alimentados desde el mismo depósito de combustible fallan juntos. Estas fallas de **causa común** son la razón de que la redundancia sea más débil de lo que sugiere la regla de la multiplicación.
+
+### 12.2 Probabilidad condicional y Bayes
+
+$P(A \mid B)$ es la probabilidad de $A$ dado que ocurrió $B$. El teorema de Bayes relaciona los dos sentidos:
+$$P(\text{malicious} \mid \text{alert}) = \frac{P(\text{alert} \mid \text{malicious})\,P(\text{malicious})}{P(\text{alert})}.$$
+Un detector con una **tasa de verdaderos positivos** del 95 % y una **tasa de falsos positivos** del 1 % parece excelente. Si solo 1 evento de cada 1000 es malicioso, la mayoría de las alertas siguen siendo falsas: la **tasa base** domina. Esta es la idea estadística más importante de las operaciones de seguridad, y explica por qué los analistas se ahogan en alertas.
+
+### 12.3 Razonamiento binomial para la redundancia
+
+Si $n$ unidades idénticas están disponibles cada una con probabilidad $1-p$, de forma independiente, el número de unidades disponibles sigue una distribución **binomial**: $P(k \text{ available}) = \binom{n}{k}(1-p)^k p^{n-k}$. Una estación de bombeo que necesita al menos 10 de sus 12 bombas puede calcular con qué frecuencia satisface la demanda. Para la estación de 12 bombas del Lab 6, con cada bomba no disponible el 10 % del tiempo, la suma para 10, 11 y 12 bombas disponibles da 0,889. Un equipo de mantenimiento compartido o una única acometida eléctrica rompen la suposición de independencia, así que la cifra real es menor. Añadir una decimotercera bomba eleva el resultado a cerca de 0,966, que es el tipo de comparación que necesita una solicitud de inversión.
+
+### 12.4 Describir los datos
+
+Los tiempos de detección y de recuperación de incidentes son **asimétricos**: la mayoría son cortos y unos pocos son muy largos. La **media** se ve arrastrada hacia arriba por la cola larga; la **mediana** (el valor central) no; los **percentiles** (el percentil 90, p90) describen la cola. Informe la mediana y el p90 juntos, con el tamaño de la muestra (capítulo 29, Lab 12). El Lab 12 muestra el efecto: su tiempo medio de detección es de 27,2 horas, mientras que la mediana es de 4,0. Para un consejo de administración, la frase «la mitad de los incidentes se detectaron en 4 horas; uno de cada diez tardó más de unas 56» transmite más información que cualquier promedio aislado.
+
+### 12.5 Ejemplo resuelto y Lab 6 (sintético)
+
+**Este caso es sintético.** El servicio de supervisión de Calder Mutual ve 20 000 eventos al día; los analistas estiman que 1 de cada 1000 es malicioso; las tasas del detector son las indicadas arriba. La copia de seguridad nocturna de la telemetría de CW falla de forma silenciosa con probabilidad 0,002 al día. Una estación de bombeo tiene 12 bombas, cada una no disponible el 10 % del tiempo.
+
+```python
+# Lab 6 - base rates, alarm volume and repeated trials (synthetic, offline)
+from math import comb
+prior, tpr, fpr = 0.001, 0.95, 0.01
+ppv = tpr * prior / (tpr * prior + fpr * (1 - prior))
+print(f"P(malicious | alert) = {ppv:.3f}")
+events_per_day = 20_000
+print(f"expected false alerts/day = {events_per_day * (1 - prior) * fpr:.0f}; true = {events_per_day * prior * tpr:.0f}")
+p_day = 0.002   # chance per day that a given backup fails silently
+for days in (30, 365):
+    print(f"P(at least one silent backup failure in {days} days) = {1 - (1 - p_day) ** days:.3f}")
+n, p = 12, 0.1  # 12 independent pumps, each unavailable 10% of the time
+need = 10
+print(f"P(at least {need} of {n} available) = {sum(comb(n, k) * (1-p)**k * p**(n-k) for k in range(need, n+1)):.3f}")
+```
+
+Salida esperada:
+
+```text
+P(malicious | alert) = 0.087
+expected false alerts/day = 200; true = 19
+P(at least one silent backup failure in 30 days) = 0.058
+P(at least one silent backup failure in 365 days) = 0.518
+P(at least 10 of 12 available) = 0.889
+```
+
+Menos de 1 alerta de cada 11 es real; los analistas se enfrentan a unas 200 alertas falsas al día. Una falla «rara» diaria de la copia de seguridad es más probable que improbable a lo largo de un año, razón por la cual los simulacros de restauración, y no los registros de las copias, son la evidencia que importa. Y una estación que necesita 10 de 12 bombas se queda corta cerca del 11 % del tiempo con estas suposiciones: si las indisponibilidades de las bombas comparten una causa (un único equipo de mantenimiento, una única acometida eléctrica), será peor.
+
+### 12.6 Errores comunes y límites
+
+- Ignorar la tasa base (la falacia del «95 % de precisión»).
+- Multiplicar las probabilidades de eventos que comparten una causa.
+- Informar una media de tiempos asimétricos sin la mediana ni la cola.
+- Tratar como exactas las entradas estimadas; las salidas heredan su incertidumbre.
+
+El Lab 6 pone una cifra a cada uno: una detección del 95 % sigue dando una probabilidad de 0,087 de que una alerta sea real; dos generadores que comparten combustible fallan juntos con mucha más frecuencia que 0,05 al cuadrado (EX024); el tiempo medio de detección de 27,2 horas del Lab 12 no describe ningún incidente; y la tasa diaria de falla de la copia de seguridad de 0,002 es en sí una estimación, por lo que la cifra anual de 0,518 hereda su incertidumbre.
+
+### Ejercicios — capítulo 12
+
+**EX023 — Cambiar la tasa base.** *Objetivo:* ver cómo la probabilidad previa y la tasa de falsos positivos determinan el valor de una alerta. *Entradas:* Lab 6. *Pasos:* calcule $P(\text{malicious}\mid\text{alert})$ para una probabilidad previa de 0,01 y, por separado, para una previa de 0,001 con FPR 0,001. Explique qué cambio ayuda más y qué significa en la operación. *Evidencia esperada:* dos valores y una explicación. *Rúbrica:* 3 = ≈ 0,490 y ≈ 0,487, con una explicación de que reducir la FPR (ajuste, enriquecimiento) es la palanca que controlan los analistas; 2 = solo los valores; 1 = un valor; 0 = nada.
+
+**EX024 — Causa común.** *Objetivo:* cuantificar el efecto de las causas compartidas. *Entradas:* dos generadores de respaldo que fallan al arrancar cada uno con probabilidad 0,05; con probabilidad 0,02, una causa compartida (combustible común contaminado) hace fallar a ambos. *Pasos:* calcule la probabilidad de que fallen ambos suponiendo independencia, después con la causa común (aproximada como $0.02 + 0.05^2$), y comente. *Evidencia esperada:* dos números y un comentario. *Rúbrica:* 3 = 0,0025 frente a ≈ 0,0225, unas nueve veces peor, y un remedio (combustible separado, análisis del combustible); 2 = solo los números; 1 = un número; 0 = nada.
+
+### Síntesis del capítulo
+
+Las reglas de la probabilidad son sencillas; sus suposiciones no lo son. Las tasas base deciden si merece la pena leer una alerta, lo «raro por día» se vuelve «probable por año», la redundancia se debilita por las causas comunes y los datos asimétricos necesitan medianas y percentiles. Declare las suposiciones de independencia y pruebe qué ocurre cuando no se cumplen.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Siga estudiando — capítulo 12 de 40
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidad y acceso
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) distinguir identificación, autenticación y autorización; (2) comparar los factores de autenticación y explicar por qué los métodos resistentes al phishing importan para el acceso remoto a los sistemas críticos; (3) diseñar un acceso basado en roles con segregación de funciones; y (4) realizar una revisión de accesos que encuentre cuentas huérfanas, inactivas, compartidas y con combinaciones tóxicas. Se apoya en el capítulo 6 (conjuntos) y el capítulo 11 (privilegios) y prepara el capítulo 16 (arquitectura) y el capítulo 24 (controles).
+
+### 13.1 Tres preguntas
+
+La **identificación** responde a «¿quién dice usted que es?» (un nombre de usuario). La **autenticación** responde a «demuéstrelo», con algo que usted sabe (una contraseña), tiene (un token o un teléfono) o es (una huella dactilar). La **autorización** responde a «¿qué puede hacer?»: los permisos asociados a la identidad autenticada. Los errores de cada etapa son distintos: una autenticación débil deja entrar a la persona equivocada; una autorización excesiva permite a la persona correcta (o a quien le robó la sesión) hacer demasiado. Las directrices de identidad digital del NIST fijan requisitos para los autenticadores y recomiendan opciones resistentes al phishing para los niveles de garantía más altos ([SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final)).
+
+### 13.2 Factores y acceso remoto
+
+Las contraseñas se adivinan, se reutilizan y se roban por phishing. Los códigos de un solo uso enviados por SMS o tecleados desde una aplicación añaden un segundo factor, pero una página de inicio de sesión falsa convincente puede retransmitirlos. Los autenticadores **resistentes al phishing** vinculan criptográficamente el inicio de sesión al sitio auténtico, de modo que un sitio falso no recibe nada aprovechable. Para el acceso remoto a la TO y a otros sistemas críticos (la vía del aviso de CPN del capítulo 5), una autenticación fuerte es necesaria pero no suficiente: la sesión debe llegar a un servidor de salto controlado, tener un tiempo limitado, ser aprobada sesión a sesión en el caso de los fabricantes y quedar grabada.
+
+### 13.3 Roles y segregación de funciones
+
+En el **control de acceso basado en roles** (RBAC), los permisos se asocian a roles («scada-operator», «payments-approve») y las personas reciben roles. Los roles hacen manejables las revisiones: se comprueban cincuenta roles, no cincuenta mil permisos individuales. La **segregación de funciones** prohíbe ciertas combinaciones: quien crea un pago no debe aprobarlo; el ingeniero que cambia la lógica de control no debería controlar también el cortafuegos que registra el cambio. Expresada con conjuntos (capítulo 6), una **combinación tóxica** $T$ se infringe cuando $T \subseteq \text{roles}(u)$.
+
+El Lab 7 codifica ambas reglas como conjuntos TOXIC y señala a chloe, que tiene payments-create y payments-approve, y a dev, que tiene scada-engineer y firewall-admin y además lleva 214 días inactivo.
+
+### 13.4 El ciclo de vida de las cuentas y las revisiones
+
+Las cuentas se crean cuando las personas se incorporan (**alta**), se modifican cuando cambian de puesto (**cambio**) y se eliminan cuando se marchan (**baja**). Las fallas se acumulan en cada paso: quienes cambian de puesto conservan roles antiguos («acumulación de privilegios»), las cuentas de quienes se marchan perduran, las cuentas de fabricantes se crean para un proyecto y nunca se eliminan, y las cuentas compartidas de operador hacen que las acciones no se puedan rastrear. Una **revisión de accesos** compara las cuentas con una fuente autorizada (el sistema de RR. HH., el registro de contratos con fabricantes) y con el uso.
+
+El Lab 7 muestra cada falla: *ben* se marchó pero conservó su cuenta, *vendorx* no tiene responsable en RR. HH. y no ha iniciado sesión en 304 días, y *ops1* es compartida. Los datos de uso importan tanto como el estado en RR. HH.: *dev* está activo en RR. HH. pero lleva 214 días inactivo en un rol privilegiado.
+
+### 13.5 Ejemplo resuelto y Lab 7 (sintético)
+
+**Este caso es sintético.** Una revisión conjunta de las cuentas del sistema de control de CPN y del sistema de pagos de Calder Mutual (combinados aquí solo con fines didácticos) usa el estado en RR. HH., el último inicio de sesión y dos combinaciones tóxicas.
+
+```python
+# Lab 7 - access review: orphans, dormant accounts and toxic combinations (synthetic, offline)
+from datetime import date
+TODAY = date(2026, 10, 1)
+HR = {"ana": "active", "ben": "left", "chloe": "active", "dev": "active"}
+ACCOUNTS = [  # user, roles, last login, shared?
+    ("ana",   {"scada-operator"},                       date(2026, 9, 30), False),
+    ("ben",   {"scada-engineer"},                       date(2026, 5, 2),  False),
+    ("chloe", {"payments-create", "payments-approve"},  date(2026, 9, 29), False),
+    ("dev",   {"scada-engineer", "firewall-admin"},     date(2026, 3, 1),  False),
+    ("ops1",  {"scada-operator"},                       date(2026, 9, 30), True),
+    ("vendorx", {"remote-support"},                     date(2025, 12, 1), False),
+]
+TOXIC = [{"payments-create", "payments-approve"}, {"scada-engineer", "firewall-admin"}]
+for user, roles, last, shared in ACCOUNTS:
+    issues = []
+    if user not in HR: issues.append("no HR owner")
+    elif HR[user] != "active": issues.append("owner has left")
+    if (TODAY - last).days > 90: issues.append(f"dormant {(TODAY - last).days} d")
+    if shared: issues.append("shared account")
+    issues += ["toxic: " + "+".join(sorted(t)) for t in TOXIC if t <= roles]
+    print(f"{user:8} {', '.join(issues) if issues else 'ok'}")
+```
+
+Salida esperada:
+
+```text
+ana      ok
+ben      owner has left, dormant 152 d
+chloe    toxic: payments-approve+payments-create
+dev      dormant 214 d, toxic: firewall-admin+scada-engineer
+ops1     no HR owner, shared account
+vendorx  no HR owner, dormant 304 d
+```
+
+Acciones: desactivar ya a *ben* (baja); retirar uno de los roles de pago de *chloe*; retirar los roles privilegiados inactivos de *dev* y preguntar si necesita alguno; *ops1* es un inicio de sesión compartido de la sala de control (habitual en operaciones 24/7, donde importa un relevo rápido), así que conviene sustituirlo por inicios de sesión individuales con cambio rápido de usuario o, como mínimo, registrar quién está de turno; *vendorx* debería desactivarse y reactivarse en cada sesión de soporte bajo un patrocinador nombrado. Observe lo que el script no puede ver: si el rol de *ana* sigue correspondiendo a su trabajo.
+
+### 13.6 Errores comunes y límites
+
+- Equiparar «autenticado» con «autorizado».
+- Revisiones que confirman que las cuentas existen en lugar de si son necesarias.
+- Eliminar las cuentas compartidas de una sala de control sin una alternativa viable, de modo que el personal comparte contraseñas en su lugar.
+- Olvidar las cuentas de servicio y de fabricantes, que no tienen registro en RR. HH.
+
+En el Lab 7, el script confirma que la cuenta de *ana* está «ok» solo en el sentido de que está activa y no inactiva; si todavía necesita `scada-operator` es algo que debe decir su responsable. Eliminar *ops1* sin más llevaría a la sala de control a compartir la contraseña de una persona, lo cual es peor. Y tanto *ops1* como *vendorx* muestran «no HR owner», que es la señal de que las cuentas de servicio y de fabricantes necesitan otra fuente autorizada, como el registro de contratos.
+
+### Ejercicios — capítulo 13
+
+**EX025 — Diseñar los roles.** *Objetivo:* aplicar el mínimo privilegio y la segregación de funciones. *Entradas:* el CEDC necesita operadores de llamadas, despachadores, supervisores, un administrador del CAD y un ingeniero de soporte del fabricante. *Pasos:* defina cinco roles con sus permisos clave y dos combinaciones tóxicas. *Evidencia esperada:* tabla de roles y combinaciones. *Rúbrica:* 3 = roles razonables de mínimo privilegio, pares tóxicos justificados (p. ej., administrador del CAD + administrador del registro de auditoría; soporte del fabricante + acceso permanente); 2 = roles sin combinaciones; 1 = vago; 0 = nada.
+
+**EX026 — Ampliar la revisión.** *Objetivo:* añadir una regla. *Entradas:* Lab 7. *Pasos:* añada una comprobación que señale cualquier cuenta con un rol privilegiado (`scada-engineer`, `firewall-admin`, `payments-approve`) que no se haya vuelto a aprobar en 180 días, dado un nuevo campo `approved` (una fecha). Elija las fechas de modo que al menos una cuenta quede señalada y muestre la salida. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = lógica correcta, datos de prueba elegidos para mostrar casos señalados y no señalados; 2 = funciona, prueba débil; 1 = error de lógica; 0 = nada.
+
+### Síntesis del capítulo
+
+La identidad responde a tres preguntas distintas. Use una autenticación fuerte y resistente al phishing para el acceso remoto crítico, conceda permisos mediante roles, prohíba las combinaciones tóxicas y revise las cuentas frente a fuentes autorizadas y al uso real. Las cuentas compartidas y de fabricantes necesitan alternativas viables, no solo prohibiciones.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Siga estudiando — capítulo 13 de 40
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidad
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar la diferencia entre seguridad y privacidad; (2) aplicar principios de protección de datos como la licitud, la limitación de la finalidad, la minimización y la limitación del plazo de conservación; (3) identificar datos personales en los sistemas de los servicios críticos, incluidos los datos que se vuelven personales al combinarse; y (4) recomendar diseños que protejan la privacidad para la supervisión y los datos de incidentes. Se apoya en el capítulo 9 (datos) y el capítulo 10 (ética) y prepara el capítulo 29 (operaciones) y los requisitos éticos del proyecto final.
+
+### 14.1 La seguridad no es privacidad
+
+La seguridad protege los sistemas y la información frente al acceso, la modificación y la pérdida no autorizados. La **privacidad** se ocupa de si el tratamiento de información sobre las personas, incluso el tratamiento autorizado, es apropiado, proporcionado y justo. Una base de datos hospitalaria perfectamente segura puede vulnerar igualmente la privacidad si se usa para una finalidad de la que nunca se informó a los pacientes. El [NIST Privacy Framework](https://www.nist.gov/privacy-framework) trata el riesgo para la privacidad como algo que surge del propio tratamiento de datos, solapado con el riesgo de ciberseguridad pero distinto de él.
+
+La detección de clones de CT es el ejemplo: almacenar de forma segura dos años de validaciones seguiría siendo un problema de privacidad.
+
+### 14.2 Principios
+
+El Reglamento General de Protección de Datos de la UE establece principios que se reproducen ampliamente en otros lugares: licitud, lealtad y transparencia; limitación de la finalidad; minimización de datos; exactitud; limitación del plazo de conservación; integridad y confidencialidad; y responsabilidad proactiva ([Regulation (EU) 2016/679, Article 5](https://eur-lex.europa.eu/eli/reg/2016/679/oj)). Los datos de salud son una **categoría especial** que exige condiciones adicionales. *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia. No hace falta que se convierta en jurista, pero debe reconocer cuándo una cuestión de diseño es también una cuestión de protección de datos e implicar al delegado de protección de datos de la organización, y nunca debe presentar el resumen de este libro como asesoramiento jurídico para un caso concreto.
+
+### 14.3 Datos personales en lugares inesperados
+
+Los servicios críticos tienen datos personales evidentes (historias clínicas, cuentas bancarias, llamadas de emergencia) y otros menos evidentes. Las lecturas de un contador inteligente a intervalos cortos pueden revelar cuándo hay alguien en casa. Los datos de validación de una tarjeta de transporte trazan los desplazamientos de una persona. Los registros de seguridad anotan quién inició sesión, desde dónde y cuándo: datos personales sobre el personal. La **combinación** importa: ni un código postal ni una fecha de nacimiento suelen identificar a alguien por sí solos, pero junto con el sexo a menudo sí. La seudonimización (sustituir los nombres por códigos) reduce el riesgo, pero no es anonimización si la clave existe o si la reidentificación es posible.
+
+### 14.4 La privacidad en las operaciones de seguridad
+
+La supervisión de seguridad recoge, por diseño, datos sobre las personas. Una práctica que protege la privacidad: recoger lo que necesita la finalidad de detección, no todo lo disponible; restringir el acceso a los registros en bruto; fijar plazos de conservación; seudonimizar donde el análisis no necesita nombres; documentar la finalidad y la base jurídica; y, en un incidente, compartir indicadores (direcciones, hashes de archivos) en lugar de datos personales siempre que sea posible. Durante una brecha que afecte a datos personales pueden aplicarse obligaciones de notificación en plazos cortos, por lo que los planes de incidentes incluyen al delegado de protección de datos desde el principio.
+
+El diseño revisado de CT aplica cuatro de estas prácticas: detalle durante 30 días, seudónimos con clave, dos analistas con nombre y una finalidad declarada.
+
+### 14.5 Ejemplo resuelto: analítica de validaciones de CT (sintético)
+
+**Este caso es sintético.** El equipo de seguridad de Calder Transit quiere detectar tarjetas de transporte clonadas buscando la misma tarjeta usada en dos estaciones demasiado alejadas en un tiempo demasiado corto. El diseño propuesto copia todas las validaciones de tarjeta (ID de la tarjeta, estación, hora) durante dos años en la plataforma de analítica de seguridad. Una revisión de privacidad pregunta: ¿hacen falta dos años? (La detección de clones necesita de minutos a días; conservar el detalle completo durante 30 días y después agregar). ¿Hace falta el ID de la tarjeta en claro? (Un seudónimo con clave basta para emparejar; solo los casos confirmados se reidentifican, por parte del equipo de fraude). ¿Quién puede consultarlo? (Dos analistas con nombre, con registro). ¿Se está creando como efecto secundario un historial de viajes de los pasajeros? (Sí, y por eso el diseño limita la conservación y el acceso). El diseño revisado cumple la finalidad de detección con una fracción del riesgo para la privacidad.
+
+### 14.6 Actividad práctica
+
+Elija un servicio que use (una tarjeta de transporte, un contador inteligente, una aplicación de un hospital). A partir de su aviso de privacidad público, enumere los datos personales recogidos, las finalidades declaradas y la conservación. Identifique un dato cuya finalidad no esté clara y redacte una pregunta que podría enviar al proveedor. Fíjese en si el aviso indica la conservación en días o años, o solo «durante el tiempo necesario»; esto último es algo que merece la pena preguntar. Anote si la supervisión de seguridad figura siquiera como finalidad. Redacte su pregunta con cortesía y precisión, por ejemplo preguntando cuánto tiempo se conservan los datos de cada viaje antes de agregarlos y quién puede acceder a ellos.
+
+### 14.7 Errores comunes y límites
+
+- «Somos seguros, por lo tanto cumplimos».
+- Recogerlo todo «por si resulta útil».
+- Llamar anónimos a los datos seudonimizados.
+- Olvidar los datos del personal en los registros.
+- Dar conclusiones jurídicas sin los asesores jurídicos y de protección de datos de la organización.
+
+Cada uno aparece en los ejemplos de este capítulo. La copia original de dos años de validaciones de CT era segura y aun así desproporcionada. «Por si resulta útil» es la forma en que el ID completo de la tarjeta acabó en la plataforma de analítica. Los seudónimos con clave son reversibles por el equipo de fraude, así que no son anónimos. La propuesta de supervisión de accesos del CVH en el EX027 registra nombres del personal, que son datos personales del personal. Y ninguno de estos diseños debería calificarse de lícito sin el delegado de protección de datos.
+
+### Ejercicios — capítulo 14
+
+**EX027 — Minimizar un registro.** *Objetivo:* aplicar la minimización a la supervisión de seguridad. *Entradas:* una propuesta del CVH para registrar cada acceso del personal a las historias clínicas con el nombre completo del paciente, el diagnóstico, el nombre del miembro del personal, la estación de trabajo y la hora, conservados indefinidamente, para detectar accesos inapropiados. *Pasos:* proponga un diseño minimizado que cumpla la misma finalidad. *Evidencia esperada:* lista de campos, conservación, acceso y una frase sobre la finalidad. *Rúbrica:* 3 = identificador de la historia en lugar del diagnóstico, conservación definida, acceso restringido, finalidad declarada, personal informado; 2 = parcial; 1 = «registrar menos» sin diseño; 0 = nada.
+
+**EX028 — Riesgo de combinación.** *Objetivo:* reconocer la reidentificación. *Entradas:* CW publica el consumo horario «anonimizado» de cada contador con el código postal y el tipo de inmueble. *Pasos:* explique dos riesgos de reidentificación y dos mitigaciones. *Evidencia esperada:* explicación. *Rúbrica:* 3 = los códigos postales pequeños con tipos de inmueble únicos identifican hogares, la ocupación puede inferirse de los patrones horarios; mitigaciones: umbrales de agregación, tiempo o ubicación menos detallados, acuerdos de acceso; 2 = uno de cada; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La privacidad pregunta si el tratamiento de datos sobre las personas es apropiado, no solo si es seguro. Aplique la limitación de la finalidad, la minimización y la limitación del plazo de conservación (especialmente a la propia supervisión de seguridad), reconozca que las combinaciones reidentifican e implique a especialistas en protección de datos en lugar de ofrecer conclusiones jurídicas.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Siga estudiando — capítulo 14 de 40
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](../../en/book/MANUSCRIPT.md#ch-15)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -897,6 +1201,22 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX019.** Condiciones de parada y llamadas: (1) cualquier alarma inesperada del proceso o anomalía notificada por un operador: supervisor de la sala de control; (2) cualquier cambio de comportamiento de un dispositivo que coincida con la conexión del equipo de captura: supervisor e ingeniero de TO; (3) observar tráfico de sistemas de seguridad funcional o redes fuera del alcance: detener la captura y avisar al responsable de seguridad de TO; (4) un operador o el supervisor piden parar: obedecer de inmediato; (5) descubrimiento de datos personales o credenciales en claro: parar, proteger los archivos y avisar al delegado de protección de datos y al responsable de seguridad de TO.
 
 **EX020.** Partes interesadas: pacientes con ventilación, personal clínico, ingeniería clínica, seguridad, dirección del hospital, fabricante. Daños de parchear todo ahora: dispositivos no disponibles durante el pico de demanda, posibles fallas de la actualización. Daños de no parchear: exposición a una explotación que provoque un mal funcionamiento del dispositivo. Alternativas: parchear por lotes a medida que los dispositivos dejan de usarse; aislar la flota en un segmento de red dedicado con supervisión hasta que esté parcheada; actualización con apoyo del fabricante a pie de cama durante períodos de baja dependencia. El registro de la decisión nombra al director clínico y al responsable de seguridad como responsables conjuntos del riesgo, y registra la justificación, los controles provisionales y una fecha de finalización.
+
+**EX021.** Explotable tal como está desplegado: sí, de forma remota desde la red corporativa. Explotación conocida: suponer que se desconoce; comprobarlo. Qué controla: la ventilación de los quirófanos, de consecuencia alta. Controles compensatorios: restringir ya el acceso a la interfaz a dos estaciones de trabajo de mantenimiento de instalaciones; supervisar. Ventana: programar el reinicio de 30 minutos con mantenimiento de instalaciones y quirófanos cuando los quirófanos no estén en uso (p. ej., una noche de fin de semana), con comprobaciones manuales de la ventilación. Recomendación: restringir ya, parchear en la primera ventana segura, confirmar después.
+
+**EX022.** «Proteger las cuentas» → «Cada inicio de sesión en la HMI es una cuenta individual con nombre; no hay cuentas por defecto del fabricante activadas; se comprueba cada mes exportando la lista de cuentas y comparándola con la plantilla». «Activar el registro» → «Los registros de seguridad y de aplicación se reenvían al servidor central de registros en menos de 5 minutos; se comprueba cada semana confirmando el último evento de cada equipo». «Bloquear el USB» → «El almacenamiento masivo USB está desactivado por directiva en las estaciones de trabajo de operadores; se comprueba con una exportación trimestral de la directiva y una prueba con un dispositivo aprobado».
+
+**EX023.** Probabilidad previa 0,01: $0.95 \times 0.01/(0.95\times0.01 + 0.01\times0.99) \approx 0.490$. Previa 0,001, FPR 0,001: $0.95\times0.001/(0.95\times0.001 + 0.001\times0.999) \approx 0.487$. Una tasa de falsos positivos diez veces menor ayuda tanto como una tasa base diez veces mayor. Los analistas no pueden cambiar la tasa base, pero sí reducir la FPR mediante el ajuste, el enriquecimiento con contexto y las listas de permitidos: la palanca práctica.
+
+**EX024.** Independientes: $0.05^2 = 0.0025$. Con causa común: ≈ $0.02 + 0.0025 = 0.0225$, unas nueve veces peor. Remedio: suministros de combustible separados o análisis y filtrado del combustible, modelos de generador o sistemas de arranque distintos, y pruebas de carga periódicas.
+
+**EX025.** Roles: operador de llamadas (crear incidentes, consultar el CAD); despachador (asignar unidades, actualizar incidentes); supervisor (anular, reasignar, consultar informes); administrador del CAD (configurar el sistema, gestionar cuentas; sin despacho); soporte del fabricante (acceso de tiempo limitado, aprobado por sesión, al entorno de pruebas por defecto). Pares tóxicos: administrador del CAD + administrador del registro de auditoría (podría ocultar sus propios cambios); soporte del fabricante + acceso permanente a producción; despachador + administrador del CAD (podría alterar las reglas y actuar según ellas sin ser visto).
+
+**EX026.** Añada fechas `approved` a cada tupla; señale si `roles & PRIV` y `(TODAY - approved).days > 180`. Con, por ejemplo, *dev* aprobado el 2025-11-01 (334 días) y *chloe* aprobada el 2026-07-01 (92 días), la salida añade «re-approval overdue 334 d» solo a *dev*. La prueba debe mostrar una cuenta privilegiada señalada y otra no señalada.
+
+**EX027.** Diseño minimizado: registrar el ID del miembro del personal, el identificador de la historia clínica del paciente (no el nombre ni el diagnóstico), la estación de trabajo, la marca de tiempo y el tipo de acceso; conservar 2 años (o el plazo que fije la política del hospital), con acceso restringido al responsable de privacidad y a dos auditores con nombre; finalidad declarada como detección de accesos inapropiados; personal informado mediante la política y un aviso al iniciar sesión; reidentificación del paciente solo en investigaciones confirmadas.
+
+**EX028.** Riesgos: en los códigos postales pequeños, un tipo de inmueble único (p. ej., la única casa unifamiliar aislada) identifica un hogar; los patrones horarios revelan la ocupación, las rutinas y las ausencias. Mitigaciones: publicar solo agregados sobre un número mínimo de contadores (p. ej., ≥ 10), reducir el detalle temporal (diario) o de ubicación; facilitar los datos detallados solo con acuerdos de acceso a investigadores aprobados.
 
 <a id="glossary"></a>
 
