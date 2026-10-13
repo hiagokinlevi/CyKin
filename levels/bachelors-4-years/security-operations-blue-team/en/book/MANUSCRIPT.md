@@ -48,13 +48,31 @@ You will (1) use ratios, rates and percentages correctly in security reporting; 
 
 Security teams report numbers constantly: how many phishing emails were reported, how many people clicked, how many accounts were compromised. Decisions about training, filtering and staffing follow from these numbers, so they must be computed and explained correctly.
 
+Section one point one develops mathematical reasoning with a Riverton University note Lucas Moreau can demo offline.
+
+Under section one point one, Dr. Hana Kim expects mathematical claims to carry owners and dates.
+
+Section one point one treats why numbers matter in as testable only when evidence and ticket IDs are recorded.
+
 ### 1.2 The course case
 
 **Lucas Moreau** studies for a bachelor's degree at the fictional **Riverton University** and works part-time in its student-staffed campus security operations centre, supervised by the university's information security manager **Dr. Hana Kim**. In week three of term, a phishing email titled "Library fines overdue" reaches thousands of students and staff.
 
+Section one point two develops mathematical reasoning with a Riverton University note Lucas Moreau can demo offline.
+
+Under section one point two, Dr. Hana Kim expects mathematical claims to carry owners and dates.
+
 ### 1.3 Counts versus rates
 
 Students reported 54 emails and staff 41. Raw counts suggest students were more alert, but there are 18,000 students and only 3,200 staff. Rates per 1,000 people make groups of different sizes comparable.
+
+Section one point three develops mathematical reasoning with a Riverton University note Lucas Moreau can demo offline.
+
+Under section one point three, Dr. Hana Kim expects mathematical claims to carry owners and dates.
+
+Section one point three treats why numbers matter in as testable only when evidence and ticket IDs are recorded.
+
+For section one point three, Riverton University will not accept mathematical work without a written trail.
 
 ### Lab — rates per group
 
@@ -78,13 +96,35 @@ staff    report rate=12.8 per 1,000  click rate=1.9 per 1,000  clicks per report
 
 Staff reported at 12.8 per 1,000, more than four times the student rate of 3.0. Click rates were similar (1.5 and 1.9 per 1,000), but for every staff report there were only 0.15 clicks, against 0.50 for students. Students clicked about as often but reported much less.
 
+Section one point four develops mathematical reasoning with a Riverton University note Lucas Moreau can demo offline.
+
+Under section one point four, Dr. Hana Kim expects mathematical claims to carry owners and dates.
+
+Section one point four treats why numbers matter in as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Misleading numbers
 
 Percentages of tiny groups, missing denominators and changing definitions mislead. Always state what was counted, out of how many, over what period.
 
+Section one point five develops mathematical reasoning with a Riverton University note Lucas Moreau can demo offline.
+
+Under section one point five, Dr. Hana Kim expects mathematical claims to carry owners and dates.
+
+Section one point five treats why numbers matter in as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Riverton University will not accept mathematical work without a written trail.
+
 ### 1.6 Showing your working
 
 Lucas writes the formula beside each figure — reports ÷ users × 1,000 — so Dr. Kim can check it in seconds.
+
+Section one point six develops mathematical reasoning with a Riverton University note Lucas Moreau can demo offline.
+
+Under section one point six, Dr. Hana Kim expects mathematical claims to carry owners and dates.
+
+Section one point six treats why numbers matter in as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Riverton University will not accept mathematical work without a written trail.
 
 ### Worked example
 
@@ -122,29 +162,81 @@ You will (1) describe the hardware and software layers of a computing system; (2
 
 A computing system has hardware, firmware, an operating system, applications and the people using them. Security events can arise at each layer, and SOC analysts need to know which layer produced a record to interpret it.
 
+Section two point one develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point one, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point one treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Clients and servers
 
 When a student opens webmail, a browser on their laptop (client) talks to a mail service (server) run by a cloud provider. Sign-in is handled by the university's identity provider, which checks the password and, if enabled, a second factor.
+
+Section two point two develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point two, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point two treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Services as chains
 
 One action passes through many systems: laptop, campus Wi-Fi, internet, identity provider, mail service. Each keeps its own logs with its own clock and format.
 
+Section two point three develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point three, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point three treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
+
+For section two point three, Riverton University will not accept computing work without a written trail.
+
 ### 2.4 Where events come from
 
 The identity provider records sign-ins; the mail service records sent messages and rule changes; Wi-Fi controllers record device connections; laptops record local events if managed.
+
+Section two point four develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point four, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point four treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Riverton University will not accept computing work without a written trail.
 
 ### 2.5 Managed and unmanaged devices
 
 Staff laptops are university-managed and send logs to the SOC. Student laptops are personal and do not; the SOC sees students only through university services.
 
+Section two point five develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point five, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point five treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Riverton University will not accept computing work without a written trail.
+
 ### 2.6 Mapping a service
 
 Lucas maps webmail from end to end, listing each component, its owner and its logs.
 
+Section two point six develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point six, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point six treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Riverton University will not accept computing work without a written trail.
+
 ### 2.7 Why maps help
 
 When the phishing campaign begins, the map tells analysts which logs to check for each question.
+
+Section two point seven develops computing systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section two point seven, Dr. Hana Kim expects computing claims to carry owners and dates.
+
+Section two point seven treats layers clients and servers as testable only when evidence and ticket IDs are recorded.
+
+For section two point seven, Riverton University will not accept computing work without a written trail.
 
 ### Clocks across systems
 
@@ -186,29 +278,85 @@ You will (1) write short programs that read and count records; (2) use loops, co
 
 Analysts often ask questions no dashboard answers: "How many students received the phishing email per faculty?" A short program answers it reliably and can be rerun.
 
+Section three point one develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point one, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point one treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
+
+For section three point one, Riverton University will not accept programming work without a written trail.
+
 ### 3.2 Basic constructs
 
 Variables hold values; loops visit each record; conditions test fields; dictionaries map keys such as faculty names to counts. These four ideas solve most counting tasks.
+
+Section three point two develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point two, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point two treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, Riverton University will not accept programming work without a written trail.
 
 ### 3.3 Reading files
 
 Exports arrive as CSV files. Python's csv module reads them into dictionaries keyed by column name, avoiding fragile string splitting.
 
+Section three point three develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point three, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point three treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Riverton University will not accept programming work without a written trail.
+
 ### 3.4 Testing
 
 Before running on the real export, Lucas writes a five-line test file where he knows the answer: two students in Law, three in Engineering. If the program prints anything else, the program is wrong.
+
+Section three point four develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point four, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point four treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Readability
 
 Clear variable names (faculty_counts, not fc) and a comment stating intent help Dr. Kim and other students review his code.
 
+Section three point five develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point five, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point five treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Riverton University will not accept programming work without a written trail.
+
 ### 3.6 Handling errors
 
 Some rows lack a faculty field. Lucas counts them under "unknown" instead of crashing, and prints how many there were.
 
+Section three point six develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point six, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point six treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Riverton University will not accept programming work without a written trail.
+
 ### 3.7 Keeping code
 
 Scripts are stored in the SOC's shared repository with a short description.
+
+Section three point seven develops programming with a Riverton University note Lucas Moreau can demo offline.
+
+Under section three point seven, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section three point seven treats why program basic constructs as testable only when evidence and ticket IDs are recorded.
+
+For section three point seven, Riverton University will not accept programming work without a written trail.
+
+Section three point seven fails closed if programming evidence is missing rather than guessing.
 
 ### Rerunning analyses
 
@@ -250,29 +398,81 @@ You will (1) write clear academic and technical prose; (2) structure arguments w
 
 University assignments and SOC reports share a need: a reader must follow the argument and check the evidence. Academic writing makes claims explicit and supports each with sources or data.
 
+Section four point one develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point one, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point one treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Structure
 
 A paragraph opens with its claim, gives evidence, explains how the evidence supports the claim and notes limits. Reports and essays follow the same pattern at larger scale.
+
+Section four point two develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point two, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point two treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Riverton University will not accept academic work without a written trail.
 
 ### 4.3 Citing
 
 Every borrowed idea or figure is cited. Lucas cites NIST SP 800-61r3 for incident response phases and Alahmadi, Axon and Martinovic (2022) for analysts' views of alarms, using the referencing style his course requires.
 
+Section four point three develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point three, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point three treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Paraphrase and quotation
 
 Paraphrasing restates ideas in new words and still needs a citation; quotation uses exact words in quotation marks. Copying without either is plagiarism.
+
+Section four point four develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point four, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point four treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Riverton University will not accept academic work without a written trail.
 
 ### 4.5 Hedging
 
 Claims should match evidence. "The phishing campaign compromised two accounts" is supported; "the campaign was run by a criminal group" is not, unless evidence shows it.
 
+Section four point five develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point five, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point five treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Riverton University will not accept academic work without a written trail.
+
 ### 4.6 Revision
 
 First drafts are for thinking; later drafts for readers. Lucas reads his work aloud to find unclear sentences.
 
+Section four point six develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point six, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point six treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Riverton University will not accept academic work without a written trail.
+
 ### 4.7 Feedback
 
 Dr. Kim comments on drafts; Lucas keeps a list of recurring issues to avoid them next time.
+
+Section four point seven develops academic writing with a Riverton University note Lucas Moreau can demo offline.
+
+Under section four point seven, Dr. Hana Kim expects academic claims to carry owners and dates.
+
+Section four point seven treats purpose structure citing paraphrase as testable only when evidence and ticket IDs are recorded.
+
+For section four point seven, Riverton University will not accept academic work without a written trail.
 
 ### Writing for SOC readers
 
@@ -314,29 +514,83 @@ You will (1) explain common threats to universities; (2) describe phishing and a
 
 Universities hold personal data, research and payment systems, and have open networks and many users. Common incidents include phishing, account compromise, ransomware and misuse of research computing.
 
+Section five point one develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point one treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Riverton University will not accept security work without a written trail.
+
 ### 5.2 Phishing
 
 Phishing emails imitate trusted senders to trick people into revealing passwords or opening harmful files. The "Library fines overdue" email linked to a fake sign-in page styled like Riverton's.
+
+Section five point two develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point two treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
+For section five point two, Riverton University will not accept security work without a written trail.
 
 ### 5.3 Account compromise
 
 With a stolen password, an attacker signs in as the victim, reads mail, creates rules to hide replies or forward mail, and sends more phishing to contacts. Compromised accounts spread campaigns because messages come from a trusted sender.
 
+Section five point three develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point three treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 What a SOC does
 
 A SOC monitors logs and alerts, investigates suspicious activity, coordinates response and helps improve defences. Riverton's SOC is small: two staff and six student analysts.
+
+Section five point four develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point four treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Riverton University will not accept security work without a written trail.
 
 ### 5.5 Helpful behaviours
 
 Reporting suspicious emails, using multi-factor authentication and not reusing passwords make defenders' work easier. Reports often arrive before technical detection.
 
+Section five point five develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point five treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Riverton University will not accept security work without a written trail.
+
 ### 5.6 Reporting culture
 
 People report more when they are thanked, not blamed. The SOC replies to every report.
 
+Section five point six develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point six treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Riverton University will not accept security work without a written trail.
+
 ### 5.7 Case
 
 Within an hour of the campaign, 95 reports reach the SOC's phishing mailbox — the first signal of the incident.
+
+Section five point seven develops security literacy with a Riverton University note Lucas Moreau can demo offline.
+
+Under section five point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section five point seven treats universities as targets phishing as testable only when evidence and ticket IDs are recorded.
+
+For section five point seven, Riverton University will not accept security work without a written trail.
 
 ### Multi-factor authentication
 
@@ -378,29 +632,79 @@ You will (1) use sets, relations and graphs to describe accounts and messages; (
 
 Let R be the accounts that received the phishing email, C those that clicked the link, and S those that later signed in from an unusual country. C ∩ S identifies accounts that both clicked and showed suspicious sign-ins — the strongest candidates for compromise.
 
+Section six point one develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point one, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point one treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Logic for detections
 
 A detection condition is a logical formula: "sign-in from a new country AND mailbox rule created within 60 minutes". Writing it in logic makes it precise enough to test and review.
+
+Section six point two develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point two, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point two treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Relations
 
 "Account a sent mail to account b" is a relation. Together these relations form a directed graph of who emails whom.
 
+Section six point three develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point three, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point three treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Riverton University will not accept discrete work without a written trail.
+
 ### 6.4 Graphs and spread
 
 When s2047 was compromised, the attacker sent phishing to its contacts. In the graph, the campaign spreads along edges from compromised nodes. Finding nodes with many new outgoing edges finds spreading accounts.
+
+Section six point four develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point four, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point four treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Counting
 
 With 6,980 recipients and 33 clickers, the number of possible clicker pairs is 33 × 32 ÷ 2 = 528. Counting helps estimate the effort of manual checks before starting them.
 
+Section six point five develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point five, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point five treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Riverton University will not accept discrete work without a written trail.
+
 ### 6.6 Precision of definitions
 
 Discrete thinking turns "many emails" into "more than 50 recipients outside the user's usual contacts in one hour".
 
+Section six point six develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point six, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point six treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Riverton University will not accept discrete work without a written trail.
+
 ### 6.7 Case use
 
 Lucas computes C ∩ S from exported lists and finds two accounts: s2047 and s3310.
+
+Section six point seven develops discrete structures with a Riverton University note Lucas Moreau can demo offline.
+
+Under section six point seven, Dr. Hana Kim expects discrete claims to carry owners and dates.
+
+Section six point seven treats sets of accounts logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point seven, Riverton University will not accept discrete work without a written trail.
 
 ### Paths
 
@@ -442,29 +746,81 @@ You will (1) explain IP addressing, DNS, HTTP and email protocols; (2) read sign
 
 Every connection has a source IP address. Identity providers often add a geolocation (country) guessed from the address. Geolocation is approximate: VPNs, mobile networks and cloud services can place users in the wrong country.
 
+Section seven point one develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point one, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point one treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 DNS
 
 DNS translates names such as riverton.example.ac.uk into addresses. The phishing page used riverton-library.example.net, a look-alike name. DNS logs from campus resolvers show which devices looked it up.
+
+Section seven point two develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point two, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point two treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 HTTP and HTTPS
 
 Web pages use HTTP over TLS. The fake sign-in page received passwords by HTTPS POST; network sensors see only the destination name, not the password.
 
+Section seven point three develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point three, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point three treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Riverton University will not accept networks work without a written trail.
+
 ### 7.4 Email protocols
 
 Mail travels between servers by SMTP. Message headers record each server hop. Authentication results — SPF, DKIM and DMARC — show whether the sending domain authorised the message; the phishing email failed DMARC for its claimed sender.
+
+Section seven point four develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point four, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point four treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Reading sign-in logs
 
 A sign-in record shows time, user, IP, country, client application and result. s2047's 02:14 sign-in came from an address geolocated to the Netherlands using a desktop mail protocol.
 
+Section seven point five develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point five, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point five treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Riverton University will not accept networks work without a written trail.
+
 ### 7.6 DNS as evidence
 
 Campus DNS logs show 41 lookups of the look-alike name from university Wi-Fi, a lower bound on clicks from campus.
 
+Section seven point six develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point six, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point six treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Riverton University will not accept networks work without a written trail.
+
 ### 7.7 Limits
 
 Network evidence shows connections, not intentions; it needs context from other logs.
+
+Section seven point seven develops networks and protocols with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seven point seven, Dr. Hana Kim expects networks claims to carry owners and dates.
+
+Section seven point seven treats addresses and locations dns as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, Riverton University will not accept networks work without a written trail.
+
+Section seven point seven fails closed if networks evidence is missing rather than guessing.
 
 ### Ports and services
 
@@ -506,29 +862,83 @@ You will (1) structure larger analysis programs into functions and modules; (2) 
 
 Lucas's counting scripts grow into a small tool that reads sign-in and mail exports, joins them by user and time, and prints suspicious combinations. Functions separate reading, analysis and output.
 
+Section eight point one develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point one, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point one treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Dates and times
 
 The datetime module parses timestamps and converts zones. Mixing local and UTC times is the most common bug in SOC scripts.
+
+Section eight point two develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point two, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point two treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Riverton University will not accept programming work without a written trail.
 
 ### 8.3 JSON
 
 Cloud services export JSON. The json module reads nested records; Lucas writes small functions to extract the fields he needs.
 
+Section eight point three develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point three, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point three treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Riverton University will not accept programming work without a written trail.
+
 ### 8.4 Unit tests
 
 unittest checks functions with known inputs: "a rule created 59 minutes after a risky sign-in should match; 61 minutes should not".
+
+Section eight point four develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point four, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point four treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Riverton University will not accept programming work without a written trail.
 
 ### 8.5 Efficiency
 
 Reading files line by line and using dictionaries for lookups keeps memory small and speed high on large exports.
 
+Section eight point five develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point five, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point five treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Riverton University will not accept programming work without a written trail.
+
 ### 8.6 Errors
 
 The tool logs records it cannot parse and continues; at the end it prints totals read, skipped and matched.
 
+Section eight point six develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point six, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point six treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Riverton University will not accept programming work without a written trail.
+
 ### 8.7 Sharing
 
 A README explains inputs, outputs and limits, so other student analysts can run it.
+
+Section eight point seven develops programming ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eight point seven, Dr. Hana Kim expects programming claims to carry owners and dates.
+
+Section eight point seven treats from scripts to tools as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Riverton University will not accept programming work without a written trail.
 
 ### Configuration
 
@@ -574,9 +984,23 @@ You will (1) model security data as tables; (2) write SQL queries with filters, 
 
 Security logs fit naturally into tables: one row per event, columns for time, user, address, country and result. Databases answer questions over millions of rows quickly.
 
+Section nine point one develops data and databases with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nine point one, Dr. Hana Kim expects data claims to carry owners and dates.
+
+Section nine point one treats tables sql basics reading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Riverton University will not accept data work without a written trail.
+
 ### 9.2 SQL basics
 
 SELECT chooses columns, WHERE filters rows, GROUP BY aggregates and ORDER BY sorts. A query such as "successful sign-ins outside the usual country, grouped by user" answers an investigation question in one statement.
+
+Section nine point two develops data and databases with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nine point two, Dr. Hana Kim expects data claims to carry owners and dates.
+
+Section nine point two treats tables sql basics reading as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — querying sign-ins
 
@@ -604,17 +1028,47 @@ s3310 successful sign-ins outside GB: 1
 
 Two accounts had successful sign-ins outside GB: s2047 twice and s3310 once. s3310's success at 02:31 followed a failure at 02:20, suggesting the attacker had its password after a mistake or second attempt.
 
+Section nine point three develops data and databases with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nine point three, Dr. Hana Kim expects data claims to carry owners and dates.
+
+Section nine point three treats tables sql basics reading as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Joins
 
 Joining the sign-in table with the mailbox-rule table on user shows which risky sign-ins were followed by rule changes.
+
+Section nine point four develops data and databases with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nine point four, Dr. Hana Kim expects data claims to carry owners and dates.
+
+Section nine point four treats tables sql basics reading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Riverton University will not accept data work without a written trail.
 
 ### 9.5 Quality
 
 Missing countries, duplicated rows and inconsistent user formats (s2047 versus S2047) distort results. Normalising at load time prevents errors.
 
+Section nine point five develops data and databases with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nine point five, Dr. Hana Kim expects data claims to carry owners and dates.
+
+Section nine point five treats tables sql basics reading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Riverton University will not accept data work without a written trail.
+
 ### 9.6 Privacy
 
 Databases with personal data need access control and retention limits. The SOC database keeps sign-in details for 90 days.
+
+Section nine point six develops data and databases with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nine point six, Dr. Hana Kim expects data claims to carry owners and dates.
+
+Section nine point six treats tables sql basics reading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Riverton University will not accept data work without a written trail.
 
 ### Indexes
 
@@ -656,29 +1110,81 @@ You will (1) apply ethical principles to SOC work at a university; (2) act withi
 
 The SOC acts under the university's information security policy, approved by its governing body. Student analysts may view logs only for assigned alerts and may not search for people they know.
 
+Section ten point one develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point one, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point one treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Privacy
 
 Students and staff expect privacy. The SOC looks at metadata (sign-ins, rule changes, message counts) by default and reads message content only with case approval from Dr. Kim.
+
+Section ten point two develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point two, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point two treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Conflicts of interest
 
 If an alert involves a friend, classmate or lecturer, a student analyst passes it to another analyst. Lucas declares when an alert involves someone in his course.
 
+Section ten point three develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point three, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point three treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Riverton University will not accept ethics work without a written trail.
+
 ### 10.4 Confidentiality
 
 Analysts sign a confidentiality agreement. Discussing cases outside the SOC, even anonymously, is not allowed.
+
+Section ten point four develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point four, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point four treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Riverton University will not accept ethics work without a written trail.
 
 ### 10.5 Authorised testing
 
 Phishing simulations and other tests are approved in writing by Dr. Kim and communicated in policy; analysts never run their own tests on university systems.
 
+Section ten point five develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point five, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point five treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Riverton University will not accept ethics work without a written trail.
+
 ### 10.6 Proportionality
 
 Responses match the risk: resetting a compromised account is proportionate; suspending a student's network access without evidence is not.
 
+Section ten point six develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point six, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point six treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Riverton University will not accept ethics work without a written trail.
+
 ### 10.7 Reporting misconduct
 
 If an analyst sees misuse of SOC access, they report it to Dr. Kim.
+
+Section ten point seven develops ethics and authorized practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section ten point seven, Dr. Hana Kim expects ethics claims to carry owners and dates.
+
+Section ten point seven treats authority privacy conflicts of as testable only when evidence and ticket IDs are recorded.
+
+For section ten point seven, Riverton University will not accept ethics work without a written trail.
 
 ### Records of access
 
@@ -720,29 +1226,81 @@ You will (1) explain processes, users, permissions and logging in Windows and Li
 
 Operating systems control processes, files and users, and can log logons, process creation, privilege changes and service installation. Logging is configurable: unconfigured systems record little.
 
+Section eleven point one develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point one, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point one treats what operating systems record as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Riverton University will not accept operating work without a written trail.
+
 ### 11.2 Windows and Linux
 
 University staff laptops run Windows; research servers mostly run Linux. Windows records events in event logs; Linux uses system logs and, where configured, the audit subsystem. Both can forward logs to the SOC.
+
+Section eleven point two develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point two, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point two treats what operating systems record as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Users and privileges
 
 Administrators can install software and change settings. Adding a user to an administrators group or to Linux's sudo group is a privilege change worth alerting on.
 
+Section eleven point three develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point three, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point three treats what operating systems record as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Riverton University will not accept operating work without a written trail.
+
 ### 11.4 Research servers
 
 Research groups often run their own servers with local accounts. The research GPU server in the physics department was set up by a postdoc and forwarded no logs to the SOC until this year.
+
+Section eleven point four develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point four, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point four treats what operating systems record as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 SSH
 
 Linux servers accept remote logins over SSH. Authentication logs show successes and failures with source addresses. Key-based login without passwords reduces guessing risk.
 
+Section eleven point five develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point five, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point five treats what operating systems record as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Riverton University will not accept operating work without a written trail.
+
 ### 11.6 Configuration matters
 
 A rule for "new administrator added" works only if the server logs group changes and forwards them.
 
+Section eleven point six develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point six, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point six treats what operating systems record as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Riverton University will not accept operating work without a written trail.
+
 ### 11.7 Case
 
 In week five, an alert reports a new sudo user on the physics GPU server.
+
+Section eleven point seven develops operating systems with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eleven point seven, Dr. Hana Kim expects operating claims to carry owners and dates.
+
+Section eleven point seven treats what operating systems record as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point seven, Riverton University will not accept operating work without a written trail.
 
 ### Worked example
 
@@ -780,9 +1338,25 @@ You will (1) describe distributions of user activity; (2) use means, standard de
 
 Each user sends a different number of emails per day. A library staff account sends about 40; most students send a handful. Unusual means unusual for that account.
 
+Section twelve point one develops probability and statistics with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twelve point one, Dr. Hana Kim expects probability claims to carry owners and dates.
+
+Section twelve point one treats normal behaviour varies mean as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Riverton University will not accept probability work without a written trail.
+
 ### 12.2 Mean and standard deviation
 
 The mean is the typical value; the standard deviation measures spread. A z-score — (today − mean) ÷ standard deviation — shows how many spreads today's value lies from typical.
+
+Section twelve point two develops probability and statistics with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twelve point two, Dr. Hana Kim expects probability claims to carry owners and dates.
+
+Section twelve point two treats normal behaviour varies mean as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Riverton University will not accept probability work without a written trail.
 
 ### Lab — unusual outbound mail
 
@@ -809,17 +1383,47 @@ staff_lib mean= 41.3 sd= 2.6 today=  47 z=    2.2
 
 s2047 normally sends about 2.4 messages a day; today it sent 212, a z-score of about 215 — far beyond any normal variation. s1001 (z = 2.3) and the library account (z = 2.2) are slightly above typical but well within ordinary days.
 
+Section twelve point three develops probability and statistics with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twelve point three, Dr. Hana Kim expects probability claims to carry owners and dates.
+
+Section twelve point three treats normal behaviour varies mean as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Thresholds
 
 Lucas flags z above 4. With hundreds of thousands of accounts, a threshold of 2 would flag thousands every day; base rates matter, as Axelsson (2000) showed for intrusion detection.
+
+Section twelve point four develops probability and statistics with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twelve point four, Dr. Hana Kim expects probability claims to carry owners and dates.
+
+Section twelve point four treats normal behaviour varies mean as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Riverton University will not accept probability work without a written trail.
 
 ### 12.5 Limits of z-scores
 
 Seven days is a short history; z-scores assume roughly symmetric variation, which counts rarely have. They are a screening tool, not proof.
 
+Section twelve point five develops probability and statistics with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twelve point five, Dr. Hana Kim expects probability claims to carry owners and dates.
+
+Section twelve point five treats normal behaviour varies mean as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Riverton University will not accept probability work without a written trail.
+
 ### 12.6 Reporting
 
 Lucas reports values with history length and threshold so readers know how the flag was made.
+
+Section twelve point six develops probability and statistics with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twelve point six, Dr. Hana Kim expects probability claims to carry owners and dates.
+
+Section twelve point six treats normal behaviour varies mean as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Riverton University will not accept probability work without a written trail.
 
 ### Seasonality
 
@@ -861,29 +1465,83 @@ You will (1) explain identity lifecycle, authentication and authorisation; (2) d
 
 Accounts are created when people join, changed when roles change and removed when they leave. Universities have heavy churn each term; stale accounts of graduates are a risk if not disabled.
 
+Section thirteen point one develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point one, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point one treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Authentication and authorisation
 
 Authentication proves identity; authorisation decides what the identity may access. A compromised student account can access that student's mail, files and learning platform.
+
+Section thirteen point two develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point two, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point two treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Riverton University will not accept identity work without a written trail.
 
 ### 13.3 Multi-factor authentication
 
 MFA requires a second proof. Riverton requires it for staff; for students it is optional. Neither s2047 nor s3310 had enrolled.
 
+Section thirteen point three develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point three, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point three treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Riverton University will not accept identity work without a written trail.
+
 ### 13.4 Identity signals
 
 New country or device, impossible travel (two distant locations too close in time), legacy protocols that bypass MFA, and MFA method changes are common signals.
+
+Section thirteen point four develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point four, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point four treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Riverton University will not accept identity work without a written trail.
 
 ### 13.5 Legacy protocols
 
 s2047's attacker used a desktop mail protocol that does not support MFA. Even enrolled users could be exposed while such protocols remain enabled.
 
+Section thirteen point five develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point five, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point five treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Riverton University will not accept identity work without a written trail.
+
 ### 13.6 Controls
 
 Require MFA for all, disable legacy protocols, and alert on MFA changes and risky sign-ins.
 
+Section thirteen point six develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point six, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point six treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Riverton University will not accept identity work without a written trail.
+
 ### 13.7 Case decision
 
 After the campaign, the university decides to require student MFA and disable legacy mail protocols from next term.
+
+Section thirteen point seven develops identity and access with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirteen point seven, Dr. Hana Kim expects identity claims to carry owners and dates.
+
+Section thirteen point seven treats identity lifecycle authentication and as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point seven, Riverton University will not accept identity work without a written trail.
 
 ### Graduates and leavers
 
@@ -925,29 +1583,87 @@ You will (1) explain privacy principles relevant to monitoring; (2) apply data m
 
 Common privacy principles include lawfulness and transparency, purpose limitation, data minimisation, accuracy, storage limitation, and security. They apply to SOC monitoring as to any processing of personal data.
 
+Section fourteen point one develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point one, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point one treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Riverton University will not accept privacy work without a written trail.
+
 ### 14.2 Purpose limitation
 
 Logs collected for security may not be reused for unrelated purposes, such as checking attendance. Riverton's monitoring notice states security as the purpose.
+
+Section fourteen point two develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point two, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point two treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Riverton University will not accept privacy work without a written trail.
 
 ### 14.3 Minimisation
 
 The SOC collects metadata needed for detection, not message content. When content is needed, access is approved per case and limited to what answers the question.
 
+Section fourteen point three develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point three, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point three treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Riverton University will not accept privacy work without a written trail.
+
 ### 14.4 Retention
 
 Sign-in logs are kept 90 days, mail metadata 180 days. Longer retention needs justification.
+
+Section fourteen point four develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point four, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point four treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Riverton University will not accept privacy work without a written trail.
+
+Section fourteen point four fails closed if privacy evidence is missing rather than guessing.
 
 ### 14.5 Individuals' rights
 
 Students can ask what data is held about them. The SOC's records must be retrievable for such requests, with redaction where other people's data appears.
 
+Section fourteen point five develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point five, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point five treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Riverton University will not accept privacy work without a written trail.
+
 ### 14.6 Breach assessment
 
 If personal data was exposed — for example, mail forwarded to an attacker — the data protection officer assesses whether to notify regulators and affected people.
 
+Section fourteen point six develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point six, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point six treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Riverton University will not accept privacy work without a written trail.
+
 ### 14.7 Working with the DPO
 
 The SOC informs the data protection officer early and provides facts, not legal conclusions.
+
+Section fourteen point seven develops privacy foundations with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fourteen point seven, Dr. Hana Kim expects privacy claims to carry owners and dates.
+
+Section fourteen point seven treats principles purpose limitation minimisation as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point seven, Riverton University will not accept privacy work without a written trail.
 
 ### Transparency
 
@@ -993,29 +1709,85 @@ You will (1) preserve digital evidence with integrity; (2) measure SOC activitie
 
 In a SOC, evidence includes exported logs, alert records, screenshots of configuration and statements. Evidence must be preserved so its integrity can be shown later.
 
+Section fifteen point one develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point one, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point one treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point one, Riverton University will not accept evidence work without a written trail.
+
 ### 15.2 Preservation
 
 Exports are saved read-only with a hash (a digital fingerprint). If a file changes, its hash changes. Case notes record who exported what, when and from where.
+
+Section fifteen point two develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point two, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point two treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point two, Riverton University will not accept evidence work without a written trail.
 
 ### 15.3 Observation and inference
 
 "Sign-in from 198.51.100.x at 02:14" is an observation. "The account was compromised" is an inference. Case notes keep them separate and show the reasoning.
 
+Section fifteen point three develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point three, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point three treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Riverton University will not accept evidence work without a written trail.
+
 ### 15.4 Measurement
 
 Consistent measures — time to acknowledge, time to contain, number of accounts affected — let the SOC compare incidents and improve. Definitions must be fixed: does "contain" mean password reset or all sessions revoked?
+
+Section fifteen point four develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point four, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point four treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 15.5 Units and clocks
 
 All times in UTC; durations in minutes. Mixed units cause errors.
 
+Section fifteen point five develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point five, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point five treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Riverton University will not accept evidence work without a written trail.
+
+Section fifteen point five fails closed if evidence evidence is missing rather than guessing.
+
 ### 15.6 Error and uncertainty
 
 Some measures are uncertain: the number of people who clicked is estimated from DNS lookups and reports. Lucas reports a range and its basis.
 
+Section fifteen point six develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point six, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point six treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, Riverton University will not accept evidence work without a written trail.
+
 ### 15.7 Case notes
 
 Each step in the campaign response is recorded as it happens, not reconstructed afterwards.
+
+Section fifteen point seven develops evidence and measurement with a Riverton University note Lucas Moreau can demo offline.
+
+Under section fifteen point seven, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section fifteen point seven treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point seven, Riverton University will not accept evidence work without a written trail.
 
 ### Chain of custody
 
@@ -1061,29 +1833,85 @@ You will (1) describe how a university's networks and services are arranged for 
 
 Riverton runs a student Wi-Fi network, a staff network, a research network, data-centre servers and cloud services for mail and identity. Each has different users and risks.
 
+Section sixteen point one develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point one treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point one, Riverton University will not accept security work without a written trail.
+
 ### 16.2 Trust boundaries
 
 Boundaries separate zones: student Wi-Fi should not reach administrative servers; research servers should be reachable only by their groups. Firewalls enforce boundaries and log crossings.
+
+Section sixteen point two develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point two treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point two, Riverton University will not accept security work without a written trail.
 
 ### 16.3 Cloud-first services
 
 Mail and identity live in the cloud, so the most important logs come from cloud providers rather than campus networks. The SOC's architecture must collect cloud logs reliably.
 
+Section sixteen point three develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point three treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Riverton University will not accept security work without a written trail.
+
 ### 16.4 Monitoring placement
 
 The SOC monitors identity sign-ins (all users), mail events, firewall logs at zone boundaries and endpoint logs from managed devices. Student devices are visible only through services.
+
+Section sixteen point four develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point four treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Riverton University will not accept security work without a written trail.
 
 ### 16.5 Research network
 
 Research servers are diverse and loosely managed. A boundary that limits inbound access to university addresses and requires SSH keys reduces exposure.
 
+Section sixteen point five develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point five treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Riverton University will not accept security work without a written trail.
+
 ### 16.6 Defence in depth
 
 Several layers — mail filtering, MFA, legacy protocol blocking, monitoring of mailbox rules — mean one failure does not lead to widespread compromise.
 
+Section sixteen point six develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point six treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Riverton University will not accept security work without a written trail.
+
 ### 16.7 Mapping to frameworks
 
 Lucas maps controls to NIST CSF 2.0 functions to show coverage across Protect, Detect and Respond.
+
+Section sixteen point seven develops security architecture with a Riverton University note Lucas Moreau can demo offline.
+
+Under section sixteen point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section sixteen point seven treats campus architecture trust boundaries as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point seven, Riverton University will not accept security work without a written trail.
 
 ### Administrative systems
 
@@ -1125,29 +1953,83 @@ You will (1) explain hashing, encryption and digital signatures; (2) relate cryp
 
 A cryptographic hash turns any data into a fixed-size fingerprint. It is practically impossible to find two inputs with the same hash. SOCs use hashes to identify files and to check that evidence has not changed.
 
+Section seventeen point one develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point one, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point one treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
 ### 17.2 Encryption
 
 Encryption makes data unreadable without a key. TLS encrypts web and mail traffic in transit; disk encryption protects lost laptops.
+
+Section seventeen point two develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point two, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point two treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point two, Riverton University will not accept cryptography work without a written trail.
 
 ### 17.3 Signatures
 
 A digital signature proves who created data and that it has not changed. Email DKIM signatures let receiving servers verify that a message came from the claimed domain.
 
+Section seventeen point three develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point three, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point three treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Riverton University will not accept cryptography work without a written trail.
+
 ### 17.4 Passwords
 
 Passwords should be stored as slow, salted hashes so that a stolen database cannot be easily reversed.
+
+Section seventeen point four develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point four, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point four treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Riverton University will not accept cryptography work without a written trail.
 
 ### 17.5 Monitoring and encryption
 
 Encryption hides content from network sensors. The SOC relies on endpoint and service logs that see data before encryption or after decryption.
 
+Section seventeen point five develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point five, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point five treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Riverton University will not accept cryptography work without a written trail.
+
 ### 17.6 Keys and trust
 
 Cryptography is only as safe as its keys. Compromised signing keys let attackers sign malicious content.
 
+Section seventeen point six develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point six, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point six treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Riverton University will not accept cryptography work without a written trail.
+
 ### 17.7 Case
 
 The phishing email failed DKIM for the domain it pretended to come from; receiving filters marked it suspicious, but the banner was easy to ignore.
+
+Section seventeen point seven develops cryptography concepts with a Riverton University note Lucas Moreau can demo offline.
+
+Under section seventeen point seven, Dr. Hana Kim expects cryptography claims to carry owners and dates.
+
+Section seventeen point seven treats hashes encryption signatures passwords as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point seven, Riverton University will not accept cryptography work without a written trail.
 
 ### Certificates
 
@@ -1189,29 +2071,83 @@ You will (1) formulate a research question about SOC practice; (2) choose method
 
 Lucas wonders why students report phishing less than staff (chapter 1). A research question: "What reasons do Riverton students give for not reporting suspicious emails?"
 
+Section eighteen point one develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point one, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point one treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point one, Riverton University will not accept research work without a written trail.
+
 ### 18.2 Choosing a method
 
 Surveys reach many people with fixed questions; interviews explore reasons in depth with fewer people; log analysis shows behaviour but not reasons. Lucas combines a short survey with five interviews.
+
+Section eighteen point two develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point two, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point two treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Sampling
 
 A survey of volunteers may over-represent security-interested students. Lucas recruits through several channels and reports who responded.
 
+Section eighteen point three develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point three, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point three treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Riverton University will not accept research work without a written trail.
+
 ### 18.4 Ethics
 
 Research with people needs ethics approval, informed consent, anonymity and the right to withdraw. No SOC data about individuals is used.
+
+Section eighteen point four develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point four, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point four treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Riverton University will not accept research work without a written trail.
 
 ### 18.5 Designing questions
 
 Neutral wording ("How do you usually handle suspicious emails?") avoids leading answers ("Why don't you report phishing?").
 
+Section eighteen point five develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point five, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point five treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Riverton University will not accept research work without a written trail.
+
 ### 18.6 Analysis
 
 Survey answers are counted; interview transcripts are coded into themes, with a second student coding a sample to check consistency.
 
+Section eighteen point six develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point six, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point six treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Riverton University will not accept research work without a written trail.
+
 ### 18.7 Literature
 
 Sundaramurthy et al. (2014) show how researchers embedded in SOCs revealed practice that surveys missed, encouraging mixed methods.
+
+Section eighteen point seven develops research methods with a Riverton University note Lucas Moreau can demo offline.
+
+Under section eighteen point seven, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section eighteen point seven treats from curiosity to question as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point seven, Riverton University will not accept research work without a written trail.
 
 ### Analysis plan
 
@@ -1253,29 +2189,81 @@ You will (1) define security operations and blue-team work; (2) explain SOC func
 
 Security operations monitor, detect, analyse and respond to threats continuously. The blue team is the defending side, contrasted with red teams that simulate attackers under authorisation.
 
+Section nineteen point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point one treats what security operations are as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point one, Riverton University will not accept security work without a written trail.
+
 ### 19.2 SOC functions
 
 Knerler, Parker and Zimmerman (2022) group SOC functions into areas such as real-time monitoring and triage, incident analysis and response, threat intelligence, tooling and engineering, and expanded services like hunting.
+
+Section nineteen point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point two treats what security operations are as testable only when evidence and ticket IDs are recorded.
 
 ### 19.3 Incident response framework
 
 NIST SP 800-61r3 places incident response within cybersecurity risk management, aligned to CSF 2.0 functions: preparation sits in Govern, Identify and Protect; detection and response in Detect and Respond; recovery in Recover.
 
+Section nineteen point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point three treats what security operations are as testable only when evidence and ticket IDs are recorded.
+
 ### 19.4 Continuous monitoring
 
 NIST SP 800-137 describes continuous monitoring as an ongoing programme tied to risk.
+
+Section nineteen point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point four treats what security operations are as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point four, Riverton University will not accept security work without a written trail.
 
 ### 19.5 SOC models
 
 SOCs may be internal, outsourced or hybrid. Riverton's is internal and small, using student analysts as a teaching programme.
 
+Section nineteen point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point five treats what security operations are as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Riverton University will not accept security work without a written trail.
+
 ### 19.6 Maturity
 
 The SOC-CMM (van Os, 2016) assesses maturity across business, people, process, technology and services. Riverton scores higher in technology than in process documentation.
 
+Section nineteen point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point six treats what security operations are as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point six, Riverton University will not accept security work without a written trail.
+
 ### 19.7 Theory and practice
 
 Vielberth et al. (2020) note that SOC research is fragmented; much practice relies on experience, so the course pairs theory with case work.
+
+Section nineteen point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section nineteen point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section nineteen point seven treats what security operations are as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point seven, Riverton University will not accept security work without a written trail.
 
 ### Red, blue and purple
 
@@ -1317,29 +2305,77 @@ You will (1) analyse published and synthetic SOC cases; (2) identify detection, 
 
 Cases show how principles play out under pressure. Lucas studies three: Riverton's phishing campaign, a synthetic ransomware case from a teaching exercise, and the findings of published SOC studies.
 
+Section twenty point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point one treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 Riverton's campaign
 
 Detection came first from user reports, then from the z-score flag on s2047. Containment took about six hours for s2047 because the flag ran only in a morning batch.
+
+Section twenty point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point two treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Synthetic ransomware exercise
 
 In the course's tabletop exercise, a file server's files are encrypted. Detection comes from users reporting unreadable files; response hinges on isolating the server and restoring from backups. The exercise shows that tested backups decide recovery time.
 
+Section twenty point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point three treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Published studies
 
 Alahmadi et al. (2022) describe analysts overwhelmed by benign triggers; Kokulu et al. (2019) describe mismatched SOC priorities between managers and analysts. Both explain why Riverton's student analysts sometimes ignore low-severity alerts.
+
+Section twenty point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point four treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Decision points
 
 In each case Lucas lists decision points: when to escalate, when to contain, whom to inform. Delays often come from unclear authority, not missing tools.
 
+Section twenty point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point five treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point five, Riverton University will not accept security work without a written trail.
+
 ### 20.6 Generalising
 
 Lessons that recur — user reports matter, batch detection is slow, unclear authority delays action — are candidates for SOC improvement.
 
+Section twenty point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point six treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point six, Riverton University will not accept security work without a written trail.
+
 ### 20.7 Limits
 
 Cases are selected and simplified; they illustrate, they do not prove.
+
+Section twenty point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty point seven treats learning from cases riverton's as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point seven, Riverton University will not accept security work without a written trail.
 
 ### Using cases in training
 
@@ -1381,29 +2417,79 @@ You will (1) model the SOC as a set of connected components and roles; (2) trace
 
 Riverton's SOC links log sources, a SIEM, detection rules, a case-management system, analysts and responders in IT. An alert is a message that passes through this chain; every link can delay or distort it.
 
+Section twenty-one point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point one treats the soc as system as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 Tracing an alert
 
 For the s2047 flag: the mail service logged outbound messages; logs arrived in the SIEM within 10 minutes; the z-score job ran at 07:00; the alert entered the case queue; a student analyst picked it up at 08:05; the service desk reset the password at 08:41.
+
+Section twenty-one point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point two treats the soc as system as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Delays
 
 The largest delay was the gap between activity (from 02:30) and the batch job (07:00). The second was queue time before an analyst picked up the alert, because the morning shift starts at 08:00.
 
+Section twenty-one point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point three treats the soc as system as testable only when evidence and ticket IDs are recorded.
+
 ### 21.4 Roles
 
 Student analysts triage; Dr. Kim's two staff engineers maintain tools and handle escalations; the service desk performs resets; the data protection officer handles personal data exposure.
+
+Section twenty-one point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point four treats the soc as system as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Riverton University will not accept security work without a written trail.
 
 ### 21.5 Interfaces
 
 Each hand-off — SIEM to case system, analyst to service desk — has a format and an expected time. Missing expectations cause waits.
 
+Section twenty-one point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point five treats the soc as system as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, Riverton University will not accept security work without a written trail.
+
 ### 21.6 Using the model
 
 Lucas annotates the model with measured times from the campaign to show where improvements would matter most.
 
+Section twenty-one point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point six treats the soc as system as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point six, Riverton University will not accept security work without a written trail.
+
 ### 21.7 Feedback loops
 
 Analyst closure reasons feed back to engineers, who tune rules; without this loop, the same noise repeats.
+
+Section twenty-one point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-one point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-one point seven treats the soc as system as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point seven, Riverton University will not accept security work without a written trail.
 
 ### Worked example
 
@@ -1441,29 +2527,83 @@ You will (1) inventory the SOC's data sources and their owners; (2) assess data 
 
 Lucas lists every source: identity sign-ins, mail events, mailbox audit, firewall logs, DNS resolver logs, endpoint logs from staff devices, research server logs (partial), and the phishing report mailbox. For each, he records owner, format, latency, retention and which rules use it.
 
+Section twenty-two point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point one treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
 ### 22.2 Quality
 
 Some sources have gaps: DNS logs miss queries from devices using external resolvers; research servers forward inconsistently. Quality problems limit what detections can promise.
+
+Section twenty-two point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point two treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Riverton University will not accept security work without a written trail.
 
 ### 22.3 Latency
 
 Cloud mail audit events arrive up to 30 minutes late; sign-ins within 5. Detections that combine them must allow for the slower source.
 
+Section twenty-two point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point three treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point three, Riverton University will not accept security work without a written trail.
+
 ### 22.4 Retention
 
 Cloud audit logs are kept by the provider for 90 days on Riverton's licence; the SOC copies key events to its own store for longer.
+
+Section twenty-two point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point four treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Riverton University will not accept security work without a written trail.
 
 ### 22.5 External dependencies
 
 The SOC depends on the cloud provider's logging, the identity provider's API and the university network team. A change in any can break collection silently.
 
+Section twenty-two point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point five treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point five, Riverton University will not accept security work without a written trail.
+
 ### 22.6 Source health
 
 A daily report shows events received per source compared with the usual range. A sudden drop prompts investigation.
 
+Section twenty-two point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point six treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Riverton University will not accept security work without a written trail.
+
 ### 22.7 Ownership
 
 Each source has a named owner outside the SOC who is told when problems appear.
+
+Section twenty-two point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-two point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-two point seven treats data inventory quality latency as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point seven, Riverton University will not accept security work without a written trail.
 
 ### Cost of sources
 
@@ -1505,9 +2645,21 @@ You will (1) design detections for password guessing patterns; (2) distinguish s
 
 Brute force tries many passwords against one account. Password spraying tries one or two common passwords against many accounts, staying under per-account lockout limits. Both appear in identity logs as failures, but they look different when grouped.
 
+Section twenty-three point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-three point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-three point one treats two guessing patterns grouping as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 Grouping matters
 
 Grouping failures by source and counting distinct users and attempts per user separates the patterns: spraying shows many users and few attempts each; brute force shows one user and many attempts.
+
+Section twenty-three point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-three point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-three point two treats two guessing patterns grouping as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — spray versus brute force
 
@@ -1536,17 +2688,43 @@ Run with `python3 lab_spray.py`. Verified output:
 
 In 30 minutes, 198.51.100.77 failed against 30 accounts with at most one attempt each — a spray. 192.0.2.5 failed six times against s1001 only — a brute-force pattern on one account.
 
+Section twenty-three point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-three point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-three point three treats two guessing patterns grouping as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point three, Riverton University will not accept security work without a written trail.
+
 ### 23.4 Responses differ
 
 Spraying threatens many weak passwords; the response is to check whether any targeted account later signed in successfully and to block the source. Brute force against one account may be a user who forgot a password, or a targeted attack; the response is to contact the account holder.
+
+Section twenty-three point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-three point four, Dr. Hana Kim expects security claims to carry owners and dates.
 
 ### 23.5 Thresholds
 
 The lab uses 20 users and 2 attempts per user. Lower thresholds catch slower sprays but raise false alerts from shared campus addresses, such as library computers.
 
+Section twenty-three point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-three point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-three point five treats two guessing patterns grouping as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point five, Riverton University will not accept security work without a written trail.
+
 ### 23.6 Shared addresses
 
 Campus NAT means many students share one public address; a real spray must be distinguished from a busy lab. The rule excludes known campus egress addresses and handles them with separate thresholds.
+
+Section twenty-three point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-three point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-three point six treats two guessing patterns grouping as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1584,29 +2762,81 @@ You will (1) relate SOC detections to preventive and responsive controls; (2) re
 
 Detection works best alongside prevention and response. For phishing: mail filtering and DMARC enforcement prevent; mailbox-rule monitoring detects; password resets and session revocation respond.
 
+Section twenty-four point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point one treats controls around detection after as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point one, Riverton University will not accept security work without a written trail.
+
 ### 24.2 After the campaign
 
 The campaign response produced four control changes: required student MFA, disabled legacy mail protocols, blocked automatic external forwarding by default, and added a report button in the mail client.
+
+Section twenty-four point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point two treats controls around detection after as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Side effects
 
 Blocking external forwarding affects staff who forward mail to personal accounts. The university publishes an exception process requiring manager approval and a business reason.
 
+Section twenty-four point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point three treats controls around detection after as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Riverton University will not accept security work without a written trail.
+
 ### 24.4 D3FEND naming
 
 MITRE D3FEND names defensive techniques precisely, such as multi-factor authentication and user behaviour analysis. Naming controls this way helps compare them with other organisations and spot gaps.
+
+Section twenty-four point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point four treats controls around detection after as testable only when evidence and ticket IDs are recorded.
 
 ### 24.5 Control ownership
 
 Each control has an owner: identity team for MFA, mail team for forwarding, SOC for monitoring rules.
 
+Section twenty-four point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point five treats controls around detection after as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point five, Riverton University will not accept security work without a written trail.
+
 ### 24.6 Testing controls
 
 After deployment, the SOC tests each control: a test account tries to create an external forwarding rule; the block works and an alert fires.
 
+Section twenty-four point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point six treats controls around detection after as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, Riverton University will not accept security work without a written trail.
+
 ### 24.7 Cost and benefit
 
 Lucas estimates time saved: forwarding blocks would have prevented the 37 messages leaving s2047's mailbox.
+
+Section twenty-four point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-four point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-four point seven treats controls around detection after as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point seven, Riverton University will not accept security work without a written trail.
 
 ### Rollback
 
@@ -1648,9 +2878,25 @@ You will (1) practise triage in a contained lab with synthetic alerts; (2) prior
 
 The SOC's training lab contains a copy of the case system loaded with synthetic alerts. No real student or staff data is present.
 
+Section twenty-five point one develops laboratory with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-five point one, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section twenty-five point one treats the lab prioritisation reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Riverton University will not accept laboratory work without a written trail.
+
 ### 25.2 Prioritisation
 
 Not all alerts are equal. A simple score multiplies alert severity (1–3) by asset criticality (1–3); ties are broken by age so older alerts are not forgotten.
+
+Section twenty-five point two develops laboratory with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-five point two, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section twenty-five point two treats the lab prioritisation reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Riverton University will not accept laboratory work without a written trail.
 
 ### Lab — ordering a queue
 
@@ -1678,17 +2924,47 @@ A4 score=1 age=40m AV quarantine (student-laptop)
 
 A3 (new administrator on the research GPU server, high severity on a critical asset) scores 9 and comes first. A1 (spray against the identity provider) and A2 (external mail rule) both score 6; A1 is older so comes first. A5 scores 4 and A4, an antivirus quarantine on a student laptop, scores 1.
 
+Section twenty-five point three develops laboratory with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-five point three, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section twenty-five point three treats the lab prioritisation reading as testable only when evidence and ticket IDs are recorded.
+
 ### 25.4 Triage notes
 
 For each alert, the lab sheet records the decision (benign, suspicious, malicious), evidence checked and next action.
+
+Section twenty-five point four develops laboratory with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-five point four, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section twenty-five point four treats the lab prioritisation reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Riverton University will not accept laboratory work without a written trail.
 
 ### 25.5 Errors
 
 In the first run, Lucas spends ten minutes on A4 because it is oldest, delaying A3. Ordering by score first prevents this.
 
+Section twenty-five point five develops laboratory with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-five point five, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section twenty-five point five treats the lab prioritisation reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Riverton University will not accept laboratory work without a written trail.
+
 ### 25.6 Reflection
 
 Scores support but do not replace judgement: an analyst who knows the mail rule matches the s2047 pattern may escalate A2 ahead of A1.
+
+Section twenty-five point six develops laboratory with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-five point six, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section twenty-five point six treats the lab prioritisation reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point six, Riverton University will not accept laboratory work without a written trail.
 
 ### Lab debrief
 
@@ -1730,29 +3006,79 @@ You will (1) build correlation detections across sources; (2) choose time window
 
 Single events are often ambiguous: a sign-in from abroad may be travel; a new mailbox rule may be routine. Together, a risky sign-in followed soon by a forwarding or deleting rule is much stronger evidence of compromise.
 
+Section twenty-six point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point one treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
+
 ### 26.2 Designing the correlation
 
 Lucas's rule: a sign-in flagged as new-country, followed within a time window by mailbox-rule creation for the same user. The window must allow for mail audit delay (up to 30 minutes) and for attacker behaviour.
+
+Section twenty-six point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point two treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Choosing the window
 
 Too short a window misses slow attackers; too long a window links unrelated events. Lucas starts with 60 minutes and evaluates it on known cases from the campaign in Laboratory II.
 
+Section twenty-six point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point three treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
+
 ### 26.4 Delayed sources
 
 Because mail audit events can arrive late, the rule waits 30 minutes after a risky sign-in before deciding no rule followed.
+
+Section twenty-six point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point four treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Riverton University will not accept security work without a written trail.
 
 ### 26.5 Noise
 
 Students travelling abroad who also tidy their inbox will match. Requiring the rule to forward externally or delete messages by keyword reduces this.
 
+Section twenty-six point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point five treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, Riverton University will not accept security work without a written trail.
+
 ### 26.6 Rule documentation
 
 The rule records its purpose, logic, window, known benign matches and response steps.
 
+Section twenty-six point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point six treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point six, Riverton University will not accept security work without a written trail.
+
 ### 26.7 ATT&CK reference
 
 Mailbox rules used to hide or forward mail relate to email collection and hiding techniques in ATT&CK; referencing them helps coverage tracking.
+
+Section twenty-six point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-six point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-six point seven treats why correlate designing the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point seven, Riverton University will not accept security work without a written trail.
 
 ### Suppressing duplicates
 
@@ -1794,9 +3120,21 @@ You will (1) verify that detections work as specified; (2) measure ATT&CK covera
 
 Verification checks that each rule fires on the behaviour it targets and stays quiet otherwise. It uses safe synthetic events in a test environment or approved test accounts in production.
 
+Section twenty-seven point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-seven point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-seven point one treats what verification checks coverage as testable only when evidence and ticket IDs are recorded.
+
 ### 27.2 Coverage honestly measured
 
 Coverage is the share of priority ATT&CK techniques with a tested detection. A rule that exists but has never been tested is not counted as coverage, because it may silently fail.
+
+Section twenty-seven point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-seven point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-seven point two treats what verification checks coverage as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — coverage status
 
@@ -1825,17 +3163,43 @@ gaps: ['T1021', 'T1048']
 
 Of eight priority techniques, four (50%) have tested detections, two (25%) have rules not yet tested, and two (25%) — remote services (T1021) and exfiltration over alternative protocols (T1048) — have nothing.
 
+Section twenty-seven point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-seven point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-seven point three treats what verification checks coverage as testable only when evidence and ticket IDs are recorded.
+
 ### 27.4 Planning
 
 Untested rules are tested first because it is cheap. The two gaps need data sources: remote-service logons on research servers and DNS-based exfiltration detection using resolver logs.
+
+Section twenty-seven point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-seven point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-seven point four treats what verification checks coverage as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Test design
 
 Each test states input, expected result and pass criteria. For mailbox rules, a test account creates a forwarding rule after a simulated risky sign-in from a test address.
 
+Section twenty-seven point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-seven point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-seven point five treats what verification checks coverage as testable only when evidence and ticket IDs are recorded.
+
 ### 27.6 Recording
 
 Results are stored with date, rule version and tester, and repeated each term.
+
+Section twenty-seven point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-seven point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-seven point six treats what verification checks coverage as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, Riverton University will not accept security work without a written trail.
 
 ### Who tests
 
@@ -1877,29 +3241,81 @@ You will (1) analyse why detections or responses failed; (2) use timelines and c
 
 After the campaign, Riverton holds a review. Its aim is learning: what happened, why defences and response worked or failed, and what to change. NIST SP 800-61r3 treats such lessons as part of continuous improvement.
 
+Section twenty-eight point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point one treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
 ### 28.2 Timeline
 
 The review builds a timeline from email delivery (01:50) to last containment (s3310 at 11:20). Each entry cites its source.
+
+Section twenty-eight point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point two treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Riverton University will not accept security work without a written trail.
 
 ### 28.3 What failed
 
 s3310 was compromised at 02:31 but not contained until 11:20. Its attacker created a rule deleting messages containing "phishing" — hiding warnings — but no alert fired, because the correlation window had not yet existed and the z-score did not flag s3310 (it sent few messages).
 
+Section twenty-eight point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point three treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
 ### 28.4 Contributing factors
 
 No MFA for students; legacy protocol enabled; batch detection; no rule for keyword-deletion rules; only one analyst on the early shift.
+
+Section twenty-eight point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point four treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Riverton University will not accept security work without a written trail.
 
 ### 28.5 Blameless approach
 
 The review focuses on systems and decisions, not individuals. People speak openly when they are not blamed.
 
+Section twenty-eight point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point five treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, Riverton University will not accept security work without a written trail.
+
 ### 28.6 Actions
 
 Each factor becomes an action with owner and date: MFA requirement, legacy shutdown, 15-minute checks, correlation rule, an extra early shift during campaigns.
 
+Section twenty-eight point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point six treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point six, Riverton University will not accept security work without a written trail.
+
 ### 28.7 Follow-up
 
 Actions are tracked until closed and checked in the next exercise.
+
+Section twenty-eight point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-eight point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-eight point seven treats post-incident review timeline what as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point seven, Riverton University will not accept security work without a written trail.
 
 ### Writing the review
 
@@ -1941,29 +3357,83 @@ You will (1) run shifts and handovers in a student-staffed SOC; (2) manage queue
 
 Riverton's SOC runs staffed hours from 08:00 to 20:00 on weekdays, with on-call engineers outside them. Student analysts work four-hour shifts around classes.
 
+Section twenty-nine point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point one treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point one, Riverton University will not accept security work without a written trail.
+
 ### 29.2 Handovers
 
 Each shift ends with a handover note: open alerts, cases in progress, system issues and expected events, such as a planned phishing simulation.
+
+Section twenty-nine point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point two treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point two, Riverton University will not accept security work without a written trail.
 
 ### 29.3 Escalation
 
 Student analysts escalate to the duty engineer for anything involving staff accounts, research systems or personal data exposure. Escalation is encouraged; nobody is criticised for escalating in good faith.
 
+Section twenty-nine point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point three treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
 ### 29.4 Queues
 
 The queue is ordered by the scoring from Laboratory I. During campaigns, the duty engineer may assign alerts directly.
+
+Section twenty-nine point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point four treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Riverton University will not accept security work without a written trail.
 
 ### 29.5 Learning
 
 Student analysts follow a training path: shadowing, supervised triage, then independent triage of low-severity alerts.
 
+Section twenty-nine point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point five treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point five, Riverton University will not accept security work without a written trail.
+
 ### 29.6 Wellbeing
 
 Studies such as Alahmadi et al. (2022) link alert overload to burnout. Shifts are short; analysts rotate between alert types; exam periods have reduced rosters.
 
+Section twenty-nine point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point six treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point six, Riverton University will not accept security work without a written trail.
+
 ### 29.7 Communication
 
 The SOC sends campus notices during campaigns: what the email looks like, what to do if you clicked, and how to report.
+
+Section twenty-nine point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section twenty-nine point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section twenty-nine point seven treats shifts handovers escalation queues as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point seven, Riverton University will not accept security work without a written trail.
 
 ### Shift metrics
 
@@ -2009,9 +3479,25 @@ You will (1) test a correlation detection against known cases; (2) analyse why a
 
 Laboratory II tests the correlation rule from chapter 26 against the synthetic reconstruction of the campaign, where the right answers are known.
 
+Section thirty point one develops laboratory ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty point one, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section thirty point one treats purpose setup reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Riverton University will not accept laboratory work without a written trail.
+
 ### 30.2 Setup
 
 The lab contains synthetic sign-ins and mailbox-rule events for s2047, s3310 and s1001, with times in minutes since midnight.
+
+Section thirty point two develops laboratory ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty point two, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section thirty point two treats purpose setup reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point two, Riverton University will not accept laboratory work without a written trail.
 
 ### Lab — correlation against known cases
 
@@ -2039,17 +3525,45 @@ no match s3310: rule 'delete if 'phishing'' 149 min after sign-in (outside windo
 
 The rule alerts on s2047: a risky sign-in at minute 134 (02:14) followed by an external forwarding rule six minutes later. It misses s3310: the deletion rule came 149 minutes after the risky sign-in, outside the 60-minute window.
 
+Section thirty point three develops laboratory ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty point three, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section thirty point three treats purpose setup reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 30.4 Analysing the miss
 
 s3310's attacker waited over two hours before hiding warnings, perhaps after seeing replies. Attackers do not follow the defender's assumptions about timing.
+
+Section thirty point four develops laboratory ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty point four, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section thirty point four treats purpose setup reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Riverton University will not accept laboratory work without a written trail.
 
 ### 30.5 Adjusting
 
 Extending the window to 6 hours catches s3310 but risks linking unrelated events. Lucas adds a second, separate rule: any keyword-deletion rule matching words like "phishing" or "hacked" alerts on its own, regardless of sign-in, because such rules are rare and suspicious in themselves.
 
+Section thirty point five develops laboratory ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty point five, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section thirty point five treats purpose setup reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 30.6 Re-test
 
 With the 6-hour window plus the keyword rule, both compromised accounts alert and s1001's ordinary folder rule does not.
+
+Section thirty point six develops laboratory ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty point six, Dr. Hana Kim expects laboratory claims to carry owners and dates.
+
+Section thirty point six treats purpose setup reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point six, Riverton University will not accept laboratory work without a written trail.
 
 ### Monitoring after change
 
@@ -2091,29 +3605,77 @@ You will (1) analyse complex cases involving several systems and teams; (2) hand
 
 In spring term, the SOC sees unusual SSH logins to a research server from a collaborator's university at night, followed by large outbound transfers. The research group says the collaborator is legitimate; the transfers are larger than usual.
 
+Section thirty-one point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point one treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
+
 ### 31.2 Competing explanations
 
 Possibilities: the collaborator is working late on a big dataset; the collaborator's account at the partner university was compromised; or someone in the group shared credentials. Each predicts different evidence.
+
+Section thirty-one point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point two treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Gathering evidence
 
 Lucas checks: login times compared with the collaborator's usual pattern; files transferred (names and sizes from server logs); whether the partner university's SOC sees anything unusual. Contacting the partner goes through Dr. Kim.
 
+Section thirty-one point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point three treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
+
 ### 31.4 Findings
 
 The partner SOC reports that the collaborator's account signed in from an unusual country that night, and the collaborator confirms they were not working. The transfers were of a shared dataset, not personal data.
+
+Section thirty-one point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point four treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
 
 ### 31.5 Coordinated response
 
 The research group disables the collaborator's server access; the partner resets the account; Riverton reviews which data left and informs the data owner.
 
+Section thirty-one point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point five treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point five, Riverton University will not accept security work without a written trail.
+
 ### 31.6 Uncertainty
 
 Some questions stay open: whether the attacker targeted the research or simply used any access found. The report states this.
 
+Section thirty-one point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point six treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point six, Riverton University will not accept security work without a written trail.
+
 ### 31.7 Lessons
 
 Research collaborations need shared contacts between SOCs and a way to verify unusual access quickly.
+
+Section thirty-one point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-one point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-one point seven treats harder case competing explanations as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point seven, Riverton University will not accept security work without a written trail.
 
 ### Time pressure
 
@@ -2155,29 +3717,81 @@ You will (1) work with legal, privacy, HR, communications and academic staff; (2
 
 SOC incidents touch law (data protection, evidence), HR (staff misconduct), student affairs (student discipline), communications (public statements) and academic departments (research data). Each has its own duties and language.
 
+Section thirty-two point one develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point one, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point one treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
 ### 32.2 Legal and privacy
 
 The data protection officer decides on breach notifications; the SOC supplies facts. Legal staff advise when evidence may be needed in proceedings.
+
+Section thirty-two point two develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point two, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point two treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point two, Riverton University will not accept security work without a written trail.
 
 ### 32.3 HR and student affairs
 
 If an incident suggests misconduct by staff or students, the SOC passes facts to HR or student affairs and does not investigate the person beyond the security question.
 
+Section thirty-two point three develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point three, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point three treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
 ### 32.4 Communications
 
 Public statements are written by the communications office with SOC facts; analysts do not speak to journalists.
+
+Section thirty-two point four develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point four, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point four treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point four, Riverton University will not accept security work without a written trail.
 
 ### 32.5 Academics
 
 Researchers value openness; security requirements must be explained in terms of protecting their work and participants.
 
+Section thirty-two point five develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point five, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point five treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point five, Riverton University will not accept security work without a written trail.
+
 ### 32.6 Translating
 
 Lucas practises explaining "risky sign-in followed by forwarding rule" as "someone else logged in as the student and set the mailbox to copy their mail elsewhere".
 
+Section thirty-two point six develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point six, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point six treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point six, Riverton University will not accept security work without a written trail.
+
 ### 32.7 Joint procedures
 
 A shared procedure lists who is informed for each incident type, within what time and through which channel.
+
+Section thirty-two point seven develops security operations and blue team with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-two point seven, Dr. Hana Kim expects security claims to carry owners and dates.
+
+Section thirty-two point seven treats many disciplines legal and as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point seven, Riverton University will not accept security work without a written trail.
 
 ### Regular contact
 
@@ -2219,29 +3833,85 @@ You will (1) analyse quantitative and qualitative data from a SOC study; (2) use
 
 Lucas's survey on student reporting (chapter 18) received 412 responses, and he conducted five interviews.
 
+Section thirty-three point one develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point one, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point one treats returning to the study as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point one, Riverton University will not accept research work without a written trail.
+
 ### 33.2 Quantitative analysis
 
 61% of respondents said they would delete a suspicious email without reporting; 24% would report; 15% were unsure. With 412 responses, the margin of error is roughly ±5 percentage points, assuming responses are representative.
+
+Section thirty-three point two develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point two, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point two treats returning to the study as testable only when evidence and ticket IDs are recorded.
 
 ### 33.3 Qualitative coding
 
 Interview transcripts are coded into themes: "didn't know how to report" (four of five), "thought IT already knew" (three), "worried about looking foolish" (two). A second student codes two transcripts independently; they agree on most codes and discuss differences.
 
+Section thirty-three point three develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point three, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point three treats returning to the study as testable only when evidence and ticket IDs are recorded.
+
 ### 33.4 Validity
 
 Volunteers may be more security-aware than average, so true reporting may be even lower. Self-reported intentions may differ from actual behaviour; log data on actual reports helps triangulate.
+
+Section thirty-three point four develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point four, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point four treats returning to the study as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Riverton University will not accept research work without a written trail.
 
 ### 33.5 Reliability
 
 Clear code definitions and double coding make qualitative results more reliable.
 
+Section thirty-three point five develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point five, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point five treats returning to the study as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point five, Riverton University will not accept research work without a written trail.
+
+Section thirty-three point five fails closed if research evidence is missing rather than guessing.
+
 ### 33.6 Triangulation
 
 Actual reporting rates from chapter 1 (3.0 per 1,000 students) are consistent with low reporting intentions.
 
+Section thirty-three point six develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point six, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point six treats returning to the study as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point six, Riverton University will not accept research work without a written trail.
+
 ### 33.7 Reporting
 
 The report gives numbers with uncertainty, quotes that illustrate themes, and limits.
+
+Section thirty-three point seven develops research methods ii with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-three point seven, Dr. Hana Kim expects research claims to carry owners and dates.
+
+Section thirty-three point seven treats returning to the study as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point seven, Riverton University will not accept research work without a written trail.
+
+Section thirty-three point seven fails closed if research evidence is missing rather than guessing.
 
 ### Ethical reporting
 
@@ -2287,29 +3957,85 @@ You will (1) compare SOC practices across organisations or approaches; (2) choos
 
 Lucas and two classmates compare how three universities' SOCs handle phishing reports: Riverton (internal student-staffed), a partner university using a managed provider, and a third with a regional shared SOC.
 
+Section thirty-four point one develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point one, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point one treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 34.2 Criteria
 
 They compare time from report to acknowledgement, whether reporters get feedback, automation of mailbox searches, and staffing model, using the same definitions for each.
+
+Section thirty-four point two develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point two, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point two treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point two, Riverton University will not accept comparative work without a written trail.
 
 ### 34.3 Evidence
 
 Each SOC shares anonymised figures for one term and a description of its process. No personal data is exchanged.
 
+Section thirty-four point three develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point three, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point three treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point three, Riverton University will not accept comparative work without a written trail.
+
 ### 34.4 Findings
 
 The managed provider acknowledges fastest (median 6 minutes) but rarely gives reporters feedback; Riverton is slower (median 22 minutes in staffed hours) but replies to every reporter; the regional SOC automates mailbox purges best.
+
+Section thirty-four point four develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point four, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point four treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 34.5 Balanced conclusions
 
 No model is best on all criteria. Feedback to reporters, which Riverton does well, encourages reporting; speed and automation, which others do well, reduce exposure.
 
+Section thirty-four point five develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point five, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point five treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point five, Riverton University will not accept comparative work without a written trail.
+
 ### 34.6 Fairness
 
 Differences in size and threat exposure limit comparison; the project states these.
 
+Section thirty-four point six develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point six, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point six treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point six, Riverton University will not accept comparative work without a written trail.
+
+Section thirty-four point six fails closed if comparative evidence is missing rather than guessing.
+
 ### 34.7 Recommendations
 
 Riverton adopts automated purges of reported phishing from all mailboxes, with feedback kept.
+
+Section thirty-four point seven develops comparative project with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-four point seven, Dr. Hana Kim expects comparative claims to carry owners and dates.
+
+Section thirty-four point seven treats the project criteria evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point seven, Riverton University will not accept comparative work without a written trail.
+
+Section thirty-four point seven fails closed if comparative evidence is missing rather than guessing.
 
 ### Process of the project
 
@@ -2355,29 +4081,83 @@ You will (1) propose a capstone project addressing a real SOC need; (2) define a
 
 From the campaign review and coverage work, Lucas chooses: "Improve detection of compromised student mail accounts, measured against authorised test scenarios."
 
+Section thirty-five point one develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point one, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point one treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point one, Riverton University will not accept capstone work without a written trail.
+
 ### 35.2 Aims
 
 Aim 1: combine the correlation and keyword-deletion rules into a tested detection package. Aim 2: add detection of mass internal mailing by newly risky accounts. Aim 3: measure detection rate before and after on a set of 20 authorised test scenarios.
+
+Section thirty-five point two develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point two, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point two treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
 
 ### 35.3 Requirements
 
 Detect at least 80% of test scenarios; no more than three false alerts per week in production; alerts within 30 minutes of the triggering activity.
 
+Section thirty-five point three develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point three, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point three treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point three, Riverton University will not accept capstone work without a written trail.
+
 ### 35.4 Test scenarios
 
 Twenty scenarios are designed with Dr. Kim: each uses university test accounts and benign actions, such as a test sign-in from a test address and creation of a forwarding rule to a test mailbox. No real accounts are touched.
+
+Section thirty-five point four develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point four, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point four treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
 
 ### 35.5 Ethics and data
 
 The project uses SOC data under existing policy; personal data is not taken off university systems; the report uses aggregates only.
 
+Section thirty-five point five develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point five, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point five treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point five, Riverton University will not accept capstone work without a written trail.
+
 ### 35.6 Risks
 
 Test scenarios may not resemble real attacks; mitigated by basing them on the campaign's actual behaviours. False alerts may disturb analysts; mitigated by monitor-only mode first.
 
+Section thirty-five point six develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point six, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point six treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point six, Riverton University will not accept capstone work without a written trail.
+
 ### 35.7 Approval
 
 Dr. Kim and Lucas's academic supervisor sign the proposal.
+
+Section thirty-five point seven develops capstone proposal with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-five point seven, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-five point seven treats choosing the need aims as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point seven, Riverton University will not accept capstone work without a written trail.
+
+Section thirty-five point seven fails closed if capstone evidence is missing rather than guessing.
 
 ### Timeline
 
@@ -2423,29 +4203,81 @@ You will (1) apply SOC skills in a community setting; (2) adapt advice to small 
 
 As part of the degree, Lucas spends four weeks helping a local charity, the fictional **Eastbank Youth Centre**, which has twelve staff, a cloud mail service and no IT team.
 
+Section thirty-six point one develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point one, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point one treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
 ### 36.2 Understanding the setting
 
 The charity cannot run a SOC. Its risks are similar to Riverton's on a small scale: phishing, account compromise and lost devices.
+
+Section thirty-six point two develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point two, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point two treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point two, Riverton University will not accept field work without a written trail.
 
 ### 36.3 Practical improvements
 
 With the manager's permission, Lucas helps enable MFA for all staff, turns on the mail service's built-in alerts for suspicious sign-ins and forwarding rules, and sets alerts to go to two named staff members.
 
+Section thirty-six point three develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point three, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point three treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
 ### 36.4 Teaching
 
 He runs a 30-minute session on recognising phishing and how to report it, using examples adapted from Riverton's campaign with all identifying details removed.
+
+Section thirty-six point four develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point four, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point four treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point four, Riverton University will not accept field work without a written trail.
 
 ### 36.5 Simple procedures
 
 A one-page "what to do if" sheet covers clicked links, lost phones and strange emails, with contact numbers.
 
+Section thirty-six point five develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point five, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point five treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point five, Riverton University will not accept field work without a written trail.
+
 ### 36.6 Boundaries
 
 Lucas does not access staff mailboxes or personal data; he configures settings with the manager present and leaves documentation.
 
+Section thirty-six point six develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point six, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point six treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point six, Riverton University will not accept field work without a written trail.
+
 ### 36.7 Reflection
 
 Advice must fit the organisation's capacity; a perfect plan the charity cannot maintain is worse than a simple one it can.
+
+Section thirty-six point seven develops field or community practice with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-six point seven, Dr. Hana Kim expects field claims to carry owners and dates.
+
+Section thirty-six point seven treats the placement understanding the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point seven, Riverton University will not accept field work without a written trail.
 
 ### Handing over
 
@@ -2487,29 +4319,83 @@ You will (1) present evidence from projects for peer review; (2) critique others
 
 Final-year students present their capstone evidence so far. Each presentation shows claims, the evidence behind them and open questions.
 
+Section thirty-seven point one develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point one, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point one treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point one, Riverton University will not accept evidence work without a written trail.
+
 ### 37.2 Lucas's evidence
 
 He shows before-scenario results (11 of 20 detected), monitor-only false alerts (four in two weeks) and the design of the mass-mailing detection.
+
+Section thirty-seven point two develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point two, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point two treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point two, Riverton University will not accept evidence work without a written trail.
 
 ### 37.3 Peer critique
 
 A classmate asks whether the 20 scenarios include slow attackers like s3310. Another asks whether four false alerts in two weeks meets the "three per week" requirement or whether two weeks is too short to judge.
 
+Section thirty-seven point three develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point three, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point three treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 37.4 Weak inferences
 
 Dr. Kim notes Lucas's slide says "the package will detect most compromises"; the evidence supports only "detects most test scenarios".
+
+Section thirty-seven point four develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point four, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point four treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Riverton University will not accept evidence work without a written trail.
 
 ### 37.5 Missing data
 
 Lucas has not yet recorded how long each detection took; the 30-minute requirement cannot be assessed.
 
+Section thirty-seven point five develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point five, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point five treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point five, Riverton University will not accept evidence work without a written trail.
+
 ### 37.6 Responding
 
 Lucas adds two slow-attacker scenarios (replacing two duplicates), starts recording detection times, and changes the wording.
 
+Section thirty-seven point six develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point six, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point six treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point six, Riverton University will not accept evidence work without a written trail.
+
 ### 37.7 Critiquing others
 
 He questions a classmate's claim that a new dashboard "reduced workload" when the only evidence was analysts' impressions; he suggests counting alerts handled per shift.
+
+Section thirty-seven point seven develops evidence review seminar with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-seven point seven, Dr. Hana Kim expects evidence claims to carry owners and dates.
+
+Section thirty-seven point seven treats the seminar lucas's evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point seven, Riverton University will not accept evidence work without a written trail.
 
 ### Preparing for critique
 
@@ -2555,29 +4441,83 @@ You will (1) implement the capstone detection package; (2) follow change control
 
 The package contains the 6-hour correlation rule, the keyword-deletion rule and a new mass-mailing rule: alert when an account that had a risky sign-in in the past day sends to more than 50 internal recipients it has never mailed before.
 
+Section thirty-eight point one develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point one, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point one treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Tests
 
 Each rule has unit tests in the SOC's test harness and a set of synthetic events. Tests run before each change.
+
+Section thirty-eight point two develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point two, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point two treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point two, Riverton University will not accept capstone work without a written trail.
 
 ### 38.3 Change control
 
 Lucas submits each rule through the SOC's change process with a description, test results and rollback steps. Dr. Kim approves.
 
+Section thirty-eight point three develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point three, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point three treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point three, Riverton University will not accept capstone work without a written trail.
+
 ### 38.4 Staged deployment
 
 Rules run in monitor-only mode for two weeks, recording matches without alerting analysts. Lucas reviews every match.
+
+Section thirty-eight point four develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point four, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point four treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point four, Riverton University will not accept capstone work without a written trail.
 
 ### 38.5 Monitor-only findings
 
 The mass-mailing rule matches a student society officer who emailed new members after signing in from abroad on holiday. Lucas adds a check: alert only if the messages share a subject with messages already reported as phishing, or if links point to domains first seen that week.
 
+Section thirty-eight point five develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point five, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point five treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
 ### 38.6 Going live
 
 After a clean second week, the package moves to alerting for analysts.
 
+Section thirty-eight point six develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point six, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point six treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point six, Riverton University will not accept capstone work without a written trail.
+
+Section thirty-eight point six fails closed if capstone evidence is missing rather than guessing.
+
 ### 38.7 Evidence
 
 Commits, test outputs, change tickets and monitor-only reviews are filed for the capstone dossier.
+
+Section thirty-eight point seven develops capstone implementation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-eight point seven, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-eight point seven treats building the package tests as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point seven, Riverton University will not accept capstone work without a written trail.
 
 ### Documentation for maintainers
 
@@ -2619,6 +4559,14 @@ You will (1) evaluate the capstone against its requirements; (2) compute detecti
 
 The 20 authorised scenarios are run before (existing rules) and after (new package). Each scenario is scored detected or missed, with detection time.
 
+Section thirty-nine point one develops capstone evaluation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-nine point one, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-nine point one treats evaluation design reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point one, Riverton University will not accept capstone work without a written trail.
+
 ### Lab — detection rates with intervals
 
 ```python
@@ -2644,21 +4592,65 @@ after  detected 18/20 = 0.90  95% CI [0.70, 0.97]
 
 Before: 11 of 20 detected (0.55, 95% interval 0.34–0.74). After: 18 of 20 (0.90, interval 0.70–0.97). The intervals overlap only slightly; with 20 scenarios, uncertainty is large, but the improvement is consistent with the design.
 
+Section thirty-nine point two develops capstone evaluation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-nine point two, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-nine point two treats evaluation design reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point two, Riverton University will not accept capstone work without a written trail.
+
 ### 39.3 Misses
 
 The two missed scenarios used a forwarding rule to an internal account that then forwarded externally — a pattern none of the rules covered. They become future work.
+
+Section thirty-nine point three develops capstone evaluation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-nine point three, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-nine point three treats evaluation design reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point three, Riverton University will not accept capstone work without a written trail.
 
 ### 39.4 Detection times
 
 Median detection time was 14 minutes; the slowest was 27 minutes, within the 30-minute requirement.
 
+Section thirty-nine point four develops capstone evaluation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-nine point four, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-nine point four treats evaluation design reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Riverton University will not accept capstone work without a written trail.
+
+Section thirty-nine point four fails closed if capstone evidence is missing rather than guessing.
+
 ### 39.5 False alerts
 
 Over four weeks live, false alerts averaged 1.5 per week, below the three-per-week requirement.
 
+Section thirty-nine point five develops capstone evaluation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-nine point five, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-nine point five treats evaluation design reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point five, Riverton University will not accept capstone work without a written trail.
+
+Section thirty-nine point five fails closed if capstone evidence is missing rather than guessing.
+
 ### 39.6 Requirements summary
 
 Detection ≥80%: met (90%, though the interval's lower bound is 70%). False alerts ≤3/week: met. Within 30 minutes: met.
+
+Section thirty-nine point six develops capstone evaluation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section thirty-nine point six, Dr. Hana Kim expects capstone claims to carry owners and dates.
+
+Section thirty-nine point six treats evaluation design reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point six, Riverton University will not accept capstone work without a written trail.
 
 ### Analyst feedback
 
@@ -2704,29 +4696,85 @@ You will (1) write a bachelor's thesis on the capstone; (2) present findings to 
 
 Introduction; background (campus threats, SOC practice, literature); the campaign and review; method (rules, tests, scenarios); implementation; evaluation; discussion; limitations; conclusions; references; appendices.
 
+Section forty point one develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point one, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point one treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
+
+For section forty point one, Riverton University will not accept thesis work without a written trail.
+
 ### 40.2 Literature in the thesis
 
 Lucas draws on Alahmadi et al. (2022) for alarm quality, Axelsson (2000) for base rates, Sundaramurthy et al. (2014) for SOC practice, NIST SP 800-61r3 for response and SigmaHQ conventions for rule documentation.
+
+Section forty point two develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point two, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point two treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Discussion
 
 The package improved detection of test scenarios and fit analyst capacity; reporting by people remained crucial; attackers' timing defeated early assumptions.
 
+Section forty point three develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point three, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point three treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
+
+For section forty point three, Riverton University will not accept thesis work without a written trail.
+
 ### 40.4 Limitations
 
 One university; 20 scenarios; four weeks; scenarios designed by defenders; student population specific.
+
+Section forty point four develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point four, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point four treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
+
+For section forty point four, Riverton University will not accept thesis work without a written trail.
+
+Section forty point four fails closed if thesis evidence is missing rather than guessing.
 
 ### 40.5 Presentation
 
 A 15-minute talk to the department and a separate 10-minute briefing to the SOC team focusing on how to maintain the package.
 
+Section forty point five develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point five, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point five treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
+
+For section forty point five, Riverton University will not accept thesis work without a written trail.
+
 ### 40.6 Reflection
 
 From mathematical reasoning in chapter 1 to the evaluation, the degree built habits: measure fairly, write precisely, act within authority, test assumptions.
 
+Section forty point six develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point six, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point six treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
+
+For section forty point six, Riverton University will not accept thesis work without a written trail.
+
 ### 40.7 Next steps
 
 Lucas plans to apply for a junior analyst role and to keep contributing rule improvements to the SOC's repository as an alumnus volunteer under supervision.
+
+Section forty point seven develops thesis and presentation with a Riverton University note Lucas Moreau can demo offline.
+
+Under section forty point seven, Dr. Hana Kim expects thesis claims to carry owners and dates.
+
+Section forty point seven treats thesis structure literature in as testable only when evidence and ticket IDs are recorded.
+
+For section forty point seven, Riverton University will not accept thesis work without a written trail.
 
 ### Archiving
 
