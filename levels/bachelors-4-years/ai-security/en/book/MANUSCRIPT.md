@@ -445,9 +445,13 @@ You will (1) explain how a chatbot request travels across the internet (DNS, TCP
 
 The browser looks up the chatbot's domain (DNS), connects (TCP), sets up an encrypted, authenticated channel (TLS) and sends an HTTP request containing the message. The application server may in turn call a model API over another TLS connection.
 
+Each step leaves a record that can help an investigation: the DNS query, the TLS handshake at the load balancer, the HTTP request at the application server and the outbound call to the model provider. For Ask Lumen, a single patient message therefore crosses two encrypted connections, and the application server is the one place where the plain text is visible to LCH. That is where input checks, logging and policy decisions belong.
+
 ### 7.2 What TLS does and does not do
 
 TLS protects data in transit from eavesdropping and tampering and authenticates the server. It does not protect against a malicious message from an authenticated user, against prompt injection inside content, or against data misuse once it arrives.
+
+For Ask Lumen, TLS ensures that a patient's message reaches LCH's server unread and unchanged and that the patient is talking to the real LCH site. It does nothing about a patient who types an instruction designed to manipulate the model, or a partner document carrying hidden text. Those problems sit inside the protected channel and need controls in the application.
 
 ### 7.3 API authentication and rate limiting
 
@@ -480,13 +484,19 @@ limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
 limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 ```
 
+Lab R shows the trade-off. At 5 requests per second with a burst of 20, every normal request is served and the flood gets 319 of 3,000. At 1 per second with a burst of 5, the flood drops to 64, but the normal client loses 28 of its 90 requests. A limit must be set from measured normal use, not chosen only to stop attacks.
+
 ### 7.4 Network-level AI threats
 
 Systematic querying can copy a model (Tramèr et al., arXiv:1609.02943). Floods of long prompts can exhaust capacity. Network controls — authentication, quotas, monitoring, segmentation and egress filtering — reduce these risks and limit what a compromised component can reach.
 
+Extraction needs many queries, so per-client quotas and monitoring for unusual query patterns raise its cost. Egress filtering matters if a component is compromised: an inference server that can reach only the model provider cannot send data elsewhere. Segmentation keeps the chatbot's servers apart from the scheduling database except through the booking tool's narrow interface.
+
 ### 7.5 Worked example (synthetic LCH case)
 
 Ask Lumen's public chat endpoint had no per-session limits. A synthetic load test sending long prompts drove model costs up tenfold in an hour. LCH added per-session token quotas, a maximum message length and an alert when spending exceeds 150% of the daily median.
+
+Counting tokens rather than requests was the key change: a few very long prompts had cost more than thousands of normal messages. The alert threshold of 150% of the daily median catches abuse within hours while ignoring the normal rise on busy mornings, and the maximum message length stops a single prompt from consuming a large share of the budget.
 
 ### 7.6 Errors and limits
 
@@ -494,10 +504,13 @@ Ask Lumen's public chat endpoint had no per-session limits. A synthetic load tes
 - Request limits that ignore token cost.
 - API keys embedded in browser code.
 
+TLS protects the channel, not the content, so prompt injection and abuse by logged-in users pass straight through it. Request-only limits let an attacker send fewer but far longer prompts, as the LCH load test showed. API keys in browser code can be read by anyone who opens the page, letting them call the model provider directly and bypass LCH's quotas entirely; keys belong on the server.
 
 ### 7.6b Timeouts and retries on model calls
 
 Ask Lumen calls the model provider over the network, and slow responses tempt engineers to retry aggressively. Each retry resends the patient's question and costs money; unbounded retries during an outage can multiply traffic and exhaust the rate limit for every clinic. LCH caps retries at two with a growing delay and shows patients a phone number when the model is unavailable.
+
+A growing delay between retries lets a struggling provider recover instead of being flooded. The phone number keeps patients served while the chatbot is down.
 
 ### Exercises
 
@@ -525,9 +538,13 @@ You will (1) organise programs into modules and functions with clear responsibil
 
 Split programs so each part has one job. For an LLM application: input handling, retrieval, model call, policy check, tool execution, logging. Keeping the policy check in its own small module means it can be reviewed and tested independently of the model.
 
+The separation also limits damage: if the retrieval module is manipulated into returning a hostile document, the policy check still decides independently whether any resulting tool call is allowed. In Ask Lumen, the booking checks Rina wrote in the programming chapter live in such a module, with tests that run on every change. A reviewer can read the whole module in a few minutes.
+
 ### 8.2 JSON and files
 
 Parse structured data with strict parsers (`json.loads`) and validate fields, types and ranges. Reject unknown fields. Never use `eval` on data. When the model is asked to output JSON, validate it the same way, because the model can produce malformed or manipulated output.
+
+For Ask Lumen, the model is asked to return a booking as JSON with a clinic code, a date and a patient ID. The parser rejects any extra field, such as an instruction to cancel other appointments, and any value outside the allowed ranges. A malformed answer leads to a polite failure message for the patient, never to a partial action.
 
 ### 8.3 Packages and model files
 
@@ -564,13 +581,19 @@ model.bin       MISMATCH
 tokenizer.json  OK
 ```
 
+In Lab H, a single flipped bit in model.bin and an added line in config.yaml both change their hashes, while the untouched tokenizer.json still matches. The manifest must come from a trusted source, such as the vendor's signed release, or an attacker who changes a file could change the manifest too.
+
 ### 8.4 Adversarial tests
 
 Add tests that try to break your code: oversized inputs, wrong types, injection-like strings, requests for other users' data. Keep these in the test suite permanently.
 
+For the booking parser, adversarial tests include a date written in words, a patient ID belonging to someone else, a clinic code with trailing spaces, and model output containing two bookings. Each test records the expected rejection. Once added, these tests protect against regressions: a later change that accidentally relaxes a check fails at once, before it reaches patients.
+
 ### 8.5 Worked example (synthetic LCH case)
 
 DocSort's vendor sent an updated model. Rina's integrity check compared the hash with the vendor's signed manifest and found a mismatch for the configuration file. Investigation showed a contractor had edited the file to enable a debug mode that logged full letter text. The change was reverted, and LCH required all model changes to come through the signed release process.
+
+The debug mode matches Lab H's tampered configuration line in spirit: a small text change with a large effect on privacy.
 
 ### 8.6 Errors and limits
 
@@ -578,10 +601,13 @@ DocSort's vendor sent an updated model. Rina's integrity check compared the hash
 - Loading model files without integrity checks.
 - Tests with only benign inputs.
 
+Policy written into the prompt can be argued away by a clever message, while policy in code cannot. Loading model files without checking hashes would have let the contractor's debug mode reach production at LCH. Tests with only benign inputs pass even when the parser accepts dangerous output; the hostile test file for the booking parser exists precisely to prevent that, and it grows with every incident.
 
 ### 8.6b Tests that guard the parser
 
 The module that turns model output into a booking request is the most security-relevant code in Ask Lumen, because a malformed or manipulated answer could cancel the wrong appointment. LCH keeps a test file of hostile outputs — extra fields, wrong dates, two appointment IDs — and every change to the parser must pass it before merging.
+
+Each hostile output in the file comes from a real failure or a review finding, so the file records the parser's history of attacks as well as protecting against them. When a new kind of failure appears, a test for it is added before the fix.
 
 ### Exercises
 
@@ -609,21 +635,31 @@ You will (1) design simple relational schemas and write queries; (2) prevent inj
 
 Tables hold records; keys link tables; SQL queries retrieve and change data. LCH's scheduling system has tables for patients, clinics and appointments. Queries must be parameterised: building SQL by joining strings with user (or model) input enables SQL injection.
 
+With a parameterised query, the database treats a patient ID as a value, so text like a quote followed by SQL keywords cannot change the query's meaning. This matters even more when values come from a model, which can be steered by its input to produce such text. LCH's booking tool passes every value as a parameter, and a test with an injection-like ID confirms it.
+
 ### 9.2 Model output and databases
 
 If an LLM generates queries or query parameters, treat them as untrusted input: use parameterised queries, restrict the database account to the minimum tables and operations, and validate values. An LLM that can write arbitrary SQL with an administrator account is a serious excessive-agency risk (OWASP LLM06).
+
+Ask Lumen does not generate SQL; it proposes a booking whose fields the booking tool places into fixed, parameterised queries. The tool's database account can insert and cancel appointments but cannot read other tables or change the schema. Even if the model were fully manipulated, the worst outcome would be limited to what that account allows, and the policy check further restricts it to the logged-in patient.
 
 ### 9.3 Vector databases
 
 Retrieval-augmented generation stores document chunks as embeddings and retrieves the most similar ones for each question. Access control must be enforced at retrieval time using the user's permissions; otherwise the chatbot may retrieve and reveal documents the user should not see (OWASP LLM08, *vector and embedding weaknesses*). Documents added to the store can also carry injected instructions.
 
+Filtering at retrieval time, rather than asking the model to withhold restricted content, is the reliable approach: the model cannot leak text it never received.
+
 ### 9.4 Minimisation and retention
 
 Store only the data you need, for as long as you need it. Conversation logs from chatbots often contain personal data; set retention periods and access rules.
 
+For Ask Lumen, LCH keeps conversation logs for a fixed period needed for quality review and incident investigation, then deletes them. Only the security and quality teams can read them. Minimisation also applies to what is sent to the model provider: patient identifiers that the model does not need for an answer are left out of the prompt.
+
 ### 9.5 Worked example (synthetic LCH case)
 
 Ask Lumen's retrieval index included staff rota documents with staff phone numbers. A synthetic test question "who is on call tonight and how do I reach them?" returned a phone number to a patient. LCH removed staff documents from the patient-facing index, added a document classification field, and filtered retrieval by audience.
+
+The leak needed no attack at all, only a question, which shows that access control must be designed into retrieval rather than tested after deployment. The classification field now drives every retrieval.
 
 ### 9.6 Errors and limits
 
@@ -631,10 +667,13 @@ Ask Lumen's retrieval index included staff rota documents with staff phone numbe
 - One retrieval index for all audiences.
 - Indefinite retention of chat logs.
 
+String-built SQL lets a model's output, or a patient's typed text, become part of a database command. A single retrieval index for all audiences caused the staff phone number leak in the worked example. Indefinite retention of chat logs accumulates personal and health information that becomes a target and a liability. Each error has a simple, well-known fix that is far cheaper before deployment than after an incident.
 
 ### 9.6b Deleting data on request
 
 When a patient asks LCH to delete their chat history, the deletion must reach every copy: the conversation table, logs, and any vector-store entries built from those chats. The team keeps a map of where patient text flows so a request can be completed and confirmed within the clinic's stated period.
+
+The vector store is the copy most often forgotten, because text there is stored as chunks and embeddings rather than as a recognisable conversation. LCH tags each chunk with the conversation it came from, so deletion can find it.
 
 ### Exercises
 
@@ -662,27 +701,39 @@ You will (1) apply ethical principles to AI-security work; (2) explain why autho
 
 Respect for people, avoiding harm, honesty, fairness and accountability guide security work. In AI security, harms include privacy breaches, discriminatory outcomes, unsafe advice and misuse of capabilities.
 
+These principles turn into concrete choices. Avoiding harm means testing on synthetic records, not real patients. Honesty means reporting results with their limits. Fairness means checking whether NoShow's predictions treat groups differently. Accountability means recording who authorised each test and who made each decision, so responsibility is clear if something goes wrong. Rina's lab notes record each of these choices.
+
 ### 10.2 Authorization
 
 Testing systems without permission can be illegal and can harm real users. Always obtain written authorization from the system owner that defines scope, methods, time and contacts. Public AI services have terms of use; do not attack them outside programmes that explicitly permit it (such as published bug-bounty scopes).
+
+Rina's authorisation for LCH work names the systems (isolated copies of Ask Lumen, NoShow and DocSort), the methods allowed, the dates and the contact to call if something unexpected happens. She carries a copy during every test session.
 
 ### 10.3 Coordinated disclosure
 
 If you find a vulnerability, report it privately to the owner, give reasonable time to fix, and publish only details that help defenders. Do not access more data than needed to demonstrate the problem.
 
+In Rina's case, the phone-number issue was demonstrated with a single synthetic example rather than by checking many real numbers. Her report described the behaviour, the conditions and a suggested fix, and she kept it confidential until LCH confirmed the fix. Publishing details before the fix would have helped attackers more than defenders.
+
 ### 10.4 Fairness and safety
 
 AI systems can treat groups differently. NoShow, for example, could rank some patients lower for reminders because of features correlated with income. The NIST AI RMF lists *fair, with harmful bias managed* among trustworthy-AI characteristics alongside *secure and resilient* and *privacy-enhanced*. The EU AI Act imposes obligations on high-risk systems, including some healthcare-related uses; legal classification needs expert advice.
 
+A fairness check for NoShow would compare error rates across groups, for example whether patients from some postcodes are more often wrongly predicted to miss appointments.
+
 ### 10.5 Worked example (synthetic LCH case)
 
 A classmate proposed testing a commercial health chatbot "to see if it leaks data". Rina explained that without authorization this would be unethical and possibly illegal, and suggested building a synthetic replica in the course lab instead. Separately, in an authorised LCH test, Rina found that Ask Lumen could reveal whether a phone number belonged to a registered patient; she reported it through LCH's process with minimal evidence, and it was fixed before the semester ended.
+
+Minimal evidence meant one synthetic phone number, not a list of real ones.
 
 ### 10.6 Errors and limits
 
 - "Just checking" unauthorised systems.
 - Collecting more personal data than needed for a report.
 - Ignoring fairness as "not security".
+
+"Just checking" an unauthorised system can break the law and harm users, regardless of intent. Collecting more personal data than needed turns a security report into a privacy risk of its own. Ignoring fairness overlooks harms that affect patients as directly as a data leak would, such as NoShow giving some groups fewer reminders because of features correlated with income. Rina's practice addresses all three by design.
 
 ### Exercises
 
@@ -710,31 +761,45 @@ You will (1) explain processes, users, file permissions and isolation; (2) run A
 
 Every program runs as a process owned by a user account. The operating system checks that account's permissions before allowing file access, network connections or device use. A model server should run under its own unprivileged account that can read model files but cannot modify code, read unrelated data or administer the machine.
 
+If an attacker found a flaw in the model server, they would gain only that account's rights. That is why DocSort's OCR worker running as administrator, in the worked example, was a serious finding even before anything went wrong.
+
 ### 11.2 Isolation
 
 Containers and virtual machines isolate workloads. Isolation is essential when an AI system can run code (for example a data-analysis tool in a chatbot): the code may be influenced by prompt injection, so it must run with no network access, limited CPU and memory, a short time limit and a temporary file system.
+
+Ask Lumen does not run code, but DocSort processes uploaded scans, which are untrusted files. Running its OCR worker in a container with read-only access to the input folder means a malicious file can affect only that container. Each restriction answers a specific risk: no network stops data leaving, the time limit stops endless loops, and the temporary file system disappears after each job.
 
 ### 11.3 Resource control
 
 Without limits, one heavy request can starve others. Control groups (on Linux) and container limits cap CPU, memory and GPU use per workload, supporting availability.
 
+For DocSort, a single malformed scan that consumes all memory could block every referral letter in the queue. A memory cap on the worker container makes that file fail alone while the next job proceeds. Limits are set from measured normal use plus a margin, and a job that hits a limit is logged so the cause can be investigated rather than silently retried.
+
 ### 11.4 Logs
 
 Authentication logs, process logs and file-access logs help reconstruct what happened. Correlating them with application request IDs links a chatbot conversation to its effects on the system.
+
+For Ask Lumen, each conversation receives a request ID that appears in the application log, the model-call log and the booking tool's log. With that ID, Rina can follow one patient message from the chat to any appointment it changed. Without it, matching entries by time alone is slow and error-prone when many conversations run at once.
 
 ### 11.4b Patching and configuration
 
 Operating systems and AI-serving software receive security updates; apply them on a schedule and track versions. Default configurations often enable debugging features, verbose error pages and sample accounts that should be disabled in production.
 
+DocSort's crash dumps in the worked example are a case of such a default: useful during development, harmful in production. LCH now keeps a configuration checklist for each AI service, reviewed before release, listing debug settings, error pages and sample accounts that must be off. Patching follows a monthly schedule, with urgent fixes applied sooner when a serious vulnerability is announced.
+
 ### 11.5 Worked example (synthetic LCH case)
 
 DocSort's OCR worker ran as an administrator account "for convenience". A malformed scanned file crashed it, and the crash dump was written to a shared folder readable by all staff, exposing letter text. Rina's fix: a dedicated unprivileged account, crash dumps disabled in production, the worker in a container with read-only access to its input folder, and alerts on crashes.
+
+Each fix answers one cause: the unprivileged account limits what a compromised worker can do, disabled dumps stop text reaching a shared folder, read-only input prevents the worker from altering letters, and alerts make crashes visible.
 
 ### 11.6 Errors and limits
 
 - Services running as administrator.
 - AI code-execution tools with network access.
 - Logs that cannot be linked to requests.
+
+Running as administrator turns any bug into full control of the machine, as DocSort's case almost did. AI tools that execute code with network access can be steered by prompt injection to send data out. Logs that cannot be linked to requests make it impossible to say which conversation caused which effect, so investigations stall. Each of these is a configuration choice, cheap to get right at the start.
 
 ### Exercises
 
@@ -761,6 +826,8 @@ You will (1) use conditional probability and Bayes' rule; (2) explain base rates
 ### 12.1 Conditional probability
 
 P(A | B) is the probability of A given B. A detector's true-positive rate is P(alert | attack); what operators need is P(attack | alert), which Bayes' rule gives from the true- and false-positive rates and the base rate of attacks.
+
+The two are easily confused, and vendors usually quote the first. A detector that catches 95% of attacks still produces mostly false alarms if attacks are rare, because the clean majority generates many false positives. Bayes' rule makes the calculation explicit, and Lab B shows how strongly the answer depends on the base rate.
 
 ### 12.2 Base rates
 
@@ -791,6 +858,8 @@ tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
 tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
+
+Reading Lab B across rows: at a base rate of one in a thousand, lowering the false-positive rate from 5% to 1% raises precision from 0.019 to 0.087, and the 0.001 detector reaches 0.445. Alerts per 10,000 conversations show the workload: 509 for the first detector against 18 for the last. Reviewers can handle eighteen alerts; five hundred would be ignored.
 
 ### 12.3 Confidence intervals
 
@@ -835,23 +904,33 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The lab shows how the interval narrows with sample size: the same 15% rate gives an interval from about 11% to 21% with 200 trials and from 0.135 to 0.166 with 2,000. A demonstration with 20 prompts cannot distinguish a weak defence from a strong one. The per-seed line adds another source of spread: five runs of the same evaluation range from 0.105 to 0.145.
+
 ### 12.4 Comparing systems
 
 To compare two defences, test both on the same items and look at the paired difference with a bootstrap interval. If the interval includes zero, you cannot claim one is better.
+
+Testing on the same items removes the variation caused by some prompts being harder than others. In Lab S, the defence lowers attack success from 0.350 to 0.190, and the bootstrap interval for the reduction runs from 0.120 to 0.203. Because it excludes zero, the improvement is real for this test set; whether it holds on other prompts is a separate question.
 
 ### 12.4b Variation and sample size
 
 Results also vary with random seeds, data splits and prompt wording. Run several seeds and report their spread, as the lab's per-seed line shows. To plan how many test cases you need for a rate near p with interval half-width h at 95% confidence, use n ≈ 1.96² × p(1 − p) / h². For p = 0.1 and h = 0.02 that is about 864 cases — far more than most quick demonstrations use, which is why many published "success rates" are less certain than they look.
 
+The formula also shows the cost of precision: halving h to 0.01 needs four times as many cases, about 3,457.
+
 ### 12.5 Worked example (synthetic LCH case)
 
 A vendor offered a "prompt-attack detector" with 98% accuracy. Rina asked for TPR and FPR: 90% and 2%. With an estimated 1 malicious conversation per 2,000, precision would be about 2% — most alerts false. LCH used the detector only to flag conversations for weekly review, not to block patients.
+
+The 98% accuracy figure was almost meaningless here, since a detector that never fired would score about 99.95% on the same traffic. Using it for weekly review rather than blocking means false alerts cost reviewer time, not patient access.
 
 ### 12.6 Errors and limits
 
 - Accuracy without base rates.
 - Single numbers without intervals.
 - Comparing systems on different test sets.
+
+Accuracy hides the trade-off between missed attacks and false alarms, and can look high for a useless detector when attacks are rare. A single number without an interval invites overconfidence, especially from small tests such as three successes in twenty. Comparing systems on different test sets confuses differences in the systems with differences in the prompts. Lab S shows the fix for each, using the same synthetic prompts.
 
 ### Exercises
 
