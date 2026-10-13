@@ -1499,29 +1499,43 @@ You will (1) define security operations and blue-team work; (2) explain SOC func
 
 Security operations monitor, detect, analyse and respond to threats continuously. The blue team is the defending side, contrasted with red teams that simulate attackers under authorisation.
 
+At Riverton, "continuously" is limited by staffing: student analysts cover daytime shifts and an engineer is on call overnight. The phishing campaign shows what that means in practice, since the first compromise happened at 02:14 and nobody looked until morning. Understanding the gap between the ideal of continuous operations and the actual rota is part of the theory too.
+
 ### 19.2 SOC functions
 
 Knerler, Parker and Zimmerman (2022) group SOC functions into areas such as real-time monitoring and triage, incident analysis and response, threat intelligence, tooling and engineering, and expanded services like hunting.
+
+Riverton's small SOC covers some of these well and others thinly. Monitoring and triage are done by student analysts, incident response by the two staff engineers with the service desk, and tooling by the same engineers in their spare time. Threat intelligence is mostly reading public advisories. Naming the functions shows where a single person is covering several roles.
 
 ### 19.3 Incident response framework
 
 NIST SP 800-61r3 places incident response within cybersecurity risk management, aligned to CSF 2.0 functions: preparation sits in Govern, Identify and Protect; detection and response in Detect and Respond; recovery in Recover.
 
+The alignment helps Riverton see that much of incident response happens before an incident. Requiring student MFA, for example, is preparation under Protect, and assigning the DPO's role in breach decisions is part of Govern. Without that preparation, detection and response start from a weaker position, as the phishing campaign showed when neither compromised student had enrolled.
+
 ### 19.4 Continuous monitoring
 
 NIST SP 800-137 describes continuous monitoring as an ongoing programme tied to risk.
+
+Tied to risk means monitoring effort follows what matters most: at Riverton, cloud sign-ins and mailbox changes receive the closest watch because the phishing campaign and similar attacks run through them. The programme also checks itself, as the source-health report in the data chapter does, so that a silent gap in collection is noticed rather than assumed away. Lucas's weekly check of cloud feeds is one small piece of that self-checking, and it found two short outages in its first term.
 
 ### 19.5 SOC models
 
 SOCs may be internal, outsourced or hybrid. Riverton's is internal and small, using student analysts as a teaching programme.
 
+The teaching programme shapes how the SOC works. Shifts follow the academic timetable, procedures are written for newcomers who change every year, and the two staff engineers spend part of their time training. Outsourcing overnight monitoring was considered after the campaign, but the cost and the loss of local knowledge led Dr. Kim to trial an on-call arrangement instead. The trial is reviewed after one term.
+
 ### 19.6 Maturity
 
 The SOC-CMM (van Os, 2016) assesses maturity across business, people, process, technology and services. Riverton scores higher in technology than in process documentation.
 
+The gap showed during the campaign: tools collected the right logs, but there was no written procedure for when to page the on-call engineer overnight. Students who saw early reports were unsure whether to wake anyone. Writing that procedure, with clear thresholds, became one of the first improvements, and the next assessment will show whether the process score rises.
+
 ### 19.7 Theory and practice
 
 Vielberth et al. (2020) note that SOC research is fragmented; much practice relies on experience, so the course pairs theory with case work.
+
+For Lucas, this means checking published ideas against Riverton's own data before relying on them. A finding from a large commercial SOC about alert volumes may not hold for a university with seasonal traffic and student analysts. The case work tests theory in a particular setting, and the setting sometimes shows where the theory needs qualifying. Lucas notes such qualifications in his reports.
 
 ### Red, blue and purple
 
@@ -1563,29 +1577,43 @@ You will (1) analyse published and synthetic SOC cases; (2) identify detection, 
 
 Cases show how principles play out under pressure. Lucas studies three: Riverton's phishing campaign, a synthetic ransomware case from a teaching exercise, and the findings of published SOC studies.
 
+Each case adds something the others lack. The phishing campaign has real timings and decisions from Riverton's own systems. The ransomware exercise covers a kind of attack Riverton has not suffered. The published studies show patterns across many SOCs, which helps Lucas judge whether Riverton's experience is typical or unusual. Using all three guards against generalising from one event.
+
 ### 20.2 Riverton's campaign
 
 Detection came first from user reports, then from the z-score flag on s2047. Containment took about six hours for s2047 because the flag ran only in a morning batch.
+
+The batch timing explains most of that delay: the account began sending at about 02:30, but the check that flagged it did not run until 07:00. Earlier user reports pointed to the campaign but not to which account had been compromised. The lesson Lucas draws is that detection speed depends on schedule as much as on rule quality.
 
 ### 20.3 Synthetic ransomware exercise
 
 In the course's tabletop exercise, a file server's files are encrypted. Detection comes from users reporting unreadable files; response hinges on isolating the server and restoring from backups. The exercise shows that tested backups decide recovery time.
 
+In the exercise, the team discovered that the most recent backup restore test had been a year earlier, and nobody knew how long a full restore would take. Participants estimated anywhere from four hours to two days. The exercise led to a scheduled restore test, which is cheaper to learn from than a real outage.
+
 ### 20.4 Published studies
 
 Alahmadi et al. (2022) describe analysts overwhelmed by benign triggers; Kokulu et al. (2019) describe mismatched SOC priorities between managers and analysts. Both explain why Riverton's student analysts sometimes ignore low-severity alerts.
+
+At Riverton, low-severity alerts such as antivirus quarantines on student laptops are numerous and almost always harmless. Students learn to skim them, which is the overload these studies describe. The risk is that a rare important one is skimmed too, so the triage lab teaches ordering by score and judgement rather than by habit.
 
 ### 20.5 Decision points
 
 In each case Lucas lists decision points: when to escalate, when to contain, whom to inform. Delays often come from unclear authority, not missing tools.
 
+In the phishing campaign, the key decision was whether to wake the on-call engineer when early reports arrived overnight. Nobody was sure who could make that call, so nobody did. The improvement was not a new tool but a written rule naming who decides and on what evidence, which the student analysts could follow without hesitation.
+
 ### 20.6 Generalising
 
 Lessons that recur — user reports matter, batch detection is slow, unclear authority delays action — are candidates for SOC improvement.
 
+Lucas checks each lesson against the cases before recommending a change. User reports mattered in both the phishing and ransomware cases. Batch detection mattered only in phishing, so the evidence is narrower, but the timings were measured precisely. Unclear authority appeared in both and in the published studies, which makes it the strongest candidate. Lucas ranks the lessons by how much evidence supports each, and presents that ranking to Dr. Kim with the cases listed beside every lesson.
+
 ### 20.7 Limits
 
 Cases are selected and simplified; they illustrate, they do not prove.
+
+The ransomware exercise left out the stress of a real outage, angry users and incomplete information; the phishing case was written up after the fact, when the right answers were known. Lucas uses the cases to suggest what to look at, and the measured improvements in later chapters to check whether each change actually helped. A lesson drawn from a case is a hypothesis about Riverton's SOC, and it stays one until the measurements in later chapters confirm or reject it. Lucas marks each lesson in his notes with its status.
 
 ### Using cases in training
 
@@ -1627,29 +1655,43 @@ You will (1) model the SOC as a set of connected components and roles; (2) trace
 
 Riverton's SOC links log sources, a SIEM, detection rules, a case-management system, analysts and responders in IT. An alert is a message that passes through this chain; every link can delay or distort it.
 
+Thinking of the SOC this way shifts attention from individual mistakes to the design of the chain. A late alert may not be any analyst's fault; it may come from a log source that arrives slowly, a job that runs once a day or a queue that nobody watches overnight. Each link can be measured and improved.
+
 ### 21.2 Tracing an alert
 
 For the s2047 flag: the mail service logged outbound messages; logs arrived in the SIEM within 10 minutes; the z-score job ran at 07:00; the alert entered the case queue; a student analyst picked it up at 08:05; the service desk reset the password at 08:41.
+
+Each step leaves a timestamp in a different system, so the trace was built from the mail service, the SIEM, the case system and the service desk's ticket. Putting them on one timeline showed for the first time how long each step took, which the next part of this chapter uses to find where time was lost.
 
 ### 21.3 Delays
 
 The largest delay was the gap between activity (from 02:30) and the batch job (07:00). The second was queue time before an analyst picked up the alert, because the morning shift starts at 08:00.
 
+Neither delay came from slow analysis: once the alert was picked up, the password was reset within about forty minutes. Improving analysts' speed would have saved little; changing when the job runs and who watches the queue overnight would save hours. The model makes that difference visible, which is its main purpose.
+
 ### 21.4 Roles
 
 Student analysts triage; Dr. Kim's two staff engineers maintain tools and handle escalations; the service desk performs resets; the data protection officer handles personal data exposure.
+
+Each role holds a different power. Student analysts can examine logs but cannot reset passwords; the service desk can reset but does not investigate. This separation protects against misuse but adds hand-offs, and the phishing case shows that hand-offs are where time is lost if the next person is not expecting the request. Clear roles reduce that risk.
 
 ### 21.5 Interfaces
 
 Each hand-off — SIEM to case system, analyst to service desk — has a format and an expected time. Missing expectations cause waits.
 
+After the campaign, Riverton defined the analyst-to-service-desk hand-off: a ticket with the account, the evidence reference and the action requested, with a target of thirty minutes during working hours. Before that, requests arrived by phone or chat with varying detail, and the service desk sometimes had to call back to ask what was needed. The new format removed those calls and made each request traceable in the ticket system.
+
 ### 21.6 Using the model
 
 Lucas annotates the model with measured times from the campaign to show where improvements would matter most.
 
+With times attached, the model turns opinions into comparisons. Faster triage had been suggested, but measured triage time was small; the batch gap was large. Lucas's annotations let Dr. Kim choose the changes that would save the most time for the effort, which is the decision described in the worked example below. The same annotated model is reused after each later incident, so the effect of the changes can be measured against the campaign's original times.
+
 ### 21.7 Feedback loops
 
 Analyst closure reasons feed back to engineers, who tune rules; without this loop, the same noise repeats.
+
+At Riverton, analysts close each alert with a reason such as benign travel, shared address or confirmed compromise. Engineers review the reasons monthly. When many spray alerts closed as library computers, the engineers added the library's addresses to the shared-address list, and those false alerts stopped appearing in the queue. Without the closure reasons, the engineers would not have known which addresses to add. The loop works only if analysts choose reasons carefully rather than picking the first option.
 
 ### Worked example
 
@@ -1687,29 +1729,43 @@ You will (1) inventory the SOC's data sources and their owners; (2) assess data 
 
 Lucas lists every source: identity sign-ins, mail events, mailbox audit, firewall logs, DNS resolver logs, endpoint logs from staff devices, research server logs (partial), and the phishing report mailbox. For each, he records owner, format, latency, retention and which rules use it.
 
+The rule column proved the most useful. It showed that the outbound-mail check depended on mail events alone, and that no rule used the mailbox audit source at all, even though it recorded the forwarding and deletion rules in the campaign. That gap later led to the correlation rule tested in the first laboratory.
+
 ### 22.2 Quality
 
 Some sources have gaps: DNS logs miss queries from devices using external resolvers; research servers forward inconsistently. Quality problems limit what detections can promise.
+
+Lucas records each gap beside the detections it affects. A rule that counts lookups of a look-alike domain, for instance, can promise only a lower bound because of the DNS gap. Stating this in the rule's description stops analysts from treating a low count as proof that few people clicked. Research server rules carry a similar note about inconsistent forwarding.
 
 ### 22.3 Latency
 
 Cloud mail audit events arrive up to 30 minutes late; sign-ins within 5. Detections that combine them must allow for the slower source.
 
+A rule that looks for a mailbox rule within sixty minutes of a risky sign-in must therefore wait at least thirty minutes after the window closes before deciding nothing happened. Running it too early would miss matches whose audit events had not yet arrived, and an analyst would wrongly conclude the sign-in was harmless. Lucas schedules the correlation to run with this delay built in.
+
 ### 22.4 Retention
 
 Cloud audit logs are kept by the provider for 90 days on Riverton's licence; the SOC copies key events to its own store for longer.
+
+The difference matters for slow attacks. A compromise noticed after three months would find the provider's logs already deleted. The SOC therefore copies sign-ins, rule changes and forwarding events to its own store, which follows the retention rules in the privacy chapter, so key evidence survives longer than the licence allows. The copied events are hashed on arrival, like other evidence.
 
 ### 22.5 External dependencies
 
 The SOC depends on the cloud provider's logging, the identity provider's API and the university network team. A change in any can break collection silently.
 
+The firewall replacement in the worked example below is one such change. Others include a provider renaming a field in its export, which can make a rule stop matching without any error, or an expired API credential. Lucas's inventory lists who to contact for each dependency and how a failure would show itself. Each entry was confirmed with its owner.
+
 ### 22.6 Source health
 
 A daily report shows events received per source compared with the usual range. A sudden drop prompts investigation.
 
+The report compares each source's daily count with the range of the previous four weeks. A drop to zero is obvious, but a fall by half may mean a partial failure, such as one building's controller no longer forwarding. The report goes to the morning shift, which checks any flagged source before relying on it. In its first month, the report caught the firewall gap described below.
+
 ### 22.7 Ownership
 
 Each source has a named owner outside the SOC who is told when problems appear.
+
+Owners are outside the SOC because they control the systems that produce the data. When the research firewall stopped forwarding, the SOC could not fix it; the network team could. Naming the owner in the inventory meant Lucas knew whom to contact within minutes rather than asking around the IT department. Owners also receive the monthly source-health summary, so they can see their system's role in detection and plan changes such as replacements with forwarding in mind. That reduced surprises like the firewall gap.
 
 ### Cost of sources
 
@@ -1751,9 +1807,13 @@ You will (1) design detections for password guessing patterns; (2) distinguish s
 
 Brute force tries many passwords against one account. Password spraying tries one or two common passwords against many accounts, staying under per-account lockout limits. Both appear in identity logs as failures, but they look different when grouped.
 
+Lockout limits explain the difference. Riverton locks an account after several failures in a short period, so brute force against one account soon stops working, while a spray that tries each account only once or twice never triggers a lock. Spraying succeeds when some users choose common passwords, which is why it targets many accounts.
+
 ### 23.2 Grouping matters
 
 Grouping failures by source and counting distinct users and attempts per user separates the patterns: spraying shows many users and few attempts each; brute force shows one user and many attempts.
+
+Without grouping, both patterns are just failures in a long list, and the spray's forty failures look much like the day's background of mistyped passwords. Grouping by source address turns them into two clear profiles. The lab below applies exactly this grouping to synthetic records. The grouping is cheap to compute, even on a busy day.
 
 ### Lab — spray versus brute force
 
@@ -1782,17 +1842,25 @@ Run with `python3 lab_spray.py`. Verified output:
 
 In 30 minutes, 198.51.100.77 failed against 30 accounts with at most one attempt each — a spray. 192.0.2.5 failed six times against s1001 only — a brute-force pattern on one account.
 
+Only the first thirty of the spray's forty attempts fall inside the thirty-minute window, which is why the lab reports thirty users rather than forty. The window choice matters: a slower spray spread over hours would show fewer users per window and could fall below the threshold. Lucas notes this limit in the rule's description, so analysts know that a quiet result does not rule out a slow spray.
+
 ### 23.4 Responses differ
 
 Spraying threatens many weak passwords; the response is to check whether any targeted account later signed in successfully and to block the source. Brute force against one account may be a user who forgot a password, or a targeted attack; the response is to contact the account holder.
+
+In the lab, the different responses produced different outcomes, as the worked example below shows: the spray was checked for later successful sign-ins and its source blocked, while the brute-force pattern turned out to be a forgotten saved password. Treating both the same way would either alarm s1001's owner needlessly or under-react to the spray.
 
 ### 23.5 Thresholds
 
 The lab uses 20 users and 2 attempts per user. Lower thresholds catch slower sprays but raise false alerts from shared campus addresses, such as library computers.
 
+Lucas tested lower values on a week of real failure records. At ten users and two attempts, the rule flagged three library and lab addresses each day, all benign. At twenty, it flagged none of them. He kept twenty for general addresses and documented the trade-off, so slower sprays are a known limit rather than a surprise.
+
 ### 23.6 Shared addresses
 
 Campus NAT means many students share one public address; a real spray must be distinguished from a busy lab. The rule excludes known campus egress addresses and handles them with separate thresholds.
+
+For campus egress addresses, the rule uses higher thresholds and also looks at the share of failures, since a busy computer lab produces many successes alongside its failures. A spray from a shared address would show unusually many failures across many users with few successes, a pattern a lab full of students seldom produces.
 
 ### Worked example
 
@@ -1830,29 +1898,43 @@ You will (1) relate SOC detections to preventive and responsive controls; (2) re
 
 Detection works best alongside prevention and response. For phishing: mail filtering and DMARC enforcement prevent; mailbox-rule monitoring detects; password resets and session revocation respond.
 
+In the campaign, prevention was weak, since filtering only added a banner, and detection was slow, so response had to clean up more than it should have. Strengthening prevention reduces what detection has to catch, and faster detection reduces what response has to undo. The control changes below address all three. Lucas's control table has a column for each.
+
 ### 24.2 After the campaign
 
 The campaign response produced four control changes: required student MFA, disabled legacy mail protocols, blocked automatic external forwarding by default, and added a report button in the mail client.
+
+Each change maps to a step in the attack. MFA and legacy blocking address the use of stolen passwords. The forwarding block stops the exfiltration seen in s2047's mailbox. The report button speeds up the first signal, which came from people in both cases studied. Together they target the points where the campaign succeeded.
 
 ### 24.3 Side effects
 
 Blocking external forwarding affects staff who forward mail to personal accounts. The university publishes an exception process requiring manager approval and a business reason.
 
+Lucas counted existing forwarding rules before the block was applied: a small number of staff had them, mostly to personal accounts. Each was contacted with instructions for the exception process. Doing this before the change avoided a wave of complaints and missed mail on the day the block took effect. The exception list is reviewed each term.
+
 ### 24.4 D3FEND naming
 
 MITRE D3FEND names defensive techniques precisely, such as multi-factor authentication and user behaviour analysis. Naming controls this way helps compare them with other organisations and spot gaps.
+
+Using D3FEND's terms, Lucas's control table names MFA and behaviour analysis precisely, rather than writing vague entries such as "better login security". When Riverton compared notes with another university, both could see that the other monitored mailbox rules but neither had user behaviour analysis for research servers, a shared gap. Precise names made the gap visible.
 
 ### 24.5 Control ownership
 
 Each control has an owner: identity team for MFA, mail team for forwarding, SOC for monitoring rules.
 
+Ownership matters when a control fails or causes trouble. When the forwarding block stopped a research mailing list, the mail team owned the fix and used the exception process. Without a named owner, the SOC might have been asked to change a mail setting it did not control, and the fix would have been delayed. Owners also decide on exceptions to their control.
+
 ### 24.6 Testing controls
 
 After deployment, the SOC tests each control: a test account tries to create an external forwarding rule; the block works and an alert fires.
 
+Testing showed one gap: the block applied to new rules created in the web interface but, at first, not to rules created through an older mail client. The mail team extended the policy, and the test was repeated through both routes. Deploying a control without such a test would have left the gap open. The test is now repeated after every mail-system update.
+
 ### 24.7 Cost and benefit
 
 Lucas estimates time saved: forwarding blocks would have prevented the 37 messages leaving s2047's mailbox.
+
+Those 37 messages included the three containing other students' marks, which led to the DPO's notification decision. Preventing them would have avoided the notification, the work to identify affected students and the worry it caused. Against that, the forwarding block's cost was an exception process and one brief disruption, described below under rollback. Lucas's estimate was rough, but it made the trade-off clear enough for the university to accept the block. He also noted that the block would not have stopped the s3310 deletion rule.
 
 ### Rollback
 
@@ -1894,9 +1976,13 @@ You will (1) practise triage in a contained lab with synthetic alerts; (2) prior
 
 The SOC's training lab contains a copy of the case system loaded with synthetic alerts. No real student or staff data is present.
 
+Using synthetic alerts lets students practise mistakes safely. A student who closes a real compromise as benign could leave an attacker in an account; in the lab, the same mistake becomes a lesson in the debrief. The lab copy also lets Dr. Kim design alerts that teach specific points, such as ties in the score. No alert in the lab names a real person.
+
 ### 25.2 Prioritisation
 
 Not all alerts are equal. A simple score multiplies alert severity (1–3) by asset criticality (1–3); ties are broken by age so older alerts are not forgotten.
+
+Multiplying rather than adding means a high-severity alert on a low-value asset scores the same as a low-severity alert on a critical one, which reflects that both factors matter. Breaking ties by age keeps an alert from waiting indefinitely behind newer ones with the same score, which a queue sorted by score alone would allow.
 
 ### Lab — ordering a queue
 
@@ -1924,17 +2010,25 @@ A4 score=1 age=40m AV quarantine (student-laptop)
 
 A3 (new administrator on the research GPU server, high severity on a critical asset) scores 9 and comes first. A1 (spray against the identity provider) and A2 (external mail rule) both score 6; A1 is older so comes first. A5 scores 4 and A4, an antivirus quarantine on a student laptop, scores 1.
 
+A3 deserves first place: a new administrator on the GPU server could mean an attacker securing access, as in the week-five case. A4 comes last despite being the oldest, because antivirus already quarantined the file and the laptop is personal. The ordering matches what an experienced analyst would choose most of the time.
+
 ### 25.4 Triage notes
 
 For each alert, the lab sheet records the decision (benign, suspicious, malicious), evidence checked and next action.
+
+A note for A1 might read: decision suspicious; evidence checked, thirty accounts each targeted once from one external address, no later successful sign-ins; next action, block the source address and close. Recording evidence checked lets a reviewer see that the decision was based on the right questions, not only on the outcome. Notes are written before the next alert is opened, while details are fresh. In the debrief, Dr. Kim compares notes across students to see whether they checked the same evidence.
 
 ### 25.5 Errors
 
 In the first run, Lucas spends ten minutes on A4 because it is oldest, delaying A3. Ordering by score first prevents this.
 
+Lucas's mistake was natural, since the oldest item in a queue feels most urgent. In a real shift, ten minutes on a harmless quarantine while a server gained an unexpected administrator could let an intruder settle in. The debrief turned the mistake into a rule in the triage guide: read the score first. Lucas added a line to his own checklist as well.
+
 ### 25.6 Reflection
 
 Scores support but do not replace judgement: an analyst who knows the mail rule matches the s2047 pattern may escalate A2 ahead of A1.
+
+In the lab, A2's pattern matched s2047 exactly: an external forwarding rule six minutes after a sign-in from a new country. Escalating it ahead of the equally scored spray was justified because the spray had produced no successful sign-ins, while A2 indicated an account already in an attacker's hands. Dr. Kim's comment on his sheet confirms this reasoning, and the triage guide now notes that pattern matches can override equal scores.
 
 ### Lab debrief
 
