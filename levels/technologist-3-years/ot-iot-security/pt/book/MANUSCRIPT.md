@@ -810,7 +810,7 @@ Cada achado: título, IDs de evidência, ativos afetados, ligação com o cenár
 
 ### Exemplo resolvido (NCS sintética)
 
-Durante a vistoria, Priya encontra um pequeno roteador celular no painel MP-2 etiquetado "contractor backup access". A empresa contratada explica que ele foi instalado durante uma queda da rede dois anos atrás e esquecido. Achado F-07: "Roteador celular não documentado no MP-2 oferece um segundo caminho remoto até o PLC-R2 (evidência: foto E-021, entrevista I-04)." Recomendação: remover, ou manter desligado e habilitado só sob pedido, com a aprovação do gerente de instalações.
+Durante a vistoria, Priya encontra um pequeno roteador celular no painel MP-2 etiquetado "contractor backup access". A empresa contratada explica que ele foi instalado durante uma queda da rede dois anos atrás e esquecido. Priya o registra como o achado F-07, descrito na seção acima.
 
 > **Caso sintético — Northgate Cold Storage.** Os IDs do painel e do achado são inventados.
 
@@ -879,7 +879,7 @@ Se as leituras dos minutos 15–30 fossem substituídas por valores em torno de 
 
 ### 15.4 Registrando o resultado
 
-Registre o arquivo de entrada (ou o seu hash), a versão do script, os parâmetros de limite e de atraso, e a saída. Outro tecnólogo precisa conseguir reproduzi-lo exatamente. O registro de Priya diz: "Laboratório 15 sobre as leituras da antecâmara (conjunto sintético A): uma excursão de 15–35 min, 20 min, pico de 8,4 °C, alarme disparado com atraso de 10 min. Resolução: amostragem de 5 min, então o início é incerto em até 5 min. Verificação de integridade: comparada com a sonda TT-A1 do HIST — indisponível no conjunto sintético; listada como limitação." Com o hash do arquivo de entrada, o limite de 5 °C e o atraso de 10 minutos registrados, outro tecnólogo pode executá-lo de novo e obter a mesma linha.
+Registre o arquivo de entrada (ou o seu hash), a versão do script, os parâmetros de limite e de atraso, e a saída. Outro tecnólogo precisa conseguir reproduzi-lo exatamente. O registro de Priya, citado no exemplo resolvido abaixo, nomeia a excursão, o quanto o seu início é incerto por causa do intervalo de amostragem e a verificação de integridade que não pôde ser feita. Com o hash do arquivo de entrada, o limite de 5 °C e o atraso de 10 minutos registrados, outro tecnólogo pode executá-lo de novo e obter a mesma linha.
 
 ### Exemplo resolvido (NCS sintética)
 
@@ -1345,7 +1345,7 @@ Reporte o que falhou. Se um prestador ainda usasse o roteador celular (Capítulo
 
 ### Exemplo resolvido (NCS sintética)
 
-A tabela de avaliação de Priya: seis controles, seis testes, cinco aprovados. A falha: o firewall da zona de câmeras permitia que a CAM-DOCK alcançasse o HIST numa porta web por causa de uma regra ampla "câmera para servidor". Ação corretiva: restringir a regra ao gravador de vídeo apenas; novo teste agendado.
+A tabela de avaliação de Priya: seis controles, seis testes, cinco aprovados. A linha que falhou é reportada por completo, com a causa, a ação corretiva e a data do novo teste.
 
 > **Caso sintético — Northgate Cold Storage.** Os resultados são inventados.
 
