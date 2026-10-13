@@ -64,9 +64,15 @@ After this chapter you can (1) turn a vague interest into a researchable questio
 
 Physics-based detection appears as "analytical redundancy" and "residual generation" in control journals and as "false data injection" and "sensor spoofing" in security venues. Build a synonym table before searching IEEE Xplore, ACM DL, Scopus and arXiv. Include grey literature (IEC white papers, CISA advisories) as a separate stream with its own eligibility rules, because it is not peer-reviewed in the same way.
 
+Section one point two develops research question and literature method with a the organisation note Modify Parameter can demo offline.
+
 ### 1.3 Screening and agreement
 
 Two reviewers screen titles and abstracts independently; report Cohen's kappa. Lab 1 shows a synthetic export with DOI and title-year deduplication and a kappa of 0.462 — moderate agreement driven by disagreement on a vendor white paper and a DNP3 measurement paper. Low agreement is a signal to repair eligibility criteria, not to force consensus.
+
+Section one point three develops research question and literature method with a the organisation note Modify Parameter can demo offline.
+
+Under section one point three, the mentor expects research claims to carry owners and dates.
 
 ### 1.4 Worked example and Lab 1
 
@@ -109,6 +115,14 @@ print("kept titles:",[r[1][:40] for r in kept])
 
 Expected output:
 
+Section one point four develops research question and literature method with a the organisation note Modify Parameter can demo offline.
+
+Under section one point four, the mentor expects research claims to carry owners and dates.
+
+Section one point four treats from interest to question as testable only when evidence and ticket IDs are recorded.
+
+For section one point four, the organisation will not accept research work without a written trail.
+
 ```text
 raw 10 kept 7 dropped 3
 agree,kappa (0.714, 0.462)
@@ -120,6 +134,14 @@ Three duplicates dropped via DOI or normalized title. Kappa 0.462 with 71.4% raw
 ### 1.5 Common errors and limits
 
 Searching only security venues; treating vendor papers as peer-reviewed evidence; reporting raw agreement without kappa; writing a question with no failure condition.
+
+Section one point five develops research question and literature method with a the organisation note Modify Parameter can demo offline.
+
+Under section one point five, the mentor expects research claims to carry owners and dates.
+
+Section one point five treats from interest to question as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, the organisation will not accept research work without a written trail.
 
 ### Exercises — chapter 1
 
@@ -151,25 +173,51 @@ After this chapter you can (1) explain Purdue levels and ISA/IEC 62443 zones, (2
 
 NIST SP 800-82 Rev. 3 presents the Purdue model: levels 0–1 (process and basic control), 2 (supervisory), 3 (operations), 4–5 (enterprise), with an industrial DMZ. ISA/IEC 62443-3-2 asks you to partition into **zones** with a target security level and to control **conduits** between them. A dissertation can treat a zone design as a hypothesis: does a conduit that permits only Modbus reads from level 2 to level 1 reduce write reachability by a measured fraction in a synthetic topology?
 
+Section two point one develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
 ### 2.2 Protocols
 
 The Modbus Application Protocol defines function codes (including write single/multiple registers) and a data model but no authentication or integrity fields. DNP3 Secure Authentication and OPC UA security models show that the industry has added options; adoption and implementation quality remain empirical questions. Never present "Modbus is insecure" as a finding — it is a design property of the specification.
+
+Section two point two develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section two point two, the mentor expects ot claims to carry owners and dates.
 
 ### 2.3 Detection families
 
 Network detectors watch packets; physics-based detectors watch whether sensor and actuator values obey process laws. Giraldo et al. surveyed the latter; Urbina et al. argued for measuring impact under a stealthy adversary. Sommer and Paxson warned that anomaly detection fails when "normal" is open; Arp et al. listed evaluation pitfalls including point-adjusted scoring.
 
+Section two point three develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section two point three, the mentor expects ot claims to carry owners and dates.
+
 ### 2.4 Threat evidence
 
 MITRE ATT&CK for ICS lists techniques such as *Modify Parameter* and *Spoof Reporting Message*. Public reporting of Stuxnet, the 2015 Ukrainian outages and TRITON/TRISIS shows that manipulation of view and targeting of safety systems are documented adversary goals. Use these at the level of the cited public analyses; do not invent operational detail.
+
+Section two point four develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section two point four, the mentor expects ot claims to carry owners and dates.
 
 ### 2.5 Worked example: coding a gap
 
 From twelve synthetic studies L1–L12, only two report impact at detection, only one freezes thresholds before a second context, and none combine detector-aware adversary + frozen thresholds + impact + second plant. Gap: *No evaluation of residual detection against sensor replay reports event recall, delay and overfill-at-alarm with frozen thresholds on two contexts and an explicit two-sensor attacker class.*
 
+Section two point five develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section two point five, the mentor expects ot claims to carry owners and dates.
+
 ### 2.6 Common errors and limits
 
 Citing standards as evidence they work; treating ATT&CK as base rates; claiming novelty from a new dataset name.
+
+Section two point six develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section two point six, the mentor expects ot claims to carry owners and dates.
+
+Section two point six treats architecture purdue and zones as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, the organisation will not accept ot work without a written trail.
 
 ### Exercises — chapter 2
 
@@ -220,6 +268,12 @@ Beyond Menlo, OT research inherits safety culture: job briefings before lab sess
 
 Register metrics (event recall, delay, false-alarm runs per 80 nominal seeds, overfill at alarm), seeds, thresholds and analysis code before the validation runs. Assign data tiers T0–T3 (Chapter 7 of the doctoral companion expands this; here, at least separate public code from rig configurations).
 
+Section three point four develops study design ethics and reproducibility with a the organisation note Modify Parameter can demo offline.
+
+Under section three point four, the mentor expects study claims to carry owners and dates.
+
+Section three point four treats design matches question pre-data as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Worked example and Lab 3
 
 ```python
@@ -252,6 +306,16 @@ for det in ("band","cusum"):
 
 Expected output:
 
+Section three point five develops study design ethics and reproducibility with a the organisation note Modify Parameter can demo offline.
+
+Under section three point five, the mentor expects study claims to carry owners and dates.
+
+Section three point five treats design matches question pre-data as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, the organisation will not accept study work without a written trail.
+
+Section three point five fails closed if study evidence is missing rather than guessing.
+
 ```text
 band  classA FA_runs=11/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
 band  classB FA_runs=11/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
@@ -262,6 +326,14 @@ cusum classB FA_runs=0/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
 ### 3.6 Common errors and limits
 
 Choosing design after seeing data; active polling called "passive"; using the PLC as the only safety bound.
+
+Section three point six develops study design ethics and reproducibility with a the organisation note Modify Parameter can demo offline.
+
+Under section three point six, the mentor expects study claims to carry owners and dates.
+
+Section three point six treats design matches question pre-data as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, the organisation will not accept study work without a written trail.
 
 ### Exercises — chapter 3
 
@@ -304,9 +376,23 @@ The same logic applies elsewhere. A segmentation design that fails when engineer
 
 After Lab 3, rivals (1) and (5) are addressed by design; rival (2) needs Lab 6-style bias/orifice sweeps; rival (3) needs a gain sweep; rival (4) is addressed by reporting the band's 11/80 false-alarm runs. The architectural rival is confirmed by class B = 0/80.
 
+Section four point three develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section four point three, the mentor expects ot claims to carry owners and dates.
+
+Section four point three treats rivals for cusum advantage as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Common errors and limits
 
 Listing rivals without tests; treating a confirmed boundary as a failure to hide.
+
+Section four point four develops ot iot and cyber-physical security with a the organisation note Modify Parameter can demo offline.
+
+Under section four point four, the mentor expects ot claims to carry owners and dates.
+
+Section four point four treats rivals for cusum advantage as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, the organisation will not accept ot work without a written trail.
 
 ### Exercises — chapter 4
 
@@ -350,6 +436,14 @@ A pilot that "looks promising" tempts peeking. Resist by writing the go/no-go sh
 ### 5.3 Common errors and limits
 
 Using pilot runs to tune thresholds that later "validate" the same runs; no abandonment condition.
+
+Section five point three develops proposal and pilot with a the organisation note Modify Parameter can demo offline.
+
+Under section five point three, the mentor expects proposal claims to carry owners and dates.
+
+Section five point three treats proposal skeleton pilot purpose as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, the organisation will not accept proposal work without a written trail.
 
 ### 5.4 Proposal checklist before supervisor review
 
@@ -417,6 +511,14 @@ for orifice in (0.015,0.02,0.025):
 
 Expected output:
 
+Section six point two develops data collection and analysis with a the organisation note Modify Parameter can demo offline.
+
+Under section six point two, the mentor expects data claims to carry owners and dates.
+
+Section six point two treats collection discipline lab sensitivity as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, the organisation will not accept data work without a written trail.
+
 ```text
 orifice=0.015 detected_k0.8=150/150 detected_k0.6=150/150 mean_diff=6.0 95%CI=[5.6,6.4]
 orifice=0.02 detected_k0.8=150/150 detected_k0.6=150/150 mean_diff=7.1 95%CI=[6.6,7.6]
@@ -429,13 +531,27 @@ The delay cost of choosing k = 0.8 over 0.6 grows as the orifice coefficient ris
 
 "In the synthetic Harbor Loop model, residual CUSUM detected 80/80 class A replay episodes (mean delay 37.7 steps, mean overfill at alarm 1.38) with 0/80 false-alarm runs; the ±1.5 band detected 0/80 with 11/80 false-alarm runs. Class B (flow meter also spoofed) evaded CUSUM in 80/80 trials. Delay cost of the more robust allowance k = 0.8 versus 0.6 was 6.0–8.6 steps across orifice coefficients 0.015–0.025. Rig R2 validation is reported separately with frozen thresholds."
 
+Section six point three develops data collection and analysis with a the organisation note Modify Parameter can demo offline.
+
+Under section six point three, the mentor expects data claims to carry owners and dates.
+
 ### 6.4 Common errors and limits
 
 Independent seeds for paired comparisons; intervals presented as real-world uncertainty; hiding class B.
 
+Section six point four develops data collection and analysis with a the organisation note Modify Parameter can demo offline.
+
+Under section six point four, the mentor expects data claims to carry owners and dates.
+
+Section six point four treats collection discipline lab sensitivity as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, the organisation will not accept data work without a written trail.
+
 ### 6.5 From numbers to claims
 
 After Labs 3 and 6 you have detection counts, delays, false-alarm runs and a sensitivity curve. Turning them into claims requires the ladder from the doctoral companion: a protocol observation is not a process inference. Say "CUSUM alarmed at mean delay 37.7 steps while true overfill was 1.38" (observation + process inference) rather than "CUSUM prevents overflows" (consequence claim without protection-layer evidence). When Rig R2 results arrive, report them in the same units so a reader can see transportability or its failure without hunting.
+
+Section six point five develops data collection and analysis with a the organisation note Modify Parameter can demo offline.
 
 ### Exercises — chapter 6
 
@@ -478,13 +594,33 @@ Directional language matters. "Limited sample size" says nothing about bias dire
 
 Public: code and invented simulator (T0). Synthetic traces (T1). R2 configuration (T2). Never publish real plant maps. Hash-check before release; fail closed on mismatch.
 
+Section seven point three develops dissertation writing and limitations with a the organisation note Modify Parameter can demo offline.
+
+Under section seven point three, the mentor expects dissertation claims to carry owners and dates.
+
+Section seven point three treats argument structure directional limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, the organisation will not accept dissertation work without a written trail.
+
 ### 7.4 Common errors and limits
 
 Limitations without direction; abstract claims broader than results; archives that dump everything.
 
+Section seven point four develops dissertation writing and limitations with a the organisation note Modify Parameter can demo offline.
+
+Under section seven point four, the mentor expects dissertation claims to carry owners and dates.
+
+Section seven point four treats argument structure directional limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, the organisation will not accept dissertation work without a written trail.
+
+Section seven point four fails closed if dissertation evidence is missing rather than guessing.
+
 ### 7.5 Abstract surgery
 
 Write the abstract last. Paste every sentence into the claim register. If a sentence has no evidence row, cut it. Include one sentence on class B failure and one on synthetic scope. Prefer "in two synthetic contexts" to "in industrial control systems" when that is what you measured. Readers who need a broader claim will not be fooled by broader wording; examiners who enforce scope will reward precision.
+
+Section seven point five develops dissertation writing and limitations with a the organisation note Modify Parameter can demo offline.
 
 ### Exercises — chapter 7
 
@@ -515,6 +651,8 @@ After this chapter you can (1) audit claims before submission, (2) prepare for e
 
 Every claim needs evidence, scope and a falsifier. Delete "secures water utilities"; keep "detected single-sensor replay in two synthetic contexts". Run the audit on the abstract, the contributions bullet list and the conclusion — those are where overclaims hide. Ask a peer to mark every verb that implies field effectiveness ("protects", "prevents", "secures", "hardens") and justify or remove each one. A keyword script helps as a first pass; the human audit still reads every claim in context.
 
+Section eight point one develops independent review and defense with a the organisation note Modify Parameter can demo offline.
+
 ### 8.2 Examiner families
 
 Positioning (what is new?), validity (why generalize?), adversary (stronger attacker?), safety (how bounded?), ethics (what withheld?), impact (Monday morning change?). Answer to impact: require an independently wired second measurement of key variables and display predicted versus reported values.
@@ -525,17 +663,39 @@ Prepare a one-page cheat sheet with a two-sentence answer to each family and a p
 
 Design properties of public specs (Modbus has no authentication) are not vulnerabilities. Implementation flaws in a product go through vendor and, where appropriate, CISA CVD before detail is published.
 
+Section eight point three develops independent review and defense with a the organisation note Modify Parameter can demo offline.
+
+Under section eight point three, the mentor expects independent claims to carry owners and dates.
+
+Section eight point three treats claim audit examiner families as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Operator brief
 
 High confidence: band alarms alone miss replayed level readings (model + design). Medium: independent flow measurement plus residual detects single-sensor replay (two synthetic contexts). None: protection if one device controls both measurements — measured failure.
+
+Section eight point four develops independent review and defense with a the organisation note Modify Parameter can demo offline.
+
+Under section eight point four, the mentor expects independent claims to carry owners and dates.
+
+Section eight point four treats claim audit examiner families as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Common errors and limits
 
 Overreach in the defense talk; publishing exploit detail before disclosure; confidence labels without evidence.
 
+Section eight point five develops independent review and defense with a the organisation note Modify Parameter can demo offline.
+
+Under section eight point five, the mentor expects independent claims to carry owners and dates.
+
+Section eight point five treats claim audit examiner families as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, the organisation will not accept independent work without a written trail.
+
 ### 8.6 After the defense
 
 Archive the final PDF, the claim register, the code tag and the ethics paperwork. If a paper will be submitted, freeze the dissertation text that the paper may not contradict. Schedule disclosure timelines before conference deadlines, not after. Thank the operators and lab managers who made Rig R2 possible — and do not surprise them with a press release that names the campus lab as a vulnerable plant.
+
+Section eight point six develops independent review and defense with a the organisation note Modify Parameter can demo offline.
 
 ### Exercises — chapter 8
 
