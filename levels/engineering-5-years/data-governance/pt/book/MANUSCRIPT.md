@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 118, engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3; os capítulos 21–50 (EX061–EX150) e os quatro laboratórios estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090, suas resoluções com rubricas de 0 a 3 e três dos quatro laboratórios (capítulos 22, 28 e 29); os capítulos 31–50 (EX091–EX150) e o quarto laboratório estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar a governança de dados de medidores e sensores de uma companhia de saneamento.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios rastreiam a linhagem a montante e lacunas de titularidade em um grafo sintético de *pipeline*, calculam taxas de aprovação de três regras de leitura de medidores, medem a pontualidade dos fluxos em relação a um nível de serviço às 06:00 e conciliam leituras de campo sintéticas com o faturamento. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -835,11 +835,496 @@ Organogramas de papéis não criam autoridade; confirme-a nas descrições de ca
 - **EX059 — Dever do curador.** O que fazem os curadores? *Rubrica:* 3 = mantêm regras e definições no dia a dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX060 — Indicador de foco.** Que indicador os capítulos seguintes acompanham? *Rubrica:* 3 = o indicador de perdas informado ao regulador;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Governança de dados: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) derivar requisitos de governança da regulação e das necessidades do negócio; (2) escrevê-los como afirmações testáveis; (3) acordar prioridades com os donos.
+
+### 21.1 Fontes dos requisitos
+
+Kofi reúne os requisitos do indicador de perdas a partir de quatro fontes: as orientações do regulador para os relatórios, as metas próprias da Tidewater de redução de perdas, a legislação de proteção de dados aplicável aos dados de clientes usados nos volumes faturados e as necessidades dos engenheiros de rede, que usam as perdas por distrito para planejar reparos. Ele lista cada fonte com a cláusula ou a reunião em que a necessidade foi declarada. Ele explica que requisitos sem fonte registrada são difíceis de defender quando os orçamentos são cortados ou as prioridades mudam. A lista de fontes fica guardada junto com os requisitos.
+
+### 21.2 Afirmações testáveis
+
+Ele reescreve necessidades vagas como afirmações testáveis. As perdas devem ser confiáveis passa a ser: o número mensal de perdas é calculado a partir de volumes que conciliam com totais independentes dentro de um por cento, e cada entrada tem um dono nomeado. Os dados devem ser pontuais passa a ser: o fluxo diário de volumes chega até as 06:00 em pelo menos 95 por cento dos dias. Cada afirmação nomeia uma medida, um limiar e um dono que responde por ela. Essas afirmações depois se tornam os testes dos laboratórios de verificação. Redações vagas são devolvidas a quem as escreveu.
+
+### 21.3 Conflitos
+
+Alguns requisitos entram em conflito. Os engenheiros de rede querem as perdas por rua, o que exigiria volumes faturados por cliente, enquanto o encarregado de proteção de dados quer que os analistas vejam apenas dados agregados. Kofi propõe a agregação por distrito, com no mínimo cinquenta imóveis por área, o que apoia o planejamento de reparos sem expor o consumo individual. O acordo é registrado com seus motivos e aprovado pelos dois donos. Ele observa que conflitos tratados abertamente produzem projetos melhores do que conflitos descobertos depois que os sistemas estão construídos. O encarregado de proteção de dados assina a nota final.
+
+### 21.4 Prioridades
+
+Com vinte e quatro requisitos listados, Kofi pede aos donos que os ordenem pelo impacto no número do regulador e nos clientes. A designação de donos, a conciliação e a pontualidade ficam no topo. Os padrões de documentação ficam mais abaixo. Ele usa a ordenação para planejar os capítulos especializados, atacando primeiro os requisitos de maior impacto. A Profa. Varga lembra que listas de requisitos sem ordem incentivam as equipes a fazer primeiro os itens mais fáceis, o que pode deixar os riscos mais importantes sem tratamento por meses enquanto o esforço vai para outro lado. A lista ordenada é publicada na página de governança da intranet.
+
+### Exemplo resolvido
+
+Kofi reúne os requisitos do indicador de perdas a partir de quatro fontes, reescreve-os como afirmações testáveis, resolve o conflito sobre o nível de rua com a agregação por distrito e ordena vinte e quatro requisitos com os donos.
+
+> **Caso sintético.** Os requisitos são sintéticos.
+
+### Erros e limites
+
+Um limiar sem método de medição não é testável; defina os dois.
+
+### Exercícios
+
+- **EX061 — Requisito de pontualidade.** Que afirmação de pontualidade Kofi escreveu? *Rubrica:* 3 = fluxo até as 06:00 em pelo menos 95% dos dias;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX062 — Conflito da rua.** Como foi resolvido o conflito sobre o nível de rua? *Rubrica:* 3 = agregação por distrito com pelo menos cinquenta imóveis;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Topo da lista.** Quais requisitos ficaram no topo? *Rubrica:* 3 = designação de donos, conciliação e pontualidade;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Governança de dados: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar fluxos de dados e a linhagem de um indicador; (2) encontrar lacunas de titularidade a partir de um grafo de linhagem; (3) manter os modelos atualizados.
+
+### 22.1 Modelando a cadeia
+
+Kofi modela o indicador de perdas como um grafo dirigido. O número do relatório do conselho depende de um indicador-chave de desempenho, que depende do volume faturado e do volume fornecido. O volume faturado depende das leituras dos medidores e das tarifas; as leituras dependem em parte de leituras manuais feitas em um aplicativo de campo; o volume fornecido depende dos dados brutos de vazão dos sensores. Cada nó é um conjunto de dados ou um cálculo com um dono. O grafo torna explícitas as dependências, que uma descrição escrita do processo tende a embaralhar. Os nós têm nomes.
+
+### Laboratório — Linhagem a montante e lacunas de titularidade do número de perdas
+
+
+```python
+"""Trace upstream lineage of a published figure through a synthetic pipeline graph (stdlib only)."""
+edges = {
+    "board_report.leakage_pct": ["kpi.leakage"],
+    "kpi.leakage": ["billing.volume_billed", "scada.volume_supplied"],
+    "billing.volume_billed": ["meters.reading", "customers.tariff"],
+    "scada.volume_supplied": ["sensors.flow_raw"],
+    "meters.reading": ["field_app.manual_read"],
+    "customers.tariff": [], "sensors.flow_raw": [], "field_app.manual_read": [],
+}
+owners = {"kpi.leakage": "ops analytics", "billing.volume_billed": "billing", "scada.volume_supplied": "network ops",
+          "meters.reading": "metering", "customers.tariff": "billing", "sensors.flow_raw": None, "field_app.manual_read": None}
+def up(n, seen):
+    for p in edges.get(n, []):
+        if p not in seen: seen.add(p); up(p, seen)
+    return seen
+src = up("board_report.leakage_pct", set())
+print(f"upstream nodes {len(src)}; sources {sorted(n for n in src if not edges[n])}")
+print(f"nodes without an owner: {sorted(n for n in src if owners.get(n) is None)}")
+```
+
+Execute com `python3 lab_lineage.py`. Saída verificada:
+
+```text
+upstream nodes 7; sources ['customers.tariff', 'field_app.manual_read', 'sensors.flow_raw']
+nodes without an owner: ['field_app.manual_read', 'sensors.flow_raw']
+```
+
+### 22.2 O que o rastreamento mostra
+
+Ao rodar o laboratório, aparecem sete nós a montante do número do conselho. Três são fontes sem entradas adicionais: as tarifas dos clientes, as leituras manuais do aplicativo de campo e os dados brutos de vazão dos sensores. Dois nós não têm dono: as leituras manuais e as vazões brutas dos sensores. Ambos alimentam o número que o regulador vê. Kofi observa que as entradas mais básicas, mais próximas do mundo físico, são justamente onde falta titularidade, porque ficam entre equipes de engenharia e ninguém as reivindicou. Kofi relata as duas lacunas.
+
+### 22.3 Fechando as lacunas
+
+Kofi propõe donos para as duas lacunas: o gerente de medição para as leituras manuais e o gerente de operação da rede para os dados brutos de vazão. Cada um aceita depois de combinar o que significa ser dono: aprovar regras de qualidade, responder a problemas em prazos acordados e aprovar mudanças. Ele acrescenta os donos ao grafo e roda o rastreamento de novo, que agora não mostra nenhum nó sem dono. A nova execução vira uma verificação mensal, já que novos conjuntos de dados acrescentados à cadeia podem reabrir lacunas. Os dois donos assinam uma breve declaração de titularidade.
+
+### 22.4 Mantendo os modelos atualizados
+
+Modelos de linhagem envelhecem à medida que os sistemas mudam. Kofi propõe que qualquer mudança no *pipeline* de perdas atualize o grafo na mesma versão, o que é garantido por uma lista de verificação da revisão. Ele também compara o grafo com os registros de consultas do *data warehouse* a cada trimestre, para encontrar dependências que existem na prática, mas não no modelo. A Profa. Varga explica que um modelo que se afasta da realidade é pior do que nenhum, porque as pessoas confiam nele e tomam decisões com base em suposições erradas. Aparecem duas dessas dependências, e ambas são acrescentadas prontamente.
+
+### Exemplo resolvido
+
+Kofi modela a cadeia de perdas como um grafo, rastreia sete nós a montante, com três fontes e dois nós sem dono, designa donos e mantém o modelo atualizado com verificações nas versões e comparações com os registros.
+
+> **Caso sintético.** O grafo é sintético; as saídas vêm de lab_lineage.py.
+
+### Erros e limites
+
+A linhagem estática não vê dependências em tempo de execução; compare-a com os registros.
+
+### Exercícios
+
+- **EX064 — Contagem a montante.** Quantos nós a montante há por trás do número do conselho? *Rubrica:* 3 = sete;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX065 — Nós sem dono.** Quais nós não tinham dono? *Rubrica:* 3 = field_app.manual_read e sensors.flow_raw;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX066 — Verificação de desvio.** Como Kofi encontra dependências ausentes do modelo? *Rubrica:* 3 = comparação trimestral com os registros de consultas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Governança de dados: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar ameaças e modos de falha que afetam dados governados; (2) ordená-los por probabilidade e impacto; (3) associar mitigações a donos.
+
+### 23.1 Modos de falha
+
+Kofi faz uma análise de modos de falha e efeitos (FMEA) na cadeia de perdas. Para cada nó, pergunta como ele pode falhar, que efeito a falha teria sobre o número e como seria detectada. Os modos de falha incluem um sensor de vazão travado, que informa valores constantes; um extrato de faturamento sem um distrito; uma mudança de tarifa aplicada com atraso; e uma leitura manual digitada com erro de casa decimal. Cada modo de falha recebe notas de severidade, ocorrência e detecção acordadas com os donos envolvidos. As notas são registradas.
+
+### 23.2 Ameaças
+
+Ele acrescenta ameaças intencionais, usando a NIST SP 800-30r1 como guia: um usuário interno que altera leituras para esconder um erro de faturamento, um código malicioso na rede de controle que corrompe dados dos sensores e um funcionário do fornecedor que muda o formato de um arquivo sem aviso. Para cada ameaça, identifica a origem, a vulnerabilidade explorada e o impacto sobre o número de perdas. Ele observa que ameaças e falhas acidentais muitas vezes produzem os mesmos sintomas, por isso os controles de detecção devem servir aos dois propósitos, em vez de serem projetados separadamente. Cada ameaça tem um dono.
+
+### 23.3 Ordenação
+
+Kofi ordena a lista combinada. Um sensor de vazão travado fica em primeiro lugar, porque é provável, afeta diretamente o volume fornecido e pode passar semanas sem ser notado. A falta de distritos no faturamento fica em segundo. A ameaça interna tem probabilidade menor, mas impacto alto. Ele mostra a ordenação aos donos, que concordam que a melhoria da detecção nos sensores deve ser o primeiro investimento, já que detectar mais cedo reduz o impacto de todas as falhas a jusante na cadeia. A ordenação é revista depois que os primeiros detectores funcionam por três meses.
+
+### 23.4 Mitigações
+
+Cada item no topo recebe uma mitigação e um dono: um detector de linha reta (*flat-line*) nos sensores de vazão, a cargo da operação da rede; uma verificação de completude por distrito, a cargo do faturamento; e registros à prova de adulteração para edições de leituras, a cargo da medição. Kofi registra o risco residual depois de cada mitigação. A Profa. Varga observa que uma análise ordenada com donos nomeados é o que transforma uma lista de preocupações em um plano de governança, porque diz quem faz o quê primeiro e como alguém saberá se funcionou. Os riscos residuais são relatados a cada trimestre.
+
+### Exemplo resolvido
+
+Kofi analisa modos de falha e ameaças na cadeia de perdas, coloca o sensor de vazão travado em primeiro lugar e atribui detectores, verificações de completude e registros à prova de adulteração aos donos.
+
+> **Caso sintético.** A análise é sintética; a NIST SP 800-30r1 é real.
+
+### Erros e limites
+
+Notas definidas por uma só pessoa são palpites; acorde-as com os donos.
+
+### Exercícios
+
+- **EX067 — Maior risco.** Qual falha ficou em primeiro lugar? *Rubrica:* 3 = um sensor de vazão travado;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX068 — Sintomas comuns.** Por que a detecção deve servir a ameaças e a falhas? *Rubrica:* 3 = muitas vezes produzem os mesmos sintomas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Mitigação dos sensores.** Que mitigação trata os sensores travados? *Rubrica:* 3 = um detector *flat-line* a cargo da operação da rede;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Governança de dados: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher dimensões de qualidade para a cadeia de perdas; (2) selecionar métodos de medição; (3) definir limiares com os donos.
+
+### 24.1 Escolhendo as dimensões
+
+Kofi seleciona dimensões de qualidade do arcabouço de Wang e Strong e da revisão de Batini: completude, validade, acurácia, pontualidade e consistência. Para os sensores de vazão, acurácia e completude são as mais importantes. Para os volumes faturados, a consistência com as leituras dos medidores é a principal. Para o número do conselho, importam a pontualidade e a rastreabilidade. Ele explica que escolher as dimensões por conjunto de dados evita medir tudo em toda parte, o que desperdiça esforço e enterra os sinais importantes entre outros menos relevantes. Kofi registra no catálogo as dimensões escolhidas para cada conjunto de dados, com uma frase explicando por que cada uma importa para quem usa aqueles dados.
+
+### 24.2 Métodos de medição
+
+Para cada dimensão, ele define um método. A completude é a proporção das leituras esperadas que foram recebidas. A validade é a proporção que passa nas regras de formato e de faixa. A acurácia dos sensores é verificada com um medidor de referência portátil durante as visitas de manutenção. A consistência compara os volumes faturados com os totais dos medidores. A pontualidade é o horário de chegada em relação ao prazo acordado. A ISO 8000-8 enfatiza que as afirmações sobre qualidade devem informar como foram medidas, por isso cada método é registrado com sua fórmula. Cada fórmula também é implementada uma única vez na biblioteca compartilhada, para que todas as equipes a calculem da mesma forma.
+
+### 24.3 Limiares
+
+Kofi acorda limiares com os donos: completude de pelo menos 99 por cento por distrito por dia, validade de pelo menos 98 por cento, acurácia dos sensores dentro de dois por cento da referência e chegada até as 06:00 em 95 por cento dos dias. Os limiares se baseiam no desempenho sintético do ano anterior e na tolerância do regulador. Ele registra que os limiares serão revistos depois de seis meses, porque foram definidos com poucos dados e podem se mostrar rígidos ou frouxos demais na prática. A data da revisão é lançada no calendário de governança, para não ser esquecida.
+
+### 24.4 Limitações dos métodos
+
+Cada método tem limites. As verificações com o medidor de referência só acontecem durante a manutenção, então a acurácia é amostrada, não contínua. As regras de validade pegam valores impossíveis, mas não valores plausíveis e errados. Kofi lista as limitações ao lado de cada método e planeja verificações complementares, como comparar sensores vizinhos. A Profa. Varga enfatiza que declarar as limitações protege a organização do excesso de confiança e ajuda os leitores a julgar quanto peso uma nota de qualidade pode ter em uma decisão. As limitações aparecem no painel ao lado de cada nota, para que os leitores as vejam no momento em que interpretam um número.
+
+### Exemplo resolvido
+
+Kofi escolhe dimensões por conjunto de dados, define métodos de medição com fórmulas, acorda limiares com os donos para revisão em seis meses e lista as limitações dos métodos com verificações complementares.
+
+> **Caso sintético.** Os limiares são sintéticos; Wang e Strong (1996), Batini et al. (2009) e ISO 8000-8:2015 são reais.
+
+### Erros e limites
+
+Limiares copiados de outra companhia ignoram as condições locais.
+
+### Exercícios
+
+- **EX070 — Dimensões dos sensores.** Quais dimensões mais importam para os sensores de vazão? *Rubrica:* 3 = acurácia e completude;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+- **EX071 — Método de acurácia.** Como a acurácia dos sensores é verificada? *Rubrica:* 3 = com um medidor de referência portátil durante a manutenção;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Limite da validade.** O que as regras de validade não pegam? *Rubrica:* 3 = valores plausíveis, mas errados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) produzir um primeiro projeto para dados de perdas governados; (2) apresentá-lo para crítica; (3) revisá-lo depois do retorno.
+
+### 25.1 O enunciado
+
+O primeiro ateliê de projeto pede a Kofi que produza, em duas semanas, um projeto de governança para a cadeia de perdas: donos, regras, linhagem, monitoramento e relatórios. Ele trabalha com dois colegas que fazem o papel dos donos da operação da rede e do faturamento. O enunciado exige um resumo de uma página, um diagrama de linhagem, um catálogo de regras e um esboço de painel de monitoramento. O formato do ateliê imita a prática profissional, em que os projetos são apresentados a pares e partes interessadas antes de se comprometerem recursos para construí-los. Cada estudante também escreve uma reflexão.
+
+### 25.2 Primeiro projeto
+
+O projeto de Kofi coloca todas as regras em um serviço central de qualidade pelo qual passam todos os conjuntos de dados. O serviço registra os resultados em um único banco de dados e alimenta um único painel. Os donos recebem e-mails diários com seus números. Ele argumenta que a centralização traz consistência e um único lugar para olhar. Os colegas questionam se um único serviço daria conta de dados de sensores chegando a cada minuto ao lado de extratos mensais de faturamento, e se os donos continuariam lendo e-mails diários por muito tempo. Kofi anota as duas perguntas para a banca e admite que ainda não tem respostas.
+
+### 25.3 Crítica
+
+A banca do ateliê, conduzida pela Profa. Varga, elogia o trabalho de linhagem e titularidade, mas critica o serviço central como ponto único de falha. Se ele parar, nenhum dado é verificado. Os avaliadores também observam que os e-mails diários logo seriam ignorados. Um deles sugere rodar as regras perto de cada fonte, com os resultados indo para um repositório comum, e alertar os donos apenas quando os limiares forem ultrapassados, junto com um resumo semanal que mostre as tendências ao longo do tempo. A banca entrega o retorno por escrito em até dois dias depois da sessão.
+
+### 25.4 Revisão
+
+Kofi revisa o projeto: as regras rodam dentro de cada *pipeline* usando uma biblioteca de regras compartilhada, os resultados vão para um repositório comum, os alertas só disparam quando um limiar é ultrapassado e os donos recebem um resumo semanal de tendências. Ele registra o projeto original, a crítica e os motivos das mudanças em um registro de decisão. Ele reflete que a crítica melhorou o projeto porque a banca olhou para as falhas e para o comportamento humano, aspectos que ele havia subestimado ao se concentrar na consistência técnica. A banca aceita o projeto revisado na sessão seguinte.
+
+### Exemplo resolvido
+
+O primeiro projeto de Kofi, centralizado, é criticado como ponto único de falha e por depender de e-mails fáceis de ignorar; ele o revisa para regras distribuídas, um repositório comum de resultados, alertas por violação de limiar e resumos semanais.
+
+> **Caso sintético.** O ateliê é sintético.
+
+### Erros e limites
+
+Defender um projeto em vez de ouvir desperdiça a crítica.
+
+### Exercícios
+
+- **EX073 — Fraqueza central.** Que fraqueza a banca viu no serviço central? *Rubrica:* 3 = ponto único de falha;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX074 — Mudança nos alertas.** Como as notificações aos donos foram alteradas? *Rubrica:* 3 = alertas só em violações, mais um resumo semanal;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX075 — Subestimado.** O que Kofi havia subestimado? *Rubrica:* 3 = as falhas e o comportamento humano;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Governança de dados: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar arquiteturas para dados governados; (2) avaliá-las em relação aos requisitos; (3) registrar a escolha.
+
+### 26.1 Três opções
+
+Kofi compara três arquiteturas para os dados governados da Tidewater. Um *data warehouse* central com uma camada de governança reúne todos os dados tratados em um só lugar. Uma *data mesh* dá a cada equipe de domínio a responsabilidade de publicar seus dados como um produto, seguindo padrões acordados. Uma solução híbrida mantém um *data warehouse* central para os relatórios regulatórios, enquanto os domínios são donos dos dados operacionais. Ele descreve os fluxos de dados, o modelo de titularidade e os controles que cada opção exigiria para atender aos requisitos do capítulo 21. Cada opção é desenhada com a mesma notação, para facilitar a comparação.
+
+### 26.2 Avaliação
+
+Ele pontua cada opção em relação aos requisitos ordenados. O *data warehouse* central vai bem em consistência e conciliação, mas mal em titularidade, porque a equipe central se torna dona de fato. A *data mesh* vai bem em titularidade, mas mal na conciliação entre domínios, dado o nível atual de maturidade da Tidewater. A híbrida tem o melhor resultado geral: os números regulatórios continuam conciliados de forma central, enquanto as equipes de domínio são donas de seus dados de origem e os publicam com regras de qualidade e metadados padronizados. Kofi mostra a planilha de pontuação aos donos, para que contestem qualquer nota que considerem injusta.
+
+### 26.3 Custos e competências
+
+Kofi estima custos e competências. A *data mesh* exige que cada equipe de domínio tenha competências de engenharia de dados, que a Tidewater não tem fora da equipe de análise. A híbrida exige treinamento para donos e curadores de domínio, mas não novas equipes de engenharia. Ele inclui um plano de três anos para desenvolver competências, depois do qual mais responsabilidade poderia passar aos domínios. Ele observa que as escolhas de arquitetura precisam caber nas capacidades da organização, e não apenas em suas aspirações, ou fracassam na implementação. O plano nomeia cursos, mentores e pontos de controle em que o progresso será revisto formalmente.
+
+### 26.4 Registrando a escolha
+
+Kofi escreve um registro de decisão de arquitetura escolhendo a híbrida, com as alternativas, as notas, os custos, os riscos e as condições para reabrir a decisão, como as equipes de domínio atingirem níveis de competência acordados. O conselho de governança o aprova. A Profa. Varga observa que registrar as condições para reabrir uma escolha mantém vivas as decisões de arquitetura, porque incentiva a organização a reconsiderá-las quando as circunstâncias mudam, em vez de defender por hábito uma escolha ultrapassada. O registro fica junto com os demais registros de decisão, e a agenda do conselho marca uma revisão depois de dezoito meses para verificar se as condições foram atendidas.
+
+### Exemplo resolvido
+
+Kofi compara as arquiteturas central, *mesh* e híbrida, pontua-as em relação aos requisitos, escolhe a híbrida considerando as competências da Tidewater e registra as condições para reabrir a decisão.
+
+> **Caso sintético.** As opções são sintéticas.
+
+### Erros e limites
+
+Arquiteturas da moda podem não servir; pontue-as em relação aos seus requisitos.
+
+### Exercícios
+
+- **EX076 — Fraqueza da mesh.** Por que a *data mesh* teve nota baixa na Tidewater? *Rubrica:* 3 = conciliação fraca entre domínios na maturidade atual;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX077 — Opção escolhida.** Que arquitetura foi escolhida? *Rubrica:* 3 = a híbrida;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX078 — Condição para reabrir.** Dê uma condição para reabrir a decisão. *Rubrica:* 3 = equipes de domínio atingirem níveis de competência acordados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Governança de dados: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles preventivos, detectivos e corretivos para dados; (2) definir a titularidade dos controles; (3) definir as evidências dos controles.
+
+### 27.1 Tipos de controle
+
+Kofi projeta controles de três tipos para a cadeia de perdas. Controles preventivos impedem a entrada de dados ruins: restrições de esquema e validação de entrada no aplicativo de campo. Controles detectivos encontram problemas: regras diárias de qualidade, detectores *flat-line* e conciliação. Controles corretivos resolvem problemas: procedimentos documentados para solicitar arquivos novamente, corrigir leituras com aprovação e republicar números. Ele explica que depender só da detecção deixa os donos eternamente limpando dados, enquanto a prevenção reduz o volume de problemas na origem. Cada tipo tem um dono nomeado no catálogo.
+
+### 27.2 Catálogo de controles
+
+Cada controle do catálogo tem identificador, finalidade, tipo, dono, frequência, evidência produzida e requisito vinculado. Por exemplo, o controle DQ-04 verifica diariamente a completude por distrito, pertence ao faturamento, produz uma tabela de resultados e atende ao requisito de completude. O catálogo contém trinta e um controles. Ele os associa aos riscos do capítulo 23 e descobre que dois riscos médios não têm controle, então projeta controles adicionais para eles antes do início da implementação. O catálogo fica no repositório, sob controle de versão, de modo que toda mudança em um controle é rastreável.
+
+### 27.3 Evidências
+
+Para cada controle, Kofi define que evidência mostra que ele funcionou: resultados de regras armazenados com data e hora, registros de alertas, registros de aprovação de correções. Ele explica que os auditores vão perguntar não só se os controles existem, mas se rodaram e se os problemas tiveram acompanhamento. Evidências geradas automaticamente e guardadas de forma centralizada são mais confiáveis do que evidências montadas à mão antes das auditorias, que tendem a ser incompletas e chegam tarde demais para revelar problemas. Kofi configura cada controle para gravar suas evidências em um repositório compartilhado, com retenção de sete anos.
+
+### 27.4 Teste dos controles
+
+Kofi planeja os testes dos controles. A cada trimestre, um curador testa uma amostra de controles introduzindo erros sintéticos em um ambiente de teste e confirmando que os controles os detectam e que os alertas chegam aos donos. Controles que falham no teste são corrigidos e testados de novo. A Profa. Varga observa que controles não testados oferecem conforto, e não garantia, e que injetar erros de propósito é uma das poucas formas de confirmar que os controles detectivos funcionam antes que uma falha real dependa deles. Os resultados dos testes são relatados ao conselho de governança a cada trimestre.
+
+### Exemplo resolvido
+
+Kofi projeta controles preventivos, detectivos e corretivos, monta um catálogo de trinta e um controles, cobre duas lacunas, define evidências automáticas e planeja testes trimestrais com injeção de erros.
+
+> **Caso sintético.** Os controles são sintéticos.
+
+### Erros e limites
+
+Controles sem evidência não podem ser demonstrados.
+
+### Exercícios
+
+- **EX079 — Exemplo corretivo.** Dê um controle corretivo. *Rubrica:* 3 = nova solicitação de arquivos, correções aprovadas ou republicação de números;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX080 — Tamanho do catálogo.** Quantos controles há no catálogo? *Rubrica:* 3 = trinta e um;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX081 — Método de teste.** Como os controles são testados a cada trimestre? *Rubrica:* 3 = injetando erros sintéticos em teste;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Governança de dados: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar regras de qualidade de dados em código; (2) medir taxas de aprovação; (3) interpretar resultados combinados.
+
+### 28.1 A biblioteca de regras
+
+Kofi implementa as primeiras regras de qualidade em uma biblioteca compartilhada, usada por todos os *pipelines*. Cada regra é uma função com identificador, descrição, dono e limiar lido da configuração. As três primeiras regras verificam se o identificador do medidor está presente, se a leitura não é menor que a anterior do mesmo medidor e se o consumo diário é inferior a 300 metros cúbicos, quantidade implausível para qualquer cliente residencial ou pequeno comércio da área da Tidewater. Cada regra também está documentada no catálogo.
+
+### Laboratório — Taxas de aprovação de três regras de leitura em 10.000 linhas sintéticas
+
+
+```python
+"""Run validation rules on synthetic meter readings and report pass rates (stdlib only)."""
+import random
+random.seed(8)
+rows = []
+for i in range(10000):
+    prev = random.uniform(100, 5000); cur = prev + random.uniform(0, 60)
+    if random.random() < 0.02: cur = prev - random.uniform(1, 50)        # rollback
+    if random.random() < 0.01: cur = prev + random.uniform(500, 2000)    # spike
+    mid = f"M{i:06d}" if random.random() > 0.005 else ""
+    rows.append((mid, prev, cur))
+rules = {
+    "meter id present": lambda r: bool(r[0]),
+    "reading not below previous": lambda r: r[2] >= r[1],
+    "daily use under 300 m3": lambda r: r[2] - r[1] < 300,
+}
+for name, f in rules.items():
+    ok = sum(1 for r in rows if f(r)); print(f"{name:28s} pass {ok/len(rows):.3f}")
+allok = sum(1 for r in rows if all(f(r) for f in rules.values()))
+print(f"rows passing all rules {allok} of {len(rows)} ({100*allok/len(rows):.1f}%)")
+```
+
+Execute com `python3 lab_rules.py`. Saída verificada:
+
+```text
+meter id present             pass 0.995
+reading not below previous   pass 0.980
+daily use under 300 m3       pass 0.990
+rows passing all rules 9650 of 10000 (96.5%)
+```
+
+### 28.2 Executando as regras
+
+O laboratório aplica as regras a 10.000 leituras sintéticas. A regra do identificador do medidor aprova 99,5 por cento das linhas; a regra de não ser menor que a anterior, 98,0 por cento; e a regra do consumo diário, 99,0 por cento. As linhas aprovadas nas três regras somam 9.650, ou 96,5 por cento. Kofi observa que a taxa combinada é menor que qualquer taxa isolada, porque as falhas caem em linhas diferentes. Os donos veem as taxas de suas próprias regras, mas o número combinado é o que o faturamento de fato recebe. Por isso, Kofi pede que o painel mostre com destaque o número de todas as regras, com as taxas individuais logo abaixo para os donos que precisam investigar suas próprias falhas.
+
+### 28.3 Interpretando as falhas
+
+Kofi examina as falhas. As leituras menores que a anterior vêm principalmente de trocas de medidor, em que o novo medidor começa do zero. Não se trata de erro na leitura, mas da falta de vínculo entre o medidor antigo e o novo. Ele trabalha com a medição para registrar as trocas, de modo que a regra compare apenas leituras do mesmo medidor. Os identificadores ausentes vêm de leituras manuais digitadas sem leitura do código, o que o aplicativo de campo passará a impedir ao exigir a leitura. As duas correções entram na próxima versão.
+
+### 28.4 Em relação aos limiares
+
+Em comparação com os limiares acordados no capítulo 24, a validade de 96,5 por cento fica abaixo da meta de 98 por cento. Kofi relata isso com honestidade ao conselho de governança, com as causas encontradas e as correções planejadas, e estima que só a correção das trocas já elevaria a taxa combinada acima da meta. A Profa. Varga observa que relatar uma meta não atingida com um plano crível gera mais confiança do que baixar os limiares para que os números pareçam aceitáveis. O conselho aceita o plano e pede uma atualização depois da próxima versão, com as taxas recalculadas sobre dados novos.
+
+### Exemplo resolvido
+
+Kofi implementa uma biblioteca de regras compartilhada, aplica três regras a 10.000 linhas, com taxas de aprovação de 99,5, 98,0 e 99,0 por cento e 96,5 por cento aprovadas em todas, rastreia as causas e relata o não atingimento da meta.
+
+> **Caso sintético.** Os dados são sintéticos; as saídas vêm de lab_rules.py.
+
+### Erros e limites
+
+A média das taxas por regra superestima a qualidade; informe a taxa de todas as regras.
+
+### Exercícios
+
+- **EX082 — Taxa de todas as regras.** Que proporção das linhas passou em todas as regras? *Rubrica:* 3 = 96,5% (9.650 de 10.000);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX083 — Causa das leituras menores.** O que causou principalmente as leituras menores que a anterior? *Rubrica:* 3 = trocas de medidor começando do zero;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX084 — Tratamento da meta.** Como Kofi lidou com a meta não atingida? *Rubrica:* 3 = relatou com honestidade, com causas e correções;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Governança de dados: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir a pontualidade em relação a um nível de serviço; (2) encontrar padrões nas violações; (3) relatar o desempenho do serviço.
+
+### 29.1 O nível de serviço
+
+O fluxo diário de volume fornecido precisa chegar ao *data warehouse* até as 06:00, para que a visão matinal de perdas esteja pronta para os engenheiros de rede. Kofi mede os horários de chegada ao longo de noventa dias sintéticos. Ele registra o horário em que cada fluxo chega e o compara com o prazo. Ele explica que um nível de serviço só é útil se for medido continuamente e relatado tanto ao fornecedor quanto ao consumidor, para que cada lado saiba se o acordo está sendo cumprido. Aqui, o fornecedor é a operação da rede, que roda a rotina de exportação todas as manhãs.
+
+### Laboratório — Chegadas do fluxo em relação ao nível de serviço das 06:00 em 90 dias sintéticos
+
+
+```python
+"""Measure daily feed timeliness against a 06:00 service level over 90 synthetic days (stdlib only)."""
+import random
+random.seed(19)
+arr = [random.gauss(5.2, 0.6) + (1.5 if 40 <= d < 47 else 0) for d in range(90)]   # hours after midnight
+late = [d for d, a in enumerate(arr) if a > 6.0]
+print(f"days {len(arr)}; feed after 06:00 on {len(late)} days ({100*len(late)/len(arr):.1f}%)")
+print(f"late days in the week 40-46: {sum(1 for d in late if 40 <= d < 47)} of 7")
+```
+
+Execute com `python3 lab_sla.py`. Saída verificada:
+
+```text
+days 90; feed after 06:00 on 11 days (12.2%)
+late days in the week 40-46: 7 of 7
+```
+
+### 29.2 Resultados
+
+O laboratório mostra que o fluxo chegou depois das 06:00 em 11 de 90 dias, ou 12,2 por cento. A meta do nível de serviço é de 95 por cento no horário, o que admite cerca de quatro ou cinco dias de atraso; a Tidewater alcançou 87,8 por cento. Os sete dias da semana entre o dia 40 e o dia 46 tiveram atraso. Os outros quatro dias de atraso ficaram espalhados. Kofi observa que um único número-resumo esconde esse padrão, que aponta para um evento específico, e não para uma lentidão geral. Kofi plota os horários diários de chegada para que o agrupamento fique visível de relance para qualquer leitor.
+
+### 29.3 Encontrando a causa
+
+Kofi investiga a semana de atrasos com a operação da rede. Naquela semana, uma atualização do sistema de controle acrescentou uma rotina de backup que rodava antes da exportação, atrasando o fluxo em cerca de uma hora e meia todos os dias. Ninguém ligou a atualização ao atraso do fluxo, porque a equipe do *data warehouse* não foi avisada da mudança. Ele recomenda que mudanças que afetem o horário da exportação sejam comunicadas ao dono dos dados e que a rotina de backup da atualização seja movida. A rotina de backup é reagendada para depois da exportação.
+
+### 29.4 Relatando o serviço
+
+Kofi projeta um relatório mensal de serviço com o percentual no horário, um gráfico das chegadas diárias com o prazo marcado, os agrupamentos de violações e as causas encontradas. O relatório vai para o dono na operação da rede e para os consumidores dos dados. A Profa. Varga observa que mostrar o gráfico diário, e não apenas o percentual, permite que os leitores vejam os padrões por conta própria, e que os relatórios de serviço devem explicar as violações, e não apenas contá-las, já que a contagem sozinha não dá base para melhorar. O primeiro relatório é discutido na reunião mensal de operações.
+
+### Exemplo resolvido
+
+Kofi mede 11 dias de atraso em 90 (12,2 por cento), com todos os sete dias da semana 40 a 46 atrasados, rastreia a causa até a rotina de backup de uma atualização e projeta um relatório mensal de serviço com gráfico diário.
+
+> **Caso sintético.** As chegadas são sintéticas; as saídas vêm de lab_sla.py.
+
+### Erros e limites
+
+Médias escondem agrupamentos; plote os valores diários.
+
+### Exercícios
+
+- **EX085 — Proporção de atrasos.** Em que proporção dos dias o fluxo atrasou? *Rubrica:* 3 = 12,2% (11 de 90);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX086 — Causa do agrupamento.** O que causou a semana de atrasos? *Rubrica:* 3 = a rotina de backup de uma atualização rodando antes da exportação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX087 — Dias espalhados.** Quantos dias de atraso ficaram fora daquela semana? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar se os controles implementados atendem aos requisitos; (2) usar a injeção de erros sintéticos; (3) relatar os resultados da verificação.
+
+### 30.1 Plano de verificação
+
+O primeiro laboratório de verificação confere se os controles implementados até agora atendem aos requisitos do capítulo 21. Kofi escreve um plano que lista cada requisito, o controle que deveria atendê-lo, o método de teste e o critério de aprovação. Por exemplo, o requisito de completude é verificado retirando um distrito de um extrato sintético de faturamento e confirmando que o controle DQ-04 dispara um alerta em até uma hora. A Profa. Varga revisa o plano antes do início dos testes. Cada teste tem um critério de aprovação acordado de antemão.
+
+### 30.2 Injeção de erros
+
+Kofi prepara um conjunto de dados sintéticos com erros conhecidos: distritos ausentes, leituras menores que as anteriores, vazões negativas, um sensor travado e um arquivo com colunas trocadas. Ele roda o *pipeline* e registra quais controles detectam quais erros. Dos doze erros injetados, dez são detectados. O sensor travado escapa porque o detector *flat-line* precisa de seis horas de valores constantes, e a injeção durou quatro. As colunas trocadas passam porque ambas contêm números plausíveis. Kofi registra as duas falhas no diário de testes, e ambas são investigadas.
+
+### 30.3 Respondendo às falhas
+
+Sobre o sensor travado, Kofi discute com a operação da rede se quatro horas de vazão constante são suspeitas. Eles concluem que, para adutoras de grande porte, são, e reduzem a janela desses sensores para três horas. Para as colunas trocadas, ele acrescenta uma verificação que compara a distribuição de cada coluna com seu histórico, o que sinalizaria valores invertidos. Ele roda a injeção de novo, e os doze erros são detectados. Cada mudança é registrada no catálogo de controles com seu motivo. Os dois donos aprovam as duas mudanças por escrito, com data.
+
+### 30.4 Relatório de verificação
+
+O relatório lista os requisitos, os controles, os testes, os resultados antes e depois das mudanças e as limitações restantes. Kofi observa que a verificação mostra que os controles funcionam com erros conhecidos, e não que pegam todos os problemas possíveis. A Profa. Varga explica que a verificação responde se construímos os controles do jeito certo, enquanto a validação, mais adiante no curso, pergunta se construímos os controles certos para as pessoas que dependem do número de perdas. O relatório é arquivado com o catálogo de controles e se torna a linha de base com a qual o segundo laboratório de verificação vai comparar seus próprios resultados.
+
+### Exemplo resolvido
+
+Kofi injeta doze erros, detecta dez, encurta a janela *flat-line* das adutoras grandes, acrescenta verificações de distribuição para colunas trocadas, roda de novo com os doze erros detectados e relata as limitações.
+
+> **Caso sintético.** O laboratório é sintético.
+
+### Erros e limites
+
+Passar em testes com erros injetados não prova completude; declare os limites.
+
+### Exercícios
+
+- **EX088 — Contagem de detecções.** Quantos erros injetados foram detectados no início? *Rubrica:* 3 = dez de doze;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX089 — Correção das colunas trocadas.** Que verificação pega colunas trocadas? *Rubrica:* 3 = comparar a distribuição de cada coluna com o histórico;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX090 — Verificação versus validação.** A que pergunta a verificação responde? *Rubrica:* 3 = se os controles foram construídos do jeito certo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Kofi Mensah, a Profa. Elena Varga, a Politécnica Northfield, a Tidewater Water e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de 2,16 milhões de leituras por dia.
 
@@ -960,6 +1445,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Mantêm regras e definições no dia a dia.
 
 **EX060.** O indicador de perdas informado ao regulador.
+
+**EX061.** O fluxo diário de volumes chega até as 06:00 em pelo menos 95 por cento dos dias.
+
+**EX062.** Agregação por distrito, com no mínimo cinquenta imóveis.
+
+**EX063.** Designação de donos, conciliação e pontualidade.
+
+**EX064.** Sete.
+
+**EX065.** As leituras manuais do aplicativo de campo e as vazões brutas dos sensores.
+
+**EX066.** Comparando o grafo com os registros de consultas do *data warehouse* a cada trimestre.
+
+**EX067.** Um sensor de vazão travado.
+
+**EX068.** Porque ameaças e falhas acidentais costumam parecer iguais.
+
+**EX069.** Um detector *flat-line* a cargo da operação da rede.
+
+**EX070.** Acurácia e completude.
+
+**EX071.** Com um medidor de referência portátil durante as visitas de manutenção.
+
+**EX072.** Valores plausíveis e errados.
+
+**EX073.** Era um ponto único de falha.
+
+**EX074.** Alertas só em violações, mais um resumo semanal de tendências.
+
+**EX075.** As falhas e o comportamento humano.
+
+**EX076.** A conciliação entre domínios era fraca na maturidade atual.
+
+**EX077.** A híbrida.
+
+**EX078.** As equipes de domínio atingirem níveis de competência acordados.
+
+**EX079.** Um procedimento documentado para corrigir leituras com aprovação.
+
+**EX080.** Trinta e um.
+
+**EX081.** Injetando erros sintéticos em um ambiente de teste.
+
+**EX082.** 96,5 por cento, 9.650 de 10.000 linhas.
+
+**EX083.** Trocas de medidor, em que os medidores novos começam do zero.
+
+**EX084.** Relatou com as causas e um plano de correção, em vez de baixar o limiar.
+
+**EX085.** 12,2 por cento, 11 de 90 dias.
+
+**EX086.** Uma atualização do sistema de controle acrescentou uma rotina de backup antes da exportação.
+
+**EX087.** Quatro.
+
+**EX088.** Dez de doze.
+
+**EX089.** Comparar a distribuição de cada coluna com seu histórico.
+
+**EX090.** Se construímos os controles do jeito certo.
 
 <a id="references"></a>
 ## Referências
