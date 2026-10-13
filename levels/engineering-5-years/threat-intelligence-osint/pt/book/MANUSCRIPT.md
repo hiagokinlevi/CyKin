@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–36 de 50 já estão escritos em português, com os exercícios EX001–EX108 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 37–50 (EX109–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–39 de 50 já estão escritos em português, com os exercícios EX001–EX117 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 40–50 (EX118–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) |
 
-Capítulos 37–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-37), até a chegada dos próximos lotes.
+Capítulos 40–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-40), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2247,11 +2247,191 @@ Identifique a instabilidade, use a lei de Little para as esperas, escale ou desc
 
 [← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
 
+<a id="ch-37"></a>
+
+## Capítulo 37 — Inteligência de ameaças e OSINT: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever roteiros para as operações rotineiras e anormais do Lantern; (2) definir as responsabilidades de plantão; (3) tratar incidentes com parceiros, como dados vazados ou retratados; (4) relatar métricas operacionais à gestão.
+
+### 37.1 Roteiros
+
+Rotina: revisão diária da saúde dos coletores, dos picos de rejeição e da expiração de certificados. Anormal: o feed de um parceiro para; indicadores envenenados são detectados; o provedor de enriquecimento sai do ar; suspeita de violação do TLP. Cada roteiro lista sintomas, verificações, ações, escalonamento e etapas de encerramento. Kofi escreve cada roteiro para que um engenheiro que nunca viu o problema consiga segui-lo às três da manhã. Os passos dizem o que verificar e como é um resultado normal, e não apenas qual comando executar. Depois de cada uso real, o engenheiro anota qualquer passo que estava confuso ou errado, e o roteiro é atualizado naquela semana.
+
+### 37.2 Plantão
+
+Um engenheiro fica de plantão por semana, com passagem de turno documentada. Os acionamentos disparam apenas para condições que exigem ação em até uma hora; todo o resto vai para uma fila diária. A fadiga de alertas é um risco de confiabilidade. Kofi revisou um mês de acionamentos e descobriu que metade era para condições que podiam esperar até a manhã, como um único pico de rejeição de um parceiro menor. Passar essas condições para a fila diária cortou os acionamentos pela metade sem deixar escapar nada urgente. A nota de passagem permite ao engenheiro seguinte assumir as questões abertas sem precisar perguntar o que aconteceu durante a semana.
+
+### 37.3 Retratações
+
+Às vezes os parceiros retratam indicadores publicados por engano. O Lantern precisa removê-los prontamente da aplicação, registrar a retratação e informar os destinatários que os receberam. O STIX 2.1 suporta a revogação por meio da propriedade `revoked` em uma nova versão do objeto. O Lantern trata uma versão revogada como instrução para remover o indicador de todos os pontos de aplicação e parar de pontuá-lo. O objeto original permanece no arquivo, marcado como revogado, para que os analistas vejam que ele foi publicado e retirado. O encaminhamento da revogação a cada membro que recebeu o indicador é acompanhado no registro de compartilhamento, e é assim que o exemplo resolvido sabe exatamente quais dois membros informar.
+
+### 37.4 Suspeita de violação do TLP
+
+Se conteúdo restrito aparece onde não deveria, o roteiro diz: conter (remover o acesso), avaliar o que foi exposto, avisar o originador conforme o acordo exige e revisar a barreira. A honestidade com os parceiros protege a relação que o NIST SP 800-150 descreve como a base do compartilhamento. O roteiro de Kofi indica quem lidera cada etapa e o prazo fixado em cada acordo com parceiro. A avaliação usa o registro de acesso para mostrar exatamente quem viu o material e quando. Um parceiro avisado depressa e com exatidão costuma permanecer na comunidade; um que fica sabendo por outra pessoa talvez não.
+
+### 37.5 Relatórios
+
+Mensalmente: disponibilidade em relação ao SLO, objetos processados, taxas de rejeição, percentis do tempo até a aplicação, chamados de falso positivo, retornos enviados aos parceiros e recebidos deles. O relatório de Kofi põe cada número ao lado de sua meta e do valor do mês anterior, com uma frase explicando qualquer mudança grande. As taxas de rejeição são detalhadas por parceiro, o que torna os problemas de qualidade visíveis para quem pode corrigi-los. O relatório vai para o líder de CTI e para o gerente do SOC, e uma versão mais curta, só com números agregados, vai para os parceiros que a pediram. Cada número declara sua fonte e seu período.
+
+### Nota de prática — revisões sem culpa
+
+Depois dos incidentes, as revisões se concentram em como o sistema permitiu o erro. Engenheiros que temem a culpa escondem os quase acidentes, o que elimina os dados necessários para melhorar.
+
+### Notas de passagem
+
+Cada semana de plantão termina com uma passagem escrita listando as questões abertas, os contatos de parceiros acionados e qualquer coisa incomum, para que o engenheiro seguinte não redescubra o contexto durante um acionamento.
+
+### Exemplo resolvido
+
+Um parceiro revoga 40 indicadores publicados por engano. O Lantern processa as versões revogadas em 12 minutos, remove os bloqueios e encaminha as revogações aos dois membros da comunidade que os receberam. O relatório mensal registra o evento e o tempo até a revogação.
+
+> **Caso sintético.** A retratação é inventada.
+
+### Erros e limites
+
+Roteiros apodrecem; teste-os em exercícios. Acionar o plantão para tudo garante que nada seja notado.
+
+### Exercícios
+
+- **EX109 — Mecanismo de revogação.** Como o STIX 2.1 sinaliza que um objeto foi retirado? *Rubrica:* 3 = nova versão com revoked: true; 2 = menciona revoked; 1 = apagar em silêncio; 0 = nenhuma.
+- **EX110 — Etapas da violação.** Liste as quatro etapas do roteiro para uma suspeita de violação do TLP. *Rubrica:* 3 = conter, avaliar, avisar o originador, revisar a barreira; 2 = três; 1 = uma; 0 = nenhuma.
+- **EX111 — Limiar de acionamento.** Quais condições devem acionar o engenheiro de plantão? *Rubrica:* 3 = as que exigem ação em até uma hora; as demais vão para a fila diária; 2 = as urgentes, de forma vaga; 1 = todos os alertas; 0 = nenhuma.
+
+### Síntese
+
+Roteiros para o trabalho rotineiro e o anormal, plantão humano, revogação imediata, tratamento honesto de violações e métricas regulares.
+
+### Continue estudando — capítulo 37 de 50
+
+[← Capítulo 36 (rascunho)](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 (rascunho) →](#ch-38)
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Inteligência de ameaças e OSINT: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar o Lantern contra as necessidades reais das partes interessadas; (2) projetar cenários de aceitação com os operadores; (3) medir o impacto nas decisões, e não apenas métricas do sistema; (4) tratar achados de que os requisitos estavam errados.
+
+### 38.1 Perguntas de validação
+
+O SOC bloqueia as ameaças mais cedo? Os engenheiros de OT recebem alertas sobre fornecedores e agem a partir deles? Os executivos entendem os briefings estratégicos? Essas perguntas tratam de resultados; as métricas do sistema, sozinhas, não conseguem respondê-las. Kofi leva cada pergunta às pessoas envolvidas e pergunta como elas reconheceriam uma resposta. O líder do SOC sugeriu comparar os tempos entre a publicação e a aplicação antes e depois do Lantern. Os engenheiros de OT quiseram contar os alertas sobre fornecedores que levaram a alguma ação. Os executivos foram perguntados diretamente se o briefing estratégico mudou alguma decisão durante o trimestre.
+
+### 38.2 Cenários de aceitação
+
+Com os operadores, Kofi escreve cenários: "Um parceiro compartilha uma campanha de phishing contra concessionárias às 09:00; até as 09:30 os bloqueios de domínio estão ativos, existe um chamado com contexto do ATT&CK e o analista de plantão procurou contatos anteriores." Os cenários rodam com dados sintéticos em um ambiente de homologação que espelha a produção. O cenário inclui tanto os passos humanos quanto os do sistema, porque um bloqueio que chega a tempo, mas não deixa chamado, ainda falharia com o analista de plantão. Rodá-lo em homologação permite aos operadores ensaiar sem risco para a produção.
+
+### 38.3 Impacto nas decisões
+
+Meça antes e depois do Lantern: o tempo mediano entre a publicação externa e a aplicação; a porcentagem de incidentes em que havia contexto de inteligência disponível na triagem; as decisões executivas que citaram um briefing estratégico. Algumas medidas são grosseiras; relate-as com seus limites. Kofi reuniu os números anteriores a partir dos chamados e dos registros de e-mail do processo manual, menos precisos que os registros do Lantern. Ele relatou a comparação com essa ressalva. Contar as decisões executivas que citaram um briefing depende das atas das reuniões, que podem não mencionar todas as influências. Medidas grosseiras ainda são melhores que nenhuma, desde que os leitores saibam o quanto são grosseiras.
+
+### 38.4 Quando os requisitos estavam errados
+
+A validação pode mostrar que um requisito verificado não serve a ninguém — por exemplo, um resumo diário que ninguém lê. Esse é um achado valioso: mude o requisito, não a medição. O exemplo resolvido mostra uma segunda forma da mesma lição: os alertas sobre fornecedores eram entregues conforme exigido, mas em uma caixa de entrada que ninguém acompanhava. O sistema passou em seu teste de verificação e ainda assim falhou com seus usuários. Kofi mudou o requisito para nomear o destino que a equipe de OT de fato usa e depois escreveu um novo procedimento de verificação para ele.
+
+### 38.5 Observadores independentes
+
+Alguém de fora da equipe de construção observa as execuções dos cenários e entrevista os usuários, reduzindo a tentação de declarar sucesso. Kofi pediu a uma colega da equipe de auditoria interna da BEN que observasse. Ela notou que, em um cenário, um analista executou um passo manual que o projeto não descrevia, o que revelou uma lacuna na interface. Seu relatório foi anexado ao registro de validação sem edições da equipe de construção. Os usuários também falaram com ela mais livremente do que com os engenheiros que construíram o sistema, e duas de suas reclamações viraram itens de backlog.
+
+### Nota de prática — resultados negativos
+
+Se um cenário mostra que o Lantern não acrescenta nada a uma decisão, registre isso com clareza. Resultados de validação negativos justificam aposentar funcionalidades e poupam esforço de manutenção.
+
+### Laço de retorno
+
+Os achados de validação entram no plano da versão seguinte com responsáveis, e o cenário é executado de novo depois da mudança para confirmar que o resultado melhorou.
+
+### Exemplo resolvido
+
+O tempo mediano entre a publicação pelo parceiro e a aplicação no DNS caiu de 9 horas (processo manual) para 25 minutos. Mas os engenheiros de OT relataram que os alertas sobre fornecedores chegavam a uma caixa de entrada que eles raramente consultam. O requisito é mudado para entregar os alertas sobre fornecedores na fila de chamados da equipe de OT.
+
+> **Caso sintético.** Os números são inventados.
+
+### Erros e limites
+
+Comparações de antes e depois podem ser confundidas por outras mudanças; anote as mudanças simultâneas. Elogios dos usuários não são medição.
+
+### Exercícios
+
+- **EX112 — Pergunta de resultado.** Escreva uma pergunta de validação sobre o Lantern que uma métrica do sistema não consiga responder sozinha. *Rubrica:* 3 = pergunta focada em resultado/decisão; 2 = mista; 1 = métrica do sistema; 0 = nenhuma.
+- **EX113 — Requisito errado.** O que deve acontecer com o requisito de entrega dos alertas sobre fornecedores? *Rubrica:* 3 = mudar para a fila de chamados de OT com base na validação; 2 = mudar, de forma vaga; 1 = manter a caixa de entrada; 0 = nenhuma.
+- **EX114 — Ganho confundido.** Cite uma mudança simultânea que poderia confundir a melhoria de 9 h → 25 min. *Rubrica:* 3 = mudança simultânea plausível (nova equipe, novo produto de DNS, mudança de política); 2 = vago; 1 = nenhuma possível; 0 = nenhuma.
+
+### Síntese
+
+Valide os resultados com os operadores, meça as decisões, aceite que os requisitos podem estar errados e use observadores independentes.
+
+### Continue estudando — capítulo 38 de 50
+
+[← Capítulo 37 (rascunho)](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 (rascunho) →](#ch-39)
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Inteligência de ameaças e OSINT: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir e reduzir a carga de manutenção; (2) documentar o Lantern para os sucessores; (3) gerenciar explicitamente a dívida técnica; (4) planejar a evolução dos padrões (versões de STIX/TAXII, versões do ATT&CK).
+
+### 39.1 Carga de manutenção
+
+Acompanhe as horas gastas com mudanças de formato dos parceiros, atualizações de dependências, correções de incidentes e pedidos dos analistas. Se a manutenção consome a maior parte do tempo da equipe, as novas funcionalidades devem esperar. A equipe de Kofi registra o tempo nessas categorias em seu sistema de chamados. Depois de um trimestre, os números mostraram que as mudanças de formato dos parceiros tomavam mais esforço que o esperado, principalmente porque o analisador de cada parceiro tinha código próprio. Esse achado levou a um analisador compartilhado com configuração por parceiro, o que reduziu o esforço de forma perceptível no trimestre seguinte. As categorias são revistas uma vez por ano.
+
+### 39.2 Documentação para os sucessores
+
+Visão geral da arquitetura, ADRs, roteiros, guia de configuração de parceiros, dicionário de dados e um guia da "primeira semana". Kofi testa a documentação pedindo a um engenheiro novo que acrescente um parceiro sintético usando apenas os documentos. O engenheiro novo lê os documentos sem ajuda e anota cada pergunta. Essas perguntas mostram onde os documentos supõem um conhecimento que só a equipe atual tem. Kofi mantém os documentos no mesmo repositório do código, para que uma mudança que altere o comportamento também precise atualizar a descrição na mesma revisão.
+
+### 39.3 Registro de dívida técnica
+
+Cada atalho é registrado com seu custo, seu risco e uma data-alvo: "A integração com o proxy usa consulta periódica em vez da API de envio do fornecedor; risco baixo; rever no 3º trimestre". Dívida escondida em comentários do código é esquecida. Kofi revisa o registro em cada reunião de planejamento. Itens cuja data-alvo passou são agendados, recebem uma nova data com motivo ou são aceitos como permanentes, com o risco registrado. O registro também mostra num relance a dívida total da equipe, o que ajuda a defender tempo para pagar parte dela.
+
+### 39.4 Evolução dos padrões
+
+O ATT&CK publica novas versões periodicamente, renomeando ou descontinuando técnicas. O Lantern armazena a versão do ATT&CK junto de cada mapeamento e gera um relatório de migração quando surge uma nova versão. As versões de STIX e TAXII são acompanhadas da mesma forma; suportar a 2.1 não garante compatibilidade com uma versão futura. O exemplo resolvido mostra o efeito: catorze mapeamentos precisaram de novos identificadores de técnica, e o relatório de migração encontrou todos em minutos. Os analistas então conferiram cada um à mão, porque uma técnica renomeada às vezes se divide em duas e a escolha certa depende da evidência.
+
+### 39.5 Simplicidade
+
+O projeto mais simples que atende aos requisitos é o mais fácil de manter. Remova as funcionalidades sem uso encontradas durante a validação. Kofi removeu a funcionalidade de resumo diário depois que a validação mostrou que ninguém o lia, junto com seu modelo, sua tarefa agendada e seus testes. A base de código ficou menor, e a atualização de dependências seguinte tocou menos arquivos. Cada funcionalidade mantida deve ter um usuário que notaria sua remoção. Um projeto que acrescenta opções para possíveis necessidades futuras costuma deixar código que ninguém lembra como mudar com segurança.
+
+### Nota de prática — fator ônibus
+
+Se só uma pessoa entende o envio aos firewalls, o Lantern tem fator ônibus igual a um. Trabalho em par e rodízio espalham o conhecimento.
+
+### Política de descontinuação
+
+Funcionalidades sem uso por dois trimestres são anunciadas como descontinuadas, recebem uma data de remoção e depois são excluídas, e os parceiros são avisados quando um formato de exportação é afetado.
+
+### Exemplo resolvido
+
+O engenheiro novo acrescenta um parceiro sintético em 90 minutos usando o guia e anota dois passos confusos. Kofi corrige o guia. À parte, uma atualização do ATT&CK descontinua uma técnica usada em 14 mapeamentos; o relatório de migração os lista e os analistas os remapeiam em uma tarde.
+
+> **Caso sintético.** Os tempos e as contagens são inventados.
+
+### Erros e limites
+
+Documentação que descreve intenções em vez da realidade engana. Fixar as versões do ATT&CK para sempre deixa os mapeamentos desatualizados.
+
+### Exercícios
+
+- **EX115 — Teste da documentação.** Como Kofi testou a qualidade da documentação? *Rubrica:* 3 = engenheiro novo acrescenta parceiro sintético usando só os documentos; lacunas corrigidas; 2 = revisão por um colega; 1 = vago; 0 = nenhuma.
+- **EX116 — Entrada de dívida.** Escreva uma entrada do registro de dívida técnica para um intervalo de consulta fixo no código. *Rubrica:* 3 = descrição, custo/risco, data-alvo; 2 = duas partes; 1 = só um comentário; 0 = nenhuma.
+- **EX117 — Versão do ATT&CK.** Por que armazenar a versão do ATT&CK com cada mapeamento? *Rubrica:* 3 = técnicas mudam/são descontinuadas; permite o relatório de migração; 2 = parcial; 1 = desnecessário; 0 = nenhuma.
+
+### Síntese
+
+Meça a manutenção, documente para estranhos, registre a dívida, acompanhe as versões dos padrões e mantenha os projetos simples.
+
+### Continue estudando — capítulo 39 de 50
+
+[← Capítulo 38 (rascunho)](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 (rascunho) →](#ch-40)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX117 (as de EX118–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -2468,6 +2648,24 @@ Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em i
 **EX107.** W = L / λ = 300 / 2 = 150 segundos.
 
 **EX108.** Cada nova identidade consultaria o parceiro separadamente, multiplicando sua carga e possivelmente violando os limites de taxa acordados.
+
+**EX109.** Emitindo uma nova versão do objeto com `revoked` definido como verdadeiro.
+
+**EX110.** Conter (remover o acesso), avaliar o que foi exposto, avisar o originador conforme o acordo exige e revisar a barreira que falhou.
+
+**EX111.** Apenas condições que exigem ação humana em cerca de uma hora; todo o resto vai para uma fila de revisão diária.
+
+**EX112.** Exemplo: "Os analistas de plantão têm contexto de inteligência disponível quando fazem a triagem de incidentes de phishing, e isso muda suas ações?"
+
+**EX113.** Mudá-lo para que os alertas sobre fornecedores sejam entregues na fila de chamados da equipe de OT, onde ela de fato trabalha.
+
+**EX114.** Exemplo: a BEN também contratou dois analistas de SOC no mesmo período, o que por si só poderia encurtar o tempo até a aplicação.
+
+**EX115.** Um engenheiro novo acrescentou um parceiro sintético usando apenas a documentação; os dois passos confusos que ele encontrou foram corrigidos.
+
+**EX116.** Exemplo: "Intervalo de consulta fixo em 15 minutos no código do coletor; impede o ajuste por parceiro; risco médio; mover para a configuração até o 2º trimestre."
+
+**EX117.** As versões do ATT&CK renomeiam e descontinuam técnicas; armazenar a versão permite ao Lantern listar os mapeamentos que precisam de migração quando sai uma nova versão.
 
 <a id="references"></a>
 ## Referências
