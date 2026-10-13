@@ -53,17 +53,45 @@ Aisha Rahman is a bachelor's student at the fictional Thornbury University. Her 
 
 If 13 of 45 laptops lack encryption, the proportion is 13 divided by 45, about 29%. Proportions let Bramley compare itself over time and with guidance, even as the number of laptops changes.
 
+Section one point two develops mathematical reasoning with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section one point two, Gareth Lloyd expects mathematical claims to carry owners and dates.
+
+Section one point two treats the case behind the as testable only when evidence and ticket IDs are recorded.
+
+For section one point two, Bramley Housing Association will not accept mathematical work without a written trail.
+
 ### 1.3 Inequalities as targets
 
 Targets are often inequalities: "at least 95% of laptops encrypted" or "no critical update older than 14 days". Writing them this way makes them checkable: either the measured value satisfies the inequality or it does not.
+
+Section one point three develops mathematical reasoning with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section one point three, Gareth Lloyd expects mathematical claims to carry owners and dates.
+
+Section one point three treats the case behind the as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Checking claims
 
 A supplier claims its tool "fixes 90% of problems". Aisha asks: 90% of what, counted how, over what period? Mathematical reasoning starts with defining the quantity before believing the number.
 
+Section one point four develops mathematical reasoning with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section one point four, Gareth Lloyd expects mathematical claims to carry owners and dates.
+
+Section one point four treats the case behind the as testable only when evidence and ticket IDs are recorded.
+
+For section one point four, Bramley Housing Association will not accept mathematical work without a written trail.
+
 ### 1.5 Orders of magnitude
 
 With 45 laptops, one stolen laptop is about 2% of the fleet, but if it holds 3,000 tenant records, its impact is far larger than 2% suggests. Counting devices and counting affected people are different measures.
+
+Section one point five develops mathematical reasoning with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section one point five, Gareth Lloyd expects mathematical claims to carry owners and dates.
+
+Section one point five treats the case behind the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -101,21 +129,55 @@ You will (1) describe the parts of laptops and servers; (2) explain storage, mem
 
 A laptop and a server share the same building blocks: processor, memory, storage, firmware and network interfaces. Servers run continuously and provide shared services such as file storage; laptops travel and are used by one person. Travel makes laptops easier to lose.
 
+Section two point one develops computing systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section two point one, Gareth Lloyd expects computing claims to carry owners and dates.
+
+Section two point one treats laptops and servers storage as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Storage
 
 Laptop storage keeps data when powered off. Without encryption, anyone who removes the disk or boots another system can read it. This is exactly what made the stolen Bramley laptop a reportable incident.
+
+Section two point two develops computing systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section two point two, Gareth Lloyd expects computing claims to carry owners and dates.
+
+Section two point two treats laptops and servers storage as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Firmware and the TPM
 
 Firmware starts the machine; a Trusted Platform Module stores keys and can release the disk encryption key only when the expected boot components load. Microsoft's BitLocker documentation describes this approach for Windows laptops.
 
+Section two point three develops computing systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section two point three, Gareth Lloyd expects computing claims to carry owners and dates.
+
+Section two point three treats laptops and servers storage as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Memory
 
 Memory holds working data and is cleared when power is lost. Locking or shutting down laptops when unattended reduces the time data sits in an unlocked session.
 
+Section two point four develops computing systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section two point four, Gareth Lloyd expects computing claims to carry owners and dates.
+
+Section two point four treats laptops and servers storage as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Bramley Housing Association will not accept computing work without a written trail.
+
 ### 2.5 Inventory of hardware
 
 Aisha records each device's model, age and whether it has a TPM. Two older laptops lack one, which affects how they can be encrypted.
+
+Section two point five develops computing systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section two point five, Gareth Lloyd expects computing claims to carry owners and dates.
+
+Section two point five treats laptops and servers storage as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Bramley Housing Association will not accept computing work without a written trail.
 
 ### Servers in the case
 
@@ -157,21 +219,59 @@ You will (1) write small Python programs over lists and dictionaries; (2) print 
 
 Aisha's first program reads a list of synthetic laptop records and prints those without encryption. It has three parts: data, a loop with a condition and output. Even this small check answers the question Gareth used to answer by hand.
 
+Section three point one develops programming with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section three point one, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section three point one treats first check lists and as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Lists and dictionaries
 
 Each laptop is a dictionary with fields such as name, encrypted and last_update. The fleet is a list of dictionaries. This structure appears in most labs in the course.
+
+Section three point two develops programming with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section three point two, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section three point two treats first check lists and as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, Bramley Housing Association will not accept programming work without a written trail.
 
 ### 3.3 Clear output
 
 Good output starts with a count, then lists details. "13 of 45 laptops not encrypted" is more useful than a long list with no summary.
 
+Section three point three develops programming with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section three point three, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section three point three treats first check lists and as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Bramley Housing Association will not accept programming work without a written trail.
+
 ### 3.4 Testing
 
 Before trusting the program, Aisha runs it on three synthetic laptops where she knows the answer: two encrypted, one not. The program must print exactly one.
 
+Section three point four develops programming with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section three point four, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section three point four treats first check lists and as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Bramley Housing Association will not accept programming work without a written trail.
+
 ### 3.5 Standard library
 
 Labs use only Python's standard library, so they run on any computer and add no unreviewed code to Bramley's systems.
+
+Section three point five develops programming with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section three point five, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section three point five treats first check lists and as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Bramley Housing Association will not accept programming work without a written trail.
 
 ### Building on the first check
 
@@ -217,21 +317,63 @@ You will (1) write clear, evidenced arguments; (2) cite sources accurately; (3) 
 
 Academic writing presents an argument supported by evidence. Aisha's first essay argues that small charities should prioritise laptop encryption.
 
+Section four point one develops academic writing with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section four point one, Gareth Lloyd expects academic claims to carry owners and dates.
+
+Section four point one treats purpose evidence citing structure as testable only when evidence and ticket IDs are recorded.
+
+For section four point one, Bramley Housing Association will not accept academic work without a written trail.
+
 ### 4.2 Evidence
 
 She uses Bramley's counts, CIS Controls v8, which lists data protection and secure configuration among its safeguards, and NIST SP 800-53 Rev. 5, which includes controls for protecting information at rest.
+
+Section four point two develops academic writing with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section four point two, Gareth Lloyd expects academic claims to carry owners and dates.
+
+Section four point two treats purpose evidence citing structure as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Bramley Housing Association will not accept academic work without a written trail.
 
 ### 4.3 Citing
 
 Each claim from a source is cited; each claim from data names the data. Unsupported opinions are avoided or clearly marked.
 
+Section four point three develops academic writing with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section four point three, Gareth Lloyd expects academic claims to carry owners and dates.
+
+Section four point three treats purpose evidence citing structure as testable only when evidence and ticket IDs are recorded.
+
+For section four point three, Bramley Housing Association will not accept academic work without a written trail.
+
 ### 4.4 Structure
 
 Introduction with question, evidence, counter-arguments, conclusion. Counter-arguments include cost and performance; she answers them with evidence.
 
+Section four point four develops academic writing with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section four point four, Gareth Lloyd expects academic claims to carry owners and dates.
+
+Section four point four treats purpose evidence citing structure as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Bramley Housing Association will not accept academic work without a written trail.
+
 ### 4.5 Clarity
 
 Short sentences, defined terms and no unexplained acronyms.
+
+Section four point five develops academic writing with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section four point five, Gareth Lloyd expects academic claims to carry owners and dates.
+
+Section four point five treats purpose evidence citing structure as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Bramley Housing Association will not accept academic work without a written trail.
+
+Section four point five fails closed if academic evidence is missing rather than guessing.
 
 ### Writing for Bramley
 
@@ -283,21 +425,59 @@ You will (1) explain confidentiality, integrity and availability for endpoints; 
 
 Tenant records must stay confidential, finance records must be accurate, and staff need laptops that work. Each goal suggests controls: encryption, updates and backups.
 
+Section five point one develops security literacy with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section five point one, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section five point one treats three goals common threats as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Bramley Housing Association will not accept security work without a written trail.
+
 ### 5.2 Common threats
 
 Loss and theft, malicious email attachments, unpatched software, weak passwords and misuse of administrator rights are the most common threats to small organisations' endpoints, as NIST SP 800-83 Rev. 1 on malware prevention notes.
+
+Section five point two develops security literacy with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section five point two, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section five point two treats three goals common threats as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Basic controls
 
 Encryption, timely updates, standard user accounts, screen locks, backups and anti-malware form a basic set that matches CIS Controls v8's early safeguards.
 
+Section five point three develops security literacy with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section five point three, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section five point three treats three goals common threats as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Bramley Housing Association will not accept security work without a written trail.
+
 ### 5.4 Updates
 
 Patching fixes known vulnerabilities. NIST SP 800-40 Rev. 4 describes patching as routine preventive maintenance rather than an emergency activity.
 
+Section five point four develops security literacy with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section five point four, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section five point four treats three goals common threats as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Bramley Housing Association will not accept security work without a written trail.
+
 ### 5.5 People
 
 Staff habits matter: leaving laptops in cars, sharing passwords and clicking unexpected links.
+
+Section five point five develops security literacy with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section five point five, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section five point five treats three goals common threats as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Bramley Housing Association will not accept security work without a written trail.
 
 ### Proportionate security
 
@@ -349,21 +529,59 @@ You will (1) use sets to compare inventories; (2) use graphs to describe depende
 
 The asset register is set R; devices reporting to the management agent form set M. R minus M are devices nobody is managing; M minus R are devices nobody registered. Both differences matter.
 
+Section six point one develops discrete structures with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section six point one, Gareth Lloyd expects discrete claims to carry owners and dates.
+
+Section six point one treats sets for inventory logic as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Logic
 
 Rules such as "if a laptop holds tenant data then it must be encrypted" are implications. Writing them precisely helps check which devices the rule covers.
+
+Section six point two develops discrete structures with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section six point two, Gareth Lloyd expects discrete claims to carry owners and dates.
+
+Section six point two treats sets for inventory logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Bramley Housing Association will not accept discrete work without a written trail.
 
 ### 6.3 Graphs
 
 A dependency graph shows that laptops depend on the domain server for logons and the file server for documents; if the domain server fails, many laptops are affected.
 
+Section six point three develops discrete structures with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section six point three, Gareth Lloyd expects discrete claims to carry owners and dates.
+
+Section six point three treats sets for inventory logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Bramley Housing Association will not accept discrete work without a written trail.
+
 ### 6.4 Counting
 
 With five yes-or-no baseline settings, there are 32 combinations; only one is fully compliant.
 
+Section six point four develops discrete structures with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section six point four, Gareth Lloyd expects discrete claims to carry owners and dates.
+
+Section six point four treats sets for inventory logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Bramley Housing Association will not accept discrete work without a written trail.
+
 ### 6.5 Proof habits
 
 Discrete structures train careful reasoning: clear definitions, edge cases and no generalising from a few examples.
+
+Section six point five develops discrete structures with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section six point five, Gareth Lloyd expects discrete claims to carry owners and dates.
+
+Section six point five treats sets for inventory logic as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Bramley Housing Association will not accept discrete work without a written trail.
 
 ### Practising with Bramley's data
 
@@ -415,21 +633,59 @@ You will (1) describe office and home networks used by staff laptops; (2) explai
 
 Bramley's office has a router, switch and Wi-Fi. Laptops, printers and servers share one network.
 
+Section seven point one develops networks and protocols with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seven point one, Gareth Lloyd expects networks claims to carry owners and dates.
+
+Section seven point one treats office network home working as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Bramley Housing Association will not accept networks work without a written trail.
+
 ### 7.2 Home working
 
 Many staff work from home, connecting through a VPN to reach the file server. Laptops at home may be off the office network for weeks, which affects updates and management.
+
+Section seven point two develops networks and protocols with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seven point two, Gareth Lloyd expects networks claims to carry owners and dates.
+
+Section seven point two treats office network home working as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Protocols
 
 Laptops use HTTPS for web, SMB for file shares and DNS for names. Old SMB version 1 should be disabled, as CIS Benchmarks and Microsoft baselines advise.
 
+Section seven point three develops networks and protocols with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seven point three, Gareth Lloyd expects networks claims to carry owners and dates.
+
+Section seven point three treats office network home working as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Bramley Housing Association will not accept networks work without a written trail.
+
 ### 7.4 Firewalls
 
 The laptop firewall blocks unexpected incoming connections, protecting it on public Wi-Fi.
 
+Section seven point four develops networks and protocols with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seven point four, Gareth Lloyd expects networks claims to carry owners and dates.
+
+Section seven point four treats office network home working as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Bramley Housing Association will not accept networks work without a written trail.
+
 ### 7.5 Segmentation
 
 Servers could sit on their own segment, with access only from laptops that need them.
+
+Section seven point five develops networks and protocols with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seven point five, Gareth Lloyd expects networks claims to carry owners and dates.
+
+Section seven point five treats office network home working as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Bramley Housing Association will not accept networks work without a written trail.
 
 ### VPN and updates
 
@@ -481,21 +737,65 @@ You will (1) build larger checks with functions and modules; (2) read CSV and JS
 
 Aisha writes functions such as load_devices(path) and check_encryption(device), each doing one job and tested separately.
 
+Section eight point one develops programming ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eight point one, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section eight point one treats functions files missing data as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Bramley Housing Association will not accept programming work without a written trail.
+
 ### 8.2 Files
 
 Device exports come as CSV; agent reports as JSON. Python's csv and json modules read both.
+
+Section eight point two develops programming ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eight point two, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section eight point two treats functions files missing data as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Bramley Housing Association will not accept programming work without a written trail.
 
 ### 8.3 Missing data
 
 A device with no encryption field is neither encrypted nor unencrypted; it is unknown. Aisha reports unknowns separately rather than guessing.
 
+Section eight point three develops programming ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eight point three, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section eight point three treats functions files missing data as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Bramley Housing Association will not accept programming work without a written trail.
+
 ### 8.4 Errors
 
 If a file is missing, the program stops with a clear message.
 
+Section eight point four develops programming ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eight point four, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section eight point four treats functions files missing data as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Bramley Housing Association will not accept programming work without a written trail.
+
+Section eight point four fails closed if programming evidence is missing rather than guessing.
+
 ### 8.5 Modules
 
 Shared functions live in one module, used by several checks.
+
+Section eight point five develops programming ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eight point five, Gareth Lloyd expects programming claims to carry owners and dates.
+
+Section eight point five treats functions files missing data as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Bramley Housing Association will not accept programming work without a written trail.
+
+Section eight point five fails closed if programming evidence is missing rather than guessing.
 
 ### Combining checks
 
@@ -549,21 +849,65 @@ You will (1) design tables for devices, updates and events; (2) use keys; (3) pr
 
 Devices (asset tag, model, owner role, location), updates (device, update, released, installed) and events (device, time, type).
 
+Section nine point one develops data and databases with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nine point one, Gareth Lloyd expects data claims to carry owners and dates.
+
+Section nine point one treats tables keys queries retention as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Bramley Housing Association will not accept data work without a written trail.
+
 ### 9.2 Keys
 
 Asset tags are unique keys; owner roles rather than names reduce personal data.
+
+Section nine point two develops data and databases with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nine point two, Gareth Lloyd expects data claims to carry owners and dates.
+
+Section nine point two treats tables keys queries retention as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Bramley Housing Association will not accept data work without a written trail.
 
 ### 9.3 Queries
 
 Which devices miss critical updates older than 14 days? Which devices have not reported in 30 days?
 
+Section nine point three develops data and databases with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nine point three, Gareth Lloyd expects data claims to carry owners and dates.
+
+Section nine point three treats tables keys queries retention as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Bramley Housing Association will not accept data work without a written trail.
+
 ### 9.4 Retention
 
 Records are kept for a year.
 
+Section nine point four develops data and databases with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nine point four, Gareth Lloyd expects data claims to carry owners and dates.
+
+Section nine point four treats tables keys queries retention as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Bramley Housing Association will not accept data work without a written trail.
+
+Section nine point four fails closed if data evidence is missing rather than guessing.
+
 ### 9.5 Privacy
 
 No tenant data enters these tables.
+
+Section nine point five develops data and databases with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nine point five, Gareth Lloyd expects data claims to carry owners and dates.
+
+Section nine point five treats tables keys queries retention as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Bramley Housing Association will not accept data work without a written trail.
+
+Section nine point five fails closed if data evidence is missing rather than guessing.
 
 ### Building the tables
 
@@ -621,21 +965,61 @@ You will (1) work only with permission; (2) protect personal data; (3) communica
 
 Aisha's work at Bramley is covered by a written agreement signed by Bramley's chief executive and Dr Grant: read-only access to device reports, no access to tenant records and changes only through Gareth.
 
+Section ten point one develops ethics and authorized practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section ten point one, Gareth Lloyd expects ethics claims to carry owners and dates.
+
+Section ten point one treats permission personal data honesty as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Personal data
 
 Device reports include staff names. Aisha uses roles in her reports and keeps raw exports on encrypted university storage.
+
+Section ten point two develops ethics and authorized practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section ten point two, Gareth Lloyd expects ethics claims to carry owners and dates.
+
+Section ten point two treats permission personal data honesty as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Bramley Housing Association will not accept ethics work without a written trail.
 
 ### 10.3 Honesty
 
 She reports problems plainly, including those caused by past decisions.
 
+Section ten point three develops ethics and authorized practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section ten point three, Gareth Lloyd expects ethics claims to carry owners and dates.
+
+Section ten point three treats permission personal data honesty as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Bramley Housing Association will not accept ethics work without a written trail.
+
+Section ten point three fails closed if ethics evidence is missing rather than guessing.
+
 ### 10.4 Limits
 
 She does not test laptops for weaknesses or try to access data.
 
+Section ten point four develops ethics and authorized practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section ten point four, Gareth Lloyd expects ethics claims to carry owners and dates.
+
+Section ten point four treats permission personal data honesty as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Bramley Housing Association will not accept ethics work without a written trail.
+
 ### 10.5 Raising concerns
 
 If she sees something serious, she tells Gareth the same day.
+
+Section ten point five develops ethics and authorized practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section ten point five, Gareth Lloyd expects ethics claims to carry owners and dates.
+
+Section ten point five treats permission personal data honesty as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Bramley Housing Association will not accept ethics work without a written trail.
 
 ### Why authorisation matters
 
@@ -687,21 +1071,63 @@ You will (1) explain users, privileges, services and updates in Windows and Linu
 
 Standard users cannot change system settings; administrators can. Bramley's laptops give many staff local admin rights, which baseline guidance from CIS and Microsoft recommends removing.
 
+Section eleven point one develops operating systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eleven point one, Gareth Lloyd expects operating claims to carry owners and dates.
+
+Section eleven point one treats accounts and privileges services as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Bramley Housing Association will not accept operating work without a written trail.
+
 ### 11.2 Services
 
 Servers run services such as file sharing and directory services. NIST SP 800-123 advises removing services a server does not need, because each one adds risk and maintenance.
+
+Section eleven point two develops operating systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eleven point two, Gareth Lloyd expects operating claims to carry owners and dates.
+
+Section eleven point two treats accounts and privileges services as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Bramley Housing Association will not accept operating work without a written trail.
 
 ### 11.3 Updates
 
 Operating systems receive monthly security updates. Updates need restarts, which staff often postpone.
 
+Section eleven point three develops operating systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eleven point three, Gareth Lloyd expects operating claims to carry owners and dates.
+
+Section eleven point three treats accounts and privileges services as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Bramley Housing Association will not accept operating work without a written trail.
+
 ### 11.4 Kernel and self-protection
 
 The OS kernel enforces separation between programs. The Linux kernel self-protection documentation describes techniques that make the kernel harder to misuse; Windows includes comparable protections in its security baselines.
 
+Section eleven point four develops operating systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eleven point four, Gareth Lloyd expects operating claims to carry owners and dates.
+
+Section eleven point four treats accounts and privileges services as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Bramley Housing Association will not accept operating work without a written trail.
+
 ### 11.5 Logs
 
 The OS records logons, installs and errors, supporting investigation.
+
+Section eleven point five develops operating systems with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eleven point five, Gareth Lloyd expects operating claims to carry owners and dates.
+
+Section eleven point five treats accounts and privileges services as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Bramley Housing Association will not accept operating work without a written trail.
+
+Section eleven point five fails closed if operating evidence is missing rather than guessing.
 
 ### Linux at Bramley
 
@@ -753,6 +1179,14 @@ You will (1) summarise patch latency with mean, median and spread; (2) recognise
 
 Patch latency is the days from an update's release to its installation on a device. Aisha collects it for the last monthly update on all 45 laptops.
 
+Section twelve point one develops probability and statistics with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twelve point one, Gareth Lloyd expects probability claims to carry owners and dates.
+
+Section twelve point one treats patch latency reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Bramley Housing Association will not accept probability work without a written trail.
+
 ### Lab — Lab — patch latency
 
 ```python
@@ -775,13 +1209,37 @@ within 14 days 26/45, over 30 days 10
 
 The mean is 22.4 days, the median 12 and the maximum 104. 26 of 45 laptops installed within 14 days; 10 took over 30 days.
 
+Section twelve point two develops probability and statistics with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twelve point two, Gareth Lloyd expects probability claims to carry owners and dates.
+
+Section twelve point two treats patch latency reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Bramley Housing Association will not accept probability work without a written trail.
+
 ### 12.3 Skew
 
 A few very late laptops pull the mean far above the median. The distribution is skewed, so the median describes the typical laptop better and the tail count describes the problem.
 
+Section twelve point three develops probability and statistics with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twelve point three, Gareth Lloyd expects probability claims to carry owners and dates.
+
+Section twelve point three treats patch latency reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Choosing measures
 
 Bramley adopts two measures: share within 14 days and count over 30 days.
+
+Section twelve point four develops probability and statistics with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twelve point four, Gareth Lloyd expects probability claims to carry owners and dates.
+
+Section twelve point four treats patch latency reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Bramley Housing Association will not accept probability work without a written trail.
+
+Section twelve point four fails closed if probability evidence is missing rather than guessing.
 
 ### Why the tail matters
 
@@ -837,21 +1295,65 @@ You will (1) apply least privilege to staff and admins; (2) use named admin acco
 
 Saltzer and Schroeder (1975) described least privilege: each user and program gets only the access it needs.
 
+Section thirteen point one develops identity and access with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirteen point one, Gareth Lloyd expects identity claims to carry owners and dates.
+
+Section thirteen point one treats least privilege staff accounts as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point one, Bramley Housing Association will not accept identity work without a written trail.
+
 ### 13.2 Staff accounts
 
 Staff become standard users; software requests go to Gareth.
+
+Section thirteen point two develops identity and access with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirteen point two, Gareth Lloyd expects identity claims to carry owners and dates.
+
+Section thirteen point two treats least privilege staff accounts as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Bramley Housing Association will not accept identity work without a written trail.
+
+Section thirteen point two fails closed if identity evidence is missing rather than guessing.
 
 ### 13.3 Admin accounts
 
 Gareth and the contractor use separate named admin accounts with multi-factor authentication, used only for admin tasks.
 
+Section thirteen point three develops identity and access with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirteen point three, Gareth Lloyd expects identity claims to carry owners and dates.
+
+Section thirteen point three treats least privilege staff accounts as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Bramley Housing Association will not accept identity work without a written trail.
+
 ### 13.4 Shared accounts
 
 The old shared admin account is disabled so actions can be traced to people.
 
+Section thirteen point four develops identity and access with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirteen point four, Gareth Lloyd expects identity claims to carry owners and dates.
+
+Section thirteen point four treats least privilege staff accounts as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Bramley Housing Association will not accept identity work without a written trail.
+
 ### 13.5 Reviews
 
 Admin group membership is reviewed monthly.
+
+Section thirteen point five develops identity and access with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirteen point five, Gareth Lloyd expects identity claims to carry owners and dates.
+
+Section thirteen point five treats least privilege staff accounts as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Bramley Housing Association will not accept identity work without a written trail.
+
+Section thirteen point five fails closed if identity evidence is missing rather than guessing.
 
 ### MFA for admins
 
@@ -909,21 +1411,65 @@ You will (1) identify personal data on endpoints; (2) apply data minimisation; (
 
 Laptops hold tenant names, addresses and support notes. Some notes are sensitive.
 
+Section fourteen point one develops privacy foundations with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fourteen point one, Gareth Lloyd expects privacy claims to carry owners and dates.
+
+Section fourteen point one treats personal data minimisation breach as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Bramley Housing Association will not accept privacy work without a written trail.
+
+Section fourteen point one fails closed if privacy evidence is missing rather than guessing.
+
 ### 14.2 Minimisation
 
 Staff should keep tenant data on the file server rather than locally. Less local data means less exposure when a laptop is lost.
+
+Section fourteen point two develops privacy foundations with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fourteen point two, Gareth Lloyd expects privacy claims to carry owners and dates.
+
+Section fourteen point two treats personal data minimisation breach as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Bramley Housing Association will not accept privacy work without a written trail.
 
 ### 14.3 Breach duties
 
 Data protection law requires organisations to assess and often report personal data breaches. The stolen laptop was reported because it was unencrypted.
 
+Section fourteen point three develops privacy foundations with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fourteen point three, Gareth Lloyd expects privacy claims to carry owners and dates.
+
+Section fourteen point three treats personal data minimisation breach as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Bramley Housing Association will not accept privacy work without a written trail.
+
 ### 14.4 Encryption effect
 
 If a lost laptop is encrypted and the key not compromised, the data are unreadable, which usually changes the breach assessment.
 
+Section fourteen point four develops privacy foundations with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fourteen point four, Gareth Lloyd expects privacy claims to carry owners and dates.
+
+Section fourteen point four treats personal data minimisation breach as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Bramley Housing Association will not accept privacy work without a written trail.
+
 ### 14.5 Retention
 
 Old local copies are deleted.
+
+Section fourteen point five develops privacy foundations with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fourteen point five, Gareth Lloyd expects privacy claims to carry owners and dates.
+
+Section fourteen point five treats personal data minimisation breach as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Bramley Housing Association will not accept privacy work without a written trail.
+
+Section fourteen point five fails closed if privacy evidence is missing rather than guessing.
 
 ### Breach response basics
 
@@ -983,21 +1529,69 @@ You will (1) collect evidence with time and source; (2) define measures; (3) avo
 
 Agent reports, exports and logs, each saved with collection date and source.
 
+Section fifteen point one develops evidence and measurement with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fifteen point one, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section fifteen point one treats evidence measures baselines honest as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point one, Bramley Housing Association will not accept evidence work without a written trail.
+
 ### 15.2 Measures
 
 Encryption share, patch latency, unmanaged devices and unneeded server services.
+
+Section fifteen point two develops evidence and measurement with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fifteen point two, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section fifteen point two treats evidence measures baselines honest as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point two, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section fifteen point two fails closed if evidence evidence is missing rather than guessing.
 
 ### 15.3 Baselines
 
 The first measurements become the baseline for later comparison.
 
+Section fifteen point three develops evidence and measurement with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fifteen point three, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section fifteen point three treats evidence measures baselines honest as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section fifteen point three fails closed if evidence evidence is missing rather than guessing.
+
 ### 15.4 Honest presentation
 
 Counts with percentages; tails as well as averages.
 
+Section fifteen point four develops evidence and measurement with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fifteen point four, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section fifteen point four treats evidence measures baselines honest as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section fifteen point four fails closed if evidence evidence is missing rather than guessing.
+
 ### 15.5 Storage
 
 Evidence kept read-only.
+
+Section fifteen point five develops evidence and measurement with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section fifteen point five, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section fifteen point five treats evidence measures baselines honest as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section fifteen point five fails closed if evidence evidence is missing rather than guessing.
 
 ### Collecting the baseline
 
@@ -1055,21 +1649,65 @@ You will (1) design layered endpoint controls; (2) place controls on devices, se
 
 Device: encryption, standard users, firewall, updates, anti-malware. Server: minimal services, named admin accounts. Network: VPN, segmentation. Management: agent reporting, logs.
 
+Section sixteen point one develops security architecture with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section sixteen point one, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section sixteen point one treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point one, Bramley Housing Association will not accept security work without a written trail.
+
 ### 16.2 Defence in depth
 
 If anti-malware misses a file, standard user rights limit what it can change.
+
+Section sixteen point two develops security architecture with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section sixteen point two, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section sixteen point two treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point two, Bramley Housing Association will not accept security work without a written trail.
 
 ### 16.3 Central management
 
 A management agent applies settings and reports status, making Bramley's small IT team effective.
 
+Section sixteen point three develops security architecture with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section sixteen point three, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section sixteen point three treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Bramley Housing Association will not accept security work without a written trail.
+
 ### 16.4 Dependencies
 
 Reporting depends on agents being installed; patching depends on laptops connecting.
 
+Section sixteen point four develops security architecture with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section sixteen point four, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section sixteen point four treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Bramley Housing Association will not accept security work without a written trail.
+
+Section sixteen point four fails closed if security evidence is missing rather than guessing.
+
 ### 16.5 Simplicity
 
 Few tools, well configured.
+
+Section sixteen point five develops security architecture with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section sixteen point five, Gareth Lloyd expects security claims to carry owners and dates.
+
+Section sixteen point five treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Bramley Housing Association will not accept security work without a written trail.
+
+Section sixteen point five fails closed if security evidence is missing rather than guessing.
 
 ### Proportionate architecture
 
@@ -1123,21 +1761,67 @@ You will (1) explain symmetric encryption, keys and hashing; (2) describe full-d
 
 Full-disk encryption uses a symmetric key to encrypt the disk. The key is protected by the TPM and optionally a PIN.
 
+Section seventeen point one develops cryptography concepts with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seventeen point one, Gareth Lloyd expects cryptography claims to carry owners and dates.
+
+Section seventeen point one treats symmetric encryption recovery keys as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point one, Bramley Housing Association will not accept cryptography work without a written trail.
+
 ### 17.2 Recovery keys
 
 If the TPM cannot release the key, a recovery key unlocks the disk. Recovery keys are stored in Bramley's directory, accessible only to IT.
+
+Section seventeen point two develops cryptography concepts with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seventeen point two, Gareth Lloyd expects cryptography claims to carry owners and dates.
+
+Section seventeen point two treats symmetric encryption recovery keys as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point two, Bramley Housing Association will not accept cryptography work without a written trail.
 
 ### 17.3 Hashing
 
 Hashes detect file changes and verify downloads.
 
+Section seventeen point three develops cryptography concepts with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seventeen point three, Gareth Lloyd expects cryptography claims to carry owners and dates.
+
+Section seventeen point three treats symmetric encryption recovery keys as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Bramley Housing Association will not accept cryptography work without a written trail.
+
+Section seventeen point three fails closed if cryptography evidence is missing rather than guessing.
+
 ### 17.4 TLS
 
 VPN and web traffic are protected in transit.
 
+Section seventeen point four develops cryptography concepts with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seventeen point four, Gareth Lloyd expects cryptography claims to carry owners and dates.
+
+Section seventeen point four treats symmetric encryption recovery keys as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Bramley Housing Association will not accept cryptography work without a written trail.
+
+Section seventeen point four fails closed if cryptography evidence is missing rather than guessing.
+
 ### 17.5 Key management
 
 Losing recovery keys can lock out data; leaking them defeats encryption.
+
+Section seventeen point five develops cryptography concepts with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section seventeen point five, Gareth Lloyd expects cryptography claims to carry owners and dates.
+
+Section seventeen point five treats symmetric encryption recovery keys as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Bramley Housing Association will not accept cryptography work without a written trail.
+
+Section seventeen point five fails closed if cryptography evidence is missing rather than guessing.
 
 ### Choosing protectors
 
@@ -1191,21 +1875,71 @@ You will (1) form a research question; (2) choose a method; (3) consider ethics.
 
 Do monthly patch reminders sent to staff reduce patch latency?
 
+Section eighteen point one develops research methods with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eighteen point one, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section eighteen point one treats question method ethics limits as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point one, Bramley Housing Association will not accept research work without a written trail.
+
+Section eighteen point one fails closed if research evidence is missing rather than guessing.
+
 ### 18.2 Method
 
 Compare latency for two months before and after reminders.
+
+Section eighteen point two develops research methods with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eighteen point two, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section eighteen point two treats question method ethics limits as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point two, Bramley Housing Association will not accept research work without a written trail.
+
+Section eighteen point two fails closed if research evidence is missing rather than guessing.
 
 ### 18.3 Ethics
 
 Data are aggregated; no individual is named.
 
+Section eighteen point three develops research methods with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eighteen point three, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section eighteen point three treats question method ethics limits as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Bramley Housing Association will not accept research work without a written trail.
+
+Section eighteen point three fails closed if research evidence is missing rather than guessing.
+
 ### 18.4 Limits
 
 Other changes may affect results.
 
+Section eighteen point four develops research methods with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eighteen point four, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section eighteen point four treats question method ethics limits as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Bramley Housing Association will not accept research work without a written trail.
+
+Section eighteen point four fails closed if research evidence is missing rather than guessing.
+
 ### 18.5 Plan
 
 Pre-state the measure: share within 14 days.
+
+Section eighteen point five develops research methods with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section eighteen point five, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section eighteen point five treats question method ethics limits as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Bramley Housing Association will not accept research work without a written trail.
+
+Section eighteen point five fails closed if research evidence is missing rather than guessing.
 
 ### Designing the study
 
@@ -1271,21 +2005,65 @@ You will (1) define the field's scope; (2) connect theory to Bramley; (3) place 
 
 The field covers servers, laptops, firmware and hardware: their configuration, updates, integrity and recovery.
 
+Section nineteen point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nineteen point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section nineteen point one treats scope theory hardware relation as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 19.2 Theory
 
 Configuration management (SP 800-128), patch management (SP 800-40r4) and least privilege provide the main theories applied.
+
+Section nineteen point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nineteen point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section nineteen point two treats scope theory hardware relation as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point two, Bramley Housing Association will not accept systems work without a written trail.
 
 ### 19.3 Hardware
 
 Firmware and processor issues, such as those shown by Kocher et al. (2019), are fixed by updates, adding to patch volume.
 
+Section nineteen point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nineteen point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section nineteen point three treats scope theory hardware relation as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 19.4 Relation to other areas
 
 Identity, networks and incident response connect to endpoints.
 
+Section nineteen point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nineteen point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section nineteen point four treats scope theory hardware relation as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section nineteen point four fails closed if systems evidence is missing rather than guessing.
+
 ### 19.5 Bramley's place
 
 Small organisations need proportionate controls.
+
+Section nineteen point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section nineteen point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section nineteen point five treats scope theory hardware relation as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Bramley Housing Association will not accept systems work without a written trail.
+
+Section nineteen point five fails closed if systems evidence is missing rather than guessing.
 
 ### Why systems security is its own field
 
@@ -1343,21 +2121,65 @@ You will (1) learn from public cases of endpoint failures; (2) extract lessons; 
 
 Many reported breaches involve lost or stolen unencrypted laptops; the lesson is encryption by default.
 
+Section twenty point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty point one treats lost devices patch delays as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 20.2 Patch delays
 
 Nappa et al. (2015) found that shared code leaves vulnerable copies unpatched long after fixes; Li and Paxson (2017) found vulnerabilities often persist for years before fixes.
+
+Section twenty point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty point two treats lost devices patch delays as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point two, Bramley Housing Association will not accept systems work without a written trail.
 
 ### 20.3 Misconfiguration
 
 Dietrich et al. (2018) found operators link misconfigurations to time pressure and unclear responsibility.
 
+Section twenty point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty point three treats lost devices patch delays as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 20.4 Lessons for Bramley
 
 Encrypt all laptops, measure patch tails, clarify responsibilities.
 
+Section twenty point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty point four treats lost devices patch delays as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty point four fails closed if systems evidence is missing rather than guessing.
+
 ### 20.5 Using cases
 
 Cases are used to learn, not to blame.
+
+Section twenty point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty point five treats lost devices patch delays as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point five, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty point five fails closed if systems evidence is missing rather than guessing.
 
 ### Turning cases into actions
 
@@ -1415,21 +2237,61 @@ You will (1) model Bramley's endpoints, servers and management; (2) show data an
 
 45 laptops, four servers (file, finance, domain, an old application server), a management server, VPN and backup service.
 
+Section twenty-one point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-one point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-one point one treats components control flows data as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 21.2 Control flows
 
 The management server sends settings and updates to agents; agents report status back.
+
+Section twenty-one point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-one point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-one point two treats components control flows data as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point two, Bramley Housing Association will not accept systems work without a written trail.
 
 ### 21.3 Data flows
 
 Tenant data flow from the file server to laptops and back; finance data stay on the finance server.
 
+Section twenty-one point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-one point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-one point three treats components control flows data as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 21.4 Control points
 
 Encryption and standard users on laptops; minimal services on servers; agent reports at the management server.
 
+Section twenty-one point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-one point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-one point four treats components control flows data as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 21.5 Model use
 
 The model guides inventory, baseline and service checks in later chapters.
+
+Section twenty-one point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-one point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-one point five treats components control flows data as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, Bramley Housing Association will not accept systems work without a written trail.
 
 ### Checking the model
 
@@ -1483,6 +2345,14 @@ You will (1) compare the asset register with management agent reports; (2) find 
 
 Every control depends on the management agent. A device not reporting gets no settings, updates or monitoring. CIS Controls v8 begins with inventory for this reason.
 
+Section twenty-two point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-two point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-two point one treats why it matters reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### Lab — Lab — inventory comparison
 
 ```python
@@ -1506,13 +2376,33 @@ reporting, not in register: BHA-L46, DESKTOP-7F2K
 
 The register lists 49 devices; 47 report. Four registered devices are not reporting: laptops L07, L19, L33 and server S04. Two reporting devices are not registered: L46 and DESKTOP-7F2K.
 
+Section twenty-two point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-two point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-two point two treats why it matters reading as testable only when evidence and ticket IDs are recorded.
+
 ### 22.3 Investigating
 
 L07 is in a drawer; L19 and L33 have broken agents; S04 was never enrolled. L46 is a new laptop not yet registered; DESKTOP-7F2K is a volunteer's personal PC that joined with old credentials.
 
+Section twenty-two point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-two point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-two point three treats why it matters reading as testable only when evidence and ticket IDs are recorded.
+
 ### 22.4 Fixing
 
 Agents are repaired, S04 is enrolled, L46 registered and the personal PC removed and its access revoked.
+
+Section twenty-two point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-two point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-two point four treats why it matters reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Bramley Housing Association will not accept systems work without a written trail.
 
 ### Keeping the inventory current
 
@@ -1558,6 +2448,14 @@ You will (1) check laptops against a baseline; (2) count gaps by setting; (3) pr
 
 Five settings: disk encryption, firewall, screen lock, local admin removed and automatic updates, drawn from CIS Benchmarks and Microsoft's Windows security baselines.
 
+Section twenty-three point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-three point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-three point one treats baseline reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### Lab — Lab — baseline gaps
 
 ```python
@@ -1585,13 +2483,37 @@ auto_updates          6/45 failing
 
 Local admin removal fails on 25 of 45 laptops, disk encryption on 13, screen lock on 7, automatic updates on 6 and firewall on 1.
 
+Section twenty-three point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-three point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-three point two treats baseline reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point two, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 23.3 Priorities
 
 Encryption first, because of the theft incident; local admin second, because it affects many settings; others follow.
 
+Section twenty-three point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-three point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-three point three treats baseline reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 23.4 Method
 
 Settings are applied centrally through the management server, not laptop by laptop.
+
+Section twenty-three point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-three point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-three point four treats baseline reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Bramley Housing Association will not accept systems work without a written trail.
 
 ### Why local admin causes drift
 
@@ -1643,21 +2565,63 @@ You will (1) implement encryption, account and update controls; (2) communicate 
 
 Encryption is enabled in groups of ten laptops, with recovery keys escrowed and verified.
 
+Section twenty-four point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-four point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-four point one treats encryption rollout account changes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 24.2 Account changes
 
 Local admin is removed with a request process for software.
+
+Section twenty-four point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-four point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-four point two treats encryption rollout account changes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point two, Bramley Housing Association will not accept systems work without a written trail.
 
 ### 24.3 Update policy
 
 Updates install automatically with a forced restart after seven days' notice.
 
+Section twenty-four point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-four point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-four point three treats encryption rollout account changes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 24.4 Exceptions
 
 Two old laptops without TPMs use password-based encryption until replaced.
 
+Section twenty-four point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-four point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-four point four treats encryption rollout account changes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point four, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 24.5 Communication
 
 Staff receive a short note before each change.
+
+Section twenty-four point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-four point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-four point five treats encryption rollout account changes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point five, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-four point five fails closed if systems evidence is missing rather than guessing.
 
 ### Pilot group
 
@@ -1723,6 +2687,16 @@ You will (1) triage missing updates by severity and age; (2) identify overdue it
 
 Critical updates within 14 days; important within 30.
 
+Section twenty-five point one develops laboratory with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-five point one, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section twenty-five point one treats policy reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Bramley Housing Association will not accept laboratory work without a written trail.
+
+Section twenty-five point one fails closed if laboratory evidence is missing rather than guessing.
+
 ### Lab — Lab — update triage
 
 ```python
@@ -1754,13 +2728,39 @@ overdue 4/8
 
 Four of eight missing updates are overdue: critical on L19 (88 days), L03 (41) and S02 (33), and important on L33 (47).
 
+Section twenty-five point two develops laboratory with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-five point two, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section twenty-five point two treats policy reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Bramley Housing Association will not accept laboratory work without a written trail.
+
 ### 25.3 Causes
 
 L19 and L33 were not reporting (chapter 22); L03 has a full disk; S02 waits for a maintenance window.
 
+Section twenty-five point three develops laboratory with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-five point three, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section twenty-five point three treats policy reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Bramley Housing Association will not accept laboratory work without a written trail.
+
 ### 25.4 Actions
 
 Agents fixed, disk cleaned, finance server window booked.
+
+Section twenty-five point four develops laboratory with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-five point four, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section twenty-five point four treats policy reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Bramley Housing Association will not accept laboratory work without a written trail.
+
+Section twenty-five point four fails closed if laboratory evidence is missing rather than guessing.
 
 ### Setting the policy
 
@@ -1822,21 +2822,67 @@ You will (1) harden servers; (2) remove unneeded services; (3) plan server patch
 
 Each server's documented role defines needed services.
 
+Section twenty-six point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-six point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-six point one treats server role sp patching as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point one, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-six point one fails closed if systems evidence is missing rather than guessing.
+
 ### 26.2 SP 800-123
 
 NIST's server security guide recommends removing unneeded services and applications and patching regularly.
+
+Section twenty-six point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-six point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-six point two treats server role sp patching as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point two, Bramley Housing Association will not accept systems work without a written trail.
 
 ### 26.3 Patching servers
 
 Servers are patched in a monthly window after backups are verified.
 
+Section twenty-six point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-six point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-six point three treats server role sp patching as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 26.4 Admin access
 
 Named admin accounts only.
 
+Section twenty-six point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-six point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-six point four treats server role sp patching as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-six point four fails closed if systems evidence is missing rather than guessing.
+
 ### 26.5 Logging
 
 Server logs go to a central store.
+
+Section twenty-six point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-six point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-six point five treats server role sp patching as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-six point five fails closed if systems evidence is missing rather than guessing.
 
 ### Role documents
 
@@ -1898,6 +2944,16 @@ You will (1) verify encryption after rollout; (2) handle unknown and in-progress
 
 Agent reports show each laptop's encryption state.
 
+Section twenty-seven point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-seven point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-seven point one treats verification reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point one, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-seven point one fails closed if systems evidence is missing rather than guessing.
+
 ### Lab — Lab — encryption verification
 
 ```python
@@ -1922,13 +2978,39 @@ verified encrypted 40/45 (89%)
 
 40 of 45 verified encrypted (89%); 2 still encrypting, 1 not encrypted and 2 not reporting.
 
+Section twenty-seven point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-seven point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-seven point two treats verification reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point two, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 27.3 Follow-up
 
 The two encrypting finish overnight; the unencrypted laptop had a failed TPM and is fixed; the two silent laptops are tracked down.
 
+Section twenty-seven point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-seven point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-seven point three treats verification reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 27.4 Final state
 
 After follow-up, 45 of 45 are verified.
+
+Section twenty-seven point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-seven point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-seven point four treats verification reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-seven point four fails closed if systems evidence is missing rather than guessing.
 
 ### Why verify
 
@@ -1990,6 +3072,16 @@ You will (1) analyse update failures by cause; (2) find the biggest fixable caus
 
 Failure codes from a month of update attempts.
 
+Section twenty-eight point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-eight point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-eight point one treats data reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point one, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-eight point one fails closed if systems evidence is missing rather than guessing.
+
 ### Lab — Lab — update failures
 
 ```python
@@ -2016,13 +3108,39 @@ total 34
 
 Of 34 failures, pending reboots cause 14 (41%), full disks 9 (26%), offline laptops 6 (18%), driver conflicts 3 (9%) and unknown 2 (6%).
 
+Section twenty-eight point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-eight point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-eight point two treats data reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 28.3 Fixes
 
 Forced restarts address reboots; disk clean-up tasks address full disks; VPN-based updates address offline laptops.
 
+Section twenty-eight point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-eight point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-eight point three treats data reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 28.4 Re-measure
 
 Next month failures fall.
+
+Section twenty-eight point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-eight point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-eight point four treats data reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-eight point four fails closed if systems evidence is missing rather than guessing.
 
 ### Pending reboots
 
@@ -2084,6 +3202,16 @@ You will (1) review admin logons; (2) set simple alerts; (3) run a weekly routin
 
 Admin logons to servers are reviewed weekly.
 
+Section twenty-nine point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-nine point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-nine point one treats logon review reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point one, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-nine point one fails closed if systems evidence is missing rather than guessing.
+
 ### Lab — Lab — admin logons
 
 ```python
@@ -2112,13 +3240,39 @@ logons 7
 
 Of 7 logons, 2 are flagged: the default "admin" account on S04 at 02:47, and the contractor on S01 at 23:15.
 
+Section twenty-nine point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-nine point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-nine point two treats logon review reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point two, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 29.3 Investigation
 
 The 23:15 logon was planned maintenance; the 02:47 default-account logon was a scheduled task using the old account, which is reconfigured and the account disabled.
 
+Section twenty-nine point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-nine point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-nine point three treats logon review reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 29.4 Routine
 
 Weekly: logon review, failed updates, unmanaged devices.
+
+Section twenty-nine point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section twenty-nine point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section twenty-nine point four treats logon review reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section twenty-nine point four fails closed if systems evidence is missing rather than guessing.
 
 ### What logon records show
 
@@ -2178,6 +3332,16 @@ You will (1) compare running services with documented needs; (2) remove unneeded
 
 Applying SP 800-123's advice to Bramley's servers.
 
+Section thirty point one develops laboratory ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty point one, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section thirty point one treats purpose reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Bramley Housing Association will not accept laboratory work without a written trail.
+
+Section thirty point one fails closed if laboratory evidence is missing rather than guessing.
+
 ### Lab — Lab — server services
 
 ```python
@@ -2207,13 +3371,41 @@ unneeded services 4
 
 Four unneeded services: print-spooler and telnet on the file server, web-admin on finance and ftp on the old application server. The domain server is fine.
 
+Section thirty point two develops laboratory ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty point two, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section thirty point two treats purpose reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point two, Bramley Housing Association will not accept laboratory work without a written trail.
+
 ### 30.3 Removal
 
 Each is disabled after checking with users and testing.
 
+Section thirty point three develops laboratory ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty point three, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section thirty point three treats purpose reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, Bramley Housing Association will not accept laboratory work without a written trail.
+
+Section thirty point three fails closed if laboratory evidence is missing rather than guessing.
+
 ### 30.4 Verification
 
 A re-run shows zero unneeded services.
+
+Section thirty point four develops laboratory ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty point four, Gareth Lloyd expects laboratory claims to carry owners and dates.
+
+Section thirty point four treats purpose reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Bramley Housing Association will not accept laboratory work without a written trail.
+
+Section thirty point four fails closed if laboratory evidence is missing rather than guessing.
 
 ### Fewer services, fewer worries
 
@@ -2273,21 +3465,59 @@ You will (1) handle harder endpoint cases; (2) balance security with service; (3
 
 The old application server runs software that only works on an unsupported OS. Options: replace, isolate or accept risk. Bramley isolates it on its own segment with limited access while a replacement is procured.
 
+Section thirty-one point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-one point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-one point one treats legacy server firmware updates as testable only when evidence and ticket IDs are recorded.
+
 ### 31.2 Firmware updates
 
 Vendor firmware updates fix hardware-level issues such as speculative execution flaws (Kocher et al., 2019). Bramley applies them in small groups after checking recovery keys, because firmware changes can trigger recovery prompts.
+
+Section thirty-one point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-one point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-one point two treats legacy server firmware updates as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Volunteers
 
 Volunteers sometimes need temporary access. They get managed loan laptops rather than using personal devices.
 
+Section thirty-one point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-one point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-one point three treats legacy server firmware updates as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point three, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 31.4 Home Wi-Fi
 
 Staff home networks are outside Bramley's control; the laptop firewall and VPN protect traffic.
 
+Section thirty-one point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-one point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-one point four treats legacy server firmware updates as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point four, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 31.5 Decision records
 
 Each case has a written decision with reasons.
+
+Section thirty-one point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-one point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-one point five treats legacy server firmware updates as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point five, Bramley Housing Association will not accept systems work without a written trail.
+
+Section thirty-one point five fails closed if systems evidence is missing rather than guessing.
 
 ### Writing the routine
 
@@ -2341,21 +3571,67 @@ You will (1) connect endpoint security with HR, finance and law; (2) coordinate 
 
 New staff get laptops configured before day one; leavers' accounts are disabled on their last day and laptops wiped.
 
+Section thirty-two point one develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-two point one, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-two point one treats hr finance law facilities as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point one, Bramley Housing Association will not accept systems work without a written trail.
+
 ### 32.2 Finance
 
 Budget for replacing old laptops is planned three years ahead.
+
+Section thirty-two point two develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-two point two, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-two point two treats hr finance law facilities as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point two, Bramley Housing Association will not accept systems work without a written trail.
 
 ### 32.3 Law
 
 Data protection duties shape encryption and breach response.
 
+Section thirty-two point three develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-two point three, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-two point three treats hr finance law facilities as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point three, Bramley Housing Association will not accept systems work without a written trail.
+
+Section thirty-two point three fails closed if systems evidence is missing rather than guessing.
+
 ### 32.4 Facilities
 
 Laptops are stored securely overnight in the office.
 
+Section thirty-two point four develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-two point four, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-two point four treats hr finance law facilities as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point four, Bramley Housing Association will not accept systems work without a written trail.
+
+Section thirty-two point four fails closed if systems evidence is missing rather than guessing.
+
 ### 32.5 Coordination
 
 A short monthly meeting covers joiners, leavers and purchases.
+
+Section thirty-two point five develops systems endpoints and hardware security with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-two point five, Gareth Lloyd expects systems claims to carry owners and dates.
+
+Section thirty-two point five treats hr finance law facilities as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point five, Bramley Housing Association will not accept systems work without a written trail.
+
+Section thirty-two point five fails closed if systems evidence is missing rather than guessing.
 
 ### Why recovery matters
 
@@ -2415,21 +3691,69 @@ You will (1) analyse the reminder study; (2) interpret results; (3) state limits
 
 Share within 14 days rose from 26 of 45 to 33 of 45 after reminders.
 
+Section thirty-three point one develops research methods ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-three point one, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section thirty-three point one treats results confounders conclusion ethics as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point one, Bramley Housing Association will not accept research work without a written trail.
+
+Section thirty-three point one fails closed if research evidence is missing rather than guessing.
+
 ### 33.2 Confounders
 
 Forced restarts started the same month, so reminders cannot take all credit.
+
+Section thirty-three point two develops research methods ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-three point two, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section thirty-three point two treats results confounders conclusion ethics as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point two, Bramley Housing Association will not accept research work without a written trail.
 
 ### 33.3 Conclusion
 
 Reminders plus forced restarts are associated with improvement.
 
+Section thirty-three point three develops research methods ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-three point three, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section thirty-three point three treats results confounders conclusion ethics as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point three, Bramley Housing Association will not accept research work without a written trail.
+
+Section thirty-three point three fails closed if research evidence is missing rather than guessing.
+
 ### 33.4 Ethics
 
 No individual is named.
 
+Section thirty-three point four develops research methods ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-three point four, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section thirty-three point four treats results confounders conclusion ethics as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Bramley Housing Association will not accept research work without a written trail.
+
+Section thirty-three point four fails closed if research evidence is missing rather than guessing.
+
 ### 33.5 Next
 
 A future study could stagger changes.
+
+Section thirty-three point five develops research methods ii with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-three point five, Gareth Lloyd expects research claims to carry owners and dates.
+
+Section thirty-three point five treats results confounders conclusion ethics as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point five, Bramley Housing Association will not accept research work without a written trail.
+
+Section thirty-three point five fails closed if research evidence is missing rather than guessing.
 
 ### Reading the result
 
@@ -2495,21 +3819,69 @@ You will (1) compare Bramley with a similar organisation; (2) identify transfera
 
 A second charity of similar size shares anonymised measures.
 
+Section thirty-four point one develops comparative project with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-four point one, Gareth Lloyd expects comparative claims to carry owners and dates.
+
+Section thirty-four point one treats partner comparison practices limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point one, Bramley Housing Association will not accept comparative work without a written trail.
+
+Section thirty-four point one fails closed if comparative evidence is missing rather than guessing.
+
 ### 34.2 Comparison
 
 It encrypts all laptops but patches more slowly.
+
+Section thirty-four point two develops comparative project with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-four point two, Gareth Lloyd expects comparative claims to carry owners and dates.
+
+Section thirty-four point two treats partner comparison practices limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point two, Bramley Housing Association will not accept comparative work without a written trail.
+
+Section thirty-four point two fails closed if comparative evidence is missing rather than guessing.
 
 ### 34.3 Practices
 
 It uses a simple loan-laptop scheme Bramley adopts; Bramley shares its forced restart policy.
 
+Section thirty-four point three develops comparative project with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-four point three, Gareth Lloyd expects comparative claims to carry owners and dates.
+
+Section thirty-four point three treats partner comparison practices limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point three, Bramley Housing Association will not accept comparative work without a written trail.
+
 ### 34.4 Limits
 
 Organisations differ in staff and software.
 
+Section thirty-four point four develops comparative project with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-four point four, Gareth Lloyd expects comparative claims to carry owners and dates.
+
+Section thirty-four point four treats partner comparison practices limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point four, Bramley Housing Association will not accept comparative work without a written trail.
+
+Section thirty-four point four fails closed if comparative evidence is missing rather than guessing.
+
 ### 34.5 Value
 
 Comparison suggests ideas, not proof.
+
+Section thirty-four point five develops comparative project with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-four point five, Gareth Lloyd expects comparative claims to carry owners and dates.
+
+Section thirty-four point five treats partner comparison practices limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point five, Bramley Housing Association will not accept comparative work without a written trail.
+
+Section thirty-four point five fails closed if comparative evidence is missing rather than guessing.
 
 ### Explaining to non-specialists
 
@@ -2575,21 +3947,71 @@ You will (1) propose a capstone; (2) define scope, method and success criteria.
 
 A sustainable endpoint security programme for Bramley.
 
+Section thirty-five point one develops capstone proposal with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-five point one, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-five point one treats proposal scope method criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point one, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-five point one fails closed if capstone evidence is missing rather than guessing.
+
 ### 35.2 Scope
 
 Laptops and servers; excludes phones and website.
+
+Section thirty-five point two develops capstone proposal with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-five point two, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-five point two treats proposal scope method criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point two, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-five point two fails closed if capstone evidence is missing rather than guessing.
 
 ### 35.3 Method
 
 Baseline, implement, verify, measure, hand over.
 
+Section thirty-five point three develops capstone proposal with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-five point three, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-five point three treats proposal scope method criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point three, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-five point three fails closed if capstone evidence is missing rather than guessing.
+
 ### 35.4 Criteria
 
 100% encrypted; 90% patched within 14 days; zero unneeded services; unmanaged devices at most one.
 
+Section thirty-five point four develops capstone proposal with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-five point four, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-five point four treats proposal scope method criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point four, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-five point four fails closed if capstone evidence is missing rather than guessing.
+
 ### 35.5 Approval
 
 Dr Grant and Bramley approve.
+
+Section thirty-five point five develops capstone proposal with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-five point five, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-five point five treats proposal scope method criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point five, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-five point five fails closed if capstone evidence is missing rather than guessing.
 
 ### Professional responsibilities
 
@@ -2651,21 +4073,69 @@ You will (1) support Bramley staff directly; (2) teach simple habits; (3) gather
 
 Aisha runs short sessions on locking screens, reporting lost devices and restart notices.
 
+Section thirty-six point one develops field or community practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-six point one, Gareth Lloyd expects field claims to carry owners and dates.
+
+Section thirty-six point one treats sessions desk time feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point one, Bramley Housing Association will not accept field work without a written trail.
+
 ### 36.2 Desk time
 
 She spends two afternoons at Bramley answering questions.
+
+Section thirty-six point two develops field or community practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-six point two, Gareth Lloyd expects field claims to carry owners and dates.
+
+Section thirty-six point two treats sessions desk time feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point two, Bramley Housing Association will not accept field work without a written trail.
+
+Section thirty-six point two fails closed if field evidence is missing rather than guessing.
 
 ### 36.3 Feedback
 
 Staff ask for clearer restart messages.
 
+Section thirty-six point three develops field or community practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-six point three, Gareth Lloyd expects field claims to carry owners and dates.
+
+Section thirty-six point three treats sessions desk time feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point three, Bramley Housing Association will not accept field work without a written trail.
+
+Section thirty-six point three fails closed if field evidence is missing rather than guessing.
+
 ### 36.4 Changes
 
 Messages are rewritten.
 
+Section thirty-six point four develops field or community practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-six point four, Gareth Lloyd expects field claims to carry owners and dates.
+
+Section thirty-six point four treats sessions desk time feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point four, Bramley Housing Association will not accept field work without a written trail.
+
+Section thirty-six point four fails closed if field evidence is missing rather than guessing.
+
 ### 36.5 Boundaries
 
 She does not access tenant data.
+
+Section thirty-six point five develops field or community practice with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-six point five, Gareth Lloyd expects field claims to carry owners and dates.
+
+Section thirty-six point five treats sessions desk time feedback as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point five, Bramley Housing Association will not accept field work without a written trail.
+
+Section thirty-six point five fails closed if field evidence is missing rather than guessing.
 
 ### Sustaining the work
 
@@ -2735,21 +4205,69 @@ You will (1) review evidence critically; (2) challenge claims; (3) improve evide
 
 Students present evidence for their projects; peers challenge.
 
+Section thirty-seven point one develops evidence review seminar with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-seven point one, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section thirty-seven point one treats seminar aisha's evidence challenge as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point one, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section thirty-seven point one fails closed if evidence evidence is missing rather than guessing.
+
 ### 37.2 Aisha's evidence
 
 Agent reports, logs, lab outputs and staff feedback.
+
+Section thirty-seven point two develops evidence review seminar with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-seven point two, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section thirty-seven point two treats seminar aisha's evidence challenge as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point two, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section thirty-seven point two fails closed if evidence evidence is missing rather than guessing.
 
 ### 37.3 Challenge
 
 A peer asks whether agent reports can be wrong. Aisha spot-checks five laptops by hand; all match.
 
+Section thirty-seven point three develops evidence review seminar with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-seven point three, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section thirty-seven point three treats seminar aisha's evidence challenge as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point three, Bramley Housing Association will not accept evidence work without a written trail.
+
 ### 37.4 Improvement
 
 She adds spot checks to the routine.
 
+Section thirty-seven point four develops evidence review seminar with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-seven point four, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section thirty-seven point four treats seminar aisha's evidence challenge as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section thirty-seven point four fails closed if evidence evidence is missing rather than guessing.
+
 ### 37.5 Lesson
 
 Evidence from one source should be cross-checked.
+
+Section thirty-seven point five develops evidence review seminar with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-seven point five, Gareth Lloyd expects evidence claims to carry owners and dates.
+
+Section thirty-seven point five treats seminar aisha's evidence challenge as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point five, Bramley Housing Association will not accept evidence work without a written trail.
+
+Section thirty-seven point five fails closed if evidence evidence is missing rather than guessing.
 
 ### Limitations
 
@@ -2819,21 +4337,71 @@ You will (1) complete the programme; (2) run routines; (3) document.
 
 All controls in place; weekly routine running.
 
+Section thirty-eight point one develops capstone implementation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-eight point one, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-eight point one treats implementation documentation training issues as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point one, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-eight point one fails closed if capstone evidence is missing rather than guessing.
+
 ### 38.2 Documentation
 
 Runbooks for encryption, updates, inventory and server checks.
+
+Section thirty-eight point two develops capstone implementation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-eight point two, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-eight point two treats implementation documentation training issues as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point two, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-eight point two fails closed if capstone evidence is missing rather than guessing.
 
 ### 38.3 Training
 
 Gareth's assistant is trained.
 
+Section thirty-eight point three develops capstone implementation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-eight point three, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-eight point three treats implementation documentation training issues as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point three, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-eight point three fails closed if capstone evidence is missing rather than guessing.
+
 ### 38.4 Issues
 
 A failed laptop needs reimaging; documented process works.
 
+Section thirty-eight point four develops capstone implementation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-eight point four, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-eight point four treats implementation documentation training issues as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point four, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-eight point four fails closed if capstone evidence is missing rather than guessing.
+
 ### 38.5 Timeline
 
 Completed in one term.
+
+Section thirty-eight point five develops capstone implementation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-eight point five, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-eight point five treats implementation documentation training issues as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point five, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-eight point five fails closed if capstone evidence is missing rather than guessing.
 
 ### Structuring the dissertation
 
@@ -2903,6 +4471,16 @@ You will (1) compare before and after measures; (2) judge success; (3) state lim
 
 Same as the baseline from chapter 15.
 
+Section thirty-nine point one develops capstone evaluation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-nine point one, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-nine point one treats measures reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point one, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-nine point one fails closed if capstone evidence is missing rather than guessing.
+
 ### Lab — Lab — before and after
 
 ```python
@@ -2927,13 +4505,41 @@ unmanaged devices: 6 -> 1
 
 Encrypted laptops rose from 32 to 45 of 45; patched within 14 days from 26 to 41 of 45; unneeded server services fell from 4 to 0; unmanaged devices from 6 to 1.
 
+Section thirty-nine point two develops capstone evaluation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-nine point two, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-nine point two treats measures reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point two, Bramley Housing Association will not accept capstone work without a written trail.
+
 ### 39.3 Against criteria
 
 Encryption, services and unmanaged criteria met; patching at 91% meets the 90% target.
 
+Section thirty-nine point three develops capstone evaluation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-nine point three, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-nine point three treats measures reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point three, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-nine point three fails closed if capstone evidence is missing rather than guessing.
+
 ### 39.4 Limits
 
 One organisation, a few months, other changes coincided.
+
+Section thirty-nine point four develops capstone evaluation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section thirty-nine point four, Gareth Lloyd expects capstone claims to carry owners and dates.
+
+Section thirty-nine point four treats measures reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Bramley Housing Association will not accept capstone work without a written trail.
+
+Section thirty-nine point four fails closed if capstone evidence is missing rather than guessing.
 
 ### Before and after
 
@@ -2995,21 +4601,69 @@ You will (1) write and present the capstone; (2) reflect on learning; (3) plan n
 
 Problem, baseline, design, implementation, evaluation, limits.
 
+Section forty point one develops thesis and presentation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section forty point one, Gareth Lloyd expects thesis claims to carry owners and dates.
+
+Section forty point one treats thesis presentation questions reflection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point one, Bramley Housing Association will not accept thesis work without a written trail.
+
+Section forty point one fails closed if thesis evidence is missing rather than guessing.
+
 ### 40.2 Presentation
 
 Aisha presents to Thornbury and Bramley.
+
+Section forty point two develops thesis and presentation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section forty point two, Gareth Lloyd expects thesis claims to carry owners and dates.
+
+Section forty point two treats thesis presentation questions reflection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point two, Bramley Housing Association will not accept thesis work without a written trail.
+
+Section forty point two fails closed if thesis evidence is missing rather than guessing.
 
 ### 40.3 Questions
 
 About cost, staff acceptance and sustainability.
 
+Section forty point three develops thesis and presentation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section forty point three, Gareth Lloyd expects thesis claims to carry owners and dates.
+
+Section forty point three treats thesis presentation questions reflection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point three, Bramley Housing Association will not accept thesis work without a written trail.
+
+Section forty point three fails closed if thesis evidence is missing rather than guessing.
+
 ### 40.4 Reflection
 
 She learned that small organisations need simple, well-run controls more than advanced tools.
 
+Section forty point four develops thesis and presentation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section forty point four, Gareth Lloyd expects thesis claims to carry owners and dates.
+
+Section forty point four treats thesis presentation questions reflection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point four, Bramley Housing Association will not accept thesis work without a written trail.
+
 ### 40.5 Next
 
 She plans graduate study in systems security.
+
+Section forty point five develops thesis and presentation with a Bramley Housing Association note Aisha Rahman can demo offline.
+
+Under section forty point five, Gareth Lloyd expects thesis claims to carry owners and dates.
+
+Section forty point five treats thesis presentation questions reflection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point five, Bramley Housing Association will not accept thesis work without a written trail.
+
+Section forty point five fails closed if thesis evidence is missing rather than guessing.
 
 ### Looking back
 
