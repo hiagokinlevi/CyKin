@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Caderno de Trabalho para o Operador Técnico
 
 - Idioma: português do Brasil (`pt`); curso técnico, dezoito meses; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 18 já estão escritos em português, com os exercícios EX001–EX016 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 5–18 (EX017–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 18 já estão escritos em português, com os exercícios EX001–EX032 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–18 (EX033–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: operadores técnicos que configuram verificações, confirmam correções e mantêm seguros os testes autorizados.
 - Relação com os livros vizinhos: o [livro do curso profissional](../../../../professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais curto; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta projeto e integração. **Este livro é procedimental e voltado a laboratórios.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
 
-Capítulos 5–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+Capítulos 9–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -327,11 +327,310 @@ Scripts são ferramentas controladas: reproduzíveis, sem segredos e revisadas.
 
 [← Capítulo 03 (rascunho)](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 (rascunho) →](#ch-05)
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Escopo de segurança e evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) reformular as verificações das ROE para técnicos; (2) calcular hashes de arquivos de evidência; (3) rejeitar evidências divergentes; (4) minimizar dados pessoais nas capturas.
+
+### 5.1 ROE do técnico
+
+Antes de qualquer comando, Sam confere o host alvo, o método e a janela contra a folha de ROE apoiada no joelho. As ROE do técnico para o ENG-512 indicam as verificações de web/API de homologação e de VPN, a janela de sábado, o contato de emergência e a rede de tarifas como excluída. Sam não começa se o emergency_contact estiver vazio; a lista de verificação é o mesmo hábito ensinado nos laboratórios do curso profissional. Um emergency_contact vazio cancela o ENG-512 antes de as ferramentas começarem, e Sam publica o cancelamento nomeando o campo ausente, para que o SOC não espere tráfego naquela manhã. A janela só é remarcada depois que o responsável pelas ROE preenche o campo e assina a folha de novo.
+
+### 5.2 Hashes
+
+Calcular o hash das evidências detecta edições acidentais. Uma divergência significa não anexar o arquivo até que sua origem esteja clara.
+
+```python
+"""Lab 5: verify synthetic evidence file hashes before attaching to a finding."""
+import hashlib
+files = {"shot1.png": b"fake-png-bytes-v1", "shot1-edited.png": b"fake-png-bytes-v2",
+         "config.txt": b"PermitRootLogin no\n"}
+recorded = {k: hashlib.sha256(v).hexdigest() for k, v in files.items() if k != "shot1-edited.png"}
+recorded["shot1.png"] = hashlib.sha256(b"fake-png-bytes-v1").hexdigest()
+# simulate tampering record for edited shot still labeled shot1
+check = {"shot1.png": files["shot1-edited.png"], "config.txt": files["config.txt"]}
+for name, data in check.items():
+    h = hashlib.sha256(data).hexdigest()
+    print(f"{name:12} {h[:12]} {'MATCH' if h == recorded.get(name) else 'MISMATCH'}")
+```
+
+Execute com `python3 lab_hash.py`. Saída verificada:
+
+```text
+shot1.png    b81db4df801a MISMATCH
+config.txt   44c91857f34b MATCH
+```
+
+O lab_hash imprime `shot1.png b81db4df801a MISMATCH` e `config.txt 44c91857f34b MATCH`. Sam trata o MISMATCH como uma parada para aquele artefato: o shot1.png fica fora do achado até que duas pessoas concordem com uma nova exportação ou com um hash esperado atualizado. O MATCH no config.txt é o padrão que os chamados devem mostrar depois das correções.
+
+### 5.3 Minimização
+
+Desfoque rostos de passageiros e números de crachá nas capturas de tela; mantenha os pixels que provam o problema. Minimização significa que nomes de passageiros e números de cartão nunca aparecem nas capturas de tela do ENG-512. Uma evidência que prova uma flag de cookie ou uma porta aberta não precisa de um histórico de viagens real, então Sam prova esses problemas apenas com sessões sintéticas e com a moldura recortada da interface, e recorta antes de calcular o hash. Chaves JSON desconhecidas com cara de pagamento são removidas antes que qualquer linha de log saia do jump host para o cofre.
+
+### 5.4 Índice de evidências
+
+Cada arquivo tem um ID, um hash, um horário, um coletor e o ID do achado relacionado. No ENG-512, as linhas do índice trazem o nome do arquivo, um prefixo SHA-256 de doze caracteres hexadecimais, o ID do chamado do ENG-512 e o responsável. Um artefato que não está no índice não faz parte do ENG-512; links de chats pessoais não contam, e artefatos ausentes do índice são apagados como cópias não verificadas. O índice é o que permite a um revisor ligar cada achado do relatório ao arquivo e ao hash exatos que o sustentam.
+
+### 5.5 Integridade versus verdade
+
+Um hash que confere prova que o arquivo não mudou desde o cálculo do hash, e não que o achado no sistema continua verdadeiro. Um MATCH numa captura de tela errada ainda reprova na verificação de verdade. Por isso, Sam valida o caminho do achado e seu impacto com o cartão de método antes de dar a evidência por completa e antes de o relatório sair. Integridade e verdade são registradas como duas marcações separadas no pacote do ENG-512, para que o leitor veja que as duas foram verificadas e por quem. Um achado só com a marcação de integridade continua em rascunho.
+
+### 5.6 Retenção
+
+Siga o calendário de retenção de engajamentos da NMT e apague os caches locais depois de guardar tudo no cofre. A retenção do ENG-512 segue a regra de exclusão em prazo das ROE. Sam agenda a exclusão das evidências do ENG-512 e a confirma; cada registro de exclusão traz a data, o caminho e uma testemunha. PNGs esquecidos no jump host reprovam na verificação de limpeza exigida para o crédito de portfólio. A retenção corta dos dois lados: a evidência é guardada pelo tempo necessário para reteste e contestação, e nem um dia além do que as ROE permitem. A testemunha assina o registro de exclusão, e não apenas Sam.
+
+### 5.7 Fotografar telas
+
+Quando uma captura de tela é necessária, Sam usa as ferramentas do jump host, nomeia o arquivo com o ID do achado e o horário e calcula o hash antes de editar qualquer coisa; o mascaramento é feito numa cópia. Fotografar telas com o celular é recusado quando o jump host pode capturar um PNG mascarado, porque o celular sai do controle da NMT, enquanto as capturas guardadas no cofre ficam no caminho do engajamento. Fotos de tela feitas com celular são rejeitadas na revisão por pares, e a captura no jump host com mascaramento é o único caminho aceito para capturas de tela.
+
+### 5.8 Regra de evidência por duas pessoas
+
+Para achados de alto impacto, um segundo técnico confirma o hash e a observação, e a discordância suspende o registro. Por essa regra, um colega acompanha o cálculo dos hashes dos itens de alto impacto. O MISMATCH no shot1.png é revisto pelas duas pessoas antes que alguém atualize o hash esperado, e o colega fica ao teclado durante o novo cálculo. Atualizações de hash do shot1.png feitas por uma pessoa sozinha são recusadas. O nome do colega é escrito ao lado do novo hash no índice de evidências, para que a aprovação possa ser rastreada depois.
+
+### 5.9 Disciplina de campo
+
+Disputas sobre evidências custam caro. Por isso, Sam calcula o hash logo depois da captura, escreve o hash na linha do registro de atividades e só então mascara uma cópia para o apêndice do relatório. Se o jurídico perguntar mais tarde se uma captura de tela foi alterada, ele pode mostrar o resumo original e o derivado mascarado. O resultado MISMATCH do laboratório é a versão de sala de aula dessa disciplina: bytes editados nunca devem substituir os originais em silêncio, e um MISMATCH é o sinal para chamar uma segunda pessoa, e não para recalcular o hash até que confira. A disciplina de campo para evidências é hash, minimização, índice, retenção e duas pessoas nas divergências; o pacote do ENG-512 de Sam reprova na conferência por pares se faltar qualquer um desses cinco.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam calcula os hashes das evidências: config.txt dá MATCH; shot1.png dá MISMATCH porque os bytes foram editados depois do hash registrado. Ele captura a tela de novo e registra um novo hash.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX017 — Ação diante da divergência.** O que Sam faz com o MISMATCH do shot1.png? *Rubrica:* 3 = não anexar; capturar de novo; novo hash; 2 = parcial; 1 = anexar mesmo assim; 0 = nada.
+- **EX018 — Significado do MATCH.** O que o MATCH prova sobre o config.txt? *Rubrica:* 3 = inalterado desde o registro do hash; 2 = parcial; 1 = o sistema está seguro; 0 = nada.
+- **EX019 — Minimização.** Dê um exemplo de minimização na NMT. *Rubrica:* 3 = desfocar rostos/crachás/números de cartão; 2 = parcial; 1 = guardar tudo; 0 = nada.
+- **EX020 — Folha do joelho.** Quais três fatos estão na folha de ROE que Sam apoia no joelho? *Rubrica:* 3 = host, método, janela (mais o contato de emergência); 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Escopo na folha do joelho; evidências com hash, minimizadas e indexadas.
+
+### Continue estudando — capítulo 05 de 18
+
+[← Capítulo 04 (rascunho)](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 (rascunho) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Modelo de sistema para testes autorizados
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um modelo de sistema simples para o planejador de viagens; (2) marcar pontos de entrada e repositórios de dados; (3) mapear os temas do OWASP WSTG para o modelo; (4) listar premissas.
+
+### 6.1 Elementos do modelo
+
+Um modelo de sistema nomeia atores (passageiro, funcionário), pontos de entrada (web, API), zonas de confiança, repositórios de dados (BD de viagens, logs) e dependências externas (blocos de mapa). Para a NMT, o modelo diz: passageiro → HTTPS → API → BD de viagens; funcionário → VPN → interface administrativa; blocos de mapa como externos; nuvem de tarifas riscada. O modelo de uma página de Sam é a imagem do escopo antes de as ferramentas rodarem: a nuvem de tarifas e as caixas do fornecedor de blocos de mapa estão riscadas, e há responsáveis nomeados apenas na web, na API e na VPN. As ferramentas ficam fechadas até que essa página esteja atualizada.
+
+### 6.2 Pontos de entrada
+
+Cada ponto de entrada recebe uma lista curta de temas do WSTG: autenticação, sessão, controle de acesso, tratamento de entradas. Na NMT, os pontos de entrada são o site público, a API do planejador de viagens e a VPN dos funcionários. Validadores de tarifa não são pontos de entrada do ENG-512; listá-los como interessantes é um erro de modelo corrigido antes da abertura. Cada um dos três recebe sua própria lista de temas do WSTG, para que as verificações da VPN nunca tomem emprestados os testes de tratamento de entradas da web. Para a VPN dos funcionários, os temas param em autenticação e tratamento de sessão, porque o tratamento de entradas pertence ao site e à API do planejador de viagens. Manter as listas separadas também torna precisa a declaração de cobertura: o relatório pode dizer quais temas foram exercitados em qual ponto de entrada e quais ficaram de fora.
+
+### 6.3 Premissas
+
+"A homologação espelha a autenticação da produção" é uma premissa a validar, e não um fato. Premissas como "a homologação tem a mesma configuração da produção" são escritas no registro de premissas com um responsável, porque premissas não escritas viram brigas de escopo no meio da janela. Cada linha do registro de premissas nomeia quem acreditou nela e a data da última verificação. Uma linha de "a homologação espelha a produção" sem data de verificação é marcada como inválida até que o responsável compare as duas configurações e date a entrada. Achados que dependem de uma premissa inválida ficam fora do relatório até a comparação ser feita.
+
+### 6.4 Fluxos de dados
+
+Anote por onde passam os dados pessoais, como as viagens salvas, para que os testes minimizem a exposição. Os fluxos de dados da NMT mostram consultas de viagem e ações administrativas dos funcionários, e as setas param no BD de viagens e na interface administrativa dos funcionários. Eles não mostram a liquidação de tarifas. Sam se recusa a desenhar fluxos de tarifa no modelo comum, porque desenhar convida a sondar; uma seta de liquidação de tarifas no modelo comum é um defeito de documentação que ele corrige antes do ENG-512. A seta das viagens salvas é a que ele marca para minimização, de modo que as verificações sobre ela usam apenas contas sintéticas.
+
+### 6.5 Fora do modelo
+
+Os validadores de tarifa são omitidos porque estão fora do escopo. Fora do modelo significa a rede de tarifas, o rádio e os processadores de cartão. Essas caixas ficam pretas no mapa de cores e trazem a legenda "somente com ROE especializadas", e os achados do ENG-512 nunca reivindicam cobertura nelas. Deixá-las visíveis, mas pretas, importa: o leitor vê que os sistemas existem e foram excluídos de propósito, em vez de supor que foram esquecidos ou cobertos em silêncio pelos testes comuns. Qualquer pedido de teste dentro de uma caixa preta volta ao responsável pelas ROE como um engajamento separado.
+
+### 6.6 Modelo vivo
+
+Atualize o modelo quando a API ganhar um novo callback de pagamento, mesmo que o pagamento seja de terceiros. O modelo também é atualizado quando uma CDN ou um gateway muda. Sam data cada revisão e guarda a data ao lado do hash das ROE; um modelo mais antigo que a última mudança de arquitetura é inválido para a próxima janela, então, se a arquitetura mudou depois da data do modelo, ele atualiza a figura antes da janela. O histórico de revisões mostra aos revisores contra qual versão do modelo cada janela foi planejada.
+
+### 6.7 Cores das zonas de confiança
+
+Sam pinta a internet de vermelho, a homologação de âmbar, os funcionários de verde e a tarifa de preto (não entrar). O preto é reservado à tarifa para que não possa ser confundido com nenhuma zona onde testar é permitido. A cor torna o escopo visível nas revisões quando os gestores passam os olhos depressa demais para ler as exclusões. O mapa de cores é impresso para a reunião rápida de abertura, para que os gestores que só passam os olhos pelo texto ainda vejam a exclusão. Um mapa impresso em preto e branco perde o sentido, por isso a cópia da abertura também rotula cada zona por escrito.
+
+### 6.8 Registro de premissas
+
+Uma lista corrente de premissas fica embaixo do modelo, e cada uma é marcada como confirmada, rejeitada ou aberta antes de o relatório ser emitido. As entradas nomeiam quem acreditou, por exemplo, que a homologação espelhava a produção e quando isso foi verificado. Premissas que falham viram texto das ROE ou achados; Sam não deixa uma crença quebrada de que a homologação espelha a produção como nota de rodapé não dita. As entradas ainda abertas na hora do relatório são listadas na seção de limitações, para que os leitores saibam quais conclusões dependem de crenças não confirmadas e quem precisa fechá-las.
+
+### 6.9 Disciplina de campo
+
+Construir o modelo de sistema com o responsável pelo produto leva uma hora e evita dias de confusão. Sam projeta um diagrama em branco, pede ao responsável que posicione as caixas e só então acrescenta as próprias setas. Os responsáveis corrigem premissas equivocadas sobre qual banco de dados guarda as viagens salvas e se a interface administrativa compartilha a autenticação com a API dos passageiros, e essas correções mudam quais temas do WSTG importam mais. O registro de premissas anota cada correção com a data em que foi confirmada. A disciplina de campo para a modelagem é um diagrama datado, zonas coloridas, o registro de premissas e a tarifa em preto; Sam não abre as ferramentas do ENG-512 até que esses quatro estejam atualizados, e qualquer lacuna atrasa o início.
+
+### Exemplo resolvido (NMT sintética)
+
+O modelo de uma página de Sam mostra passageiro → HTTPS → API → BD de viagens; funcionário → VPN → interface administrativa; blocos de mapa como externos; nuvem de tarifas riscada.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX021 — Atores.** Nomeie dois atores do modelo. *Rubrica:* 3 = passageiro e funcionário; 2 = um; 1 = vago; 0 = nada.
+- **EX022 — Tema do WSTG.** Escolha um ponto de entrada e um tema do WSTG a aplicar. *Rubrica:* 3 = par concreto, por exemplo API + controle de acesso; 2 = parcial; 1 = vago; 0 = nada.
+- **EX023 — Verificação de premissa.** Como Sam validaria a premissa de que a homologação espelha a autenticação da produção? *Rubrica:* 3 = comparar configurações/confirmação dos responsáveis; não supor; 2 = parcial; 1 = supor verdadeira; 0 = nada.
+- **EX024 — Por que omitir a tarifa.** Por que omitir os validadores de tarifa deste modelo? *Rubrica:* 3 = fora do escopo; 2 = parcial; 1 = sem importância; 0 = nada.
+
+### Síntese
+
+Um modelo de sistema claro concentra o esforço do WSTG e registra as premissas de forma explícita.
+
+### Continue estudando — capítulo 06 de 18
+
+[← Capítulo 05 (rascunho)](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 (rascunho) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Dados e telemetria
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar logs úteis nos testes e na detecção; (2) pedir acesso do jeito certo; (3) evitar despejar dados de produção; (4) usar a telemetria para confirmar achados.
+
+### 7.1 Logs úteis
+
+Os logs úteis nos testes e na detecção incluem logs de acesso web, falhas de autenticação da API, autenticações na VPN, bloqueios do WAF e logins no AD. Para o ENG-512, os logs úteis são as permissões e negações do WAF, as falhas de autenticação da API, os inícios de sessão na VPN e os comandos no jump host. Despejos completos da produção são recusados; Sam pede amostras do WAF e da autenticação da API apenas para o horário da janela do ENG-512. Logs úteis são esses recortes, e não despejos de vários dias. Pedir o recorte com antecedência, com os horários da janela escritos no pedido, permite ao SOC prepará-lo antes do sábado, em vez de procurá-lo durante o teste.
+
+### 7.2 Caminho de acesso
+
+Sam pede acesso somente leitura aos logs durante a janela por meio das ROE, e não usando a senha do SIEM de outra pessoa. O caminho de acesso aos logs é somente leitura, pelo chamado do SOC, e não um papel administrativo pessoal na produção, e o acesso somente leitura basta. Elevar a tst-sam-web a administradora de logs da produção é recusado, mesmo quando o SOC demora a responder ao chamado; a conta de teste de Sam nunca vira um atalho para administrar logs. A disciplina do caminho de acesso limita o raio de impacto se a conta de teste um dia for mal usada.
+
+### 7.3 Nada de despejos da produção
+
+Exportar tabelas inteiras de usuários para análise está fora dos limites; use amostras sintéticas ou minimizadas. Nada de despejos da produção significa nenhuma exportação completa da tabela de histórico de viagens para provar um achado, e despejos da tabela de viagens da produção nunca servem de material didático. Uma amostra mascarada que mostre a classe do problema basta para o trabalho do ENG-512, focado na homologação, e é o máximo que Sam anexa. Se um responsável insistir numa exportação maior, o pedido volta ao responsável pelas ROE e ao contato de privacidade, em vez de ser resolvido no canal do engajamento.
+
+### 7.4 Confirmação de achados
+
+Um achado de controle de acesso fica mais forte quando os logs mostram que a requisição não autorizada teve sucesso. Confirmar achados com logs significa casar os horários depois de sincronizar os relógios. No exercício sintético, o laço de 401 das 10:12 é confirmado quando os logs da API mostram o mesmo minuto e o relógio do jump host concorda com os hosts da API em até dois minutos. Sem essa concordância, o horário da mensagem de parada não tem qualidade de evidência. O exemplo resolvido abaixo usa a mesma ideia com um ID de requisição, que liga a linha de log a uma requisição de teste específica.
+
+### 7.5 Sincronização de relógios
+
+Anote os fusos horários e o estado do NTP ao correlacionar logs com as notas de atividade. A sincronização de relógios entre o jump host de Sam e os hosts da API é verificada na abertura, com uma checagem de NTP contra o VIP da API. Uma diferença maior que dois minutos é corrigida antes de se confiar nos horários das evidências, nos hashes e nas comparações de logs. Sam escreve a diferença medida no registro de atividades, para que um revisor veja que a verificação foi feita e qual era o tamanho da diferença. Um fuso horário escrito ao lado de cada horário evita uma segunda classe de erros quando se comparam logs de sistemas diferentes.
+
+### 7.6 Retorno para a detecção
+
+Compartilhe os nomes das técnicas com o SOC para que ele possa construir detecções depois do teste. O retorno de detecção do ENG-512 lista quais cartões de método rodaram e a que horas pararam. O silêncio depois do início do ENG-512 é uma falha de coordenação, e não um objetivo de furtividade; o SOC nunca deve descobrir que o ENG-512 terminou apenas pelo silêncio. A nota de retorno também diz quais verificações o SOC viu e quais deixou passar, para que as lacunas virem trabalho de detecção, e não surpresas na próxima janela. Ela é enviada no mesmo dia em que a janela se fecha.
+
+### 7.7 Amostra, e não exportação completa
+
+Quando uma consulta de logs devolve milhares de linhas, Sam exporta uma amostra limitada no tempo em torno de sua atividade de teste, e não o dia inteiro, a menos que as ROE peçam mais. Para um achado, ele pede cinco minutos de logs de autenticação da API em torno dele, e não o despejo de um dia. Amostras menores protegem os passageiros e ainda confirmam o problema, e também economizam tempo de revisão, já que um colega consegue ler cinco minutos de linhas de uma só vez. A consulta que produziu a amostra é salva ao lado dela, para que o mesmo recorte possa ser extraído de novo no reteste.
+
+### 7.8 Dados pessoais nos logs
+
+Os logs podem conter nomes, telefones, e-mails, números de cartão e posições de GPS precisas de passageiros. Se um log que Sam precisa guardar contém telefones de passageiros, ele o armazena no caminho restrito do cofre e anota a presença de dados pessoais no índice de evidências. O mascaramento de logs remove e-mails, PANs de cartão e GPS preciso antes que capturas de tela ou extratos entrem no cofre. Uma linha de log com o e-mail de um passageiro reprova na minimização mesmo que o achado seja sobre autenticação, e dados pessoais deixados numa captura de tela didática também reprovam.
+
+### 7.9 Disciplina de campo
+
+Sam reserva o acesso ao SIEM no mesmo chamado das ROE, com data de término. Quando o engajamento termina, ele confirma que seu acesso foi removido; um acesso de leitura esquecido é, ele próprio, um achado que ele escreveria sobre qualquer outra pessoa. Durante a janela, ele salva consultas, e não despejos brutos, para que outro técnico possa refazer a investigação sem guardar dados excessivos de passageiros. A disciplina de campo para a telemetria é amostrar, mascarar, sincronizar os relógios e avisar o SOC. A mensagem de parada do ENG-512 que Sam enviou depois do laço de 401 nomeou o horário e o sistema, para que a detecção pudesse correlacionar.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam correlaciona uma resposta 200 da API de homologação sobre o recurso de outro usuário com o horário do seu registro de atividades; o log da aplicação mostra o mesmo ID de requisição.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX025 — Tipos de log.** Liste quatro tipos de log úteis na NMT. *Rubrica:* 3 = quatro do capítulo; 2 = três; 1 = um; 0 = nada.
+- **EX026 — Senha emprestada.** Sam pode usar o login do SIEM do analista do SOC? *Rubrica:* 3 = não; pedir acesso nominal somente leitura; 2 = não; 1 = sim; 0 = nada.
+- **EX027 — Despejo.** Por que não exportar o BD de viagens inteiro? *Rubrica:* 3 = privacidade/escopo/minimização; 2 = parcial; 1 = tudo bem; 0 = nada.
+- **EX028 — Evidência mais forte.** Que detalhe de log fortalece um achado de controle de acesso? *Rubrica:* 3 = ID/horário/usuário da requisição não autorizada bem-sucedida; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+A telemetria é pedida do jeito certo, minimizada e usada para fortalecer achados — e não para acumular dados.
+
+### Continue estudando — capítulo 07 de 18
+
+[← Capítulo 06 (rascunho)](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 (rascunho) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Modos de falha
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar como os testes podem prejudicar a TI de transporte; (2) mapear condições de parada; (3) descrever a falha segura de ferramentas; (4) praticar a comunicação de uma parada.
+
+### 8.1 Modos de dano
+
+Os testes podem prejudicar a TI de transporte por bloqueio de contas, quedas da homologação, um acerto acidental na produção, tempestades de logs e caches envenenados. Para o ENG-512, os modos de dano incluem o bloqueio da API, a saturação da VPN e qualquer toque nos validadores de tarifa. Cada cartão de método de Sam lista que dano sua verificação poderia causar, para que as condições de parada não sejam inventadas sob estresse. Cartões sem modos de dano estão incompletos para o ENG-512 e ficam fora da lista de sábado até que o autor os acrescente. A linha de dano de um cartão também nomeia quem deve ser avisado primeiro se aquele dano ocorrer, por exemplo o responsável pela API num bloqueio.
+
+### 8.2 Condições de parada
+
+As condições de parada são: o responsável pede para parar; uma indisponibilidade sem explicação; alertas do sistema de tarifas em qualquer lugar; dados pessoais expostos num chamado; uma ferramenta em laço. Cada condição tem uma mensagem de parada de uma linha preparada no cartão das ROE, para que Sam a publique sem redigir sob estresse. Qualquer uma basta; Sam não termina "só mais um objetivo" antes. Alertas do sistema de tarifas em qualquer lugar, mesmo os aparentemente sem relação, interrompem o ENG-512 até que a operação libere a linha, e Sam não discute correlação no momento. Dados pessoais aparecendo num chamado são uma parada mesmo que nada esteja quebrado, porque o sistema de chamados pode ser lido por pessoas que o acordo nunca cobriu. Uma ferramenta presa num laço é uma parada por outro motivo: ela pode empurrar o tráfego além da taxa combinada antes que alguém perceba.
+
+### 8.3 Falha segura de ferramentas
+
+Prefira ferramentas que falham de forma fechada (param no erro) a ferramentas que tentam de novo até criar uma tempestade. Falha segura significa que um script sai e libera seus hosts quando os erros se repetem, em vez de tentar para sempre contra a homologação. O exercício do laço de 401 ensina exatamente isso: quando as verificações de autenticação entram em laço, o script de Sam fecha seus sockets e imprime um motivo de parada que nomeia a causa. Uma ferramenta que continua tentando até criar uma tempestade é tratada como defeituosa, por mais completa que pareça, porque o tráfego extra consome o orçamento de ruído e esconde o erro original das pessoas que precisam ler os logs.
+
+### 8.4 Comunicação da parada
+
+Diga o que você estava fazendo, o que observou, o que interrompeu e peça orientação — de forma curta e factual. A mensagem de parada vai para o canal do engajamento num formato fixo: `ENG-512 stop`, causa, `halted HH:MM`, `need guidance`. No exercício, ela diz `ENG-512 stop — looping auth checks on staging API — halted 10:12 — need guidance`. Palavras de atenuação e pedidos de desculpa são apagados antes do envio, porque quem está de plantão precisa agir a partir da primeira linha. Um cabeçalho factual permite ver o que parou, quando parou e que decisão está agora esperando por essa pessoa.
+
+### 8.5 Ensaio
+
+Uma vez por trimestre, Sam ensaia uma mensagem de parada no canal do engajamento com o SOC, e a mensagem de parada também é ensaiada no Laboratório II antes de uma janela real. Sam pratica a publicação do padrão das 10:12 para que a primeira parada real não seja a primeira vez que ele escreve uma, e o Laboratório II avalia a publicação de parada do ensaio antes de qualquer janela real. Uma primeira parada sem ensaio é uma falha do programa esperando para acontecer. O SOC também ensaia a sua parte: confirmar o recebimento da publicação e nomear quem decide.
+
+### 8.6 Sem culpa no momento
+
+Pare primeiro; investigue a causa depois que os sistemas estiverem estáveis. A culpa não tem lugar no momento da parada. Durante o ENG-512, o canal ao vivo traz apenas os fatos da interrupção e o pedido de orientação, e qualquer linguagem de culpa que apareça na conversa da parada é moderada. A discussão sobre por que as verificações de autenticação entraram em laço espera pela revisão pós-ação, que é dona do aprendizado. Separar as duas coisas mantém a equipe de resposta concentrada em estabilizar a homologação e dá à revisão posterior uma linha do tempo limpa, em vez de uma discussão registrada no meio do incidente.
+
+### 8.7 Contato secundário
+
+Se o contato de emergência principal não atender em cinco minutos, Sam liga para o secundário nomeado nas ROE; esperar em silêncio não é um plano. A marca de cinco minutos é contada a partir da primeira ligação não atendida, e os horários das duas ligações vão para o registro de atividades. As ROE de Sam listam os dois contatos, e ligar apenas para o principal não é um caminho de parada completo. Ele disca os dois números a partir do cartão das ROE, e não de memória. Se nenhum dos dois atender, a interrupção continua e Sam segue ligando; a janela não é retomada por padrão.
+
+### 8.8 Interruptor de emergência das ferramentas
+
+Todo script de longa duração que Sam inicia tem uma forma conhecida de ser encerrado, como um grupo de processos ou a parada de um contêiner, e ele testa esse interruptor uma vez antes da janela. No ENG-512, o interruptor é a flag de desativação do script mais o comando de encerramento no jump host praticado no ensaio, de modo que Sam pode parar as próprias tarefas sem esperar a linha de suporte de um fornecedor. O ensaio do interruptor é um item da lista do Laboratório II, e uma flag de desativação não testada mantém a automação fora da lista de sábado.
+
+### 8.9 Disciplina de campo
+
+Depois de qualquer parada real, Sam registra uma nota curta e sem culpa: gatilho, tempo até a interrupção, quem foi chamado, se os passageiros foram afetados e uma mudança de processo. A NMT revisa as notas de parada a cada trimestre. Equipes que escondem paradas acabam causando indisponibilidades maiores; equipes que as registram ganham interruptores melhores e ROE mais claras. O exercício do laço de autenticação existe para que a primeira parada não seja também a primeira vez que Sam escreve essa nota. A disciplina de campo para modos de falha é ter condições de parada escritas, mensagens ensaiadas, um contato secundário e um interruptor de emergência, cada um verificado antes de a janela de sábado se abrir, para que o ENG-512 não dependa de heroísmo nem de improviso quando um laço começar.
+
+### Exemplo resolvido (NMT sintética)
+
+Durante um exercício sintético, o script de Sam entra em laço com respostas 401. Ele para o script, publica `ENG-512 stop — looping auth checks on staging API — halted 10:12 — need guidance` e espera.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX029 — Lista de danos.** Nomeie três modos de dano dos testes. *Rubrica:* 3 = três do capítulo; 2 = dois; 1 = um; 0 = nada.
+- **EX030 — Alerta de tarifa.** Um alerta de tarifa aparece durante um teste web. O que Sam faz? *Rubrica:* 3 = parar; acionar o contato de emergência; não tocar na tarifa; 2 = parar; 1 = continuar na web; 0 = nada.
+- **EX031 — Mensagem de parada.** Quais quatro fatos entram numa mensagem de parada? *Rubrica:* 3 = ação, observação, interrupção, pedido; 2 = três; 1 = um; 0 = nada.
+- **EX032 — Falhar de forma fechada.** O que significa falhar de forma fechada para uma ferramenta de teste? *Rubrica:* 3 = para no erro em vez de tentar de novo de forma agressiva; 2 = parcial; 1 = continua; 0 = nada.
+
+### Síntese
+
+Paradas são ensaiadas, rápidas e factuais; as ferramentas devem falhar de forma fechada.
+
+### Continue estudando — capítulo 08 de 18
+
+[← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX016 (as de EX017–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Northline Municipal Transit, Sam Park e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX032 (as de EX033–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Northline Municipal Transit, Sam Park e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Site público, API do planejador de viagens, intranet dos funcionários, Active Directory, VPN (a cobrança de tarifas é o sexto, fora do escopo).
 
@@ -364,6 +663,38 @@ Respostas-modelo para EX001–EX016 (as de EX017–EX072 estão na edição em i
 **EX015.** Do cofre ou de uma variável de ambiente injetada no jump host — nunca fixa no código do script.
 
 **EX016.** Para pegar erros que poderiam tocar sistemas fora do escopo ou vazar segredos, e para que outra pessoa possa executá-lo se Sam estiver ausente.
+
+**EX017.** Ele o deixa fora do achado, captura a tela de novo e guarda um novo hash.
+
+**EX018.** Os bytes do arquivo conferem com o resumo registrado — integridade desde o cálculo do hash —, e não que o sistema em operação continua configurado daquele jeito.
+
+**EX019.** Desfocar rostos de passageiros ou números de crachá de funcionários numa captura de tela, deixando legível o texto da configuração incorreta.
+
+**EX020.** Host dentro do escopo, método permitido e janela de tempo (o contato de emergência é o quarto).
+
+**EX021.** Passageiro e funcionário.
+
+**EX022.** API do planejador de viagens — controle de acesso, para que os passageiros não leiam as viagens salvas de outras pessoas.
+
+**EX023.** Comparar a configuração de autenticação com a documentação dos responsáveis pela produção ou com uma revisão de configuração permitida — sem supor.
+
+**EX024.** Eles estão fora do escopo deste engajamento, então modelá-los convidaria a testes acidentais.
+
+**EX025.** Acesso web, falhas de autenticação da API, autenticações na VPN, bloqueios do WAF (também logins no AD).
+
+**EX026.** Não. Ele precisa de acesso nominal somente leitura sob as ROE.
+
+**EX027.** Isso expõe dados pessoais de passageiros além do que o achado exige e provavelmente viola as ROE.
+
+**EX028.** Uma linha de log mostrando que sua conta de teste recebeu HTTP 200 para o recurso de outro usuário num horário registrado.
+
+**EX029.** Bloqueios de conta, quedas da homologação, acertos acidentais na produção (também tempestades de logs e envenenamento de cache).
+
+**EX030.** Parar os testes, acionar o contato de emergência e deixar os sistemas de tarifa intocados.
+
+**EX031.** O que ele estava fazendo, o que viu, que interrompeu e um pedido de orientação.
+
+**EX032.** No erro, ela para, em vez de tentar de novo de formas que poderiam bloquear contas ou inundar os logs.
 
 <a id="references"></a>
 ## Referências
