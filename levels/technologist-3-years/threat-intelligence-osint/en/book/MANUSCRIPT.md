@@ -46,25 +46,37 @@ You will (1) map the computing estate of a municipal IT service; (2) identify wh
 
 Corvale Municipal Services runs desktops for council staff, library public-access computers, a permits portal, a payments portal, email, a directory, file servers and a backup system. Each serves residents or staff and each can be the target or the evidence source in an intrusion.
 
+Lena groups these systems by who uses them, because that decides which intelligence matters. Staff use desktops, email, the directory and file servers; residents use the permits and payments portals and the library computers; the backup system serves everything behind the scenes. An advisory about one of these groups rarely matters to all of them, so the grouping speeds up her first question about relevance.
+
 ### 1.2 Public-facing systems
 
 The permits and payments portals are reachable from the internet. Exploit Public-Facing Application (T1190) in MITRE ATT&CK describes attackers abusing weaknesses in such services. Intelligence about vulnerabilities in the portal software therefore has direct value to CMS.
+
+Being reachable from the internet means anyone can try the portals at any time, without first getting inside the council network. A flaw in the payments portal software could be found by an attacker scanning widely, not just by someone targeting Corvale. That is why Lena reads advisories about portal software first, and why the exposure column on her asset list matters so much.
 
 ### 1.3 Library computers
 
 Public-access machines are used by anyone. They are reset daily, have no staff accounts and sit on a separate network. Intelligence about malware spreading by USB matters here; intelligence about executive phishing does not.
 
+The daily reset and separate network limit what an infection on a library machine can reach: it cannot spread to staff systems and is wiped by the next morning. USB malware still matters, because a resident's infected stick can carry it in and another resident can carry it out on the same day. Lena therefore files intelligence by whether it fits these machines' real use.
+
 ### 1.4 Evidence holders
 
 Email gateway, web proxy, DNS resolver, directory and endpoint agents keep logs. Lena lists each, its retention period and who can query it, because an indicator nobody can search for is useless.
+
+For each log source Lena records how long entries are kept, because an indicator shared today about activity three weeks ago is useful only if the logs still reach back that far. She also records who can run queries, since a source she cannot search herself means waiting for its owner. Both facts decide how fast an indicator can be checked.
 
 ### 1.5 The asset list
 
 A spreadsheet of product, version, owner and exposure (internet, internal, public-access) is enough to start. When MCX shares an advisory, Lena checks the product column first.
 
+A spreadsheet is enough because the question Lena asks most often is simple: does CMS run this product, and where. Owner tells her who to send an advisory to, version tells her whether the flaw applies, and exposure tells her how urgent it is. The worked example below shows all three columns used together for one advisory.
+
 ### 1.6 Keeping it current
 
 Every change ticket that adds or removes a system updates the list. Lena checks the list against the network team's scan results each quarter and flags differences to owners.
+
+The quarterly comparison catches systems that were added without a change ticket. A difference between the list and the scan is either a system missing from the list or one on the list that no longer exists; either way the owner is asked to confirm. Without this check, an advisory about a forgotten system would be matched against nothing.
 
 ### Worked example
 
@@ -102,25 +114,37 @@ You will (1) explain how DNS, web and email services expose indicators; (2) read
 
 Residents reach CMS through the website, the permits portal and email. Each depends on DNS records that CMS publishes. Attackers imitate these names with lookalike domains to trick residents into paying fake fees.
 
+A resident who receives a message with a link has no easy way to tell corvale-permits-pay.example from a name CMS really publishes. Lena keeps a list of the council's genuine names, so a new lookalike can be compared against it. The fraud aims at residents, but CMS learns about it from residents' reports and from its own logs.
+
 ### 2.2 Resolver logs
 
 A resolver log line typically records time, client, queried name and answer. Lena reads lines such as "08:03 ws-114 pay-portal.example". The client tells her which machine asked; the name tells her whether it matches an indicator.
+
+In the example line, 08:03 is the time, ws-114 the staff machine that asked and pay-portal.example the name it queried. If pay-portal.example is on an indicator list, the line shows that ws-114 at least looked up the name at 08:03. It does not show that the machine connected or entered anything, so Lena treats it as a lead to check, not proof of harm.
 
 ### 2.3 Passive DNS data
 
 Some services publish historical DNS resolutions collected from many resolvers. Looking up a name there is passive: CMS does not contact the suspicious server. Lena may use services CMS has approved and whose terms allow this use.
 
+Being passive matters because contacting a suspicious server could alert its operator or expose CMS's interest. A passive lookup answers questions such as when a name first resolved, without any CMS system touching it. Lena uses only approved services because their terms set what she may look up and how results may be shared.
+
 ### 2.4 Mail flow
 
 Email enters through CMS's gateway, which logs sender, recipient, subject and attachment names. Phishing (T1566) indicators — sender domains, subjects, attachment hashes — are checked here.
+
+The gateway log lets Lena check whether a phishing indicator from MCX has already reached CMS mailboxes. A matching sender domain or attachment hash shows which staff received the message and when. Her log-source notes say who can query the gateway, so she knows at once whether to search it herself or ask its owner. Attachment names in the log help when MCX shares a file name but no hash, though names are easy for attackers to change.
 
 ### 2.5 Documentation addresses
 
 This course uses the ranges 192.0.2.0/24, 198.51.100.0/24 and 203.0.113.0/24, which RFC 5737 reserves for documentation, and the .example domain. Real addresses never appear in teaching material, so nobody blocks or investigates an innocent party by copying an example.
 
+Using these ranges means an example in this book, such as 198.51.100.23, can be pasted into a search or a block list without harming anyone, because no real system uses that address. The 203.0.113.300 value in the chapter 3 lab is deliberately invalid as well as reserved, so it tests the validation step without pointing anywhere real.
+
 ### 2.6 Ports and protocols
 
 Web services use 443 (HTTPS); mail uses 25 between servers. Traffic from office desktops to unusual ports is worth noting, but council applications sometimes use odd ports legitimately — check with owners before treating it as suspicious.
+
+A council planning application might use an unusual port for its database, which looks odd in a log but is normal. Asking the owner first avoids sending an alert, or worse a block, against a service the council depends on. Lena records each confirmed exception so the same question is not asked again every time the port appears.
 
 ### Worked example
 
@@ -158,6 +182,8 @@ You will (1) write small Python scripts that handle indicators as text; (2) refa
 
 Analysts write "pay-portal[.]example" or "hxxps://" so that links in reports cannot be clicked by accident. Scripts must convert these back to normal form — refang — before matching against logs, but only as text.
 
+The square brackets break the domain so that a mail client or document viewer does not turn it into a link. Refanging reverses that only inside the script, where the value is compared with log lines as plain text. In the lab, `replace("[.]", ".")` and `replace("hxxp", "http")` do the conversion, and nothing in the code opens a connection to the resulting host.
+
 ### Lab — refang and classify
 
 ```python
@@ -188,21 +214,31 @@ notes -> notes [invalid]
 
 The defanged URL becomes host pay-portal.example, classified as a domain. 198.51.100[.]23 becomes a valid IPv4 address. update-svc[.]example is a domain. 203.0.113.300 is invalid because 300 exceeds the maximum octet value of 255; the `ipaddress` module rejects it. "notes" is a stray word and is marked invalid rather than guessed.
 
+Two of the five inputs are rejected, and for different reasons. The first is a well-formed address with an impossible octet, caught by the standard library rather than by a hand-written check. The second is not an indicator at all, the kind of stray word that slips into a pasted list. Marking both invalid means a human looks at them instead of the script deciding.
+
 ### 3.3 Text only
 
 The script never opens a connection. Refanging for matching is safe; refanging for clicking is not. Keep defanged forms in documents and refanged forms only inside matching code.
+
+In the lab the refanged value lives only in the variable `v` and in the printed line, which is a text label, not a link. If a report needs to show the indicator, it shows the defanged form. That way a reader who clicks by mistake reaches nothing, and the matching code still works on the normal form it needs.
 
 ### 3.4 Structure
 
 Small functions — refang, extract host, classify — are easier to test than one long block. Each has one job.
 
+The lab is short enough to keep in one loop, but its three steps are already distinct: refang the value, take the host from a URL, then classify the host. Splitting them into functions lets Lena test each step alone, for example checking that host extraction handles a URL with a path without also testing classification. Small functions also make reviews easier, because each change a colleague reads touches one clearly named job.
+
 ### 3.5 Testing edges
 
 Test with values like trailing dots, capital letters and ports ("host.example:8443"). Each edge case either passes cleanly or produces a clear "invalid" so a human can look.
 
+Each of those edge cases carries a clear risk for matching. A trailing dot or capital letters could make the same domain look like two values, and a port number could stop the classifier recognising a host. Lena adds such cases to her test list one at a time and writes down the expected label before running the script, so a surprise is visible.
+
 ### 3.6 Comments and names
 
 Name variables for what they hold — `host`, `kind` — not `x` and `y`. A one-line docstring at the top states the script's purpose and that it uses synthetic data, which helps reviewers and future maintainers.
+
+The lab's own docstring follows this rule: it says what the lab does, that it is synthetic and that it uses no network. A reviewer reading only that line knows the script is safe to run. Clear names matter when the script is reused months later by a colleague who has not seen Lena's notes.
 
 ### Version control
 
@@ -244,6 +280,8 @@ You will (1) explain the structure of STIX 2.1 objects; (2) read a bundle with P
 
 STIX 2.1 represents intelligence as typed JSON objects — indicator, attack-pattern, malware, threat-actor, report — each with an `id` made from its type and a unique identifier. Relationship objects connect them with a `source_ref`, a `target_ref` and a `relationship_type` such as "indicates" or "uses".
 
+The `id` field makes each object addressable, so a relationship can point to it by name instead of copying it. An indicator that "indicates" an attack-pattern is therefore two objects and a link between them. This structure lets a sender share pieces separately, which is also how a link can end up pointing to an object that was never sent, as the lab shows.
+
 ### Lab — reading a bundle
 
 ```python
@@ -275,21 +313,31 @@ relationship--d indicates DANGLING target malware--z
 
 The bundle holds one indicator, one attack-pattern (Phishing, external identifier T1566) and two relationships. The first links the indicator to the attack pattern correctly. The second points to malware--z, which is not in the bundle — a dangling reference. It may exist in the sender's database, but CMS cannot use it without the object.
 
+Lena checks the counts against the bundle text: one indicator, one attack-pattern and two relationships, four objects in all, matching the printed dictionary. The check that finds the dangling link is the simplest possible one, whether each referenced id is present in the bundle, and it is enough to catch the export fault MCX later fixed.
+
 ### 4.3 Patterns
 
 An indicator's `pattern` field uses STIX patterning, such as matching a domain-name value. Lena extracts the value for matching but keeps the full pattern for reference.
+
+In the lab bundle the pattern is "[domain-name:value = 'pay-portal.example']", from which Lena extracts the value pay-portal.example. Matching only needs that value, but the full pattern records exactly what the sender meant, including the object type. Keeping both avoids losing information if a later pattern is more complex than a single equality.
 
 ### 4.4 What to keep locally
 
 CMS's simple store keeps: indicator value, type, source, TLP marking, valid_from, and linked ATT&CK identifiers. Other fields are stored in the original JSON for reference.
 
+These fields answer the questions Lena asks when a match occurs: what was matched, what kind of value it is, who sent it, how widely it may be shared, since when it applies, and what technique it relates to. The TLP marking is stored with each value, so a match never leads to sharing more widely than the source allowed.
+
 ### 4.5 Other formats
 
 Partners also send CSV and email lists. Mapping each to the same local fields lets all sources be searched together.
 
+A CSV row from one partner and an email list from another end up with the same value, type and source fields as an indicator taken from STIX. Lena can then search for pay-portal.example once and see every source that mentioned it. Without the mapping she would search three formats separately and might miss a source. Fields a format lacks, such as a TLP marking in a plain email list, are filled from the message's own label.
+
 ### 4.6 Timestamps
 
 STIX timestamps are in UTC with a trailing "Z". Keep them in UTC in storage and convert only when displaying to staff, so comparisons across sources stay correct.
+
+The resolver log and an MCX indicator may come from different systems, but if both are stored in UTC, comparing a lookup time with an indicator's valid_from date is direct. Staff see local time in their reports, converted at display, so they read a familiar clock while the stored records remain consistent with every other source.
 
 ### Worked example
 
@@ -327,25 +375,37 @@ You will (1) describe common threats to local government; (2) explain the CTI cy
 
 Local governments face payment fraud through lookalike portals, ransomware that disrupts services (Data Encrypted for Impact, T1486), credential phishing against staff, and defacement of public websites. Residents' trust makes even minor incidents newsworthy.
 
+Each threat maps to part of the estate described in chapter 1. Lookalike portals copy the permits and payments services, ransomware would hit file servers and backups, phishing reaches staff email and the directory, and defacement targets the public website. Lena uses that mapping to decide which owner should receive each kind of intelligence.
+
 ### 5.2 The cycle in a small team
 
 Direction from the security manager, collection from MCX and public advisories, processing in Lena's scripts, analysis with her supervisor, dissemination to owners and feedback at a weekly meeting. In a team of three, the cycle is informal but each stage still happens.
+
+In practice, the security manager says what to watch, Lena gathers MCX items and public advisories, her scripts deduplicate and classify, and she and her supervisor judge relevance. Owners then receive what they need, and the weekly meeting reviews what was useful. Each stage can be done in minutes, but skipping one usually shows up as noise or a missed item.
 
 ### 5.3 TLP 2.0
 
 TLP:CLEAR — no limit. TLP:GREEN — the community, not public. TLP:AMBER — the organisation and its clients, need to know. TLP:AMBER+STRICT — the organisation only. TLP:RED — named recipients only. FIRST's definitions are short; Lena keeps a copy beside her desk.
 
+The difference between AMBER and AMBER+STRICT matters at CMS, because AMBER allows sharing with clients on a need-to-know basis while AMBER+STRICT keeps an item within the organisation. Lena checks the label before forwarding anything outside the security team, and the worked example shows what she does when a wider audience is needed.
+
 ### 5.4 Information versus intelligence
 
 A list of fraud domains is information. A note saying "residents are being targeted with fake permit-payment sites this month; we have asked the hosting provider to take two down and posted a warning on the council site" is intelligence: assessed and tied to action.
+
+The second statement adds what the first lacks: who is targeted, what CMS has done and what readers should know. A list of domains leaves every reader to work that out alone. Lena's job is to make the step from list to assessment once, so owners receive something they can act on immediately.
 
 ### 5.5 Who acts
 
 Lena informs; owners act. The web team posts warnings; the network team blocks; the communications team speaks to residents.
 
+Keeping action with owners means each team decides in its own area: the web team knows how to word a warning on the site, the network team knows what a block will affect, and communications knows how residents will read a message. Lena's notes name the owner and the suggested action, so nobody has to guess who should move. When an owner decides not to act, Lena records the decision so the weekly meeting can revisit it.
+
 ### 5.6 Proportion
 
 Not every advisory is urgent. Lena labels each item as act now, act this week, or note only, so owners can plan.
+
+The three labels map directly onto how owners plan their work. Act now goes to the right owner immediately, such as a block for a domain already in resolver logs; act this week fits a normal patch or change cycle; and note only is filed for reference. The worked example in chapter 1 shows an internal document system routed to the normal patch cycle rather than labelled act now.
 
 ### Worked example
 
@@ -383,25 +443,37 @@ You will (1) relate operating-system activity to ATT&CK techniques; (2) use virt
 
 Processes, services, scheduled tasks and accounts are where intrusions become visible. ATT&CK techniques such as Command and Scripting Interpreter (T1059) and Scheduled Task/Job (T1053) describe common behaviours. Endpoint logs recording process starts with command lines help confirm or rule out reported behaviour.
 
+When MCX describes behaviour such as a scheduled task with a particular name, the endpoint logs are where CMS can check whether the same thing happened on its own machines. Command lines matter because the same program, such as a scripting interpreter, is used daily by administrators; the arguments are what separate routine maintenance from the behaviour described in a report.
+
 ### 6.2 Virtual machines
 
 A virtual machine runs a separate operating system on shared hardware. Analysts use them to read reports, run scripts on synthetic data and open documents in an environment that can be reset. Snapshots capture a known-good state to return to.
+
+For Lena, the main value is being able to undo mistakes. If a document she opens from a partner turns out to be harmful, or a script behaves unexpectedly, she returns the machine to its snapshot and loses nothing that mattered. Her own work, such as notes and scripts, is kept in the team repository rather than only inside the VM.
 
 ### 6.3 Isolation limits
 
 Virtual machines reduce risk but are not perfect barriers. Network settings matter: a machine with internet access can still contact adversary servers. CMS's analysis VM has no network route except to the internal update server.
 
+Restricting the analysis VM to the internal update server means a document that tries to fetch something from the internet simply fails. That also stops Lena from accidentally visiting a link from a report, because there is no route to follow it. The single permitted route exists so the machine can still receive patches.
+
 ### 6.4 Suspicious files
 
 Technologist-level analysts do not run malware. If a suspicious attachment arrives, Lena records its hash and metadata, submits it through CMS's approved sandbox service if policy allows, and leaves deeper analysis to qualified staff.
+
+Recording the hash and metadata lets Lena check the file against MCX intelligence and the email gateway logs without opening it. The approved sandbox is used only where policy allows, because uploading a council document to an outside service may share information CMS has not agreed to share. Deeper analysis needs skills and safeguards a technologist post does not have.
 
 ### 6.5 Containers
 
 Containers share the host kernel and isolate less than virtual machines. They suit packaging scripts, not handling hostile files.
 
+A container is a convenient way to give colleagues Lena's matching scripts with the right Python version, because it starts quickly and behaves the same on each machine. Because it shares the host's kernel, a flaw that lets a process escape would reach the host directly, which is why hostile files stay inside the VM. Lena notes this difference in the team's handling guide, so nobody chooses a container for a task that needs the stronger isolation of a VM.
+
 ### 6.6 Patching the analysis environment
 
 Analysis machines need updates too; an outdated VM is an easy target. Lena refreshes the base image monthly and re-creates her snapshot afterwards.
+
+Re-creating the snapshot after each update matters, because otherwise every reset would return the VM to its unpatched state and undo the month's fixes. Lena records the date of each refresh, so she can tell whether a problem appeared before or after an update. A monthly refresh fits the rhythm of the patch releases Lena's tools receive. An outdated VM is especially risky for Lena, because the documents she opens there come from outside the council by design.
 
 ### Worked example
 
@@ -439,25 +511,37 @@ You will (1) explain why stolen credentials are central to many intrusions; (2) 
 
 Phishing pages that imitate the council's single sign-on page collect staff passwords. Attackers then log in normally — Valid Accounts (T1078). Many intrusions involve no malware at all.
 
+A login with a stolen password looks like the real user to most systems, so no malware alert fires and no unusual file appears. This is why intelligence about credential phishing, such as lookalike sign-on pages, is matched against identity logs and DNS rather than against endpoint protection, which may see nothing at all.
+
 ### 7.2 Sign-in logs
 
 The identity provider logs user, time, source address, application and result. When MCX shares addresses used in credential attacks against councils, Lena searches sign-in logs for successful logins from them.
+
+Searching for successful logins matters most, because failures alone show attempts that did not work. A success from an address MCX has linked to credential attacks shows which account may now be in an attacker's hands. Lena records the time range searched with every result, because the addresses are useful only for days before attackers move on.
 
 ### 7.3 Supporting controls
 
 Intelligence that councils face password-spraying justifies lockout thresholds and multi-factor authentication for all staff, including part-time library workers who were previously exempt.
 
+The library workers were exempt from multi-factor authentication, which made their accounts the easiest target for password-spraying, since the attacker tries a few common passwords across many accounts. Intelligence that other councils face this attack gives the security manager evidence to remove the exemption, rather than an abstract argument about good practice. Lockout thresholds also limit how many guesses an attacker can make against one account before it is temporarily locked.
+
 ### 7.4 Exposure notices
 
 Sometimes a partner reports CMS addresses found in a public credential dump. Lena never tests the passwords. She passes the list to the identity team through a restricted ticket; they force resets.
+
+Testing the passwords, even to see whether they still work, would mean using credentials CMS staff never gave her and logging into accounts that are not hers. The restricted ticket limits who can see the list, because it contains staff names and possibly passwords. Forced resets make the leaked passwords useless whether or not they were still valid.
 
 ### 7.5 Shared accounts
 
 Shared logins on library staff desks make it impossible to tell who did what. Intelligence about account abuse strengthens the case for individual accounts.
 
+When a shared library login appears in an alert, nobody can say which staff member was at the desk, so investigation stops at the account. Individual accounts make each action traceable and let one account be disabled without locking out every library desk. MCX reports of account abuse at other councils give the case concrete examples.
+
 ### 7.6 Service accounts
 
 Accounts used by applications often have broad rights and passwords that never change. When intelligence describes attackers seeking such accounts, the identity team reviews their rights and rotates credentials first.
+
+Service accounts are attractive because one stolen password may give broad access and nobody notices unusual use. Reviewing rights first reduces what a stolen password could do, and rotation makes an older stolen password useless. The identity team schedules rotation with application owners, because changing a password the application still uses would break it.
 
 ### Leavers and dormant accounts
 
@@ -499,25 +583,37 @@ You will (1) describe layered defences in a municipal network; (2) choose the ri
 
 Email gateway, DNS filter, web proxy, endpoint protection, identity provider, network segmentation and backups. Each layer can use some intelligence; none uses all of it.
 
+Lena keeps a short note of what each layer can accept: domains for DNS, addresses for the firewall, hashes for endpoint protection, sender details for the email gateway. That note answers the first question for every new indicator, which is where it can actually be used, before anyone discusses whether it should be. The backup layer cannot take indicators at all, so ransomware intelligence reaches it only as advice about design.
+
 ### 8.2 Matching indicators to layers
 
 Sender domains go to the email gateway; malicious domains to DNS and proxy; file hashes to endpoint protection; addresses used in password attacks to identity-provider conditional access; ransomware technique intelligence to backup design.
+
+The ransomware item in that list is different from the rest: it does not produce a block, but supports a design decision such as keeping an offline backup. Lena routes each type to the owner of the matching layer, so a hash does not end up in a firewall request where it could never match anything.
 
 ### 8.3 Segmentation
 
 Library public computers, staff desktops, servers and payment systems sit in separate zones. Intelligence about attackers moving between systems via remote services (T1021) supports keeping those zones strictly separated.
 
+If library public computers could reach staff servers, an infection brought in on a resident's USB stick would have a path to council data. Keeping the zones separate means an attacker who gains one zone must still cross a boundary, where the network team can watch and block. Intelligence about lateral movement reminds owners why that boundary must stay strict.
+
 ### 8.4 Collateral damage
 
 Blocking a shared hosting address can cut off a legitimate supplier. Blocking a popular file-sharing domain stops staff from receiving planning documents. Before blocking, Lena checks whether the indicator is shared or popular and asks the owner.
+
+The cost of a wrong block falls on residents and staff, not on the attacker, who usually moves to a new address. Lena checks how many sites share an address and whether a domain is widely used before recommending a block. The worked example shows that the narrower choice, a domain rather than an address, often achieves the same protection.
 
 ### 8.5 Payment card systems
 
 The payments portal falls under card-industry rules. Changes there go through its own approval process; intelligence is passed to its owner, not applied directly.
 
+The card rules require changes to the payments portal to be approved and recorded, so a block or configuration change applied directly by the security team could break compliance as well as the service. Lena therefore sends intelligence about payment fraud or portal software to the payments owner, who decides whether and how to act. Lena still records each item she sends there, so the payments owner's decision appears in her monthly table.
+
 ### 8.6 Recording blocks
 
 Every block is recorded with its source, reason, date and review date. When a resident complains that a site is unreachable, the service desk can check the record and lift a mistaken block quickly.
+
+The review date makes each block temporary unless renewed, which matters because addresses and domains change hands. A domain used for fraud today may be cleaned up or sold within months. Recording the source also lets Lena remove every block based on a feed that later proves unreliable, without hunting through firewall rules one by one.
 
 ### Backups and recovery
 
@@ -559,29 +655,43 @@ You will (1) record the provenance of each intelligence item; (2) separate what 
 
 For every item Lena records who sent it, when, how, under which TLP, and what the sender based it on. Without provenance, the same indicator copied by three newsletters looks like three confirmations.
 
+Provenance answers the question of how much weight an item deserves. If three newsletters all repeat one MCX post, the indicator has one source, not three, and counting it three times would overstate confidence. The worked example below shows the method on exactly that case. How the item arrived matters too, since an email from an unknown address claiming to be MCX deserves checking before it is trusted.
+
 ### 9.2 Observation and conclusion
 
 "The proxy logged ws-114 contacting pay-portal.example at 08:03" is an observation. "A staff member probably entered credentials" is a conclusion. Reports keep them in separate sentences so readers can judge each.
+
+The observation can be checked by anyone with access to the proxy log, while the conclusion depends on what the user did on the page, which the log does not show. Keeping them apart lets a reader accept the first and question the second. It also keeps a manager from treating a guess as a fact when deciding on a password reset.
 
 ### 9.3 Outcome counting
 
 "500 indicators imported" counts activity. "Two staff were stopped from reaching the fraud page by the DNS block" counts an outcome. Lena reports both but leads with outcomes in the monthly summary.
 
+The number of indicators imported says nothing about whether anyone was protected, and a large number may only mean a noisy feed. The DNS block that stopped two staff members from reaching the fraud page shows a specific effect. Leading with outcomes keeps the monthly summary about value rather than volume.
+
 ### 9.4 Negative results
 
 "No matches" is useful only with its query, time range, data source and coverage. "No DNS lookups of the three domains in the last 30 days across all staff resolvers; library resolvers not included" lets the reader see what was and was not checked.
+
+The example sentence names its gap explicitly: library resolvers were not searched. A reader then knows that a library computer could still have looked up the domains. The worked example below shows the gap mattering, when a widened search found one lookup on a library computer that the narrower search had missed.
 
 ### 9.5 Timeliness
 
 Record when intelligence arrived and when it was acted on. Long gaps point to process problems.
 
+For an MCX item about a fraud domain, the time between its arrival and the DNS block is what decides how many residents or staff could still reach the page. Recording both times for every item lets Lena find where delays occur, such as waiting for an owner to reply or a block request sitting in a queue. The median time to action in the monthly table is calculated from these two recorded times for every item that led to action.
+
 ### 9.6 Keeping evidence
 
 Exported log extracts used in a finding are saved with the ticket, hashed, and kept under the retention rule. If the finding is challenged, the evidence can be shown exactly as it was.
 
+Hashing the extract at the time it is saved means a later copy can be compared to show it has not changed. Keeping it with the ticket keeps the evidence next to the decision it supported. The retention rule sets how long the extract is kept, so evidence is neither deleted early nor held longer than the council's rules allow.
+
 ### 9.7 Simple dashboards
 
 A one-page monthly table — items received, items acted on, blocks that stopped connections, median time to action — gives the manager a view of value without overwhelming detail.
+
+Each column answers a question the manager might ask: how much arrived, how much led to action, whether any action prevented harm, and how fast the team works. Keeping it to a single page means the manager actually reads the table. Lena keeps the detailed records behind it, so any figure can be traced to the items that produced it.
 
 ### Worked example
 
@@ -619,25 +729,37 @@ You will (1) define CTI and OSINT for a technologist role; (2) place the role wi
 
 Cyber threat intelligence is analysed information about threats that supports defensive decisions. Open-source intelligence is intelligence derived from publicly available information collected lawfully. NIST SP 800-150 describes how organisations share threat information to strengthen defences.
 
+The word analysed is what separates intelligence from the lists Lena receives. An MCX list of fraud domains becomes intelligence once someone has judged its relevance to CMS and tied it to a decision, as the permit-payment note in chapter 5 showed. The OSINT definition adds a condition that matters as much as usefulness: the information must be public and gathered lawfully.
+
 ### 10.2 The technologist's role
 
 Lena's tasks: collect from approved sources, validate and normalise indicators, match them against logs, maintain the indicator store, draft short notes and support analysts. She does not decide blocks on critical systems or publish attribution.
+
+Every task on that list prepares information for someone else to decide on. Lena's matching may show that ws-114 looked up a fraud domain, but whether to block it on a critical system belongs to the owner. Attribution is left out because naming an actor publicly needs evidence and authority far beyond a work-study post.
 
 ### 10.3 Models
 
 The intrusion kill chain (Hutchins, Cloppert and Amin, 2011) splits intrusions into phases, showing where defenders can act. The Diamond Model (Caltagirone, Pendergast and Betz, 2013) describes each event by adversary, capability, infrastructure and victim. MITRE ATT&CK catalogues observed techniques.
 
+Each of the three models answers a different question for Lena. The kill chain asks where in an intrusion CMS can act, the Diamond Model asks what is known about one event and what is missing, and ATT&CK gives a shared name for each technique. Lena already uses ATT&CK identifiers such as T1566 and T1190 in her asset list and notes.
+
 ### 10.4 Standards
 
 STIX 2.1 is the data format; TAXII 2.1 the exchange protocol; FIRST TLP 2.0 the sharing labels.
+
+Each standard covers one part of the exchange with MCX. STIX defines how an indicator and its relationships are written, as in the bundle from chapter 4; TAXII defines how CMS collects those bundles from MCX; and TLP tells Lena how widely each item may travel once it arrives. Using shared standards means Lena's scripts can read a bundle from any MCX member without a custom parser for each council. The TLP labels mean the same thing to every member, so an AMBER item from a neighbouring city carries the same limits at CMS as it did where it was written. When a sender departs from a standard, as with the dangling reference in chapter 4, the standard gives Lena a clear basis for asking them to fix it.
 
 ### 10.5 OSINT rules
 
 Use only approved sources and methods. Follow each site's terms of service. Do not create fake accounts, join closed groups, or collect personal data beyond the need. Data-protection law applies to public personal data.
 
+These rules apply even when breaking them would be easy, for example joining a closed forum where fraud kits are discussed. A fake account there would breach the site's terms and could expose CMS legally, whatever the intent. The worked example below shows the personal-data rule applied to residents who complained about fraud texts.
+
 ### 10.6 Where OSINT helps CMS
 
 Certificate-transparency logs for lookalike domains, public vulnerability advisories, official government alerts, and passive DNS through approved services. These answer CMS questions without touching adversaries.
+
+Each of these sources answers a question that CMS already has. Certificate-transparency logs show new certificates for names resembling Corvale's, which often appear before a fraud page goes live. Advisories answer whether the portal software is affected, and passive DNS shows when a lookalike first resolved, all without CMS touching the suspicious infrastructure. Lena records which approved service answered each question, so a finding can be repeated by a colleague later.
 
 ### Career path
 
@@ -679,25 +801,37 @@ You will (1) build a threat-relevance view of CMS assets; (2) link asset types t
 
 Lena adds two columns to the asset list: "services residents depend on" and "techniques of concern". The payments portal: fraud lookalikes and T1190. Staff email: T1566. File servers: T1486. This view lets her sort incoming intelligence quickly.
 
+With these columns, an MCX item about T1190 against payment software sorts straight to the payments portal, while an item about T1486 goes to the file-server owner. Lena no longer reads every item against the whole estate; the technique identifier points to the rows that matter, and the owner column says who receives the note.
+
 ### 11.2 Business impact
 
 Payments and permits affect residents directly and bring revenue; the intranet affects only staff. When two advisories arrive together, the one touching resident-facing services goes first.
+
+Resident-facing services carry two kinds of harm at once: residents cannot do what they need, and CMS loses income and trust. An intranet outage inconveniences staff, but a fix can usually wait a day. This ordering lets Lena decide quickly when two items compete for the same morning, without asking the manager every time. Lena writes the reason for the order into her notes, so an owner whose item waited knows why it came second.
 
 ### 11.3 Seasonal context
 
 Council tax deadlines and elections bring spikes in fraud and attention. Lena marks those dates on the team calendar so monitoring increases beforehand.
 
+Fraudsters time lookalike payment pages for when residents expect to pay, so a deadline makes fake reminders more convincing. Marking the dates in advance gives time to warn residents and to watch for lookalike domains before the texts start. The worked example below shows this working two weeks before a council-tax deadline. The calendar also includes election dates, when defacement of the council website would attract more attention than usual.
+
 ### 11.4 Owner conversations
 
 Owners know what spreadsheets say nothing about: that the permits portal will be replaced in spring, or that a supplier connects every night. Quarterly chats keep context fresh.
+
+Knowing that the permits portal will be replaced in spring changes how Lena treats an advisory for its current software: still relevant now, but not worth a long-term plan. A supplier connecting every night explains traffic that would otherwise look suspicious. Both of these facts come only from talking to the owners themselves. Lena writes down what each owner tells her, so the context survives when she or the owner moves on.
 
 ### 11.5 Dependencies
 
 The payments portal depends on an external payment provider. Intelligence about that provider matters to CMS even though CMS does not run it.
 
+CMS cannot patch or monitor the payment provider's systems, but residents will blame the council if payments through its portal go wrong. Intelligence about the provider therefore goes to the payments owner, who can ask the provider questions under their contract. Lena keeps the provider's name beside the payments portal entry, so advisories that mention the provider are matched like any other product. The same applies to any supplier with access to CMS systems, such as the one that connects every night.
+
 ### 11.6 Writing context into notes
 
 Each intelligence note names the affected asset, its owner, its exposure and the relevant date context, so the reader understands why the item matters to CMS today.
+
+A note that names the payments portal, its owner, its internet exposure and an approaching tax deadline tells the reader why it cannot wait until next week. Without those details, the same item could look like general news. Writing context in also helps later readers who see the note without knowing what was happening at the time.
 
 ### Crown jewels
 
@@ -739,6 +873,8 @@ You will (1) trace intelligence from source to enforcement; (2) normalise and de
 
 MCX TAXII collection and email, a vendor list and public advisories arrive; Lena's scripts normalise and deduplicate them; the indicator store holds results; exports feed the DNS filter, proxy and endpoint tool; feedback returns via tickets.
 
+Each stage in this flow has a clear owner and a clear output. Lena owns the scripts and the store, network and endpoint teams own the tools that receive exports, and tickets carry feedback such as a false positive back to her. Seeing the whole path helps her find where an indicator went missing, as the worked example below shows.
+
 ### Lab — normalise and deduplicate
 
 ```python
@@ -767,25 +903,35 @@ update-svc.example ['vendor']
 
 Six raw rows collapse to three unique indicators after lower-casing and removing trailing dots. pay-portal.example was reported by MCX, the vendor and a public source; 198.51.100.23 by MCX and a public source; update-svc.example only by the vendor. The script keeps every source for each value.
 
+Lena checks the counts by hand: three spellings of pay-portal.example, two rows for 198.51.100.23 and one for update-svc.example make six rows and three values. The normalisation is the line `v.strip().lower().rstrip(".")`, which removes surrounding spaces, capital letters and a trailing dot.
+
 ### 12.3 Why keep provenance
 
 When the vendor later withdraws update-svc.example as a false positive, Lena can remove it confidently because no other source reported it. If she had discarded sources during deduplication, she could not tell.
+
+Removing it is safe because the store shows the vendor as the only source. If MCX had also listed update-svc.example, Lena would keep it and ask MCX whether they agreed with the vendor. Provenance therefore protects both directions: it prevents keeping a withdrawn indicator and prevents deleting one that still has independent support.
 
 ### 12.4 Loss points
 
 Data is lost when spreadsheets reformat values, when exports truncate long fields, or when TLP labels are not carried into enforcement tools. Lena checks each hand-off.
 
+Each loss point is silent: a spreadsheet that turns an address into a number, an export that cuts a long domain, or a block that loses its TLP label shows no error. Lena compares counts before and after each hand-off, which is how the shortened domains in the worked example were found. Each check is recorded on the flow diagram with its date, so a later difference can be compared with the last good count.
+
 ### 12.5 Documentation
 
 A one-page diagram shows each source, script, store and export with owners and schedules. New staff learn the flow in minutes.
+
+The diagram also records limits found at each step, such as the DNS filter's entry length. Owners and schedules matter when something breaks, because a new colleague can see whom to ask and when the next export should run. A one-page format keeps the diagram current, since it takes little effort to update. Lena updates the diagram whenever a source, script or export changes, and dates each update so readers know how current it is.
 
 ### 12.6 Normalisation rules
 
 Rules are written down: lower-case domains, strip trailing dots, keep addresses as written after validation, never alter hashes except to lower-case them. Unwritten rules drift between scripts.
 
+Hashes are only lower-cased because changing anything else would make them refer to a different file. Addresses are kept as written after validation because the `ipaddress` module has already confirmed they are well formed. Writing the rules down lets Lena's deduplication script and any colleague's script produce the same values. Each rule is written beside an example value, so a reader can see exactly what the rule changes and what it leaves untouched.
+
 ### Worked example
 
-The DNS filter shows fewer entries than the store. Lena traces the export: the filter accepts at most 255 characters per entry, and two long lookalike domains were silently cut. She shortens nothing; instead she sends those two to the proxy, which accepts them, and notes the limit on the diagram.
+The DNS filter shows fewer entries than the store. Lena traces the export: the filter accepts at most 64 characters per entry, and two long lookalike domains were silently cut. She shortens nothing; instead she sends those two to the proxy, which accepts them, and notes the limit on the diagram.
 
 > **Synthetic case.** The limits and domains are invented.
 
@@ -819,29 +965,43 @@ You will (1) write threat scenarios grounded in intelligence; (2) map scenarios 
 
 A scenario names the actor type, goal, entry route, key techniques, affected service and impact. Example: "Fraud group registers lookalike payment domains, sends texts to residents, collects card details; residents lose money and trust in CMS falls."
 
+The fraud example fills each part: a fraud group as actor, money as goal, texts with links as entry route, lookalike domains and fake pages as techniques, payments as the affected service, and losses and reduced trust as impact. A scenario missing one part usually means a question nobody has answered yet.
+
 ### 13.2 Grounding
 
 Each scenario cites intelligence: MCX reports from other councils, public advisories, CMS incidents. Scenarios without evidence are speculation.
+
+Grounding gives each scenario a reason to exist that a manager can check. The fraud scenario rests on MCX reports of fake payment pages at other councils and on residents' complaints at CMS. A scenario with no such basis may still be worth noting, but it is labelled as speculation so nobody spends money on it as if it were evidenced. Each citation in a scenario uses the source's TLP label, so the scenario itself is marked no more widely than its most restricted source.
 
 ### 13.3 Mapping
 
 The ransomware scenario: phishing (T1566) for entry, valid accounts (T1078), remote services (T1021) to spread, encryption (T1486) for impact. Mapped to kill-chain phases: delivery, exploitation via credentials, actions on objectives.
 
+The mapping shows where CMS can act at each step. Phishing is met at the email gateway, valid accounts at the identity provider with MFA, spread through remote services at zone boundaries, and encryption with offline backups. A step with no matching control is visible at once, which is the purpose of the next measure.
+
 ### 13.4 Bands
 
 Likelihood: likely, roughly even, unlikely. Impact: minor, moderate, severe. Bands keep discussion honest when data is thin.
+
+Lena rarely has data to calculate a probability, and a precise-looking number would invite arguments about decimals. Three bands are enough to rank scenarios, as the worked example shows: fraud likely and moderate, ransomware roughly even but severe. Managers can then see that rare but severe and frequent but minor need different responses. Lena rates each scenario together with her supervisor, so the band reflects two judgements rather than one person's impression.
 
 ### 13.5 Controls
 
 Each scenario lists existing controls and gaps. The fraud scenario: CT-log monitoring exists; resident warnings exist; takedown process is slow — a gap.
 
+Listing gaps next to controls turns the scenario into a request for something specific. For fraud, CT-log monitoring and resident warnings work, but a slow takedown process leaves fraud pages live longer. That gap is what the manager funded in the worked example, which shows the list leading directly to a decision. Gaps are written as specific missing capabilities, so the manager can see what money or time would close each one.
+
 ### 13.6 Review rhythm
 
 Scenarios are reviewed every six months, or sooner if MCX reports a new pattern. Retired scenarios are archived, not deleted.
 
+Six months suits a council whose services change slowly, while an MCX report of a new pattern is a reason to review early. Archiving retired scenarios keeps the reasoning behind past decisions, so if a pattern returns, Lena can see what was decided before and why the scenario was retired. Each review records what changed and why, so the history of a scenario's rating can be followed from one review to the next.
+
 ### 13.7 Audience
 
 Managers read scenarios to set priorities; engineers read them to choose detections. A short summary line and a technical table serve both.
+
+The summary line for fraud might say that residents are being targeted with fake payment pages and that takedown is slow. The technical table lists the techniques, data sources and detections. A manager reads the first and decides; an engineer reads the second and builds, from the same scenario. Lena checks that the summary line and the table agree, so the two audiences are not given different versions of the same risk.
 
 ### Using the Diamond Model
 
@@ -883,29 +1043,43 @@ You will (1) triage incoming items consistently; (2) grade sources and informati
 
 Is it relevant to CMS assets? Is it timely? Is it actionable? Is the source known? Items failing relevance are logged and closed.
 
+Lena asks the questions in that order because each one is cheaper to answer than the next. Relevance needs only the asset list; timeliness needs the date; actionability needs a look at what CMS could change; source needs the record of past items. An MCX item about software CMS does not run stops at the first question, logged and closed in under a minute.
+
 ### 14.2 Grading
 
 The Admiralty scale grades source reliability A–F and information credibility 1–6. MCX, with a long accurate record, is usually B; an anonymous forum post is F. Information confirmed by CMS's own logs is 1.
+
+The two grades are kept separate because a reliable source can pass on doubtful information and an unknown source can be right. B2 for the invoice-phishing item in the worked example means MCX is usually reliable and the report is probably true. If CMS's own gateway logs later show the same sender domains, the credibility part can move to 1.
 
 ### 14.3 Tagging
 
 Lena tags each relevant item with ATT&CK identifiers supported by the text. "Attackers sent invoice emails with links" supports T1566; it does not support T1059 unless the text mentions scripts.
 
+Tagging only what the text supports keeps the tags useful when Lena later searches by technique. If every phishing report were also tagged T1059 on a guess, a search for script-based activity would return items that never mentioned scripts, and the scenario mapping would show threats CMS has no evidence for.
+
 ### 14.4 The three-line note
 
 Line one: what happened and where. Line two: relevance to CMS with confidence. Line three: recommended action and owner. Busy owners read three lines.
+
+The worked example below follows this three-line pattern exactly, line by line. Line one says what MCX reported and against whom; line two says why it matters to CMS, the shared invoicing supplier, and gives moderate confidence; line three names actions for the email team and the finance manager. A reader who stops after line three still knows what to do.
 
 ### 14.5 Consistency
 
 Lena and her supervisor triage the same ten items monthly and compare decisions, discussing differences.
 
+Ten items a month is small enough to discuss each disagreement. If Lena closes an item her supervisor would have kept, the discussion shows which question they answered differently, often relevance. Over time, the comparison shows whether their decisions are converging, which matters because Lena triages most items alone. They record each disagreement and its resolution in a short table, which becomes a set of worked examples for future triage. When a disagreement turns on a missing rule, such as how to treat vendor blogs, the rule is written down and added to the triage guide.
+
 ### 14.6 Time budget
 
 Triage takes minutes per item. If an item needs more, it moves to analysis with a note explaining why.
 
+A few minutes per item keeps the daily flow moving: MCX alone can send many items in a week. Items that need more, such as a fraud domain that may be linked to others, go to analysis with a sentence saying what question remains. That keeps triage from turning into open-ended research on the first interesting item. Lena records the time each item took, so the monthly table can show whether triage is staying within its budget.
+
 ### 14.7 Logging
 
 Every item, including closed ones, is logged with date, source, decision and reason, so patterns in irrelevant traffic can be spotted and sources tuned.
+
+Logging closed items shows, for example, that a vendor list sends many items about products CMS does not run. That pattern is invisible if only relevant items are recorded. Lena can then ask the vendor to filter, or lower the feed's priority, using the log as evidence rather than impression. The reason field matters most, because a closed item whose reason is blank cannot be reviewed when the same threat returns.
 
 ### Calibrating with peers
 
@@ -947,6 +1121,8 @@ You will (1) match indicators against a synthetic DNS log; (2) summarise hits pe
 
 The lab uses a synthetic resolver log and two indicators. It runs offline in the course virtual machine with the standard library. Students must not paste real CMS logs into lab files.
 
+Keeping real CMS logs out of lab files protects staff privacy and avoids copying council data into teaching material that might be shared. The synthetic log has six lines, which is small enough for a student to check every output by hand. Running offline means the lab cannot contact any of the names it contains.
+
 ### Lab — matching a log
 
 ```python
@@ -977,25 +1153,37 @@ non-match kept for review: pay-portal.example.org (suffix differs)
 
 ws-114 looked up pay-portal.example once, first at 08:03 UTC. ws-207 looked up update-svc.example twice, first at 09:12. A lookup of pay-portal.example.org was not matched: it contains the indicator as a substring but is a different domain. The script prints it for review rather than ignoring it silently.
 
+Lena checks the printout against the six lines: two exact matches for ws-207 and one for ws-114, with the 10:40 lookup by ws-031 excluded. The first times printed come from the first matching line for each host. The near miss is printed by a fixed statement in the lab rather than detected by the code, a simplification a real script would replace with a lookalike check.
+
 ### 15.3 Exact versus substring
 
 Substring matching would flag pay-portal.example.org and perhaps legitimate names. Exact matching on the full name, after normalisation, avoids false alarms. Separate rules can watch for lookalikes deliberately.
+
+A substring check for pay-portal.example would also match pay-portal.example.org and any longer name containing that text, so every such lookup would look like contact with the fraud domain. Exact matching on the full name keeps each reported hit precise. Lookalike detection is a different question with different tolerance for noise, so it gets its own rule and review.
 
 ### 15.4 Hand-off
 
 Responders need host, indicator, first and last time, count and source of the indicator with its TLP. They do not need the script.
 
+Each item in the hand-off answers a responder's question: which machine, what name, when it started, how often, and how much to trust the source and how widely to share. The worked example below gives all of these for both hosts in two lines. The script itself stays with Lena, because responders act on results, not code.
+
 ### 15.5 What a hit means
 
 A DNS lookup shows that a machine asked for a name. It does not prove a connection succeeded or a user entered data. Proxy logs and user contact follow.
+
+For ws-114, the lookup at 08:03 shows that the machine asked for pay-portal.example. The proxy log can show whether a page was then fetched, and only the user can say whether anything was typed into it. Lena's hand-off therefore asks the analyst to check proxy logs and contact users, rather than reporting a compromise.
 
 ### 15.6 Repeat lookups
 
 ws-207's two lookups a minute apart may be one browser retry or software checking repeatedly. Repeated automatic lookups over hours would suggest installed software rather than a single click.
 
+Two lookups is too few to tell which explanation is right, so Lena reports the count and timing without choosing. Proxy logs for ws-207 around 09:12 can show whether anything was fetched, and further lookups later in the day would point towards software. The vendor's TLP:AMBER label on update-svc.example means the details stay inside CMS.
+
 ### 15.7 Lab report
 
 Students record inputs, the command run, the output, interpretation and one improvement they would make, such as reading last-seen times as well as first-seen.
+
+The suggested improvement fits this lab: it prints only the first time per host, so a reader cannot tell when lookups stopped. Adding last-seen would show whether ws-207 kept looking up update-svc.example after 09:13. Recording inputs and the exact command lets a marker rerun the lab and get the same output. The improvement is written as a proposal, not applied to the lab, so the marked output stays the one embedded in the course.
 
 ### Worked example
 
@@ -1033,29 +1221,43 @@ You will (1) pivot carefully from one indicator to related infrastructure using 
 
 From a fraud domain, an analyst may look at passive DNS (what addresses it used), certificate records (which other names shared the certificate), and registration timing. Each pivot can reveal related infrastructure — or mislead.
 
+In the worked example below, the certificate pivot from corvale-permits-pay.example found a second name, corvale-tax-pay.example, and the address pivot was stopped. Each pivot uses passive data from approved services, so CMS never connects to the fraud infrastructure. The risk is in the reading: a shared address or registrar can make unrelated sites look connected.
+
 ### 16.2 Shared services
 
 Cloud hosting, content-delivery networks and privacy-protected registrations are shared by thousands of unrelated customers. Pivoting through them links innocent sites. Lena stops a pivot when the shared item serves many unrelated names.
+
+The address in the worked example below was a large cloud provider address shared by thousands of sites, so following it would have listed thousands of unrelated names as suspects. Blocking any of those names would harm owners who had done nothing wrong. Lena stops at such points and records why, so a reviewer can see the pivot was deliberately ended rather than missed.
 
 ### 16.3 Certificate transparency
 
 Publicly trusted certificates appear in public logs. Searching for names containing "corvale" with payment words finds lookalikes early. This is passive and lawful through approved search services.
 
+A certificate is often requested before a fraud page goes live, so a new certificate for a name such as corvale-tax-pay.example can warn CMS before residents receive any text. Searching through approved services keeps the method passive: Lena reads public logs and never contacts the site the certificate was issued for. Lena saves each search with its date, because certificate logs keep growing and a later search returns more results.
+
 ### 16.4 Confidence
 
 Write "likely related" only when two independent pivots agree, such as shared certificate and registration minutes apart. One weak link is "possibly related".
+
+In the worked example, the two domains share a certificate issued at the same minute, which is a strong link, and Lena still reports moderate confidence. The address they share counts for nothing, because thousands of sites use it. Writing likely or possibly makes the reader aware of how much weight the link can bear. The confidence wording is copied into the change request, so the network team sees how strong the link is before blocking.
 
 ### 16.5 Recording pivots
 
 Each pivot step is logged: source, query, result and decision. Others can repeat or challenge it.
 
+A logged pivot looks like this: certificate search for corvale-permits-pay.example, result a certificate also covering corvale-tax-pay.example, decision follow it. Another analyst can run the same query and either confirm the result or find that the data changed. Without the log, the conclusion would rest only on Lena's memory of each step. Pivots that were stopped are logged as well, with the reason, such as the shared cloud address in the worked example. A reviewer can then see both the paths followed and the paths deliberately left, and judge whether the stopping decisions were sound.
+
 ### 16.6 Stopping rules
 
 Set a limit — three pivots or 30 minutes — unless the supervisor extends it. Endless pivoting wastes time and drifts from CMS's question.
 
+The limit protects CMS's question, which is usually what to block and what to report for takedown. After three pivots, new findings tend to be further from Corvale and closer to general infrastructure. If the supervisor extends the limit, the reason is written in the pivot log, so time spent beyond it is a decision rather than drift. The limit also protects Lena's time for triage, which would otherwise wait while one domain absorbed the morning.
+
 ### 16.7 Registration data
 
 Public registration records are often redacted for privacy. Analysts do not try to uncover redacted registrant identities; the domain and its timing are enough for defence.
+
+Uncovering a redacted registrant would mean collecting personal data CMS does not need, and possibly using methods outside the approved list. For defence, the facts that matter are the domain, when it was registered and what it resembles. Those are enough to request a block and a takedown. The redaction is respected even when the domain is clearly fraudulent, because the limit concerns CMS's methods rather than the target's character.
 
 ### Takedown requests
 
@@ -1097,29 +1299,43 @@ You will (1) describe the tools in a small CTI stack; (2) choose between scripts
 
 Lena's stack: standard-library Python scripts for parsing and matching, a small open-source threat intelligence platform that stores STIX 2.1 and pulls MCX's TAXII 2.1 collection, the log search tool owned by operations, and a shared ticket queue.
 
+Each part has a clear job: scripts do the checks Lena can read line by line, the platform holds and shares indicators in STIX with their TLP marks, the log search tool answers matching questions and the ticket queue carries requests to owners. Because operations owns the log search tool, Lena's searches run under their rules.
+
 ### 17.2 Scripts or platform
 
 Scripts are flexible and transparent but depend on their author. A platform offers storage, sharing, TLP marking and a web interface but needs maintenance. CMS uses the platform for storage and sharing and scripts for local checks.
+
+The split between platform and scripts plays to each side's strength. The platform keeps TLP marks and partner data in one controlled place, which a folder of scripts would do badly; scripts handle quick local tasks such as refanging or deduplicating, where Lena wants to see every step. Neither has to do everything at CMS, which keeps both of them simpler.
 
 ### 17.3 Securing tools
 
 The platform holds TLP:AMBER partner data, so it needs strong authentication, restricted access, updates and backups. A compromised CTI platform would leak partner trust.
 
+A leak of TLP:AMBER items would expose what other councils shared in confidence, and MCX members might stop sharing with CMS. That loss of trust would last longer than any technical fix. Strong authentication and restricted access therefore protect partners' data as much as CMS's own. Access is limited to the security team, and each account on the platform is reviewed when staff join or leave.
+
 ### 17.4 API keys
 
 Keys for MCX's TAXII server live in the platform's secret store, not in scripts or tickets. Rotating them is a scheduled task.
+
+A key pasted into a script or ticket can be copied by anyone who sees it, and remains valid until someone notices. The secret store limits who can read the key and records its use. Scheduled rotation means a key that leaked unnoticed stops working after a known period. Rotation dates appear in the tool register, so a missed rotation is visible to whoever owns the platform that month.
 
 ### 17.5 Maintenance
 
 Each tool has an owner, an update schedule and documentation. Lena writes a README for every script: purpose, inputs, outputs, example run.
 
+A README written at the time the script is created costs minutes, while working out an undocumented script a year later can take hours. The example run lets a colleague check that the script still behaves as described. Owners and update schedules apply to the platform as well as to Lena's scripts. The documentation is kept beside the code in the repository, so a change to a script and its README are reviewed together.
+
 ### 17.6 Choosing new tools
 
 Before adding a tool, ask what requirement it serves, who maintains it, what data it touches and how it will be retired. Many small teams accumulate tools nobody uses.
 
+The retirement question is often skipped, which is how small teams end up with tools nobody uses but that still hold data. The worked example below applies the data question to a browser extension and finds the answer unacceptable. Asking all four questions before adoption costs less than removing a tool later.
+
 ### 17.7 Licences
 
 Open-source licences and commercial terms both apply. Check before redistributing tool outputs or modifying code for partners.
+
+A partner may forbid redistribution of its data, and a tool's licence may limit how its outputs can be shared. If Lena modifies an open-source parser and gives it to MCX members, the licence decides what she must include. Checking first avoids breaching terms CMS agreed to when it adopted the tool. Lena records the licence of each tool in the tool register beside its owner, so the check is quick when a question arises later.
 
 ### Testing tool changes
 
@@ -1161,29 +1377,43 @@ You will (1) convert intelligence into control changes through owners; (2) write
 
 Intelligence becomes protection only when a control changes: a DNS block, an email rule, an endpoint rule, a configuration fix. Lena drafts; owners decide and implement through change management.
 
+Lena's notes and matches change nothing on their own; the DNS filter, email gateway and endpoint tools do. Owners decide because they know what a change will affect, and change management records each change so it can be reviewed or undone. The worked example below shows a DNS block passing through this route.
+
 ### 18.2 Change request contents
 
 Intelligence summary with source and TLP, affected asset, proposed change, expected effect, possible side effects, verification method, rollback plan and review date.
+
+Each part answers a question the owner would otherwise have to ask. Source and TLP show how much to trust the request; side effects and rollback show what could go wrong and how to undo it; verification shows how everyone will know it worked; and the review date makes sure the change is revisited rather than left in place indefinitely.
 
 ### 18.3 Verification
 
 After a DNS block, a test lookup from an approved test machine should fail. After an email rule, a harmless test message matching the rule should be quarantined. Results are attached to the change.
 
+A test from an approved machine proves the control is active without anyone visiting the fraud page. For an email rule, a harmless message built to match the rule shows that the gateway catches it. Attaching the result means the change record shows evidence of success, not just that the change was made.
+
 ### 18.4 Rollback
 
 If a block breaks a service, the owner removes it quickly. The plan says how and who approves.
+
+A block on a domain that turns out to be used by a supplier could stop invoices or deliveries the same day. Naming who approves removal in advance means the owner does not wait for Lena or the manager at a busy moment. The block's record helps the service desk find the cause when users report a site as unreachable. The rollback steps are tested with the verification, so the owner knows removal works before it is ever needed in a hurry.
 
 ### 18.5 Review dates
 
 Domain and address blocks are reviewed after a set period; techniques-based rules are reviewed when ATT&CK or the threat changes.
 
+Domains and addresses change hands, so a block based on last month's fraud page may later hit an innocent site. A rule built on a technique, such as filtering phishing attachments, stays useful as long as the technique is in use. The two kinds of control therefore need different review triggers. Each review asks whether the control still matches a current threat and whether its hits justify keeping it.
+
 ### 18.6 Avoiding overload
 
 Owners receive many requests. Lena bundles low-urgency indicator blocks into a weekly change and keeps single urgent changes for genuine emergencies.
 
+A weekly bundle gives owners one change to review instead of many small ones, and keeps the emergency route credible. If every block were labelled urgent, owners would stop treating urgent requests as special. The fraud domains in the worked example were applied in the evening change window rather than as an emergency. Bundled changes still list each indicator with its own source and review date, so one can be removed without undoing the rest.
+
 ### 18.7 Mitigation ideas from ATT&CK
 
 Technique pages list mitigations. For T1566, filtering and user training; for T1078, multi-factor authentication. These guide proposals but must be adapted to CMS tools.
+
+Adapting the mitigation means turning it into something CMS can do with its own tools. Filtering for T1566 becomes a rule in CMS's email gateway, and multi-factor authentication for T1078 builds on the identity provider and the case for including part-time library workers. The ATT&CK page supplies the idea; the proposal supplies the details. Lena cites the ATT&CK page in the change request, so the owner can read the original mitigation text.
 
 ### Measuring effect
 
@@ -1225,6 +1455,8 @@ You will (1) monitor indicator matches over time; (2) apply type-specific expiry
 
 Matching runs daily against new logs, not just once. A domain from last month can appear today when a staff member opens an old message.
 
+A fraud text can sit in a resident's or staff member's phone for weeks, and a phishing email can be opened long after it arrived. Matching only on the day an indicator is received would miss those later contacts. Daily matching against new logs means an indicator stays useful for as long as it is active in the store.
+
 ### Lab — expiry review
 
 ```python
@@ -1252,25 +1484,37 @@ ab12ab12ab12ab12ab12 sha256 269 keep
 
 With a reference date of 1 October 2026, the address last seen 42 days ago exceeds its 30-day limit and is flagged for review. The fraud domain at 42 days is within its 90-day limit and kept. update-svc.example at 113 days exceeds 90 and is flagged. The hash at 269 days is within its 365-day limit.
 
+Lena checks the ages by hand: from 20 August to 1 October is 42 days, from 10 June is 113 and from 5 January is 269. The same age of 42 days gives different decisions for the address and the domain, which is the point of type-specific limits. The hash is printed shortened to its first 20 characters, as the lab code does with `v[:20]`.
+
 ### 19.3 Why limits differ
 
 Addresses are reassigned quickly, especially in cloud services, so stale address blocks hit innocent parties. Domains last longer; hashes identify exact files indefinitely, though the file may stop circulating. Bianco's Pyramid of Pain explains this ordering.
+
+Bianco places hashes and addresses near the bottom of the pyramid because attackers change them cheaply, but the limits here follow a different property: how long a value keeps pointing at the same thing. An address may serve a different customer next month, while a hash always names the same file, so the hash limit can be the longest.
 
 ### 19.4 Review, not delete
 
 Flagged items go to review: check fresh sightings and source updates. Expired items are marked inactive with a date, keeping history.
 
+Review checks whether the indicator has been seen recently in MCX items or CMS logs and whether its source has updated it. If neither, the indicator is marked inactive and removed from exports, but its record stays. That way, if update-svc.example appears again in a year, Lena can see its earlier history and the vendor's original report. The inactive date is shown in the store, so nobody mistakes an expired indicator for a current one during a search.
+
 ### 19.5 Monitoring health
 
 Lena reports weekly: logs received from each source, matches, flagged expiries and any source that stopped sending. A silent log source is itself an alert.
+
+Each item in the report answers a different question: whether data is arriving, whether anything matched, what needs review and which sources have gone quiet. A source that stops sending looks the same as a clean week unless someone checks the volume, which is how the library resolver outage in the worked example was noticed.
 
 ### 19.6 Lookalike watch
 
 A daily certificate-transparency query for CMS-like names runs automatically and lists new matches for triage.
 
+The query looks for names containing corvale together with payment words, as described in chapter 16, and its results go to triage like any other item. Running it daily matters because a certificate can be issued only a day or two before the fraud texts begin, and an early match gives time to request a block and a takedown. Matches that turn out to be legitimate, such as a council supplier's new name, are recorded so the same name is not triaged again.
+
 ### 19.7 Thresholds
 
 Limits are set with owners and written down. Changing them is a recorded decision, not a script edit.
+
+The limits in the lab, 30 days for addresses, 90 for domains and 365 for hashes, are examples of such agreed values. If someone edits the script to change one, the decision has no owner and no reason on record. Writing them down with owners means a later reviewer can see who agreed them and why. When a limit changes, the date and reason are added to the lab's notes and the store, so old and new results can be compared.
 
 ### Alert fatigue
 
@@ -1312,29 +1556,43 @@ You will (1) diagnose failures in the intelligence pipeline methodically; (2) di
 
 Typical symptoms: no new indicators today; a spike of false-positive blocks; exports rejected by a tool; matches missing that should exist. Each starts a structured check rather than random fixes.
 
+Each symptom points to a different part of the flow. No new indicators suggests the source or import; a spike of false blocks suggests a bad batch or a normalisation fault; rejected exports point to the receiving tool; missing matches may mean logs are not arriving. Naming the symptom first narrows where in the flow Lena needs to look.
+
 ### 20.2 Method
 
 Work from the source forward: did data arrive? Did parsing accept it? Did the store hold it? Did export send it? Did the tool load it? Check one hand-off at a time and record each result.
+
+Checking the hand-offs in order avoids fixing the wrong thing first. In the worked example, Lena's first check showed that data did not arrive at all, because TAXII requests were refused, so there was no point examining parsing or exports. Recording each result also lets a colleague take over if the fault outlasts her shift.
 
 ### 20.3 Fault types
 
 Data faults: a partner changed a column name or label spelling. Code faults: a script assumed lower-case labels. Configuration faults: an expired API key, a firewall rule blocking TAXII, a full disk.
 
+The three categories decide who is responsible for fixing the fault. A data fault needs a conversation with the partner, a code fault needs a change to Lena's script, and a configuration fault needs whoever owns that setting, such as the supervisor renewing an API key. The expired key in the worked example is a configuration fault.
+
 ### 20.4 Communicating
 
 If indicators stopped flowing, tell consumers: "Since 06:00 no new MCX indicators have reached the DNS filter; existing blocks remain; fix expected by noon." Silence makes people assume protection that is not there.
+
+The example message gives three facts: what stopped and since when, what still works, and when it should be fixed. Consumers such as the network team can then decide whether to watch new fraud domains manually until noon. Without the message, they would assume the DNS filter was receiving MCX indicators as usual.
 
 ### 20.5 Preventing recurrence
 
 After the fix, add a check: a test that alerts when daily imports fall to zero, or when a new label value appears.
 
+Each new check targets the specific fault that has just been seen. A zero-import alert would have caught the expired key on Monday morning rather than when someone noticed the platform, and a new-label alert catches a partner's spelling change before indicators are silently dropped. Lena's authentication-failure alert in the worked example is this kind of check. Each new check is listed in the fault log entry that prompted it, so the link between fault and prevention is kept.
+
 ### 20.6 Keeping a fault log
 
 Each fault gets an entry: symptom, cause, fix, prevention, time lost. Patterns appear over months — for example, most faults follow partner format changes.
 
+Recording time lost shows which faults cost the most, which helps decide where to put prevention effort. If most faults follow partner format changes, asking MCX for advance notice and test files is worth more than further work on Lena's own scripts. The log turns individual outages into evidence for that choice. Lena reviews the log with her supervisor every few months, looking for repeated causes rather than single incidents.
+
 ### 20.7 Asking for help
 
 Escalate when the fault sits in another team's system. Bring evidence of where the flow stops so they can act quickly.
+
+If the fault is in the DNS filter or a firewall rule, Lena cannot fix it and should not try. Evidence of where the flow stops, for example that exports leave the platform but the filter shows no new entries, lets the owning team start at the right place. That shortens the outage more than a general report that something is broken.
 
 ### Partner format changes
 
@@ -1376,29 +1634,43 @@ You will (1) integrate CTI outputs with the service desk, operations and inciden
 
 The service desk receives resident and staff reports of suspicious messages. Operations runs monitoring tools. Incident response handles confirmed incidents. Communications warns the public. Each needs a different product.
 
+The service desk needs to know what to tell callers; operations needs indicators and technique notes; incident response needs fast searches during an incident; and communications needs a plain description for residents. Sending everyone the same note would give each team too much of what it does not need and too little of what it does.
+
 ### 21.2 Service desk
 
 Lena gives the service desk a short weekly list of current scams with sample subject lines and what to tell callers. When reports come in, the desk forwards samples to the CTI queue, closing the loop.
+
+The weekly list helps the desk recognise a scam on the first call rather than after many. Samples forwarded by the desk give Lena new indicators, such as the domain in a fresh fraud text, which she can then check and add to block requests. The worked example below starts from exactly such reports by the service desk.
 
 ### 21.3 Operations
 
 Operations receives indicators through the platform's export and technique notes for tuning alerts. Urgent items come by phone.
 
+The export carries indicators directly into tools, so operations does not retype them. Technique notes explain what behaviour to watch for, which helps tune alerts beyond single indicators. A phone call for urgent items is used because a ticket or export could sit unseen for hours, which is too slow when a fraud page is live. Operations tells Lena which technique notes led to tuned alerts, which helps her judge what to write next.
+
 ### 21.4 Incident response
 
 During incidents, Lena searches for related indicators and checks MCX for similar cases, following the incident lead's priorities. NIST SP 800-61r3 places such intelligence support within incident response.
+
+Following the incident lead's priorities keeps Lena's searches on the questions that decide containment rather than on interesting side paths. Similar cases from MCX can show what the attacker did next elsewhere, which helps the team look ahead. Lena's searches and their results are recorded in the incident ticket like any other evidence.
 
 ### 21.5 Service levels
 
 Urgent items reviewed within four hours in working time; routine items within two days; weekly scam list every Monday.
 
+Four working hours for urgent items means a fraud domain reported in the morning can be in a block request by the afternoon. Two days for routine items keeps the queue moving without demanding instant answers. The Monday scam list gives the service desk a fixed point in the week they can plan around. The service levels are written in the routing table, so anyone covering for Lena knows the deadlines without asking.
+
 ### 21.6 Feedback
 
 A two-question monthly form: what helped, what was noise. Answers adjust content.
 
+Two questions are short enough that busy teams actually answer. If the service desk says the scam list helped but the vulnerability notes were noise for them, Lena stops sending those notes to the desk. The answers also show which products to keep when time is short, for example during staff absence. Lena summarises the answers each month for her supervisor, with the changes she made in response to them. A product that several teams call noise twice in a row is shortened or dropped, which frees time for the products they do use.
+
 ### 21.7 Routing table
 
 A table maps item types to teams: fraud against residents to communications and web; staff phishing to email and service desk; vulnerabilities to system owners; partner compromise to supervisor.
+
+The table removes guesswork for Lena and for anyone covering her. A fake parking-fine text goes to communications and web; an invoice phishing email aimed at finance goes to email and the service desk; a flaw in portal software goes to its owner. Partner compromise goes to the supervisor because it may change what CMS shares with that partner.
 
 ### Communications partnership
 
@@ -1440,29 +1712,43 @@ You will (1) choose which CTI tasks to automate; (2) design automation with huma
 
 Repetitive, rule-based tasks: importing feeds, normalising, deduplicating, matching logs, flagging expiries, producing weekly counts.
 
+Each of these tasks follows written rules that give the same answer every time, such as the normalisation rules in chapter 12 or the age limits in the expiry lab. Automating them saves Lena time and removes mistakes made while typing values. The worked example below shows expiry flagging catching two items Lena had missed by hand. Weekly counts for the monthly table are a further good case, since they come from logs that already exist and need no judgement to add up.
+
 ### 22.2 Poor candidates
 
 Judgment tasks: deciding relevance of a novel report, grading new sources, writing assessments, blocking on critical systems.
+
+Each of these needs judgement about context that a script does not have. Deciding whether a novel report matters to CMS depends on asset knowledge and current events, and grading a new source depends on its track record. A block on a critical system needs the owner's decision, as chapter 18 sets out. Lena keeps a short list of these judgement tasks in the pipeline documentation, so nobody automates one by accident.
 
 ### 22.3 Human checkpoints
 
 Automation proposes; humans approve where impact is high. Lena's pipeline auto-exports indicators to the DNS filter only from MCX at TLP:GREEN or CLEAR with grade B or better; others wait for review.
 
+The rule combines three conditions: MCX as source, a sharing label that allows the export, and a grade of B or better. An item meeting all three is low risk to block automatically; anything else, such as a vendor item at TLP:AMBER, waits for Lena. The checkpoint is therefore set by risk rather than applied to everything.
+
 ### 22.4 Logging
 
 Every automated action logs input, rule applied and output. When a block causes complaints, the log shows exactly why it happened.
+
+If a resident complains that a site is blocked, the log shows the input, for example a domain from MCX graded B2, the rule that exported it and when. The block record and this log together let the service desk answer quickly and lift a mistaken block. Without this logging, the automation would be a black box to everyone. The log is kept as long as the block record, so an old block can still be explained when it is reviewed months later.
 
 ### 22.5 Unsafe automation
 
 Never automate contact with adversary infrastructure — automated visits, downloads or scans of suspicious sites. Never automate sharing of AMBER or RED data outward.
 
+Automated contact with suspicious sites could alert their operators, download harmful files or breach site terms, and it would happen at machine speed. Automatic sharing of AMBER or RED data could break the conditions under which partners shared it. These two limits protect CMS and its partners whatever else is automated. Lena writes both limits at the top of the pipeline documentation, so anyone extending it sees them first.
+
 ### 22.6 Scheduling
 
 Jobs run at fixed times with alerts on failure. A job that fails silently is worse than none.
 
+A failed job with an alert is noticed and fixed; a failed job without one leaves people believing the work is done. The expired TAXII key in chapter 20 is the kind of failure that a silent job would hide. Fixed times also make it clear when results should appear, so a missing result is itself noticeable. Each job's failure alert goes to its named owner, so a failure always reaches a person who knows how to fix it.
+
 ### 22.7 Small steps
 
 Automate one task, run it alongside manual work for two weeks, compare results, then switch.
+
+Running both side by side gives a direct comparison on the same items. In the worked example, two weeks showed that the script found two items Lena had missed and missed none she had found. Only then was manual work replaced, and a monthly spot-check keeps a small human comparison going. The comparison is recorded with dates and counts, so the decision to switch can be reviewed later if the script misbehaves.
 
 ### Maintaining automated jobs
 
@@ -1504,29 +1790,43 @@ You will (1) evaluate sources and products against requirements; (2) compute sim
 
 Sources (MCX, vendor list, public advisories) and products (weekly scam list, three-line notes, block requests). Each should serve a requirement.
 
+Linking each source and product to a requirement gives the evaluation its yardstick. MCX serves the requirement to know what is hitting other councils; the weekly scam list serves the service desk's need to answer callers. A source or product that serves no current requirement is a candidate to drop, however interesting its content may be. Lena lists each requirement beside its sources and products at the top of the evaluation, so the reader sees the yardstick first.
+
 ### 23.2 Source measures
 
 For each source over a quarter: items received, items relevant to CMS, items leading to action, false positives reported, median delay from first public appearance. A ratio of actionable to received gives a rough usefulness figure.
+
+Lena's worked example shows why several measures are needed together. MCX sent 120 items with 12 leading to action, a ratio of one in ten; the vendor list sent 2,000 indicators with 6 actions, three in a thousand, plus 9 false-positive complaints. On volume alone the vendor list looks far more productive, which the ratio shows is not the case.
 
 ### 23.3 Product measures
 
 For products: did consumers read them, act on them, find them clear? The monthly feedback form and service-desk call reasons answer these.
 
+A product can be read and still fail if nobody acts on it or if readers misunderstand it. Service-desk call reasons help here: if callers describe a scam that was on Monday's list and the desk handled it without escalation, the list did its job. The feedback form adds what consumers themselves found useful or noisy. Lena also notes when a product was not opened at all, because an unread product cannot be judged on clarity.
+
 ### 23.4 Comparing fairly
 
 Compare sources over the same period and against the same requirements. A source covering a different threat may look worse but fill a gap.
+
+Public advisories, for example, mostly cover software flaws rather than fraud domains, so judging them by blocks produced would be unfair. They meet a different requirement: telling owners about vulnerabilities in products CMS runs. Comparing each source against the requirement it serves avoids dropping the only source that covers a particular need. Lena also uses the same quarter for every source, so seasonal peaks such as a tax deadline affect all of them equally.
 
 ### 23.5 Recommendations
 
 Keep, change (for example, filter by type) or drop. Each recommendation states evidence and cost.
 
+In the worked example, the recommendation for the vendor list is to change rather than drop: filter to domains only, where its false-positive rate was lowest. The evidence is the quarter's counts, and the cost is the licence plus triage time. Stating both lets the manager weigh the recommendation without redoing the analysis. Each recommendation also names who would carry it out, such as the supervisor renegotiating the vendor licence. A recommendation without an owner tends to be agreed in the meeting and then forgotten.
+
 ### 23.6 Small numbers
 
 A quarter may hold few actionable items; avoid strong claims from tiny counts and repeat next quarter.
 
+Six actions from the vendor list in a quarter is a small number, and one more or fewer would move its ratio noticeably. Lena reports counts beside ratios and repeats the evaluation next quarter before treating a pattern as settled. A recommendation based on one quarter is labelled as provisional. The evaluation states the counts behind each ratio in the table, so readers can see for themselves how small the numbers are. Lena keeps the quarterly tables together, so a pattern that holds across several quarters can be told apart from one that appeared once.
+
 ### 23.7 Writing the evaluation
 
 One page: question, method, table, interpretation, recommendation, limits. Managers read the recommendation first.
+
+The question says what is being evaluated, the method shows how, and the table holds the counts, so a reader can check the interpretation against the numbers. Limits come last but are never dropped, for example that context which shaped a decision is not counted as an action. One page keeps the evaluation short enough to be read in a meeting. Lena keeps the detailed counts behind the table, so any figure the manager questions can be traced to its items.
 
 ### Cost per useful item
 
@@ -1568,29 +1868,43 @@ You will (1) frame a practical research question for a CTI improvement; (2) coll
 
 "Does the weekly scam list reduce service-desk calls that need escalation?" is answerable with existing data. "Are councils safer with CTI?" is too broad.
 
+The first question names a product, an outcome and data that already exist in service-desk tickets. The second has no single measure and would need data CMS does not have. Lena starts with the narrow question because it can be answered in weeks, and a clear answer to a small question is more useful than a vague answer to a large one.
+
 ### 24.2 Data collection
 
 Use existing records — tickets, logs, feedback forms — where policy allows. Define what counts before collecting: an escalated call means one forwarded to the CTI queue.
+
+Defining an escalated call before counting stops the measure shifting during collection. If some calls were counted because they were long and others because they were forwarded, the before and after numbers would measure different things. Using existing records avoids asking anyone new questions and keeps within what the data's owners already allow. Lena writes the definition into her study notes before collecting, so it cannot quietly change once she sees the data.
 
 ### 24.3 Coding
 
 When reading free-text tickets, use a small set of categories with examples. Code a sample twice, a week apart, to check your own consistency.
 
+A category such as "scam call recognised by caller" needs an example, otherwise the same ticket could be coded differently on different days. Coding a sample twice a week apart shows whether Lena's own coding is stable. If her two passes disagree often, the categories need clearer definitions before the full set is coded. The final category list and examples are kept with the results, so a reader can see how each ticket was classified.
+
 ### 24.4 Simple analysis
 
 Counts before and after, by week, with a chart. Note other changes in the same period, such as a news story about scams, that could explain differences.
+
+A weekly chart shows whether a change appeared suddenly when the scam list started or drifted gradually. In the worked example, total scam calls stayed similar while escalated calls fell from 34 to 21, a drop of 13. The news story about scams during the after period is exactly the kind of other change this rule asks her to record.
 
 ### 24.5 Ethics
 
 Tickets contain residents' and staff's personal data. Use only what the question needs, remove names, store results securely and get the manager's and data-protection officer's approval.
 
+Removing names before analysis means Lena works with categories and counts rather than identifiable tickets. The question only needs to know whether a call was escalated, not who called. The data-protection officer's approval confirms that this use fits the purposes for which the tickets were collected. The anonymised dataset is stored with restricted access and deleted when the study's retention period ends.
+
 ### 24.6 Reporting honestly
 
 State what changed, what else might explain it and how confident you are. A small improvement with honest caveats is more useful than an inflated claim.
 
+For Lena's study, an honest statement says that escalated calls fell from 34 to 21 over eight weeks, that total calls were similar, that a news story may have helped, and that the evidence suggests rather than proves an effect. The manager can then decide whether to continue the list knowing how strong the evidence is.
+
 ### 24.7 Literature
 
 Look for published guidance and studies on security awareness and CTI sharing; cite sources you actually read.
+
+Citing only what was read means that if a claim from a study is questioned, Lena can say exactly where it came from and what it showed. A source cited from someone else's summary may say something different from the summary. Her reference list therefore contains only works she has actually opened and checked. She records where each source was found and when she read it, so the reference list can be checked later.
 
 ### Choosing a time window
 
@@ -1632,29 +1946,43 @@ You will (1) plan and deliver a small CTI tool or process as a team; (2) divide 
 
 Teams of three build a "lookalike watch" for a fictional client council: generate candidate names, check them against a provided synthetic certificate-log extract, triage matches and produce a weekly report template.
 
+The brief mirrors CMS's own needs: lookalikes of a council's names are what the certificate-transparency watch in chapter 19 looks for. Using a provided synthetic extract keeps the work offline and repeatable. The report template is part of the deliverable because a watch that produces matches nobody can read is not finished.
+
 ### 25.2 Roles
 
 One student owns the generator, one the matcher, one triage and reporting. Each reviews another's work. Roles rotate at mid-point so everyone learns all parts.
+
+Owning one part gives each student responsibility for a working component, and reviewing another's part catches mistakes the owner overlooks, as the worked example below shows. Rotating at mid-point means each student understands every stage by the end, which matters when one is absent or the team presents to the panel. Reviews are recorded on the board, so the tutor can credit reviewing work alongside building it.
 
 ### 25.3 Planning
 
 A simple board with to-do, doing and done columns. Weekly stand-ups: what I did, what I will do, what blocks me.
 
+The board shows at a glance what each student is doing and what is waiting. The third stand-up question, what blocks me, matters most: a matcher waiting for the generator's output format can say so immediately rather than discovering the problem a week later. Stand-ups stay short because each answer is one or two sentences. The board also holds the client's mid-project request, so the scope decision is visible to the whole team.
+
 ### 25.4 Scope
 
 The client asks midway for SMS-scam monitoring. The team records it, estimates effort and agrees with the tutor to note it as future work.
+
+Recording the request and estimating it shows the client that it was heard, while agreeing it as future work protects the lookalike watch from being left half-built. Adding SMS monitoring would have needed new data and different methods. Writing it into the report also gives a later team a clear starting point. The estimate stays in the project record, which shows the tutor that the team made the scope decision deliberately.
 
 ### 25.5 Quality
 
 Each component has tests on synthetic inputs. The final report includes a table of planted lookalikes found and missed.
 
+Planted lookalikes give a known answer, so the team can count what the system found and missed. The report's table makes misses visible rather than hiding them behind a list of successes. In the worked example, a reviewer's planted case revealed that names replacing o with 0 were missed until a rule was added. Tests run each time a component changes, so a fix to the generator cannot silently break the matcher.
+
 ### 25.6 Ethics in the studio
 
 All data is synthetic. The team must not run the generator against live certificate services during the studio unless the tutor approves and terms allow.
 
+Live certificate services are public, but running a new generator against them repeatedly could breach their terms or produce real names that the team then has no authority to act on. Keeping to synthetic data means every name in the studio is invented, and results can be shared within the class without risk. The team's notes record this rule at the start, together with the name of the tutor who could approve an exception.
+
 ### 25.7 Presentation
 
 Ten minutes to the client panel: problem, demo on synthetic data, results, limits, next steps.
+
+Ten minutes forces the team to choose what matters to the client: whether the watch finds lookalikes and how much noise it produces. The demonstration uses the same synthetic extract, so the panel sees real output. Limits and next steps, including the SMS request, show the panel what the watch does not yet do. The team rehearses the presentation once with the tutor, so timing problems are found before the panel.
 
 ### Handling disagreement
 
@@ -1696,33 +2024,49 @@ You will (1) hand over CTI duties between shifts or staff; (2) write a handover 
 
 Intelligence work spans days: an advisory awaits a patch, a takedown request awaits a reply, a fraud wave continues. Without handover, items stall when someone is away.
 
+Each of those examples has a next step owned by someone outside the team, such as a hosting provider's reply or a system owner's patch. If Lena is away and nobody tracks them, the takedown request may never be chased; the takedown in the worked example still needed chasing on her return. A good handover keeps each of these items moving and visible.
+
 ### 26.2 Handover note
 
 Open items with status, owner and next step; scheduled jobs and their health; partner commitments such as promised MCX feedback; anything unusual seen this week. Each item keeps its TLP label.
+
+Each heading answers a question the cover person will face. Open items say what to chase, job health says whether the automation is working, partner commitments say what MCX is expecting, and unusual events say what to watch. Keeping TLP labels on each item stops the cover person sharing something more widely than allowed.
 
 ### 26.3 Access
 
 The cover person needs platform access, the ticket queue and MCX portal access approved in advance. Sharing passwords is not handover; individual accounts are.
 
+Approving access in advance means the cover person can work from the first day of the absence, rather than waiting for accounts. Individual accounts mean the platform and MCX portal record who did what, which matters for TLP:AMBER and RED material. A shared password would hide that and break the access rules partners rely on.
+
 ### 26.4 Restricted items
 
 TLP:RED items go only to named recipients. If the cover person is not named, the item is noted as "restricted item pending; supervisor holds details".
+
+TLP:RED limits an item to named recipients, and handover does not change that. Noting the item without its content tells the cover person that something exists and who holds it, so they can direct questions to the supervisor. Lena's handover in the worked example uses exactly this wording. The supervisor decides whether the cover person needs to be added as a named recipient, after asking the original sender.
 
 ### 26.5 Verbal briefing
 
 A fifteen-minute conversation alongside the written note catches nuance: "the parks owner prefers phone calls".
 
+Some things are hard to write down or would look odd in a note, such as an owner's preference for phone calls. The conversation also lets the cover person ask questions about items they do not understand. Fifteen minutes is short enough to fit in before leave and long enough to cover the open items. The cover person writes down anything important from the conversation, so it is not lost if they also hand over later.
+
 ### 26.6 Return
 
 On return, the person reads the cover log and confirms each item's state before resuming.
+
+Items may have changed in ways the cover log records but the returning person does not know. Confirming each item's state before acting avoids repeating a request the cover person already sent or missing one they could not finish. In the worked example, this check showed the takedown request still waiting and needing a chase. The returning person also reads the job-health entries, since a failed job during the absence may have left gaps.
 
 ### 26.7 Templates
 
 A fixed template with the same headings every time speeds writing and reading. Missing sections are visible at a glance.
 
+A fixed template means the cover person knows where to find open items and partner commitments in every handover. An empty heading, such as no entry under partner commitments, prompts the question of whether nothing was due or something was forgotten. Writing the note becomes faster because the headings prompt the content. Lena keeps the template in the team repository, so changes to its headings are reviewed like any other change.
+
 ### 26.8 Long absence
 
 For absences over two weeks, the supervisor reassigns items formally rather than leaving them with temporary cover.
+
+Temporary cover suits a week, but over two weeks items may need decisions the cover person cannot make. Formal reassignment gives each item a named owner with the authority to act. It also stops a returning person facing a backlog of items that waited for them unnecessarily. The supervisor records each reassignment in the ticket queue, so owners and partners know whom to contact. When the original owner returns, items are handed back formally in the same way, with their current state confirmed.
 
 ### Handover in incidents
 
@@ -1764,33 +2108,49 @@ You will (1) deploy a CTI script or process into production safely; (2) validate
 
 A script that worked on synthetic data now meets real feeds and logs. Deployment moves it to a managed server, under a service account with minimum rights, scheduled and monitored.
 
+On Lena's laptop the matcher read a six-line synthetic log; in production it reads the full resolver logs every day, with real formats and real failures. Running it on a managed server means it keeps working when she is on leave, and scheduling and monitoring mean a failed run is noticed. The service account ties the script's actions to the job rather than to Lena personally.
+
 ### 27.2 Validation set
 
 Before go-live, run the script on a validation set: a sample of real past indicators and logs where results are already known — matches that were confirmed, near misses that were not. Outputs must agree.
+
+Known results make the comparison objective: if the manual process confirmed that a host looked up a fraud domain on a given day, the script must find the same match. Near misses that were judged not to match test the other direction, that the script does not raise alerts the analysts already dismissed. Disagreement in either direction stops go-live until the difference is explained.
 
 ### 27.3 Acceptance criteria
 
 Written beforehand: no missed known matches; false-positive rate no worse than the manual process; runtime under ten minutes; failure alerts reach the team.
 
+Writing the criteria before the run prevents them being shaped around whatever the script produces. Each criterion is measurable: missed known matches can be counted, the false-positive rate compared with the manual process, runtime timed and failure alerts tested. The worked example below shows the script meeting them, including a four-minute runtime against the ten-minute limit. Any criterion not met is recorded with the reason, and go-live waits until it is met or formally waived by the manager.
+
 ### 27.4 Staged rollout
 
 Run in report-only mode for two weeks, producing outputs humans check but no automatic exports. Then enable exports.
+
+In report-only mode the script's mistakes cost only the time to check them, because nothing reaches the DNS filter or other tools. Two weeks gives enough runs to see daily variation, such as busier Mondays. Exports are enabled only after the comparison is accepted, which in the worked example meant the manager's signature. During those two weeks Lena compares each day's report with the manual results, as she did for expiry flagging.
 
 ### 27.5 Rights
 
 The service account can read logs and write to the store; it cannot change firewall rules. Least privilege limits damage if the script misbehaves.
 
+The script needs to read logs and write matches; it has no reason to touch firewall rules. If a bug or a bad input made it misbehave, the worst it could do is write wrong entries to the store, which can be corrected. With firewall rights, the same bug could block legitimate services across the council.
+
 ### 27.6 Documentation
 
 A deployment record: version, date, configuration, validation results, approver.
+
+The record answers the questions that come up when something changes later: which version is running, how it is configured, how it was validated and who approved it. If a fault appears months afterwards, the record shows whether the configuration has drifted since acceptance. The approver's name ties the go-live to a decision by a named person. The record is stored with the change ticket, so operations staff supporting the job out of hours can find it. Each later change to the script or its configuration adds a new entry rather than overwriting the old one, keeping the full history.
 
 ### 27.7 Rollback
 
 Keep the previous version ready; if outputs go wrong, switch back and investigate.
 
+Keeping the previous version ready means switching back takes minutes rather than a rebuild. Investigating after the switch keeps protection running while the cause is found. The deployment record shows exactly which version to return to and how it was configured when it last worked. The rollback steps are written in the deployment record and tested once before go-live, so they are known to work. Who may decide to switch back is named as well, so operations can act out of hours without waiting for Lena.
+
 ### 27.8 Privacy in validation
 
 Validation data comes from real logs, so it contains personal data. Keep it on the managed server, use only what is needed and delete the extract after acceptance.
+
+Resolver logs show which staff machines looked up which names, so they reveal what people were browsing. Keeping the extract on the managed server avoids copies on laptops, and using only the fields the validation needs limits what is exposed. Deleting it after acceptance means the extract does not outlive its purpose.
 
 ### Change approval
 
@@ -1832,33 +2192,49 @@ You will (1) work under supervision in a real CTI environment; (2) apply confide
 
 Lena spends six weeks with MCX's coordination desk under a confidentiality agreement. She sees how members' submissions are checked, labelled and redistributed.
 
+The coordination desk sits at the centre of the exchange that CMS normally sees only from the outside. Lena sees how submissions arrive in different formats, how labels are checked and how items are redistributed to members. The confidentiality agreement covers everything she sees from other councils, which she would not normally have access to. Six weeks gives time to see both routine days and at least one surge, such as the fraud wave Lena later observes.
+
 ### 28.2 Confidentiality
 
 Everything seen on placement stays there unless released. Her coursework uses synthetic examples inspired by patterns, never real member details.
+
+Patterns can be used in coursework because they are general lessons, such as how a fraud wave produces many duplicate submissions. Details of a member's incident cannot, because they were shared with MCX on terms that do not include Lena's polytechnic. Synthetic examples keep the lesson while leaving the data where it belongs. Lena checks each piece of coursework against this rule before submitting it, removing anything traceable to a member.
 
 ### 28.3 Tasks
 
 Normalising submissions, checking labels, drafting summaries for review, answering members' format questions. She does not approve releases.
 
+Each task uses skills from the course: normalising follows the rules of chapter 12, label checks follow TLP 2.0, and summaries follow the three-line note. Answering members' format questions teaches her how other councils send data, which helps CMS later. Approving releases is left to the coordinators, because a release decision affects every member. Each task is supervised, and Lena's drafts go to her mentor before any member sees them. Answers to format questions follow the desk's published guidance, so members receive the same answer whoever replies.
+
 ### 28.4 Journal
 
 Daily notes: what I did, what I learned, what I would ask. Notes contain no restricted details; they record lessons, not data.
+
+The third question, what I would ask, keeps open questions from being forgotten and gives the mentor topics for review. Recording lessons rather than data means the journal can be shown to her polytechnic tutor without breaching the confidentiality agreement. An entry might note how labels were checked without naming the member or item. Lena reviews the week's notes each Friday and turns repeated lessons into short points for her CMS work.
 
 ### 28.5 Feedback
 
 Her mentor reviews every draft. Early feedback: "Your summaries bury the action at the end." Lena moves actions to the first line.
 
+Reviewing every draft is possible because Lena's drafts are short summaries. The feedback about burying the action matches the three-line note she already uses at CMS, where the action has its own line. Moving the action to the first line reflects the desk's readers, members who scan many summaries and need to know at once whether to act.
+
 ### 28.6 Professional conduct
 
 Arrive prepared, ask questions, admit mistakes immediately. A wrong label caught early is a lesson; one hidden is a breach.
+
+A wrong label on a shared item can reach every member before anyone notices, so admitting it at once lets the desk correct it before it spreads further. Hiding it turns a handling mistake into a breach of the trust members place in the desk. Lena's own flag of a mislabelled submission, in the worked example, shows the expected behaviour.
 
 ### 28.7 Assessment
 
 The placement supervisor rates reliability, handling discipline, communication and learning; the journal shows reflection.
 
+Handling discipline is rated separately because a placement at a sharing desk tests it constantly: every item carries a label that decides who may see it. The journal shows what Lena learned and how she reasoned, which the supervisor's ratings alone would not reveal. Both the ratings and the journal count towards her placement assessment. The supervisor bases each rating on observed work, such as the mislabelled submission she flagged, so the ratings can be explained. Lena reads the assessment with her mentor and adds the points raised to her journal as goals for the next stage.
+
 ### 28.8 After placement
 
 Contacts made are professional; requests to them go through proper channels, not personal favours for restricted data.
+
+A contact at MCX might be able to answer a question informally, but if the answer involves restricted data, the proper route is a request through CMS's membership. Using personal favours would bypass the controls members rely on. Keeping contacts professional also protects the colleague, who could breach their own rules by helping. Lena records her placement contacts in her notes with their roles, so later requests go to the right desk through CMS.
 
 ### Learning from the desk
 
@@ -1900,33 +2276,49 @@ You will (1) build a capstone CTI pipeline end to end on synthetic data; (2) int
 
 Lena's capstone: an "MCX-to-CMS pipeline" that imports a synthetic STIX bundle, refangs and validates values, deduplicates with provenance, stores them with TLP labels, matches a synthetic DNS log, flags expiries and produces the weekly note and a TLP-filtered export for MCX feedback.
 
+The pipeline joins the labs of the book in the order data flows at CMS: the STIX bundle from chapter 4, refanging and validation from chapter 3, deduplication from chapter 12, matching from chapter 15 and expiry flagging from chapter 19. The weekly note and export add the dissemination steps of the intelligence cycle.
+
 ### 29.2 Integration
 
 Each earlier lab becomes a module with clear inputs and outputs. A single runner calls them in order and stops with a clear message if any stage fails.
+
+Clear inputs and outputs let each module be tested and replaced alone. If the matcher changes, as in the worked example, the deduplicator does not need to. Stopping with a message on failure prevents later stages running on bad data, for example exporting indicators that were never validated. The runner prints which stage is running, so a failure is easy to place even before reading the error message.
 
 ### 29.3 Tests
 
 Each module keeps its lab test cases; an end-to-end test checks the whole run against expected outputs: three unique indicators, two hosts with hits, two expiry flags, one dangling relationship reported.
 
+The end-to-end figures come straight from the lab outputs: three unique indicators from deduplication, two hosts with hits from matching, two expiry flags from the expiry lab and one dangling relationship from the STIX lab. If any number changes, a module has changed behaviour, and the test points to which one.
+
 ### 29.4 Build log
 
 Daily entries: what was built, decisions and reasons, problems. The log becomes an appendix.
+
+Recording reasons as well as decisions helps assessors understand choices that might otherwise look odd, such as stopping on any failure rather than skipping a bad stage. Problems recorded daily, like the matcher fault in the worked example, show how Lena found and fixed them. As an appendix, the log is part of the assessed evidence. Entries are short and dated, so the log can be read quickly by an assessor checking a particular decision.
 
 ### 29.5 Scope discipline
 
 Features beyond the brief — a web dashboard, a chat bot — go to a "later" list. The deadline holds.
 
+A web dashboard or chat bot might impress, but neither is in the brief, and either would take time from tests and documentation. The later list keeps ideas without letting them threaten the deadline. It also feeds the transition plan, because some ideas may be worth building once the pipeline proves itself at CMS. Each later item records why it was deferred, so the reasoning is clear when the list is revisited after assessment.
+
 ### 29.6 Safety rules
 
 No network calls, no real data, standard library only. The export filter refuses anything not CLEAR or GREEN and any unknown label.
+
+Refusing unknown labels is the important detail: a typo such as GRENE should not be treated as GREEN. Failing closed means a mistake stops an item from being shared rather than letting it through. No network calls and no real data keep the capstone safe to run anywhere, including on assessors' machines. The tests include an item with an unknown label, so the refusal is checked every time the pipeline runs.
 
 ### 29.7 Code review
 
 The tutor and one peer review the code before submission, focusing on clarity, error handling and the export filter.
 
+The export filter gets special attention because it is the one part whose failure could share restricted data outside CMS. Clarity and error handling matter because the code may later be maintained by someone else. Review comments and Lena's responses become part of the evidence assessors see. Lena responds to each comment in writing, either with a change or with a reason for leaving the code as it is. The peer reviewer is a classmate who did not work on the pipeline, so the review comes from someone reading the code fresh.
+
 ### 29.8 Packaging
 
 A README explains how to run the pipeline and tests in one command each, so assessors can reproduce results.
+
+One command for the pipeline and one for the tests means an assessor does not need to understand the design to check that it works. If results differ on their machine, the README's description of the expected output shows what should have appeared, so a reproduction problem is easy to spot. The README also lists the expected test output, so a result that differs on an assessor's machine is noticed at once.
 
 ### Error messages
 
@@ -1968,33 +2360,49 @@ You will (1) evaluate the capstone against its brief; (2) present results to ass
 
 Each requirement is checked: imports work, labels are preserved, matching is exact, expiries are flagged, export filter refuses restricted items, tests pass in one command.
 
+Each requirement in the brief maps to a test or a demonstration. Exact matching is shown by the near miss pay-portal.example.org not matching, and the export filter by an AMBER item being refused. Tests passing in one command shows the whole pipeline can be checked by an assessor in minutes. Each check's result is shown in a single table, so assessors can see at a glance which requirements are met.
+
 ### 30.2 Evidence
 
 Assessors see test outputs, the build log, code review comments and a short demonstration on synthetic data.
+
+Each kind of evidence covers something the others do not: test outputs show correctness, the build log shows reasoning and problem-solving, review comments show how feedback was handled, and the demonstration shows that the pipeline runs. Together they let assessors judge the work without relying on Lena's own description. The demonstration runs the same tests assessors can run themselves, so nothing shown depends on Lena's own machine. The build log and review comments are submitted with the code, so assessors can follow how the final version came about.
 
 ### 30.3 Presentation
 
 Ten minutes: purpose, design diagram, demonstration, results, limits, next steps. A panel member from MCX asks about handling; Lena explains the fail-closed export.
 
+A fail-closed export refuses any item whose label is not CLEAR or GREEN, including unknown or misspelt labels. The question from an MCX panel member reflects the exchange's main concern, that members' restricted items never leave CMS by mistake. Lena's answer shows that the filter's design follows directly from TLP handling rules. The demonstration includes the refused AMBER item, so the panel sees the filter work as well as hears it explained.
+
 ### 30.4 Reflection
 
 What went well (modular design, tests); what was hard (format changes); what she would do differently (write the end-to-end test first).
+
+Format changes were hard because the matcher fault in the worked example came from a new log column, the kind of change real feeds make often. Writing the end-to-end test first would have shown expected outputs from the start, so each module could be built against them. Her reflection names specific events from the build rather than general impressions. Each point in the reflection is linked to a dated entry in the build log, so assessors can check the account.
 
 ### 30.5 Limits
 
 Synthetic data is cleaner than reality; the pipeline has not met real feeds; performance at scale is untested.
 
+Each limit points to a step in the transition plan. Validation on real past data addresses the gap between clean synthetic inputs and messy feeds, and a report-only run shows behaviour on real data without risk. Performance at scale would be measured during that run, against the ten-minute runtime used in chapter 27. Lena states these limits in the presentation as well as the report, so the panel does not overestimate readiness.
+
 ### 30.6 Transition plan
 
 To use it at CMS: validation on real past data, report-only run, change approval, service account, monitoring, owner and documentation — as in chapter 27.
+
+Following chapter 27 means the pipeline is treated as production software rather than a student project. It must pass validation, run in report-only mode, go through change approval and run under a service account with minimum rights. The client panel's two requested changes are added to the transition requirements. The plan names CMS's supervisor as the likely owner, pending the manager's agreement, so responsibility is clear from the start.
 
 ### 30.7 Assessment criteria
 
 Correctness, safety, code quality, documentation, reflection and presentation, each scored with the published rubric.
 
+Publishing the rubric in advance lets Lena check her work against the same criteria the assessors use. Safety is scored separately from correctness, because a pipeline that works but could share restricted data would not be acceptable. Reflection and presentation are scored too, because explaining work is part of the job. Each criterion has rubric levels with descriptions, so two assessors marking the same work should reach similar scores. The scores and written comments return to Lena with the result, so she can see which criteria held her mark down.
+
 ### 30.8 Continuing
 
 Graduates move toward analyst roles; the next courses build analysis and leadership skills on these foundations.
+
+The habits built here, careful handling, exact matching, honest limits and clear notes, are the ones Lena will rely on as an analyst. Later courses add deeper analysis, assessment writing and team leadership. Her placement contacts and capstone give her concrete examples to draw on when she applies for analyst roles. Lena's capstone report and placement journal stay in her portfolio, giving evidence of these habits to future employers. The pipeline itself may continue at CMS if the transition plan is approved, which would give her a working tool to point to.
 
 ### Feedback from the client panel
 
