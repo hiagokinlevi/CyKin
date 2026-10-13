@@ -1649,7 +1649,7 @@ Quiet methods (listen-only decode, config export) fit more windows. Noisy method
 
 
 
-Method cards without a noisy field are how morning batch windows get congested. Noisy methods are booked against the batch schedule a week ahead, so the shift lead knows when to expect extra traffic.
+Method cards without a noisy field are how morning batch windows get congested. Noisy methods are booked against the batch schedule a week ahead, outside R-101's charge phase, and each booking names the trunk and its 50 ms cycle-time stop.
 
 Lena schedules quiet methods first.
 
@@ -1873,7 +1873,7 @@ Every control has an owner who receives its alerts and a review date. Log when a
 
 
 
-Each control's register entry also states how it fails: whether a broken allow-list blocks traffic or passes it decides which detective alert must fire first and who is paged when it does.
+Each control's register entry also states how it fails: whether a broken allow-list blocks traffic or passes it decides which detective alert must fire first; on PLC-A's trunk it is the policy-missing alert, which pages the window lead.
 
 ### Field note — control health day
 
@@ -1961,7 +1961,7 @@ Fuzz the predicate with random stations, codes and broken UTF-8. It must DENY or
 
 ### 28.1b Reason catalogue and fuzzing
 
-The catalogue lists, for each reason code, the clause that emits it and the test that pins it: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Fuzz inputs that once found a bug join a regression list that is replayed on every release, with the seed that produced them.
+The catalogue lists, for each reason code, the clause that emits it and the test that pins it: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Fuzz inputs that once found a bug join a regression list that is replayed on every release, including the UTF-8 station name that once crashed the decoder.
 
 
 
@@ -2206,7 +2206,7 @@ At ABP, finding ids come from the client on create and are reused on every retry
 
 Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes.
 
-Lena's finding store at ABP rejects any record with an unknown field or a forbidden name, such as payload or password, and returns a code saying which field failed. Severity accepts only the agreed values. The same validator runs for interactive creates and bulk imports, so no input path is trusted more than another and every rejection is reported in the same format. Errors are documented with examples.
+Lena's finding store at ABP rejects any record with an unknown field or a forbidden name, such as payload or password, and returns a code saying which field failed. Severity accepts only the agreed values. The same validator runs for interactive creates and bulk imports, so no input path is trusted more than another, and a scanner import that sends risk_score is refused with the same code as the mobile client. Errors are documented with examples.
 
 ### 31.3 API versioning
 
@@ -2447,7 +2447,7 @@ Each dead-lettered event keeps the validation error that rejected it. Operators 
 
 A failed scheduled run opens a ticket for the producer team, not the consumer team. Dead-letter age is an SLO chart beside deny-path latency.
 
-ABP runs a schema drill each term. Drill results are recorded with the producer and consumer versions involved.
+ABP runs a schema drill each term. Drill results are recorded with the producer and consumer versions involved, such as the drill that added receive time beside event time on PLC-A's deny events.
 
 ### Field note — poison quarantine
 
@@ -2459,7 +2459,7 @@ Include a consumer canary that fails the deploy if poison events are not quarant
 
 
 
-Each drill ends with the new field visible in a staging ticket and the drill's duration recorded, so the next drill can be compared with it.
+Each drill ends with the new field visible in a staging ticket for a synthetic PLC-A deny, and the drill's duration recorded.
 
 
 ### 34.5 Worked example — integrating alerts with the maintenance system (synthetic ABP)
@@ -2861,7 +2861,7 @@ Announce API deprecations with dates; keep dual-run periods. Maintainability inc
 
 
 
-Cross-training sessions use the same synthetic fixtures as Lab I, so a backup practises on the inputs the release will be judged on and can run the lab alone afterwards.
+Cross-training sessions use the same synthetic fixtures as Lab I, so a backup practises on the inputs the release will be judged on; after one session, the trained backup ran Lab I alone and the held release went out.
 
 Lena applies this plan to every CNHP tool, including the replaced adapter. Its retirement was announced in advance.
 
@@ -3426,7 +3426,7 @@ Lena's capstone froze at v1.0 of her compiler. After the freeze, she fixed only 
 
 Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
 
-Lena reran Lab II for the compiler on a clean machine built from the v1.0 tag, using only synthetic fixtures. The clean machine had no cached build artefacts, so every result came from the tagged source. The checklist was signed by Lena and her reviewer, and the report listed every skipped test with its reason. Lena kept the clean-machine build log with the tag, so an examiner can repeat the rerun exactly.
+Lena reran Lab II for the compiler on a clean machine built from the v1.0 tag, using only synthetic fixtures. The clean machine had no cached build artefacts, so every result came from the tagged source. The checklist was signed by Lena and her reviewer, and the report listed every skipped test with its reason. Lena kept the clean-machine build log beside the v1.0 tag, and it records the stalled vector-loader run as well as the passing one.
 
 ### 46.3 Docs
 
@@ -3454,7 +3454,7 @@ worst source before: comm loss PLC-A (38% of load)
 
 > **Synthetic case — Ashford Batch Plant.** One Capstone II team in Lena's cohort delivered signed allow-list distribution; Lab II green; runbook updated the same day.
 
-That team's project was separate from Lena's capstone, the compiler. Her documentation for the compiler was signed by operations before tagging, and its operator tutorial uses screenshots from the synthetic nine-conduit model only. Operations checked the tutorial by following it once on the bench.
+That team's project was separate from Lena's capstone, the compiler. Her documentation for the compiler was signed by operations before tagging, and its operator tutorial uses screenshots from the synthetic nine-conduit model only. An operations engineer followed the tutorial once on the bench copy of the nine-conduit model before signing.
 
 ### 46.4 Errors and limits
 
@@ -3645,7 +3645,7 @@ No payloads, no live credentials, no proprietary batch genealogy. If it cannot b
 
 > **Synthetic case — Ashford Batch Plant.** Dossier v3 re-hashed clean after a findings.json edit incident; process note included.
 
-Lena checks each file against the exclusion list before sealing; a single match stops the build and names the offending file. After a findings file was edited by mistake, version three was re-hashed and the process note explains how the error was found.
+Lena checks each file against the exclusion list before sealing; a single match stops the build and names the offending file, which is how a raw capture left in the version-two working folder was caught. After a findings file was edited by mistake, version three was re-hashed and the process note explains how the error was found.
 
 ### 48.4 Errors and limits
 
@@ -3748,7 +3748,7 @@ Cite frameworks you actually used. Padding related work with unread papers is di
 
 How-used notes stop citation padding cold in advisor review. Leaving the threats-to-validity page blank fails the thesis gate regardless of implementation quality.
 
-Lena's threats page lists the compiler's reliance on a correct zone model as its first threat.
+Lena's threats page lists the compiler's reliance on a correct zone model as its first threat, the same limitation she names at her defense.
 
 ### Field note — claim on page one
 
@@ -3793,7 +3793,7 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 Claim; demo on synthetic data; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
 
-Lena's defense followed this order. She stated her claim about the compiler, showed it on ABP's synthetic nine-conduit model, presented the equivalence and vector results, and then gave her reflection on one failure. She closed with her limitations slide and one sentence on what the evidence supports. Nothing in the talk touched a live system, and every number on her slides pointed to an artefact in the dossier.
+Lena's defense followed this order. She stated her claim about the compiler, showed it on ABP's synthetic nine-conduit model, presented the equivalence and vector results, and then gave her reflection on one failure. She closed with her limitations slide and one sentence on what the evidence supports: rules equivalent to the design for nine of nine conduits, and three errors that manual review missed. Nothing in the talk touched a live system, and every number on her slides pointed to an artefact in the dossier.
 
 ### 50.2 Likely questions
 
