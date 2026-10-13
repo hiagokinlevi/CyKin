@@ -17,9 +17,9 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 1 | [05](book/PLAN.md#ch-05) | Cultura de seguridad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
 | 2 | [06](book/PLAN.md#ch-06) | Estructuras discretas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
 | 2 | [07](book/PLAN.md#ch-07) | Redes y protocolos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Programación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Datos y bases de datos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Ética y práctica autorizada | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
+| 2 | [08](book/PLAN.md#ch-08) | Programación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Datos y bases de datos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Ética y práctica autorizada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Plan](book/PLAN.md#ch-11) |
 | 3 | [11](book/PLAN.md#ch-11) | Sistemas operativos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
 | 3 | [12](book/PLAN.md#ch-12) | Probabilidad y estadística | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plan](book/PLAN.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Identidad y acceso | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |

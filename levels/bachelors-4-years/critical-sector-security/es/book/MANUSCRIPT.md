@@ -44,8 +44,8 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 6. [Estructuras discretas](#ch-06)
 7. [Redes y protocolos](#ch-07)
 8. [Programación II](#ch-08)
-9. [Datos y bases de datos](../../en/book/MANUSCRIPT.md#ch-09)
-10. [Ética y práctica autorizada](../../en/book/MANUSCRIPT.md#ch-10)
+9. [Datos y bases de datos](#ch-09)
+10. [Ética y práctica autorizada](#ch-10)
 11. [Sistemas operativos](../../en/book/MANUSCRIPT.md#ch-11)
 12. [Probabilidad y estadística](../../en/book/MANUSCRIPT.md#ch-12)
 13. [Identidad y acceso](../../en/book/MANUSCRIPT.md#ch-13)
@@ -695,7 +695,159 @@ El análisis de la entrada es una frontera de seguridad. Defina con precisión l
 <!-- cyberabc:chapter-navigation:start ch-08 -->
 ### Siga estudiando — capítulo 08 de 40
 
-[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](../../en/book/MANUSCRIPT.md#ch-09)
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Datos y bases de datos
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) diseñar un esquema relacional pequeño con claves; (2) escribir consultas SQL que filtran, combinan y ordenan; (3) explicar por qué importan los tipos de datos, con los números de versión como ejemplo; y (4) prevenir la inyección SQL con consultas parametrizadas. Se apoya en los capítulos 3 y 8 y prepara el capítulo 14 (privacidad), el capítulo 15 (medición) y el capítulo 22 (dependencias).
+
+### 9.1 Por qué datos relacionales
+
+Las preguntas de seguridad combinan hechos guardados en lugares distintos: qué activos existen, qué software ejecutan, qué avisos afectan a ese software, quién es responsable de cada activo, cuáles están expuestos a internet. Una **base de datos relacional** almacena cada tipo de hecho una sola vez, en una **tabla** de filas y columnas, y conecta las tablas mediante **claves** ([Codd, 1970](https://doi.org/10.1145/362384.362685)). Una **clave primaria** identifica una fila de forma única (el ID de un activo); una **clave foránea** hace referencia a una fila de otra tabla (el nombre de producto de un activo, que coincide con el producto de un aviso). Una **combinación** (*join*) reúne las filas que coinciden. Almacenar cada hecho una sola vez evita la falla conocida de las hojas de cálculo: dos copias que no concuerdan.
+
+### 9.2 SQL en cuatro cláusulas
+
+`SELECT` nombra las columnas que quiere; `FROM ... JOIN ... ON` nombra las tablas y cómo coinciden; `WHERE` filtra las filas; `ORDER BY` ordena. `GROUP BY` con `COUNT` resume. La biblioteca estándar de Python incluye `sqlite3`, una base de datos integrada completa, de modo que puede practicar sin servidor. Dos advertencias. Primera, una combinación descarta en silencio las filas sin coincidencia: un activo cuyo nombre de producto está mal escrito simplemente desaparece de un informe de vulnerabilidades. Use un `LEFT JOIN` y busque valores nulos cuando importe la completitud. Segunda, los **tipos** deciden las comparaciones. Las cadenas de versión comparadas como texto ponen "3.10" antes que "3.4", porque el carácter "1" se ordena antes que "4".
+
+### 9.3 Inyección
+
+Si un programa construye SQL pegando la entrada del usuario en una cadena (`"... WHERE id = '" + user_input + "'"`), una entrada como `x' OR '1'='1` cambia el significado de la consulta. Es la **inyección SQL**, que figura de forma persistente entre las debilidades de software más peligrosas ([CWE Top 25](https://cwe.mitre.org/top25/)). La corrección es estructural: las **consultas parametrizadas** (`db.execute("... WHERE id = ?", (user_input,))`) envían los datos separados del código, de modo que la entrada nunca puede convertirse en SQL. En el Lab 5, toda consulta con una entrada, como buscar un activo por su ID, debe usar un marcador `?`.
+
+### 9.4 Ejemplo resuelto y Lab 5: correspondencia de avisos en CPN (sintético)
+
+**Este caso es sintético.** Calder Power Networks mantiene una tabla de activos e importa los avisos de los fabricantes. La pregunta: ¿qué activos ejecutan una versión anterior a la versión corregida, ordenados de modo que primero aparezcan los elementos con explotación conocida y expuestos a internet? Una pequeña función propia compara las versiones numéricamente.
+
+```python
+# Lab 5 - asset and vulnerability joins in SQLite (synthetic Calder Power data, offline)
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.executescript("""
+CREATE TABLE asset(id TEXT PRIMARY KEY, site TEXT, role TEXT, product TEXT, version TEXT, internet_exposed INTEGER);
+CREATE TABLE advisory(product TEXT, fixed_in TEXT, severity TEXT, known_exploited INTEGER);
+INSERT INTO asset VALUES
+ ('RTU-11','Substation North','feeder RTU','RTU-K','3.2',0),
+ ('RTU-12','Substation North','feeder RTU','RTU-K','3.4',0),
+ ('HMI-01','Control room','operator HMI','HMI-S','7.0',0),
+ ('VPN-01','Head office','remote access gateway','VPN-G','9.1',1),
+ ('HIS-01','DMZ','historian replica','HIST-P','5.5',0);
+INSERT INTO advisory VALUES
+ ('RTU-K','3.4','high',0), ('VPN-G','9.3','critical',1), ('HIST-P','5.1','medium',0);
+""")
+def vkey(v): return tuple(int(x) for x in v.split("."))
+db.create_function("vlt", 2, lambda a, b: int(vkey(a) < vkey(b)))
+q = """SELECT a.id, a.role, a.version, v.fixed_in, v.severity, v.known_exploited, a.internet_exposed
+       FROM asset a JOIN advisory v ON a.product = v.product
+       WHERE vlt(a.version, v.fixed_in)
+       ORDER BY v.known_exploited DESC, a.internet_exposed DESC, v.severity"""
+for row in db.execute(q):
+    print(row)
+print("string comparison '3.10' < '3.4':", "3.10" < "3.4", "| numeric:", vkey("3.10") < vkey("3.4"))
+```
+
+Salida esperada:
+
+```text
+('VPN-01', 'remote access gateway', '9.1', '9.3', 'critical', 1, 1)
+('RTU-11', 'feeder RTU', '3.2', '3.4', 'high', 0, 0)
+string comparison '3.10' < '3.4': True | numeric: False
+```
+
+Dos activos necesitan actuación, primero la pasarela (es el aviso del capítulo 5). HMI-01 no tiene aviso y no aparece; HIS-01 ya ha superado la corrección. Observe que `ORDER BY v.severity` ordena las *palabras* alfabéticamente ("critical" < "high" < "medium"), lo que aquí resulta correcto por casualidad y sería erróneo con "low". Una columna con el rango de gravedad es el diseño robusto.
+
+### 9.5 Actividad práctica
+
+(1) Cambie la combinación por un `LEFT JOIN` y enumere los activos sin registro de aviso: ¿es «sin aviso» lo mismo que «sin vulnerabilidad»? (2) Escriba una consulta parametrizada que devuelva un activo por su ID; después, muestre con una consulta construida a propósito de forma insegura mediante cadenas, solo sobre su base de datos en memoria, cómo `' OR '1'='1` devuelve todas las filas. El `LEFT JOIN` muestra HMI-01 con nulos en las columnas del aviso. «Sin aviso» significa que no hay aviso en esta fuente para el producto HMI-S, no que la HMI no tenga defectos; puede tener un boletín del fabricante fuera de la fuente o no tener ninguno publicado todavía. En la parte (2), la consulta insegura solo debe ejecutarse contra su base de datos en memoria, nunca contra una real.
+
+### 9.6 Errores comunes y límites
+
+- Comparar versiones, fechas o números almacenados como texto.
+- Combinaciones internas que descartan en silencio las filas sin coincidencia.
+- Construir SQL concatenando cadenas.
+- Confiar en que los nombres de producto coincidan exactamente entre las fuentes de los fabricantes y los inventarios locales.
+
+El Lab 5 muestra dónde morderían tres de estos errores. La comparación de versiones trataría "3.10" como anterior a "3.4" si se hiciera como texto, y marcaría erróneamente como vulnerable una RTU actualizada. La combinación interna descarta HMI-01 en silencio. Y los nombres de producto "RTU-K" y "VPN-G" solo se combinan porque la muestra se escribió de forma coherente; las fuentes reales de los fabricantes escriben los productos de forma distinta y necesitan una tabla de correspondencias.
+
+### Ejercicios — capítulo 9
+
+**EX017 — Recuento por sitio.** *Objetivo:* resumir con SQL. *Entradas:* el Lab 5. *Pasos:* escriba una consulta que devuelva, por sitio, el número de activos que necesitan una actualización. *Evidencia esperada:* la consulta y el resultado. *Rúbrica:* 3 = `GROUP BY` correcto con el filtro de versión, resultado Head office 1, Substation North 1; 2 = cuenta todos los activos; 1 = solo la sintaxis; 0 = nada.
+
+**EX018 — Orden por gravedad.** *Objetivo:* corregir una ordenación frágil. *Entradas:* el Lab 5 con un aviso adicional de gravedad "low". *Pasos:* explique por qué `ORDER BY severity` colocaría mal "low" y dé dos correcciones. *Evidencia esperada:* la explicación y las correcciones. *Rúbrica:* 3 = el orden alfabético pone "low" antes que "medium"; correcciones: una columna de rango numérico o una tabla de consulta o una expresión `CASE`; 2 = una corrección; 1 = solo la explicación; 0 = nada.
+
+### Síntesis del capítulo
+
+Los datos relacionales permiten responder con una sola consulta a preguntas de seguridad transversales, si las claves, los tipos y las combinaciones son correctos. Compare las versiones numéricamente, busque lo que descartan las combinaciones, ordene las gravedades con números y nunca construya SQL a partir de cadenas no confiables.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Siga estudiando — capítulo 09 de 40
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética y práctica autorizada
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar por qué es la autorización, y no la capacidad técnica, lo que define el trabajo de seguridad legítimo; (2) redactar un documento sencillo de reglas de enfrentamiento para un ejercicio; (3) gestionar un descubrimiento accidental sobre un sistema real mediante la divulgación coordinada; y (4) razonar sobre los conflictos entre seguridad, seguridad funcional, privacidad y continuidad del servicio con la ayuda de un código profesional. Se apoya en los capítulos 1–9 y rige todas las actividades prácticas del resto del libro.
+
+### 10.1 La autorización es la línea
+
+La misma orden puede ser mantenimiento o un delito. Lo que las separa es la **autorización**: el permiso explícito de alguien facultado para darlo, para un alcance, un tiempo y un método definidos. La mayoría de las jurisdicciones tipifican como delito el acceso no autorizado a sistemas informáticos y, en los servicios críticos, las pruebas no autorizadas también pueden poner en peligro a las personas: un escaneo inofensivo para un portátil puede bloquear un controlador. Por eso la regla de este libro es simple y absoluta: el trabajo práctico usa los laboratorios sintéticos del libro, sistemas de su propiedad o sistemas cuyo propietario ha dado un permiso escrito y específico. La curiosidad por un dispositivo expuesto de una empresa de servicios real no es un permiso.
+
+### 10.2 Reglas de enfrentamiento
+
+Los ejercicios autorizados se ponen por escrito en unas **reglas de enfrentamiento** (RoE): quién autoriza (con nombre y función); el alcance (qué sistemas, qué direcciones y, de forma explícita, qué queda excluido; los sistemas de seguridad funcional suelen estarlo); la ventana de tiempo; los métodos permitidos; las condiciones de parada («ante cualquier alarma inesperada del proceso: parar y llamar al ingeniero de turno»); el plan de comunicación; el tratamiento de los datos encontrados; y cómo se informarán los resultados. Unas RoE protegen al servicio, a la organización y a quien realiza la prueba. En la TO, las RoE suelen acordarse con los ingenieros de operaciones y de seguridad funcional, no solo con el equipo de seguridad de TI, y a menudo limitan las pruebas a la observación pasiva o a réplicas sin conexión.
+
+### 10.3 Divulgación
+
+Si encuentra una vulnerabilidad por accidente (una página pública que expone una interfaz de control, un correo enviado por error), el camino ético es detenerse, no seguir explorando, e informar en privado al propietario o a través de un coordinador. La **divulgación coordinada de vulnerabilidades** da al propietario o al fabricante tiempo para corregir antes de que se publiquen los detalles; organismos nacionales como CISA gestionan programas que coordinan a quienes descubren con los fabricantes ([programa CVD de CISA](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program)). Anote qué vio y cuándo, manténgalo en confidencialidad y no conserve datos a los que no tenía derecho a acceder.
+
+### 10.4 Códigos profesionales y conflictos
+
+El Código de Ética de la ACM pide a los profesionales de la informática que contribuyan a la sociedad y al bienestar humano, eviten el daño, sean honestos y respeten la privacidad, y que "access computing and communication resources only when authorized or when compelled by the public good", es decir, que accedan a recursos informáticos y de comunicación solo cuando estén autorizados o cuando lo exija el bien público ([ACM Code, 2018](https://www.acm.org/code-of-ethics)). Los dilemas reales enfrentan estos deberes entre sí. ¿Debe un hospital retrasar un parche de seguridad para su flota de ventiladores porque la actualización exige retirar dispositivos del servicio durante un pico de enfermedades respiratorias? ¿Debe una empresa de servicios compartir los detalles de un incidente con otras empresas cuando sus abogados aconsejan silencio? Un enfoque estructurado ayuda: identificar a las partes interesadas y los daños; identificar los deberes y quién los tiene; considerar alternativas (parchear un subconjunto, añadir un control compensatorio); decidir; registrar el razonamiento y quién aceptó el riesgo residual.
+
+### 10.5 Ejemplo resuelto: la HMI abierta (sintético)
+
+**Este caso es sintético.** Un estudiante que busca información sobre prácticas en el sitio web público de Calder Water sigue un enlace que abre una página web titulada «Pump Station 4 — operator view». No se le pidió ninguna contraseña. La respuesta ética: no hacer clic en nada de la página, no probar otros enlaces, tomar una captura de pantalla solo de la barra de direcciones y del título si hace falta para informar, cerrar la página y escribir al contacto de seguridad publicado por CW (o, si no lo hay, al CERT o CSIRT nacional) indicando qué vio, cuándo y cómo llegó a ello. No publicar nada al respecto. No «comprobar si de verdad está en funcionamiento». Debe informarse al asesor de ética de la universidad del estudiante. En este caso sintético, CW agradece al estudiante, elimina el enlace y descubre que la página era una demostración de un fabricante olvidada en un servidor web, un recordatorio de que quien descubre rara vez conoce el panorama completo.
+
+### 10.6 Actividad práctica
+
+Escriba unas RoE de una página para el Laboratorio I (capítulo 25), que solo ejecuta los laboratorios sin conexión del libro en su propio computador. Incluso con un alcance trivial, complete todos los encabezados: quién autoriza, alcance, exclusiones, ventana, métodos, condiciones de parada, tratamiento de los datos e informe. Como condición de parada, «cualquier comportamiento inesperado de mi propio computador, o cualquier intento de un script de acceder a la red» es específica y observable. Nómbrese a sí mismo como quien autoriza y quien prueba dentro del alcance, y a su tutor como la persona a quien se avisa si se produce una condición de parada.
+
+### 10.7 Errores comunes y límites
+
+- «Era accesible públicamente, así que estaba permitido».
+- La autorización verbal, o la autorización de alguien que no es propietario del sistema.
+- La ampliación progresiva del alcance durante una prueba («ya que estoy aquí…»).
+- Conservar los datos encontrados durante una prueba una vez terminado el encargo.
+- Tratar la ética como una lista de comprobación de cumplimiento en lugar de como un deber de razonamiento.
+
+El ejemplo resuelto de la HMI abierta pone a prueba los tres primeros. La página era accesible públicamente, pero nadie en CW autorizó una visita; un compañero de clase que dice «adelante» no es propietario del sistema; y hacer clic en «solo un enlace más» para comprobar si está en funcionamiento es ampliar el alcance. El cuarto se aplicaría si el estudiante conservara la captura de pantalla después de informar. El quinto es la razón por la que el estudiante también avisó al asesor de ética.
+
+### Ejercicios — capítulo 10
+
+**EX019 — Redactar las condiciones de parada.** *Objetivo:* proteger un servicio en funcionamiento durante una prueba autorizada. *Entradas:* CPN autoriza una captura pasiva del tráfico de red en su sala de control durante un día. *Pasos:* redacte cinco condiciones de parada e indique a quién se llama en cada una. *Evidencia esperada:* una lista. *Rúbrica:* 3 = cinco condiciones específicas y observables (alarma del proceso, comportamiento inesperado de un dispositivo, descubrimiento de tráfico de sistemas de seguridad funcional fuera del alcance, petición de un operador, datos de tipo sensible) con funciones nombradas; 2 = genéricas; 1 = menos de tres; 0 = nada.
+
+**EX020 — El dilema del parche.** *Objetivo:* estructurar una decisión ética. *Entradas:* el ejemplo del parche de los ventiladores de la discusión de este capítulo sobre los códigos profesionales. *Pasos:* enumere las partes interesadas y los daños, dos alternativas a «parchear todo ahora» o «no parchear nada», y redacte un registro de decisión de 150 palabras que nombre a quien acepta el riesgo residual. *Evidencia esperada:* el análisis y el registro. *Rúbrica:* 3 = daños en ambos lados, alternativas creíbles (parcheo escalonado, aislamiento más supervisión), responsables clínico y de seguridad nombrados; 2 = solo un lado; 1 = opinión sin estructura; 0 = nada.
+
+### Síntesis del capítulo
+
+La autorización define el trabajo de seguridad legítimo. Redacte reglas de enfrentamiento, deténgase cuando tropiece con algo real e infórmelo en privado, y razone de forma explícita los conflictos entre deberes, registrando quién aceptó qué riesgo. En los servicios críticos, las pruebas descuidadas pueden dañar a las personas.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Siga estudiando — capítulo 10 de 40
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](../../en/book/MANUSCRIPT.md#ch-11)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -737,6 +889,14 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX015.** (1) `"nan"` se acepta porque toda comparación con NaN es falsa. (2) `"abc"` (o `""`) lanza `ValueError`, lo que bloquea a quien llama o lo deja en un estado indefinido. (3) Si `current` es NaN (por ejemplo, por una lectura fallida del sensor), `abs(x - current) > 0.5` es falsa para cualquier `x`, de modo que cualquier punto de consigna dentro de rango supera la comprobación del paso. `"inf"` se rechaza en la comprobación de rango, pero solo porque es mayor que 4,5, lo que es suerte, no diseño.
 
 **EX016.** Bomba de dosificación de cloro: conservar el último punto de consigna bueno, generar una alarma para el operador y no moverse hacia el máximo; el responsable del proceso (el responsable de calidad del agua) decide este comportamiento ante la falla. Válvula de entrada de agua bruta: conservar la última posición buena y generar una alarma; operaciones decide si se necesita una posición de respaldo para proteger la capacidad de tratamiento. Registro en ambos casos: marca de tiempo, fuente (usuario o estación), entrada bruta, valor analizado si lo hay, regla que falló, valor actual y acción realizada.
+
+**EX017.** `SELECT a.site, COUNT(*) FROM asset a JOIN advisory v ON a.product = v.product WHERE vlt(a.version, v.fixed_in) GROUP BY a.site;` → Head office 1; Substation North 1.
+
+**EX018.** La ordenación como texto da "critical" < "high" < "low" < "medium", de modo que "low" queda antes que "medium", lo cual es erróneo. Correcciones: almacenar un `severity_rank` numérico (critical 4, high 3, medium 2, low 1) y ordenar por él; u ordenar con `CASE severity WHEN 'critical' THEN 4 ... END`, o combinar con una tabla de consulta.
+
+**EX019.** Condiciones de parada y llamadas: (1) cualquier alarma inesperada del proceso o anomalía notificada por un operador: supervisor de la sala de control; (2) cualquier cambio de comportamiento de un dispositivo que coincida con la conexión del equipo de captura: supervisor e ingeniero de TO; (3) observar tráfico de sistemas de seguridad funcional o redes fuera del alcance: detener la captura y avisar al responsable de seguridad de TO; (4) un operador o el supervisor piden parar: obedecer de inmediato; (5) descubrimiento de datos personales o credenciales en claro: parar, proteger los archivos y avisar al delegado de protección de datos y al responsable de seguridad de TO.
+
+**EX020.** Partes interesadas: pacientes con ventilación, personal clínico, ingeniería clínica, seguridad, dirección del hospital, fabricante. Daños de parchear todo ahora: dispositivos no disponibles durante el pico de demanda, posibles fallas de la actualización. Daños de no parchear: exposición a una explotación que provoque un mal funcionamiento del dispositivo. Alternativas: parchear por lotes a medida que los dispositivos dejan de usarse; aislar la flota en un segmento de red dedicado con supervisión hasta que esté parcheada; actualización con apoyo del fabricante a pie de cama durante períodos de baja dependencia. El registro de la decisión nombra al director clínico y al responsable de seguridad como responsables conjuntos del riesgo, y registra la justificación, los controles provisionales y una fecha de finalización.
 
 <a id="glossary"></a>
 
