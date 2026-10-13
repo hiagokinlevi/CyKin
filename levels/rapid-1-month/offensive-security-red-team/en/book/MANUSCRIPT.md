@@ -48,17 +48,35 @@ Authorized offensive security means looking for weaknesses in systems with the o
 
 Defenders need to know what an attacker could actually do, not only what a checklist says. NIST SP 800-115 describes several kinds of security testing and assessment, from reviews to technical tests. The Penetration Testing Execution Standard (PTES) organises a pentest into stages such as scoping, intelligence gathering, vulnerability analysis, exploitation, post-exploitation and reporting. Threat-led programmes such as TIBER-EU and CBEST use intelligence to make the test look like a real adversary against financial institutions.
 
+Section one point two develops what authorized offensive security is with a the organisation note Maya Chen can demo offline.
+
 ### 1.3 What this course will not teach
 
 You will not be given exploit code, payloads or step-by-step attack procedures for real products. Labs use synthetic data and offline scripts. You will learn to check scope, keep evidence, write findings and stay inside the rules.
+
+Section one point three develops what authorized offensive security is with a the organisation note Maya Chen can demo offline.
+
+Under section one point three, the mentor expects what claims to carry owners and dates.
+
+Section one point three treats authorized testing not hacking as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Who says yes
 
 Permission comes from someone who owns or is authorised to speak for the system — often a business owner and a security lead, recorded in a signed document. Your manager, a friend or a public website's "report a bug" page is not enough unless the written rules say so. When in doubt, do not test.
 
+Section one point four develops what authorized offensive security is with a the organisation note Maya Chen can demo offline.
+
+Under section one point four, the mentor expects what claims to carry owners and dates.
+
 ### 1.5 Shared language for techniques
 
 MITRE ATT&CK gives public names for adversary techniques, such as T1078 Valid Accounts. Testers and defenders use those names so a finding and a detection rule describe the same behaviour.
+
+Section one point five develops what authorized offensive security is with a the organisation note Maya Chen can demo offline.
+
+Under section one point five, the mentor expects what claims to carry owners and dates.
+
+Section one point five treats authorized testing not hacking as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic RCC)
 
@@ -106,9 +124,15 @@ You will (1) list what a written authorization must contain; (2) check proposed 
 
 Before any testing, a written agreement — sometimes called rules of engagement — must name the systems and people in scope, what is out of scope, which methods are allowed, the start and end times, who to call in an emergency, how findings will be reported, and how data will be handled afterwards. NIST SP 800-115 and PTES both treat scoping as a first-class stage, not a formality.
 
+Section two point one develops scope permission and safe practice with a the organisation note Maya Chen can demo offline.
+
 ### 2.2 Checking a target list
 
 Testers compare every proposed address or hostname with the written scope. Excluded systems — payroll, medical devices, safety systems — must never be touched even if they share a network. A simple local check catches mistakes before anyone sends a packet.
+
+Section two point two develops scope permission and safe practice with a the organisation note Maya Chen can demo offline.
+
+Under section two point two, the mentor expects scope claims to carry owners and dates.
 
 ```python
 """Lab 2: check synthetic targets against a written scope (no network traffic is sent)."""
@@ -140,9 +164,19 @@ Run with `python3 lab_scope.py`. Verified output:
 
 Stop conditions are events that end or pause testing at once: the owner asks to stop, an unexpected outage appears, safety systems are involved, or sensitive data is exposed beyond the test's purpose. Out-of-bounds rules list methods that are never allowed, such as denial-of-service or social engineering of students, unless the paper explicitly permits them.
 
+Section two point three develops scope permission and safe practice with a the organisation note Maya Chen can demo offline.
+
+Under section two point three, the mentor expects scope claims to carry owners and dates.
+
 ### 2.4 When someone asks you to break the rules
 
 Colleagues sometimes ask for a "quick check" of a system that is not in scope. The answer is always no until the authorization is changed in writing. Being helpful does not create permission.
+
+Section two point four develops scope permission and safe practice with a the organisation note Maya Chen can demo offline.
+
+Under section two point four, the mentor expects scope claims to carry owners and dates.
+
+Section two point four treats what the paper must as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic RCC)
 
@@ -190,21 +224,51 @@ You will (1) describe what makes a useful finding; (2) keep simple evidence with
 
 A finding is a specific, evidenced weakness or gap that matters to the organisation. It states what was observed, where, when, why it matters, how to reproduce the observation within the rules, and a suggested fix. Vague statements such as "security is weak" are not findings.
 
+Section three point one develops findings evidence and responsible reporting with a the organisation note Maya Chen can demo offline.
+
+Under section three point one, the mentor expects findings claims to carry owners and dates.
+
+Section three point one treats what finding is evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Evidence without harm
 
 Evidence can be configuration screenshots, log lines, policy excerpts or the output of authorized tools. You keep only what the agreement allows, mark it with time and source, and never share it beyond the agreed audience. This course's labs never touch live targets.
+
+Section three point two develops findings evidence and responsible reporting with a the organisation note Maya Chen can demo offline.
+
+Under section three point two, the mentor expects findings claims to carry owners and dates.
+
+Section three point two treats what finding is evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Naming techniques
 
 Linking a finding to MITRE ATT&CK helps defenders search for related detections. For example, a shared password reused across systems relates to T1078 Valid Accounts. The name describes the behaviour; it does not prove who the attacker would be.
 
+Section three point three develops findings evidence and responsible reporting with a the organisation note Maya Chen can demo offline.
+
+Under section three point three, the mentor expects findings claims to carry owners and dates.
+
+Section three point three treats what finding is evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Honest severity
 
 Severity combines how easy the issue is to use and how much harm it could cause. Industry scores such as CVSS exist, but many organisations also use a simple likelihood × impact scale agreed with the client. Overstating severity destroys trust; understating it leaves risk unaddressed.
 
+Section three point four develops findings evidence and responsible reporting with a the organisation note Maya Chen can demo offline.
+
+Under section three point four, the mentor expects findings claims to carry owners and dates.
+
+Section three point four treats what finding is evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Who reads the report
 
 Executives need short risk language and decisions; system owners need reproduction steps and fixes; defenders need technique names and detection ideas. One report often has a summary for leaders and detail for engineers.
+
+Section three point five develops findings evidence and responsible reporting with a the organisation note Maya Chen can demo offline.
+
+Under section three point five, the mentor expects findings claims to carry owners and dates.
+
+Section three point five treats what finding is evidence as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic RCC)
 
@@ -251,9 +315,23 @@ You will (1) combine scope checking and finding ranking into one short exercise;
 
 Maya is given a synthetic engagement pack: a one-page authorization for documentation addresses in 192.0.2.0/25, an exclusion of 192.0.2.10, a list of four draft findings from a policy and configuration review (no live exploitation), and a request for a one-page summary for the IT director.
 
+Section four point one develops guided synthesis plan check report with a the organisation note Maya Chen can demo offline.
+
+Under section four point one, the mentor expects guided claims to carry owners and dates.
+
+Section four point one treats the classroom engagement ranking as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Ranking for the summary
 
 Not every finding fits the first page. Ranking by likelihood × impact puts the issues that most need decisions first.
+
+Section four point two develops guided synthesis plan check report with a the organisation note Maya Chen can demo offline.
+
+Under section four point two, the mentor expects guided claims to carry owners and dates.
+
+Section four point two treats the classroom engagement ranking as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, the organisation will not accept guided work without a written trail.
 
 ```python
 """Lab 4: rank synthetic findings by likelihood x impact (1-3 each) for the report summary."""
@@ -280,17 +358,43 @@ F2 score=2 low    Old web server banner shows version
 
 The summary states the authorization, the window, how testing was limited (configuration and policy review only), the top findings with scores, and the decisions needed. Detail sits in an attachment.
 
+Section four point three develops guided synthesis plan check report with a the organisation note Maya Chen can demo offline.
+
+Under section four point three, the mentor expects guided claims to carry owners and dates.
+
+Section four point three treats the classroom engagement ranking as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Pressure scenarios
 
 During the exercise a classmate asks Maya to add their blog to the scan, and a draft finding mentions a medical clinic server that is not in the college scope. She refuses the blog and removes the clinic server note as out of scope.
+
+Section four point four develops guided synthesis plan check report with a the organisation note Maya Chen can demo offline.
+
+Under section four point four, the mentor expects guided claims to carry owners and dates.
+
+Section four point four treats the classroom engagement ranking as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 After the course
 
 The next course in this curriculum is about AI security. Longer red-team courses deepen scoping, methods, tooling, reporting and threat-led testing. Keep a record of exercises completed.
 
+Section four point five develops guided synthesis plan check report with a the organisation note Maya Chen can demo offline.
+
+Under section four point five, the mentor expects guided claims to carry owners and dates.
+
+Section four point five treats the classroom engagement ranking as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, the organisation will not accept guided work without a written trail.
+
 ### 4.6 Recording the exercise
 
 Maya files the one-pager, the ranked list, the scope-check output and a note of the two refused requests. That packet is what her manager reviews, and it becomes her evidence that the classroom engagement stayed inside the rules.
+
+Section four point six develops guided synthesis plan check report with a the organisation note Maya Chen can demo offline.
+
+Under section four point six, the mentor expects guided claims to carry owners and dates.
+
+Section four point six treats the classroom engagement ranking as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic)
 
