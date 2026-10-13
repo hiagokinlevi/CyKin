@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–5 de 40 já estão escritos em português, com os exercícios EX001–EX015 e suas resoluções com rubricas de 0 a 3; os capítulos 6–40 (EX016–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–40 (EX031–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
 
-Capítulos 6–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-06), até a chegada dos próximos lotes.
+Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -236,11 +236,241 @@ Sem culpa não significa sem responsabilização; comportamentos descuidados rep
 - **EX014 — Violação acidental.** Enviar um boletim ao pai errado é uma violação? *Rubrica:* 3 = sim; a divulgação acidental conta;; 2 = sim;; 1 = não;; 0 = nenhuma.
 - **EX015 — Cultura de comunicação.** Por que agradecer aos funcionários que relatam erros depressa? *Rubrica:* 3 = o medo atrasa a comunicação, e o relógio de 72 horas exige rapidez;; 2 = menciona rapidez;; 1 = punir;; 0 = nenhuma.
 
+<a id="ch-06"></a>
+
+## Capítulo 6 — Estruturas discretas
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar conjuntos e relações para modelar o compartilhamento de dados; (2) contar as combinações que identificam alunos; (3) usar grafos para rastrear fluxos de dados.
+
+### 6.1 Conjuntos de dados
+
+Elena modela os dados da rede como conjuntos: todos os dados pessoais, os dados de categorias especiais, como saúde e religião, e os dados de crianças com necessidades educacionais especiais. Ela observa que alguns dados pertencem a vários conjuntos. Uma lista de alunos com restrições alimentares pode revelar religião ou condição de saúde. Pensar em conjuntos a ajuda a ver que dados de aparência comum podem cair em categorias sensíveis, que o artigo 9 do GDPR protege com condições mais estritas e que a LGPD chama de dados pessoais sensíveis (art. 5º, II). Ela usa diagramas de Venn no relatório para a rede. Os dados de saúde são um exemplo.
+
+### 6.2 Contagem de identidades
+
+Elena conta quantos alunos compartilham combinações de atributos em uma escola pequena: ano escolar, sexo e primeira língua. Em uma escola de duzentos alunos, algumas combinações contêm uma única criança. Publicar uma tabela de resultados por esses atributos poderia identificar essa criança. Ela liga isso ao trabalho de Sweeney (2002) sobre como combinações de atributos comuns identificam pessoas. O exercício de contagem mostra por que as estatísticas de escolas pequenas exigem cuidado especial antes de serem publicadas. Numa escola com um único aluno de determinada idade e etnia, as contagens identificam essa criança.
+
+### 6.3 Relações
+
+Uma relação forma pares de elementos de dois conjuntos. Elena modela como relação quais funções da equipe podem acessar quais categorias de dados. Os professores acessam os registros de aprendizagem; a secretaria acessa os dados de contato; a coordenadora de necessidades especiais acessa os planos de apoio. Ela confere a relação com o princípio do privilégio mínimo e descobre que a secretaria também consegue acessar os planos de apoio, de que não precisa. O modelo torna o problema visível de um jeito que uma lista de permissões num menu de software não tornava. Remover esse par restringe o acesso.
+
+### 6.4 Grafos de fluxos
+
+Elena desenha os fluxos de dados da rede como um grafo dirigido: das famílias para as escolas, das escolas para os aplicativos, dos aplicativos para os suboperadores dos fornecedores. Ela encontra caminhos que saem da rede em várias etapas, como um aplicativo de leitura que repassa dados a um provedor de análise. Um caminho, observa, é tão protegido quanto seu elo mais fraco. O grafo a prepara para os capítulos seguintes, em que ela vai verificar se cada aresta tem base legal e contrato. Cada aresta é um fluxo de dados que precisa de justificativa.
+
+### Exemplo resolvido
+
+Elena modela as categorias de dados como conjuntos, conta as combinações que identificam alunos em escolas pequenas, modela o acesso por função como uma relação (descobrindo o acesso da secretaria aos planos de apoio) e rastreia fluxos de várias etapas como um grafo.
+
+> **Caso sintético.** Os modelos são sintéticos; o artigo 9 do GDPR, o art. 5º da LGPD e Sweeney (2002) são reais.
+
+### Erros e limites
+
+Os modelos simplificam; o acesso real costuma ter exceções que as tabelas de funções não capturam.
+
+### Exercícios
+
+- **EX016 — Comum, mas sensível.** Dê um exemplo de dado de aparência comum que pode ser de categoria especial. *Rubrica:* 3 = restrições alimentares que revelam religião ou saúde;; 2 = dá um exemplo;; 1 = nenhum;; 0 = nenhuma.
+- **EX017 — Achado na relação de acesso.** O que a relação de acesso revelou? *Rubrica:* 3 = a secretaria podia acessar planos de apoio de que não precisa;; 2 = menciona a secretaria;; 1 = nada;; 0 = nenhuma.
+- **EX018 — O elo mais fraco.** Por que um caminho de dados com várias etapas é tão protegido quanto seu elo mais fraco? *Rubrica:* 3 = os dados podem vazar em qualquer etapa, como um suboperador;; 2 = menciona etapas;; 1 = o mais forte;; 0 = nenhuma.
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar o que o tráfego da rede escolar revela; (2) entender a filtragem e o monitoramento; (3) equilibrar a proteção das crianças com a privacidade.
+
+### 7.1 Redes escolares
+
+Elena estuda a rede de computadores da rede de escolas. Os dispositivos dos alunos se conectam pelo Wi-Fi da escola, que passa por um filtro web. O filtro registra cada site visitado por um dispositivo. A criptografia protege o conteúdo, mas o filtro vê os nomes de domínio. Elena percebe que os logs revelam informações sensíveis, como buscas sobre problemas de saúde ou de família, e que se referem a crianças identificáveis quando os dispositivos são atribuídos aos alunos. O projeto da rede cria, portanto, um volume significativo de dados pessoais cuja existência muitos funcionários nem conhecem. Os logs são dados pessoais.
+
+### 7.2 Filtragem e monitoramento
+
+As escolas costumam ter deveres de proteção que as obrigam a resguardar as crianças de conteúdos nocivos. Elena aprende que a filtragem e o monitoramento podem apoiar esses deveres, mas precisam ser proporcionais. Ela revisa as configurações do filtro e descobre logs guardados por três anos e acessíveis a toda a equipe de TI. Recomenda uma retenção mais curta, acesso limitado aos responsáveis designados pela proteção das crianças e informação clara a alunos e famílias sobre o que é monitorado. Ela observa que a transparência faz parte da lealdade, mesmo quando o monitoramento se justifica. Os alunos veem um aviso ao entrar.
+
+### 7.3 Criptografia em trânsito
+
+Elena verifica se o sistema de gestão escolar e os aplicativos usam conexões cifradas. Um aplicativo legado usado por uma escola envia nomes de alunos sem criptografia na rede local. Ela leva o caso à equipe de TI, que o substitui. Explica aos professores que as conexões cifradas impedem que outras pessoas na mesma rede leiam os dados, o que importa nas escolas, onde muitos dispositivos compartilham as redes. Ela confere o sistema de gestão escolar e o portal das famílias e encontra os dois cifrados, mas um serviço de impressão legado envia listas de turma em texto claro pela rede, e a TI o substitui nas férias seguintes.
+
+### 7.4 Equilíbrio de deveres
+
+Elena discute com o Dr. Asante como equilibrar a proteção das crianças e a privacidade. As duas querem proteger as crianças. O monitoramento excessivo pode desencorajar os alunos de buscar ajuda online sobre assuntos sensíveis, enquanto o monitoramento insuficiente pode deixar passar riscos graves. Ela escreve que a rede deve declarar com clareza a finalidade do monitoramento, limitá-lo a essa finalidade e revisá-lo com regularidade. A discussão lhe mostra que a privacidade não se opõe à segurança, mas precisa ser ponderada com ela de forma cuidadosa e aberta. Os logs de monitoramento passam a ser guardados por um período letivo.
+
+### Exemplo resolvido
+
+Elena encontra logs do filtro web que revelam buscas sensíveis guardados por três anos, recomenda retenção mais curta e acesso restrito aos responsáveis pela proteção das crianças, substitui um aplicativo sem criptografia e trata o monitoramento como um equilíbrio de deveres.
+
+> **Caso sintético.** A rede e o filtro são sintéticos.
+
+### Erros e limites
+
+As exigências de proteção das crianças variam de país para país; consulte as orientações locais.
+
+### Exercícios
+
+- **EX019 — Logs do filtro.** Por que os logs do filtro web são sensíveis? *Rubrica:* 3 = revelam buscas das crianças sobre saúde ou questões familiares;; 2 = menciona buscas;; 1 = não são pessoais;; 0 = nenhuma.
+- **EX020 — Retenção do filtro.** O que Elena recomendou para os logs do filtro? *Rubrica:* 3 = retenção mais curta, acesso só para os responsáveis pela proteção e transparência;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Dano do monitoramento excessivo.** Como o monitoramento excessivo pode prejudicar as crianças? *Rubrica:* 3 = pode desencorajá-las de buscar ajuda online sobre assuntos sensíveis;; 2 = menciona efeito inibidor;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Programação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar verificações de acesso; (2) pseudonimizar dados para análise; (3) testar o comportamento de privacidade.
+
+### 8.1 Verificações de acesso
+
+Elena escreve um pequeno aplicativo para consultar informações dos alunos. Antes de mostrar qualquer registro, ele verifica a função do usuário e a finalidade. Um professor pode ver os registros de aprendizagem dos alunos de suas turmas; a coordenadora de necessidades especiais pode ver os planos de apoio. Os pedidos sem uma função válida são recusados e registrados. Ela aprende que escrever as verificações no código garante que as regras sejam aplicadas de forma consistente, em vez de depender de os funcionários lembrarem quais dados devem consultar. Cada pedido confere a lista da turma.
+
+### 8.2 Análise pseudonimizada
+
+A rede quer analisar o progresso da leitura entre as escolas. Elena escreve um código que substitui os identificadores dos alunos por pseudônimos usando um hash com chave antes que os dados cheguem ao analista. A chave fica com o responsável pela proteção de dados. Ela explica que o analista pode estudar o progresso sem saber quem é cada criança, mas que os dados continuam sendo pessoais pelo GDPR, porque a chave poderia reidentificar os alunos. A pseudonimização reduz o risco, mas não elimina os deveres legais. A chave fica guardada separadamente dos dados, como pede o art. 13, § 4º, da LGPD.
+
+### 8.3 Testes
+
+Elena escreve testes que verificam o comportamento de privacidade: um professor não consegue ver um aluno de outra turma, a exportação para análise não contém nomes e os logs registram cada acesso. Um teste falha porque um professor que deixou uma turma ainda tem acesso a ela. Ela acrescenta uma regra para remover o acesso quando as atribuições de turma mudam. Testar automaticamente as propriedades de privacidade encontra problemas que a revisão manual deixaria passar e continua funcionando à medida que o código muda. Um teste reprovado impede a implantação da mudança. Os testes rodam a cada mudança, apenas com turmas sintéticas.
+
+### 8.4 Revisão de código
+
+O código de Elena é revisado por um colega, que pergunta por que a exportação inclui a data de nascimento. Elena percebe que ela não é necessária para o progresso da leitura e a remove. O Dr. Asante observa que os revisores devem perguntar que dados são necessários, além de verificar se o código funciona. A revisão de código vira uma verificação de minimização, além de uma verificação de qualidade, e pequenas remoções como essa se somam ao longo de muitos programas. Em uma revisão, ela tira um campo de data de nascimento de uma exportação. Os revisores perguntam por que cada campo existe.
+
+### Exemplo resolvido
+
+Elena implementa verificações de acesso baseadas na função e na turma, pseudonimiza os dados de leitura com um hash com chave, encontra por meio de testes acessos remanescentes a turmas antigas e remove a data de nascimento depois da revisão.
+
+> **Caso sintético.** O código e os alunos são sintéticos.
+
+### Erros e limites
+
+Os pseudônimos com chave podem ser revertidos por quem tiver a chave; proteja-a.
+
+### Exercícios
+
+- **EX022 — Acesso por turma.** Como o aplicativo de Elena decide se um professor vê um registro? *Rubrica:* 3 = verificações de função e finalidade, mais a participação na turma;; 2 = menciona a função;; 1 = mostra tudo;; 0 = nenhuma.
+- **EX023 — Pseudonimizado, ainda pessoal.** Por que o conjunto de leitura pseudonimizado continua sendo de dados pessoais? *Rubrica:* 3 = a chave pode reidentificar os alunos;; 2 = menciona a chave;; 1 = anônimo;; 0 = nenhuma.
+- **EX024 — Acesso remanescente.** Que teste reprovado Elena corrigiu? *Rubrica:* 3 = professores que mantinham o acesso depois de deixar uma turma;; 2 = menciona acesso;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Dados e bancos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) consultar um banco de dados para encontrar riscos de compartilhamento; (2) relacionar os contratos aos fluxos de dados; (3) recomendar ações a partir dos resultados das consultas.
+
+### 9.1 Um banco de dados de compartilhamento
+
+Elena monta um pequeno banco de dados SQLite dos aplicativos de sala de aula e dos dados de alunos que cada um recebe, a partir de uma versão sintética dos registros da rede. Cada aplicativo tem um fornecedor, uma região e uma marcação que indica se há um contrato de tratamento de dados assinado. O artigo 28 do GDPR exige um contrato com os operadores. O banco permite fazer perguntas que uma planilha torna difíceis, como quais aplicativos recebem dados sem contrato e quantos alunos eles afetam. Ele usa apenas o sqlite3 da biblioteca padrão.
+
+### 9.2 A consulta
+
+O laboratório junta os aplicativos com os campos compartilhados e filtra os aplicativos sem contrato. Aparecem três. O ClassChat, sediado no EEE, recebe nomes e endereços de e-mail de 3.100 alunos. O ReadAlong, sediado nos Estados Unidos, recebe nomes, níveis de leitura e uma marcação de necessidades educacionais especiais de até 1.800 alunos. O QuizBlitz, nos Estados Unidos, recebe nomes de 900 alunos. No total, há 5.800 compartilhamentos aluno-aplicativo sem contrato, contando cada aluno uma vez por aplicativo. A consulta junta a tabela de aplicativos com a de contratos e conta os alunos por aplicativo.
+
+### 9.3 Leitura do resultado
+
+Elena observa que o ReadAlong é o caso mais grave. Ele recebe uma marcação de necessidades educacionais especiais, que pode ser dado de saúde, envia dados para fora do EEE e não tem contrato. O ClassChat afeta mais alunos, mas guarda dados menos sensíveis. Ela ordena os aplicativos pela sensibilidade, pela transferência e pela escala, e não só pela escala. Explica que uma consulta ao banco dá fatos, mas é preciso julgamento para decidir quais fatos importam mais para as crianças. O QuizBlitz, apesar dos números menores, também exige atenção, porque seus dados saem da Europa.
+
+### 9.4 Recomendações
+
+Elena recomenda suspender o ReadAlong até que haja contrato e mecanismo de transferência e que a marcação de necessidades especiais seja removida; obter um contrato para o ClassChat; e avaliar se o QuizBlitz é mesmo necessário. Também recomenda que a rede mantenha o banco atualizado à medida que os aplicativos mudam, transformando-o em um registro vivo. O Dr. Asante observa que um registro consultado com regularidade é mais útil que uma planilha de auditoria pontual. Cada novo aplicativo é incluído antes que os professores comecem a usá-lo. Os próprios professores podem consultá-lo.
+
+### Laboratório — Aplicativos de sala de aula que recebem dados de alunos sem contrato
+
+```python
+# SQLite: which classroom apps receive pupil data without a signed data processing agreement?
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.executescript("""
+CREATE TABLE app(name TEXT, vendor TEXT, dpa INTEGER, region TEXT);
+CREATE TABLE share(app TEXT, field TEXT, pupils INTEGER);
+INSERT INTO app VALUES ('MathsQuest','Qbit Ltd',1,'EEA'),('ReadAlong','Fable Inc',0,'US'),('ClassChat','Talko',0,'EEA'),
+ ('Timetabler','Sched AB',1,'EEA'),('QuizBlitz','Blitz LLC',0,'US'),('LunchPay','Payfair',1,'EEA');
+INSERT INTO share VALUES ('MathsQuest','name',2400),('MathsQuest','year_group',2400),('ReadAlong','name',1800),('ReadAlong','reading_level',1800),
+ ('ReadAlong','sen_flag',140),('ClassChat','name',3100),('ClassChat','email',3100),('Timetabler','name',6000),('QuizBlitz','name',900),
+ ('LunchPay','name',6000),('LunchPay','free_meals',1150);
+""")
+q = """SELECT a.name, a.region, GROUP_CONCAT(s.field), MAX(s.pupils) FROM app a JOIN share s ON s.app=a.name
+       WHERE a.dpa=0 GROUP BY a.name ORDER BY MAX(s.pupils) DESC"""
+for n, reg, f, p in db.execute(q): print(f"{n:10s} {reg:4s} fields={f:28s} pupils={p}")
+print("pupil-app shares without a DPA (a pupil may count in several apps):", db.execute("SELECT SUM(m) FROM (SELECT MAX(s.pupils) m FROM app a JOIN share s ON s.app=a.name WHERE a.dpa=0 GROUP BY a.name)").fetchone()[0])
+```
+
+Execute com `python3 lab_sqlite.py`. Saída verificada:
+
+```text
+ClassChat  EEA  fields=email,name                   pupils=3100
+ReadAlong  US   fields=name,reading_level,sen_flag  pupils=1800
+QuizBlitz  US   fields=name                         pupils=900
+pupil-app shares without a DPA (a pupil may count in several apps): 5800
+```
+
+### Exemplo resolvido
+
+A consulta de Elena encontra três aplicativos sem contrato (5.800 compartilhamentos aluno-aplicativo), põe o ReadAlong em primeiro lugar por causa da marcação de necessidades especiais e da transferência para os Estados Unidos e recomenda suspensão, contratos e um registro vivo.
+
+> **Caso sintético.** Os aplicativos e as contagens são sintéticos; o artigo 28 do GDPR é real.
+
+### Erros e limites
+
+Contar alunos por aplicativo conta duas vezes as crianças que usam vários aplicativos.
+
+### Exercícios
+
+- **EX025 — Aplicativos sem contrato.** Quais aplicativos não têm contrato de tratamento de dados? *Rubrica:* 3 = ClassChat, ReadAlong, QuizBlitz;; 2 = dois;; 1 = um;; 0 = nenhuma.
+- **EX026 — O mais grave.** Por que o ReadAlong é o caso mais grave? *Rubrica:* 3 = marcação de necessidades especiais, transferência para os EUA e ausência de contrato;; 2 = dois motivos;; 1 = escala;; 0 = nenhuma.
+- **EX027 — Registro vivo.** Por que manter o banco como um registro vivo? *Rubrica:* 3 = os aplicativos mudam, então consultas regulares encontram novas lacunas;; 2 = menciona atualizações;; 1 = auditoria pontual;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e prática autorizada
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar princípios éticos ao trabalho com dados de crianças; (2) definir os limites da prática autorizada; (3) lidar com pedidos fora da própria autoridade.
+
+### 10.1 O interesse das crianças
+
+Elena estuda a ética do trabalho com dados de crianças. As crianças podem ter menos consciência dos riscos e menos capacidade de exercer seus direitos. O considerando 38 do GDPR diz que as crianças merecem proteção específica, e o art. 14 da LGPD exige que o tratamento de dados de crianças e adolescentes seja realizado em seu melhor interesse. Ela escreve que seu trabalho na rede deve sempre perguntar o que é melhor para as crianças, e não só o que é lícito ou conveniente para os adultos. Essa vira sua regra de trabalho para cada decisão. Ser lícito não basta.
+
+### 10.2 Prática autorizada
+
+Durante o estágio, Elena tem acesso a dados sintéticos e às configurações reais dos sistemas, mas não aos registros reais dos alunos. O Dr. Asante explica que prática autorizada significa fazer apenas o que o termo de estágio permite. Quando uma professora se oferece para lhe mostrar uma planilha real para ajudá-la a entender um problema, ela recusa com educação e pede um exemplo sintético. Ela registra a oferta e sua resposta no diário do estágio. O supervisor aprova a resposta e fornece os dados sintéticos de que ela precisava para continuar o trabalho.
+
+### 10.3 Pedidos fora da autoridade
+
+Uma diretora pede a Elena que verifique, olhando os logs de e-mail, se a reclamação de um pai sobre uma violação de dados procede. Elena explica que investigar uma reclamação exige autorização do responsável pela proteção de dados e um acesso que ela não tem. Ela encaminha o pedido ao responsável. Aprende que boas intenções não criam autoridade, e que sair de seu papel poderia prejudicar as pessoas que ela quer ajudar e minar a confiança na investigação. Ela repassa o pedido a quem tem competência para tratá-lo, e registra o encaminhamento no diário.
+
+### 10.4 Valores profissionais
+
+Elena reflete sobre valores: respeito pelas crianças e pelas famílias, honestidade sobre os riscos e humildade quanto aos próprios limites. Ela escreve um código pessoal curto para o estágio. O Dr. Asante a incentiva a revisitá-lo todo ano. Ele explica que os códigos profissionais da computação e da proteção de dados compartilham esses valores, e que o hábito de refletir sobre eles prepara os estudantes para decisões difíceis que as regras sozinhas não resolvem. Seu diário reflexivo registra um dilema por semana, com o que ela decidiu e por quê.
+
+### Exemplo resolvido
+
+Elena põe no centro o melhor interesse das crianças, recusa uma planilha real, encaminha a investigação de uma reclamação ao responsável pela proteção de dados e escreve um código pessoal de valores.
+
+> **Caso sintético.** Os acontecimentos do estágio são sintéticos; o considerando 38 do GDPR e o art. 14 da LGPD são reais.
+
+### Erros e limites
+
+Os códigos pessoais podem ser vagos; ligue cada valor a um comportamento concreto.
+
+### Exercícios
+
+- **EX028 — Proteção das crianças.** Que dispositivos enfatizam a proteção especial dos dados de crianças? *Rubrica:* 3 = o considerando 38 do GDPR e o art. 14 da LGPD;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX029 — Recusar dados reais.** Por que Elena recusa a planilha real? *Rubrica:* 3 = seu estágio só autoriza dados sintéticos;; 2 = menciona autoridade;; 1 = aceita;; 0 = nenhuma.
+- **EX030 — Encaminhar a reclamação.** Por que encaminhar a investigação da reclamação ao responsável pela proteção de dados? *Rubrica:* 3 = exige autoridade e acesso que ela não tem;; 2 = menciona o papel;; 1 = investiga;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX015 (as de EX016–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -271,6 +501,36 @@ Respostas-modelo para EX001–EX015 (as de EX016–EX120 estão na edição em i
 **EX014.** Sim, é uma violação de dados pessoais, mesmo sendo acidental.
 
 **EX015.** O medo faz as pessoas esconderem erros; a comunicação rápida é necessária para avaliar e notificar a tempo.
+
+**EX016.** Uma lista de restrições alimentares pode revelar religião ou condições de saúde.
+
+**EX017.** A secretaria tinha acesso aos planos de apoio de necessidades especiais sem necessidade.
+
+**EX018.** A exposição em qualquer aresta, como um suboperador de análise, expõe os dados daquele caminho.
+
+**EX019.** Registram os sites visitados por alunos identificáveis, incluindo buscas sensíveis.
+
+**EX020.** Retenção mais curta, acesso só para os responsáveis designados pela proteção das crianças e informação clara às famílias.
+
+**EX021.** Os alunos podem deixar de buscar ajuda para problemas sensíveis se se sentirem vigiados.
+
+**EX022.** Ele verifica a função do professor e se o aluno está em suas turmas.
+
+**EX023.** A chave do responsável pela proteção de dados poderia ligar os pseudônimos de volta aos alunos.
+
+**EX024.** Os professores mantinham acesso aos alunos depois das mudanças de turma; agora o acesso é atualizado automaticamente.
+
+**EX025.** ClassChat, ReadAlong e QuizBlitz.
+
+**EX026.** Recebe uma marcação de necessidades educacionais especiais, envia dados para fora do EEE e não tem contrato.
+
+**EX027.** Os aplicativos e o compartilhamento mudam, e um registro consultado com regularidade encontra novas lacunas.
+
+**EX028.** O considerando 38 do GDPR e o art. 14 da LGPD.
+
+**EX029.** O termo de estágio só permite dados sintéticos, então ver registros reais excederia sua autoridade.
+
+**EX030.** A investigação exige autoridade e acesso que só o responsável pode conceder.
 
 <a id="references"></a>
 ## Referências
