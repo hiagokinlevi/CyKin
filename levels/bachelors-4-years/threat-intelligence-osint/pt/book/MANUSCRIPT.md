@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de bacharelado
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 40 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–40 (EX073–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 40 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–40 (EX076–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que se preparam para trabalhar como analistas juniores de inteligência de ameaças cibernéticas (CTI) ou para seguir na pesquisa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhum contato com infraestrutura de adversários. Organizações, pessoas e indicadores são **sintéticos**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
 
-Capítulos 25–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
+Capítulos 26–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -437,7 +437,7 @@ O HSSC distribui um CSV diário com colunas para tipo, valor, data da primeira o
 ### Laboratório — validar um feed
 
 ```python
-"""Lab 2 (ch 08): parse a synthetic CSV feed with the csv module and count accepted/rejected rows."""
+"""Lab 1 (ch 08): parse a synthetic CSV feed with the csv module and count accepted/rejected rows."""
 import csv, io
 data = """type,value,first_seen,tlp
 domain,portal-login.example,2026-09-01,TLP:GREEN
@@ -529,7 +529,7 @@ Colunas: `value`, `type`, `source`, rótulo TLP, `first_seen`, `last_seen` e `st
 ### Laboratório — consultar o repositório
 
 ```python
-"""Lab 3 (ch 09): store synthetic indicators in an in-memory SQLite database and query by TLP and age."""
+"""Lab 2 (ch 09): store synthetic indicators in an in-memory SQLite database and query by TLP and age."""
 import sqlite3
 db = sqlite3.connect(":memory:")
 db.execute("create table ioc(value text primary key, type text, tlp text, last_seen text)")
@@ -720,7 +720,7 @@ Sherman Kent mostrou que os leitores interpretam "provável" em qualquer ponto e
 ### Laboratório — conferir palavras estimativas
 
 ```python
-"""Lab 1 (ch 12): map estimative words to a published probability scale and flag misuse (synthetic)."""
+"""Lab 3 (ch 12): map estimative words to a published probability scale and flag misuse (synthetic)."""
 SCALE = {"almost no chance": (0, 5), "very unlikely": (5, 20), "unlikely": (20, 45),
          "roughly even chance": (45, 55), "likely": (55, 80), "very likely": (80, 95),
          "almost certainly": (95, 100)}
@@ -1530,11 +1530,71 @@ Mapeie técnicas para mitigações, peça com evidência, pese os efeitos colate
 
 [← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
 
+<a id="ch-25"></a>
+
+## Capítulo 25 — Inteligência de ameaças e OSINT: Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um minipipeline de ponta a ponta com dados sintéticos; (2) combinar validação, armazenamento e ocultação de dados; (3) escrever um relatório de laboratório; (4) refletir sobre a segurança no laboratório e as regras para os dados.
+
+### 25.1 Desenho do laboratório
+
+Este laboratório junta os anteriores num só exercício. Os estudantes recebem um feed CSV sintético do HSSC, validam-no (capítulo 8), carregam as linhas aceitas no SQLite (capítulo 9), aplicam ocultação a uma amostra sintética de phishing (capítulo 14) e produzem um resumo compartilhável de uma página, filtrado para TLP:CLEAR e TLP:GREEN. O objetivo de juntá-los é ver como os erros se propagam: uma linha aceita por engano na validação pode acabar no resumo compartilhável. Os estudantes acompanham pelo menos um item, do feed bruto à página final, e explicam cada decisão tomada no caminho, que é o que uma analista do HCHT precisa saber fazer com qualquer indicador que sai do trust.
+
+### 25.2 Regras do ambiente
+
+Trabalhe apenas na máquina virtual do curso, sem rota para a internet. Use Python com a biblioteca padrão. Não cole no laboratório dados reais do HCHT nem indicadores reais do trabalho. Se um arquivo do laboratório parecer conter dados pessoais reais, pare e avise o instrutor. Essas regras espelham as do próprio HCHT: o trabalho fica num ambiente aprovado, usa ferramentas aprovadas e nunca mistura atividades do curso com inteligência real. A máquina isolada também significa que um erro, como um script que tenta acessar um domínio, não consegue chegar à internet nem alertar ninguém.
+
+### 25.3 Passos
+
+Primeiro, execute a validação e anote as rejeições com os motivos. Segundo, carregue as linhas aceitas e consulte por tipo e rótulo. Terceiro, aplique a ocultação à amostra e confirme que o endereço do adversário permanece. Quarto, escreva o resumo: o que foi recebido, o que foi rejeitado, o que pode ser compartilhado e com quem. Os estudantes registram a saída de cada passo antes de seguir, para que um problema possa ser rastreado até onde começou. O resumo é escrito por último e precisa bater com as contagens dos passos anteriores.
+
+### 25.4 O relatório de laboratório
+
+Um relatório de laboratório tem objetivo, método, resultados, problemas e reflexões. Os resultados incluem contagens exatas e saídas dos scripts; os problemas incluem tudo o que surpreendeu você. A reflexão pergunta o que mudaria com dados reais. O relatório da própria Amara anota que uma linha rejeitada teria sido aceita se ela tivesse confiado na visualização da planilha, o que mostra por que o passo de validação importa. As reflexões devem ser específicas: o que quebraria com um feed maior, uma coluna nova ou uma mistura diferente de TLP, e o que ela mudaria primeiro.
+
+### 25.5 Avaliação
+
+As notas premiam saídas corretas, raciocínio claro, problemas relatados com honestidade e rótulos de tratamento corretos. Formatação bonita não rende nada a mais. Uma saída correta sem explicação vale pouco, porque o curso ensina julgamento tanto quanto programação. Relatar com honestidade os problemas, inclusive um passo que não funcionou, rende crédito; escondê-lo custa mais que o próprio problema. Um TLP errado no resumo é tratado como erro grave, já que na prática violaria um acordo de compartilhamento. O retorno explica cada nota, para que os estudantes possam melhorar o relatório seguinte.
+
+### 25.6 Reprodutibilidade
+
+Um colega deve conseguir repetir o seu trabalho só a partir do relatório. Registre as versões dos scripts, os nomes dos arquivos de entrada, a ordem dos passos e qualquer edição manual. Se você corrigiu um valor à mão, diga; correções manuais escondidas tornam os resultados impossíveis de reproduzir. Os estudantes testam isso trocando relatórios e tentando reproduzir as contagens uns dos outros. Onde as contagens diferem, a dupla descobre se o relatório ou o script estava pouco claro, e o relatório é corrigido. O primeiro relatório de Amara omitiu a ordem em que ela executou duas consultas, o que mudou uma contagem; a tentativa da colega revelou isso.
+
+### 25.7 Trabalho em dupla
+
+Os estudantes trabalham em duplas: um executa os scripts, o outro confere as saídas com o esperado e registra as discrepâncias. Os papéis se invertem na metade. O trabalho em dupla pega erros cedo e pratica o hábito de revisão de que as equipes reais dependem. Quem confere anota qual deve ser cada saída antes de o script rodar, para que a comparação seja um teste de verdade, e não uma concordância depois do fato. As discrepâncias são listadas no relatório de laboratório com o modo como foram resolvidas. As duplas também combinam de antemão como registrar uma divergência, para que nenhum dos dois simplesmente ceda ao outro.
+
+### Exemplo resolvido
+
+A dupla de Amara descobre que o resumo inclui uma linha rotulada TLP:AMBER porque o filtro comparava os rótulos diferenciando maiúsculas e minúsculas, e a linha dizia `tlp:amber`. Os dois normalizam os rótulos para maiúsculas na importação, executam de novo e anotam o defeito na seção de problemas do relatório.
+
+> **Caso sintético.** O feed e o defeito são material didático inventado.
+
+### Erros e limites
+
+Um laboratório prova o pipeline com dados sintéticos limpos; os feeds reais são mais bagunçados.
+
+### Exercícios
+
+- **EX073 — Ordem do laboratório.** Ponha validação, ocultação, armazenamento e resumo numa ordem sensata e justifique a posição de um passo. *Rubrica:* 3 = validar → armazenar → ocultar → resumir, com justificativa; 2 = só a ordem; 1 = confusa; 0 = nenhuma.
+- **EX074 — Defeito de maiúsculas.** O que fez a linha AMBER vazar para o resumo, e o que corrigiu? *Rubrica:* 3 = comparação que diferencia maiúsculas; normalizar na importação; 2 = um dos dois; 1 = vago; 0 = nenhuma.
+- **EX075 — Dados reais.** O que um estudante deve fazer se os dados do laboratório parecerem dados pessoais reais? *Rubrica:* 3 = parar, não usar, avisar o instrutor; 2 = parar; 1 = continuar; 0 = nenhuma.
+
+### Síntese
+
+Junte as peças, siga as regras do laboratório, relate com honestidade e torne o seu trabalho reprodutível.
+
+### Continue estudando — capítulo 25 de 40
+
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX072 (as de EX073–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX075 (as de EX076–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Abdução — ela propõe a explicação mais plausível para uma observação sem prová-la.
 
@@ -1679,6 +1739,12 @@ Respostas-modelo para EX001–EX072 (as de EX073–EX120 estão na edição em i
 **EX071.** A equipe do laboratório depende de uma planilha com macros; um bloqueio sem consulta poderia interromper a emissão de resultados de exames.
 
 **EX072.** A partir de um dispositivo de teste aprovado, conferir que o domínio não resolve mais nem aceita conexão, e registrar o horário e o resultado.
+
+**EX073.** Validar, depois armazenar, depois aplicar a ocultação à amostra, depois resumir; a validação vem primeiro para que linhas ruins nunca entrem no banco de dados.
+
+**EX074.** O filtro comparava os rótulos diferenciando maiúsculas e minúsculas, então `tlp:amber` não correspondia à exclusão; converter os rótulos para maiúsculas na importação resolveu.
+
+**EX075.** Parar de trabalhar com eles, não copiá-los para lugar nenhum e avisar o instrutor imediatamente.
 
 <a id="references"></a>
 ## Referências
