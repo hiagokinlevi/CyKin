@@ -413,7 +413,7 @@ Working backwards from a reliability goal turns a taste decision into a short de
 
 - **EX016 — Retry traffic.** With p = 0.7 and a batch of 500 uploads, expected attempts until each succeeds once? Rubric: 3 = 500/0.7 ≈ 714 with working; 2 = one slip; 1 = formula only; 0 = none.
 - **EX017 — Backlog.** B(0) = 40, a = 3/day, c = 5/day. When does B reach 0? Rubric: 3 = 20 days; 2 = method, wrong arithmetic; 1 = qualitative; 0 = none.
-- **EX018 — Lab reading.** From the lab, by how many percentage points does k = 3 improve on k = 1 at p = 0.8? Rubric: 3 = 98.8 − 80.0 ≈ 18.8 points (theory) or the empirical gap; 2 = one number; 1 = vague; 0 = wrong.
+- **EX018 — Lab reading.** From the lab, by how many percentage points does k = 3 improve on k = 1 at p = 0.8? Rubric: 3 = 99.2 − 80.0 = 19.2 points (theory) or the empirical 98.8 − 78.4 = 20.4 points; 2 = one number; 1 = vague; 0 = wrong.
 
 ### Synthesis
 
