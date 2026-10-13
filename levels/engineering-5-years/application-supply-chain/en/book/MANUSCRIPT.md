@@ -53,17 +53,25 @@ Kwame Asante is an engineering student at the fictional Ridgeway Institute of Te
 
 A derivative measures how fast something changes. If ticket-web's dependency count grows from 40 to 160 over four years, the average rate is 30 new components per year. The instantaneous rate tells you whether growth is speeding up: a steepening curve means review effort must grow faster too.
 
+Kwame compares yearly increments rather than the average alone. If the count rose by 15, 25, 35 and 45 in successive years, the average is still 30, but the increments themselves are growing, which means the review workload is accelerating. A team that plans for the average will fall further behind each year.
+
 ### 1.3 Accumulation
 
 An integral adds up a rate over time. If a vulnerable component is present for t days at a risk rate r(t), the accumulated exposure is the area under r(t). Shortening the time to upgrade reduces this area directly; this is why later chapters measure remediation days.
+
+The area grows with both height and width, so a severe flaw left for a few days can matter as much as a mild one left for weeks. Kwame treats time as the lever the team controls: it cannot choose when advisories appear, but it can choose how quickly fixes reach production.
 
 ### 1.4 Reading graphs
 
 Kwame plots weekly open advisories for ticket-web. The slope after a big framework upgrade is negative for six weeks, then flattens. A flat line at a non-zero value means advisories arrive as fast as they are fixed.
 
+The negative slope shows the upgrade cleared a backlog, because many old advisories were fixed at once. The flattening tells a different story: the team is now keeping pace but not gaining ground. To bring the line down further, Kwame suggests the team either fixes faster or reduces how many components can receive advisories in the first place, for example by removing dependencies nobody uses.
+
 ### 1.5 Limits
 
 Calculus models assume smooth change; real advisories arrive in jumps. Models are guides for reasoning, not precise forecasts.
+
+A single large advisory can arrive overnight, and a whole group of components can be fixed in one upgrade, so the real curve is a staircase rather than a smooth line. The models still help compare options, such as weekly versus monthly releases, as long as conclusions are stated as comparisons and not as predictions. Kwame labels every chart with its assumptions, so readers do not mistake a sketch for a measurement.
 
 ### Worked example
 
@@ -101,9 +109,13 @@ You will (1) model software dependencies as directed graphs; (2) compute transit
 
 A directed graph has nodes and arrows. Each package is a node; an arrow from A to B means A depends on B. ticket-web depends directly on three packages, which depend on others.
 
+The direction of each arrow matters. If A depends on B, a flaw in B can affect A, but not the other way round. Drawing ticket-web this way shows at a glance which packages its own code calls and which arrive only because another package needs them.
+
 ### 2.2 Transitive closure
 
 The set of all nodes reachable from ticket-web is its transitive dependency set. Every node in it is code that runs inside ticket-web, even if no Coastline developer chose it.
+
+That last point changes how teams think about risk. Choosing three trusted packages does not mean trusting only three sets of maintainers; it means trusting everyone whose code those packages bring in. Kwame lists the transitive set alongside the direct one in every review, because advisories arrive for both, and the indirect ones are more likely to surprise the team.
 
 ### Lab — Lab — reaching dependencies
 
@@ -133,13 +145,19 @@ reached via more than one path: zipx
 
 ticket-web has 3 direct dependencies but 9 in total. zipx is reached by more than one path (from qr-make and from imgkit), so updating it may require coordinating two parents.
 
+The breadth-first search visits each package once, using the seen set, so zipx is counted once even though two arrows lead to it. Doubling the graph's size would not double the effort much, which is why tools can compute closures for real applications with hundreds of packages in moments. Six of the nine arrive only indirectly.
+
 ### 2.4 Why it matters
 
 Decan, Mens and Constantinou (2018) measured how vulnerabilities in npm spread through such transitive links; Zimmermann et al. (2019) showed that a few packages and maintainers reach a large share of an ecosystem. Graph structure explains why one flaw can affect thousands of applications.
 
+For Coastline, the practical lesson is that watching only direct dependencies misses most of the code that runs. Advisory monitoring must cover the whole transitive set, and upgrade plans must consider who else depends on a shared package.
+
 ### 2.5 Cycles
 
 Some ecosystems allow cycles; search must track visited nodes, as the lab's "seen" set does, or it will loop forever.
+
+Without tracking, a search entering A → B → A would revisit the same nodes endlessly. With a visited set, each node is processed once, cycles or not. Cycles also complicate upgrades, since the packages in a cycle may need to move together, so Kwame's tooling reports any cycle it finds as a note for the team rather than silently handling it.
 
 ### Counting paths
 
@@ -181,21 +199,31 @@ You will (1) explain the physical basis of computation and storage; (2) relate e
 
 Bits are stored as charge, magnetism or light. Physical effects such as radiation, heat and wear can flip bits. Memory with error-correcting codes detects and fixes single-bit errors.
 
+Error-correcting memory corrects single flips and detects double ones, but it does not cover every path a file takes. Data moving over networks, written to disks or held in ordinary memory on cheaper machines can still change. Engineers therefore check data at the points where it matters, such as before an artifact is deployed, rather than assuming the hardware kept it intact.
+
 ### 3.2 Storage reliability
 
 Disks and flash wear out; silent corruption is rare but real at scale. Coastline's artifact mirror stores thousands of build files for years.
+
+Over years, even small corruption rates add up across thousands of files. A file corrupted silently may not be read for months, and by then the backup may hold the same damaged copy. Regular verification finds problems while a good copy still exists. Kwame's estimate for Coastline's mirror shows that weekly checks of every file are affordable, since reading the whole store takes under an hour on the existing hardware.
 
 ### 3.3 Integrity checks
 
 A cryptographic digest such as SHA-256 changes completely if any bit changes. Checking digests detects corruption and tampering alike; chapter 19 returns to this in the lab.
 
+A digest cannot say which of the two happened, only that the bytes changed. Telling corruption from tampering needs other evidence, such as storage error logs or access records, which is why digests and logs are kept together. A digest is only as trustworthy as the place its expected value is kept: if an attacker can change both the file and the recorded digest, the check passes. Coastline stores expected digests in the build record, separate from the mirror.
+
 ### 3.4 Heat and performance
 
 Hot servers slow down; build machines under heavy load can time out, producing incomplete artifacts. Monitoring temperature and build duration helps catch this.
 
+An incomplete artifact is dangerous because it may still look plausible: a truncated archive can open and simply lack its last files. Build systems should fail loudly when a step times out rather than publishing whatever was produced. Recording each build's duration makes outliers visible; a build that suddenly takes twice as long deserves a look before its output is trusted.
+
 ### 3.5 The mirror mismatch
 
 Investigation showed the mismatched mirror copy was truncated during a storage failure, not tampered with. But the team could not tell which until they compared logs.
+
+Logs showed a disk error at the time the file was written and no unusual access, which pointed to corruption. Without those logs, the team would have had to treat the event as possible tampering and rebuild everything from source. Kwame's lesson is that detection is only half the job: the evidence to explain a mismatch must be collected before the mismatch happens.
 
 ### Redundancy
 
