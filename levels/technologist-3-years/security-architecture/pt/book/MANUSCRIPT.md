@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 076, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–18 de 30 já estão escritos em português, com os exercícios EX001–EX054 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 19–30 (EX055–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 30 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–30 (EX073–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que vão construir, verificar e operar a arquitetura de segurança em organizações pequenas e médias.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios sinalizam regras de firewall, calculam indicadores de saúde, conferem manifestos, executam regras de alerta, comparam listas de desligados e comparam taxas de reporte, sempre sobre dados sintéticos; nada toca uma rede real. Projetos de produção usam produtos e normas avaliados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
 
-Capítulos 19–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-19), até a chegada dos próximos lotes.
+Capítulos 25–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -788,11 +788,309 @@ As evidências podem mostrar a configuração sem provar a eficácia. Os catálo
 
 - **EX054 — Benefício nos questionários.** Como a lista de evidências vai ajudar com os clientes? *Rubrica:* 3 = respondendo rapidamente aos questionários de segurança de fornecedores;; 2 = questionários;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-19"></a>
+
+## Capítulo 19 — Arquitetura e engenharia de segurança: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher o que registrar em log e sobre o que alertar; (2) escrever regras de alerta simples; (3) conduzir uma rotina semanal de revisão.
+
+### 19.1 O que registrar
+
+Tomás decide quais eventos importam: logins no serviço de rastreamento e no portal, ações de administradores, sessões de suporte do fornecedor, mudanças de firewall, resultados de backup e sinalizações da validação de manifestos. Ele evita coletar tudo, porque uma equipe pequena não consegue revisar tudo e o armazenamento custa dinheiro. Cada fonte de log é ligada a um cenário de risco. Ele confere se os relógios dos dispositivos estão sincronizados, já que eventos com horários errados são difíceis de correlacionar ao investigar um incidente em vários sistemas. Ele também define prazos de retenção para cada fonte, guardando a maioria dos logs por noventa dias e os resultados de backup por um ano, para que as investigações tenham histórico suficiente sem custos excessivos de armazenamento.
+
+### Laboratório — Regras de alerta simples sobre um dia de eventos
+
+```python
+# Three alert rules over a synthetic day of events: (minute, kind, subject, detail)
+events = [(480 + i, "signin_fail", "r-07", "") for i in range(0, 7)] + \
+         [(600, "signin_fail", "r-02", ""), (605, "signin_fail", "r-02", ""),
+          (130, "vendor_session", "conveyor", "unapproved"), (840, "vendor_session", "conveyor", "approved"),
+          (180, "backup", "routeplan", "fail"), (185, "backup", "files", "ok")]
+alerts = []
+fails = {}
+for t, k, s, d in sorted(events):
+    if k == "signin_fail":
+        fails.setdefault(s, []).append(t)
+        recent = [x for x in fails[s] if t - x <= 10]
+        if len(recent) > 5 and not any(a[1] == s for a in alerts if a[0] == "signin"):
+            alerts.append(("signin", s, f"{len(recent)} failures by {t//60:02d}:{t%60:02d}"))
+    elif k == "vendor_session" and d != "approved":
+        alerts.append(("vendor", s, f"session at {t//60:02d}:{t%60:02d} without approval"))
+    elif k == "backup" and d == "fail":
+        alerts.append(("backup", s, "backup failed"))
+for a in alerts: print("ALERT", *a)
+print(f"{len(alerts)} alerts")
+```
+
+Execute com `python3 lab_alerts.py`. Saída verificada:
+
+```text
+ALERT vendor conveyor session at 02:10 without approval
+ALERT backup routeplan backup failed
+ALERT signin r-07 6 failures by 08:05
+3 alerts
+```
+
+### 19.2 Regras de alerta
+
+Tomás escreve três regras: alertar quando houver mais de cinco falhas de login no portal para uma conta em dez minutos; alertar sobre qualquer sessão do fornecedor fora de uma janela aprovada; e alertar sobre um backup que falhou. O laboratório as executa sobre um dia sintético de eventos. Ele gera três alertas: uma rajada de falhas de login numa conta de varejista, uma sessão noturna do fornecedor sem aprovação e um backup que falhou. Ele investiga cada um nos dados sintéticos e escreve o que um respondente real deveria verificar primeiro.
+
+### 19.3 Revisão semanal
+
+Sam e Tomás definem uma revisão semanal de trinta minutos: alertas gerados, como cada um foi tratado, eventuais mudanças de regras e o status dos backups. Eles registram as decisões num log compartilhado. As regras que disparam com frequência demais são ajustadas; as que nunca disparam são testadas com um evento simulado, para garantir que ainda funcionam. Ruth observa que o monitoramento é uma rotina, e não um produto. Uma equipe pequena que revisa alguns bons alertas toda semana enxerga mais do que uma equipe grande soterrada em dashboards que ninguém lê.
+
+### Exemplo resolvido
+
+Tomás escolhe fontes de log ligadas aos cenários, escreve três regras de alerta testadas sobre eventos sintéticos e define uma rotina semanal de revisão.
+
+> **Caso sintético.** Os eventos e as regras são sintéticos.
+
+### Erros e limites
+
+Os limiares deixam passar ataques lentos. Relógios dessincronizados confundem as investigações.
+
+### Exercícios
+
+- **EX055 — Sincronização dos relógios.** Por que conferir os relógios dos dispositivos? *Rubrica:* 3 = eventos com horários errados são difíceis de correlacionar;; 2 = correlação;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX056 — Alertas do laboratório.** Que três alertas o laboratório gerou? *Rubrica:* 3 = falhas de login de r-07, sessão noturna não aprovada do fornecedor, backup que falhou;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX057 — Regras silenciosas.** O que eles fazem com as regras que nunca disparam? *Rubrica:* 3 = testam-nas com um evento simulado;; 2 = testar;; 1 = apagar;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Arquitetura e engenharia de segurança: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) solucionar problemas de controles de segurança de forma metódica; (2) distinguir falhas de controle de ataques; (3) corrigir sem enfraquecer a segurança.
+
+### 20.1 Um método
+
+Quando os motoristas do centro de distribuição norte relatam que os coletores não conseguem sincronizar as rotas, Tomás segue um método: descrever o sintoma com precisão, verificar o que mudou recentemente, testar uma camada de cada vez a partir da rede e formular uma hipótese de cada vez. O sintoma começou naquela manhã em todos os coletores do centro norte, mas não nos outros. A mudança recente foi uma atualização do firewall na noite anterior. Uma abordagem metódica evita mudanças aleatórias que tornam os problemas mais difíceis de diagnosticar e podem remover proteções sem que ninguém perceba.
+
+### 20.2 Falha de controle ou ataque
+
+Tomás verifica se a causa é um ataque ou um erro de configuração. Os logs mostram os coletores chegando ao firewall e sendo bloqueados no novo endereço do serviço de rastreamento, que o provedor havia anunciado na semana anterior. A regra do firewall permitia apenas o endereço antigo. Não há sinais de atividade maliciosa. Ruth enfatiza que muitos incidentes aparentes são falhas de controle, e muitas falhas de controle parecem ataques. Conferir os logs antes de supor qualquer uma das duas coisas evita tanto o pânico quanto a complacência. Ele registra na nota do incidente quais linhas de log descartaram um ataque.
+
+### 20.3 Corrigir com segurança
+
+A correção rápida sugerida por um supervisor é permitir todo o tráfego de saída da zona dos coletores. Tomás, em vez disso, atualiza a regra para permitir a faixa de endereços publicada pelo provedor para o serviço e acrescenta uma nota para assinar os anúncios de mudanças do provedor. A sincronização volta em uma hora. Ele registra o incidente, a causa e a correção no log de mudanças. Resolver problemas sob pressão tenta as pessoas a remover controles; um bom tecnólogo restaura o serviço mantendo o projeto intacto. Sam acrescenta os anúncios do provedor à sua leitura semanal.
+
+### Exemplo resolvido
+
+Tomás soluciona uma falha de sincronização camada por camada, descarta um ataque com base nos logs e corrige a regra de firewall sem liberar todo o tráfego.
+
+> **Caso sintético.** O incidente é sintético.
+
+### Erros e limites
+
+Os provedores nem sempre anunciam as mudanças. Correções rápidas viram permanentes se não forem registradas.
+
+### Exercícios
+
+- **EX058 — Mudança recente.** Que mudança recente apontou para a causa? *Rubrica:* 3 = uma atualização do firewall na noite anterior;; 2 = firewall;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX059 — Causa real.** Qual foi a causa de fato? *Rubrica:* 3 = o serviço de rastreamento mudou para um endereço novo não permitido pela regra;; 2 = endereço novo;; 1 = ataque;; 0 = nenhuma.
+
+- **EX060 — Correção rejeitada.** Por que rejeitar a liberação de todo o tráfego de saída? *Rubrica:* 3 = remove um controle para restaurar o serviço;; 2 = enfraquece;; 1 = lenta;; 0 = nenhuma.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Arquitetura e engenharia de segurança: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar com segurança o serviço de um novo parceiro; (2) proteger as credenciais da API; (3) limitar o que um parceiro pode fazer.
+
+### 21.1 Um novo parceiro
+
+A Brightwater assina contrato com uma rede de armários de retirada de encomendas (lockers), para que os clientes possam retirar encomendas nos armários. A empresa dos armários precisa dos eventos de entrega e devolve as confirmações de retirada. Tomás revisa o plano de integração com o desenvolvedor. Os dados trafegam por uma interface de programação de aplicações (API) sobre HTTPS. Ele pergunta de que dados a empresa dos armários realmente precisa: o identificador da encomenda, a localização do armário e um código de retirada, mas não o endereço residencial nem o telefone do cliente. Minimizar os dados compartilhados limita o dano se o parceiro for invadido.
+
+### 21.2 Proteger as credenciais
+
+A API dos armários usa chaves para autenticar cada lado. Tomás insiste em que as chaves fiquem guardadas no gerenciador de segredos do provedor de nuvem, e não no código ou em arquivos de configuração, sejam diferentes para teste e produção e sejam rotacionadas a cada seis meses. As mensagens recebidas da empresa dos armários são assinadas, para que a Brightwater possa verificar sua origem. Ele segue as práticas de desenvolvimento seguro do NIST SP 800-218, que pede a proteção dos segredos e a revisão dos componentes de terceiros. Uma chave vazada permitiria a um atacante marcar encomendas como retiradas.
+
+### 21.3 Limitar o parceiro
+
+A chave da empresa dos armários só consegue relatar eventos de retirada das encomendas atribuídas aos seus armários; ela não consegue consultar outras encomendas nem alterar rotas. Tomás testa isso tentando buscar uma encomenda não relacionada com a chave de teste do parceiro, o que é corretamente recusado. Ele documenta a integração no diagrama de arquitetura como uma nova fronteira de confiança e acrescenta alertas para volumes incomuns de eventos de retirada. Cada integração amplia a superfície de ataque, então os limites e os testes devem ser incorporados desde o primeiro dia.
+
+### Exemplo resolvido
+
+Tomás minimiza os dados compartilhados com um parceiro de armários, protege as chaves da API num gerenciador de segredos e testa que a chave do parceiro não consegue consultar encomendas não relacionadas.
+
+> **Caso sintético.** O parceiro e a API são sintéticos; o SP 800-218 é real.
+
+### Erros e limites
+
+Os parceiros podem mudar seus sistemas sem aviso. Os gerenciadores de segredos criam uma dependência.
+
+### Exercícios
+
+- **EX061 — Dados desnecessários.** De que dados a empresa dos armários não precisa? *Rubrica:* 3 = endereço residencial e telefone;; 2 = dados de contato;; 1 = código de retirada;; 0 = nenhuma.
+
+- **EX062 — Impacto do vazamento da chave.** O que um atacante poderia fazer com uma chave vazada dos armários? *Rubrica:* 3 = marcar encomendas como retiradas;; 2 = falsa retirada;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX063 — Teste dos limites.** Como Tomás testou os limites do parceiro? *Rubrica:* 3 = tentou buscar uma encomenda não relacionada com a chave de teste; foi recusado;; 2 = teste;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Arquitetura e engenharia de segurança: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar uma tarefa de segurança repetitiva; (2) tornar a automação segura e revisável; (3) medir o tempo economizado.
+
+### 22.1 Escolher uma tarefa
+
+Tomás procura trabalho repetitivo. Todo mês, Sam compara à mão a lista de contas com a lista de desligados do RH para encontrar contas não desativadas. Isso leva duas horas, e erros se infiltram. Tomás automatiza a tarefa: um script compara as duas exportações e lista as contas de pessoas desligadas que ainda estão ativas. Bons candidatos à automação são tarefas frequentes, baseadas em regras e sujeitas a erro quando feitas à mão. As tarefas que exigem julgamento ficam com as pessoas, com a automação preparando as informações. Ele também confirma que as duas exportações usam o mesmo formato de nome de usuário antes de escrever qualquer código, já que nomes discrepantes produziriam resultados falsos.
+
+### Laboratório — Comparação das contas com a lista de desligados
+
+```python
+# Compare active accounts with the HR leaver list (synthetic exports).
+active = {"a.silva", "j.mensah", "t.ferreira", "p.kowal", "s.okafor", "l.chen"}
+leavers = {"j.mensah", "p.kowal", "r.dubois"}
+still_active = sorted(active & leavers)
+print(f"leavers still active: {still_active}")
+print(f"leavers already disabled: {sorted(leavers - active)}")
+```
+
+Execute com `python3 lab_leavers.py`. Saída verificada:
+
+```text
+leavers still active: ['j.mensah', 'p.kowal']
+leavers already disabled: ['r.dubois']
+```
+
+### 22.2 Automação segura
+
+O script apenas relata; ele não desativa contas. Sam revisa a lista e desativa as contas ele mesmo, porque alguns ex-funcionários têm prorrogações curtas aprovadas para a passagem de trabalho. Tomás guarda o script no repositório de código da empresa, acrescenta testes com dados sintéticos e registra o formato de entrada esperado. Se o RH mudar a exportação, o script falha de forma ruidosa, em vez de produzir uma lista vazia e enganosa. Uma automação que age sem revisão pode causar indisponibilidades; uma automação que relata com verificações economiza tempo com segurança.
+
+### 22.3 Tempo economizado
+
+O laboratório encontra duas contas ativas de pessoas desligadas, o que corresponde à última verificação manual de Sam mais uma que ele deixou passar. Rodar o script leva segundos; revisar a saída leva dez minutos. Tomás estima uma economia de quase duas horas por mês e menos contas esquecidas. Ele registra a estimativa no diário do estágio. Ruth aponta que o ganho principal não é o tempo, mas a confiabilidade: a verificação agora acontece todo mês, mesmo quando Sam está de férias, porque qualquer pessoa pode executá-la. Sam acrescenta o script ao calendário mensal de operação.
+
+### Exemplo resolvido
+
+Tomás automatiza uma verificação mensal de desligados como um script que apenas relata, com testes e falha ruidosa, e encontra duas contas ativas de pessoas desligadas.
+
+> **Caso sintético.** As contas e as listas são sintéticas.
+
+### Erros e limites
+
+Nomes discrepantes entre sistemas causam resultados falsos. Scripts que apenas relatam ainda precisam de alguém que aja.
+
+### Exercícios
+
+- **EX064 — Candidatos à automação.** O que faz de uma tarefa uma boa candidata à automação? *Rubrica:* 3 = frequente, baseada em regras e sujeita a erro à mão;; 2 = duas;; 1 = tarefas de julgamento;; 0 = nenhuma.
+
+- **EX065 — Apenas relatar.** Por que o script apenas relata? *Rubrica:* 3 = alguns desligados têm prorrogações aprovadas que exigem julgamento;; 2 = julgamento;; 1 = rapidez;; 0 = nenhuma.
+
+- **EX066 — Resultado do laboratório.** Que contas de desligados ainda estavam ativas no laboratório? *Rubrica:* 3 = j.mensah e p.kowal;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Arquitetura e engenharia de segurança: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar se os controles atingiram seus objetivos; (2) comparar números de antes e depois; (3) relatar os limites da avaliação.
+
+### 23.1 Funcionou?
+
+Seis meses depois do início do estágio, Sam pergunta se as mudanças fizeram diferença. Tomás volta às medidas de saúde do capítulo 9 e aos cenários de risco do capítulo 13. Para cada controle, ele pergunta: foi implementado, está operando e o risco mudou? Ele usa evidências, e não impressões. O portal de upload agora recebe noventa por cento dos manifestos; as planilhas por e-mail caíram para um punhado, vindo de varejistas muito pequenos. A verificação de manifestos sinalizou dois uploads suspeitos, ambos confirmados pelos varejistas como tentativas de fraude.
+
+### 23.2 Antes e depois
+
+Tomás compara os números. Os dispositivos atualizados em até trinta dias subiram de quarenta e oito para oitenta e cinco por cento. A média de dias para desativar desligados caiu de quatro para um. As regras de entrada vindas da internet caíram de duas para zero. Os dispositivos sem responsável caíram de três para zero. Ele apresenta cada número com sua fonte e observa que parte da melhoria pode vir de outras causas, como o fornecedor ter lançado uma ferramenta de atualização dos coletores mais fácil. Números de antes e depois são persuasivos, mas não provam, por si sós, qual mudança causou a melhoria.
+
+### 23.3 Limites
+
+Tomás lista o que a avaliação não consegue mostrar. A ausência de incidentes graves em seis meses pode refletir tanto a sorte quanto os controles. Duas tentativas de fraude detectadas não revelam quantas passaram. O comportamento da equipe pode escorregar depois que o estágio terminar. Ele recomenda continuar as medições todo mês e repetir a avaliação em um ano. Ruth elogia a honestidade, observando que uma avaliação que admite seus limites é mais útil aos gestores do que uma que alega sucesso completo, porque lhes diz o que continuar observando.
+
+### Exemplo resolvido
+
+Tomás avalia os controles com medidas de antes e depois, registra duas tentativas de fraude detectadas e lista os limites do que a avaliação mostra.
+
+> **Caso sintético.** Os números são sintéticos.
+
+### Erros e limites
+
+A ausência de incidentes é uma evidência fraca. A atribuição da melhoria é incerta.
+
+### Exercícios
+
+- **EX067 — Parcela do portal.** Que parcela dos manifestos usa agora o portal? *Rubrica:* 3 = noventa por cento;; 2 = 90%;; 1 = todos;; 0 = nenhuma.
+
+- **EX068 — Melhoria das atualizações.** Como mudou a parcela de atualizações em trinta dias? *Rubrica:* 3 = de 48 para 85 por cento;; 2 = subiu;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX069 — Nenhum incidente.** Por que a ausência de incidentes graves é uma evidência fraca? *Rubrica:* 3 = pode refletir tanto a sorte quanto os controles;; 2 = sorte;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pequena pergunta de pesquisa aplicada; (2) coletar dados de forma ética num local de trabalho; (3) analisar e apresentar os resultados de forma simples.
+
+### 24.1 Uma pergunta prática
+
+Ruth pede que cada estudante responda a uma pergunta aplicada com dados. Tomás pergunta: uma mensagem de dois minutos nos coletores no início do turno reduz o número de dispositivos perdidos não relatados? A Brightwater registra os coletores perdidos e quando eles são relatados. Ele planeja comparar as oito semanas antes da mensagem com as oito semanas depois. A pergunta é pequena, respondível e útil. Ele observa a fraqueza de um desenho antes e depois: outras mudanças no mesmo período poderiam explicar qualquer diferença. Ele escreve a pergunta numa única frase e a submete à aprovação de Ruth.
+
+### 24.2 Coleta ética
+
+Tomás usa apenas as contagens semanais de dispositivos perdidos e relatados, sem nomes. Sam e o gerente de operações aprovam, e a equipe é informada pelo aviso de turno de que contagens anônimas serão usadas num projeto de estudante. Ruth confere o plano contra as orientações de ética da instituição. Tomás guarda as contagens no sistema da instituição e vai apagá-las depois da avaliação. Mesmo estudos simples num local de trabalho precisam do consentimento da organização, de transparência com a equipe e de dados mínimos. Ele escreve o plano num formulário de uma página assinado por Sam e arquivado com Ruth, para que a aprovação possa ser mostrada se alguém perguntar depois.
+
+### Laboratório — Taxas de relato antes e depois da mensagem
+
+```python
+# Share of lost handhelds reported within one hour, before and after the shift message (synthetic).
+before = [1] * 9 + [0] * 11
+after = [1] * 17 + [0] * 4
+for name, xs in (("before", before), ("after", after)):
+    print(f"{name}: {sum(xs)}/{len(xs)} reported within 1 hour = {sum(xs)/len(xs):.0%}")
+print(f"difference: {sum(after)/len(after) - sum(before)/len(before):+.0%} points")
+```
+
+Execute com `python3 lab_reports.py`. Saída verificada:
+
+```text
+before: 9/20 reported within 1 hour = 45%
+after: 17/21 reported within 1 hour = 81%
+difference: +36% points
+```
+
+### 24.3 Análise e apresentação
+
+O laboratório compara a parcela de dispositivos perdidos relatados em até uma hora. Antes da mensagem, nove de vinte coletores perdidos foram relatados prontamente; depois dela, dezessete de vinte e um. Tomás apresenta o resultado numa tabela simples, com uma frase de cautela: a melhoria é grande, mas o desenho não consegue descartar outras causas, como o novo processo de apagamento remoto ter feito o relato parecer valer a pena. Ele recomenda manter a mensagem, já que ela não custa quase nada, e conferir o número de novo depois da alta temporada.
+
+### Exemplo resolvido
+
+Tomás pergunta se uma mensagem no turno melhora o relato rápido de coletores perdidos, coleta contagens anônimas com aprovação e apresenta um resultado cauteloso.
+
+> **Caso sintético.** As contagens são sintéticas.
+
+### Erros e limites
+
+Desenhos antes e depois não conseguem isolar as causas. Contagens pequenas oscilam facilmente.
+
+### Exercícios
+
+- **EX070 — Fraqueza do desenho.** Qual é a fraqueza do desenho antes e depois? *Rubrica:* 3 = outras mudanças no mesmo período poderiam explicar as diferenças;; 2 = confusão;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX071 — Relato rápido.** Quais foram as taxas de relato rápido antes e depois? *Rubrica:* 3 = 9 de 20 (45%) e 17 de 21 (81%);; 2 = taxas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX072 — Causa alternativa.** Que causa alternativa Tomás mencionou? *Rubrica:* 3 = o novo processo de apagamento remoto fez o relato valer a pena;; 2 = apagamento remoto;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX054 (as de EX055–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Tomás Ferreira, Ruth Adeyemi, Sam Okafor, a Kestrel Polytechnic, a Brightwater Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072 (as de EX073–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Tomás Ferreira, Ruth Adeyemi, Sam Okafor, a Kestrel Polytechnic, a Brightwater Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O processador (hardware), o firmware do fabricante, um sistema operacional móvel, o aplicativo de leitura e os dados das encomendas que ele trata.
 
@@ -901,6 +1199,42 @@ Respostas-modelo para EX001–EX054 (as de EX055–EX090 estão na edição em i
 **EX053.** Uma regra de call-back para mudanças de dados bancários e o apagamento dos coletores antes da devolução, além de uma cláusula para o fornecedor.
 
 **EX054.** Ela agiliza as respostas aos questionários anuais de segurança de fornecedores dos grandes clientes.
+
+**EX055.** Porque eventos com horários errados são difíceis de correlacionar entre sistemas.
+
+**EX056.** Uma rajada de falhas de login do varejista r-07, uma sessão não aprovada do fornecedor às 02:10 e um backup que falhou.
+
+**EX057.** Testam-nas com um evento simulado para confirmar que ainda funcionam.
+
+**EX058.** Uma atualização do firewall feita na noite anterior.
+
+**EX059.** O serviço de rastreamento havia mudado para um endereço novo que a regra do firewall não permitia.
+
+**EX060.** Porque removeria uma proteção em vez de corrigir a regra específica.
+
+**EX061.** O endereço residencial e o telefone do cliente.
+
+**EX062.** Marcar encomendas como retiradas.
+
+**EX063.** Tentando buscar uma encomenda não relacionada com a chave de teste do parceiro, o que foi recusado.
+
+**EX064.** Ser frequente, baseada em regras e sujeita a erro quando feita à mão.
+
+**EX065.** Porque alguns desligados têm prorrogações aprovadas para a passagem, que exigem julgamento humano.
+
+**EX066.** j.mensah e p.kowal.
+
+**EX067.** Noventa por cento.
+
+**EX068.** Subiu de 48 para 85 por cento.
+
+**EX069.** Porque pode refletir tanto a sorte quanto o efeito dos controles.
+
+**EX070.** Outras mudanças no mesmo período poderiam explicar qualquer diferença.
+
+**EX071.** 9 de 20, ou 45 por cento, antes, e 17 de 21, ou 81 por cento, depois.
+
+**EX072.** O novo processo de apagamento remoto, que fez o relato parecer valer a pena.
 
 <a id="references"></a>
 ## Referências
