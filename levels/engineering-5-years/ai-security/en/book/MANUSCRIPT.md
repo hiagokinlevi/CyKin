@@ -678,27 +678,39 @@ You will (1) apply professional engineering ethics to AI systems; (2) distinguis
 
 Engineering codes of ethics put public safety, health and welfare first, require honesty about capabilities and limits, and require competence. For AI this means not overstating what a model can do, documenting known failure modes, and refusing to deploy where risk is unacceptable.
 
+These duties apply in ordinary moments, not only dramatic ones: a slide that rounds a 9% dawn miss rate down to 'about 2%', a demonstration that hides the conditions where the model fails, or a deadline that tempts a team to skip the safety review. Competence includes knowing the limits of one's own expertise and asking for help, for example from a rail safety engineer, when a decision falls outside it.
+
 ### 10.2 Safety and security
 
 Safety engineering addresses accidental failure; security addresses deliberate attack. In AI they interact: an adversarial input can cause a safety failure (a missed rail defect), and a safety mechanism (a fallback to manual inspection) can be abused to cause denial of service. The NIST AI RMF (AI 100-1) lists *safe* and *secure and resilient* among trustworthy-AI characteristics and stresses managing them together.
+
+Managing them together means one hazard analysis that asks both what could fail and what someone could make fail. A fallback to manual inspection is safe against accidents, but an attacker who can trigger it repeatedly could exhaust the inspectors and delay real work.
 
 ### 10.3 Authorised testing and disclosure
 
 Test only systems you own or have written permission to test, within a defined scope and time. Never run attacks against public AI services without authorisation; terms of service often forbid it. When you find a vulnerability in someone else's product, report it privately to the vendor and agree a timeline before publishing (coordinated disclosure). Keep test data synthetic or properly governed; never extract or publish personal data.
 
+Written permission names who may test, what, when and by which methods.
+
 ### 10.4 Law and regulation
 
 Regulation (EU) 2024/1689 (the AI Act) classifies some AI systems as high-risk — including safety components of critical infrastructure — and requires risk management, data governance, technical documentation, logging, human oversight, and accuracy, robustness and cybersecurity (Article 15). Obligations apply in stages from 2025 to 2027. Engineers should know whether their system may fall into a regulated category and involve legal experts; this book gives orientation, not legal advice.
 
+Even before legal advice, an engineer can prepare the evidence a regulated system would need: a risk register, dataset documentation, logs of decisions and records of human review. Those records are good practice anyway, and gathering them early avoids rebuilding a system's history later under deadline.
+
 ### 10.5 Worked example (synthetic NRS case)
 
 A manager asked Sam to raise TrackEye's alert threshold to reduce false alarms before a demonstration. Sam computed that false negatives would rise from 2% to 5% on daytime data. Sam documented the trade-off, declined to change the production threshold without a safety review, and proposed a demonstration-only configuration clearly labelled as such. Sam also noted that TrackEye, as a safety component of rail infrastructure, may be high-risk under the AI Act, and flagged this for legal review.
+
+The demonstration configuration resolved the manager's goal without touching the system that inspects real track.
 
 ### 10.6 Errors and limits
 
 - Treating ethics as separate from technical decisions.
 - Testing third-party AI services without permission.
 - Hiding safety trade-offs in configuration changes.
+
+Ethics separated from technical work tends to appear only in policy documents, while the actual decisions are made in thresholds and test plans. Testing a public AI service without permission can break the law even with good intentions. A threshold change that silently trades missed defects for fewer alarms is a safety decision made without the people responsible for safety; Sam's rule is that any change affecting miss rates goes through review with its numbers stated.
 
 ### Exercises
 
@@ -725,6 +737,8 @@ You will (1) explain the network path of a model-serving request (DNS, TCP, TLS,
 ### 11.1 The request path
 
 A client resolves the service name with DNS, opens a TCP connection, negotiates TLS (which authenticates the server and encrypts traffic) and sends an HTTP request — typically JSON containing a prompt or features. The server returns a response, perhaps streamed token by token. Each layer has its own failure modes: DNS spoofing, TLS misconfiguration, HTTP request smuggling, oversized bodies.
+
+Engineers review each layer separately. DNS records are protected and monitored, TLS settings are checked against current guidance, and the HTTP layer enforces maximum body size and request time before the model sees anything. A request rejected at the edge costs almost nothing; the same request reaching the model can cost seconds of accelerator time.
 
 ### 11.2 Threats specific to AI APIs
 
@@ -763,15 +777,21 @@ The lab shows a token bucket that serves a normal client fully while limiting a 
 
 Place training clusters, model registries, serving endpoints and tool back-ends in separate network zones. Serving should not reach training data stores; an LLM agent's tool back-end (for example a work-order system) should accept calls only from the policy service, not directly from the model host. Egress filtering prevents a compromised or manipulated component from sending data to arbitrary destinations — a direct mitigation for exfiltration through injected tool calls.
 
+Zones are enforced by firewall rules and checked by testing: from the model host, a connection to the work-order system or an outside address should fail. Recording these tests means segmentation stays verified after network changes rather than assumed.
+
 ### 11.4 Worked example (synthetic NRS case)
 
 Wrench's model host could reach the internet to fetch supplier bulletins and could also call the work-order API directly. Sam moved bulletin fetching into a separate ingestion service that stores sanitised copies, removed internet egress from the model host, and made the work-order API accept requests only from the policy service with mutual TLS.
+
+The changes cut both untrusted-to-privileged paths at the network level. Even if a bulletin manipulates the model, the model host cannot send data out or reach the work-order system without passing the policy service. Sam verifies each change by attempting the blocked connections from the model host and recording the refusals as evidence.
 
 ### 11.5 Errors and limits
 
 - Rate limits on requests but not on tokens or compute.
 - Flat networks where the model host reaches everything.
 - Unrestricted egress from components that process untrusted text.
+
+Counting requests alone lets one client send a few huge prompts that cost as much as thousands of small ones. Flat networks mean that one manipulated component can reach every system. Unrestricted egress gives injected instructions a way to send data out. The lab's third setting adds a further lesson: limits tuned without usage data can refuse a third of legitimate requests, so quotas need measurement as well as security reasoning.
 
 ### Exercises
 
@@ -799,13 +819,19 @@ You will (1) explain processes, users, permissions and isolation; (2) sandbox co
 
 The operating system runs programs as processes with an identity (user, groups) and enforces permissions on files, devices and network sockets. A model server should run as a dedicated unprivileged user with read-only access to its weights and no write access to code directories.
 
+With those settings, a bug or an injected instruction that takes over the server process can read the weights it already serves, but cannot replace them, change the server's code or read other users' files. Running as root removes all of those barriers at once, which is why reviewers check the process identity first.
+
 ### 12.2 Isolation mechanisms
 
 Containers (namespaces and control groups on Linux), virtual machines and system-call filters (seccomp) isolate processes. When an AI agent can run code — a "code interpreter" tool — that code must run in a sandbox with no network, a temporary file system, CPU and memory limits and a time limit. Treat every code string produced by a model as untrusted, because prompt injection can control it.
 
+Containers share the host's kernel, so a kernel flaw can let code escape; virtual machines add a stronger boundary at higher cost. For model-generated code that can be anything, Sam prefers a dedicated virtual machine or a hardened sandbox with system-call filtering, and he discards the environment after each run.
+
 ### 12.3 Resource limits
 
 Control groups limit CPU, memory and GPU share; without them, one oversized request can starve others. This is the OS-level part of defending against unbounded consumption.
+
+Limits need to be set from measurement. Sam profiles normal requests to find their memory and time needs, then sets limits with some headroom. A request that hits a limit is stopped and logged, so a pattern of oversized requests becomes visible. Limits also protect the host: an inference worker that runs out of memory without a limit can take other services on the same machine down with it, turning one bad request into a wider outage.
 
 ### 12.4 Secrets and file permissions
 
@@ -815,15 +841,21 @@ Model servers often need credentials — for a vector database, a tool API or a 
 
 System logs (authentication, process starts, file access audits) complement application logs. For AI incidents, correlate the model's request ID with OS events: did a tool call cause a process to start or a file to change?
 
+A shared request identifier is the link. The model service writes it with each prompt and tool call, the tool services include it in their own logs, and the sandbox records it with each process it starts. During an investigation, one search then shows the full chain from the bulletin that carried an instruction to the process that tried to act on it. Clocks must be synchronised, or events from different hosts cannot be put in order.
+
 ### 12.6 Worked example (synthetic NRS case)
 
 Wrench gained a "calculate" tool that runs short Python snippets for torque and wear calculations. Sam ran it in a container with no network, a read-only root, a 64 MB memory limit, a 2-second CPU limit and a seccomp profile. A synthetic test bulletin containing an instruction to "calculate" something that opened a network socket failed safely and was logged.
+
+Several layers stood in the way: there was no network to connect to, the seccomp profile can refuse socket calls outright, and the log recorded the request identifier so the source bulletin could be traced. Sam keeps the bulletin as a regression test, so later changes to the sandbox are checked against it.
 
 ### 12.7 Errors and limits
 
 - Model servers running as root.
 - Code tools with network access.
 - No resource limits on inference workers.
+
+Root model servers turn any server bug into full control of the host. Code tools with network access let injected instructions send data anywhere. Inference workers without limits let one request starve the rest. Each mistake is easy to find with a simple check: the process user, a connection attempt from inside the sandbox, and a deliberately oversized request in staging, so Sam runs all three before each release.
 
 ### Exercises
 
