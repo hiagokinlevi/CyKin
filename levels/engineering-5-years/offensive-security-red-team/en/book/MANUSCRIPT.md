@@ -1179,9 +1179,13 @@ You will (1) model a control loop around assessment tooling; (2) choose sensors 
 
 Sensor: out-of-scope probe count per hour. Controller: compare to threshold 0. Actuator: TrackScope hard-deny and page the lead. Plant: the engagement. Without the sensor, you only discover scope breaks in the final report.
 
+The zero threshold means any out-of-scope probe is already a breach of the promise, not a soft warning. Paging the lead closes the loop while the window is still open, when stop and notify still help. Without an hourly count, the final report becomes the first sensor, which is too late for the client. Sam graphs the count live next to the deny log so a spike is obvious.
+
 ### 17.2 Stability
 
 If every medium finding pages the whole company, people silence the pager (alert fatigue). Severity-based routing and rate limits on notifications are the damping. The baserate lab (Chapter 7) is the same idea for detectors.
+
+Damping keeps the signal useful. Medium findings go to the owning team queue; only stop conditions and critical safety events page everyone. Rate limits stop a flapping sensor from waking the company every minute. The same lesson as the base-rate work applies: a detector that cries often is turned off.
 
 ### 17.3 Manual vs automatic
 
@@ -1189,21 +1193,31 @@ Hard denies of deny-listed hosts can be automatic. Changing the ROE mid-engageme
 
 > **Synthetic case — Riverstone Transit.** After the 11:10 deny-list touch, Sam added a sensor: any deny-list hit pages the lead within one minute. False pages in a week: zero.
 
+Automatic deny is fast enough to stop a bad probe in the same second. A mid-window ROE change alters what is legal, so it needs a signature and two people. Drawing that line in the design review prevents arguments during the engagement. Sam's runbook says which class of change is which.
+
 ### 17.4 Errors and limits
 
 Feedback assumes the sensor is honest. A broken logger looks like a quiet system. Heartbeat the sensors.
+
+A silent logger can hide a flood of denies or pretend none occurred. Heartbeats prove the sensor still reports, even when the count stays at zero. Sam pages on missing heartbeats with the same urgency as a real spike, because both mean the loop is blind. He checks the heartbeat path in staging before each engagement window opens and keeps a screenshot of the green check in the dossier.
 
 ### 17.2b Choosing the sampling interval
 
 A sensor that samples once an hour can miss a five-minute out-of-scope burst. Sample at least twice as often as the shortest stop-condition window you promised the client. If the kill-switch must act in 30 seconds, poll every 10–15 seconds. The cost is cheap compared with explaining a missed stop in the report.
 
+Nyquist-style thinking applies: sample faster than the event you must catch. A thirty-second kill-switch with hourly polls is theatre. Ten to fifteen seconds leaves margin for slow disks and busy leaders. Sam records the chosen interval next to the stop-condition text so auditors see they match.
+
 ### 17.3b Human-in-the-loop placement
 
 Put humans where judgment about authorization is required; put automation where delay is dangerous. Approving a scope widen is human. Denying a deny-listed host is automation. Mixing them — waiting for a human to approve a deny — recreates the incident the control was meant to stop.
 
+Judgment about permission cannot be rushed into a script; delay on a deny can. Waiting for a human to approve a deny-list hit is how out-of-scope traffic continues. Sam's design review checklist asks of every control whether delay helps or hurts, and places the human only where it helps.
+
 ### 17.1b Set-points and drift
 
 Write the set-point next to the sensor ("out-of-scope probes per hour = 0"). Review set-points when the client changes windows or when false pages exceed an agreed rate. Unreviewed set-points drift into ignored alarms.
+
+A set-point nobody revisits becomes folklore. Client window changes and false-page budgets both force a fresh look. Writing the number beside the sensor keeps operators from inventing a private threshold. Sam reviews set-points at kickoff and after any week that exceeded the false-page budget, and he writes the new number into the sensor config in the same change.
 
 ### Exercises
 
@@ -1231,9 +1245,13 @@ You will (1) place assessment tools in a zone model; (2) define trust boundaries
 
 Assessment laptops, TrackScope, FindingsDesk and the client's assets sit in different trust zones. Traffic from the assessment zone to client assets is only what the ROE allows; traffic back carries evidence into a store the client can audit. Do not put the evidence store on the same VLAN as the targets "for convenience".
 
+Separating the evidence store from targets means a compromised test host cannot quietly rewrite history. ROE-shaped traffic is the only path toward client assets; everything else is dropped and logged. Convenience VLANs are how evidence and targets share fate. Sam's kickoff includes a traceroute from TrackScope to the store and to a sample target to prove the zones.
+
 ### 18.2 Trust boundaries
 
 Crossing a boundary needs authentication, authorization and logging. A student exporting findings to a personal drive crosses a boundary without a control — forbid it in the ROE and in tool policy.
+
+Personal drives sit outside every client control. Tool policy that blocks export is stronger than a paragraph nobody reads under deadline. Authentication, authorization and logging are the minimum trio at each crossing. Sam treats a blocked export as a successful control, not as friction to remove. He demos the block during kickoff so nobody asks for a bypass later.
 
 ### 18.3 Isolated ranges
 
@@ -1241,17 +1259,25 @@ When methods are noisy or the client is fragile, use a synthetic range that mirr
 
 > **Synthetic case — Riverstone Transit.** PulseMap and FindingsDesk run in the security-tools VPC; scanners egress through a controlled proxy that enforces the CIDR allow-list.
 
+Mirrors prove configuration claims when production is too fragile for noise. They do not prove runtime behaviour under live load, and the report must not pretend otherwise. Sam labels every finding from a mirror with the range id and the config revision used.
+
 ### 18.4 Errors and limits
 
 Diagrams age. Re-validate zones at engagement start.
+
+A diagram from last quarter may show a VLAN that no longer exists. Re-validation is a checklist item at engagement start, with a dated screenshot or export in the dossier. If the live path disagrees with the diagram, Sam stops until architecture and ROE are updated together, so the team does not test against a map of a different network. The dated export is hashed like any other evidence file and linked from the kickoff checklist.
 
 ### 18.3b Egress control
 
 Assessment zones need egress allow-lists: only the client's in-scope CIDRs and the evidence store. Open egress turns a compromised laptop into a pivot that the ROE never authorized. Enforce egress in the same policy pipeline as target allow/deny when possible.
 
+Allow-lists for egress shrink the blast of a stolen laptop to what the engagement already permitted. Open DNS and web egress are enough for many silent exfiltration paths. Putting egress in the same pipeline as target checks means one policy language and one audit log. Sam tests a denied egress destination on day one and keeps the log line.
+
 ### 18.1b Jump hosts
 
 Assessment jump hosts are high-value: harden them, log session start/stop, forbid personal file sync agents, and rebuild from golden images between engagements when feasible. A messy jump host undermines every careful zone diagram.
+
+Golden-image rebuilds wipe leftover tools, sync agents and stale credentials between clients. Session logs answer who was on the host when a change occurred. Personal sync agents are forbidden because they copy evidence to unmanaged clouds. Sam's pre-flight fails if a sync agent package is present.
 
 ### Practice note
 
@@ -1282,6 +1308,8 @@ You will (1) assess auth configuration without attacking crypto; (2) use hashing
 ### 19.1 Auth configuration
 
 Ask: which IdP, which factors, which roles, which token lifetimes? Read configuration and logs under authorization. Breaking TLS or cracking password hashes is outside this book's labs and usually outside student scope.
+
+Configuration and logs under a granted role answer lifetime, factors and role maps without turning the lab into crypto breaking. Token lifetime findings are operational and fixable. Sam records the IdP product and version beside each auth finding so remediation aims at the right console. Password-hash cracking requests are refused with a pointer to this boundary.
 
 ### 19.2 Evidence hashing
 
@@ -1318,27 +1346,39 @@ roe.pdf          OK
 scope.csv        OK
 ```
 
+Digests in the ticket make later tampering visible even if the file store is altered. Re-hashing at review time is a one-line check. The lab's mismatch case trains the reflex to dig when hashes disagree. Sam refuses to close a finding whose current digest differs from the ticket without an AUTH note explaining the change.
+
 ### 19.3 Secrets in tools
 
 Assessment credentials live in a vault; tools fetch short-lived tokens. No secrets in git, screenshots or chat. Rotate at engagement end.
 
 > **Synthetic case — Riverstone Transit.** The hash lab showed findings.json mismatched — someone had edited a severity field after sealing. Sam restored from the sealed store and opened a process finding about uncontrolled edits.
 
+Short-lived tokens limit how long a leaked string works. Git and chat are permanent enough to treat any secret pasted there as burned. Rotation at close-out is on the same checklist as account disable. Sam's CI greps for token-shaped strings and fails the build when they appear.
+
 ### 19.4 Errors and limits
 
 Hashes detect change, not malice versus accident. Pair them with access logs.
+
+A changed file might be an edited screenshot or a malicious swap; the hash alone cannot say which. Access logs show who touched the object and when. Sam always files hash and log reference together before calling evidence sealed, and he treats a missing log as an incomplete seal even when the digest still matches. Accident versus malice is then a question for the access log and the people who hold it.
 
 ### 19.2b What a hash does not prove
 
 A matching digest says the bytes are the same as when sealed; it does not say the bytes were obtained lawfully, that the account was authorized, or that the interpretation in the finding text is correct. Pair hashes with the ROE version, actor id and a short method note so a reviewer can reconstruct the claim, not only the file.
 
+Reviewers who stop at a green checkmark miss unlawful collection and wrong interpretation. ROE version and actor id tie the bytes to permission and person. A short method note explains what the file is supposed to show. Sam's seal checklist has four boxes: digest, ROE, actor, method.
+
 ### 19.3b Algorithm choices
 
 Prefer SHA-256 or stronger for evidence manifests; avoid MD5/SHA-1 for new work. Document the algorithm in the manifest so a future reader does not guess. Cryptographic agility here is a version field, not a silent swap mid-engagement.
 
+MD5 and SHA-1 collisions are teaching history, not a base for new manifests. Naming the algorithm in the manifest stops a future reader from assuming MD5 because a legacy tool printed it. Silent swaps mid-engagement split the evidence set into incompatible digests. Sam pins the algorithm in TrackScope config and rejects uploads that omit it.
+
 ### 19.1b Certificate inventory
 
 For TLS-facing assets, record presented certificates (subject, issuer, notAfter) under authorization. Expired or mismatched certs are findings about operations integrity; do not turn the exercise into a research-grade TLS attack.
+
+Subject, issuer and notAfter under authorization are enough to flag expiry and name mismatch. Those are integrity and operations findings, not an invitation to research-grade protocol attacks. Sam stores the PEM fingerprint in the ticket so a re-test can see whether the cert changed. Inventory runs are scheduled, not improvised during a noisy scan.
 
 ### Exercises
 
@@ -1366,9 +1406,13 @@ You will (1) place red-team engineering among PTES, NIST SP 800-115 and ATT&CK; 
 
 NIST SP 800-115 frames testing and assessment. PTES sequences pre-engagement through reporting. ATT&CK names techniques for planning and coverage — not as a score of residual risk. TIBER-EU and CBEST add threat-led oversight for certain financial contexts. Engineers build the platforms that make those frameworks operable: scope checkers, finding systems, coverage reporters, evidence stores.
 
+Frameworks describe the engagement lifecycle; ATT&CK labels techniques for planning. None of them is a residual-risk score on its own. The engineering job is making scope checks, findings and coverage reports real systems operators can run. Sam cites the framework version in each ADR that implements a control they require.
+
 ### 20.2 What we build
 
 Riverstone's TrackScope, FindingsDesk and PulseMap are the running example of that platform layer. Graduates should leave able to design, verify and operate such systems under authorization — not to invent exploits.
+
+Design, verification and operation under authorization is the graduate outcome. Exploit invention is out of scope for the degree and for Riverstone's platform team. TrackScope, FindingsDesk and PulseMap show how far that platform layer reaches into daily work. Sam's studio briefs always ask which platform artefact the student will leave behind.
 
 ### 20.3 Safety boundary
 
@@ -1376,18 +1420,25 @@ No exploit payloads, no unauthorized targets, no live personal data, labs on syn
 
 > **Synthetic case — Riverstone Transit.** Leadership asked for "a red team that hacks everything". Sam reframed the charter: "an authorized assessment platform that enforces ROE and measures remediation."
 
+The boundary is enforced in design review, not only in a preface. Dual-use refusals from the ethics chapter apply to every later feature request. Synthetic local labs keep coursework off real networks and real people. Sam rejects studio proposals that need live personal data or unauthorized targets, even as demonstrations.
+
 ### 20.4 Errors and limits
 
 Frameworks evolve; re-check URLs and versions before citing in a thesis. This chapter orients; it does not replace reading the primary sources.
+
+Primary sources move; a thesis that cites a dead URL fails a basic check. This chapter points; it does not summarise every clause of PTES or NIST SP 800-115. Sam bookmarks the versions he used and re-opens them before submission week, and he quotes clause ids rather than paraphrases when a requirement hangs on the text. Paraphrase alone has caused more than one failed viva.
 
 ### 20.3b Neighbouring courses
 
 This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters. The bachelor's RED book is broader and less design-heavy; the technologist book emphasizes implementation drills. Pick artefacts that match the level — a thesis-sized empty score is still empty.
 
+Choosing artefacts that match the level avoids empty thesis scores in a book that demands design evidence. Implementation drills belong in the technologist path; this book wants schemas, tests and ADRs. Sam steers students who arrive from the bachelor's path toward deeper verification of the same tools.
+
 ### 20.1b Engineering deliverables vs operator deliverables
 
 Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. A beautiful tool without a runbook fails operations; a runbook without fail-closed tests fails engineering.
 
+Graders look for both because either gap fails in the field. Fail-closed tests without a runbook leave night staff guessing; runbooks without tests leave fail-open paths latent. Sam's capstone rubric scores the pair together on each feature. Students who ship only one of the two revise before the defense.
 
 ### 20.4b Who the engineering team serves
 
@@ -1419,9 +1470,13 @@ You will (1) elicit requirements from ROE and operators; (2) separate functional
 
 Operators want fewer false blocks; counsel wants an audit trail; the client wants clear findings. Elicitation interviews produce shall-statements tagged by source. Conflicts (speed vs approval gates) are recorded, not papered over.
 
+Tagged sources make conflicts discussable: speed versus gates is a recorded trade-off with an owner. Papering over it produces a tool nobody trusts. Interviews end in shall-statements, not vibes. Sam keeps the conflict log next to the requirements file so a new lead can see old arguments without replaying them.
+
 ### 21.2 Three families
 
 Functional: "TrackScope evaluates allowed(host,port) before every action." Safety: "TrackScope fails closed if the policy file does not load." Measurement: "PulseMap reports planned-vs-observed technique counts with denominators." Safety requirements win ties.
+
+Safety winning ties means a fast path that skips policy load is rejected even if testers cheer. Measurement requirements force denominators so coverage cannot be a bare count. Functional requirements name the moment of check, such as before every action. Sam colours safety rows in reviews so they cannot be bargained down quietly.
 
 ### 21.3 Acceptance criteria
 
@@ -1429,17 +1484,25 @@ Each requirement has a Given/When/Then on synthetic data. Example: Given deny-li
 
 > **Synthetic case — Riverstone Transit.** Safety requirement S-3 "fail closed on missing policy" failed its acceptance test when a typo path returned ALLOW. The fix shipped before any engagement use.
 
+Synthetic Given/When/Then keeps CI honest and keeps client networks out of the test bed. Criteria that need production are redesigns, not stretch goals. The deny-list example is copied into TrackScope's suite as a named test. Sam fails review when a Must requirement lacks such a criterion.
+
 ### 21.4 Errors and limits
 
 Stakeholders invent requirements mid-engagement; park them in a backlog with an authorization ticket, do not hot-patch production TrackScope during a live test window.
+
+Hot-patching TrackScope mid-window risks a fail-open mistake while traffic is flowing. Backlog plus authorization ticket is the only path for new ideas during a test. Sam's on-call script says no production config changes except stop and revoke. Feature ideas raised in the war room go to the ticket queue the same hour, still untouched in production until a signed change lands after the window.
 
 ### 21.3b Requirement ids in code
 
 Put requirement ids in test names and in log fields (`req=S-3`). When an incident happens, searchability beats a slide that once mapped requirements to modules. Dead requirements without tests should fail CI.
 
+Searchable ids turn an incident channel into an index. Tests named for dead requirements fail CI until someone deletes or replaces them. Log fields carry the same ids so a deny event points at S-3 without a slide deck. Sam greps for req= in incident reviews before assigning blame.
+
 ### 21.1b MoSCoW under safety
 
 Must/Should/Could prioritization still places all safety requirements in Must. A Could that weakens Must (optional deny-list) is reclassified or rejected. Product managers do not outvote fail-closed.
+
+Optional deny-lists are not Could items; they break Must. Product managers who want a demo mode that loads without policy get a recorded refusal. Sam's prioritization board has a hard swimlane for safety Musts that cannot be dragged to Should. Demo modes that skip policy load are closed as wontfix with a link to this rule.
 
 ### Practice note
 
