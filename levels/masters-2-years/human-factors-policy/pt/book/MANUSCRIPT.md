@@ -51,7 +51,7 @@ Sofia explica ao Dr. Nakamura por que a pergunta merece uma dissertação. Adams
 
 ### 1.3 Uma busca estruturada
 
-Sofia pesquisa em duas bases de dados acadêmicas e em uma coleção de normas, usando termos planejados: password policy, password expiration, password manager, usable security e help desk. Para cada busca, registra a data, a base, a string de busca e o número de resultados. Faz a triagem de títulos e resumos com base em regras de inclusão escritas: estudos empíricos ou orientações oficiais sobre senhas no ambiente de trabalho. Mantém uma tabela dos itens excluídos, com os motivos. O Dr. Nakamura ressalta que uma busca repetível protege a revisão da acusação de que ela só citou estudos favoráveis à sua opinião.
+Sofia pesquisa em duas bases de dados acadêmicas e em uma coleção de normas, usando termos planejados em inglês: "password policy", "password expiration", "password manager", "usable security" e "help desk". Para cada busca, registra a data, a base, a string de busca e o número de resultados. Faz a triagem de títulos e resumos com base em regras de inclusão escritas: estudos empíricos ou orientações oficiais sobre senhas no ambiente de trabalho. Mantém uma tabela dos itens excluídos, com os motivos. O Dr. Nakamura ressalta que uma busca repetível protege a revisão da acusação de que ela só citou estudos favoráveis à sua opinião.
 
 ### 1.4 O que a busca encontrou
 
