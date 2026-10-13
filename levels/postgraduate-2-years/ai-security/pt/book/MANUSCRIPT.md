@@ -526,7 +526,7 @@ O inventário de Amira encontra 23 usos de IA: 3 sistemas construídos, 11 funci
 
 ### 7.6 Erros e limites
 
-Três erros são comuns: inventários que deixam de fora funcionalidades de fornecedores e uso paralelo; processos de IA paralelos que ninguém segue; e métricas que contam atividade em vez de redução de risco. Cada erro deixa riscos sem visibilidade ou sem gestão. Um inventário apenas dos sistemas construídos teria deixado de fora as 11 funcionalidades de fornecedores e os 9 usos paralelos da Corvane. Um processo de IA paralelo é fácil de ignorar; acrescentar perguntas às listas de verificação existentes chega às equipes. Contar atividade, como prompts filtrados, nada diz sobre se o risco caiu. Verifique os três pontos no seu programa. Corrija os que encontrar na próxima revisão.
+Três erros são comuns: inventários que deixam de fora funcionalidades de fornecedores e uso paralelo; processos de IA paralelos que ninguém segue; e métricas que contam atividade em vez de redução de risco. Cada erro deixa riscos sem visibilidade ou sem gestão. Um inventário apenas dos sistemas construídos teria deixado de fora as 11 funcionalidades de fornecedores e os 9 usos paralelos da Corvane. Um processo de IA paralelo é fácil de ignorar; acrescentar perguntas às listas de verificação existentes chega às equipes. Contar atividade, como prompts filtrados, nada diz sobre se o risco caiu; acompanhe, em vez disso, a parcela de sistemas de nível alto com avaliação adversarial atual. Verifique os três pontos no seu programa.
 
 ### Exercícios
 
@@ -700,7 +700,7 @@ O relatório trimestral de Amira para o conselho tem uma página: os cinco princ
 
 ### 9.7 Erros e limites
 
-Três erros são comuns: casos de garantia sem condições ou datas; painéis verdes que escondem o desconhecido; e *Red teams* restritos a listas de prompts. Cada erro torna a garantia desatualizada ou enganosa. Uma afirmação sem condições nem datas pode descrever um modelo que já não está em execução. Painéis verdes escondem o que é desconhecido, como o sistema de nível alto da Corvane ainda não avaliado. *Red teams* limitados a listas de prompts não conseguem encontrar ataques encadeados que movimentam dinheiro. Verifique os três pontos nos seus casos de garantia e relatórios a cada trimestre. Corrija os que encontrar antes do próximo relatório.
+Três erros são comuns: casos de garantia sem condições ou datas; painéis verdes que escondem o desconhecido; e *Red teams* restritos a listas de prompts. Cada erro torna a garantia desatualizada ou enganosa. Uma afirmação sem condições nem datas pode descrever um modelo que já não está em execução. Painéis verdes escondem o que é desconhecido, como o sistema de nível alto da Corvane ainda não avaliado. *Red teams* limitados a listas de prompts não conseguem encontrar ataques encadeados que movimentam dinheiro; defina o escopo por objetivos, como movimentar dinheiro ou extrair endereços de clientes. Verifique os três pontos nos seus casos de garantia e relatórios a cada trimestre.
 
 ### Exercícios
 
@@ -788,7 +788,7 @@ Trabalhe em cópias isoladas. Registre todo teste. Pare e escale se encontrar um
 
 ### 11.4 Avaliação
 
-Meça contra os critérios combinados no escopo. Use casos reservados e adaptativos e meça os efeitos colaterais. Relate as falhas com honestidade.
+Meça contra os critérios combinados no escopo, incluindo os efeitos colaterais.
 
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
