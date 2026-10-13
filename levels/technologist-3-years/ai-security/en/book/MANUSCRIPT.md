@@ -707,7 +707,7 @@ Decide in advance what counts as success for the attacker. For an agent this is 
 
 ### 9.5 Worked example (synthetic Brightwell case)
 
-ReturnGuard flags fraudulent returns. Jonas finds fraud in about 1% of returns; the model's false-positive rate is 5%. Using the lab, precision is about 16%: five of six flagged customers are honest. He recommends a 1% false-positive threshold (precision about 49%) and human review before any refusal. The recommendation does not claim the model is bad; it shows that a rare event makes most alerts wrong at that threshold. Human review protects honest customers from the errors that remain at the stricter threshold too. At the 1% threshold the lab still gives a precision of 0.490, so reviewers see roughly one honest customer for every fraudster flagged.
+ReturnGuard flags fraudulent returns. Jonas finds fraud in about 1% of returns; the model's false-positive rate is 5%. Using the lab, precision is about 16%: five of six flagged customers are honest. He recommends a 1% false-positive threshold (precision 0.490 in the lab, so reviewers see roughly one honest customer for every fraudster flagged) and human review before any refusal. The recommendation does not claim the model is bad; it shows that a rare event makes most alerts wrong at that threshold. Human review protects honest customers from the errors that remain at the stricter threshold too.
 
 ### 9.6 Errors and limits
 
