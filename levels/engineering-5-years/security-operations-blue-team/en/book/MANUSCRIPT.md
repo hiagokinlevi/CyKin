@@ -426,25 +426,37 @@ You will (1) use integrals to total quantities over time; (2) apply exponential 
 
 Storage needed for logs is the integral of ingestion rate over the retention period. If a SIEM ingests r(t) gigabytes per day, storage after T days is the area under r(t) from 0 to T.
 
+When the rate is constant, the area is just a rectangle: rate times days. Real ingestion rises on weekdays, falls at weekends and jumps during incidents, so the area has an uneven top edge. Summing daily figures from the SIEM's own volume reports gives the area directly, and comparing that sum with the rectangle estimate shows how much the simple model misses.
+
 ### 6.2 Exponential growth
 
 If log volume grows 3% per month, volume after n months is V₀·1.03ⁿ. After two years it is about double. Capacity plans that assume flat volume fail.
+
+The doubling comes from 1.03²⁴ ≈ 2.03. A useful shortcut is the rule of 70: dividing 70 by the percentage growth rate gives the approximate doubling time, here about 23 months. Growth like this comes from new systems being connected, more verbose logging after incidents and business expansion, so it tends to continue unless someone deliberately trims sources. Amara plots both projections.
 
 ### 6.3 Decay
 
 Value of old logs decays: most investigations use recent data. A simple model treats the chance of needing a day's logs as decaying exponentially with age, informing tiered storage — hot, warm, cold.
 
+Under such a model, if the chance of needing a given day halves every month, logs three months old are needed an eighth as often as fresh ones. That suggests fast, expensive storage for recent data and slower, cheaper storage later. The model is a simplification: some investigations, such as slow insider cases, reach far back, which is why cold storage is kept searchable rather than discarded.
+
 ### 6.4 Approximations
 
 For small growth rates, (1 + g)ⁿ ≈ 1 + ng for short periods, a quick check on spreadsheets.
+
+At 3% over three months, the linear estimate gives 9% against an exact 9.27%, close enough for a sanity check. Over two years it gives 72% against an exact 103%, badly wrong. The approximation's value is in catching gross spreadsheet errors quickly, such as a misplaced decimal, not in replacing the exact calculation for planning. Amara uses it to check her storage spreadsheet: a 3% monthly rise over one quarter should add roughly 9% to ingestion, and a cell showing 90% would point straight to a misplaced decimal.
 
 ### 6.5 Case
 
 Lindqvist's SIEM ingests 120 GB per day and keeps 90 days hot. Paolo asks Amara whether the current 12 TB hot tier will last a year if volume grows 3% monthly.
 
+The question has two parts: how much hot storage today's rate needs, and how that need changes as ingestion grows over the year. Amara sets it up as a rate multiplied by the retention window, first at today's rate and then at the rate a year from now. She notes that the hot tier holds a rolling window, so what matters is the ingestion rate at the time, not the total collected during the year.
+
 ### 6.6 Retention rules
 
 Retention is also set by policy and law; NIST SP 800-92 recommends defining retention per log type. Maths informs cost; policy decides minimums.
+
+A log type needed for regulatory audits may have to be kept for years, even if investigations rarely touch it; debug logs from a test system may be kept for days. The SOC proposes retention based on investigative value, legal and compliance teams set minimums, and storage cost shapes which tier each type sits in for each part of its life.
 
 ### Rates of change in cost
 
@@ -486,9 +498,13 @@ You will (1) apply Bayes' rule to alert precision; (2) distinguish false-positiv
 
 Two questions are easy to confuse. "If an attack happens, how likely is an alert?" is the true-positive rate. "If an alert fires, how likely is an attack?" is precision. Bayes' rule connects them through the base rate.
 
+Confusing them leads to bad decisions. A vendor may advertise that its detector catches 99% of attacks, which is the true-positive rate, while analysts experience something different: most alerts they open turn out to be benign. Bayes' rule shows how both can be true at once, because precision depends heavily on how rare attacks are among the events being judged.
+
 ### 7.2 Base rates
 
 Axelsson (2000) showed that when attacks are rare among events, even a good detector produces mostly false alarms. Precision falls as prevalence falls.
+
+Axelsson's argument applied this to intrusion detection systems at a time when vendors focused on detection rates. Suppose only one event in ten thousand is malicious; even a false-positive rate of one in a thousand produces ten false alarms for each real one. The practical lesson is that false-positive rates must be extremely low, or alerts must be filtered further before reaching people.
 
 ### Lab — Bayes for one rule
 
@@ -513,13 +529,19 @@ per 100,000 bursts: true alerts=180 false alerts=998
 
 With 0.2% of logon bursts being credential stuffing, a 90% true-positive rate and a 1% false-positive rate, precision is 0.153: about one alert in seven is real. Per 100,000 bursts, 180 true and 998 false alerts are expected.
 
+Seeing the counts makes the point vivid: 998 false alarms against 180 real ones. Halving the false-positive rate to 0.5% would cut false alarms to 499 and raise precision to about 0.27, so improving specificity pays off more than improving detection here. Amara checks the arithmetic by building the full table of attacks and non-attacks before trusting the formula's output.
+
 ### 7.4 Summaries
 
 Triage times are skewed: most are quick, a few take hours. Medians and 90th percentiles describe them better than means.
 
+A few long investigations can drag the mean far above what a typical alert takes, giving a misleading picture of daily work. The median says what a typical alert costs; the 90th percentile shows how long the slow ones run, which matters for staffing. Amara reports both, with the number of alerts in the sample, so readers can see how solid the figures are.
+
 ### 7.5 Using statistics
 
 Amara uses these numbers to argue that the burst rule needs a second condition (a success in the burst) to raise precision before paging analysts at night.
+
+Requiring a success within the burst changes the base rate: bursts with a success are a far smaller, more suspicious group, so a much larger share of alerts that fire on them are real. The trade-off is that attacks which fail entirely no longer page anyone at night. Amara proposes logging those to a daytime review queue so they are still seen.
 
 ### Intervals for rates
 
@@ -561,29 +583,43 @@ You will (1) explain how CPU, memory, storage and I/O shape telemetry; (2) relat
 
 A computer runs instructions on a CPU, keeps working data in memory, stores files on disks and talks to the world through input/output devices. Each component can be observed: CPU use, memory regions, file writes and network packets.
 
+Each observation point answers a different question. Process creation shows what ran; memory inspection can reveal code that never touched disk; file writes show what was changed or dropped; network packets show where data went. No single view sees everything, which is why SOCs combine endpoint, network and log data rather than relying on one source.
+
 ### 8.2 Privilege levels
 
 Processors separate privileged kernel code from user programs. Endpoint detection agents often run partly in the kernel to see process creation and file activity reliably, which is powerful but means agent bugs can crash machines.
+
+Code in the kernel can see and intercept activity that user programs cannot, including attempts to tamper with the agent itself. The same power means a faulty kernel component can halt the whole machine, so agent updates are rolled out in stages with test groups first. Engineers weigh visibility gained against the stability risk on critical servers.
 
 ### 8.3 Processes and threads
 
 A process is a running program with its own memory; threads are paths of execution inside it. Endpoint telemetry records process creation, parent process and command line, which detections use heavily.
 
+Parent–child relationships tell a story: a web server process starting a command shell is unusual and worth attention, while a user's desktop starting a browser is not. Command lines show what a process was asked to do. Detections that combine parent, child and arguments are far more precise than ones that look at a process name alone.
+
 ### 8.4 Caches and performance
 
 Sensors consume CPU cycles and memory. An agent that inspects every file write may slow a busy server. Engineers balance visibility against performance, testing on representative machines.
+
+Inspecting every file write means intercepting it, examining it and letting it continue, which adds latency to busy disks. Agents often exclude known high-volume paths, such as database files, to reduce cost, but each exclusion is a blind spot attackers could use. Engineers test agents under realistic load and document every exclusion with its reason.
 
 ### 8.5 Storage paths
 
 Logs pass from memory buffers to disk to network. A crash can lose buffered events. Knowing the path explains gaps after reboots.
 
+Most logging systems buffer events in memory and write them in batches for efficiency. A sudden power loss or crash discards whatever was in the buffer. Forwarders may buffer again before sending across the network. Knowing where buffers sit helps an analyst explain why the last seconds before a crash are missing, rather than suspecting deletion. Forwarders with disk-backed queues lose less.
+
 ### 8.6 Firmware
 
 Below the operating system lies firmware. Changes there are rarely visible to normal telemetry, so integrity checks and vendor updates matter.
 
+Firmware runs before the operating system starts and can influence everything after it, which makes changes there especially serious. Normal endpoint agents start too late to observe much of it. Defenders rely on measured boot, vendor signature checks on updates and comparison of firmware versions against expected values across the fleet. Unexpected version differences between identical servers are investigated, not dismissed.
+
 ### 8.7 Case
 
 Lindqvist's portal servers run an endpoint agent. During the burst, CPU on one server reaches 95%, mostly from the web service, not the agent; Amara checks before blaming the sensor.
+
+Blaming the agent would have been an easy guess, since sensors are often suspected when servers slow down. Amara checks per-process CPU figures and sees the web service consuming most of it while answering the flood of login attempts. The agent's share stays small. The finding points to rate limiting on the portal rather than tuning the sensor.
 
 ### Worked example
 
@@ -621,29 +657,43 @@ You will (1) structure larger programs into modules; (2) use data structures for
 
 As Amara's tools grow, she separates parsing, logic and output into modules. Each can be tested and replaced without touching the others.
 
+A single long script mixes concerns: changing the output format risks breaking the parser. Modules with clear boundaries let Amara swap the parser for a new log format while the counting logic stays untouched and tested. The structure also lets Paolo review one module at a time, which keeps reviews short and focused. Each module has its own tests, and a small main program ties them together.
+
 ### 9.2 Data structures
 
 Dictionaries give fast lookups — for example, mapping a username to its failure count. Sets answer membership questions quickly. Choosing the right structure turns minutes into seconds on large logs.
+
+Looking up a username in a list means scanning every entry until a match appears; with a million entries, that is slow when repeated for every log line. A dictionary jumps to the entry almost directly. Sets do the same for 'have I seen this before?' questions, which detection logic asks constantly, such as whether an address is already on a watch list.
 
 ### 9.3 Errors
 
 Programs meet missing fields, odd encodings and huge lines. Deliberate handling — catching specific errors, counting them and continuing — keeps analyses complete and honest.
 
+Catching every error with one broad handler hides real bugs, such as a mistyped variable name. Catching specific errors, such as a value that cannot be parsed as a time, handles expected problems while letting unexpected ones surface. The count of handled errors goes into the output so readers know how many records were set aside. Silence is worse.
+
 ### 9.4 Unit tests
 
 Python's unittest module lets Amara write tests such as "five failures for distinct users in one network should trigger; four should not". Tests run automatically before each change is merged.
+
+A pair of tests on either side of the threshold pins down exactly where the rule's behaviour changes. Running tests automatically before merging means a later change that shifts the threshold by accident fails immediately, rather than being discovered when a real attack slips through. Tests also serve as documentation of what the rule is meant to do.
 
 ### 9.5 Edge cases
 
 Boundary values (exactly the threshold), empty input and duplicate events are where detection code usually breaks. Tests target them first.
 
+A rule that triggers on 'more than five' and one that triggers on 'five or more' differ only at exactly five, and that is where bugs hide. Empty input tests that the code reports nothing rather than crashing. Duplicate events, common when a log forwarder retries, test that the same failure is not counted twice. Amara lists these cases before writing the rule, not after a bug appears.
+
 ### 9.6 Performance
 
 For a day of portal logs (2 million lines), reading line by line uses little memory; loading all into a list may exhaust it.
 
+Two million lines of a few hundred bytes each can occupy far more memory once each line becomes a separate Python object. Reading one line at a time and updating counters keeps memory use flat. Amara measures both approaches on a sample day and records the peak memory of each, which justifies the streaming design in the review.
+
 ### 9.7 Reviews
 
 Paolo reviews code for correctness and clarity; a second pair of eyes catches logic slips that tests missed.
+
+Tests check what the author thought to test; a reviewer asks about what was not considered. Paolo spots that Amara's code treats usernames as case-sensitive while the portal does not, so 'U5' and 'u5' were counted separately. A test is added for that case, and the review notes become a checklist for future detection code. Reviews are logged with the reviewer's name, so later readers know someone checked the code before it went live.
 
 ### Logging inside tools
 
@@ -685,29 +735,43 @@ You will (1) apply engineering ethics to security operations; (2) balance monito
 
 Engineers owe duties to the public, employers and colleagues. In a SOC, monitoring protects people but also observes them. Ethical practice means collecting what the purpose requires and no more.
 
+Duty to the public includes the customers whose accounts are protected and whose data passes through monitored systems. Duty to the employer means doing competent, honest work. Duty to colleagues means not monitoring them beyond what policy permits. Collecting only what the purpose requires limits the harm if monitoring data is ever misused or leaked.
+
 ### 10.2 Privacy and monitoring
 
 Staff and customers have privacy interests. Lindqvist's monitoring policy tells staff what is monitored and why; SOC access to content (such as email bodies) needs case approval.
+
+Telling staff what is monitored is both fair and practical: people who know the rules are less likely to feel betrayed when monitoring reveals a problem. Metadata, such as who emailed whom and when, is less intrusive than content. Requiring case approval before reading content keeps the more intrusive step tied to a specific, justified need.
 
 ### 10.3 Safety of actions
 
 Response actions can harm operations: blocking a network might stop delivery trucks' route updates. Engineers consider side effects and use approved playbooks.
 
+Lindqvist's trucks depend on network access for route and delivery updates, so cutting a network segment during a response could strand drivers or delay shipments. Playbooks list known dependencies for each action and who must be told before it is taken. Where risk is high, a narrower action, such as blocking one address, is tried before a broad one.
+
 ### 10.4 Honesty
 
 Reports must not hide failures, such as a missed detection, even when embarrassing. Hiding them prevents learning.
+
+A missed detection is information: it shows a gap in data, logic or process. Reporting it lets the team fix the gap and lets managers judge risk accurately. Concealing it leaves the gap open and erodes trust when it surfaces later, which it often does during the next incident's review. At Lindqvist, missed detections appear in the monthly report with what was changed afterwards, so the same gap is visibly closed rather than quietly forgotten.
 
 ### 10.5 Conflicts
 
 When a manager asks for monitoring of one employee without an investigation request, Amara declines and refers to policy and HR process.
 
+Monitoring a single employee without a formal request could serve a personal dispute rather than a security need and may break employment law or the monitoring policy. Amara does not judge the manager's motives; she explains the process and points to HR, which can open an investigation if one is warranted. She records the request and her response.
+
 ### 10.6 Raising concerns
 
 If a practice seems unsafe or unlawful, engineers raise it through defined channels, documenting facts.
 
+Defined channels include the line manager, the security lead, the compliance team and, where these fail, any whistle-blowing route the organisation provides. Documenting facts rather than opinions keeps the concern specific and checkable. Raising it early, before harm occurs, gives the organisation a chance to fix the practice quietly. Amara learns where Lindqvist's whistle-blowing policy is published during her first week. Retaliation against someone raising a concern in good faith is itself a breach of most codes and many laws.
+
 ### 10.7 Professional codes
 
 Engineering and computing bodies publish codes stressing public good, competence and honesty; Amara reads her university's code during induction.
+
+Codes are short and general, so they guide judgement rather than replacing it. Amara notes three points relevant to her placement: act within her competence, be honest about results and limits, and put public safety ahead of convenience. She refers back to them when the monitoring request in her placement tests those principles. Membership bodies can discipline members who breach them, which gives the codes weight.
 
 ### Consent and transparency
 
