@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para a Graduação em Engenharia
 
 - Idioma: português do Brasil (`pt`); cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 50 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3; os capítulos 29–50 (EX085–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–36 de 50 já estão escritos em português, com os exercícios EX001–EX108 e suas resoluções com rubricas de 0 a 3; os capítulos 37–50 (EX109–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros engenheiros de sistemas de segurança que vão projetar ferramentas de avaliação autorizada e plataformas de medição e relato.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais amplo; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais voltado à implementação. **Este livro é centrado no projeto**: requisitos, arquitetura, controles, verificação e evidências de projeto final para plataformas autorizadas de red team.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) |
 
-Capítulos 29–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
+Capítulos 37–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-37), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1859,11 +1859,677 @@ Predicado puro, testes por cláusula, logs seguros.
 
 [← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
 
+<a id="ch-29"></a>
+
+## Capítulo 29 — Segurança ofensiva autorizada e red team: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir cobertura com um denominador; (2) separar métricas de atividade de métricas de resultado; (3) publicar uma medição que só possa errar numa direção.
+
+### 29.1 Cobertura precisa de um plano
+
+A cobertura ATT&CK é observado ∩ planejado / |planejado|, não observado / |todo o ATT&CK|. Sem um plano, "cobertura" é vaidade. O PulseMap exige um conjunto planejado por engajamento.
+
+```python
+"""ATT&CK-style coverage matrix over synthetic authorized techniques (names only)."""
+# Synthetic engagement log: technique_id -> observed (True/False)
+PLAN = ["T1046", "T1595", "T1082", "T1083", "T1059", "T1078", "T1021"]
+OBSERVED = {"T1046", "T1595", "T1082", "T1083", "T1078"}
+LABELS = {
+    "T1046": "Network Service Discovery",
+    "T1595": "Active Scanning",
+    "T1082": "System Information Discovery",
+    "T1083": "File and Directory Discovery",
+    "T1059": "Command and Scripting Interpreter",
+    "T1078": "Valid Accounts",
+    "T1021": "Remote Services",
+}
+covered = 0
+for tid in PLAN:
+    hit = tid in OBSERVED
+    covered += hit
+    print(f"{tid} {LABELS[tid]:34} {'COVERED' if hit else 'PLANNED-NOT-SEEN'}")
+print(f"coverage={covered}/{len(PLAN)} ({100*covered/len(PLAN):.0f}%)")
+```
+
+Saída esperada:
+
+```text
+T1046 Network Service Discovery          COVERED
+T1595 Active Scanning                    COVERED
+T1082 System Information Discovery       COVERED
+T1083 File and Directory Discovery       COVERED
+T1059 Command and Scripting Interpreter  PLANNED-NOT-SEEN
+T1078 Valid Accounts                     COVERED
+T1021 Remote Services                    PLANNED-NOT-SEEN
+coverage=5/7 (71%)
+```
+
+Conjuntos planejados fazem do denominador uma promessa, não uma caça ao tesouro por todo o ATT&CK. Porcentagens de vaidade que dividem pela matriz inteira escondem técnicas puladas. O PulseMap se recusa a renderizar a cobertura até que o conjunto planejado seja salvo com o id do engajamento. Sam revisa o conjunto planejado com o contato do cliente, para que os dois lados concordem sobre o que significa incompleto.
+
+### 29.2 Atividade vs. resultado
+
+Atividade: ferramentas iniciadas, pacotes enviados. Resultado: remediações verificadas, violações de SLA encerradas, sondagens fora de escopo. Conduza pelos resultados; use a atividade só para o planejamento de capacidade. Pacotes e ferramentas iniciadas enchem gráficos de capacidade; não provam que os passageiros estão mais seguros. Resultados como violações de SLA encerradas e remediações verificadas são o que a liderança deveria financiar. Sam mantém as métricas de atividade num painel separado, rotulado como só capacidade, para que ninguém confunda estar ocupado com progredir. Quando a liderança da Riverstone pergunta o quanto a equipe trabalhou no mês passado, Sam mostra as horas de ferramenta no painel de capacidade e as remediações verificadas no painel de resultados, nunca um único gráfico que misture os dois.
+
+### 29.3 Erro de um lado só
+
+Prefira métricas que, se erradas, subestimem o sucesso (por exemplo, contar uma correção só depois do novo teste). Superestimar a segurança é o modo de falha que Albrecht e Jensen atacam. Contar uma correção só depois do novo teste puxa para a subestimação, que é a mentira mais segura se for preciso haver uma mentira. Na Riverstone, um achado passa a fechado no PulseMap só depois que o novo teste de Sam mostra que ele sumiu do mesmo host sintético, então as duas técnicas planejadas e não vistas continuaram abertas em vez de contadas como seguras. A redação do relatório sintético, cobertura planejada incompleta, é o modelo do hábito que Sam quer em toda exportação do PulseMap.
+
+> **Caso sintético — Riverstone Transit.** Cobertura de 5/7 (71%) com duas técnicas planejadas e não vistas — o relatório disse "cobertura planejada incompleta", não "71% seguro".
+
+### 29.4 Erros e limites
+
+Denominadores tomados de outro engajamento invalidam a métrica. Pegar emprestado o denominador do trimestre passado inventa cobertura em silêncio. Cada engajamento carrega seu próprio arquivo de conjunto planejado, com hash no dossiê. A CI de Sam reprova a construção de um painel que referencie um conjunto planejado de outro id de engajamento, e os revisores tratam um id de engajamento ausente num widget como um defeito igual a uma fórmula errada. Um notebook que junta os conjuntos planejados de março e setembro para um artigo precisa dizer isso no cabeçalho e não pode alimentar o caminho do PulseMap ao vivo que os operadores usam durante uma janela.
+
+### 29.2b Amostrar sem mentir
+
+Se você amostrar 50 de 500 hosts, diga isso e não escale a contagem de achados como se tivesse visitado os 500. Estratifique pela exposição quando possível (inventário do Capítulo 11). Uma amostra honesta com uma nota de confiança vence um falso censo. Escalar achados amostrados para o parque inteiro é como laboratórios pequenos viram falsos censos. Estratificar pela exposição impede que hosts raros de alto impacto sumam nas médias. Uma nota de confiança ao lado do tamanho da amostra é obrigatória no modelo de relatório de Sam antes que a contagem de achados apareça.
+
+### 29.3b Painéis como argumentos
+
+Todo widget de painel é uma afirmação. Ponha nos widgets uma legenda com a fórmula e o id do engajamento. Um widget sem fórmula é decoração e deve ser removido na revisão. Fórmulas e ids de engajamento transformam widgets em afirmações verificáveis. Decoração sem fórmula desperdiça tempo de revisão e sugere uma precisão que não tem. Sam apaga widgets sem legenda no mesmo pull request que os teria acrescentado, e liga cada legenda restante à célula do notebook que a calcula. Quando um designer propôs um selo verde de "saúde da cobertura" sem conjunto planejado, Sam o recusou no mesmo pull request e deixou a nota de recusa no changelog para a próxima revisão.
+
+### 29.1b Comparações entre coortes
+
+Comparar a cobertura entre engajamentos exige as mesmas regras de planejamento. Publique o guia de planejamento ao lado do PulseMap, para que "71%" em março signifique o mesmo tipo de denominador que "71%" em setembro. As mesmas regras de planejamento tornam comparáveis as porcentagens de março e setembro. Um guia de planejamento publicado ao lado do PulseMap é o contrato dessa igualdade. Sam versiona o guia e registra qual versão cada engajamento usou, para que uma mudança de regra não reescreva a história por acidente quando alguém recarregar um painel antigo. A lista de verificação do kickoff exige a fixação de um guia publicado; uma fixação em branco ou apontando para um branch de rascunho bloqueia o botão de início, da mesma forma que um hash de ROE ausente.
+
+### Nota de prática
+
+Quando a liderança pedir uma linha de tendência, dê a mesma fórmula entre engajamentos e marque as mudanças de metodologia com linhas verticais no gráfico. Uma curva de cobertura suave e ascendente que esconde uma mudança de denominador é uma falha de relato. As exportações do PulseMap incluem um campo methodology_id, para que junções desonestas entre planos incompatíveis sejam mais difíceis de automatizar.
+
+### Exercícios
+
+- **EX085 — Fórmula.** Escreva a fórmula de cobertura do PulseMap e substitua os números do laboratório. Rubrica: 3 = 5/7; 2 = só a fórmula; 1 = 5/todo o ATT&CK; 0 = nada.
+- **EX086 — Escolha de métrica.** Escolha uma métrica de resultado para a qualidade da remediação. Rubrica: 3 = por exemplo, % de críticos corrigidos dentro do SLA com novo teste; 2 = métrica de atividade; 1 = vago; 0 = nada.
+- **EX087 — Subestimar.** Dê um desenho que subestime o sucesso. Rubrica: 3 = exigir novo teste antes de fechar; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Planeje o denominador; meça resultados; prefira subestimar.
+
+### Continue estudando — capítulo 29 de 50
+
+[← Capítulo 28 (rascunho)](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 (rascunho) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um plano de verificação contra o TrackScope; (2) registrar aprovado/reprovado com hashes de evidência; (3) parar o laboratório se um teste de segurança falhar.
+
+### 30.1 Plano
+
+Testes: permitir dentro do escopo; negar a lista de exclusão; negar porta inválida; falhar fechado com política ausente; etapa de horário; etapa de concorrência. Cada linha: id, preparação, ação, esperado, caminho da evidência. Linhas com ids e caminhos de evidência esperados tornam o laboratório executável por alguém que não escreveu a funcionalidade. A falha fechada com política ausente fica ao lado dos casos de permissão mais felizes, para que não possa ser pulada. Sam imprime o plano como uma lista de verificação que o executor independente rubrica com um carimbo de tempo UTC. Numa release, um hotfix entrou às 14:02 UTC enquanto o relatório do laboratório mostrava as rubricas às 14:10 UTC; o carimbo provou que a execução verde foi contra o hotfix, não contra a construção quebrada.
+
+### 30.2 Execução
+
+Use só hosts sintéticos. Capture a stdout e os hashes de configuração. Qualquer falha de segurança (falha aberta) para o laboratório e abre um ticket bloqueador — nada de "continuar para coletar dados".
+
+```python
+"""Evaluate proposed actions against synthetic rules of engagement."""
+ROE = {
+    "hours": ("09:00", "17:00"),
+    "deny_actions": {"denial-of-service", "phishing-staff", "exfiltrate-real-data"},
+    "require_approval": {"password-spray-lab", "privilege-escalation-lab"},
+    "max_concurrency": 5,
+}
+proposals = [
+    ("service-enum", "10:30", 3, False),
+    ("denial-of-service", "10:30", 1, False),
+    ("password-spray-lab", "10:30", 2, False),
+    ("password-spray-lab", "10:30", 2, True),
+    ("service-enum", "18:00", 2, False),
+    ("service-enum", "11:00", 20, False),
+]
+
+def ok_time(t):
+    return ROE["hours"][0] <= t <= ROE["hours"][1]
+
+for action, when, conc, approved in proposals:
+    reasons=[]
+    if action in ROE["deny_actions"]: reasons.append("deny-action")
+    if action in ROE["require_approval"] and not approved: reasons.append("needs-approval")
+    if not ok_time(when): reasons.append("outside-hours")
+    if conc > ROE["max_concurrency"]: reasons.append("concurrency")
+    print(f"action={action:20} when={when} conc={conc:2} approved={approved} -> {'ALLOW' if not reasons else 'DENY'} {','.join(reasons) or '-'}")
+```
+
+Saída esperada:
+
+```text
+action=service-enum         when=10:30 conc= 3 approved=False -> ALLOW -
+action=denial-of-service    when=10:30 conc= 1 approved=False -> DENY deny-action
+action=password-spray-lab   when=10:30 conc= 2 approved=False -> DENY needs-approval
+action=password-spray-lab   when=10:30 conc= 2 approved=True -> ALLOW -
+action=service-enum         when=18:00 conc= 2 approved=False -> DENY outside-hours
+action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrency
+```
+
+Hosts sintéticos mantêm o laboratório dentro da fronteira de segurança do curso. Um resultado de falha aberta é um bloqueador, não um dado para terminar depois. Capturar hashes de configuração amarra a execução a uma construção conhecida. O script de laboratório de Sam aborta as linhas restantes quando qualquer linha de segurança falha, e essas linhas bloqueadas mantêm caminhos de evidência vazios até uma nova execução completa, para que ninguém consiga colar um log parcial num dossiê de release.
+
+### 30.3 Relatório
+
+Um relatório de laboratório de uma página: versão do ambiente, tabela de resultados, bloqueadores abertos, aprovação. Anexe os hashes. Uma página com versões, resultados, bloqueadores e aprovação basta para uma etapa de release. Hashes vencem capturas de tela que não podem ser reverificadas. A falha de política ausente que parou uma release mostra por que a lista de bloqueadores do relatório importa. Sam anexa o relatório sob a mesma tag do binário. Quando o Laboratório I reprovou na linha de política ausente, o relatório devolvido voltou pela mesma fila de revisão de um pacote novo, com o id do ticket bloqueador impresso no topo, para que os gerentes de release não deixassem de ver por que o trem parou.
+
+> **Caso sintético — Riverstone Transit.** O Laboratório I reprovou uma vez na linha de política ausente; a release ficou parada até que o S-3 fosse corrigido (Capítulo 21).
+
+### 30.4 Erros e limites
+
+Laboratórios em clientes compartilhados colidem; reserve o ambiente sintético. Ambientes sintéticos compartilhados precisam de reserva, da mesma forma que janelas de produção. Colisões produzem falhas instáveis que ensinam as pessoas a ignorar o vermelho do laboratório. O calendário de Sam bloqueia o ambiente e publica o link da reserva no ticket do laboratório, e uma execução sem reserva é descartada mesmo que todas as linhas pareçam verdes. Execuções descartadas guardam os logs sob uma tag de falha; no último período, três tags de falha tinham a mesma causa raiz — duas equipes reservando o ambiente sintético para a mesma sexta-feira —, e é por isso que o calendário agora rejeita sobreposições.
+
+### 30.2b Fixtures de referência
+
+Mantenha um diretório selado de fixtures sintéticos com decisões esperadas conhecidas. As execuções de laboratório precisam bater por hash com o conjunto de fixtures antes de contar como evidência de release. Fixtures derivam quando alguém os "corrige" para combinar com uma construção com bug — proteja-os com CODEOWNERS. CODEOWNERS nos fixtures impede edições silenciosas que escondem bugs. Bater o hash antes de contar uma execução como evidência de release mantém honesto o conjunto selado. O processo de mudança de fixtures de Sam exige uma atualização pareada das decisões esperadas e um segundo revisor que não seja autor da construção sob teste, para que um binário com bug não possa ser escondido editando discretamente as respostas de referência.
+
+### 30.3b Executor independente
+
+O Laboratório I é executado por alguém que não implementou a mudança sob teste. Trabalhar em par é bom para depurar depois; o aprovado registrado precisa de uma lista de verificação verde independente. Autores depurando depois tudo bem; o verde registrado precisa vir de outra pessoa. Independência é questão de incentivos, não de desconfiança da competência. Sam designa executores a partir de uma escala rotativa publicada toda sexta-feira para a semana seguinte, e o líder do laboratório resolve conflitos para que o autor de uma mudança nunca seja o executor registrado dessa mudança.
+
+### 30.1b Retenção dos dados do laboratório
+
+Logs de resultados do laboratório são evidência; retenha-os com a tag da release. Apagar logs verdes do laboratório para economizar espaço destrói a capacidade de investigar uma regressão posterior. Logs verdes explicam regressões posteriores quando um hotfix alega que nada mudou. A retenção amarrada à tag da release torna o vínculo mecânico. Os scripts de exclusão de Sam recusam caminhos de laboratório ainda referenciados por uma tag viva e imprimem a tag que os referencia, para que os operadores saibam o que quebraria. Um quase-incidente no último trimestre gerou um alerta quando um operador tentou `rm` num caminho de laboratório ainda referenciado por `TrackScope-v0.9.2`; o alerta incluía o comando recusado e o id do usuário, e a tag ficou intacta.
+
+### Nota de prática
+
+Fotografe ou exporte o inventário do ambiente do laboratório (versões de pacotes, kernel, ids das chaves de política) para o relatório do laboratório. Um "passou na minha máquina" sem inventário não é evidência transferível. O Laboratório I existe para criar confiança transferível para pessoas que não estavam na sala, inclusive você mesmo numa revisão de incidente seis meses depois.
+
+
+### 30.4b O que a primeira execução do laboratório provou
+
+A primeira execução de verificação provou que o TrackScope nega todo endereço fora do escopo no conjunto de fixtures de referência e registra cada negação com a regra que disparou. Não provou o comportamento sob requisições concorrentes nem com arquivos de escopo malformados; Sam lista esses pontos como itens abertos para o Laboratório II. Nomear os itens abertos, concorrência e arquivos malformados, impede que o Laboratório I prometa demais. Negar tudo nos fixtures de referência é necessário e não suficiente. Sam copia esses itens abertos para o plano do Laboratório II no primeiro dia do sprint seguinte.
+
+### Exercícios
+
+- **EX088 — Linha.** Escreva a linha de laboratório de falha fechada. Rubrica: 3 = linha completa; 2 = parcial; 1 = vago; 0 = nada.
+- **EX089 — Regra de parada.** O que acontece numa falha aberta? Rubrica: 3 = parar, bloqueador, nenhum uso em engajamento; 2 = só uma nota; 1 = continuar; 0 = nada.
+- **EX090 — Evidência.** Cite três hashes a anexar. Rubrica: 3 = política, binário/versão, log de resultados; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Verifique a segurança primeiro; pare na falha aberta; faça hash de tudo.
+
+### Continue estudando — capítulo 30 de 50
+
+[← Capítulo 29 (rascunho)](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (rascunho) →](#ch-31)
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Segurança ofensiva autorizada e red team: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) acrescentar upserts idempotentes de achados; (2) impor validação de esquema na escrita; (3) versionar as respostas da API.
+
+### 31.1 Upsert
+
+PUT /findings/{id} com o corpo completo; o mesmo id duas vezes gera uma única linha. As impressões digitais de deduplicação (Capítulo 9) propõem ids, as pessoas confirmam.
+
+```python
+"""Deduplicate synthetic findings by a stable fingerprint (asset, weakness class, location)."""
+import hashlib
+raw = [
+    ("web-01", "missing-header", "/login"),
+    ("web-01", "missing-header", "/login"),
+    ("web-01", "missing-header", "/account"),
+    ("web-02", "default-credential", "admin-ui"),
+    ("web-02", "default-credential", "admin-ui"),
+    ("db-01", "weak-tls", "5432"),
+]
+seen = {}
+for asset, cls, loc in raw:
+    fp = hashlib.sha256(f"{asset}|{cls}|{loc}".encode()).hexdigest()[:10]
+    seen.setdefault(fp, [asset, cls, loc, 0])[3] += 1
+print(f"raw={len(raw)} unique={len(seen)}")
+for fp, (a, c, l, n) in sorted(seen.items(), key=lambda x: x[1]):
+    print(f"{fp} {a:7} {c:19} {l:9} occurrences={n}")
+```
+
+Saída esperada:
+
+```text
+raw=6 unique=4
+f9bb6de442 db-01   weak-tls            5432      occurrences=1
+66fb6f1d56 web-01  missing-header      /account  occurrences=1
+c4bfba3b72 web-01  missing-header      /login    occurrences=2
+296a3331f0 web-02  default-credential  admin-ui  occurrences=2
+```
+
+PUT com corpo completo e ids estáveis torna as novas tentativas seguras e as duplicatas raras. As impressões digitais propõem; as pessoas confirmam quando colisões podem esconder causas raiz diferentes. A documentação da API de Sam mostra o exemplo do PUT duplo do laboratório de impressões digitais — seis linhas brutas reduzidas a quatro achados únicos — como o padrão normativo para clientes, e um teste de contrato reprova a construção da documentação se esse exemplo se afastar da API em execução.
+
+### 31.2 Validar na escrita
+
+Rejeite campos desconhecidos e nomes proibidos; force a severidade por um enum. Erros de validação retornam códigos legíveis por máquina para a interface. Enums e nomes proibidos mantêm pontuações vazias e payloads fora, já na borda. Códigos legíveis por máquina deixam a interface explicar sem interpretar inglês. Sam acrescenta um fixture de interface para cada novo código de validação na mesma mudança. Os fixtures de interface mostram a string do código e a explicação para pessoas lado a lado. Cada código novo também aparece no catálogo público de erros usado pelos clientes móveis.
+
+### 31.3 Versionamento da API
+
+Prefixo /v1/; só mudanças aditivas dentro da v1. Mudanças incompatíveis exigem /v2/ e uma nota de migração para o PulseMap. Regras aditivas na v1 protegem os clientes móveis de quebras surpresa. Rejeitar risk_score impõe a proibição de pontuações vazias vinda dos fundamentos. As notas de migração da v2 são revisadas pelos donos do PulseMap antes do merge. Os testes de compatibilidade de Sam rodam clientes antigos contra servidores novos toda noite. Quando uma quebra dispara, o ticket cita o cliente mais antigo ainda na matriz de suporte — no mês passado foi a versão móvel que ainda enviava `risk_score` —, para que os donos saibam qual binário precisa mudar antes da janela.
+
+> **Caso sintético — Riverstone Transit.** Um cliente móvel enviou `risk_score`; o validador o rejeitou — pontuações vazias ficam de fora (Capítulo 15).
+
+### 31.4 Erros e limites
+
+Chaves de idempotência não podem derivar só do relógio de parede. Chaves de idempotência baseadas no relógio colidem em novas tentativas no mesmo segundo. As chaves precisam incluir o id do achado ou um nonce gerado pelo cliente. Sam rejeita bibliotecas de cliente que fazem hash só de carimbos de tempo, e a mensagem de rejeição cita um formato de chave exigido, para que os autores não inventem outro esquema fraco. Os formatos de chave exigidos são ilustrados com exemplos válidos e inválidos no corpo do erro. Os exemplos inválidos no corpo do erro são gerados a partir do mesmo fixture que os testes usam.
+
+### 31.2b Atualizações parciais
+
+Um PATCH que permite mudar a severidade sem referências de evidência convida a rebaixamentos silenciosos. Prefira o PUT completo do corpo validado, ou um PATCH restrito que não consiga apagar hashes de evidência nem mudar o status para fechado sem um ponteiro de novo teste. Rebaixamentos silenciosos de severidade sem evidência são como a aceitação de risco se esconde. Superfícies de PATCH restritas tornam impossível fechar sem novo teste. Sam prefere o PUT no SDK oficial e deixa o PATCH para ferramentas administrativas com campos de auditoria extras. Os campos de auditoria do PATCH administrativo incluem a severidade anterior e quem a mudou.
+
+### 31.3b Importação em lote
+
+A importação em lote de achados vindos de scanners precisa passar pela mesma validação de esquema da criação interativa, incluindo as verificações de campos proibidos e a idempotência por impressão digital. Um caminho separado de "importação confiável" é por onde os payloads entram escondidos no repositório. Caminhos de importação confiável são como os scanners contornam o esquema. A mesma validação da criação interativa mantém coerentes as impressões digitais e os campos proibidos. O job de importação de Sam registra o id do scanner como evidência, nunca como motivo para pular verificações. Pular verificações por causa da marca de um scanner é registrado como wontfix, com um link para esta regra.
+
+### 31.1b Concorrência otimista
+
+Use ETags ou números de versão nos achados, para que dois responsáveis pela remediação não sobrescrevam um ao outro. Uma atualização perdida que apaga um ponteiro de novo teste parece, mais tarde, uma reabertura misteriosa. ETags tornam as atualizações perdidas visíveis como conflitos, em vez de reaberturas misteriosas. Apagar um ponteiro de novo teste numa sobrescrita é um bug de segurança. A interface de Sam força recarregar e mesclar quando chega um 412. As ferramentas de mesclagem nunca apagam automaticamente ponteiros de novo teste ao resolver conflitos. Por isso os robôs de mesclagem automática ficam desativados nos caminhos de achados, e um conflito que mexe num ponteiro de novo teste exige um segundo clique humano, que mostra o valor anterior do ponteiro antes que ele possa ser apagado.
+
+### Nota de prática
+
+Exclusões em lote são proibidas sem controle duplo. A exclusão lógica com motivo é o caminho padrão; o expurgo definitivo segue apenas a retenção. Clientes da API que emitem DELETE em laço durante uma nova tentativa com bug têm suas credenciais revogadas automaticamente depois de um limite — outro lugar onde confiabilidade e segurança se encontram.
+
+
+
+Documente a semântica do upsert na descrição OpenAPI, para que os clientes móveis não inventem seus próprios ids de nova tentativa.
+
+
+### 31.4b Migração dos achados armazenados
+
+Quando o esquema de achados ganha um campo, os registros existentes do FindingsDesk precisam de um valor padrão ou de um preenchimento retroativo. Sam escreve a migração para rodar primeiro numa cópia, compara contagens de registros e checksums antes e depois, e mantém o esquema antigo legível por uma release. Migrações feitas primeiro na cópia, com comparação de checksums, pegam linhas perdidas antes da produção. Manter o esquema antigo legível por uma release amortece clientes lentos. Sam guarda os checksums de antes e depois no ticket da migração, e a lista de verificação da migração recusa o status de concluído até que os dois campos estejam preenchidos e iguais em contagem de registros à pré-cópia.
+
+### Exercícios
+
+- **EX091 — Upsert.** Por que um POST sem id é arriscado em novas tentativas? Rubrica: 3 = duplicatas na nova tentativa; 2 = vago; 1 = errado; 0 = nada.
+- **EX092 — Rejeitar.** Dê um corpo JSON que precise retornar 400. Rubrica: 3 = contém payload/password/risk_score etc.; 2 = fraco; 1 = corpo válido; 0 = nada.
+- **EX093 — Versão.** Renomear reason_code → reason é uma mudança segura na v1? Rubrica: 3 = não, é incompatível → v2; 2 = hesitante; 1 = sim; 0 = nada.
+
+### Síntese
+
+Escritas idempotentes, esquema estrito, versões explícitas.
+
+### Continue estudando — capítulo 31 de 50
+
+[← Capítulo 30 (rascunho)](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 (rascunho) →](#ch-32)
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Segurança ofensiva autorizada e red team: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir metas de disponibilidade para ferramentas de avaliação; (2) usar novas tentativas com orçamentos; (3) degradar com segurança quando uma dependência falha.
+
+### 32.1 Metas
+
+Caminho de negação do TrackScope: alta disponibilidade durante as janelas de engajamento. Painéis do PulseMap: melhor esforço. Declare a meta; não insinue cinco noves sem um orçamento. Declarar melhor esforço para os painéis acaba com o folclore dos cinco noves. A disponibilidade do caminho de negação durante as janelas é a promessa que protege o cliente. Sam publica a meta ao lado do valor medido todo mês. Valores mensais com mais de cinco semanas aparecem como desatualizados na página de status. O marcador de desatualizado aponta para o job de medição que produziu o último número de 99,6% contra a meta de 99,5% do caminho de negação, com o id do job já preenchido, para que os operadores rodem de novo a mesma consulta em vez de inventar outra.
+
+### 32.2 Novas tentativas
+
+Novas tentativas ajudam em uploads instáveis (Capítulo 6), mas precisam de prazo e jitter. Limite o total de tentativas para que o limite de taxa da ROE continue valendo.
+
+```python
+"""Reliability of a synthetic evidence-upload step with retries (deterministic)."""
+import random
+random.seed(7)
+P_FAIL = 0.2
+def upload_attempts(max_tries):
+    for t in range(1, max_tries + 1):
+        if random.random() > P_FAIL:
+            return True, t
+    return False, max_tries
+for tries in (1, 2, 3, 5):
+    random.seed(7)
+    ok = sum(upload_attempts(tries)[0] for _ in range(1000))
+    print(f"max_tries={tries} success={ok}/1000 theory={1-P_FAIL**tries:.4f}")
+```
+
+Saída esperada:
+
+```text
+max_tries=1 success=784/1000 theory=0.8000
+max_tries=2 success=949/1000 theory=0.9600
+max_tries=3 success=988/1000 theory=0.9920
+max_tries=5 success=1000/1000 theory=0.9997
+```
+
+Prazos e jitter impedem que as novas tentativas virem estouros de manada. Os limites protegem o orçamento de taxa da ROE derivado antes. Sam configura as novas tentativas de upload a partir do mesmo arquivo de configuração do limite de volume da ROE, para que não possam se afastar, e um teste unitário falha se o produto dos limites pelo tamanho do lote ultrapassar o orçamento. Os comentários da configuração de upload precisam citar um id real de cláusula da ROE para o limite de volume — o mesmo id que Sam usou quando escreveu as tentativas esperadas na ROE antes do engajamento —, ou o lint reprova a construção.
+
+### 32.3 Degradação segura
+
+Se o FindingsDesk cair, continue negando/permitindo localmente e enfileire os rascunhos de achados em disco — nunca falhe aberto nas verificações de escopo. Negar/permitir localmente com filas de rascunhos em disco preserva a segurança quando o FindingsDesk morre. Falhar aberto no escopo nunca é um modo de degradação. Os catorze rascunhos enfileirados na história da queda mostram o padrão funcionando. Sam treina o caminho de reprodução da fila depois de cada release do FindingsDesk. O treino semeia catorze rascunhos sintéticos, como na história da queda, reproduz e depois os apaga; uma contagem restante diferente de zero reprova o treino antes que a release seja marcada como operável.
+
+> **Caso sintético — Riverstone Transit.** Durante uma queda do FindingsDesk, a fila no laptop de Sam guardou 14 rascunhos; o TrackScope continua negando o que está fora do escopo.
+
+### 32.4 Erros e limites
+
+Novas tentativas contra uma API com limite de taxa podem parecer abuso; coordene os orçamentos com a ROE. Rajadas de novas tentativas contra uma API limitada parecem abuso para os defensores que observam a mesma rede. Os orçamentos acordados na ROE precisam incluir as novas tentativas das ferramentas, não só as ações lógicas. Sam mostra a contagem esperada de tentativas no kickoff e reduz a concorrência dos scanners quando o canal de monitoramento do cliente relata alarmes de limite de taxa. Slides de kickoff que omitem as contagens de tentativas são corrigidos antes das assinaturas. A caixa de revisão da assessoria jurídica rejeita um pacote de assinatura sem a contagem esperada de tentativas, porque é esse número que torna auditável a cláusula de volume da ROE.
+
+### 32.2b Contrapressão
+
+Quando a fila de rascunhos passa de um limite, pare de iniciar novos métodos de descoberta e acione o líder. Continuar varrendo enquanto os achados não podem ser registrados cria risco não rastreado. A contrapressão é uma funcionalidade de segurança, não só de desempenho. Achados não rastreados enquanto a varredura continua são risco de escopo silencioso. Parar novos métodos de descoberta leva o líder a uma escolha consciente. O limite de Sam é baixo o bastante para que uma fila no disco do laptop não cresça durante a noite sem ser notada. Os alarmes de profundidade disparam quando a fila passa de cinquenta rascunhos — antes dos alarmes de idade —, porque um disco cheio durante uma queda do FindingsDesk descartaria novos rascunhos em silêncio.
+
+### 32.3b Caos só no ambiente sintético
+
+Experimentos de confiabilidade (matar pods, particionar redes) rodam no ambiente sintético. Nunca faça teste de caos durante uma janela assinada de um cliente. Registre os ids de experimento separados dos ids de engajamento, para que as métricas não se misturem. Janelas assinadas são para avaliação autorizada, não para experimentos. Ids de experimento separados mantêm as métricas de caos fora dos relatórios de engajamento. Os scripts de caos de Sam se recusam a rodar se houver um id de engajamento definido no ambiente. A CI define de propósito um id de engajamento falso e espera uma saída diferente de zero, provando que a proteção não pode ser pulada por um export esquecido num perfil de shell.
+
+### 32.1b Verificações de saúde das dependências
+
+O TrackScope deve verificar a saúde do armazenamento de políticas e do destino de eventos no início da janela. Começar um engajamento às cegas e descobrir um destino quebrado no meio da varredura é uma falha de operações que o capítulo de confiabilidade quer evitar. Inícios às cegas que descobrem um destino quebrado no meio da varredura gastam a paciência do cliente e criam evidência parcial. Verificações de saúde no início da janela custam menos que pedidos de desculpa. Sam bloqueia o botão de início até que o armazenamento de políticas e o destino de eventos respondam. Quando o destino falhou na verificação sintética de início do mês passado, a linha em texto puro `event-sink: connection refused` foi colada no chat de início, para que o contato do cliente visse por que a janela não tinha aberto.
+
+### Nota de prática
+
+Defina orçamentos de erro para o caminho de negação separados dos orçamentos de melhor esforço da interface. Gastar o orçamento da interface num painel sofisticado é aceitável; gastar o orçamento de negação no mesmo trabalho, não. Publique os dois orçamentos, para que a pressão do produto tenha um número com que discutir, em vez de um apelo vago por mais confiabilidade.
+
+
+### 32.4b Medir se as metas foram cumpridas
+
+Uma meta de disponibilidade só tem sentido se for medida. O TrackScope registra cada decisão de negar ou permitir com um carimbo de tempo, para que a equipe possa calcular a fração dos minutos da janela de engajamento em que o serviço respondeu dentro do orçamento de latência. O relatório sintético do mês passado mostrou 99,6% contra uma meta de 99,5%. Carimbos de tempo em cada decisão tornam a disponibilidade calculável em vez de anedótica. Os 99,6% contra 99,5% do mês passado são o tipo de número feio que Sam prefere. Ele põe num gráfico os minutos dentro do orçamento ao lado dos minutos da janela, para que uma queda curta não se esconda nas médias, e o gráfico leva como legenda a mesma fórmula que a meta de confiabilidade usa.
+
+### Exercícios
+
+- **EX094 — Meta.** Escreva uma frase de disponibilidade para o caminho de negação do TrackScope. Rubrica: 3 = meta por janela + medição; 2 = alta e vaga; 1 = piada dos cinco noves; 0 = nada.
+- **EX095 — Orçamento.** Com p=0,8 e no máximo 3 tentativas, qual o número esperado de tentativas? Rubrica: 3 = 1,24 com o raciocínio; 2 = 1/p; 1 = 3; 0 = nada.
+- **EX096 — Degradar.** O que nunca pode degradar para ALLOW? Rubrica: 3 = decisões de escopo/política; 2 = parcial; 1 = interface de achados; 0 = errado.
+
+### Síntese
+
+Negações confiáveis, novas tentativas com orçamento, degradação fechada.
+
+### Continue estudando — capítulo 32 de 50
+
+[← Capítulo 31 (rascunho)](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 (rascunho) →](#ch-33)
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Segurança ofensiva autorizada e red team: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever condições de parada como verificações executáveis; (2) planejar o rollback de mudanças de ferramentas no meio do engajamento; (3) conduzir um exercício de mesa sobre uma falha na lista de exclusão.
+
+### 33.1 Paradas executáveis
+
+Condições de parada são código: lista de exclusão, canário de latência, arquivo de interruptor de emergência do cliente. Pessoas também mandam parar; o software não pode discordar de uma parada humana. Código que pode discordar de uma parada humana é um perigo. Arquivos de interruptor de emergência, listas de exclusão e canários precisam respeitar a mesma interrupção. A API de parada de Sam muda uma única flag que todo método consulta dentro do limite de tempo da ROE. Os intervalos de consulta são afirmados num teste unitário amarrado ao limite de tempo da ROE. Alongar a consulta além desse limite sem uma edição correspondente da ROE reprova a CI, e foi isso que barrou um pull request que tentava "economizar CPU" consultando a cada dois minutos diante de uma promessa de interruptor de emergência de trinta segundos.
+
+### 33.2 Rollback
+
+Fixe as releases; mantenha assinado o binário anterior do TrackScope. Se uma nova construção avaliar mal o escopo, faça o rollback em minutos, não "depois do sprint". Binários anteriores assinados tornam real o rollback na escala de minutos. Esperar um sprint depois de uma avaliação de escopo errada é inaceitável. Sam mantém a última versão sabidamente boa no jumphost, com a assinatura verificada no início. Uma falha de verificação de assinatura no início aciona o alerta antes que qualquer método comece. Os métodos se recusam a iniciar enquanto a verificação de assinatura estiver vermelha, e o FindingsDesk rejeita escritas vindas desse jumphost até que a assinatura seja aprovada, para que um binário revertido não deixe achados que aleguem vir de uma construção em que a equipe já não confia.
+
+### 33.3 Exercício de mesa
+
+Percorra a linha do tempo das 11:10: quem é chamado, o que é dito, o que é registrado, quando a retomada é permitida. Atualize o runbook onde o exercício de mesa travou. Percorrer quem chama quem encontra caminhos ausentes a baixo custo. Locais de interruptor de emergência não documentados são típicos post-its. Atualizar o runbook antes da próxima janela é o teste de aceitação do exercício de mesa. Sam agenda um exercício de mesa por período e registra a presença. Quem monta a escala não nomeia um líder para uma janela de cliente a menos que essa pessoa conste da lista de presença do período atual, e foi assim que o caminho não documentado do interruptor de emergência, encontrado no exercício de mesa, virou leitura obrigatória antes da janela seguinte da Riverstone.
+
+> **Caso sintético — Riverstone Transit.** O exercício de mesa descobriu que o caminho do arquivo de interruptor de emergência não estava documentado; o runbook v1.4 corrigiu isso antes da janela seguinte.
+
+### 33.4 Erros e limites
+
+Teatro de resiliência é um fichário que ninguém abre. Treine uma vez por período. Fichários que ninguém abre são piores que nenhum fichário, porque criam uma falsa garantia. Uma parada treinada uma vez por período é o mínimo. Sam marca o período como incompleto no registro de treinamento até que a medição do treino seja arquivada, e se recusa a escalar como líder alguém que não participou de um treino no período atual. Quem monta a escala lê esses registros de treinamento diretamente, para que um substituto possa provar que está pronto sem perguntar pela sala na manhã de uma janela.
+
+### 33.2b Modelos de comunicação
+
+Escreva de antemão o SMS/e-mail de parada, de retomada e de rollback. Sob estresse, as pessoas improvisam e omitem a versão da ROE ou o horário do próximo ponto de controle. Os modelos ficam no runbook e são testados no exercício de mesa. Os modelos carregam a versão da ROE e o próximo ponto de controle, para que o estresse não possa omiti-los. Testá-los no exercício de mesa encontra campos ausentes. Sam guarda os modelos ao lado do runbook, com o mesmo caminho de revisão do código. A revisão dos modelos usa o mesmo caminho de CODEOWNERS do código de segurança do TrackScope.
+
+### 33.3b Autoridade de retomada
+
+Quem pode retomar depois de uma parada? Nomeie o papel na ROE. O TrackScope deve exigir um token de retomada amarrado a esse papel e à ScopeVersion, não um Booleano que qualquer pessoa no jumphost possa alternar. Um Booleano no jumphost não é autorização. Tokens de retomada amarrados ao papel e à ScopeVersion correspondem à forma como a parada foi concedida. O token de Sam expira rápido, para que uma retomada esquecida não sobreviva à decisão. Tokens de retomada expirados registram uma negação com o motivo `resume-expired`. O PulseMap os mostra num gráfico ao lado dos acertos comuns da lista de exclusão toda semana; um pico depois de um exercício de mesa costuma significar que alguém tentou reutilizar um token esquecido em vez de pedir uma retomada nova.
+
+### 33.1b Contatos secundários
+
+Condições de parada que acionam uma só pessoa falham quando essa pessoa está offline. Mantenha contatos primário e secundário com passagem de bastão confirmada, testada no exercício de mesa. Pontos únicos de falha humana quebram as condições de parada com a mesma certeza que pontos únicos de falha de código. A passagem de bastão confirmada é testada, não presumida. O exercício de mesa de Sam sempre aciona o secundário uma vez, de propósito. Um acionamento do secundário sem resposta reprova o exercício de mesa mesmo que o primário tenha agido, e abre um ticket de escala antes que o exercício possa ser encerrado — a Riverstone já teve uma semana em que o secundário estava de licença e ninguém tinha sido nomeado.
+
+### Nota de prática
+
+Depois de toda parada real, faça uma conversa rápida de cinco minutos: o que disparou, o que atrasou, o que confundiu o cliente. Registre pelo menos uma edição no runbook quando possível. Paradas que não produzem atualizações de documentação vão se repetir com a mesma confusão, e a linha do tempo vai ficar idêntica ao exemplo das 11:10 do capítulo pelos motivos errados.
+
+
+### 33.4b Provar que o botão de parada funciona
+
+Antes de cada engajamento, o líder aciona o controle de parada no ambiente sintético e verifica se todo método em execução para dentro do tempo escrito na ROE. O resultado, com o tempo medido, é anexado ao registro do engajamento; uma parada não testada é tratada como parada nenhuma. Tempos de interrupção medidos e anexados ao registro do engajamento tornam verificável a promessa da ROE. Paradas não testadas equivalem a parada nenhuma na revisão de prontidão de Sam. Ele reprova o kickoff se a última medição sintética de parada tiver mais de sete dias ou for mais lenta que o limite escrito.
+
+### Exercícios
+
+- **EX097 — Interruptor de emergência.** Desenhe um interruptor de emergência humano que o TrackScope respeite em ≤30 s. Rubrica: 3 = mecanismo + intervalo de verificação + falha fechada; 2 = ideia; 1 = vago; 0 = nada.
+- **EX098 — Rollback.** Liste três pré-condições para fazer rollback no meio do engajamento. Rubrica: 3 = binário anterior, fixação da política, avisar o cliente; 2 = duas; 1 = uma; 0 = nada.
+- **EX099 — Pedido do exercício de mesa.** Escreva um evento injetado para o exercício de mesa. Rubrica: 3 = evento específico; 2 = vago; 1 = nenhum; 0 = evento inseguro.
+
+### Síntese
+
+Paradas que você consegue executar, rollbacks que você consegue fazer, exercícios de mesa que atualizam runbooks.
+
+### Continue estudando — capítulo 33 de 50
+
+[← Capítulo 32 (rascunho)](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 (rascunho) →](#ch-34)
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Segurança ofensiva autorizada e red team: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar os eventos do TrackScope ao FindingsDesk; (2) definir consumidores idempotentes; (3) testar contratos com fixtures.
+
+### 34.1 Contrato de eventos
+
+Eventos de negação/permissão: versão do esquema, ids, carimbos de tempo (UTC), alvos, motivos. Os consumidores ignoram campos desconhecidos; os produtores permanecem aditivos. Carimbos de tempo em UTC e esquemas aditivos mantêm os consumidores compatíveis. Ignorar campos desconhecidos é obrigatório para que os produtores possam evoluir. Sam publica o contrato num repositório de que as duas equipes são donas, com exemplos para cada código de motivo. Os exemplos são fixtures de referência; mudá-los exige a revisão do dono do contrato. Quando um produtor e um exemplo discordam, as implantações param até que o pacote bata — a mesma disciplina que impediu a tempestade de reprodução de gerar tickets duplicados depois que a idempotência por `event_id` entrou.
+
+### 34.2 Consumidores idempotentes
+
+O FindingsDesk indexa os eventos processados pelo event_id. Reproduzir o log não pode criar achados duplicados. Chaves por event_id transformam a reprodução de um bug de duplicação numa ferramenta de recuperação. Os três tickets duplicados na história da tempestade são o conto de advertência. A suíte de consumidores de Sam inclui um fixture de entrega dupla para cada tipo de evento. Os fixtures de entrega dupla afirmam que a contagem de tickets fica em um depois da reprodução, contando pela API de achados em vez de usar grep nos logs, porque a rotação de logs durante a tempestade de reprodução teria escondido as três duplicatas que primeiro expuseram o bug.
+
+### 34.3 Testes de contrato
+
+JSON de fixture para cada código de motivo; os testes do consumidor afirmam os campos resultantes do ticket. Rode na CI sobre fixtures sintéticos. Fixtures por código de motivo prendem os campos do ticket ao contrato. A CI sobre JSON sintético pega quebras antes dos engajamentos. Sam exige que o PulseMap e o FindingsDesk consumam o mesmo pacote de fixtures. Os pacotes de fixtures compartilhados ficam no repositório do contrato, não copiados para cada serviço. A CI faz hash do pacote e reprova qualquer árvore de serviço que contenha uma cópia divergente, e foi assim que o PulseMap e o FindingsDesk continuaram nos mesmos fixtures de códigos de motivo depois que o catálogo ganhou `resume-expired`.
+
+> **Caso sintético — Riverstone Transit.** Uma tempestade de reprodução duplicou três tickets até que a idempotência por event_id entrou.
+
+### 34.4 Erros e limites
+
+A diferença de relógio entre hosts embaralha as linhas do tempo; prefira hora do evento + hora de recebimento. Hora do evento mais hora de recebimento explica a diferença sem culpar o relógio de um host. A interface de linha do tempo de Sam sempre mostra as duas, e os analistas são treinados a ordenar pela hora do evento enquanto observam a hora de recebimento para atrasos de transporte ao reconstruir uma parada. A orientação de ordenação está impressa no manual do analista ao lado de uma captura de tela sintética de diferença de relógio, rotulada como material didático. Quando a interface de linha do tempo mudou no último período, a captura foi atualizada no mesmo pull request, para que os analistas não aprendessem um layout que já não existia.
+
+### 34.2b Eventos envenenados
+
+Os consumidores precisam validar o esquema e rejeitar eventos com carimbos de tempo no futuro, versões de política desconhecidas ou alvos que reprovam nas verificações de formato. Um fluxo de eventos envenenado deve ir para quarentena, não criar achados contra hosts aleatórios. A quarentena vence criar achados contra hosts sem sentido. Carimbos de tempo no futuro e versões de política desconhecidas são motivos de rejeição. Sam aciona alertas quando a quarentena cresce, da mesma forma que aciona em picos de negação. Os alertas de quarentena incluem o nome do serviço produtor. O runbook de rollback abre nesse nome a partir do conteúdo do alerta, para que um operador diante de um fluxo envenenado de eventos com carimbo no futuro possa parar o produtor sem adivinhar qual serviço derrubar.
+
+### 34.3b Treino de evolução de esquema
+
+Pratique acrescentar um campo opcional de ponta a ponta num ensaio: produtor, consumidor, fixture, documentação. Equipes que só evoluem esquemas em emergências inventam atalhos incompatíveis. Atalhos surgem quando a única prática são as emergências. Campos opcionais de ponta a ponta mantêm honesta a memória muscular. Sam agenda um treino a cada período, com um nome de campo descartável. Os campos descartáveis são apagados no fim do período com uma nota de migração que cita a equipe dona. Essa equipe precisa confirmar a nota no repositório do contrato antes que o campo desapareça, para que um campo de ensaio não suma enquanto um consumidor ainda o lê.
+
+### 34.1b Filas de mensagens mortas
+
+Eventos que reprovam na validação vão para uma fila de mensagens mortas com um alerta — não para `/dev/null` e não para os achados. Os operadores reproduzem depois de corrigir o produtor. Descartes invisíveis recriam o repúdio. Descartes invisíveis recriam o repúdio. Alertas sobre mensagens mortas forçam os operadores a reproduzir depois das correções. O runbook de Sam proíbe filtrar alertas dessa fila sem uma nota AUTH. Notas AUTH para filtros de alerta expiram depois de sete dias, a menos que sejam renovadas com a mesma aprovação dupla da nota original. Filtros expirados se rearmam automaticamente; essa regra pegou um filtro esquecido que tinha silenciado os alertas de mensagens mortas por nove dias durante um período tranquilo de provas.
+
+### Nota de prática
+
+Os testes de contrato rodam num agendamento contra os fixtures de homologação mesmo quando não há PR aberto, pegando derivas silenciosas do produtor. Uma CI verde na segunda-feira e um consumidor quebrado na quinta costumam significar que alguém editou um fixture à mão num ambiente que a CI não vê. Testes de contrato agendados fecham essa lacuna.
+
+
+
+Inclua um canário de consumidor que reprove a implantação se eventos envenenados não forem para quarentena em até um minuto na homologação.
+
+
+
+A idade das mensagens mortas é um gráfico de SLO ao lado da latência do caminho de negação.
+
+
+### 34.4b Propriedade do contrato de eventos
+
+Cada tipo de evento no barramento tem uma equipe dona que aprova as mudanças. O PulseMap consome eventos do FindingsDesk, mas não pode alterar seu esquema; em vez disso, abre uma solicitação, o que mantém o contrato estável para todos os outros consumidores. Uma equipe dona por tipo de evento impede mudanças incompatíveis de passagem. As aprovações ficam registradas no repositório do contrato. Sam bloqueia merges que mexem num tipo sem a revisão da equipe dona. Os aliases das equipes donas são endereços de grupo, como `trackscope-contract@riverstone.example`, para que a propriedade sobreviva quando pessoas saem do esquadrão da plataforma e toda mudança de esquema ainda chegue a alguém de plantão.
+
+### Exercícios
+
+- **EX100 — Campo.** Por que incluir policy_version em todo evento? Rubrica: 3 = auditar qual ROE se aplicou; 2 = vago; 1 = errado; 0 = nada.
+- **EX101 — Reprodução.** Como o event_id impede achados duplicados? Rubrica: 3 = upsert/ignorar duplicatas; 2 = vago; 1 = errado; 0 = nada.
+- **EX102 — Fixture.** Cite dois fixtures exigidos antes de integrar um novo código de motivo. Rubrica: 3 = exemplo do produtor + ticket esperado do consumidor; 2 = um; 1 = vago; 0 = nada.
+
+### Síntese
+
+Contratos, consumidores idempotentes, testes com fixtures.
+
+### Continue estudando — capítulo 34 de 50
+
+[← Capítulo 33 (rascunho)](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 (rascunho) →](#ch-35)
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) redesenhar a interface de cobertura do PulseMap segundo os princípios de subestimação; (2) defender o desenho numa revisão; (3) produzir textos de interface que recusem pontuações vazias.
+
+### 35.1 Problema
+
+As partes interessadas querem uma grande porcentagem verde. Desenhe uma interface que mostre planejado/observado/não visto e recuse uma "pontuação de segurança" única. O Ateliê II pede textos honestos sobre cobertura que as pessoas consigam de fato ler sob pressão de tempo. Pontuações vazias e selos de vaidade são o inimigo. Sam entrega de propósito um primeiro rascunho ruim, para que as equipes pratiquem apagar afirmações. Apagar afirmações conta como progresso quando a afirmação não tinha evidência. O progresso na exclusão é mostrado na galeria ao lado das equipes que só reescreveram adjetivos.
+
+### 35.2 Texto
+
+"71% das técnicas planejadas observadas — não é uma pontuação de risco residual." Aponte para Albrecht & Jensen no texto de ajuda. Botão: exportar denominador. Palavras como seguro e totalmente coberto são proibidas, a menos que haja uma fórmula ao lado. Linguagem simples vence o jargão quando os gestores leem na diagonal. A rubrica de Sam põe a honestidade acima de metáforas espertas. Palavras proibidas como "seguro" e "totalmente coberto" disparam um lint da CI nas strings de texto da interface. O lint imprime o termo e o caminho; no ateliê, as equipes precisam substituí-los por uma fração e uma ressalva no estilo de "71% das técnicas planejadas observadas — não é uma pontuação de risco residual" antes que a interface possa entrar.
+
+### 35.3 Revisão
+
+Os revisores tentam impor um selo de risco vermelho/amarelo/verde; o ateliê precisa segurar a linha com as regras do capítulo de medição. Leitores de fora do esquadrão marcam toda frase que não conseguem verificar. Frases inverificáveis são cortadas ou ganham fórmulas. Sam trata as marcas dos leitores como bloqueadores de merge iguais a testes reprovados, e guarda o texto marcado no dossiê, para que a passada de honestidade deixe um rastro.
+
+> **Caso sintético — Riverstone Transit.** O Ateliê II matou o selo; o painel agora lista pelo id as duas técnicas planejadas e não vistas.
+
+### 35.4 Erros e limites
+
+Padrões enganosos ("só para os executivos") reintroduzem pontuações vazias — rejeite-os no CODEOWNERS da interface. Prosa bonita que esconde um denominador ausente reprova no ateliê. A honestidade é uma propriedade de segurança da interface. Os facilitadores de Sam podem congelar uma equipe que defenda um selo sem conjunto planejado, e o congelamento dura até que o selo seja removido ou a fórmula seja escrita ao lado. Equipes congeladas podem continuar redigindo fórmulas, mas não podem apresentar até que um facilitador assine que a fração planejado/observado/não visto aparece sem passar o mouse, que é a mesma regra que bloqueia ressalvas só em tooltip na lista de verificação de acessibilidade.
+
+### 35.2b Acessibilidade da honestidade
+
+Métricas que subestimam ainda precisam ser legíveis: letra grande para a fração, linguagem simples para a ressalva, acesso por teclado à exportação do denominador. Esconder a ressalva num tooltip reintroduz o problema da pontuação vazia para quem não passa o mouse. Leitores de tela precisam ouvir a fórmula, não só ver uma cor. Sinais de perigo só por cor reprovam em acessibilidade e em honestidade ao mesmo tempo. Sam testa as exportações com um navegador só de texto na lista de verificação do ateliê. Os resultados do navegador só de texto são colados nas notas do ateliê ao lado da captura de tela da interface. Se o leitor de tela ouvir só "verde" enquanto a captura mostra 5/7, o texto reprova até que a fração esteja no texto acessível.
+
+### 35.3b A exportação como fonte da verdade
+
+Se a interface e a exportação em CSV discordarem, a exportação vence para o relatório. Construa as exportações primeiro; trate a interface como uma visão. Isso acaba com discussões sobre o que "71%" queria dizer numa captura de tela. Se a interface discordar da exportação, a exportação vence e a interface tem bug. Os revisores conferem os números a partir do arquivo. A lista de verificação de release de Sam compara as legendas da interface com os cabeçalhos da exportação. Diferenças entre legendas e cabeçalhos que reprovam a CI bloqueiam a candidata a release. Não se pode criar tags enquanto essas diferenças estiverem vermelhas, o que mantém a exportação em CSV — a fonte da verdade para o número de 71% — alinhada com o que a interface afirma.
+
+### 35.1b Exportações narrativas
+
+Ao lado do CSV, exporte uma breve narrativa em Markdown gerada pela mesma consulta da interface ("planejadas 7, observadas 5, não vistas: T1059, T1021"). As narrativas entram nos relatórios sem a ambiguidade das capturas de tela. Narrativas curtas que repetem a fórmula ajudam quem não é engenheiro sem substituir os números. Sam limita as narrativas a cinco linhas, para que não contrabandeiem afirmações novas. O limite de linhas é imposto por um linter no modelo de exportação narrativa. Quando uma narrativa passa de cinco linhas, o job de exportação grava um esboço dizendo quais linhas precisam encolher — em geral, um adjetivo de severidade contrabandeado — em vez de emitir um arquivo Markdown pronto para o relatório.
+
+### Nota de prática
+
+A pesquisa com usuários do PulseMap inclui uma tarefa: explicar este número a um diretor financeiro sem dizer que estamos seguros. Se os usuários não conseguem, o texto da interface falhou, seja qual for o design visual. Grave essas sessões (com consentimento) como evidência qualitativa ao lado da fórmula quantitativa de cobertura.
+
+
+### 35.4b Testar o texto com leitores reais
+
+Sam pede a dois donos de sistemas da Riverstone Transit, que não participaram do desenho, que leiam em voz alta o resumo do relatório e expliquem o que ele significa. Onde eles hesitam ou interpretam mal uma severidade, a redação muda; testes de leitura pegam ambiguidades que os revisores que escreveram o texto não conseguem ver. Leitores reais encontram jargão e denominadores ausentes mais rápido que os autores. Sam reserva dois gestores e um operador para o teste de texto de cada ateliê e arquiva as notas deles com o ADR. As notas podem omitir nomes a pedido de um gestor, mas cada problema ainda leva um id como COPY-12, para que a correção que esclareceu "não é uma pontuação de risco residual" possa ser rastreada sem uma trilha de culpa.
+
+### Exercícios
+
+- **EX103 — Texto.** Escreva o subtítulo sob o número de cobertura. Rubrica: 3 = nega a leitura como risco residual; 2 = ressalva fraca; 1 = nenhuma; 0 = sugere segurança.
+- **EX104 — Recusa do selo.** Uma frase recusando um selo RAG. Rubrica: 3 = clara + alternativa; 2 = só recusa; 1 = aceita; 0 = nada.
+- **EX105 — Exportação.** Que colunas a exportação do denominador inclui? Rubrica: 3 = id da técnica, planejada, observada, notas; 2 = parcial; 1 = só %; 0 = nada.
+
+### Síntese
+
+Uma interface que ensina a métrica, não um semáforo de impressões.
+
+### Continue estudando — capítulo 35 de 50
+
+[← Capítulo 34 (rascunho)](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 (rascunho) →](#ch-36)
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Segurança ofensiva autorizada e red team: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) dimensionar scanners sob os limites de taxa da ROE; (2) aplicar token buckets; (3) medir o impacto no cliente com um canário.
+
+### 36.1 Limites de taxa são de primeira classe
+
+Metas de vazão que ignoram a ROE são bugs. Dimensione os pools de workers para que o token bucket seja o gargalo, não uma tempestade surpresa de 429.
+
+```python
+"""Lab R: token-bucket limits against unbounded consumption (synthetic).
+Simulates 60 seconds of requests from a normal client and a flooding client
+against a model endpoint with a per-client token bucket."""
+import random
+rng = random.Random(4)
+def simulate(rate_per_s, burst, reqs):
+    tokens, last, ok = burst, 0.0, 0
+    for t in reqs:
+        tokens = min(burst, tokens + (t - last) * rate_per_s); last = t
+        if tokens >= 1: tokens -= 1; ok += 1
+    return ok
+normal = sorted(rng.uniform(0, 60) for _ in range(90))
+flood = sorted(rng.uniform(0, 60) for _ in range(3000))
+for rate, burst in ((5, 20), (2, 10), (1, 5)):
+    print(f"limit={rate}/s burst={burst:2d} normal_served={simulate(rate, burst, normal):3d}/90 "
+          f"flood_served={simulate(rate, burst, flood):4d}/3000")
+```
+
+Saída esperada:
+
+```text
+limit=5/s burst=20 normal_served= 90/90 flood_served= 319/3000
+limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
+limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
+```
+
+Se o pool de workers puder enviar mais rápido do que a ROE permite, a primeira manhã movimentada vai derrubar a API de tarifas do cliente. Fazer do token bucket o gargalo significa que um bug que crie workers extras ainda não consegue ultrapassar a taxa assinada. Sam dimensiona os pools a partir do bucket e depois prova isso com uma inundação sintética que continua cortada enquanto um cliente normal segue em frente. O tamanho do pool fica guardado ao lado das taxas do bucket, para que um engenheiro depois não possa aumentar os workers sem ver os números da ROE.
+
+### 36.2 Token buckets
+
+Capacidade = rajada; reposição = taxa sustentada. O laboratório mostra que clientes que inundam são cortados enquanto clientes normais seguem. A capacidade de rajada cobre picos legítimos curtos; a taxa de reposição é a promessa sustentada na ROE. O cliente de inundação do laboratório batendo no corte enquanto um cliente normal segue é o comportamento que Sam quer no enlace da garagem. Ele imprime os dois números no slide do kickoff, ao lado dos valores de 5/s e rajada de 20 do caso Riverstone. Mudar qualquer um dos números exige o mesmo caminho de autorização de uma edição da ROE, não um envio silencioso de configuração.
+
+### 36.3 Canários
+
+Uma requisição canário sintética a cada minuto acompanha a latência/taxa de erros; as condições de parada disparam no limite (Capítulo 33). Um canário a cada minuto é um sensor para o laço de parada, não um troféu de desempenho. Quando a latência ou os erros cruzam o limite, a parada dispara antes que os passageiros percebam uma compra de passagem lenta. Sam amarra o limite do canário às mesmas condições de parada já codificadas para listas de exclusão e arquivos de interruptor de emergência.
+
+> **Caso sintético — Riverstone Transit.** O bucket de 5/s com rajada de 20 manteve a API de tarifas abaixo de 5% da capacidade durante a janela.
+
+### 36.4 Erros e limites
+
+Scanners distribuídos precisam de um bucket global coordenado, ou multiplicam o limite por N. Cinco scanners, cada um obedecendo a um limite local de 5/s, são um ataque de 25/s do ponto de vista do cliente. Um bucket global, ou um único agendador que distribui os tokens, é obrigatório quando os métodos rodam em mais de um host. Sam reprova uma revisão de desenho que não saiba dizer onde fica o contador global. O desenho do ano passado, que confiava em arquivos por host, foi rejeitado quando cinco jump hosts entraram no pool.
+
+### 36.2b Justiça entre métodos
+
+Quando vários métodos compartilham um bucket, um enumerador barulhento pode deixar sem recursos uma revisão de configuração silenciosa. Dê pesos aos buckets ou separe-os por classe de método, para que o trabalho silencioso autorizado ainda termine dentro da janela. Um enumerador barulhento que esvazia um bucket compartilhado deixa a revisão de configuração autenticada sem recursos até o fim da janela. Buckets separados por classe de método, ou pesos que reservam um mínimo para o trabalho silencioso, impedem que as verificações silenciosas autorizadas pela ROE sejam vítimas da varredura de outra pessoa. O agendador de Sam mostra os tokens restantes por classe no painel do líder.
+
+### 36.3b Orçamentos de latência
+
+Distribua os milissegundos entre DNS, TCP, TLS, predicado e escrita do evento. Quando o orçamento estoura, descarte trabalho; não pule o predicado. Publique o orçamento no runbook, para que as otimizações tenham uma régua. Pular o predicado para "caber no orçamento" é como a falha aberta volta sob um ticket de desempenho. Descartar trabalho de descoberta é permitido; descartar a decisão de permitir/negar, não. Sam publica a divisão em milissegundos no runbook, para que uma mudança guiada por profiler tenha uma régua e um veto. Um pull request que tirou do orçamento o tempo de escrita do evento para "parecer mais rápido" foi fechado com um link para esta regra.
+
+### 36.1b Aquecimento e resfriamento
+
+Aumente o tráfego aos poucos no início da janela e drene antes da parada definitiva. Inícios instantâneos em taxa máxima parecem inundações para os defensores e disparam alertas não relacionados. Codifique a rampa no agendador, não como conhecimento tribal. Taxa máxima instantânea no minuto zero dispara detectores de inundação que o engajamento nunca pretendeu testar. Fazer a rampa no agendador, e drenar antes da parada definitiva, impede que os defensores da Riverstone acionem alertas numa janela assinada. Sam codifica a rampa como configuração ao lado das taxas do bucket, não como uma nota no chat.
+
+### Nota de prática
+
+Publique uma nota sobre a economia dos limites de taxa: custo de esperar versus custo de uma queda no cliente. A maioria dos argumentos para aumentar os limites da ROE se dissolve quando o custo da queda é escrito. Mantenha a nota ao lado da configuração do token bucket, para que o próximo debate de otimização comece com números.
+
+
+
+Buckets separados para métodos silenciosos e barulhentos, para que um enumerador faminto não deixe sem recursos o trabalho de revisão de configuração.
+
+
+### 36.4b Testes de carga que respeitam o cliente
+
+Os testes de desempenho do TrackScope e dos executores de métodos usam só alvos sintéticos. As taxas medidas ali viram o teto permitido nos engajamentos, sempre abaixo do limite acordado com o cliente, para que ganhos de velocidade nunca se traduzam em mais tráfego nos sistemas do cliente do que foi assinado. A velocidade medida em alvos sintéticos só vira o teto do engajamento depois de conferida contra o limite assinado com o cliente. Uma construção do TrackScope que ficou mais rápida não pode, em silêncio, mandar mais pacotes contra a API de tarifas do que a ROE de segunda-feira permitia. O relatório de teste de carga de Sam lista os dois números lado a lado antes de qualquer aumento do tamanho do pool.
+
+### Exercícios
+
+- **EX106 — Tamanho.** ROE de 2 req/s; cada worker faz 1 req/s. Máximo de workers? Rubrica: 3 = 2 (+ nota sobre o coordenador); 2 = 2; 1 = muitos; 0 = nada.
+- **EX107 — Laboratório.** Com 1/s e rajada de 5, quantas das 3000 requisições de inundação foram atendidas? Rubrica: 3 = 64 pelo laboratório; 2 = aproximado; 1 = todas; 0 = nada.
+- **EX108 — Global.** Por que três scanners não coordenados quebram uma ROE de 5/s? Rubrica: 3 = 3× a taxa; 2 = vago; 1 = negar; 0 = nada.
+
+### Síntese
+
+Bucket primeiro, escala depois, canário sempre.
+
+### Continue estudando — capítulo 36 de 50
+
+[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** r′(t) = 8 − 2t = 0 em t = 4, então o pico é r(4) = 32 − 16 = 16 req/s. Resolver 8t − t² = 7 dá t² − 8t + 7 = 0, t = 1 ou t = 7. O teto é violado do minuto 1 ao minuto 7, seis minutos. A nota 3 exige o pico e a janela.
 
@@ -2032,6 +2698,54 @@ Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em i
 **EX083.** O teste que afirma DENY deny-list para 10.20.0.1:443 (ou um fixture equivalente).
 
 **EX084.** Cabeçalhos Authorization/cookie; parâmetros de consulta de senha, token ou segredo; bytes brutos das evidências.
+
+**EX085.** cobertura = |observado ∩ planejado| / |planejado| = 5/7 ≈ 71%; liste as duas técnicas planejadas e não vistas.
+
+**EX086.** Fração dos achados críticos fechados dentro do SLA com um novo teste registrado — não "tickets fechados".
+
+**EX087.** O status fica aberto até que um ticket de novo teste seja aprovado; o fechamento automático por promessa do fornecedor é proibido.
+
+**EX088.** ID V-04; preparação: montagem de política vazia; ação: allowed(qualquer); esperado: DENY policy-unavailable + alerta; evidência: hash do log.
+
+**EX089.** Parar o laboratório, abrir um bloqueador, revogar a aprovação do engajamento até a correção e um novo laboratório aprovado.
+
+**EX090.** Hash do arquivo de escopo/política, hash da construção/versão do TrackScope, hash do log de resultados do laboratório.
+
+**EX091.** Uma nova tentativa de rede pode criar dois achados com ids diferentes no servidor; os clientes devem fazer PUT com ids conhecidos.
+
+**EX092.** `{"title":"x","payload":"..."}` ou `{"password":"..."}` ou `{"risk_score":42}` — qualquer campo proibido/desconhecido pela política.
+
+**EX093.** Não — renomear quebra os clientes; mantenha reason_code na v1 ou lance a /v2/.
+
+**EX094.** "Durante o horário assinado do engajamento, sucesso do caminho de negação ≥ 99,5%, medido por sondas sintéticas a cada minuto; quedas acionam o líder."
+
+**EX095.** Tentativas esperadas = 1 + (1-p) + (1-p)^2 = 1 + 0,2 + 0,04 = 1,24 (geométrica truncada: a terceira tentativa é a última, então não há quarto termo).
+
+**EX096.** A avaliação de escopo e política — precisa falhar fechada, nunca ALLOW na dúvida.
+
+**EX097.** Criar o arquivo `/var/lib/trackscope/STOP` via SSH/SSO; o TrackScope consulta a cada 10 s; se presente ou ilegível, nega tudo e alerta.
+
+**EX098.** Binário anterior assinado disponível; ScopeVersion inalterada ou reverificada; contato do cliente avisado do rollback.
+
+**EX099.** "Às 11:10 o monitoramento mostra uma sondagem ao 10.20.0.1, que está na lista de exclusão; o líder está num túnel com sinal instável."
+
+**EX100.** Para que os revisores saibam qual ScopeVersion autorizou a decisão quando o evento disparou.
+
+**EX101.** O consumidor guarda os event_ids processados; duplicatas são ignoradas ou recebem upsert sem novos tickets.
+
+**EX102.** Um JSON de evento de exemplo para o novo motivo e os campos esperados do ticket do FindingsDesk depois do consumo.
+
+**EX103.** "Fração das técnicas *planejadas* observadas neste engajamento — não é uma pontuação de risco residual nem de conformidade."
+
+**EX104.** "Não entregamos selos de risco vermelho/âmbar/verde; use a lista de achados e a contagem de violações de SLA."
+
+**EX105.** technique_id, name, planned (Y/N), observed (Y/N), first_seen_utc, notes.
+
+**EX106.** Dois workers se cada um satura 1/s; melhor um worker atrás de um bucket de 2/s. Observe a coordenação se for distribuído.
+
+**EX107.** flood_served=64/3000 com limit=1/s burst=5.
+
+**EX108.** Cada um pode enviar 5/s → ~15/s no agregado, o triplo da ROE — é preciso um limitador compartilhado.
 
 <a id="references"></a>
 ## Referências

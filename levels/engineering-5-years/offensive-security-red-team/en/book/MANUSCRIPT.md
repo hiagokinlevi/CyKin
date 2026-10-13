@@ -2200,7 +2200,7 @@ Prefer metrics that, if wrong, under-claim success (e.g. count a fix only after 
 
 > **Synthetic case — Riverstone Transit.** Coverage 5/7 (71%) with two planned-not-seen — the report said "incomplete planned coverage", not "71% safe".
 
-Counting a fix only after re-test biases toward under-claiming, which is the safer lie if a lie must exist. Over-claiming security is the failure Albrecht and Jensen attack. The synthetic report's wording, incomplete planned coverage, models the habit Sam wants in every PulseMap export.
+Counting a fix only after re-test biases toward under-claiming, which is the safer lie if a lie must exist. At Riverstone a finding moves to closed in PulseMap only after Sam's re-test shows it gone from the same synthetic host, so the two planned-not-seen techniques stayed open rather than counted as safe. The synthetic report's wording, incomplete planned coverage, models the habit Sam wants in every PulseMap export.
 
 ### 29.4 Errors and limits
 
@@ -2563,7 +2563,7 @@ Timestamps on every decision make availability computable instead of anecdotal. 
 ### Exercises
 
 - **EX094 — Target.** Write an availability sentence for TrackScope deny path. Rubric: 3 = windowed target + measure; 2 = vague high; 1 = five-nines joke; 0 = none.
-- **EX095 — Budget.** With p=0.8 and max 3 tries, expected attempts? Rubric: 3 ≈ 1.248 with working; 2 = 1/p; 1 = 3; 0 = none.
+- **EX095 — Budget.** With p=0.8 and max 3 tries, expected attempts? Rubric: 3 = 1.24 with working; 2 = 1/p; 1 = 3; 0 = none.
 - **EX096 — Degrade.** What must never degrade to ALLOW? Rubric: 3 = scope/policy decisions; 2 = partial; 1 = findings UI; 0 = wrong.
 
 ### Synthesis
@@ -4588,7 +4588,7 @@ Model answers for EX001–EX150. Riverstone Transit, Sam Ito and all numbers are
 
 **EX094.** "During signed engagement hours, deny-path success ≥ 99.5% measured by synthetic probes every minute; outages page the lead."
 
-**EX095.** Expected attempts = 1 + (1-p) + (1-p)^2 = 1 + 0.2 + 0.04 = 1.24 (geometric truncated); ≈1.248 with continuous form discussion also ok.
+**EX095.** Expected attempts = 1 + (1-p) + (1-p)^2 = 1 + 0.2 + 0.04 = 1.24 (truncated geometric: the third try is the last, so there is no fourth term).
 
 **EX096.** Scope and policy evaluation — must fail closed, never ALLOW when uncertain.
 
