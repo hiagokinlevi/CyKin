@@ -1024,7 +1024,7 @@ Authentication records help reconstruct account misuse months later, so they ear
 
 ### Time windows
 
-Windowed aggregation needs care at boundaries: a burst spanning 10:09–10:11 may split across two 10-minute windows and miss a threshold in both. Sliding windows avoid this at higher compute cost.
+Windowed aggregation needs care at boundaries: a burst spanning 10:09–10:11 may split across two 10-minute windows and miss a threshold in both.
 
 ### Worked example
 

@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–50 (EX037–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 50 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–50 (EX049–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
 
-Capítulos 13–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+Capítulos 17–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -822,11 +822,267 @@ Os sistemas operacionais só produzem eventos de segurança ricos quando configu
 
 [← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar dados de segurança em tabelas e documentos; (2) escrever consultas que juntam e agregam eventos; (3) projetar esquemas com campos consistentes; (4) raciocinar sobre indexação e custo de consultas.
+
+### 13.1 Dados de segurança como dados
+
+Um SIEM é um sistema de dados: ingere registros, armazena-os, indexa campos e responde a consultas. Um bom projeto de dados torna as detecções mais rápidas e mais precisas. Tratar o SIEM como sistema de dados traz ideias de bancos de dados: esquemas, índices, planos de consulta e capacidade. Uma tabela mal projetada pode fazer uma pergunta simples levar minutos, o que importa quando um analista está no meio de um incidente. Amara aprende a ler as estatísticas das consultas, como quantos registros foram varridos para responder a cada busca. As buscas lentas são então reescritas ou indexadas.
+
+### 13.2 Esquemas
+
+Se uma fonte chama o campo de usuário de "user", outra de "username" e uma terceira de "acct", toda consulta precisa lembrar os três. Normalizar os campos num esquema comum na ingestão — um único nome para usuário, endereço de origem, host, ação e resultado — simplifica as regras e reduz erros. Normalizar na ingestão significa converter os campos de cada fonte uma única vez, quando os dados chegam, em vez de em cada consulta que os lê. Os valores pedem o mesmo cuidado: uma fonte pode escrever "FAIL", outra "failure", outra um código numérico. O mapeamento de cada fonte é documentado e testado, porque um erro ali quebra em silêncio todas as regras que dependem do campo.
+
+### 13.3 Junções
+
+Muitas perguntas juntam dados: "em que hosts a conta que fez login a partir de 203.0.113.14 tocou em seguida?" junta logs web com logs internos de autenticação por nome de usuário e horário. Juntar apenas pelo nome de usuário pode enganar se dois sistemas grafarem os nomes de forma diferente ou se o mesmo nome pertencer a um cliente e a um funcionário. O horário acrescenta uma segunda chave, limitando as correspondências a eventos próximos no tempo. As junções costumam ser custosas, por isso os engenheiros filtram cada lado primeiro, por exemplo para o único endereço suspeito, antes de combiná-los.
+
+### 13.4 Agregação
+
+Contar, agrupar e janelar (por exemplo, a cada 10 minutos) são o núcleo das detecções por limiar. Uma detecção por limiar pega eventos brutos, agrupa-os por uma chave, como a rede de origem, conta-os dentro de uma janela de tempo e compara a contagem com um limite. Janelas fixas podem dividir uma rajada numa fronteira, de modo que nenhuma das metades ultrapasse o limiar. Janelas deslizantes evitam isso a um custo computacional maior, uma troca que Amara testa com os dados do portal. Ela registra quantas rajadas cada tipo de janela encontra no mesmo dia de dados.
+
+### 13.5 Índices e custo
+
+Campos indexados são rápidos de pesquisar; buscas de texto completo sem índice são lentas e caras. Os engenheiros indexam os campos que as detecções e os analistas mais usam, como usuário, host e endereço de origem. Um índice funciona como o índice de um livro: aponta direto para os registros que contêm um dado valor, em vez de ler todas as páginas. Cada índice ocupa armazenamento e deixa a ingestão um pouco mais lenta. Escolher os campos indexados a partir das consultas que os analistas de fato executam, em vez de indexar tudo, mantém sob controle tanto a velocidade de busca quanto o custo de armazenamento.
+
+### 13.6 Qualidade dos dados
+
+Valores ausentes, tipos errados e duplicatas distorcem os resultados. Verificações de qualidade na ingestão os pegam cedo. Um campo de horário lido no fuso errado pode deslocar eventos em horas e quebrar correlações; eventos duplicados podem dobrar contagens e acionar limiares falsamente. As verificações de ingestão contam, por fonte, os registros que falham na validação e alertam quando a taxa salta, o que muitas vezes sinaliza uma mudança de formato depois de uma atualização de software no sistema emissor. Cada fonte tem um responsável, que é avisado quando sua taxa de rejeição sobe, para que a correção aconteça no emissor, e não por meio de contornos em cada consulta.
+
+### 13.7 Retenção por tabela
+
+Tabelas diferentes podem precisar de retenções diferentes: logs de autenticação guardados por mais tempo que logs verbosos de depuração. Os registros de autenticação ajudam a reconstruir o mau uso de contas meses depois, por isso merecem retenção longa. A saída verbosa de depuração raramente é útil além de alguns dias e custa muito para guardar. Definir a retenção por tabela, com os motivos registrados, permite ao SOC gastar armazenamento onde as investigações realmente precisam, cumprindo os mínimos legais. A tabela de retenção é revisada todo ano com a equipe jurídica, e qualquer mudança é registrada com o motivo e quem a aprovou.
+
+### Janelas de tempo
+
+A agregação em janelas exige cuidado nas fronteiras: uma rajada que vai das 10:09 às 10:11 pode se dividir entre duas janelas de 10 minutos e não atingir o limiar em nenhuma delas.
+
+### Exemplo resolvido
+
+Amara descobre que os logs do portal guardam o carimbo de tempo como texto em hora local, enquanto os logs internos usam UTC. Sua junção não devolve nada porque os horários nunca coincidem. Ela acrescenta uma etapa de análise que converte os horários do portal para UTC na ingestão, roda a junção de novo e descobre que a sessão de u5 não tocou nenhum sistema interno.
+
+> **Caso sintético.** As tabelas e os campos são inventados.
+
+### Erros e limites
+
+A normalização pode perder detalhes da fonte; guarde o registro bruto original ao lado dos campos normalizados.
+
+### Exercícios
+
+- **EX037 — Normalização de campos.** Por que normalizar os nomes de campo na ingestão? *Rubrica:* 3 = um nome por conceito simplifica as consultas e reduz erros; 2 = parcial; 1 = estilo; 0 = nada.
+- **EX038 — Junção que falhou.** Por que a junção de Amara não devolveu nada, e como foi corrigida? *Rubrica:* 3 = texto em hora local vs UTC; converter na ingestão; 2 = parcial; 1 = palpite de consulta errada; 0 = nada.
+- **EX039 — Escolha da indexação.** Que campos devem ser indexados primeiro? *Rubrica:* 3 = os mais usados por detecções e analistas: usuário, host, endereço de origem; 2 = parcial; 1 = todos; 0 = nada.
+
+### Síntese
+
+Trate os dados de segurança como um sistema de dados projetado: esquemas consistentes, junções cuidadosas, índices sensatos e verificações de qualidade.
+
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar práticas de requisitos, projeto, testes e liberação ao conteúdo de detecção; (2) usar controle de versão e revisão de código para regras; (3) planejar implantação e reversão; (4) gerenciar a dívida técnica num SOC.
+
+### 14.1 Detecção como código
+
+Regras de detecção são software. Escrevê-las como arquivos de texto num formato padrão, como o Sigma, guardá-las em controle de versão e revisar as mudanças traz a disciplina da engenharia de software para o SOC. O controle de versão registra quem mudou uma regra, quando e por quê, o que responde a perguntas depois de um incidente, como se uma detecção estava ativa naquele momento. Um formato padrão como o Sigma também torna as regras portáveis entre produtos de SIEM e permite às equipes compartilhar e revisar regras com ferramentas comuns de software, em vez de um console de fornecedor.
+
+### 14.2 Requisitos
+
+Cada regra começa com um requisito: que comportamento, em quais ativos, com que taxa aceitável de falsos positivos e com que resposta. Os requisitos remetem a ameaças, muitas vezes expressas como técnicas do ATT&CK. Escrever o requisito antes da regra mantém o trabalho apontado para um risco real. Declarar de antemão uma taxa aceitável de falsos positivos dá ao teste uma nota de aprovação. Nomear a resposta diz ao autor da regra quanto detalhe um alerta precisa carregar: um alerta que aciona o bloqueio de uma conta precisa de evidência mais forte do que um que só alimenta uma revisão diária.
+
+### 14.3 Testes
+
+As regras são testadas contra dados benignos gravados (para medir falsos positivos) e contra eventos de teste seguros (para confirmar que disparam). Os testes rodam automaticamente quando uma mudança é proposta. Os dados benignos gravados podem ser uma semana de logs normais do portal; os eventos de teste seguros são registros sintéticos feitos para parecer o comportamento-alvo, sem nenhum ataque real. Uma regra que dispara na rajada sintética e fica em silêncio na semana normal é aprovada. Rodar os dois automaticamente a cada mudança pega regressões antes da implantação.
+
+### 14.4 Revisão
+
+Um segundo engenheiro revisa a lógica, o desempenho e a documentação. A revisão pega condições amplas demais antes que inundem os analistas. O desempenho é fácil de esquecer: uma regra que procura uma *substring* em todos os registros pode funcionar com dados de teste, mas sobrecarregar o SIEM em produção. O revisor também verifica se a documentação diz a um analista o que fazer quando a regra dispara. Paolo usa uma lista de verificação curta, para que as revisões sejam consistentes entre revisores e regras. Os comentários da revisão e as respostas do autor ficam anexados à mudança no controle de versão.
+
+### 14.5 Liberação e reversão
+
+Novas regras são implantadas primeiro em modo "só monitoramento", que registra as correspondências sem alertar. Depois de uma semana de resultados aceitáveis, passam a alertar. Se surgirem problemas, a versão anterior é restaurada a partir do controle de versão. O modo de monitoramento mostra com que frequência uma regra dispararia em dados reais sem aumentar a fila dos analistas. Resultados aceitáveis significam que a taxa de correspondência e a precisão atendem ao requisito. Como todas as versões ficam no controle de versão, a reversão é rápida e deixa registro, ao contrário de editar uma regra no próprio console, sem histórico.
+
+### 14.6 Dívida técnica
+
+Regras antigas e não testadas se acumulam. Paolo agenda uma revisão trimestral para aposentar regras que já não correspondem a nenhum ativo ou ameaça. Uma regra escrita para um servidor desativado há dois anos ainda consome processamento e pode confundir analistas novos. Regras cujos testes já não passam, ou que nem têm testes, carregam um risco oculto. A revisão trimestral lista cada regra com sua última correspondência, o estado dos testes e o responsável, e as regras aposentadas são mantidas no histórico de versões, em vez de simplesmente apagadas.
+
+### 14.7 Documentação
+
+Cada regra traz descrição, autor, referências, gatilhos benignos conhecidos e orientação de resposta. Os gatilhos benignos conhecidos poupam tempo aos analistas: se uma tarefa de *backup* aciona uma regra com regularidade, a documentação diz isso e como reconhecê-la. As referências ligam a regra à ameaça que ela trata. A orientação de resposta dá os primeiros passos, para que um analista mais novo aja corretamente à noite sem esperar o autor da regra. Uma regra sem algum desses campos falha nas verificações automáticas e não pode ser incorporada, de modo que a documentação nunca fica para depois e cai no esquecimento.
+
+### Responsabilidade
+
+Toda regra tem um responsável nomeado que responde a perguntas e revisa seu desempenho.
+
+### Exemplo resolvido
+
+Amara escreve sua regra de *stuffing* no portal como um arquivo no estilo Sigma, com um vínculo ao requisito, dois casos de teste e orientação de resposta. No modo só monitoramento, ela corresponde quatro vezes numa semana: duas rajadas reais e dois testes de carga da equipe web. Ela acrescenta uma exceção ligada ao *user agent* assinado da ferramenta de teste de carga e a uma verificação de calendário e então promove a regra.
+
+> **Caso sintético.** A regra e a semana são inventadas.
+
+### Erros e limites
+
+A sobrecarga de processo pode atrasar detecções urgentes; mantenha um caminho de emergência com revisão posterior.
+
+### Exercícios
+
+- **EX040 — Modo só monitoramento.** O que é a implantação em só monitoramento, e por que usá-la? *Rubrica:* 3 = registra correspondências sem alertar para medir o ruído primeiro; 2 = parcial; 1 = nunca alertar; 0 = nada.
+- **EX041 — Exceção para teste de carga.** Como foram tratadas as correspondências dos testes de carga? *Rubrica:* 3 = exceção ligada ao *user agent* assinado e a uma verificação de calendário; 2 = parcial; 1 = regra apagada; 0 = nada.
+- **EX042 — Documentação da regra.** Liste quatro coisas que o documento de cada regra contém. *Rubrica:* 3 = descrição, autor, referências, gatilhos benignos, orientação de resposta (quatro); 2 = três; 1 = uma; 0 = nada.
+
+### Síntese
+
+A detecção como código aplica requisitos, testes, revisão e liberação em etapas para manter as regras confiáveis.
+
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar confidencialidade, integridade e disponibilidade; (2) relacionar ameaças, vulnerabilidades e controles; (3) situar as operações de segurança nas funções do NIST CSF 2.0; (4) distinguir prevenção de detecção e resposta.
+
+### 15.1 As três propriedades
+
+A confidencialidade mantém a informação longe de pessoas não autorizadas; a integridade a mantém exata e inalterada; a disponibilidade mantém os sistemas utilizáveis. O incidente do portal tocou as três: dados de clientes podiam ser vistos, endereços foram alterados e o serviço de login ficou lento. Pensar nas três mantém a resposta equilibrada. Uma equipe focada apenas na confidencialidade poderia não perceber que os endereços de entrega dos clientes podiam ter sido alterados, um problema de integridade capaz de desviar encomendas. A disponibilidade também sofreu, já que clientes legítimos enfrentaram logins lentos durante a rajada. As notas de incidente de Amara registram o efeito sobre cada propriedade separadamente.
+
+### 15.2 Ameaças, vulnerabilidades, controles
+
+Uma ameaça é uma possível causa de dano; uma vulnerabilidade é uma fraqueza que ela pode explorar; um controle reduz o risco. Senhas de clientes reutilizadas são a vulnerabilidade que o *credential stuffing* explora; limitação de taxa e autenticação multifator são controles. Separar os três esclarece o que cada correção faz. A Lindqvist não consegue impedir criminosos de comprar listas de senhas vazadas, a ameaça, nem consegue obrigar os clientes a parar de reutilizar senhas, a vulnerabilidade. Ela pode acrescentar controles que tornem as senhas reutilizadas menos úteis, como desacelerar tentativas repetidas e pedir um segundo fator.
+
+### 15.3 Funções do CSF 2.0
+
+O NIST Cybersecurity Framework 2.0 organiza os resultados em Govern, Identify, Protect, Detect, Respond e Recover. Um SOC entrega principalmente Detect e Respond, mas depende de Identify (conhecimento dos ativos) e alimenta Govern com informação de risco. Sem Identify, o SOC não saberia de quais sistemas o portal depende nem quem é responsável por eles. Alimentar Govern significa transformar as lições dos incidentes em informação de risco que os líderes usam para decidir, como financiar MFA para os clientes. Mapear o trabalho do SOC às funções também mostra onde a equipe depende de outros para entregar os próprios resultados.
+
+### 15.4 Prevenção e detecção
+
+Nenhuma prevenção é perfeita. A detecção encontra o que a prevenção deixou passar, e a resposta limita o dano. Um programa equilibrado investe nas três. Gastar tudo em prevenção deixa a organização às cegas quando um controle falha; gastar tudo em detecção deixa passar ataques evitáveis e inunda os analistas. A resposta transforma detecção em dano reduzido, então uma detecção sem ninguém capaz de agir sobre ela acrescenta pouco. Os orçamentos são defendidos com incidentes como a rajada no portal, que precisou das três. Cada função tem suas próprias medidas.
+
+### 15.5 Defesa em profundidade
+
+Várias camadas — limites de taxa, detecção de *bots*, MFA, monitoramento de alterações de conta — fazem com que uma única falha não leve ao comprometimento completo. Cada camada pega uma parte do que escapa da anterior. Os limites de taxa desaceleram as tentativas, a detecção de *bots* bloqueia clientes automatizados, o MFA impede que uma senha correta baste, e o monitoramento de alterações de conta identifica mau uso depois do login. As camadas devem falhar de forma independente, para que uma única configuração errada não possa desativar várias de uma vez. Amara lista quais camadas do portal existiam durante a rajada e quais faltavam.
+
+### 15.6 Menor privilégio
+
+As contas recebem apenas os direitos de que precisam, limitando o dano quando uma delas é mal usada. Na Lindqvist, a conta de banco de dados do portal pode ler e atualizar registros de clientes, mas não pode apagar tabelas nem ler dados de funcionários. Se um atacante controlasse o portal, o dano ficaria limitado ao que essa conta permite. Os analistas do SOC seguem a mesma regra: recebem acesso de leitura aos logs, enquanto ações de resposta, como bloqueios de conta, exigem permissões separadas. Os direitos são revisados a cada trimestre e removidos quando os papéis mudam.
+
+### 15.7 Mapeamento do caso
+
+Amara mapeia o incidente do portal: a vulnerabilidade (reutilização de senhas pelos clientes), o controle ausente (nenhuma opção de MFA para clientes), a detecção (sua regra de rajada) e a resposta (bloqueio da conta, aviso). O mapeamento mostra onde o esforço teria mais efeito. A detecção e a resposta funcionaram, mas ambas agiram depois que uma conta de cliente já havia sido acessada. Acrescentar uma opção de MFA trataria a lacuna antes que o login tenha sucesso. Amara apresenta o mapa a Paolo como uma tabela de uma página, que depois vira insumo para a discussão de risco da equipe de segurança com a direção.
+
+### O risco como organizador
+
+O risco combina quão provável é o dano e quão grave ele seria. A Lindqvist classifica o portal do cliente como alto porque ele guarda endereços e cronogramas de entrega, então seu monitoramento tem prioridade sobre sistemas internos de teste.
+
+### Exemplo resolvido
+
+Paolo pergunta a Amara em que função do CSF se enquadra uma nova opção de MFA para clientes. Ela responde Protect e observa que monitorar as taxas de adesão ao MFA e as falhas de segundo fator acrescentaria um resultado de Detect.
+
+> **Caso sintético.** O mapeamento e os controles são inventados.
+
+### Erros e limites
+
+Os *frameworks* organizam o raciocínio, mas não definem prioridades; a avaliação de risco define.
+
+### Exercícios
+
+- **EX043 — CID no caso.** Mostre como o incidente tocou a confidencialidade, a integridade e a disponibilidade. *Rubrica:* 3 = dados visíveis, endereço alterado, serviço lento; 2 = duas; 1 = uma; 0 = nada.
+- **EX044 — Vulnerabilidade e controle.** Nomeie a vulnerabilidade e dois controles contra *credential stuffing*. *Rubrica:* 3 = reutilização de senhas; limitação de taxa e MFA; 2 = um controle; 1 = vago; 0 = nada.
+- **EX045 — Posição no CSF.** Que funções do CSF um SOC entrega principalmente, e de quais depende? *Rubrica:* 3 = Detect e Respond; depende de Identify, informa Govern; 2 = parcial; 1 = uma; 0 = nada.
+
+### Síntese
+
+Os fundamentos de segurança enquadram o trabalho do SOC: propriedades a proteger, riscos a reduzir e funções a entregar.
+
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) ver o SOC como um sistema de pessoas, processos e tecnologia; (2) definir interfaces e requisitos entre componentes; (3) gerenciar trocas com critérios explícitos; (4) planejar o ciclo de vida, da concepção à aposentadoria.
+
+### 16.1 O SOC como sistema
+
+Um SOC combina pessoas (analistas, engenheiros), processos (triagem, escalonamento) e tecnologia (sensores, SIEM, gestão de casos). Zimmerman (2014) argumentou que muitos SOCs investem demais em ferramentas e de menos em pessoas e processos; o pensamento sistêmico os mantém em equilíbrio. Um novo SIEM comprado sem analistas treinados para usá-lo, ou sem um processo de triagem para receber seus alertas, acrescenta custo, mas pouca proteção. O pensamento sistêmico pergunta como uma mudança numa parte afeta as outras: uma nova detecção acrescenta alertas, o que acrescenta carga aos analistas, o que pode exigir uma mudança de processo. Amara aprende a fazer essa cadeia de perguntas antes de propor qualquer ferramenta.
+
+### 16.2 Interfaces
+
+Cada componente troca alguma coisa: os sensores enviam eventos ao SIEM, o SIEM envia alertas ao sistema de casos, os analistas enviam escalonamentos aos responsáveis pela resposta a incidentes. Cada interface precisa de formato, prazo e responsável definidos. A maioria das falhas entre equipes acontece em interfaces que ninguém possui. Se o SIEM muda o formato de seus alertas e ninguém avisa o administrador do sistema de casos, os alertas podem chegar com campos faltando, ou nem chegar. Registrar formato, prazo e responsável de cada interface transforma uma suposição num acordo que pode ser conferido e dá a alguém o dever de notar quando ele se rompe.
+
+### 16.3 Desdobramento dos requisitos
+
+Necessidades de alto nível ("detectar a tomada de conta em até 15 minutos") se desdobram em requisitos de componentes: logs do portal entregues em até 2 minutos, latência da regra abaixo de 5 minutos, reconhecimento pelo analista em até 8 minutos. As partes se somam: dois minutos de entrega, cinco da regra e oito de reconhecimento dão exatamente quinze, o que não deixa folga. Se a entrega dos logs escorregar para quatro minutos, a meta inteira falha, mesmo com a regra e os analistas dentro do prazo. Paolo sugere apertar os orçamentos dos componentes para que o total deixe uma margem, e monitorar cada um separadamente.
+
+### 16.4 Trocas
+
+Mais dados melhoram a visibilidade, mas custam armazenamento e atenção dos analistas. Os engenheiros de sistemas declaram critérios (tempo de detecção, custo, carga dos analistas) e comparam as opções com eles. Declarar os critérios antes de comparar as opções impede que as pessoas escolham a opção de que já gostavam e depois procurem motivos. Os pesos tornam as prioridades explícitas: se o tempo de detecção é o que mais importa, uma opção mais cara que o reduz à metade pode vencer. Amara monta uma pequena tabela para o acréscimo de sensores de rede nos depósitos, pontuando cada opção nos critérios acordados, com a evidência por trás de cada nota.
+
+### 16.5 Ciclo de vida
+
+Os componentes são planejados, construídos, operados, mantidos e aposentados. Aposentar um sensor antigo exige um substituto primeiro, ou a cobertura desaparece em silêncio. A aposentadoria é a fase mais negligenciada. Um sensor desligado durante uma renovação de *hardware* pode deixar uma lacuna que ninguém nota até que um incidente precise de seus dados. Planejar a aposentadoria significa verificar quais regras dependem do componente, confirmar que o substituto produz dados equivalentes e rodar os dois em paralelo por um curto período antes de desligar o antigo. Os responsáveis aprovam cada aposentadoria.
+
+### 16.6 Verificação
+
+Cada requisito tem um teste: um evento sintético cronometrado verifica se a meta de 15 minutos é cumprida de ponta a ponta. O evento sintético é injetado no portal, como se viesse de uma rajada real de logins, e os carimbos de tempo são registrados em cada etapa: chegada do log, disparo da regra, criação do alerta e reconhecimento pelo analista. Comparar os tempos das etapas com os orçamentos dos componentes mostra exatamente onde ocorre o atraso. O teste roda regularmente, e não uma única vez, porque o desempenho deriva à medida que os volumes e a equipe mudam. Metas não cumpridas abrem um chamado.
+
+### 16.7 Caso
+
+Amara desenha o SOC da Lindqvist como um diagrama de blocos e rotula cada interface com formato, latência e responsável. Desenhar o diagrama revela duas interfaces sem responsável nomeado: a alimentação vinda do balanceador de carga e o elo entre o sistema de casos e o serviço de acionamento do plantão. Ele também mostra que os logs do portal passam por um coletor intermediário que ninguém havia listado. Cada lacuna vira uma tarefa, e o diagrama é guardado com os documentos de arquitetura do SOC. Paolo o revisa com ela.
+
+### Modos de falha do sistema
+
+As falhas no nível do sistema muitas vezes ficam nas interfaces: uma mudança de formato a montante quebra em silêncio a análise a jusante. Amara acrescenta um alerta de erro de análise em cada interface.
+
+### Exemplo resolvido
+
+O teste cronometrado dela injeta uma rajada sintética e inofensiva de logins no portal às 14:00:00. O SIEM a recebe às 14:01:40, a regra dispara às 14:05:10 e um analista reconhece às 14:11:30 — 11,5 minutos de ponta a ponta, dentro do requisito de 15 minutos. A etapa mais lenta é o reconhecimento pelo analista.
+
+> **Caso sintético.** O projeto do SOC e o teste são inventados.
+
+### Erros e limites
+
+Testes de ponta a ponta em horários tranquilos podem subestimar os atrasos em períodos movimentados; repita-os sob carga.
+
+### Exercícios
+
+- **EX046 — Equilíbrio.** Contra que desequilíbrio Zimmerman (2014) alertou? *Rubrica:* 3 = investir demais em ferramentas vs pessoas e processos; 2 = parcial; 1 = vago; 0 = nada.
+- **EX047 — Desdobramento do requisito.** Desdobre "detectar em até 15 minutos" em requisitos de componentes. *Rubrica:* 3 = entrega dos logs, latência da regra, reconhecimento, com os tempos; 2 = dois; 1 = um; 0 = nada.
+- **EX048 — Teste cronometrado.** O que o teste de ponta a ponta mostrou? *Rubrica:* 3 = 11,5 min no total; dentro da meta; reconhecimento mais lento; 2 = parcial; 1 = errado; 0 = nada.
+
+### Síntese
+
+A engenharia de sistemas liga as pessoas, os processos e a tecnologia do SOC por meio de interfaces, requisitos e testes definidos.
+
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -899,6 +1155,30 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em i
 **EX035.** Concedem mais privilégio, que é o que os atacantes buscam, então as mudanças merecem atenção.
 
 **EX036.** O modelo do servidor foi atualizado por meio de uma mudança, e um processo de teste inofensivo confirmou que as linhas de comando passaram a ser registradas.
+
+**EX037.** Para que toda regra e toda consulta usem um único nome para cada conceito, em vez de lembrar as variantes de cada fonte.
+
+**EX038.** O portal guardava texto em hora local, enquanto os logs internos usavam UTC; converter os horários do portal na ingestão consertou a junção.
+
+**EX039.** Os campos que as detecções e os analistas mais consultam, como usuário, host e endereço de origem.
+
+**EX040.** A regra registra as correspondências sem alertar, para que seu ruído possa ser medido antes de os analistas serem acionados.
+
+**EX041.** Com uma exceção estreita, que usa o *user agent* assinado da ferramenta de carga e uma verificação de calendário.
+
+**EX042.** Uma descrição, o autor, referências, gatilhos benignos conhecidos e orientação de resposta.
+
+**EX043.** Dados de clientes podiam ser vistos, um endereço foi alterado e o serviço de login ficou lento sob a rajada.
+
+**EX044.** Clientes que reutilizam senhas; a limitação de taxa e a autenticação multifator reduzem o risco.
+
+**EX045.** Entrega principalmente Detect e Respond, apoiando-se em Identify para o conhecimento dos ativos e informando Govern.
+
+**EX046.** Gastar muito em ferramentas e negligenciar pessoas e processos.
+
+**EX047.** Logs do portal entregues em até 2 minutos, latência da regra abaixo de 5 minutos e reconhecimento pelo analista em até 8 minutos.
+
+**EX048.** A rajada foi reconhecida 11,5 minutos depois da injeção, dentro da meta, e o reconhecimento pelo analista foi a etapa mais lenta.
 
 <a id="references"></a>
 ## Referências
