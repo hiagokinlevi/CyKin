@@ -2864,29 +2864,43 @@ You will (1) propose a capstone that improves StudyHub's cloud security; (2) def
 
 Samuel proposes a "cloud posture report" for StudyHub: a weekly automated report combining registry, identity, logging, benchmark and pod security checks, with trends and owners, plus a secret scan in the build pipeline.
 
+Each part of the proposal comes from earlier work: the registry review, account review, logging coverage, adapted benchmark and pod security checks already exist as separate scripts, and the secret scan follows the control register's gap. The capstone's contribution is to make them run together every week, in one place, with owners attached, so they keep working after the project ends.
+
 ### 35.2 Motivation
 
 The opening case showed that no single view existed; the report gives one, and the scan addresses the root cause.
+
+In the opening case, the registry setting, the image content and the logging gap were each visible to someone, but nobody saw all three together. A combined report would have placed them on one page. The scan goes further, because it stops a secret from reaching the registry at all, which removes the cause rather than detecting the result. Samuel states both aims in the proposal.
 
 ### 35.3 Scope
 
 Read-only checks over exports; pipeline scan; report generation. Out of scope: automatic fixing.
 
+Automatic fixing is excluded because a script that changes cloud settings needs much more testing and authority than a read-only report, and a wrong fix could break StudyHub during a deadline. Keeping the scope to reading and reporting also fits Samuel's project agreement, which grants read-only exports. Automatic fixing is listed as possible future work, with the conditions it would need: testing on synthetic accounts, approval from the cloud team and a clear rollback for every change it could make. Naming what is out of scope stops the project from growing during implementation.
+
 ### 35.4 Success criteria
 
 All five check families running weekly; zero anonymous repositories; logging 6 of 6; findings median age under 14 days by term end; scan blocking any key-like string except allowed placeholders.
+
+Each criterion can be checked with a number or a test at the end of term. Zero anonymous repositories and full logging coverage address the opening case directly. The fourteen-day median age comes from the remediation target in the statistics chapter, and the scan criterion has a specific exception so that test placeholders do not block builds.
 
 ### 35.5 Risks
 
 Noise leading to ignored reports; scanner false positives blocking builds.
 
+Both risks would undermine the project in the same way: people stop paying attention. A weekly report full of minor findings is quickly skimmed and then ignored, and a scanner that blocks builds for harmless test values would be bypassed or switched off. Each risk therefore has a specific mitigation. A third risk, delays in getting exports from the cloud team, is recorded in the risk log rather than the proposal, since it affects timing more than success. Each risk names who watches for it and what early sign would show it happening, such as owners not opening the report.
+
 ### 35.6 Mitigations
 
 Owners and severity in the report; reviewed allow list for test placeholders.
 
+Owners make each finding someone's job, and severity lets the summary show the few that matter most first. The allow list is reviewed so that it cannot quietly grow into a list of real secrets. Warning mode before blocking gives two weeks to tune the scanner on real builds without stopping anyone's work. Samuel also plans to ask the cloud team after a month whether the report is useful, so noise can be addressed before it causes the report to be ignored. Their answer, recorded in the evaluation chapter, led to the shorter summary at the top.
+
 ### 35.7 Approval
 
 Tom and Dr Jensen approve, with Tom's team owning the report afterwards.
+
+Approval by both Tom and Dr Jensen covers the operational and academic sides. Agreeing that Tom's team will own the report afterwards matters most for its future: a tool built by a student and owned by nobody would stop running within a term of graduation. The approval is recorded in the project log with the date and both names, and it lists the success criteria exactly as written above. Any later change to scope or criteria needs the same two approvals, recorded in the same place, so the final evaluation can be compared fairly with what was agreed at the start.
 
 ### Plan and timeline
 
@@ -2936,25 +2950,37 @@ You will (1) apply cloud security skills in a community setting; (2) adapt metho
 
 Samuel volunteers for four weeks with a fictional local charity, Harbourside Youth Trust, which runs a small booking app on a cloud platform with one part-time IT volunteer.
 
+The app lets families book places at youth activities and stores names, contact details and some event photos. One part-time volunteer manages everything, alongside other duties. Samuel's role is to help, not to take over, so every change is made by the volunteer while he explains what it does and why. Westmere arranged it.
+
 ### 36.2 Adapting methods
 
 The full university checklist is too much. Samuel picks five checks that matter most for a small account: owner MFA, no owner keys, storage public access blocked, audit logging on, and budget alerts.
+
+Each of the five checks addresses a risk the charity could realistically face and fix: a stolen owner password, a leaked key, public photos of children, no record of changes and an unexpected bill. Other checks from the university list, such as pod security, do not apply because the charity runs no containers.
 
 ### 36.3 Findings
 
 Owner MFA was off; a storage bucket of event photos was public; logging was off. Keys and budgets were fine.
 
+Three of five checks failed, the same pattern as the university's early accounts before guardrails. The public bucket held photos meant for the website, so making it private needed care to avoid breaking the site. Samuel recorded each finding with a short description of what it meant for the charity. He also noted what was working, the keys and budget alerts, so the trustees saw a balanced picture. Each finding had a single recommended fix that the volunteer could make in the console in a few minutes.
+
 ### 36.4 Fixes
 
 With the trustees' written permission, the volunteer turns on MFA, blocks public access after moving the intended public photos to the website, and enables logging. Samuel guides; the volunteer makes the changes.
+
+Written permission from the trustees confirms that the changes were authorised by the people responsible for the charity. Moving the intended public photos to the website first meant blocking the bucket did not break anything families relied on. Having the volunteer make each change ensures they understand the settings and could reverse them if needed.
 
 ### 36.5 Communication
 
 Samuel explains risks in terms of children's photos and the charity's reputation, not technical jargon.
 
+Trustees understood immediately when Samuel explained that anyone could have downloaded photos of children at the charity's events. That explanation produced faster agreement than any discussion of storage permissions. He also explained what had not happened: there was no sign that anyone had downloaded them, though without logging nobody could be sure. He avoided blame too: the settings had been left at defaults by a volunteer doing their best with no training. The trustees thanked the volunteer for agreeing to fix them, which made follow-up work easier and kept the volunteer engaged.
+
 ### 36.6 Reflection
 
 Small organisations need short, prioritised advice and someone to help them act on it.
+
+Samuel's university checklist would have overwhelmed the volunteer; five checks were enough to fix the most serious problems in an afternoon. He also learned that his main contribution was confidence: once the volunteer saw the changes were simple and reversible, they made them without hesitation. Samuel's placement report records which advice was followed and which was not, and why. All five checks were adopted; a suggestion to set up separate accounts for testing was declined because the charity had no capacity to manage two accounts, which Samuel accepted as a reasonable decision for its size.
 
 ### Leaving it sustainable
 
@@ -2996,25 +3022,37 @@ You will (1) critically review evidence used in cloud security claims; (2) asses
 
 Students bring a claim from a source and assess its evidence: who made it, what data, what method, what limits.
 
+The same questions apply to any claim Samuel might use in his thesis. Asking who made a claim and from what data separates research with a described method from marketing, and helps him decide how strongly he can rely on each source when making his own argument. Each student also states how they would use the claim if it held, so the seminar connects evidence to decisions rather than treating criticism as an end in itself.
+
 ### 37.2 Example claim
 
 A vendor report states that "most cloud breaches are caused by misconfiguration". Samuel checks: the report's data come from the vendor's customers, the definition of breach is broad and the method is not described. The claim is plausible and consistent with research on configuration errors (Rahman et al., 2019), but the specific percentage is weakly supported.
+
+Samuel's verdict is moderate support for the general idea and weak support for any particular figure. He notes that his own opening case fits the pattern, but one case cannot confirm a broad claim. In his thesis, he uses the idea with a hedge and does not quote the vendor's percentage.
 
 ### 37.3 Research example
 
 Shu, Gu and Enck (2017) analysed real Docker Hub images with a described method; their findings are stronger evidence for image vulnerability prevalence at that time.
 
+The paper's method is described, its data can be checked and its limits are stated, which is why it scores higher than the vendor report. Its age is the main weakness, since public images and scanning practices have changed since. Samuel cites it as evidence of the problem at that time, consistent with his own base image study.
+
 ### 37.4 Internal data
 
 Samuel's own studies are reviewed by classmates, who point out the short time frames.
+
+Classmates noted that his base image study covered one month and his namespace template study one term. Samuel accepts the criticism and states both time frames prominently in his thesis. He also notes that repeating both studies next year, using the scripts he has kept, would test whether the findings hold. He also accepts a point about reviewer knowledge in the template study, which his blinded relabelling partly addresses. Reviewing his own work with the same grid he applies to others keeps his verdicts consistent, and the scores show where his studies are strongest and weakest.
 
 ### 37.5 Presenting
 
 Each student gives a ten-minute critique with a verdict: strong, moderate or weak support.
 
+Ten minutes is enough to state the claim, the evidence, the verdict and the reasons. A clear verdict helps the audience compare critiques, and the reasons make the verdict open to challenge. Samuel's critique of the vendor report followed exactly that structure and drew questions only about the grid scores. Each critique is followed by five minutes of discussion, and the presenter records any change to their verdict. Classmates asked whether moderate support for the general idea was generous; after he showed the configuration-error research beside it, the verdict stayed as it was, with weak support for the figure.
+
 ### 37.6 Using evidence
 
 Weak evidence can still guide action if the action is cheap and sensible; it should not be quoted as fact.
+
+For example, the vendor claim, even weakly supported, points in the same direction as the opening case and the research. Acting on it by checking configuration regularly is cheap and sensible. Quoting its percentage in a report to leadership would overstate what is known. Samuel's thesis follows this rule by separating claims he relies on, which have strong evidence, from claims that motivated cheap actions, which are clearly labelled as weaker. Readers can see which conclusions would change if a weak source turned out to be wrong.
 
 ### Grading evidence
 
@@ -3060,25 +3098,37 @@ You will (1) build the posture report and pipeline secret scan; (2) test with sy
 
 The report combines the registry, account, logging, benchmark and pod security checks into one weekly document with trends and owners. Each section links to evidence files.
 
+Linking to evidence files lets anyone check a finding without asking Samuel. The trend line shows whether the total is falling, and the owner column shows who should act. The summary at the top lists only new and high-severity findings, which the cloud team asked for during evaluation. Each check family is a separate module.
+
 ### 38.2 Pipeline scan
 
 The build pipeline scans image layers for key-like strings using pattern and entropy rules, failing the build on a match unless the string is in a reviewed placeholder allow list.
+
+Pattern rules catch strings that look like known key formats; entropy rules catch random-looking strings that might be secrets of an unknown format. Scanning image layers, not just source code, matters because the opening case's connection string was added during the build, not committed to the repository. Matches report the layer and file, not the secret.
 
 ### 38.3 Testing
 
 Synthetic exports and images with known problems confirm each check works; compliant inputs confirm no false failures.
 
+For the scan, Samuel built a synthetic image with a fake key in one layer and confirmed the build failed, and another with only an allowed placeholder and confirmed it passed. For the report, synthetic exports with an anonymous repository and a missing logging region confirmed each finding appeared correctly. Tests run automatically on every change to the report code, as with the earlier checker. Samuel also kept one synthetic export for each check family that should produce no findings at all, which confirms that clean input yields a clean report and catches checks that report problems too eagerly.
+
 ### 38.4 Deployment
 
 The report runs in the shared tooling account with read-only access to exports. The scan is added to the pipeline in warning mode for two weeks, then blocking.
+
+The tooling account is separate from production, and the report's identity can read exports but not change anything. Warning mode let the team see what the scan would have blocked without stopping any build. The switch to blocking happened on a planned date, announced to developers a week ahead. The report's output is stored for comparison.
 
 ### 38.5 Problems
 
 An export format changed mid-project, breaking the identity check; a loader update and test fixed it. Warning mode revealed three test fixtures with realistic-looking fake keys, which were replaced by obvious placeholders.
 
+The buffer week in the plan absorbed the export format change. The realistic fake keys were a useful find: test fixtures that look exactly like real keys train people to ignore scanner warnings, and some secret scanners outside Westmere might report them. Obvious placeholders avoid both problems. Each was logged in the risk log.
+
 ### 38.6 Documentation
 
 A guide explains how to read the report and how to request allow-list entries.
+
+The guide explains what each part of the report means, how severity is assigned and what an owner should do with a finding. Allow-list requests need a reason and a reviewer's approval. Samuel tested the guide by asking a team member who had not seen the report to use it alone. Requests and decisions are kept with the allow list, so reviewers can see why each entry exists. The guide also explains what to do when the report looks wrong, such as checking the export date, so users do not lose trust after a single bad week and know whom to contact.
 
 ### Code review
 
@@ -3120,25 +3170,37 @@ You will (1) evaluate the capstone against success criteria; (2) measure outcome
 
 All five check families run weekly (met). Anonymous repositories: 0 (met). Logging coverage 6 of 6 (met). Median findings age 9 days at term end (met). Scan blocking key-like strings (met, one real key blocked).
 
+Every criterion was met, and each has evidence in the dossier: the weekly reports, the registry export showing no anonymous repositories, the logging coverage check, the findings ages and the scan log showing the blocked key. Samuel presents them in a table with the target, the result and the evidence location.
+
 ### 39.2 Trend
 
 Total open findings fell from 41 at the start of term to 9.
+
+The fall came from owners fixing findings, not from checks being removed: the check families stayed the same throughout. Samuel notes that new findings still appear each week, and the trend shows they are being fixed faster than they arrive. He shows the weekly totals on a chart with the start and end marked. The steepest fall came in the first month, when the anonymous repositories, the missing logging and several stale images were fixed together. After that, the total fell more slowly as remaining findings needed more work, such as rebuilding images with non-root users.
 
 ### 39.3 Feedback
 
 The cloud team rates the report useful; they ask for a shorter summary at the top, which Samuel adds.
 
+The request for a shorter summary showed how the report is actually read: quickly, on Monday mornings. Samuel's original version listed all findings first, which buried the important ones. The new summary lists only new and high-severity findings, with the full list below. Samuel asked two follow-up questions: which parts were never read, and which were missing. The answers led to the runbook links suggested in the survey below. Feedback was gathered in a short meeting rather than by email, which produced more detail.
+
 ### 39.4 Limits
 
 One term of data; configuration state only, not attack resistance; scan may miss secrets that do not look random.
+
+Configuration state shows that settings are correct, not that StudyHub would resist a determined attacker. Secrets that look like ordinary words, such as a simple password, would not trigger entropy rules. Samuel states these limits beside the results so readers do not overestimate what the report proves. He also notes that one term may include unusually active fixing because the project was new and visible. Whether the trend continues once the report becomes routine is something Tom's team will learn over the following terms.
 
 ### 39.5 Independent check
 
 A cloud team member reruns the report from scratch using the guide and gets the same results.
 
+Reproducing the results from the guide alone shows the report does not depend on Samuel's knowledge. It also tests the guide: one step needed clarifying, which was updated. This check matters most for handover, since Tom's team must run the report after Samuel leaves. The team member used a different laptop and fresh exports downloaded that day, so the check also showed the report did not rely on anything stored only on Samuel's machine. The results matched line for line, and the run took under ten minutes.
+
 ### 39.6 What next
 
 Add Kubernetes role-binding analysis to the report; extend the scan to infrastructure code.
+
+Role-binding analysis would bring the graph from the discrete structures chapter into the weekly report, catching paths like support-cy's automatically. Scanning infrastructure code would find secrets before they reach any image. Both are listed in the handover with estimated effort. Samuel also suggests checking whether the scan's allow list grows over time, since a growing list could signal that real secrets are being allowed through as placeholders. He adds a line to the weekly report showing the list's size, so the trend is visible to the owner without extra work.
 
 ### Measuring user value
 
@@ -3188,25 +3250,37 @@ You will (1) write and present the bachelor's thesis; (2) integrate the course's
 
 Introduction with the opening case; background on cloud and container security; methods; studies from chapters 18, 33 and 34; capstone design, implementation and evaluation; discussion; limits; conclusion.
 
+Starting with the opening case gives readers a concrete problem before any theory. The three studies provide evidence that shaped the capstone's design. The discussion connects results back to the opening case, and the chapter on limits states what the thesis cannot show. Each chapter ends with a short summary that the next one builds on, so readers can follow the argument without reading every detail.
+
 ### 40.2 Argument
 
 Westmere's exposure came from missing visibility and secrets in images; combining guardrails, pipeline scanning and a weekly posture report closes these gaps measurably.
+
+The argument rests on evidence from each part of the thesis: the opening case shows the problem, the studies support the choice of controls, and the evaluation shows they work. Samuel avoids claiming StudyHub is secure; he claims the specific gaps are closed and measured. Each claim in the argument points to the chapter where its evidence is presented, so examiners can check it directly. Samuel also states what would weaken the argument, such as the trend reversing once the report becomes routine.
 
 ### 40.3 Presentation
 
 A 20-minute talk with the opening case, three key results and the limits, followed by questions.
 
+The three key results are zero anonymous repositories, full logging coverage and the fall in open findings. Each has a single slide with the number and its source. The limits slide comes before the conclusion, so examiners hear them from Samuel rather than raising them as criticisms. Samuel ends with one slide of next steps, the role-binding analysis and infrastructure code scanning, so the audience leaves knowing the work continues. Backup slides cover the studies' detailed results and the grid scores, ready for the questions most likely to come.
+
 ### 40.4 Questions
 
 Examiners ask why not buy a commercial posture tool. Samuel answers that built-in services and a small script met the needs, but a tool could be reconsidered if the estate grows. They ask how the report avoids becoming noise; he shows owner assignment and the falling findings trend.
+
+His answers draw on evidence from the project rather than opinion: the cost comparison from the comparative chapter, and the owner column and findings trend from the evaluation. Samuel admits that a commercial tool might offer features he did not build, which examiners noted as a balanced answer.
 
 ### 40.5 Reflection
 
 Samuel writes that the most important skill was turning a vague worry into checkable statements and evidence.
 
+He links the skill to the first chapter's lesson: "StudyHub is secure" could not be checked, but "no registry repository allows anonymous pull" could. Every later part of the project, from scripts to studies to the capstone, followed the same pattern of turning concerns into statements that evidence could support or refute. He also reflects on what he would do differently: start the logging fix earlier, since it was the gap that made the opening case impossible to measure, and test the export loaders against format changes from the beginning, which would have saved the buffer week.
+
 ### 40.6 Outcome
 
 The thesis passes with a high mark; Westmere's cloud team offers Samuel a graduate role.
+
+The graduate role means Samuel will continue to own parts of the work he started, though the report itself remains with Tom's team as agreed. The student volunteering scheme that grew from his placement continues with a new cohort. Samuel's thesis, scripts and synthetic data are archived with the department, so next year's students can build on them. Tom reports that the weekly posture report is still running each Monday under its new owner, with findings assigned in the planning meeting as before.
 
 ### Preparing the talk
 
