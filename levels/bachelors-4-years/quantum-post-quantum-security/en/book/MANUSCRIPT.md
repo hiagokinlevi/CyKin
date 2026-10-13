@@ -494,7 +494,7 @@ For HCU, this means calling the approved library through a small interface and r
 
 An HCU analyst receives `inventory.csv` with columns `host, protocol, group`. A careless script counts rows where `group == "x25519"` and reports "most hosts classical". A careful version normalises case, rejects rows with empty groups as *unknown* rather than *classical*, and prints three numbers: classical, hybrid and unknown. The careful script reveals that 18 % of synthetic rows are unknown — a fact the first script hid.
 
-Treating unknown as classical would have made the migration look further behind than it was, or further ahead, depending on what the unknown hosts really ran. Unknowns become a work list of their own: someone must check those hosts directly before the inventory can be trusted. The careful script also records the input file's date, so later readers know how fresh the counts are.
+Treating unknown as classical would have made the inventory look more complete and more uniformly classical than it was, hiding the hosts whose cryptography nobody knew. Unknowns become a work list of their own: someone must check those hosts directly before the inventory can be trusted. The careful script also records the input file's date, so later readers know how fresh the counts are.
 
 ### 8.5 Practical activity
 
@@ -2886,6 +2886,8 @@ Model answers; any answer meeting the rubric scores equally. Numbers about HCU a
 ## Forty-subject teaching route
 
 This is the **bachelor's** course. It builds foundations (1–18) and then applies them to the synthetic **Harbourline Credit Union (HCU)**: scope and cases, system models, inventory, lattice methods, controls, labs, verification, failure analysis, operations, advanced cases, and research and capstone work (19–40).
+
+<a id="references"></a>
 
 ## References
 
