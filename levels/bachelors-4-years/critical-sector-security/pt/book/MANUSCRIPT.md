@@ -2864,7 +2864,7 @@ As entrevistas seguem o protocolo aprovado e o consentimento (Capítulo 33). Os 
 
 ### 38.4 Resultados surpreendentes e negativos
 
-Os resultados que contradizem a sua expectativa também são evidência. Se os exercícios de restauração no seu modelo de laboratório mostrarem que a opção que você esperava que vencesse não consegue cumprir o objetivo, reporte isso e investigue por quê — talvez uma dependência que você não modelou. Não ajuste os parâmetros até que o resultado "pareça certo"; se mudar um parâmetro, registre o motivo e mostre os dois resultados. Constatações negativas honestas estão entre os produtos mais úteis que um trabalho de conclusão pode gerar para um anfitrião.
+Os resultados que contradizem a sua expectativa também são evidência. Se os exercícios de restauração no seu modelo de laboratório mostrarem que a opção que você esperava que vencesse não consegue cumprir o objetivo, reporte isso e investigue por quê — talvez uma dependência que você não modelou, como as conexões do arquivo de imagens que o gateway do fornecedor em 38.5 não intermedeia. Não ajuste os parâmetros até que o resultado "pareça certo"; se mudar um parâmetro, registre o motivo e mostre os dois resultados. Constatações negativas honestas estão entre os produtos mais úteis que um trabalho de conclusão pode gerar para um anfitrião.
 
 ### 38.5 Exemplo resolvido: um ponto de controle da implementação (sintético)
 

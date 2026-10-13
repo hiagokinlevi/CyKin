@@ -2764,7 +2764,7 @@ Las entrevistas siguen el protocolo y el consentimiento aprobados (capítulo 33)
 
 ### 38.4 Resultados sorprendentes y negativos
 
-Los resultados que contradicen sus expectativas también son evidencia. Si los simulacros de restauración de su modelo de laboratorio muestran que la opción que usted esperaba que ganara no puede cumplir el objetivo, infórmelo e investigue por qué; quizá haya una dependencia que no había modelado. No ajuste los parámetros hasta que el resultado «parezca correcto»; si cambia un parámetro, registre por qué y muestre ambos resultados. Los hallazgos negativos honestos están entre los resultados más útiles que un proyecto final puede ofrecer a una organización de acogida.
+Los resultados que contradicen sus expectativas también son evidencia. Si los simulacros de restauración de su modelo de laboratorio muestran que la opción que usted esperaba que ganara no puede cumplir el objetivo, infórmelo e investigue por qué; quizá haya una dependencia que no había modelado, como las conexiones del archivo de imágenes que la pasarela del proveedor de 38.5 no intermedia. No ajuste los parámetros hasta que el resultado «parezca correcto»; si cambia un parámetro, registre por qué y muestre ambos resultados. Los hallazgos negativos honestos están entre los resultados más útiles que un proyecto final puede ofrecer a una organización de acogida.
 
 ### 38.5 Ejemplo resuelto: un punto de control de la implementación (sintético)
 
