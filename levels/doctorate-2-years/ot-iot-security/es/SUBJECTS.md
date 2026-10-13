@@ -10,8 +10,8 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 
 | Semestre | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Integridad y métodos avanzados de investigación | 200 | 75 | 7 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación | 200 | 75 | 7 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-02)) | [03 · Plan](book/PLAN.md#ch-03) |
+| 1 | [01](book/PLAN.md#ch-01) | Integridad y métodos avanzados de investigación | 200 | 75 | 7 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación | 200 | 75 | 7 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Plan](book/PLAN.md#ch-03) |
 | 2 | [03](book/PLAN.md#ch-03) | Propuesta de contribución original | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-03)) | [04 · Plan](book/PLAN.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Replicación de la línea de base y piloto | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
 | 3 | [05](book/PLAN.md#ch-05) | Estudio principal y validación independiente | 200 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
