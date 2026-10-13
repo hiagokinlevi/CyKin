@@ -1260,7 +1260,7 @@ SOC leaders sometimes read logged as partly working, so Priya explains it agains
 ### Lab G — coverage matrix
 
 ```python
-"""Lab F (ch 19): ATT&CK technique coverage matrix from a synthetic purple-team log."""
+"""Lab G (ch 19): ATT&CK technique coverage matrix from a synthetic purple-team log."""
 log = [
     ("T1078", "Initial Access", "alerted"), ("T1133", "Initial Access", "logged"),
     ("T1087", "Discovery", "missed"), ("T1069", "Discovery", "alerted"),
@@ -1462,7 +1462,7 @@ Priya's rule of thumb is that a script may rearrange what a person already decid
 ### Lab H — report builder
 
 ```python
-"""Lab G (ch 22): build a Markdown executive table from synthetic findings."""
+"""Lab H (ch 22): build a Markdown executive table from synthetic findings."""
 from collections import Counter
 findings = [
     {"id": "F-01", "sev": "high", "status": "open", "tid": "T1078"},
@@ -1804,7 +1804,7 @@ For ENG-712 the retest uses the same scope list and method cards as the original
 ### Lab I — retest status
 
 ```python
-"""Lab H (ch 27): decide remediation-validation status from synthetic retest observations."""
+"""Lab I (ch 27): decide remediation-validation status from synthetic retest observations."""
 retests = [
     ("F-01", "shared admin account", True, True),
     ("F-07", "ex-contractor VPN accounts", True, False),
@@ -2106,7 +2106,7 @@ Model answers for EX001–EX090. Tidewater Regional Transit, Priya Natarajan, No
 
 **EX019.** Authorization failed: authentication succeeded for many people, but the edit privilege was too broad. Restrict timetable edits to a named publisher role and log every change.
 
-**EX020.** T1078 Valid Accounts — legitimate credentials that should no longer be usable remain usable.
+**EX020.** T1078 Valid Accounts — legitimate credentials that should no longer be usable remain usable. Lab H (Chapter 22) files the same finding, F-07, under T1133 External Remote Services, and both mappings are correct: T1133 names the exposed service (the staff VPN), while T1078 names the valid accounts that still work through it. The exercise asks about the accounts, so T1078 earns full marks; a report can list both IDs for F-07.
 
 **EX021.** Example: a help-desk password-reset procedure that accepts a name and employee number over the phone without a callback. Mitigate with stronger identity proofing and a second channel. SMS reset interception or unprotected backup codes with matching mitigations also score 3.
 

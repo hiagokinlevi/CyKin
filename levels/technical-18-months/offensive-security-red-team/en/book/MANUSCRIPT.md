@@ -42,51 +42,35 @@ You will (1) sketch NMT's main services; (2) explain tiers and trust boundaries;
 
 ### 1.1 Services
 
-NMT runs a public website, a journey planner API, a staff intranet, Active Directory for employees, a VPN, and a fare-collection network that is out of scope for ordinary tests.
-
-Sam Park's ordinary authorized work at Northline Municipal Transit covers the public website, the journey planner API, the staff intranet, Active Directory and the VPN. The fare-collection network is drawn on every diagram in red and stays out of ENG-512 unless a specialised ROE is signed. Confusing those services with fare gates is how operators ask for probes they must not run.
+NMT runs a public website, a journey planner API, a staff intranet, Active Directory for employees, a VPN, and a fare-collection network that is out of scope for ordinary tests. Sam Park's ordinary authorized work at Northline Municipal Transit covers the public website, the journey planner API, the staff intranet, Active Directory and the VPN. The fare-collection network is drawn on every diagram in red and stays out of ENG-512 unless a specialised ROE is signed. Confusing those services with fare gates is how operators ask for probes they must not run.
 
 ### 1.2 Tiers
 
-Internet-facing web and API tiers sit behind a load balancer; application servers talk to databases; staff identity sits in AD. Trust boundaries are the places where packets or credentials cross from less trusted to more trusted zones.
-
-At NMT the load balancer fronts both the public website and the journey planner API, so one WAF rule set covers both. The AD boundary matters because a phished staff password crosses from the VPN into the staff zone. Sam's ENG-512 checks start outside the WAF and stop before the fare network, because crossing that line without specialised auth is out of scope.
+Internet-facing web and API tiers sit behind a load balancer; application servers talk to databases; staff identity sits in AD. Trust boundaries are the places where packets or credentials cross from less trusted to more trusted zones. At NMT the load balancer fronts both the public website and the journey planner API, so one WAF rule set covers both. The AD boundary matters because a phished staff password crosses from the VPN into the staff zone. Sam's ENG-512 checks start outside the WAF and stop before the fare network, because crossing that line without specialised authorization is out of scope.
 
 ### 1.3 Where testing starts
 
-Authorized technical tests usually start at internet-facing web and API tiers and at staff remote access, because that is what strangers and phished staff reach first.
-
-Strangers reach the website and journey planner API, while phished staff credentials reach the VPN, which is why those three come first. Fare validators and radio gear are not starting points for ordinary windows; Sam's kickoff checklist names web, API and VPN before any tool runs. Sam's ENG-512 kickoff sheet therefore lists website, journey planner API and staff VPN in that order, with fare validators listed under do-not-touch. Starting elsewhere is a scope error even if a tool makes it easy.
+Authorized technical tests usually start at internet-facing web and API tiers and at staff remote access, because that is what strangers and phished staff reach first. Strangers reach the website and journey planner API, while phished staff credentials reach the VPN, which is why those three come first. Fare validators and radio gear are not starting points for ordinary windows. Sam's ENG-512 kickoff sheet therefore lists website, journey planner API and staff VPN in that order, with fare validators listed under do-not-touch, and no tool runs before it is read. Starting elsewhere is a scope error even if a tool makes it easy.
 
 ### 1.4 Fragile dependencies
 
-Fare gates and radio systems can harm operations if disturbed. They stay excluded unless a specialised engagement says otherwise.
-
-A stuck validator at a busy station during the morning peak would turn a test into a rider-facing incident. Sam's kickoff sheet lists fare validators and radio under do-not-touch, beside the name of the operations contact. Sam's ROE for ENG-512 repeats the exclusion in the same sentence as the Saturday window so nobody treats fare as an interesting side path. Specialised fare work would need separate funding, a different ROE and operators trained on validators; ordinary Saturday windows never inherit those rights. Sam repeats that boundary when managers ask for just a quick look.
+Fare gates and radio systems can harm operations if disturbed. They stay excluded unless a specialised engagement says otherwise. A stuck validator at a busy station during the morning peak would turn a test into a rider-facing incident. Sam's kickoff sheet lists fare validators and radio under do-not-touch, beside the name of the operations contact, and his ROE for ENG-512 repeats the exclusion in the same sentence as the Saturday window so nobody treats fare as an interesting side path. Specialised fare work would need separate funding, a different ROE and operators trained on validators; ordinary Saturday windows never inherit those rights. Sam repeats that boundary when managers ask for just a quick look.
 
 ### 1.5 Architecture diagram discipline
 
-Sam keeps a dated diagram with owners on each box. Testing against an outdated diagram causes scope errors.
-
-The diagram's date sits in its title block, next to the network owner's initials from the last confirmation. Testing against an outdated diagram causes scope errors such as probing a retired staging host that now shares a name with production. Before ENG-512 he asks the network owner to confirm the diagram date in writing. He files the network owner's confirmation under the ENG-512 ticket before lab_ports runs. A diagram without that confirmation is treated as untrusted even if it looks familiar.
+Sam keeps a dated diagram with owners on each box. The date sits in the title block, next to the network owner's initials from the last confirmation. Testing against an outdated diagram causes scope errors such as probing a retired staging host that now shares a name with production. Before ENG-512 Sam asks the network owner to confirm the diagram date in writing and files that confirmation under the ENG-512 ticket before lab_ports runs. A diagram without that confirmation is treated as untrusted even if it looks familiar.
 
 ### 1.6 Change windows
 
-Architecture changes (new API gateway, AD upgrade) trigger a review of the ROE before the next test.
-
-The trigger list sits at the top of the ROE, so the network owner knows which changes require a fresh signature. Sam will not reuse last quarter's ENG window if the journey planner moved behind a new WAF rule set without a signed update. After an AD upgrade Sam re-checks tst-sam-web group membership and MFA before the next window. Reusing last quarter's ROE without that check is how stale rights survive.
+Architecture changes, such as a new API gateway or an AD upgrade, trigger a review of the ROE before the next test. The trigger list sits at the top of the ROE, so the network owner knows which changes require a fresh signature. Sam will not reuse last quarter's ENG window if the journey planner moved behind a new WAF rule set without a signed update. After an AD upgrade he re-checks tst-sam-web group membership and MFA before the next window. Reusing last quarter's ROE without that check is how stale rights survive.
 
 ### 1.7 Owner contacts on the diagram
 
-Every box on Sam's diagram names a person, not only a team. When a finding appears on the journey planner API, he knows whom to call without hunting through a directory.
-
-The journey planner API box, for example, carries the API owner's name and an out-of-hours number. That saves minutes during a stop, when the SOC needs a decision from the owner rather than a directory search. Owner contacts are copied into the ENG-512 kickoff note so the SOC can reach the same people. Diagram contacts are copied into the SOC start message so overnight responders reach the API owner without calling Sam's personal phone. A team-only label is not enough.
+Every box on Sam's diagram names a person, not only a team. When a finding appears on the journey planner API, he knows whom to call without hunting through a directory. The journey planner API box, for example, carries the API owner's name and an out-of-hours number. That saves minutes during a stop, when the SOC needs a decision from the owner rather than a directory search. The diagram contacts are copied into the ENG-512 kickoff note and the SOC start message, so overnight responders reach the API owner without calling Sam's personal phone. A team-only label is not enough.
 
 ### 1.8 Why diagrams go stale
 
-A contractor adds a staging CDN and nobody redraws the picture. Sam's first task each engagement is to confirm the diagram with the network owner in writing.
-
-Contractor changes reach the diagram only when someone files the redraw, so Sam asks the contractor lead what changed since the last engagement. Sam's first task each engagement is to confirm the diagram with the network owner in writing; a stale box is how an approved listener list becomes wrong before lab_ports even runs. When a staging CDN appears without a redraw, Sam opens a model-update ticket before any new listener is trusted. Stale pictures are the root cause of many NOT APPROVED surprises.
+A contractor adds a staging CDN and nobody redraws the picture. Contractor changes reach the diagram only when someone files the redraw, so Sam asks the contractor lead what changed since the last engagement. His first task each engagement is to confirm the diagram with the network owner in writing; a stale box is how an approved listener list becomes wrong before lab_ports even runs. When a staging CDN appears without a redraw, Sam opens a model-update ticket before any new listener is trusted. Stale pictures are the root cause of many NOT APPROVED surprises.
 
 ### Worked example (synthetic NMT)
 
@@ -148,55 +132,35 @@ Run with `python3 lab_ports.py`. Verified output:
  8080/http-alt NOT APPROVED - report
 ```
 
-lab_ports on the synthetic inventory prints 80/http ok, 443/https ok, 22/ssh ok, then 3389/rdp and 8080/http-alt as NOT APPROVED - report. Sam's approved listeners for ENG-512 are only the ones on the signed list; anything else becomes a finding, not a bonus scan target. The verified lab_ports block is pasted into the notebook: 80, 443 and 22 ok; 3389/rdp and 8080/http-alt NOT APPROVED - report. Those two lines become tickets the same day.
+The verified lab_ports block is pasted into the ENG-512 notebook: 80, 443 and 22 ok; 3389/rdp and 8080/http-alt NOT APPROVED - report. Sam's approved listeners are only the ones on the signed list; anything else becomes a finding, not a bonus scan target. Those two lines become tickets the same day. Because the lab reads a fixed list, rerunning it prints the same five lines until the inventory itself changes.
 
 ### 2.2 Protocol basics
 
-HTTP/HTTPS carry the website and API; SSH reaches jump hosts; RDP on a web VLAN is unexpected. Testers describe what they see without sending exploit traffic.
-
-HTTP and HTTPS on the journey planner, SSH to jump hosts, and RDP that is not approved are the protocol basics Sam names in the method notes. He does not invent exotic protocol checks outside the ROE; protocol identity still needs the port map from lab_ports. Sam's method notes say HTTPS for journey planner checks and SSH only to named jump hosts. Protocol curiosity beyond that list waits for a ROE change.
+HTTP/HTTPS carry the website and API; SSH reaches jump hosts; RDP on a web VLAN is unexpected. Testers describe what they see without sending exploit traffic. Sam's method notes name the protocol basics for ENG-512: HTTPS for journey planner checks, SSH only to named jump hosts, and RDP as an unapproved listener to report. He does not invent exotic protocol checks outside the ROE, and protocol identity still needs the port map from lab_ports. Protocol curiosity beyond that list waits for a ROE change.
 
 ### 2.3 No freestyle scanning
 
-Even listing ports on production needs authorization. This lab only classifies a synthetic list offline.
-
-No freestyle scanning means Sam does not add ports because a tool suggested them. If 3389 or 8080 appear as NOT APPROVED, he reports them and stops; freestyle expansion of ENG-512 is how fare-adjacent hosts get touched by accident. Kickoff includes reading the no freestyle scanning line aloud. Suggested ports from tools go to a parking lot issue, never into the live inventory mid-window.
-
-Sam pastes the lab_ports block showing 80/443/22 ok and 3389 plus 8080 not approved into the notebook the same hour so network can act before folklore spreads.
+Even listing ports on production needs authorization; the lab in this chapter only classifies a synthetic list offline. No freestyle scanning means Sam does not add ports because a tool suggested them. If 3389 or 8080 appear as NOT APPROVED, he reports them and stops; freestyle expansion of ENG-512 is how fare-adjacent hosts get touched by accident. Kickoff includes reading the no-freestyle-scanning line aloud. Ports suggested by tools go to a parking-lot issue, never into the live inventory mid-window. The issue is reviewed with the network owner after the window, and only a signed ROE change can promote a parked port to the approved list.
 
 ### 2.4 Name mismatches
 
-Port 22 labelled only "ssh" still matches the approved ssh-jump family in the lab, but Sam notes the inventory name for cleanup.
-
-Name mismatches — a DNS label that points at a different IP than the ROE host list — are pause conditions. Sam asks the network owner before continuing; guessing that api-staging is safe because the name says staging has already caused scope errors at NMT. A DNS mismatch pause records the queried name, the answer, the ROE address and the owner's reply. Resuming without that written reply fails peer review.
+Port 22 labelled only "ssh" still matches the approved ssh-jump family in the lab, but Sam notes the inventory name for cleanup. Name mismatches of another kind, a DNS label that points at a different IP than the ROE host list, are pause conditions. Sam asks the network owner before continuing; guessing that api-staging is safe because the name says staging has already caused scope errors at NMT. A DNS mismatch pause records the queried name, the answer, the ROE address and the owner's reply. Resuming without that written reply fails peer review.
 
 ### 2.5 Egress paths
 
-Staff laptops that can reach staging and the Internet may bridge environments; the ROE states which source networks are allowed.
-
-Egress paths from staging jump hosts are listed so Sam knows which outbound destinations his checks may hit. An unexpected egress to a fare-vendor cloud is a stop, not a discovery to chase mid-window. If staging jump hosts suddenly reach a fare-vendor prefix, Sam stops and asks network to classify the path. Chasing that path as discovery is out of scope.
-
-Network closes or authorizes 3389/rdp before the next Saturday rather than leaving the listener as chat folklore that examiners never see.
+Staff laptops that can reach staging and the Internet may bridge environments; the ROE states which source networks are allowed. Egress paths from staging jump hosts are listed so Sam knows which outbound destinations his checks may hit. If a staging jump host suddenly reaches a fare-vendor prefix or cloud, Sam stops the window and asks the network team to classify the path in writing. Chasing that path as a discovery mid-window is out of scope, however interesting it looks.
 
 ### 2.6 Logging
 
-Network teams may mirror authorized test sources; Sam coordinates so his traffic is attributable.
-
-Logging of ENG-512 start, stop and pauses goes to the engagement channel with ticket id. The SOC uses those log lines when rider apps slow; silence leaves them guessing whether Sam's checks are involved. ENG-512 start and stop lines always include the ticket id and clock time so the SOC can filter noise. The 10:12 loop drill text is reused when live stops happen.
-
-8080/http-alt becomes a ticket with the network owner named before ENG-512 ends for the week and the SOC clears the watch list.
+Network teams may mirror authorized test sources; Sam coordinates so his traffic is attributable. Logging of ENG-512 start, stop and pauses goes to the engagement channel, and every line carries the ticket id and the clock time so the SOC can filter testing noise. The SOC uses those lines when rider apps slow; silence leaves them guessing whether Sam's checks are involved. The wording of the 10:12 loop drill from Chapter 8 is reused when a live stop happens, so responders recognise the format at once.
 
 ### 2.7 TCP versus application identity
 
-A port being open is not the same as a service being safe. Sam records both the port and the application banner or certificate name when inventory allows.
-
-TCP open on 443 does not prove the journey planner API is healthy; application identity still needs a method card. Sam records both the port result from lab_ports and the application check so findings are not port-only theatre. After ports classify clean, Sam runs the application method card on the journey planner and records both results. A green TCP port alone never becomes a clean bill of health.
+A port being open is not the same as a service being safe. Sam records both the port and the application banner or certificate name when inventory allows. TCP open on 443 does not prove the journey planner API is healthy; application identity still needs a method card. After ports classify clean, Sam runs the application method card on the journey planner and records both results, so findings are not port-only theatre. A green TCP port alone never becomes a clean bill of health.
 
 ### 2.8 Reporting unapproved listeners
 
-Unapproved does not mean "exploit now". It means open a ticket, attach the synthetic observation, and wait for the owner to confirm whether the service should exist.
-
-Reporting unapproved listeners means 3389/rdp and 8080/http-alt leave ENG-512 as findings with owners, not as quiet notes. Sam files them the same day so the network team can close or authorize them before the next window. Network owners receive the NOT APPROVED listener lines verbatim from lab_ports. Closure is disable or deliberate future authorization — not a quiet ignore.
+Unapproved does not mean "exploit now". It means open a ticket, attach the synthetic observation, and wait for the owner to confirm whether the service should exist. 3389/rdp and 8080/http-alt therefore leave ENG-512 as findings with owners, not as quiet notes. Sam files them the same day, quoting the NOT APPROVED lines from lab_ports verbatim, so the network team can close or authorize them before the next Saturday instead of leaving them as chat folklore that examiners never see. Closure is disable or deliberate future authorization, not a quiet ignore.
 
 ### Worked example (synthetic NMT)
 
@@ -233,69 +197,39 @@ You will (1) separate local, domain and application identities; (2) explain leas
 
 ### 3.1 Identity layers
 
-Workstations have local accounts; staff use AD domain accounts; the journey planner has application users. A finding may involve any layer.
-
-Identity layers at NMT include rider-facing accounts, staff AD accounts, VPN certificates and service accounts for the journey planner. Sam's test identity tst-sam-web sits only on the staff/staging layer; it never receives fare-network rights. tst-sam-web is barred from fare-network AD groups by construction. Sam verifies group membership at kickoff so identity layers stay separated under pressure.
-
-Name-mismatch pauses attach DNS answers and ROE addresses before any resume is allowed on staging hosts that looked safe by name alone.
+Workstations have local accounts; staff use AD domain accounts; the journey planner has application users. A finding may involve any layer. At NMT the layers include rider-facing accounts, staff AD accounts, VPN certificates and service accounts for the journey planner. Sam's test identity tst-sam-web sits only on the staff/staging layer and is barred from fare-network AD groups by construction. Sam verifies its group membership at kickoff, before vault checkout, so identity layers stay separated under pressure. A membership change found at kickoff is fixed by identity before the window opens, never worked around.
 
 ### 3.2 Test accounts
 
-Authorized tests use named test accounts with the least privilege needed, issued for the window and revoked after. Shared pentest god accounts are themselves a finding.
-
-Test account tst-sam-web has read access to staging only, is vaulted for ENG-512, and auto-expires Sunday night. Sam will not share that password in chat; vault checkout is the only path, and expiry is checked before Monday work. Sunday auto-expiry is tested by attempting a Monday login in the lab; success would be a finding. Vault checkout logs are kept with the ENG-512 pack.
+Authorized tests use named test accounts with the least privilege needed, issued for the window and revoked after. Shared pentest god accounts are themselves a finding. Test account tst-sam-web has read access to staging only, is vaulted for ENG-512, and auto-expires Sunday night. Sam will not share that password in chat; vault checkout is the only path, and the vault checkout logs are kept with the ENG-512 pack. Sunday expiry is proven by a Monday login attempt that must fail; success would be a finding.
 
 ### 3.3 Service accounts
 
-API and automation accounts often have broad rights and weak monitoring. They are high-value review targets when in scope.
-
-Service accounts for the API are out of Sam's ordinary test set unless the ROE names them. Using a shared service password because it was pasted in an old ticket breaks credential handling rules and muddies ATT&CK T1078 notes for the SOC. Service account passwords found in wikis are rotated through identity, not borrowed for testing. Sam files the exposure and uses only vaulted test identities.
+API and automation accounts often have broad rights and weak monitoring. They are high-value review targets when in scope. Service accounts for the API are out of Sam's ordinary test set unless the ROE names them. Using a shared service password because it was pasted in an old ticket breaks credential handling rules and muddies ATT&CK T1078 notes for the SOC. Service account passwords found in wikis are rotated through identity, not borrowed for testing. Sam files the exposure and uses only vaulted test identities.
 
 ### 3.4 Credential handling
 
-Test passwords live in the vault, not in chat or scripts committed to git.
-
-Credentials for ENG-512 live in the vault, not in scripts or screenshots. Sam redacts tokens from evidence before hashing; a token in a PNG fails the two-person evidence rule even if the finding is real. Evidence PNGs are cropped on the jump host before lab_hash runs. Hashing a secret-bearing image and deleting later still leaves the secret in backup history.
-
-Unexpected egress toward a fare-vendor prefix stops the window until network classifies the path in writing and posts the classification.
+Test passwords live in the vault, not in chat, screenshots or scripts committed to git. Sam redacts tokens from evidence before hashing; a token in a PNG fails the two-person evidence rule even if the finding is real. Evidence PNGs are therefore cropped on the jump host before lab_hash runs. Hashing a secret-bearing image and deleting it later still leaves the secret in backup history that outlives the engagement. If a secret does reach an evidence file, Sam reports it, identity rotates the credential, and the clean crop replaces the original in the evidence index.
 
 ### 3.5 Admin workstations
 
-Jump hosts should be the only path to admin tasks; tests that find direct admin RDP from email VLANs matter.
-
-Admin workstations used for testing are NMT-issued jump hosts. Personal laptops are not evidence stores; Sam copies nothing from the jump host to a phone or home drive during ENG-512. NMT jump policy blocks personal cloud sync clients. Sam's cleanup checklist includes confirming no ENG files remain in Downloads.
-
-Start and stop lines always carry ENG-512 and a clock so the SOC can filter testing noise away from rider-facing incidents.
+Jump hosts should be the only path to admin tasks; tests that find direct admin RDP from email VLANs matter. The admin workstations Sam uses for testing are NMT-issued jump hosts. Personal laptops are not evidence stores, and Sam copies nothing from the jump host to a phone or home drive during ENG-512; NMT jump policy blocks personal cloud sync clients. His cleanup checklist confirms that no ENG files remain in the jump host's Downloads folder after the window, and the check is ticked in the ENG-512 pack before it closes.
 
 ### 3.6 ATT&CK link
 
-Abuse of legitimate accounts maps to T1078 Valid Accounts — useful when writing detection recommendations.
-
-ATT&CK link for stolen or reused staff credentials is T1078 Valid Accounts. Sam adds that label when a finding is about auth abuse paths so the SOC can search with a shared name; the label does not prove an external attacker. When auth findings ship, the SOC ticket subject includes T1078 and the time window. Rider identifiers are never pasted into that subject line.
-
-Application method cards run only after ports classify because green TCP alone is an incomplete story for the journey planner API.
+Abuse of legitimate accounts maps to T1078 Valid Accounts, which is useful when writing detection recommendations. Sam adds that label when a finding is about stolen or reused staff credentials, so the SOC can search with a shared name; the label does not prove an external attacker. When auth findings ship, the SOC ticket subject includes T1078 and the time window. Rider identifiers are never pasted into that subject line, because SOC ticket subjects are copied into dashboards and e-mail digests that many readers see. The details stay in the restricted evidence pack, where access is logged.
 
 ### 3.7 Revocation day
 
-On Sunday night Sam verifies tst-sam-web is disabled. Leftover test accounts are among the most common findings he writes about other teams — he will not become one.
-
-Revocation day is Sunday night when tst-sam-web expires. If ENG-512 overruns into Monday, Sam requests a fresh time-boxed account rather than asking someone to extend the old one quietly. If Monday jobs still authenticate as tst-sam-web, Sam opens a severity ticket before any other work. Revocation day is a control, not a suggestion.
-
-Unapproved listener tickets quote lab_ports lines verbatim so closure means disable or deliberate future authorization with a signed ROE update.
+On Sunday night Sam verifies tst-sam-web is disabled. Leftover test accounts are among the most common findings he writes about other teams, and he will not become one. If ENG-512 overruns into Monday, Sam requests a fresh time-boxed account rather than asking someone to extend the old one quietly. If Monday jobs still authenticate as tst-sam-web, he opens a severity ticket before any other work that day. Revocation day is a control, not a suggestion, and its result is recorded in the ENG-512 pack like any other check.
 
 ### 3.8 MFA on test accounts
 
-Where NMT enforces MFA, test accounts get MFA too. Skipping MFA "because it is staging" trains bad habits and weakens staging as a proving ground.
+Where NMT enforces MFA, test accounts get MFA too. Skipping MFA "because it is staging" trains bad habits and weakens staging as a proving ground. MFA on test accounts is required the same as on staff VPN. A test account without MFA is itself a finding; Sam will not argue for an MFA exception to make scripting easier. A live MFA challenge at kickoff is mandatory, and a test account with MFA enrolled but SMS or app delivery failing stops ENG-512 until identity repairs it.
 
-MFA on test accounts is required the same as on staff VPN. A test account without MFA is itself a finding; Sam will not argue for an MFA exception to make scripting easier. Live MFA challenge at kickoff is mandatory. A test account with MFA enrolled but SMS undeliverable stops ENG-512 until identity repairs it.
+### 3.9 Field discipline
 
-tst-sam-web is checked for zero fare-network AD groups at every kickoff before vault checkout proceeds for the Saturday window.
-
-### 3.9 3.x Field discipline
-
-When Sam receives a new test account he walks a four-step checklist: confirm the account is named to him, confirm its groups match the ROE, store the secret in the vault under the engagement id, and set a calendar reminder for revocation day. Skipping any step has bitten NMT before — a shared account left in Domain Admins after a contractor left. He treats account hygiene as part of testing craft, not as paperwork for someone else.
-
-Field discipline for identity means vaulted test accounts, Sunday expiry, MFA on, and no fare-network groups on tst-sam-web. Sam's kickoff reads those four lines aloud so peers catch drift before the window opens. Identity field discipline is checked with a four-question peer quiz: vaulted, expiry, MFA, no fare groups. Wrong answers delay the window.
+When Sam receives a new test account he walks a four-step checklist: confirm the account is named to him, confirm its groups match the ROE, store the secret in the vault under the engagement id, and set a calendar reminder for revocation day. Skipping any step has bitten NMT before: a shared account was left in Domain Admins after a contractor left. Field discipline for identity therefore comes down to vaulted test accounts, Sunday expiry, MFA on, and no fare-network groups on tst-sam-web. Before the window peers check those four points as a short quiz, and wrong answers delay the window. Sam treats account hygiene as part of testing craft, not as paperwork for someone else.
 
 ### Worked example (synthetic NMT)
 
@@ -332,73 +266,39 @@ You will (1) parse simple JSON/CSV evidence safely; (2) avoid executing untruste
 
 ### 4.1 Why scripts
 
-Technicians automate inventory diffs, hash checks and ticket formatting. Scripts must be readable by the next person.
-
-Scripts exist so Sam can repeat lab_ports-style checks and hash evidence the same way every Saturday. They do not exist to invent new attack paths; every script for ENG-512 maps to a method card on the signed list. Script headers cite method card ids so automation cannot drift from the signed list. Orphan scripts without cites are deleted from the Saturday job folder.
-
-Sunday expiry is proven by a failed Monday login attempt filed in the lab pack as evidence the control worked.
+Technicians automate inventory diffs, hash checks and ticket formatting, and scripts must be readable by the next person. Scripts exist so Sam can repeat lab_ports-style checks and hash evidence the same way every Saturday. They do not exist to invent new attack paths; every script for ENG-512 maps to a method card on the signed list. Script headers cite method card ids so automation cannot drift from that list, and orphan scripts without cites are deleted from the Saturday job folder.
 
 ### 4.2 Untrusted data
 
-Files from targets are data, not code. Do not run unknown binaries or macros from a test target on an admin workstation.
-
-Untrusted data includes API JSON from staging and any file a tool writes. Sam validates shapes before parsing; a surprise field that looks like a fare transaction id is redacted and escalated, not logged in full. Schema validation drops unknown JSON keys before logging. Payment-shaped fields from staging responses are treated as sensitive even in non-prod.
-
-Service passwords found in wikis are rotated through identity and never borrowed for ENG-512 test traffic on staging.
+Files from targets are data, not code. Do not run unknown binaries or macros from a test target on an admin workstation. Untrusted data includes API JSON from staging and any file a tool writes. Sam validates shapes before parsing, and schema validation drops unknown JSON keys before logging. A surprise field that looks like a fare transaction id is redacted and escalated, not logged in full; payment-shaped fields from staging responses are treated as sensitive even in non-production, because staging data is sometimes copied from live systems.
 
 ### 4.3 Reproducibility
 
-Pin Python versions, seed any randomness and keep input files beside the script in the evidence pack.
-
-Reproducibility means another technician can run the same script on the same inventory and get the same ok / NOT APPROVED lines. Sam pins script versions in the notebook beside the ENG-512 ticket id. Peers reproduce using the notebook's script hash; mismatched hashes abort comparison. Reproducibility fights are version fights until pins match.
-
-PNGs are cropped on the jump host before lab_hash so secret bytes never enter vault backup history that outlives the engagement.
+Pin Python versions, seed any randomness and keep input files beside the script in the evidence pack. Reproducibility means another technician can run the same script on the same inventory and get the same ok and NOT APPROVED lines. Sam pins script versions in the notebook beside the ENG-512 ticket id. Peers reproduce using the notebook's script hash, and mismatched hashes abort the comparison. Most reproducibility disputes turn out to be version disputes, and they end when the pins match.
 
 ### 4.4 Formats
 
-JSON and CSV are common for tool exports. Sam validates schema before trusting fields for a finding.
-
-Formats for inventories and evidence indexes are CSV or plain text agreed in the runbook. Binary dumps and undocumented JSON blobs fail peer check because the next operator cannot read them under time pressure. Inventory CSV columns are name, ip, port, proto, approved. Reordering breaks lab_ports; Sam validates the header row before the job runs.
-
-Cleanup confirms the jump-host Downloads folder holds no ENG files after the window and before portfolio credit.
+JSON and CSV are common for tool exports, and Sam validates the schema before trusting fields for a finding. Formats for inventories and evidence indexes are CSV or plain text agreed in the runbook. Binary dumps and undocumented JSON blobs fail peer check because the next operator cannot read them under time pressure. Inventory CSV columns are name, ip, port, proto, approved. Reordering them breaks lab_ports, so Sam validates the header row before the job runs; a file with a missing or renamed column stops the job instead of being classified silently.
 
 ### 4.5 Secrets in scripts
 
-No hard-coded passwords. Read from the vault or environment injected by the jump host.
-
-Secrets in scripts are forbidden. Vault references or environment injection at run time are the only patterns Sam accepts in code review for ENG-512 automation. Pre-merge secret scanning on the automation repo fails the build on tokens. Sam rotates any token that ever landed in a pull request diff.
-
-SOC subjects for auth findings include T1078 and the time window while omitting rider identifiers entirely from the ticket text. Pass bar ignores charm without plant, stop, hashes and peer pass artefacts present in the pack.
+No hard-coded passwords: scripts read from the vault or from an environment injected by the jump host. Those are the only patterns Sam accepts in code review for ENG-512 automation. Pre-merge secret scanning on the automation repository fails the build on tokens. Sam rotates any token that ever landed in a pull-request diff, because deleting the line does not delete the history that reviewers, mirrors and backups already hold. The rotation is recorded in the ENG-512 ticket with the commit that exposed the token, so a later reviewer can confirm the old value is dead.
 
 ### 4.6 Code review
 
-Another technician reads Sam's script before it runs in an engagement window.
-
-Code review catches freestyle port lists and hardcoded passwords before a window. A peer score below pass means the script stays out of Saturday's job list. Reviewers grep for host patterns that look like fare subnets and reject those loops. Code review is a scope control, not only a style club.
-
-Monday jobs that still authenticate as tst-sam-web open a severity ticket before any other work starts that day. Lab II stress stays synthetic; real fare gear is never a prop for any cohort exercise.
+Another technician reads Sam's script before it runs in an engagement window. Code review catches freestyle port lists and hard-coded passwords before a window. A peer score below pass means the script stays out of Saturday's job list. Reviewers grep for host patterns that look like fare subnets and reject those loops. Code review is a scope control, not only a style club. The reviewer's name and the script hash go into the ENG-512 notebook, so the job that runs on Saturday is provably the one that was read. A script changed after review returns to the queue, even for a one-line fix.
 
 ### 4.7 Input size limits
 
-Scripts that read tool exports cap file size so a huge dump cannot exhaust the jump host. Caps are safety features, not pessimism.
-
-Input size limits stop a runaway inventory from locking the jump host. Sam caps rows processed per run and fails closed with a non-zero exit when the cap trips. Row caps print ERROR: inventory exceeds cap and exit 2. Truncation without error would hide 8080/http-alt past the cut line.
-
-Live MFA challenge failure stops ENG-512 until identity repairs SMS or app delivery for the test account in use.
+Scripts that read tool exports cap file size so a huge dump cannot exhaust the jump host. Caps are safety features, not pessimism. Input size limits stop a runaway inventory from locking the jump host. Sam caps rows processed per run and fails closed when the cap trips: the job prints ERROR: inventory exceeds cap and exits 2. Truncation without an error would hide 8080/http-alt past the cut line. When the cap trips, Sam checks the export with its owner before raising the cap in a reviewed change, rather than editing the limit on the jump host.
 
 ### 4.8 Exit codes
 
-Sam's scripts exit non-zero on MISMATCH or NOT APPROVED so CI and humans notice failures instead of skimming green-looking logs.
+Sam's scripts exit non-zero on MISMATCH or NOT APPROVED so CI and humans notice failures instead of skimming green-looking logs. Exit codes distinguish ok listeners from NOT APPROVED findings so CI and humans agree; lab_ports-style jobs that always exit zero hide 3389/rdp until someone reads stdout carefully. The SOC monitors non-zero exits from ENG job users. Scripts that exit 0 while printing NOT APPROVED are bugs fixed before the next Saturday. Sam's review checklist includes running each job against a list that contains one unapproved port and confirming the non-zero exit.
 
-Exit codes distinguish ok listeners from NOT APPROVED findings so CI and humans agree. lab_ports-style jobs that always exit zero hide 3389/rdp until someone reads stdout carefully. SOC monitors non-zero exits from ENG job users. Scripts that exit 0 while printing NOT APPROVED are bugs fixed before the next Saturday.
+### 4.9 Field discipline
 
-Identity peer quiz covers vaulted status, expiry, MFA and no fare groups before tools are permitted to start on Saturday.
-
-### 4.9 4.x Field discipline
-
-Sam's scripting standard is short enough to remember: one purpose per script, argparse or explicit constants at the top, no network calls unless the ROE file path is passed in, and a --dry-run mode that prints what would happen. Dry-run saved him when a path typo would have pointed a hash job at a production share listing. Reviewers look for dry-run and for the absence of hard-coded hosts more than for clever code.
-
-Field discipline for scripting means pinned versions, no secrets in files, size caps, and exit codes that match the report. Sam's ENG-512 notebook links each script hash to the method card it implements. Scripting field discipline is pinned hashes, secret-free trees, caps and honest exits. Sam links each job to a method card in the notebook index.
+Sam's scripting standard is short enough to remember: one purpose per script, argparse or explicit constants at the top, no network calls unless the ROE file path is passed in, and a --dry-run mode that prints what would happen. Dry-run saved him when a path typo would have pointed a hash job at a production share listing. Reviewers look for dry-run and for the absence of hard-coded hosts more than for clever code. Field discipline for scripting adds pinned versions, secret-free trees, size caps and exit codes that match the report, and Sam's ENG-512 notebook index links each script hash to the method card it implements.
 
 ### Worked example (synthetic NMT)
 

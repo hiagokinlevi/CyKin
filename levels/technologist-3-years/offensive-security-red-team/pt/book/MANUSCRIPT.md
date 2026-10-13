@@ -1122,7 +1122,7 @@ Alerted significa que uma pessoa ou um playbook foi notificado a tempo de agir. 
 ### Laboratório G — matriz de cobertura
 
 ```python
-"""Lab F (ch 19): ATT&CK technique coverage matrix from a synthetic purple-team log."""
+"""Lab G (ch 19): ATT&CK technique coverage matrix from a synthetic purple-team log."""
 log = [
     ("T1078", "Initial Access", "alerted"), ("T1133", "Initial Access", "logged"),
     ("T1087", "Discovery", "missed"), ("T1069", "Discovery", "alerted"),
@@ -1300,7 +1300,7 @@ Montar uma tabela Markdown a partir de uma lista de achados, contar abertos vers
 ### Laboratório H — gerador de relatório
 
 ```python
-"""Lab G (ch 22): build a Markdown executive table from synthetic findings."""
+"""Lab H (ch 22): build a Markdown executive table from synthetic findings."""
 from collections import Counter
 findings = [
     {"id": "F-01", "sev": "high", "status": "open", "tid": "T1078"},
@@ -1592,7 +1592,7 @@ A validação da correção pergunta se a correção combinada eliminou o proble
 ### Laboratório I — status do reteste
 
 ```python
-"""Lab H (ch 27): decide remediation-validation status from synthetic retest observations."""
+"""Lab I (ch 27): decide remediation-validation status from synthetic retest observations."""
 retests = [
     ("F-01", "shared admin account", True, True),
     ("F-07", "ex-contractor VPN accounts", True, False),
@@ -1858,7 +1858,7 @@ Respostas-modelo para EX001–EX090. A Tidewater Regional Transit, Priya Nataraj
 
 **EX019.** Falhou a autorização: a autenticação funcionou para muitas pessoas, mas o privilégio de edição era amplo demais. Restringir a edição de horários a um papel nomeado de publicador e registrar cada mudança.
 
-**EX020.** T1078 Valid Accounts — credenciais legítimas que não deveriam mais funcionar continuam utilizáveis.
+**EX020.** T1078 Valid Accounts — credenciais legítimas que não deveriam mais funcionar continuam utilizáveis. O Laboratório H (Capítulo 22) registra o mesmo achado, o F-07, sob T1133 External Remote Services, e os dois mapeamentos estão corretos: o T1133 nomeia o serviço exposto (a VPN dos funcionários), enquanto o T1078 nomeia as contas válidas que ainda funcionam por meio dele. O exercício pergunta pelas contas, então o T1078 recebe a nota máxima; um relatório pode listar os dois IDs para o F-07.
 
 **EX021.** Exemplo: um procedimento de redefinição de senha no service desk que aceita nome e número de matrícula por telefone, sem retorno de ligação. Mitigar com comprovação de identidade mais forte e um segundo canal. Interceptação na redefinição por SMS ou códigos de backup desprotegidos, com as mitigações correspondentes, também recebem 3.
 
