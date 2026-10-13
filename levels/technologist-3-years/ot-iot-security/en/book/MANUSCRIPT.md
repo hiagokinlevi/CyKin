@@ -44,13 +44,19 @@ You will (1) name the computing devices in a cold-storage warehouse and what eac
 
 The synthetic Northgate Cold Storage (NCS) warehouse keeps frozen food at −22 °C and chilled goods at 2–4 °C. Its obvious computers are the office PCs. Less obvious are two refrigeration controllers (PLC-R1 and PLC-R2) that run the ammonia compressors, an operator screen (HMI-C), a historian (HIST), forty wireless temperature loggers that report through a gateway (GW-LOG) to a cloud service, and IP cameras on the loading dock. A technologist's first job is to see all of them.
 
+Priya's first notebook row, for GW-LOG, already shows why: if it stops, cooling continues but the temperature record has a gap.
+
 ### 1.2 Embedded versus general-purpose
 
 A PLC runs one control program in a fixed loop and may stay powered for a decade. A Windows HMI runs many processes, receives updates and can be infected by ordinary malware. Loggers are microcontrollers with radio and a battery; they cannot run antivirus at all. Each class needs a different protection approach, which is why NIST SP 800-82r3 discusses OT device types separately.
 
+Priya's notebook records the class in its type column, and the three classes lead to three plans. PLC-R1 and PLC-R2 are protected by controlling who can reach them, because they cannot run security software. HMI-C is hardened like a Windows host within the vendor's certified build. The forty loggers depend entirely on the vendor's firmware and on the gateway in front of them.
+
 ### 1.3 Availability first
 
 If an office PC reboots, someone loses ten minutes. If PLC-R1 stops, compressor suction pressure drifts and the freezer warms by roughly a degree every 15–20 minutes; after a few hours stock worth hundreds of thousands may be condemned. That consequence shapes every later decision: when to patch, how to test, who must be present.
+
+At NCS this is why a firmware fix for PLC-R1 waits for a maintenance window with the refrigeration contractor present, and why Priya's later firewall change in Chapter 27 has a two-minute rehearsed rollback: a missing flow that blinds HMI-C for an hour matters more than the change itself.
 
 ### Worked example (synthetic NCS)
 
@@ -88,17 +94,25 @@ You will (1) read an IP address plan and identify subnets; (2) explain what a VL
 
 NCS uses 10.10.0.0/24 for offices, 10.20.0.0/24 for refrigeration control and 10.30.0.0/24 for loggers and cameras. A /24 mask means the first three numbers name the network and the last names the host. Two devices on the same subnet talk directly through the switch; devices on different subnets must pass a router or firewall, which is where policy can be applied.
 
+Priya's trace of a logger reading shows the boundaries in use: the logger reports to GW-LOG at 10.30.0.5, and firewall rule 21 lets 10.30.0.5 reach the vendor cloud on TCP 443. The same firewall holds rule 9, "any to 10.20.0.0/24, TCP 502, allow", which lets every office address reach the refrigeration controllers' Modbus port.
+
 ### 2.2 VLANs and firewalls
 
 A VLAN separates traffic logically on shared switches. VLANs alone do not filter: the filtering happens where traffic is routed between them. A firewall rule names source, destination, protocol and port, and whether to allow or deny. A sound default is "deny everything not explicitly allowed".
+
+Rule 9 is the NCS example of a rule that defeats the default. It was added at commissioning so the contractor could work from any port, and nobody removed it. With rule 9 in place, the VLANs still separate broadcast traffic, but the firewall between 10.10.0.0/24 and 10.20.0.0/24 allows exactly the flow that matters most: Modbus from the office to PLC-R1 and PLC-R2. Priya's later lab finds OFFICE-7 using it.
 
 ### 2.3 Outbound cloud connections
 
 GW-LOG opens an outbound HTTPS connection (TCP 443) to the logger vendor's cloud. Outbound connections are easier to secure than inbound ones because nobody on the internet can start a session to the gateway — provided the firewall does not also forward an inbound port to it. Remote-support tools often add exactly that forwarding, which is how many devices become internet-facing.
 
+At NCS, rule 21 is outbound only; Priya checked that no port-forward to 10.30.0.5 exists, and recorded that check, so the claim can be re-verified after the next vendor visit.
+
 ### 2.4 Name resolution
 
 The gateway finds the cloud by DNS. If the gateway uses an internal DNS server, a misconfiguration there can break logging plant-wide; if it uses a public resolver directly, the firewall must permit that too. Write down which.
+
+For GW-LOG, Priya found it used the site's internal DNS server, so the rule set needed no public-resolver exception. That has a consequence for the certificate failures in Chapter 22: when LOG-03 stopped uploading on 5 October, DNS was one of the dependencies to rule out before blaming the expired certificate. A one-line note in the inventory, "GW-LOG resolver: internal DNS, 10.10.0.2", would have answered that question in seconds.
 
 ### Worked example (synthetic NCS)
 
@@ -136,17 +150,25 @@ You will (1) write short Python programs using only the standard library; (2) us
 
 Much OT security work is comparing lists: assets in documentation versus assets seen on the network, approved flows versus observed flows, certificate dates versus today. Doing this by eye across hundreds of rows is slow and error-prone. A twenty-line script does it the same way every time, and its output can be attached to a ticket.
 
+Priya's first such script compared the contractor's documentation with a passive observation and produced the five-line Chapter 11 output: two matches, one camera only on the network, HMI-C only in the documents and PLC-R2's version conflict.
+
 ### 3.2 Dictionaries for lookups
 
 A Python dictionary maps a key (device name) to a value (firmware version). Checking "is this device documented?" becomes `name in docs`, which is fast and readable. Sets give union and difference directly: `set(a) - set(b)` lists what is in `a` but not `b`.
+
+Priya's inventory script keeps one dictionary from the contractor's documents and one from passive observation, each mapping a device name to its firmware string. The union of the two key sets is the full list of devices to report; the differences are the two interesting groups, CAM-DOCK only on the network and HMI-C only in the documents.
 
 ### 3.3 Missing data is a result
 
 When a value is absent, say so in the output. `dict.get(key)` returns `None` instead of crashing, and the script can print "-" and a status such as "only-in-docs". Silently skipping missing rows is how gaps disappear from reports.
 
+Priya's first draft did exactly that: it looped over matches only, so CAM-DOCK, which was missing from the documents, never appeared. A colleague asked where the camera was. Her fix was one line, iterating over `sorted(set(docs) | set(seen))`, so every device prints with a status and the missing one says so. The Chapter 11 output now shows `docs=-` for CAM-DOCK rather than leaving it out.
+
 ### 3.4 Readable output
 
 Align columns with f-string widths (`f"{name:9}"`) and put the decision at the end of each line. A reviewer can then scan the last column for anything that is not "match".
+
+In the Chapter 11 output the last column reads match, match, only-on-network, only-in-docs and VERSION-CONFLICT, so a facilities manager can find the three lines that need action without reading the firmware strings. The device names are padded to nine characters, which keeps the documentation and network columns aligned even for CAM-DOCK. A reviewer who sees a status that is not one of the five documented values knows the script has met an input it does not understand.
 
 ### Worked example (synthetic NCS)
 
@@ -184,17 +206,25 @@ You will (1) design a simple asset table with keys and attributes; (2) choose id
 
 An asset table holds one row per asset. The key must be unique and stable. IP addresses are poor keys because they change when a device is re-addressed; serial numbers change when a device is replaced. NCS uses an asset tag painted on the equipment (for example "MP-1/PLC-R1"), which stays with the function.
 
+Priya's schema keys every table on that tag, which is how the asset, logger and flow tables join cleanly even after PLC-R2's documented firmware turned out to be wrong.
+
 ### 4.2 Relationships
 
 Forty loggers report through GW-LOG. Storing "gateway" as an attribute of each logger row creates a one-to-many relationship that lets a query answer "which loggers go dark if GW-LOG fails?" in one line. Similarly, a flow table with source and destination keys links assets into the communication picture used in Chapter 12.
+
+Priya's loggers table holds tag, room and gateway_tag. Her query `select tag, room from loggers where gateway_tag = 'GW-LOG'` lists all forty loggers with their rooms, and that list became the impact table in NCS's continuity plan.
 
 ### 4.3 What not to store
 
 Passwords, private keys and full configuration backups do not belong in a shared asset table. Store a reference ("credential held in vault entry OT-17") and keep the secret in a system designed for it. A spreadsheet of passwords on a shared drive is a common finding in OT assessments.
 
+In Priya's schema, the assets table has an owner column and a source column but no credential column. HMI-C's local administrator password, which she later finds on a sticky note, belongs in the vault with a reference such as OT-17 in the table, not in a cell anyone with the spreadsheet can read.
+
 ### 4.4 Data quality fields
 
 Add "source" (documentation, network observation, walk-down) and "last verified" date to each row. An inventory without dates cannot be trusted after a year.
+
+PLC-R2 shows why. Its documented firmware, 2.4, came from the contractor's commissioning records; the passive capture reported 2.1; and Priya's walk-down read 2.1 from the front panel. With a source column, the row now reads firmware 2.1, source walk-down, last verified on the visit date, and a reader can see that the older value came from documents that were never updated after commissioning. Without the date, nobody would know whether the walk-down reading was last week's or two years old.
 
 ### Worked example (synthetic NCS)
 
@@ -232,17 +262,25 @@ You will (1) explain safety, availability, integrity and confidentiality for a c
 
 The worst outcome at NCS is an ammonia release — a safety event handled by separate gas detection and emergency ventilation. Next comes loss of cooling and condemned stock. Then integrity of temperature records, which customers and food-safety inspectors rely on. Confidentiality matters for customer contracts and camera footage. The order guides where to spend effort first.
 
+Priya's ranking follows this order: ammonia safety stays with the gas-detection system and the refrigeration engineer; her security work starts with the paths that could stop cooling or falsify temperature records.
+
 ### 5.2 Threat sources
 
 Most OT incidents are not elite attacks. They include commodity ransomware that spreads from office networks onto Windows HMIs, misused vendor remote access, mistakes during maintenance, and devices exposed to the internet with default passwords. CISA advisory AA21-042A, on a water treatment facility, describes access through desktop-sharing software combined with weak passwords — a pattern that fits many small sites.
+
+Priya found all four patterns at NCS: a desktop-sharing tool on HMI-C, a shared HMI password on a sticky note, a forgotten cellular router and a camera exposed to the internet.
 
 ### 5.3 Reading an advisory
 
 From any advisory extract: affected product and versions, the weakness, whether exploitation has been seen, and the recommended mitigations. Then ask whether NCS has that product (your asset table answers this) and whether the mitigation is feasible.
 
+Priya applied this to AA21-042A and found three NCS parallels: the contractor's desktop-sharing tool on HMI-C, an HMI operating system near end of support, and a shared HMI password written on a sticky note. Her asset table answered the first question; the mitigation, supervised sessions instead of an always-on tool, was feasible because the contractor visits only a few times a month.
+
 ### 5.4 ATT&CK for ICS
 
 MITRE ATT&CK for ICS gives names and IDs to observed adversary behaviour. T0886 *Remote Services* covers using remote-access services to reach control systems; T0883 *Internet Accessible Device* covers devices reachable from the internet. Use the IDs to label findings consistently, not to claim completeness.
+
+Priya labels the contractor's always-on desktop-sharing tool on HMI-C as T0886, and the dock camera reachable from the internet as T0883. Neither label says the site has been attacked; each says which kind of observed behaviour the finding would enable. When a CISA advisory later cites T0886 for a product family, she can search her findings for that ID and know at once which NCS items are relevant.
 
 ### Worked example (synthetic NCS)
 
@@ -280,17 +318,25 @@ You will (1) identify OS-level risks on HMIs and historians; (2) explain what vi
 
 HMI-C runs a long-term-servicing edition of Windows with the refrigeration vendor's HMI software. Its risks are ordinary: unpatched services, shared local accounts, USB sticks, and remote-desktop tools. Its constraints are not: the vendor certifies specific OS builds, and an untested update can stop the HMI runtime. Hardening therefore goes through a test unit or a vendor-approved list.
 
+At NCS that means the vendor's approved patch list for HMI-C is checked before each maintenance window, and anything not on it is first tested on the contractor's test unit.
+
 ### 6.2 Virtualized historians
 
 NCS runs HIST as a virtual machine on a small host in the comms room. Virtualization helps recovery — a VM can be restored from a snapshot in minutes — but concentrates risk: compromise or failure of the hypervisor affects every VM on it. Management interfaces for the hypervisor belong on an isolated management network, never on the office VLAN.
+
+Priya's review of HIST found the hypervisor console reachable from the office VLAN; her plan moved it to the management VLAN, where only the OT management host can reach it.
 
 ### 6.3 Snapshots are not backups
 
 A snapshot lives on the same storage as the VM; if the storage fails or ransomware encrypts it, both go. A backup is a separate copy, ideally offline or immutable, with a tested restore. Record the restore test date — an untested backup is a hope.
 
+HIST had one snapshot, eight months old, and no separate backup. Priya's plan adds a nightly backup of the VM to a NAS on the OT management VLAN with an offline weekly copy, and a restore test into an isolated network next month.
+
 ### 6.4 Least privilege on hosts
 
 Operators use a named, non-administrator account; the vendor runtime uses a service account that cannot log in interactively; administrator rights are granted per task and logged.
+
+At NCS this replaced the shared "shift" login on HMI-C: operators now log in with named accounts that cannot install software, and the refrigeration vendor's runtime runs under a service account with no interactive logon. When Priya needed administrator rights to apply the allow-listing policy, she requested them for that change ticket, and the elevation was logged against the ticket number. The vendor's HMI runtime kept working because its service account, not an operator, owns the processes that talk to PLC-R1 and PLC-R2.
 
 ### Worked example (synthetic NCS)
 
@@ -328,21 +374,33 @@ You will (1) replace shared accounts with named accounts and roles; (2) design c
 
 At many sites one HMI password is shared by every shift and known to former staff. It cannot tell an investigator who changed a freezer setpoint, and it cannot be revoked for one person. Named accounts restore both attribution and revocation. IEC 62443-3-3 makes unique identification of human users a system requirement under its first foundational requirement.
 
+Priya's access review at NCS found exactly this: one shared "shift" account among 11 HMI accounts, plus two accounts belonging to former staff.
+
+A shared account also makes the evidence log weaker: an alarm acknowledged as "shift" cannot be tied to a person.
+
 ### 7.2 Roles
 
 NCS needs three HMI roles: viewer (night security guard checking temperatures), operator (acknowledge alarms, adjust setpoints within limits) and engineer (change limits and alarm settings). The contractor's laptop that programs PLC-R1 is a separate privilege again, controlled by possession of the laptop and its project password.
+
+The viewer role matters more than it looks. NCS's night security guard checks freezer temperatures on HMI-C during rounds; with a shared operator login, the guard could also have acknowledged alarms or changed a setpoint. A viewer account removes that by design. The contractor's programming laptop sits outside these roles because PLC-R1's project file, not HMI-C, controls what can be downloaded to the controller.
 
 ### 7.3 Contractors
 
 The refrigeration contractor needs access a few times a month. Give the contractor named accounts that are disabled by default, enabled for a ticket and a time window, and reviewed afterwards. Remove the always-on remote-access tool identified in Chapter 5.
 
+At NCS the two contractor accounts were always enabled. Priya set them to disabled-by-default; the facilities manager enables one for a ticket and a time window, and the session goes through the jump host, which records it. After the visit the account is disabled again, and the session record is filed with the ticket. The contractor visit pack in Chapter 25 turns these steps into a one-page form that takes four minutes.
+
 ### 7.4 Multi-factor authentication
 
 Use MFA for remote access and for engineering tools. On the control-room HMI, a slow MFA prompt during an alarm can be harmful; physical security of the room and short screen-lock times may be the better balance. Document the choice.
 
+Priya's choice at NCS: MFA on the jump host for contractor sessions and on the engineering tools, but not on HMI-C itself. The control room is locked, HMI-C locks after a short idle period, and operators log in with named accounts. An MFA prompt that delays an operator acknowledging a high-temperature alarm on Freezer-2 would create a worse risk than the one it removes, and that reasoning is written in the access policy.
+
 ### 7.5 Reviews
 
 Every quarter, list enabled accounts and compare with the staff and contractor list. Disable leavers the same day HR notifies you.
+
+At NCS this review found 11 HMI accounts: 6 current staff, 2 former staff, 1 shared "shift" account and 2 contractor accounts that were always enabled. The two former-staff accounts were disabled the same day; the shared account was replaced with named operator accounts within a month; the contractor accounts became disabled-by-default. The next quarter's review should start from that list and confirm that none of the four problems has returned, for example a new contractor account created during an emergency visit and never disabled.
 
 ### Worked example (synthetic NCS)
 
@@ -380,17 +438,27 @@ You will (1) divide a small facility into zones; (2) define conduits between zon
 
 IEC 62443-3-2 introduces zones (groups of assets with common security requirements) and conduits (the communication paths between them). NCS needs at least four zones: office, refrigeration control (PLC-R1, PLC-R2, HMI-C), logging and cameras (loggers, GW-LOG, CAM-DOCK), and a small DMZ holding the historian replica and the remote-access jump host.
 
+Priya's zone diagram showed rule 9 crossing office → control directly; because no listed conduit allowed it, the architecture document itself gave the reason to remove it.
+
+The diagram also made the DMZ's purpose concrete: it is where office users read data without entering the control zone.
+
 ### 8.2 Conduits
 
 Each conduit lists what may cross it. Office → DMZ: HTTPS to the historian replica's reports. DMZ → control: none initiated from the DMZ except the jump host's session to HMI-C when enabled. Control → DMZ: historian replication. Logging zone → internet: GW-LOG to vendor cloud on 443 only. Everything else is denied.
+
+Priya's conduit table has five columns: source zone, destination zone, protocol, initiator and purpose. The initiator column matters most: replication from control to DMZ is initiated by the control side, so the DMZ never needs a rule allowing it to open sessions inward.
 
 ### 8.3 Why a DMZ
 
 Without a DMZ, office users who need temperature reports connect straight into the control zone. With it, they reach a copy, and the control zone accepts no sessions from the office at all. That single change removes the path that most commodity ransomware uses to reach HMIs.
 
+At NCS the reports users want are temperature certificates and compressor run hours. OFFICE-7's energy macro read run hours directly from PLC-R2 over rule 9; Priya's fix had it read the same values from the historian replica in the DMZ, and only then was office → control blocked.
+
 ### 8.4 Defence in depth
 
 Layers at NCS: zone firewalls; named accounts; allow-listing on HMI-C; passive monitoring of the control zone; offline backups; and, outside the security team's control, independent ammonia detection and emergency ventilation. Each layer assumes the one before it can fail.
+
+Priya's evaluation in Chapter 23 shows the assumption at work: five of six controls passed, but the camera-zone rule allowed CAM-DOCK to reach HIST on a web port. The other layers, named accounts, allow-listing on HMI-C and passive monitoring, were still in place while the rule was narrowed.
 
 ### Worked example (synthetic NCS)
 
@@ -428,17 +496,27 @@ You will (1) collect evidence with timestamps, sources and hashes; (2) separate 
 
 For every observation record: what was observed, where, when (with clock source), by whom and how. For exported files add a SHA-256 hash, computed with `hashlib.sha256(open(path, "rb").read()).hexdigest()`, so anyone can confirm the file has not changed.
 
+Priya's entry E-014 is the pattern: timestamp 2026-03-03 10:22 with the laptop clock synced to NTP, her name, the firewall config exported from FW-1's web interface as fw1-0303.txt, and a SHA-256 hash recorded with the file.
+
+The hash, beginning 9c1e…, lets anyone confirm later that the file has not changed since that entry.
+
 ### 9.2 Observation and conclusion
 
 "Rule 9 permits any source to TCP 502 on 10.20.0.0/24 (firewall export 3 March, hash recorded)" is an observation. "Office ransomware could reach the PLCs" is a conclusion. Both belong in a report, labelled. Readers trust reports that make the line visible.
+
+Priya's entry E-014 keeps the two on separate lines: the observation that rule 9 allows any source to TCP 502 on 10.20.0.0/24, and, on its own line, the conclusion that office hosts can reach PLC Modbus ports. A reader who disagrees with the conclusion can still rely on the observation, and can check it against the hashed export.
 
 ### 9.3 Denominators
 
 "Five loggers have expired certificates" means little without "out of 40". "Two of 11 accounts belong to former staff" is clearer than "some leaver accounts exist". Percentages without counts hide small samples.
 
+At NCS the denominators come from Priya's own tables: 2 former-staff accounts out of 11 HMI accounts, 1 expired logger certificate out of the 4 the Chapter 22 lab checks, 2 unapproved flow types out of 7 conversations seen. Each count tells the reader both the size of the problem and the size of what was checked. A report that said "some accounts belong to leavers" would invite a reader to guess whether that meant 2 or 20.
+
 ### 9.4 Uncertainty
 
 If you checked 10 of 40 loggers and found 2 with default passwords, the fleet rate is uncertain. Say: "2 of 10 sampled; the remaining 30 not yet checked." Avoid extrapolating "20 % of the fleet" unless the sample was random and you state the uncertainty.
+
+At NCS, the vendor's answer that each logger has a unique password printed on its label is a claim about all 40; a sample of 10 checked on the bench tests it. If all 10 match the claim, write "10 of 10 sampled met it; 30 not checked", not "the fleet meets 5.1".
 
 ### Worked example (synthetic NCS)
 
@@ -449,6 +527,8 @@ Priya's evidence log entry: "E-014, 2026-03-03 10:22 (laptop clock synced to NTP
 ### 9.5 Chain of custody in a small site
 
 Small sites rarely have evidence lockers. A practical minimum at NCS is an encrypted folder per investigation, a read-only copy of every original export, and a custody log listing each transfer: who handed what to whom, when and why. If the case later goes to an insurer or to police, that log is what shows the evidence was not altered between the firewall and the report. Keep the log with the evidence, not in someone's e-mail.
+
+Priya's E-014 export is the first entry in such a log.
 
 ### Errors and limits
 
@@ -480,17 +560,27 @@ You will (1) define OT, IoT and cyber-physical systems in NCS terms; (2) describ
 
 Operational technology monitors and controls physical processes — here, compressors, evaporator fans and valves. IoT devices are network-connected sensors and actuators — here, the wireless temperature loggers and cameras. A cyber-physical system is the loop of sensing, computing and acting on the physical world. NCS is all three at once.
 
+At NCS the overlap is visible in one room: Freezer-2's probe feeds PLC-R1, while a wireless logger in the same room reports through GW-LOG to the cloud. One is OT, the other IoT, and both describe the same physical temperature, which is what makes the two-probe comparison in Chapter 24 possible.
+
 ### 10.2 The refrigeration loop
 
 A temperature probe in Freezer-2 reports −21 °C; PLC-R1 compares it with the −22 °C setpoint and increases compressor capacity; more refrigerant evaporates, the room cools, and the probe reports again. An attacker who changes the setpoint, falsifies the probe or overrides the compressor command breaks the loop. ATT&CK for ICS T0836 *Modify Parameter* covers the setpoint case.
+
+Priya's map of this loop, probe TT-F2 → PLC-R1 → compressor C-1 → evaporator → room → TT-F2, adds two independent paths: the wireless logger's second temperature view and the gas-detection panel that trips ventilation without PLC-R1.
 
 ### 10.3 Guidance map
 
 NIST SP 800-82r3 guides OT security programmes for asset owners such as NCS. The IEC 62443 series covers industrial automation and control systems for owners, integrators and product suppliers. NIST IR 8259 describes cybersecurity activities for IoT device manufacturers, and ETSI EN 303 645 sets a baseline for consumer IoT products — useful as a checklist for buying loggers and cameras.
 
+Priya uses EN 303 645 for exactly that purpose: her vendor questionnaire for the loggers asks the 5.1, 5.2, 5.3, 5.5 and 5.8 questions before NCS buys more.
+
+The answers then decide whether a compensating control, such as comparing logger and PLC probes, is needed.
+
 ### 10.4 Safety stays separate
 
 Ammonia gas detection and emergency ventilation are life-safety systems. Security work may observe and report on them, but changes go through the safety owner and the refrigeration engineer, never as a side effect of a firewall project.
+
+At NCS this rule applies directly to Priya's firewall work. When she moved the dock cameras into their own zone, she confirmed with the refrigeration engineer that the gas-detection panel had no network connection the change could affect. If it had, the change would have gone to the safety owner first. Her reports may note that the gas-detection panel trips ventilation without PLC-R1, which reduces several cyber scenarios, but she does not test or reconfigure it.
 
 ### Worked example (synthetic NCS)
 
@@ -548,17 +638,27 @@ PLC-R1    docs=fw 2.4      network=fw 2.4   match
 PLC-R2    docs=fw 2.4      network=fw 2.1   VERSION-CONFLICT
 ```
 
+At NCS, the documentation lacked CAM-DOCK, and the observation lacked HMI-C; neither source alone was the inventory.
+
+The comparison also produced PLC-R2's version conflict, which only a walk-down could settle.
+
 ### 11.2 Reading the conflicts
 
 CAM-DOCK appears only on the network: someone installed a camera without updating records. HMI-C appears only in documentation: it may have been quiet during the observation window, or its traffic was not captured. PLC-R2 shows a version conflict — documentation says 2.4, the network shows 2.1 — which matters because an advisory might affect 2.1 but not 2.4.
+
+Priya resolved the PLC-R2 conflict by walking the machine room with the contractor and reading the version from the front panel: 2.1. The documentation was wrong; the controller had never been upgraded. She corrected the inventory with the walk-down as source.
 
 ### 11.3 Context
 
 For each asset add function, zone, owner and consequence of loss. The camera's consequence is low for cooling but it may be an entry point; PLC-R2's consequence is high, so its version conflict goes first.
 
+Priya's notebook gives each of the five rows those four fields. PLC-R2: compressor control, refrigeration control zone, contractor and facilities manager, loss of cooling within hours. CAM-DOCK: dock video, currently on the logging network, logistics team, low for cooling but a possible foothold. The consequence column is what turns five statuses into an ordered work list.
+
 ### 11.4 Unknown devices
 
 An unknown device is investigated physically before anything else: find it, identify the owner, decide whether it belongs. Never "test" an unknown device by sending it traffic.
+
+At NCS, the unknown address 10.4.2.77 seen in Chapter 19 was traced this way: a physical search found a dock printer plugged into a camera-zone port, installed by the logistics team with an address copied from another site's plan. Nobody sent it a packet to find out what it was. It was moved, re-addressed and added to the inventory with logistics as owner.
 
 ### Worked example (synthetic NCS)
 
@@ -617,17 +717,27 @@ GW-LOG   -> PLC-R1    :502  UNAPPROVED
 approved but not seen: [('HMI-C', 'PLC-R2', 502)]
 ```
 
+The lab compares those four approved flows with seven observed conversations.
+
+The approved flows are HMI-C to each PLC, the historian polling PLC-R1, and GW-LOG to the cloud on 443. Chapter 27 later shows that the list was missing the historian's polling of PLC-R2, an approved flow nobody had written down.
+
 ### 12.2 Unapproved flows
 
 OFFICE-7 talking Modbus to PLC-R2 is exactly what rule 9 allowed. It might be an engineer's spreadsheet macro, or malware. Either way it is a path from the office to a compressor controller. GW-LOG talking to PLC-R1 is stranger: the logger gateway has no reason to speak Modbus. It could be a vendor "integration" feature or a sign of compromise.
+
+Priya traced both. OFFICE-7 ran an energy report macro reading compressor run hours from PLC-R2; the logger vendor confirmed an unused "PLC integration" feature on GW-LOG, enabled by default, which was disabled.
 
 ### 12.3 Approved but unused
 
 HMI-C → PLC-R2 did not appear. Perhaps the window was short; perhaps the HMI reads PLC-R2 through PLC-R1. Unused approvals are candidates for removal after checking with operations — fewer open paths, less to defend.
 
+Chapter 27 shows the risk of reading this too quickly. The observation window also missed the historian polling PLC-R2, so the flow matrix listed HIST → PLC-R1 only. When the new rule set went live, HIST stopped receiving PLC-R2 tags within four minutes and Priya rolled back. An approved-but-unseen flow is a question for operations and the vendors, not proof the flow is unused.
+
 ### 12.4 From comparison to change
 
 Each unapproved flow gets an owner and a decision: approve with justification (and update the matrix), or block. Blocking happens in a planned window with operations informed, because a "mystery" flow may turn out to be something the plant needs.
+
+Priya's two decisions: OFFICE-7's energy macro was moved to read run hours from the historian replica in the DMZ, and office → control was blocked in the 20 March maintenance window after the switch; GW-LOG's "PLC integration" feature was disabled with the logger vendor's agreement, and the flow disappeared without a firewall change.
 
 ### Worked example (synthetic NCS)
 
@@ -665,17 +775,27 @@ You will (1) write risk scenarios that link a threat, a path and a physical cons
 
 A useful scenario reads: "[Threat] uses [path] to cause [action], leading to [consequence], unless [safeguard] works." For NCS: "Office ransomware uses the office → control flow to encrypt HMI-C, leaving operators without a screen; cooling continues on PLC logic, but alarms are invisible until the screen is restored, unless the cloud logger alerts reach the duty manager's phone."
 
+Priya's three NCS scenarios follow this form: contractor remote tool misused to change freezer setpoints, office ransomware reaching HMI-C, and an internet-exposed camera used as a foothold.
+
 ### 13.2 Scales
 
 A three-point consequence scale suits a small site: 1 = inconvenience, 2 = stock loss or regulatory issue, 3 = harm to people or loss of the business. Likelihood, also 1–3, is a judgement based on exposure and known threat activity. Write the reason beside each score.
+
+Priya's scores show the scale in use: the contractor-tool scenario is consequence 2, because a changed freezer setpoint means stock loss rather than harm to people, and likelihood 2, because the tool was always on but the contractor's credentials were not known to be exposed. The camera foothold is consequence 1, likelihood 2. Each score has its reason written beside it.
 
 ### 13.3 Safeguards
 
 Existing safeguards change the story. Independent ammonia detection makes a cyber-caused gas release unlikely to go unnoticed. Cloud logger alerts provide a second view of temperature. PLC logic keeps cooling if the HMI is lost. Listing safeguards stops scenarios from sounding worse than they are — and shows which safeguard is doing a lot of work.
 
+At NCS, the cloud logger alerts carry the contractor-tool scenario: they are the safeguard that would reveal a changed freezer setpoint.
+
+If a contractor's tool changed a setpoint, the alerts would show the room warming before the stock was spoiled.
+
 ### 13.4 Ranking
 
 Rank by consequence first, then likelihood, then how cheaply the scenario can be reduced. A scenario with consequence 2 and an easy fix often deserves action before a consequence-3 scenario whose safeguard is already strong.
+
+Priya's ranking follows this rule. The contractor-tool and office-ransomware scenarios both score consequence 2 and likelihood 2; ransomware comes second only because its safeguard, PLC logic that keeps cooling without HMI-C, is stronger than the cloud alerts protecting against a changed setpoint. Removing rule 9 then went first among the controls, because it was cheap and reduced two scenarios at once, as Chapter 18 explains.
 
 ### Worked example (synthetic NCS)
 
@@ -713,17 +833,27 @@ You will (1) run a structured site walk-down; (2) interview operators and contra
 
 Walk the site with someone who owns it. Look for network sockets in odd places, cellular routers in panels, labels with passwords, laptops left connected, USB sticks in HMIs, and devices not in the inventory. Photograph only with permission, and avoid capturing screens showing customer data.
 
+Priya's walk-down at NCS found the most important item on this list: a small cellular router in panel MP-2 labelled "contractor backup access", installed two years earlier during a network outage and forgotten. It provided a second remote path to PLC-R2 that no firewall rule showed.
+
 ### 14.2 Interviews
 
 Ask operators what they do when the HMI freezes, who calls the contractor, and what changed recently. Ask the contractor how they connect, what tools they use and where backups live. Open questions ("walk me through a remote support call") reveal more than yes/no checklists. Take notes with the interviewee's name, role and date; separate what they said from what you saw.
+
+The interview with the contractor explained the MP-2 router in one sentence, recorded as I-04.
+
+The contractor said the router was installed during a two-day internet outage so he could still reach PLC-R2, and nobody removed it.
 
 ### 14.3 Configuration review
 
 Export configurations through supported interfaces with read-only accounts: firewall rule sets, switch VLAN settings, HMI user lists. Review exports on your own workstation, not on the device. Hash exports as in Chapter 9.
 
+At NCS the firewall export came from FW-1's web interface using a read-only account, saved as fw1-0303.txt and hashed as E-014. The HMI-C user list came the same way, which is where the 11 accounts in Chapter 7 came from. Reviewing on Priya's workstation meant she could search and annotate the rule set without any risk of saving a change to FW-1 by accident, and the hash shows later that the file she reviewed is the file she exported.
+
 ### 14.4 Assembling findings
 
 Each finding: title, evidence IDs, affected assets, scenario link, recommendation and owner. One finding per issue; combining unrelated issues makes them impossible to close.
+
+Priya's finding F-07 follows this form: title, undocumented cellular router in MP-2; evidence, photo E-021 and interview I-04; affected asset, PLC-R2; scenario link, the contractor remote-access scenario, because it is a second remote path; recommendation, remove it, or keep it powered off and enabled only on request with the facilities manager's approval; owner, the facilities manager. It does not mention the shared HMI password, which is a separate finding with a separate owner and closing date, even though Priya found both in the same week.
 
 ### Worked example (synthetic NCS)
 
@@ -780,17 +910,29 @@ Run with `python3 lab_excursion.py`. Verified output:
 excursion 15-35 min, duration 20 min, peak 8.4 C, alarm raised (delay 10 min)
 ```
 
+The anteroom data are synthetic set A, which Priya used for her write-up below.
+
+Set A has 5-minute sampling, a 5 °C limit and a 10-minute alarm delay, the values her record repeats.
+
 ### 15.2 Interpreting
 
 The excursion started at 15 minutes and ended at 35, lasting 20 minutes with a peak of 8.4 °C. The alarm fired because 20 ≥ 10. The output also tells us the resolution limit: with five-minute samples, the true start could be anywhere between minutes 10 and 15.
+
+That five-minute uncertainty matters for a food-safety record: a customer contract that allows excursions up to 20 minutes would be met or breached depending on where in that window the excursion really began. Priya's write-up states the duration as 20 minutes, with the start uncertain by up to five, and leaves the contractual judgement to the quality manager.
 
 ### 15.3 What an attacker would change
 
 If readings for minutes 15–30 were replaced with values around 4 °C, the script would report no excursion at all — the record would show compliance while the goods warmed. This is why Chapter 13's scenario compares cloud logger data with the PLC's own probe in the historian: two independent records are much harder to falsify consistently.
 
+Priya's write-up lists the missing cross-check as a limitation: synthetic set A has no HIST probe to compare.
+
+In real NCS data, HIST's probe in the anteroom would be the cross-check: a logger reading that disagrees with it is a question before it is an excursion.
+
 ### 15.4 Recording the result
 
 Record the input file (or its hash), the script version, the limit and delay parameters, and the output. Another technologist must be able to reproduce it exactly.
+
+Priya's record reads: "Lab 15 on anteroom readings (synthetic set A): one excursion 15–35 min, 20 min, peak 8.4 °C, alarm raised under 10-min delay. Resolution: 5-min sampling, so start uncertain by up to 5 min. Integrity check: compared with HIST probe TT-A1 — not available in synthetic set; listed as limitation." With the input file's hash and the limit of 5 °C and delay of 10 minutes recorded, another technologist can rerun it and get the same line.
 
 ### Worked example (synthetic NCS)
 
@@ -828,17 +970,25 @@ You will (1) apply a simple threat-modelling pass to the logger system; (2) asse
 
 Draw the logger system: loggers → radio → GW-LOG → firewall → vendor cloud → web portal used by the quality manager. At each arrow ask: can someone pretend to be the sender, change the data, read it, block it, or gain more control than intended? This prompt list, adapted from STRIDE, produces a short threat list in under an hour.
 
+Priya's pass at NCS produced, among other entries, "radio replay of old readings", with the assumption that an attacker would need to be within about 100 m of the loggers.
+
 ### 16.2 Product baseline questions
 
 ETSI EN 303 645 gives concrete questions for each IoT product: does it ship with a universal default password (5.1)? Does the vendor publish a way to report vulnerabilities (5.2)? Can its software be updated securely (5.3)? Does it communicate securely (5.5)? Is personal data protected (5.8)? The answers can come from documentation, a vendor questionnaire and, for some items, a bench check.
+
+The logger vendor's answers to Priya's questionnaire: unique per-device passwords on labels (5.1 met), a disclosure page (5.2 met), signed updates applied only remotely by the vendor (5.3 met with a dependency), and TLS to the cloud but an unencrypted radio link (5.5 partly met).
 
 ### 16.3 Reading vendor claims
 
 "Bank-grade encryption" is not an answer to 5.5; "TLS 1.2 or later with server certificate validation, certificates pinned to the vendor CA" is. Ask for specifics, and note when the vendor cannot provide them.
 
+The NCS logger vendor's answer for 5.5 was specific enough to act on: TLS to the cloud, but no encryption on the radio link between loggers and GW-LOG. That "partly met" is more useful than a confident marketing phrase, because it tells Priya exactly where the compensating control must go: comparing logger readings with PLC probes, as in Chapter 18. A vendor who could only say "secure communication" would have left the radio link unexamined.
+
 ### 16.4 Assumptions
 
 Threat models rest on assumptions: the radio link range is about 100 m; the portal uses MFA; the vendor's cloud is operated securely. Write them down; if one proves false, revisit the model.
+
+Priya's list for the logger system includes the roughly 100 m radio range, which defines who can attempt a replay of old readings; the vendor's statement that it applies signed updates remotely, on which 5.3 depends; and the quality manager's portal using MFA, which she had not verified. If the portal turned out to have no MFA, "cloud account compromise" would move up her list, so the assumption is marked to be checked at the next vendor review.
 
 ### Worked example (synthetic NCS)
 
@@ -876,17 +1026,29 @@ You will (1) choose safe tools for OT observation; (2) configure a passive captu
 
 Passive tools listen; active tools send. In OT, passive tools are the default because active probes can upset old devices. NIST SP 800-82r3 discusses the risk of active scanning in OT environments and the value of passive monitoring. A mirror (SPAN) port on the control-zone switch copies traffic to a monitoring laptop or sensor without changing the traffic itself.
 
+Priya's capture used port 24 on control-zone switch SW-C, mirroring ports 1–8 where the PLCs, HMI-C and HIST connect.
+
+Mirroring needed only a configuration change on SW-C, made by the network owner, with no device on ports 1–8 restarted.
+
 ### 17.2 Setting up a capture
 
 Agree the switch port with the network owner; configure the mirror in a change window; connect a capture host whose network interface has no IP address, so it cannot transmit. Record start and end times, the switch, the mirrored ports and the packet-loss counters.
+
+Priya's plan for NCS: SW-C port 24 mirrors ports 1–8, the capture host has IP disabled, and the capture runs 72 hours so that it includes a defrost cycle, when traffic patterns change. Loss counters are read at the start and the end, and the permit names the facilities manager as the person who can stop the work.
 
 ### 17.3 Offline analysis
 
 Analyse captures on an isolated workstation: protocol decoders identify Modbus function codes, conversation lists show who talks to whom, and simple Python scripts like those in Chapters 11–12 compare results with the inventory and flow matrix.
 
+Priya's 72-hour SW-C capture fed both the Chapter 11 inventory comparison and the Chapter 12 flow comparison. It also missed something: the historian's polling of PLC-R2 did not appear in the window, which is why HIST → PLC-R2 was missing from the flow matrix and the first firewall deployment in Chapter 27 had to be rolled back. Offline analysis can only report what the capture contains.
+
 ### 17.4 Controlling tools
 
 Each tool used on site is listed in the work permit with its version and mode (passive only). Engineering tools from the contractor — PLC programming software — are not security tools; their use is the contractor's, under change control.
+
+Priya's permit lists the capture tool and its version, passive mode only, and the switch configuration change for the mirror port, which the network owner makes.
+
+It also lists the stop conditions: any HMI alarm the operators cannot explain, or a switch CPU warning, ends the capture, and the facilities manager is told first. A stopped capture is recorded in the evidence log with its duration.
 
 ### Worked example (synthetic NCS)
 
@@ -924,27 +1086,39 @@ You will (1) select controls for NCS's top scenarios; (2) map them to IEC 62443-
 
 Scenario 1 (contractor remote tool misused): replace the always-on tool with supervised sessions through a jump host (FR 1 identification and authentication; FR 5 restricted data flow), and record sessions (FR 6 timely response to events). Scenario 2 (office ransomware reaches HMI-C): remove rule 9 (FR 5), allow-list applications on HMI-C (FR 3 system integrity), and keep offline backups (FR 7 resource availability).
 
+Priya's first register entry is C-04, supervised contractor sessions, linked to scenario 1 only: it does nothing for the office-ransomware or camera scenarios, which need their own controls. Its test, an attempted session without approval that must be refused, is concrete enough for the facilities manager to repeat without her.
+
 ### 18.2 Operational effects
 
 Ask of each control: what happens on a bad day? Supervised sessions mean the contractor waits for approval at 3 a.m.; NCS needs an on-call approver. Allow-listing may block an emergency diagnostic tool; keep a documented, monitored exception process.
+
+NCS answered the first question with an on-call approver rota, which later went on the first page of the contractor visit pack. When the night operator tested version one of the pack, she could not find the approver's number at all, so the rota became the single most important line in it. For allow-listing, the exception process names who can approve an emergency tool and how the use is logged and reviewed afterwards.
 
 ### 18.3 Compensating controls
 
 The temperature loggers' radio link is unencrypted and cannot be changed (Chapter 16). Compensate: compare logger data with PLC probes (detect falsification); alert on sudden step changes; ask the vendor about encrypted models at the next purchase. PLC-R2 cannot authenticate Modbus clients; compensate by allowing only HMI-C and HIST to reach it.
 
+Priya's mini-study in Chapter 24 tests the first compensating control: on four synthetic weeks with ten injected falsifications, the two-probe comparison flagged all ten within 10 minutes.
+
+The cloud's own alert flagged none, because the falsified values stayed within range.
+
 ### 18.4 Recording controls
 
 A control register lists control, scenario, foundational requirement, owner, test method and last test date. Untested controls are listed as "assumed".
 
+Priya's register lists C-04, supervised contractor sessions, as tested on 2026-04-02 and passed. Removing rule 9 is listed with its test, an attempted connection from OFFICE-7 to PLC-R2:502, expected refused. Allow-listing on HMI-C is listed as "assumed" until the vendor-tested policy is deployed and a blocked test executable is recorded. The "assumed" label keeps the register honest: management can see that the plan has more controls than evidence. Chapter 23 converts most of the assumed entries into tested ones, and one of them fails its first test.
+
 ### Worked example (synthetic NCS)
 
-Priya's register row: "C-04 Supervised contractor sessions via jump host — scenarios 1 and 3 — FR 1/FR 5/FR 6 — owner facilities manager — test: attempt session without approval, expect refusal — last test 2026-04-02 passed."
+Priya's register row: "C-04 Supervised contractor sessions via jump host — scenario 1 — FR 1/FR 5/FR 6 — owner facilities manager — test: attempt session without approval, expect refusal — last test 2026-04-02 passed."
 
 > **Synthetic case — Northgate Cold Storage.** Register entries are invented.
 
 ### 18.5 Prioritising with limited budget
 
 NCS cannot buy everything at once. Priya orders controls by how many scenarios each one reduces and how cheap it is: removing rule 9 costs one maintenance window and reduces two scenarios, so it goes first; allow-listing needs vendor testing and goes second; replacing the loggers with encrypted models waits for the normal replacement cycle, with the compensating comparison check in place meanwhile.
+
+The order is visible in Priya's evaluation six months later: rule 9 gone, supervised sessions tested, certificates automated, loggers not yet replaced.
 
 ### Errors and limits
 
@@ -994,17 +1168,27 @@ new talkers: ['LAPTOP-V3', 'UNKNOWN-10.4.2.77']
 events: 8 unique hosts: 7 new: 2
 ```
 
+Priya's capture from SW-C supplied the baseline used in the lab: five hosts, HMI-C, PLC-R1, PLC-R2, HIST and GW-LOG, seen over seven days. Anything outside that set raises a new-talker alert, which is why the contractor's laptop and the dock printer both appear in the lab output.
+
 ### 19.2 Reading the alerts
 
 LAPTOP-V3 appeared twice; UNKNOWN-10.4.2.77 once. The laptop is probably the contractor's (check the visit log). The unknown address is in no NCS subnet at all — that is more urgent, because it suggests a misconfigured device or a path the architecture does not include.
+
+Both were resolved within an hour. The visit log showed the contractor on site with laptop V3 from 09:00 to 11:30, matching the alert times, so that alert was closed with the visit reference. The address 10.4.2.77 turned out to be a dock printer with an address from another site's plan.
 
 ### 19.3 Triage with operations
 
 The analyst calls the facilities manager before acting: is a contractor on site? Did anyone add equipment? Operations context resolves most alerts in minutes. Only unexplained alerts escalate.
 
+At NCS, both of the lab's new talkers were explained this way. The facilities manager's visit log showed the contractor on site with laptop V3 from 09:00 to 11:30, so that alert closed with the visit reference. The unknown 10.4.2.77 needed a walk to the dock, where a logistics printer was found in a camera-zone port. Neither required touching the control network. Had the visit log shown no contractor that morning, LAPTOP-V3 would have escalated at once.
+
 ### 19.4 Tuning
 
 Expected changes — scheduled contractor visits, a new logger — should be added to the baseline through a change ticket, not silenced by a blanket rule. Review alert counts monthly; if most alerts are explained routine events, improve the change-ticket link rather than raising thresholds.
+
+For NCS, contractor visits come with a ticket, so the visit-log link from Chapter 25's contractor pack lets LAPTOP-V3's appearance be matched automatically to an open ticket.
+
+An alert with no matching ticket then goes to the security lead rather than being closed by the operator.
 
 ### Worked example (synthetic NCS)
 
@@ -1042,17 +1226,25 @@ You will (1) separate cyber causes from ordinary faults; (2) troubleshoot commun
 
 When HMI-C shows stale values, the cause is usually a cable, a switch port, a failed power supply or an expired licence. Treat it as a fault first, but keep the security possibility in mind and preserve evidence while you work. Jumping to "we are hacked" wastes time; ignoring the possibility can destroy the record an investigation would need.
 
+Priya's first stale-value fault on PLC-R2 was a patch cable with rising CRC errors; the second, a week later, was not.
+
 ### 20.2 A layered method
 
 Work up the stack: power and link lights; switch port status and errors; IP reachability from a host on the same subnet (with permission); the protocol session (does HMI-C show a communication error code?); then application configuration. Change one thing at a time and write down each step and result.
+
+Priya's first PLC-R2 fault followed this order: link light on, switch port showing rising CRC errors, new patch cable, errors stop, values update. She recorded the fault as physical, with the error counters as evidence. Stopping at the first layer that explained the symptom kept her from touching the PLC at all.
 
 ### 20.3 Evidence-preserving habits
 
 Before rebooting a host that might be compromised, export its logs and note its running processes. Before replacing a device, photograph its labels and settings. A reboot clears memory that might show malware; a replacement removes the original firmware state.
 
+When PLC-R2's values froze again a week later with no port errors, Priya compared its program against the backup before anyone restarted it, and found a difference. A restart would have reloaded the program from the controller's memory and left the question of who changed it with less evidence. She escalated with the comparison output and the port counters attached.
+
 ### 20.4 Stop and escalate
 
 Stop and call the security lead if you find: unknown processes or accounts, configuration changes nobody made, traffic to unknown destinations, or a device whose program differs from the backup.
+
+At NCS, the second PLC-R2 freeze met the fourth condition: the controller's program differed from the backup, so Priya escalated instead of restarting. The same rule applied on her third site visit, when an operator asked her to "quickly reset" a frozen HMI. She declined, checked the switch port counters read-only and called the contractor, who found a failing power supply. If the freeze had had a cyber cause, the reset would have erased what the investigation needed.
 
 ### Worked example (synthetic NCS)
 
@@ -1090,17 +1282,27 @@ You will (1) integrate OT data with business services without opening control pa
 
 Customers want temperature certificates for their stored goods; finance wants compressor energy use; the logistics system wants dock door states. Each request tempts someone to connect a business system straight to a PLC. The integration principle is: business systems read copies in the DMZ or cloud, never the control zone directly.
 
+OFFICE-7's energy macro was this temptation in practice: it read compressor run hours straight from PLC-R2 until Priya moved it to the replica.
+
+The macro's polling also added load on PLC-R2 at times nobody had planned for.
+
 ### 21.2 Patterns
 
 Historian replication pushes data from the control zone to a DMZ replica (Chapter 8). For stronger guarantees, a data diode or one-way gateway allows traffic in one direction only by hardware design. For cloud services, the gateway initiates outbound TLS connections and never accepts inbound ones. Integration through files — a nightly CSV export to a shared folder — is acceptable if the share lives in the DMZ and is write-only from the control side.
+
+At NCS, HIST pushes to the DMZ replica, and GW-LOG reaches the vendor cloud outbound only through rule 21.
 
 ### 21.3 API security
 
 Customer certificate generation uses the logger vendor's cloud API. Use a dedicated API key per integration with least privilege (read temperatures for specific rooms), store it in a secrets vault, rotate it, and log its use. Never embed keys in spreadsheets or scripts on shared drives.
 
+For NCS's customer certificates, the key would be scoped to reading temperatures for the rooms that customer's goods occupy, held in the vault entry referenced from the asset table, rotated at least yearly and on any staff change, and logged so that an unusual pattern, such as reads for every room, shows up. A key found in a spreadsheet on the shared drive would give anyone with the drive every room's history.
+
 ### 21.4 Dependencies
 
 Write each integration's dependencies: the vendor cloud, DNS, certificates, the API key, the DMZ share. When one breaks, you know what else stops.
+
+For the certificate integration at NCS: the logger vendor's cloud and its API, DNS for the cloud's name, the TLS certificate chain, the API key in the vault, and the DMZ share where the generated certificates land. LOG-03's expired certificate in Chapter 22 is a reminder that a dependency can fail quietly: the logger stopped uploading on 5 October, and the customer's certificate for that room would have had a seven-day gap without the PLC probe history in HIST.
 
 ### Worked example (synthetic NCS)
 
@@ -1158,17 +1360,27 @@ LOG-04 expires 2026-12-20 in   69 days -> plan
 LOG-02 expires 2027-06-30 in  261 days -> ok
 ```
 
+Priya's checks start with the certificate expiry check below; its first run found one expired certificate and one due for renewal.
+
+The check reads each logger's certificate expiry from the vendor's export and sorts loggers into expired, renew-now, plan and ok. Its first run gave LOG-03 expired, LOG-01 at 21 days, LOG-04 at 69 days and LOG-02 ok at 261 days.
+
 ### 22.2 Reading the report
 
 LOG-03's certificate expired a week ago, so that logger is probably failing to connect and readings are missing. LOG-01 has 21 days left and needs renewal now, given vendor lead times. LOG-04 should be planned; LOG-02 is fine. Sorting by expiry date puts the urgent items first.
+
+Priya scheduled the check at 06:00 daily. Its first run opened tickets for LOG-03 and LOG-01. The vendor confirmed LOG-03 had stopped uploading on 5 October; the quality manager recorded a seven-day gap in the cloud records for that room, covered by the PLC probe history in HIST.
 
 ### 22.3 Report, do not change
 
 The script prints and could e-mail the report; it does not renew certificates by itself. Renewal goes through the vendor's process, because an automated renewal that fails halfway could leave a logger offline.
 
+Priya's check opens tickets; it does not act. LOG-01, with 21 days left, was renewed through the vendor's process within the week, and the ticket records the new expiry date. Had the script tried to renew LOG-03 automatically and failed halfway, NCS could have lost a second logger without knowing. Keeping the script report-only also means it needs no write access to the vendor portal, so its credentials are worth less if the management host is compromised.
+
 ### 22.4 Scheduling and logging
 
 Run the check daily from a scheduler on a management host in the OT management VLAN, write output to a log with timestamps, and alert if the job did not run. A silent automation failure is worse than no automation, because people stop checking manually.
+
+At NCS the job runs on the OT management host at 06:00, logs each run with its timestamp, and the scheduler raises an alert if no log line appears by 06:15. That alert matters because the certificate check is the only reason anyone looks at logger expiry dates now.
 
 ### Worked example (synthetic NCS)
 
@@ -1206,17 +1418,25 @@ You will (1) evaluate whether controls achieved their purpose; (2) design simple
 
 After six months of changes at NCS — rule 9 removed, supervised contractor sessions, camera zone, certificate automation — management asks whether the site is "more secure". An evaluation answers narrower, testable questions: is the office → control path closed? Do contractor sessions require approval? Are certificates renewed before expiry?
 
+Each question maps to a control in Priya's register and to a test that can fail. Asking "is NCS more secure?" would invite a yes that nobody could check; asking whether OFFICE-7 can still reach PLC-R2:502 invites a refused connection in a firewall log, which anyone can check.
+
 ### 23.2 Tests with expected results
 
 For each control, write the test and the expected result before running it: "From OFFICE-7, attempt a TCP connection to PLC-R2:502 in the maintenance window; expected: refused at the firewall and logged." "Contractor attempts to connect without approval; expected: jump host denies." Tests that touch the control zone are run in maintenance windows with operations informed.
+
+Priya's table had six such tests with expected results written first. Five passed. The sixth found the camera-zone rule letting CAM-DOCK reach HIST on a web port, because a broad "camera to server" rule had been written instead of one naming the video recorder.
 
 ### 23.3 Before and after
 
 Measures that existed before changes give a comparison: unapproved flows per week (before: 2 types; after: 0), HMI accounts belonging to leavers (before 2; after 0), days of logger data lost to expired certificates (before 7 in one incident; after 0 in six months).
 
+All three measures existed before the changes because Priya's earlier work produced them: the Chapter 12 flow comparison counted the unapproved flows, the Chapter 7 review counted the leaver accounts and the Chapter 22 check dated the LOG-03 gap. Without that baseline, the six-month evaluation could only have said that the problems were not seen now.
+
 ### 23.4 Honest reporting
 
 Report what failed. If one contractor still used the cellular router (Chapter 14) because it was switched on for an emergency and never switched off, say so, with the corrective action. Evaluations that report only successes stop being believed.
+
+Priya's evaluation reports its one failure the same way: the camera-zone rule allowed CAM-DOCK to reach HIST on a web port; the corrective action narrows the rule to the video recorder only, and a retest is scheduled. Reporting five of six as five of six is what makes the five believable.
 
 ### Worked example (synthetic NCS)
 
@@ -1254,17 +1474,27 @@ You will (1) frame a small applied research question from operational practice; 
 
 Applied research at technologist level answers a question someone at the site actually has. "Does comparing logger data with PLC probes detect falsified readings faster than the cloud's own alert?" is such a question; it is specific, measurable on recorded or synthetic data, and its answer changes what NCS does.
 
+Priya's mini-study takes that question: four synthetic weeks of anteroom data with ten injected falsifications, comparing her two-probe check with the cloud's own high-temperature alert.
+
+The hypothesis is that falsified readings that stay within range are invisible to a threshold alert.
+
 ### 24.2 Data and method
 
 Use historical data the owner provides, or synthetic data with realistic properties, and say which. A method can be as simple as replaying recorded weeks with injected falsifications and measuring how long each check takes to flag them. The method must be repeatable by someone else.
+
+Priya's method was this replay: four synthetic weeks of anteroom readings, with ten falsifications injected at known times, run through both the two-probe comparison and the cloud's high-temperature alert. She labels the data synthetic in every table and keeps the injection script, so someone else can regenerate the same weeks.
 
 ### 24.3 Measures and comparisons
 
 Choose measures before running: time to detect, false alerts per week. Compare against the current practice (the cloud alert) rather than against nothing. Report counts: "detected 9 of 10 injected falsifications; 1 false alert in 4 weeks".
 
+Priya's result fits this pattern: the two-probe comparison with a 2 °C tolerance flagged all ten falsifications within 10 minutes; the cloud's alert flagged none, because the falsified values stayed in range. She also needs the false-alert count for the two-probe check over the four weeks, without which the comparison is incomplete. Her stated limitation is that synthetic noise is simpler than real door openings, which may cause disagreements between probes.
+
 ### 24.4 Sources
 
 Use primary and peer-reviewed sources. Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245) survey physics-based attack detection — the idea of checking sensor data against physical expectations, which is what comparing two independent probes does. NIST SP 800-82r3 gives programme context. Vendor blog posts are background, not evidence.
+
+Priya's study cites Giraldo et al. to frame the two-probe check as a simple physics-based consistency test, not as proof that it works at NCS. Her evidence for that is her own four-week result.
 
 ### Worked example (synthetic NCS)
 
@@ -1302,21 +1532,33 @@ You will (1) plan a team project with roles and milestones; (2) run short design
 
 Teams of three take one NCS improvement from idea to deliverable in six weeks. This cohort's brief: a "contractor visit pack" — the procedure, forms and checks that let a refrigeration contractor do remote or on-site work securely without slowing repairs.
 
+Priya's team took this brief, and its first version failed the most important test: the night operator.
+
+Version one took the contractor 14 minutes to complete, and the night operator could not find who to call for approval. The team had four weeks, four owners and a weekly review with the facilities manager, which is where that failure was reported and acted on.
+
 ### 25.2 Roles
 
 One student owns the procedure text, one the technical checks (jump-host configuration, visit-log integration with monitoring from Chapter 19), one the user test with a real contractor and operator. Each role has a named reviewer from the site. Shared work lives in one versioned folder.
+
+In Priya's team, the user-test owner ran the session with the contractor and the night operator that exposed the 14-minute form. The technical-checks owner tied the visit log to the Chapter 19 new-talker alerts, so a contractor laptop on site during a ticket is expected rather than flagged.
 
 ### 25.3 Reviews
 
 Weekly 20-minute reviews follow one format: what changed, what we learned, what we need, what is at risk. The site reviewer can stop work that would affect operations.
 
+At NCS the site reviewer was the facilities manager, and the format worked in week three, when the team reported the 14-minute test result under "what we learned" and the missing approver number under "what is at risk". The review decided to put the approver rota on the first page before any more procedure text was written.
+
 ### 25.4 Scope and dependencies
 
 The pack depends on the jump host existing and the on-call approver rota (Chapter 18). If either slips, the team writes the pack against the agreed design and marks the dependency, rather than inventing a workaround.
 
+In Priya's team the dependency was real: the jump host was still being configured when the pack was drafted. The pack therefore describes the agreed design, sessions through the jump host enabled per ticket, and marks the jump-host steps "pending C-04 deployment" rather than describing a temporary workaround through the desktop-sharing tool that the project was meant to remove.
+
 ### 25.5 Usable deliverables
 
 Test with the people who will use it. If the contractor cannot complete the visit form in under five minutes at 3 a.m., it will be skipped.
+
+Priya's team learned this directly. The first version of the contractor visit pack took 14 minutes to complete, and the night operator could not find the approver's number. Version two put the approver rota on the first page, cut the form to six fields and pre-filled site details. The retest took four minutes, and the contractor asked for a copy to use at another site, which is the best evidence a usability test can produce.
 
 ### Worked example (synthetic NCS)
 
@@ -1370,17 +1612,27 @@ present 5/7; missing: ['contacts', 'restore test date']
 handoff BLOCKED
 ```
 
+At NCS the receiving owner is the facilities manager, and the people running it are the night operators who will see the alerts first.
+
+Priya's handoff checklist has seven items; the first run found five present and marked the handoff BLOCKED.
+
 ### 26.2 Reading the check
 
 The package lacks contacts and a restore-test date. Missing contacts mean that at 3 a.m. nobody knows whom to call for the jump host or the logger vendor. Missing restore evidence means the backup in the package might not work. Both block handoff because each one fails exactly when the site needs it.
+
+Priya fixed both before sign-off: she added a contacts sheet listing the approver rota, contractor, logger vendor, internet provider and security lead, and restored HIST into an isolated VM, recording 2026-10-09 as the test date. The rerun showed 7/7 items present.
 
 ### 26.3 Sign-off
 
 The receiving owner — the facilities manager — signs that they understand each item and accept responsibility. Sign-off without a walkthrough is a signature, not a handoff; walk through the runbook together and let the operator perform one task while you watch.
 
+Priya's walkthrough with the night operator found what a document review had missed: the runbook referred to a menu that the HMI vendor had renamed. The step was corrected before sign-off. That single correction would have cost a confused operator many minutes during a real alert, at an hour when nobody from the project team would answer the phone.
+
 ### 26.4 Hypercare
 
 For the first four weeks, the project team remains on call, reviews alerts with operations weekly and fixes documentation gaps found in real use. Then responsibility moves fully to the site.
+
+At NCS the four weeks would cover at least one contractor visit, so the visit pack, the jump-host approval and the new-talker link are all exercised once in real use. Weekly reviews look at the drift checker's report and the certificate tickets with the facilities manager. Gaps found go into the runbook the same week, and the end of hypercare is recorded in the handoff file with the list of corrections made.
 
 ### Worked example (synthetic NCS)
 
@@ -1418,17 +1670,27 @@ You will (1) plan the deployment of a security change in an OT site; (2) define 
 
 NCS will deploy the new control-zone firewall rule set that replaces rule 9 with explicit flows. The change is small in text but large in effect: if a needed flow is missing, an HMI could lose its PLC values or the historian could stop recording.
 
+Priya's first deployment proved the point: the matrix lacked the historian's polling of PLC-R2, and HIST lost those tags four minutes after the change.
+
+The flow had not appeared during the 72-hour capture window, and nobody had listed it from memory. The rollback plan, rehearsed beforehand, is what turned that gap into a five-minute interruption instead of a lost morning of temperature records.
+
 ### 27.2 The plan
 
 Pre-requisites: approved flow matrix (Chapter 12); rules reviewed by a second person; tested on a bench firewall with replayed traffic; maintenance window agreed for a low-load period; contractor on call. Steps: back up the current rule set; apply the new set; validate; monitor for 24 hours. Rollback: restore the backup, which takes two minutes and is rehearsed.
+
+Priya's deployment used this plan on a Tuesday at 06:00. At 06:04 HIST stopped receiving PLC-R2 tags; she rolled back at 06:09 and values recovered. The missing flow was added with the historian vendor's confirmation, and the second deployment on Thursday passed all four validation checks.
 
 ### 27.3 Validation checks
 
 Defined in advance and observable: HMI-C shows live values from both PLCs; HIST records new data points for every tag group; GW-LOG uploads succeed; the test from OFFICE-7 to PLC-R2:502 is refused and logged. Any failure in the first three triggers rollback unless fixed within ten minutes.
 
+On the Tuesday attempt the second check failed: HIST stopped recording PLC-R2's tag group at 06:04. Because the failure was understood but not fixable within ten minutes, Priya rolled back at 06:09 rather than editing rules live. The fourth check is the security one; it passed both times, which shows that a rule set can be secure and still break operations.
+
 ### 27.4 Recording
 
 Record times, who did what, the hash of old and new rule sets, validation results and any deviations. This record is evidence for the evaluation in Chapter 23 and for future audits.
+
+Priya's record for the two deployments shows the value of this: the Tuesday entry lists the 06:04 failure, the 06:09 rollback and the missing HIST → PLC-R2 flow as the cause; the Thursday entry lists the corrected rule set's hash and four passed checks. The Chapter 23 evaluation cites both, and an auditor reading it later can see that the first attempt failed safely, which is itself evidence that the rollback works.
 
 ### Worked example (synthetic NCS)
 
@@ -1466,17 +1728,27 @@ You will (1) work safely on an industrial site under supervision; (2) follow sit
 
 An ammonia refrigeration plant has hazards a computing student may not expect: toxic gas, moving machinery, cold rooms where exposure is limited, forklifts on the dock. Before any visit: site induction, required PPE, knowledge of alarm signals and muster points, and an escort. Never enter the machine room without the refrigeration engineer's permission.
 
+Priya's visits always start at the gatehouse induction, and she enters the machine room only with the contractor or refrigeration engineer.
+
+The induction covers ammonia alarms and muster points, which apply to her as to anyone.
+
 ### 28.2 Permits and lock-out
 
 Work on panels may require a permit-to-work and, for electrical isolation, lock-out/tag-out by qualified staff. A technologist reading a front-panel display may need an escort; touching anything inside a live panel is not part of the role.
+
+At NCS, Priya read PLC-R2's version from its front-panel display with the contractor beside her; that is observation, not work on the panel. The MP-2 cellular router was photographed, not unplugged: removing it was the facilities manager's decision, made after the contractor confirmed what it was for.
 
 ### 28.3 Communication
 
 Operators know the plant; listen first. Explain what you will do, how long it takes and how it could affect them. Before leaving, tell the shift lead what you did and what you found that matters to them today.
 
+On her third visit, when an operator asked her to reset a frozen HMI, Priya explained why she would not and what she could do instead: check the switch port counters, which was permitted read-only, and call the contractor. Before leaving, she told the shift lead the cause, a failing power supply, and that no security issue had been found.
+
 ### 28.4 Reflection
 
 After each visit, write: what I did, what I observed, what I would do differently, and any safety or ethical question. Reflection is assessed in this chapter because it is how field judgement grows.
+
+Priya's entry for her third visit might read: did, checked switch port counters for a frozen HMI and called the contractor; observed, a failing power supply as the cause, confirmed by the contractor; differently, ask on arrival who handles HMI faults on that shift; ethical question, the operator's request that she reset the HMI as "the IT person", which she declined because a reset could destroy evidence and was not her task under the site procedure. Assessors look for the last line most.
 
 ### Worked example (synthetic NCS)
 
@@ -1514,17 +1786,27 @@ You will (1) build a capstone artefact that solves a defined NCS problem; (2) wo
 
 Priya's capstone: an "OT drift checker" that runs weekly on NCS's management host, combining the Chapter 11 inventory comparison, the Chapter 12 flow comparison, the Chapter 19 new-talker check and the Chapter 22 certificate check into one report with a single exit status. It reads exported files only and never contacts devices.
 
+Each of the four checks already exists and has been run on NCS data; the capstone's work is combining them, validating their inputs and making the result something the facilities manager can run without Priya.
+
 ### 29.2 Increments
 
 Week 1: one script that runs the four checks on sample files and prints sections. Week 2: a common output format (check, item, status, evidence file). Week 3: tests for each check using small fixtures, including empty inputs. Week 4: scheduling, logging and the "job did not run" alert. Each increment works end to end before the next begins.
+
+Week 3 found a real defect: an empty capture file made the new-talker check report every baseline host as missing rather than "no data". Priya added a "no-data" status that fails the run, because an empty input usually means the capture failed.
 
 ### 29.3 Decision log
 
 Examples: "Decision 3 — report exit status non-zero if any check returns UNAPPROVED, EXPIRED or VERSION-CONFLICT; alternative (always zero) rejected because the scheduler could not alert." "Decision 5 — no automatic remediation; all actions via tickets."
 
+A further decision came from week 3: "Decision 6 — an empty input file produces status NO-DATA and a non-zero exit; alternative (treat as zero events) rejected because it reported every baseline host as missing, and an empty capture usually means the capture failed." Each entry names the alternative and the reason it lost, so an assessor can disagree with the reason rather than guess at it.
+
 ### 29.4 Ready for assessment
 
 The artefact folder contains the code, tests, sample inputs, a README with how to run it, the decision log and a short operations guide. An assessor must be able to run it from a clean checkout and get the documented output.
+
+Priya's folder met this with 23 tests that pass from a clean checkout. The operations guide is where her assessor later found the gap: the facilities manager could run the checker but still needed help to interpret VERSION-CONFLICT.
+
+A reviewer can follow every status from the input files to the report without asking her.
 
 ### Worked example (synthetic NCS)
 
@@ -1562,17 +1844,27 @@ You will (1) assess a capstone against its brief and criteria; (2) present resul
 
 The capstone is assessed on: problem fit (does it address an NCS need?), technical correctness (do tests pass and outputs match?), safety and authorization (read-only, no device contact, documented scope), usability (can the site run it?), and honesty (are limitations stated?). Each scored 0–3 with written evidence.
 
+Priya scored herself 3, 3, 3, 2 and 3 on these, with usability at 2 because interpreting VERSION-CONFLICT still needed help. The assessor agreed on every criterion and suggested a plain-language "what to do" column for each status.
+
+The column was added before the final submission.
+
 ### 30.2 Demonstration
 
 Run the tool live from a clean checkout on sample inputs, then show the report from a real (owner-approved, sanitized) week. Narrate one finding from the report to resolution: the drift checker flagged a VERSION-CONFLICT for a logger gateway after a vendor update, and the inventory was corrected.
+
+Priya's narrated finding follows the drift checker's output from VERSION-CONFLICT to a corrected inventory row, the same path PLC-R2's 2.4/2.1 conflict took by hand in Chapter 11. Showing the clean-checkout run first proves the tool works; showing the real week proves the site uses it.
 
 ### 30.3 Questions to prepare for
 
 "What happens if the capture is from the wrong switch?" "How do you know the flow matrix is right?" "What would an attacker who knows about the checker do?" "Who maintains it after you?" Answer with evidence or with "I don't know, and here is how I would find out."
 
+Priya's limitations page already answers two: it names capture placement, a capture from the wrong switch would show none of the PLC traffic, and baseline poisoning, an attacker present during the baseline week would be treated as normal. Her answer to "who maintains it" is the facilities manager, with the operations guide and the 23 tests.
+
 ### 30.4 Next steps
 
 Technologists continue into bachelor's study, vendor or sector certifications, or roles in OT operations. Keep following CISA ICS advisories for the products you support and revisit NIST SP 800-82r3 and the IEC 62443 parts that apply to your role.
+
+For a technologist leaving NCS, the products to follow are the ones in Priya's inventory: the refrigeration PLCs, HMI-C's Windows build and HMI software, GW-LOG and the loggers, and the dock cameras. A CISA advisory naming any of them should lead straight to the asset table, the firmware column and the drift checker's next run.
 
 ### Worked example (synthetic NCS)
 
