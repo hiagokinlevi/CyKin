@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Professional Course
 
 - Language: English (`en`); course 037, Professional course (6 months).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working practitioners moving into application security who must find, explain and help fix dependency and build risks with development teams.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -45,27 +45,27 @@ You will (1) state the core security goals for an internal business application;
 
 ### 1.1 The opening case
 
-Priya Nair, a quality engineer moving into application security, takes the six-month professional course at the fictional Westgate Professional Institute while working at the fictional freight company Harbourline Freight, mentored by security lead Marcus Bell. During a routine build review she noticed that one internal package, hl-auth, had been resolved from the public package registry rather than Harbourline's internal one. Nothing harmful was found in the published package, but the build had trusted a source nobody intended.
+Priya Nair, a quality engineer moving into application security, takes the six-month professional course at the fictional Westgate Professional Institute while working at the fictional freight company Harbourline Freight, mentored by security lead Marcus Bell. During a routine build review she noticed that one internal package, hl-auth, had been resolved from the public package registry rather than Harbourline's internal one. Nothing harmful was found in the published package, but the build had trusted a source nobody intended. Marcus asks her to treat the finding as a question about the whole build, not one package.
 
 ### 1.2 Security goals
 
-Confidentiality, integrity and availability apply to TrackPort, Harbourline's shipment-tracking application: customer addresses must stay private, shipment records must not be altered and the service must stay up for depots. Supply chain security protects integrity before the software even runs: everything built into TrackPort must be what the team intended.
+Confidentiality, integrity and availability apply to TrackPort, Harbourline's shipment-tracking application: customer addresses must stay private, shipment records must not be altered and the service must stay up for depots. Supply chain security protects integrity before the software even runs: everything built into TrackPort must be what the team intended. For depot staff, availability matters most during shifts, when drivers and loaders update shipments in real time. Priya writes the three goals at the top of her project notes, so each later finding can be judged by which goal it threatens.
 
 ### 1.3 Why the case matters
 
-If a build can take a package from an unintended source, someone else's code could run with TrackPort's access to customer and shipment data. Ladisa et al. (2023) catalogue this and other supply chain attack paths; the defensive response is to control and check where every dependency comes from.
+If a build can take a package from an unintended source, someone else's code could run with TrackPort's access to customer and shipment data. Ladisa et al. (2023) catalogue this and other supply chain attack paths; the defensive response is to control and check where every dependency comes from. For TrackPort, that access includes customer addresses and phone numbers, shipment contents and delivery photos. The hl-auth package was harmless, but the same path could carry harmful code next time. Priya therefore treats the finding as a gap in source control, not a one-off incident.
 
 ### 1.4 Frameworks used
 
-NIST SP 800-218 (SSDF) for secure development practices; OWASP ASVS 4.0.3 for application requirements; SLSA v1.0 for build integrity; OWASP SAMM v2 to judge maturity; OWASP Top 10:2021, whose A06 and A08 cover vulnerable components and software integrity failures.
+NIST SP 800-218 (SSDF) for secure development practices; OWASP ASVS 4.0.3 for application requirements; SLSA v1.0 for build integrity; OWASP SAMM v2 to judge maturity; OWASP Top 10:2021, whose A06 and A08 cover vulnerable components and software integrity failures. Each framework serves a different purpose in the project. SSDF names the development practices Harbourline should follow; ASVS gives requirements the TrackPort team can test; SLSA describes how trustworthy a build is; SAMM lets Priya judge where Harbourline's maturity stands; and the Top 10 categories give developers familiar labels for the findings. She cites each one only where it supports a specific decision.
 
 ### 1.5 The professional role
 
-Priya's role is to find, explain and help fix risks with developers, not to work alone. Most fixes are made by the team that owns the code.
+Priya's role is to find, explain and help fix risks with developers, not to work alone. Most fixes are made by the team that owns the code. Working with developers also matters because they know TrackPort better than she does: which functions are called, which packages were added for what reason and which changes would break the depot app. Priya's job is to make findings clear enough that the owning team can act quickly, and to check afterwards that the fix worked. Marcus reviews her work and helps when a decision needs security authority.
 
 ### 1.6 Course plan
 
-Context, authorised practice, methods, tools, workflow, controls, a supervised case, reporting, quality, a lab and a portfolio.
+Context, authorised practice, methods, tools, workflow, controls, a supervised case, reporting, quality, a lab and a portfolio. Each part builds on the previous one. Context and authorised practice come first, because Priya needs to know the service and her limits before she reviews anything. Methods and tools follow, then the workflow that turns findings into fixes and the controls that prevent the hl-auth problem returning. The supervised case, reporting and quality checks build professional judgement, and the lab and portfolio show assessors what she can do.
 
 ### Worked example
 
@@ -103,27 +103,27 @@ You will (1) map TrackPort's users, data and dependencies; (2) identify stakehol
 
 ### 2.1 The service
 
-TrackPort is a web and mobile application used by customers to track shipments and by depot staff to update them. It holds customer names, addresses and phone numbers, shipment contents and delivery photos. It depends on about 180 open-source packages and four internal packages.
+TrackPort is a web and mobile application used by customers to track shipments and by depot staff to update them. It holds customer names, addresses and phone numbers, shipment contents and delivery photos. It depends on about 180 open-source packages and four internal packages. The four internal packages include hl-auth, hl-geo and hl-ledger, which are shared with other Harbourline applications. The data TrackPort holds makes any code in its build sensitive, whether from an open-source package or an internal one. Priya lists the packages and their sources before starting the review.
 
 ### 2.2 Stakeholders
 
-The TrackPort developers own the code and fixes. The platform team runs the build service and the internal registry. Marcus's security team sets requirements. The product manager decides priorities. Depot managers need TrackPort available during shifts.
+The TrackPort developers own the code and fixes. The platform team runs the build service and the internal registry. Marcus's security team sets requirements. The product manager decides priorities. Depot managers need TrackPort available during shifts. Each stakeholder controls part of the fix: developers change TrackPort's code and lock files, the platform team changes registry settings, Marcus sets requirements and the product manager decides when work happens. Depot managers are affected by any outage caused by a change, so Priya keeps them informed about planned releases. She records each stakeholder's role in the stakeholder map.
 
 ### 2.3 Their priorities
 
-Developers want few interruptions and clear findings; platform wants changes that apply to all teams; product wants features shipped; depots want no outages. A supply chain fix that ignores these will be resisted.
+Developers want few interruptions and clear findings; platform wants changes that apply to all teams; product wants features shipped; depots want no outages. A supply chain fix that ignores these will be resisted. Priya plans her approach around these priorities. Findings arrive checked and ranked, so developers spend little time on noise; the registry fix is proposed as one platform setting that protects every team; security work goes into normal sprint planning, so it competes fairly with features; and changes are released at times agreed with depot managers. Framing fixes this way makes it easier for each group to agree.
 
 ### 2.4 Agreeing ways of working
 
-Priya agrees with the TrackPort lead that findings arrive as tickets with evidence and a suggested fix, high findings are discussed within a day, and security work fits into normal sprint planning.
+Priya agrees with the TrackPort lead that findings arrive as tickets with evidence and a suggested fix, high findings are discussed within a day, and security work fits into normal sprint planning. These agreements set expectations on both sides. Tickets with evidence mean developers do not have to repeat Priya's analysis, and a suggested fix gives them a starting point. Discussing high findings within a day means urgent issues are not left waiting for the next sprint. Fitting work into sprint planning lets the product manager see security work alongside features. The lead and Priya review the arrangement after the first month.
 
 ### 2.5 The registry decision
 
-Who should decide how package sources are configured? The platform team, because one change protects every team using the build service.
+Who should decide how package sources are configured? The platform team, because one change protects every team using the build service. If each development team configured package sources separately, some would miss the rule and the hl-auth problem could recur elsewhere. The platform team runs the build service for every team, so a single setting there gives the same protection to all. Priya explains the finding to the platform team in terms of their priority: one change instead of many. They agree to change the configuration within two weeks.
 
 ### 2.6 Stakeholder map
 
-A one-page map lists each stakeholder, what they need and how they are informed.
+A one-page map lists each stakeholder, what they need and how they are informed. The map includes the TrackPort developers, the platform team, Marcus's security team, the product manager and depot managers. For each, it records what they need from the project and how they hear about it: tickets for developers, a short meeting for the platform team, a fortnightly note for the product manager and release notices for depot managers. Priya updates the map when people change roles, as the late medium finding later showed is necessary.
 
 ### Keeping stakeholders informed
 
@@ -165,27 +165,27 @@ You will (1) confirm authorisation before reviewing systems; (2) handle code, lo
 
 ### 3.1 Authorisation
 
-Priya's review of build dependencies is authorised in writing by Marcus and the TrackPort lead, naming the repositories, build logs and registry settings in scope. Reviewing other teams' systems needs their owners' agreement.
+Priya's review of build dependencies is authorised in writing by Marcus and the TrackPort lead, naming the repositories, build logs and registry settings in scope. Reviewing other teams' systems needs their owners' agreement. Written authorisation protects Priya and Harbourline: she cannot be accused of reviewing systems without permission, and owners know exactly what she can see. The scope covers TrackPort's repositories, build logs and the registry settings that affect them. If she needs to look at another team's systems, she asks the owner and records the agreement before starting. Marcus keeps a copy of each authorisation with the project records.
 
 ### 3.2 Defensive scope
 
-The work reads configurations, lock files and logs; it does not publish packages to public registries or test whether a public name could be taken. Such tests could affect other organisations and are not needed to fix the configuration.
+The work reads configurations, lock files and logs; it does not publish packages to public registries or test whether a public name could be taken. Such tests could affect other organisations and are not needed to fix the configuration. The question of whether someone could take an internal name on the public registry is answered by evidence already in the logs: hl-auth was resolved publicly. Testing it again by publishing a package would add nothing and could mislead other organisations' builds. Priya's evidence shows the configuration gap, and fixing the configuration is the defensive response. The limit is written into her authorisation.
 
 ### 3.3 Evidence
 
-The build log showing hl-auth fetched from the public registry, the lock file entry with its hash and the registry configuration are saved with dates and hashes.
+The build log showing hl-auth fetched from the public registry, the lock file entry with its hash and the registry configuration are saved with dates and hashes. Hashes show that saved evidence has not changed since it was collected, which matters if the finding is challenged or later reviewed. The build log shows when hl-auth was fetched publicly, the lock file shows which version and hash were used, and the registry configuration shows why. Priya stores the evidence in a restricted folder with a short register listing each item, its date and its source.
 
 ### 3.4 Personal data
 
-Build logs rarely contain personal data, but application logs do; Priya uses synthetic test data in any reproduction.
+Build logs rarely contain personal data, but application logs do; Priya uses synthetic test data in any reproduction. TrackPort's application logs include customer names, addresses and shipment details, which are not needed to understand a build problem. When Priya needs to reproduce an issue, such as how a package is resolved, she uses synthetic customers and shipments in a test environment. This keeps customer data out of her evidence and her reports. Marcus confirms the approach before she begins. Reproductions are deleted afterwards.
 
 ### 3.5 Decision records
 
-Decisions such as "the published public hl-auth was not harmful, based on comparing its contents with our internal version" are recorded with who decided and on what evidence.
+Decisions such as "the published public hl-auth was not harmful, based on comparing its contents with our internal version" are recorded with who decided and on what evidence. Recording decisions with their evidence means a later reviewer can check whether the decision was reasonable, rather than relying on memory. For hl-auth, the comparison showed the public package was an older copy of Harbourline's own code. Each decision record names who decided, the date, the evidence and any follow-up, such as Marcus's request to the registry operator.
 
 ### 3.6 Sharing findings
 
-Findings are shared within the teams that need them; external reporting to the registry operator is decided by Marcus.
+Findings are shared within the teams that need them; external reporting to the registry operator is decided by Marcus. Sharing only with teams that need findings limits the spread of information about weaknesses that are not yet fixed. Decisions about contacting outside organisations rest with Marcus, because they affect Harbourline's relationships and reputation. For hl-auth, he contacted the registry operator through its official process to ask for the name to be transferred or removed. Priya records each external report with its date and outcome.
 
 ### Handling credentials found
 
@@ -227,9 +227,9 @@ You will (1) check where each dependency is resolved from; (2) identify names cl
 
 ### 4.1 Dependency sources
 
-Every dependency should come from an intended source: internal packages from the internal registry, public packages from the public registry through a controlled proxy. A rule that internal name prefixes may only resolve internally prevents the hl-auth problem.
+Every dependency should come from an intended source: internal packages from the internal registry, public packages from the public registry through a controlled proxy. A rule that internal name prefixes may only resolve internally prevents the hl-auth problem. A controlled proxy lets Harbourline record which public packages are used and block ones it does not want. The internal-prefix rule works because internal packages share a recognisable name prefix, so the build service can refuse to fetch them from anywhere else. With the rule in place, hl-auth could not have been taken from the public registry.
 
-### Lab — Lab — dependency sources
+### Lab — dependency sources
 
 ```python
 """Check synthetic dependency sources and flag names close to well-known packages (stdlib only)."""
@@ -263,19 +263,19 @@ hl-ledger  internal ok
 
 ### 4.2 Lab result
 
-hl-geo and hl-ledger resolve internally (ok). hl-auth is flagged: internal name resolved from PUBLIC registry. yamkit is flagged as close to the popular yamlkit, to confirm it was intended. dateparse and httpwire are ok. The close-name check uses Python's difflib and is only a prompt for a person to check.
+hl-geo and hl-ledger resolve internally (ok). hl-auth is flagged: internal name resolved from PUBLIC registry. yamkit is flagged as close to the popular yamlkit, to confirm it was intended. dateparse and httpwire are ok. The close-name check uses Python's difflib and is only a prompt for a person to check. The lab confirms what the build review found and adds one more question about yamkit. A flag from difflib does not mean a package is harmful; it only asks a person to confirm the name was intended. Priya checks both flagged items with the TrackPort team before recording a decision. Yamkit later turned out to be a typing mistake for yamlkit, which the team replaced.
 
 ### 4.3 Similar names
 
-Packages with names similar to popular ones can be installed by mistake. Ohm et al. (2020) describe how such names have been used to spread harmful packages. Reviewers confirm the intended name before approving a new dependency.
+Packages with names similar to popular ones can be installed by mistake. Ohm et al. (2020) describe how such names have been used to spread harmful packages. Reviewers confirm the intended name before approving a new dependency. At Harbourline, the yamkit flag showed how easily a similar name can slip in: a developer typed one letter wrong and nobody noticed during review. The package was unmaintained but harmless. After it was replaced, Priya added "confirm exact name" to the dependency review note, so reviewers check the name against the intended package's official page.
 
 ### 4.4 Source controls
 
-The build service is configured so that internal prefixes resolve only from the internal registry, lock files pin versions with hashes, and builds fail on a hash mismatch.
+The build service is configured so that internal prefixes resolve only from the internal registry, lock files pin versions with hashes, and builds fail on a hash mismatch. Each control closes a different gap. The prefix rule stops internal names resolving publicly. Pinned versions with hashes mean a build uses the exact package that was reviewed. Failing on a hash mismatch stops a build if a package has changed since it was pinned. The platform team applies these settings in the build service for all teams, and Priya checks them with safe tests using synthetic packages.
 
 ### 4.5 Reviewing new dependencies
 
-A new dependency requires a short note: purpose, maintainer activity, licence and source.
+A new dependency requires a short note: purpose, maintainer activity, licence and source. The note gives reviewers what they need to decide quickly. Purpose shows whether the package is needed or duplicates something already used. Maintainer activity shows whether it is likely to receive fixes. Licence shows whether Harbourline may use it. Source shows where it comes from. After yamkit, the note also asks the author to confirm the exact name. Reviewers check the note before approving the pull request that adds the dependency.
 
 ### Proxy registry
 
@@ -317,9 +317,9 @@ You will (1) interpret output from code, dependency and secret scanners; (2) ded
 
 ### 5.1 Scanner types
 
-Static analysis (SAST) reads code for risky patterns; software composition analysis (SCA) matches dependencies to advisories; secret scanners look for credentials. Each produces findings with different accuracy.
+Static analysis (SAST) reads code for risky patterns; software composition analysis (SCA) matches dependencies to advisories; secret scanners look for credentials. Each produces findings with different accuracy. At Harbourline, each scanner runs on every TrackPort build and produces its own list. SAST may flag code that is safe in context, SCA may report a vulnerability in a function TrackPort never calls, and secret scanners may flag test placeholders. Priya treats all scanner output as candidates to check, not as confirmed findings. She records which scanner and version produced each finding.
 
-### Lab — Lab — finding triage
+### Lab — finding triage
 
 ```python
 """Deduplicate and rank synthetic scanner findings by severity and reachability (stdlib only)."""
@@ -357,19 +357,19 @@ by severity: {'high': 4, 'critical': 1, 'medium': 1}
 
 ### 5.2 Lab result
 
-Seven raw findings reduce to six unique ones (the sql-concat finding in orders.py appeared twice). Ranked by reachability then severity: sql-concat in orders.py, ADV-22 and missing-authz in shipments.py are reachable highs and come first. The critical ADV-21 ranks fourth because the affected function is not reachable from TrackPort's code. The api-key in tests/fixtures.py and weak-hash in legacy_export.py follow.
+Seven raw findings reduce to six unique ones (the sql-concat finding in orders.py appeared twice). Ranked by reachability then severity: sql-concat in orders.py, ADV-22 and missing-authz in shipments.py are reachable highs and come first. The critical ADV-21 ranks fourth because the affected function is not reachable from TrackPort's code. The api-key in tests/fixtures.py and weak-hash in legacy_export.py follow. The ranking reflects TrackPort's real risk rather than scanner labels alone. Reachable findings come first, because an attacker could use them through TrackPort's code. The test fixture and legacy export are checked separately.
 
 ### 5.3 Reachability
 
-A vulnerable function that the application never calls is less urgent than a reachable one, but it is still fixed in normal updates because code changes can make it reachable later.
+A vulnerable function that the application never calls is less urgent than a reachable one, but it is still fixed in normal updates because code changes can make it reachable later. ADV-21 is a good example: it is critical, but TrackPort's code does not call the affected function, so it ranks fourth rather than first. It still gets a target date and is fixed in the next dependency update. Priya records her reachability judgement with the evidence, so a later reviewer can check it. Without a call graph tool, reachability is judged by reading code, which she notes as a limitation.
 
 ### 5.4 Checking findings
 
-Priya reads each high finding in context. The test fixture api-key is a synthetic placeholder, so the secret scanner gets an allow-list entry with a review date.
+Priya reads each high finding in context. The test fixture api-key is a synthetic placeholder, so the secret scanner gets an allow-list entry with a review date. Checking in context avoids sending developers false alarms. The api-key in tests/fixtures.py is not a real credential, so it needs no rotation, but the allow-list entry has a review date so it is not ignored forever. Priya also reads the reachable highs to confirm they apply to TrackPort's code, and adds a suggested fix for each before creating the ticket.
 
 ### 5.5 Alert fatigue
 
-Johnson et al. (2013) found that developers avoid static analysis tools largely because of false positives and poor explanations. Priya sends only checked, ranked findings with explanations.
+Johnson et al. (2013) found that developers avoid static analysis tools largely because of false positives and poor explanations. Priya sends only checked, ranked findings with explanations. The TrackPort team's response shows why this matters: given three checked high findings with suggested fixes instead of the raw scanner list, they fixed all three in one sprint and asked for the same format in future. Priya's explanations describe the issue, where it occurs, why it matters and how to fix it, so developers do not have to research each finding themselves.
 
 ### Explaining findings
 
@@ -411,27 +411,27 @@ You will (1) design a workflow from finding to fix; (2) assign owners and target
 
 ### 6.1 The workflow
 
-Scanner or review finding → Priya checks and ranks → ticket in TrackPort's backlog with evidence and suggested fix → developer fixes → reviewer confirms → scanner re-run closes the ticket.
+Scanner or review finding → Priya checks and ranks → ticket in TrackPort's backlog with evidence and suggested fix → developer fixes → reviewer confirms → scanner re-run closes the ticket. Each step has an owner, so a finding cannot stall without someone noticing. Priya checks and ranks, the TrackPort developer fixes, a reviewer confirms the change, and the scanner re-run gives independent confirmation that the finding has gone. A ticket closes only after the re-run, not when the developer marks it done. Ticket dates provide the data for measuring remediation against targets.
 
 ### 6.2 Targets
 
-Remediation targets by severity: critical 7 days, high 30, medium 90. Targets are agreed with the product manager so they compete fairly with features.
+Remediation targets by severity: critical 7 days, high 30, medium 90. Targets are agreed with the product manager so they compete fairly with features. Agreeing targets with the product manager makes them part of planning rather than a demand from security. A critical finding needs a fix within a week, which may displace feature work, so the product manager must accept that trade-off in advance. Priya measures each finding against its target from the ticket dates. The targets are reviewed each quarter. Each target is recorded on the ticket.
 
 ### 6.3 Ownership
 
-Each ticket has one owner. Platform issues go to the platform team, application issues to TrackPort.
+Each ticket has one owner. Platform issues go to the platform team, application issues to TrackPort. One owner means one person is responsible for moving the ticket forward. Platform issues, such as registry settings, go to the platform team because only they can change the build service. When an owner moves teams, the ticket must be reassigned, as the late medium finding later showed. Priya checks the weekly view for tickets without an active owner. Unowned tickets are reassigned within a day.
 
 ### 6.4 Tracking
 
-A weekly view shows open findings by age and severity.
+A weekly view shows open findings by age and severity. The view shows Priya and the TrackPort lead which findings are approaching their target and which have passed it. Sorting by age makes old findings visible before they are forgotten. They review it in a short meeting each week, and any finding near its target is discussed so that blocked work can be raised early. The same data feeds the remediation measures Priya reports each quarter. Marcus sees the same view at month end.
 
 ### 6.5 Escalation
 
-Findings past their target are discussed with the lead; repeated misses go to the product manager with the risk explained.
+Findings past their target are discussed with the lead; repeated misses go to the product manager with the risk explained. Escalation is a way to make a decision visible, not a punishment. A finding past its target may be blocked for good reasons, such as a framework upgrade. Discussing it with the lead first gives the team a chance to explain and plan. If targets keep being missed, the product manager decides whether to change priorities or accept the risk, with the risk explained in plain terms.
 
 ### 6.6 Exceptions
 
-If a fix is not possible in time, a risk acceptance records the reason, compensating controls and a new date, signed by the product manager.
+If a fix is not possible in time, a risk acceptance records the reason, compensating controls and a new date, signed by the product manager. A risk acceptance turns a missed target into a recorded decision. In the first month, one high finding needed a major framework upgrade, so Priya and the lead recorded an acceptance with a compensating input check and a date tied to the planned upgrade. The product manager's signature shows who accepted the risk. Each acceptance is reviewed on its date, and Priya tracks it in the weekly view.
 
 ### Weekly review
 
@@ -473,27 +473,27 @@ You will (1) put build and dependency controls in place; (2) verify each with sa
 
 ### 7.1 Controls chosen
 
-Internal-prefix rule in the build service; lock files with hashes; build failure on mismatch; dependency review notes; pinned build actions; least-privilege build tokens; and provenance for each TrackPort release.
+Internal-prefix rule in the build service; lock files with hashes; build failure on mismatch; dependency review notes; pinned build actions; least-privilege build tokens; and provenance for each TrackPort release. Together the controls cover the path from source to release. The prefix rule, lock files, hash checks and review notes protect what goes into the build. Pinned build actions stop a build step changing without review, and least-privilege tokens limit what a compromised build could do. Provenance records how each release was built. Priya records each control with its owner and how it is tested.
 
 ### 7.2 Provenance
 
-The build service produces a signed provenance statement naming the source commit, builder and inputs. SLSA v1.0 build level 2 requires provenance signed by a hosted build platform. Tools such as in-toto (Torres-Arias et al., 2019) and Sigstore (Newman et al., 2022) support creating and verifying such statements.
+The build service produces a signed provenance statement naming the source commit, builder and inputs. SLSA v1.0 build level 2 requires provenance signed by a hosted build platform. Tools such as in-toto (Torres-Arias et al., 2019) and Sigstore (Newman et al., 2022) support creating and verifying such statements. For TrackPort, provenance means the deployment system can check that a release came from Harbourline's build service and a known commit. A release built elsewhere, or with unexpected inputs, can be refused. Priya records which SLSA level the build meets and how verification is done at deployment.
 
 ### 7.3 Verifying controls
 
-Each control gets a safe test using synthetic internal packages: a test project naming a fake internal package confirms the build refuses to resolve it publicly; a lock file with an altered hash confirms the build fails; a release without provenance is refused by deployment.
+Each control gets a safe test using synthetic internal packages: a test project naming a fake internal package confirms the build refuses to resolve it publicly; a lock file with an altered hash confirms the build fails; a release without provenance is refused by deployment. Each test uses synthetic packages and releases, so no real system or public registry is touched. A control that passes the test has shown it works, not only that it is configured. Priya records each test with its date and result, and the tests become the weekly checks.
 
 ### 7.4 Recording results
 
-Tests and results are stored with dates; failures become tickets.
+Tests and results are stored with dates; failures become tickets. Storing results gives auditors and Marcus evidence that controls worked on a given date. When a test fails, a ticket goes to the control's owner with the result and date, so the failure is fixed rather than noted. Two months after the controls were introduced, a build service upgrade reset the registry configuration, and the weekly test failed the next morning. The platform team restored the internal-prefix rule the same day.
 
 ### 7.5 Ongoing checks
 
-The tests run automatically each week, so a configuration change that weakens a control is caught quickly.
+The tests run automatically each week, so a configuration change that weakens a control is caught quickly. Configuration can change without anyone intending to weaken a control, for example when a build service upgrade resets settings to defaults. Running the tests automatically each week means such a change is noticed within days. When the registry rule was reset, the test caught it before any build used the default. The platform team receives the results, and Priya reviews them each month.
 
 ### 7.6 SSDF mapping
 
-These controls address SSDF practices for protecting all forms of code and verifying third-party software.
+These controls address SSDF practices for protecting all forms of code and verifying third-party software. The prefix rule, hashes and provenance protect code and builds from tampering, while review notes and the source check support verifying third-party software before it is used. Mapping controls to SSDF practices shows Marcus and auditors which practices Harbourline now follows and where gaps remain. Priya records the mapping in her portfolio, with the evidence for each control. Gaps, such as manual reachability checks, are listed beside the mapped practices.
 
 ### Rolling out controls
 
@@ -535,27 +535,27 @@ You will (1) analyse a supply chain case under supervision; (2) build a timeline
 
 ### 8.1 The case
 
-Marcus asks Priya to analyse a synthetic case from another Harbourline team: a mobile app release included an analytics library update that began collecting device identifiers the privacy notice did not mention.
+Marcus asks Priya to analyse a synthetic case from another Harbourline team: a mobile app release included an analytics library update that began collecting device identifiers the privacy notice did not mention. The case is relevant because the same kind of dependency update happens in TrackPort every week. The library was not harmful in the usual sense, but it changed what the app did with customers' device data without anyone noticing. Priya's task is to explain how this happened and recommend changes that would catch similar updates without slowing the team.
 
 ### 8.2 Timeline
 
-Day 0 the update was merged with a lock file change of 400 lines; day 3 released; day 20 a customer asked about data collection; day 22 the library was rolled back.
+Day 0 the update was merged with a lock file change of 400 lines; day 3 released; day 20 a customer asked about data collection; day 22 the library was rolled back. The timeline shows that the change was released three days after merging and ran for nearly three weeks before a customer noticed. Rolling it back took two days once the question arrived. Priya lists each step with its source, such as the merge record and release log. The mobile team confirms the dates from its records.
 
 ### 8.3 Causes
 
-The update was bundled with dozens of other changes, so reviewers did not notice a new data collection feature. There was no rule requiring privacy review for analytics libraries.
+The update was bundled with dozens of other changes, so reviewers did not notice a new data collection feature. There was no rule requiring privacy review for analytics libraries. The causes lie in the process, not in one reviewer's attention. A 400-line lock file change hides individual updates, and without a rule for analytics libraries, nobody thought to ask whether data collection had changed. Priya describes both causes without naming the developer or reviewer, since anyone could have missed the change under the same process.
 
 ### 8.4 Missed signals
 
-The library's release notes mentioned the new collection feature; nobody read them because updates were routine.
+The library's release notes mentioned the new collection feature; nobody read them because updates were routine. The information needed to catch the change was public all along. Release notes for most updates contain only fixes, so reading them seemed unnecessary. For analytics and advertising libraries, however, a new feature can mean new data collection. Priya recommends reading release notes for those libraries only, which is a small, targeted change. The mobile team agrees, and adds a short checklist of the libraries this applies to.
 
 ### 8.5 Recommendations
 
-Separate pull requests for analytics and advertising libraries; release-note reading for those libraries; a privacy check in the release checklist.
+Separate pull requests for analytics and advertising libraries; release-note reading for those libraries; a privacy check in the release checklist. Each recommendation addresses a cause. Separate pull requests make analytics updates visible instead of hiding them among others. Reading release notes for those libraries catches new features. A privacy check in the release checklist gives a final chance to ask whether data collection changed. The mobile team adopts all three, and Priya records them in the case report. Each has an owner.
 
 ### 8.6 Proportion
 
-The recommendations add minutes to a few updates rather than slowing all updates.
+The recommendations add minutes to a few updates rather than slowing all updates. Marcus asked Priya to remove a recommendation that would have required security sign-off for every update; it would have slowed all work to address a risk in a few libraries. The remaining recommendations apply only to analytics and advertising libraries. This proportion is why the mobile team accepted them, and why they are likely to be followed. The team reviews them after three months to check that they still fit.
 
 ### Interviewing the team
 
@@ -597,27 +597,27 @@ You will (1) write clear findings and reports for different readers; (2) communi
 
 ### 9.1 Readers
 
-Developers need precise locations and fixes; managers need risk, cost and decisions; customers need plain explanations of impact. One finding may need three versions.
+Developers need precise locations and fixes; managers need risk, cost and decisions; customers need plain explanations of impact. One finding may need three versions. For hl-auth, developers needed the registry setting and the build log; the platform team needed the configuration change; Marcus and the product manager needed the risk, the decision and the cost. Priya writes each version from the same evidence, so they do not contradict each other. Customers would only need an explanation if their data had been affected, which it was not.
 
 ### 9.2 Structure
 
-A finding report: summary, what was found, evidence, impact in TrackPort's context, recommendation, owner and target date.
+A finding report: summary, what was found, evidence, impact in TrackPort's context, recommendation, owner and target date. The same structure is used for every finding, so readers know where to look. The summary gives the main point in one or two sentences. Evidence and impact explain why the finding matters for TrackPort specifically. The recommendation, owner and date tell the team what happens next. The TrackPort team found this format easy to act on and asked for it in future scans.
 
 ### 9.3 Uncertainty
 
-Say what is known and unknown: "No harmful content was found in the public hl-auth package; we cannot rule out that it was downloaded by others."
+Say what is known and unknown: "No harmful content was found in the public hl-auth package; we cannot rule out that it was downloaded by others." Stating what is unknown prevents readers from assuming a problem is fully resolved. For hl-auth, the comparison showed no harmful content, but Harbourline cannot know who else downloaded the public package. Priya writes such sentences carefully, separating evidence from inference, and asks Marcus to check them. Readers can then judge the risk for themselves.
 
 ### 9.4 Ethics
 
-Findings about other organisations' packages are reported through official channels, never publicised to embarrass. Information about weaknesses is shared only with those who need it.
+Findings about other organisations' packages are reported through official channels, never publicised to embarrass. Information about weaknesses is shared only with those who need it. The public hl-auth package was published by mistake, apparently by a former contractor, and reporting it through the registry operator's official process fixed the problem without blame. Publicising it would have exposed Harbourline's mistake and helped nobody. Priya and Marcus share details of unfixed weaknesses only with the teams that need them to act. Marcus approves exceptions.
 
 ### 9.5 External reporting
 
-Vulnerabilities in open-source dependencies found by Harbourline are reported privately to maintainers following their security policy, with time to fix.
+Vulnerabilities in open-source dependencies found by Harbourline are reported privately to maintainers following their security policy, with time to fix. Private reporting gives maintainers time to release a fix before details are public. When Priya found a minor flaw in a library TrackPort uses, she reported it following the project's security policy, with a description and a suggested fix. The maintainer released a fix in three weeks, and TrackPort updated within the high target. Marcus approved the report before it was sent.
 
 ### 9.6 Tone
 
-Reports describe systems and processes, not individual blame.
+Reports describe systems and processes, not individual blame. Blaming individuals discourages people from reporting problems and rarely fixes the cause. The analytics case was a process gap, not a careless reviewer, and the public hl-auth package came from a mistake years ago. Priya writes findings about missing rules, settings and checks, which teams can fix. Marcus reviews reports for tone before they are shared. Where a person's action is relevant, the report describes the action and the missing safeguard, not the person's name.
 
 ### Reporting to managers
 
@@ -659,9 +659,9 @@ You will (1) measure whether the workflow meets its targets; (2) find where it f
 
 ### 10.1 Measuring
 
-Priya measures how many findings were fixed within target, by severity, from the ticket records.
+Priya measures how many findings were fixed within target, by severity, from the ticket records. Ticket records show when each finding was created, ranked and closed after the scanner re-run, so time to fix can be calculated without extra reporting. Measuring by severity shows whether the most important findings are fixed fastest. Priya counts findings as on time if they closed within their target, and records the definition so later figures are comparable. Reopened tickets count from their first creation date, so a fix that failed the scanner re-run cannot reset the clock.
 
-### Lab — Lab — remediation targets
+### Lab — remediation targets
 
 ```python
 """Measure remediation within target days per severity on synthetic records (stdlib only)."""
@@ -684,19 +684,19 @@ medium   target  90d: 3/4 on time (75%), longest 120d
 
 ### 10.2 Lab result
 
-Critical: 1 of 2 on time (50%), longest 9 days against a 7-day target. High: 3 of 4 on time (75%), longest 41 days against 30. Medium: 3 of 4 on time (75%), longest 120 days against 90. The critical miss matters most despite the small numbers.
+Critical: 1 of 2 on time (50%), longest 9 days against a 7-day target. High: 3 of 4 on time (75%), longest 41 days against 30. Medium: 3 of 4 on time (75%), longest 120 days against 90. The critical miss matters most despite the small numbers. The numbers are small, so percentages change sharply with one finding. Priya reports the counts beside each percentage, so readers do not overread them. The critical miss matters because criticals carry the most risk, even though only two occurred. She presents the counts to Marcus and the product manager with the causes of each miss.
 
 ### 10.3 Finding causes
 
-Priya reviews each missed target. The late critical waited two days for a platform change; the late high was the blocked framework upgrade; the late medium was forgotten after its owner moved teams.
+Priya reviews each missed target. The late critical waited two days for a platform change; the late high was the blocked framework upgrade; the late medium was forgotten after its owner moved teams. Each miss had a different cause, which points to a different fix. The late critical shows a dependency on another team's speed; the late high shows a blocked item without an early risk decision; the late medium shows that tickets can be lost when people move. Priya records each cause with its evidence from the ticket history, without blaming the people involved.
 
 ### 10.4 Improvements
 
-Platform requests for criticals get a same-day contact; ownership transfers when people move; blocked items get risk acceptances earlier.
+Platform requests for criticals get a same-day contact; ownership transfers when people move; blocked items get risk acceptances earlier. Each improvement answers one cause. A same-day platform contact means criticals are not left waiting for another team's queue. Transferring ownership when people move keeps tickets alive. Earlier risk acceptances make blocked items visible and controlled rather than quietly late. In the next quarter, all criticals were fixed on time and highs reached 90% on time, with small sample sizes stated. Each is recorded with an owner.
 
 ### 10.5 Troubleshooting tools
 
-When scanners produce odd results, Priya checks versions of the scanner and its advisory data first, then the project's lock file.
+When scanners produce odd results, Priya checks versions of the scanner and its advisory data first, then the project's lock file. Odd results often come from outdated advisory data or a scanner update rather than a change in TrackPort. Checking versions first avoids chasing problems that do not exist. The lock file then shows exactly which package versions the scanner saw. Priya records what she checked and what she found, so the same problem can be diagnosed faster next time.
 
 ### Reading the lab
 
@@ -742,27 +742,27 @@ You will (1) run a supervised end-to-end exercise on synthetic projects; (2) app
 
 ### 11.1 The exercise
 
-Marcus sets a supervised lab with a synthetic project, depot-scan, containing lock files, scanner outputs and ticket records. Priya has three hours to produce a report.
+Marcus sets a supervised lab with a synthetic project, depot-scan, containing lock files, scanner outputs and ticket records. Priya has three hours to produce a report. Using a synthetic project means Priya can practise the whole workflow without any risk to real systems. The project includes the same kinds of problems as TrackPort: an internal name resolved publicly, a similar name, duplicated scanner findings and past tickets. Three hours is enough to work carefully but tests whether she can prioritise. She completed the report in two hours forty minutes.
 
 ### 11.2 Steps
 
-Run the source check (one internal name resolved publicly, one similar name); triage scanner findings (deduplicate, rank by reachability); assign targets and owners; measure past remediation; write the report.
+Run the source check (one internal name resolved publicly, one similar name); triage scanner findings (deduplicate, rank by reachability); assign targets and owners; measure past remediation; write the report. Each step repeats a method Priya used at Harbourline, applied to a project she has not seen. The steps follow the order of the real workflow, so she cannot measure remediation before she knows what was found. Marcus checks whether she explains each result and decides what matters, rather than copying lab output into the report.
 
 ### 11.3 Supervision
 
-Marcus observes, answers questions about context, and stops any step that would touch real systems. The lab environment has no network access to public registries.
+Marcus observes, answers questions about context, and stops any step that would touch real systems. The lab environment has no network access to public registries. Marcus answers questions that a real team would answer, such as whether a function is called from production code, but does not give hints about findings. The lab has no network access to public registries, so no step could reach a real system even by mistake. He records any question Priya asked and how she used the answer in her report.
 
 ### 11.4 The report
 
-A two-page report with findings, evidence, recommendations and an executive summary of five lines.
+A two-page report with findings, evidence, recommendations and an executive summary of five lines. Keeping the report to two pages forces Priya to choose what matters. The five-line summary is written for a manager who will read nothing else. Findings follow the standard structure with evidence, impact, recommendation, owner and target. Marcus marked one recommendation as unclear about its owner, and Priya fixed it. The report became a training example for the next trainee. Marcus keeps the original draft for comparison.
 
 ### 11.5 Assessment
 
-Marcus scores completeness, accuracy, prioritisation and clarity.
+Marcus scores completeness, accuracy, prioritisation and clarity. Completeness checks that every part of the task was done; accuracy checks the findings against the lab's known answers; prioritisation checks that the most important issues come first with reasons; clarity checks that the report can be acted on by its readers. Marcus records a score and a comment for each criterion, which go into Priya's portfolio. Priya's score passes each criterion, with clarity the lowest because of the unclear recommendation owner, which she fixed before the report was filed.
 
 ### 11.6 Reflection
 
-Priya notes where she hesitated: deciding reachability without the call graph.
+Priya notes where she hesitated: deciding reachability without the call graph. Without a call graph, Priya had to read code to decide whether vulnerable functions were reachable, and she was not always sure. She records this as a skill to develop and as a limitation of manual review. Her development plan includes learning a call-graph tool, so reachability decisions can be checked more reliably. Marcus agrees this is the right next step. She plans to repeat the depot-scan lab with such a tool and compare the results with her manual judgements.
 
 ### Preparing for the lab
 
@@ -808,27 +808,27 @@ You will (1) assemble a portfolio of practice evidence; (2) map it to frameworks
 
 ### 12.1 Portfolio contents
 
-The hl-auth finding and its resolution; the dependency source review; the triage format adopted by TrackPort; the workflow and its metrics; the case analysis; the private disclosure; the supervised lab report.
+The hl-auth finding and its resolution; the dependency source review; the triage format adopted by TrackPort; the workflow and its metrics; the case analysis; the private disclosure; the supervised lab report. Each item shows a different competence: the hl-auth finding shows investigation and communication; the source review shows method; the triage format shows working with developers; the workflow and metrics show sustained improvement; the case analysis shows judgement; the private disclosure shows ethics; and the lab report shows independent work. Priya arranges them with dates and evidence for each.
 
 ### 12.2 Mapping
 
-Priya maps each item to SSDF practice groups and to OWASP SAMM v2 practices such as Threat Assessment, Security Requirements, Secure Build and Defect Management, showing where Harbourline's maturity rose.
+Priya maps each item to SSDF practice groups and to OWASP SAMM v2 practices such as Threat Assessment, Security Requirements, Secure Build and Defect Management, showing where Harbourline's maturity rose. Mapping to recognised practices lets assessors and Harbourline compare her work with an external standard. SAMM practices show where maturity rose, such as Secure Build after the source controls and Defect Management after the workflow. Priya includes the evidence for each mapping, so assessors can judge the claim rather than accept it.
 
 ### 12.3 Outcomes
 
-Internal names can no longer resolve publicly; criticals are fixed on time; findings arrive checked and ranked; releases carry provenance.
+Internal names can no longer resolve publicly; criticals are fixed on time; findings arrive checked and ranked; releases carry provenance. Each outcome is supported by evidence in the portfolio: the weekly tests show internal names cannot resolve publicly, the next quarter's tickets show criticals fixed on time, the TrackPort team's tickets show findings arriving checked and ranked, and the deployment system's records show releases carry provenance. Priya states each outcome only as far as the evidence supports. Marcus confirms each item.
 
 ### 12.4 Limits
 
-Coverage is TrackPort and the shared build service; other teams have not yet adopted the triage workflow; reachability is judged manually.
+Coverage is TrackPort and the shared build service; other teams have not yet adopted the triage workflow; reachability is judged manually. These limits show where further work is needed. Other teams use the shared build service but not the triage workflow, so their findings may still arrive unchecked. Manual reachability judgements depend on Priya's reading of the code. She records each limit in her portfolio, so assessors and Marcus can see what the project did not cover. Marcus agrees with her list.
 
 ### 12.5 Reflection
 
-Priya writes that her quality-engineering habits, careful reproduction and clear evidence, transferred directly to security work.
+Priya writes that her quality-engineering habits, careful reproduction and clear evidence, transferred directly to security work. Careful reproduction helped her confirm the hl-auth finding and check each scanner result before sending it to developers. Clear evidence made her tickets easy to act on. She also notes what was new: judging risk, deciding priorities and writing for managers. Marcus agrees and adds that her careful approach made the platform team trust her findings quickly. She keeps both habits in her new role.
 
 ### 12.6 Development plan
 
-Next: threat modelling with Shostack's (2014) four questions for new TrackPort features, and extending the workflow to two more teams.
+Next: threat modelling with Shostack's (2014) four questions for new TrackPort features, and extending the workflow to two more teams. Threat modelling would help the team find risks in new features before they are built, which complements finding issues in dependencies and code. Shostack's four questions are simple enough for developers to use in planning meetings. Extending the workflow to two more teams tests whether it works beyond TrackPort. Marcus agrees to review progress after three months. The plan is filed with her portfolio.
 
 ### Assessor feedback
 
