@@ -12,10 +12,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Toma de decisiones avanzada en seguridad | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Seguridad de la IA y del aprendizaje automático: práctica actual | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Seguridad de la IA y del aprendizaje automático: evidencia especializada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Riesgo y ética avanzados | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
-| 2 | [05](book/PLAN.md#ch-05) | Seguridad de la IA y del aprendizaje automático: alternativas de diseño | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Seguridad de la IA y del aprendizaje automático: evaluación controlada | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
+| 1 | [03](book/PLAN.md#ch-03) | Seguridad de la IA y del aprendizaje automático: evidencia especializada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Riesgo y ética avanzados | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
+| 2 | [05](book/PLAN.md#ch-05) | Seguridad de la IA y del aprendizaje automático: alternativas de diseño | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Seguridad de la IA y del aprendizaje automático: evaluación controlada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
 | 3 | [07](book/PLAN.md#ch-07) | Seguridad de la IA y del aprendizaje automático: integración organizativa | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
 | 3 | [08](book/PLAN.md#ch-08) | Seguridad de la IA y del aprendizaje automático: casos difíciles | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
 | 3 | [09](book/PLAN.md#ch-09) | Seguridad de la IA y del aprendizaje automático: liderazgo y aseguramiento | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
