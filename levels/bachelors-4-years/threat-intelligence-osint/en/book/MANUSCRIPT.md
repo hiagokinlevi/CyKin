@@ -197,7 +197,7 @@ Amara's script writes unknown values to a separate file with the line they came 
 
 Scripts in this course read local files only. Code that fetches web pages, queries external services or logs into platforms is outside this chapter and requires terms, permission and supervision.
 
-Amara asks two questions of her own work: where does each input come from, and was she allowed to use it? Her scripts take files that HSSC or HCHT systems have already provided, which keeps her inside the permissions of her internship. Any collection step is a separate decision for her supervisor, with its own approval and record.
+Amara asks two questions of her own work: where does each input come from, and was she allowed to use it? When a source publishes only a web page, she asks the HSSC desk for an exported file rather than adding a download step to her script. Any collection step is a separate decision for her supervisor, with its own approval and record.
 
 ### Readable code
 
@@ -1107,7 +1107,7 @@ Amara adds an outcome column to the indicator database: blocked, hunted with a r
 
 Consumers should tell producers what helped. HSSC's monthly feedback form asks members which items led to action. Amara fills it in honestly, including "no action needed".
 
-"No action needed" is useful feedback, because it tells HSSC that an item did not apply to members like HCHT. Amara adds a sentence explaining why, such as "we do not run the affected product". Honest feedback helps producers focus on what consumers can use. HSSC shares a summary of all members' feedback each quarter, which shows which report types are most useful.
+"No action needed" is useful feedback, because it tells HSSC that an item did not apply to members like HCHT. Amara adds a sentence explaining why, such as "we do not run the affected product". HSSC shares a summary of all members' feedback each quarter, which shows which report types members find most useful.
 
 ### 15.5 Timeliness
 
@@ -1924,9 +1924,9 @@ I-5 F6 cannot judge - seek corroboration
 
 ### 26.2 Reading the result
 
-I-1 is B2 — usually reliable, probably true — use for action. I-2 is E3 — unreliable source, possibly true — hold. I-3 is A5 — completely reliable source but improbable information — hold until checked; even good sources make mistakes. I-4 is C3 — fairly reliable, possibly true — use with a caveat. I-5 is F6 — cannot be judged on either axis.
+I-1 is B2 — usually reliable, probably true — use for action. I-2 (E3) and I-4 (C3) are both possibly true, so the source decides: I-2's source is unreliable, so it is held, while I-4's is fairly reliable, so it is used with a caveat. I-3 is A5 — completely reliable source but improbable information — hold until checked; even good sources make mistakes. I-5 is F6 — cannot be judged on either axis.
 
-Amara records the reason for each decision next to the grade. The F6 item is not discarded: it is stored and checked again if other sources mention it. Amara writes each decision with a one-line reason, so the security lead can see why I-3 waits despite its excellent source, and adds the date of the next check.
+Amara writes each decision next to the grade with a one-line reason, so the security lead can see why I-3 waits despite its excellent source, and adds the date of the next check. The F6 item is not discarded: it is stored and checked again if other sources mention it.
 
 ### 26.3 Decision rules
 
@@ -2822,7 +2822,7 @@ The pilot with three members tests whether the process works for domains HCHT do
 
 Downloaded extracts are stored on the HCHT analysis server, not a personal laptop. Results go to the supervisor only. Domains matching individuals' names are excluded from reports unless clearly impersonating HCHT.
 
-Amara checks the exclusion rule on test data before using it. Domains that look like personal names are rarely relevant to HCHT and could expose private individuals if included. Where a personal-looking domain clearly impersonates HCHT, it is included with a note explaining why. Extracts are deleted from the server after the project, as the proposal promised.
+Amara checks the exclusion rule on test data before using it. Domains that look like personal names are rarely relevant to HCHT and could expose private individuals, who have no part in the project, if included. Extracts are deleted from the server when the project ends, as the proposal promised.
 
 ### 38.5 Weekly checks
 
@@ -2980,7 +2980,7 @@ In her presentation, an examiner asks whether the process would detect lookalike
 
 Hand the process over properly: documentation, scripts in HCHT's repository, a named owner and a short training session. A capstone that stops when the student leaves delivers little lasting value; a handed-over process keeps protecting the organisation.
 
-Amara hands the process to a named analyst at HCHT. The scripts move into HCHT's repository with the test list and a guide covering the weekly run, triage rules and the decision log. Amara runs one training session and watches the analyst complete a full week alone. Open questions, including the missed pattern, are listed for the new owner, and she remains available for questions during the next semester.
+The scripts move into HCHT's repository with the test list and a guide covering the weekly run, triage rules and the decision log. Amara runs one training session and watches the new owner, an HCHT analyst, complete a full week alone. Open questions, including the missed pattern, are listed for the new owner, and she remains available for questions during the next semester.
 
 ### Citing standards correctly
 
