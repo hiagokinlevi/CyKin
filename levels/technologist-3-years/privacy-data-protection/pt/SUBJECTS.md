@@ -14,12 +14,12 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [02](book/PLAN.md#ch-02) | Redes e serviços de internet | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
 | 1 | [03](book/PLAN.md#ch-03) | Fundamentos de programação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
 | 1 | [04](book/PLAN.md#ch-04) | Modelos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Letramento em segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Plano](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Sistemas operacionais e virtualização | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plano](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Fundamentos de identidade e acesso | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Fundamentos de arquitetura de segurança | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Evidências e medição | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Privacidade e proteção de dados: orientação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
+| 1 | [05](book/PLAN.md#ch-05) | Letramento em segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Sistemas operacionais e virtualização | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Fundamentos de identidade e acesso | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Fundamentos de arquitetura de segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Evidências e medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Privacidade e proteção de dados: orientação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Plano](book/PLAN.md#ch-11) |
 | 3 | [11](book/PLAN.md#ch-11) | Privacidade e proteção de dados: ativos e contexto | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
 | 3 | [12](book/PLAN.md#ch-12) | Privacidade e proteção de dados: fluxos de dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Privacidade e proteção de dados: cenários de risco | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |

@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 073, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–5 de 30 já estão escritos em português, com os exercícios EX001–EX015 e suas resoluções com rubricas de 0 a 3; os capítulos 6–30 (EX016–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 30 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3; os capítulos 11–30 (EX031–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a verificar como sistemas reais tratam dados pessoais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios inspecionam os fluxos de SDKs de um aplicativo sintético, testam a completude da exportação de um pedido de acesso, varrem arquivos sintéticos em busca de padrões de dados pessoais, conferem a retenção de imagens de CFTV e automatizam a exclusão de contas inativas, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR), artigos 5, 9, 15, 28, 30, 32, 33 e 35; Lei nº
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
 
-Capítulos 6–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-06), até a chegada dos próximos lotes.
+Capítulos 11–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -235,11 +235,211 @@ Os guias precisam ser atualizados à medida que as ameaças mudam.
 - **EX014 — Rapidez da comunicação.** Por que a equipe precisa comunicar depressa? *Rubrica:* 3 = o prazo de 72 horas começa quando a Quayside toma conhecimento;; 2 = menciona prazo;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Fotografar listas.** Que hábito arriscado o guia proíbe? *Rubrica:* 3 = fotografar listas de alunos com celulares pessoais;; 2 = menciona celulares;; 1 = nenhum;; 0 = nenhuma.
 
+<a id="ch-06"></a>
+
+## Capítulo 6 — Sistemas operacionais e virtualização
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger os computadores das unidades; (2) entender as máquinas virtuais e o isolamento; (3) gerir os dados guardados localmente.
+
+### 6.1 Computadores das unidades
+
+Os computadores da recepção rodam o software de reservas e da catraca. Aisha encontra contas de administrador compartilhadas e exportações de alunos salvas nas pastas de downloads. Recomenda contas individuais, a retirada dos direitos de administrador da equipe da recepção e a limpeza automática dos downloads. Descobre ainda que o software de reservas grava toda noite uma exportação completa dos alunos numa pasta temporária que ninguém esvazia. O fornecedor confirma que a pasta pode ser limpa automaticamente, e Aisha pede que isso seja o padrão em todas as unidades, em vez de depender da memória de cada gerente.
+
+### 6.2 Máquinas virtuais
+
+A sede da Quayside roda vários serviços em máquinas virtuais na nuvem. Aisha aprende que as máquinas virtuais isolam as cargas de trabalho, mas compartilham os hosts. Ela confere que o banco de matrículas roda em máquina virtual própria, com acesso de rede restrito, o que limita a propagação de um comprometimento. Ao revisar as regras do firewall da nuvem, encontra uma que permite a qualquer endereço da rede da sede alcançar a porta do banco, e a restringe aos dois servidores de aplicação que precisam dela. Ela explica que o isolamento só funciona se as regras de rede corresponderem ao desenho, e que as regras tendem a se alargar com o tempo.
+
+### 6.3 Dados locais
+
+Aisha procura cópias locais de dados de alunos nos computadores das unidades e encontra planilhas antigas em três delas. Trabalha com os gerentes para excluí-las e usar o sistema central. Observa que as cópias locais escapam das regras de retenção e dos controles de acesso. Para entender por que as cópias existiam, ela pergunta aos gerentes, que explicam que o sistema central ficava lento nas noites de segunda-feira e eles guardavam listas para consultas rápidas. Aisha relata o problema de desempenho à TI, porque excluir as cópias sem corrigir a causa só faria surgir cópias novas em poucas semanas.
+
+### 6.4 Atualizações
+
+Aisha confere a situação das atualizações e encontra dois computadores de unidade meses atrasados. Ela configura as atualizações automáticas. O Sr. Reilly observa que máquinas sem correções são uma rota frequente de ataque e que aplicar as correções é uma medida básica pelo artigo 32. Ela lista o software de cada computador e encontra um visualizador de documentos antigo, com vulnerabilidades conhecidas, que é removido porque ninguém o usa. Ela registra a situação das atualizações no inventário, para comparação futura, e pede à TI um relatório mensal de qualquer computador com mais de trinta dias de atraso.
+
+### Exemplo resolvido
+
+Aisha remove as contas de administrador compartilhadas, isola a máquina virtual do banco de matrículas, exclui as planilhas locais antigas e ativa as atualizações automáticas.
+
+> **Caso sintético.** Os computadores são sintéticos; o artigo 32 do GDPR é real.
+
+### Erros e limites
+
+Atualizações automáticas podem quebrar o software das unidades; teste antes.
+
+### Exercícios
+
+- **EX016 — Limpeza dos downloads.** Por que limpar as pastas de downloads dos computadores da recepção? *Rubrica:* 3 = as exportações salvas contêm dados de alunos;; 2 = menciona exportações;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Isolamento da máquina virtual.** Por que dar ao banco de matrículas uma máquina virtual própria? *Rubrica:* 3 = o isolamento limita a propagação de um comprometimento;; 2 = menciona isolamento;; 1 = nada;; 0 = nenhuma.
+- **EX018 — Risco das cópias locais.** Por que as planilhas locais são arriscadas? *Rubrica:* 3 = escapam da retenção e dos controles de acesso;; 2 = menciona controle;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Fundamentos de identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar perfis de acesso para a equipe das unidades e da sede; (2) gerir os desligamentos; (3) aplicar a autenticação multifator.
+
+### 7.1 Perfis
+
+Aisha desenha os perfis: recepção, personal trainer, gerente de unidade, suporte da sede, marketing e TI. Os personal trainers veem as reservas e os dados de treino dos seus alunos; a recepção vê reservas e situação da matrícula; o marketing vê preferências, mas não dados de treino. Ela documenta por que cada perfil precisa do seu acesso e testa o rascunho com cada grupo. Os trainers lembram que às vezes substituem colegas e precisam de acesso temporário a esses alunos. Aisha acrescenta uma permissão de substituição que expira depois da aula, em vez de abrir todos os alunos aos trainers.
+
+### 7.2 Desligamentos
+
+As academias têm alta rotatividade de pessoal. Aisha encontra quarenta contas ativas de ex-funcionários. Ela rastreia como surgiram: os gerentes criavam as contas diretamente, mas ninguém avisava a TI quando alguém saía, e o RH usava um sistema separado. Ela liga a remoção das contas ao processo de desligamento do RH, de modo que a data de saída registrada no RH agora desativa a conta automaticamente, e roda uma verificação mensal que compara as contas ativas com a lista do RH e informa qualquer diferença ao gerente da unidade. Ela observa que contas esquecidas são uma rota comum de uso indevido.
+
+### 7.3 Autenticação multifator
+
+Aisha recomenda a autenticação multifator para as contas da sede e dos gerentes, que podem exportar listas de alunos. As contas da recepção, em telas compartilhadas, usam sessões curtas e login por crachá. Os gerentes temem que os passos extras atrasem os turnos movimentados. Aisha faz um teste de duas semanas numa unidade com um aplicativo autenticador e descobre que os gerentes entram só algumas vezes por dia, então o atraso é pequeno. O direito de exportar é a principal razão do controle, porque uma exportação pode copiar milhares de alunos em segundos, e é esse o risco que se quer reduzir.
+
+### 7.4 Revisões
+
+Aisha implanta revisões trimestrais de acesso para os gerentes das unidades. Cada gerente recebe a lista das contas da sua unidade, com perfis e datas do último acesso, e precisa confirmar ou corrigir cada uma. A primeira revisão corrige vinte e três contas, entre elas trainers com direitos de recepção, um funcionário da limpeza com conta de reservas e dois gerentes que tinham sido transferidos para outras unidades. Aisha guarda as listas assinadas e datadas como evidência de que a revisão foi feita, o que sustenta a responsabilização pelo artigo 5(2) do GDPR e pelo art. 6º, X, da LGPD.
+
+### Exemplo resolvido
+
+Aisha define seis perfis, remove quarenta contas de ex-funcionários ligando-as ao RH, acrescenta a autenticação multifator para quem exporta listas e conduz revisões trimestrais.
+
+> **Caso sintético.** As contas são sintéticas; o artigo 5(2) do GDPR e o art. 6º, X, da LGPD são reais.
+
+### Erros e limites
+
+Revisões feitas por gerentes ocupados podem virar carimbo; confira as respostas por amostragem.
+
+### Exercícios
+
+- **EX019 — Acesso dos trainers.** O que os personal trainers podem ver? *Rubrica:* 3 = reservas e dados de treino dos seus alunos;; 2 = menciona alunos;; 1 = todos os alunos;; 0 = nenhuma.
+- **EX020 — Ex-funcionários.** Quantas contas de ex-funcionários estavam ativas? *Rubrica:* 3 = quarenta;; 2 = aproximadamente;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Alcance da autenticação multifator.** Que contas recebem a autenticação multifator? *Rubrica:* 3 = sede e gerentes que podem exportar listas;; 2 = menciona gerentes;; 1 = todas;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Fundamentos de arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar a segmentação e o menor privilégio; (2) posicionar controles em volta dos dados sensíveis; (3) documentar uma arquitetura.
+
+### 8.1 Segmentos
+
+Aisha desenha a arquitetura da Quayside em segmentos: aplicativo e site públicos, serviços da sede, redes das unidades e CFTV. Ela coloca o banco de matrículas e o repositório de frequência cardíaca num segmento restrito e explica à TI a razão de cada fronteira. Os serviços públicos ficam expostos à internet e são os mais atacados, então não devem alcançar diretamente os repositórios de alunos. As redes das unidades ficam fisicamente expostas em prédios abertos ao público. O CFTV produz grandes volumes de imagens de pessoas identificáveis. Cada segmento tem regras que descrevem exatamente que tráfego pode passar para outro.
+
+### 8.2 Controles em volta dos dados
+
+O acesso ao repositório de frequência cardíaca passa por uma API que confere o perfil e a finalidade. As exportações exigem aprovação, e as de listas grandes vão para o encarregado. A criptografia protege os dados em repouso, com chaves geridas pelo serviço de chaves da nuvem e acesso restrito a dois administradores. A API registra cada requisição com o perfil e a finalidade declarada, para que padrões incomuns possam ser encontrados depois, como um trainer lendo centenas de perfis numa noite. Aisha explica que as camadas de controles reduzem a dependência de qualquer medida isolada.
+
+### 8.3 Fornecedores no diagrama
+
+Aisha inclui os fornecedores: o processador de pagamentos, o chat de atendimento, a ferramenta de análise e o fornecedor das cintas cardíacas. Ela marca quais recebem dados pessoais e se há contrato. O mapeamento mostra que o fornecedor das cintas recebe as leituras brutas de frequência cardíaca, e não só as zonas, e que seu contrato não fala de retenção; Aisha leva a lacuna à equipe de compras. Ela também descobre que o fornecedor do chat guarda as transcrições por cinco anos por padrão, muito mais do que a Quayside precisa para o atendimento, e pede noventa dias.
+
+### 8.4 Documentação
+
+Aisha escreve um documento curto de arquitetura com o diagrama, os fluxos de dados e os controles, em linguagem simples e com um glossário para termos como segmento, API e criptografia em repouso. Ela inclui uma seção com as fraquezas conhecidas e as correções planejadas, para que os leitores não suponham que o desenho é perfeito. O documento tem número de versão e um responsável na TI, que vai atualizá-lo depois de cada mudança importante. O Sr. Reilly observa que a documentação ajuda os novos funcionários e os auditores a entender como os dados dos alunos são protegidos.
+
+### Exemplo resolvido
+
+Aisha segmenta a arquitetura da Quayside, coloca o repositório de frequência cardíaca atrás de uma API que confere perfis, mapeia os fornecedores e documenta o desenho.
+
+> **Caso sintético.** A arquitetura é sintética.
+
+### Erros e limites
+
+Os diagramas se afastam da realidade; revise-os depois de mudanças.
+
+### Exercícios
+
+- **EX022 — Segmento restrito.** Que repositórios ficam no segmento restrito? *Rubrica:* 3 = o banco de matrículas e o repositório de frequência cardíaca;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX023 — Camadas de controles.** Por que usar várias camadas de controles? *Rubrica:* 3 = reduz a dependência de uma medida isolada;; 2 = menciona camadas;; 1 = uma basta;; 0 = nenhuma.
+- **EX024 — Mapeamento dos fornecedores.** O que Aisha marca para cada fornecedor? *Rubrica:* 3 = se recebe dados pessoais e se há contrato;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher métricas de privacidade; (2) coletar evidências de forma confiável; (3) relatar os resultados.
+
+### 9.1 Métricas
+
+Aisha propõe quatro métricas: contas de ex-funcionários, cópias locais encontradas, pedidos de titulares respondidos no prazo e imagens de CFTV além do prazo de retenção. Cada uma tem uma definição e uma fonte de dados. Ela evita métricas fáceis de contar, mas que dizem pouco, como o número de políticas publicadas. Para cada métrica, escreve como é calculada, quem fornece os dados, com que frequência é medida e que valor seria preocupante. Por exemplo, qualquer conta de ex-funcionário ativa por mais de dois dias já é motivo de preocupação e gera uma ação imediata.
+
+### 9.2 Evidências
+
+Sempre que possível, Aisha coleta evidências por relatórios dos sistemas, e não por questionários, porque os relatórios são mais confiáveis. Um questionário pergunta aos gerentes se removeram os desligados, mas eles podem lembrar errado ou responder com otimismo; um relatório do sistema lista as contas diretamente. Quando só um questionário é possível, como na conscientização da equipe, ela o combina com um pequeno teste, como pedir a um funcionário que mostre onde fica o formulário de comunicação. Ela guarda as evidências com datas e registra como cada uma foi produzida, o que evita conclusões exageradas.
+
+### 9.3 Linha de base
+
+Aisha registra uma linha de base: quarenta contas esquecidas, três unidades com planilhas locais e uma situação desconhecida da retenção do CFTV, que ela trata como lacuna a medir, começando por uma unidade. Anota a data e o método de cada valor, porque uma mudança posterior de método poderia parecer uma melhoria. Registra também dois valores que espera ver subir no início, as comunicações de incidentes e os pedidos de acesso, explicando que uma conscientização maior pode fazer os números crescerem antes de os riscos caírem. Sem essa ressalva, a direção poderia ler a alta como piora.
+
+### 9.4 Relatórios
+
+Aisha reporta todo mês ao encarregado da Quayside. Cada relatório cabe numa página: uma tabela com o valor atual, o anterior e a linha de base de cada métrica, um comentário curto sobre cada mudança, uma lista de ações com responsáveis e as fontes dos dados. O encarregado o encaminha ao diretor de operações. Aisha guarda os relatórios numa pasta datada, para que as tendências possam ser revistas depois. O Sr. Reilly observa que medir desde o início é o que permite mostrar o progresso mais tarde, porque sem linha de base qualquer melhoria vira apenas uma afirmação sem prova.
+
+### Exemplo resolvido
+
+Aisha define quatro métricas, prefere as evidências dos sistemas, registra uma linha de base que inclui os desconhecidos e reporta todo mês.
+
+> **Caso sintético.** As métricas são sintéticas.
+
+### Erros e limites
+
+As métricas podem deixar escapar o que não é medido.
+
+### Exercícios
+
+- **EX025 — Fonte das evidências.** Por que preferir relatórios dos sistemas a questionários? *Rubrica:* 3 = são mais confiáveis;; 2 = menciona confiabilidade;; 1 = questionários;; 0 = nenhuma.
+- **EX026 — CFTV desconhecido.** Como Aisha trata a situação desconhecida do CFTV? *Rubrica:* 3 = como uma lacuna a medir;; 2 = menciona lacuna;; 1 = ignora;; 0 = nenhuma.
+- **EX027 — Valor da linha de base.** Por que registrar uma linha de base? *Rubrica:* 3 = para mostrar o progresso mais tarde;; 2 = menciona comparação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Privacidade e proteção de dados: orientação
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar os princípios centrais da proteção de dados; (2) identificar as bases legais numa academia; (3) reconhecer os dados de categorias especiais.
+
+### 10.1 Princípios
+
+Aisha estuda os princípios do artigo 5 do GDPR e do art. 6º da LGPD e aplica cada um à Quayside. A limitação da finalidade significa que as imagens de CFTV gravadas para segurança não servem para vigiar a produtividade da equipe. A minimização significa que o aplicativo pede só os dados necessários aos treinos. A exatidão significa que os alunos podem corrigir seus dados no aplicativo. A limitação da conservação significa que as imagens e as contas inativas são excluídas no prazo. A responsabilização significa que a Quayside precisa conseguir demonstrar a conformidade, e é por isso que Aisha guarda evidências de cada verificação.
+
+### 10.2 Bases legais
+
+O tratamento das matrículas se apoia no contrato; os registros de pagamento, na obrigação legal; os e-mails de marketing, no consentimento; o CFTV, no legítimo interesse. Aisha aprende que cada finalidade precisa da sua base. Ela observa que o consentimento não serve para as matrículas, porque o aluno não pode recusar o tratamento e continuar matriculado; o contrato se encaixa melhor. Para o CFTV, o legítimo interesse exige um teste de ponderação que mostre que as necessidades de segurança superam a intrusão sobre alunos e equipe. Ela redige esse teste com o encarregado e registra o raciocínio.
+
+### 10.3 Categorias especiais
+
+Os dados de frequência cardíaca usados para avaliar a saúde podem ser dados de saúde e exigir uma condição do artigo 9 do GDPR, como o consentimento explícito; na LGPD, são dados pessoais sensíveis, sujeitos ao art. 11. Aisha observa que a Quayside precisa decidir e documentar isso com cuidado. Ela discute a diferença entre as leituras mostradas durante uma aula e um histórico longo usado para sugerir dias de descanso ou detectar ritmos irregulares; o segundo revela claramente informações de saúde. A Quayside decide tratar todos os dados de frequência cardíaca armazenados como dados de saúde, a escolha mais protetiva e mais simples de explicar.
+
+### 10.4 Direitos
+
+Os alunos têm direitos de acesso, retificação, eliminação, limitação, portabilidade e oposição. Aisha lista como cada um seria atendido nos sistemas da Quayside, porque os direitos precisam ser práticos, e não só declarados. Para o acesso, uma lista de verificação cobre todos os sistemas. Para a retificação, os alunos editam os dados no aplicativo. Para a eliminação, um processo de exclusão da conta alcança todos os sistemas, com exceções documentadas, como dívidas. Para a oposição, o aluno interrompe o marketing com um toque. Ela observa que o art. 18 da LGPD daria direitos semelhantes aos alunos se a Quayside operasse no Brasil.
+
+### Exemplo resolvido
+
+Aisha aplica os princípios à Quayside, atribui bases legais por finalidade, sinaliza os dados de frequência cardíaca como possíveis dados de saúde e lista o atendimento aos direitos.
+
+> **Caso sintético.** As escolhas da Quayside são sintéticas; os artigos 5 e 9 do GDPR e os arts. 6º, 11 e 18 da LGPD são reais.
+
+### Erros e limites
+
+A escolha da base legal depende dos fatos; revise-a com o jurídico.
+
+### Exercícios
+
+- **EX028 — Finalidade do CFTV.** Por que as imagens de CFTV não podem ser usadas para a produtividade da equipe? *Rubrica:* 3 = limitação da finalidade;; 2 = menciona finalidade;; 1 = é permitido;; 0 = nenhuma.
+- **EX029 — Base do marketing.** Que base legal os e-mails de marketing usam? *Rubrica:* 3 = consentimento;; 2 = correta;; 1 = contrato;; 0 = nenhuma.
+- **EX030 — Condição para a frequência cardíaca.** Que condição os dados de saúde de frequência cardíaca podem exigir? *Rubrica:* 3 = consentimento explícito pelo artigo 9;; 2 = menciona consentimento;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX015 (as de EX016–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sistema de matrículas, aplicativo, vestíveis e CFTV (também a catraca e as reservas das unidades).
 
@@ -270,6 +470,36 @@ Respostas-modelo para EX001–EX015 (as de EX016–EX090 estão na edição em i
 **EX014.** Os prazos de notificação contam a partir de quando a empresa toma conhecimento.
 
 **EX015.** Tirar fotos de listas de alunos com celulares pessoais.
+
+**EX016.** Guardavam exportações de alunos fora dos controles centrais.
+
+**EX017.** Para isolá-lo de serviços menos críticos.
+
+**EX018.** Escapam das regras centrais de retenção e dos controles de acesso.
+
+**EX019.** Reservas e dados de treino dos seus próprios alunos.
+
+**EX020.** Quarenta.
+
+**EX021.** Contas da sede e dos gerentes com direito de exportação.
+
+**EX022.** O banco de matrículas e o repositório de frequência cardíaca.
+
+**EX023.** Para que uma única falha não exponha os dados.
+
+**EX024.** Se recebe dados pessoais e se existe contrato.
+
+**EX025.** Os relatórios dos sistemas são mais confiáveis que as respostas declaradas.
+
+**EX026.** Como uma lacuna de medição a fechar.
+
+**EX027.** Para que as melhorias posteriores possam ser demonstradas.
+
+**EX028.** As imagens coletadas para segurança não podem ser reaproveitadas para uma finalidade incompatível.
+
+**EX029.** Consentimento.
+
+**EX030.** Uma condição do artigo 9, como o consentimento explícito.
 
 <a id="references"></a>
 ## Referências
