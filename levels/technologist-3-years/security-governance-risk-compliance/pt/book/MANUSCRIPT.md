@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 074, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–21 de 30 já estão escritos em português, com os exercícios EX001–EX063 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 22–30 (EX064–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que constroem, operam e avaliam os processos práticos de GRC de uma organização com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios verificam a atualidade das evidências, calculam a perda esperada, resumem CSVs de testes de controles, acompanham um indicador contra um limiar e conciliam uma lista de funcionários com as contas, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) |
-
-Capítulos 22–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-22), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -891,11 +889,355 @@ Os campos dos chamados são pulados. As ligações exigem disciplina.
 - **EX062 — Ligação com incidentes.** Como um incidente de e-mail enviado errado afeta o registro? *Rubrica:* 3 = atualiza a probabilidade desse risco;; 2 = atualização;; 1 = nada;; 0 = nenhuma.
 - **EX063 — Momento da evidência.** Por que a evidência embutida no trabalho normal é melhor? *Rubrica:* 3 = mais confiável e menos trabalhosa que a montada antes da auditoria;; 2 = embutida;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-22"></a>
+
+## Capítulo 22 — Governança, riscos e compliance de segurança: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar uma verificação de conciliação; (2) interpretar os achados automatizados; (3) manter pessoas no circuito.
+
+### 22.1 Conciliação
+
+Priya automatiza uma verificação comum: comparar a lista de funcionários do RH com as contas do sistema do consultório. Um script lê as duas listas e relata as contas de pessoas marcadas como desligadas e as contas que não correspondem a ninguém na lista. Rodá-lo toda semana substitui uma comparação manual que tomava horas de um gerente de clínica a cada trimestre e muitas vezes era pulada. As execuções semanais também fazem a conta de um desligado ser encontrada em dias, e não na comparação trimestral seguinte. O script imprime cada achado com a clínica, para que o gerente certo possa confirmá-lo.
+
+### 22.2 Achados
+
+O laboratório compara uma lista de amostra com cinco pessoas e sete contas. Dois desligados, b.osei e d.wu, ainda têm contas. Duas contas, f.temp e g.test, não correspondem a ninguém na lista. São quatro problemas em sete contas. Priya investiga: f.temp foi criada para um dentista substituto e nunca removida, e g.test foi deixada pelo provedor do sistema do consultório depois da implantação. As duas contas órfãs são desativadas após confirmação com seus prováveis donos. O Sr. Lind observa que g.test mostra como o trabalho de implantação de um fornecedor pode deixar acessos para trás, o que o contrato com o provedor deveria tratar.
+
+### Laboratório — Conciliar a lista do RH com as contas do sistema
+
+```python
+"""Reconcile HR roster with system accounts: leavers with access and orphan accounts."""
+roster = {"a.khan": "active", "b.osei": "left", "c.lopez": "active", "d.wu": "left", "e.roy": "active"}
+accounts = ["a.khan", "b.osei", "c.lopez", "d.wu", "f.temp", "e.roy", "g.test"]
+leavers = [a for a in accounts if roster.get(a) == "left"]
+orphans = [a for a in accounts if a not in roster]
+print("leavers with accounts:", leavers); print("orphan accounts:", orphans)
+print(f"accounts {len(accounts)}; issues {len(leavers) + len(orphans)}")
+```
+
+Execute com `python3 lab_recon.py`. Saída verificada:
+
+```text
+leavers with accounts: ['b.osei', 'd.wu']
+orphan accounts: ['f.temp', 'g.test']
+accounts 7; issues 4
+```
+
+### 22.3 Pessoas no circuito
+
+Priya não deixa o script desativar contas automaticamente. Uma pessoa confere cada achado primeiro, porque um desligado pode ter voltado ou uma conta pode pertencer a um fornecedor com um motivo válido. Ela aprende que a automação deve cuidar da comparação repetitiva, enquanto as pessoas tomam as decisões que precisam de contexto. Os achados automatizados também precisam de donos, senão se acumulam sem leitura, o que anula o propósito de automatizar a verificação. Um substituto que volta, por exemplo, pode aparecer como desligado na lista e precisar da conta na semana seguinte.
+
+### Exemplo resolvido
+
+Priya automatiza a conciliação da lista de funcionários, encontra dois desligados e duas contas órfãs entre sete e mantém a confirmação humana antes de desativar.
+
+> **Caso sintético.** Os nomes e as contas são sintéticos.
+
+### Erros e limites
+
+Divergências de nomes causam falsos achados. Relatórios não lidos anulam a automação.
+
+### Exercícios
+
+- **EX064 — Contas de desligados.** Que desligados ainda tinham contas? *Rubrica:* 3 = b.osei e d.wu;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Origem das órfãs.** De onde vieram as contas órfãs? *Rubrica:* 3 = uma conta de substituto e uma conta de teste do provedor;; 2 = origens;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Decisão manual.** Por que não desativar as contas automaticamente? *Rubrica:* 3 = os achados precisam de contexto que uma pessoa deve verificar;; 2 = contexto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Governança, riscos e compliance de segurança: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o primeiro ano do programa de GRC; (2) usar evidências para julgar o progresso; (3) recomendar melhorias.
+
+### 23.1 Perguntas da avaliação
+
+Depois de um ano, Priya ajuda a avaliar o programa da Riverton. Ela pergunta: os principais riscos estão menores? Os controles estão operando? As evidências estão em dia? Os donos estão engajados? Reúne dados do registro, dos resultados de testes, das tendências dos indicadores, do registro de evidências e de uma pesquisa curta com os gerentes das clínicas. Ela aprende que a avaliação deve usar várias fontes, já que qualquer medida isolada pode enganar, e que as perguntas devem ser definidas antes de olhar os dados. Definir as perguntas antes impede que a avaliação destaque só as medidas que melhoraram.
+
+### 23.2 Achados
+
+O risco de ransomware está menor: a segmentação está concluída em doze das catorze clínicas e os backups são testados todo mês. O risco de skimming caiu drasticamente após a passagem para a página de pagamento hospedada. Os testes de controles passam com mais frequência do que no piloto. A atualidade das evidências melhorou, embora os relatórios de fornecedores continuem atrasados. Os gerentes das clínicas dizem que as tarefas estão mais claras, mas que a revisão de acesso continua demorada. Priya apresenta os achados com as evidências de cada um. O atraso dos relatórios de fornecedores repete o problema de atualidade do capítulo 9, então a causa está nos contratos, e não nas clínicas.
+
+### 23.3 Recomendações
+
+Priya recomenda concluir a segmentação nas duas últimas clínicas, automatizar as listas da revisão de acesso, incluir o pedido de relatórios dos fornecedores nas renovações de contrato e simplificar o checklist dos gerentes de clínica. Também recomenda preparar a certificação ISO/IEC 27001:2022 para o ano que vem. Ela aprende que as avaliações são úteis quando levam a melhorias específicas e que reconhecer o progresso motiva a equipe a continuar o trabalho. Cada recomendação responde a um achado específico, como a revisão de acesso ainda demorada, e pode ser acompanhada como ação com dono no sistema de chamados.
+
+### Exemplo resolvido
+
+Priya avalia o programa com cinco fontes, constata a redução dos riscos de ransomware e de cartão e recomenda quatro melhorias.
+
+> **Caso sintético.** Os dados da avaliação são sintéticos; a ISO/IEC 27001:2022 é real.
+
+### Erros e limites
+
+Um ano é pouco tempo. As respostas da pesquisa podem ser educadas demais.
+
+### Exercícios
+
+- **EX067 — Fontes da avaliação.** Que fontes a avaliação usou? *Rubrica:* 3 = registro, resultados de testes, indicadores, registro de evidências e pesquisa;; 2 = cinco;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Progresso da segmentação.** Quantas clínicas concluíram a segmentação? *Rubrica:* 3 = doze de catorze;; 2 = 12/14;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Carga restante.** Que tarefa continuou demorada? *Rubrica:* 3 = a revisão de acesso;; 2 = revisão de acesso;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar um pequeno estudo aplicado em GRC; (2) escolher dados e métodos adequados; (3) relatar os achados com seus limites.
+
+### 24.1 Pergunta
+
+Priya desenha um pequeno estudo: enviar aos gerentes das clínicas listas de revisão de acesso pré-preenchidas, com descrições dos papéis, reduz o tempo que eles gastam nas revisões? Ela define o tempo gasto como os minutos informados num registro curto, e a qualidade como o número de direitos inadequados encontrados por uma segunda verificação. Aprende que as perguntas aplicadas devem ser estreitas, mensuráveis e úteis para a organização, e não perguntas amplas que não podem ser respondidas num semestre. Medir a qualidade por uma segunda verificação protege contra listas que economizam tempo escondendo direitos inadequados.
+
+### 24.2 Método
+
+Sete clínicas recebem as listas novas e sete continuam com as antigas durante um trimestre, com a alocação feita por sorteio de nomes. Priya registra o tempo e a qualidade de cada uma. Ela anota as ameaças: os gerentes sabem que estão sendo estudados, as clínicas diferem em tamanho e um trimestre pode ser atípico. Aprende que a alocação aleatória ajuda a comparabilidade, mas não elimina todas as diferenças quando os grupos são pequenos. O sorteio evita, por exemplo, que as clínicas maiores fiquem todas com as listas novas. Ela registra cada ameaça no relatório para que os leitores pesem o resultado por conta própria.
+
+### 24.3 Achados
+
+Os gerentes com as listas novas informam uma mediana de quarenta minutos, contra noventa com as listas antigas. A segunda verificação encontra números semelhantes de direitos inadequados nos dois grupos. Priya relata que as listas novas economizaram tempo sem reduzir a qualidade neste pequeno estudo, deixando claros os limites. Ela aprende que o relato honesto de um estudo pequeno ainda pode sustentar uma decisão prática, desde que sua incerteza fique clara. Quarenta contra noventa minutos é uma diferença grande, mas sete clínicas por grupo são poucas para descartar totalmente o acaso.
+
+### Exemplo resolvido
+
+Priya aloca catorze clínicas por sorteio, encontra tempos medianos de revisão de quarenta contra noventa minutos, com qualidade semelhante, e relata os limites.
+
+> **Caso sintético.** O estudo é sintético.
+
+### Erros e limites
+
+Tempo autodeclarado. Sete clínicas por grupo.
+
+### Exercícios
+
+- **EX070 — Medida de qualidade.** Como se mede a qualidade da revisão? *Rubrica:* 3 = direitos inadequados encontrados por uma segunda verificação;; 2 = segunda verificação;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Alocação.** Como as clínicas foram alocadas? *Rubrica:* 3 = por sorteio de nomes;; 2 = aleatória;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Resultado de tempo.** Que tempos medianos os grupos informaram? *Rubrica:* 3 = quarenta contra noventa minutos;; 2 = 40 contra 90;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar em equipe numa entrega de GRC; (2) dividir o trabalho e revisar a produção uns dos outros; (3) apresentar a um cliente.
+
+### 25.1 O briefing
+
+No ateliê de equipe, a Riverton pede ao grupo de Priya um pacote de integração para as três novas clínicas: um checklist de configuração segura, a lista dos controles de que o gerente da clínica é dono, os requisitos de evidência e uma sessão curta de treinamento. A equipe tem quatro membros com pontos fortes diferentes: redes, documentação, desenho de treinamentos e dados. Eles acordam papéis, prazos e uma pasta compartilhada. O Sr. Lind sugere que a especialista em dados verifique se cada requisito de evidência pode de fato ser produzido pelos sistemas das novas clínicas, antes que o pacote seja entregue ao cliente.
+
+### 25.2 Revisão por pares
+
+O trabalho de cada membro é revisado por outro antes da entrega. Os requisitos de evidência de Priya são revisados pelo especialista em documentação, que encontra dois termos usados de forma inconsistente. O desenho do treinamento é revisado por Priya, que sugere acrescentar um cenário sobre e-mails a laboratórios enviados ao destinatário errado. A revisão por pares pega erros e melhora a clareza. Ela aprende que revisar o trabalho dos outros é uma competência em si, que exige um retorno específico e respeitoso. O cenário dos e-mails a laboratórios parte de um risco que a Riverton já registrou, então o treinamento continua relevante.
+
+### 25.3 Apresentação ao cliente
+
+A equipe apresenta ao gerente de operações da Riverton e a uma gerente de clínica. Eles percorrem o checklist e demonstram o cenário de treinamento. A gerente de clínica pede uma versão do checklist em uma página, que a equipe produz no dia seguinte. Priya aprende que os clientes valorizam a usabilidade prática, e que ouvir o retorno durante uma apresentação é tão importante quanto apresentá-la bem. Um checklist de uma página tem mais chance de ser usado numa clínica nova e movimentada do que um documento mais longo, que ficaria esquecido numa gaveta da recepção.
+
+### Exemplo resolvido
+
+A equipe de Priya produz um pacote de integração para as novas clínicas, usa a revisão por pares para pegar inconsistências e adapta o checklist após o retorno do cliente.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+A dinâmica das equipes varia. Os pedidos do cliente podem ampliar o escopo.
+
+### Exercícios
+
+- **EX073 — Conteúdo do pacote.** O que contém o pacote de integração? *Rubrica:* 3 = checklist de configuração, controles do gerente, requisitos de evidência, treinamento;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
+- **EX074 — Achado da revisão.** O que a revisão por pares encontrou no trabalho de Priya? *Rubrica:* 3 = dois termos usados de forma inconsistente;; 2 = inconsistência;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Pedido do cliente.** O que a gerente de clínica pediu? *Rubrica:* 3 = um checklist em uma página;; 2 = uma página;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Governança, riscos e compliance de segurança: passagem operacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) passar os processos de GRC para a equipe de operações; (2) escrever runbooks; (3) confirmar a prontidão antes da passagem.
+
+### 26.1 Runbooks
+
+Priya prepara runbooks para os processos que ajudou a construir: a conciliação semanal da lista de funcionários, a revisão mensal dos indicadores, a verificação de atualidade das evidências e a revisão trimestral de acesso. Cada runbook lista a finalidade, as etapas, as ferramentas, as saídas esperadas, o que fazer quando algo falha e quem contatar. Ela os escreve para uma pessoa que nunca fez a tarefa. Aprende que os runbooks tornam os processos independentes de quem os desenhou. A seção sobre o que fazer quando algo falha é a que mais importa, já que o coordenador vai enfrentá-la sem Priya por perto.
+
+### 26.2 Prontidão
+
+Antes da passagem, Priya observa o novo coordenador da equipe de TI executar cada processo usando apenas o runbook. O coordenador conclui três dos quatro sem ajuda. Na revisão dos indicadores, ele não tem certeza do que conta como escalonamento, então Priya acrescenta exemplos. Ela aprende que a prontidão deve ser demonstrada, e não presumida, e que o melhor teste de uma documentação é outra pessoa usá-la com sucesso. Os exemplos de escalonamento acrescentados fecham a única lacuna que o coordenador encontrou, e assim os runbooks ficam prontos para a passagem.
+
+### 26.3 Propriedade
+
+Priya confirma que cada processo tem um dono, um substituto e um lugar no calendário de governança. Ela combina que ficará disponível para dúvidas durante um mês, depois do qual o coordenador assume toda a responsabilidade. Aprende que um fim claro do apoio ajuda o novo dono a assumir a responsabilidade, enquanto um período curto de apoio reduz o risco de erros iniciais passarem despercebidos. Nomear um substituto para cada processo evita que a conciliação semanal pare quando o coordenador estiver ausente, por férias ou por doença.
+
+### Exemplo resolvido
+
+Priya escreve quatro runbooks, testa a prontidão observando o coordenador e confirma donos, substitutos e um mês de apoio.
+
+> **Caso sintético.** A passagem é sintética.
+
+### Erros e limites
+
+Os runbooks envelhecem. Os substitutos podem não ter prática.
+
+### Exercícios
+
+- **EX076 — Público do runbook.** Para quem os runbooks devem ser escritos? *Rubrica:* 3 = para alguém que nunca fez a tarefa;; 2 = iniciante;; 1 = especialista;; 0 = nenhuma.
+- **EX077 — Lacuna de prontidão.** Que processo precisou de mais orientação? *Rubrica:* 3 = o escalonamento na revisão dos indicadores;; 2 = escalonamento;; 1 = nada;; 0 = nenhuma.
+- **EX078 — Período de apoio.** Por quanto tempo Priya ficará disponível após a passagem? *Rubrica:* 3 = um mês;; 2 = 1 mês;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar o desenho padrão de clínica numa nova unidade; (2) validar os controles antes da inauguração; (3) registrar as evidências da validação.
+
+### 27.1 Implantação
+
+A primeira clínica nova está pronta para abrir. Priya apoia a implantação do desenho padrão: segmentos de rede, computadores gerenciados, maquininhas de cartão no próprio segmento, Wi-Fi de visitantes separado, aparelhos de imagem isolados e contas criadas com data de término para os temporários. Ela segue o checklist de integração produzido por sua equipe e registra cada etapa concluída com a data e o responsável. Registrar quem concluiu cada etapa dá à validação da seção seguinte uma trilha contra a qual conferir. O checklist também lista quem é dono de cada controle depois que a clínica abrir.
+
+### 27.2 Validação
+
+Antes de a clínica abrir, Priya valida os controles-chave. Verifica que o Wi-Fi de visitantes não alcança os aparelhos da clínica, que as maquininhas estão no seu segmento, que os computadores da recepção estão criptografados e bloqueiam corretamente, que os backups do arquivo de imagens rodam e que só funcionários autorizados têm contas. Uma verificação falha: um aparelho de imagem foi ligado ao segmento da recepção. O fornecedor corrige e Priya testa de novo com sucesso. Um aparelho de imagem no segmento da recepção é exatamente o caminho de propagação que o isolamento do desenho padrão deve bloquear.
+
+### 27.3 Evidências
+
+Priya registra os resultados da validação, com capturas de tela e notas de teste, no registro de evidências, marcando-os com o código da clínica e a data. O gerente de operações aprova a inauguração com base no relatório de validação. Ela aprende que validar antes de entrar em operação sai muito mais barato do que corrigir problemas depois que os pacientes chegam, e que um relatório de validação assinado dá à direção uma base clara para a decisão de abrir. Marcar as evidências com o código da clínica permite encontrar os registros da nova clínica ao lado dos das outras catorze.
+
+### Exemplo resolvido
+
+Priya implanta o desenho padrão numa nova clínica, valida cinco controles, corrige um aparelho de imagem mal posicionado e registra as evidências de aprovação.
+
+> **Caso sintético.** A implantação é sintética.
+
+### Erros e limites
+
+A validação é uma fotografia de um momento. Os fornecedores podem religar aparelhos depois.
+
+### Exercícios
+
+- **EX079 — Verificação que falhou.** Que verificação da validação falhou? *Rubrica:* 3 = um aparelho de imagem no segmento da recepção;; 2 = imagem;; 1 = nada;; 0 = nenhuma.
+- **EX080 — Base da aprovação.** Com base em quê o gerente de operações aprovou a inauguração? *Rubrica:* 3 = no relatório de validação;; 2 = relatório;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Valor antes da inauguração.** Por que validar antes de abrir? *Rubrica:* 3 = corrigir problemas antes de os pacientes chegarem é mais barato;; 2 = custo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar competências de GRC num estágio supervisionado; (2) apoiar uma avaliação externa; (3) refletir sobre a conduta profissional.
+
+### 28.1 Estágio
+
+Priya passa um período de estágio com a equipe de operações da Riverton. Ela apoia o trabalho de rotina: revisar indicadores, verificar a atualidade das evidências, cobrar ações atrasadas e ajudar os gerentes das clínicas nas revisões de acesso. Aprende que boa parte do trabalho de GRC é acompanhamento constante, e não análise dramática, e que paciência e boas relações com a equipe ocupada das clínicas importam tanto quanto o conhecimento técnico. Cobrar ações atrasadas, por exemplo, depende de os gerentes confiarem que ela está ajudando, e não fiscalizando. Essas relações depois facilitam levantar achados incômodos.
+
+### 28.2 Apoio à avaliação
+
+O banco da Riverton pede uma autoavaliação PCI DSS por causa dos pagamentos com cartão. Com a página de pagamento hospedada e as maquininhas segmentadas, o escopo da Riverton é pequeno. Priya ajuda a reunir as evidências: diagramas de rede, inventários das maquininhas e a confirmação de conformidade do provedor de pagamentos. Ela aprende que as decisões de arquitetura anteriores tornaram a avaliação muito mais fácil, e que o trabalho de compliance é moldado por escolhas de desenho feitas muito antes de a avaliação começar. Os dados de cartão nunca tocarem o site da Riverton tiram do escopo a maioria dos sistemas que uma avaliação maior examinaria.
+
+### 28.3 Conduta profissional
+
+Durante o estágio, uma gerente de clínica pede a Priya que marque como concluída uma revisão de acesso atrasada, para evitar um escalonamento. Ela recusa com educação, explica que o registro precisa refletir a realidade e se oferece para ajudar a concluir a revisão naquela tarde. As duas a terminam juntas. Ela reflete que conduta profissional significa manter os registros honestos enquanto ajuda as pessoas a cumprir suas obrigações, e que recusar com gentileza e oferecer ajuda preserva a relação de trabalho. Concluir a revisão naquela tarde permitiu que o registro mostrasse com honestidade que ela foi feita, só um pouco atrasada.
+
+### Exemplo resolvido
+
+Priya apoia o trabalho de rotina de GRC, ajuda numa autoavaliação PCI DSS de escopo pequeno e se recusa a falsificar um registro enquanto ajuda a concluir a revisão.
+
+> **Caso sintético.** O estágio é sintético; o PCI DSS é real.
+
+### Erros e limites
+
+A qualidade dos estágios varia. A pressão pode ser sutil.
+
+### Exercícios
+
+- **EX082 — Trabalho de rotina.** Em que consiste boa parte do trabalho de GRC? *Rubrica:* 3 = acompanhamento constante;; 2 = acompanhamento;; 1 = análise;; 0 = nenhuma.
+- **EX083 — Motivo do escopo pequeno.** Por que o escopo PCI DSS da Riverton era pequeno? *Rubrica:* 3 = página de pagamento hospedada e maquininhas segmentadas;; 2 = desenho;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Resposta íntegra.** Como Priya respondeu ao pedido de marcar uma revisão como concluída? *Rubrica:* 3 = recusou e ajudou a concluí-la;; 2 = ajuda honesta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir uma ferramenta de GRC para a Riverton como projeto final; (2) testá-la com usuários; (3) documentá-la para manutenção.
+
+### 29.1 A ferramenta
+
+Em seu projeto final, Priya constrói um pequeno painel de governança com a biblioteca padrão do Python, que lê o registro de riscos, os resultados dos testes de controles, os valores dos indicadores e o registro de evidências, e produz um resumo semanal em HTML para o gerente de operações. Ele destaca ações atrasadas, evidências vencidas, violações de limiares e controles que falharam, cada item com seu dono. Ela mantém o desenho simples para que o coordenador de TI da Riverton consiga mantê-lo. Usar só a biblioteca padrão significa que o coordenador não precisa de pacotes extras para mantê-lo funcionando.
+
+### 29.2 Testes
+
+Priya testa a ferramenta com dados de amostra que contêm problemas conhecidos, verificando se cada um é relatado corretamente. Depois pede ao gerente de operações e a dois gerentes de clínica que usem o resumo por duas semanas. Eles o acham útil, mas pedem um filtro por clínica. Um gerente percebe que uma ação resolvida ainda aparece porque o arquivo de origem não foi atualizado, o que leva Priya a acrescentar ao resumo a data da última atualização de cada fonte. Essa data permite ao leitor julgar se um item está de fato aberto ou só se baseia em dados desatualizados.
+
+### 29.3 Documentação
+
+Priya documenta a ferramenta: finalidade, entradas, saídas, como executá-la, como acrescentar uma nova verificação, limitações conhecidas e quem a mantém. Ela guarda o código no repositório da Riverton, com um registro de mudanças. Aprende que uma ferramenta de projeto final só dá certo se continuar útil depois que a estudante sai, o que depende de simplicidade, documentação e um mantenedor nomeado. A seção sobre como acrescentar uma nova verificação é a que mais importa, porque as necessidades da Riverton vão mudar depois que ela sair. O registro de mudanças mostra o que mudou entre as versões e por quê.
+
+### Exemplo resolvido
+
+Priya constrói um resumo semanal de governança, testa-o com problemas conhecidos e com usuários, acrescenta um filtro por clínica e as datas das fontes e documenta a manutenção.
+
+> **Caso sintético.** A ferramenta e os dados são sintéticos.
+
+### Erros e limites
+
+Os painéis podem ser ignorados. A qualidade dos dados de origem limita o valor.
+
+### Exercícios
+
+- **EX085 — Destaques.** O que o resumo semanal destaca? *Rubrica:* 3 = ações atrasadas, evidências vencidas, violações de limiares, controles que falharam;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX086 — Datas das fontes.** Por que Priya acrescentou a data da última atualização de cada fonte? *Rubrica:* 3 = uma ação resolvida aparecia porque uma fonte estava desatualizada;; 2 = atualidade;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Valor duradouro.** De que depende o valor duradouro? *Rubrica:* 3 = simplicidade, documentação e um mantenedor nomeado;; 2 = manutenibilidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar um projeto final aos avaliadores; (2) avaliá-lo contra critérios; (3) refletir sobre seu desenvolvimento como tecnólogo.
+
+### 30.1 Apresentação
+
+Priya apresenta seu projeto final ao Sr. Lind e ao gerente de operações da Riverton. Explica o problema, o desenho, os testes, o retorno dos usuários e a documentação, e depois demonstra um resumo semanal. Os avaliadores perguntam como a ferramenta lida com arquivos ausentes; ela mostra que a ferramenta relata as fontes ausentes com clareza, em vez de omiti-las em silêncio. Também perguntam como ela protegeu os dados dos pacientes; ela explica que a ferramenta lê apenas registros de governança, e não prontuários. O Sr. Lind acrescenta que ler apenas registros de governança também mantém a ferramenta fora do escopo das regras de tratamento de dados de pacientes.
+
+### 30.2 Avaliação
+
+Os avaliadores julgam pelos critérios acordados no início: utilidade para a Riverton, correção, manutenibilidade, documentação e conduta profissional. O gerente de operações relata que o resumo substituiu a pauta de uma reunião semanal e que as ações atrasadas diminuíram depois de sua introdução, embora outras mudanças também tenham contribuído. Priya recebe notas altas, com a sugestão de acrescentar gráficos simples de tendência numa versão futura. A ressalva do gerente de que outras mudanças também contribuíram é o mesmo limite de atribuição que Priya declarou em seu próprio estudo.
+
+### 30.3 Reflexão
+
+Priya reflete sobre os três anos. Aprendeu a ver a GRC como trabalho prático: conhecer os ativos, mapear os dados, estimar os riscos, documentar os controles, acompanhar os indicadores e corrigir as causas-raiz. Também aprendeu que são as pessoas que fazem a governança funcionar e que a comunicação clara e respeitosa importa tanto quanto as ferramentas. O Sr. Lind observa que o hábito dela de conferir as evidências antes de declarar sucesso vai lhe servir bem em qualquer função. A recusa em marcar como concluída uma revisão de acesso durante o estágio é um exemplo desse hábito na prática.
+
+### Exemplo resolvido
+
+Priya apresenta e demonstra seu projeto final, é avaliada em cinco critérios e reflete sobre seu desenvolvimento.
+
+> **Caso sintético.** A avaliação é sintética.
+
+### Erros e limites
+
+As avaliações amostram competências. As melhorias relatadas têm várias causas.
+
+### Exercícios
+
+- **EX088 — Arquivos ausentes.** Como a ferramenta lida com arquivos de origem ausentes? *Rubrica:* 3 = relata-os com clareza;; 2 = explícita;; 1 = em silêncio;; 0 = nenhuma.
+- **EX089 — Dados de pacientes.** A ferramenta lê prontuários? *Rubrica:* 3 = não, apenas registros de governança;; 2 = não;; 1 = sim;; 0 = nenhuma.
+- **EX090 — Sugestão futura.** O que os avaliadores sugeriram para uma versão futura? *Rubrica:* 3 = gráficos simples de tendência;; 2 = gráficos;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX063 (as de EX064–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Natarajan, o Sr. Oskar Lind, o Halden Institute of Technology, o Riverton Dental Group e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Priya Natarajan, o Sr. Oskar Lind, o Halden Institute of Technology, o Riverton Dental Group e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Porque os dentistas os compraram diretamente dos fornecedores, por fora da TI.
 
@@ -1022,6 +1364,60 @@ Respostas-modelo para EX001–EX063 (as de EX064–EX090 estão na edição em i
 **EX062.** Atualiza a probabilidade do risco de e-mail enviado ao destinatário errado.
 
 **EX063.** Porque é mais confiável e menos trabalhosa do que a evidência montada pouco antes de uma auditoria.
+
+**EX064.** b.osei e d.wu.
+
+**EX065.** f.temp era a conta de um substituto nunca removida; g.test foi deixada pelo provedor após a implantação.
+
+**EX066.** Porque um desligado pode ter voltado ou um fornecedor pode ter um motivo válido, então uma pessoa precisa conferir.
+
+**EX067.** O registro, os resultados dos testes, as tendências dos indicadores, o registro de evidências e uma pesquisa com os gerentes.
+
+**EX068.** Doze de catorze.
+
+**EX069.** A revisão de acesso.
+
+**EX070.** Pelo número de direitos inadequados encontrados por uma segunda verificação.
+
+**EX071.** Por sorteio de nomes, sete para cada grupo.
+
+**EX072.** Quarenta minutos com as listas novas e noventa com as antigas.
+
+**EX073.** Um checklist de configuração segura, os controles de que o gerente da clínica é dono, os requisitos de evidência e uma sessão curta de treinamento.
+
+**EX074.** Dois termos usados de forma inconsistente.
+
+**EX075.** Uma versão do checklist em uma página.
+
+**EX076.** Uma pessoa que nunca fez a tarefa.
+
+**EX077.** A revisão mensal dos indicadores, especificamente o que conta como escalonamento.
+
+**EX078.** Um mês.
+
+**EX079.** Um aparelho de imagem estava ligado ao segmento da recepção.
+
+**EX080.** O relatório de validação.
+
+**EX081.** Porque corrigir problemas antes de entrar em operação é muito mais barato do que depois que os pacientes chegam.
+
+**EX082.** Acompanhamento constante, como cobrar ações e conferir evidências.
+
+**EX083.** Por causa da página de pagamento hospedada e das maquininhas segmentadas.
+
+**EX084.** Recusou com educação e ajudou a gerente a concluir a revisão naquela tarde.
+
+**EX085.** Ações atrasadas, evidências vencidas, violações de limiares e controles que falharam, cada um com seu dono.
+
+**EX086.** Porque uma ação resolvida ainda aparecia quando seu arquivo de origem não tinha sido atualizado.
+
+**EX087.** Simplicidade, documentação e um mantenedor nomeado.
+
+**EX088.** Relata as fontes ausentes com clareza, em vez de omiti-las em silêncio.
+
+**EX089.** Não; lê apenas registros de governança.
+
+**EX090.** Acrescentar gráficos simples de tendência.
 
 <a id="references"></a>
 ## Referências
