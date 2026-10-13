@@ -812,9 +812,9 @@ Para o caminho de suporte remoto do fornecedor até a Z3, registre se ele termin
 - Omitir a zona de gerência porque ela é "TI".
 - Modelar o sistema de segurança como um controlador comum.
 - Um modelo que nunca é comparado com o tráfego observado; o Capítulo 11 faz isso.
+- Copiar o modelo de zonas de outro local sem verificar quais dos seus conduítes realmente existem neste.
 
 - Desenhar zonas apenas por sub-rede quando dois hosts da mesma sub-rede têm consequências diferentes.
-- Deixar conduítes sem responsáveis, de modo que ninguém consegue removê-los depois.
 - Colocar uma função de segurança ou de proteção na mesma zona que controladores supervisórios comuns.
 
 ### Exercícios — capítulo 6
@@ -934,15 +934,12 @@ Registre o host, a referência, o deslocamento e o horário da medição. Depois
 ### 7.6 Erros comuns e limites
 
 - Ordenar pelo texto timestamps com deslocamentos misturados.
-- Corrigir relógios na direção errada; escreva a fórmula toda vez.
+- Corrigir relógios na direção errada; escreva toda vez que o corrigido é igual ao informado menos o deslocamento.
 - Descartar linhas que não podem ser analisadas; conte-as e relate-as.
 - Presumir que um deslocamento medido hoje se aplicava ontem à noite; a deriva e a ressincronização o mudam, portanto declare a incerteza.
 - Presumir que a ausência de uma linha de log significa a ausência de um evento — muitos dispositivos simplesmente não registram.
-
-- Ordenar como texto timestamps com deslocamentos misturados e inverter a ordem dos eventos.
-- Corrigir relógios na direção errada; escreva toda vez que o corrigido é igual ao informado menos o deslocamento.
-- Descartar linhas que não podem ser analisadas em vez de contá-las como não analisadas.
-- Tratar uma linha de log ausente como prova de que nada aconteceu.
+- Juntar logs de dispositivos cujos deslocamentos foram medidos em momentos diferentes sem registrar o momento de cada medição ao lado do deslocamento.
+- Informar um horário corrigido com precisão de segundos quando o próprio deslocamento só é conhecido com margem de alguns segundos.
 
 ### Exercícios — capítulo 7
 
@@ -1211,9 +1208,8 @@ Construa o quadro com um bloco completo de dezesseis bytes e um bloco de um byte
 - Tratar "CRC válido" como "autêntico".
 - Sondagem ativa quando uma fonte passiva responde à pergunta.
 - O Laboratório 9 verifica apenas os cabeçalhos; as camadas de transporte e de aplicação carregam os comandos e precisam da sua própria decodificação.
+- Decodificar uma captura sem registrar a versão da ferramenta e a configuração de ordem dos bytes usadas, de modo que ninguém consegue reproduzir o resultado.
 
-- Misturar campos big-endian do Modbus com endereços little-endian do DNP3 no mesmo decodificador sem declarar a ordem dos bytes.
-- Tratar um CRC válido como prova de autenticidade quando o endereço de origem é desconhecido.
 - Ler o ALERT do Laboratório 9 para o endereço de origem 77 como prova de ataque; ele só mostra um endereço ausente da lista do mestre.
 
 ### Exercícios — capítulo 9
@@ -1351,13 +1347,12 @@ Ponha cada permissão acima da negação padrão, com chamado e responsável no 
 
 ### 10.7 Erros comuns e limites
 
-- Revisar uma regra nova sem ler as regras acima dela.
+- Revisar uma regra nova sem ler as regras acima dela, que podem já permitir ou negar o mesmo tráfego.
 - Apagar uma regra ampla sem verificar nos logs os seus usuários atuais.
 - Tratar "parece uma duplicata" como "pode ficar".
 - Configurar o acesso de fornecedores como permanentemente habilitado "para emergências".
 - O Laboratório 10 modela uma política de primeira correspondência sem estado, com contenção exata; firewalls reais acrescentam estado, objetos, NAT e zonas, e têm as suas próprias ferramentas de análise.
 
-- Revisar uma regra nova sem ler as regras acima dela, que podem já permitir ou negar o mesmo tráfego.
 - Estreitar a R4 para corrigir as falhas em tcp/3389 e tcp/445 sem antes verificar nos logs quais hosts corporativos dependem dela hoje.
 - Habilitar a conta de um fornecedor para um serviço com chamado e esquecer de desabilitá-la quando a janela fixa termina.
 

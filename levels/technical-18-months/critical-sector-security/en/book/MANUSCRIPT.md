@@ -812,9 +812,9 @@ For the vendor remote-support path into Z3, record whether it terminates on the 
 - Omitting the management zone because it is "IT".
 - Modelling the safety system as a normal controller.
 - A model that is never compared with observed traffic; Chapter 11 does that.
+- Copying a zone model from another site without checking which of its conduits actually exist at this one.
 
 - Drawing zones by subnet alone when two hosts in the same subnet have different consequences.
-- Leaving conduits without owners, so nobody can remove them later.
 - Putting a safety or protection function in the same zone as ordinary supervisory controllers.
 
 ### Exercises — chapter 6
@@ -934,15 +934,12 @@ Record the host, the reference, the offset and the time of measurement. After tw
 ### 7.6 Common errors and limits
 
 - Sorting by the text of mixed-offset timestamps.
-- Correcting clocks in the wrong direction; write the formula down every time.
+- Correcting clocks in the wrong direction; write corrected equals reported minus offset every time.
 - Dropping lines that do not parse; count and report them.
 - Assuming an offset measured today applied last night; drift and resynchronization change it, so state the uncertainty.
 - Assuming the absence of a log line means the absence of an event — many devices simply do not log.
-
-- Sorting mixed-offset timestamps as text and reversing the order of events.
-- Correcting clocks in the wrong direction; write corrected equals reported minus offset every time.
-- Dropping lines that do not parse instead of counting them as unparsed.
-- Treating a missing log line as proof that nothing happened.
+- Merging logs from devices whose offsets were measured at different times without recording each measurement time beside its offset.
+- Reporting a corrected time to the second when the offset itself is only known to within a few seconds.
 
 ### Exercises — chapter 7
 
@@ -1211,9 +1208,8 @@ Construct the frame with one full sixteen-byte block and a one-byte block, each 
 - Treating "CRC valid" as "authentic".
 - Active probing when a passive source answers the question.
 - Lab 9 checks headers only; transport and application layers carry the commands and need their own decoding.
+- Decoding a capture without recording the tool version and byte-order settings used, so nobody can reproduce the result.
 
-- Mixing Modbus big-endian fields with DNP3 little-endian addresses in the same decoder without stating the byte order.
-- Treating a valid CRC as proof of authenticity when the source address is unknown.
 - Reading the Lab 9 ALERT for source address 77 as proof of an attack; it only shows an address missing from the master list.
 
 ### Exercises — chapter 9
@@ -1351,13 +1347,12 @@ Put each allow above the default deny, with ticket and owner in the comment. Rem
 
 ### 10.7 Common errors and limits
 
-- Reviewing a new rule without reading the rules above it.
+- Reviewing a new rule without reading the rules above it that may already allow or deny the same traffic.
 - Deleting a broad rule without checking its current users in the logs.
 - Treating "looks like a duplicate" as "safe to keep".
 - Configuring supplier access as permanently enabled "for emergencies".
 - Lab 10 models a stateless first-match policy with exact containment; real firewalls add state, objects, NAT and zones, and their own analysis tools.
 
-- Reviewing a new rule without reading the rules above it that may already allow or deny the same traffic.
 - Narrowing R4 to fix the tcp/3389 and tcp/445 failures without first checking the logs for corporate hosts that rely on it today.
 - Enabling a supplier account for a ticketed job and forgetting to disable it when the fixed window closes.
 
