@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–45 de 50 já estão escritos em português, com os exercícios EX001–EX135 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 46–50 (EX136–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os nove laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) |
-
-Capítulos 46–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-46), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2019,11 +2017,264 @@ As bancas de revisão podem deixar passar problemas fora de sua especialidade; c
 - **EX134 — Sensibilidade do log de consultas.** Por que proteger o log de consultas? *Rubrica:* 3 = as consultas revelam interesses sensíveis dos pesquisadores;; 2 = menciona privacidade;; 1 = desnecessário;; 0 = nenhuma.
 - **EX135 — Condições raras.** Como Zara tratou o ruído nas condições raras? *Rubrica:* 3 = agregação nacional e períodos de acumulação mais longos;; 2 = uma parte;; 1 = ignorou;; 0 = nenhuma.
 
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir o serviço de dados de pesquisa; (2) verificá-lo diante dos critérios de aceitação; (3) avaliá-lo com pesquisadores.
+
+### 46.1 Construção
+
+Zara constrói o serviço em três meses. As análises rodam como modelos de consulta aprovados dentro de um ambiente isolado. O verificador de saídas bloqueia contagens abaixo de dez e aplica a privacidade diferencial às saídas publicadas usando o orçamento do estudo. O serviço de consentimento fornece as recusas a cada execução. As aprovações dos estudos carregam datas de expiração conferidas no momento da consulta. Ela implementa o sistema com componentes pequenos e testados e reutiliza a plataforma de privacidade sempre que possível, o que encurta o desenvolvimento e faz com que as melhorias nos componentes compartilhados também beneficiem o serviço de pesquisa.
+
+### 46.2 Verificação
+
+Zara executa os testes planejados. Todos passam, menos um: um estudo expirado ainda consegue rodar se sua data de expiração tiver sido registrada em um formato de fuso horário diferente. Ela corrige o tratamento das datas e executa de novo. O colega independente tenta a reconstrução emitindo consultas sobrepostas dentro do orçamento. O ataque não recupera os dados de nenhuma pessoa, porque cada saída tem ruído e o orçamento barra novas consultas. Ela registra todos os resultados na pasta de evidências, incluindo a falha inicial, para que o registro mostre exatamente como os critérios de aceitação foram cumpridos.
+
+### 46.3 Avaliação com pesquisadores
+
+Três pesquisadores usam o serviço em um estudo-piloto sobre consultas de retorno. Eles consideram a abordagem por modelos restritiva, mas viável. Pedem mais um tipo de modelo, que Zara acrescenta depois de revisão. Os números nacionais das condições raras são úteis, embora menos atuais do que eles queriam. Ela registra o retorno. A avaliação confirma que o serviço sustenta análises reais sem acesso no nível do registro, que é a afirmação central do projeto final, e mostra também os limites que permanecem para a pesquisa exploratória. O retorno dos pesquisadores é registrado literalmente.
+
+### 46.4 Reflexão
+
+Zara reflete sobre o projeto final. Os problemas mais difíceis não foram os algoritmos, mas os casos extremos: fusos horários, cache e o momento das recusas. A revisão e os testes independentes os encontraram antes que prejudicassem alguém. Ela observa que o serviço precisará de monitoramento do uso do orçamento, da sincronização das recusas e das mudanças nos modelos. O Prof. Holm comenta que o projeto final dela mostra uma engenharia madura, porque ela escolheu um escopo estreito, verificou-o a fundo e foi honesta sobre os limites que permanecem para os pesquisadores que querem mais flexibilidade. Ela documenta o que o escopo excluiu de propósito.
+
+### Exemplo resolvido
+
+Zara constrói o serviço com modelos de consulta, verificação de saídas e orçamentos, corrige um bug de fuso horário na expiração, resiste a uma tentativa de reconstrução e avalia o serviço com três pesquisadores.
+
+> **Caso sintético.** O serviço, os testes e os pesquisadores são sintéticos.
+
+### Erros e limites
+
+Sistemas de modelos podem ser estendidos de forma insegura; revise cada novo modelo.
+
+### Exercícios
+
+- **EX136 — Bug de expiração.** Que teste falhou na verificação? *Rubrica:* 3 = um estudo expirado podia rodar por causa de um formato de data com fuso horário;; 2 = menciona expiração;; 1 = nenhum;; 0 = nenhuma.
+- **EX137 — Resultado do ataque.** O que o ataque de reconstrução recuperou? *Rubrica:* 3 = nenhum dado de nenhuma pessoa;; 2 = nada;; 1 = parcial;; 0 = nenhuma.
+- **EX138 — Visão dos pesquisadores.** Como os pesquisadores avaliaram a abordagem por modelos? *Rubrica:* 3 = restritiva, mas viável; pediram mais um modelo;; 2 = menciona restrição;; 1 = ideal;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um exercício de violação contra um prazo legal; (2) avaliar os atrasos de comunicação de um fornecedor; (3) melhorar a resposta a partir do ensaio.
+
+### 47.1 O cenário
+
+A Pellmore conduz um exercício de violação com Zara como observadora. No cenário sintético, o fornecedor de chat detecta uma exportação incomum às 22h de 2 de março. O fornecedor avisa a Pellmore às 9h30 de 4 de março. A Pellmore confirma que há dados pessoais envolvidos às 15h do mesmo dia. O artigo 33 do GDPR exige a notificação à autoridade de controle sem demora injustificada e, sempre que possível, em até 72 horas depois de tomar conhecimento, e o artigo 33(2) exige que o operador avise o controlador sem demora injustificada depois de tomar conhecimento. No Brasil, o art. 48 da LGPD e a Resolução CD/ANPD nº 15/2024 regulam a comunicação de incidentes. O exercício usa apenas registros sintéticos.
+
+### 47.2 O relógio
+
+O laboratório calcula a linha do tempo. A Pellmore tomou conhecimento às 15h de 4 de março, então o prazo de 72 horas vence às 15h de 7 de março. A Pellmore notificou a autoridade às 11h de 6 de março, 44 horas depois de tomar conhecimento, dentro do prazo. Os pacientes foram informados em 8 de março. Mas o fornecedor levou 35,5 horas para avisar a Pellmore depois de detectar a exportação. As Diretrizes 9/2022 do EDPB explicam quando o controlador toma conhecimento e enfatizam a ação rápida. Zara observa que o atraso do fornecedor, e não o processo da própria Pellmore, é o elo mais fraco da linha do tempo.
+
+### 47.3 Comunicação com os pacientes
+
+O artigo 34 exige informar os pacientes sem demora injustificada quando a violação for suscetível de resultar em alto risco para seus direitos e liberdades. A equipe do exercício debate se os logs de chat sobre sintomas atingem esse limiar e conclui que sim. A comunicação precisa descrever em linguagem clara a natureza da violação, as consequências prováveis, as medidas tomadas e um ponto de contato. Zara ajuda a redigir a mensagem, evitando jargão e dando orientações práticas, como ficar atento a mensagens de phishing que mencionem as consultas. A mensagem é testada com dois pacientes voluntários antes do envio simulado.
+
+### 47.4 Melhorias
+
+Depois do exercício, a equipe lista as melhorias: uma exigência contratual para que o fornecedor avise em até doze horas depois da detecção, um modelo de mensagem aos pacientes aprovado de antemão e uma árvore de decisão para avaliar o alto risco. Também registra que o processo interno cumpriu o prazo com folga. Zara acrescenta os resultados do exercício ao dossiê de evidências. Ela reflete que os exercícios revelam dependências de terceiros, como os fornecedores, que os testes internos não pegam, e que a recuperação depende tanto de contratos e de comunicação quanto de tecnologia. Os contratos passam a trazer a cláusula de doze horas.
+
+### Laboratório — Linha do tempo da violação diante do prazo de 72 horas
+
+```python
+# Breach timeline against the GDPR Article 33 72-hour clock, which starts when the controller becomes aware.
+from datetime import datetime as D, timedelta
+ev = [("vendor detects unusual export", D(2026, 3, 2, 22, 0)), ("vendor tells Pellmore", D(2026, 3, 4, 9, 30)),
+      ("Pellmore confirms personal data involved (aware)", D(2026, 3, 4, 15, 0)),
+      ("initial notification to supervisory authority", D(2026, 3, 6, 11, 0)),
+      ("affected patients informed", D(2026, 3, 8, 10, 0))]
+aware = ev[2][1]; deadline = aware + timedelta(hours=72)
+for name, t in ev:
+    print(f"{t:%d %b %H:%M}  {name}")
+h = (ev[3][1] - aware).total_seconds() / 3600
+print(f"deadline {deadline:%d %b %H:%M}; notified after {h:.0f} h -> {'on time' if h <= 72 else 'LATE'}")
+print(f"vendor-to-controller delay {(ev[1][1]-ev[0][1]).total_seconds()/3600:.1f} h (Art 33(2): without undue delay)")
+```
+
+Execute com `python3 lab_breach.py`. Saída verificada:
+
+```text
+02 Mar 22:00  vendor detects unusual export
+04 Mar 09:30  vendor tells Pellmore
+04 Mar 15:00  Pellmore confirms personal data involved (aware)
+06 Mar 11:00  initial notification to supervisory authority
+08 Mar 10:00  affected patients informed
+deadline 07 Mar 15:00; notified after 44 h -> on time
+vendor-to-controller delay 35.5 h (Art 33(2): without undue delay)
+```
+
+### Exemplo resolvido
+
+O exercício de Zara mostra a Pellmore notificando 44 horas depois de tomar conhecimento, dentro do prazo das 15h de 7 de março, mas o fornecedor levando 35,5 horas para avisar a Pellmore, o que leva a uma meta contratual de doze horas.
+
+> **Caso sintético.** A violação é um exercício sintético; os artigos 33 e 34 do GDPR, as Diretrizes 9/2022 do EDPB, o art. 48 da LGPD e a Resolução CD/ANPD nº 15/2024 são reais.
+
+### Erros e limites
+
+Os exercícios usam cenários conhecidos; incidentes reais são mais confusos e mais lentos de entender.
+
+### Exercícios
+
+- **EX139 — Prazo.** Quando vencia o prazo de 72 horas no exercício? *Rubrica:* 3 = às 15h de 7 de março;; 2 = o dia certo;; 1 = errado;; 0 = nenhuma.
+- **EX140 — Elo fraco.** Qual foi o elo mais fraco da linha do tempo? *Rubrica:* 3 = o atraso de 35,5 horas do fornecedor para avisar a Pellmore;; 2 = menciona o fornecedor;; 1 = o processo interno;; 0 = nenhuma.
+- **EX141 — Mensagem aos pacientes.** O que a comunicação aos pacientes precisa conter? *Rubrica:* 3 = natureza da violação, consequências prováveis, medidas e ponto de contato, em linguagem clara;; 2 = lista alguns;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) reunir evidências para a responsabilização; (2) proteger a integridade das evidências; (3) lidar com divergências de forma honesta.
+
+### 48.1 O que entra no dossiê
+
+Zara monta um dossiê de evidências para a avaliação final e para a responsabilização da Pellmore. Ele contém a DPIA, o registro das operações de tratamento gerado a partir da configuração, os logs dos testes de eliminação, o relatório do exercício de violação e o relatório de monitoramento da retenção. Cada item mostra que um controle existe e funciona. Ela organiza o dossiê por princípio e requisito do GDPR, para que um auditor consiga ir de um dever legal até a evidência de que a Pellmore o cumpre. A responsabilização do artigo 5(2), e também a do art. 6º, X, da LGPD, depende de evidências completas e confiáveis.
+
+### 48.2 Integridade
+
+Para mostrar que as evidências não foram alteradas, Zara registra em um manifesto o resumo SHA-256 de cada arquivo quando o dossiê é aprovado. Mais tarde, o laboratório recalcula os resumos. Quatro arquivos conferem. O log do teste de eliminação não confere: agora ele diz que quatro de cinco armazenamentos excluíram os dados, enquanto a versão aprovada dizia cinco de cinco. Alguém editou o log depois que o manifesto foi assinado. A divergência não diz a Zara quem alterou o arquivo nem por quê, mas prova que o arquivo difere da evidência aprovada. Ela registra a divergência antes de qualquer outra providência.
+
+### 48.3 Investigação da divergência
+
+Zara investiga. O engenheiro responsável explica que uma nova execução, depois de uma mudança de fornecedor, mostrou um armazenamento falhando, e que ele atualizou o log para refletir a realidade, sem criar uma nova versão. O novo resultado é importante: a eliminação está incompleta neste momento. Zara registra as duas versões, abre um defeito para o armazenamento que falha e atualiza o manifesto pelo processo de aprovação adequado. Ela observa que a verificação de integridade cumpriu seu papel: trouxe à tona uma mudança silenciosa, que acabou revelando um problema real, e não uma má conduta.
+
+### 48.4 Lições
+
+Zara escreve as lições. As evidências precisam ser versionadas, e não sobrescritas; as mudanças devem criar novas entradas com datas e motivos; e as verificações de integridade devem rodar com regularidade, e não só nas auditorias. Ela também observa que a honestidade sobre evidências desfavoráveis é essencial: um dossiê que escondesse o armazenamento com falha enganaria a Pellmore e seus pacientes. O Prof. Holm acrescenta que um dossiê não é uma vitrine, mas um registro, e que seu valor vem de ser confiável, inclusive quando mostra problemas. Os problemas encontrados tornam o dossiê crível.
+
+### Laboratório — Conferência das evidências do dossiê com seu manifesto
+
+```python
+# Evidence dossier: recompute SHA-256 digests and compare with the recorded manifest.
+import hashlib
+files = {"dpia_v3.md": b"DPIA v3 approved", "ropa.csv": b"flow,purpose,basis\n", "erasure_test.log": b"5/5 stores deleted",
+         "breach_drill.md": b"drill 2026-03", "retention_report.txt": b"total past retention: 0"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+files["erasure_test.log"] = b"4/5 stores deleted"  # edited after the manifest was signed
+for n, b in files.items():
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:22s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Execute com `python3 lab_dossier.py`. Saída verificada:
+
+```text
+dpia_v3.md             OK
+ropa.csv               OK
+erasure_test.log       MISMATCH
+breach_drill.md        OK
+retention_report.txt   OK
+```
+
+### Exemplo resolvido
+
+A conferência do manifesto feita por Zara descobre que erasure_test.log mudou de cinco para quatro armazenamentos com exclusão; ela investiga, registra as duas versões, abre um defeito e corrige o processo de evidências.
+
+> **Caso sintético.** Os arquivos e a edição são sintéticos; o artigo 5(2) do GDPR e o art. 6º da LGPD são reais.
+
+### Erros e limites
+
+Os resumos detectam mudança, não verdade; um arquivo de aparência correta ainda pode descrever um teste errado.
+
+### Exercícios
+
+- **EX142 — Arquivo divergente.** Que arquivo falhou na verificação de integridade? *Rubrica:* 3 = erasure_test.log;; 2 = cita o log de eliminação;; 1 = nenhum;; 0 = nenhuma.
+- **EX143 — O que a divergência mostra.** O que uma divergência de resumo prova e o que não prova? *Rubrica:* 3 = o arquivo mudou desde a aprovação; não diz quem o mudou nem por quê;; 2 = uma parte;; 1 = prova fraude;; 0 = nenhuma.
+- **EX144 — Lição sobre evidências.** Que lição de processo decorre da divergência? *Rubrica:* 3 = versionar as evidências em vez de sobrescrevê-las, com datas e motivos;; 2 = menciona versões;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de engenharia em torno de uma afirmação de projeto; (2) apresentar evidências e limites; (3) generalizar as lições com cuidado.
+
+### 49.1 A afirmação
+
+A tese de Zara afirma que um serviço de dados de pesquisa que preserva a privacidade, construído com modelos de consulta, verificação de saídas e orçamentos de privacidade diferencial, pode sustentar análises úteis de desfechos para um prestador de telemedicina sem acesso no nível do registro, com proteção verificada contra os ataques de reconstrução testados. A afirmação é delimitada: uma organização, um tipo de análise, dados de verificação sintéticos e uma pequena avaliação com pesquisadores. Ela declara esses limites no resumo e na introdução, para que nenhum leitor confunda a afirmação com uma solução geral. Afirmações delimitadas são mais fáceis de defender diante da banca.
+
+### 49.2 Capítulos de evidências
+
+A tese apresenta os requisitos rastreados até a lei, o projeto e sua revisão, a implementação, os resultados da verificação, incluindo falhas e correções, o ataque de reconstrução, a avaliação com os pesquisadores e o dossiê de evidências. Cada capítulo responde a uma parte da afirmação. Zara inclui o bug de expiração e o armazenamento com falha na eliminação vindos do dossiê, explicando como cada um foi encontrado e corrigido. Os examinadores, argumenta ela, devem ver que o processo de verificação funciona porque encontrou problemas reais, e não porque tudo passou na primeira vez. Cada falha cita sua correção e o novo teste.
+
+### 49.3 Limites
+
+Zara escreve os limites com clareza. Os sistemas de modelos restringem a pesquisa exploratória. A agregação nacional reduz a atualidade dos dados das condições raras. Os orçamentos de privacidade diferencial exigem gestão cuidadosa e implementação especializada. A análise jurídica se apoia nos textos do GDPR e da LGPD e nas orientações do EDPB, e não na jurisprudência. O serviço depende do serviço de consentimento e da plataforma de privacidade, que precisam continuar confiáveis. Ela também observa que dados reais de pacientes podem se comportar de forma diferente dos dados sintéticos de teste, e que uma implantação real precisaria de sua própria DPIA. Também lista abertamente as ameaças não testadas.
+
+### 49.4 Generalização
+
+Zara discute o que outras organizações poderiam aprender. O padrão de modelos aprovados, verificação de saídas e orçamentos por estudo poderia ser transferido para outros prestadores de saúde, mas os parâmetros dependem do tamanho da população, dos tipos de consulta e do apetite a risco. Ela cita a NIST SP 800-188 e Dwork e Roth (2014) para os métodos gerais e os resultados da Pellmore para uma configuração. Evita recomendar valores específicos de épsilon para os outros. O Prof. Holm elogia a contenção, observando que a generalização excessiva é uma fraqueza comum nas teses de engenharia. Em vez de recomendar valores, ela descreve um método para escolher o épsilon.
+
+### Exemplo resolvido
+
+Zara escreve uma afirmação de tese delimitada, apresenta evidências que incluem falhas, lista limites que vão da rigidez dos modelos aos dados sintéticos e generaliza o padrão sem prescrever parâmetros.
+
+> **Caso sintético.** A tese é sintética; a NIST SP 800-188 e Dwork e Roth (2014) são reais.
+
+### Erros e limites
+
+Uma afirmação delimitada ainda pode ser citada de forma errada; repita os limites nos resumos.
+
+### Exercícios
+
+- **EX145 — Limites da tese.** Liste os limites da afirmação de Zara. *Rubrica:* 3 = uma organização, um tipo de análise, verificação sintética, avaliação pequena;; 2 = três;; 1 = um;; 0 = nenhuma.
+- **EX146 — Falhas na tese.** Por que incluir o bug de expiração e o armazenamento com falha? *Rubrica:* 3 = mostram que a verificação encontrou e corrigiu problemas reais;; 2 = menciona honestidade;; 1 = escondê-los;; 0 = nenhuma.
+- **EX147 — Sem recomendação de épsilon.** Por que Zara evita recomendar valores de épsilon aos outros? *Rubrica:* 3 = os parâmetros dependem da população, das consultas e do apetite a risco de cada organização;; 2 = menciona contexto;; 1 = dá valores;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) defender uma tese de engenharia; (2) responder a perguntas sobre lei, projeto e verificação; (3) planejar o desenvolvimento profissional.
+
+### 50.1 Preparação
+
+Zara se prepara para a defesa final listando as perguntas prováveis em três grupos: jurídicas (por que a base legal para a pesquisa é adequada?), de projeto (por que modelos de consulta em vez de uma linguagem de consulta?) e de verificação (como você sabe que o gerador de ruído está correto?). Ela ensaia respostas concisas com referências às evidências. O Prof. Holm conduz uma defesa simulada e a pressiona sobre os limites dos testes sintéticos. Ela pratica dizer o que faria em seguida para tratar cada limite, em vez de defender o próprio limite. Os ensaios são gravados para revisão posterior.
+
+### 50.2 A defesa
+
+Na defesa, os examinadores perguntam sobre a constatação do momento das recusas feita na revisão de projeto. Zara explica o problema do cache e a decisão de reexecutar os estudos sem cache. Eles perguntam se as garantias de privacidade diferencial se mantêm quando os modelos mudam. Ela explica que cada novo modelo exige análise de sensibilidade e revisão, como determina o processo de governança. Eles perguntam sobre a dependência do fornecedor, e ela cita o exercício de violação e a nova cláusula de aviso em doze horas. Os examinadores aprovam a tese e elogiam o dossiê de evidências. Os examinadores não pedem nenhuma alteração.
+
+### 50.3 Desenvolvimento profissional
+
+Depois da defesa, Zara escreve um plano de desenvolvimento. Ela quer aprofundar o conhecimento em contabilização formal da privacidade, ganhar experiência nas interações com autoridades de controle e aprender mais sobre o direito da saúde além do GDPR e da LGPD. Ela observa que as auditorias de certificação na ISO/IEC 27701:2025 lhe dariam experiência prática com sistemas de gestão. Também planeja orientar alunos do primeiro ano em testes unitários de privacidade, fechando o ciclo que começou com o seu próprio primeiro trabalho de programação, cinco anos antes. A Pellmore lhe oferece um cargo em engenharia de privacidade, que ela aceita depois da defesa.
+
+### 50.4 Olhar para trás
+
+Zara olha para os cinco anos. Os fundamentos, do cálculo à criptografia, deram a ela, cada um, ferramentas para os problemas de privacidade. Os anos intermediários lhe ensinaram a transformar a lei em requisitos e os requisitos em sistemas testados. Os anos finais lhe ensinaram a trabalhar com pessoas, evidências e limites. Ela conclui que a engenharia de privacidade não é uma especialidade acrescentada no fim, mas um jeito de construir sistemas com responsabilidade desde o início. A Pellmore lhe oferece um cargo em sua equipe de engenharia de privacidade, que ela aceita com entusiasmo.
+
+### Exemplo resolvido
+
+Zara defende o momento das recusas, a sensibilidade dos modelos e a dependência do fornecedor, é aprovada com elogio ao dossiê e planeja seu desenvolvimento em contabilização formal, trabalho regulatório e mentoria.
+
+> **Caso sintético.** A defesa e a oferta de emprego são sintéticas; a ISO/IEC 27701:2025 é real.
+
+### Erros e limites
+
+Uma defesa aprovada não é o fim do aprendizado; a prática vai expor novas lacunas.
+
+### Exercícios
+
+- **EX148 — Garantia dos modelos.** Como as garantias se mantêm quando os modelos mudam? *Rubrica:* 3 = cada novo modelo exige análise de sensibilidade e revisão;; 2 = menciona revisão;; 1 = automático;; 0 = nenhuma.
+- **EX149 — Resposta sobre o fornecedor.** Que evidência Zara citou sobre a dependência do fornecedor? *Rubrica:* 3 = o exercício de violação e a cláusula de aviso em doze horas;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX150 — Conclusão do curso.** O que Zara conclui sobre a engenharia de privacidade? *Rubrica:* 3 = é um jeito de construir sistemas com responsabilidade desde o início, e não um complemento;; 2 = menciona projeto;; 1 = especialidade;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX135 (as de EX136–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -2294,6 +2545,36 @@ Respostas-modelo para EX001–EX135 (as de EX136–EX150 estão na edição em i
 **EX134.** As consultas podem revelar o que os pesquisadores estão investigando, o que é sensível.
 
 **EX135.** Agregando em nível nacional e por períodos mais longos.
+
+**EX136.** Estudos expirados ainda podiam rodar por causa de um erro de formato de data com fuso horário.
+
+**EX137.** Nada sobre nenhuma pessoa; o ruído e o orçamento o impediram.
+
+**EX138.** Restritiva, mas viável, com o pedido de um modelo adicional.
+
+**EX139.** Às 15h de 7 de março, 72 horas depois de tomar conhecimento, às 15h de 4 de março.
+
+**EX140.** O fornecedor levou 35,5 horas para avisar a Pellmore depois da detecção.
+
+**EX141.** Descrição clara da violação, consequências prováveis, medidas tomadas e um ponto de contato.
+
+**EX142.** erasure_test.log.
+
+**EX143.** Prova que o arquivo difere da versão aprovada, mas não quem o mudou nem por quê.
+
+**EX144.** As evidências precisam ser versionadas com novas entradas datadas, em vez de sobrescritas.
+
+**EX145.** Uma organização, um tipo de análise, dados de teste sintéticos e uma pequena avaliação com pesquisadores.
+
+**EX146.** Elas demonstram que a verificação funciona, porque pega problemas reais.
+
+**EX147.** Os valores adequados dependem de fatores locais, então prescrevê-los seria generalizar demais.
+
+**EX148.** Cada novo modelo exige análise de sensibilidade e revisão de governança.
+
+**EX149.** O exercício de violação e a nova exigência de aviso do fornecedor em doze horas.
+
+**EX150.** É um jeito de construir sistemas com responsabilidade desde o início, e não um complemento.
 
 <a id="references"></a>
 ## Referências
