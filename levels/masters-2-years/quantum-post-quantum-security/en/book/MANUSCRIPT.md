@@ -51,6 +51,8 @@ A traditional X25519 key share is 32 bytes. ML-KEM-768's encapsulation key is 1,
 
 Feasible: Larkspur's proxy and browser telemetry already log handshake outcomes (synthetic). Interesting: every organization enabling hybrid groups faces the question. Novel: public reports are mostly vendor or browser-wide; few studies attribute failures within one organization with competing explanations tested. Ethical: logs can be minimized to metadata (Chapter 3). Relevant: the answer decides between rolling back quantum protection and repairing infrastructure.
 
+Write the FINER check into the proposal with one sentence of evidence for each letter, not just a tick. For feasibility, name the log sources and confirm with the network team that they keep handshake outcomes for long enough. For novelty, point to the evidence table, where the gap in within-organization attribution is visible.
+
 ### 1.4 A documented search
 
 Search three source families separately. **Standards**: RFC Editor and IETF datatracker for TLS hybrid key exchange, ML-KEM in TLS, and ClientHello size. **Academic**: IACR ePrint, ACM/IEEE/USENIX digital libraries, terms "post-quantum TLS performance", "hybrid key exchange deployment", "middlebox ossification". **Practitioner**: browser and CDN engineering blogs, which hold most deployment evidence but are written by interested parties. Record date, database, string and hit counts for each search so that a reader can rerun it — this is the master's-level equivalent of a lab notebook.
@@ -66,12 +68,16 @@ Search three source families separately. **Standards**: RFC Editor and IETF data
 
 The table reveals the gap: mechanisms and anecdotes exist, attribution within an organization does not.
 
+Add a row for each new source as the search proceeds, and keep the limit column honest even for sources that support the question. The P-7 paper discussed in the seminar would enter the table with its 240% claim and a limit noting the missing base rate. A reader should be able to see from the table alone why the study is needed.
+
 ### 1.6 Common errors and limits
 
 - Letting the complaint's implied cause become the hypothesis without rivals.
 - Searching only academic databases in a field where deployment evidence lives in engineering blogs.
 - Treating a curated list (tldr.fail) as a random sample.
 - Unrecorded searches that cannot be rerun.
+
+Each error has a guard. Write rivals before choosing a hypothesis, as Chapter 4 does with five of them. Search engineering blogs as a separate family with its own limits. Describe tldr.fail as curated, not sampled. Keep a search log with date, database, string and hit count for every run, so an examiner can repeat it.
 
 ### Exercises — chapter 1
 
@@ -125,12 +131,16 @@ A PQ/T hybrid ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)) runs a p
 
 The seminar paper (synthetic study "P-7") reports that "hybrid key exchange increases handshake failure by 240%". Critique: the base rate is not stated (240% of what?); the comparison is across two different weeks with a browser update in between; failures are counted per attempt, but retries inflate attempts; and there is no stratification by path. The defensible version would report absolute rates with intervals, a concurrent control and path-level results — which is the Fragment Study's design.
 
+Write the critique in four short paragraphs, one per flaw, each ending with the design change that would fix it. That turns a list of complaints into a method, and it makes the link to the Fragment Study visible: base rates per 10,000 series, a concurrent control cohort, series rather than attempts, and results by egress path.
+
 ### 2.6 Common errors and limits
 
 - Saying hybrid key exchange "makes TLS quantum-safe": certificates and stored data are separate.
 - Treating relative increases without base rates as evidence.
 - Assuming ML-KEM is slow; size, not computation, is the usual deployment issue.
 - Forgetting that HQC and FN-DSA standards were still in development on 12 October 2026.
+
+Each error has a concrete correction in this dissertation. Hybrid key exchange protects key establishment only, and certificates migrate later. Rates are reported per 10,000 series with Wilson intervals. ML-KEM's cost in the Fragment Study is the size of the key share, which pushes the ClientHello across a segment boundary. Standards status is dated, and should be checked again before submission.
 
 ### Exercises — chapter 2
 
@@ -165,6 +175,8 @@ An **observational before/after** study compares failure rates before and after 
 
 Unit of analysis: a *connection attempt series* — the first attempt plus automatic retries within 10 seconds to the same host — so that retries do not inflate denominators. Exposure: whether the ClientHello offered X25519MLKEM768. Outcome: series ends without a completed handshake. Stratifiers: egress path (direct or legacy proxy), browser version, destination category. Write these definitions before seeing outcome data.
 
+Store the definitions in the data dictionary with the date they were fixed. The pilot later changed one of them, defining a series by hostname rather than address, and that amendment is recorded alongside the original wording.
+
 ### 3.3 Ethics and minimization
 
 Handshake logs contain client IP addresses and destination names, which can reveal health conditions (a hospital wing) or private behaviour. Minimize at collection: replace client addresses with a keyed hash rotated monthly; keep destination names only as category labels plus a salted hash; retain no payload; store raw logs only on university systems; obtain approval from the university's ethics or data-protection office; and consult the network team about what users were told. Interviews with help-desk staff (I01–I06) need informed consent and must avoid naming users.
@@ -194,12 +206,14 @@ after (hybrid offered)    61/40000 =  15.2 per 10k  95% CI [11.9, 19.6]
 
 The synthetic increase from 4.5 to 15.2 failures per 10,000 series is clear — the intervals do not overlap — but it says nothing yet about *why*. That is Chapter 4.
 
+The lab computes the rates for the whole corpus, before stratification. Because both rates are small, the intervals are asymmetric, which the Wilson method handles correctly. Report counts and denominators with every rate, so a reader can recompute the interval; 18 and 61 failures out of 40,000 series each are the figures that later split by path in Lab 4.
+
 ### 3.5 Reproducibility plan
 
-Pin the analysis to versioned code and a data dictionary; generate every number in the dissertation from scripts; store the minimized dataset with a checksum; record the exact browser policy that enabled the group and its date. Lab 1 below also documents the size assumptions behind the mechanism so that a reader can recompute them.
+Pin the analysis to versioned code and a data dictionary; generate every number in the dissertation from scripts; store the minimized dataset with a checksum; record the exact browser policy that enabled the group and its date. Lab 3b below also documents the size assumptions behind the mechanism so that a reader can recompute them.
 
 ```python
-# Lab 1: key-share sizes in a TLS 1.3 ClientHello (sizes from FIPS 203 and RFC 10024).
+# Lab 3b: key-share sizes in a TLS 1.3 ClientHello (sizes from FIPS 203 and RFC 10024).
 # X25519 share = 32 bytes; ML-KEM-768 encapsulation key = 1184 bytes; ciphertext = 1088 bytes.
 BASE_HELLO = 520          # synthetic size of the rest of a typical ClientHello (illustrative)
 MSS = 1460                # TCP payload per segment on a 1500-byte Ethernet path, no options
@@ -231,13 +245,15 @@ The rest-of-ClientHello size (520 bytes) is an illustrative assumption; real siz
 - Using normal-approximation intervals for rates near zero.
 - Treating a before/after difference as a causal effect.
 
+Each error has a guard already in the design: series instead of attempts as the unit, destination categories plus salted hashes instead of names, Wilson intervals for small rates, and a staggered rollout with a concurrent control to separate the effect of the hybrid group from anything else that changed during the same weeks.
+
 ### Exercises — chapter 3
 
 - **EX014 — Design choice.** Compare the three designs for the Fragment Study in a table of strengths and threats. Rubric: 3 = each threat matched to a design that addresses it.
 - **EX015 — Unit of analysis.** Explain how retries could inflate the failure denominator and bias the rate. Rubric: 3 = direction of bias stated.
 - **EX016 — Minimization plan.** Write the data-minimization section for the ethics application. Rubric: 3 = keyed hashing, categories, retention and access covered.
 - **EX017 — Wilson by hand.** Compute the Wilson interval for 9 failures in 20,000 series with Lab 3. Rubric: 3 = correct output and interpretation.
-- **EX018 — Size sensitivity.** Change Lab 1's base size to 300 and 1,300 bytes; when does the x25519-only hello need two segments? Rubric: 3 = correct runs and a conclusion about why the testbed must measure.
+- **EX018 — Size sensitivity.** Change Lab 3b's base size to 300 and 1,300 bytes; when does the x25519-only hello need two segments? Rubric: 3 = correct runs and a conclusion about why the testbed must measure.
 - **EX019 — Reproducibility checklist.** List eight items a reader needs to reproduce your numbers. Rubric: 3 = includes policy date and data checksum.
 
 ### Chapter synthesis
@@ -263,6 +279,8 @@ You will (1) list rival explanations for an observed effect; (2) predict what ea
 3. **Unknown codepoint** — some middlebox rejects an unrecognized supported-group value (0x11EC for X25519MLKEM768 in the [IANA registry](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml)), regardless of size.
 4. **Seasonality** — term started; more users, more unusual destinations.
 5. **Reporting artefact** — a help-desk campaign encouraged reporting, raising tickets but not failures.
+
+Write each rival down with the data that would weaken it before looking at results.
 
 ### 4.2 Predictions
 
@@ -291,9 +309,13 @@ legacy proxy  before  5.0/10k  after 26.0/10k  difference +21.0
 
 The aggregate rise is almost entirely on the legacy-proxy path; the direct path barely moves. A browser update would have affected both paths, so rival 2 is weakened. The pattern fits the size mechanism and the unknown-codepoint mechanism equally — only the testbed can separate those two. This is the central lesson of the chapter: one stratification eliminates some rivals, not all.
 
+The lab's before and after totals match Lab 3: 18 and 61 failures out of 40,000 series. Splitting by path shows where the change happened. The direct path's half-point rise is within noise for these counts, while the proxy path's rise is large. Neither stratum yet distinguishes size from codepoint; that needs the testbed with padding varied.
+
 ### 4.4 Aggregation reversals
 
 Stratified and aggregate comparisons can disagree. If the hybrid group were enabled first for users who mostly use the direct path, the aggregate failure rate could fall after enabling it even though, within the proxy path, it rose. This is Simpson's paradox; the defence is to report path-stratified rates alongside the aggregate and to explain any reversal rather than choosing the convenient level.
+
+In the Fragment Study the staggered rollout randomized by device identifier makes this reversal unlikely, because both cohorts should use the two paths in similar proportions. Check that assumption with a balance table of path use by cohort before reporting either level. If the cohorts turn out to be unbalanced, report both levels and explain the difference.
 
 ### 4.5 Worked example: interview evidence
 
@@ -305,6 +327,8 @@ Help-desk interviews (I01–I06, synthetic) report that complaints came "mostly 
 - Treating consistency with one rival as proof when another predicts the same pattern.
 - Reporting only the aggregate (or only the stratum) that tells the preferred story.
 - Running codepoint or size experiments against production middleboxes; use the testbed.
+
+Each error has a guard used in this chapter: five rivals listed before analysis, predictions that tell them apart, both aggregate and path-level rates reported, and all size and codepoint experiments run on an isolated copy of the proxy. Interview evidence is used to suggest tests, not to settle them.
 
 ### Exercises — chapter 4
 
@@ -351,12 +375,16 @@ A two-week pilot on 2,000 synthetic series per cohort plus a testbed copy of the
 
 The revision memo states the problem (series split by address), its effect (denominators inflated by about 4% on the proxy path), the amendment (hostname-based series with a 10-second window), and a re-check (50 new cases, 50/50 match). It also records a decision *not* to change: the coders asked to add a label for "certificate pinning", but there were only two such cases, so they remain under "cert" with a note. Pilots should produce small, documented changes, not a new study.
 
+Attach the memo to the protocol as a dated amendment.
+
 ### 5.5 Common errors and limits
 
 - Hypotheses without a threshold, so that any rise "supports" them.
 - Running size or codepoint experiments on the production proxy.
 - Treating a pilot as preliminary results to report as findings.
 - Amending the protocol silently.
+
+Each error has a guard in the Fragment proposal. H1 and H3 have numeric thresholds per 10,000 series. All size and codepoint experiments use the isolated testbed instance. Pilot data appear only in the methods chapter as checks on the pipeline. Every amendment, such as the hostname-based series rule, is written down with its date and reason.
 
 ### Exercises — chapter 5
 
@@ -387,6 +415,8 @@ You will (1) collect data according to a frozen protocol; (2) code failure logs 
 
 Eight weeks of LK-HS-1 data are collected under the amended protocol: four weeks before and four weeks after the staggered rollout, with half of managed browsers (randomized by device identifier) receiving the hybrid policy first. Freeze the analysis script and record its hash before unblinding the cohort labels.
 
+Keep a collection log noting outages or gaps in the proxy and browser telemetry, with dates, because a missing day in one cohort would bias the comparison. Check before unblinding that the randomization put roughly equal numbers of devices in each cohort and that both used the proxy path in similar proportions.
+
 ### 6.2 Coding failures
 
 Each failed series has a log excerpt. Two coders (C1, C2) assign one of four labels — *size* (proxy reset after first segment), *cert* (certificate validation), *timeout*, *other* — using a written codebook, independently.
@@ -411,17 +441,25 @@ observed agreement 0.917  chance 0.323  Cohen's kappa 0.877
 
 A κ of 0.88 indicates strong agreement beyond chance; disagreements (mostly *size* vs *timeout*, because a dropped second segment can look like a timeout) are resolved by discussion and logged.
 
+Keep the codebook with an example log excerpt for each label, especially for the difficult boundary between size and timeout. Coders work from excerpts without cohort labels, so that knowing whether the hybrid group was offered cannot influence the label they choose.
+
 ### 6.3 Difference-in-differences
 
 With a concurrent control cohort, the effect is the change in the treated cohort minus the change in the control cohort, estimated separately by path. Synthetic results: proxy path +20.4 per 10,000 (95% CI 15.1–25.8); direct path +0.6 (−1.0 to 2.2). H1 is supported. The control cohort's own small rise (+0.9) captures seasonality, rival 4, which the before/after design alone would have attributed to the hybrid group.
+
+Report the estimate with its interval and the number of series behind each cell, so the calculation can be checked. The direct-path interval includes zero, which supports the second part of H1. The control cohort's rise shows why the concurrent control matters: without it, seasonal change would have been counted as an effect of the hybrid group.
 
 ### 6.4 Testbed results
 
 In the isolated testbed copy of the proxy, 200 handshakes per condition: one-segment hello without codepoint 0/200 failures; one-segment hello *with* the hybrid codepoint 0/200; two-segment hello without the codepoint (padding only) 187/200; two-segment hello with codepoint 189/200. Failures track segmentation, not the codepoint: H2 supported, rival 3 rejected for this proxy model. After applying the vendor's firmware update in the testbed, two-segment failures fall to 0/200, which anticipates H3.
 
+The four conditions vary size and codepoint independently, which is what lets the testbed separate the two rivals the logs could not. Report the testbed's firmware versions before and after the update and the padding used for each condition, so another lab can reproduce the result with the same proxy model.
+
 ### 6.5 Validation on Fenwick College
 
 Fenwick (synthetic) has a different proxy vendor. Applying the frozen analysis: proxy-path excess +1.2 per 10,000 (−0.8 to 3.2) — no meaningful effect. The mechanism is product-specific; the dissertation must say "the legacy proxy model at Larkspur", not "inspecting proxies". A null result at the second site is a finding about scope, not a failure of the study.
+
+Freeze the analysis script before opening Fenwick data, as for Larkspur, and record its hash. Report Fenwick's interval as well as its estimate: it includes zero and excludes an effect as large as Larkspur's. Recording the proxy vendor and version at Fenwick lets readers see which products the null result covers.
 
 ### 6.6 Common errors and limits
 
@@ -429,6 +467,8 @@ Fenwick (synthetic) has a different proxy vendor. Applying the frozen analysis: 
 - Treating κ as a pass/fail without examining which categories disagree.
 - Generalizing a product-specific defect to a category of products.
 - Synthetic numbers here illustrate methods; they are not measurements of any product.
+
+Each error has a guard in this chapter: a script hash recorded before unblinding, a look at which labels disagreed rather than a κ threshold alone, the Fenwick null result used to limit the claim to one proxy model, and a clear statement that the numbers are synthetic.
 
 ### Exercises — chapter 6
 
@@ -459,9 +499,13 @@ You will (1) structure a dissertation so that each chapter answers a question; (
 
 Introduction (question, why it matters, contribution); background (quantum threat, ML-KEM, hybrids, middlebox ossification); method (design, data, minimization, analysis plan with amendments); results (rates, DiD, coding, testbed, validation); discussion (mechanism, scope, recommendations); limitations; conclusion. Each chapter should open with the question it answers and close with what the next chapter needs.
 
+Draft the results chapter first, then the methods that produced them, and write the introduction last, so it does not promise more than was delivered. Check that each chapter's opening question is answered by its last paragraph. The discussion should connect testbed and log evidence explicitly rather than presenting them separately.
+
 ### 7.2 Writing results
 
 Separate three layers in every results paragraph. *Estimate*: "proxy-path failures rose by 20.4 per 10,000 series relative to control." *Uncertainty*: "95% CI 15.1–25.8; coding κ = 0.88." *Interpretation*: "consistent with the size mechanism, which the testbed isolates." Never put interpretation in the estimate sentence. Report the null result at Fenwick in the results chapter, not in a footnote.
+
+Apply the same pattern to the testbed and to Fenwick: estimate, uncertainty, interpretation in separate sentences. Generate the numbers in each sentence from the analysis scripts, so that a revision of the data cannot leave stale figures in the text.
 
 ### 7.3 Limitations with direction
 
@@ -470,9 +514,13 @@ Separate three layers in every results paragraph. *Estimate*: "proxy-path failur
 - *Eight weeks* → rare destinations may be under-represented, likely underestimating failures for unusual servers.
 - *Synthetic data in this teaching book* → no claim about real products.
 
+Add a column for magnitude where it can be estimated, and update the table if later evidence settles a direction. Unmanaged devices could be studied in a follow-up if the network team agrees, which would turn an unknown into a measured result.
+
 ### 7.4 Recommendations
 
 Proportionate recommendation: update the legacy proxy's firmware (validated in testbed) and monitor proxy-path failures; do not roll back the hybrid group for the direct path, where no effect was found; ask the proxy vendor to confirm the fix in release notes. Disproportionate recommendation, to avoid: "inspecting proxies are incompatible with post-quantum cryptography".
+
+Write each recommendation with its owner and the evidence that supports it. The firmware update needs production monitoring after rollout, because the testbed showed the fix only in a lab instance. If proxy-path failures do not fall after the update, the recommendation is revisited.
 
 ### 7.5 Worked example: abstract
 
@@ -483,6 +531,8 @@ Proportionate recommendation: update the legacy proxy's firmware (validated in t
 - Interpretation mixed into estimates.
 - Limitations listed without direction.
 - Recommendations broader than the product and site studied.
+
+Each error has a guard in this dissertation: three-layer results sentences, a limitations list where each item names its direction, and recommendations limited to the legacy proxy model at Larkspur. Read the abstract once more against the results tables before submission.  Ask a peer to mark any sentence that mixes estimate and interpretation, any limitation without a direction, and any recommendation that names a category of products instead of the device studied.
 
 ### Exercises — chapter 7
 
@@ -513,6 +563,8 @@ You will (1) prepare a reproducibility package an independent reviewer can run; 
 
 Include the minimized dataset (or a synthetic surrogate if the university cannot release it), the frozen scripts with hashes, the codebook and coding sheets, the testbed configuration (without vendor-confidential firmware), and a README explaining how to regenerate every table. Ask a peer to run it cold and log every point where they got stuck.
 
+Test the package on a clean machine with only the README to guide the run.  Record the versions of Python and of each script, and note how long the full run takes, so a reviewer can plan time.
+
 ### 8.2 Examiner questions
 
 - *Why should randomization by device identifier be trusted?* Show balance tables for path use and browser version.
@@ -524,15 +576,21 @@ Include the minimized dataset (or a synthetic surrogate if the university cannot
 
 The proxy defect was found in an isolated testbed. Before publication, report it to the vendor with reproduction details (padding sizes, segment boundaries, firmware version), give a reasonable window, and inform Larkspur's network team. Publish the class of defect — mishandling of multi-segment ClientHello — rather than steps for evading the proxy's inspection.
 
+Record the date of each step in the disclosure, from first contact with the vendor to publication. If the vendor confirms the fix in its release notes, cite them in the dissertation. Larkspur's network team should hear about the defect before any public presentation of the results.
+
 ### 8.4 Operator briefing
 
 For Larkspur's network operations (synthetic): "Turning on quantum-resistant key exchange made some connections through the old inspection proxy fail, because the first message became too large for one packet and the proxy mishandled it. A firmware update fixes this in our lab. Keep the protection on; update the proxy; watch the failure dashboard for the hospital wing."
+
+Test the briefing with one operator who has not seen the study. If they cannot say what to do on Monday, simplify it. Keep the technical detail in an appendix for engineers who ask.
 
 ### 8.5 Common errors and limits
 
 - Packages that cannot run without the author.
 - Answering "is it PQC's fault?" with yes or no instead of the mechanism.
 - Publishing a defect before the vendor and owner are informed.
+
+Each error has a guard: a package tested cold by a peer, an answer to the PQC question that explains message size and the padding-only result, and a disclosure timeline with the vendor and Larkspur's network team agreed before publication. Check each before the defense date.  Rehearse the answers aloud once.
 
 ### Exercises — chapter 8
 
