@@ -2,15 +2,15 @@
 
 [Home](README.md) · [Book standard](BOOK_STANDARD.md) · [Complete study path](STUDY_PATH.md)
 
-The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominator counts the selected edition's current `PLAN.md` anchors. A **plan** is an outline, not a lesson. Older indexes use one chapter per subject module; migrated indexes use one chapter per instructional weekday. These mixed structural counts are **not** daily-target completion or technical approval. See the separate minimum weekday baselines in the [curriculum grid](CURRICULUM_GRID.md).
+The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominator counts the selected edition's current `PLAN.md` anchors. A **plan** is an outline, not a lesson. Older indexes use one chapter per subject module; migrated editions may group five daily lessons inside a weekly chapter. The explicit daily-lesson column counts only `lesson-NN` anchors. These structural counts are **not** technical approval. See the separate minimum weekday baselines in the [curriculum grid](CURRICULUM_GRID.md).
 
-**Catalog:** 207 courses and one principal book per course and language edition. The weekday calendar sets a planning minimum and no maximum. A finished book is an English lesson that has been taught, checked and reviewed; page count is not the writing target. See the book standard.
+**Catalog:** 207 courses and one principal book per course and language edition. The weekday calendar sets a planning minimum and no maximum. English lessons are written first. Page count is not the writing target. The counts below do not establish completion.
 
-| Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
+| Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4012/4190 | 3872/4012 | 4012/4012 | 4012/4012 | 4012/4012 |
-| Português | 124/207 | 2509/4186 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
-| Español | 27/207 | 516/4186 | 474/516 | 516/516 | 516/516 | 516/516 |
+| English | 199/207 | 4012/4190 | 0/120060 | 3872/4012 | 4012/4012 | 4012/4012 | 4012/4012 |
+| Português | 124/207 | 2509/4186 | 0/120060 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
+| Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 
 The example and visual columns detect explicit headings and Mermaid/image syntax. They are conservative signals: prose examples, tables and logical drawings may exist without matching those patterns. An exercise is counted when its ID appears inside the chapter; this table does not certify its quality or worked answer. No count is raised by an empty template or a link to a plan.
 
