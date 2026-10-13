@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 40 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–40 (EX076–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 26–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -907,11 +907,262 @@ Lições de outros domínios exigem cuidado quando transferidas para os dados de
 - **EX059 — Logs de atividade.** Por que os logs de atividade dos aplicativos de aprendizagem identificam? *Rubrica:* 3 = dados comportamentais detalhados podem ser ligados a pessoas, como as avaliações esparsas;; 2 = menciona detalhe;; 1 = não identificam;; 0 = nenhuma.
 - **EX060 — Consentimento neutro.** Que desenho de consentimento decorre da pesquisa comportamental? *Rubrica:* 3 = formulários neutros, sem caixas pré-marcadas nem pressão;; 2 = menciona desenho;; 1 = pré-marcar;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Privacidade e proteção de dados: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o tratamento da rede como um sistema; (2) montar um registro das atividades de tratamento; (3) identificar controladores e operadores.
+
+### 21.1 O tratamento como sistema
+
+No terceiro ano, Elena modela o tratamento da rede como um sistema de atividades, cada uma com finalidade, categorias de dados, pessoas afetadas, destinatários e prazo de retenção. Matrículas, frequência, ensino, apoio às necessidades educacionais especiais, proteção das crianças, merenda e comunicação são atividades separadas. Modelar atividades, e não sistemas, a ajuda a ver que um sistema pode servir a várias finalidades e que uma finalidade pode usar vários sistemas. A finalidade, ela aprende, é o conceito organizador que a lei usa, então seu modelo a segue. As matrículas são uma das finalidades.
+
+### 21.2 Registro das atividades de tratamento
+
+O artigo 30 do GDPR exige um registro das atividades de tratamento; a LGPD prevê o registro das operações no art. 37. Elena monta um registro com uma linha por atividade. Na merenda, a finalidade é fornecer as refeições; os dados incluem nomes, necessidades alimentares e direito à merenda gratuita; os destinatários incluem a empresa contratada para a alimentação; a retenção é o ano letivo mais um. Montar o registro revela lacunas, como a falta de prazo de retenção definido para a comunicação. Ela apresenta o registro ao responsável pela proteção de dados como um documento vivo, que deve ser atualizado sempre que o tratamento mudar.
+
+### 21.3 Papéis
+
+Elena identifica os papéis usando as Diretrizes 07/2020 do EDPB. A rede é a controladora do tratamento de suas escolas. A empresa de alimentação e a maioria dos fornecedores de aplicativos são operadores que agem segundo as instruções da rede. Uma autoridade local de educação que recebe os dados do censo escolar é uma controladora independente, com seus próprios deveres legais. Ela observa que os papéis importam porque determinam quem responde aos pedidos de direitos, quem comunica as violações e quais contratos são necessários, e que o papel depende do que a organização de fato faz, e não do nome que o contrato lhe dá.
+
+### 21.4 Verificação do modelo
+
+Elena confere o modelo com a realidade pedindo aos funcionários que descrevam um dia típico. Uma professora conta que envia fotografias por um aplicativo de mensagens com os pais que não está no modelo. O aplicativo vira uma nova linha no registro, com uma revisão de triagem. Ela explica que os modelos só são úteis quando conferidos com a prática, e que as conversas com os funcionários revelam tratamentos que nenhum diagrama de sistemas mostra, porque acontecem por ferramentas informais escolhidas por conveniência. Ela descobre uma turma inteira usando um aplicativo de mensagens.
+
+### Exemplo resolvido
+
+Elena modela sete atividades de tratamento, monta um registro pelo artigo 30, atribui os papéis de controlador e operador e acrescenta um aplicativo de mensagens não registrado, descoberto ao percorrer o dia de uma professora.
+
+> **Caso sintético.** As atividades são sintéticas; o artigo 30 do GDPR, o art. 37 da LGPD e as Diretrizes 07/2020 do EDPB são reais.
+
+### Erros e limites
+
+Os registros envelhecem depressa; amarre as atualizações aos processos de compras e de projetos.
+
+### Exercícios
+
+- **EX061 — Modelo por finalidade.** Por que modelar as atividades por finalidade, e não por sistema? *Rubrica:* 3 = a lei organiza os deveres em torno das finalidades; um sistema pode servir a várias;; 2 = menciona finalidade;; 1 = por sistema;; 0 = nenhuma.
+- **EX062 — Destinatário do censo.** Que papel tem uma autoridade local que recebe os dados do censo? *Rubrica:* 3 = controladora independente;; 2 = controladora;; 1 = operadora;; 0 = nenhuma.
+- **EX063 — Achado do percurso.** O que o percurso pelo dia da professora revelou? *Rubrica:* 3 = um aplicativo de mensagens com os pais, não registrado, usado para fotografias;; 2 = menciona aplicativo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Privacidade e proteção de dados: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) fazer a triagem de aplicativos de sala de aula com base em critérios; (2) pontuar as dependências de forma consistente; (3) decidir pela aprovação ou pela rejeição.
+
+### 22.1 Por que fazer a triagem dos aplicativos
+
+A rede depende de muitos aplicativos de sala de aula escolhidos pelos professores. Cada aplicativo é uma dependência que recebe dados de alunos. Elena desenvolve um esquema de triagem com cinco critérios de dois pontos cada: contrato de tratamento de dados assinado; dados mantidos no EEE ou protegidos por garantias de transferência; nenhuma publicidade nem perfilamento de crianças; exclusão mediante pedido; e coleta de campos mínimos. Os aplicativos com oito ou mais de dez pontos são aprovados. O esquema dá aos professores expectativas claras e à rede uma regra de decisão consistente para todos os casos.
+
+### 22.2 Pontuação
+
+O laboratório pontua cinco aplicativos. O MathsQuest atende a todos os critérios e marca 10. O Timetabler marca 8, faltando apenas os campos mínimos, e é aprovado com o pedido de reduzir os campos. O ClassChat marca 6, sem contrato e sem exclusão mediante pedido. O ReadAlong marca 4, sem contrato, sem garantias de transferência e sem campos mínimos. O QuizBlitz marca 4, sem contrato, sem garantias de transferência e sem a proibição de publicidade. Três aplicativos são rejeitados até que os fornecedores resolvam as lacunas. Cada critério vale pontos, e a pontuação cobre contratos, transferências, dados coletados, publicidade e exclusão.
+
+### 22.3 Perfilamento de crianças
+
+Elena dá atenção especial à publicidade e ao perfilamento. O considerando 38 do GDPR observa que as crianças merecem proteção específica, em especial quanto ao marketing e ao perfilamento. O QuizBlitz mostra anúncios aos alunos e monta perfis de interesse. Mesmo que um contrato fosse assinado, ela desaconselha o aplicativo, porque perfilar crianças para publicidade contraria o dever de cuidado da rede e o melhor interesse exigido pelo art. 14 da LGPD. Ela explica que alguns critérios não são apenas pontos, mas linhas vermelhas, e acrescenta a regra de que a publicidade para alunos leva à rejeição automática, sem exceções.
+
+### 22.4 Conviver com as decisões
+
+Rejeitar aplicativos incomoda alguns professores que dependem deles. Elena trabalha com eles para encontrar alternativas aprovadas com funções semelhantes e pede aos fornecedores dos aplicativos rejeitados que corrijam as lacunas. Duas semanas depois, o ClassChat assina um contrato e acrescenta a exclusão, elevando sua pontuação para 10. O Dr. Asante observa que a triagem funciona melhor como uma conversa com professores e fornecedores do que como um portão que só diz não, porque o objetivo é um ensino mais seguro, e não menos ferramentas. Dois aplicativos rejeitados voltam depois em conformidade, para alegria dos professores.
+
+### Laboratório — Triagem de aplicativos de sala de aula com cinco critérios
+
+```python
+# Vetting score for classroom apps: 2 points per criterion met, 0 otherwise; approve at >= 8 of 10.
+crit = ["DPA signed", "data stays in EEA or safeguards", "no ads or profiling", "deletion on request", "minimal fields"]
+apps = {"MathsQuest": [1, 1, 1, 1, 1], "ReadAlong": [0, 0, 1, 1, 0], "ClassChat": [0, 1, 1, 0, 1],
+        "QuizBlitz": [0, 0, 0, 1, 1], "Timetabler": [1, 1, 1, 1, 0]}
+for a, m in apps.items():
+    s = 2 * sum(m); miss = [c for c, x in zip(crit, m) if not x]
+    print(f"{a:10s} score {s:2d}/10 {'APPROVE' if s >= 8 else 'REJECT '} missing: {', '.join(miss) or '-'}")
+```
+
+Execute com `python3 lab_vet.py`. Saída verificada:
+
+```text
+MathsQuest score 10/10 APPROVE missing: -
+ReadAlong  score  4/10 REJECT  missing: DPA signed, data stays in EEA or safeguards, minimal fields
+ClassChat  score  6/10 REJECT  missing: DPA signed, deletion on request
+QuizBlitz  score  4/10 REJECT  missing: DPA signed, data stays in EEA or safeguards, no ads or profiling
+Timetabler score  8/10 APPROVE missing: minimal fields
+```
+
+### Exemplo resolvido
+
+A triagem de Elena aprova o MathsQuest (10) e o Timetabler (8), rejeita o ClassChat (6), o ReadAlong (4) e o QuizBlitz (4), transforma a publicidade para alunos em linha vermelha e vê o ClassChat corrigido até 10.
+
+> **Caso sintético.** Os aplicativos e as pontuações são sintéticos; o considerando 38 do GDPR e o art. 14 da LGPD são reais.
+
+### Erros e limites
+
+Pesos iguais tratam os critérios como igualmente importantes; as linhas vermelhas corrigem os piores casos.
+
+### Exercícios
+
+- **EX064 — Aplicativos aprovados.** Quais aplicativos são aprovados, e com que pontuação? *Rubrica:* 3 = MathsQuest com 10 e Timetabler com 8;; 2 = um;; 1 = errado;; 0 = nenhuma.
+- **EX065 — Linha vermelha.** Por que tornar a publicidade para alunos uma rejeição automática? *Rubrica:* 3 = perfilar crianças para marketing contraria sua proteção especial;; 2 = menciona crianças;; 1 = só pontos;; 0 = nenhuma.
+- **EX066 — Correção do ClassChat.** O que elevou a pontuação do ClassChat para 10? *Rubrica:* 3 = assinou um contrato e acrescentou a exclusão mediante pedido;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Privacidade e proteção de dados: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar a supressão de células pequenas em tabelas publicadas; (2) usar a supressão complementar; (3) julgar quando as tabelas são seguras.
+
+### 23.1 Publicação de resultados
+
+As escolas publicam os resultados dos exames por grupo, como os alunos com direito à merenda gratuita. Elena sabe, pelo Capítulo 19, que células pequenas podem identificar crianças. Ela aplica uma regra comum: suprimir qualquer célula com menos de cinco alunos. Se uma escola tem três alunos com merenda gratuita, publicar os resultados deles revelaria muito sobre cada um. A supressão esconde essa célula. A regra é simples, mas ela aprende que aplicá-la sozinha não basta quando os totais também são publicados. Os totais permitem subtrair, e os ataques por diferença são um risco real.
+
+### 23.2 Supressão complementar
+
+Se o total da escola e a contagem do outro grupo forem publicados, um leitor pode subtrair e recuperar a célula suprimida. Por isso, Elena também suprime uma célula complementar na mesma escola. O laboratório aplica as duas regras a oito células de quatro escolas. A Ashby tem três alunos com merenda gratuita e a Moor tem dois; as duas células são suprimidas, com seus complementos. Quatro das oito células são suprimidas: duas primárias e duas complementares. A Kelso e a Penn são publicadas por inteiro, porque suas menores células têm doze e sete alunos.
+
+### 23.3 Perda de informação
+
+A supressão esconde informação útil. Os leitores da tabela não conseguem comparar os resultados dos alunos com merenda gratuita da Ashby e da Moor. Elena discute alternativas: agrupar escolas pequenas, relatar períodos de três anos ou publicar números arredondados. A NIST SP 800-188 descreve essas abordagens para as estatísticas governamentais. Ela recomenda juntar a Ashby e a Moor nessa tabela, o que mantém comparações úteis e protege as pessoas, e mostra à rede como a tabela ficaria. Juntar duas escolas pequenas perde algum detalhe, mas mantém visíveis as tendências da rede. O conselho aceita a tabela.
+
+### 23.4 Julgamento
+
+Elena observa que limiares como cinco são convenções, e não garantias. Uma célula de seis alunos ainda pode revelar algo se os leitores souberem quem eles são. Para grupos sensíveis, como os alunos com necessidades educacionais especiais, ela recomenda um limiar mais alto. Explica que o controle de divulgação combina regras com julgamento sobre quem pode ler a tabela e o que essas pessoas já sabem, o que se liga ao teste de identificabilidade do considerando 26. Os leitores locais conhecem muitas famílias, e em vilarejos pequenos a identificação é fácil. O contexto decide a supressão.
+
+### Laboratório — Supressão de células pequenas em uma tabela de resultados
+
+```python
+# Published exam results by school and group: suppress any cell with fewer than 5 pupils (and its complement).
+table = {("Ashby", "free meals"): 3, ("Ashby", "other"): 41, ("Kelso", "free meals"): 12, ("Kelso", "other"): 36,
+         ("Moor", "free meals"): 2, ("Moor", "other"): 18, ("Penn", "free meals"): 7, ("Penn", "other"): 29}
+sup = set()
+for (s, g), n in table.items():
+    if n < 5:
+        sup.add((s, g)); sup.add((s, "other" if g == "free meals" else "free meals"))
+for (s, g), n in table.items():
+    print(f"{s:6s} {g:11s} {'*' if (s, g) in sup else n}")
+print(f"suppressed cells: {len(sup)} of {len(table)} (2 primary + 2 complementary)")
+```
+
+Execute com `python3 lab_cells.py`. Saída verificada:
+
+```text
+Ashby  free meals  *
+Ashby  other       *
+Kelso  free meals  12
+Kelso  other       36
+Moor   free meals  *
+Moor   other       *
+Penn   free meals  7
+Penn   other       29
+suppressed cells: 4 of 8 (2 primary + 2 complementary)
+```
+
+### Exemplo resolvido
+
+Elena suprime quatro das oito células (as células de merenda gratuita da Ashby e da Moor e seus complementos), discute a perda de informação e recomenda juntar escolas pequenas e usar limiares mais altos para grupos sensíveis.
+
+> **Caso sintético.** As tabelas são sintéticas; a NIST SP 800-188 e o considerando 26 do GDPR são reais.
+
+### Erros e limites
+
+A supressão em várias tabelas publicadas ainda pode ser desfeita combinando-as.
+
+### Exercícios
+
+- **EX067 — Motivo da complementar.** Por que suprimir uma célula complementar? *Rubrica:* 3 = senão a subtração a partir dos totais recupera a célula suprimida;; 2 = menciona totais;; 1 = desnecessário;; 0 = nenhuma.
+- **EX068 — Contagem suprimida.** Quantas células foram suprimidas, e por quê? *Rubrica:* 3 = quatro: duas primárias abaixo de cinco e duas complementares;; 2 = só o número;; 1 = errado;; 0 = nenhuma.
+- **EX069 — Limiar mais alto.** Quando Elena recomenda um limiar mais alto? *Rubrica:* 3 = para grupos sensíveis, como os alunos com necessidades especiais;; 2 = menciona sensibilidade;; 1 = nunca;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Privacidade e proteção de dados: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles organizacionais e técnicos para uma rede de escolas; (2) ligar os controles aos riscos; (3) atribuir responsáveis.
+
+### 24.1 Conjunto de controles
+
+Elena projeta um conjunto de controles para a rede. Os controles organizacionais incluem o esquema de triagem de aplicativos, o treinamento da equipe, uma tabela de temporalidade dos registros e a caixa central de pedidos. Os controles técnicos incluem o acesso baseado em funções, o login único, a criptografia, os backups e a supressão de células pequenas. Ela liga cada controle aos riscos que reduz e aos princípios que apoia. Essa ligação permite explicar ao conselho por que cada controle existe e o que aconteceria se fosse removido. Cada controle indica seu risco, e a lista cabe em duas páginas.
+
+### 24.2 Tabela de temporalidade
+
+Elena redige uma tabela de temporalidade. Os registros dos alunos seguem as exigências da legislação educacional; os registros de proteção das crianças são guardados conforme as orientações legais; as fotografias dos boletins são mantidas durante o ano corrente; os dados dos aplicativos são excluídos quando o aluno sai. Ela explica que as tabelas de temporalidade implementam a limitação da conservação e reduzem o que poderia ser exposto numa violação; a LGPD trata do término do tratamento nos arts. 15 e 16. Ela observa que alguns prazos são fixados em lei e precisam ser confirmados com a assessoria jurídica da rede, que os confirma.
+
+### 24.3 Treinamento
+
+O treinamento é um controle. Elena desenha sessões curtas para funções diferentes: os professores aprendem sobre a triagem de aplicativos e os e-mails enviados ao destinatário errado; a secretaria aprende a verificar a identidade nos pedidos; os responsáveis pela proteção das crianças aprendem sobre registros seguros. Cada sessão usa exemplos escolares e termina com um questionário curto. Ela mede a participação e as notas dos questionários. Observa que o treinamento só muda o comportamento quando combinado com sistemas que apoiam as escolhas certas. As notas subiram, mas a contagem de incidentes conta uma história mais útil sobre o comportamento.
+
+### 24.4 Responsáveis
+
+Cada controle precisa de um responsável. O responsável pela proteção de dados cuida do registro das atividades e da caixa de pedidos; o gerente de TI cuida do acesso, da criptografia e dos backups; os diretores cuidam da participação no treinamento em suas escolas. Elena escreve uma descrição de uma página para cada controle. O Dr. Asante observa que os controles sem responsável se deterioram em silêncio, e que a responsabilidade é a diferença entre um documento de política e um controle que funciona. Cada responsável tem um substituto nomeado e uma data de revisão no calendário de operações, a cada período letivo.
+
+### Exemplo resolvido
+
+Elena projeta controles organizacionais e técnicos ligados aos riscos, redige uma tabela de temporalidade, cria treinamentos por função com questionários e atribui responsáveis com descrições de uma página.
+
+> **Caso sintético.** Os controles são sintéticos; os arts. 15 e 16 da LGPD são reais.
+
+### Erros e limites
+
+As métricas de treinamento medem mais a presença que o comportamento; combine-as com os dados de incidentes.
+
+### Exercícios
+
+- **EX070 — Ligar os controles.** Por que ligar cada controle a riscos e princípios? *Rubrica:* 3 = para explicar por que ele existe e o que sua remoção causaria;; 2 = menciona justificativa;; 1 = desnecessário;; 0 = nenhuma.
+- **EX071 — Retenção das fotos.** Por quanto tempo as fotografias dos boletins são mantidas na tabela? *Rubrica:* 3 = durante o ano corrente;; 2 = aproximadamente;; 1 = indefinidamente;; 0 = nenhuma.
+- **EX072 — Responsáveis importam.** Por que todo controle precisa de um responsável? *Rubrica:* 3 = controles sem responsável se deterioram em silêncio;; 2 = menciona manutenção;; 1 = opcional;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar controles em um laboratório seguro; (2) simular incidentes comuns; (3) registrar os resultados como evidência.
+
+### 25.1 Montagem do laboratório
+
+No Laboratório I, Elena monta um ambiente de teste com alunos sintéticos, uma cópia da configuração de acesso e contas de teste para cada função. Nenhum dado real é usado. Ela planeja testes de controle de acesso, de retenção e dos avisos contra e-mails enviados ao destinatário errado. O Dr. Asante insiste em escrever os resultados esperados antes de executar os testes. Elena aprende que um laboratório é um lugar para descobrir falhas com segurança, para que possam ser corrigidas antes de afetarem crianças reais. Todas as contas de teste são sintéticas, e o laboratório espelha a configuração real.
+
+### 25.2 Testes de acesso
+
+Elena entra com cada função e tenta ver registros. Os professores não conseguem ver alunos de outras turmas; a secretaria não consegue ver os planos de apoio depois da correção anterior. Mas um coordenador de ano consegue ver as anotações de proteção das crianças, o que o desenho das funções não previa. Ela rastreia o problema até um grupo de permissões antigo e o remove. Registra o teste, a falha e a correção, com datas. O acesso indevido vinha desse grupo antigo, criado anos antes para outra finalidade e nunca revisado.
+
+### 25.3 Simulação de incidentes
+
+Elena simula um e-mail enviado ao destinatário errado mandando um relatório sintético para um endereço de teste externo. O sistema de e-mail avisa sobre o destinatário externo, como previsto. Depois, ela simula um tablet perdido e verifica se o apagamento remoto funciona e se o tablet não guardava dados de alunos em cache. Os dois testes têm sucesso. Ela também simula o pedido de acesso de um pai pela caixa central e verifica se ele é registrado e atribuído em até um dia. Ela cronometra cada etapa da resposta, e as duas etapas terminam no prazo.
+
+### 25.4 Evidências
+
+Elena reúne os resultados em um relatório de laboratório: testes, resultados esperados, resultados obtidos, falhas e correções. Ela observa que o relatório é evidência para a responsabilização e deve ser guardado junto com os registros de proteção de dados da rede. Também registra o que não testou, como a exclusão pelos fornecedores. O Dr. Asante lembra que um relatório de teste vale tanto pelo que mostra que não foi testado quanto pelo que mostra que funciona. As áreas não testadas são listadas de forma explícita no relatório, e a exclusão pelos fornecedores é testada mais tarde.
+
+### Exemplo resolvido
+
+Elena testa o acesso, a retenção e as respostas a incidentes com dados sintéticos, encontra e remove uma permissão de coordenador de ano sobre a proteção das crianças, confirma os avisos de e-mail e o apagamento remoto e registra as evidências, incluindo as áreas não testadas.
+
+> **Caso sintético.** O laboratório é sintético.
+
+### Erros e limites
+
+As configurações do laboratório podem se afastar das de produção; compare-as com regularidade.
+
+### Exercícios
+
+- **EX073 — Acesso inesperado.** Que acesso inesperado o teste revelou? *Rubrica:* 3 = um coordenador de ano conseguia ver as anotações de proteção das crianças;; 2 = menciona proteção;; 1 = nenhum;; 0 = nenhuma.
+- **EX074 — Teste do tablet perdido.** O que a simulação do tablet perdido verificou? *Rubrica:* 3 = que o apagamento remoto funciona e que não há dados de alunos em cache no dispositivo;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Áreas não testadas.** Por que registrar o que não foi testado? *Rubrica:* 3 = mostra onde falta garantia, como na exclusão pelos fornecedores;; 2 = menciona lacunas;; 1 = desnecessário;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX075 (as de EX076–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -1032,6 +1283,36 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em i
 **EX059.** Padrões detalhados de atividade são distintivos, como as avaliações de filmes no estudo de Narayanan e Shmatikov.
 
 **EX060.** Formulários neutros, sem opções pré-marcadas nem pressão.
+
+**EX061.** Porque os deveres legais se ligam às finalidades, e sistemas e finalidades não se correspondem um a um.
+
+**EX062.** É uma controladora independente, com seus próprios deveres.
+
+**EX063.** Um aplicativo de mensagens com os pais, usado para enviar fotografias, que o registro não incluía.
+
+**EX064.** O MathsQuest com 10 e o Timetabler com 8.
+
+**EX065.** O considerando 38 destaca a proteção das crianças contra o marketing e o perfilamento, então isso não pode ser compensado por outros pontos.
+
+**EX066.** A assinatura de um contrato de tratamento de dados e a inclusão da exclusão mediante pedido.
+
+**EX067.** Porque os leitores poderiam subtrair o outro grupo do total e descobrir o valor escondido.
+
+**EX068.** Quatro: as células de merenda gratuita da Ashby e da Moor e seus complementos.
+
+**EX069.** Para grupos sensíveis, como os alunos com necessidades educacionais especiais.
+
+**EX070.** Para que o conselho veja por que cada controle importa e o efeito de removê-lo.
+
+**EX071.** Durante o ano letivo corrente.
+
+**EX072.** Sem um responsável, ninguém mantém o controle, e ele se deteriora sem que se perceba.
+
+**EX073.** Os coordenadores de ano conseguiam ver as anotações de proteção das crianças por meio de um grupo de permissões antigo.
+
+**EX074.** Que o apagamento remoto funciona e que o tablet não guardava dados de alunos.
+
+**EX075.** Identifica lacunas de garantia, como a exclusão pelos fornecedores.
 
 <a id="references"></a>
 ## Referências
