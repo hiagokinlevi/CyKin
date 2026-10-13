@@ -49,21 +49,45 @@ Sofia Almeida is a master's student at the fictional Kingsreach University, supe
 
 "Why do we keep getting this?" becomes: "Do automated authorisation tests derived from an explicit role matrix reduce the reintroduction of broken access control in a web application, and what else explains the change?" The question names an intervention, an outcome and a demand for alternative explanations.
 
+Section one point two develops research question and literature method with a Tallyline note Sofia Almeida can demo offline.
+
+Under section one point two, Dr Marcus Lee expects research claims to carry owners and dates.
+
 ### 1.3 Shared vocabulary
 
 The OWASP Top 10:2021 ranks Broken Access Control (A01) first; the CWE Top 25 lists related weaknesses such as missing authorisation (CWE-862) and authorisation bypass through a user-controlled key (CWE-639). OWASP ASVS 4.0.3 chapter V4 and ASVS 5.0.0's authorisation chapter give verifiable requirements. Using these names lets Sofia's findings be compared with others.
+
+Section one point three develops research question and literature method with a Tallyline note Sofia Almeida can demo offline.
+
+Under section one point three, Dr Marcus Lee expects research claims to carry owners and dates.
 
 ### 1.4 Search method
 
 Sofia searches two digital libraries and the OWASP project pages with terms for access control, authorisation testing and regression. She records the date, database, query and number of hits, screens titles and abstracts against inclusion criteria (empirical, web applications, access control), and keeps a log of exclusions with reasons.
 
+Section one point four develops research question and literature method with a Tallyline note Sofia Almeida can demo offline.
+
+Under section one point four, Dr Marcus Lee expects research claims to carry owners and dates.
+
 ### 1.5 Grey literature
 
 Standards and testing guides such as the OWASP Web Security Testing Guide (WSTG v4.2) are not peer-reviewed research but define practice; Sofia uses them for definitions, not as evidence of effectiveness.
 
+Section one point five develops research question and literature method with a Tallyline note Sofia Almeida can demo offline.
+
+Under section one point five, Dr Marcus Lee expects research claims to carry owners and dates.
+
+Section one point five treats the case from problem as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Developer behaviour
 
 Johnson et al. (2013) found developers avoid static analysis tools that produce many false positives and poor explanations; Sofia notes that any test approach must be usable by Tallyline's developers, or it will be ignored.
+
+Section one point six develops research question and literature method with a Tallyline note Sofia Almeida can demo offline.
+
+Under section one point six, Dr Marcus Lee expects research claims to carry owners and dates.
+
+Section one point six treats the case from problem as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -105,25 +129,61 @@ You will (1) critically discuss secure development frameworks; (2) compare verif
 
 NIST SP 800-218, the SSDF (Souppaya et al., 2022), groups practices into preparing the organisation, protecting software, producing well-secured software and responding to vulnerabilities. OWASP SAMM v2 (2020) measures maturity in governance, design, implementation, verification and operations. Sofia's intervention sits in SSDF PW.8 (test executable code) and SAMM's verification function.
 
+Section two point one develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section two point one, Dr Marcus Lee expects application claims to carry owners and dates.
+
 ### 2.2 ASVS versions
 
 ASVS 4.0.3 (2021) and 5.0.0 (2025) both require that access control is enforced on a trusted service layer and that users cannot access records by manipulating identifiers. Version 5.0.0 reorganised chapters and requirement numbering, so Sofia records both identifiers for each test.
+
+Section two point two develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section two point two, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section two point two treats frameworks asvs versions threat as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Threat modelling
 
 Shostack (2014) describes threat modelling around four questions: what are we working on, what can go wrong, what are we going to do about it, and did we do a good job. Tallyline's role matrix is a product of the first two questions applied to authorisation.
 
+Section two point three develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section two point three, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section two point three treats frameworks asvs versions threat as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Supply chain links
 
 Access checks often live in shared libraries or frameworks. If a team upgrades an authorisation library and its defaults change, flaws can return. Sofia notes the SLSA v1.0 idea that build inputs should be known and traceable; knowing which library version ran in each release helps explain regressions.
+
+Section two point four develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section two point four, Dr Marcus Lee expects application claims to carry owners and dates.
 
 ### 2.5 Seminar argument
 
 Sofia argues that tests encoding the intended access model are a verification practice that also documents design intent, linking SSDF PW.8, SAMM verification and ASVS requirements.
 
+Section two point five develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section two point five, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section two point five treats frameworks asvs versions threat as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Tallyline will not accept application work without a written trail.
+
 ### 2.6 Critique
 
 A classmate argues that tests only check the cases someone wrote down; missing roles or endpoints stay untested. Sofia accepts this and plans to measure matrix completeness.
+
+Section two point six develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section two point six, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section two point six treats frameworks asvs versions threat as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Tallyline will not accept application work without a written trail.
 
 ### Worked example
 
@@ -165,25 +225,69 @@ You will (1) design a before-and-after study in a live development team; (2) han
 
 An interrupted time series: six releases before the authorisation tests were introduced and six after. The outcome is access-control findings per release from Tallyline's regular penetration tests and bug reports, normalised by lines of code changed.
 
+Section three point one develops study design ethics and reproducibility with a Tallyline note Sofia Almeida can demo offline.
+
+Under section three point one, Dr Marcus Lee expects study claims to carry owners and dates.
+
+Section three point one treats design why normalise ethics as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Why normalise
 
 A quiet release with little change will naturally have fewer findings. Findings per thousand changed lines (KLOC) adjusts for this.
+
+Section three point two develops study design ethics and reproducibility with a Tallyline note Sofia Almeida can demo offline.
+
+Under section three point two, Dr Marcus Lee expects study claims to carry owners and dates.
+
+Section three point two treats design why normalise ethics as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, Tallyline will not accept study work without a written trail.
 
 ### 3.3 Ethics
 
 Developers are not being evaluated; findings are attributed to releases, not people. Tallyline's legal team approves the use of anonymised finding counts. No real vulnerability details leave the company; the dissertation uses synthetic examples.
 
+Section three point three develops study design ethics and reproducibility with a Tallyline note Sofia Almeida can demo offline.
+
+Under section three point three, Dr Marcus Lee expects study claims to carry owners and dates.
+
+Section three point three treats design why normalise ethics as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Confidentiality of flaws
 
 Unfixed flaws are never described in the dissertation. Every finding counted is fixed before publication.
+
+Section three point four develops study design ethics and reproducibility with a Tallyline note Sofia Almeida can demo offline.
+
+Under section three point four, Dr Marcus Lee expects study claims to carry owners and dates.
+
+Section three point four treats design why normalise ethics as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Tallyline will not accept study work without a written trail.
 
 ### 3.5 Reproducibility
 
 Sofia publishes her analysis scripts and a synthetic dataset with the same structure, so others can run the analysis without Tallyline's data.
 
+Section three point five develops study design ethics and reproducibility with a Tallyline note Sofia Almeida can demo offline.
+
+Under section three point five, Dr Marcus Lee expects study claims to carry owners and dates.
+
+Section three point five treats design why normalise ethics as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Tallyline will not accept study work without a written trail.
+
 ### 3.6 Measurement plan
 
 Two people classify each finding as access control or not, using the OWASP Top 10 A01 definition, with disagreements discussed and logged.
+
+Section three point six develops study design ethics and reproducibility with a Tallyline note Sofia Almeida can demo offline.
+
+Under section three point six, Dr Marcus Lee expects study claims to carry owners and dates.
+
+Section three point six treats design why normalise ethics as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Tallyline will not accept study work without a written trail.
 
 ### Data management
 
@@ -232,25 +336,71 @@ You will (1) identify alternative explanations for a security improvement; (2) d
 
 If access-control findings fall after tests are added, other things might explain it: fewer pentest days, a new framework, a senior developer joining, or testers focusing elsewhere.
 
+Section four point one develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section four point one, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section four point one treats the worry pentest effort as testable only when evidence and ticket IDs are recorded.
+
+For section four point one, Tallyline will not accept application work without a written trail.
+
 ### 4.2 Pentest effort
 
 Sofia records tester-days per release. They were stable (four days each), so reduced effort does not explain a fall.
+
+Section four point two develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section four point two, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section four point two treats the worry pentest effort as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Tallyline will not accept application work without a written trail.
 
 ### 4.3 Framework change
 
 In release 8 Tallyline upgraded its web framework, which added a default deny for unmapped routes. This could reduce flaws by itself. Sofia separates findings in routes the upgrade affected from others.
 
+Section four point three develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section four point three, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section four point three treats the worry pentest effort as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 People
 
 A senior developer joined at release 7. Sofia notes the date and asks reviewers whether review practice changed; it did, slightly.
+
+Section four point four develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section four point four, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section four point four treats the worry pentest effort as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Tallyline will not accept application work without a written trail.
 
 ### 4.5 Tester focus
 
 Pentest scopes are checked: authorisation was in scope for all twelve releases.
 
+Section four point five develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section four point five, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section four point five treats the worry pentest effort as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Tallyline will not accept application work without a written trail.
+
+Section four point five fails closed if application evidence is missing rather than guessing.
+
 ### 4.6 Weighing
 
 Some of the improvement may come from the framework default and the new developer; the tests are one cause among several. Sofia plans to report this honestly rather than credit everything to tests.
+
+Section four point six develops application and software supply chain with a Tallyline note Sofia Almeida can demo offline.
+
+Under section four point six, Dr Marcus Lee expects application claims to carry owners and dates.
+
+Section four point six treats the worry pentest effort as testable only when evidence and ticket IDs are recorded.
 
 ### Unchecked explanations
 
@@ -299,9 +449,23 @@ You will (1) write a dissertation proposal; (2) pilot the role-matrix test appro
 
 Background, question, design, ethics, alternative explanations, timeline and risks, in ten pages approved by Dr Lee.
 
+Section five point one develops proposal and pilot with a Tallyline note Sofia Almeida can demo offline.
+
+Under section five point one, Dr Marcus Lee expects proposal claims to carry owners and dates.
+
+Section five point one treats proposal role matrix lab as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Tallyline will not accept proposal work without a written trail.
+
 ### 5.2 Role matrix
 
 For each role (customer, support, finance) and each endpoint, the matrix states whether access is allowed. Tests call each endpoint as each role in a test environment and compare the result with the matrix. This follows the WSTG's authorisation testing guidance, applied to Tallyline's own system with permission.
+
+Section five point two develops proposal and pilot with a Tallyline note Sofia Almeida can demo offline.
+
+Under section five point two, Dr Marcus Lee expects proposal claims to carry owners and dates.
+
+Section five point two treats proposal role matrix lab as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — matrix check
 
@@ -331,13 +495,33 @@ MISMATCH support  POST /refunds          intended=False actual=True
 
 Two of six decisions are wrong: a customer can read another business's invoice (intended no), and support can issue refunds (intended no). Both match the kinds of flaw that had recurred.
 
+Section five point three develops proposal and pilot with a Tallyline note Sofia Almeida can demo offline.
+
+Under section five point three, Dr Marcus Lee expects proposal claims to carry owners and dates.
+
+Section five point three treats proposal role matrix lab as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Pilot lessons
 
 The matrix initially missed the "export" endpoint; Sofia adds a check that lists all routes from the framework and flags any not in the matrix, addressing the completeness critique from chapter 2.
 
+Section five point four develops proposal and pilot with a Tallyline note Sofia Almeida can demo offline.
+
+Under section five point four, Dr Marcus Lee expects proposal claims to carry owners and dates.
+
+Section five point four treats proposal role matrix lab as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Developer feedback
 
 Developers found failing tests clear because each names the role, endpoint and intended decision, avoiding the usability problems Johnson et al. (2013) reported for static tools.
+
+Section five point five develops proposal and pilot with a Tallyline note Sofia Almeida can demo offline.
+
+Under section five point five, Dr Marcus Lee expects proposal claims to carry owners and dates.
+
+Section five point five treats proposal role matrix lab as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Tallyline will not accept proposal work without a written trail.
 
 ### Timeline
 
@@ -390,6 +574,12 @@ You will (1) collect release-level findings and change size; (2) compute rates a
 
 For each of twelve releases Sofia records access-control findings, lines changed, pentest days and notable events. Two classifiers agree on 46 of 48 findings' categories; the two disagreements are resolved by discussion.
 
+Section six point one develops data collection and analysis with a Tallyline note Sofia Almeida can demo offline.
+
+Under section six point one, Dr Marcus Lee expects data claims to carry owners and dates.
+
+Section six point one treats collection lab result rate as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — findings per release
 
 ```python
@@ -411,6 +601,16 @@ after  releases=6 findings=3 mean per release=0.50
 
 Before tests: 17 findings over six releases, 2.83 per release. After: 3 findings, 0.50 per release.
 
+Section six point two develops data collection and analysis with a Tallyline note Sofia Almeida can demo offline.
+
+Under section six point two, Dr Marcus Lee expects data claims to carry owners and dates.
+
+Section six point two treats collection lab result rate as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Tallyline will not accept data work without a written trail.
+
+Section six point two fails closed if data evidence is missing rather than guessing.
+
 ### Lab — Lab — rate per KLOC
 
 ```python
@@ -431,13 +631,35 @@ before 0.415 per KLOC, after 0.058 per KLOC, rate ratio 0.14
 
 Normalised by change size, the rate falls from 0.415 to 0.058 findings per KLOC, a rate ratio of 0.14. The after period actually changed more code (52 versus 41 KLOC), so the fall is not due to quieter releases.
 
+Section six point three develops data collection and analysis with a Tallyline note Sofia Almeida can demo offline.
+
+Under section six point three, Dr Marcus Lee expects data claims to carry owners and dates.
+
+Section six point three treats collection lab result rate as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Interpreting
 
 Twelve releases and twenty findings are a small sample; Sofia reports the ratio with its uncertainty and avoids saying "86% reduction caused by tests".
 
+Section six point four develops data collection and analysis with a Tallyline note Sofia Almeida can demo offline.
+
+Under section six point four, Dr Marcus Lee expects data claims to carry owners and dates.
+
+Section six point four treats collection lab result rate as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Tallyline will not accept data work without a written trail.
+
 ### 6.5 Team observations
 
 In interviews, developers say failing authorisation tests often caught problems before review. One says the matrix forced product managers to decide roles explicitly, which reduced arguments.
+
+Section six point five develops data collection and analysis with a Tallyline note Sofia Almeida can demo offline.
+
+Under section six point five, Dr Marcus Lee expects data claims to carry owners and dates.
+
+Section six point five treats collection lab result rate as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Tallyline will not accept data work without a written trail.
 
 ### Uncertainty
 
@@ -486,25 +708,73 @@ You will (1) structure a dissertation for a security audience; (2) write limitat
 
 Introduction, literature, method, results, competing explanations, discussion, limitations, conclusion. Each chapter answers one question.
 
+Section seven point one develops dissertation writing and limitations with a Tallyline note Sofia Almeida can demo offline.
+
+Under section seven point one, Dr Marcus Lee expects dissertation claims to carry owners and dates.
+
+Section seven point one treats structure limitations confidentiality linking as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Tallyline will not accept dissertation work without a written trail.
+
 ### 7.2 Limitations
 
 One company, one application, twelve releases; a framework change during the study; pentest skill variation; tests in a test environment. Each limitation says what it means for the claim and how future work could address it.
+
+Section seven point two develops dissertation writing and limitations with a Tallyline note Sofia Almeida can demo offline.
+
+Under section seven point two, Dr Marcus Lee expects dissertation claims to carry owners and dates.
+
+Section seven point two treats structure limitations confidentiality linking as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Confidentiality
 
 Tallyline is named only with permission, figures are rounded, and examples are synthetic versions of real flaws.
 
+Section seven point three develops dissertation writing and limitations with a Tallyline note Sofia Almeida can demo offline.
+
+Under section seven point three, Dr Marcus Lee expects dissertation claims to carry owners and dates.
+
+Section seven point three treats structure limitations confidentiality linking as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Tallyline will not accept dissertation work without a written trail.
+
 ### 7.4 Linking to standards
 
 The discussion recommends role-matrix tests as a way to meet ASVS authorisation requirements continuously and to evidence SSDF PW.8 and SAMM verification.
+
+Section seven point four develops dissertation writing and limitations with a Tallyline note Sofia Almeida can demo offline.
+
+Under section seven point four, Dr Marcus Lee expects dissertation claims to carry owners and dates.
+
+Section seven point four treats structure limitations confidentiality linking as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Tallyline will not accept dissertation work without a written trail.
 
 ### 7.5 Plain summary
 
 A one-page summary for Tallyline's engineering team avoids jargon.
 
+Section seven point five develops dissertation writing and limitations with a Tallyline note Sofia Almeida can demo offline.
+
+Under section seven point five, Dr Marcus Lee expects dissertation claims to carry owners and dates.
+
+Section seven point five treats structure limitations confidentiality linking as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Tallyline will not accept dissertation work without a written trail.
+
+Section seven point five fails closed if dissertation evidence is missing rather than guessing.
+
 ### 7.6 Writing style
 
 Claims are tied to evidence with hedges where needed: "was followed by", "is consistent with".
+
+Section seven point six develops dissertation writing and limitations with a Tallyline note Sofia Almeida can demo offline.
+
+Under section seven point six, Dr Marcus Lee expects dissertation claims to carry owners and dates.
+
+Section seven point six treats structure limitations confidentiality linking as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Tallyline will not accept dissertation work without a written trail.
 
 ### Figures
 
@@ -557,25 +827,75 @@ You will (1) obtain independent review of findings; (2) defend methods and claim
 
 A security engineer from another company reviews the method and synthetic dataset, re-running the scripts. She confirms the numbers and suggests reporting the routes count over time.
 
+Section eight point one develops independent review and defense with a Tallyline note Sofia Almeida can demo offline.
+
+Under section eight point one, Dr Marcus Lee expects independent claims to carry owners and dates.
+
+Section eight point one treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Tallyline will not accept independent work without a written trail.
+
 ### 8.2 Defense
 
 Twenty minutes plus questions, with two examiners.
+
+Section eight point two develops independent review and defense with a Tallyline note Sofia Almeida can demo offline.
+
+Under section eight point two, Dr Marcus Lee expects independent claims to carry owners and dates.
+
+Section eight point two treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Tallyline will not accept independent work without a written trail.
+
+Section eight point two fails closed if independent evidence is missing rather than guessing.
 
 ### 8.3 Questions
 
 "Is the 0.14 ratio credible with 20 findings?" Sofia answers that it is imprecise, but direction and size are consistent with other evidence. "Would mutation of the matrix catch missing tests?" She explains the route completeness check.
 
+Section eight point three develops independent review and defense with a Tallyline note Sofia Almeida can demo offline.
+
+Under section eight point three, Dr Marcus Lee expects independent claims to carry owners and dates.
+
+Section eight point three treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Examiner advice
 
 Report how many routes and roles exist over time, so readers see the matrix scale.
+
+Section eight point four develops independent review and defense with a Tallyline note Sofia Almeida can demo offline.
+
+Under section eight point four, Dr Marcus Lee expects independent claims to carry owners and dates.
+
+Section eight point four treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Tallyline will not accept independent work without a written trail.
 
 ### 8.5 Dissemination
 
 A conference short paper, a Tallyline engineering blog post with synthetic examples, and an OWASP community talk.
 
+Section eight point five develops independent review and defense with a Tallyline note Sofia Almeida can demo offline.
+
+Under section eight point five, Dr Marcus Lee expects independent claims to carry owners and dates.
+
+Section eight point five treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Tallyline will not accept independent work without a written trail.
+
 ### 8.6 Next steps
 
 Tallyline extends the matrix approach to its mobile API.
+
+Section eight point six develops independent review and defense with a Tallyline note Sofia Almeida can demo offline.
+
+Under section eight point six, Dr Marcus Lee expects independent claims to carry owners and dates.
+
+Section eight point six treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Tallyline will not accept independent work without a written trail.
+
+Section eight point six fails closed if independent evidence is missing rather than guessing.
 
 ### Lessons
 
