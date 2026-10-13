@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 072, curso superior de tecnologia (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 30 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–30 (EX031–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–30 (EX061–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnologia que vão construir e operar as verificações, os scripts, os dicionários e os relatórios que fazem a governança de dados funcionar no dia a dia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios validam códigos de prioridade e a ordem das datas em ordens de reparo sintéticas, pseudonimizam identificadores de inquilinos com hashes com chave e medem os reparos emergenciais concluídos em até vinte e quatro horas por duas prestadoras sintéticas. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ DAMA-DMBOK2 (2017); ISO 8000-8:2015; Wang e Strong (1996); NIST SP 800-188; GDPR
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -458,11 +458,429 @@ Apagar códigos antigos quebra os relatórios históricos; encerre-os com uma da
 - **EX029 — Ordem das mudanças.** Que ordem se segue para novos tipos de serviço? *Rubrica:* 3 = primeiro a lista mestra, depois os sistemas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX030 — Tipos fundidos.** Que tipos de serviço foram fundidos? *Rubrica:* 3 = reparo de reboco e reparo de parede;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Registros de inquilinos e duplicatas
+
+### Objetivos de aprendizagem
+
+Você vai (1) encontrar registros duplicados de inquilinos; (2) aplicar regras de correspondência com revisão; (3) prevenir novas duplicatas.
+
+### 11.1 Por que surgem duplicatas
+
+Os registros de inquilinos se duplicam quando alguém se muda entre moradias da Calder Valley e é criado um registro novo em vez de atualizar o antigo, ou quando funcionários diferentes escrevem o nome de formas diferentes. Ravi encontra inquilinos com dois registros, cada um guardando parte de seu histórico. As duplicatas provocam cartas repetidas, contas de aluguel divididas e registros incompletos quando os inquilinos pedem seus dados. Ele explica que as duplicatas importam tanto para a qualidade do serviço quanto para o cumprimento de deveres legais. Ravi conta as prováveis duplicatas nos dados sintéticos antes de propor qualquer regra.
+
+### 11.2 Regras de correspondência
+
+Ravi escreve as regras de correspondência: data de nascimento idêntica mais sobrenome semelhante e mesma inicial do primeiro nome, ou número de seguro social idêntico, quando registrado. Ele normaliza os nomes removendo espaços e convertendo tudo para minúsculas antes de comparar. As correspondências são classificadas como certas ou possíveis. As certas vão ao curador de locações para uma confirmação rápida; as possíveis exigem revisão cuidadosa, porque fundir duas pessoas diferentes misturaria seus dados pessoais e suas contas de aluguel. O curador de locações aprova as regras depois de testá-las em casos conhecidos.
+
+### 11.3 Revisão e fusão
+
+O curador revisa as correspondências possíveis usando informações adicionais, como endereços anteriores. As duplicatas confirmadas são fundidas no sistema habitacional segundo um procedimento documentado, que preserva o histórico dos dois registros e registra quem fez a fusão. Ravi acompanha quantas foram revisadas, confirmadas e rejeitadas. Cerca de um quinto das correspondências possíveis se revela de pessoas diferentes, como parentes com nomes parecidos, o que justifica a revisão manual desse grupo. Ravi informa esses números ao curador todo mês, para que as regras possam ser ajustadas quando necessário, e anota os casos rejeitados mais instrutivos.
+
+### 11.4 Prevenção
+
+Para evitar novas duplicatas, Ravi sugere que os funcionários procurem inquilinos já existentes pela data de nascimento e pelo sobrenome antes de criar um registro, com o sistema habitacional mostrando as correspondências prováveis. O fornecedor do sistema faz essa configuração. Ele também acrescenta à biblioteca uma verificação mensal de duplicatas. A Sra. Moreau observa que a prevenção, mais uma vez, sai mais barata do que limpezas repetidas, e que as regras de correspondência devem ser revistas sempre que uma duplicata escapar, já que cada falha revela uma lacuna nas regras. A mudança do fornecedor entra em produção em dois meses.
+
+### Exemplo resolvido
+
+Ravi explica por que surgem duplicatas de inquilinos, escreve regras de correspondência normalizadas com as classes certa e possível, leva as fusões à revisão do curador, descobre que um quinto das correspondências possíveis é de pessoas diferentes e acrescenta a prevenção por busca antes da criação.
+
+> **Caso sintético.** Os registros são sintéticos.
+
+### Erros e limites
+
+Fundir sem revisão pode juntar os dados de pessoas diferentes.
+
+### Exercícios
+
+- **EX031 — Efeitos das duplicatas.** Cite um efeito das duplicatas de inquilinos. *Rubrica:* 3 = cartas repetidas, contas de aluguel divididas ou pedidos de dados incompletos;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Etapas de normalização.** Como os nomes são normalizados? *Rubrica:* 3 = removendo espaços e convertendo para minúsculas;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+- **EX033 — Parcela rejeitada.** Que parcela das correspondências possíveis era de pessoas diferentes? *Rubrica:* 3 = cerca de um quinto;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Metadados e dicionários de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um dicionário de dados; (2) mantê-lo atualizado; (3) usá-lo para responder a perguntas.
+
+### 12.1 Construindo um dicionário
+
+Ravi constrói um dicionário de dados para a tabela de ordens de reparo. Para cada campo, registra o nome, o significado em linguagem simples, o tipo de dado, os valores ou o formato permitidos, se é obrigatório, a origem e o dono. Ele reúne os significados com o curador e na documentação do sistema. Alguns campos não têm significado documentado; ele pergunta às pessoas que os usam, registra as respostas e sinaliza os casos em que elas divergem, como os dois significados de um campo chamado indicador de conclusão. O curador revisa cada verbete antes da publicação.
+
+### 12.2 Resolvendo significados
+
+O indicador de conclusão é marcado pelas prestadoras quando o serviço termina, mas os atendentes acreditam que ele significa que o inquilino confirmou estar satisfeito. Os relatórios que contam ordens concluídas misturam as duas interpretações. Ravi leva a questão ao curador, que confirma o significado das prestadoras e pede à TI um campo separado para a confirmação do inquilino. O dicionário registra a decisão. Ele observa que os dicionários revelam ambiguidades que, de outro modo, causariam erros silenciosos nos relatórios. Os relatórios passam a usar o significado das prestadoras, e o campo novo entra no dicionário assim que é criado.
+
+### 12.3 Mantendo-o atualizado
+
+Ravi liga o dicionário ao esquema do banco com um script que lista os campos do banco e os compara com os verbetes, sinalizando campos ausentes do dicionário e verbetes de campos que já não existem. O script roda toda semana. Quando a TI acrescenta um campo, o relatório leva o curador a documentá-lo. Ele explica que a comparação automática impede que os dicionários fiquem desatualizados, um motivo comum para serem ignorados. O curador documenta os campos novos em até uma semana após cada relatório, e os verbetes ausentes se tornam raros. Ravi guarda o script no repositório, junto com uma breve descrição de seu propósito.
+
+### 12.4 Usando o dicionário
+
+Analistas, atendentes e auditores começam a usar o dicionário para responder a perguntas. Quando o regulador pergunta como a Calder Valley define um reparo emergencial concluído, a Sra. Okonjo responde a partir do dicionário em poucos minutos. Ravi acrescenta uma página explicando como ler os verbetes. A Sra. Moreau observa que os metadados provam seu valor quando as pessoas conseguem responder depressa a perguntas reais, e que esse benefício prático é o que mantém os donos dispostos a cuidar deles. O avaliador do regulador depois elogia a clareza da resposta, o que incentiva os donos a manter os verbetes em dia.
+
+### Exemplo resolvido
+
+Ravi constrói um dicionário das ordens de reparo, resolve os significados conflitantes do indicador de conclusão, automatiza a comparação com o esquema e vê o dicionário responder depressa a uma pergunta do regulador.
+
+> **Caso sintético.** O dicionário é sintético.
+
+### Erros e limites
+
+Dicionários sem verificações automáticas ficam desatualizados e perdem a confiança.
+
+### Exercícios
+
+- **EX034 — Significados do indicador.** Que dois significados tinha o indicador de conclusão? *Rubrica:* 3 = serviço terminado pela prestadora versus satisfação do inquilino;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX035 — Verificação de desatualização.** Como Ravi mantém o dicionário atualizado? *Rubrica:* 3 = um script semanal que compara o esquema com os verbetes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Resposta ao regulador.** O que o dicionário ajudou a responder? *Rubrica:* 3 = a definição de reparo emergencial concluído;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Linhagem para relatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) rastrear números de relatórios até as origens; (2) documentar transformações; (3) usar a linhagem para investigar divergências.
+
+### 13.1 Rastreando um número
+
+O relatório mensal mostra a porcentagem de reparos emergenciais concluídos em até vinte e quatro horas. Ravi o rastreia: o relatório lê uma tabela-resumo, construída por um script a partir da tabela de ordens, que recebe as atualizações das prestadoras pelo portal e os registros dos atendentes. Ele anota cada etapa, com filtros e cálculos, em uma nota de linhagem. Descobre que o script exclui as ordens canceladas, o que é correto, mas também exclui as ordens sem horário de conclusão, o que não está documentado em lugar nenhum. Ravi relata isso ao curador, com exemplos das ordens afetadas.
+
+### 13.2 Transformações
+
+Ravi documenta cada transformação: que registros entram, como os tempos são calculados e o que acontece com os valores ausentes. Descobre que o cálculo usa só a data, sem a hora, de modo que uma ordem aberta às onze da noite e concluída às nove da manhã seguinte aparece como um dia, enquanto uma ordem aberta à uma da manhã e concluída às onze da noite do mesmo dia aparece como zero dia. Ele recomenda usar carimbos de data e hora completos. O curador concorda, e o script é alterado depois de testado com casos de cada situação.
+
+### 13.3 Investigando divergências
+
+A planilha do próprio gerente de reparos mostra um número de emergências diferente do relatório. Usando a linhagem, Ravi compara as etapas e descobre que a planilha conta como atrasadas as ordens sem horário de conclusão, enquanto o relatório as exclui. Nenhuma das abordagens está documentada. O curador decide que as ordens sem horário de conclusão devem aparecer separadamente, como desconhecidas. O relatório e a planilha são atualizados para coincidir, encerrando meses de desacordo. Ravi registra a abordagem acordada na nota de linhagem, e o gerente aposenta sua planilha um mês depois em favor do relatório corrigido.
+
+### 13.4 Mantendo a linhagem
+
+Ravi guarda as notas de linhagem ao lado de cada relatório no repositório e acrescenta uma regra: mudanças nos scripts dos relatórios precisam atualizar as notas. Ele também inclui um breve resumo da linhagem no rodapé de cada relatório. A Sra. Moreau explica que a linhagem ajuda as pessoas a confiar nos números e a resolver desacordos depressa, e que os tecnólogos estão bem posicionados para mantê-la, porque entendem tanto os scripts quanto as perguntas de negócio por trás deles. Os leitores passam a consultar o rodapé quando um número os surpreende, o que reduz as perguntas enviadas à equipe de dados.
+
+### Exemplo resolvido
+
+Ravi rastreia o número de reparos emergenciais, encontra a exclusão não documentada das ordens sem horário de conclusão e os cálculos feitos só com a data, resolve um desacordo com a planilha do gerente e guarda notas de linhagem junto de cada relatório.
+
+> **Caso sintético.** Os relatórios são sintéticos.
+
+### Erros e limites
+
+Cálculos feitos só com a data distorcem metas baseadas em tempo.
+
+### Exercícios
+
+- **EX037 — Exclusão não documentada.** O que era excluído sem documentação? *Rubrica:* 3 = as ordens sem horário de conclusão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Problema dos horários.** Por que usar carimbos de data e hora completos? *Rubrica:* 3 = cálculos só com a data distorcem o tempo decorrido;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Tratamento dos desconhecidos.** Como as ordens sem horário de conclusão são relatadas agora? *Rubrica:* 3 = separadamente, como desconhecidas;; 2 = correto;; 1 = como atrasadas;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Papéis na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever como os tecnólogos apoiam donos e curadores; (2) tratar pedidos que exigem decisões; (3) trabalhar dentro da autoridade acordada.
+
+### 14.1 O papel do tecnólogo
+
+Ravi aprende onde se encaixam os tecnólogos. Os donos, como o chefe de reparos, decidem políticas e prioridades para seus dados. Os curadores mantêm definições, regras e problemas. Os tecnólogos constroem verificações, scripts, dicionários e relatórios, e apontam problemas. A Sra. Moreau explica que os tecnólogos não devem tomar sozinhos decisões de política, mesmo tendo capacidade técnica, porque as decisões sobre o significado e o uso dos dados cabem a quem responde pelo resultado do negócio. Ravi escreve essa distinção na primeira página de seu diário, porque espera que lhe peçam decisões assim durante o estágio.
+
+### 14.2 Pedidos que exigem decisões
+
+Um gestor pede a Ravi que altere o relatório de emergências para excluir as ordens em que o inquilino não estava em casa, o que melhoraria o número. Ravi percebe que isso muda o significado de uma medida regulada. Explica que não pode fazer a mudança sem a concordância do curador e do dono e encaminha o pedido. O dono consulta as orientações do regulador, que não permitem a exclusão, e recusa o pedido. Ravi registra o pedido e a decisão. O gestor aceita a decisão quando vê as orientações do regulador, e o relatório segue com a definição original.
+
+### 14.3 Trabalhando com os curadores
+
+Ravi se reúne toda semana com o curador de reparos para revisar os resultados das verificações, os problemas novos e as mudanças planejadas. Ele prepara resumos curtos com exemplos. O curador decide as prioridades, e Ravi executa o trabalho técnico. Quando o curador está de férias, as decisões esperam pelo substituto, em vez de serem tomadas por Ravi. Ele observa que uma autoridade clara facilita seu trabalho, porque ele não precisa defender decisões que não tomou. A reunião semanal raramente passa de meia hora, o que convém aos dois e mantém o trabalho andando sem interrupções.
+
+### 14.4 Levantando preocupações
+
+Ravi percebe que os registros de segurança do gás de alguns imóveis mostram verificações concluídas em datas em que o portal da prestadora não mostra nenhuma visita. Ele leva a questão imediatamente à curadora de conformidade, com exemplos, em vez de esperar a reunião semanal, porque se trata de dados de segurança. A curadora investiga e encontra erros de digitação, e não verificações deixadas de fazer. A Sra. Moreau elogia Ravi por escalar a questão prontamente e por apresentar evidências em vez de acusações. A curadora providencia a correção dos registros e acrescenta uma verificação que compara os registros de gás com as visitas do portal.
+
+### Exemplo resolvido
+
+Ravi aprende que os tecnólogos constroem e apontam, mas não decidem políticas, encaminha um pedido para excluir as ordens sem acesso ao imóvel, que o dono recusa, trabalha semanalmente com o curador e escala sem demora uma preocupação com os registros de gás.
+
+> **Caso sintético.** Os papéis e os eventos são sintéticos.
+
+### Erros e limites
+
+Tecnólogos que mudam políticas sozinhos contornam a responsabilização.
+
+### Exercícios
+
+- **EX040 — Pedido recusado.** Que mudança o dono recusou? *Rubrica:* 3 = excluir do relatório de emergências as ordens sem acesso ao imóvel;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Substituição nas férias.** Quem decide quando o curador está de férias? *Rubrica:* 3 = o substituto;; 2 = correto;; 1 = o tecnólogo;; 0 = nenhuma.
+- **EX042 — Constatação sobre o gás.** O que a investigação dos registros de gás encontrou? *Rubrica:* 3 = erros de digitação, e não verificações deixadas de fazer;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Políticas e procedimentos
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler e aplicar políticas de dados; (2) escrever procedimentos claros; (3) testar procedimentos com usuários.
+
+### 15.1 Lendo políticas
+
+A Calder Valley tem uma política de dados que estabelece princípios: os dados têm donos, a qualidade é medida, os dados pessoais são protegidos e a retenção segue a tabela de temporalidade. Ravi a lê e lista o que ela exige dos tecnólogos, como registrar em log o acesso dos scripts aos dados dos inquilinos e seguir a tabela de temporalidade nas extrações. Ele observa que as políticas são escritas de forma ampla, por isso os tecnólogos precisam traduzi-las em práticas técnicas específicas e consultar os curadores em caso de dúvida. Ele compartilha a lista com o curador, que confirma cada item.
+
+### 15.2 Escrevendo procedimentos
+
+Ravi escreve um procedimento para carregar os arquivos das prestadoras: receber o arquivo, executar o validador, carregar se for válido, reter e avisar se não for, registrar o resultado. Cada passo diz quem o executa e o que fazer se algo der errado. Ele usa passos numerados e palavras simples. A Sra. Moreau revisa o texto e pede que ele inclua o que acontece se o próprio validador falhar, situação que ele não tinha considerado. Ele acrescenta um passo orientando a equipe a contatar o time de dados e reter todos os arquivos até que o validador seja corrigido e testado.
+
+### 15.3 Testando com usuários
+
+Ravi pede a uma colega que nunca carregou arquivos de prestadoras que siga o procedimento. Ela empaca no passo quatro, porque ele pressupõe que se saiba onde ficam os arquivos retidos. Ravi acrescenta o caminho da pasta e a descrição de uma captura de tela. Um segundo colega conclui o procedimento sem ajuda. Ravi aprende que procedimentos escritos por especialistas muitas vezes pulam passos que lhes parecem óbvios, e que testá-los com iniciantes revela essas lacunas. O procedimento é então publicado na intranet, com número de versão e data de aprovação, e com o nome do curador responsável.
+
+### 15.4 Mantendo os procedimentos atualizados
+
+Ravi acrescenta a cada procedimento uma data de revisão e um dono e os guarda na intranet. Quando o validador muda, ele atualiza o procedimento e anota a versão. Também sugere que a equipe relate problemas nos procedimentos pelo registro de problemas. A Sra. Moreau observa que os procedimentos são documentos vivos, e que procedimentos desatualizados podem ser mais nocivos do que nenhum, porque as pessoas os seguem com confiança rumo ao erro. Os primeiros problemas relatados pelo registro levam a duas pequenas correções em um mês, o que mostra que o canal funciona.
+
+### Exemplo resolvido
+
+Ravi traduz a política em práticas técnicas, escreve um procedimento para os arquivos das prestadoras que inclui a falha do validador, testa-o com uma iniciante que empaca em um passo e mantém os procedimentos atualizados com donos e datas de revisão.
+
+> **Caso sintético.** Os documentos são sintéticos.
+
+### Erros e limites
+
+Procedimentos escritos por especialistas pulam passos de que os iniciantes precisam.
+
+### Exercícios
+
+- **EX043 — Caso ausente.** Que caso a Sra. Moreau pediu que Ravi incluísse? *Rubrica:* 3 = o que acontece se o validador falhar;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Passo problemático.** Onde a testadora empacou? *Rubrica:* 3 = no passo quatro, local dos arquivos retidos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Risco da desatualização.** Por que procedimentos desatualizados podem ser nocivos? *Rubrica:* 3 = as pessoas os seguem com confiança rumo ao erro;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Controle de acesso na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar acesso baseado em papéis para os dados; (2) conduzir revisões de acesso; (3) registrar o acesso a dados sensíveis.
+
+### 16.1 Papéis e permissões
+
+Ravi ajuda a implantar o acesso baseado em papéis no banco de relatórios da Calder Valley. Os papéis incluem analista de reparos, atendente, analista financeiro e equipe de dados. Cada papel tem permissão para tabelas ou visões específicas. Os analistas de reparos veem ordens e imóveis, mas os nomes dos inquilinos só aparecem por meio de uma visão que os mascara. O dono dos dados de locação aprova quais papéis veem os dados dos inquilinos. Ravi documenta cada papel no dicionário e cria visões, em vez de conceder acesso às tabelas brutas. Cada papel testa suas visões antes de o acesso ser liberado.
+
+### 16.2 Revisões de acesso
+
+A cada trimestre, Ravi gera para cada dono uma lista das contas com seus papéis e o último acesso, para revisão. Os donos confirmam, alteram ou removem os acessos. Na primeira revisão, o dono dos dados de locação remove o acesso de pessoas que mudaram de departamento e de um consultor externo cujo contrato terminou. Ravi registra a revisão e as mudanças. Ele observa que as revisões só funcionam se os donos de fato examinarem as listas, em vez de aprová-las no automático, por isso destaca as entradas incomuns. O dono dos dados de locação agradece os destaques, que lhe pouparam tempo.
+
+### 16.3 Registro de acessos
+
+Nas tabelas com dados de inquilinos, Ravi ativa o registro das consultas, anotando quem acessou o quê e quando. Os logs são mantidos por um ano e revisados todo mês em busca de padrões incomuns, como grandes exportações ou acessos fora do horário de trabalho. Ele escreve um script simples que resume os logs para o encarregado pelo tratamento de dados pessoais. Explica que os logs desestimulam o mau uso e permitem investigações, e que é a revisão regular que transforma o registro em um controle. O primeiro resumo mensal não mostra padrões incomuns, o que tranquiliza o encarregado.
+
+### 16.4 Menor privilégio
+
+Ravi aprende o princípio do menor privilégio: as pessoas devem ter o acesso mínimo necessário para seu trabalho. Uma analista financeira pede acesso total à tabela de ordens para conciliar faturas. Ravi consulta o dono dos dados de reparo, que aprova uma visão com identificadores das ordens, prestadoras e custos, sem dados dos inquilinos. A analista consegue fazer a conciliação. A Sra. Moreau observa que visões sob medida muitas vezes atendem aos pedidos sem conceder acesso amplo. Ravi acrescenta a visão financeira ao dicionário, para que pedidos semelhantes sejam atendidos depressa no futuro.
+
+### Exemplo resolvido
+
+Ravi implanta papéis com visões mascaradas, conduz revisões trimestrais com os donos que removem acessos antigos, registra e resume os acessos aos dados dos inquilinos e atende a um pedido do financeiro com uma visão sob medida.
+
+> **Caso sintético.** Os papéis são sintéticos.
+
+### Erros e limites
+
+Donos que aprovam listas sem examiná-las tornam as revisões inúteis.
+
+### Exercícios
+
+- **EX046 — Acesso mascarado.** Como os analistas de reparos veem os nomes dos inquilinos? *Rubrica:* 3 = por meio de uma visão que os mascara;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Padrões nos logs.** Que padrões incomuns são revisados? *Rubrica:* 3 = grandes exportações ou acessos fora do horário;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX048 — Visão financeira.** O que continha a visão financeira? *Rubrica:* 3 = identificadores das ordens, prestadoras e custos;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Pseudonimização para extrações
+
+### Objetivos de aprendizagem
+
+Você vai (1) pseudonimizar identificadores com hashes com chave; (2) preservar a ligação entre registros para análise; (3) explicar os limites da pseudonimização.
+
+### 17.1 A necessidade
+
+Um analista quer estudar se alguns inquilinos relatam o mesmo problema repetidas vezes, o que poderia indicar reparos malfeitos. O estudo precisa ligar as ordens de um mesmo inquilino, mas não precisa saber quem ele é. Ravi propõe substituir os identificadores dos inquilinos por pseudônimos na extração. Ele explica que a pseudonimização reduz o risco caso a extração seja perdida ou mal usada, e ainda permite ao analista contar as ordens por inquilino e procurar padrões. O dono dos dados de locação aprova a extração com os pseudônimos, e Ravi registra a aprovação junto da descrição do estudo.
+
+```python
+"""Mask tenant identifiers in a synthetic extract with keyed hashes and check linkage (stdlib only)."""
+import hmac, hashlib
+key = b"synthetic-teaching-key"
+def p(t): return hmac.new(key, t.encode(), hashlib.sha256).hexdigest()[:12]
+rows = [("T1001", "leak"), ("T1002", "boiler"), ("T1001", "damp"), ("T1003", "lock"), ("T1001", "leak")]
+masked = [(p(t), j) for t, j in rows]
+print(f"rows {len(rows)}; distinct tenants {len({t for t,_ in rows})}; distinct pseudonyms {len({t for t,_ in masked})}")
+print(f"T1001 pseudonym {p('T1001')}; jobs linked {sum(1 for t,_ in masked if t == p('T1001'))}")
+```
+
+Execute com `python3 lab_mask.py`. Saída verificada:
+
+```text
+rows 5; distinct tenants 3; distinct pseudonyms 3
+T1001 pseudonym 083752155d81; jobs linked 3
+```
+
+### 17.2 Como funciona
+
+O laboratório usa os módulos hmac e hashlib do Python para criar um hash com chave de cada identificador de inquilino, com uma chave secreta guardada pela equipe de dados. Em uma extração sintética de cinco linhas com três inquilinos distintos, o resultado tem três pseudônimos distintos. O inquilino T1001 vira 083752155d81, e as três ordens desse inquilino compartilham o mesmo pseudônimo, de modo que o analista vê que um inquilino teve três ordens, incluindo dois vazamentos, sem conhecer o identificador. O analista confirma que essa ligação atende às necessidades do estudo.
+
+### 17.3 Protegendo a chave
+
+É a chave que torna os pseudônimos difíceis de reverter. Sem ela, alguém com uma lista de identificadores de inquilinos não consegue recalcular os pseudônimos. Ravi guarda a chave no cofre restrito da equipe de dados, e não no script, e limita o acesso a duas pessoas. Ele define a regra de que cada chave serve a um único projeto, para que terceiros não consigam ligar pseudônimos de extrações diferentes. Cada uso da chave fica registrado. O dono revisa o acesso ao cofre a cada trimestre e confirma que apenas as duas pessoas autorizadas continuam com acesso.
+
+### 17.4 Limites
+
+Ravi explica que os dados pseudonimizados continuam sendo dados pessoais segundo o GDPR, porque a equipe de dados consegue reidentificar os inquilinos com a chave e porque outros detalhes, como um reparo raro em um imóvel específico, podem identificar alguém. Na LGPD, a pseudonimização é definida no art. 13, § 4º, e só os dados anonimizados deixam de ser pessoais (art. 12). A extração, portanto, continua precisando de controles de acesso e de uma data de retenção. A Sra. Moreau observa que a pseudonimização é uma salvaguarda valiosa, mas não é anonimização, e que a NIST SP 800-188 discute por que a desidentificação precisa considerar todos os campos em conjunto.
+
+### Exemplo resolvido
+
+Ravi pseudonimiza os identificadores dos inquilinos com hashes com chave, mantém três inquilinos como três pseudônimos, com as três ordens de T1001 ligadas, protege a chave em um cofre, uma por projeto, e explica que a extração continua sendo de dados pessoais.
+
+> **Caso sintético.** A extração e a chave são sintéticas; as saídas vêm de lab_mask.py; o GDPR, a LGPD e a NIST SP 800-188 são reais.
+
+### Erros e limites
+
+Hashes simples, sem chave, podem ser revertidos calculando o hash de identificadores conhecidos.
+
+### Exercícios
+
+- **EX049 — Pseudônimo de T1001.** Que pseudônimo T1001 recebeu? *Rubrica:* 3 = 083752155d81;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX050 — Guarda da chave.** Onde a chave é guardada? *Rubrica:* 3 = no cofre restrito da equipe de dados;; 2 = correto;; 1 = no script;; 0 = nenhuma.
+- **EX051 — Situação jurídica.** As extrações pseudonimizadas continuam sendo dados pessoais? *Rubrica:* 3 = sim;; 2 = correto;; 1 = não;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Solicitações de titulares
+
+### Objetivos de aprendizagem
+
+Você vai (1) apoiar tecnicamente os pedidos de acesso dos titulares; (2) encontrar os dados de uma pessoa em vários sistemas; (3) tratar pedidos de correção e de eliminação.
+
+### 18.1 Pedidos de acesso
+
+Uma inquilina pede à Calder Valley uma cópia de todos os dados pessoais mantidos sobre ela. O encarregado pelo tratamento de dados pessoais coordena o atendimento, e Ravi ajuda a encontrar os dados. Ele usa o dicionário e o inventário para listar os sistemas com dados de inquilinos: o sistema habitacional, o portal das prestadoras, as reclamações, o índice das gravações de chamadas e os arquivos da unidade compartilhada. Escreve consultas para cada sistema estruturado com os identificadores da inquilina. Observa que um bom inventário transforma uma busca estressante em uma tarefa de rotina, e o encarregado recebe a lista de sistemas com entusiasmo.
+
+### 18.2 Encontrando tudo
+
+As duplicatas de inquilinos dos capítulos anteriores importam aqui: a inquilina tem dois registros, e o segundo guarda um histórico antigo de reparos. Ravi o encontra com as regras de correspondência. Também procura o nome da inquilina na unidade compartilhada e encontra uma planilha de anotações sobre reclamações. Ele reúne os resultados para o encarregado, que os revisa, retira informações sobre outras pessoas e envia a resposta dentro do prazo legal; na LGPD, os direitos do titular estão no art. 18, e a declaração completa deve ser fornecida em até quinze dias (art. 19, II). Ravi registra os passos da busca em um guia curto.
+
+### 18.3 Correções
+
+Outro inquilino informa que seu telefone está errado. A correção precisa ser feita no sistema habitacional e também no portal das prestadoras, que guarda uma cópia para marcar as visitas. Ravi documenta quais sistemas guardam cópias de cada campo dos inquilinos, para que as correções cheguem a todos eles. Ele observa que é nas cópias que as correções costumam falhar, deixando dados desatualizados em alguns sistemas enquanto o registro principal está correto. As correções agora incluem a conferência de cada cópia listada, e o encarregado confirma que o telefone do inquilino foi atualizado em todos os lugares.
+
+### 18.4 Eliminação
+
+Um ex-inquilino pede a eliminação de seus dados. O encarregado decide quais dados podem ser eliminados e quais precisam ser mantidos, como os registros de aluguel necessários para obrigações financeiras; a LGPD também admite a conservação para cumprimento de obrigação legal (art. 16, I). Ravi executa a exclusão nos sistemas em que os dados podem ser eliminados e registra o que foi removido e o que foi mantido, com os motivos. A Sra. Moreau observa que os tecnólogos precisam de instruções claras do encarregado, porque as decisões de eliminação envolvem julgamento jurídico que a equipe técnica não deve fazer sozinha. O registro de Ravi é arquivado com o pedido original.
+
+### Exemplo resolvido
+
+Ravi lista os sistemas com dados de inquilinos para um pedido de acesso, encontra um registro duplicado e uma planilha de reclamações, mapeia as cópias dos campos para as correções e executa a eliminação seguindo as instruções do encarregado.
+
+> **Caso sintético.** Os pedidos são sintéticos; o GDPR e a LGPD são reais. Isto não é aconselhamento jurídico.
+
+### Erros e limites
+
+Correções feitas só no sistema principal deixam cópias desatualizadas em outros lugares.
+
+### Exercícios
+
+- **EX052 — Dados escondidos.** Que dados escondidos Ravi encontrou para o pedido de acesso? *Rubrica:* 3 = um registro duplicado e uma planilha de reclamações;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX053 — Cópia do telefone.** Onde havia uma cópia do telefone? *Rubrica:* 3 = no portal das prestadoras;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX054 — Registros mantidos.** Que registros foram mantidos apesar da eliminação? *Rubrica:* 3 = os registros de aluguel para obrigações financeiras;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Retenção e descarte
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar tecnicamente uma tabela de temporalidade; (2) automatizar o descarte; (3) registrar o descarte como evidência.
+
+### 19.1 A tabela
+
+A tabela de temporalidade da Calder Valley determina que os registros de ordens de reparo sejam mantidos por seis anos após a conclusão, os registros de inquilinos por seis anos após o fim da locação e as gravações de chamadas por seis meses. Ravi traduz cada regra em uma consulta que encontra os registros com prazo vencido. Ele confere as regras com a responsável pelos registros, que confirma as exceções, como os registros envolvidos em ações judiciais, que devem ser mantidos até o fim do processo. Ravi acrescenta à tabela de ordens um indicador de retenção judicial, para excluir esses registros automaticamente do descarte.
+
+### 19.2 Automatizando o descarte
+
+Ravi escreve um script mensal que lista os registros a descartar, exclui os marcados com retenção judicial e gera um relatório para aprovação do dono. Depois da aprovação, o script exclui ou anonimiza os registros, conforme a tabela. Nas ordens de reparo, o imóvel e o tipo de serviço são mantidos para análises de longo prazo, mas as ligações com os inquilinos são removidas. Ele testa o script primeiro em dados sintéticos e o executa com o registro em log ativado. A primeira execução remove as ligações com inquilinos de milhares de ordens sintéticas antigas, sem nenhum erro registrado.
+
+### 19.3 Evidências
+
+Cada execução do descarte gera um registro: data, regra aplicada, número de registros, aprovação e eventuais erros. Ravi os guarda em um log de descarte. Quando o regulador pergunta como a Calder Valley garante que não guarda dados por mais tempo do que o necessário, a Sra. Okonjo mostra a tabela, o script, as aprovações e o log. Ravi observa que a evidência do descarte é tão importante quanto o próprio descarte para demonstrar conformidade; na LGPD, o término do tratamento e a eliminação estão nos arts. 15 e 16. O avaliador aceita as evidências e aponta a prática de descarte como um ponto forte.
+
+### 19.4 Backups e cópias
+
+O descarte nos sistemas em produção não remove os dados dos backups nem das extrações. Ravi confirma com a TI que os backups expiram após noventa dias, de modo que os registros descartados somem dos backups nesse prazo. Ele também procura na unidade compartilhada extrações mais antigas do que a tabela permite e pede aos donos que as eliminem. A Sra. Moreau explica que a retenção precisa cobrir todas as cópias, e que as extrações são as mais difíceis de controlar, porque são criadas informalmente. Os donos eliminam a maior parte das extrações antigas, e as restantes recebem datas de eliminação.
+
+### Exemplo resolvido
+
+Ravi transforma as regras de retenção em consultas com exceções por retenção judicial, automatiza o descarte mensal aprovado que mantém o imóvel e o tipo de serviço mas remove as ligações com os inquilinos, registra o descarte como evidência e confere backups e extrações.
+
+> **Caso sintético.** A tabela de temporalidade é sintética.
+
+### Erros e limites
+
+Um descarte limitado aos sistemas em produção deixa dados em extrações e backups.
+
+### Exercícios
+
+- **EX055 — Retenção das gravações.** Por quanto tempo as gravações de chamadas são mantidas? *Rubrica:* 3 = seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX056 — Campos mantidos.** O que é mantido após o descarte das ordens de reparo? *Rubrica:* 3 = o imóvel e o tipo de serviço;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX057 — Expiração dos backups.** Quando os backups expiram? *Rubrica:* 3 = após noventa dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Dados das prestadoras
+
+### Objetivos de aprendizagem
+
+Você vai (1) governar os dados trocados com as prestadoras; (2) monitorar a qualidade dos dados das prestadoras; (3) tratar mudanças de prestadora.
+
+### 20.1 Fluxos de dados
+
+As prestadoras recebem os detalhes das ordens, os endereços dos imóveis e os contatos dos inquilinos para marcar as visitas, e devolvem atualizações de conclusão, custos e fotografias. Ravi lista cada fluxo com seus campos, frequência e finalidade. Ele examina o contrato e encontra cláusulas de proteção de dados, mas nenhum requisito de qualidade dos dados. Sugere incluir a especificação de troca e as metas de pontualidade no contrato na renovação, para que as prestadoras tenham obrigações claras sobre os dados que devolvem; na LGPD, elas atuam como operadoras e devem seguir as instruções do controlador (art. 39). O dono dos dados de reparo concorda.
+
+### 20.2 Monitorando a qualidade
+
+Ravi monta um placar mensal dos dados de cada prestadora: parcela de arquivos aprovados na validação, parcela de ordens atualizadas em até um dia após a conclusão e parcela de registros de conclusão com fotografias. Ele compartilha o placar de cada prestadora com ela e com o gerente de reparos. Uma prestadora tem uma taxa baixa de fotografias e explica que seu aplicativo trava ao enviar imagens grandes. A equipe do portal da Calder Valley aumenta o limite de envio, e a taxa melhora. Ravi acrescenta a cada placar uma nota explicando qualquer mudança em relação ao mês anterior.
+
+### 20.3 Minimizando os dados compartilhados
+
+Ravi revisa o que as prestadoras recebem e descobre que elas ganham a data de nascimento completa dos inquilinos, de que não precisam. Ele remove o campo da exportação depois de consultar o dono dos dados de locação. As prestadoras passam a receber apenas o nome, o endereço, o telefone e as observações de acesso necessárias às visitas. Ele observa que minimizar os dados compartilhados reduz o dano caso uma prestadora sofra um vazamento, e que as exportações muitas vezes incluem campos só porque eles estavam na tabela de origem. Ravi confere as demais exportações em busca de campos desnecessários semelhantes.
+
+### 20.4 Mudanças de prestadora
+
+Quando o contrato de uma prestadora termina, Ravi segue uma lista de verificação de saída: interromper as exportações, desativar as contas no portal, pedir confirmação de que os dados da Calder Valley foram eliminados e registrar a confirmação. Também confere se as ordens abertas foram redistribuídas. A Sra. Moreau observa que as saídas costumam ser feitas às pressas, e que uma lista de verificação garante que as obrigações sobre os dados não sejam esquecidas enquanto a atenção se concentra em passar o trabalho adiante. Ravi usa a lista pela primeira vez quando uma pequena prestadora sai, e todos os passos são concluídos em duas semanas.
+
+### Exemplo resolvido
+
+Ravi lista os fluxos das prestadoras e sugere cláusulas de qualidade, monta um placar mensal que revela falhas no envio de fotos, remove das exportações as datas de nascimento desnecessárias e segue uma lista de verificação de saída quando um contrato termina.
+
+> **Caso sintético.** As prestadoras são sintéticas.
+
+### Erros e limites
+
+Exportar tabelas inteiras envia às prestadoras campos de que elas não precisam.
+
+### Exercícios
+
+- **EX058 — Lacuna no contrato.** O que faltava nos contratos das prestadoras? *Rubrica:* 3 = requisitos de qualidade dos dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX059 — Causa das fotos.** Por que a taxa de fotos de uma prestadora era baixa? *Rubrica:* 3 = seu aplicativo travava com imagens grandes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Campo removido.** Que campo Ravi removeu das exportações? *Rubrica:* 3 = a data de nascimento completa;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Ravi Desai, a Sra. Hannah Moreau, o Eastgate Institute of Technology, a Calder Valley Housing Association e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Ravi Desai, a Sra. Hannah Moreau, o Eastgate Institute of Technology, a Calder Valley Housing Association e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de nove mil.
 
@@ -523,6 +941,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em i
 **EX029.** Acrescentar primeiro à lista mestra e depois a cada sistema.
 
 **EX030.** Reparo de reboco e reparo de parede.
+
+**EX031.** Contas de aluguel divididas.
+
+**EX032.** Removendo os espaços e convertendo para minúsculas.
+
+**EX033.** Cerca de um quinto.
+
+**EX034.** Serviço terminado pela prestadora, ou satisfação confirmada pelo inquilino.
+
+**EX035.** Um script semanal que compara o esquema com os verbetes do dicionário.
+
+**EX036.** Como a Calder Valley define um reparo emergencial concluído.
+
+**EX037.** As ordens sem horário de conclusão.
+
+**EX038.** Cálculos só com a data distorcem quanto tempo as ordens levaram.
+
+**EX039.** Separadamente, como desconhecidas.
+
+**EX040.** Excluir as ordens em que o inquilino não estava em casa.
+
+**EX041.** O curador substituto.
+
+**EX042.** Erros de digitação, e não verificações deixadas de fazer.
+
+**EX043.** O que fazer se o próprio validador falhar.
+
+**EX044.** No passo quatro, sem saber onde ficam os arquivos retidos.
+
+**EX045.** As pessoas os seguem com confiança rumo ao erro.
+
+**EX046.** Apenas por meio de uma visão que os mascara.
+
+**EX047.** Grandes exportações ou acessos fora do horário de trabalho.
+
+**EX048.** Identificadores das ordens, prestadoras e custos, sem dados dos inquilinos.
+
+**EX049.** 083752155d81.
+
+**EX050.** No cofre restrito da equipe de dados.
+
+**EX051.** Sim, continuam sendo dados pessoais.
+
+**EX052.** Um segundo registro da inquilina e uma planilha de anotações sobre reclamações.
+
+**EX053.** No portal das prestadoras.
+
+**EX054.** Os registros de aluguel necessários para obrigações financeiras.
+
+**EX055.** Seis meses.
+
+**EX056.** O imóvel e o tipo de serviço, sem as ligações com os inquilinos.
+
+**EX057.** Após noventa dias.
+
+**EX058.** Requisitos de qualidade dos dados.
+
+**EX059.** Seu aplicativo travava ao enviar imagens grandes.
+
+**EX060.** A data de nascimento completa dos inquilinos.
 
 <a id="references"></a>
 ## Referências
