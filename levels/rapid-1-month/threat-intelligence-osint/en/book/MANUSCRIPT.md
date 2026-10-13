@@ -50,17 +50,13 @@ Sam Okafor treats CCC alerts as intelligence only after he ties them to an EFBN 
 
 Sam's charity has no security team. Its decisions are simple but real: should we turn on two-step login for the donation account? Do we warn volunteers about a scam? Should we pay for a backup service? Intelligence is useful only if it helps answer such questions.
 
-Trustee questions are binary and owned: enable MFA on the donation account this week, or accept the risk in writing. Sam will not collect more OSINT until the decision owner is named.
-
-Named owners and dates turn donation-MFA and volunteer warnings into trackable decisions rather than hallway wishes Sam forgets by Friday.
+Each trustee question is binary and owned: enable MFA on the donation account this week, or accept the risk in writing. Sam will not collect more OSINT until the decision owner is named, and a named owner with a date turns donation MFA or a volunteer warning into a decision that can be tracked rather than a hallway wish forgotten by Friday.
 
 ### 1.3 Threats to charities
 
 Public sector advisories describe charities facing donation fraud through lookalike websites, phishing for volunteers' email passwords, business email compromise targeting payments to suppliers, and ransomware. Small charities are attractive because they have money flows but little security staff.
 
-Lookalike donation pages, volunteer phishing and payment BEC are the three EFBN-relevant patterns he tracks. Nation-state malware analysis is out of month-one scope.
-
-He keeps a one-line example of each pattern in the log so deputies recognise the next CCC alert without calling him.
+Lookalike donation pages, volunteer phishing and payment BEC are the three EFBN-relevant patterns Sam tracks; nation-state malware analysis is out of month-one scope. He keeps a one-line example of each pattern in the log so deputies recognise the next CCC alert without calling him.
 
 ### 1.4 Vocabulary
 
@@ -70,21 +66,13 @@ MITRE ATT&CK catalogues adversary techniques with identifiers — Phishing is T1
 
 Decide what you need to know, collect from a few trusted sources, check and clean, think about what it means for you, tell the people who act, and ask whether it helped.
 
-The one-page cycle — need, collect, check, think, tell, review — hangs above Sam's desk. Friday feedback to CCC closes the loop whether or not anything matched.
-
-Review asks whether last week's warning changed volunteer behaviour; empty reviews mean the cycle is theatre.
-
-Friday review notes whether warnings changed behaviour; empty notes mean the cycle poster is decoration.
+The one-page cycle — need, collect, check, think, tell, review — hangs above Sam's desk. Friday feedback to CCC closes the loop whether or not anything matched, and the Friday review asks whether last week's warning changed volunteer behaviour. Empty review notes mean the cycle is theatre and the poster is decoration.
 
 ### 1.6 Realistic scope
 
-In one month Sam can join CCC, read alerts weekly, warn volunteers, set two-step login on key accounts and keep a simple log. He will not analyse malware or attribute attacks.
+In one month Sam can join CCC, read alerts weekly, warn volunteers, set two-step login on key accounts and keep a simple log. He will not analyse malware or attribute attacks; attribution and malware reverse engineering wait for later courses.
 
-Month-one deliverables are CCC membership, weekly reading, volunteer warnings, MFA on key accounts and a simple log. Attribution and malware reverse engineering wait for later courses.
-
-Scope posters list the five deliverables and the two non-goals so trustees do not expect malware write-ups in week four.
-
-Non-goals on the poster stop trustees from expecting month-one attribution reports Sam cannot deliver.
+The scope poster lists those five deliverables and the two non-goals, so trustees do not expect malware write-ups or attribution reports in week four that a one-month volunteer programme cannot deliver. The same list is the yardstick for the month's synthesis in Chapter 4.
 
 ### Worked example
 
@@ -128,55 +116,35 @@ CTI is checked information tied to decisions; learn the vocabulary, stay within 
 
 You will (1) set written scope and permission for CTI tasks in a small organisation; (2) apply TLP 2.0 when receiving and sharing; (3) collect OSINT lawfully, respecting privacy and terms of service; (4) recognise actions that are unsafe or need someone else's authority.
 
-### 2.1 Written permission
+### 2.1 Written permission and TLP
 
 Sam is a volunteer. The trustees approve a one-page scope: he may read CCC alerts and public advisories, check EFBN's email and website logs through the provider's admin console, advise volunteers and recommend settings. He may not access volunteers' personal devices or accounts, contact suspected fraudsters, or share EFBN data outside without the chair's approval.
 
-Trustees sign a one-page scope: CCC and public advisories, EFBN provider admin consoles, no fake personas, no scam-site visits. Sam stops if a request falls outside that page.
-
-### 2.2 TLP in practice
+The signed page also rules out fake personas and visits to scam sites. Sam stops if a request falls outside that page.
 
 CLEAR may be shared publicly. GREEN may go to the charity community but not the public. AMBER stays within EFBN and those it serves on a need-to-know basis; AMBER+STRICT within EFBN only; RED only to named people. When unsure, ask the sender. Unlabelled material is treated cautiously until confirmed.
 
-CLEAR may be public; GREEN stays in the charity circle; AMBER stays inside EFBN need-to-know; AMBER+STRICT stays with named officers. Sam's Friday note to CCC uses only GREEN domains.
+In practice the label decides which of Sam's notes can carry an item: his Friday note to CCC uses only GREEN domains, and anything AMBER stays in EFBN's own log.
 
-### 2.3 Privacy
+### 2.2 Privacy and terms of service
 
 Volunteers, donors and clients of the food bank are people with rights. Data-protection law applies to their information even when it appears public. Sam collects only what he needs, keeps it briefly and never posts personal details in alerts.
 
-Donor and volunteer data-protection rules apply even to 'public' posts. Sam logs only what is needed to follow up a match and deletes the rest on the retention date.
+He logs only what is needed to follow up a match, and a retention date sits beside every follow-up note. The rest is deleted on that date; donor emails still held after it are a privacy incident.
 
-Retention dates sit beside every follow-up note; leftover donor emails after the date are a privacy incident.
+Websites and platforms have rules. Scraping, fake accounts and joining closed groups to watch criminals break those rules and may break the law. Sam uses approved, passive sources: official advisories, CCC alerts and certificate-transparency search services within their terms. Evading terms of service is a scope failure, not cleverness.
 
-### 2.4 Terms of service
+The approved source list is attached to the trustee scope. Anything else needs a new signature: a new source waits for trustee initials on an updated scope page before Sam subscribes.
 
-Websites and platforms have rules. Scraping, fake accounts and joining closed groups to watch criminals break those rules and may break the law. Sam uses approved, passive sources: official advisories, CCC alerts and certificate-transparency search services within their terms.
+### 2.3 Unsafe actions and mistakes
 
-Passive CCC email and published advisories are in; scraping, sockpuppets and closed-group infiltration are out. Terms-of-service evasion is a scope fail, not cleverness.
+Never visit a suspected scam page to "see what it does", download its files or reply to fraudsters. These actions can infect devices, alert criminals or expose the charity, and all of them are banned in the trustee scope. Report scam pages to the platform or hosting provider through official abuse channels with trustee approval.
 
-Approved source list is attached to the trustee scope; anything else needs a new signature before use.
+The reporting paths (provider abuse forms, CCC) are bookmarked on Sam's phone so curiosity never becomes a click.
 
-New sources wait for trustee initials on an updated scope page before Sam subscribes.
+If something is shared wrongly, tell the recipient and the chair immediately — the same hour, not the next day. Silence after a mistake is itself a finding.
 
-### 2.5 Unsafe actions
-
-Never visit a suspected scam page to "see what it does", download its files or reply to fraudsters. These actions can infect devices, alert criminals or expose the charity. Report scam pages to the platform or hosting provider through official abuse channels with trustee approval.
-
-Suspect pages are reported, not opened. Downloading lure files or chatting with fraudsters can infect devices or tip adversaries — both are banned in the trustee scope.
-
-Reporting paths (provider abuse forms, CCC) are bookmarked on Sam's phone so curiosity never becomes a click.
-
-### 2.6 Mistakes
-
-If something is shared wrongly, tell the recipient and the chair immediately.
-
-Wrong TLP shares are reported to the recipient and the chair the same hour. Silence after a mistake is itself a finding.
-
-Same-hour notification templates for mis-shares live in the shared drive with the chair's number on top.
-
-Chair notification templates include time, what leaked, TLP label and who was told.
-
-Same-hour scripts name the mis-shared item, its TLP label, who received it and the chair contact; Sam practises once in week two so panic does not invent wording.
+A same-hour notification template lives in the shared drive with the chair's number on top. It names the mis-shared item, its TLP label, the time, who received it and the chair contact. Sam practises it once in week two so panic does not invent wording when a real mis-share happens.
 
 ### Worked example
 
@@ -220,25 +188,13 @@ Work from written permission, follow TLP exactly, protect privacy, respect terms
 
 You will (1) list the charity's systems and the logs they offer; (2) catalogue intelligence sources and their dependencies; (3) find single points of failure; (4) choose simple protective settings informed by intelligence.
 
-### 3.1 Systems
+### 3.1 Systems and sources
 
 EFBN uses cloud email for staff and volunteer coordinators, an online donation platform, a website, a shared drive and a volunteer sign-up form. All are cloud services; logs live in each provider's admin console. Sam checks which logs exist and for how long: email sign-ins for 30 days, donation platform logins for 90.
 
-Cloud email, donation platform, website, shared drive and sign-up form are EFBN's systems; logs live with providers. Sam's CTI never assumes on-prem collectors he does not have.
+Sam's CTI never assumes on-premises collectors he does not have. The provider admin consoles are the only log sources in scope, and unofficial exports to personal drives are banned.
 
-Provider admin consoles are the only log doors in scope; unofficial exports to personal drives are banned.
-
-### 3.2 Sources
-
-CCC alerts by email, national charity advisories on a web page, donation platform security notices by email, and volunteer reports through a shared form.
-
-CCC email, national charity web advisories, donation-platform notices and volunteer forms are the four source channels. Each has an owner if the channel breaks.
-
-Deputy readers for CCC mail and a second form owner remove the single points lab_sources printed.
-
-Shared CCC mailbox plus deputy form owner are checked off before Sam's holiday starts.
-
-lab_sources single-point lines for coordinator inbox and Sam-owned forms become checklist items with named deputies before any holiday cover starts.
+CCC alerts by email, national charity advisories on a web page, donation platform security notices by email, and volunteer reports through a shared form. Each of the four channels needs an owner who can step in if it breaks.
 
 ### Lab — source dependencies
 
@@ -266,45 +222,27 @@ form owner Sam: Volunteer reports -> SINGLE POINT OF FAILURE
 independent sources: ['National charity advisories']
 ```
 
-### 3.3 Reading the result
+### 3.2 Reading the result
 
 CCC alerts and donation platform notices both depend on the coordinator inbox — if that mailbox fails or its owner leaves, both stop. Volunteer reports depend on a form Sam alone owns. Only national advisories are independent of any single person or mailbox. The fix: a shared mailbox read by two people and a second form owner.
 
-lab_sources shows CCC and donation notices both hanging on the coordinator inbox — a single-person dependency. Sam documents a deputy reader before holiday weeks.
+The two single-point lines that lab_sources printed become checklist items with named deputies, and the shared CCC mailbox and the deputy form owner are checked off before Sam's holiday starts.
 
-### 3.4 Data to keep
+### 3.3 Data to keep
 
-A simple log: date, source, label, what it said, what EFBN did. No volunteer personal data beyond what is needed to follow up.
+A simple log: date, source, label, what it said, what EFBN did. No volunteer personal data beyond what is needed to follow up; extra personal fields are refused at entry.
 
-The log holds date, source, TLP label, gist and EFBN action. Extra volunteer personal fields are refused at entry.
+The log template makes the TLP label a pick list and will not save a row without one, so GREEN/AMBER mistakes are harder to make. Pick-list labels and banned personal columns keep the action log short enough for the Friday CCC feedback without privacy spills: each row already says what EFBN did.
 
-Log templates reject rows missing TLP labels so GREEN/AMBER mistakes are harder to make.
+### 3.4 Settings and supplier dependencies
 
-TLP-missing rows cannot save; the template forces a label pick list.
+Alerts about stolen charity passwords (Valid Accounts, T1078) justify two-step login on email and the donation platform. Alerts about ransomware (T1486) justify version history and a separate backup of the shared drive. Settings follow intelligence, not fashion.
 
-Pick-list TLP fields and banned personal columns keep the action log short enough for Friday CCC feedback without privacy spills.
+Each MFA or backup change note quotes the ATT&CK id from the alert that triggered it, so an auditor can trace every setting back to the intelligence behind it.
 
-### 3.5 Intelligence-driven settings
+If the donation platform is breached, EFBN depends on the platform's notice; it cannot invent vendor telemetry it was never given. Sam subscribes to the platform's status page and security notices.
 
-Alerts about stolen charity passwords (Valid Accounts, T1078) justify two-step login on email and the donation platform. Alerts about ransomware (T1486) justify version history and a separate backup of the shared drive.
-
-T1078-style stolen-password alerts justify MFA on email and donations; T1486-style ransomware alerts justify version history and offline backups. Settings follow intelligence, not fashion.
-
-MFA and backup settings cite the ATT&CK ids from the triggering alert in the change note.
-
-Change notes quote T1078 or T1486 next to MFA or backup tickets for audit trails.
-
-### 3.6 Dependencies on suppliers
-
-If the donation platform is breached, EFBN depends on the platform's notice. Sam subscribes to its status page and security notices.
-
-Donation-platform breaches are learned from the vendor status page Sam subscribes to. EFBN cannot invent vendor telemetry it was never given.
-
-Status-page subscriptions are checked Monday with CCC reading so vendor silence is noticed.
-
-Monday status-page checks are on the same checklist as CCC reading so gaps show.
-
-Monday vendor status checks sit on the same paper checklist as CCC reading so a silent donation platform is noticed the same morning.
+The status-page check sits on the same Monday paper checklist as CCC reading, so vendor silence is noticed: a donation platform that has said nothing for weeks shows up the same morning as a gap, not months later.
 
 ### Worked example
 
@@ -349,15 +287,9 @@ You will (1) validate shared indicators before use; (2) match them against a syn
 
 ### 4.1 Lab rules
 
-The lab runs offline on synthetic data with Python's standard library. No real mail logs, no network connections, no visiting domains.
+The lab runs offline on synthetic data with Python's standard library. No real mail logs, no network connections, no visiting domains, no live DNS lookups. The indicators, labels and mail lines are invented for the lab.
 
-lab_rapid runs offline on synthetic indicators and mail lines with stdlib only. No live DNS lookups, no real mail exports.
-
-Stdlib-only and offline are kickoff checklist lines; network access fails the lab before it starts.
-
-Kickoff fails if the runner can reach the network; offline is proven, not assumed.
-
-Kickoff proves offline by failing a deliberate DNS lookup in the runner before lab_rapid starts on synthetic files.
+Stdlib-only and offline are kickoff checklist lines, and offline is proven rather than assumed: the kickoff makes a deliberate DNS lookup in the runner, and if the runner can reach the network the lab fails before it starts. Only after that check passes does lab_rapid start.
 
 ### Lab — validate, match and filter
 
@@ -391,55 +323,29 @@ hits: [('vol-07', 'donate-elmfield.example'), ('office', 'elmfield-giftaid.examp
 shareable with community: ['donate-elmfield.example', '203.0.113.9']
 ```
 
-### 4.2 Reading the result
+### 4.2 Reading and acting on the result
 
 Of four shared indicators, 198.51.100.400 is invalid — an octet above 255 — so three remain. Two log entries match: volunteer vol-07 received mail involving donate-elmfield.example, and the office received mail involving elmfield-giftaid.example. Only donate-elmfield.example and 203.0.113.9 may be shared with the community; elmfield-giftaid.example is TLP:AMBER and stays inside EFBN.
 
-Of four shared indicators, 198.51.100.400 is invalid (octet >255), leaving three; two log hits remain — vol-07 and an office mailbox involving donate-elmfield.example under the lab's GREEN/AMBER labels.
+Sam quotes the verified output lines in his notebook rather than retyping them.
 
-lab_rapid also matches office mail to elmfield-giftaid.example and lists shareable GREEN items including 203.0.113.9; Sam quotes those lines in the notebook.
+vol-07 is contacted kindly: did you click or enter details? If yes, change the password and turn on two-step login. The contact script avoids blame language. The office match goes to the chair by phone the same day. Both domains are blocked in the email provider's settings.
 
-### 4.3 Acting on matches
-
-vol-07 is contacted kindly: did you click or enter details? If yes, change the password and turn on two-step login. The office match goes to the chair. Both domains are blocked in the email provider's settings.
-
-vol-07 gets a kind check for clicks or credential entry, then password reset and MFA; office matches go to the chair; both domains are blocked in the provider console.
-
-Kind contact scripts for vol-07 avoid blame language; chair escalation for office hits is a phone call the same day.
-
-### 4.4 The summary
+### 4.3 The summary and the weekly routine
 
 The CCC feedback says: "Two indicators from this week's alert reached our mailboxes; both blocked." It lists only the GREEN domain. The AMBER item is not mentioned.
 
-CCC feedback states two indicators reached mailboxes and were blocked, naming only the GREEN domain. AMBER detail never leaves EFBN in that note.
-
-AMBER omission in CCC feedback is deliberate and checked by a second reader before send.
-
-Second readers confirm AMBER never appears in the CCC outbound paragraph.
-
-Second-reader initials on the GREEN-only CCC paragraph are filed beside the send timestamp.
-
-### 4.5 The weekly routine
+The omission is deliberate and checked: a second reader confirms that nothing AMBER appears in the outbound paragraph before it is sent, and their initials on the GREEN-only paragraph are filed beside the send timestamp.
 
 Monday: read CCC and advisories, log items. Tuesday: check mail and sign-in logs for indicators. Wednesday: warn volunteers if needed. Friday: send feedback to CCC and update the log.
 
-Monday read, Tuesday log check, Wednesday warn, Friday feedback — the weekly rhythm is written on the trustee scope page so deputies can run it.
+The rhythm is written on the trustee scope page so deputies can run it. Before Sam takes leave, the deputies run the Monday-to-Friday routine once under his watch, and those observed runs are logged with dates so coverage is evidence, not hope.
 
-Deputies practise the Monday–Friday rhythm once under Sam's watch before he takes leave.
+### 4.4 Synthesis of the month
 
-Observed deputy runs are logged with dates so coverage is evidence, not hope.
+Week 1 gave vocabulary and decisions; week 2 permission and safety; week 3 systems and dependencies; week 4 a working routine — four weeks, no malware lab heroics.
 
-### 4.6 Synthesis of the month
-
-Week 1 gave vocabulary and decisions; week 2 permission and safety; week 3 systems and dependencies; week 4 a working routine.
-
-Vocabulary and decisions, permission and safety, systems and dependencies, then a working routine — four weeks, no malware lab heroics.
-
-Month synthesis slides show the four week themes without inventing advanced CTI skills EFBN never funded.
-
-Synthesis forbids claiming skills outside the four-week deliverable list.
-
-Four-week theme slides refuse advanced CTI claims EFBN never funded; deliverables stay MFA, warnings, log and routine. Month-end trustee notes repeat those five deliverables and the two non-goals from week one.
+The month-end synthesis for the trustees shows those four themes and claims nothing outside the deliverable list: CCC membership, weekly reading, volunteer warnings, MFA on key accounts and the log. It repeats the two non-goals from week one, attribution and malware analysis, so no one reads advanced CTI skills into a month EFBN never funded for them.
 
 ### Worked example
 
