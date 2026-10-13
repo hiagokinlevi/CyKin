@@ -2371,6 +2371,8 @@ You will (1) run day-to-day cloud security operations; (2) measure alert quality
 
 The cloud team reviews alerts, check results and exception expiries daily.
 
+The review takes about half an hour each morning and is done by whoever is on duty that week. Alerts are checked first, since they may need immediate action; check results next, since they show what drifted overnight; and exception expiries last, so temporary permissions are renewed deliberately or allowed to lapse. Anything that cannot be finished is written into the handover note described below, with an owner and the next step, so the work is never lost between people.
+
 ### Lab — Lab — alert handling
 
 ```python
@@ -2398,21 +2400,31 @@ public-access-change  n 2, actionable 2/2, median ack 7.5 min
 
 logging-disabled: 1 alert, 1 actionable, median 4 minutes to acknowledge. public-access-change: 2 alerts, both actionable, median 7.5 minutes. new-access-key: 2 alerts, 1 actionable, median 22.0 minutes. login-new-country: 3 alerts, none actionable, median 45 minutes. Alerts that are never actionable get slow responses, which risks slow responses to real ones too.
 
+The pattern is clear in the numbers: rules whose alerts always need action are answered within minutes, while the rule whose alerts never need action waits the better part of an hour. People learn quickly which alerts matter. The danger is that a real login from an attacker's country would wait just as long as the conference trips, because the rule has taught the team to treat it as noise.
+
 ### 29.3 Tuning
 
 login-new-country fires for staff at conferences; it is tuned to exclude known travel from the identity provider's records and to raise severity only for administrator roles.
+
+Using the identity provider's travel records means the rule no longer needs to guess whether a login abroad is expected. Raising severity only for administrator roles focuses attention where a stolen session would do most damage. The tuned rule still records every login from a new country, so the information remains available for investigations even when no alert is raised.
 
 ### 29.4 Runbooks
 
 Each alert links to a runbook; runbooks are updated after each real alert.
 
+Linking the runbook from the alert itself means the person on duty does not have to search for it at the moment they need it. Updating after each real alert keeps the runbook matched to how the platform actually behaves, rather than how it behaved when the runbook was written. Samuel's review of all runbooks, described below, found several that had drifted. Each update is reviewed by a second team member.
+
 ### 29.5 Measuring
 
 Monthly: alerts by rule, actionable share and acknowledgement time.
 
+These three numbers show whether alerts are worth the team's time. A rule whose actionable share stays near zero is a candidate for tuning or removal; a rising acknowledgement time suggests overload or unclear runbooks. Samuel adds each month's figures to a small chart, so the effect of the login-new-country tuning is visible as a step down in total alerts. The figures are shared with Tom at the monthly register review, so decisions about tuning and staffing rest on the same numbers everyone can see.
+
 ### 29.6 Workload
 
 Tuning keeps total alerts manageable for a small team.
+
+The cloud team has a handful of people who also build and run StudyHub, so every unnecessary alert takes time from other work. After tuning, the team receives a few alerts a week instead of several a day, and almost all of them need action. That keeps attention high, which is the point of having alerts at all. Samuel also notes that tuning is revisited each term, since StudyHub changes and a rule that was quiet may become noisy, or a tuned rule may start missing something real.
 
 ### Runbook quality
 
@@ -2458,29 +2470,43 @@ You will (1) run a combined verification and operations lab; (2) inject syntheti
 
 In the test account, the lab injects synthetic events: a public access change, a new access key, a privileged pod request and a logging disablement attempt.
 
+Each event is one the controls are meant to stop or catch, and each is harmless: the public change targets an empty synthetic bucket, the new key belongs to a test identity with no permissions, and the privileged pod runs a do-nothing image. The test account is separate from production, so nothing injected can reach StudyHub or student data.
+
 ### 30.2 Expectations
 
 The guardrail blocks the public change and logging disablement; admission rejects the privileged pod; alerts fire for the key and the attempts.
+
+Writing expectations before injecting anything turns the lab into a test rather than a demonstration. Each event has a predicted outcome and, where an alert is expected, a target time. If an outcome differs, students know at once that either the control or their understanding of it is wrong, and the observer records which. The expectations sheet is handed in with the report.
 
 ### 30.3 Observing
 
 Students record when each event happened, whether it was blocked, when alerts arrived and whether the runbook worked.
 
+Timings come from the observer's clock and the platform's own timestamps, which are compared afterwards. Whether the runbook worked is judged by the responder: could they confirm the alert and take the first step without asking anyone? Notes on unclear steps feed directly into runbook updates. The group also records anything surprising, such as an alert that named the wrong resource or arrived twice. Small details like these often reveal problems in alert routing that a simple pass or fail would hide.
+
 ### 30.4 Results
 
 All events are blocked or detected; the new-key alert takes 18 minutes, slower than the 15-minute target, because it waits for a batch log export.
+
+Every control worked, but the key alert's timing missed its target by a few minutes. Batch export means events are collected and sent in groups, which adds delay that real-time event streams avoid. The miss was small in this lab, but in a real key leak those minutes could matter, so it became the group's main recommendation.
 
 ### 30.5 Report
 
 A short report with timings, a comparison with targets and recommendations.
 
+Samuel's group reported each event in one row: what was injected, expected outcome, observed outcome, time to alert and target. The key alert's row was marked as missing its target. Recommendations followed from the rows, with the batch-export change first because it addressed the only failure. The report also listed what the group would test next, such as the same events in a production test namespace, and the questions they could not answer in the lab, such as whether delivery times change under heavy load. It fitted on two pages and was shared with the cloud team the same day.
+
 ### 30.6 Safety
 
 Synthetic events only, in a test account, with the cloud team present.
 
+The cloud team's presence means someone with full knowledge of the platform can stop the lab at once if anything unexpected happens. Synthetic events in a test account cannot affect production, and the clean-up step checks that nothing is left behind afterwards to confuse later checks or tests. Before the lab starts, the cloud team confirms the test account has no connections to production and that the identities used have no rights elsewhere. Students cannot inject events themselves without the coordinator, and every injection is written in the group's log with the time.
+
 ### 30.7 Reflection
 
 Students discuss which detections they would trust in production.
+
+Samuel's group trusted the guardrail blocks most, because they act before anything happens and were tested directly. They trusted the key alert less until it moved to real-time events. Students also noted that the test account may deliver logs differently from production, so production checks are needed before full trust. The discussion also covered the alerts that worked well: the logging-disablement block was immediate and clear, and students agreed it was the control they would most want in place if they could have only one. That view matched the opening case, where missing logs caused the biggest uncertainty.
 
 ### Lab roles
 
@@ -2530,25 +2556,37 @@ You will (1) analyse complex cloud and container scenarios involving several wea
 
 Serious incidents often combine several small issues. In a synthetic case, a developer's laptop token with broad rights, a pipeline role that can assume an administrator role and missing alerting on role assumptions together allow an unreviewed change to production.
 
+No single issue in the case is dramatic. Developers have tokens, pipelines assume roles and some events go unalerted in many organisations. Combined, they let someone with the laptop token reach production without review. Samuel uses the case to show why each small weakness deserves attention, even when it looks harmless alone.
+
 ### 31.2 Tracing chains
 
 Samuel uses the role graph (chapter 6), the model (chapter 21) and logs to trace each step. Each link is a separate fix opportunity.
+
+The role graph shows the path from the developer's token through the pipeline role to administrator. The system model shows where that path crosses a trust boundary without review. Logs show when each step happened in the synthetic case. Each tool reveals a different part of the chain, and together they show where to break it. Samuel lists the fix for each link beside it.
 
 ### 31.3 Layered fixes
 
 Short-lived developer tokens; narrowed pipeline role; alerts on administrator role assumption; required review for production changes. Any one breaks the chain; all together make it robust.
 
+Applying all four means an attacker would need to defeat several independent controls, not one. If a short-lived token were still stolen and used quickly, the narrowed pipeline role would limit what it could reach, and the alert would notify the team. Each fix is cheap, so doing all of them costs little more than doing one.
+
 ### 31.4 Container case
 
 A second synthetic case: a privileged debug pod left running with a host path mount, plus no network policies, plus a service account token mounted by default. Fixes: Restricted pod security, default-deny policies, no automatic token mounting where not needed.
+
+Each weakness in the container case enables the next: the privileged pod with a host mount can read node files, the absence of network policies lets it reach any service, and the mounted token gives it an identity to use. StudyHub's Restricted pods and default-deny policies already address two, and the worked example below addresses the third.
 
 ### 31.5 Communicating
 
 Complex findings are explained as a short story with a diagram, then a table of fixes with owners.
 
+For the cloud team, the story is a few sentences describing each step, the diagram shows the chain on StudyHub's architecture, and the table lists each fix with an owner and date. Managers read the story and the table; engineers use the diagram. Keeping all three short means the message survives a busy week. The diagram is reused in later briefings, and each fix is checked off on it as completed.
+
 ### 31.6 Avoiding blame
 
 The cases show system weaknesses, not individual failure.
+
+The developer whose token appears in the synthetic case followed the team's normal practice at the time. Blaming them would ignore the real causes: broad default token rights, a permissive pipeline role and missing alerts. Focusing on the system makes the fixes stick and keeps people willing to report their own mistakes. Samuel's write-up describes each weakness as a setting or practice and states the change that addresses it. Nobody is named. When presented to the cloud team, this framing led several engineers to mention similar habits of their own, which added two more items to the backlog.
 
 ### Teaching through cases
 
@@ -2590,25 +2628,37 @@ You will (1) work with law, finance, teaching staff and students on cloud securi
 
 The data protection officer needs to know where student data is stored and how breaches would be detected. Samuel provides the data map and logging coverage.
 
+The data map shows where each kind of student data lives and in which region; logging coverage shows whether a breach in each place would be noticed. With both, the DPO can judge whether Westmere could meet its notification duties. After the opening case, logging coverage was the figure the DPO asked about first.
+
 ### 32.2 Finance
 
 Cloud costs are visible per account. Security controls such as logging have costs; Samuel estimates log storage cost and shows retention choices that balance cost and evidence.
+
+Longer log retention costs more, but too short a period may leave investigations without evidence. Samuel's estimate showed that keeping audit logs for a year cost little compared with StudyHub's overall cloud bill, while application logs were the larger cost. That supported the existing retention rules and helped finance see logging as a known, modest expense.
 
 ### 32.3 Teaching staff
 
 Lecturers want research sandboxes with freedom to experiment. Guardrails protect against public data exposure without blocking experiments.
 
+Lecturers worried that guardrails would stop experiments in the research sandbox. In practice, the main guardrails block public storage and disabled logging, which few experiments need. Where an experiment does need an exception, the documented route allows it with a time limit, so research continues without opening permanent gaps. Samuel met two lecturers who ran sandbox projects to explain the guardrails and listen to their needs. One asked for a larger machine type that the guardrails had blocked by region, and the governance group approved a time-limited exception.
+
 ### 32.4 Students
 
 Students expect StudyHub to be available during deadlines. Changes are scheduled away from submission peaks.
+
+Submission deadlines cluster at the ends of terms, so the cloud team keeps a calendar of peaks and avoids changes in the days before them. Urgent security fixes are still applied, but with extra testing and a rollback ready. Students rarely notice security work when it is scheduled this way. The calendar is shared with the student union, whose representatives can flag events the team might not know about, such as a large resubmission window after a system outage. Planned maintenance notices go out a week ahead through StudyHub itself.
 
 ### 32.5 Translating
 
 Each audience gets the same facts in its own terms: risk to students, legal duty, cost, teaching impact.
 
+For the open registry, the DPO hears about potential exposure of personal data and the logging gap; finance hears about the small cost of central logging; lecturers hear that research images now go to a separate registry; students hear that StudyHub's images are private. The facts are the same in every version. Samuel checks each version with someone from that audience before it goes out, which twice caught terms he had assumed everyone knew.
+
 ### 32.6 Decisions
 
 Conflicts, such as a research group wanting public datasets, go to a small governance group with a documented decision.
+
+Sending conflicts to a group with members from each discipline means no single team decides alone on a trade-off that affects others. Documented decisions also prevent the same debate from recurring each term. The public-dataset request described below is an example of a decision that satisfied both research and security needs. Each decision record names the trade-off, the options, the choice, who agreed and when it will be reviewed. The records are kept with the governance group's papers, so later members can understand past choices.
 
 ### Governance group
 
@@ -2654,25 +2704,37 @@ You will (1) plan a more rigorous study; (2) compare groups fairly; (3) use reli
 
 Samuel asks whether teams that adopted the shared namespace template had fewer configuration findings per service than teams that did not, over one term.
 
+The shared namespace template sets default-deny network policies, Restricted pod security and standard labels when a team creates a namespace. If it reduces findings, offering it to every team would be a cheap improvement. The question is narrow enough to answer with one term's data from Samuel's checker. Dr Jensen approved the plan before any data were collected, and the plan named the measure: confirmed findings per service over the term.
+
 ### 33.2 Design
 
 Compare 12 adopting services with 12 non-adopting services of similar size and age, matching pairs to reduce confounding.
+
+Matching pairs compares like with like, so a large old service is not compared with a small new one. Twelve pairs is small, but it covers most of StudyHub's services. Samuel writes the matching rules before looking at any findings, so the pairs cannot be chosen to produce a desired result. He also records the deployment counts for each pair, since busier services might have more findings.
 
 ### 33.3 Labels
 
 Findings are labelled real or not by two reviewers independently; agreement is checked with Cohen's kappa, interpreted with Landis and Koch's (1977) bands.
 
+Two independent reviewers reduce the chance that one person's judgement shapes the result. Kappa measures how much they agree beyond what chance would produce. Using the published bands gives a common language for describing agreement, though Samuel notes that the bands are conventions rather than strict thresholds. Disagreements were discussed after the independent labelling and resolved with a short written reason for each. The agreed labels, not either reviewer's original ones, were used in the analysis, and the reasons are kept with the data.
+
 ### 33.4 Results
 
 Median findings per service: 1 for adopters, 4 for non-adopters. Reviewer kappa is 0.82, almost perfect agreement.
+
+The difference in medians is large for a small study, and the high kappa means the labels behind it are consistent. Samuel presents the per-pair results in a table, so readers can see that the adopting service had fewer findings in most pairs, not just on average. He reports the pairs where the non-adopting service had fewer findings too, with possible explanations, rather than leaving them out. One such pair involved a very small service with few configuration options to get wrong, which suggests that service size still matters despite the matching.
 
 ### 33.5 Validity
 
 Teams chose whether to adopt; more careful teams may adopt first. Matching helps but cannot remove this. One term is short.
 
+Self-selection is the main threat: teams that adopted the template early may also be the ones that follow other good practices. Matching on size, age and team size cannot fix that. Offering the template to everyone and re-measuring, as the recommendation suggests, would give a stronger test. Samuel lists these threats in the report beside the result. A longer study would help too.
+
 ### 33.6 Reporting
 
 Results with limits, plus a recommendation to offer the template to all teams and re-measure.
+
+The report presents the result in one sentence, then the limits immediately after, then the recommendation. Samuel avoids saying the template "reduces findings", since the design cannot show cause; he says adopting services "had fewer findings". The recommendation to re-measure is framed as a way to test that more strongly. The report also includes the matched-pair table, so readers can judge the pairing themselves. A short appendix gives the kappa calculation and the blinded relabelling result.
 
 ### Choosing pairs
 
@@ -2722,25 +2784,37 @@ You will (1) compare two approaches to a cloud security problem; (2) define crit
 
 How should Westmere detect public storage and registry exposure: periodic scanning of configuration, or real-time alerts on configuration change events?
 
+Both approaches already exist in some form at Westmere: Samuel's weekly checker is a periodic scan, and the alert for public registry settings is event-based. The question is which to rely on, and the comparison tests both on the same synthetic events so the answer rests on evidence rather than preference. Samuel writes the question and criteria down before building the test, and Tom agrees them.
+
 ### 34.2 Criteria
 
 Time to detect, false alerts, cost, coverage of resources created outside code, and effort to maintain.
+
+Each criterion reflects a real concern. Time to detect matters because exposure grows with every hour; false alerts consume the small team's attention; cost must fit the budget; coverage of resources created outside code matters because console changes bypass review; and maintenance effort decides whether the approach will still work in a year. Samuel weights none of them in advance. Results speak for themselves.
 
 ### 34.3 Testing
 
 In a test account, Samuel creates 20 synthetic exposure events at random times. Periodic scanning every 24 hours detects all 20 with a median delay of 11 hours. Event-based alerts detect 19 with a median delay of 2 minutes; one is missed because that resource type does not emit the event used.
 
+Creating events at random times avoids flattering either approach, for example by placing all events just before a scheduled scan. Twenty events give a usable comparison while staying quick to run. The missed event shows the value of testing: nobody had known that resource type did not emit the expected event.
+
 ### 34.4 Comparison
 
 Event alerts are much faster but miss some types; scanning is complete but slow.
+
+The two approaches fail in different ways. Event alerts depend on every resource type emitting the right event, which one did not; scanning depends only on reading configuration, so it catches everything eventually. Their weaknesses do not overlap, which is why combining them works better than either alone. Speed matters most for exposures that an outsider could find quickly, such as a public bucket; completeness matters most for rare resource types that event alerts might not cover. A table showing both lets the team see which approach protects against which kind of risk.
 
 ### 34.5 Recommendation
 
 Use both: event alerts for speed, daily scanning as a safety net, plus prevention through guardrails so most events never happen.
 
+Guardrails come first in the recommendation because an exposure that never happens needs no detection. Event alerts then catch what slips through within minutes, and daily scanning catches anything the alerts miss, such as the resource type found in testing. Each layer covers a gap in the one before. The recommendation also names an owner for each layer: the platform team for guardrails, the cloud team for alerts and Samuel's checker, later handed over, for scanning. Each layer is in the control register with a test.
+
 ### 34.6 Cost
 
 Both use built-in services; cost is mainly setup time.
+
+Event alerts and scanning both use features Westmere already pays for, so the main cost is the engineer time to set them up and keep them working. Samuel estimated a few days for setup and a small amount of monthly maintenance, which Tom accepted without needing extra budget. The test scripts and synthetic events are kept, so repeating the comparison after a platform change costs only an afternoon. Samuel notes that the cheapest option of all, relying on guardrails alone, was rejected because guardrails cannot cover every resource type or every console change.
 
 ### Writing the comparison
 
