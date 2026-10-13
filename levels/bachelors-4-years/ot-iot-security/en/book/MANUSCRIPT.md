@@ -2073,7 +2073,7 @@ Maya's replication package for the detector study contains `lab_detect.py`, the 
 
 ### Worked example (synthetic LDHP)
 
-Maya's capstone pre-registration fixes: 300 quiet and 300 attack seeds, three attack slopes, threshold chosen on a separate tuning set of 50 seeds and then frozen. Primary outcome: detection within 60 samples. She also states what result would falsify H1.
+Maya's capstone pre-registration fixes: 300 quiet and 300 attack seeds, three attack slopes, threshold chosen on a separate tuning set of 50 seeds and then frozen. Primary outcome: runs with any false alarm, the measure fixed in H1; detection within 60 samples is a secondary outcome. She also states what result would falsify H1.
 
 > **Synthetic case — Lakeside District Heating Plant.** The plan is for a simulated study.
 

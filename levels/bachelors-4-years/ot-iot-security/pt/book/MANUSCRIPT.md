@@ -2026,7 +2026,7 @@ Publique o código, as sementes, os parâmetros, a versão do Python e o comando
 
 ### Exemplo resolvido (LDHP sintética)
 
-O pré-registro do trabalho de conclusão de Maya fixa: 300 sementes tranquilas e 300 com ataque, três inclinações de ataque, limiar escolhido num conjunto de ajuste separado de 50 sementes e depois congelado. Resultado primário: detecção em até 60 amostras. Ela também declara que resultado falsearia a H1.
+O pré-registro do trabalho de conclusão de Maya fixa: 300 sementes tranquilas e 300 com ataque, três inclinações de ataque, limiar escolhido num conjunto de ajuste separado de 50 sementes e depois congelado. Resultado primário: execuções com qualquer alarme falso, a medida fixada na H1; a detecção em até 60 amostras é um resultado secundário. Ela também declara que resultado falsearia a H1.
 
 > **Caso sintético — Lakeside District Heating Plant.** O plano é para um estudo simulado.
 
