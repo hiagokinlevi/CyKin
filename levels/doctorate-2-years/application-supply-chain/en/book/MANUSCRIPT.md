@@ -1,7 +1,7 @@
 # Application and Software Supply Chain Security: Doctoral Research Track
 
 - Language: English (`en`); course 198, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral researchers producing original, reproducible evidence on application and software supply chain security.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: test and review only software you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic code and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -51,13 +51,13 @@ Supply-chain research is full of tempting shortcuts: counting advisories, scrapi
 
 ### 1.3 Mixed methods
 
-Numbers show how long exposure lasts; interviews with maintainers explain why. Yusuf plans a quantitative study of registry metadata and a qualitative study of 20 maintainers, following the interview-based approach of Wermke et al. (2022), who studied security and trust practices in open-source projects.
+Numbers show how long exposure lasts; interviews with maintainers explain why. Yusuf plans a quantitative study of registry metadata and a qualitative study of 20 maintainers, following the interview-based approach of Wermke et al. (2022), who studied security and trust practices in open-source projects. The two halves answer different questions and need different checks: the numbers need matched samples and intervals, the interviews need a codebook and agreement between coders. Yusuf plans how they will be joined before collecting either, so that interview themes can be compared with exposure in the same projects rather than set side by side afterwards.
 
 ### 1.4 Reliability of coding
 
-Deciding whether a project actually reaches the vulnerable code is a judgement. Two coders label each case and agreement is measured with Cohen's kappa, interpreted with the bands of Landis and Koch (1977).
+Deciding whether a project actually reaches the vulnerable code is a judgement. Two coders label each case and agreement is measured with Cohen's kappa, interpreted with the bands of Landis and Koch (1977). For quillog, the judgement is whether a dependent project calls the logging feature whose default the fix changed. Yusuf's codebook gives each label a definition and an example, and coders work without seeing each other's labels. The kappa target of 0.70 was set in the protocol before any coding began.
 
-### Lab — Lab — coder agreement
+### Lab — coder agreement
 
 ```python
 """Cohen's kappa for two coders labelling 20 synthetic advisories as reachable (R) or not (N)."""
@@ -77,11 +77,11 @@ observed agreement 0.90, chance 0.505, kappa 0.80
 
 ### 1.5 Lab result
 
-On 20 synthetic advisories, the coders agree on 18 (0.90). Chance agreement is 0.505, so kappa is 0.80, "substantial" on the Landis–Koch scale, close to "almost perfect". The two disagreements become worked examples for a sharper codebook.
+On 20 synthetic advisories, the coders agree on 18 (0.90). Chance agreement is 0.505, so kappa is 0.80, "substantial" on the Landis–Koch scale, close to "almost perfect". The two disagreements become worked examples for a sharper codebook. The figure passes the protocol's target of 0.70, but Yusuf reports the two disagreements as well as the score. Both involved projects that import quillog only through another package, which the codebook did not address. A new rule for indirect use resolves them before main-study coding starts. The rule carries a date, so main-study coders know which version applied.
 
 ### 1.6 Integrity
 
-Yusuf works only with public metadata and synthetic replicas; he never tests whether a vulnerability can be triggered in anyone's live system. Interviews have ethics approval, and quotations are anonymised. Findings about unpatched projects are reported in aggregate, so no individual maintainer is exposed.
+Yusuf works only with public metadata and synthetic replicas; he never tests whether a vulnerability can be triggered in anyone's live system. Interviews have ethics approval, and quotations are anonymised. Findings about unpatched projects are reported in aggregate, so no individual maintainer is exposed. For quillog this means Yusuf never runs a project's code to check whether the flaw is reachable; reachability is coded from public source and manifests. Maintainers who agree to be interviewed are told how quotations will be anonymised and that their projects will not be named in results.
 
 ### Worked example
 
@@ -121,27 +121,27 @@ You will (1) map the current research frontier in software supply chain security
 
 ### 2.1 Attack taxonomies
 
-Ohm et al. (2020) reviewed real malicious packages and showed how attackers abuse install scripts, typosquatting and account takeover. Ladisa et al. (2023) built a taxonomy of attacks on open-source supply chains covering source, build, distribution and dependency stages, mapped to safeguards. Yusuf uses the taxonomy to state that his thesis concerns a defensive question about known vulnerabilities, not malicious code.
+Ohm et al. (2020) reviewed real malicious packages and showed how attackers abuse install scripts, typosquatting and account takeover. Ladisa et al. (2023) built a taxonomy of attacks on open-source supply chains covering source, build, distribution and dependency stages, mapped to safeguards. Yusuf uses the taxonomy to state that his thesis concerns a defensive question about known vulnerabilities, not malicious code. Placing the thesis on the taxonomy makes its scope visible: it studies the dependency stage after a fix is published, where the threat is a known flaw left in place, not an attacker inserting code. Examiners can then judge the claims against that stage alone. The taxonomy also reminds him that update bots are themselves tools in the dependency path.
 
 ### 2.2 Ecosystem studies
 
-Zimmermann et al. (2019) showed that a few maintainer accounts in npm can reach a large share of packages, so risk concentrates. Decan et al. (2018) quantified vulnerability propagation. These studies motivate measuring whole dependency graphs, not single packages.
+Zimmermann et al. (2019) showed that a few maintainer accounts in npm can reach a large share of packages, so risk concentrates. Decan et al. (2018) quantified vulnerability propagation. These studies motivate measuring whole dependency graphs, not single packages. For the larch registry, these findings mean that quillog's fix matters only as far as it propagates through dependents, many of them indirect. Yusuf therefore measures exposure at the level of each dependent project and records whether quillog is a direct or transitive dependency, which later matters for the pinned-transitive explanation in H2.
 
 ### 2.3 Integrity frameworks
 
-SLSA v1.0 (OpenSSF, 2023) defines build provenance levels; in-toto (Torres-Arias et al., 2019) records each supply-chain step; Sigstore (Newman et al., 2022) makes signing easy; reproducible builds (Lamb and Zacchiroli, 2022) let anyone verify a binary. Thompson's "Reflections on Trusting Trust" (1984) is the classic reminder that tools themselves can be subverted.
+SLSA v1.0 (OpenSSF, 2023) defines build provenance levels; in-toto (Torres-Arias et al., 2019) records each supply-chain step; Sigstore (Newman et al., 2022) makes signing easy; reproducible builds (Lamb and Zacchiroli, 2022) let anyone verify a binary. Thompson's "Reflections on Trusting Trust" (1984) is the classic reminder that tools themselves can be subverted. These frameworks protect the integrity of what is built and shipped; they do not measure how quickly a fixed version reaches dependents. Yusuf cites them to show where his question sits beside them: a project can have strong provenance and still run a vulnerable quillog version for months. His findings complement these controls rather than compete with them.
 
 ### 2.4 Process standards
 
-NIST SP 800-218, the SSDF (Souppaya et al., 2022), asks producers to respond to vulnerabilities in their components; it does not say how fast is achievable. That is a gap Yusuf's evidence can inform.
+NIST SP 800-218, the SSDF (Souppaya et al., 2022), asks producers to respond to vulnerabilities in their components; it does not say how fast is achievable. That is a gap Yusuf's evidence can inform. For Larchwood, the gap is practical: the foundation can tell maintainers to remediate component vulnerabilities, but it has no evidence on how much an update bot shortens the delay, or what else is needed. Yusuf's results are meant to supply that evidence for RV.2, with the limits stated so the foundation does not quote a figure beyond its conditions.
 
 ### 2.5 Prioritisation research
 
-EPSS (Jacobs et al., 2021) estimates the probability that a vulnerability will be exploited, which could weight exposure days by real risk.
+EPSS (Jacobs et al., 2021) estimates the probability that a vulnerability will be exploited, which could weight exposure days by real risk. Yusuf uses EPSS only as a sensitivity analysis: weighting exposure days by exploitation probability tests whether the main result depends on a few low-risk advisories. Prof. Okafor suggested this check during the main study, and it is reported as a robustness result, not as a new outcome. The unweighted median stays the pre-registered measure. Scores are taken from the date each advisory was published.
 
 ### 2.6 The gap
 
-Little evidence compares exposure with and without update tooling while explaining the human reasons for lag. Yusuf's gap statement names both halves.
+Little evidence compares exposure with and without update tooling while explaining the human reasons for lag. Yusuf's gap statement names both halves. The first half is a measurement question that registry data can answer; the second is an explanation question that only maintainers can answer. A study that did only one would leave Larchwood either with a number it cannot act on or with reasons it cannot size. Naming both halves in the gap statement commits Yusuf to the mixed design.
 
 ### Worked example
 
@@ -181,27 +181,27 @@ You will (1) write a contribution statement that is new, testable and useful; (2
 
 ### 3.1 Contribution statement
 
-"This thesis provides the first matched comparison of vulnerable-version exposure between projects that do and do not use automated update tools in a package ecosystem, and explains residual lag through maintainer interviews, yielding evidence-based guidance for SSDF practice RV.2 (assess, prioritise and remediate vulnerabilities)."
+"This thesis provides the first matched comparison of vulnerable-version exposure between projects that do and do not use automated update tools in a package ecosystem, and explains residual lag through maintainer interviews, yielding evidence-based guidance for SSDF practice RV.2 (assess, prioritise and remediate vulnerabilities)." The claim "first" rests on the literature matrix, which found update-tooling effects reported mainly in industry blogs. Yusuf keeps the matrix in the thesis appendix so examiners can check the claim against his search. The statement was later qualified after the workshop, when the within-project comparison showed a smaller effect than the matched comparison.
 
 ### 3.2 Hypotheses
 
-H1: projects using update bots have shorter median exposure. H2: among bot users, long exposure is explained by breaking-change fear, test gaps or pinned transitive dependencies. Each hypothesis states what result would count against it: H1 fails if the bootstrap interval for the difference includes zero.
+H1: projects using update bots have shorter median exposure. H2: among bot users, long exposure is explained by breaking-change fear, test gaps or pinned transitive dependencies. Each hypothesis states what result would count against it: H1 fails if the bootstrap interval for the difference includes zero. H2 has its own counter-evidence: if interviews show that bot users with long exposure simply had no time, rather than test or dependency problems, H2's explanations are weakened. The proposal panel added a further check, comparing each interviewee's stated reason with their project's history of reverted upgrades.
 
 ### 3.3 Sampling
 
-Projects depending directly on quillog before the fix, matched by size, age and activity, so that busy projects are not compared with abandoned ones. Abandoned projects (no commit for a year) are analysed separately.
+Projects depending directly on quillog before the fix, matched by size, age and activity, so that busy projects are not compared with abandoned ones. Abandoned projects (no commit for a year) are analysed separately. Matching on size, age and activity tries to make the groups comparable apart from bot use. Yusuf records the matching variables for every pair, so examiners can see how close the matches were. Abandoned projects would show long exposure for reasons unrelated to tooling, which is why they are kept out of the main comparison and described separately.
 
 ### 3.4 Data
 
-Registry metadata (versions, dates), manifests from public repositories, advisory records and bot configuration files. No code is executed and no system is probed.
+Registry metadata (versions, dates), manifests from public repositories, advisory records and bot configuration files. No code is executed and no system is probed. The data are public, but Yusuf still records the date each item was collected, because manifests and advisories change. Bot configuration files tell him whether a project used an update bot during the exposure window, not only today. Each source is listed in the data management plan with how it was obtained and where it is stored.
 
 ### 3.5 Threats to validity
 
-Selection: projects that adopt bots may already be careful. Measurement: a manifest change may not reach production. External: one ecosystem may not generalise. Each threat has a mitigation: matching, a sample check of release notes, and a replication in a second synthetic ecosystem.
+Selection: projects that adopt bots may already be careful. Measurement: a manifest change may not reach production. External: one ecosystem may not generalise. Each threat has a mitigation: matching, a sample check of release notes, and a replication in a second synthetic ecosystem. The matching addresses selection only partly, which the workshop reviewers later pointed out; the within-project comparison added after critique is the stronger response. The release-note check estimates how often a manifest change actually reached a published release. A second synthetic ecosystem tests whether the analysis code behaves the same way on different data.
 
 ### 3.6 Usefulness
 
-The Larchwood Foundation wants guidance it can give maintainers; Yusuf commits to a plain-language summary.
+The Larchwood Foundation wants guidance it can give maintainers; Yusuf commits to a plain-language summary. The summary will tell maintainers what the evidence supports, such as treating failing bot pull requests as security tasks, and what it does not, such as how users downstream behave. Larchwood's practitioners review a draft so the wording fits what maintainers actually read. Its claims will use the same numbers and limits as the thesis. The summary is planned for release alongside the thesis, not after it.
 
 ### Feasibility
 
@@ -244,13 +244,13 @@ You will (1) replicate a published measurement before extending it; (2) run a sm
 
 ### 4.1 Why replicate
 
-Before claiming anything new, Yusuf re-runs the style of measurement used by Decan et al. (2018) on a synthetic replica of their setting, checking that his scripts reproduce the expected pattern: most vulnerable packages are fixed upstream quickly, but dependents lag.
+Before claiming anything new, Yusuf re-runs the style of measurement used by Decan et al. (2018) on a synthetic replica of their setting, checking that his scripts reproduce the expected pattern: most vulnerable packages are fixed upstream quickly, but dependents lag. Reproducing the known pattern on a replica shows that his scripts measure exposure the way the field does, before they are applied to quillog. If the replica had not shown dependents lagging, the fault would be in his pipeline, not in the field's finding. The replication scripts are archived with their output.
 
 ### 4.2 Pilot sample
 
-Twelve projects that depended on quillog, six with an update bot and six without.
+Twelve projects that depended on quillog, six with an update bot and six without. The pilot checks whether exposure can be measured consistently from registry metadata and manifests, how long collection takes per project, and whether the coding rules work. Twelve projects are enough to find problems with definitions, but not to estimate an effect with any precision. The pilot sample is excluded from the main study. Six per group also kept the pilot to a few weeks of collection, leaving time for the protocol changes that followed.
 
-### Lab — Lab — exposure days
+### Lab — exposure days
 
 ```python
 """Exposure days: time from a fixed release to adoption by dependent projects (synthetic)."""
@@ -272,19 +272,19 @@ bot=False n=6 median=38.0 days  max=160  within 7 days=0/6
 
 ### 4.3 Lab result
 
-Bot users: median 4.5 days, maximum 40, five of six adopted within a week. Non-users: median 38 days, maximum 160, none within a week. Project p04 is the bot user with 40 days.
+Bot users: median 4.5 days, maximum 40, five of six adopted within a week. Non-users: median 38 days, maximum 160, none within a week. Project p04 is the bot user with 40 days. These are pilot figures and serve to test the pipeline, not to answer H1. The one long bot-user case is the most informative row, because it shows what kind of explanation H2 must account for. The non-users' long tail, with a maximum of 160 days, shows why medians and not means are reported.
 
 ### 4.4 Investigating outliers
 
-p04's bot opened a pull request on day 1, but tests failed because quillog 2.4.1 changed a configuration default; the maintainer fixed tests on day 40. This is exactly the kind of lag H2 predicts.
+p04's bot opened a pull request on day 1, but tests failed because quillog 2.4.1 changed a configuration default; the maintainer fixed tests on day 40. This is exactly the kind of lag H2 predicts. Yusuf records the case in his pilot memo with the pull-request date, the failing test and the date it was fixed. It leads to a protocol change: recording bot pull-request dates as well as merge dates, and coding test failures on bot pull requests, so the main study can see this pattern systematically.
 
 ### 4.5 Protocol revisions
 
-The pilot shows that "adoption" must allow range specifiers: a manifest saying ">=2.4.0" already permits the fix if the lockfile is updated. Yusuf adds lockfiles to the data.
+The pilot shows that "adoption" must allow range specifiers: a manifest saying ">=2.4.0" already permits the fix if the lockfile is updated. Yusuf adds lockfiles to the data. Without lockfiles, projects whose manifests already allowed the fixed version would look exposed until someone edited the manifest. Adding lockfiles measures what the project actually resolves. The revision is listed in the pilot memo with the other two, and it was approved before the main study began. The original specifier is kept beside the resolved version for checking.
 
 ### 4.6 Reporting the pilot
 
-The pilot is reported as a feasibility check, not evidence for H1; six projects per group cannot support strong claims.
+The pilot is reported as a feasibility check, not evidence for H1; six projects per group cannot support strong claims. Yusuf writes the pilot chapter around what changed in the protocol and why, with the figures given as illustrations. The wide interval on the pilot difference shows why: any reader who took 33.5 days as an estimate of the effect would be misled. Its value is in the three protocol revisions, each of which changed what the main study collected and is listed in the pilot memo.
 
 ### Tooling checks
 
@@ -327,9 +327,9 @@ You will (1) run the main quantitative study; (2) estimate uncertainty with the 
 
 ### 5.1 Main study
 
-The main study covers 340 matched project pairs across three vulnerable packages. The analysis plan, pre-registered, uses the difference in median exposure with a bootstrap interval.
+The main study covers 340 matched project pairs across three vulnerable packages. The analysis plan, pre-registered, uses the difference in median exposure with a bootstrap interval. Three vulnerable packages rather than one guard against a result that depends on quillog's particular fix. The analysis plan was registered before the main collection, and the matching variables and exclusion rule for abandoned projects are applied exactly as in the protocol. Lockfiles and bot pull-request dates are collected as the pilot required. Abandoned projects get their own table, outside the matched comparison.
 
-### Lab — Lab — bootstrap interval
+### Lab — bootstrap interval
 
 ```python
 """Bootstrap 95% interval for the difference in median exposure days (no bot minus bot), seed 7."""
@@ -353,23 +353,23 @@ observed difference: 33.5
 
 ### 5.2 Lab result
 
-On the pilot data, the observed difference is 33.5 days (38 minus 4.5) and the 95% bootstrap interval runs from 8.0 to 118.5 days (5,000 resamples, seed 7). The interval excludes zero but is very wide; small samples give imprecise estimates, which is why the main study is larger.
+On the pilot data, the observed difference is 33.5 days (38 minus 4.5) and the 95% bootstrap interval runs from 8.0 to 118.5 days (5,000 resamples, seed 7). The interval excludes zero but is very wide; small samples give imprecise estimates, which is why the main study is larger. The point estimate comes from only twelve projects, so a few long-exposure projects can shift it greatly. Yusuf includes the pilot interval to show readers how much the main study's sample size narrows it. The seed and resample count are recorded so the interval can be regenerated exactly.
 
 ### 5.3 Main results
 
-In the synthetic main study, the median difference is 21 days with a 95% interval of 15 to 28 days. H1 is supported.
+In the synthetic main study, the median difference is 21 days with a 95% interval of 15 to 28 days. H1 is supported. The interval is much narrower than the pilot's, which reflects 340 matched pairs instead of twelve projects. Yusuf reports the median difference first and leaves causal language for later, because matched observational data cannot rule out that careful projects both adopt bots and update faster. The within-project comparison added after critique addresses that concern. Prof. Okafor's EPSS-weighted sensitivity analysis left this conclusion unchanged.
 
 ### 5.4 Independent validation
 
-A second analyst, given only the protocol, recomputes exposure for a random 10% of pairs; 33 of 34 match exactly, the other differs by one day due to a time-zone boundary. The protocol is clarified to use UTC dates.
+A second analyst, given only the protocol, recomputes exposure for a random 10% of pairs; 33 of 34 match exactly, the other differs by one day due to a time-zone boundary. The protocol is clarified to use UTC dates. The single mismatch came from a date near midnight being read in different time zones by the two analysts. Clarifying the protocol to use UTC dates removes the ambiguity for any later replication. The second analyst worked from the protocol alone, so agreement also shows that the written definitions are sufficient.
 
 ### 5.5 Interviews
 
-Twenty maintainers explain lag: test failures on bot updates (9), fear of breaking changes without tests (6), pinned transitive dependencies (3), no time (2). Coded with kappa 0.78.
+Twenty maintainers explain lag: test failures on bot updates (9), fear of breaking changes without tests (6), pinned transitive dependencies (3), no time (2). Coded with kappa 0.78. The counts add to twenty, one main reason coded per maintainer. Test failures and fear of breaking changes together account for most answers, which matches H2. The panel's check against reverted-upgrade history was applied to each interviewee, so the stated reasons are compared with what their projects actually did. At 0.78, kappa clears the protocol's target of 0.70 for interview coding as well.
 
 ### 5.6 Integration
 
-Projects with long exposure despite bots mostly had weak tests, matching the interview themes.
+Projects with long exposure despite bots mostly had weak tests, matching the interview themes. The joint display links these halves: exposure distributions on one side and interview themes on the other, with the test-failure finding connecting them. Yusuf states the link as consistent rather than proven, since interviewees and long-exposure projects need not be the same projects. The EPSS-weighted sensitivity analysis gave the same picture. Yusuf avoids reading the link as proof that tests cause lag, and the thesis presents it as a pattern for future work to test directly.
 
 ### Reporting standards
 
@@ -412,27 +412,27 @@ You will (1) invite structured critique of a supply-chain study; (2) separate fa
 
 ### 6.1 Seeking critique
 
-Yusuf submits a draft paper to a workshop and shares it with two practitioners at the Larchwood Foundation. He asks each reviewer to say what would make them reject the main claim.
+Yusuf submits a draft paper to a workshop and shares it with two practitioners at the Larchwood Foundation. He asks each reviewer to say what would make them reject the main claim. Asking reviewers what would make them reject the claim directs their attention to its weakest point instead of to presentation. The practitioners bring a different test: whether the guidance would help a maintainer facing a failing bot update. Yusuf logs every comment with its source in the change log before deciding how to respond.
 
 ### 6.2 The critiques
 
-Reviewer 1: projects that adopt bots may already be more security-aware, so the bot may not cause the difference. Reviewer 2: exposure ends at the manifest change, but users may run old releases for months. Practitioner: the guidance should say what to do when tests fail, not just "use a bot".
+Reviewer 1: projects that adopt bots may already be more security-aware, so the bot may not cause the difference. Reviewer 2: exposure ends at the manifest change, but users may run old releases for months. Practitioner: the guidance should say what to do when tests fail, not just "use a bot". Each critique targets a different part of the argument: the first the causal reading, the second the definition of exposure, the third the usefulness of the guidance. Yusuf responds to each separately instead of answering them together.
 
 ### 6.3 Fatal or fixable
 
-None is fatal. Reviewer 1's point limits the causal claim; Yusuf adds a within-project comparison of exposure before and after projects adopted a bot, which shows a smaller but still clear reduction (12 days). Reviewer 2's point defines the scope: the thesis measures producer-side exposure.
+None is fatal. Reviewer 1's point limits the causal claim; Yusuf adds a within-project comparison of exposure before and after projects adopted a bot, which shows a smaller but still clear reduction (12 days). Reviewer 2's point defines the scope: the thesis measures producer-side exposure. The practitioner's comment was also fixable: the guidance gains a step for failing bot pull requests. None of the three required discarding data; each changed what the thesis claims, measures or recommends. The 12-day figure is reported beside the 21-day figure so readers can see both.
 
 ### 6.4 Revising claims
 
-The headline changes from "bots cut exposure by 21 days" to "projects using bots had 21 days shorter median exposure; within projects, adopting a bot was followed by a 12-day reduction".
+The headline changes from "bots cut exposure by 21 days" to "projects using bots had 21 days shorter median exposure; within projects, adopting a bot was followed by a 12-day reduction". The new headline names both comparisons and avoids saying that bots cause the reduction. Yusuf applies the same check to the abstract and the practitioner report, so the shorter claim appears everywhere. A reviewer who reads only the headline now gets the same scope as one who reads the method. The abstract now carries both figures.
 
 ### 6.5 Change log
 
-Every revision is listed with the reviewer comment that prompted it and where the text changed.
+Every revision is listed with the reviewer comment that prompted it and where the text changed. The change log lets reviewers verify each response without rereading the whole paper. It also enters the archive, so examiners can trace the 12-day within-project comparison back to Reviewer 1's comment. One reviewer later asked to use it as a teaching example, which shows how much time it saves. Comments that led to no change are listed too, with the reason, so reviewers can see that nothing was ignored.
 
 ### 6.6 Practitioner guidance
 
-The guidance adds: invest in tests for dependency updates; treat a failing bot pull request as a security task with an owner, consistent with SSDF RV.2.
+The guidance adds: invest in tests for dependency updates; treat a failing bot pull request as a security task with an owner, consistent with SSDF RV.2. Both points come from the interviews and the p04 case: bot pull requests often failed because tests broke, and nobody owned the fix. The guidance does not claim that tests will remove all lag, since the interview counts include other reasons such as pinned transitive dependencies and lack of time. The step asks each project to name an owner for failing updates.
 
 ### Responding to reviewers
 
@@ -475,13 +475,13 @@ You will (1) synthesise studies into a coherent thesis argument; (2) build a rep
 
 ### 7.1 Thesis argument
 
-Chapter by chapter: exposure is measurable (pilot), lower with bots (main study), partly causal (within-project), and limited by tests (interviews). The final chapter links these to SSDF RV.2 and SLSA's emphasis on trustworthy, automated build and update processes.
+Chapter by chapter: exposure is measurable (pilot), lower with bots (main study), partly causal (within-project), and limited by tests (interviews). The final chapter links these to SSDF RV.2 and SLSA's emphasis on trustworthy, automated build and update processes. Each step in the argument carries its own limit: the within-project reduction is smaller than the matched difference, and the interviews explain lag only for those who agreed to talk. The link to SSDF RV.2 is framed as evidence for how to meet the practice, not as a measure of compliance.
 
 ### 7.2 Archive contents
 
-Scripts, synthetic replicas, the codebook, the pre-registration, a README describing how to run everything, and a manifest of SHA-256 hashes for every file.
+Scripts, synthetic replicas, the codebook, the pre-registration, a README describing how to run everything, and a manifest of SHA-256 hashes for every file. The archive also contains the pilot memo and the change log, so readers can see how the protocol evolved. Interview material is limited to the codebook and coded counts, as the ethics approval required. The README lists commands in order and the expected tables, so a colleague can tell at once whether a rerun matched. Script, data and codebook files are all hashed.
 
-### Lab — Lab — manifest check
+### Lab — manifest check
 
 ```python
 """Check a synthetic dataset against its archived SHA-256 manifest."""
@@ -503,19 +503,19 @@ codes.csv     MISMATCH
 
 ### 7.3 Lab result
 
-exposure.csv matches its manifest hash; codes.csv does not. The manifest recorded coder B's first label as "N", but the file now says "R", because a late correction was made without updating the manifest.
+exposure.csv matches its manifest hash; codes.csv does not. The manifest recorded coder B's first label as "N", but the file now says "R", because a late correction was made without updating the manifest. The lab shows the check doing its job: a correct change made silently still fails verification. The fix is not to undo the correction but to record it and regenerate the manifest. Yusuf's real archive is checked the same way before each release, and any mismatch is investigated before a new version is tagged.
 
 ### 7.4 Fixing the archive
 
-Yusuf records the correction in the change log, regenerates the manifest and tags a new archive version. Silent edits break trust even when they are right.
+Yusuf records the correction in the change log, regenerates the manifest and tags a new archive version. Silent edits break trust even when they are right. The new version has its own tag, so anyone holding the old archive can see that it was superseded and why. The examiner later ran the archive and obtained identical tables, and remarked on the manifest's version history. Keeping both versions accessible means earlier citations still point to something that exists. The log names the coder, the label and the date.
 
 ### 7.5 What cannot be shared
 
-Interview transcripts stay private; the archive holds the codebook and coded counts only.
+Interview transcripts stay private; the archive holds the codebook and coded counts only. Transcripts could identify maintainers through their projects and wording, even with names removed, so the ethics approval limits release to coded counts. Readers can still check the coding against the codebook and agreement figures. Researchers who want to replicate the qualitative part must collect their own interviews under their own approval. The data access statement explains this choice and points readers to the codebook, the agreement figures and the coded counts that remain available.
 
 ### 7.6 Reproducibility check
 
-A colleague runs the archive on a clean machine from the README alone and reproduces every table.
+A colleague runs the archive on a clean machine from the README alone and reproduces every table. The colleague had not worked on the project and used only the README, which tests the instructions as much as the code. Every table matched, and the run is recorded with its date and archive tag. Any difference would have been fixed before the examiner received the archive. The colleague's notes on unclear steps were used to improve the README before the archive went to the examiner.
 
 ### Licences
 
@@ -562,27 +562,27 @@ You will (1) prepare a doctoral defense on supply-chain evidence; (2) answer har
 
 ### 8.1 The defense
 
-Forty minutes: question, gap, methods, results, limits, contributions. Yusuf rehearses with three colleagues playing sceptical examiners.
+Forty minutes: question, gap, methods, results, limits, contributions. Yusuf rehearses with three colleagues playing sceptical examiners. The rehearsal colleagues prepare questions from the critiques the paper received, so the hardest objections are practised first. Yusuf gives the limits their own slide early, rather than at the end where time may run short. He also prepares the conversion of the 12-day effect into a share of the foundation's median exposure, since practical importance is a likely question. Rehearsal keeps the talk within forty minutes.
 
 ### 8.2 Hard questions
 
-"Does your result hold outside larch?" "Does a shorter manifest exposure matter if users never upgrade?" "Could bots themselves be a supply-chain risk?" For the last, he cites Ladisa et al. (2023), whose taxonomy includes compromise of tools in the dependency path, and notes that his study did not measure that risk.
+"Does your result hold outside larch?" "Does a shorter manifest exposure matter if users never upgrade?" "Could bots themselves be a supply-chain risk?" For the last, he cites Ladisa et al. (2023), whose taxonomy includes compromise of tools in the dependency path, and notes that his study did not measure that risk. For the first question, he answers that the matched comparison and interviews come from one registry and a second synthetic ecosystem, so generalisation is a hypothesis. For the second, he explains that the thesis measures producer-side exposure, a scope fixed after Reviewer 2's critique.
 
 ### 8.3 Honest answers
 
-"I don't know, but here is how I would find out" is better than overclaiming.
+"I don't know, but here is how I would find out" is better than overclaiming. Yusuf uses this answer when asked about users who never upgrade: his data stop at the manifest, and a study of deployment telemetry would be needed. Saying so plainly protects the claims he can support. For the question about bots as a supply-chain risk, his answer cites the taxonomy and says plainly that his data cannot size that risk; he names the study design that could, such as tracing incidents in which update tools themselves were compromised.
 
 ### 8.4 Publications
 
-Paper 1: matched comparison. Paper 2: interview study. Practitioner report for the Larchwood Foundation. Each is mapped to thesis chapters.
+Paper 1: matched comparison. Paper 2: interview study. Practitioner report for the Larchwood Foundation. Each is mapped to thesis chapters. Each output reports the same headline with both comparisons, so no version overstates the effect. The interview paper uses only coded counts and anonymised quotations, as the ethics approval requires. The practitioner report leads with the guidance on failing bot pull requests and links to the archive for anyone who wants the evidence. Paper 1 draws on the main-study and critique chapters, and Paper 2 on the interview chapter, so no finding is published twice.
 
 ### 8.5 Incidental findings
 
-During data collection Yusuf noticed six synthetic projects still pinned to a vulnerable quillog version. Under the study's disclosure plan, the foundation's security team contacts the maintainers privately; the thesis reports only aggregate counts.
+During data collection Yusuf noticed six synthetic projects still pinned to a vulnerable quillog version. Under the study's disclosure plan, the foundation's security team contacts the maintainers privately; the thesis reports only aggregate counts. Reporting only aggregates keeps the thesis from becoming a list of vulnerable projects. The foundation, not Yusuf, decides how to contact maintainers, which follows the plan approved before data collection. The thesis records when the foundation was informed, so examiners can see the plan was followed.
 
 ### 8.6 After the defense
 
-Archive deposited, data access statement final, post-doctoral plan drafted.
+Archive deposited, data access statement final, post-doctoral plan drafted. The deposited archive is the corrected version with the regenerated manifest. The data access statement explains that interview transcripts are withheld and how other researchers can obtain the synthetic replicas. The post-doctoral plan starts from the open questions he stated in the defence: user-side exposure and the risk posed by update bots themselves. The archive's persistent identifier is cited in every output, so readers of the papers and the practitioner report all reach the same deposited version.
 
 ### Practitioner briefing
 
