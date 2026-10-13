@@ -3,14 +3,14 @@
 - Edition: working draft, 11 October 2026
 - Language: English
 - Course: rapid, one month
-- Status: four of four subject-chapters drafted; fifty exercises (EX001–EX050) and their worked results drafted. Chapter 1 and EX001–EX005 are the original author's text, kept unchanged; Chapters 2–4 and EX006–EX050 continue the same Northstar case (added 12 October 2026). The A4 page count has not been verified.
+- Status: four of four subject-chapters drafted; fifty-eight exercises (EX001–EX058) and their worked results drafted. Chapter 1 and EX001–EX005 are the original author's text, kept unchanged; Chapters 2–4 and EX006–EX050 continue the same Northstar case (added 12 October 2026); EX051–EX058 extend that case (added 13 October 2026). The A4 page count has not been verified.
 - Public-domain dedication for original text: [CC0 1.0](../../../../../LICENSE); [scope and exceptions](../../../../../RIGHTS.md)
 
 ## How to use this book
 
 This course teaches a small security team to turn business priorities into a short, testable security strategy. Readers work with a fictional organization so that every exercise can be completed without access to a real company or its confidential records. The final product will be a one-page strategy, a prioritized action plan, and a compact measurement sheet. Readers may use the method for an actual organization only with permission to access its information.
 
-This is the one principal English book for the rapid Security governance, risk and compliance course. It incorporates the earlier Security Strategy draft as its first chapter. Its [subject grade](../SUBJECTS.md) and [book plan](PLAN.md) define four chapters, one per subject. Each chapter will include its own examples and exercises; all worked results belong in the final appendix of this same book. This draft now contains all four chapters and fifty exercises. Chapter 1 sets the strategy; Chapters 2–4 extend it into scope and permission, dependencies and data, and a guided restore exercise with a recorded decision. The page target has not yet been validated.
+This is the one principal English book for the rapid Security governance, risk and compliance course. It incorporates the earlier Security Strategy draft as its first chapter. Its [subject grade](../SUBJECTS.md) and [book plan](PLAN.md) define four chapters, one per subject. Each chapter will include its own examples and exercises; all worked results belong in the final appendix of this same book. This draft now contains all four chapters and fifty-eight exercises. Chapter 1 sets the strategy; Chapters 2–4 extend it into scope and permission, dependencies and data, and a guided restore exercise with a recorded decision. The page target has not yet been validated.
 
 <a id="ch-01"></a>
 
@@ -186,6 +186,57 @@ The team has one week. It can either (a) purchase a dashboard with no assigned a
 
 Complete the six-sentence strategy test for Northstar. Mark at least two statements as assumptions or pending owner approval. Include one outcome with an owner, date, and evidence.
 
+
+### Concepts — three questions a number cannot answer
+
+Coverage, quality and effect are different jobs. Coverage counts whether a population sits inside the set being managed. Quality asks whether a control survived a deliberate test. Effect asks whether the service result moved for the people who depend on it. A single decimal cannot take all three jobs, and it cannot sit in Govern, because Govern names expectations, responsibilities and a direction for risk.
+
+| Measure | Question it answers | Northstar check that fits | Question it leaves open |
+|---|---|---|---|
+| Coverage | Whether the named population is inside the count | Priority services have an owner and a written interruption assumption | Whether appointments return inside four hours |
+| Quality | Whether a control succeeds when someone runs a test | One timed end-to-end restore, with timestamps and a signed result, inside 30 days | Whether a brochure figure means the portal is ready |
+| Effect | Whether the service outcome moved for the people who rely on it | Clients and front-desk staff can still book during an outage | How many platforms the team bought |
+
+### Data — where the six sentences stop
+
+| Sentence | Completed from Chapter 1 facts? | What is still missing |
+|---|---|---|
+| 1. Service and people | Appointment scheduling for clients; the portal itself may be down | Third-party integrations have no confirmed inventory |
+| 2. Impact limit | Not yet | The operations director has not accepted four hours |
+| 3. Scenarios | The leading scenario is drafted | An identity access review and a dependency map are still requests, not results |
+| 4. Outcomes | The task is named | The timed restore has not been run |
+| 5. Owners | The operations director owns the tradeoff; the engineer owns the exercise | Written acceptance of the resource use is still pending |
+| 6. Signals | Interim signals are named | Daily review of backup failures, plus a monthly strategy review, until the exercise replaces the assumption |
+
+### Decision flow — reject the number, then test the blank sentence
+
+```mermaid
+flowchart TD
+  A["A vendor figure or a platform offer"] --> B{"Can anyone name the choice that flips at that figure?"}
+  B -->|No| C["Reject the figure as false precision"]
+  B -->|Yes| D{"Is sentence 2 complete?"}
+  C --> D
+  D -->|No| E["The blank sentence is the next research task"]
+  E --> F["Do not treat the purchase as the strategy choice"]
+  D -->|Yes| G{"Which job does the action do?"}
+  G -->|Population counted| H["Coverage"]
+  G -->|Control survived a test| I["Quality"]
+  G -->|Service result moved| J["Effect"]
+  I --> K["A timed restore can speak to quality and, once the clock is kept, to effect"]
+  H --> L["Coverage does not answer the four-hour outcome"]
+```
+
+### Worked example — Calder's Tuesday brochure
+
+The Tuesday brochure from Calder Systems shows a green shield and a readiness figure of 9.1. The engineer keeps that figure out of the decision table, because no colleague can name a choice that would differ if the printed figure moved by a tenth. She drafts the six sentences on the same page. Sentence 1 can name appointment scheduling for clients and front-desk staff, while the portal itself may be down. Sentence 2 stops blank: acceptance by the operations director is still missing, so the unfinished line is the research task, and a catalogue order for the Calder platform is refused. The timed restore stays the first checkable outcome. It can speak to a test and to the service clock only after someone runs it. Integrations with outside firms stay uncounted, which is a separate gap.
+
+> **Synthetic case.** That vendor mark is a classroom illustration, not a measurement Northstar collected from its own portal.
+
+### Apply
+
+- **EX051 — A decimal on a slide.** Calder Systems presents a readiness score of 9.1. Why does the false-precision rule reject it, and which two measure types can a timed restore speak to? *Rubric:* 3 = nobody can say what decision changes at 9.1; a timed restore can show quality and, if the clock is kept, effect; coverage is a different question;; 2 = rejects the score;; 1 = accepts 9.1;; 0 = none.
+- **EX052 — The blank second sentence.** Sentence 2 of the one-page test cannot be completed. What fact is missing, and may the team treat a platform purchase as the strategy choice? *Rubric:* 3 = the operations director has not accepted the four-hour limit; the missing fact is the next research task; a blank sentence blocks the purchase;; 2 = the limit is unaccepted;; 1 = buy the platform;; 0 = none.
+
 <!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 04
 
@@ -209,7 +260,7 @@ All case details for Northstar Community Services are fictional. The strategic l
 <!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
-Lesson 02 published. Map, example, EX006.
+Lesson 02 published. Map, example, EX053.
 
 ```mermaid
 flowchart TD
@@ -219,10 +270,11 @@ flowchart TD
   N3["2.3 Handling personal data safely"]
   N4["2.4 Designing a safe exercise"]
   N5["2.5 Recording what was done"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX006"]
+  N6["Concepts — four gates that do not unlock each other"]
+  N7["Decision flow — read, export, restore, or stop"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
 ```
 
 ### Logical drawing
@@ -235,8 +287,9 @@ flowchart LR
   N3["2.3 Handling personal data safely"]
   N4["2.4 Designing a safe exercise"]
   N5["2.5 Recording what was done"]
-  N6["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX006"]
+  N6["Concepts — four gates that do not unlock each other"]
+  N7["Decision flow — read, export, restore, or stop"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -258,10 +311,13 @@ flowchart LR
 [2.5 Recording what was done]
     |
     v
-[Synthesis]
+[Concepts — four gates that do not unlock each other]
     |
     v
-[Worked example] --> [Exercise EX006]
+[Decision flow — read, export, restore, or stop]
+    |
+    v
+[Worked example] --> [Exercise EX053]
 ```
 <!-- cykin:lesson-figures:end ch-02 -->
 
@@ -300,6 +356,45 @@ Northstar writes a scope covering the appointment portal and its dependencies, g
 
 Scopes can be too narrow to show real dependencies. Written permission does not make an unsafe test safe. Masking can fail if screenshots include unexpected fields.
 
+
+### Concepts — four gates that do not unlock each other
+
+Four questions stay independent. A scope page lists inclusions and a dated exclusion. A permission page names the verb, the actor and the clock. A safe-test page names the place, the outbound block and the person allowed to halt the work. A custody page names the folder. Passing the scope page does not sign the permission page.
+
+| Gate | Northstar document | A pass looks like this | The neighbouring pass does not grant |
+|---|---|---|---|
+| Scope | Inclusion list for this quarter | Appointment portal, scheduling database, identity provider, backup service | Opening case management or the volunteer roster |
+| Permission | Written approval | Operations director and data protection lead; what may be read, what may be changed, who, when | A restore, when the page only allows reading backup logs |
+| Safe test | Exercise plan | Isolated environment, outbound email blocked, a person who can stop it, separate credentials | Safety merely because the page carries a signature |
+| Custody | Restricted folder | Evidence kept there; client names masked; temporary copies deleted afterwards | A masked screenshot stored on a personal laptop |
+
+### Decision flow — read, export, restore, or stop
+
+```mermaid
+flowchart TD
+  A["A proposed action"] --> B{"Is it inside the written inclusion list?"}
+  B -->|No| C["Report it to the owner. Do not open it"]
+  B -->|Yes| D{"Does the approval name this verb?"}
+  D -->|Read only| E["Do not restore and do not export"]
+  D -->|Export named, one signature missing| F["Wait for the data protection lead"]
+  D -->|Both signatures, and the verb is named| G{"Are the safe-test rules present?"}
+  G -->|Mail can still leave, or the target is production| H["Stop. Add the isolated copy and the outbound block"]
+  G -->|Isolated, blocked, named stopper| I{"Is the evidence in the restricted folder?"}
+  I -->|Personal laptop| J["Move it. Masking does not replace the folder"]
+  I -->|Restricted folder| K["Record date, person, approval reference and what changed"]
+```
+
+### Worked example — Wednesday's log-reading page
+
+On Wednesday the operations director signs a page that lets the engineer read backup logs for the scheduling database. The engineer starts preparing a restore. That verb was never on the page, so the restore stays unapproved. Even a later page that allowed a restore would still withhold it while outbound mail can reach clients, unless the copy is isolated and someone named can halt the run. The same afternoon the director signs an export, and the data protection lead's signature line is blank. The engineer does not export the scheduling database. A teammate offers to park the masked screenshots on the engineer's personal laptop so the shared folder looks tidy. Masking does not repair the offer: custody means the restricted folder, and a personal laptop fails it.
+
+> **Synthetic case.** The Wednesday signature page and the personal laptop are invented. The two approvers are the ones named in this chapter.
+
+### Apply
+
+- **EX053 — Reading is not a restore.** Written approval allows the engineer to read backup logs. Does that approval allow a restore that can still email clients, and which safeguards are still missing? *Rubric:* 3 = no; the isolated test environment and the outbound-email block are missing, and a named person must be able to stop the exercise;; 2 = no, because mail could still leave;; 1 = yes, the signature is enough;; 0 = none.
+- **EX054 — One signature, and a laptop.** The operations director has signed an export of the scheduling database. The data protection lead has not. May the engineer export, and do masked screenshots on the engineer's personal laptop satisfy the custody rule? *Rubric:* 3 = no export until the data protection lead signs; a personal laptop fails the restricted-folder rule even when names are masked;; 2 = no export;; 1 = export now;; 0 = none.
+
 ### Exercises
 
 - **EX006 — Scope contents.** List the elements a written scope should state. *Rubric:* 3 = services, systems, data, locations, people, exclusions and duration;; 2 = most elements;; 1 = vague;; 0 = none.
@@ -333,7 +428,7 @@ Written scope, explicit permission, careful data handling, safe exercise design 
 <!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
-Lesson 03 published. Map, example, EX021.
+Lesson 03 published. Map, example, EX055.
 
 ```mermaid
 flowchart TD
@@ -344,10 +439,10 @@ flowchart TD
   N4["3.3 Data and where it goes"]
   N5["3.4 Dependencies outside the organisation"]
   N6["3.5 From map to scenarios and evidence"]
-  N7["Synthesis"]
+  N7["Concepts — the listing counts names, it does not gra"]
   N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
   N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX021"]
+  EX --> Q["Exercise EX055"]
 ```
 
 ### Logical drawing
@@ -361,8 +456,8 @@ flowchart LR
   N4["3.3 Data and where it goes"]
   N5["3.4 Dependencies outside the organisation"]
   N6["3.5 From map to scenarios and evidence"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX021"]
+  N7["Concepts — the listing counts names, it does not gra"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -387,10 +482,10 @@ flowchart LR
 [3.5 From map to scenarios and evidence]
     |
     v
-[Synthesis]
+[Concepts — the listing counts names, it does not gra]
     |
     v
-[Worked example] --> [Exercise EX021]
+[Worked example] --> [Exercise EX055]
 ```
 <!-- cykin:lesson-figures:end ch-03 -->
 
@@ -459,6 +554,46 @@ Northstar lists components behind three services, finds the identity provider sh
 
 Maps omit informal tools staff use. Supplier assurance varies in scope. A shared component may have hidden redundancy the map does not show.
 
+
+### Concepts — the listing counts names, it does not grant a key
+
+The laboratory program builds a dictionary of supporters. Each component collects the services that name it. Sorting uses the negative of that collection's length, so the widest support prints first. An empty owner field prints a marker rather than a blank cell. The closing line keeps a component only when its collection holds every service. None of those steps reads the signed scope, so a printed row is not a key.
+
+| Printed fact | What produces it | Decision it supports | Decision it must not be swapped with |
+|---|---|---|---|
+| Identity provider, support count 3, owner IT | The collection length equals 3 | Add it to the restore exercise, because staff who cannot sign in still cannot reopen the portal | The missing-owner decision |
+| Email relay, support count 2, owner `NONE` | An empty owner prints `NONE` | Put ownership on the operations director's decision list. Do not reconfigure the relay | The fact that one component supports all three services |
+| Roster spreadsheet, support count 1, owner `NONE` | The same empty-owner print | The same decision list. Do not reconfigure the spreadsheet | A reason to edit the relay before an owner exists |
+| Case database, support count 1, owner Casework | The row is present in the listing | Keep the row so the shared identity dependency stays visible | Permission to open or investigate that database |
+
+The first signed scope still excludes case management until next quarter. Keeping the row does not move that exclusion.
+
+### Decision flow — three questions, three different rows
+
+```mermaid
+flowchart TD
+  A["A row from the dependency listing"] --> B{"Which question is being asked?"}
+  B -->|Who supports every service| C["Collection length equals 3"]
+  C --> D["The identity provider joins the restore exercise"]
+  B -->|Who has no owner| E["The printed owner is NONE"]
+  E --> F["Email relay and roster go to the director's list"]
+  F --> G["Do not reconfigure either one yet"]
+  B -->|May this row be opened| H{"Is the component inside the first signed scope?"}
+  H -->|Case database, no| I["Keep the row. Do not open the database"]
+  H -->|Portal chain, yes| J["The row is still not permission"]
+```
+
+### Worked example — the case-database row is not a key
+
+The engineer sees the case database in the verified listing and reaches for an export. The row is present so the identity provider's support of every service stays visible, including a service outside the first scope. She leaves that database closed. No suspicious account was found, so there is nothing new to report to its owner; the row alone is not an incident. Separately, the marker `NONE` on the email relay and on the roster spreadsheet is the missing-owner fact. Both names go to the operations director's decision list. She does not reconfigure the relay and she does not edit the spreadsheet. The identity provider's support of all three services is why that component joins the restore exercise, and she does not trade that reason for the `NONE` lines.
+
+> **Synthetic case.** No suspicious case-management account appears here. The row is only the printed listing, and the listing's order is the verified sort.
+
+### Apply
+
+- **EX055 — A row outside the scope.** The laboratory listing includes the case database. The first scope excludes case management. Should the row be deleted, and may the engineer open that database? *Rubric:* 3 = keep the row so the shared identity dependency stays visible; do not open or investigate the case database;; 2 = do not open it;; 1 = delete the row or investigate;; 0 = none.
+- **EX056 — Two facts that must not be swapped.** The listing prints `NONE` for the email relay and shows the identity provider supporting all three services. Which fact is the missing owner, which fact adds a component to the restore exercise, and may the engineer reconfigure the relay? *Rubric:* 3 = `NONE` is the missing owner and goes to the director's decision list; support of all three is why the identity provider joins the restore; do not reconfigure the relay;; 2 = the two facts are different;; 1 = reconfigure the relay;; 0 = none.
+
 ### Exercises
 
 - **EX021 — Portal chain.** List the four components behind the appointment portal. *Rubric:* 3 = web host, scheduling database, identity provider, email relay;; 2 = four;; 1 = vague;; 0 = none.
@@ -492,7 +627,7 @@ A dependency map turns named services into shared components, owners, data oblig
 <!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
-Lesson 04 published. Map, example, EX036.
+Lesson 04 published. Map, example, EX057.
 
 ```mermaid
 flowchart TD
@@ -503,10 +638,10 @@ flowchart TD
   N4["4.3 What the result means"]
   N5["4.4 Recording the decision"]
   N6["4.5 Updating the one-page strategy"]
-  N7["Synthesis"]
+  N7["Concepts — two calculations, and a reading that is n"]
   N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
   N7 --> EX["Worked example"]
-  EX --> Q["Exercise EX036"]
+  EX --> Q["Exercise EX057"]
 ```
 
 ### Logical drawing
@@ -520,8 +655,8 @@ flowchart LR
   N4["4.3 What the result means"]
   N5["4.4 Recording the decision"]
   N6["4.5 Updating the one-page strategy"]
-  N7["Synthesis"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+  N7["Concepts — two calculations, and a reading that is n"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -546,10 +681,10 @@ flowchart LR
 [4.5 Updating the one-page strategy]
     |
     v
-[Synthesis]
+[Concepts — two calculations, and a reading that is n]
     |
     v
-[Worked example] --> [Exercise EX036]
+[Worked example] --> [Exercise EX057]
 ```
 <!-- cykin:lesson-figures:end ch-04 -->
 
@@ -615,6 +750,47 @@ Northstar runs a safe timed restore taking 245 minutes against a 240-minute targ
 
 One calm, announced exercise overstates real readiness. Timings depend on who is available. A missed target by minutes can tempt teams to adjust the target instead of the process.
 
+
+### Concepts — two calculations, and a reading that is neither
+
+Two calculations share the six minute values and answer different questions. The running total is compared with the target by a less-than-or-equal test. The longest step is chosen by looking only at each step's own minutes, ignoring that running total. A governance reading of the search for instructions is a third question, and neither calculation labels it. Rewriting one addend on paper can flip the comparison without isolating a copy, blocking mail, or seating the front desk again.
+
+| Question | Mechanism | Published result | What it is not |
+|---|---|---|---|
+| Did the sum meet the target? | Compare the running total with 240 | `MISSED by 5`, because the total is 245 | The identity of the longest step |
+| Which step is longest? | Select the largest minute value | Restoring the scheduling database, 70 minutes | The 55-minute search |
+| Which delay is a governance gap? | The team's reading of the locate step | Locating the backup and the credentials, 55 minutes | The step the maximum selects |
+| What does rewriting 55 as 50 prove? | Arithmetic on this log | The same addition would print `MET` | A second exercise, or confirmation of the four-hour limit |
+
+The book says a known protected location for the instructions and the backup credentials could save most of the 55 minutes. It does not state a measured saving. Do not invent one.
+
+### Decision flow — sum, maximum, pencil
+
+```mermaid
+flowchart TD
+  A["The published step log"] --> B["Add the six minute values into a running total"]
+  B --> C{"Is the total less than or equal to 240?"}
+  C -->|245| D["Print MISSED by 5"]
+  B --> E["Select the largest minute value"]
+  E --> F["70 minutes: restore the scheduling database"]
+  F --> G["55 minutes is the governance gap and is not the maximum"]
+  D --> H{"Did someone rewrite 55 as 50 on paper?"}
+  H -->|Yes| I["The same addition would print MET"]
+  I --> J["That rewrite is not a second exercise"]
+  J --> K["Confirm four hours only after the improvements and a retest"]
+```
+
+### Worked example — a pencil on the 55
+
+Someone copies the six published lines onto a notepad and changes the locate step from 55 to 50, leaving 15, 70, 60, 25 and 20 untouched. The new sum is 240, so the same comparison would print MET. The pencil mark isolated nothing, blocked no mail, and the front desk made no fresh bookings. The four-hour limit therefore stays an evidence-based proposal until the three improvements exist and a retest is run. A single rehearsed afternoon still flatters the night shift, whatever word a later total happens to print. Editing the notepad so the comparison smiles repeats a shortcut the director already refused.
+
+> **Synthetic case.** The pencil change from 55 to 50 is arithmetic on the published log. It is not a second run, and it is not a measured saving.
+
+### Apply
+
+- **EX057 — What the program actually compared.** The exercise total is 245 and the target test is `t <= 240`. What does the program print, which step does the maximum select, and which delay is the governance gap? *Rubric:* 3 = it prints `MISSED by 5`; the maximum selects restoring the scheduling database at 70 minutes; the governance gap is the 55-minute search, which is not the maximum;; 2 = missed by five, and the database step is longest;; 1 = the 55-minute step is the maximum;; 0 = none.
+- **EX058 — Fifty instead of fifty-five.** If the locate step were 50 rather than 55, the same addition would print `MET`. Does that confirm the four-hour limit? *Rubric:* 3 = no; it is arithmetic on the published log, not a second exercise; the limit is confirmed only after the improvements and a retest; one calm announced exercise still overstates readiness;; 2 = no, a retest is still required;; 1 = yes, the sum now meets the target;; 0 = none.
+
 ### Exercises
 
 - **EX036 — Success definition.** How was success defined before the exercise? *Rubric:* 3 = front-desk staff making test bookings in the restored portal;; 2 = bookings;; 1 = vague;; 0 = none.
@@ -652,7 +828,7 @@ All Northstar details in Chapters 2–4 remain fictional; labs use only the Pyth
 
 ## Final appendix — worked results and assessment notes
 
-The worked results for every chapter are gathered here: EX001–EX005 (Chapter 1) as originally written, followed by EX006–EX050 (Chapters 2–4).
+The worked results for every chapter are gathered here: EX001–EX005 (Chapter 1) as originally written, followed by EX006–EX050 (Chapters 2–4) and by EX051–EX058, two further exercises in each chapter.
 
 ### EX001 — Worked result
 
@@ -674,7 +850,7 @@ Run the timed restoration exercise first. It directly tests the priority service
 
 One acceptable draft is: “We must keep appointment scheduling recoverable for clients and front-desk staff. The operations director is asked to confirm a four-hour interruption limit; it is currently an assumption. Our leading scenario is loss of the portal and database after an account compromise, pending access and dependency review. Within thirty days, the security engineer and operations director will run one end-to-end restore test and retain timestamps and a signed result. The operations director owns the service tradeoff, while the engineer owns the exercise. They will review backup failures daily and the strategy monthly, updating it after the restore test.” The answer earns credit for explicit owner approval, measurable evidence, and honest uncertainty rather than for using these exact words.
 
-### EX006–EX050 — Worked results
+### EX006–EX058 — Worked results
 
 **EX006.** The services, systems, data, locations and people included, what is excluded and how long the work runs.
 
@@ -765,3 +941,19 @@ One acceptable draft is: “We must keep appointment scheduling recoverable for 
 **EX049.** Restore time, backup failures, privileged changes and overdue owner actions.
 
 **EX050.** Adjusting the target instead of improving the process.
+
+**EX051.** The score 9.1 is rejected because nobody can say which decision would change at that number. A timed restore measures quality, because it shows whether the control works under a test, and it can measure effect against the four-hour service outcome if the clock is kept. Coverage, whether the population of services and integrations is included, is a different question.
+
+**EX052.** Sentence 2 cannot be completed because the operations director has not accepted the four-hour limit. That missing fact is the next research task. A blank sentence blocks treating a platform purchase as a strategy choice.
+
+**EX053.** No. Approval to read backup logs does not authorize a restore. The missing safeguards are the isolated test environment and the outbound-email block, and a named person must be able to stop the exercise.
+
+**EX054.** The engineer may not export the scheduling database, because the data protection lead has not signed. Masked screenshots stored on the engineer's personal laptop fail the restricted-folder rule.
+
+**EX055.** Keep the row so the identity provider's support of all three services stays visible. Do not open or investigate the case database. The first scope excludes case management.
+
+**EX056.** Owner `NONE` on the email relay, and on the roster spreadsheet, is the missing-owner fact and goes on the operations director's decision list. The identity provider's support of all three services is why it joins the restore exercise. The engineer does not reconfigure the relay.
+
+**EX057.** The total 245 compared with `t <= 240` prints `MISSED by 5`. The maximum selects restoring the scheduling database at 70 minutes. The governance gap is the 55-minute search, and that step is not the maximum.
+
+**EX058.** If the locate step were 50 instead of 55, the same addition would print `MET`. That is arithmetic on the published log, not a second exercise. The four-hour limit is confirmed only after the improvements and a retest. One calm announced exercise still overstates readiness.

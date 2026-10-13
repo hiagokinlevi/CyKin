@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso Prático de Um Mês
 
 - Idioma: português do Brasil (`pt`); curso 005, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **publicado**. Os capítulos 1–4 de 4 estão escritos; os exercícios EX001–EX050 têm resoluções correspondentes. O capítulo 1 e os exercícios EX001–EX005 são texto do autor original, traduzido com fidelidade e sem alterações de conteúdo; os capítulos 2–4 e os exercícios EX006–EX050 continuam o mesmo caso Northstar, com rubricas de 0 a 3. Os laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. A contagem de páginas A4 não foi verificada.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 estão escritos; os exercícios EX001–EX058 têm resoluções correspondentes. O capítulo 1 e os exercícios EX001–EX005 são texto do autor original, traduzido com fidelidade e sem alterações de conteúdo; os capítulos 2–4 e os exercícios EX006–EX050 continuam o mesmo caso Northstar; os exercícios EX051–EX058 aprofundam o mesmo caso, com rubricas de 0 a 3. Os laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. A contagem de páginas A4 não foi verificada.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); [escopo e exceções](../../../../../RIGHTS.md); as obras citadas mantêm seus direitos.
 
 [Página do curso](../../README.md) · [Índice de capítulos](../SUBJECTS.md) · [Plano do livro](PLAN.md) · [Skill do curso](../../skill/SKILL.md) · [Resoluções](#worked-results)
@@ -207,6 +207,57 @@ A equipe tem uma semana. Ela pode (a) comprar um dashboard sem dono designado pa
 
 Complete o teste da estratégia em seis frases para a Northstar. Marque pelo menos duas afirmações como premissas ou como pendentes de aprovação do dono. Inclua um resultado com dono, data e evidência.
 
+
+### Conceitos — três perguntas que uma nota não responde
+
+Cobertura, qualidade e efeito são ofícios diferentes. Cobertura conta se uma população está dentro do conjunto administrado. Qualidade pergunta se um controle sobreviveu a um teste deliberado. Efeito pergunta se o resultado do serviço se moveu para as pessoas que dependem dele. Um único decimal não assume os três ofícios, e não cabe em Govern, porque Govern nomeia expectativas, responsabilidades e uma direção para o risco.
+
+| Medida | Pergunta que ela responde | Checagem da Northstar que cabe aqui | Pergunta que ela deixa aberta |
+|---|---|---|---|
+| Cobertura | Se a população nomeada entrou na conta | Os serviços prioritários têm dono e uma premissa escrita de interrupção | Se os agendamentos voltam dentro de quatro horas |
+| Qualidade | Se um controle passa quando alguém executa um teste | Uma restauração cronometrada de ponta a ponta, com carimbos de tempo e resultado assinado, em até 30 dias | Se a figura de um cartaz significa que o portal está pronto |
+| Efeito | Se o resultado do serviço mudou para quem depende dele | Clientes e a equipe da recepção ainda conseguem agendar durante uma indisponibilidade | Quantas plataformas a equipe comprou |
+
+### Dados — onde as seis frases param
+
+| Frase | Dá para completar com os fatos do capítulo 1? | O que ainda falta |
+|---|---|---|
+| 1. Serviço e pessoas | Agendamento de consultas para clientes; o próprio portal pode ficar fora | Não há inventário confirmado das integrações com terceiros |
+| 2. Limite de impacto | Ainda não | O diretor de operações não aceitou as quatro horas |
+| 3. Cenários | O cenário principal está rascunhado | A revisão de acessos de identidade e o mapa de dependências ainda são pedidos, não resultados |
+| 4. Resultados | A tarefa está nomeada | A restauração cronometrada ainda não foi executada |
+| 5. Donos | O diretor de operações é dono do tradeoff; o engenheiro é dono do exercício | A aceitação por escrito do uso de recursos continua pendente |
+| 6. Sinais | Os sinais provisórios estão nomeados | Revisão diária das falhas de backup e revisão mensal da estratégia, até o exercício substituir a premissa |
+
+### Fluxo de decisão — recuse a nota e depois teste a frase em branco
+
+```mermaid
+flowchart TD
+  A["Uma figura de fornecedor ou uma oferta de plataforma"] --> B{"Alguém nomeia a escolha que muda nessa figura?"}
+  B -->|Não| C["Recuse a figura como falsa precisão"]
+  B -->|Sim| D{"A frase 2 está completa?"}
+  C --> D
+  D -->|Não| E["A frase em branco é a próxima tarefa de pesquisa"]
+  E --> F["Não trate a compra como a escolha de estratégia"]
+  D -->|Sim| G{"Que ofício a ação cumpre?"}
+  G -->|População contada| H["Cobertura"]
+  G -->|Controle sobreviveu a um teste| I["Qualidade"]
+  G -->|Resultado do serviço mudou| J["Efeito"]
+  I --> K["Uma restauração cronometrada pode falar de qualidade e, com o relógio guardado, de efeito"]
+  H --> L["Cobertura não responde ao resultado de quatro horas"]
+```
+
+### Exemplo resolvido — o cartaz de terça da Calder
+
+O cartaz de terça-feira da Calder Systems mostra um escudo verde e uma figura de prontidão igual a 9,1. A engenheira deixa essa figura fora da tabela de decisão, porque nenhum colega aponta uma escolha que seria outra se a figura impressa andasse um décimo. Ela rascunha as seis frases na mesma folha. A frase 1 consegue nomear o agendamento de consultas para clientes e para a equipe da recepção, ainda que o portal possa ficar fora. A frase 2 para em branco: falta a aceitação do diretor de operações, então a linha inacabada é a tarefa de pesquisa, e uma encomenda de catálogo da plataforma Calder é recusada. A restauração cronometrada continua sendo o primeiro resultado verificável. Ela só fala de um teste e do relógio do serviço depois que alguém a executa. Integrações com firmas externas seguem sem contagem, e isso é uma lacuna separada.
+
+> **Caso sintético.** Essa marca de fornecedora é uma ilustração de sala de aula, não uma medição que a Northstar tenha coletado no próprio portal.
+
+### Aplicar
+
+- **EX051 — Um decimal num cartaz.** A Calder Systems apresenta uma nota de prontidão de 9,1. Por que a regra de falsa precisão a recusa, e de quais dois tipos de medida uma restauração cronometrada pode falar? *Rubrica:* 3 = ninguém diz que decisão muda em 9,1; a restauração cronometrada pode mostrar qualidade e, se o relógio for guardado, efeito; cobertura é outra pergunta;; 2 = recusa a nota;; 1 = aceita 9,1;; 0 = nenhuma.
+- **EX052 — A segunda frase em branco.** A frase 2 do teste de uma página não pode ser completada. Que fato falta, e a equipe pode tratar a compra de uma plataforma como a escolha de estratégia? *Rubrica:* 3 = o diretor de operações não aceitou o limite de quatro horas; o fato que falta é a próxima tarefa de pesquisa; uma frase em branco impede a compra;; 2 = o limite não foi aceito;; 1 = comprar a plataforma;; 0 = nenhuma.
+
 ## Fontes deste capítulo
 
 - [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) — funções do framework e finalidade de gestão de riscos.
@@ -231,7 +282,7 @@ Continue para a próxima aula já escrita.
 <!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
-Aula 02 publicada. Mapa, exemplo, EX006.
+Aula 02 publicada. Mapa, exemplo, EX053.
 
 ```mermaid
 flowchart TD
@@ -240,10 +291,12 @@ flowchart TD
   N2["2.3 Tratar dados pessoais com segurança"]
   N3["2.4 Desenhar um exercício seguro"]
   N4["2.5 Registrar o que foi feito"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX006"]
+  N5["Conceitos — quatro portões que não se abrem uns aos"]
+  N6["Fluxo de decisão — ler, exportar, restaurar ou parar"]
+  N7["Aplicar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX053"]
 ```
 
 ### Desenho lógico
@@ -255,8 +308,10 @@ flowchart LR
   N2["2.3 Tratar dados pessoais com segurança"]
   N3["2.4 Desenhar um exercício seguro"]
   N4["2.5 Registrar o que foi feito"]
-  N5["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX006"]
+  N5["Conceitos — quatro portões que não se abrem uns aos"]
+  N6["Fluxo de decisão — ler, exportar, restaurar ou parar"]
+  N7["Aplicar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -275,10 +330,16 @@ flowchart LR
 [2.5 Registrar o que foi feito]
     |
     v
-[Síntese]
+[Conceitos — quatro portões que não se abrem uns aos]
     |
     v
-[Exemplo resolvido] --> [Exercício EX006]
+[Fluxo de decisão — ler, exportar, restaurar ou parar]
+    |
+    v
+[Aplicar]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX053]
 ```
 <!-- cykin:lesson-figures:end ch-02 -->
 
@@ -317,6 +378,45 @@ A Northstar escreve um escopo que cobre o portal de agendamento e suas dependên
 
 Escopos podem ser estreitos demais para mostrar as dependências reais. Uma permissão por escrito não torna seguro um teste inseguro. O mascaramento pode falhar se as capturas de tela incluírem campos inesperados.
 
+
+### Conceitos — quatro portões que não se abrem uns aos outros
+
+Quatro perguntas permanecem independentes. Uma página de escopo lista inclusões e uma exclusão datada. Uma página de permissão nomeia o verbo, o ator e o relógio. Uma página de teste seguro nomeia o lugar, o bloqueio de saída e a pessoa autorizada a interromper o trabalho. Uma página de custódia nomeia a pasta. Passar na página de escopo não assina a página de permissão.
+
+| Portão | Documento da Northstar | Um passe se parece com isto | O passe vizinho não concede |
+|---|---|---|---|
+| Escopo | Lista de inclusão deste trimestre | Portal de agendamento, banco de dados de agendamento, provedor de identidade, serviço de backup | Abrir a gestão de casos ou a escala de voluntários |
+| Permissão | Aprovação por escrito | Diretor de operações e responsável pela proteção de dados; o que pode ser lido, o que pode ser alterado, quem, quando | Uma restauração, quando a página só permite ler logs de backup |
+| Teste seguro | Plano do exercício | Ambiente isolado, e-mail de saída bloqueado, uma pessoa que pode interromper, credenciais separadas | Segurança só porque a página tem uma assinatura |
+| Custódia | Pasta restrita | Evidências guardadas ali; nomes de clientes mascarados; cópias temporárias apagadas depois | Uma captura mascarada guardada num notebook pessoal |
+
+### Fluxo de decisão — ler, exportar, restaurar ou parar
+
+```mermaid
+flowchart TD
+  A["Uma ação proposta"] --> B{"Ela está na lista escrita de inclusão?"}
+  B -->|Não| C["Comunique ao dono. Não abra"]
+  B -->|Sim| D{"A aprovação nomeia este verbo?"}
+  D -->|Só leitura| E["Não restaure e não exporte"]
+  D -->|Exportação nomeada, falta uma assinatura| F["Espere o responsável pela proteção de dados"]
+  D -->|As duas assinaturas, e o verbo está nomeado| G{"As regras do teste seguro estão presentes?"}
+  G -->|A mensagem ainda pode sair, ou o alvo é a produção| H["Pare. Acrescente a cópia isolada e o bloqueio de saída"]
+  G -->|Isolado, bloqueado, pessoa nomeada para interromper| I{"A evidência está na pasta restrita?"}
+  I -->|Notebook pessoal| J["Mova. Mascarar não substitui a pasta"]
+  I -->|Pasta restrita| K["Registre data, pessoa, referência da aprovação e o que mudou"]
+```
+
+### Exemplo resolvido — a página de quarta para ler logs
+
+Na quarta-feira o diretor de operações assina uma página que deixa a engenheira ler logs de backup do banco de dados de agendamento. A engenheira começa a preparar uma restauração. Esse verbo nunca esteve na página, então a restauração segue sem aprovação. Mesmo uma página posterior que permitisse restaurar ainda a seguraria enquanto mensagens de saída pudessem alcançar clientes, a menos que a cópia estivesse isolada e alguém nomeado pudesse interromper a execução. Na mesma tarde o diretor assina uma exportação, e a linha de assinatura do responsável pela proteção de dados está em branco. A engenheira não exporta o banco de dados de agendamento. Um colega oferece guardar as capturas mascaradas no notebook pessoal da engenheira para a pasta compartilhada parecer arrumada. Mascarar não conserta a oferta: custódia significa a pasta restrita, e um notebook pessoal falha nela.
+
+> **Caso sintético.** A página de assinatura de quarta-feira e o notebook pessoal são inventados. Os dois aprovadores são os nomeados neste capítulo.
+
+### Aplicar
+
+- **EX053 — Ler não é restaurar.** A aprovação por escrito permite que a engenheira leia logs de backup. Essa aprovação permite uma restauração que ainda pode enviar e-mail aos clientes, e quais salvaguardas ainda faltam? *Rubrica:* 3 = não; faltam o ambiente de teste isolado e o bloqueio do e-mail de saída, e uma pessoa nomeada precisa poder interromper o exercício;; 2 = não, porque a mensagem ainda poderia sair;; 1 = sim, a assinatura basta;; 0 = nenhuma.
+- **EX054 — Uma assinatura e um notebook.** O diretor de operações assinou uma exportação do banco de dados de agendamento. O responsável pela proteção de dados não assinou. A engenheira pode exportar, e capturas mascaradas no notebook pessoal dela satisfazem a regra de custódia? *Rubrica:* 3 = não exportar até o responsável pela proteção de dados assinar; um notebook pessoal falha na regra da pasta restrita mesmo com os nomes mascarados;; 2 = não exportar;; 1 = exportar agora;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX006 — Conteúdo do escopo.** Liste os elementos que um escopo escrito deve declarar. *Rubrica:* 3 = serviços, sistemas, dados, locais, pessoas, exclusões e duração;; 2 = a maioria dos elementos;; 1 = vago;; 0 = nenhuma.
@@ -354,7 +454,7 @@ Continue para a próxima aula já escrita.
 <!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
-Aula 03 publicada. Mapa, exemplo, EX021.
+Aula 03 publicada. Mapa, exemplo, EX055.
 
 ```mermaid
 flowchart TD
@@ -364,10 +464,11 @@ flowchart TD
   N3["3.3 Os dados e para onde eles vão"]
   N4["3.4 Dependências fora da organização"]
   N5["3.5 Do mapa aos cenários e às evidências"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX021"]
+  N6["Conceitos — a listagem conta nomes, não entrega uma"]
+  N7["Fluxo de decisão — três perguntas, três linhas difer"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
 ```
 
 ### Desenho lógico
@@ -380,8 +481,9 @@ flowchart LR
   N3["3.3 Os dados e para onde eles vão"]
   N4["3.4 Dependências fora da organização"]
   N5["3.5 Do mapa aos cenários e às evidências"]
-  N6["Síntese"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX021"]
+  N6["Conceitos — a listagem conta nomes, não entrega uma"]
+  N7["Fluxo de decisão — três perguntas, três linhas difer"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -403,10 +505,13 @@ flowchart LR
 [3.5 Do mapa aos cenários e às evidências]
     |
     v
-[Síntese]
+[Conceitos — a listagem conta nomes, não entrega uma]
     |
     v
-[Exemplo resolvido] --> [Exercício EX021]
+[Fluxo de decisão — três perguntas, três linhas difer]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
 ```
 <!-- cykin:lesson-figures:end ch-03 -->
 
@@ -475,6 +580,46 @@ A Northstar lista os componentes por trás de três serviços, descobre que o pr
 
 Mapas omitem ferramentas informais usadas pela equipe. As garantias dos fornecedores variam de escopo. Um componente compartilhado pode ter redundância oculta que o mapa não mostra.
 
+
+### Conceitos — a listagem conta nomes, não entrega uma chave
+
+O programa do laboratório monta um dicionário de apoios. Cada componente reúne os serviços que o citam. A ordenação usa o negativo do comprimento dessa coleção, então o apoio mais largo imprime primeiro. Um campo de dono vazio imprime um marcador em vez de uma célula em branco. A linha final conserva um componente só quando a coleção dele contém todos os serviços. Nenhum desses passos lê o escopo assinado, então uma linha impressa não é uma chave.
+
+| Fato impresso | O que o produz | Decisão que ele sustenta | Decisão com a qual não se troca |
+|---|---|---|---|
+| Provedor de identidade, contagem 3, dono IT | O comprimento da coleção é 3 | Acrescentá-lo ao exercício de restauração, porque quem não consegue entrar ainda não reabre o portal | A decisão de dono ausente |
+| Relay de e-mail, contagem 2, dono `NONE` | Um dono vazio imprime `NONE` | Levar a definição de dono à lista de decisões do diretor de operações. Não reconfigurar o relay | O fato de um componente sustentar os três serviços |
+| Planilha da escala, contagem 1, dono `NONE` | A mesma impressão de dono vazio | A mesma lista de decisões. Não reconfigurar a planilha | Um motivo para editar o relay antes de existir um dono |
+| Banco de casos, contagem 1, dono Casework | A linha está na listagem | Conservar a linha para a dependência compartilhada de identidade continuar visível | Permissão para abrir ou investigar esse banco |
+
+O primeiro escopo assinado ainda exclui a gestão de casos até o próximo trimestre. Conservar a linha não move essa exclusão.
+
+### Fluxo de decisão — três perguntas, três linhas diferentes
+
+```mermaid
+flowchart TD
+  A["Uma linha da listagem de dependências"] --> B{"Qual pergunta está sendo feita?"}
+  B -->|Quem sustenta todos os serviços| C["O comprimento da coleção é 3"]
+  C --> D["O provedor de identidade entra no exercício de restauração"]
+  B -->|Quem não tem dono| E["O dono impresso é NONE"]
+  E --> F["Relay de e-mail e escala vão para a lista do diretor"]
+  F --> G["Não reconfigure nenhum dos dois ainda"]
+  B -->|Esta linha pode ser aberta| H{"O componente está no primeiro escopo assinado?"}
+  H -->|Banco de casos, não| I["Conserve a linha. Não abra o banco"]
+  H -->|Cadeia do portal, sim| J["A linha continua sem ser permissão"]
+```
+
+### Exemplo resolvido — a linha do banco de casos não é uma chave
+
+A engenheira vê o banco de casos na listagem verificada e estende a mão para uma exportação. A linha está ali para o apoio do provedor de identidade a todos os serviços continuar visível, inclusive um serviço fora do primeiro escopo. Ela deixa esse banco fechado. Nenhuma conta suspeita foi encontrada, então não há nada novo a comunicar ao dono; a linha, sozinha, não é um incidente. Em separado, o marcador `NONE` no relay de e-mail e na planilha da escala é o fato do dono ausente. Os dois nomes vão para a lista de decisões do diretor de operações. Ela não reconfigura o relay e não edita a planilha. O apoio do provedor de identidade aos três serviços é o motivo de esse componente entrar no exercício de restauração, e ela não troca esse motivo pelas linhas `NONE`.
+
+> **Caso sintético.** Nenhuma conta suspeita de gestão de casos aparece aqui. A linha é só a listagem impressa, e a ordem da listagem é a ordenação verificada.
+
+### Aplicar
+
+- **EX055 — Uma linha fora do escopo.** A listagem do laboratório inclui o banco de casos. O primeiro escopo exclui a gestão de casos. A linha deve ser apagada, e a engenheira pode abrir esse banco? *Rubrica:* 3 = conservar a linha para a dependência compartilhada de identidade continuar visível; não abrir nem investigar o banco de casos;; 2 = não abrir;; 1 = apagar a linha ou investigar;; 0 = nenhuma.
+- **EX056 — Dois fatos que não se trocam.** A listagem imprime `NONE` para o relay de e-mail e mostra o provedor de identidade sustentando os três serviços. Qual fato é o dono ausente, qual fato acrescenta um componente ao exercício de restauração, e a engenheira pode reconfigurar o relay? *Rubrica:* 3 = `NONE` é o dono ausente e vai para a lista de decisões do diretor; sustentar os três é o motivo de o provedor de identidade entrar na restauração; não reconfigurar o relay;; 2 = os dois fatos são diferentes;; 1 = reconfigurar o relay;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX021 — Cadeia do portal.** Liste os quatro componentes por trás do portal de agendamento. *Rubrica:* 3 = web host, banco de dados de agendamento, provedor de identidade, relay de e-mail;; 2 = os quatro;; 1 = vago;; 0 = nenhuma.
@@ -512,7 +657,7 @@ Continue para a próxima aula já escrita.
 <!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
-Aula 04 publicada. Mapa, exemplo, EX036.
+Aula 04 publicada. Mapa, exemplo, EX057.
 
 ```mermaid
 flowchart TD
@@ -522,11 +667,11 @@ flowchart TD
   N3["4.3 O que o resultado significa"]
   N4["4.4 Registrar a decisão"]
   N5["4.5 Atualizar a estratégia de uma página"]
-  N6["Síntese"]
-  N7["EX001 — Resolução"]
+  N6["Conceitos — dois cálculos, e uma leitura que não é n"]
+  N7["Fluxo de decisão — soma, máximo, lápis"]
   N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
   N7 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX036"]
+  EX --> Q["Exercício EX057"]
 ```
 
 ### Desenho lógico
@@ -539,9 +684,9 @@ flowchart LR
   N3["4.3 O que o resultado significa"]
   N4["4.4 Registrar a decisão"]
   N5["4.5 Atualizar a estratégia de uma página"]
-  N6["Síntese"]
-  N7["EX001 — Resolução"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX036"]
+  N6["Conceitos — dois cálculos, e uma leitura que não é n"]
+  N7["Fluxo de decisão — soma, máximo, lápis"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -563,13 +708,13 @@ flowchart LR
 [4.5 Atualizar a estratégia de uma página]
     |
     v
-[Síntese]
+[Conceitos — dois cálculos, e uma leitura que não é n]
     |
     v
-[EX001 — Resolução]
+[Fluxo de decisão — soma, máximo, lápis]
     |
     v
-[Exemplo resolvido] --> [Exercício EX036]
+[Exemplo resolvido] --> [Exercício EX057]
 ```
 <!-- cykin:lesson-figures:end ch-04 -->
 
@@ -635,6 +780,47 @@ A Northstar executa uma restauração cronometrada e segura que leva 245 minutos
 
 Um único exercício tranquilo e anunciado superestima a prontidão real. Os tempos dependem de quem está disponível. Perder a meta por poucos minutos pode tentar as equipes a ajustar a meta em vez do processo.
 
+
+### Conceitos — dois cálculos, e uma leitura que não é nenhum deles
+
+Dois cálculos compartilham os seis valores em minutos e respondem a perguntas diferentes. O total acumulado é comparado com a meta por um teste de menor ou igual. A etapa mais longa é escolhida olhando só os minutos de cada etapa, ignorando esse total acumulado. Uma leitura de governança da busca pelas instruções é uma terceira pergunta, e nenhum dos dois cálculos a rotula. Reescrever uma parcela no papel pode virar a comparação sem isolar uma cópia, sem bloquear mensagens e sem sentar a recepção de novo.
+
+| Pergunta | Mecanismo | Resultado publicado | O que ele não é |
+|---|---|---|---|
+| A soma atingiu a meta? | Comparar o total acumulado com 240 | `MISSED by 5`, porque o total é 245 | A identidade da etapa mais longa |
+| Qual etapa é a mais longa? | Selecionar o maior valor em minutos | Restaurar o banco de dados de agendamento, 70 minutos | A busca de 55 minutos |
+| Qual atraso é lacuna de governança? | A leitura da equipe sobre a etapa de localizar | Localizar o backup e as credenciais, 55 minutos | A etapa que o máximo seleciona |
+| O que prova reescrever 55 como 50? | Aritmética neste log | A mesma soma imprimiria `MET` | Um segundo exercício, ou a confirmação do limite de quatro horas |
+
+O livro diz que um local conhecido e protegido para as instruções e para as credenciais do backup poderia poupar a maior parte dos 55 minutos. Ele não declara uma economia medida. Não invente uma.
+
+### Fluxo de decisão — soma, máximo, lápis
+
+```mermaid
+flowchart TD
+  A["O log publicado das etapas"] --> B["Somar os seis valores em minutos num total acumulado"]
+  B --> C{"O total é menor ou igual a 240?"}
+  C -->|245| D["Imprimir MISSED by 5"]
+  B --> E["Selecionar o maior valor em minutos"]
+  E --> F["70 minutos: restaurar o banco de dados de agendamento"]
+  F --> G["55 minutos é a lacuna de governança e não é o máximo"]
+  D --> H{"Alguém reescreveu 55 como 50 no papel?"}
+  H -->|Sim| I["A mesma soma imprimiria MET"]
+  I --> J["Essa reescrita não é um segundo exercício"]
+  J --> K["Confirme as quatro horas só depois das melhorias e de um novo teste"]
+```
+
+### Exemplo resolvido — um lápis no 55
+
+Alguém copia as seis linhas publicadas para um bloco e muda a etapa de localizar de 55 para 50, deixando 15, 70, 60, 25 e 20 intocados. A nova soma é 240, então a mesma comparação imprimiria MET. A marca do lápis não isolou nada, não bloqueou mensagem, e a recepção não fez agendamentos novos. Por isso o limite de quatro horas continua uma proposta baseada em evidências até as três melhorias existirem e um novo teste ser executado. Um único exercício tranquilo e anunciado ainda superestima a prontidão, mesmo se uma soma posterior imprimir MET. Mudar o log para a desigualdade virar é a mesma tentação que mudar a meta em vez do processo.
+
+> **Caso sintético.** A troca a lápis de 55 para 50 é aritmética no log publicado. O rabisco não acende a recepção de madrugada nem conta como ensaio novo.
+
+### Aplicar
+
+- **EX057 — O que o programa de fato comparou.** O total do exercício é 245 e o teste da meta é `t <= 240`. O que o programa imprime, qual etapa o máximo seleciona, e qual atraso é a lacuna de governança? *Rubrica:* 3 = imprime `MISSED by 5`; o máximo seleciona restaurar o banco de dados de agendamento em 70 minutos; a lacuna de governança é a busca de 55 minutos, que não é o máximo;; 2 = perdeu por cinco, e a etapa do banco é a mais longa;; 1 = a etapa de 55 minutos é o máximo;; 0 = nenhuma.
+- **EX058 — Cinquenta em vez de cinquenta e cinco.** Se a etapa de localizar fosse 50 em vez de 55, a mesma soma imprimiria `MET`. Isso confirma o limite de quatro horas? *Rubrica:* 3 = não; é aritmética no log publicado, não um segundo exercício; o limite só se confirma depois das melhorias e de um novo teste; um exercício tranquilo e anunciado ainda superestima a prontidão;; 2 = não, um novo teste ainda é necessário;; 1 = sim, a soma agora atinge a meta;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX036 — Definição de sucesso.** Como o sucesso foi definido antes do exercício? *Rubrica:* 3 = equipe da recepção fazendo agendamentos de teste no portal restaurado;; 2 = agendamentos;; 1 = vago;; 0 = nenhuma.
@@ -676,7 +862,7 @@ Todos os detalhes da Northstar nos capítulos 2–4 continuam fictícios; os lab
 
 ## Apêndice final — resoluções e notas de avaliação
 
-As resoluções de todos os capítulos estão reunidas aqui: EX001–EX005 (capítulo 1), como escritas originalmente, seguidas de EX006–EX050 (capítulos 2–4). A Northstar Community Services, seus sistemas, fornecedores, dados e tempos são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+As resoluções de todos os capítulos estão reunidas aqui: EX001–EX005 (capítulo 1), como escritas originalmente, seguidas de EX006–EX050 (capítulos 2–4) e de EX051–EX058, dois exercícios a mais em cada capítulo. A Northstar Community Services, seus sistemas, fornecedores, dados e tempos são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 ### EX001 — Resolução
 
@@ -698,7 +884,7 @@ As resoluções de todos os capítulos estão reunidas aqui: EX001–EX005 (cap�
 
 **EX005.** Um rascunho aceitável é: “Precisamos manter o agendamento de consultas recuperável para clientes e para a equipe da recepção. Pede-se ao diretor de operações que confirme um limite de interrupção de quatro horas; por ora, é uma premissa. Nosso cenário principal é a perda do portal e do banco de dados após o comprometimento de uma conta, pendente de revisão de acessos e de dependências. Em até trinta dias, o engenheiro de segurança e o diretor de operações executarão um teste de restauração de ponta a ponta e guardarão os carimbos de tempo e um resultado assinado. O diretor de operações é dono do tradeoff do serviço, e o engenheiro é dono do exercício. Eles revisarão as falhas de backup diariamente e a estratégia mensalmente, atualizando-a após o teste de restauração.” A resposta recebe crédito pela aprovação explícita do dono, pela evidência mensurável e pela incerteza declarada com honestidade, não por usar exatamente estas palavras.
 
-### EX006–EX050 — Resoluções
+### EX006–EX058 — Resoluções
 
 **EX006.** Os serviços, sistemas, dados, locais e pessoas incluídos, o que fica excluído e quanto tempo o trabalho dura.
 
@@ -789,3 +975,19 @@ As resoluções de todos os capítulos estão reunidas aqui: EX001–EX005 (cap�
 **EX049.** Tempo de restauração, falhas de backup, mudanças privilegiadas e ações atrasadas dos donos.
 
 **EX050.** Ajustar a meta em vez de melhorar o processo.
+
+**EX051.** A nota 9,1 é recusada porque ninguém consegue dizer qual decisão mudaria nesse número. Uma restauração cronometrada mede qualidade, porque mostra se o controle funciona sob um teste, e pode medir efeito contra o resultado de serviço de quatro horas se o relógio for guardado. Cobertura, isto é, se a população de serviços e de integrações está incluída, é outra pergunta.
+
+**EX052.** A frase 2 não pode ser completada porque o diretor de operações não aceitou o limite de quatro horas. Esse fato que falta é a próxima tarefa de pesquisa. Uma frase em branco impede tratar a compra de uma plataforma como escolha de estratégia.
+
+**EX053.** Não. A aprovação para ler logs de backup não autoriza uma restauração. As salvaguardas que faltam são o ambiente de teste isolado e o bloqueio do e-mail de saída, e uma pessoa nomeada precisa poder interromper o exercício.
+
+**EX054.** A engenheira não pode exportar o banco de dados de agendamento, porque o responsável pela proteção de dados não assinou. Capturas mascaradas no notebook pessoal da engenheira falham na regra da pasta restrita.
+
+**EX055.** Conserve a linha para o apoio do provedor de identidade aos três serviços continuar visível. Não abra nem investigue o banco de casos. O primeiro escopo exclui a gestão de casos.
+
+**EX056.** O dono `NONE` no relay de e-mail, e na planilha da escala, é o fato do dono ausente e entra na lista de decisões do diretor de operações. O apoio do provedor de identidade aos três serviços é o motivo de ele entrar no exercício de restauração. A engenheira não reconfigura o relay.
+
+**EX057.** O total 245 comparado com `t <= 240` imprime `MISSED by 5`. O máximo seleciona restaurar o banco de dados de agendamento em 70 minutos. A lacuna de governança é a busca de 55 minutos, e essa etapa não é o máximo.
+
+**EX058.** Se a etapa de localizar fosse 50 em vez de 55, a mesma soma imprimiria `MET`. Isso é aritmética no log publicado, não um segundo exercício. O limite de quatro horas só se confirma depois das melhorias e de um novo teste. Um exercício tranquilo e anunciado ainda superestima a prontidão.
