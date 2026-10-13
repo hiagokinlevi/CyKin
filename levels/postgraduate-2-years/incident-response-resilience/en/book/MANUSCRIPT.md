@@ -67,17 +67,25 @@ Framing is the specialist's main lever. A badly framed decision ("shut it down o
 
 Some uncertainty shrinks with effort before the deadline — whether a log shows outbound transfer, whether a backup is intact. Some does not — the attacker's next move, whether a regulator will view a choice as reasonable. Spend investigative effort on reducible uncertainty that could change the decision (the **value of information**, introduced at bachelor's level), and decide through the rest with explicit assumptions. A useful discipline is to write: "If we learn X by 14:00, we choose A; otherwise B."
 
+In Calder's order-API case, that sentence became the O4 escalation trigger.
+
 ### 1.5 Decision quality versus outcome quality
 
 A good decision can have a bad outcome and vice versa. Judge decisions by the information, options and reasoning available at the time, not by what happened. This is not an excuse: it is the only fair basis for learning, and it is how a well-prepared decision record protects the people who made the decision. Hindsight bias (Fischhoff, 1975) will otherwise rewrite history.
+
+Calder's order-API record is built for this test: it lists the gateway logs reviewed up to 09:40, the partner list and the board's appetite statement v3, so a later reviewer can judge O4 on what was known at 10:25, not on what the investigation found afterwards.
 
 ### 1.6 Residual risk and acceptance
 
 Every option leaves **residual risk**. The owner must accept it explicitly, in writing, with its expected duration and the conditions under which it will be re-examined. Unaccepted residual risk is a common finding in post-incident and audit reviews.
 
+Calder's O4 record states its residual risk plainly: records retrieved with the key before rotation may already be exposed, and that question remains under investigation. Writing it down makes the group incident commander's acceptance visible and gives the privacy and legal workflow a clear starting point if overnight extraction is later confirmed. It also tells the board exactly which risk it carried during the holiday sale.
+
 ### 1.7 Revisit conditions
 
 Decisions under uncertainty must state **revisit triggers**: new facts (evidence of exfiltration), elapsed time (every 6 hours), threshold breaches (customer complaints above a level), or stakeholder events (regulator inquiry). Triggers prevent both stubbornness and churn.
+
+The order-API record shows all four kinds of trigger at work: any bulk retrieval after key rotation moves Calder to O3, taking the API offline, without a new meeting, because that move was pre-approved; confirmed overnight extraction starts the privacy and legal notification workflow; and the decision is re-examined every six hours whatever happens. A regulator inquiry or a partner complaint would be sensible additions.
 
 ### 1.8 Worked example and lab (synthetic): the order API during a critical period
 
@@ -139,6 +147,8 @@ Interpretation: O4 is best in 9 of 15 combinations, including every combination 
 - Judging the decision by its outcome.
 - Treating weighted scores as measurements; they are a disciplined way to expose judgement, and their weights must come from the organization, not the analyst.
 
+Calder's order-API case shows the first and last errors side by side. Framing the choice as "keep the API up or take it down" would have left out O4, the staged option the lab found best in 9 of 15 combinations. And O4's weights came from the board's appetite statement, not from the analyst's own sense of which harm mattered more.
+
 ### Exercises — chapter 1
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -149,9 +159,9 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX003 — Run and stress Lab PG-01.** *Steps:* run the lab; change the regulatory weight to 0.10 and data to 0.60; report the new pattern of wins and what it implies. *Rubric:* 3 = output reported and correctly interpreted (O4 remains robust or the pattern change is explained); 2 = output only; 1 = not run; 0 = none.
 
-**EX004 — Information plan.** *Steps:* for the §1.8 case list three pieces of reducible uncertainty with the decision each could change, and one irreducible uncertainty. *Rubric:* 3 = each reducible item tied to a specific option switch and deadline; irreducible example correct; 2 = not tied to options; 1 = list only; 0 = none.
+**EX004 — Information plan.** *Steps:* for the order-API case in this chapter's worked example list three pieces of reducible uncertainty with the decision each could change, and one irreducible uncertainty. *Rubric:* 3 = each reducible item tied to a specific option switch and deadline; irreducible example correct; 2 = not tied to options; 1 = list only; 0 = none.
 
-**EX005 — Revisit triggers.** *Steps:* critique the §1.8 triggers and add two. *Rubric:* 3 = identifies gaps (no trigger for new key misuse elsewhere, partner complaints, regulator contact) with measurable triggers; 2 = adds triggers without critique; 1 = generic; 0 = none.
+**EX005 — Revisit triggers.** *Steps:* critique the revisit triggers in this chapter's order-API worked example and add two. *Rubric:* 3 = identifies gaps (no trigger for new key misuse elsewhere, partner complaints, regulator contact) with measurable triggers; 2 = adds triggers without critique; 1 = generic; 0 = none.
 
 ### Chapter synthesis
 
@@ -181,25 +191,37 @@ Large incidents fail more often from coordination than from technical ignorance.
 
 The **incident commander** owns the incident: sets objectives, approves the action plan, makes or delegates decisions within pre-approved thresholds (Chapter 1) and escalates the rest. The commander is not the best technician; doing hands-on analysis is a common failure because it consumes attention needed for coordination. A **deputy** shares load and provides continuity.
 
+Calder's charter enforces this: the group incident commander comes from a pre-approved roster of six trained people, with a deputy, and divisional CIOs sit in the command meeting as business liaisons rather than directing technical work themselves.
+
 ### 2.3 Functional sections
 
 A typical enterprise cyber structure: **Operations** (technical investigation, containment, recovery — often split into workstreams), **Planning** (situation status, timeline, action plan, documentation), **Communications** (internal, customers, media, regulators via legal), **Legal and privacy** (advice, notification analysis, privilege), **Business liaison** (division leaders, service owners), and **Logistics** (people, tools, external retainer firms, rest rotations). In smaller incidents one person may hold several functions; the roles still exist.
+
+At Calder, Planning maintains the incident record and the situation reports, and Business liaison is where the three divisional CIOs sit. A commander with eleven people reporting directly can regroup them into these six sections plus a deputy, which is the exercise this chapter sets.
 
 ### 2.4 Conflicting reporting lines
 
 In enterprises, people in the incident report to divisional managers outside it. Unity of command during the incident must be agreed in policy: for the incident's duration, participants take incident tasking from the incident structure, while their line managers retain HR authority. Divisional leaders join as liaisons, not as parallel commanders. Without this agreement, the most senior person in the room becomes the de facto commander regardless of competence.
 
+Calder learned this from a previous incident: three CIOs each ordered containment in their own divisions, and one isolated a shared directory server, breaking authentication for the other two. The group CISO was informed but not in command. The charter now states that divisional CIOs cannot order containment on shared services.
+
 ### 2.5 Information cadence
 
 Set a **battle rhythm**: fixed times for situation updates (for example every 2 hours for the core team, every 6 for executives), a standard situation report format (facts, assessment, actions, decisions needed, next update), and a single source of truth (case record or shared document) that Planning maintains. Ad hoc requests for updates are redirected to the next scheduled update unless a decision is pending.
+
+Calder's charter sets this rhythm: a 15-minute core sync every 2 hours in a standing format, an executive brief at 08:00 and 18:00, and Planning maintaining the single incident record. When a division head asks for an extra update mid-afternoon, the answer is the 18:00 brief, unless a decision she owns is waiting.
 
 ### 2.6 Delegation and thresholds
 
 Delegate decisions with explicit bounds: "Operations lead may isolate any non-production host; production isolation requires commander approval unless the Chapter 1 threshold applies." Record delegations so that responsibility is clear in review.
 
+Calder's charter writes its bounds the same way: Operations may contain within a single division's non-shared assets, while shared services such as identity, network core and email need the commander's approval. That rule is what would have stopped one CIO isolating the shared directory server in the earlier incident. Delegations made during an incident go into the decision log with the time and the person delegating, so a later review can see who had authority to act and when.
+
 ### 2.7 Handoffs and fatigue
 
 Long incidents need **operational periods** (for example 12 hours) with formal handoffs. A handoff includes: current objectives, situation summary, active workstreams and owners, pending decisions, recent decisions and their reasons, risks and watch items, and contacts. The incoming commander reads back the key points. Fatigue degrades judgement; schedule rest deliberately, including for leaders.
+
+Calder's stress test found the gap this list guards against: at the 19:00 shift change, the incoming commander found a pending decision, whether to force-reset all Logistics passwords, with no record of why it had been deferred. The handoff template now requires the options, the reason for deferral and the deadline. Commanders may serve at most two consecutive 12-hour periods.
 
 ### 2.8 Worked example (synthetic): a multi-division charter
 
@@ -224,6 +246,8 @@ Stress test — shift change at 19:00 during active containment: the incoming co
 - Handoffs without pending decisions and their reasons.
 - Copying ICS terminology without the training and exercises that make it work.
 
+Calder's charter answers each error in turn. The commander comes from a trained roster and does not take hands-on work. Divisional CIOs act as liaisons, not parallel commanders, and cannot order containment on shared services. A fixed sync and briefing rhythm replaces updates on demand. Handoffs must carry pending decisions with their reasons. The roster itself was tested in an exercise, which is how the weekend coverage gap in one region was found.
+
 ### Exercises — chapter 2
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -232,7 +256,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX007 — Unity of command clause.** *Steps:* write the policy clause that resolves conflicting reporting lines during incidents. *Rubric:* 3 = incident tasking authority, line-manager retention of HR authority, liaison role for divisional leaders, dispute escalation path; 2 = partial; 1 = vague; 0 = none.
 
-**EX008 — Situation report.** *Inputs:* §2.8 at 14:00. *Steps:* write a one-page situation report in the standard format. *Rubric:* 3 = facts with sources, assessment with confidence, actions with owners, decisions needed with deadlines, next update; 2 = missing decisions; 1 = narrative; 0 = none.
+**EX008 — Situation report.** *Inputs:* this chapter's multi-division charter worked example, at 14:00. *Steps:* write a one-page situation report in the standard format. *Rubric:* 3 = facts with sources, assessment with confidence, actions with owners, decisions needed with deadlines, next update; 2 = missing decisions; 1 = narrative; 0 = none.
 
 **EX009 — Handoff template.** *Steps:* design a written handoff template with read-back items. *Rubric:* 3 = objectives, situation, workstreams/owners, pending decisions (options, reason for deferral, deadline), recent decisions with reasons, risks, contacts, read-back of top three; 2 = misses pending decision detail; 1 = list of notes; 0 = none.
 
@@ -262,29 +286,43 @@ You will be able to (1) read forensic, cloud-audit and identity-trace reports cr
 
 At this level, much evidence reaches you as reports written by others: internal forensic analysts, external retained firms, cloud providers, vendors. A report is a chain of claims built on artefacts, tools and interpretation. Reading it well means separating (a) the artefacts examined, (b) the methods and tools (with versions), (c) the observations, (d) the interpretations, and (e) the stated limitations — and noticing when one is missing.
 
+Calder's ransomware case shows why: the external firm's report H and the internal cloud team's report C each reached a sound conclusion from different artefact sets. Neither had seen the other's logs.
+
 ### 3.2 Forensic reports
 
 A host forensic report should state the acquisition method (live response, disk image, memory capture), hashes, the timeline of artefacts (process execution, file creation, registry or configuration changes), interpretation (for example "initial execution via a malicious document at 10:02") and limits (timestamp reliability, anti-forensics, missing logs). NIST SP 800-86 describes the integration of forensic techniques into response; standards such as ISO/IEC 27037 cover identification, collection, acquisition and preservation of digital evidence.
+
+Report H in Calder's ransomware case had most of these elements: appliance logs with 30-day retention, a jump-host image, and an interpretation of the 01:12 VPN session. What it lacked was a statement that IdP logs had not been examined, which was the limit that mattered.
 
 ### 3.3 Cloud audit reports
 
 Cloud evidence comes from provider logs whose completeness depends on configuration and licence (bachelor's Chapter 31 showed the effect of missing data-read logs). A cloud report should state which log types were available, their retention, any gaps, and the query logic used. Provider statements about their own systems are evidence too, but with limited verifiability.
 
+Report C at Calder was a cloud report of this kind: it used IdP sign-ins and control-plane logs to trace a phished administrator and the access key created minutes later. Its conclusion was strong on what those logs showed, but it had not checked whether the key was used from Calder's VPN pool or on-premises ranges, which is exactly the question Calder later sent back to the cloud team.
+
 ### 3.4 Identity traces
 
 Identity investigations follow principals across IdP sign-ins, token issuance, application sessions and privileged operations. Common pitfalls: assuming a sign-in location is the user's location; ignoring non-interactive token refreshes; confusing the account that authenticated with the service that acted on its behalf.
+
+The Calder reconciliation turned on such a trace. The 01:12 VPN session looked like an exploit to the host-based firm, but it authenticated with valid credentials of an account whose password had been reset by the phished cloud administrator on 30 May. Following the principal across the IdP, the cloud control plane and the VPN connected two reports that each saw only one segment of the path.
 
 ### 3.5 Expert limitation
 
 Experts are fallible and have incentives: an external firm may be cautious to limit liability; an internal team may be reluctant to find gaps in its own controls; a vendor may minimize its product's role. Ask each expert: *What did you examine? What did you not examine? What would change your conclusion? How confident are you, and why?*
 
+At Calder these questions produced the two clarifying requests: the external firm was asked to review VPN authentication logs for 28 May to 3 June for a named list of accounts, and the internal team was asked whether the 28 May access key was used from the VPN pool or on-premises ranges.
+
 ### 3.6 Reconciling disagreements
 
 When reports disagree, tabulate: claim, report A's position and basis, report B's position and basis, what explains the difference (different artefacts, different time windows, different assumptions), and what evidence would discriminate. Often the disagreement dissolves into "they examined different things".
 
+Calder's table is a model. On initial access, report H said VPN exploit on 3 June and report C said phished admin on 28 May. The difference was explained by artefact sets: H never saw IdP logs, and C never examined the VPN. The discriminating evidence was whether the 01:12 session used credentials of an account compromised on 28 May. Once checked, both reports turned out to be partly right.
+
 ### 3.7 Confidence statements
 
 A confidence statement gives the conclusion, the confidence level on a defined scale, the main supporting evidence, the main alternative and why it is less likely, and what would change the assessment. Analytic standards in intelligence (for example the US Intelligence Community Directive 203) require such expressions of confidence and the distinction between assumptions and judgements; the same discipline is useful in incident reports.
+
+Calder's statement follows this form: moderate confidence that initial access occurred on 28 May through phishing of a cloud administrator, with the IdP sign-ins, the access key and the 30 May reset as support, and the VPN-exploit theory as the main alternative.
 
 ### 3.8 Worked example (synthetic): initial access disputed
 
@@ -313,6 +351,8 @@ Confidence statement: "We assess with moderate confidence that initial access oc
 - Vague requests ("please look again") to experts.
 - Confidence words without defined meaning.
 
+Calder's ransomware case shows how the first error happens. The external firm's report H sounded authoritative and arrived first, but its artefacts were VPN appliance logs and a jump-host image; it never saw the IdP. Reconciling it with report C took two precise requests, one to each team, naming dates, accounts and address ranges. A request to "look again" would have produced two longer versions of the same reports.
+
 ### Exercises — chapter 3
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -325,7 +365,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX014 — Confidence scale.** *Steps:* define a four-level confidence scale for your organization's incident reports with criteria for each level. *Rubric:* 3 = levels with evidential criteria (independent sources, quality, alternatives excluded), distinct from likelihood terms; 2 = levels without criteria; 1 = words only; 0 = none.
 
-**EX015 — Executive version.** *Steps:* rewrite the §3.8 confidence statement for the executive committee in 80 words. *Rubric:* 3 = conclusion, confidence, implication for decisions, what is being done, what could change it; plain language; 2 = too technical; 1 = drops uncertainty; 0 = none.
+**EX015 — Executive version.** *Steps:* rewrite the confidence statement from this chapter's disputed-initial-access worked example for the executive committee in 80 words. *Rubric:* 3 = conclusion, confidence, implication for decisions, what is being done, what could change it; plain language; 2 = too technical; 1 = drops uncertainty; 0 = none.
 
 ### Chapter synthesis
 
@@ -351,6 +391,8 @@ You will be able to (1) apply proportionality, necessity and least intrusion to 
 
 Specialists receive requests from executives that practitioners never see: "monitor everyone in finance", "read the union representative's email", "keep all logs forever". They also hold the technical means to comply. Ethical competence here is the ability to say "not like that — here is a way that answers your real question" and to document why.
 
+Calder's division head made such a request: full keystroke and screen monitoring of all 120 Financial Services staff for three months, after one alert about one analyst's credential. The specialist's answer was to investigate that credential first and strengthen controls for everyone.
+
 ### 4.2 Proportionality and necessity
 
 Data-protection law and human-rights frameworks commonly test interferences with privacy by asking whether they pursue a **legitimate aim**, are **necessary** (no less intrusive means would work) and **proportionate** (the intrusion is balanced against the benefit). The European Data Protection Board's and earlier Article 29 Working Party's guidance on employee monitoring (for example Opinion 2/2017 on data processing at work) applies these ideas to workplace monitoring: blanket, continuous monitoring is rarely proportionate; targeted, time-limited, transparent measures are more defensible. Jurisdictions differ; counsel decides legality, but the specialist designs options that can pass the test.
@@ -359,17 +401,25 @@ Data-protection law and human-rights frameworks commonly test interferences with
 
 Responders owe duties to the employer (protect assets), to employees (fair treatment, privacy), to customers and data subjects (protect their data, be honest about breaches), and to the law (preservation, cooperation, non-interference). These conflict: protecting the organization's reputation can tempt under-reporting; protecting assets can tempt over-monitoring. Name the duties in the decision record and show how the plan honours each.
 
+In Calder's monitoring request, the duty to the employer is met by investigating the credential and adding phishing-resistant MFA; the duty to employees by rejecting blanket keystroke and screen capture; and the duty to the law by leaving the legal basis for any enhanced logging to counsel.
+
 ### 4.4 Confidentiality and privilege
 
 Investigations may involve information subject to legal privilege, trade secrets or third-party confidentiality. Route such matters through counsel; structure engagement of external investigators so that confidentiality is protected (in some jurisdictions, through counsel), without using privilege to hide facts that must be disclosed.
+
+At Calder, counsel instructed the legal hold on the exposed customer-contact export before operations changed anything, and the investigation repository was limited to six named people. Privilege may protect the analysis, but it cannot delay the GDPR notification that the privacy officer determined was required, and the decision log records both without mixing them up.
 
 ### 4.5 Consent and its limits
 
 In employment, consent is rarely "freely given" because of the power imbalance; data-protection authorities generally discourage relying on employee consent for monitoring. Prefer other legal bases established by counsel, combined with transparency (policy notices) and safeguards.
 
+At Calder, option D, 30 days of enhanced logging of data-export events, does not rely on consent. Counsel confirms its legal basis, staff receive notice, and access is limited to two named investigators. Transparency here is a safeguard in its own right: staff know what is logged and why, so the monitoring is less likely to damage trust in the division even though nobody was asked to agree to it.
+
 ### 4.6 The review record
 
 An auditable ethical decision records: the request and requester; the stated aim; options considered with intrusion and effectiveness; legal basis (from counsel); safeguards (scope, duration, access, retention, oversight); the decision and decider; and a review date. This record protects the people affected and the people deciding.
+
+Calder's record for the monitoring request follows this list: request from the division head on 14 June; options A to D with intrusion and effectiveness; legal basis for D to be confirmed by counsel; safeguards for D of 30 days, export events only, two named investigators, deletion after closure and staff notice; decision B plus C with D conditional; decider the CISO with counsel and HR; review on 1 July.
 
 ### 4.7 Worked example (synthetic): broad monitoring request
 
@@ -394,6 +444,8 @@ Review record (excerpt): Request (division head, 14 June); aim; options A–D wi
 - Recording only the decision, not the alternatives and reasons.
 - Ethics reasoning cannot replace legal advice; equally, legality does not guarantee proportionality.
 
+Calder's case shows the first error being avoided. The division head's method was blanket keystroke and screen monitoring, but the aim was to detect further credential misuse and data theft. Options B and C met that aim with far less intrusion, and D stayed available if B found evidence of export. Recording all four options, not only the decision, lets an auditor see that option A was rejected for reasons.
+
 ### Exercises — chapter 4
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -402,7 +454,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX017 — Duties map.** *Inputs:* a breach of customer data caused by a misconfiguration made by a well-liked senior engineer. *Steps:* map duties to employer, employee, customers and law, and identify one conflict. *Rubric:* 3 = all four with concrete obligations and a conflict (e.g., fairness to engineer vs complete disclosure of cause); 2 = three; 1 = generic; 0 = none.
 
-**EX018 — Review record.** *Steps:* complete the full review record for option D in §4.7. *Rubric:* 3 = all fields, safeguards measurable, review date, legal basis left to counsel; 2 = missing safeguards; 1 = narrative; 0 = none.
+**EX018 — Review record.** *Steps:* complete the full review record for option D in this chapter's broad-monitoring-request worked example. *Rubric:* 3 = all fields, safeguards measurable, review date, legal basis left to counsel; 2 = missing safeguards; 1 = narrative; 0 = none.
 
 **EX019 — Pushback script.** *Steps:* write a 120-word response to the division head declining option A while offering a path that meets the aim. *Rubric:* 3 = acknowledges aim, explains risk briefly, offers B/C/D with timelines, invites decision; 2 = declines without alternative; 1 = complies; 0 = none.
 
@@ -432,9 +484,13 @@ You will be able to (1) design containment across cloud and on-premises environm
 
 Piecemeal containment — each team acting as it discovers something — warns the adversary and leaves alternative footholds. **Coordinated containment** gathers enough scoping information, then executes a planned set of actions within a short window so that the adversary loses access everywhere at once. The trade-off is time: waiting to coordinate allows harm to continue. The commander decides where on this spectrum to sit, using the thresholds of Chapter 1.
 
+Calder's identity compromise shows the trade-off: the big-bang strategy needed 36 hours of preparation, while executive mailboxes were being read throughout.
+
 ### 5.2 Scoping before acting
 
 Coordinated containment needs a scope: compromised identities (users, service principals, keys), hosts, persistence mechanisms, external infrastructure and data at risk. Scope is never complete; decide what level of confidence is "enough" and what monitoring will catch what you missed.
+
+At Calder the scope listed a compromised on-premises domain admin, a synchronized cloud global admin, an OAuth application with mail-read consent, a web shell on the file-transfer server, a partner service principal the adversary may have read, and 300 users whose credentials may have been harvested. Monitoring for old credentials and new persistence was the answer to whatever the list missed.
 
 ### 5.3 Identity first
 
@@ -444,13 +500,19 @@ When identity spans cloud and on-premises (for example, directory synchronizatio
 
 Each action has dependants. Rotating a service-account secret used by twenty integrations breaks them unless updated in step; disabling a federation trust may cut off a partner. Build an action-dependency table with owners who will update dependants in the window.
 
+Calder's partner service principal is the example: its secret was rotated with the partner on the call, and a temporary secret was kept for one hour as rollback. Forcing sign-out and password reset for 300 users had a dependant too: the helpdesk had to be staffed for the calls that followed, which is why it appears on the gate checklist.
+
 ### 5.5 Approval and rollback gates
 
 Gates are points where the commander confirms preconditions: scope accepted; dependants ready; communications drafted; monitoring in place. Each action has a rollback plan and a rollback trigger (for example, failure of a critical integration for more than 15 minutes).
 
+Calder's gate checklist named the conditions: scope review signed off, partner engaged, user communication ready, helpdesk staffed, monitoring for old credentials and new persistence deployed, and partner rollback prepared. Its rollback trigger was concrete: if the partner integration was still failing after 30 minutes, the temporary secret would be reinstated under monitoring.
+
 ### 5.6 Execution and verification
 
 Execute in a defined window with a single coordinator calling steps and recording completion times. Verify immediately: no successful authentication with old credentials, no activity from revoked sessions, alerts for re-entry attempts.
+
+At Calder the window was two hours on a weekend, with seven steps called in order, from egress blocks to the 300 user resets. Verification afterwards was what later allowed the Day 3 briefing to say that no attacker activity had been seen for 40 hours, and to back that with an assurance table rather than a hope.
 
 ### 5.7 Worked example (synthetic): identity compromise across cloud and on-premises
 
@@ -471,6 +533,8 @@ Recommendation (fictional): S1, with one immediate action pulled forward — dis
 - No verification after execution.
 - Treating the plan as final: new scope found during execution needs a decision, not improvisation.
 - Vendor-specific steps (for example directory key rotation) must follow current vendor guidance.
+
+Calder's plan avoided the first two errors by design: identity steps (admin resets, session revocation, key-signing secret rotation) were in the same window as host clean-up, and the partner secret was rotated with the partner on the call. Pulling the OAuth app disablement forward was a recorded decision, not an improvisation, justified by ongoing reading of executive mailboxes and the action's low signalling cost.
 
 ### Exercises — chapter 5
 
@@ -510,17 +574,25 @@ You will be able to (1) design a controlled comparison of recovery strategies be
 
 Specialists rarely have one obvious recovery path. Restoring a database from a verified backup may lose recent transactions; replaying logs may reintroduce attacker changes; rebuilding from upstream systems may be incomplete. Rather than choose by intuition, run a **controlled evaluation**: restore candidates into isolated environments, measure them against the same validation suite, and compare. NIST SP 800-184 emphasizes planning, testing and improvement of recovery; SP 800-209 discusses storage infrastructure security including backup protection.
 
+Calder Logistics faced exactly this when its order database was encrypted: a verified nightly backup or a more recent but unverified replica.
+
 ### 6.2 Validation references
 
 Validate restored data against references that the adversary did not control: upstream systems of record, partner records, financial reconciliations, previously exported reports with hashes, and samples confirmed by business users. Each reference has its own errors; disagreements must be investigated, not averaged.
+
+At Calder, the warehouse management system was the reference: it independently recorded 1,000 order events between 02:00 and 10:03, including 40 orders flagged as created by the adversary. Counting each candidate against that set showed what each one contained, which neither candidate could show about itself.
 
 ### 6.3 Downstream synchronization
 
 Restored systems feed others: a restored order database must re-synchronize with warehouse, invoicing and customer-notification systems. If downstream systems processed data after the restore point, the two can diverge (duplicate shipments, missing invoices). Map the synchronization paths and decide, per path, whether to replay, reconcile or freeze.
 
+Calder's order database feeds warehouse dispatch and invoicing. Restoring the 02:00 backup and reconstructing 960 legitimate orders from the warehouse system meant invoicing had to be reconciled against the rebuilt set, which is why a zero invoicing difference is one of the acceptance criteria.
+
 ### 6.4 Acceptance and fallback
 
 Acceptance criteria: data validation thresholds, functional tests, security checks, performance, and owner sign-off. Fallback: if a criterion fails after go-live, what is the path — revert to manual operation, switch to the alternative candidate, or partial operation?
+
+Calder's criteria for the order database were specific: the restored base hash matches the backup manifest; reconstructed orders equal the warehouse system's 960 legitimate orders minus customer cancellations; zero orders go to the fraud drop address; the invoicing difference is zero; and the owner signs off. The fallback was manual dispatch from the warehouse system for 24 hours if reconstruction failed validation.
 
 ### 6.5 Worked example and lab (synthetic): two restore candidates
 
@@ -566,6 +638,8 @@ Acceptance criteria (excerpt): restored base hash matches backup manifest; recon
 - Ignoring downstream synchronization until duplicates appear.
 - Treating an independent reference as perfect — it can be wrong too; investigate disagreements.
 
+Calder's replica R2 shows the first error. It was 22 minutes more recent than encryption at 10:03, but it contained all 40 fraudulent orders and any undiscovered attacker changes made after 08:15. Choosing it by default would have restored the attacker's work. Validating against the warehouse system, not against the database itself, is what exposed the difference, and even that reference needs its flagged orders reviewed, not trusted blindly.
+
 ### Exercises — chapter 6
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -604,6 +678,8 @@ You will be able to (1) identify notification triggers across overlapping regime
 
 In large incidents, three functions pull in different directions: operations wants to restore quickly (which can destroy evidence), legal wants to preserve and control communications (which can slow operations), and privacy wants to determine exposure precisely (which needs investigative effort). The specialist's job is to make these demands explicit, sequence them and record who decided what.
 
+Calder Financial Services shows all three pulls at once: operations wanted the exposed storage link closed, counsel wanted the object preserved, and the privacy officer needed to know what the customer-tier field revealed. The decision log sequenced them within three hours.
+
 ### 7.2 Notification triggers
 
 Triggers vary by regime. Examples to verify for your jurisdictions: the GDPR (personal-data breach notification to the supervisory authority within 72 hours of awareness where feasible, unless unlikely to result in risk); the EU NIS2 Directive (Directive (EU) 2022/2555) for essential and important entities — an early warning within 24 hours of becoming aware of a significant incident, an incident notification within 72 hours and a final report within one month; US public companies' Form 8-K Item 1.05 disclosure within four business days after determining a cybersecurity incident is material (SEC rule adopted 2023); sector rules (health, finance) and contracts with customers and partners. Each regime defines "awareness" and "significant" differently. The specialist ensures that the facts needed for each determination are produced on time — and that awareness timestamps are recorded.
@@ -612,17 +688,25 @@ Triggers vary by regime. Examples to verify for your jurisdictions: the GDPR (pe
 
 When counsel issues a hold, operations must preserve specified data. Conflicts arise when recovery reimages systems or rotates logs. Resolve by preserving before changing: capture images, export logs, snapshot cloud resources, record hashes, then proceed. Build this into recovery runbooks so it is not negotiated under pressure.
 
+At Calder Financial Services the order was right: counsel instructed the hold at 11:12, and at 11:20 operations disabled the storage link while retaining the exported object under that hold. Closing the exposure did not require deleting anything, so preservation cost a few minutes, not the evidence.
+
 ### 7.4 Minimization in the investigation
 
 Investigations themselves process personal data. Apply minimization: collect what the question requires, restrict access to investigation repositories, pseudonymize in working analyses, and set retention for case data (bachelor's Chapter 14 covers the basics). Over-collection increases the breach surface of the investigation.
+
+Calder's repository for the customer-contact exposure is the pattern: at 14:00, access was limited to six named people, and working analyses used pseudonymized customer IDs. The investigation needed to know which records were in the export, not to read 52,000 names, emails and phone numbers again and again.
 
 ### 7.5 The decision log
 
 Maintain one log in which each entry has: time; type (fact, assessment, determination, decision, action); content; source or basis; owner; and, for determinations, the specialist responsible (for example, "Privacy officer determined notification to authority required under GDPR Art. 33"). Facts come from evidence; assessments from analysts; determinations from qualified specialists; decisions from the authorized owner.
 
+Calder Financial Services' log shows every type in use: the 11:05 fact from storage access logs, the 11:20 action, the 11:40 assessment with moderate confidence, the privacy officer's 12:30 determination, counsel's 13:15 determination and the commander's 13:30 decision.
+
 ### 7.6 Avoiding speculation in records
 
 Incident records may be disclosed in litigation or regulatory inquiry. Write precisely: facts with sources, assessments with confidence, no guesses about motives or blame, no casual statements ("we totally missed this"). This is not concealment; it is accuracy.
+
+Calder's log ends with an explicit note of what is absent: no speculation about who downloaded the data, and no characterization of the misconfiguration as anyone's negligence. The 11:40 entry calls exposure "likely" with moderate confidence and gives the reason, three downloads whose size matches the object, rather than asserting that all 52,000 records were stolen.
 
 ### 7.7 Worked example (synthetic): customer contact records
 
@@ -647,17 +731,19 @@ Note what is absent: no speculation about who downloaded the data, no characteri
 - Investigation repositories becoming the next breach.
 - Regulatory details change; verify current texts and seek counsel.
 
+Calder's log avoids the first error: it records awareness at 10:52, when the security team confirmed exposure, which starts the 72-hour GDPR clock. The determinations come from the privacy officer and counsel, not from responders. The legal hold came before the link was disabled. And the repository was restricted to six people with pseudonymized IDs, so the investigation did not create a second copy of the problem.
+
 ### Exercises — chapter 7
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX031 — Trigger matrix.** *Steps:* build a matrix of regimes (GDPR, NIS2, SEC 8-K, one sector rule, contracts) with trigger, clock start, deadline and determining specialist for the §7.7 entity. *Rubric:* 3 = accurate, verifiable entries with sources and "to verify" where unsure; 2 = some errors; 1 = generic; 0 = none.
+**EX031 — Trigger matrix.** *Steps:* build a matrix of regimes (GDPR, NIS2, SEC 8-K, one sector rule, contracts) with trigger, clock start, deadline and determining specialist for the entity in this chapter's customer-contact-records worked example. *Rubric:* 3 = accurate, verifiable entries with sources and "to verify" where unsure; 2 = some errors; 1 = generic; 0 = none.
 
 **EX032 — Preserve-then-change runbook.** *Steps:* write the preservation steps that precede reimaging a server under legal hold. *Rubric:* 3 = memory capture if relevant, disk image with hash, log export, configuration snapshot, chain-of-custody record, counsel confirmation; 2 = missing hashes/custody; 1 = "back it up"; 0 = none.
 
 **EX033 — Classify log entries.** *Inputs:* five entries: "IP 198.51.100.4 downloaded the file"; "The attacker is probably a competitor"; "Notification required under Art. 33"; "Disable the link"; "Exposure likely". *Steps:* classify each and fix any that do not belong. *Rubric:* 3 = fact, speculation (remove or reframe), determination (needs owner), decision/action, assessment (needs confidence); 2 = one error; 1 = no fixes; 0 = none.
 
-**EX034 — Minimization plan.** *Steps:* write a minimization plan for the §7.7 investigation repository. *Rubric:* 3 = data scope, pseudonymization, access list, retention, deletion, audit; 2 = four elements; 1 = vague; 0 = none.
+**EX034 — Minimization plan.** *Steps:* write a minimization plan for the investigation repository in this chapter's customer-contact-records worked example. *Rubric:* 3 = data scope, pseudonymization, access list, retention, deletion, audit; 2 = four elements; 1 = vague; 0 = none.
 
 **EX035 — Awareness dispute.** *Inputs:* an analyst noticed an odd link on 8 June but escalated on 11 June. *Steps:* explain how awareness might be argued and what the specialist should record. *Rubric:* 3 = explains that awareness generally means reasonable certainty of a breach, determined by counsel; record both times and facts; do not backdate or omit; 2 = partial; 1 = picks the later date silently; 0 = none.
 
@@ -685,17 +771,25 @@ You will be able to (1) build a hypothesis–evidence matrix and use it to find 
 
 Conflict has a limited number of sources: different things were measured; one source is wrong (clock error, parsing, configuration); one source was manipulated; the world is more complex than the hypotheses (both sources right, hypotheses incomplete). Each predicts different follow-up results; that is how you discriminate.
 
+Calder Retail's payroll export is such a conflict: identity logs name `hr-lead-2`, while the HR workstation's host timeline shows only `hr-assist-5` logged on at the time. Each of the four sources of conflict gives a hypothesis to test.
+
 ### 8.2 Analysis of competing hypotheses
 
 Heuer's *Psychology of Intelligence Analysis* (CIA Center for the Study of Intelligence, 1999) describes **Analysis of Competing Hypotheses** (ACH): list hypotheses, list evidence, mark each cell as consistent, inconsistent or neutral, focus on evidence that is **diagnostic** (consistent with some hypotheses and inconsistent with others), and prefer the hypothesis with the least inconsistent evidence rather than the most consistent. ACH does not produce truth; it structures attention and exposes assumptions.
+
+Calder's lab shows the method: of four hypotheses, H2 has no inconsistent evidence, H1 and H4 one each, and H3 two.
 
 ### 8.3 Provenance and missingness
 
 Weight evidence by provenance (who recorded it, how, with which dependencies) and by what could have been missing. A log that would have recorded an event if it occurred, but did not, is diagnostic; a log that was not collecting at the time is neutral.
 
+In Calder's payroll case, the application's record of who performed the export is weighted by how it is produced: if the application records the token owner rather than the session user, the identity log's naming of `hr-lead-2` is consistent with several hypotheses. That is why H4, a logging or attribution error, stays on the list until the deployed version is tested.
+
 ### 8.4 Seeking disconfirmation
 
 For the leading hypothesis, ask "what would we expect to see if it were false?" and look for that. Confirmation bias pushes teams to collect more consistent evidence, which is often non-diagnostic.
+
+For Calder's leading hypothesis, H2, the team named what would disconfirm it: `hr-assist-5` on a video call in another application with keyboard activity at 22:47, or `hr-lead-2` admitting to sharing credentials for a legitimate task. It also checks the assumptions behind the diagnostic evidence: DHCP lease records for the workstation address, and a lab test of how the application records users.
 
 ### 8.5 Worked example and lab (synthetic): two accounts, one timeline
 
@@ -745,6 +839,8 @@ Confidence statement: "The export at 22:47 was most likely performed using `hr-l
 - Omitting the "error in the evidence" hypothesis.
 - Concluding about people's intent from technical evidence.
 
+Calder's matrix shows the first error clearly: E1 was consistent with every hypothesis and so told the team nothing, yet it was the evidence most teams would cite first. H4, the error-in-the-evidence hypothesis, stayed on the list. And because H2 implicates a named person, the confidence statement ends with "no conclusion about any individual's intent is drawn", with HR and counsel handling the next steps.
+
 ### Exercises — chapter 8
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -783,25 +879,37 @@ You will be able to (1) brief executives and boards with fact-limited statements
 
 After containment, pressure shifts: executives want to know "are we safe?", "who did it?", "what will it cost?" — often before the investigation can answer. Leaders who over-promise ("we are fully secure") create reputational and legal risk; leaders who say nothing lose trust and control of the narrative. The specialist provides fact-limited briefings that are useful without being speculative.
 
+Calder's Day 3 briefing found that balance: it said no attacker activity had been seen in 40 hours, and also that how the attacker first got in was not yet known.
+
 ### 9.2 Assurance claims
 
 An **assurance claim** is a statement that a property holds ("the adversary no longer has access to our identity platform") with a basis (tests, evidence, coverage) and a confidence. Assurance cases in safety engineering structure claims, arguments and evidence (for example Goal Structuring Notation). For incidents, a simple table suffices: claim, evidence, coverage gaps, confidence, owner. Never make an assurance claim whose evidence you cannot show.
+
+Calder's Day 3 table has such a row: the claim "no attacker access to identity platform" rests on no authentications with old credentials, no new federation trusts or consents in 40 hours and tested monitoring rules, with the unknown initial access route as the stated gap and moderate confidence.
 
 ### 9.3 Briefing structure
 
 For executives: bottom line (one sentence), what we know (with confidence), what we don't know yet (and when we expect to), what we have done, decisions needed from you, risks to watch, next briefing. Keep technical detail in an appendix. For boards: add implications for strategy, regulation and oversight duties, and the residual risks they are being asked to accept.
 
+Calder's Day 3 briefing follows this order. Its bottom line is one sentence; the payment-systems claim carries moderate confidence because logs earlier than 30 days were unavailable; and its two decisions are funding phishing-resistant MFA for administrators and accepting residual risk of undiscovered persistence until the monitoring period ends.
+
 ### 9.4 Closure conditions
 
 An incident should close when measurable conditions are met, not when attention fades. Typical conditions: containment verified for a defined period with monitoring; eradication tests passed; recovery accepted by owners; notifications completed; evidence preserved; corrective actions assigned with owners and dates; post-incident review scheduled. Residual risks transferred to the risk register.
+
+Calder's identity incident set its conditions in advance: 30 days without re-entry indicators; initial access identified and remediated, or documented as unknown with compensating controls; mailbox exposure determined and notifications completed; corrective actions assigned; and a review held. The second condition admits that an answer may never come.
 
 ### 9.5 Delegation and residual risk acceptance
 
 Residual risk must be accepted by someone with authority proportional to its size. Define in advance which levels accept what (for example, the CISO up to a threshold; the executive committee above it; the board for risks affecting strategy).
 
+At Calder, the residual risk that undiscovered persistence exists until the 30-day monitoring period ends was put to the executive committee in the Day 3 briefing, not accepted by the incident commander, because it affected the whole group's identity platform. A lower-impact risk, such as a single division's delayed log review, would sit within the CISO's threshold.
+
 ### 9.6 Review cadence
 
 After closure: 30-day check of monitoring results and corrective actions; 90-day review of effectiveness; inclusion in quarterly risk reporting.
+
+For Calder's identity compromise, the 30-day check coincides with the end of the re-entry monitoring period set in the closure conditions. It asks whether any indicator fired and whether phishing-resistant MFA for administrators has been funded and deployed as decided on Day 3. The 90-day review asks whether the corrective actions worked: whether the initial access route has been found or documented as unknown with compensating controls. Quarterly risk reporting keeps the accepted residual risk visible until it is retired.
 
 ### 9.7 Worked example (synthetic): executive briefing before root cause
 
@@ -826,11 +934,13 @@ Closure conditions: 30 days without re-entry indicators; initial access identifi
 - Residual risk accepted by whoever is in the room.
 - Technical detail crowding out decisions in executive briefings.
 
+Calder's Day 3 briefing avoids each error. It never says "we are secure"; it says no attacker activity has been seen for 40 hours, with an assurance table behind the claim. Closure waits for the 30-day conditions. The residual risk of undiscovered persistence goes to the executive committee as a decision. Technical detail stays in the appendix, and the decisions needed are listed on the first page.
+
 ### Exercises — chapter 9
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX041 — Rewrite a briefing.** *Inputs:* "The hackers are gone. Our team did an amazing job. We think it was a nation-state." *Steps:* rewrite as a fact-limited executive briefing. *Rubric:* 3 = structure of §9.3, claims with confidence, no attribution speculation, decisions requested; 2 = structure partly; 1 = minor edits; 0 = none.
+**EX041 — Rewrite a briefing.** *Inputs:* "The hackers are gone. Our team did an amazing job. We think it was a nation-state." *Steps:* rewrite as a fact-limited executive briefing. *Rubric:* 3 = the briefing structure taught in this chapter, claims with confidence, no attribution speculation, decisions requested; 2 = structure partly; 1 = minor edits; 0 = none.
 
 **EX042 — Assurance table.** *Steps:* write three rows of an assurance table for the end of a ransomware recovery. *Rubric:* 3 = claims with evidence, coverage gaps, confidence and owner; 2 = missing gaps; 1 = claims only; 0 = none.
 
@@ -872,6 +982,8 @@ Each has typical strengths and biases; none is "the evidence" alone.
 
 For any study, record: (1) question; (2) population and how it was sampled; (3) unit of analysis (incident, organization, analyst); (4) outcome and how measured; (5) comparison and design; (6) confounders addressed; (7) results with uncertainty; (8) limitations stated and unstated; (9) funding and interests; (10) applicability to your setting.
 
+Applied to the two Calder readings, the protocol exposes their limits quickly. The cost report's population is breached organizations that agreed to be interviewed, with costs from an activity-based model; the provider report's population is incidents that one provider investigated, and its client mix changes each year. Neither is Calder's population of 400 mostly small, internally handled incidents a year.
+
 ### 10.3 Typical biases
 
 - **Selection**: provider datasets include only incidents the provider was hired for — usually larger, more severe, or in organizations that buy such services. Survey participants are organizations willing to participate.
@@ -883,6 +995,8 @@ For any study, record: (1) question; (2) population and how it was sampled; (3) 
 ### 10.4 Transfer and local validation
 
 A finding transfers when the mechanism plausibly operates in your setting and your population resembles the study's. Rather than adopting a headline number ("IR testing saves $X"), formulate a local question your own data can address: "Did our tabletop-tested playbooks shorten our time from detection to containment for comparable incidents?" — with the methods of bachelor's Chapter 33 and master's-level design if needed.
+
+Calder's local question follows this approach: for incidents of severity 2 or higher in 2025–2026, is time from detection to containment shorter for incident types with a tabletop-tested playbook, after accounting for incident type and division? Calder's own case records can answer it, which no external report can.
 
 ### 10.5 Worked example: two published sources, different populations
 
@@ -900,6 +1014,8 @@ Transfer to Calder Group (synthetic): Calder's 400 incidents a year are mostly s
 - Treating year-over-year changes in provider datasets as global trends.
 - Inferring causation from cross-sectional surveys.
 - Dismissing vendor research entirely; it is often the only large-scale data — read it carefully instead.
+
+The two reports read for Calder show where each error comes from. Quoting the cost report's lower average breach cost for tested plans as a saving would ignore self-selection and a cross-sectional comparison. Treating the provider's falling dwell time as a global trend would ignore its changing client mix. Yet both are worth reading: they suggest the local question Calder can test with its own data.
 
 ### Exercises — chapter 10
 
@@ -939,21 +1055,31 @@ You will be able to (1) conduct a gap assessment of an incident program using ev
 
 Assess the program against a reference (NIST SP 800-61 Rev. 3 and CSF 2.0 outcomes; the FIRST CSIRT Services Framework for service scope) and against its own incident data. Evidence sources: case records, after-action reports, interviews, exercise results, metrics. A gap is a difference between required and actual capability, backed by evidence, with an impact statement.
 
+Calder's assessment found two gaps this way: after-action reports cited handoff delays in 9 of 14 major incidents, and case records were incomplete in 40% of severity-2 cases. Each is a measured difference between what the charter requires and what happened.
+
 ### 11.2 Prioritization
 
 Prioritize gaps by impact, frequency and feasibility. Recurring findings across after-action reports are strong signals; one dramatic incident is a weaker one.
+
+Calder's handoff gap qualified as a strong signal on all three counts: it recurred in 9 of 14 after-action reports, it delayed the incoming lead's first action on live cases, and the cheapest option, a template with read-back, could be piloted in weeks. A single spectacular failure in one division would have been weaker evidence, however memorable. The 40% incomplete case records were linked to the same handoffs, so one change might address both gaps.
 
 ### 11.3 Design options
 
 For each priority gap, generate at least two options with different cost and disruption profiles (process change, tooling, staffing, training, contractual). Evaluate them with the multi-criteria method used at bachelor's level, weights agreed with stakeholders.
 
+Calder's options were a handoff template with read-back (process, low cost), a case-management workflow with required fields and reminders (tooling, medium cost), or both. The template was piloted first because it could be tested in weeks, while the workflow became a budget item for the next cycle.
+
 ### 11.4 Piloting
 
 Choose one change to pilot in a bounded part of the organization for a defined period, with criteria fixed in advance, a comparison (another division or the pre-period, ideally both), data collection plan and stop rules.
 
+Calder's pilot met each requirement: option A in the Logistics division for 8 weeks, with Retail as a concurrent comparison; criteria fixed in advance, a 20% fall in median minutes to first action, 85% record completeness and no increase in time to containment; and data from case-system events. Choosing one change made the result attributable.
+
 ### 11.5 Evaluation
 
 Evaluate against the criteria; include process measures (was the change used as designed?), outcome measures, and unintended effects. Report uncertainty; small pilots rarely give precise effects.
+
+Calder's result shows why the comparison and the caveats matter. Median minutes to first action fell 36% in Logistics and 5% in Retail over the same weeks, and completeness reached 87%. But with 10 to 12 handoffs per period, staff aware they were in a pilot, and a template that also prompts record completion, the effect is an estimate, and time to containment still had to be checked before rollout.
 
 ### 11.6 Worked example and lab (synthetic): handoff delays
 
@@ -1000,6 +1126,8 @@ Interpretation: in Logistics, median minutes to first action fell 36% while Reta
 - Criteria set after results.
 - Declaring success from small samples without a comparison.
 
+Calder's pilot avoided each of these errors. The two gaps came from after-action reports and case records, not from opinion. Only option A was piloted, with B deferred to the budget cycle. The 20% and 85% criteria were set before the eight weeks began. Retail served as a concurrent comparison, which separated the pilot's effect from seasonal change. Even so, the small number of handoffs is reported as a limit, and rollout includes continued measurement.
+
 ### Exercises — chapter 11
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -1038,25 +1166,37 @@ You will be able to (1) assemble a transfer package that lets the organization o
 
 Programs designed by specialists often decay: templates stop being used, owners change jobs, metrics are no longer collected, exercises lapse. Transfer fails when ownership, resources and feedback are not built in. The aim is a program the organization runs without you, with signals that tell it when it is drifting.
 
+Calder's transfer package is designed against each of these causes: owners named in the receiving organization, a monthly report to the CISO, and a 90-day review that would show the handoff template falling out of use.
+
 ### 12.2 The transfer package
 
 Contents: (1) design rationale — the problem, evidence, options considered and why the chosen design; (2) operating documents — procedures, templates, RACI, thresholds; (3) measurement plan — definitions, data sources, owners, reporting cadence; (4) training materials and records; (5) pilot evaluation report with limitations; (6) open issues and residual risks register; (7) reassessment schedule; (8) contacts and decision rights for future changes. Each item has a named owner in the receiving organization.
+
+Calder's package for the handoff template has all eight: rationale with the 9-of-14 finding and pilot results; template v1.2, read-back guidance and RACI; measures with sources and owners; training records; the pilot report; open issues with owners; reassessment dates; and decision rights for future changes.
 
 ### 12.3 Training and acceptance
 
 Train by role, with exercises not just slides; measure acceptance by observed use (for example, percentage of handoffs using the template) rather than attendance. Acceptance by the receiving owner should be explicit and recorded, like service acceptance after recovery.
 
+Calder trained by shift team: a 45-minute role-based session plus a 20-minute handoff drill, with completion and drill observations recorded. Acceptance is measured by the template use rate in the case system, reported monthly, and formally by the group SOC manager as the accountable owner.
+
 ### 12.4 Residual issues
 
 List what the redesign did not solve and why: budget, dependencies on other programs, unresolved evidence questions. Assign each to an owner and a review date, or explicitly accept it at the right level (Chapter 9).
+
+Calder's package lists two: Retail's ticketing system cannot enforce required fields until the tooling project, owned by the IT service management lead with a Q3 review; and night-shift staffing remains thin in one region, accepted by the CISO as residual risk until the budget review. Naming both prevents the rollout from being reported as a complete fix.
 
 ### 12.5 Defending trade-offs
 
 Stakeholders will challenge choices: "why not the tool?", "why this metric?", "the template slows us down". Prepare a trade-off register: decision, alternatives, reasons, evidence, conditions under which you would decide differently. Concede where evidence is weak.
 
+Calder's register answered the Retail CIO's objection that the template adds paperwork with data: about 4 minutes per handoff, against roughly 15 minutes saved before the incoming lead's first action. It also set a condition for changing course: if template time exceeds 10 minutes, the decision is revisited.
+
 ### 12.6 Reassessment
 
 Schedule reassessment based on evidence: a 90-day review of adoption and outcome measures, a 6-month exercise testing the redesigned process, and an annual program review. Define triggers for earlier review: a major incident where the process failed, a significant drop in adoption, organizational change (merger, outsourcing).
+
+Calder's schedule follows this pattern: a 90-day review of template adoption and time to first action, a handoff stress-test exercise at six months, and an annual program review. The earlier-review triggers matter most for Calder's structure: a merger or outsourcing of a division's IT would change who hands off to whom.
 
 ### 12.7 Worked example (synthetic): transferring the handoff redesign
 
@@ -1079,11 +1219,13 @@ Stakeholder defense (fictional): Retail CIO: "The template adds paperwork." Resp
 - Hiding residual issues to declare success.
 - No reassessment schedule; programs drift silently.
 
+Calder's package was built to avoid each error: every item has a named owner in the receiving organization; training is measured by template use rate and observed drills, not attendance; the two open issues are listed with owners rather than hidden; and the reassessment dates are fixed. The monthly report to the CISO is the signal that will show drift first.
+
 ### Exercises — chapter 12
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX056 — Package checklist.** *Steps:* turn §12.2 into a checklist with owner and acceptance evidence for each item. *Rubric:* 3 = eight items with owners and evidence; 2 = six; 1 = list without owners; 0 = none.
+**EX056 — Package checklist.** *Steps:* turn this chapter's transfer package into a checklist with owner and acceptance evidence for each item. *Rubric:* 3 = eight items with owners and evidence; 2 = six; 1 = list without owners; 0 = none.
 
 **EX057 — Adoption metric.** *Steps:* define the template-use rate precisely and its data source, and set a threshold that triggers review. *Rubric:* 3 = numerator/denominator, source, period, threshold with reason; 2 = vague denominator; 1 = no definition; 0 = none.
 
