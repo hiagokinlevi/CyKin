@@ -1275,7 +1275,7 @@ Os modelos de sistema costumam parar na aplicação implantada, mas os pipelines
 
 ### 21.5 Exemplo resolvido (caso sintético da LCH)
 
-O modelo de sistema do Ask Lumen feito por Rina mostrou um fluxo esquecido: o chatbot podia ler a página web pública da clínica por meio de uma ferramenta "verificar horário de funcionamento", e essa página incluía uma seção de comentários. Os comentários eram conteúdo público não confiável que fluía para o modelo. A LCH alterou a ferramenta para ler um arquivo estruturado de horários em vez da página inteira. Ninguém havia listado a ferramenta porque ela parecia inofensiva; desenhar o fluxo tornou o risco visível. Ler um arquivo estruturado também tornou as respostas mais confiáveis, já que os funcionários o editam diretamente.
+O modelo de sistema do Ask Lumen feito por Rina mostrou um fluxo esquecido: o chatbot podia ler a página web pública da clínica por meio de uma ferramenta "verificar horário de funcionamento", e essa página incluía uma seção de comentários. Os comentários eram conteúdo público não confiável que fluía para o modelo. A LCH alterou a ferramenta para ler um arquivo estruturado de horários em vez da página inteira. Ninguém havia listado a fonte de dados da ferramenta porque ela parecia inofensiva; desenhar o fluxo tornou o risco visível. Ler um arquivo estruturado também tornou as respostas mais confiáveis, já que os funcionários o editam diretamente.
 
 ### 21.6 Erros e limites
 

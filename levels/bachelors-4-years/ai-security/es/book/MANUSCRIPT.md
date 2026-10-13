@@ -26,7 +26,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
-| Seguridad de la IA y del aprendizaje automático | [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) |
+| Seguridad de la IA y del aprendizaje automático | [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) |
 | Investigación y proyecto final | [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -1213,7 +1213,168 @@ Los métodos de investigación convierten las preguntas en respuestas fiables: p
 
 ### Siga estudiando — capítulo 18 de 40
 
-[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Seguridad de la IA y del aprendizaje automático: alcance y teoría
+
+### Resultados de aprendizaje
+
+Usted podrá (1) definir la seguridad de la IA y distinguirla de la seguridad funcional de la IA (*AI safety*) y de la IA responsable; (2) describir las clases de ataque de la taxonomía NIST AI 100-2 E2025; (3) explicar por qué el aprendizaje automático es vulnerable por principio; y (4) situar los principales marcos.
+
+### 19.1 Definiciones
+
+La *seguridad de la IA* protege los sistemas de IA y los procesos que los rodean frente a ataques deliberados y usos indebidos, y protege a terceros de los ataques facilitados por la IA. La *seguridad funcional de la IA* (*AI safety*) se ocupa del comportamiento dañino incluso sin atacante. La *IA responsable* abarca la equidad, la transparencia y la rendición de cuentas. Las áreas se solapan: una inyección de instrucciones es un ataque de seguridad que puede causar resultados inseguros o injustos. En LCH, las tres confluyen en un solo sistema. Un documento de un asociado que hace que Ask Lumen anuncie un falso cierre de una clínica es un ataque, así que pertenece a la seguridad; los pacientes que por ello pierden su atención son un resultado de seguridad funcional. Rina mantiene separados los términos en sus informes para que cada equipo sepa qué problemas le corresponden.
+
+### 19.2 La taxonomía
+
+NIST AI 100-2 E2025 clasifica los ataques a la IA predictiva por su objetivo —ruptura de la disponibilidad, violación de la integridad, compromiso de la privacidad— y añade el mal uso para la IA generativa. Las clases de ataque incluyen la evasión (entradas en el momento de la prueba), el envenenamiento (de los datos de entrenamiento o del modelo), los ataques a la privacidad (inferencia de pertenencia, reconstrucción de datos, extracción del modelo) y, para los sistemas generativos, la inyección de instrucciones directa e indirecta. Los atacantes se caracterizan por su conocimiento (caja blanca, gris o negra) y sus capacidades (control de los datos de entrenamiento, control del modelo, acceso por consultas). Rina sitúa en ella cada uno de los sistemas de LCH. Ask Lumen es generativo, así que se aplican la inyección de instrucciones y el mal uso; NoShow y DocSort son predictivos. Un atacante externo suele tener solo acceso por consultas de caja negra, mientras que un contratista que etiqueta cartas de DocSort tiene control de los datos de entrenamiento, una capacidad más fuerte.
+
+### 19.3 Por qué el aprendizaje automático es vulnerable
+
+Los modelos aprenden patrones estadísticos a partir de datos, no reglas; generalizan de forma imperfecta y son sensibles a cambios pequeños y cuidadosamente elegidos en la entrada (Szegedy et al., arXiv:1312.6199; Goodfellow et al., arXiv:1412.6572). Heredan todo lo que contienen sus datos, incluido el veneno. Los grandes modelos de lenguaje siguen las instrucciones que encuentran en cualquier parte de su entrada. Estas propiedades son inherentes, así que la seguridad se apoya en controles por capas y no en una única corrección. El laboratorio de evasión lo muestra de forma concreta: el mismo clasificador de juguete que obtiene 0,985 con entradas limpias cae a un nivel cercano al azar cuando el presupuesto de perturbación llega a uno, sin ningún cambio en el propio modelo.
+
+### 19.4 Marcos
+
+El NIST AI RMF (AI 100-1) y su perfil de IA generativa (AI 600-1) organizan la gestión del riesgo; OWASP LLM 2025 enumera los riesgos de las aplicaciones; MITRE ATLAS cataloga técnicas de adversarios con estudios de casos; la ISO/IEC 42001 especifica un sistema de gestión de la IA; el Reglamento de IA de la UE fija obligaciones legales para algunos sistemas. Responden a preguntas distintas. Rina usa OWASP para comprobar los riesgos de aplicación de Ask Lumen, ATLAS para encontrar ejemplos de ataques reales para su sesión informativa con el personal y el AI RMF para estructurar el proceso general de riesgos de LCH. Que el Reglamento de IA de la UE se aplique depende del uso de cada sistema, así que registra esa evaluación por separado en lugar de suponer que una sola respuesta cubre los tres sistemas.
+
+### 19.5 Ejemplo resuelto (caso sintético de LCH)
+
+Rina clasificó los riesgos de LCH: Ask Lumen — inyección indirecta de instrucciones a través de documentos (integridad), divulgación de información sensible (privacidad); NoShow — inferencia de pertenencia (privacidad), manipulación de campos controlados por los pacientes (integridad, evasión); DocSort — cartas elaboradas para provocar un encaminamiento erróneo (evasión), envenenamiento mediante cartas de entrenamiento reetiquetadas (integridad). La clasificación mostró que cada sistema tenía riesgos de privacidad y de integridad, pero por vías distintas. La exposición principal de Ask Lumen era lo que lee; la de NoShow, lo que revela; la de DocSort, quién daba forma a sus datos de entrenamiento. Esa diferencia llevó a Rina a asignar responsables distintos: el equipo del chatbot, el delegado de protección de datos y el equipo de documentación clínica.
+
+### 19.6 Errores y límites
+
+- Tratar la seguridad de la IA como si fuera solo el *jailbreak* de chatbots.
+- Esperar que un solo control corrija vulnerabilidades inherentes.
+- Confundir los términos de seguridad funcional y de seguridad.
+
+Centrarse en los *jailbreaks* habría pasado por alto por completo el riesgo de envenenamiento de DocSort, ya que nadie conversa con DocSort. Ningún control aislado cubre la evasión, el envenenamiento y la inyección, así que LCH necesita varias capas. Usar «seguridad funcional» cuando se quiere decir «seguridad» deja sin aclarar si se supone un atacante, lo que cambia las pruebas que deben ejecutarse y quién es responsable de corregir el problema. Los informes de Rina mantienen separados los términos, de modo que un falso cierre de clínica causado por un documento de un asociado se archiva como ataque y la atención que perdieron los pacientes, como resultado de seguridad funcional.
+
+### Ejercicios
+
+- **EX055 — Definiciones.** Clasifique: un chatbot da un consejo erróneo sobre medicación sin que haya ningún atacante; un atacante le hace revelar los datos de otro paciente. Rúbrica: 3 = seguridad funcional frente a seguridad, con razones; 2 = solo etiquetas; 1 = una; 0 = incorrecto.
+- **EX056 — Taxonomía.** Clasifique la elaboración de cartas contra DocSort por objetivo, fase y conocimiento. Rúbrica: 3 = integridad, despliegue/evasión, caja negra o gris; 2 = dos; 1 = uno; 0 = nada.
+- **EX057 — Inherente.** Dé dos razones por las que el aprendizaje automático es vulnerable por principio. Rúbrica: 3 = generalización/sensibilidad estadística, dependencia de los datos, seguimiento de instrucciones presentes en la entrada; 2 = una; 1 = vago; 0 = incorrecto.
+
+### Síntesis
+
+La seguridad de la IA tiene un alcance preciso y un vocabulario compartido. Sus vulnerabilidades son estructurales, y por eso el resto del libro construye defensas por capas y medidas.
+
+### Siga estudiando — capítulo 19 de 40
+
+[← Capítulo 18 (borrador)](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 (borrador) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Seguridad de la IA y del aprendizaje automático: casos fundamentales
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar los resultados emblemáticos del aprendizaje automático adversario y sus lecciones; (2) analizar estudios de casos de ataques a aplicaciones con LLM; (3) usar los estudios de casos de MITRE ATLAS para aprender de incidentes reales; y (4) extraer lecciones defensivas de cada caso.
+
+### 20.1 Ejemplos adversarios
+
+Szegedy et al. (arXiv:1312.6199) descubrieron que cambios imperceptibles engañan a los clasificadores de imágenes; Goodfellow et al. (arXiv:1412.6572) lo explicaron por la linealidad local. Lección: una exactitud alta no implica robustez. El laboratorio de evasión repite el hallazgo a escala de juguete: una exactitud de 0,985 con puntos limpios cae a 0,840 con un presupuesto de un medio. En DocSort, la pregunta equivalente es cuán pequeño debe ser un cambio en la redacción de una carta para llevarla al encaminamiento equivocado. La exactitud de prueba de un modelo no puede responder por sí sola a esa pregunta, ya que las cartas de prueba nunca se elaboraron para engañarlo.
+
+### 20.2 Defensas rotas
+
+Athalye et al. (arXiv:1802.00420) mostraron que muchas defensas publicadas solo ocultaban los gradientes; los ataques adaptativos las rompieron. Lección: evalúe las defensas frente a atacantes que las conocen. Para LCH, esto significa que la afirmación de un proveedor de que DocSort resiste las cartas elaboradas es una evidencia débil salvo que la prueba del proveedor supusiera un atacante que conociera la defensa. Rina pregunta a los proveedores qué ataques usaron y si eran adaptativos. Una defensa que solo oculta los gradientes puede detener un ataque perezoso y fallar ante uno cuidadoso, que es el atacante que importa.
+
+### 20.3 Envenenamiento y puertas traseras
+
+Gu et al., *BadNets* (arXiv:1708.06733), mostraron modelos con puertas traseras que se comportan con normalidad hasta que aparece un disparador. Carlini et al. (arXiv:2302.10149) mostraron que envenenar conjuntos de datos a escala web es factible. Lección: la procedencia de los datos y de los modelos importa. El laboratorio de envenenamiento muestra el mismo patrón: 80 puntos con disparador elevan el éxito del ataque a 0,980 mientras la exactitud limpia se mantiene en 0,968, así que las pruebas normales no ven nada raro. El reentrenamiento mensual de DocSort con etiquetas de contratistas es exactamente el tipo de canalización por la que podría entrar ese disparador, introducido por un único etiquetador descuidado u hostil a lo largo de varios meses.
+
+### 20.4 Privacidad
+
+Shokri et al. (arXiv:1610.05820) introdujeron la inferencia de pertenencia; Carlini et al. (arXiv:2012.07805) extrajeron texto de entrenamiento memorizado de un gran modelo de lenguaje. Lección: los modelos pueden filtrar sus datos de entrenamiento. El Laboratorio M reproduce el efecto de pertenencia en un modelo de juguete. Para LCH, la lección se aplica a cualquier modelo entrenado con historiales de pacientes, incluido NoShow, y a cualquier futuro modelo de lenguaje ajustado con cartas de las clínicas, que podría repetir fragmentos de ellas. Las salidas poco detalladas y los datos de entrenamiento minimizados reducen esa exposición, pero no la eliminan.
+
+### 20.5 Aplicaciones con LLM
+
+Greshake et al. (arXiv:2302.12173) demostraron la inyección indirecta de instrucciones contra aplicaciones integradas con LLM a través de contenido recuperado, con robo y manipulación de datos como resultado. Lección: todo lo que el modelo lee puede darle instrucciones; limite lo que el modelo puede hacer. Ask Lumen encaja estrechamente en este patrón: lee documentos de las clínicas y subidas de asociados, y puede llamar a una herramienta de reservas. La demostración de Rina en el ejemplo resuelto que sigue usó el mismo mecanismo, y el control que limitó el daño fueron las propias comprobaciones de la herramienta de reservas, no el juicio del modelo sobre qué texto obedecer.
+
+### 20.6 Usar los estudios de casos de ATLAS
+
+MITRE ATLAS documenta estudios de casos asociados a tácticas y técnicas. Léalos para ver cómo los ataques combinan reconocimiento, acceso e impacto, y qué mitigaciones habrían ayudado. Rina eligió dos casos para su sesión informativa: uno con datos de entrenamiento envenenados y otro con inyección de instrucciones a través de contenido recuperado. Para cada uno anotó qué sistema de LCH tenía una vía similar y si LCH ya contaba con la mitigación. Apareció una laguna: DocSort no tenía ninguna comprobación de la procedencia de las etiquetas de entrenamiento, de la que se ocupan los capítulos siguientes.
+
+### 20.7 Ejemplo resuelto (caso sintético de LCH)
+
+Rina presentó el caso de inyección indirecta al personal de LCH con una demostración sintética: un folleto de clínica subido por un asociado contenía texto oculto que ordenaba al chatbot decir a los pacientes que una clínica estaba cerrada. En el sistema de pruebas, Ask Lumen repitió el falso cierre. La lección enlazaba directamente con la revisión de las subidas de asociados introducida antes. El personal reaccionó más a la demostración que a los artículos, porque vio a su propio chatbot repetir el mensaje falso. Varias personas del personal preguntaron cómo se comprobaban las subidas de asociados, lo que dio al proceso de revisión el apoyo que necesitaba.
+
+### 20.8 Errores y límites
+
+- Aprender ataques sin sus lecciones defensivas.
+- Tratar los casos antiguos como irrelevantes para los modelos nuevos.
+
+Cada estudio de caso solo es útil con su lección asociada; saber que existe BadNets no ayuda salvo que después se haga un seguimiento de las etiquetas de DocSort. Los casos antiguos con imágenes siguen aplicándose a los modelos más nuevos, porque la debilidad de fondo, la sensibilidad a cambios pequeños y elaborados, no ha desaparecido. La sesión informativa de Rina emparejó cada caso con una acción concreta para uno de los sistemas de LCH, de modo que el personal salió con trabajo y no solo con ejemplos.
+
+### Ejercicios
+
+- **EX058 — Lecciones.** Indique la lección defensiva de Athalye et al. Rúbrica: 3 = evaluar con ataques adaptativos; gradientes ocultos ≠ robustez; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX059 — Puerta trasera.** ¿Por qué las puertas traseras son difíciles de detectar con las pruebas normales? Rúbrica: 3 = comportamiento normal con entradas limpias; disparador desconocido; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX060 — Caso del folleto.** ¿Qué categoría de impacto y qué dos controles se aplican al caso del folleto? Rúbrica: 3 = integridad/desinformación; revisión de las fuentes, etiquetado de la procedencia, comprobaciones de fundamentación de las respuestas; 2 = un control; 1 = vago; 0 = nada.
+
+### Síntesis
+
+Los casos fundamentales muestran patrones recurrentes: la exactitud no es robustez, las defensas necesitan una evaluación adaptativa, los datos y los modelos necesitan procedencia, los modelos filtran y los LLM obedecen lo que leen.
+
+### Siga estudiando — capítulo 20 de 40
+
+[← Capítulo 19 (borrador)](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 (borrador) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Seguridad de la IA y del aprendizaje automático: modelos de sistema
+
+### Resultados de aprendizaje
+
+Usted podrá (1) modelar un sistema de IA con componentes, flujos de datos y niveles de confianza; (2) marcar las entradas no confiables y las acciones privilegiadas; (3) rastrear cómo el contenido no confiable llega a las decisiones; y (4) usar el modelo para planificar los controles.
+
+### 21.1 Componentes
+
+Enumere usuarios, interfaces, lógica de la aplicación, el modelo, almacenes de recuperación, herramientas, servicios externos, canalizaciones de entrenamiento, registro de modelos y registros. Los sistemas de IA ocultan componentes: un «chatbot sencillo» puede incluir un modelo de *embeddings*, un almacén vectorial y varias herramientas. Ask Lumen lo ilustra. El personal lo describía como «el chatbot», pero la lista de Rina tenía once componentes, entre ellos el modelo de *embeddings* usado para buscar documentos, el almacén de documentos indexados de las clínicas, la herramienta de reservas, la herramienta de horarios de apertura y el registro de conversaciones. Cada componente es un lugar donde un atacante podría actuar o donde podrían filtrarse datos.
+
+### 21.2 Flujos de datos y confianza
+
+Para cada flujo, marque el nivel de confianza de su contenido. Mensajes de pacientes: contenido autenticado, pero no confiable. Documentos de las clínicas: internos, confianza media. Subidas de asociados: externas, confianza baja. Resultados de herramientas: dependen de la herramienta. Cualquier contenido de confianza baja que llegue al modelo puede influir en sus salidas. En el diagrama de Rina, las subidas de asociados se dibujan en rojo, ya que una organización externa controla su contenido. El diagrama mostró que un flujo rojo llegaba a la herramienta de reservas a través del modelo, y por eso la confirmación y la comprobación de políticas están en esa vía y no antes en la conversación.
+
+### 21.3 Acciones privilegiadas
+
+Marque las acciones con impacto: reservar, cancelar, enviar mensajes, modificar historiales. Dibuje las vías desde las entradas de confianza baja hasta estas acciones; cada vía necesita un control fuera del modelo. En Ask Lumen, las acciones privilegiadas son reservar y cancelar citas. Rina rastreó tres vías hasta ellas: desde los mensajes de pacientes, desde los documentos de las clínicas y desde las subidas de asociados. Las tres pasaban por el modelo, así que las tres quedaban cubiertas por un solo control externo, la comprobación de políticas con confirmación del paciente, en lugar de por tres filtros separados que podrían fallar cada uno en algo.
+
+### 21.4 Usar el modelo
+
+El modelo de sistema guía el análisis de amenazas, la ubicación de los controles y las pruebas. Manténgalo versionado; actualícelo cuando cambien las herramientas, las fuentes de datos o los modelos. Rina guarda el diagrama en el mismo repositorio que el código de Ask Lumen, de modo que un cambio que añada una herramienta deba actualizar también el diagrama en la misma revisión. Cuando se modificó la herramienta de horarios de apertura, la revisión incluyó el cambio del diagrama, y el revisor pudo ver que se había eliminado el flujo de comentarios no confiables. Un diagrama desactualizado da una falsa tranquilidad.
+
+### 21.4b Componentes del momento del entrenamiento
+
+Los modelos de sistema a menudo se detienen en la aplicación desplegada, pero las canalizaciones de entrenamiento también importan. Muestre de dónde proceden los datos de entrenamiento, quién puede añadirlos o reetiquetarlos, dónde se almacenan los modelos y cómo llegan a producción. Los riesgos de envenenamiento y de puertas traseras viven en estas vías, y se aplica el mismo marcado de niveles de confianza: las ediciones de un contratista de etiquetado tienen menos confianza que la revisión de un experto interno. En DocSort, esta vista mostró al equipo de contratistas entre el archivo de cartas y el trabajo de entrenamiento. Nada registraba qué contratista etiquetó qué carta, así que un lote envenenado no podía rastrearse, una laguna que cierra el capítulo siguiente.
+
+### 21.5 Ejemplo resuelto (caso sintético de LCH)
+
+El modelo de sistema de Ask Lumen elaborado por Rina mostró un flujo olvidado: el chatbot podía leer la página web pública de la clínica mediante una herramienta de «consultar horarios de apertura», y esa página incluía una sección de comentarios. Los comentarios eran contenido público no confiable que fluía hacia el modelo. LCH cambió la herramienta para que leyera un archivo estructurado de horarios de apertura en lugar de la página completa. Nadie había enumerado la fuente de datos de la herramienta porque esta parecía inofensiva; dibujar el flujo hizo visible el riesgo. Leer un archivo estructurado también hizo más fiables las respuestas, ya que el personal lo edita directamente.
+
+### 21.6 Errores y límites
+
+- Modelos sin niveles de confianza.
+- Herramientas y sus fuentes de datos que faltan.
+- No actualizar nunca el modelo.
+
+Un diagrama sin niveles de confianza no puede mostrar dónde corresponden los controles, porque todos los flujos parecen iguales. Omitir las herramientas oculta las vías hacia las acciones privilegiadas, como ocurrió con la herramienta de horarios de apertura que leía comentarios públicos. Un diagrama que no se actualiza con los cambios de código describe un sistema que ya no existe, así que las revisiones basadas en él pasan por alto los nuevos riesgos introducidos desde que se dibujó. La regla de Rina vincula las actualizaciones del diagrama a la revisión de código.
+
+### Ejercicios
+
+- **EX061 — Niveles de confianza.** Asigne niveles de confianza a cinco entradas de Ask Lumen. Rúbrica: 3 = cinco razonables; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX062 — Vías.** Describa una vía desde contenido de confianza baja hasta una acción privilegiada en DocSort. Rúbrica: 3 = texto de una carta elaborada → modelo → encaminamiento al departamento equivocado; 2 = parcial; 1 = vago; 0 = nada.
+- **EX063 — Corrección de los comentarios.** ¿Por qué fue eficaz sustituir la lectura de la página por un archivo estructurado? Rúbrica: 3 = elimina los comentarios no confiables de la entrada del modelo; reduce los datos a los campos necesarios; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis
+
+Un modelo de sistema con niveles de confianza muestra exactamente dónde puede el contenido no confiable llegar a acciones con consecuencias: el mapa para todos los controles posteriores.
+
+### Siga estudiando — capítulo 21 de 40
+
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](../../en/book/MANUSCRIPT.md#ch-22)
 
 <a id="worked-results"></a>
 
@@ -1328,6 +1489,24 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX053.** Sin la condición sin confirmación no hay línea base, así que las 0 reservas podrían deberse al conjunto de prueba y no al paso de confirmación.
 
 **EX054.** Los usuarios de prueba eran compañeros de clase; los pacientes reales pueden abandonar con más o menos frecuencia en la confirmación, así que el coste de 3 puntos en reservas completadas puede no trasladarse.
+
+**EX055.** Un consejo erróneo sin atacante es un fallo de seguridad funcional (o de fiabilidad); revelar a un atacante los datos de otro paciente es un fallo de seguridad (confidencialidad).
+
+**EX056.** Objetivo: violación de la integridad; fase: despliegue (evasión en el momento de la inferencia); conocimiento: caja negra (o gris si el atacante conoce el tipo de modelo).
+
+**EX057.** Los modelos aprenden patrones estadísticos sensibles a cambios pequeños y elaborados en la entrada; dependen por completo de sus datos (así que el veneno se propaga); los LLM siguen instrucciones presentes en cualquier parte de su entrada.
+
+**EX058.** Una defensa que solo rompe el cálculo de gradientes del atacante no es robusta; evalúe cada defensa con ataques adaptativos diseñados conociéndola.
+
+**EX059.** El modelo se comporta con normalidad con entradas limpias, así que las pruebas de exactitud habituales se superan; solo las entradas que contienen el disparador (desconocido) revelan la puerta trasera.
+
+**EX060.** Integridad (desinformación a los pacientes). Controles: revisar los documentos de los asociados y etiquetar su procedencia antes de indexarlos; contrastar las respuestas sobre cierres con una fuente estructurada autorizada.
+
+**EX061.** Mensaje del paciente: contenido autenticado y no confiable. Documentos de políticas de las clínicas: internos, confianza media-alta. Folletos de asociados: externos, baja. Resultados del sistema de reservas: internos, alta. Comentarios web: públicos, baja.
+
+**EX062.** Una carta de derivación elaborada contiene texto que hace que el OCR+modelo la encamine al departamento equivocado (o la marque como no urgente), lo que retrasa la atención.
+
+**EX063.** El archivo estructurado solo contiene los horarios de apertura procedentes de LCH, así que los comentarios públicos no confiables ya no llegan al modelo.
 
 <a id="references"></a>
 
