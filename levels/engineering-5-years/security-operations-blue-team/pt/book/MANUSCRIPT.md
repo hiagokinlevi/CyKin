@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 50 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–50 (EX049–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 17–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1078,11 +1078,255 @@ A engenharia de sistemas liga as pessoas, os processos e a tecnologia do SOC por
 
 [← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
 
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar os laços de realimentação nas operações de segurança; (2) modelar o ajuste fino como um sistema de controle; (3) reconhecer oscilação e instabilidade nos limiares de alerta; (4) projetar uma realimentação estável, com medição.
+
+### 17.1 Laços de realimentação
+
+Um laço de realimentação mede uma saída e ajusta uma entrada para atingir uma meta. Um termostato mede a temperatura e liga ou desliga o aquecimento. Num SOC, os analistas medem a qualidade dos alertas e ajustam as regras. Um laço tem quatro partes: uma meta, uma medição, uma comparação e um ajuste. Se faltar qualquer parte, o laço não funciona. Muitos SOCs têm o ajuste, já que os engenheiros de fato ajustam regras, mas não têm uma meta clara nem uma medição confiável, e o ajuste vira uma reação à reclamação mais barulhenta daquela semana.
+
+### 17.2 O ajuste fino como controle
+
+Suponha que a meta seja menos de 20 alertas falsos por dia vindos de uma regra. Se a contagem medida for maior, o limiar sobe; se ataques reais forem perdidos, ele desce. Isso é um laço de controle em que o engenheiro é o controlador. O laço tem duas pressões opostas: os alertas falsos empurram o limiar para cima, os ataques perdidos o empurram para baixo. Um bom controlador equilibra as duas, em vez de reagir apenas à mais visível. Os analistas veem os alertas falsos todos os dias, enquanto as perdas podem ficar escondidas, então os engenheiros precisam procurar as perdas de forma deliberada, ou o limiar vai derivar para cima com o tempo.
+
+### 17.3 Oscilação
+
+Se os ajustes forem grandes ou rápidos demais, o sistema passa do ponto: o limiar salta para cima, perde um ataque, salta para baixo, inunda os analistas. Passos pequenos e medidos, com tempo para observar os efeitos, evitam a oscilação. Um termostato que ligasse e desligasse o aquecimento por completo à menor mudança faria um cômodo oscilar entre quente e frio demais. O ajuste de regras se comporta do mesmo modo. Mudar um limiar de cinco para seis e depois observar por quinze dias dá evidência clara do efeito. Mudar de cinco para quinze e voltar dentro de uma semana não diz nada a ninguém.
+
+### 17.4 Atraso
+
+A realimentação nos SOCs é lenta: o efeito de uma mudança sobre os ataques perdidos pode levar semanas para ser conhecido. Atrasos longos tornam perigoso o ajuste agressivo. Um ataque perdido pode vir à tona só quando um cliente reclama ou quando uma investigação posterior encontra sinais anteriores. Se um engenheiro eleva um limiar hoje, o custo dessa mudança pode só aparecer em um mês. Sinais mais rápidos, como eventos de teste injetados que deveriam ser pegos, encurtam o laço ao mostrar de imediato se uma mudança abriu uma lacuna.
+
+### 17.5 Realimentação positiva
+
+Alguns laços amplificam: uma fila sobrecarregada faz os analistas fecharem alertas mais depressa e com menos cuidado, o que esconde perdas, o que leva a mais comprometimentos silenciosos. Reconhecer esses laços permite aos gestores rompê-los. O laço se alimenta sozinho: mais comprometimentos silenciosos levam a mais incidentes depois, que acrescentam mais trabalho, que aumenta a pressão para fechar alertas rapidamente. Rompê-lo pode significar desativar temporariamente regras de baixo valor para dar tempo aos analistas, ou acrescentar pessoal. Gestores que acompanham apenas o tamanho da fila podem vê-la encolher e acreditar que as coisas melhoraram, enquanto a qualidade cai.
+
+### 17.6 Medição
+
+A realimentação só é tão boa quanto sua medição. Amostras rotuladas de alertas fechados e eventos de teste seguros periódicos fornecem sinais sobre as perdas. Amostras rotuladas significam revisar uma seleção aleatória de alertas fechados e verificar se a decisão de fechamento estava certa. Isso mostra com que frequência os fechamentos como benignos estavam, na verdade, errados. Eventos de teste seguros, injetados sem aviso, mostram se a cadeia completa, do sensor ao analista, ainda funciona. Ambos dão ao laço dados sobre as perdas, que as contagens comuns de alertas não conseguem revelar. Ambos alimentam a revisão mensal.
+
+### 17.7 Caso
+
+O limiar da regra do portal de Amara começa em 5 falhas a cada 10 minutos; Paolo pede que ela planeje o laço de ajuste. O plano de Amara nomeia a meta, no máximo um número definido de alertas falsos por dia, sem nenhuma rajada de teste perdida; as medições, contagens diárias e rajadas injetadas semanalmente; o tamanho do passo, uma falha de cada vez; e a espera, duas semanas entre mudanças. Paolo o aprova com um acréscimo: toda mudança e seu resultado devem ser escritos no histórico da regra. Amara começa o laço na segunda-feira seguinte.
+
+### Exemplo resolvido
+
+Amara propõe: medir semanalmente os alertas falsos e a detecção dos eventos de teste; mudar o limiar no máximo um passo a cada quinze dias; nunca elevá-lo se algum evento de teste tiver sido perdido. Depois de quatro semanas, a regra se estabiliza em 6 falhas, com 8 alertas falsos por dia e todos os eventos de teste pegos.
+
+> **Caso sintético.** Os limiares e as contagens são inventados.
+
+### Erros e limites
+
+Tratar o ajuste como controle é um modelo; os atacantes se adaptam de propósito, ao contrário do calor num cômodo.
+
+### Exercícios
+
+- **EX049 — Causa da oscilação.** O que causa a oscilação do limiar, e como ela é evitada? *Rubrica:* 3 = mudanças grandes/rápidas; passos pequenos com tempo de observação; 2 = parcial; 1 = vago; 0 = nada.
+- **EX050 — Laço nocivo.** Descreva um laço de realimentação positiva num SOC. *Rubrica:* 3 = sobrecarga → fechamentos apressados → ataques perdidos → mais comprometimento; 2 = parcial; 1 = vago; 0 = nada.
+- **EX051 — Plano de ajuste.** Declare as regras de ajuste de Amara e o resultado. *Rubrica:* 3 = ≤ 1 passo a cada quinze dias; nada de elevar se um teste foi perdido; estabilizou em 6, 8 falsos/dia, todos os testes pegos; 2 = parcial; 1 = só o resultado; 0 = nada.
+
+### Síntese
+
+Trate o ajuste fino como um laço de realimentação lento: meça com cuidado, ajuste com delicadeza e fique atento aos laços que amplificam.
+
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever a arquitetura de segurança como o posicionamento estruturado de controles; (2) projetar zonas de rede e fronteiras de confiança; (3) posicionar sensores onde eles veem a atividade mais relevante; (4) avaliar a arquitetura em relação às ameaças.
+
+### 18.1 O que significa arquitetura
+
+A arquitetura de segurança decide onde ficam os controles e como os componentes confiam uns nos outros. É a estrutura que faz os controles individuais trabalharem juntos, em vez de formarem uma pilha de produtos. Produtos comprados separadamente podem se sobrepor em algumas áreas e deixar lacunas em outras. A arquitetura parte dos sistemas e dados a proteger, decide de que controles cada um precisa e então escolhe produtos para cumprir esses papéis. Ela também define como as partes confiam umas nas outras, como quais sistemas podem enviar logs ao SIEM e como provam quem são.
+
+### 18.2 Zonas e fronteiras
+
+A Lindqvist separa o portal voltado para a internet, os sistemas internos de negócio, as redes dos depósitos que operam os leitores portáteis e os próprios sistemas do SOC. Cada fronteira tem regras sobre o que pode atravessá-la. As fronteiras são onde o monitoramento é mais informativo, porque o tráfego legítimo que as atravessa é limitado e conhecido. Dentro de uma zona, muitos sistemas conversam livremente e o tráfego é difícil de julgar. Numa fronteira, só fluxos específicos devem passar: o portal pode chamar o sistema de pedidos numa porta, os depósitos podem enviar dados de leitura a um servidor. Qualquer outra coisa que atravesse é suspeita por definição, o que dá ao monitoramento uma linha de base clara para comparação.
+
+### 18.3 Posicionamento de sensores
+
+Os sensores devem ficar onde veem a atividade relevante com pouco ruído: na camada web, para o portal; nos controladores de domínio, para a autenticação; na fronteira entre as redes de negócio e dos depósitos. Pôr um único sensor grande na borda da internet vê muito tráfego, mas pouco contexto. Um sensor de borda vê cada pacote vindo da internet, a maior parte dele ruído de varredura, sem saber a que conta de cliente uma requisição se referia. Um sensor na camada web vê a requisição decifrada e o nome de usuário. Posicionar sensores onde o significado está disponível, e não onde o volume é maior, dá aos analistas eventos em menor número e mais ricos para trabalhar.
+
+### 18.4 Protegendo o SOC
+
+O SIEM e o sistema de casos são alvos valiosos: mostram o que os defensores conseguem ver. Ficam em sua própria zona, com contas de administrador separadas e autenticação multifator. Um atacante que controle o SIEM pode ver quais alertas existem, descobrir quais ações estão sendo detectadas ou apagar evidências. Contas de administrador separadas fazem com que uma conta de funcionário comprometida na zona de negócio não consiga alcançar os sistemas do SOC. O SOC também monitora os próprios sistemas, com alertas sobre mudanças de configuração e sobre logins vindos de fora da zona do SOC.
+
+### 18.5 Mapeamento às ameaças
+
+Os arquitetos conferem cada técnica importante do ATT&CK contra a arquitetura: que controle a previne, que sensor a veria e que equipe responderia. As lacunas viram itens do *backlog*. O D3FEND ajuda a nomear a técnica defensiva que cada controle oferece. O exercício produz uma tabela: cada técnica numa linha, com colunas para prevenção, detecção e responsável pela resposta. As células vazias são lacunas. Nem toda lacuna precisa ser fechada; algumas técnicas são improváveis contra a Lindqvist, e a discussão de risco decide as prioridades. Os nomes do D3FEND, como *credential hardening*, facilitam comparar controles entre produtos.
+
+### 18.6 Simplicidade
+
+Arquiteturas complexas escondem lacunas. Menos fronteiras, e bem compreendidas, são mais fáceis de monitorar. Cada fronteira extra precisa de suas próprias regras, sensores e manutenção, e as exceções se acumulam com o tempo até que ninguém lembre por que um fluxo é permitido. Fundir zonas que servem ao mesmo propósito pode tornar o monitoramento mais claro. Amara observa que a Lindqvist tem três projetos de rede de depósito ligeiramente diferentes, o que multiplica o trabalho de definir o tráfego normal de cada um. Ela propõe um projeto padrão de depósito, implantado à medida que o equipamento de cada local for substituído, para que a linha de base só precise ser definida uma vez.
+
+### 18.7 Caso
+
+Amara revisa onde os logs do portal são produzidos e descobre que o balanceador de carga, que vê os endereços reais dos clientes, não estava encaminhando seus logs; os servidores web viam apenas o endereço do balanceador em algumas requisições. Como o balanceador substituía os endereços dos clientes pelo seu próprio em algumas requisições, os logs dos servidores web mostravam muitas tentativas vindas de um único endereço interno. Agregar por rede então agrupava clientes sem relação entre si e escondia as fontes reais. Encaminhar os logs do balanceador, e configurá-lo para repassar o endereço original num cabeçalho, corrige tanto os dados quanto a precisão da regra.
+
+### Exemplo resolvido
+
+Antes que essa mudança entre em produção, Paolo só a aprova depois de verificar que o cabeçalho não pode ser forjado de fora: o balanceador sobrescreve qualquer cabeçalho que um cliente envie, então o endereço registrado é confiável.
+
+> **Caso sintético.** A arquitetura e as zonas são inventadas.
+
+### Erros e limites
+
+Os diagramas de arquitetura se afastam da realidade; verifique com o tráfego e a configuração, não apenas com os desenhos.
+
+### Exercícios
+
+- **EX052 — Monitoramento de fronteiras.** Por que o monitoramento é mais informativo nas fronteiras de confiança? *Rubrica:* 3 = o tráfego legítimo que atravessa é limitado e conhecido; 2 = parcial; 1 = vago; 0 = nada.
+- **EX053 — Lacuna do balanceador de carga.** Que lacuna Amara encontrou, e como foi fechada com segurança? *Rubrica:* 3 = logs do balanceador não encaminhados; cabeçalho do cliente acrescentado, o balanceador sobrescreve o cabeçalho enviado pelo cliente; 2 = parcial; 1 = ignorada; 0 = nada.
+- **EX054 — Proteção do SOC.** Como os próprios sistemas do SOC são protegidos? *Rubrica:* 3 = zona própria, contas de administrador separadas, MFA; 2 = duas; 1 = uma; 0 = nada.
+
+### Síntese
+
+Uma boa arquitetura posiciona controles e sensores nas fronteiras, protege o próprio SOC e é conferida em relação às ameaças.
+
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar autenticação, autorização e métodos multifator; (2) relacionar eventos de identidade à detecção; (3) descrever *hashing*, cifragem e assinaturas nas ferramentas do SOC; (4) reconhecer ataques baseados em identidade do ponto de vista do defensor.
+
+### 19.1 A identidade como novo perímetro
+
+Muitos ataques hoje usam credenciais válidas em vez de explorações técnicas. Os logs de autenticação — sucessos, falhas, desafios de MFA, emissão de *tokens* — estão, por isso, entre os dados mais valiosos de um SOC. Com serviços em nuvem e trabalho remoto, não há uma única borda de rede que todo acesso atravesse. São as credenciais que concedem acesso, por isso os atacantes as compram, adivinham ou roubam. Os logs dos sistemas de identidade mostram quem tentou entrar, de onde, com que resultado e qual segundo fator foi usado, o que os torna centrais para identificar o mau uso.
+
+### 19.2 Autenticação e autorização
+
+A autenticação prova quem um usuário é; a autorização decide o que ele pode fazer. O portal autentica os clientes por senha; os funcionários da Lindqvist usam *single sign-on* com MFA. Os logs de autorização mostram o acesso a funções sensíveis, como alterar um endereço de entrega. Uma senha correta satisfaz a autenticação, mas o portal ainda decide se aquele cliente pode ver um determinado pedido. Os logs de cada etapa respondem a perguntas diferentes: os de autenticação mostram quem entrou, os de autorização mostram o que tentaram fazer. Um atacante que entra com sucesso muitas vezes aparece depois nos logs de autorização por meio de ações incomuns.
+
+### 19.3 Sinais de MFA
+
+O MFA reduz o sucesso do *credential stuffing*. Seus logs acrescentam sinais: pedidos de MFA repetidamente negados pelo usuário podem indicar que alguém tem a senha; uma troca súbita do dispositivo de MFA merece verificação. Pedidos negados sugerem que a senha é conhecida por outra pessoa, já que o usuário real está recusando um acesso que não iniciou. Pedidos repetidos enviados em sequência rápida podem ser uma tentativa de vencer o usuário pelo cansaço até que ele aprove um. Um novo dispositivo de MFA registrado logo depois de um acesso vindo de um lugar desconhecido merece revisão imediata.
+
+### 19.4 *Hashing*
+
+Um *hash* criptográfico dá uma impressão digital de tamanho fixo dos dados. Os SOCs usam *hashes* para identificar arquivos e verificar se a evidência exportada não foi alterada. As senhas devem ser armazenadas com funções de *hash* de senha lentas e com *salt*, para que bancos de dados roubados resistam à quebra. Um *hash* de arquivo permite aos analistas procurar o mesmo arquivo em muitas máquinas sem mover o próprio arquivo. A evidência exportada que recebe um *hash* na exportação pode ser conferida depois por qualquer pessoa. O *hashing* de senhas é diferente: funções projetadas para ser lentas e com *salt* tornam cada palpite caro, de modo que um banco de dados roubado não pode ser conferido rapidamente contra bilhões de palpites.
+
+### 19.5 Cifragem e assinaturas
+
+A cifragem protege a confidencialidade em trânsito (TLS) e em repouso. As assinaturas digitais provam origem e integridade: software assinado, lotes de logs assinados. Ferramentas de teste de carga assinadas, como no capítulo 14, permitem às regras fazer exceções confiáveis. A cifragem em trânsito impede que alguém na rede leia os logins; a cifragem em repouso protege os dados armazenados se um disco for roubado. As assinaturas respondem a outra pergunta: isto veio de quem diz ter vindo, sem alterações? Uma regra pode excluir com segurança os testes de carga de uma ferramenta cuja assinatura é verificada e, ainda assim, alertar sobre uma cópia não assinada que usa o mesmo nome.
+
+### 19.6 Ataques de identidade vistos pelo defensor
+
+*Credential stuffing*, *password spraying* e roubo de *tokens* deixam rastros nos logs de identidade. O trabalho do defensor é coletar esses logs e conhecer os padrões normais, não reproduzir os ataques. O *credential stuffing* testa pares vazados de nome de usuário e senha em muitas contas; o *password spraying* testa algumas senhas comuns contra muitas contas; o roubo de *tokens* reutiliza um *token* de sessão sem precisar da senha. Cada padrão parece diferente nos logs, e as detecções são construídas a partir dessas visões defensivas, com dados sintéticos, e não a partir de tentativas reais.
+
+### 19.7 Caso
+
+Depois do incidente, a Lindqvist oferece MFA opcional aos clientes e alerta sobre alterações de endereço logo após um login vindo de uma rede nova. O MFA opcional protege os clientes que o escolhem; o alerta de alteração de endereço protege todos, porque uma mudança do endereço de entrega muitas vezes é o que um atacante quer depois de entrar numa conta. O alerta combina dois sinais, uma rede nova e uma alteração sensível, embora sua primeira semana mostre com que frequência clientes honestos que se mudam também correspondem aos dois. A equipe de segurança planeja revisar a adesão ao MFA depois de seis meses. Os clientes são informados de como ativá-lo.
+
+### Exemplo resolvido
+
+Amara projeta uma regra: "alteração de endereço até 10 minutos depois de um login bem-sucedido a partir de uma rede não vista para aquele cliente em 90 dias". No modo só monitoramento, ela dispara 12 vezes numa semana; 11 são clientes que se mudaram e entraram a partir da rede da nova casa. Ela acrescenta, para essas alterações, uma etapa de confirmação por e-mail ao cliente em vez de um alerta ao analista, mantendo o alerta apenas quando a confirmação falha.
+
+> **Caso sintético.** As regras e as contagens são inventadas.
+
+### Erros e limites
+
+Os logs de identidade de provedores externos podem chegar atrasados ou sem alguns campos; confira os tempos de entrega.
+
+### Exercícios
+
+- **EX055 — Por que logs de identidade.** Por que os logs de autenticação estão entre os dados mais valiosos do SOC? *Rubrica:* 3 = os ataques muitas vezes usam credenciais válidas; os logs mostram seu uso; 2 = parcial; 1 = vago; 0 = nada.
+- **EX056 — Sinais de MFA.** Dê dois sinais de detecção relacionados ao MFA. *Rubrica:* 3 = pedidos negados repetidamente; novo dispositivo de MFA; 2 = um; 1 = vago; 0 = nada.
+- **EX057 — Projeto da confirmação.** Como Amara reduziu o ruído da regra de alteração de endereço? *Rubrica:* 3 = confirmação por e-mail ao cliente; alerta só quando a confirmação falha; 2 = parcial; 1 = regra apagada; 0 = nada.
+
+### Síntese
+
+Os eventos de identidade e as ferramentas criptográficas são material central do SOC; projete as detecções em torno de como os usuários legítimos se comportam.
+
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Operações de segurança e blue team: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever a missão e os serviços do SOC em termos de engenharia; (2) relacionar as funções do SOC ao risco da organização; (3) identificar partes interessadas e restrições; (4) enquadrar os problemas de engenharia de SOC para o restante do curso.
+
+### 20.1 Missão primeiro
+
+Knerler, Parker e Zimmerman (2022) começam com "saiba o que você está protegendo e por quê". A Lindqvist protege dados de clientes, operações de entrega e fluxos de pagamento. As escolhas de engenharia decorrem dessa missão, e não dos recursos das ferramentas. Começar pelas ferramentas leva a coletar tudo o que a ferramenta suporta. Começar pela missão leva a perguntar que dano importaria mais: dados de clientes roubados, entregas paradas ou pagamentos desviados. Essas respostas decidem quais sistemas precisam da melhor cobertura e quais alertas merecem acionar alguém à noite, de modo que o esforço de engenharia segue o impacto no negócio.
+
+### 20.2 Serviços do SOC
+
+O SOC da Lindqvist oferece monitoramento e triagem, coordenação da resposta a incidentes, engenharia de detecção, recebimento de vulnerabilidades e consumo de inteligência de ameaças. Cada serviço tem clientes dentro da empresa e saídas mensuráveis. Tratar cada um como serviço esclarece a quem ele atende e como medi-lo. O monitoramento atende à empresa inteira e é medido pelos tempos de detecção e de resposta; a engenharia de detecção atende aos analistas e é medida pela qualidade das regras; o recebimento de vulnerabilidades atende às equipes de TI e é medido pela rapidez com que os relatos chegam aos responsáveis. Serviços pouco claros tendem a escorregar para trabalho não planejado.
+
+### 20.3 Restrições
+
+Orçamento, tamanho da equipe, regulação e sistemas legados restringem o projeto. Os leitores dos depósitos rodam software antigo que não comporta agentes, então o monitoramento de rede precisa cobri-los. As restrições são insumos do projeto, não desculpas. O software antigo dos leitores, que não consegue rodar um agente, exclui a telemetria de *endpoint*, então o projeto passa a observar o tráfego dos leitores na rede do depósito. O orçamento pode limitar os sensores, primeiro, aos depósitos mais movimentados. A regulação pode exigir que certos logs sejam guardados por períodos definidos. Cada restrição é registrada por escrito, para que leitores posteriores entendam o projeto.
+
+### 20.4 Partes interessadas
+
+O CISO define as prioridades; as operações de TI são donas dos sistemas; as equipes jurídica e de privacidade definem limites; as unidades de negócio sentem o impacto das ações de resposta. Os engenheiros de SOC precisam trabalhar com todos eles. As operações de TI podem resistir a um sensor que possa deixar seus sistemas lentos; a equipe jurídica pode limitar o conteúdo que pode ser coletado; as unidades de negócio podem se opor ao bloqueio de uma conta no horário de pico das entregas. Engenheiros que os envolvem cedo ouvem essas preocupações enquanto o projeto ainda é flexível. Amara mantém uma lista de partes interessadas com o que mais importa para cada grupo.
+
+### 20.5 Problemas de engenharia pela frente
+
+O curso acompanha quatro problemas na Lindqvist: detectar a tomada de contas no portal; monitorar as redes dos depósitos sem agentes; manter o SIEM dentro da capacidade; e provar, por meio da verificação, que o SOC funciona. Cada problema recorre a habilidades diferentes: a tomada de contas, a dados de identidade e estatística; o monitoramento dos depósitos, a redes e arquitetura; a capacidade do SIEM, a sistemas de dados e matemática; e a verificação, a testes e medição. Acompanhar a mesma empresa nos quatro permite ao curso mostrar como decisões numa área, como as camadas de armazenamento, restringem as opções em outra.
+
+### 20.6 Maturidade
+
+O SOC-CMM (van Os, 2016) avalia negócio, pessoas, processos, tecnologia e serviços. A autoavaliação da Lindqvist mostra tecnologia forte, mas documentação de processos fraca, o que orienta as prioridades. Um modelo de maturidade oferece um modo estruturado de ver forças e fraquezas no SOC inteiro. Tecnologia forte com documentação de processos fraca significa que as ferramentas funcionam, mas os resultados dependem de qual analista está no turno. A autoavaliação sugere escrever *playbooks* antes de comprar mais ferramentas e dá uma linha de base para repetir depois e mostrar o progresso. A avaliação é repetida a cada ano, pelo mesmo método.
+
+### 20.7 Medidas de sucesso
+
+O sucesso não é "nenhum incidente", e sim detecção mais rápida, decisões melhores e menos dano. Um ano tranquilo pode significar que nada aconteceu, ou que nada foi detectado; os dois parecem iguais numa contagem de incidentes. Medidas melhores incluem o tempo entre a primeira evidência e a detecção, o tempo até a contenção e com que frequência as decisões de resposta foram depois julgadas corretas. O SOC da Lindqvist relata essas medidas mensalmente, junto com notas honestas sobre qualquer detecção perdida. Cada medida tem uma meta declarada, e as tendências ao longo de vários meses importam mais do que o número de um único mês, que pode oscilar com um único incidente grande.
+
+### Financiamento do SOC
+
+O orçamento do SOC compete com outros trabalhos de TI. Engenheiros que conseguem mostrar como uma mudança reduz o risco ou o tempo dos analistas obtêm apoio com mais facilidade do que os que pedem ferramentas.
+
+### Exemplo resolvido
+
+Amara escreve um resumo de contexto de uma página: missão, serviços, restrições, partes interessadas e os quatro problemas de engenharia. Paolo acrescenta uma restrição que ela deixou passar — o SOC tem apenas dois analistas no turno da noite —, o que molda todas as decisões de alerta.
+
+> **Caso sintético.** O SOC da Lindqvist e sua avaliação são inventados.
+
+### Erros e limites
+
+O contexto muda com o negócio; revise o resumo quando a empresa mudar.
+
+### Exercícios
+
+- **EX058 — Vínculo com a missão.** Como a missão orienta as escolhas de engenharia? *Rubrica:* 3 = o que é protegido define as prioridades, não os recursos das ferramentas; 2 = parcial; 1 = vago; 0 = nada.
+- **EX059 — Restrição dos depósitos.** Por que os leitores dos depósitos precisam ser monitorados pela rede? *Rubrica:* 3 = o software antigo não comporta agentes; 2 = parcial; 1 = nenhum motivo; 0 = nada.
+- **EX060 — Turno da noite.** Por que importa o turno da noite com dois analistas? *Rubrica:* 3 = limita o volume de alertas que eles conseguem tratar; molda os alertas; 2 = parcial; 1 = irrelevante; 0 = nada.
+
+### Síntese
+
+A engenharia de SOC parte da missão, dos serviços, das restrições e das partes interessadas; o restante do curso resolve problemas dentro desses limites.
+
+### Continue estudando — capítulo 20 de 50
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -1179,6 +1423,30 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX150 estão na edição em i
 **EX047.** Logs do portal entregues em até 2 minutos, latência da regra abaixo de 5 minutos e reconhecimento pelo analista em até 8 minutos.
 
 **EX048.** A rajada foi reconhecida 11,5 minutos depois da injeção, dentro da meta, e o reconhecimento pelo analista foi a etapa mais lenta.
+
+**EX049.** Ajustes grandes ou rápidos demais passam do ponto; passos pequenos, com tempo para observar os efeitos, evitam isso.
+
+**EX050.** Uma fila sobrecarregada leva os analistas a fechar alertas às pressas, o que esconde perdas e permite mais comprometimento, acrescentando ainda mais carga.
+
+**EX051.** No máximo um passo de limiar a cada quinze dias e nenhuma elevação depois de qualquer evento de teste perdido; a regra se estabilizou em 6 falhas, com 8 alertas falsos por dia e todos os eventos de teste pegos.
+
+**EX052.** Porque o tráfego legítimo que atravessa uma fronteira é limitado e bem conhecido, as travessias incomuns se destacam.
+
+**EX053.** Os logs do balanceador de carga não eram encaminhados; foram acrescentados, e os logs web agora registram um cabeçalho com o endereço do cliente que o balanceador sobrescreve, para que os clientes não possam forjá-lo.
+
+**EX054.** Ficam numa zona separada, com contas de administrador dedicadas e protegidas por autenticação multifator.
+
+**EX055.** Porque muitos ataques usam credenciais roubadas, mas válidas, que só os logs de identidade revelam.
+
+**EX056.** Pedidos de MFA repetidos que o usuário nega e uma troca inesperada do dispositivo de MFA registrado.
+
+**EX057.** Acrescentou uma confirmação por e-mail ao cliente e manteve um alerta ao analista apenas quando a confirmação falhava.
+
+**EX058.** As prioridades de engenharia seguem o que a empresa precisa proteger — dados de clientes, entregas, pagamentos —, e não o que as ferramentas conseguem fazer.
+
+**EX059.** Seu software antigo não consegue rodar agentes de *endpoint*, então o monitoramento de rede é a única opção.
+
+**EX060.** Com apenas dois analistas à noite, cada alerta encaminhado a eles precisa valer o tempo limitado que têm.
 
 <a id="references"></a>
 ## Referências
