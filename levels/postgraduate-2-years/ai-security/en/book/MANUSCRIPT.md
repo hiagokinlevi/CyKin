@@ -55,9 +55,11 @@ NIST AI 100-1 organises AI risk work into Govern, Map, Measure and Manage. Use i
 
 You rarely have the evidence you want. Three tools help. *Bounding*: if zero failures were seen in n independent trials, the 95% upper bound on the failure rate is roughly 3/n, so 0 in 300 still allows about 1%. *Reversibility*: prefer options that can be undone cheaply — a feature flag, a refund limit, a staged rollout. *Value of information*: ask whether more testing could change the decision; if not, decide now.
 
+Amira's refund decision uses all three: the 0-in-400 bound, a low cap that can be raised later, and a trigger instead of more testing.
+
 ### 1.5 Worked example (synthetic Corvane case)
 
-The board asks Amira whether Dispatch Copilot may issue refunds automatically. Options: (a) no refunds by the agent; (b) refunds up to €50 with policy checks outside the model; (c) refunds up to €500. Evidence: in an isolated test, 0 of 400 adversarial conversations produced an out-of-policy refund under option (b) (upper bound ≈ 0.75%), while customer-service data estimate €180,000 a year in handling savings. Values: the finance director accepts up to €5,000 a year in wrongful refunds. Amira computes the worst plausible exposure at 0.75% of 60,000 refunds × €50 ≈ €22,500, above appetite, so she recommends (b) at a €20 limit for three months, with a trigger to revisit after 10,000 live refunds or any confirmed abuse.
+The board asks Amira whether Dispatch Copilot may issue refunds automatically. Options: (a) no refunds by the agent; (b) refunds up to €50 with policy checks outside the model; (c) refunds up to €500. Evidence: in an isolated test, 0 of 400 adversarial conversations produced an out-of-policy refund under option (b) (upper bound ≈ 0.75%), while customer-service data estimate €180,000 a year in handling savings. Values: the finance director accepts up to €10,000 a year in wrongful refunds. Amira computes the worst plausible exposure at 0.75% of 60,000 refunds × €50 ≈ €22,500, above appetite; at a €20 limit the same bound gives €9,000, within it, so she recommends (b) at a €20 limit for three months, with a trigger to revisit after 10,000 live refunds or any confirmed abuse.
 
 ### 1.6 Errors and limits
 
@@ -65,6 +67,8 @@ The board asks Amira whether Dispatch Copilot may issue refunds automatically. O
 - Treating "no failures seen" as "no failures possible".
 - Omitting "do not deploy" from the options.
 - Decisions with no owner or revisit trigger.
+
+Each error weakens a decision. A single score hides the options and the values behind them, such as the finance director's appetite for wrongful refunds. Zero failures in 400 tests still allows a rate near 0.75%. Without "do not deploy", the board never sees the cheapest safe option. A decision with no owner or trigger is never revisited, even after 10,000 live refunds. Check each record for all four.
 
 ### Exercises
 
@@ -98,9 +102,13 @@ NIST AI 100-2 E2025 classifies attacks on predictive and generative AI by the at
 
 Mature organisations keep an inventory of AI systems with owners and risk tiers; threat-model each deployment; test with adversarial suites before release; enforce consequential actions outside the model (policy services, scoped credentials, human confirmation); monitor usage and outcomes; and run incident response that includes model and prompt rollback. ISO/IEC 42001 provides a management-system frame for this work.
 
+At Corvane, Amira's first inventory found vendor features nobody had reviewed, which shows how far practice can lag behind this description. Use the list as a baseline to measure against, not an assumption about what is already in place.
+
 ### 2.3 Why external enforcement
 
 Indirect prompt injection — instructions hidden in content the model reads — was demonstrated against real LLM-integrated applications by Greshake et al. (arXiv:2302.12173). Automated adversarial suffixes transfer between models (Zou et al., arXiv:2307.15043). Since no current method makes a model reliably ignore injected instructions, the accepted pattern is to assume the model can be steered and to bound what it can do: least-privilege tools, checks that do not rely on the model's judgment, and confirmation for consequential actions.
+
+At Corvane, the refund cap is checked by a policy service.
 
 ### 2.4 Mature versus research
 
@@ -149,9 +157,13 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
+Base claims about a control on its maturity. At Corvane, Amira relies on mature controls such as the refund policy service and treats the injection classifier only as a signal. The lab shows the same pattern in miniature: only allow-listing and separation reach zero exfiltration calls.
+
 ### 2.5 Worked example (synthetic Corvane case)
 
-Amira maps Dispatch Copilot. Retrieval of carrier emails creates LLM01 (indirect injection) exposure; refund and rebooking tools create LLM06 (excessive agency); customer addresses in context create LLM02; free text rendered in the staff console creates LLM05. In ATLAS terms she lists prompt injection and exfiltration via the agent's tools. The lab shows the pattern behind her design: keyword filtering halves exfiltration calls (10/20) but only tool allow-listing and separating untrusted content from instructions reach 0/20.
+Amira maps Dispatch Copilot. Retrieval of carrier emails creates LLM01 (indirect injection) exposure; refund and rebooking tools create LLM06 (excessive agency); customer addresses in context create LLM02; free text rendered in the staff console creates LLM05. In ATLAS terms she lists prompt injection and exfiltration via the agent's tools. The lab shows the pattern behind her design: keyword filtering only cuts exfiltration calls from 17/20 to 10/20 but only tool allow-listing and separating untrusted content from instructions reach 0/20.
+
+Each mapping names a control owner in her register.
 
 ### 2.6 Errors and limits
 
@@ -159,11 +171,13 @@ Amira maps Dispatch Copilot. Retrieval of carrier emails creates LLM01 (indirect
 - Treating partly mature defences as solved.
 - Assuming lab rates transfer to production.
 
+Each error makes mapping misleading. A taxonomy used as a checklist marks entries as covered without asking how they apply to Dispatch Copilot's tools and data. Partly mature defences, such as injection classifiers, still fail under adaptive attack. Lab rates come from a toy rule engine; Corvane's real rates had to be measured on its own system. Check your mapping for all three.
+
 ### Exercises
 
 - **EX006 — Classify.** Classify five attacks by NIST goal and capability. Rubric: 3 = all five correct; 2 = four; 1 = two or three; 0 = fewer.
 - **EX007 — OWASP mapping.** Map FraudScore and DocRead to relevant OWASP or NIST classes (note that OWASP LLM targets LLM apps). Rubric: 3 = apt mappings with scope note; 2 = mappings without scope note; 1 = one system; 0 = none.
-- **EX008 — Lab reading.** Explain why "keyword" halves exfiltration but "separate" removes it in the lab. Rubric: 3 = keywords miss paraphrases; separation removes the channel; caveat toy model; 2 = partial; 1 = vague; 0 = wrong.
+- **EX008 — Lab reading.** Explain why "keyword" only cuts exfiltration from 17/20 to 10/20 but "separate" removes it in the lab. Rubric: 3 = keywords miss paraphrases; separation removes the channel; caveat toy model; 2 = partial; 1 = vague; 0 = wrong.
 - **EX009 — Maturity.** Place four practices on mature / partly mature / research with reasons. Rubric: 3 = four justified; 2 = three; 1 = one or two; 0 = none.
 - **EX010 — External enforcement.** In 120 words, argue for external enforcement to a sceptical product manager. Rubric: 3 = evidence, bounded harm, cost; 2 = two; 1 = assertion; 0 = none.
 
@@ -186,6 +200,8 @@ You will (1) distinguish kinds of AI-security evidence and their strength; (2) r
 ### 3.1 Kinds of evidence
 
 From weaker to stronger: vendor claims; documentation of controls; configuration review; non-adaptive testing with fixed suites; adaptive testing by people who know the defence; independent red teaming; and monitored production outcomes. Each has a place, but a claim should cite evidence matching its strength. "The model resists injection" needs adaptive testing; "the agent cannot refund over €20" can be shown by configuration review plus tests of the policy service, because enforcement does not depend on the model.
+
+Amira's evidence statement in the worked example below credits configuration and tests of the policy service.
 
 ### 3.2 Rates and intervals
 
@@ -230,23 +246,33 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+Amira's 41 of 300 result is reported this way, with an interval of about 10–18%, so the board sees both the rate and its uncertainty. Report the number of trials beside every rate, and say whether the cases were adaptive.
+
 ### 3.3 Weak evaluations
 
 Carlini et al. (arXiv:1902.06705) list common faults in robustness evaluations; Athalye et al. (arXiv:1802.00420) showed that defences relying on obfuscated gradients were broken by adapted attacks. Warning signs: only fixed public attack strings; the defender wrote all tests; no baseline; tiny samples; success measured by the model's words rather than by what happened (a tool call, a data release).
+
+The vendor's "99%" claim in the worked example below shows several of these signs at once: public strings only, a vendor-written suite and success measured by classifier output.
 
 ### 3.4 Privacy and poisoning evidence
 
 Membership inference (Shokri et al., arXiv:1610.05820) is measured as attack advantage or AUC over balanced member/non-member sets; differential privacy (Abadi et al., arXiv:1607.00133) gives a formal bound instead of a measurement. Poisoning evidence reports both clean accuracy and attack success, because backdoors (Gu et al., arXiv:1708.06733) can leave clean accuracy unchanged.
 
+For FraudScore, poisoning evidence would mean testing synthetic trigger invoices as well as clean accuracy, as Amira's team does in the evaluation chapter. A single clean-accuracy figure would not reveal a backdoor.
+
 ### 3.5 Worked example (synthetic Corvane case)
 
 A vendor claims its injection filter "blocks 99% of attacks". Amira asks for the suite: 500 public strings, non-adaptive, measured by classifier output. Her team builds 300 adaptive cases against Dispatch Copilot and measures tool calls: the filter alone allows 41 harmful calls (13.7%, interval ≈ 10.2–18.0%). With the refund policy service, 0 of 300 reach payment (upper bound ≈ 1%). Her evidence statement credits the policy service, not the filter.
+
+The difference between 13.7% and 0 of 300 shows why measuring effects matters: the filter changes text, the policy service changes outcomes. Amira keeps the filter only as a signal.
 
 ### 3.6 Errors and limits
 
 - Quoting rates without trials or intervals.
 - Accepting non-adaptive results for adaptive threats.
 - Measuring text rather than effects.
+
+Each error leads readers to trust the wrong control. A rate without trials or intervals cannot be compared or checked. Non-adaptive results say little about attackers who know the defence; the vendor's 99% fell to 13.7% when Amira's team adapted. Measuring the model's words rather than tool calls misses harm that happens anyway. Review each evidence statement against these three points and revise it before it is reported.
 
 ### Exercises
 
@@ -276,17 +302,25 @@ You will (1) analyse AI-security risk for affected people, not only the organisa
 
 Organisational risk registers record losses to the organisation. AI failures often fall on others: a customer wrongly refused, a worker whose data leaks, a driver directed to a wrong address. NIST AI 100-1 asks organisations to consider impacts on individuals, groups, organisations and society. A senior specialist should list affected parties for each risk and ask whether they can notice, contest and recover from the harm.
 
+At Corvane, FraudScore's delays fall on small suppliers, not on Corvane. Amira's risk entry for FraudScore names them and gives them a way to appeal.
+
 ### 4.2 The AI Act in practice
 
 Regulation (EU) 2024/1689 classifies AI systems by risk. High-risk systems carry obligations including risk management, data governance, logging, human oversight — Article 14 requires that people overseeing the system can understand its limits, interpret outputs and intervene or stop it — and Article 15, which requires appropriate accuracy, robustness and cybersecurity, naming threats such as data poisoning, model poisoning, adversarial examples and confidentiality attacks. Whether a given system is high-risk depends on its use; establish this with legal counsel rather than assuming.
+
+For Corvane, whether Dispatch Copilot or FraudScore is high-risk is a question for counsel.
 
 ### 4.3 Ethics of testing and disclosure
 
 Testing must be authorised and scoped; synthetic or consented data should be used; tests on production must not harm users. When you find a weakness in a vendor's model, coordinate disclosure: inform the vendor, agree a timeline, avoid publishing working exploits that endanger others. When internal pressure pushes to hide a finding, document it and escalate: suppressing evidence of a risk to others is an ethical failure even if no rule names it.
 
+At Corvane, Amira's report on the vendor's injection filter was shared with the vendor before any wider discussion. If a test could affect real customers or carriers, stop and use an isolated copy instead, as all of Corvane's tests do.
+
 ### 4.4 Management systems
 
 ISO/IEC 42001 asks organisations to define AI policy, roles, risk assessment and treatment, impact assessment, and continual improvement. Its value for security is that risk work becomes recurring and audited rather than a one-off review.
+
+At Corvane, Amira uses the management system to schedule recurring evaluations for high-tier systems and to record risk acceptances, such as the finance director's acceptance for FraudScore. Audit then checks that these records exist and are current, which keeps the work from fading after the first review.
 
 ### 4.5 Worked example (synthetic Corvane case)
 
@@ -297,6 +331,8 @@ FraudScore flags supplier invoices; flagged suppliers wait 30 days for payment. 
 - Registers that omit affected people.
 - Assuming AI Act classification without legal advice.
 - Testing on production users without consent.
+
+Each error leaves harm unmanaged. A register without affected people would miss FraudScore's small suppliers, who bear the delay. Assuming AI Act classification can create obligations that do not apply or miss ones that do; ask counsel. Testing on production users without consent can harm them and breaches the authorisation every test needs. Check your register and test plans for all three.
 
 ### Exercises
 
@@ -326,17 +362,25 @@ You will (1) generate several architectures for an AI feature; (2) compare them 
 
 A common failure is to secure the first design proposed. Generate at least three: the minimal design (the model drafts, a human acts); the bounded agent (the model calls narrow tools with external checks); and the broad agent (the model has general tools). Then compare. Often the minimal design delivers most of the value with little risk.
 
+Amira's rebooking comparison in the worked example below starts with three designs. For rebooking at Corvane, the minimal design keeps a human click on every change. Write each design down with its harm bound before scoring any of them, so the first idea does not anchor the comparison.
+
 ### 5.2 Patterns
 
 *Privilege separation*: one component reads untrusted content without tool access and returns structured data; another, which never sees raw untrusted text, decides actions. *Plan-then-execute*: the model proposes a plan in a fixed schema; a deterministic checker validates it against policy before execution. *Structured outputs*: actions are typed fields, not free text, so validation is exact. *Scoped credentials*: tool calls run with the end user's rights, never with a service account that can reach all records.
+
+Amira's rebooking design uses privilege separation and structured outputs.
 
 ### 5.3 Model-side versus system-side
 
 Model-side defences — safety training, injection classifiers, structured queries — reduce the rate of bad outputs. System-side defences — policy checks, limits, sandboxing, confirmation — bound the harm when bad outputs occur. Wei et al. (arXiv:2307.02483) analyse why safety training fails against jailbreaks, supporting the view that model-side defences should not be the only layer. Use both, but put guarantees in the system.
 
+At Corvane, the injection classifier is model-side and the policy service is system-side; the evaluation showed only the second reached near zero harm.
+
 ### 5.4 Comparing designs
 
 Score each design on: harm bound (worst-case loss per incident), expected failure rate, user value, operating cost, implementation effort and reversibility. Present a table and a recommendation, and say which scores are estimates.
+
+For rebooking, Amira's table would show design C with an unbounded harm, design A with low value, and design B with a cap and high value. Mark which scores are measured and which are estimates. Present the table to the product owner with the recommendation, and record the decision with its owner and revisit triggers.
 
 ### 5.5 Worked example (synthetic Corvane case)
 
@@ -347,6 +391,8 @@ For rebooking, Amira compares: (A) Copilot drafts a rebooking, an agent clicks c
 - Comparing only one design with "do nothing".
 - Relying on prompt instructions as a boundary.
 - Service-account tool credentials.
+
+Each error narrows the choice unfairly. Comparing one design with doing nothing hides cheaper safe options such as the minimal design. Prompt instructions can be overridden by injected text, so they cannot be the boundary. A service-account credential lets one injected instruction reach every record, as design C's general API key would. A design review that falls into one of these traps should be sent back to the team before approval.
 
 ### Exercises
 
@@ -376,9 +422,13 @@ You will (1) design a controlled evaluation comparing defences; (2) control conf
 
 Change one thing at a time. Hold the model version, prompt, retrieval index and test suite fixed while comparing defences; record versions. Split suites into development cases (used to tune defences) and held-out cases (used once for reporting), and include adaptive cases written by people who did not build the defence.
 
+At Corvane, the comparison of three defences used the same model version, prompts and 400 held-out cases. Record the suite version and who wrote the adaptive cases, so a later rerun can use the same conditions. Keep the held-out cases sealed until the final comparison.
+
 ### 6.2 Metrics and sample size
 
 Measure effects: harmful tool calls, records disclosed, money moved. Also measure costs: false refusals and task completion on normal traffic. To distinguish 15% from 10% attack success with reasonable confidence you need a few hundred cases per arm; to claim a rate below 1% you need several hundred cases with zero or near-zero failures.
+
+Amira's evaluation used 400 adaptive cases and 2,000 normal conversations, enough to separate rates of 22%, 9% and 0.5% and to measure task completion. Plan sample sizes before running tests, not after seeing the results.
 
 ### 6.3 Classical threats
 
@@ -436,19 +486,27 @@ backdoor: add n triggered class-1 points labelled 0
   poison_points= 80 clean_accuracy=0.968 attack_success=0.980
 ```
 
+For FraudScore, Amira's team adds a backdoor test with synthetic trigger invoices, because a poisoned training set might pass clean-accuracy checks. Report both clean accuracy and trigger success for each test. Run the trigger test after every retraining, since a new data source can introduce a backdoor at any time.
+
 ### 6.4 Reporting for decisions
 
 Report per defence: attack success with interval, difference from baseline with interval, side effects, cost, and conditions (versions, suites, dates). End with what the result implies for the decision and what it does not show.
 
+At Corvane, the report on the three defences ended with a recommendation for privilege separation and stated that the classifier would remain only as a monitoring signal. It also stated what the result did not show: behaviour on future model versions or new attack styles.
+
 ### 6.5 Worked example (synthetic Corvane case)
 
 Amira's team compares the baseline Copilot, Copilot with an injection classifier, and Copilot with privilege separation, on 400 held-out adaptive cases plus 2,000 normal conversations. Harmful tool calls: 22%, 9% and 0.5%. Normal-task completion: 91%, 86% and 90%. The classifier cut attacks but also blocked legitimate carrier emails containing words like "ignore the previous slot". She recommends privilege separation, keeping the classifier only as a monitoring signal. For FraudScore she adds a backdoor test using synthetic trigger invoices.
+
+The result is reported with completion rates as well as attack rates, so the cost of each defence is clear.
 
 ### 6.6 Errors and limits
 
 - Changing model and defence together.
 - Tuning on the reporting suite.
 - Ignoring false refusals.
+
+Each error makes a comparison unreliable. Changing model and defence together means nobody knows which caused the change. Tuning on the reporting suite makes the defence look better than it is on new attacks. Ignoring false refusals hides costs, such as the classifier blocking legitimate carrier emails at Corvane. An evaluation plan with one of these flaws should be corrected before the results reach a decision owner.
 
 ### Exercises
 
@@ -513,27 +571,39 @@ invoice-ocr-model  score= 5 owasp=LLM01
 churn-predictor    score= 3 owasp=LLM02
 ```
 
+Amira's inventory in the worked example below found 23 AI uses.
+
 ### 7.2 Reuse existing processes
 
 Change management covers model, prompt and retrieval-index changes as well as code. Access management covers the identities agents use. Vendor management asks model and API providers about data use, retention, security testing and incident notification. Incident response adds playbooks for prompt injection, data leakage through a model and poisoned data, including rollback of models and prompts. Integration beats a separate "AI process" that teams can ignore.
+
+At Corvane, Amira added "prompt or model change" to the change-advisory checklist and AI questions to the vendor questionnaire, rather than creating a separate process.
 
 ### 7.3 Roles
 
 Assign: a system owner accountable for each AI system; an AI-security function setting standards and testing; data owners approving data use; and a risk committee accepting residual risk for high tiers. ISO/IEC 42001 expects such roles to be defined and resourced.
 
+At Corvane, Amira's team is the AI-security function, the finance director accepted FraudScore's residual risk, and each built system has a named owner. Write the roles into the inventory so each entry shows who is accountable, and review them when people move.
+
 ### 7.4 Metrics
 
 Useful organisation metrics: percentage of AI systems inventoried and tiered; high-tier systems with current adversarial evaluation; time to roll back a model or prompt; AI-related incidents and near misses; percentage of agent tools with external enforcement. Avoid vanity metrics like "number of prompts filtered".
 
+At Corvane, the first-year roadmap measures the share of high-tier systems evaluated within six months. Report each metric with its trend and say which ones are below target and why, so the board sees where effort is needed.
+
 ### 7.5 Worked example (synthetic Corvane case)
 
 Amira's inventory finds 23 AI uses: 3 built systems, 11 vendor features switched on in SaaS products, and 9 shadow uses. Two vendor features — an email assistant with mailbox access and a CRM summariser — had never been reviewed. She tiers them, adds AI questions to the vendor questionnaire, adds "prompt or model change" to the change-advisory checklist, and writes an injection playbook. Her first-year roadmap targets all high-tier systems evaluated within six months.
+
+The two unreviewed vendor features would have been missed by an inventory of built systems alone.
 
 ### 7.6 Errors and limits
 
 - Inventories that miss vendor features and shadow use.
 - Parallel AI processes nobody follows.
 - Metrics that count activity instead of risk reduction.
+
+Each error leaves risk unseen or unmanaged. An inventory of built systems alone would have missed Corvane's 11 vendor features and 9 shadow uses. A parallel AI process is easy for teams to ignore; adding questions to existing checklists reaches them. Counting activity, such as prompts filtered, says nothing about whether risk fell. Check your programme for all three. Fix any you find at the next review.
 
 ### Exercises
 
@@ -562,6 +632,8 @@ You will (1) analyse cases where controls conflict or evidence is ambiguous; (2)
 ### 8.1 Conflicting controls
 
 Logging every prompt supports investigation but stores personal data; strict refusal reduces misuse but harms legitimate users; human confirmation bounds harm but causes approval fatigue. Difficult cases are rarely solved by one more control; they need explicit trade-offs, owners and monitoring of both sides.
+
+At Corvane, the depot incident showed one such trade-off: automatic rebooking saves time but trusted email text too much. Write each trade-off down with its owner and the measure that shows whether the balance is right.
 
 ### 8.2 Multi-agent and supply chain
 
@@ -598,13 +670,19 @@ model.bin       MISMATCH
 tokenizer.json  OK
 ```
 
+At Corvane, Dispatch Copilot's reader model passes fields to the planner. Lab H shows the check: a changed byte and an added configuration line are both detected.
+
 ### 8.3 Privacy leakage
 
 Fine-tuned models can memorise and reveal training data; Carlini et al. (arXiv:2012.07805) extracted verbatim training examples from a language model. When a model is fine-tuned on customer messages, test for verbatim regurgitation and membership inference, and consider deduplication, filtering and differential privacy.
 
+At Corvane, Tomás's applied project tested this for a reply-suggestion model fine-tuned on customer messages, and deduplication cut membership advantage from 0.17 to 0.06. Run such tests after each fine-tune, not only once. Report leakage with the attack used and its conditions.
+
 ### 8.4 Incidents with uncertain cause
 
 Was the wrong refund an injection, a model error, or a policy bug? Preserve prompts, retrieved documents, tool calls and versions; reproduce on an isolated copy; consider all three until evidence separates them. Contain first: lower limits, disable the tool, roll back the prompt.
+
+Amira's depot incident followed this order: containment by disabling automatic rebooking, evidence from logs, then cause. The cause turned out to be a compromised carrier account, not a model error, which only the preserved evidence could show.
 
 ### 8.5 Worked example (synthetic Corvane case)
 
@@ -615,6 +693,8 @@ Copilot rebooked 14 shipments to a new depot after reading a carrier email. Was 
 - Seeking a single control for a trade-off.
 - Trusting agent-to-agent messages.
 - Assigning blame to "the model" before evidence.
+
+Each error leads to a wrong response. A trade-off cannot be solved by one more control; it needs an owner and monitoring of both sides. Messages from other agents can carry injected instructions, so enforcement is needed at each tool boundary. Blaming the model before evidence would have hidden the compromised carrier account behind Corvane's depot incident. Check each incident review for all three.
 
 ### Exercises
 
@@ -644,13 +724,19 @@ You will (1) build an assurance case for an AI system; (2) report AI-security po
 
 An assurance case is a structured argument: a claim ("Copilot cannot issue refunds outside policy"), arguments ("refunds pass a policy service independent of the model"), and evidence (tests, configuration, monitoring). Each claim should state its conditions and the evidence's age. Weak points are explicit: what would make the claim false?
 
+Amira's assurance case for the refund cap lists carrier-email compromise as its weak point. For the refund cap, the evidence is the policy-service configuration, tests showing 0 of 300 adaptive cases reached payment, and monitoring of live refunds. Record the date of each piece of evidence and the model version it covers, and review the case when either changes.
+
 ### 9.2 Reporting upward
 
 Boards need a short, honest picture: which AI systems carry the most risk, how much of that risk is treated, what incidents occurred, which decisions need them. Use few metrics, trends, and plain statements of residual risk. Do not hide uncertainty behind green dashboards.
 
+Amira's one-page board report in the worked example below shows top risks with trends, incidents, evaluation coverage and one decision request. Keep the same format each quarter so the board can compare. Show trends over at least four quarters.
+
 ### 9.3 Audit and red teaming
 
 Internal audit checks that processes run as designed: inventories maintained, evaluations current, changes reviewed. Independent red teams test whether controls work against motivated attackers. Ganguli et al. (arXiv:2209.07858) describe lessons from red teaming language models; scope red teams on objectives (move money, exfiltrate data) rather than on lists of prompts.
+
+At Corvane, a red team might be asked to move money through Dispatch Copilot or extract customer addresses, rather than to try a list of prompts. Agree scope, rules and reporting with the system owner before starting.
 
 ### 9.4 Leading contested decisions
 
@@ -695,19 +781,27 @@ client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
 client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 ```
 
+At Corvane, the rebooking decision used a reversible path: design B with a value cap. Record who disagreed and on what, so the decision can be revisited when evidence changes, and invite the dissenting team to propose the evidence that would change their view. Keep it short.
+
 ### 9.5 Keeping assurance current
 
 Every model update, prompt change, new tool or new data source can invalidate evidence. Tie claims to versions; re-run evaluations automatically; monitor production signals (the lab flags a client whose query volume is a robust-z outlier, a sign of possible extraction or abuse).
 
+At Corvane, each model update or new tool triggers a re-run of Copilot's evaluation suite, and the assurance case records the versions its evidence covers. Re-run the lab's outlier check on live query logs each week and review any flagged client with the system owner.
+
 ### 9.6 Worked example (synthetic Corvane case)
 
 Amira's quarterly board report has one page: top five AI risks with trend arrows, two incidents (depot rebooking, a shadow-AI data paste), evaluation coverage 4 of 5 high-tier systems, and one decision request: approve raising the refund cap to €50 based on 12,000 live refunds with 2 confirmed wrongful ones. The assurance case for the cap lists its weak point: carrier-email compromise.
+
+The decision request is supported by live evidence and states its weak point, so the board can weigh it. The report also shows which evidence is newest.
 
 ### 9.7 Errors and limits
 
 - Assurance cases without conditions or dates.
 - Green dashboards hiding unknowns.
 - Red teams constrained to prompt lists.
+
+Each error makes assurance stale or misleading. A claim without conditions or dates may describe a model that no longer runs. Green dashboards hide what is unknown, such as the one high-tier system at Corvane still unevaluated. Red teams limited to prompt lists cannot find chained attacks that move money. Check your assurance cases and reports for all three each quarter. Fix any you find before the next report.
 
 ### Exercises
 
@@ -737,27 +831,39 @@ You will (1) read AI-security papers efficiently; (2) critique threat models, me
 
 Read in three passes: abstract, figures and conclusion to decide relevance; threat model and method to understand the claim; evaluation and limitations to judge it. Keep a one-paragraph note per paper: claim, threat model, evidence, limits, relevance to your systems.
 
+Amira's critique of the preprint in the worked example below used the second and third passes to find the missing adaptive attacker. File each note where the team can find it. Keep the notes short enough to read in a minute, and tag each with the systems it affects, so they can be found when a decision needs them.
+
 ### 10.2 Critique questions
 
 What can the attacker do and know? Is the threat model realistic for your deployment? Are baselines and adaptive attacks included? Are results measured by effects and reported with uncertainty? Would a small change in setting break the result? Did the authors release code and data? Papers such as Carlini et al. (arXiv:1902.06705) give a checklist for robustness evaluations; Arp et al. (arXiv:2010.09470) list pitfalls in machine learning for security, including sampling bias, data snooping and inappropriate baselines.
+
+Ask also whether success was measured by effects.
 
 ### 10.3 Transfer to practice
 
 An attack demonstrated on an open model with white-box access may not apply to an API-only deployment — but transfer results such as Zou et al. (arXiv:2307.15043) show that some attacks found on open models work on closed ones. A defence evaluated on a public benchmark may fail on your traffic. State transfer assumptions explicitly.
 
+For Corvane, a defence tested only on public benchmarks would need testing on carrier emails before being trusted. Write each transfer assumption in the note. Revisit it after testing.
+
 ### 10.4 Keeping up
 
 Follow a small set of sources: NIST and OWASP updates, MITRE ATLAS case studies, major security and ML conferences, and preprint servers with skepticism. Hold a monthly reading session where one person presents a paper's relevance to company systems.
 
+At Corvane, the monthly session keeps the reading routine small enough to sustain. Rotate the presenter, and record in each note what changed, if anything, in Corvane's systems or plans as a result. Drop sources that rarely bring anything relevant, and add one when a colleague finds a better one.
+
 ### 10.5 Worked example (synthetic Corvane case)
 
 A colleague circulates a preprint claiming a new filter "eliminates prompt injection". Amira's critique: the evaluation uses 200 public injection strings with no adaptive attacker; success is measured by the model's text rather than tool calls; no false-refusal rate is reported; code is not released. Her conclusion: interesting as a monitoring signal; not evidence to remove the policy service. She contrasts it with Greshake et al. (arXiv:2302.12173), whose demonstrations against real applications motivated Corvane's design.
+
+The critique decided what the preprint could and could not justify at Corvane.
 
 ### 10.6 Errors and limits
 
 - Citing abstracts without reading evaluations.
 - Assuming results transfer without checking threat models.
 - Chasing every preprint.
+
+Each error lets weak research steer decisions. An abstract can claim more than the evaluation shows, as the preprint's "eliminates" did. A result on an open model with white-box access may not apply to an API-only deployment. Chasing every preprint uses time better spent on a few relevant papers each month. Read your notes against these three before you cite a paper in a decision record.
 
 ### Exercises
 
@@ -787,13 +893,19 @@ You will (1) scope an applied AI-security project with an organisation; (2) plan
 
 A good project answers a decision the organisation must make: "Should we enable autonomous rebooking?", "Does deduplication reduce leakage from our fine-tuned model?" Agree the decision owner, the systems in scope, authorisation in writing, data rules (synthetic or approved), success criteria and timeline.
 
+Tomás's project in the worked example below was scoped this way, with agreed criteria for advantage and reply quality. For Tomás's project, the decision owner was Amira, the system in scope was an isolated copy of the reply-suggestion model, and the data was synthetic customer messages. Write all of this down and get it signed before any testing starts.
+
 ### 11.2 Planning
 
 Plan in phases: baseline (current state and risk), intervention (design or controls), evaluation (controlled tests), decision support (report and recommendation), handover. Each phase has a deliverable and a review. Keep a risk register for the project itself: test damage, data exposure, schedule slips.
 
+For Tomás's project, the phases were a baseline leakage measurement, deduplication as the intervention, controlled tests on the isolated copy, a recommendation and handover. Write each deliverable and review date into the plan. Update the risk register weekly.
+
 ### 11.3 Execution
 
 Work on isolated copies. Log every test. Stop and escalate if you find a live vulnerability affecting customers; that takes priority over the project timeline. Hold weekly reviews with the decision owner.
+
+Tomás worked only on Corvane's isolated copy and logged each run with versions. Record anything unexpected in the project log, even if it did not change the result, and tell the decision owner about it at the next weekly review. Keep test data and logs on the isolated copy.
 
 ### 11.4 Evaluation
 
@@ -831,19 +943,27 @@ k= 5 attack_auc=0.521 best_advantage=0.073
 k=25 attack_auc=0.520 best_advantage=0.060
 ```
 
+Tomás measured advantage and reply quality against the criteria agreed at scoping: advantage below 0.1 with less than 2 points quality loss. He reported both, including the quality cost. If a criterion is missed, say so and explain what would be needed to meet it. Use held-out cases for the final measurement, and include adaptive cases written by someone who did not build the defence. Report the numbers with intervals.
+
 ### 11.5 Handover
 
 Deliver: the report; the evaluation harness and suites so tests can be re-run; configuration changes; runbooks; and a list of open risks with owners. A project that cannot be repeated after you leave has limited value.
 
+Tomás handed over the harness, the deduplication job and a runbook for retesting after each fine-tune, so Corvane can repeat the measurement. Include named owners for open risks and a date for the first retest. Check that someone else can run the harness before you leave.
+
 ### 11.6 Worked example (synthetic Corvane case)
 
-A student on placement, Tomás, takes Amira's question: does deduplicating customer messages before fine-tuning a reply-suggestion model reduce membership-inference leakage? Criteria: attack advantage below 0.1 with less than 2 points loss in reply quality. In the lab analogue, records repeated once give advantage 0.20; at higher counts it falls to about 0.06–0.07. On Corvane's isolated copy, deduplication cuts advantage from 0.17 to 0.06 with 1 point quality loss. He hands over the harness, the deduplication job and a runbook for retesting after each fine-tune.
+A student on placement, Tomás, takes Amira's question: does deduplicating customer messages before fine-tuning a reply-suggestion model reduce membership-inference leakage? Criteria: attack advantage below 0.1 with less than 2 points loss in reply quality. In the lab analogue, a model that effectively memorises its training records (k = 1) gives advantage 0.20; as it generalises (larger k) the advantage falls to about 0.06–0.07. On Corvane's isolated copy, deduplication cuts advantage from 0.17 to 0.06 with 1 point quality loss. He hands over the harness, the deduplication job and a runbook for retesting after each fine-tune.
+
+The criteria were met.
 
 ### 11.7 Errors and limits
 
 - Projects without a decision owner.
 - Testing on production.
 - Handover of a report but no harness.
+
+Each error limits the project's value. Without a decision owner, results have nowhere to go. Testing on production can harm customers and breaches authorisation. A report without the harness cannot be repeated after the next fine-tune, which is why Tomás handed over his harness and runbook. Settle all three in the project plan before work starts, and ask your supervisor to confirm them.
 
 ### Exercises
 
@@ -873,13 +993,19 @@ You will (1) review the course's main principles; (2) transfer them to new AI te
 
 Decide among options with explicit uncertainty. Map each system to taxonomies, then to its own data, tools and affected people. Assume models can be steered; enforce consequences outside them. Evaluate adaptively, measure effects and report intervals. Integrate AI into existing processes. Assure claims with dated evidence and keep them current. Read research for its threat model.
 
+Each principle appears in Corvane's work: the refund decision record, the copilot mapping, the policy service and the dated assurance case. Use them as a checklist for new work.
+
 ### 12.2 Transfer to new technology
 
 New capabilities — computer-use agents, multimodal inputs, on-device models, model-to-model protocols — will keep arriving. Ask the same questions: what untrusted input reaches the model? What can it do? What enforces limits outside it? What evidence shows the limits hold? Multimodal inputs, for example, extend the injection channel to images and audio; the principle of separating untrusted content from authority still applies.
 
+Amira's computer-use agent in the worked example below shows the transfer: portal pages are untrusted input and a proxy enforces listed operations.
+
 ### 12.3 Personal practice plan
 
 Plan for the next year: one system you will assure end to end; one evaluation you will automate; one paper a month; one community contribution (a test suite, a talk, a framework comment); and ethics commitments — authorised testing, coordinated disclosure, honest reporting.
+
+Make each item measurable, with a date. For example, one system assured end to end could be a high-tier system at your organisation with a dated assurance case and an evaluation that re-runs automatically. Review the plan with a peer every quarter.
 
 ### 12.4 Mentoring
 
@@ -911,19 +1037,27 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
+At Corvane, Tomás's placement shows the point: he learned from Amira's decision records and reviews, then wrote his own harness and runbook. Ask juniors to explain their reasoning before you give yours, and review their work against the same principles you apply to your own. Let them make small mistakes in safe settings.
+
 ### 12.5 Readiness check
 
 Can you write a decision record a board could act on? Can you design an evaluation that would change a decision? Can you explain why a 95%-accurate detector can produce mostly false alarms (the lab: at prevalence 0.1%, precision is 1.9%)? Can you lead a contested decision without hiding uncertainty?
 
+Answer each with an example from your own work, such as a decision record or an evaluation, and ask a peer to judge whether it would convince a board. Where you cannot, plan how to build that skill this year.
+
 ### 12.6 Worked example (synthetic Corvane case)
 
 A year on, Corvane plans a computer-use agent to operate a legacy carrier portal. Amira applies the same questions: the portal's pages are untrusted input; the agent's clicks are actions; enforcement must sit in a proxy that permits only listed operations with the user's credentials; evaluation needs adaptive pages with hidden instructions. Her decision record proposes a three-month pilot on read-only operations first.
+
+The proposal follows the same reasoning as the refund and rebooking decisions. Evaluation and enforcement are planned before any write operation is allowed.
 
 ### 12.7 Errors and limits
 
 - Treating each new technology as needing new principles.
 - Plans without measurable commitments.
 - Mentoring that transfers answers instead of reasoning.
+
+Each error weakens transfer. New technologies need the same questions about untrusted input and enforcement; inventing new principles each time loses what was learned. A plan without measurable commitments is easily dropped. Mentoring that hands over answers leaves juniors unable to reason about the next system. Check your practice plan for all three. Revise your plan where you find any of them.
 
 ### Exercises
 
@@ -949,7 +1083,7 @@ Model answers; any answer meeting the rubric scores equally. Corvane Freight and
 
 **EX001.** Question: may an LLM summarise HR complaints for case handlers? Options: no; summaries for handlers only, with source links; summaries plus automatic routing. Consequences: misrepresented complaints, leakage of sensitive data, retaliation risk for complainants. Evidence: pilot accuracy (estimate), access-control design (fact), vendor retention terms (fact), injection exposure via complaint text (assumption to test). Values: complainant protection outweighs speed. Decision and owner: summaries for handlers only, owned by the HR director. Triggers: review at six months, after any leak, or on a model change.
 
-**EX002.** "0 of 400 adversarial conversations" is a fact (observed). "€180,000 savings" is an estimate. "Test conversations represent live attackers" is an assumption. "Accept up to €5,000 wrongful refunds" is a value. "Upper bound ≈0.75%" is an estimate derived from the fact.
+**EX002.** "0 of 400 adversarial conversations" is a fact (observed). "€180,000 savings" is an estimate. "Test conversations represent live attackers" is an assumption. "Accept up to €10,000 wrongful refunds" is a value. "Upper bound ≈0.75%" is an estimate derived from the fact.
 
 **EX003.** About 3/1,000 = 0.3%. Across 60,000 refunds that is up to roughly 180 wrongful refunds as a worst plausible case. This assumes the trials are independent and represent live attacks; adaptive attackers may do better.
 
@@ -1070,7 +1204,7 @@ Recommendation: B.
 
 **EX044.** One client's robust z-score (about 30) is far above everyone else's (all under 2). Its query volume suggests scraping or extraction. Investigate its identity, apply a rate limit, and review its query patterns.
 
-**EX045.** 2 in 12,000 is about 0.017%, with a 95% upper bound of about 0.06%. At 60,000 refunds × €50 the worst plausible cost is about €1,800, within the €5,000 appetite. Approve, keep monitoring, and note carrier-email compromise as the weak point.
+**EX045.** 2 in 12,000 is about 0.017%, with a 95% upper bound of about 0.06%. At 60,000 refunds × €50 the worst plausible cost is about €1,800, within the €10,000 appetite. Approve, keep monitoring, and note carrier-email compromise as the weak point.
 
 **EX046.** Claim: models leak training-set membership through their outputs. Threat model: black-box query access, with shadow models trained on similar data. Evidence: attacks on several commercial and academic models. Limits: needs similar data, and the effect is strongest with overfitting. Relevance: Corvane's fine-tuned reply model.
 
