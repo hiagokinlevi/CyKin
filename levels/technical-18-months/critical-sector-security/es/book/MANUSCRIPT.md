@@ -51,9 +51,9 @@ Toda afirmación factual sobre un protocolo, una norma, un incidente público o 
 1. [Arquitectura informática y del servicio](#ch-01): capas, tres rutas y el presupuesto del ciclo de sondeo.
 2. [Redes y protocolos](#ch-02): protocolos industriales sin autenticación y decodificación de Modbus/TCP.
 3. [Sistemas operativos e identidades](#ch-03): configuración efectiva de SSH, UID, cuentas de servicio y grupos.
-4. [Scripts y formatos de datos](../../en/book/MANUSCRIPT.md#ch-04): análisis estricto de CSV/JSON, orden de validación y coordenadas del registro.
-5. [Alcance de seguridad y evidencia](../../en/book/MANUSCRIPT.md#ch-05): alcance técnico, primero lo pasivo, evidencia verificable.
-6. [Infraestructura crítica y seguridad sectorial: modelo del sistema](../../en/book/MANUSCRIPT.md#ch-06): zonas, conductos y diferencias entre sectores.
+4. [Scripts y formatos de datos](#ch-04): análisis estricto de CSV/JSON, orden de validación y coordenadas del registro.
+5. [Alcance de seguridad y evidencia](#ch-05): alcance técnico, primero lo pasivo, evidencia verificable.
+6. [Infraestructura crítica y seguridad sectorial: modelo del sistema](#ch-06): zonas, conductos y diferencias entre sectores.
 7. [Infraestructura crítica y seguridad sectorial: datos y telemetría](../../en/book/MANUSCRIPT.md#ch-07): syslog, relojes y cronologías en UTC.
 8. [Infraestructura crítica y seguridad sectorial: modos de fallo](../../en/book/MANUSCRIPT.md#ch-08): lagunas, valores congelados, picos y reglas explicables.
 9. [Infraestructura crítica y seguridad sectorial: herramientas y métodos](../../en/book/MANUSCRIPT.md#ch-09): elección del método, validación de herramientas y el CRC de DNP3.
@@ -468,7 +468,341 @@ El bastionado del sistema operativo se puede comprobar: los ajustes efectivos, l
 <!-- cyberabc:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 18
 
-[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Scripts y formatos de datos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- analizar datos operativos en CSV y JSON con la biblioteca estándar, sin dividir cadenas a mano;
+- validar cada registro frente a un esquema explícito: número de campos, unidades, forma numérica, finitud, formato de la marca de tiempo y rango físico;
+- notificar cada problema con sus **coordenadas del registro** (archivo y línea) para que otra persona pueda encontrarlo;
+- elegir entre **rechazar** y **poner en cuarentena**, y resumir los resultados en un formato legible por máquina.
+
+Los scripts del técnico de los capítulos posteriores (decodificadores, auditores, detectores) leen todos datos que produjo otra persona. Este capítulo los vuelve estrictos con lo que aceptan, porque un script que «corrige» en silencio una entrada errónea produce respuestas equivocadas con total seguridad.
+
+### 4.1 Formatos con los que se encontrará
+
+- **CSV**: exportaciones de historiadores, HMI y hojas de cálculo. La RFC 4180 describe el formato común, incluido el entrecomillado: un campo que contiene una coma debe ir entre comillas dobles ([RFC 4180](https://www.rfc-editor.org/rfc/rfc4180)). Dividir las líneas por comas falla con el primer valor entrecomillado; use `csv.reader`, que además lleva la cuenta de `line_num`.
+- **JSON**: API, exportaciones de configuración y salida de herramientas ([RFC 8259](https://www.rfc-editor.org/rfc/rfc8259)). Use `json.loads`; tenga en cuenta que el analizador de Python acepta los símbolos no estándar `NaN` e `Infinity` salvo que pase `parse_constant` para rechazarlos.
+- **Marcas de tiempo**: use RFC 3339 / ISO 8601 con un desfase explícito, idealmente UTC con `Z` ([RFC 3339](https://www.rfc-editor.org/rfc/rfc3339)). Una marca de tiempo sin desfase es ambigua hasta en un día y en los cambios de horario de verano.
+- **Tramas binarias**: la decodificación con `struct` del capítulo 2; compruebe siempre las longitudes antes de desempaquetar.
+
+### 4.2 Un orden de validación que falla de forma cerrada
+
+Compruebe en un orden en el que cada paso pueda suponer que los anteriores se superaron:
+
+1. **Estructura**: el número correcto de campos. Si no lo es, no puede confiarse en nada más del registro: rechazar.
+2. **Identidad y tipo**: estación y etiqueta conocidas; la unidad que indica el esquema (un nivel en pies no es un nivel en metros); el valor se analiza como número.
+3. **Finitud**: `float("nan")` y `float("inf")` se analizan sin error, pero no son mediciones: rechazar.
+4. **Tiempo**: la marca de tiempo se analiza en el formato acordado; no está en el futuro más allá de una pequeña tolerancia.
+5. **Verosimilitud**: el valor está dentro del rango físico del instrumento y del proceso.
+
+**Rechace** lo que no puede interpretarse (estructura errónea, unidad errónea, no es un número). **Ponga en cuarentena** lo que puede interpretarse pero es inverosímil (fuera de rango, hora futura): un fallo real de un sensor y un ataque real tienen ambos este aspecto, y un operador debe verlo en lugar de que se descarte en silencio. No fuerce nunca la conversión: convertir `"12,5"` en 12.5 o en 125 adivinando el separador decimal crea datos que nunca se midieron.
+
+### 4.3 Coordenadas del registro
+
+Todo hallazgo debe decir de dónde procede (archivo, línea y campo) para que otra persona pueda verificarlo. `csv.reader.line_num` cuenta las líneas físicas leídas hasta el momento, incluida la cabecera, de modo que la primera fila de datos es la línea 2. Los campos entrecomillados que contienen saltos de línea hacen que las líneas físicas difieran de los registros; `line_num` indica la línea en la que terminó el registro, que sigue siendo una coordenada utilizable. Cuando pegue un hallazgo en una incidencia, mantenga el número de línea junto al nombre de la estación, para que la siguiente persona pueda abrir la exportación e ir directamente a la fila. Si un campo entrecomillado ocupa varias líneas, indíquelo, porque la coordenada marca entonces el final del registro y no su comienzo.
+
+### 4.4 Ejemplo resuelto: validar una exportación de estaciones (sintético)
+
+Una exportación del historiador de Kestrel Water contiene una lectura por estación. La hora del análisis es 06:00Z del 12 de octubre de 2026. **Lab 4** (guárdelo como `lab04.py` y ejecútelo con `python3 lab04.py`):
+
+```python
+# Lab 4 - validate a telemetry export with record coordinates (offline, standard library only)
+# Synthetic CSV export from Kestrel Water stations; "now" is 2026-10-12T06:00:00Z.
+import csv, io, json, math
+from datetime import datetime, timezone
+export = """station,tag,value,unit,ts
+KW-01,LEVEL_M,3.42,m,2026-10-12T05:58:00Z
+KW-02,CL2_MGL,0.61,mg/L,2026-10-12T05:58:00Z
+KW-03,LEVEL_M,,m,2026-10-12T05:58:00Z
+KW-04,CL2_MGL,7.9,mg/L,2026-10-12T05:58:00Z
+KW-05,FLOW_LS,"12,5",L/s,2026-10-12T05:58:00Z
+KW-06,LEVEL_M,2.10,ft,2026-10-12T05:58:00Z
+KW-07,LEVEL_M,2.95,m,2026-10-12 05:58
+KW-08,LEVEL_M,nan,m,2026-10-12T05:58:00Z
+KW-09,FLOW_LS,41.0,L/s,2026-10-12T07:15:00Z
+KW-10,LEVEL_M,1.88,m,2026-10-12T05:58:00Z,extra
+"""
+SCHEMA = {"LEVEL_M": ("m", 0.0, 12.0), "CL2_MGL": ("mg/L", 0.0, 5.0), "FLOW_LS": ("L/s", 0.0, 400.0)}
+now = datetime(2026, 10, 12, 6, 0, tzinfo=timezone.utc)
+result = {"accept": [], "reject": [], "quarantine": []}
+reader = csv.reader(io.StringIO(export))
+header = next(reader)
+for row in reader:
+    where = f"line {reader.line_num}"
+    if len(row) != len(header): result["reject"].append((where, f"{len(row)} fields, expected {len(header)}")); continue
+    r = dict(zip(header, row))
+    unit, lo, hi = SCHEMA[r["tag"]]
+    if r["unit"] != unit: result["reject"].append((where, f"{r['station']} unit {r['unit']!r}, expected {unit!r}")); continue
+    try: v = float(r["value"])
+    except ValueError: result["reject"].append((where, f"{r['station']} value {r['value']!r} not a number")); continue
+    if not math.isfinite(v): result["reject"].append((where, f"{r['station']} value not finite")); continue
+    try:
+        ts = datetime.strptime(r["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError: result["reject"].append((where, f"{r['station']} timestamp {r['ts']!r} not RFC 3339 UTC")); continue
+    if ts > now: result["quarantine"].append((where, f"{r['station']} timestamp {(ts - now).seconds // 60} min in the future")); continue
+    if not lo <= v <= hi: result["quarantine"].append((where, f"{r['station']} {r['tag']}={v} outside {lo}-{hi}")); continue
+    result["accept"].append((where, r["station"]))
+for k in ("reject", "quarantine"):
+    for where, why in result[k]: print(f"{k:<10} {where:<8} {why}")
+print(json.dumps({k: len(v) for k, v in result.items()}))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+reject     line 4   KW-03 value '' not a number
+reject     line 6   KW-05 value '12,5' not a number
+reject     line 7   KW-06 unit 'ft', expected 'm'
+reject     line 8   KW-07 timestamp '2026-10-12 05:58' not RFC 3339 UTC
+reject     line 9   KW-08 value not finite
+reject     line 11  6 fields, expected 5
+quarantine line 5   KW-04 CL2_MGL=7.9 outside 0.0-5.0
+quarantine line 10  KW-09 timestamp 75 min in the future
+{"accept": 2, "reject": 6, "quarantine": 2}
+```
+
+Solo se aceptan dos de diez filas. Cada rechazo indica su línea: un valor vacío (línea 4), una coma decimal dentro de un campo entrecomillado (línea 6), un nivel en pies (línea 7), una marca de tiempo sin segundos ni desfase (línea 8), `nan` (línea 9) y un campo de más (línea 11). Las filas en cuarentena son las interesantes: un cloro de 7,9 mg/L está fuera del rango del instrumento (un fallo del sensor, un error de escalado o un valor manipulado), y la marca de tiempo de KW-09 está 75 minutos en el futuro, algo que en el capítulo 7 aprenderá a sospechar como un problema de reloj. Ambas se pasan a una persona con sus coordenadas.
+
+El resumen JSON de la última línea es deliberadamente legible por máquina, para que una tarea de supervisión pueda alertar cuando suba el número de rechazos.
+
+### 4.5 Actividad práctica
+
+Añada al Lab 4 una comprobación de identidad de la estación: solo son válidas de KW-01 a KW-12. Añada después una fila `KW-13,LEVEL_M,2.0,m,2026-10-12T05:58:00Z` y confirme que se rechaza con su número de línea. Por último, haga que el analizador de marcas de tiempo acepte un desfase explícito `+00:00` además de `Z`, sin aceptar marcas de tiempo sin zona. Rechace KW-13 con su número de línea y un motivo que nombre el conjunto permitido. Para las marcas de tiempo, acepte tanto Z como un desfase explícito de más cero, y siga rechazando una hora local sin zona. Vuelva a ejecutar el laboratorio y confirme que el número de rechazos del resumen JSON sube en uno por la nueva estación.
+
+### 4.6 Errores comunes y límites
+
+- Dividir el CSV por comas.
+- Forzar la conversión de valores ambiguos en lugar de rechazarlos.
+- Dejar pasar `nan` porque `nan > hi` es falso.
+- Aceptar marcas de tiempo sin zona y suponer la hora local.
+- Informar de «6 rechazadas» sin coordenadas, lo que nadie puede comprobar.
+- El Lab 4 comprueba lecturas individuales; la velocidad de cambio y los valores congelados necesitan una serie (capítulo 8).
+
+- Dejar pasar nan porque las comparaciones con él son falsas, de modo que una comprobación de fuera de rango nunca se dispara.
+- Informar solo de totales sin coordenadas, de modo que nadie puede encontrar las filas erróneas.
+- Convertir una coma decimal en un número de coma flotante y escribir el valor inventado en el historiador.
+
+### Ejercicios — capítulo 4
+
+**EX013 — Prediga antes de ejecutar.** *Objetivo:* razonar sobre el validador. *Entradas:* el Lab 4 con tres filas nuevas: `KW-11,LEVEL_M,12.0,m,2026-10-12T05:59:00Z`; `KW-12,LEVEL_M,inf,m,2026-10-12T05:59:00Z`; `KW-02,CL2_MGL,-0.0,mg/L,2026-10-12T05:59:00Z`. *Pasos:* prediga cada veredicto y el nuevo resumen, y después ejecute. *Evidencia esperada:* predicciones, salida real y explicación de cualquier sorpresa. *Rúbrica:* 3 = aceptar, rechazar (no finito), aceptar; resumen `{"accept": 4, "reject": 7, "quarantine": 2}`; señala que −0.0 debería normalizarse; 2 = uno erróneo pero explicado; 1 = conjeturas; 0 = nada.
+
+**EX014 — ¿Rechazar o poner en cuarentena?** *Objetivo:* aplicar la distinción. *Entradas:* (a) caudal −3,0 L/s; (b) unidad «M» en lugar de «m»; (c) nivel de 11,9 m en un depósito de 12 m; (d) marca de tiempo 4 s en el futuro. *Pasos:* decida y justifique. *Evidencia esperada:* cuatro veredictos. *Rúbrica:* 3 = (a) cuarentena (interpretable, inverosímil; podría ser un flujo inverso o un desfase); (b) rechazar, o normalizar solo si el esquema admite explícitamente unidades sin distinguir mayúsculas, sin adivinar; (c) aceptar, quizá con una alarma de nivel alto; (d) aceptar dentro de una tolerancia de reloj acordada; 2 = una débil; 1 = rechazarlas todas; 0 = nada.
+
+**EX015 — JSON con trampas.** *Objetivo:* bastionar el análisis de JSON. *Entradas:* `{"station": "KW-03", "value": NaN}`. *Pasos:* muestre lo que devuelve `json.loads` por defecto y escriba el cambio de una línea que lo rechaza. *Evidencia esperada:* código y comportamiento. *Rúbrica:* 3 = por defecto devuelve un float `nan`; `json.loads(s, parse_constant=lambda c: (_ for _ in ()).throw(ValueError(c)))` o una función equivalente que lance una excepción; explica que la RFC 8259 no admite NaN; 2 = funciona sin explicación; 1 = intentado; 0 = nada.
+
+**EX016 — Resumen para la supervisión.** *Objetivo:* diseñar un resultado legible por máquina. *Entradas:* el Lab 4. *Pasos:* amplíe el resumen JSON con recuentos por motivo y por estación, y proponga una condición de alerta sobre él. *Evidencia esperada:* un JSON de ejemplo y la condición. *Rúbrica:* 3 = claves estables, recuentos por motivo, una alerta como «cualquier cuarentena de CL2_MGL, o rechazos > 10 % de las filas en dos exportaciones consecutivas»; 2 = sin desglose por motivo; 1 = solo prosa; 0 = nada.
+
+### Síntesis del capítulo
+
+Los datos operativos llegan mal formados, ambiguos y, a veces, hostiles. Analice con analizadores de verdad, valide en un orden que falle de forma cerrada, no fuerce nunca conversiones e informe de cada hallazgo con sus coordenadas. Rechace lo que no puede interpretar; ponga en cuarentena lo que puede interpretar pero no debería creer; y mantenga los resúmenes legibles por máquina para que el propio validador pueda supervisarse.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Siga estudiando — capítulo 04 de 18
+
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Alcance de seguridad y evidencia
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- redactar un **alcance técnico** para una tarea en un entorno crítico: sistemas, acciones permitidas, ventana temporal, contactos y condiciones de parada;
+- explicar por qué, en la tecnología operacional, se prefiere una observación pasiva y una activa requiere aprobación explícita;
+- recoger evidencia técnica de modo que otra persona pueda verificarla: qué, desde dónde, cuándo (UTC), quién, cómo y su hash;
+- separar lo **observado**, lo **inferido**, lo **hecho** y lo **abierto** en toda nota de trabajo.
+
+Los capítulos 1–4 le dieron herramientas. Antes de apuntar cualquiera de ellas a un sistema real, este capítulo define lo que tiene permitido tocar y cómo demostrará lo que vio.
+
+### 5.1 El alcance es un control de seguridad
+
+En una red de oficina, un escaneo demasiado entusiasta hace perder el tiempo. En una red de control puede detener un proceso: algunos controladores y pilas de red antiguas se comportan mal cuando se les sondea, y una «lectura» puede desencadenar diagnósticos del fabricante o llenar una tabla de sesiones. La guía de TO del NIST recomienda prudencia con el escaneo activo en entornos operativos y prefiere los métodos pasivos siempre que sea posible ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)); la guía de pruebas del NIST describe reglas de enfrentamiento para cualquier evaluación ([SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)).
+
+Un alcance técnico responde, por escrito y antes de empezar el trabajo:
+
+- **Finalidad**: qué pregunta responde el trabajo.
+- **Sistemas dentro del alcance**: equipos y direcciones nombrados; todo lo demás queda fuera.
+- **Acciones permitidas**: por ejemplo, «leer la configuración en ejecución», «captura pasiva en el puerto SPAN», «una prueba de conexión TCP al puerto 502 sin petición Modbus».
+- **Ventana**: fecha y horas, con el acuerdo del operador.
+- **Personas**: quién lo autorizó (el propietario del sistema), quién está en la instalación, a quién se informa en la sala de control.
+- **Condiciones de parada**: cualquier comportamiento inesperado de un dispositivo, una alarma o una petición de operaciones.
+- **Tratamiento de la evidencia**: dónde se guardan los resultados y quién puede leerlos.
+
+### 5.2 Primero lo pasivo
+
+Muchas preguntas pueden responderse sin enviar un solo paquete: exportaciones de configuración, registros del cortafuegos, tablas MAC de los conmutadores, una captura pasiva desde un puerto espejo (SPAN), los propios registros del historiador. Prefiera estas fuentes. Cuando una prueba activa sea realmente necesaria (por ejemplo, para verificar una regla de denegación en el capítulo 11), hágala la prueba más pequeña que responda a la pregunta, desde un origen nombrado y a una hora acordada. Prefiera una captura SPAN o una exportación de configuración antes de cualquier prueba de conexión. Cuando haga falta una prueba activa, use una dirección de origen señalada, la acción más pequeña que responda a la pregunta y una ventana acordada, con operaciones informada al principio y al final.
+
+### 5.3 Qué hace utilizable la evidencia técnica
+
+Una captura de pantalla de un terminal demuestra poco. La evidencia utilizable registra:
+
+1. **Qué**: la salida o el archivo en bruto, no un resumen.
+2. **Fuente**: equipo y herramienta, con su versión.
+3. **Hora**: en UTC, con el desfase del reloj del equipo si se conoce (capítulo 7).
+4. **Recolector**: quién lo ejecutó.
+5. **Método**: la orden o consulta exacta.
+6. **Integridad**: un hash SHA-256 registrado en el momento de la recogida, para poder comprobar las copias posteriores ([FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)); el capítulo 18 sella un paquete completo.
+
+La guía del NIST para integrar técnicas forenses en la respuesta a incidentes trata el orden de recogida y de conservación ([SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final)). En el nivel técnico, la regla es sencilla: **conserve antes de cambiar**. Si está a punto de corregir algo que puede ser evidencia de un uso indebido, recójalo primero.
+
+### 5.4 Cuatro etiquetas
+
+Toda nota que escriba en este curso usa cuatro etiquetas. **Observado**: lo que registró una herramienta o una persona, con fuente y hora. **Inferido**: lo que usted concluye y por qué. **Hecho**: lo que cambió y con qué registro de cambio. **Abierto**: lo que sigue sin saberse y quién es su responsable. Mezclarlas («la RTU estaba comprometida» cuando solo observó una sesión de configuración) es la forma en que se propagan las conclusiones erróneas. Una nota que solo dice «RTU comprometida» no supera la prueba: mezcla inferencia con observación. Escriba las cuatro etiquetas en toda nota de trabajo de este curso, incluida la comprobación de alcanzabilidad de KW-04, para que el lector vea qué se midió y qué sigue abierto.
+
+### 5.5 Ejemplo resuelto: el alcance de la comprobación de KW-04 (sintético)
+
+Después de que el Lab 2 mostrara escrituras desde un puesto corporativo, L. Ferreira (responsable de seguridad del KVROC) le pide que confirme si la zona corporativa puede alcanzar el puerto 502 de las estaciones. Un alcance sólido:
+
+| Elemento | Contenido |
+|---|---|
+| Finalidad | Confirmar o refutar la alcanzabilidad desde la zona corporativa hasta KW-04 tcp/502. |
+| Dentro del alcance | Configuración y registros de fw-01 (lectura); una conexión TCP desde el puesto de pruebas 10.30.99.9 a 10.10.4.2:502, sin carga Modbus. |
+| Fuera del alcance | Todas las demás estaciones; cualquier petición Modbus; el puesto 10.30.3.7 (conservar, no tocar). |
+| Ventana | 13 oct. 2026, 10:00–10:30 hora local, acordada con A. Mensah (operaciones de Kestrel Water). |
+| Personas | Autoriza A. Mensah; se informa al operador de la sala de control de Kestrel Water al principio y al final. |
+| Parada | Cualquier alarma de KW-04, pérdida de comunicación o petición del operador. |
+| Evidencia | Exportación de la configuración del cortafuegos, salida de la prueba de conexión, líneas del registro de fw-01; hashes en la carpeta del caso. |
+
+La nota de trabajo tras la prueba dice: *Observado*: la conexión de 10.30.99.9 a 10.10.4.2:502 no se completó a las 08:04:11Z; fw-01 la registró como bloqueada por la denegación por defecto. *Inferido*: fw-01 no permite que los puestos corporativos alcancen el Modbus de las estaciones, así que las escrituras desde 10.30.3.7 capturadas en el capítulo 2 tuvieron que usar otra ruta (capítulos 10 y 13). *Hecho*: no se cambió nada. *Abierto*: qué ruta llevó esas escrituras (responsable: L. Ferreira).
+
+### 5.6 Actividad práctica
+
+Redacte un alcance para una captura pasiva de 24 horas en el puerto SPAN del conmutador del centro de control. Incluya límites de almacenamiento y quién puede leer la captura, ya que contendrá valores del proceso y posiblemente credenciales enviadas en texto claro. Indique un tamaño máximo de archivo y un periodo de conservación, porque un día de valores del proceso y de credenciales en texto claro es a la vez voluminoso y sensible. Nombre quién puede leer la captura y dónde se guarda, y diga que la captura se detiene si el puerto espejo del conmutador afecta al reenvío. Señale la actividad como pasiva y enumere condiciones de parada que incluyan cualquier petición del operador.
+
+### 5.7 Errores comunes y límites
+
+- Empezar a trabajar con un «adelante» verbal.
+- Escanear una subred para «ver qué hay» en una red de control.
+- Recoger evidencia sin horas UTC ni hashes.
+- Corregir primero y recoger después.
+- Tratar el alcance como papeleo: es lo que impide que una prueba se convierta en un incidente.
+
+- Partir de un visto bueno verbal y redactar el alcance después.
+- Escanear una subred de una red de control para descubrir dispositivos.
+- Corregir un hallazgo antes de recoger la evidencia que lo mostró. Un alcance redactado después del trabajo no puede proteger el proceso mientras se realiza.
+
+### Ejercicios — capítulo 5
+
+**EX017 — Repare un alcance.** *Objetivo:* encontrar los elementos que faltan. *Entradas:* «Ejecutar un escaneo de 10.10.0.0/16 el martes para encontrar puertos abiertos. Aprobado por TI». *Pasos:* enumere cada defecto y reescríbalo. *Evidencia esperada:* lista de defectos y alcance reescrito. *Rúbrica:* 3 = identifica el autorizador equivocado (hace falta el propietario del sistema), el rango sin límites, el escaneo activo en TO, la falta de ventana, de condiciones de parada y de tratamiento de la evidencia; la reescritura prefiere fuentes de inventario pasivas; 2 = la mayoría de los defectos; 1 = cosmético; 0 = nada.
+
+**EX018 — Etiquete la nota.** *Objetivo:* separar observación e inferencia. *Entradas:* «El proveedor hackeó KW-09 anoche: la configuración de la RTU cambió y los datos se interrumpieron, así que la reinicié». *Pasos:* reescríbala con las cuatro etiquetas. *Evidencia esperada:* nota etiquetada. *Rúbrica:* 3 = observado (hora de la sesión de configuración, laguna de datos), inferido (posible cambio no aprobado; autoría desconocida), hecho (el reinicio, y la pérdida de evidencia que causó), abierto (quién, por qué; responsable); 2 = etiquetas sin advertir la pérdida de evidencia; 1 = parcial; 0 = nada.
+
+**EX019 — Registro de evidencia.** *Objetivo:* producir evidencia verificable. *Entradas:* usted exporta el conjunto de reglas de fw-01 a `fw-01-rules-20261013.txt`. *Pasos:* escriba los campos del registro de evidencia y la orden que produce su hash en Linux. *Evidencia esperada:* el registro y `sha256sum fw-01-rules-20261013.txt`. *Rúbrica:* 3 = los seis elementos, hora UTC con la fuente del reloj, hash guardado por separado del archivo; 2 = falta uno; 1 = solo el hash; 0 = nada.
+
+**EX020 — Alternativas pasivas.** *Objetivo:* evitar pruebas activas innecesarias. *Entradas:* tres preguntas: qué equipos hablan con KW-07; qué firmware ejecuta KW-07; si KW-07 acepta telnet. *Pasos:* proponga un método pasivo o de solo lectura para cada una e indique cuándo seguiría estando justificada una prueba activa. *Evidencia esperada:* tres filas. *Rúbrica:* 3 = registros de flujos o captura SPAN; registros de activos o la herramienta del fabricante durante una sesión de ingeniería aprobada; exportación de la configuración o documentación del fabricante, con una comprobación activa solo en una ventana delimitada y con operaciones presente; 2 = una débil; 1 = todas activas; 0 = nada.
+
+### Síntesis del capítulo
+
+En los entornos críticos, el alcance protege al proceso tanto como a quien hace la prueba. Redáctelo antes de empezar, prefiera los métodos pasivos y haga que cada elemento de evidencia sea verificable por otra persona: en bruto, con fuente, con hora UTC, atribuido y con hash. Conserve antes de cambiar, y mantenga separados lo observado, lo inferido, lo hecho y lo abierto.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Siga estudiando — capítulo 05 de 18
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Infraestructura crítica y seguridad sectorial: modelo del sistema
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- construir un modelo técnico del sistema de un servicio crítico: activos, zonas, conductos, protocolos, límites de confianza y la consecuencia física que puede causar cada zona;
+- usar el vocabulario de zonas y conductos de ISA/IEC 62443 en el nivel de un técnico;
+- describir en qué se diferencian técnicamente los servicios de agua, sanitarios y eléctricos: protocolos, tiempos, sistemas de seguridad funcional y quién puede cambiar qué;
+- señalar en el modelo dónde se situarán los controles y las detecciones de cada capítulo posterior.
+
+Los capítulos 1–5 fueron los fundamentos generales. A partir de aquí, el curso los aplica a los sectores críticos. El modelo del sistema es el mapa del técnico: sin él, una regla de cortafuegos, una detección o un paso de diagnóstico no tienen nada a lo que referirse.
+
+### 6.1 Zonas y conductos
+
+La serie ISA/IEC 62443 agrupa los activos con requisitos de seguridad similares en **zonas** y las rutas de comunicación entre ellas en **conductos** ([ISA/IEC 62443 overview](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). Las reglas prácticas que aplica un técnico:
+
+- cada activo pertenece exactamente a una zona;
+- cada comunicación permitida entre zonas es un conducto declarado, con finalidad, protocolo, sentido y responsable;
+- lo que no está declarado no está permitido y, si se observa, es un hallazgo (el Lab 17 y el capítulo 11 lo verifican);
+- la protección de una zona debe corresponder a la peor consecuencia física de los activos que contiene.
+
+La forma común de un sistema de supervisión (campo, control, supervisión, DMZ de operaciones, empresa) aparece en NIST SP 800-82 Rev. 3 como arquitectura de ejemplo ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Úsela como vocabulario, no como plantilla: una instalación real tiene excepciones históricas, y la tarea del modelo es mostrarlas.
+
+### 6.2 Qué registrar de cada elemento
+
+De cada **activo**: nombre, dirección, función, zona, responsable, versiones de software y firmware, protocolos que habla, método de gestión y la consecuencia física de su pérdida o de su uso indebido. De cada **conducto**: zona de origen, zona de destino, protocolo y puerto, sentido de iniciación, finalidad, responsable, punto de aplicación (qué regla de cortafuegos) y punto de supervisión (qué sensor lo ve). De cada **límite de confianza**: qué lo atraviesa y qué comprobaciones se hacen en él. De eng-ws-15, registre que puede programar las RTU y que su pérdida o su uso indebido tiene consecuencias en toda la zona. Para cada conducto, nombre la regla de cortafuegos que debería aplicarlo y el sensor que debería verlo, para que una verificación posterior sepa dónde mirar. No deje ningún activo sin zona ni ninguna ruta permitida sin responsable del conducto.
+
+### 6.3 Diferencias entre sectores que importan ante el teclado
+
+- **Agua**: estaciones muy dispersas con enlaces celulares o de radio; telemetría Modbus o DNP3; largas vidas útiles de los equipos; operadores pequeños con personal limitado. Las consecuencias incluyen la pérdida de presión, los desbordamientos y la dosificación química incorrecta. El aviso de CISA sobre los ataques contra PLC Unitronics expuestos a internet en sistemas de agua recuerda que la exposición más las credenciales por defecto bastan ([CISA AA23-335A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a)).
+- **Electricidad**: subestaciones con relés de protección cuyos tiempos se miden en milisegundos; telecontrol DNP3 o IEC 60870-5-104 hacia un centro de control; IEC 61850 dentro de las subestaciones modernas; separación estricta entre las funciones de protección y las de supervisión. Un técnico nunca cambia los ajustes de protección; pertenecen a los ingenieros de protecciones.
+- **Sanidad**: sistemas de gestión del edificio (ventilación, presión en las habitaciones de aislamiento, supervisión de los gases medicinales), redes de dispositivos clínicos y sistemas de TI en un mismo edificio, que a menudo comparten infraestructura; las paradas afectan directamente a los pacientes y los cambios están sujetos a la ingeniería clínica y a las instrucciones de los fabricantes de los dispositivos.
+
+En los tres, los **sistemas instrumentados de seguridad** y las funciones de protección están diseñados para actuar con independencia del sistema de supervisión. El modelo del técnico los muestra como zonas separadas y nunca encamina tráfico de gestión a través de ellos.
+
+### 6.4 Ejemplo resuelto: el modelo del KVROC (sintético)
+
+| Zona | Activos | Peor consecuencia | Notas |
+|---|---|---|---|
+| Z1 Campo de las estaciones (10.10.0.0/16) | RTU KW-01..12, bombas, analizadores | Dosificación errónea, desbordamiento, pérdida de suministro | Modbus/TCP, sin autenticación |
+| Z2 Centro de control (10.20.0.0/24) | scada-01, hmi-02, eng-ws-15, hist-02 | Pérdida de visión y de control de todas las estaciones | eng-ws-15 puede programar las RTU |
+| Z3 Subestación SS-3 | estación remota (dirección DNP3 10), relés de protección | Pérdida del telecontrol; la protección está separada | DNP3 sobre la MPLS del operador a través de fep-01 |
+| Z4 BMS del hospital | bms-server, controladores | Pérdida de las alarmas de ventilación y de presión | Solo supervisado; el KVROC tiene acceso de lectura |
+| Z5 Gestión (10.90.0.0/24) | jump-01, ntp-ops, ad-ops, colector | Un compromiso alcanza todas las zonas | Máximo privilegio |
+| Z6 Corporativa (10.30.0.0/16) | puestos, correo, servidor de informes | Perturbación del negocio | Conectada a internet |
+
+Entre los conductos declarados están: C1 Z2 scada-01 → Z1 tcp/502 sondeos de lectura; C2 Z2 eng-ws-15 → Z1 tcp/502 escrituras durante ventanas aprobadas; C3 Z5 jump-01 → Z2 tcp/22; C4 Z2 hist-02 → servidor de informes de Z6, envío HTTPS del CSV diario. El Lab 2 ya mostró una ruta **no declarada**: puesto de Z6 → Z1 tcp/502. En el modelo aparece como una línea roja con una pregunta: ¿qué regla la permite y desde cuándo? El capítulo 10 lo responde.
+
+### 6.5 Actividad práctica
+
+Amplíe el modelo con dos conductos para Z3 (de fep-01 a la estación remota y la ruta de soporte remoto del proveedor) y uno para Z4. Para cada uno, registre la finalidad, el protocolo, el iniciador, el responsable, el punto de aplicación y el punto de supervisión. Señale qué conductos podría aprovechar un único equipo de Z5 comprometido. Para la ruta de soporte remoto del proveedor hacia Z3, registre si termina en el servidor de salto o llega directamente a la estación remota. Para Z4, indique que el KVROC solo tiene acceso de lectura. Enumere después cuáles de esos conductos podría abrir un servidor de salto comprometido en Z5 y qué controles seguirían aplicándose.
+
+### 6.6 Errores comunes y límites
+
+- Zonas dibujadas por subred IP en lugar de por consecuencia y confianza.
+- Conductos sin responsable ni finalidad, que nadie podrá retirar más tarde.
+- Omitir la zona de gestión porque es «TI».
+- Modelar el sistema de seguridad funcional como un controlador normal.
+- Un modelo que nunca se compara con el tráfico observado; el capítulo 11 lo hace.
+- Copiar el modelo de zonas de otra instalación sin comprobar cuáles de sus conductos existen realmente en esta.
+
+- Dibujar las zonas solo por subred cuando dos equipos de la misma subred tienen consecuencias distintas.
+- Poner una función de seguridad funcional o de protección en la misma zona que los controladores de supervisión corrientes.
+
+### Ejercicios — capítulo 6
+
+**EX021 — Sitúe los activos.** *Objetivo:* asignar zonas según la consecuencia. *Entradas:* un router celular en KW-06; la pasarela de soporte remoto del proveedor para SS-3; el servidor de informes; un portátil que usan los ingenieros de Kestrel Water en las estaciones. *Pasos:* asigne cada uno a una zona (existente o nueva) y justifíquelo. *Evidencia esperada:* cuatro ubicaciones. *Rúbrica:* 3 = router en el límite de Z1, con su gestión tratada como privilegio de nivel Z5; pasarela del proveedor en su propia zona de acceso remoto, no en Z3; servidor de informes en Z6; portátil de ingeniería como activo transitorio con sus propios controles (capítulo 16); 2 = una débil; 1 = solo por subred; 0 = nada.
+
+**EX022 — Redacte un conducto.** *Objetivo:* declarar una ruta por completo. *Entradas:* hist-02 debe enviar un CSV diario al servidor corporativo de informes. *Pasos:* escriba la entrada del conducto con todos sus campos. *Evidencia esperada:* una entrada completa. *Rúbrica:* 3 = iniciado desde Z2 hacia fuera (envío, no extracción desde la red corporativa), HTTPS hacia un equipo y un puerto nombrados, finalidad, responsable, regla de aplicación y punto de supervisión nombrados, fecha de revisión; 2 = falta uno; 1 = «permitir hist hacia corporativa»; 0 = nada.
+
+**EX023 — Contraste entre sectores.** *Objetivo:* reconocer las diferencias técnicas. *Entradas:* una propuesta de aplicar el mismo calendario semanal de parches y reinicios a scada-01, al procesador de comunicaciones de SS-3 y al servidor del BMS del hospital. *Pasos:* explique para cada sector qué debe comprobarse primero. *Evidencia esperada:* tres párrafos breves. *Rúbrica:* 3 = agua: redundancia e interrupción del sondeo; red eléctrica: ventanas de telecontrol acordadas con la sala de control de la red, sin efecto sobre la protección; hospital: restricciones de la ingeniería clínica y del fabricante, continuidad de las alarmas de ventilación; 2 = genérico; 1 = acepta un único calendario; 0 = nada.
+
+**EX024 — Modelo frente a captura.** *Objetivo:* comparar lo declarado con lo observado. *Entradas:* la salida del Lab 2 y la lista de conductos de 6.4. *Pasos:* enumere cada flujo observado que no explique un conducto declarado. *Evidencia esperada:* lista con motivos. *Rúbrica:* 3 = las escrituras del puesto corporativo (sin conducto), posiblemente la consulta de identificación del dispositivo si ningún conducto la cubre, las tramas mal formadas desde scada-01 como anomalía que explicar; 2 = solo las escrituras; 1 = no encuentra ninguno; 0 = nada.
+
+### Síntesis del capítulo
+
+El modelo del sistema reúne activos, zonas, conductos y consecuencias en un único mapa. Dice lo que debería ocurrir, de modo que cualquier otra cosa se vuelve visible como hallazgo. Los sectores difieren en protocolos, tiempos y en quién puede cambiar qué, y las funciones de seguridad funcional y de protección se mantienen separadas de todo lo que toca un técnico.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Siga estudiando — capítulo 06 de 18
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -508,6 +842,36 @@ Cada resultado resuelto muestra una respuesta defendible y lo que premia la rúb
 **EX011 — Amplíe la auditoría.** Añada dentro del bucle de passwd: `if name != "root" and home in ("/root", "/") and not shell.endswith("nologin"): findings.append(f"account {name} has interactive shell and home {home}")`. La salida añade `account backup2 has interactive shell and home /root`, findings 11. Un directorio personal compartido mezcla el historial del intérprete y las claves entre identidades, de modo que las acciones no pueden atribuirse.
 
 **EX012 — Diseño de una cuenta de servicio.** UID de sistema (por ejemplo, 998), intérprete `/usr/sbin/nologin`, directorio personal `/opt/hist` propiedad de root y legible por el grupo `histsvc`; directorio de datos con escritura solo para `histsvc`; credencial de la base de datos en un archivo con modo 0400 propiedad de `histsvc`, o en el almacén de secretos de la plataforma; rotada anualmente y tras cualquier cambio de personal con acceso, con el equipo de plataforma del KVROC como responsable; la cuenta nunca la usan personas.
+
+### Capítulo 4: EX013–EX016
+
+**EX013 — Prediga antes de ejecutar.** KW-11 12.0 → aceptar (rango inclusivo); KW-12 `inf` → rechazar `value not finite` (línea 13); KW-02 −0.0 → aceptar. Resumen `{"accept": 4, "reject": 7, "quarantine": 2}` (verificado ejecutándolo). Normalice −0.0 a 0.0 antes de almacenarlo.
+
+**EX014 — ¿Rechazar o poner en cuarentena?** (a) Cuarentena: interpretable pero fuera de rango; flujo inverso, desfase del sensor o manipulación. (b) Rechazar, salvo que el esquema defina explícitamente las unidades sin distinguir mayúsculas; no adivine nunca. (c) Aceptar; una alarma de proceso de nivel alto es la herramienta del operador, no la del validador. (d) Aceptar si está dentro de una tolerancia de reloj acordada (por ejemplo, 5 s); en caso contrario, cuarentena como problema de reloj.
+
+**EX015 — JSON con trampas.** `json.loads('{"station": "KW-03", "value": NaN}')` devuelve `{'station': 'KW-03', 'value': nan}`. Defina `def no_const(c): raise ValueError(f"non-standard JSON constant {c}")` y llame a `json.loads(s, parse_constant=no_const)`; ahora lanza una excepción. La RFC 8259 no admite NaN ni Infinity.
+
+**EX016 — Resumen para la supervisión.** Ejemplo: `{"accept": 2, "reject": 6, "quarantine": 2, "by_reason": {"not a number": 2, "unit": 1, "timestamp": 1, "not finite": 1, "field count": 1, "range": 1, "future": 1}, "by_station": {"KW-03": 1, ...}}`. Alerta: cualquier cuarentena de una etiqueta CL2_MGL, o rechazos por encima del 10 % de las filas en dos exportaciones consecutivas, o que falte por completo la exportación.
+
+### Capítulo 5: EX017–EX020
+
+**EX017 — Repare un alcance.** Defectos: «TI» no es el propietario del sistema (debe autorizar Kestrel Water); 10.10.0.0/16 son todas las estaciones; escaneo activo en una red de control; sin ventana ni hora; sin acciones permitidas; sin condiciones de parada; sin contactos; sin tratamiento de la evidencia. Reescritura: finalidad «establecer los servicios expuestos por las RTU de las estaciones»; método, primero a partir de los registros de activos, las exportaciones de configuración y una captura pasiva de 24 h; si queda una laguna, una prueba de conexión por puerto nombrado en una estación nombrada, en una ventana acordada y con la sala de control informada, autorizada por A. Mensah, con parada ante cualquier alarma y la evidencia con hash en la carpeta del caso.
+
+**EX018 — Etiquete la nota.** *Observado:* sesión de configuración en la RTU de KW-09 a las 06:41Z (reloj corregido); las lecturas se interrumpieron a las 07:05Z. *Inferido:* posible cambio no aprobado; se desconoce quién lo hizo; «el proveedor» no está establecido. *Hecho:* RTU reiniciada a las 07:30Z por mí, sin conservación; la configuración en ejecución y el registro de la sesión previos al reinicio pueden haberse perdido. *Abierto:* quién abrió la sesión y por qué; si existe una exportación de configuración o una copia de seguridad de antes del reinicio; responsable L. Ferreira.
+
+**EX019 — Registro de evidencia.** Qué: `fw-01-rules-20261013.txt` (exportación en bruto). Fuente: fw-01, CLI de gestión, versión de firmware registrada. Hora: 2026-10-13T08:12:40Z, equipo recolector sincronizado con ntp-ops (desfase +0,1 s). Recolector: R. Kaur. Método: la orden de exportación exacta. Integridad: la salida de `sha256sum fw-01-rules-20261013.txt` registrada en el expediente del caso, guardada por separado del archivo.
+
+**EX020 — Alternativas pasivas.** Quién habla con KW-07: registros de flujos de fw-01 y del router o una captura SPAN. Firmware: registros de activos, el inventario de la herramienta del fabricante durante una sesión de ingeniería aprobada. Telnet: la exportación de configuración de la RTU y la documentación del fabricante sobre los servicios por defecto. Una prueba activa solo se justifica si los registros se contradicen, en una ventana delimitada con operaciones presente y como una única prueba de conexión.
+
+### Capítulo 6: EX021–EX024
+
+**EX021 — Sitúe los activos.** Router celular de KW-06: en el límite de Z1; su interfaz de gestión es tan privilegiada como Z5 y debe figurar en el inventario y en las comprobaciones de deriva. Pasarela del proveedor para SS-3: su propia zona de acceso remoto, que solo se conecta a través de jump-01 y nunca se sitúa en Z3. Servidor de informes: Z6. Portátil de ingeniería: un activo transitorio con sus propios controles (capítulo 16), nunca de forma permanente en ninguna zona.
+
+**EX022 — Redacte un conducto.** C4: origen hist-02 (Z2) → destino report-01 (Z6) tcp/443; iniciado desde Z2 (envío); finalidad, CSV diario del informe de operaciones; responsable, el responsable de datos de operaciones de Kestrel Water; aplicación, regla de fw-01 con incidencia; supervisión, alerta del colector si no hay envío antes de las 06:30 o ante cualquier conexión de Z6 hacia hist-02; revisión anual.
+
+**EX023 — Contraste entre sectores.** Agua: confirmar que hay un servidor SCADA redundante o programar fuera de los periodos críticos; duración de la interrupción del sondeo acordada con operaciones. Red eléctrica: reinicios del procesador de comunicaciones acordados con la sala de control de la red, con los procedimientos ante pérdida del telecontrol preparados; la protección no se ve afectada, pero confírmelo. Hospital: la ingeniería clínica y el nivel de parches admitido por el fabricante del BMS; continuidad de las alarmas de ventilación y de las habitaciones de aislamiento durante el reinicio. Un único calendario semanal no sirve para ninguno de ellos.
+
+**EX024 — Modelo frente a captura.** No lo explican los conductos declarados: las escrituras de 10.30.3.7 → KW-04 (no hay conducto de la red corporativa a Z1); la consulta de la función 43 desde scada-01 si C1 se declara solo como «sondeos de lectura» (añádala explícitamente si se confirma como funcionalidad); dos tramas mal formadas desde scada-01, una anomalía que explicar (fallo del controlador de software o un programa distinto en ese equipo).
 
 <a id="glossary"></a>
 
