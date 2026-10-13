@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cloud-containers-technologist-308aed90
+name: cykin-cloud-containers-technologist-308aed90
 description: "CLOUD Technologist Course (30 ch / 90 ex)"
 license: CC0-1.0
 ---

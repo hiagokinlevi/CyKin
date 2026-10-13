@@ -40,7 +40,7 @@ NIST [SP 800-145](https://doi.org/10.6028/NIST.SP.800-145), [SP 800-210](https:/
 
 ## Chapter 1 — Computing systems
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -97,7 +97,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -152,7 +152,7 @@ Cloud services still run on processes, memory, storage and permissions; security
 
 ## Chapter 2 — Networks and internet services
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -214,7 +214,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -273,7 +273,7 @@ Follow each request hop by hop and check encryption rather than assuming it.
 
 ## Chapter 3 — Programming foundations
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -335,7 +335,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -398,7 +398,7 @@ Small, readable scripts turn slow manual searches into quick, repeatable checks.
 
 ## Chapter 4 — Data models
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -460,7 +460,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -523,7 +523,7 @@ Model only what answers real questions, and keep names and identifiers consisten
 
 ## Chapter 5 — Security literacy
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -585,7 +585,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -648,7 +648,7 @@ Security goals and responsibilities must be clear before controls make sense.
 
 ## Chapter 6 — Operating systems and virtualization
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -710,7 +710,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -773,7 +773,7 @@ Know what is inside an image and pin it by digest when evidence matters.
 
 ## Chapter 7 — Identity and access foundations
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -835,7 +835,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -902,7 +902,7 @@ Give each identity only what it needs and remove what is no longer used.
 
 ## Chapter 8 — Security architecture basics
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -964,7 +964,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1031,7 +1031,7 @@ Put controls at each boundary and keep the design simple enough to maintain.
 
 ## Chapter 9 — Evidence and measurement
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -1093,7 +1093,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1160,7 +1160,7 @@ Collect timed, sourced evidence and measure trends with counts.
 
 ## Chapter 10 — Cloud and container security: orientation
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -1222,7 +1222,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1289,7 +1289,7 @@ Locate a concrete problem in the field before choosing tools.
 
 ## Chapter 11 — Cloud and container security: assets and context
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1351,7 +1351,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1435,7 +1435,7 @@ An inventory linked to an approved list turns advisories into quick lookups.
 
 ## Chapter 12 — Cloud and container security: data flows
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1497,7 +1497,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1587,7 +1587,7 @@ Map where data goes and fix flows that leave unprotected.
 
 ## Chapter 13 — Cloud and container security: risk scenarios
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1649,7 +1649,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1714,7 +1714,7 @@ Plain scenarios with reasons help clients and staff agree on priorities.
 
 ## Chapter 14 — Cloud and container security: methods I
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1776,7 +1776,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1839,7 +1839,7 @@ Choose a small, justified baseline and grow it.
 
 ## Chapter 15 — Cloud and container security: guided lab
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -1901,7 +1901,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1990,7 +1990,7 @@ Run the baseline, explain each failure, and fix with care.
 
 ## Chapter 16 — Cloud and container security: methods II
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -2052,7 +2052,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -2125,7 +2125,7 @@ Apply workload controls gradually, observing before enforcing.
 
 ## Chapter 17 — Cloud and container security: tooling
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -2187,7 +2187,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -2262,7 +2262,7 @@ Pick few, understood tools that fit real needs.
 
 ## Chapter 18 — Cloud and container security: controls
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -2324,7 +2324,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -2401,7 +2401,7 @@ Combine control types, map them and test them.
 
 ## Chapter 19 — Cloud and container security: monitoring
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -2463,7 +2463,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -2558,7 +2558,7 @@ Summarise logs, investigate flags, and alert only on actionable events.
 
 ## Chapter 20 — Cloud and container security: troubleshooting
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -2620,7 +2620,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -2695,7 +2695,7 @@ Fix the specific need instead of weakening the control.
 
 ## Chapter 21 — Cloud and container security: service integration
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2757,7 +2757,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2822,7 +2822,7 @@ Replace stored keys with workload identities and narrow each integration.
 
 ## Chapter 22 — Cloud and container security: automation
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -2884,7 +2884,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2979,7 +2979,7 @@ Block risky changes early with clear explanations and keep detection for the res
 
 ## Chapter 23 — Cloud and container security: evaluation
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -3041,7 +3041,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -3129,7 +3129,7 @@ Measure again, compare fairly, and state limits.
 
 ## Chapter 24 — Applied research methods
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -3191,7 +3191,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -3268,7 +3268,7 @@ Small focused studies can guide practical decisions.
 
 ## Chapter 25 — Team project studio
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -3330,7 +3330,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -3411,7 +3411,7 @@ Shared work needs owners, reviews and the reader's language.
 
 ## Chapter 26 — Cloud and container security: operational handoff
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -3473,7 +3473,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -3558,7 +3558,7 @@ Hand off with runbooks, owners and practice.
 
 ## Chapter 27 — Deployment and validation
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -3620,7 +3620,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -3725,7 +3725,7 @@ Check the pack, validate in production and close gaps.
 
 ## Chapter 28 — Field practice
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -3787,7 +3787,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -3868,7 +3868,7 @@ Good preparation makes advisories routine.
 
 ## Chapter 29 — Capstone build
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -3930,7 +3930,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -4023,7 +4023,7 @@ Build, test with others and fix assumptions.
 
 ## Chapter 30 — Capstone assessment
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -4085,7 +4085,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes

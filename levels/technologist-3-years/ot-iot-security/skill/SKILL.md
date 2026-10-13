@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ot-iot-security-technologist-f0aff056
+name: cykin-ot-iot-security-technologist-f0aff056
 description: "Tutor the thirty-chapter technologist OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Northgate Cold Storage, labs in chapters 11–26, EX001–EX090; enforce site-safety and authorization boundaries."
 license: CC0-1.0
 ---

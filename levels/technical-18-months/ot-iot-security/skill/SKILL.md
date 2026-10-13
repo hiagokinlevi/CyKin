@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ot-iot-security-technical-7d17539f
+name: cykin-ot-iot-security-technical-7d17539f
 description: "Tutor the eighteen-chapter technical OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Harbor Point Food Packaging Line, labs in chapters 5, 9 and 11, EX001–EX072; enforce plant-safety and authorization boundaries."
 license: CC0-1.0
 ---

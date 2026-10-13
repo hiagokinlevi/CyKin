@@ -35,7 +35,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Toma de decisiones avanzada en seguridad
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -87,7 +87,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -143,7 +143,7 @@ Las decisiones sénior de seguridad de la IA son elecciones entre opciones imper
 
 ## Capítulo 2 — Seguridad de la IA y del aprendizaje automático: práctica actual
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX006.
@@ -195,7 +195,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX006]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -295,7 +295,7 @@ La práctica actual combina taxonomías compartidas con una asignación específ
 
 ## Capítulo 3 — Seguridad de la IA y del aprendizaje automático: evidencia especializada
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX011.
@@ -347,7 +347,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -443,7 +443,7 @@ La evidencia especializada se gradúa por su solidez, se comunica con intervalos
 
 ## Capítulo 4 — Riesgo y ética avanzados
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX016.
@@ -495,7 +495,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -556,7 +556,7 @@ El trabajo de riesgos avanzado cuenta los daños para todos los afectados, usa l
 
 ## Capítulo 5 — Seguridad de la IA y del aprendizaje automático: alternativas de diseño
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX021.
@@ -608,7 +608,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -667,7 +667,7 @@ Un buen diseño de seguridad de la IA genera alternativas y las compara abiertam
 
 ## Capítulo 6 — Seguridad de la IA y del aprendizaje automático: evaluación controlada
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX026.
@@ -719,7 +719,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX026]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -830,7 +830,7 @@ La evaluación controlada cambia una sola cosa cada vez, usa conjuntos adaptativ
 
 ## Capítulo 7 — Seguridad de la IA y del aprendizaje automático: integración organizativa
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX031.
@@ -882,7 +882,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -978,7 +978,7 @@ La integración organizativa consiste en conocer cada uso de la IA, incorporar l
 
 ## Capítulo 8 — Seguridad de la IA y del aprendizaje automático: casos difíciles
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX036.
@@ -1030,7 +1030,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX036]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -1118,7 +1118,7 @@ Los casos difíciles necesitan disyuntivas explícitas, desconfianza hacia todo 
 
 ## Capítulo 9 — Seguridad de la IA y del aprendizaje automático: liderazgo y aseguramiento
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX041.
@@ -1175,7 +1175,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -1277,7 +1277,7 @@ El liderazgo en seguridad de la IA convierte la evidencia en casos de aseguramie
 
 ## Capítulo 10 — Lectura y crítica de la investigación
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX046.
@@ -1329,7 +1329,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1386,7 +1386,7 @@ Los profesionales leen la investigación por su modelo de amenaza y su evidencia
 
 ## Capítulo 11 — Proyecto aplicado
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX051.
@@ -1443,7 +1443,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1538,7 +1538,7 @@ Los proyectos aplicados sirven a una decisión real, se ejecutan de forma segura
 
 ## Capítulo 12 — Revisión final y transferencia
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX056.
@@ -1595,7 +1595,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX056]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje

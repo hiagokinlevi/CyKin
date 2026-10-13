@@ -40,7 +40,7 @@ Read in order: the chapters follow one student from foundations through applicat
 
 ## Chapter 1 — Mathematical reasoning
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -97,7 +97,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -160,7 +160,7 @@ Precise logical rules expose gaps and contradictions before they become flaws.
 
 ## Chapter 2 — Computing systems
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -222,7 +222,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -297,7 +297,7 @@ Know the parts, the request path and where other people's code runs.
 
 ## Chapter 3 — Programming I
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -359,7 +359,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -428,7 +428,7 @@ Write clear code, use trusted values and keep secrets out of repositories.
 
 ## Chapter 4 — Academic writing
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -490,7 +490,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -569,7 +569,7 @@ Write clear, cited arguments that explain without enabling harm.
 
 ## Chapter 5 — Security literacy
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -631,7 +631,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -704,7 +704,7 @@ Shared vocabulary lets you read advisories and reason about risk.
 
 ## Chapter 6 — Discrete structures
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -766,7 +766,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -860,7 +860,7 @@ Treat versions as ordered tuples and ranges as sets, and record exact choices.
 
 ## Chapter 7 — Networks and protocols
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -922,7 +922,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -1001,7 +1001,7 @@ Secure protocols, cookie attributes and headers protect the web layer.
 
 ## Chapter 8 — Programming II
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -1063,7 +1063,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1155,7 +1155,7 @@ Encode output for its context and trust framework defaults.
 
 ## Chapter 9 — Data and databases
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -1217,7 +1217,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1312,7 +1312,7 @@ Keep user input as data, escape pattern characters and limit database rights.
 
 ## Chapter 10 — Ethics and authorized practice
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -1374,7 +1374,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1457,7 +1457,7 @@ Act only with permission, disclose responsibly and protect users' privacy.
 
 ## Chapter 11 — Operating systems
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1519,7 +1519,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1590,7 +1590,7 @@ Limit what processes and builds can do, and keep secrets out of logs and files.
 
 ## Chapter 12 — Probability and statistics
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1652,7 +1652,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1735,7 +1735,7 @@ Measure checks with precision and recall, mindful of base rates and small sample
 
 ## Chapter 13 — Identity and access
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1797,7 +1797,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1898,7 +1898,7 @@ Use strong identity, random expiring sessions and server-side role checks.
 
 ## Chapter 14 — Privacy foundations
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1960,7 +1960,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -2043,7 +2043,7 @@ Collect less, protect more and let users control their data.
 
 ## Chapter 15 — Evidence and measurement
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -2105,7 +2105,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -2188,7 +2188,7 @@ Measure outcomes from a baseline and report honestly, including other explanatio
 
 ## Chapter 16 — Security architecture
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -2250,7 +2250,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -2331,7 +2331,7 @@ Layer defences, guard boundaries and separate environments.
 
 ## Chapter 17 — Cryptography concepts
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -2393,7 +2393,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -2485,7 +2485,7 @@ Use the right cryptographic tool for the goal and verify every signed message.
 
 ## Chapter 18 — Research methods I
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -2547,7 +2547,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -2628,7 +2628,7 @@ Small, ethical studies can test practical changes and reveal side effects.
 
 ## Chapter 19 — Application and software supply chain security: scope and theory
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -2690,7 +2690,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -2767,7 +2767,7 @@ Supply chain security extends application security to everything that builds and
 
 ## Chapter 20 — Application and software supply chain security: foundational cases
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -2829,7 +2829,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -2904,7 +2904,7 @@ Published cases teach defensive lessons by stage without needing attack details.
 
 ## Chapter 21 — Application and software supply chain security: system models
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2966,7 +2966,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -3043,7 +3043,7 @@ A one-page model and STRIDE questions find threats a busy team would miss.
 
 ## Chapter 22 — Application and software supply chain security: data and dependencies
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -3105,7 +3105,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -3202,7 +3202,7 @@ Hash-checked lockfiles and SBOMs show exactly what you build and let you trace p
 
 ## Chapter 23 — Application and software supply chain security: methods I
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -3264,7 +3264,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -3361,7 +3361,7 @@ Scan with patterns and variety, revoke first, and prevent recurrence.
 
 ## Chapter 24 — Application and software supply chain security: controls
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -3423,7 +3423,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -3508,7 +3508,7 @@ Combine preventive, detective and corrective controls, enforced in CI and kept p
 
 ## Chapter 25 — Laboratory I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -3570,7 +3570,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -3669,7 +3669,7 @@ Check headers, roll out policies carefully and keep them tested.
 
 ## Chapter 26 — Application and software supply chain security: methods II
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -3731,7 +3731,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -3806,7 +3806,7 @@ Sign releases, record provenance and verify both before deploying.
 
 ## Chapter 27 — Application and software supply chain security: verification
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -3868,7 +3868,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -3947,7 +3947,7 @@ Verify against a standard, with evidence, and fix by risk.
 
 ## Chapter 28 — Application and software supply chain security: failure analysis
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -4009,7 +4009,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -4084,7 +4084,7 @@ Analyse failures without blame and turn causes into system changes.
 
 ## Chapter 29 — Application and software supply chain security: operations
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -4146,7 +4146,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -4225,7 +4225,7 @@ Routine updates, monitoring and a simple incident process keep a small app safe.
 
 ## Chapter 30 — Laboratory II
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -4287,7 +4287,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -4376,7 +4376,7 @@ Combine checks into one release verification with a clear report.
 
 ## Chapter 31 — Application and software supply chain security: advanced cases
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX091.
@@ -4438,7 +4438,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes
@@ -4509,7 +4509,7 @@ In complex cases, hold safely, gather evidence and communicate with upstream.
 
 ## Chapter 32 — Application and software supply chain security: interdisciplinary interfaces
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX094.
@@ -4571,7 +4571,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes
@@ -4650,7 +4650,7 @@ Security works best alongside legal, procurement, privacy and usability expertis
 
 ## Chapter 33 — Research methods II
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX097.
@@ -4712,7 +4712,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes
@@ -4797,7 +4797,7 @@ Comparative studies need matched groups, reliability checks and honest scope.
 
 ## Chapter 34 — Comparative project
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX100.
@@ -4859,7 +4859,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes
@@ -4938,7 +4938,7 @@ Compare approaches on agreed criteria and test the result under different condit
 
 ## Chapter 35 — Capstone proposal
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX103.
@@ -5000,7 +5000,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes
@@ -5079,7 +5079,7 @@ A capstone proposal names a real need, measurable success and an owner after you
 
 ## Chapter 36 — Field or community practice
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX106.
@@ -5141,7 +5141,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes
@@ -5216,7 +5216,7 @@ Community practice means simple, sustainable improvements within clear boundarie
 
 ## Chapter 37 — Evidence review seminar
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX109.
@@ -5278,7 +5278,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes
@@ -5357,7 +5357,7 @@ Review evidence by design and limits, then synthesise carefully for practice.
 
 ## Chapter 38 — Capstone implementation
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX112.
@@ -5419,7 +5419,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes
@@ -5498,7 +5498,7 @@ Build, pilot, fix and let the template prove itself on real projects.
 
 ## Chapter 39 — Capstone evaluation
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX115.
@@ -5560,7 +5560,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes
@@ -5643,7 +5643,7 @@ Evaluate against criteria with honest limits and hand over to a lasting owner.
 
 ## Chapter 40 — Thesis and presentation
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX118.
@@ -5705,7 +5705,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes

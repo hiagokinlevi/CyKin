@@ -1,5 +1,5 @@
 ---
-name: cyberabc-systems-endpoints-hardware-professional-4764fea3
+name: cykin-systems-endpoints-hardware-professional-4764fea3
 description: "SYS Professional Course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-governance-risk-compl-professional-11c8d3de
+name: cykin-security-governance-risk-compl-professional-11c8d3de
 description: "Guide a learner through the GRC Professional Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

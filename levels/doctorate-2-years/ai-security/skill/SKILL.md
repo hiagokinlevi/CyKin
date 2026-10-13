@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ai-security-doctorate-4bea4b23
+name: cykin-ai-security-doctorate-4bea4b23
 description: "Guide a learner through the doctoral research track in AI and machine-learning security using its authored English book draft: research integrity, frontier mapping, proposal, replication, main study, critique, archive and defence, with exercises, worked answers and offline labs."
 license: CC0-1.0
 ---

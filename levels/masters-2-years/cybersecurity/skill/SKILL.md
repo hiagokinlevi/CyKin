@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cybersecurity-masters-848663b8
+name: cykin-cybersecurity-masters-848663b8
 description: "Guide a learner through the master's course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

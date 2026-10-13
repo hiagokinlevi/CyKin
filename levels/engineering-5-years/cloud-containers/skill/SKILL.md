@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cloud-containers-engineering-9b1133e6
+name: cykin-cloud-containers-engineering-9b1133e6
 description: "CLOUD Engineering course (50 ch / 150 ex)"
 license: CC0-1.0
 ---

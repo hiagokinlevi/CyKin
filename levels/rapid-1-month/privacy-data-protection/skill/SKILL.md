@@ -1,5 +1,5 @@
 ---
-name: cyberabc-privacy-data-protection-rapid-4f7b3a61
+name: cykin-privacy-data-protection-rapid-4f7b3a61
 description: "Guide a learner through the privacy Rapid Course draft: 4 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

@@ -38,7 +38,7 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -95,7 +95,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -158,7 +158,7 @@ A pesquisa sobre SOC deve nomear o construto medido, usar dados compartilháveis
 
 ## Capítulo 2 — Operações de segurança e blue team: fronteira da pesquisa
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -220,7 +220,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -307,7 +307,7 @@ A fronteira é moldada pelas taxas de base, pela qualidade dos alarmes e pelos f
 
 ## Capítulo 3 — Proposta de contribuição original
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -369,7 +369,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -462,7 +462,7 @@ Enuncie as contribuições com precisão, adeque o trabalho de sustentação ao 
 
 ## Capítulo 4 — Replicação da linha de base e piloto
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -524,7 +524,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -607,7 +607,7 @@ Replique a linha de base, verifique a confiabilidade dos rótulos, teste os proc
 
 ## Capítulo 5 — Estudo principal e validação independente
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -669,7 +669,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -758,7 +758,7 @@ Desenhos controlados, estimativas por intervalo, reanálise independente e relat
 
 ## Capítulo 6 — Crítica de pares e revisão
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -815,7 +815,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -877,7 +877,7 @@ Reúna críticas de muitas fontes, ordene-as pela ameaça à validade, revise co
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -939,7 +939,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -1005,7 +1005,7 @@ Uma tese conquista confiança com um argumento claro, etiquetas de status honest
 
 ## Capítulo 8 — Plano de defesa e de publicação
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -1067,7 +1067,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem

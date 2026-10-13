@@ -1,5 +1,5 @@
 ---
-name: cyberabc-quantum-post-quantum-security-technical-34318756
+name: cykin-quantum-post-quantum-security-technical-34318756
 description: "Guide a technical operator through the 18-month course in Quantum and post-quantum security: its one authored draft book of 18 chapters on hands-on checks, hybrid TLS/SSH configuration, verification, troubleshooting, automation, runbooks and contained labs, with exercises EX001–EX054 with worked results."
 license: CC0-1.0
 ---

@@ -34,7 +34,7 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST [FIPS 203]
 
 ## Capítulo 1 — Segurança quântica e pós-quântica: fundamentos e decisões
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -96,7 +96,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -195,19 +195,19 @@ Cada erro tem uma correção curta. Diga quais métodos estão em risco: a combi
 
 Os computadores quânticos, se construídos em escala, quebrariam os métodos atuais de combinar chaves e de assinar, mas não a cifragem do grosso dos dados. As novas normas do NIST e a proteção híbrida já estão sendo adotadas. Para a maioria das organizações, a decisão sensata é calma: proteger primeiro as informações de vida longa, manter os sistemas atualizados e perguntar aos provedores sobre os seus planos.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 04
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX014.
@@ -269,7 +269,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX014]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -349,19 +349,19 @@ Cada erro tem uma correção simples. Público significa que qualquer pessoa pod
 
 A prática segura começa com a permissão e um escopo claro, coleta apenas o necessário, trata com responsabilidade as descobertas sensíveis, evita experimentos arriscados e relata com clareza.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 04
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Segurança quântica e pós-quântica: sistemas, dados e dependências
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX027.
@@ -423,7 +423,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -539,19 +539,19 @@ Cada erro tem uma solução simples. Percorra o local para encontrar equipamento
 
 Mapear os serviços, os tempos de vida dos dados e quem controla cada serviço, com fatos acompanhados das fontes e incógnitas transformadas em perguntas, mostra a uma pequena organização onde concentrar os esforços.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 04
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança quântica e pós-quântica: laboratório guiado e síntese aplicada
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX040.
@@ -613,7 +613,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -730,13 +730,13 @@ Cada erro tem uma correção simples. Escreva oferecido, mas não preferido quan
 
 O laboratório guiado mostra a diferença entre oferecer e usar a nova proteção; uma nota de prontidão curta e calma e perguntas específicas aos provedores transformam o aprendizado do mês numa primeira tarefa útil para um dono real.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 04
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

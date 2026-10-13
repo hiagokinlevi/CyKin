@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cloud-containers-masters-8a675037
+name: cykin-cloud-containers-masters-8a675037
 description: "CLOUD Master's course (8 ch / 50 ex)"
 license: CC0-1.0
 ---

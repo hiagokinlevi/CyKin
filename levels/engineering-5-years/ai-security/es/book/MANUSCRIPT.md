@@ -36,7 +36,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -88,7 +88,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -179,7 +179,7 @@ Las derivadas cuantifican la sensibilidad. Entrenan modelos y también muestran 
 
 ## Capítulo 2 — Matemáticas discretas
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX004.
@@ -231,7 +231,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -290,7 +290,7 @@ Las matemáticas discretas ofrecen un lenguaje preciso para políticas, flujos d
 
 ## Capítulo 3 — Física para la computación
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX007.
@@ -342,7 +342,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -397,7 +397,7 @@ La física determina qué entradas recibe realmente un componente de IA. Los ing
 
 ## Capítulo 4 — Programación I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX010.
@@ -449,7 +449,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -528,7 +528,7 @@ Programar para la seguridad de la IA empieza por un hábito: tratar todo lo que 
 
 ## Capítulo 5 — Comunicación en ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX013.
@@ -585,7 +585,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -644,7 +644,7 @@ Una comunicación clara y honesta (condiciones, intervalos, hechos separados de 
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX016.
@@ -696,7 +696,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -749,7 +749,7 @@ Los gradientes y las normas convierten «un cambio pequeño» en un número. Exp
 
 ## Capítulo 7 — Probabilidad y estadística
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX019.
@@ -806,7 +806,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -893,7 +893,7 @@ La probabilidad dice a los ingenieros lo que significa realmente una alerta. Las
 
 ## Capítulo 8 — Arquitectura de computadores
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX022.
@@ -945,7 +945,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -1002,7 +1002,7 @@ La IA se ejecuta sobre hardware real con precisión finita, recursos compartidos
 
 ## Capítulo 9 — Programación II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX025.
@@ -1054,7 +1054,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -1109,7 +1109,7 @@ Una buena estructura sitúa las decisiones de seguridad en código pequeño y co
 
 ## Capítulo 10 — Ética y seguridad en la ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX028.
@@ -1161,7 +1161,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1216,7 +1216,7 @@ La ética en la ingeniería de IA es concreta: límites honestos, seguridad func
 
 ## Capítulo 11 — Redes y protocolos
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX031.
@@ -1263,7 +1263,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1343,7 +1343,7 @@ Los servicios de IA son servicios de red con solicitudes caras. TLS, la segmenta
 
 ## Capítulo 12 — Sistemas operativos
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX034.
@@ -1395,7 +1395,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje
@@ -1454,7 +1454,7 @@ El aislamiento del sistema operativo convierte «el modelo podría ser manipulad
 
 ## Capítulo 13 — Sistemas de datos
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa de la lección
 
 Lección 13 publicada. Mapa, ejemplo, EX037.
@@ -1506,7 +1506,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Resultados de aprendizaje
@@ -1561,7 +1561,7 @@ Los datos son la superficie de ataque que entrena e informa a los modelos. El li
 
 ## Capítulo 14 — Ingeniería de software
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa de la lección
 
 Lección 14 publicada. Mapa, ejemplo, EX040.
@@ -1613,7 +1613,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Resultados de aprendizaje
@@ -1666,7 +1666,7 @@ La ingeniería de software de IA trata los modelos, los prompts y los datos como
 
 ## Capítulo 15 — Fundamentos de seguridad
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa de la lección
 
 Lección 15 publicada. Mapa, ejemplo, EX043.
@@ -1718,7 +1718,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Resultados de aprendizaje
@@ -1771,7 +1771,7 @@ Los fundamentos de seguridad se aplican directamente a la IA: CIA para activos n
 
 ## Capítulo 16 — Ingeniería de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa de la lección
 
 Lección 16 publicada. Mapa, ejemplo, EX046.
@@ -1823,7 +1823,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Resultados de aprendizaje
@@ -1876,7 +1876,7 @@ La ingeniería de sistemas da a la seguridad de la IA una columna vertebral: req
 
 ## Capítulo 17 — Fundamentos de control y realimentación
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa de la lección
 
 Lección 17 publicada. Mapa, ejemplo, EX049.
@@ -1928,7 +1928,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Resultados de aprendizaje
@@ -1981,7 +1981,7 @@ La realimentación hace que los sistemas sean adaptativos y también explotables
 
 ## Capítulo 18 — Arquitectura de seguridad
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa de la lección
 
 Lección 18 publicada. Mapa, ejemplo, EX052.
@@ -2033,7 +2033,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Resultados de aprendizaje
@@ -2088,7 +2088,7 @@ La arquitectura es donde la seguridad de la IA se vuelve exigible: las fronteras
 
 ## Capítulo 19 — Identidad y criptografía
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa de la lección
 
 Lección 19 publicada. Mapa, ejemplo, EX055.
@@ -2140,7 +2140,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Resultados de aprendizaje
@@ -2226,7 +2226,7 @@ La identidad hace que las acciones de los agentes sean atribuibles y acotadas; l
 
 ## Capítulo 20 — Seguridad de la IA y del aprendizaje automático: contexto de ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa de la lección
 
 Lección 20 publicada. Mapa, ejemplo, EX058.
@@ -2278,7 +2278,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Resultados de aprendizaje
@@ -2338,7 +2338,7 @@ La ingeniería de seguridad de la IA empieza por el ciclo de vida, un marco orga
 
 ## Capítulo 21 — Seguridad de la IA y del aprendizaje automático: requisitos
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa de la lección
 
 Lección 21 publicada. Mapa, ejemplo, EX061.
@@ -2390,7 +2390,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Resultados de aprendizaje
@@ -2449,7 +2449,7 @@ Los buenos requisitos de seguridad de la IA son enunciados medibles sobre el com
 
 ## Capítulo 22 — Seguridad de la IA y del aprendizaje automático: modelos de sistema y de datos
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa de la lección
 
 Lección 22 publicada. Mapa, ejemplo, EX064.
@@ -2501,7 +2501,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Resultados de aprendizaje
@@ -2556,7 +2556,7 @@ Los modelos de sistema y de datos muestran por dónde entran los datos no confia
 
 ## Capítulo 23 — Seguridad de la IA y del aprendizaje automático: análisis de amenazas y fallos
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa de la lección
 
 Lección 23 publicada. Mapa, ejemplo, EX067.
@@ -2613,7 +2613,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Resultados de aprendizaje
@@ -2672,7 +2672,7 @@ El análisis de amenazas convierte el modelo del sistema en una lista jerarquiza
 
 ## Capítulo 24 — Seguridad de la IA y del aprendizaje automático: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa de la lección
 
 Lección 24 publicada. Mapa, ejemplo, EX070.
@@ -2729,7 +2729,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Resultados de aprendizaje
@@ -2922,7 +2922,7 @@ Los métodos básicos de evaluación adversarial —curvas de evasión, pruebas 
 
 ## Capítulo 25 — Taller de diseño I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa de la lección
 
 Lección 25 publicada. Mapa, ejemplo, EX073.
@@ -2979,7 +2979,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Resultados de aprendizaje
@@ -3042,7 +3042,7 @@ El taller practica la competencia central de la ingeniería: tomar compromisos e
 
 ## Capítulo 26 — Seguridad de la IA y del aprendizaje automático: alternativas de arquitectura
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa de la lección
 
 Lección 26 publicada. Mapa, ejemplo, EX076.
@@ -3094,7 +3094,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Resultados de aprendizaje
@@ -3155,7 +3155,7 @@ Las decisiones de arquitectura determinan hasta dónde puede llegar una entrada 
 
 ## Capítulo 27 — Seguridad de la IA y del aprendizaje automático: diseño de controles
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa de la lección
 
 Lección 27 publicada. Mapa, ejemplo, EX079.
@@ -3207,7 +3207,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Resultados de aprendizaje
@@ -3307,7 +3307,7 @@ El diseño de controles superpone prevención, detección y corrección, mantien
 
 ## Capítulo 28 — Seguridad de la IA y del aprendizaje automático: implementación I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa de la lección
 
 Lección 28 publicada. Mapa, ejemplo, EX082.
@@ -3364,7 +3364,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Resultados de aprendizaje
@@ -3438,7 +3438,7 @@ La implementación hace real la arquitectura: un punto de aplicación pequeño y
 
 ## Capítulo 29 — Seguridad de la IA y del aprendizaje automático: medición
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa de la lección
 
 Lección 29 publicada. Mapa, ejemplo, EX085.
@@ -3490,7 +3490,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Resultados de aprendizaje
@@ -3593,7 +3593,7 @@ La medición convierte la seguridad de la IA en decisiones: métricas emparejada
 
 ## Capítulo 30 — Laboratorio de verificación I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa de la lección
 
 Lección 30 publicada. Mapa, ejemplo, EX088.
@@ -3645,7 +3645,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Resultados de aprendizaje
@@ -3775,7 +3775,7 @@ Un laboratorio de verificación prueba los requisitos en aislamiento con verdade
 
 ## Capítulo 31 — Seguridad de la IA y del aprendizaje automático: implementación II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa de la lección
 
 Lección 31 publicada. Mapa, ejemplo, EX091.
@@ -3832,7 +3832,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Resultados de aprendizaje
@@ -3930,7 +3930,7 @@ La implementación II añade los controles detectivos y de integridad: monitoriz
 
 ## Capítulo 32 — Seguridad de la IA y del aprendizaje automático: fiabilidad
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa de la lección
 
 Lección 32 publicada. Mapa, ejemplo, EX094.
@@ -3982,7 +3982,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Resultados de aprendizaje
@@ -4035,7 +4035,7 @@ Una IA fiable está calibrada y estratificada, tiene redundancia diversa y se de
 
 ## Capítulo 33 — Seguridad de la IA y del aprendizaje automático: seguridad funcional y resiliencia
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa de la lección
 
 Lección 33 publicada. Mapa, ejemplo, EX097.
@@ -4087,7 +4087,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Resultados de aprendizaje
@@ -4142,7 +4142,7 @@ La seguridad funcional y la resiliencia parten de que los controles fallarán a 
 
 ## Capítulo 34 — Seguridad de la IA y del aprendizaje automático: integración
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa de la lección
 
 Lección 34 publicada. Mapa, ejemplo, EX100.
@@ -4199,7 +4199,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Resultados de aprendizaje
@@ -4256,7 +4256,7 @@ La integración es donde la IA adquiere poder real. La identidad delegada, los c
 
 ## Capítulo 35 — Taller de diseño II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa de la lección
 
 Lección 35 publicada. Mapa, ejemplo, EX103.
@@ -4308,7 +4308,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Resultados de aprendizaje
@@ -4365,7 +4365,7 @@ El taller II hace que el diseño argumente a su favor: un caso de seguridad func
 
 ## Capítulo 36 — Seguridad de la IA y del aprendizaje automático: rendimiento y escala
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa de la lección
 
 Lección 36 publicada. Mapa, ejemplo, EX106.
@@ -4417,7 +4417,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Resultados de aprendizaje
@@ -4501,7 +4501,7 @@ El rendimiento y la seguridad están acoplados. Los controles con presupuesto, l
 
 ## Capítulo 37 — Seguridad de la IA y del aprendizaje automático: operaciones
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa de la lección
 
 Lección 37 publicada. Mapa, ejemplo, EX109.
@@ -4558,7 +4558,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Resultados de aprendizaje
@@ -4619,7 +4619,7 @@ Las operaciones mantienen viva la seguridad de la IA después de la publicación
 
 ## Capítulo 38 — Seguridad de la IA y del aprendizaje automático: validación
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa de la lección
 
 Lección 38 publicada. Mapa, ejemplo, EX112.
@@ -4671,7 +4671,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Resultados de aprendizaje
@@ -4724,7 +4724,7 @@ La validación pregunta si el sistema protegido funciona para personas reales ba
 
 ## Capítulo 39 — Seguridad de la IA y del aprendizaje automático: mantenibilidad
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa de la lección
 
 Lección 39 publicada. Mapa, ejemplo, EX115.
@@ -4781,7 +4781,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Resultados de aprendizaje
@@ -4838,7 +4838,7 @@ La seguridad mantenible de la IA da por supuesto el cambio: actualizaciones con 
 
 ## Capítulo 40 — Laboratorio de verificación II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa de la lección
 
 Lección 40 publicada. Mapa, ejemplo, EX118.
@@ -4895,7 +4895,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Resultados de aprendizaje
@@ -5023,7 +5023,7 @@ La verificación integrada encuentra los fallos en las intersecciones, juzga los
 
 ## Capítulo 41 — Seguridad de la IA y del aprendizaje automático: optimización del sistema
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Mapa de la lección
 
 Lección 41 publicada. Mapa, ejemplo, EX121.
@@ -5070,7 +5070,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX121]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Resultados de aprendizaje
@@ -5123,7 +5123,7 @@ En la seguridad de la IA, la optimización es multiobjetivo: encuentre el frente
 
 ## Capítulo 42 — Seguridad de la IA y del aprendizaje automático: investigación aplicada
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Mapa de la lección
 
 Lección 42 publicada. Mapa, ejemplo, EX124.
@@ -5175,7 +5175,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX124]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Resultados de aprendizaje
@@ -5230,7 +5230,7 @@ La investigación aplicada responde a preguntas de ingeniería con experimentos 
 
 ## Capítulo 43 — Práctica en la industria o en el servicio público
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Mapa de la lección
 
 Lección 43 publicada. Mapa, ejemplo, EX127.
@@ -5282,7 +5282,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX127]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Resultados de aprendizaje
@@ -5376,7 +5376,7 @@ La práctica revela cómo funciona la seguridad de la IA dentro de las organizac
 
 ## Capítulo 44 — Proyecto final de ingeniería I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Mapa de la lección
 
 Lección 44 publicada. Mapa, ejemplo, EX130.
@@ -5433,7 +5433,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX130]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Resultados de aprendizaje
@@ -5492,7 +5492,7 @@ El proyecto final I fija una línea base verificable: un problema realista, requ
 
 ## Capítulo 45 — Revisión independiente del diseño
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Mapa de la lección
 
 Lección 45 publicada. Mapa, ejemplo, EX133.
@@ -5549,7 +5549,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX133]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Resultados de aprendizaje
@@ -5610,7 +5610,7 @@ La revisión independiente, con listas de comprobación estructuradas más pregu
 
 ## Capítulo 46 — Proyecto final de ingeniería II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Mapa de la lección
 
 Lección 46 publicada. Mapa, ejemplo, EX136.
@@ -5667,7 +5667,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX136]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Resultados de aprendizaje
@@ -5726,7 +5726,7 @@ El proyecto final II construye el sistema tal como se diseñó: por incrementos,
 
 ## Capítulo 47 — Ensayo de fallo y recuperación
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Mapa de la lección
 
 Lección 47 publicada. Mapa, ejemplo, EX139.
@@ -5783,7 +5783,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX139]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Resultados de aprendizaje
@@ -5842,7 +5842,7 @@ Los ensayos de fallo y recuperación convierten los planes de recuperación en e
 
 ## Capítulo 48 — Expediente de evidencia
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Mapa de la lección
 
 Lección 48 publicada. Mapa, ejemplo, EX142.
@@ -5894,7 +5894,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX142]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Resultados de aprendizaje
@@ -5992,7 +5992,7 @@ El expediente de evidencia hace evaluable el proyecto final: afirmaciones vincul
 
 ## Capítulo 49 — Tesis de ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Mapa de la lección
 
 Lección 49 publicada. Mapa, ejemplo, EX145.
@@ -6044,7 +6044,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX145]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Resultados de aprendizaje
@@ -6099,7 +6099,7 @@ La tesis de ingeniería cuenta la historia del proyecto final como evidencia: pr
 
 ## Capítulo 50 — Defensa final
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Mapa de la lección
 
 Lección 50 publicada. Mapa, ejemplo, EX148.
@@ -6146,7 +6146,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX148]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Resultados de aprendizaje

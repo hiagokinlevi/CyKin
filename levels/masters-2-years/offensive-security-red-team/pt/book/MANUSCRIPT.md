@@ -40,7 +40,7 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 ## Capítulo 1 — Pergunta de pesquisa e método de revisão da literatura
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -97,7 +97,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -187,7 +187,7 @@ Os hábitos de seminário e de literatura transformam a prática de red team em 
 
 ## Capítulo 2 — Segurança ofensiva autorizada e red team: seminário avançado
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -249,7 +249,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -384,7 +384,7 @@ Os hábitos de seminário e de literatura transformam a prática de red team em 
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -441,7 +441,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -546,7 +546,7 @@ As decisões de desenho, ética e reprodutibilidade são tomadas antes que os ti
 
 ## Capítulo 4 — Segurança ofensiva autorizada e red team: explicações concorrentes
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -603,7 +603,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -690,7 +690,7 @@ Explicações concorrentes mantêm você honesto: desenhe verificações para as
 
 ## Capítulo 5 — Proposta e piloto
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -747,7 +747,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -856,7 +856,7 @@ A proposta e o piloto transformam uma pergunta em instrumentos travados e num po
 
 ## Capítulo 6 — Coleta e análise de dados
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -913,7 +913,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -1055,7 +1055,7 @@ A coleta protege o cegamento; a análise respeita a medida primária pré-regist
 
 ## Capítulo 7 — Redação da dissertação e limitações
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -1107,7 +1107,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -1227,7 +1227,7 @@ A redação torna o ciclo inspecionável: alegações estruturadas, limites deli
 
 ## Capítulo 8 — Revisão independente e defesa
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -1279,7 +1279,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem

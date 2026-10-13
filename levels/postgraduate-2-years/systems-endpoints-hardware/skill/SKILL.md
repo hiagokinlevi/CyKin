@@ -1,5 +1,5 @@
 ---
-name: cyberabc-systems-endpoints-hardware-postgraduate-553ab21a
+name: cykin-systems-endpoints-hardware-postgraduate-553ab21a
 description: "SYS Postgraduate Course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

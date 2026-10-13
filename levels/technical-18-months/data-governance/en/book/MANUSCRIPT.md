@@ -37,7 +37,7 @@ Wang and Strong (1996); GDPR. Full list in [References](#references).
 
 ## Chapter 1 — Starting at Southport
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -124,19 +124,19 @@ Assuming governance belongs only to managers overlooks the technician's daily ro
 - **EX003 — Workbook purpose.** Why keep a workbook? *Rubric:* 3 = evidence of work for employers and assessment;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX004 — Funding risk.** Why do passenger counts matter for funding? *Rubric:* 3 = the authority part-funds routes based on them;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 18)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data at a bus company
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -183,7 +183,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -223,19 +223,19 @@ Ignoring how data are collected hides where errors begin.
 - **EX007 — Missing count harm.** What harm could a missing count cause? *Rubric:* 3 = a busy trip cut or funding reduced;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX008 — Top error points.** Which error points did Marta rank highest? *Rubric:* 3 = faulty sensors and failed uploads;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 18)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Records and forms
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -282,7 +282,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -322,19 +322,19 @@ Free text for structured information makes analysis unreliable.
 - **EX011 — Stop list problem.** What problem did staff find with the stop list? *Rubric:* 3 = stops share names on different routes;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Calendar issue.** What was hard about the calendar? *Rubric:* 3 = using it on a phone;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 18)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Spreadsheets done safely
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -381,7 +381,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -421,19 +421,19 @@ Mixing typed numbers with formulas hides manual changes.
 - **EX015 — Trip check.** What must the trip count match? *Rubric:* 3 = the timetable for the month;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX016 — Version benefit.** What do clear versions allow? *Rubric:* 3 = sending exactly the approved version;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 18)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Checking data with Python
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -480,7 +480,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -520,19 +520,19 @@ Trusting results before confirming the file read correctly risks wrong conclusio
 - **EX019 — Traceability addition.** What did Marta add to trace faults? *Rubric:* 3 = the bus number;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Script sharing.** How are scripts shared? *Rubric:* 3 = a shared folder with a readme;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 18)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data quality basics
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -579,7 +579,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -619,19 +619,19 @@ Checking only validity misses missing or late data.
 - **EX023 — Authority priority.** Which dimensions matter most to the authority? *Rubric:* 3 = completeness and accuracy;; 2 = both;; 1 = one;; 0 = none.
 - **EX024 — Planner priority.** Which dimension matters most to planners? *Rubric:* 3 = timeliness;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 18)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Missing trip counts
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -683,7 +683,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -747,19 +747,19 @@ Overall percentages hide routes where problems concentrate.
 - **EX027 — Route 7 cause.** What caused missing Route 7 counts? *Rubric:* 3 = sensors on two older buses;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX028 — Interim action.** What was done while sensors were repaired? *Rubric:* 3 = newer buses moved onto Route 7;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 18)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Names, codes and standards
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -806,7 +806,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -868,19 +868,19 @@ Automatic normalising without review can merge different things.
 - **EX031 — List owner.** Who owns the official stop list? *Rubric:* 3 = Mr. Hughes;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX032 — New stop rule.** What must happen before a new stop appears? *Rubric:* 3 = it is added to the official list;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 18)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Personal data at work
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -927,7 +927,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -967,19 +967,19 @@ Assuming staff data are less sensitive than customer data leads to careless shar
 - **EX035 — Shift swap answer.** How should drivers swap shifts? *Rubric:* 3 = through the shift swap system;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX036 — Complaint deletion.** Which principle does deleting old complaint details apply? *Rubric:* 3 = keep data no longer than needed;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 18)
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Keeping data secure
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -1026,7 +1026,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1066,19 +1066,19 @@ Shared logins make it impossible to trace who changed data.
 - **EX039 — Phishing response.** What did Marta do with the practice phishing email? *Rubric:* 3 = reported it;; 2 = partly correct;; 1 = clicked;; 0 = none.
 - **EX040 — Memory stick.** What was on the found memory stick? *Rubric:* 3 = old rosters;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 18)
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Sharing and requests
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -1125,7 +1125,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1165,19 +1165,19 @@ Small published counts can still identify individuals.
 - **EX043 — Authority template.** What codes does the authority file use? *Rubric:* 3 = route codes from the official list;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX044 — Low-use stops.** What happened to very low-use stops in the newspaper list? *Rubric:* 3 = removed;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 18)
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Keeping and deleting records
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -1224,7 +1224,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1264,19 +1264,19 @@ Copying personal details into reports about deletion creates new copies to delet
 - **EX047 — Lost property.** How long are lost property records kept? *Rubric:* 3 = six months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX048 — Deletion record.** What is recorded in the deletion log? *Rubric:* 3 = date, number deleted and approval;; 2 = all;; 1 = some;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 18)
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Reporting problems
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -1323,7 +1323,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1363,19 +1363,19 @@ Vague problem reports cause worry without action.
 - **EX051 — Closing evidence.** How did Marta close the Route 7 issue? *Rubric:* 3 = reran the check and found few missing trips;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX052 — Pattern found.** What pattern did the log show? *Rubric:* 3 = issues from older buses' equipment;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue studying — lesson 13 (chapter 13 of 18)
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Simple documentation
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -1422,7 +1422,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1462,19 +1462,19 @@ Procedures tested only by their writers miss obvious-seeming steps.
 - **EX055 — Contents page.** What does the contents page list? *Rubric:* 3 = each document, owner and last checked date;; 2 = all;; 1 = some;; 0 = none.
 - **EX056 — Portal fallback.** What extra case did the procedure cover? *Rubric:* 3 = the portal being unavailable;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue studying — lesson 14 (chapter 14 of 18)
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Working with a steward
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -1521,7 +1521,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1561,19 +1561,19 @@ Technicians changing reported figures without the steward bypass accountability.
 - **EX059 — Route 4 decision.** What did Ms. Price decide about Route 4? *Rubric:* 3 = keep counts and add an explanatory note;; 2 = partly correct;; 1 = change;; 0 = none.
 - **EX060 — Decision record use.** How did the decision record help later? *Rubric:* 3 = Mr. Hughes found it quickly when the authority asked;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue studying — lesson 15 (chapter 15 of 18)
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Workplace practice
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX061.
@@ -1620,7 +1620,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1660,19 +1660,19 @@ Adjusting figures to pass checks hides real problems.
 - **EX063 — Driver approach.** How did Marta explain sensor faults to drivers? *Rubric:* 3 = not their fault and fixing protects route funding;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX064 — Improvement areas.** What two things will Marta improve? *Rubric:* 3 = estimating task time and shorter emails;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue studying — lesson 16 (chapter 16 of 18)
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Practical assessment
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX065.
@@ -1719,7 +1719,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1759,19 +1759,19 @@ Filling gaps with guesses makes files look complete but less trustworthy.
 - **EX067 — Averages answer.** Why not fill missing counts with averages? *Rubric:* 3 = guesses could be wrong; steward and authority should decide;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX068 — Assessment result.** What result did Marta receive? *Rubric:* 3 = competent with merit;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue studying — lesson 17 (chapter 17 of 18)
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Review and next steps
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX069.
@@ -1818,7 +1818,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -1858,13 +1858,13 @@ Treating course completion as the end of learning leaves skills to fade.
 - **EX071 — Ongoing questions.** Name one question Marta should keep asking. *Rubric:* 3 = who owns each decision;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Further study.** Which course might Marta take later? *Rubric:* 3 = the technologist course;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue studying — lesson 18 (chapter 18 of 18)
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

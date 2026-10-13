@@ -37,7 +37,7 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 ## Chapter 1 — Advanced research integrity and methods
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -127,19 +127,19 @@ Publishing partner-specific weaknesses turns research into an attack guide; repo
 - **EX006 — Natural comparison.** Why does a comparison group exist? *Rubric:* 3 = risk-ranked patching rolls out to some departments first;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX007 — Ethics condition.** What condition did the ethics committee add? *Rubric:* 3 = security lead reviews publications for sensitivity;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 08)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Information security: research frontier
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -191,7 +191,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -264,19 +264,19 @@ Claiming a thesis tests a whole framework overstates what one study can show.
 - **EX013 — Water control reason.** Why is water control high despite low confidentiality impact? *Rubric:* 3 = integrity and availability failures could harm the public;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX014 — Stated gap.** How narrowly does Yusuf state his gap? *Rubric:* 3 = two outcome measures in one public body;; 2 = partly correct;; 1 = partial;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 08)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Original contribution proposal
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -323,7 +323,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -365,19 +365,19 @@ Changing hypotheses after seeing outcome data invalidates confirmatory claims.
 - **EX019 — Statistician question.** What did the statistician ask about? *Rubric:* 3 = sample size;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX020 — Freeze timing.** When is the pre-registration frozen? *Rubric:* 3 = before outcome data are extracted;; 2 = partly correct;; 1 = after;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 08)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Baseline replication and pilot
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -429,7 +429,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -501,19 +501,19 @@ Letting baselines change during a study confounds the measure with the intervent
 - **EX025 — Measure refinement.** What refinement was made after the audit? *Rubric:* 3 = exclude permissions with approved unexpired exceptions;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX026 — Baseline freeze.** Why are role baselines frozen? *Rubric:* 3 = so baseline changes do not confound the measure;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 08)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Main study and independent validation
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -565,7 +565,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -633,19 +633,19 @@ Describing an interval that includes zero as proof of an effect misleads practit
 - **EX031 — Catch-up concern.** Why might part of the fall be catching up? *Rubric:* 3 = adopters started slower than comparisons;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX032 — Validator alternative.** What alternative analysis did the validator try? *Rubric:* 3 = means of log latency;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 08)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Peer critique and revision
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -692,7 +692,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -734,19 +734,19 @@ Presenting exploratory reanalysis as confirmatory evidence hides researcher choi
 - **EX037 — Mechanism contents.** What did risk-ranked patching change? *Rubric:* 3 = category-based scoring, high systems first, weekly reports;; 2 = most;; 1 = few;; 0 = none.
 - **EX038 — Narrowed conclusion.** What is the narrowed conclusion? *Rubric:* 3 = a modest, uncertain reduction in one council;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 08)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Thesis synthesis and reproducibility archive
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -793,7 +793,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -835,19 +835,19 @@ Archiving real system names and versions can expose the partner to attack.
 - **EX043 — Archive data.** What data does the public archive contain? *Rubric:* 3 = synthetic data reproducing reported figures;; 2 = partly correct;; 1 = real;; 0 = none.
 - **EX044 — Transferability aid.** How does Yusuf help readers judge transferability? *Rubric:* 3 = describes Fernvale's size, sector and regulation;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 08)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Defense and publication plan
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -894,7 +894,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -936,13 +936,13 @@ Drifting into stronger language under questioning overstates the thesis.
 - **EX049 — Paper count.** How many papers does Yusuf plan? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX050 — Key contribution.** What may be Yusuf's most valuable contribution? *Rubric:* 3 = the methodological approach using operational logs;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 08)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

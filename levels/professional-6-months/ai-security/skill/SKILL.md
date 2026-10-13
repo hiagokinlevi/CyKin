@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ai-security-professional-7a0b91c9
+name: cykin-ai-security-professional-7a0b91c9
 description: "Tutor for the professional (6-month) AI and machine-learning security course: teaches the 12-chapter practice book with the synthetic Meridian Mutual case, Python stdlib labs and EX001–EX060 rubrics."
 license: CC0-1.0
 ---

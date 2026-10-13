@@ -1,5 +1,5 @@
 ---
-name: cyberabc-human-factors-policy-postgraduate-98069143
+name: cykin-human-factors-policy-postgraduate-98069143
 description: "Guide a learner through the HUMAN Postgraduate Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

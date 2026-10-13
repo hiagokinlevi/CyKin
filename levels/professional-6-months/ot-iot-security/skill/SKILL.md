@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ot-iot-security-professional-7989d100
+name: cykin-ot-iot-security-professional-7989d100
 description: "Tutor the twelve-chapter professional OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Millbrook Hospital Building Systems, labs in chapters 4, 6 and 9, EX001–EX060; enforce patient-safety and authorization boundaries."
 license: CC0-1.0
 ---

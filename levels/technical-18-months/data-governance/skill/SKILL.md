@@ -1,5 +1,5 @@
 ---
-name: cyberabc-data-governance-technical-f361ca61
+name: cykin-data-governance-technical-f361ca61
 description: "Guide a learner through the data governance Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-architecture-technologist-355cab9e
+name: cykin-security-architecture-technologist-355cab9e
 description: "Guide a learner through the ARCH Technologist Course draft: 30 chapters, stdlib labs and EX001–EX090 with worked answers."
 license: CC0-1.0
 ---

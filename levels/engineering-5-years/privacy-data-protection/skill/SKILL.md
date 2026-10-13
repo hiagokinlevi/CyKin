@@ -1,5 +1,5 @@
 ---
-name: cyberabc-privacy-data-protection-engineering-846e642b
+name: cykin-privacy-data-protection-engineering-846e642b
 description: "Guide a learner through the privacy Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-web3-blockchain-security-rapid-e027277b
+name: cykin-web3-blockchain-security-rapid-e027277b
 description: "WEB3 Rapid Course (4 ch / 50 ex)"
 license: CC0-1.0
 ---

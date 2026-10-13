@@ -1,4 +1,4 @@
-# CyberABC structure and progress review
+# CyKin structure and progress review
 
 Reviewed 12 October 2026. [Project introduction](README.md) · [academic area map](AREA_MAP.md) · [course guide](guia-geral-cursos-e-livros.md) · [source audit](SOURCE_AUDIT.md).
 

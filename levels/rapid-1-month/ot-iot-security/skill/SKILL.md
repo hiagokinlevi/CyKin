@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ot-iot-security-rapid-acef2666
+name: cykin-ot-iot-security-rapid-acef2666
 description: "Tutor the four-chapter rapid OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Elmstead Solar and Battery Site, labs in chapters 2 and 3, EX001–EX050; enforce site-safety and authorization boundaries."
 license: CC0-1.0
 ---

@@ -38,7 +38,7 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 ## Capítulo 1 — Raciocínio matemático
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -85,7 +85,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -141,19 +141,19 @@ Porcentagens escondem contagens pequenas. As taxas-base mudam com o tempo.
 
 Razões, taxas de base e aritmética conferida são as primeiras ferramentas para raciocinar sobre o comportamento de segurança.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 40)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX004.
@@ -195,7 +195,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -234,19 +234,19 @@ Mapas de jornada simplificam o trabalho real. Leitores de cartão custam dinheir
 
 A segurança vive nos pontos em que as pessoas interagem com os sistemas, e o encaixe com o trabalho é o que mais importa.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 40)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Programação I
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX007.
@@ -293,7 +293,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -365,19 +365,19 @@ Linhas quebradas podem esconder problemas reais. Testes pequenos não provam a c
 
 Scripts simples e testados transformam registros em contagens que levantam perguntas úteis.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 40)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX010.
@@ -419,7 +419,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -458,19 +458,19 @@ Ressalvas podem virar imprecisão. Os relatórios atualizam seus números todo a
 
 A escrita acadêmica estrutura afirmações, cita com precisão e mantém a evidência separada da opinião.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 40)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX013.
@@ -512,7 +512,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -551,19 +551,19 @@ As táticas evoluem. Na prática, as categorias se sobrepõem.
 
 O letramento em segurança abrange conscientização, táticas e a distância entre saber e fazer.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 40)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX016.
@@ -610,7 +610,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -671,19 +671,19 @@ As rotas reais de reporte são informais. Tempos de ociosidade podem incomodar o
 
 Conjuntos, grafos e lógica expõem as diferenças entre as regras e rotas pretendidas e as reais.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 40)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redes e protocolos
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX019.
@@ -725,7 +725,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -764,19 +764,19 @@ As etiquetas passam a ser ignoradas se tudo for externo. As verificações depen
 
 Os limites dos protocolos deixam o julgamento para as pessoas; por isso, as interfaces precisam apoiá-lo.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 40)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX022.
@@ -818,7 +818,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -887,19 +887,19 @@ Linhas puladas podem enviesar os resultados. As taxas de unidades pequenas são 
 
 Funções, leitura correta de CSV e premissas documentadas tornam as medidas confiáveis.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 40)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados e bancos de dados
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX025.
@@ -946,7 +946,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1006,19 +1006,19 @@ Remover os nomes impede alguns acompanhamentos. Os rótulos de categoria podem s
 
 Tabelas bem desenhadas, consultas simples e dados minimizados sustentam uma análise segura.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue estudando — aula 09 (capítulo 09 de 40)
 
 [← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX028.
@@ -1060,7 +1060,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1099,19 +1099,19 @@ As regras podem ser ignoradas sob pressão. Organizações pequenas podem não t
 
 A prática ética exige consentimento, salvaguardas para o uso de engano e regras de simulação respeitosas.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue estudando — aula 10 (capítulo 10 de 40)
 
 [← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX031.
@@ -1153,7 +1153,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1192,19 +1192,19 @@ Atualizações noturnas falham se os dispositivos estiverem desligados. Remover 
 
 As configurações do sistema operacional podem transferir o esforço de segurança das pessoas para os sistemas.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue estudando — aula 11 (capítulo 11 de 40)
 
 [← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Probabilidade e estatística
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX034.
@@ -1251,7 +1251,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1310,19 +1310,19 @@ Os intervalos supõem respostas independentes. Uma simulação é um retrato ún
 
 As proporções precisam de intervalos, as comparações precisam de cuidado e os grupos pequenos precisam de proteção.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue estudando — aula 12 (capítulo 12 de 40)
 
 [← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX037.
@@ -1364,7 +1364,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1403,19 +1403,19 @@ Chaves podem ser perdidas. Acabar com as trocas forçadas exige detecção de co
 
 A autenticação utilizável combina fatores de formas que convêm à equipe e resistem ao engano.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue estudando — aula 13 (capítulo 13 de 40)
 
 [← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX040.
@@ -1457,7 +1457,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1496,19 +1496,19 @@ Os procedimentos podem atrasar pedidos urgentes legítimos. Agregados ainda pode
 
 A privacidade protege associados e equipe, e os procedimentos tiram a pressão de quem atende no balcão.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue estudando — aula 14 (capítulo 14 de 40)
 
 [← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Evidências e medição
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX043.
@@ -1555,7 +1555,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1608,19 +1608,19 @@ As medidas de resultado podem ser ruidosas. Ataques não reportados são invisí
 
 Medidas de resultado válidas, coletadas com respeito, mostram se um programa ajuda.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue estudando — aula 15 (capítulo 15 de 40)
 
 [← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX046.
@@ -1662,7 +1662,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -1701,19 +1701,19 @@ As camadas acrescentam custo e complexidade. Os alertas precisam de pessoas para
 
 A arquitetura em camadas posiciona as pessoas de forma deliberada e absorve os seus erros inevitáveis.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue estudando — aula 16 (capítulo 16 de 40)
 
 [← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Conceitos de criptografia
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX049.
@@ -1755,7 +1755,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -1794,19 +1794,19 @@ Ferramentas invisíveis podem esconder falhas. A criptografia central exige recu
 
 A criptografia protege melhor quando pede poucas decisões às pessoas.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue estudando — aula 17 (capítulo 17 de 40)
 
 [← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX052.
@@ -1848,7 +1848,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -1887,19 +1887,19 @@ Voluntários podem diferir dos demais. Questionários dependem de autorrelato ho
 
 Perguntas claras, métodos adequados e ética cuidadosa fazem pequenos estudos valerem a pena.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue estudando — aula 18 (capítulo 18 de 40)
 
 [← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Fatores humanos e política cibernética: escopo e teoria
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX055.
@@ -1941,7 +1941,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -1980,19 +1980,19 @@ As teorias se sobrepõem. Os itens do questionário podem não capturar plenamen
 
 A teoria define o que procurar no comportamento de segurança e orienta a medição.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue estudando — aula 19 (capítulo 19 de 40)
 
 [← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Fatores humanos e política cibernética: casos fundamentais
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX058.
@@ -2034,7 +2034,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -2073,19 +2073,19 @@ Casos sintéticos podem deixar de fora detalhes reais. Regras simples têm exce�
 
 Os casos mostram que a engenharia social explora boas intenções e procedimentos ausentes.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue estudando — aula 20 (capítulo 20 de 40)
 
 [← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Fatores humanos e política cibernética: modelos de sistema
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX061.
@@ -2132,7 +2132,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -2192,19 +2192,19 @@ As taxas das etapas são estimativas grosseiras. As etapas interagem.
 
 Um modelo do sistema mostra onde os reportes se perdem e qual etapa melhorar primeiro.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue estudando — aula 21 (capítulo 21 de 40)
 
 [← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Fatores humanos e política cibernética: dados e dependências
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX064.
@@ -2246,7 +2246,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -2285,19 +2285,19 @@ Caixas postais compartilhadas precisam de responsáveis claros. Formulários em 
 
 Processos robustos evitam depender de pessoas únicas e minimizam os dados sensíveis.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue estudando — aula 22 (capítulo 22 de 40)
 
 [← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Fatores humanos e política cibernética: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX067.
@@ -2344,7 +2344,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -2401,19 +2401,19 @@ Viés de resposta no questionário. A codificação continua sendo interpretativ
 
 Os questionários mostram quão comuns são as barreiras, e as entrevistas explicam por que elas importam.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue estudando — aula 23 (capítulo 23 de 40)
 
 [← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Fatores humanos e política cibernética: controles
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX070.
@@ -2455,7 +2455,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -2494,19 +2494,19 @@ As estimativas de ônus podem ser otimistas. Os nudges perdem força com a famil
 
 Controles rastreados até as evidências, incentivados de forma ética e verificados quanto ao ônus têm mais chance de perdurar.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue estudando — aula 24 (capítulo 24 de 40)
 
 [← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratório I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX073.
@@ -2553,7 +2553,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -2607,19 +2607,19 @@ Os voluntários não são típicos. As condições do laboratório diferem das d
 
 Testes de usabilidade contidos mostram o efeito de pequenas mudanças de desenho e os seus limites.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue estudando — aula 25 (capítulo 25 de 40)
 
 [← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Fatores humanos e política cibernética: métodos II
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX076.
@@ -2666,7 +2666,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -2720,19 +2720,19 @@ Grupos não aleatórios podem diferir. Um mês é pouco tempo.
 
 Dados de antes e depois exigem considerar os fatores de confusão e, sempre que possível, grupos de comparação.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue estudando — aula 26 (capítulo 26 de 40)
 
 [← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Fatores humanos e política cibernética: verificação
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX079.
@@ -2774,7 +2774,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -2813,19 +2813,19 @@ As verificações mostram um momento no tempo. Mudanças de layout podem reintro
 
 A verificação confere os controles tanto do lado técnico quanto do lado do usuário e registra as evidências.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue estudando — aula 27 (capítulo 27 de 40)
 
 [← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Fatores humanos e política cibernética: análise de falhas
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX082.
@@ -2872,7 +2872,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -2929,19 +2929,19 @@ As classes de fatores se sobrepõem. Cinco quase incidentes são um conjunto peq
 
 A análise de quase-incidentes sem culpados encontra fatores do sistema e transforma hábitos em regras.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue estudando — aula 28 (capítulo 28 de 40)
 
 [← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Fatores humanos e política cibernética: operações
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX085.
@@ -2983,7 +2983,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -3022,19 +3022,19 @@ Os calendários escorregam sob pressão. Poucas simulações geram dados limitad
 
 Operações sustentáveis usam pequenas rotinas, simulações éticas limitadas e um tratamento ágil do retorno recebido.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue estudando — aula 29 (capítulo 29 de 40)
 
 [← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório II
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX088.
@@ -3081,7 +3081,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -3139,19 +3139,19 @@ Dados observacionais não provam causalidade. Os grupos podem diferir.
 
 A análise observacional, lida com cautela, pode sustentar mudanças baratas baseadas em evidências.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue estudando — aula 30 (capítulo 30 de 40)
 
 [← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Fatores humanos e política cibernética: casos avançados
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX091.
@@ -3193,7 +3193,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem
@@ -3232,19 +3232,19 @@ A proporcionalidade exige julgamento. Modelos abertos carregam risco residual.
 
 Respostas proporcionais ajustam o risco aos papéis e protegem a missão da organização.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Continue estudando — aula 31 (capítulo 31 de 40)
 
 [← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Fatores humanos e política cibernética: interfaces interdisciplinares
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX094.
@@ -3286,7 +3286,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem
@@ -3325,19 +3325,19 @@ A tradução pode simplificar demais. As reuniões podem ser dominadas pelas voz
 
 O trabalho com fatores humanos traduz entre disciplinas e cria entendimento compartilhado.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Continue estudando — aula 32 (capítulo 32 de 40)
 
 [← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de pesquisa II
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX097.
@@ -3379,7 +3379,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem
@@ -3418,19 +3418,19 @@ Comparações entre organizações sofrem com fatores de confusão. As práticas
 
 Estudos comparativos precisam de medidas consistentes, ameaças declaradas abertamente e análise planejada de antemão.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Continue estudando — aula 33 (capítulo 33 de 40)
 
 [← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Projeto comparativo
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX100.
@@ -3477,7 +3477,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem
@@ -3534,19 +3534,19 @@ Seis meses é pouco tempo. As redes enfrentam ataques diferentes.
 
 As comparações devem ser interpretadas com cautela e concluídas com equilíbrio.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Continue estudando — aula 34 (capítulo 34 de 40)
 
 [← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Proposta de trabalho de conclusão
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX103.
@@ -3583,7 +3583,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem
@@ -3622,19 +3622,19 @@ O número de voluntários oscila. Amostras pequenas limitam a avaliação.
 
 Uma proposta de projeto final parte das descobertas, define objetivos mensuráveis e planeja a ética desde cedo.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Continue estudando — aula 35 (capítulo 35 de 40)
 
 [← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Prática de campo ou comunitária
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX106.
@@ -3676,7 +3676,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem
@@ -3715,19 +3715,19 @@ O retorno informal não é representativo. Os voluntários variam em confiança.
 
 A prática comunitária estende as orientações de segurança ao público com respeito e atenção ao medo.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Continue estudando — aula 36 (capítulo 36 de 40)
 
 [← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX109.
@@ -3769,7 +3769,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem
@@ -3808,19 +3808,19 @@ As revisões podem deixar estudos de fora. As perguntas de qualidade são simple
 
 A revisão de evidências pesa a qualidade dos estudos e declara o que se sabe e o que não se sabe.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Continue estudando — aula 37 (capítulo 37 de 40)
 
 [← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Implementação do trabalho de conclusão
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX112.
@@ -3862,7 +3862,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem
@@ -3901,19 +3901,19 @@ Contagens não mostram a leitura. Formulários podem ser mal utilizados.
 
 A implementação constrói, distribui e adapta, com cada mudança registrada.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Continue estudando — aula 38 (capítulo 38 de 40)
 
 [← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Avaliação do trabalho de conclusão
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX115.
@@ -3960,7 +3960,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem
@@ -4020,19 +4020,19 @@ Respondentes diferentes antes e depois. Efeitos sazonais.
 
 As avaliações comparam com critérios, analisam amostras pequenas com cuidado e relatam os limites.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Continue estudando — aula 39 (capítulo 39 de 40)
 
 [← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tese e apresentação
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX118.
@@ -4074,7 +4074,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem
@@ -4113,13 +4113,13 @@ Um único caso limita a generalização. A reflexão pode ser seletiva.
 
 Uma tese conecta perguntas, métodos e descobertas honestas, e a reflexão mostra o crescimento.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Continue estudando — aula 40 (capítulo 40 de 40)
 
 [← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

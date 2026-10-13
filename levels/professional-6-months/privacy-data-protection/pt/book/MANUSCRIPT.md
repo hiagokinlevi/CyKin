@@ -37,7 +37,7 @@ Regulamento (UE) 2016/679 (GDPR), artigos 5, 6(1)(b), 10, 12(3), 14, 15, 32, 33 
 
 ## Capítulo 1 — Fundamentos de segurança para profissionais
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -120,19 +120,19 @@ Listas de verificação do básico não mostram se os controles de fato funciona
 - **EX004 — Cobertura da autenticação multifator.** Que parcela dos consultores tinha autenticação multifator? *Rubrica:* 3 = cerca de metade;; 2 = parcialmente correta;; 1 = todos;; 0 = nenhuma.
 - **EX005 — Lacuna dos notebooks.** O que se descobriu sobre a criptografia dos notebooks? *Rubrica:* 3 = duas máquinas antigas sem criptografia;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 12)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Privacidade e proteção de dados: contexto do serviço e das partes interessadas
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX006.
@@ -174,7 +174,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX006]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -215,19 +215,19 @@ Os papéis dependem dos fatos e dos contratos; registre o raciocínio de cada um
 - **EX009 — Orientação sobre papéis.** Que diretrizes ajudam a definir os papéis? *Rubrica:* 3 = Diretrizes 07/2020 do EDPB;; 2 = parcialmente correta;; 1 = outra;; 0 = nenhuma.
 - **EX010 — Expectativa.** O que os candidatos esperam antes de o currículo ir para um cliente? *Rubrica:* 3 = ser consultados;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 12)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e tratamento de evidências
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX011.
@@ -269,7 +269,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -310,19 +310,19 @@ A autorização pode ser pouco clara em empresas pequenas; peça por escrito ant
 - **EX014 — Benefício da confiança.** Por que o tratamento justo ajuda na prática? *Rubrica:* 3 = as pessoas compartilham problemas mais abertamente;; 2 = menciona abertura;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Diário de decisões.** O que o diário de decisões de Marta registra? *Rubrica:* 3 = pedido, decisão, razão, quem aprovou;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 12)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Privacidade e proteção de dados: métodos centrais
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX016.
@@ -369,7 +369,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -436,19 +436,19 @@ Alguns registros podem ser necessários para ações judiciais; combine as exce�
 - **EX019 — Base do banco de talentos.** Que base legal apoia o banco de talentos? *Rubrica:* 3 = consentimento;; 2 = parcialmente correta;; 1 = contrato;; 0 = nenhuma.
 - **EX020 — Dados criminais.** Que artigo restringe os dados de registros criminais? *Rubrica:* 3 = artigo 10;; 2 = parcialmente correta;; 1 = outro;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 12)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Privacidade e proteção de dados: ferramentas e interpretação
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX021.
@@ -490,7 +490,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -531,19 +531,19 @@ Amostras mostram padrões, não taxas exatas; diga isso.
 - **EX024 — Expressão cuidadosa.** Dê uma expressão que indique incerteza. *Rubrica:* 3 = na amostra; não foi possível confirmar;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX025 — Exagero.** Que palavra a Sra. Lin questionou? *Rubrica:* 3 = rotineiramente;; 2 = parcialmente correta;; 1 = outra;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 12)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Privacidade e proteção de dados: fluxo operacional
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX026.
@@ -590,7 +590,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX026]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -658,19 +658,19 @@ O laboratório simplifica o cálculo do mês; confira os prazos legais caso a ca
 - **EX029 — Conteúdo da resposta.** Cite duas coisas que a resposta deve incluir. *Rubrica:* 3 = finalidades, destinatários, retenção, fonte;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 - **EX030 — Momento da prorrogação.** Quando as prorrogações precisam ser decididas? *Rubrica:* 3 = dentro do primeiro mês;; 2 = parcialmente correta;; 1 = depois;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 12)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Privacidade e proteção de dados: controles e verificação
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX031.
@@ -712,7 +712,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -753,19 +753,19 @@ Um teste aprovado pode esconder lacunas se for estreito demais; varie os casos d
 - **EX034 — Resultado da amostra.** Quantas apresentações da amostra tinham aceite registrado? *Rubrica:* 3 = 10 de 10;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX035 — Registrar as falhas.** Por que registrar as falhas com clareza? *Rubrica:* 3 = ninguém acredita num registro sem problemas;; 2 = menciona credibilidade;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 12)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Privacidade e proteção de dados: análise supervisionada de caso
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX036.
@@ -807,7 +807,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX036]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -848,19 +848,19 @@ A avaliação de risco depende de fatos que podem mudar; atualize-a à medida qu
 - **EX039 — Artigo 34.** Por que uma candidata precisa ser informada diretamente? *Rubrica:* 3 = risco elevado pela informação sobre deficiência;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
 - **EX040 — Sem culpa.** Por que não se recomendou medida disciplinar? *Rubrica:* 3 = a consultora seguia a prática comum;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 12)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatórios
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX041.
@@ -902,7 +902,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -943,19 +943,19 @@ A linguagem simples precisa continuar exata; confira os pontos jurídicos com a 
 - **EX044 — Redação da retenção.** Como o novo aviso informa a retenção? *Rubrica:* 3 = em meses;; 2 = parcialmente correta;; 1 = vaga;; 0 = nenhuma.
 - **EX045 — Teste do aviso.** Como o aviso curto foi testado? *Rubrica:* 3 = com cinco personas sintéticas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue estudando — aula 09 (capítulo 09 de 12)
 
 [← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Privacidade e proteção de dados: qualidade e solução de problemas
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX046.
@@ -997,7 +997,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1038,19 +1038,19 @@ Botões novos podem ser mal usados para guardar dados indefinidamente; examine s
 - **EX049 — Perfis sinalizados.** Como mudaram os perfis sinalizados? *Rubrica:* 3 = de trinta e um para seis;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX050 — Mau uso do botão.** Como o mau uso de marcar como ativo é conferido? *Rubrica:* 3 = amostragem dos perfis prorrogados em busca de motivos;; 2 = menciona amostragem;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue estudando — aula 10 (capítulo 10 de 12)
 
 [← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX051.
@@ -1097,7 +1097,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1168,19 +1168,19 @@ Uma busca por nomes deixa passar identificadores indiretos, como cargos; leia os
 - **EX054 — Nomes da lista de finalistas.** Por que os outros candidatos foram ocultados? *Rubrica:* 3 = são terceiros sem relação com o pedido;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX055 — Ocultação indiscriminada.** Por que evitar a ocultação indiscriminada? *Rubrica:* 3 = torna as respostas inúteis e injustas;; 2 = menciona justiça;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue estudando — aula 11 (capítulo 11 de 12)
 
 [← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX056.
@@ -1222,7 +1222,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX056]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1263,13 +1263,13 @@ Portfólios podem exagerar a contribuição individual; dê o crédito correto a
 - **EX059 — Lacunas restantes.** Cite uma lacuna restante na Halden. *Rubrica:* 3 = contratos de verificação de antecedentes; avisos do artigo 14 da rede profissional;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Próximo cargo.** Que cargo a Halden oferece a Marta? *Rubrica:* 3 = coordenadora de privacidade em meio período;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue estudando — aula 12 (capítulo 12 de 12)
 
 [← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

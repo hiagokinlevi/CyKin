@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 ## Capítulo 1 — Qué son la seguridad de TO, de IoT y de los sistemas ciberfísicos
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -93,7 +93,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -162,7 +162,7 @@ La TO, el IoT y los CPS unen la computación con equipos físicos; en una planta
 
 ## Capítulo 2 — Activos, redes y exposición
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX014.
@@ -219,7 +219,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX014]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -309,7 +309,7 @@ Conozca todos los dispositivos, corrija las contraseñas por defecto y el firmwa
 
 ## Capítulo 3 — Reconocer y notificar problemas
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX027.
@@ -371,7 +371,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -460,7 +460,7 @@ Ponga por escrito lo normal, advierta lo que no encaja, descríbalo con claridad
 
 ## Capítulo 4 — Hábitos seguros, nociones de respuesta y próximos pasos
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX039.
@@ -512,7 +512,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje

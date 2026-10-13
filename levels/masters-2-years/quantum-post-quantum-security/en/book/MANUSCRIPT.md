@@ -35,7 +35,7 @@ The question is grounded in public experience: when Chrome began offering a hybr
 
 ## Chapter 1 — Research question and literature method
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -87,7 +87,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -156,7 +156,7 @@ A researchable question separates intervention, outcome, population and cause, r
 
 ## Chapter 2 — Quantum and post-quantum security: advanced seminar
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -208,7 +208,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -273,7 +273,7 @@ Key establishment migrates first because recorded traffic can be decrypted later
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX014.
@@ -330,7 +330,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX014]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -438,7 +438,7 @@ A staggered-rollout quasi-experiment plus a testbed replication, with pre-define
 
 ## Chapter 4 — Quantum and post-quantum security: competing explanations
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX020.
@@ -490,7 +490,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX020]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -576,7 +576,7 @@ An effect has rivals; each rival predicts a fingerprint; stratification and test
 
 ## Chapter 5 — Proposal and pilot
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX026.
@@ -623,7 +623,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -682,7 +682,7 @@ A proposal turns rivals into falsifiable hypotheses with a decisive mechanism te
 
 ## Chapter 6 — Data collection and analysis
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX034.
@@ -739,7 +739,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -826,7 +826,7 @@ Frozen scripts, double coding with κ, a difference-in-differences estimate by p
 
 ## Chapter 7 — Dissertation writing and limitations
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX038.
@@ -878,7 +878,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX038]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -945,7 +945,7 @@ A dissertation answers its question chapter by chapter, separates estimates from
 
 ## Chapter 8 — Independent review and defense
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX044.
@@ -997,7 +997,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX044]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection

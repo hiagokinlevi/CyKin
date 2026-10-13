@@ -1,5 +1,5 @@
 ---
-name: cyberabc-quantum-post-quantum-security-postgraduate-751701c4
+name: cykin-quantum-post-quantum-security-postgraduate-751701c4
 description: "Guide an experienced specialist through the postgraduate course in Quantum and post-quantum security: its one authored draft book of 12 chapters on organization-scale decisions, evidence, evaluation, integration and assurance of post-quantum migration, with labs and exercises EX001–EX060 with worked results."
 license: CC0-1.0
 ---

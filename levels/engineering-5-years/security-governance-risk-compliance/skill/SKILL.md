@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-governance-risk-compl-engineering-78b8a8ad
+name: cykin-security-governance-risk-compl-engineering-78b8a8ad
 description: "Guide a learner through the GRC Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---

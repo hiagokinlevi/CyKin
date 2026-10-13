@@ -1,5 +1,5 @@
 ---
-name: cyberabc-identity-access-masters-e85fce15
+name: cykin-identity-access-masters-e85fce15
 description: "IAM Master's Research Track (8 ch / 50 ex)"
 license: CC0-1.0
 ---

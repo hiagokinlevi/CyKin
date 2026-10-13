@@ -33,7 +33,7 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -75,7 +75,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -116,7 +116,7 @@ Um limite de taxa e um limite de volume são a derivada e a integral da mesma cu
 
 ## Capítulo 2 — Matemática discreta
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX004.
@@ -158,7 +158,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -247,7 +247,7 @@ Trate o escopo como um predicado sobre um conjunto contável. Assim ele pode ser
 
 ## Capítulo 3 — Física para computação
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX007.
@@ -289,7 +289,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -334,7 +334,7 @@ A física define pisos e orçamentos. Usá-los pega evidências impossíveis e m
 
 ## Capítulo 4 — Programação I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX010.
@@ -371,7 +371,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -426,7 +426,7 @@ Funções puras pequenas, tipos de dados exatos e testes escritos sobre dados si
 
 ## Capítulo 5 — Comunicação de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX013.
@@ -468,7 +468,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -546,7 +546,7 @@ Um bom achado é específico, verificável e seguro para circular. Escrevê-lo a
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX016.
@@ -593,7 +593,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -667,7 +667,7 @@ Séries e taxas transformam "tente de novo" e "contrate alguém" em números que
 
 ## Capítulo 7 — Probabilidade e estatística
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX019.
@@ -714,7 +714,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -830,7 +830,7 @@ A estatística é a linguagem para não exagerar nas alegações. Taxas com inte
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX022.
@@ -877,7 +877,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -924,7 +924,7 @@ Diga qual privilégio você usou. Prefira evidências de nível de usuário. Tra
 
 ## Capítulo 9 — Programação II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX025.
@@ -976,7 +976,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1059,7 +1059,7 @@ Esquemas, idempotência e propriedades tornam o software de avaliação entedian
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX028.
@@ -1106,7 +1106,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1195,7 +1195,7 @@ Permissão por escrito, condições de parada e o hábito de recusar são engenh
 
 ## Capítulo 11 — Redes e protocolos
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX031.
@@ -1247,7 +1247,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1327,7 +1327,7 @@ As redes dão a você um ponto de observação e um conjunto de portas. Delimite
 
 ## Capítulo 12 — Sistemas operacionais
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX034.
@@ -1379,7 +1379,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1430,7 +1430,7 @@ Leia a configuração com uma conta temporária; nomeie o repositório de identi
 
 ## Capítulo 13 — Sistemas de dados
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX037.
@@ -1482,7 +1482,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1533,7 +1533,7 @@ Minimize os dados, teste os papéis, sintetize para ensinar. O banco de dados n�
 
 ## Capítulo 14 — Engenharia de software
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX040.
@@ -1590,7 +1590,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1645,7 +1645,7 @@ Trate o software de avaliação como software de produção: versões, bloqueios
 
 ## Capítulo 15 — Fundamentos de segurança
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX043.
@@ -1697,7 +1697,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1748,7 +1748,7 @@ Nomeie a propriedade, separe exposição de risco e prefira medidas que você co
 
 ## Capítulo 16 — Engenharia de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX046.
@@ -1805,7 +1805,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -1860,7 +1860,7 @@ Requisitos que você consegue testar, vínculos que você consegue seguir, esque
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX049.
@@ -1917,7 +1917,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -1972,7 +1972,7 @@ Medir, comparar, agir — com pessoas na autorização e máquinas na imposiçã
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX052.
@@ -2029,7 +2029,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -2084,7 +2084,7 @@ Zonas, fronteiras e limites honestos sobre o que um ambiente de teste consegue p
 
 ## Capítulo 19 — Identidade e criptografia
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX055.
@@ -2141,7 +2141,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -2229,7 +2229,7 @@ Leia a configuração de identidade; calcule o hash das evidências; mantenha os
 
 ## Capítulo 20 — Segurança ofensiva autorizada e red team: contexto de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX058.
@@ -2286,7 +2286,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -2341,7 +2341,7 @@ Os engenheiros viabilizam a avaliação autorizada; não substituem a autorizaç
 
 ## Capítulo 21 — Segurança ofensiva autorizada e red team: requisitos
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX061.
@@ -2398,7 +2398,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -2453,7 +2453,7 @@ Os requisitos vêm das pessoas, se dividem em famílias e são entregues com tes
 
 ## Capítulo 22 — Segurança ofensiva autorizada e red team: modelos de sistema e de dados
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX064.
@@ -2505,7 +2505,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -2560,7 +2560,7 @@ Modele engajamentos, versões, achados e hashes — não ataques.
 
 ## Capítulo 23 — Segurança ofensiva autorizada e red team: análise de ameaças e falhas
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX067.
@@ -2622,7 +2622,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -2681,7 +2681,7 @@ Analise como sua plataforma pode prejudicar o cliente ou mentir; mitigue isso pr
 
 ## Capítulo 24 — Segurança ofensiva autorizada e red team: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX070.
@@ -2743,7 +2743,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -2843,7 +2843,7 @@ Os métodos são autorizados, descritos em cartões e ficam prontos quando os ar
 
 ## Capítulo 25 — Ateliê de design I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX073.
@@ -2905,7 +2905,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -2964,7 +2964,7 @@ O trabalho de ateliê termina numa decisão registrada, não numa impressão.
 
 ## Capítulo 26 — Segurança ofensiva autorizada e red team: alternativas de arquitetura
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX076.
@@ -3026,7 +3026,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -3087,7 +3087,7 @@ Escolha a arquitetura frente a restrições ponderadas; registre as opções rej
 
 ## Capítulo 27 — Segurança ofensiva autorizada e red team: desenho de controles
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX079.
@@ -3149,7 +3149,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -3250,7 +3250,7 @@ Os controles são preventivos/detectivos/corretivos, têm dono e são operáveis
 
 ## Capítulo 28 — Segurança ofensiva autorizada e red team: implementação I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX082.
@@ -3312,7 +3312,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -3421,7 +3421,7 @@ Predicado puro, testes por cláusula, logs seguros.
 
 ## Capítulo 29 — Segurança ofensiva autorizada e red team: medição
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX085.
@@ -3483,7 +3483,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -3579,7 +3579,7 @@ Planeje o denominador; meça resultados; prefira subestimar.
 
 ## Capítulo 30 — Laboratório de verificação I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX088.
@@ -3641,7 +3641,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -3747,7 +3747,7 @@ Verifique a segurança primeiro; pare na falha aberta; faça hash de tudo.
 
 ## Capítulo 31 — Segurança ofensiva autorizada e red team: implementação II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX091.
@@ -3809,7 +3809,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem
@@ -3909,7 +3909,7 @@ Escritas idempotentes, esquema estrito, versões explícitas.
 
 ## Capítulo 32 — Segurança ofensiva autorizada e red team: confiabilidade
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX094.
@@ -3971,7 +3971,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem
@@ -4062,7 +4062,7 @@ Negações confiáveis, novas tentativas com orçamento, degradação fechada.
 
 ## Capítulo 33 — Segurança ofensiva autorizada e red team: segurança e resiliência
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX097.
@@ -4124,7 +4124,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem
@@ -4188,7 +4188,7 @@ Paradas que você consegue executar, rollbacks que você consegue fazer, exercí
 
 ## Capítulo 34 — Segurança ofensiva autorizada e red team: integração
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX100.
@@ -4250,7 +4250,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem
@@ -4322,7 +4322,7 @@ Contratos, consumidores idempotentes, testes com fixtures.
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX103.
@@ -4384,7 +4384,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem
@@ -4448,7 +4448,7 @@ Uma interface que ensina a métrica, não um semáforo de impressões.
 
 ## Capítulo 36 — Segurança ofensiva autorizada e red team: desempenho e escala
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX106.
@@ -4510,7 +4510,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem
@@ -4607,7 +4607,7 @@ Bucket primeiro, escala depois, canário sempre.
 
 ## Capítulo 37 — Segurança ofensiva autorizada e red team: operações
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX109.
@@ -4669,7 +4669,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem
@@ -4775,7 +4775,7 @@ Opere com runbooks, passagens de turno e um encerramento implacável.
 
 ## Capítulo 38 — Segurança ofensiva autorizada e red team: validação
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX112.
@@ -4837,7 +4837,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem
@@ -4905,7 +4905,7 @@ Valide de forma estreita; guarde os negativos; não amplie os métodos.
 
 ## Capítulo 39 — Segurança ofensiva autorizada e red team: manutenibilidade
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX115.
@@ -4967,7 +4967,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem
@@ -5047,7 +5047,7 @@ Fixações, adaptadores e donos nomeados mantêm as ferramentas vivas com segura
 
 ## Capítulo 40 — Laboratório de verificação II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX118.
@@ -5109,7 +5109,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem
@@ -5218,7 +5218,7 @@ Ponta a ponta com falhas; segurança verde; duas assinaturas.
 
 ## Capítulo 41 — Segurança ofensiva autorizada e red team: otimização do sistema
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Mapa da aula
 
 Aula 41 publicada. Mapa, exemplo, EX121.
@@ -5280,7 +5280,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX121]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Objetivos de aprendizagem
@@ -5381,7 +5381,7 @@ Velocidade sob restrições; a segurança tem poder de veto.
 
 ## Capítulo 42 — Segurança ofensiva autorizada e red team: pesquisa aplicada
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Mapa da aula
 
 Aula 42 publicada. Mapa, exemplo, EX124.
@@ -5443,7 +5443,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX124]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Objetivos de aprendizagem
@@ -5515,7 +5515,7 @@ Pesquise a plataforma e o processo; deixe a transformação em arma de lado.
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Mapa da aula
 
 Aula 43 publicada. Mapa, exemplo, EX127.
@@ -5577,7 +5577,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX127]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Objetivos de aprendizagem
@@ -5649,7 +5649,7 @@ Prática é restrições reais mais artefatos de aprendizagem sanitizados.
 
 ## Capítulo 44 — Projeto final de engenharia I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Mapa da aula
 
 Aula 44 publicada. Mapa, exemplo, EX130.
@@ -5711,7 +5711,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX130]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Objetivos de aprendizagem
@@ -5787,7 +5787,7 @@ Entregue valor de plataforma relevante para a segurança; congele os não objeti
 
 ## Capítulo 45 — Revisão independente de projeto
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Mapa da aula
 
 Aula 45 publicada. Mapa, exemplo, EX133.
@@ -5849,7 +5849,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX133]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Objetivos de aprendizagem
@@ -5929,7 +5929,7 @@ Revisões que podem dizer não, com uma lista de verificação e uma memória.
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Mapa da aula
 
 Aula 46 publicada. Mapa, exemplo, EX136.
@@ -5991,7 +5991,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX136]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Objetivos de aprendizagem
@@ -6112,7 +6112,7 @@ Congele, verifique, documente — então, e só então, opere.
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Mapa da aula
 
 Aula 47 publicada. Mapa, exemplo, EX139.
@@ -6174,7 +6174,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX139]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Objetivos de aprendizagem
@@ -6287,7 +6287,7 @@ Quebre de propósito; meça; abra tickets para as lacunas.
 
 ## Capítulo 48 — Dossiê de evidências
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Mapa da aula
 
 Aula 48 publicada. Mapa, exemplo, EX142.
@@ -6349,7 +6349,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX142]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Objetivos de aprendizagem
@@ -6458,7 +6458,7 @@ Dossiês são verificáveis, classificados e enfadonhamente seguros.
 
 ## Capítulo 49 — Tese de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Mapa da aula
 
 Aula 49 publicada. Mapa, exemplo, EX145.
@@ -6520,7 +6520,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX145]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Objetivos de aprendizagem
@@ -6604,7 +6604,7 @@ Uma afirmação, limites honestos, citações reais.
 
 ## Capítulo 50 — Defesa final
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Mapa da aula
 
 Aula 50 publicada. Mapa, exemplo, EX148.
@@ -6666,7 +6666,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX148]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Objetivos de aprendizagem

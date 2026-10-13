@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-architecture-professional-7f8ef4cf
+name: cykin-security-architecture-professional-7f8ef4cf
 description: "Guide a learner through the ARCH Professional Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

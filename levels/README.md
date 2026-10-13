@@ -2,7 +2,7 @@
 
 Choose a level first. Each level contains the same 23 academic areas; each area folder is one course with a single course skill and nine planned language editions of its principal book. A plan is not a completed book.
 
-[CyberABC home](../README.md) · [Sequential study path](../STUDY_PATH.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
+[CyKin home](../README.md) · [Sequential study path](../STUDY_PATH.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
 
 | Level | Duration | Subjects / book | Courses |
 |---|---:|---:|---:|

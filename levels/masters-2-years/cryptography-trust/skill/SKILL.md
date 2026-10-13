@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cryptography-trust-masters-b74713d6
+name: cykin-cryptography-trust-masters-b74713d6
 description: "Guide a learner through the master's course in Cryptography and trust services: a synthetic study of TLS certificate expiry and ACME renewal, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---

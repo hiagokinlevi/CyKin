@@ -1,5 +1,5 @@
 ---
-name: cyberabc-incident-response-resilience-masters-306012c5
+name: cykin-incident-response-resilience-masters-306012c5
 description: "Tutor the master's Incident Response draft: eight applied-research chapters following the synthetic Triage Rubric Study (crossover tabletop), eight offline stdlib labs and EX001–EX050 with worked results; keep claims inside the evidence."
 license: CC0-1.0
 ---

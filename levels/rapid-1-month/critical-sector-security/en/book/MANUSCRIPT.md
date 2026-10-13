@@ -58,7 +58,7 @@ Every factual statement about a public framework, law, guidance or incident link
 
 ## Chapter 1 — Critical infrastructure and sector security: foundations and decisions
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -120,7 +120,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -258,19 +258,19 @@ Swap pages with a classmate who chose a different service and check each other's
 
 Critical infrastructure delivers functions people cannot do without, and its security is judged by consequence: safety first, then continuity, trustworthiness and confidentiality. Real incidents show that computer problems reach patients, homes and streets, and that simple weaknesses are often enough. A newcomer's tools are a clear risk sentence, an honest mark on what is assumed, and three decisions: notice, report, leave the fix to the owner.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 04
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX014.
@@ -332,7 +332,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX014]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -481,19 +481,19 @@ Keep the boundary card somewhere you will see it, and compare it with a classmat
 
 Permission comes from the system's owner, is specific and is normally written; access and good intentions are not permission. In essential services, "just checking" can disrupt real processes, so a newcomer's safe actions are to use what they were given, notice, report fast and honestly through a known channel, and share carefully using labels such as TLP. Skills are built in synthetic and study environments, never on live services.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 04
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Critical infrastructure and sector security: systems, data and dependencies
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX027.
@@ -555,7 +555,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -707,19 +707,19 @@ Compare your sketch with Sam's clinic dependency table: did you remember people 
 
 An essential service is people, IT, operational technology, data and suppliers working together. OT senses and controls the physical world, must run continuously and can cause physical harm when it fails, which is why a wrong reading may be worse than a stolen one. Services depend upstream, serve people downstream and share dependencies with each other; single points of failure and backups that have their own dependencies are where trouble hides. A newcomer's dependency list is a set of good questions for the owner.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 04
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Critical infrastructure and sector security: guided lab and applied synthesis
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX050.
@@ -781,7 +781,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX050]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -972,13 +972,13 @@ A card scoring 12 or more of 15, with no zero, meets the course standard.
 
 Failures in critical infrastructure cascade along dependencies, and backups protect only the dependency they replace — and only while their own dependencies hold. A small, synthetic model makes cascades visible and, more importantly, produces good questions; it never replaces the owner's knowledge. The service card brings the course together in one honest page: function, consequence order, dependencies, risk sentences, assumptions and what you did not do.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 04
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

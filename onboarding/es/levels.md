@@ -2,7 +2,7 @@
 
 Elija uno de los nueve niveles. La sección muestra los 23 temas en orden curricular; comience por el primer curso y siga la guía hasta el siguiente.
 
-[Inicio de CyberABC](../../README.md) · [Elegir por tema](themes.md)
+[Inicio de CyKin](../../README.md) · [Elegir por tema](themes.md)
 
 La guía de cada curso enumera todos los capítulos en orden. Un capítulo del manuscrito ya se puede leer; un plan es solo un resumen, no una lección. La cantidad de capítulos en el manuscrito no certifica que el libro esté terminado. Deténgase en la primera lección obligatoria aún no escrita.
 

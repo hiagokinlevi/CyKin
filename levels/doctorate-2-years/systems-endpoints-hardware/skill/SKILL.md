@@ -1,5 +1,5 @@
 ---
-name: cyberabc-systems-endpoints-hardware-doctorate-ff59794a
+name: cykin-systems-endpoints-hardware-doctorate-ff59794a
 description: "SYS Doctoral Research Track (8 ch / 50 ex)"
 license: CC0-1.0
 ---

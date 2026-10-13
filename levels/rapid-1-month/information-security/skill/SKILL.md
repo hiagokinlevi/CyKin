@@ -1,5 +1,5 @@
 ---
-name: cyberabc-information-security-rapid-abf87bd0
+name: cykin-information-security-rapid-abf87bd0
 description: "Guide a learner through the information security Rapid Course draft: 4 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

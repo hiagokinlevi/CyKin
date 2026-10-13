@@ -1,5 +1,5 @@
 ---
-name: cyberabc-offensive-security-red-team-technical-18f4c348
+name: cykin-offensive-security-red-team-technical-18f4c348
 description: "Tutor the eighteen-chapter technical authorized offensive security and red team course from its hand-written English draft: synthetic Northline Municipal Transit, labs in chapters 2, 5 and 11, EX001–EX072; enforce authorization and no-exploit boundaries."
 license: CC0-1.0
 ---

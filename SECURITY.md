@@ -2,7 +2,7 @@
 
 ## Scope
 
-This repository is the root index for the CyberABC portfolio. If you find a security vulnerability in a linked project repository, please report it via that repository's GitHub Security Advisory.
+This repository is the root index for the CyKin portfolio. If you find a security vulnerability in a linked project repository, please report it via that repository's GitHub Security Advisory.
 
 ## Responsible Use
 
@@ -10,7 +10,7 @@ All tools in this portfolio are for authorized, defensive use only. Misuse is a 
 
 ## Reporting
 
-To report a vulnerability in any CyberABC repository:
+To report a vulnerability in any CyKin repository:
 1. Go to the relevant repository on GitHub
 2. Navigate to Security → Report a vulnerability
 3. Provide a clear description and reproduction steps

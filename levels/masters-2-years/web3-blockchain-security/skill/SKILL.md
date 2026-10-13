@@ -1,5 +1,5 @@
 ---
-name: cyberabc-web3-blockchain-security-masters-53f610bd
+name: cykin-web3-blockchain-security-masters-53f610bd
 description: "WEB3 Master's Research Track (8 ch / 50 ex)"
 license: CC0-1.0
 ---

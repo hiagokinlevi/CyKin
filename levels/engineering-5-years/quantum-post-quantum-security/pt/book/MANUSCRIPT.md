@@ -80,7 +80,7 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -122,7 +122,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -200,19 +200,19 @@ Cada erro leva a uma decisão errada. Tratar Grover como fatal manda orçamento 
 
 As taxas de crescimento decidem tudo: Shor torna polinomiais a fatoração e os logaritmos discretos; Grover apenas tira a raiz quadrada da busca. Bits de segurança são logaritmos do trabalho, e os limites assintóticos precisam de estimativas de recursos antes de significarem tempo.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 50
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX003.
@@ -259,7 +259,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX003]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -337,19 +337,19 @@ Uma troca de sinal esquecida produz saídas que parecem plausíveis, mas falham 
 
 A criptografia de chave pública tradicional esconde um período que o algoritmo de Shor encontra; os esquemas de reticulados calculam num anel de polinômios e escondem os segredos sob ruído; os esquemas baseados em hash dependem apenas das propriedades do hash.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 50
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX005.
@@ -391,7 +391,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX005]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -441,19 +441,19 @@ A superposição não permite que um computador quântico leia todas as resposta
 
 Os algoritmos quânticos exploram a interferência para problemas especiais; a correção de erros torna enormes as máquinas úteis; os anúncios precisam ser traduzidos em recursos lógicos; a QKD não é o caminho da migração.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 50
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX007.
@@ -505,7 +505,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -565,19 +565,19 @@ Cada erro já causou falhas reais. Números aleatórios previsíveis expuseram c
 
 O código criptográfico é exato em bytes, usa aleatoriedade segura, compara segredos em tempo constante e é testado contra respostas conhecidas; os engenheiros compõem primitivas verificadas em vez de inventá-las.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 50
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX009.
@@ -624,7 +624,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX009]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -676,19 +676,19 @@ Uma única data convida à discussão sobre a data em vez da decisão, e fica er
 
 Uma boa comunicação de engenharia rotula fatos, pressupostos, estimativas e recomendações, expressa os prazos como faixas, dá aos diagramas alternativas em texto e ordena os mesmos fatos para cada público.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 50
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX011.
@@ -735,7 +735,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -787,19 +787,19 @@ As taxas de crescimento são pressupostos; uma taxa de 20% pode cair se um servi
 
 O cálculo transforma o momento da migração em exposição: sob crescimento, o atraso custa mais que linearmente; a escolha de parâmetros é otimização com restrições sobre conjuntos de parâmetros publicados.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 50
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX013.
@@ -846,7 +846,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -919,19 +919,19 @@ O primeiro erro leva as equipes a declarar sucesso após um piloto pequeno, como
 
 Eventos raros se tornam comuns em escala; os testes limitam taxas, mas não estabelecem segurança criptográfica; informe intervalos e dimensione as amostras para a decisão a tomar.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 50
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX015.
@@ -978,7 +978,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1032,19 +1032,19 @@ Os benchmarks em servidores escondem os limites de memória que decidem o que ca
 
 A arquitetura determina velocidade, adequação à memória e vazamento: os esquemas de reticulados são rápidos com unidades vetoriais, o código em tempo constante é obrigatório, os dispositivos restritos moldam a escolha do algoritmo e os ciclos dos HSMs moldam os cronogramas.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 50
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX017.
@@ -1096,7 +1096,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1154,19 +1154,19 @@ As interfaces também precisam de identificadores de algoritmo versionados que v
 
 Algoritmos substituíveis começam no código: interfaces, identificadores escolhidos pela política, validação estrita, testes de propriedade e negativos e um acompanhamento de dependências que distingue rascunho de final.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 50
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança operacional em engenharia
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX019.
@@ -1208,7 +1208,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1262,19 +1262,19 @@ Adiar parece seguro porque ninguém é prejudicado neste ano, mas o tráfego adu
 
 A engenharia ética de PQC protege dados de vida longa em nome de pessoas que não conseguem ver o risco, comunica com honestidade, trata disponibilidade e segurança operacional como parte da segurança e rejeita criptografia não verificada.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 50
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX021.
@@ -1321,7 +1321,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1373,19 +1373,19 @@ A troca de chaves híbrida protege o tráfego gravado, mas deixa a autenticaçã
 
 A troca de chaves híbrida muda o tamanho das mensagens, que redes e middleboxes podem tratar mal; cada protocolo tem a sua própria forma de migração, e o obstáculo muitas vezes é a ossificação, não a criptografia.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 50
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX023.
@@ -1432,7 +1432,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX023]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1486,19 +1486,19 @@ O exemplo resolvido mostrou uma mudança de política alcançando apenas um de q
 
 A criptografia mora em muitos provedores num mesmo host; as políticas do sistema ajudam, mas não cobrem o código embutido; as cadeias de inicialização de vida longa precisam de migração precoce; as chaves precisam de armazenamento protegido e boa entropia.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 50
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de dados
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX025.
@@ -1545,7 +1545,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1599,19 +1599,19 @@ O AES-256 já resiste a Grover na prática, então substituí-lo gasta dinheiro 
 
 O risco quântico para os dados armazenados vem pela troca e pelo encapsulamento de chaves, não pelo AES; classifique os dados pelo tempo de vida e depois corrija os enlaces de replicação, as exportações e os encapsulamentos.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue estudando — capítulo 13 de 50
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX027.
@@ -1663,7 +1663,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1721,19 +1721,19 @@ Trate o CBOM como um artefato vivo, de propriedade de uma equipe nomeada, gerado
 
 Trate a migração como engenharia de software: mudanças revisadas, flags, canários, reversão e um CBOM mantido automaticamente.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 50
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de segurança
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX029.
@@ -1780,7 +1780,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1834,19 +1834,19 @@ Tratar a PQC apenas como um problema de confidencialidade deixa os conhecimentos
 
 A migração toca confidencialidade, integridade e disponibilidade; as categorias ligam a força da PQC a referências simétricas; a urgência difere conforme o modelo de ataque; os híbridos e a agilidade dão profundidade.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue estudando — capítulo 15 de 50
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX031.
@@ -1898,7 +1898,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -1956,19 +1956,19 @@ A engenharia de sistemas também pergunta quando parar. Uma migração tem um cr
 
 A migração é um problema de sistemas dominado por interfaces e parceiros; estudos de compromisso com pesos prévios e um planejamento precoce de V&V mantêm as decisões defensáveis.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue estudando — capítulo 16 de 50
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX033.
@@ -2020,7 +2020,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -2078,19 +2078,19 @@ O atraso de medição importa neste laço. A telemetria passiva pode ficar um di
 
 Uma migração é um processo controlado: meça os resultados negociados, combine indicadores antecedentes e consequentes, amorteça as correções e use portões com histerese.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue estudando — capítulo 17 de 50
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX035.
@@ -2142,7 +2142,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX035]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -2200,19 +2200,19 @@ As fronteiras de confiança também existem no tempo. Um documento assinado hoje
 
 A arquitetura associa as fronteiras de confiança às funções criptográficas, centraliza os serviços para tornar a migração tratável e codifica a agilidade na política, nos protocolos, nos ciclos de vida e no inventário.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 50
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX037.
@@ -2259,7 +2259,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -2345,19 +2345,19 @@ Restaurar um servidor de assinatura a partir de um backup pode reiniciar o conta
 
 As assinaturas e a PKI carregam confiança de vida longa; os esquemas baseados em hash são conservadores e ou têm estado ou são grandes; o ML-DSA é a escolha de uso geral; as raízes precisam migrar primeiro.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue estudando — capítulo 19 de 50
 
 [← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Segurança quântica e pós-quântica: contexto de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX039.
@@ -2404,7 +2404,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -2456,19 +2456,19 @@ A migração que começa pelo simétrico gasta esforço onde Grover tem pouco ef
 
 Os computadores quânticos ameaçam a criptografia de chave pública; a desigualdade de Mosca ordena o trabalho; existem normas para KEMs e assinaturas, e outras estão a caminho; a migração é um programa de vários anos.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 50
 
 [← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Segurança quântica e pós-quântica: requisitos
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX041.
@@ -2515,7 +2515,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -2573,19 +2573,19 @@ Nomear um produto prende a BPA a um fornecedor e nada diz sobre a propriedade ne
 
 Os requisitos de PQC são específicos, verificáveis e rastreados até os tempos de vida dos dados, as políticas e as restrições, e incluem agilidade, inventário e disponibilidade, não apenas algoritmos.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue estudando — capítulo 21 de 50
 
 [← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Segurança quântica e pós-quântica: modelos de sistema e de dados
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX043.
@@ -2637,7 +2637,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -2695,19 +2695,19 @@ Os modelos também precisam registrar o tempo. Um fluxo observado uma vez há de
 
 Modelos de ativos e fluxos anotados com funções criptográficas e tempos de vida dos dados transformam as perguntas da migração em consultas; o modelo do CBOM precisa registrar as fontes de evidência e os desconhecidos.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue estudando — capítulo 22 de 50
 
 [← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Segurança quântica e pós-quântica: análise de ameaças e de falhas
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX045.
@@ -2754,7 +2754,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -2808,19 +2808,19 @@ Por fim, ordene as ameaças pelo momento em que podem se concretizar. O "colete 
 
 A análise de ameaças na era quântica inclui gravação, falsificação futura, rebaixamento, ataques de implementação e surpresa criptoanalítica; a própria migração tem modos de falha que a FMEA torna visíveis.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue estudando — capítulo 23 de 50
 
 [← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Segurança quântica e pós-quântica: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX047.
@@ -2862,7 +2862,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX047]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -2943,19 +2943,19 @@ O Laboratório W mostra o primeiro ponto diretamente: retire os erros e o segred
 
 O LWE esconde segredos sob ruído; um brinquedo mostra a decifração como arredondamento; o ML-KEM acrescenta estrutura de anel/módulo, compressão e a transformação FO para a segurança contra texto cifrado escolhido.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue estudando — capítulo 24 de 50
 
 [← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX049.
@@ -3007,7 +3007,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -3057,19 +3057,19 @@ Os ateliês também treinam o hábito de anotar o que o projeto não faz. A solu
 
 Um ateliê de projeto transforma normas num projeto configurado, medido e escalonado, cujas lacunas estão declaradas e cujos críticos foram respondidos.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue estudando — capítulo 25 de 50
 
 [← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Segurança quântica e pós-quântica: alternativas de arquitetura
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX051.
@@ -3116,7 +3116,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -3176,19 +3176,19 @@ Uma arquitetura única falha porque os contextos diferem: um controlador de guin
 
 As alternativas de arquitetura diferem conforme o contexto: os híbridos protegem contra surpresas, a PQC pura simplifica, as PSKs fazem a ponte e as estratégias de certificados trocam compatibilidade por garantia.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue estudando — capítulo 26 de 50
 
 [← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Segurança quântica e pós-quântica: projeto de controles
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX053.
@@ -3240,7 +3240,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -3321,19 +3321,19 @@ XOR e truncamento parecem inofensivos, mas descartam o vínculo com o contexto e
 
 A segurança dos híbridos depende de controles: combinadores padronizados com vínculo ao contexto, negociação autenticada sem fallback silencioso, gestão do ciclo de vida dos novos tipos de chave e listas de permissões datadas.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue estudando — capítulo 27 de 50
 
 [← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Segurança quântica e pós-quântica: implementação I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX055.
@@ -3385,7 +3385,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -3443,19 +3443,19 @@ Planeje os formatos de chaves e certificados pensando na migração. Guarde as c
 
 Implemente a PQC por meio de provedores verificados e validados, identificadores e codificações exatos e uma gestão rigorosa do estado nas assinaturas com estado.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue estudando — capítulo 28 de 50
 
 [← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Segurança quântica e pós-quântica: medição
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX057.
@@ -3507,7 +3507,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -3593,19 +3593,19 @@ Apresente as medições com os seus pontos cegos. Os sensores passivos no TLS 1.
 
 Medir significa um CBOM de várias fontes, métricas do negociado e não do configurado, desconhecidos explícitos e definições que resistem à manipulação.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue estudando — capítulo 29 de 50
 
 [← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX059.
@@ -3657,7 +3657,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX059]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -3746,19 +3746,19 @@ As evidências de verificação devem poder ser reproduzidas por outra pessoa. G
 
 A verificação combina testes de resposta conhecida, testes negativos e interoperabilidade entre implementações, tudo registrado como evidência rastreada até os requisitos.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 50
 
 [← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Segurança quântica e pós-quântica: implementação II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX061.
@@ -3805,7 +3805,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem
@@ -3859,19 +3859,19 @@ Os compiladores otimizam para velocidade e podem introduzir desvios ou consultas
 
 A segurança da implementação em PQC significa aritmética e comparações de tempo constante, resistência a falhas onde os atacantes têm acesso físico e cuidado no tratamento da aleatoriedade e das sementes.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Continue estudando — capítulo 31 de 50
 
 [← Capítulo 30](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Segurança quântica e pós-quântica: confiabilidade
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX063.
@@ -3923,7 +3923,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX063]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem
@@ -3981,19 +3981,19 @@ As revisões de confiabilidade também devem cobrir relógios e expirações. Ce
 
 A engenharia de confiabilidade em PQC antecipa falhas de tamanho e de caminhos de código, projeta um fallback registrado, com expiração e seguro quanto à autenticação, dimensiona as chaves com estado com margem e monitora os resultados negociados.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Continue estudando — capítulo 32 de 50
 
 [← Capítulo 31](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Segurança quântica e pós-quântica: segurança operacional e resiliência
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX065.
@@ -4040,7 +4040,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX065]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem
@@ -4094,19 +4094,19 @@ Implantar uma mudança de assinatura de firmware nos guindastes sem uma unidade 
 
 A segurança física e a resiliência exigem implantações em anéis com reversão, planos de incidente que incluam quebras de algoritmo e âncoras de confiança capazes de aceitar mais de um algoritmo.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Continue estudando — capítulo 33 de 50
 
 [← Capítulo 32](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Segurança quântica e pós-quântica: integração
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX067.
@@ -4158,7 +4158,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem
@@ -4224,19 +4224,19 @@ Reagendar custa alguns dias; forçar um enlace que falhou custa a confiança do 
 
 A integração abrange protocolos, PKI, assinaturas e documentos; os parceiros precisam de avisos e ambientes de testes; o sequenciamento segue as dependências; os testes de ponta a ponta detectam incompatibilidades de interface.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Continue estudando — capítulo 34 de 50
 
 [← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX069.
@@ -4283,7 +4283,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX069]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem
@@ -4329,19 +4329,19 @@ A validação de longo prazo merece um teste próprio. Simule a verificação de
 
 A autenticação de vida longa precisa de diversidade de algoritmos, carimbos de tempo com renovação e escolhas de assinatura adequadas às restrições dos dispositivos e à capacidade de gerenciamento de estado.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Continue estudando — capítulo 35 de 50
 
 [← Capítulo 34](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Segurança quântica e pós-quântica: desempenho e escala
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX071.
@@ -4393,7 +4393,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX071]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem
@@ -4474,19 +4474,19 @@ O planejamento de capacidade deve incluir as pessoas que vão ler os números. E
 
 O desempenho da PQC é sobretudo uma questão de bytes: a troca de chaves acrescenta kilobytes, os certificados acrescentam muitos mais; meça as caudas e os caminhos e planeje a capacidade de assinatura.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Continue estudando — capítulo 36 de 50
 
 [← Capítulo 35](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Segurança quântica e pós-quântica: operações
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX073.
@@ -4538,7 +4538,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem
@@ -4616,19 +4616,19 @@ As operações também são responsáveis pela comunicação durante a implanta�
 
 As operações transformam a implantação em etapas controladas, com portões estatísticos, monitoramento dos resultados negociados, ciclos de vida de certificados automatizados e respostas específicas por caminho.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Continue estudando — capítulo 37 de 50
 
 [← Capítulo 36](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Segurança quântica e pós-quântica: validação
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX075.
@@ -4680,7 +4680,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX075]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem
@@ -4738,19 +4738,19 @@ A validação deve revisitar, uma a uma, as necessidades originais das partes in
 
 A validação confirma que o sistema migrado atende às suas partes interessadas e declara o risco residual com honestidade, idealmente verificado por uma equipe independente.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Continue estudando — capítulo 38 de 50
 
 [← Capítulo 37](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Segurança quântica e pós-quântica: manutenibilidade
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX077.
@@ -4802,7 +4802,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX077]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem
@@ -4889,19 +4889,19 @@ A agilidade também é contratual. A linguagem das compras deve exigir que os fo
 
 Manutenibilidade significa agilidade: algoritmos orientados por política, aposentadoria em fases, inventário atualizado e um tempo de substituição medido.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Continue estudando — capítulo 39 de 50
 
 [← Capítulo 38](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX079.
@@ -4953,7 +4953,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem
@@ -5011,19 +5011,19 @@ Inclua controles negativos em cada execução do laboratório. Antes de testar a
 
 A verificação de segundo estágio confere as proteções a partir do ponto de observação do atacante, testa o rebaixamento e o tratamento do estado em isolamento e produz relatórios que podem ser executados de novo.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Continue estudando — capítulo 40 de 50
 
 [← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Segurança quântica e pós-quântica: otimização do sistema
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Mapa da aula
 
 Aula 41 publicada. Mapa, exemplo, EX081.
@@ -5075,7 +5075,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX081]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Objetivos de aprendizagem
@@ -5133,19 +5133,19 @@ Cada proposta de otimização declara, portanto, quais fluxos afeta e os tempos 
 
 A otimização do sistema escolhe os parâmetros por contexto, reduz o custo adicional repetido e ordena o trabalho restante pela exposição reduzida por unidade de esforço.
 
-<!-- cyberabc:chapter-navigation:start ch-41 -->
+<!-- cykin:chapter-navigation:start ch-41 -->
 ### Continue estudando — capítulo 41 de 50
 
 [← Capítulo 40](#ch-40) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Segurança quântica e pós-quântica: pesquisa aplicada
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Mapa da aula
 
 Aula 42 publicada. Mapa, exemplo, EX083.
@@ -5197,7 +5197,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX083]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Objetivos de aprendizagem
@@ -5255,19 +5255,19 @@ Os estudos aplicados precisam respeitar as mesmas regras de autorização e mini
 
 A pesquisa aplicada nasce de perguntas de engenharia, usa pequenos estudos planejados de antemão, lê a literatura criticamente e devolve resultados de forma responsável.
 
-<!-- cyberabc:chapter-navigation:start ch-42 -->
+<!-- cykin:chapter-navigation:start ch-42 -->
 ### Continue estudando — capítulo 42 de 50
 
 [← Capítulo 41](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Mapa da aula
 
 Aula 43 publicada. Mapa, exemplo, EX085.
@@ -5319,7 +5319,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Objetivos de aprendizagem
@@ -5377,19 +5377,19 @@ Os estágios também ensinam como as decisões são realmente tomadas. Observe q
 
 A prática ensina que a migração é tanto organizacional quanto técnica; o controle de mudanças, a documentação e a confidencialidade são obrigações profissionais.
 
-<!-- cyberabc:chapter-navigation:start ch-43 -->
+<!-- cykin:chapter-navigation:start ch-43 -->
 ### Continue estudando — capítulo 43 de 50
 
 [← Capítulo 42](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Mapa da aula
 
 Aula 44 publicada. Mapa, exemplo, EX087.
@@ -5441,7 +5441,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX087]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Objetivos de aprendizagem
@@ -5505,19 +5505,19 @@ A linha de base é assinada pelo avaliador e guardada no dossiê antes de qualqu
 
 O Projeto Final I prova que o estudante consegue delimitar, modelar, projetar e entregar um primeiro incremento medido de uma migração com formato real.
 
-<!-- cyberabc:chapter-navigation:start ch-44 -->
+<!-- cykin:chapter-navigation:start ch-44 -->
 ### Continue estudando — capítulo 44 de 50
 
 [← Capítulo 43](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Mapa da aula
 
 Aula 45 publicada. Mapa, exemplo, EX089.
@@ -5564,7 +5564,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX089]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Objetivos de aprendizagem
@@ -5624,19 +5624,19 @@ Os revisores também devem confrontar o que a equipe de projeto mediu com o que 
 
 Uma revisão independente com uma lista de verificação específica de PQC e uma classificação de severidade detecta as falhas de projeto antes que se tornem implantações.
 
-<!-- cyberabc:chapter-navigation:start ch-45 -->
+<!-- cykin:chapter-navigation:start ch-45 -->
 ### Continue estudando — capítulo 45 de 50
 
 [← Capítulo 44](#ch-44) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Mapa da aula
 
 Aula 46 publicada. Mapa, exemplo, EX091.
@@ -5688,7 +5688,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Objetivos de aprendizagem
@@ -5746,19 +5746,19 @@ A repetição também testa as hipóteses do runbook, como direitos de acesso qu
 
 O Projeto Final II conclui a migração incremento a incremento, a verifica e valida, demonstra a agilidade e fecha as constatações da revisão com evidências.
 
-<!-- cyberabc:chapter-navigation:start ch-46 -->
+<!-- cykin:chapter-navigation:start ch-46 -->
 ### Continue estudando — capítulo 46 de 50
 
 [← Capítulo 45](#ch-45) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Mapa da aula
 
 Aula 47 publicada. Mapa, exemplo, EX093.
@@ -5805,7 +5805,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX093]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Objetivos de aprendizagem
@@ -5863,19 +5863,19 @@ Manter os dois resultados também mostra aos avaliadores que a equipe corrigiu o
 
 Os ensaios de falha medem a capacidade real de recuperação contra os objetivos e transformam surpresas em melhorias do plano.
 
-<!-- cyberabc:chapter-navigation:start ch-47 -->
+<!-- cykin:chapter-navigation:start ch-47 -->
 ### Continue estudando — capítulo 47 de 50
 
 [← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Mapa da aula
 
 Aula 48 publicada. Mapa, exemplo, EX095.
@@ -5932,7 +5932,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX095]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Objetivos de aprendizagem
@@ -5996,19 +5996,19 @@ Um item desatualizado continua visível, com a sua data e o motivo da caducidade
 
 Um dossiê de evidências liga cada alegação a evidências protegidas e indexadas, nas quais auditores e sucessores conseguem navegar.
 
-<!-- cyberabc:chapter-navigation:start ch-48 -->
+<!-- cykin:chapter-navigation:start ch-48 -->
 ### Continue estudando — capítulo 48 de 50
 
 [← Capítulo 47](#ch-47) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Monografia de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Mapa da aula
 
 Aula 49 publicada. Mapa, exemplo, EX097.
@@ -6055,7 +6055,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Objetivos de aprendizagem
@@ -6113,19 +6113,19 @@ Escreva a monografia de modo que um profissional de outra organização consiga 
 
 A monografia registra um projeto validado, com resultados e limites honestos, e separa as lições gerais das locais.
 
-<!-- cyberabc:chapter-navigation:start ch-49 -->
+<!-- cykin:chapter-navigation:start ch-49 -->
 ### Continue estudando — capítulo 49 de 50
 
 [← Capítulo 48](#ch-48) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Mapa da aula
 
 Aula 50 publicada. Mapa, exemplo, EX099.
@@ -6177,7 +6177,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX099]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Objetivos de aprendizagem
@@ -6231,13 +6231,13 @@ Depois da defesa, entregue o sistema aos seus donos com uma carta curta que decl
 
 A defesa mostra uma migração validada, medida e ágil, responde a perguntas difíceis com evidências e deixa um plano para a próxima mudança — porque a prontidão quântica é uma capacidade, não uma linha de chegada.
 
-<!-- cyberabc:chapter-navigation:start ch-50 -->
+<!-- cykin:chapter-navigation:start ch-50 -->
 ### Continue estudando — capítulo 50 de 50
 
 [← Capítulo 49](#ch-49) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

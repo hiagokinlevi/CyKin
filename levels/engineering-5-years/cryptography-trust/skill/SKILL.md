@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cryptography-trust-engineering-2aa9d7a7
+name: cykin-cryptography-trust-engineering-2aa9d7a7
 description: "Guide a learner through the engineering course in Cryptography and trust services: a synthetic five-year design of a smart-meter trust service, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---

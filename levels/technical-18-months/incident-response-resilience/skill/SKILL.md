@@ -1,5 +1,5 @@
 ---
-name: cyberabc-incident-response-resilience-technical-38b58084
+name: cykin-incident-response-resilience-technical-38b58084
 description: "Tutor the technical Incident Response draft through eighteen authored English subjects, offline LLR/K labs and 72 worked exercises; preserve staged evidence, safety gates and service outcomes."
 license: CC0-1.0
 ---

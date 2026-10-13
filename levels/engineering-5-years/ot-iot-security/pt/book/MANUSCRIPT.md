@@ -84,7 +84,7 @@ As [resoluções](#worked-results) contêm EX001–EX150. As [referências](#ref
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -126,7 +126,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -188,19 +188,19 @@ Uma leitura de nível falsificada é o caso que este modelo não consegue tratar
 
 O tempo de autonomia é ao mesmo tempo uma integral e um orçamento de segurança: ele limita o quão tarde a detecção pode chegar.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 50
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX004.
@@ -242,7 +242,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -309,19 +309,19 @@ Lena acrescenta uma ferramenta de acesso remoto usada por um fornecedor como uma
 
 Zonas e condutos são um grafo; é a alcançabilidade, e não a leitura regra por regra, que responde quem pode tocar o sistema de segurança.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 50
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX007.
@@ -363,7 +363,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -428,19 +428,19 @@ O transmissor de nível do T-1 envia um sinal de 4–20 mA por 180 m de par tran
 
 A física define o orçamento de tempo do controle e de qualquer dispositivo de segurança que você ponha na malha.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 50
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX010.
@@ -487,7 +487,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -562,19 +562,19 @@ O monitor de Lena conta os quadros malformados por minuto e gera um alarme se a 
 
 Funções de permissão puras, tipadas e testadas são a menor unidade confiável de software de segurança de TO.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 50
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX013.
@@ -621,7 +621,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -668,19 +668,19 @@ Evidências como as exportações de configuração ficam no repositório lacrad
 
 Boas constatações de TO são delimitadas, nomeiam as camadas de proteção e dão a cada público o que ele precisa para decidir.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 50
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX016.
@@ -727,7 +727,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -792,19 +792,19 @@ Mantenha um gráfico semanal de a e de c ao lado do registro de racionalização
 
 Séries e taxas transformam "tente de novo" e "contrate alguém" em números que cabem numa decisão de comunicações ou de pessoal.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 50
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX019.
@@ -851,7 +851,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -929,19 +929,19 @@ Publique a lista de sementes e os parâmetros do detector com toda alegação de
 
 As alegações de detecção precisam de intervalos, da classe de ataque e de honestidade quanto à taxa de base — não de uma única porcentagem.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 50
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX022.
@@ -988,7 +988,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -1033,19 +1033,19 @@ Desenhe o mapa de privilégios numa página: quem pode mudar setpoints, quem pod
 
 Mantenha a lógica de segurança independente no hardware e nos condutos; colete evidências sem se tornar um atuador.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 50
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX025.
@@ -1097,7 +1097,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -1148,19 +1148,19 @@ Quando o esquema de constatações do CNHP ganha um campo obrigatório, como o n
 
 Esquemas, idempotência e propriedades mantêm o ferramental de segurança de TO entediante — no bom sentido.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 50
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX028.
@@ -1207,7 +1207,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -1258,19 +1258,19 @@ Um prestador pede para executar uma varredura Modbus ativa no PLC-A durante um l
 
 Permissão escrita, condições de parada que põem o processo em primeiro lugar e o hábito da recusa são engenharia de segurança.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 50
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX031.
@@ -1322,7 +1322,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1403,19 +1403,19 @@ Na ABP, a permissão de Lena para a verificação serial diz "somente escuta" no
 
 Delimite os protocolos de TO pela semântica (códigos, registradores, estações); comemore os bloqueios que correspondem ao plano.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 50
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX034.
@@ -1467,7 +1467,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1545,19 +1545,19 @@ Lena nunca precisou de uma imagem completa na ABP.
 
 Endureça e corrija as estações de trabalho como se fossem controladores — porque, para o malware, elas são a porta.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 50
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de dados
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX037.
@@ -1609,7 +1609,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1666,19 +1666,19 @@ Os engenheiros de qualidade pedem "todos os dados do R-101 do último ano". A ex
 
 Minimize os dados, teste os papéis, sintetize para o ensino. O historiador não é um depósito de troféus.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue estudando — capítulo 13 de 50
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX040.
@@ -1730,7 +1730,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1787,19 +1787,19 @@ Um pull request alarga a faixa gravável da IHM no PLC-A de 40001–40010 para 4
 
 Trate o software de segurança de TO como software de produção: versões, condições de revisão, integração contínua sintética.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 50
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de segurança
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX043.
@@ -1851,7 +1851,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1904,19 +1904,19 @@ Na ABP, a constatação FW-12 alegava uma exposição de integridade, então o s
 
 Nomeie a propriedade, separe a exposição do risco de processo, prefira medidas que você possa recalcular.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue estudando — capítulo 15 de 50
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX046.
@@ -1968,7 +1968,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -2021,19 +2021,19 @@ Os SLAs internos entre serviços importam: o monitor pode precisar que o reposit
 
 Requisitos que você pode testar, ligações que você pode seguir, interfaces que você versiona.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue estudando — capítulo 16 de 50
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX049.
@@ -2085,7 +2085,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -2162,19 +2162,19 @@ Na ABP, o setpoint de tempo de ciclo do monitor serial é de 50 ms, e ele é rev
 
 Entenda a malha antes de inserir segurança; amorteça os alertas para que os alarmes de processo continuem audíveis.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue estudando — capítulo 17 de 50
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX052.
@@ -2226,7 +2226,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -2305,19 +2305,19 @@ Lena exporta os diagramas do L2 e da DMZ de cada janela para o dossiê do CNHP e
 
 Zonas, fronteiras do acesso de engenharia e limites honestos sobre o que um gêmeo pode provar.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 50
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX055.
@@ -2369,7 +2369,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -2422,19 +2422,19 @@ As escolhas de algoritmo dos manifestos são um campo de versão, não uma troca
 
 Leia a configuração de identidade; calcule o hash das evidências; mantenha os segredos num cofre.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue estudando — capítulo 19 de 50
 
 [← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Segurança de TO, IoT e sistemas ciberfísicos: contexto de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX058.
@@ -2486,7 +2486,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -2539,19 +2539,19 @@ Os entregáveis da própria Lena na ABP incluem os dois tipos. Os seus runbooks 
 
 Os engenheiros viabilizam o endurecimento autorizado de TO; não substituem a segurança de processo por esperteza.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 50
 
 [← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Segurança de TO, IoT e sistemas ciberfísicos: requisitos
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX061.
@@ -2603,7 +2603,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -2656,19 +2656,19 @@ Na ABP, o S-1 e o R-12 são ambos itens Must, e nenhuma decisão de produto pode
 
 Os requisitos do CNHP vêm dos operadores e engenheiros da planta, se dividem em famílias e são entregues com testes de aceitação sobre dados de teste sintéticos da planta.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue estudando — capítulo 21 de 50
 
 [← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Segurança de TO, IoT e sistemas ciberfísicos: modelos de sistema e de dados
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX064.
@@ -2715,7 +2715,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -2772,19 +2772,19 @@ O modelo de dados de Lena para as constatações do CNHP tem as entidades Asset,
 
 Modele ativos, zonas, versões, constatações e hashes — não ataques.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue estudando — capítulo 22 de 50
 
 [← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Segurança de TO, IoT e sistemas ciberfísicos: análise de ameaças e de falhas
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX067.
@@ -2836,7 +2836,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -2924,19 +2924,19 @@ Os dois tipos alimentam o backlog.
 
 Analise como o seu programa pode ferir a planta ou mentir; mitigue isso primeiro.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue estudando — capítulo 23 de 50
 
 [← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Segurança de TO, IoT e sistemas ciberfísicos: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX070.
@@ -2993,7 +2993,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -3052,19 +3052,19 @@ Durante a janela W-17 da ABP, um fornecedor pediu para testar uma função de di
 
 Os métodos são autorizados, têm ficha e estão concluídos quando os artefatos existem.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue estudando — capítulo 24 de 50
 
 [← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX073.
@@ -3121,7 +3121,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -3178,19 +3178,19 @@ As equipes de ateliê que passaram os primeiros vinte minutos nomeando os pontos
 
 O trabalho de ateliê termina numa decisão registrada, não numa impressão.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue estudando — capítulo 25 de 50
 
 [← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Segurança de TO, IoT e sistemas ciberfísicos: alternativas de arquitetura
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX076.
@@ -3247,7 +3247,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -3306,19 +3306,19 @@ O caminho de analytics da opção B pressupunha um engenheiro do site que entend
 
 Escolha a arquitetura frente a restrições ponderadas; registre as opções rejeitadas.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue estudando — capítulo 26 de 50
 
 [← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Segurança de TO, IoT e sistemas ciberfísicos: projeto de controles
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX079.
@@ -3375,7 +3375,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -3460,19 +3460,19 @@ No dia de saúde de março, a equipe apagou a lista de permissões de um monitor
 
 Os controles são preventivos/detectivos/corretivos, têm dono e são operáveis sem exploits.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue estudando — capítulo 27 de 50
 
 [← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Segurança de TO, IoT e sistemas ciberfísicos: implementação I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX082.
@@ -3529,7 +3529,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -3620,19 +3620,19 @@ Cada cláusula da função permit tem o seu próprio teste: origem permitida, c�
 
 Predicado puro, testes por cláusula, logs seguros.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue estudando — capítulo 28 de 50
 
 [← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Segurança de TO, IoT e sistemas ciberfísicos: medição
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX085.
@@ -3689,7 +3689,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -3781,19 +3781,19 @@ Quando o CNHP mudou as regras de planejamento em junho, os gráficos no estilo P
 
 Planeje o denominador; meça os resultados; avalie os detectores por classe, com intervalos.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue estudando — capítulo 29 de 50
 
 [← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX088.
@@ -3850,7 +3850,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -3939,19 +3939,19 @@ O Laboratório I reproduz um dia gravado de tráfego da ABP mais 40 tentativas d
 
 Verifique a segurança física primeiro; pare na falha aberta ou na exposição do SIS; calcule o hash de tudo.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 50
 
 [← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Segurança de TO, IoT e sistemas ciberfísicos: implementação II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX091.
@@ -4008,7 +4008,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem
@@ -4073,19 +4073,19 @@ Duas fontes de inventário relatam o PLC-A: a exportação do projeto de engenha
 
 Escritas idempotentes, esquema estrito, versões explícitas.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Continue estudando — capítulo 31 de 50
 
 [← Capítulo 30](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Segurança de TO, IoT e sistemas ciberfísicos: confiabilidade
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX094.
@@ -4142,7 +4142,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem
@@ -4203,19 +4203,19 @@ O coletor de monitoramento do CNHP fica numa porta espelhada. Se ele falhar, nad
 
 Negações confiáveis, novas tentativas com orçamento, degradação fechada.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Continue estudando — capítulo 32 de 50
 
 [← Capítulo 31](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Segurança de TO, IoT e sistemas ciberfísicos: segurança física e resiliência
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX097.
@@ -4272,7 +4272,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem
@@ -4333,19 +4333,19 @@ Durante a troca do firewall no conduto L3–L2, a condição de parada diz: "Se 
 
 Paradas que o monitor consegue executar, reversões que o local consegue fazer, exercícios de mesa que atualizam os runbooks do CNHP.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Continue estudando — capítulo 33 de 50
 
 [← Capítulo 32](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Segurança de TO, IoT e sistemas ciberfísicos: integração
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX100.
@@ -4402,7 +4402,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem
@@ -4469,19 +4469,19 @@ Os alertas do CNHP fluem para o sistema de gestão da manutenção da ABP, para 
 
 Contratos, consumidores idempotentes, testes com dados de teste.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Continue estudando — capítulo 34 de 50
 
 [← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX103.
@@ -4538,7 +4538,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem
@@ -4603,19 +4603,19 @@ O enunciado do Ateliê II: um gerente de planta precisa decidir, a partir de uma
 
 Uma interface que ensina a métrica, não um semáforo de impressões.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Continue estudando — capítulo 35 de 50
 
 [← Capítulo 34](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Segurança de TO, IoT e sistemas ciberfísicos: desempenho e escala
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX106.
@@ -4672,7 +4672,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem
@@ -4755,19 +4755,19 @@ Um coletor de saúde de ativos proposto leria 120 registradores de retenção do
 
 Orçamento primeiro, escala depois, canário sempre.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Continue estudando — capítulo 36 de 50
 
 [← Capítulo 35](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Segurança de TO, IoT e sistemas ciberfísicos: operações
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX109.
@@ -4824,7 +4824,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem
@@ -4914,19 +4914,19 @@ A folha de passagem de turno da ABP ganha três linhas: alertas abertos do CNHP 
 
 Opere com runbooks, passagens de turno e um encerramento implacável.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Continue estudando — capítulo 37 de 50
 
 [← Capítulo 36](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Segurança de TO, IoT e sistemas ciberfísicos: validação
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX112.
@@ -4983,7 +4983,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem
@@ -5046,19 +5046,19 @@ Seis meses depois da implantação, Lena roda de novo a verificação de alcanç
 
 Valide de forma estreita; guarde os negativos; não alargue os métodos.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Continue estudando — capítulo 38 de 50
 
 [← Capítulo 37](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Segurança de TO, IoT e sistemas ciberfísicos: manutenibilidade
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX115.
@@ -5115,7 +5115,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem
@@ -5182,19 +5182,19 @@ O CNHP tinha um adaptador sob medida que lia a exportação de alarmes do fornec
 
 Fixações, adaptadores e donos nomeados mantêm as ferramentas vivas com segurança.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Continue estudando — capítulo 39 de 50
 
 [← Capítulo 38](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX118.
@@ -5251,7 +5251,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem
@@ -5344,19 +5344,19 @@ O Laboratório II exercita a cadeia completa na bancada: tráfego reproduzido �
 
 Ponta a ponta com falhas; segurança física verde; duas assinaturas.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Continue estudando — capítulo 40 de 50
 
 [← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Segurança de TO, IoT e sistemas ciberfísicos: otimização do sistema
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Mapa da aula
 
 Aula 41 publicada. Mapa, exemplo, EX121.
@@ -5413,7 +5413,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX121]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Objetivos de aprendizagem
@@ -5498,19 +5498,19 @@ A produção pede para encurtar o lote do R-101 aumentando a vazão de alimenta�
 
 Velocidade sob restrições; a segurança física tem poder de veto.
 
-<!-- cyberabc:chapter-navigation:start ch-41 -->
+<!-- cykin:chapter-navigation:start ch-41 -->
 ### Continue estudando — capítulo 41 de 50
 
 [← Capítulo 40](#ch-40) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Segurança de TO, IoT e sistemas ciberfísicos: pesquisa aplicada
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Mapa da aula
 
 Aula 42 publicada. Mapa, exemplo, EX124.
@@ -5567,7 +5567,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX124]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Objetivos de aprendizagem
@@ -5634,19 +5634,19 @@ A pesquisa aplicada de Lena pergunta: no tráfego gravado da ABP, quantos dias d
 
 Pesquise o programa e o processo; deixe a armamentização de lado.
 
-<!-- cyberabc:chapter-navigation:start ch-42 -->
+<!-- cykin:chapter-navigation:start ch-42 -->
 ### Continue estudando — capítulo 42 de 50
 
 [← Capítulo 41](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Mapa da aula
 
 Aula 43 publicada. Mapa, exemplo, EX127.
@@ -5703,7 +5703,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX127]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Objetivos de aprendizagem
@@ -5768,19 +5768,19 @@ No estágio numa fabricante terceirizada, Lena observa que o laptop do fornecedo
 
 A prática é feita de restrições reais mais artefatos de aprendizagem sanitizados.
 
-<!-- cyberabc:chapter-navigation:start ch-43 -->
+<!-- cykin:chapter-navigation:start ch-43 -->
 ### Continue estudando — capítulo 43 de 50
 
 [← Capítulo 42](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Mapa da aula
 
 Aula 44 publicada. Mapa, exemplo, EX130.
@@ -5832,7 +5832,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX130]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Objetivos de aprendizagem
@@ -5899,19 +5899,19 @@ O projeto final de Lena constrói um compilador verificado de políticas de zona
 
 Entregue valor de programa relevante para a segurança física; congele os não objetivos cedo.
 
-<!-- cyberabc:chapter-navigation:start ch-44 -->
+<!-- cykin:chapter-navigation:start ch-44 -->
 ### Continue estudando — capítulo 44 de 50
 
 [← Capítulo 43](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Mapa da aula
 
 Aula 45 publicada. Mapa, exemplo, EX133.
@@ -5968,7 +5968,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX133]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Objetivos de aprendizagem
@@ -6035,19 +6035,19 @@ Na revisão independente de projeto, uma revisora externa de uma empresa de sane
 
 Revisões que conseguem dizer não, com um checklist e uma memória.
 
-<!-- cyberabc:chapter-navigation:start ch-45 -->
+<!-- cykin:chapter-navigation:start ch-45 -->
 ### Continue estudando — capítulo 45 de 50
 
 [← Capítulo 44](#ch-44) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Mapa da aula
 
 Aula 46 publicada. Mapa, exemplo, EX136.
@@ -6104,7 +6104,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX136]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Objetivos de aprendizagem
@@ -6191,19 +6191,19 @@ No congelamento do Projeto Final II, Lena marca o compilador com a tag v1.0 e ro
 
 Congele, verifique, documente, nomeie a operação — e então opere.
 
-<!-- cyberabc:chapter-navigation:start ch-46 -->
+<!-- cykin:chapter-navigation:start ch-46 -->
 ### Continue estudando — capítulo 46 de 50
 
 [← Capítulo 45](#ch-45) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Mapa da aula
 
 Aula 47 publicada. Mapa, exemplo, EX139.
@@ -6260,7 +6260,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX139]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Objetivos de aprendizagem
@@ -6358,19 +6358,19 @@ O cenário do ensaio: a lógica do PLC-A é corrompida (simulada carregando um p
 
 Quebre de propósito; meça; abra tickets para as lacunas.
 
-<!-- cyberabc:chapter-navigation:start ch-47 -->
+<!-- cykin:chapter-navigation:start ch-47 -->
 ### Continue estudando — capítulo 47 de 50
 
 [← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Mapa da aula
 
 Aula 48 publicada. Mapa, exemplo, EX142.
@@ -6427,7 +6427,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX142]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Objetivos de aprendizagem
@@ -6496,19 +6496,19 @@ O dossiê de evidências do CNHP de Lena inclui o modelo de zonas e a sua versã
 
 Os dossiês são verificáveis, classificados e tediosamente seguros.
 
-<!-- cyberabc:chapter-navigation:start ch-48 -->
+<!-- cykin:chapter-navigation:start ch-48 -->
 ### Continue estudando — capítulo 48 de 50
 
 [← Capítulo 47](#ch-47) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Mapa da aula
 
 Aula 49 publicada. Mapa, exemplo, EX145.
@@ -6565,7 +6565,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX145]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Objetivos de aprendizagem
@@ -6632,19 +6632,19 @@ A afirmação da tese de Lena, na primeira página: "Para o modelo de nove condu
 
 Uma afirmação, limites honestos, citações reais.
 
-<!-- cyberabc:chapter-navigation:start ch-49 -->
+<!-- cykin:chapter-navigation:start ch-49 -->
 ### Continue estudando — capítulo 49 de 50
 
 [← Capítulo 48](#ch-48) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Mapa da aula
 
 Aula 50 publicada. Mapa, exemplo, EX148.
@@ -6701,7 +6701,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX148]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Objetivos de aprendizagem
@@ -6787,13 +6787,13 @@ Um examinador pergunta: "O seu compilador prova que a alcançabilidade é igual 
 
 Defenda a engenharia, as medidas e as recusas.
 
-<!-- cyberabc:chapter-navigation:start ch-50 -->
+<!-- cykin:chapter-navigation:start ch-50 -->
 ### Continue estudando — capítulo 50 de 50
 
 [← Capítulo 49](#ch-49) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

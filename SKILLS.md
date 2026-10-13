@@ -1,4 +1,4 @@
-# CyberABC course skills
+# CyKin course skills
 
 **207 course skills, one per area-and-level course.** The course skill routes an AI client through the book and its subject-chapters; subjects do not have separate skills. A skill is not a completed textbook or an automatic installation in every AI client.
 

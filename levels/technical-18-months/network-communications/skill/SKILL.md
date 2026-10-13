@@ -1,5 +1,5 @@
 ---
-name: cyberabc-network-communications-technical-9127e379
+name: cykin-network-communications-technical-9127e379
 description: "NET Technical Course (18 ch / 72 ex)"
 license: CC0-1.0
 ---

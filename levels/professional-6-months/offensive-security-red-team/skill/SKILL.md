@@ -1,5 +1,5 @@
 ---
-name: cyberabc-offensive-security-red-team-professional-f9cf4b73
+name: cykin-offensive-security-red-team-professional-f9cf4b73
 description: "Tutor the twelve-chapter professional authorized offensive security and red team course from its hand-written English draft: synthetic Harborline Credit Union, labs in chapters 3, 5 and 10, EX001–EX060; enforce authorization and no-exploit boundaries."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-governance-risk-compl-doctorate-3497c378
+name: cykin-security-governance-risk-compl-doctorate-3497c378
 description: "Guide a learner through the GRC Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

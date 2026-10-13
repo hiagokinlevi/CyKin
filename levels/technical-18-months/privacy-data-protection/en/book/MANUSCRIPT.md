@@ -37,7 +37,7 @@ Regulation (EU) 2016/679 (GDPR) Articles 4(15), 5, 9(2)(h), 15, 17, 28, 30, 32 a
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -124,19 +124,19 @@ A first map misses informal copies; interview staff as well as reading system li
 - **EX003 — Copies matter.** Why does every copy of a record matter? *Rubric:* 3 = protection, retention and access requests must cover all copies;; 2 = mentions copies;; 1 = vague;; 0 = none.
 - **EX004 — SMS content.** What does the SMS gateway learn about patients? *Rubric:* 3 = names, phone numbers, appointment times and that they are dental patients;; 2 = most;; 1 = one;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 18)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and protocols
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -183,7 +183,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -223,19 +223,19 @@ Separation can break workflows; test with clinic staff before rolling out.
 - **EX007 — Three zones.** Name the three zones Leila proposed. *Rubric:* 3 = clinical, office and guest;; 2 = all;; 1 = two;; 0 = none.
 - **EX008 — Confirming the change.** How did Leila confirm the separation worked? *Rubric:* 3 = tested from guest Wi-Fi that the server was unreachable;; 2 = mentions test;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 18)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -282,7 +282,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -322,19 +322,19 @@ Narrow roles can block urgent tasks; define a recorded emergency access route.
 - **EX011 — Admin count.** How many administrator accounts remained? *Rubric:* 3 = four of twenty-three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX012 — Locum control.** How are locum accounts controlled now? *Rubric:* 3 = end dates linked to the rota;; 2 = mentions end date;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 18)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Scripting and data formats
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -381,7 +381,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -421,19 +421,19 @@ Validation rules need updating when systems change their export formats.
 - **EX015 — Validation action.** What does the script do when validation fails? *Rubric:* 3 = stops with a clear message;; 2 = partly correct;; 1 = guesses;; 0 = none.
 - **EX016 — Temporary files.** How are temporary files handled? *Rubric:* 3 = tempfile module, removed at the end;; 2 = mentions removal;; 1 = kept;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 18)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -480,7 +480,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -520,19 +520,19 @@ Scope creep happens gradually; recheck the scope before each new task.
 - **EX019 — Evidence fields.** What does each finding record include? *Rubric:* 3 = date, time, system, method, observation, screenshot;; 2 = most;; 1 = few;; 0 = none.
 - **EX020 — Hash purpose.** What does hashing evidence prove? *Rubric:* 3 = integrity, not confidentiality;; 2 = partly correct;; 1 = confidentiality;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 18)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Privacy and data protection: system model
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -579,7 +579,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -619,19 +619,19 @@ Lawful bases are decided by the controller with advice; technical staff document
 - **EX023 — Courier gap.** What gap did Leila find with the courier? *Rubric:* 3 = no processor contract;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX024 — Possible transfer.** What possible transfer did Leila flag? *Rubric:* 3 = SMS provider support outside the EU;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 18)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Privacy and data protection: data and telemetry
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -683,7 +683,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -754,19 +754,19 @@ Regular expressions miss unusual formats; review samples by hand as well.
 - **EX027 — Why logs travel.** Why do logs spread further than records? *Rubric:* 3 = copied to monitoring tools and shared in support cases;; 2 = mentions copies;; 1 = vague;; 0 = none.
 - **EX028 — Log retention.** What retention did Leila propose for detailed logs? *Rubric:* 3 = thirty days;; 2 = partly correct;; 1 = ninety;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 18)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Privacy and data protection: failure modes
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -813,7 +813,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -853,19 +853,19 @@ Detection depends on people acting on alerts; assign owners.
 - **EX031 — Reminder content.** What should reminders contain now? *Rubric:* 3 = only clinic name and time;; 2 = partly correct;; 1 = full details;; 0 = none.
 - **EX032 — Breach recording.** Why was the wrong-number case recorded? *Rubric:* 3 = it was a personal data breach even if low risk;; 2 = mentions breach;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 18)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Privacy and data protection: tools and methods
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -912,7 +912,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -952,19 +952,19 @@ Built-in tools have limits; document what a method cannot detect.
 - **EX035 — Fixed seeds.** Why use fixed random seeds? *Rubric:* 3 = identical synthetic data across runs;; 2 = mentions repeatability;; 1 = vague;; 0 = none.
 - **EX036 — Tools as processing.** Why are privacy tools themselves a risk? *Rubric:* 3 = they process personal data too;; 2 = mentions processing;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 18)
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Privacy and data protection: control configuration
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -1016,7 +1016,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1089,19 +1089,19 @@ Cookie names do not prove purpose; check what each script actually does.
 - **EX039 — Pixel decision.** What happened to the advertising pixel? *Rubric:* 3 = removed; nobody needed it;; 2 = mentions removal;; 1 = delayed;; 0 = none.
 - **EX040 — Release check.** Why add the cookie test to the release checklist? *Rubric:* 3 = changes often reintroduce early tags;; 2 = mentions regressions;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 18)
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Privacy and data protection: verification
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -1148,7 +1148,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1188,19 +1188,19 @@ Samples estimate rates; they do not certify every account.
 - **EX043 — Missed runs.** Why did the deletion job miss two days? *Rubric:* 3 = server restarts for updates;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX044 — Separation status.** How did Leila report network separation? *Rubric:* 3 = verified in one clinic, not yet in seven;; 2 = partly correct;; 1 = verified;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 18)
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Contained laboratory I
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -1247,7 +1247,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1314,19 +1314,19 @@ Unusual access is a signal, not proof; follow a fair procedure.
 - **EX047 — Explanations.** Name two possible explanations for S07's pattern. *Rubric:* 3 = regional role, temporary assignment, shared account, curiosity;; 2 = two;; 1 = one;; 0 = none.
 - **EX048 — Staff rights.** What must staff be told about audit logs? *Rubric:* 3 = access is logged and reviewed;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 18)
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Privacy and data protection: troubleshooting
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -1373,7 +1373,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1413,19 +1413,19 @@ A quick fix to the query alone would not stop the next similar mistake.
 - **EX051 — Three causes.** Name the three causes Leila found. *Rubric:* 3 = confusing names, no review, no automated check;; 2 = all;; 1 = one;; 0 = none.
 - **EX052 — Automated check.** What does the new check do? *Rubric:* 3 = stops exports with non-consenting patients;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue studying — lesson 13 (chapter 13 of 18)
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Privacy and data protection: automation
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -1477,7 +1477,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1539,19 +1539,19 @@ Backups may still hold deleted records until they expire; document backup retent
 - **EX055 — Report-only.** Why run in report-only mode first? *Rubric:* 3 = catch rule mistakes before data are lost;; 2 = mentions mistakes;; 1 = vague;; 0 = none.
 - **EX056 — Exception.** Which records are held? *Rubric:* 3 = those linked to open complaints;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue studying — lesson 14 (chapter 14 of 18)
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Privacy and data protection: integration and dependencies
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -1598,7 +1598,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1638,19 +1638,19 @@ Vendors change defaults in upgrades; retest after each one.
 - **EX059 — Opt-out filter.** Where are opted-out patients filtered? *Rubric:* 3 = at the source export;; 2 = partly correct;; 1 = at vendor;; 0 = none.
 - **EX060 — Deletion test.** What deletion behaviour was tested? *Rubric:* 3 = deletion reaches the review service within thirty days;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue studying — lesson 15 (chapter 15 of 18)
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX061.
@@ -1697,7 +1697,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1737,19 +1737,19 @@ Documents written once and never reviewed become misleading.
 - **EX063 — Irreversible steps.** Why do irreversible steps need extra checks? *Rubric:* 3 = mistakes cannot be undone after deletion;; 2 = mentions deletion;; 1 = vague;; 0 = none.
 - **EX064 — Staying current.** How are documents kept current? *Rubric:* 3 = review dates and change tickets must update them;; 2 = mentions tickets;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue studying — lesson 16 (chapter 16 of 18)
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Contained laboratory II
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX065.
@@ -1796,7 +1796,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1836,19 +1836,19 @@ Erasure does not apply to records Marlow must keep by law; explain this clearly.
 - **EX067 — Reminder erasure.** What did Leila recommend for reminders on erasure? *Rubric:* 3 = delete immediately on request;; 2 = partly correct;; 1 = yearly;; 0 = none.
 - **EX068 — Clinical records.** Why are clinical records kept after erasure requests? *Rubric:* 3 = professional rules require retention;; 2 = mentions rules;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue studying — lesson 17 (chapter 17 of 18)
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical project
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX069.
@@ -1895,7 +1895,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -1935,13 +1935,13 @@ Projects that end without handover lose their controls; agree owners before clos
 - **EX071 — Remaining risk.** What risk remains after the project? *Rubric:* 3 = unencrypted DICOM inside the clinical zone;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Handover.** Who receives the handover? *Rubric:* 3 = IT contractor and data protection officer;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue studying — lesson 18 (chapter 18 of 18)
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

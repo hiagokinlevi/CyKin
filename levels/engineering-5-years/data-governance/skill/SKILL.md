@@ -1,5 +1,5 @@
 ---
-name: cyberabc-data-governance-engineering-387492b7
+name: cykin-data-governance-engineering-387492b7
 description: "Guide a learner through the data governance Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---

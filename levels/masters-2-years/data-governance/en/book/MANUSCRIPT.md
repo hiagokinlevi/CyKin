@@ -37,7 +37,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-1:2022; Khatri and Brown (201
 
 ## Chapter 1 — Research question and literature method
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -127,19 +127,19 @@ Search terms shape what is found; test alternative terms before finalising.
 - **EX006 — Supervisor check.** What share of decisions did Dr. Solberg check? *Rubric:* 3 = a random tenth;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX007 — Literature gap.** What did the search find lacking? *Rubric:* 3 = studies that measure outcomes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 08)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data governance: advanced seminar
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -186,7 +186,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -229,19 +229,19 @@ Models describe ideals; real councils mix them.
 - **EX013 — Peer challenge.** What competing explanation did peers raise? *Rubric:* 3 = council culture;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX014 — Testable condition.** What condition did Tomás derive? *Rubric:* 3 = stewards need decision rights and a propagation channel;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 08)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -288,7 +288,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -330,19 +330,19 @@ Parallel trends can hold before and fail after; watch for new events.
 - **EX019 — Ethics level.** At what level is performance analysed? *Rubric:* 3 = department level only;; 2 = partly correct;; 1 = individual;; 0 = none.
 - **EX020 — Importance threshold.** What threshold of practical importance was set? *Rubric:* 3 = five days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 08)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Data governance: competing explanations
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -389,7 +389,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -431,19 +431,19 @@ Some rivals cannot be fully ruled out; report them as limits.
 - **EX025 — Contrary evidence.** Name one result that would weaken the hypothesis. *Rubric:* 3 = improvement only in low-volume months, equal in both groups, or only where sharing existed;; 2 = one;; 1 = vague;; 0 = none.
 - **EX026 — Falsifiability.** Why write contrary conditions in advance? *Rubric:* 3 = to avoid explaining away awkward results;; 2 = mentions bias;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 08)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -495,7 +495,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -568,19 +568,19 @@ Aggressive normalisation can merge different addresses; check a sample by hand.
 - **EX031 — New outcome.** How was correction time redefined? *Rubric:* 3 = days until correct in all five systems;; 2 = partly correct;; 1 = ticket closure;; 0 = none.
 - **EX032 — Logged changes.** When were proposal changes logged? *Rubric:* 3 = before collecting real outcome data;; 2 = partly correct;; 1 = after;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 08)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX033.
@@ -632,7 +632,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -697,19 +697,19 @@ A bootstrap interval reflects sampling variation, not design bias.
 - **EX037 — Culture rival.** Why is the culture rival weakened? *Rubric:* 3 = council tax improved without prior sharing;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX038 — Mechanism.** What mechanism did interviews suggest? *Rubric:* 3 = single address standard and weekly propagation;; 2 = both;; 1 = one;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 08)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Dissertation writing and limitations
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -756,7 +756,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -798,19 +798,19 @@ Summaries tend to drop caveats; keep the main limit in the summary.
 - **EX043 — Recommendation example.** Name one recommendation. *Rubric:* 3 = extend stewardship, measure to last system, publish rules;; 2 = one;; 1 = vague;; 0 = none.
 - **EX044 — Consistency.** Why must summary and dissertation agree? *Rubric:* 3 = inconsistency damages credibility;; 2 = mentions credibility;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 08)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -857,7 +857,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -899,13 +899,13 @@ Extensions to new departments may not reproduce pilot effects; evaluate them.
 - **EX049 — Social care.** Why does social care wait? *Rubric:* 3 = review of its legal duties;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Lasting value.** What may be the most useful part of Tomás's work? *Rubric:* 3 = the measurement definitions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 08)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

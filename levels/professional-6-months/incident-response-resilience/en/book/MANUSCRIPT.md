@@ -37,7 +37,7 @@ The twelve authored subjects each end with five exercises. The [worked-answer ap
 
 ## Chapter 1 — Incident lifecycle and organizational readiness
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -99,7 +99,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -361,19 +361,19 @@ In a synthetic worksheet, build the five-row map, mark unverified fields and wri
 
 Readiness is a set of checked service, authority and evidence assumptions. `C01` alone cannot prove either preparedness or an incident. Carry its owner gaps and retention question into Chapter 2; do not silently fill them when the scenario becomes urgent.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 12
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Authority, scope and response roles
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX006.
@@ -435,7 +435,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX006]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -719,19 +719,19 @@ In groups, assign analyst, service owner, identity custodian and recorder roles.
 
 The decision right belongs to a role and a bounded action, not to the incident label. C02 supports intake and owner escalation, not a tenant-wide change. Chapter 3 will add identity and application signals; revisit the options with the new cards while preserving the 09:04 record as it was.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 12
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Alert intake and severity assessment
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX011.
@@ -793,7 +793,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -989,19 +989,19 @@ In a synthetic workbook, record the case at 09:09, then reveal C06, C07 and C08 
 
 The 09:14 triage record carries uncertainty forward. `P2` is a documented workload decision driven partly by the 10:00 expiry, while account misuse remains unproven. Chapter 4 will test whether a bounded export and a screenshot can be preserved with enough provenance to support later analysis.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 12
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Evidence preservation and case records
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX016.
@@ -1063,7 +1063,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -1342,19 +1342,19 @@ One learner prepares a C09/C10 package with a request, receipt, limitation note 
 
 C09 and C10 add detail, but the case remains open: an export has an incomplete provenance record and a screenshot is not the service's source of truth. Chapter 5 will use these bounded observations to build a timeline and test multiple explanations. The analyst must carry the missing fields into the hypothesis table rather than fill them with a story.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 12
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Investigation, hypotheses and timeline building
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX021.
@@ -1416,7 +1416,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -1668,19 +1668,19 @@ Three learners defend H1, H2 and H3, each citing source IDs, one tension and a f
 
 This first five-chapter sequence moves from prepared ownership to bounded authority, triage, preservation and competing explanations. It has **not yet** performed containment, eradication or recovery. [Chapter 6](#ch-06) uses the resulting handoff to compare bounded controls and approval gates. Before moving on, a learner should be able to tell another responder what was actually observed, what remains a hypothesis, which source might resolve it and who has the right to act.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 12
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Containment planning and approvals
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX026.
@@ -1742,7 +1742,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX026]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1999,19 +1999,19 @@ Give one learner C13–C16 and ask for a two-option comparison. A second learner
 
 Containment is a controlled attempt to limit further harm. C17 authorizes only the S42 hold; C18 reports execution; C19 provides limited validation. Chapter 7 examines the likely change path and a second configuration concern, while retaining the still-unverified human attribution and the expiry of the temporary hold.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 12
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Eradication and verification
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX031.
@@ -2073,7 +2073,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -2222,7 +2222,7 @@ The words **unexpected** and **outside approved** are labels relative to this fi
 
 The preserved C20 scheduler record identifies a sync-override run with q-144; the application and job custodians validated the request-ID namespace against C05. C23 finds the task absent from approved inventory, and separately finds the C22 recovery-method change unapproved. **Mechanism evidence** supports a particular task-to-edit chain. **Approval evidence** establishes that an operation was permitted or not. **Actor attribution** would require a source tying a human or principal to registration and execution. None of these statements automatically supplies the others. The task and recovery method might be related, but timestamps 08:47 and 08:52 do not establish a shared actor.
 
-**Eradication verification** has a time dimension. Reading a task's disabled flag is an immediate configuration check; seeing no run through 10:07 is a four-minute observation after C24's 10:03 report. If the task would not ordinarily run again during those four minutes, nonoccurrence has limited discrimination. A reviewer needs schedule metadata, the next expected trigger, runner inventory boundaries, source-ingestion health and a recurrence test. An unexpected re-registration or a q-144-like new S42 request must reopen the hypothesis. NIST's [SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) situates response, recovery and improvement in organizational risk management; this recurrence contract is original CyberABC teaching, not a NIST prescribed status test.
+**Eradication verification** has a time dimension. Reading a task's disabled flag is an immediate configuration check; seeing no run through 10:07 is a four-minute observation after C24's 10:03 report. If the task would not ordinarily run again during those four minutes, nonoccurrence has limited discrimination. A reviewer needs schedule metadata, the next expected trigger, runner inventory boundaries, source-ingestion health and a recurrence test. An unexpected re-registration or a q-144-like new S42 request must reopen the hypothesis. NIST's [SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) situates response, recovery and improvement in organizational risk management; this recurrence contract is original CyKin teaching, not a NIST prescribed status test.
 
 A second workstream must address C22's unapproved recovery-method change under identity-owner authority. Before modifying it, preserve the configuration history and safely determine whether the method is active. Removal, associated credential/session changes, permitted integration tests and independent effect checks each need a distinct receipt. Never export or publish a real recovery secret. Disabling sync-override alone cannot certify that identity access was remediated.
 
@@ -2323,19 +2323,19 @@ One learner submits a cause-to-fix contract at 09:54. Another marks each line **
 
 C20 directly links a nonbaseline task to the S42 edit, and C24 reports that this task was disabled. The short observation window, C22 recovery-method change and unknown actor keep eradication open. Chapter 8 must restore the correct slot state, protect legitimate S40/S41 changes and test service behavior without confusing a backup copy with an accepted return to service.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 12
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Recovery, continuity and return to service
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX036.
@@ -2397,7 +2397,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX036]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -2664,19 +2664,19 @@ Assign recovery custodian, application owner, service owner and observer roles. 
 
 CTN's limited return is supported by a data comparison, failed and passing isolated gates, a bounded production approval, observed service behavior and a 15-minute review. The case remains open for monitoring, source-quality review and possible data questions. Chapter 9 will separate operational status messages from a new, unverified privacy signal and route notice decisions to the appropriate owner.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 12
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Communications, privacy and legal coordination
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX041.
@@ -2738,7 +2738,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -2986,19 +2986,19 @@ In an isolated exercise, assign incident lead, privacy steward, service owner an
 
 A recovery decision and a data assessment can move at different speeds. At 11:00 the service is under monitored return, while external delivery and data scope remain unconfirmed. Chapter 10 turns the decisions and corrections across all nine subjects into a playbook that guides a future learner without hiding approvals, evidence gaps or failed tests.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 12
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Playbook engineering and quality review
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX046.
@@ -3060,7 +3060,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -3212,7 +3212,7 @@ A **playbook** is not the record of a command that ran. It is an interface that 
 
 Each gate can be written as a contract with these fields: **entry evidence and release cutoff; decision question; required producer/custodian; permissible analyst output; approver and scope; operator receipt if an action occurs; independent protection and legitimate-service verification; failure/unknown branch; next reviewer and deadline**. An implementation that encodes only "true/false" loses critical distinctions. If a data source is not retrieved, the result is UNKNOWN, not FALSE. If an action is approved but no operator receipt exists, the result is APPROVED_NOT_EXECUTED, not DONE. If an isolated recovery test passes, the production gate remains pending. If a message draft is approved but not dispatched, the audience still has not been shown that message.
 
-The [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) recovery guide addresses planning, exercises and improvement. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final), published in 2006, provides a framework for exercise design and evaluation. Neither prescribes P1's seven gates, a score of 12/12 or any CTN role/receipt. These are CyberABC teaching constructs and must be adapted to actual owner authority before any use.
+The [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) recovery guide addresses planning, exercises and improvement. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final), published in 2006, provides a framework for exercise design and evaluation. Neither prescribes P1's seven gates, a score of 12/12 or any CTN role/receipt. These are CyKin teaching constructs and must be adapted to actual owner authority before any use.
 
 ### 10.14 Exercise branch coverage must challenge the unsafe option
 
@@ -3329,19 +3329,19 @@ Give a second learner P1, the main case up to 09:14, then release later cards at
 
 Ten sequential subjects now teach a supervised response path: prepare ownership, make bounded decisions, triage and preserve evidence, investigate alternatives, contain an observed harm path, test a cause-related change, restore correct service, communicate honestly and review the playbook itself. Chapters 11–12 use these artifacts in a supervised simulation and case portfolio. The full book still needs deeper teaching, independent review and 300-page A4 verification.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 12
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Supervised incident simulation
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX051.
@@ -3403,7 +3403,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -3529,19 +3529,19 @@ Assign roles, print the release ledger and use only synthetic cards. Run the six
 
 A supervised simulation tests **decision traceability under staged information**. The CTN cards can reveal whether P1 helps a second responder choose, stop and hand off; they cannot demonstrate control effectiveness outside this fictional classroom. Chapter 12 will collect the decision artifacts, test their completeness and assign improvements with owners and retest criteria.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 12
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Case portfolio and after-action review
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX056.
@@ -3603,7 +3603,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -3726,13 +3726,13 @@ With two learners, exchange only the portfolio index and linked artifacts. The r
 
 This twelve-subject draft now spans readiness, authorized response, evidence, competing explanations, containment, cause-path verification, recovery, communication, a reviewed playbook, a supervised simulation and a defensible portfolio. The 60 exercise-answer pairs support practice, but the manuscript is still **short of the required verified 300 A4 pages** and has not passed independent technical, editorial or accessibility review. The next learning level's technical course will demand deeper system modeling, reproducible labs and more explicit failure/rollback evidence. The next editorial task for this volume is substantial expansion and review, not relabeling the draft complete.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 12
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-answers"></a>
 

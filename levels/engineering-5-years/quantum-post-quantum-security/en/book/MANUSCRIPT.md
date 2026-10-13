@@ -35,7 +35,7 @@ Primary sources were checked on 12 October 2026: NIST FIPS 203/204/205 (August 2
 
 ## Chapter 1 — Calculus I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -82,7 +82,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -168,7 +168,7 @@ Growth rates decide everything: Shor makes factoring and discrete logarithms pol
 
 ## Chapter 2 — Discrete mathematics
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX003.
@@ -220,7 +220,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX003]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -306,7 +306,7 @@ Traditional public-key cryptography hides a period that Shor's algorithm finds; 
 
 ## Chapter 3 — Physics for computing
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX005.
@@ -358,7 +358,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -416,7 +416,7 @@ Quantum algorithms exploit interference for special problems; error correction m
 
 ## Chapter 4 — Programming I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX007.
@@ -473,7 +473,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -541,7 +541,7 @@ Cryptographic code is byte-exact, uses secure randomness, compares secrets in co
 
 ## Chapter 5 — Engineering communication
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX009.
@@ -593,7 +593,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -653,7 +653,7 @@ Good engineering communication labels facts, assumptions, estimates and recommen
 
 ## Chapter 6 — Calculus II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX011.
@@ -705,7 +705,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -765,7 +765,7 @@ Calculus turns migration timing into exposure: under growth, delay costs more th
 
 ## Chapter 7 — Probability and statistics
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX013.
@@ -817,7 +817,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -898,7 +898,7 @@ Rare events become common at scale; testing bounds rates but cannot establish cr
 
 ## Chapter 8 — Computer architecture
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX015.
@@ -950,7 +950,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -1012,7 +1012,7 @@ Architecture determines speed, memory fit and leakage: lattice schemes are fast 
 
 ## Chapter 9 — Programming II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX017.
@@ -1069,7 +1069,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -1135,7 +1135,7 @@ Replaceable algorithms start in code: interfaces, policy-chosen identifiers, str
 
 ## Chapter 10 — Engineering ethics and safety
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX019.
@@ -1182,7 +1182,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -1244,7 +1244,7 @@ Ethical PQC engineering protects long-lived data on behalf of people who cannot 
 
 ## Chapter 11 — Networks and protocols
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX021.
@@ -1296,7 +1296,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1356,7 +1356,7 @@ Hybrid key exchange changes message sizes, which networks and middleboxes may mi
 
 ## Chapter 12 — Operating systems
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX023.
@@ -1408,7 +1408,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX023]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1470,7 +1470,7 @@ Cryptography lives in many providers on one host; system policies help but do no
 
 ## Chapter 13 — Data systems
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX025.
@@ -1522,7 +1522,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1584,7 +1584,7 @@ Quantum risk to stored data comes through key exchange and key wrapping, not AES
 
 ## Chapter 14 — Software engineering
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX027.
@@ -1641,7 +1641,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1707,7 +1707,7 @@ Treat migration as software engineering: reviewed changes, flags, canaries, roll
 
 ## Chapter 15 — Security fundamentals
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX029.
@@ -1759,7 +1759,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1821,7 +1821,7 @@ Migration touches all of confidentiality, integrity and availability; categories
 
 ## Chapter 16 — Systems engineering
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX031.
@@ -1878,7 +1878,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1944,7 +1944,7 @@ Migration is a systems problem dominated by interfaces and partners; trade studi
 
 ## Chapter 17 — Control and feedback basics
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX033.
@@ -2001,7 +2001,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -2067,7 +2067,7 @@ A migration is a controlled process: measure negotiated outcomes, combine leadin
 
 ## Chapter 18 — Security architecture
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX035.
@@ -2124,7 +2124,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX035]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -2190,7 +2190,7 @@ Architecture maps trust boundaries to cryptographic functions, centralizes servi
 
 ## Chapter 19 — Identity and cryptography
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX037.
@@ -2242,7 +2242,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -2336,7 +2336,7 @@ Signatures and PKI carry long-lived trust; hash-based schemes are conservative a
 
 ## Chapter 20 — Quantum and post-quantum security: engineering context
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX039.
@@ -2388,7 +2388,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -2448,7 +2448,7 @@ Quantum computers threaten public-key cryptography; Mosca's inequality orders th
 
 ## Chapter 21 — Quantum and post-quantum security: requirements
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX041.
@@ -2500,7 +2500,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2566,7 +2566,7 @@ PQC requirements are specific, verifiable and traced to data lifetimes, policy a
 
 ## Chapter 22 — Quantum and post-quantum security: system and data models
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX043.
@@ -2623,7 +2623,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2689,7 +2689,7 @@ Asset-flow models annotated with cryptographic functions and data lifetimes turn
 
 ## Chapter 23 — Quantum and post-quantum security: threat and failure analysis
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX045.
@@ -2741,7 +2741,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -2803,7 +2803,7 @@ Threat analysis in the quantum era includes recording, future forgery, downgrade
 
 ## Chapter 24 — Quantum and post-quantum security: methods I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX047.
@@ -2855,7 +2855,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX047]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -2944,7 +2944,7 @@ LWE hides secrets under noise; a toy shows decryption as rounding; ML-KEM adds r
 
 ## Chapter 25 — Design studio I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX049.
@@ -3001,7 +3001,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -3059,7 +3059,7 @@ A design studio turns standards into a configured, measured and staged design wh
 
 ## Chapter 26 — Quantum and post-quantum security: architecture alternatives
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX051.
@@ -3111,7 +3111,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -3179,7 +3179,7 @@ Architecture alternatives differ by context: hybrids hedge surprise, pure PQC si
 
 ## Chapter 27 — Quantum and post-quantum security: control design
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX053.
@@ -3236,7 +3236,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -3325,7 +3325,7 @@ Hybrid security depends on controls: standard combiners with context binding, au
 
 ## Chapter 28 — Quantum and post-quantum security: implementation I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX055.
@@ -3382,7 +3382,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -3448,7 +3448,7 @@ Implement PQC through vetted, validated providers, exact identifiers and encodin
 
 ## Chapter 29 — Quantum and post-quantum security: measurement
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX057.
@@ -3505,7 +3505,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -3599,7 +3599,7 @@ Measurement means a multi-source CBOM, negotiated rather than configured metrics
 
 ## Chapter 30 — Verification laboratory I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX059.
@@ -3656,7 +3656,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX059]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -3753,7 +3753,7 @@ Verification combines known-answer tests, negative tests and cross-implementatio
 
 ## Chapter 31 — Quantum and post-quantum security: implementation II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX061.
@@ -3805,7 +3805,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes
@@ -3867,7 +3867,7 @@ Implementation security for PQC means constant-time arithmetic and comparisons, 
 
 ## Chapter 32 — Quantum and post-quantum security: reliability
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX063.
@@ -3924,7 +3924,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX063]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes
@@ -3990,7 +3990,7 @@ Reliability engineering for PQC anticipates size and code-path failures, designs
 
 ## Chapter 33 — Quantum and post-quantum security: safety and resilience
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX065.
@@ -4042,7 +4042,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes
@@ -4104,7 +4104,7 @@ Safety and resilience demand ringed rollouts with rollback, incident plans that 
 
 ## Chapter 34 — Quantum and post-quantum security: integration
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX067.
@@ -4161,7 +4161,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes
@@ -4235,7 +4235,7 @@ Integration spans protocols, PKI, signing and documents; partners need notices a
 
 ## Chapter 35 — Design studio II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX069.
@@ -4287,7 +4287,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes
@@ -4341,7 +4341,7 @@ Long-lived authentication needs algorithm diversity, timestamping with renewal a
 
 ## Chapter 36 — Quantum and post-quantum security: performance and scale
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX071.
@@ -4398,7 +4398,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX071]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes
@@ -4487,7 +4487,7 @@ PQC performance is mostly about bytes: key exchange adds kilobytes, certificates
 
 ## Chapter 37 — Quantum and post-quantum security: operations
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX073.
@@ -4544,7 +4544,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes
@@ -4630,7 +4630,7 @@ Operations turns rollout into controlled steps with statistical gates, monitorin
 
 ## Chapter 38 — Quantum and post-quantum security: validation
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX075.
@@ -4687,7 +4687,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX075]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes
@@ -4753,7 +4753,7 @@ Validation confirms the migrated system serves its stakeholders and states resid
 
 ## Chapter 39 — Quantum and post-quantum security: maintainability
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX077.
@@ -4810,7 +4810,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX077]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes
@@ -4905,7 +4905,7 @@ Maintainability means agility: policy-driven algorithms, phased retirement, curr
 
 ## Chapter 40 — Verification laboratory II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX079.
@@ -4962,7 +4962,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes
@@ -5028,7 +5028,7 @@ Second-stage verification checks protections from the attacker's vantage point, 
 
 ## Chapter 41 — Quantum and post-quantum security: system optimization
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Lesson map
 
 Lesson 41 published. Map, example, EX081.
@@ -5085,7 +5085,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX081]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Learning outcomes
@@ -5152,7 +5152,7 @@ System optimization chooses parameters per context, reduces repeated overhead an
 
 ## Chapter 42 — Quantum and post-quantum security: applied research
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Lesson map
 
 Lesson 42 published. Map, example, EX083.
@@ -5209,7 +5209,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX083]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Learning outcomes
@@ -5275,7 +5275,7 @@ Applied research grows from engineering questions, uses small pre-planned studie
 
 ## Chapter 43 — Industry or public-service practice
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Lesson map
 
 Lesson 43 published. Map, example, EX085.
@@ -5332,7 +5332,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Learning outcomes
@@ -5398,7 +5398,7 @@ Practice teaches that migration is organizational as much as technical; change c
 
 ## Chapter 44 — Engineering capstone I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Lesson map
 
 Lesson 44 published. Map, example, EX087.
@@ -5455,7 +5455,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX087]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Learning outcomes
@@ -5528,7 +5528,7 @@ Capstone I proves that the student can scope, model, design and deliver a first 
 
 ## Chapter 45 — Independent design review
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Lesson map
 
 Lesson 45 published. Map, example, EX089.
@@ -5580,7 +5580,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX089]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Learning outcomes
@@ -5648,7 +5648,7 @@ Independent review with a PQC-specific checklist and severity classification cat
 
 ## Chapter 46 — Engineering capstone II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Lesson map
 
 Lesson 46 published. Map, example, EX091.
@@ -5705,7 +5705,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Learning outcomes
@@ -5772,7 +5772,7 @@ Capstone II completes the migration increment by increment, verifies and validat
 
 ## Chapter 47 — Failure and recovery trial
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Lesson map
 
 Lesson 47 published. Map, example, EX093.
@@ -5829,7 +5829,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX093]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Learning outcomes
@@ -5896,7 +5896,7 @@ Failure trials measure real recovery capability against objectives and turn surp
 
 ## Chapter 48 — Evidence dossier
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Lesson map
 
 Lesson 48 published. Map, example, EX095.
@@ -5958,7 +5958,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX095]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Learning outcomes
@@ -6031,7 +6031,7 @@ An evidence dossier links every claim to protected, indexed evidence that audito
 
 ## Chapter 49 — Engineering thesis
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Lesson map
 
 Lesson 49 published. Map, example, EX097.
@@ -6083,7 +6083,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Learning outcomes
@@ -6149,7 +6149,7 @@ The thesis records a validated design with honest results and limits and separat
 
 ## Chapter 50 — Final defense
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Lesson map
 
 Lesson 50 published. Map, example, EX099.
@@ -6206,7 +6206,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX099]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Learning outcomes

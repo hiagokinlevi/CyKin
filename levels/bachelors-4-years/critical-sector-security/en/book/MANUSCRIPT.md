@@ -85,7 +85,7 @@ The [worked results](#worked-results) contain EX001–EX080. A [glossary](#gloss
 
 ## Chapter 1 — Mathematical reasoning
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX002.
@@ -132,7 +132,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX002]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -215,19 +215,19 @@ Each error has a Calder example. The EX001 colleague multiplied a per-year proba
 
 Security decisions are comparisons under uncertainty. Give quantities units, separate expected loss from worst credible harm, check results by estimation and bounding, and say which assumptions would change the decision. A number with no stated source or sensitivity is an opinion in disguise.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 40
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Computing systems
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX003.
@@ -279,7 +279,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX003]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -327,19 +327,19 @@ At CVH the four errors meet in IMG-01: it still works, so it stayed on the clini
 
 Computing systems are stacks of trust, from hardware to people. OT and medical devices control physical outcomes, live for decades and cannot always be patched, so security relies on procurement terms, placement and compensating controls. The oldest, least-supported component often defines the real exposure.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 40
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Programming I
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX005.
@@ -386,7 +386,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -472,19 +472,19 @@ In Lab 2 the second error would have hidden VEN-01 in EX005, the third would hav
 
 Short, readable programs turn inventories into decisions. Filter, count and report — and always report what you could not classify. Test against cases you know, keep logic in functions, and remember that the program is only as true as its data.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 40
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Academic writing
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX007.
@@ -536,7 +536,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -589,19 +589,19 @@ The weak paragraph in the worked example shows four of these at once: "everyone 
 
 Good security writing states a claim, shows the evidence, makes the reasoning explicit and admits the limits — conclusion first, sources exact, reporting kept apart from inference and recommendation. Write as if a specialist will check every sentence and a decision-maker will read only the first three.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 40
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security literacy
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX010.
@@ -653,7 +653,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -703,19 +703,19 @@ EX010 shows the first error: calling the cable cut a vulnerability confuses the 
 
 Security literacy is precise vocabulary applied to real consequences. Assets, threats, vulnerabilities, likelihood, impact and controls are distinct ideas. In critical services availability, integrity and safety often outrank confidentiality, and the right priority for an advisory depends on exposure and exploitation, not on a score alone.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 40
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Discrete structures
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX012.
@@ -767,7 +767,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX012]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -855,19 +855,19 @@ In Lab 3 the convention line `edge u -> v means "v depends on u"` is what makes 
 
 Sets describe inventories and permissions; logic makes rules exact and checkable; graphs make dependencies visible and computable. Each model answers a narrower question than it seems to: reachability shows exposure, not failure, and exhaustive checking only works while the state space is small.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 40
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Networks and protocols
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX013.
@@ -919,7 +919,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1001,19 +1001,19 @@ Lab 4 shows why: a port-only rule allowing 502 would have passed the field devic
 
 Networks carry the assumptions of their protocols. Classic industrial protocols trust whoever can reach them, so critical services enforce trust with zones, conduits and allowlists — and then check observed flows against the policy. A violation is a question to an owner, not a verdict.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 40
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Programming II
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX015.
@@ -1065,7 +1065,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1144,19 +1144,19 @@ At CW the third error is the dangerous one: if only the operator interface check
 
 Parsing is a security boundary. Define valid input precisely, accept only that, fail into a state the process owner chose, log every rejection and test boundaries and malformed cases. Validation catches malformed input; it does not prove that well-formed input came from someone authorised.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 40
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Data and databases
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX017.
@@ -1208,7 +1208,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -1295,19 +1295,19 @@ Lab 5 shows where three of these errors would bite. The version comparison would
 
 Relational data lets you answer cross-cutting security questions with one query, if keys, types and joins are right. Compare versions numerically, look for what joins drop, rank severities with numbers and never build SQL from untrusted strings.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 40
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Ethics and authorized practice
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX019.
@@ -1364,7 +1364,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -1417,19 +1417,19 @@ The open-HMI worked example tests the first three. The page was publicly reachab
 
 Authorisation defines legitimate security work. Write rules of engagement, stop when you stumble on something real and report it privately, and reason through conflicts between duties explicitly, recording who accepted which risk. In critical services, careless testing can harm people.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 40
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Operating systems
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX021.
@@ -1486,7 +1486,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -1538,19 +1538,19 @@ The CT signalling workstation shows the alternatives: allowlisting and three nam
 
 The OS enforces separation, permissions and privilege; least privilege and complete mediation are its guiding ideas. In critical services the most durable devices often have the weakest protections, so hardening must be verifiable and patching must be risk-based, scheduled and reversible.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 40
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Probability and statistics
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX024.
@@ -1602,7 +1602,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX024]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -1684,19 +1684,19 @@ Lab 6 gives each a number: 95 % detection still yields a 0.087 chance that an al
 
 Probability rules are simple; their assumptions are not. Base rates decide whether an alert is worth reading, "rare per day" becomes "likely per year", redundancy is weakened by common causes and skewed data needs medians and percentiles. State independence assumptions and test what happens when they fail.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 40
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Identity and access
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX025.
@@ -1748,7 +1748,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes and connection
@@ -1835,19 +1835,19 @@ In Lab 7 the script confirms that *ana*'s account is "ok" only in the sense that
 
 Identity answers three different questions. Use strong, phishing-resistant authentication for critical remote access, grant permissions through roles, forbid toxic combinations and review accounts against authoritative sources and actual use. Shared and vendor accounts need workable alternatives, not just prohibitions.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 40
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Privacy foundations
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX027.
@@ -1904,7 +1904,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes and connection
@@ -1961,19 +1961,19 @@ Each appears in this chapter's examples. CT's original two-year tap copy was sec
 
 Privacy asks whether processing about people is appropriate, not only whether it is secure. Apply purpose limitation, minimisation and storage limitation — especially to security monitoring itself — recognise that combinations re-identify, and involve data-protection specialists rather than offering legal conclusions.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue studying — chapter 14 of 40
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Evidence and measurement
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX029.
@@ -2025,7 +2025,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes and connection
@@ -2085,19 +2085,19 @@ CEDC's evidence table shows the first: 362 of 365 successful jobs say nothing ab
 
 Evidence has a source, a method, a date and a degree of independence. Measure outcomes rather than activity, report denominators, and use sensitivity analysis to decide whether uncertain evidence is good enough. "Unknown, with partial evidence" is often the most honest and useful answer.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue studying — chapter 15 of 40
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Security architecture
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX032.
@@ -2154,7 +2154,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX032]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes and connection
@@ -2208,19 +2208,19 @@ In CW's case, the Lab 4 RDP connection from corporate directly into control is t
 
 Architecture turns principles into enforced properties: no direct path from the internet to anything that moves the physical world. Layer independent controls, watch for common modes, apply zero trust where devices can participate and segment where they cannot, and treat remote access as the most important conduit to design well.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue studying — chapter 16 of 40
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Cryptography concepts
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX033.
@@ -2267,7 +2267,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes and connection
@@ -2351,19 +2351,19 @@ In Lab 8 a plain SHA-256 of the command would let anyone who changes it compute 
 
 Each primitive guarantees something specific: hashes detect change only against a trusted reference, MACs and signatures give authenticity, sequence numbers give freshness and encryption gives secrecy. In control systems authenticity, integrity and freshness matter most, and real security depends on key management and on keeping anchors out of an attacker's reach.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue studying — chapter 17 of 40
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Research methods I
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX035.
@@ -2420,7 +2420,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX035]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes and connection
@@ -2475,19 +2475,19 @@ The CEDC backup plan avoids these by naming the population (CEDC's dispatch serv
 
 Research starts with a question specific enough to be answered and disputed. Choose the design the question needs, search and screen literature in a way someone else could repeat, and name the threats to validity before a reviewer does.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 40
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Chapter 19 — Critical infrastructure and sector security: scope and theory
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX037.
@@ -2539,7 +2539,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes and connection
@@ -2591,19 +2591,19 @@ CEDC shows the first error: a dispatch centre has almost no OT and is still crit
 
 Infrastructure is critical because society depends on its functions. Jurisdictions organise it differently through sectors, functions and laws such as NIS2, CER and DORA. Risk, resilience and systems thinking are complementary lenses, and the field's distinctive features — physical consequence, longevity, interdependency, regulation and mixed ownership — explain why it needs its own discipline.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue studying — chapter 19 of 40
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Chapter 20 — Critical infrastructure and sector security: foundational cases
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX039.
@@ -2650,7 +2650,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes and connection
@@ -2713,19 +2713,19 @@ Common examples: claiming Oldsmar was "a hack" without the 2023 revision; repeat
 
 The field's foundational cases teach through comparison: manual fallback, hygiene, safety-system independence, remote-access governance, IT–OT business dependency and shared-dependency concentration. Read the primary sources, keep revisions in view and transfer lessons, not techniques.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue studying — chapter 20 of 40
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Chapter 21 — Critical infrastructure and sector security: system models
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX041.
@@ -2777,7 +2777,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes and connection
@@ -2827,19 +2827,19 @@ CPN's feeder model shows the first two: the relay sits at level 1 and acts witho
 
 Control systems are loops of sensing, deciding and acting, supervised by SCADA and protected by independent safety systems. Layered models aid segmentation; service chains with degraded modes show how long a service can survive without automation. The worst consequences arise where manipulation meets safety and human procedure.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue studying — chapter 21 of 40
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Chapter 22 — Critical infrastructure and sector security: data and dependencies
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX024.
@@ -2886,7 +2886,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX024]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes and connection
@@ -2960,19 +2960,19 @@ Lab 9 illustrates the first three: a design autonomy of 72 hours for the hospita
 
 Inventories and dependency maps are evidence with sources, dates and gaps. Adding time — backup autonomy — turns exposure into a timeline of loss, exposes weak links such as a battery-only exchange and reveals that a powered building can still be unusable. Test autonomy claims and look behind each backup to its own dependencies.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue studying — chapter 22 of 40
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Critical infrastructure and sector security: methods I
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX045.
@@ -3024,7 +3024,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes and connection
@@ -3073,19 +3073,19 @@ The chlorine example shows the third error directly: the matrix result "monitor"
 
 Structured risk assessment brings discipline to scope, assumptions and judgement; risk matrices simplify communication but distort comparisons. Consequence-first methods such as CCE start from what must not happen and favour engineering mitigations that bound harm regardless of the attacker. Use both, and say which one drives each recommendation.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue studying — chapter 23 of 40
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Critical infrastructure and sector security: controls
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX047.
@@ -3137,7 +3137,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX047]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes and connection
@@ -3193,19 +3193,19 @@ The CVH BMS map avoids each: it counts no controls, it maps them to three scenar
 
 Frameworks organise outcomes; risk analysis decides priorities; mappings connect controls to the scenarios they address and reveal gaps. Prefer combinations of prevention, detection and recovery, and in OT favour engineering and physical controls that keep working when computers do not.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue studying — chapter 24 of 40
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Chapter 25 — Laboratory I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX049.
@@ -3262,7 +3262,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes and connection
@@ -3339,19 +3339,19 @@ A note that lists all six Lab 4 flows, all five unsupported devices and every La
 
 Laboratory I turns separate exercises into one judgement. Trace every finding to reproducible output, reason from consequences across operators, map recommendations to findings and owners, and state confidence and limits explicitly.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue studying — chapter 25 of 40
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Chapter 26 — Critical infrastructure and sector security: methods II
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX051.
@@ -3403,7 +3403,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes and connection
@@ -3457,19 +3457,19 @@ The CEDC STPA avoided the second error by naming unsafe control actions, two wit
 
 Threat modelling finds threats where data crosses trust boundaries; STPA finds unsafe control actions in socio-technical structures; tabletops test plans and people. Each sees what others miss, so choose by the question — and remember that many hazards involve no adversary at all.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue studying — chapter 26 of 40
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Critical infrastructure and sector security: verification
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX053.
@@ -3516,7 +3516,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes and connection
@@ -3588,19 +3588,19 @@ Lab 10 shows the second error numerically: never alerting scores 99.5 % accuracy
 
 Verification asks whether a control works as specified; validation asks whether it achieves its purpose. Design tests that could fail, evaluate detectors with precision and recall at thresholds chosen for stated costs, and report conditions and limits alongside the numbers.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue studying — chapter 27 of 40
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — Critical infrastructure and sector security: failure analysis
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX056.
@@ -3647,7 +3647,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX056]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes and connection
@@ -3720,19 +3720,19 @@ Lab 11 assumes independence of generator failure and fuel contamination; EX024 s
 
 Fault trees and FMEA make failure assumptions explicit, top-down and bottom-up. Adding cyber paths reveals single events that bypass designed redundancy; the strongest response restores structural independence rather than tuning an estimate. When failures happen, review the system, not the person.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue studying — chapter 28 of 40
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — Critical infrastructure and sector security: operations
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX057.
@@ -3784,7 +3784,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes and connection
@@ -3857,19 +3857,19 @@ The CPN playbook avoids the first two by having the supervisor authorise isolati
 
 Security operations in critical services work hand in hand with operations: keep the process safe first, contain without blinding operators, preserve evidence and recover. Measure with medians, percentiles and sample sizes, and investigate the outliers that averages hide.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue studying — chapter 29 of 40
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Laboratory II
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX059.
@@ -3926,7 +3926,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX059]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes and connection
@@ -3992,19 +3992,19 @@ A team that restores the setpoint quickly but cannot say who decided scores 2 fo
 
 Laboratory II combines people and evidence: decide under time pressure, reconstruct timelines from sources of graded confidence, verify integrity and reason across sectors. The most dangerous situations often arise from the interaction of two individually manageable events.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue studying — chapter 30 of 40
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Chapter 31 — Critical infrastructure and sector security: advanced cases
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX061.
@@ -4051,7 +4051,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes and connection
@@ -4109,19 +4109,19 @@ The fourth error would turn a TRITON lesson into a description of how to reach a
 
 Advanced cases teach through failed assumptions: what operators see is real, safety systems are independent, risk is bounded by our own systems. Compare cases on cause, path, consequence and assumption; manage supply-chain and concentration risk jointly across operators; and turn lessons into generic controls rather than technique knowledge.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Continue studying — chapter 31 of 40
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Chapter 32 — Critical infrastructure and sector security: interdisciplinary interfaces
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX063.
@@ -4173,7 +4173,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX063]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes and connection
@@ -4226,19 +4226,19 @@ The worked example avoids each: the legal message says what was checked and when
 
 Security in critical services sits among law, economics, safety, human factors and communication. Know where obligations live and when to call counsel, recognise incentive problems, reconcile safety and security jointly, design for people under stress and translate each finding for the audience who must act on it.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Continue studying — chapter 32 of 40
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Chapter 33 — Research methods II
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX065.
@@ -4290,7 +4290,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX065]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes and connection
@@ -4341,19 +4341,19 @@ In the coding example, reporting 80 % agreement instead of kappa 0.57 would be t
 
 Qualitative methods answer how and why; they need ethics approval, consent and protection of participants and organisations. Codebooks and kappa make coding reliable; scripts, seeds and versions make quantitative analysis reproducible; mixed methods are only as good as their integration.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Continue studying — chapter 33 of 40
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Chapter 34 — Comparative project
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX068.
@@ -4405,7 +4405,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX068]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes and connection
@@ -4500,19 +4500,19 @@ Presenting 4.20 as proof would be the fourth.
 
 Comparison is the bachelor's core skill: explicit criteria, anchored scores, evidence, weights set in advance, sensitivity analysis and stated reversal conditions. Constraints and vetoes come before scoring, and a weighted total is a structured argument, not a verdict.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Continue studying — chapter 34 of 40
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Chapter 35 — Capstone proposal
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX069.
@@ -4559,7 +4559,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX069]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes and connection
@@ -4611,19 +4611,19 @@ Each error has a typical symptom. A topic such as "the state of hospital device 
 
 A bachelor's capstone answers a real decision problem by comparing options with evidence and ending in a bounded recommendation. A good proposal fixes the question, criteria, evidence plan, ethics, risks, success criteria and timeline before the work begins.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Continue studying — chapter 35 of 40
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Chapter 36 — Field or community practice
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX072.
@@ -4680,7 +4680,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX072]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes and connection
@@ -4730,19 +4730,19 @@ The CW log entry avoids all four: the placement had an agreement, the paper shee
 
 Field and community practice ground the course in reality. Agree scope, confidentiality, supervision and escalation in writing; contribute fresh eyes and time; understand constraints before judging; keep a sanitised reflective log; and let the host review anything that leaves the site.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Continue studying — chapter 36 of 40
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Chapter 37 — Evidence review seminar
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX074.
@@ -4789,7 +4789,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX074]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes and connection
@@ -4861,19 +4861,19 @@ Lab 14 shows the first: "85 %" without "of 20" and an interval hides that the tr
 
 Evidence review is structured scepticism: question, data, method, results, validity, interests and limits. Report small-sample results with intervals — Wilson for proportions — and let peer review improve work by being specific, prioritised and respectful.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Continue studying — chapter 37 of 40
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Chapter 38 — Capstone implementation
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX075.
@@ -4925,7 +4925,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX075]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes and connection
@@ -4971,19 +4971,19 @@ The week-14 checkpoint avoids each: the inventory script has a seed and hash, th
 
 Implementation is disciplined evidence collection: log decisions, register evidence, record changes, build small tested reproducible models, protect host and participant data, and report surprises as findings. The capstone's credibility rests on the trace from each claim back to its evidence.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Continue studying — chapter 38 of 40
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Chapter 39 — Capstone evaluation
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX077.
@@ -5035,7 +5035,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX077]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes and connection
@@ -5098,19 +5098,19 @@ The worked evaluation avoids the first by using the proposal's criteria, varies 
 
 Evaluate against the criteria you set before the results, test the comparison's robustness, state limitations with their direction and invite independent review. A fragile recommendation honestly labelled is more useful than a robust-looking one that hides its assumption.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Continue studying — chapter 39 of 40
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Chapter 40 — Thesis and presentation
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX079.
@@ -5162,7 +5162,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes and connection
@@ -5220,13 +5220,13 @@ The candidate answers the staffing challenge from Table 6.3: if alerts are not r
 
 The thesis reports a comparison, not a story: method, results, discussion and a conclusion that answers exactly the question asked with its conditions. Present the comparison and its sensitivity clearly, prepare for every family of question and answer hard ones honestly — that is the professional habit this course exists to build.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Continue studying — chapter 40 of 40
 
 [← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

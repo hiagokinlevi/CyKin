@@ -1,5 +1,5 @@
 ---
-name: cyberabc-identity-access-technical-fb22b339
+name: cykin-identity-access-technical-fb22b339
 description: "IAM Technical Course (18 ch / 72 ex)"
 license: CC0-1.0
 ---

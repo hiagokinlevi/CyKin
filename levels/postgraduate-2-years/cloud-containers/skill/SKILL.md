@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cloud-containers-postgraduate-a110c6c1
+name: cykin-cloud-containers-postgraduate-a110c6c1
 description: "CLOUD Postgraduate Course (12 ch / 60 ex)"
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-privacy-data-protection-postgraduate-7171b013
+name: cykin-privacy-data-protection-postgraduate-7171b013
 description: "Guide a learner through the privacy Postgraduate Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

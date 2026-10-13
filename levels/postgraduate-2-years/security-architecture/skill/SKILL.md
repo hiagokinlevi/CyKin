@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-architecture-postgraduate-008471f8
+name: cykin-security-architecture-postgraduate-008471f8
 description: "Guide a learner through the ARCH Postgraduate Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

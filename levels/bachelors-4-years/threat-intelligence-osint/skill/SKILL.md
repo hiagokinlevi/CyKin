@@ -1,5 +1,5 @@
 ---
-name: cyberabc-threat-intelligence-osint-bachelor-10ac083a
+name: cykin-threat-intelligence-osint-bachelor-10ac083a
 description: "Teach the four-year bachelor's threat intelligence and OSINT course: forty subjects following a synthetic hospital-trust intern, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---

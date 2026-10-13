@@ -1,5 +1,5 @@
 ---
-name: cyberabc-information-security-postgraduate-26b0b6ef
+name: cykin-information-security-postgraduate-26b0b6ef
 description: "Guide a learner through the information security Postgraduate Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

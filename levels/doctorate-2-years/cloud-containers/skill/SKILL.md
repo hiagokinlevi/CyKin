@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cloud-containers-doctorate-8a31192f
+name: cykin-cloud-containers-doctorate-8a31192f
 description: "CLOUD Doctoral research book (8 ch / 50 ex)"
 license: CC0-1.0
 ---

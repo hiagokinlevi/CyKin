@@ -67,7 +67,7 @@ O vocabulário metodológico genérico (verificação versus validação, númer
 
 ## Capítulo 1 — Integridade e métodos de pesquisa avançada
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -129,7 +129,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -253,19 +253,19 @@ Rubrica para todos os exercícios deste livro: **3** = correto, delimitado, com 
 
 A pesquisa em TO estuda malhas de controle cuja falha é física. Suba a escada de alegações apenas com evidências, limite cada experimento com uma camada de segurança independente, trate os dados de plantas como sensíveis e escolha métricas — revocação por evento, atraso, alarmes falsos por turno, impacto físico na detecção — que uma convenção de pontuação não consiga inflar.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 08
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança de TO, IoT e sistemas ciberfísicos: fronteira da pesquisa
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -322,7 +322,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -404,19 +404,19 @@ Um artigo de fornecedor pode apontar para uma pergunta, mas não pode respondê-
 
 A fronteira fica entre comunidades; leia-a com sinônimos, trate as normas como hipóteses e avalie os artigos de detecção quanto à ciência do adversário, ao vazamento do limiar, ao relato do impacto e à validação num segundo contexto. Uma lacuna só é útil quando diz como poderia ser fechada e como esse fechamento poderia falhar.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 08
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -468,7 +468,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -586,19 +586,19 @@ Cada um desses erros tem um sintoma visível numa proposta: uma frase de contrib
 
 Uma proposta forte se posiciona com honestidade, expressa o mecanismo como um invariante físico, torna explícito o pressuposto do sensor honesto por meio de um modelo de atacante e pré-declara as hipóteses — incluindo a que marca onde a contribuição falha.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 08
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação das linhas de base e piloto
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -650,7 +650,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -736,19 +736,19 @@ Cada erro deixa um resultado parecer melhor do que é. Uma nova pontuação com 
 
 Reproduza as linhas de base com uma tolerância pré-declarada e diagnostique as diferenças de forma sistemática; verifique o simulador; ajuste em sementes separadas e submeta o ajuste a testes de estresse contra o erro de modelo; e pilote apenas para a viabilidade, com uma autoridade de parada física independente.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 08
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -800,7 +800,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -878,19 +878,19 @@ Cada item tem uma verificação concreta neste estudo: o Laboratório 5 usa núm
 
 Os desenhos pareados tornam as comparações mais nítidas; a incerteza tem três tipos e os intervalos captam apenas um; validar significa limiares congelados num contexto independente; e um parágrafo de resultados honesto carrega as suas ressalvas e a sua condição de falha.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 08
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica de pares e revisão
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -942,7 +942,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1005,19 +1005,19 @@ Cada erro transforma a crítica em defesa. Responda à objeção da rampa lenta 
 
 A crítica é dado: converta as objeções em testes, deixe que elas estreitem a alegação, publique as condições de fronteira com destaque e faça a revisão de duplo uso antes da submissão. A objeção mais valiosa aqui transformou uma alegação algorítmica numa alegação arquitetural.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 08
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -1069,7 +1069,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1158,19 +1158,19 @@ Um arquivo que libera tudo vaza detalhes da planta; um que não libera nada não
 
 A tese é um argumento em que cada elemento aponta para evidências; o arquivo libera apenas o que é seguro e verificado, falhando de forma fechada; os dados sintéticos são rotulados como inventados ou calibrados; e as limitações dizem para que lado enviesam o resultado.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 08
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -1232,7 +1232,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1314,13 +1314,13 @@ Cada extensão testa uma fronteira que a tese mediu, mas não conseguiu cruzar. 
 
 Audite cada alegação, prepare-se para as seis famílias de perguntas, publique numa ordem que construa credibilidade, divulgue as falhas de implementação por meio de coordenação e traduza as constatações com uma confiança explícita. A contribuição do doutorado é um método medido *e* os seus limites medidos.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 08
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

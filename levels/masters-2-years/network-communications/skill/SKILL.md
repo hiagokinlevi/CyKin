@@ -1,5 +1,5 @@
 ---
-name: cyberabc-network-communications-masters-1c76d953
+name: cykin-network-communications-masters-1c76d953
 description: "NET Master's Course (8 ch / 50 ex)"
 license: CC0-1.0
 ---

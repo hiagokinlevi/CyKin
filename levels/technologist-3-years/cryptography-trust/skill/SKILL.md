@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cryptography-trust-technologist-0cb8972f
+name: cykin-cryptography-trust-technologist-0cb8972f
 description: "Guide a learner through the technologist course in Cryptography and trust services: a synthetic council trust-services placement, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---

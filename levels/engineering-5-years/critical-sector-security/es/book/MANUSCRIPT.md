@@ -93,7 +93,7 @@ Los [resultados resueltos](#worked-results) contienen EX001–EX100. Un [glosari
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -145,7 +145,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -231,19 +231,19 @@ Antes de confiar en el laboratorio, compruebe que sus números coinciden con el 
 
 La infraestructura está hecha de existencias y flujos. Una derivada es una tasa que se puede comparar con lo que los equipos pueden hacer; una integral es una cantidad que se puede comparar con un límite que protege a las personas. El tiempo de autonomía es una integral resuelta para su límite superior, por lo general numéricamente, y depende de cuándo empieza la perturbación. Contraste los resultados numéricos con una solución exacta o más fina, mantenga explícitas las unidades y nunca deje que un promedio sustituya a una curva cuando la curva es lo que la interrupción va a encontrar.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Siga estudiando — capítulo 01 de 50
 
 [← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX003.
@@ -290,7 +290,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX003]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -378,19 +378,19 @@ En LRWA estos errores tienen consecuencias directas: un grafo que mezcla direcci
 
 Escriba las reglas como lógica y las dependencias como grafos, y deje que la computadora las compruebe. Los enclavamientos pequeños pueden y deben comprobarse de forma exhaustiva; los sistemas completos no, y el conteo se lo indica. Busque nodos compartidos detrás de caminos aparentemente diversos, etiquete las aristas con su tipo y pregúntese, de cada entrada, cuáles llegan por una red que un adversario podría alcanzar.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 50
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para la computación
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX006.
@@ -447,7 +447,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX006]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -501,19 +501,19 @@ Cada uno de estos errores haría que R5 pareciera cumplido sobre el papel mientr
 
 La energía, la señal y el calor son el punto donde lo cibernético se encuentra con lo físico. Dimensione la energía de respaldo para las condiciones de fin de vida y para la interrupción completa que incluye el modelo de amenazas; trate la disponibilidad por radio como una cuestión de relación señal/ruido, no de criptografía; diseñe los gabinetes pensando en el calor; y recuerde que el acceso físico abre canales laterales y ataques por inducción de fallas que ningún cortafuegos ve.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 50
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programación I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX008.
@@ -565,7 +565,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -658,19 +658,19 @@ Cada punto tiene una prueba correspondiente en el Lab 3 o en el EX008. Un analiz
 
 Escriba código explícito sobre tipos, límites y fallas. Implemente los algoritmos publicados contra los vectores de prueba publicados. Trate cada analizador como una frontera de seguridad: longitud, integridad, forma y, después, significado físico; y rechace con un motivo en lugar de adivinar. Mantenga separadas en su mente la detección de errores accidentales (CRC) y la integridad frente a adversarios (MAC y firmas).
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Siga estudiando — capítulo 04 de 50
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicación en ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX010.
@@ -732,7 +732,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -791,19 +791,19 @@ La mayoría de estos errores aparece primero en los conjuntos de requisitos. Un 
 
 Escriba para permitir decisiones: primero la recomendación, después la evidencia y los supuestos y, al final, las condiciones de cambio. Haga que cada requisito sea verificable y trazable; informe los números con unidades, métodos e incertidumbre; adapte el mensaje, no los hechos, al lector; y trate los detalles de la infraestructura como información sensible con un público definido.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Siga estudiando — capítulo 05 de 50
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX011.
@@ -860,7 +860,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -910,19 +910,19 @@ En el ejemplo del cloro, un equipo que usara todo el año la constante de decaim
 
 Cuando un flujo depende de la existencia, escriba una EDO. Los sistemas lineales de primer orden se aproximan al equilibrio de forma exponencial con una constante de tiempo $\tau$; ese número se convierte en un requisito de detección y respuesta. Resuelva numéricamente con comprobaciones de convergencia y atención a la estabilidad. Use la sensibilidad para averiguar qué supuesto domina un margen, y diseñe una detección que no dependa del componente bajo sospecha.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 50
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidad y estadística
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX013.
@@ -984,7 +984,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1070,19 +1070,19 @@ Cada error tiene un ejemplo en LRWA. Avisar al ingeniero de guardia ante cada al
 
 La probabilidad es un modelo; diga de qué tipo. La regla de Bayes hace que las tasas base sean decisivas para las alarmas; la redundancia solo funciona en la medida en que las fallas son independientes, y las causas comunes, incluidas las vulnerabilidades compartidas, suelen dominar. Poisson es un punto de partida para los eventos raros. Describa los datos con su dispersión, el tamaño de la muestra y el método de recogida, y nunca trate la ausencia de fallas observadas como prueba de seguridad.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Siga estudiando — capítulo 07 de 50
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitectura de computadoras
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX015.
@@ -1139,7 +1139,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1194,19 +1194,19 @@ La comparación de RTU muestra estos errores en la práctica. RTU-A es determini
 
 La arquitectura determina tanto la temporización como la confianza. El control necesita el desempeño del peor caso, no el medio. Los PLC y las RTU son máquinas longevas basadas en ciclos de barrido cuyas características de seguridad deben seguir siendo adecuadas dentro de décadas. Los mecanismos de hardware (privilegio, protección de memoria, arranque seguro, almacenamiento de claves) dan garantías específicas y limitadas; las características de desempeño pueden filtrar información a través de las fronteras. Indique exactamente contra qué protege cada mecanismo.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Siga estudiando — capítulo 08 de 50
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programación II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX017.
@@ -1258,7 +1258,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1311,19 +1311,19 @@ Cada error anula una propiedad de la máquina de estados de la bomba. Los indica
 
 Descomponga en torno a las decisiones que probablemente cambien y enuncie invariantes. Haga explícitos los modos como máquinas de estados y rechace todo lo que no esté enumerado. Pruebe los límites y las fallas, lea la cobertura como un mapa de lo no probado, trate los errores de forma deliberada, use el reloj adecuado y dé a cada elemento de estado compartido un único propietario.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 50
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética y seguridad en ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX019.
@@ -1380,7 +1380,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1433,19 +1433,19 @@ La aprobación con plazo del ejemplo resuelto muestra varios de estos errores a 
 
 La seguridad pública va primero, comunicada con honestidad. La seguridad funcional y la seguridad deben analizarse juntas, porque cada una puede anular a la otra. Pruebe solo con autorización escrita y específica; comunique en privado los hallazgos incidentales. Decida en condiciones de incertidumbre con un procedimiento documentado, y trate «no verificado» como una respuesta que usted puede, y debe, dar.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Siga estudiando — capítulo 10 de 50
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes y protocolos
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX022.
@@ -1502,7 +1502,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1588,19 +1588,19 @@ La revisión de flujos de LRWA ilustra directamente el tercer error: la configur
 
 Cada capa de red promete algo acotado; la autenticidad hay que añadirla. Los protocolos industriales varían en capacidad de seguridad, y la capacidad no es la configuración. Presupueste la latencia con peores casos. Exprese la segmentación como zonas y conductos con listas de permitidos, y verifíquela con los flujos observados y no con las configuraciones previstas.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Siga estudiando — capítulo 11 de 50
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operativos
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX023.
@@ -1657,7 +1657,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX023]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1713,19 +1713,19 @@ El endurecimiento del SCADA de LRWA evita cada uno de estos errores: las cuentas
 
 El sistema operativo determina tanto la temporización como la línea base de seguridad. Ponga los plazos en plataformas de tiempo real. Aplique el mínimo privilegio, las listas de aplicaciones permitidas, el endurecimiento y el registro fuera del equipo. Aplique los parches según el riesgo evaluado, con procedimientos probados y controles compensatorios cuando aún no pueda parchear, y mantenga un entorno espejo que lo haga posible.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Siga estudiando — capítulo 12 de 50
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de datos
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa de la lección
 
 Lección 13 publicada. Mapa, ejemplo, EX025.
@@ -1782,7 +1782,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -1869,19 +1869,19 @@ La investigación del 4 de marzo depende de evitar cada uno de estos errores, de
 
 Modele los datos operativos de forma deliberada, sepa qué descarta su historiador y use las transacciones y la replicación pensando en la conmutación por falla. Cada mecanismo de integridad detecta algo específico: las restricciones rechazan lo imposible, las cadenas de hashes detectan ediciones respecto de un ancla guardada de forma independiente, las firmas vinculan a quien posee una clave; ninguno prueba la verdad. Mueva los datos hacia fuera, a una DMZ, y nunca deje que los informes se conviertan en un camino hacia el control.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Siga estudiando — capítulo 13 de 50
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Ingeniería de software
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa de la lección
 
 Lección 14 publicada. Mapa, ejemplo, EX027.
@@ -1943,7 +1943,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2000,19 +2000,19 @@ El plan de la pasarela del TMRP se redactó para evitar cada uno de estos errore
 
 El proceso hace visibles los errores pronto y deja evidencia. Use un marco de desarrollo seguro reconocido, revise con listas de comprobación, mida la complejidad y trate las dependencias y las compilaciones como parte de su superficie de ataque, con SBOM y procedencia. Diseñe las versiones y las actualizaciones para décadas, con autenticación, despliegue por etapas y reversión.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Siga estudiando — capítulo 14 de 50
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de seguridad
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa de la lección
 
 Lección 15 publicada. Mapa, ejemplo, EX029.
@@ -2069,7 +2069,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2127,19 +2127,19 @@ La primera tabla de riesgos del TMRP evita estos errores nombrando primero cada 
 
 La seguridad de la infraestructura protege un servicio físico: la integridad y la disponibilidad del control y la seguridad funcional van primero. Empiece por la consecuencia; después, las amenazas y las vulnerabilidades; después, los controles. Aplique principios de diseño duraderos, superponga defensas cuyas fallas sean independientes, suponga la brecha y use los marcos como listas de comprobación estructuradas, no como evidencia.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Siga estudiando — capítulo 15 de 50
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Ingeniería de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa de la lección
 
 Lección 16 publicada. Mapa, ejemplo, EX031.
@@ -2196,7 +2196,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2251,19 +2251,19 @@ En el TMRP cada uno de estos errores tiene una contramedida: los requisitos se t
 
 La ingeniería de sistemas pasa de las necesidades a sistemas verificados y validados mediante requisitos trazables, interfaces gestionadas y configuración controlada. La seguridad pertenece a esos procesos: las necesidades de protección se convierten en requisitos, los requisitos en arquitectura y diseño, y cada afirmación de seguridad necesita evidencia de verificación.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Siga estudiando — capítulo 16 de 50
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de control y realimentación
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa de la lección
 
 Lección 17 publicada. Mapa, ejemplo, EX034.
@@ -2320,7 +2320,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2412,19 +2412,19 @@ Para Hollin Hill, el EX034 muestra claramente el problema de la dependencia: el 
 
 La realimentación hace que los sistemas sean robustos y crédulos. Un sensor sesgado lleva a un controlador correcto a un estado físico incorrecto. Detecte con residuos construidos a partir de una física independiente, use pruebas por paso y acumuladas para los ataques abruptos y lentos, fije los umbrales a partir del ruido medido y recuerde que la independencia de los caminos de medición, y no la astucia del algoritmo, es lo que derrota a un atacante capaz.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Siga estudiando — capítulo 17 de 50
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitectura de seguridad
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa de la lección
 
 Lección 18 publicada. Mapa, ejemplo, EX035.
@@ -2486,7 +2486,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX035]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2545,19 +2545,19 @@ En LRWA, el tercer y el primer error son los más probables: un proveedor que qu
 
 Use los modelos por niveles para ubicar activos y conductos, haga real la DMZ sin permitir ningún cruce directo, aplique la confianza cero donde los sistemas puedan autenticarse y la segmentación donde no puedan, haga pasar todo el acceso remoto por una pasarela controlada, monitoree de forma pasiva sin crear caminos y juzgue la arquitectura por las consecuencias que hace difíciles de provocar.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Siga estudiando — capítulo 18 de 50
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidad y criptografía
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa de la lección
 
 Lección 19 publicada. Mapa, ejemplo, EX018.
@@ -2614,7 +2614,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX018]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2705,19 +2705,19 @@ El diseño del TMRP responde a cada punto: las etiquetas se comparan en tiempo c
 
 Elija primitivas estándar para la propiedad que necesite: hashes para las huellas, MAC o firmas para la autenticidad, cifrado autenticado para la confidencialidad con integridad. Añada frescura para derrotar la repetición y consérvela entre reinicios. La gestión de claves es el verdadero sistema: claves por dispositivo en hardware, rotación y revocación. Dé a las personas y a los dispositivos identidades distintas y con autenticación fuerte.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Siga estudiando — capítulo 19 de 50
 
 [← Capítulo 18](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Infraestructura crítica y seguridad sectorial: contexto de ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa de la lección
 
 Lección 20 publicada. Mapa, ejemplo, EX039.
@@ -2774,7 +2774,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2836,19 +2836,19 @@ El propio contexto de LRWA muestra por qué esto importa. Su condición de crít
 
 La infraestructura crítica se define por las consecuencias. Los sectores difieren en procesos, unidades de consecuencia y tecnología, pero comparten la interdependencia respecto de la energía, las comunicaciones, el tiempo y los proveedores comunes. Trabaje dentro de las regulaciones según versión y fecha, aprenda de los incidentes solo hasta donde llegan sus fuentes y defina cada programa de seguridad por el servicio y las personas que protege.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Siga estudiando — capítulo 20 de 50
 
 [← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Infraestructura crítica y seguridad sectorial: requisitos
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa de la lección
 
 Lección 21 publicada. Mapa, ejemplo, EX041.
@@ -2905,7 +2905,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -2968,19 +2968,19 @@ El conjunto del TMRP evita el primer error incluyendo R4, R5 y R6 para la operac
 
 Derive los requisitos de las consecuencias, las partes interesadas, las regulaciones, las amenazas y las restricciones. Especifique la operación degradada y la recuperación con tanto cuidado como la protección. Traduzca los niveles de seguridad objetivo en requisitos de componente concretos mediante una evaluación de riesgos documentada, y registre cada conflicto con sus opciones, su decisión y su responsable.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Siga estudiando — capítulo 21 de 50
 
 [← Capítulo 20](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa de la lección
 
 Lección 22 publicada. Mapa, ejemplo, EX043.
@@ -3037,7 +3037,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3096,19 +3096,19 @@ El modelo de Hollin Hill muestra claramente el último error: tratar la pérdida
 
 Construya el inventario a partir de varias fuentes conciliadas, modele el sistema en vistas funcional, física y de flujos de datos con fronteras de confianza, represente explícitamente los modos degradados y mantenga el modelo actualizado y protegido. Los buenos modelos separan la visibilidad del control y muestran qué propiedad protege realmente el servicio.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Siga estudiando — capítulo 22 de 50
 
 [← Capítulo 21](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa de la lección
 
 Lección 23 publicada. Mapa, ejemplo, EX045.
@@ -3165,7 +3165,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3255,19 +3255,19 @@ El propio Lab 9 supone independencia, así que una falla de software compartida 
 
 Los modelos de amenazas generan lo que podría salir mal en cada frontera de confianza; ATT&CK los mantiene realistas. Los árboles de fallas y los conjuntos de corte mínimos muestran la lógica de falla y los puntos únicos de falla; los árboles de ataque y los diagramas de pajarita muestran los caminos del adversario y las barreras. Combínelos condicionando a lo que un adversario puede provocar: lo que queda es la defensa que realmente importa.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Siga estudiando — capítulo 23 de 50
 
 [← Capítulo 22](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Infraestructura crítica y seguridad sectorial: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa de la lección
 
 Lección 24 publicada. Mapa, ejemplo, EX047.
@@ -3324,7 +3324,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX047]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3386,19 +3386,19 @@ El plan de métodos del TMRP se protege del primer error nombrando el límite de
 
 Asigne a cada pregunta un método capaz de responderla y conozca el límite de cada método. Haga reproducibles las evaluaciones de riesgos con escalas definidas y justificación; verifique y valide las simulaciones para un propósito enunciado; use los ejercicios para probar a las personas y los planes, no los equipos; y gradúe la evidencia según la decisión que respalda.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Siga estudiando — capítulo 24 de 50
 
 [← Capítulo 23](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Taller de diseño I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa de la lección
 
 Lección 25 publicada. Mapa, ejemplo, EX049.
@@ -3460,7 +3460,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3522,19 +3522,19 @@ El Taller I se protege de estos errores: sus cuatro conceptos difieren en princi
 
 Un taller convierte el conocimiento en un diseño sometido a crítica. Genere alternativas realmente distintas, incluidos los extremos; pondere los criterios antes de puntuar y compruebe la sensibilidad; presente abiertamente los supuestos y las afirmaciones no verificadas; y trate los hallazgos de la revisión como información de diseño, con respuestas registradas.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Siga estudiando — capítulo 25 de 50
 
 [← Capítulo 24](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Infraestructura crítica y seguridad sectorial: alternativas de arquitectura
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa de la lección
 
 Lección 26 publicada. Mapa, ejemplo, EX051.
@@ -3591,7 +3591,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3660,19 +3660,19 @@ La tabla del TMRP evita el último error poniendo números donde existen, como l
 
 Elija la arquitectura según cómo falla y cómo puede atacarse. El control jerárquico con límites seguros locales combina la operabilidad con la degradación suave. La redundancia protege frente a las fallas independientes, la diversidad frente a las causas comunes; los flujos unidireccionales eliminan los caminos de ataque entrantes junto con el control remoto. Cuantifique donde pueda y documente el riesgo residual que acepta.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Siga estudiando — capítulo 26 de 50
 
 [← Capítulo 25](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Infraestructura crítica y seguridad sectorial: diseño de controles
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa de la lección
 
 Lección 27 publicada. Mapa, ejemplo, EX053.
@@ -3724,7 +3724,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3779,19 +3779,19 @@ El ejemplo de la dosificación evita cada uno: los límites están en el control
 
 Diseñe controles por escenario en los puntos de prevención, detección y recuperación. Ponga límites físicos diseñados a las peores consecuencias, imponga los límites donde el atacante no pueda eludirlos, haga independientes las capas y especifique para cada control su desempeño, sus dependencias, su modo de falla, su responsable y su verificación.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Siga estudiando — capítulo 27 de 50
 
 [← Capítulo 26](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Infraestructura crítica y seguridad sectorial: implementación I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa de la lección
 
 Lección 28 publicada. Mapa, ejemplo, EX055.
@@ -3848,7 +3848,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -3906,19 +3906,19 @@ La primera versión del validador de consignas muestra el tercer error, y el exp
 
 Implemente los controles a partir de las especificaciones, con pruebas para cada «deberá». Programe el camino de control de forma defensiva: valide por completo, compare en tiempo constante, proteja las claves, rechace ante cualquier error, acote los recursos y registre de forma útil. Prefiera las comprobaciones en positivo de la región segura. Pruebe en un banco capaz de producir las fallas que no puede provocar en servicio, y registre la evidencia sobre la marcha.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Siga estudiando — capítulo 28 de 50
 
 [← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Infraestructura crítica y seguridad sectorial: medición
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa de la lección
 
 Lección 29 publicada. Mapa, ejemplo, EX057.
@@ -3975,7 +3975,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4048,19 +4048,19 @@ La prueba de aceptación del TMRP informa de las omisiones y de la detección m�
 
 Mida lo que cambia las decisiones: el desempeño de los controles, la exposición y la resiliencia del servicio. Informe la precisión y la exhaustividad con las tasas base, y distribuciones del tiempo de detección que incluyan las omisiones. Represente la resiliencia como desempeño a lo largo del tiempo. Desconfíe de las métricas que pueden manipularse o que ocultan el peor caso.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Siga estudiando — capítulo 29 de 50
 
 [← Capítulo 28](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratorio de verificación I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa de la lección
 
 Lección 30 publicada. Mapa, ejemplo, EX059.
@@ -4117,7 +4117,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX059]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4213,19 +4213,19 @@ El registro de T3 del TMRP evita cada uno de estos errores. Su propiedad se escr
 
 La verificación es una campaña planificada con criterios fijados de antemano. Combine pruebas basadas en ejemplos, de límites, negativas, basadas en propiedades y de inyección de fallos; haga reproducible cada ejecución; y trate los fallos como información que debe corregirse y volver a verificarse, nunca reetiquetarse.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Siga estudiando — capítulo 30 de 50
 
 [← Capítulo 29](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Infraestructura crítica y seguridad sectorial: implementación II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa de la lección
 
 Lección 31 publicada. Mapa, ejemplo, EX061.
@@ -4282,7 +4282,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4341,19 +4341,19 @@ El piloto de PS2 del TMRP evitó estos errores: tenía una imagen de reversión,
 
 Despliegue por etapas con criterios de entrada y de salida y una reversión probada. Gestione las claves y los secretos como ciclos de vida con ceremonias auditables. Envuelva los dispositivos heredados con pasarelas que se traten a su vez como críticas para la seguridad, junto con controles físicos compensatorios. Un control solo está en servicio tras la aceptación en el emplazamiento y el traspaso a los operadores.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Siga estudiando — capítulo 31 de 50
 
 [← Capítulo 30](#ch-30) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Infraestructura crítica y seguridad sectorial: confiabilidad
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa de la lección
 
 Lección 32 publicada. Mapa, ejemplo, EX063.
@@ -4405,7 +4405,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX063]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4480,19 +4480,19 @@ En PS4, el primer error reduce a la mitad el tiempo de parada previsto, y el ter
 
 La confiabilidad se mide con tasas de fallos, tiempos de reparación y disponibilidad; las cadenas en serie son más débiles que su eslabón más débil; la redundancia reparable depende de la capacidad de reparación, que las fórmulas sencillas ignoran. Los adversarios provocan fallos según su propio calendario, de modo que la confiabilidad aporta la línea de base y la capacidad de recuperación, mientras que la seguridad debe lograr que los fallos provocados exijan compromisos independientes.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Siga estudiando — capítulo 32 de 50
 
 [← Capítulo 31](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa de la lección
 
 Lección 33 publicada. Mapa, ejemplo, EX034.
@@ -4544,7 +4544,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4592,19 +4592,19 @@ El EX066 muestra el segundo error en Fenwick, donde el sistema de parada por fug
 
 STPA trata las pérdidas como fallos de control y encuentra acciones de control inseguras que surgen de las interacciones, incluidas las adversariales. Los sistemas instrumentados de seguridad deben ser independientes en sensores, lógica, redes y acceso de ingeniería. La resiliencia —anticipar, resistir, recuperarse, adaptarse— debe definirse frente a amenazas concretas y diseñarse mediante modos degradados, reservas y una recuperación ensayada.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Siga estudiando — capítulo 33 de 50
 
 [← Capítulo 32](#ch-32) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Infraestructura crítica y seguridad sectorial: integración
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa de la lección
 
 Lección 34 publicada. Mapa, ejemplo, EX067.
@@ -4661,7 +4661,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4716,19 +4716,19 @@ La ráfaga de reconexión muestra el segundo y el último error: cada componente
 
 Integre de forma incremental, con pruebas de interfaz y escenarios de sistema completo, porque el comportamiento emergente solo aparece en combinación. Integre los controles en las operaciones mediante alarmas con sentido, guías de actuación y formación. Haga explícitas y medibles las interfaces organizativas; su seguridad depende de organizaciones que usted no controla.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Siga estudiando — capítulo 34 de 50
 
 [← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Taller de diseño II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa de la lección
 
 Lección 35 publicada. Mapa, ejemplo, EX069.
@@ -4780,7 +4780,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX069]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4826,19 +4826,19 @@ El EX069 es un ejemplo del primer error dentro del propio TMRP: R6 pide ocho hor
 
 El diseño de detalle hace que todas las cifras anteriores encajen. Un caso de aseguramiento conecta la afirmación principal con la evidencia mediante argumentos explícitos, con los cualificadores y los derrotadores enunciados abiertamente. La coherencia entre análisis y la honestidad sobre los derrotadores son lo que hace defendible un diseño de detalle.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Siga estudiando — capítulo 35 de 50
 
 [← Capítulo 34](#ch-34) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Infraestructura crítica y seguridad sectorial: desempeño y escala
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa de la lección
 
 Lección 36 publicada. Mapa, ejemplo, EX071.
@@ -4895,7 +4895,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX071]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -4967,19 +4967,19 @@ El dimensionamiento del TMRP evita los dos primeros errores al dimensionar para 
 
 Las colas gobiernan la latencia; la ley de Little y los modelos de colas sencillos muestran que el retardo se dispara cuando la utilización se acerca a uno. Mida los costes de los controles de seguridad, dimensione para la carga de pico, degradada y de ataque con prioridad para las alarmas, y automatice desde el principio los procesos a escala de flota.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Siga estudiando — capítulo 36 de 50
 
 [← Capítulo 35](#ch-35) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Infraestructura crítica y seguridad sectorial: operaciones
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa de la lección
 
 Lección 37 publicada. Mapa, ejemplo, EX074.
@@ -5036,7 +5036,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX074]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5092,19 +5092,19 @@ El diseño de la guía de la LRWA responde a estos errores: las alarmas de segur
 
 Las operaciones de seguridad de la TO empiezan por la seguridad del proceso y encauzan el escalado a través de la sala de control. Las guías de actuación deben ser breves, estar probadas y poder ejecutarse bajo presión. La gestión diaria de cambios, accesos y vulnerabilidades mantiene el sistema tal como se diseñó, y el aprendizaje sin culpabilizar a partir de incidentes y cuasiincidentes mejora las defensas.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Siga estudiando — capítulo 37 de 50
 
 [← Capítulo 36](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Infraestructura crítica y seguridad sectorial: validación
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa de la lección
 
 Lección 38 publicada. Mapa, ejemplo, EX075.
@@ -5161,7 +5161,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX075]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5235,19 +5235,19 @@ El propio mapa del TMRP muestra el último error: la repetición de T3 en v2 se 
 
 La verificación pregunta si el sistema se construyó bien; la validación pregunta si es el sistema adecuado. Use la trazabilidad como mapa de evidencia para encontrar afirmaciones no probadas, no respaldadas y no validadas, valide con las personas a las que sirve el sistema en condiciones realistas e informe de los resultados parciales como parciales.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Siga estudiando — capítulo 38 de 50
 
 [← Capítulo 37](#ch-37) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Infraestructura crítica y seguridad sectorial: mantenibilidad
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa de la lección
 
 Lección 39 publicada. Mapa, ejemplo, EX078.
@@ -5304,7 +5304,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX078]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5356,19 +5356,19 @@ La revisión del TMRP encontró el tercer error en la trama del laboratorio 8 y 
 
 Diseñe para décadas: componentes sustituibles, software actualizable, documentación al día, competencias disponibles. Registre la deuda técnica, gestione la obsolescencia antes del fin del soporte, incorpore la agilidad criptográfica en los formatos y en las vías de actualización con un plan de migración poscuántica, y retire los dispositivos de modo que nada (claves, cuentas, reglas) sobreviva al dispositivo.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Siga estudiando — capítulo 39 de 50
 
 [← Capítulo 38](#ch-38) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratorio de verificación II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa de la lección
 
 Lección 40 publicada. Mapa, ejemplo, EX079.
@@ -5420,7 +5420,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5503,19 +5503,19 @@ La primera campaña del TMRP mostró el primer error: los descartes eran silenci
 
 La inyección de fallos ejercita el tratamiento de errores que las pruebas ordinarias no alcanzan. Defina de antemano el modelo de fallos y el oráculo, fije la semilla y cuente, clasifique los resultados y busque los fallos silenciosos. El laboratorio 15 muestra el resultado típico: el control rechaza lo que se diseñó para rechazar y es ciego a lo que nadie incluyó en la lista, aquí la pérdida de datos.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Siga estudiando — capítulo 40 de 50
 
 [← Capítulo 39](#ch-39) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Infraestructura crítica y seguridad sectorial: optimización de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Mapa de la lección
 
 Lección 41 publicada. Mapa, ejemplo, EX082.
@@ -5567,7 +5567,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5645,19 +5645,19 @@ La cartera del TMRP evita el tercer error comparando la heurística voraz con la
 
 Formule las decisiones de inversión como una optimización con objetivos y restricciones explícitos, resuelva los problemas pequeños de forma exacta y desconfíe de los atajos voraces, modele las interacciones en lugar de sumar beneficios, presente conjuntos de Pareto y la sensibilidad, y ofrezca el resultado como apoyo estructurado para una decisión humana.
 
-<!-- cyberabc:chapter-navigation:start ch-41 -->
+<!-- cykin:chapter-navigation:start ch-41 -->
 ### Siga estudiando — capítulo 41 de 50
 
 [← Capítulo 40](#ch-40) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Infraestructura crítica y seguridad sectorial: investigación aplicada
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Mapa de la lección
 
 Lección 42 publicada. Mapa, ejemplo, EX083.
@@ -5714,7 +5714,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX083]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5765,19 +5765,19 @@ El estudio del detector acumulativo del ejemplo resuelto evita cada uno de ellos
 
 La investigación de ingeniería responde a una pregunta de diseño con evidencia comprobable. Especifique el estudio de antemano, controle los factores de confusión, repita las ejecuciones, use los bancos de pruebas públicos dentro de sus límites, obtenga autorización para cualquier cosa real e informe de los resultados con sus fronteras.
 
-<!-- cyberabc:chapter-navigation:start ch-42 -->
+<!-- cykin:chapter-navigation:start ch-42 -->
 ### Siga estudiando — capítulo 42 de 50
 
 [← Capítulo 41](#ch-41) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prácticas en la industria o en el servicio público
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Mapa de la lección
 
 Lección 43 publicada. Mapa, ejemplo, EX085.
@@ -5834,7 +5834,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -5886,19 +5886,19 @@ El ejemplo resuelto evita cada uno de ellos: su alcance se acordó, su diario re
 
 Las prácticas enseñan las restricciones que dan forma a los diseños reales. Trabaje dentro de un acuerdo escrito y bajo la autoridad de la entidad de acogida, registre observaciones, conexiones, diferencias y preguntas sin detalles sensibles, y aporte valor a la entidad de acogida de una forma que sea seguro compartir.
 
-<!-- cyberabc:chapter-navigation:start ch-43 -->
+<!-- cykin:chapter-navigation:start ch-43 -->
 ### Siga estudiando — capítulo 43 de 50
 
 [← Capítulo 42](#ch-42) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Proyecto final de ingeniería I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Mapa de la lección
 
 Lección 44 publicada. Mapa, ejemplo, EX087.
@@ -5955,7 +5955,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX087]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6011,19 +6011,19 @@ El borrador de alcance del EX087 muestra los dos primeros errores: proteger las 
 
 Un proyecto final es un sistema acotado, construido y verificado. Defina la necesidad, los entregables, las restricciones y los criterios de aceptación; planifique desde el principio los hitos, los riesgos y la verificación; y haga reproducible el entorno para que todo resultado pueda trazarse y volver a ejecutarse.
 
-<!-- cyberabc:chapter-navigation:start ch-44 -->
+<!-- cykin:chapter-navigation:start ch-44 -->
 ### Siga estudiando — capítulo 44 de 50
 
 [← Capítulo 43](#ch-43) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisión independiente del diseño
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Mapa de la lección
 
 Lección 45 publicada. Mapa, ejemplo, EX089.
@@ -6080,7 +6080,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX089]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6136,19 +6136,19 @@ La revisión del TMRP evitó estos errores: el revisor era independiente, cada h
 
 La revisión independiente encuentra lo que los autores no pueden ver. Revise frente a criterios explícitos, redacte hallazgos específicos, respaldados por evidencia y accionables con gravedades honestas, y responda a cada hallazgo con aceptar, rechazar o aplazar, de forma registrada y comprobada.
 
-<!-- cyberabc:chapter-navigation:start ch-45 -->
+<!-- cykin:chapter-navigation:start ch-45 -->
 ### Siga estudiando — capítulo 45 de 50
 
 [← Capítulo 44](#ch-44) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Proyecto final de ingeniería II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Mapa de la lección
 
 Lección 46 publicada. Mapa, ejemplo, EX080.
@@ -6200,7 +6200,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX080]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6252,19 +6252,19 @@ El proyecto final del TMRP evitó estos errores congelando el alcance tras la re
 
 Congele el alcance, cierre los hallazgos, verifique por completo la versión etiquetada y conserve el historial de fallos como evidencia. Llegue a la revisión crítica de diseño con la trazabilidad, los resultados, los hallazgos y el caso de aseguramiento, y salga de ella con una decisión explícita sobre la preparación.
 
-<!-- cyberabc:chapter-navigation:start ch-46 -->
+<!-- cykin:chapter-navigation:start ch-46 -->
 ### Siga estudiando — capítulo 46 de 50
 
 [← Capítulo 45](#ch-45) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensayo de fallo y recuperación
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Mapa de la lección
 
 Lección 47 publicada. Mapa, ejemplo, EX093.
@@ -6316,7 +6316,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX093]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6389,19 +6389,19 @@ El ensayo del TMRP evitó el cuarto error al declarar R6 como no cumplido con do
 
 La recuperación debe ensayarse para que se pueda confiar en ella. Diseñe ensayos con límites de seguridad y mediciones, encuentre el camino crítico, mejore solo lo que está en él e informe del estado del requisito que el ensayo muestra realmente; después, cambie el diseño o el requisito con las partes interesadas.
 
-<!-- cyberabc:chapter-navigation:start ch-47 -->
+<!-- cykin:chapter-navigation:start ch-47 -->
 ### Siga estudiando — capítulo 47 de 50
 
 [← Capítulo 46](#ch-46) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Expediente de evidencia
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Mapa de la lección
 
 Lección 48 publicada. Mapa, ejemplo, EX095.
@@ -6458,7 +6458,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX095]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6517,19 +6517,19 @@ El índice del TMRP evita el primer error organizando la evidencia por afirmaci�
 
 El expediente es el conjunto de evidencia, organizado por afirmación y con su procedencia trazada, que sustenta el caso de aseguramiento. Mantenga versiones restringida y censurada con un registro de censura, y compruebe la coherencia de cada afirmación, cifra y estado antes de que lo haga cualquier otra persona.
 
-<!-- cyberabc:chapter-navigation:start ch-48 -->
+<!-- cykin:chapter-navigation:start ch-48 -->
 ### Siga estudiando — capítulo 48 de 50
 
 [← Capítulo 47](#ch-47) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tesis de ingeniería
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Mapa de la lección
 
 Lección 49 publicada. Mapa, ejemplo, EX097.
@@ -6586,7 +6586,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6649,19 +6649,19 @@ La tesis del TMRP evita cada uno de ellos: está organizada por argumentos, decl
 
 Una tesis de ingeniería argumenta desde la necesidad hasta el diseño y la evidencia. Estructúrela para un examinador, informe del estado de los requisitos tal como es, dé a cada limitación una afirmación afectada y una dirección, y mantenga cada cifra trazable hasta el expediente.
 
-<!-- cyberabc:chapter-navigation:start ch-49 -->
+<!-- cykin:chapter-navigation:start ch-49 -->
 ### Siga estudiando — capítulo 49 de 50
 
 [← Capítulo 48](#ch-48) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
 
 Continúe con la siguiente lección escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defensa final
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Mapa de la lección
 
 Lección 50 publicada. Mapa, ejemplo, EX099.
@@ -6723,7 +6723,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX099]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Resultados de aprendizaje y conexión
@@ -6784,13 +6784,13 @@ El candidato del TMRP evita estos errores mostrando el incumplimiento de R6 en u
 
 La defensa pone a prueba la comprensión, el criterio y la honestidad sobre los límites. Presente con claridad la necesidad, el diseño, la evidencia y el estado; prepárese por familias de preguntas con referencias al expediente; responda lo que sabe, razone de forma transparente sobre lo que no sabe y convierta los hallazgos de los examinadores en una tabla de correcciones precisa y en un traspaso responsable.
 
-<!-- cyberabc:chapter-navigation:start ch-50 -->
+<!-- cykin:chapter-navigation:start ch-50 -->
 ### Siga estudiando — capítulo 50 de 50
 
 [← Capítulo 49](#ch-49) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
 
 Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

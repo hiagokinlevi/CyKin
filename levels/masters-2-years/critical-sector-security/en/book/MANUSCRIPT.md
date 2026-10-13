@@ -56,7 +56,7 @@ The [worked results](#worked-results) contain EX001–EX050. A [glossary](#gloss
 
 ## Chapter 1 — Research question and literature method
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -118,7 +118,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -400,19 +400,19 @@ The limit of a master's review is time: it will not be exhaustive, and it should
 
 A dissertation stands on its question. Move from topic to problem to question deliberately, making each narrowing defensible; test the question against FINER and write it in an infrastructure PICOT form with an observable exposure and a consequence outcome. Classify the question, because its type decides the design and the strongest claim available. Define the estimand before seeing data. Choose a review type that fits the project and say so. Search across disciplines and grey literature, test the search with known items, chain citations to a predeclared stopping point and log everything. Deduplicate, screen with a second reviewer on at least a sample, use kappa as a diagnostic of unclear criteria, and report the flow. Synthesize by concept: the concept matrix shows both what is known and the gap your study will fill.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Critical infrastructure and sector security: advanced seminar
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX008.
@@ -474,7 +474,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -677,19 +677,19 @@ The limit of a seminar is that it reads only what was published. Unpublished evi
 
 Sectors differ in what they lose, how fast and for whom; in who governs them; and in what evidence escapes into public view. Choose a common consequence unit or stay within a sector. Distinguish dependency cascades from load-transfer spillover and measure the mechanism you claim. Public catalogues are samples shaped by severity-dependent disclosure and by changing reporting rules: their averages overstate typical severity and their trends can be artifacts. Early public accounts are revised — Oldsmar and Düsseldorf are documented examples — so code claims with source, date and status, and re-check before use. Read papers with a fixed protocol, summarize fairly before critiquing, and turn critique into the design of the next study.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX015.
@@ -751,7 +751,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -1031,19 +1031,19 @@ The limit of design is that it can only reduce, not remove, the dependence on un
 
 An unplanned infrastructure event offers no randomization, so every design is an approximation to a counterfactual, and its credibility rests on assumptions you must state. A controlled interrupted time series removes shared seasonal shocks that a before-and-after or uncontrolled ITS would attribute to the event; interviews supply the mechanism. Attach every validity threat to a design feature, or admit it. Simulate the design before data access: Lab 3 shows that a shared seasonal rise makes an uncontrolled design confidently wrong — more so with longer baselines — while the controlled design is nearly unbiased but too imprecise to detect a 10% effect at one ED. Frame the study as estimation. Ethics review must cover interviewees, organizations and the public, because regional-capacity findings can be sensitive. Agreements, tiers and a reproducible project with a registered pre-analysis plan come before the first data file.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 08
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Critical infrastructure and sector security: competing explanations
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX021.
@@ -1105,7 +1105,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -1342,19 +1342,19 @@ The limit of this chapter's tools is that each relies on an assumption that cann
 
 Hold several explanations at once and look for observations that separate them. Write the main hypothesis's full pattern — timing, place, population, channel, mechanism — and require each rival to explain all of it. A causal diagram shows why a before-and-after comparison is biased by the season and what assumption a comparison region needs. Comparison populations, negative controls, placebo dates, dose–response and timing alignment each discriminate under an assumption you must argue. Public cases show cyber explanations competing with operator error, underlying illness, precautionary decisions and faulty updates; the lesson is to record status and to model decisions. Lab 4 shows a naive method finding "spillover" 38 km away and in an unaffected region, and a comparison region revealing a gradient close to the truth.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 08
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Proposal and pilot
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX027.
@@ -1416,7 +1416,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -1677,19 +1677,19 @@ The limit of a pilot is its size: passing it shows that procedures can work, not
 
 A proposal is a contract: it fixes the question, estimands, design and analysis, declares what remains open, and states how deviations will be recorded. The critical path of a master's project runs through other people's time — ethics, custodians, legal review — so start those early and keep a living risk register. Ask custodians precise questions, especially about system changes, gaps and corrections. A pilot tests feasibility, not effects; never estimate an effect from it, and in an event study never look at outcomes around the event. Predeclare go/amend/stop criteria. Audit every extract with a script, turn each anomaly into a question, and treat downtime days at the very hospitals you study as measurement artefacts to flag, not rows to delete.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 08
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX034.
@@ -1751,7 +1751,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1985,19 +1985,19 @@ The limit of this analysis is that it rests on one event, one comparison region 
 
 Keep lineage: every extract logged, audited, frozen and used only through scripts. The controlled ITS models the log ratio of a neighbour's arrivals to the comparison region's with a trend, a diversion step and a post-diversion step; exp(β₂) − 1 is the estimate. Check autocorrelation and use robust intervals with a prespecified lag and sensitivity. Placebo ranks are honest evidence whose smallest attainable p-value depends on the number of windows. In the synthetic Spillover Study, Alder Point's arrivals rose by about a quarter during diversion with a wide interval; Brookfield's result is inconclusive even though a real effect existed; Calloway's is compatible with none; the waiting-time estimate is confounded by season. Interviews explain the gradient through road geography and reveal late notification, night-time strain and the link between diversion length and clinical-system recovery. Integrate strands in a joint display and report discordance as a finding.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 08
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Dissertation writing and limitations
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX039.
@@ -2059,7 +2059,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -2260,19 +2260,19 @@ The limit of good writing is that it cannot rescue a weak design; its job is to 
 
 Give each part of the dissertation one job and write it in the order that keeps promises honest: methods, results, discussion, then introduction and abstract. Keep a results-to-claims register so that claims cannot grow on the way to the abstract. Report estimates with intervals and what they exclude; avoid significance verdicts; calibrate causal verbs to the design and state assumptions alongside them. Make every number traceable and check it with a script, knowing that scripts catch transcription errors but not wrong claims. Use STROBE, RECORD, SRQR and COREQ as checklists. Write limitations with direction and resolution. Make figures accessible, and state data availability honestly within the constraints of agreements, consent and infrastructure sensitivity.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 08
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX045.
@@ -2334,7 +2334,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -2534,13 +2534,13 @@ The limit of examination is that it judges the dissertation, not the world. Pass
 
 Examiners read for coherence and are influenced by care; make the abstract, introduction and conclusion precise and consistent, and the answers to each question visible. Prepare for predictable families of questions with evidence. Answer "what if" with a specification curve that keeps the prespecified estimate primary and shows its dependence on reasonable choices — remembering that robustness to choices is not accuracy, as Brookfield's robustly inconclusive estimate of a real effect shows. Use mock defenses to find gaps in the work, not only in the talk. Respond to corrections with a mapped table and reasons. Share with partners first, publish regional patterns rather than facility-level weaknesses, and route incidental security findings privately. The dissertation's limitations become the next study.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 08
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
@@ -2970,7 +2970,7 @@ Laws, guidance and public incident pages change. Versions and dates below are th
 - von Elm, E., Altman, D. G., Egger, M., et al. [The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies](https://doi.org/10.1016/S0140-6736(07)61602-X). *The Lancet*, 370(9596), 1453–1457, 2007.
 - Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., et al. [The FAIR Guiding Principles for Scientific Data Management and Stewardship](https://doi.org/10.1038/sdata.2016.18). *Scientific Data*, 3, 160018, 2016.
 
-Companion CyberABC material: the [doctoral Critical Infrastructure book](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md), which takes the research methods of this book to an original, simulation-based contribution.
+Companion CyKin material: the [doctoral Critical Infrastructure book](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md), which takes the research methods of this book to an original, simulation-based contribution.
 
 **Case boundary.** Tamsin Valley, Kestrel Health, Alder Point Hospital, Brookfield Community Hospital, Calloway General, Tamsin Valley EMS, the county dispatch centre, the Tamsin Valley Healthcare Coalition, the Wexmoor region and its hospitals, interviewees I01–I10, records with DOIs beginning 10.9999/syn, the Spillover Study and every number produced by the labs are invented for teaching. Sources support the general statements beside which they are cited, never the synthetic details.
 

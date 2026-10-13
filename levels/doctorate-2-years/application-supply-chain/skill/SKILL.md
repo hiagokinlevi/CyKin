@@ -1,5 +1,5 @@
 ---
-name: cyberabc-application-supply-chain-doctorate-84c92d28
+name: cykin-application-supply-chain-doctorate-84c92d28
 description: "APP doctoral research track (8 ch / 50 ex)"
 license: CC0-1.0
 ---

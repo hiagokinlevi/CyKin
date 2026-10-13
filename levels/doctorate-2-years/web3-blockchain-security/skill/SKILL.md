@@ -1,5 +1,5 @@
 ---
-name: cyberabc-web3-blockchain-security-doctorate-64a4aa7e
+name: cykin-web3-blockchain-security-doctorate-64a4aa7e
 description: "WEB3 Doctoral Research Track (8 ch / 50 ex)"
 license: CC0-1.0
 ---

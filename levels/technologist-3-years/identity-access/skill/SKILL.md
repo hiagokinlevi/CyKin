@@ -1,5 +1,5 @@
 ---
-name: cyberabc-identity-access-technologist-f01df92d
+name: cykin-identity-access-technologist-f01df92d
 description: "IAM Technologist Programme (30 ch / 90 ex)"
 license: CC0-1.0
 ---

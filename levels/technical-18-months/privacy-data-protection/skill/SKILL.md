@@ -1,5 +1,5 @@
 ---
-name: cyberabc-privacy-data-protection-technical-b6be5475
+name: cykin-privacy-data-protection-technical-b6be5475
 description: "Guide a learner through the privacy Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

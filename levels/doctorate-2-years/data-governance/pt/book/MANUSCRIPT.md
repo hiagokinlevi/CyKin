@@ -37,7 +37,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 ## Capítulo 1 — Integridade e métodos avançados de pesquisa
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -122,19 +122,19 @@ Uma réplica sintética não reproduz todas as peculiaridades de registros reais
 - **EX006 — Duas hipóteses.** Enuncie uma hipótese pré-registrada. *Rubrica:* 3 = direitos pouco claros causam limiares inconsistentes; limiares deslocam contagens;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX007 — Modelo ISO.** Onde a ISO/IEC 38505-1 coloca a responsabilização? *Rubrica:* 3 = no órgão de governança;; 2 = parcialmente correto;; 1 = gestores;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 08)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança de dados: a fronteira da pesquisa
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX008.
@@ -181,7 +181,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX008]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -253,19 +253,19 @@ Os índices das dimensões dependem das definições das regras; publique as reg
 - **EX013 — Papel da ISO 8000.** O que a ISO 8000-8 oferece? *Rubrica:* 3 = conceitos e pré-requisitos para medir a qualidade de dados;; 2 = menciona medição;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Lacuna de pesquisa.** Que lacuna Nadia aborda? *Rubrica:* 3 = como decisões sobre regras são tomadas e deslocam números publicados;; 2 = menciona decisões;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 08)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Projeto de contribuição original
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX015.
@@ -307,7 +307,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX015]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -349,19 +349,19 @@ Projetos que prometem demais fracassam na validação; restrinja o escopo cedo.
 - **EX019 — Cláusula de revisão.** O que Westmark pode revisar antes da publicação? *Rubrica:* 3 = somente a exatidão factual;; 2 = parcialmente correto;; 1 = conteúdo;; 0 = nenhuma.
 - **EX020 — Restrição.** Como o Prof. Eriksen restringiu o plano? *Rubrica:* 3 = comparação entre divulgações limitada a dois indicadores;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 08)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e estudo piloto
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX021.
@@ -408,7 +408,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -476,19 +476,19 @@ Supor independência entre os campos, como faz este piloto, pode distorcer os pe
 - **EX025 — Estimativas defasadas.** O que mais nunca havia sido atualizado? *Rubrica:* 3 = as estimativas de m e u;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Atualização do diário.** O que Nadia fez antes de acrescentar a nova variável? *Rubrica:* 3 = atualizou o diário de pré-registro;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 08)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX027.
@@ -530,7 +530,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX027]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -572,19 +572,19 @@ As faixas plausíveis vêm de entrevistas; outras organizações podem usar faix
 - **EX031 — Discrepância.** O que causou a discrepância na validação? *Rubrica:* 3 = tratamento não documentado de empates no limiar;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Atenção.** O que a atenção da governança seguiu em Westmark? *Rubrica:* 3 = a visibilidade, e não o impacto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 08)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica dos pares e revisão
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX033.
@@ -626,7 +626,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -668,19 +668,19 @@ Análises de sensibilidade testam apenas as alternativas escolhidas; outras pode
 - **EX037 — Redação estrutural.** Como Nadia reescreveu o texto sobre titularidade? *Rubrica:* 3 = uma lacuna estrutural, não falha pessoal;; 2 = parcialmente correto;; 1 = culpa;; 0 = nenhuma.
 - **EX038 — Desenho de continuidade.** Que continuidade Nadia propôs? *Rubrica:* 3 = quatro divulgações documentadas contra uma série de comparação;; 2 = menciona comparação;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 08)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX039.
@@ -727,7 +727,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX039]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -798,19 +798,19 @@ Uma lista de verificação simplifica os princípios FAIR; alguns itens exigem j
 - **EX043 — Conteúdo excluído.** O que Nadia exclui do arquivo? *Rubrica:* 3 = material confidencial de Westmark;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Teste do arquivo.** Como o Prof. Eriksen testou o arquivo? *Rubrica:* 3 = um aluno novo regenerou duas figuras;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 08)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX045.
@@ -852,7 +852,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -894,13 +894,13 @@ Cronogramas de publicação atrasam; priorize o artigo que mais afeta a prática
 - **EX049 — Decisões do conselho.** Qual recomendação o conselho levou a piloto em vez de adotar? *Rubrica:* 3 = publicar estimativas de precisão e revocação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX050 — Recomendações verificáveis.** Por que recomendações verificáveis são valiosas? *Rubrica:* 3 = a próxima divulgação mostra a adoção;; 2 = menciona verificação;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 08)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

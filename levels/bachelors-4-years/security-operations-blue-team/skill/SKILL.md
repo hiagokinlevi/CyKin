@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-operations-blue-team-bachelor-64af527c
+name: cykin-security-operations-blue-team-bachelor-64af527c
 description: "Bachelor's course (4 years)"
 license: CC0-1.0
 ---

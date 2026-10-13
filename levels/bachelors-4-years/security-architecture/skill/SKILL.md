@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-architecture-bachelor-7d649956
+name: cykin-security-architecture-bachelor-7d649956
 description: "Guide a learner through the ARCH Bachelor's Course draft: 40 chapters, stdlib labs and EX001–EX120 with worked answers."
 license: CC0-1.0
 ---

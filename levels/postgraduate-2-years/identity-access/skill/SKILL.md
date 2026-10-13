@@ -1,5 +1,5 @@
 ---
-name: cyberabc-identity-access-postgraduate-bab75457
+name: cykin-identity-access-postgraduate-bab75457
 description: "IAM Postgraduate Specialisation (12 ch / 60 ex)"
 license: CC0-1.0
 ---

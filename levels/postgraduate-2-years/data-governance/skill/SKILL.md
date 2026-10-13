@@ -1,5 +1,5 @@
 ---
-name: cyberabc-data-governance-postgraduate-31f223b1
+name: cykin-data-governance-postgraduate-31f223b1
 description: "Guide a learner through the data governance Postgraduate Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

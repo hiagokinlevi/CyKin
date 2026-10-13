@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ot-iot-security-doctorate-154118d0
+name: cykin-ot-iot-security-doctorate-154118d0
 description: "Tutor the eight-chapter doctoral OT, IoT and cyber-physical security course from its English draft: synthetic Setpoint Study, physics-based detection of manipulation of view, 50 exercises and worked answers; enforce plant-safety and dual-use boundaries."
 license: CC0-1.0
 ---

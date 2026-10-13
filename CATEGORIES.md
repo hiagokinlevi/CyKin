@@ -1,6 +1,6 @@
 # Categories
 
-The 13 original security software repositories are organized into five project groups. This is a software-project inventory, separate from the [CyberABC academic map](AREA_MAP.md) of 23 broad areas across five schools. A repository may supply cited examples or playbooks for several courses, but is not itself a book or a curricular area.
+The 13 original security software repositories are organized into five project groups. This is a software-project inventory, separate from the [CyKin academic map](AREA_MAP.md) of 23 broad areas across five schools. A repository may supply cited examples or playbooks for several courses, but is not itself a book or a curricular area.
 
 ---
 

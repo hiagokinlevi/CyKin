@@ -1,4 +1,4 @@
-# CyberABC — complete sequential study path
+# CyKin — complete sequential study path
 
 **One route:** 9 levels × 23 area courses = **207 courses** and **4,186 English chapter positions**. Numbering here fixes navigation; it is not a claim that the lessons or books are complete.
 
@@ -33,7 +33,7 @@ Follow one language code throughout a pass of the route. The tables below link t
 
 ## Instructions for AI tutors
 
-Use the exact course number, language and chapter index as the learner's current position. Teach from an authored `MANUSCRIPT.md` chapter when it exists, cite its URL and the underlying factual sources, let the learner attempt its exercises, then compare with its worked answers. Consult the one course `skill/SKILL.md` for level-specific tutoring. If only `PLAN.md` exists, state that authored teaching is unavailable and keep the learner's completion position there; any independent explanation must be clearly labeled as supplementary, not as CyberABC's published lesson. Do not infer completion from a draft-coverage percentage. Preserve case timing, source rights and authorization boundaries.
+Use the exact course number, language and chapter index as the learner's current position. Teach from an authored `MANUSCRIPT.md` chapter when it exists, cite its URL and the underlying factual sources, let the learner attempt its exercises, then compare with its worked answers. Consult the one course `skill/SKILL.md` for level-specific tutoring. If only `PLAN.md` exists, state that authored teaching is unavailable and keep the learner's completion position there; any independent explanation must be clearly labeled as supplementary, not as CyKin's published lesson. Do not infer completion from a draft-coverage percentage. Preserve case timing, source rights and authorization boundaries.
 
 ## Course-by-course map
 

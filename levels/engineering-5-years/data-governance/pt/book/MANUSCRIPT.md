@@ -37,7 +37,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 ## Capítulo 1 — Cálculo I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -79,7 +79,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem
@@ -118,19 +118,19 @@ O crescimento linear é uma suposição; revise-a quando os planos de instalaç�
 - **EX002 — Falha de fluxo.** O que pode significar uma queda brusca na taxa de leituras? *Rubrica:* 3 = um fluxo de dados com falha;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Efeito da agregação.** O que faz a agregação em totais diários depois de dois anos? *Rubrica:* 3 = reduz muito o armazenamento;; 2 = menciona redução;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — aula 01 (capítulo 01 de 50)
 
 [← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX004.
@@ -172,7 +172,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem
@@ -211,19 +211,19 @@ Regras formais ainda podem codificar o requisito errado; valide-as com os donos 
 - **EX005 — Verificação de função.** Quantos medidores correspondiam a dois imóveis? *Rubrica:* 3 = doze;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX006 — Uso do grafo.** O que mostra seguir as arestas no sentido inverso a partir de um relatório? *Rubrica:* 3 = todas as fontes das quais ele depende;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — aula 02 (capítulo 02 de 50)
 
 [← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX007.
@@ -265,7 +265,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem
@@ -304,19 +304,19 @@ A calibração reduz a incerteza, mas não a elimina; informe-a.
 - **EX008 — Erro de unidade.** O que a confusão de unidades fez com um distrito? *Rubrica:* 3 = inflou mil vezes a demanda;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX009 — Campos de metadados.** Cite três campos de metadados de sensor. *Rubrica:* 3 = identificador, localização, tipo, unidade, exatidão, instalação, calibração, responsável;; 2 = três;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — aula 03 (capítulo 03 de 50)
 
 [← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX010.
@@ -353,7 +353,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem
@@ -392,19 +392,19 @@ As regras de validação no código se afastam das regras escritas; revise as du
 - **EX011 — Política de erros.** O que significa falhar alto na estrutura e baixo no conteúdo? *Rubrica:* 3 = parar quando falta coluna, registrar linhas ruins e continuar;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX012 — Achado da revisão.** O que a revisão de código encontrou? *Rubrica:* 3 = um erro *off-by-one* nos carimbos de data e hora;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — aula 04 (capítulo 04 de 50)
 
 [← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX013.
@@ -446,7 +446,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem
@@ -485,19 +485,19 @@ Resumos curtos podem perder ressalvas; mantenha visível a principal limitação
 - **EX014 — Decisão do gestor.** Que decisão o gestor tomou? *Rubrica:* 3 = aprovar a validação de unidades em todos os fluxos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Conteúdo do registro.** O que contém um registro de decisão? *Rubrica:* 3 = data, decisão, quem decidiu, opções, evidências;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — aula 05 (capítulo 05 de 50)
 
 [← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX016.
@@ -539,7 +539,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem
@@ -578,19 +578,19 @@ A regra dos trapézios supõe vazão suave entre as amostras; picos a invalidam.
 - **EX017 — Erro horário.** Que erro a amostragem horária produziu? *Rubrica:* 3 = cerca de dois por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX018 — Componentes da conciliação.** O que contém a diferença entre fornecido e faturado? *Rubrica:* 3 = perdas, erro de medição, diferenças de calendário;; 2 = todos;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — aula 06 (capítulo 06 de 50)
 
 [← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX019.
@@ -632,7 +632,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem
@@ -671,19 +671,19 @@ Os limites de controle supõem processos estáveis; recalcule-os depois de mudan
 - **EX020 — Julgamento da meta.** Por que o dono não pode afirmar que a meta de 3 por cento foi cumprida? *Rubrica:* 3 = o intervalo inclui valores acima de 3 por cento;; 2 = menciona intervalo;; 1 = vago;; 0 = nenhuma.
 - **EX021 — Sinal de controle.** O que causou o dia fora dos limites? *Rubrica:* 3 = uma atualização de firmware em um lote de medidores;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — aula 07 (capítulo 07 de 50)
 
 [← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX022.
@@ -725,7 +725,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem
@@ -764,19 +764,19 @@ Kofi liga os limites de memória dos medidores às regras de dados atrasados, en
 - **EX023 — Horário de verão.** Que problema o horário de verão cria? *Rubrica:* 3 = horas aparentemente duplicadas ou ausentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX024 — Limite do checksum.** O que um *checksum* não prova? *Rubrica:* 3 = quem enviou os dados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — aula 08 (capítulo 08 de 50)
 
 [← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Programação II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX025.
@@ -818,7 +818,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem
@@ -857,19 +857,19 @@ Os testes cobrem apenas os casos que alguém imaginou; acrescente casos tirados 
 - **EX026 — Achado do teste.** O que o teste unitário revelou? *Rubrica:* 3 = a regra rejeitava indevidamente trocas de medidor;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX027 — Revisão do domínio.** O que o engenheiro de medição apontou? *Rubrica:* 3 = medidores antigos enviam leituras só uma vez por dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue estudando — aula 09 (capítulo 09 de 50)
 
 [← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX028.
@@ -906,7 +906,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem
@@ -945,19 +945,19 @@ A pressão ética costuma ser sutil; registre as decisões e seus motivos.
 - **EX029 — Cuidado com o cadastro.** O que Kofi recomendou para o cadastro prioritário? *Rubrica:* 3 = confirmação anual e acesso restrito;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX030 — Competência.** Por que Kofi encaminhou a mudança na qualidade da água? *Rubrica:* 3 = faltava-lhe competência em química;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue estudando — aula 10 (capítulo 10 de 50)
 
 [← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Redes e protocolos
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX031.
@@ -999,7 +999,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem
@@ -1038,19 +1038,19 @@ Documentos de fluxo envelhecem depressa; revise-os depois de mudanças na rede.
 - **EX032 — Lacuna industrial.** Que lacuna Kofi encontrou na rede industrial? *Rubrica:* 3 = protocolo sem autenticação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX033 — Dados atrasados.** Quando os atrasos se concentram? *Rubrica:* 3 = em períodos de tempestade;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue estudando — aula 11 (capítulo 11 de 50)
 
 [← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX034.
@@ -1092,7 +1092,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem
@@ -1131,19 +1131,19 @@ As permissões se desviam depois de correções emergenciais; verifique-as com r
 - **EX035 — Encadeamento de rotinas.** Como as rotinas agora se protegem de entradas ruins? *Rubrica:* 3 = cada uma verifica se a anterior teve sucesso com as contagens esperadas;; 2 = menciona a anterior;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Achado da homologação.** O que o teste em homologação detectou? *Rubrica:* 3 = uma mudança na interpretação de carimbos de data e hora;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue estudando — aula 12 (capítulo 12 de 50)
 
 [← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Sistemas de dados
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX037.
@@ -1185,7 +1185,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem
@@ -1224,19 +1224,19 @@ Restrições podem bloquear correções urgentes; defina um processo controlado 
 - **EX038 — Listas de distritos.** Quantas versões da lista de distritos existiam? *Rubrica:* 3 = três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX039 — Finalidade do histórico.** Por que guardar datas de início e fim de vigência? *Rubrica:* 3 = para explicar contas antigas com os fatos da época;; 2 = menciona o passado;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue estudando — aula 13 (capítulo 13 de 50)
 
 [← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX040.
@@ -1278,7 +1278,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem
@@ -1317,19 +1317,19 @@ Tolerâncias largas demais escondem mudanças reais; revise-as com os responsáv
 - **EX041 — Achado dos testes de dados.** O que os testes de dados detectaram? *Rubrica:* 3 = um arquivo do fornecedor com nova ordem de colunas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX042 — Valores fixos.** O que substituiu os limiares fixos no código? *Rubrica:* 3 = valores de configuração revisados pelos donos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue estudando — aula 14 (capítulo 14 de 50)
 
 [← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fundamentos de segurança
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX043.
@@ -1371,7 +1371,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem
@@ -1410,19 +1410,19 @@ Dados pseudonimizados continuam sendo dados pessoais; proteja-os de acordo.
 - **EX044 — Conta compartilhada.** Que problema do *data warehouse* Kofi corrigiu? *Rubrica:* 3 = conta compartilhada de analistas substituída por contas nominais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX045 — Regras para extratos.** Cite duas regras para extratos futuros. *Rubrica:* 3 = aprovação do dono, campos mínimos, criptografia, expiração;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue estudando — aula 15 (capítulo 15 de 50)
 
 [← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX046.
@@ -1464,7 +1464,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem
@@ -1503,19 +1503,19 @@ Documentos de interface falham se os parceiros não estiverem obrigados a cumpri
 - **EX047 — Campos da interface.** O que define um documento de controle de interface? *Rubrica:* 3 = campos, unidades, formatos, horários, tratamento de erros, contatos;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 - **EX048 — Etapa mais fraca.** Qual etapa do ciclo de vida estava menos definida? *Rubrica:* 3 = a eliminação;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue estudando — aula 16 (capítulo 16 de 50)
 
 [← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fundamentos de controle e realimentação
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX049.
@@ -1557,7 +1557,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem
@@ -1596,19 +1596,19 @@ Metas demais sobrecarregam os donos; mantenha as malhas focadas.
 - **EX050 — Correção da oscilação.** Como Kofi impediu que os limiares oscilassem? *Rubrica:* 3 = dados semanais de rejeição e passos pequenos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX051 — Velocidade da malha.** Com que rapidez as ações passaram a ser registradas depois da nomeação de responsáveis? *Rubrica:* 3 = uma semana em vez de três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue estudando — aula 17 (capítulo 17 de 50)
 
 [← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX052.
@@ -1650,7 +1650,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem
@@ -1689,19 +1689,19 @@ As etiquetas só valem o que vale sua manutenção; audite-as.
 - **EX053 — Controles por etiqueta.** Por que atrelar os controles a etiquetas de metadados? *Rubrica:* 3 = as proteções se aplicam automaticamente e escalam;; 2 = menciona automático;; 1 = vago;; 0 = nenhuma.
 - **EX054 — Responsável pelas etiquetas.** Quem aprova as etiquetas de classificação? *Rubrica:* 3 = os donos dos dados, no registro;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue estudando — aula 18 (capítulo 18 de 50)
 
 [← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Identidade e criptografia
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX055.
@@ -1743,7 +1743,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem
@@ -1782,19 +1782,19 @@ Kofi encontra 230 medidores retirados com identidades válidas, vincula a revoga
 - **EX056 — Status do pseudônimo.** Pseudônimos gerados por *hash* com chave são anônimos? *Rubrica:* 3 = não, continuam sendo dados pessoais;; 2 = parcialmente correto;; 1 = sim;; 0 = nenhuma.
 - **EX057 — Local da chave.** Onde uma chave estava guardada indevidamente? *Rubrica:* 3 = em um arquivo de script;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue estudando — aula 19 (capítulo 19 de 50)
 
 [← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Governança de dados: contexto de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX058.
@@ -1836,7 +1836,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem
@@ -1875,19 +1875,19 @@ Organogramas de papéis não criam autoridade; confirme-a nas descrições de ca
 - **EX059 — Dever do curador.** O que fazem os curadores? *Rubrica:* 3 = mantêm regras e definições no dia a dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Indicador de foco.** Que indicador os capítulos seguintes acompanham? *Rubrica:* 3 = o indicador de perdas informado ao regulador;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue estudando — aula 20 (capítulo 20 de 50)
 
 [← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Governança de dados: requisitos
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX061.
@@ -1929,7 +1929,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem
@@ -1968,19 +1968,19 @@ Um limiar sem método de medição não é testável; defina os dois.
 - **EX062 — Conflito da rua.** Como foi resolvido o conflito sobre o nível de rua? *Rubrica:* 3 = agregação por distrito com pelo menos cinquenta imóveis;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX063 — Topo da lista.** Quais requisitos ficaram no topo? *Rubrica:* 3 = designação de donos, conciliação e pontualidade;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue estudando — aula 21 (capítulo 21 de 50)
 
 [← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Governança de dados: modelos de sistema e de dados
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX064.
@@ -2027,7 +2027,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem
@@ -2097,19 +2097,19 @@ A linhagem estática não vê dependências em tempo de execução; compare-a co
 - **EX065 — Nós sem dono.** Quais nós não tinham dono? *Rubrica:* 3 = field_app.manual_read e sensors.flow_raw;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX066 — Verificação de desvio.** Como Kofi encontra dependências ausentes do modelo? *Rubrica:* 3 = comparação trimestral com os registros de consultas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue estudando — aula 22 (capítulo 22 de 50)
 
 [← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Governança de dados: análise de ameaças e falhas
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX067.
@@ -2151,7 +2151,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem
@@ -2190,19 +2190,19 @@ Notas definidas por uma só pessoa são palpites; acorde-as com os donos.
 - **EX068 — Sintomas comuns.** Por que a detecção deve servir a ameaças e a falhas? *Rubrica:* 3 = muitas vezes produzem os mesmos sintomas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX069 — Mitigação dos sensores.** Que mitigação trata os sensores travados? *Rubrica:* 3 = um detector *flat-line* a cargo da operação da rede;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue estudando — aula 23 (capítulo 23 de 50)
 
 [← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Governança de dados: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX070.
@@ -2244,7 +2244,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem
@@ -2283,19 +2283,19 @@ Limiares copiados de outra companhia ignoram as condições locais.
 - **EX071 — Método de acurácia.** Como a acurácia dos sensores é verificada? *Rubrica:* 3 = com um medidor de referência portátil durante a manutenção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Limite da validade.** O que as regras de validade não pegam? *Rubrica:* 3 = valores plausíveis, mas errados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue estudando — aula 24 (capítulo 24 de 50)
 
 [← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX073.
@@ -2337,7 +2337,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem
@@ -2376,19 +2376,19 @@ Defender um projeto em vez de ouvir desperdiça a crítica.
 - **EX074 — Mudança nos alertas.** Como as notificações aos donos foram alteradas? *Rubrica:* 3 = alertas só em violações, mais um resumo semanal;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX075 — Subestimado.** O que Kofi havia subestimado? *Rubrica:* 3 = as falhas e o comportamento humano;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue estudando — aula 25 (capítulo 25 de 50)
 
 [← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Governança de dados: alternativas de arquitetura
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX076.
@@ -2430,7 +2430,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem
@@ -2469,19 +2469,19 @@ Arquiteturas da moda podem não servir; pontue-as em relação aos seus requisit
 - **EX077 — Opção escolhida.** Que arquitetura foi escolhida? *Rubrica:* 3 = a híbrida;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 - **EX078 — Condição para reabrir.** Dê uma condição para reabrir a decisão. *Rubrica:* 3 = equipes de domínio atingirem níveis de competência acordados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue estudando — aula 26 (capítulo 26 de 50)
 
 [← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Governança de dados: projeto de controles
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX079.
@@ -2523,7 +2523,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem
@@ -2562,19 +2562,19 @@ Controles sem evidência não podem ser demonstrados.
 - **EX080 — Tamanho do catálogo.** Quantos controles há no catálogo? *Rubrica:* 3 = trinta e um;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX081 — Método de teste.** Como os controles são testados a cada trimestre? *Rubrica:* 3 = injetando erros sintéticos em teste;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue estudando — aula 27 (capítulo 27 de 50)
 
 [← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Governança de dados: implementação I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX082.
@@ -2621,7 +2621,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem
@@ -2694,19 +2694,19 @@ A média das taxas por regra superestima a qualidade; informe a taxa de todas as
 - **EX083 — Causa das leituras menores.** O que causou principalmente as leituras menores que a anterior? *Rubrica:* 3 = trocas de medidor começando do zero;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX084 — Tratamento da meta.** Como Kofi lidou com a meta não atingida? *Rubrica:* 3 = relatou com honestidade, com causas e correções;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue estudando — aula 28 (capítulo 28 de 50)
 
 [← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Governança de dados: medição
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX085.
@@ -2753,7 +2753,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem
@@ -2812,19 +2812,19 @@ Médias escondem agrupamentos; plote os valores diários.
 - **EX086 — Causa do agrupamento.** O que causou a semana de atrasos? *Rubrica:* 3 = a rotina de backup de uma atualização rodando antes da exportação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX087 — Dias espalhados.** Quantos dias de atraso ficaram fora daquela semana? *Rubrica:* 3 = quatro;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue estudando — aula 29 (capítulo 29 de 50)
 
 [← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX088.
@@ -2861,7 +2861,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem
@@ -2900,19 +2900,19 @@ Passar em testes com erros injetados não prova completude; declare os limites.
 - **EX089 — Correção das colunas trocadas.** Que verificação pega colunas trocadas? *Rubrica:* 3 = comparar a distribuição de cada coluna com o histórico;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX090 — Verificação versus validação.** A que pergunta a verificação responde? *Rubrica:* 3 = se os controles foram construídos do jeito certo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue estudando — aula 30 (capítulo 30 de 50)
 
 [← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Governança de dados: implementação II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Mapa da aula
 
 Aula 31 publicada. Mapa, exemplo, EX091.
@@ -2954,7 +2954,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Objetivos de aprendizagem
@@ -2993,19 +2993,19 @@ Selos podem enganar quando as regras são fracas; vincule-os à descrição das 
 - **EX092 — Regra de herança.** Que classificação recebe uma tabela derivada? *Rubrica:* 3 = nunca inferior à de suas entradas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX093 — Efeito dos selos.** Como os selos mudaram o comportamento dos engenheiros? *Rubrica:* 3 = eles consultam os selos e questionam os donos sobre notas ruins;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Continue estudando — aula 31 (capítulo 31 de 50)
 
 [← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Governança de dados: confiabilidade
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Mapa da aula
 
 Aula 32 publicada. Mapa, exemplo, EX094.
@@ -3052,7 +3052,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Objetivos de aprendizagem
@@ -3114,19 +3114,19 @@ Conciliar um sistema consigo mesmo não prova nada; use registros independentes.
 - **EX095 — Efeito das leituras ausentes.** Como as leituras ausentes afetam as perdas? *Rubrica:* 3 = elas as superestimam;; 2 = parcialmente correto;; 1 = subestimam;; 0 = nenhuma.
 - **EX096 — Dono das divergências.** Quem é dono das divergências de valor? *Rubrica:* 3 = o faturamento;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Continue estudando — aula 32 (capítulo 32 de 50)
 
 [← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Governança de dados: segurança e resiliência
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Mapa da aula
 
 Aula 33 publicada. Mapa, exemplo, EX097.
@@ -3168,7 +3168,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Objetivos de aprendizagem
@@ -3207,19 +3207,19 @@ Tratar dados de segurança como dados de negócio subestima o dano.
 - **EX098 — Dependência do painel.** Por que a resposta a incidentes não deve depender do painel de perdas? *Rubrica:* 3 = ele depende de um único servidor do *data warehouse*;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX099 — Constatação do exercício de mesa.** O que os operadores apontaram? *Rubrica:* 3 = as leituras manuais precisam de formulários e unidades padronizados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Continue estudando — aula 33 (capítulo 33 de 50)
 
 [← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Governança de dados: integração
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Mapa da aula
 
 Aula 34 publicada. Mapa, exemplo, EX100.
@@ -3261,7 +3261,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Objetivos de aprendizagem
@@ -3300,19 +3300,19 @@ Testes de componentes aprovados não significam que o sistema funciona.
 - **EX101 — Constatação de ponta a ponta.** O que a primeira execução de ponta a ponta revelou? *Rubrica:* 3 = os resultados da conciliação não chegavam ao catálogo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX102 — Dono da integração.** Quem é dono do teste de ponta a ponta? *Rubrica:* 3 = o líder de governança de dados;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Continue estudando — aula 34 (capítulo 34 de 50)
 
 [← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Mapa da aula
 
 Aula 35 publicada. Mapa, exemplo, EX103.
@@ -3354,7 +3354,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Objetivos de aprendizagem
@@ -3393,19 +3393,19 @@ Garantias de fornecedores precisam de verificação; consulte as especificaçõe
 - **EX104 — Verificação de áudio.** Os registradores gravam áudio? *Rubrica:* 3 = não, apenas resumos de frequência;; 2 = parcialmente correto;; 1 = sim;; 0 = nenhuma.
 - **EX105 — Elogio da banca.** Que melhora a banca notou? *Rubrica:* 3 = a antecipação de falhas e das preocupações das pessoas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Continue estudando — aula 35 (capítulo 35 de 50)
 
 [← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Governança de dados: desempenho e escala
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Mapa da aula
 
 Aula 36 publicada. Mapa, exemplo, EX106.
@@ -3447,7 +3447,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Objetivos de aprendizagem
@@ -3486,19 +3486,19 @@ Aposentar controles silenciosos sem testá-los pode remover uma proteção neces
 - **EX107 — Mudança de eficiência.** Cite uma mudança de eficiência. *Rubrica:* 3 = processamento incremental, partições por distrito ou verificações na ingestão;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX108 — Controles silenciosos.** O que Kofi fez antes de aposentar controles silenciosos? *Rubrica:* 3 = testou-os por injeção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Continue estudando — aula 36 (capítulo 36 de 50)
 
 [← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Governança de dados: operação
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Mapa da aula
 
 Aula 37 publicada. Mapa, exemplo, EX109.
@@ -3540,7 +3540,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Objetivos de aprendizagem
@@ -3579,19 +3579,19 @@ Enviar estimativas em silêncio destrói a confiança; comunique os atrasos.
 - **EX110 — Falha no dia do relatório.** O que o líder do incidente fez quando uma extração falhou no dia do relatório? *Rubrica:* 3 = avisou o regulador de que os números atrasariam um dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX111 — Teste dos runbooks.** Como os *runbooks* são testados? *Rubrica:* 3 = um curador que não os escreveu os segue diante de um incidente sintético;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Continue estudando — aula 37 (capítulo 37 de 50)
 
 [← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Governança de dados: validação
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Mapa da aula
 
 Aula 38 publicada. Mapa, exemplo, EX112.
@@ -3633,7 +3633,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Objetivos de aprendizagem
@@ -3672,19 +3672,19 @@ A satisfação dos usuários, sozinha, não demonstra eficácia; combine-a com m
 - **EX113 — Correção para a operação.** Como Kofi alcançou a equipe de operação? *Rubrica:* 3 = com as informações principais do catálogo no painel da sala de controle;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX114 — Cautela causal.** Contra o que a Profa. Varga alertou? *Rubrica:* 3 = afirmar que a governança causou a melhora na localização de vazamentos sem evidências mais fortes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Continue estudando — aula 38 (capítulo 38 de 50)
 
 [← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Governança de dados: manutenibilidade
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Mapa da aula
 
 Aula 39 publicada. Mapa, exemplo, EX115.
@@ -3726,7 +3726,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Objetivos de aprendizagem
@@ -3765,19 +3765,19 @@ Uma governança que depende de poucos entusiastas é frágil; planeje a rotativi
 - **EX116 — Gatilho do desligamento.** O que dispara a designação de um sucessor? *Rubrica:* 3 = os vínculos com o diretório, que lembram o líder de governança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX117 — Risco do esforço.** Que risco o esforço concentrado criava? *Rubrica:* 3 = esgotamento e pontos únicos de falha;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Continue estudando — aula 39 (capítulo 39 de 50)
 
 [← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Mapa da aula
 
 Aula 40 publicada. Mapa, exemplo, EX118.
@@ -3819,7 +3819,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Objetivos de aprendizagem
@@ -3858,19 +3858,19 @@ Testar só o caminho principal deixa escapar rotas laterais para os dados govern
 - **EX119 — Correção dos contatos.** O que substituiu a lista de contatos desatualizada? *Rubrica:* 3 = links para a escala de plantão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX120 — Lição das rotas laterais.** De onde vieram as duas falhas? *Rubrica:* 3 = de componentes fora do caminho principal;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Continue estudando — aula 40 (capítulo 40 de 50)
 
 [← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Governança de dados: otimização de sistemas
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Mapa da aula
 
 Aula 41 publicada. Mapa, exemplo, EX121.
@@ -3907,7 +3907,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX121]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Objetivos de aprendizagem
@@ -3946,19 +3946,19 @@ Otimizar a medida de uma equipe pode prejudicar o sistema; meça a cadeia.
 - **EX122 — Gargalo.** Qual era o gargalo? *Rubrica:* 3 = a aprovação manual das correções por um único supervisor;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX123 — Medidas da cadeia.** Cite as três medidas da cadeia. *Rubrica:* 3 = tempo da leitura ao número, parcela no prazo e reapresentações;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-41 -->
+<!-- cykin:chapter-navigation:start ch-41 -->
 ### Continue estudando — aula 41 (capítulo 41 de 50)
 
 [← Capítulo 40](#ch-40) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Governança de dados: pesquisa aplicada
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Mapa da aula
 
 Aula 42 publicada. Mapa, exemplo, EX124.
@@ -4000,7 +4000,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX124]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Objetivos de aprendizagem
@@ -4039,19 +4039,19 @@ Recuperar um efeito plantado não prova um efeito real.
 - **EX125 — Propósito do sintético.** Por que usar dados sintéticos com respostas conhecidas? *Rubrica:* 3 = para verificar se o método consegue encontrar um efeito real;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX126 — Explicação alternativa.** Cite uma explicação alternativa a verificar. *Rubrica:* 3 = o tamanho do distrito;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-42 -->
+<!-- cykin:chapter-navigation:start ch-42 -->
 ### Continue estudando — aula 42 (capítulo 42 de 50)
 
 [← Capítulo 41](#ch-41) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Mapa da aula
 
 Aula 43 publicada. Mapa, exemplo, EX127.
@@ -4093,7 +4093,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX127]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Objetivos de aprendizagem
@@ -4132,19 +4132,19 @@ Contornar controles sob pressão de prazo os corrói; manifeste suas preocupaç�
 - **EX128 — Pergunta do regulador.** O que o revisor do regulador perguntou? *Rubrica:* 3 = como a Tidewater sabe que os sensores de vazão são precisos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX129 — Edição não aprovada.** Como Kofi lidou com a edição não aprovada? *Rubrica:* 3 = tratou do assunto em particular e a edição foi submetida à aprovação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-43 -->
+<!-- cykin:chapter-navigation:start ch-43 -->
 ### Continue estudando — aula 43 (capítulo 43 de 50)
 
 [← Capítulo 42](#ch-42) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Mapa da aula
 
 Aula 44 publicada. Mapa, exemplo, EX130.
@@ -4186,7 +4186,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX130]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Objetivos de aprendizagem
@@ -4225,19 +4225,19 @@ Escopo pouco claro é a falha mais comum em projetos finais; escreva-o.
 - **EX131 — Resposta ao risco sintético.** Como Kofi vai verificar os dados sintéticos de pressão? *Rubrica:* 3 = validando cedo os padrões com um engenheiro de operação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX132 — Critério de público.** Quem precisa compreender a demonstração? *Rubrica:* 3 = um público da operação;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-44 -->
+<!-- cykin:chapter-navigation:start ch-44 -->
 ### Continue estudando — aula 44 (capítulo 44 de 50)
 
 [← Capítulo 43](#ch-43) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Mapa da aula
 
 Aula 45 publicada. Mapa, exemplo, EX133.
@@ -4279,7 +4279,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX133]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Objetivos de aprendizagem
@@ -4318,19 +4318,19 @@ Esconder fragilidades conhecidas desperdiça o tempo dos revisores.
 - **EX134 — Mudança de titularidade.** Como a titularidade foi dividida? *Rubrica:* 3 = gerente de operação para os locais críticos, gerentes distritais para os demais;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX135 — Por que revisar.** Por que os revisores independentes são valiosos? *Rubrica:* 3 = eles não têm as premissas do projetista;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-45 -->
+<!-- cykin:chapter-navigation:start ch-45 -->
 ### Continue estudando — aula 45 (capítulo 45 de 50)
 
 [← Capítulo 44](#ch-44) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Mapa da aula
 
 Aula 46 publicada. Mapa, exemplo, EX136.
@@ -4372,7 +4372,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX136]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Objetivos de aprendizagem
@@ -4411,19 +4411,19 @@ Demonstrações que escondem falhas enganam; mostre o registro de testes.
 - **EX137 — Correção da detecção tardia.** O que a corrigiu? *Rubrica:* 3 = verificações horárias de completude nos locais críticos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX138 — Limites declarados.** Cite um limite declarado por Kofi. *Rubrica:* 3 = dados sintéticos ou operação de longo prazo não testada;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-46 -->
+<!-- cykin:chapter-navigation:start ch-46 -->
 ### Continue estudando — aula 46 (capítulo 46 de 50)
 
 [← Capítulo 45](#ch-45) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Mapa da aula
 
 Aula 47 publicada. Mapa, exemplo, EX139.
@@ -4465,7 +4465,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX139]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Objetivos de aprendizagem
@@ -4504,19 +4504,19 @@ Declarar a recuperação quando os sistemas reiniciam ignora os dados perdidos; 
 - **EX140 — Causa da lacuna.** O que causou a lacuna de dados? *Rubrica:* 3 = um *buffer* ficou cheio e sobrescreveu dados mais antigos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX141 — Definição de recuperação.** Quando a recuperação está completa? *Rubrica:* 3 = quando os dados estão conciliados;; 2 = parcialmente correto;; 1 = ao reiniciar;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-47 -->
+<!-- cykin:chapter-navigation:start ch-47 -->
 ### Continue estudando — aula 47 (capítulo 47 de 50)
 
 [← Capítulo 46](#ch-46) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Mapa da aula
 
 Aula 48 publicada. Mapa, exemplo, EX142.
@@ -4558,7 +4558,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX142]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Objetivos de aprendizagem
@@ -4597,19 +4597,19 @@ Afirmações sem evidência enfraquecem o dossiê inteiro; retire-as ou sustente
 - **EX143 — Lacuna de retenção.** O que a afirmação sobre retenção revelou? *Rubrica:* 3 = a regra nunca foi configurada para os dados de pressão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX144 — Teste de navegação.** Como a navegação foi testada? *Rubrica:* 3 = uma colega que não conhecia o projeto encontrou as evidências de afirmações aleatórias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-48 -->
+<!-- cykin:chapter-navigation:start ch-48 -->
 ### Continue estudando — aula 48 (capítulo 48 de 50)
 
 [← Capítulo 47](#ch-47) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Trabalho de conclusão de engenharia
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Mapa da aula
 
 Aula 49 publicada. Mapa, exemplo, EX145.
@@ -4646,7 +4646,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX145]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Objetivos de aprendizagem
@@ -4685,19 +4685,19 @@ Trabalhos organizados como diários escondem o argumento; organize-os em torno d
 - **EX146 — Trabalho futuro.** Cite um item de trabalho futuro. *Rubrica:* 3 = dados reais anonimizados, comparação com outras empresas ou custos de longo prazo;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX147 — Mudança pelos comentários.** Como os comentários mudaram as versões? *Rubrica:* 3 = reorganizadas em torno do argumento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-49 -->
+<!-- cykin:chapter-navigation:start ch-49 -->
 ### Continue estudando — aula 49 (capítulo 49 de 50)
 
 [← Capítulo 48](#ch-48) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
 
 Continue para a próxima aula já escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Mapa da aula
 
 Aula 50 publicada. Mapa, exemplo, EX148.
@@ -4739,7 +4739,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX148]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Objetivos de aprendizagem
@@ -4778,13 +4778,13 @@ Defender uma afirmação exagerada prejudica a credibilidade; corrija-a.
 - **EX149 — Questionamento sobre precisão.** O que o examinador do regulador contestou? *Rubrica:* 3 = afirmou-se precisão, mas mostrou-se consistência;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX150 — Hábitos valorizados.** Quais hábitos Kofi mais valoriza? *Rubrica:* 3 = evidência, revisão e honestidade sobre os limites;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
-<!-- cyberabc:chapter-navigation:start ch-50 -->
+<!-- cykin:chapter-navigation:start ch-50 -->
 ### Continue estudando — aula 50 (capítulo 50 de 50)
 
 [← Capítulo 49](#ch-49) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
 
 O índice aponta para o próximo curso do percurso de estudos.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

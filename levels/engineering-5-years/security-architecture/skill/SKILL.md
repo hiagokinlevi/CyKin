@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-architecture-engineering-80b397da
+name: cykin-security-architecture-engineering-80b397da
 description: "Guide a learner through the ARCH Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---

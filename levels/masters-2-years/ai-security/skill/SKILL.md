@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ai-security-masters-90fa251d
+name: cykin-ai-security-masters-90fa251d
 description: "Guide a learner through the master's course in AI and machine-learning security using its authored English book draft: research question and literature, advanced seminar, study design and ethics, competing explanations, proposal and pilot, analysis, dissertation writing and defence, with exercises, worked answers and offline labs."
 license: CC0-1.0
 ---

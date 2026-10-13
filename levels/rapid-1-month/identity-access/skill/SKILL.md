@@ -1,5 +1,5 @@
 ---
-name: cyberabc-identity-access-rapid-e00b477c
+name: cykin-identity-access-rapid-e00b477c
 description: "IAM Rapid Course (4 ch / 50 ex)"
 license: CC0-1.0
 ---

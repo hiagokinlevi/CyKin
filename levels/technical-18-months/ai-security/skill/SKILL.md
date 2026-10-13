@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ai-security-technical-508e06bd
+name: cykin-ai-security-technical-508e06bd
 description: "Tutor for the technical (18-month) AI and machine-learning security course: teaches the 18-chapter procedural book with the synthetic Kestrel Telecom case, Python stdlib labs and EX001–EX072 rubrics."
 license: CC0-1.0
 ---

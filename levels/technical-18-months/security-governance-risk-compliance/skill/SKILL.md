@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-governance-risk-compl-technical-a9932cde
+name: cykin-security-governance-risk-compl-technical-a9932cde
 description: "Guide a learner through the GRC Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

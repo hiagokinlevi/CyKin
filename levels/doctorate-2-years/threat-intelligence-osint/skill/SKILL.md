@@ -1,5 +1,5 @@
 ---
-name: cyberabc-threat-intelligence-osint-doctorate-0678c210
+name: cykin-threat-intelligence-osint-doctorate-0678c210
 description: "Guide a learner through the doctoral research track in threat intelligence and OSINT: research integrity, falsifiable CTI method studies, calibration, inter-rater agreement, reproducibility and ethical publication on synthetic data."
 license: CC0-1.0
 ---

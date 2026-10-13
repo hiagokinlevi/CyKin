@@ -1,5 +1,5 @@
 ---
-name: cyberabc-critical-sector-security-doctorate-56d0b6c8
+name: cykin-critical-sector-security-doctorate-56d0b6c8
 description: "Tutor the eight-chapter doctoral Critical Infrastructure and Sector Security course from its English draft, synthetic Cascade Study, 50 exercises and worked answers; enforce safety, dual-use and infrastructure-information boundaries."
 license: CC0-1.0
 ---

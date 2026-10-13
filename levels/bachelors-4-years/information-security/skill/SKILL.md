@@ -1,5 +1,5 @@
 ---
-name: cyberabc-information-security-bachelor-2cca975e
+name: cykin-information-security-bachelor-2cca975e
 description: "Guide a learner through the information security Bachelor's Course draft: 40 chapters, stdlib labs and EX001–EX120 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-threat-intelligence-osint-postgraduate-fc959229
+name: cykin-threat-intelligence-osint-postgraduate-fc959229
 description: "Teach the two-year postgraduate threat intelligence and OSINT course: twelve subjects following a synthetic CTI lead at a logistics firm, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---

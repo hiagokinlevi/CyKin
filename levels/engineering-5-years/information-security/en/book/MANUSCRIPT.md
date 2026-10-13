@@ -37,7 +37,7 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 ## Chapter 1 — Calculus I
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -84,7 +84,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -123,19 +123,19 @@ Treating a quiet log source as safe can hide a disabled forwarder.
 - **EX002 — Silent source.** What might a sudden drop in a source's event rate mean? *Rubric:* 3 = a stopped forwarder;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX003 — Summary risk.** What is the risk of summarising old logs? *Rubric:* 3 = losing detail investigators need;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — lesson 01 (chapter 01 of 50)
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX004.
@@ -182,7 +182,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -221,19 +221,19 @@ A formal rule can still encode the wrong policy; confirm it with owners.
 - **EX005 — Shared accounts.** Why do shared accounts harm accountability? *Rubric:* 3 = actions cannot be traced to a person;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX006 — Cutting paths.** How can many attack paths be cut at once? *Rubric:* 3 = remove a few trust edges;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — lesson 02 (chapter 02 of 50)
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Physics for computing
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX007.
@@ -280,7 +280,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -319,19 +319,19 @@ Deleting files does not remove data from storage media.
 - **EX008 — SSD remanence.** Why can deleted data survive on solid-state drives? *Rubric:* 3 = wear-levelling keeps old copies;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — UPS runtime.** What runtime does the power supply give at current load? *Rubric:* 3 = under ten minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — lesson 03 (chapter 03 of 50)
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX010.
@@ -373,7 +373,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -412,19 +412,19 @@ Blocking known bad input is weaker than allowing only known good input.
 - **EX011 — Allow list.** How is the depot code validated? *Rubric:* 3 = against the twelve valid codes;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Injection fix.** How should the reset script call commands? *Rubric:* 3 = pass arguments as a list;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — lesson 04 (chapter 04 of 50)
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Engineering communication
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX013.
@@ -471,7 +471,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes
@@ -510,19 +510,19 @@ A finding without a clear owner and action rarely gets fixed.
 - **EX014 — Trust boundaries.** What does Prof. Hale ask her to mark? *Rubric:* 3 = trust boundaries;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX015 — Record answer.** Why was the folder moved rather than deleted? *Rubric:* 3 = licences are retained for insurance checks;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — lesson 05 (chapter 05 of 50)
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Calculus II
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX016.
@@ -564,7 +564,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes
@@ -603,19 +603,19 @@ A single average closure rate hides slow handling of critical findings.
 - **EX017 — Steady state.** What is the steady-state backlog formula? *Rubric:* 3 = inflow divided by closure rate;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX018 — Reduce inflow.** How can inflow be reduced? *Rubric:* 3 = remove unused software;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — lesson 06 (chapter 06 of 50)
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Probability and statistics
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX019.
@@ -662,7 +662,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes
@@ -701,19 +701,19 @@ An accurate-sounding detector can still produce mostly false alerts.
 - **EX020 — Poisson weeks.** What model describes weekly detections? *Rubric:* 3 = Poisson with mean twelve;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX021 — Laptop confounder.** What might explain fewer detections with new laptops? *Rubric:* 3 = larger depots with IT staff;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — lesson 07 (chapter 07 of 50)
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Computer architecture
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX022.
@@ -760,7 +760,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes
@@ -799,19 +799,19 @@ Firmware and management controllers are often left with factory credentials.
 - **EX023 — Secure boot gap.** Why was secure boot disabled on some laptops? *Rubric:* 3 = an old driver;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX024 — Signing key.** Where should the code-signing key move? *Rubric:* 3 = a hardware token or managed key service;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — lesson 08 (chapter 08 of 50)
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Programming II
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX025.
@@ -858,7 +858,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes
@@ -897,19 +897,19 @@ A password committed to code must be treated as exposed and changed.
 - **EX026 — Secret storage.** Where does the tool read credentials from? *Rubric:* 3 = an environment variable set by the scheduler;; 2 = partly correct;; 1 = code;; 0 = none.
 - **EX027 — Parser choice.** Why write her own parser? *Rubric:* 3 = simple format, unmaintained library;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 50)
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Engineering ethics and safety
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX028.
@@ -956,7 +956,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes
@@ -995,19 +995,19 @@ Testing a live system without authorisation is not acceptable, even to help.
 - **EX029 — Notice gap.** What did the monitoring notice omit? *Rubric:* 3 = web browsing logging;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX030 — Safety link.** Why do temperature records matter for safety? *Rubric:* 3 = tampering could let spoiled medicines reach patients;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 50)
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Networks and protocols
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX031.
@@ -1054,7 +1054,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes
@@ -1093,19 +1093,19 @@ A flat network lets one compromised device reach everything.
 - **EX032 — Resolver logs.** What can resolver logs help detect? *Rubric:* 3 = malware contacting unusual domains;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX033 — Segmentation value.** What does segmentation mainly limit? *Rubric:* 3 = how far attackers move;; 2 = partly correct;; 1 = entry;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 50)
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Operating systems
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX034.
@@ -1152,7 +1152,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes
@@ -1191,19 +1191,19 @@ Logs kept only on the server can be erased by an attacker who controls it.
 - **EX035 — Central logs.** Why forward logs to a central collector? *Rubric:* 3 = attackers cannot erase local evidence;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX036 — Update staging.** What does Lindiwe propose for updates? *Rubric:* 3 = a test group first, then promotion after a week;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 50)
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Data systems
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX037.
@@ -1250,7 +1250,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes
@@ -1289,19 +1289,19 @@ A backup reachable and deletable from the main network may not survive ransomwar
 - **EX038 — Injection fix.** How does she fix the search page? *Rubric:* 3 = parameterised queries;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX039 — Backup copy.** What extra backup copy does she recommend? *Rubric:* 3 = one that cannot be altered for a set period;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue studying — lesson 13 (chapter 13 of 50)
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Software engineering
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX040.
@@ -1348,7 +1348,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes
@@ -1387,19 +1387,19 @@ Hiding a button in the interface does not stop requests to the server.
 - **EX041 — Dependency check.** How often are dependencies checked? *Rubric:* 3 = weekly;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX042 — Build protection.** Name one build protection she recommends. *Rubric:* 3 = signed packages;; 2 = one;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue studying — lesson 14 (chapter 14 of 50)
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Security fundamentals
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX043.
@@ -1446,7 +1446,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes
@@ -1485,19 +1485,19 @@ Calling a vulnerability a risk ignores threat and impact.
 - **EX044 — High-water mark.** What is the high-water mark? *Rubric:* 3 = overall category is the highest of the three;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Defence in depth.** What is defence in depth? *Rubric:* 3 = several independent controls;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue studying — lesson 15 (chapter 15 of 50)
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Systems engineering
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX046.
@@ -1544,7 +1544,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes
@@ -1583,19 +1583,19 @@ Forgotten retired servers often keep old data and old vulnerabilities.
 - **EX047 — Untested requirements.** How many requirements had no test? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX048 — Retirement checklist.** What does the retirement checklist cover? *Rubric:* 3 = data deletion, account removal, disconnection;; 2 = all;; 1 = some;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue studying — lesson 16 (chapter 16 of 50)
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Control and feedback basics
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX049.
@@ -1642,7 +1642,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes
@@ -1681,19 +1681,19 @@ Aggressive automatic lockouts can become a denial of service.
 - **EX050 — Gradual response.** What comes before locking an account? *Rubric:* 3 = slowing attempts, then extra verification;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX051 — Loop metrics.** Which statistics does she report? *Rubric:* 3 = medians and the slowest tenth;; 2 = partly correct;; 1 = means;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue studying — lesson 17 (chapter 17 of 50)
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Security architecture
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX052.
@@ -1740,7 +1740,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes
@@ -1779,19 +1779,19 @@ Relying on an undocumented port is obscurity, not protection.
 - **EX053 — Chosen option.** Which option do developers choose? *Rubric:* 3 = the intermediate service;; 2 = partly correct;; 1 = direct;; 0 = none.
 - **EX054 — Open design.** What did the transfer tool rely on? *Rubric:* 3 = an undocumented port;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue studying — lesson 18 (chapter 18 of 50)
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Chapter 19 — Identity and cryptography
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Lesson map
 
 Lesson 19 published. Map, example, EX055.
@@ -1838,7 +1838,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Learning outcomes
@@ -1877,19 +1877,19 @@ App-based approval prompts can be accepted by users who did not start a login.
 - **EX056 — Admin factor.** Which factor does she recommend for administrators? *Rubric:* 3 = hardware keys;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX057 — Certificate outages.** Why did certificates expire? *Rubric:* 3 = renewal relied on memory;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue studying — lesson 19 (chapter 19 of 50)
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Chapter 20 — Information security: engineering context
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Lesson map
 
 Lesson 20 published. Map, example, EX058.
@@ -1936,7 +1936,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Learning outcomes
@@ -1975,19 +1975,19 @@ Implementing ISO/IEC 27002 guidance alone does not make an organisation ISO/IEC 
 - **EX059 — Control groups.** Name the four ISO/IEC 27002 control groups. *Rubric:* 3 = organisational, people, physical, technological;; 2 = all;; 1 = some;; 0 = none.
 - **EX060 — CSF functions.** Name the six CSF 2.0 functions. *Rubric:* 3 = Govern, Identify, Protect, Detect, Respond, Recover;; 2 = all;; 1 = some;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue studying — lesson 20 (chapter 20 of 50)
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Chapter 21 — Information security: requirements
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Lesson map
 
 Lesson 21 published. Map, example, EX061.
@@ -2034,7 +2034,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Learning outcomes
@@ -2073,19 +2073,19 @@ A requirement without a measurable threshold cannot be verified.
 - **EX062 — Patch requirement.** How quickly must critical patches be applied? *Rubric:* 3 = within fourteen days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX063 — Retention conflict.** How is the log retention conflict resolved? *Rubric:* 3 = a year with restricted access and minimised fields;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue studying — lesson 21 (chapter 21 of 50)
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Chapter 22 — Information security: system and data models
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Lesson map
 
 Lesson 22 published. Map, example, EX064.
@@ -2137,7 +2137,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Learning outcomes
@@ -2199,19 +2199,19 @@ An asset register that is never reconciled gives false confidence.
 - **EX065 — Silent registrations.** How many registered addresses did not respond? *Rubric:* 3 = ninety;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX066 — Camera owner.** Who becomes owner of the camera system? *Rubric:* 3 = the depot manager;; 2 = partly correct;; 1 = IT;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue studying — lesson 22 (chapter 22 of 50)
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Chapter 23 — Information security: threat and failure analysis
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Lesson map
 
 Lesson 23 published. Map, example, EX067.
@@ -2258,7 +2258,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Learning outcomes
@@ -2297,19 +2297,19 @@ Modelling only one powerful adversary misses common, simpler threats.
 - **EX068 — Silent failure.** Which failure would go unnoticed for hours? *Rubric:* 3 = a full message queue;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX069 — Open gap.** Which threat lacks an adequate control? *Rubric:* 3 = insiders exporting customer lists;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue studying — lesson 23 (chapter 23 of 50)
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Chapter 24 — Information security: methods I
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Lesson map
 
 Lesson 24 published. Map, example, EX070.
@@ -2356,7 +2356,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Learning outcomes
@@ -2395,19 +2395,19 @@ Mixing observations with conclusions makes reports harder to verify.
 - **EX071 — Evidence integrity.** How does she protect evidence integrity? *Rubric:* 3 = checksums in a restricted folder;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Corrected error.** What factual error is corrected? *Rubric:* 3 = a door with a code lock she missed;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue studying — lesson 24 (chapter 24 of 50)
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Chapter 25 — Design studio I
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Lesson map
 
 Lesson 25 published. Map, example, EX073.
@@ -2454,7 +2454,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Learning outcomes
@@ -2493,19 +2493,19 @@ A strong authentication design without a recovery process fails at the first los
 - **EX074 — VPN drawback.** What drawback does the VPN option have? *Rubric:* 3 = broad network access once connected;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX075 — Recovery process.** What recovery process is added? *Rubric:* 3 = second key at home and verified call;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue studying — lesson 25 (chapter 25 of 50)
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Chapter 26 — Information security: architecture alternatives
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Lesson map
 
 Lesson 26 published. Map, example, EX076.
@@ -2552,7 +2552,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Learning outcomes
@@ -2591,19 +2591,19 @@ Moving to a cloud service does not transfer responsibility for accounts and conf
 - **EX077 — Mediation link.** Which principle does identity-centred checking follow? *Rubric:* 3 = complete mediation;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX078 — Cloud responsibility.** What remains Saltmarsh's responsibility in the cloud? *Rubric:* 3 = accounts, configuration and data;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue studying — lesson 26 (chapter 26 of 50)
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Chapter 27 — Information security: control design
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Lesson map
 
 Lesson 27 published. Map, example, EX079.
@@ -2650,7 +2650,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Learning outcomes
@@ -2689,19 +2689,19 @@ A control that leaves no evidence cannot be shown to work.
 - **EX080 — Targeted share.** About what share of orders exceed the threshold? *Rubric:* 3 = about five percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX081 — Planted tests.** How is the control tested despite rare fraud? *Rubric:* 3 = staging synthetic suspicious changes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue studying — lesson 27 (chapter 27 of 50)
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — Information security: implementation I
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Lesson map
 
 Lesson 28 published. Map, example, EX082.
@@ -2753,7 +2753,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Learning outcomes
@@ -2821,19 +2821,19 @@ Reporting each rule alone can hide how many servers fail at least one.
 - **EX083 — Patch rate.** What share is patched within thirty days? *Rubric:* 3 = 253, 84.3 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX084 — All three.** How many servers pass all three rules? *Rubric:* 3 = 216, 72.0 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue studying — lesson 28 (chapter 28 of 50)
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — Information security: measurement
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Lesson map
 
 Lesson 29 published. Map, example, EX085.
@@ -2885,7 +2885,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Learning outcomes
@@ -2961,19 +2961,19 @@ Ranking by total failures confuses broken clients with attacks.
 - **EX086 — Top account.** Why is u1200 not flagged? *Rubric:* 3 = failures spread across the day;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX087 — Blind spot.** What does the window measure miss? *Rubric:* 3 = slow, patient guessing;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue studying — lesson 29 (chapter 29 of 50)
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Lesson map
 
 Lesson 30 published. Map, example, EX088.
@@ -3020,7 +3020,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Learning outcomes
@@ -3059,19 +3059,19 @@ Untested boundary cases often reveal disagreement between definition and code.
 - **EX089 — Failing test.** Which planted case failed at first? *Rubric:* 3 = ten failures spanning exactly five minutes;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX090 — Permanent tests.** Why keep planted cases permanently? *Rubric:* 3 = to check future changes quickly;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue studying — lesson 30 (chapter 30 of 50)
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
 ## Chapter 31 — Information security: implementation II
 
-<!-- cyberabc:lesson-figures:start ch-31 -->
+<!-- cykin:lesson-figures:start ch-31 -->
 ### Lesson map
 
 Lesson 31 published. Map, example, EX091.
@@ -3118,7 +3118,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX091]
 ```
-<!-- cyberabc:lesson-figures:end ch-31 -->
+<!-- cykin:lesson-figures:end ch-31 -->
 
 
 ### Learning outcomes
@@ -3157,19 +3157,19 @@ Exceptions without expiry dates become permanent weaknesses.
 - **EX092 — Warehouse method.** How do warehouse staff log in? *Rubric:* 3 = badge tap with a personal code;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX093 — Adoption measures.** What three adoption measures are tracked? *Rubric:* 3 = enrolled share, second-factor logins, open exceptions;; 2 = all;; 1 = some;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-31 -->
+<!-- cykin:chapter-navigation:start ch-31 -->
 ### Continue studying — lesson 31 (chapter 31 of 50)
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
 ## Chapter 32 — Information security: reliability
 
-<!-- cyberabc:lesson-figures:start ch-32 -->
+<!-- cykin:lesson-figures:start ch-32 -->
 ### Lesson map
 
 Lesson 32 published. Map, example, EX094.
@@ -3221,7 +3221,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX094]
 ```
-<!-- cyberabc:lesson-figures:end ch-32 -->
+<!-- cykin:lesson-figures:end ch-32 -->
 
 
 ### Learning outcomes
@@ -3286,19 +3286,19 @@ A successful backup job does not prove data can be restored intact.
 - **EX095 — Missing cause.** Why were five files missing? *Rubric:* 3 = a folder added after selection was configured;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX096 — Dispatch objectives.** What are dispatch's recovery objectives? *Rubric:* 3 = lose at most an hour, return within four hours;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-32 -->
+<!-- cykin:chapter-navigation:start ch-32 -->
 ### Continue studying — lesson 32 (chapter 32 of 50)
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
 ## Chapter 33 — Information security: safety and resilience
 
-<!-- cyberabc:lesson-figures:start ch-33 -->
+<!-- cykin:lesson-figures:start ch-33 -->
 ### Lesson map
 
 Lesson 33 published. Map, example, EX097.
@@ -3345,7 +3345,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX097]
 ```
-<!-- cyberabc:lesson-figures:end ch-33 -->
+<!-- cykin:lesson-figures:end ch-33 -->
 
 
 ### Learning outcomes
@@ -3384,19 +3384,19 @@ A resilience plan that has never been exercised usually contains outdated detail
 - **EX098 — Exercise discovery.** What did the exercise reveal? *Rubric:* 3 = missing printed lists location and outdated contacts;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX099 — Temperature evidence.** How is temperature evidence protected? *Rubric:* 3 = independent loggers read at delivery;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-33 -->
+<!-- cykin:chapter-navigation:start ch-33 -->
 ### Continue studying — lesson 33 (chapter 33 of 50)
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
 ## Chapter 34 — Information security: integration
 
-<!-- cyberabc:lesson-figures:start ch-34 -->
+<!-- cykin:lesson-figures:start ch-34 -->
 ### Lesson map
 
 Lesson 34 published. Map, example, EX100.
@@ -3443,7 +3443,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX100]
 ```
-<!-- cyberabc:lesson-figures:end ch-34 -->
+<!-- cykin:lesson-figures:end ch-34 -->
 
 
 ### Learning outcomes
@@ -3482,19 +3482,19 @@ A credential shared between partners cannot be revoked for one without affecting
 - **EX101 — Removed fields.** How many unnecessary fields were removed? *Rubric:* 3 = six;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX102 — Misuse signal.** What would suggest misuse of a retailer credential? *Rubric:* 3 = sudden rise in address requests;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-34 -->
+<!-- cykin:chapter-navigation:start ch-34 -->
 ### Continue studying — lesson 34 (chapter 34 of 50)
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
 ## Chapter 35 — Design studio II
 
-<!-- cyberabc:lesson-figures:start ch-35 -->
+<!-- cykin:lesson-figures:start ch-35 -->
 ### Lesson map
 
 Lesson 35 published. Map, example, EX103.
@@ -3541,7 +3541,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX103]
 ```
-<!-- cyberabc:lesson-figures:end ch-35 -->
+<!-- cykin:lesson-figures:end ch-35 -->
 
 
 ### Learning outcomes
@@ -3580,19 +3580,19 @@ Designing monitoring without estimating alert volume leads to understaffed teams
 - **EX104 — Hybrid model.** What is the hybrid model? *Rubric:* 3 = external at night, Saltmarsh staff by day;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX105 — Pseudonym reveal.** Who can reveal pseudonymous identities? *Rubric:* 3 = an on-call Saltmarsh manager;; 2 = partly correct;; 1 = analysts;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-35 -->
+<!-- cykin:chapter-navigation:start ch-35 -->
 ### Continue studying — lesson 35 (chapter 35 of 50)
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
 ## Chapter 36 — Information security: performance and scale
 
-<!-- cyberabc:lesson-figures:start ch-36 -->
+<!-- cykin:lesson-figures:start ch-36 -->
 ### Lesson map
 
 Lesson 36 published. Map, example, EX106.
@@ -3639,7 +3639,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX106]
 ```
-<!-- cyberabc:lesson-figures:end ch-36 -->
+<!-- cykin:lesson-figures:end ch-36 -->
 
 
 ### Learning outcomes
@@ -3678,19 +3678,19 @@ Security systems that silently drop data under load give false assurance.
 - **EX107 — Collector capacity.** When does the collector reach capacity? *Rubric:* 3 = within eighteen months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX108 — Kept events.** Which events are kept in full? *Rubric:* 3 = authentication and administrative events;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-36 -->
+<!-- cykin:chapter-navigation:start ch-36 -->
 ### Continue studying — lesson 36 (chapter 36 of 50)
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
 ## Chapter 37 — Information security: operations
 
-<!-- cyberabc:lesson-figures:start ch-37 -->
+<!-- cykin:lesson-figures:start ch-37 -->
 ### Lesson map
 
 Lesson 37 published. Map, example, EX109.
@@ -3737,7 +3737,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX109]
 ```
-<!-- cyberabc:lesson-figures:end ch-37 -->
+<!-- cykin:lesson-figures:end ch-37 -->
 
 
 ### Learning outcomes
@@ -3776,19 +3776,19 @@ Rewarding fewer alerts can encourage turning detection off.
 - **EX110 — Incident actions.** Name one containment action taken. *Rubric:* 3 = locking the account;; 2 = one;; 1 = vague;; 0 = none.
 - **EX111 — Root cause.** Why did the account lack multi-factor authentication? *Rubric:* 3 = an exception extended twice without review;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-37 -->
+<!-- cykin:chapter-navigation:start ch-37 -->
 ### Continue studying — lesson 37 (chapter 37 of 50)
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
 ## Chapter 38 — Information security: validation
 
-<!-- cyberabc:lesson-figures:start ch-38 -->
+<!-- cykin:lesson-figures:start ch-38 -->
 ### Lesson map
 
 Lesson 38 published. Map, example, EX112.
@@ -3835,7 +3835,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX112]
 ```
-<!-- cyberabc:lesson-figures:end ch-38 -->
+<!-- cykin:lesson-figures:end ch-38 -->
 
 
 ### Learning outcomes
@@ -3874,19 +3874,19 @@ A control can be built correctly and still fail to meet the real need.
 - **EX113 — Missed gaps.** Name one detection gap found. *Rubric:* 3 = email forwarding rules;; 2 = one;; 1 = vague;; 0 = none.
 - **EX114 — Address status.** What is the address-change control's status? *Rubric:* 3 = verified but not yet validated;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-38 -->
+<!-- cykin:chapter-navigation:start ch-38 -->
 ### Continue studying — lesson 38 (chapter 38 of 50)
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
 ## Chapter 39 — Information security: maintainability
 
-<!-- cyberabc:lesson-figures:start ch-39 -->
+<!-- cykin:lesson-figures:start ch-39 -->
 ### Lesson map
 
 Lesson 39 published. Map, example, EX115.
@@ -3933,7 +3933,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX115]
 ```
-<!-- cyberabc:lesson-figures:end ch-39 -->
+<!-- cykin:lesson-figures:end ch-39 -->
 
 
 ### Learning outcomes
@@ -3972,19 +3972,19 @@ Tools whose authors leave without handover become unmaintained.
 - **EX116 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a colleague follows each one;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX117 — Deputies.** Why add deputies? *Rubric:* 3 = controls stop when one person is absent;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-39 -->
+<!-- cykin:chapter-navigation:start ch-39 -->
 ### Continue studying — lesson 39 (chapter 39 of 50)
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
 
-<!-- cyberabc:lesson-figures:start ch-40 -->
+<!-- cykin:lesson-figures:start ch-40 -->
 ### Lesson map
 
 Lesson 40 published. Map, example, EX118.
@@ -4031,7 +4031,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX118]
 ```
-<!-- cyberabc:lesson-figures:end ch-40 -->
+<!-- cykin:lesson-figures:end ch-40 -->
 
 
 ### Learning outcomes
@@ -4070,19 +4070,19 @@ Showing only final passing tests hides how controls were improved.
 - **EX119 — Late alert.** Which alert fired late? *Rubric:* 3 = bulk download;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX120 — Before and after.** Why record results before and after fixing? *Rubric:* 3 = shows the improvement and its cause;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-40 -->
+<!-- cykin:chapter-navigation:start ch-40 -->
 ### Continue studying — lesson 40 (chapter 40 of 50)
 
 [← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
 ## Chapter 41 — Information security: system optimization
 
-<!-- cyberabc:lesson-figures:start ch-41 -->
+<!-- cykin:lesson-figures:start ch-41 -->
 ### Lesson map
 
 Lesson 41 published. Map, example, EX121.
@@ -4129,7 +4129,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX121]
 ```
-<!-- cyberabc:lesson-figures:end ch-41 -->
+<!-- cykin:lesson-figures:end ch-41 -->
 
 
 ### Learning outcomes
@@ -4168,19 +4168,19 @@ Removing a tool without checking coverage can open unnoticed gaps.
 - **EX122 — Account lists.** How are the three account lists produced after change? *Rubric:* 3 = from the single identity source;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX123 — Low-ranked purchase.** Which investment ranks low? *Rubric:* 3 = an advanced analytics product;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-41 -->
+<!-- cykin:chapter-navigation:start ch-41 -->
 ### Continue studying — lesson 41 (chapter 41 of 50)
 
 [← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
 ## Chapter 42 — Information security: applied research
 
-<!-- cyberabc:lesson-figures:start ch-42 -->
+<!-- cykin:lesson-figures:start ch-42 -->
 ### Lesson map
 
 Lesson 42 published. Map, example, EX124.
@@ -4227,7 +4227,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX124]
 ```
-<!-- cyberabc:lesson-figures:end ch-42 -->
+<!-- cykin:lesson-figures:end ch-42 -->
 
 
 ### Learning outcomes
@@ -4266,19 +4266,19 @@ Small incident counts cannot support confident conclusions.
 - **EX125 — Incident definition.** How is an incident defined? *Rubric:* 3 = use of an account by someone other than its owner;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX126 — Evidence strength.** How strong is the evidence? *Rubric:* 3 = favourable but weak;; 2 = partly correct;; 1 = strong;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-42 -->
+<!-- cykin:chapter-navigation:start ch-42 -->
 ### Continue studying — lesson 42 (chapter 42 of 50)
 
 [← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
 ## Chapter 43 — Industry or public-service practice
 
-<!-- cyberabc:lesson-figures:start ch-43 -->
+<!-- cykin:lesson-figures:start ch-43 -->
 ### Lesson map
 
 Lesson 43 published. Map, example, EX127.
@@ -4325,7 +4325,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX127]
 ```
-<!-- cyberabc:lesson-figures:end ch-43 -->
+<!-- cykin:lesson-figures:end ch-43 -->
 
 
 ### Learning outcomes
@@ -4364,19 +4364,19 @@ Presenting incomplete controls as implemented misleads auditors.
 - **EX128 — Incomplete evidence.** How are the two incomplete controls presented? *Rubric:* 3 = as in progress with dates;; 2 = partly correct;; 1 = complete;; 0 = none.
 - **EX129 — Blameless effect.** What did blameless handling encourage? *Rubric:* 3 = quicker reporting next time;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-43 -->
+<!-- cykin:chapter-navigation:start ch-43 -->
 ### Continue studying — lesson 43 (chapter 43 of 50)
 
 [← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
 
-<!-- cyberabc:lesson-figures:start ch-44 -->
+<!-- cykin:lesson-figures:start ch-44 -->
 ### Lesson map
 
 Lesson 44 published. Map, example, EX130.
@@ -4423,7 +4423,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX130]
 ```
-<!-- cyberabc:lesson-figures:end ch-44 -->
+<!-- cykin:lesson-figures:end ch-44 -->
 
 
 ### Learning outcomes
@@ -4462,19 +4462,19 @@ Undocumented dependencies make recovery far slower than planned.
 - **EX131 — Hidden dependency.** What dependency was missing from diagrams? *Rubric:* 3 = a licence server;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX132 — Scope decision.** What is done about payroll? *Rubric:* 3 = document dependencies only;; 2 = partly correct;; 1 = full;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-44 -->
+<!-- cykin:chapter-navigation:start ch-44 -->
 ### Continue studying — lesson 44 (chapter 44 of 50)
 
 [← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
 
-<!-- cyberabc:lesson-figures:start ch-45 -->
+<!-- cykin:lesson-figures:start ch-45 -->
 ### Lesson map
 
 Lesson 45 published. Map, example, EX133.
@@ -4521,7 +4521,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX133]
 ```
-<!-- cyberabc:lesson-figures:end ch-45 -->
+<!-- cykin:lesson-figures:end ch-45 -->
 
 
 ### Learning outcomes
@@ -4560,19 +4560,19 @@ A recovery environment sharing production credentials can be destroyed by the sa
 - **EX134 — Older backups.** What test was added for older backups? *Rubric:* 3 = restoring from week-old backups;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX135 — Recovery decision.** Who authorises recovery? *Rubric:* 3 = security lead and operations director;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-45 -->
+<!-- cykin:chapter-navigation:start ch-45 -->
 ### Continue studying — lesson 45 (chapter 45 of 50)
 
 [← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
 ## Chapter 46 — Engineering capstone II
 
-<!-- cyberabc:lesson-figures:start ch-46 -->
+<!-- cykin:lesson-figures:start ch-46 -->
 ### Lesson map
 
 Lesson 46 published. Map, example, EX136.
@@ -4619,7 +4619,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX136]
 ```
-<!-- cyberabc:lesson-figures:end ch-46 -->
+<!-- cykin:lesson-figures:end ch-46 -->
 
 
 ### Learning outcomes
@@ -4658,19 +4658,19 @@ A single successful recovery trial does not prove recovery is reliable.
 - **EX137 — Idempotent meaning.** What does idempotent mean for her scripts? *Rubric:* 3 = same result when run twice;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX138 — Remaining slow step.** What remains the slowest step? *Rubric:* 3 = database restoration;; 2 = partly correct;; 1 = other;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-46 -->
+<!-- cykin:chapter-navigation:start ch-46 -->
 ### Continue studying — lesson 46 (chapter 46 of 50)
 
 [← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
 
-<!-- cyberabc:lesson-figures:start ch-47 -->
+<!-- cykin:lesson-figures:start ch-47 -->
 ### Lesson map
 
 Lesson 47 published. Map, example, EX139.
@@ -4717,7 +4717,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX139]
 ```
-<!-- cyberabc:lesson-figures:end ch-47 -->
+<!-- cykin:lesson-figures:end ch-47 -->
 
 
 ### Learning outcomes
@@ -4756,19 +4756,19 @@ Recovery trials that test only technology miss communication failures.
 - **EX140 — Credential delay.** How much time was lost finding credentials? *Rubric:* 3 = twenty minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX141 — Coordinator role.** Why add a coordinator role? *Rubric:* 3 = two people ran the same script;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-47 -->
+<!-- cykin:chapter-navigation:start ch-47 -->
 ### Continue studying — lesson 47 (chapter 47 of 50)
 
 [← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
 ## Chapter 48 — Evidence dossier
 
-<!-- cyberabc:lesson-figures:start ch-48 -->
+<!-- cykin:lesson-figures:start ch-48 -->
 ### Lesson map
 
 Lesson 48 published. Map, example, EX142.
@@ -4815,7 +4815,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX142]
 ```
-<!-- cyberabc:lesson-figures:end ch-48 -->
+<!-- cykin:lesson-figures:end ch-48 -->
 
 
 ### Learning outcomes
@@ -4854,19 +4854,19 @@ Including claims without evidence undermines the whole dossier.
 - **EX143 — Baseline starting rate.** What baseline rate starts the record? *Rubric:* 3 = 72.0 percent passing all rules;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX144 — Auditor sample.** How many claims did the auditor sample? *Rubric:* 3 = five;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-48 -->
+<!-- cykin:chapter-navigation:start ch-48 -->
 ### Continue studying — lesson 48 (chapter 48 of 50)
 
 [← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
 ## Chapter 49 — Engineering thesis
 
-<!-- cyberabc:lesson-figures:start ch-49 -->
+<!-- cykin:lesson-figures:start ch-49 -->
 ### Lesson map
 
 Lesson 49 published. Map, example, EX145.
@@ -4908,7 +4908,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX145]
 ```
-<!-- cyberabc:lesson-figures:end ch-49 -->
+<!-- cykin:lesson-figures:end ch-49 -->
 
 
 ### Learning outcomes
@@ -4947,19 +4947,19 @@ Citing sources as decoration rather than for specific points weakens a thesis.
 - **EX146 — Risk source.** Which source supports risk assessment? *Rubric:* 3 = NIST SP 800-30 Revision 1;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX147 — Key finding.** What key finding concerns recovery environments? *Rubric:* 3 = must be isolated from production credentials;; 2 = partly correct;; 1 = vague;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-49 -->
+<!-- cykin:chapter-navigation:start ch-49 -->
 ### Continue studying — lesson 49 (chapter 49 of 50)
 
 [← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
 
-<!-- cyberabc:lesson-figures:start ch-50 -->
+<!-- cykin:lesson-figures:start ch-50 -->
 ### Lesson map
 
 Lesson 50 published. Map, example, EX148.
@@ -5006,7 +5006,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX148]
 ```
-<!-- cyberabc:lesson-figures:end ch-50 -->
+<!-- cykin:lesson-figures:end ch-50 -->
 
 
 ### Learning outcomes
@@ -5045,13 +5045,13 @@ Answering beyond one's evidence undermines a defense.
 - **EX149 — Manifest storage.** Where is the checksum manifest stored? *Rubric:* 3 = immutably with the backups;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX150 — Defense result.** What is the outcome of the defense? *Rubric:* 3 = pass with commendation;; 2 = partly correct;; 1 = fail;; 0 = none.
 
-<!-- cyberabc:chapter-navigation:start ch-50 -->
+<!-- cykin:chapter-navigation:start ch-50 -->
 ### Continue studying — lesson 50 (chapter 50 of 50)
 
 [← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

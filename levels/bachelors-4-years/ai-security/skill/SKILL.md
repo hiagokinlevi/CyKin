@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ai-security-bachelor-95b31869
+name: cykin-ai-security-bachelor-95b31869
 description: "Tutor for the bachelor's (4-year) AI and machine-learning security course: teaches the 40-chapter book with the synthetic Lumen Community Health case, Python stdlib labs and EX001–EX120 rubrics."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-threat-intelligence-osint-masters-e455a584
+name: cykin-threat-intelligence-osint-masters-e455a584
 description: "Guide a learner through the master's course in threat intelligence and OSINT: literature method, competing hypotheses, sharing-community study design, STIX/TAXII data validation, honest analysis and ethical defence on synthetic data."
 license: CC0-1.0
 ---

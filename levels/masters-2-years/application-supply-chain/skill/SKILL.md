@@ -1,5 +1,5 @@
 ---
-name: cyberabc-application-supply-chain-masters-326326c2
+name: cykin-application-supply-chain-masters-326326c2
 description: "APP master's course (8 ch / 50 ex)"
 license: CC0-1.0
 ---

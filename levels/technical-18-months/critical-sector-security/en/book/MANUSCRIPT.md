@@ -73,7 +73,7 @@ Appendices: [Worked results and assessment notes](#worked-results) · [Glossary]
 
 ## Chapter 1 — Computing and service architecture
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX001.
@@ -130,7 +130,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes and connection
@@ -256,19 +256,19 @@ Use three colours or three page layers so that a shared switch or jump host stan
 
 A critical-sector service is a set of layers joined by three paths. Commands, measurements and changes travel different routes and fail in different ways; the management path holds the most privilege. Request–response polling makes freshness a matter of arithmetic, and timeouts, not bandwidth, usually decide it. Every later chapter adds a technique to one of these paths, so keep the diagram and the budget at hand.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 18
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Networks and protocols
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX005.
@@ -320,7 +320,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX005]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes and connection
@@ -452,19 +452,19 @@ The second frame carries function 05, a single-coil write, so record whether the
 
 Classic industrial protocols trust whoever can reach them, so network position is authority. Modbus/TCP frames have a fixed, checkable structure; decoding them correctly — including the length and protocol checks — is the basis for every later filter and detection. Writes from the wrong place are the first rule; identification and diagnostic functions need context; and a decoder only sees what its capture point sees.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 18
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Operating systems and identities
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX009.
@@ -516,7 +516,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX009]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes and connection
@@ -651,19 +651,19 @@ Record the OpenSSH version and the path of every file that `sshd -T` shows as in
 
 Operating-system hardening is checkable: effective settings, UIDs, shells and group memberships can be read and compared with a written policy. Know how the daemon actually reads its file, look at numbers rather than names, and order changes so that you never lock out the people who run the service.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 18
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Scripting and data formats
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX013.
@@ -715,7 +715,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes and connection
@@ -853,19 +853,19 @@ Reject KW-13 with its line number and a reason that names the allowed set. For t
 
 Operational data arrive malformed, ambiguous and occasionally hostile. Parse with real parsers, validate in an order that fails closed, never coerce, and report every finding with coordinates. Reject what you cannot interpret; quarantine what you can interpret but should not believe; and keep summaries machine-readable so that the validator itself can be monitored.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 18
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Chapter 5 — Security scope and evidence
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Lesson map
 
 Lesson 05 published. Map, example, EX017.
@@ -922,7 +922,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX017]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Learning outcomes and connection
@@ -1021,19 +1021,19 @@ State a maximum file size and a retention period, because a day of process value
 
 In critical environments, scope protects the process as much as the tester. Write it before you start, prefer passive methods, and make every piece of evidence verifiable by someone else: raw, sourced, timed in UTC, attributed and hashed. Preserve before you change, and keep observed, inferred, done and open apart.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue studying — chapter 05 of 18
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Chapter 6 — Critical infrastructure and sector security: system model
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Lesson map
 
 Lesson 06 published. Map, example, EX021.
@@ -1085,7 +1085,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Learning outcomes and connection
@@ -1169,19 +1169,19 @@ For the vendor remote-support path into Z3, record whether it terminates on the 
 
 The system model joins assets, zones, conduits and consequences into one map. It says what should happen, so that anything else is visible as a finding. Sectors differ in protocols, timing and who may change what, and safety and protection functions stay separate from everything a technician touches.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue studying — chapter 06 of 18
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Chapter 7 — Critical infrastructure and sector security: data and telemetry
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Lesson map
 
 Lesson 07 published. Map, example, EX025.
@@ -1233,7 +1233,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Learning outcomes and connection
@@ -1348,19 +1348,19 @@ Record the host, the reference, the offset and the time of measurement. After tw
 
 Telemetry is a set of partial witnesses. Know what each source can see, parse formats strictly while counting what you cannot parse, and correct every clock against a reference before you order events. A timeline built on uncorrected clocks can reverse cause and effect; one built on corrected clocks, with its uncertainties stated, is evidence.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue studying — chapter 07 of 18
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Chapter 8 — Critical infrastructure and sector security: failure modes
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Lesson map
 
 Lesson 08 published. Map, example, EX029.
@@ -1417,7 +1417,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX029]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Learning outcomes and connection
@@ -1542,19 +1542,19 @@ KW-01's steady rise is process behaviour while a pump fills the tank, so a naive
 
 Telemetry fails in a small number of recognizable ways, and each symptom has both ordinary and malicious causes. Detect symptoms with transparent rules — gap, stuck, spike, range — whose thresholds come from healthy data and whose reasons are written down. In-range is not the same as true. Report the symptom precisely and leave the cause to investigation.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 18
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Chapter 9 — Critical infrastructure and sector security: tools and methods
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Lesson map
 
 Lesson 09 published. Map, example, EX033.
@@ -1611,7 +1611,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX033]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Learning outcomes and connection
@@ -1739,19 +1739,19 @@ Corrupt one byte in the second block and confirm that only that block's check fa
 
 Pick the least intrusive method that answers the question, and validate every tool before trusting it: known-answer tests, negative tests, recorded versions. DNP3's link-layer CRC shows the discipline in miniature — implement it from published parameters, check it against the catalogue value — and also its limit: error detection proves the bytes arrived intact, never who sent them.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue studying — chapter 09 of 18
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Chapter 10 — Critical infrastructure and sector security: control configuration
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Lesson map
 
 Lesson 10 published. Map, example, EX037.
@@ -1808,7 +1808,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Learning outcomes and connection
@@ -1943,19 +1943,19 @@ Put each allow above the default deny, with ticket and owner in the comment. Rem
 
 A firewall rule set is a first-match program, and its defects are program defects: shadowed rules that never act, redundant rules that confuse, and look-alike rules that widen access. Configure conduits one rule per declared purpose with a default deny, keep supplier access disabled until needed, and plan every change with its tests and rollback. Then verify, which is the next chapter.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue studying — chapter 10 of 18
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Chapter 11 — Critical infrastructure and sector security: verification
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Lesson map
 
 Lesson 11 published. Map, example, EX041.
@@ -2012,7 +2012,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Learning outcomes and connection
@@ -2138,19 +2138,19 @@ Use the marked test desk, then query the collector for the matching deny within 
 
 Verification turns a configuration change into a demonstrated result. Write requirements that can fail, test each with positive and negative tests, count only tests with evidence, and report each requirement as verified, failed or untested. In control networks, verify with the smallest scoped actions, and never by experimenting on the live process.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue studying — chapter 11 of 18
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Chapter 12 — Contained laboratory I
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Lesson map
 
 Lesson 12 published. Map, example, EX045.
@@ -2212,7 +2212,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX045]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Learning outcomes and connection
@@ -2361,19 +2361,19 @@ Record the four hex responses and the log lines next to them. Finally, send a fu
 
 A contained lab is one where safety is a technical property. Lab 12 builds a Modbus responder that enforces a write policy and returns proper exceptions, making visible what most real devices hide: which requests were refused and why. Assess every lab for containment, reproducibility, evidence and a candid statement of what it does not model.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 18
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Chapter 13 — Critical infrastructure and sector security: troubleshooting
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Lesson map
 
 Lesson 13 published. Map, example, EX049.
@@ -2430,7 +2430,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Learning outcomes and connection
@@ -2550,19 +2550,19 @@ If the existing observations do not refute H6, name one additional read-only che
 
 Troubleshooting in a critical service is a method, not a hunch: define the symptom, observe read-only, write hypotheses with predictions, eliminate by evidence, preserve, then change one thing and verify. When an observation is unexplained by approved activity, the fault has become a possible incident; stop, preserve and escalate. The log you keep is both the shift handover and the evidence.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 18
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Chapter 14 — Critical infrastructure and sector security: automation
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Lesson map
 
 Lesson 14 published. Map, example, EX053.
@@ -2619,7 +2619,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX053]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Learning outcomes and connection
@@ -2738,19 +2738,19 @@ Write the preservation record before printing the finding, and include the recor
 
 Automate the checks that never change: collect, hash, compare with an approved manifest and classify differences. Act differently on approved, unapproved, new and missing items — preserve before you revert, and keep automatic correction to a short list that never touches the process. Protect the automation as the powerful tool it is.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue studying — chapter 14 of 18
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Chapter 15 — Critical infrastructure and sector security: integration and dependencies
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Lesson map
 
 Lesson 15 published. Map, example, EX057.
@@ -2802,7 +2802,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX057]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Learning outcomes and connection
@@ -2921,19 +2921,19 @@ After the change, record which components are shared by all three services and p
 
 Services fail through what they depend on, and the most dangerous dependencies are shared ones that no owner claims. Model dependencies as a graph, search it backwards from each component, and look at the paths, not just the counts. Treat every integration point — station routers, carriers, vendor gateways, exports, directory and time — as a boundary under the same control, change and monitoring discipline as the firewall.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue studying — chapter 15 of 18
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Chapter 16 — Technical documentation and safety
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Lesson map
 
 Lesson 16 published. Map, example, EX052.
@@ -2990,7 +2990,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Learning outcomes and connection
@@ -3082,19 +3082,19 @@ Include preservation of the router's configuration before the change, positive a
 
 Good technical documents are executable and checkable: numbered steps with expected results, stop conditions, rollback and evidence. Safety and the authority of operations override every technical plan; protection and safety systems are out of bounds. Laptops and media that move between zones need their own controls, and secrets never belong in documents.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue studying — chapter 16 of 18
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Chapter 17 — Contained laboratory II
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Lesson map
 
 Lesson 17 published. Map, example, EX067.
@@ -3151,7 +3151,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Learning outcomes and connection
@@ -3301,19 +3301,19 @@ Checks that catch these errors:
 
 A detection pipeline is a small system with its own requirements: rules that trace to the system model, episodes that summarize without hiding, and a self-check that accounts for every record. Built contained and assessed honestly — including its blind spots — it turns the course's separate techniques into something a duty lead can act on.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue studying — chapter 17 of 18
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Chapter 18 — Supervised technical project
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Lesson map
 
 Lesson 18 published. Map, example, EX071.
@@ -3375,7 +3375,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX071]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Learning outcomes and connection
@@ -3512,13 +3512,13 @@ Checks that catch these errors:
 
 A supervised project shows technical competence as evidence: a signed scope, a baseline, a controlled change, verification of every requirement, a troubleshooting log, executable documentation and a sealed package. A seal proves that evidence has not changed since sealing, if it is recorded outside the package; it does not prove the evidence was true. State what is open, who owns it, and what you could not see.
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 18
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

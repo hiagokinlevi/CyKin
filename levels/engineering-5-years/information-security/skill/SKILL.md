@@ -1,5 +1,5 @@
 ---
-name: cyberabc-information-security-engineering-2f77c0b6
+name: cykin-information-security-engineering-2f77c0b6
 description: "Guide a learner through the information security Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---

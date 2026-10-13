@@ -1,5 +1,5 @@
 ---
-name: cyberabc-systems-endpoints-hardware-engineering-74cfa3e1
+name: cykin-systems-endpoints-hardware-engineering-74cfa3e1
 description: "SYS Engineering Course (50 ch / 150 ex)"
 license: CC0-1.0
 ---

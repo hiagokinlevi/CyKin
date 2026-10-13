@@ -1,5 +1,5 @@
 ---
-name: cyberabc-privacy-data-protection-doctorate-e21ba9fa
+name: cykin-privacy-data-protection-doctorate-e21ba9fa
 description: "Guide a learner through the privacy Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-web3-blockchain-security-technologist-49fbf909
+name: cykin-web3-blockchain-security-technologist-49fbf909
 description: "WEB3 Technologist Degree (30 ch / 90 ex)"
 license: CC0-1.0
 ---

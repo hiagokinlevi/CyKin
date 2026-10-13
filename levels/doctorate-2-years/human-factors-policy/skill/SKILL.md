@@ -1,5 +1,5 @@
 ---
-name: cyberabc-human-factors-policy-doctorate-23af3679
+name: cykin-human-factors-policy-doctorate-23af3679
 description: "Guide a learner through the HUMAN Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

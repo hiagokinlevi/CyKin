@@ -1,5 +1,5 @@
 ---
-name: cyberabc-critical-sector-security-postgraduate-a4c5e9e2
+name: cykin-critical-sector-security-postgraduate-a4c5e9e2
 description: "Tutor the twelve-chapter postgraduate Critical Infrastructure and Sector Security course (advanced specialist practice) from its English draft, synthetic Merrow Bay setting, offline labs, 60 exercises and worked answers; enforce ethics, safety and infrastructure-information boundaries."
 license: CC0-1.0
 ---

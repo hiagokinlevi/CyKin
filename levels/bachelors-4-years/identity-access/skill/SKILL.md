@@ -1,5 +1,5 @@
 ---
-name: cyberabc-identity-access-bachelor-1d277815
+name: cykin-identity-access-bachelor-1d277815
 description: "IAM Bachelor's Degree (40 ch / 120 ex)"
 license: CC0-1.0
 ---

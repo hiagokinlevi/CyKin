@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cloud-containers-rapid-4331f7e6
+name: cykin-cloud-containers-rapid-4331f7e6
 description: "CLOUD Rapid Course (4 ch / 50 ex)"
 license: CC0-1.0
 ---

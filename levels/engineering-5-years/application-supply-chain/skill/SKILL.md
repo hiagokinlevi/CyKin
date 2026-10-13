@@ -1,5 +1,5 @@
 ---
-name: cyberabc-application-supply-chain-engineering-afecf193
+name: cykin-application-supply-chain-engineering-afecf193
 description: "APP engineering course (50 ch / 150 ex)"
 license: CC0-1.0
 ---

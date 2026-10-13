@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-architecture-technical-babc0539
+name: cykin-security-architecture-technical-babc0539
 description: "Guide a learner through the ARCH Technical Course draft: 18 chapters, stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---

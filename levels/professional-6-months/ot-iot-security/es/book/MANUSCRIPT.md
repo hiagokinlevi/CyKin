@@ -36,7 +36,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 ## Capítulo 1 — Los sistemas del edificio como sistemas ciberfísicos
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa de la lección
 
 Lección 01 publicada. Mapa, ejemplo, EX001.
@@ -88,7 +88,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Resultados de aprendizaje
@@ -143,7 +143,7 @@ Los sistemas del edificio de un hospital mueven aire, gases, personas y puertas;
 
 ## Capítulo 2 — Seguridad del paciente, contingencia y autoridad
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa de la lección
 
 Lección 02 publicada. Mapa, ejemplo, EX006.
@@ -200,7 +200,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX006]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Resultados de aprendizaje
@@ -257,7 +257,7 @@ La seguridad clínica marca los tiempos; los planes de contingencia hacen posibl
 
 ## Capítulo 3 — Redes y protocolos en los sistemas del edificio
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa de la lección
 
 Lección 03 publicada. Mapa, ejemplo, EX011.
@@ -314,7 +314,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX011]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Resultados de aprendizaje
@@ -371,7 +371,7 @@ Los controladores del edificio confían en quien los alcanza, así que importa c
 
 ## Capítulo 4 — Un inventario de los dispositivos del edificio
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa de la lección
 
 Lección 04 publicada. Mapa, ejemplo, EX016.
@@ -433,7 +433,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Resultados de aprendizaje
@@ -523,7 +523,7 @@ Un inventario agrupado por sistema y con el estado del soporte muestra a los res
 
 ## Capítulo 5 — Cuentas, valores por defecto y configuraciones de referencia de los dispositivos
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa de la lección
 
 Lección 05 publicada. Mapa, ejemplo, EX021.
@@ -580,7 +580,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX021]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Resultados de aprendizaje
@@ -637,7 +637,7 @@ Los valores por defecto cambiados, las cuentas nominativas, las contraseñas en 
 
 ## Capítulo 6 — Exposición a internet de los sistemas del edificio
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa de la lección
 
 Lección 06 publicada. Mapa, ejemplo, EX026.
@@ -694,7 +694,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX026]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Resultados de aprendizaje
@@ -772,7 +772,7 @@ Solo la pasarela da a internet; cualquier otra cosa que se encuentre se notifica
 
 ## Capítulo 7 — Acceso remoto de contratistas y fabricantes
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa de la lección
 
 Lección 07 publicada. Mapa, ejemplo, EX031.
@@ -824,7 +824,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Resultados de aprendizaje
@@ -877,7 +877,7 @@ Toda ayuda remota pasa por una única pasarela con cuentas nominativas, con aute
 
 ## Capítulo 8 — Segmentación de las redes del edificio
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa de la lección
 
 Lección 08 publicada. Mapa, ejemplo, EX036.
@@ -934,7 +934,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX036]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Resultados de aprendizaje
@@ -991,7 +991,7 @@ Las zonas con conductos estrechos impiden que los compromisos de la oficina alca
 
 ## Capítulo 9 — Supervisión de tendencias y registros
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa de la lección
 
 Lección 09 publicada. Mapa, ejemplo, EX041.
@@ -1053,7 +1053,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX041]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Resultados de aprendizaje
@@ -1135,7 +1135,7 @@ Los registros de tendencias muestran qué cambió y cuándo; combinados con los 
 
 ## Capítulo 10 — Avisos y parches para los sistemas del edificio
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa de la lección
 
 Lección 10 publicada. Mapa, ejemplo, EX046.
@@ -1197,7 +1197,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Resultados de aprendizaje
@@ -1258,7 +1258,7 @@ Los avisos se cotejan, se mitigan con rapidez, se parchean en franjas reservadas
 
 ## Capítulo 11 — Respuesta a incidentes en los sistemas del edificio de un hospital
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa de la lección
 
 Lección 11 publicada. Mapa, ejemplo, EX051.
@@ -1315,7 +1315,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX051]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Resultados de aprendizaje
@@ -1372,7 +1372,7 @@ La seguridad clínica va primero, el control local mantiene las instalaciones, e
 
 ## Capítulo 12 — Proyecto final: un informe de riesgos de los sistemas del edificio
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa de la lección
 
 Lección 12 publicada. Mapa, ejemplo, EX056.
@@ -1434,7 +1434,7 @@ flowchart LR
     v
 [Ejemplo resuelto] --> [Ejercicio EX056]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Resultados de aprendizaje

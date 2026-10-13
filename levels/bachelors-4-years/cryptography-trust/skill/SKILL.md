@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cryptography-trust-bachelor-fab8343b
+name: cykin-cryptography-trust-bachelor-fab8343b
 description: "Guide a learner through the bachelor's course in Cryptography and trust services: a synthetic four-year path protecting a library consortium's patron data, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-critical-sector-security-technical-36c3b4bc
+name: cykin-critical-sector-security-technical-36c3b4bc
 description: "Tutor the eighteen-chapter technical Critical Infrastructure and Sector Security course (hands-on protocols, hardening, detection, verification and troubleshooting) from its English draft, synthetic Kestrel Vale operations centre, fifteen offline labs, 72 exercises and worked answers; enforce safety, authorization and infrastructure-information boundaries."
 license: CC0-1.0
 ---

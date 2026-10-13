@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-operations-blue-team-doctorate-61f8c1a0
+name: cykin-security-operations-blue-team-doctorate-61f8c1a0
 description: "Doctoral research track (2 years)"
 license: CC0-1.0
 ---

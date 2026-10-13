@@ -1,5 +1,5 @@
 ---
-name: cyberabc-network-communications-technologist-1f3a9d0c
+name: cykin-network-communications-technologist-1f3a9d0c
 description: "NET Technologist Course (30 ch / 90 ex)"
 license: CC0-1.0
 ---

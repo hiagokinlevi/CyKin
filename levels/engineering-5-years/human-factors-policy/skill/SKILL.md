@@ -1,5 +1,5 @@
 ---
-name: cyberabc-human-factors-policy-engineering-392796b4
+name: cykin-human-factors-policy-engineering-392796b4
 description: "Guide a learner through the HUMAN Engineering Course draft: 50 chapters, stdlib labs and EX001–EX150 with worked answers."
 license: CC0-1.0
 ---

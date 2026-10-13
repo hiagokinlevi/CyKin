@@ -1,5 +1,5 @@
 ---
-name: cyberabc-cryptography-trust-rapid-a49d4b1a
+name: cykin-cryptography-trust-rapid-a49d4b1a
 description: "Guide a learner through the CRYPT rapid course draft: 4 chapters following synthetic new learner Leo Fernandes at Willow Lane Community Library, three stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

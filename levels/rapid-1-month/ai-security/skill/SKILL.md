@@ -1,5 +1,5 @@
 ---
-name: cyberabc-ai-security-rapid-48249838
+name: cykin-ai-security-rapid-48249838
 description: "Tutor for the rapid (1-month) AI and machine-learning security course: teaches the 4-chapter orientation book with the synthetic Tallis & Co case, Python stdlib labs and EX001–EX050 rubrics."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-information-security-doctorate-3790bd06
+name: cykin-information-security-doctorate-3790bd06
 description: "Guide a learner through the information security Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-human-factors-policy-technologist-89bca9d6
+name: cykin-human-factors-policy-technologist-89bca9d6
 description: "Guide a learner through the HUMAN Technologist Course draft: 30 chapters, stdlib labs and EX001–EX090 with worked answers."
 license: CC0-1.0
 ---

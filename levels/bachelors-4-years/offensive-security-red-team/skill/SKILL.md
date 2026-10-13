@@ -1,5 +1,5 @@
 ---
-name: cyberabc-offensive-security-red-team-bachelor-4ca15d72
+name: cykin-offensive-security-red-team-bachelor-4ca15d72
 description: "Tutor the forty-chapter bachelor's authorized offensive security and red team course from its hand-written English draft: synthetic Riverstone Transit Bank, labs in chapters 10–30, EX001–EX120; enforce authorization and no-exploit boundaries."
 license: CC0-1.0
 ---

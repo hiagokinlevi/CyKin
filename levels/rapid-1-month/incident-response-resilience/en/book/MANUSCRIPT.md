@@ -32,7 +32,7 @@ The one-book curriculum has four subjects: (1) incident readiness, roles and aut
 
 ## Chapter 1 — Incident readiness, roles and authorized scope
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Lesson map
 
 Lesson 01 published. Map, example, EX013.
@@ -94,7 +94,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Learning outcomes
@@ -137,7 +137,7 @@ This map is incomplete on purpose. It does not say whether the application uses 
 
 #### From dependency map to evidence-readiness contract
 
-A service map names components and owners; it does **not** show that an investigator could answer a specific question on time. A useful next step is an **evidence-readiness contract**: a short, testable agreement about which source would record an event, what its fields mean, who may retrieve it, how long a useful record can remain available and how a second analyst could reproduce the selection. This is a CyberABC teaching device, not a required form from [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). NIST's incident-response guidance places preparation, service knowledge and response roles within broader risk management; the contract below turns that general orientation into a small fictional library exercise.
+A service map names components and owners; it does **not** show that an investigator could answer a specific question on time. A useful next step is an **evidence-readiness contract**: a short, testable agreement about which source would record an event, what its fields mean, who may retrieve it, how long a useful record can remain available and how a second analyst could reproduce the selection. This is a CyKin teaching device, not a required form from [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). NIST's incident-response guidance places preparation, service knowledge and response roles within broader risk management; the contract below turns that general orientation into a small fictional library exercise.
 
 Begin with a **decision question**, rather than a product name. The practice records introduced in section 1.7 will include a cancelled booking B18 and the `desk-a` account; treat them as a preview here. “Do we have logs?” is too broad. “Was the B18 cancellation an approved staff action, and did the current booking state reflect it?” separates an activity question from a business-state question. A booking audit could record an edit, but an authoritative state comparison would be needed to confirm what users can book now. Similarly, an identity service could report that the account `desk-a` signed in, while neither the account label nor a timestamp identifies the human at the keyboard. The evidence plan should say what a source can *discriminate* and which tempting conclusion it cannot carry.
 
@@ -751,7 +751,7 @@ A useful **decision record** contains a timestamp, the current situation, availa
 
 #### Separate recommendation, approval, execution and verification
 
-One person can perform more than one role in a small team, but four verbs should remain visible in the case record. The **analyst recommends** an action and cites observations. An accountable person **approves** its scope and tradeoff. An operator **executes** the bounded change. A reviewer **verifies** whether the change achieved its objective and records any harm. None of these verbs can be inferred safely from a job title alone. [NIST SP 800-61 Rev. 3, sections 2.2–2.3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) discusses distributed response roles and the need for documented authorities and procedures; the four-verb record below is CyberABC's teaching device for making those authorities observable.
+One person can perform more than one role in a small team, but four verbs should remain visible in the case record. The **analyst recommends** an action and cites observations. An accountable person **approves** its scope and tradeoff. An operator **executes** the bounded change. A reviewer **verifies** whether the change achieved its objective and records any harm. None of these verbs can be inferred safely from a job title alone. [NIST SP 800-61 Rev. 3, sections 2.2–2.3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) discusses distributed response roles and the need for documented authorities and procedures; the four-verb record below is CyKin's teaching device for making those authorities observable.
 
 | Fictional proposal | Recommends | Approves under the exercise rules | Executes | Verifies |
 |---|---|---|---|---|
@@ -781,7 +781,7 @@ A service map may name "service owner," "identity administrator," "application c
 
 A **role** is a category of responsibility. An **appointment** associates that role with a verified organizational identity for a declared time. A **delegation** gives a defined subset of authority to another person or role under explicit terms. A **custodian** manages an object or source and may carry out an authorized request but does not automatically own the business risk decision. A **requester** can explain why evidence is needed; being the requester is not the same as granting the request.
 
-Before an incident, a reviewer should be able to locate the actual authoritative governance record for each appointment and delegation, together with its issuer, approval status, version and validity period. In a real organization, that record may depend on employment status, identity-management groups, formal delegations or other governed systems. The CyberABC exercise does not assume any particular implementation.
+Before an incident, a reviewer should be able to locate the actual authoritative governance record for each appointment and delegation, together with its issuer, approval status, version and validity period. In a real organization, that record may depend on employment status, identity-management groups, formal delegations or other governed systems. The CyKin exercise does not assume any particular implementation.
 
 A name typed into a spreadsheet is weaker evidence than a current, owner-reviewed appointment supported by the organization's authoritative process. A contact-list entry may remain useful after a person leaves a role, but it is no longer a valid decision source unless the governance system says otherwise. If the reviewer cannot establish the appointment, the correct outcome is to **hold the action and escalate**, not to treat familiarity with the person's name as proof of authority.
 
@@ -1476,7 +1476,7 @@ Compare two examples.
 
 The longer message is not better simply because it has more words. Each clause answers a question essential to the next decision. A handoff that confuses a proposed request with a completed collection can be more dangerous than a brief handoff that clearly marks the missing evidence.
 
-[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses incident response as an organizational capability involving multiple roles and activities. The six-question handoff above is original CyberABC instructional material, not a mandated NIST form.
+[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses incident response as an organizational capability involving multiple roles and activities. The six-question handoff above is original CyKin instructional material, not a mandated NIST form.
 
 <a id="ir-rapid-ch01-claim-lab"></a>
 
@@ -1780,19 +1780,19 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Full-credit criterion:** The ticket cannot close merely when a contact list is edited. It must demonstrate, under a frozen simulated version, that a valid path passes and invalid routes remain blocked, with the original inputs and independent result preserved.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 04
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Alert triage and evidence preservation
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Lesson map
 
 Lesson 02 published. Map, example, EX018.
@@ -1854,7 +1854,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX018]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Learning outcomes
@@ -1913,7 +1913,7 @@ Priority should therefore be written as a **checkpoint-specific recommendation**
 
 A provisional priority is not the answer to "Did a cyberattack occur?" It is an answer to "Which bounded response work deserves attention next, given the evidence and operational risk available at this checkpoint?" The answer can remain time-sensitive without attributing malicious conduct, and it can be revised without concealing the earlier reasoning.
 
-[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) explains incident response as part of cybersecurity risk management and emphasizes organizational context. [NIST CSF 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf) provides flexible high-level outcomes for understanding, assessing, prioritizing and communicating cybersecurity risks. Neither establishes the specific categories, labels or decision thresholds in this exercise. **TRI2 is an original CyberABC method** for teaching bounded reassessment, not a NIST-defined incident classification or automatic containment policy.
+[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) explains incident response as part of cybersecurity risk management and emphasizes organizational context. [NIST CSF 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf) provides flexible high-level outcomes for understanding, assessing, prioritizing and communicating cybersecurity risks. Neither establishes the specific categories, labels or decision thresholds in this exercise. **TRI2 is an original CyKin method** for teaching bounded reassessment, not a NIST-defined incident classification or automatic containment policy.
 
 #### 2.2a.2 First freeze what the analyst actually knows
 
@@ -2453,7 +2453,7 @@ The original three release-guard controls remain required. The five additional c
 
 `custodian_available=True` in the original baseline remains a **model default**, not a verified successful contact. The default produces no collection or hold receipt. Requiring a separately labeled variant for a failed-contact scenario does not authenticate the default; both real contact status and any real preservation result remain unmeasured.
 
-A declared variant can still contain an invented `owner_state_check=True` or source-safeguard flag. These guards do not verify those assertions. They validate classroom structure and provenance boundaries, not source truth, actual harm, probability, severity or permission. TRI2 remains an original CyberABC method rather than a NIST classification policy. The renamed `TASK_SCOPE` labels concern authorization of the task, not a demonstrated causal mechanism or human actor.
+A declared variant can still contain an invented `owner_state_check=True` or source-safeguard flag. These guards do not verify those assertions. They validate classroom structure and provenance boundaries, not source truth, actual harm, probability, severity or permission. TRI2 remains an original CyKin method rather than a NIST classification policy. The renamed `TASK_SCOPE` labels concern authorization of the task, not a demonstrated causal mechanism or human actor.
 
 #### Limitations and diagnostic negative tests
 
@@ -2533,7 +2533,7 @@ This table is a model for an **exercise note**. A real organization needs its ap
 
 #### Prioritize a preservation request before copying
 
-[NIST SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) addresses the provenance, integrity and restricted access of response records, and the collection and retention of incident data under an organization's procedures. The **preservation queue** below is CyberABC's classroom method for deciding what to request next; it is not a NIST form or a substitute for an organization's policy. The question is not “Which source contains the most data?” It is “Which authorized, minimal observation could change the next decision, and which opportunity to obtain it may be lost?”
+[NIST SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) addresses the provenance, integrity and restricted access of response records, and the collection and retention of incident data under an organization's procedures. The **preservation queue** below is CyKin's classroom method for deciding what to request next; it is not a NIST form or a substitute for an organization's policy. The question is not “Which source contains the most data?” It is “Which authorized, minimal observation could change the next decision, and which opportunity to obtain it may be lost?”
 
 Write a separate card for each candidate source. Name the **decision it could change**, the smallest relevant field and interval, its custodian, the known or unknown loss path, the approval needed, the expected handoff artifact and the claim that would remain unproved even after collection. This reuses Chapter 1's proposed evidence-readiness contract, but now the case has a live decision point. A source that may expire soon deserves immediate contact even if the cause is uncertain; a source with no confirmed loss clock may still need a parallel availability check. Do not convert the words “high priority” into an unverified deadline. Conversely, an indefinitely retained document is not automatically less important to the hypothesis: it may simply permit a later request after the fragile source is safeguarded.
 
@@ -2923,7 +2923,7 @@ This distinction is particularly important when a source's normal retention poli
 
 A **preservation request** asks that specified information be protected under the applicable authority and scope. A **source hold**—if supported by a particular system and authorized by the organization—changes or constrains the source's normal removal process for defined objects or intervals. A **collected copy** is an independently identified object held under its own access and retention rules. These are different things, even when the same custodial team manages them.
 
-[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final), especially RS.AN-06 and RS.AN-07, addresses records of investigative actions and the integrity, provenance, collection and retention of incident data. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) describes source-aware collection and preservation from an IT incident-response perspective, not as a legal preservation order. The specific hold lifecycle below is an **original CyberABC teaching model**; the cited sources do not prescribe its exact fields or claim that Harbor Library has such a capability.
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final), especially RS.AN-06 and RS.AN-07, addresses records of investigative actions and the integrity, provenance, collection and retention of incident data. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) describes source-aware collection and preservation from an IT incident-response perspective, not as a legal preservation order. The specific hold lifecycle below is an **original CyKin teaching model**; the cited sources do not prescribe its exact fields or claim that Harbor Library has such a capability.
 
 #### 2.8a.2 Separate three objects that may be confused
 
@@ -3145,7 +3145,7 @@ Finally, identify the observation. `BX-01` is the **declared sentinel** for this
 
 `as_of` is an **information cutoff**, not a new observation. Moving it from 10:00 to 10:15 without new source evidence does not create a fresh 10:15 effect check. At the exact 11:30 term boundary, the active-term claim ends under this fixture's exclusive-end convention; the result says that current effect is unknown, not that data were deleted. A recorded release likewise requires a new authorized state check. This program records release history but does not authenticate release permission or perform release; it cannot certify that a release was lawful or technically effective.
 
-These checks implement an original CyberABC teaching contract. [NIST SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07, page 29](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf#page=37) supports recording investigative actions, safeguarding provenance and integrity, and collecting and retaining evidence under organizational procedures. It does not prescribe these identifiers, set comparisons, time limits or result labels. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) also expressly limits its forensic guidance: it is not an all-inclusive investigation procedure or legal advice.
+These checks implement an original CyKin teaching contract. [NIST SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07, page 29](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf#page=37) supports recording investigative actions, safeguarding provenance and integrity, and collecting and retaining evidence under organizational procedures. It does not prescribe these identifiers, set comparisons, time limits or result labels. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) also expressly limits its forensic guidance: it is not an all-inclusive investigation procedure or legal advice.
 
 **Apply the reasoning before running Python.** For EX018, keep the three-row P-A request and two-row P-A/P-B comparison; use their existing authority and receipt fields to ask for a request-bound permission, the permitted selection and the matching application/effect record. For EX019, keep E1's collection note separate from any source-control reference. For EX022, retain the five-sentence handoff and its proposed status. For EX024, keep two hypothetical trigger/response pairs: an inconsistent receipt calls for clarification and a new authorized review, not automatic containment or proof of deletion. All unprovided P-A/P-B details remain pending at 09:20. No HOLD2 identifier, timestamp or passing run belongs in R1–R16.
 
@@ -4116,7 +4116,7 @@ Three objects should be distinguished:
 
 A review view is not a more authentic original just because it looks tidy. It is an analytical product. If it hides a relevant source identifier, the reviewer may lose the ability to verify what was selected. If it exposes every available patron contact field, the team may exceed its stated purpose. Both are quality failures.
 
-[NIST SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)*](https://csrc.nist.gov/pubs/sp/800/122/final) provides primary guidance on identifying and protecting PII according to risk and context. It is focused on U.S. federal agencies and does not establish the privacy law or authorization rules governing the fictional Harbor Library. The field-level exercise below is original CyberABC instructional material.
+[NIST SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)*](https://csrc.nist.gov/pubs/sp/800/122/final) provides primary guidance on identifying and protecting PII according to risk and context. It is focused on U.S. federal agencies and does not establish the privacy law or authorization rules governing the fictional Harbor Library. The field-level exercise below is original CyKin instructional material.
 
 #### Begin with a permitted decision question, not a list of available columns
 
@@ -4398,7 +4398,7 @@ When building an evidence ledger, record these separate attributes: **source eve
 
 **Why privacy matters:** An authorized, source-complete producer copy and a minimized analyst view are different objects. A non-privileged learner can receive a pseudonymized booking/state projection without obtaining raw patron contacts or every identity field. A projection must retain its query, transformation, source object identifier, date and limitations. If the source was never collected, a tidy projection with plausible rows is no substitute. The analysis should never reconstruct withheld identity data from guesses to make its graph feel complete.
 
-[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) provides the current risk-management setting for incident response; [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final), published in 2006, supplies foundational but dated discussion of forensic source handling. The release schedule below is an original CyberABC teaching rule, not a NIST timetabling requirement.
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) provides the current risk-management setting for incident response; [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final), published in 2006, supplies foundational but dated discussion of forensic source handling. The release schedule below is an original CyKin teaching rule, not a NIST timetabling requirement.
 
 #### R2X offline lab — prove the decision's evidence horizon
 
@@ -4582,19 +4582,19 @@ This deliberately defective note asserts account theft and an identified actor, 
 
 **Objective:** challenge an overconfident peer conclusion constructively. **Inputs:** R6, R9, R10 and R12. **Output:** a four-field review note: claim, directly supported facts, missing discriminator for B19, and authorized way to obtain it. Explain what outcome would change your view. A score of 2 preserves the possibility that training explains B17/B18 while leaving B19 unresolved; it does not assume the staff member is lying.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue studying — chapter 02 of 04
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Chapter 3 — Containment, eradication and recovery decisions
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Lesson map
 
 Lesson 03 published. Map, example, EX038.
@@ -4656,7 +4656,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX038]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Learning outcomes
@@ -4919,7 +4919,7 @@ The existing §3.3 compares current-session revocation, a short staff-write paus
 
 A reversal can involve restoring an earlier configuration, stopping a temporary restriction, replacing a control with a narrower one, or moving to a separately approved operational mode. The word **rollback** is useful, but not every action can be literally undone. A revoked identity session may need a new, appropriately verified authentication procedure; restoring an old configuration may reintroduce the same vulnerability that containment was intended to address. Undoing an emergency pause may permit writes again without proving that the original suspicious edit path is now safe.
 
-[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) connects incident response and recovery with risk management throughout an incident. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) addresses planned recovery, testing and improvement. These sources support careful planning and evaluation; the precise **RB3 reversal contract** is an original CyberABC teaching construct, not a mandatory NIST workflow.
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) connects incident response and recovery with risk management throughout an incident. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) addresses planned recovery, testing and improvement. These sources support careful planning and evaluation; the precise **RB3 reversal contract** is an original CyKin teaching construct, not a mandatory NIST workflow.
 
 #### RB3.2 Write down the purpose of reversal before selecting a command
 
@@ -5447,7 +5447,7 @@ For example, suppose the session is revoked after 09:37 UTC and a **new** narrow
 
 #### From a plausible story to a falsifiable cause test
 
-An eradication plan begins with a claim about **how** the unwanted change could occur, not with the name of a tool to run. In the fictional Harbor Library case, R17 says the training owner's listed work covered B17 and B18; R18 shows a later B20 edit associated with `desk-a`. That discrepancy deserves investigation, but the account label alone cannot identify the person, device or mechanism. R22's earlier quiet query, R23's backup-job status and R24's unattributed exposure concern do not close the causal gap. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident analysis, mitigation and learning within the wider response process. The following test design is CyberABC's classroom adaptation; it is not a finding about an actual service.
+An eradication plan begins with a claim about **how** the unwanted change could occur, not with the name of a tool to run. In the fictional Harbor Library case, R17 says the training owner's listed work covered B17 and B18; R18 shows a later B20 edit associated with `desk-a`. That discrepancy deserves investigation, but the account label alone cannot identify the person, device or mechanism. R22's earlier quiet query, R23's backup-job status and R24's unattributed exposure concern do not close the causal gap. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident analysis, mitigation and learning within the wider response process. The following test design is CyKin's classroom adaptation; it is not a finding about an actual service.
 
 Write each candidate explanation so that a different observation could weaken it. A useful hypothesis record has five fields: the mechanism, current supporting evidence, a competing explanation, the least invasive authorized discriminator and a result that would change the decision. The discriminator should point to a defined source, owner, event interval and collection limit. “Look at more logs” lacks a falsifiable question. “Ask the identity custodian for session issuance and revocation events for `desk-a` around the B20 edit, with event IDs and a declared time window” can be answered or marked unavailable. Even a matching session event may identify a credential path without establishing who held the credential.
 
@@ -5489,7 +5489,7 @@ If the cause is unresolved, the lead may allow limited service with temporary sa
 
 #### Recovery objectives are promises to test, not facts supplied by a backup status
 
-The service owner may define a **recovery time objective (RTO)** for how long a service can remain unavailable and a **recovery point objective (RPO)** for how far back its data can acceptably be restored. [NIST SP 800-34 Rev. 1, section 3.2](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf) distinguishes these objectives in contingency planning. CyberABC applies them here as planning questions for a fictional small service; a particular organization's definitions and approved targets must come from its own business-impact analysis.
+The service owner may define a **recovery time objective (RTO)** for how long a service can remain unavailable and a **recovery point objective (RPO)** for how far back its data can acceptably be restored. [NIST SP 800-34 Rev. 1, section 3.2](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf) distinguishes these objectives in contingency planning. CyKin applies them here as planning questions for a fictional small service; a particular organization's definitions and approved targets must come from its own business-impact analysis.
 
 As a **hypothetical planning exercise**, imagine the library says room booking should be usable within two hours of an interruption and no more than thirty minutes of accepted booking changes may be lost. Those are *targets*, not demonstrated performance. If the only usable copy were made at midnight and an interruption occurred at 09:45 UTC, that copy alone could omit more than nine hours of changes. It could not demonstrate a thirty-minute recovery point without another protected source or a reconciliation method. The actual R7 and R23 records do not provide a backup timestamp, a restore duration or a validated final schedule. They therefore establish neither objective. A successful restore test also needs the correct data and acceptable access controls; speed alone is insufficient.
 
@@ -5524,7 +5524,7 @@ This is a **paper or local-text simulation**, with no live database, account or 
 
 The paper comparison in section 3.6 assumes that every booking ID appears once, that the owner-approved target and the current copy use the same fields, and that the copy can be traced to a particular point in time. Those assumptions are easy to lose in a spreadsheet or an improvised script. A duplicate ID might cause one row to silently replace another in a dictionary; a missing ID might disappear from an inner join; an extra booking could be mistaken for an approved correction. This lab turns those cases into explicit **failures or review items** before anyone considers changing a booking.
 
-The objective is to produce a deterministic **read-only diff** of the four synthetic P1 and C1 rows. Use only the Python standard library and in-memory text; the script opens no file, connects to no service and does not edit any record. P1 and C1 are released **after** the 09:37 containment decision in the simulation. Their values can inform a later recovery proposal, never the earlier decision. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) recommends planned recovery tests and improvement; the CSV schema, validation rules and output below are CyberABC's original classroom example, not a NIST procedure.
+The objective is to produce a deterministic **read-only diff** of the four synthetic P1 and C1 rows. Use only the Python standard library and in-memory text; the script opens no file, connects to no service and does not edit any record. P1 and C1 are released **after** the 09:37 containment decision in the simulation. Their values can inform a later recovery proposal, never the earlier decision. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) recommends planned recovery tests and improvement; the CSV schema, validation rules and output below are CyKin's original classroom example, not a NIST procedure.
 
 **Inputs:** two miniature CSV strings with exactly `booking_id,state` columns. The `target` string transcribes the owner-approved P1 values; `current` transcribes C1. In an actual authorized recovery, the team would record the approver, copy identifier, source time, collection method and access restriction before trusting a comparison. Those provenance fields are **not** supplied by this toy script and must not be fabricated. The state values are short fictional labels, not patron information.
 
@@ -6812,19 +6812,19 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 
 **RB3 2-point refinement:** R21 remains a tolerability statement; the proposed pause and any later reversal have independent authorization and verification. The ledger format stays empty and unchanged, and resumption remains conditional on booking/queue review and owner sign-off.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 04
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
 Continue to the next authored lesson.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided incident simulation and after-action review
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Lesson map
 
 Lesson 04 published. Map, example, EX048.
@@ -6886,7 +6886,7 @@ flowchart LR
     v
 [Worked example] --> [Exercise EX048]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Learning outcomes
@@ -7017,7 +7017,7 @@ The team should not call the case “resolved” merely because the tabletop end
 
 An exercise can produce an excellent discussion while leaving a technical control untested. [NIST SP 800-84, sections 4–6](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) distinguishes tabletop exercises, functional exercises and tests. Its 2006 examples need local review before use in a contemporary environment; the distinction between **talking through a plan** and **measuring a system** remains useful here. The Harbor Library tabletop asks participants to reason from supplied records. It does not contact an identity provider, pause writes or restore a database. Its score is evidence about a learner's reasoning in this classroom, not a measurement of a real organization's recovery capability.
 
-Before the first inject, write a **measurement contract**: objective, observable participant behavior, evidence to collect, success threshold and a claim the exercise cannot establish. This prevents a facilitator from deciding after the fact that an engaging discussion must have met every objective. The contract below is specific to the fictional case. Its thresholds are CyberABC classroom choices, not NIST requirements.
+Before the first inject, write a **measurement contract**: objective, observable participant behavior, evidence to collect, success threshold and a claim the exercise cannot establish. This prevents a facilitator from deciding after the fact that an engaging discussion must have met every objective. The contract below is specific to the fictional case. Its thresholds are CyKin classroom choices, not NIST requirements.
 
 | Classroom objective | Observable behavior and evidence | Classroom threshold | Claim this tabletop cannot establish |
 |---|---|---|---|
@@ -7302,7 +7302,7 @@ A message may be carefully worded, approved and stored in the case record, yet n
 
 Consider a fictional staff-write pause. If a front-desk supervisor continues to accept ordinary writes because the approved temporary procedure never reached the desk, the message-handling failure can cause service confusion even when the control decision itself was justified. Conversely, an unsanctioned fallback message telling staff to resume writes can undermine a continuing pause. A response team therefore needs to evaluate **message delivery as a bounded operational process**, distinct from message authorship and the technical validity of the original decision.
 
-[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final), particularly its incident-response coordination and communication discussion under RS.CO, recognizes the need to communicate appropriate information to responsible stakeholders. [NIST SP 800-34 Revision 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) discusses contingency-plan activation, notification and recovery coordination. The exact delivery and read-back contract below is an **original CyberABC teaching model**, not a NIST-required acknowledgement protocol.
+[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final), particularly its incident-response coordination and communication discussion under RS.CO, recognizes the need to communicate appropriate information to responsible stakeholders. [NIST SP 800-34 Revision 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) discusses contingency-plan activation, notification and recovery coordination. The exact delivery and read-back contract below is an **original CyKin teaching model**, not a NIST-required acknowledgement protocol.
 
 The rapid-course outcome is specific: a learner should be able to say whether a message was *drafted, authorized for transmission, attempted, delivered, acknowledged for a particular version, correctly read back, or still unresolved*. A claim of completed operational action needs independent execution and verification evidence; no communication receipt automatically supplies it.
 
@@ -7741,7 +7741,7 @@ Chapter 04 already tells students to preserve a source ledger, freeze decisions 
 
 The target is a repeatable two-role exercise: a sender freezes an evidence-linked packet; an independent receiver reviews it without speaking to the sender, locates the referenced evidence, reconstructs the relevant states and chooses a safe next request. A third evaluator can compare that answer with the supplied records, or the two participants can perform the comparison after the first answer is frozen.
 
-[NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) gives official guidance for designing, conducting and evaluating IT training and exercises. The [FEMA HSEEP guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance) addresses evaluation of observable exercise capabilities and improvement planning. The specific blind reconstruction contract is original CyberABC teaching material, not a scoring scheme mandated by either source.
+[NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) gives official guidance for designing, conducting and evaluating IT training and exercises. The [FEMA HSEEP guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance) addresses evaluation of observable exercise capabilities and improvement planning. The specific blind reconstruction contract is original CyKin teaching material, not a scoring scheme mandated by either source.
 
 #### 4.21.2 Define what blind means before starting
 
@@ -7942,7 +7942,7 @@ A good improvement ticket has one observed failure, its frozen packet and receiv
 - **Pass:** receiver independently reports the specific last action, its limits, the failed later gates and the next approval request.
 - **Fail:** receiver still declares full recovery or proposes an unapproved action.
 
-This turns a vague recommendation to "improve handoffs" into a specific capability test. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) and [FEMA's exercise-evaluation guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance) support the broader practice of documenting observed exercise performance and corrective actions; the exact card and thresholds here are CyberABC's own.
+This turns a vague recommendation to "improve handoffs" into a specific capability test. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) and [FEMA's exercise-evaluation guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance) support the broader practice of documenting observed exercise performance and corrective actions; the exact card and thresholds here are CyKin's own.
 
 #### 4.21.17 A passing tabletop does not measure real incident capability
 
@@ -7952,7 +7952,7 @@ A valid exercise report therefore distinguishes **structural packet validity**, 
 
 The exercise should record these boundaries explicitly. A successful BH4 script does not authenticate a GitHub link, execute a write pause, verify an identity provider, fix booking values or certify a backup. A student may use the script to predict failure categories but must still produce a real written reconstruction to demonstrate the intended skill.
 
-An instructor should not turn the classroom score into an accreditation claim. CyberABC is a learning collection; the materials develop reasoning through controlled and auditable practice.
+An instructor should not turn the classroom score into an accreditation claim. CyKin is a learning collection; the materials develop reasoning through controlled and auditable practice.
 
 #### 4.21.18 Section synthesis and next learning step
 
@@ -8168,7 +8168,7 @@ Compare your run with the [worked BH4 transcript and limitations](#ir-rapid-ch04
 
 The **facilitator release ledger** records the permitted inputs for Round A (R1–R8), B (R1–R16), C (R1–R24), and the separate Round D branch, P1/C1 and V1 phases. The **participant artifact** records what the learner actually wrote and submitted. The **observer note** records what the facilitator witnessed: an approval explicitly role-played, a question deferred, a source unavailable, or a packet that could not be reconstructed by a new responder. These three records serve different purposes. A printed solution can show a defensible choice, but it cannot prove that the participant made that choice at the right time.
 
-**Contrastive example A — L2 after all releases:** The original L2 packet's timeline, Round B hypotheses, Round C action, recovery note, late status and improvement item reconcile to `2 + 2 + 1 + 0 + 2 + 1 = 8/12`. The recovery claim is contradicted by C1's B19/B20 mismatches and V1's blank audit actor; its zero is not made harmless by a later excellent status. A facilitator should return a specific revision request and retain the original scored version. The passing threshold of 9/12 and the critical-zero rules are **CyberABC classroom criteria**, not a NIST recommendation. A new `D-recovery-v2` may earn a new grade but does not alter the earlier snapshot.
+**Contrastive example A — L2 after all releases:** The original L2 packet's timeline, Round B hypotheses, Round C action, recovery note, late status and improvement item reconcile to `2 + 2 + 1 + 0 + 2 + 1 = 8/12`. The recovery claim is contradicted by C1's B19/B20 mismatches and V1's blank audit actor; its zero is not made harmless by a later excellent status. A facilitator should return a specific revision request and retain the original scored version. The passing threshold of 9/12 and the critical-zero rules are **CyKin classroom criteria**, not a NIST recommendation. A new `D-recovery-v2` may earn a new grade but does not alter the earlier snapshot.
 
 **Contrastive example B — EX048 at 09:45:** EX048's two-sentence update uses only the chosen Branch S **or** P report at 09:45, before the later P1/C1 and V1 releases. An otherwise accurate sentence saying “V1's audit actor failed” would be premature **in EX048**, even though it is appropriate in L2's later all-cards status. Likewise, EX043 at Round B may contain a proposed preservation request, not a finished collection. A learner's claim that “the lead approved it, so the copy exists” lacks an object ID, collector/time, bounded source query and integrity/custody receipt. The proper grade is not “done”; record precisely which evidence state has not been observed.
 
@@ -8288,13 +8288,13 @@ Use the four rounds and choose either Branch S or Branch P for your final decisi
 
 **BH4 validation attachment (separate from the six scored outputs):** Preserve a frozen sender packet and unaided receiver version, declared checkpoint and branch, permitted source inventory, proposal versus branch-report state, failed gates, next safe request, approval owner, reassessment trigger and independent reconstruction result. Version a correction after feedback; do not backdate it or add a seventh score.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 04
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 This is the final chapter of this course; the index links the next course in the full study path.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="answers"></a>
 
@@ -8302,7 +8302,7 @@ This is the final chapter of this course; the index links the next course in the
 
 These results are placed after the chapter material as the book's developing answer appendix. A different answer is acceptable when it cites the supplied record, states assumptions and explains authority and potential harm.
 
-<!-- cyberabc:bsl1-worked:start -->
+<!-- cykin:bsl1-worked:start -->
 <a id="ir-rapid-ch01-bsl1-result"></a>
 
 ### Chapter 1 BSL1 offline laboratory — worked result
@@ -8332,7 +8332,7 @@ INCOMPLETE_COUNT 1
 **Technical limits:** This is a sequential comparison of six artificial rows. It does not implement transactions, concurrency, source authentication, authorization rules, historical changes, room-sharing policies, patron notification or actual booking impacts. The program assumes one fictional date and uses a simplified HH:MM parser. The user must not run or adapt it against any real booking service without the relevant organization's explicit authority.
 
 **Required artifact:** Submit the exact output, a classification table for the baseline and both variants, the applicable business-rule assumptions, and two sentences explaining why neither the simulated errors nor the missing S04 result prove anything about canonical R1–R8. Keep a prediction recorded before execution; a copied expected transcript without an actual run should be labeled as such.
-<!-- cyberabc:bsl1-worked:end -->
+<!-- cykin:bsl1-worked:end -->
 
 <a id="ir-rapid-ch01-path1-result"></a>
 
@@ -10013,7 +10013,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 
 1. NIST, [SP 800-61 Rev. 3, *Incident Response Recommendations and Considerations for Cybersecurity Risk Management*](https://csrc.nist.gov/pubs/sp/800/61/r3/final), April 2025. Used for the integration of response across risk-management activities.
 2. NIST, [Cybersecurity Framework 2.0 FAQ](https://www.nist.gov/cyberframework/faqs), section “Framework Components.” Used for the six concurrent and continuous functions.
-3. CyberABC, [incident-response practice playbook index](../../../../../playbooks/incident-response-resilience/README.md). This index points to revision-pinned source playbooks; it is supplementary to the book. Source repositories retain their own rights.
+3. CyKin, [incident-response practice playbook index](../../../../../playbooks/incident-response-resilience/README.md). This index points to revision-pinned source playbooks; it is supplementary to the book. Source repositories retain their own rights.
 4. NIST, [SP 800-86, *Guide to Integrating Forensic Techniques into Incident Response*](https://csrc.nist.gov/pubs/sp/800/86/final), August 2006. Used for the limited, authorized evidence-collection lesson in Chapter 2; this introductory exercise is not a substitute for a forensic or legal procedure.
 5. NIST, [SP 800-184, *Guide for Cybersecurity Event Recovery*](https://csrc.nist.gov/pubs/sp/800/184/final), December 2016. Used for the Chapter 3 emphasis on planned, verifiable recovery.
 6. NIST, [SP 800-34 Rev. 1, *Contingency Planning Guide for Federal Information Systems*, updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final), November 2010. Used for the distinction between a backup status and a tested recovery plan.
@@ -10027,7 +10027,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 
 12. NIST CSRC, [Recovery Time Objective](https://csrc.nist.gov/glossary/term/recovery_time_objective) and [Recovery Point Objective](https://csrc.nist.gov/glossary/term/recovery_point_objective) glossary entries. Used in the RTE3 teaching to distinguish approved recovery objectives from the separately declared classroom measurement contract.
 
-13. FEMA, [Homeland Security Exercise and Evaluation Program (HSEEP) 2020 — Policy and Guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance). Used for the Chapter 4 discussion of observable exercise performance and corrective-action tracking. The BH4 contract and fictional fixture are CyberABC originals, not FEMA requirements.
+13. FEMA, [Homeland Security Exercise and Evaluation Program (HSEEP) 2020 — Policy and Guidance](https://preptoolkit.fema.gov/web/hseep-resources/policy-and-guidance). Used for the Chapter 4 discussion of observable exercise performance and corrective-action tracking. The BH4 contract and fictional fixture are CyKin originals, not FEMA requirements.
 
 14. NIST, [Cybersecurity Framework 2.0 (CSWP 29)](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf), February 2024. Provides flexible risk-management outcomes used as context for the TRI2 priority-review lesson; it does not prescribe TRI2 labels, decision thresholds or a universal incident-severity matrix.
 

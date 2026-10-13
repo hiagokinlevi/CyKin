@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-governance-risk-compl-masters-aa6ba08a
+name: cykin-security-governance-risk-compl-masters-aa6ba08a
 description: "Guide a learner through the GRC Master's Course draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

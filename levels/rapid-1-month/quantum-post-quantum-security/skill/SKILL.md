@@ -1,5 +1,5 @@
 ---
-name: cyberabc-quantum-post-quantum-security-rapid-5cee8ae8
+name: cykin-quantum-post-quantum-security-rapid-5cee8ae8
 description: "Guide a new learner through the one-month rapid course in Quantum and post-quantum security: its one authored draft book of 4 chapters introducing quantum risk, safe and authorized practice, mapping services and dependencies, and one guided lab with a readiness note, with exercises EX001–EX052 with worked results."
 license: CC0-1.0
 ---

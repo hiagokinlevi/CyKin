@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-operations-blue-team-rapid-10bf3a49
+name: cykin-security-operations-blue-team-rapid-10bf3a49
 description: "SOC rapid course: 4 chapters, 50 exercises, 1 stdlib lab"
 license: CC0-1.0
 ---

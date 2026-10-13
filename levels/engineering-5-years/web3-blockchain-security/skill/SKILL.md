@@ -1,5 +1,5 @@
 ---
-name: cyberabc-web3-blockchain-security-engineering-7a92cee2
+name: cykin-web3-blockchain-security-engineering-7a92cee2
 description: "WEB3 Engineering Degree (50 ch / 150 ex)"
 license: CC0-1.0
 ---

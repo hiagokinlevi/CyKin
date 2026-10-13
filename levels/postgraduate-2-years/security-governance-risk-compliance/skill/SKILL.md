@@ -1,5 +1,5 @@
 ---
-name: cyberabc-security-governance-risk-compl-postgraduate-404170a6
+name: cykin-security-governance-risk-compl-postgraduate-404170a6
 description: "Guide a learner through the GRC Postgraduate Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberabc-human-factors-policy-professional-625330ab
+name: cykin-human-factors-policy-professional-625330ab
 description: "Guide a learner through the HUMAN Professional Course draft: 12 chapters, stdlib labs and EX001–EX060 with worked answers."
 license: CC0-1.0
 ---

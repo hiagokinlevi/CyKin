@@ -1,5 +1,5 @@
 ---
-name: cyberabc-systems-endpoints-hardware-rapid-87d5dcc2
+name: cykin-systems-endpoints-hardware-rapid-87d5dcc2
 description: "SYS Rapid Course (4 ch / 50 ex)"
 license: CC0-1.0
 ---

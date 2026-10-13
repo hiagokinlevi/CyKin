@@ -1,5 +1,5 @@
 ---
-name: cyberabc-data-governance-doctorate-9b4fec70
+name: cykin-data-governance-doctorate-9b4fec70
 description: "Guide a learner through the data governance Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---

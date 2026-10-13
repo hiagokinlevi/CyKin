@@ -1,5 +1,5 @@
 ---
-name: cyberabc-privacy-data-protection-bachelor-8bcde271
+name: cykin-privacy-data-protection-bachelor-8bcde271
 description: "Guide a learner through the privacy Bachelor's Course draft: 40 chapters, stdlib labs and EX001–EX120 with worked answers."
 license: CC0-1.0
 ---

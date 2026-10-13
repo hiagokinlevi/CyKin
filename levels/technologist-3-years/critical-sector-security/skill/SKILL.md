@@ -1,5 +1,5 @@
 ---
-name: cyberabc-critical-sector-security-technologist-5882291b
+name: cykin-critical-sector-security-technologist-5882291b
 description: "Tutor the thirty-chapter technologist Critical Infrastructure and Sector Security course (applied implementation and operation) from its English draft, synthetic Fallowmere LANTERN service, seventeen offline labs, 90 exercises and worked answers; enforce safety, authorization and infrastructure-information boundaries."
 license: CC0-1.0
 ---

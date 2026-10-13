@@ -1,8 +1,8 @@
-# CyberABC — Cybersecurity Academic Books Collection
+# CyKin — Cybersecurity Academic Books Collection
 
 ~~~text
   +------------------------------------------------------------------+
-  |        CYBERABC / CYBERSECURITY ACADEMIC BOOKS COLLECTION        |
+  |         CYKIN / CYBERSECURITY ACADEMIC BOOKS COLLECTION          |
   +------------------------------------------------------------------+
   |     ________    ________    ________    ________    ________     |
   |    |   IR   |  |  CYBR  |  |  INFO  |  |  DATA  |  |  PRIV  |    |
@@ -33,7 +33,7 @@
   +------------------------------------------------------------------+
 ~~~
 
-<!-- cyberabc:onboarding:start -->
+<!-- cykin:onboarding:start -->
 
 ## Comece por aqui
 
@@ -56,13 +56,13 @@ Escolha uma rota e o idioma. Em cada curso, **uma matéria corresponde a um cap�
 | 日本語 | [Tema → nível](onboarding/ja/themes.md) | [Nível → todos os temas](onboarding/ja/levels.md) |
 
 **Como estudar:** abra o **guia de aulas** (`SUBJECTS.md`), leia cada capítulo disponível no `MANUSCRIPT.md`, faça os exercícios e confira as respostas no livro; siga a navegação ao fim do capítulo. Quando houver apenas `PLAN.md`, a aula ainda não foi escrita. As edições em hebraico, francês, russo, alemão, chinês e japonês têm apenas índices e planos neste momento. O placar acima mede cobertura inicial em inglês, e não certifica livros concluídos nem traduções. [Veja a cobertura por idioma](LANGUAGE_LESSON_PROGRESS.md).
-<!-- cyberabc:onboarding:end -->
+<!-- cykin:onboarding:end -->
 
 **English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).
 
 **Public lessons in three languages:** [open the English, Portuguese and Spanish lesson coverage table](LANGUAGE_LESSON_PROGRESS.md). It links each existing book or its plan and counts authored chapters, explicit examples, exercises, navigation and diagrams separately. A public manuscript is readable now; books with pending technical, language or A4 review are identified by the [publication gate](BOOK_STANDARD.md).
 
-**Incident Response book-length checkpoints:** [Rapid](levels/rapid-1-month/incident-response-resilience/README.md): **353/300 A4 pages measured for current SHA-256 a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049 (117.7% of page floor)**; layout and editorial review remain open. · [Professional](levels/professional-6-months/incident-response-resilience/README.md): A4 stale; last verified 132 pages for prior manuscript SHA-256 66783cb9490293ffbdfd573f30f82b45aa24fa6a12ffbebf57ae9f93c8b87790 · [Technical](levels/technical-18-months/incident-response-resilience/README.md): 124/300 A4 pages (41.3% of page floor) · [Doctoral](levels/doctorate-2-years/incident-response-resilience/README.md): 122/300 A4 pages (40.7% of page floor). These length checkpoints are not completion percentages; the writing queue runs from rapid to doctoral level.
+**Incident Response book-length checkpoints:** [Rapid](levels/rapid-1-month/incident-response-resilience/README.md): A4 stale after the CyKin rename; last verified 353 pages for prior manuscript SHA-256 a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049 · [Professional](levels/professional-6-months/incident-response-resilience/README.md): A4 stale; last verified 132 pages for prior manuscript SHA-256 66783cb9490293ffbdfd573f30f82b45aa24fa6a12ffbebf57ae9f93c8b87790 · [Technical](levels/technical-18-months/incident-response-resilience/README.md): A4 stale after the rename; previous render 124 pages · [Doctoral](levels/doctorate-2-years/incident-response-resilience/README.md): A4 stale after the rename; previous render 122 pages. Recompute the A4 measurements for the new source hashes before claiming a current page floor. These length checkpoints are not completion percentages; the writing queue runs from rapid to doctoral level.
 
 **Published integration — 2026-10-13:** The six early Chapter 2 correction units are part of the [single public English rapid Incident Response manuscript](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-02). The subsequent [HOLD2 review](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ir-rapid-ch02-hold2-binding) adds request-bound authorization, two-sided scope checking, complete lifecycle validation and matching worked explanations. Its program preserves the previous 19 output lines and adds 14 acceptance controls; 114 additional regression assertions were run locally. The former correction-file path remains navigation only. This is publication of scoped teaching improvements, not approval of the complete book or validation of all courses and translations. The next editorial review starts at [Chapter 2, section 2.9](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ir-rapid-ch02-q1-lab).
 
@@ -149,9 +149,9 @@ Each linked percentage opens one course page with its nine language editions, on
 
 ## First English book in progress
 
-The [Incident Response rapid-course draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) has four authored chapter drafts, 50 numbered exercises and a final worked-answer appendix. Chapter 1 develops readiness, booking behavior, source boundaries, the AR1 pre-incident authority-rehearsal lab and the separate PATH1 service-function/degraded-mode lab. Chapter 2 develops TRI2 evidence-bounded priority reassessment, preservation, query coverage, impact measurement, the MIN2 privacy-aware reviewer-view lab and the separate HOLD2 source-hold lifecycle laboratory. Chapter 3 adds RB3 containment-reversal readiness, G3-DG decision gates and MQ3 queue reconciliation: failed checks outrank missing checks, duplicate receipts and conflicting keys are held, and a 09:52 planning review is distinct from fifteen minutes of verified protection. RTE3 measures evidence-bounded recovery: service interruption to owner acceptance, copy age versus proved missing writes, and explicit unknown states. Chapter 4 adds BH4 blind handoff reconstruction: a new responder locates sources, distinguishes proposal from reported action, preserves failed gates and chooses an authorized next request. These synthetic outputs and exercise extensions remain distinct from canonical case evidence. The principal manuscript now contains **146,069 whitespace-separated words** across teaching, exercises, answers and references, with R1X–R4X and the integrated CH04 release, receipt and gabarito corrections. The current-source A4 rendering measures **353 pages** for SHA-256 `a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049`; this meets only the length floor. It remains a **draft** pending comprehensive specialist, technical, source, rights, language and accessibility review. Other English Incident Response manuscripts and their actual chapter coverage appear in the [207-course writing table](COURSE_WRITING_PROGRESS.md); a draft or 100% chapter coverage is not a completed book. All 182 Incident Response chapter briefs and 154 Cybersecurity briefs have individual teaching plans; the remaining English chapters are on the editorial queue. The [study path](STUDY_PATH.md) and each chapter's previous/index/next navigation guide the learner. All language editions still need their own writing and review.
+The [Incident Response rapid-course draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) has four authored chapter drafts, 50 numbered exercises and a final worked-answer appendix. Chapter 1 develops readiness, booking behavior, source boundaries, the AR1 pre-incident authority-rehearsal lab and the separate PATH1 service-function/degraded-mode lab. Chapter 2 develops TRI2 evidence-bounded priority reassessment, preservation, query coverage, impact measurement, the MIN2 privacy-aware reviewer-view lab and the separate HOLD2 source-hold lifecycle laboratory. Chapter 3 adds RB3 containment-reversal readiness, G3-DG decision gates and MQ3 queue reconciliation: failed checks outrank missing checks, duplicate receipts and conflicting keys are held, and a 09:52 planning review is distinct from fifteen minutes of verified protection. RTE3 measures evidence-bounded recovery: service interruption to owner acceptance, copy age versus proved missing writes, and explicit unknown states. Chapter 4 adds BH4 blind handoff reconstruction: a new responder locates sources, distinguishes proposal from reported action, preserves failed gates and chooses an authorized next request. These synthetic outputs and exercise extensions remain distinct from canonical case evidence. The principal manuscript now contains **146,069 whitespace-separated words** across teaching, exercises, answers and references, with R1X–R4X and the integrated CH04 release, receipt and gabarito corrections. An earlier source rendered to **353 A4 pages** for SHA-256 `a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049`; the CyKin rename changed the source hash, so this page count requires a fresh render. It remains a **draft** pending comprehensive specialist, technical, source, rights, language and accessibility review. Other English Incident Response manuscripts and their actual chapter coverage appear in the [207-course writing table](COURSE_WRITING_PROGRESS.md); a draft or 100% chapter coverage is not a completed book. All 182 Incident Response chapter briefs and 154 Cybersecurity briefs have individual teaching plans; the remaining English chapters are on the editorial queue. The [study path](STUDY_PATH.md) and each chapter's previous/index/next navigation guide the learner. All language editions still need their own writing and review.
 
-**A4 length check:** The current rapid Incident Response manuscript (SHA-256 `a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049`) rendered to **353 A4 pages** with the local Engine preview method on 13 October 2026. All pages contain extractable text; three code-heavy pages are sparse and need layout review. This verifies the length floor for this exact source and layout only. The book remains a draft until the [complete editorial gate](BOOK_STANDARD.md) passes.
+**A4 length check:** The prior rapid Incident Response manuscript (SHA-256 `a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049`) rendered to **353 A4 pages** with the local Engine preview method on 13 October 2026. All pages contained extractable text; three code-heavy pages were sparse and need layout review. This historical measurement applies to that exact source and layout only. Rerender the renamed manuscript before reporting a current page count. The book remains a draft until the [complete editorial gate](BOOK_STANDARD.md) passes.
 
 ## Language sequence
 
@@ -159,11 +159,11 @@ The [Incident Response rapid-course draft](levels/rapid-1-month/incident-respons
 
 ## Existing projects
 
-**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 CyberABC academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed CyberABC course.
+**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 CyKin academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed CyKin course.
 
 ### Learning platform · 1
 
-- [CyberABC](https://github.com/hiagokinlevi/CyberABC) — public curriculum, study plans, books, and learner materials.
+- [CyKin](https://github.com/hiagokinlevi/CyKin) — public curriculum, study plans, books, and learner materials.
 
 ### Original security software · 13
 
@@ -177,7 +177,7 @@ The [Incident Response rapid-course draft](levels/rapid-1-month/incident-respons
 
 ### Study routes from the original projects
 
-Each original project links to a related CyberABC course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
+Each original project links to a related CyKin course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
 
 | Project | Related course |
 |---|---|

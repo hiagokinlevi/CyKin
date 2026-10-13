@@ -1,5 +1,5 @@
 ---
-name: cyberabc-offensive-security-red-team-technologist-c1fbc95a
+name: cykin-offensive-security-red-team-technologist-c1fbc95a
 description: "Guide a learner through the technologist course in Authorized offensive security and red team: governance, scoping, ROE, methodology, ATT&CK mapping, evidence, rating, reporting, remediation validation and purple-team learning on synthetic data."
 license: CC0-1.0
 ---

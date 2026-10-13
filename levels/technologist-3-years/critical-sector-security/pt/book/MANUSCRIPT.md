@@ -88,7 +88,7 @@ Apêndices: [Resoluções e notas de avaliação](#worked-results) · [Glossári
 
 ## Capítulo 1 — Sistemas computacionais
 
-<!-- cyberabc:lesson-figures:start ch-01 -->
+<!-- cykin:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
 Aula 01 publicada. Mapa, exemplo, EX001.
@@ -140,7 +140,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX001]
 ```
-<!-- cyberabc:lesson-figures:end ch-01 -->
+<!-- cykin:lesson-figures:end ch-01 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -252,19 +252,19 @@ Catorze amostras são uma base pequena para qualquer previsão. O valor do méto
 
 Um host é um conjunto de recursos finitos mais um relógio. Para um serviço essencial, a pergunta sobre cada recurso é quanto tempo falta até ele parar o serviço e com quanta antecedência você será avisado. Meça utilização, saturação e erros em percentis ao longo do ritmo natural do serviço; mantenha folga para os dias ruins, para a recuperação e para o trabalho de segurança; preveja o esgotamento com premissas explícitas; e escreva verificações baratas para as falhas silenciosas que de fato derrubam serviços. Quando os números contrariam as expectativas, como o disco do RLY-01, procure uma causa de configuração antes de comprar capacidade.
 
-<!-- cyberabc:chapter-navigation:start ch-01 -->
+<!-- cykin:chapter-navigation:start ch-01 -->
 ### Continue estudando — capítulo 01 de 30
 
 [← Página do curso](../../README.md) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
 
-<!-- cyberabc:lesson-figures:start ch-02 -->
+<!-- cykin:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
 Aula 02 publicada. Mapa, exemplo, EX004.
@@ -311,7 +311,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX004]
 ```
-<!-- cyberabc:lesson-figures:end ch-02 -->
+<!-- cykin:lesson-figures:end ch-02 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -436,19 +436,19 @@ Os registros de fluxo mostram quem conversou com quem, em qual porta, quanto; n�
 
 Pense na rede como zonas unidas por conduítes declarados, cada um com uma finalidade e um responsável. As regras declaram intenções; os registros de fluxo declaram fatos. Comparar os dois com regularidade — observado e declarado, observado mas não declarado, declarado mas silencioso, desconhecido — é barato, seguro e está entre as coisas mais valiosas que um implementador faz. Na infraestrutura crítica, o caminho não declarado de maior consequência é o que alcança o processo físico.
 
-<!-- cyberabc:chapter-navigation:start ch-02 -->
+<!-- cykin:chapter-navigation:start ch-02 -->
 ### Continue estudando — capítulo 02 de 30
 
 [← Capítulo 01](#ch-01) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Fundamentos de programação
 
-<!-- cyberabc:lesson-figures:start ch-03 -->
+<!-- cykin:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
 Aula 03 publicada. Mapa, exemplo, EX007.
@@ -500,7 +500,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX007]
 ```
-<!-- cyberabc:lesson-figures:end ch-03 -->
+<!-- cykin:lesson-figures:end ch-03 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -637,19 +637,19 @@ A validação protege o receptor de dados malformados e implausíveis. Ela **nã
 
 O código pequeno decide o que os operadores veem. Trate toda mensagem como não confiável, valide-a em camadas — estrutura, identidade, tipo, significado físico, tempo, ordem — e dê aos dados limítrofes um caminho de quarentena, para que as falhas não sejam nem escondidas nem guardadas como verdade. Mantenha as decisões em funções pequenas e testáveis, torne o estado explícito, falhe fechado e teste primeiro os casos ruins. Validação não é autenticação; essa vem depois.
 
-<!-- cyberabc:chapter-navigation:start ch-03 -->
+<!-- cykin:chapter-navigation:start ch-03 -->
 ### Continue estudando — capítulo 03 de 30
 
 [← Capítulo 02](#ch-02) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
 
-<!-- cyberabc:lesson-figures:start ch-04 -->
+<!-- cykin:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
 Aula 04 publicada. Mapa, exemplo, EX010.
@@ -701,7 +701,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX010]
 ```
-<!-- cyberabc:lesson-figures:end ch-04 -->
+<!-- cykin:lesson-figures:end ch-04 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -825,19 +825,19 @@ Um modelo de dados não pode dizer que um ativo existe se ninguém o registrou. 
 
 Os registros operacionais só são úteis se continuarem consistentes. Modele-os como entidades com chaves, ligue-os com chaves estrangeiras em vez de texto livre e deixe as restrições recusarem os registros impossíveis. Trate os valores ausentes como constatações, consulte-os explicitamente e use junções à esquerda em qualquer relatório sobre cobertura. Um bom modelo torna as lacunas visíveis; ele não consegue encontrar ativos que ninguém registrou.
 
-<!-- cyberabc:chapter-navigation:start ch-04 -->
+<!-- cykin:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 30
 
 [← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
 
-<!-- cyberabc:lesson-figures:start ch-05 -->
+<!-- cykin:lesson-figures:start ch-05 -->
 ### Mapa da aula
 
 Aula 05 publicada. Mapa, exemplo, EX013.
@@ -889,7 +889,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX013]
 ```
-<!-- cyberabc:lesson-figures:end ch-05 -->
+<!-- cykin:lesson-figures:end ch-05 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -969,19 +969,19 @@ Três deles aparecem no relatório de situação deste capítulo antes de ser re
 
 Um vocabulário preciso é um controle de segurança: ele torna as afirmações verificáveis. Nos serviços essenciais, a continuidade e a safety do serviço físico costumam vir primeiro, o que muda como os controles são escolhidos, programados e autorizados a falhar. Descreva todo controle pelo que ele previne, detecta ou recupera, e pela evidência de que funciona. Leia os incidentes públicos em busca das premissas que falharam, e acompanhe as revisões.
 
-<!-- cyberabc:chapter-navigation:start ch-05 -->
+<!-- cykin:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 30
 
 [← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
 
-<!-- cyberabc:lesson-figures:start ch-06 -->
+<!-- cykin:lesson-figures:start ch-06 -->
 ### Mapa da aula
 
 Aula 06 publicada. Mapa, exemplo, EX016.
@@ -1038,7 +1038,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX016]
 ```
-<!-- cyberabc:lesson-figures:end ch-06 -->
+<!-- cykin:lesson-figures:end ch-06 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1164,19 +1164,19 @@ A integridade de arquivos detecta mudanças; ela não diz se a mudança foi mali
 
 Mantenha os servidores pequenos e conhecidos: remova o que a função não precisa, execute os serviços sob contas dedicadas e sem privilégios, vincule os listeners a endereços declarados e trate os arquivos de configuração e as suas permissões como relevantes para a segurança. Faça a linha de base dos arquivos que importam com um hash criptográfico, proteja a linha de base e investigue toda diferença sem explicação. A virtualização simplifica a operação, mas concentra o controle no hipervisor e nos seus administradores; registre quais zonas compartilham um host.
 
-<!-- cyberabc:chapter-navigation:start ch-06 -->
+<!-- cykin:chapter-navigation:start ch-06 -->
 ### Continue estudando — capítulo 06 de 30
 
 [← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
 
-<!-- cyberabc:lesson-figures:start ch-07 -->
+<!-- cykin:lesson-figures:start ch-07 -->
 ### Mapa da aula
 
 Aula 07 publicada. Mapa, exemplo, EX019.
@@ -1228,7 +1228,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX019]
 ```
-<!-- cyberabc:lesson-figures:end ch-07 -->
+<!-- cykin:lesson-figures:end ch-07 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1353,19 +1353,19 @@ Uma revisão de acessos mostra o estado das contas num momento. Ela não mostra 
 
 Identidade é um conjunto de registros e rotinas. Autentique pelo que a conta pode fazer; separe contas pessoais, privilegiadas, de serviço e de fornecedor, e remova as compartilhadas ou controle-as num cofre; ligue as contas ao processo de entrada, mudança e saída; e revise-as com regularidade contra uma exportação, uma lista de pessoal e uma declaração de necessidade. Algumas constatações da revisão — a conta de quem saiu usada depois da saída — são incidentes, e a evidência vem antes da limpeza.
 
-<!-- cyberabc:chapter-navigation:start ch-07 -->
+<!-- cykin:chapter-navigation:start ch-07 -->
 ### Continue estudando — capítulo 07 de 30
 
 [← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
 
-<!-- cyberabc:lesson-figures:start ch-08 -->
+<!-- cykin:lesson-figures:start ch-08 -->
 ### Mapa da aula
 
 Aula 08 publicada. Mapa, exemplo, EX022.
@@ -1422,7 +1422,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX022]
 ```
-<!-- cyberabc:lesson-figures:end ch-08 -->
+<!-- cykin:lesson-figures:end ch-08 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1498,19 +1498,19 @@ Um exemplo de Fallowmere: os cartões de controle do risco R2 (Capítulo 18) ser
 
 A propriedade arquitetural mais importante do LANTERN é a direção da confiança: os dados fluem para cima, e os comandos nunca descem por ele. Proteja essa propriedade em toda mudança, mantenha as camadas realmente independentes, ponha os caminhos de gerenciamento no diagrama e projete deliberadamente os modos degradados e o acesso de emergência. As arquiteturas se deterioram por meio de exceções; registre cada uma com um responsável e uma data de expiração, e confira-as.
 
-<!-- cyberabc:chapter-navigation:start ch-08 -->
+<!-- cykin:chapter-navigation:start ch-08 -->
 ### Continue estudando — capítulo 08 de 30
 
 [← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Evidência e medição
 
-<!-- cyberabc:lesson-figures:start ch-09 -->
+<!-- cykin:lesson-figures:start ch-09 -->
 ### Mapa da aula
 
 Aula 09 publicada. Mapa, exemplo, EX025.
@@ -1562,7 +1562,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX025]
 ```
-<!-- cyberabc:lesson-figures:end ch-09 -->
+<!-- cykin:lesson-figures:end ch-09 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1673,19 +1673,19 @@ No Laboratório 9, a mediana agregada mostra três desses erros de uma vez: sem 
 
 Uma medida é útil quando declara a sua pergunta, população, numerador, denominador, período, fonte e exclusões. Relate medianas com percentis altos para grandezas assimétricas; inclua os itens em aberto; não agregue grupos com consequências diferentes; e acrescente intervalos às taxas de sucesso de amostras pequenas. O objetivo não é um número lisonjeiro, mas um que outra pessoa consiga recalcular e sobre o qual consiga agir.
 
-<!-- cyberabc:chapter-navigation:start ch-09 -->
+<!-- cykin:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 30
 
 [← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Infraestrutura crítica e segurança setorial: orientação
 
-<!-- cyberabc:lesson-figures:start ch-10 -->
+<!-- cykin:lesson-figures:start ch-10 -->
 ### Mapa da aula
 
 Aula 10 publicada. Mapa, exemplo, EX028.
@@ -1737,7 +1737,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX028]
 ```
-<!-- cyberabc:lesson-figures:end ch-10 -->
+<!-- cykin:lesson-figures:end ch-10 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1811,19 +1811,19 @@ Medir o dano apenas em dinheiro teria posto a Água em primeiro lugar naquela no
 
 Um serviço é crítico por causa do que a sua perda faz às pessoas, medido em pessoas e tempo. Os setores diferem no que protegem primeiro e na rapidez com que o dano chega, então a mesma falha técnica exige respostas diferentes. Serviços compartilhados como a FSTS criam interdependências por meio de pessoas, ferramentas e fornecedores. Os operadores carregam as obrigações legais; os implementadores produzem a maior parte das evidências que mostram que elas são cumpridas.
 
-<!-- cyberabc:chapter-navigation:start ch-10 -->
+<!-- cykin:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 30
 
 [← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Infraestrutura crítica e segurança setorial: ativos e contexto
 
-<!-- cyberabc:lesson-figures:start ch-11 -->
+<!-- cykin:lesson-figures:start ch-11 -->
 ### Mapa da aula
 
 Aula 11 publicada. Mapa, exemplo, EX031.
@@ -1880,7 +1880,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX031]
 ```
-<!-- cyberabc:lesson-figures:end ch-11 -->
+<!-- cykin:lesson-figures:end ch-11 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -1964,19 +1964,19 @@ O modem celular da PS-07, encontrado apenas numa visita ao local, é o argumento
 
 Um inventário registra, para cada ativo, o que ele é, onde está, quem é o responsável, o que ele roda, se tem suporte, de que depende e quando isso foi verificado pela última vez. Construa-o a partir de várias fontes, faça a descoberta com segurança nas redes de controle, trate a discordância entre fontes como constatação e dê a todo ativo sem suporte controles compensatórios e um responsável pela substituição.
 
-<!-- cyberabc:chapter-navigation:start ch-11 -->
+<!-- cykin:chapter-navigation:start ch-11 -->
 ### Continue estudando — capítulo 11 de 30
 
 [← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Infraestrutura crítica e segurança setorial: fluxos de dados
 
-<!-- cyberabc:lesson-figures:start ch-12 -->
+<!-- cykin:lesson-figures:start ch-12 -->
 ### Mapa da aula
 
 Aula 12 publicada. Mapa, exemplo, EX034.
@@ -2028,7 +2028,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX034]
 ```
-<!-- cyberabc:lesson-figures:end ch-12 -->
+<!-- cykin:lesson-figures:end ch-12 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2155,19 +2155,19 @@ O fluxo não registrado do gateway clínico para o servidor de relatórios é o 
 
 Um registro de fluxos de dados anota quais dados viajam para onde, como são protegidos e por quanto tempo são guardados. Classifique os dados — telemetria, configuração, pessoais e vinculados a pacientes, logs de segurança — e verifique o registro contra o que os sistemas de fato enviam e retêm. A cifração protege o percurso, e não o destino. Os fluxos novos são revisados antes de começar, pelo responsável pelos dados, pela segurança e, quando há dados pessoais envolvidos, pela função de privacidade.
 
-<!-- cyberabc:chapter-navigation:start ch-12 -->
+<!-- cykin:chapter-navigation:start ch-12 -->
 ### Continue estudando — capítulo 12 de 30
 
 [← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Infraestrutura crítica e segurança setorial: cenários de risco
 
-<!-- cyberabc:lesson-figures:start ch-13 -->
+<!-- cykin:lesson-figures:start ch-13 -->
 ### Mapa da aula
 
 Aula 13 publicada. Mapa, exemplo, EX037.
@@ -2219,7 +2219,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX037]
 ```
-<!-- cyberabc:lesson-figures:end ch-13 -->
+<!-- cykin:lesson-figures:end ch-13 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2338,19 +2338,19 @@ Deixar de fora o R2 porque o LANTERN não transporta comandos seria o sexto erro
 
 Escreva os riscos como cenários específicos — causa, caminho, ativo, consequência e controles —, para que possam ser testados e monitorados. Meça a consequência em pessoas e tempo, ponha os efeitos críveis de safety no topo e ordene com a consequência primeiro; o produto probabilidade × consequência pode deixar incômodos passarem à frente do dano. Dê um dono ao risco residual, inclua os cenários que o seu serviço precisa detectar e transforme o registro em tarefas.
 
-<!-- cyberabc:chapter-navigation:start ch-13 -->
+<!-- cykin:chapter-navigation:start ch-13 -->
 ### Continue estudando — capítulo 13 de 30
 
 [← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Infraestrutura crítica e segurança setorial: métodos I
 
-<!-- cyberabc:lesson-figures:start ch-14 -->
+<!-- cykin:lesson-figures:start ch-14 -->
 ### Mapa da aula
 
 Aula 14 publicada. Mapa, exemplo, EX040.
@@ -2402,7 +2402,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX040]
 ```
-<!-- cyberabc:lesson-figures:end ch-14 -->
+<!-- cykin:lesson-figures:end ch-14 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2479,19 +2479,19 @@ A fusão do NTP no Capítulo 25 é o quarto erro na prática: o seu critério de
 
 Escreva as configurações aprovadas como linhas de base sob controle de versões. Conduza o controle de mudanças de forma proporcional — padrão, normal e de emergência —, com a operação aprovando as mudanças que podem afetar o processo físico. Planeje as mudanças com verificações prévias, uma janela acordada, uma verificação específica e um rollback testado. Depois de toda mudança, o registro, a linha de base e o sistema devem concordar; quando não concordam, você tem uma constatação.
 
-<!-- cyberabc:chapter-navigation:start ch-14 -->
+<!-- cykin:chapter-navigation:start ch-14 -->
 ### Continue estudando — capítulo 14 de 30
 
 [← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Infraestrutura crítica e segurança setorial: laboratório guiado
 
-<!-- cyberabc:lesson-figures:start ch-15 -->
+<!-- cykin:lesson-figures:start ch-15 -->
 ### Mapa da aula
 
 Aula 15 publicada. Mapa, exemplo, EX043.
@@ -2548,7 +2548,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX043]
 ```
-<!-- cyberabc:lesson-figures:end ch-15 -->
+<!-- cykin:lesson-figures:end ch-15 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2680,19 +2680,19 @@ Cada um tem uma consequência no LANTERN. Um hash simples permite que qualquer u
 
 Autentique as mensagens com HMAC sobre uma forma canônica definida, compare os MACs em tempo constante e derrote a reprodução com uma janela de tempo e números de sequência por estação levados dentro do corpo autenticado. Autentique primeiro, depois confie no conteúdo e registre-o. Um MAC prova a origem e a integridade, e não a confidencialidade nem a correção do sensor. As chaves precisam do seu próprio ciclo de vida, e cada estação deve ter a sua.
 
-<!-- cyberabc:chapter-navigation:start ch-15 -->
+<!-- cykin:chapter-navigation:start ch-15 -->
 ### Continue estudando — capítulo 15 de 30
 
 [← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Infraestrutura crítica e segurança setorial: métodos II
 
-<!-- cyberabc:lesson-figures:start ch-16 -->
+<!-- cykin:lesson-figures:start ch-16 -->
 ### Mapa da aula
 
 Aula 16 publicada. Mapa, exemplo, EX046.
@@ -2749,7 +2749,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX046]
 ```
-<!-- cyberabc:lesson-figures:end ch-16 -->
+<!-- cykin:lesson-figures:end ch-16 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -2830,19 +2830,19 @@ A 4.2 do PS04-PLC teria sido marcada como não aplicável por quem lesse apenas 
 
 Trate as vulnerabilidades como uma rotina: decida a aplicabilidade a partir do inventário, priorize por exploração, exposição e consequência, aplique controles compensatórios com datas de término onde a aplicação de patches é lenta e verifique as correções no dispositivo. Faça backup do que você precisa para reconstruir, mantenha uma cópia que não possa ser apagada pelas mesmas pessoas que operam a produção, defina o RTO e o RPO e prove-os com testes de restauração cronometrados.
 
-<!-- cyberabc:chapter-navigation:start ch-16 -->
+<!-- cykin:chapter-navigation:start ch-16 -->
 ### Continue estudando — capítulo 16 de 30
 
 [← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Infraestrutura crítica e segurança setorial: ferramental
 
-<!-- cyberabc:lesson-figures:start ch-17 -->
+<!-- cykin:lesson-figures:start ch-17 -->
 ### Mapa da aula
 
 Aula 17 publicada. Mapa, exemplo, EX049.
@@ -2899,7 +2899,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX049]
 ```
-<!-- cyberabc:lesson-figures:end ch-17 -->
+<!-- cykin:lesson-figures:end ch-17 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3019,19 +3019,19 @@ O parser do laboratório é uma simplificação didática da RFC 5424: ele não 
 
 Registre o que você vai precisar responder, encaminhe para fora do host e confira se o encaminhamento continua. Sincronize os relógios, registre o tempo com deslocamentos explícitos e analise em UTC. Normalize as fontes numa estrutura única, conte tudo o que você não consegue interpretar e construa pequenas ferramentas com testes e invariantes, para que a sua saída mereça confiança; use ferramentas estabelecidas para os trabalhos gerais e nunca invente criptografia.
 
-<!-- cyberabc:chapter-navigation:start ch-17 -->
+<!-- cykin:chapter-navigation:start ch-17 -->
 ### Continue estudando — capítulo 17 de 30
 
 [← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Infraestrutura crítica e segurança setorial: controles
 
-<!-- cyberabc:lesson-figures:start ch-18 -->
+<!-- cykin:lesson-figures:start ch-18 -->
 ### Mapa da aula
 
 Aula 18 publicada. Mapa, exemplo, EX052.
@@ -3088,7 +3088,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX052]
 ```
-<!-- cyberabc:lesson-figures:end ch-18 -->
+<!-- cykin:lesson-figures:end ch-18 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3168,19 +3168,19 @@ A rotação de chaves da PS-07 foi evitada durante anos pelo quarto motivo.
 
 Selecione os controles percorrendo o caminho de cada cenário e ligando controles de prevenir, detectar e recuperar aos seus passos; use os catálogos para conferir a completude. Implemente todo controle com responsável, documentado, configurado como código onde possível, testável e monitorado. Alguns controles são processos — o ciclo de vida das chaves é o exemplo mais claro — e precisam ser ensaiados. "Configurado" nunca é o mesmo que "funciona".
 
-<!-- cyberabc:chapter-navigation:start ch-18 -->
+<!-- cykin:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 30
 
 [← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Infraestrutura crítica e segurança setorial: monitoramento
 
-<!-- cyberabc:lesson-figures:start ch-19 -->
+<!-- cykin:lesson-figures:start ch-19 -->
 ### Mapa da aula
 
 Aula 19 publicada. Mapa, exemplo, EX055.
@@ -3237,7 +3237,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX055]
 ```
-<!-- cyberabc:lesson-figures:end ch-19 -->
+<!-- cykin:lesson-figures:end ch-19 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3360,19 +3360,19 @@ Os dois acionamentos da Regra B para um episódio, na noite do exemplo resolvido
 
 Derive as regras de cenários, da sua própria arquitetura e de comportamentos conhecidos; dê a cada uma um responsável e uma primeira ação. Detecte a ausência, assim como a presença. Alerte por episódio, com contagens e contexto, acompanhe os alarmes falsos e os tempos de resposta, e encaminhe os alertas relevantes para o processo à operação. Monitore o monitoramento, porque cada etapa dele pode falhar em silêncio.
 
-<!-- cyberabc:chapter-navigation:start ch-19 -->
+<!-- cykin:chapter-navigation:start ch-19 -->
 ### Continue estudando — capítulo 19 de 30
 
 [← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Infraestrutura crítica e segurança setorial: resolução de problemas
 
-<!-- cyberabc:lesson-figures:start ch-20 -->
+<!-- cykin:lesson-figures:start ch-20 -->
 ### Mapa da aula
 
 Aula 20 publicada. Mapa, exemplo, EX058.
@@ -3424,7 +3424,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX058]
 ```
-<!-- cyberabc:lesson-figures:end ch-20 -->
+<!-- cykin:lesson-figures:end ch-20 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3538,19 +3538,19 @@ Ligar para a BayTel por causa da lacuna da PS-07 antes de conferir o log de reje
 
 Resolva problemas com um método: sintoma preciso, safety e impacto primeiro, preservar antes de mudar, várias hipóteses incluindo uma maliciosa, a verificação discriminante mais barata primeiro, uma mudança de cada vez, verificar e registrar. Escale para um incidente quando as evidências sugerirem atividade não autorizada ou exposição. Para dados ausentes, os próprios dados — sequência, chegada, carimbos de tempo, contagens de rejeição — costumam distinguir perda, atraso, erro de relógio e filtragem.
 
-<!-- cyberabc:chapter-navigation:start ch-20 -->
+<!-- cykin:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 30
 
 [← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Infraestrutura crítica e segurança setorial: integração do serviço
 
-<!-- cyberabc:lesson-figures:start ch-21 -->
+<!-- cykin:lesson-figures:start ch-21 -->
 ### Mapa da aula
 
 Aula 21 publicada. Mapa, exemplo, EX061.
@@ -3602,7 +3602,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX061]
 ```
-<!-- cyberabc:lesson-figures:end ch-21 -->
+<!-- cykin:lesson-figures:end ch-21 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3673,19 +3673,19 @@ A exclusão da Kell dos papéis consultados no rascunho da RACI mostra o terceir
 
 Um serviço está integrado quando todo vizinho — operadores, o SOC, fornecedores, planejadores de emergência — tem uma interface acordada: o que é fornecido, com que rapidez, a quem e o que acontece quando falha. Teste as matrizes de responsabilidade com cenários até que cada atividade tenha um papel que responda por ela. Traga os fornecedores para os processos de mudanças, vulnerabilidades e incidentes. Acorde e exercite os gatilhos que ligam um incidente técnico aos planos de continuidade do operador, incluindo o estado "no ar, mas não confiável".
 
-<!-- cyberabc:chapter-navigation:start ch-21 -->
+<!-- cykin:chapter-navigation:start ch-21 -->
 ### Continue estudando — capítulo 21 de 30
 
 [← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Infraestrutura crítica e segurança setorial: automação
 
-<!-- cyberabc:lesson-figures:start ch-22 -->
+<!-- cykin:lesson-figures:start ch-22 -->
 ### Mapa da aula
 
 Aula 22 publicada. Mapa, exemplo, EX064.
@@ -3737,7 +3737,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX064]
 ```
-<!-- cyberabc:lesson-figures:end ch-22 -->
+<!-- cykin:lesson-figures:end ch-22 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -3860,19 +3860,19 @@ Uma lista de correções automáticas que incluísse o listener de depuração t
 
 Expresse o estado desejado como código, colete o estado real em modo somente leitura e calcule a deriva. Planeje antes de agir; corrija automaticamente apenas uma lista curta de configurações de baixo risco e reversíveis, e mande todo o resto — especialmente qualquer coisa que possa ser evidência — para o controle de mudanças. Limite o raio de impacto: um host de cada vez, parar na falha, interromper quando a deriva parecer uma fonte da verdade ruim. Proteja a automação com o mesmo cuidado que os hosts que ela gerencia.
 
-<!-- cyberabc:chapter-navigation:start ch-22 -->
+<!-- cykin:chapter-navigation:start ch-22 -->
 ### Continue estudando — capítulo 22 de 30
 
 [← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Infraestrutura crítica e segurança setorial: avaliação
 
-<!-- cyberabc:lesson-figures:start ch-23 -->
+<!-- cykin:lesson-figures:start ch-23 -->
 ### Mapa da aula
 
 Aula 23 publicada. Mapa, exemplo, EX067.
@@ -3924,7 +3924,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX067]
 ```
-<!-- cyberabc:lesson-figures:end ch-23 -->
+<!-- cykin:lesson-figures:end ch-23 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4031,19 +4031,19 @@ Os testes mostram como os controles respondem aos eventos de teste que você pro
 
 Teste os controles contra a evidência que eles prometem, usando eventos de teste seguros e marcados, sob regras de engajamento assinadas que protegem o processo físico. Fixe a regra de afirmação antes de testar, relate contagens com intervalos e medidas de tempo, e distinga "demonstrado eficaz" de "ainda não demonstrado" — e por quê. Transforme todo resultado em melhoria ou em mais testes, e teste de novo num calendário.
 
-<!-- cyberabc:chapter-navigation:start ch-23 -->
+<!-- cykin:chapter-navigation:start ch-23 -->
 ### Continue estudando — capítulo 23 de 30
 
 [← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
 
-<!-- cyberabc:lesson-figures:start ch-24 -->
+<!-- cykin:lesson-figures:start ch-24 -->
 ### Mapa da aula
 
 Aula 24 publicada. Mapa, exemplo, EX070.
@@ -4100,7 +4100,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX070]
 ```
-<!-- cyberabc:lesson-figures:end ch-24 -->
+<!-- cykin:lesson-figures:end ch-24 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4183,19 +4183,19 @@ Pedir a opinião dos tecnólogos depois do teste não teria acrescentado nada qu
 
 Transforme as perguntas operacionais em estudos pequenos, com população, medida, comparação, período e decisão declarados. Prefira comparações que descartem as alternativas óbvias — alternância ou pareamento em vez de antes/depois — e decida a análise de antemão. Colete os dados com segurança e ética, com o acordo do responsável operacional, analise de forma simples, confira a sensibilidade e relate contagens e limites, para que o resultado seja usado com a confiança que merece.
 
-<!-- cyberabc:chapter-navigation:start ch-24 -->
+<!-- cykin:chapter-navigation:start ch-24 -->
 ### Continue estudando — capítulo 24 de 30
 
 [← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
 
-<!-- cyberabc:lesson-figures:start ch-25 -->
+<!-- cykin:lesson-figures:start ch-25 -->
 ### Mapa da aula
 
 Aula 25 publicada. Mapa, exemplo, EX073.
@@ -4252,7 +4252,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX073]
 ```
-<!-- cyberabc:lesson-figures:end ch-25 -->
+<!-- cykin:lesson-figures:end ch-25 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4328,19 +4328,19 @@ A fusão do NTP mostra os dois primeiros: um critério de aceitação vago e uma
 
 Os serviços são construídos por equipes. Dê aos papéis responsabilidades claras e faça o rodízio deles, para que o conhecimento e o controle não se concentrem numa só pessoa. Escreva itens de trabalho com critérios de aceitação que produzam evidências. Torne a revisão obrigatória, específica e registrada, para que ela funcione como um controle de segurança. Planeje para as interrupções operacionais e aprenda com as falhas por meio de revisões sem culpados, que mudam condições em vez de culpar pessoas.
 
-<!-- cyberabc:chapter-navigation:start ch-25 -->
+<!-- cykin:chapter-navigation:start ch-25 -->
 ### Continue estudando — capítulo 25 de 30
 
 [← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Infraestrutura crítica e segurança setorial: passagem para a operação
 
-<!-- cyberabc:lesson-figures:start ch-26 -->
+<!-- cykin:lesson-figures:start ch-26 -->
 ### Mapa da aula
 
 Aula 26 publicada. Mapa, exemplo, EX076.
@@ -4392,7 +4392,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX076]
 ```
-<!-- cyberabc:lesson-figures:end ch-26 -->
+<!-- cykin:lesson-figures:end ch-26 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4472,19 +4472,19 @@ A linha "backups OK" sem data de restauração é o terceiro.
 
 Um serviço está pronto quando outras pessoas conseguem operá-lo. Entregue um pacote com descrição, responsabilidade, níveis de serviço, runbooks, cartões de controle, monitoramento, itens em aberto e evidências. Escreva runbooks para um colega competente às 03:00 e teste-os com alguém que não seja o autor. Forneça evidências de saúde que mostrem eficácia, e não apenas configuração. Conduza a passagem como apresentação, acompanhamento, acompanhamento invertido e aceitação com suporte inicial, e corrija as lacunas que ela revelar.
 
-<!-- cyberabc:chapter-navigation:start ch-26 -->
+<!-- cykin:chapter-navigation:start ch-26 -->
 ### Continue estudando — capítulo 26 de 30
 
 [← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
 
-<!-- cyberabc:lesson-figures:start ch-27 -->
+<!-- cykin:lesson-figures:start ch-27 -->
 ### Mapa da aula
 
 Aula 27 publicada. Mapa, exemplo, EX079.
@@ -4536,7 +4536,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX079]
 ```
-<!-- cyberabc:lesson-figures:end ch-27 -->
+<!-- cykin:lesson-figures:end ch-27 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4641,19 +4641,19 @@ O item em aberto para o pico da manhã é a forma de tratar o quarto quando a ja
 
 Implante em etapas. Faça as pré-verificações de aprovações, operação, backups, rollback e da origem do pacote. Use um canário num host contra um controle, com critérios de promoção fixados de antemão; faça o rollback a qualquer falha e promova um host por vez em caso de sucesso. Valide as propriedades funcionais, de segurança e operacionais depois de cada host, e declare com honestidade o que a janela de validação não conseguiu mostrar.
 
-<!-- cyberabc:chapter-navigation:start ch-27 -->
+<!-- cykin:chapter-navigation:start ch-27 -->
 ### Continue estudando — capítulo 27 de 30
 
 [← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Prática de campo
 
-<!-- cyberabc:lesson-figures:start ch-28 -->
+<!-- cykin:lesson-figures:start ch-28 -->
 ### Mapa da aula
 
 Aula 28 publicada. Mapa, exemplo, EX082.
@@ -4715,7 +4715,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX082]
 ```
-<!-- cyberabc:lesson-figures:end ch-28 -->
+<!-- cykin:lesson-figures:end ch-28 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4798,19 +4798,19 @@ O gabinete destrancado do gateway da PS-07 marca um limite da própria visita: v
 
 O trabalho de campo verifica o que as fontes remotas não conseguem e traz os seus próprios riscos. Planeje as visitas com o operador, siga as regras de safety do local, trabalhe com os engenheiros da operação nos equipamentos de controle e colete evidências sem perturbar o processo nem mudar nada fora do controle de mudanças. Controle rigorosamente os laptops e as mídias de campo. Trate a equipe de operação como parceira e exercite a integração do serviço com os planos de continuidade em exercícios planejados e interrompíveis.
 
-<!-- cyberabc:chapter-navigation:start ch-28 -->
+<!-- cykin:chapter-navigation:start ch-28 -->
 ### Continue estudando — capítulo 28 de 30
 
 [← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do trabalho de conclusão
 
-<!-- cyberabc:lesson-figures:start ch-29 -->
+<!-- cykin:lesson-figures:start ch-29 -->
 ### Mapa da aula
 
 Aula 29 publicada. Mapa, exemplo, EX085.
@@ -4862,7 +4862,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX085]
 ```
-<!-- cyberabc:lesson-figures:end ch-29 -->
+<!-- cykin:lesson-figures:end ch-29 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -4992,19 +4992,19 @@ Uma falsificação injetada construída com a chave real da estação não testa
 
 O trabalho de conclusão integra o curso num único serviço monitorado e o comprova com testes injetados e um registro de evidências conferível. As contagens precisam fechar, o registro precisa estar protegido por um digest e guardado fora do host, e os seus limites precisam estar declarados. Os testes de integração encontram defeitos que os testes de componentes perdem: aqui, uma mensagem autêntica, mas implausível, envenenou o estado de replay, um buraco visível apenas quando a validação, a autenticação e a ordenação se encontraram.
 
-<!-- cyberabc:chapter-navigation:start ch-29 -->
+<!-- cykin:chapter-navigation:start ch-29 -->
 ### Continue estudando — capítulo 29 de 30
 
 [← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do trabalho de conclusão
 
-<!-- cyberabc:lesson-figures:start ch-30 -->
+<!-- cykin:lesson-figures:start ch-30 -->
 ### Mapa da aula
 
 Aula 30 publicada. Mapa, exemplo, EX088.
@@ -5066,7 +5066,7 @@ flowchart LR
     v
 [Exemplo resolvido] --> [Exercício EX088]
 ```
-<!-- cyberabc:lesson-figures:end ch-30 -->
+<!-- cykin:lesson-figures:end ch-30 -->
 
 
 ### Objetivos de aprendizagem e conexão
@@ -5142,13 +5142,13 @@ Use o resumo da Equipe B como o padrão das evidências que cada nota exige. Se,
 
 O trabalho de conclusão é avaliado pela revisão de projeto, pelas evidências operacionais e pelo projeto de integração. Os revisores recompensam projetos que preservam as suas propriedades principais, controles testados contra regras de afirmação declaradas de antemão, evidências datadas, com fonte, consistentes e protegidas, e honestidade sobre o que não foi demonstrado. O método do curso — saber o que precisa continuar verdadeiro, construir para isso, conferir, perceber a falha, responder com cuidado, passar adiante — se transfere entre setores e precisa ser mantido atualizado pela prática contínua.
 
-<!-- cyberabc:chapter-navigation:start ch-30 -->
+<!-- cykin:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 30
 
 [← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
 
 Siga para a próxima lição escrita.
-<!-- cyberabc:chapter-navigation:end -->
+<!-- cykin:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
