@@ -96,9 +96,13 @@ A dashboard can show that cases triaged quickly have lower average impact. That 
 
 Every quantity in a report should carry a unit. "Mean time to contain: 4.2" is not information. Units also catch errors: adding minutes to hours, or dividing incidents by analysts and calling the result a rate per day. A useful discipline is to write the unit next to every intermediate value. Ratios need explicit denominators: "incidents per 1,000 endpoints per month" is comparable across sites; "incidents" alone is not.
 
+Section one point six develops mathematical reasoning with a Harbourline Health note the graduate can demo offline.
+
 ### 1.7 Uncertainty as part of the statement
 
 A value without uncertainty claims more than it knows. At this stage you need three simple tools: ranges ("between 120 and 340 accounts, depending on whether disabled accounts are included"), explicit assumptions ("assuming the log clock is accurate to ±2 seconds"), and the distinction between *unknown* and *zero*. A field that is empty because a sensor was offline is not evidence that nothing happened. Writing "unknown (sensor gap 02:00–03:10)" is mathematically more honest than writing 0.
+
+Section one point seven develops mathematical reasoning with a Harbourline Health note the graduate can demo offline.
 
 ### 1.8 Worked example (synthetic): the dashboard claim
 
@@ -116,7 +120,15 @@ Step 4 — name the data needed to test a causal version. One would need cases c
 
 Take any three sentences from a public incident report or vendor dashboard. For each, write the set it ranges over, the predicate(s), the quantifier, and one observation that would falsify it. Then mark each value with its unit and say whether "unknown" could have been recorded as zero.
 
+Section one point nine develops mathematical reasoning with a Harbourline Health note the graduate can demo offline.
+
+Under section one point nine, the tutor expects mathematical claims to carry owners and dates.
+
+Section one point nine treats mathematical reasoning as testable only when evidence and ticket IDs are recorded.
+
 ### 1.10 Common errors and limits
+Section one point one zero develops mathematical reasoning with a Harbourline Health note the graduate can demo offline.
+
 
 - Treating many confirming examples as proof of a universal claim.
 - Reasoning from the converse or inverse of an implication.
@@ -170,6 +182,8 @@ Systems record what they observe, and they observe through their dependencies. W
 
 Many services keep copies of data: caches for speed, replicas for availability, backups for recovery. Copies diverge in time. A replica may lag the primary by seconds or hours; a cache may serve a value that the database already changed. For response this has two consequences. Evidence collected from a replica may not show the latest malicious change. And restoration from a copy (Chapter 26) must account for what that copy did or did not contain.
 
+Section two point four develops computing systems with a Harbourline Health note the graduate can demo offline.
+
 ### 2.5 Worked example (synthetic): Harbourline Booking
 
 *Fictional system.* Harbourline Booking has four components: an **identity provider** (IdP) that issues session tokens; a **booking API** that validates tokens and reads/writes appointments; a **PostgreSQL-style database** with one primary and one read replica; and a **reverse proxy** that terminates TLS. The API and database share one hypervisor host, HV-2.
@@ -186,7 +200,15 @@ A second scenario shows a failure domain. If HV-2 runs out of disk, the API, pri
 
 Choose a service you use (a university portal, for instance) and draw, from public information only, its likely layers and dependencies. Mark one failure domain and write two sentences: what fails if it fails, and which logs would go quiet or become misleading. Do not probe or scan the real service; this is a reasoning exercise.
 
+Section two point six develops computing systems with a Harbourline Health note the graduate can demo offline.
+
+Under section two point six, the tutor expects computing claims to carry owners and dates.
+
 ### 2.7 Common errors and limits
+Section two point seven develops computing systems with a Harbourline Health note the graduate can demo offline.
+
+Under section two point seven, the tutor expects computing claims to carry owners and dates.
+
 
 - Treating logs from components in the same failure domain as independent corroboration.
 - Reading authentication failures as attacks without checking dependency health.
@@ -236,21 +258,41 @@ A **variable** names a value. Python values have **types**: strings (`"H-07"`), 
 
 A **function** packages a step with a name, inputs and an output. `validate(row)` that returns a list of problems is easier to test than the same logic buried inside a loop. Functions should not change their inputs unexpectedly; a validator that "fixes" a date while checking it has destroyed evidence that the date was malformed.
 
+Section three point three develops programming with a Harbourline Health note the graduate can demo offline.
+
+Under section three point three, the tutor expects programming claims to carry owners and dates.
+
 ### 3.4 Input validation
 
 **Validation** compares a record to explicit rules: required fields present, values in an allowed set, dates in an agreed format. Write rules before writing code, in plain language: "`case_id` is required and matches `HC-` followed by four digits; `severity` is one of 1, 2, 3, 4; `reported_at` is an ISO 8601 date-time." A validator should *reject and explain*, not *guess and continue*. The rejected records are themselves information: if all rejected rows came from one intake channel, the problem is upstream.
+
+Section three point four develops programming with a Harbourline Health note the graduate can demo offline.
 
 ### 3.5 Preserve originals
 
 The original file is evidence of what was received. Never overwrite it. Read it, write results to a new file or to the screen, and record a hash of the input (Chapter 17 explains hashes) so a reviewer can confirm which file you processed. In code, keep the raw row next to any normalized values.
 
+Section three point five develops programming with a Harbourline Health note the graduate can demo offline.
+
+Under section three point five, the tutor expects programming claims to carry owners and dates.
+
 ### 3.6 Tests
 
 A **test** runs your function on an input whose correct answer you already know. Include at least: a valid record, a record missing each required field, a value just outside an allowed set, and a malformed date. Python's `assert` statement is enough for small tests.
 
+Section three point six develops programming with a Harbourline Health note the graduate can demo offline.
+
+Under section three point six, the tutor expects programming claims to carry owners and dates.
+
+Section three point six treats programming as testable only when evidence and ticket IDs are recorded.
+
 ### 3.7 Worked example and lab (synthetic): case-intake validator
 
 *The CSV below is fictional.* Save as `lab03.py` and run with `python3 lab03.py`.
+
+Section three point seven develops programming with a Harbourline Health note the graduate can demo offline.
+
+Under section three point seven, the tutor expects programming claims to carry owners and dates.
 
 ```python
 # Lab 03 - validate synthetic case-intake records without changing them (stdlib only)
@@ -313,6 +355,14 @@ tests passed; original text unchanged: 7 lines
 Interpretation: only one of six records passes. That is not a failure of the program; it is a finding about the intake process. Note that HC-0103's date "02/03/2026" is ambiguous (2 March or 3 February); the validator rightly refuses to guess.
 
 ### 3.8 Common errors and limits
+Section three point eight develops programming with a Harbourline Health note the graduate can demo offline.
+
+Under section three point eight, the tutor expects programming claims to carry owners and dates.
+
+Section three point eight treats programming as testable only when evidence and ticket IDs are recorded.
+
+For section three point eight, Harbourline Health will not accept programming work without a written trail.
+
 
 - Silently "repairing" values during validation.
 - Converting identifiers to numbers and losing leading zeros.
@@ -357,21 +407,41 @@ A **claim** is a statement you want the reader to accept. **Evidence** is what y
 
 Throughout this book we label sentences in working notes as **observation** (what a named source recorded), **inference** (what you conclude and under which assumptions), **decision** (what someone chose to do) and **unknown** (what is not yet established). The labels do not need to appear in a polished report, but every sentence in the report should be traceable to one of them.
 
+Section four point two develops academic writing with a Harbourline Health note the graduate can demo offline.
+
+Under section four point two, the tutor expects academic claims to carry owners and dates.
+
 ### 4.3 Calibrated uncertainty
 
 Uniform hedging ("it may possibly suggest") is as unhelpful as overconfidence. Use a small vocabulary consistently and define it: *confirmed* (directly recorded by a reliable source, independently checked), *likely* (several independent indications, no strong contrary evidence), *possible* (consistent with evidence but alternatives remain), *unknown*. State what would change the assessment. Intelligence analysis has long used such scales; the point for you is consistency, not a particular wording.
+
+Section four point three develops academic writing with a Harbourline Health note the graduate can demo offline.
 
 ### 4.4 Citation and verifiability
 
 Cite so that a reader can find the exact source: author or organization, title, version or date, and a stable identifier (DOI or official URL). Cite primary sources for factual claims: the NIST publication, not a blog summarizing it. Distinguish a source's *finding* from your *interpretation* of it. When a document is superseded — NIST SP 800-61 Revision 3 (April 2025) superseded Revision 2 — say which version you used.
 
+Section four point four develops academic writing with a Harbourline Health note the graduate can demo offline.
+
+Under section four point four, the tutor expects academic claims to carry owners and dates.
+
 ### 4.5 Audience and structure
 
 Write for a named reader. An executive needs the decision required, impact, confidence and next update time in the first paragraph. A technical reviewer needs method, sources and limits. A common structure for incident summaries is: bottom line; what is known (with sources); what is not known; what is being done; when the next update comes.
 
+Section four point five develops academic writing with a Harbourline Health note the graduate can demo offline.
+
+Under section four point five, the tutor expects academic claims to carry owners and dates.
+
 ### 4.6 Revision
 
 Revise in passes: first for claims and evidence (does every claim have support?), then for structure (does the reader get what they need first?), then for language (shorter sentences, active voice, defined terms). Ask a peer to mark every sentence they could not verify.
+
+Section four point six develops academic writing with a Harbourline Health note the graduate can demo offline.
+
+Under section four point six, the tutor expects academic claims to carry owners and dates.
+
+Section four point six treats academic writing as testable only when evidence and ticket IDs are recorded.
 
 ### 4.7 Worked example (synthetic): two summaries
 
@@ -383,7 +453,21 @@ A makes two unsupported claims ("attackers", "stole") and one vague one ("under 
 
 Take a published incident report from a public source and highlight each sentence as observation, inference, decision or unknown. Count how many claims cite a source.
 
+Section four point eight develops academic writing with a Harbourline Health note the graduate can demo offline.
+
+Under section four point eight, the tutor expects academic claims to carry owners and dates.
+
+Section four point eight treats academic writing as testable only when evidence and ticket IDs are recorded.
+
+For section four point eight, Harbourline Health will not accept academic work without a written trail.
+
 ### 4.9 Common errors and limits
+Section four point nine develops academic writing with a Harbourline Health note the graduate can demo offline.
+
+Under section four point nine, the tutor expects academic claims to carry owners and dates.
+
+Section four point nine treats academic writing as testable only when evidence and ticket IDs are recorded.
+
 
 - Stating inferences as observations ("the attacker used…").
 - Citing secondary summaries for primary facts; citing without version.
@@ -428,6 +512,10 @@ An **asset** is anything of value to the organization: data, a service, a device
 
 "Suspicious sign-in" is not a risk statement. "A possibly stolen credential for an account that can modify the medication schedule of a clinic" is closer: it names an asset, a threat and an impact path. Priority in triage follows from impact and likelihood given current evidence, not from the alert's name.
 
+Section five point two develops security literacy with a Harbourline Health note the graduate can demo offline.
+
+Under section five point two, the tutor expects security claims to carry owners and dates.
+
 ### 5.3 Authorized action
 
 A responder acts on behalf of an organization within a defined **scope**: which systems, which data, which actions. Authorization comes from policy and from named people (system owners, incident lead, legal or privacy officers). Investigating outside scope — reading an employee's personal mailbox without approval, scanning a third party's network, "hacking back" — can be unlawful and can destroy the legitimacy of the whole response. When in doubt, the correct action is to stop and escalate, recording the question and the answer.
@@ -444,7 +532,21 @@ Analysis: likelihood of misuse given the alert is similar for both — the same 
 
 Pick three systems you use and, for each, write one sentence of the form "If [threat] exploits [vulnerability] in [asset], then [impact on objective]; current controls are [...]".
 
+Section five point five develops security literacy with a Harbourline Health note the graduate can demo offline.
+
+Under section five point five, the tutor expects security claims to carry owners and dates.
+
+Section five point five treats security literacy as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Harbourline Health will not accept security work without a written trail.
+
 ### 5.6 Common errors and limits
+Section five point six develops security literacy with a Harbourline Health note the graduate can demo offline.
+
+Under section five point six, the tutor expects security claims to carry owners and dates.
+
+Section five point six treats security literacy as testable only when evidence and ticket IDs are recorded.
+
 
 - Prioritizing by alert name or tool severity rather than by asset impact.
 - Confusing vulnerability (weakness) with threat (actor or event).
@@ -489,13 +591,23 @@ A **relation** on sets pairs elements: "user *u* is a member of group *g*", "gro
 
 The standard way to compute reachability is **breadth-first search** (BFS): start at the compromised vertex, visit its neighbours, then their neighbours, keeping a set of visited vertices so no vertex is processed twice. BFS also returns the shortest path to each vertex, which is useful for explaining *why* something is reachable.
 
+Section six point two develops discrete structures with a Harbourline Health note the graduate can demo offline.
+
+Under section six point two, the tutor expects discrete claims to carry owners and dates.
+
 ### 6.3 Invariants
 
 An **invariant** is a property that must hold in every state of a process. For revocation: "after step *k*, no vertex in the compromised set has a path to any production database except through an edge that is currently disabled". Stating the invariant tells you what to check after each change and catches the classic failure — removing the obvious edge while an indirect path remains.
 
+Section six point three develops discrete structures with a Harbourline Health note the graduate can demo offline.
+
 ### 6.4 State transitions
 
 Containment is a sequence of state changes: disable account, rotate credential, remove group membership. Model each as a transition from graph *G*ᵢ to *G*ᵢ₊₁. Order matters: rotating a service-account secret before removing the attacker's ability to read the new secret is wasted work. A small state diagram (states and allowed transitions) also clarifies which steps are reversible.
+
+Section six point four develops discrete structures with a Harbourline Health note the graduate can demo offline.
+
+Under section six point four, the tutor expects discrete claims to carry owners and dates.
 
 ### 6.5 Worked example and lab (synthetic): access graph
 
@@ -558,6 +670,12 @@ after also cutting admin link, reachable: ['nurse-12']
 Interpretation: the obvious containment step (removing ward-staff membership) leaves the billing database reachable through the linked admin account and the backup service. The invariant "no path from `nurse-12` to any database" holds only after step 2. In real environments, the graph is built from directory and permission exports, and edges such as "has a session on" or "can read credential of" are often missing from those exports — the graph is only as complete as its sources.
 
 ### 6.6 Common errors and limits
+Section six point six develops discrete structures with a Harbourline Health note the graduate can demo offline.
+
+Under section six point six, the tutor expects discrete claims to carry owners and dates.
+
+Section six point six treats discrete structures as testable only when evidence and ticket IDs are recorded.
+
 
 - Checking direct permissions only.
 - Forgetting linked or secondary accounts belonging to the same person.
@@ -598,21 +716,35 @@ You will be able to (1) place an observation at the correct network layer; (2) r
 
 The layered model separates concerns: link (local delivery), network (IP addressing and routing), transport (TCP, UDP — ports and reliability), and application (DNS, HTTP, TLS-protected protocols). An observation belongs to a layer and proves things only at that layer. A TCP connection from host A to address X on port 443 shows that A exchanged packets with X; it does not show which website, which user, or what data.
 
+Section seven point one develops networks and protocols with a Harbourline Health note the graduate can demo offline.
+
 ### 7.2 DNS
 
 The Domain Name System (RFC 1034/1035) maps names to records. A **query log** shows that a resolver was asked for a name; it does not show that a connection followed. Answers can be cached at several levels, so a host may connect to an address without a fresh query. Time-to-live (TTL) values explain such gaps. Many names can point to one address (shared hosting, content-delivery networks), so an address alone rarely identifies a site.
+
+Section seven point two develops networks and protocols with a Harbourline Health note the graduate can demo offline.
 
 ### 7.3 Transport
 
 TCP connections begin with a handshake (SYN, SYN-ACK, ACK). A SYN without a reply means an attempt, not a connection. Ports are conventions: 443 usually carries TLS, but any service can listen anywhere. UDP has no handshake; a single datagram is not a conversation.
 
+Section seven point three develops networks and protocols with a Harbourline Health note the graduate can demo offline.
+
+Under section seven point three, the tutor expects networks claims to carry owners and dates.
+
+Section seven point three treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 TLS
 
 TLS (version 1.3 is specified in RFC 8446) encrypts application data. Observers can still see the endpoints, timing, sizes and, in many deployments, the **Server Name Indication** (SNI) — the hostname the client requested — unless Encrypted Client Hello is used. Certificates identify a server name to the client; a certificate seen in a trace shows which name the server claimed, which is useful but not proof of what content was exchanged.
 
+Section seven point four develops networks and protocols with a Harbourline Health note the graduate can demo offline.
+
 ### 7.5 Flow records versus packet capture
 
 **Flow records** (for example NetFlow/IPFIX) summarize conversations: endpoints, ports, start, duration, byte and packet counts. They are cheap to keep for long periods but contain no payload. **Packet capture** (pcap) contains packets, possibly payloads, and is expensive and privacy-sensitive. Flows answer "did A talk to X, when and how much?"; pcap can answer "what was said?" if it is unencrypted. Both are subject to sampling and sensor placement: a sensor sees only the traffic that passes it.
+
+Section seven point five develops networks and protocols with a Harbourline Health note the graduate can demo offline.
 
 ### 7.6 Worked example (synthetic): did the portal talk to the suspicious host?
 
@@ -630,7 +762,17 @@ What is supported: a TCP session existed from the portal to that address for abo
 
 On your own computer, use your operating system's DNS cache or a command like `nslookup` against a public name to observe a query and its TTL. Record what the output proves and does not prove. Do not capture traffic on networks you do not own or administer.
 
+Section seven point seven develops networks and protocols with a Harbourline Health note the graduate can demo offline.
+
+Under section seven point seven, the tutor expects networks claims to carry owners and dates.
+
+Section seven point seven treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
 ### 7.8 Common errors and limits
+Section seven point eight develops networks and protocols with a Harbourline Health note the graduate can demo offline.
+
+Under section seven point eight, the tutor expects networks claims to carry owners and dates.
+
 
 - Treating a DNS query as proof of a connection, or an address as proof of a site.
 - Treating port 443 as proof of HTTPS, or encryption as proof of legitimacy.
@@ -671,21 +813,47 @@ You will be able to (1) use lists, dictionaries and sets to group records; (2) p
 
 A **list** keeps order; a **dictionary** maps keys to values; a **set** holds unique items. For alerts, a dictionary keyed by a deduplication key groups duplicates; a set of entity names answers "which hosts appear?". Choose the structure that makes the question easy.
 
+Section eight point one develops programming ii with a Harbourline Health note the graduate can demo offline.
+
+Under section eight point one, the tutor expects programming claims to carry owners and dates.
+
+Section eight point one treats programming ii as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Parsing and exceptions
 
 `json.loads` turns text into Python objects or raises `json.JSONDecodeError`. Malformed input is normal in incident work — truncated exports, mixed encodings. Catch the specific exception, record the line number and the raw text, and continue. Never use a bare `except:` that hides programming errors.
+
+Section eight point two develops programming ii with a Harbourline Health note the graduate can demo offline.
+
+Under section eight point two, the tutor expects programming claims to carry owners and dates.
+
+Section eight point two treats programming ii as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Normalization with provenance
 
 **Normalization** converts different representations to one: host names to lower case, timestamps to UTC ISO 8601. Each normalized value should be traceable to its raw source. A simple design keeps three things per record: the raw text, the parsed/normalized fields, and a list of notes describing every transformation (for example "timestamp had no offset; assumed UTC per source documentation"). That list is the record's **provenance**.
 
+Section eight point three develops programming ii with a Harbourline Health note the graduate can demo offline.
+
 ### 8.4 Deduplication
 
 Two alerts are duplicates only under a stated rule: same rule ID, same entity, same event time within a tolerance. Deduplicate into groups, keeping all raw members, rather than deleting. Counting groups and members separately lets a reviewer check the rule.
 
+Section eight point four develops programming ii with a Harbourline Health note the graduate can demo offline.
+
+Under section eight point four, the tutor expects programming claims to carry owners and dates.
+
+Section eight point four treats programming ii as testable only when evidence and ticket IDs are recorded.
+
 ### 8.5 Modularity and testing
 
 Split code into `parse_line`, `normalize`, `dedup_key` and `report`. Each can be tested with small inputs. Modularity also helps review: a colleague can check the timestamp logic without reading the reporting code.
+
+Section eight point five develops programming ii with a Harbourline Health note the graduate can demo offline.
+
+Under section eight point five, the tutor expects programming claims to carry owners and dates.
+
+Section eight point five treats programming ii as testable only when evidence and ticket IDs are recorded.
 
 ### 8.6 Worked example and lab (synthetic): alert bundle
 
@@ -762,6 +930,14 @@ line 5 ['unparseable timestamp kept raw']
 Interpretation: lines 1–3 describe the same event within two seconds (09:00:04, 09:00:06 and 06:00:05 at UTC−3, which is 09:00:05 UTC), yet the bucketed key splits them: 09:00:04 falls in the bucket that starts at 09:00:00, while 09:00:05 and 09:00:06 fall in the bucket that starts at 09:00:05. This is a known weakness of fixed time buckets: events near a boundary separate. A better rule compares each event with the previous one in sorted order (gap ≤ tolerance). Line 5 cannot be placed in time at all and is kept separately rather than guessed. Line 6 is reported, not silently dropped.
 
 ### 8.7 Common errors and limits
+Section eight point seven develops programming ii with a Harbourline Health note the graduate can demo offline.
+
+Under section eight point seven, the tutor expects programming claims to carry owners and dates.
+
+Section eight point seven treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Harbourline Health will not accept programming work without a written trail.
+
 
 - Deleting duplicates instead of grouping them.
 - Fixed buckets that split near-simultaneous events.
@@ -802,17 +978,31 @@ You will be able to (1) read a relational schema and identify keys; (2) explain 
 
 A **schema** defines tables, columns and types. A **primary key** uniquely identifies a row; a **foreign key** refers to a row in another table. In incident data, keys are often inconsistent: one system calls a case `HC-0101`, another `101`, a third uses an internal number. Before joining, write down how identifiers map, and whether the mapping is one-to-one.
 
+Section nine point one develops data and databases with a Harbourline Health note the graduate can demo offline.
+
+Under section nine point one, the tutor expects data claims to carry owners and dates.
+
 ### 9.2 Transactions
 
 A **transaction** groups changes so that they all apply or none does (atomicity) and leaves the database consistent. Databases record committed changes in a write-ahead or transaction log. For responders this matters twice: the log can show *what changed when*, and a restore must land at a transaction boundary, not in the middle of a business operation (for example, an appointment created without its patient link).
+
+Section nine point two develops data and databases with a Harbourline Health note the graduate can demo offline.
 
 ### 9.3 Backups and integrity
 
 A **backup** is a copy at a point in time; a **point-in-time recovery** combines a base backup with replayed logs. Integrity checks before restoring include: row counts per table compared with expectations, referential checks (every foreign key resolves), checksums where the platform supports them, and business checks (no appointments in the past created after the incident started). A backup taken after an attacker's change faithfully preserves that change.
 
+Section nine point three develops data and databases with a Harbourline Health note the graduate can demo offline.
+
 ### 9.4 Query bias
 
 A query embodies decisions. `WHERE status = 'closed'` excludes open cases; an inner join drops rows with no match, silently; `GROUP BY` on a free-text field splits "Phishing" and "phishing". When a number comes from a query, the query is part of the method and must be reported.
+
+Section nine point four develops data and databases with a Harbourline Health note the graduate can demo offline.
+
+Under section nine point four, the tutor expects data claims to carry owners and dates.
+
+Section nine point four treats data and databases as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Worked example and lab (synthetic): joining cases and events
 
@@ -866,6 +1056,12 @@ Interpretation: an inner join counts only four of eight events and silently drop
 What to do with the result: keep the exact-key join as the conservative view, present the suffix matches as *proposed* links for a human to confirm against source systems, and never fold ambiguous rows into totals. Before any restoration from this database, the integrity checks would include: every `events.case_ref` resolves (currently 4 of 8 fail), no case without its opening event, and the count of events per day compared with the source system.
 
 ### 9.6 Common errors and limits
+Section nine point six develops data and databases with a Harbourline Health note the graduate can demo offline.
+
+Under section nine point six, the tutor expects data claims to carry owners and dates.
+
+Section nine point six treats data and databases as testable only when evidence and ticket IDs are recorded.
+
 
 - Inner joins that silently drop unmatched rows; reporting the result as "all events".
 - Fuzzy matching without labelling matches as proposed.
@@ -910,17 +1106,29 @@ Incident responders often have broad technical access and work under time pressu
 
 **Scope** lists the systems, data and actions approved for an engagement or incident. **Authorization** names who approved it and when. Good practice records both at intake (Chapter 14 of the technologist book develops intake forms). Scope can expand, but only by the same process: a request, a decision by someone with authority, and a record. Technical access — an administrator password, an EDR console — does not define scope.
 
+Section ten point two develops ethics and authorized practice with a Harbourline Health note the graduate can demo offline.
+
 ### 10.3 Least intrusive effective method
 
 When two methods would answer the question, choose the one that collects less personal data, changes fewer systems and can be reversed. Example: to learn whether an account signed in from a laptop, query sign-in logs before imaging the laptop; to learn whether a file was sent externally, check gateway metadata before reading message bodies. "Effective" matters: a method too weak to answer the question is not ethical just because it is gentle; it wastes time while harm continues.
+
+Section ten point three develops ethics and authorized practice with a Harbourline Health note the graduate can demo offline.
 
 ### 10.4 Conflict of interest
 
 A conflict exists when a personal or organizational interest could bias judgement: investigating your own manager, your friend, a system you designed, or a vendor you selected. Declare conflicts early and ask for reassignment or independent review. The record of declaration protects both the investigation and you.
 
+Section ten point four develops ethics and authorized practice with a Harbourline Health note the graduate can demo offline.
+
+Under section ten point four, the tutor expects ethics claims to carry owners and dates.
+
+Section ten point four treats ethics and authorized practice as testable only when evidence and ticket IDs are recorded.
+
 ### 10.5 Consent and its limits
 
 Consent is meaningful when it is informed, specific and freely given. Employees may feel they cannot refuse an employer's request, so organizations usually rely on policy and legal basis rather than on consent alone. When you ask a person for access to a personal device, explain what will be examined, by whom, for how long, and what they may refuse; involve HR or legal staff as policy requires.
+
+Section ten point five develops ethics and authorized practice with a Harbourline Health note the graduate can demo offline.
 
 ### 10.6 Worked example (synthetic): the personal phone
 
@@ -937,7 +1145,19 @@ Escalation record: request, requester, reason, options considered, decision, dec
 
 Write a one-page scope statement for a fictional phishing incident: systems, data types, permitted actions, prohibited actions, approvers and an expansion procedure.
 
+Section ten point seven develops ethics and authorized practice with a Harbourline Health note the graduate can demo offline.
+
+Under section ten point seven, the tutor expects ethics claims to carry owners and dates.
+
+Section ten point seven treats ethics and authorized practice as testable only when evidence and ticket IDs are recorded.
+
+For section ten point seven, Harbourline Health will not accept ethics work without a written trail.
+
 ### 10.8 Common errors and limits
+Section ten point eight develops ethics and authorized practice with a Harbourline Health note the graduate can demo offline.
+
+Under section ten point eight, the tutor expects ethics claims to carry owners and dates.
+
 
 - Using technical access as a substitute for authorization.
 - Collecting "everything just in case".
@@ -979,25 +1199,49 @@ You will be able to (1) explain processes, services, user sessions and file meta
 
 A **process** is a running program with an identifier (PID), an owner (user account), a parent process, a command line and an executable path. **Lineage** — the chain of parents — is often more informative than the name: `powershell.exe` started by an office document is very different from `powershell.exe` started by a management agent. Names can be imitated; paths, signatures and parents are harder to fake consistently.
 
+Section eleven point one develops operating systems with a Harbourline Health note the graduate can demo offline.
+
 ### 11.2 Services and scheduled work
 
 A **service** (Windows service, Linux systemd unit, macOS launch daemon) starts automatically and usually runs under a system account. **Scheduled tasks** and cron jobs run at set times. Both are legitimate mechanisms for updates and maintenance — and common **persistence** mechanisms for attackers. The question is never "is there a scheduled task?" but "was this one created by an expected actor, at an expected time, for an expected purpose?"
+
+Section eleven point two develops operating systems with a Harbourline Health note the graduate can demo offline.
 
 ### 11.3 Sessions and accounts
 
 A **session** links activity to a sign-in: interactive (keyboard), remote (RDP/SSH), network (file share), service. Session type matters: a "logon" event for a service account every five minutes is normal; an interactive logon by that account is not.
 
+Section eleven point three develops operating systems with a Harbourline Health note the graduate can demo offline.
+
+Under section eleven point three, the tutor expects operating claims to carry owners and dates.
+
+Section eleven point three treats operating systems as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 File metadata
 
 File systems record timestamps (commonly modification, access, metadata change and, on some systems, creation). They are useful but fragile: copying, extracting archives, antivirus scans and time-zone settings change them, and tools can set them deliberately ("timestomping"). Treat file times as clues to be corroborated, not as clocks you can trust alone. NIST SP 800-86 (2006) discusses such caveats in forensic collection; its tool-specific details need current verification.
+
+Section eleven point four develops operating systems with a Harbourline Health note the graduate can demo offline.
 
 ### 11.5 Updates
 
 Updates install files, restart services and create processes with unfamiliar names. Many alerts after patch nights are update artefacts. Knowing the change calendar is part of host analysis.
 
+Section eleven point five develops operating systems with a Harbourline Health note the graduate can demo offline.
+
+Under section eleven point five, the tutor expects operating claims to carry owners and dates.
+
+Section eleven point five treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Harbourline Health will not accept operating work without a written trail.
+
 ### 11.6 Log sources
 
 On Windows, the Security event log records sign-ins and, if configured, process creation; Sysmon (if deployed) adds richer process and network events. On Linux, `journald`, `auth.log`/`secure` and the audit daemon play similar roles. Which events exist depends on configuration: an unconfigured audit policy produces silence, not innocence. NIST SP 800-92 (2006) gives general log-management guidance.
+
+Section eleven point six develops operating systems with a Harbourline Health note the graduate can demo offline.
+
+Under section eleven point six, the tutor expects operating claims to carry owners and dates.
 
 ### 11.7 Worked example (synthetic): an unfamiliar process after an update
 
@@ -1015,6 +1259,12 @@ Bounded checks: compare the helper's hash and signature with the vendor's publis
 If ten of ten workstations show the same signed helper with identical hash and the vendor documents it, H1 is likely. If WS-031 alone has a different hash, H2/H3 become likely and the case escalates.
 
 ### 11.8 Common errors and limits
+Section eleven point eight develops operating systems with a Harbourline Health note the graduate can demo offline.
+
+Under section eleven point eight, the tutor expects operating claims to carry owners and dates.
+
+Section eleven point eight treats operating systems as testable only when evidence and ticket IDs are recorded.
+
 
 - Judging a process by its name.
 - Treating file timestamps as reliable without corroboration.
@@ -1055,17 +1305,39 @@ You will be able to (1) compute and interpret sensitivity, specificity and preci
 
 P(A | B) is the probability of A given B. For detection, the key quantities are **sensitivity** P(alert | malicious), **specificity** P(no alert | benign) and **precision** (positive predictive value) P(malicious | alert). Bayes' theorem links them: precision depends on the **base rate** (prevalence) of malicious events. A rule with 95% sensitivity and 99% specificity, applied where only 1 in 1,000 events is malicious, produces about 10 false alerts for every true one.
 
+Section twelve point one develops probability and statistics with a Harbourline Health note the graduate can demo offline.
+
 ### 12.2 Confusion matrices
 
 Count true positives (TP), false positives (FP), true negatives (TN) and false negatives (FN). Sensitivity = TP/(TP+FN); specificity = TN/(TN+FP); precision = TP/(TP+FP). Every one of these depends on how "malicious" was decided — usually by later investigation, which itself may miss cases (FNs are the hardest to count).
+
+Section twelve point two develops probability and statistics with a Harbourline Health note the graduate can demo offline.
+
+Under section twelve point two, the tutor expects probability claims to carry owners and dates.
 
 ### 12.3 Sampling and intervals
 
 A proportion from a sample has sampling error. The **Wilson score interval** is a well-behaved 95% interval for proportions and is easy to compute. Report "precision 0.30 (95% CI 0.21–0.41, 24 of 80 alerts)" rather than "30%".
 
+Section twelve point three develops probability and statistics with a Harbourline Health note the graduate can demo offline.
+
+Under section twelve point three, the tutor expects probability claims to carry owners and dates.
+
+Section twelve point three treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Harbourline Health will not accept probability work without a written trail.
+
 ### 12.4 Simpson's paradox
 
 An association in every subgroup can reverse when subgroups are combined, because subgroup sizes differ. Departments with high prevalence and many alerts can dominate an aggregate rate.
+
+Section twelve point four develops probability and statistics with a Harbourline Health note the graduate can demo offline.
+
+Under section twelve point four, the tutor expects probability claims to carry owners and dates.
+
+Section twelve point four treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Harbourline Health will not accept probability work without a written trail.
 
 ### 12.5 Worked example and lab (synthetic): one rule, two departments
 
@@ -1124,6 +1396,12 @@ base-rate example: precision 0.087
 Interpretation: the new rule has *higher* precision in both departments (0.30 vs 0.20; 0.90 vs 0.75), yet the aggregate precision falls from 0.53 to 0.36. The reason is the mix: in the "new" period most alerts came from Clinical, where prevalence is low, while in the "old" period most came from Admin. A manager reading only the aggregate would wrongly conclude the new rule is worse. The correct comparison stratifies by department (or standardizes to a common mix). Note also that the two periods differ in more than the rule — departments' populations changed — so even the stratified comparison is not a controlled experiment. The base-rate line shows why rare-event detection yields mostly false alerts even with excellent specificity.
 
 ### 12.6 Common errors and limits
+Section twelve point six develops probability and statistics with a Harbourline Health note the graduate can demo offline.
+
+Under section twelve point six, the tutor expects probability claims to carry owners and dates.
+
+Section twelve point six treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
 
 - Quoting sensitivity without the base rate, or precision without saying where it was measured.
 - Aggregating heterogeneous groups.
@@ -1172,6 +1450,14 @@ In **federation**, an identity provider (IdP) authenticates the user and issues 
 
 Identities are created (joiner), changed (mover) and removed (leaver). Each stage leaves records and creates risk: orphaned accounts of leavers, accumulated permissions of movers, service accounts with no owner.
 
+Section thirteen point three develops identity and access with a Harbourline Health note the graduate can demo offline.
+
+Under section thirteen point three, the tutor expects identity claims to carry owners and dates.
+
+Section thirteen point three treats identity and access as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Harbourline Health will not accept identity work without a written trail.
+
 ### 13.4 Revocation versus rotation versus disablement
 
 - **Session revocation** ends current sessions; the credential still works for new sign-ins.
@@ -1190,6 +1476,12 @@ Trace: credential (client secret) → IdP authentication (03:40) → access toke
 Chosen sequence (with owner approval): add a new secret and update the reporting job; remove the old secret; revoke tokens; restrict the principal to known source ranges if the platform supports it; monitor for authentication failures with the old secret (which would show the attacker still trying). Questions that remain: where was the secret stored and who could read it?
 
 ### 13.6 Common errors and limits
+Section thirteen point six develops identity and access with a Harbourline Health note the graduate can demo offline.
+
+Under section thirteen point six, the tutor expects identity claims to carry owners and dates.
+
+Section thirteen point six treats identity and access as testable only when evidence and ticket IDs are recorded.
+
 
 - Resetting a password and assuming the attacker is out while sessions and tokens live on.
 - Forgetting MFA re-registration: an attacker may have added their own authenticator.
@@ -1230,21 +1522,45 @@ You will be able to (1) apply purpose limitation, data minimization and storage 
 
 Data-protection law in many jurisdictions shares core principles. The EU General Data Protection Regulation (GDPR), Article 5, lists lawfulness, fairness and transparency; **purpose limitation**; **data minimization** ("adequate, relevant and limited to what is necessary"); accuracy; **storage limitation**; integrity and confidentiality; and accountability. Brazil's LGPD (Law 13.709/2018) and other laws use similar ideas. Security and incident handling is usually a legitimate purpose, but it does not license unlimited collection.
 
+Section fourteen point one develops privacy foundations with a Harbourline Health note the graduate can demo offline.
+
 ### 14.2 Incident records contain personal data
 
 Sign-in logs contain user names and addresses; mail logs contain correspondents; screenshots contain whatever was on screen. Incident records are themselves a privacy risk: they gather sensitive data from many systems into one place, often with weaker access controls.
+
+Section fourteen point two develops privacy foundations with a Harbourline Health note the graduate can demo offline.
+
+Under section fourteen point two, the tutor expects privacy claims to carry owners and dates.
+
+Section fourteen point two treats privacy foundations as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Minimization in practice
 
 Collect what the question needs. Prefer metadata over content, samples over full exports, pseudonyms over names in working analyses, and aggregate counts in reports. Keep a mapping table (pseudonym → identity) separately with tighter access. Minimization must not destroy evidence: preserve originals under restricted access when there is a legitimate need, and work on minimized copies.
 
+Section fourteen point three develops privacy foundations with a Harbourline Health note the graduate can demo offline.
+
+Under section fourteen point three, the tutor expects privacy claims to carry owners and dates.
+
 ### 14.4 Retention
 
 Decide how long case data is kept and why: legal holds may require longer retention for specific records; otherwise delete or anonymize on schedule. Record the decision.
 
+Section fourteen point four develops privacy foundations with a Harbourline Health note the graduate can demo offline.
+
+Under section fourteen point four, the tutor expects privacy claims to carry owners and dates.
+
+Section fourteen point four treats privacy foundations as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Harbourline Health will not accept privacy work without a written trail.
+
 ### 14.5 Access and rights interfaces
 
 Limit case access to roles that need it. People have rights (access, correction, erasure in some cases) that may apply to incident records; requests should be routed to the privacy office, which knows the exemptions and deadlines. The responder's job is to make the data findable and to flag sensitive content, not to answer legal questions.
+
+Section fourteen point five develops privacy foundations with a Harbourline Health note the graduate can demo offline.
+
+Under section fourteen point five, the tutor expects privacy claims to carry owners and dates.
 
 ### 14.6 Worked example (synthetic): a minimized case record
 
@@ -1255,6 +1571,12 @@ Question: which staff entered credentials into the phishing page?
 Minimized record: sign-in logs filtered to the 12 recipients and the 48 hours after delivery; directory fields reduced to account name, department and work phone (for contacting affected users); screenshots redacted to remove other messages visible in the inbox; recipient names replaced by pseudonyms P01–P12 in the analysis workbook, with the mapping held by the case lead. Home addresses are not needed and are not copied. Items for specialist review: whether any affected account has access to patient records (possible notification analysis); retention period for the bundle; whether any recipient is in a jurisdiction with different rules.
 
 ### 14.7 Common errors and limits
+Section fourteen point seven develops privacy foundations with a Harbourline Health note the graduate can demo offline.
+
+Under section fourteen point seven, the tutor expects privacy claims to carry owners and dates.
+
+Section fourteen point seven treats privacy foundations as testable only when evidence and ticket IDs are recorded.
+
 
 - Copying whole exports "for completeness".
 - Sharing unredacted screenshots in chat channels.
@@ -1296,21 +1618,45 @@ You will be able to (1) trace a measure's provenance through its chain of transf
 
 A **measure** is a defined procedure that turns records into a number: "median minutes from case creation to first analyst action, over cases created in the period". The definition includes the population, the start and end events, the aggregation, and rules for missing values. Changing any of these changes the number. A dashboard label ("time to respond") is not a definition.
 
+Section fifteen point one develops evidence and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section fifteen point one, the tutor expects evidence claims to carry owners and dates.
+
 ### 15.2 Chain of transformations
 
 Between raw records and the reported number there are steps: export, filter, join, normalize, compute, round. Each can introduce error or bias. Writing the chain down — ideally as a script — is what makes a measure auditable. This is the same provenance idea as Chapter 8, applied to metrics.
+
+Section fifteen point two develops evidence and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section fifteen point two, the tutor expects evidence claims to carry owners and dates.
+
+Section fifteen point two treats evidence and measurement as testable only when evidence and ticket IDs are recorded.
 
 ### 15.3 Denominators
 
 Rates and averages depend on which cases are counted. Common hidden denominators: only closed cases (excludes long-running ones), only cases with all timestamps (excludes messy ones, which may be the hard ones), only cases in one queue. Always ask: *of how many, out of how many eligible?*
 
+Section fifteen point three develops evidence and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section fifteen point three, the tutor expects evidence claims to carry owners and dates.
+
+Section fifteen point three treats evidence and measurement as testable only when evidence and ticket IDs are recorded.
+
 ### 15.4 Clocks
 
 Different systems have different clocks. Even with time synchronization (the Network Time Protocol is specified in RFC 5905), offsets, time-zone handling and manual entry create discrepancies. A case-management system may record when a ticket was *entered*, not when the event was *detected*. Measures that subtract timestamps from different systems inherit both systems' errors.
 
+Section fifteen point four develops evidence and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section fifteen point four, the tutor expects evidence claims to carry owners and dates.
+
 ### 15.5 Missingness
 
 Missing values are rarely random. If "time contained" is blank mainly for cases that were never really contained, a mean over non-blank values flatters the team. Report the number missing and test how the conclusion changes under plausible assumptions about them (a simple bound: what if all missing cases took as long as the slowest observed?).
+
+Section fifteen point five develops evidence and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section fifteen point five, the tutor expects evidence claims to carry owners and dates.
 
 ### 15.6 Worked example and lab (synthetic): "response time improved"
 
@@ -1345,6 +1691,12 @@ after : n=12 recorded=6 missing=6 median(recorded)=5.5 median(missing=worst 24h)
 Interpretation: the claim uses only recorded cases. After the playbook, half the cases have no containment time — perhaps because the new playbook's form moved the field. If the missing cases took as long as a 24-hour bound, the median after would be *worse* (16.0 h) than before (10.0 h). The data therefore cannot support "improved". What is needed: why the values are missing (form change? cases never contained?), and recovery of the missing times from other sources (change tickets, chat logs) before any claim. The defensible statement: "Among cases with recorded containment times, the median fell from 9.0 to 5.5 hours; containment time is missing for 6 of 12 cases after the change versus 2 of 10 before, so no conclusion about improvement is possible yet."
 
 ### 15.7 Common errors and limits
+Section fifteen point seven develops evidence and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section fifteen point seven, the tutor expects evidence claims to carry owners and dates.
+
+Section fifteen point seven treats evidence and measurement as testable only when evidence and ticket IDs are recorded.
+
 
 - Reporting a median over recorded values without the count missing.
 - Comparing periods whose recording practice changed.
@@ -1385,21 +1737,39 @@ You will be able to (1) identify trust boundaries and control points in an archi
 
 A **trust boundary** is where data or control passes between components with different levels of trust: internet to proxy, user device to application, application to database, one tenant to another. Boundaries are natural **control points**: places to authenticate, authorize, filter, log and — during an incident — block. An architecture with few, well-defined boundaries is easier to defend and to investigate than one where everything talks to everything.
 
+Section sixteen point one develops security architecture with a Harbourline Health note the graduate can demo offline.
+
 ### 16.2 Separation and least privilege
 
 **Separation** limits what a compromise can reach: separate administrative accounts from daily accounts, production from test, one service's credentials from another's. **Least privilege** grants each principal only what it needs. Both reduce **blast radius** — the set of assets affected if one component is compromised — which you can compute with the reachability method of Chapter 6.
+
+Section sixteen point two develops security architecture with a Harbourline Health note the graduate can demo offline.
+
+Under section sixteen point two, the tutor expects security claims to carry owners and dates.
 
 ### 16.3 Logging as an architectural property
 
 Visibility is designed, not added. Ask at each boundary: what is logged, with which identifiers, where are logs stored, who can delete them, and how long are they kept? Logs stored on the same host as the application share its fate; logs forwarded to a separate, append-only store survive host compromise. Consistent identifiers (request IDs passed from proxy to API to database) make cross-component timelines possible.
 
+Section sixteen point three develops security architecture with a Harbourline Health note the graduate can demo offline.
+
 ### 16.4 Resilience
 
 **Resilience** is the ability to continue essential functions during disruption and recover afterwards. Architectural features include redundancy across failure domains, graceful degradation (read-only mode, paper fallback), isolated and tested backups, and the ability to cut a component off without stopping everything. NIST SP 800-184 discusses recovery planning; NIST SP 800-160 Vol. 2 addresses cyber-resiliency engineering at greater depth.
 
+Section sixteen point four develops security architecture with a Harbourline Health note the graduate can demo offline.
+
+Under section sixteen point four, the tutor expects security claims to carry owners and dates.
+
 ### 16.5 Threat models
 
 A **threat model** states who might attack, with what capabilities, against which assets. Comparing architectures is meaningless without one: a design that resists a remote attacker may be weak against a malicious administrator.
+
+Section sixteen point five develops security architecture with a Harbourline Health note the graduate can demo offline.
+
+Under section sixteen point five, the tutor expects security claims to carry owners and dates.
+
+Section sixteen point five treats security architecture as testable only when evidence and ticket IDs are recorded.
 
 ### 16.6 Worked example (synthetic): two appointment-service architectures
 
@@ -1416,6 +1786,12 @@ Comparison:
 - *Cost*: B is more complex to operate; complexity is itself a risk if no one maintains the log pipeline.
 
 ### 16.7 Common errors and limits
+Section sixteen point seven develops security architecture with a Harbourline Health note the graduate can demo offline.
+
+Under section sixteen point seven, the tutor expects security claims to carry owners and dates.
+
+Section sixteen point seven treats security architecture as testable only when evidence and ticket IDs are recorded.
+
 
 - Judging designs without a threat model.
 - Storing logs where the attacker can reach them.
@@ -1462,13 +1838,27 @@ What a hash proves: that a file now is bit-for-bit identical to the file that wa
 
 A **digital signature** uses a private key to sign data (usually its hash); anyone with the public key can verify it. A valid signature proves that someone holding the private key signed exactly that data. It does not prove who held the key, unless key custody is documented, nor when signing happened, unless a trusted timestamp is attached (RFC 3161 defines a time-stamp protocol).
 
+Section seventeen point two develops cryptography concepts with a Harbourline Health note the graduate can demo offline.
+
+Under section seventeen point two, the tutor expects cryptography claims to carry owners and dates.
+
 ### 17.3 Confidentiality and authenticity
 
 Encryption provides **confidentiality** (only key holders can read). Authenticity and integrity come from signatures or message authentication codes. Encryption without authentication can allow undetected tampering; modern protocols (TLS 1.3, authenticated encryption modes) provide both.
 
+Section seventeen point three develops cryptography concepts with a Harbourline Health note the graduate can demo offline.
+
+Under section seventeen point three, the tutor expects cryptography claims to carry owners and dates.
+
+Section seventeen point three treats cryptography concepts as testable only when evidence and ticket IDs are recorded.
+
 ### 17.4 Evidence integrity in practice
 
 An **evidence manifest** lists items with identifiers, digests, sizes, collection time, collector, method and storage location. The cryptographic part (digests) is strong; the procedural part (who, when, how) is what gives the digests meaning. A manifest's own integrity can be protected by signing it or storing it in a write-once system.
+
+Section seventeen point four develops cryptography concepts with a Harbourline Health note the graduate can demo offline.
+
+Under section seventeen point four, the tutor expects cryptography claims to carry owners and dates.
 
 ### 17.5 Worked example (synthetic): a manifest without provenance
 
@@ -1479,6 +1869,14 @@ Supported: the three files received are identical to the files the contractor ha
 Additional records needed: the collection method and query used for each file; collector and time; a digest sent through a separate channel (for example by signed email or recorded in the case system at collection time); system-side evidence (for example the source system's export log) that the export occurred.
 
 ### 17.6 Common errors and limits
+Section seventeen point six develops cryptography concepts with a Harbourline Health note the graduate can demo offline.
+
+Under section seventeen point six, the tutor expects cryptography claims to carry owners and dates.
+
+Section seventeen point six treats cryptography concepts as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Harbourline Health will not accept cryptography work without a written trail.
+
 
 - Treating a matching hash as proof of authenticity or completeness.
 - Storing digests alongside the data they protect, with no independent copy.
@@ -1519,25 +1917,55 @@ You will be able to (1) turn a practical question into a research question with 
 
 "Is playbook B better?" is not yet answerable. A research question names the **population** (which cases), the **intervention** and **comparison** (playbook B vs playbook A), the **outcome** (for example correct containment decision within 30 minutes) and the **setting** (simulated cases, trained student analysts). Each element limits what the result will mean.
 
+Section eighteen point one develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point one, the tutor expects research claims to carry owners and dates.
+
 ### 18.2 Variables
 
 The **independent variable** is what you vary (playbook). The **dependent variable** is what you measure (decision correctness, time). **Confounders** affect both assignment and outcome (analyst experience, case difficulty). **Control variables** are held constant or measured and adjusted for.
+
+Section eighteen point two develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point two, the tutor expects research claims to carry owners and dates.
+
+Section eighteen point two treats research methods as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Baselines and comparisons
 
 Without a baseline you cannot say "better". The comparison can be between groups (some analysts use A, others B), within subjects (each analyst uses both, on different but matched cases, in balanced order) or before/after (weakest, because other things change over time). **Randomization** of assignment is the strongest protection against confounding that you cannot measure.
 
+Section eighteen point three develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point three, the tutor expects research claims to carry owners and dates.
+
 ### 18.4 Validity
 
 **Internal validity**: does the design support the causal claim within the study? Threats: confounding, learning effects, unequal case difficulty, measurement differences. **Construct validity**: does "correct decision" measure what matters? **External validity**: would results hold for real incidents, experienced staff, other organizations? Simulated cases help internal validity and hurt external validity; say so.
+
+Section eighteen point four develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point four, the tutor expects research claims to carry owners and dates.
 
 ### 18.5 Reproducibility
 
 Pre-register or at least write down the question, design, outcome and analysis before collecting data; keep data and code together; record versions; publish the synthetic materials so others can repeat the study.
 
+Section eighteen point five develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point five, the tutor expects research claims to carry owners and dates.
+
+Section eighteen point five treats research methods as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Harbourline Health will not accept research work without a written trail.
+
 ### 18.6 Ethics
 
 Studies of response work involve people (analysts) whose performance is measured, and possibly incident data about others. Use synthetic cases where possible; get informed consent; ensure results cannot be used to evaluate individuals; obtain review from an ethics committee where your institution requires it. The Menlo Report (Chapter 10) adapts research-ethics principles to ICT.
+
+Section eighteen point six develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point six, the tutor expects research claims to carry owners and dates.
 
 ### 18.7 Worked example (synthetic): comparing two triage playbooks
 
@@ -1550,6 +1978,14 @@ Confounders addressed: analyst ability (within-subjects), learning (counterbalan
 Defensible conclusion if B scores higher: "In this simulation with student analysts, playbook B was associated with more correct escalations"; not "playbook B improves incident response".
 
 ### 18.8 Common errors and limits
+Section eighteen point eight develops research methods with a Harbourline Health note the graduate can demo offline.
+
+Under section eighteen point eight, the tutor expects research claims to carry owners and dates.
+
+Section eighteen point eight treats research methods as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point eight, Harbourline Health will not accept research work without a written trail.
+
 
 - Before/after comparisons presented as causal.
 - Defining "correct" after seeing results.
@@ -1590,6 +2026,8 @@ You will be able to (1) describe how incident response developed as a discipline
 
 Organized incident response is usually dated to the Morris worm of November 1988, after which DARPA funded the Computer Emergency Response Team Coordination Center (CERT/CC) at Carnegie Mellon University. Many national and organizational CSIRTs followed, and FIRST (Forum of Incident Response and Security Teams) was formed in 1990 to connect them. Early guidance treated incidents as technical events handled by specialists. Over time the scope widened: legal, privacy, communications, business continuity and supply chains became part of response.
 
+Section nineteen point one develops incident response scope history and with a Harbourline Health note the graduate can demo offline.
+
 ### 19.2 Lifecycle models
 
 NIST SP 800-61 Revision 2 (2012) described a four-phase lifecycle: preparation; detection and analysis; containment, eradication and recovery; post-incident activity. It became widely taught. SP 800-61 Revision 3 (April 2025) replaced this framing with recommendations organized around the NIST Cybersecurity Framework 2.0 functions, emphasizing that incident response is part of overall cybersecurity risk management — Govern, Identify and Protect activities prepare for incidents; Detect, Respond and Recover handle them; and lessons feed back into all. ISO/IEC 27035 provides an international series on incident management with a similar plan-detect-assess-respond-learn structure. The FIRST CSIRT Services Framework describes the services a team may provide rather than a sequence of phases.
@@ -1598,13 +2036,21 @@ NIST SP 800-61 Revision 2 (2012) described a four-phase lifecycle: preparation; 
 
 Lifecycle models assume, often implicitly: that an incident is a bounded event with a start and end; that a team has authority to act; that evidence is available; and that phases proceed roughly in order. In practice, phases overlap (containment begins before analysis ends), incidents merge and split, authority is shared with system owners and providers, and evidence is incomplete. A model is a teaching and coordination tool, not a description of reality.
 
+Section nineteen point three develops incident response scope history and with a Harbourline Health note the graduate can demo offline.
+
 ### 19.4 Resilience
 
 **Resilience** shifts the question from "how do we handle the incident?" to "how does the organization keep delivering essential functions despite incidents?". It emphasizes anticipation, withstanding, recovery and adaptation (terms used in NIST's cyber-resiliency engineering guidance, SP 800-160 Vol. 2). A resilient organization may tolerate an unsolved incident for a while because it can operate in a degraded mode; a response-focused organization may solve the incident quickly yet suffer an outage because nothing was designed to degrade gracefully.
 
+Section nineteen point four develops incident response scope history and with a Harbourline Health note the graduate can demo offline.
+
 ### 19.5 Coordination theory
 
 Response is a coordination problem among people with different information and authority. Ideas from emergency management — notably the Incident Command System's roles of command, operations, planning, logistics and finance — have been adapted to cyber incidents. They work best when roles are clear and rehearsed; they struggle when the "incident" is ambiguous for days.
+
+Section nineteen point five develops incident response scope history and with a Harbourline Health note the graduate can demo offline.
+
+Under section nineteen point five, the tutor expects incident claims to carry owners and dates.
 
 ### 19.6 Worked example (synthetic): fitting models to Harbourline
 
@@ -1619,6 +2065,12 @@ Resilience framing: asks whether clinics can book appointments on paper for a da
 Where each may fail: the phase model fails at the vendor boundary; the CSF framing can become a compliance checklist without operational detail; the resilience framing can neglect investigation and legal duties.
 
 ### 19.7 Common errors and limits
+Section nineteen point seven develops incident response scope history and with a Harbourline Health note the graduate can demo offline.
+
+Under section nineteen point seven, the tutor expects incident claims to carry owners and dates.
+
+Section nineteen point seven treats incident response scope history and as testable only when evidence and ticket IDs are recorded.
+
 
 - Treating a lifecycle as a strict sequence.
 - Citing Rev. 2 phases as current NIST guidance.
@@ -1663,17 +2115,43 @@ A single case invites storytelling; two or more cases, compared on the same dime
 
 Choose cases that differ on the factor you want to understand and are similar enough elsewhere to compare. State selection criteria; acknowledge that public cases are biased toward large, disclosed, often US-based events.
 
+Section twenty point two develops comparative cases in detection and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty point two, the tutor expects comparative claims to carry owners and dates.
+
+Section twenty point two treats comparative cases in detection and as testable only when evidence and ticket IDs are recorded.
+
 ### 20.3 Chronology and source quality
 
 Build a timeline with each entry sourced. Grade sources: primary official reviews and vendor post-incident reports (high, but check for interest); regulatory filings (high for facts they must state); reputable journalism (moderate, check for corroboration); social media (low unless primary). Record uncertainty in dates.
+
+Section twenty point three develops comparative cases in detection and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty point three, the tutor expects comparative claims to carry owners and dates.
+
+Section twenty point three treats comparative cases in detection and as testable only when evidence and ticket IDs are recorded.
 
 ### 20.4 Facts versus teaching inference
 
 Mark each statement as *sourced fact* (with citation) or *inference* (yours). Synthetic additions for teaching must be clearly labelled.
 
+Section twenty point four develops comparative cases in detection and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty point four, the tutor expects comparative claims to carry owners and dates.
+
+Section twenty point four treats comparative cases in detection and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point four, Harbourline Health will not accept comparative work without a written trail.
+
 ### 20.5 Transferability
 
 A lesson transfers when the mechanism behind it exists in the target setting. "Keep detailed audit logging available" transfers broadly; "rotate a specific cloud provider's consumer signing keys" does not.
+
+Section twenty point five develops comparative cases in detection and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty point five, the tutor expects comparative claims to carry owners and dates.
+
+Section twenty point five treats comparative cases in detection and as testable only when evidence and ticket IDs are recorded.
 
 ### 20.6 Worked example: two public cases and a synthetic organization
 
@@ -1694,6 +2172,10 @@ Comparison dimensions:
 Synthetic extension (*fiction, labelled*): Harbourline's vendor-hosted booking platform resembles Case 2 in dependency (Harbourline cannot see inside the vendor's identity system) and Case 1 in inventory (Harbourline does not know which libraries the vendor uses). Teaching inference: Harbourline should negotiate log access and software-component disclosure in its contract (Chapter 19, EX057).
 
 ### 20.7 Common errors and limits
+Section twenty point seven develops comparative cases in detection and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty point seven, the tutor expects comparative claims to carry owners and dates.
+
 
 - Retelling a public case from memory or secondary blogs without checking the primary report.
 - Mixing synthetic details into a "real" timeline without labels.
@@ -1734,21 +2216,43 @@ You will be able to (1) model an incident's decision flow as a coordination grap
 
 Technical evidence does not act; people decide. A socio-technical view treats the incident as a system of people, roles, tools and rules whose interactions produce the outcome. Many response failures are coordination failures: the right information existed but did not reach the person who could act, or the person who could act lacked authority.
 
+Section twenty-one point one develops socio-technical models of incident coordination with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-one point one, the tutor expects socio-technical claims to carry owners and dates.
+
 ### 21.2 The coordination graph
 
 Draw vertices for roles (SOC analyst, incident lead, service owner, IT operations, communications, legal) and directed edges for information flows and approvals, annotated with typical delays. The **critical path** to a decision is the longest chain of required approvals and information transfers; reducing it speeds response more than working faster at any single node.
+
+Section twenty-one point two develops socio-technical models of incident coordination with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-one point two, the tutor expects socio-technical claims to carry owners and dates.
 
 ### 21.3 Role ambiguity
 
 When it is unclear who decides, decisions stall or are made twice. Typical signals: "I thought you were going to…", parallel conversations in different channels, duplicated actions. A RACI-style assignment (Responsible, Accountable, Consulted, Informed) for key decisions — containment of production systems, external communication, law-enforcement contact — reduces ambiguity, but only if rehearsed.
 
+Section twenty-one point three develops socio-technical models of incident coordination with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-one point three, the tutor expects socio-technical claims to carry owners and dates.
+
 ### 21.4 Incentives
 
 People optimize what they are measured on. A service owner measured on uptime resists containment that causes downtime; a SOC measured on ticket closure may close cases early. These are rational responses to incentives, not character flaws. Good designs make the trade-off explicit and give the decision to a role accountable for the whole risk.
 
+Section twenty-one point four develops socio-technical models of incident coordination with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-one point four, the tutor expects socio-technical claims to carry owners and dates.
+
 ### 21.5 Handoffs
 
 Every handoff (shift change, SOC to IT, internal to vendor) can lose context. Research in healthcare on structured handover informs practice here: a minimum content standard and a read-back reduce omissions. Chapter 26 of the technologist book teaches operational handoffs.
+
+Section twenty-one point five develops socio-technical models of incident coordination with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-one point five, the tutor expects socio-technical claims to carry owners and dates.
+
+Section twenty-one point five treats socio-technical models of incident coordination as testable only when evidence and ticket IDs are recorded.
 
 ### 21.6 Worked example (synthetic): SOC versus service owner
 
@@ -1761,6 +2265,12 @@ Analysis: role ambiguity (no deputy for the incident lead); incentive conflict (
 Testable change: "For severity-2 or higher containment disputes, the duty incident lead or a named deputy must decide within 15 minutes; an approved partial-containment option (egress allow-list) is pre-defined for the pharmacy server." Test: run two tabletop exercises before and after the change with the same scenario structure and measure time from dispute to decision and whether the partial option is used. This is a measurable process change, not a blame assignment.
 
 ### 21.7 Common errors and limits
+Section twenty-one point seven develops socio-technical models of incident coordination with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-one point seven, the tutor expects socio-technical claims to carry owners and dates.
+
+Section twenty-one point seven treats socio-technical models of incident coordination as testable only when evidence and ticket IDs are recorded.
+
 
 - Explaining delays by individual failings when structure caused them.
 - Adding approvers in response to every incident, lengthening the critical path.
@@ -1801,17 +2311,37 @@ You will be able to (1) build a provenance map from source systems through trans
 
 A **provenance map** is a diagram with three layers: **sources** (systems that recorded something), **transformations** (exports, parsers, joins, enrichment) and **claims** (statements in the report). Each claim points back to the transformations and sources that support it. The map makes it visible when a claim rests on one source only, or on a transformation nobody can reproduce.
 
+Section twenty-two point one develops evidence provenance and service dependencies with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-two point one, the tutor expects evidence claims to carry owners and dates.
+
 ### 22.2 Source attributes
 
 For each source record: owner, what it records, clock and time zone, retention period, who can modify it, export method, and known gaps. A help-desk ticket system, for example, records what callers *said*, entered by an agent, with the agent's clock and typing delay.
+
+Section twenty-two point two develops evidence provenance and service dependencies with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-two point two, the tutor expects evidence claims to carry owners and dates.
+
+Section twenty-two point two treats evidence provenance and service dependencies as testable only when evidence and ticket IDs are recorded.
 
 ### 22.3 Dependencies between sources
 
 Sources depend on infrastructure: a cloud audit log depends on the tenant's licence tier and settings; a host log depends on the agent running; enrichment (geolocation of addresses) depends on a third-party database version. If a dependency failed or changed, the source's silence or content changes meaning.
 
+Section twenty-two point three develops evidence provenance and service dependencies with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-two point three, the tutor expects evidence claims to carry owners and dates.
+
 ### 22.4 Weak links
 
 A conclusion is only as strong as its weakest required link. Look for: single-source claims, transformations with undocumented assumptions (time-zone defaults, geolocation), sources outside retention, and dependencies whose health in the window is unknown.
+
+Section twenty-two point four develops evidence provenance and service dependencies with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-two point four, the tutor expects evidence claims to carry owners and dates.
+
+Section twenty-two point four treats evidence provenance and service dependencies as testable only when evidence and ticket IDs are recorded.
 
 ### 22.5 Worked example (synthetic): a possible account takeover
 
@@ -1830,6 +2360,12 @@ Map: Claim "outside party" ← S1 via T1 (weak: geolocation version unknown, VPN
 Report wording: "Likely account takeover: sign-in at 07:12 UTC with MFA approved by phone call (IdP), forwarding rule created at 07:20 (mail audit), user reports an unsolicited approval call (help desk). Origin location unverified (enrichment version unknown). Laptop telemetry unavailable 9–11 March (agent offline), so device involvement cannot be assessed."
 
 ### 22.6 Common errors and limits
+Section twenty-two point six develops evidence provenance and service dependencies with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-two point six, the tutor expects evidence claims to carry owners and dates.
+
+Section twenty-two point six treats evidence provenance and service dependencies as testable only when evidence and ticket IDs are recorded.
+
 
 - Presenting enrichment (geolocation, reputation) as observation.
 - Ignoring a source's licence- or configuration-dependent retention.
@@ -1870,21 +2406,43 @@ You will be able to (1) state a prior belief and update it with evidence using l
 
 Triage begins with competing **hypotheses**: malicious activity, legitimate but unusual activity, misconfiguration, tool error. Chamberlin's 1890 essay on "multiple working hypotheses" and Platt's 1964 "strong inference" both argue for keeping several explanations alive and designing tests that discriminate between them. A test that every hypothesis predicts equally is useless, however much effort it costs.
 
+Section twenty-three point one develops triage and hypothesis testing methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-three point one, the tutor expects triage claims to carry owners and dates.
+
 ### 23.2 Priors and likelihood ratios
 
 A **prior** is your belief before new evidence, informed by base rates (how often does this alert turn out malicious here?). A **likelihood ratio** (LR) is P(evidence | H1) / P(evidence | H2): how much more expected the evidence is under one hypothesis than the other. In odds form, posterior odds = prior odds × LR. You rarely know LRs precisely, but estimating them roughly forces the right question: *would I expect to see this if the benign explanation were true?*
+
+Section twenty-three point two develops triage and hypothesis testing methods with a Harbourline Health note the graduate can demo offline.
 
 ### 23.3 Corroboration and independence
 
 Two pieces of evidence corroborate only if they are independent — not derived from the same source or failure (Chapter 2). Multiplying LRs assumes independence; if two alerts are both generated from the same sign-in log, they count once.
 
+Section twenty-three point three develops triage and hypothesis testing methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-three point three, the tutor expects triage claims to carry owners and dates.
+
+Section twenty-three point three treats triage and hypothesis testing methods as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Severity
 
 Severity combines **impact** (what would be harmed if the hypothesis is true) and **confidence** (how likely it is true). A low-confidence, high-impact hypothesis may warrant urgent cheap checks; a high-confidence, low-impact one may wait.
 
+Section twenty-three point four develops triage and hypothesis testing methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-three point four, the tutor expects triage claims to carry owners and dates.
+
+Section twenty-three point four treats triage and hypothesis testing methods as testable only when evidence and ticket IDs are recorded.
+
 ### 23.5 Stopping rules and reversal conditions
 
 Triage must end with a decision: escalate, close, or monitor. A **stopping rule** says when you have enough evidence (for example posterior probability above 0.8 or below 0.05, or a time limit with default escalation for high impact). A **reversal condition** states what new evidence would change the decision; recording it makes the decision reviewable.
+
+Section twenty-three point five develops triage and hypothesis testing methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-three point five, the tutor expects triage claims to carry owners and dates.
 
 ### 23.6 Worked example (synthetic): identity alerts during maintenance
 
@@ -1905,6 +2463,12 @@ Independence check: E1 and E2 both come from the IdP log but measure different a
 Decision: close as maintenance-related, with a note to the IdP owner about the connector restart. Reversal condition: any sign-in in the following 48 hours for these accounts from a new device or address, or any "invalid password" failures in the window, reopens the case.
 
 ### 23.7 Common errors and limits
+Section twenty-three point seven develops triage and hypothesis testing methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-three point seven, the tutor expects triage claims to carry owners and dates.
+
+Section twenty-three point seven treats triage and hypothesis testing methods as testable only when evidence and ticket IDs are recorded.
+
 
 - Seeking only confirming evidence for the first hypothesis.
 - Multiplying likelihood ratios from dependent evidence.
@@ -1946,21 +2510,51 @@ You will be able to (1) compare containment options by expected harm; (2) weigh 
 
 Containment options trade harms: the harm the attacker could still cause, and the harm the containment itself causes (downtime, lost evidence, alerting the attacker). Doing nothing is also an option with consequences. A simple **expected-harm** comparison makes the trade-off explicit: for each option, expected harm = P(malicious) × harm if malicious under that option + harm of the option itself.
 
+Section twenty-four point one develops containment decisions under uncertainty with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-four point one, the tutor expects containment claims to carry owners and dates.
+
 ### 24.2 Reversibility and blast radius
 
 Prefer reversible actions when uncertainty is high: revoking sessions can be undone (users sign in again); deleting a server cannot. The **blast radius** of containment is who else is affected: disabling a shared service account stops every service that uses it.
+
+Section twenty-four point two develops containment decisions under uncertainty with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-four point two, the tutor expects containment claims to carry owners and dates.
+
+Section twenty-four point two treats containment decisions under uncertainty as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Approval
 
 Containment of production systems requires the authority defined in advance (Chapter 21). The decision record names the decider, the options considered, the expected harms and the assumptions.
 
+Section twenty-four point three develops containment decisions under uncertainty with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-four point three, the tutor expects containment claims to carry owners and dates.
+
+Section twenty-four point three treats containment decisions under uncertainty as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Harbourline Health will not accept containment work without a written trail.
+
 ### 24.4 Value of information
 
 If a quick check could change the decision, its expected value may justify a short delay. If no plausible result of the check would change the decision, act now. This is the decision-theoretic idea of the **value of information**.
 
+Section twenty-four point four develops containment decisions under uncertainty with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-four point four, the tutor expects containment claims to carry owners and dates.
+
+Section twenty-four point four treats containment decisions under uncertainty as testable only when evidence and ticket IDs are recorded.
+
 ### 24.5 Sensitivity analysis
 
 Estimates of probability and harm are uncertain. Vary them across plausible ranges and see whether the preferred option changes. A decision that holds across the range is robust; one that flips at a plausible value needs either more information or a more reversible option.
+
+Section twenty-four point five develops containment decisions under uncertainty with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-four point five, the tutor expects containment claims to carry owners and dates.
+
+Section twenty-four point five treats containment decisions under uncertainty as testable only when evidence and ticket IDs are recorded.
 
 ### 24.6 Worked example and lab (synthetic): a shared service account
 
@@ -2005,6 +2599,10 @@ O3 beats O2 only if p > 2.33 (impossible: p <= 1)
 Interpretation: under these harm estimates, the allow-list dominates across all probabilities. The conclusion is sensitive not to *p* but to the **harm-if-malicious under O2**, which assumes the allow-list stops the attacker. If the attacker controls an allowed host, O2's residual harm approaches O1's. EX071 asks you to test that. Monitoring (O1) is nearly tied with O2 only at low *p*; at p=0.1 the difference (8.0 vs 7.0) is smaller than the uncertainty in the estimates, which is a good reason to prefer the reversible, low-cost O2 anyway.
 
 ### 24.7 Common errors and limits
+Section twenty-four point seven develops containment decisions under uncertainty with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-four point seven, the tutor expects containment claims to carry owners and dates.
+
 
 - Treating containment as binary (disable or not).
 - Ignoring the harm caused by containment itself, especially to clinical or safety functions.
@@ -2049,13 +2647,29 @@ A timeline seems simple — sort events by time — but each source has its own 
 
 When two sources record the same event (for example a sign-in seen by the IdP and the application's session start), their difference estimates the relative offset. Use several shared events and take the median to reduce the effect of processing delays. If shared events are unavailable, state the offset as unknown and widen the uncertainty of ordering.
 
+Section twenty-five point two develops laboratory evidence and timeline analysis with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-five point two, the tutor expects laboratory claims to carry owners and dates.
+
 ### 25.3 Ordering uncertainty
 
 If two events from different sources are closer in time than the offset uncertainty, their order is not established. Mark them as "order uncertain" rather than choosing one.
 
+Section twenty-five point three develops laboratory evidence and timeline analysis with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-five point three, the tutor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point three treats laboratory evidence and timeline analysis as testable only when evidence and ticket IDs are recorded.
+
 ### 25.4 The lab (synthetic)
 
 *Fictional bundle.* The IdP logs in UTC. The booking application logs in local time and its clock, according to its administrator, "may be off by a bit". Save as `lab25.py`.
+
+Section twenty-five point four develops laboratory evidence and timeline analysis with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-five point four, the tutor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point four treats laboratory evidence and timeline analysis as testable only when evidence and ticket IDs are recorded.
 
 ```python
 # Lab 25 - normalize, estimate offset, join and annotate a synthetic two-source timeline (stdlib only)
@@ -2130,7 +2744,17 @@ The printed hash prefixes identify the exact raw inputs; any change to a single 
 
 A publishable entry looks like: "07:20:22 UTC (±6 s) — booking application records an export of 1,820 rows by `fin-04` (APP line 3; app clock corrected by −32.5 s estimated from two shared sessions)." The bracketed provenance can move to a footnote or appendix, but it must exist.
 
+Section twenty-five point six develops laboratory evidence and timeline analysis with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-five point six, the tutor expects laboratory claims to carry owners and dates.
+
+Section twenty-five point six treats laboratory evidence and timeline analysis as testable only when evidence and ticket IDs are recorded.
+
 ### 25.7 Common errors and limits
+Section twenty-five point seven develops laboratory evidence and timeline analysis with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-five point seven, the tutor expects laboratory claims to carry owners and dates.
+
 
 - Sorting strings from different time zones.
 - Applying an administrator's guess ("a bit off") instead of an estimate from shared events.
@@ -2171,21 +2795,45 @@ You will be able to (1) choose a restore point using evidence about when comprom
 
 **Recovery time objective** (RTO): how long a service can be unavailable. **Recovery point objective** (RPO): how much data loss is tolerable, measured in time. These are business decisions, set before incidents (NIST SP 800-34 Rev. 1 covers contingency planning; SP 800-184 covers cyber-event recovery). During an incident, they become constraints on choices — but a compromise can force a restore point older than the RPO, because newer copies may contain the attacker's changes.
 
+Section twenty-six point one develops recovery and continuity decision methods with a Harbourline Health note the graduate can demo offline.
+
 ### 26.2 Choosing a restore point
 
 The restore point must precede the earliest *known* malicious change with a margin reflecting uncertainty about the earliest *actual* change. Evidence for that comes from the timeline. Snapshots after that point are suspect; replicas fed continuously from the primary are suspect from the moment the compromise began.
+
+Section twenty-six point two develops recovery and continuity decision methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-six point two, the tutor expects recovery claims to carry owners and dates.
 
 ### 26.3 Dependency order
 
 Recover in the order dependencies require: identity before applications that authenticate against it; databases before APIs; internal services before public exposure. A dependency graph (Chapter 2) gives the order; a topological sort makes it explicit.
 
+Section twenty-six point three develops recovery and continuity decision methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-six point three, the tutor expects recovery claims to carry owners and dates.
+
+Section twenty-six point three treats recovery and continuity decision methods as testable only when evidence and ticket IDs are recorded.
+
 ### 26.4 Acceptance tests
 
 Before returning a service to users, test: integrity of data (Chapter 9 checks), absence of known indicators, correct function (create/read/update test transactions), security configuration (credentials rotated, vulnerabilities fixed) and monitoring in place. The **service owner** accepts the service; the responder supplies the evidence.
 
+Section twenty-six point four develops recovery and continuity decision methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-six point four, the tutor expects recovery claims to carry owners and dates.
+
+Section twenty-six point four treats recovery and continuity decision methods as testable only when evidence and ticket IDs are recorded.
+
 ### 26.5 Fallback and monitoring
 
 Plan what happens if recovery fails: return to degraded mode, try an older copy, or keep the manual process. After return to service, monitor more intensively for a defined period with specific indicators.
+
+Section twenty-six point five develops recovery and continuity decision methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-six point five, the tutor expects recovery claims to carry owners and dates.
+
+Section twenty-six point five treats recovery and continuity decision methods as testable only when evidence and ticket IDs are recorded.
 
 ### 26.6 Worked example (synthetic): booking platform recovery
 
@@ -2202,6 +2850,12 @@ Return-to-service criterion (both): admin credentials rotated and MFA enforced; 
 Decision logic: if analysis of the 9 March sign-in clears it within the RTO, choose A; if not, choose B or A plus a scripted scan of all records changed since 9 March for indicators, with B as fallback.
 
 ### 26.7 Common errors and limits
+Section twenty-six point seven develops recovery and continuity decision methods with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-six point seven, the tutor expects recovery claims to carry owners and dates.
+
+Section twenty-six point seven treats recovery and continuity decision methods as testable only when evidence and ticket IDs are recorded.
+
 
 - Restoring the newest backup by habit.
 - Trusting replicas that mirrored the attacker's changes.
@@ -2242,17 +2896,33 @@ You will be able to (1) enumerate persistence paths across hosts and identity; (
 
 Attackers keep access through **persistence**: on hosts (services, scheduled tasks, startup items, web shells, modified binaries), in identity (added credentials, MFA methods, OAuth application consents, mailbox rules, new accounts, federation trust changes), and in the network (VPN accounts, firewall rules). Eradication that cleans the host but not identity persistence leaves the door open. MITRE ATT&CK catalogues persistence techniques and is a useful checklist source.
 
+Section twenty-seven point one develops verification of eradication and restoration with a Harbourline Health note the graduate can demo offline.
+
 ### 27.2 Verification tests
 
 A verification test should have a defined procedure, an expected result if eradication succeeded, and — critically — the possibility of failing. "Antivirus scan is clean" is weak if the antivirus missed the original intrusion. Stronger tests target the specific persistence mechanisms found and the mechanisms the attacker could plausibly have used, across independent sources.
+
+Section twenty-seven point two develops verification of eradication and restoration with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-seven point two, the tutor expects verification claims to carry owners and dates.
 
 ### 27.3 Negative evidence
 
 Absence of evidence is evidence of absence only when the search could have found the thing. A search for a malicious scheduled task across all hosts, using a tool known to enumerate tasks reliably, that finds none, is meaningful. A search on hosts whose telemetry was offline is not.
 
+Section twenty-seven point three develops verification of eradication and restoration with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-seven point three, the tutor expects verification claims to carry owners and dates.
+
 ### 27.4 Residual uncertainty and reopening triggers
 
 Verification reduces uncertainty; it rarely eliminates it. State what was tested, what was not, and the triggers that would reopen the case — for example a sign-in by a rotated credential, or traffic to known attacker infrastructure.
+
+Section twenty-seven point four develops verification of eradication and restoration with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-seven point four, the tutor expects verification claims to carry owners and dates.
+
+Section twenty-seven point four treats verification of eradication and restoration as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Worked example (synthetic): cleaned host, fresh sign-in
 
@@ -2270,6 +2940,14 @@ Reopening triggers: any sign-in from the unfamiliar address range; any helper ha
 Result (fictional): a second phone authenticator was registered on 13 March — before reimaging. Eradication was incomplete; the case reopens. Lesson: the eradication checklist must include identity, not only the host.
 
 ### 27.6 Common errors and limits
+Section twenty-seven point six develops verification of eradication and restoration with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-seven point six, the tutor expects verification claims to carry owners and dates.
+
+Section twenty-seven point six treats verification of eradication and restoration as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, Harbourline Health will not accept verification work without a written trail.
+
 
 - Equating reimaging with eradication.
 - Tests that cannot fail.
@@ -2310,17 +2988,35 @@ You will be able to (1) recognize hindsight bias and reconstruct what was knowab
 
 After an outcome is known, people judge it as more predictable than it was. Fischhoff's experiments (1975) showed that knowing an outcome raises its perceived likelihood and leads observers to overestimate what decision-makers should have foreseen. In post-incident reviews this produces the familiar verdict "the alert was obvious; the analyst should have acted". The corrective is to reconstruct, for each decision point, what the person knew, what competed for their attention and what rules they were following.
 
+Section twenty-eight point one develops analysis of missed signals and with a Harbourline Health note the graduate can demo offline.
+
 ### 28.2 Local rationality
 
 Safety science (for example Dekker's work on "just culture" and the "new view" of human error) holds that people's actions made sense to them at the time given their goals, knowledge and focus. The question becomes: *what made this action reasonable then?* The answer usually points to system conditions — alert volume, unclear ownership, missing context — that can be changed.
+
+Section twenty-eight point two develops analysis of missed signals and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-eight point two, the tutor expects analysis claims to carry owners and dates.
 
 ### 28.3 Coverage and thresholds
 
 A signal can be missed because no detection existed (coverage gap), because a detection existed but its threshold was not met, because it fired but was lost in volume, or because it reached someone without authority or context. Each has a different fix.
 
+Section twenty-eight point three develops analysis of missed signals and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-eight point three, the tutor expects analysis claims to carry owners and dates.
+
+Section twenty-eight point three treats analysis of missed signals and as testable only when evidence and ticket IDs are recorded.
+
 ### 28.4 Corrective actions
 
 Good corrective actions are specific, owned, dated and measurable: "add owner field to asset inventory for all servers; owner populated for 100% of production servers by 30 June; verified by quarterly report". Avoid actions such as "be more vigilant" or "retrain staff" without a defined change.
+
+Section twenty-eight point four develops analysis of missed signals and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-eight point four, the tutor expects analysis claims to carry owners and dates.
+
+Section twenty-eight point four treats analysis of missed signals and as testable only when evidence and ticket IDs are recorded.
 
 ### 28.5 Worked example (synthetic): an ignored alert
 
@@ -2337,6 +3033,12 @@ Conclusion: the analyst followed the rule with the information available. System
 Corrective actions: (1) owner populated for all production servers (target 100% by 30 June, quarterly check); (2) approved remote-access tool list, with alerts on others raised to medium severity; (3) closure of "administrative activity" on servers requires owner or change-ticket confirmation, with a next-business-day follow-up allowed at night; (4) review night-shift alert volume against staffing.
 
 ### 28.6 Common errors and limits
+Section twenty-eight point six develops analysis of missed signals and with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-eight point six, the tutor expects analysis claims to carry owners and dates.
+
+Section twenty-eight point six treats analysis of missed signals and as testable only when evidence and ticket IDs are recorded.
+
 
 - Blaming individuals for system conditions.
 - Counterfactual reasoning that assumes knowledge available only after the outcome.
@@ -2377,17 +3079,33 @@ You will be able to (1) define response roles and their responsibilities; (2) ma
 
 Typical roles: **triage analyst** (assess and route), **incident handler** (investigate and coordinate technical work), **incident lead/commander** (decide and coordinate across teams), **service owner** (accept changes to their service), **communications lead**, and **scribe** (record decisions). In small organizations one person holds several roles, but the roles — especially "who decides" — should still be named per incident. The FIRST CSIRT Services Framework describes the services a team offers, which helps decide which roles are needed.
 
+Section twenty-nine point one develops response operations roles and measurement with a Harbourline Health note the graduate can demo offline.
+
 ### 29.2 Queues and service objectives
 
 A **service-level objective** (SLO) states a target such as "90% of severity-2 cases receive first analyst action within 30 minutes". Queue health depends on arrival rate, handling time and staffing; when arrival exceeds capacity, waiting times grow quickly. Track backlog age, not only counts.
+
+Section twenty-nine point two develops response operations roles and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-nine point two, the tutor expects response claims to carry owners and dates.
+
+Section twenty-nine point two treats response operations roles and measurement as testable only when evidence and ticket IDs are recorded.
 
 ### 29.3 Metric validity
 
 A metric is valid if it measures what it claims and cannot be easily improved without improving the underlying reality. "Cases closed per analyst" rewards early closure; "time to first action" can be gamed by a quick placeholder note. Pair metrics (speed with quality review), and watch for definition drift — for example, severity labels changing over time, so that "severity-1 cases" in Q1 and Q3 are not the same population.
 
+Section twenty-nine point three develops response operations roles and measurement with a Harbourline Health note the graduate can demo offline.
+
 ### 29.4 Review cycle
 
 A **cadence** of reviews: daily queue review, weekly case-quality sampling, monthly metric review with trends and data-quality checks, quarterly review of corrective actions and capability gaps. Each review needs inputs, an owner and outputs (decisions, actions).
+
+Section twenty-nine point four develops response operations roles and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-nine point four, the tutor expects response claims to carry owners and dates.
+
+Section twenty-nine point four treats response operations roles and measurement as testable only when evidence and ticket IDs are recorded.
 
 ### 29.5 Worked example and lab (synthetic): changing severity labels
 
@@ -2424,6 +3142,12 @@ Mar: total 122  sev1 initial 4 final 12  upgraded to sev1 8  sev3 mean hours to 
 Interpretation: the "fall" in severity-1 is an artefact of counting *initial* labels. Final severity-1 counts are stable (12, 10, 12), but more cases are initially under-classified and upgraded later (0 → 3 → 8) — a triage-quality signal, not an improvement. Meanwhile total volume rose 22% and severity-3 waiting time grew from 6 to 9 hours, suggesting the queue is approaching capacity. Recommendations: report both initial and final severity; track the upgrade rate as a quality metric; review staffing against the arrival rate; sample upgraded cases weekly to learn why they were under-classified.
 
 ### 29.6 Common errors and limits
+Section twenty-nine point six develops response operations roles and measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section twenty-nine point six, the tutor expects response claims to carry owners and dates.
+
+Section twenty-nine point six treats response operations roles and measurement as testable only when evidence and ticket IDs are recorded.
+
 
 - Metrics that reward closing rather than resolving.
 - Comparing periods across label or definition changes.
@@ -2464,17 +3188,39 @@ You will be able to (1) design a supervised tabletop exercise with objectives an
 
 Start with **objectives** that can be observed: "the incident lead makes a containment decision within 20 minutes of the inject", "the first external statement contains no unverified claims". Set the **scope** (teams, systems, time), the **rules** (no real systems touched; facilitator controls information), and **stop conditions** (a real incident, participant distress, overrun). Pre-announce the evaluation criteria so that the exercise tests the process, not participants' ability to guess what the facilitator wants.
 
+Section thirty point one develops laboratory multi-team incident simulation with a Harbourline Health note the graduate can demo offline.
+
 ### 30.2 Injects
 
 An **inject** is a piece of scenario information delivered at a time: an alert, a phone call, a journalist's email. Design injects to force decisions at known friction points: an owner who refuses containment, a missing deputy, an ambiguous privacy question, a shift change.
+
+Section thirty point two develops laboratory multi-team incident simulation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty point two, the tutor expects laboratory claims to carry owners and dates.
+
+Section thirty point two treats laboratory multi-team incident simulation as testable only when evidence and ticket IDs are recorded.
 
 ### 30.3 Observation
 
 Observers record times, decisions, who decided, information used and communication paths, against the rubric. They do not intervene. Each observer covers one team or role.
 
+Section thirty point three develops laboratory multi-team incident simulation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty point three, the tutor expects laboratory claims to carry owners and dates.
+
+Section thirty point three treats laboratory multi-team incident simulation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, Harbourline Health will not accept laboratory work without a written trail.
+
 ### 30.4 After-action note
 
 The note compares criteria with observations, identifies strengths and gaps, and proposes corrective actions in the measurable form of Chapter 28. It is a process review, not a personal evaluation; reported individual errors should be framed as system findings unless policy requires otherwise.
+
+Section thirty point four develops laboratory multi-team incident simulation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty point four, the tutor expects laboratory claims to carry owners and dates.
+
+Section thirty point four treats laboratory multi-team incident simulation as testable only when evidence and ticket IDs are recorded.
 
 ### 30.5 Worked example (synthetic): exercise plan
 
@@ -2495,6 +3241,12 @@ Fictional observations: O1 met (7 min); O2 partly (decision at 31 min because th
 After-action corrective actions: name deputies per shift in the roster (owner: security manager, by next month); status-update template with "unknown" section and privacy check box (owner: communications lead); handoff checklist including pending decisions (owner: SOC lead). Re-test in three months with a different scenario covering the same objectives.
 
 ### 30.6 Common errors and limits
+Section thirty point six develops laboratory multi-team incident simulation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty point six, the tutor expects laboratory claims to carry owners and dates.
+
+Section thirty point six treats laboratory multi-team incident simulation as testable only when evidence and ticket IDs are recorded.
+
 
 - Objectives that cannot be observed.
 - Facilitators steering participants to the "right" answer.
@@ -2535,21 +3287,43 @@ You will be able to (1) scope a cloud incident by tenant, subscription and ident
 
 Cloud resources are organized in tenants, accounts, subscriptions or projects. An incident's scope includes the identities that can act in that scope, including external ones: guest users, partner applications, managed-service providers with delegated access. Mapping who *can* act is the first step; Chapter 6's reachability applies.
 
+Section thirty-one point one develops advanced cases in cloud and with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-one point one, the tutor expects advanced claims to carry owners and dates.
+
+Section thirty-one point one treats advanced cases in cloud and as testable only when evidence and ticket IDs are recorded.
+
 ### 31.2 Tokens and lifetimes
 
 Cloud APIs accept bearer tokens. Access tokens are usually short-lived (often around an hour); refresh tokens can last much longer and obtain new access tokens. Containment must address refresh tokens and sessions, not only passwords. Some platforms support continuous access evaluation to revoke more quickly; whether it applies depends on the service and configuration — check provider documentation.
+
+Section thirty-one point two develops advanced cases in cloud and with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-one point two, the tutor expects advanced claims to carry owners and dates.
 
 ### 31.3 Audit events and retention
 
 Cloud platforms log control-plane actions (create, delete, change permissions) and, with additional configuration or licensing, data-plane access (reading objects, mail items). Retention defaults vary and may be short. The Exchange Online case reviewed in Chapter 20 showed how detection depended on the audit logging available to the customer. Before an incident, know which events you have and for how long; during one, export and preserve them early.
 
+Section thirty-one point three develops advanced cases in cloud and with a Harbourline Health note the graduate can demo offline.
+
 ### 31.4 Shared responsibility
 
 Providers secure the underlying platform; customers secure their configurations, identities and data. In incidents the boundary determines who can investigate what: the customer cannot inspect the provider's internal systems, and the provider may not investigate customer configurations without a request. Response plans should name provider support paths and what evidence the provider can supply.
 
+Section thirty-one point four develops advanced cases in cloud and with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-one point four, the tutor expects advanced claims to carry owners and dates.
+
 ### 31.5 Recovery in the cloud
 
 Recovery may mean redeploying infrastructure from code, restoring storage from versioned or immutable backups, and re-establishing trust: rotating keys, removing unknown applications and federation settings. Attackers who gain high privilege can delete backups in the same account; separation of backup accounts is a resilience control.
+
+Section thirty-one point five develops advanced cases in cloud and with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-one point five, the tutor expects advanced claims to carry owners and dates.
+
+Section thirty-one point five treats advanced cases in cloud and as testable only when evidence and ticket IDs are recorded.
 
 ### 31.6 Worked example (synthetic): two architectures
 
@@ -2565,6 +3339,12 @@ Evidence: A — control-plane log shows key creation, but which objects were rea
 Provider-dependent assumptions: token lifetimes, revocation behaviour and log availability differ by provider and configuration; verify each in documentation before relying on them.
 
 ### 31.7 Common errors and limits
+Section thirty-one point seven develops advanced cases in cloud and with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-one point seven, the tutor expects advanced claims to carry owners and dates.
+
+Section thirty-one point seven treats advanced cases in cloud and as testable only when evidence and ticket IDs are recorded.
+
 
 - Resetting passwords while long-lived keys and refresh tokens remain.
 - Discovering during an incident that data-access logging was never enabled.
@@ -2609,13 +3389,27 @@ Many laws require notification of personal-data breaches. Under the GDPR, a cont
 
 For each possible exposure: what data types; how many people; whether access, acquisition, alteration or loss is established, suspected or ruled out; the time window; whether the data was encrypted and keys were safe; what containment was done; and the confidence of each statement. "Unknown" is a legitimate and useful answer.
 
+Section thirty-two point two develops privacy legal and communications interfaces with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-two point two, the tutor expects privacy claims to carry owners and dates.
+
 ### 32.3 Legal hold
 
 When litigation or regulatory action is reasonably anticipated, relevant records must be preserved, overriding normal deletion schedules. Responders should flag the possibility early to counsel, who issues the hold; meanwhile, avoid deleting logs, images or messages related to the incident.
 
+Section thirty-two point three develops privacy legal and communications interfaces with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-two point three, the tutor expects privacy claims to carry owners and dates.
+
+Section thirty-two point three treats privacy legal and communications interfaces as testable only when evidence and ticket IDs are recorded.
+
 ### 32.4 Stakeholder communication
 
 Internal and external messages should state confirmed facts, what is being done, what is not yet known, what people should do (if anything) and when the next update will come. Avoid speculation about attackers or motives, avoid minimizing language ("no evidence of misuse" when you have not looked), and avoid promising what you cannot verify.
+
+Section thirty-two point four develops privacy legal and communications interfaces with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-two point four, the tutor expects privacy claims to carry owners and dates.
 
 ### 32.5 Worked example (synthetic): subscriber list
 
@@ -2632,6 +3426,12 @@ Fact sheet for privacy and legal (fact-limited):
 Internal update (to clinic managers): "Our newsletter provider has told us that a file of subscriber contact details may have been accessed by an unauthorized party between 3 and 5 May. This has not been confirmed. Patient medical records are held in a different system and are not involved. We are working with the provider and our privacy officer. Please refer any questions from the public to [contact]. Next update: 8 May 12:00."
 
 ### 32.6 Common errors and limits
+Section thirty-two point six develops privacy legal and communications interfaces with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-two point six, the tutor expects privacy claims to carry owners and dates.
+
+Section thirty-two point six treats privacy legal and communications interfaces as testable only when evidence and ticket IDs are recorded.
+
 
 - Responders making notification decisions.
 - Stating "no evidence of misuse" without a search capable of finding misuse.
@@ -2673,25 +3473,59 @@ You will be able to (1) define an outcome and an estimand for a response study; 
 
 An **outcome** is a measured variable per case (for example hours to containment, or whether data loss occurred). An **estimand** is the exact quantity you intend to estimate: "the difference in median hours to containment between severity-2 phishing cases handled under playbook B and those handled under playbook A, among cases opened in 2026". Writing the estimand first prevents switching measures after seeing results.
 
+Section thirty-three point one develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
 ### 33.2 Comparison groups
 
 Before/after comparisons confound the playbook with everything else that changed over time. Better options when randomization is impossible: concurrent comparison (some teams adopt first), interrupted time series with several pre- and post-periods, or difference-in-differences against a group that did not change. Each has assumptions you must state.
+
+Section thirty-three point two develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-three point two, the tutor expects research claims to carry owners and dates.
 
 ### 33.3 Selection bias
 
 If only some cases are handled with the new playbook (for example, analysts choose it for easy cases), the comparison is biased. Assignment rules and their adherence must be recorded.
 
+Section thirty-three point three develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-three point three, the tutor expects research claims to carry owners and dates.
+
+Section thirty-three point three treats research methods incident outcome measurement as testable only when evidence and ticket IDs are recorded.
+
 ### 33.4 Data quality
 
 Check completeness, consistency of definitions over time, timestamp sources and label drift (Chapters 15 and 29). Report the share of cases excluded and why.
+
+Section thirty-three point four develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-three point four, the tutor expects research claims to carry owners and dates.
+
+Section thirty-three point four treats research methods incident outcome measurement as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Harbourline Health will not accept research work without a written trail.
 
 ### 33.5 Pre-specification and robustness
 
 Write exclusions (for example, merged cases, test cases), the primary analysis and planned robustness checks (alternative outcome definition, excluding a holiday month, handling missing values) before analysis. Robustness checks show whether the conclusion depends on arbitrary choices.
 
+Section thirty-three point five develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-three point five, the tutor expects research claims to carry owners and dates.
+
+Section thirty-three point five treats research methods incident outcome measurement as testable only when evidence and ticket IDs are recorded.
+
 ### 33.6 Ethics
 
 Outcome studies use case records containing personal data and analyst performance data. Minimize and pseudonymize; report aggregates; obtain approval where required (Chapter 18).
+
+Section thirty-three point six develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-three point six, the tutor expects research claims to carry owners and dates.
+
+Section thirty-three point six treats research methods incident outcome measurement as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point six, Harbourline Health will not accept research work without a written trail.
 
 ### 33.7 Worked example and lab (synthetic): before and after a playbook
 
@@ -2735,6 +3569,14 @@ Interpretation: the naive before/after suggests the playbook cut 1.9 hours. But 
 Defensible conclusion: "Compared with a team that did not adopt it, the team using playbook B reduced median containment time by about 0.6 hours more over three months, assuming both teams would otherwise have followed similar trends; the pre-adoption trends were not exactly parallel, and this is not a randomized comparison."
 
 ### 33.8 Common errors and limits
+Section thirty-three point eight develops research methods incident outcome measurement with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-three point eight, the tutor expects research claims to carry owners and dates.
+
+Section thirty-three point eight treats research methods incident outcome measurement as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point eight, Harbourline Health will not accept research work without a written trail.
+
 
 - Reporting before/after differences as effects.
 - Choosing the outcome after seeing results.
@@ -2775,21 +3617,51 @@ You will be able to (1) define decision criteria and weights for comparing respo
 
 Choose criteria that matter to the organization and can be assessed: time to containment, risk of service disruption, evidence preserved, number of handoffs, privacy intrusion, reliance on scarce skills. Define each with a scale and a method (simulation result, expert judgement, document review). Weights express priorities; agree them with stakeholders *before* scoring.
 
+Section thirty-four point one develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point one, the tutor expects comparative claims to carry owners and dates.
+
 ### 34.2 Scenario selection
 
 A single scenario favours whichever strategy fits it. Use a small set that varies the factors that differentiate strategies: a fast-moving ransomware case, a slow credential-abuse case, a vendor-hosted incident, an incident during a critical clinical period.
+
+Section thirty-four point two develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point two, the tutor expects comparative claims to carry owners and dates.
+
+Section thirty-four point two treats comparative project response strategy evaluation as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Evidence strength
 
 Grade each score: *measured* (from a simulation or data), *documented* (from a written procedure, not tested), *judged* (expert opinion). A matrix full of judged scores should be presented as an informed opinion, not a measurement.
 
+Section thirty-four point three develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point three, the tutor expects comparative claims to carry owners and dates.
+
+Section thirty-four point three treats comparative project response strategy evaluation as testable only when evidence and ticket IDs are recorded.
+
 ### 34.4 Trade-offs and sensitivity
 
 Weighted totals hide trade-offs. Show the profile per criterion, then vary weights within plausible ranges to see whether the ranking changes (Chapter 24's sensitivity idea).
 
+Section thirty-four point four develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point four, the tutor expects comparative claims to carry owners and dates.
+
+Section thirty-four point four treats comparative project response strategy evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point four, Harbourline Health will not accept comparative work without a written trail.
+
 ### 34.5 Counterexamples
 
 For the recommended strategy, construct a scenario where it performs worse. If you cannot, you probably have not stressed it enough. Report the counterexample and how the organization would manage it.
+
+Section thirty-four point five develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point five, the tutor expects comparative claims to carry owners and dates.
+
+Section thirty-four point five treats comparative project response strategy evaluation as testable only when evidence and ticket IDs are recorded.
 
 ### 34.6 Worked example (synthetic): two playbooks, one service
 
@@ -2811,7 +3683,21 @@ Averaged over scenarios, weighted totals: P-Fast = 0.35×5 + 0.30×(7/3) + 0.15�
 
 Question and criteria; scenarios and why; methods for each score with evidence grade; results profile and totals; sensitivity; counterexamples; recommendation; limitations (judged scores, simulation realism, small scenario set).
 
+Section thirty-four point seven develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point seven, the tutor expects comparative claims to carry owners and dates.
+
+Section thirty-four point seven treats comparative project response strategy evaluation as testable only when evidence and ticket IDs are recorded.
+
 ### 34.8 Common errors and limits
+Section thirty-four point eight develops comparative project response strategy evaluation with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-four point eight, the tutor expects comparative claims to carry owners and dates.
+
+Section thirty-four point eight treats comparative project response strategy evaluation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point eight, Harbourline Health will not accept comparative work without a written trail.
+
 
 - Weights chosen after scoring.
 - Single-scenario evaluation.
@@ -2852,21 +3738,47 @@ You will be able to (1) write a capstone question and objectives that can be ach
 
 A bachelor's capstone demonstrates that you can apply the discipline's foundations to a bounded problem, make defensible judgements, and report honestly. It is not an original research contribution (doctoral level) nor a full engineered system (engineering level). A good capstone in this course improves one part of an incident workflow and shows, with evidence, whether the improvement worked under stated conditions.
 
+Section thirty-five point one develops capstone proposal and ethical review with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-five point one, the tutor expects capstone claims to carry owners and dates.
+
 ### 35.2 Question and objectives
 
 The question must be answerable in the time available with the data you can legitimately obtain. Objectives are concrete deliverables: "a configured intake workflow", "a test suite of 12 synthetic cases", "an evaluation report". Each objective links to a success criterion.
+
+Section thirty-five point two develops capstone proposal and ethical review with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-five point two, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-five point two treats capstone proposal and ethical review as testable only when evidence and ticket IDs are recorded.
 
 ### 35.3 Data plan
 
 State the data sources (synthetic cases you build, public datasets with licences, organizational data only with written authorization), storage and access, retention and deletion at project end. Default to synthetic data: it removes most ethical risk and makes your work reproducible.
 
+Section thirty-five point three develops capstone proposal and ethical review with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-five point three, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-five point three treats capstone proposal and ethical review as testable only when evidence and ticket IDs are recorded.
+
 ### 35.4 Authorization and ethics
 
 If any real organization or person is involved — even as a stakeholder interviewee or tabletop participant — you need permission from the organization, informed consent from participants and, if your institution requires it, ethics approval. Never test or scan real systems without written authorization from their owner.
 
+Section thirty-five point four develops capstone proposal and ethical review with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-five point four, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-five point four treats capstone proposal and ethical review as testable only when evidence and ticket IDs are recorded.
+
 ### 35.5 Success criteria and rubric
 
 Success criteria are measurable thresholds agreed before implementation: "all 12 test cases produce a complete intake record with no manual re-entry", "median intake time under 6 minutes in the tabletop". The rubric describes how the work will be graded: question and method, implementation quality, evidence and evaluation, ethics and documentation, communication.
+
+Section thirty-five point five develops capstone proposal and ethical review with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-five point five, the tutor expects capstone claims to carry owners and dates.
 
 ### 35.6 Worked example (synthetic): improving intake
 
@@ -2881,6 +3793,12 @@ Ethics checklist: consent with withdrawal right; no grading consequence for volu
 Success criteria: completeness ≥ 90% with the form vs baseline; routing accuracy ≥ 90%; reporter time not more than 2 minutes longer than email.
 
 ### 35.7 Common errors and limits
+Section thirty-five point seven develops capstone proposal and ethical review with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-five point seven, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-five point seven treats capstone proposal and ethical review as testable only when evidence and ticket IDs are recorded.
+
 
 - Questions too large for the time.
 - Plans that depend on access to real organizational data not yet authorized.
@@ -2921,21 +3839,47 @@ You will be able to (1) prepare a supervised exercise with a community or small 
 
 Small organizations — charities, community clinics, schools — face the same incident types as large ones with far fewer resources. A supervised tabletop gives them a low-cost rehearsal and gives you experience with real stakeholders, real constraints and real communication challenges.
 
+Section thirty-six point one develops community or field response practice with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-six point one, the tutor expects community claims to carry owners and dates.
+
+Section thirty-six point one treats community or field response practice as testable only when evidence and ticket IDs are recorded.
+
 ### 36.2 Consent and scope
 
 Agree in writing with the host: objectives, participants, duration, what will and will not be discussed, that no live systems will be accessed, that no personal or sensitive security details will be recorded, who receives the after-action note, and that your supervisor is responsible. Participants consent individually and may leave at any time.
+
+Section thirty-six point two develops community or field response practice with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-six point two, the tutor expects community claims to carry owners and dates.
 
 ### 36.3 Avoiding private live data
 
 The exercise uses a fictional scenario adapted to the host's type of work. If participants reveal real weaknesses ("our admin password is on a sticky note"), do not record specifics; record the general improvement ("credential storage practice to review") and tell the host contact privately if appropriate.
 
+Section thirty-six point three develops community or field response practice with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-six point three, the tutor expects community claims to carry owners and dates.
+
 ### 36.4 Observation and feedback
 
 Use simple observable objectives (who would you call; how would you tell clients; where are backups). Collect feedback with a short anonymous form: usefulness, clarity, what to change.
 
+Section thirty-six point four develops community or field response practice with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-six point four, the tutor expects community claims to carry owners and dates.
+
+Section thirty-six point four treats community or field response practice as testable only when evidence and ticket IDs are recorded.
+
 ### 36.5 Reflection
 
 Write a reflective note: what you planned, what happened, what you learned about facilitation, communication and your own assumptions, and what you would change. Reflection is part of professional development and is assessed in this course.
+
+Section thirty-six point five develops community or field response practice with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-six point five, the tutor expects community claims to carry owners and dates.
+
+Section thirty-six point five treats community or field response practice as testable only when evidence and ticket IDs are recorded.
 
 ### 36.6 Worked example (synthetic): a community food bank
 
@@ -2950,6 +3894,14 @@ Observations (fictional): no one knew who administers the database; the director
 Reflection excerpt (student): "I prepared too many technical injects; the most valuable discussion was who to call. I also caught myself recording a volunteer's comment about password reuse with her name — I removed the name and wrote a general note."
 
 ### 36.7 Common errors and limits
+Section thirty-six point seven develops community or field response practice with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-six point seven, the tutor expects community claims to carry owners and dates.
+
+Section thirty-six point seven treats community or field response practice as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point seven, Harbourline Health will not accept community work without a written trail.
+
 
 - Turning an exercise into an unauthorized security assessment.
 - Recording sensitive real details.
@@ -2990,17 +3942,39 @@ You will be able to (1) assess the sources in a case dossier; (2) generate alter
 
 Critique tests whether a conclusion survives scrutiny. It is directed at claims and evidence, not at people. A dossier that survives critique is stronger; one that changes is better. Professional peer review in incident response (for example, a second analyst checking a timeline before a report goes to management) serves the same purpose.
 
+Section thirty-seven point one develops evidence-review and case-critique seminar with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-seven point one, the tutor expects evidence-review claims to carry owners and dates.
+
 ### 37.2 A critique protocol
 
 For each conclusion: (1) Which evidence supports it, and what grade is that evidence? (2) Which transformations sit between source and claim, and are they reproducible? (3) What alternative explanations exist, and were they tested? (4) Is the wording calibrated to the evidence? (5) What single piece of additional evidence would most change the conclusion?
+
+Section thirty-seven point two develops evidence-review and case-critique seminar with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-seven point two, the tutor expects evidence-review claims to carry owners and dates.
 
 ### 37.3 Leading the seminar
 
 The leader assigns roles: presenter, two critics, a scribe. Presenter states conclusions (5 minutes); critics apply the protocol (10 minutes); presenter responds (5 minutes); scribe records agreed revisions. Rules: cite page or line; no ad hominem; disagreements are recorded rather than forced to consensus.
 
+Section thirty-seven point three develops evidence-review and case-critique seminar with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-seven point three, the tutor expects evidence-review claims to carry owners and dates.
+
+Section thirty-seven point three treats evidence-review and case-critique seminar as testable only when evidence and ticket IDs are recorded.
+
 ### 37.4 Revision
 
 The presenter revises: changes wording, adds tests, or withdraws conclusions. A revision log shows what changed and why.
+
+Section thirty-seven point four develops evidence-review and case-critique seminar with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-seven point four, the tutor expects evidence-review claims to carry owners and dates.
+
+Section thirty-seven point four treats evidence-review and case-critique seminar as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Harbourline Health will not accept evidence-review work without a written trail.
 
 ### 37.5 Worked example (synthetic): two dossiers, same events
 
@@ -3015,6 +3989,12 @@ Dossier 2 is better calibrated, but critics note that "likely account takeover" 
 Revised Dossier 1 conclusion: "Likely account takeover of `fin-04` (MFA method added 07:41 after sign-in from an unrecognized session; user denies activity). During the session, an export of 1,820 supplier rows and a view of a stored supplier credential were recorded. Whether the export left the organization and whether these actions were the attacker's or the user's is not established."
 
 ### 37.6 Common errors and limits
+Section thirty-seven point six develops evidence-review and case-critique seminar with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-seven point six, the tutor expects evidence-review claims to carry owners and dates.
+
+Section thirty-seven point six treats evidence-review and case-critique seminar as testable only when evidence and ticket IDs are recorded.
+
 
 - Critiquing style instead of claims.
 - Accepting the presenter's framing of alternatives.
@@ -3055,17 +4035,41 @@ You will be able to (1) implement a small case workflow as explicit states and t
 
 A case moves through states — *new*, *triaged*, *contained*, *recovered*, *closed* — by transitions with rules: who may perform them and what must exist first. Modelling the workflow as a state machine (Chapter 6) makes rules testable and violations visible.
 
+Section thirty-eight point one develops capstone implementation of response workflow with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-eight point one, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point one treats capstone implementation of response workflow as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Access gates
 
 Some transitions need specific authority: containment of production systems requires the incident lead; closure requires the service owner's acceptance. A gate checks the actor's role and records the decision either way.
+
+Section thirty-eight point two develops capstone implementation of response workflow with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-eight point two, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point two treats capstone implementation of response workflow as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Evidence store
 
 Attach evidence by reference with a hash (Chapter 17) and record who attached it and when. The store is append-only: corrections add new entries rather than editing old ones.
 
+Section thirty-eight point three develops capstone implementation of response workflow with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-eight point three, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point three treats capstone implementation of response workflow as testable only when evidence and ticket IDs are recorded.
+
 ### 38.4 Tests and rollback
 
 Test normal paths, forbidden transitions, unauthorized actors and missing evidence. Rollback means reverting a state change by a new, recorded transition (for example *contained → triaged* when containment is lifted), never by deleting history.
+
+Section thirty-eight point four develops capstone implementation of response workflow with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-eight point four, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point four treats capstone implementation of response workflow as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Worked example and lab (synthetic): minimal workflow
 
@@ -3140,6 +4144,14 @@ final state: closed | log entries: 10 | denied: 3
 Interpretation: the gates work for the tested paths: an analyst cannot contain, containment needs evidence, an engineer cannot close. The rollback (*contained → triaged*) is a recorded transition. The log keeps denied attempts — they are evidence about the process. Limits: roles are passed in by the caller and not authenticated (a real system must verify identity); "any evidence" satisfies the evidence rule (a stricter rule would require specific evidence types); and the log is in memory, not tamper-evident storage.
 
 ### 38.6 Common errors and limits
+Section thirty-eight point six develops capstone implementation of response workflow with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-eight point six, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-eight point six treats capstone implementation of response workflow as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point six, Harbourline Health will not accept capstone work without a written trail.
+
 
 - Testing only the happy path.
 - Deleting history to "undo" a mistake.
@@ -3180,17 +4192,45 @@ You will be able to (1) evaluate a capstone against pre-specified acceptance cri
 
 Evaluate against the criteria written in the proposal, not new ones chosen after seeing results. If a criterion proved poorly defined, report it as defined, then add a clearly labelled post-hoc analysis.
 
+Section thirty-nine point one develops capstone evaluation against explicit criteria with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-nine point one, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point one treats capstone evaluation against explicit criteria as testable only when evidence and ticket IDs are recorded.
+
 ### 39.2 Baseline
 
 Compare with the baseline (the old process, or the workflow without the change). Without a baseline, "90% complete" has no meaning.
+
+Section thirty-nine point two develops capstone evaluation against explicit criteria with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-nine point two, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point two treats capstone evaluation against explicit criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point two, Harbourline Health will not accept capstone work without a written trail.
 
 ### 39.3 Error analysis
 
 Classify failures: wrong routing, missing field, unauthorized action allowed, legitimate action denied, handoff lost. For each class, find the cause: design, configuration, test case, participant misunderstanding. Error analysis is often more valuable than the headline number.
 
+Section thirty-nine point three develops capstone evaluation against explicit criteria with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-nine point three, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point three treats capstone evaluation against explicit criteria as testable only when evidence and ticket IDs are recorded.
+
 ### 39.4 Repeatability
 
 Rerun the test suite with a fresh environment and, if possible, a different operator. Report whether results match exactly and explain differences.
+
+Section thirty-nine point four develops capstone evaluation against explicit criteria with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-nine point four, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point four treats capstone evaluation against explicit criteria as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Harbourline Health will not accept capstone work without a written trail.
 
 ### 39.5 Worked example and lab (synthetic): handoff tests
 
@@ -3239,6 +4279,12 @@ form errors: ['T03:routing rule gap', 'T06:free-text overflow']
 Interpretation: the form greatly improves completeness (0.50 → 0.875) and halves median time to triage (13 → 6 minutes), but it does **not** meet the pre-specified 90% thresholds for completeness or routing. Error analysis identifies two specific causes: a routing rule missing for T03's case type, and T06's reporter writing system details into a free-text field that overflowed. Both are fixable, but the honest result is "criteria not met in this run". Note also: 8 cases per arm is small; one case is 12.5 percentage points. Repeatability: rerun after fixes with the *same* cases would test the fixes but risks tuning to the test set; add new cases for the re-evaluation.
 
 ### 39.6 Common errors and limits
+Section thirty-nine point six develops capstone evaluation against explicit criteria with a Harbourline Health note the graduate can demo offline.
+
+Under section thirty-nine point six, the tutor expects capstone claims to carry owners and dates.
+
+Section thirty-nine point six treats capstone evaluation against explicit criteria as testable only when evidence and ticket IDs are recorded.
+
 
 - Changing criteria after the fact.
 - Reporting only the headline improvement.
@@ -3279,21 +4325,43 @@ You will be able to (1) structure a bachelor's thesis around an evidence chain; 
 
 A compact structure: (1) introduction — problem, question, why it matters; (2) background — concepts and prior work with citations; (3) method — design, materials, data plan, ethics, criteria; (4) implementation — what was built, with configuration in an appendix; (5) results — against each criterion, with error analysis; (6) discussion — interpretation, comparison with expectations and literature, limitations with direction; (7) conclusion — what was shown, under which conditions; (8) future work. Appendices hold code, test cases and raw outputs.
 
+Section forty point one develops thesis and presentation of incident with a Harbourline Health note the graduate can demo offline.
+
 ### 40.2 The evidence chain
 
 Every claim in the conclusion should trace to results, which trace to data, which trace to method. A simple results-to-claims table — claim, supporting result, evidence location, strength, limitation — keeps the chain visible and is an excellent defense aid.
+
+Section forty point two develops thesis and presentation of incident with a Harbourline Health note the graduate can demo offline.
+
+Under section forty point two, the tutor expects thesis claims to carry owners and dates.
+
+Section forty point two treats thesis and presentation of incident as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Visual explanation
 
 Figures should make the comparison the reader needs easy: side-by-side bars for completeness by method with counts labelled; timelines with uncertainty marked; workflow diagrams with gates. Avoid truncated axes that exaggerate differences, 3D effects and colour as the only encoding (accessibility). Every figure has a caption that states what it shows and its source.
 
+Section forty point three develops thesis and presentation of incident with a Harbourline Health note the graduate can demo offline.
+
+Under section forty point three, the tutor expects thesis claims to carry owners and dates.
+
 ### 40.4 The defense
 
 Examiners ask about the question's relevance, the method's choices, the validity of the results and the honesty of limitations. Prepare a question bank: "Why synthetic data?", "Why these criteria?", "What if your reference answers were wrong?", "What would you do with another semester?" Answer directly, concede valid points, and distinguish what the evidence shows from what you believe.
 
+Section forty point four develops thesis and presentation of incident with a Harbourline Health note the graduate can demo offline.
+
+Under section forty point four, the tutor expects thesis claims to carry owners and dates.
+
 ### 40.5 Revisions and future work
 
 Record examiners' comments and your changes in a revision table. Future work should be specific and follow from limitations: "repeat with 16 held-out cases written by a second author", not "do more research".
+
+Section forty point five develops thesis and presentation of incident with a Harbourline Health note the graduate can demo offline.
+
+Under section forty point five, the tutor expects thesis claims to carry owners and dates.
+
+Section forty point five treats thesis and presentation of incident as testable only when evidence and ticket IDs are recorded.
 
 ### 40.6 Worked example (synthetic): thesis summary and defense
 
@@ -3308,6 +4376,12 @@ Defense exchange (fictional): Examiner: "Your criteria were not met. Is the proj
 Revision table entry: comment "the figure's y-axis starts at 40%" → change: axis from 0% with counts labelled; reason: avoid exaggeration.
 
 ### 40.7 Common errors and limits
+Section forty point seven develops thesis and presentation of incident with a Harbourline Health note the graduate can demo offline.
+
+Under section forty point seven, the tutor expects thesis claims to carry owners and dates.
+
+Section forty point seven treats thesis and presentation of incident as testable only when evidence and ticket IDs are recorded.
+
 
 - Conclusions larger than the evidence chain.
 - Figures that distort.
