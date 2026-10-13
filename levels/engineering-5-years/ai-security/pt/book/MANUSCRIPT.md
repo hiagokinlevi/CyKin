@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 50 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3; os capítulos 16–50 (EX046–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–19 de 50 já estão escritos em português, com os exercícios EX001–EX057 e suas resoluções com rubricas de 0 a 3; os capítulos 20–50 (EX058–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança que vão especificar, construir, verificar e operar sistemas com IA que resistam a ataques e falhem de forma segura.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/ai-security/en/book/MANUSCRIPT.md) é mais amplo e menos voltado ao projeto; o [livro de pós-graduação](../../../../postgraduate-2-years/ai-security/en/book/MANUSCRIPT.md) pressupõe experiência profissional. **Este livro ensina a segurança de IA como uma disciplina de engenharia**: fundamentos de matemática e computação, requisitos, arquitetura, controles, medição, confiabilidade, safety, operações e um projeto final com dossiê de evidências e defesa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) |
 
-Capítulos 16–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 20–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-20), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -836,11 +836,228 @@ Os fundamentos de segurança se aplicam diretamente à IA: CIA para novos ativos
 
 [← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o modelo em V da engenharia de sistemas a sistemas com IA; (2) decompor requisitos de sistema em requisitos de componentes com métodos de verificação; (3) gerenciar interfaces e comportamento emergente; e (4) usar análise de perigos que inclua modos de falha de IA.
+
+### 16.1 O modelo em V
+
+A engenharia de sistemas desce das necessidades das partes interessadas para os requisitos de sistema, a arquitetura, o projeto de componentes e a implementação, e depois sobe pela verificação de componentes, pelos testes de integração, pela verificação do sistema e pela validação contra as necessidades. Todo requisito do lado esquerdo tem uma atividade de verificação do lado direito. Componentes de IA se encaixam nisso, mas precisam de métodos de verificação estatísticos (taxas com intervalos) em vez de testes únicos de aprovado/reprovado. Uma aprovação do TrackEye é uma taxa declarada com um intervalo, medida em um conjunto de teste nomeado, e não uma única saída correta.
+
+### 16.2 Decomposição de requisitos
+
+Um requisito de sistema como "defeitos de trilho maiores que 10 mm são detectados com probabilidade ≥ 0,98 em todas as condições de operação" se decompõe em requisitos de câmera, iluminação, modelo, alerta e revisão humana. A parcela do modelo poderia ser "taxa de falsos negativos ≤ 1,5% em cada estrato de condição, com limite superior de 95%", deixando margem para os outros componentes. A divisão é um orçamento. Se o modelo pode deixar passar 1,5%, a etapa de revisão humana e a cadeia de alertas precisam manter suas próprias perdas pequenas o bastante para que a cadeia inteira ainda atinja 0,98. O requisito de cada componente nomeia sua parcela e como será verificado, de modo que uma falta em um ponto fica visível e pode ser compensada em outro, em vez de ser descoberta no fim.
+
+### 16.3 Interfaces e emergência
+
+Interfaces carregam premissas: o modelo pressupõe imagens com certa resolução e exposição; o sistema de alertas pressupõe que a confiança do modelo está calibrada. O comportamento emergente surge quando componentes interagem — por exemplo, um agente LLM que combina duas ferramentas inofensivas para produzir um efeito danoso. Documentos de controle de interface devem declarar formatos de dados, níveis de confiança e comportamento em falha. Quando o fornecedor da câmera troca um sensor, o documento de interface diz à equipe quais premissas do modelo testar de novo. Para agentes, o dano emergente é encontrado revisando combinações de ferramentas, não ferramentas isoladas: ler um documento e enviar um e-mail são inofensivos cada um, mas juntos podem vazar o documento.
+
+### 16.4 Análise de perigos
+
+Técnicas como a análise de modos de falha e efeitos (FMEA) e a análise de processos teórica de sistemas (STPA) procuram as maneiras pelas quais o sistema pode atingir estados perigosos. Acrescente os modos de falha de IA: mudança de distribuição, entradas adversariais, envenenamento, excesso de confiança, uso inseguro de ferramentas. O foco da STPA em ações de controle inseguras se encaixa naturalmente em agentes que emitem comandos. A FMEA trabalha de baixo para cima, a partir das falhas de componentes, e serve à cadeia de percepção do TrackEye. A STPA trabalha de cima para baixo, a partir dos perigos, perguntando quais ações de controle seriam inseguras se executadas, omitidas, executadas no momento errado ou por tempo demais. Para o Wrench, uma ação insegura é uma ordem de serviço enviada ao ativo errado, e a STPA pergunta o que levaria o agente a emiti-la.
+
+### 16.5 Exemplo resolvido (caso sintético da NRS)
+
+Sam preencheu uma linha de FMEA para o TrackEye: modo de falha "defeito não detectado sob ofuscamento"; efeito "defeito não detectado até a próxima passagem"; causa "mudança de distribuição"; detecção "monitoramento do estrato do amanhecer"; severidade 9, ocorrência 4, detecção 5, número de prioridade de risco 180. Uma segunda linha, para "marcação adversarial", teve severidade 9, ocorrência 2, detecção 7 (difícil de detectar), RPN 126. Ambas excederam o limiar de ação de 100. A linha da marcação tem pontuação total menor porque a ocorrência é rara, mas sua pontuação de detecção é pior, já que ninguém monitora padrões deliberados. Exceder 100 dispara ação para as duas linhas, mas as ações diferem: melhores dados do amanhecer para uma, um método de detecção para a outra. Sam registra a base das pontuações, já que a ocorrência de ataques é uma estimativa.
+
+### 16.6 Erros e limites
+
+Três erros são comuns: requisitos para componentes de IA sem métodos de verificação estatísticos; interfaces que não declaram níveis de confiança; e análises de perigos que ignoram o ataque deliberado. Um requisito como "o modelo detecta defeitos" não pode ser verificado, porque nenhum teste finito o prova; uma taxa com um limite pode. Interfaces sem níveis de confiança deixam texto não confiável fluir para componentes privilegiados sem que ninguém perceba. Análises de perigos que consideram apenas falhas aleatórias deixam de lado os casos em que alguém procura de propósito a pior entrada, o que costuma ser muito pior do que o caso típico que a análise pressupôs.
+
+### Exercícios
+
+- **EX046 — Decomponha.** Decomponha "o Wrench não deve criar ordens de serviço não autorizadas" em três requisitos de componentes. Rubrica: 3 = aplicação de política, confirmação, escopo da ferramenta/registro em log, cada um verificável; 2 = dois; 1 = vago; 0 = nenhum.
+- **EX047 — RPN.** Calcule o RPN para severidade 8, ocorrência 3, detecção 6 e diga se excede 100. Rubrica: 3 = 144, sim; 2 = deslize aritmético; 1 = método; 0 = nenhum.
+- **EX048 — Emergência.** Dê um exemplo de dano emergente a partir de duas ferramentas seguras isoladamente. Rubrica: 3 = cadeia plausível (por exemplo, a busca recupera dados + a ferramenta de e-mail os envia); 2 = cadeia vaga; 1 = ferramenta única; 0 = nenhum.
+
+### Síntese
+
+A engenharia de sistemas dá à segurança de IA uma espinha dorsal: requisitos decompostos e verificáveis, interfaces explícitas e análise de perigos que inclui falhas acidentais e adversariais.
+
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever controle em malha aberta e fechada, realimentação, ganho e estabilidade; (2) reconhecer laços de realimentação em sistemas de IA (retreino sobre as próprias saídas, laços de recomendação, agentes agindo sobre os próprios resultados); (3) explicar como adversários exploram a realimentação; e (4) projetar envelopes de operação segura e intertravamentos para controle conduzido por IA.
+
+### 17.1 Realimentação e estabilidade
+
+Um controlador em malha fechada mede a saída, compara-a com um alvo e ajusta a entrada. O ganho determina a intensidade da reação; ganho demais causa oscilação ou instabilidade, ganho de menos causa resposta lenta. Atrasos na malha tornam a instabilidade mais provável. Um termostato é uma malha conhecida: ele mede a temperatura do ambiente e liga ou desliga o aquecimento. Se reage a cada pequena flutuação, o aquecimento alterna rapidamente; se reage devagar demais, o ambiente oscila entre quente e frio. O atraso piora os dois casos, porque o controlador age sobre informações que já estão desatualizadas. Os mesmos compromissos aparecem onde quer que um sistema se ajuste a partir dos próprios resultados, inclusive no ajuste automático de limiares.
+
+### 17.2 Laços de realimentação em sistemas de IA
+
+Sistemas de IA frequentemente formam laços: as decisões de um modelo mudam os dados sobre os quais ele será retreinado depois; um modelo de anomalias cujos alertas disparam manutenção nunca vê o que teria acontecido sem a manutenção; um agente observa os resultados das próprias chamadas de ferramentas e planeja novas ações. Laços podem amplificar pequenos erros — e amplificar a influência de um atacante. Se atacantes conseguem injetar dados que são realimentados no treinamento (por exemplo, um "joinha" de usuário em respostas manipuladas), podem conduzir o modelo ao longo do tempo; esse é um caminho de envenenamento (OWASP LLM04).
+
+### 17.3 Envelopes de operação segura
+
+Engenheiros de controle limitam os comandos dos atuadores, limitam a taxa das mudanças e acrescentam intertravamentos que se sobrepõem ao controlador quando as medições saem de uma região segura. Aplique o mesmo à IA: limite as ações que um agente pode executar por hora, exija aprovação humana fora de um envelope e acrescente verificações independentes (um monitor simples baseado em regras) que possam vetar o modelo. O monitor baseado em regras é deliberadamente simples, para que falhe de maneiras diferentes das do modelo. Uma regra como "no máximo cinco ordens de serviço por hora a partir de uma sessão" pega o comportamento descontrolado independentemente do motivo pelo qual o modelo o produziu. Os envelopes são escritos a partir de dados de operação: a faixa normal de ações observadas, com uma margem, e um responsável explícito que aprova as mudanças.
+
+### 17.4 Laços de monitoramento
+
+Monitore a distribuição das entradas, a distribuição das saídas e as taxas de resultado. Mudanças súbitas podem indicar deriva ou ataque; deriva lenta pode indicar um laço de realimentação. Mantenha um conjunto de dados de referência que não seja influenciado pelo modelo para medir o desempenho real. Um conjunto de referência é rotulado de forma independente e mantido longe do treinamento e do ajuste. Medir o modelo nele em intervalos mostra o desempenho real, mesmo quando a realimentação de produção está enviesada pelas próprias decisões do modelo. Monitorar as taxas de resultado também exige cuidado: se a manutenção segue todo alerta, o sistema nunca vê diretamente as falhas perdidas, então os engenheiros amostram casos sem alerta para inspeção, a fim de estimá-las.
+
+### 17.5 Exemplo resolvido (caso sintético da NRS)
+
+Os limiares do Pulse eram reajustados automaticamente toda semana a partir da avaliação dos técnicos sobre os alertas. Uma equipe terceirizada, sob pressão de prazo, marcou muitos alertas verdadeiros como "alarme falso"; ao longo de seis semanas, o limiar subiu e a taxa de verdadeiros positivos caiu de 92% para 78% no conjunto de referência. Sam substituiu o reajuste automático por uma atualização limitada (no máximo 2% de mudança no limiar por semana), uma verificação no conjunto de referência antes de cada mudança e a revisão da avaliação de qualquer equipe cuja avaliação divergisse fortemente das demais. Sem o conjunto de referência, o declínio teria parecido uma melhora, já que menos alertas estavam sendo gerados.
+
+### 17.6 Erros e limites
+
+Três erros são comuns: retreinar sobre dados influenciados pelo modelo sem uma referência limpa; atualizações automáticas sem limite; e agentes sem orçamento de ações. Retreinar sobre dados moldados pelas próprias decisões do modelo pode cristalizar seus erros, porque os casos que ele deixou passar nunca voltam como exemplos. Atualizações sem limite deixam que algumas entradas enviesadas desloquem o sistema para longe antes que alguém perceba. Agentes sem orçamento de ações podem repetir uma ação danosa muitas vezes nos minutos que antecedem a revisão do log por um humano. Cada erro é um limite ausente em um laço de realimentação, e cada correção é um limite que não depende de o modelo estar certo.
+
+### Exercícios
+
+- **EX049 — Laços.** Identifique dois laços de realimentação no Wrench. Rubrica: 3 = dois laços plausíveis (avaliações → ajuste fino; agente observando resultados de ferramentas) com riscos; 2 = um; 1 = vago; 0 = nenhum.
+- **EX050 — Envelope.** Proponha três limites de envelope para um agente que cria ordens de serviço. Rubrica: 3 = teto por período, aprovação fora do escopo, veto/monitor independente; 2 = dois; 1 = um; 0 = nenhum.
+- **EX051 — Correção do Pulse.** Explique por que o conjunto de referência é essencial na correção de Sam. Rubrica: 3 = ele não é influenciado pela avaliação e revela o declínio real do desempenho; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+A realimentação torna os sistemas adaptativos e também exploráveis. Atualizações limitadas, referências limpas, envelopes de ação e intertravamentos independentes mantêm os laços de IA estáveis sob ataque.
+
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar princípios de arquitetura (menor privilégio, separação de funções, mediação completa, padrões seguros em falha, defesa em profundidade) a sistemas de IA; (2) definir fronteiras de confiança para modelos, dados e ferramentas; (3) projetar uma arquitetura de referência para um agente LLM; e (4) documentar decisões de arquitetura com ameaças e risco residual.
+
+### 18.1 Princípios
+
+Os princípios clássicos de Saltzer e Schroeder continuam valendo. *Menor privilégio*: o modelo e suas ferramentas recebem apenas as permissões necessárias. *Mediação completa*: toda ação é verificada por um ponto de política, todas as vezes. *Padrões seguros em falha*: negar, a menos que explicitamente permitido. *Separação de funções*: o componente que propõe uma ação não é o que a aprova. *Economia de mecanismo*: manter a política pequena o bastante para ser revisada. Esses princípios são anteriores ao aprendizado de máquina, o que é útil: dão aos revisores uma lista de verificação que não depende de como o modelo se comporta. Um modelo pode ser manipulado, mas um ponto de política que verifica cada ação continua valendo seja lá o que o modelo tenha sido persuadido a propor.
+
+### 18.2 Fronteiras de confiança
+
+Uma fronteira de confiança é onde dados ou controle passam entre partes com níveis de confiança diferentes. Em aplicações com LLM, a fronteira crítica passa *dentro* do prompt: instruções de sistema (confiáveis), entrada do usuário (parcialmente confiável), conteúdo recuperado ou devolvido por ferramentas (não confiável). Como o modelo não consegue impor essa fronteira de forma confiável, a arquitetura precisa impor as consequências fora do modelo. O modelo vê os três tipos de texto como uma única sequência de tokens. Delimitadores e instruções o ajudam a separá-los, mas um boletim escrito com cuidado ainda pode ser lido como uma instrução. Impor as consequências fora do modelo significa que o serviço de política, as credenciais das ferramentas e a aprovação humana decidem o que de fato acontece, de modo que a confusão do modelo sobre de quem é o texto que ele está lendo não pode, por si só, causar dano.
+
+### 18.3 Uma arquitetura de referência para agentes
+
+Componentes: (1) um serviço de ingestão que rotula a proveniência; (2) o modelo, que *propõe* ações; (3) um ponto de decisão de política que verifica cada proposta contra identidade, escopo e regras; (4) adaptadores de ferramentas com credenciais estreitas; (5) aprovação humana para ações de alto impacto; (6) registro em log e monitoramento. Pesquisas sobre consultas estruturadas (Chen et al., arXiv:2402.06363) melhoram a separação que o próprio modelo faz entre instruções e dados, mas não substituem o ponto de política externo. O OWASP LLM06 (*agência excessiva*) alerta contra funcionalidade, permissões e autonomia excessivas. Cada componente corresponde a um princípio: o ponto de política dá a mediação completa, as credenciais estreitas dão o menor privilégio e a aprovação humana separa propor de aprovar.
+
+### 18.4 Registros de decisão de arquitetura
+
+Registre cada decisão significativa: contexto, opções consideradas, decisão, consequências, ameaças tratadas e risco residual. Revisores e futuros engenheiros podem então ver por que um controle existe. Sem um registro, um controle que parece inconveniente pode ser removido por alguém que não conhece o ataque que ele previne. Os registros são curtos, geralmente uma página, e guardados junto com o código, para que mudem pela mesma revisão. Quando as condições mudam, como uma nova ferramenta ou uma nova ameaça, o registro é revisitado e um novo o substitui, preservando o histórico. O risco residual é o campo deixado em branco com mais frequência e aquele de que os revisores mais precisam.
+
+### 18.5 Exemplo resolvido (caso sintético da NRS)
+
+Sam escreveu o ADR-007: "Criação de ordens de serviço pelo Wrench". Opções: (a) o modelo chama a API diretamente; (b) o modelo propõe, a política verifica, o técnico confirma; (c) nenhuma ferramenta, o modelo redige um texto para o técnico copiar. Decisão: (b). Consequências: um clique a mais para os técnicos; instruções injetadas não podem criar ordens sem um humano. Risco residual: técnicos podem aprovar sem ler — mitigado pela exibição do documento de origem de qualquer texto com cara de instrução. A opção (c) era a mais segura, mas abria mão do benefício das ordens estruturadas, enquanto a opção (a) punha um modelo não confiável no controle direto de um sistema privilegiado. O registro mostra por que (b) fica entre as duas.
+
+### 18.6 Erros e limites
+
+Três erros são comuns: confiar ao modelo a imposição das fronteiras em seu prompt; ferramentas com credenciais amplas "por conveniência"; e decisões sem risco residual registrado. Uma fronteira imposta apenas por instruções no prompt se mantém até que uma entrada esperta a quebre. Credenciais amplas transformam uma única chamada manipulada em acesso a tudo o que a credencial alcança. Decisões registradas sem risco residual dão a impressão de que um problema foi resolvido quando ele foi apenas reduzido. A revisão de arquitetura de Sam pergunta, para cada projeto: onde a fronteira é imposta em código, o que a credencial de cada ferramenta pode fazer e que risco permanece.
+
+### Exercícios
+
+- **EX052 — Princípios.** Aplique três princípios ao pipeline de alertas do TrackEye. Rubrica: 3 = três princípios aplicados concretamente; 2 = dois; 1 = apenas nomeados; 0 = nenhum.
+- **EX053 — Fronteira.** Onde fica a fronteira de confiança dentro do prompt do Wrench, e por que o modelo não consegue impô-la de forma confiável? Rubrica: 3 = entre sistema/usuário e conteúdo recuperado; um único fluxo de tokens, comportamento estatístico; 2 = parcial; 1 = vago; 0 = errado.
+- **EX054 — ADR.** Escreva um ADR curto para acrescentar uma ferramenta de e-mail ao Wrench. Rubrica: 3 = contexto, opções, decisão, consequências, risco residual; 2 = quatro; 1 = dois; 0 = nenhum.
+
+### Síntese
+
+A arquitetura é onde a segurança de IA se torna aplicável: fronteiras de confiança, um ponto de política externo, ferramentas com menor privilégio e decisões documentadas transformam a incerteza do modelo em risco limitado.
+
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar identidade e acesso para usuários, serviços e agentes de IA; (2) aplicar hashing, assinaturas e criptografia a artefatos de IA; (3) verificar a integridade de modelos e conjuntos de dados com manifestos; e (4) explicar proveniência e assinatura na cadeia de suprimentos de IA.
+
+### 19.1 Identidades para agentes
+
+Toda ação precisa ser atribuível. Um agente de IA deve agir *em nome de* um usuário, com permissões delegadas e de escopo definido (por exemplo, tokens OAuth restritos a escopos específicos), e não com uma conta de serviço poderosa. Credenciais de curta duração limitam o dano se vazarem; nunca coloque credenciais em prompts. Delegação significa que o agente nunca pode fazer mais do que o usuário poderia, e os logs mostram ambos: o usuário em nome de quem a ação foi executada e o agente que a propôs. Uma conta de serviço compartilhada apaga essa distinção, de modo que, depois de um incidente, ninguém consegue dizer qual conversa causou qual ação. Tokens que duram minutos em vez de meses também fazem com que uma credencial copiada de um log já seja inútil quando alguém tentar usá-la.
+
+### 19.2 Hashing e manifestos
+
+Um hash criptográfico como o SHA-256 mapeia um arquivo para um resumo de tamanho fixo; qualquer mudança — mesmo de um bit — produz um resumo diferente. Um manifesto lista o resumo esperado de cada artefato (pesos, tokenizador, configuração). O laboratório detecta tanto a mudança de um bit nos pesos quanto uma linha de configuração acrescentada.
+
+```python
+"""Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
+Creates synthetic 'artefact' bytes, records a manifest, then detects a
+one-byte tampering and a swapped file. No real models are involved."""
+import hashlib, json
+files = {"model.bin": bytes(range(256)) * 40, "tokenizer.json": b'{"vocab": ["a", "b"]}',
+         "config.yaml": b"layers: 4\nheads: 8\n"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+print(json.dumps({k: v[:16] for k, v in manifest.items()}, indent=1))
+received = dict(files)
+tampered = bytearray(received["model.bin"]); tampered[5000] ^= 1
+received["model.bin"] = bytes(tampered)
+received["config.yaml"] = b"layers: 4\nheads: 8\ntrust_remote_code: true\n"
+for n, b in sorted(received.items()):
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:15s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Saída esperada:
+
+```text
+{
+ "model.bin": "e96760a87768717b",
+ "tokenizer.json": "f63d2ddabc61f2d9",
+ "config.yaml": "e5bbb570ca0fcb87"
+}
+config.yaml     MISMATCH
+model.bin       MISMATCH
+tokenizer.json  OK
+```
+
+A saída mostra por que cada arquivo precisa de sua própria entrada: o tokenizador não foi tocado e passa, enquanto duas mudanças diferentes em dois arquivos são detectadas cada uma de forma independente. Um único bit invertido no deslocamento 5000 basta para mudar por completo o resumo do arquivo de pesos.
+
+### 19.3 Assinaturas e proveniência
+
+Um hash prova que um arquivo corresponde a um manifesto; uma *assinatura digital* sobre o manifesto prova quem o produziu. Assinar artefatos de modelos e registrar a proveniência (quais dados, código e pipeline os produziram) permite aos consumidores verificar a origem. Isso trata o OWASP LLM03 (*cadeia de suprimentos*) e os riscos de backdoor em modelos de terceiros (Gu et al., arXiv:1708.06733). As assinaturas deslocam a questão da confiança para a chave de assinatura: quem a detém, como é protegida e como um consumidor fica sabendo qual chave esperar. A proveniência acrescenta um contexto que a assinatura sozinha não dá, como a versão do conjunto de dados usada, para que o consumidor possa julgar se o modelo é adequado ao seu uso, e não apenas autêntico.
+
+### 19.4 Criptografia
+
+Criptografe dados de treinamento e pesos em repouso e todo o tráfego em trânsito (TLS). A criptografia protege a confidencialidade contra o roubo do armazenamento e a interceptação, mas não contra uma consulta de aparência legítima que extrai informações do modelo. As chaves precisam ser gerenciadas separadamente dos dados que protegem; um arquivo de pesos criptografado guardado ao lado de sua chave não protege nada. A criptografia também deixa intacto o comportamento do próprio modelo. Um usuário com acesso comum de consulta ainda pode extrair dados de treinamento ou reconstruir um modelo por meio de suas respostas, então a criptografia é combinada com limites de consulta e controles de saída. Os engenheiros registram quais ameaças cada controle de criptografia trata e quais explicitamente não trata.
+
+### 19.5 Exemplo resolvido (caso sintético da NRS)
+
+A NRS recebe atualizações do modelo do TrackEye de um fornecedor de modelos de visão. Sam exigiu um manifesto assinado com resumos SHA-256 de cada arquivo, verificado no computador do trem de inspeção antes do carregamento. Em um teste, uma configuração modificada que habilitava o carregamento de código remoto foi rejeitada, em linha com o `config.yaml MISMATCH` do laboratório. Verificar no trem, e não no depósito, importa porque os arquivos poderiam ser alterados em qualquer ponto entre o fornecedor e o dispositivo. A assinatura do manifesto é verificada primeiro; os hashes dos arquivos só são considerados confiáveis depois que se comprova que a assinatura vem da chave esperada do fornecedor.
+
+### 19.6 Erros e limites
+
+Três erros são comuns: agentes usando contas de serviço administrativas compartilhadas; hashes obtidos do mesmo lugar que os arquivos (um atacante pode mudar ambos); e supor que a criptografia impede o vazamento no nível do modelo. Contas administrativas compartilhadas tornam toda ação de agente tão poderosa quanto a tarefa mais poderosa de que qualquer agente precise. Um hash baixado do mesmo servidor que o arquivo prova apenas que o servidor é coerente consigo mesmo, então o resumo esperado precisa chegar por um canal separado e confiável, como um manifesto assinado. A criptografia protege dados em repouso e em trânsito, mas um modelo que responde a consultas ainda pode revelar o que aprendeu.
+
+### Exercícios
+
+- **EX055 — Leitura do laboratório.** Quais arquivos falham no Laboratório H e por que o `tokenizer.json` passa? Rubrica: 3 = model.bin (bit invertido) e config.yaml (linha acrescentada); tokenizador inalterado; 2 = parcial; 1 = vago; 0 = errado.
+- **EX056 — Hashes da mesma origem.** Por que um manifesto baixado do mesmo servidor que o modelo é fraco, e o que corrige isso? Rubrica: 3 = um atacante que controla o servidor muda ambos; manifesto assinado com chave fixada; 2 = parcial; 1 = vago; 0 = errado.
+- **EX057 — Delegação.** Projete a credencial da ferramenta de ordens de serviço do Wrench. Rubrica: 3 = delegada por usuário, com escopo de criar rascunho, de curta duração, registrada em log; 2 = três; 1 = um; 0 = nenhum.
+
+### Síntese
+
+A identidade torna as ações dos agentes atribuíveis e limitadas; hashes, assinaturas e proveniência tornam os artefatos de IA verificáveis. Juntos, ancoram a confiança na cadeia de suprimentos de IA.
+
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sam Ito, a Northgate Rail Systems e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX057 (as de EX058–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sam Ito, a Northgate Rail Systems e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** σ(z) = (1 + e⁻ᶻ)⁻¹, então σ′(z) = e⁻ᶻ/(1 + e⁻ᶻ)² = σ(z)·(1 − σ(z)), porque 1 − σ(z) = e⁻ᶻ/(1 + e⁻ᶻ). Em z = 0, σ = 0.5, então σ′ = 0.25.
 
@@ -931,6 +1148,30 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em i
 **EX044.** Ameaça: um concorrente; vulnerabilidade: saídas de API ilimitadas e detalhadas; impacto: perda de propriedade intelectual e acesso de caixa-branca para ataques posteriores; controle: autenticação, cotas por cliente, minimização das saídas, monitoramento de abuso.
 
 **EX045.** Objetivo: comprometimento de privacidade/confidencialidade (extração de modelo). Capacidade: acesso por consultas, conhecimento de caixa-preta.
+
+**EX046.** (1) Toda chamada de ordem de serviço passa por um serviço de política que verifica função e depósito (verificado por teste). (2) As ordens de serviço exigem confirmação do técnico na interface (verificado por inspeção e teste). (3) A credencial de ordens de serviço permite apenas operações de criar/rascunho e toda chamada é registrada em log (verificado por revisão de configuração).
+
+**EX047.** 8 × 3 × 6 = 144, o que excede 100, então é necessária uma ação.
+
+**EX048.** Uma ferramenta de busca recupera um cronograma de manutenção confidencial, e uma ferramenta de e-mail envia um "resumo" para um endereço fornecido em texto injetado — cada ferramenta é inofensiva sozinha; a combinação exfiltra dados.
+
+**EX049.** (1) As avaliações dos técnicos sobre as respostas do Wrench alimentam futuros ajustes finos — avaliações manipuladas poderiam conduzir o comportamento. (2) Dentro de uma tarefa, o Wrench lê os resultados das próprias chamadas de ferramentas e planeja novas chamadas — conteúdo injetado nos resultados pode redirecionar as etapas seguintes.
+
+**EX050.** No máximo N ordens de serviço por usuário por hora; qualquer ordem fora do depósito do usuário ou acima da prioridade "média" exige aprovação do supervisor; um monitor independente baseado em regras pode vetar ordens que não correspondam a nenhum achado de inspeção em aberto.
+
+**EX051.** O conjunto de referência é rotulado independentemente da avaliação enviesada, então mostra o declínio real da detecção; sem ele, a deriva parece uma melhora.
+
+**EX052.** Menor privilégio: o TrackEye pode gravar alertas, mas não encerrá-los. Mediação completa: todo alerta passa pela mesma validação antes de chegar aos técnicos. Padrão seguro em falha: se o modelo falhar ou a qualidade da entrada for ruim, o segmento é sinalizado para inspeção manual em vez de marcado como livre.
+
+**EX053.** Entre as instruções confiáveis (sistema e usuário) e os boletins/notas recuperados não confiáveis. Todos são tokens em um único fluxo e o seguimento de instruções pelo modelo é estatístico, então ele pode seguir texto injetado.
+
+**EX054.** Contexto: os técnicos querem que o Wrench envie pedidos de peças. Opções: ferramenta de e-mail livre; e-mail apenas para uma lista de endereços de fornecedores permitidos, com confirmação; somente rascunho. Decisão: destinatários da lista permitida mais confirmação. Consequências: flexibilidade limitada; exfiltração injetada bloqueada. Risco residual: fornecedores permitidos poderiam receber conteúdo errado; mitigado pela exibição da mensagem completa antes do envio.
+
+**EX055.** model.bin falha (um bit invertido no byte 5000) e config.yaml falha (uma linha acrescentada); tokenizer.json não foi modificado, então seu resumo confere.
+
+**EX056.** Um atacante que controla o servidor pode substituir tanto os pesos quanto o manifesto. Assine o manifesto com a chave do fornecedor e fixe essa chave pública no verificador, ou obtenha os resumos por um canal independente.
+
+**EX057.** Um token delegado por usuário, com escopo "criar rascunho de ordem de serviço" para o depósito do usuário, válido por minutos, vinculado à sessão, com todo uso registrado em log.
 
 <a id="references"></a>
 ## Referências
