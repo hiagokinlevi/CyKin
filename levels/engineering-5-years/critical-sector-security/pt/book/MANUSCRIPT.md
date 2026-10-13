@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–18 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções; os capítulos 19–50 (EX037–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–22 de 50 já estão escritos em português, com os exercícios EX001–EX044 e suas resoluções; os capítulos 23–50 (EX045–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -53,10 +53,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 16. [Engenharia de sistemas](#ch-16)
 17. [Fundamentos de controle e realimentação](#ch-17)
 18. [Arquitetura de segurança](#ch-18)
+19. [Identidade e criptografia](#ch-19)
+20. [Infraestrutura crítica e segurança setorial: contexto de engenharia](#ch-20)
+21. [Infraestrutura crítica e segurança setorial: requisitos](#ch-21)
+22. [Infraestrutura crítica e segurança setorial: modelos de sistema e de dados](#ch-22)
 
-Capítulos 19–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-19), até a chegada dos próximos lotes.
+Capítulos 23–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-23), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX036. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX044. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -1413,7 +1417,314 @@ Use modelos em camadas para posicionar ativos e condutos, torne a DMZ real não 
 <!-- cyberabc:chapter-navigation:start ch-18 -->
 ### Continue estudando — capítulo 18 de 50
 
-[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (inglês) →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) explicar a criptografia simétrica e a de chave pública, hashes e MACs, e escolher entre eles; (2) projetar a autenticação de mensagens com proteção contra repetição para uma telemetria com recursos limitados; (3) planejar a gestão de chaves — geração, distribuição, armazenamento, rotação, revogação — para uma frota de campo; e (4) projetar identidade e autenticação para pessoas e dispositivos. Ele se apoia nos capítulos 4, 13 e 18 e prepara os capítulos 27–28.
+
+### 19.1 Primitivas
+
+- As **funções de hash** (SHA-256, [FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)) mapeiam dados para um resumo de tamanho fixo; encontrar colisões ou pré-imagens deve ser inviável. Um hash sozinho não autentica nada.
+- A **cifração simétrica** (AES, [FIPS 197](https://csrc.nist.gov/pubs/fips/197/final)) usa uma única chave compartilhada para a confidencialidade.
+- Os **códigos de autenticação de mensagem** (HMAC, [FIPS 198-1](https://csrc.nist.gov/pubs/fips/198-1/final); [RFC 2104](https://www.rfc-editor.org/rfc/rfc2104)) permitem a quem detém uma chave compartilhada verificar que uma mensagem não foi alterada e veio de alguém que detém a chave.
+- A **criptografia de chave pública**, introduzida por [Diffie and Hellman (1976)](https://doi.org/10.1109/TIT.1976.1055638) e realizada para assinaturas por [Rivest, Shamir and Adleman (1978)](https://doi.org/10.1145/359340.359342), usa pares de chaves: qualquer um pode verificar uma assinatura com a chave pública; só quem detém a chave privada pode assinar.
+- A **cifração autenticada** (por exemplo, AES-GCM) fornece confidencialidade e integridade juntas.
+
+Nunca projete suas próprias primitivas ou protocolos quando um padrão servir; o TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)) é o padrão para enlaces IP que conseguem executá-lo.
+
+### 19.2 Autenticando a telemetria
+
+Para um enlace com recursos limitados, um projeto comum é: carga útil mais um contador monotônico (ou um carimbo de tempo), um MAC sobre ambos, o receptor verifica o MAC em tempo constante e depois verifica se o contador é maior do que o último valor aceito. O contador derrota a repetição; um carimbo de tempo com uma janela de atualidade derrota ataques de atraso, mas exige relógios sincronizados. Truncar o HMAC-SHA256 para 128 bits é comum por causa da largura de banda, com uma margem contra falsificação correspondentemente reduzida, mas ainda muito grande. Persista o último contador ou troque as chaves no reinício, ou um reinício reabre a repetição (EX018).
+
+### 19.3 Gestão de chaves
+
+As chaves são onde a criptografia encontra as operações. Decida: quem gera as chaves e onde (de preferência em hardware, nunca à mão); como elas chegam aos dispositivos (provisionamento de fábrica, cadastro seguro); onde ficam armazenadas (elementos seguros, não arquivos de configuração); como são trocadas (de forma agendada e após suspeita de comprometimento); como são revogadas; e quem pode acessá-las. Uma chave por par de dispositivos limita o raio de impacto: comprometer uma RTU não deve permitir que um atacante se passe por outra. Uma única chave para toda a frota é uma causa comum com $\beta \approx 1$ (Capítulo 7).
+
+### 19.4 Identidade para pessoas e dispositivos
+
+As pessoas precisam de contas nominais, autenticação forte (multifator resistente a phishing onde for possível — veja o [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final)), papéis mapeados a tarefas e remoção imediata quando saem. Os dispositivos também precisam de identidades — certificados ou chaves provisionadas — para que um gateway saiba com qual RTU está falando. Credenciais compartilhadas ou padrão são a falha de identidade mais comum na TO. No TMRP, os operadores usam contas nominais com autenticação forte nos servidores SCADA, e cada RTU tem sua própria chave, de modo que o gateway sabe qual estação enviou cada mensagem.
+
+### 19.5 Exemplo resolvido: o formato de mensagem do TMRP (sintético)
+
+O ADR-007 escolheu HMAC com contadores. O quadro do Laboratório 8 leva um contador de 8 bytes, um ID de estação de 2 bytes, um nível de 2 bytes e um HMAC-SHA256 truncado de 16 bytes: 28 bytes, dos quais 22 são sobrecarga em relação a uma carga útil de 6 bytes sem autenticação. As chaves por estação são geradas no elemento seguro do gateway no cadastro e armazenadas no repositório de chaves da RTU; o lado do SCADA as mantém num módulo de segurança de hardware (HSM). As chaves são trocadas anualmente e imediatamente diante de suspeita de comprometimento; o contador é persistido em memória não volátil a cada incremento de 1.000, com um salto à frente no reinício, de modo que a repetição de mensagens antigas continua impossível.
+
+### 19.6 Atividade prática: Laboratório 8
+
+```python
+# Lab 8 - authenticated telemetry with a counter: tamper and replay are rejected (synthetic key, offline)
+import hmac, hashlib, struct
+KEY = bytes.fromhex("00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff")  # demo key only
+def seal(ctr, station, level_cm):
+    body = struct.pack(">QHH", ctr, station, level_cm)
+    return body + hmac.new(KEY, body, hashlib.sha256).digest()[:16]
+class Receiver:
+    def __init__(self): self.last = {}
+    def accept(self, msg):
+        body, tag = msg[:12], msg[12:]
+        if not hmac.compare_digest(tag, hmac.new(KEY, body, hashlib.sha256).digest()[:16]): return "reject: tag"
+        ctr, st, lvl = struct.unpack(">QHH", body)
+        if ctr <= self.last.get(st, -1): return "reject: replay"
+        self.last[st] = ctr; return f"ok st={st} ctr={ctr} level={lvl}cm"
+r = Receiver(); m1, m2 = seal(1, 3, 312), seal(2, 3, 309)
+forged = m2[:10] + struct.pack(">H", 150) + m2[12:]
+for name, m in [("m1", m1), ("m2", m2), ("replay m1", m1), ("forged", forged)]: print(f"{name:10}", r.accept(m))
+print("frame bytes:", len(m1), "overhead vs 6-byte payload:", len(m1) - 6)
+```
+
+Saída esperada:
+
+```text
+m1         ok st=3 ctr=1 level=312cm
+m2         ok st=3 ctr=2 level=309cm
+replay m1  reject: replay
+forged     reject: tag
+frame bytes: 28 overhead vs 6-byte payload: 22
+```
+
+A chave do laboratório é um valor de demonstração publicado; chaves reais nunca devem aparecer no código-fonte.
+
+As duas primeiras mensagens da estação três são aceitas, com contadores crescentes. A repetição da primeira mensagem é recusada porque seu contador não é maior do que o último valor aceito, e a mensagem forjada, com o nível alterado de 309 para 150 centímetros, reprova na verificação da etiqueta. A última linha confirma o tamanho de quadro usado no ADR-007: vinte e oito bytes, vinte e dois deles de sobrecarga. O laboratório mantém o estado apenas na memória, e é por isso que o EX018 pergunta o que acontece após um reinício.
+
+### 19.7 Erros comuns e limites
+
+- Hashes ou CRCs usados como se fossem MACs.
+- Comparação de etiquetas que não é em tempo constante.
+- Proteção contra repetição perdida no reinício.
+- Chaves compartilhadas por toda a frota; chaves em arquivos de configuração ou no código-fonte.
+- Senhas padrão e contas compartilhadas.
+- Escolhas criptográficas sem um plano para a vida útil do sistema (agilidade de algoritmos).
+
+O projeto do TMRP responde a cada item: as etiquetas são comparadas em tempo constante, os contadores persistem entre reinícios, as chaves são por estação, em hardware seguro, e o formato de mensagem ganha um identificador de suíte para futuras mudanças de algoritmo. Cada escolha tem um teste.
+
+### Exercícios — capítulo 19
+
+**EX037 — Persistência do contador.** *Objetivo:* projetar uma proteção contra repetição segura diante de reinícios. *Entradas:* §19.5 (persistir a cada 1.000 incrementos). *Passos:* explique por que a RTU precisa saltar à frente no reinício e em quanto, no mínimo; diga o que o receptor precisa persistir. *Evidência esperada:* explicação. *Rubrica:* 3 = salto ≥ 1.000 além do último valor persistido, para que nenhum contador seja reutilizado, receptor persiste o último aceito por estação ou troca as chaves; 2 = apenas um dos lados; 1 = vago; 0 = nada.
+
+**EX038 — Raio de impacto.** *Objetivo:* comparar projetos de chaves. *Entradas:* 42 estações de campo; opção A, uma chave para a frota; opção B, uma chave por estação. *Passos:* compare a consequência de extrair uma chave de uma RTU roubada, o esforço de rotação após esse roubo e o armazenamento necessário no SCADA. *Evidência esperada:* tabela e recomendação. *Rubrica:* 3 = A permite ao ladrão forjar qualquer estação e força a rotação em toda a frota; B confina a falsificação a uma estação, com uma rotação; armazenamento trivial; recomendação B; 2 = falta uma dimensão; 1 = recomendação sem raciocínio; 0 = nada.
+
+### Síntese do capítulo
+
+Escolha primitivas padrão para a propriedade de que você precisa: hashes para impressões digitais, MACs ou assinaturas para autenticidade, cifração autenticada para confidencialidade com integridade. Acrescente atualidade para derrotar a repetição e mantenha-a entre reinícios. A gestão de chaves é o sistema de verdade: chaves por dispositivo em hardware, rotação e revogação. Dê a pessoas e dispositivos identidades distintas e fortemente autenticadas.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Infraestrutura crítica e segurança setorial: contexto de engenharia
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) descrever como a infraestrutura crítica é definida e organizada em setores, e o panorama regulatório dentro do qual os engenheiros trabalham; (2) caracterizar os setores por seus processos físicos, unidades de consequência e tecnologia; (3) descrever as interdependências entre setores; e (4) aprender com incidentes documentados no nível que suas fontes públicas sustentam. É a ponte entre os fundamentos (capítulos 1–19) e os capítulos da área (21–50).
+
+### 20.1 O que torna uma infraestrutura "crítica"
+
+Os governos designam como críticos os ativos, sistemas e redes cuja incapacitação prejudicaria gravemente a segurança, a economia, a saúde pública ou a segurança das pessoas. Os Estados Unidos identificam dezesseis [setores de infraestrutura crítica](https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience/critical-infrastructure-sectors) e, mais recentemente, um conjunto de [National Critical Functions](https://www.cisa.gov/national-critical-functions-set) que atravessam as organizações. A [Diretiva NIS2 (2022/2555)](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/) da União Europeia estabelece obrigações de cibersegurança para entidades essenciais e importantes, e a [Diretiva CER (2022/2557)](https://eur-lex.europa.eu/eli/dir/2022/2557/oj) trata da resiliência das entidades críticas de forma mais ampla. As regras setoriais acrescentam detalhes: as [normas NERC CIP](https://www.nerc.com/pa/Stand/Pages/CIPStandards.aspx) para os sistemas elétricos de grande porte da América do Norte, os [requisitos de avaliação de riscos do America's Water Infrastructure Act de 2018](https://www.epa.gov/waterresilience/americas-water-infrastructure-act-2018-risk-assessments-and-emergency-response-plans) para os sistemas comunitários de água dos EUA, o [DORA (2022/2554)](https://eur-lex.europa.eu/eli/reg/2022/2554/oj) para as finanças da UE e as [HHS Healthcare and Public Health Cybersecurity Performance Goals](https://hphcyber.hhs.gov/performance-goals.html). Essas regras mudam; cite a versão e a data e verifique de novo.
+
+### 20.2 Setores como sistemas de engenharia
+
+Cada setor tem um processo físico ou de serviço, uma **unidade de consequência** e uma tecnologia característica.
+
+| Setor | Processo | Unidade de consequência | Tecnologia típica |
+|---|---|---|---|
+| Água | Tratar e distribuir água | Pessoas sem água segura × horas | PLCs/RTUs, SCADA, dosagem, telemetria |
+| Eletricidade | Gerar, transmitir, distribuir | MW ou consumidores interrompidos × horas | Relés de proteção, EMS/DMS, automação de subestações |
+| Saúde | Diagnosticar e tratar | Atendimento atrasado, desvios de pacientes, danos | Prontuário eletrônico, dispositivos médicos, sistemas prediais |
+| Transporte | Mover pessoas e mercadorias | Viagens interrompidas, incidentes de segurança | Sinalização, controle de tráfego, bilhetagem |
+| Finanças | Compensar e liquidar | Transações falhas ou atrasadas | Sistemas de pagamento, infraestruturas do mercado financeiro |
+| Comunicações | Transportar voz e dados | Assinantes afetados × horas | Redes de núcleo, acesso por rádio, sincronismo |
+
+A tabela é uma simplificação para orientação de engenharia; cada linha é uma carreira.
+
+### 20.3 Interdependência
+
+[Rinaldi, Peerenboom and Kelly (2001)](https://doi.org/10.1109/37.969131) classificam as interdependências como físicas, cibernéticas, geográficas e lógicas. A água precisa de eletricidade para o bombeamento; a recomposição da eletricidade precisa de comunicações; os hospitais precisam de água, energia e comunicações; quase tudo precisa de hora precisa. A interdependência transforma falhas locais em regionais e fornecedores compartilhados em causas comuns. A atualização defeituosa da CrowdStrike, em julho de 2024, que a Microsoft estimou ter afetado cerca de 8,5 milhões de dispositivos Windows ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)), não foi um ataque, mas interrompeu de uma só vez companhias aéreas, hospitais e outros serviços por meio de uma dependência de software compartilhada.
+
+### 20.4 Aprender com incidentes documentados
+
+Os relatórios públicos de incidentes são valiosos e parciais. Use-os no nível de suas fontes. O [incidente da Colonial Pipeline](https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years), em 2021, envolveu ransomware na TI de negócios; a empresa paralisou as operações do oleoduto por precaução — um lembrete de que a dependência das operações em relação a sistemas de TI (faturamento, programação) pode interromper o serviço físico sem nenhum comprometimento da TO. O [ataque de 2015 à rede elétrica ucraniana](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01) usou acesso remoto para operar disjuntores e danificou as capacidades de recuperação. O surto do [WannaCry em 2017](https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/) interrompeu serviços do NHS na Inglaterra. Cada um tem detalhes documentados e questões em aberto; onde os relatos iniciais foram revistos, como em Oldsmar, cite ambos.
+
+### 20.5 Exemplo resolvido: situando a LRWA no contexto (sintético)
+
+A LRWA é uma concessionária de água que tem um hospital entre seus clientes críticos. Sua unidade de consequência são pessoas-hora sem água segura, ponderadas para usuários vulneráveis; a reservação própria do St Brenna's dá cerca de quatro horas de folga. Suas interdependências: eletricidade (bombeamento, tratamento), comunicações (telemetria LTE), fornecimento de produtos químicos (cloro) e tempo (correlação de logs). Supõe-se que seu contexto regulatório inclua um dever de avaliação de riscos e resiliência semelhante ao do AWIA. O escopo do TMRP é definido por esses elementos: o programa não é "proteger o SCADA", e sim "manter a água segura chegando às pessoas sob condições adversas plausíveis, incluindo ataques".
+
+### 20.6 Atividade prática
+
+Escolha um setor que não seja o de água. Apenas a partir de fontes públicas, construa a linha dele na §20.2 com mais detalhes: três unidades de consequência, três tecnologias típicas, duas regulações principais com versão e data, e um incidente documentado com sua fonte. Mantenha o perfil no nível de suas fontes. Para cada regulação, dê a versão, a data em que você a consultou e as entidades que ela abrange. Para o incidente, diga apenas o que o relatório citado diz e anote qualquer revisão posterior, como no caso de Oldsmar. Depois compare a unidade de consequência do seu setor com as pessoas-hora sem água segura da LRWA e anote uma interdependência que seu setor compartilha com a água, como eletricidade, comunicações ou tempo.
+
+### 20.7 Erros comuns e limites
+
+- Tratar a "infraestrutura crítica" como uma categoria de tecnologia, e não como uma categoria de consequência.
+- Regulações citadas sem versão ou data.
+- Narrativas de incidentes repetidas além do que as fontes sustentam.
+- Ignorar as dependências de TI das operações físicas.
+- Pensar num único setor num mundo interdependente.
+
+O próprio contexto da LRWA mostra por que isso importa. Sua condição de crítica vem do St Brenna's e de seus outros clientes, não da tecnologia que ela opera. Suas operações dependem de eletricidade, LTE, fornecimento de cloro e hora precisa, então analisar a água isoladamente deixaria passar a dependência oculta do alimentador encontrada antes. Qualquer dever regulatório em que ela se apoie precisa ser citado com versão e data.
+
+### Exercícios — capítulo 20
+
+**EX039 — Perfil setorial.** *Objetivo:* traçar o perfil de um setor a partir de fontes públicas. *Entradas:* §20.6. *Passos:* produza o perfil com citações. *Evidência esperada:* uma página. *Rubrica:* 3 = exato, citado, unidades de consequência mensuráveis, incidente descrito dentro de suas fontes; 2 = uma afirmação sem citação; 1 = genérico; 0 = nada.
+
+**EX040 — Dependência compartilhada.** *Objetivo:* raciocinar sobre causas comuns entre setores. *Entradas:* a interrupção da CrowdStrike de julho de 2024, como descrita pela Microsoft. *Passos:* explique em 200 palavras por que uma atualização de software não maliciosa produziu uma interrupção em vários setores, qual propriedade de engenharia ela revela e uma prática de projeto que limita eventos assim. *Evidência esperada:* texto. *Rubrica:* 3 = dependência compartilhada/causa comum, componente privilegiado com atualização automática, implantação em etapas ou diversidade como prática, afirmações dentro das fontes; 2 = prática genérica; 1 = chama de ataque; 0 = nada.
+
+### Síntese do capítulo
+
+A infraestrutura crítica é definida pela consequência. Os setores diferem em processo, unidades de consequência e tecnologia, mas compartilham a interdependência de energia, comunicações, tempo e fornecedores comuns. Trabalhe dentro das regulações por versão e data, aprenda com os incidentes apenas até onde suas fontes vão e defina todo programa de segurança pelo serviço e pelas pessoas que ele protege.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — capítulo 20 de 50
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Infraestrutura crítica e segurança setorial: requisitos
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) levantar requisitos de segurança e de resiliência a partir de consequências, partes interessadas, regulações e informações sobre ameaças; (2) escrever requisitos baseados em desempenho para a operação degradada, a recuperação e a segurança operacional, e não apenas para a proteção; (3) derivar requisitos de componentes a partir dos requisitos de sistema usando níveis de segurança; e (4) negociar explicitamente os conflitos entre requisitos. Ele aplica os capítulos 5 e 16 ao setor e prepara o Capítulo 22.
+
+### 21.1 Fontes de requisitos
+
+Os requisitos de segurança de infraestrutura vêm de cinco fontes, e um bom conjunto é rastreável a todas elas: **consequências** (o que nunca pode acontecer, e o que precisa ser restabelecido e com que rapidez); **partes interessadas** (operadores, clientes como hospitais, serviços de emergência, reguladores); **regulações e normas** (por exemplo, as avaliações de riscos do AWIA, o NERC CIP, as medidas de gestão de riscos da NIS2); **informações sobre ameaças** (capacidades de adversários documentadas em fontes como o [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) e os avisos da CISA); e **restrições** (equipamentos legados, orçamento, equipe, certificação de segurança operacional).
+
+### 21.2 Requisitos para a operação degradada
+
+Um sistema que está ou "seguro" ou "comprometido" está mal especificado. Escreva requisitos para os estados intermediários: *Durante a perda da rede de telemetria, cada estação de bombeamento deverá continuar em controle automático local, dentro de seus limites configurados, por pelo menos 72 h.* *Durante a suspeita de comprometimento dos servidores SCADA, os operadores deverão conseguir operar a PS3 e a PS4 em modo manual local, com procedimentos documentados e equipe, em até 1 h após a decisão.* *Após um incidente, a operação remota deverá ser restabelecida em até 8 h após a decisão de restabelecer, a partir de backups off-line verificados.* São esses os requisitos que mantêm as pessoas abastecidas.
+
+### 21.3 Níveis de segurança e requisitos de componentes
+
+A IEC 62443-3-3 e a IEC 62443-4-2 expressam requisitos de sistema e de componentes em relação a **níveis de segurança** (SL 1–4), que refletem a capacidade do adversário a que se deve resistir, desde a violação casual ou acidental até o ataque sofisticado e com muitos recursos ([visão geral da série ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). A avaliação de riscos para o projeto (IEC 62443-3-2, [página do catálogo](https://webstore.iec.ch/en/publication/30727)) divide o sistema em zonas e condutos e atribui um nível-alvo a cada um. Um nível-alvo se torna então requisitos concretos de componentes — por exemplo, autenticação de todos os usuários humanos, ou proteção da integridade das comunicações. O texto da norma não é de acesso livre; cite cláusulas apenas de uma cópia que você tenha obtido legalmente.
+
+### 21.4 Conflitos e negociação
+
+Os requisitos entram em conflito: acesso rápido do operador versus autenticação forte; correções frequentes versus disponibilidade; registro detalhado em log versus armazenamento em instalações remotas; suporte do fornecedor versus isolamento da rede. Não resolva conflitos em silêncio no projeto. Registre cada um, suas opções e a decisão com seu dono — geralmente a pessoa que é dona do risco operacional. O primeiro conflito registrado no TMRP é entre o modo manual local de R4 e a autenticação de R1, resolvido com uma chave seletora, um alarme e um log local. O dono é a área de operações, que assume o risco de um acesso manual mais lento.
+
+### 21.5 Exemplo resolvido: conjunto de requisitos v1.0 do TMRP (sintético)
+
+| ID | Requisito | Fonte | Verificação |
+|---|---|---|---|
+| R1 | A telemetria e os comandos entre o campo e o SCADA deverão levar um MAC sobre o conteúdo e o contador; verificações reprovadas deverão ser rejeitadas e alarmadas. | Consequência (comandos forjados), ADR-007 | Teste (T1, T2) |
+| R2 | Mensagens repetidas deverão ser rejeitadas, inclusive após o reinício de qualquer das pontas. | Ameaça (repetição) | Teste (T2) |
+| R3 | Os controladores deverão rejeitar setpoints fora dos limites físicos configurados ou que excedam o passo configurado, incluindo valores não finitos. | Consequência (operação insegura) | Teste (T3) |
+| R4 | Cada estação deverá suportar a operação manual local independente do SCADA e da rede. | Operação degradada | Demonstração |
+| R5 | A telemetria de campo deverá operar ≥ 24 h com bateria na capacidade de fim de vida útil. | Parte interessada (visibilidade) | Análise + teste (T4) |
+| R6 | A operação remota deverá poder ser restabelecida em até 8 h a partir de backups off-line. | Recuperação | Ensaio (T7, Capítulo 47) |
+| R7 | Os alarmes prioritários deverão chegar às telas dos operadores em até 60 s para 99% dos eventos. | Operações | Teste (T5) |
+| R8 | Os logs de segurança deverão ter a integridade protegida com âncoras fora da zona de controle. | Investigação | Teste (T6) |
+| R9 | A perda da dosagem de cloro deverá gerar alarme em até 15 min por um caminho independente do controlador de dosagem. | Consequência (água insegura) | Teste |
+
+Conflito registrado: o modo manual local de R4 cria um caminho que contorna a autenticação de R1. Resolução: o modo manual exige uma chave seletora física no painel, é alarmado no SCADA e é registrado localmente.
+
+### 21.6 Atividade prática
+
+Escolha um estado degradado ainda não coberto (por exemplo, a perda do fornecedor de cloro por 7 dias) e escreva um requisito, sua fonte e o método de verificação. Escreva o requisito na mesma forma da tabela do TMRP: um identificador, uma única afirmação verificável, sua fonte e um método de verificação. Uma perda de sete dias no fornecimento de cloro, por exemplo, poderia levar a um estoque mínimo de produto químico na instalação, com uma inspeção, e a um procedimento para um fornecedor alternativo, testado por exercício. Verifique se seu requisito não entra em conflito com um existente e, se entrar, registre o conflito e quem deve decidi-lo.
+
+### 21.7 Erros comuns e limites
+
+- Requisitos apenas para a proteção, nenhum para a degradação e a recuperação.
+- Níveis de segurança atribuídos sem uma avaliação de riscos documentada.
+- Citar cláusulas de normas sem acesso ao texto.
+- Conflitos resolvidos em silêncio por quem escreve o projeto.
+- Requisitos que não podem ser verificados com os meios do programa.
+
+O conjunto do TMRP evita o primeiro erro ao incluir R4, R5 e R6 para a operação degradada e a recuperação, e evita o quarto ao registrar abertamente o conflito do modo manual local. Todo requisito do conjunto pode ser verificado com a bancada, o ensaio ou a demonstração do próprio programa.
+
+### Exercícios — capítulo 21
+
+**EX041 — Requisitos de estado degradado.** *Objetivo:* especificar o comportamento sob estresse. *Entradas:* LRWA, cenário "servidores SCADA cifrados por ransomware". *Passos:* escreva três requisitos cobrindo a continuidade do serviço, a detecção/contenção e a restauração, cada um com fonte e verificação. *Evidência esperada:* tabela. *Rubrica:* 3 = mensuráveis, cobrem as três fases, verificação realista; 2 = falta uma fase; 1 = apenas proteção; 0 = nada.
+
+**EX042 — Registro de conflito.** *Objetivo:* documentar um conflito. *Entradas:* os operadores querem que a IHM fique conectada o turno inteiro; um novo requisito exige nova autenticação após 15 min de inatividade. *Passos:* escreva um registro de conflito com opções, resolução recomendada e dono. *Evidência esperada:* registro. *Rubrica:* 3 = as opções incluem controles compensatórios (controle de acesso físico à sala de controle, bloqueio apenas de visualização com nova autenticação rápida para ações de controle), dono nomeado pelo papel; 2 = sem dono; 1 = escolhe um lado sem opções; 0 = nada.
+
+### Síntese do capítulo
+
+Derive os requisitos das consequências, das partes interessadas, das regulações, das ameaças e das restrições. Especifique a operação degradada e a recuperação com o mesmo cuidado que a proteção. Traduza os níveis de segurança-alvo em requisitos concretos de componentes por meio de uma avaliação de riscos documentada e registre cada conflito com opções, decisão e dono.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — capítulo 21 de 50
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Infraestrutura crítica e segurança setorial: modelos de sistema e de dados
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) construir um inventário de ativos e um modelo de sistema que sustentem a análise de segurança; (2) modelar dependências funcionais, fluxos de dados e fronteiras de confiança; (3) representar estados degradados, e não apenas ligado/desligado; e (4) manter o modelo atualizado e protegido como informação sensível. Ele se apoia nos capítulos 2, 13 e 21 e prepara o Capítulo 23 (análise de ameaças e de falhas).
+
+### 22.1 O inventário primeiro
+
+Você não consegue proteger o que não conhece. Um inventário de ativos de TO registra, para cada dispositivo: identidade, localização, função, zona, endereços de rede, versões de hardware e de firmware, relações de comunicação, dono, criticidade e situação do suporte. Construa-o a partir de várias fontes e concilie-as: documentos de projeto, monitoramento passivo da rede, exportações de configuração e vistorias em campo. Cada fonte deixa coisas de fora — os documentos derivam, o monitoramento passivo não vê dispositivos silenciosos, as vistorias não veem os virtuais. Na LRWA, o inventário cobre as 42 estações de campo, o par SCADA e os gateways, construído a partir de documentos de projeto, do monitoramento passivo no switch de controle e no head-end da LTE, e de visitas às instalações.
+
+### 22.2 Três visões de um sistema
+
+- **Visão funcional:** o que o sistema faz — funções como "manter o nível do reservatório", "desinfetar", "dar visibilidade ao operador" — e quais funções dependem de quais (o grafo do Laboratório 2).
+- **Visão física/de rede:** onde estão os ativos e como se conectam — zonas, condutos, enlaces.
+- **Visão de fluxo de dados:** quais dados vão para onde, em que sentido, com que proteção, atravessando quais **fronteiras de confiança**. Os diagramas de fluxo de dados com fronteiras de confiança são a entrada da modelagem de ameaças (Capítulo 23).
+
+Mantenha as visões ligadas: toda função mapeia para os ativos que a implementam; todo fluxo mapeia para um conduto.
+
+### 22.3 Estados degradados
+
+Grafos de ligado/desligado são úteis (Capítulo 2), mas insuficientes. Uma estação de bombeamento pode estar em *automático remoto*, *automático local*, *manual local*, *degradada* (uma bomba de duas) ou *fora de serviço*; o reservatório pode estar *normal*, *baixo* ou *abaixo do piso*. Um **modelo de estados** para cada função crítica, com transições causadas por falhas, ataques e ações dos operadores, permite perguntar: a partir da operação normal, que sequência de eventos chega a um estado inaceitável, e qual controle a interrompe? A PS4 é a primeira candidata óbvia na LRWA, porque alimenta o hospital diretamente.
+
+### 22.4 O modelo como informação sensível
+
+Um modelo de sistema preciso é um mapa para um adversário. Armazene-o com controle de acesso, versione-o e publique apenas abstrações. Trate as exportações para fornecedores e consultores sob acordos. Mantenha um **registro de mudanças do modelo** ligado à gestão de configuração (Capítulo 16), para que o modelo continue atualizado; um modelo desatualizado há um ano é um passivo apresentado como ativo. O modelo da LRWA, incluindo o grafo de dependências e as listas de permissões das zonas, é mantido com controle de acesso e versionado a cada mudança de configuração.
+
+### 22.5 Exemplo resolvido: modelo funcional de Hollin Hill (sintético)
+
+A função F1, "abastecer o St Brenna's", é satisfeita se o caminho A (PS4 direto) ou o caminho B (reservatório de Hollin Hill alimentado pela PS3) estiver disponível, *e* o tanque próprio do hospital cobrir a lacuna durante a comutação. O caminho A precisa da PS4, de sua energia (alimentador F2 ou gerador) e de seu controle (o automático local basta). O caminho B precisa do reservatório acima do piso e da PS3 com energia do alimentador F1. A telemetria não é necessária para o abastecimento — o controle automático local mantém as bombas funcionando —, mas é necessária para a *visibilidade* (F3) e para a *intervenção* remota. Essa percepção muda as prioridades: a propriedade de segurança mais importante para F1 é que ninguém consiga comandar remotamente as bombas para um estado inseguro, enquanto a perda da telemetria é um problema de visibilidade com uma folga de 72 h em automático local (R-local). A árvore de falhas do Capítulo 23 formaliza exatamente essa estrutura E/OU.
+
+### 22.6 Atividade prática
+
+Estenda o Laboratório 2 para que cada nó tenha um tipo de dependência E ou OU, e implemente uma função de disponibilidade que avalie se `hospital_supply` funciona dado um conjunto de nós em falha. Teste com as falhas `{grid_f1}`, `{ps4}` e `{ps4, grid_f1}`. Modele o abastecimento do hospital como um OU de seus dois caminhos, com a energia da PS4 como um OU do alimentador F2 e do gerador. Deixe a telemetria fora da função de abastecimento, como argumenta o exemplo resolvido, mas mantenha-a numa função de visibilidade separada, para que sua perda continue aparecendo. Depois confira seus três resultados com o EX043: o abastecimento deve sobreviver à perda do alimentador F1 ou à perda da PS4, e falhar apenas quando ambos forem perdidos.
+
+### 22.7 Erros comuns e limites
+
+- Inventário a partir de uma única fonte.
+- Diagramas sem fronteiras de confiança ou sentido dos dados.
+- Modelos de ligado/desligado onde os modos degradados decidem os resultados.
+- Modelos que nunca são atualizados, ou que são compartilhados livremente.
+- Tratar a perda da telemetria e o uso indevido do controle como a mesma consequência.
+
+O modelo de Hollin Hill mostra claramente o último erro: tratar a perda da telemetria como perda do abastecimento mandaria o orçamento do TMRP para a redundância das comunicações, quando a propriedade que de fato protege o hospital é que as bombas não possam ser comandadas remotamente para um estado inseguro.
+
+### Exercícios — capítulo 22
+
+**EX043 — Avaliação E/OU.** *Objetivo:* implementar e usar um modelo de dependências misto. *Entradas:* §22.6. *Passos:* implemente, execute os três testes, relate os resultados. *Evidência esperada:* código e saída. *Rubrica:* 3 = semântica correta; `{grid_f1}` → o abastecimento sobrevive via PS4, se a PS4 funcionar em automático local (sem precisar da LTE); `{ps4}` → sobrevive via reservatório; `{ps4, grid_f1}` → falha; 2 = telemetria exigida indevidamente para o abastecimento; 1 = não executado; 0 = nada.
+
+**EX044 — Modelo de estados.** *Objetivo:* modelar estados degradados. *Entradas:* os modos da PS4 na §22.3. *Passos:* desenhe um modelo de estados com pelo menos cinco estados e os eventos (falha, ataque, ação do operador) entre eles; identifique um caminho de *automático remoto* até *fora de serviço* que um atacante remoto poderia conduzir, e o controle que o interrompe. *Evidência esperada:* tabela de estados e análise. *Rubrica:* 3 = estados e eventos coerentes, caminho de ataque realista, o controle o interrompe (por exemplo, o reset do desarme exige ação local); 2 = apenas estados; 1 = apenas ligado/desligado; 0 = nada.
+
+### Síntese do capítulo
+
+Construa o inventário a partir de várias fontes conciliadas, modele o sistema nas visões funcional, física e de fluxo de dados, com fronteiras de confiança, represente explicitamente os modos degradados e mantenha o modelo atualizado e protegido. Bons modelos separam a visibilidade do controle e mostram qual propriedade realmente protege o serviço.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — capítulo 22 de 50
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (inglês) →](../../en/book/MANUSCRIPT.md#ch-23)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1422,7 +1733,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX036; as de EX037–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX044; as de EX045–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -1531,6 +1842,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX035.** A regra reprova no teste da DMZ: um servidor de ERP comprometido poderia enviar pacotes diretamente ao banco de dados do SCADA. Alternativa: o ERP escreve o estado das ordens de serviço num serviço da DMZ; um processo da zona de controle busca as atualizações (ou as recebe por um intermediário com validação estreita), validando formato e conteúdo; nenhuma conexão de entrada do corporativo para o controle.
 
 **EX036.** Caminho: fornecedor → gateway de acesso da DMZ (MFA, contas nominais do fornecedor) → sessão aprovada a cada pedido pelo gerente de plantão → jump host na zona de controle → apenas a interface de diagnóstico da RTU-B; sessão gravada; o acesso expira no fim da janela aprovada; conta do fornecedor desabilitada entre as sessões. Evidências: logs do gateway e do jump host, sessões gravadas, um teste mostrando que a conexão direta do fornecedor às RTUs é bloqueada e uma revisão trimestral das contas.
+
+### Capítulo 19
+
+**EX037.** Se a RTU persiste seu contador a cada 1.000 incrementos e reinicia, o último valor persistido pode estar até 999 atrás do último valor usado. Para evitar reutilizar um contador (o que o receptor rejeitaria, ou que poderia permitir repetição após um reinício do receptor), a RTU salta à frente pelo menos 1.000 além do valor persistido. O receptor precisa persistir o último contador aceito por estação, ou os dois lados trocam as chaves após o reinício.
+
+**EX038.** A (chave da frota): uma RTU roubada permite ao ladrão forjar mensagens para todas as 42 estações; a recuperação exige trocar as chaves de todas as estações. B (chaves por estação): a falsificação fica confinada à estação roubada; uma chave é revogada e substituída. Armazenar 42 chaves num HSM é trivial para o SCADA. Recomendação: B.
+
+### Capítulo 20
+
+**EX039.** Avaliado pela rubrica; por exemplo, distribuição de eletricidade: unidades de consequência — consumidores interrompidos × horas, MW não supridos, clientes críticos afetados; tecnologias — relés de proteção, sistemas de gerenciamento da distribuição, RTUs de subestações; regulações — normas NERC CIP (cite versão e data) e NIS2 (2022/2555) para operadores da UE; incidente — Ucrânia 2015, descrito a partir do IR-ALERT-H-16-056-01 da CISA.
+
+**EX040.** Modelo: um único produto de segurança com acesso privilegiado ao kernel estava instalado em muitas organizações de setores diferentes e era atualizado automaticamente; uma atualização de conteúdo defeituosa derrubou hosts Windows simultaneamente, e a Microsoft estimou que cerca de 8,5 milhões de dispositivos foram afetados. A propriedade é uma causa comum por meio de uma dependência compartilhada, privilegiada e atualizada automaticamente. Prática: implantações de atualizações em etapas (canário) — pelos fornecedores e, onde possível, controladas pelos clientes para sistemas críticos — mais procedimentos de recuperação que não dependam dos hosts afetados. Não foi um ataque.
+
+### Capítulo 21
+
+**EX041.** Continuidade do serviço: "Na perda do SCADA, a PS3 e a PS4 deverão continuar em controle automático local, e os operadores deverão conseguir operá-las localmente em até 1 h (exercício)." Contenção: "Diante da suspeita de comprometimento do SCADA, os caminhos de comando remoto para todas as estações deverão ser desabilitados a partir dos gateways em até 15 min após a decisão (teste)." Restauração: "A operação remota deverá ser restabelecida a partir de backups off-line verificados em até 8 h após a decisão de restabelecer (ensaio)."
+
+**EX042.** Conflito: acesso contínuo do operador vs nova autenticação a cada 15 min. Opções: (a) manter a nova autenticação; (b) nenhuma nova autenticação; (c) a tela apenas de visualização permanece ativa; as ações de controle exigem uma nova autenticação rápida (aproximação do crachá ou PIN) após 15 min de inatividade, com a sala de controle sob controle de acesso físico. Recomendação: (c). Dono: gerente de operações (dono do risco), com o líder de segurança.
+
+### Capítulo 22
+
+**EX043.** Com a PS4 precisando apenas de `grid_f2` em modo automático local (sem LTE para o abastecimento) e o abastecimento como OU: `{grid_f1}` → o abastecimento funciona (via PS4); `{ps4}` → funciona (via reservatório); `{ps4, grid_f1}` → falha. Um modelo que faça o abastecimento depender da telemetria falha indevidamente no primeiro caso.
+
+**EX044.** Estados: automático remoto, automático local, manual local, degradado (uma bomba), desarmado, fora de serviço. Caminho de ataque: comandos de parada forjados e partidas/paradas repetidas (automático remoto → desarmado pela proteção do motor de partida) → se o reset do desarme for remoto, o atacante mantém a estação desarmada → fora de serviço. Controle: o reset do desarme exige ação local; comandos autenticados; limite de taxa para os comandos de partida.
 
 <a id="glossary"></a>
 
