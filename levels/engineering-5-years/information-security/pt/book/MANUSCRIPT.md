@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 117, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar controles de segurança da informação para uma empresa de logística.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios conciliam um inventário sintético de ativos com uma varredura sintética de descoberta, conferem configurações sintéticas de servidores contra três regras de linha de base, detectam rajadas de adivinhação de senhas num log sintético de autenticação e verificam restaurações sintéticas de backup contra somas de verificação SHA-256. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -875,11 +875,520 @@ Implementar apenas as orientações da ISO/IEC 27002 não torna uma organizaçã
 
 - **EX060 — Funções do CSF.** Cite as seis funções do CSF 2.0. *Rubrica:* 3 = Governar, Identificar, Proteger, Detectar, Responder, Recuperar;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança da informação: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) derivar requisitos de segurança a partir de riscos e obrigações; (2) escrever requisitos testáveis; (3) priorizar os requisitos pelo impacto.
+
+### 21.1 Fontes de requisitos
+
+Lindiwe reúne os requisitos de segurança da Saltmarsh a partir de várias fontes: avaliações de risco, contratos com clientes, a lei de proteção de dados, as condições do seguro e o escopo do sistema de gestão. Um grande cliente do varejo exige que os fornecedores usem autenticação multifator para o acesso remoto e relatem incidentes em até vinte e quatro horas. A seguradora exige backups offline testados. Ela registra cada requisito com sua fonte, para que os leitores futuros saibam por que ele existe e se pode mudar caso a fonte mude, por exemplo quando um contrato termina. Ela mantém a lista num registro compartilhado.
+
+### 21.2 Redação testável
+
+Muitos requisitos chegam vagos, como os sistemas devem ser seguros. Lindiwe os reescreve para que um teste possa mostrar aprovação ou reprovação: o acesso remoto aos sistemas internos exige um segundo fator; os discos dos servidores são cifrados; as correções de segurança classificadas como críticas são aplicadas em até catorze dias. O Prof. Hale pede que ela evite palavras como adequado e apropriado, a menos que venham seguidas de um limiar mensurável. Ela aprende que os requisitos testáveis são a ponte entre a política e a verificação, da qual os capítulos posteriores dependem. Cada requisito reescrito também indica seu dono.
+
+### 21.3 Priorizando
+
+Nem todo requisito importa da mesma forma. Lindiwe os ordena pelo impacto da falha, usando as categorias da FIPS 199 vistas antes: os requisitos que protegem sistemas de alto impacto, como a folha de pagamento e o despacho, vêm primeiro. Os requisitos impostos por contratos com multas também ficam no alto. Ela produz uma lista de vinte requisitos em três faixas de prioridade. O líder de segurança a usa para planejar o trabalho do ano, aceitando que os itens das faixas inferiores podem esperar enquanto as lacunas da faixa alta são corrigidas. Ela marca cada requisito com sua faixa e sua fonte no registro, para que o plano possa ser rastreado até os motivos por trás dele.
+
+### 21.4 Conflitos
+
+Os requisitos às vezes entram em conflito. O cliente do varejo quer logs detalhados guardados por um ano; os princípios de proteção de dados empurram para guardar dados pessoais apenas pelo tempo necessário. Lindiwe propõe guardar os logs de segurança por um ano, com acesso restrito à equipe de segurança e com os campos pessoais minimizados sempre que possível. O Prof. Hale observa que resolver os conflitos abertamente, com os motivos registrados, é melhor do que deixar uma equipe ignorar em silêncio um requisito que considera inconveniente. O encarregado de proteção de dados e o líder de segurança assinam a abordagem combinada, e Lindiwe a registra no log de decisões com uma data de revisão.
+
+### Exemplo resolvido
+
+Lindiwe coleta requisitos de riscos, contratos, leis e seguros, os reescreve como declarações testáveis, os ordena em três faixas e resolve um conflito de retenção.
+
+> **Caso sintético.** Os requisitos são sintéticos.
+
+### Erros e limites
+
+Um requisito sem um limiar mensurável não pode ser verificado.
+
+### Exercícios
+
+- **EX061 — Exigências do cliente.** O que o cliente do varejo exige? *Rubrica:* 3 = MFA para acesso remoto e relatos de incidentes em 24 horas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX062 — Requisito de correções.** Com que rapidez as correções críticas devem ser aplicadas? *Rubrica:* 3 = em até catorze dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX063 — Conflito de retenção.** Como se resolve o conflito de retenção de logs? *Rubrica:* 3 = um ano, com acesso restrito e campos minimizados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança da informação: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um modelo de ativos; (2) conciliar os registros com a realidade observada; (3) atribuir donos aos ativos.
+
+### 22.1 Por que os modelos de ativos importam
+
+As organizações não conseguem proteger o que não sabem que têm. Lindiwe constrói um modelo dos ativos da Saltmarsh: dispositivos, aplicações, repositórios de dados e as relações entre eles. O ponto de partida é o inventário de ativos mantido pela equipe de TI. O Prof. Hale adverte que os inventários se afastam da realidade, à medida que dispositivos são acrescentados sem registro e os antigos permanecem depois de removidos, então o inventário precisa ser conferido contra o que de fato está na rede antes de merecer confiança. Ela pede primeiro à equipe de TI a exportação mais recente do inventário.
+
+### 22.2 O laboratório de conciliação
+
+O laboratório compara um inventário sintético de 2.400 endereços com uma varredura sintética de descoberta que encontrou 2.373 hosts ativos. Noventa endereços registrados não responderam, então podem estar desativados, desligados ou registrados de forma errada. Sessenta e três hosts que responderam não estavam no inventário, todos numa faixa de endereços que ninguém tinha documentado. Dos hosts vistos na rede, 97,3 por cento estavam registrados. Lindiwe observa que as duas lacunas precisam ser investigadas, por motivos diferentes. Ela apresenta os três números numa única tabela para a equipe de rede, com a faixa não registrada destacada para acompanhamento urgente.
+
+### Laboratório — Conciliando um inventário sintético de ativos com uma varredura sintética de descoberta
+
+```python
+"""Reconcile a synthetic asset register against a synthetic network discovery scan (stdlib only)."""
+import random
+random.seed(8)
+register = {f"10.20.{i//250}.{i%250+1}" for i in range(2400)}
+seen = set(random.sample(sorted(register), 2310))                 # 90 registered hosts not seen
+unknown = {f"10.30.0.{i}" for i in range(1, 64)}                   # hosts nobody registered
+scan = seen | unknown
+print(f"register {len(register)}; scan {len(scan)}")
+print(f"registered but not seen {len(register - scan)}; seen but unregistered {len(scan - register)}")
+print(f"register coverage of scan {len(scan & register)/len(scan):.1%}")
+```
+
+Execute com `python3 lab_assets.py`. Saída verificada:
+
+```text
+register 2400; scan 2373
+registered but not seen 90; seen but unregistered 63
+register coverage of scan 97.3%
+```
+
+### 22.3 Investigando as lacunas
+
+Os sessenta e três hosts não registrados importam mais, porque dispositivos desconhecidos ficam sem correções e sem monitoramento. Lindiwe pergunta à equipe de rede sobre a faixa não documentada e descobre que ela pertence ao sistema de câmeras de um depósito, instalado por um terceirizado. Os noventa endereços registrados silenciosos importam menos para o risco imediato, mas minam a confiança no inventário. Ela propõe conferi-los contra os registros de descarte e marcar as desativações confirmadas. O Prof. Hale observa que uma única varredura pode deixar passar dispositivos desligados naquele momento, então as varreduras devem se repetir. A faixa das câmeras é varrida de novo.
+
+### 22.4 Donos
+
+Todo ativo precisa de um dono que decida como ele é protegido e responda por ele. Lindiwe acrescenta um campo de dono ao modelo e descobre que o sistema de câmeras não tem dono nenhum, porque o terceirizado saiu e o gerente do depósito presumiu que a TI era a responsável. Ela providencia para que o gerente do depósito seja o dono, com o apoio da TI. Ela aprende que as lacunas de propriedade muitas vezes explicam as lacunas técnicas, já que ninguém corrige o que não pertence a ninguém. O gerente do depósito assina o registro de propriedade, e o sistema de câmeras é incluído no cronograma de correções.
+
+### Exemplo resolvido
+
+Lindiwe concilia 2.400 endereços registrados com 2.373 hosts varridos, encontra 90 registros silenciosos e 63 câmeras não registradas, investiga ambos e atribui um dono.
+
+> **Caso sintético.** Os endereços são sintéticos; as saídas vêm de lab_assets.py.
+
+### Erros e limites
+
+Um inventário de ativos que nunca é conciliado dá uma falsa confiança.
+
+### Exercícios
+
+- **EX064 — Hosts não registrados.** Quantos hosts foram vistos, mas não estavam registrados? *Rubrica:* 3 = sessenta e três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX065 — Registros silenciosos.** Quantos endereços registrados não responderam? *Rubrica:* 3 = noventa;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX066 — Dono das câmeras.** Quem se torna o dono do sistema de câmeras? *Rubrica:* 3 = o gerente do depósito;; 2 = correto;; 1 = TI;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança da informação: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar ameaças de forma sistemática; (2) analisar modos de falha; (3) ligar as ameaças aos controles.
+
+### 23.1 Modelagem de ameaças
+
+Lindiwe modela as ameaças ao sistema de despacho com um método simples: para cada componente e fluxo de dados, perguntar como um atacante poderia falsificar uma identidade, adulterar dados, negar ações, divulgar informações, negar serviço ou obter privilégios. A interface do aplicativo dos motoristas enfrenta falsificação se as credenciais dos motoristas forem roubadas e adulteração se as confirmações puderem ser alteradas. Ela registra cada ameaça com o componente, o atacante provável e os controles existentes, produzindo uma tabela com base na qual os desenvolvedores podem agir. Os desenvolvedores revisam a tabela na próxima reunião de planejamento.
+
+### 23.2 Atacantes
+
+O Prof. Hale pede que ela nomeie atacantes realistas, em vez de imaginar um único adversário todo-poderoso. Para a Saltmarsh, ela lista grupos criminosos em busca de resgate, fraudadores que desviam entregas de mercadorias valiosas, pessoas internas curiosas e erros por descuido. Cada um tem objetivos e habilidades diferentes. Os grupos de resgate visam a disponibilidade e os backups; os fraudadores visam a integridade dos endereços; as pessoas internas visam a confidencialidade dos dados de clientes. Ela aprende que nomear os atacantes afina as prioridades, já que os controles podem ser ajustados às ameaças mais prováveis. Ela anota o tipo de atacante ao lado de cada ameaça na tabela, para maior clareza.
+
+### 23.3 Análise de falhas
+
+Nem todo dano é malicioso. Lindiwe aplica a análise de modos de falha ao despacho: o que acontece se o banco de dados falhar, se a fila de mensagens encher ou se o serviço de mapas ficar indisponível? Para cada caso, ela estima a gravidade e a rapidez com que seria percebido. Uma fila de mensagens cheia atrasaria as confirmações em silêncio, então ninguém perceberia por horas. Ela recomenda monitorar o tamanho da fila. Ela aprende que as análises de segurança e de confiabilidade se sobrepõem, já que as falhas de disponibilidade parecem semelhantes qualquer que seja sua causa. A equipe de operações configura um alerta para quando a fila passar de um tamanho definido.
+
+### 23.4 Ligando aos controles
+
+Lindiwe liga cada ameaça e falha significativa aos controles: o roubo de credenciais à autenticação multifator, a adulteração de endereços a alertas de mudança e aprovações, as falhas da fila ao monitoramento e o ransomware aos backups imutáveis. Algumas ameaças ainda não têm um controle adequado, como as pessoas internas que exportam listas de clientes. Ela as registra como lacunas para o registro de riscos. O Prof. Hale observa que uma lista honesta de lacunas é mais útil do que uma longa lista de controles que dá a entender que nada falta. O líder de segurança acrescenta a lacuna das pessoas internas ao registro de riscos, com um dono.
+
+### Exemplo resolvido
+
+Lindiwe modela as ameaças ao despacho por categoria, nomeia quatro tipos realistas de atacante, analisa modos de falha como uma fila de mensagens cheia e liga as ameaças aos controles e às lacunas.
+
+> **Caso sintético.** As análises são sintéticas.
+
+### Erros e limites
+
+Modelar apenas um adversário poderoso deixa passar as ameaças comuns e mais simples.
+
+### Exercícios
+
+- **EX067 — Alvo dos fraudadores.** O que os fraudadores visam? *Rubrica:* 3 = a integridade dos endereços de entrega;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+
+- **EX068 — Falha silenciosa.** Que falha passaria despercebida por horas? *Rubrica:* 3 = uma fila de mensagens cheia;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX069 — Lacuna aberta.** Que ameaça não tem um controle adequado? *Rubrica:* 3 = pessoas internas que exportam listas de clientes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Segurança da informação: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar uma avaliação de segurança; (2) coletar evidências de forma sistemática; (3) separar as observações das conclusões.
+
+### 24.1 Planejando uma avaliação
+
+Lindiwe planeja sua primeira avaliação formal de um depósito. Ela escreve o escopo, os objetivos, os métodos, o cronograma e a autorização, e o gerente do depósito e o líder de segurança a assinam. Os métodos incluem entrevistas, revisão de configurações, uma varredura de rede dentro do segmento do depósito e uma inspeção dos controles físicos. O Prof. Hale ressalta que a autorização escrita protege tanto o avaliador quanto a organização, especialmente nas varreduras que poderiam perturbar equipamentos se executadas sem cuidado. O plano também declara em que horários as varreduras podem rodar, evitando o período movimentado do despacho da manhã, quando os sistemas do depósito carregam sua carga mais pesada.
+
+### 24.2 Coleta de evidências
+
+Durante a avaliação, Lindiwe registra as evidências com horário, fonte e método: capturas de tela das configurações, saídas das varreduras e anotações de entrevistas assinadas pelos entrevistados. Ela guarda as evidências numa pasta restrita, com somas de verificação, para que os leitores futuros possam confirmar que nada mudou. Ela aprende que as conclusões são tão fortes quanto as evidências por baixo delas, e que registrar como as evidências foram obtidas permite que outros julguem sua confiabilidade e repitam as verificações. Ela lista cada item de evidência num índice com sua soma de verificação, para que um revisor possa escolher qualquer item e confirmar que corresponde ao registro original.
+
+### 24.3 Observações e conclusões
+
+Lindiwe separa o que observou do que conclui. Ela observou que o drive de backup do depósito fica num escritório destrancado; conclui que os backups poderiam ser roubados ou danificados. Ela observou que dois funcionários compartilham um login no terminal de recebimento de mercadorias; conclui que as ações ali não podem ser atribuídas. O Prof. Hale explica que essa separação permite que os leitores aceitem os fatos mesmo que pesem as conclusões de forma diferente. Ela aplica esse formato a cada achado do relatório. O gerente do depósito diz depois que a separação tornou os achados mais fáceis de aceitar e de pôr em prática.
+
+### 24.4 Relatório
+
+O relatório dela lista oito achados, cada um com evidência, conclusão, classificação de risco e recomendação. Ela compartilha um rascunho com o gerente do depósito, que corrige um erro factual: uma porta que ela pensava estar destrancada tem uma fechadura com código que ela não tinha visto. Ela revisa o achado. Ela aprende que conferir os fatos com os responsáveis melhora a exatidão e a aceitação, e que defender um erro para proteger o próprio relatório prejudica a credibilidade. O relatório final vai para o líder de segurança e para o gerente do depósito. Em um mês, seis dos oito achados estão encerrados, e os dois restantes têm datas combinadas.
+
+### Exemplo resolvido
+
+Lindiwe planeja e autoriza uma avaliação de depósito, registra as evidências com somas de verificação, separa as observações das conclusões e corrige um erro factual depois da revisão.
+
+> **Caso sintético.** A avaliação é sintética.
+
+### Erros e limites
+
+Misturar observações com conclusões torna os relatórios mais difíceis de verificar.
+
+### Exercícios
+
+- **EX070 — Plano assinado.** Quem assina o plano de avaliação? *Rubrica:* 3 = o gerente do depósito e o líder de segurança;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX071 — Integridade das evidências.** Como ela protege a integridade das evidências? *Rubrica:* 3 = somas de verificação numa pasta restrita;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX072 — Erro corrigido.** Que erro factual é corrigido? *Rubrica:* 3 = uma porta com fechadura com código que ela não tinha visto;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma melhoria de segurança sob restrições; (2) apresentar opções às partes interessadas; (3) iterar um projeto a partir da crítica.
+
+### 25.1 O briefing
+
+O briefing do ateliê de projeto pede que a equipe de Lindiwe proteja o acesso remoto dos supervisores dos depósitos da Saltmarsh, que hoje se conectam de casa usando apenas senhas. As restrições incluem um orçamento pequeno, supervisores com pouca experiência técnica e a exigência de segundo fator do cliente do varejo. A equipe precisa entregar um projeto, uma estimativa de custo e um plano de implantação em seis semanas. O Prof. Hale faz o papel do cliente e questiona cada pressuposto da equipe. A equipe tem quatro membros, cada um liderando uma parte do trabalho: projeto, custo, implantação e documentação.
+
+### 25.2 Opções
+
+A equipe desenvolve três opções: uma rede privada virtual com códigos por aplicativo, um portal web com chaves de hardware e um serviço gerenciado de área de trabalho remota com autenticação multifator embutida. Eles comparam custo, segurança, facilidade de uso e carga de suporte. O portal com chaves de hardware resiste melhor ao phishing, mas exige enviar as chaves aos supervisores pelo correio. A rede privada virtual é familiar, mas dá acesso amplo à rede depois de conectada, o que conflita com o privilégio mínimo. A equipe registra as notas de cada opção numa tabela compartilhada, para que o cliente veja como cada julgamento foi alcançado.
+
+### 25.3 Crítica
+
+Na revisão de meio de percurso, o Prof. Hale pergunta o que acontece quando um supervisor perde uma chave numa sexta-feira à noite. A equipe não tem resposta. Eles acrescentam um processo de recuperação que usa uma segunda chave registrada guardada em casa e uma ligação verificada para a central de atendimento. Os colegas também apontam que a opção de área de trabalho remota depende de um único fornecedor. A equipe registra esses pontos e revisa as notas de cada opção. Eles também entrevistam dois supervisores sobre a configuração que têm em casa e descobrem que um deles compartilha o computador com familiares.
+
+### 25.4 Projeto final
+
+A equipe recomenda o portal web com duas chaves de hardware por supervisor, acesso apenas às aplicações de que os supervisores precisam e um processo de recuperação documentado. Eles estimam o custo por supervisor e uma implantação de quatro semanas, depósito por depósito. O Prof. Hale elogia o processo de recuperação como a parte que a maioria dos projetos esquece. Lindiwe reflete que a crítica melhorou o projeto mais do que qualquer escolha técnica isolada, porque expôs situações que ninguém tinha imaginado. O cliente aceita o projeto, e o líder de segurança da Saltmarsh pede para usar o processo de recuperação como modelo para outros serviços.
+
+### Exemplo resolvido
+
+A equipe de Lindiwe compara três opções de acesso remoto, acrescenta um processo de recuperação depois da crítica e recomenda um portal com duas chaves de hardware por supervisor.
+
+> **Caso sintético.** O briefing do ateliê é sintético.
+
+### Erros e limites
+
+Um projeto de autenticação forte sem um processo de recuperação falha na primeira chave perdida.
+
+### Exercícios
+
+- **EX073 — Restrições do ateliê.** Cite uma restrição do briefing. *Rubrica:* 3 = orçamento pequeno;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX074 — Desvantagem da VPN.** Que desvantagem a opção de VPN tem? *Rubrica:* 3 = acesso amplo à rede depois de conectada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX075 — Processo de recuperação.** Que processo de recuperação é acrescentado? *Rubrica:* 3 = segunda chave em casa e ligação verificada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança da informação: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar arquiteturas de perímetro e centradas na identidade; (2) avaliar opções em nuvem e locais; (3) escolher uma arquitetura com os motivos registrados.
+
+### 26.1 Modelos de perímetro
+
+A arquitetura tradicional da Saltmarsh confia nos dispositivos dentro da rede e defende a borda com firewalls. Lindiwe observa que esse modelo se enfraquece quando os funcionários trabalham remotamente, as aplicações vão para serviços em nuvem e os atacantes entram por phishing. Uma vez dentro, um atacante herda a confiança. O Prof. Hale explica que o perímetro continua útil, mas já não é suficiente, porque a linha entre dentro e fora se tornou difusa para a maioria das organizações. Lindiwe ilustra isso com um incidente sintético em que um notebook vítima de phishing na rede interna alcançou um compartilhamento de arquivos com exportações da folha de pagamento, porque nada dentro do firewall conferia quem estava pedindo.
+
+### 26.2 Modelos centrados na identidade
+
+Uma alternativa confere a identidade, a saúde do dispositivo e o contexto de cada pedido, independentemente da localização na rede. Lindiwe esboça como a aplicação de despacho da Saltmarsh funcionaria: cada pedido é autenticado, o dispositivo é conferido quanto às correções em dia e o acesso é limitado à função do usuário. Essa abordagem segue o princípio da mediação completa de Saltzer e Schroeder. Ela observa que isso exige um gerenciamento de identidades maduro, um inventário de dispositivos e registro de logs, que a Saltmarsh tem apenas em parte. Ela lista as capacidades que faltam: um inventário completo de dispositivos, um relato consistente da saúde dos dispositivos e o registro de cada decisão de acesso às aplicações.
+
+### 26.3 Nuvem e local
+
+A Saltmarsh está considerando levar a folha de pagamento para um serviço em nuvem. Lindiwe compara as responsabilidades de segurança: o provedor protege sua infraestrutura, enquanto a Saltmarsh continua responsável pelas contas de usuário, pela configuração e pelos dados. Ela lista perguntas ao provedor sobre cifração, registro de logs, certificações e notificação de incidentes. O Prof. Hale adverte que os serviços em nuvem deslocam as responsabilidades, mas não as eliminam, e que armazenamentos em nuvem mal configurados causaram muitas exposições. Ela redige o questionário para o provedor com doze perguntas, e a equipe de compras concorda em enviá-lo com os documentos da licitação.
+
+### 26.4 Escolhendo
+
+Lindiwe recomenda uma abordagem em etapas: manter a segmentação e os firewalls, colocar primeiro as aplicações de alto valor atrás de um acesso ciente da identidade e avaliar a folha de pagamento em nuvem com uma revisão contratual. Ela registra a decisão com os motivos: a redução do risco no acesso remoto, a viabilidade diante da maturidade atual da identidade e o custo. O Prof. Hale observa que as escolhas de arquitetura raramente são de tudo ou nada, e que um caminho em etapas permite que a organização construa as capacidades que cada etapa exige. O diretor-geral aprova a primeira etapa, começando pelo despacho e pela folha de pagamento. Lindiwe marca uma revisão depois de seis meses para decidir se a próxima etapa deve prosseguir.
+
+### Exemplo resolvido
+
+Lindiwe compara os modelos de perímetro e centrados na identidade, lista as responsabilidades compartilhadas da folha de pagamento em nuvem e recomenda uma transição em etapas com os motivos registrados.
+
+> **Caso sintético.** As arquiteturas são sintéticas.
+
+### Erros e limites
+
+Ir para um serviço em nuvem não transfere a responsabilidade pelas contas e pela configuração.
+
+### Exercícios
+
+- **EX076 — Fraqueza do perímetro.** Por que o modelo de perímetro é insuficiente? *Rubrica:* 3 = os atacantes dentro herdam a confiança;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX077 — Ligação com a mediação.** Que princípio a verificação centrada na identidade segue? *Rubrica:* 3 = mediação completa;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX078 — Responsabilidade na nuvem.** O que continua sendo responsabilidade da Saltmarsh na nuvem? *Rubrica:* 3 = contas, configuração e dados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Segurança da informação: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles preventivos, de detecção e corretivos; (2) especificar a operação do controle e suas evidências; (3) avaliar o custo e a eficácia dos controles.
+
+### 27.1 Projetando um controle
+
+Lindiwe projeta um controle para as mudanças de endereço no despacho, em resposta à ameaça de fraude identificada antes. Parte preventiva: as mudanças de endereço de entrega dos pedidos de alto valor exigem a aprovação de uma segunda pessoa. Parte de detecção: um alerta dispara quando um endereço muda menos de uma hora antes do despacho. Parte corretiva: as mudanças suspeitas são revertidas e o cliente é contatado. O Prof. Hale pede que ela especifique quem opera cada parte e que evidência mostra que ela foi executada. Ela escreve o projeto como uma descrição de controle de uma página, com dono, frequência e evidência.
+
+### 27.2 Evidências de operação
+
+Um controle que não consegue mostrar que foi executado não pode ser auditado. Lindiwe especifica as evidências: registros de aprovação com os dois nomes e os horários, logs de alertas com anotações do tratamento e uma revisão mensal por amostragem feita pelo líder de segurança. Ela observa que a ISO/IEC 27001 espera que as organizações monitorem e meçam seus controles, então as evidências não são opcionais. Ela aprende a projetar a coleta de evidências dentro do controle desde o início, em vez de reconstruí-la antes de uma auditoria. O líder de segurança concorda em fazer a revisão mensal por amostragem e registrar quaisquer exceções encontradas.
+
+### 27.3 Custo e atrito
+
+A aprovação por uma segunda pessoa atrasa os pedidos urgentes. Lindiwe aplica o controle apenas aos pedidos acima de um limite de valor, fixado onde a perda por fraude superaria o custo do atraso. Ela estima que cerca de cinco por cento dos pedidos o ultrapassam. O Prof. Hale observa que os controles aplicados a tudo muitas vezes são contornados, enquanto os controles direcionados continuam sustentáveis. Ela registra o limite e seu raciocínio para que ele possa ser ajustado à medida que os padrões de fraude mudarem. O gerente de operações concorda com o limite depois de ver a estimativa e pede uma revisão após três meses de operação.
+
+### 27.4 Eficácia
+
+Lindiwe propõe medir a eficácia: quantas mudanças suspeitas o alerta pega, quantas aprovações são rejeitadas e se as perdas por fraude caem. Ela observa que os eventos raros tornam a eficácia difícil de medir rapidamente, então ela também vai testar o controle encenando mudanças suspeitas sintéticas e conferindo se os alertas disparam. Ela aprende que testar com casos plantados dá evidências mesmo quando os ataques reais são raros demais para contar. Ela planeja encenar uma mudança suspeita sintética por mês e registrar se o alerta disparou e com que rapidez foi tratado.
+
+### Exemplo resolvido
+
+Lindiwe projeta um controle em camadas para as mudanças de endereço, especifica suas evidências, o direciona aos pedidos de alto valor e planeja testá-lo com casos plantados.
+
+> **Caso sintético.** Os controles são sintéticos.
+
+### Erros e limites
+
+Um controle que não deixa evidências não pode ser mostrado em funcionamento.
+
+### Exercícios
+
+- **EX079 — Parte preventiva.** Qual é a parte preventiva do controle de endereços? *Rubrica:* 3 = aprovação por uma segunda pessoa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX080 — Parcela direcionada.** Aproximadamente que parcela dos pedidos ultrapassa o limite? *Rubrica:* 3 = cerca de cinco por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX081 — Testes plantados.** Como o controle é testado apesar da raridade das fraudes? *Rubrica:* 3 = encenando mudanças suspeitas sintéticas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Segurança da informação: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar linhas de base de configuração; (2) medir a conformidade automaticamente; (3) priorizar a correção a partir dos resultados.
+
+### 28.1 Linhas de base
+
+Lindiwe transforma a lista de verificação de endurecimento vista antes numa linha de base que pode ser conferida automaticamente. Ela escolhe três regras para a primeira versão: login remoto de root desativado, correções de segurança com no máximo trinta dias e discos cifrados. Cada regra é escrita de modo que um script possa ler a configuração e devolver aprovação ou reprovação. O Prof. Hale aconselha começar com poucas regras que importam, em vez de centenas que sobrecarregam as equipes que recebem os resultados. As equipes de servidores revisam as três regras antes da primeira execução.
+
+### 28.2 O laboratório da linha de base
+
+O laboratório confere um conjunto sintético de 300 servidores. O login remoto de root está desativado em 278 servidores, 92,7 por cento. As correções têm no máximo trinta dias em 253, 84,3 por cento. Os discos estão cifrados em 277, 92,3 por cento. Apenas 216 servidores, 72,0 por cento, passam nas três regras. Lindiwe observa que cada regra sozinha parece razoavelmente boa, mas o número combinado mostra que mais de um quarto dos servidores falha em pelo menos um requisito. Ela compartilha os resultados com cada equipe de servidores, junto com a lista dos seus servidores reprovados, para que as equipes possam começar a trabalhar de imediato, em vez de esperar um relatório formal.
+
+### Laboratório — Conferindo 300 configurações sintéticas de servidores contra três regras de linha de base
+
+```python
+"""Check synthetic server configurations against three hardening baseline rules (stdlib only)."""
+import random
+random.seed(29)
+servers = []
+for i in range(300):
+    servers.append({
+        "ssh_root_login": random.random() < 0.06,      # True = permitted (fail)
+        "patch_age_days": int(random.expovariate(1/18)),
+        "disk_encrypted": random.random() < 0.93,
+    })
+r1 = sum(not s["ssh_root_login"] for s in servers)
+r2 = sum(s["patch_age_days"] <= 30 for s in servers)
+r3 = sum(s["disk_encrypted"] for s in servers)
+allp = sum((not s["ssh_root_login"]) and s["patch_age_days"] <= 30 and s["disk_encrypted"] for s in servers)
+n = len(servers)
+print(f"root login disabled {r1}/{n} ({r1/n:.1%}); patched within 30 days {r2}/{n} ({r2/n:.1%}); disk encrypted {r3}/{n} ({r3/n:.1%})")
+print(f"all three rules {allp}/{n} ({allp/n:.1%})")
+```
+
+Execute com `python3 lab_baseline.py`. Saída verificada:
+
+```text
+root login disabled 278/300 (92.7%); patched within 30 days 253/300 (84.3%); disk encrypted 277/300 (92.3%)
+all three rules 216/300 (72.0%)
+```
+
+### 28.3 Priorizando a correção
+
+Lindiwe ordena as falhas pela categoria do servidor. Os servidores dos sistemas de alto impacto, como a folha de pagamento, vêm primeiro, depois os expostos à internet. Dentro de cada grupo, ela corrige primeiro os itens mais rápidos: desativar o login de root leva minutos, enquanto cifrar um disco existente exige uma parada. O Prof. Hale observa que combinar o impacto com o esforço produz um plano que as equipes podem seguir semana a semana, em vez de uma única lista grande que desestimula a ação. As equipes concordam em fechar todas as falhas de login de root em uma semana e planejar a cifração ao longo do próximo trimestre.
+
+### 28.4 Mantendo a conformidade
+
+A conformidade medida uma única vez se deteriora. Lindiwe agenda a verificação para rodar semanalmente e relatar a porcentagem que passa em todas as regras, separada por equipe. Ela acrescenta novas regras gradualmente, cada uma anunciada com antecedência. As equipes podem ver a própria tendência. Ela aprende que uma medição automatizada e repetida transforma uma linha de base de documento em controle em operação, e que a transparência sobre os resultados de cada equipe estimula a melhoria sem precisar de uma auditoria formal. Depois de três meses, ela planeja comparar a tendência de cada equipe com o número inicial de 72,0 por cento e relatar o progresso ao líder de segurança.
+
+### Exemplo resolvido
+
+Lindiwe implementa três regras de linha de base, descobre que 72,0 por cento dos 300 servidores passam nas três, prioriza pelo impacto e pelo esforço e agenda verificações semanais.
+
+> **Caso sintético.** Os servidores são sintéticos; as saídas vêm de lab_baseline.py.
+
+### Erros e limites
+
+Relatar cada regra sozinha pode esconder quantos servidores falham em pelo menos uma.
+
+### Exercícios
+
+- **EX082 — Taxa do login de root.** Que parcela tem o login remoto de root desativado? *Rubrica:* 3 = 278, 92,7 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX083 — Taxa de correções.** Que parcela está corrigida dentro de trinta dias? *Rubrica:* 3 = 253, 84,3 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX084 — As três.** Quantos servidores passam nas três regras? *Rubrica:* 3 = 216, 72,0 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Segurança da informação: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma medida de detecção; (2) distinguir padrões de ataque de ruído benigno; (3) relatar os resultados de detecção com honestidade.
+
+### 29.1 Medindo a adivinhação de senhas
+
+A Saltmarsh quer saber com que frequência as contas enfrentam adivinhação de senhas. Lindiwe define uma medida: uma conta é sinalizada se tiver dez ou mais falhas de login em qualquer janela de cinco minutos. Os erros comuns de digitação produzem algumas falhas espalhadas ao longo do dia, enquanto a adivinhação produz muitas em rápida sucessão. Ela escolhe a janela e o limiar antes de olhar os dados e os registra para que os resultados futuros possam ser comparados com a mesma definição. O líder de segurança aprova a definição antes que Lindiwe a execute sobre quaisquer dados.
+
+### 29.2 O laboratório dos logins
+
+O laboratório monta um dia sintético de 1.672 falhas de login em 863 contas. Três contas são sinalizadas: u17, u402 e u977, com 40, 42 e 40 falhas, respectivamente, todas em rajadas curtas. A conta com mais falhas no total, u1200, tem 61, mas elas estão espalhadas a cada poucos minutos ao longo do dia, então ela não é sinalizada. Lindiwe investiga e descobre um cliente de sincronização quebrado que tenta de novo com uma senha antiga. Ela registra a explicação ao lado da conta no relatório, para que ninguém confunda as falhas do cliente com um ataque. A central de atendimento confirma que a usuária tinha trocado a senha na semana anterior.
+
+### Laboratório — Detectando rajadas de adivinhação de senhas num log sintético de autenticação
+
+```python
+"""Detect password-guessing bursts in a synthetic authentication log (stdlib only)."""
+import random
+from collections import defaultdict
+random.seed(5)
+events = []
+for u in range(1500):                                  # ordinary mistyping
+    for _ in range(random.choice([0, 0, 0, 1, 1, 2, 3])):
+        events.append((f"u{u}", random.uniform(0, 86400)))
+for u in ["u17", "u402", "u977"]:                      # guessing bursts
+    start = random.uniform(0, 80000)
+    events += [(u, start + random.uniform(0, 240)) for _ in range(40)]
+for u in ["u1200"]:                                    # a broken sync client retrying slowly
+    events += [(u, k * 400.0) for k in range(60)]
+by = defaultdict(list)
+for u, t in events: by[u].append(t)
+flag = []
+for u, ts in by.items():
+    ts.sort()
+    if any(ts[j + 9] - ts[j] <= 300 for j in range(len(ts) - 9)):
+        flag.append(u)
+total = sorted(by, key=lambda u: -len(by[u]))[:4]
+print(f"failed logins {len(events)}; accounts with failures {len(by)}")
+print(f"flagged (10 failures within 5 min): {sorted(flag)}")
+print(f"top accounts by total failures: {[(u, len(by[u])) for u in total]}")
+```
+
+Execute com `python3 lab_logins.py`. Saída verificada:
+
+```text
+failed logins 1672; accounts with failures 863
+flagged (10 failures within 5 min): ['u17', 'u402', 'u977']
+top accounts by total failures: [('u1200', 61), ('u402', 42), ('u17', 40), ('u977', 40)]
+```
+
+### 29.3 Por que a taxa supera o total
+
+Ordenar as contas pelo total de falhas teria posto o cliente quebrado em primeiro lugar e o misturado com a adivinhação real. A medida por janela separa a adivinhação rápida das novas tentativas lentas. Lindiwe observa que os atacantes também podem adivinhar devagar para evitar a detecção, então a medida pega os ataques ruidosos, mas não os pacientes. Ela acrescenta um segundo indicador, mais fraco: contas com falhas vindas de muitos endereços diferentes num dia. O Prof. Hale valoriza que ela declare o que a medida não consegue ver. Ela documenta os dois indicadores juntos numa breve nota.
+
+### 29.4 Relatando
+
+Lindiwe relata as três contas sinalizadas à equipe de segurança, que redefine suas senhas e confirma que a autenticação multifator está ativada. Ela também relata o cliente quebrado à central de atendimento, que o corrige. Seu relatório mensal mostra o número de contas sinalizadas, a definição usada e seu ponto cego conhecido. Ela aprende que uma medida só é útil quando sua definição e seus limites acompanham o número. O líder de segurança distribui o relatório aos gerentes de TI todo mês, e a definição é acrescentada ao manual de métricas de segurança.
+
+### Exemplo resolvido
+
+Lindiwe sinaliza três contas com rajadas de 40 a 42 falhas entre 1.672 falhas de login, separa um cliente que tenta de novo devagar com 61 falhas e relata a medida com seu ponto cego.
+
+> **Caso sintético.** Os logs são sintéticos; as saídas vêm de lab_logins.py.
+
+### Erros e limites
+
+Ordenar pelo total de falhas confunde clientes quebrados com ataques.
+
+### Exercícios
+
+- **EX085 — Contas sinalizadas.** Que contas são sinalizadas? *Rubrica:* 3 = u17, u402 e u977;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX086 — Conta do topo.** Por que u1200 não é sinalizada? *Rubrica:* 3 = falhas espalhadas ao longo do dia;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX087 — Ponto cego.** O que a medida por janela deixa passar? *Rubrica:* 3 = a adivinhação lenta e paciente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar controles com testes planejados; (2) registrar as evidências dos testes; (3) distinguir a falha de um teste da falha de um controle.
+
+### 30.1 Plano de testes
+
+No laboratório de verificação, Lindiwe escreve um plano de testes para quatro controles que ajudou a construir: a verificação da linha de base, a medida de adivinhação de senhas, o alerta de mudança de endereço e a conciliação de ativos. Para cada um, ela define as entradas, os resultados esperados e os critérios de aprovação. A verificação da linha de base deve reprovar um servidor plantado com o login de root ativado; a medida de adivinhação deve sinalizar uma rajada plantada de dez falhas em quatro minutos. O Prof. Hale aprova o plano antes do início dos testes. Cada teste é listado numa única tabela com sua entrada plantada e o resultado esperado.
+
+### 30.2 Executando os testes
+
+Lindiwe executa os testes sobre dados sintéticos. A verificação da linha de base reprova corretamente o servidor plantado. A medida de adivinhação sinaliza a rajada plantada e ignora uma sequência lenta plantada, como pretendido. O alerta de endereço dispara para uma mudança plantada uma hora antes do despacho. A conciliação de ativos lista corretamente um host não registrado plantado. Ela registra cada execução com a data, as entradas, as saídas e a versão de cada script, para que os resultados possam ser reproduzidos. Os quatro controles passam nos seus primeiros casos planejados. Ela guarda as entradas plantadas junto com os scripts.
+
+### 30.3 Um teste reprovado
+
+Um teste falha: uma rajada plantada de exatamente dez falhas que abrange precisamente cinco minutos não é sinalizada. Lindiwe examina o código e descobre que a comparação trata o limite de forma incoerente com sua definição escrita. Ela corrige o código, executa de novo todos os testes e confirma que o caso plantado agora é sinalizado e que os resultados anteriores não mudaram. O Prof. Hale observa que os casos-limite são onde as definições e o código mais costumam discordar. Ela acrescenta o caso-limite ao conjunto permanente de testes, para que o mesmo erro seja pego de novo. A correção é uma única comparação alterada.
+
+### 30.4 Teste versus controle
+
+Lindiwe reflete sobre o que o teste reprovado significou. O controle em si, detectar a adivinhação, era sólido; a implementação tinha um erro de limite. Se o teste não existisse, um ataque real exatamente no limite teria passado despercebido. Ela escreve no relatório do laboratório que os testes verificam as implementações contra as definições, e que manter os casos de teste plantados de forma permanente permite conferir rapidamente as mudanças futuras. O Prof. Hale pede que ela apresente esse exemplo à turma, porque ele mostra com clareza por que a verificação precisa de casos planejados em cada limite, e não apenas de entradas típicas.
+
+### Exemplo resolvido
+
+Lindiwe testa quatro controles com casos plantados, encontra um erro de limite na medida de adivinhação, o corrige e executa de novo todos os testes.
+
+> **Caso sintético.** Os testes são sintéticos.
+
+### Erros e limites
+
+Os casos-limite não testados muitas vezes revelam discordância entre a definição e o código.
+
+### Exercícios
+
+- **EX088 — Rajada plantada.** Que rajada plantada deve ser sinalizada? *Rubrica:* 3 = dez falhas em quatro minutos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX089 — Teste reprovado.** Que caso plantado falhou no início? *Rubrica:* 3 = dez falhas abrangendo exatamente cinco minutos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX090 — Testes permanentes.** Por que manter os casos plantados de forma permanente? *Rubrica:* 3 = para conferir rapidamente as mudanças futuras;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Lindiwe Dube, o Prof. Marcus Hale, a Brightwater Polytechnic, a Saltmarsh Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Lindiwe Dube, o Prof. Marcus Hale, a Brightwater Polytechnic, a Saltmarsh Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de quarenta milhões de eventos por dia.
 
@@ -1000,6 +1509,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Organizacionais, de pessoas, físicos e tecnológicos.
 
 **EX060.** Governar, Identificar, Proteger, Detectar, Responder e Recuperar.
+
+**EX061.** Autenticação multifator para o acesso remoto e relatos de incidentes em até 24 horas.
+
+**EX062.** Em até catorze dias.
+
+**EX063.** Guardar os logs por um ano, com acesso restrito e campos pessoais minimizados.
+
+**EX064.** Sessenta e três hosts.
+
+**EX065.** Noventa endereços registrados.
+
+**EX066.** O gerente do depósito, com o apoio da TI.
+
+**EX067.** A integridade dos endereços de entrega.
+
+**EX068.** Uma fila de mensagens cheia que atrasa as confirmações.
+
+**EX069.** Pessoas internas que exportam listas de clientes.
+
+**EX070.** O gerente do depósito e o líder de segurança.
+
+**EX071.** Guardando as evidências com somas de verificação numa pasta restrita.
+
+**EX072.** Uma porta que ela pensava estar destrancada tem uma fechadura com código.
+
+**EX073.** Um orçamento pequeno.
+
+**EX074.** Dá acesso amplo à rede depois de conectada.
+
+**EX075.** Uma segunda chave registrada e uma ligação verificada para a central de atendimento.
+
+**EX076.** Uma vez dentro, um atacante herda a confiança.
+
+**EX077.** A mediação completa.
+
+**EX078.** As contas de usuário, a configuração e os dados.
+
+**EX079.** A aprovação por uma segunda pessoa das mudanças de endereço de alto valor.
+
+**EX080.** Cerca de cinco por cento dos pedidos.
+
+**EX081.** Encenando mudanças suspeitas sintéticas e conferindo os alertas.
+
+**EX082.** 278 servidores, 92,7 por cento.
+
+**EX083.** 253 servidores, 84,3 por cento.
+
+**EX084.** 216 servidores, 72,0 por cento.
+
+**EX085.** u17, u402 e u977.
+
+**EX086.** Suas 61 falhas estão espalhadas ao longo do dia, e não em rajadas.
+
+**EX087.** A adivinhação de senhas lenta e paciente.
+
+**EX088.** Dez falhas em até quatro minutos.
+
+**EX089.** Uma rajada de dez falhas abrangendo exatamente cinco minutos.
+
+**EX090.** Para que as mudanças futuras possam ser conferidas rapidamente.
 
 <a id="references"></a>
 ## Referências
