@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 098, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 13 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os dezesseis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a estudar, projetar e avaliar o comportamento de segurança e os reportes numa pequena organização pública.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam reportes, calculam taxas, intervalos de Wilson, funis e medianas e consultam SQLite sobre dados sintéticos; nenhum funcionário, usuário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, acordada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada; os testes de usabilidade usam uma caixa postal de teste com voluntários que sabem que estão testando a ferramenta, e não sendo testados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
-
-Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1379,11 +1377,410 @@ Dados observacionais não provam causalidade. Os grupos podem diferir.
 - **EX089 — Resultado dos intervalos.** O que os intervalos mostraram? *Rubrica:* 3 = não se sobrepuseram;; 2 = separados;; 1 = sobreposição;; 0 = nenhuma.
 - **EX090 — Cautela quanto à causalidade.** Por que o resultado não pode provar causalidade? *Rubrica:* 3 = os dados são observacionais e os grupos podem diferir;; 2 = observacionais;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Fatores humanos e política cibernética: casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos que envolvem pessoas internas, voluntários e o público; (2) pesar a segurança contra os valores do serviço; (3) desenhar respostas proporcionais.
+
+### 31.1 Voluntários e pessoas internas
+
+A Ashcombe conta com quarenta voluntários que ajudam em eventos e em grupos de apoio às tarefas escolares. Alguns precisam de acesso aos sistemas de reserva. Nadia analisa um caso sintético em que um voluntário compartilha o login de um funcionário para que um amigo possa reservar salas. A intenção é ajudar, e não prejudicar, mas isso contorna a responsabilização. Ela aprende que a maioria dos problemas com pessoas internas envolve conveniência e boa vontade, e não malícia. Tratar os voluntários como suspeitos prejudicaria relações das quais a biblioteca depende, por isso a resposta deve tratar a lacuna de conveniência sem presumir má intenção.
+
+### 31.2 Segurança e valores do serviço
+
+As bibliotecas valorizam a abertura, a privacidade e o acesso para todos. Os computadores públicos precisam ser fáceis de usar por pessoas com poucas habilidades digitais. Nadia examina uma proposta de exigir identificação para o uso dos computadores públicos, a fim de dissuadir o mau uso. Ela a pesa contra os valores da biblioteca: a identificação excluiria alguns usuários vulneráveis e criaria registros do que as pessoas fazem. Conclui que limites de tempo, limpeza automática das sessões e filtragem de malware na rede alcançam a maior parte dos objetivos de segurança sem prejudicar o acesso. As escolhas de segurança devem se ajustar à missão da organização que protegem.
+
+### 31.3 Respostas proporcionais
+
+Nadia desenvolve um princípio de proporcionalidade: as respostas devem corresponder ao risco e respeitar os papéis das pessoas. Para o caso do login compartilhado, ela propõe uma conta simples de voluntário, apenas com direitos de reserva, criada em até um dia após o pedido. Para os computadores públicos, mantém o modelo aberto com salvaguardas técnicas. Para os funcionários, aposta no apoio, e não na vigilância. A proporcionalidade evita reações exageradas depois de incidentes, que podem impor ônus pesados a todos por causa de um único evento, e mantém o programa alinhado aos valores da organização.
+
+### Exemplo resolvido
+
+Nadia analisa um caso de compartilhamento de login por um voluntário, pesa a identificação contra os valores da biblioteca e define respostas proporcionais.
+
+> **Caso sintético.** Os casos são sintéticos.
+
+### Erros e limites
+
+A proporcionalidade exige julgamento. Modelos abertos carregam risco residual.
+
+### Exercícios
+
+- **EX091 — Motivação interna.** O que costuma motivar os problemas com pessoas internas, segundo o capítulo? *Rubrica:* 3 = conveniência e boa vontade, e não malícia;; 2 = conveniência;; 1 = malícia;; 0 = nenhuma.
+- **EX092 — Identificação rejeitada.** Por que Nadia rejeitou a identificação nos computadores públicos? *Rubrica:* 3 = excluiria usuários vulneráveis e criaria registros;; 2 = acesso;; 1 = nada;; 0 = nenhuma.
+- **EX093 — Correção para voluntários.** Que correção trata o login compartilhado? *Rubrica:* 3 = uma conta de voluntário apenas com direitos de reserva;; 2 = conta por função;; 1 = proibição;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Fatores humanos e política cibernética: interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar com as perspectivas do direito, da psicologia e da gestão; (2) traduzir entre disciplinas; (3) construir entendimento comum para as decisões.
+
+### 32.1 Várias perspectivas
+
+As decisões de segurança na Ashcombe envolvem várias disciplinas. A legislação de proteção de dados define deveres para os dados dos usuários. A psicologia explica por que os funcionários reagem à pressão como reagem. A gestão decide orçamentos e prioridades. A TI implementa os controles. Nadia aprende que cada disciplina usa sua própria linguagem: os juristas falam de bases legais e deveres, os psicólogos de normas e carga cognitiva, os gestores de custos e resultados. Um bom trabalho em fatores humanos envolve traduzir entre essas linguagens, para que as decisões se apoiem em todo o conhecimento relevante, e não numa única visão.
+
+### 32.2 Traduzir
+
+Nadia prepara um resumo de uma página sobre o risco de falsificação de identidade por telefone para cada público. Para o encarregado de privacidade, apresenta a regra de não revelação como proteção dos dados dos usuários e cumprimento dos deveres legais. Para os gestores, como redução de risco a quase nenhum custo. Para os funcionários, como proteção contra a pressão: eles nunca precisam julgar se quem liga é legítimo. A mesma regra, explicada nos termos de cada disciplina, ganha apoio com mais facilidade do que uma explicação única ganharia. Cada resumo cabe em uma página.
+
+### 32.3 Entendimento comum
+
+Nadia organiza uma reunião curta em que o encarregado de privacidade, um gestor, uma analista de TI e um representante dos funcionários discutem juntos o programa de reportes. Cada um explica suas preocupações. O encarregado de privacidade se preocupa com os logs; o gestor, com o custo; a TI, com a carga de trabalho; o representante, com a culpa. Ouvindo uns aos outros, eles concordam com um log minimizado, um orçamento modesto, respostas com modelos e uma declaração de não atribuição de culpa. Nadia aprende que o trabalho interdisciplinar muitas vezes tem menos a ver com especialização e mais com criar espaços em que as pessoas possam se entender.
+
+### Exemplo resolvido
+
+Nadia traduz a regra de não revelação para os públicos jurídico, gerencial e dos funcionários e convoca uma reunião que chega a acordos comuns.
+
+> **Caso sintético.** A reunião é sintética.
+
+### Erros e limites
+
+A tradução pode simplificar demais. As reuniões podem ser dominadas pelas vozes mais seniores.
+
+### Exercícios
+
+- **EX094 — Enquadramento para os funcionários.** Como a regra foi apresentada aos funcionários? *Rubrica:* 3 = proteção contra a pressão de julgar quem liga;; 2 = alívio;; 1 = nada;; 0 = nenhuma.
+- **EX095 — Preocupação do representante.** Com o que o representante dos funcionários se preocupava? *Rubrica:* 3 = a culpa;; 2 = culpa;; 1 = custo;; 0 = nenhuma.
+- **EX096 — Resultado da reunião.** Com o que a reunião concordou? *Rubrica:* 3 = log minimizado, orçamento modesto, modelos e declaração de não atribuição de culpa;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar um pequeno estudo comparativo; (2) considerar confiabilidade e validade; (3) planejar a análise antes de coletar os dados.
+
+### 33.1 Desenho comparativo
+
+Para o último ano, Nadia planeja comparar a Ashcombe com outra rede de bibliotecas fictícia, a Dunmore Libraries, que tem um programa guiado pela conformidade, com treinamento anual e simulações mensais. Sua pergunta é se a abordagem centrada em reportes da Ashcombe está associada a reportes mais rápidos de e-mails suspeitos reais do que a abordagem da Dunmore. Ela planeja coletar dados anonimizados de reporte e aplicar o mesmo questionário curto nas duas redes. Um desenho comparativo não pode provar causalidade, mas pode mostrar se as diferenças são grandes o bastante para merecer mais atenção.
+
+### 33.2 Confiabilidade e validade
+
+Confiabilidade significa que uma medida dá resultados consistentes; validade significa que ela mede o que deveria. Nadia confere se as duas redes definem os reportes da mesma forma e se suas equipes de TI registram os tempos de modo semelhante. Ela usa a mesma redação no questionário. Observa as ameaças à validade: as redes diferem em tamanho, localização e nos ataques que recebem. Planeja descrever essas diferenças abertamente, em vez de ignorá-las, e tratar qualquer achado como um indício, e não como uma conclusão sobre qual programa é melhor.
+
+### 33.3 Planejar a análise
+
+Antes de coletar os dados, Nadia escreve seu plano de análise: comparar a mediana do tempo até o primeiro reporte, comparar a proporção de e-mails maliciosos reais que foram reportados e comparar as pontuações do questionário em confiança e medo de culpa. Ela especifica quais testes usará e declara que diferença consideraria relevante. Escrever o plano primeiro a impede de vasculhar os dados atrás de qualquer resultado que pareça interessante. O Dr. Prescott aprova o plano, e as duas redes concordam em compartilhar dados anonimizados sob um acordo de compartilhamento de dados. O plano tem duas páginas.
+
+### Exemplo resolvido
+
+Nadia desenha uma comparação entre a Ashcombe e a Dunmore, trata a confiabilidade e a validade e escreve um plano de análise de antemão.
+
+> **Caso sintético.** As duas redes são sintéticas.
+
+### Erros e limites
+
+Comparações entre organizações sofrem com fatores de confusão. As práticas de registro diferem.
+
+### Exercícios
+
+- **EX097 — Abordagem da Dunmore.** Que abordagem a Dunmore usa? *Rubrica:* 3 = treinamento anual e simulações mensais;; 2 = guiada pela conformidade;; 1 = guiada pelo reporte;; 0 = nenhuma.
+- **EX098 — Definição de confiabilidade.** O que significa confiabilidade? *Rubrica:* 3 = resultados consistentes de uma medida;; 2 = consistência;; 1 = validade;; 0 = nenhuma.
+- **EX099 — O plano primeiro.** Por que escrever o plano de análise antes dos dados? *Rubrica:* 3 = para evitar vasculhar os dados atrás de resultados interessantes;; 2 = planejamento prévio;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma comparação com as medidas planejadas; (2) interpretar as diferenças com cuidado; (3) apresentar conclusões equilibradas.
+
+### 34.1 Coletar os dados
+
+Nadia coleta seis meses de dados anonimizados das duas redes. Na Ashcombe, 22 e-mails maliciosos chegaram aos funcionários; na Dunmore, com 150 funcionários, 27. Para cada um, ela registra o tempo até o primeiro reporte ou anota que nunca foi reportado. Também aplica o questionário nas duas redes, recebendo 82 respostas na Ashcombe e 95 na Dunmore. Ela guarda os dados numa pasta protegida, confere se há erros comparando os totais com os resumos da TI e registra cada decisão sobre itens excluídos ou pouco claros. Ela anota cada exclusão num caderno.
+
+### 34.2 Comparar os resultados
+
+O laboratório calcula a mediana do tempo até o primeiro reporte e a proporção de e-mails maliciosos reportados em cada rede. A Ashcombe mostra uma mediana de tempo menor e uma proporção reportada maior. As pontuações do questionário mostram mais confiança e menos medo de culpa na Ashcombe. Nadia observa que as taxas de clique da Dunmore nas simulações são baixas, o que seus gestores citam como sucesso, mas seus funcionários reportam ataques reais lentamente. Isso sugere que taxas de clique baixas e reportes rápidos são coisas diferentes, um ponto que ela discute com cuidado.
+
+### Laboratório — Resultados de reporte em duas redes de bibliotecas
+
+```python
+# Reporting outcomes at two synthetic library networks over six months.
+ash = [3, 5, 6, 8, 9, 10, 11, 12, 12, 14, 15, 18, 21, 25, 30, 38, 44, 52, 66] + [None] * 3
+dun = [9, 15, 22, 30, 41, 47, 55, 70, 88, 120, 150, 180, 240, 300] + [None] * 13
+for name, d in (("Ashcombe", ash), ("Dunmore", dun)):
+    t = sorted(x for x in d if x is not None)
+    print(f"{name}: {len(d)} malicious, reported {len(t)} ({len(t) / len(d):.0%}), median first report {t[len(t) // 2]} min")
+```
+
+Execute com `python3 lab_networks.py`. Saída verificada:
+
+```text
+Ashcombe: 22 malicious, reported 19 (86%), median first report 14 min
+Dunmore: 27 malicious, reported 14 (52%), median first report 70 min
+```
+
+### 34.3 Conclusões equilibradas
+
+Nadia conclui que a abordagem da Ashcombe está associada a reportes mais rápidos e a mais confiança dos funcionários, mas não afirma que ela causou essas diferenças. Os funcionários da Dunmore podem enfrentar ataques diferentes, e seu programa tem pontos fortes, como a prática regular. Ela sugere que a Dunmore poderia ganhar acrescentando retorno rápido e uma mensagem de não atribuição de culpa, e que a Ashcombe poderia aprender com as reciclagens regulares da Dunmore. Conclusões equilibradas respeitam as duas organizações e têm mais chance de ser postas em prática do que afirmações de que uma abordagem é simplesmente a certa.
+
+### Exemplo resolvido
+
+Nadia compara duas redes, encontra reportes mais rápidos e mais confiança na Ashcombe e tira conclusões equilibradas.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Seis meses é pouco tempo. As redes enfrentam ataques diferentes.
+
+### Exercícios
+
+- **EX100 — Medianas no laboratório.** Que medianas de tempo até o primeiro reporte o laboratório mostrou? *Rubrica:* 3 = Ashcombe 14 e Dunmore 70 minutos;; 2 = mais rápido;; 1 = nada;; 0 = nenhuma.
+- **EX101 — Proporção reportada.** Que proporções dos e-mails maliciosos foram reportadas? *Rubrica:* 3 = Ashcombe 86% e Dunmore 52%;; 2 = maior;; 1 = nada;; 0 = nenhuma.
+- **EX102 — Clique versus reporte.** O que os resultados da Dunmore sugerem? *Rubrica:* 3 = cliques baixos e reportes rápidos são diferentes;; 2 = diferentes;; 1 = iguais;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta de trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher um problema para o trabalho de conclusão a partir de achados anteriores; (2) escrever objetivos e critérios de sucesso; (3) planejar recursos e ética.
+
+### 35.1 Escolher o problema
+
+Para o trabalho de conclusão, Nadia escolhe uma lacuna encontrada antes: voluntários e funcionários de meio período, que trabalham em horários irregulares, muitas vezes ficam de fora das reciclagens dadas nas reuniões de equipe e raramente reportam. Seu problema é como incluí-los no programa de reportes de um jeito que combine com seus padrões de trabalho e com sua relação com a biblioteca. Ela escolhe esse tema porque ele se apoia em seus achados anteriores, importa para a Ashcombe e é viável em um ano letivo com recursos modestos. O Dr. Prescott concorda com a escolha.
+
+### 35.2 Objetivos e critérios
+
+Nadia define três objetivos: desenhar um guia de boas-vindas curto para voluntários e funcionários de meio período; oferecer uma via de reporte simples que funcione sem conta de e-mail de funcionário; e avaliar se os reportes e a confiança melhoram. Os critérios de sucesso são que pelo menos dois terços dos voluntários recebam o guia, que os reportes dos voluntários aumentem e que as pontuações de confiança subam num questionário curto. Ela define de antemão que, se menos da metade receber o guia, revisará a distribuição antes de avaliar. Cada critério tem uma data.
+
+### 35.3 Recursos e ética
+
+Nadia lista os recursos: seu tempo, o apoio da coordenadora de voluntários, impressão e algumas horas da TI para um formulário web. Ela busca aprovação ética para questionários e entrevistas breves com voluntários, observando que eles podem se sentir obrigados a participar; ela enfatiza que a participação é voluntária e não tem ligação com suas funções. Planeja guardar os dados sem nomes. Planejar recursos e ética cedo evita os atrasos que costumam afetar os trabalhos de conclusão no fim do ano. A coordenadora concorda em ajudar na distribuição.
+
+### Exemplo resolvido
+
+Nadia escolhe um trabalho de conclusão sobre a inclusão de voluntários, define objetivos e critérios com uma regra de revisão predefinida e planeja recursos e ética.
+
+> **Caso sintético.** O trabalho de conclusão é sintético.
+
+### Erros e limites
+
+O número de voluntários oscila. Amostras pequenas limitam a avaliação.
+
+### Exercícios
+
+- **EX103 — Grupo do trabalho.** Que grupo o trabalho de conclusão trata? *Rubrica:* 3 = voluntários e funcionários de meio período;; 2 = voluntários;; 1 = nada;; 0 = nenhuma.
+- **EX104 — Critério do guia.** Que proporção dos voluntários deve receber o guia? *Rubrica:* 3 = pelo menos dois terços;; 2 = dois terços;; 1 = metade;; 0 = nenhuma.
+- **EX105 — Preocupação com obrigação.** Que preocupação ética se aplica aos voluntários? *Rubrica:* 3 = podem se sentir obrigados a participar;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar com voluntários e com o público num contexto comunitário; (2) oferecer orientações de segurança com respeito; (3) aprender com o retorno da comunidade.
+
+### 36.1 Contexto comunitário
+
+Nadia passa seis semanas trabalhando ao lado da coordenadora de voluntários da Ashcombe. Ela participa dos grupos de apoio às tarefas escolares e das sessões de ajuda digital, em que os voluntários apoiam os usuários em tarefas como criar um e-mail ou solicitar serviços online. Ela vê que os voluntários muitas vezes recebem perguntas de segurança dos usuários, como se uma mensagem de um banco é legítima. Trabalhar na comunidade lhe mostra que o comportamento de segurança vai além dos funcionários e alcança as pessoas que a biblioteca atende, e que os voluntários atuam como conselheiros informais de segurança online.
+
+### 36.2 Orientação respeitosa
+
+Nadia elabora com os voluntários um guia de uma página para ajudar os usuários: nunca lidar com as senhas de um usuário, incentivar os usuários a contatar as organizações pelos números oficiais e sugerir que golpes sejam denunciados pelos canais nacionais. Ela evita linguagem técnica e exemplos assustadores, concentrando-se em passos práticos e tranquilos. Os voluntários testam o guia nas sessões e sugerem uma redação mais simples. Ela observa que as diretrizes de cultura de cibersegurança da ENISA enfatizam entender o público, e que uma orientação respeitosa constrói a confiança dos usuários, em vez de fazê-los se sentir tolos por não saber. Os voluntários gostam do guia.
+
+### 36.3 Retorno da comunidade
+
+Usuários e voluntários dão retorno por meio de conversas curtas e de uma caixa de comentários. Vários usuários dizem que o guia os ajudou a sentir menos ansiedade com os serviços online. Os voluntários pedem uma sessão curta sobre como reconhecer SMS de golpe, que Nadia organiza com a TI. Uma usuária mais velha comenta que os alertas sobre golpes a deixaram com medo de usar o banco pela internet. Nadia registra isso como um lembrete de que o medo pode reduzir o uso seguro e útil da tecnologia, e revisa o guia para incluir passos positivos, e não apenas alertas.
+
+### Exemplo resolvido
+
+Nadia trabalha em sessões comunitárias, elabora com os voluntários um guia respeitoso e o revisa depois de um retorno sobre o medo.
+
+> **Caso sintético.** A prática é sintética; as diretrizes da ENISA são reais.
+
+### Erros e limites
+
+O retorno informal não é representativo. Os voluntários variam em confiança.
+
+### Exercícios
+
+- **EX106 — Papel dos voluntários.** Que papel informal os voluntários desempenham? *Rubrica:* 3 = conselheiros de segurança online para os usuários;; 2 = conselheiros;; 1 = nada;; 0 = nenhuma.
+- **EX107 — Regra das senhas.** O que os voluntários nunca devem fazer? *Rubrica:* 3 = lidar com as senhas de um usuário;; 2 = senhas;; 1 = nada;; 0 = nenhuma.
+- **EX108 — Lição sobre o medo.** O que o comentário da usuária mais velha mostrou? *Rubrica:* 3 = o medo pode reduzir o uso seguro e útil da tecnologia;; 2 = medo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar as evidências sobre a eficácia do treinamento de conscientização; (2) avaliar a qualidade dos estudos; (3) resumir o que se sabe e o que não se sabe.
+
+### 37.1 Revisar as evidências
+
+Num seminário, Nadia e os colegas revisam as evidências publicadas sobre se o treinamento de conscientização e as simulações funcionam. Eles leem Bada, Sasse e Nurse (2019) sobre por que as campanhas falham, Lain, Kostiainen e Čapkun (2022) sobre um grande estudo organizacional de phishing e a NIST SP 800-50r1 sobre o desenho de programas. Observam que muitas afirmações de fornecedores não têm evidência independente. Revisar as evidências os ajuda a não repetir crenças populares e, em vez disso, basear as recomendações em estudos cujos métodos podem examinar e julgar. Cada estudante apresenta um artigo ao grupo e conduz dez minutos de discussão.
+
+### 37.2 Avaliar a qualidade
+
+O grupo avalia a qualidade dos estudos com perguntas simples: quantos participantes, havia grupo de comparação, como os resultados foram medidos e quem financiou o estudo. Lain e colegas estudaram milhares de funcionários por mais de um ano, o que dá peso a seus achados; eles constataram que o treinamento embutido após os cliques não melhorou os resultados, enquanto os funcionários, coletivamente, reportaram muitos e-mails de phishing. Estudos pequenos, sem grupo de comparação ou financiados por fornecedores, recebem menos peso. A avaliação de qualidade os ajuda a pesar afirmações conflitantes de forma sensata.
+
+### 37.3 O que se sabe
+
+O grupo resume: as evidências sugerem que campanhas baseadas no medo e longos treinamentos após o clique são fracos; que o reporte por muitos funcionários pode detectar ataques rapidamente; e que o design usável reduz o ônus. Sabe-se menos sobre os efeitos de longo prazo do retorno ou sobre organizações pequenas como as bibliotecas. Nadia observa que seu próprio trabalho na Ashcombe acrescenta um pequeno caso a essa lacuna. Uma declaração clara do que se sabe e do que não se sabe orienta tanto a prática quanto a pesquisa futura, e protege contra afirmações excessivamente confiantes. O resumo cabe em uma página.
+
+### Exemplo resolvido
+
+O seminário de Nadia revisa estudos-chave, avalia sua qualidade e resume os pontos conhecidos e desconhecidos.
+
+> **Caso sintético.** O seminário é sintético; Bada et al. (2019), Lain et al. (2022) e a SP 800-50r1 são reais.
+
+### Erros e limites
+
+As revisões podem deixar estudos de fora. As perguntas de qualidade são simples.
+
+### Exercícios
+
+- **EX109 — Achado de Lain.** O que Lain et al. constataram sobre o treinamento embutido? *Rubrica:* 3 = não melhorou os resultados;; 2 = ineficaz;; 1 = ajudou;; 0 = nenhuma.
+- **EX110 — Perguntas de qualidade.** Cite duas perguntas de qualidade usadas. *Rubrica:* 3 = número de participantes e grupo de comparação;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX111 — Lacuna conhecida.** O que se sabe menos? *Rubrica:* 3 = efeitos de longo prazo do retorno e organizações pequenas;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o guia para voluntários e a via de reporte; (2) gerir a distribuição; (3) adaptar-se durante a implementação.
+
+### 38.1 Construir as peças
+
+Nadia escreve o guia de boas-vindas para voluntários e funcionários de meio período: como são as mensagens suspeitas, as três perguntas a fazer, como reportar e a promessa de que os reportes são bem-vindos e nunca levam a culpa. A TI constrói um formulário web simples que qualquer pessoa com um código de voluntário pode usar a partir de qualquer dispositivo, enviando os reportes para a caixa postal compartilhada. Ela testa o formulário com cinco voluntários, que o acham fácil, e corrige um rótulo confuso antes do lançamento. O guia tem duas páginas.
+
+### 38.2 Distribuição
+
+O guia é entregue pela coordenadora de voluntários na integração e enviado por um link via SMS aos voluntários já existentes. Os funcionários de meio período o recebem junto com o contracheque. Nadia acompanha a distribuição com uma contagem simples dos guias entregues por unidade, e não por nomes. Depois de quatro semanas, 31 de 40 voluntários e 18 de 22 funcionários de meio período receberam o guia, o que atende a seu critério de dois terços. Acompanhar por contagens respeita a privacidade e, ao mesmo tempo, mostra se o guia chegou às pessoas. A coordenadora mantém a planilha de contagem atualizada.
+
+### 38.3 Adaptar
+
+Durante a implementação, os voluntários de uma unidade dizem que raramente olham o celular durante as sessões, por isso o link por SMS é ignorado. Nadia providencia guias impressos para ficarem naquela unidade. A TI percebe que alguns reportes do formulário contêm dados pessoais de usuários, que os voluntários incluíram para explicar o contexto; o formulário é atualizado com uma nota pedindo que as pessoas não incluam dados pessoais. Adaptar-se durante a implementação é normal e fica registrado, para que a avaliação final reflita o que de fato foi feito. As duas mudanças são registradas.
+
+### Exemplo resolvido
+
+Nadia constrói um guia e um formulário web, os distribui a 49 de 62 pessoas e se adapta a uma unidade e aos dados pessoais nos reportes.
+
+> **Caso sintético.** A implementação é sintética.
+
+### Erros e limites
+
+Contagens não mostram a leitura. Formulários podem ser mal utilizados.
+
+### Exercícios
+
+- **EX112 — Acesso ao formulário.** Como os voluntários acessam o formulário? *Rubrica:* 3 = com um código de voluntário, a partir de qualquer dispositivo;; 2 = código;; 1 = e-mail de funcionário;; 0 = nenhuma.
+- **EX113 — Proporção da distribuição.** Que proporção dos voluntários recebeu o guia? *Rubrica:* 3 = 31 de 40, cerca de 78%;; 2 = 78%;; 1 = nada;; 0 = nenhuma.
+- **EX114 — Mudança no formulário.** Por que o formulário foi atualizado? *Rubrica:* 3 = os reportes incluíam dados pessoais de usuários;; 2 = privacidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o trabalho de conclusão em relação aos critérios; (2) analisar pequenas amostras de antes e depois; (3) relatar com honestidade.
+
+### 39.1 Dados de avaliação
+
+Nadia compara os três meses anteriores e os três meses posteriores ao guia. Antes, voluntários e funcionários de meio período fizeram 4 reportes; depois, 15. Ela também aplica um questionário, recebendo 34 respostas antes e 37 depois, perguntando se saberiam como reportar uma mensagem suspeita e se teriam receio de ser culpados. Ela observa que pessoas diferentes responderam a cada questionário, já que os voluntários mudam, de modo que a comparação é entre grupos, e não entre indivíduos. O questionário leva três minutos, é anônimo e não faz perguntas sobre dados pessoais, para que os voluntários possam responder rapidamente no fim de uma sessão.
+
+### 39.2 Analisar as amostras
+
+O laboratório calcula a proporção que respondeu sim à pergunta sobre saber como reportar, antes e depois, com intervalos de Wilson. O conhecimento subiu claramente. O receio de culpa caiu, embora os intervalos tenham se sobreposto. Os reportes subiram de 4 para 15, mas, com contagens pequenas e possíveis efeitos sazonais, como mais sessões no outono, ela trata o aumento como encorajador, e não conclusivo. Os três critérios de sucesso são atendidos, de modo que a regra de revisão predefinida não é acionada e o programa continua. O conhecimento subiu de 41% para 81%. O receio caiu de 35% para 19%.
+
+### Laboratório — Saber como reportar, antes e depois
+
+```python
+# Knowing how to report: before and after the guide, Wilson intervals (synthetic).
+from math import sqrt
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z * z / n; c = (p + z * z / (2 * n)) / d; h = z * sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return c - h, c + h
+for name, k, n in (("know before", 14, 34), ("know after", 30, 37), ("worry before", 12, 34), ("worry after", 7, 37)):
+    lo, hi = wilson(k, n); print(f"{name}: {k}/{n} = {k / n:.0%} (95% CI {lo:.0%} to {hi:.0%})")
+```
+
+Execute com `python3 lab_capstone.py`. Saída verificada:
+
+```text
+know before: 14/34 = 41% (95% CI 26% to 58%)
+know after: 30/37 = 81% (95% CI 66% to 91%)
+worry before: 12/34 = 35% (95% CI 21% to 52%)
+worry after: 7/37 = 19% (95% CI 9% to 34%)
+```
+
+### 39.3 Relato honesto
+
+Nadia escreve seu relatório de avaliação com resultados, limites e recomendações. Ela observa que os grupos do questionário diferem, que efeitos sazonais podem explicar parte da mudança e que saber como reportar não é o mesmo que reportar. Recomenda manter o guia e o formulário, acrescentar um lembrete anual curto e conferir de novo em um ano. O Dr. Prescott elogia o relatório por não exagerar nem descartar os resultados, que é o equilíbrio que uma boa avaliação exige. Os gestores aceitam todas as recomendações. O relatório é compartilhado com os funcionários.
+
+### Exemplo resolvido
+
+Nadia avalia seu trabalho de conclusão, constata que o conhecimento subiu de 41% para 81% e os reportes aumentaram de 4 para 15, e relata os limites com honestidade.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Respondentes diferentes antes e depois. Efeitos sazonais.
+
+### Exercícios
+
+- **EX115 — Contagem de reportes.** Como mudaram os reportes de voluntários e funcionários de meio período? *Rubrica:* 3 = de 4 para 15;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
+- **EX116 — Proporções de conhecimento.** Que proporções sabiam como reportar antes e depois, no laboratório? *Rubrica:* 3 = 41% e 81%;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
+- **EX117 — Cautela com os grupos.** Por que a comparação do questionário é entre grupos? *Rubrica:* 3 = os voluntários mudaram entre os questionários;; 2 = rotatividade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Tese e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar uma monografia de bacharelado; (2) apresentar os achados a um público acadêmico e profissional; (3) refletir sobre a aprendizagem.
+
+### 40.1 Estrutura da tese
+
+A tese de Nadia, "Fazendo o reporte funcionar numa rede pública de bibliotecas", tem capítulos sobre contexto e literatura, métodos, o estudo de reportes, o projeto comparativo, o trabalho de conclusão com voluntários e as conclusões. Cada capítulo declara sua pergunta, métodos, achados e limites. Ela cita fontes que conferiu, como Adams e Sasse (1999), Sasse, Brostoff e Weirich (2001), Herley (2009) e Lain, Kostiainen e Čapkun (2022), e mantém todos os dados do caso sintéticos ou anonimizados. Os apêndices trazem seu código, o questionário e as aprovações éticas. A tese tem sessenta páginas. Cada apêndice é indexado.
+
+### 40.2 Apresentação
+
+Nadia apresenta aos examinadores e aos gestores da Ashcombe em quinze minutos. Começa pelo problema dos reportes lentos, mostra o modelo de funil, o efeito do retorno, a comparação com a Dunmore e os resultados do trabalho de conclusão. Um gestor pergunta se as simulações deveriam aumentar; ela responde que as evidências favorecem o retorno rápido e o reporte fácil, com simulações usadas com parcimônia sob regras acordadas. Um examinador pergunta sobre generalização; ela reconhece que seu trabalho trata de uma única rede e sugere estudos semelhantes em outros lugares. Os gestores pedem uma cópia.
+
+### 40.3 Reflexão
+
+Nadia reflete sobre o que aprendeu: que os problemas de segurança muitas vezes estão nos sistemas, e não nas pessoas; que pequenas mudanças de design e um retorno gentil podem importar mais do que palestras; e que limites declarados com honestidade tornam os achados mais confiáveis. Ela observa como sua visão mudou desde o primeiro ensaio, quando ainda acreditava pela metade que os funcionários eram o elo mais fraco. Planeja seguir numa função de segurança, levando o hábito de perguntar o que o sistema exige das pessoas antes de julgar como elas reagem. Ela escreve a reflexão em uma página.
+
+### Exemplo resolvido
+
+Nadia estrutura sua tese, apresenta aos examinadores e gestores, responde perguntas sobre simulações e generalização e reflete sobre sua aprendizagem.
+
+> **Caso sintético.** A tese é sintética; as obras citadas são reais.
+
+### Erros e limites
+
+Um único caso limita a generalização. A reflexão pode ser seletiva.
+
+### Exercícios
+
+- **EX118 — Resposta sobre simulações.** Como Nadia respondeu à pergunta sobre simulações? *Rubrica:* 3 = favorecer o retorno e o reporte fácil, simulações com parcimônia;; 2 = parcimônia;; 1 = mais simulações;; 0 = nenhuma.
+- **EX119 — Resposta sobre generalização.** Como Nadia respondeu sobre generalização? *Rubrica:* 3 = uma única rede, sugere estudos em outros lugares;; 2 = limites;; 1 = nada;; 0 = nenhuma.
+- **EX120 — Visão que mudou.** Como a visão de Nadia mudou desde o primeiro ensaio? *Rubrica:* 3 = de acreditar pela metade que os funcionários são o elo mais fraco a olhar para os sistemas;; 2 = sistemas;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Farouk, o Dr. Owen Prescott, a Fenmoor University, a Ashcombe Community Library Network, a Dunmore Libraries e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Nadia Farouk, o Dr. Owen Prescott, a Fenmoor University, a Ashcombe Community Library Network, a Dunmore Libraries e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** 40 reportes por cem funcionários, já que 48 dividido por 120 dá 0,4.
 
@@ -1564,6 +1961,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em i
 **EX089.** Não se sobrepuseram, o que sugere uma diferença real.
 
 **EX090.** Porque os dados são observacionais e os grupos podem diferir em outros aspectos.
+
+**EX091.** Conveniência e boa vontade, e não malícia.
+
+**EX092.** Porque excluiria usuários vulneráveis e criaria registros de suas atividades.
+
+**EX093.** Uma conta de voluntário apenas com direitos de reserva, criada rapidamente.
+
+**EX094.** Como proteção contra ter de julgar se quem liga é legítimo.
+
+**EX095.** Ser culpado por erros.
+
+**EX096.** Um log minimizado, um orçamento modesto, respostas com modelos e uma declaração de não atribuição de culpa.
+
+**EX097.** Um programa guiado pela conformidade, com treinamento anual e simulações mensais.
+
+**EX098.** Que uma medida dá resultados consistentes.
+
+**EX099.** Para evitar vasculhar os dados atrás de qualquer resultado que pareça interessante.
+
+**EX100.** 14 minutos na Ashcombe e 70 minutos na Dunmore.
+
+**EX101.** 86% na Ashcombe e 52% na Dunmore.
+
+**EX102.** Que taxas de clique baixas em simulações e reportes rápidos de ataques reais são coisas diferentes.
+
+**EX103.** Voluntários e funcionários de meio período.
+
+**EX104.** Pelo menos dois terços.
+
+**EX105.** Que podem se sentir obrigados a participar.
+
+**EX106.** Conselheiros informais dos usuários sobre segurança online.
+
+**EX107.** Lidar com as senhas de um usuário.
+
+**EX108.** Que alertas baseados no medo podem fazer as pessoas deixarem de usar serviços úteis.
+
+**EX109.** Que o treinamento embutido após os cliques não melhorou os resultados.
+
+**EX110.** Exemplos incluem o número de participantes, grupos de comparação, medidas de resultado e financiamento.
+
+**EX111.** Os efeitos de longo prazo do retorno e os resultados em organizações pequenas.
+
+**EX112.** Com um código de voluntário, a partir de qualquer dispositivo.
+
+**EX113.** 31 de 40 voluntários, cerca de 78%.
+
+**EX114.** Porque alguns reportes incluíam dados pessoais de usuários.
+
+**EX115.** De 4, nos três meses anteriores, para 15 depois.
+
+**EX116.** 41% (14 de 34) antes e 81% (30 de 37) depois.
+
+**EX117.** Porque pessoas diferentes responderam a cada questionário, à medida que os voluntários mudaram.
+
+**EX118.** Que as evidências favorecem o retorno rápido e o reporte fácil, com simulações usadas com parcimônia sob regras acordadas.
+
+**EX119.** Ela reconheceu que o trabalho trata de uma única rede e sugeriu estudos em outros lugares.
+
+**EX120.** Ela passou de acreditar pela metade que os funcionários eram o elo mais fraco a examinar o que os sistemas exigem das pessoas.
 
 <a id="references"></a>
 ## Referências
