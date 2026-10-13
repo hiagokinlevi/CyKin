@@ -1689,6 +1689,8 @@ The output lists each component on its own line, which makes the single mismatch
 
 The mismatch shows the PC is running policy version 2.0, not 2.1. Investigation finds the PC was offline during the update. The fix is to reapply the release, not to treat the PC as compromised.
 
+Mateo checked the PC's restore log and found it had been switched off on the night the new release went out. When it next started, the patron area restored correctly but the policy update had not been applied. Treating every mismatch as an attack would waste staff time and teach people to ignore alerts. The response rule below handles the ordinary case first.
+
 ### 22.5 Data model
 
 Measurement results are stored with PC, date, component and status.
@@ -2017,21 +2019,31 @@ You will (1) compare alternative architectures; (2) evaluate trade-offs; (3) sel
 
 Full disk reimage nightly from the network: strongest reset, but slow and network-heavy.
 
+Every night each PC would download and write its entire disk from the server, removing any change anywhere on the system, not just in the patron area. Mateo estimated the traffic: three hundred full images each night would take most of the night on Eastgate's congested link and could still be running at opening. The security benefit is real, but the cost in time and network load is high, and a failure partway through leaves the PC unusable until it finishes.
+
 ### 26.2 Alternative B
 
 Patron-area restore plus signed golden image updates monthly: faster, less traffic, relies on strong OS protection for system areas.
+
+Only the area patrons can write to is reset each night, which takes minutes and uses little network traffic since the copy is held locally. The system areas stay as they are between monthly image updates, protected by standard user accounts, application control and Secure Boot. The weakness is that a change to the system area that got past those protections would persist until the next full update. Mateo notes that weakness explicitly so it can be addressed.
 
 ### 26.3 Alternative C
 
 Thin clients with sessions hosted centrally: easier to manage but needs new hardware and server capacity.
 
+Patrons would use simple devices that display a session running on servers, and the servers would be reset centrally. Management would be easier, since there would be fewer full computers to look after. Fernhill would need new devices for all three hundred seats, servers to host the sessions and a network able to carry them. Accessibility tools would also need testing in the hosted environment, where some behave differently. The option is attractive but not affordable this year.
+
 ### 26.4 Criteria
 
 Security, restore time, network load, cost and accessibility.
 
+Mateo agreed these five criteria with Marta before scoring any alternative, so the scoring could not be shaped around a favourite. Security covers how thoroughly each design resets a PC. Restore time and network load come from estimates checked against the pilot. Cost includes staff time as well as equipment. Accessibility asks whether patrons who rely on assistive tools can still use every PC. Each criterion has a short note explaining what a high and a low score mean.
+
 ### 26.5 Choice
 
 B with a weekly full reimage: daily patron reset, weekly system reset, using existing hardware.
+
+The weekly full reimage covers the weakness of alternative B: any change to system areas that got past the other controls lasts at most a week. It runs on Sunday nights, when all three branches are closed the next morning, so a slow reimage at Eastgate cannot delay opening. Mateo records the choice with the scores, the sensitivity check and the conditions under which it should be revisited, such as new hardware funding.
 
 ### Scoring alternatives
 
@@ -2095,21 +2107,31 @@ You will (1) specify each control in detail; (2) define parameters and failure b
 
 Runs at 22:00 after closing; restores the patron area from the protected copy; verifies digests; reports result.
 
+Twenty-two hundred hours leaves time for staff to close sessions and for late patrons to leave. The digest check after restore confirms that the patron area matches the golden manifest, rather than assuming success because the script finished. The result goes to the management server, which builds the morning report. If the server cannot be reached, the PC keeps the result and sends it on reconnecting.
+
 ### 27.2 Application control
 
 Allowlist of approved programs by publisher signature and path; audit mode first, then enforce.
+
+Publisher signatures cover most approved programs, since updates from a trusted publisher stay allowed without new entries. Path rules cover a few programs installed in protected system folders that patrons cannot write to. Rules based on file hashes are kept for the rare program with no signature, because each update needs a new hash. Audit mode runs on the pilot branch first, and its logs show what enforcement would block before anyone is affected.
 
 ### 27.3 Boot control
 
 Secure Boot on; firmware password set; boot order locked to internal disk.
 
+Locking the boot order means the PC starts only from its own disk, so a USB stick or network boot cannot load another system. The firmware password protects these settings from change at the start-up screen. Mateo's daily check reads each setting through the management tool and reports any PC where one differs, since a firmware update can sometimes reset settings to factory defaults. Such PCs are corrected the same day.
+
 ### 27.4 Failure behaviour
 
 If restore fails, the PC shows "out of service" at next start and alerts staff; it does not open a session.
 
+Failing closed protects patrons: a PC that might still hold yesterday's files does not offer a session to the next person. The out-of-service screen tells patrons to use another PC and gives staff the number to call. Staff can rerun the restore from an administrative account, and the PC returns to service once the digest check passes. Every failure and repair is logged, so repeated failures on one PC are visible.
+
 ### 27.5 Dependencies
 
 Restore depends on boot integrity; alerts depend on logging; updates depend on signing keys.
+
+Mateo lists the dependencies so that a failure in one control can be traced to the others it affects. If boot integrity failed, the restore could not be trusted. If logging failed, alerts would stop without any sign. If the signing key were compromised, a harmful update could be accepted. Each dependency has a monitoring check, and the most serious, the signing key, is taken up again in the independent review.
 
 ### Logging design
 
@@ -2177,9 +2199,13 @@ You will (1) implement the restore mechanism on lab PCs; (2) detect session chan
 
 Mateo configures three lab PCs with the golden image and restore script.
 
+The three lab PCs are the same models used in the branches, including one older unit from Eastgate. They sit on a lab network that mirrors a branch segment, with a test management server. Using real models matters because firmware settings and restore times differ between them. Nothing on the lab network can reach branch PCs, so a mistake during implementation affects only the lab. Marta approved the lab layout.
+
 ### 28.2 Test session
 
 A synthetic session changes the browser home page and saves a CV in the patron area.
+
+The session mimics what Fernhill's records show patrons actually do: change a setting while browsing and save a document. The CV is synthetic, created for the test. Mateo runs the session through the normal patron login, not an administrative account, so the changes land where a real patron's would. The restore then runs at the scheduled time as it would in a branch. Nothing else is changed.
 
 ### Lab — Lab — session changes and restore
 
@@ -2207,13 +2233,19 @@ differences after restore: 0
 
 Two items changed or were added during the session: the browser configuration and the CV. After restore, there are zero differences from the golden manifest.
 
+The first line confirms the session made the expected changes, which shows the test was valid: a restore cannot be judged on a session that changed nothing. The second line shows the restore returned every item to the golden state. Mateo keeps both lines in the test record, together with the image version and the date of the run.
+
 ### 28.4 Assumption checked
 
 This confirms the chapter 6 assumption of full removal for the patron area.
 
+The exposure model assumed that each reset removes everything a patron left behind. This lab is the first direct evidence for that assumption in the patron area, and the worked example shows why the evidence was needed: a folder outside the original scope kept files until the scope was fixed. Mateo updates the model's notes to say the assumption is now tested, and on which evidence. Marta reviewed the change.
+
 ### 28.5 Edge cases
 
 Tests also cover a session ended by power loss and a PC rebooted mid-restore; both restore correctly at next start.
+
+Power loss during a session leaves the patron area in whatever state it was in; the next restore clears it as usual. A reboot partway through a restore is the harder case, since the patron area may be half replaced. Mateo's restore marks its progress, so on the next start it begins again from the protected copy and completes before any session opens. Both cases are tested on each lab PC model.
 
 ### Test plan
 
@@ -2273,6 +2305,8 @@ You will (1) measure restore times across branches; (2) summarise variation; (3)
 
 Restore duration per PC per night, by branch, over a week of pilot operation.
 
+Mateo chose restore duration as the first measure because it decides whether the nightly design fits the time available. A restore that overruns the window could leave PCs unready at opening, failing an objective. Measuring by branch shows whether local conditions such as network links or older hardware change the result. A week of pilot data gives seven nights for each sampled PC. Sampled PCs cover every hardware model.
+
 ### Lab — Lab — restore timing
 
 ```python
@@ -2299,13 +2333,19 @@ all: median 6.3, within 15-min window 21/21
 
 Central median 6.3 minutes (max 7.2), Eastgate median 9.2 (max 12.8, stdev 1.39), Millbrook median 5.3 (max 5.6). All 21 sampled restores finished within the 15-minute window.
 
+The figures come straight from the lab output. Mateo reports the median and the maximum together, since the maximum shows how close the worst night came to the limit. All restores fitting the window is the result that matters for the requirement, and the spread at Eastgate is the result that matters for planning. The standard deviations show how predictable each branch is from night to night.
+
 ### 29.3 Eastgate variation
 
 Eastgate is slower and more variable. Investigation finds older disks and a congested network link.
 
+Mateo compared Eastgate's slow nights with the network supplier's records and found they matched evenings when the branch's link was busy with backups. The older disks added a steady delay on every night. Together they explain both the higher median and the wider spread. Neither problem appeared at Millbrook, which has newer disks and a quieter link. The supplier confirmed the busy periods from its own logs.
+
 ### 29.4 Action
 
 Eastgate's disks are scheduled for replacement and its restore traffic is staggered.
+
+Staggering means Eastgate's PCs start their restores in small groups a few minutes apart rather than all at once, which spreads the network load. The disk replacement is planned for a quiet week. Mateo will rerun the timing measurement after both changes to confirm the effect, and records the expected improvement in advance so the result can be judged fairly. Branch staff are told about both changes in advance.
 
 ### Why spread matters
 
@@ -2373,21 +2413,31 @@ You will (1) verify requirements on lab PCs; (2) record evidence; (3) distinguis
 
 For each requirement, Mateo runs its test on lab PCs and records evidence: screenshots of settings, logs and test outputs.
 
+Each requirement's test follows its written procedure, and the evidence is saved in a folder named by requirement and image version. Mateo avoids describing a result in words alone: a screenshot of the firmware setting or a log line showing the block is stronger than a note saying it worked. Evidence that would show patron data is never collected; the tests use synthetic sessions only.
+
 ### 30.2 Examples
 
 R1 verified by firmware report; R3 by inserting a synthetic USB storage device and confirming block; R6 by idle timeout test.
+
+Each example uses the method chosen when the requirement was written. The firmware report is inspection of a setting. The USB test is a direct test of behaviour. The idle timeout test waits fifteen minutes and checks that the session closes and the profile is cleared. A requirement verified only by reading the configuration, without testing its effect, is noted as weaker evidence.
 
 ### 30.3 Recording
 
 Each result is pass, fail or untested, with date and tester.
 
+Untested is a separate status, never counted as a pass. Mateo's summary gives the count for each status, so readers can see at once how much of the system has been checked. A failed result names its cause once known and links to the fix. The record is kept with the image release, so the evidence for a release stays with it. Marta signs the summary before any release moves to a branch.
+
 ### 30.4 Independence
 
 A technician repeats three tests without Mateo present.
 
+The technician follows the written procedures on her own and records her results separately. If her results differ from Mateo's, the difference is investigated before release. Independent repetition checks two things: that the tests are written clearly enough for someone else to run, and that the original results were not shaped by the designer's expectations. In this round all three matched. Her notes are kept with Mateo's results, so a reviewer can compare the two sets side by side.
+
 ### 30.5 Findings
 
 Remote logging (R7) is not reaching the central server from one lab PC due to a firewall rule.
+
+The rule on the lab network blocked the logging port from one PC's address, left over from an earlier test. Events from that PC were kept locally but never reached the central store, so a failure there would have gone unseen. The fix was a one-line rule change, followed by a re-test showing events arriving. The finding also led to a check that every PC has reported events in the last day.
 
 ### Evidence quality
 
