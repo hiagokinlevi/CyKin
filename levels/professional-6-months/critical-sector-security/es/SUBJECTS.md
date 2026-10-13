@@ -18,9 +18,9 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 3 | [06](book/PLAN.md#ch-06) | Flujo de trabajo operativo | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
 | 4 | [07](book/PLAN.md#ch-07) | Controles y verificación | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
 | 4 | [08](book/PLAN.md#ch-08) | Análisis supervisado de un caso | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Comunicación, ética e informes | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Plan](book/PLAN.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Calidad y diagnóstico de averías | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Laboratorio supervisado | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Portafolio de práctica y revisión final | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 047 →](../../../technical-18-months/cybersecurity/es/SUBJECTS.md) |
+| 5 | [09](book/PLAN.md#ch-09) | Comunicación, ética e informes | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
+| 5 | [10](book/PLAN.md#ch-10) | Calidad y diagnóstico de averías | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Laboratorio supervisado | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Portafolio de práctica y revisión final | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-12) | [Curso 047 →](../../../technical-18-months/cybersecurity/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

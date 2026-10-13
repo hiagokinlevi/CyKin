@@ -57,9 +57,9 @@ Toda afirmación factual sobre un marco, una ley, una norma, un incidente públi
 7. [Controles y verificación](#ch-07): titularidad de los controles, niveles de aseguramiento y excepciones limitadas en el tiempo.
 8. [Análisis supervisado de un caso](#ch-08): un caso de acceso remoto de proveedores y la gobernanza de terceros. Lab 8.
 9. [Comunicación, ética e informes](#ch-09): relojes de notificación, clientes críticos, declaraciones provisionales y honestidad. Lab 9.
-10. [Calidad y diagnóstico de averías](../../en/book/MANUSCRIPT.md#ch-10): diagnosticar un programa de coordinación que no funciona. Lab 10.
-11. [Laboratorio supervisado](../../en/book/MANUSCRIPT.md#ch-11): diseñar, conducir y evaluar un ejercicio de mesa.
-12. [Portafolio de práctica y revisión final](../../en/book/MANUSCRIPT.md#ch-12): portafolio, sesión informativa para el consejo y un plan de 90 días.
+10. [Calidad y diagnóstico de averías](#ch-10): diagnosticar un programa de coordinación que no funciona. Lab 10.
+11. [Laboratorio supervisado](#ch-11): diseñar, conducir y evaluar un ejercicio de mesa.
+12. [Portafolio de práctica y revisión final](#ch-12): portafolio, sesión informativa para el consejo y un plan de 90 días.
 
 <a id="ch-01"></a>
 
@@ -1202,9 +1202,385 @@ Los incidentes ponen en marcha varios relojes a la vez; conózcalos de antemano,
 <!-- cyberabc:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 12
 
-[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Infraestructura crítica y seguridad sectorial: calidad y diagnóstico de averías
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- reconocer los patrones de fallo habituales de los programas de coordinación de la seguridad;
+- diagnosticar con método un fallo de coordinación (síntoma, hipótesis, evidencia, causa, corrección) en lugar de culpar a las personas;
+- medir la calidad de las decisiones en un ejercicio o en un incidente, no solo su rapidez;
+- conducir un proceso de acciones correctivas que de verdad cierre las acciones.
+
+El capítulo 9 dejó al descubierto fallos reales de coordinación. Este capítulo trata el propio programa como un sistema que puede diagnosticarse y mejorarse.
+
+### 10.1 Cómo fallan los programas
+
+La mayoría de los fallos de coordinación encajan en unos pocos patrones:
+
+- **Lagunas de titularidad**: actividades o riesgos sin nadie que rinda cuentas (capítulos 4 y 6).
+- **Responsabilidad duplicada**: dos personas creen cada una que actuó la otra.
+- **Información obsoleta**: contactos, mapas de dependencias, listas de proveedores o registros que eran correctos el año pasado.
+- **Controles de papel**: documentados, pero nunca observados ni probados (capítulo 7).
+- **Cuellos de botella**: una misma persona en todas las rutas críticas.
+- **Deterioro de las acciones**: lecciones identificadas tras cada ejercicio y nunca aplicadas.
+- **Rapidez sin calidad**: decisiones tomadas a tiempo, pero sin justificación, con información errónea o sin las personas adecuadas.
+
+### 10.2 Diagnosticar un fallo de coordinación
+
+Use la misma disciplina que usan los ingenieros con las averías técnicas:
+
+1. **Enuncie el síntoma** con precisión («se llamó al hospital 15 minutos después de las 2 horas contractuales»).
+2. **Enumere hipótesis** («nadie era responsable de la llamada»; «el número de contacto era erróneo»; «el reloj de 2 horas empezó en un momento distinto para personas distintas»).
+3. **Reúna evidencia** (registros de decisiones, registros de llamadas, entrevistas) sin culpar a nadie.
+4. **Descarte** las hipótesis que contradice la evidencia.
+5. **Corrija la causa**, no el síntoma, y decida cómo verificará la corrección.
+
+Un hábito útil: preguntar «¿qué hizo que esto fuera lo razonable en aquel momento?». Las personas rara vez actúan con descuido en una crisis; actúan con la información y las funciones que tenían.
+
+### 10.3 Calidad de las decisiones
+
+La puntualidad es fácil de medir; la calidad es más difícil, pero más importante. Para cada decisión clave de un ejercicio o un incidente, compruebe: ¿tenía un responsable? ¿Se tomó dentro del tiempo objetivo? ¿Se registró la justificación? ¿Se consultó a quienes había que consultar? ¿Se basó en información verificada, con los supuestos etiquetados? La guía del NIST sobre programas de pruebas, formación y ejercicios describe cómo evaluar los ejercicios frente a sus objetivos y recoger las lecciones ([NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final)).
+
+### 10.4 Ejemplo resuelto: el registro del ejercicio de mesa de mayo (sintético)
+
+En el ejercicio de mesa de mayo DRY CREEK (su diseño es el ejemplo resuelto del capítulo 11), un evaluador llevó un registro de decisiones. El **Lab 10** lo comprueba. **Lab 10** (guárdelo como `lab10.py` y ejecútelo con `python3 lab10.py`):
+
+```python
+# Lab 10 - tabletop decision-log quality check (offline, standard library only; synthetic exercise log)
+import csv, io
+LOG = """minute,inject,decision,owner,target_min,taken_min,recorded_rationale
+0,I1 HMI shows unexpected setpoint change,convene incident team,Coordinator,15,9,yes
+20,I2 vendor reports stolen laptop,suspend vendor remote access,Ops manager,30,52,yes
+35,I3 station KW-04 dosing alarm,switch KW-04 to manual,Ops manager,10,6,no
+50,I4 journalist calls,holding statement,,30,41,yes
+65,I5 hospital asks about water safety,brief hospital,Coordinator,20,,no
+80,I6 regulator early-warning clock,send early warning,Coordinator,60,44,yes
+"""
+rows = list(csv.DictReader(io.StringIO(LOG)))
+met = 0
+for r in rows:
+    f = []
+    if not r["owner"]: f.append("no owner")
+    if not r["taken_min"]: f.append("no decision taken")
+    elif int(r["taken_min"]) > int(r["target_min"]): f.append(f"late {int(r['taken_min'])-int(r['target_min'])} min")
+    else: met += 1
+    if r["recorded_rationale"] != "yes": f.append("no rationale recorded")
+    print(f"{r['inject'][:2]} {r['decision']:30s} {'ok' if not f else '; '.join(f)}")
+print(f"decisions within target: {met}/{len(rows)}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+I1 convene incident team          ok
+I2 suspend vendor remote access   late 22 min
+I3 switch KW-04 to manual         no rationale recorded
+I4 holding statement              no owner; late 11 min
+I5 brief hospital                 no decision taken; no rationale recorded
+I6 send early warning             ok
+decisions within target: 3/6
+```
+
+El titular «3/6 dentro del objetivo» oculta más de lo que muestra:
+
+- La decisión de I3 de pasar KW-04 a manual fue rápida (6 minutos frente a 10) y se contó como puntual, pero **no se registró ninguna justificación**. En una decisión relacionada con la seguridad de las personas, eso importa: en un incidente real, la revisión no sabría si se tomó por los datos de dosificación, por precaución o por una conjetura.
+- La declaración provisional de I4 **no tenía responsable** (otra vez el defecto de comunicación del capítulo 6) y llegó tarde.
+- I5, la sesión informativa al hospital, **nunca se decidió**. En la puesta en común en caliente, los jugadores dijeron que «daban por hecho que se encargaba comunicación».
+- I2, la suspensión del acceso del proveedor, llegó 22 minutos tarde. Los jugadores explicaron que nadie sabía si suspender el acceso de HydroLogic detendría el soporte a un problema de dosificación que estaba en curso. Esa es una causa de **información que faltaba**, no de lentitud.
+
+La tabla de diagnóstico de la coordinadora:
+
+| Síntoma | Hipótesis | Evidencia | Causa | Corrección | Verificar mediante |
+|---|---|---|---|---|---|
+| I5: sesión informativa al hospital no realizada | Sin responsable; contacto desconocido; olvido bajo presión | Puesta en común: «dábamos por hecho que se encargaba comunicación»; la RACI tenía dos R | Responsabilidad duplicada | Un único responsable principal en la RACI; llamada al hospital en la lista de comprobación del incidente | Inyección sobre el hospital en el próximo ejercicio |
+| I2: suspensión del proveedor tardía | Aprobación poco clara; impacto desconocido | Los jugadores preguntaron quién depende del acceso de HydroLogic | Faltaba información de dependencias | Añadir «quién depende del acceso de este proveedor» al registro de proveedores | La revisión del Lab 8 incluye una columna de dependencias |
+| I3: sin justificación | A la plantilla del registro le falta el campo; presión de tiempo | La plantilla no tiene columna de justificación | Diseño de la herramienta | Añadir el campo de justificación; función de secretario de actas | Al volver a ejecutar el Lab 10 aparece la justificación |
+
+### 10.5 Cerrar las acciones correctivas
+
+Las lecciones no mejoran nada hasta que se convierten en acciones con responsables, fechas y verificación, y se cierran. Haga su seguimiento en un solo lugar, revíselas en el comité de riesgos y verifique cada cierre con evidencia (el próximo ejercicio, una prueba, un documento). Una métrica útil del programa es el porcentaje de acciones de ejercicios cerradas y verificadas dentro de su plazo. En la revisión de DRY CREEK, cada corrección tiene su verificación correspondiente: la próxima inyección del ejercicio sobre el hospital, un registro de proveedores con una columna de dependencias comprobado en la próxima revisión del acceso y una nueva ejecución del Lab 10 que muestre las justificaciones registradas.
+
+### 10.6 Actividad práctica
+
+Tome un fallo reciente de cualquier equipo que conozca (un plazo incumplido, una tarea duplicada). Rellene la tabla de diagnóstico sin nombrar a personas y proponga una corrección con un método de verificación. Escriba el síntoma como un hecho preciso con horas o recuentos, como en el ejemplo del hospital, y no como un juicio. Enumere al menos tres hipótesis antes de buscar evidencia y anote qué evidencia descartó cada una. Pregunte qué hizo que la acción fuera razonable para las personas implicadas en aquel momento. Después elija una corrección que cambie una función, una herramienta o una información, no una que pida a las personas que se esfuercen más, y diga cómo sabrá que funcionó, por ejemplo en el próximo ejercicio o revisión.
+
+### 10.7 Errores comunes y límites
+
+- Concluir «error humano» y detenerse ahí.
+- Acciones sin verificación, cerradas por la palabra del responsable.
+- Corregir en exceso con procesos pesados que ralentizan las respuestas reales; mantenga las correcciones proporcionadas.
+
+- Corregir el síntoma con una exhortación («comunicarse mejor»), como recordar al personal que llame al hospital, mientras la RACI sigue mostrando dos R.
+- Medir el éxito de un ejercicio solo por la rapidez, contando como buena una decisión rápida sin justificación registrada, como el paso de KW-04 a manual en DRY CREEK.
+- Hacer el seguimiento de las acciones en varios lugares, de modo que nadie puede ver cuáles están vencidas.
+
+### Ejercicios — capítulo 10
+
+**EX046 — Lea el Lab 10.** *Objetivo:* interpretar la calidad de las decisiones. *Insumos:* la salida del Lab 10. *Pasos:* explicar por qué «3/6 dentro del objetivo» exagera el desempeño y nombrar el defecto más grave. *Evidencia esperada:* la explicación. *Rúbrica:* 3 = I3 contado como puntual sin justificación; I5 no se tomó en absoluto (riesgo para un cliente crítico); I4 sin responsable; el más grave es I5 o I3, con razonamiento; 2 = enumera los defectos sin juicio; 1 = acepta el 3/6; 0 = nada.
+
+**EX047 — Añada una regla de calidad.** *Objetivo:* codificar otra comprobación. *Insumos:* el Lab 10. *Pasos:* añadir las columnas `safety` y `consulted`; señalar toda decisión relacionada con la seguridad de las personas cuyo responsable no sea el jefe de operaciones y en la que no se consultara al jefe de operaciones; probarlo con las seis filas originales más una fila inventada en la que la responsable de seguridad decide aislar una estación sin consultar a operaciones; mostrar la salida. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = columnas rellenadas en todas las filas, regla limitada a las decisiones de seguridad de las personas, la fila inventada señalada e I3 (cuyo responsable es operaciones) no señalada, con ese resultado explicado; 2 = la regla señala todas las filas sin entrada de consulta; 1 = solo la regla; 0 = nada.
+
+**EX048 — Diagnostique I4.** *Objetivo:* aplicar 10.2. *Insumos:* la fila de I4 y la RACI del capítulo 6. *Pasos:* rellenar la tabla de diagnóstico para la declaración provisional. *Evidencia esperada:* una fila de la tabla con hipótesis. *Rúbrica:* 3 = al menos dos hipótesis, evidencia (la RACI no tenía A para la declaración pública), causa, corrección (consejero delegado A, comunicación R, plantilla), verificación (próximo ejercicio); 2 = sin verificación; 1 = «comunicación fue lenta»; 0 = nada.
+
+**EX049 — Diagnostique información obsoleta.** *Objetivo:* reconocer el deterioro. *Insumos:* durante un incidente, el número fuera de horario del hospital daba a una línea desconectada. *Pasos:* proponer un análisis de causas y una corrección duradera. *Evidencia esperada:* análisis y corrección. *Rúbrica:* 3 = causa: ningún responsable ni calendario para verificar los contactos; corrección: llamadas de prueba trimestrales con responsable, actualización ante las reorganizaciones del hospital, segunda vía de contacto; métrica de verificación; 2 = actualización puntual; 1 = culpa; 0 = nada.
+
+**EX050 — Cierre las acciones.** *Objetivo:* diseñar el seguimiento de las acciones correctivas. *Insumos:* las tres correcciones de 10.4. *Pasos:* escribir un registro de acciones con responsable, fecha límite, evidencia de cierre y método de verificación. *Evidencia esperada:* el registro. *Rúbrica:* 3 = cada una tiene un responsable con autoridad, una fecha realista, una evidencia de cierre distinta de la afirmación del responsable y una verificación en un ejercicio o una revisión posteriores; 2 = sin verificación; 1 = solo una lista; 0 = nada.
+
+### Síntesis del capítulo
+
+Los programas de coordinación fallan de maneras reconocibles: lagunas de titularidad, responsabilidad duplicada, información obsoleta, controles de papel, cuellos de botella, deterioro de las acciones y rapidez sin calidad. Diagnostíquelos como averías, del síntoma a las hipótesis y la evidencia hasta la causa, sin culpar a nadie. Mida la calidad de las decisiones, no solo la rapidez, y cierre las acciones correctivas solo con evidencia verificada.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Siga estudiando — capítulo 10 de 12
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Laboratorio supervisado
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- diseñar un **ejercicio de mesa** basado en la discusión para un servicio esencial, con objetivos, escenario, inyecciones, funciones y criterios de evaluación;
+- conducirlo de forma segura y justa, de modo que siga siendo una prueba de los planes y no de las personas;
+- evaluarlo con una puesta en común en caliente, un informe posterior a la acción y un plan de mejora;
+- evaluar el diseño de un ejercicio frente a una rúbrica, bajo supervisión.
+
+Para una coordinadora profesional, el laboratorio es la sala del ejercicio. Este capítulo reúne todo lo visto hasta ahora (partes interesadas, autorización, riesgo, RACI, acceso de proveedores, relojes de notificación, calidad de las decisiones) en un único ejercicio supervisado.
+
+### 11.1 Tipos de ejercicio
+
+Los programas de ejercicios distinguen los ejercicios **basados en la discusión** (seminarios, talleres, ejercicios de mesa), en los que los participantes recorren de palabra un escenario, de los ejercicios **basados en operaciones** (simulacros, ejercicios funcionales, ejercicios a escala real), en los que ejecutan acciones. El Homeland Security Exercise and Evaluation Program (HSEEP) de Estados Unidos expone esta progresión y un ciclo de diseñar, conducir, evaluar y mejorar ([FEMA, HSEEP](https://www.fema.gov/emergency-managers/national-preparedness/exercises/hseep)). La guía del NIST abarca los programas de pruebas, formación y ejercicios para los planes de TI ([NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final)). La CISA publica paquetes de ejercicios de mesa listos para usar con escenarios de infraestructuras críticas ([CISA Tabletop Exercise Packages](https://www.cisa.gov/resources-tools/services/cisa-tabletop-exercise-packages)), y el NCSC británico ofrece «Exercise in a Box» ([NCSC, Exercise in a Box](https://www.ncsc.gov.uk/information/exercise-in-a-box)).
+
+Un ejercicio de mesa es el primer paso adecuado: barato, seguro (nada toca un sistema en funcionamiento) y excelente para sacar a la luz lagunas en las funciones, la información y la comunicación.
+
+### 11.2 Diseño
+
+Un documento de diseño tiene siete partes:
+
+1. **Objetivos**: de tres a cinco, cada uno **observable**: «En los 30 minutos siguientes a la inyección correspondiente, el equipo decide si suspende el acceso del proveedor, con responsable y justificación registrados». Evite «probar nuestra respuesta».
+2. **Alcance y supuestos**: qué planes se ponen a prueba, qué equipos juegan, qué queda fuera del alcance («no se juega el proceso técnico forense»).
+3. **Escenario**: verosímil, sintético, adecuado al sector, basado en información pública sobre amenazas a un nivel general; nunca en el error de un colega real.
+4. **Inyecciones**: datos nuevos programados en el tiempo (una alarma, una llamada telefónica, un periodista, un plazo del regulador). Cada inyección se asocia al menos a un objetivo y tiene una decisión esperada.
+5. **Funciones**: jugadores (deciden como lo harían en la realidad), facilitador (controla el reloj, presenta las inyecciones, mantiene viva la discusión), evaluadores (observan frente a los objetivos, llevan el registro de decisiones), secretario de actas y un **responsable de seguridad** o agente de confianza que puede pausar el ejercicio.
+6. **Criterios de evaluación**: qué significa «cumplido», «cumplido en parte» y «no cumplido» para cada objetivo.
+7. **Logística y reglas**: fecha, sala, ningún sistema real tocado, «ejercicio, ejercicio, ejercicio» en cada inyección escrita para que nada pueda confundirse con un evento real, y una frase de parada para el mundo real.
+
+### 11.3 Facilitación
+
+Empiece con las reglas básicas: esto pone a prueba los planes, no a las personas; no hay preguntas trampa; decidan como lo harían en la realidad; digan cuándo necesitarían información que no tienen. Mantenga el reloj con honestidad y resista la tentación de rescatar a los jugadores: si el equipo no tiene forma de contactar con el hospital, la laguna es el hallazgo. Registre las decisiones, no opiniones sobre el desempeño. En DRY CREEK, el facilitador no proporcionó el contacto del hospital que faltaba ni asignó la llamada cuando los jugadores dudaron; ese silencio produjo el hallazgo más claro del ejercicio.
+
+### 11.4 Evaluación y mejora
+
+Inmediatamente después: una **puesta en común en caliente**, en la que cada participante dice qué funcionó y qué no. En dos semanas: un **informe posterior a la acción** (AAR) que califica cada objetivo con evidencia del registro de decisiones, y un **plan de mejora** que convierte los hallazgos en acciones con responsable, fecha y verificación (capítulo 10). El AAR se comparte con el nivel de TLP adecuado; nombra lagunas de los planes y de las herramientas, no a personas. El informe de DRY CREEK calificó O3 como no cumplido y lo convirtió en una acción con un responsable, una fecha y una inyección de nueva prueba.
+
+### 11.5 Ejemplo resuelto: el ejercicio «DRY CREEK» (sintético)
+
+**Objetivos.** (O1) Declarar o descartar un incidente cibernético en los 15 minutos siguientes al primer indicador, con justificación. (O2) Decidir sobre la suspensión del acceso remoto de un proveedor en 30 minutos, sabiendo qué operaciones dependen de él. (O3) Informar al hospital dentro de las 2 horas de su acuerdo, con un único responsable principal con nombre. (O4) Cumplir el plazo ilustrativo de alerta temprana del regulador con un mensaje aprobado. (O5) Emitir una declaración provisional con un aprobador que rinda cuentas en los 45 minutos siguientes al contacto de los medios.
+
+**Escenario.** Un viernes por la tarde se denuncia el robo del portátil de un ingeniero de HydroLogic; una hora después, el KVROC comunica una sesión remota a la estación KW-04 desde la cuenta de HydroLogic a una hora inusual, y un operador ve un cambio inesperado de la consigna de dosificación, que los límites del controlador rechazan. Todo sintético.
+
+**Tabla de inyecciones (extracto).**
+
+| Hora | Inyección | Objetivos | Decisión esperada |
+|---|---|---|---|
+| 00:00 | Llamada del KVROC: sesión inusual de un proveedor a KW-04 | O1 | Convocar al equipo de incidentes; registrar la hora de inicio |
+| 00:10 | Operador: intento de cambio de consigna, rechazado por los límites | O1 | Declarar el incidente; evaluación de seguridad por operaciones |
+| 00:20 | HydroLogic: robaron ayer el portátil del ingeniero | O2 | Suspender el acceso de HydroLogic; organizar un soporte alternativo para la dosificación |
+| 00:40 | Instalaciones del hospital llama preguntando por rumores | O3 | El responsable principal con nombre informa al hospital; se fija la próxima actualización |
+| 00:55 | Un periodista local llama a comunicación | O5 | Declaración provisional aprobada por el consejero delegado |
+| 01:20 | Facilitador: «han pasado 20 horas desde la determinación» | O4 | Alerta temprana aprobada y enviada |
+
+**Funciones.** Jugadores: E. Varga (dirección), A. Mensah, L. Ferreira, R. Adeyemi, el ingeniero de guardia y M. Holt, que se incorpora a las 00:55. Facilitadora: la coordinadora. Evaluadores: un auditor interno y una coordinadora homóloga de una empresa de servicios vecina, con un acuerdo de confidencialidad. Responsable de seguridad: el supervisor de turno, con la frase de parada «mundo real, mundo real».
+
+**Evaluación (a partir del registro del evaluador, analizado con el método del Lab 10).** O1 cumplido (9 minutos, justificación registrada). O2 cumplido en parte: decisión a los 52 minutos porque nadie sabía quién más dependía del acceso de HydroLogic. O3 no cumplido: la llamada al hospital nunca se asignó. O4 cumplido. O5 cumplido en parte: declaración emitida tarde, sin responsable hasta que llegó el consejero delegado. Estos hallazgos alimentaron directamente las acciones correctivas del capítulo 10.
+
+### 11.6 Rúbrica de diseño de ejercicios
+
+| Criterio | 3 (excelente) | 1 (débil) |
+|---|---|---|
+| Objetivos | Observables, con plazo, vinculados a los planes | «Probar la respuesta» |
+| Escenario | Verosímil, sintético, específico del sector, proporcionado | De Hollywood o basado en el error de un colega real |
+| Inyecciones | Cada una asociada a objetivos con decisiones esperadas | Sorpresas aleatorias |
+| Funciones y seguridad | Facilitador, evaluadores, responsable de seguridad, frase de parada; ningún sistema en funcionamiento | Los jugadores se evalúan a sí mismos; se tocan sistemas en funcionamiento |
+| Evaluación | Criterios fijados de antemano; registro de decisiones; AAR y plan de mejora con responsables | Puesta en común basada en impresiones |
+| Ética | Pone a prueba los planes, no a las personas; hallazgos anonimizados | Puntúa a individuos |
+
+Use la rúbrica con el diseño de DRY CREEK: sus objetivos son observables y tienen plazo, y cada inyección se asocia a uno.
+
+### 11.7 Actividad práctica (supervisada)
+
+Diseñe un ejercicio de mesa de 90 minutos para un servicio esencial de su elección usando las siete partes de 11.2, con al menos cuatro objetivos y seis inyecciones. Pida a su supervisor o a un colega que lo puntúe con la rúbrica antes de conducirlo. Base el escenario en información pública sobre amenazas a un nivel general, como DRY CREEK usó un portátil robado de un proveedor y una sesión remota inusual, y nunca en el error de un colega real. Asocie cada inyección a un objetivo con una decisión esperada y nombre a un responsable de seguridad con una frase de parada. Marque cada inyección escrita como ejercicio. Tras la puntuación, revise el diseño y registre lo que cambió el revisor, para que el supervisor pueda ver cómo se aprovecharon los comentarios.
+
+### 11.8 Errores comunes y límites
+
+- Demasiados objetivos; nada se evalúa como es debido.
+- Escenarios tan graves que todos los planes fallan y no se aprende nada concreto.
+- Facilitadores que rescatan a los jugadores o dejan que dominen los cargos superiores.
+- Inyecciones del ejercicio que podrían confundirse con mensajes reales.
+- AAR que nunca se convierten en acciones.
+- Un ejercicio de mesa muestra si los planes y las funciones tienen sentido; no muestra que los procedimientos puedan ejecutarse con rapidez; para eso hacen falta simulacros.
+
+- Elegir evaluadores que también son jugadores, de modo que nadie observa las decisiones de forma independiente.
+- Ignorar un comentario de la puesta en común como «dábamos por hecho que se encargaba comunicación», que en DRY CREEK apuntaba a la causa real.
+
+### Ejercicios — capítulo 11
+
+**EX051 — Haga observables los objetivos.** *Objetivo:* redactar objetivos evaluables. *Insumos:* «Probar nuestra comunicación», «Comprobar la gestión de proveedores», «Ver si la gente conoce el plan». *Pasos:* reescribir cada uno. *Evidencia esperada:* tres objetivos. *Rúbrica:* 3 = cada uno indica una decisión o acción, un plazo y lo que se registra; 2 = sin plazos; 1 = siguen siendo vagos; 0 = nada.
+
+**EX052 — Redacte inyecciones.** *Objetivo:* asociar inyecciones a objetivos. *Insumos:* los objetivos de DRY CREEK. *Pasos:* redactar dos inyecciones nuevas que pongan a prueba O2 y O4 con más profundidad, con sus decisiones esperadas. *Evidencia esperada:* dos filas de inyecciones. *Rúbrica:* 3 = verosímiles, sintéticas, cada una asociada con una decisión esperada (por ejemplo, HydroLogic pide volver a conectarse para arreglar la dosificación; el oficial de guardia del regulador pide una actualización antes del plazo); marcadas como «ejercicio»; 2 = sin asociar; 1 = poco realistas; 0 = nada.
+
+**EX053 — Puntúe un diseño.** *Objetivo:* aplicar la rúbrica. *Insumos:* el diseño de un colega: un único objetivo, «probar la respuesta a incidentes»; el escenario es un ataque de un Estado que provoca el fallo de una presa; el consejero delegado evalúa; las inyecciones se envían desde la cuenta de correo real del consejero delegado. *Pasos:* puntuar cada criterio y proponer correcciones. *Evidencia esperada:* puntuaciones y correcciones. *Rúbrica:* 3 = puntuaciones bajas en objetivos, proporción del escenario, funciones/independencia de la evaluación y seguridad (el correo real puede causar confusión); correcciones para cada uno; 2 = correcciones sin puntuaciones; 1 = lo acepta; 0 = nada.
+
+**EX054 — Redacte el resumen del AAR.** *Objetivo:* evaluar frente a los objetivos. *Insumos:* la evaluación de DRY CREEK en 11.5. *Pasos:* redactar la tabla resumen del AAR con calificación, evidencia y acción recomendada por objetivo. *Evidencia esperada:* cinco filas. *Rúbrica:* 3 = calificaciones coherentes con la evidencia, acciones con responsable y verificables, nadie culpado individualmente; 2 = acciones vagas; 1 = narración; 0 = nada.
+
+**EX055 — Un reto de facilitación.** *Objetivo:* gestionar un problema de facilitación. *Insumos:* en el ejercicio, el consejero delegado domina la sesión y lo decide todo, incluido el aislamiento técnico. *Pasos:* describir lo que hace el facilitador durante el ejercicio y después. *Evidencia esperada:* acciones. *Rúbrica:* 3 = durante: invitar por su nombre a los dueños de cada función, preguntar «¿quién decidiría esto en la realidad?», registrar; después: plantearlo en el AAR como un hallazgo de claridad del plan o de las funciones, informar al consejero delegado en privado y con respeto; 2 = solo después; 1 = lo ignora; 0 = nada.
+
+### Síntesis del capítulo
+
+Un ejercicio de mesa es el laboratorio del coordinador: seguro, barato y eficaz para sacar a la luz lagunas en las funciones, la información y la comunicación. Diséñelo con objetivos observables, un escenario sintético verosímil, inyecciones asociadas a los objetivos, evaluadores independientes y un responsable de seguridad. Condúzcalo para poner a prueba los planes, no a las personas; evalúelo con una puesta en común en caliente, un informe posterior a la acción y un plan de mejora cuyas acciones tengan responsable y se verifiquen.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Siga estudiando — capítulo 11 de 12
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Portafolio de práctica y revisión final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- reunir un portafolio profesional que muestre, con evidencia, lo que sabe hacer como coordinador;
+- informar a un consejo sobre la seguridad de las infraestructuras críticas en diez minutos, con decisiones solicitadas;
+- redactar un plan realista de 90 días para un nuevo puesto de coordinación;
+- evaluar su propio trabajo frente al resultado del curso e identificar lo que aún necesita aprender.
+
+Este capítulo cierra el curso: reúne los productos de los capítulos 1–11 y comprueba si es capaz de **operar un flujo de trabajo repetible y comunicar los hallazgos**.
+
+### 12.1 El portafolio
+
+El portafolio de un coordinador no es un certificado; es un conjunto de productos de trabajo que otra persona podría comprobar. Constrúyalo a partir de los ejercicios que completó, depurados y marcados con claridad como trabajo del curso sobre datos sintéticos:
+
+| Producto | Del capítulo | Qué muestra |
+|---|---|---|
+| Mapa de dependencias y de partes interesadas | 2 | Ve el servicio y a sus personas |
+| Autorización y registro de decisión | 3 | Hace que el trabajo y las decisiones rindan cuentas |
+| Extracto del registro de riesgos con la regla de clasificación | 4 | Sabe clasificar por consecuencia y mantener la higiene |
+| Conjunto de métricas con umbrales | 5 | Mide lo que impulsa las decisiones |
+| RACI corregida y tarjeta de escalado | 6 | Hace inequívocas las funciones |
+| Fichas de control y plan de verificación | 7 | Conoce la diferencia entre declarado y probado |
+| Sesión informativa del caso de acceso de proveedores | 8 | Sabe analizar y presentar un caso con equidad |
+| Registro de notificaciones y declaración provisional | 9 | Sabe mirar hacia fuera con honestidad y a tiempo |
+| Tabla de diagnóstico y registro de acciones | 10 | Mejora el programa, no solo informa de él |
+| Diseño del ejercicio de mesa, AAR y plan de mejora | 11 | Sabe poner a prueba todo el sistema con seguridad |
+
+Añada una **reflexión** de una página: qué haría de otra manera y un área sobre la que necesita aprender más (por ejemplo, los fundamentos técnicos de la TO del curso técnico, o las obligaciones legales de su jurisdicción).
+
+### 12.2 La sesión informativa para el consejo
+
+Los consejos de los operadores de servicios esenciales asumen cada vez más una responsabilidad explícita sobre la gestión de los riesgos de ciberseguridad (por ejemplo, los requisitos de la NIS2 sobre los órganos de dirección, [Directive (EU) 2022/2555, Article 20](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)). Una sesión informativa de diez minutos tiene cinco partes:
+
+1. **Contexto**: el servicio, la consecuencia que importa y el panorama de amenazas al nivel de los avisos públicos.
+2. **Dónde estamos**: los principales riesgos clasificados por consecuencia, con dueños y fechas; los niveles de aseguramiento de los controles clave.
+3. **Qué aprendimos**: el último ejercicio o incidente, en dos o tres hallazgos.
+4. **Qué estamos haciendo**: el plan, con el avance logrado.
+5. **Qué necesitamos de ustedes**: decisiones: aceptaciones de riesgo, presupuesto, declaraciones de apetito, prioridades.
+
+Evite la jerga, las puntuaciones únicas y el miedo. Los consejos actúan a partir de consecuencias claras, planes creíbles y peticiones concretas.
+
+### 12.3 El plan de 90 días
+
+Los primeros 90 días de un coordinador nuevo, destilados de este libro:
+
+- **Días 1–30: escuchar y cartografiar.** Reunirse con todas las partes interesadas que «deciden» y que «deben ser informadas»; esbozar el mapa de dependencias; leer el registro de riesgos, el historial de incidentes y la lista de proveedores; registrar lo que se supone.
+- **Días 31–60: resolver la titularidad.** Dueños para todos los riesgos de nivel 5; una RACI de incidentes; una tarjeta de escalado; un registro de notificaciones; una primera revisión del acceso de proveedores.
+- **Días 61–90: probar e informar.** Un primer ejercicio de mesa sobre el escenario de alta consecuencia más probable; un AAR y un plan de mejora; una primera sesión informativa para el consejo con decisiones solicitadas.
+
+Resista la tentación de empezar con un marco nuevo, una herramienta nueva o una política larga. Primero, la titularidad, la información y el ensayo.
+
+### 12.4 Ejemplo resuelto: la sesión informativa al consejo de octubre (sintético)
+
+La sesión informativa de diez minutos de la coordinadora ante la comisión de auditoría y riesgos de Kestrel Water, presidida por T. Lindqvist, en resumen:
+
+1. *Contexto.* «Nuestro trabajo es el agua segura para 180.000 personas, entre ellas el Kestrel General Hospital. Los avisos públicos describen ataques a controladores de agua expuestos a internet ([CISA AA23-335A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a)); lo hemos comprobado y no tenemos ninguno expuesto, confirmado en septiembre».
+2. *Dónde estamos.* «Tres riesgos podrían afectar a la salud o al hospital; todos tienen ya dueño. La MFA de proveedores está implantada en cinco de seis proveedores y verificada mediante prueba en dos; la restauración del historiador se probó en agosto en 19 horas, frente a un objetivo de 24 horas».
+3. *Qué aprendimos.* «El ejercicio DRY CREEK mostró que no sabíamos quién llama al hospital y que suspender a un proveedor es lento cuando no sabemos quién depende de él. Ambas cosas están corregidas; volveremos a probarlas en enero».
+4. *Qué estamos haciendo.* «Cinco de las siete acciones del ejercicio están cerradas y verificadas; dos vencen en noviembre».
+5. *Qué necesitamos.* «Primero, aceptar la excepción del controlador de KW-10 hasta marzo, con medidas compensatorias. Segundo, aprobar las cláusulas contractuales de proveedores para todas las renovaciones. Tercero, fijar una declaración de apetito: ningún riesgo de nivel 5 sin un tratamiento financiado durante más de 12 meses».
+
+Cada cifra tiene una fuente en el portafolio. Nada es una puntuación única.
+
+### 12.5 Revisión final
+
+El resultado del curso le pide operar un flujo de trabajo repetible y comunicar los hallazgos. Compruébese frente al ciclo:
+
+- **Enmarcar e identificar**: ¿sabe describir un servicio por su consecuencia y encontrar riesgos en la conversación?
+- **Analizar y decidir**: ¿sabe escribir riesgos que alguien pueda asumir, clasificarlos de forma reproducible y registrar decisiones y aceptaciones?
+- **Organizar**: ¿sabe asignar funciones, gobernar los cambios y escalar?
+- **Verificar**: ¿sabe distinguir lo declarado de lo probado y diseñar comprobaciones proporcionadas?
+- **Comunicar**: ¿sabe cumplir los relojes e informar con honestidad a los clientes, al público y al consejo?
+- **Mejorar**: ¿sabe poner a prueba con un ejercicio y cerrar acciones con evidencia?
+
+Cuando la respuesta sea «todavía no», el número de capítulo le indica adónde volver.
+
+### 12.6 Actividad práctica
+
+Reúna su portafolio a partir de sus respuestas a los ejercicios. Pida a un colega que lo revise frente a la rúbrica final (EX060) y que intente verificar tres afirmaciones solo a partir de su evidencia. Elija afirmaciones que importen, como «MFA de proveedores verificada mediante prueba en dos proveedores» o «historiador restaurado en 19 horas», y compruebe si su colega puede encontrar, solo con el portafolio, el registro, la fecha y el responsable que hay detrás de cada una. Cuando no pueda, corrija la evidencia, no la redacción. Marque cada elemento con claridad como trabajo del curso sobre datos sintéticos y elimine todo lo que pudiera identificar a una organización o a una persona reales antes de compartirlo.
+
+### 12.7 Errores comunes y límites
+
+- Portafolios de certificados en lugar de productos de trabajo.
+- Sesiones informativas para el consejo sin peticiones.
+- Planes de 90 días que empiezan por las herramientas.
+- Presentar el trabajo sintético del curso como hallazgos reales de una organización.
+- Este curso no le convierte en especialista técnico en TO ni en abogado; sepa cuándo llamar a uno.
+
+- Comunicar una afirmación al consejo sin una fuente en el portafolio, de modo que nadie pueda comprobarla después.
+- Pedir una decisión al consejo sin decir qué ocurre si la rechaza, como cuánto tiempo seguiría vigente, en caso contrario, la excepción de KW-10.
+- Actualizar el portafolio una vez y dejar que se quede obsoleto cuando termina el curso.
+
+### Ejercicios — capítulo 12
+
+**EX056 — Índice del portafolio.** *Objetivo:* reunir la evidencia. *Insumos:* sus respuestas a los ejercicios. *Pasos:* elaborar el índice del portafolio con el producto, el capítulo y la afirmación que respalda cada uno. *Evidencia esperada:* índice de al menos ocho productos. *Rúbrica:* 3 = cada producto vinculado a una afirmación y a un ejercicio concretos, depurado y etiquetado como sintético; 2 = índice sin afirmaciones; 1 = lista de capítulos; 0 = nada.
+
+**EX057 — Sesión informativa para el consejo.** *Objetivo:* comunicar a los órganos de gobierno. *Insumos:* 12.2 y su portafolio. *Pasos:* redactar el guion de la sesión informativa (máximo 600 palabras). *Evidencia esperada:* el guion. *Rúbrica:* 3 = cinco partes, consecuencias en lenguaje llano, cifras con fuente, niveles de aseguramiento indicados, tres peticiones concretas; ninguna puntuación única; 2 = sin peticiones; 1 = informe técnico; 0 = nada.
+
+**EX058 — Plan de 90 días.** *Objetivo:* planificar un puesto. *Insumos:* un nuevo puesto de coordinador en una red hospitalaria regional. *Pasos:* redactar el plan de 90 días con tres fases y entregables. *Evidencia esperada:* el plan. *Rúbrica:* 3 = se adapta a la sanidad (la dirección clínica como responsable de las decisiones, los dispositivos médicos, la seguridad del paciente, las dependencias internas críticas), la titularidad antes que las herramientas, ejercicio e informe al consejo antes del día 90; 2 = genérico; 1 = empieza por las herramientas; 0 = nada.
+
+**EX059 — Verifique una afirmación.** *Objetivo:* poner a prueba la evidencia. *Insumos:* la afirmación «la restauración del historiador se probó en agosto en 19 horas». *Pasos:* enumerar la evidencia que esperaría encontrar en el portafolio para respaldarla y dos preguntas que haría un auditor escéptico. *Evidencia esperada:* lista y preguntas. *Rúbrica:* 3 = plan de prueba, autorización, registro cronometrado, registro del resultado, comprobación de la integridad de los datos; preguntas sobre el alcance (restauración completa o parcial) y el entorno (aislado o similar a producción); 2 = solo la evidencia; 1 = «confiar en el ingeniero»; 0 = nada.
+
+**EX060 — Autoevaluación.** *Objetivo:* reflexionar frente al resultado del curso. *Insumos:* 12.5. *Pasos:* puntuarse de 0 a 3 en las seis áreas del ciclo, con evidencia para cada una, y un plan de aprendizaje para las dos más bajas. *Evidencia esperada:* seis puntuaciones y un plan. *Rúbrica:* 3 = puntuaciones honestas, cada una respaldada por un producto del portafolio, plan de aprendizaje concreto con recursos y fechas; 2 = puntuaciones sin evidencia; 1 = todo 3; 0 = nada.
+
+### Síntesis del capítulo
+
+Un coordinador profesional demuestra su competencia mediante productos de trabajo comprobables: mapas, registros, RACI, fichas de control, sesiones informativas de casos, registros de notificaciones, informes de ejercicios y planes de mejora. Informe a los consejos con consecuencias, evidencia y peticiones concretas; empiece un puesto nuevo con titularidad, información y ensayo; y evalúese con honestidad frente al ciclo completo: enmarcar, decidir, organizar, verificar, comunicar, mejorar.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Siga estudiando — capítulo 12 de 12
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -1320,6 +1696,42 @@ Estas son respuestas modelo. Una respuesta distinta que cumpla el nivel de exige
 **EX044.** «Estamos investigando con las autoridades competentes y no sería correcto especular sobre la causa ni sobre ninguna persona o empresa mientras continúa ese trabajo. Compartiremos lo que podamos cuando podamos confirmarlo». Razonamiento: la información no está confirmada (veracidad); nombrar a un proveedor o a una persona podría perjudicarles injustamente y puede ser erróneo (equidad); nos comprometemos a actualizar (corrección y transparencia).
 
 **EX045.** Plazos internos: llamada al hospital, la responsable (la coordinadora) llama en los 60 minutos siguientes al inicio del reloj; alerta temprana, borrador a las 12 h y aprobación solicitada antes de las 18 h; notificación del incidente, borrador a las 48 h y aprobación solicitada antes de las 60 h; aseguradora, añadida al registro y avisada junto con la alerta temprana. Delegación: si el consejero delegado no está disponible, aprueba el director de operaciones (COO) y, después, el director del área de operaciones. Plantillas preparadas para cada caso. El responsable del incidente registra el inicio del reloj en UTC en el registro de decisiones.
+
+### Capítulo 10
+
+**EX046.** El «3/6» cuenta I3 como un éxito aunque no se registró ninguna justificación para una decisión de seguridad de las personas, y trata I5 (un cliente crítico al que nunca se informó) como un fallo más entre seis. I4 no tenía responsable. El defecto más grave es I5: en un incidente real, no se habría avisado al hospital (o I3, si se argumenta que las decisiones de seguridad no registradas son peores; se exige razonamiento).
+
+**EX047.** Añadir las columnas `safety` (yes para I2 e I3) y `consulted` (por ejemplo, I3 "Security lead", I2 "Coordinator") y la regla `if r["safety"] == "yes" and r["owner"] != "Ops manager" and "Ops manager" not in r["consulted"]: f.append("operations not consulted")`. Con las seis filas originales, el nuevo indicador nunca salta: I2 e I3 tienen como responsable al jefe de operaciones, así que la autoridad sobre la seguridad estaba donde debía. La fila inventada `95,I7 station alarm,isolate KW-09 network,Security lead,15,12,yes,yes,Coordinator` aparece señalada con «operations not consulted». Explicar por qué I3 no se señala, correctamente, obtiene la máxima puntuación; forzar un indicador sobre I3 no.
+
+**EX048.** Síntoma: declaración provisional 11 minutos tarde y sin responsable. Hipótesis: (1) ningún aprobador que rinda cuentas; (2) ninguna plantilla; (3) el responsable de comunicación no sabía qué podía decirse. Evidencia: la RACI del capítulo 6 no tenía A para la declaración pública; en la puesta en común se dijo «esperando a alguien con rango». Causa: laguna de titularidad. Corrección: el consejero delegado rinde cuentas, comunicación ejecuta, plantilla preaprobada, aprobador suplente. Verificación: inyección de medios en el próximo ejercicio, declaración en 45 minutos con el aprobador registrado.
+
+**EX049.** Causa: ningún responsable ni calendario para verificar los contactos críticos; el hospital se reorganizó y nadie nos lo dijo. Corrección: la coordinadora es responsable de la lista de contactos críticos; llamadas de prueba trimestrales registradas; el acuerdo con el hospital exige notificar los cambios de contacto; una segunda vía (centralita del hospital hacia el responsable de turno del centro). Métrica: % de contactos críticos verificados en el último trimestre (objetivo, 100%).
+
+**EX050.** A1: un único responsable principal para la sesión informativa al hospital en la RACI y en la lista de comprobación; responsable, E. Varga; fecha límite, 30 de junio; evidencia de cierre: RACI v2 publicada; verificación: inyección sobre el hospital en el ejercicio de enero. A2: columna «quién depende del acceso de este proveedor» en el registro de proveedores; responsable, A. Mensah; fecha límite, 31 de julio; evidencia: exportación del registro; verificación: próxima revisión del Lab 8. A3: campo de justificación y función de secretario de actas en la plantilla del registro de decisiones; responsable, la coordinadora; fecha límite, 15 de junio; evidencia: plantilla v2; verificación: una nueva ejecución del Lab 10 sobre el próximo ejercicio muestra la justificación de todas las decisiones.
+
+### Capítulo 11
+
+**EX051.** (1) «En los 20 minutos siguientes a la inyección de medios, el directivo que rinde cuentas aprueba una declaración provisional y se registra la hora de la aprobación». (2) «En los 30 minutos siguientes a la inyección de compromiso del proveedor, el equipo decide si suspende el acceso de ese proveedor, registra el responsable y la justificación e identifica quién depende de él». (3) «Cuando se presenta la inyección del operador del turno de noche, la función de operador contacta con el responsable del incidente o su suplente en 10 minutos usando solo la tarjeta de escalado impresa».
+
+**EX052.** Inyección de O2 (00:35): «El ingeniero de guardia de HydroLogic llama: necesitan volver a conectarse ya para arreglar una avería de una bomba dosificadora en KW-02». Esperado: rechazar la reconexión remota; organizar soporte supervisado in situ u operación manual; registrar la decisión. Inyección de O4 (01:10): «El oficial de guardia del regulador escribe preguntando si va a llegar una alerta temprana; el plazo vence en 4 horas». Esperado: confirmar la vía de aprobación y enviarla antes del plazo; registrar la hora. Ambas marcadas «EJERCICIO — EJERCICIO — EJERCICIO».
+
+**EX053.** Objetivos 1 (vago; reescribirlo como observable). Escenario 1 (catastrófico e inverosímil; no se aprende nada concreto; usar un escenario verosímil de compromiso de un proveedor). Inyecciones 1 (sin asociar). Funciones y seguridad 0 (el consejero delegado evalúa su propio ejercicio; la cuenta de correo real puede confundirse con un evento real; usar un canal de ejercicio marcado, evaluadores independientes y un responsable de seguridad). Evaluación 1 (sin criterios). Ética: riesgo de juzgar a las personas; recordar las reglas básicas.
+
+**EX054.** O1 cumplido: declarado a los 9 min con justificación; acción: ninguna. O2 cumplido en parte: 52 min frente a 30; dependencia desconocida; acción: columna de dependencias en el registro de proveedores (A. Mensah, julio). O3 no cumplido: sin responsable; acción: un único responsable principal en la RACI y en la lista de comprobación (E. Varga, junio). O4 cumplido: alerta temprana aprobada y enviada; acción: ninguna, conservar la plantilla. O5 cumplido en parte: tarde, sin responsable hasta que llegó el consejero delegado; acción: el consejero delegado rinde cuentas, aprobador suplente, plantilla (R. Adeyemi, junio). No se señala a ninguna persona como culpable.
+
+**EX055.** Durante: agradecer al consejero delegado y después preguntar directamente al jefe de operaciones: «En la realidad, ¿quién decidiría aislar KW-04?»; invitar por su nombre a cada dueño de función; registrar quién decidió. Después: registrarlo en el AAR como «los derechos de decisión sobre el aislamiento técnico no estaban claros en la práctica», con una acción para confirmarlos en la RACI; informar antes en privado al consejero delegado del hallazgo del AAR, con respeto, presentándolo como un problema del plan.
+
+### Capítulo 12
+
+**EX056.** Índice de ejemplo: 1. Mapa de dependencias (EX009): «Verifico los supuestos que hay detrás de las decisiones sobre clientes críticos». 2. Reescritura de una autorización (EX011): «Hago que el trabajo en los sistemas operativos de la planta rinda cuentas». 3. Registro de decisión (EX012): «Registro las decisiones con equidad, con sus incógnitas». 4. Resumen del registro (EX020): «Clasifico por consecuencia y mantengo la higiene». 5. Métricas (EX023): «Mido lo que impulsa las decisiones». 6. RACI y tarjeta (EX026, EX028): «Hago inequívocas las funciones». 7. Fichas de control y plan (EX031, EX033): «Distingo lo declarado de lo probado». 8. Caso del proveedor (EX040): «Analizo los casos con equidad». 9. Diseño de las notificaciones (EX045): «Cumplo los relojes». 10. AAR y registro de acciones (EX054, EX050). Todo etiquetado como «trabajo del curso sobre datos sintéticos».
+
+**EX057.** Un guion que sigue 12.4: contexto en términos de consecuencia, con un aviso con fuente; principales riesgos con dueños y niveles de aseguramiento; dos o tres hallazgos del ejercicio y sus correcciones; avance frente al plan; tres peticiones (una aceptación de excepción con caducidad, cláusulas contractuales, una declaración de apetito). Cada cifra trazable hasta el portafolio.
+
+**EX058.** Días 1–30: reunirse con la dirección clínica y de instalaciones, el equipo de dispositivos médicos, TI, los proveedores y el contacto del regulador; cartografiar los servicios clínicos y sus dependencias (electricidad, agua, gases medicinales, redes, dispositivos); leer el historial de incidentes. Días 31–60: dueños para los riesgos de nivel de seguridad del paciente, RACI de incidentes que incluya a los responsables de las decisiones clínicas (desvío de pacientes, procedimientos de funcionamiento degradado), tarjeta de escalado, registro de notificaciones (incluidas las obligaciones propias del sector sanitario), revisión de los proveedores que mantienen dispositivos. Días 61–90: ejercicio de mesa sobre la pérdida de los sistemas clínicos con la dirección clínica como jugadora, AAR, sesión informativa para el consejo con peticiones.
+
+**EX059.** Evidencia: plan de prueba autorizado; registro cronometrado (inicio, pasos, fin); registro del resultado con la comprobación de la integridad de los datos frente a un periodo de referencia; problemas y correcciones; conformidad del dueño del servicio. Preguntas del auditor: «¿Fue una restauración completa del sistema o solo de la base de datos?» y «¿Se restauró en un entorno aislado que se parece a producción, y se aplicaría el mismo tiempo a una interrupción de toda la instalación?».
+
+**EX060.** Modelo: Enmarcar e identificar 3 (EX001, EX005); Analizar y decidir 2 (EX017, EX018; la calibración de la probabilidad sigue siendo débil); Organizar 3 (EX026); Verificar 2 (EX033; nunca diseñé una prueba real con un ingeniero); Comunicar 3 (EX042, EX043); Mejorar 2 (EX050). Plan de aprendizaje: trabajar los capítulos 5–9 del curso técnico para los fundamentos de verificación de la TO antes de diciembre; calibrar la probabilidad con dos avisos sectoriales al mes y una revisión de un coordinador homólogo antes de enero.
 
 <a id="glossary"></a>
 
