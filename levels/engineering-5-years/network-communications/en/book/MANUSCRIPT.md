@@ -155,7 +155,7 @@ You will (1) relate signal propagation to latency; (2) understand wireless cover
 
 Signals in fibre travel at roughly two thirds of the speed of light, about 200 kilometres per millisecond. Between two Ashcombe offices 40 kilometres apart, one-way propagation is about 0.2 milliseconds; most observed delay comes instead from queues and processing. This tells Kofi where latency budgets go and why adding a firewall hop matters more than distance within the district.
 
-Signals travel through fibre at roughly two thirds of the speed of light, about five microseconds per kilometre. That floor cannot be engineered away, so a link between distant offices always adds delay, and protocols or controls that need many round trips feel slower across it. Measured latency well above the propagation floor points to queuing or processing instead.
+Distance still sets a hard minimum: every kilometre of fibre adds about five microseconds each way, whatever equipment sits at either end. That floor cannot be engineered away, so a link between distant offices always adds delay, and protocols or controls that need many round trips feel slower across it. Measured latency well above the propagation floor points to queuing or processing instead.
 
 ### 3.2 Wireless coverage
 
@@ -281,7 +281,7 @@ Different readers need different things from the same design. Council managers w
 
 A good network diagram shows zones, the controls between them and the direction of permitted flows, using a legend. Kofi draws a logical diagram of zones and policy separately from a physical diagram of sites and links, because mixing them makes both unreadable.
 
-A good network diagram shows zones, the boundaries between them, and the permitted flows, with a legend explaining symbols. It should omit detail that does not help the reader's decision, such as every cable, while keeping what does, such as where the firewall sits. Dating each diagram and keeping it with the design prevents people from trusting an outdated picture.
+Kofi's logical diagram marks each Ashcombe zone as a labelled box and draws every permitted flow as an arrow that points from the side allowed to initiate it. It should omit detail that does not help the reader's decision, such as every cable, while keeping what does, such as where the firewall sits. Dating each diagram and keeping it with the design prevents people from trusting an outdated picture.
 
 ### 5.3 Trade-off tables
 
@@ -341,7 +341,7 @@ If a link carries data at a known rate, the total transferred is the rate multip
 
 Some quantities change in proportion to their size. The probability that a link has not yet failed often follows an exponential model, and log volumes may grow roughly exponentially as more devices are added. Kofi uses these models carefully as approximations.
 
-Many network quantities change in proportion to their current size. Traffic that grows by a fixed percentage each month grows exponentially, so capacity that seems ample today can run out sooner than a straight-line estimate suggests. Decay works the other way: the share of devices still running an old firmware version often halves over a regular period. Fitting the right model prevents both overspending and surprise shortfalls.
+The same proportional rule appears in capacity planning, where Kofi has to decide whether a trend is a straight line or a curve. Traffic that grows by a fixed percentage each month grows exponentially, so capacity that seems ample today can run out sooner than a straight-line estimate suggests. Decay works the other way: the share of devices still running an old firmware version often halves over a regular period. Fitting the right model prevents both overspending and surprise shortfalls.
 
 ### 6.3 Retention estimates
 
