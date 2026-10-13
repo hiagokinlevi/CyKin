@@ -1383,6 +1383,8 @@ You will (1) explain hashing, signing and encryption for software integrity; (2)
 
 A cryptographic hash such as SHA-256 maps any data to a fixed-length digest; any change gives a different digest. Publishing the digest lets anyone check an artifact.
 
+Two properties make this useful. It is infeasible to find a different file with the same digest, so an attacker cannot craft a substitute that passes the check, and the digest is small enough to publish, store in a build record or paste into a lockfile. The digest says nothing about whether the file is good, only whether it is the same file the reference describes.
+
 ### Lab — Lab — verifying an artifact
 
 ```python
@@ -1407,21 +1409,31 @@ mirror copy  DIGEST MISMATCH - do not deploy
 
 The release copy matches its published digest and is verified. The mirror copy, with extra bytes, gives a digest mismatch and is marked "do not deploy". The lab uses hmac.compare_digest, a constant-time comparison, a good habit when comparing secrets and a safe default for digests.
 
+The tampered copy differs only by six bytes at the end, yet its digest bears no resemblance to the published one, which is why truncation in the mirror incident was detectable. An ordinary string comparison stops at the first differing character, and its timing can leak information when the compared value is secret.
+
 ### 19.3 Signatures
 
 A digest proves the file matches a reference, but who published the reference? A digital signature binds the digest to an identity. Deployment checks both.
+
+An attacker who can change both the artifact and the published digest on the same server defeats a digest check alone, which is the weakness the errors note at the end of this chapter warns about. The signature moves trust to a key or identity the attacker does not control. Deployment first verifies the signature on the build record, then compares the artifact's digest with the one in that record.
 
 ### 19.4 Keys and identities
 
 Build signing uses short-lived credentials issued to the CI identity, not personal keys. Developers sign in with multi-factor authentication; OWASP Top 10:2021 A07 covers identification and authentication failures.
 
+Personal keys travel with people: onto laptops, into backups and out of the company when someone leaves. A CI identity exists only inside the pipeline and receives credentials for minutes, so a leaked credential soon becomes useless. Multi-factor sign-in for developers protects the steps before CI, since a stolen password alone could otherwise push code that CI would build and sign faithfully.
+
 ### 19.5 Encryption
 
 Encryption protects confidentiality, for example of backups and network traffic; it is not the same as integrity protection.
 
+An encrypted file can still be replaced with a different encrypted file, or corrupted, without the reader noticing unless an integrity check is added. Modern authenticated encryption schemes combine both properties, but plain encryption does not. For artifacts, which are usually public, confidentiality matters little; integrity and authenticity are the goals, so signatures and digests do the work. Backups need both, since they hold rider data and must not be swapped for altered copies.
+
 ### 19.6 Key management
 
 Keys are stored in a managed key service, rotated and access-logged.
+
+A managed service keeps keys inside hardware or software that performs signing and decryption without exporting the key, so administrators use keys without being able to copy them. Rotation limits how long any single key is useful if it leaks unnoticed. Access logs show which identity used which key and when; Kwame reviews them monthly for use outside the CI jobs that should need them. Short-lived signing credentials still depend on longer-lived keys elsewhere, such as the key service's own root, so those are protected most carefully.
 
 ### Rotation and revocation
 
@@ -1467,25 +1479,37 @@ You will (1) describe the software supply chain from source to user; (2) identif
 
 Source code is written, reviewed and stored; dependencies are fetched; code is built; artifacts are stored and distributed; software is deployed and updated. Each stage has actors: developers, maintainers, registries, CI providers and operators.
 
+Listing actors shows how many parties outside Coastline influence what riders run. Maintainers write the dependencies, registries host them, the CI provider runs the builds, and Coastline's operators deploy. Each handover is a point where something can be swapped or altered, which is why the controls later in this chapter are arranged by stage.
+
 ### 20.2 Attack classes
 
 Ohm et al. (2020) and Ladisa et al. (2023) describe attacks such as malicious packages, compromised maintainer accounts, tampering with build systems and substituting artifacts during distribution. This course stays defensive: it uses these classes to decide where controls belong, not to describe how to carry attacks out.
+
+Grouping attacks by the stage they target is more useful to defenders than listing individual incidents. A compromised maintainer account and a malicious lookalike package both arrive through dependencies, so the same mirror, name check and review controls apply. Build tampering needs different controls, such as isolated runners and provenance, because the source and dependencies may be perfectly clean.
 
 ### 20.3 Coastline's controls
 
 Source: branch protection and review. Dependencies: lockfiles, name checks, mirror, advisory checks. Build: isolated hosted runners, pinned tools. Artifacts: signing, provenance, digest checks. Deployment: verification policy. Operation: monitoring and update process.
 
+Laying controls along the chain shows where coverage is thin. Operation has the fewest controls, which reflects that monitoring a running app for signs of a tampered component is hard. Each listed control has an owner and a test, so the team can show it works rather than simply claiming it exists. Kwame's diagram in the worked example applies this check.
+
 ### 20.4 Standards
 
 SLSA v1.0 describes build track levels with increasing provenance and isolation guarantees; the SSDF (SP 800-218) practice PS.2 asks producers to provide a way to verify release integrity; ASVS includes requirements on components and configuration.
+
+The three standards look at different parts of the problem. SLSA focuses on how artifacts are built and how their origin can be shown. The SSDF covers the organisation's development practices as a whole. ASVS tests the application itself. Using them together avoids the trap of a well-built artifact containing a poorly secured application, or the reverse.
 
 ### 20.5 Open source realities
 
 Wermke et al. (2022) found that open-source projects vary widely in security practices and rely heavily on trust in contributors. Consumers like Coastline cannot assume upstream controls exist.
 
+Many projects depend on a handful of volunteers with no security budget. Coastline therefore treats upstream security as a variable to check, not a given: it looks at maintenance activity, use of multi-factor authentication where registries show it, and whether a project publishes signatures. Where Coastline relies heavily on a project, it can also contribute fixes or funding.
+
 ### 20.6 Engineering context
 
 Supply chain security is an engineering problem: it requires requirements, design, measurement and verification like any other system property.
+
+Treating it this way means stating measurable goals, such as every deployed artifact having verified provenance, designing controls to meet them, and testing that they hold. It also means accepting trade-offs: stronger controls cost build time and engineering effort, and the team chooses where they bring the most risk reduction. Calling it engineering rather than a checklist exercise keeps attention on whether controls work, not on whether they exist on paper. The rest of the course follows this pattern from requirements to verification.
 
 ### Responsibility
 
@@ -1527,25 +1551,37 @@ You will (1) write verifiable security requirements for an application and its p
 
 Requirements come from threats (what could go wrong), standards (ASVS, SSDF, SLSA), law and contracts (payment card rules) and incidents (the mirror mismatch, the tmpl advisory).
 
+Each source catches things the others miss. Threats reflect Coastline's own situation, standards bring lessons from many organisations, contracts set obligations the company cannot ignore, and incidents show where its own controls already failed. A requirement records its source, which helps when deciding later whether it is still needed. The tmpl advisory, for instance, is the source of the requirement that advisory checks cover transitive components.
+
 ### 21.2 Writing them well
 
 A good requirement is specific and testable: "Deployment shall refuse any artifact whose SHA-256 digest does not match the signed build record" rather than "artifacts shall be secure".
+
+The good example names the actor, the action, the condition and the outcome, so a tester can design a check and anyone can tell whether it is met. Words such as 'secure', 'appropriate' or 'robust' give no test and invite argument. Kwame rewrites each vague requirement until he can describe the acceptance test that would prove it.
 
 ### 21.3 Application requirements
 
 Using ASVS as a base, Coastline selects requirements for authentication, access control, validation, output encoding and logging. ASVS 4.0.3 offers three levels; Coastline targets Level 2 for ticket-web because it handles payments. ASVS 5.0.0 keeps the level idea with reorganised chapters, so Kwame records both identifiers.
 
+Level 2 is meant for applications handling sensitive data such as payments, while Level 1 covers basic checks and Level 3 suits the most critical systems. Recording both versions protects the work as the standard evolves: auditors using either edition can find each requirement, and moving to the new edition later becomes a mapping exercise rather than a rewrite.
+
 ### 21.4 Pipeline requirements
 
 From SLSA v1.0: builds on a hosted platform, provenance generated by the platform, provenance verified before deployment. From SSDF: PO.3 secure toolchains, PS.1 protect code from unauthorised changes, PS.2 provide verification mechanisms, RV.1 identify vulnerabilities continuously.
+
+Each pipeline item answers a specific risk. Hosted builds remove developers' laptops from the release path. Platform-generated provenance cannot be forged by the build script itself. Verification at deployment ensures the evidence is actually checked. Without that last step, the other two produce records nobody reads.
 
 ### 21.5 Prioritising
 
 Requirements are ranked by risk reduction and effort; must-haves cover the two incidents.
 
+The two incidents rank first because they showed real gaps at Coastline, not hypothetical ones. Among the rest, items that close several threats at once, such as deployment verification, rank above those that close one. Effort matters too: a cheap requirement with moderate benefit may be done before an expensive one with slightly more. The ranking is written down with its reasoning, so deferred items are not mistaken for forgotten ones, and the list is revisited when a new incident or standard changes the picture. Must-haves are not traded away for convenience.
+
 ### 21.6 Acceptance tests
 
 Each requirement has a test: e.g., deploy a deliberately mismatched synthetic artifact in staging and confirm refusal.
+
+The staging test uses a synthetic artifact, so it proves the check works without risking production. Tests run automatically wherever possible and are repeated after changes to the deployment tool, because a later change could disable the check silently. A requirement whose test cannot be automated gets a manual procedure and a scheduled date for running it. The result of every test run is kept, so auditors and the team can see that the requirement held throughout the year, not only on the day it was first accepted.
 
 ### Traceability to tests
 
@@ -1587,25 +1623,37 @@ You will (1) model the application and pipeline as data flows; (2) identify trus
 
 Shostack (2014) recommends data flow diagrams for threat modelling: external entities, processes, data stores and flows, with trust boundaries drawn across flows. Kwame draws ticket-web: rider browser, web app, database, payment provider; and the pipeline: developer, repository, CI, mirror, artifact store, deployment.
 
+The four element types make the diagram easy to read and to analyse systematically, because each type suggests particular questions. Data stores invite questions about who can read and change them; processes about what input they accept; external entities about how much they can be trusted.
+
 ### 22.2 Trust boundaries
 
 Boundaries appear between rider and web app, web app and payment provider, CI and public registry, CI and production. Every flow crossing a boundary is a place to ask what could go wrong.
+
+On the diagram, a boundary is a dashed line, and every flow that crosses it is checked for authentication, integrity and what happens if the other side misbehaves. The CI-to-registry crossing is where hash checks and the mirror apply; the CI-to-production crossing is where signature and provenance checks apply.
 
 ### 22.3 Software as data
 
 An SBOM lists components and versions; NTIA (2021) defined minimum elements: supplier, component name, version, unique identifiers, dependency relationship, author of SBOM data and timestamp. Provenance records how an artifact was built. These are data models the pipeline produces and consumes.
 
+Treating these records as data means they need the same care as other data: correct formats, validation, storage and access control. An SBOM that names the wrong version misleads the advisory check. Missing timestamps or authors make it impossible to tell how fresh the list is or who to ask about it.
+
 ### 22.4 Linking models
 
 Each deployed artifact links to its SBOM and provenance by digest. Given a running server, the team can find exactly which components it contains.
+
+The digest is the key that joins everything. From a running server, the team reads the artifact digest, finds the SBOM listing its components and the provenance naming the source commit and build. When an advisory names a component, the same links run backwards to every artifact and server containing it. Without these links, answering 'are we affected?' means searching by hand under pressure. Kwame tests the links each quarter by picking a random production server and tracing it back to source in under ten minutes.
 
 ### 22.5 Model upkeep
 
 Models are stored with the code and updated in the same pull request as architecture changes.
 
+Keeping models in the repository means changes are reviewed like code, and the history shows when each flow was added or removed. A reviewer who sees a new external call in the code but no matching change to the diagram asks for it. Outdated models are worse than none, because they give false confidence about which flows exist. Kwame adds a pull-request template question asking whether the change adds or removes a flow, so authors think about the model while the change is fresh.
+
 ### 22.6 Simplicity
 
 Models should be just detailed enough to support decisions; a diagram nobody can read helps nobody.
+
+A diagram covering every library call is unreadable and never kept current. Kwame's version shows a dozen processes and stores; detail goes into separate diagrams for areas that need it, such as payment handling. The test is whether a new engineer can explain the main flows after five minutes with the diagram. If a decision would not change with more detail, the detail is left out.
 
 ### Verifying flows
 
@@ -1651,25 +1699,37 @@ You will (1) apply STRIDE to the system model; (2) analyse failure modes of pipe
 
 Shostack (2014) describes STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service and Elevation of privilege. Kwame applies it to each element and flow in the model.
 
+Each letter names a property being attacked: spoofing attacks authentication, tampering integrity, repudiation accountability, information disclosure confidentiality, denial of service availability and elevation of privilege authorisation. Walking through the letters for each diagram element gives a structured set of questions, which reduces the chance of forgetting whole categories. Not every letter applies to every element; noting 'not applicable' is still a recorded decision.
+
 ### 23.2 Examples
 
 Spoofing: a fake package with a lookalike name. Tampering: an altered artifact on the mirror. Repudiation: a deployment without a record of who approved it. Information disclosure: secrets in build logs. Denial of service: registry outage stopping builds. Elevation of privilege: a pull request from an untrusted fork gaining access to production secrets.
+
+Each example sits on a specific element of Kwame's diagram, which makes it actionable. The fork pull request is elevation of privilege because it crosses the trust boundary between untrusted contributors and CI secrets. The registry outage is accidental in many cases but is listed because the effect, builds stopped, is the same whether caused by failure or attack.
 
 ### 23.3 Failure modes
 
 Failure mode and effects analysis asks how each component can fail without an attacker: mirror corruption, CI outage, expired signing certificates, clock errors breaking certificate checks.
 
+Accidental failures matter because they cause many real outages and can mimic attacks, as the truncated mirror copy did. An expired signing certificate stops every release; a clock error can make valid certificates look expired. For each failure, the analysis records how it would be noticed and how the system behaves: safely stopping, or carrying on wrongly.
+
 ### 23.4 Ranking
 
 Each threat or failure is rated for likelihood and impact on a 1–3 scale; the product ranks them.
+
+A three-point scale is coarse but quick, and team members agree on it more easily than on finer scales. Multiplying likelihood by impact gives scores from 1 to 9; items scoring 6 or more get attention first. Ties are broken by discussion, with reasons recorded. The scale is not precise risk measurement; it is a way to agree an order of work. Ratings are revisited when controls change, since a new control lowers likelihood and therefore the rank, as the worked example's certificate monitoring will do.
 
 ### 23.5 Linking to controls
 
 Each high-ranked item must have a control and a test. Untracked items are risks recorded for management.
 
+Linking means naming the control that reduces each item and the test that shows it works, as in the requirements table. An item with a control but no test is treated as uncontrolled until tested. Lower-ranked items may be accepted without controls, but the acceptance is recorded with a reason and the name of the person who accepted it. This makes it clear who decided, and it lets the next review check whether the reasoning still holds.
+
 ### 23.6 Review
 
 The analysis is revisited when the architecture changes and after incidents.
+
+Architecture changes add new elements and flows that the old analysis never considered. Incidents show where the analysis was wrong, either missing a threat or misjudging its likelihood. Each review starts from the previous ranking and records what changed and why. Kwame also schedules a yearly review even without changes, since new attack classes appear and the team's own understanding improves. Lessons from the mirror mismatch, for example, raised the likelihood of storage failures in the next review.
 
 ### Abuse cases
 
