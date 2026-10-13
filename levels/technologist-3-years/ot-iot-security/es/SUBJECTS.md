@@ -30,10 +30,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 4 | [18](book/PLAN.md#ch-18) | Seguridad de TO, IoT y sistemas ciberfísicos: controles | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-18) | [19 · Borrador](book/MANUSCRIPT.md#ch-19) |
 | 4 | [19](book/PLAN.md#ch-19) | Seguridad de TO, IoT y sistemas ciberfísicos: supervisión | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-19) | [20 · Borrador](book/MANUSCRIPT.md#ch-20) |
 | 4 | [20](book/PLAN.md#ch-20) | Seguridad de TO, IoT y sistemas ciberfísicos: resolución de problemas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-20) | [21 · Borrador](book/MANUSCRIPT.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Seguridad de TO, IoT y sistemas ciberfísicos: integración de servicios | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-21) | [22 · Plan](book/PLAN.md#ch-22) |
-| 5 | [22](book/PLAN.md#ch-22) | Seguridad de TO, IoT y sistemas ciberfísicos: automatización | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plan](book/PLAN.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Seguridad de TO, IoT y sistemas ciberfísicos: evaluación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plan](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Métodos de investigación aplicada | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plan](book/PLAN.md#ch-25) |
+| 5 | [21](book/PLAN.md#ch-21) | Seguridad de TO, IoT y sistemas ciberfísicos: integración de servicios | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-21) | [22 · Borrador](book/MANUSCRIPT.md#ch-22) |
+| 5 | [22](book/PLAN.md#ch-22) | Seguridad de TO, IoT y sistemas ciberfísicos: automatización | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-22) | [23 · Borrador](book/MANUSCRIPT.md#ch-23) |
+| 5 | [23](book/PLAN.md#ch-23) | Seguridad de TO, IoT y sistemas ciberfísicos: evaluación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-23) | [24 · Borrador](book/MANUSCRIPT.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Métodos de investigación aplicada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-24) | [25 · Plan](book/PLAN.md#ch-25) |
 | 5 | [25](book/PLAN.md#ch-25) | Taller de proyecto en equipo | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plan](book/PLAN.md#ch-26) |
 | 6 | [26](book/PLAN.md#ch-26) | Seguridad de TO, IoT y sistemas ciberfísicos: traspaso operativo | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plan](book/PLAN.md#ch-27) |
 | 6 | [27](book/PLAN.md#ch-27) | Despliegue y validación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plan](book/PLAN.md#ch-28) |

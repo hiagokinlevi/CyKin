@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1152,7 +1152,175 @@ La integración da al negocio sus datos mediante copias, caminos unidireccionale
 
 ### Siga estudiando — capítulo 21 de 30
 
-[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](../../en/book/MANUSCRIPT.md#ch-22)
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Seguridad de TO, IoT y sistemas ciberfísicos: automatización
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) automatizar comprobaciones rutinarias como la caducidad de los certificados; (2) diseñar automatizaciones que informan en lugar de modificar los sistemas de TO; (3) programar y registrar trabajos automatizados; y (4) gestionar los fallos de la propia automatización.
+
+### 22.1 Qué automatizar
+
+Los buenos candidatos son las comprobaciones repetitivas con reglas claras: caducidad de certificados, finalización de copias de seguridad, deriva del inventario (el capítulo 11 ejecutado cada semana), comparación de flujos (el capítulo 12 ejecutado a diario sobre capturas nuevas). Los malos candidatos son las acciones sobre controladores en servicio; esas siguen siendo manuales y aprobadas.
+
+```python
+"""Lab 22: report days until expiry for synthetic IoT logger certificates."""
+from datetime import date
+today = date(2026, 10, 12)
+certs = {"LOG-01": date(2026, 11, 2), "LOG-02": date(2027, 6, 30), "LOG-03": date(2026, 10, 5), "LOG-04": date(2026, 12, 20)}
+for dev, exp in sorted(certs.items(), key=lambda kv: kv[1]):
+    d = (exp - today).days
+    flag = "EXPIRED" if d < 0 else "renew-now" if d <= 30 else "plan" if d <= 90 else "ok"
+    print(f"{dev} expires {exp} in {d:4} days -> {flag}")
+```
+
+Ejecútelo con `python3 lab_certs.py`. Salida verificada:
+
+```text
+LOG-03 expires 2026-10-05 in   -7 days -> EXPIRED
+LOG-01 expires 2026-11-02 in   21 days -> renew-now
+LOG-04 expires 2026-12-20 in   69 days -> plan
+LOG-02 expires 2027-06-30 in  261 days -> ok
+```
+
+Las comprobaciones de Priya empiezan por la comprobación de caducidad de certificados anterior; su primera ejecución encontró un certificado caducado y otro pendiente de renovación.
+
+La comprobación lee la fecha de caducidad del certificado de cada registrador en la exportación del proveedor y clasifica los registradores en `EXPIRED`, `renew-now`, `plan` y `ok`. Su primera ejecución dio LOG-03 caducado, LOG-01 a 21 días, LOG-04 a 69 días y LOG-02 correcto a 261 días.
+
+### 22.2 Leer el informe
+
+El certificado de LOG-03 caducó hace una semana, así que ese registrador probablemente no consigue conectarse y faltan lecturas. A LOG-01 le quedan 21 días y necesita renovarse ya, dados los plazos del proveedor. LOG-04 debe planificarse; LOG-02 está bien. Ordenar por fecha de caducidad pone primero lo urgente. Priya programó la comprobación a las 06:00 todos los días. Su primera ejecución abrió tiques para LOG-03 y LOG-01. El proveedor confirmó que LOG-03 había dejado de subir datos el 5 de octubre; el responsable de calidad registró un hueco de siete días en los registros de la nube para esa sala, cubierto por el historial de la sonda del PLC en HIST.
+
+### 22.3 Informar, no modificar
+
+El script imprime el informe y podría enviarlo por correo electrónico; no renueva certificados por sí mismo. La renovación pasa por el proceso del proveedor, porque una renovación automática que falle a medias podría dejar un registrador fuera de servicio. La comprobación de Priya abre tiques; no actúa. LOG-01, con 21 días por delante, se renovó mediante el proceso del proveedor en esa misma semana, y el tique registra la nueva fecha de caducidad. Si el script hubiera intentado renovar LOG-03 automáticamente y hubiera fallado a medias, NCS podría haber perdido un segundo registrador sin saberlo. Mantener el script en modo de solo informe también significa que no necesita acceso de escritura al portal del proveedor, así que sus credenciales valen menos si el equipo de gestión resulta comprometido.
+
+### 22.4 Programación y registro
+
+Ejecute la comprobación a diario desde un programador de tareas en un equipo de gestión de la VLAN de gestión de TO, escriba la salida en un registro con marcas de tiempo y alerte si el trabajo no se ejecutó. Un fallo silencioso de la automatización es peor que no tener automatización, porque la gente deja de comprobar a mano. En NCS el trabajo se ejecuta en el equipo de gestión de TO a las 06:00, registra cada ejecución con su marca de tiempo, y el programador lanza una alerta si a las 06:15 no ha aparecido ninguna línea en el registro. Esa alerta importa porque la comprobación de certificados es ahora la única razón por la que alguien mira las fechas de caducidad de los registradores.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya programa la comprobación a las 06:00 todos los días. La primera ejecución genera un tique para LOG-03 (caducado) y LOG-01 (renovar ya). El proveedor confirma que LOG-03 dejó de subir datos el 5 de octubre; el responsable de calidad registra un hueco de siete días en los registros de la nube para esa sala, cubierto por el historial de la sonda del PLC en HIST.
+
+> **Caso sintético — Northgate Cold Storage.** Las fechas y los dispositivos son inventados.
+
+### Errores y límites
+
+El script usa una fecha «de hoy» fija para que su salida sea reproducible; una versión de producción usaría la fecha actual. Las fechas de los certificados deben proceder de los dispositivos o del proveedor, no de una tabla tecleada a mano.
+
+### Ejercicios — capítulo 22
+
+- **EX064 — Cambiar los umbrales.** Si `renew-now` se aplicara a ≤ 60 días, ¿qué dispositivos cambian de estado? *Rúbrica:* 3 = ningún estado cambia, con LOG-04 todavía en `plan` a 69 días; 2 = conclusión correcta sin razón; 1 = dice que LOG-04 pasa a `renew-now`; 0 = nada.
+- **EX065 — Usar la fecha real.** ¿Qué cambio de línea hace que el script use la fecha actual y qué se pierde? *Rúbrica:* 3 = `today = date.today()`; la reproducibilidad de la salida documentada; 2 = uno; 1 = vago; 0 = nada.
+- **EX066 — Detectar un fallo silencioso.** Describa cómo notaría NCS que el trabajo de las 06:00 ha dejado de ejecutarse. *Rúbrica:* 3 = una comprobación de latido o del registro esperado alerta cuando no consta ninguna ejecución a la hora límite; 2 = parcial; 1 = «alguien se dará cuenta»; 0 = nada.
+
+### Síntesis del capítulo
+
+Automatice las comprobaciones que informan con claridad y fallan de forma ruidosa; deje los cambios en los dispositivos de TO en manos humanas y aprobadas.
+
+### Siga estudiando — capítulo 22 de 30
+
+[← Capítulo 21 (borrador)](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 (borrador) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Seguridad de TO, IoT y sistemas ciberfísicos: evaluación
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) evaluar si los controles lograron su propósito; (2) diseñar pruebas sencillas con resultados esperados; (3) medir antes y después; y (4) informar con honestidad de la eficacia, incluidos los fallos.
+
+### 23.1 ¿Funcionó?
+
+Tras seis meses de cambios en NCS (regla 9 eliminada, sesiones supervisadas de la empresa contratista, zona de cámaras, automatización de certificados), la dirección pregunta si el emplazamiento es «más seguro». Una evaluación responde a preguntas más acotadas y comprobables: ¿está cerrado el camino oficina → control? ¿Requieren aprobación las sesiones de la empresa contratista? ¿Se renuevan los certificados antes de caducar? Cada pregunta corresponde a un control del registro de Priya y a una prueba que puede fallar. Preguntar «¿es NCS más segura?» invitaría a un sí que nadie podría comprobar; preguntar si OFFICE-7 todavía puede llegar a PLC-R2:502 invita a una conexión rechazada en un registro del cortafuegos, que cualquiera puede comprobar.
+
+### 23.2 Pruebas con resultados esperados
+
+Para cada control, escriba la prueba y el resultado esperado antes de ejecutarla: «Desde OFFICE-7, intentar una conexión TCP a PLC-R2:502 en la ventana de mantenimiento; resultado esperado: rechazada en el cortafuegos y registrada». «La empresa contratista intenta conectarse sin aprobación; resultado esperado: el servidor de salto la deniega». Las pruebas que tocan la zona de control se ejecutan en ventanas de mantenimiento con operaciones informada. La tabla de Priya tenía seis pruebas de este tipo, con los resultados esperados escritos primero. Cinco se superaron. La sexta descubrió que la regla de la zona de cámaras permitía a CAM-DOCK llegar a HIST por un puerto web, porque se había escrito una regla amplia de «cámara a servidor» en lugar de una que nombrara la grabadora de vídeo.
+
+### 23.3 Antes y después
+
+Las medidas que ya existían antes de los cambios permiten comparar: flujos no aprobados por semana (antes: 2 tipos; después: 0), cuentas de la HMI de personas que se marcharon (antes 2; después 0), días de datos de registradores perdidos por certificados caducados (antes 7 en un incidente; después 0 en seis meses). Las tres medidas existían antes de los cambios porque el trabajo anterior de Priya las había producido: la comparación de flujos del capítulo 12 contó los flujos no aprobados, la revisión del capítulo 7 contó las cuentas de personas que se marcharon y la comprobación del capítulo 22 fechó el hueco de LOG-03. Sin esa línea base, la evaluación a seis meses solo habría podido decir que los problemas no se veían ahora.
+
+### 23.4 Informar con honestidad
+
+Informe de lo que falló. Si una empresa contratista siguió usando el router celular (capítulo 14) porque se encendió para una emergencia y nunca se apagó, dígalo, con la acción correctiva. Las evaluaciones que solo informan de éxitos dejan de ser creíbles. La evaluación de Priya informa de su único fallo del mismo modo: la regla de la zona de cámaras permitía a CAM-DOCK llegar a HIST por un puerto web; la acción correctiva restringe la regla solo a la grabadora de vídeo, y hay una nueva prueba programada. Informar de cinco de seis como cinco de seis es lo que hace creíbles las cinco.
+
+### Ejemplo resuelto (NCS sintética)
+
+La tabla de evaluación de Priya: seis controles, seis pruebas, cinco superadas. El fallo: el cortafuegos de la zona de cámaras permitía a CAM-DOCK llegar a HIST por un puerto web debido a una regla amplia de «cámara a servidor». Acción correctiva: restringir la regla solo a la grabadora de vídeo; nueva prueba programada.
+
+> **Caso sintético — Northgate Cold Storage.** Los resultados son inventados.
+
+### Errores y límites
+
+Una prueba superada muestra que el control funcionó en el momento de la prueba y para ese caso; la deriva puede deshacerlo. Los recuentos de antes y después pueden cambiar por razones ajenas al control.
+
+### Ejercicios — capítulo 23
+
+- **EX067 — Redactar una prueba.** Escriba la prueba y el resultado esperado para «solo HMI-C y HIST pueden llegar a PLC-R1». *Rúbrica:* 3 = prueba desde un equipo no aprobado y desde uno aprobado, resultados esperados, ventana; 2 = un solo lado; 1 = vago; 0 = nada.
+- **EX068 — Interpretar un recuento de antes y después.** Los flujos no aprobados bajaron de 2 tipos a 0. Nombre una razón distinta de los controles. *Rúbrica:* 3 = cambió la ventana de observación o la ubicación de la captura, o faltó una actividad estacional; 2 = vago; 1 = intento mínimo; 0 = nada.
+- **EX069 — Informar del fallo.** Escriba la línea de la evaluación sobre el fallo de la regla de las cámaras. *Rúbrica:* 3 = prueba, resultado, causa, acción correctiva, fecha de la nueva prueba; 2 = tres; 1 = «problema menor»; 0 = nada.
+
+### Síntesis del capítulo
+
+La evaluación convierte «más seguro» en pruebas concretas con resultados esperados, comparadas antes y después, con los fallos comunicados con la misma claridad que los aciertos.
+
+### Siga estudiando — capítulo 23 de 30
+
+[← Capítulo 22 (borrador)](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 (borrador) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de investigación aplicada
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) plantear una pequeña pregunta de investigación aplicada a partir de la práctica operativa; (2) elegir datos y un método adecuados; (3) definir una medida y una comparación; y (4) encontrar y usar fuentes creíbles.
+
+### 24.1 Preguntas que nacen de la práctica
+
+La investigación aplicada en el nivel de tecnólogo responde a una pregunta que alguien del emplazamiento tiene de verdad. «¿Detecta la comparación de los datos de los registradores con las sondas de los PLC las lecturas falsificadas más deprisa que la alerta propia de la nube?» es una pregunta así: es concreta, medible con datos registrados o sintéticos, y su respuesta cambia lo que hace NCS. El miniestudio de Priya aborda esa pregunta: cuatro semanas sintéticas de datos de la antecámara con diez falsificaciones inyectadas, comparando su comprobación de dos sondas con la alerta de temperatura alta propia de la nube. La hipótesis es que las lecturas falsificadas que se mantienen dentro del rango son invisibles para una alerta por umbral.
+
+### 24.2 Datos y método
+
+Use datos históricos que proporcione el responsable, o datos sintéticos con propiedades realistas, e indique cuáles. Un método puede ser tan sencillo como reproducir semanas registradas con falsificaciones inyectadas y medir cuánto tarda cada comprobación en señalarlas. El método debe poder repetirlo otra persona. El método de Priya fue esa reproducción: cuatro semanas sintéticas de lecturas de la antecámara, con diez falsificaciones inyectadas en momentos conocidos, procesadas tanto por la comparación de dos sondas como por la alerta de temperatura alta de la nube. Etiqueta los datos como sintéticos en todas las tablas y conserva el script de inyección, para que otra persona pueda regenerar las mismas semanas.
+
+### 24.3 Medidas y comparaciones
+
+Elija las medidas antes de ejecutar: tiempo hasta la detección, falsas alertas por semana. Compare con la práctica actual (la alerta de la nube) y no con la ausencia de comprobación. Informe con recuentos: «detectó 9 de 10 falsificaciones inyectadas; 1 falsa alerta en 4 semanas». El resultado de Priya encaja en este patrón: la comparación de dos sondas con una tolerancia de 2 °C señaló las diez falsificaciones en menos de 10 minutos; la alerta de la nube no señaló ninguna, porque los valores falsificados se mantenían dentro del rango. También necesita el recuento de falsas alertas de la comprobación de dos sondas durante las cuatro semanas, sin el cual la comparación queda incompleta. La limitación que declara es que el ruido sintético es más sencillo que las aperturas reales de puertas, que pueden causar discrepancias entre las sondas.
+
+### 24.4 Fuentes
+
+Use fuentes primarias y revisadas por pares. Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245) revisan la detección de ataques basada en la física: la idea de contrastar los datos de los sensores con lo que cabe esperar físicamente, que es lo que hace la comparación de dos sondas independientes. NIST SP 800-82r3 aporta el contexto del programa. Las entradas de blogs de proveedores son contexto, no evidencia. El estudio de Priya cita a Giraldo et al. para encuadrar la comprobación de dos sondas como una prueba sencilla de coherencia basada en la física, no como prueba de que funcione en NCS. Su evidencia para eso es su propio resultado de cuatro semanas.
+
+### Ejemplo resuelto (NCS sintética)
+
+El miniestudio de Priya usa cuatro semanas sintéticas de datos de la antecámara con diez falsificaciones inyectadas. La comparación de dos sondas (tolerancia de 2 °C) señala las diez en menos de 10 minutos; la alerta de temperatura alta de la nube no señala ninguna, porque los valores falsificados se mantienen dentro del rango. Informa de la limitación: el ruido sintético es más sencillo que los patrones reales de apertura de puertas.
+
+> **Caso sintético — Northgate Cold Storage.** Los datos y los resultados son inventados.
+
+### Errores y límites
+
+Los estudios pequeños respaldan decisiones locales, no afirmaciones generales. No ajuste la tolerancia con los mismos casos inyectados de los que informa.
+
+### Ejercicios — capítulo 24
+
+- **EX070 — Convertir la curiosidad en una pregunta.** Reescriba «¿son buenos nuestros registradores?» como pregunta de investigación aplicada. *Rúbrica:* 3 = medida, datos y comparación concretos; 2 = dos; 1 = vago; 0 = nada.
+- **EX071 — Elegir una comparación.** ¿Por qué comparar la comprobación de dos sondas con la alerta de la nube y no con «ninguna comprobación»? *Rúbrica:* 3 = muestra la mejora respecto de la práctica actual; decisión realista; 2 = parcial; 1 = vago; 0 = nada.
+- **EX072 — Usar a Giraldo et al.** Indique cómo se relaciona la revisión con el estudio de Priya. *Rúbrica:* 3 = encuadre de las comprobaciones de coherencia basadas en la física; la revisión aporta contexto y métodos, no prueba; 2 = parcial; 1 = la cita como prueba; 0 = nada.
+
+### Síntesis del capítulo
+
+La investigación aplicada plantea una pregunta real del emplazamiento, mide frente a la práctica actual y se apoya en fuentes que pueden comprobarse.
+
+### Siga estudiando — capítulo 24 de 30
+
+[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](../../en/book/MANUSCRIPT.md#ch-25)
 
 <a id="worked-results"></a>
 
@@ -1285,6 +1453,24 @@ Respuestas modelo para EX001–EX090. Northgate Cold Storage, Priya Nair y todas
 **EX062.** Acceso de solo lectura a las series de temperatura de las salas con contratos de clientes activos; sin permisos de escritura, configuración ni gestión de usuarios; clave guardada en el almacén de secretos y rotada cada 90 días, con su uso registrado.
 
 **EX063.** La API en la nube del proveedor de los registradores y su disponibilidad; la clave de API de alcance limitado en el almacén de secretos; la resolución DNS del equipo de la API; la cadena de certificados TLS que usa la API (y el servidor de la herramienta de certificados).
+
+**EX064.** Ningún estado cambia: LOG-01 (21 días) ya está en `renew-now`, LOG-04 (69 días) sigue por encima de 60 y se queda en `plan`, LOG-02 sigue en `ok` y LOG-03 sigue en `EXPIRED`.
+
+**EX065.** Sustituir `today = date(2026, 10, 12)` por `today = date.today()`. Entonces la salida cambia cada día, así que la salida verificada impresa en el libro ya no puede reproducirse exactamente.
+
+**EX066.** El trabajo escribe una línea de «completado» con marca de tiempo; un supervisor independiente comprueba a las 06:15 que existe la línea del día y, si no, lanza una alerta al buzón de TO.
+
+**EX067.** En la ventana de mantenimiento, desde OFFICE-7 y desde GW-LOG, intentar conexiones TCP a PLC-R1:502; resultado esperado: rechazadas y registradas en el cortafuegos. Desde HMI-C y HIST, confirmar que la consulta normal continúa; resultado esperado: los valores se actualizan en la HMI y en el historiador.
+
+**EX068.** Puede que la captura «posterior» cubriera otro periodo u otro puerto del conmutador, o que la macro energética simplemente no se ejecutara esa semana, de modo que la reducción de flujos podría reflejar diferencias de observación y no el efecto del control.
+
+**EX069.** «La prueba 6 (aislamiento de la zona de cámaras) FALLÓ el 2 de septiembre: CAM-DOCK llegó a HIST por TCP 80 porque la regla 31 permitía a las cámaras llegar a cualquier servidor. Acción correctiva: restringir la regla 31 a la grabadora de vídeo; nueva prueba el 16 de septiembre».
+
+**EX070.** «En las últimas 12 semanas de datos de NCS, ¿qué porcentaje de las lecturas de los registradores llegó a la nube en menos de 15 minutos, y difiere ese porcentaje entre el firmware antiguo y el nuevo de la pasarela?».
+
+**EX071.** NCS ya depende de la alerta de la nube, así que la decisión es si añadir la comprobación de dos sondas; comparar con la práctica actual muestra el valor añadido, mientras que comparar con «ninguna comprobación» lo exageraría.
+
+**EX072.** Giraldo et al. describen la detección de ataques contrastando los datos de los sensores con lo que cabe esperar físicamente; la comparación de dos sondas de Priya es un caso sencillo de esa idea, así que la revisión encuadra y justifica el enfoque sin demostrar que funcione en NCS.
 
 <a id="references"></a>
 
