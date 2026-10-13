@@ -2455,7 +2455,7 @@ Restoring appointments was possible because the booking log linked each cancella
 - No runbooks for AI-specific incidents.
 - Prompt changes made directly in production.
 
-Signals that nobody watches give no protection: the false closure incident ran for a night partly because grounding failures were logged but not alerted. Without runbooks, an on-call engineer must invent a response under pressure. Editing prompts directly in production bypasses the tests that would catch a weakened instruction or a removed safeguard, and leaves no record of what changed when something goes wrong in production.
+Signals that nobody watches give no protection: the false closure incident ran for a night, through 23 false answers, because no grounding signal existed and nobody watched the answers until a receptionist reported them. Without runbooks, an on-call engineer must invent a response under pressure. Editing prompts directly in production bypasses the tests that would catch a weakened instruction or a removed safeguard, and leaves no record of what changed when something goes wrong in production.
 
 ### Exercises
 
@@ -2579,7 +2579,7 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
-Rina ran all three labs with their fixed seeds and checked each table against the expected output. The capstone's value is in reading them together: one decision about Ask Lumen draws on all three, and a result from one lab can change how another should be used, as the base-rate table does for the detector.
+Rina ran all three labs with their fixed seeds and checked each table against the expected output. This lab's value is in reading them together: one decision about Ask Lumen draws on all three, and a result from one lab can change how another should be used, as the base-rate table does for the detector.
 
 ### 30.2 Questions to answer
 
