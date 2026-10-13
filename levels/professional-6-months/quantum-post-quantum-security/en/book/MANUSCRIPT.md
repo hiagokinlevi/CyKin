@@ -77,7 +77,7 @@ For each sentence, record the original, your rewrite and the source you used to 
 - Treating IR 8547's draft dates as final.
 - Saying hybrid key exchange makes the whole system post-quantum.
 
-Each error costs credibility later. An MTI report that called the portal "quantum-proof" would be contradicted by the first auditor who looked at its classical certificate. A plan built on IR 8547's proposed 2030 and 2035 dates as fixed law would need rewriting if the final text changes. Check every status report against these three before it leaves your desk.  Ask a colleague to read it too.
+Each error costs credibility later. An MTI report that called the portal "quantum-proof" would be contradicted by the first auditor who looked at its classical certificate. A plan built on IR 8547's proposed 2030 and 2035 dates as fixed law would need rewriting if the final text changes. Check every status report against these three before it leaves your desk. Ask a colleague to read it too.
 
 ### Exercises
 
@@ -154,7 +154,7 @@ Each place on the list has a reason that can be traced to Lab M or to exposure c
 
 Build a five-row table of MTI services with data, lifetime, source of lifetime and owner; run Lab M with your own values.
 
-Source each lifetime from a retention schedule, contract or owner statement, and write which. Then compare your Lab M output with the book's: if a service moves in or out of the at-risk list, explain why in one sentence. Ask a peer to check that each owner named actually controls the service, not just uses it.  Keep the table in your portfolio.
+Source each lifetime from a retention schedule, contract or owner statement, and write which. Then compare your Lab M output with the book's: if a service moves in or out of the at-risk list, explain why in one sentence. Ask a peer to check that each owner named actually controls the service, not just uses it. Keep the table in your portfolio.
 
 ### 2.7 Common errors and limits
 
@@ -162,7 +162,7 @@ Source each lifetime from a retention schedule, contract or owner statement, and
 - A single assumed quantum date.
 - Forgetting procurement and legal as stakeholders.
 
-Each error weakens the priority list in a different way. A guessed lifetime cannot be defended to an auditor. A single quantum date makes the list look like a forecast and invites argument about the date rather than the data. Leaving out procurement and legal means contract clauses and obligations surface late, after suppliers have already set their roadmaps.  Check your own table for each of them.
+Each error weakens the priority list in a different way. A guessed lifetime cannot be defended to an auditor. A single quantum date makes the list look like a forecast and invites argument about the date rather than the data. Leaving out procurement and legal means contract clauses and obligations surface late, after suppliers have already set their roadmaps. Check your own table for each of them.
 
 ### 2.8 Revisiting the list
 
@@ -204,7 +204,7 @@ At MTI the SEC-118 ticket is the model: it names the servers, the read-only meth
 
 Collect what answers the question: algorithm names, versions, certificate details, dates. Do not collect message contents or customer data. Prefer configuration exports and summaries over raw captures.
 
-For the reinsurer SFTP servers, this means an export of OpenSSH version and key-exchange settings, not samples of transferred files. If a team offers more than you need, decline politely and record that you did. Less evidence is easier to protect and simpler to delete when the programme ends.  Write down what you chose not to collect.
+For the reinsurer SFTP servers, this means an export of OpenSSH version and key-exchange settings, not samples of transferred files. If a team offers more than you need, decline politely and record that you did. Less evidence is easier to protect and simpler to delete when the programme ends. Write down what you chose not to collect.
 
 ### 3.3 Storage and labelling
 
@@ -234,7 +234,7 @@ Note what made this work: the scope was narrow, the method was read-only, the wi
 
 Write an authorization request and an evidence label for one inventory activity.
 
-Choose a real kind of activity, such as a certificate export from MTI's internal CA. The request should name systems, method, time window, storage, data handling and a contact, like SEC-118. The label should give source, date, collector, system and classification. Ask a peer whether a system owner could approve your request without asking a single follow-up question.  Then revise the request once and keep both versions to show what you improved.
+Choose a real kind of activity, such as a certificate export from MTI's internal CA. The request should name systems, method, time window, storage, data handling and a contact, like SEC-118. The label should give source, date, collector, system and classification. Ask a peer whether a system owner could approve your request without asking a single follow-up question. Then revise the request once and keep both versions to show what you improved.
 
 ### 3.8 Common errors and limits
 
@@ -242,7 +242,7 @@ Choose a real kind of activity, such as a certificate export from MTI's internal
 - Evidence without labels.
 - Sharing supplier roadmaps widely.
 
-Each error has a cost. Excess data enlarges what must be protected and later deleted. Unlabelled evidence cannot support a grade or be traced in an audit, so the work must be repeated. A roadmap shared beyond the agreement can breach an NDA and damage the supplier relationship on which several MTI tracker items depend. Check each piece of evidence against all three before filing it.  Correct them before filing.
+Each error has a cost. Excess data enlarges what must be protected and later deleted. Unlabelled evidence cannot support a grade or be traced in an audit, so the work must be repeated. A roadmap shared beyond the agreement can breach an NDA and damage the supplier relationship on which several MTI tracker items depend. Check each piece of evidence against all three before filing it. Correct them before filing.
 
 ### 3.9 Retention and deletion
 
@@ -278,7 +278,7 @@ You will (1) run an inventory using several sources; (2) build and read a crypto
 
 Configuration exports, certificate lists from the CA, network observations by technical teams, application documentation, and supplier questionnaires. Each answers different questions; combine them.
 
-At MTI the broker portal's key exchange was seen in passive observation, its certificate came from configuration, and the claims app's signing algorithm was known only from code. No single source covered all six assets. Record which source supplied each line of the CBOM, because the source sets the evidence grade.  Note where two sources disagree and ask the owner which is current.
+At MTI the broker portal's key exchange was seen in passive observation, its certificate came from configuration, and the claims app's signing algorithm was known only from code. No single source covered all six assets. Record which source supplied each line of the CBOM, because the source sets the evidence grade. Note where two sources disagree and ask the owner which is current.
 
 ### 4.2 Practical activity — Lab I
 
@@ -318,13 +318,13 @@ Grades also tell you how to improve evidence: a D can be raised by asking techni
 
 Record-now (HNDL): classical key exchange carrying long-lived data. Forge-later: classical signatures trusted for long periods or hard to replace. Adequate: symmetric encryption and hashes at good sizes. Unknown.
 
-In the Lab I extract, policy-db's RSA key exchange is record-now if it carries long-lived data, the broker portal's RSA-2048 signature is forge-later, billing's AES-256-GCM is adequate and the call recorder is unknown. Classify each use of cryptography separately, since one asset can fall in two classes.  The class decides which controls apply.
+In the Lab I extract, policy-db's RSA key exchange is record-now if it carries long-lived data, the broker portal's RSA-2048 signature is forge-later, billing's AES-256-GCM is adequate and the call recorder is unknown. Classify each use of cryptography separately, since one asset can fall in two classes. The class decides which controls apply.
 
 ### 4.5 Unknowns as work
 
 Every unknown becomes a task with owner and due date: ask the supplier, request a configuration export, ask technical staff to observe. Track the unknown share as a headline measure.
 
-At MTI the call recorder's U became a questionnaire task for its vendor with a named owner and a due date. The share of unknowns is a better measure of inventory progress than the number of assets listed, because it cannot be improved by counting easy assets twice.  Close each task with evidence.
+At MTI the call recorder's U became a questionnaire task for its vendor with a named owner and a due date. The share of unknowns is a better measure of inventory progress than the number of assets listed, because it cannot be improved by counting easy assets twice. Close each task with evidence.
 
 ### 4.6 Worked example
 
@@ -336,7 +336,7 @@ The grades decide what happens next. Items with A or B can be prioritised with c
 
 Grade and classify each Lab I record and write tasks for the unknowns.
 
-Give each record a grade from A to U and an exposure class, with one line explaining each choice. For the call recorder, write a task with an owner, a due date and the question to ask. Then compare with the worked example and explain any difference. A peer should be able to reproduce your grades from the source column alone.  Note which records you could not grade and why.
+Give each record a grade from A to U and an exposure class, with one line explaining each choice. For the call recorder, write a task with an owner, a due date and the question to ask. Then compare with the worked example and explain any difference. A peer should be able to reproduce your grades from the source column alone. Note which records you could not grade and why.
 
 ### 4.8 Common errors and limits
 
@@ -344,7 +344,7 @@ Give each record a grade from A to U and an exposure class, with one line explai
 - Treating supplier claims as observations.
 - Unknowns without owners.
 
-A single source leaves blind spots: configuration alone misses what is negotiated, and observation alone misses encrypted certificates. A supplier claim treated as an observation can push money toward an asset that is already protected, or away from one that is not. An unknown without an owner simply stays unknown, quarter after quarter, while the headline measure stalls.  Check the MTI extract for each of these before relying on it, and fix any you find.
+A single source leaves blind spots: configuration alone misses what is negotiated, and observation alone misses encrypted certificates. A supplier claim treated as an observation can push money toward an asset that is already protected, or away from one that is not. An unknown without an owner simply stays unknown, quarter after quarter, while the headline measure stalls. Check the MTI extract for each of these before relying on it, and fix any you find.
 
 ### 4.9 Running the inventory as a cycle
 
@@ -441,13 +441,13 @@ Note that the finding was raised only after the infrastructure team confirmed th
 
 Turn each Lab T line into a finding or an "as expected" note.
 
-For each line, write observation, source, date, impact, recommendation and owner, or a one-line note explaining why no action is needed. The quote API should be an "as expected" note; the claims portal and both classical services need findings. Ask whether the HR intranet carries long-lived data before deciding its priority.  Keep each finding to a few lines and name the owner.  Ask a peer to review them.
+For each line, write observation, source, date, impact, recommendation and owner, or a one-line note explaining why no action is needed. The quote API should be an "as expected" note; the claims portal and both classical services need findings. Ask whether the HR intranet carries long-lived data before deciding its priority. Keep each finding to a few lines and name the owner. Ask a peer to review them.
 
 ### 5.8 Asking the right follow-up
 
 When tool output surprises you, ask technical staff three questions before raising a finding: is the tool current enough to see post-quantum algorithms; is the data fresh; and does the result match another source? Many apparent findings disappear — or become more serious — after these checks.
 
-At MTI, asking these questions about the insurer-sftp result led to the infrastructure team's version check, which turned a tool result into a confirmed finding.  Record the answers to the three questions with the finding, so a reviewer can see what was checked and when.
+At MTI, asking these questions about the insurer-sftp result led to the infrastructure team's version check, which turned a tool result into a confirmed finding. Record the answers to the three questions with the finding, so a reviewer can see what was checked and when.
 
 ### 5.9 Common errors and limits
 
@@ -455,7 +455,7 @@ At MTI, asking these questions about the insurer-sftp result led to the infrastr
 - Ignoring blind spots.
 - Scoring questionnaire answers inconsistently.
 
-Each error leads to a wrong report. Counting presence would have marked MTI's claims portal as done while most sessions stayed classical. Ignoring blind spots can hide a classical certificate behind a hybrid result. Inconsistent questionnaire scores make suppliers impossible to compare and invite complaints from those scored harshly. Check every tool-based finding against these three errors before it goes into the tracker.  Correct any you find before reporting.
+Each error leads to a wrong report. Counting presence would have marked MTI's claims portal as done while most sessions stayed classical. Ignoring blind spots can hide a classical certificate behind a hybrid result. Inconsistent questionnaire scores make suppliers impossible to compare and invite complaints from those scored harshly. Check every tool-based finding against these three errors before it goes into the tracker. Correct any you find before reporting.
 
 ### Exercises
 
@@ -497,37 +497,37 @@ At MTI the infrastructure team is the system owner for the reinsurer SFTP server
 
 Use simple states: *Unknown* → *Assessed* → *Planned* → *In progress* → *Implemented* → *Verified* → *Closed* (or *Exception*). An item moves to Verified only with evidence of negotiation, not just a change ticket.
 
-Each state needs its own evidence: an inventory record for Assessed, an owner and date for Planned, a change ticket for Implemented and negotiation logs for Verified. Record the date of each state change so the tracker shows how long items take.  A move back to an earlier state is also recorded, with a reason, as happened with the broker portal.
+Each state needs its own evidence: an inventory record for Assessed, an owner and date for Planned, a change ticket for Implemented and negotiation logs for Verified. Record the date of each state change so the tracker shows how long items take. A move back to an earlier state is also recorded, with a reason, as happened with the broker portal.
 
 ### 6.4 Dependencies
 
 Many items wait on suppliers or partners. Record the dependency, the request sent, the answer and the follow-up date. Escalate unanswered requests through procurement or account management.
 
-At MTI the reinsurer SFTP item depended on partners upgrading their clients, and the archive item depended on the vendor's signature roadmap. Each had a request date and a follow-up date in the tracker. When a dependency is resolved, record the answer as evidence and update the item's grade and state together.  Keep this short.
+At MTI the reinsurer SFTP item depended on partners upgrading their clients, and the archive item depended on the vendor's signature roadmap. Each had a request date and a follow-up date in the tracker. When a dependency is resolved, record the answer as evidence and update the item's grade and state together. Keep this short.
 
 ### 6.5 Outcome measures
 
 Report: share of tier-1 items Verified; share Unknown; number of open exceptions and how many are past expiry; supplier answers received. Avoid activity counts such as "meetings held".
 
-Each measure answers a question an executive can act on: how much is protected, how much is still unknown, how much risk is accepted and whether suppliers are engaging. Define each measure once, in writing, and keep the definition unchanged between quarters, or note any change in the report.  Show each measure next to last quarter's.
+Each measure answers a question an executive can act on: how much is protected, how much is still unknown, how much risk is accepted and whether suppliers are engaging. Define each measure once, in writing, and keep the definition unchanged between quarters, or note any change in the report. Show each measure next to last quarter's.
 
 ### 6.6 Worked example
 
 MTI's tracker after one quarter (synthetic): 64 tier-1 items — 6 Verified, 9 Implemented, 14 In progress, 18 Planned, 11 Assessed, 6 Unknown; 3 exceptions. Report headline: "9 % of tier-1 items verified, 9 % unknown; reinsurer SFTP and archive transfers in progress; 3 exceptions, none past expiry."
 
-The headline reports outcomes rather than effort. It also makes the gap visible: 9 Implemented items are not yet counted as Verified, because no negotiation evidence exists for them. The figures will look modest; that is accurate.  The sponsor can see which items need a push and which need evidence collection rather than more changes.
+The headline reports outcomes rather than effort. It also makes the gap visible: 9 Implemented items are not yet counted as Verified, because no negotiation evidence exists for them. The figures will look modest; that is accurate. The sponsor can see which items need a push and which need evidence collection rather than more changes.
 
 ### 6.7 Practice task
 
 Set up a tracker for ten MTI items and move three through the states with evidence.
 
-Give each item a source, an owner and a current state. For the three you move, attach the evidence that justifies each transition: an inventory record, an owner and date, a change ticket, then negotiation logs before Verified. Ask a peer to check that no item jumps a state without evidence, and that dependencies carry follow-up dates.  Keep a record of what evidence you used for each move.
+Give each item a source, an owner and a current state. For the three you move, attach the evidence that justifies each transition: an inventory record, an owner and date, a change ticket, then negotiation logs before Verified. Ask a peer to check that no item jumps a state without evidence, and that dependencies carry follow-up dates. Keep a record of what evidence you used for each move.
 
 ### 6.8 Cadence
 
 A monthly working meeting with system owners keeps items moving; a quarterly report goes to the sponsor; an annual review revisits the standard, priorities and lifetimes. Keep each meeting short and driven by the tracker: blocked items first, then items due, then new unknowns.
 
-At MTI the monthly meeting is where the reinsurer SFTP dependency was chased, and the quarterly report carried the result to the sponsor.  Cancel a meeting rather than hold one with nothing on the tracker to discuss, and send a short note of decisions and new due dates after each.
+At MTI the monthly meeting is where the reinsurer SFTP dependency was chased, and the quarterly report carried the result to the sponsor. Cancel a meeting rather than hold one with nothing on the tracker to discuss, and send a short note of decisions and new due dates after each.
 
 ### 6.9 Common errors and limits
 
@@ -565,7 +565,7 @@ You will (1) describe the main controls available for quantum risk; (2) match co
 
 *Hybrid key exchange* (X25519MLKEM768 in TLS; ML-KEM in IKEv2 via RFC 9370; `mlkem768x25519-sha256` in SSH). *Interim pre-shared keys* mixed into VPNs (RFC 8784) for fixed links. *Data minimization*: send and keep less long-lived data. *Signature migration planning*: post-quantum internal CA, code-signing plans, archive timestamp renewal. *Procurement clauses*: algorithm support, inventories, update commitments. *Exception management*: time-limited acceptance with compensating controls.
 
-Not every control applies to every item, and several are often combined, as in MTI's archive case.  Record which controls each item uses.
+Not every control applies to every item, and several are often combined, as in MTI's archive case. Record which controls each item uses.
 
 ### 7.2 Matching controls
 
@@ -606,37 +606,37 @@ old tag after retirement: False
 
 When algorithms are chosen by policy and labelled in the data, migration is a configuration change, and an old algorithm can be retired cleanly. Ask system owners and suppliers whether their products work this way; NIST's [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) discusses such crypto-agility considerations.
 
-Ask system owners at MTI whether the algorithm is named in configuration or hard-coded.  Where an algorithm is hard-coded, migration needs a code change and a release, which takes longer and should be planned earlier. Record the answer in the tracker as a factor in the item's migration time.
+Ask system owners at MTI whether the algorithm is named in configuration or hard-coded. Where an algorithm is hard-coded, migration needs a code change and a release, which takes longer and should be planned earlier. Record the answer in the tracker as a factor in the item's migration time.
 
 ### 7.4 Verification
 
 Verification means evidence that the control works in operation: negotiation logs showing hybrid on the intended service, certificate inventory showing new algorithms, questionnaire answers confirmed by observation, minimization confirmed by data-flow review. A change ticket is evidence of intent, not of effect.
 
-At MTI the reinsurer SFTP item was marked Verified only when sshd logs showed partners negotiating the hybrid method.  Without that evidence, the item stays Implemented, however confident the owner is. Ask for evidence that covers a normal working period, so occasional clients are included, and record its date.
+At MTI the reinsurer SFTP item was marked Verified only when sshd logs showed partners negotiating the hybrid method. Without that evidence, the item stays Implemented, however confident the owner is. Ask for evidence that covers a normal working period, so occasional clients are included, and record its date.
 
 ### 7.5 Residual risk
 
 For each verified item, record what remains: usually classical authentication, partners on old clients, or devices awaiting replacement. Give each residual risk an owner and review date.
 
-For MTI's reinsurer SFTP item, the residual risk was three partners on old clients and classical host keys. Recording it keeps the item honest: verified does not mean finished. When a residual risk is resolved, note the evidence and close it; when it persists past its review date, consider an exception.  Keep the list short and specific.
+For MTI's reinsurer SFTP item, the residual risk was three partners on old clients and classical host keys. Recording it keeps the item honest: verified does not mean finished. When a residual risk is resolved, note the evidence and close it; when it persists past its review date, consider an exception. Keep the list short and specific.
 
 ### 7.6 Worked example
 
 Reinsurer SFTP: control — hybrid SSH key exchange after OpenSSH upgrade; verification — sshd logs show 7 of 10 reinsurers negotiating the hybrid; residual — three reinsurers on old clients (notified, deadline in 12 months), host keys classical; owner Infrastructure; review quarterly.
 
-This record is complete because each part points to evidence or a person: the control names the method, verification gives a measured share from logs, the residual risk names what remains, and the owner and review cycle say who follows up and when.  Use it as a template.
+This record is complete because each part points to evidence or a person: the control names the method, verification gives a measured share from logs, the residual risk names what remains, and the owner and review cycle say who follows up and when. Use it as a template.
 
 ### 7.7 Practice task
 
 For three MTI items, write control, verification evidence and residual risk.
 
-Choose items in different states: for example the reinsurer SFTP servers, the claims portal and the archive transfers. For each, name the control, say what evidence would show it works in operation, and list what remains afterwards with an owner and review date. Where evidence does not yet exist, write how and when it will be collected.  Compare your records with the reinsurer SFTP example and fill any gap you find.
+Choose items in different states: for example the reinsurer SFTP servers, the claims portal and the archive transfers. For each, name the control, say what evidence would show it works in operation, and list what remains afterwards with an owner and review date. Where evidence does not yet exist, write how and when it will be collected. Compare your records with the reinsurer SFTP example and fill any gap you find.
 
 ### 7.8 Exceptions
 
 When a control cannot be applied in time, raise an exception: scope, reason, compensating controls, owner, expiry. The sponsor approves; the tracker shows it; expiry triggers review. Exceptions are normal; exceptions without expiry are not.
 
-At MTI the two offices awaiting hardware refresh are the example: interim PSKs as compensating control, expiry at refresh.  Each exception names its compensating control, so the sponsor knows what reduces the risk while the main control waits. Review open exceptions at the monthly meeting and report any past expiry in the quarterly report.
+At MTI the two offices awaiting hardware refresh are the example: interim PSKs as compensating control, expiry at refresh. Each exception names its compensating control, so the sponsor knows what reduces the risk while the main control waits. Review open exceptions at the monthly meeting and report any past expiry in the quarterly report.
 
 ### 7.9 Common errors and limits
 
@@ -644,7 +644,7 @@ At MTI the two offices awaiting hardware refresh are the example: interim PSKs a
 - Residual risk omitted.
 - Exceptions without expiry.
 
-Each error makes the tracker overstate protection. A change ticket accepted as verification would have hidden MTI's broker portal regression. Omitting residual risk makes a partly protected item look finished, so classical host keys or old partner clients drop out of view. An exception without an expiry becomes permanent acceptance that nobody decided. Review every Verified item and exception against these three each quarter.  Fix any you find.  Record what you changed.
+Each error makes the tracker overstate protection. A change ticket accepted as verification would have hidden MTI's broker portal regression. Omitting residual risk makes a partly protected item look finished, so classical host keys or old partner clients drop out of view. An exception without an expiry becomes permanent acceptance that nobody decided. Review every Verified item and exception against these three each quarter. Fix any you find. Record what you changed.
 
 ### Exercises
 
@@ -674,7 +674,7 @@ You will (1) analyse a realistic migration case end to end; (2) apply the workfl
 
 MTI's life-policy archive (synthetic): 40-year confidentiality and verifiability; documents signed with RSA-2048; transferred nightly from regional offices over IPsec VPNs with ECDH; stored encrypted with AES-256, keys wrapped by an HSM using RSA-OAEP; VPN appliances from a supplier whose firmware supports RFC 9370 from version 7.4, with MTI on 7.1; archive software vendor states "PQC signatures on roadmap".
 
-Notice that the case combines both risks from Chapter 1: classical key exchange on long-lived transfers and classical signatures on long-lived documents.  List the facts in a table with their grades before analysing them.
+Notice that the case combines both risks from Chapter 1: classical key exchange on long-lived transfers and classical signatures on long-lived documents. List the facts in a table with their grades before analysing them.
 
 ### 8.2 Analysis
 
@@ -692,7 +692,7 @@ Score each option against every criterion and write a short reason for each scor
 
 No owner for archive cryptography; no contract clause requiring the archive vendor to support post-quantum signatures; no exception process used for the VPN delay.
 
-Each gap explains part of the risk. Without an owner, nobody chased the archive vendor. Without a clause, MTI has no lever to require dates. Without a registered exception, the VPN delay was accepted by default instead of by decision. Fix the gaps alongside the technical options, or the same problems will recur.  Assign each gap an owner.
+Each gap explains part of the risk. Without an owner, nobody chased the archive vendor. Without a clause, MTI has no lever to require dates. Without a registered exception, the VPN delay was accepted by default instead of by decision. Fix the gaps alongside the technical options, or the same problems will recur. Assign each gap an owner.
 
 ### 8.5 Recommendation
 
@@ -710,13 +710,13 @@ The presentation states the recommendation first, then what it costs, then what 
 
 Analyse the case yourself, score options against criteria, and compare with the recommendation above.
 
-Score each option on protection, time, cost, operational risk and dependency, with a short reason for every score. Grade the facts you rely on, especially the firmware support and the vendor's roadmap claim. Then compare your recommendation with the book's and explain any difference: you may weigh cost or dependency differently, which is acceptable if you say why.  Present your scores to a peer and note any changes.
+Score each option on protection, time, cost, operational risk and dependency, with a short reason for every score. Grade the facts you rely on, especially the firmware support and the vendor's roadmap claim. Then compare your recommendation with the book's and explain any difference: you may weigh cost or dependency differently, which is acceptable if you say why. Present your scores to a peer and note any changes.
 
 ### 8.8 Supervisor review
 
 Present your analysis to your supervisor before sharing it: they will check whether the facts are graded correctly, whether options were considered fairly and whether the recommendation stays within what the evidence supports. Incorporate comments and record what changed.
 
-For the archive case, expect questions such as why option B applies to two offices only and whether the cost range is supported by quotes.  Your supervisor may also ask whether the claim about firmware version 7.4 has been tested and how the cost was estimated. Answer with the evidence you have and say what you do not yet know.
+For the archive case, expect questions such as why option B applies to two offices only and whether the cost range is supported by quotes. Your supervisor may also ask whether the claim about firmware version 7.4 has been tested and how the cost was estimated. Answer with the evidence you have and say what you do not yet know.
 
 ### 8.9 Common errors and limits
 
@@ -724,7 +724,7 @@ For the archive case, expect questions such as why option B applies to two offic
 - Options without criteria.
 - Missing governance gaps.
 
-Each error leaves part of the risk unmanaged. In MTI's archive case, focusing only on transfers would leave decades-old signed documents with no plan. Options without criteria make the recommendation look like preference. Missing governance gaps means the archive vendor stays unchased and the VPN delay stays unrecorded. Check your analysis for all three before presenting it.  Revise your analysis where you find any of them.  Note each one you fixed.
+Each error leaves part of the risk unmanaged. In MTI's archive case, focusing only on transfers would leave decades-old signed documents with no plan. Options without criteria make the recommendation look like preference. Missing governance gaps means the archive vendor stays unchased and the VPN delay stays unrecorded. Check your analysis for all three before presenting it. Revise your analysis where you find any of them. Note each one you fixed.
 
 ### Exercises
 
@@ -754,7 +754,7 @@ You will (1) write reports for executives, owners, suppliers and auditors; (2) c
 
 Executives need decisions, risk posture, costs and residual risk on one page. System owners need specific findings with evidence and deadlines. Suppliers need clear requirements and dates. Auditors need evidence and method. Staff need to know what changes for them.
 
-Write each version from the same tracker so the figures match across audiences.  At MTI the executive summary gives the verified share and decisions needed, while the infrastructure team receives the reinsurer SFTP findings with sshd evidence and dates. The archive vendor receives a clear requirement for dated ML-DSA support. Check that each version answers what that audience must decide or do.
+Write each version from the same tracker so the figures match across audiences. At MTI the executive summary gives the verified share and decisions needed, while the infrastructure team receives the reinsurer SFTP findings with sshd evidence and dates. The archive vendor receives a clear requirement for dated ML-DSA support. Check that each version answers what that audience must decide or do.
 
 ### 9.2 Uncertainty
 
@@ -766,7 +766,7 @@ At MTI, the priority list rests on Lab M results for z of 10, 15 and 20, and the
 
 Fear-based messages ("quantum apocalypse") produce either panic or dismissal. Overconfident messages ("we are quantum-safe") collapse at the first audit. Calm, specific messages work: "we are protecting the data that must stay private longest first; here is progress and what remains."
 
-Read your draft aloud and remove any word that claims certainty you cannot show, or alarm you cannot justify. Check each figure against the tracker before sending.  At MTI, the quarterly summary avoided both extremes by stating the verified share and the risks plainly.
+Read your draft aloud and remove any word that claims certainty you cannot show, or alarm you cannot justify. Check each figure against the tracker before sending. At MTI, the quarterly summary avoided both extremes by stating the verified share and the risks plainly.
 
 ### 9.4 Ethics
 
@@ -778,7 +778,7 @@ At MTI, a report on the claims portal's weak preference order goes to Web Platfo
 
 Lead with the question and answer, show evidence, end with decisions needed. Keep slides simple; prepare for questions about assumptions and status of guidance.
 
-For MTI's quarterly briefing, the question is whether tier-1 data is better protected than last quarter, the answer is the verified share, and the decisions are the contract amendment and the two exceptions. Rehearse with someone who will ask whether IR 8547 is final, and answer that it is a draft with proposed dates.  Keep it short.
+For MTI's quarterly briefing, the question is whether tier-1 data is better protected than last quarter, the answer is the verified share, and the decisions are the contract amendment and the two exceptions. Rehearse with someone who will ask whether IR 8547 is final, and answer that it is a draft with proposed dates. Keep it short.
 
 ### 9.6 Worked example
 
@@ -790,13 +790,13 @@ The summary follows the order of an executive's questions: where are we, what im
 
 Write the same quarter's message for system owners and for a supplier.
 
-For system owners, lead with their open findings, evidence and deadlines; for the archive vendor, state the requirement for dated ML-DSA support and the contract amendment request, without sharing MTI's internal weakness details. Check that both use the same figures as the executive summary. Ask a peer whether each recipient would know exactly what to do after reading it.  Revise both after feedback.  Keep both in your portfolio.
+For system owners, lead with their open findings, evidence and deadlines; for the archive vendor, state the requirement for dated ML-DSA support and the contract amendment request, without sharing MTI's internal weakness details. Check that both use the same figures as the executive summary. Ask a peer whether each recipient would know exactly what to do after reading it. Revise both after feedback. Keep both in your portfolio.
 
 ### 9.8 Handling pushback
 
 Owners may object to deadlines; executives may question cost. Respond with evidence: the lifetime of the data, the robustness of the priority list across timelines, the cost range and the residual risk of waiting. Offer options rather than ultimatums, and record the decision and who made it.
 
-At MTI an owner who resists reordering the claims portal's groups might be offered a staged rollout with gate results instead of an immediate change.  Ask what would make the deadline possible, such as help from a supplier or a different change window, and include that in the options.
+At MTI an owner who resists reordering the claims portal's groups might be offered a staged rollout with gate results instead of an immediate change. Ask what would make the deadline possible, such as help from a supplier or a different change window, and include that in the options.
 
 ### 9.9 Common errors and limits
 
@@ -804,7 +804,7 @@ At MTI an owner who resists reordering the claims portal's groups might be offer
 - False precision about timelines.
 - Sharing weakness details widely.
 
-Each error weakens trust. A single report gives executives detail they will not read and owners too little to act on. False precision about when a quantum computer will exist invites argument and is easily discredited. Sharing weakness details widely creates a map useful to attackers and breaks the need-to-know rule. Review each report against all three before sending it.  Rewrite any that fail.  Note what you changed and why.
+Each error weakens trust. A single report gives executives detail they will not read and owners too little to act on. False precision about when a quantum computer will exist invites argument and is easily discredited. Sharing weakness details widely creates a map useful to attackers and breaks the need-to-know rule. Review each report against all three before sending it. Rewrite any that fail. Note what you changed and why.
 
 ### Exercises
 
@@ -834,13 +834,13 @@ You will (1) check the quality of the inventory and tracker; (2) detect common w
 
 Check regularly: stale evidence (older than the agreed age), items without owners, unknowns without tasks, items marked Verified without evidence, exceptions past expiry. Sample ten items each month and check their evidence yourself.
 
-Record the result of each sample, including items that passed, so trends become visible. At MTI the broker portal regression was found this way.  When a sample fails, fix the item, then ask whether the same failure could affect similar items and check those too. Keep the sampling method the same each month so results can be compared over time.
+Record the result of each sample, including items that passed, so trends become visible. At MTI the broker portal regression was found this way. When a sample fails, fix the item, then ask whether the same failure could affect similar items and check those too. Keep the sampling method the same each month so results can be compared over time.
 
 ### 10.2 Workflow failures
 
 *Silent fallback*: an item verified last quarter has reverted to classical after an update. *Stuck items*: dependencies with no follow-up. *Scope creep*: the workflow absorbs unrelated work. *Report drift*: definitions change between quarters without notice.
 
-Each failure has a different remedy: re-verification for silent fallback, escalation for stuck items, a scope review for creep and a definitions log for drift. Check for all four at the monthly meeting.  At MTI, the broker portal regression was a silent fallback, caught by sampling. Record each failure found and the remedy applied.
+Each failure has a different remedy: re-verification for silent fallback, escalation for stuck items, a scope review for creep and a definitions log for drift. Check for all four at the monthly meeting. At MTI, the broker portal regression was a silent fallback, caught by sampling. Record each failure found and the remedy applied.
 
 ### 10.3 Practical activity — Lab K
 
@@ -872,13 +872,13 @@ Read the three results carefully. The first canary held because 5,000 connection
 
 When a rollout causes problems, your role is coordination: make sure the right owners are engaged, the impact is understood, communication goes out, the tracker shows the item as blocked with a reason, and lessons are captured. Leave technical diagnosis to technical staff.
 
-At MTI, when the quote API's hybrid share dropped, the coordinator's job was to engage the platform owner, inform stakeholders and update the tracker, not to diagnose the cause.  Keep a short timeline of events and decisions.
+At MTI, when the quote API's hybrid share dropped, the coordinator's job was to engage the platform owner, inform stakeholders and update the tracker, not to diagnose the cause. Keep a short timeline of events and decisions.
 
 ### 10.5 Lessons learned
 
 After each quarter and each significant incident, hold a short review: what went well, what didn't, what to change in the workflow. Record changes to definitions and procedures.
 
-Keep the review short and blame-free, and focus on the workflow rather than on individuals. At MTI, the broker portal regression led to a new rule that every Verified item is re-checked monthly. Each lesson should produce a concrete change with an owner, or a recorded decision not to change.  Share the review notes with the team.
+Keep the review short and blame-free, and focus on the workflow rather than on individuals. At MTI, the broker portal regression led to a new rule that every Verified item is re-checked monthly. Each lesson should produce a concrete change with an owner, or a recorded decision not to change. Share the review notes with the team.
 
 ### 10.6 Worked example
 
@@ -890,13 +890,13 @@ The response follows the workflow: the tracker shows the true state, the owner f
 
 Design a monthly quality checklist of eight checks for MTI's tracker.
 
-Include checks for stale evidence, items without owners, unknowns without tasks, Verified items without negotiation evidence and exceptions past expiry. Add checks of your own, such as the monthly re-check of Verified items introduced after the broker portal regression. For each check, say what data it uses, who runs it and what happens when it fails.  Keep the checklist to one page so it is used, and review it after each quarter.
+Include checks for stale evidence, items without owners, unknowns without tasks, Verified items without negotiation evidence and exceptions past expiry. Add checks of your own, such as the monthly re-check of Verified items introduced after the broker portal regression. For each check, say what data it uses, who runs it and what happens when it fails. Keep the checklist to one page so it is used, and review it after each quarter.
 
 ### 10.8 Measuring quality
 
 Report a quality measure alongside progress: for example, the share of sampled items whose evidence matched their tracker state. A falling quality score is an early warning that progress figures may be overstated.
 
-At MTI the score would have fallen in the month the broker portal regression was found.  Report the score with the sample size, since a sample of ten items gives only a rough figure. If the score falls, look at which kinds of items failed before drawing conclusions, and say in the report how the figures may be affected.
+At MTI the score would have fallen in the month the broker portal regression was found. Report the score with the sample size, since a sample of ten items gives only a rough figure. If the score falls, look at which kinds of items failed before drawing conclusions, and say in the report how the figures may be affected.
 
 ### 10.9 Common errors and limits
 
@@ -904,7 +904,7 @@ At MTI the score would have fallen in the month the broker portal regression was
 - Coordinators doing technical diagnosis.
 - Definitions changed silently.
 
-Each error lets the numbers drift from reality. MTI's broker portal showed that Verified items can revert after an update. A coordinator who diagnoses technical faults delays the people who can fix them and may misreport the cause. Definitions changed silently make one quarter's figures incomparable with the next, so trends become meaningless. Add a check for each to your monthly quality checklist.  Fix any you find.  Record the fixes.
+Each error lets the numbers drift from reality. MTI's broker portal showed that Verified items can revert after an update. A coordinator who diagnoses technical faults delays the people who can fix them and may misreport the cause. Definitions changed silently make one quarter's figures incomparable with the next, so trends become meaningless. Add a check for each to your monthly quality checklist. Fix any you find. Record the fixes.
 
 ### Exercises
 
@@ -934,49 +934,49 @@ You will (1) run a full workflow cycle on a synthetic dataset; (2) produce track
 
 The lab uses a synthetic MTI dataset: 40 assets with configuration exports, a few log summaries, supplier questionnaire answers and data-lifetime records. Your supervisor and peers play owners, suppliers and the sponsor. No real systems or data are involved.
 
-Treat the dataset as you would real evidence: request simulated authorization before using it, label it and grade each item. The supervisor checks handling as well as results.  Ask questions of the role-players as you would of real owners, and record their answers as evidence.
+Treat the dataset as you would real evidence: request simulated authorization before using it, label it and grade each item. The supervisor checks handling as well as results. Ask questions of the role-players as you would of real owners, and record their answers as evidence.
 
 ### 11.2 Tasks
 
 Day 1: scope, authorization (simulated), inventory and grading. Day 2: prioritisation with Mosca's rule and exposure classes. Day 3: plan items, send supplier requests, raise findings. Day 4: a simulated rollout with gate results and one incident (silent fallback). Day 5: quarterly report and presentation.
 
-Keep outputs from each day, since the next day builds on them.  At the end of each day, check that the tracker reflects what you learned. The Day 5 report should draw only on outputs from earlier days, so anything missing will show. If you fall behind, tell the supervisor and agree what to drop, as you would with a real sponsor.
+Keep outputs from each day, since the next day builds on them. At the end of each day, check that the tracker reflects what you learned. The Day 5 report should draw only on outputs from earlier days, so anything missing will show. If you fall behind, tell the supervisor and agree what to drop, as you would with a real sponsor.
 
 ### 11.3 The incident
 
 Mid-lab, the "platform owner" reports that the quote API's hybrid share dropped after an update. You coordinate: tracker update, owner engagement, communication to stakeholders, lessons.
 
-Treat it as a real incident. Move the item from Verified to In progress or blocked with a reason, contact the owner, tell stakeholders what changed and when the next update will come, and leave diagnosis to the platform owner. Record a lesson afterwards, as MTI did after the broker portal regression.  Keep the timeline.
+Treat it as a real incident. Move the item from Verified to In progress or blocked with a reason, contact the owner, tell stakeholders what changed and when the next update will come, and leave diagnosis to the platform owner. Record a lesson afterwards, as MTI did after the broker portal regression. Keep the timeline.
 
 ### 11.4 Assessment
 
 Supervisors assess accuracy of the inventory and priorities, quality of findings and evidence handling, tracker integrity, communication, and handling of the incident.
 
-Each criterion maps to a chapter of the book, so feedback tells you which chapter to revisit. Supervisors look at evidence for every claim you make; an accurate tracker with honest unknowns scores better than a tidy one with unsupported Verified items. Ask for written feedback at the end of each day.  Act on it the next day.
+Each criterion maps to a chapter of the book, so feedback tells you which chapter to revisit. Supervisors look at evidence for every claim you make; an accurate tracker with honest unknowns scores better than a tidy one with unsupported Verified items. Ask for written feedback at the end of each day. Act on it the next day.
 
 ### 11.5 Worked example
 
 A participant's Day 2 output: 9 tier-1 assets; priority list headed by archive transfers and reinsurer SFTP; 6 unknowns with tasks; Mosca table across *z* = 10, 15, 20. Supervisor feedback: one supplier claim graded as B should be D; corrected and the priority of that asset reduced pending verification.
 
-The feedback shows why grading matters: the misgraded claim had raised an asset's priority on a supplier's word. Correcting it moved money and attention to items with better evidence.  Record such corrections in the log.  The participant also noted the change in the daily log.
+The feedback shows why grading matters: the misgraded claim had raised an asset's priority on a supplier's word. Correcting it moved money and attention to items with better evidence. Record such corrections in the log. The participant also noted the change in the daily log.
 
 ### 11.6 Practice task
 
 Complete the five-day lab and keep a short daily log.
 
-Each day, write what you produced, what decision you made and why, and what you would do differently. Keep the log factual and short. Note when a role-player's answer changed your plan. The log feeds the reflection and becomes part of your portfolio.  Read the log each morning before starting, so yesterday's lessons shape today's work. Share it with your supervisor at the end of the week.  Keep entries brief.
+Each day, write what you produced, what decision you made and why, and what you would do differently. Keep the log factual and short. Note when a role-player's answer changed your plan. The log feeds the reflection and becomes part of your portfolio. Read the log each morning before starting, so yesterday's lessons shape today's work. Share it with your supervisor at the end of the week. Keep entries brief.
 
 ### 11.7 Reflection
 
 At the end, write a one-page reflection: what you did well, what you would change, which skill needs more practice, and one improvement to the workflow itself. Share it with your supervisor.
 
-Base the reflection on the daily log and the supervisor's feedback rather than memory. Be specific: "I graded a supplier claim as B" is more useful than "grading needs work".  Choose one improvement to the workflow that you could propose at MTI, such as a rule for re-checking Verified items, and explain how you would test whether it helped.
+Base the reflection on the daily log and the supervisor's feedback rather than memory. Be specific: "I graded a supplier claim as B" is more useful than "grading needs work". Choose one improvement to the workflow that you could propose at MTI, such as a rule for re-checking Verified items, and explain how you would test whether it helped.
 
 ### 11.8 Working with simulated stakeholders
 
 Treat role-players as real: send clear, polite requests with deadlines; record answers; escalate when deadlines pass. The lab assesses whether you can keep a workflow moving through other people, which is the core of the practitioner's job.
 
-If a role-player refuses a deadline, record it and offer options, as you would with a real owner.  The supervisor watches whether your requests are clear enough to act on without a follow-up question, whether you record answers as evidence, and whether escalation is timely and polite rather than abrupt.
+If a role-player refuses a deadline, record it and offer options, as you would with a real owner. The supervisor watches whether your requests are clear enough to act on without a follow-up question, whether you record answers as evidence, and whether escalation is timely and polite rather than abrupt.
 
 ### 11.9 Common errors and limits
 
@@ -984,7 +984,7 @@ If a role-player refuses a deadline, record it and offer options, as you would w
 - Missing the incident's communication step.
 - Skipping the reflection.
 
-Each error misses what the lab tests. Treating it as a spreadsheet exercise ignores the people who must act on your requests. Missing the incident's communication step leaves stakeholders unaware of a regression, which damages trust more than the regression itself. Skipping the reflection loses the lesson that the supervisor's feedback was meant to produce.  Check your own lab work for all three.  Note what you changed.
+Each error misses what the lab tests. Treating it as a spreadsheet exercise ignores the people who must act on your requests. Missing the incident's communication step leaves stakeholders unaware of a regression, which damages trust more than the regression itself. Skipping the reflection loses the lesson that the supervisor's feedback was meant to produce. Check your own lab work for all three. Note what you changed.
 
 ### Exercises
 
@@ -1014,49 +1014,49 @@ You will (1) assemble a portfolio showing each course outcome; (2) present your 
 
 Include: an accurate explainer (Chapter 1); a service and stakeholder map with priorities (2); authorization and evidence labels (3); a graded CBOM extract (4); findings from tool output (5); a tracker with states and dependencies (6); control, verification and residual-risk records (7); the case analysis (8); reports for two audiences (9); a quality checklist and lessons (10); the lab outputs and reflection (11).
 
-Choose items that show outcomes as well as documents, such as tracker states backed by evidence.  Each item should cite its source and date, and graded items should show their grade. Remove anything you cannot support, and note which outcomes are covered weakly so you can address them before the review.
+Choose items that show outcomes as well as documents, such as tracker states backed by evidence. Each item should cite its source and date, and graded items should show their grade. Remove anything you cannot support, and note which outcomes are covered weakly so you can address them before the review.
 
 ### 12.2 Presentation
 
 Ten minutes: the workflow, what you produced, one decision you supported, one lesson. Then questions.
 
-For example, you might choose the archive case recommendation as the decision and the broker portal regression as the lesson. Keep the workflow overview to two minutes so most of the time goes to results. Rehearse with a timer, and prepare one slide that shows the tracker before and after your work.  Leave time for questions, since the review tests how you reason as much as what you produced. Bring the portfolio so you can point to evidence when asked.
+For example, you might choose the archive case recommendation as the decision and the broker portal regression as the lesson. Keep the workflow overview to two minutes so most of the time goes to results. Rehearse with a timer, and prepare one slide that shows the tracker before and after your work. Leave time for questions, since the review tests how you reason as much as what you produced. Bring the portfolio so you can point to evidence when asked.
 
 ### 12.3 Likely questions
 
 "How do you know an item is verified?" "Why is the archive first?" "Is IR 8547 final?" "What does hybrid key exchange not protect?" "What would you do if a supplier never answers?" Answer with evidence from your portfolio.
 
-For example, "How do you know an item is verified?" is answered with negotiation logs from the portfolio, not with a change ticket. Prepare a one-line answer and a piece of evidence for each.  Practise the answers with a peer.  Keep the evidence ready to show.
+For example, "How do you know an item is verified?" is answered with negotiation logs from the portfolio, not with a change ticket. Prepare a one-line answer and a piece of evidence for each. Practise the answers with a peer. Keep the evidence ready to show.
 
 ### 12.4 Next steps
 
 Agree with your manager which workflow responsibilities you will take on, which skills to deepen (for example, the technical course for hands-on configuration), and when you will review progress.
 
-Write the agreement down with dates and a named reviewer. Choose responsibilities that use what the portfolio shows you can do, such as running the quarterly cycle for one division, and add one new skill at a time. Review the plan after three months and adjust it with your manager.  Keep a copy in the portfolio.
+Write the agreement down with dates and a named reviewer. Choose responsibilities that use what the portfolio shows you can do, such as running the quarterly cycle for one division, and add one new skill at a time. Review the plan after three months and adjust it with your manager. Keep a copy in the portfolio.
 
 ### 12.5 Staying current
 
 Track NIST and IETF publications, sector guidance and supplier announcements. Update your explainer and the workflow's standards section when status changes — for example when FN-DSA or the HQC standard is published, or IR 8547 is finalised.
 
-Set a regular time each month to check these sources and record what changed, if anything. When a status changes, update the accurate explainer from Chapter 1 and tell stakeholders who rely on it.  When guidance changes, check whether any MTI decision rested on the old status, and if so raise it at the next monthly meeting rather than waiting for the annual review.
+Set a regular time each month to check these sources and record what changed, if anything. When a status changes, update the accurate explainer from Chapter 1 and tell stakeholders who rely on it. When guidance changes, check whether any MTI decision rested on the old status, and if so raise it at the next monthly meeting rather than waiting for the annual review.
 
 ### 12.6 Worked example
 
 A participant presents MTI's Q2 position, the archive case recommendation and the broker-portal regression lesson. Asked "What does hybrid not protect?", they answer: "Authentication — the portal certificate is still classical — plus any hop or partner still on classical key exchange, and data recorded before the change." Asked about IR 8547, they state it is a draft with proposed dates and show how MTI's internal dates were set.
 
-The answers work because each points to evidence and states limits.  Neither overclaims, and both refer to MTI's own records.
+The answers work because each points to evidence and states limits. Neither overclaims, and both refer to MTI's own records.
 
 ### 12.7 Practice task
 
 Assemble your portfolio and rehearse the presentation with a peer.
 
-Check that each portfolio item maps to a course outcome and carries evidence, not just a document. Rehearse the ten-minute presentation at least twice with a peer who asks the likely questions, including whether IR 8547 is final and what hybrid does not protect. Time yourself, note the questions you found hard, and prepare evidence for each before the final review.  Ask the peer for written notes.  Revise once and keep both versions.
+Check that each portfolio item maps to a course outcome and carries evidence, not just a document. Rehearse the ten-minute presentation at least twice with a peer who asks the likely questions, including whether IR 8547 is final and what hybrid does not protect. Time yourself, note the questions you found hard, and prepare evidence for each before the final review. Ask the peer for written notes. Revise once and keep both versions.
 
 ### 12.8 Professional habits
 
 The habits this course builds — sourcing every claim, grading evidence, recording decisions, stating residual risk, communicating calmly — apply to any security programme. Practise them deliberately in your next role; they are what make a practitioner trusted to coordinate work across teams.
 
-Choose one habit to practise each month and ask a colleague to tell you when you slip.  At MTI these habits showed in small things: a supplier claim graded D rather than B, a regression reported openly and an exception given an expiry. Keep doing them when nobody checks.
+Choose one habit to practise each month and ask a colleague to tell you when you slip. At MTI these habits showed in small things: a supplier claim graded D rather than B, a regression reported openly and an exception given an expiry. Keep doing them when nobody checks.
 
 ### 12.9 Common errors and limits
 
@@ -1064,7 +1064,7 @@ Choose one habit to practise each month and ask a colleague to tell you when you
 - Overclaiming in answers.
 - No plan for staying current.
 
-Each error weakens the final review. A portfolio of documents without outcomes shows activity but not results, such as tracker states without evidence. Overclaiming, for example calling IR 8547 final or hybrid key exchange complete protection, undoes the credibility the portfolio builds. Without a plan for staying current, your explainer will be out of date as soon as FN-DSA or the HQC standard is published.  Check for each before submitting.
+Each error weakens the final review. A portfolio of documents without outcomes shows activity but not results, such as tracker states without evidence. Overclaiming, for example calling IR 8547 final or hybrid key exchange complete protection, undoes the credibility the portfolio builds. Without a plan for staying current, your explainer will be out of date as soon as FN-DSA or the HQC standard is published. Check for each before submitting.
 
 ### Exercises
 

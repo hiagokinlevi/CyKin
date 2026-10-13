@@ -625,7 +625,7 @@ Keep a table with one row per reviewer point: the quotation, your response, the 
 
 Defending instead of testing; hiding the class B failure; claiming generality across plants after two contexts; responding to reviewers without stating changes.
 
-Each error turns critique into defence. Treat each objection as a hypothesis with a test. Put class B in the abstract. Limit generality to the two contexts measured, the Plant A model and Testbed T2. In reviewer letters, state what changed and where, so a reader can verify the revision instead of trusting the claim.  Keep the objections table in the thesis.
+Each error turns critique into defence. Treat each objection as a hypothesis with a test. Put class B in the abstract. Limit generality to the two contexts measured, the Plant A model and Testbed T2. In reviewer letters, state what changed and where, so a reader can verify the revision instead of trusting the claim. Keep the objections table in the thesis.
 
 ### Exercises — chapter 6
 
@@ -719,7 +719,7 @@ The direction matters because it tells a reader how to adjust confidence. If a b
 
 Archives that release everything or nothing; manifests not checked; calling invented data "realistic"; limitations without direction.
 
-An archive that releases everything leaks plant-level detail; one that releases nothing cannot be checked. A manifest that is never verified gives false comfort, which is why Lab 7 fails closed. Synthetic data should be called invented or calibrated, never realistic. And every limitation should say whether it pushes results up, down or in an unknown direction.  Run the manifest check on the release copy, never only on the working directory.
+An archive that releases everything leaks plant-level detail; one that releases nothing cannot be checked. A manifest that is never verified gives false comfort, which is why Lab 7 fails closed. Synthetic data should be called invented or calibrated, never realistic. And every limitation should say whether it pushes results up, down or in an unknown direction. Run the manifest check on the release copy, never only on the working directory.
 
 ### Exercises — chapter 7
 

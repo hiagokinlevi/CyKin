@@ -685,7 +685,7 @@ In the portal example, the SNI in the sampled capture matches the name the DNS l
 
 **Flow records** (for example NetFlow/IPFIX) summarize conversations: endpoints, ports, start, duration, byte and packet counts. They are cheap to keep for long periods but contain no payload. **Packet capture** (pcap) contains packets, possibly payloads, and is expensive and privacy-sensitive. Flows answer "did A talk to X, when and how much?"; pcap can answer "what was said?" if it is unencrypted. Both are subject to sampling and sensor placement: a sensor sees only the traffic that passes it.
 
-In the portal case the flow gives the 18.4 MB figure.  The flow tells you that volume and its timing; only payload, which this capture does not hold beyond a short encrypted sample, could tell you what the bytes contained, and that is why the content question stays open.
+In the portal case the flow gives the 18.4 MB figure. The flow tells you that volume and its timing; only payload, which this capture does not hold beyond a short encrypted sample, could tell you what the bytes contained, and that is why the content question stays open.
 
 ### 7.6 Worked example (synthetic): did the portal talk to the suspicious host?
 
@@ -774,7 +774,7 @@ Lab 08 shows why the rule must be stated: lines 1 to 3 describe one event within
 
 Split code into `parse_line`, `normalize`, `dedup_key` and `report`. Each can be tested with small inputs. Modularity also helps review: a colleague can check the timestamp logic without reading the reporting code.
 
-In Lab 08 the timestamp logic lives in `parse_ts`, so a reviewer can test it with a single string such as an offset of minus three hours without building a full alert. Keep each function small enough that its tests fit on a screen; when a function needs many tests to cover its branches, it is usually doing two jobs.  Name functions after what they return, not how they work.
+In Lab 08 the timestamp logic lives in `parse_ts`, so a reviewer can test it with a single string such as an offset of minus three hours without building a full alert. Keep each function small enough that its tests fit on a screen; when a function needs many tests to cover its branches, it is usually doing two jobs. Name functions after what they return, not how they work.
 
 ### 8.6 Worked example and lab (synthetic): alert bundle
 
@@ -859,7 +859,7 @@ Interpretation: lines 1–3 describe the same event within two seconds (09:00:04
 
 - Normalizing host names without recording the change, so a reviewer cannot tell that WS-014 and ws-014 were merged.
 - Treating the five-second tolerance as fact rather than a choice that must be justified for the sensor.
-- Testing parsing on clean lines only, so the first truncated export breaks the pipeline during an incident.  Each of these errors is cheap to prevent early and expensive to discover after a report has gone out.
+- Testing parsing on clean lines only, so the first truncated export breaks the pipeline during an incident. Each of these errors is cheap to prevent early and expensive to discover after a report has gone out.
 
 ### Exercises — chapter 8
 
@@ -1394,7 +1394,7 @@ The phishing case bundle shows how quickly this happens: a directory export with
 
 Collect what the question needs. Prefer metadata over content, samples over full exports, pseudonyms over names in working analyses, and aggregate counts in reports. Keep a mapping table (pseudonym → identity) separately with tighter access. Minimization must not destroy evidence: preserve originals under restricted access when there is a legitimate need, and work on minimized copies.
 
-In the phishing case, the filter to 12 recipients and 48 hours answers the question while excluding almost all of the 400 staff.  Screenshots are redacted before analysis, and recipients appear only as pseudonyms in the workbook. The full export, if kept at all, sits under restricted access with a reason recorded.
+In the phishing case, the filter to 12 recipients and 48 hours answers the question while excluding almost all of the 400 staff. Screenshots are redacted before analysis, and recipients appear only as pseudonyms in the workbook. The full export, if kept at all, sits under restricted access with a reason recorded.
 
 ### 14.4 Retention
 
@@ -1735,7 +1735,7 @@ In the playbook study, the independent variable is the playbook, the dependent v
 
 Without a baseline you cannot say "better". The comparison can be between groups (some analysts use A, others B), within subjects (each analyst uses both, on different but matched cases, in balanced order) or before/after (weakest, because other things change over time). **Randomization** of assignment is the strongest protection against confounding that you cannot measure.
 
-The playbook study chooses a within-subjects comparison with counterbalanced order, so each of the 24 analysts acts as their own baseline.  Comparing each analyst's results with both playbooks removes differences in ability from the comparison, while the balanced order spreads any learning effect evenly across A and B.
+The playbook study chooses a within-subjects comparison with counterbalanced order, so each of the 24 analysts acts as their own baseline. Comparing each analyst's results with both playbooks removes differences in ability from the comparison, while the balanced order spreads any learning effect evenly across A and B.
 
 ### 18.4 Validity
 
@@ -1753,7 +1753,7 @@ For the playbook study, that means saving the two case sets, the reference answe
 
 Studies of response work involve people (analysts) whose performance is measured, and possibly incident data about others. Use synthetic cases where possible; get informed consent; ensure results cannot be used to evaluate individuals; obtain review from an ethics committee where your institution requires it. The Menlo Report (Chapter 10) adapts research-ethics principles to ICT.
 
-In the playbook study, results for individual analysts must not reach anyone grading them, and any analyst may withdraw without consequence.  Consent forms should explain what is recorded, who sees it and how long it is kept. Where the analysts are students on a course, keep the study separate from assessment so that taking part, or declining, cannot affect a mark.
+In the playbook study, results for individual analysts must not reach anyone grading them, and any analyst may withdraw without consequence. Consent forms should explain what is recorded, who sees it and how long it is kept. Where the analysts are students on a course, keep the study separate from assessment so that taking part, or declining, cannot affect a mark.
 
 ### 18.7 Worked example (synthetic): comparing two triage playbooks
 
@@ -1774,7 +1774,7 @@ Defensible conclusion if B scores higher: "In this simulation with student analy
 
 - Building matched case sets but never checking in a pilot that they really are equally difficult.
 - Measuring only the outcome that the preferred option is expected to win.
-- Dropping participants who withdrew without reporting how many and why, which can bias the comparison in either direction.  A further limit: a significant difference in a simulation answers only the narrow question asked.
+- Dropping participants who withdrew without reporting how many and why, which can bias the comparison in either direction. A further limit: a significant difference in a simulation answers only the narrow question asked.
 
 ### Exercises — chapter 18
 
@@ -1978,7 +1978,7 @@ You will be able to (1) model an incident's decision flow as a coordination grap
 
 Technical evidence does not act; people decide. A socio-technical view treats the incident as a system of people, roles, tools and rules whose interactions produce the outcome. Many response failures are coordination failures: the right information existed but did not reach the person who could act, or the person who could act lacked authority.
 
-In the pharmacy-server case, the evidence at 14:05 was enough to request isolation; the delay came from who could decide and when they were available.  Reading the case only as a technical problem would miss that the fix lies in roles and options.
+In the pharmacy-server case, the evidence at 14:05 was enough to request isolation; the delay came from who could decide and when they were available. Reading the case only as a technical problem would miss that the fix lies in roles and options.
 
 ### 21.2 The coordination graph
 
@@ -1996,7 +1996,7 @@ In the pharmacy-server case, the SOC, the service owner and the incident lead ea
 
 People optimize what they are measured on. A service owner measured on uptime resists containment that causes downtime; a SOC measured on ticket closure may close cases early. These are rational responses to incentives, not character flaws. Good designs make the trade-off explicit and give the decision to a role accountable for the whole risk.
 
-The pharmacy service owner was measured on order throughput, so refusing isolation during afternoon orders was rational.  The SOC, measured on detection, pushed for isolation. Both positions made sense locally; the design flaw was that nobody accountable for the whole risk was available to weigh them.
+The pharmacy service owner was measured on order throughput, so refusing isolation during afternoon orders was rational. The SOC, measured on detection, pushed for isolation. Both positions made sense locally; the design flaw was that nobody accountable for the whole risk was available to weigh them.
 
 ### 21.5 Handoffs
 
@@ -2023,7 +2023,7 @@ Testable change: "For severity-2 or higher containment disputes, the duty incide
 
 - Measuring only how quickly the SOC acted, while the waiting time sat elsewhere in the graph.
 - Assuming a named deputy will decide when the rule has never been exercised.
-- Proposing a process change without a way to test whether it shortened the critical path.  Simulations help, but real stress differs.
+- Proposing a process change without a way to test whether it shortened the critical path. Simulations help, but real stress differs.
 
 ### Exercises — chapter 21
 

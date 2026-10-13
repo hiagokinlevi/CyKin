@@ -692,7 +692,7 @@ Answer each question with evidence from BWRP: which sensors exist on the dosing 
 
 Structure: question and claim; threat model; method; evidence; transfer to BWRP; what we would test first. Keep it to two pages for practitioners.
 
-Each part should be short and concrete. The transfer paragraph is the most important for practitioners, because it says what would need to be true at BWRP for the paper's results to apply. End with one test the organisation can run, such as measuring the maximum undetected dosing deviation on its own replay.  Ask an operator to read it before it is circulated.
+Each part should be short and concrete. The transfer paragraph is the most important for practitioners, because it says what would need to be true at BWRP for the paper's results to apply. End with one test the organisation can run, such as measuring the maximum undetected dosing deviation on its own replay. Ask an operator to read it before it is circulated.
 
 ### Worked example (synthetic BWRP)
 
@@ -756,7 +756,7 @@ Record these measures in the project agreement, with the date and the stakeholde
 
 The evidence dossier contains the agreement, configuration, test reports, evaluation results with intervals, open issues and handover. It becomes evidence E5 in the assurance case.
 
-Organise the dossier so that a reviewer can follow the project from agreement to handover without asking questions. Include the capture-loss figures, the evaluation counts, the week-9 miss on false alerts and the re-run. When it becomes evidence in the assurance case, it carries a date, so its validity period starts then.  Keep it in the plant's controlled records.
+Organise the dossier so that a reviewer can follow the project from agreement to handover without asking questions. Include the capture-loss figures, the evaluation counts, the week-9 miss on false alerts and the re-run. When it becomes evidence in the assurance case, it carries a date, so its validity period starts then. Keep it in the plant's controlled records.
 
 ### Worked example (synthetic BWRP)
 

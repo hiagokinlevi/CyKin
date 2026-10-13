@@ -1668,7 +1668,7 @@ Model answers for EX001–EX090. Northgate Cold Storage, Priya Nair and all figu
 
 **EX032.** PLC-R2's version conflict: it controls compressors (high consequence), and the real firmware (2.1) determines whether advisories apply, whereas the camera is low consequence for cooling.
 
-**EX033.** `SENS-NH3  docs=-           network=fw 3.0   only-on-network` — it appears because the loop iterates over the union of both sources.
+**EX033.** `SENS-NH3 docs=-           network=fw 3.0 only-on-network` — it appears because the loop iterates over the union of both sources.
 
 **EX034.** A new line `HMI-C -> PLC-R2 :502 approved` appears, and "approved but not seen" becomes an empty list `[]` because every approved flow has now been observed.
 

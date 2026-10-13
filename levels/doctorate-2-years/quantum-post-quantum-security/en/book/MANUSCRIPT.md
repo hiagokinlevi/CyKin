@@ -663,7 +663,7 @@ Write the method chapter before the results chapter.
 
 Release tier 0 and tier 1 artefacts publicly; keep tier 2 with the data owner under an access agreement; never hold tier 3. The archive's manifest records each file's tier and SHA-256 hash, and the release process is **fail-closed**: any tier-2 file or hash mismatch blocks the release. Include the frozen configuration hash from Chapter 5 so that examiners can confirm validation used the frozen rules.
 
-Run the release check on the exact archive that will be published, not on a working copy.  Keep the manifest under version control.
+Run the release check on the exact archive that will be published, not on a working copy. Keep the manifest under version control.
 
 ### 7.4 Practical activity — Lab 7: a fail-closed manifest
 
@@ -700,13 +700,13 @@ Expected output (the hash prefix is deterministic):
 {"tier": 0, "sha256": "db6dd8db390974cdd06e19b00d7fe35d26836...
 ```
 
-The first call blocks the release because a tier-2 capture is in the manifest; removing it allows release. In a real archive, removing the file is not enough: check that no tier-0 or tier-1 file contains extracts from it, and record the removal in the archive's change log. The printed hash prefix lets an examiner confirm that the fusion rules in the archive match those frozen before validation.  Run it again after every change to the archive.
+The first call blocks the release because a tier-2 capture is in the manifest; removing it allows release. In a real archive, removing the file is not enough: check that no tier-0 or tier-1 file contains extracts from it, and record the removal in the archive's change log. The printed hash prefix lets an examiner confirm that the fusion rules in the archive match those frozen before validation. Run it again after every change to the archive.
 
 ### 7.5 Dataset cards
 
 For each corpus, write a card covering: provenance (synthetic generator and seed, or owner and authorization), collection period, instruments and versions, pseudonymization method, known gaps (segments without sensors), label definitions (the amended codebook), agreement statistics, intended uses and prohibited uses (for example, no re-identification and no use as a target list). Synthetic corpora also need cards, because readers otherwise mistake generated distributions for field data.
 
-Store each card beside its corpus and update it when errata are found.  Date every card revision.
+Store each card beside its corpus and update it when errata are found. Date every card revision.
 
 ### 7.6 Directional limits
 
@@ -778,7 +778,7 @@ A one-page brief for HRHN's executive board (synthetic) states: what was measure
 
 Archive the final versions, update the dataset card with any errata, and schedule a re-verification of cited standards' status — FN-DSA and HQC will by then likely have final standards, and NIST IR 8547 may have been revised. A thesis about a transition should end with a statement of what would change its conclusions.
 
-Note in the archive which conclusions depend on standards status, so that a reader after the next revision knows what to recheck.  List those conclusions explicitly with their dependencies.
+Note in the archive which conclusions depend on standards status, so that a reader after the next revision knows what to recheck. List those conclusions explicitly with their dependencies.
 
 ### 8.7 Common errors and limits
 
