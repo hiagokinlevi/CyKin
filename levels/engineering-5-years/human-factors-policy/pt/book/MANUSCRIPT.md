@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 121, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 9 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 14 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de conscientização e de reporte em segurança como um sistema sociotécnico projetado.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios modelam reportes semanais, esquecimento, taxas, triagem, filas, confiabilidade, orçamentos e testes exatos sobre dados sintéticos; nenhum funcionário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, aprovada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1333,11 +1333,473 @@ Voluntários podem ser mais confiantes do que os funcionários típicos. Os mode
 - **EX089 — Correção de usabilidade.** Que problema de usabilidade um voluntário revelou? *Rubrica:* 3 = orientação linkada apenas na intranet;; 2 = link;; 1 = nada;; 0 = nenhuma.
 - **EX090 — Verificação no laboratório.** Quantos requisitos passaram em cada rodada de verificação? *Rubrica:* 3 = 5 de 6 passaram, depois 6 de 6 após a correção da notificação;; 2 = 5 e depois 6;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Fatores humanos e política cibernética: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar os controles de verificação de pagamentos e de fornecedores; (2) integrar os controles aos fluxos de trabalho existentes; (3) treinar os funcionários nos novos procedimentos.
+
+### 31.1 Controles de pagamento
+
+Aiko trabalha com a equipe financeira para implementar o controle de verificação de pagamentos. O sistema financeiro passa a aplicar um bloqueio automático a qualquer mudança nos dados bancários de fornecedores e cria uma tarefa para um segundo analista, que precisa ligar para o fornecedor usando o número que consta do cadastro. O bloqueio não pode ser liberado pela pessoa que recebeu o pedido. A equipe financeira testa o fluxo com dez pedidos de mudança sintéticos, incluindo dois com redação urgente, e todos os pedidos são bloqueados e verificados antes da liberação.
+
+### 31.2 Controles de sessões de fornecedores
+
+Para as sessões remotas de fornecedores em tecnologia operacional, a equipe de TI configura o gateway de acesso remoto de modo que uma sessão só possa começar quando for informado um número de chamado válido do sistema de manutenção e um engenheiro tiver aprovado o chamado. Isso elimina a oportunidade de alguém convencer um operador por telefone a abrir uma sessão. Os fornecedores são informados por escrito um mês antes da mudança, e dois deles pedem uma sessão de teste, que a equipe organiza para que a manutenção real não seja interrompida no dia da mudança.
+
+### 31.3 Treinamento nos procedimentos
+
+Aiko escreve guias curtos de procedimento e conduz sessões de quinze minutos para analistas financeiros e operadores da sala de controle. As sessões usam exemplos resolvidos e dramatizações em vez de provas, e os participantes praticam as etapas do retorno de ligação e do chamado. Ela registra as perguntas e revisa os guias duas vezes. Seguindo a orientação da NIST SP 800-50r1 (Hansche et al., 2024), trata o treinamento por função para funcionários com deveres específicos como distinto da conscientização geral, de modo que essas sessões se concentram apenas nas etapas que essas funções precisam executar. A presença é registrada para o regulador.
+
+### Exemplo resolvido
+
+Aiko implementa um bloqueio de pagamento com retorno de ligação por um segundo analista, sessões de fornecedores condicionadas a chamados e um treinamento curto por função.
+
+> **Caso sintético.** Os procedimentos são sintéticos; a NIST SP 800-50r1 é real.
+
+### Erros e limites
+
+Segundos analistas podem aprovar sem ligar quando estão ocupados. Fornecedores podem resistir à exigência de chamados.
+
+### Exercícios
+
+- **EX091 — Liberação do bloqueio.** Quem não pode liberar o bloqueio de pagamento? *Rubrica:* 3 = a pessoa que recebeu o pedido;; 2 = solicitante;; 1 = segundo analista;; 0 = nenhuma.
+- **EX092 — Condição para o fornecedor.** O que precisa existir antes de uma sessão de fornecedor começar? *Rubrica:* 3 = um chamado de manutenção válido e aprovado;; 2 = chamado;; 1 = uma ligação;; 0 = nenhuma.
+- **EX093 — Treinamento por função.** Em que o treinamento por função difere da conscientização geral? *Rubrica:* 3 = concentra-se nas etapas que funções específicas precisam executar;; 2 = etapas da função;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Fatores humanos e política cibernética: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar a confiabilidade de controles que dependem de pessoas; (2) calcular o efeito de verificações independentes; (3) reconhecer falhas de causa comum.
+
+### 32.1 Confiabilidade humana
+
+Todo controle que depende de uma pessoa pode falhar quando ela está cansada, apressada ou distraída. Aiko trata o controle de retorno de ligação como um sistema com uma probabilidade de falha. Se um analista pula o retorno em cinco por cento dos casos sob pressão, um controle com um único analista falha cerca de uma vez em vinte. Uma segunda verificação independente reduz isso, mas só se as verificações forem de fato independentes. A análise de confiabilidade ajuda a Greyford a ver onde acrescentar verificações e onde um controle técnico seria mais confiável do que qualquer procedimento.
+
+### 32.2 Verificações independentes
+
+O laboratório calcula a probabilidade de uma mudança fraudulenta de pagamento passar quando cada uma de uma, duas ou três verificações independentes falha com determinada probabilidade. Com uma taxa de falha de 5%, duas verificações independentes falham juntas em 0,25% dos casos. Em seguida, o laboratório acrescenta uma causa comum, como a pressão de fim de mês afetando os dois analistas ao mesmo tempo, e mostra que a falha conjunta sobe bruscamente. Isso mostra por que a Greyford escala outra equipe para as segundas verificações no fim do mês e não confia apenas na aritmética da independência.
+
+### Laboratório — Falha independente e de causa comum das verificações
+
+```python
+# Probability a fraudulent payment change passes all checks (synthetic rates).
+p = 0.05
+for k in (1, 2, 3): print(f"{k} independent check(s): {p ** k:.4%}")
+# Common cause: on 10% of days (month-end), each check fails with 0.35 and failures are shared.
+q, pc = 0.10, 0.35
+both = (1 - q) * p * p + q * pc * pc
+print(f"2 checks with month-end common cause: {both:.2%}")
+```
+
+Execute com `python3 lab_reliability.py`. Saída verificada:
+
+```text
+1 independent check(s): 5.0000%
+2 independent check(s): 0.2500%
+3 independent check(s): 0.0125%
+2 checks with month-end common cause: 1.45%
+```
+
+### 32.3 Falhas de causa comum
+
+Causas comuns incluem pressão compartilhada, informação enganosa compartilhada e confiança compartilhada em um nome conhecido. Se o e-mail fraudulento convence o primeiro analista, o segundo pode ver o mesmo e-mail e ser convencido também. Por isso, Aiko desenha a segunda verificação para usar informação diferente, o número do cadastro do fornecedor em vez do e-mail, e uma equipe diferente. Ela observa que a independência é uma propriedade de projeto que precisa ser construída, e não presumida, e a escreve na descrição do controle para que ela sobreviva às trocas de pessoal.
+
+### Exemplo resolvido
+
+Aiko modela a confiabilidade do retorno de ligação, mostra que verificações independentes reduzem a falha e desenha o controle contra causas comuns.
+
+> **Caso sintético.** As probabilidades são sintéticas.
+
+### Erros e limites
+
+Taxas reais de falha são difíceis de medir. A independência pode se desgastar com o tempo.
+
+### Exercícios
+
+- **EX094 — Duas verificações.** Qual é a taxa de falha conjunta de duas verificações independentes de 5%? *Rubrica:* 3 = 0,25%;; 2 = 0,0025;; 1 = 10%;; 0 = nenhuma.
+- **EX095 — Causa comum no laboratório.** Como uma causa comum alterou a falha conjunta? *Rubrica:* 3 = a falha conjunta subiu de 0,25% para 1,45%;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
+- **EX096 — Construir a independência.** Como Aiko construiu a independência na segunda verificação? *Rubrica:* 3 = informação diferente e equipe diferente;; 2 = diferente;; 1 = mesmo e-mail;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Fatores humanos e política cibernética: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) ligar o comportamento de segurança à segurança operacional em uma companhia de saneamento; (2) desenhar resiliência para quando as pessoas forem enganadas; (3) ensaiar a recuperação sem engano.
+
+### 33.1 Ligações com a segurança operacional
+
+Em uma companhia de saneamento, um operador enganado poderia permitir mudanças nas configurações de tratamento que afetassem a saúde pública. Aiko trabalha com o gerente de segurança operacional para ligar os procedimentos de segurança da informação e de segurança operacional. Qualquer mudança nas configurações de dosagem já exige, por razões de segurança operacional, um segundo engenheiro; ela estende essa regra aos pedidos remotos, de modo que um operador enganado, sozinho, não consiga mudar uma configuração. O caso de segurança passa a listar a engenharia social como possível evento iniciador, com controles e ações de resposta, para que as duas equipes compartilhem uma única visão do perigo.
+
+### 33.2 Projetar para o engano
+
+Aiko parte do princípio de que alguém acabará sendo enganado, porque nenhum programa consegue impedir todo engano. Ela projeta a resiliência: alertas automáticos sobre mudanças incomuns de configuração, uma forma clara de manifestar uma preocupação depois do fato sem culpa e uma via rápida para reverter mudanças. Os funcionários são informados de que reportar rapidamente um erro é a coisa mais valiosa que podem fazer. Isso desloca a pergunta de se as pessoas podem ser enganadas para quão rápido a organização se recupera quando elas são, um objetivo mais alcançável.
+
+### 33.3 Ensaiar a recuperação
+
+A Greyford ensaia a recuperação com exercícios de mesa, nos quais os funcionários discutem um cenário como o de uma falsificação de fornecedor que levou à abertura de uma sessão. Os exercícios são anunciados, conduzidos com participantes voluntários e focados na resposta, e não em flagrar alguém. O primeiro exercício revela que a sala de controle não sabe para quem ligar na equipe de segurança fora do horário de expediente. Uma escala de plantão é publicada na semana seguinte. Ensaiar a recuperação abertamente constrói confiança, e não medo, em coerência com a abordagem ética do programa.
+
+### Exemplo resolvido
+
+Aiko liga a segurança da informação às regras de segurança operacional da dosagem, projeta a recuperação após um engano e conduz exercícios de mesa anunciados.
+
+> **Caso sintético.** Os cenários são sintéticos.
+
+### Erros e limites
+
+Exercícios de mesa podem não revelar problemas práticos. Alertas podem ser ignorados.
+
+### Exercícios
+
+- **EX097 — Extensão da regra de segurança.** Que regra de segurança operacional foi estendida aos pedidos remotos? *Rubrica:* 3 = segundo engenheiro para mudanças de dosagem;; 2 = duas pessoas;; 1 = nada;; 0 = nenhuma.
+- **EX098 — Objetivo da resiliência.** Para que pergunta o projeto para o engano desloca o foco? *Rubrica:* 3 = quão rápido a organização se recupera;; 2 = recuperação;; 1 = se as pessoas são enganadas;; 0 = nenhuma.
+- **EX099 — Achado do exercício de mesa.** Que lacuna o primeiro exercício de mesa revelou? *Rubrica:* 3 = nenhum contato de segurança conhecido fora do expediente;; 2 = escala;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Fatores humanos e política cibernética: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar o programa à resposta a incidentes; (2) alinhá-lo à governança e à gestão de riscos; (3) ligar as métricas ao registro de riscos.
+
+### 34.1 Resposta a incidentes
+
+Aiko integra os reportes à resposta a incidentes. Quando a triagem confirma um e-mail malicioso que chegou a muitas caixas de entrada, a ferramenta de triagem abre automaticamente um chamado de incidente, notifica o líder de resposta e remove o e-mail de todas as caixas. Os responsáveis pela resposta podem ver quem reportou primeiro e agradecer. Depois dos incidentes, os líderes de resposta acrescentam uma nota curta sobre fatores humanos, como se um controle ajudou ou atrapalhou. Essa ligação faz com que os reportes tenham um efeito visível na resposta e que as lições voltem para o projeto.
+
+### 34.2 Alinhamento com a governança
+
+Aiko mapeia o programa na governança da Greyford. A função Govern do NIST CSF 2.0 espera papéis, políticas e supervisão para a cibersegurança, e o programa agora tem um responsável nomeado, um estatuto, relatórios trimestrais ao comitê de riscos e uma revisão anual. A ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) exige conscientização e competência das pessoas cujo trabalho afeta a segurança, e o programa fornece registros de ambas. Ela evita tratar esses frameworks como o objetivo; eles dão estrutura, enquanto o objetivo continua sendo menos resultados danosos. O estatuto é revisado pelo comitê de riscos a cada ano.
+
+### 34.3 Ligações com o registro de riscos
+
+Aiko liga as medidas do programa a entradas do registro de riscos, seguindo a abordagem da NIST SP 800-30r1, segundo a qual as estimativas de probabilidade e impacto devem ser atualizadas com evidências. O risco de fraude de pagamento passa a ser informado pelo número de pedidos de mudança bloqueados e de falsificações verificadas; o risco de abuso de acesso à TO, pelas tentativas de sessões sem chamado. Quando as medidas mudam, os responsáveis pelos riscos revisam a entrada. Isso transforma o programa, de atividade separada, em fonte de evidências para as decisões de risco em toda a organização.
+
+### Exemplo resolvido
+
+Aiko liga os reportes a chamados de incidente automáticos, mapeia o programa no CSF 2.0 e na ISO/IEC 27001 e alimenta o registro de riscos com as medidas.
+
+> **Caso sintético.** A integração é sintética; o NIST CSF 2.0, a ISO/IEC 27001:2022 e a SP 800-30r1 são reais.
+
+### Erros e limites
+
+A criação automática de incidentes pode gerar ruído. O mapeamento em frameworks pode virar mero preenchimento de checklist.
+
+### Exercícios
+
+- **EX100 — Ação automática.** O que acontece quando a triagem confirma um e-mail malicioso recebido por muitos? *Rubrica:* 3 = abre-se um chamado de incidente e o e-mail é removido;; 2 = chamado;; 1 = nada;; 0 = nenhuma.
+- **EX101 — Função do CSF.** Que função do CSF 2.0 cobre papéis, políticas e supervisão? *Rubrica:* 3 = Govern;; 2 = govern;; 1 = Protect;; 0 = nenhuma.
+- **EX102 — Evidência de risco.** Que medida informa o risco de fraude de pagamento? *Rubrica:* 3 = pedidos de mudança bloqueados e falsificações verificadas;; 2 = pedidos bloqueados;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) redesenhar um componente a partir de evidências de avaliação; (2) apresentar a justificativa de projeto a um público misto; (3) responder a questionamentos de forma construtiva.
+
+### 35.1 O briefing do ateliê
+
+O segundo ateliê pede às equipes que redesenhem um componente do programa da Greyford usando as evidências de avaliação reunidas até agora. A equipe de Aiko escolhe a orientação sobre o que reportar, porque o log do canal de ajuda e os testes de usabilidade mostraram confusão sobre faturas e newsletters. O briefing exige um guia redesenhado, um teste com pelo menos seis funcionários e uma apresentação a uma banca que inclui um analista financeiro, um operador e um gerente de segurança. As equipes têm três semanas e precisam documentar cada mudança e seu motivo.
+
+### 35.2 Redesenho guiado por evidências
+
+A equipe reescreve a orientação como três perguntas: você esperava esta mensagem, ela pede que você aja depressa, e ela pede dinheiro, credenciais ou acesso? Se alguma resposta for preocupante, reporte. Eles testam o novo guia com oito funcionários usando doze e-mails sintéticos. As decisões de reporte corretas sobem, em média, de nove para onze em doze. Um participante observa que os e-mails de sistemas internos continuam difíceis de julgar, então a equipe acrescenta uma lista curta dos remetentes de sistema legítimos, atualizada mensalmente.
+
+### 35.3 Apresentação e questionamento
+
+A equipe apresenta o redesenho em dez minutos, começando pelas evidências de confusão. O analista financeiro questiona se as três perguntas pegariam uma fraude de pagamento vinda da conta comprometida de um fornecedor conhecido. A equipe reconhece que o guia, sozinho, não pegaria, e aponta o controle de bloqueio de pagamento como a defesa para esse caso. A banca valoriza a resposta honesta. Aiko aprende que uma justificativa de projeto é mais forte quando mostra como as partes do sistema cobrem as fraquezas umas das outras.
+
+### Exemplo resolvido
+
+A equipe de Aiko redesenha a orientação de reporte como três perguntas, eleva as decisões corretas de nove para onze em doze e responde ao questionamento apontando os controles em camadas.
+
+> **Caso sintético.** O ateliê é sintético.
+
+### Erros e limites
+
+Testes pequenos podem não se generalizar. Listas de remetentes legítimos exigem manutenção.
+
+### Exercícios
+
+- **EX103 — Três perguntas.** Quais são as três perguntas do novo guia? *Rubrica:* 3 = esperada, urgente, pede dinheiro, credenciais ou acesso;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX104 — Resultado do teste.** Como mudaram as decisões corretas? *Rubrica:* 3 = de nove para onze em doze;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
+- **EX105 — Fornecedor comprometido.** O que respondeu ao questionamento sobre o fornecedor comprometido? *Rubrica:* 3 = o controle de bloqueio de pagamento;; 2 = controle em camadas;; 1 = o guia;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Fatores humanos e política cibernética: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar a capacidade de triagem à medida que os reportes crescem; (2) modelar os tempos de espera em fila; (3) planejar pessoal e automação para manter o retorno rápido.
+
+### 36.1 Crescimento dos reportes
+
+À medida que o serviço de reportes dá certo, o volume de reportes cresce. A Greyford recebe cerca de quarenta reportes por dia após o lançamento e espera mais à medida que a confiança dos funcionários aumenta e o programa se estende aos terceirizados. Cada reporte precisa de triagem, e a promessa de retorno rápido depende de a triagem acompanhar o ritmo. Aiko estima que um analista de triagem consegue tratar cerca de doze reportes por hora depois do agrupamento. Ela pergunta o que acontece com os tempos de espera quando o volume diário sobe, porque um retorno lento minaria o efeito mostrado no capítulo 17.
+
+### 36.2 Modelagem de filas
+
+O laboratório simula um dia de reportes chegando ao acaso durante o expediente e atendidos por um analista a uma taxa fixa, e registra a espera média até o veredito. Com quarenta reportes por dia, a espera média é de cerca de sete minutos. Com oitenta, dobra para catorze, e com noventa e cinco, quando o analista fica ocupado quase o tempo todo, chega a vinte e cinco minutos, subindo cada vez mais depressa a cada reporte extra, como prevê a teoria das filas quando a utilização se aproxima de um. Aiko usa o resultado para mostrar aos gestores que a capacidade precisa crescer antes que o volume chegue à parte íngreme da curva, e não depois que as reclamações começarem.
+
+### Laboratório — Tempo de espera pelos vereditos à medida que o volume de reportes cresce
+
+```python
+# Single analyst triage queue over an 8-hour day (synthetic, seed fixed).
+import random
+def day(n, rate=12, seed=1):
+    r = random.Random(seed); arr = sorted(r.uniform(0, 480) for _ in range(n))
+    free = 0.0; waits = []
+    for a in arr:
+        start = max(a, free); free = start + 60 / rate; waits.append(free - a)
+    return sum(waits) / n
+for n in (40, 80, 95):
+    print(f"{n} reports/day: mean wait to verdict {sum(day(n, seed=s) for s in range(200)) / 200:.0f} min")
+```
+
+Execute com `python3 lab_queue.py`. Saída verificada:
+
+```text
+40 reports/day: mean wait to verdict 7 min
+80 reports/day: mean wait to verdict 14 min
+95 reports/day: mean wait to verdict 25 min
+```
+
+### 36.3 Pessoal e automação
+
+Aiko propõe três medidas: agrupamento automático, para que reportes idênticos contem como um único item; vereditos automáticos para mensagens já confirmadas como maliciosas; e um segundo analista nos horários de pico. A automação cuida do trabalho repetitivo, enquanto as pessoas tratam os casos novos ou incertos. Ela define um nível de serviço de veredito em até uma hora útil para noventa por cento dos reportes e uma verificação mensal da medida. Se o nível de serviço escorregar por dois meses, o quadro de pessoal é revisto. Isso mantém rápida a malha de retorno à medida que o programa cresce.
+
+### Exemplo resolvido
+
+Aiko modela os tempos de espera pelos vereditos à medida que os reportes crescem e planeja agrupamento, vereditos automáticos e pessoal nos picos para manter o retorno em até uma hora.
+
+> **Caso sintético.** Os volumes e as taxas são sintéticos.
+
+### Erros e limites
+
+Chegadas reais se concentram em torno das campanhas. Vereditos automáticos podem estar errados.
+
+### Exercícios
+
+- **EX106 — Taxa do analista.** Que taxa de triagem Aiko supôs por analista? *Rubrica:* 3 = cerca de doze reportes por hora;; 2 = doze;; 1 = quarenta;; 0 = nenhuma.
+- **EX107 — Fila no laboratório.** Quanto duraram as esperas médias com 40, 80 e 95 reportes por dia? *Rubrica:* 3 = 7, 14 e 25 minutos;; 2 = aumento;; 1 = nada;; 0 = nenhuma.
+- **EX108 — Nível de serviço.** Que nível de serviço Aiko definiu? *Rubrica:* 3 = veredito em até uma hora útil para 90%;; 2 = uma hora;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Fatores humanos e política cibernética: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir as operações de rotina do programa; (2) conduzir simulações éticas na operação; (3) tratar reclamações e exceções.
+
+### 37.1 Operações de rotina
+
+Aiko escreve um calendário de operações. Toda semana, a equipe de triagem revisa os agrupamentos e envia os retornos. Todo mês, sai uma reciclagem curta e é feita uma simulação com dificuldade planejada. Todo trimestre, o questionário de ônus é enviado e as medidas são relatadas ao comitê de riscos. Todo ano, o programa é revisado em relação ao seu estatuto. Cada tarefa tem um responsável e um substituto. As operações de rotina importam porque o trabalho de conscientização se desgasta sem atenção constante, como mostrou a análise de decaimento do capítulo 6. Os substitutos cobrem férias e licenças.
+
+### 37.2 Simulações éticas na operação
+
+As simulações seguem regras acordadas com os representantes dos funcionários: programa anunciado, nenhuma isca que explore sofrimento pessoal, como cortes salariais, bônus ou sustos de saúde, nenhum uso de resultados individuais para punição, retorno imediato e acolhedor e relatórios apenas agregados. Cada modelo é classificado pela NIST Phish Scale (Dawkins e Jacobs, 2023) e aprovado por uma pequena banca que inclui um representante dos funcionários. Lain, Kostiainen e Čapkun (2022) constataram que as páginas de treinamento exibidas depois do clique não ajudavam, por isso o retorno é curto e gentil, e não uma aula.
+
+### 37.3 Reclamações e exceções
+
+Alguns funcionários reclamam que as simulações dão a sensação de terem sido enganados. Aiko responde pessoalmente a cada reclamação, explica as regras e registra o tema. Quando várias reclamações citam um modelo que imitava uma mensagem do RH sobre férias, a banca o retira, reconhecendo que chegava perto demais de assuntos pessoais. Exceções são permitidas para funcionários em licença médica ou sob estresse, que podem se excluir temporariamente por meio do gestor, sem dar motivos. Tratar bem as reclamações preserva a confiança da qual os reportes dependem. Os temas são relatados trimestralmente.
+
+### Exemplo resolvido
+
+Aiko define um calendário de operações semanal a anual, conduz simulações sob regras éticas acordadas e retira um modelo após reclamações.
+
+> **Caso sintético.** As operações são sintéticas; Dawkins e Jacobs (2023) e Lain et al. (2022) são reais.
+
+### Erros e limites
+
+As exclusões reduzem a cobertura. As bancas podem aprovar iscas limítrofes.
+
+### Exercícios
+
+- **EX109 — Iscas proibidas.** Que iscas são proibidas? *Rubrica:* 3 = as que exploram sofrimento pessoal, como salário ou saúde;; 2 = sofrimento;; 1 = nada;; 0 = nenhuma.
+- **EX110 — Treinamento embutido.** Por que o retorno após o clique é curto e gentil? *Rubrica:* 3 = Lain et al. constataram que páginas de treinamento embutidas não ajudavam;; 2 = pesquisa;; 1 = nada;; 0 = nenhuma.
+- **EX111 — Modelo retirado.** Por que um modelo foi retirado? *Rubrica:* 3 = imitava uma mensagem do RH sobre férias, perto demais de assuntos pessoais;; 2 = RH;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Fatores humanos e política cibernética: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir validação de verificação; (2) validar o programa em relação à sua finalidade; (3) usar evidências mistas para julgar o sucesso.
+
+### 38.1 Validação versus verificação
+
+A verificação pergunta se o sistema foi construído conforme especificado; a validação pergunta se ele cumpre sua finalidade. O serviço de reportes da Greyford passou na verificação do capítulo 30, mas Aiko agora precisa perguntar se ele de fato reduz os danos causados pelo engano. Um serviço pode atender a todos os requisitos e ainda falhar em sua finalidade se, por exemplo, os funcionários reportarem apenas e-mails inofensivos enquanto os ataques passam sem reporte. Por isso, a validação olha para os resultados na operação real, e não em condições de teste, e precisa de evidências coletadas ao longo de meses, e não de dias. As duas são necessárias, nessa ordem.
+
+### 38.2 Validar os resultados
+
+Depois de nove meses, Aiko compara os resultados com o ano anterior ao lançamento. O laboratório calcula a mudança na mediana do tempo até o primeiro reporte e na proporção de e-mails maliciosos reportados. A proporção reportada sobe e a mediana do tempo cai. Ela também confere as tentativas de fraude de pagamento: três falsas mudanças de dados bancários foram barradas pelo controle de bloqueio, contra uma perda no ano anterior. Ela observa que a comparação antes e depois não pode descartar mudanças nos ataques, por isso apresenta os achados como compatíveis com o sucesso, e não como prova dele.
+
+### Laboratório — Resultados de reportes antes e depois
+
+```python
+# Before and after reporting outcomes for malicious emails (synthetic).
+before = {"reported": 41, "total": 100, "times": [12, 20, 25, 30, 38, 45, 60, 75, 90]}
+after = {"reported": 78, "total": 100, "times": [3, 4, 6, 8, 9, 11, 14, 18, 25]}
+for name, d in (("before", before), ("after", after)):
+    t = sorted(d["times"]); print(f"{name}: reported share {d['reported'] / d['total']:.0%}, median first report {t[len(t) // 2]} min")
+```
+
+Execute com `python3 lab_validate.py`. Saída verificada:
+
+```text
+before: reported share 41%, median first report 38 min
+after: reported share 78%, median first report 9 min
+```
+
+### 38.3 Evidências mistas
+
+Aiko acrescenta evidências qualitativas: entrevistas com dez funcionários, o questionário de ônus e o log de reclamações. Os funcionários descrevem o botão de reporte como fácil e o retorno como tranquilizador, embora alguns ainda não gostem das simulações. As pontuações de ônus melhoram ligeiramente. Juntas, as evidências sustentam a continuidade do programa com ajustes. Ela segue a orientação de Beautement, Sasse e Wonham (2008) de observar os efeitos sobre o orçamento de compliance e descobre que o bloqueio de pagamento acrescenta trabalho no fim do mês, o que leva a uma revisão do quadro de pessoal do setor financeiro nesse período. As anotações das entrevistas são anonimizadas antes da análise.
+
+### Exemplo resolvido
+
+Aiko valida o programa com resultados antes e depois, tentativas de fraude barradas e entrevistas, tratando os resultados como compatíveis com o sucesso, e não como prova.
+
+> **Caso sintético.** Os resultados são sintéticos; Beautement et al. (2008) é real.
+
+### Erros e limites
+
+Desenhos antes e depois são fracos. Os padrões de ataque mudam de um ano para outro.
+
+### Exercícios
+
+- **EX112 — Definição.** O que a validação pergunta? *Rubrica:* 3 = se o sistema cumpre sua finalidade;; 2 = finalidade;; 1 = se foi construído conforme especificado;; 0 = nenhuma.
+- **EX113 — Resultados no laboratório.** O que o laboratório mostrou para a mediana do tempo de reporte e a proporção reportada? *Rubrica:* 3 = de 38 para 9 minutos; de 41% para 78%;; 2 = melhora;; 1 = nada;; 0 = nenhuma.
+- **EX114 — Ônus no fim do mês.** Que efeito sobre o orçamento de compliance Aiko encontrou? *Rubrica:* 3 = o bloqueio de pagamento acrescenta trabalho no fim do mês;; 2 = financeiro;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Fatores humanos e política cibernética: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar o programa para ser mantido ao longo de anos; (2) gerir o ciclo de vida de conteúdos e modelos; (3) planejar a passagem de bastão e a documentação.
+
+### 39.1 Projeto duradouro
+
+Programas muitas vezes declinam quando seu fundador sai. Aiko desenha o programa da Greyford para ser manutenível: procedimentos documentados, um estatuto com responsáveis, uma biblioteca de conteúdos com datas de revisão e medidas produzidas automaticamente pela ferramenta de triagem. Ela evita software sob medida quando existe um recurso de produto com suporte, porque ferramentas sob medida exigem especialistas para mantê-las. Também reserva no orçamento um tempo fixo da equipe a cada ano para revisão e atualização, de modo que a manutenção não dependa de um tempo livre que talvez nunca apareça em uma companhia de saneamento movimentada.
+
+### 39.2 Ciclo de vida dos conteúdos
+
+Cada guia, reciclagem e modelo de simulação tem um responsável, uma data de criação e uma data de revisão. Conteúdos com mais de um ano são revisados em relação aos relatórios de ataques atuais, como o Verizon DBIR mais recente, e aos e-mails reportados na própria Greyford. Os modelos são aposentados quando deixam de refletir iscas reais ou quando as reclamações mostram que causam dano. O laboratório conta os itens com revisão prevista em cada trimestre, para que o trabalho possa ser planejado. Uma biblioteca pequena e atual é melhor do que uma grande, cheia de exemplos desatualizados.
+
+### Laboratório — Itens de conteúdo com revisão prevista por trimestre
+
+```python
+# Content items due for review by quarter (synthetic library of 40 items).
+due = {"Q1": 9, "Q2": 11, "Q3": 14, "Q4": 6}
+for q, n in due.items(): print(f"{q}: {n} items")
+print("busiest:", max(due, key=due.get), "total:", sum(due.values()))
+```
+
+Execute com `python3 lab_lifecycle.py`. Saída verificada:
+
+```text
+Q1: 9 items
+Q2: 11 items
+Q3: 14 items
+Q4: 6 items
+busiest: Q3 total: 40
+```
+
+### 39.3 Passagem de bastão
+
+Aiko escreve um pacote de passagem de bastão: o estatuto, o calendário de operações, a tabela de requisitos e verificação, as medidas com suas definições e as regras éticas das simulações. Um substituto acompanha cada tarefa por um ciclo antes de assumi-la. Ela grava vídeos curtos explicando o raciocínio por trás das decisões principais, porque os documentos costumam registrar o que foi feito, mas não por quê. A Profa. Kerr observa que são os motivos que permitem aos sucessores adaptar o projeto com sabedoria, em vez de congelá-lo ou abandoná-lo. O pacote é revisado anualmente.
+
+### Exemplo resolvido
+
+Aiko projeta para a manutenção com responsáveis e datas de revisão, planeja a revisão de conteúdos por trimestre e escreve um pacote de passagem de bastão com os motivos das decisões.
+
+> **Caso sintético.** Os dados de conteúdo são sintéticos; o Verizon DBIR é real.
+
+### Erros e limites
+
+Datas de revisão muitas vezes são perdidas. Pacotes de passagem de bastão ficam desatualizados.
+
+### Exercícios
+
+- **EX115 — Software sob medida.** Por que evitar software sob medida? *Rubrica:* 3 = exige especialistas para mantê-lo;; 2 = manutenção;; 1 = nada;; 0 = nenhuma.
+- **EX116 — Carga de revisão no laboratório.** Que trimestre teve mais conteúdos com revisão prevista? *Rubrica:* 3 = o 3º trimestre, com 14 itens;; 2 = 3º trimestre;; 1 = nada;; 0 = nenhuma.
+- **EX117 — Registrar os motivos.** Por que registrar os motivos das decisões? *Rubrica:* 3 = para que os sucessores possam adaptar com sabedoria;; 2 = adaptar;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) reverificar após mudanças; (2) verificar os controles sob carga realista; (3) relatar os resultados da verificação com seus limites.
+
+### 40.1 Verificação de regressão
+
+Depois de um ano de mudanças, incluindo a nova orientação, os vereditos automáticos e a exigência de chamados para fornecedores, Aiko executa de novo a tabela de verificação do capítulo 30 e acrescenta testes para os novos requisitos. A verificação de regressão confere se as mudanças não quebraram algo que funcionava antes. Aparece uma regressão: o recurso de veredito automático envia o retorno sem o link para a orientação acrescentado depois do teste de usabilidade. A equipe de TI restaura o link e o novo teste passa. Sem a tabela, a regressão poderia ter passado despercebida por meses, enquanto os funcionários perdiam uma orientação útil.
+
+### 40.2 Verificação sob carga
+
+Aiko verifica o serviço de triagem sob carga realista, reproduzindo um dia de campanha sintético com trezentos reportes em duas horas. Ela mede o tempo entre o reporte e o veredito com o agrupamento e os vereditos automáticos ativados. O laboratório resume o resultado: a maioria dos reportes recebe veredito em minutos, porque eles se agrupam em poucos e-mails distintos, mas um punhado de reportes únicos espera mais tempo por um analista. O nível de serviço de uma hora para noventa por cento é atendido, e o reporte mais lento espera menos de duas horas.
+
+### Laboratório — Tempos de veredito durante um dia de campanha sintético
+
+```python
+# Verdict times for a synthetic campaign day: 300 reports in 2 hours.
+import random
+r = random.Random(7)
+times = []
+for i in range(300):
+    if i < 270: times.append(r.uniform(1, 12))      # clustered, automatic verdicts
+    elif i < 273: times.append(r.uniform(61, 104))  # unique reports waiting for analyst
+    else: times.append(r.uniform(15, 58))           # unique reports handled within the hour
+times[-1] = 104.0
+within = sum(t <= 60 for t in times) / len(times)
+print(f"within 60 min: {within:.0%}; slowest {max(times):.0f} min")
+```
+
+Execute com `python3 lab_load.py`. Saída verificada:
+
+```text
+within 60 min: 99%; slowest 104 min
+```
+
+### 40.3 Relatar os limites
+
+Aiko relata os resultados com seus limites. A reprodução usou reportes sintéticos e não pôde incluir a confusão de uma campanha real, como funcionários ligando para o service desk. Os testes de carga foram executados fora do expediente, por isso não competiram com outros sistemas. Ela recomenda uma verificação ao vivo durante a próxima campanha real. O relatório de verificação declara com clareza o que foi testado, o que não foi e o que continua incerto, o que permite ao comitê de riscos julgar quanta confiança depositar no serviço.
+
+### Exemplo resolvido
+
+Aiko executa de novo a verificação e encontra uma regressão de link ausente, testa a triagem sob carga com uma campanha sintética e relata os limites abertamente.
+
+> **Caso sintético.** Os testes são sintéticos.
+
+### Erros e limites
+
+Reproduções sintéticas não capturam a confusão real. Verificações ao vivo são mais difíceis de controlar.
+
+### Exercícios
+
+- **EX118 — Regressão encontrada.** Que regressão foi encontrada? *Rubrica:* 3 = os vereditos automáticos estavam sem o link de orientação;; 2 = link ausente;; 1 = nada;; 0 = nenhuma.
+- **EX119 — Carga no laboratório.** Quão rápidos foram os vereditos durante a reprodução da campanha? *Rubrica:* 3 = 99% em até uma hora; o mais lento em 104 minutos;; 2 = atendido;; 1 = nada;; 0 = nenhuma.
+- **EX120 — Fator não testado.** O que a reprodução não incluiu? *Rubrica:* 3 = a confusão de uma campanha real;; 2 = efeitos ao vivo;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se os reportes ainda estão subindo, se estabilizaram ou estão recuando depois de uma campanha.
 
@@ -1518,6 +1980,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** A orientação sobre o que reportar só estava linkada na intranet, então foi acrescentado um link na mensagem de agradecimento.
 
 **EX090.** Cinco de seis requisitos passaram no início, e todos os seis depois da mudança na configuração de notificação.
+
+**EX091.** A pessoa que recebeu o pedido de mudança não pode liberar o bloqueio.
+
+**EX092.** Um número de chamado válido do sistema de manutenção, aprovado por um engenheiro.
+
+**EX093.** Concentra-se apenas nos procedimentos que determinadas funções precisam executar.
+
+**EX094.** 0,25%, porque 0,05 multiplicado por 0,05 é 0,0025.
+
+**EX095.** A falha conjunta subiu de 0,25% para cerca de 1,45% quando a pressão de fim de mês afetou as duas verificações.
+
+**EX096.** Usando o número do cadastro do fornecedor e uma equipe diferente, em vez do e-mail original.
+
+**EX097.** A regra de que mudanças de dosagem exigem um segundo engenheiro.
+
+**EX098.** Quão rapidamente a organização se recupera quando alguém é enganado.
+
+**EX099.** A sala de controle não sabia para quem ligar fora do expediente, então foi publicada uma escala de plantão.
+
+**EX100.** Abre-se um chamado de incidente, o líder é notificado e o e-mail é removido de todas as caixas de entrada.
+
+**EX101.** A função Govern.
+
+**EX102.** O número de mudanças de dados bancários bloqueadas e de pedidos falsos verificados.
+
+**EX103.** Você esperava esta mensagem, ela pressiona por rapidez, e ela pede dinheiro, credenciais ou acesso?
+
+**EX104.** Subiram, em média, de nove para onze em doze.
+
+**EX105.** O controle de bloqueio de pagamento, já que o guia sozinho não pegaria esse caso.
+
+**EX106.** Cerca de doze reportes por hora depois do agrupamento.
+
+**EX107.** Cerca de 7 minutos com quarenta, 14 com oitenta e 25 com noventa e cinco reportes por dia.
+
+**EX108.** Um veredito em até uma hora útil para noventa por cento dos reportes.
+
+**EX109.** Iscas que exploram sofrimento pessoal, como cortes salariais, bônus ou sustos de saúde.
+
+**EX110.** Porque Lain, Kostiainen e Čapkun constataram que as páginas de treinamento embutidas não ajudavam.
+
+**EX111.** Porque imitava uma mensagem do RH sobre férias, perto demais de assuntos pessoais.
+
+**EX112.** Se o sistema cumpre sua finalidade na operação real.
+
+**EX113.** A mediana do tempo caiu de 38 para 9 minutos, e a proporção reportada subiu de 41% para 78%.
+
+**EX114.** O bloqueio de pagamento acrescenta trabalho ao setor financeiro no fim do mês.
+
+**EX115.** Porque ferramentas sob medida exigem especialistas para mantê-las, ao contrário dos recursos de produto com suporte.
+
+**EX116.** O terceiro trimestre, com 14 itens com revisão prevista.
+
+**EX117.** Para que os sucessores possam adaptar o projeto com sabedoria, em vez de congelá-lo ou abandoná-lo.
+
+**EX118.** As mensagens de veredito automático tinham perdido o link para a orientação.
+
+**EX119.** 99% dos reportes receberam veredito em até uma hora, e o mais lento esperou 104 minutos.
+
+**EX120.** A confusão de uma campanha real, como as ligações para o service desk.
 
 <a id="references"></a>
 ## Referências
