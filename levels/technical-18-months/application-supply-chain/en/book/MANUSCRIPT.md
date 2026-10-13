@@ -47,25 +47,57 @@ You will (1) describe how a hosted customer website is built from servers, web s
 
 Tomás Rivera is a technical course student at the fictional Eastbank Technical College, working part-time as a support technician at the fictional Pinecrest Hosting under supervisor Grace Okafor. A customer, Ferncroft Books, asked support to install an image-resize plugin. A previous technician had downloaded it from a mirror site because the vendor's page was slow. Weeks later the shop began showing strange redirects. The mirror copy turned out to differ from the official release.
 
+Section one point one develops computing and service architecture with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
 ### 1.2 Parts of a hosted site
 
 A customer site runs on a server managed by Pinecrest. Web server software receives requests, the shop application builds pages, a database stores products and orders, and plugins add features such as image resizing, contact forms and galleries. Each part comes from somewhere: an operating system vendor, a web server project, the shop application's maintainers and plugin authors.
+
+Section one point two develops computing and service architecture with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section one point two, Grace Okafor expects computing claims to carry owners and dates.
 
 ### 1.3 Shared responsibility
 
 Pinecrest is responsible for servers, operating system updates and the hosting control panel. Customers choose plugins and content. Support staff who install plugins for customers take on part of that responsibility, which is why their installation steps matter.
 
+Section one point three develops computing and service architecture with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section one point three, Grace Okafor expects computing claims to carry owners and dates.
+
+Section one point three treats the opening case parts as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 The supply chain behind a site
 
 Everything a site runs was written by someone else and delivered through downloads, updates and registries. NIST SP 800-218 (SSDF) and SLSA v1.0 describe how software producers should protect that chain; consumers like Pinecrest must check what they receive.
+
+Section one point four develops computing and service architecture with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section one point four, Grace Okafor expects computing claims to carry owners and dates.
+
+Section one point four treats the opening case parts as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 Requests and responses
 
 A visitor's browser sends a request; the web server passes it to the application, which may call plugins and the database, then returns a page. Problems in any plugin can affect every page it touches.
 
+Section one point five develops computing and service architecture with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section one point five, Grace Okafor expects computing claims to carry owners and dates.
+
+Section one point five treats the opening case parts as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Why this course
 
 The course teaches Tomás to check what is installed, where it came from, how it is configured and how to notice when something goes wrong.
+
+Section one point six develops computing and service architecture with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section one point six, Grace Okafor expects computing claims to carry owners and dates.
+
+Section one point six treats the opening case parts as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Pinecrest Hosting will not accept computing work without a written trail.
 
 ### Worked example
 
@@ -104,25 +136,67 @@ You will (1) explain how visitors reach a site over HTTPS; (2) describe DNS, por
 
 The visitor's device asks DNS for the site's address, connects to port 443, checks the site's certificate and then exchanges encrypted HTTP requests. Each step can fail or be misused, and support technicians often need to tell which step a problem belongs to.
 
+Section two point one develops networks and protocols with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section two point one, Grace Okafor expects networks claims to carry owners and dates.
+
+Section two point one treats reaching site certificates http as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Certificates
 
 A certificate proves the server holds the site's name. Pinecrest renews certificates automatically; expired certificates cause browser warnings that customers report as "the site is broken".
+
+Section two point two develops networks and protocols with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section two point two, Grace Okafor expects networks claims to carry owners and dates.
+
+Section two point two treats reaching site certificates http as testable only when evidence and ticket IDs are recorded.
+
+For section two point two, Pinecrest Hosting will not accept networks work without a written trail.
 
 ### 2.3 HTTP basics
 
 Requests have a method (GET, POST), a path and headers; responses have a status code: 200 success, 301/302 redirect, 401 needs sign-in, 404 not found, 500 server error. Knowing these codes lets Tomás read logs and customer screenshots quickly.
 
+Section two point three develops networks and protocols with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section two point three, Grace Okafor expects networks claims to carry owners and dates.
+
+Section two point three treats reaching site certificates http as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Redirects
 
 Redirects are normal, for example from http to https. Unexpected redirects to other domains, as Ferncroft's visitors saw, usually mean something on the site has been changed and must be investigated rather than worked around.
+
+Section two point four develops networks and protocols with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section two point four, Grace Okafor expects networks claims to carry owners and dates.
+
+Section two point four treats reaching site certificates http as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Ports and firewalls
 
 Customer servers accept only web traffic publicly; administration uses Pinecrest's private network and multi-factor sign-in.
 
+Section two point five develops networks and protocols with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section two point five, Grace Okafor expects networks claims to carry owners and dates.
+
+Section two point five treats reaching site certificates http as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Pinecrest Hosting will not accept networks work without a written trail.
+
 ### 2.6 Customer conversations
 
 Tomás learns to ask precise questions: which page, which time, what the browser showed, and whether others see it too.
+
+Section two point six develops networks and protocols with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section two point six, Grace Okafor expects networks claims to carry owners and dates.
+
+Section two point six treats reaching site certificates http as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Pinecrest Hosting will not accept networks work without a written trail.
 
 ### DNS checks
 
@@ -165,25 +239,69 @@ You will (1) describe user accounts and file permissions on a web server; (2) ap
 
 Each customer site runs under its own operating system user, so one site cannot read another's files. The web server process can read site files and write only to upload and cache folders.
 
+Section three point one develops operating systems and identities with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section three point one, Grace Okafor expects operating claims to carry owners and dates.
+
+Section three point one treats accounts on the server as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 File permissions
 
 Plugin and application code should not be writable by the web server process. If it is, a flaw in any plugin could let changed code be written into the site, which is one way unexpected redirects appear.
+
+Section three point two develops operating systems and identities with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section three point two, Grace Okafor expects operating claims to carry owners and dates.
+
+Section three point two treats accounts on the server as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Staff identities
 
 Support technicians sign in with personal accounts and multi-factor authentication. They have temporary access to a customer site only while a ticket is open, granted by the ticket system and removed when it closes.
 
+Section three point three develops operating systems and identities with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section three point three, Grace Okafor expects operating claims to carry owners and dates.
+
+Section three point three treats accounts on the server as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Customer identities
 
 Customers manage their own shop administrators. Pinecrest advises unique accounts for each staff member and removing accounts when staff leave. OWASP Top 10:2021 A07 covers authentication failures.
+
+Section three point four develops operating systems and identities with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section three point four, Grace Okafor expects operating claims to carry owners and dates.
+
+Section three point four treats accounts on the server as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Pinecrest Hosting will not accept operating work without a written trail.
 
 ### 3.5 Checking permissions
 
 A support script lists files writable by the web server outside the permitted folders.
 
+Section three point five develops operating systems and identities with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section three point five, Grace Okafor expects operating claims to carry owners and dates.
+
+Section three point five treats accounts on the server as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Pinecrest Hosting will not accept operating work without a written trail.
+
 ### 3.6 Records
 
 Every support session is logged with the technician, ticket and time.
+
+Section three point six develops operating systems and identities with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section three point six, Grace Okafor expects operating claims to carry owners and dates.
+
+Section three point six treats accounts on the server as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Pinecrest Hosting will not accept operating work without a written trail.
+
+Section three point six fails closed if operating evidence is missing rather than guessing.
 
 ### Removing old accounts
 
@@ -226,6 +344,12 @@ You will (1) compute and compare file hashes; (2) read simple JSON and CSV recor
 
 A cryptographic hash such as SHA-256 is a short fingerprint of a file. Any change to the file, even one byte, produces a completely different hash. Vendors publish hashes so users can check a download is exactly the released file.
 
+Section four point one develops scripting and data formats with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section four point one, Grace Okafor expects scripting claims to carry owners and dates.
+
+Section four point one treats hashes lab result where as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — download verification
 
 ```python
@@ -259,17 +383,43 @@ resize-plugin-2.4.1-mirror.zip   5af89d46d94f  MISMATCH - do not install
 
 The official resize-plugin-2.4.1.zip and gallery-plugin-1.8.0.zip match the vendor manifest. resize-plugin-2.4.1-mirror.zip has a different hash (beginning 5af89d46d94f) and is reported as MISMATCH - do not install. This is exactly the check that would have stopped the Ferncroft installation.
 
+Section four point two develops scripting and data formats with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section four point two, Grace Okafor expects scripting claims to carry owners and dates.
+
+Section four point two treats hashes lab result where as testable only when evidence and ticket IDs are recorded.
+
 ### 4.3 Where hashes come from
 
 A hash is only useful if it comes from a trusted source, such as the vendor's own site over HTTPS or a signed release. A hash published next to a file on the same mirror proves nothing, because whoever changed the file could change the hash too.
+
+Section four point three develops scripting and data formats with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section four point three, Grace Okafor expects scripting claims to carry owners and dates.
 
 ### 4.4 Data formats
 
 Manifests and advisories are often JSON or CSV. Python's json and csv modules read them safely without extra packages.
 
+Section four point four develops scripting and data formats with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section four point four, Grace Okafor expects scripting claims to carry owners and dates.
+
+Section four point four treats hashes lab result where as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Pinecrest Hosting will not accept scripting work without a written trail.
+
 ### 4.5 Safe scripts
 
 Support scripts only read data and print results; any change to a customer site goes through a ticket.
+
+Section four point five develops scripting and data formats with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section four point five, Grace Okafor expects scripting claims to carry owners and dates.
+
+Section four point five treats hashes lab result where as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Pinecrest Hosting will not accept scripting work without a written trail.
 
 ### Reading the script
 
@@ -312,25 +462,71 @@ You will (1) define the scope of a support or security task; (2) collect evidenc
 
 Every task has a scope: which customer, which systems, what actions are allowed. Tomás works only on systems named in the ticket, with the customer's consent recorded.
 
+Section five point one develops security scope and evidence with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section five point one, Grace Okafor expects security claims to carry owners and dates.
+
+Section five point one treats scope evidence recording handling as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Evidence
 
 In the Ferncroft case, evidence includes the plugin files, their hashes, server logs, the permission listing and customer screenshots. Evidence is copied before anything is changed.
+
+Section five point two develops security scope and evidence with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section five point two, Grace Okafor expects security claims to carry owners and dates.
+
+Section five point two treats scope evidence recording handling as testable only when evidence and ticket IDs are recorded.
+
+For section five point two, Pinecrest Hosting will not accept security work without a written trail.
 
 ### 5.3 Recording handling
 
 Each item has a note: what it is, who collected it, when, and its hash. This lets others trust that the evidence was not altered.
 
+Section five point three develops security scope and evidence with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section five point three, Grace Okafor expects security claims to carry owners and dates.
+
+Section five point three treats scope evidence recording handling as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Pinecrest Hosting will not accept security work without a written trail.
+
 ### 5.4 Authorisation
 
 Investigating beyond scope, such as looking at another customer's site "just in case", needs a new ticket and approval.
+
+Section five point four develops security scope and evidence with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section five point four, Grace Okafor expects security claims to carry owners and dates.
+
+Section five point four treats scope evidence recording handling as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Pinecrest Hosting will not accept security work without a written trail.
 
 ### 5.5 Privacy
 
 Logs contain visitors' addresses; they are kept only as long as needed and shared only within the investigation.
 
+Section five point five develops security scope and evidence with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section five point five, Grace Okafor expects security claims to carry owners and dates.
+
+Section five point five treats scope evidence recording handling as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Pinecrest Hosting will not accept security work without a written trail.
+
 ### 5.6 Handing over
 
 Tomás passes evidence to the security team with the notes, and keeps working on customer communication.
+
+Section five point six develops security scope and evidence with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section five point six, Grace Okafor expects security claims to carry owners and dates.
+
+Section five point six treats scope evidence recording handling as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Pinecrest Hosting will not accept security work without a written trail.
 
 ### Customer communication
 
@@ -377,25 +573,67 @@ You will (1) model a customer site's supply chain from vendor to running site; (
 
 Vendor writes plugin → vendor builds and publishes release with hash → download source (vendor site, registry or mirror) → Pinecrest support downloads → verification → installation on site → updates over time. Each arrow is a place where the software could change.
 
+Section six point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section six point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section six point one treats the model checks on as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Checks on the model
 
 At download: use official sources. At verification: compare trusted hash or signature. At installation: correct permissions. Over time: track versions against advisories and watch for unexpected changes.
+
+Section six point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section six point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section six point two treats the model checks on as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Producer practices
 
 The SSDF asks producers to protect code and publish integrity information; SLSA v1.0 build levels describe provenance, a record of how a release was built. When vendors provide these, consumers can verify more.
 
+Section six point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section six point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section six point three treats the model checks on as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Consumer practices
 
 Pinecrest cannot change how vendors build, but it can prefer vendors that publish hashes or signatures and keep an inventory of what is installed where.
+
+Section six point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section six point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section six point four treats the model checks on as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 6.5 Using the model
 
 Support uses the model when customers ask for plugins: is the source official, can it be verified, who updates it.
 
+Section six point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section six point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section six point five treats the model checks on as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 6.6 Gaps found
 
 The model shows Pinecrest had no inventory of plugins across customers.
+
+Section six point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section six point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section six point six treats the model checks on as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Model for updates
 
@@ -438,6 +676,12 @@ You will (1) read web access logs for signs of problems; (2) summarise errors an
 
 Each request leaves a log line: time, source address, method, path and status code. Patterns in these lines show problems: bursts of errors after an update, repeated failed sign-ins to the admin page, or requests for pages that should not exist.
 
+Section seven point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seven point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section seven point one treats what logs show lab as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — log summary
 
 ```python
@@ -479,17 +723,41 @@ hour 11: 2 error responses
 
 The synthetic Ferncroft log shows 5 error responses in hour 10 and 2 in hour 11. All five hour-10 errors are failed sign-ins (401) to /admin from 198.51.100.7, which reaches the review threshold of 5. The two hour-11 errors are 500 server errors on /shop from another address, which point to an application fault rather than sign-in attempts.
 
+Section seven point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seven point two, Grace Okafor expects application claims to carry owners and dates.
+
 ### 7.3 Choosing telemetry
 
 Useful records for supply chain work include plugin installation and update events, file changes in code folders, error rates after updates and admin sign-ins. Pinecrest adds file-change monitoring for code folders after the Ferncroft case.
+
+Section seven point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seven point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section seven point three treats what logs show lab as testable only when evidence and ticket IDs are recorded.
 
 ### 7.4 Privacy
 
 Logs contain visitor addresses, which are personal data. They are kept for 30 days, access is limited to support and security staff, and examples in training use documentation addresses.
 
+Section seven point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seven point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section seven point four treats what logs show lab as testable only when evidence and ticket IDs are recorded.
+
 ### 7.5 From summary to action
 
 A REVIEW line is a prompt to look further, not proof of an attack; repeated failures may be a customer who forgot a password.
+
+Section seven point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seven point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section seven point five treats what logs show lab as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Error bursts after updates
 
@@ -532,25 +800,69 @@ You will (1) list the ways the supply chain to a customer site can fail; (2) lin
 
 A file from an unofficial source differs from the release, as in the Ferncroft case. Check: official sources and hash verification.
 
+Section eight point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eight point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section eight point one treats changed downloads outdated components as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 8.2 Outdated components
 
 A plugin version with a published advisory stays installed because nobody tracks versions. Kula et al. (2018) found that developers often leave dependencies outdated. Check: inventory and advisory comparison.
+
+Section eight point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eight point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section eight point two treats changed downloads outdated components as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Abandoned components
 
 A plugin's author stops maintaining it; future flaws will never be fixed. Check: review maintenance activity yearly and replace abandoned plugins.
 
+Section eight point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eight point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section eight point three treats changed downloads outdated components as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 8.4 Compromised publishers
 
 A legitimate vendor's account or build is misused to publish a harmful update. Ladisa et al. (2023) catalogue such attacks on open-source supply chains, and Ohm et al. (2020) describe harmful packages. Check: watch for unexpected changes after updates and follow vendor security notices.
+
+Section eight point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eight point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section eight point four treats changed downloads outdated components as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Misconfiguration
 
 Correct software configured badly, such as writable code folders or missing security headers. Check: baseline checks.
 
+Section eight point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eight point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section eight point five treats changed downloads outdated components as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 8.6 Blame-free review
 
 Failures are treated as process problems; the technician who used the mirror followed no rule because none existed.
+
+Section eight point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eight point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section eight point six treats changed downloads outdated components as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Using the list in tickets
 
@@ -593,25 +905,67 @@ You will (1) build and use a plugin inventory; (2) compare versions with advisor
 
 A nightly script lists, for every customer site, each installed plugin and version from the application's own records. The output is a CSV kept by Pinecrest and visible to support.
 
+Section nine point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section nine point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section nine point one treats the inventory advisories comparing as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Advisories
 
 Vendors and security databases publish advisories naming the affected component, the fixed version and severity. Pinecrest subscribes to advisory feeds for the shop application and its popular plugins.
+
+Section nine point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section nine point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section nine point two treats the inventory advisories comparing as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Comparing
 
 A script compares installed versions with the fixed version: anything lower is affected. Version strings must be compared as numbers, not text, or 2.10 would sort before 2.9.
 
+Section nine point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section nine point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section nine point three treats the inventory advisories comparing as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 9.4 Prioritising
 
 High severity on public pages comes first. EPSS scores (Jacobs et al., 2021) can help judge how likely exploitation is when many advisories arrive at once, alongside CWE categories such as those in MITRE's CWE Top 25 to understand the kind of weakness.
+
+Section nine point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section nine point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section nine point four treats the inventory advisories comparing as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Simple tools
 
 Stdlib scripts with clear output are easy to review and run anywhere.
 
+Section nine point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section nine point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section nine point five treats the inventory advisories comparing as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 9.6 Keeping current
 
 The inventory runs nightly, so it reflects updates made the day before.
+
+Section nine point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section nine point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section nine point six treats the inventory advisories comparing as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Checking the inventory
 
@@ -654,9 +1008,21 @@ You will (1) configure a baseline of security headers and settings for customer 
 
 Pinecrest's baseline for customer sites: HTTPS only with Strict-Transport-Security; a Content-Security-Policy limiting where scripts load from; X-Content-Type-Options set to nosniff; a Referrer-Policy; and no server header revealing software versions. OWASP ASVS 4.0.3 section V14 covers such configuration requirements.
 
+Section ten point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section ten point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section ten point one treats the baseline why headers as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Why headers matter for the supply chain
 
 A Content-Security-Policy limits which outside sources a page will load scripts from. If a plugin is changed to load a script from an unknown domain, the browser blocks it. Headers do not replace verification, but they reduce what a changed component can do.
+
+Section ten point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section ten point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section ten point two treats the baseline why headers as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — header baseline
 
@@ -689,13 +1055,35 @@ quayside-gym     missing Strict-Transport-Security; Server header reveals versio
 
 ferncroft-books meets the baseline (OK). alder-dental is missing Content-Security-Policy and Referrer-Policy. quayside-gym is missing Strict-Transport-Security and its Server header reveals a version, webserver/2.4.29.
 
+Section ten point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section ten point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section ten point three treats the baseline why headers as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 10.4 Fixing safely
 
 A new Content-Security-Policy can break pages that load scripts from legitimate outside services, such as a booking widget. Pinecrest first applies it in report-only mode, reviews reports for a week, adjusts, then enforces.
 
+Section ten point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section ten point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section ten point four treats the baseline why headers as testable only when evidence and ticket IDs are recorded.
+
 ### 10.5 Exceptions
 
 If a customer needs a weaker setting, the reason and review date are recorded.
+
+Section ten point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section ten point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section ten point five treats the baseline why headers as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Applying through templates
 
@@ -742,25 +1130,69 @@ You will (1) verify that controls work as intended; (2) test with synthetic case
 
 Configuring a control is not the same as knowing it works. Verification checks the result: the header is actually sent, the hash check actually stops a mismatched file, the permission check actually finds writable folders.
 
+Section eleven point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eleven point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section eleven point one treats verification versus configuration synthetic as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Synthetic test cases
 
 For each control, Tomás prepares safe synthetic cases: a deliberately mismatched test file for the hash step, a test site with a writable code folder, and a test page loading a script from an unlisted domain to confirm CSP reports it. OWASP WSTG v4.2 describes structured testing of configuration and deployment management.
+
+Section eleven point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eleven point two, Grace Okafor expects application claims to carry owners and dates.
 
 ### 11.3 Recording results
 
 Each verification records control, test case, expected result, actual result, date and tester.
 
+Section eleven point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eleven point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section eleven point three treats verification versus configuration synthetic as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 11.4 Re-verification
 
 Controls are re-verified after server template changes, application upgrades and every quarter.
+
+Section eleven point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eleven point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section eleven point four treats verification versus configuration synthetic as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 11.5 Failures
 
 A failed verification is a finding with an owner and due date, like any other issue.
 
+Section eleven point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eleven point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section eleven point five treats verification versus configuration synthetic as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 11.6 Customer evidence
 
 Verification records let Pinecrest answer customer security questionnaires with evidence.
+
+Section eleven point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eleven point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section eleven point six treats verification versus configuration synthetic as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Pinecrest Hosting will not accept application work without a written trail.
+
+Section eleven point six fails closed if application evidence is missing rather than guessing.
 
 ### Verification schedule
 
@@ -803,9 +1235,25 @@ You will (1) run an advisory comparison in a contained lab; (2) interpret result
 
 The contained lab uses synthetic customer records only. No real sites are touched; results are discussed, not acted on, until the real process runs with tickets.
 
+Section twelve point one develops contained laboratory with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section twelve point one, Grace Okafor expects contained claims to carry owners and dates.
+
+Section twelve point one treats the lab setting the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Pinecrest Hosting will not accept contained work without a written trail.
+
 ### 12.2 The task
 
 Compare installed plugin versions for three synthetic sites with two advisories: resize-plugin fixed in 2.4.3 (high) and contact-form fixed in 5.1.0 (medium).
+
+Section twelve point two develops contained laboratory with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section twelve point two, Grace Okafor expects contained claims to carry owners and dates.
+
+Section twelve point two treats the lab setting the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Pinecrest Hosting will not accept contained work without a written trail.
 
 ### Lab — Lab — advisory comparison
 
@@ -841,13 +1289,35 @@ totals: {'high': 1, 'medium': 2}
 
 ferncroft-books must update resize-plugin from 2.4.1 to 2.4.3 (high). alder-dental must update contact-form from 5.0.4 to 5.1.0 (medium), and quayside-gym contact-form from 4.9.9 to 5.1.0 (medium). Totals: high 1, medium 2. quayside-gym's resize-plugin 2.5.0 and ferncroft's contact-form 5.2.0 are already fixed.
 
+Section twelve point three develops contained laboratory with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section twelve point three, Grace Okafor expects contained claims to carry owners and dates.
+
+Section twelve point three treats the lab setting the as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Planning
 
 High within 7 days, medium within 30. Customers are told before updates that could change how their site looks.
 
+Section twelve point four develops contained laboratory with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section twelve point four, Grace Okafor expects contained claims to carry owners and dates.
+
+Section twelve point four treats the lab setting the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Pinecrest Hosting will not accept contained work without a written trail.
+
 ### 12.5 Lab habits
 
 Keep lab data synthetic, label outputs as lab results, and never point lab scripts at real systems.
+
+Section twelve point five develops contained laboratory with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section twelve point five, Grace Okafor expects contained claims to carry owners and dates.
+
+Section twelve point five treats the lab setting the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Pinecrest Hosting will not accept contained work without a written trail.
 
 ### Reading the lab
 
@@ -894,25 +1364,69 @@ You will (1) diagnose problems after plugin updates and control changes; (2) rol
 
 After updates: pages break, layouts change, error rates rise. After control changes: a new Content-Security-Policy blocks a legitimate widget, the hash step rejects a file because the vendor republished a release, or the permission fix stops a legitimate cache folder from working.
 
+Section thirteen point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section thirteen point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section thirteen point one treats typical problems method rolling as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Method
 
 Tomás reads the error, checks what changed most recently, reproduces it on a test copy of the site with synthetic data, and changes one thing at a time.
+
+Section thirteen point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section thirteen point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section thirteen point two treats typical problems method rolling as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Rolling back
 
 Every update has a backup. If a customer's site is broken, rollback restores service first; diagnosis continues on the test copy.
 
+Section thirteen point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section thirteen point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section thirteen point three treats typical problems method rolling as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 13.4 Not weakening controls
 
 Rolling back an update is acceptable; turning off a control to make an error disappear is not. If a control must change, the change is reviewed.
+
+Section thirteen point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section thirteen point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section thirteen point four treats typical problems method rolling as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 13.5 Vendor republishing
 
 When a vendor's hash changes, support asks the vendor through an official channel why before installing.
 
+Section thirteen point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section thirteen point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section thirteen point five treats typical problems method rolling as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 13.6 Notes
 
 Each fix is recorded with symptom, cause and fix in the support knowledge base.
+
+Section thirteen point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section thirteen point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section thirteen point six treats typical problems method rolling as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Test copies
 
@@ -959,25 +1473,73 @@ You will (1) automate inventory, advisory comparison and baseline checks; (2) ro
 
 Each night a job builds the plugin inventory, compares it with advisories, checks headers and permissions for every site, and writes a report.
 
+Section fourteen point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fourteen point one, Grace Okafor expects application claims to carry owners and dates.
+
+Section fourteen point one treats the nightly job routing as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 14.2 Routing
 
 Each finding becomes a ticket for the support queue with severity and due date. Highs also notify the duty supervisor.
+
+Section fourteen point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fourteen point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section fourteen point two treats the nightly job routing as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 14.3 Permissions
 
 The job reads site data and opens tickets; it cannot change sites. Updates are applied by technicians through the normal process.
 
+Section fourteen point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fourteen point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section fourteen point three treats the nightly job routing as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 14.4 Silent failures
 
 If the report is missing or covers fewer sites than expected, an alert fires.
+
+Section fourteen point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fourteen point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section fourteen point four treats the nightly job routing as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 14.5 Reviewing the job
 
 The job's code is reviewed and tested with synthetic sites before each change.
 
+Section fourteen point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fourteen point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section fourteen point five treats the nightly job routing as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 14.6 Time saved
 
 Weekly manual checks that took a day now take an hour of reading tickets.
+
+Section fourteen point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fourteen point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section fourteen point six treats the nightly job routing as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Building in steps
 
@@ -1024,25 +1586,69 @@ You will (1) understand how plugins depend on other components; (2) check third-
 
 Plugins often bundle libraries, and the shop application depends on the language runtime and its packages. Decan et al. (2018) showed how dependency networks grow across ecosystems, and Zimmermann et al. (2019) showed how a few maintainers can reach many projects. A flaw deep in the chain can affect sites that never chose that library.
 
+Section fifteen point one develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fifteen point one, Grace Okafor expects application claims to carry owners and dates.
+
 ### 15.2 Third-party scripts
 
 Many sites load scripts from outside services: analytics, chat widgets, payment forms. Each is a dependency outside Pinecrest's control, and CSP lists them explicitly.
+
+Section fifteen point two develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fifteen point two, Grace Okafor expects application claims to carry owners and dates.
+
+Section fifteen point two treats dependency chains third-party scripts as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point two, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 15.3 Recording dependencies
 
 The inventory adds bundled libraries reported by plugins and outside script domains from each site's CSP.
 
+Section fifteen point three develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fifteen point three, Grace Okafor expects application claims to carry owners and dates.
+
+Section fifteen point three treats dependency chains third-party scripts as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 15.4 Reducing dependencies
 
 Unused plugins and scripts are removed with customer agreement; every removal shrinks the chain.
+
+Section fifteen point four develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fifteen point four, Grace Okafor expects application claims to carry owners and dates.
+
+Section fifteen point four treats dependency chains third-party scripts as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Pinecrest Hosting will not accept application work without a written trail.
 
 ### 15.5 SBOMs
 
 Some vendors publish a software bill of materials listing components; NTIA (2021) describes minimum elements. Where available, Pinecrest uses SBOMs to see bundled libraries.
 
+Section fifteen point five develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fifteen point five, Grace Okafor expects application claims to carry owners and dates.
+
+Section fifteen point five treats dependency chains third-party scripts as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Pinecrest Hosting will not accept application work without a written trail.
+
 ### 15.6 Updates and compatibility
 
 Updating one component may require others; updates are tested together on a test copy.
+
+Section fifteen point six develops application and software supply chain with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section fifteen point six, Grace Okafor expects application claims to carry owners and dates.
+
+Section fifteen point six treats dependency chains third-party scripts as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, Pinecrest Hosting will not accept application work without a written trail.
 
 ### Reviewing outside scripts
 
@@ -1089,25 +1695,67 @@ You will (1) write clear procedures for plugin installation and updates; (2) doc
 
 One page: confirm the request in a ticket; check the plugin is maintained; download from the official source only; verify the hash or signature from the vendor's site; take a backup; install with correct permissions; check headers and error logs; record version and hash in the ticket.
 
+Section sixteen point one develops technical documentation and safety with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section sixteen point one, Grace Okafor expects technical claims to carry owners and dates.
+
 ### 16.2 The update procedure
 
 Similar steps, plus checking change notes for breaking changes and a rollback plan.
+
+Section sixteen point two develops technical documentation and safety with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section sixteen point two, Grace Okafor expects technical claims to carry owners and dates.
+
+Section sixteen point two treats the installation procedure the as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point two, Pinecrest Hosting will not accept technical work without a written trail.
 
 ### 16.3 Safety rules
 
 Work only within ticket scope; never install from mirrors; never disable a control to fix an error; use synthetic data in tests; report anything unexpected to the duty supervisor.
 
+Section sixteen point three develops technical documentation and safety with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section sixteen point three, Grace Okafor expects technical claims to carry owners and dates.
+
+Section sixteen point three treats the installation procedure the as testable only when evidence and ticket IDs are recorded.
+
 ### 16.4 Writing clearly
 
 Numbered steps, one action per step, and the reason for important steps in a short note. New technicians test the procedure by following it exactly.
+
+Section sixteen point four develops technical documentation and safety with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section sixteen point four, Grace Okafor expects technical claims to carry owners and dates.
+
+Section sixteen point four treats the installation procedure the as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Pinecrest Hosting will not accept technical work without a written trail.
 
 ### 16.5 Keeping current
 
 Each document has an owner and review date; incidents and verification failures trigger updates.
 
+Section sixteen point five develops technical documentation and safety with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section sixteen point five, Grace Okafor expects technical claims to carry owners and dates.
+
+Section sixteen point five treats the installation procedure the as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Pinecrest Hosting will not accept technical work without a written trail.
+
 ### 16.6 Where documents live
 
 Procedures sit in the support knowledge base linked from the ticket templates.
+
+Section sixteen point six develops technical documentation and safety with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section sixteen point six, Grace Okafor expects technical claims to carry owners and dates.
+
+Section sixteen point six treats the installation procedure the as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Pinecrest Hosting will not accept technical work without a written trail.
 
 ### Checking tickets
 
@@ -1154,25 +1802,75 @@ You will (1) rehearse a full plugin advisory response in a contained lab; (2) co
 
 A synthetic high-severity advisory for resize-plugin is published. In the lab, Tomás uses the earlier scripts together on synthetic records.
 
+Section seventeen point one develops contained laboratory ii with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seventeen point one, Grace Okafor expects contained claims to carry owners and dates.
+
+Section seventeen point one treats the scenario steps report as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point one, Pinecrest Hosting will not accept contained work without a written trail.
+
 ### 17.2 Steps
 
 Run the advisory comparison to find affected sites (ferncroft-books, high). Verify the fixed release's hash against the vendor manifest (official file MATCH; mirror file MISMATCH, rejected). Check headers on affected sites (ferncroft-books OK). Summarise logs for signs of problems (failed admin sign-ins from one address reaching REVIEW).
+
+Section seventeen point two develops contained laboratory ii with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seventeen point two, Grace Okafor expects contained claims to carry owners and dates.
+
+Section seventeen point two treats the scenario steps report as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Report
 
 The lab report lists affected sites, verified files, configuration status, log observations and the update plan with due dates.
 
+Section seventeen point three develops contained laboratory ii with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seventeen point three, Grace Okafor expects contained claims to carry owners and dates.
+
+Section seventeen point three treats the scenario steps report as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Pinecrest Hosting will not accept contained work without a written trail.
+
 ### 17.4 Timing
 
 The rehearsal is timed: from advisory to complete plan in 35 minutes.
+
+Section seventeen point four develops contained laboratory ii with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seventeen point four, Grace Okafor expects contained claims to carry owners and dates.
+
+Section seventeen point four treats the scenario steps report as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Pinecrest Hosting will not accept contained work without a written trail.
+
+Section seventeen point four fails closed if contained evidence is missing rather than guessing.
 
 ### 17.5 Lab safety
 
 All data synthetic; no real sites contacted.
 
+Section seventeen point five develops contained laboratory ii with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seventeen point five, Grace Okafor expects contained claims to carry owners and dates.
+
+Section seventeen point five treats the scenario steps report as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Pinecrest Hosting will not accept contained work without a written trail.
+
+Section seventeen point five fails closed if contained evidence is missing rather than guessing.
+
 ### 17.6 Lessons
 
 The rehearsal shows the log summary needs the site name in its output for multi-site use.
+
+Section seventeen point six develops contained laboratory ii with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section seventeen point six, Grace Okafor expects contained claims to carry owners and dates.
+
+Section seventeen point six treats the scenario steps report as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Pinecrest Hosting will not accept contained work without a written trail.
 
 ### Debrief
 
@@ -1223,25 +1921,67 @@ You will (1) deliver a supervised improvement project; (2) apply the course; (3)
 
 Tomás's project is to reduce the time from advisory publication to all affected customer sites being updated. Before the course, Pinecrest had no inventory; the Ferncroft-type cases were found by customer complaints.
 
+Section eighteen point one develops supervised technical project with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eighteen point one, Grace Okafor expects supervised claims to carry owners and dates.
+
+Section eighteen point one treats the project work done as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Work done
 
 The nightly inventory and advisory comparison, the installation and update procedures with hash or signature verification, the header baseline, file-change monitoring and the removal of unused plugins.
+
+Section eighteen point two develops supervised technical project with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eighteen point two, Grace Okafor expects supervised claims to carry owners and dates.
+
+Section eighteen point two treats the project work done as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point two, Pinecrest Hosting will not accept supervised work without a written trail.
 
 ### 18.3 Measurement
 
 Over three months, Tomás measures median time from advisory to update for high advisories: 5 days across 24 high advisories. Before the project there was no reliable record, so he compares with the Ferncroft case, where weeks passed before anyone noticed.
 
+Section eighteen point three develops supervised technical project with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eighteen point three, Grace Okafor expects supervised claims to carry owners and dates.
+
+Section eighteen point three treats the project work done as testable only when evidence and ticket IDs are recorded.
+
 ### 18.4 Limits
 
 The before figure is weak evidence; customer-chosen plugins outside the advisory feeds are not covered; vendor compromises can only be detected, not prevented.
+
+Section eighteen point four develops supervised technical project with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eighteen point four, Grace Okafor expects supervised claims to carry owners and dates.
+
+Section eighteen point four treats the project work done as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Pinecrest Hosting will not accept supervised work without a written trail.
 
 ### 18.5 Presentation
 
 Tomás presents to Grace and his college tutor with evidence from tickets and nightly reports, mapping the work to the SSDF practice groups for responding to vulnerabilities and protecting software.
 
+Section eighteen point five develops supervised technical project with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eighteen point five, Grace Okafor expects supervised claims to carry owners and dates.
+
+Section eighteen point five treats the project work done as testable only when evidence and ticket IDs are recorded.
+
 ### 18.6 Next steps
 
 Add vendor signature checks where offered and extend the inventory to bundled libraries via SBOMs.
+
+Section eighteen point six develops supervised technical project with a Pinecrest Hosting note Tomás Rivera can demo offline.
+
+Under section eighteen point six, Grace Okafor expects supervised claims to carry owners and dates.
+
+Section eighteen point six treats the project work done as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Pinecrest Hosting will not accept supervised work without a written trail.
 
 ### Training others
 
