@@ -548,7 +548,7 @@ The lab draws per-class detections from the same arbitrary probabilities used in
 
 ### 5.6 Worked example: the honest results paragraph
 
-"On the held-out HRHN corpus (synthetic; 700 adjudicated quantum-vulnerable uses), dual-source inventory increased recall by 0.21 (95% bootstrap CI 0.18–0.24) over a competently configured static baseline; precision was 0.93. The gain was concentrated in vendor appliances (0.66) and absent for data at rest (0.00), as predicted (H3). With rules frozen, the gain on an independent corpus was 0.10 (0.08–0.12). Nine and fourteen per cent of assets, respectively, could not be adjudicated and are excluded from the recall denominators; under a worst-case assumption that all unknown assets hold undiscovered vulnerable uses, recall falls by up to 0.12. These results describe two synthetic organizations and a model of detection; they are not estimates for real enterprises." Note what the paragraph refuses to say: it does not claim either organization is "quantum-safe" or that dual-source inventory is sufficient.
+"On the held-out HRHN corpus (synthetic; 700 adjudicated quantum-vulnerable uses), dual-source inventory increased recall by 0.21 (95% bootstrap CI 0.18–0.24) over a competently configured static baseline; precision was 0.93. The gain was concentrated in vendor appliances (0.63) and absent for data at rest (0.00), as predicted (H3). With rules frozen, the gain on an independent corpus was 0.10 (0.08–0.12). Nine and fourteen per cent of assets, respectively, could not be adjudicated and are excluded from the recall denominators; under a worst-case assumption that all unknown assets hold undiscovered vulnerable uses, recall falls by up to 0.12. These results describe two synthetic organizations and a model of detection; they are not estimates for real enterprises." Note what the paragraph refuses to say: it does not claim either organization is "quantum-safe" or that dual-source inventory is sufficient.
 
 ### 5.7 Common errors and limits
 
@@ -863,7 +863,7 @@ Answers are model responses for self-assessment; a different answer that meets t
 
 **EX026.** "Go with amendment: κ 0.62 traced to the definition of 'use'. Codebook amended (reachable in negotiation; flag configured-not-observed). Re-test on 60 new calibration items; proceed if κ ≥ 0.70."
 
-**EX027.** The variance of a paired difference is Var(D) − Var(S) terms minus twice their covariance; detection by the two methods is strongly correlated per item (both find easy items), so the covariance term shrinks the variance substantially.
+**EX027.** The variance of a paired difference is Var(D) + Var(S) minus twice their covariance; detection by the two methods is strongly correlated per item (both find easy items), so the covariance term shrinks the variance substantially.
 
 **EX028.** Compute recall twice — all 40 disputed items counted as true vulnerable uses, then as non-uses — and report the range alongside the adjudicated estimate: "recall gain 0.21 (0.19–0.22 across dispute resolutions)".
 
