@@ -70,6 +70,10 @@ Os mapas omitem ferramentas informais. Os donos podem não aceitar a responsabil
 - **EX003 — Por que donos.** Por que atribuir donos cedo? *Rubrica:* 3 = componentes sem dono são onde os problemas passam despercebidos;; 2 = visibilidade;; 1 = nada;; 0 = nenhuma.
 - **EX004 — Lista de serviços.** Cite três serviços da Fenwick. *Rubrica:* 3 = vendas nas filiais, loja on-line, entregas;; 2 = serviços;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Mapear serviços para componentes e donos é a base técnica da governança.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
@@ -107,6 +111,10 @@ Os diagramas se desatualizam. Os formulários de mudança são pulados nas emerg
 - **EX007 — Registro de mudança.** O que um registro de mudança deve capturar? *Rubrica:* 3 = o quê, por quê, quem aprovou e quando;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX008 — Redução de escopo.** Como a segmentação ajuda no PCI DSS? *Rubrica:* 3 = reduz os sistemas no escopo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Redes segmentadas e documentadas mantêm pequeno o escopo de pagamentos e os desenhos verificáveis.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Sistemas operacionais e identidades
@@ -143,6 +151,10 @@ Retirar direitos pode quebrar softwares. O acesso por cartão exige hardware.
 - **EX010 — Risco dos direitos de administrador.** Por que retirar os direitos de administrador local? *Rubrica:* 3 = um malware poderia se instalar com controle total;; 2 = malware;; 1 = nada;; 0 = nenhuma.
 - **EX011 — Administrador separado.** Por que usar contas de administrador separadas? *Rubrica:* 3 = o comprometimento de uma conta do dia a dia não deve dar direitos de administrador;; 2 = separação;; 1 = nada;; 0 = nenhuma.
 - **EX012 — Testar primeiro.** Por que testar a retirada dos direitos primeiro em três computadores? *Rubrica:* 3 = para achar softwares que quebram;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Contas individuais, menor privilégio e acesso administrativo separado sustentam a governança técnica.
 
 <a id="ch-04"></a>
 
@@ -210,6 +222,10 @@ As exportações podem estar desatualizadas. As linhas de base precisam de revis
 - **EX015 — Dois desvios.** Que notebook teve dois desvios? *Rubrica:* 3 = FW-LT03, bloqueio de 30 minutos e administrador local;; 2 = LT03;; 1 = nada;; 0 = nenhuma.
 - **EX016 — Configuração mais rigorosa.** Por que o bloqueio de cinco minutos do FW-LT04 é aceitável? *Rubrica:* 3 = é mais rigoroso que a linha de base de dez minutos;; 2 = mais rigoroso;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Scripts que leem exportações estruturadas transformam verificações de linha de base em achados rápidos e explicados.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Escopo e evidências de segurança
@@ -247,6 +263,10 @@ Os escopos podem ser pouco claros. As pastas de evidências precisam de controle
 - **EX019 — Resposta fora do escopo.** O que fazer ao notar algo fora do escopo? *Rubrica:* 3 = relatar com a evidência já existente;; 2 = relatar;; 1 = testar;; 0 = nenhuma.
 - **EX020 — Armazenamento inalterável.** Por que guardar as evidências onde não podem ser alteradas? *Rubrica:* 3 = para que outros confiem que mostram exatamente o que foi visto;; 2 = integridade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Escopo por escrito, evidências cuidadosas e respeito aos limites tornam confiável o trabalho técnico de segurança.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Governança, riscos e compliance de segurança: modelo do sistema
@@ -283,6 +303,10 @@ As tabelas simplificam ligações complexas. Os papéis mudam.
 - **EX022 — Responsável.** Quem responde pela segurança na Fenwick? *Rubrica:* 3 = o diretor financeiro;; 2 = diretor financeiro;; 1 = líder de TI;; 0 = nenhuma.
 - **EX023 — Ligações do firewall.** Que política e que obrigação as revisões de firewall apoiam? *Rubrica:* 3 = a política de rede e as obrigações de pagamento com cartão;; 2 = ligações;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Uso da tabela.** Como a tabela de tarefas ajuda os técnicos? *Rubrica:* 3 = a priorizar quando o tempo é curto;; 2 = prioridades;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Ligar as tarefas técnicas a políticas, riscos e obrigações mostra por que elas importam.
 
 <a id="ch-07"></a>
 
@@ -352,6 +376,10 @@ Limiares simples deixam passar ataques lentos. Os logs podem estar incompletos.
 - **EX027 — Leitura da j.park.** Como Amina interpretou as falhas da j.park? *Rubrica:* 3 = provável senha digitada errado, seguida de sucesso;; 2 = erro de digitação;; 1 = nada;; 0 = nenhuma.
 - **EX028 — Ações de resposta.** Que ações se seguiram ao alerta? *Rubrica:* 3 = bloquear o endereço e renomear a conta admin;; 2 = duas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os logs se tornam dados de governança quando são contados, sinalizados e usados para agir com contexto.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Governança, riscos e compliance de segurança: modos de falha
@@ -388,6 +416,10 @@ As listas deixam escapar falhas novas. As verificações também podem falhar.
 - **EX030 — Falhas silenciosas.** Por que as verificações precisam ser agendadas? *Rubrica:* 3 = algumas falhas ficam silenciosas até algo quebrar;; 2 = silenciosas;; 1 = nada;; 0 = nenhuma.
 - **EX031 — Dono dos certificados.** Quem é dono do modo de falha da expiração de certificados? *Rubrica:* 3 = o líder de TI;; 2 = líder de TI;; 1 = nada;; 0 = nenhuma.
 - **EX032 — Partes do modo de falha.** Que três coisas cada modo de falha descreve? *Rubrica:* 3 = o que dá errado, como aparece, impacto;; 2 = três;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Planejar a detecção para cada modo de falha mantém os controles confiáveis.
 
 <a id="ch-09"></a>
 
@@ -426,6 +458,10 @@ As pontuações escondem a gravidade. Os checklists deixam o contexto de fora.
 - **EX035 — Escolha de ferramentas.** Que ferramentas Amina recomendou? *Rubrica:* 3 = chamados, planilhas com validação e scripts curtos;; 2 = ferramentas existentes;; 1 = nada;; 0 = nenhuma.
 - **EX036 — Marcação do checklist.** Como cada item do checklist é marcado? *Rubrica:* 3 = implantado, parcialmente implantado ou ausente, com evidência;; 2 = três estados;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Métodos simples, listas de verificação e ferramentas conhecidas são adequados a equipes técnicas pequenas.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Governança, riscos e compliance de segurança: configuração de controles
@@ -462,6 +498,10 @@ Os limiares precisam de ajuste fino. Os testes amostram só alguns arquivos.
 - **EX038 — Compromisso do limiar.** Por que não definir um limiar mais baixo? *Rubrica:* 3 = muitos alarmes falsos por senhas digitadas errado;; 2 = alarmes falsos;; 1 = nada;; 0 = nenhuma.
 - **EX039 — Testes antes e depois.** Por que testar antes e depois de uma mudança? *Rubrica:* 3 = mostra que o estado antigo funcionava e que a mudança não quebrou nada;; 2 = referência;; 1 = nada;; 0 = nenhuma.
 - **EX040 — Escopo do backup.** Que dados foram acrescentados às rotinas de backup? *Rubrica:* 3 = o banco de dados de estoque e os dados da loja on-line;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os controles se tornam reais por meio de configuração documentada e de testes antes e depois.
 
 <a id="ch-11"></a>
 
@@ -522,6 +562,10 @@ As listas aprovadas podem estar erradas. A verificação é periódica.
 - **EX043 — Causa do RDP.** Por que a regra de área de trabalho remota existia? *Rubrica:* 3 = uma empresa de suporte a acrescentou para um reparo pontual;; 2 = suporte;; 1 = nada;; 0 = nenhuma.
 - **EX044 — Dois controles.** Por que são necessários tanto o controle de mudanças quanto a verificação? *Rubrica:* 3 = a verificação encontra o que o controle de mudanças deixou passar;; 2 = complementares;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A verificação em relação a listas aprovadas encontra desvios arriscados que o controle de mudanças, sozinho, deixa passar.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Laboratório isolado I
@@ -559,6 +603,10 @@ Os laboratórios diferem da produção. Os cenários simplificam.
 - **EX047 — Causa da lacuna.** Por que a conta não foi desativada? *Rubrica:* 3 = a aprovação manual exigida não foi dada;; 2 = aprovação;; 1 = nada;; 0 = nenhuma.
 - **EX048 — Recomendação.** O que Amina recomendou? *Rubrica:* 3 = escalonamento se a aprovação não vier em até um dia;; 2 = escalonamento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Laboratórios contidos testam processos inteiros com segurança e expõem lacunas entre as etapas.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Governança, riscos e compliance de segurança: solução de problemas
@@ -595,6 +643,10 @@ As listas de hipóteses podem deixar causas de fora. Os relatórios de sucesso p
 - **EX050 — Sucesso enganoso.** Por que o backup relatava sucesso? *Rubrica:* 3 = copiava uma pasta antiga e vazia;; 2 = alvo errado;; 1 = nada;; 0 = nenhuma.
 - **EX051 — Correção de processo.** Que mudança de processo Amina acrescentou? *Rubrica:* 3 = rever a cobertura do backup após atualizações de sistemas;; 2 = processo de mudanças;; 1 = nada;; 0 = nenhuma.
 - **EX052 — Sentido do sucesso.** O que uma mensagem de sucesso do backup mostra? *Rubrica:* 3 = que uma rotina rodou, não que os dados certos foram protegidos;; 2 = rodou;; 1 = protegidos;; 0 = nenhuma.
+
+### Síntese
+
+A resolução de problemas com hipóteses encontra as causas-raiz, que muitas vezes estão nos processos.
 
 <a id="ch-14"></a>
 
@@ -656,6 +708,10 @@ As listas podem omitir certificados. Os chamados podem ser ignorados.
 - **EX055 — Certificado em aviso.** Que certificado estava em aviso? *Rubrica:* 3 = o da loja, com 19 dias restantes;; 2 = loja;; 1 = e-mail;; 0 = nenhuma.
 - **EX056 — Caminho de entrega.** Como os resultados chegam aos donos? *Rubrica:* 3 = e-mail diário ao líder de TI e chamados para avisos e alertas;; 2 = chamados;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A automação funciona quando as verificações são simples e os resultados chegam aos donos com um caminho de acompanhamento.
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Governança, riscos e compliance de segurança: integração e dependências
@@ -692,6 +748,10 @@ Os relatórios de garantia têm escopo limitado. As contingências precisam de p
 - **EX058 — Garantia ausente.** Que provedor não tinha garantia formal? *Rubrica:* 3 = a empresa de suporte de rede;; 2 = empresa de suporte;; 1 = nada;; 0 = nenhuma.
 - **EX059 — Contrato como complemento.** Como os contratos podem ajudar onde faltam relatórios formais? *Rubrica:* 3 = incluindo requisitos de segurança, como remover regras temporárias;; 2 = contratos;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Contingência da loja.** Qual é a contingência se a plataforma da loja falhar? *Rubrica:* 3 = publicar um aviso e aceitar pedidos por telefone;; 2 = manual;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+As dependências de provedores precisam de verificações de garantia, cláusulas contratuais e alternativas práticas.
 
 <a id="ch-16"></a>
 
@@ -730,6 +790,10 @@ Os procedimentos envelhecem. As etapas podem ser puladas.
 - **EX063 — Perigo do desatualizado.** Por que procedimentos desatualizados podem ser piores do que nenhum? *Rubrica:* 3 = dão falsa confiança e levam a ações erradas;; 2 = falsa confiança;; 1 = nada;; 0 = nenhuma.
 - **EX064 — Momento do firewall.** Quando as mudanças de firewall devem ser agendadas? *Rubrica:* 3 = fora do horário comercial, após a aprovação;; 2 = momento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Procedimentos claros, seguros e atualizados permitem que os técnicos trabalhem corretamente e protegem o negócio.
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Laboratório isolado II
@@ -767,6 +831,10 @@ Sabe-se de antemão que haverá problemas injetados. Os laboratórios simplifica
 - **EX067 — Conteúdo da nota.** O que a nota de incidente inclui? *Rubrica:* 3 = achado, momento, detecção, ações, aprovação e prevenção;; 2 = conteúdo;; 1 = nada;; 0 = nenhuma.
 - **EX068 — Ideia preventiva.** Que medida preventiva Amina sugeriu? *Rubrica:* 3 = bloquear por padrão o Wi-Fi de visitantes para os sistemas internos;; 2 = negar por padrão;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Exercícios combinados testam a detecção, a resposta controlada e registros de incidente claros.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
@@ -803,6 +871,10 @@ Seis semanas é pouco tempo. Alguns problemas dependem de fornecedores.
 - **EX070 — Problemas encontrados.** Quantos problemas as verificações encontraram em seis semanas? *Rubrica:* 3 = onze;; 2 = 11;; 1 = nada;; 0 = nenhuma.
 - **EX071 — Chamados encerrados.** Quantos problemas foram encerrados em até duas semanas? *Rubrica:* 3 = nove;; 2 = 9;; 1 = onze;; 0 = nenhuma.
 - **EX072 — Prova de extensibilidade.** O que mostrou que o pacote podia ser ampliado? *Rubrica:* 3 = um técnico acrescentou uma nova verificação durante o treinamento;; 2 = ampliação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto supervisionado dá certo com rotinas confiáveis, resultados honestos e um repasse cuidadoso.
 
 <a id="worked-results"></a>
 

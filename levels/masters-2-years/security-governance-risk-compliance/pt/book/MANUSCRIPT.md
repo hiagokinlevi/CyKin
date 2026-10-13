@@ -77,6 +77,10 @@ Desenhos observacionais não provam causa. Logs de busca deixam escapar a litera
 - **EX006 — Orientação de frequência.** A ISO/IEC 27002:2022 prescreve uma frequência de revisão? *Rubrica:* 3 = não, pede intervalos planejados;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX007 — Papel das normas.** O que as normas podem fazer por essa pergunta? *Rubrica:* 3 = defini-la, mas não respondê-la;; 2 = contexto;; 1 = evidência de efeito;; 0 = nenhuma.
 
+### Síntese
+
+Uma pergunta precisa e respondível e uma busca reproduzível vêm antes de quaisquer dados.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: seminário avançado
@@ -146,6 +150,10 @@ Percentuais de cobertura escondem a qualidade dos controles. Os frameworks mudam
 - **EX013 — Ilusão de garantia.** Por que o mapeamento pode criar uma ilusão de garantia? *Rubrica:* 3 = controles mapeados podem estar mal desenhados, mal operados ou mal evidenciados;; 2 = qualidade oculta;; 1 = nada;; 0 = nenhuma.
 - **EX014 — Tese refinada.** Como Lucas refinou sua tese depois da discussão? *Rubrica:* 3 = o mapeamento é necessário; a garantia exige evidência testada conforme o risco;; 2 = refinou;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os frameworks se sobrepõem; uma cobertura demonstrável exige evidências, e não apenas mapeamentos.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -189,6 +197,10 @@ Fatores de confusão medidos não eliminam os não medidos. A qualidade do catá
 - **EX019 — Concordância no piloto.** Em quantas das 40 contas do piloto os revisores concordaram? *Rubrica:* 3 = 36;; 2 = 90%;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Correção do catálogo.** Que regra Lucas acrescentou depois do piloto? *Rubrica:* 3 = uma regra para recursos compartilhados, como caixas de correio;; 2 = caixas compartilhadas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Desenhos observacionais precisam de fatores de confusão registrados, aprovações e um plano pré-registrado.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: explicações concorrentes
@@ -231,6 +243,10 @@ Algumas rivais não podem ser testadas. As medidas de diligência são grosseira
 - **EX024 — Falseabilidade.** Por que Lucas cita Herley e van Oorschot? *Rubrica:* 3 = para insistir que sua hipótese possa falhar;; 2 = falseável;; 1 = nada;; 0 = nenhuma.
 - **EX025 — Categorias de julgamento.** Que três julgamentos cada rival vai receber? *Rubrica:* 3 = menos provável, ainda plausível ou não testada;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX026 — Resultado refutador.** Que resultado contaria contra a hipótese? *Rubrica:* 3 = nenhuma diferença relevante, ou uma que desaparece com rotatividade parecida;; 2 = declarado;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Listar e verificar explicações rivais é o núcleo da pesquisa observacional honesta.
 
 <a id="ch-05"></a>
 
@@ -303,6 +319,10 @@ A amostragem não detecta falhas sistemáticas raras. As taxas toleráveis são 
 - **EX031 — Amostra pequena.** Uma amostra de 25 com um desvio sustenta a operação eficaz? *Rubrica:* 3 = não, o limite é 0,176;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX032 — Tipos de desvio.** Liste os três tipos de desvio definidos por Lucas. *Rubrica:* 3 = sem assinatura, assinatura atrasada, signatário errado;; 2 = três;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os pilotos definem tamanhos de amostra realistas e aprimoram as definições antes do estudo principal.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
@@ -371,6 +391,10 @@ A diligência continua sendo uma rival parcial. A relação custo-benefício dep
 - **EX037 — Evidência contra o carimbo.** Por que o carimbo automático parece improvável? *Rubrica:* 3 = nove remoções por revisão e quarenta segundos por conta;; 2 = remoções;; 1 = nada;; 0 = nenhuma.
 - **EX038 — Opção baseada em risco.** Que meio-termo Lucas sugere? *Rubrica:* 3 = trimestral para sistemas de alto risco, anual no restante;; 2 = baseado em risco;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma análise pré-registrada produz uma diferença incerta, mas real, relatada junto com as explicações rivais e o custo.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -414,6 +438,10 @@ Resumos para profissionais podem simplificar demais. As ligações com os framew
 - **EX043 — Retorno dos gestores.** Por que Lucas reescreveu uma frase do resumo? *Rubrica:* 3 = sugeria que as unidades eram descuidadas;; 2 = culpa;; 1 = nada;; 0 = nenhuma.
 - **EX044 — Sugestão aos conselhos.** O que Lucas sugere que os conselhos peçam? *Rubrica:* 3 = medidas de desfecho, como as taxas de acesso excessivo;; 2 = desfechos;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Boas dissertações tornam as afirmações rastreáveis, os limites consequentes e os resumos justos.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -456,6 +484,10 @@ A reprodução confere o código, não a verdade. Os resultados do estudo seguin
 - **EX048 — Limite do desfecho.** O que o acesso excessivo não mede? *Rubrica:* 3 = se o acesso foi mal usado;; 2 = mau uso;; 1 = nada;; 0 = nenhuma.
 - **EX049 — Decisão da Tessaly.** Em que sistemas a Tessaly vai pilotar revisões trimestrais? *Rubrica:* 3 = gestão de armazéns e financeiro;; 2 = alto risco;; 1 = todos;; 0 = nenhuma.
 - **EX050 — Próximo estudo.** Que estudo seguinte a Dra. Solberg sugere? *Rubrica:* 3 = um estudo randomizado com várias empresas;; 2 = randomizar;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Reprodução independente, defesa franca e acompanhamento planejado completam um estudo de mestrado.
 
 <a id="worked-results"></a>
 

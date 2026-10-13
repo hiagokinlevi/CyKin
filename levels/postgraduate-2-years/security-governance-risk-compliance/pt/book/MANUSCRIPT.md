@@ -71,6 +71,10 @@ Os rótulos de viés podem ser usados para descartar opiniões. Os registros do 
 - **EX004 — Fonte da calibração.** Que fonte descreve o treinamento de calibração para estimativas de segurança? *Rubrica:* 3 = Hubbard e Seiersen (2016);; 2 = Hubbard;; 1 = Cox;; 0 = nenhuma.
 - **EX005 — Defesa contra o viés.** Cite uma defesa prática contra o viés. *Rubrica:* 3 = registrar as premissas e pedir faixas;; 2 = estrutura;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Boas decisões de segurança são julgadas pelo raciocínio sob incerteza e protegidas contra vieses por métodos estruturados.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: prática atual
@@ -108,6 +112,10 @@ As listas de tendências envelhecem depressa. A autoavaliação pode ser generos
 - **EX008 — Fraqueza com fornecedores.** O que há de fraco na supervisão de fornecedores? *Rubrica:* 3 = questionários lentos, raramente lidos a fundo;; 2 = questionários;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Cautela com tendências.** Por que pesar as tendências contra a maturidade? *Rubrica:* 3 = métodos sem dados ou competências podem piorar a governança;; 2 = maturidade;; 1 = nada;; 0 = nenhuma.
 - **EX010 — Combinar frameworks.** Por que as organizações maduras combinam frameworks? *Rubrica:* 3 = cada um responde a uma pergunta diferente;; 2 = complementares;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A prática atual combina frameworks; as lacunas da Halbrook estão em expressar o risco, supervisionar fornecedores e informar o conselho.
 
 <a id="ch-03"></a>
 
@@ -176,6 +184,10 @@ As estimativas dependem das faixas dos especialistas. Os modelos omitem eventos 
 - **EX014 — Chance da cauda.** Qual é a chance de passar de um milhão num ano? *Rubrica:* 3 = cerca de 4%;; 2 = 0,041;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Persuasão.** O que torna as evidências especializadas convincentes para os comitês? *Rubrica:* 3 = tradução em termos familiares e incerteza visível;; 2 = tradução;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Estimativas quantitativas de risco mostram tanto os anos tranquilos quanto as caudas graves quando explicadas em termos familiares.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco avançado e ética
@@ -214,6 +226,10 @@ Os julgamentos éticos podem ser contestados. Conflitos declarados ainda influen
 - **EX019 — Posição sobre a notificação.** Por que Daniel se opôs a estreitar os incidentes notificáveis? *Rubrica:* 3 = prejudicaria os segurados e conflitaria com os deveres legais;; 2 = dano;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Mínimo do compliance.** Como cumprir a lei deve ser visto do ponto de vista ético? *Rubrica:* 3 = como um mínimo, não a medida completa;; 2 = mínimo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A prática ética de GRC documenta as estimativas, gerencia conflitos e protege quem é afetado pelo risco.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Governança, riscos e compliance de segurança: alternativas de desenho
@@ -251,6 +267,10 @@ Os pesos dos critérios são subjetivos. A qualidade dos serviços de ratings va
 - **EX023 — Limite dos ratings.** Qual é a limitação do serviço de ratings? *Rubrica:* 3 = a visão de fora para dentro não enxerga os controles internos;; 2 = de fora para dentro;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Definição de sucesso.** Como se define o sucesso dos níveis? *Rubrica:* 3 = revisões mais rápidas sem perder profundidade nos críticos;; 2 = critérios;; 1 = nada;; 0 = nenhuma.
 - **EX025 — Avaliar primeiro.** Por que avaliar antes da implantação completa? *Rubrica:* 3 = mantém a organização aberta às evidências e reduz o custo do erro;; 2 = evidências;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Projetar alternativas e avaliar a escolhida protege contra erros caros.
 
 <a id="ch-06"></a>
 
@@ -314,6 +334,10 @@ Amostras pequenas. O cegamento pode ser imperfeito se os revisores reconhecerem 
 - **EX029 — Pontuação cega.** Por que o auditor não soube que processo foi usado? *Rubrica:* 3 = para evitar viés nas notas de profundidade;; 2 = cegamento;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Resultado de profundidade.** Os níveis perderam profundidade? *Rubrica:* 3 = não, foram um pouco melhores nos de nível alto;; 2 = não;; 1 = sim;; 0 = nenhuma.
 
+### Síntese
+
+Uma avaliação controlada, com verificações de profundidade às cegas, mostra se processos mais rápidos continuam minuciosos.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Governança, riscos e compliance de segurança: integração organizacional
@@ -352,6 +376,10 @@ Os formulários de entrada podem ser manipulados. Os modelos de linhas variam en
 - **EX034 — Causa da resistência.** Por que algumas unidades resistiram aos níveis? *Rubrica:* 3 = as revisões de nível alto atrasavam os contratos;; 2 = atraso;; 1 = nada;; 0 = nenhuma.
 - **EX035 — Solução da resistência.** Como a resistência foi reduzida? *Rubrica:* 3 = engajamento antecipado e tempos de revisão publicados;; 2 = engajamento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A integração coloca as etapas de governança dentro dos fluxos de trabalho e respeita linhas claras de responsabilidade.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Governança, riscos e compliance de segurança: casos difíceis
@@ -389,6 +417,10 @@ Os controles compensatórios podem mascarar o risco. O escalonamento pode desgas
 - **EX038 — Dúvida de escopo.** Por que o certificado do provedor era insuficiente? *Rubrica:* 3 = o escopo não incluía claramente o serviço de análise;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
 - **EX039 — Exposição limitada.** Como Daniel limitou a exposição enquanto reunia evidências? *Rubrica:* 3 = piloto com dados sintéticos e direitos de auditoria;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
 - **EX040 — Memorando de escalonamento.** O que continha o memorando de Daniel? *Rubrica:* 3 = decisão necessária, opções, risco e recomendação;; 2 = memorando;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Casos difíceis exigem limitar a exposição, ler a garantia com cuidado e escalar com clareza.
 
 <a id="ch-09"></a>
 
@@ -449,6 +481,10 @@ As curvas combinadas dependem de premissas de correlação. Os limiares de apeti
 - **EX044 — Onde ocorre a violação.** Que parte da curva viola o apetite? *Rubrica:* 3 = a cauda;; 2 = cauda;; 1 = ano típico;; 0 = nenhuma.
 - **EX045 — Resposta sobre confiança.** Como Daniel respondeu se as estimativas eram confiáveis? *Rubrica:* 3 = explicou as entradas, a revisão da auditoria e as faixas;; 2 = transparência;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um apetite quantificado permite aos conselhos ver onde riscos graves ultrapassam a tolerância e governar os tratamentos.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
@@ -486,6 +522,10 @@ Os resumos simplificam as fontes. Os contextos diferem do da Halbrook.
 - **EX048 — Método de Spears.** Que método Spears e Barki (2010) usam? *Rubrica:* 3 = dados de survey e entrevistas com gestores;; 2 = survey;; 1 = nada;; 0 = nenhuma.
 - **EX049 — Gordon-Loeb na prática.** Como o trabalho de Gordon e Loeb se aplica na Halbrook? *Rubrica:* 3 = comparar investimentos com a redução esperada de perdas;; 2 = investimento;; 1 = nada;; 0 = nenhuma.
 - **EX050 — Lacuna de pesquisa.** Que lacuna a avaliação de Daniel preenche? *Rubrica:* 3 = nenhuma estudou diretamente a supervisão de fornecedores de seguradoras;; 2 = evidência local;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A leitura crítica separa os tipos de evidência e verifica se as descobertas se aplicam ao contexto.
 
 <a id="ch-11"></a>
 
@@ -525,6 +565,10 @@ Seis meses é pouco tempo. Os ganhos de calibração podem se dissipar.
 - **EX054 — Parcialmente cumprido.** Que objetivo foi apenas quase cumprido? *Rubrica:* 3 = reduzir à metade o tempo de revisão;; 2 = tempo de revisão;; 1 = nada;; 0 = nenhuma.
 - **EX055 — Recomendação de dados.** Que dados Daniel recomenda coletar? *Rubrica:* 3 = dados internos de custo de incidentes;; 2 = custos de incidentes;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Projetos aplicados dão certo quando os resultados são medidos com honestidade e o trabalho é repassado.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -562,6 +606,10 @@ A autoavaliação pode ser generosa. A transferência exige teste local.
 - **EX058 — Condição de transferência.** Quando os métodos se transferem melhor? *Rubrica:* 3 = quando as premissas são explícitas;; 2 = premissas;; 1 = nada;; 0 = nenhuma.
 - **EX059 — Pequenas beneficentes.** Que ajuste os relatórios de excedência de perda podem exigir em pequenas organizações beneficentes? *Rubrica:* 3 = simplificação;; 2 = mais simples;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Hábitos duradouros.** Que hábitos continuarão úteis quando os frameworks mudarem? *Rubrica:* 3 = leitura crítica, avaliação controlada, relato transparente;; 2 = hábitos;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A revisão final consolida o aprendizado e prepara os métodos para a transferência a novos contextos.
 
 <a id="worked-results"></a>
 

@@ -69,6 +69,10 @@ Curvas suaves escondem dados mensais irregulares. As áreas de exposição ignor
 - **EX002 — Sentido do achatamento.** Por que o achatamento da curva importa? *Rubrica:* 3 = a atenção diminui e os achados difíceis ficam parados;; 2 = achados parados;; 1 = nada;; 0 = nenhuma.
 - **EX003 — Integral da exposição.** Como Nadia define a exposição acumulada? *Rubrica:* 3 = a área sob as fraquezas em aberto ao longo do tempo;; 2 = área;; 1 = contagem;; 0 = nenhuma.
 
+### Síntese
+
+Taxas e acumulação descrevem como os acúmulos de pendências de governança e a exposição mudam ao longo do tempo.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
@@ -104,6 +108,10 @@ A lógica captura as regras escritas, não a prática real. As listas de conjunt
 - **EX004 — Choque na emergência.** Que duas políticas entram em choque durante uma interrupção? *Rubrica:* 3 = MFA obrigatória e acesso imediato de fornecedores em emergências;; 2 = conflito;; 1 = nada;; 0 = nenhuma.
 - **EX005 — Contas obsoletas.** Quantas contas obsoletas do sistema de controle a diferença de conjuntos revelou? *Rubrica:* 3 = sete;; 2 = 7;; 1 = nada;; 0 = nenhuma.
 - **EX006 — Pares proibidos.** Cite um par de permissões proibido. *Rubrica:* 3 = cadastrar fornecedor com aprovar pagamento;; 2 = par de SoD;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Lógica, conjuntos e contagem transformam regras de governança em enunciados precisos e testáveis.
 
 <a id="ch-03"></a>
 
@@ -141,6 +149,10 @@ Modelos simples de calor ignoram o fluxo de ar. Os controles físicos se degrada
 - **EX008 — Responsável pela refrigeração.** Quem deve ser o responsável pelo registro de risco de falha de refrigeração? *Rubrica:* 3 = facilities, não só TI;; 2 = facilities;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Retardo e detecção.** Por que as subestações precisam de sensores de porta além das fechaduras? *Rubrica:* 3 = as fechaduras retardam, mas não detectam um atacante determinado;; 2 = detecção;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A infraestrutura física faz parte do escopo da governança, e os seus riscos precisam de donos e de controles.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
@@ -176,6 +188,10 @@ Os scripts conferem só o que está registrado. Dados errados produzem saídas e
 - **EX010 — Campos da política.** Que campos cada registro de política contém? *Rubrica:* 3 = título, responsável, data de aprovação, data da próxima revisão;; 2 = quatro campos;; 1 = nada;; 0 = nenhuma.
 - **EX011 — Saída acionável.** Por que imprimir o título da política e o motivo, e não só uma contagem? *Rubrica:* 3 = os responsáveis podem agir sobre itens específicos;; 2 = acionável;; 1 = nada;; 0 = nenhuma.
 - **EX012 — Script como evidência.** Por que os scripts de compliance precisam ser legíveis e versionados? *Rubrica:* 3 = o script passa a fazer parte da evidência;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Scripts simples e legíveis tornam os registros de governança verificáveis e a sua saída acionável.
 
 <a id="ch-05"></a>
 
@@ -213,6 +229,10 @@ A linguagem simples pode perder nuances. Apêndices longos ficam sem leitura.
 - **EX014 — Afirmação revista.** Como Nadia reescreveu sua afirmação sobre o ransomware? *Rubrica:* 3 = perda esperada sob premissas declaradas, com uma faixa ampla;; 2 = incerteza;; 1 = certeza;; 0 = nenhuma.
 - **EX015 — Linha de consultados.** Por que acrescentar ao memorando quem foi consultado? *Rubrica:* 3 = as decisões de governança afetam muitas equipes;; 2 = registro;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma escrita clara, adequada a cada público e honesta quanto à incerteza torna as decisões de governança sólidas e rastreáveis.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
@@ -248,6 +268,10 @@ O decaimento real é irregular. As taxas de desconto são escolhas de política.
 - **EX016 — Causa do decaimento.** O que faz a correção dos acessos decair depois de uma revisão? *Rubrica:* 3 = funcionários que mudam de função sem atualização dos acessos;; 2 = mudanças de função;; 1 = nada;; 0 = nenhuma.
 - **EX017 — Alta rotatividade.** Que departamentos precisam de revisões mais frequentes? *Rubrica:* 3 = os de alta rotatividade de pessoal;; 2 = rotatividade;; 1 = nada;; 0 = nenhuma.
 - **EX018 — Valor no tempo.** Por que uma perda futura evitada vale menos hoje? *Rubrica:* 3 = o dinheiro tem valor no tempo;; 2 = desconto;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Modelos exponenciais explicam por que os controles se degradam e como devem ser definidos os intervalos de revisão e os investimentos.
 
 <a id="ch-07"></a>
 
@@ -310,6 +334,10 @@ Estimativas únicas escondem a incerteza. As médias subestimam catástrofes rar
 - **EX020 — Os dois primeiros.** Que dois riscos ficaram mais altos pela ALE no laboratório? *Rubrica:* 3 = ransomware 90 mil e mau uso por fornecedores 80 mil;; 2 = ransomware primeiro;; 1 = notebooks;; 0 = nenhuma.
 - **EX021 — Forma oculta.** Por que o vazamento de cartões pode merecer mais atenção do que sua ALE sugere? *Rubrica:* 3 = é raro, mas tem um desfecho único catastrófico;; 2 = cauda;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A perda esperada oferece uma primeira classificação útil, mas precisa vir acompanhada de faixas e caudas.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
@@ -345,6 +373,10 @@ Os inventários ficam desatualizados. As datas de suporte dos fornecedores mudam
 - **EX022 — Escopo do inventário.** O que o inventário de ativos da Ardwell precisa incluir além de servidores e notebooks? *Rubrica:* 3 = os dispositivos do sistema de controle nas subestações;; 2 = dispositivos de OT;; 1 = nada;; 0 = nenhuma.
 - **EX023 — Risco do firmware.** Por que um firmware comprometido importa? *Rubrica:* 3 = pode contornar os controles do sistema operacional;; 2 = contornar;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Opções sem suporte.** Que opções existem para os dois dispositivos sem suporte? *Rubrica:* 3 = substituir, isolar ou aceitar com monitoramento;; 2 = três opções;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O conhecimento de arquitetura estende a governança ao firmware, aos dispositivos e à cadeia de suprimentos.
 
 <a id="ch-09"></a>
 
@@ -382,6 +414,10 @@ Os testes cobrem só os casos que alguém imaginou. As entradas arquivadas preci
 - **EX026 — Linhas puladas.** Por que pular linhas ilegíveis em silêncio é perigoso? *Rubrica:* 3 = pode esconder um risco sem responsável;; 2 = risco oculto;; 1 = nada;; 0 = nenhuma.
 - **EX027 — Cabeçalho do relatório.** O que cada relatório imprime no topo? *Rubrica:* 3 = data da execução, versão do script e resumo da entrada;; 2 = cabeçalho;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Módulos testados, falhas ruidosas e relatórios repetíveis tornam as ferramentas de governança confiáveis.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
@@ -417,6 +453,10 @@ Os códigos dão princípios, não respostas. Escalar pode trazer risco pessoal.
 - **EX028 — Dever de aprovação.** O que significa, para um engenheiro, aprovar uma avaliação de riscos? *Rubrica:* 3 = assumir a responsabilidade por sua exatidão;; 2 = responsabilidade;; 1 = nada;; 0 = nenhuma.
 - **EX029 — Alternativa nos consoles.** O que Nadia propôs em vez do bloqueio nos consoles de controle? *Rubrica:* 3 = monitoramento e alertas com restrição do acesso físico;; 2 = monitoramento;; 1 = bloqueio;; 0 = nenhuma.
 - **EX030 — Cultura honesta.** Por que as organizações devem tornar seguro o relato honesto? *Rubrica:* 3 = punir más notícias esconde os problemas até que causem danos;; 2 = cultura;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A ética de engenharia coloca a segurança física e o reporte honesto no centro do trabalho de governança.
 
 <a id="ch-11"></a>
 
@@ -454,6 +494,10 @@ Os diagramas de rede se afastam da realidade. Os testes mostram só o que foi te
 - **EX032 — Achado do desvio.** Por que a conexão direta do fornecedor foi um achado? *Rubrica:* 3 = contornava o registro e a aprovação;; 2 = desvio;; 1 = nada;; 0 = nenhuma.
 - **EX033 — Novo teste.** Quando a segmentação precisa ser testada de novo? *Rubrica:* 3 = depois de mudanças, como novas regras de firewall;; 2 = depois de mudança;; 1 = nunca;; 0 = nenhuma.
 
+### Síntese
+
+Mapas de rede definem o escopo, e a segmentação precisa ser demonstrada com evidências.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
@@ -489,6 +533,10 @@ Os baselines ficam atrás das novas versões. Os scripts de desvio não veem as 
 - **EX034 — Alegação sobre administradores.** O que torna crível uma política que restringe os administradores? *Rubrica:* 3 = contas de administrador separadas impostas e registradas;; 2 = imposição;; 1 = nada;; 0 = nenhuma.
 - **EX035 — Desvios do baseline.** Como os desvios do baseline devem ser tratados? *Rubrica:* 3 = registrados com os motivos;; 2 = documentados;; 1 = ignorados;; 0 = nenhuma.
 - **EX036 — Pergunta sobre o desvio.** Qual é a verdadeira pergunta de governança sobre o desvio? *Rubrica:* 3 = com que rapidez é detectado e corrigido;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O conhecimento de sistemas operacionais torna as afirmações sobre controles testáveis por meio de linhas de base e da medição de desvios.
 
 <a id="ch-13"></a>
 
@@ -556,6 +604,10 @@ A validação confere a forma, não se os riscos estão certos. As trilhas de au
 - **EX038 — Linhas limpas.** Quantas das seis linhas estavam limpas? *Rubrica:* 3 = duas;; 2 = 2;; 1 = seis;; 0 = nenhuma.
 - **EX039 — Risco à integridade.** O que poderia acontecer sem histórico de mudanças? *Rubrica:* 3 = riscos rebaixados para parecer menores antes das reuniões do conselho;; 2 = manipulação;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Tratar os registros de governança como dados validados e auditados torna o reporte de risco confiável.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
@@ -591,6 +643,10 @@ As revisões variam em profundidade. As listas de componentes deixam escapar as 
 - **EX040 — Normas para o desenvolvimento.** A que duas normas Nadia mapeou o desenvolvimento seguro? *Rubrica:* 3 = ISO/IEC 27002:2022 e PCI DSS v4.0;; 2 = duas;; 1 = nada;; 0 = nenhuma.
 - **EX041 — Caminho emergencial.** O que Nadia recomendou para as correções emergenciais? *Rubrica:* 3 = um caminho documentado com revisão em até dois dias úteis;; 2 = revisão posterior;; 1 = nada;; 0 = nenhuma.
 - **EX042 — Risco das bibliotecas.** Por que as bibliotecas de código aberto são uma preocupação de governança? *Rubrica:* 3 = suas vulnerabilidades e licenças se tornam risco da Ardwell;; 2 = fornecedor;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Desenvolvimento seguro, mudanças rastreáveis e inventários de componentes são controles de governança no software.
 
 <a id="ch-15"></a>
 
@@ -628,6 +684,10 @@ A ordem dos objetivos pode ser contestada. Na prática, as classificações se c
 - **EX044 — Partes do risco.** Que vulnerabilidade Nadia identificou no acesso de fornecedores? *Rubrica:* 3 = uma senha compartilhada;; 2 = senha compartilhada;; 1 = nada;; 0 = nenhuma.
 - **EX045 — Exemplo corretivo.** Dê o controle corretivo do acesso de fornecedores. *Rubrica:* 3 = procedimento testado para revogar o acesso durante incidentes;; 2 = revogar;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Objetivos claros, componentes de risco e tipos de controle equilibrados formam a base da governança de segurança.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
@@ -663,6 +723,10 @@ As visões sistêmicas podem virar burocracia. A rastreabilidade exige manutenç
 - **EX046 — Finalidade do programa.** Qual é a finalidade do programa de governança da Ardwell visto como sistema? *Rubrica:* 3 = manter o risco dentro do apetite e demonstrar compliance;; 2 = finalidade;; 1 = nada;; 0 = nenhuma.
 - **EX047 — Lacunas do rastreio.** Que lacunas uma matriz de rastreabilidade revela? *Rubrica:* 3 = requisitos sem controles e controles sem testes;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
 - **EX048 — Etapa esquecida.** Que etapa do ciclo de vida costuma ser esquecida em controles e políticas? *Rubrica:* 3 = a desativação;; 2 = desativação;; 1 = desenho;; 0 = nenhuma.
+
+### Síntese
+
+A engenharia de sistemas leva rastreabilidade e pensamento de ciclo de vida aos programas de governança.
 
 <a id="ch-17"></a>
 
@@ -700,6 +764,10 @@ As organizações não são sistemas lineares. Os indicadores podem ser manipula
 - **EX050 — Malha anual.** O que aconteceu com o backlog quando revisado anualmente em vez de trimestralmente? *Rubrica:* 3 = oscilou para mais longe da meta;; 2 = oscilações maiores;; 1 = nada;; 0 = nenhuma.
 - **EX051 — Remédio para a oscilação.** O que ajuda os gestores a evitar respostas oscilantes? *Rubrica:* 3 = regras de decisão proporcionais e documentadas;; 2 = regras;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A governança funciona como um ciclo de realimentação que precisa de percepção oportuna e de correção proporcional.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
@@ -735,6 +803,10 @@ Os princípios podem entrar em conflito. Registros de decisão longos demais fic
 - **EX052 — Lista de princípios.** Cite dois princípios de arquitetura de Nadia. *Rubrica:* 3 = minimizar o escopo dos dados sensíveis; intermediar o acesso externo;; 2 = princípios;; 1 = nada;; 0 = nenhuma.
 - **EX053 — Problema da plataforma.** O que havia de errado no projeto da plataforma de medição? *Rubrica:* 3 = nomes guardados com as leituras, acessíveis pelos notebooks do escritório;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
 - **EX054 — Conteúdo do registro.** O que contém um registro de decisão de arquitetura? *Rubrica:* 3 = contexto, decisão, alternativas e consequências;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Princípios de arquitetura e registros de decisão conectam os requisitos de governança ao desenho dos sistemas.
 
 <a id="ch-19"></a>
 
@@ -772,6 +844,10 @@ A automação falha quando os dados de RH estão errados. Os inventários de cha
 - **EX056 — Regra de criptografia.** Que dados a classificação da Ardwell exige criptografar? *Rubrica:* 3 = dados de pagamento e dados pessoais em notebooks;; 2 = classificação;; 1 = nada;; 0 = nenhuma.
 - **EX057 — Risco do certificado.** Por que o certificado de um único engenheiro era um risco? *Rubrica:* 3 = sem backup nem controle de vencimento, poderia vencer sem ninguém notar;; 2 = responsável;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os controles de identidade e criptográficos têm sucesso ou fracassam conforme a governança das transições e das chaves.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Governança, riscos e compliance de segurança: contexto de engenharia
@@ -807,6 +883,10 @@ As obrigações legais precisam de revisão jurídica. Os papéis variam entre o
 - **EX058 — Papel da governança.** O que a governança define? *Rubrica:* 3 = direção, responsabilização e supervisão;; 2 = direção;; 1 = nada;; 0 = nenhuma.
 - **EX059 — Independência.** Por que quem opera os controles não deve julgar se eles funcionam? *Rubrica:* 3 = cria um conflito de interesses que enfraquece a garantia;; 2 = independência;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Compulsório ou voluntário.** O alinhamento da Ardwell à ISO/IEC 27001:2022 é compulsório? *Rubrica:* 3 = não, é uma escolha do conselho;; 2 = voluntário;; 1 = compulsório;; 0 = nenhuma.
+
+### Síntese
+
+Governança, gestão de riscos e compliance são disciplinas distintas, unidas por papéis e obrigações claros.
 
 <a id="ch-21"></a>
 
@@ -844,6 +924,10 @@ A redação testável pode perder a intenção. As prioridades mudam com os inci
 - **EX062 — Partes testáveis.** O que cada requisito testável nomeia? *Rubrica:* 3 = responsável, frequência, condição mensurável e evidência;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
 - **EX063 — Prioridade máxima.** Que requisitos ficaram no topo? *Rubrica:* 3 = segurança do fornecimento e obrigações contratuais de cartão;; 2 = segurança;; 1 = eficiência;; 0 = nenhuma.
 
+### Síntese
+
+Requisitos específicos, testáveis e priorizados transformam as obrigações em um programa executável.
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Governança, riscos e compliance de segurança: modelos de sistema e de dados
@@ -880,6 +964,10 @@ Os modelos simplificam uma realidade bagunçada. A qualidade dos dados limita o 
 - **EX065 — Achados em cascata.** Por que um controle que falha pode gerar achados em várias auditorias? *Rubrica:* 3 = ele atende várias obrigações;; 2 = muitos-para-muitos;; 1 = nada;; 0 = nenhuma.
 - **EX066 — Consulta de exemplo.** Dê uma pergunta de governança que o modelo responde depressa. *Rubrica:* 3 = que riscos dependem só de controles que falharam nos testes;; 2 = consulta;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um modelo de dados claro de riscos, controles, obrigações e evidências torna as perguntas de governança respondíveis.
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Governança, riscos e compliance de segurança: análise de ameaças e falhas
@@ -915,6 +1003,10 @@ As listas de cenários nunca estão completas. A análise de falhas leva tempo.
 - **EX067 — Partes do cenário.** Que partes cada cenário nomeia? *Rubrica:* 3 = fonte de ameaça, evento, vulnerabilidades e impacto;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX068 — Falha oculta.** Que modo de falha da revisão de acessos ficava sem verificação? *Rubrica:* 3 = remoções aprovadas e nunca executadas;; 2 = acompanhamento;; 1 = nada;; 0 = nenhuma.
 - **EX069 — Risco combinado.** Por que um cenário que depende de um controle com modo de falha não detectado é mais arriscado? *Rubrica:* 3 = a defesa pode ter parado de funcionar em silêncio;; 2 = falha oculta;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Combinar cenários de ameaça com modos de falha dos controles revela riscos que nenhuma das duas visões, sozinha, perceberia.
 
 <a id="ch-24"></a>
 
@@ -975,6 +1067,10 @@ A independência exagera o efeito combinado. As estimativas de eficácia são su
 - **EX071 — Residual do ransomware.** Quanto os controles reduziram a perda do ransomware no laboratório? *Rubrica:* 3 = 76%, para 21,6 mil;; 2 = 76%;; 1 = nada;; 0 = nenhuma.
 - **EX072 — Maior residual.** Que risco teve a maior perda residual, e por quê? *Rubrica:* 3 = mau uso por fornecedores, 80 mil, sem tratamento;; 2 = fornecedores;; 1 = ransomware;; 0 = nenhuma.
 
+### Síntese
+
+O risco residual mostra o que os controles alcançam e expõe os riscos não tratados para ação prioritária.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
@@ -1010,6 +1106,10 @@ Os projetos de ateliê pulam o detalhamento de custos. As entrevistas com as par
 - **EX073 — O que as partes querem.** O que o engenheiro de controle queria? *Rubrica:* 3 = fornecedores conectados em minutos durante as interrupções;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
 - **EX074 — Limite da sessão.** Quanto tempo uma sessão de fornecedor pode durar antes de terminar automaticamente? *Rubrica:* 3 = quatro horas;; 2 = 4 h;; 1 = nada;; 0 = nenhuma.
 - **EX075 — Revisão das gravações.** Como as gravações serão revisadas? *Rubrica:* 3 = amostra mensal de dez por cento, com foco nas emergências;; 2 = amostragem;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Bons desenhos de governança equilibram as necessidades das partes interessadas e planejam a falha e a revisão.
 
 <a id="ch-26"></a>
 
@@ -1047,6 +1147,10 @@ Os pesos refletem opiniões. As alegações dos fornecedores precisam ser verifi
 - **EX077 — Critérios mais pesados.** Que critérios receberam os maiores pesos? *Rubrica:* 3 = integridade dos dados e esforço dos responsáveis;; 2 = integridade;; 1 = custo;; 0 = nenhuma.
 - **EX078 — Nota de sensibilidade.** O que uma ponderação que favorecesse os relatórios ao conselho teria escolhido? *Rubrica:* 3 = a plataforma comercial;; 2 = plataforma;; 1 = planilhas;; 0 = nenhuma.
 
+### Síntese
+
+Critérios transparentes e notas de sensibilidade tornam as escolhas de arquitetura defensáveis.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Governança, riscos e compliance de segurança: projeto de controles
@@ -1083,6 +1187,10 @@ Os catálogos são genéricos. As descrições podem retratar a intenção, e n�
 - **EX080 — Registro da seleção.** Com que documento da ISO/IEC 27001:2022 o registro da seleção se parece? *Rubrica:* 3 = a declaração de aplicabilidade;; 2 = SoA;; 1 = nada;; 0 = nenhuma.
 - **EX081 — Teste da descrição.** Como Nadia confere uma descrição de controle? *Rubrica:* 3 = um testador independente conseguiria verificá-lo só com a descrição;; 2 = testabilidade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Objetivos, catálogos e descrições testáveis produzem controles que podem ser operados e verificados.
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Governança, riscos e compliance de segurança: implementação I
@@ -1118,6 +1226,10 @@ Os planos encontram surpresas. Os controles compensatórios podem se tornar perm
 - **EX082 — Fase um.** O que a fase um cobre? *Rubrica:* 3 = levar ao broker os dois fornecedores de maior risco;; 2 = dois fornecedores;; 1 = nada;; 0 = nenhuma.
 - **EX083 — Aprovações noturnas.** Como a fadiga de aprovações à noite foi tratada? *Rubrica:* 3 = janelas de manutenção pré-aprovadas;; 2 = janelas;; 1 = nada;; 0 = nenhuma.
 - **EX084 — Controle compensatório.** Que controle compensatório cobriu o fornecedor cujo equipamento não podia usar o broker? *Rubrica:* 3 = sessões supervisionadas com um engenheiro da Ardwell;; 2 = supervisão;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Planos em fases, atenção às pessoas e um reporte de status honesto fazem a implementação dar certo.
 
 <a id="ch-29"></a>
 
@@ -1179,6 +1291,10 @@ Os agregados escondem as áreas fracas. As medidas convidam à manipulação.
 - **EX086 — Famílias vermelhas.** Que duas famílias de controles ficaram em vermelho? *Rubrica:* 3 = patching 78% e mudanças 72%;; 2 = duas vermelhas;; 1 = backup;; 0 = nenhuma.
 - **EX087 — Risco do agregado.** Por que os 85% gerais enganam? *Rubrica:* 3 = escondem duas famílias vermelhas;; 2 = escondem;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+As medidas devem mostrar o desempenho por família, começar pelas fraquezas e resistir à manipulação.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
@@ -1215,6 +1331,10 @@ As cópias de laboratório diferem da produção. Os testes cobrem só os casos 
 - **EX089 — Campos da evidência.** O que Nadia registra para cada teste? *Rubrica:* 3 = data, testador, passos, resultado e artefatos;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
 - **EX090 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = uma sessão aprovada conseguia alcançar um segundo dispositivo;; 2 = roteamento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A verificação com evidências repetíveis encontra falhas que os projetistas tinham descartado por premissa.
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Governança, riscos e compliance de segurança: implementação II
@@ -1250,6 +1370,10 @@ Os lembretes causam fadiga. As exceções costumam ser renovadas por hábito.
 - **EX091 — Achados da migração.** O que a migração revelou? *Rubrica:* 3 = doze controles sem responsável e três obsoletos;; 2 = limpeza;; 1 = nada;; 0 = nenhuma.
 - **EX092 — Regra de escalonamento.** Quando as tarefas vencidas sobem para os gestores? *Rubrica:* 3 = depois de cinco dias;; 2 = cinco dias;; 1 = nada;; 0 = nenhuma.
 - **EX093 — Vencimento das exceções.** Por que as exceções precisam vencer? *Rubrica:* 3 = para forçar um novo raciocínio e manter o risco visível;; 2 = renovação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A implantação dá certo quando os controles se ajustam às rotinas e as exceções continuam visíveis e com prazo limitado.
 
 <a id="ch-32"></a>
 
@@ -1307,6 +1431,10 @@ As taxas de causa comum são difíceis de estimar. A separação acrescenta cust
 - **EX095 — Conjunta com causa comum.** Qual é a probabilidade de falha conjunta com uma causa comum de 2%? *Rubrica:* 3 = 2,49%;; 2 = cerca de cinco vezes;; 1 = nada;; 0 = nenhuma.
 - **EX096 — Melhor correção.** O que mais reduz a falha conjunta? *Rubrica:* 3 = remover a dependência compartilhada;; 2 = independência;; 1 = uma camada mais forte;; 0 = nenhuma.
 
+### Síntese
+
+Controles em camadas são tão fortes quanto a sua independência; as causas comuns dominam a falha conjunta.
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Governança, riscos e compliance de segurança: segurança e resiliência
@@ -1342,6 +1470,10 @@ Os testes são cenários ensaiados. As crises reais trazem surpresas.
 - **EX097 — Meta do conselho.** Qual é a meta real de resiliência da Ardwell? *Rubrica:* 3 = manter a energia fluindo e restabelecer os serviços depressa;; 2 = resiliência;; 1 = nada;; 0 = nenhuma.
 - **EX098 — Lacuna da restauração.** Como o teste de restauração do faturamento se comparou à meta? *Rubrica:* 3 = nove horas contra oito;; 2 = uma hora acima;; 1 = nada;; 0 = nenhuma.
 - **EX099 — Propósito do teste.** Por que os primeiros testes de recuperação que falham são valiosos? *Rubrica:* 3 = revelam lacunas a fechar;; 2 = aprendizado;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A governança de resiliência define prioridades de antemão e comprova a recuperação por meio de testes.
 
 <a id="ch-34"></a>
 
@@ -1379,6 +1511,10 @@ As escalas comuns podem apagar distinções. A integração exige esforço polí
 - **EX101 — Exemplo de tradução.** Como um cenário de ransomware foi traduzido para finanças? *Rubrica:* 3 = disrupção operacional com faixa de impacto financeiro e obrigação de comunicação;; 2 = tradução;; 1 = nada;; 0 = nenhuma.
 - **EX102 — Fracasso da integração.** Quando a integração fracassa? *Rubrica:* 3 = quando uma equipe toma o trabalho de outra;; 2 = tomada;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Integrar GRC ao risco corporativo exige escalas comuns, tradução e repasses claros.
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
@@ -1414,6 +1550,10 @@ Voluntários não são conselheiros reais. Pacotes curtos omitem detalhes.
 - **EX103 — O que os conselheiros querem.** O que os dois conselheiros entrevistados queriam? *Rubrica:* 3 = a direção da tendência e as decisões solicitadas;; 2 = tendência e decisões;; 1 = nada;; 0 = nenhuma.
 - **EX104 — Evitar a matriz.** Por que a equipe evitou mapas de calor sem números? *Rubrica:* 3 = Cox (2008) mostra que as matrizes de risco podem enganar;; 2 = Cox;; 1 = nada;; 0 = nenhuma.
 - **EX105 — Correção da seta.** Como a seta de tendência mal interpretada foi corrigida? *Rubrica:* 3 = setas com rótulos escritos;; 2 = rótulos;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Relatórios ao conselho funcionam quando começam pelas decisões, mostram faixas honestas e são testados com os leitores.
 
 <a id="ch-36"></a>
 
@@ -1451,6 +1591,10 @@ As estimativas de horas são aproximadas. A automação pode falhar em silêncio
 - **EX107 — Pessoa-gargalo.** Quem é o gargalo à medida que a Ardwell cresce? *Rubrica:* 3 = a única analista de segurança que confere as evidências;; 2 = analista;; 1 = nada;; 0 = nenhuma.
 - **EX108 — Foco humano.** Para onde deve ir a atenção humana depois que as evidências forem automatizadas? *Rubrica:* 3 = decisões, exceções e tarefas de julgamento;; 2 = julgamento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma governança escalável automatiza as evidências e reserva a atenção humana para o julgamento.
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Governança, riscos e compliance de segurança: operações
@@ -1486,6 +1630,10 @@ O encerramento verificado atrasa os relatórios. As revisões podem virar rotina
 - **EX109 — Ritmo como controle.** Por que o ritmo semanal é, ele mesmo, um controle? *Rubrica:* 3 = quando ele falha, os problemas se acumulam sem ninguém ver;; 2 = ritmo;; 1 = nada;; 0 = nenhuma.
 - **EX110 — Regra de encerramento.** Quem pode encerrar achados pela regra de Nadia? *Rubrica:* 3 = só a analista de segurança, depois de conferir a evidência;; 2 = analista;; 1 = responsável;; 0 = nenhuma.
 - **EX111 — Falhas repetidas.** O que as falhas repetidas de patch nas subestações acabaram sendo? *Rubrica:* 3 = um problema de projeto que levou à substituição dos dispositivos;; 2 = projeto;; 1 = responsável;; 0 = nenhuma.
+
+### Síntese
+
+As operações de GRC precisam de ritmo, de encerramento verificado e de revisões que encontrem problemas de desenho.
 
 <a id="ch-38"></a>
 
@@ -1548,6 +1696,10 @@ Amostras aleatórias deixam escapar padrões raros. A validação cobre só os a
 - **EX113 — Amostra mínima.** Quantos registros limpos dão um limite superior de 5%? *Rubrica:* 3 = cinquenta e nove;; 2 = 59;; 1 = 25;; 0 = nenhuma.
 - **EX114 — Estrato separado.** Por que conferir separadamente as sessões emergenciais? *Rubrica:* 3 = seguem outro caminho e poderiam esconder problemas;; 2 = estratos;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A validação usa amostras dimensionadas para fazer afirmações delimitadas sobre os controles na operação real.
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Governança, riscos e compliance de segurança: manutenibilidade
@@ -1584,6 +1736,10 @@ Os gatilhos são esquecidos. As notas de passagem ficam incompletas.
 - **EX116 — Mudança do CSF.** O que o NIST CSF 2.0 acrescentou? *Rubrica:* 3 = a função Govern;; 2 = Govern;; 1 = nada;; 0 = nenhuma.
 - **EX117 — Medida de passagem.** Que medida protege contra a perda do conhecimento da gestora que se aposenta? *Rubrica:* 3 = notas sobre as decisões e uma passagem em dupla de dois meses;; 2 = passagem;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma governança sustentável é curta, tem donos, é versionada e resiste a mudanças de edição e à rotatividade da equipe.
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Laboratório de verificação II
@@ -1619,6 +1775,10 @@ As suítes de regressão envelhecem. Nem toda mudança dispara os testes.
 - **EX118 — Regressão de agendamento.** O que a atualização quebrou? *Rubrica:* 3 = tarefas trimestrais viraram anuais;; 2 = frequência;; 1 = nada;; 0 = nenhuma.
 - **EX119 — Defeito do relatório.** Que erro de relatório Nadia encontrou? *Rubrica:* 3 = achados reabertos contados duas vezes;; 2 = contagem dupla;; 1 = nada;; 0 = nenhuma.
 - **EX120 — Princípio da verificação.** Que princípio o laboratório ilustra? *Rubrica:* 3 = a verificação precisa ser repetida sempre que o sistema muda;; 2 = repetir;; 1 = evento único;; 0 = nenhuma.
+
+### Síntese
+
+A reverificação após mudanças protege os controles e as ferramentas que reportam sobre eles.
 
 <a id="ch-41"></a>
 
@@ -1681,6 +1841,10 @@ As estimativas são incertas. As interações entre os controles são ignoradas.
 - **EX122 — Custo do melhor.** A que custo o melhor conjunto entrega sua redução de 630 mil? *Rubrica:* 3 = 190 mil;; 2 = 190;; 1 = 200;; 0 = nenhuma.
 - **EX123 — Valor do investimento.** Segundo Gordon e Loeb, o que determina o valor do investimento em segurança? *Rubrica:* 3 = vulnerabilidade e perda potencial;; 2 = não só o custo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A otimização revela escolhas melhores do que a intuição, mas precisa ser lida com as suas incertezas.
+
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Governança, riscos e compliance de segurança: pesquisa aplicada
@@ -1716,6 +1880,10 @@ Desenhos antes e depois confundem efeitos de época. As atas são registros inco
 - **EX124 — Desfechos medidos.** Que desfechos Nadia mede? *Rubrica:* 3 = decisões por trimestre, tempo até a decisão e alinhamento com os maiores riscos;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX125 — Viés próprio.** Por que o papel da própria Nadia é uma ameaça à validade? *Rubrica:* 3 = ela ajudou a projetar o novo pacote;; 2 = viés;; 1 = nada;; 0 = nenhuma.
 - **EX126 — Lacuna de evidência.** O que falta nas evidências publicadas? *Rubrica:* 3 = medição direta das decisões dos conselhos;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A pesquisa aplicada em GRC precisa de perguntas mensuráveis, ameaças à validade explícitas e afirmações modestas.
 
 <a id="ch-43"></a>
 
@@ -1753,6 +1921,10 @@ Um estágio é um único contexto. As observações podem ser seletivas.
 - **EX128 — Foco do estágio um.** Sobre o que os auditores perguntaram no estágio um? *Rubrica:* 3 = como as decisões de aceitação de riscos são tomadas e aprovadas;; 2 = aceitação;; 1 = nada;; 0 = nenhuma.
 - **EX129 — Foco do regulador.** Como o foco do regulador diferia do da certificação? *Rubrica:* 3 = resultados como restabelecimento e comunicação, contra processos;; 2 = resultados;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O estágio mostra como a teoria ajuda a pôr ordem em uma prática desorganizada e como os relacionamentos viabilizam a governança.
+
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
@@ -1788,6 +1960,10 @@ Os escopos crescem. As pesquisas medem percepção, não tempo.
 - **EX130 — Controles excluídos.** Que controles ficam fora do escopo? *Rubrica:* 3 = os que exigem julgamento humano;; 2 = julgamento;; 1 = nada;; 0 = nenhuma.
 - **EX131 — Critério de cobertura.** Qual é o critério de sucesso de cobertura de evidências? *Rubrica:* 3 = pelo menos dezoito de vinte controles automatizados;; 2 = 18/20;; 1 = nada;; 0 = nenhuma.
 - **EX132 — Risco dos alertas.** Como Nadia responde ao risco de os responsáveis ignorarem os alertas? *Rubrica:* 3 = envolvendo os responsáveis no desenho dos alertas;; 2 = envolvimento;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto final começa com escopo claro, critérios de sucesso mensuráveis e risco de projeto gerenciado.
 
 <a id="ch-45"></a>
 
@@ -1825,6 +2001,10 @@ Os revisores têm tempo limitado. Os itens adiados podem ser esquecidos.
 - **EX134 — Correção do silêncio.** Como foi corrigida a falha do silêncio tratado como sucesso? *Rubrica:* 3 = a evidência ausente dispara um alerta e conta como coleta falha;; 2 = falhar fechado;; 1 = aprovação;; 0 = nenhuma.
 - **EX135 — Medidas de integridade.** O que protege as evidências contra manipulação? *Rubrica:* 3 = hash e armazenamento que as equipes monitoradas não conseguem alterar;; 2 = hash;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A revisão independente expõe premissas ocultas e fortalece os desenhos quando os resultados são registrados.
+
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
@@ -1861,6 +2041,10 @@ Dois meses é pouco tempo. As respostas da pesquisa são autodeclaradas.
 - **EX137 — Controle manual.** Por que um controle continuou manual? *Rubrica:* 3 = seu sistema de fornecedor não tem exportação;; 2 = sem exportação;; 1 = nada;; 0 = nenhuma.
 - **EX138 — Itens da entrega.** Que itens Nadia entregou? *Rubrica:* 3 = runbook, responsáveis pelos coletores, casos de teste e problemas conhecidos;; 2 = entrega;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um projeto final dá certo quando é medido com honestidade em relação aos critérios e entregue de modo que outras pessoas possam operá-lo.
+
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
@@ -1896,6 +2080,10 @@ Ensaios anunciados diferem de falhas reais. As verificações diárias acrescent
 - **EX139 — Falhas injetadas.** Que três falhas foram injetadas? *Rubrica:* 3 = travamento do coletor, origem indisponível, arquivo de evidência alterado;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX140 — Detecção lenta.** Que falha foi detectada lentamente? *Rubrica:* 3 = o arquivo de evidência alterado, na verificação semanal;; 2 = adulteração;; 1 = nada;; 0 = nenhuma.
 - **EX141 — Mudança na verificação.** Com que frequência as verificações de integridade rodam depois do ensaio? *Rubrica:* 3 = diariamente;; 2 = diária;; 1 = semanal;; 0 = nenhuma.
+
+### Síntese
+
+Testes de falha anunciados comprovam a detecção e a recuperação e revelam fraquezas ocultas.
 
 <a id="ch-48"></a>
 
@@ -1956,6 +2144,10 @@ Os digests provam a mudança, não a intenção. Os manifestos também precisam 
 - **EX143 — Arquivo divergente.** Que arquivo mostrou divergência? *Rubrica:* 3 = control_tests.csv;; 2 = resultados dos testes;; 1 = nada;; 0 = nenhuma.
 - **EX144 — Tratamento correto.** Como um novo teste deve ser registrado? *Rubrica:* 3 = como evidência nova, com data própria;; 2 = acrescentar;; 1 = editar no arquivo;; 0 = nenhuma.
 
+### Síntese
+
+Dossiês de evidências precisam de índices, manifestos de resumos criptográficos e tratamento somente por acréscimo.
+
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
@@ -1992,6 +2184,10 @@ Estudos de uma só organização limitam a generalização. O fator de confusão
 - **EX146 — Lista de contribuições.** Cite uma das três contribuições de Nadia. *Rubrica:* 3 = projeto testado de monitoramento contínuo de baixo custo;; 2 = contribuição;; 1 = nada;; 0 = nenhuma.
 - **EX147 — Limites da tese.** Liste dois limites da tese. *Rubrica:* 3 = uma única organização e período curto de operação;; 2 = limites;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma tese de engenharia liga desenho, medição e pesquisa com limites claramente declarados.
+
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
@@ -2027,6 +2223,10 @@ As defesas amostram o conhecimento. As reflexões podem ser idealizadas.
 - **EX148 — Resposta sobre acomodação.** Como Nadia respondeu à preocupação com a acomodação dos responsáveis? *Rubrica:* 3 = os responsáveis continuam revisando exceções e a analista amostra;; 2 = supervisão;; 1 = nada;; 0 = nenhuma.
 - **EX149 — Confiança da auditoria.** O serviço substitui os testes da auditoria externa? *Rubrica:* 3 = não, apoia, mas não substitui;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX150 — Plano de carreira.** O que Nadia planeja depois de se formar? *Rubrica:* 3 = entrar na equipe de governança da Ardwell;; 2 = Ardwell;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A defesa confirma que a engenharia de governança une rigor técnico e comunicação honesta.
 
 <a id="worked-results"></a>
 

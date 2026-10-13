@@ -69,6 +69,10 @@ As listas de ativos deixam escapar aparelhos comprados localmente. Os mapas de s
 - **EX002 — Tipos de ativo.** Cite os quatro tipos de ativo que Priya usou. *Rubrica:* 3 = hardware, software, dados e serviços;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX003 — Dependência do tratamento.** De que sistemas depende o tratamento? *Rubrica:* 3 = das imagens e dos prontuários;; 2 = imagens;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Conhecer os sistemas, os ativos e os serviços que eles sustentam é onde a governança começa.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
@@ -104,6 +108,10 @@ Os levantamentos em campo podem deixar escapar mudanças. As verificações de c
 - **EX004 — Lugar da maquininha.** Onde as maquininhas de cartão devem ficar? *Rubrica:* 3 = num segmento de rede separado;; 2 = segmento;; 1 = Wi-Fi de visitantes;; 0 = nenhuma.
 - **EX005 — Caminho sem criptografia.** Que caminho de dados nem sempre era criptografado? *Rubrica:* 3 = pedidos aos laboratórios por e-mail comum;; 2 = e-mail ao laboratório;; 1 = nada;; 0 = nenhuma.
 - **EX006 — Primeira correção de rede.** Que correção ficou em primeiro lugar? *Rubrica:* 3 = separar o Wi-Fi de visitantes dos aparelhos da clínica;; 2 = Wi-Fi de visitantes;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Mapas de rede revelam por onde os dados trafegam sem proteção e onde a segmentação é necessária.
 
 <a id="ch-03"></a>
 
@@ -141,6 +149,10 @@ Os scripts dependem de entradas corretas. Datas antigas podem ser erros nos dado
 - **EX008 — Condições do filtro.** Que duas condições Priya combinou? *Rubrica:* 3 = dados de pacientes sem dono, ou sem atualização há mais de um ano;; 2 = sensibilidade e idade;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Mudança na saída.** Como Priya melhorou a saída? *Rubrica:* 3 = cabeçalhos, data, explicações, ordenação por clínica;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Scripts simples com saída clara tornam as verificações de governança repetíveis e acionáveis.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
@@ -176,6 +188,10 @@ Os modelos precisam de manutenção. Os códigos também podem ser digitados err
 - **EX010 — Exemplo de chave.** Dê uma chave usada nas tabelas de Priya. *Rubrica:* 3 = código da clínica, etiqueta patrimonial ou matrícula;; 2 = chave;; 1 = nada;; 0 = nenhuma.
 - **EX011 — Tabelas de ligação.** Quando são necessárias tabelas de ligação? *Rubrica:* 3 = para relacionamentos muitos-para-muitos;; 2 = muitos-para-muitos;; 1 = nada;; 0 = nenhuma.
 - **EX012 — Nomes das clínicas.** Que problema os nomes inconsistentes das clínicas causaram? *Rubrica:* 3 = contagens erradas por clínica;; 2 = erros de contagem;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Tabelas relacionadas, com chaves e validação, mantêm os dados de governança consistentes.
 
 <a id="ch-05"></a>
 
@@ -213,6 +229,10 @@ As palestras se apagam sem reforço. Os recursos precisam de configuração.
 - **EX014 — Recursos existentes.** Que lacuna de governança Priya encontrou nos controles? *Rubrica:* 3 = recursos disponíveis, mas não ativados de forma consistente;; 2 = recursos sem uso;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Argumento para clínicos.** Que argumento funciona melhor com a equipe clínica? *Rubrica:* 3 = segurança do paciente;; 2 = pacientes;; 1 = medo;; 0 = nenhuma.
 
+### Síntese
+
+O letramento em segurança liga as ameaças comuns a controles simples já existentes e a uma comunicação respeitosa.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
@@ -248,6 +268,10 @@ Os relatórios podem estar atrasados em relação à realidade. Os termos de res
 - **EX016 — Exceção das imagens.** Como devem ser tratados os aparelhos de imagem com sistemas operacionais antigos? *Rubrica:* 3 = isolamento de rede registrado no registro de riscos;; 2 = isolamento;; 1 = nada;; 0 = nenhuma.
 - **EX017 — Dever do provedor.** Na responsabilidade compartilhada, o que a Riverton controla? *Rubrica:* 3 = o acesso dos usuários e a configuração;; 2 = acesso;; 1 = infraestrutura;; 0 = nenhuma.
 - **EX018 — Correção do bloqueio de tela.** O que Priya sugeriu em vez dos bloqueios desativados? *Rubrica:* 3 = tempo maior com desbloqueio rápido;; 2 = meio-termo utilizável;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+As configurações impõem a política, mas as exceções e as responsabilidades compartilhadas precisam de governança explícita.
 
 <a id="ch-07"></a>
 
@@ -285,6 +309,10 @@ As datas de término podem cortar um acesso necessário. Os sistemas de crachá 
 - **EX020 — Acesso da recepcionista.** O que as recepcionistas não podem ver? *Rubrica:* 3 = as anotações clínicas;; 2 = anotações;; 1 = consultas;; 0 = nenhuma.
 - **EX021 — Problema da conta compartilhada.** Por que as contas compartilhadas da recepção são um problema? *Rubrica:* 3 = é impossível saber quem fez o quê;; 2 = responsabilização;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A governança de identidades lida com equipes temporárias, acesso baseado em funções e alternativas utilizáveis às contas compartilhadas.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
@@ -320,6 +348,10 @@ Os padrões ficam atrás dos novos aparelhos. As medidas compensatórias podem s
 - **EX022 — Quatro segmentos.** Que quatro segmentos de rede o padrão define? *Rubrica:* 3 = aparelhos clínicos, recepção, maquininhas de cartão, Wi-Fi de visitantes;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX023 — Benefício do padrão.** Por que um desenho padrão ajuda as auditorias? *Rubrica:* 3 = as diferenças entre as clínicas saltam aos olhos;; 2 = consistência;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Registro de desvio.** O que cada registro de desvio inclui? *Rubrica:* 3 = diferença, motivo, risco, medidas compensatórias e data de revisão;; 2 = registro;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Desenhos padronizados, com proteção em camadas e um registro de desvios, mantêm consistente a segurança em várias unidades.
 
 <a id="ch-09"></a>
 
@@ -380,6 +412,10 @@ Evidências atuais ainda podem ser fracas. Os limites são decisões de julgamen
 - **EX026 — Contagem de vencidos.** Quantos dos seis itens estavam vencidos? *Rubrica:* 3 = três;; 2 = 3;; 1 = nada;; 0 = nenhuma.
 - **EX027 — O mais grave.** Que item vencido era o mais grave, e por quê? *Rubrica:* 3 = o relatório SOC 2 do fornecedor, pois o provedor guarda todos os prontuários;; 2 = fornecedor;; 1 = revisão de acesso;; 0 = nenhuma.
 
+### Síntese
+
+Regras de atualidade das evidências mantêm a garantia em dia e destacam o que precisa ser renovado.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Governança, riscos e compliance de segurança: orientação
@@ -415,6 +451,10 @@ As obrigações legais exigem orientação profissional. Os papéis mudam com o 
 - **EX028 — Sentido de compliance.** O que compliance significa para a Riverton? *Rubrica:* 3 = cumprir as obrigações da lei, das regras de cartão e dos contratos;; 2 = obrigações;; 1 = nada;; 0 = nenhuma.
 - **EX029 — Origem da obrigação.** Por que a origem de uma obrigação importa? *Rubrica:* 3 = define a prioridade e quem se envolve;; 2 = prioridade;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Papel não documentado.** As responsabilidades de quem não estavam escritas? *Rubrica:* 3 = as do prestador externo de suporte;; 2 = prestador;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A orientação em GRC conecta direção, gestão de riscos e obrigações por meio de papéis claros.
 
 <a id="ch-11"></a>
 
@@ -452,6 +492,10 @@ Os critérios envolvem julgamento. As classificações são aplicadas de forma e
 - **EX032 — Níveis de classificação.** Quais são os três níveis de classificação? *Rubrica:* 3 = pública, interna, confidencial;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX033 — Impacto grave.** Dê o exemplo de impacto grave. *Rubrica:* 3 = clínicas fechadas por mais de um dia ou violação notificável que atinja muitos pacientes;; 2 = grave;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Contexto, classificação e critérios acordados tornam as avaliações de risco consistentes e relevantes.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Governança, riscos e compliance de segurança: fluxos de dados
@@ -488,6 +532,10 @@ Os mapas deixam escapar fluxos informais, como fotos tiradas no celular. Os cont
 - **EX035 — Acordos ausentes.** Que partes não tinham acordo escrito? *Rubrica:* 3 = dois laboratórios;; 2 = laboratórios;; 1 = seguradoras;; 0 = nenhuma.
 - **EX036 — Problema do agendamento.** O que havia de errado com o site de agendamento? *Rubrica:* 3 = coletava histórico médico de que não precisava;; 2 = dados em excesso;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Mapas de fluxo de dados revelam riscos de terceiros e de minimização que as listas de ativos não percebem.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Governança, riscos e compliance de segurança: cenários de risco
@@ -523,6 +571,10 @@ Os cenários refletem os limites da imaginação. A seleção envolve julgamento
 - **EX037 — Estrutura do cenário.** Que três partes cada cenário contém? *Rubrica:* 3 = causa, evento e consequências;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX038 — Uso das causas.** Para onde apontam as causas listadas? *Rubrica:* 3 = para os controles preventivos;; 2 = prevenção;; 1 = recuperação;; 0 = nenhuma.
 - **EX039 — Lista curta.** Por que se concentrar numa lista curta de cenários? *Rubrica:* 3 = o esforço deve ir para onde mais importa;; 2 = foco;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Cenários concretos ligam as causas à prevenção e as consequências à resposta.
 
 <a id="ch-14"></a>
 
@@ -580,6 +632,10 @@ As estimativas dos gestores são aproximadas. As médias escondem desfechos grav
 - **EX041 — Perda total.** Qual é a perda anual esperada total? *Rubrica:* 3 = 55 mil;; 2 = 55.000;; 1 = nada;; 0 = nenhuma.
 - **EX042 — Frequente, mas pequeno.** Que cenário acontece com mais frequência, mas custa menos por ano? *Rubrica:* 3 = prontuários enviados errado, a 8 mil;; 2 = prontuários;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A perda esperada coloca cenários diferentes em uma mesma escala, mas precisa ser lida junto com a sua incerteza.
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Governança, riscos e compliance de segurança: laboratório guiado
@@ -616,6 +672,10 @@ As oficinas refletem quem comparece. Os prazos escorregam.
 - **EX044 — Tratamento do ransomware.** Que tratamentos foram propostos para o ransomware? *Rubrica:* 3 = segmentação de rede e teste dos backups offline;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX045 — Comprometimento.** Por que acordar donos e prazos na própria reunião? *Rubrica:* 3 = aumenta o comprometimento;; 2 = comprometimento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Oficinas guiadas, com visões independentes e donos acordados, produzem registros acionáveis.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Governança, riscos e compliance de segurança: métodos II
@@ -651,6 +711,10 @@ As estimativas residuais são incertas. As condições do seguro limitam a cober
 - **EX046 — Exemplo de evitar.** Como a Riverton pode evitar o risco de skimming? *Rubrica:* 3 = passar o pagamento com cartão para uma página hospedada;; 2 = página hospedada;; 1 = nada;; 0 = nenhuma.
 - **EX047 — Finalidade do residual.** Por que registrar o residual ao lado das estimativas originais? *Rubrica:* 3 = para mostrar o que os tratamentos conseguem diante do apetite;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
 - **EX048 — Risco aceito.** Que risco residual o diretor-geral aceitou? *Rubrica:* 3 = notebooks perdidos;; 2 = notebooks;; 1 = ransomware;; 0 = nenhuma.
+
+### Síntese
+
+As escolhas de tratamento, as estimativas residuais e a aceitação formal completam o processo de risco.
 
 <a id="ch-17"></a>
 
@@ -724,6 +788,10 @@ Quatro clínicas são um piloto pequeno. Aprovado ou reprovado perde detalhes.
 - **EX050 — Lista de falhas.** Liste as quatro falhas. *Rubrica:* 3 = North acesso, East bloqueio de tela, East acesso, West backup;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX051 — Causa do padrão.** Por que a revisão de acesso falhou em duas clínicas? *Rubrica:* 3 = os gerentes receberam as listas de contas atrasadas;; 2 = processo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Ferramentas simples resumem os resultados e revelam padrões entre unidades que apontam para as causas-raiz.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Governança, riscos e compliance de segurança: controles
@@ -759,6 +827,10 @@ Os registros envelhecem. Os mapeamentos podem exagerar a cobertura.
 - **EX052 — Controle de backup.** Como opera o teste mensal de backup? *Rubrica:* 3 = o líder de TI restaura cinco arquivos de amostra e registra o resultado;; 2 = teste de restauração;; 1 = nada;; 0 = nenhuma.
 - **EX053 — Várias obrigações.** Por que um controle que apoia várias obrigações importa mais? *Rubrica:* 3 = sua falha afeta várias obrigações;; 2 = importância;; 1 = nada;; 0 = nenhuma.
 - **EX054 — Não aplicável.** Por que os controles de desenvolvimento seguro não se aplicam? *Rubrica:* 3 = a Riverton não desenvolve software;; 2 = sem desenvolvimento;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Controles documentados e mapeados para as obrigações mostram para que serve cada controle e o que significa a sua falha.
 
 <a id="ch-19"></a>
 
@@ -817,6 +889,10 @@ Os limiares são decisões de julgamento. Os indicadores podem ser manipulados.
 - **EX056 — Meses de violação.** Que meses violaram o limiar? *Rubrica:* 3 = junho e julho;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX057 — Regra de escalonamento.** Que regra de escalonamento Priya recomendou? *Rubrica:* 3 = duas violações seguidas vão para o gerente de operações;; 2 = regra;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os indicadores só alertam quando os donos os acompanham e ações acordadas se seguem às violações.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Governança, riscos e compliance de segurança: solução de problemas
@@ -853,6 +929,10 @@ Os contornos podem esconder uso malicioso. Os sistemas de crachá precisam de su
 - **EX059 — Causa do contorno.** Por que as recepcionistas mantinham as telas acesas? *Rubrica:* 3 = desbloquear repetidamente atrasava o check-in dos pacientes;; 2 = usabilidade;; 1 = preguiça;; 0 = nenhuma.
 - **EX060 — Erro de evidência.** Que problema de evidência Priya encontrou? *Rubrica:* 3 = o testador verificou um computador reserva não gerenciado;; 2 = escopo do teste;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Resolver problemas em controles significa diagnosticar separadamente os problemas de desenho, de operação e de evidências.
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Governança, riscos e compliance de segurança: integração de serviços
@@ -888,6 +968,10 @@ Os campos dos chamados são pulados. As ligações exigem disciplina.
 - **EX061 — Exceções como chamados.** Como as exceções são tratadas no sistema de chamados? *Rubrica:* 3 = como chamados com data de expiração;; 2 = expiração;; 1 = nada;; 0 = nenhuma.
 - **EX062 — Ligação com incidentes.** Como um incidente de e-mail enviado errado afeta o registro? *Rubrica:* 3 = atualiza a probabilidade desse risco;; 2 = atualização;; 1 = nada;; 0 = nenhuma.
 - **EX063 — Momento da evidência.** Por que a evidência embutida no trabalho normal é melhor? *Rubrica:* 3 = mais confiável e menos trabalhosa que a montada antes da auditoria;; 2 = embutida;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Integrar GRC à gestão de serviços faz com que o trabalho diário produza evidências de governança.
 
 <a id="ch-22"></a>
 
@@ -945,6 +1029,10 @@ Divergências de nomes causam falsos achados. Relatórios não lidos anulam a au
 - **EX065 — Origem das órfãs.** De onde vieram as contas órfãs? *Rubrica:* 3 = uma conta de substituto e uma conta de teste do provedor;; 2 = origens;; 1 = nada;; 0 = nenhuma.
 - **EX066 — Decisão manual.** Por que não desativar as contas automaticamente? *Rubrica:* 3 = os achados precisam de contexto que uma pessoa deve verificar;; 2 = contexto;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A automação deve fazer a comparação repetitiva, enquanto as pessoas tomam as decisões que dependem de contexto.
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Governança, riscos e compliance de segurança: avaliação
@@ -980,6 +1068,10 @@ Um ano é pouco tempo. As respostas da pesquisa podem ser educadas demais.
 - **EX067 — Fontes da avaliação.** Que fontes a avaliação usou? *Rubrica:* 3 = registro, resultados de testes, indicadores, registro de evidências e pesquisa;; 2 = cinco;; 1 = nada;; 0 = nenhuma.
 - **EX068 — Progresso da segmentação.** Quantas clínicas concluíram a segmentação? *Rubrica:* 3 = doze de catorze;; 2 = 12/14;; 1 = nada;; 0 = nenhuma.
 - **EX069 — Carga restante.** Que tarefa continuou demorada? *Rubrica:* 3 = a revisão de acesso;; 2 = revisão de acesso;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A avaliação com várias fontes mostra o progresso e aponta melhorias específicas.
 
 <a id="ch-24"></a>
 
@@ -1017,6 +1109,10 @@ Tempo autodeclarado. Sete clínicas por grupo.
 - **EX071 — Alocação.** Como as clínicas foram alocadas? *Rubrica:* 3 = por sorteio de nomes;; 2 = aleatória;; 1 = nada;; 0 = nenhuma.
 - **EX072 — Resultado de tempo.** Que tempos medianos os grupos informaram? *Rubrica:* 3 = quarenta contra noventa minutos;; 2 = 40 contra 90;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Estudos aplicados pequenos e bem desenhados sustentam decisões quando os seus limites são declarados.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
@@ -1052,6 +1148,10 @@ A dinâmica das equipes varia. Os pedidos do cliente podem ampliar o escopo.
 - **EX073 — Conteúdo do pacote.** O que contém o pacote de integração? *Rubrica:* 3 = checklist de configuração, controles do gerente, requisitos de evidência, treinamento;; 2 = quatro partes;; 1 = nada;; 0 = nenhuma.
 - **EX074 — Achado da revisão.** O que a revisão por pares encontrou no trabalho de Priya? *Rubrica:* 3 = dois termos usados de forma inconsistente;; 2 = inconsistência;; 1 = nada;; 0 = nenhuma.
 - **EX075 — Pedido do cliente.** O que a gerente de clínica pediu? *Rubrica:* 3 = um checklist em uma página;; 2 = uma página;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Projetos em equipe dão certo com papéis claros, revisão por pares e capacidade de resposta aos clientes.
 
 <a id="ch-26"></a>
 
@@ -1089,6 +1189,10 @@ Os runbooks envelhecem. Os substitutos podem não ter prática.
 - **EX077 — Lacuna de prontidão.** Que processo precisou de mais orientação? *Rubrica:* 3 = o escalonamento na revisão dos indicadores;; 2 = escalonamento;; 1 = nada;; 0 = nenhuma.
 - **EX078 — Período de apoio.** Por quanto tempo Priya ficará disponível após a passagem? *Rubrica:* 3 = um mês;; 2 = 1 mês;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os repasses dão certo quando os runbooks são testados pelos novos donos e o suporte tem um fim claro.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
@@ -1124,6 +1228,10 @@ A validação é uma fotografia de um momento. Os fornecedores podem religar apa
 - **EX079 — Verificação que falhou.** Que verificação da validação falhou? *Rubrica:* 3 = um aparelho de imagem no segmento da recepção;; 2 = imagem;; 1 = nada;; 0 = nenhuma.
 - **EX080 — Base da aprovação.** Com base em quê o gerente de operações aprovou a inauguração? *Rubrica:* 3 = no relatório de validação;; 2 = relatório;; 1 = nada;; 0 = nenhuma.
 - **EX081 — Valor antes da inauguração.** Por que validar antes de abrir? *Rubrica:* 3 = corrigir problemas antes de os pacientes chegarem é mais barato;; 2 = custo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Validar os controles antes da entrada em produção dá à gestão uma base clara e baseada em evidências para seguir em frente.
 
 <a id="ch-28"></a>
 
@@ -1161,6 +1269,10 @@ A qualidade dos estágios varia. A pressão pode ser sutil.
 - **EX083 — Motivo do escopo pequeno.** Por que o escopo PCI DSS da Riverton era pequeno? *Rubrica:* 3 = página de pagamento hospedada e maquininhas segmentadas;; 2 = desenho;; 1 = nada;; 0 = nenhuma.
 - **EX084 — Resposta íntegra.** Como Priya respondeu ao pedido de marcar uma revisão como concluída? *Rubrica:* 3 = recusou e ajudou a concluí-la;; 2 = ajuda honesta;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A prática de campo mostra que o trabalho de GRC é constante, moldado pelo desenho e fundamentado em registros honestos.
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
@@ -1197,6 +1309,10 @@ Os painéis podem ser ignorados. A qualidade dos dados de origem limita o valor.
 - **EX086 — Datas das fontes.** Por que Priya acrescentou a data da última atualização de cada fonte? *Rubrica:* 3 = uma ação resolvida aparecia porque uma fonte estava desatualizada;; 2 = atualidade;; 1 = nada;; 0 = nenhuma.
 - **EX087 — Valor duradouro.** De que depende o valor duradouro? *Rubrica:* 3 = simplicidade, documentação e um mantenedor nomeado;; 2 = manutenibilidade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma ferramenta de projeto final precisa ser testada com usuários e documentada para que outras pessoas possam mantê-la.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
@@ -1232,6 +1348,10 @@ As avaliações amostram competências. As melhorias relatadas têm várias caus
 - **EX088 — Arquivos ausentes.** Como a ferramenta lida com arquivos de origem ausentes? *Rubrica:* 3 = relata-os com clareza;; 2 = explícita;; 1 = em silêncio;; 0 = nenhuma.
 - **EX089 — Dados de pacientes.** A ferramenta lê prontuários? *Rubrica:* 3 = não, apenas registros de governança;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX090 — Sugestão futura.** O que os avaliadores sugeriram para uma versão futura? *Rubrica:* 3 = gráficos simples de tendência;; 2 = gráficos;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Uma avaliação de projeto final confirma o valor prático e reflete sobre o crescimento como tecnólogo de GRC.
 
 <a id="worked-results"></a>
 

@@ -70,6 +70,10 @@ Números precisos ainda podem estar errados. As fontes podem estar desatualizada
 - **EX002 — Base ausente.** Por que um número de noventa por cento pode enganar? *Rubrica:* 3 = a base e quais itens faltam são desconhecidos;; 2 = base;; 1 = nada;; 0 = nenhuma.
 - **EX003 — Partes da afirmação.** Que quatro partes a afirmação precisa de Sofia incluía? *Rubrica:* 3 = data, contagem, base e fonte;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Proporções precisas, com bases e fontes, tornam as afirmações de governança verificáveis.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
@@ -105,6 +109,10 @@ Os inventários deixam escapar a shadow IT. Os responsáveis podem ser só nomin
 - **EX004 — Campos do inventário.** Que campos o inventário de Sofia contém? *Rubrica:* 3 = nome, tipo, responsável, localização, dados guardados, fornecedor;; 2 = seis campos;; 1 = nada;; 0 = nenhuma.
 - **EX005 — Lacunas do inventário.** Que duas lacunas o inventário revelou? *Rubrica:* 3 = portal do conselho sem responsável e onze tablets ausentes;; 2 = duas lacunas;; 1 = nada;; 0 = nenhuma.
 - **EX006 — Conferência contra a degradação.** Como Sofia planeja manter o inventário atualizado? *Rubrica:* 3 = conferência trimestral contra compras e registros de identidade;; 2 = trimestral;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um inventário atualizado e com donos é o mapa do qual toda a governança depende.
 
 <a id="ch-03"></a>
 
@@ -142,6 +150,10 @@ Os scripts confiam em sua entrada. Os responsáveis sugeridos precisam de confir
 - **EX008 — Combinação do filtro.** Por que combinação Sofia filtrou? *Rubrica:* 3 = dados pessoais de inquilinos e sem responsável;; 2 = sensível sem responsável;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Saída reescrita.** O que cada linha de saída passou a incluir? *Rubrica:* 3 = ativo, problema, responsável sugerido e data da execução;; 2 = campos;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Programas simples que contam, filtram e explicam transformam dados de governança em ação.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
@@ -177,6 +189,10 @@ Ensaios curtos simplificam demais. As paráfrases podem distorcer o sentido.
 - **EX010 — Contra-argumento.** Que contra-argumento Sofia tratou? *Rubrica:* 3 = os frameworks formais custam caro demais para equipes pequenas;; 2 = custo;; 1 = nada;; 0 = nenhuma.
 - **EX011 — Motivo da edição.** Por que citar as normas com edição e ano? *Rubrica:* 3 = os requisitos mudam entre as edições;; 2 = edições;; 1 = nada;; 0 = nenhuma.
 - **EX012 — Teste da paráfrase.** Por que parafrasear testa a compreensão? *Rubrica:* 3 = quem não consegue explicar com simplicidade ainda não entendeu;; 2 = compreensão;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Argumentos claros, citações com indicação de edição e paráfrase honesta são habilidades acadêmicas centrais para GRC.
 
 <a id="ch-05"></a>
 
@@ -214,6 +230,10 @@ Controles simples falham se forem inconsistentes. O efeito das palestras dura po
 - **EX014 — Controle contra ransomware.** Que controle permite a recuperação de um ransomware? *Rubrica:* 3 = backups offline;; 2 = backups;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Efeito do medo.** Por que evitar o medo nas palestras de segurança? *Rubrica:* 3 = leva a esconder erros;; 2 = esconder;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O letramento em segurança liga as ameaças comuns aos controles do dia a dia e a uma comunicação sem culpa.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
@@ -249,6 +269,10 @@ Os dados de permissões podem estar incompletos. Os grafos deixam escapar depend
 - **EX016 — Conflito encontrado.** Que conflito Sofia encontrou? *Rubrica:* 3 = uma pessoa podia cadastrar um fornecedor e aprovar pagamentos a ele;; 2 = SoD;; 1 = nada;; 0 = nenhuma.
 - **EX017 — Correção da cobertura.** Como devem funcionar os arranjos de cobertura? *Rubrica:* 3 = acesso temporário com segundo aprovador e data de término;; 2 = temporário;; 1 = nada;; 0 = nenhuma.
 - **EX018 — Ponto único.** Que sistema é um ponto único de falha? *Rubrica:* 3 = a identidade em nuvem;; 2 = identidade;; 1 = e-mail;; 0 = nenhuma.
+
+### Síntese
+
+Conjuntos, relações e grafos tornam visíveis os conflitos de acesso e os riscos de dependência.
 
 <a id="ch-07"></a>
 
@@ -286,6 +310,10 @@ Os fluxos de dados mudam. As ordenações dependem de julgamento.
 - **EX020 — Correção por minimização.** O que os prestadores devem receber em vez dos registros completos? *Rubrica:* 3 = só nome, endereço e telefone;; 2 = campos mínimos;; 1 = registros completos;; 0 = nenhuma.
 - **EX021 — Maior risco de rede.** Que risco de rede ficou em primeiro? *Rubrica:* 3 = área de trabalho remota exposta no servidor de arquivos;; 2 = RDP;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Mapas de rede e de fluxos de dados mostram onde a proteção e a minimização importam mais.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
@@ -321,6 +349,10 @@ Erros de correspondência geram falsos alarmes. As fontes podem compartilhar o m
 - **EX022 — Propósito dos testes.** Por que os scripts de governança precisam de testes? *Rubrica:* 3 = sua saída pode ser usada como evidência;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
 - **EX023 — Problema da junção.** Por que Sofia precisou de uma tabela de correspondência? *Rubrica:* 3 = as fontes usam identificadores diferentes;; 2 = identificadores;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Conta órfã.** O que é uma conta órfã nesta verificação? *Rubrica:* 3 = uma conta ativa que não corresponde a nenhum funcionário;; 2 = órfã;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Scripts testados que conciliam várias fontes revelam riscos escondidos entre os sistemas.
 
 <a id="ch-09"></a>
 
@@ -383,6 +415,10 @@ Dados estruturados ainda podem conter julgamentos ruins. As escalas causam empat
 - **EX026 — Riscos empatados.** Que dois riscos empataram no topo? *Rubrica:* 3 = dados de inquilinos mal endereçados e notebook perdido, ambos 12;; 2 = empate;; 1 = ransomware;; 0 = nenhuma.
 - **EX027 — Lista sem responsável.** Que riscos não tinham responsável? *Rubrica:* 3 = R3 mau uso pelo prestador e R6 senhas do portal do conselho;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Armazenar um registro como dados estruturados facilita enxergar prioridades e lacunas.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
@@ -419,6 +455,10 @@ Os escopos podem ser ambíguos. Os julgamentos de urgência variam.
 - **EX029 — Tratamento dos dados.** Como Sofia tratou os dados pessoais das exportações? *Rubrica:* 3 = notebook criptografado, nomes removidos ao compartilhar, apagados no fim;; 2 = minimizar;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Relato urgente.** Por que relatar imediatamente a exposição da área de trabalho remota? *Rubrica:* 3 = os atacantes poderiam explorá-la a qualquer momento;; 2 = urgência;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Escopo autorizado, tratamento cuidadoso dos dados e reporte responsável são a ética do trabalho de GRC.
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
@@ -454,6 +494,10 @@ As exportações do console deixam de fora os dispositivos não gerenciados. As 
 - **EX031 — Da política à configuração.** Que configuração impõe a regra de não haver administradores? *Rubrica:* 3 = participação em grupos;; 2 = grupos;; 1 = nada;; 0 = nenhuma.
 - **EX032 — Causa raiz.** Por que nove notebooks não tinham criptografia? *Rubrica:* 3 = foram comprados localmente fora do caminho normal;; 2 = compras;; 1 = nada;; 0 = nenhuma.
 - **EX033 — Meta de atualização.** Que meta Sofia fixou para as atualizações críticas? *Rubrica:* 3 = trinta dias;; 2 = 30;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+As políticas se tornam aplicáveis quando ligadas a configurações do sistema operacional e a processos medidos.
 
 <a id="ch-12"></a>
 
@@ -511,6 +555,10 @@ Confirmar ciência não significa entender. Os intervalos supõem independência
 - **EX035 — Intervalo da manutenção.** Qual é o intervalo da equipe de manutenção? *Rubrica:* 3 = 42% a 75%;; 2 = largo;; 1 = nada;; 0 = nenhuma.
 - **EX036 — Causa na manutenção.** Por que a equipe de manutenção confirmou menos? *Rubrica:* 3 = raramente usa notebooks e a política chegou por e-mail;; 2 = canal;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os intervalos mostram quais diferenças são reais e indicam onde as conversas revelam as causas.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
@@ -547,6 +595,10 @@ Os gestores podem aprovar sem conferir. O desenho de papéis leva tempo.
 - **EX038 — Campos sensíveis.** Quem deve ver as anotações de proteção? *Rubrica:* 3 = só a equipe especializada de apoio;; 2 = equipe de apoio;; 1 = todos os agentes;; 0 = nenhuma.
 - **EX039 — Resultado da revisão.** Quantos direitos de acesso a revisão removeu? *Rubrica:* 3 = sete;; 2 = 7;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A governança de identidades gerencia as transições do ciclo de vida, o menor privilégio e a revisão periódica.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
@@ -582,6 +634,10 @@ As leis variam de país para país. Os mapeamentos ficam desatualizados.
 - **EX040 — Violação de finalidade.** Que uso dos dados dos inquilinos violaria a limitação da finalidade? *Rubrica:* 3 = marketing sem relação;; 2 = marketing;; 1 = manutenção;; 0 = nenhuma.
 - **EX041 — Lacunas do tratamento.** Cite duas lacunas encontradas no mapa do tratamento. *Rubrica:* 3 = dados demais para prestadores e retenção das gravações desconhecida;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
 - **EX042 — Exemplo conjunto.** Por que um e-mail mal endereçado é assunto de segurança e de privacidade? *Rubrica:* 3 = é incidente de segurança e violação de dados pessoais;; 2 = ambos;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os princípios de privacidade e a governança de segurança funcionam melhor como um único programa, com donos compartilhados.
 
 <a id="ch-15"></a>
 
@@ -638,6 +694,10 @@ Amostras pequenas variam. As medianas escondem os casos mais lentos.
 - **EX044 — Resultados de patch.** Que mediana e que proporção na meta o laboratório relatou? *Rubrica:* 3 = 21 dias, 67%;; 2 = mediana 21;; 1 = nada;; 0 = nenhuma.
 - **EX045 — Causa da lentidão.** Por que as atualizações mais lentas atrasaram? *Rubrica:* 3 = o servidor de arquivos não era reiniciado no horário de trabalho;; 2 = servidor;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Boas medidas refletem o propósito, lidam com a assimetria e levam a decisões.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
@@ -673,6 +733,10 @@ As camadas podem compartilhar fraquezas. As migrações para a nuvem trazem risc
 - **EX046 — Elemento central.** O que é central na arquitetura-alvo da Elmfield? *Rubrica:* 3 = a identidade com autenticação multifator;; 2 = identidade;; 1 = rede;; 0 = nenhuma.
 - **EX047 — Fraqueza compartilhada.** O que poderia enfraquecer a defesa em camadas? *Rubrica:* 3 = uma única conta de administrador controlando todas as camadas;; 2 = administrador compartilhado;; 1 = nada;; 0 = nenhuma.
 - **EX048 — Notas de decisão.** O que as notas de decisão de Sofia registram? *Rubrica:* 3 = as alternativas e os riscos aceitos;; 2 = alternativas;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Organizações pequenas obtêm uma segurança forte a partir de algumas decisões de arquitetura bem documentadas.
 
 <a id="ch-17"></a>
 
@@ -710,6 +774,10 @@ A criptografia não impede o mau uso autorizado. Os procedimentos de chaves prec
 - **EX050 — Regra dos documentos do conselho.** Quando os documentos do conselho precisam ser criptografados pelo padrão proposto? *Rubrica:* 3 = quando compartilhados fora do portal;; 2 = fora do portal;; 1 = nunca;; 0 = nenhuma.
 - **EX051 — Risco das chaves.** Qual era o risco das chaves de recuperação dos notebooks? *Rubrica:* 3 = um único administrador controlava o único repositório;; 2 = administrador único;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A criptografia só protege os dados quando a política e a gestão de chaves são bem governadas.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
@@ -745,6 +813,10 @@ As entrevistas refletem o que as pessoas dizem, nem sempre o que fazem. Grupos p
 - **EX052 — Pergunta reduzida.** A que a pergunta de Sofia foi reduzida? *Rubrica:* 3 = o que ajuda ou atrapalha os gestores a concluir a revisão de acessos;; 2 = específica;; 1 = cultura;; 0 = nenhuma.
 - **EX053 — Escolha do método.** Por que entrevistas em vez de questionário? *Rubrica:* 3 = só doze gestores e uma pergunta do tipo por quê;; 2 = grupo pequeno;; 1 = nada;; 0 = nenhuma.
 - **EX054 — Acesso da diretora.** O que a diretora da Elmfield verá? *Rubrica:* 3 = só os temas, não quem disse o quê;; 2 = temas;; 1 = transcrições;; 0 = nenhuma.
+
+### Síntese
+
+Perguntas específicas, métodos adequados e ética cuidadosa tornam útil a pesquisa em governança.
 
 <a id="ch-19"></a>
 
@@ -782,6 +854,10 @@ As definições variam conforme a fonte. As decisões de escopo precisam de revi
 - **EX056 — Item excluído.** Que item ficou fora do escopo? *Rubrica:* 3 = os dispositivos dos próprios inquilinos;; 2 = dispositivos dos inquilinos;; 1 = nada;; 0 = nenhuma.
 - **EX057 — Opções de tratamento.** Liste as quatro opções de tratamento. *Rubrica:* 3 = evitar, reduzir, compartilhar, aceitar;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Definições, escopo e teoria claros formam a base de um programa de GRC.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Governança, riscos e compliance de segurança: casos fundamentais
@@ -818,6 +894,10 @@ Os casos de grandes organizações podem não se transferir. A análise de causa
 - **EX059 — Relatos ao conselho.** Com que frequência o progresso deve ser relatado ao conselho da Elmfield? *Rubrica:* 3 = duas vezes por ano;; 2 = duas vezes;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Causa raiz do prestador.** Qual foi a causa raiz do incidente com a conta do prestador? *Rubrica:* 3 = ninguém respondia pelo desligamento dos prestadores;; 2 = responsável;; 1 = conta ativa;; 0 = nenhuma.
 
+### Síntese
+
+Os casos ensinam princípios; são as causas-raiz, e não os sintomas, que precisam ser corrigidas.
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Governança, riscos e compliance de segurança: modelos de sistema
@@ -853,6 +933,10 @@ As matrizes descrevem os papéis pretendidos, não o comportamento. Equipes pequ
 - **EX061 — Letras do RACI.** O que significam as quatro letras do RACI? *Rubrica:* 3 = responsável pela execução, quem presta contas, consultado, informado;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX062 — Problema dos incidentes.** O que estava errado no tratamento de incidentes? *Rubrica:* 3 = três pessoas prestando contas significava ninguém;; 2 = gente demais;; 1 = nada;; 0 = nenhuma.
 - **EX063 — Regra de prestação de contas.** Quantos papéis devem prestar contas por processo? *Rubrica:* 3 = um;; 2 = único;; 1 = vários;; 0 = nenhuma.
+
+### Síntese
+
+Modelos de sistemas e matrizes RACI deixam clara a responsabilização e revelam lacunas.
 
 <a id="ch-22"></a>
 
@@ -910,6 +994,10 @@ Notas simples perdem nuances. Os relatórios de garantia dos fornecedores variam
 - **EX064 — Fatores dos níveis.** Que três fatores são pontuados? *Rubrica:* 3 = acesso a dados pessoais, criticidade, acesso remoto;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX065 — Nível alto.** Que fornecedores ficam no nível alto? *Rubrica:* 3 = prestador de manutenção, e-mail em nuvem, folha de pagamento;; 2 = três;; 1 = gráfica;; 0 = nenhuma.
 - **EX066 — Controles de nível alto.** Cite dois controles para fornecedores de nível alto. *Rubrica:* 3 = perguntas antes do contrato e cláusulas de notificação de violações;; 2 = controles;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Classificar os fornecedores em níveis concentra o escrutínio onde as dependências trazem risco real.
 
 <a id="ch-23"></a>
 
@@ -969,6 +1057,10 @@ A perda esperada exige entradas incertas. As matrizes comprimem a gravidade.
 - **EX068 — Topo pela perda esperada.** Que risco lidera pela perda esperada? *Rubrica:* 3 = ransomware, com 25 mil;; 2 = ransomware;; 1 = notebook;; 0 = nenhuma.
 - **EX069 — Causa da discordância.** Por que os métodos discordam sobre o ransomware? *Rubrica:* 3 = a matriz comprime impactos muito grandes numa nota cinco;; 2 = compressão;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+As matrizes ajudam na triagem, mas a perda esperada revela riscos graves que elas subestimam.
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Governança, riscos e compliance de segurança: controles
@@ -1005,6 +1097,10 @@ Os controles de catálogo precisam ser adaptados. Os responsáveis mudam de fun�
 - **EX071 — Exclusão justificada.** Por que os controles de desenvolvimento seguro foram excluídos? *Rubrica:* 3 = a Elmfield não desenvolve software;; 2 = sem desenvolvimento;; 1 = nada;; 0 = nenhuma.
 - **EX072 — Distribuição dos responsáveis.** Por que não atribuir todos os controles ao líder de TI? *Rubrica:* 3 = sobrecarregaria uma pessoa;; 2 = sobrecarga;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A seleção baseada em catálogos, uma declaração de aplicabilidade justificada e a responsabilidade distribuída tornam os controles reais.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratório I
@@ -1040,6 +1136,10 @@ Amostras pequenas deixam escapar falhas raras. As cópias de teste podem diferir
 - **EX073 — Resultado da restauração.** Quantos arquivos amostrados foram restaurados corretamente? *Rubrica:* 3 = dezenove de vinte;; 2 = 19;; 1 = 20;; 0 = nenhuma.
 - **EX074 — Causa da falha.** Por que um arquivo não foi restaurado? *Rubrica:* 3 = o backup excluía arquivos acima de um limite de tamanho;; 2 = limite de tamanho;; 1 = nada;; 0 = nenhuma.
 - **EX075 — Crença e realidade.** O que o teste revelou sobre o controle? *Rubrica:* 3 = fazia menos do que se acreditava por uma configuração esquecida;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os testes de laboratório mostram o que os controles realmente fazem e produzem evidências para as correções.
 
 <a id="ch-26"></a>
 
@@ -1100,6 +1200,10 @@ Os resultados amostrados não são o framework inteiro. Classificações binári
 - **EX077 — Função mais fraca.** Que função é a mais fraca, e em que nível? *Rubrica:* 3 = Detect, 1/4 = 25%;; 2 = Detect;; 1 = Protect;; 0 = nenhuma.
 - **EX078 — Resultado geral.** Que proporção dos resultados é alcançada no total? *Rubrica:* 3 = 15/28 = 54%;; 2 = 54%;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Avaliações de lacunas baseadas em evidências mostram onde o investimento está desequilibrado e orientam as prioridades.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Governança, riscos e compliance de segurança: verificação
@@ -1135,6 +1239,10 @@ A observação pode mudar o comportamento. A reexecução exige acesso.
 - **EX079 — Teste mais forte.** Que tipo de teste dá a evidência mais forte? *Rubrica:* 3 = reexecução;; 2 = reexecutar;; 1 = inspeção;; 0 = nenhuma.
 - **EX080 — Risco da inspeção.** Qual é o risco de depender só da inspeção? *Rubrica:* 3 = os registros podem descrever controles que ninguém executou;; 2 = registros falsos;; 1 = nada;; 0 = nenhuma.
 - **EX081 — Categorias de conclusão.** Que três conclusões uma verificação pode alcançar? *Rubrica:* 3 = eficaz, eficaz com exceções, falhou;; 2 = três;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A verificação escolhe testes adequados e declara claramente até que ponto se pode confiar nos controles.
 
 <a id="ch-28"></a>
 
@@ -1172,6 +1280,10 @@ As revisões sem culpados ainda precisam responsabilizar a negligência repetida
 - **EX083 — Causas sistêmicas.** Cite duas causas sistêmicas encontradas. *Rubrica:* 3 = preenchimento automático e envio rotineiro das planilhas de atraso por e-mail;; 2 = causas;; 1 = nada;; 0 = nenhuma.
 - **EX084 — Atualização do registro.** Como Sofia atualizou o registro? *Rubrica:* 3 = elevou a probabilidade dos dados mal endereçados e registrou os novos controles;; 2 = atualização;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A análise de falhas sem culpados transforma incidentes em controles melhores e em estimativas de risco melhores.
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Governança, riscos e compliance de segurança: operações
@@ -1207,6 +1319,10 @@ Os calendários escorregam sob pressão. A atenção do conselho varia.
 - **EX085 — Itens trimestrais.** Que atividades são trimestrais? *Rubrica:* 3 = revisões de acesso, revisão do registro, conferências de fornecedores;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX086 — Progresso das ações.** Quantas ações estavam concluídas depois de três meses? *Rubrica:* 3 = dezoito de vinte e quatro;; 2 = 18/24;; 1 = nada;; 0 = nenhuma.
 - **EX087 — Problema do relatório tranquilizador.** Por que um relatório que só tranquiliza é um problema? *Rubrica:* 3 = não dá ao conselho nada a governar;; 2 = sem decisões;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um calendário de governança, o acompanhamento das ações e relatórios focados em decisões mantêm o programa funcionando.
 
 <a id="ch-30"></a>
 
@@ -1244,6 +1360,10 @@ Os exercícios de mesa não testam a recuperação técnica. Os participantes po
 - **EX089 — Plano perdido.** Que lacuna envolvia o plano de restauração? *Rubrica:* 3 = ninguém sabia onde estava guardado;; 2 = localização;; 1 = nada;; 0 = nenhuma.
 - **EX090 — Decisão de comunicação.** Quem vai decidir as comunicações externas? *Rubrica:* 3 = a diretora;; 2 = diretora;; 1 = líder de TI;; 0 = nenhuma.
 
+### Síntese
+
+Exercícios de mesa revelam com segurança lacunas simples que importam muito em incidentes reais.
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Governança, riscos e compliance de segurança: casos avançados
@@ -1279,6 +1399,10 @@ A redução de escopo não elimina todos os deveres. Os relatórios variam de es
 - **EX091 — Efeito da página hospedada.** Como uma página de pagamento hospedada afeta as obrigações do PCI DSS? *Rubrica:* 3 = mantém os dados de cartão fora dos sistemas da Elmfield, reduzindo o escopo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
 - **EX092 — Conselho sobre certificação.** O que Sofia sugeriu antes de decidir sobre a certificação? *Rubrica:* 3 = operar o sistema por um ano e medir o progresso;; 2 = esperar;; 1 = nada;; 0 = nenhuma.
 - **EX093 — Relatório tipo 2.** O que um relatório SOC 2 tipo 2 acrescenta? *Rubrica:* 3 = testes da operação dos controles ao longo de um período;; 2 = operação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Escolhas de arquitetura, certificação e garantia moldam o esforço de conformidade e a força das evidências.
 
 <a id="ch-32"></a>
 
@@ -1316,6 +1440,10 @@ A tradução pode simplificar demais. Os meios-termos podem se desviar com o tem
 - **EX095 — Enquadramento para o RH.** Como Sofia enquadrou o processo de desligamento para o RH? *Rubrica:* 3 = proteção dos ex-funcionários contra o mau uso de contas;; 2 = justiça;; 1 = nada;; 0 = nenhuma.
 - **EX096 — Meio-termo dos dispositivos.** Que meio-termo foi combinado para os dispositivos? *Rubrica:* 3 = gerenciados de qualquer lugar, pessoais só com e-mail;; 2 = meio-termo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O trabalho de GRC depende de traduzir entre disciplinas e de documentar os compromissos assumidos.
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de pesquisa II
@@ -1351,6 +1479,10 @@ Os temas refletem a lente de quem analisa. Doze entrevistas limitam a generaliza
 - **EX097 — Três temas.** Cite os três temas. *Rubrica:* 3 = listas longas cheias de jargão, necessidades da equipe desconhecidas, épocas de muito trabalho;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX098 — Reflexividade.** O que é a reflexividade neste estudo? *Rubrica:* 3 = consciência de como o papel de Sofia molda os dados;; 2 = autoconsciência;; 1 = nada;; 0 = nenhuma.
 - **EX099 — Divergência.** Por que relatar os dois gestores que gostavam das revisões? *Rubrica:* 3 = incluir as divergências torna os achados mais críveis;; 2 = equilíbrio;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Codificação sistemática, verificações de confiabilidade e reporte honesto tornam útil a pesquisa qualitativa em GRC.
 
 <a id="ch-34"></a>
 
@@ -1388,6 +1520,10 @@ Dois casos não permitem generalizar. Os resumos compartilhados podem ser otimis
 - **EX101 — Contagens de incidentes.** Por que evitar comparar contagens brutas de incidentes? *Rubrica:* 3 = as culturas de relato diferem;; 2 = cultura;; 1 = nada;; 0 = nenhuma.
 - **EX102 — Fraqueza do Corbridge.** Que fraqueza o Corbridge mostrou? *Rubrica:* 3 = responsabilização fraca porque a equipe supõe que o provedor cuida de tudo;; 2 = responsabilização;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Comparações justas usam critérios sensíveis ao contexto e produzem lições, em vez de rankings.
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Proposta de trabalho de conclusão
@@ -1423,6 +1559,10 @@ Comparações antes e depois confundem efeitos de época. As pesquisas medem per
 - **EX103 — Elementos do redesenho.** Que quatro mudanças o redesenho inclui? *Rubrica:* 3 = listas curtas e simples, guia de papéis, melhor época, lista de desligamentos;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX104 — Risco de interpretação.** Por que os direitos removidos poderiam cair por motivos alheios ao desenho? *Rubrica:* 3 = as revisões anteriores já limparam os acessos;; 2 = limpeza anterior;; 1 = nada;; 0 = nenhuma.
 - **EX105 — Compromisso de segurança.** O que protege o controle da Elmfield durante o projeto? *Rubrica:* 3 = manter o processo antigo disponível caso o novo falhe;; 2 = alternativa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Uma boa proposta de projeto final fixa de antemão os resultados e as salvaguardas.
 
 <a id="ch-36"></a>
 
@@ -1460,6 +1600,10 @@ Os voluntários mudam com frequência. Orientações simples omitem riscos.
 - **EX107 — Passos adotados.** Quantos passos do guia foram adotados imediatamente? *Rubrica:* 3 = quatro de cinco;; 2 = 4;; 1 = 5;; 0 = nenhuma.
 - **EX108 — Fronteira do voluntariado.** Por que Sofia ensinou os membros em vez de fazer ela mesma o trabalho? *Rubrica:* 3 = para construir capacidade, e não dependência;; 2 = capacidade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O trabalho comunitário de GRC adapta as orientações a organizações minúsculas e desenvolve a capacidade própria delas.
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
@@ -1495,6 +1639,10 @@ As ordenações são guias gerais. O retorno pode ser educado demais para ajudar
 - **EX109 — Evidência mais fraca.** Que tipos de evidência ficam por último? *Rubrica:* 3 = declarações dos responsáveis e questionários;; 2 = declarações;; 1 = testes;; 0 = nenhuma.
 - **EX110 — Alternativas no phishing.** O que mais poderia explicar a queda nos e-mails suspeitos relatados? *Rubrica:* 3 = filtragem melhor ou menos relatos;; 2 = alternativas;; 1 = nada;; 0 = nenhuma.
 - **EX111 — Correção de escopo.** Como Sofia revisou sua afirmação sobre os backups? *Rubrica:* 3 = limitou-a ao compartilhamento de arquivos;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A revisão de evidências pergunta o que mais poderia explicar uma afirmação e quanto ela abrange.
 
 <a id="ch-38"></a>
 
@@ -1532,6 +1680,10 @@ Correções no meio do caminho complicam a avaliação. Um trimestre é um teste
 - **EX113 — Permissão esclarecida.** Que descrição de permissão foi esclarecida? *Rubrica:* 3 = escalonamento de caso;; 2 = escalonamento de caso;; 1 = nada;; 0 = nenhuma.
 - **EX114 — Definições duplas.** Por que registrar a conclusão pelas duas definições? *Rubrica:* 3 = para comparar com justiça com os trimestres anteriores;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Implementar bem um redesenho significa monitorar, registrar as mudanças e manter a medição consistente.
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Avaliação do trabalho de conclusão
@@ -1568,6 +1720,10 @@ Amostras pequenas e o efeito de ser observado limitam as conclusões. As pesquis
 - **EX116 — Mudança na mediana.** Como mudou a mediana de dias até a conclusão? *Rubrica:* 3 = de catorze para seis;; 2 = mais rápida;; 1 = nada;; 0 = nenhuma.
 - **EX117 — Cautela causal.** Por que Sofia não pode afirmar que o redesenho causou a melhora? *Rubrica:* 3 = trimestre mais calmo e efeito de ser observado;; 2 = alternativas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma avaliação cuidadosa orienta decisões mesmo quando não consegue provar a causa.
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tese e apresentação
@@ -1603,6 +1759,10 @@ A reflexão pode ser seletiva. Uma única organização limita a generalização
 - **EX118 — Fontes da tese.** Que artigo de pesquisa sobre participação Sofia cita? *Rubrica:* 3 = Spears e Barki (2010);; 2 = Spears;; 1 = nada;; 0 = nenhuma.
 - **EX119 — Resposta sobre o viés.** Como Sofia respondeu à banca sobre o viés? *Rubrica:* 3 = notas reflexivas e um segundo codificador;; 2 = reflexividade;; 1 = nada;; 0 = nenhuma.
 - **EX120 — Sugestão ao conselho.** O que Sofia sugeriu para os prestadores de manutenção? *Rubrica:* 3 = um piloto da abordagem;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Uma monografia de graduação une pesquisa, prática e limites honestos em conhecimento de governança utilizável.
 
 <a id="worked-results"></a>
 
