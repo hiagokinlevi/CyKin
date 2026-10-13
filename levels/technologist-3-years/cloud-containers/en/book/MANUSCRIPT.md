@@ -1,7 +1,7 @@
 # Cloud and Container Security: Technologist Course
 
 - Language: English (`en`); course 082, Technologist course (3 years).
-- Editorial state: **draft**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; Seven offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–30 of 30 have hand-written teaching text; exercises EX001–EX090 have matching worked results with 0–3 rubrics; seven offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: technologist students learning to build, run and improve practical cloud and container security at a small hosting company.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -50,19 +50,19 @@ Priya Nair is a technologist student at the fictional Northgate Polytechnic. In 
 
 ### 1.2 Hardware under the cloud
 
-Cloud computing, as defined in NIST SP 800-145, lets customers use pooled computing resources on demand. The resources are still physical machines with processors, memory, disks and network cards, owned and operated by a provider. Knowing this helps Priya understand that a cloud server is a share of real hardware, not something abstract.
+Cloud computing, as defined in NIST SP 800-145, lets customers use pooled computing resources on demand. The resources are still physical machines with processors, memory, disks and network cards, owned and operated by a provider. Knowing this helps Priya understand that a cloud server is a share of real hardware, not something abstract. For Cobalt this matters in practice: when a provider retires an old hardware generation or schedules host maintenance, the client virtual machines and cluster nodes running on it must move or restart. Priya later sees that node upgrades and restarts are ordinary events, which is why nothing worth keeping should live only on one machine.
 
 ### 1.3 Processes and programs
 
-A program is a file of instructions; a process is a running copy of it, with its own memory and permissions. A web server, a database and a backup job are separate processes. Security questions often start with which process is running, as which user, and with what access.
+A program is a file of instructions; a process is a running copy of it, with its own memory and permissions. A web server, a database and a backup job are separate processes. Security questions often start with which process is running, as which user, and with what access. On the client web server in the worked example, Priya applies exactly these questions to three processes: the web server, the scheduled report job and the log shipper. Asking which user each runs as is what exposes the report job's administrator account, a finding that a list of installed programs alone would never have shown.
 
 ### 1.4 Memory and storage
 
-Memory holds working data and disappears when power is lost. Storage keeps data on disk. In cloud systems, a container's own disk is often temporary, so anything worth keeping must go to separate storage, such as a managed database or a storage bucket.
+Memory holds working data and disappears when power is lost. Storage keeps data on disk. In cloud systems, a container's own disk is often temporary, so anything worth keeping must go to separate storage, such as a managed database or a storage bucket. The booking workload shows why this distinction matters for Cobalt's clients. If a container wrote appointment changes to its own disk, a restart or a move to another node would lose them. Riverside Dental's appointments therefore live in the managed database behind the API, and reports go to a storage bucket, so containers can be replaced at any time without losing data.
 
 ### 1.5 Files and permissions
 
-Operating systems record who owns each file and who may read, write or run it. Mistakes here, such as a configuration file readable by everyone, are common causes of exposure.
+Operating systems record who owns each file and who may read, write or run it. Mistakes here, such as a configuration file readable by everyone, are common causes of exposure. Permissions also apply to the accounts that processes run as, which is where file mistakes and process mistakes meet. A configuration file holding a database password is safe only if the process that needs it can read it and other users cannot. When Priya records what each process reads, she also notes the file's owner and mode, so a file readable by everyone stands out during review rather than after an exposure. Kwame asks her to treat the report job's administrator account the same way, because an administrator can read every file regardless of its mode.
 
 ### Worked example
 
@@ -98,27 +98,27 @@ You will (1) explain addresses, ports and protocols; (2) describe how a web requ
 
 ### 2.1 Addresses and ports
 
-Each machine on a network has an address. A port number identifies a particular service on that machine, such as 443 for HTTPS. When a firewall rule allows a port, it allows anyone who can reach that address to talk to the service behind it.
+Each machine on a network has an address. A port number identifies a particular service on that machine, such as 443 for HTTPS. When a firewall rule allows a port, it allows anyone who can reach that address to talk to the service behind it. Priya learns to read every firewall rule at Cobalt from this angle. A rule allowing port 443 on the proxy is intended, because patients must reach the booking page; a rule allowing the database port from any address would let anyone on the internet attempt a connection. She notes that the question is never only which port is open but also who is allowed to reach it.
 
 ### 2.2 A web request
 
-When a dental patient opens Riverside Dental Group's booking page, their browser looks up the name using DNS, connects to Cobalt's proxy on port 443, and the proxy forwards the request to the web container. The response travels back the same way.
+When a dental patient opens Riverside Dental Group's booking page, their browser looks up the name using DNS, connects to Cobalt's proxy on port 443, and the proxy forwards the request to the web container. The response travels back the same way. Each hop is a place where something can fail or be misconfigured. If DNS points to an old address, patients reach nothing; if the proxy forwards to the wrong container, they reach the wrong service. Writing the path down hop by hop, with the port used at each step, is what lets Priya later check encryption on every hop instead of only on the first one.
 
 ### 2.3 Encryption in transit
 
-TLS encrypts traffic between browser and proxy so others on the network cannot read it. Traffic between services inside a cluster may or may not be encrypted; Priya learns to check rather than assume.
+TLS encrypts traffic between browser and proxy so others on the network cannot read it. Traffic between services inside a cluster may or may not be encrypted; Priya learns to check rather than assume. The path to Riverside Dental's booking page shows both cases. The browser-to-proxy hop uses TLS, and so does the hop from proxy to web container. The hop from web to API inside the cluster does not, which Priya only learns by checking the service configuration. Checking means reading how each connection is set up, not trusting that a secure front door protects everything behind it. Unencrypted internal traffic can be read by anything else able to observe that part of the cluster network.
 
 ### 2.4 Private and public networks
 
-Some services, such as databases, should only be reachable from inside a private network. Exposing them to the internet without need increases risk greatly.
+Some services, such as databases, should only be reachable from inside a private network. Exposing them to the internet without need increases risk greatly. For Riverside Dental, the booking database is the clearest example of this. Only the API needs to talk to it, so there is no reason for any address outside Cobalt's private network to reach its port. A database exposed to the internet can be probed by anyone, and a single weak password or unpatched flaw then matters far more. Priya adds a column to her request notes stating whether each component should be public or private, which later helps her compare intended exposure with what firewall rules actually allow. Of the components on the booking path, only the proxy needs to face the internet.
 
 ### 2.5 Load balancers and proxies
 
-A proxy or load balancer receives traffic and passes it on. It is a natural place to enforce TLS, limit request sizes and log requests.
+A proxy or load balancer receives traffic and passes it on. It is a natural place to enforce TLS, limit request sizes and log requests. At Cobalt, the proxy in front of Riverside Dental's booking system is where TLS ends for patient traffic. Because every request passes through it, the proxy can reject oversized uploads before they reach the web container and keep a log line for each request with time, path and response code. Those logs help answer simple questions, such as whether the booking page was available during a reported outage. The limit is that the proxy sees only traffic sent through it; workloads that call external services directly, such as booking calling an email API, bypass it entirely.
 
 ### 2.6 Network diagrams
 
-Kwame keeps a simple diagram for each client showing which parts face the internet. Priya notices that two diagrams are out of date.
+Kwame keeps a simple diagram for each client showing which parts face the internet. Priya notices that two diagrams are out of date. Out-of-date diagrams mislead in two directions: they can show services that no longer exist, and they can omit new ones that face the internet. Priya compares each diagram with the proxy's current routes and the workloads listed in the client's cluster. Where they disagree, she marks the diagram as stale and asks the engineer responsible to confirm the real layout before redrawing it. Kwame agrees that each diagram should carry the date it was last checked, so readers can judge how far to trust it.
 
 ### Worked example
 
@@ -154,27 +154,27 @@ You will (1) read short Python scripts; (2) use lists and dictionaries to hold r
 
 ### 3.1 Why scripting helps
 
-The six-hour search happened because staff checked each client by hand. A short script that reads a list of workloads and prints which images they use could answer the same question in seconds.
+The six-hour search happened because staff checked each client by hand. A short script that reads a list of workloads and prints which images they use could answer the same question in seconds. During the advisory, staff listed each client's workloads and read the image names one by one, comparing them by eye with the advisory text. The work was slow and error-prone, because a tired person can miss one line among dozens. A script performs the same comparison identically every time, and its output can be saved as evidence of what was checked and when. Priya's goal is not to replace the team's judgement but to remove the repetitive search that consumed most of those six hours.
 
 ### 3.2 Values, lists and dictionaries
 
-A list holds items in order. A dictionary maps names to values, such as workload name to image. Most of the labs in this course use these two structures with synthetic data.
+A list holds items in order. A dictionary maps names to values, such as workload name to image. Most of the labs in this course use these two structures with synthetic data. A list suits ordered data, such as the sequence of hops a request takes or a series of audit events. A dictionary suits lookups, such as asking which image the workload called booking uses. Priya also learns sets, which hold unique items and answer membership questions quickly; the approved image list in her inventory lab is a set because the only question asked of it is whether an image belongs. Choosing the structure that matches the question makes a script shorter and easier to check.
 
 ### 3.3 Loops and conditions
 
-A loop goes through each item; a condition decides what to do with it. Together they let a script find every workload whose image is not on an approved list.
+A loop goes through each item; a condition decides what to do with it. Together they let a script find every workload whose image is not on an approved list. Priya writes the logic in words before writing code: for each workload, look up its image; if that image is not on the approved list, record the workload. The same pattern appears in later labs, such as checking each cluster setting against the baseline or each proposed change against pipeline rules. Conditions must be precise, because a loose test such as "name contains node" could match an unrelated image and produce a false finding. Testing the loop on a few known records first shows whether the condition behaves as intended.
 
 ### 3.4 Clear output
 
-A good check prints counts first and then the details, so a reader sees the size of the problem before the list. Priya adopts this habit.
+A good check prints counts first and then the details, so a reader sees the size of the problem before the list. Priya adopts this habit. Her first inventory output was a long list of workloads with no total, and Kwame had to count lines to judge the scale. The revised version prints one summary line, stating how many workloads run approved images and how many do not, followed by one line per finding. Every lab in the course follows this layout, and it also suits handover: a colleague reading results at the start of a shift can decide in seconds whether anything needs attention that day.
 
 ### 3.5 Standard library only
 
-The course labs use only Python's standard library, so they run anywhere without installing packages. This also avoids bringing in code that Cobalt has not reviewed.
+The course labs use only Python's standard library, so they run anywhere without installing packages. This also avoids bringing in code that Cobalt has not reviewed. Installing packages from a public index means trusting code written by others, along with every package it depends on, and Cobalt has not reviewed that code. The standard library already provides what the labs need: dictionaries, sets, string handling and counting with the collections module. When Cobalt later chooses real scanners and checkers, it does so deliberately, against written criteria. Keeping the labs free of dependencies also means a student can run them on a polytechnic computer without administrator rights.
 
 ### 3.6 Reading before running
 
-Priya reads every script before running it, even one written by a colleague. Kwame says this is good practice for any code that touches client systems.
+Priya reads every script before running it, even one written by a colleague. Kwame says this is good practice for any code that touches client systems. Reading first means checking what a script reads, what it writes and whether it contacts any system. A script that only prints results from a synthetic list is low risk; one that changes cluster settings or deletes resources needs review and a test environment first. Priya writes a one-line note at the top of each of her scripts stating whether it reads or changes anything, so colleagues can make the same judgement quickly. All of the course labs only read data and print results.
 
 ### Comments and names
 
@@ -214,27 +214,27 @@ You will (1) model hosting assets as records; (2) choose fields that answer secu
 
 ### 4.1 What to record
 
-To answer "which clients use this image?", Cobalt needs records linking client, cluster, workload and image. Priya drafts a simple model with those four fields plus an owner.
+To answer "which clients use this image?", Cobalt needs records linking client, cluster, workload and image. Priya drafts a simple model with those four fields plus an owner. Each field in the model answers part of a real question. Client and workload say what is affected, cluster says where to look, image says what runs, and owner says who must act on a finding. During the advisory, the missing piece was the link between image and client: staff could name the images in use but not which clients ran them. Priya keeps the model small on purpose, since every extra field is one more value someone must keep correct, and a field nobody maintains soon becomes misleading.
 
 ### 4.2 Consistent names
 
-Two staff wrote the same image as "node14" and "node:14". Inconsistent names break searches. Priya proposes always recording the full image reference, including registry and tag.
+Two staff wrote the same image as "node14" and "node:14". Inconsistent names break searches. Priya proposes always recording the full image reference, including registry and tag. The two spellings looked obvious to the people who typed them, yet a search for node:14 missed every record written as node14. A full reference such as docker.io/library/node:14 also records where the image came from, which matters because public images are treated differently from Cobalt's own builds. Priya adds a rule that references are copied from the cluster rather than typed, which removes the chance of a new spelling appearing. Later she records digests as well, since tags alone can be moved.
 
 ### 4.3 Identifiers
 
-Each record needs a unique identifier, so updates change the right row. Workload names alone are not unique because two clients both have a workload called web.
+Each record needs a unique identifier, so updates change the right row. Workload names alone are not unique because two clients both have a workload called web. Priya's identifiers combine client and workload name, so the two web workloads become distinct records that can be updated separately. Without that, an update meant for one client's web workload could silently overwrite the other's image, and an advisory answer could name the wrong client. Identifiers should also stay stable when details change: if a workload moves to a new image, its identifier stays the same and only the image field changes, so its history remains easy to follow.
 
 ### 4.4 Tables and files
 
-Records can live in a spreadsheet, a CSV file or a database. For now Cobalt uses a CSV file kept in its configuration repository, so changes are reviewed.
+Records can live in a spreadsheet, a CSV file or a database. For now Cobalt uses a CSV file kept in its configuration repository, so changes are reviewed. A CSV file is plain text, so the repository can show exactly which line changed, who changed it and when. That is enough for a company of Cobalt's size, and the file opens in any spreadsheet program for staff who prefer tables. A database would make sense later if many tools needed to query the records at once. Priya notes one limit of the CSV approach: two people editing at the same time can produce conflicting changes, which review catches but does not prevent.
 
 ### 4.5 Keeping data current
 
-A model is useful only if it is updated. Priya suggests generating the records from the clusters automatically each night rather than typing them.
+A model is useful only if it is updated. Priya suggests generating the records from the clusters automatically each night rather than typing them. Typed records go stale the moment someone deploys a new workload and forgets to update the file. A nightly export reads the workloads and images directly from each cluster and rewrites the CSV, so the records describe what actually ran that night. Any difference from the previous night appears as a change in the repository, which is itself useful: a new workload or image shows up for review the next morning. The export needs read-only access to the clusters and nothing more.
 
 ### 4.6 Sensitive fields
 
-The model avoids storing secrets or patient data; it describes systems, not people.
+The model avoids storing secrets or patient data; it describes systems, not people. Keeping secrets and patient data out of the model has two benefits. The inventory file can be shared with any engineer who needs it and stored in the configuration repository without becoming a target or a privacy problem. If Riverside Dental's patient details appeared in it, the file would need the same protection as the booking database. Priya checks her draft for fields that might carry sensitive values by accident, such as environment variables copied from a deployment, and removes them. The owner field names a team rather than a person's contact details, so the model records responsibility without personal information.
 
 ### Checking the model
 
@@ -274,27 +274,27 @@ You will (1) explain confidentiality, integrity and availability; (2) describe t
 
 ### 5.1 Three goals
 
-Confidentiality keeps data from the wrong people, integrity keeps it accurate, and availability keeps it usable when needed. A booking system needs all three: patient details must stay private, appointments must be correct, and the site must be up.
+Confidentiality keeps data from the wrong people, integrity keeps it accurate, and availability keeps it usable when needed. A booking system needs all three: patient details must stay private, appointments must be correct, and the site must be up. Each of the three goals maps to a different kind of failure. A leak of contact details is a confidentiality failure; a changed appointment time or a deleted booking is an integrity failure; a booking page that does not load on a Monday morning is an availability failure. Controls often favour one goal, and some trade against each other, so Priya learns to name which goal each control protects.
 
 ### 5.2 Shared responsibility
 
-AWS, Azure and Google Cloud each publish a shared responsibility model: the provider secures the underlying infrastructure, and the customer secures what they configure and run. Cobalt, as a hosting company, adds a third layer: it manages clusters for clients, who still own their data and users.
+AWS, Azure and Google Cloud each publish a shared responsibility model: the provider secures the underlying infrastructure, and the customer secures what they configure and run. Cobalt, as a hosting company, adds a third layer: it manages clusters for clients, who still own their data and users. For Riverside Dental, this means the cloud provider secures its data centres and the managed database service, Cobalt configures the cluster, network rules and storage buckets, and the dental group decides which of its staff may use the booking system and what patient data it collects. Each party needs to know exactly where its own duties start.
 
 ### 5.3 Common failures
 
-Public storage buckets, overly broad permissions, unpatched images and missing logs appear again and again in cloud incidents. None requires a clever attacker; all are configuration problems.
+Public storage buckets, overly broad permissions, unpatched images and missing logs appear again and again in cloud incidents. None requires a clever attacker; all are configuration problems. Priya meets versions of most of these during her placement: unpatched public images in the inventory, broad permissions held by old-admin and the CI bot, and missing audit logs on client-b. A public bucket is not among her findings, but the pipeline later blocks a change that would have created one. Because these are configuration problems, they can be found by comparing settings with an expected value, which is what her later baseline and pipeline checks do.
 
 ### 5.4 Threats and vulnerabilities
 
-A threat is something that could cause harm; a vulnerability is a weakness it could use. The old Node image is a vulnerability; whether it matters depends on how the workload is exposed.
+A threat is something that could cause harm; a vulnerability is a weakness it could use. The old Node image is a vulnerability; whether it matters depends on how the workload is exposed. The distinction helps Priya decide what to do when an advisory arrives. The advisory describes a vulnerability in the image; the threat is someone able to reach the workload and use that weakness. Booking faces the internet, so a threat can reach it directly, while an internal workload with no internet ingress is harder to reach. The same vulnerability can therefore deserve different urgency in different places, which is why Priya later records exposure beside every finding.
 
 ### 5.5 Risk
 
-Risk combines how likely harm is and how bad it would be. Priya learns to describe risk in words before using numbers.
+Risk combines how likely harm is and how bad it would be. Priya learns to describe risk in words before using numbers. In words, a risk statement says what could happen, how likely it seems and how much harm it would cause, with a reason for each judgement. For example, an outdated public image in the internet-facing booking workload is fairly likely to be targeted, and exposure of patient contact details would harm both patients and the dental group. Numbers can come later, once there is data to support them. Writing reasons down lets Kwame and the client challenge a judgement instead of accepting or rejecting a bare score.
 
 ### 5.6 Ethics of access
 
-Placement students see client systems. Priya signs Cobalt's confidentiality agreement and only accesses what her tasks require.
+Placement students see client systems. Priya signs Cobalt's confidentiality agreement and only accesses what her tasks require. The agreement covers what she may see, what she may copy and what she must report. In practice Priya works from synthetic copies of configuration and logs wherever possible, and uses read-only access under supervision when a task needs a real system. She does not browse client data out of curiosity, even when her access would technically allow it. If she notices something outside her task, such as an unexpected account, she reports it to Kwame rather than investigating alone. These habits protect the clients and also protect Priya, because every access she makes can be explained.
 
 ### Words to use
 
@@ -334,27 +334,27 @@ You will (1) explain virtual machines and containers; (2) compare their isolatio
 
 ### 6.1 Virtual machines
 
-A virtual machine runs a full operating system on shared hardware, separated by a hypervisor. Cloud providers use this to run many customers on the same physical machine.
+A virtual machine runs a full operating system on shared hardware, separated by a hypervisor. Cloud providers use this to run many customers on the same physical machine. Each virtual machine has its own kernel, so a flaw in one guest's operating system does not directly reach the others; the hypervisor is the shared layer that must hold. Cobalt rarely manages hypervisors itself, because providers run them, but the cluster nodes it does manage are virtual machines. Ristenpart et al. (2009) showed that even this separation can leak information between tenants on the same physical machine, so shared hardware is never treated as perfect isolation.
 
 ### 6.2 Containers
 
-A container packages an application with the files it needs and runs it as an isolated process on a shared kernel. Containers start quickly and are small, which is why Cobalt uses them.
+A container packages an application with the files it needs and runs it as an isolated process on a shared kernel. Containers start quickly and are small, which is why Cobalt uses them. For Cobalt, the speed matters: a rebuilt booking image can replace the old containers within minutes, which is what makes fixing an advisory quick once the affected workloads are known. The same property cuts the other way, because a container started from an outdated image starts just as quickly and nothing in the runtime warns that the image is old.
 
 ### 6.3 Isolation differences
 
-Containers share the host kernel, so their isolation is weaker than separate virtual machines. NIST SP 800-190 advises grouping containers of similar sensitivity on the same hosts and keeping the host operating system minimal.
+Containers share the host kernel, so their isolation is weaker than separate virtual machines. NIST SP 800-190 advises grouping containers of similar sensitivity on the same hosts and keeping the host operating system minimal. Cobalt's cluster layout follows this advice only partly, for reasons of cost. Large clients have their own clusters, so their containers never share nodes with another client's, while smaller clients share a cluster and are separated by namespaces and network policies. Priya notes that namespace separation is an administrative boundary, not a kernel one, which is one reason pod security settings on the shared cluster matter so much.
 
 ### 6.4 Images
 
-An image is a layered file bundle from which containers start. It includes a base layer, often a small operating system, plus the application. The advisory affected the base layer, so every image built on it was affected.
+An image is a layered file bundle from which containers start. It includes a base layer, often a small operating system, plus the application. The advisory affected the base layer, so every image built on it was affected. Layers are reused: when a team builds an image, it usually starts from a base image published by someone else and adds its own files on top. That reuse saves time but spreads any flaw in the base to every image built on it, and nothing in the final image name reveals which base it used. Answering the advisory therefore needs records of base images, not only application images.
 
 ### 6.5 Tags and digests
 
-A tag such as node:14 is a label that can be moved; a digest identifies exact content. Recording digests gives a reliable answer to "what exactly is running?"
+A tag such as node:14 is a label that can be moved; a digest identifies exact content. Recording digests gives a reliable answer to "what exactly is running?" The difference matters for evidence. If the registry owner moved node:14 to new content after the advisory, a record that says only node:14 cannot show which version was running before. A digest is a hash of the image content, so the same digest always means the same bytes. Priya records the tag for readability and the digest for proof, and she later blocks the latest tag in the pipeline for the same reason.
 
 ### 6.6 Running as root
 
-Containers that run as root give more power to anyone who compromises them. Kubernetes Pod Security Standards discourage it in the Restricted profile.
+Containers that run as root give more power to anyone who compromises them. Kubernetes Pod Security Standards discourage it in the Restricted profile. Root inside a container is not automatically root on the node, but it removes a barrier: a compromised root process can change files in the container, install tools and, combined with a kernel flaw or a loose setting, reach further. Running as an ordinary user limits what a compromise can do. Priya's later warn-mode check finds that the reports workload runs as root, and fixing it requires a change to the image rather than to the cluster.
 
 ### Hosts and nodes
 
@@ -394,27 +394,27 @@ You will (1) explain authentication and authorisation; (2) apply least privilege
 
 ### 7.1 Who and what
 
-Authentication confirms who someone is; authorisation decides what they may do. In cloud systems, identities include people, services and automation such as the CI bot.
+Authentication confirms who someone is; authorisation decides what they may do. In cloud systems, identities include people, services and automation such as the CI bot. Priya keeps a list of identity types for each cluster: staff accounts such as Kwame's and her own, service accounts used by workloads, and automation such as the CI bot that deploys new versions. Each of these identity types needs a different kind of review. Staff accounts are checked against the staff list, service accounts against the workloads that use them, and automation against the jobs it actually performs.
 
 ### 7.2 Least privilege
 
-Each identity should have only the access it needs. Sandhu et al. (1996) describe role-based access control, where permissions are grouped into roles and roles assigned to users, making least privilege easier to manage.
+Each identity should have only the access it needs. Sandhu et al. (1996) describe role-based access control, where permissions are grouped into roles and roles assigned to users, making least privilege easier to manage. In practice, least privilege at Cobalt means asking what each identity does, then granting exactly those actions. The CI bot deploys workloads, so it needs rights to manage deployments, not to create role bindings or read every secret. Roles make this manageable: instead of setting permissions per account, the team defines a deployer role once and binds it to whichever automation needs it.
 
 ### 7.3 Kubernetes RBAC
 
-Kubernetes uses Roles and ClusterRoles to grant actions on resources, bound to users or service accounts. A ClusterRoleBinding to cluster-admin grants everything and should be rare.
+Kubernetes uses Roles and ClusterRoles to grant actions on resources, bound to users or service accounts. A ClusterRoleBinding to cluster-admin grants everything and should be rare. A Role grants actions inside one namespace, while a ClusterRole can grant actions across the whole cluster. The difference matters at Cobalt because several smaller clients share one cluster; a Role confined to one client's namespace cannot touch another's workloads. Bindings are where mistakes hide, since a single binding to cluster-admin outweighs every careful Role. Priya's monthly export therefore lists bindings, not only role definitions.
 
 ### 7.4 Service accounts
 
-Workloads run with service accounts. The default service account should have no extra permissions; each workload that needs API access gets its own account.
+Workloads run with service accounts. The default service account should have no extra permissions; each workload that needs API access gets its own account. If several workloads share one service account, a compromise of any of them gains the access of all, and audit logs cannot say which workload made a request. Separate accounts keep access narrow and make the logs useful. Priya checks the shared cluster's namespaces and records which workloads use the default account; those that do not call the Kubernetes API keep it, with its permissions left empty.
 
 ### 7.5 Leavers
 
-When staff leave, their access must be removed. Priya finds an account called old-admin still active on one cluster.
+When staff leave, their access must be removed. Priya finds an account called old-admin still active on one cluster. The old-admin account shows how leavers' access survives: the account was created on client-b long ago and never appeared in any list that was checked when its owner left. Priya proposes a leaver step for every cluster, so removing someone from the staff directory also prompts a check of cluster bindings. The monthly cluster-admin review then catches anything that the leaver step misses.
 
 ### 7.6 Multi-factor authentication
 
-Console access for staff requires a second factor, which greatly reduces the impact of stolen passwords.
+Console access for staff requires a second factor, which greatly reduces the impact of stolen passwords. A password alone can be phished, guessed or reused from another breach; a second factor means the password is not enough on its own. For Cobalt the console is the most powerful access staff hold, since it can change settings outside the pipeline. Priya confirms that every staff console account at Cobalt has a second factor enabled and records any exception with an owner.
 
 ### Reviewing access regularly
 
@@ -458,27 +458,27 @@ You will (1) describe defence in depth; (2) place controls at layers of a hostin
 
 ### 8.1 Layers
 
-Defence in depth means several controls so one failure does not expose everything. For a client site: network rules, TLS at the proxy, admission rules in the cluster, least-privilege service accounts and logs.
+Defence in depth means several controls so one failure does not expose everything. For a client site: network rules, TLS at the proxy, admission rules in the cluster, least-privilege service accounts and logs. Each layer of the client site covers a different kind of failure. Network rules limit who can reach a service, TLS protects traffic in transit, admission rules stop risky pods from starting, narrow service accounts limit what a compromised workload can do, and logs show what happened afterwards. If one layer is misconfigured, such as an outdated image slipping through, the others still reduce the harm and help the team notice it.
 
 ### 8.2 Trust boundaries
 
-A trust boundary is where data passes between areas with different levels of trust, such as internet to proxy or cluster to managed database. Controls cluster at boundaries.
+A trust boundary is where data passes between areas with different levels of trust, such as internet to proxy or cluster to managed database. Controls cluster at boundaries. Riverside Dental's system has four boundaries that Priya draws in the worked example: internet to proxy, proxy to cluster, cluster to managed database, and cluster to monitoring service. At each point the question is what crosses, who can send it and what checks it. The internet-to-proxy boundary receives the most attention, because anyone can send traffic to it.
 
 ### 8.3 Zero trust ideas
 
-NIST SP 800-207 describes zero trust: no implicit trust based on network location; each request is authenticated and authorised. Cobalt does not need a full programme, but the idea supports checking service identities inside clusters.
+NIST SP 800-207 describes zero trust: no implicit trust based on network location; each request is authenticated and authorised. Cobalt does not need a full programme, but the idea supports checking service identities inside clusters. The unencrypted hop from web to API is an example of implicit trust: it is accepted today because both workloads sit in the same private cluster network. Zero trust would require each service to prove its identity on every request, which is what mutual TLS through a future service mesh would provide. Priya records the gap honestly rather than claiming that the private network makes the hop safe.
 
 ### 8.4 Separation of clients
 
-Cobalt runs each large client in its own cluster and smaller clients in separate namespaces of a shared cluster with network policies between them.
+Cobalt runs each large client in its own cluster and smaller clients in separate namespaces of a shared cluster with network policies between them. Separate clusters give the strongest separation Cobalt offers, but each one costs money and maintenance. Namespaces in a shared cluster are cheaper, so smaller clients such as the two whose workloads were both called web share one cluster. That arrangement relies on network policies, RBAC confined to namespaces and pod security settings. If any of those three is missing, one client's workloads may be able to reach another's.
 
 ### 8.5 Simplicity
 
-A design staff understand is more secure in practice than a complex one they work around.
+A design staff understand is more secure in practice than a complex one they work around. Priya sees this in the troubleshooting cases later in the placement: when a control is confusing, teams are tempted to relax it rather than understand it. A design with a few clear boundaries, each with an obvious owner, lets staff predict what a change will affect. Kwame's rule of thumb is that anyone on the platform team should be able to explain a client's design in two minutes.
 
 ### 8.6 Architecture records
 
-Each client has a one-page architecture record with layers and boundaries.
+Each client has a one-page architecture record with layers and boundaries. The record lists the client's components, the boundaries between them, the controls at each boundary and any known gaps, such as the missing network policy between booking and reports. It fits on one page so that it is read. Priya updates Riverside Dental's record after her worked example, adding the gap with an owner, and links the record from the client's diagram so the two stay together. Kwame reads the record before approving any change that touches one of its boundaries.
 
 ### Architecture and clients
 
@@ -522,27 +522,27 @@ You will (1) collect evidence about system state; (2) define simple measures; (3
 
 ### 9.1 What counts as evidence
 
-Evidence is a record that shows the state of a system at a time: a configuration export, a log entry, an inventory file. A colleague saying "it is fine" is not evidence.
+Evidence is a record that shows the state of a system at a time: a configuration export, a log entry, an inventory file. A colleague saying "it is fine" is not evidence. Good evidence can be checked by someone else without trusting its collector. A settings export from client-b, saved with its collection time, lets Kwame confirm that audit logging was off without taking Priya's word for it. Her inventory output, her flow list and later the audit summary all become evidence in this sense, which is why each lab prints results that can be saved unchanged.
 
 ### 9.2 Timestamps and sources
 
-Each piece of evidence needs when it was collected and from where, so others can check it.
+Each piece of evidence needs when it was collected and from where, so others can check it. A settings export without a time cannot show whether a setting was wrong before or after a change, and one without a source cannot show which cluster it describes. Priya names each evidence file with the cluster, the type of export and the collection time, and notes whether it came from a real system with read-only access or from a synthetic copy. That habit later lets her compare results fairly across several weeks.
 
 ### 9.3 Simple measures
 
-Useful measures for Cobalt: share of workloads using approved images, number of baseline failures per cluster, and time to answer an advisory.
+Useful measures for Cobalt: share of workloads using approved images, number of baseline failures per cluster, and time to answer an advisory. Each of the three measures links back to the placement trigger. The share of approved images shows how much of the inventory problem remains, baseline failures per cluster show configuration health, and time to answer an advisory measures the very question that took six hours. Priya defines each one precisely, for example counting a workload as approved only if its full image reference is on the approved list.
 
 ### 9.4 Baselines and trends
 
-A single number means little; comparing it over time shows whether things improve.
+A single number means little; comparing it over time shows whether things improve. Seven baseline failures across three clusters means little on its own; it becomes useful when the same check runs again later and the number moves. Priya records the first values as a baseline and repeats each measurement on the same definition. If a definition must change, she notes the change beside the trend so the comparison is not quietly broken. Without that note, a falling count could simply reflect a narrower check rather than real improvement.
 
 ### 9.5 Misleading numbers
 
-A percentage hides small totals. "50% of clusters failing" may mean one of two. Priya always shows counts alongside percentages.
+A percentage hides small totals. "50% of clusters failing" may mean one of two. Priya always shows counts alongside percentages. The risk is real at Cobalt's scale, where there are three clusters in the baseline lab and eight workloads in the inventory lab. One cluster changing state moves a percentage by a third. Writing "1 of 3 clusters" next to "33%" lets readers see how fragile the figure is. Priya applies the rule in her later evaluation, where counts appear before percentages in every line of output.
 
 ### 9.6 Storing evidence
 
-Evidence is kept in the configuration repository with read-only history so it cannot be quietly changed.
+Evidence is kept in the configuration repository with read-only history so it cannot be quietly changed. Storing evidence in the repository means each file has a commit time and author, and any later edit appears in history. That makes quiet changes visible rather than impossible, so access to rewrite history is restricted. Evidence that contains internal details, such as scanner reports, stays in the repository rather than in chat messages or personal folders, where it would be hard to find and easy to lose.
 
 ### Measurement plan
 
@@ -586,27 +586,27 @@ You will (1) map the cloud and container security field; (2) locate Cobalt's pro
 
 ### 10.1 The field
 
-Cloud and container security covers configuring cloud services, building and running images, managing identities, protecting data and monitoring. Standards include NIST SP 800-190 for containers, CSA CCM v4 for cloud controls and the CIS Benchmarks for configuration.
+Cloud and container security covers configuring cloud services, building and running images, managing identities, protecting data and monitoring. Standards include NIST SP 800-190 for containers, CSA CCM v4 for cloud controls and the CIS Benchmarks for configuration. The field also overlaps with neighbouring work: application security covers the code inside the images, and identity management covers the accounts that reach the clusters. Priya keeps her placement focused on the hosting layer that Cobalt controls, noting where other areas begin. The shared responsibility pages from AWS, Azure and Google Cloud help her draw that line for each client.
 
 ### 10.2 Cobalt's problem
 
-The six-hour search showed that Cobalt lacked an inventory of images. Without it, advisories, audits and incidents all start slowly.
+The six-hour search showed that Cobalt lacked an inventory of images. Without it, advisories, audits and incidents all start slowly. The same gap would slow other kinds of security work too. An auditor asking which clients run unapproved images, or an incident responder asking where a compromised image is deployed, would face the same manual search. Fixing the inventory therefore helps more than one future question, which is why Priya's plan starts there before any other area. Priya records the six hours as the starting value for every later comparison.
 
 ### 10.3 Main areas
 
-Priya groups the work into inventory, configuration baselines, identity, data flows, pipeline checks and monitoring.
+Priya groups the work into inventory, configuration baselines, identity, data flows, pipeline checks and monitoring. Each area answers a different question: inventory says what runs, configuration baselines say whether clusters are set up safely, identity says who can act, data flows say where information goes, pipeline checks stop risky changes, and monitoring shows what happened. Priya orders them so each builds on the one before, starting with inventory because every later area needs to know what exists. Data flows come second, since mapping them depends on first knowing which workloads exist.
 
 ### 10.4 Kubernetes security docs
 
-The Kubernetes project documents Pod Security Standards, RBAC, network policies and good practices for secrets. These are free and written for operators.
+The Kubernetes project documents Pod Security Standards, RBAC, network policies and good practices for secrets. These are free and written for operators. Priya uses these pages as primary references rather than relying on blog summaries, because they describe current behaviour and note when features change. The Pod Security Standards page, for example, defines exactly what Restricted requires, which she needs when warn mode later reports violations. She records the page date when she reads each one, since Kubernetes documentation changes with releases.
 
 ### 10.5 Plan
 
-Over the next chapters Priya will build an inventory, check data flows, apply a baseline, review logs, add pipeline checks and evaluate the result.
+Over the next chapters Priya will build an inventory, check data flows, apply a baseline, review logs, add pipeline checks and evaluate the result. The order of the plan is deliberate rather than convenient. The inventory comes first because baselines, flows and evaluation all need to know what runs; monitoring comes after audit logs are enabled; pipeline checks follow once the baseline defines what to block. Evaluation then reuses the measures defined earlier, and the handoff makes sure the work continues after the placement ends. Each step names its deliverable, so Kwame can check progress against the plan every week.
 
 ### 10.6 Agreement
 
-Kwame and Northgate agree on her placement objectives and confirm she works only on synthetic copies or with supervision.
+Kwame and Northgate agree on her placement objectives and confirm she works only on synthetic copies or with supervision. The agreement lists her objectives as the deliverables in her one-page plan, names Kwame as supervisor and states that any access to client systems is read-only and supervised. Northgate's placement tutor keeps a copy, so assessment later checks Priya's work against the same objectives. The agreement also confirms that she will not test client systems for weaknesses. Any later change to the objectives needs agreement from both Kwame and the Northgate tutor.
 
 ### Learning resources
 
@@ -650,13 +650,13 @@ You will (1) build an inventory of running workloads and their images; (2) compa
 
 ### 11.1 From model to inventory
 
-Using the data model from chapter 4, Priya exports the workloads from the shared client cluster into a synthetic list. Each entry links a workload to the full image reference it runs. This is the asset list that was missing during the advisory search.
+Using the data model from chapter 4, Priya exports the workloads from the shared client cluster into a synthetic list. Each entry links a workload to the full image reference it runs. This is the asset list that was missing during the advisory search. The export covers the shared cluster first because it holds the most workloads from different teams, which is where the advisory search was slowest. Each line records the workload name and the image reference exactly as the cluster reports it, so no one retypes anything. Priya keeps the lab data small, eight workloads, so the logic can be checked by hand before it runs on a full export.
 
 ### 11.2 Approved images
 
-Cobalt keeps an approved list: images built by its own pipeline, scanned and stored in its private registry. Anything else is unapproved, either pulled straight from a public registry or built outside the pipeline. Shu et al. (2017) found that many public images contained known vulnerabilities, which is why Cobalt prefers its own builds.
+Cobalt keeps an approved list: images built by its own pipeline, scanned and stored in its private registry. Anything else is unapproved, either pulled straight from a public registry or built outside the pipeline. Shu et al. (2017) found that many public images contained known vulnerabilities, which is why Cobalt prefers its own builds. Building in-house does not make an image safe by itself; the value comes from the pipeline's scanning and from knowing exactly what each image contains and who maintains it. An image on the approved list has a known base, a known owner and a scan record. The lab checks only membership of the list, which is the first question an advisory raises.
 
-### Lab — Lab — image inventory
+### Lab — image inventory
 
 ```python
 """Match running container images to the approved registry list (synthetic, stdlib only)."""
@@ -683,15 +683,15 @@ workloads 8, approved 5, not approved 3
 
 ### 11.3 Reading the result
 
-Of 8 workloads, 5 run approved images and 3 do not. Two, booking and cron, pull node:14 and python:3.6 directly from a public registry; both are old versions. One, reports, uses an internal image that was never added to the approved list.
+Of 8 workloads, 5 run approved images and 3 do not. Two, booking and cron, pull node:14 and python:3.6 directly from a public registry; both are old versions. One, reports, uses an internal image that was never added to the approved list. The count of approved workloads is 5 even though the approved list holds only 4 images, because web-1 and web-2 both run the same web:2.4 image. Priya points this out so readers do not mistake workload counts for image counts. The two public images are the clearest problem, since they come from outside Cobalt's pipeline and were never scanned by it, while reports is a gap in the list rather than in the build process.
 
 ### 11.4 Context for each finding
 
-Priya adds context: booking faces the internet and handles appointments, so it matters most; cron sends files to a partner; reports is internal. Context decides the order of fixes.
+Priya adds context: booking faces the internet and handles appointments, so it matters most; cron sends files to a partner; reports is internal. Context decides the order of fixes. The same finding can matter very differently depending on what the workload does and who can reach it. Booking accepts traffic from patients through the proxy and stores appointment data, so a flaw there could expose patient contact details. Cron is not reachable from the internet but moves files across a boundary to a partner. Reports never faces the internet and its image comes from Cobalt's own build process, so its fix is mainly a matter of adding it to the list after a scan.
 
 ### 11.5 Owners
 
-Each unapproved image is assigned to the team that deploys it, with a target date.
+Each unapproved image is assigned to the team that deploys it, with a target date. For booking, the owner is the team that maintains Riverside Dental's booking system, with a target of two weeks to rebuild on a supported base. Cron's owner must coordinate with the partner that receives its files, and the reports owner only needs to run the image through the pipeline scan and request its addition to the list. Owners and dates are written in the inventory itself, so the nightly export shows whether each finding is still open.
 
 ### Regenerating
 
@@ -731,13 +731,13 @@ You will (1) list data flows for a client system; (2) mark trust boundaries; (3)
 
 ### 12.1 Why flows matter
 
-Knowing what runs is half the picture; knowing where data goes is the other. Patient contact details move from browser to booking to email service; reports go to a storage bucket; files go to a partner.
+Knowing what runs is half the picture; knowing where data goes is the other. Patient contact details move from browser to booking to email service; reports go to a storage bucket; files go to a partner. The advisory search showed the cost of not knowing what runs; a flow list prevents the same problem for data. If a partner reported a leak or an email provider announced a breach, Cobalt would need to know at once which clients send data there and what that data contains. Priya builds the list for Riverside Dental first because its booking system handles patient contact details.
 
 ### 12.2 Recording flows
 
-Priya records each flow as source, destination, zone and whether it is encrypted. The zone shows whether the flow stays inside the cluster, goes to a managed service or crosses the internet.
+Priya records each flow as source, destination, zone and whether it is encrypted. The zone shows whether the flow stays inside the cluster, goes to a managed service or crosses the internet. Each field in a flow record has a specific purpose. Source and destination say what talks to what, the zone says which boundary is crossed, and the encryption field says whether the data is protected on the way. Priya fills the fields from the service configurations rather than from memory, and she marks any flow whose encryption she could not confirm as unknown rather than guessing.
 
-### Lab — Lab — data flows
+### Lab — data flows
 
 ```python
 """List data flows and flag ones that cross a trust boundary without encryption (synthetic)."""
@@ -762,19 +762,19 @@ flows 8, crossing a boundary 6
 
 ### 12.3 Reading the result
 
-Of 8 flows, 6 cross a boundary. One, booking to the email API over the internet, is not encrypted and is flagged for review. One inside the cluster, web to API, is also unencrypted and noted as a known limit.
+Of 8 flows, 6 cross a boundary. One, booking to the email API over the internet, is not encrypted and is flagged for review. One inside the cluster, web to API, is also unencrypted and noted as a known limit. The six boundary flows are browser to proxy, the API's link to the managed database, reports to the storage bucket, cron to the partner's SFTP server, metrics to the monitoring service and booking to the email API. Five of the six use encryption. The two flows inside the cluster are proxy to web and web to API, and only the second is unencrypted, matching what Priya found when tracing the booking request in chapter 2.
 
 ### 12.4 Following up
 
-Priya checks the booking configuration and finds the email library set to a plain connection. Switching to the encrypted endpoint is a one-line configuration change, tested in staging first.
+Priya checks the booking configuration and finds the email library set to a plain connection. Switching to the encrypted endpoint is a one-line configuration change, tested in staging first. The plain connection had probably been chosen during early testing and never changed. In staging, Priya switches the library to the encrypted endpoint, sends a synthetic booking confirmation, and confirms that the email arrives and that the connection now uses TLS. Only then is the change made in production through the pipeline, and the flow list entry is updated with the date of the fix.
 
 ### 12.5 Data minimisation
 
-She also asks whether the email needs the patient's full details. It needs only a name and time, so the flow is reduced.
+She also asks whether the email needs the patient's full details. It needs only a name and time, so the flow is reduced. Before the change, the confirmation email carried the patient's full contact details, although its purpose was only to remind the patient of an appointment. Sending only a name and time means that even if the email provider were breached, much less patient data would be exposed. Priya records the reduced field list beside the flow, so a later change that adds fields again shows up in review.
 
 ### 12.6 Keeping the list current
 
-The flow list is reviewed whenever a new integration is added.
+The flow list is reviewed whenever a new integration is added. Integrations often arrive quietly, for example when a developer adds a new analytics service or a client asks for a calendar link. Priya adds a question about new outbound connections to the deployment review, so the flow list is updated together with the inventory. Kwame agrees to compare the list with observed outbound traffic every quarter, which catches integrations that bypass review. Removed integrations are deleted from the list as well, so it never describes flows that have stopped.
 
 ### Partner flows
 
@@ -818,27 +818,27 @@ You will (1) write plain risk scenarios; (2) rate likelihood and impact; (3) pri
 
 ### 13.1 Writing scenarios
 
-A scenario states what could go wrong, how, and what the result would be, without describing attack steps. For example: an outdated booking image contains a known flaw; if exploited, patient contact details could be exposed.
+A scenario states what could go wrong, how, and what the result would be, without describing attack steps. For example: an outdated booking image contains a known flaw; if exploited, patient contact details could be exposed. Priya keeps scenarios at the level of what and why, never how, so the register can be shared with clients without becoming a set of instructions. Each scenario names the asset, the weakness, the likely route in general terms and the harm. The booking example names the asset, booking; the weakness, an outdated image; and the harm, exposure of patient contact details.
 
 ### 13.2 Four scenarios
 
-Priya writes four: outdated public images in booking; the client-b cluster without audit logs, so misuse would go unseen; a leftover admin account; and the unencrypted email flow.
+Priya writes four: outdated public images in booking; the client-b cluster without audit logs, so misuse would go unseen; a leftover admin account; and the unencrypted email flow. Each scenario comes directly from a finding earlier in the placement: the booking image from the inventory, the audit logging gap from her review of client-b's settings, the old-admin account from the access review, and the email flow from the flow list. Writing them as scenarios turns separate findings into one list that can be compared and ordered by risk.
 
 ### 13.3 Rating
 
-She rates likelihood and impact as low, medium or high, recording a sentence of reasoning for each.
+She rates likelihood and impact as low, medium or high, recording a sentence of reasoning for each. The booking image, for example, is rated high impact because patient contact details could be exposed, and medium likelihood because the image is reachable from the internet but no exploitation has been seen. Three levels are coarse, but they are enough to order four scenarios, and the reasoning sentence makes each rating open to challenge. When two people rate the same scenario differently, they compare reasons and agree a rating together.
 
 ### 13.4 Prioritising
 
-High impact and medium or high likelihood come first: outdated booking image and missing audit logs. The admin account was already removed; the email flow is fixed.
+High impact and medium or high likelihood come first: outdated booking image and missing audit logs. The admin account was already removed; the email flow is fixed. The two remaining scenarios share a feature: neither can be fixed with a one-line change. Rebuilding booking needs the client team's work and testing, and enabling audit logs on client-b needs a change window agreed with the client. Ranking them first ensures they receive time and attention instead of being left behind the quick fixes.
 
 ### 13.5 Residual risk
 
-After fixes, some risk remains; the scenario record notes it.
+After fixes, some risk remains; the scenario record notes it. For booking, residual risk remains after the rebuild because any new image can later receive its own advisory; the inventory and pipeline reduce the time to respond rather than removing the risk. For the email flow, encryption protects data in transit, but the email provider still stores the reduced name and time. Each residual risk statement names the person who has accepted it. Accepted residual risks are reviewed on the same date as the scenario itself, so they are revisited regularly. A risk accepted once is not assumed to stay acceptable after the system changes.
 
 ### 13.6 Sharing
 
-Scenarios are shared with clients in plain language as part of Cobalt's service review.
+Scenarios are shared with clients in plain language as part of Cobalt's service review. Riverside Dental's practice manager receives the four scenarios written without technical terms, with a short note on what Cobalt has done and what remains. Plain language matters because the client must agree to change windows and accept residual risk; a scenario the manager cannot understand cannot be agreed to. The manager's questions are recorded with the answers given, so the next review can start from them. Her question about audit logs is the first entry in that record.
 
 ### Scenario register
 
@@ -880,27 +880,27 @@ You will (1) use benchmarks to define a configuration baseline; (2) select check
 
 ### 14.1 Benchmarks
 
-The CIS Benchmarks give consensus configuration recommendations for platforms including Kubernetes and the main cloud providers. They are long; small teams choose the checks that matter most for their risks.
+The CIS Benchmarks give consensus configuration recommendations for platforms including Kubernetes and the main cloud providers. They are long; small teams choose the checks that matter most for their risks. The CIS Kubernetes Benchmark alone contains many recommendations across control plane, nodes and policies, and some apply only to clusters where the operator controls the control plane. A small team that tries to apply all of them at once tends to finish none. Priya instead starts from her risk scenarios and selects the benchmark recommendations that address them directly.
 
 ### 14.2 Choosing checks
 
-Priya picks six checks linked to her scenarios: audit logging on, anonymous access off, a Restricted default for pod security, encryption of secrets at rest, no public API endpoint, and automatic node upgrades.
+Priya picks six checks linked to her scenarios: audit logging on, anonymous access off, a Restricted default for pod security, encryption of secrets at rest, no public API endpoint, and automatic node upgrades. Each of the six checks links to a scenario or earlier finding. Audit logging addresses the client-b gap that would hide misuse; anonymous access off and a private endpoint reduce who can reach the cluster API; the Restricted default stops risky pods; secrets encryption protects stored credentials; and automatic node upgrades keep kernels patched. All six can be read from a settings export without changing anything.
 
 ### 14.3 Why each matters
 
-Audit logging supports investigation; anonymous access off prevents unauthenticated requests; the Restricted default blocks risky pods; secrets encryption protects stored credentials; a private endpoint reduces exposure; auto-upgrades keep nodes patched.
+Audit logging supports investigation; anonymous access off prevents unauthenticated requests; the Restricted default blocks risky pods; secrets encryption protects stored credentials; a private endpoint reduces exposure; auto-upgrades keep nodes patched. Writing one reason per check helps when someone asks to relax it. If a client wants a public endpoint for convenience, the reason, reducing exposure of the cluster API, makes the trade-off visible. The reasons also guide fixes: knowing that auto-upgrades exist to keep kernels patched tells the team that a failing node needs an upgrade plan, not just a setting change.
 
 ### 14.4 Writing it down
 
-The baseline is a small file with each setting and its expected value, kept in the repository with a short reason for each.
+The baseline is a small file with each setting and its expected value, kept in the repository with a short reason for each. The file uses the same setting names as the settings export, so a script can compare them directly, as the guided lab does. Each line records the setting, its expected value and one sentence of reason. Keeping it short means Kwame can review the whole baseline in a few minutes, and any proposed change to an expected value is easy to spot.
 
 ### 14.5 Managed services
 
-Some settings are controlled by the provider in managed Kubernetes; the baseline notes which ones Cobalt sets and which it relies on the provider for, citing the provider's shared responsibility page.
+Some settings are controlled by the provider in managed Kubernetes; the baseline notes which ones Cobalt sets and which it relies on the provider for, citing the provider's shared responsibility page. On a managed cluster, the provider runs the control plane, so some settings are fixed by the provider's own configuration. Priya marks each of the six checks as set by Cobalt or set by the provider, and checks provider settings by reading them from the export rather than assuming. Where a provider controls a setting, the evidence is a link to the provider's documentation plus the value read from the export.
 
 ### 14.6 Exceptions
 
-Where a client needs a different value, the exception is recorded with owner and expiry.
+Where a client needs a different value, the exception is recorded with owner and expiry. An exception without an expiry quietly becomes permanent, so each one has a review date on which the owner must either renew it with a fresh reason or remove it. A recorded exception does not turn a failure into a pass: the check still reports the setting as different from the baseline, and the exception register explains why. Keeping both visible stops the failure count from shrinking simply because exceptions were granted.
 
 ### Version control for the baseline
 
@@ -940,9 +940,9 @@ You will (1) run a baseline check against synthetic cluster settings; (2) interp
 
 ### 15.1 Setup
 
-Priya exports settings for three clusters into synthetic records: client-a, client-b and Cobalt's internal cluster. The lab compares each with the baseline.
+Priya exports settings for three clusters into synthetic records: client-a, client-b and Cobalt's internal cluster. The lab compares each with the baseline. The exports are synthetic copies of each cluster's six baseline settings, using the same names as the baseline file. Client-a is a dedicated cluster, client-b is the contractor-built cluster where old-admin was found, and the internal cluster runs Cobalt's own tools. Using copies means the lab can be run, repeated and shared without access to any real cluster.
 
-### Lab — Lab — baseline check
+### Lab — baseline check
 
 ```python
 """Check synthetic cluster settings against a small benchmark-style baseline (stdlib only)."""
@@ -970,19 +970,19 @@ internal: 5/6 pass; fails: pod_security_default
 
 ### 15.2 Reading the result
 
-Client-a passes 5 of 6, failing only on a public endpoint. Client-b passes 1 of 6: audit logging, pod security default, secrets encryption, public endpoint and node auto-upgrade all fail. The internal cluster passes 5 of 6, with a Baseline rather than Restricted default.
+Client-a passes 5 of 6, failing only on a public endpoint. Client-b passes 1 of 6: audit logging, pod security default, secrets encryption, public endpoint and node auto-upgrade all fail. The internal cluster passes 5 of 6, with a Baseline rather than Restricted default. The only setting client-b passes is anonymous access, which is already off. Its failures match the scenarios: missing audit logging hides misuse, a Privileged default allows risky pods, unencrypted secrets expose stored credentials, a public endpoint widens access and disabled auto-upgrades leave nodes unpatched.
 
 ### 15.3 Why client-b differs
 
-Client-b was set up years ago by a contractor and never reviewed. It explains why the old admin account was found there too.
+Client-b was set up years ago by a contractor and never reviewed. It explains why the old admin account was found there too. The contractor's setup may have been reasonable when it was built, but the cluster was never compared with any baseline afterwards, so defaults and quick choices stayed in place. Nobody at Cobalt knew which settings had been chosen, because the cluster was configured by hand rather than through the repository. The same lack of review left old-admin bound to cluster-admin long after its owner had gone.
 
 ### 15.4 Plan
 
-Client-b gets a planned rebuild; client-a's endpoint is restricted to Cobalt's office addresses; the internal cluster moves to Restricted after checking its workloads.
+Client-b gets a planned rebuild; client-a's endpoint is restricted to Cobalt's office addresses; the internal cluster moves to Restricted after checking its workloads. The plan matches the effort to the size of each cluster's problem. With five failures, client-b is easier to rebuild through the repository than to fix setting by setting, and the rebuild also brings its configuration under review. Client-a's single failure needs only a narrower endpoint rule, made in an agreed change window, and the internal cluster's change waits until warn mode shows which of its workloads would fail Restricted.
 
 ### 15.5 Total
 
-Seven failures across three clusters form the starting count for later comparison.
+Seven failures across three clusters form the starting count for later comparison. The seven are one failure on client-a, five on client-b and one on the internal cluster. Priya records the figure with the date and the exact baseline version used, so later runs can be compared fairly. If the baseline grows, later runs report results for the original six checks as well as for any new ones. A single total also hides where the work lies, since five of the seven failures belong to client-b.
 
 ### Running safely
 
@@ -1026,27 +1026,27 @@ You will (1) apply Pod Security Standards; (2) use network policies; (3) handle 
 
 ### 16.1 Pod Security Standards
 
-Kubernetes defines three profiles: Privileged, Baseline and Restricted. Restricted requires, among other things, running as non-root and dropping extra capabilities. Namespaces are labelled with the level to enforce.
+Kubernetes defines three profiles: Privileged, Baseline and Restricted. Restricted requires, among other things, running as non-root and dropping extra capabilities. Namespaces are labelled with the level to enforce. Privileged applies no restrictions, Baseline blocks known privilege escalations such as privileged containers and host namespaces, and Restricted adds hardening such as requiring a non-root user. At Cobalt, client-b's default was Privileged and the internal cluster's was Baseline, which is why both failed the baseline check. The labels make the expected level visible on each namespace, so a review can see at once which level applies.
 
 ### 16.2 Network policies
 
-By default pods can talk to all other pods. A network policy limits this, for example allowing booking to reach only the API and email service.
+By default pods can talk to all other pods. A network policy limits this, for example allowing booking to reach only the API and email service. On the shared cluster, that default means one small client's workloads could connect to another client's database service if nothing else stopped them. Network policies are written in terms of labels, so Priya's flow list translates directly into rules: each allowed flow becomes an allow rule, and everything else is denied. The missing policy between booking and reports at Riverside Dental is the first one she writes.
 
 ### 16.3 Secrets
 
-The Kubernetes good-practice guide for secrets advises encryption at rest, least-privilege access to secrets and avoiding secrets in images or source code.
+The Kubernetes good-practice guide for secrets advises encryption at rest, least-privilege access to secrets and avoiding secrets in images or source code. Secrets encryption at rest was one of the baseline checks client-b failed, so its stored secrets were readable by anyone with access to the cluster's storage layer. Least-privilege access matters just as much: the audit summary later shows the CI bot reading secrets, which may be needed but should be limited to the specific secret used for deployment. Secrets in images are worse still, because every copy of the image carries them.
 
 ### 16.4 Starting with warn
 
-Pod Security admission supports warn and audit modes, which report violations without blocking. Priya uses these first.
+Pod Security admission supports warn and audit modes, which report violations without blocking. Priya uses these first. Warn mode returns a message to whoever submits a non-compliant pod, while audit mode records the violation in the audit log. Neither stops the pod, so client services keep running while Priya collects a list of workloads that would fail. That list becomes the work plan for each namespace, and only when it is empty does the namespace move to enforce. Audit mode also leaves a record in the logs for later comparison.
 
 ### 16.5 Fixing workloads
 
-Most failures are fixed by setting a non-root user in the image and adding a security context.
+Most failures are fixed by setting a non-root user in the image and adding a security context. Setting a non-root user usually means adding a user in the image build and switching to it, then declaring in the pod's security context that the container must not run as root, with privilege escalation disabled and extra capabilities dropped. Workloads that write files may also need a writable volume, as the cron job later shows. Fixing the image rather than the policy keeps the protection in place.
 
 ### 16.6 Recording progress
 
-Each namespace's level is tracked in the inventory.
+Each namespace's level is tracked in the inventory. The inventory gains one field per namespace: the enforced Pod Security level. Priya can then answer which namespaces still run below Restricted with the same script that answers image questions. During the placement, the shared cluster's namespaces move from warn to enforce one at a time, and each move is recorded with its date, so the progress is visible in the repository history rather than in someone's memory. The field is also checked by the namespace label check.
 
 ### Namespaces and labels
 
@@ -1096,27 +1096,27 @@ You will (1) choose tools for inventory, scanning and checks; (2) prefer simple 
 
 ### 17.1 Needs first
 
-Priya lists needs: export workloads, scan images for known vulnerabilities, check baselines, check code before merge.
+Priya lists needs: export workloads, scan images for known vulnerabilities, check baselines, check code before merge. Each need on Priya's list comes from an earlier finding. The advisory search needs a workload export, the outdated images need scanning, the client-b settings need a baseline check, and the pipeline needs checks before merge so that public buckets or root containers never reach production. Writing needs before looking at products stops a feature list from deciding what Cobalt should care about. Each need is written as a question the tool must answer.
 
 ### 17.2 Options
 
-Scanners and checkers exist from providers, open-source projects and vendors. The course labs show the logic with stdlib Python so it is understood before a tool is chosen.
+Scanners and checkers exist from providers, open-source projects and vendors. The course labs show the logic with stdlib Python so it is understood before a tool is chosen. Providers offer built-in configuration checks for their own platforms, open-source projects offer scanners and policy checkers, and vendors sell combined dashboards. Each option differs in cost, permissions needed and how much Cobalt can see of its logic. Priya's stdlib labs serve as a reference: if a tool's output cannot be explained in the same plain terms, the team may not be able to trust or act on it.
 
 ### 17.3 Criteria
 
-Cobalt chooses tools that are maintained, produce readable output, run in the pipeline and do not need wide permissions.
+Cobalt chooses tools that are maintained, produce readable output, run in the pipeline and do not need wide permissions. Maintained means the tool's vulnerability data and code are still updated, so it recognises recent advisories. Readable output means a finding can be acted on without a specialist. Running in the pipeline lets checks happen before merge, and low permissions matter because a scanner with cluster-admin rights becomes a target itself. Priya scores each option against these four criteria in a small table.
 
 ### 17.4 Scanner limits
 
-Image scanners match packages against vulnerability databases; they miss custom code flaws and can report vulnerabilities that are not reachable.
+Image scanners match packages against vulnerability databases; they miss custom code flaws and can report vulnerabilities that are not reachable. A scanner looks up the packages it finds in an image and reports those with known advisories. It cannot judge whether a vulnerable function is ever called, whether the workload is reachable from the internet, or whether Cobalt's own application code is flawed. Its output is therefore a starting list, which Priya combines with the exposure notes from the inventory before deciding what to fix first.
 
 ### 17.5 Prioritising findings
 
-Jacobs et al. (2021) describe EPSS, which estimates the likelihood a vulnerability will be exploited. Cobalt uses it alongside severity to order fixes.
+Jacobs et al. (2021) describe EPSS, which estimates the likelihood a vulnerability will be exploited. Cobalt uses it alongside severity to order fixes. Severity describes how bad exploitation would be; EPSS estimates how likely exploitation is in the near future. Using both helps a small team avoid two mistakes: rushing to fix every high-severity finding regardless of its exploitation likelihood, and ignoring a moderate one that is being widely exploited. Cobalt adds exposure as a third factor, so internet-facing workloads such as booking are fixed sooner.
 
 ### 17.6 Sprawl
 
-Each tool adds maintenance. Priya recommends two tools rather than five.
+Each tool adds maintenance. Priya recommends two tools rather than five. Every additional tool needs updates, permissions, someone who understands its output and a place in the runbooks. Five overlapping tools would also produce overlapping findings, which the team would have to reconcile by hand. Priya's recommendation, one image scanner plus the team's own small checks, covers the four needs she listed and keeps the maintenance load within what the platform team can sustain after she leaves. Fewer tools also means fewer accounts holding cluster read access.
 
 ### Testing a tool
 
@@ -1168,27 +1168,27 @@ You will (1) describe preventive, detective and corrective controls; (2) map Cob
 
 ### 18.1 Control types
 
-Preventive controls stop problems (admission rules); detective controls find them (logs and scans); corrective controls fix them (rebuild and redeploy).
+Preventive controls stop problems (admission rules); detective controls find them (logs and scans); corrective controls fix them (rebuild and redeploy). The three control types work together on the same outdated-image risk. For outdated images, the admission rule and the approved registry prevent unapproved images from starting, the nightly inventory and scans detect any that slip through, and the rebuild-and-redeploy process corrects them. If only one type existed, a single failure would leave the risk uncovered. Priya labels every control in her list with one of the three types.
 
 ### 18.2 Cobalt's controls
 
-Approved registry, baseline checks, Pod Security admission, network policies, pipeline checks, audit logs and an advisory process.
+Approved registry, baseline checks, Pod Security admission, network policies, pipeline checks, audit logs and an advisory process. Each control maps to a type: the approved registry, Pod Security admission, network policies and pipeline checks are mainly preventive; baseline checks, audit logs and the nightly inventory are detective; and the advisory process combines detection with correction through rebuilds. Listing them in one place lets Priya see that corrective controls are thin, apart from rebuilding images. That observation leads her to look for a corrective control for lost data.
 
 ### 18.3 Framework mapping
 
-Priya maps each to CSA CCM v4 domains, such as identity and access management, and to NIST SP 800-190 recommendations on images and registries.
+Priya maps each to CSA CCM v4 domains, such as identity and access management, and to NIST SP 800-190 recommendations on images and registries. The mapping is a table with one row per control and columns for the matching CCM v4 domain, the related SP 800-190 recommendation and the evidence source. It lets an auditor such as Riverside Dental's see Cobalt's controls in a familiar framework without Cobalt adopting the whole framework. Rows with an empty framework column, or framework areas with no control, show where to look for gaps.
 
 ### 18.4 Gaps
 
-The mapping shows no tested restore of client data, which becomes a new task.
+The mapping shows no tested restore of client data, which becomes a new task. Backups were being taken, but nobody had restored client data from one, so nobody knew whether a restore would work or how long it would take. The gap matters for availability: a booking system that cannot be restored after a failure leaves patients unable to book. The task is assigned to the platform team and later becomes the restore test that closes a gap in the handoff pack.
 
 ### 18.5 Owners and evidence
 
-Each control has an owner and a source of evidence.
+Each control has an owner and a source of evidence. The owner keeps the control working and answers questions about it; the evidence source shows that it works. For the baseline check, the owner is the platform team and the evidence is the daily output saved in the repository. For audit logs, the evidence is the log storage itself, along with the alert records. A control without either cannot be shown to an auditor. Owners are named teams, so the record survives staff changes such as Priya's departure.
 
 ### 18.6 Clients
 
-The control list goes into each client's service description.
+The control list goes into each client's service description. Including the list in the service description tells each client what Cobalt does on their behalf and, by omission, what remains theirs. For Riverside Dental, that means the client sees that Cobalt manages image approval, cluster settings and audit logs, while the dental group still decides which staff may use the booking system. The list is updated whenever a control is added or retired. Clients are told when the list changes, through their account manager's regular service review.
 
 ### Testing controls
 
@@ -1242,9 +1242,9 @@ You will (1) summarise audit events; (2) identify events needing review; (3) set
 
 ### 19.1 Audit logs
 
-Kubernetes audit logs record requests to the API: who, what action, which resource. With client-b now logging, Priya has data to review.
+Kubernetes audit logs record requests to the API: who, what action, which resource. With client-b now logging, Priya has data to review. Before client-b's rebuild, its audit logging was off, so there was no record of who had used the old-admin account or what the CI bot read. Each audit event names a user or service account, a verb such as get or create, and a resource such as pods or secrets. The lab summarises synthetic events of that shape for the review period.
 
-### Lab — Lab — audit summary
+### Lab — audit summary
 
 ```python
 """Summarise synthetic Kubernetes-style audit events and flag ones worth review (stdlib only)."""
@@ -1276,19 +1276,19 @@ events 66
 
 ### 19.2 Reading the result
 
-Of 66 events, most are routine: the CI bot creating and updating deployments, staff reading pods. Four lines need review: the CI bot reading secrets three times, old-admin creating a cluster role binding and reading a secret, and an anonymous request.
+Of 66 events, most are routine: the CI bot creating and updating deployments, staff reading pods. Four lines need review: the CI bot reading secrets three times, old-admin creating a cluster role binding and reading a secret, and an anonymous request. The routine lines total 60: 40 deployment events from the CI bot, 12 pod reads by Kwame and 8 by Priya. The six flagged events are spread over four lines, and flagging depends on the resource or the user rather than the volume, which is why a single anonymous request is flagged while twenty deployments are not.
 
 ### 19.3 Investigating
 
-The CI bot reads a secret it needs for deployment, which is expected but its access can be narrowed. The old-admin events predate removal. The anonymous request came before anonymous access was turned off.
+The CI bot reads a secret it needs for deployment, which is expected but its access can be narrowed. The old-admin events predate removal. The anonymous request came before anonymous access was turned off. Each flagged line gets a written conclusion rather than a silent dismissal. The CI bot's three secret reads match deployments that use one stored credential, so Priya proposes limiting its role to that secret. The old-admin events date from before the account was removed, and their timing is examined in the worked example. The anonymous request predates the setting change, and no anonymous request appears after it.
 
 ### 19.4 Alerts
 
-Priya proposes alerts for new cluster role bindings, secret reads by people and any anonymous request.
+Priya proposes alerts for new cluster role bindings, secret reads by people and any anonymous request. Each alert covers an event that should be rare and always deserves a look. A new cluster role binding changes who can do what across the cluster; a person reading a secret is unusual because workloads, not people, normally use secrets; and any anonymous request after anonymous access was turned off would mean a setting has been reverted. Routine deployment events from the CI bot are summarised, not alerted on.
 
 ### 19.5 Noise
 
-Alerts that fire constantly are ignored; each must lead to an action.
+Alerts that fire constantly are ignored; each must lead to an action. If the CI bot's normal deployments raised alerts, the on-call engineer would see dozens a day and soon stop reading them, missing the one that matters. Priya tests each proposed alert against the synthetic events: it should fire for the flagged lines and stay silent for routine ones. Every alert links to a runbook entry stating what to check first and who to tell. An alert that leads to no action for a month is reviewed and either tuned or removed.
 
 ### Retention
 
@@ -1334,27 +1334,27 @@ You will (1) diagnose failures caused by security controls; (2) restore service 
 
 ### 20.1 Common breakages
 
-New controls can break workloads: Restricted rejects a pod, a network policy blocks a needed connection, or a narrowed role stops the CI bot.
+New controls can break workloads: Restricted rejects a pod, a network policy blocks a needed connection, or a narrowed role stops the CI bot. These breakages are expected, because each control removes something a workload may have relied on without anyone noticing. A container that always ran as root may write to folders only root can use; a workload that reached any service will fail once a default-deny policy is applied. Planning for breakage, rather than being surprised by it, is what lets enforcement continue without damaging trust.
 
 ### 20.2 Method
 
-Priya follows a method: read the error, check recent changes, reproduce in staging, fix the smallest thing, record it.
+Priya follows a method: read the error, check recent changes, reproduce in staging, fix the smallest thing, record it. The error message usually names the rule that blocked the request, such as a Pod Security violation or a denied connection. Recent changes narrow the cause, because a working service that breaks after an enforcement change usually breaks because of it. Reproducing in staging lets the fix be tested safely, and recording it means the next team with the same symptom finds the answer in the guide.
 
 ### 20.3 Example one
 
-After enforcing Restricted, the cron job fails to start because it writes to a root-owned folder. The fix is a writable volume, not relaxing the policy.
+After enforcing Restricted, the cron job fails to start because it writes to a root-owned folder. The fix is a writable volume, not relaxing the policy. The cron job had written temporary files into a folder inside the image owned by root, which worked only while the container ran as root. Under Restricted, the container runs as an ordinary user and the write fails, so the job exits at startup. Mounting a small writable volume for those files keeps the job working while it continues to run as non-root.
 
 ### 20.4 Example two
 
-A network policy blocks reports from reaching the storage service. Adding the specific egress rule fixes it.
+A network policy blocks reports from reaching the storage service. Adding the specific egress rule fixes it. The default-deny policy for the client namespace allowed the flows on Priya's list, but the reports workload's connection to the storage service had been recorded as a flow without a matching egress rule. Adding a rule that allows only that destination fixes the failure without opening other traffic. Priya also corrects the link between the flow list and the policies so the omission does not recur.
 
 ### 20.5 Rolling back
 
-If a fix takes too long, the change is rolled back and retried later, keeping the client service up.
+If a fix takes too long, the change is rolled back and retried later, keeping the client service up. Rolling back is planned before each change, so the previous configuration can be restored from the repository in minutes. A rollback is recorded with its reason, and the change returns to the plan with what was learned. Keeping the client's service up during a failed change matters more than finishing enforcement that day, because a lost booking morning damages trust in later security work.
 
 ### 20.6 Learning
 
-Each breakage is added to a short guide for teams.
+Each breakage is added to a short guide for teams. Each entry in the guide records the symptom as the team saw it, the cause found and the fix applied, written in the words a developer would search for. The cron folder problem, the missing reports egress rule and the CI bot's config map permission each become entries. A team that meets the same error later can resolve it without waiting for the platform team. The guide lives in the configuration repository, so its history is reviewed like code.
 
 ### A shared guide
 
@@ -1406,27 +1406,27 @@ You will (1) connect cluster workloads to managed cloud services securely; (2) u
 
 ### 21.1 Managed services
 
-Client systems use managed databases, storage buckets and email services. Each connection needs an identity and permissions, and each is a place where data leaves the cluster.
+Client systems use managed databases, storage buckets and email services. Each connection needs an identity and permissions, and each is a place where data leaves the cluster. For Riverside Dental, the API connects to the managed database, reports writes to a storage bucket and booking sends confirmations through an email API. Each connection appears in the flow list, and each uses some credential to prove who is calling. How that credential is issued and stored decides how much damage a leak would cause, which is the focus of this chapter.
 
 ### 21.2 Stored keys
 
-Older Cobalt setups stored long-lived cloud access keys as Kubernetes secrets. If leaked, these keys work from anywhere until someone revokes them.
+Older Cobalt setups stored long-lived cloud access keys as Kubernetes secrets. If leaked, these keys work from anywhere until someone revokes them. A key stored as a Kubernetes secret can leak in several ways: through a broad role that lets an identity read secrets, a backup copied without care, or a debugging session that prints environment variables. Because client-b's secrets were not encrypted at rest before its rebuild, any keys stored there were more exposed than elsewhere. Long-lived keys also tend to accumulate extra permissions as years pass.
 
 ### 21.3 Workload identity
 
-Major providers let a Kubernetes service account be linked to a cloud identity, issuing short-lived credentials automatically. This removes stored keys and makes access traceable to a workload.
+Major providers let a Kubernetes service account be linked to a cloud identity, issuing short-lived credentials automatically. This removes stored keys and makes access traceable to a workload. The provider issues credentials that expire within hours, so a leaked credential stops working quickly, and there is no stored key to rotate or forget. Cloud audit logs then show which service account obtained the credential, linking cloud actions back to a specific workload. Setting it up requires a trust link between the cluster and the cloud account, which Priya tests in staging first.
 
 ### 21.4 Least privilege for services
 
-The reports workload needs to write to one bucket path, not read every bucket. Priya narrows its policy accordingly.
+The reports workload needs to write to one bucket path, not read every bucket. Priya narrows its policy accordingly. Its previous key allowed reading and writing every bucket in the account, which was convenient when it was created and far more than reports needs. The new policy allows only writes to the path where reports are stored. If the reports workload were compromised, the attacker could add files to that path but could not read other clients' data or delete existing objects elsewhere.
 
 ### 21.5 Storage exposure
 
-Buckets are private by default; any public access must be an approved exception. A weekly check lists bucket access settings across client accounts.
+Buckets are private by default; any public access must be an approved exception. A weekly check lists bucket access settings across client accounts. The weekly check reads the access settings of every bucket in the client accounts Cobalt manages and lists any that allow public access. Each public bucket must match an approved exception, such as one serving website images; anything else is treated as a finding and fixed the same day. The check complements the pipeline rule that blocks public buckets in proposed changes.
 
 ### 21.6 Reviewing integrations
 
-When a new integration is added, the flow list, inventory and permissions are updated together, using a short checklist.
+When a new integration is added, the flow list, inventory and permissions are updated together, using a short checklist. Updating the three records together matters because each one answers a different question after the integration is live. The flow list says where data goes, the inventory says which workload sends it, and the permission record says what the workload's identity may do. If only one is updated, a later advisory or incident review will find the records disagreeing. The checklist itself is kept in the repository beside the flow list.
 
 ### Integration checklist
 
@@ -1468,13 +1468,13 @@ You will (1) add security checks to the deployment pipeline; (2) block risky cha
 
 ### 22.1 Shift checks earlier
 
-Finding a public bucket after deployment means it was exposed for a time. Checking infrastructure code before merge stops it reaching production.
+Finding a public bucket after deployment means it was exposed for a time. Checking infrastructure code before merge stops it reaching production. Detecting a problem after deployment depends on a scheduled check running and someone reading the result, and the data may already have been exposed by then. A pipeline check runs on every proposed change before merge, and the developer sees the problem while the change is still fresh in mind. Detection after deployment remains necessary for changes that bypass the pipeline.
 
 ### 22.2 IaC smells
 
-Rahman et al. (2019) studied infrastructure-as-code scripts and found recurring security smells, such as hard-coded secrets and admin by default. Cobalt's rules target similar patterns.
+Rahman et al. (2019) studied infrastructure-as-code scripts and found recurring security smells, such as hard-coded secrets and admin by default. Cobalt's rules target similar patterns. Rahman et al. name seven such smells, including hard-coded secrets, admin by default, suspicious comments, empty passwords and invalid IP address binding. Cobalt's four rules are a deliberately small selection matched to its own risks: a public bucket, a mutable image tag, a container running as root and a secret written in a file. Each corresponds to a scenario or finding from earlier chapters.
 
-### Lab — Lab — pipeline checks
+### Lab — pipeline checks
 
 ```python
 """Flag risky settings in synthetic infrastructure-as-code records before merge (stdlib only)."""
@@ -1506,15 +1506,15 @@ PR-45: pass
 
 ### 22.3 Reading the result
 
-Of 5 proposed changes, 3 are blocked: PR-42 makes a bucket public, PR-43 uses the mutable latest tag and runs as root, and PR-44 puts a secret in a file. PR-41 and PR-45 pass.
+Of 5 proposed changes, 3 are blocked: PR-42 makes a bucket public, PR-43 uses the mutable latest tag and runs as root, and PR-44 puts a secret in a file. PR-41 and PR-45 pass. PR-43 triggers two rules at once, which shows the rules are evaluated independently and each hit is reported, so the developer can fix both in one round. PR-41 and PR-45 pin specific tags, keep buckets private, run as non-root and keep secrets out of files. The rule set is small enough that a developer can read all four rules and predict whether a change will pass.
 
 ### 22.4 Explaining blocks
 
-Each blocked change gets a message stating the rule, why it matters and how to fix it. Developers fix most within the day.
+Each blocked change gets a message stating the rule, why it matters and how to fix it. Developers fix most within the day. For PR-44, the message says that a secret was found in a configuration file, that anything in the repository is readable by everyone with access to it and stays in history, and that the secret should be stored in the cluster's secret store and referenced by name. Because the message explains the fix, developers rarely need to ask the platform team for help.
 
 ### 22.5 Exceptions
 
-A rare legitimate need, such as a public bucket for website images, uses an approved exception label reviewed by Kwame.
+A rare legitimate need, such as a public bucket for website images, uses an approved exception label reviewed by Kwame. The exception label alone does not let a change through the pipeline. Kwame reviews the reason, confirms that the bucket will hold only public content such as website images, and records the exception with an owner and expiry date. The pipeline then skips that single rule for that single resource, while all other rules still apply to the change. Expired exceptions make the rule apply again automatically on the next change.
 
 ### Measuring the checks
 
@@ -1560,9 +1560,9 @@ You will (1) compare measures before and after improvements; (2) judge whether c
 
 ### 23.1 What to compare
 
-Priya returns to her measures from chapter 9: unapproved images, baseline failures and time to answer an advisory.
+Priya returns to her measures from chapter 9: unapproved images, baseline failures and time to answer an advisory. Using the same definitions matters: unapproved images are still counted against the full image references on the approved list, and baseline failures are still counted on the same six checks. The advisory time is measured on a question Priya has not seen before, following Kwame's rule in the measurement plan. Changing any definition halfway would make the before-and-after comparison meaningless. Priya runs each measure exactly as she did at the start of the placement.
 
-### Lab — Lab — before and after
+### Lab — before and after
 
 ```python
 """Compare unapproved images and baseline failures before and after the new checks (synthetic)."""
@@ -1583,19 +1583,19 @@ hours_to_answer_advisory: 6.0 -> 0.5 (92% lower)
 
 ### 23.2 Reading the result
 
-Unapproved images fall from 3 to 1 (67% lower), baseline failures from 7 to 2 (71% lower), and the time to answer an advisory from 6 hours to half an hour (92% lower).
+Unapproved images fall from 3 to 1 (67% lower), baseline failures from 7 to 2 (71% lower), and the time to answer an advisory from 6 hours to half an hour (92% lower). In counts, two unapproved images and five baseline failures have been resolved. The percentages look large because the starting counts are small, so Priya presents the counts first, as she does with every measure. The advisory time is the most direct answer to the placement trigger, since it measures the very question that once took the team six hours.
 
 ### 23.3 Checking the advisory time
 
-To measure fairly, Kwame gives Priya a new synthetic advisory without warning. She answers it from the inventory in about 30 minutes, including checking two edge cases.
+To measure fairly, Kwame gives Priya a new synthetic advisory without warning. She answers it from the inventory in about 30 minutes, including checking two edge cases. The two edge cases were a workload whose image had been rebuilt the previous day and one in a namespace that had been renamed, both of which needed a check against the cluster rather than the inventory alone. Timing ran from receiving the advisory to sending Kwame the list of affected workloads, so it included the checks and the write-up.
 
 ### 23.4 Limits
 
-The counts are small and come from one placement period. Other changes, such as staff leaving, also affected results.
+The counts are small and come from one placement period. Other changes, such as staff leaving, also affected results. Staff departures, for instance, removed some accounts and workloads during the same period, which may have lowered counts independently of Priya's checks. The advisory test used one synthetic advisory, so the half-hour figure shows what is possible rather than a reliable average. Priya states these limits on the same slide as the results, not at the end. Kwame asks her to keep these limits in the client version of the results too.
 
 ### 23.5 Remaining items
 
-One unapproved image (cron, waiting for the partner's new format) and two baseline failures (internal cluster default and client-a endpoint during change window) remain, each with an owner and date.
+One unapproved image (cron, waiting for the partner's new format) and two baseline failures (internal cluster default and client-a endpoint during change window) remain, each with an owner and date. Each remaining item has a reason that is not neglect. Cron waits on a partner's format change before it can move to an approved image; the internal cluster's default stays at Baseline until warn mode clears its workloads; and client-a's endpoint change needs an agreed window. Recording the reasons keeps the items from looking like forgotten work.
 
 ### Sharing results
 
@@ -1645,27 +1645,27 @@ You will (1) ask a focused practical question; (2) collect and analyse data care
 
 ### 24.1 A question from practice
 
-Priya asks: how often do Cobalt's clusters drift from baseline between checks? It is answerable with data Cobalt already has.
+Priya asks: how often do Cobalt's clusters drift from baseline between checks? It is answerable with data Cobalt already has. The question comes from the baseline work: the guided lab showed settings at one moment, but it could not show whether clusters stayed compliant between runs. If drift is frequent, daily checks matter more than the initial cleanup; if it is rare, a weekly check might be enough. Either answer would change how Cobalt schedules its baseline checks. Priya writes the question down before collecting any data, as her measurement plan requires.
 
 ### 24.2 Method
 
-She runs the baseline check daily for four weeks on synthetic copies of the settings history and counts new failures.
+She runs the baseline check daily for four weeks on synthetic copies of the settings history and counts new failures. A drift event is counted when a setting that passed the previous day fails on the next run. Using synthetic copies of the settings history means the study needs no new access to client clusters. Running the same six checks every day for four weeks gives a consistent measure, and each new failure is linked to the change record that caused it, where one exists.
 
 ### 24.3 Reading research
 
-Armbrust et al. (2010) describe the cloud computing model and its obstacles, including configuration complexity. Verma et al. (2015) describe Borg, Google's cluster manager, explaining how large clusters are managed by automation, which supports Cobalt's move to automated checks.
+Armbrust et al. (2010) describe the cloud computing model and its obstacles, including configuration complexity. Verma et al. (2015) describe Borg, Google's cluster manager, explaining how large clusters are managed by automation, which supports Cobalt's move to automated checks. Burns et al. (2016) add the lessons Google drew from Borg and Omega when building Kubernetes, including the value of declaring desired state and letting automation reconcile it. None of these papers studies drift at a small hosting company, so Priya uses them for context rather than as evidence for her own finding.
 
 ### 24.4 Analysis
 
-She counts drift events per cluster and notes causes, such as manual console changes.
+She counts drift events per cluster and notes causes, such as manual console changes. For each drift event she records the cluster, the setting, the day and the cause found in change records, such as a manual console change during an urgent fix. Counting causes as well as events matters, because the recommendation depends on why settings drift, not only how often. Where no change record exists, she records the cause as unknown rather than guessing. She then compares the causes across the three clusters to see whether any pattern repeats.
 
 ### 24.5 Ethics
 
-Data describes systems, not individual performance; names are removed from change records.
+Data describes systems, not individual performance; names are removed from change records. The study is about how clusters drift, not about which engineer made a change, so removing names keeps the focus on processes. Without that step, a report showing that most drift came from urgent manual fixes could be read as blaming the people on call. Priya confirms the approach with Kwame before starting, and states it in the report. Change records with names are read only inside the placement workspace and never copied into the report.
 
 ### 24.6 Writing up
 
-A two-page report states question, method, results and limits.
+A two-page report states question, method, results and limits. The report states the question in one sentence, describes the four weeks of daily checks on three clusters, presents drift counts and causes, and lists the limits, including the short period and the 84 cluster-days. The recommendation follows from the results: urgent fixes should be recorded in the pipeline afterwards so the baseline catches up. Kwame reads the draft first and asks for the limits to appear before the recommendation, which Priya accepts. The final report keeps the same structure as her placement plan, so readers can find the evidence for each claim.
 
 ### Choosing method
 
@@ -1719,27 +1719,27 @@ You will (1) work in a team on a shared security improvement; (2) divide work; (
 
 ### 25.1 The project
 
-Priya joins two other placement students to build a client-ready security summary page generated from the inventory and baseline results.
+Priya joins two other placement students to build a client-ready security summary page generated from the inventory and baseline results. The page answers a question clients keep asking account managers: how secure is our system today? It reuses outputs Priya already produced, the inventory and baseline results, so the page shows evidence rather than claims. Each client sees only their own systems, and the page is generated from the same data the platform team uses internally. The three students agree that the page must not show anything the client could not already ask for.
 
 ### 25.2 Dividing work
 
-One builds the data export, one the page, and Priya the checks and wording.
+One builds the data export, one the page, and Priya the checks and wording. Dividing the work along these lines gives each student a clear output and a clear interface: the export produces a data file, the page reads it, and Priya's checks and wording decide what each status means and how it is described. Agreeing the data file's format early lets the three parts be built in parallel without waiting for each other. Priya's part also includes testing that each status matches the underlying results.
 
 ### 25.3 Reviews
 
-Each change is reviewed by another student and Kwame before merge.
+Each change is reviewed by another student and Kwame before merge. Reviews by a fellow student catch unclear code and wording, while Kwame's review checks that the page reveals nothing it should not, such as internal image names, and reads data in the intended read-only way. A change that touches the wording also gets read aloud once, because text that sounds clear to its author can still confuse a client. No change merges without both reviews, including small wording changes made late in the project.
 
 ### 25.4 Communication
 
-A short daily note lists progress and blockers.
+A short daily note lists progress and blockers. Each note fits in three lines: what was done yesterday, what is planned today and what is blocking progress. Blockers named in the notes reach Kwame without a meeting, and he resolves those that need more access. The notes also give the retrospective a written record of when problems appeared and how long they lasted. When a blocker lasts more than a day, it is raised directly with Kwame rather than repeated in notes. That rule comes from the working agreement the team signed at the start.
 
 ### 25.5 Client voice
 
-They show a draft to Riverside Dental's practice manager, who asks for plain words and fewer numbers.
+They show a draft to Riverside Dental's practice manager, who asks for plain words and fewer numbers. The first draft showed baseline check names and counts, which made sense to the platform team but not to a dental practice manager. Her feedback changes the page's purpose from reporting checks to explaining status: what is fine, what is being fixed and when. The numbers remain available behind each line for staff who want them. The team rewrites every status line after this meeting, starting with the ones about baseline checks.
 
 ### 25.6 Result
 
-The final page shows status in three colours with a one-line explanation each.
+The final page shows status in three colours with a one-line explanation each. Each colour carries a text label as well, and each explanation names what the status means for the client in plain words, such as when a fix is scheduled. The page is regenerated from the latest inventory and baseline results, so it stays current without anyone editing it by hand. Account managers now use the page in their regular client service reviews. The practice manager confirms that she can read the page without needing anyone to explain it.
 
 ### Working agreement
 
@@ -1797,27 +1797,27 @@ You will (1) prepare work for others to run; (2) write runbooks; (3) identify ow
 
 ### 26.1 Why handoff
 
-Priya's placement ends in two months. Her checks must keep running without her.
+Priya's placement ends in two months. Her checks must keep running without her. Two months is less time than it sounds, because every check needs a runbook, an owner, an alert route and at least one practice run by someone else. If Priya leaves with the checks undocumented, the nightly inventory and daily baseline check will either stop when something breaks or keep running with nobody reading the results. Either outcome would eventually bring back something like the six-hour advisory search.
 
 ### 26.2 Runbooks
 
-Each check has a runbook: what it does, how to run it, what to do with results, who to contact.
+Each check has a runbook: what it does, how to run it, what to do with results, who to contact. Each runbook is short enough to follow during an incident. The inventory runbook, for example, says that the script reads workloads and images from every cluster each night, how to run it by hand, what to do when an unapproved image appears, and that the platform team owns it. Runbooks are stored next to the scripts in the repository, so they change together.
 
 ### 26.3 Owners
 
-The platform team owns the checks; client account managers own client communication.
+The platform team owns the checks; client account managers own client communication. The split of ownership follows who is able to act. The platform team can fix a failing check, rebuild an image or adjust a policy, while account managers already speak to clients and know their change windows. When a finding affects a client, the platform team investigates and the account manager tells the client, using the plain wording the team project developed for the summary page. Both owners are named teams in the handoff pack, not individual people.
 
 ### 26.4 Alert routes
 
-Alerts go to the on-call channel with a link to the runbook.
+Alerts go to the on-call channel with a link to the runbook. Routing every alert to the on-call channel means somebody is always responsible for reading it, including at night and on holidays. The link to the runbook means the person on call does not need to remember what a new cluster role binding alert requires. Priya checks that each of the alerts from her monitoring work has a runbook entry before handoff. She also sends one test alert to confirm that the channel actually receives it.
 
 ### 26.5 Known limits
 
-The handoff states what the checks do not cover.
+The handoff states what the checks do not cover. The limits come from earlier work: the baseline check reads settings but cannot see whether workloads behave safely, the inventory is only as complete as the namespaces it reads, and none of the checks covers application code or client staff accounts. Stating them prevents a passing check from being read as a statement that a client is safe overall. Each limit is written as one plain sentence in the handoff pack, with the reason it exists. The same list later appears in the capstone kit's readme.
 
 ### 26.6 Practice
 
-A colleague runs each check from the runbook alone while Priya watches.
+A colleague runs each check from the runbook alone while Priya watches. Watching without helping shows Priya where the runbooks assume knowledge only she has. When the colleague hesitates or asks a question, she notes the step and rewrites it afterwards, instead of explaining it on the spot and leaving the gap in place. The missing baseline file path in the worked example is one result of these practice runs. Every check is practised at least once by a colleague before the handoff pack is signed off.
 
 ### Knowledge transfer sessions
 
@@ -1879,9 +1879,9 @@ You will (1) check a handoff pack for completeness; (2) validate controls in pro
 
 ### 27.1 Handoff checklist
 
-Kwame provides a list of eight required items for any handoff.
+Kwame provides a list of eight required items for any handoff. The eight items are a runbook, an owner list, alert routes, the baseline file, the exception register, a restore test record, a client contact and the known limits. Each answers a question the new owners will face: how to run a check, who decides, where alerts go, what is expected, what is accepted, whether data can be recovered, whom to tell and what is not covered. Kwame's list is the same for every handoff at Cobalt, not written for Priya.
 
-### Lab — Lab — handoff check
+### Lab — handoff check
 
 ```python
 """Check a synthetic handoff pack for required items (stdlib only)."""
@@ -1903,19 +1903,19 @@ handoff items 6/8 present
 
 ### 27.2 Reading the result
 
-Six of eight items are present. Missing: the restore test record and the client contact.
+Six of eight items are present. Missing: the restore test record and the client contact. Both missing items link back to work earlier in the placement. The restore test record is missing because the control mapping found that no restore had ever been tested, and the task had not yet been done. The client contact is missing because the account manager had not named one for this pack, so a finding affecting Riverside Dental would have had no clear recipient.
 
 ### 27.3 Restore test
 
-Priya and the platform team restore a synthetic copy of Riverside Dental's database in a test account and time it at 40 minutes.
+Priya and the platform team restore a synthetic copy of Riverside Dental's database in a test account and time it at 40 minutes. The restore uses a synthetic copy in a separate test account, so no client data or production service is touched. Timing it gives the client and Cobalt a realistic figure for recovery instead of an assumption. The forty minutes include the undocumented step of re-creating a database user, which is then written into the runbook so the next restore does not depend on remembering it.
 
 ### 27.4 Client contact
 
-The account manager adds the named client contact.
+The account manager adds the named client contact. Naming a specific person at Riverside Dental, with a backup, means a finding that affects the client reaches someone able to approve a change window or answer questions. The contact is recorded in the pack and in the runbooks' contact sections, so both the on-call engineer and the account manager use the same name. The account manager confirms the details with the client before adding them. Kwame checks the entry during the second run of the handoff check.
 
 ### 27.5 Validation in production
 
-Each check is run in production once with Kwame watching, results compared with staging.
+Each check is run in production once with Kwame watching, results compared with staging. Running each check once in production with Kwame watching confirms that staging results carry over, and that the checks still only read data. Comparing outputs with staging shows differences that staging alone would hide, such as the newly added namespace that the inventory script missed. Each production validation is recorded with its date, result and observer. Kwame signs each record, so the production results carry an independent witness.
 
 ### Why a checklist
 
@@ -1981,27 +1981,27 @@ You will (1) respond to a real-style advisory using the new tools; (2) communica
 
 ### 28.1 The advisory
 
-A synthetic advisory names a flaw in a common Python base image version.
+A synthetic advisory names a flaw in a common Python base image version. The advisory is synthetic, created by Kwame to resemble a real notice from an image maintainer, and names the affected base image version and the fixed version. Unlike the Node.js advisory at the start of the placement, it arrives after the inventory, runbooks and practice are in place. It is therefore the first realistic test of whether the handoff work changed how Cobalt responds. Kwame does not tell Priya in advance when the advisory will arrive.
 
 ### 28.2 Response
 
-Priya runs the inventory and finds one internal workload using it, plus none in client clusters.
+Priya runs the inventory and finds one internal workload using it, plus none in client clusters. The inventory search uses full image references, so it finds the one internal workload built on the named version without manual searching. The cron workload in the shared client cluster still runs python:3.6 from the public registry, but the advisory names a different version, so Priya checks its full reference and records it as not matched. She confirms the inventory result directly against the clusters before reporting it.
 
 ### 28.3 Prioritising
 
-Using severity and EPSS, she rates it medium and schedules a rebuild within a week.
+Using severity and EPSS, she rates it medium and schedules a rebuild within a week. Medium reflects both factors: the flaw's severity is high, but its EPSS score is low, and the affected workload is internal with no internet ingress. A week allows the rebuild to go through the pipeline with normal testing rather than as an urgent fix. Avoiding urgent manual changes also matters, since the drift study found that urgent fixes caused most of the drift. Priya records the rating, the reasons and the due date in the response record.
 
 ### 28.4 Communication
 
-Clients receive a short note: assessed, not affected, internal fix scheduled.
+Clients receive a short note: assessed, not affected, internal fix scheduled. The note is three lines long and avoids technical terms, following the wording lessons from the team project. It tells each client that Cobalt has checked the advisory against their workloads, that none of their systems uses the affected image, and that an internal fix is scheduled. Clients receive it on the same day, before many of them have heard of the advisory. The account manager reviews the note before it is sent to the clients.
 
 ### 28.5 Record
 
-The response is recorded with times, decisions and evidence.
+The response is recorded with times, decisions and evidence. The record states when the advisory arrived, when the inventory was run, what it found, how the rating was decided with its severity and EPSS values, when clients were told and when the rebuild was scheduled. Evidence such as the saved inventory output is attached to the record. A complete record means an auditor or a later review can follow the decision without asking Priya. The record is stored in the repository beside the earlier evidence from the placement.
 
 ### 28.6 Comparison
 
-The response took 25 minutes compared with six hours before.
+The response took 25 minutes compared with six hours before. Twenty-five minutes is consistent with the half-hour measured during evaluation, which suggests that the earlier figure was not a one-off. The comparison is not perfectly fair, since this advisory affected only one workload and the original search covered every client by hand, so Priya presents it as an indication rather than as proof. The original six hours had also included discovering where the image records lived. That discovery step no longer exists, because the inventory already holds every full image reference.
 
 ### Using severity and EPSS
 
@@ -2059,27 +2059,27 @@ You will (1) combine course work into a capstone; (2) define success criteria; (
 
 ### 29.1 Capstone
 
-Priya's capstone is a "client security baseline kit": inventory, baseline, pipeline rules, log alerts, runbooks.
+Priya's capstone is a "client security baseline kit": inventory, baseline, pipeline rules, log alerts, runbooks. Each part of the kit comes from earlier work: the inventory script, the six-check baseline, the four pipeline rules, the alerts from the audit summary and the tested runbooks. Packaging them as a kit means a new client can be set up with the same checks in one session, rather than rebuilding each piece from scratch as Priya did during her placement. The kit therefore contains nothing that was not already tested during the placement.
 
 ### 29.2 Criteria
 
-Success: runs on all clusters, under one hour to answer an advisory, runbooks tested by another person.
+Success: runs on all clusters, under one hour to answer an advisory, runbooks tested by another person. Each of the three success criteria can be measured directly. Running on all clusters means the kit works on dedicated and shared clusters alike; under one hour for an advisory sets a limit well above the half-hour measured in evaluation, leaving room for harder cases; and runbooks tested by another person means the kit does not depend on Priya. Kwame agrees the three criteria with Priya before the build starts.
 
 ### 29.3 Build
 
-She packages the scripts and documents in one repository folder with a readme.
+She packages the scripts and documents in one repository folder with a readme. One folder keeps the scripts, baseline, rules, alerts and runbooks together, so they are reviewed and versioned as a set rather than drifting apart. The readme states what the kit does, the order of installation, the read-only access it needs and its limits. Priya writes the readme last, after the parts are finished, and then checks it against the folder contents. The folder is reviewed by Kwame before the install test begins.
 
 ### 29.4 Testing
 
-A colleague installs the kit for a new synthetic client from the readme alone.
+A colleague installs the kit for a new synthetic client from the readme alone. Installing from the readme alone tests the documentation as much as the code, because the colleague cannot ask Priya questions during the install. The new client is synthetic, so the test touches no real systems. The colleague records each step where the readme was unclear, and those notes become the list of fixes before the kit is accepted. Priya stays out of the room during the install, so she cannot help by accident.
 
 ### 29.5 Fixes
 
-Two unclear steps are rewritten.
+Two unclear steps are rewritten. The colleague's notes identify two steps where the readme assumed knowledge the reader did not have, such as where to find the cluster's read-only credentials. Priya rewrites both with explicit instructions and links to the relevant runbook entries. The colleague then rereads the changed steps and confirms that they are now clear without further explanation. Neither rewrite changes the scripts themselves; both are documentation fixes only. The kit's changelog records the two changes with their date, so later maintainers can see why the steps read as they do.
 
 ### 29.6 Safety
 
-The kit reads settings only and changes nothing.
+The kit reads settings only and changes nothing. Reading only matters because the kit runs against client clusters, and a script that changed settings by mistake could break a client's service. Every script uses read-only access, and the peer review confirms that none writes to a cluster. Changes to client clusters still go through the pipeline and change windows, never through the kit itself. The readme states this rule at the top, so anyone installing the kit sees it first. The peer review record is attached to the kit's first release.
 
 ### Repository layout
 
@@ -2149,27 +2149,27 @@ You will (1) present the capstone; (2) reflect on learning; (3) plan next steps.
 
 ### 30.1 Presentation
 
-Priya presents to Northgate and Cobalt: problem, approach, results, limits.
+Priya presents to Northgate and Cobalt: problem, approach, results, limits. The four parts map to the placement's history: the six-hour advisory search, the work from inventory to handoff, the measured results such as the drop to half an hour, and the limits she stated in evaluation. Northgate's examiners and Cobalt staff attend together, so the presentation must be clear to both academic and operational listeners. She keeps the talk to fifteen minutes, as she did when presenting the drift study, and leaves the rest of the time for questions.
 
 ### 30.2 Assessment
 
-Examiners check criteria, evidence and reflection.
+Examiners check criteria, evidence and reflection. The criteria are the success criteria of the capstone kit and the objectives agreed at the start of the placement. Evidence includes the lab outputs, the evaluation results, the install test and the handoff pack. Reflection is assessed for honesty and specificity, so a vague statement that everything went well would score poorly even if the technical work was strong. Kwame's view is collected as well, because he observed the placement work directly. The examiners compare it with the evidence rather than treating it as a grade on its own.
 
 ### 30.3 Reflection
 
-She notes strengths in inventory and automation, weaker in client communication early on.
+She notes strengths in inventory and automation, weaker in client communication early on. Her early client communication used technical terms, such as the "CIS non-compliant" wording a teammate drafted and the practice manager's question about what audit logs meant. Priya names these examples rather than writing generally about communication. By the end of the placement, her advisory notes to clients were short and plain, which the clients' replies confirm. Naming the examples makes the reflection checkable by examiners who read the evidence.
 
 ### 30.4 Next steps
 
-Cobalt offers her a junior role; she plans to study for a cloud certification.
+Cobalt offers her a junior role; she plans to study for a cloud certification. The junior role continues the work she handed over: the platform team now owns the kit, and she joins that team to help run it. The certification plan builds on the shared responsibility pages and provider documentation she used throughout the placement. She agrees with Kwame that the certification study must not delay the kit's first quarterly review. The offer depends on her finishing the polytechnic course first.
 
 ### 30.5 Lessons
 
-Know what runs, check it often, explain plainly.
+Know what runs, check it often, explain plainly. Each of the three lessons matches a part of the course. Knowing what runs came from the inventory that answered the advisory; checking often came from the drift study and the daily baseline check; and explaining plainly came from client conversations and the summary page. Priya writes each lesson with the example that taught it, so it remains specific. She keeps the three lessons on one page that she plans to reread in her new role.
 
 ### 30.6 Thanks
 
-She credits Kwame and the team.
+She credits Kwame and the team. Her thanks name specific help: Kwame's review of her plans and scripts, the platform team's practice runs of the runbooks, her two teammates in the project studio, and Riverside Dental's practice manager, whose questions made the client wording better. Crediting colleagues also records who contributed to each part of the kit for future maintainers. The credits appear in the capstone readme as well as in her presentation. Placing them in the readme means anyone who later maintains the kit knows whom to ask about each part.
 
 ### Examiner feedback
 
