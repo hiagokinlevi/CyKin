@@ -510,7 +510,7 @@ Priya's entry E-014 keeps the two on separate lines: the observation that rule 9
 
 "Five loggers have expired certificates" means little without "out of 40". "Two of 11 accounts belong to former staff" is clearer than "some leaver accounts exist". Percentages without counts hide small samples.
 
-At NCS the denominators come from Priya's own tables: 2 former-staff accounts out of 11 HMI accounts, 1 expired logger certificate out of the 4 the Chapter 22 lab checks, 2 unapproved flow types out of 7 conversations seen. Each count tells the reader both the size of the problem and the size of what was checked. A report that said "some accounts belong to leavers" would invite a reader to guess whether that meant 2 or 20.
+At NCS the denominators come from Priya's own tables: 2 former-staff accounts out of 11 HMI accounts, 1 expired logger certificate out of the 4 the Chapter 22 lab checks, 2 unapproved flows out of 5 conversations seen. Each count tells the reader both the size of the problem and the size of what was checked. A report that said "some accounts belong to leavers" would invite a reader to guess whether that meant 2 or 20.
 
 ### 9.4 Uncertainty
 
@@ -717,7 +717,7 @@ GW-LOG   -> PLC-R1    :502  UNAPPROVED
 approved but not seen: [('HMI-C', 'PLC-R2', 502)]
 ```
 
-The lab compares those four approved flows with seven observed conversations.
+The lab compares those four approved flows with five observed conversations.
 
 The approved flows are HMI-C to each PLC, the historian polling PLC-R1, and GW-LOG to the cloud on 443. Chapter 27 later shows that the list was missing the historian's polling of PLC-R2, an approved flow nobody had written down.
 
@@ -1360,7 +1360,7 @@ LOG-04 expires 2026-12-20 in   69 days -> plan
 LOG-02 expires 2027-06-30 in  261 days -> ok
 ```
 
-Priya's checks start with the certificate expiry check below; its first run found one expired certificate and one due for renewal.
+Priya's checks start with the certificate expiry check above; its first run found one expired certificate and one due for renewal.
 
 The check reads each logger's certificate expiry from the vendor's export and sorts loggers into expired, renew-now, plan and ok. Its first run gave LOG-03 expired, LOG-01 at 21 days, LOG-04 at 69 days and LOG-02 ok at 261 days.
 
@@ -1534,7 +1534,7 @@ Teams of three take one NCS improvement from idea to deliverable in six weeks. T
 
 Priya's team took this brief, and its first version failed the most important test: the night operator.
 
-Version one took the contractor 14 minutes to complete, and the night operator could not find who to call for approval. The team had four weeks, four owners and a weekly review with the facilities manager, which is where that failure was reported and acted on.
+Version one took the contractor 14 minutes to complete, and the night operator could not find who to call for approval. The team had six weeks, three owners and a weekly review with the facilities manager, which is where that failure was reported and acted on.
 
 ### 25.2 Roles
 
@@ -1868,7 +1868,7 @@ For a technologist leaving NCS, the products to follow are the ones in Priya's i
 
 ### Worked example (synthetic NCS)
 
-Priya's self-assessment: problem fit 3 (site uses it weekly); correctness 3 (all 23 tests pass from clean checkout); safety 3 (read-only, permit on file); usability 2 (the facilities manager runs it, but interpreting VERSION-CONFLICT still needs help); honesty 3 (limitations page lists capture placement and baseline poisoning). The assessor agrees except usability, scored 2 for the same reason, and suggests a plain-language "what to do" column.
+Priya's self-assessment: problem fit 3 (site uses it weekly); correctness 3 (all 23 tests pass from clean checkout); safety 3 (read-only, permit on file); usability 2 (the facilities manager runs it, but interpreting VERSION-CONFLICT still needs help); honesty 3 (limitations page lists capture placement and baseline poisoning). The assessor agrees on every criterion, including usability at 2 for the same reason, and suggests a plain-language "what to do" column.
 
 > **Synthetic case — Northgate Cold Storage.** Scores are illustrative.
 
@@ -1946,7 +1946,7 @@ Model answers for EX001–EX090. Northgate Cold Storage, Priya Nair and all figu
 
 **EX025.** (a) Observation — a recorded state at a time. (b) Conclusion — inferred; it requires session logs or the contractor's confirmation.
 
-**EX026.** "On 12 October, 2 of NCS's 40 temperature-logger certificates were expired or due within 30 days" — using the actual count from the certificate check.
+**EX026.** "On 12 October, 2 of the 4 temperature-logger certificates checked were expired or due within 30 days; the other 36 loggers have not yet been checked" — using the actual count from the certificate check.
 
 **EX027.** "Of 10 loggers checked on 4 March, 2 still accepted the vendor default password; the other 30 loggers have not yet been checked."
 
@@ -1960,7 +1960,7 @@ Model answers for EX001–EX090. Northgate Cold Storage, Priya Nair and all figu
 
 **EX032.** PLC-R2's version conflict: it controls compressors (high consequence), and the real firmware (2.1) determines whether advisories apply, whereas the camera is low consequence for cooling.
 
-**EX033.** `SENS-NH3 docs=-           network=fw 3.0 only-on-network` — it appears because the loop iterates over the union of both sources.
+**EX033.** `SENS-NH3  docs=-           network=fw 3.0   only-on-network` — it appears because the loop iterates over the union of both sources.
 
 **EX034.** A new line `HMI-C -> PLC-R2 :502 approved` appears, and "approved but not seen" becomes an empty list `[]` because every approved flow has now been observed.
 
@@ -2026,7 +2026,7 @@ Model answers for EX001–EX090. Northgate Cold Storage, Priya Nair and all figu
 
 **EX065.** Replace `today = date(2026, 10, 12)` with `today = date.today()`. The output then changes every day, so the verified output printed in the book can no longer be reproduced exactly.
 
-**EX066.** The job writes a "completed" line with a timestamp; a separate monitor checks at 06:30 that today's line exists and raises an alert to the OT inbox if it does not.
+**EX066.** The job writes a "completed" line with a timestamp; a separate monitor checks at 06:15 that today's line exists and raises an alert to the OT inbox if it does not.
 
 **EX067.** In the maintenance window, from OFFICE-7 and from GW-LOG attempt TCP connections to PLC-R1:502 — expected: refused and logged at the firewall. From HMI-C and HIST confirm normal polling continues — expected: values update on the HMI and in the historian.
 
@@ -2040,7 +2040,7 @@ Model answers for EX001–EX090. Northgate Cold Storage, Priya Nair and all figu
 
 **EX072.** Giraldo et al. describe detecting attacks by checking sensor data against physical expectations; Priya's two-probe comparison is a simple instance of that idea, so the survey frames and justifies the approach without proving it works at NCS.
 
-**EX073.** Changed: form cut from 14 to 6 fields. Learned: the night operator could not find the approver's number. Need: the current on-call approver rota from the facilities manager. Risk: jump-host configuration not yet tested end to end.
+**EX073.** Changed: form cut to six fields with site details pre-filled. Learned: the night operator could not find the approver's number. Need: the current on-call approver rota from the facilities manager. Risk: jump-host configuration not yet tested end to end.
 
 **EX074.** Keep writing the pack for the agreed jump-host design, mark the steps that depend on it as "pending jump host", tell the site reviewer, and do not create an interim path such as reopening the old remote tool.
 
