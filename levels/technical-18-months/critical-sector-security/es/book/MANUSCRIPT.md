@@ -60,9 +60,9 @@ Toda afirmación factual sobre un protocolo, una norma, un incidente público o 
 10. [Infraestructura crítica y seguridad sectorial: configuración de controles](#ch-10): políticas de primera coincidencia, sombreado y acceso de proveedores.
 11. [Infraestructura crítica y seguridad sectorial: verificación](#ch-11): pruebas positivas y negativas trazables.
 12. [Laboratorio contenido I](#ch-12): un respondedor Modbus con una política de escritura y respuestas de excepción.
-13. [Infraestructura crítica y seguridad sectorial: diagnóstico de averías](../../en/book/MANUSCRIPT.md#ch-13): hipótesis, predicciones, descarte y escalado.
-14. [Infraestructura crítica y seguridad sectorial: automatización](../../en/book/MANUSCRIPT.md#ch-14): detección de derivas basada en hashes y automatización segura.
-15. [Infraestructura crítica y seguridad sectorial: integración y dependencias](../../en/book/MANUSCRIPT.md#ch-15): grafos de dependencias y puntos de integración en las fronteras.
+13. [Infraestructura crítica y seguridad sectorial: diagnóstico de averías](#ch-13): hipótesis, predicciones, descarte y escalado.
+14. [Infraestructura crítica y seguridad sectorial: automatización](#ch-14): detección de derivas basada en hashes y automatización segura.
+15. [Infraestructura crítica y seguridad sectorial: integración y dependencias](#ch-15): grafos de dependencias y puntos de integración en las fronteras.
 16. [Documentación técnica y seguridad física](../../en/book/MANUSCRIPT.md#ch-16): documentos ejecutables, autoridad de seguridad física y dispositivos transitorios.
 17. [Laboratorio contenido II](../../en/book/MANUSCRIPT.md#ch-17): una cadena de detección integrada y que se supervisa a sí misma.
 18. [Proyecto técnico supervisado](../../en/book/MANUSCRIPT.md#ch-18): fases del proyecto y un paquete de evidencia sellado.
@@ -1605,7 +1605,385 @@ Un laboratorio contenido es aquel en el que la seguridad es una propiedad técni
 <!-- cyberabc:chapter-navigation:start ch-12 -->
 ### Siga estudiando — capítulo 12 de 18
 
-[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Infraestructura crítica y seguridad sectorial: diagnóstico de averías
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- aplicar un método estructurado de diagnóstico de averías: definir el síntoma, recoger observaciones de solo lectura, enumerar hipótesis, contrastar predicciones, conservar y, después, cambiar;
+- descartar hipótesis comparando lo que predice cada una con lo que usted observó, de un modo que otros puedan comprobar;
+- reconocer cuándo la investigación de una avería se convierte en un incidente de seguridad y qué conservar en ese momento;
+- llevar un **registro de diagnóstico** que sea también evidencia.
+
+El capítulo 8 describió los síntomas; los capítulos 7, 9 y 11 le dieron observaciones. Este capítulo las reúne bajo presión de tiempo, cuando una estación ha enmudecido y los operadores quieren recuperarla.
+
+### 13.1 El método
+
+1. **Defina el síntoma** con precisión: qué etiqueta, desde cuándo (UTC), cómo se detectó, qué sigue funcionando.
+2. **Recoja observaciones de solo lectura** por orden de coste: el estado de las demás estaciones; los contadores del enlace y del router; los registros del cortafuegos; una prueba de conexión TCP desde el origen de sondeo habitual; una lectura del protocolo; los registros de configuración del dispositivo.
+3. **Enumere hipótesis** (al menos una corriente y otra relevante para la seguridad) antes de contrastar ninguna.
+4. **Escriba las predicciones de cada hipótesis**: ¿qué observaría si fuera cierta?
+5. **Compare** las predicciones con las observaciones. Una hipótesis contradicha por una observación fiable queda refutada; la que es coherente con todas se mantiene.
+6. **Conserve** todo lo que pueda ser evidencia antes de cambiarlo (capítulo 5).
+7. **Cambie** una sola cosa, con un registro de cambio, y verifique (capítulo 11).
+8. **Registre** la causa, la evidencia y lo que la habría detectado antes.
+
+La disciplina de escribir las predicciones *antes* de comparar es lo que impide que el primer relato verosímil se convierta en la conclusión.
+
+### 13.2 De la avería al incidente
+
+Un ejercicio de diagnóstico se convierte en un posible incidente cuando una observación no se explica por ninguna actividad aprobada: una sesión de configuración no aprobada, un origen desconocido, un archivo modificado sin registro de cambio. En ese momento deje de cambiar cosas, conserve (configuración, registros, registros de sesiones) y traspase el asunto a través del proceso de incidentes. Las recomendaciones del NIST sobre respuesta a incidentes sitúan esta decisión dentro de la gestión de riesgos más amplia de la organización ([SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final)). La tarea del técnico no es decidir que hubo un ataque; es advertir que falta la explicación y mantener intacta la evidencia.
+
+### 13.3 Ejemplo resuelto: KW-09 enmudece (sintético)
+
+A las 07:05Z del 12 de octubre dejan de llegar las lecturas de KW-09; todas las demás estaciones funcionan. Usted recoge observaciones de solo lectura durante quince minutos y enumera cinco hipótesis. **Lab 13** (guárdelo como `lab13.py` y ejecútelo con `python3 lab13.py`):
+
+```python
+# Lab 13 - eliminate hypotheses for "KW-09 readings missing" (offline, standard library only)
+# Synthetic observations collected read-only between 07:05 and 07:20Z on 2026-10-12.
+observed = {
+ "rtu_ping": True,              # RTU answers ICMP from the SCADA server
+ "tcp502_handshake": True,      # TCP connect to 10.10.9.2:502 succeeds from SCADA server
+ "modbus_reply": "exception 2", # read of registers 0..3 returns illegal data address
+ "fw_denies": False,            # no fw-01 denies for 10.10.9.2 in the window
+ "radio_errors": False,         # cellular router CRC/error counters flat
+ "rtu_config_changed": True,    # rtu-kw09 config session at 06:41Z (clock-corrected) by user eng
+ "change_ticket": False,        # no approved change ticket for KW-09 today
+ "other_stations_ok": True,
+}
+hypotheses = {  # what each hypothesis predicts we would observe
+ "H1 radio/link failure":           {"rtu_ping": False, "tcp502_handshake": False, "radio_errors": True},
+ "H2 firewall change blocks polls": {"tcp502_handshake": False, "fw_denies": True},
+ "H3 SCADA server fault":           {"other_stations_ok": False},
+ "H4 RTU register map changed":     {"rtu_ping": True, "tcp502_handshake": True, "modbus_reply": "exception 2",
+                                     "rtu_config_changed": True},
+ "H5 RTU powered off":              {"rtu_ping": False},
+}
+for h, pred in hypotheses.items():
+    clash = [k for k, v in pred.items() if observed[k] != v]
+    print(f"{h:<32} {'REFUTED by ' + ', '.join(clash) if clash else 'CONSISTENT with all observations'}")
+print("unapproved RTU configuration session -> preserve RTU config and session logs, then treat as possible incident"
+      if observed["rtu_config_changed"] and not observed["change_ticket"] else "change was approved")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+H1 radio/link failure            REFUTED by rtu_ping, tcp502_handshake, radio_errors
+H2 firewall change blocks polls  REFUTED by tcp502_handshake, fw_denies
+H3 SCADA server fault            REFUTED by other_stations_ok
+H4 RTU register map changed      CONSISTENT with all observations
+H5 RTU powered off               REFUTED by rtu_ping
+unapproved RTU configuration session -> preserve RTU config and session logs, then treat as possible incident
+```
+
+Cuatro hipótesis quedan refutadas por observaciones concretas: el enlace está activo (ping, establecimiento de la conexión, contadores de errores planos); el cortafuegos no está denegando; el servidor SCADA sondea con éxito las demás estaciones; la RTU tiene alimentación. Una sigue siendo coherente: el mapa de registros de la RTU cambió, de modo que las lecturas del servidor SCADA apuntan ahora a direcciones que el dispositivo ya no tiene (excepción 02, exactamente como en el laboratorio del capítulo 12). Y la RTU registró una sesión de configuración a las 06:41Z (reloj corregido) sin incidencia de cambio.
+
+Esta última observación convierte una avería en un posible incidente. Los pasos siguientes correctos son: conservar la exportación de la configuración actual de la RTU y su registro de sesiones, y los registros del servidor de salto y de la estación de ingeniería de 06:30–06:50Z; informar al jefe de turno de Kestrel Water de que los valores de KW-09 no están disponibles (quizá necesiten una visita a la instalación para tomar lecturas manuales); abrir un registro de incidente. Restaurar la configuración anterior es la corrección, pero solo después de la conservación y con el acuerdo del responsable del incidente.
+
+### 13.4 Segundo caso: el puesto corporativo en KW-04
+
+El capítulo 10 dejó un elemento abierto: fw-01 deniega el tráfico de los puestos corporativos hacia las estaciones y, sin embargo, una captura en KW-04 mostró escrituras desde 10.30.3.7. Hipótesis: (a) algún dispositivo tradujo la dirección de origen de la captura; (b) existe otra ruta hacia KW-04 que elude fw-01. Comprobaciones de solo lectura: la exportación de la configuración del router celular de KW-04 muestra una redirección del puerto tcp/502 desde su dirección privada del lado del operador de telecomunicaciones, y la red privada de ese operador también es alcanzable desde la VPN corporativa de acceso remoto. La hipótesis (b) es coherente; la ruta se instaló durante una puesta en servicio de 2024 y nunca se retiró. La lección es de arquitectura (capítulo 15): cada router de estación es un límite potencial, y el modelo del capítulo 6 debe incluirlo.
+
+### 13.5 El registro de diagnóstico
+
+Escriba sobre la marcha, en UTC, con las cuatro etiquetas: *observado*, *inferido*, *hecho*, *abierto*. Un buen registro permite que un colega que toma el relevo en el cambio de turno continúe sin preguntarle nada, y permite que un investigador reconstruya después qué se cambió y cuándo. El capítulo 16 ofrece una plantilla; el capítulo 18 lo sella como evidencia del proyecto. Escriba sobre la marcha en UTC con las cuatro etiquetas, para que un colega en el cambio de turno pueda continuar sin preguntarle nada. Incluya referencias a la evidencia de cada observación, como el hash de la exportación de configuración de la RTU y el intervalo del registro del servidor de salto. En el Lab 18, el registro se convierte en 05-troubleshooting-log.md, y el hash de su manifiesto se verifica como OK cuando se comprueba el paquete.
+
+### 13.6 Actividad práctica
+
+Añada al Lab 13 la hipótesis H6 «el firmware de la RTU falló y pasó a un modo degradado», con las predicciones que crea que hace, y observe si las observaciones existentes la refutan. Si no lo hacen, nombre la única observación adicional de solo lectura que lo haría. Si las observaciones existentes no refutan H6, nombre una comprobación adicional de solo lectura, como un diagnóstico del fabricante que informe del estado del firmware, que sí lo haría. Escriba las predicciones antes de inventar la comprobación, para que la nueva observación tenga algo que contradecir. Mantenga H6 en la lista hasta que quede refutada o se haga cargo el proceso de incidentes.
+
+### 13.7 Errores comunes y límites
+
+- Reiniciar primero, lo que destruye la evidencia volátil y a menudo oculta la causa.
+- Contrastar las hipótesis de una en una y detenerse en la primera que «encaja».
+- Tratar una hipótesis coherente como demostrada; solo está *aún sin refutar*.
+- Cambiar varias cosas a la vez.
+- El Lab 13 compara valores predichos exactos; las observaciones reales tienen incertidumbre, y una sola observación poco fiable no debería refutar por sí sola una hipótesis.
+
+- Reiniciar primero y destruir la evidencia volátil.
+- Detenerse en la primera hipótesis que encaja en lugar de contrastar las predicciones con todas las observaciones.
+- Declarar H4, el mapa de registros de la RTU cambiado, como la causa antes de que una exportación de la configuración lo confirme; el Lab 13 solo muestra que es coherente.
+- Cambiar varias cosas a la vez, de modo que la corrección no puede atribuirse.
+
+### Ejercicios — capítulo 13
+
+**EX049 — Primero, las predicciones.** *Objetivo:* practicar el método. *Entradas:* la laguna de siete minutos de KW-05 del capítulo 8. *Pasos:* enumere tres hipótesis con sus predicciones para el ping, el establecimiento de la conexión TCP, la respuesta Modbus, los contadores de radio y las demás estaciones. *Evidencia esperada:* una tabla. *Rúbrica:* 3 = al menos una hipótesis de enlace, una de sondeo/SCADA y una relevante para la seguridad, con predicciones distintas para que las observaciones puedan separarlas; 2 = predicciones solapadas; 1 = solo hipótesis; 0 = nada.
+
+**EX050 — Añada H6.** *Objetivo:* ampliar el laboratorio. *Entradas:* la actividad 13.6. *Pasos:* impleméntela y ejecútela. *Evidencia esperada:* código, salida y la observación adicional. *Rúbrica:* 3 = predicciones verosímiles (por ejemplo, ping verdadero, conexión verdadera, respuesta con tiempo de espera agotado o excepción 04); reconoce que, si H6 predice la excepción 02, no queda refutada, y propone una comprobación de solo lectura como la página de diagnóstico o el contador de tiempo en funcionamiento de la RTU; 2 = se ejecuta sin razonamiento; 1 = intentado; 0 = nada.
+
+**EX051 — El momento del escalado.** *Objetivo:* reconocer cuándo parar y conservar. *Entradas:* el caso de KW-09. *Pasos:* redacte el mensaje de escalado al responsable del incidente y la lista de elementos conservados, con sus horas. *Evidencia esperada:* mensaje y lista. *Rúbrica:* 3 = el mensaje expone los hechos observados y la sesión sin explicar, separa la inferencia, pide una decisión sobre la restauración; los elementos conservados incluyen la exportación de la configuración y el registro de sesiones de la RTU, los registros de jump-01 y eng-ws-15 de la ventana, el propio registro de diagnóstico, cada uno con hash; 2 = bueno pero sin hashes; 1 = «nos han hackeado»; 0 = nada.
+
+**EX052 — Cierre la ruta de KW-04.** *Objetivo:* corregir el desvío encontrado en 13.4. *Entradas:* la redirección de puerto del router y la alcanzabilidad desde la VPN. *Pasos:* proponga el cambio, su paso de conservación, sus pruebas y su responsable. *Evidencia esperada:* plan de cambio. *Rúbrica:* 3 = conservar primero la configuración del router; eliminar la redirección de puerto; restringir el acceso a la red privada del operador desde la VPN corporativa; prueba negativa desde un cliente VPN señalado y prueba positiva del sondeo del SCADA; comprobar el mismo patrón en todos los demás routers de estación; responsable nombrado; 2 = corrección sin comprobación amplia; 1 = solo eliminar; 0 = nada.
+
+### Síntesis del capítulo
+
+El diagnóstico de averías en un servicio crítico es un método, no una corazonada: definir el síntoma, observar en solo lectura, escribir hipótesis con predicciones, descartar con evidencia, conservar y, después, cambiar una sola cosa y verificar. Cuando una observación no se explica por una actividad aprobada, la avería se ha convertido en un posible incidente: deténgase, conserve y escale. El registro que lleva es a la vez el traspaso de turno y la evidencia.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Siga estudiando — capítulo 13 de 18
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Infraestructura crítica y seguridad sectorial: automatización
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- automatizar la **detección de derivas** de la configuración con hashes criptográficos y un manifiesto aprobado;
+- clasificar las diferencias como ausentes, nuevas, cambio aprobado o cambio no aprobado, y actuar de forma distinta en cada caso;
+- diseñar una automatización segura para entornos de control: solo lectura por defecto, radio de impacto pequeño, conservar antes de revertir y aprobación humana para todo lo que toque el proceso;
+- proteger la propia automatización, ya que una herramienta que puede cambiar todos los equipos es un objetivo.
+
+Los capítulos 10–13 cambiaron, verificaron y diagnosticaron a mano. Este capítulo automatiza las comprobaciones repetibles, para que la atención del técnico se dirija a las diferencias que importan.
+
+### 14.1 Por qué hashes
+
+Un resumen SHA-256 ([FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)) de un archivo cambia si cambia cualquier byte, y es inviable construir un archivo distinto con el mismo resumen. Comparar los resúmenes con un manifiesto registrado en un momento en que todo era correcto le dice **qué** archivos cambiaron, de forma barata y sin guardar copias. No le dice **cómo** cambiaron (para eso necesita la copia aprobada, guardada en control de versiones), ni **si** el cambio fue legítimo (para eso necesita los registros de cambio). El módulo `hashlib` de Python ofrece SHA-256 en la biblioteca estándar ([Python hashlib](https://docs.python.org/3/library/hashlib.html)).
+
+### 14.2 Cuatro resultados, cuatro acciones
+
+| Resultado | Significado | Acción |
+|---|---|---|
+| Sin cambios | Coincide con el manifiesto | Nada |
+| Cambiado, aprobado | Lo cubre un registro de cambio | Verificar (capítulo 11) y después actualizar el manifiesto |
+| Cambiado, no aprobado | Sin registro | **Conservar**, investigar y después revertir mediante un cambio |
+| Nuevo o ausente | El archivo apareció o desapareció | Investigar antes de borrar o restaurar |
+
+El error de automatización más peligroso es «revertir automáticamente toda deriva». Destruye la evidencia de un cambio no aprobado y puede deshacer una corrección de emergencia hecha a las 03:00 que aún no se ha documentado. La *detección* automatizada es barata y segura; la *corrección* automatizada necesita una lista breve y explícita de lo que puede corregirse automáticamente, y nada que toque el control del proceso.
+
+### 14.3 Ejemplo resuelto: deriva en hist-02 (sintético)
+
+Una tarea nocturna compara los archivos clave de hist-02 con el manifiesto aprobado después de CHG-2207. El Lab 14 simula una noche, usando un directorio temporal. **Lab 14** (guárdelo como `lab14.py` y ejecútelo con `python3 lab14.py`):
+
+```python
+# Lab 14 - detect configuration drift against an approved manifest (offline, standard library only)
+# Files are created in a temporary directory that is removed at the end.
+import hashlib, json, pathlib, tempfile
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+with tempfile.TemporaryDirectory() as tmp:
+    root = pathlib.Path(tmp)
+    files = {"sshd_config": "ListenAddress 10.90.0.21\nPermitRootLogin no\nPasswordAuthentication no\n",
+             "ntp.conf": "server 10.90.0.5 iburst\n",
+             "fw-01.rules": "R1 allow 10.20.0.10 10.10.0.0/16 tcp 502\nR7 deny any any\n"}
+    for n, t in files.items(): (root / n).write_text(t)
+    manifest = {n: sha(root / n) for n in files}                       # approved baseline
+    approved_changes = {"ntp.conf": "CHG-2210"}
+    (root / "ntp.conf").write_text("server 10.90.0.5 iburst\nserver 10.90.0.6 iburst\n")   # approved
+    (root / "sshd_config").write_text(files["sshd_config"].replace("PermitRootLogin no", "PermitRootLogin yes"))
+    (root / "debug.sh").write_text("nc -l -p 9000\n")                  # new, unexpected file
+    current = {p.name: sha(p) for p in sorted(root.iterdir())}
+    for name in sorted(set(manifest) | set(current)):
+        if name not in current: print(f"MISSING   {name}")
+        elif name not in manifest: print(f"NEW       {name}  -> investigate before removing")
+        elif current[name] != manifest[name]:
+            tag = f"approved ({approved_changes[name]}) -> update baseline" if name in approved_changes else "UNAPPROVED -> preserve, then revert"
+            print(f"CHANGED   {name}  {tag}")
+        else: print(f"unchanged {name}")
+    print("manifest digest", hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16])
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+NEW       debug.sh  -> investigate before removing
+unchanged fw-01.rules
+CHANGED   ntp.conf  approved (CHG-2210) -> update baseline
+CHANGED   sshd_config  UNAPPROVED -> preserve, then revert
+manifest digest fdea74f1d09e359c
+```
+
+`fw-01.rules` no ha cambiado. `ntp.conf` cambió y CHG-2210 lo cubre (se añadió un segundo servidor NTP): verifique que la hora está sincronizada y después actualice el manifiesto. `sshd_config` cambió sin registro: alguien volvió a habilitar el inicio de sesión de root. `debug.sh` es nuevo y contiene una orden que deja algo a la escucha. Ambos se conservan (copia, hash, marcas de tiempo, la cuenta que los escribió por última vez si el equipo lo registra) antes de revertir nada, y es muy probable que el segundo se convierta en un incidente. Se imprime el resumen del propio manifiesto para que también pueda comprobarse; guarde ese resumen en un lugar que los administradores del equipo no puedan modificar (capítulo 18).
+
+### 14.4 Automatización segura en entornos de control
+
+- **Primero, solo lectura.** La automatización más valiosa se limita a recoger y comparar: configuraciones, versiones de firmware, listas de cuentas, reglas de cortafuegos, caducidad de certificados.
+- **Radio de impacto pequeño.** Actúe sobre un equipo o unos pocos; deténgase si muchos equipos difieren de la misma manera, lo que suele significar que el estado deseado o el recolector están mal.
+- **Ritmo y momento.** El tráfico de recogida hacia los dispositivos de campo debe respetar el presupuesto de sondeo (capítulo 1) y no ejecutarse nunca en periodos críticos para el proceso sin acuerdo.
+- **Aprobación humana** para todo cambio que pueda afectar al proceso, por pequeño que sea.
+- **Registre cada ejecución** en el colector, con lo que se leyó y lo que se cambió.
+
+### 14.5 Proteger la automatización
+
+La cuenta de automatización puede leer o cambiar todos los equipos que gestiona, así que: guarde sus credenciales en una bóveda y rótelas; restrinja desde dónde puede conectarse; exija revisión de los cambios en su estado deseado; alerte de las ejecuciones fuera del calendario. El aviso de CISA sobre el acceso prolongado a infraestructuras críticas describe actores que usan herramientas de administración legítimas y cuentas válidas ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); una cuenta de automatización con privilegios excesivos es exactamente una herramienta así.
+
+Guarde las credenciales de la automatización en una bóveda, restrinja desde dónde puede conectarse la cuenta y alerte de las ejecuciones fuera del calendario. Una herramienta que puede cambiar todos los equipos es tan atractiva para un adversario como una estación de ingeniería. Revise los cambios de su estado deseado igual que revisa los cambios del cortafuegos.
+
+### 14.6 Actividad práctica
+
+Amplíe el Lab 14 para que, ante un cambio no aprobado, escriba un registro de conservación (nombre del archivo, resumen anterior, resumen nuevo, tamaño y hora de modificación) en el directorio temporal antes de imprimir el hallazgo, e imprima el SHA-256 del propio registro de conservación. Escriba el registro de conservación antes de imprimir el hallazgo e incluya en la salida el resumen del propio registro. Así, un investigador posterior podrá demostrar que la copia tomada en el momento de la detección coincide con lo que la tarea afirmó guardar. Mantenga la limpieza del directorio temporal después de registrar los hashes.
+
+### 14.7 Errores comunes y límites
+
+- Revertir automáticamente toda deriva.
+- Manifiestos guardados en el equipo que protegen.
+- Solo hashes; ninguna copia aprobada con la que comparar el contenido.
+- Automatización que sondea los dispositivos de campo de forma agresiva y degrada el proceso.
+- El Lab 14 ignora los permisos, la propiedad y las marcas de tiempo, que importan tanto como el contenido (un archivo de servicio con escritura para todos es una deriva).
+
+- Revertir automáticamente toda deriva y destruir la evidencia de un cambio no aprobado.
+- Guardar el manifiesto en el equipo que protege.
+- Calcular hashes solo del contenido e ignorar los permisos que hacen que un archivo de servicio tenga escritura para todos.
+- Sondear los dispositivos de campo de forma tan agresiva que falla el ciclo de sondeo.
+
+### Ejercicios — capítulo 14
+
+**EX053 — Clasifique y actúe.** *Objetivo:* aplicar los cuatro resultados. *Entradas:* la salida del Lab 14. *Pasos:* escriba la acción y el responsable de cada línea, en orden de ejecución. *Evidencia esperada:* lista ordenada. *Rúbrica:* 3 = conservar primero sshd_config y debug.sh (copia, hash, metadatos), avisar a la responsable de seguridad; investigar debug.sh antes de eliminarlo; revertir sshd_config mediante un cambio tras la conservación; verificar NTP y actualizar el manifiesto para ntp.conf; nada para fw-01.rules; 2 = orden erróneo; 1 = revertirlo todo; 0 = nada.
+
+**EX054 — Lista de correcciones automáticas.** *Objetivo:* limitar la automatización. *Entradas:* correcciones automáticas candidatas: reactivar el reenvío de registros, restablecer sshd_config, reiniciar el servicio del historiador, corregir la lista de servidores NTP, aplicar reglas de cortafuegos, restablecer el punto de consigna de un PLC. *Pasos:* marque cada una como corrección automática, incidencia o no automatizar nunca, con sus motivos. *Evidencia esperada:* seis filas. *Rúbrica:* 3 = reenvío de registros y lista NTP como corrección automática (restauran la visibilidad y la hora, bajo riesgo para el proceso); sshd_config y aplicación de reglas de cortafuegos mediante incidencia (riesgo para la conservación y de quedarse fuera); reinicio del historiador mediante incidencia con operaciones; el punto de consigna del PLC nunca automatizado por herramientas de seguridad; 2 = una errónea; 1 = todas automáticas; 0 = nada.
+
+**EX055 — Salvaguarda de detención.** *Objetivo:* reducir el radio de impacto. *Entradas:* una flota de 14 equipos; una noche, 9 muestran `ntp.conf` cambiado de forma idéntica. *Pasos:* proponga una condición de detención y explique qué significa probablemente el patrón. *Evidencia esperada:* salvaguarda y explicación. *Rúbrica:* 3 = detener cuando más de una proporción fijada (por ejemplo, el 25 %) de los equipos muestre el mismo cambio; lo más probable es un cambio deliberado de la flota sin registrar o un manifiesto erróneo: confirmarlo con el calendario de cambios antes de cualquier acción; seguir tratándolo como hallazgo hasta que se explique; 2 = salvaguarda sin interpretación; 1 = revertir los nueve; 0 = nada.
+
+**EX056 — Registro de conservación.** *Objetivo:* ampliar el laboratorio. *Entradas:* la actividad 14.6. *Pasos:* impleméntelo y muestre la salida. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = el registro se escribe antes de la línea del hallazgo, contiene los campos requeridos y se imprime su resumen; explica por qué el resumen del registro debe guardarse fuera del equipo; 2 = registro sin resumen; 1 = intentado; 0 = nada.
+
+### Síntesis del capítulo
+
+Automatice las comprobaciones que nunca cambian: recoger, calcular hashes, comparar con un manifiesto aprobado y clasificar las diferencias. Actúe de forma distinta ante los elementos aprobados, no aprobados, nuevos y ausentes (conserve antes de revertir) y limite la corrección automática a una lista breve que nunca toque el proceso. Proteja la automatización como la herramienta poderosa que es.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Siga estudiando — capítulo 14 de 18
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Infraestructura crítica y seguridad sectorial: integración y dependencias
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- modelar las dependencias técnicas (virtualización, directorio, hora, almacenamiento, telecomunicaciones, energía) como un grafo y calcular a qué afecta un único fallo;
+- encontrar los componentes compartidos entre servicios y sectores, incluida la compartición indirecta a través de una dependencia de una dependencia;
+- tratar cada punto de integración (routers de estación, redes de operadores de telecomunicaciones, pasarelas de proveedores, exportaciones de datos) como un límite que hay que modelar, controlar y supervisar;
+- convertir un análisis de dependencias en comprobaciones y controles concretos.
+
+El capítulo 13 encontró una ruta hacia KW-04 que eludía el cortafuegos a través de la red de un operador de telecomunicaciones. Era una dependencia que nadie había dibujado. Este capítulo las dibuja de forma sistemática.
+
+### 15.1 Interdependencia
+
+Las infraestructuras críticas dependen unas de otras de forma física (la energía para las bombas), a través de la información (la telemetría sobre la red de un operador), geográfica (conductos e instalaciones compartidos) y lógica (personal, software y administración compartidos). Esta clasificación procede del artículo, ampliamente citado, de Rinaldi, Peerenboom y Kelly ([Rinaldi et al., 2001](https://doi.org/10.1109/37.969131)). Para un técnico, las sorpresas más frecuentes son *lógicas*: un directorio, un clúster de hipervisores, una fuente de hora o un colector de supervisión compartidos por sistemas cuyos responsables creen, cada uno, que es suyo.
+
+Para un técnico, las sorpresas más frecuentes son lógicas: un directorio, un hipervisor o una fuente de hora que comparten varios servicios sin que ningún responsable los reclame. Dibújelos primero, y después los enlaces físicos y de los operadores de telecomunicaciones. El Lab 15 hace visibles los nodos compartidos como recuentos entre servicios.
+
+### 15.2 Las dependencias como grafo
+
+Escriba cada dependencia como «A necesita B». Para averiguar qué falla cuando falla B, siga las aristas **hacia atrás**: todo lo que necesita B, todo lo que necesita eso, y así sucesivamente. Es una búsqueda en anchura sobre el grafo invertido. Importan dos resultados: el **conjunto de servicios** afectados y la **ruta** por la que se ve afectado cada uno, porque la ruta le dice dónde un control o una redundancia romperían la cadena. La compartición indirecta es el caso importante. En el modelo del KVROC, el servidor del BMS del hospital y el servidor SCADA se autentican ambos contra `ad-ops`, que se ejecuta en `esx-03`, mientras que el procesador de comunicaciones de la red eléctrica también se ejecuta en `esx-03`. Ningún responsable de servicio considera `esx-03` como «suyo»; los tres dependen de él.
+
+### 15.3 Ejemplo resuelto: las dependencias del KVROC (sintético)
+
+**Lab 15** (guárdelo como `lab15.py` y ejecútelo con `python3 lab15.py`):
+
+```python
+# Lab 15 - trace failure impact through technical dependencies (offline, standard library only)
+# Synthetic dependency map for the Kestrel Vale operations centre: "A needs B" edges.
+from collections import deque
+needs = {
+ "water-telemetry": ["scada-01", "cell-router-kw", "fw-01"],
+ "scada-01": ["ad-ops", "ntp-ops", "hist-02", "esx-02"],
+ "hist-02": ["esx-02", "san-01"],
+ "hospital-bms": ["bms-server", "fw-02"],
+ "bms-server": ["esx-02", "ad-ops"],
+ "grid-ss3-telecontrol": ["fep-01", "telco-mpls"],
+ "fep-01": ["ntp-ops", "esx-03"],
+ "ad-ops": ["esx-03"],
+ "ntp-ops": ["gps-clock"],
+}
+def impacted(failed):
+    rev = {}
+    for a, bs in needs.items():
+        for b in bs: rev.setdefault(b, []).append(a)
+    seen, q = set(), deque([failed])
+    while q:
+        for a in rev.get(q.popleft(), []):
+            if a not in seen: seen.add(a); q.append(a)
+    return sorted(seen)
+services = {"water-telemetry", "hospital-bms", "grid-ss3-telecontrol"}
+for comp in ["esx-02", "esx-03", "gps-clock", "san-01", "telco-mpls"]:
+    hit = impacted(comp)
+    print(f"{comp:<10} -> services {sorted(services & set(hit))} via {len(hit)} dependants")
+counts = {c: len(services & set(impacted(c))) for c in {b for bs in needs.values() for b in bs}}
+print("shared by all three services:", sorted(c for c, n in counts.items() if n == 3))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+esx-02     -> services ['hospital-bms', 'water-telemetry'] via 5 dependants
+esx-03     -> services ['grid-ss3-telecontrol', 'hospital-bms', 'water-telemetry'] via 7 dependants
+gps-clock  -> services ['grid-ss3-telecontrol', 'water-telemetry'] via 5 dependants
+san-01     -> services ['water-telemetry'] via 3 dependants
+telco-mpls -> services ['grid-ss3-telecontrol'] via 1 dependants
+shared by all three services: ['esx-03']
+```
+
+`esx-02` aloja el servidor SCADA, el historiador y el servidor del BMS, de modo que su fallo afecta a la supervisión del agua y del hospital. `esx-03` es el único componente que afecta a los tres servicios: directamente al procesador de comunicaciones de la red eléctrica e indirectamente, a través del directorio, a los otros dos. `gps-clock`, la referencia de `ntp-ops`, afecta al agua y a la red eléctrica: perderlo no detiene nada de inmediato, pero el capítulo 7 mostró lo que hacen los relojes a la deriva con toda investigación posterior. `telco-mpls` solo afecta a la red eléctrica, y `san-01` solo al agua.
+
+De ahí se siguen acciones técnicas: el directorio necesita un segundo controlador de dominio en otro servidor (y hay que probar el comportamiento del servidor SCADA cuando el directorio no está accesible: ¿pueden los operadores seguir iniciando sesión en la HMI?); `ntp-ops` necesita una segunda referencia independiente y supervisión del desfase; la capacidad de `esx-03` y su grupo de administradores pasan a ser una cuestión intersectorial que se revisa con los tres responsables.
+
+### 15.4 Los puntos de integración son límites
+
+Cada lugar en el que el servicio se conecta con algo que no controla es un límite:
+
+- **Equipos de comunicación de las estaciones**: routers celulares, radios, la red privada del operador de telecomunicaciones. La redirección de puerto del capítulo 13 estaba aquí. La configuración de cada router debe figurar en el inventario de activos, bajo control de cambios y detección de derivas (capítulo 14).
+- **Pasarelas de soporte remoto de los proveedores**: capítulo 10.
+- **Exportaciones de datos**: el envío diario del historiador al servidor corporativo de informes (conducto C4 del capítulo 6). Las exportaciones deben enviarse hacia fuera desde el lado de control, nunca extraerse desde un equipo corporativo con credenciales dentro de la zona de control.
+- **Servicios compartidos**: directorio, hora, supervisión. Sus administradores administran de hecho todo lo que depende de ellos.
+
+El trabajo de CISA sobre las funciones críticas nacionales enmarca estas dependencias a escala nacional ([National Critical Functions](https://www.cisa.gov/national-critical-functions-set)); el técnico aplica el mismo razonamiento a un centro de operaciones.
+
+### 15.5 Actividad práctica
+
+Añada un nodo `power-ups-a` que necesitan tanto `esx-02` como `esx-03`, y un nodo `cell-carrier` que necesitan tanto `cell-router-kw` como `telco-mpls`. Vuelva a ejecutar el Lab 15 y anote qué componentes comparten ahora los tres servicios. Proponga después un cambio técnico para cada uno. Tras el cambio, anote qué componentes comparten los tres servicios y proponga una respuesta técnica para cada uno, como un segundo controlador de dominio o una segunda acometida eléctrica. Mantenga las aristas nuevas en el mismo formato que el laboratorio para que el grafo siga ejecutándose. Revise las propuestas con los tres responsables de servicio antes de cualquier cambio.
+
+### 15.6 Errores comunes y límites
+
+- Enumerar solo las dependencias directas.
+- Tratar el directorio y el servicio de hora como «infraestructura» sin responsable de servicio.
+- Suponer sin comprobarlo que los operadores de telecomunicaciones aíslan las redes privadas de sus clientes entre sí y de las VPN corporativas.
+- Contar dependientes en lugar de examinar qué *servicios* se ven afectados y por qué *rutas*.
+- El grafo del Lab 15 es binario (necesita / no necesita); las dependencias reales tienen modos degradados y temporizadores (una credencial en caché funciona durante horas; un reloj deriva lentamente).
+
+- Enumerar solo las dependencias directas y pasar por alto el hipervisor que hay bajo el directorio.
+- Dejar gps-clock sin un responsable nombrado, aunque el Lab 15 muestra que de él dependen tanto el telecontrol de la red eléctrica como la telemetría del agua.
+- Suponer sin comprobarlo que un operador de telecomunicaciones aísla las redes privadas de sus clientes.
+- Clasificar esx-03 por sus siete dependientes en lugar de señalar que es el único activo que comparten los tres servicios.
+
+### Ejercicios — capítulo 15
+
+**EX057 — Las rutas importan.** *Objetivo:* trazar una ruta de impacto. *Entradas:* el Lab 15. *Pasos:* modifique el programa para que imprima, para `esx-03`, una ruta de dependencia desde él hasta cada servicio afectado. *Evidencia esperada:* código y tres rutas. *Rúbrica:* 3 = por ejemplo, esx-03 → fep-01 → grid-ss3-telecontrol; esx-03 → ad-ops → scada-01 → water-telemetry; esx-03 → ad-ops → bms-server → hospital-bms; explica que un segundo directorio en otro servidor rompe dos de las tres; 2 = rutas sin interpretación; 1 = intentado; 0 = nada.
+
+**EX058 — Nuevos componentes compartidos.** *Objetivo:* realizar la actividad. *Entradas:* la actividad 15.5. *Pasos:* ejecútela e interprétela. *Evidencia esperada:* salida y dos cambios técnicos. *Rúbrica:* 3 = `power-ups-a` y `esx-03` compartidos por los tres (y `cell-carrier` afectando al agua y a la red eléctrica); cambios como alimentaciones de SAI separadas para los dos servidores y un segundo operador o una ruta de radio para las estaciones más críticas; 2 = solo la salida; 1 = parcial; 0 = nada.
+
+**EX059 — Prueba en modo degradado.** *Objetivo:* probar el comportamiento cuando falla una dependencia. *Entradas:* ad-ops no disponible. *Pasos:* redacte un plan de prueba delimitado, en una ventana de mantenimiento, para establecer si los operadores pueden seguir iniciando sesión en la HMI y si continúa el sondeo del SCADA. *Evidencia esperada:* plan de prueba con condiciones de parada. *Rúbrica:* 3 = probar primero en una réplica de reserva o de laboratorio; en producción, bloquear solo la ruta de la HMI hacia el directorio durante una ventana breve con operaciones presente; comprobar los inicios de sesión en caché, las cuentas locales de emergencia y la continuidad del sondeo; condiciones de parada; evidencia; 2 = sin el paso de la réplica; 1 = «apagar el controlador de dominio»; 0 = nada.
+
+**EX060 — Sentido de la exportación.** *Objetivo:* configurar correctamente un límite. *Entradas:* actualmente, el servidor corporativo de informes inicia sesión cada noche en hist-02 con una contraseña guardada para extraer el CSV. *Pasos:* rediséñelo y enumere los cambios de configuración en ambos equipos y en fw-01. *Evidencia esperada:* diseño y cambios. *Rúbrica:* 3 = hist-02 envía por HTTPS a un único punto de destino; se elimina la credencial corporativa dentro de Z2; se invierte el sentido de la regla de fw-01 (solo Z2 → Z6, equipo y puerto específicos); se comprueba la integridad del envío (resumen en la carga útil o archivo firmado); supervisión de los envíos fallidos; 2 = envío sin eliminar la credencial antigua; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Los servicios fallan a través de aquello de lo que dependen, y las dependencias más peligrosas son las compartidas que ningún responsable reclama. Modele las dependencias como un grafo, recórralo hacia atrás desde cada componente y examine las rutas, no solo los recuentos. Trate cada punto de integración (routers de estación, operadores de telecomunicaciones, pasarelas de proveedores, exportaciones, directorio y hora) como un límite sujeto a la misma disciplina de control, cambio y supervisión que el cortafuegos.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Siga estudiando — capítulo 15 de 18
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](../../en/book/MANUSCRIPT.md#ch-16)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1735,6 +2113,44 @@ Cada resultado resuelto muestra una respuesta defendible y lo que premia la rúb
 **EX047 — Detecte intentos de cartografiado.** Regla: tres o más respuestas de excepción 02 a un mismo origen en 60 s. Las seis peticiones originales producen dos respuestas de excepción 02 (tid 4 y tid 6), así que no se dispara; añadir cinco lecturas fuera de rango produce siete y se dispara. Contar juntas la 02 y la 03 ya llegaría a tres en la ejecución original (tids 3, 4, 6) y se dispararía con errores corrientes; mantener aparte la regla de prueba de límites (excepción 03) da alertas más claras.
 
 **EX048 — Evalúe un laboratorio.** Contención 1: un servidor en `0.0.0.0:502` es alcanzable desde cualquier red a la que se una el portátil, incluida la red de una estación si el portátil se usa allí. Fidelidad: sin declaración, puntuación 1. Corrección: `socketpair()` o enlace a 127.0.0.1 con una regla del cortafuegos del equipo, o una red de máquinas virtuales aislada sin ruta hacia fuera; añadir una declaración de fidelidad; registrar las salidas con la versión de Python.
+
+### Capítulo 13: EX049–EX052
+
+**EX049 — Primero, las predicciones.**
+
+| Hipótesis | Ping | TCP 502 | Respuesta Modbus | Contadores de radio/celular | Otras estaciones |
+|---|---|---|---|---|---|
+| Caída del enlace | falla | falla | ninguna | errores en aumento | bien |
+| Sobrecarga del sondeo del SCADA (capítulo 1) | bien | bien | bien cuando se sondea, pero los sondeos llegan tarde | planos | también con retraso |
+| Tráfico bloqueado o inundado por un equipo no autorizado | bien o falla | falla o lenta | tiempos de espera agotados | planos | bien |
+
+Las observaciones que las separan son los contadores (enlace), la frescura de las demás estaciones (SCADA) y los registros del cortafuegos y de flujos (relevante para la seguridad).
+
+**EX050 — Añada H6.** Ejemplo: `"H6 RTU firmware degraded": {"rtu_ping": True, "tcp502_handshake": True, "modbus_reply": "timeout"}` queda refutada por `modbus_reply` (se observó la excepción 2). Si en cambio predice la excepción 02 (algunos dispositivos la devuelven en modo degradado), H6 sigue siendo coherente, y la observación adicional de solo lectura es la página de diagnóstico o de estado de la RTU (tiempo en funcionamiento, modo) mediante la herramienta del fabricante en modo de solo lectura, o su registro de eventos con un reinicio.
+
+**EX051 — El momento del escalado.** Mensaje: «07:22Z. Las lecturas de KW-09 se detuvieron a las 07:05Z. Observado: enlace, cortafuegos y SCADA en buen estado; la RTU responde con la excepción 02 a las lecturas normales; la RTU registró una sesión de configuración a las 06:41Z (reloj corregido) del usuario 'eng' sin incidencia de cambio. Inferido: esa sesión cambió el mapa de registros; se desconoce quién y por qué. Hecho: no se ha cambiado nada. Petición: decisión sobre restaurar la configuración anterior tras la conservación. Jefe de turno de Kestrel Water informado a las 07:20Z». Conservado: exportación de la configuración de la RTU (07:25Z) y registro de sesiones; registros de jump-01 y eng-ws-15 de 06:30–06:50Z; registros de fw-01 para 10.10.9.2; el registro de diagnóstico; cada uno con SHA-256 y hora de recogida.
+
+**EX052 — Cierre la ruta de KW-04.** Conservar la configuración del router y sus registros de conexión; eliminar la redirección de tcp/502 con un cambio aprobado por Kestrel Water; pedir al operador de telecomunicaciones (a través del responsable del contrato) que elimine la alcanzabilidad desde la VPN corporativa de acceso remoto hacia la red privada de las estaciones; prueba negativa desde un cliente VPN señalado hacia la dirección de KW-04 en la red del operador; prueba positiva del sondeo del SCADA; después, exportar y revisar los otros once routers de estación en busca de redirecciones de puertos y exposición de la gestión; añadir las configuraciones de los routers a la detección de derivas. Responsable: el responsable de red del KVROC, con la aprobación de Kestrel Water.
+
+### Capítulo 14: EX053–EX056
+
+**EX053 — Clasifique y actúe.** (1) Conservar `sshd_config` y `debug.sh`: copias, resúmenes, tamaño, mtime, propietario y los registros de autenticación pertinentes; informar a L. Ferreira. (2) Investigar `debug.sh` (quién lo creó, si se ejecutó, si hay algo activo a la escucha) antes de eliminarlo: probable incidente. (3) Revertir `sshd_config` a la versión aprobada mediante un cambio, tras la conservación; verificar con `sshd -T`. (4) Para `ntp.conf`: verificar el desfase frente a ambos servidores y después actualizar el manifiesto con la referencia CHG-2210. (5) `fw-01.rules`: nada.
+
+**EX054 — Lista de correcciones automáticas.** Reactivar el reenvío de registros: corrección automática (restaura la visibilidad, sin efecto sobre el proceso). Corregir la lista de servidores NTP: corrección automática (integridad de la hora, bajo riesgo). Restablecer `sshd_config`: incidencia (conservar primero; riesgo de quedarse fuera). Reiniciar el historiador: incidencia con operaciones (laguna de datos). Aplicar reglas de cortafuegos: incidencia con pruebas (puede cortar el sondeo). Restablecer el punto de consigna de un PLC: nunca automatizado por herramientas de seguridad; el control del proceso corresponde a operaciones.
+
+**EX055 — Salvaguarda de detención.** Detener si la misma clave cambia de forma idéntica en más del 25 % de los equipos (aquí, 9 de 14 = 64 %). Lo más probable es un cambio de la flota sin registrar hecho por el equipo de plataforma o un manifiesto desactualizado; compruebe el calendario de cambios y el repositorio del estado deseado. Hasta que se explique sigue siendo un hallazgo: un atacante con la cuenta de automatización podría producir el mismo patrón.
+
+**EX056 — Registro de conservación.** Antes de imprimir la línea del cambio no aprobado: `rec = {"file": name, "old": manifest[name], "new": current[name], "size": p.stat().st_size, "mtime": p.stat().st_mtime}`; escríbalo como JSON en `root / f"preserve-{name}.json"` e imprima su SHA-256. El resumen del registro debe guardarse fuera del equipo (expediente del caso o colector), porque, de lo contrario, un administrador del equipo podría reescribir tanto el archivo como el registro.
+
+### Capítulo 15: EX057–EX060
+
+**EX057 — Las rutas importan.** Mantenga un mapa `parent` en la búsqueda en anchura y recórralo hacia atrás desde cada servicio. Rutas: esx-03 → fep-01 → grid-ss3-telecontrol; esx-03 → ad-ops → scada-01 → water-telemetry; esx-03 → ad-ops → bms-server → hospital-bms. Un segundo servidor de directorio en otro equipo rompe las rutas del agua y del hospital; la ruta de la red eléctrica necesita redundancia de fep-01 en otro servidor.
+
+**EX058 — Nuevos componentes compartidos.** Tras añadir los nodos, compartidos por los tres servicios: `esx-03` y `power-ups-a` (verificado). `cell-carrier` afecta al agua y a la red eléctrica. Cambios: alimentar esx-02 y esx-03 desde SAI y circuitos separados; dar a las estaciones más críticas y al telecontrol de SS-3 una segunda ruta de comunicación independiente (otro operador o radio con licencia).
+
+**EX059 — Prueba en modo degradado.** Primero en una réplica o en una HMI de reserva: bloquear su tráfico hacia el directorio y probar el inicio de sesión con credenciales en caché y con la cuenta local de emergencia documentada. En producción, en una ventana acordada y con operaciones de Kestrel Water presente: bloquear durante 10 minutos en fw-01 la ruta de la HMI hacia ad-ops; confirmar que los operadores pueden iniciar sesión y actuar y que el sondeo de scada-01 continúa (recuento del historiador). Condiciones de parada: cualquier pérdida de la visión o del control del operador, cualquier alarma; eliminación inmediata de la regla como reversión. Evidencia: registro del cambio de regla, registros de inicio de sesión, recuentos del historiador.
+
+**EX060 — Sentido de la exportación.** hist-02 envía el CSV por HTTPS a report-01 con una credencial de servicio que solo puede subir archivos; se eliminan la cuenta corporativa y la contraseña guardada que se usaban para iniciar sesión en hist-02, y se rota la contraseña; fw-01 solo permite hist-02 → report-01 tcp/443, y nada desde Z6 hacia hist-02; incluir un resumen SHA-256 del archivo en los metadatos de la subida y comprobarlo al recibirlo; alertar si no ha llegado ningún envío a las 06:30.
 
 <a id="glossary"></a>
 

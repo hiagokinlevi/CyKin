@@ -21,10 +21,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [09](book/PLAN.md#ch-09) | Infraestructura crítica y seguridad sectorial: herramientas y métodos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Infraestructura crítica y seguridad sectorial: configuración de controles | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Infraestructura crítica y seguridad sectorial: verificación | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Laboratorio contenido I | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Plan](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Infraestructura crítica y seguridad sectorial: diagnóstico de averías | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Infraestructura crítica y seguridad sectorial: automatización | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Infraestructura crítica y seguridad sectorial: integración y dependencias | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |
+| 2 | [12](book/PLAN.md#ch-12) | Laboratorio contenido I | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Borrador](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Infraestructura crítica y seguridad sectorial: diagnóstico de averías | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Borrador](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Infraestructura crítica y seguridad sectorial: automatización | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-14) | [15 · Borrador](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Infraestructura crítica y seguridad sectorial: integración y dependencias | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Plan](book/PLAN.md#ch-16) |
 | 3 | [16](book/PLAN.md#ch-16) | Documentación técnica y seguridad física | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plan](book/PLAN.md#ch-17) |
 | 3 | [17](book/PLAN.md#ch-17) | Laboratorio contenido II | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |
 | 3 | [18](book/PLAN.md#ch-18) | Proyecto técnico supervisado | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-18)) | [Curso 070 →](../../../technologist-3-years/cybersecurity/es/SUBJECTS.md) |
