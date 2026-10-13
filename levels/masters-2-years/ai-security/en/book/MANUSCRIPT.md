@@ -655,7 +655,12 @@ Leo's main results (synthetic, five seeds, 20,000 records): TPR at 1% FPR under 
 
 ### 6.7 Errors and limits
 
-Four errors recur: running all seeds of one condition before another; analysing before quality checks; mixing exploratory and confirmatory results; and reporting security gains without costs. Each error biases results or hides costs. Running seeds of one condition first lets time-dependent problems align with it. Analysing before quality checks turns bugs into findings, such as a missing seed. Mixing exploratory and confirmatory results overstates certainty. Reporting gains without costs hides trade-offs, such as the drop in macro-F1 that Leo reported. Check your analysis for all four.
+Four errors recur, and each biases results or hides costs; check your analysis for all four:
+
+- Running all seeds of one condition before another; this lets time-dependent problems align with that condition.
+- Analysing before quality checks; this turns bugs, such as a missing seed, into findings.
+- Mixing exploratory and confirmatory results; this overstates certainty.
+- Reporting security gains without costs; this hides trade-offs, such as the drop in macro-F1 that Leo reported.
 
 ### Exercises
 
@@ -740,7 +745,12 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 ### 7.8 Errors and limits
 
-Four errors recur: results and discussion mixed; limitations that are generic ("more data needed"); operational attack detail against named systems; and recommendations stated as findings. Each error makes claims harder to trust. Mixed results and discussion blur what was measured. Generic limitations tell examiners nothing about this study. Operational detail against named systems helps attackers without helping readers. A recommendation stated as a finding claims more than the data shows, which is why Leo moved and softened his insurer recommendation. Check your draft for all four.
+Four errors recur, and each makes claims harder to trust; check your draft for all four:
+
+- Results and discussion mixed; this blurs what was measured.
+- Limitations that are generic ("more data needed"); they tell examiners nothing about this study.
+- Operational attack detail against named systems; it helps attackers without helping readers.
+- Recommendations stated as findings; a recommendation stated as a finding claims more than the data shows, which is why Leo moved and softened his insurer recommendation.
 
 ### Exercises
 
@@ -827,7 +837,12 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 8.7 Errors and limits
 
-Four errors recur: submitting without anyone reproducing a result; answering questions defensively without evidence; practitioner summaries that drop the conditions; and ignoring required corrections' page references. Each error weakens the final stage. Without a reproduction, problems such as Leo's skipped long records reach examiners. Defensive answers without evidence lose examiners' confidence. A summary that drops conditions turns a result under one attack into a general rule. Corrections without page references are hard to check and delay the award. Check your submission for all four.
+Four errors recur, and each weakens the final stage; check your submission for all four:
+
+- Submitting without anyone reproducing a result; without a reproduction, problems such as Leo's skipped long records reach examiners.
+- Answering questions defensively without evidence; this loses examiners' confidence.
+- Practitioner summaries that drop the conditions; such a summary turns a result under one attack into a general rule.
+- Ignoring required corrections' page references; corrections without page references are hard to check and delay the award.
 
 ### Exercises
 

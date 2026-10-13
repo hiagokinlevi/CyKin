@@ -30,9 +30,9 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | 2 | [3 Diseño del estudio, ética y reproducibilidad](#ch-03) |
 | 2 | [4 Seguridad de la IA y del aprendizaje automático: explicaciones alternativas](#ch-04) |
 | 3 | [5 Propuesta y piloto](#ch-05) |
-| 3 | [6 Recogida y análisis de datos](../../en/book/MANUSCRIPT.md#ch-06) |
-| 4 | [7 Redacción del trabajo de fin de máster y limitaciones](../../en/book/MANUSCRIPT.md#ch-07) |
-| 4 | [8 Revisión independiente y defensa](../../en/book/MANUSCRIPT.md#ch-08) |
+| 3 | [6 Recogida y análisis de datos](#ch-06) |
+| 4 | [7 Redacción del trabajo de fin de máster y limitaciones](#ch-07) |
+| 4 | [8 Revisión independiente y defensa](#ch-08) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -580,7 +580,286 @@ La propuesta fija lo que hará y cómo lo analizará; el piloto muestra si puede
 
 ### Siga estudiando — capítulo 05 de 08
 
-[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](../../en/book/MANUSCRIPT.md#ch-06)
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Recogida y análisis de datos
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) ejecutar los experimentos principales exactamente según lo planificado y registrar las desviaciones; (2) comprobar la calidad de los datos antes del análisis; (3) calcular los resultados principales con su incertidumbre (intervalos de Wilson, *bootstrap*, variación entre semillas); (4) analizar comparaciones emparejadas y resultados secundarios; y (5) presentar los resultados en tablas y figuras que respondan a la pregunta de investigación.
+
+### 6.1 Ejecutar el estudio principal
+
+Congele el código en un *commit* etiquetado, bloquee los archivos de configuración y ejecute las condiciones en un orden intercalado o aleatorio, para que los problemas dependientes del tiempo (un nodo que se ralentiza, una actualización de una biblioteca) no coincidan con una sola condición. Cada ejecución escribe un registro: condición, semilla, *hash* de la configuración, hora de inicio y de fin, métricas y rutas a las salidas en bruto. Mantenga un registro de desviaciones como en el piloto. Las ejecuciones de Leo se intercalaron por condición y semilla, y su registro de desviaciones recogió la ejecución ausente de la semilla 4 y su reejecución. Revise el registro antes del análisis, no después.
+
+### 6.2 Comprobaciones de la calidad de los datos
+
+Antes de calcular nada, compruebe: ¿están presentes todas las ejecuciones previstas? ¿Se superan las comprobaciones canario (el modelo sin defensa debe ser atacable; un modelo entrenado con etiquetas barajadas debería rendir al nivel del azar)? ¿Hay duplicados entre particiones? ¿Están los valores de las métricas dentro de intervalos plausibles? Estas comprobaciones detectan errores que, de otro modo, se convertirían en «hallazgos». Las comprobaciones de Leo encontraron una ejecución ausente de la semilla 4, que se reejecutó y se registró antes del análisis. Escriba las comprobaciones como un *script* para que se ejecuten igual cada vez, y guarde su salida junto con los resultados.
+
+### 6.3 Análisis principal
+
+Calcule el resultado principal por condición con intervalos. Para tasas, use intervalos de Wilson; para métricas promediadas sobre elementos, haga *bootstrap* sobre los elementos; informe aparte de la variación entre semillas. Para comparaciones emparejadas (los mismos registros o instrucciones en todas las condiciones), haga *bootstrap* de la *diferencia*. Siga el plan de análisis; etiquete cualquier análisis adicional como exploratorio. Cuando se hacen varias comparaciones, corrija por multiplicidad o preséntelas como exploratorias. El laboratorio siguiente muestra las tres herramientas. Con 3 éxitos de 20, el intervalo de Wilson va del 5 % al 36 %: una muestra tan pequeña no puede sustentar una afirmación precisa. Las tasas por semilla muestran la dispersión de una semilla a otra. El *bootstrap* emparejado estima la reducción que logra una defensa sobre las mismas instrucciones, con un intervalo que excluye el cero.
+
+```python
+"""Lab S: reporting attack-success rates honestly: Wilson intervals,
+seed variation and a paired bootstrap. Synthetic trial outcomes only."""
+import math, random
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n
+    c = (p + z*z/(2*n))/d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c - h, c + h
+for k, n in ((3, 20), (30, 200), (300, 2000)):
+    lo, hi = wilson(k, n); print(f"successes={k}/{n} rate={k/n:.3f} wilson95=[{lo:.3f}, {hi:.3f}]")
+# five seeds of a synthetic defence evaluation: per-seed attack success rate
+rates = []
+for seed in range(5):
+    r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
+m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
+print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
+# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+r = random.Random(42)
+base = [r.random() < 0.30 for _ in range(300)]
+defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
+diffs = []
+for _ in range(2000):
+    idx = [r.randrange(300) for _ in range(300)]
+    diffs.append(sum(base[i] for i in idx)/300 - sum(defn[i] for i in idx)/300)
+diffs.sort()
+print(f"baseline_asr={sum(base)/300:.3f} defended_asr={sum(defn)/300:.3f} "
+      f"reduction_ci95=[{diffs[50]:.3f}, {diffs[1949]:.3f}]")
+```
+
+Salida esperada:
+
+```text
+successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
+successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
+successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
+per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
+baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
+```
+
+### 6.4 Resultados secundarios y costes
+
+Toda mejora de seguridad tiene costes: exactitud, latencia, rechazos de peticiones legítimas, cómputo, mantenibilidad. Infórmelos sobre los mismos elementos. Una defensa de la privacidad que reduce la fuga a la mitad pero hace caer el F1 macro 10 puntos es una propuesta distinta de otra que cuesta 1 punto. Represente el compromiso (por ejemplo, la TPR con una FPR del 1 % frente al F1 macro) para todas las condiciones. El resultado de Leo es del segundo tipo: la eliminación de casi duplicados redujo la TPR con una FPR del 1 % a menos de la mitad, hasta el 4,2 %, mientras el F1 macro caía menos de un punto. Informe de ambos números juntos, con intervalos, para que los lectores puedan sopesar el compromiso por sí mismos.
+
+### 6.5 Ejemplo resuelto (caso sintético de Harbourline)
+
+Resultados principales de Leo (sintéticos, cinco semillas, 20.000 registros): la TPR con una FPR del 1 % bajo el ataque calibrado fue del 9,8 % (original), 7,9 % (eliminación aleatoria), 5,1 % (eliminación de duplicados exactos) y 4,2 % (eliminación de casi duplicados). La diferencia emparejada entre la eliminación de casi duplicados y la eliminación aleatoria fue de 3,7 puntos (IC del 95 % por *bootstrap*: 2,6–4,9). El F1 macro cayó de 0,912 a 0,905 con la eliminación de casi duplicados. Las comprobaciones de calidad de los datos encontraron una ejecución ausente de la semilla 4, que se reejecutó y se registró. Un análisis exploratorio, etiquetado como tal, mostró que la fuga se concentraba en los registros que habían aparecido tres o más veces. El hallazgo exploratorio sobre los registros vistos tres o más veces es una hipótesis para trabajos futuros, no un resultado confirmado.
+
+### 6.6 Actividades de práctica
+
+1. Redacte una lista de comprobación de la calidad de los datos para su estudio y aplíquela. 2. Elabore la tabla principal con intervalos. 3. Represente el compromiso entre seguridad y utilidad. En la lista de comprobación, incluya todas las ejecuciones previstas, las comprobaciones canario, los duplicados entre particiones y los intervalos plausibles, y aplíquela antes de cualquier análisis. En la tabla principal, dé el resultado de cada condición con un intervalo y el número de semillas. En el gráfico, enfrente la métrica de privacidad al F1 macro para cada condición, de modo que el lector vea el compromiso de un vistazo, como hace la figura de Leo.
+
+### 6.7 Errores y límites
+
+Cuatro errores se repiten, y cada uno sesga los resultados u oculta costes; revise su análisis en busca de los cuatro:
+
+- Ejecutar todas las semillas de una condición antes que las de otra; esto permite que los problemas dependientes del tiempo coincidan con esa condición.
+- Analizar antes de las comprobaciones de calidad; esto convierte los errores, como una semilla ausente, en hallazgos.
+- Mezclar resultados exploratorios y confirmatorios; esto exagera la certeza.
+- Informar de las mejoras de seguridad sin sus costes; esto oculta compromisos, como la caída del F1 macro de la que Leo informó.
+
+### Ejercicios — capítulo 6
+
+- **EX033 — Intercalado.** ¿Por qué intercalar las condiciones durante las ejecuciones? Rúbrica: 3 = evita que los problemas dependientes del tiempo se confundan con las condiciones; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX034 — Comprobaciones de calidad.** Enumere cuatro comprobaciones de la calidad de los datos. Rúbrica: 3 = completitud, canarios, duplicados entre particiones, intervalos plausibles; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX035 — Lectura del laboratorio.** ¿Cuáles son la ASR de referencia, la ASR con defensa y el intervalo de la reducción en el laboratorio de estadística? Rúbrica: 3 = 0.350, 0.190, [0.120, 0.203]; 2 = dos; 1 = uno; 0 = incorrecto.
+- **EX036 — Emparejado frente a no emparejado.** ¿Por qué hacer *bootstrap* de la diferencia sobre elementos compartidos en lugar de comparar dos intervalos separados? Rúbrica: 3 = la dificultad de los elementos se cancela; inferencia más ajustada y correcta; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX037 — Costes.** Nombre cuatro costes que hay que informar para una defensa de seguridad. Rúbrica: 3 = exactitud/utilidad, latencia, rechazos falsos, cómputo/mantenimiento; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX038 — Exploratorio.** ¿Cómo debería informar Leo del hallazgo de las «tres o más apariciones»? Rúbrica: 3 = etiquetado como exploratorio, hipótesis para trabajos futuros, no confirmatorio; 2 = parcial; 1 = presentado como resultado principal; 0 = omitido sin motivo.
+
+### Síntesis del capítulo
+
+El análisis es donde el diseño cuidadoso da fruto: las ejecuciones intercaladas, las comprobaciones de calidad, los intervalos y las comparaciones emparejadas convierten los registros en bruto en una respuesta defendible, y los costes hacen útil la respuesta.
+
+### Siga estudiando — capítulo 06 de 08
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redacción del trabajo de fin de máster y limitaciones
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) estructurar un trabajo de fin de máster de modo que cada capítulo sirva a la pregunta de investigación; (2) redactar los resultados y la discusión separando los hallazgos de la interpretación; (3) redactar una sección de limitaciones organizada por tipo de validez; (4) tratar con responsabilidad por escrito los detalles sensibles para la seguridad; y (5) elaborar un anexo de artefactos que permita la reproducción.
+
+### 7.1 Estructura
+
+Una estructura habitual: introducción (problema, pregunta, resumen de la contribución); antecedentes y trabajos relacionados (a partir de su matriz); método (diseño, datos, ataques, métricas, plan de análisis); resultados (principales, secundarios y exploratorios, claramente etiquetados); discusión (interpretación, explicaciones alternativas, implicaciones); limitaciones; conclusión; referencias; anexos (artefactos, tablas adicionales). Redacte el método de modo que un colega pueda repetirlo; redacte los resultados de modo que un lector encuentre la respuesta a la pregunta de investigación en una sola tabla. El trabajo de Leo responde a su pregunta en una sola tabla de la TPR con una FPR del 1 % y el F1 macro para las cuatro condiciones.
+
+### 7.2 Hallazgos frente a interpretación
+
+Los resultados enuncian lo que se midió: «la eliminación de casi duplicados redujo la TPR con una FPR del 1 % del 9,8 % al 4,2 %». La discusión interpreta: «esto sugiere que los registros duplicados explican gran parte de la fuga, en coherencia con los trabajos sobre memorización en modelos de lenguaje». Manténgalos separados. En la discusión, vuelva a las explicaciones alternativas y diga cuáles descartaron sus ablaciones. Leo trasladó de los resultados a la discusión una recomendación de que las aseguradoras deduplicaran, y la suavizó. Lea cada frase de los resultados y pregúntese si informa de una medición; si explica o recomienda, muévala.
+
+### 7.3 Limitaciones por tipo de validez
+
+Organice las limitaciones según los cuatro tipos de validez. *Interna*: ¿podría algo distinto del tratamiento explicar el efecto? (por ejemplo, artefactos del generador sintético). *De constructo*: ¿miden las métricas la propiedad? (por ejemplo, la TPR con una FPR del 1 % bajo una familia de ataques capta solo parte del riesgo para la privacidad). *Externa*: ¿se traslada el resultado? (por ejemplo, una sola arquitectura de modelo, notas sintéticas, solo en inglés). *De la conclusión*: ¿es adecuada la estadística? (por ejemplo, cinco semillas). Para cada una, diga qué hizo y qué queda pendiente. Las limitaciones escritas así son una fortaleza; los examinadores desconfían de los trabajos que afirman no tener ninguna.
+
+### 7.4 Escribir sobre ataques con responsabilidad
+
+Describa los ataques al nivel necesario para entenderlos y reproducirlos en entornos de investigación, cite los artículos originales y evite publicar detalles operativos dirigidos contra sistemas en producción identificados por su nombre. Nunca incluya datos personales recuperados. Si encontró una vulnerabilidad en un producto real, siga la divulgación coordinada antes de que se publique el trabajo. Etiquete como ficción, en todo el texto, los datos y las organizaciones sintéticos. El trabajo de Leo describe el ataque calibrado citando su fuente y su configuración, sin ningún registro recuperado. Pida a su supervisor que lea la descripción del ataque en busca de detalles operativos antes de la entrega.
+
+### 7.5 Anexo de artefactos
+
+Incluya la URL del repositorio y el *commit*, el entorno, las órdenes para reproducir cada tabla, la ficha de datos del generador sintético, la ficha de modelo de cualquier modelo publicado (Mitchell et al., arXiv:1810.03993) y los *hashes* de los archivos clave. Indique qué no se publica y por qué. El anexo de Leo incluye la ficha de datos del generador sintético, el *commit* del repositorio, las órdenes para cada tabla y los *hashes* de los archivos. Indica que no se publica ningún modelo y por qué. Pida a un colega que reproduzca una tabla solo a partir del anexo antes de la entrega. Manténgalo actualizado.
+
+### 7.6 Ejemplo resuelto (caso sintético de Harbourline)
+
+La sección de limitaciones de Leo tiene cuatro subsecciones breves. Validez externa: «Estudiamos un único clasificador *transformer* ajustado finamente con notas sintéticas en inglés; los resultados pueden diferir para modelos generativos, otros idiomas y datos reales de siniestros». Validez de constructo: «Medimos la inferencia de pertenencia con dos ataques; no se estudiaron la inferencia de atributos ni la extracción». Trasladó de los resultados a la discusión una frase sobre que «las aseguradoras deberían deduplicar» y la suavizó a «la deduplicación es un control candidato de bajo coste que las aseguradoras podrían evaluar». El laboratorio de extracción se cita en su capítulo de antecedentes como una ilustración sencilla de por qué importa la precisión de la salida de la API al describir los modelos de amenaza.
+
+```python
+"""Lab X: model extraction of a toy linear scoring API by querying it.
+The 'API' returns a real-valued score; d+1 well-chosen queries recover the
+weights exactly, and rounding the output limits fidelity. Synthetic model."""
+import random
+rng = random.Random(9)
+d = 5
+secret_w = [round(rng.uniform(-2, 2), 3) for _ in range(d)]; secret_b = 0.42
+def api(x, decimals=None):
+    s = sum(a*b for a, b in zip(secret_w, x)) + secret_b
+    return round(s, decimals) if decimals is not None else s
+for dec in (None, 2, 0):
+    b = api([0]*d, dec)
+    w = [api([1 if j == i else 0 for j in range(d)], dec) - b for i in range(d)]
+    err = max(abs(a-c) for a, c in zip(w, secret_w))
+    test = [[rng.uniform(-1, 1) for _ in range(d)] for _ in range(500)]
+    agree = sum((sum(a*c for a, c in zip(w, x))+b > 0) == (api(x) > 0) for x in test)/500
+    print(f"output_rounding={str(dec):4s} queries={d+1} max_weight_error={err:.3f} label_agreement={agree:.3f}")
+```
+
+Salida esperada:
+
+```text
+output_rounding=None queries=6 max_weight_error=0.000 label_agreement=1.000
+output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
+output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
+```
+
+### 7.7 Actividades de práctica
+
+1. Redacte su sección de limitaciones por tipo de validez. 2. Marque cada frase de su capítulo de resultados como hallazgo o interpretación y mueva las que estén mal situadas. 3. Redacte un borrador del anexo de artefactos. Para las limitaciones, use los cuatro tipos de validez y diga para cada uno qué hizo y qué queda pendiente, como hizo Leo para un único clasificador y notas sintéticas. Para el capítulo de resultados, marque cada frase y traslade las interpretaciones a la discusión. Para el anexo, enumere el repositorio, el *commit*, el entorno, las órdenes, las fichas y los *hashes*, e indique qué no se publica.
+
+### 7.8 Errores y límites
+
+Cuatro errores se repiten, y cada uno hace que las afirmaciones resulten menos fiables; revise su borrador en busca de los cuatro:
+
+- Resultados y discusión mezclados; esto difumina lo que se midió.
+- Limitaciones genéricas («se necesitan más datos»); no dicen nada a los examinadores sobre este estudio.
+- Detalles operativos de ataques contra sistemas identificados por su nombre; ayudan a los atacantes sin ayudar a los lectores.
+- Recomendaciones enunciadas como hallazgos; una recomendación enunciada como hallazgo afirma más de lo que muestran los datos, y por eso Leo trasladó y suavizó su recomendación a las aseguradoras.
+
+### Ejercicios — capítulo 7
+
+- **EX039 — Hallazgo o interpretación.** Clasifique: (a) «la ASR bajó del 31 % al 6 %»; (b) «la defensa funciona porque elimina el canal del atacante». Rúbrica: 3 = (a) hallazgo, (b) interpretación, con el motivo; 2 = solo las etiquetas; 1 = una; 0 = incorrecto.
+- **EX040 — Validez.** Escriba una limitación para cada tipo de validez de su proyecto. Rúbrica: 3 = cuatro concretas; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX041 — Detalle responsable.** Reescriba de forma responsable una frase que da una carga útil exacta y funcional contra un chatbot identificado por su nombre. Rúbrica: 3 = descripción a nivel de diseño, cita, sin objetivo en producción ni cadena; 2 = parcial; 1 = sigue siendo operativa; 0 = sin cambios.
+- **EX042 — Anexo de artefactos.** Enumere seis elementos. Rúbrica: 3 = seis pertinentes; 2 = cuatro; 1 = dos; 0 = ninguno.
+- **EX043 — Cita del laboratorio.** ¿Qué muestra el laboratorio de extracción sobre la precisión de la salida, con cifras? Rúbrica: 3 = recuperación exacta con precisión completa (error 0.000), 0.004 con 2 decimales, 0.534 con enteros; la coincidencia baja a 0.882; 2 = cifras parciales; 1 = vago; 0 = incorrecto.
+- **EX044 — Recomendación.** Reescriba «las aseguradoras deben deduplicar» al nivel de la evidencia. Rúbrica: 3 = control candidato que evaluar, con condiciones; 2 = parcial; 1 = sigue siendo prescriptiva; 0 = sin cambios.
+
+### Síntesis del capítulo
+
+Un trabajo de fin de máster se juzga por lo claramente que sus afirmaciones se ajustan a su evidencia. Separar los hallazgos de la interpretación, escribir limitaciones concretas y tratar con responsabilidad los detalles de los ataques hacen que el trabajo sea creíble y seguro.
+
+### Siga estudiando — capítulo 07 de 08
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Revisión independiente y defensa
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) encargar y aprovechar una revisión independiente del código y del texto antes de la entrega; (2) preparar una presentación para la defensa; (3) responder a las preguntas de los examinadores con evidencia y límites; (4) responder a las correcciones exigidas; y (5) planificar la difusión, incluido un breve resumen para profesionales.
+
+### 8.1 Revisión independiente antes de la entrega
+
+Pida a un colega que no haya trabajado en el proyecto que (a) reproduzca una tabla principal a partir de su anexo de artefactos, (b) lea el método y diga qué no pudo repetir, y (c) lea el resumen y diga qué cree que usted afirma. Cada una revela un problema distinto: dependencias ocultas, detalles del método que faltan y afirmaciones exageradas. Una breve revisión del código centrada en el cálculo de las métricas y en las particiones de datos merece el tiempo; los errores ahí cambian las conclusiones. El colega de Leo encontró de este modo un descarte silencioso de los registros largos.
+
+### 8.2 La presentación de la defensa
+
+De veinte a treinta minutos: problema y pregunta; diseño y su justificación; resultados con intervalos y costes; explicaciones alternativas y lo que las descartó; limitaciones; contribución y próximos pasos. Una diapositiva debería responder a la pregunta de investigación en una frase con un número y un intervalo. La diapositiva de respuesta de Leo daba la diferencia emparejada con su intervalo. Ponga las explicaciones alternativas antes que las limitaciones, porque los examinadores preguntarán por ellas. Ensaye con un cronómetro y con un colega que haga preguntas difíciles, y prepare diapositivas de reserva sobre la ablación y las comprobaciones de calidad para poder mostrar la evidencia cuando se la pidan.
+
+### 8.3 Responder a los examinadores
+
+Espere preguntas sobre las decisiones de diseño («¿por qué datos sintéticos?»), las amenazas a la validez («¿se mantendría esto con notas reales?»), la estadística («¿son suficientes cinco semillas?»), las explicaciones alternativas («¿no es esto simplemente sobreajuste?») y la práctica («¿qué debería hacer Harbourline?»). Responda en tres partes: respuesta directa, evidencia, límite. Cuando no sepa algo, dígalo y explique cómo lo averiguaría. Las respuestas de Leo en el ejemplo resuelto de más abajo siguen esta forma: la ablación como evidencia, el ataque como límite. Prepare respuestas escritas a cada pregunta esperada y ensáyelas con un colega que haga de examinador crítico.
+
+### 8.4 Correcciones y difusión
+
+Los examinadores suelen exigir correcciones. Haga cada cambio, anótelo en una tabla de correcciones con referencias de página y devuélvala con prontitud. Las opciones de difusión incluyen un artículo para un taller, un repositorio público con el generador sintético y un resumen para profesionales de dos páginas que enuncie el hallazgo, las condiciones y el siguiente paso recomendado, relacionado cuando proceda con los marcos que usa la organización, como las funciones *Measure* y *Manage* del NIST AI RMF o su proceso de tratamiento del riesgo según ISO/IEC 42001. El resumen para profesionales de Leo presenta la deduplicación como un control candidato de bajo coste bajo el ataque evaluado.
+
+### 8.5 Ejemplo resuelto (caso sintético de Harbourline)
+
+Un colega que reproducía la tabla principal de Leo descubrió que el *script* de evaluación descartaba en silencio los registros de más de 512 tokens, alrededor del 3 % de los no miembros. Leo lo corrigió; la TPR con una FPR del 1 % se movió 0,2 puntos y las conclusiones se mantuvieron, y él anotó la corrección. En la defensa, un examinador preguntó: «¿No es esto simplemente sobreajuste?». Leo mostró la ablación de eliminación aleatoria y el análisis con brechas emparejadas: «Parte del efecto está relacionada con el tamaño (1,9 puntos), pero los 3,7 puntos restantes son específicos de los duplicados, bajo este ataque». Otro preguntó si Harbourline debería adoptar en su lugar la privacidad diferencial. Leo respondió que la privacidad diferencial da garantías formales (Abadi et al., arXiv:1607.00133) con un coste de utilidad que él no midió; la deduplicación es complementaria y barata, y una comparación con la privacidad diferencial queda para trabajos futuros.
+
+El laboratorio de inferencia de pertenencia puede usarse en la defensa para mostrar el concepto central en treinta segundos.
+
+```python
+"""Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
+that returns a confidence score. Synthetic records only; teaching model."""
+import random, math
+rng = random.Random(5)
+def rec(): 
+    y = rng.random() < 0.5
+    return [rng.gauss(0.6 if y else -0.6, 1.0) for _ in range(4)], int(y)
+members = [rec() for _ in range(150)]; nonmembers = [rec() for _ in range(150)]
+def confidence(x, y, k):
+    # k-NN vote share for the true label, computed over the training set
+    d = sorted((sum((a-b)**2 for a, b in zip(x, m)), my) for m, my in members)
+    return sum(1 for _, my in d[:k] if my == y)/k
+def auc(pos, neg):
+    s = sum((p > n) + 0.5*(p == n) for p in pos for n in neg)
+    return s/(len(pos)*len(neg))
+for k in (1, 5, 25):
+    pos = [confidence(x, y, k) for x, y in members]
+    neg = [confidence(x, y, k) for x, y in nonmembers]
+    best = max(sum(p >= t for p in pos)/len(pos) - sum(n >= t for n in neg)/len(neg)
+               for t in sorted(set(pos + neg)))
+    print(f"k={k:2d} attack_auc={auc(pos, neg):.3f} best_advantage={best:.3f}")
+```
+
+Salida esperada:
+
+```text
+k= 1 attack_auc=0.600 best_advantage=0.200
+k= 5 attack_auc=0.521 best_advantage=0.073
+k=25 attack_auc=0.520 best_advantage=0.060
+```
+
+### 8.6 Actividades de práctica
+
+1. Organice una revisión de reproducción y de lectura del resumen. 2. Prepare una presentación para la defensa con una diapositiva de respuesta. 3. Redacte el resumen para profesionales. Para la revisión, pida a un colega que reproduzca una tabla y lea el resumen, y anote lo que encontró. Para la presentación, incluya una diapositiva que responda a la pregunta con un número y un intervalo, como hizo Leo con la diferencia de 3,7 puntos. Para el resumen, enuncie el hallazgo, las condiciones y el siguiente paso, y no pase de dos páginas. Tome nota de lo que cambió.
+
+### 8.7 Errores y límites
+
+Cuatro errores se repiten, y cada uno debilita la etapa final; revise su entrega en busca de los cuatro:
+
+- Entregar sin que nadie haya reproducido un resultado; sin una reproducción, problemas como los registros largos descartados en el trabajo de Leo llegan a los examinadores.
+- Responder a las preguntas a la defensiva y sin evidencia; esto hace perder la confianza de los examinadores.
+- Resúmenes para profesionales que omiten las condiciones; un resumen así convierte un resultado bajo un único ataque en una regla general.
+- Ignorar las referencias de página de las correcciones exigidas; las correcciones sin referencias de página son difíciles de comprobar y retrasan la concesión del título.
+
+### Ejercicios — capítulo 8
+
+- **EX045 — Revisiones.** Nombre tres revisiones independientes que solicitar y lo que encuentra cada una. Rúbrica: 3 = reproducción/dependencias ocultas, lectura del método/detalles que faltan, lectura del resumen/afirmaciones exageradas; 2 = dos; 1 = una; 0 = ninguna.
+- **EX046 — Diapositiva de respuesta.** Escriba la diapositiva de respuesta de una frase de Leo. Rúbrica: 3 = hallazgo con número, intervalo y condiciones; 2 = falta el intervalo o las condiciones; 1 = vago; 0 = nada.
+- **EX047 — Pregunta sobre el sobreajuste.** Responda a «¿no es esto simplemente sobreajuste?» para su propio proyecto. Rúbrica: 3 = respuesta directa, evidencia (ablación/control), límite; 2 = dos partes; 1 = una; 0 = nada.
+- **EX048 — Impacto del error.** ¿Cómo debería informar Leo del error de los 512 tokens? Rúbrica: 3 = describirlo, corregirlo, cuantificar el cambio, señalar que las conclusiones se mantuvieron, en el registro de desviaciones/correcciones; 2 = parcial; 1 = ocultarlo; 0 = nada.
+- **EX049 — Privacidad diferencial frente a deduplicación.** Contraste la privacidad diferencial y la deduplicación en dos frases. Rúbrica: 3 = la privacidad diferencial es una cota formal con coste de utilidad; la deduplicación es heurística, barata y se centra en la repetición; complementarias; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX050 — Resumen para profesionales.** Escriba las tres primeras frases del resumen para profesionales. Rúbrica: 3 = hallazgo, condiciones, siguiente paso, sin exagerar; 2 = dos; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+La revisión independiente detecta los errores que usted no puede ver; la defensa pone a prueba si puede vincular cada afirmación con su evidencia y sus límites. Un resumen para profesionales cuidadoso lleva el resultado a la práctica sin perder sus condiciones.
+
+### Siga estudiando — capítulo 08 de 08
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -651,6 +930,42 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX031.** eps 0.50 (0.840) y 0.75 (0.660): la exactitud no está cerca del techo con datos limpios (0.985) ni en el nivel del azar (0.505 con 1.00), así que pueden distinguirse las defensas.
 
 **EX032.** «Día 3 del piloto: se sustituyó el ataque de umbral por un ataque calibrado; motivo: efecto suelo (TPR del 1–2 % en todas las condiciones); efecto: condiciones separables.» «Día 4 del piloto: se corrigieron las plantillas 12 y 19 del generador; motivo: notas casi idénticas entre clases; efecto: elimina el ruido en las etiquetas.»
+
+**EX033.** Si las condiciones se ejecutan en bloques, un cambio dependiente del tiempo (hardware, biblioteca, carga) puede hacerse pasar por un efecto del tratamiento; intercalar reparte esos problemas entre las condiciones.
+
+**EX034.** Todas las ejecuciones presentes; se superan los canarios (modelo sin defensa atacable, modelo con etiquetas barajadas al nivel del azar); sin duplicados entre particiones; valores de las métricas plausibles.
+
+**EX035.** ASR de referencia 0.350; con defensa 0.190; IC del 95 % de la reducción [0.120, 0.203].
+
+**EX036.** Los elementos varían en dificultad; emparejar cancela esa variación compartida y da un intervalo más ajustado y correcto para la diferencia. Comparar intervalos separados que se solapan es conservador y puede inducir a error.
+
+**EX037.** Utilidad/exactitud; latencia; rechazos falsos o falsos positivos; coste de cómputo y de mantenimiento.
+
+**EX038.** Como resultado exploratorio en una subsección etiquetada, planteado como hipótesis para un trabajo confirmatorio futuro.
+
+**EX039.** (a) Hallazgo: una cantidad medida. (b) Interpretación: una explicación causal que necesita evidencia de ablación.
+
+**EX040.** Interna: artefactos del generador; de constructo: una sola familia de ataques; externa: una sola arquitectura, notas sintéticas en inglés; de la conclusión: cinco semillas. (Cada una con la medida adoptada.)
+
+**EX041.** «Siguiendo a Greshake et al. (arXiv:2302.12173), construimos inyecciones indirectas incrustadas en documentos recuperados dentro de nuestro entorno aislado; las cadenas de las cargas útiles no se publican y están a disposición de los investigadores que las soliciten.»
+
+**EX042.** Repositorio y *commit*; entorno; órdenes de reproducción por tabla; ficha de datos; ficha de modelo; *hashes* de los archivos clave; declaración de lo que se retiene y por qué.
+
+**EX043.** La precisión completa recupera los pesos exactamente (error 0.000, coincidencia 1.000); dos decimales dan un error de 0.004 (coincidencia 0.998); los enteros dan un error de 0.534 (coincidencia 0.882). La precisión de la salida forma parte del modelo de amenaza.
+
+**EX044.** «La deduplicación es un control de bajo coste que las aseguradoras que ajustan finamente clasificadores podrían evaluar para reducir la fuga de pertenencia.»
+
+**EX045.** La reproducción de una tabla encuentra dependencias ocultas y errores; la lectura del método encuentra detalles que faltan; la lectura del resumen encuentra afirmaciones exageradas.
+
+**EX046.** «La eliminación de casi duplicados redujo la TPR de la inferencia de pertenencia con una FPR del 1 % del 9,8 % al 4,2 %, 3,7 puntos (IC del 95 %: 2,6–4,9) más que la eliminación aleatoria, con un coste de 0,007 en el F1 macro, en notas sintéticas, con una sola arquitectura y un ataque calibrado.»
+
+**EX047.** Las respuestas varían; una respuesta completa da una respuesta directa, la evidencia de la ablación o del control, y un límite.
+
+**EX048.** Describir el error, la corrección, el cambio de 0,2 puntos y que las conclusiones se mantuvieron, y anotarlo en el registro de desviaciones y en los métodos.
+
+**EX049.** La privacidad diferencial acota formalmente la influencia de cada registro, con un coste de utilidad medible. La deduplicación es una heurística barata que se centra en los registros repetidos; son complementarias.
+
+**EX050.** «Eliminar las notas de siniestros duplicadas antes del ajuste fino redujo aproximadamente a la mitad una medida de la fuga de pertenencia en nuestro estudio sintético, casi sin coste de exactitud. Esto se cumplió para un tipo de modelo y con datos sintéticos. Proponemos un piloto sobre una copia gobernada de datos reales antes de adoptarla.»
 
 <a id="references"></a>
 

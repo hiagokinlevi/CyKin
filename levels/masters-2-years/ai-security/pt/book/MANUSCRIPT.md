@@ -657,7 +657,12 @@ Os resultados principais de Leo (sintéticos, cinco sementes, 20.000 registros):
 
 ### 6.7 Erros e limites
 
-Quatro erros se repetem: executar todas as sementes de uma condição antes de outra; analisar antes das verificações de qualidade; misturar resultados exploratórios e confirmatórios; e relatar ganhos de segurança sem os custos. Cada erro enviesa os resultados ou esconde custos. Executar primeiro as sementes de uma condição deixa problemas dependentes do tempo coincidirem com ela. Analisar antes das verificações de qualidade transforma defeitos em achados, como uma semente ausente. Misturar resultados exploratórios e confirmatórios exagera a certeza. Relatar ganhos sem custos esconde compromissos, como a queda no macro-F1 que Leo relatou. Confira a sua análise quanto aos quatro.
+Quatro erros se repetem, e cada um enviesa os resultados ou esconde custos; confira a sua análise quanto aos quatro:
+
+- Executar todas as sementes de uma condição antes de outra; isso deixa problemas dependentes do tempo coincidirem com essa condição.
+- Analisar antes das verificações de qualidade; isso transforma defeitos, como uma semente ausente, em achados.
+- Misturar resultados exploratórios e confirmatórios; isso exagera a certeza.
+- Relatar ganhos de segurança sem os custos; isso esconde compromissos, como a queda no macro-F1 que Leo relatou.
 
 ### Exercícios
 
@@ -742,7 +747,12 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 ### 7.8 Erros e limites
 
-Quatro erros se repetem: resultados e discussão misturados; limitações genéricas ("são necessários mais dados"); detalhes operacionais de ataque contra sistemas identificados pelo nome; e recomendações enunciadas como achados. Cada erro torna as alegações menos confiáveis. Resultados e discussão misturados borram o que foi medido. Limitações genéricas não dizem nada aos examinadores sobre este estudo. Detalhes operacionais contra sistemas identificados ajudam atacantes sem ajudar os leitores. Uma recomendação enunciada como achado alega mais do que os dados mostram, e é por isso que Leo moveu e atenuou a sua recomendação às seguradoras. Confira o seu rascunho quanto aos quatro.
+Quatro erros se repetem, e cada um torna as alegações menos confiáveis; confira o seu rascunho quanto aos quatro:
+
+- Resultados e discussão misturados; isso borra o que foi medido.
+- Limitações genéricas ("são necessários mais dados"); não dizem nada aos examinadores sobre este estudo.
+- Detalhes operacionais de ataque contra sistemas identificados pelo nome; ajudam atacantes sem ajudar os leitores.
+- Recomendações enunciadas como achados; uma recomendação enunciada como achado alega mais do que os dados mostram, e é por isso que Leo moveu e atenuou a sua recomendação às seguradoras.
 
 ### Exercícios
 
@@ -829,7 +839,12 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 8.7 Erros e limites
 
-Quatro erros se repetem: entregar sem que ninguém tenha reproduzido um resultado; responder às perguntas na defensiva, sem evidência; resumos para profissionais que omitem as condições; e ignorar as referências de página das correções exigidas. Cada erro enfraquece a etapa final. Sem uma reprodução, problemas como os registros longos descartados no trabalho de Leo chegam aos examinadores. Respostas defensivas sem evidência fazem perder a confiança dos examinadores. Um resumo que omite as condições transforma um resultado sob um único ataque numa regra geral. Correções sem referências de página são difíceis de conferir e atrasam a aprovação. Confira a sua entrega quanto aos quatro.
+Quatro erros se repetem, e cada um enfraquece a etapa final; confira a sua entrega quanto aos quatro:
+
+- Entregar sem que ninguém tenha reproduzido um resultado; sem uma reprodução, problemas como os registros longos descartados no trabalho de Leo chegam aos examinadores.
+- Responder às perguntas na defensiva, sem evidência; isso faz perder a confiança dos examinadores.
+- Resumos para profissionais que omitem as condições; um resumo assim transforma um resultado sob um único ataque numa regra geral.
+- Ignorar as referências de página das correções exigidas; correções sem referências de página são difíceis de conferir e atrasam a aprovação.
 
 ### Exercícios
 
