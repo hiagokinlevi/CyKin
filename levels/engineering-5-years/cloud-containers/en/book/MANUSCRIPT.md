@@ -3608,29 +3608,43 @@ You will (1) implement and verify the secure namespace service; (2) run it in st
 
 Templates are written as versioned manifests; the request workflow is a reviewed pull request to a namespaces repository, processed by the GitOps controller with a narrowly scoped identity. A canary namespace verifies each template version.
 
+Using a pull request as the request form means every namespace has a reviewer, a timestamp and a record of who asked for it, with no new tool to build or secure. The controller's identity can create namespaces only with the approved label prefix, as the design review required. Templates are referenced by version, so a namespace always shows which version created it, and changing a template never alters existing namespaces silently.
+
 ### 46.2 Verification
 
 Each new namespace automatically runs the chapter 30 tests: privileged pod rejected, unsigned image rejected, web-to-db connection blocked, workload identity limited, quotas applied, alerts flowing. Results are attached to the request.
+
+Running the tests at creation turns the earlier one-off verification into a check every namespace receives. Attaching the results to the request gives the developer and any later auditor the same proof, dated and tied to a template version. If any test fails, the namespace is marked not ready and the requesting team is told why, so nobody deploys into a namespace that is only partly protected while the fault is fixed.
 
 ### 46.3 Staging trial
 
 Twelve namespaces are created in staging over two weeks; all pass verification. One template error, a missing DNS egress rule, is caught by the canary before any real namespace uses it.
 
+Without that egress rule, default-deny would have blocked name lookups, so services in the new namespace could not have found the database or the message queue. The failure would have looked like an application bug rather than a template error, and would have recurred in every namespace. Catching it in the canary confirms the design review's concern about errors spreading and shows that the canary step earns its place in the workflow.
+
 ### 46.4 Production
 
 Eight new production namespaces are created in the following month, all passing at creation. Median creation time is 6 minutes.
+
+Six minutes is well under the ten-minute criterion, and most of that time is the controller's reconciliation cycle and the verification tests rather than any manual step. Elena also records the slowest creation, which waited for a reviewer to approve the pull request. Approval time is outside the service's control, so she reports it separately, keeping the creation measure honest about what the service itself does.
 
 ### 46.5 Developer feedback
 
 Developers rate the process 4.4 of 5; the main request is clearer documentation on quota options.
 
+The rating comes from a short question sent after each delivery, and comments are read alongside the score. The quota request echoes the design review, which had already turned fixed quotas into size options; the options exist, but developers cannot tell which suits their workload. That is a documentation gap rather than a design flaw, so the fix is examples of typical workloads in the user guide, not new options.
+
 ### 46.6 Handover
 
 The platform team takes ownership with runbooks, template tests and a maintenance schedule.
 
+Handover is tested, not assumed. The platform engineer who will own the service makes a template change on their own, using only the documents, and runs it through the canary and the tests. Elena watches without helping and notes where they hesitate. The maintenance schedule sets when templates are reviewed against new Kubernetes versions and policy changes, so the defaults do not slowly fall behind the controls they were built to apply.
+
 ### 46.7 Criteria check
 
 All three success criteria are met.
+
+Every production namespace passed verification at creation, median creation took six minutes against a ten-minute limit, and developers rated the process 4.4 against a target of 4. Elena reports each of the three figures with its measure and sample size: eight production namespaces and the ratings returned for them. She also notes that early results may flatter the service, since willing teams adopted it first, and that the maintenance schedule exists to keep those results from fading. Rosa countersigns the check.
 
 ### Documentation
 
@@ -3676,25 +3690,37 @@ You will (1) plan and run a controlled failure and recovery trial; (2) test cont
 
 With approval from Solent's operations director, Elena and the platform team run a staged trial in a production-like environment: simulate a leaked workload credential, a deleted network policy and an unavailable policy engine, then measure detection and recovery.
 
+Each scenario tests a different layer: detection and revocation for identity, reconciliation for configuration, and fail-closed behaviour for admission. Objectives are written in advance as times, such as detection within five minutes, so results can be judged against them rather than described afterwards. The production-like environment uses the same templates, policies and alerting as production, which makes the results meaningful without putting real meter data or customers at risk.
+
 ### 47.2 Safety
 
 The trial uses a dedicated environment with synthetic meter data. Abort criteria and a rollback plan are agreed; observers are named.
+
+Abort criteria are specific: stop if any production alert fires, if the trial environment's isolation is in doubt, or if an observer calls a halt. The rollback plan restores the environment from its declared state in the repository. Observers record timings and decisions without taking part, which keeps measurements independent of the people being measured. Production on-call staff are told the trial window in advance, so trial alerts reaching them are not mistaken for real incidents.
 
 ### 47.3 Leaked credential scenario
 
 A synthetic credential event is injected. Detection takes 4 minutes; the credential is revoked in 9 minutes. Because workload identity tokens expire within an hour, the scenario also confirms that no long-lived key exists to revoke.
 
+Four minutes to detect and nine to revoke are both inside the objectives. The leaked credential is a short-lived workload token, so even without revocation it would stop working within the hour; revoking it still matters because an hour is long enough to copy data. The confirmation that no long-lived key exists is the strongest result, since the opening case began with exactly such a key.
+
 ### 47.4 Deleted policy scenario
 
 A network policy is deleted. GitOps restores it in 3 minutes; a drift alert fires in 2.
+
+The alert arriving before the restore matters: if GitOps reverted the change silently, nobody would ask why the policy was deleted, and a person or process deleting policies would go unnoticed. During the three minutes the namespace was open, observers check flow logs for connections that the policy would have blocked; none appear in the synthetic traffic. The trial also confirms that reconciliation works when the deletion happens outside the GitOps repository.
 
 ### 47.5 Engine failure scenario
 
 All policy engine replicas are stopped. Deployments fail closed; an alert fires in 1 minute; recovery takes 6 minutes following the runbook.
 
+Failing closed means no new deployment is admitted while the engine is down; running workloads continue unaffected. The cost is blocked releases, which is why recovery speed matters. Six minutes meets the objective, and following the runbook step by step shows where it was unclear. The worked example shows the human side of the scenario: under pressure, an engineer considered making admission fail open, which the runbook now forbids without approval.
+
 ### 47.6 Results
 
 All objectives met; two runbook steps clarified.
+
+Detection and recovery times were inside every objective: four and nine minutes for the credential, two and three for the deleted policy, and one and six for the engine failure. The two clarified runbook steps were the points where engineers paused during the engine failure. Elena records the results with the trial plan and the observers' notes, so next year's trial can compare against them, and she notes that synthetic data cannot show everything a real incident would.
 
 ### Debrief
 
@@ -3740,25 +3766,37 @@ You will (1) compile an evidence dossier for the engineering work; (2) trace req
 
 The dossier follows the requirement trace: for each of R1 to R6 and the capstone criteria, the design element, verification evidence, operational evidence and remaining risk.
 
+Following the requirements means an assessor can start from any requirement and find everything about it in one place, instead of searching through test folders. Remaining risk is included for each, so the dossier does not imply that meeting a requirement removes all risk. The capstone criteria get the same treatment, with the creation tests, timings and developer ratings linked to their sources and the date each was collected.
+
 ### 48.2 Evidence types
 
 Test results with dates and policy versions, configuration queries, measurement reports (coverage, latency, applied study), trial results, review logs, survey results and decision records.
+
+Different types answer different questions. Tests show controls work at a point in time, configuration queries show what is set now, measurements show effect and cost, trial results show recovery under stress, and survey and review records show how people experienced the system. Each item records when it was produced and by what, so an assessor can tell generated evidence from notes written later. Decision records explain choices that no test could show.
 
 ### 48.3 Integrity
 
 Evidence files are stored in a repository with a manifest of SHA-256 hashes so assessors can confirm nothing changed after submission.
 
+The manifest lists every file with its hash and is itself committed to the repository, so the history shows when each piece of evidence was added. An assessor can rehash any file and compare. If evidence must be corrected after submission, a new file and a new manifest entry are added and the change is explained, rather than the original being replaced. That keeps the record of what was first submitted.
+
 ### 48.4 Mapping
 
 A table maps evidence to CSA CCM v4 domains and to the Pod Security Standards and CIS Benchmark sections used.
+
+Mapping to recognised frameworks helps auditors who think in those terms find what they need without learning the project's own requirement numbers. Each row names the control objective, the evidence files and any gap. Where evidence only partly meets a framework control, the table says so, as with key rotation records before they were automated. Elena cites the framework versions used, since mappings to an older version may not hold for a newer one.
 
 ### 48.5 Limitations
 
 One organisation; synthetic data in trials; short post-rollout period; some controls depend on provider features that could change.
 
+Each limitation is stated with its effect on the claims. One organisation means results may not transfer. Synthetic trial data shows controls working but not how real attackers would behave. A short period after rollout cannot show whether results hold over years. Provider features such as identity federation could change, so the dossier lists which controls depend on them and what would need rechecking if they did.
+
 ### 48.6 Readability
 
 A two-page summary leads, with links into detail.
+
+Most readers, including managers and the regulator, will read only the summary, so it must stand on its own: the problem, what was built, the main results with figures, the limits and where to find the evidence. Each claim links to the relevant part of the trace. Elena asks Rosa to read the summary without the rest and say what she understood. Rosa's summary of it, compared with Elena's intended message, shows where the wording misleads.
 
 ### Failures included
 
