@@ -55,6 +55,8 @@ The total for that ramp is ∫₀⁶ (6t − t²) dt = [3t² − t³/3]₀⁶ = 
 
 Real traffic is bursty, not smooth; a continuous model gives an average-case picture, and the ROE limit must be enforced by a mechanism, not by the calculation. Units cause most mistakes: keep seconds and minutes separate.
 
+Enforcement belongs in the scanner configuration and in a network rate limiter the client can see, so a mistake in the schedule cannot silently exceed the agreed limit. When converting between minutes and seconds, write the units next to every number and check the final figure against a rough estimate. Burstiness means a short spike can break a per-second limit even when the hourly average is fine, so Sam Ito sets both a short-window and a long-window ceiling in the ROE and tests them before the engagement starts.
+
 ### Exercises
 
 - **EX001 — Breach window.** For r(t) = 8t − t² req/s (t in minutes, 0–8) and a ceiling of 7 req/s, find the peak and the interval during which the ceiling is breached. Rubric: 3 = peak 16 at t=4 and breach between t=1 and t=7 (6 minutes); 2 = one slip; 1 = peak only; 0 = none.
@@ -80,6 +82,8 @@ You will (1) express scope as sets and predicates; (2) prove a simple property o
 ### 2.1 Scope is a set
 
 Written scope lists what may be tested: in-scope networks I, in-scope ports P and a deny-list D. The set of permitted targets is T = {(h, p) : h ∈ I, h ∉ D, p ∈ P}. Writing scope this way exposes ambiguities a prose ROE hides. "The 10.20.0.0/16 network except the gateway" is the set difference I \ D with D = {10.20.0.1}. "Web services" is not a set until someone lists the ports.
+
+Once targets are pairs of host and port, every proposed action can be checked against the same predicate. Ambiguous phrases such as 'web services' disappear, because the set either contains a port or it does not. The deny-list sits inside the definition of T, so forgetting to apply it is a coding error rather than a judgement call during the test. Sam keeps the written ROE and the machine-readable set in the same change, so they cannot drift apart.
 
 ### 2.2 Predicates and proofs
 
@@ -143,6 +147,8 @@ A /16 holds 2¹⁶ = 65,536 addresses; a /24 holds 256. With four permitted port
 
 Sets describe intent, not reality: DHCP can move a host into or out of a range during the test, so the predicate must be re-evaluated per action. Overlapping CIDRs double-count if you add sizes naively; use inclusion–exclusion.
 
+Re-evaluating the predicate before each action costs little and catches a host that moved during the day. When two ranges overlap, adding their sizes twice is the common mistake; compute the union instead. A scope file that is correct at kickoff can be wrong by lunchtime if the client renumbers a subnet, which is why TrackScope logs the version of the scope file with every decision.
+
 ### Exercises
 
 - **EX004 — Set notation.** Write the permitted-target set for networks 192.168.50.0/24, ports {22, 443} and deny-list {192.168.50.1, 192.168.50.254}. Rubric: 3 = correct set expression and |T| = 508; 2 = expression without count; 1 = partial; 0 = none.
@@ -169,9 +175,13 @@ You will (1) relate signal propagation, bandwidth and latency to what a test can
 
 Signals in fibre travel at about two-thirds of the speed of light, roughly 200,000 km/s, so 1,000 km of fibre adds about 5 ms each way. When TrackScope reports a 40 ms round trip to a depot server 300 km away, about 3 ms is propagation and the rest is queuing, switching and processing. Engineers use this floor to sanity-check timing evidence: a round trip *below* the propagation floor means the measurement or the location assumption is wrong.
 
+If a measured round trip is shorter than light could travel the claimed distance, either the server is closer than believed or the clock is wrong. Sam uses the floor as a check on evidence, not as a location finder: many paths take longer routes, so a high latency proves nothing about distance. For depot links over a few hundred kilometres, a few milliseconds of propagation is normal; tens of milliseconds of processing on a busy fare system is also normal and must not be read as proof of a distant host.
+
 ### 3.2 Bandwidth and serialisation
 
 Serialisation time is size divided by link rate. A 1,500-byte frame on a 10 Mb/s depot uplink takes 1,500 × 8 / 10⁷ = 1.2 ms to put on the wire. If an authorized scan sends 2,000 small probes per second at 100 bytes each, it consumes 1.6 Mb/s, 16% of that uplink, which is why low-bandwidth OT and branch links get tighter ROE limits than data-centre networks.
+
+Serialisation time adds to every packet before any processing delay. On a slow uplink, many small probes add up faster than engineers expect, because each probe still carries headers. Sixteen percent of a depot link is already enough to annoy operations and to trigger capacity alarms. Sam therefore sizes scans against the smallest link in scope, not against the data-centre core, and writes the assumed link rate into the ROE so the client can correct it.
 
 ### 3.3 Heat, power and physical media
 
@@ -182,6 +192,8 @@ Computation dissipates power as heat. A stress test that keeps an embedded fare 
 ### 3.4 Errors and limits
 
 Back-of-envelope physics gives orders of magnitude; real links have overheads (headers, retransmissions) that add 5–20%. Do not infer geographic location from latency alone; routing paths are rarely straight lines.
+
+Header and retransmission overhead means a calculation that ignores them underestimates load. Using latency to guess location fails when traffic is routed through a distant hub or a VPN. Sam states assumptions next to every estimate and treats a mismatch with measured values as a signal to revise the model, not as a finding about the target.
 
 ### Exercises
 
@@ -209,9 +221,13 @@ You will (1) write small, testable functions for assessment bookkeeping; (2) cho
 
 Assessment tooling is mostly bookkeeping: is this target allowed, which finding is a duplicate, how old is this ticket. Each question should be a pure function with explicit inputs and a return value, such as `allowed(host, port, scope) -> (bool, reason)`. Returning the *reason* as well as the decision makes logs useful: "DENY outside-cidr" tells the reviewer which rule fired. Avoid global state; a function that reads a hidden global scope file cannot be tested against a synthetic scope.
 
+A pure function can be called from a unit test with a fake scope and from the live tool with the real one, and both paths share the same logic. Returning a reason string turns every denial into an explanation the engagement log can store. Global state is the enemy of that pattern: if the scope is read from a file inside the function, a test cannot inject a synthetic scope without touching the filesystem. Sam keeps scope as an argument everywhere TrackScope decides allow or deny.
+
 ### 4.2 Data structures that resist errors
 
 Store ports as a `set` of integers, not a comma-separated string: membership is exact and "443" cannot match "4430". Store CIDRs as parsed network objects (the standard `ipaddress` module) rather than strings, because string prefix matching thinks 10.2.0.5 is inside "10.20". Store findings as dictionaries with a fixed schema and validate required keys on creation.
+
+Wrong types create silent bugs that look like scope mistakes. A string of ports invites a substring match; a set of integers does not. String prefix checks on addresses are a classic trap, which is why the standard library's network objects exist. Validating finding records on creation catches a missing ticket reference before the report is written, when fixing it still costs seconds rather than an awkward correction to the client.
 
 ### 4.3 Test first
 
@@ -232,6 +248,8 @@ print("scope tests passed")
 ### 4.4 Errors and limits
 
 Tests prove behaviour on the cases you wrote, not on all inputs. Keep test data synthetic; never paste a client's real host list into a public repository.
+
+A passing suite means the written cases behave; an untested boundary can still be wrong. Synthetic hosts keep client networks out of git history and out of student machines. When a new rule is added to the scope checker, Sam adds a test for it in the same change, so the suite and the rules stay aligned.
 
 ### Exercises
 
@@ -259,9 +277,13 @@ You will (1) write a finding that a non-specialist can act on without exploit de
 
 A red-team report is read by an engineer who must fix something and a manager who must fund it. Neither needs a recipe. A finding needs: a title stating the weakness and asset; the affected scope; the evidence (what was observed, with time and ticket reference); the impact in business terms; the recommended fix; and how the fix will be verified. NIST SP 800-115 treats reporting as part of the assessment, not an afterthought.
 
+Putting the fix and its verification next to the evidence means the engineer who must act has everything on one page. Business impact answers the manager's funding question without technical jargon: delayed trains, exposed rider data or a ticket forgery risk each land differently. Leaving out a working recipe is not vagueness; it is a deliberate choice so the report can be forwarded inside the client without becoming a how-to. NIST SP 800-115's place for reporting reminds teams that an unreported finding helps nobody.
+
 ### 5.2 Write the claim at the right strength
 
 "We compromised the domain" is a headline. "Within the authorized window, a service account in the lab directory had domain-administrator rights; we confirmed the group membership read-only and did not use it" is a finding. The second states what was done, what was not done and on which scope, and the reader can verify it.
+
+The weaker, careful claim is stronger as engineering because another team can re-check it. Stating what was not done closes the gap where a reader invents a worse scenario than occurred. Naming the scope, such as the lab directory rather than production, stops a finding being applied to the wrong system. Sam reads each draft aloud and asks whether every noun points to something in the evidence store.
 
 ### 5.3 Report structure
 
@@ -305,6 +327,8 @@ SYN-005 priority=critical score=17 impact=3 exploitability=2 exposure=1 :: servi
 ### 5.4 Errors and limits
 
 Avoid adjectives that cannot be checked ("trivial", "catastrophic"). Do not include working payloads, credentials or step-by-step instructions in reports; reference the evidence store instead.
+
+Unchecked adjectives invite argument and hide the real evidence. Working payloads and credentials belong in a controlled store with access logs, not in a PDF that will be mailed around. When a reader needs more detail to verify a fix, Sam points them at the ticket and the evidence hash rather than pasting secrets into the report body.
 
 ### Exercises
 
@@ -357,9 +381,13 @@ max_tries=3 success=988/1000 theory=0.9920
 max_tries=5 success=1000/1000 theory=0.9997
 ```
 
+Counting only logical uploads understates load by the retry factor. With p equal to 0.8, every thousand logical uploads mean about twelve hundred and fifty attempts on average, which is what the client's rate limiter will see. The lab's seed keeps the demonstration stable across machines; production uses the same formula with measured failure rates. Sam writes the expected attempt count into the ROE volume budget before the engagement.
+
 ### 6.2 Differential model of a backlog
 
 Let B(t) be open findings. Findings arrive at rate a and are closed at rate c when staffed. Then B′(t) ≈ a − c. If a = 4/day and c = 6/day, the backlog falls by about 2 per day; starting from 30, it reaches zero in 15 days. If arrivals jump to 8/day (a campaign week) while staffing stays at 6, the backlog grows. The model is crude — it ignores priority — but it makes the staffing decision quantitative.
+
+The sign of a minus c tells the story at a glance: negative and the pile shrinks, positive and it grows. Priority still matters in real queues, so Sam uses the model to ask for staffing, not to promise a calendar date. When a campaign week doubles arrivals, the same model shows how many extra closers are needed to stay level. Plotting B(t) over a month makes the effect visible to managers who will not read the equation.
 
 ### 6.3 When continuous is enough
 
@@ -367,14 +395,19 @@ ROE debates often need an order of magnitude, not a closed form. "Will a 5 req/s
 
 > **Synthetic case — Riverstone Transit.** FindingsDesk showed a backlog of 28 medium findings with two remediations per day. Sam's B′ model predicted 14 days to clear if no new arrivals; the manager funded a third engineer for that fortnight.
 
+Order-of-magnitude arithmetic settles most ROE debates in minutes. Exact schedules with peaks need the fuller treatment from the first calculus chapter, and those are the ones Sam brings to a client who will audit the numbers. For a flat scan, multiplying rate by duration is enough, and writing the product next to the volume limit shows compliance at a glance. If the product sits near the limit, he switches to the exact schedule check rather than hoping bursts stay small.
+
 ### 6.4 Errors and limits
 
 Independence of retries fails when the failure is systematic (a broken endpoint). Backlog models ignore priority and SLA; use them as a conversation starter, not as a forecast the board will quote.
 
+A broken endpoint fails every try, so multiplying attempts does not raise the success rate and only adds load. Staffing models that ignore severity will clear easy tickets while critical ones age. Sam labels every model with its assumptions and refuses to let a backlog chart be quoted as a delivery date.
 
 ### 6.3b Choosing a retry cap from the series
 
 The geometric series gives the chance that every attempt fails as p to the power n. Sam uses it backwards: TrackScope's evidence upload must succeed 99% of the time, and synthetic runs show a 20% failure rate per attempt, so three attempts (0.8%) meet the goal while two (4%) do not. He writes the derivation into the design note so a reviewer can check the cap without rerunning experiments.
+
+Working backwards from a reliability goal turns a taste decision into a short derivation. Three attempts leave under one percent failure when each try fails one time in five, which matches the lab. Putting the derivation in the design note means a later engineer can change the failure rate and recompute the cap without guessing why three was chosen. Sam re-runs the synthetic check whenever the upload path changes.
 
 ### Exercises
 
@@ -441,6 +474,8 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The same fifteen percent means very different things at n equals twenty and at n equals two thousand. An interval makes that visible without a statistics lecture. Sam reports the interval next to every attack-success rate so a defence is not crowned on a tiny sample. The lab's seed variation and paired bootstrap give two further checks: stability across seeds and a difference that may include zero.
+
 ### 7.2 Base rates and precision
 
 A detector with 95% true-positive rate and 5% false-positive rate looks excellent until the base rate of the bad class is 0.1%. Then almost every alert is a false positive (precision ≈ 1.9%). Bayes' rule: precision = TPR·π / (TPR·π + FPR·(1−π)). PulseMap must show precision at the client's base rate, not only TPR.
@@ -471,6 +506,8 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
+Precision collapses when the bad class is rare, which is exactly PulseMap's setting. A dashboard that shows only true-positive rate will look excellent while flooding analysts with false alarms. Computing precision at the client's measured prevalence, as the lab table does, is what Sam puts in the report. If prevalence is unknown, he shows a small table across a range rather than picking a flattering number.
+
 ### 7.3 Ranking defences
 
 Two defences with overlapping intervals are not ranked. Prefer a paired design on the same prompts and a bootstrap of the difference, as the lab shows. If the interval for the difference includes zero, report "no significant difference in this sample", not a winner.
@@ -481,6 +518,7 @@ Two defences with overlapping intervals are not ranked. Prefer a paired design o
 
 Independence of trials fails when prompts share a template. Intervals assume a fixed process; changing the model mid-test voids them. Never invent a p-value for a table you did not test.
 
+Shared templates make trials dependent, so intervals that assume independence are too narrow. Changing the model mid-test mixes two processes and voids the sample. Sam never attaches a significance claim to a table that was not tested for one, and he restarts the sample when the defence under test changes.
 
 ### 7.3b Reporting uncertainty to non-statisticians
 
@@ -512,9 +550,13 @@ You will (1) map privilege levels to what an authorized test may observe; (2) ex
 
 User mode sees process memory and system calls it is allowed; kernel mode sees devices and page tables; a hypervisor sees guests. An authorized engagement that stays in user mode cannot claim "we ruled out a kernel rootkit". State the privilege level of each observation in the evidence package. TrackScope should record the account and role used for every action.
 
+A finding is only as strong as the vantage point that produced it. User-mode evidence cannot rule out threats that live below it, and claiming otherwise oversells the engagement. Recording the account and role next to each action lets a reviewer see whether a later claim matches the access used. TrackScope refuses to store an observation without that field.
+
 ### 8.2 Side channels are physical
 
 Cache and timing side channels measure microarchitectural state. They are research techniques, noisy, and often out of scope for commercial assessments. If they are in scope, the ROE must name the platforms, forbid production traffic, and require a stop condition if latency to users rises. Do not treat a student lab on a laptop as evidence about a server.
+
+These techniques measure shared hardware state and can disturb production latency, which is why they need their own ROE clauses. A laptop lab says nothing about a server's cache behaviour under load. When side channels are out of scope, Sam states that limit in the report so readers do not assume they were tried. Stop conditions protect users who never agreed to be part of the experiment.
 
 ### 8.3 Evidence without root
 
@@ -526,9 +568,13 @@ Most durable evidence for an authorized assessment is logs, configuration reads 
 
 Architecture diagrams in marketing decks omit shared caches and management planes. Verify the actual platform before promising a privilege level in the ROE.
 
+Marketing diagrams often hide management interfaces and shared hardware. Sam confirms the real platform with the client before the ROE promises a privilege level. If the platform cannot be confirmed, the engagement stays at the least privilege that is known to exist, and the report states that limit so readers do not invent a stronger vantage point.
+
 ### 8.3b Privilege in tickets
 
 FindingsDesk should store `privilege_used` as an enum (user, admin-local, admin-domain, hypervisor, out-of-band). Sorting and SLA logic can then treat hypervisor findings differently from user-mode config reads. Without the field, two findings that look similar in title may have been obtained under radically different authorization, and the re-test plan will be wrong.
+
+An enum stops free-text drift such as 'admin' meaning local on one ticket and domain on another. SLA clocks can then give hypervisor findings a different path, because verifying them needs different access and different stop conditions. Re-test plans read the field so the re-tester brings the right authorization. FindingsDesk rejects a ticket that omits it.
 
 ### Exercises
 
