@@ -163,7 +163,7 @@ The rule explains the timeline: the criminal signed in from Brazil at 23:47 and 
 
 ### 2.4 The story
 
-Thursday: Elaine entered her password on a fake "document shared with you" page (found in her browser history). Friday night: a criminal signed in, created the rule and sent the fake invoice to two clients. MFA was not enabled on her account.
+Thursday: Elaine entered her password on a fake "document shared with you" page. Friday night: a criminal signed in, created the rule and sent the fake invoice to two clients. MFA was not enabled on her account.
 
 Each step has evidence. The fake page appears in Elaine's browser history. The two Brazil sign-ins appear in the sign-in records. The 23:51 forwarding rule appears in her mailbox settings. The two fake invoices appear in her sent items. Because each step has its own source, Leo can tell the partners what happened without guessing, and BrightPath knows what to undo.
 
@@ -178,14 +178,9 @@ Here both checks point the same way. Elaine was at home in the UK that weekend, 
 MITRE ATT&CK (Strom et al., 2018) lists email forwarding rules as a known collection technique; BrightPath uses this to check for similar rules on other mailboxes.
 
 The ATT&CK entry gives BrightPath a name to search for. It searched all 12 mailboxes for rules forwarding to outside addresses, found that only Elaine's had one, and checked that no other staff member had unusual sign-ins. That is how the firm knows the problem was limited to one account, not just assumed so.
-
-### Asking the right person
-
-Leo checks facts with Elaine directly by phone, not by email, since her mailbox may still be controlled by the criminal.
-
 ### Worked example
 
-BrightPath searches all 12 mailboxes for forwarding rules to outside addresses: only Elaine's had one. Sign-in checks show no unusual sign-ins for others. The problem is limited to one account.
+Before relying on Elaine's account of the weekend, Leo phones her rather than emailing, since her mailbox may still be controlled by the criminal. She confirms she was at home in the UK that weekend, the fact 2.5 needs to rule out travel as the reason for the Brazil sign-ins.
 
 > **Synthetic case.** Sign-ins and rules are synthetic.
 
