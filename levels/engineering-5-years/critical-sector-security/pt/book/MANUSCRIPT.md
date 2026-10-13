@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–5 de 50 já estão escritos em português, com os exercícios EX001–EX010 e suas resoluções; os capítulos 6–50 (EX011–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções; os capítulos 11–50 (EX021–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -40,10 +40,15 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 3. [Física para computação](#ch-03)
 4. [Programação I](#ch-04)
 5. [Comunicação em engenharia](#ch-05)
+6. [Cálculo II](#ch-06)
+7. [Probabilidade e estatística](#ch-07)
+8. [Arquitetura de computadores](#ch-08)
+9. [Programação II](#ch-09)
+10. [Ética e segurança em engenharia](#ch-10)
 
-Capítulos 6–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-06), até a chegada dos próximos lotes.
+Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX010. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX020. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -462,7 +467,345 @@ Escreva para viabilizar decisões: a recomendação primeiro, as evidências e s
 <!-- cyberabc:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 50
 
-[← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 (inglês) →](../../en/book/MANUSCRIPT.md#ch-06)
+[← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Cálculo II
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) escrever uma equação diferencial ordinária (EDO) de primeira ordem para um estoque com vazão de entrada e de saída; (2) resolver analiticamente EDOs lineares de primeira ordem, incluindo a aproximação exponencial ao equilíbrio e sua constante de tempo; (3) resolver EDOs numericamente e controlar o erro devido ao tamanho do passo; e (4) usar séries e sensibilidade (derivadas parciais) para ver qual parâmetro mais importa para uma margem de resiliência. Ele estende o Capítulo 1 e prepara o Capítulo 17 (controle).
+
+### 6.1 Estoques com realimentação viram equações diferenciais
+
+O reservatório do Capítulo 1 tinha uma vazão de saída conhecida e nenhuma vazão de entrada. Estoques reais têm fluxos que dependem do próprio estoque. A água que sai de um tanque aberto por um orifício depende da carga hidráulica acima dele; o cloro residual decai a uma taxa proporcional à sua concentração; a tensão nos terminais de uma bateria cai com seu estado de carga. Quando a taxa depende da quantidade, obtém-se uma equação como $dx/dt = f(x, t)$. O caso importante mais simples é o linear: $dx/dt = -kx + u$, com constante $k > 0$ e entrada $u$.
+
+### 6.2 A solução linear de primeira ordem e a constante de tempo
+
+Com $u$ constante, a solução é $x(t) = x_\infty + (x_0 - x_\infty)e^{-kt}$, em que $x_\infty = u/k$ é o equilíbrio. A **constante de tempo** $\tau = 1/k$ é o tempo para fechar cerca de 63% da diferença; após $3\tau$, cerca de 95% está fechado, e após $5\tau$, cerca de 99%. Os engenheiros usam $\tau$ para raciocinar sobre a rapidez com que um sistema responde a uma mudança — e a rapidez com que responde a um ataque. Exemplo: o cloro livre num tanque de armazenamento decai com uma constante de primeira ordem; se $k = 0.05$ por hora, $\tau = 20$ h. Se a dosagem parar (por falha ou por comando malicioso), o residual cai pela metade em $\ln 2/k \approx 13.9$ h. Essa é a janela em que um operador precisa perceber e agir antes que o residual caia abaixo do mínimo regulatório.
+
+### 6.3 Solução numérica e erro
+
+Na prática, a maioria das EDOs é não linear ou movida por entradas medidas, então você as resolve numericamente. O método de Euler explícito, $x_{n+1} = x_n + h f(x_n, t_n)$, tem erro global proporcional ao passo $h$; reduzir $h$ à metade reduz o erro aproximadamente à metade. O método de Heun e o método clássico de Runge–Kutta de quarta ordem reduzem o erro muito mais depressa para o mesmo $h$. Faça sempre uma **verificação de convergência do passo**: se reduzir $h$ à metade muda a resposta que lhe interessa em mais do que sua tolerância, o passo é grande demais. Em sistemas rígidos (stiff) — com alguns componentes muito mais rápidos do que outros —, os métodos explícitos podem se tornar instáveis, a menos que $h$ seja muito pequeno; Euler aplicado a $dx/dt = -kx$ é instável para $h > 2/k$.
+
+### 6.4 Sensibilidade: qual suposição importa?
+
+Uma margem de projeto depende de vários parâmetros: nível inicial, demanda, taxa de vazamento, capacidade das bombas. A derivada parcial da margem em relação a cada parâmetro, multiplicada pela faixa plausível desse parâmetro, mostra qual incerteza domina. Para a autonomia $T = V/q$ com demanda constante, $\partial T/\partial V = 1/q$ e $\partial T/\partial q = -V/q^2$; um erro de 10% na demanda move $T$ aproximadamente tanto quanto um erro de 10% no volume utilizável, mas no sentido oposto. As séries de Taylor dão a mesma percepção para modelos não lineares: perto de um ponto nominal, $f(x + \Delta) \approx f(x) + f'(x)\Delta$.
+
+### 6.5 Exemplo resolvido: perda da dosagem de cloro (sintético)
+
+O residual na saída de Hollin Hill, na LRWA, é mantido em 0,8 mg/L; o mínimo operacional sintético é de 0,2 mg/L. Com a dosagem parada e decaimento de primeira ordem $k = 0.05$ h⁻¹, o residual atinge 0,2 mg/L quando $0.8e^{-0.05t} = 0.2$, isto é, $t = \ln 4 / 0.05 \approx 27.7$ h. Se o tempo quente elevar $k$ para 0,08 h⁻¹, a janela encolhe para 17,3 h. A equipe de projeto escreve o requisito R9: *a perda da dosagem deverá gerar alarme em até 15 minutos, independentemente dos próprios relatórios de estado do controlador de dosagem* — porque um controlador comprometido poderia informar operação normal. A EDO se transformou num requisito de tempo de detecção com margem.
+
+### 6.6 Atividade prática
+
+Modifique o Laboratório 1 para incluir uma vazão de entrada constante de 120 m³/h vinda de uma única bomba sobrevivente e um vazamento de primeira ordem de $0.01V$ m³/h. Integre pelo método de Euler com três tamanhos de passo e encontre analiticamente o nível de equilíbrio fazendo $dV/dt = 0$, com a demanda substituída por sua média. Informe o nível de equilíbrio e compare-o com a capacidade e com o piso do reservatório. Com uma bomba a 120 metros cúbicos por hora contra uma demanda média de 150, o estoque precisa continuar caindo, a menos que o vazamento compense a diferença, então verifique se sua resposta analítica é fisicamente possível antes de confiar nela. Depois confirme que as execuções de Euler convergem à medida que o passo diminui. O objetivo do exercício é a combinação: uma verificação analítica, um resultado numérico e um teste de convergência que concordam entre si.
+
+### 6.7 Erros comuns e limites
+
+- Usar decaimento exponencial quando o processo não é de primeira ordem.
+- Informar uma solução numérica sem verificação do passo.
+- Ignorar que os parâmetros (taxas de decaimento, demanda) variam com a temperatura e a estação do ano.
+- Analisar a sensibilidade um parâmetro de cada vez quando os parâmetros interagem; para interações fortes, use métodos globais ([Saltelli et al., 2008](https://doi.org/10.1002/9780470725184)).
+
+No exemplo do cloro, uma equipe que usasse o ano inteiro a constante de decaimento de tempo frio acreditaria ter 27,7 horas quando o verão deixa cerca de 17. O alarme de 15 minutos de R9 foi escolhido com essa faixa sazonal em mente, e é por isso que o requisito não depende da constante exata.
+
+### Exercícios — capítulo 6
+
+**EX011 — Da constante de tempo ao requisito.** *Objetivo:* transformar dinâmica num requisito de tempo de detecção. *Entradas:* §6.5. *Passos:* (1) calcule a janela com $k = 0.12$ h⁻¹; (2) se os operadores precisam de 4 h para restabelecer a dosagem manualmente, calcule o último instante aceitável para o alarme; (3) escreva o requisito. *Evidência esperada:* números e requisito. *Rubrica:* 3 = janela e margem corretas e um requisito verificável independente do controlador; 2 = um deslize; 1 = apenas números; 0 = nada.
+
+**EX012 — Estabilidade de Euler.** *Objetivo:* ver a instabilidade numérica. *Entradas:* $dx/dt = -kx$, $k = 0.5$, $x_0 = 1$. *Passos:* calcule cinco passos de Euler com $h = 1$, $h = 3$ e $h = 5$ e compare com a solução exata. *Evidência esperada:* tabela e explicação. *Rubrica:* 3 = valores corretos e a instabilidade para $h > 2/k$ explicada; 2 = valores certos, explicação fraca; 1 = apenas um tamanho de passo; 0 = nada.
+
+### Síntese do capítulo
+
+Quando um fluxo depende do estoque, escreva uma EDO. Sistemas lineares de primeira ordem se aproximam do equilíbrio exponencialmente, com constante de tempo $\tau$; esse número se torna um requisito de detecção e resposta. Resolva numericamente com verificações de convergência e atenção à estabilidade. Use a sensibilidade para descobrir qual suposição domina uma margem e projete uma detecção que não dependa do componente sob suspeita.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — capítulo 06 de 50
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Probabilidade e estatística
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) aplicar a regra de Bayes a alarmes e explicar o problema da taxa-base; (2) calcular a disponibilidade de caminhos redundantes com e sem falha de causa comum; (3) modelar eventos raros com a distribuição de Poisson; e (4) resumir dados com uma incerteza honesta, incluindo quando desconfiar de uma amostra pequena. Ele se apoia nos capítulos 1–6 e prepara os capítulos 23 (análise de falhas), 29 (medição) e 32 (confiabilidade).
+
+### 7.1 Probabilidade como modelo de incerteza
+
+Uma probabilidade é um número entre 0 e 1 associado a um evento sob um modelo. Os engenheiros usam três leituras: frequência de longo prazo (falhas de bombas por ano numa frota), grau de crença (a estimativa de um especialista sobre a capacidade de um adversário) e margem de projeto (uma meta como 99,9% de disponibilidade). Deixe explícito qual delas você quer dizer; misturá-las é o modo como os registros de riscos viram ficção. As regras centrais: $P(A \cup B) = P(A) + P(B) - P(A\cap B)$; $P(A \cap B) = P(A)P(B\mid A)$; independência significa $P(B\mid A) = P(B)$.
+
+### 7.2 A regra de Bayes e o problema da taxa-base
+
+$P(H\mid E) = P(E\mid H)P(H)/P(E)$. Aplique-a a um alarme de intrusão: suponha que ataques ocorram em 0,1% das janelas de uma hora, que o detector dispare em 95% dos ataques (taxa de verdadeiros positivos) e em 1% das janelas benignas (taxa de falsos positivos). A probabilidade de que um alarme signifique um ataque é de apenas cerca de 8,7%. A maioria dos alarmes é falsa mesmo para um detector "99% preciso", porque as janelas benignas superam de longe os ataques. É por isso que os operadores aprendem a ignorar alarmes — e por isso que o projeto de alarmes precisa informar a taxa esperada de alarmes e o **valor preditivo positivo**, e não apenas a acurácia. [Sommer and Paxson (2010)](https://doi.org/10.1109/SP.2010.25) discutem esse e outros obstáculos relacionados à detecção de anomalias em redes operacionais.
+
+### 7.3 Redundância e causa comum
+
+Se um caminho de comunicação está disponível com probabilidade $a$ e os caminhos falham de forma independente, $n$ caminhos dão $1-(1-a)^n$. A independência é a suposição que falha na prática: caminhos que compartilham um alimentador de energia, um fornecedor, uma configuração ou uma vulnerabilidade explorável falham juntos. O **modelo do fator beta** atribui uma fração $\beta$ da indisponibilidade de cada unidade a causas comuns que derrubam todas as unidades de uma vez. Com $a = 0.98$ e $\beta = 0.05$, dois caminhos têm indisponibilidade ≈ 0,00136 em vez de 0,0004: a causa comum domina. Em segurança, uma vulnerabilidade de software idêntica nos dois caminhos é uma causa comum com $\beta$ próximo de 1 diante de um adversário que a conhece.
+
+### 7.4 Eventos raros: o modelo de Poisson
+
+Se os eventos chegam de forma independente a uma taxa média $\lambda$ por ano, o número de eventos num ano segue uma Poisson: $P(N=k) = e^{-\lambda}\lambda^k/k!$. Com $\lambda = 0.5$ faltas longas de energia da rede por ano, $P(N \ge 1) \approx 0.39$. O modelo de Poisson supõe taxa constante e independência; tempestades, campanhas de ataques e envelhecimento violam ambas, então trate-o como uma primeira aproximação. Para a LRWA, uma falta longa de energia da rede, de mais de quatro horas, é o evento que testa R5 e a reserva do hospital ao mesmo tempo. Se as faltas se agrupam em tempestades, o valor de Poisson subestima a chance de duas faltas num intervalo de dias, então a equipe do TMRP o confere contra os registros de interrupções da distribuidora antes de usá-lo na árvore de falhas.
+
+### 7.5 Descrever dados com honestidade
+
+Informe um valor central com a dispersão (mediana e intervalo interquartil para dados assimétricos, como durações de interrupções), o tamanho da amostra e o modo como os dados foram coletados. Um intervalo de confiança descreve a incerteza amostral sob um modelo; ele não diz nada sobre viés naquilo que foi registrado. Amostras pequenas de eventos raros são especialmente traiçoeiras: zero falhas em 3 anos de operação não significa risco zero. A "regra de três" dá um limite superior aproximado de 95% de $3/n$ para uma taxa quando 0 eventos são observados em $n$ tentativas ou unidades de tempo.
+
+### 7.6 Exemplo resolvido: a LRWA deve acionar o engenheiro de sobreaviso? (sintético)
+
+O TMRP propõe um detector de anomalias de rede no centro de controle com as taxas da §7.2. Avaliado em janelas de uma hora, ele acionaria o sobreaviso cerca de 0,26 vez por dia — aproximadamente uma vez a cada quatro dias — e cerca de 91% dos acionamentos seriam falsos. A equipe decide: acionar apenas quando o alarme de rede coincidir com uma anomalia de processo (mudança inesperada de setpoint ou desequilíbrio de vazão) e encaminhar os alarmes de rede isolados para uma fila de revisão no dia útil seguinte. A decisão é justificada pela taxa-base, e seu custo — resposta mais lenta a um ataque furtivo apenas de rede — é registrado no registro de riscos.
+
+### 7.7 Atividade prática: Laboratório 4
+
+```python
+# Lab 4 - base rates, redundancy and rare events (synthetic numbers, offline)
+import math
+prior, tpr, fpr = 0.001, 0.95, 0.01
+ppv = tpr * prior / (tpr * prior + fpr * (1 - prior))
+print(f"P(attack | alarm) = {ppv:.3f}")
+alarms_per_day = 24 * (tpr * prior + fpr * (1 - prior))
+print(f"expected alarms per day (hourly windows) = {alarms_per_day:.3f}")
+a = 0.98
+for n in (1, 2, 3): print(f"{n} independent paths at {a}: availability {1 - (1 - a) ** n:.6f}")
+beta = 0.05   # beta-factor common-cause share of unavailability
+q = 1 - a
+print(f"2 paths with beta={beta}: unavailability {(1 - beta) ** 2 * q ** 2 + beta * q:.6f}")
+lam = 0.5
+print(f"P(>=1 grid outage >4 h per year | lambda={lam}) = {1 - math.exp(-lam):.3f}")
+print(f"P(>=2) = {1 - math.exp(-lam) * (1 + lam):.4f}")
+```
+
+Saída esperada:
+
+```text
+P(attack | alarm) = 0.087
+expected alarms per day (hourly windows) = 0.263
+1 independent paths at 0.98: availability 0.980000
+2 independent paths at 0.98: availability 0.999600
+3 independent paths at 0.98: availability 0.999992
+2 paths with beta=0.05: unavailability 0.001361
+P(>=1 grid outage >4 h per year | lambda=0.5) = 0.393
+P(>=2) = 0.0902
+```
+
+As duas primeiras linhas repetem o resultado da taxa-base do exemplo resolvido: menos de um alarme em dez seria um ataque real, e o detector acionaria o sobreaviso cerca de uma vez a cada quatro dias. As linhas de redundância mostram com que rapidez caminhos independentes melhoram a disponibilidade, e a linha do fator beta mostra como uma causa comum de cinco por cento elimina a maior parte desse ganho. As linhas de Poisson dão a chance de pelo menos uma, e de pelo menos duas, faltas longas de energia da rede num ano, à taxa suposta pela LRWA.
+
+### 7.8 Erros comuns e limites
+
+- Informar a acurácia de um detector sem a taxa-base e o valor preditivo.
+- Multiplicar disponibilidades como se fossem independentes quando os caminhos compartilham causas.
+- Usar Poisson para eventos agrupados.
+- Tratar zero falhas observadas como probabilidade zero.
+- Estimativas pontuais sem tamanho de amostra e método de coleta.
+
+Cada erro tem um exemplo na LRWA. Acionar o engenheiro de sobreaviso a cada alarme de rede ignora a taxa-base. Tratar os dois caminhos LTE como independentes ignora seu alimentador compartilhado. Usar Poisson para as faltas causadas por tempestades esconde o agrupamento, e três anos tranquilos na PS4 não provam que as bombas não podem falhar juntas.
+
+### Exercícios — capítulo 7
+
+**EX013 — Sensibilidade à taxa-base.** *Objetivo:* ver como o valor preditivo depende da prevalência. *Entradas:* Laboratório 4. *Passos:* calcule o VPP para as probabilidades a priori 0,0001, 0,001 e 0,01 com o mesmo detector, e para a priori 0,001 com FPR 0,001. *Evidência esperada:* quatro valores e uma recomendação sobre qual parâmetro melhorar. *Rubrica:* 3 = valores corretos e a percepção de que reduzir a FPR importa mais em baixa prevalência; 2 = valores certos; 1 = um valor; 0 = nada.
+
+**EX014 — Causa comum na telemetria.** *Objetivo:* quantificar a diversidade. *Entradas:* dois caminhos LTE de operadoras diferentes ($a = 0.98$ cada). *Passos:* calcule a indisponibilidade para $\beta$ = 0, 0,05 e 0,2; nomeie duas causas comuns reais que esses caminhos ainda poderiam compartilhar. *Evidência esperada:* três números e duas causas. *Rubrica:* 3 = números corretos e causas compartilhadas plausíveis (energia da instalação, torre ou backhaul compartilhados, mesmo firmware de modem); 2 = causas genéricas; 1 = um número; 0 = nada.
+
+### Síntese do capítulo
+
+Probabilidade é um modelo; diga de que tipo. A regra de Bayes torna as taxas-base decisivas para os alarmes; a redundância só funciona na medida em que as falhas são independentes, e as causas comuns — incluindo vulnerabilidades compartilhadas — geralmente dominam. O modelo de Poisson é um ponto de partida para eventos raros. Descreva os dados com dispersão, tamanho da amostra e método de coleta, e nunca trate a ausência de falhas observadas como prova de segurança.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — capítulo 07 de 50
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitetura de computadores
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) descrever como um processador, a hierarquia de memória e a E/S interagem, e por que isso importa para o controle em tempo real; (2) explicar a arquitetura de controladores lógicos programáveis (PLCs), RTUs e controladores embarcados; (3) relacionar recursos de hardware — níveis de privilégio, proteção de memória, inicialização segura, raízes de confiança em hardware — a garantias de segurança; e (4) explicar como otimizações de desempenho, como caches e execução especulativa, criam vulnerabilidades. Ele se apoia no Capítulo 3 e prepara o Capítulo 12 (sistemas operacionais).
+
+### 8.1 O modelo de máquina
+
+Um processador busca instruções na memória, decodifica-as e executa-as, e lê e escreve dados em registradores e na memória. A memória é uma hierarquia — registradores, caches, memória principal, armazenamento —, cada nível maior e mais lento. Os dispositivos de E/S se conectam por barramentos e interrupções; uma interrupção suspende a execução normal para que o processador atenda a um dispositivo. O **determinismo** — saber o tempo de pior caso que uma operação leva — importa mais no controle do que a velocidade média: uma rotina de proteção de bomba que normalmente leva 1 ms, mas às vezes 50 ms por causa de uma tempestade de faltas de cache ou da coleta de lixo, pode perder seu prazo.
+
+### 8.2 PLCs, RTUs e controladores embarcados
+
+Um PLC executa um **ciclo de varredura**: lê as entradas, executa o programa do usuário, escreve as saídas, realiza comunicações e diagnósticos, e repete — muitas vezes a cada 10–100 ms. Seu programa é escrito em linguagens padronizadas pela IEC 61131-3 (lógica ladder, diagramas de blocos funcionais, texto estruturado). Uma RTU é projetada para instalações remotas: coleta medições, aplica lógica simples e se comunica por enlaces de longa distância, tolerando conectividade intermitente. Ambos têm vida longa: um equipamento instalado hoje pode funcionar por quinze a vinte e cinco anos, então os recursos de segurança que você escolher agora ainda precisarão ser aceitáveis na década de 2040. Muitos controladores legados aceitam mudanças de programa de qualquer pessoa que consiga alcançá-los pela rede; o Stuxnet explorou o caminho de uma estação de engenharia até a lógica do PLC, como analisado por [Langner (2011)](https://doi.org/10.1109/MSP.2011.67).
+
+### 8.3 Suporte de hardware à segurança
+
+- Os **níveis de privilégio** separam o código do kernel do código de usuário; uma falha no código de usuário não consegue sobrescrever diretamente o kernel.
+- As **unidades de proteção de memória** (MPU) e as **unidades de gerenciamento de memória** (MMU) impõem qual código pode acessar qual memória; a MPU é comum em microcontroladores que não têm uma MMU completa.
+- A marcação **execute-never** impede que regiões de dados sejam executadas.
+- A **inicialização segura** (secure boot) verifica uma assinatura criptográfica em cada estágio do firmware antes de executá-lo, ancorada numa raiz de confiança imutável (código em ROM ou chaves gravadas em fusíveis). Ela protege contra a modificação persistente do firmware, não contra uma imagem corretamente assinada, mas vulnerável.
+- Os **módulos de plataforma confiável** (TPMs) e os elementos seguros armazenam chaves de modo que o software não consiga lê-las.
+
+### 8.4 Quando a velocidade cria vazamento
+
+Caches e execução especulativa tornam os processadores rápidos ao fazer suposições e manter estado, e esse estado pode vazar. [Kocher et al. (2019)](https://doi.org/10.1109/SP.2019.00002) mostraram que a execução especulativa pode ser direcionada para ler memória através de fronteiras de proteção (Spectre). [Kim et al. (2014)](https://doi.org/10.1109/ISCA.2014.6853210) mostraram que acessos repetidos à DRAM podem inverter bits em linhas adjacentes (Rowhammer). Isso importa mais onde código não confiável compartilha o hardware com código confiável — servidores virtualizados do centro de controle, nuvem compartilhada — e menos num PLC de propósito único. A lição de engenharia: o hardware faz parte da superfície de ataque, e um isolamento que depende de hardware compartilhado precisa ser justificado.
+
+### 8.5 Exemplo resolvido: escolhendo uma plataforma de RTU (sintético)
+
+O TMRP compara duas RTUs candidatas. *RTU-A:* madura, determinística, sem inicialização segura, atualizações de firmware sem assinatura, mudanças de programa autenticadas apenas por uma senha compartilhada. *RTU-B:* inicialização segura com firmware assinado pelo fornecedor, autenticação baseada em papéis para mudanças de programa, armazenamento de chaves em hardware, mas uma resposta de pior caso 200 ms mais lenta a requisições de comunicação e um produto novo, com histórico limitado em campo. A equipe pontua as duas contra os requisitos: R1 (telemetria autenticada) precisa de armazenamento de chaves — o que favorece a B; R7 (alarme em até 60 s) é atendido por ambas, já que 200 ms são desprezíveis; a manutenibilidade ao longo de 20 anos favorece um fornecedor com um ciclo de vida de desenvolvimento seguro publicado. O registro de decisão escolhe a B para as novas instalações e um gateway para as instalações legadas com RTU-A, com um piloto para coletar dados de confiabilidade em campo antes da implantação em toda a frota.
+
+### 8.6 Atividade prática
+
+Para uma família de microcontroladores ou de PLCs de sua escolha, leia o manual público de segurança do fornecedor (ou uma folha de dados) e preencha uma tabela: separação de privilégios, proteção de memória, inicialização segura, atualizações assinadas, armazenamento de chaves, programação autenticada. Marque cada item como "sim / não / configurável / desconhecido", com a citação da fonte. Use apenas documentos públicos. Registre o título, a versão e a data do documento para cada entrada, porque os recursos de segurança mudam entre versões de firmware. Onde o manual for omisso, marque o recurso como desconhecido em vez de adivinhar, e liste a pergunta que você faria ao fornecedor. A tabela é a mesma comparação que a equipe do TMRP fez entre a RTU-A e a RTU-B, e mostra rapidamente se um produto consegue suportar telemetria autenticada e armazenamento de chaves sem um gateway.
+
+### 8.7 Erros comuns e limites
+
+- Igualar "rápido" a "determinístico".
+- Supor que a inicialização segura impede a exploração de firmware assinado.
+- Ignorar a vida útil de 20 anos ao escolher recursos criptográficos e de atualização.
+- Tratar como absoluto o isolamento de hardware em servidores compartilhados.
+- Tratar o marketing do fornecedor como evidência; peça documentação e teste.
+
+A comparação das RTUs mostra esses erros na prática. A RTU-A é determinística, mas não consegue proteger chaves, então a velocidade sozinha não a torna adequada. A inicialização segura da RTU-B não impede uma mudança de lógica maliciosa, mas legitimamente assinada, e é por isso que o acesso de programação baseado em papéis aparece ao lado dela. Ambas ainda precisam ter suporte na década de 2040, e o piloto existe porque as alegações do fornecedor não são evidência de campo.
+
+### Exercícios — capítulo 8
+
+**EX015 — Orçamento do ciclo de varredura.** *Objetivo:* raciocinar sobre determinismo. *Entradas:* varredura de PLC de 20 ms nominais e 45 ms no pior caso; um requisito de proteção da bomba de desarmar em até 100 ms após um sinal de sucção baixa, que passa por filtragem (debounce) em duas varreduras consecutivas. *Passos:* calcule a latência de desarme de pior caso (entrada amostrada logo após uma leitura, duas varreduras para confirmar, escrita da saída). *Evidência esperada:* cálculo e conclusão. *Rubrica:* 3 = pior caso correto, incluindo o atraso de amostragem, e julgamento contra os 100 ms; 2 = atraso de amostragem omitido; 1 = apenas a varredura nominal; 0 = nada.
+
+**EX016 — O que a inicialização segura compra.** *Objetivo:* delimitar um controle com precisão. *Entradas:* a RTU-B da §8.5. *Passos:* liste dois ataques que a inicialização segura impede, dois que ela não impede e o controle complementar para cada um destes últimos. *Evidência esperada:* tabela. *Rubrica:* 3 = escopo exato (impede firmware persistente não assinado; não impede explorações em tempo de execução nem mudanças maliciosas de lógica pela programação legítima), controles correspondentes; 2 = um erro; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+A arquitetura determina tanto a temporização quanto a confiança. O controle precisa de desempenho de pior caso, não de média. PLCs e RTUs são máquinas de vida longa, baseadas em varreduras, cujos recursos de segurança ainda precisarão ser adequados daqui a décadas. Os mecanismos de hardware — privilégio, proteção de memória, inicialização segura, armazenamento de chaves — dão garantias específicas e limitadas; os recursos de desempenho podem vazar através de fronteiras. Diga exatamente contra o que cada mecanismo protege.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — capítulo 08 de 50
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programação II
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) estruturar um programa em módulos com interfaces e invariantes claros; (2) implementar máquinas de estados simples para a lógica de protocolos e de equipamentos; (3) escrever testes unitários, incluindo testes de limites e de falhas, e medir o que eles cobrem; e (4) tratar erros, tempo e concorrência de forma deliberada. Ele se apoia no Capítulo 4 e prepara o Capítulo 14 (engenharia de software) e o Capítulo 30 (verificação).
+
+### 9.1 Módulos, interfaces e invariantes
+
+[Parnas (1972)](https://doi.org/10.1145/361598.361623) defendeu que um sistema deve ser decomposto de modo que cada módulo esconda uma decisão de projeto com probabilidade de mudar. Em software de infraestrutura, as mudanças prováveis incluem o protocolo de campo, o historiador e o esquema de autenticação. Esconda cada uma atrás de uma interface: uma `TelemetrySource` que entrega leituras validadas, qualquer que seja o protocolo. Cada módulo deve declarar seus **invariantes** — propriedades sempre verdadeiras sobre seu estado —, por exemplo, "o último contador aceito para cada estação nunca diminui". Escreva os invariantes como asserções nos testes e, onde for barato, como verificações em tempo de execução que falham de modo seguro.
+
+### 9.2 Máquinas de estados
+
+Equipamentos e protocolos têm modos: uma bomba está *parada*, *partindo*, *em funcionamento*, *parando* ou *desarmada*; uma sessão está *não autenticada*, *autenticada* ou *encerrada*. Uma máquina de estados finitos lista os estados, os eventos que causam transições, as guardas das transições e as ações. Escreva-a como uma tabela e implemente-a a partir da tabela, rejeitando qualquer evento não listado para o estado atual. As transições não listadas são onde vivem tanto os bugs quanto os ataques: um comando "stop" chegando durante a *partida*, ou um "write setpoint" chegando antes da autenticação. O controlador de bombas da LRWA, no exemplo resolvido abaixo, é construído exatamente assim, para que seus testes possam enumerar todos os pares.
+
+### 9.3 Testes
+
+Um teste unitário verifica um comportamento de uma unidade. Bons conjuntos de testes incluem: casos típicos; **limites** (mínimo, máximo, logo dentro, logo fora); entradas inválidas; e testes de **regressão** que reproduzem bugs passados. A cobertura mede quais instruções ou ramos os testes executaram; ela diz o que *não* foi testado, não que o código testado está correto. O módulo `unittest` do Python, na biblioteca padrão, basta para este livro. No controlador de bombas da LRWA, os testes de limite incluem o tempo-limite de partida de 30 segundos exatamente em 30 segundos e logo acima disso, e os testes de regressão reproduzem cada bug de transição encontrado no comissionamento, para que uma falha corrigida não possa voltar discretamente numa versão posterior.
+
+### 9.4 Erros, tempo e concorrência
+
+Decida como cada erro é tratado: rejeitado com um motivo, repetido com um limite ou escalado. Nunca engula exceções em silêncio em código de controle ou de segurança. O tempo é uma fonte recorrente de falhas: use relógios monotônicos para intervalos e a hora de relógio sincronizada (com sua fonte registrada) para os logs; trate os saltos de relógio. A concorrência — threads, tarefas assíncronas, múltiplos clientes — cria condições de corrida: dois operadores emitindo setpoints conflitantes, ou uma verificação e uma ação separadas por uma janela em que o estado muda (time-of-check to time-of-use). Prefira um único dono para cada parte do estado, com mensagens para alterá-la.
+
+### 9.5 Exemplo resolvido: uma máquina de estados de bomba (sintético)
+
+O controlador de bombas da LRWA aceita `start`, `stop`, `trip` e `reset`. A tabela: *parada* + `start` (guarda: permissão verdadeira) → *partindo*; *partindo* + `run_confirmed` → *em funcionamento*; *partindo* + tempo-limite de 30 s → *desarmada*; *em funcionamento* + `stop` → *parando*; qualquer estado + `trip` → *desarmada*; *desarmada* + `reset` (guarda: operador local) → *parada*. A guarda do `reset` importa: exigir uma ação local após um desarme significa que um atacante remoto que provoque um desarme não consegue religar imediatamente a bomba dentro da mesma falha. Os testes cobrem cada transição listada e afirmam que todo par não listado (por exemplo, *desarmada* + `start`) é rejeitado e registrado em log.
+
+### 9.6 Atividade prática
+
+Implemente a tabela da §9.5 em cerca de 40 linhas de Python, com um dicionário indexado por `(state, event)`. Escreva casos de `unittest` para todas as transições listadas e um laço que afirme que todo par `(state, event)` não listado levanta um erro. Conte os pares não listados. Seu laço deve imprimir o número de pares não listados e confirmar que cada um levanta um erro e escreve uma linha de log. Depois acrescente um teste mostrando que um reset remoto após um desarme é recusado, porque a guarda exige um operador local. Esse teste protege a propriedade com que o exemplo resolvido mais se importa: um atacante que desarma uma bomba remotamente não consegue religá-la diretamente dentro da mesma falha. Mantenha a tabela e os testes num único arquivo, para que um revisor possa compará-los.
+
+### 9.7 Erros comuns e limites
+
+- Implementar a lógica de estados com flags espalhadas em vez de uma tabela explícita.
+- Ramos padrão que aceitam eventos desconhecidos.
+- Usar a hora de relógio para tempos-limite.
+- Testes que só exercitam o caminho feliz; igualar cobertura a correção.
+- Tratamento silencioso de exceções.
+
+Cada erro derrota uma propriedade da máquina de estados da bomba. Flags espalhadas tornam impossível listar todas as transições. Um ramo padrão deixaria passar um comando de partida com a bomba desarmada. Um tempo-limite baseado na hora de relógio poderia disparar cedo demais, ou nunca, após um salto de relógio, e uma exceção engolida no caminho do reset deixaria a bomba num modo desconhecido.
+
+### Exercícios — capítulo 9
+
+**EX017 — Conte e teste as transições não listadas.** *Objetivo:* raciocinar sobre completude. *Entradas:* §9.5 (estados: stopped, starting, running, stopping, tripped; eventos: start, stop, trip, reset, run_confirmed, timeout, stop_confirmed — acrescente *stopping* + `stop_confirmed` → *stopped*). *Passos:* conte o total de pares, os pares listados e os não listados; dê três pares não listados cuja rejeição tenha uma justificativa de segurança operacional ou de segurança da informação. *Evidência esperada:* contagens e justificativa. *Rubrica:* 3 = contagens corretas e justificativas significativas; 2 = erro de contagem; 1 = sem justificativa; 0 = nada.
+
+**EX018 — Invariante contra repetição.** *Objetivo:* expressar e testar um invariante. *Entradas:* o `Receiver` do Laboratório 8. *Passos:* escreva o invariante sobre `last`, um teste unitário que envie os contadores 1, 2, 2, 1, 5 e afirme os resultados de aceitação/rejeição e o estado final, e diga um modo de falha do invariante após um reinício do receptor. *Evidência esperada:* código do teste e afirmação. *Rubrica:* 3 = resultados esperados corretos (aceita, aceita, rejeita, rejeita, aceita), problema do reinício identificado (estado perdido → repetições aceitas, a menos que seja persistido ou que as chaves sejam trocadas); 2 = reinício não percebido; 1 = sem teste; 0 = nada.
+
+### Síntese do capítulo
+
+Decomponha em torno das decisões com probabilidade de mudar e declare invariantes. Torne os modos explícitos como máquinas de estados e rejeite tudo o que não estiver listado. Teste limites e falhas, leia a cobertura como um mapa do que não foi testado, trate os erros de forma deliberada, use o relógio certo e dê a cada parte do estado compartilhado um único dono.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — capítulo 09 de 50
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e segurança em engenharia
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) aplicar códigos de ética profissional a decisões de segurança de infraestrutura; (2) explicar a relação entre segurança operacional (safety) e segurança da informação (security) e onde elas entram em conflito; (3) reconhecer os limites legais e de autorização para testes e pesquisas; e (4) tomar e documentar uma decisão ética sob incerteza, incluindo quando escalar. Ele se apoia no Capítulo 5 e enquadra todos os capítulos seguintes, em particular os de testes (capítulos 30 e 40) e de prática (Capítulo 43).
+
+### 10.1 Os deveres de um engenheiro
+
+Os códigos profissionais convergem para uma hierarquia: colocar acima de tudo a segurança, a saúde e o bem-estar do público; agir dentro da própria competência; ser honesto e objetivo; evitar conflitos de interesse; proteger informações confidenciais. O [NSPE Code of Ethics for Engineers](https://www.nspe.org/resources/ethics/code-ethics) faz da segurança pública o primeiro cânone fundamental; o [ACM Code of Ethics and Professional Conduct](https://www.acm.org/code-of-ethics) pede aos profissionais de computação que evitem danos e sejam honestos sobre as capacidades e os limites dos sistemas. Em infraestrutura crítica, o público é concreto: pacientes em diálise, domicílios sem água, pessoas esperando uma ambulância. O dever não é cumprido seguindo instruções se o resultado for um dano público previsível.
+
+### 10.2 Segurança operacional e segurança da informação juntas
+
+A **segurança operacional** (safety) protege as pessoas e o meio ambiente de danos causados pelo sistema; a **segurança da informação** (security) protege o sistema contra o uso indevido deliberado. Em tecnologia operacional, as duas interagem. Um controle de segurança da informação pode criar um perigo para a segurança operacional — o bloqueio automático de uma conta num console de operador durante uma emergência, ou uma correção que reinicia um controlador durante a execução de um processo. Um mecanismo de segurança operacional pode ser um alvo de segurança da informação: o malware TRITON/TRISIS mirou controladores de sistemas instrumentados de segurança, como descrito no [relatório de análise do malware HatMan da CISA](https://www.cisa.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%20-%20Safety%20System%20Targeted%20Malware%20%28Update%20B%29.pdf). A boa prática trata ambas numa única análise de perigos (Capítulo 33) e dá às funções de segurança operacional independência em relação às redes e aos sistemas que elas protegem.
+
+### 10.3 Autorização e lei
+
+Testar um sistema que você não possui, ou que não tem permissão escrita para testar, pode ser crime, quaisquer que sejam suas intenções, e em infraestrutura pode pôr pessoas em perigo. A autorização precisa ser escrita, específica (sistemas, horários, métodos), dada por alguém com legitimidade para concedê-la, e incluir condições de interrupção. Pesquisas que envolvem pessoas ou dados operacionais precisam de revisão ética e de acordos sobre os dados. Vulnerabilidades que você encontre por acaso devem ir ao dono do ativo de forma privada ou por meio de um programa de divulgação coordenada, como o [programa de CVD da CISA](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program). Os laboratórios deste livro são sintéticos exatamente por essas razões.
+
+### 10.4 Decidir sob incerteza
+
+Um procedimento prático de decisão ética: (1) declare a decisão e quem é afetado; (2) identifique os deveres e os fatos que pesam sobre eles; (3) liste as opções, incluindo escalar e recusar; (4) avalie as consequências para as partes interessadas mais vulneráveis; (5) escolha, documente o raciocínio e as divergências e marque um ponto de revisão. Os engenheiros raramente enfrentam dilemas limpos; com mais frequência, o problema é a pressão para aprovar algo que ainda não se mostrou funcional. "Não verificado" é uma resposta honesta e suficiente. No exemplo resolvido a seguir, o engenheiro de verificação do TMRP usa exatamente esses cinco passos.
+
+### 10.5 Exemplo resolvido: a aprovação no prazo final (sintético)
+
+O prazo de comissionamento do TMRP é sexta-feira. O teste T3 (limites de setpoint) falhou: o controlador da PS4 aceita um setpoint fora da faixa segura quando enviado como valor NaN. O fornecedor propõe comissionar com uma nota para corrigir na próxima versão. Como engenheiro de verificação, você aplica o procedimento: as pessoas afetadas incluem os pacientes do hospital, se a PS4 se comportar de forma imprevisível; seu dever é para com a segurança pública e o relato honesto; as opções são (a) assinar, (b) recusar, (c) comissionar com um controle compensatório — escritas remotas de setpoint desabilitadas no gateway, operação apenas local para a PS4 — e uma correção datada. Você recomenda (c), registra T3 como reprovado, não dispensado, e exige um novo teste antes que as escritas remotas sejam habilitadas. A decisão é documentada e assinada pelo gerente de operações, que é o dono do risco operacional.
+
+### 10.6 Atividade prática
+
+Escreva um modelo de autorização de uma página para um teste de um sistema sintético: escopo, métodos excluídos, janela de tempo, condições de interrupção, contatos, tratamento de dados e aprovação. Preencha o modelo para um teste de bancada do gateway de telemetria da LRWA, e não para uma estação em operação. Diga quem pode assiná-lo, liste os métodos excluídos, como qualquer tráfego dirigido a RTUs reais, e dê condições de interrupção que um testador consiga reconhecer sem interpretação. Inclua um contato que possa interromper o teste a qualquer momento e uma regra sobre o que acontece depois com os dados capturados. Um modelo que permitisse a alguém testar a PS4 durante um período de alta demanda falhou em seu propósito.
+
+### 10.7 Erros comuns e limites
+
+- Tratar a ética como uma lista de verificação de conformidade, em vez de raciocinar sobre danos.
+- "Permissão verbal" para testes.
+- Controles de segurança da informação projetados sem considerar a segurança operacional em emergências.
+- Aprovar o que não foi verificado porque um cronograma exige.
+- Divulgar publicamente fraquezas de infraestrutura sem coordenação.
+
+A aprovação no prazo final do exemplo resolvido mostra vários desses erros de uma vez: pressão para comissionar, um fornecedor oferecendo uma promessa verbal de corrigir depois e um teste reprovado que poderia facilmente ter sido marcado como dispensado. O engenheiro evitou cada um deles ao registrar a falha e acordar por escrito um controle compensatório.
+
+### Exercícios — capítulo 10
+
+**EX019 — Conflito entre segurança operacional e segurança da informação.** *Objetivo:* resolver um controle que põe as operações em perigo. *Entradas:* proposta de bloquear as contas da IHM dos operadores após cinco logins malsucedidos. *Passos:* analise o perigo, proponha uma alternativa que preserve a intenção de segurança e diga como você a verificaria. *Evidência esperada:* análise de meia página. *Rubrica:* 3 = perigo claro (bloqueio durante uma emergência), alternativa que mantém a responsabilização e resiste a tentativas de adivinhação (por exemplo, limitação de taxa com alertas, liberação por presença física, contas de turno com registro em log), verificação declarada; 2 = alternativa fraca; 1 = apenas o perigo; 0 = nada.
+
+**EX020 — Achado incidental.** *Objetivo:* agir dentro da autorização. *Entradas:* ao estudar, para um trabalho do curso, documentos de compras de uma concessionária pública, você nota numa captura de tela uma página de gerenciamento de um controlador de bombas exposta à internet, com o fornecedor e o modelo visíveis. *Passos:* diga o que você não deve fazer, o que deve fazer e para quem, e o que seu trabalho pode dizer. *Evidência esperada:* 150 palavras. *Rubrica:* 3 = nenhum acesso ou sondagem, notificação privada ao dono ou via CVD, trabalho anonimizado; 2 = um passo ausente; 1 = sugere "verificar se é real"; 0 = nada.
+
+### Síntese do capítulo
+
+A segurança pública vem primeiro, relatada com honestidade. A segurança operacional e a segurança da informação precisam ser analisadas juntas, porque cada uma pode derrotar a outra. Teste apenas com autorização escrita e específica; relate os achados incidentais de forma privada. Decida sob incerteza com um procedimento documentado e trate "não verificado" como uma resposta que você tem o direito — e a obrigação — de dar.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — capítulo 10 de 50
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -471,7 +814,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX010; as de EX011–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX020; as de EX021–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -502,6 +845,36 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX009.** Exemplo: "R10 — O sistema deverá manter o abastecimento de água tratada ao St Brenna's dentro da pressão contratual durante a perda de qualquer estação de bombeamento isolada por pelo menos 24 h (análise + ensaio)." "R7 — Os alarmes prioritários deverão ser exibidos nas telas dos operadores em até 60 s após o evento em campo para 99% dos eventos, numa medição de 30 dias (teste)." "R8 — Os logs de segurança deverão ser encaminhados para fora do host em até 5 min e protegidos em integridade com âncoras diárias guardadas fora da zona de controle; a modificação de qualquer registro armazenado deverá ser detectável (teste)."
 
 **EX010.** Operador: "A telemetria da PS4 pode apagar após cerca de 6 h sem energia da rede. Se a telemetria da PS4 for perdida durante uma falta de energia, despache o técnico de plantão para ler os manômetros locais na marca de 4 h." Gestor: "A bateria da telemetria da PS4 dura cerca de 6 h no fim da vida útil, contra um requisito de 24 h (R5). Durante uma interrupção longa perderíamos a visibilidade — não o abastecimento — na alimentação do hospital. Opções: substituir por um banco de 80 Ah (≈ custo de uma visita à instalação mais o equipamento, duas semanas) ou acrescentar uma entrada para gerador pequeno; provisoriamente: regra de despacho do técnico." Regulador: "Lacuna: R5 (24 h de autonomia da telemetria) não atendido na PS4 (6 h medidas no fim da vida útil). Procedimento compensatório em vigor desde [data]; correção até [data]."
+
+### Capítulo 6
+
+**EX011.** Com $k = 0.12$ h⁻¹: janela = ln 4 / 0,12 ≈ 11,6 h. Com 4 h para o restabelecimento manual, o alarme precisa chegar em até ≈ 7,6 h; com uma margem de segurança, especifique muito menos. Requisito: "A perda da dosagem de cloro deverá ser alarmada na sala de controle em até 30 min, detectada por um analisador e um registrador independentes do controlador de dosagem." 30 min deixam uma margem grande sob o pior caso de decaimento em tempo quente.
+
+**EX012.** Exata: 0,6065; 0,3679; 0,2231; 0,1353; 0,0821 em t = 1…5. Euler com h = 1: 0,5; 0,25; 0,125; 0,0625; 0,0312 (estável, subestima). h = 3 (fator −0,5): −0,5; 0,25; −0,125; 0,0625; −0,0312 — oscila de sinal, fisicamente sem sentido, embora decaia. h = 5 (fator −1,5): −1,5; 2,25; −3,375; 5,06; −7,59 — instável. Euler explícito aplicado a $x' = -kx$ multiplica por $(1 - kh)$ a cada passo; $|1 - kh| > 1$ quando $h > 2/k = 4$.
+
+### Capítulo 7
+
+**EX013.** VPP: 0,009 (a priori 0,0001), 0,087 (0,001), 0,490 (0,01); com a priori 0,001 e FPR 0,001: 0,487. Reduzir dez vezes a taxa de falsos positivos melhora o valor preditivo aproximadamente tanto quanto um aumento de dez vezes na prevalência; com taxas-base baixas, a FPR é o parâmetro que vale a pena melhorar.
+
+**EX014.** Indisponibilidade: β = 0 → 0,0004; β = 0,05 → 0,00136; β = 0,2 → 0,00426. Causas compartilhadas: energia e bateria da instalação; mastro de antena ou armário; mesmo modelo e firmware de modem; backhaul compartilhado ou acordos de roaming entre operadoras; mesma plataforma de provisionamento de SIM.
+
+### Capítulo 8
+
+**EX015.** Pior caso: o sinal de sucção baixa aparece logo após uma leitura das entradas, então só é visto na varredura seguinte (até 45 ms depois); a confirmação exige uma segunda varredura consecutiva (45 ms); a saída é escrita no fim dessa varredura. Pior caso ≈ 45 + 45 + 45 = 135 ms (mais o atraso do módulo de saída), o que viola os 100 ms. Correção: reduzir a varredura de pior caso, fazer a filtragem com um temporizador numa tarefa mais rápida ou usar um desarme por fiação dedicada.
+
+**EX016.** A inicialização segura impede: (1) a instalação persistente de firmware não assinado ou modificado; (2) a inicialização de uma imagem rebaixada, se a proteção contra rollback for aplicada. Ela não impede: (1) a exploração, em tempo de execução, de uma vulnerabilidade em firmware assinado → aplicação de correções, validação de entradas, restrição de rede; (2) mudanças de lógica maliciosas, mas legítimas, pela interface de engenharia → programação autenticada e baseada em papéis, com detecção de mudanças e registro em log.
+
+### Capítulo 9
+
+**EX017.** 5 estados × 7 eventos = 35 pares. Listados: stopped+start, starting+run_confirmed, starting+timeout, running+stop, stopping+stop_confirmed, tripped+reset (6), mais `trip` a partir dos 5 estados (5) = 11. Não listados: 24. Exemplos com justificativa: tripped+start (religar dentro da falha — deve exigir reset local); stopped+run_confirmed (uma confirmação espúria ou forjada não pode criar a crença de "em funcionamento"); running+reset (o reset não pode limpar um desarme inexistente e mascarar o estado).
+
+**EX018.** Invariante: para cada estação, `last[st]` nunca diminui e é igual ao maior contador aceito. Sequência 1, 2, 2, 1, 5 → aceita, aceita, rejeita (repetição), rejeita (repetição), aceita; estado final `last[3] == 5`. Após um reinício do receptor, `last` fica vazio, então mensagens já vistas voltam a ser aceitas, a menos que o receptor persista `last` ou que as chaves sejam trocadas no reinício.
+
+### Capítulo 10
+
+**EX019.** Perigo: um operador bloqueado durante uma emergência não consegue agir; um atacante pode bloquear os operadores deliberadamente (negação de serviço). Alternativa: nenhum bloqueio nas IHMs da sala de controle; em vez disso, atraso progressivo após falhas, alertas para falhas repetidas, contas nominais com autenticação forte, controle de acesso físico à sala de controle e uma liberação de emergência com presença física e registro em log. Verifique por teste (tentativas malsucedidas produzem atrasos e alertas, nunca bloqueio) e por exercício (o operador consegue entrar sob estresse).
+
+**EX020.** Não visite, não sonde e não tente entrar na página, e não compartilhe a captura de tela. Notifique a concessionária de forma privada pelo seu contato de segurança publicado ou, se não houver, por um programa de divulgação coordenada como o da CISA, relatando apenas o que você observou e onde. O trabalho do curso pode descrever o padrão ("interfaces de gerenciamento expostas em documentos de compras") sem nomear a concessionária, o fornecedor, o modelo ou o local.
 
 <a id="glossary"></a>
 
