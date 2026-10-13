@@ -108,6 +108,14 @@ Trinta dias aproximam "um mês", cuja duração varia conforme o calendário. Um
 
 O capítulo 1 enquadra a pergunta e a linha de base. O capítulo 2 realiza um seminário avançado sobre para que servem os direitos de acesso.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Privacidade e proteção de dados: seminário avançado
@@ -156,6 +164,14 @@ A teoria enquadra a pergunta, mas não a mede. Rotas de exceção podem virar po
 
 O capítulo 2 amplia o conjunto de resultados para qualidade e segurança. O capítulo 3 desenha o estudo com ética e reprodutibilidade.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -203,6 +219,14 @@ Desenhos interrompidos não descartam todas as alternativas; medir a composiçã
 
 O capítulo 3 fixa desenho, ética e reprodutibilidade. O capítulo 4 lista explicações concorrentes para qualquer melhoria.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Privacidade e proteção de dados: explicações concorrentes
@@ -249,6 +273,14 @@ As verificações reduzem, mas raramente eliminam, as explicações concorrentes
 ### Síntese
 
 O capítulo 4 arma o desenho contra explicações rivais. O capítulo 5 redige a proposta e verifica o tamanho da amostra.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -317,6 +349,14 @@ As fórmulas de poder presumem pedidos independentes; requerentes repetidos viol
 ### Síntese
 
 O capítulo 5 dimensiona e pilota o estudo. O capítulo 6 coleta os dados e os analisa com um intervalo bootstrap.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -399,6 +439,14 @@ Os intervalos por bootstrap presumem pedidos independentes e não cobrem o viés
 
 O capítulo 6 produz um resultado delimitado e estratificado. O capítulo 7 o redige com limitações honestas.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -446,6 +494,14 @@ Um resumo curto pode perder nuances; ele deve remeter às limitações completas
 
 O capítulo 7 redige uma dissertação delimitada e um resumo para decisão. O capítulo 8 enfrenta a revisão independente e a defesa.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -492,6 +548,14 @@ Entregar um script não garante seu uso correto; a Brookfield precisa de um resp
 ### Síntese
 
 O capítulo 8 conclui o percurso de mestrado com um resultado defendido e acompanhamento monitorado. Seguem-se as resoluções e, depois, as referências.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

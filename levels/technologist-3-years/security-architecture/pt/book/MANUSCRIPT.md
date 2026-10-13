@@ -76,6 +76,14 @@ Inventários feitos percorrendo o local deixam de fora sistemas guardados em arm
 
 Conhecer cada camada de cada sistema, e quem pode alterá-la, é onde a segurança começa.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 30)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
@@ -117,6 +125,14 @@ As regras de firewall podem não refletir as configurações do lado da nuvem. O
 ### Síntese
 
 Rastrear o tráfego real e listar os pontos de exposição transforma o conhecimento de redes em ação de segurança.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 30)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -179,6 +195,14 @@ Scripts pequenos podem crescer sem testes. As allow-lists precisam ser atualizad
 
 Scripts pequenos e testados e uma leitura cuidadosa do código permitem aos tecnólogos verificar sistemas de forma confiável e identificar erros comuns.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 30)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
@@ -220,6 +244,14 @@ Campos ocultados ainda podem existir nas exportações. A exclusão por retenç�
 ### Síntese
 
 Mapear os dados pessoais no modelo de dados por função mostra como minimizar a exposição a baixo custo.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 30)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -263,6 +295,14 @@ Uma única orientação se apaga rapidamente. As histórias precisam corresponde
 
 Termos compartilhados, ataques específicos do setor e briefings práticos curtos constroem o letramento em segurança.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 30)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
@@ -304,6 +344,14 @@ O hardening pode quebrar software legado. Hosts compartilhados concentram o risc
 ### Síntese
 
 O hardening, a compreensão do isolamento e cronogramas de atualização com donos mantêm os sistemas operacionais confiáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 30)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -347,6 +395,14 @@ A perda de crachás gera carga de suporte. As revisões viram carimbo sem orient
 
 Identidades individuais, papéis claros e um processo de admissão, movimentação e desligamento são a base do controle de acesso.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 30)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
@@ -388,6 +444,14 @@ Diagramas de uma página omitem detalhes. Os princípios podem entrar em conflit
 ### Síntese
 
 Mesmo empresas pequenas precisam de uma arquitetura escrita, fundamentada em princípios, e de um diagrama de zonas simples.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 30)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -456,6 +520,14 @@ As medidas podem ser manipuladas depois que se fixam metas. As exportações pod
 
 Algumas medidas bem definidas, calculadas a partir de exportações e mostradas como tendências, dizem aos gestores se a segurança está melhorando.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 30)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Arquitetura e engenharia de segurança: orientação
@@ -497,6 +569,14 @@ Os modelos de ciclo de vida parecem lineares; o trabalho real volta atrás. Os p
 ### Síntese
 
 Os tecnólogos tornam a arquitetura real ao longo do ciclo de vida e devolvem a realidade operacional ao desenho.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 30)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -540,6 +620,14 @@ Os gerentes podem superestimar seus próprios sistemas. Os atributos mudam com a
 
 Classificar os ativos pela consequência para o negócio, dentro das restrições reais, mostra onde concentrar a proteção.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 30)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Arquitetura e engenharia de segurança: fluxos de dados
@@ -581,6 +669,14 @@ Os diagramas envelhecem rápido. Os portais acrescentam trabalho para os pequeno
 ### Síntese
 
 Diagramas de fluxo de dados com fronteiras de confiança marcadas expõem travessias específicas sem proteção.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 30)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -624,6 +720,14 @@ Escalas de três níveis são grosseiras. As listas de cenários deixam surpresa
 
 Cenários concretos, avaliações independentes e tratamentos com donos tornam a gestão de riscos prática.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 30)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Arquitetura e engenharia de segurança: métodos I
@@ -665,6 +769,14 @@ O STRIDE encontra categorias, não todos os ataques. As revisões dependem do te
 ### Síntese
 
 O STRIDE dá estrutura, e a revisão conjunta com os desenvolvedores detecta ameaças que cada lado, sozinho, deixaria passar.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 30)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -732,6 +844,14 @@ Os limiares deixam passar ataques abaixo deles. Ligar para os varejistas acresce
 
 Regras simples construídas a partir do comportamento normal, com instruções claras, detectam fraudes que os controles técnicos deixam passar.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 30)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura e engenharia de segurança: métodos II
@@ -773,6 +893,14 @@ As estimativas de esforço são julgamentos. As árvores deixam de fora ramos qu
 ### Síntese
 
 Árvores de ataque revelam o caminho mais barato para o atacante, para que as defesas o fechem primeiro.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 30)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -816,6 +944,14 @@ Os testes são curtos e podem deixar problemas passarem. Os planos gratuitos pod
 
 Escolha ferramentas a partir das necessidades, teste-as segundo critérios e dê a cada uma um dono e um propósito.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 30)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura e engenharia de segurança: controles
@@ -857,6 +993,14 @@ As evidências podem mostrar a configuração sem provar a eficácia. Os catálo
 ### Síntese
 
 Controles mapeados para cenários, conferidos com um catálogo e sustentados por evidências regulares formam uma defesa coerente.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 30)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -933,6 +1077,14 @@ Os limiares deixam passar ataques lentos. Relógios dessincronizados confundem a
 
 O monitoramento é uma rotina semanal construída sobre alguns logs bem escolhidos e regras ajustadas e testadas.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 30)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Arquitetura e engenharia de segurança: solução de problemas
@@ -975,6 +1127,14 @@ Os provedores nem sempre anunciam as mudanças. Correções rápidas viram perma
 
 A resolução metódica de problemas restaura o serviço mantendo intactos os controles de segurança.
 
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 30)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Arquitetura e engenharia de segurança: integração de serviços
@@ -1016,6 +1176,14 @@ Os parceiros podem mudar seus sistemas sem aviso. Os gerenciadores de segredos c
 ### Síntese
 
 Integrações seguras compartilham o mínimo de dados, protegem as chaves e impõem limites testados ao que os parceiros podem fazer.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 30)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -1077,6 +1245,14 @@ Nomes discrepantes entre sistemas causam resultados falsos. Scripts que apenas r
 
 A automação segura reporta com clareza, falha de forma ruidosa e deixa o julgamento para as pessoas, melhorando mais a confiabilidade do que a velocidade.
 
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 30)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Arquitetura e engenharia de segurança: avaliação
@@ -1118,6 +1294,14 @@ A ausência de incidentes é uma evidência fraca. A atribuição da melhoria é
 ### Síntese
 
 Uma avaliação honesta compara os resultados medidos e declara claramente o que as evidências não conseguem provar.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 30)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1180,6 +1364,14 @@ Desenhos antes e depois não conseguem isolar as causas. Contagens pequenas osci
 
 Pequenos estudos aplicados respondem a perguntas úteis quando os dados são coletados de forma ética e os resultados são apresentados com cautela.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 30)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
@@ -1221,6 +1413,14 @@ As equipes podem se curvar ao membro mais barulhento. Três semanas limitam a pr
 ### Síntese
 
 Ateliês em equipe, com líderes claros e revisão mútua, produzem desenhos de segurança mais fortes do que indivíduos trabalhando sozinhos.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 30)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1264,6 +1464,14 @@ Os runbooks envelhecem conforme os sistemas mudam. Equipes de duas pessoas são 
 
 O repasse operacional dá certo com donos nomeados, runbooks testados e uma verificação de prontidão antes da saída.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 30)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
@@ -1305,6 +1513,14 @@ Implantações escalonadas prolongam estados mistos. O rollback pode reintroduzi
 ### Síntese
 
 Implantação escalonada, validação dos requisitos e um plano de reversão pronto tornam as mudanças seguras.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 30)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1348,6 +1564,14 @@ Estágios curtos deixam as mudanças sem suporte. Locais pequenos podem regredir
 
 A prática de campo mostra que os princípios se transferem, enquanto a implementação precisa se ajustar às pessoas disponíveis.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 30)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
@@ -1390,6 +1614,14 @@ Os testes em laboratório deixam passar peculiaridades de cada local. Os pacotes
 
 Um projeto final que constrói, testa e explica uma linha de base reutilizável deixa valor duradouro para a organização.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 30)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
@@ -1431,6 +1663,14 @@ Avaliadores que conhecem o estudante podem dar notas generosas. Planos provisór
 ### Síntese
 
 A avaliação do projeto final segundo critérios acordados, somada ao retorno de profissionais, completa a preparação do tecnólogo para a prática.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 30)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

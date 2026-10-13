@@ -77,6 +77,14 @@ Um inventário é um retrato instantâneo; novos sistemas aparecem sem aviso. As
 
 Um mapa útil da arquitetura de serviços nomeia cada sistema, sua função criptográfica e quem guarda as chaves.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 18)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
@@ -121,6 +129,14 @@ Falhas reais podem atravessar camadas, como um firewall que quebra o TLS ao inte
 
 Diagnosticar problemas de rede começa por saber qual camada protege o quê e qual ferramenta inspeciona cada camada.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 18)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Sistemas operacionais e identidades
@@ -164,6 +180,14 @@ As permissões de arquivo não impedem o root nem um serviço comprometido. Os r
 ### Síntese
 
 A identidade criptográfica é tão forte quanto as permissões de arquivo e os limites de conta que protegem cada chave privada.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 18)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -230,6 +254,14 @@ Manifestos de hash não autenticam o remetente. Manifestos com SHA-1 e MD5 estã
 
 Saber se os dados estão codificados, passaram por hash ou estão cifrados diz a um técnico o que eles podem provar e quem pode revertê-los.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 18)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Escopo e evidências de segurança
@@ -274,6 +306,14 @@ Um escopo não torna seguro um teste arriscado; as verificações em produção 
 
 O escopo limita o que pode ser testado, as evidências tornam os achados reproduzíveis e os segredos são relatados sem ser copiados.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 18)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Criptografia e serviços de confiança: modelo do sistema
@@ -317,6 +357,14 @@ Os modelos omitem as pessoas que podem contornar as verificações, como funcion
 ### Síntese
 
 Os modelos de confiança tornam explícitos cada detentor, âncora e verificador, para que o elo mais fraco fique visível.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 18)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -394,6 +442,14 @@ Os inventários se afastam da realidade; confirme a expiração no endpoint em f
 
 A telemetria deve revelar a saúde criptográfica, como a expiração e as falhas, sem se tornar ela mesma uma fonte de segredos vazados.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 18)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Criptografia e serviços de confiança: modos de falha
@@ -438,6 +494,14 @@ As classes se sobrepõem; um certificado expirado substituído às pressas por u
 
 Classificar uma falha como expiração, incompatibilidade, má configuração ou comprometimento diz ao técnico quão urgente ela é e o que fazer primeiro.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 18)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Criptografia e serviços de confiança: ferramentas e métodos
@@ -481,6 +545,14 @@ A saída das ferramentas varia entre versões; registre as versões junto com as
 ### Síntese
 
 As ferramentas de inspeção são seguras quando leem apenas dados públicos, mantêm a verificação ligada e ficam locais para o material interno.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 18)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -549,6 +621,14 @@ Os padrões mudam entre versões do Python e do OpenSSL; registre as versões. D
 ### Síntese
 
 Uma boa configuração de controles mantém a verificação ligada, segue as orientações publicadas de TLS e muda as configurações apenas por solicitações testadas e reversíveis.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 18)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -623,6 +703,14 @@ Os vetores de teste não cobrem canais laterais nem o manuseio das chaves. Uma j
 
 A verificação combina vetores publicados, comparação correta e verificações de repetição e é relatada junto com o que deixa sem provar.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 18)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Laboratório isolado I
@@ -666,6 +754,14 @@ O isolamento virtual pode falhar por meio de áreas de transferência compartilh
 ### Síntese
 
 Um laboratório isolado permite que os técnicos reproduzam falhas com segurança e termina com toda a confiança de teste removida e registrada.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 18)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -738,6 +834,14 @@ Os logs podem truncar ou omitir os motivos; as contagens podem enganar se um cli
 
 A solução de problemas funciona testando uma hipótese de cada vez, usando contagens para escolher onde olhar e escalando com notas completas.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 18)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Criptografia e serviços de confiança: automação
@@ -807,6 +911,14 @@ A renovação automatizada ainda depende do DNS, dos firewalls e das chaves de c
 
 A automação deve renovar e planejar a rotação de forma confiável, falhar de forma ruidosa e rodar com o mínimo de privilégio necessário.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 18)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Criptografia e serviços de confiança: integração e dependências
@@ -851,6 +963,14 @@ Os parceiros podem não suportar a sobreposição e exigir uma troca abrupta. Os
 
 As integrações tornam as chaves dependências compartilhadas, então as rotações precisam de sobreposição e todo componente fornecido precisa ter suas versões acompanhadas.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 18)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Documentação técnica e segurança
@@ -894,6 +1014,14 @@ Os runbooks envelhecem à medida que os sistemas mudam; revise-os depois de cada
 ### Síntese
 
 A documentação torna as operações criptográficas repetíveis e seguras quando é testada por outros e descreve os segredos sem revelá-los.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 18)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -965,6 +1093,14 @@ Os parâmetros do laboratório são deliberadamente pequenos; a produção preci
 
 O armazenamento de senhas precisa de funções padronizadas, lentas e com salt, verificadas contra vetores e implantadas por um ciclo de detectar, corrigir e verificar.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 18)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
@@ -1008,6 +1144,14 @@ As verificações por amostragem podem deixar passar dispositivos; a cobertura c
 ### Síntese
 
 Um projeto supervisionado prova a competência técnica pelo escopo, pelas evidências, pela passagem e pelos limites honestos, e não por um código engenhoso.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 18)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

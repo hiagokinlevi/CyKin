@@ -74,6 +74,14 @@ Números precisos ainda podem estar errados. As fontes podem estar desatualizada
 
 Proporções precisas, com bases e fontes, tornam as afirmações de governança verificáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 40)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
@@ -113,6 +121,14 @@ Os inventários deixam escapar a shadow IT. Os responsáveis podem ser só nomin
 ### Síntese
 
 Um inventário atualizado e com donos é o mapa do qual toda a governança depende.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 40)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -154,6 +170,14 @@ Os scripts confiam em sua entrada. Os responsáveis sugeridos precisam de confir
 
 Programas simples que contam, filtram e explicam transformam dados de governança em ação.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 40)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
@@ -193,6 +217,14 @@ Ensaios curtos simplificam demais. As paráfrases podem distorcer o sentido.
 ### Síntese
 
 Argumentos claros, citações com indicação de edição e paráfrase honesta são habilidades acadêmicas centrais para GRC.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 40)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -234,6 +266,14 @@ Controles simples falham se forem inconsistentes. O efeito das palestras dura po
 
 O letramento em segurança liga as ameaças comuns aos controles do dia a dia e a uma comunicação sem culpa.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 40)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
@@ -273,6 +313,14 @@ Os dados de permissões podem estar incompletos. Os grafos deixam escapar depend
 ### Síntese
 
 Conjuntos, relações e grafos tornam visíveis os conflitos de acesso e os riscos de dependência.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 40)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -314,6 +362,14 @@ Os fluxos de dados mudam. As ordenações dependem de julgamento.
 
 Mapas de rede e de fluxos de dados mostram onde a proteção e a minimização importam mais.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 40)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
@@ -353,6 +409,14 @@ Erros de correspondência geram falsos alarmes. As fontes podem compartilhar o m
 ### Síntese
 
 Scripts testados que conciliam várias fontes revelam riscos escondidos entre os sistemas.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 40)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -419,6 +483,14 @@ Dados estruturados ainda podem conter julgamentos ruins. As escalas causam empat
 
 Armazenar um registro como dados estruturados facilita enxergar prioridades e lacunas.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 40)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
@@ -459,6 +531,14 @@ Os escopos podem ser ambíguos. Os julgamentos de urgência variam.
 
 Escopo autorizado, tratamento cuidadoso dos dados e reporte responsável são a ética do trabalho de GRC.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 40)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
@@ -498,6 +578,14 @@ As exportações do console deixam de fora os dispositivos não gerenciados. As 
 ### Síntese
 
 As políticas se tornam aplicáveis quando ligadas a configurações do sistema operacional e a processos medidos.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 40)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -559,6 +647,14 @@ Confirmar ciência não significa entender. Os intervalos supõem independência
 
 Os intervalos mostram quais diferenças são reais e indicam onde as conversas revelam as causas.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 40)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
@@ -599,6 +695,14 @@ Os gestores podem aprovar sem conferir. O desenho de papéis leva tempo.
 
 A governança de identidades gerencia as transições do ciclo de vida, o menor privilégio e a revisão periódica.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 40)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
@@ -638,6 +742,14 @@ As leis variam de país para país. Os mapeamentos ficam desatualizados.
 ### Síntese
 
 Os princípios de privacidade e a governança de segurança funcionam melhor como um único programa, com donos compartilhados.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 40)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -698,6 +810,14 @@ Amostras pequenas variam. As medianas escondem os casos mais lentos.
 
 Boas medidas refletem o propósito, lidam com a assimetria e levam a decisões.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 40)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
@@ -737,6 +857,14 @@ As camadas podem compartilhar fraquezas. As migrações para a nuvem trazem risc
 ### Síntese
 
 Organizações pequenas obtêm uma segurança forte a partir de algumas decisões de arquitetura bem documentadas.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 40)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -778,6 +906,14 @@ A criptografia não impede o mau uso autorizado. Os procedimentos de chaves prec
 
 A criptografia só protege os dados quando a política e a gestão de chaves são bem governadas.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 40)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
@@ -817,6 +953,14 @@ As entrevistas refletem o que as pessoas dizem, nem sempre o que fazem. Grupos p
 ### Síntese
 
 Perguntas específicas, métodos adequados e ética cuidadosa tornam útil a pesquisa em governança.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 40)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -858,6 +1002,14 @@ As definições variam conforme a fonte. As decisões de escopo precisam de revi
 
 Definições, escopo e teoria claros formam a base de um programa de GRC.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 40)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Governança, riscos e compliance de segurança: casos fundamentais
@@ -898,6 +1050,14 @@ Os casos de grandes organizações podem não se transferir. A análise de causa
 
 Os casos ensinam princípios; são as causas-raiz, e não os sintomas, que precisam ser corrigidas.
 
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 40)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Governança, riscos e compliance de segurança: modelos de sistema
@@ -937,6 +1097,14 @@ As matrizes descrevem os papéis pretendidos, não o comportamento. Equipes pequ
 ### Síntese
 
 Modelos de sistemas e matrizes RACI deixam clara a responsabilização e revelam lacunas.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 40)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -998,6 +1166,14 @@ Notas simples perdem nuances. Os relatórios de garantia dos fornecedores variam
 ### Síntese
 
 Classificar os fornecedores em níveis concentra o escrutínio onde as dependências trazem risco real.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 40)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1061,6 +1237,14 @@ A perda esperada exige entradas incertas. As matrizes comprimem a gravidade.
 
 As matrizes ajudam na triagem, mas a perda esperada revela riscos graves que elas subestimam.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 40)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Governança, riscos e compliance de segurança: controles
@@ -1101,6 +1285,14 @@ Os controles de catálogo precisam ser adaptados. Os responsáveis mudam de fun�
 
 A seleção baseada em catálogos, uma declaração de aplicabilidade justificada e a responsabilidade distribuída tornam os controles reais.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 40)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Laboratório I
@@ -1140,6 +1332,14 @@ Amostras pequenas deixam escapar falhas raras. As cópias de teste podem diferir
 ### Síntese
 
 Os testes de laboratório mostram o que os controles realmente fazem e produzem evidências para as correções.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 40)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1204,6 +1404,14 @@ Os resultados amostrados não são o framework inteiro. Classificações binári
 
 Avaliações de lacunas baseadas em evidências mostram onde o investimento está desequilibrado e orientam as prioridades.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 40)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Governança, riscos e compliance de segurança: verificação
@@ -1243,6 +1451,14 @@ A observação pode mudar o comportamento. A reexecução exige acesso.
 ### Síntese
 
 A verificação escolhe testes adequados e declara claramente até que ponto se pode confiar nos controles.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 40)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1284,6 +1500,14 @@ As revisões sem culpados ainda precisam responsabilizar a negligência repetida
 
 A análise de falhas sem culpados transforma incidentes em controles melhores e em estimativas de risco melhores.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 40)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Governança, riscos e compliance de segurança: operações
@@ -1323,6 +1547,14 @@ Os calendários escorregam sob pressão. A atenção do conselho varia.
 ### Síntese
 
 Um calendário de governança, o acompanhamento das ações e relatórios focados em decisões mantêm o programa funcionando.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 40)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -1364,6 +1596,14 @@ Os exercícios de mesa não testam a recuperação técnica. Os participantes po
 
 Exercícios de mesa revelam com segurança lacunas simples que importam muito em incidentes reais.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 40)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Governança, riscos e compliance de segurança: casos avançados
@@ -1403,6 +1643,14 @@ A redução de escopo não elimina todos os deveres. Os relatórios variam de es
 ### Síntese
 
 Escolhas de arquitetura, certificação e garantia moldam o esforço de conformidade e a força das evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 40)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1444,6 +1692,14 @@ A tradução pode simplificar demais. Os meios-termos podem se desviar com o tem
 
 O trabalho de GRC depende de traduzir entre disciplinas e de documentar os compromissos assumidos.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 40)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de pesquisa II
@@ -1483,6 +1739,14 @@ Os temas refletem a lente de quem analisa. Doze entrevistas limitam a generaliza
 ### Síntese
 
 Codificação sistemática, verificações de confiabilidade e reporte honesto tornam útil a pesquisa qualitativa em GRC.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 40)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1524,6 +1788,14 @@ Dois casos não permitem generalizar. Os resumos compartilhados podem ser otimis
 
 Comparações justas usam critérios sensíveis ao contexto e produzem lições, em vez de rankings.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 40)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Proposta de trabalho de conclusão
@@ -1563,6 +1835,14 @@ Comparações antes e depois confundem efeitos de época. As pesquisas medem per
 ### Síntese
 
 Uma boa proposta de projeto final fixa de antemão os resultados e as salvaguardas.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 40)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1604,6 +1884,14 @@ Os voluntários mudam com frequência. Orientações simples omitem riscos.
 
 O trabalho comunitário de GRC adapta as orientações a organizações minúsculas e desenvolve a capacidade própria delas.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 40)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
@@ -1643,6 +1931,14 @@ As ordenações são guias gerais. O retorno pode ser educado demais para ajudar
 ### Síntese
 
 A revisão de evidências pergunta o que mais poderia explicar uma afirmação e quanto ela abrange.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 40)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1684,6 +1980,14 @@ Correções no meio do caminho complicam a avaliação. Um trimestre é um teste
 
 Implementar bem um redesenho significa monitorar, registrar as mudanças e manter a medição consistente.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 40)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Avaliação do trabalho de conclusão
@@ -1724,6 +2028,14 @@ Amostras pequenas e o efeito de ser observado limitam as conclusões. As pesquis
 
 Uma avaliação cuidadosa orienta decisões mesmo quando não consegue provar a causa.
 
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 40)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tese e apresentação
@@ -1763,6 +2075,14 @@ A reflexão pode ser seletiva. Uma única organização limita a generalização
 ### Síntese
 
 Uma monografia de graduação une pesquisa, prática e limites honestos em conhecimento de governança utilizável.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 40)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

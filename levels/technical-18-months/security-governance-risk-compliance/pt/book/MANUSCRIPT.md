@@ -74,6 +74,14 @@ Os mapas omitem ferramentas informais. Os donos podem não aceitar a responsabil
 
 Mapear serviços para componentes e donos é a base técnica da governança.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 18)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
@@ -115,6 +123,14 @@ Os diagramas se desatualizam. Os formulários de mudança são pulados nas emerg
 
 Redes segmentadas e documentadas mantêm pequeno o escopo de pagamentos e os desenhos verificáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 18)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Sistemas operacionais e identidades
@@ -155,6 +171,14 @@ Retirar direitos pode quebrar softwares. O acesso por cartão exige hardware.
 ### Síntese
 
 Contas individuais, menor privilégio e acesso administrativo separado sustentam a governança técnica.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 18)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -226,6 +250,14 @@ As exportações podem estar desatualizadas. As linhas de base precisam de revis
 
 Scripts que leem exportações estruturadas transformam verificações de linha de base em achados rápidos e explicados.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 18)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Escopo e evidências de segurança
@@ -267,6 +299,14 @@ Os escopos podem ser pouco claros. As pastas de evidências precisam de controle
 
 Escopo por escrito, evidências cuidadosas e respeito aos limites tornam confiável o trabalho técnico de segurança.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 18)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Governança, riscos e compliance de segurança: modelo do sistema
@@ -307,6 +347,14 @@ As tabelas simplificam ligações complexas. Os papéis mudam.
 ### Síntese
 
 Ligar as tarefas técnicas a políticas, riscos e obrigações mostra por que elas importam.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 18)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -380,6 +428,14 @@ Limiares simples deixam passar ataques lentos. Os logs podem estar incompletos.
 
 Os logs se tornam dados de governança quando são contados, sinalizados e usados para agir com contexto.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 18)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Governança, riscos e compliance de segurança: modos de falha
@@ -420,6 +476,14 @@ As listas deixam escapar falhas novas. As verificações também podem falhar.
 ### Síntese
 
 Planejar a detecção para cada modo de falha mantém os controles confiáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 18)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -462,6 +526,14 @@ As pontuações escondem a gravidade. Os checklists deixam o contexto de fora.
 
 Métodos simples, listas de verificação e ferramentas conhecidas são adequados a equipes técnicas pequenas.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 18)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Governança, riscos e compliance de segurança: configuração de controles
@@ -502,6 +574,14 @@ Os limiares precisam de ajuste fino. Os testes amostram só alguns arquivos.
 ### Síntese
 
 Os controles se tornam reais por meio de configuração documentada e de testes antes e depois.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 18)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -566,6 +646,14 @@ As listas aprovadas podem estar erradas. A verificação é periódica.
 
 A verificação em relação a listas aprovadas encontra desvios arriscados que o controle de mudanças, sozinho, deixa passar.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 18)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Laboratório isolado I
@@ -607,6 +695,14 @@ Os laboratórios diferem da produção. Os cenários simplificam.
 
 Laboratórios contidos testam processos inteiros com segurança e expõem lacunas entre as etapas.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 18)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Governança, riscos e compliance de segurança: solução de problemas
@@ -647,6 +743,14 @@ As listas de hipóteses podem deixar causas de fora. Os relatórios de sucesso p
 ### Síntese
 
 A resolução de problemas com hipóteses encontra as causas-raiz, que muitas vezes estão nos processos.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 18)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -712,6 +816,14 @@ As listas podem omitir certificados. Os chamados podem ser ignorados.
 
 A automação funciona quando as verificações são simples e os resultados chegam aos donos com um caminho de acompanhamento.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 18)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Governança, riscos e compliance de segurança: integração e dependências
@@ -752,6 +864,14 @@ Os relatórios de garantia têm escopo limitado. As contingências precisam de p
 ### Síntese
 
 As dependências de provedores precisam de verificações de garantia, cláusulas contratuais e alternativas práticas.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 18)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -794,6 +914,14 @@ Os procedimentos envelhecem. As etapas podem ser puladas.
 
 Procedimentos claros, seguros e atualizados permitem que os técnicos trabalhem corretamente e protegem o negócio.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 18)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Laboratório isolado II
@@ -835,6 +963,14 @@ Sabe-se de antemão que haverá problemas injetados. Os laboratórios simplifica
 
 Exercícios combinados testam a detecção, a resposta controlada e registros de incidente claros.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 18)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
@@ -875,6 +1011,14 @@ Seis semanas é pouco tempo. Alguns problemas dependem de fornecedores.
 ### Síntese
 
 Um projeto supervisionado dá certo com rotinas confiáveis, resultados honestos e um repasse cuidadoso.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 18)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

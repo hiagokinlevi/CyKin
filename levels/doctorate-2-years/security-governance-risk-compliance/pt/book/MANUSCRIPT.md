@@ -104,6 +104,14 @@ O pré-registro não elimina todo viés. O kappa depende da frequência com que 
 
 A pesquisa de doutorado em GRC começa com uma pergunta falseável, regras de integridade rigorosas e uma linha de base medida.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: a fronteira da pesquisa
@@ -151,6 +159,14 @@ Mapas da literatura envelhecem depressa. Relatos da prática podem ser seletivos
 ### Síntese
 
 A fronteira mostra argumentação forte, mas poucas evidências de campo, o que define uma lacuna precisa.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -228,6 +244,14 @@ Modelos pequenos ilustram, não provam. Painéis de referência podem compartilh
 
 Uma proposta forte define resultados mensuráveis e mostra, com um modelo, por que a pergunta importa.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -300,6 +324,14 @@ As simulações dependem dos intervalos de entrada. Os ganhos do piloto podem n�
 
 Replicação, pilotagem e emendas registradas preparam um estudo principal sólido.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
@@ -367,6 +399,14 @@ Trinta eventos geram incerteza ampla. Os avaliadores podem trocar informações 
 
 Um estudo randomizado com validação independente sustenta uma vantagem modesta, apresentada com honestidade.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -413,6 +453,14 @@ Estudos com conselhos são pequenos. O reenquadramento pode enfraquecer demais a
 ### Síntese
 
 A crítica ordenada por tipo leva a afirmações mais precisas e a uma contribuição mais útil.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -481,6 +529,14 @@ Os digests provam integridade, não correção. O contexto ainda pode identifica
 
 Uma tese coerente é rastreável, reproduzível e cuidadosa com a confidencialidade dos parceiros.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -527,6 +583,14 @@ Os examinadores têm suas próprias visões. Publicar leva tempo.
 ### Síntese
 
 Uma defesa testa raciocínio, ética e valor prático, e a publicação amplia a contribuição.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

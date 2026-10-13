@@ -74,6 +74,14 @@ Practising on real systems without permission can cause harm and may be illegal.
 - **EX003 — IT lead.** Who is Westfield's IT lead? *Rubric:* 3 = Mr. Sam Doyle;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX004 — Safe habit.** Name one of Mr. Appiah's three rules. *Rubric:* 3 = practise only with permission;; 2 = one;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 18)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Information at a garden centre business
@@ -114,6 +122,14 @@ Printed customer lists left on counters can be read by anyone passing.
 - **EX006 — Bank details goal.** Which goal matters most for supplier bank details? *Rubric:* 3 = accuracy;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX007 — Counter list.** What did Chloe find on a counter? *Rubric:* 3 = a printed customer delivery list;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX008 — Folder problem.** What is wrong with the shared folder? *Rubric:* 3 = every staff account can open it;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 18)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -156,6 +172,14 @@ Shared logins make it impossible to know who did what.
 - **EX011 — Seasonal accounts.** What did Chloe find for seasonal staff? *Rubric:* 3 = accounts still active;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Least privilege.** What does least privilege mean? *Rubric:* 3 = only the access needed for the task;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 18)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Passwords and sign-in
@@ -196,6 +220,14 @@ Resetting a password without confirming identity can let an attacker in.
 - **EX014 — Fob reason.** Why are key fobs provided? *Rubric:* 3 = some staff refuse apps on personal phones;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Reset check.** How is identity confirmed before a reset? *Rubric:* 3 = call back on the number in staff records;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX016 — Sticky note.** Where was the shop admin password found? *Rubric:* 3 = on a sticky note in the office;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 18)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -238,6 +270,14 @@ Scripts that skip bad rows quietly can hide problems.
 - **EX019 — Output check.** How does Chloe test her output's clarity? *Rubric:* 3 = explains it to a classmate;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Restricted output.** Why keep device lists restricted? *Rubric:* 3 = they could help an attacker;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 18)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Security basics
@@ -278,6 +318,14 @@ Relying on a single control leaves no protection when it fails.
 - **EX022 — Tablet controls.** Which controls suit stolen tablets? *Rubric:* 3 = screen locks and remote wipe;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX023 — Shop layer.** Name one online shop layer. *Rubric:* 3 = multi-factor sign-in;; 2 = one;; 1 = vague;; 0 = none.
 - **EX024 — Usability principle.** What principle says security must be easy to use? *Rubric:* 3 = psychological acceptability;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 18)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -346,6 +394,14 @@ Spare devices kept switched off miss updates without anyone noticing.
 - **EX026 — Late tills.** How many tills are late? *Rubric:* 3 = none of the 22 tills;; 2 = none, without checking all 22;; 1 = wrong;; 0 = no answer.
 - **EX027 — Spare tablets.** Why were two tablets late? *Rubric:* 3 = kept in a drawer as spares;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX028 — Overnight setting.** What setting does Mr. Doyle change for tablets? *Rubric:* 3 = automatic overnight updates while charging;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 18)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -419,6 +475,14 @@ Treating a simple rule as perfect leads people to trust messages it misses.
 - **EX031 — Missed message.** Why was one phishing email missed? *Rubric:* 3 = it showed only one sign;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX032 — Lower threshold.** What happens if the threshold drops to one sign? *Rubric:* 3 = more false alarms;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 18)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Chapter 9 — Personal data at work
@@ -459,6 +523,14 @@ Hiding a data mistake prevents the organisation limiting the harm.
 - **EX034 — Driver solution.** What does Chloe suggest for drivers? *Rubric:* 3 = an app showing only their deliveries;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Request handling.** Who handles customer data requests? *Rubric:* 3 = the office manager;; 2 = partly correct;; 1 = till;; 0 = none.
 - **EX036 — Mistake response.** What should staff do after a misdirected email? *Rubric:* 3 = report it immediately;; 2 = partly correct;; 1 = hide;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 18)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -501,6 +573,14 @@ Assuming a permission change worked without testing it can leave data exposed.
 - **EX039 — Sharing service.** What does Chloe recommend for sending files? *Rubric:* 3 = approved service with expiring links;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX040 — Screen setting.** What setting helps unlocked screens? *Rubric:* 3 = automatic lock after a few minutes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 18)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Chapter 11 — Wireless and network basics
@@ -541,6 +621,14 @@ Guest devices on the staff network can reach tills and tablets.
 - **EX042 — Wireless problem.** What was wrong at one centre? *Rubric:* 3 = guest and staff shared a network and password;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX043 — Unknown device.** What was the unknown device? *Rubric:* 3 = a staff member's smart speaker;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX044 — Router default.** Why change default router passwords? *Rubric:* 3 = they are published online;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 18)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -583,6 +671,14 @@ Files saved outside backed-up folders are lost if the device fails.
 - **EX047 — Backup gap.** Which files were outside backups? *Rubric:* 3 = spreadsheets on the office manager's desktop;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX048 — First step.** What is the first step if ransomware is suspected? *Rubric:* 3 = stop using the device;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 18)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Chapter 13 — Reporting problems
@@ -623,6 +719,14 @@ Vague reports slow down the people who must act on them.
 - **EX050 — Rewritten report.** What detail did Chloe add? *Rubric:* 3 = time, centre and payment message;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX051 — Till request.** What did a customer ask to do? *Rubric:* 3 = plug a phone into a till;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX052 — Follow-up.** How often does Chloe check open reports? *Rubric:* 3 = weekly;; 2 = partly correct;; 1 = wrong;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 18)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -665,6 +769,14 @@ Writing passwords into documents exposes them to every reader.
 - **EX055 — Change log use.** What question does the change log answer? *Rubric:* 3 = why a manager lost invoice access;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX056 — Document dates.** Why add dates to documents? *Rubric:* 3 = readers know if they are current;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 18)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Chapter 15 — Working with the IT lead
@@ -705,6 +817,14 @@ Granting access without approval can give people data they should not see.
 - **EX058 — Help approach.** What does Chloe do before calling for help? *Rubric:* 3 = tries the documented steps;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — Approval needed.** Name one action needing approval. *Rubric:* 3 = giving admin access;; 2 = one;; 1 = vague;; 0 = none.
 - **EX060 — Feedback goal.** What goal does Chloe set? *Rubric:* 3 = tell him within a day if a task runs late;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 18)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -747,6 +867,14 @@ Letting unexpected visitors into staff areas without checking risks theft or tam
 - **EX063 — Visitor response.** What does Chloe do with the unexpected visitor? *Rubric:* 3 = asks him to wait and calls Mr. Doyle;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX064 — Improvement area.** What does Chloe want to improve? *Rubric:* 3 = understanding of networks;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 18)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Chapter 17 — Practical assessment
@@ -788,6 +916,14 @@ Disabling a security setting without approval to make something work can open se
 - **EX067 — Failed restore.** What would she do if a restore failed? *Rubric:* 3 = record, report, keep the original backup;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX068 — Hidden test.** What was the hidden test? *Rubric:* 3 = disabling a security setting;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 18)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Chapter 18 — Review and next steps
@@ -828,6 +964,14 @@ Relying on old sources without checking editions can spread outdated advice.
 - **EX070 — Westfield offer.** What does Westfield offer Chloe? *Rubric:* 3 = a part-time support role;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX071 — Weak area.** Which area does Chloe plan to strengthen? *Rubric:* 3 = networks;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX072 — Next course topic.** What does the data governance course cover? *Rubric:* 3 = who decides how information is collected and used;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 18)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

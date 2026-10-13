@@ -105,6 +105,14 @@ O sigilo perfeito só vale para chaves verdadeiramente aleatórias, nunca reutil
 
 A criptografia começa com definições e provas precisas; o one-time pad mostra como um esquema perfeito desmorona quando uma condição é violada.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 40)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
@@ -146,6 +154,14 @@ A cifração em repouso não protege os dados em uso por uma aplicação comprom
 ### Síntese
 
 A criptografia protege camadas e estados de dados específicos; mapeá-los revela lacunas, como backups não cifrados.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 40)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -189,6 +205,14 @@ Hashes não escondem dados e não autenticam por si sós. Erros de codificação
 
 O manuseio cuidadoso de bytes, o hash verificado e a consciência do que um resumo prova são as primeiras competências criptográficas de quem programa.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 40)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
@@ -230,6 +254,14 @@ Citações de fontes secundárias podem carregar erros; confira o documento prim
 ### Síntese
 
 Uma boa escrita sobre segurança define os termos, cita fontes primárias e enuncia as afirmações com seus limites.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 40)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -273,6 +305,14 @@ Tabelas simplificadas omitem nuances, como a cifração autenticada, que combina
 
 Saber o que cada ferramenta criptográfica alcança, e o que não alcança, é a base da alfabetização em segurança.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 40)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Estruturas discretas
@@ -314,6 +354,14 @@ O Diffie-Hellman não autenticado está aberto a ataques de intermediário (man-
 ### Síntese
 
 Os grupos e o problema do logaritmo discreto explicam o acordo de chaves; os sistemas reais usam curvas padronizadas dentro de protocolos autenticados.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 40)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -357,6 +405,14 @@ Varrer sistemas sem permissão é antiético e pode ser ilegal. Um certificado v
 
 O TLS 1.3 protege as conexões quando os certificados são validados e as configurações se mantêm atualizadas; a maioria das falhas hoje é operacional.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 40)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Programação II
@@ -398,6 +454,14 @@ As APIs de alto nível ainda precisam de um gerenciamento de chaves correto. Os 
 ### Síntese
 
 Um código criptográfico seguro se apoia em APIs de alto nível, num módulo pequeno e isolado e em testes negativos que comprovam a rejeição.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 40)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -470,6 +534,14 @@ O hash lento não salva senhas muito fracas. Chaves de cifração guardadas ao l
 
 O hash de senhas lento e com salt, a cifração de campos e a minimização de dados protegem os dados dos leitores nos bancos de dados.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 40)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
@@ -512,6 +584,14 @@ A disponibilidade pública de dados vazados não torna ético o seu uso. Divulga
 
 Um escopo autorizado, o manuseio cuidadoso de segredos e a divulgação coordenada tornam éticos os testes criptográficos.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 40)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
@@ -553,6 +633,14 @@ Chaves não exportáveis ainda podem ser usadas indevidamente enquanto o malware
 ### Síntese
 
 Os sistemas operacionais protegem as chaves com repositórios não exportáveis, aleatoriedade segura e cifração de disco completo, quando configurados com cuidado.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 40)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -623,6 +711,14 @@ Os cálculos em bits só se aplicam a escolhas uniformemente aleatórias. A limi
 
 Medir o espaço de adivinhação em bits mostra por que frases-senha aleatórias superam senhas curtas e complexas, desde que as escolhas sejam realmente aleatórias.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 40)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
@@ -665,6 +761,14 @@ Uma autenticação forte não corrige permissões excessivas. Os processos de re
 
 A criptografia fortalece a autenticação, dos códigos baseados em HMAC às chaves de segurança vinculadas à origem, mas o projeto de acesso precisa equilibrar segurança e inclusão.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 40)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
@@ -706,6 +810,14 @@ Dados pseudonimizados muitas vezes podem ser reidentificados. A cifração não 
 ### Síntese
 
 A privacidade depende da minimização e dos limites de finalidade; a criptografia, como pseudônimos com chave e cifração, apoia esses princípios, mas não pode substituí-los.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 40)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -781,6 +893,14 @@ As cadeias de hashes só detectam adulterações se a cabeça for protegida sepa
 
 Logs à prova de adulteração e medidas relatadas com honestidade transformam afirmações de segurança em evidências que outros podem conferir.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 40)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
@@ -822,6 +942,14 @@ Camadas que compartilham uma fraqueza, como uma única conta de administrador qu
 ### Síntese
 
 As arquiteturas devem mostrar as fronteiras de confiança, os controles em camadas e cada chave, para que a criptografia seja posicionada onde mais protege.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 40)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -897,6 +1025,14 @@ A indistinguibilidade não esconde o tamanho da mensagem. As cifras clássicas s
 
 Algoritmos públicos, definições precisas e cifração aleatorizada substituíram as cifras clássicas, cujos padrões as denunciavam.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 40)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
@@ -938,6 +1074,14 @@ As simulações podem não refletir o comportamento real sob pressão. Estudos c
 ### Síntese
 
 Perguntas pesquisáveis, fontes sistemáticas e um desenho ético transformam a curiosidade sobre a prática criptográfica num estudo crível.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 40)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -981,6 +1125,14 @@ Confiar em muitas raízes amplia o risco. As assinaturas provam a aprovação de
 
 Os serviços de confiança fazem asserções específicas; entender exatamente o que cada um assere evita uma confiança mal depositada.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 40)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Criptografia e serviços de confiança: casos fundamentais
@@ -1022,6 +1174,14 @@ Culpar indivíduos esconde as causas de processo. Falhas criptográficas raras a
 ### Síntese
 
 A maioria das falhas de confiança é procedimental; analisá-las sem culpa produz lições práticas para qualquer organização.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 40)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -1065,6 +1225,14 @@ Os modelos simplificam; confira-os contra as configurações reais. Os pontos ú
 
 Modelar quem assere o quê, e quem se apoia nisso, expõe pontos únicos de confiança antes que os atacantes os encontrem.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 40)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Criptografia e serviços de confiança: dados e dependências
@@ -1106,6 +1274,14 @@ Os inventários se degradam sem varreduras regulares de descoberta. As respostas
 ### Síntese
 
 Um inventário criptográfico de chaves, certificados, bibliotecas e fornecedores é a base de toda mudança segura.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 40)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1149,6 +1325,14 @@ A reutilização de nonces quebra o GCM gravemente. Os dados associados precisam
 
 A cifração autenticada com nonces únicos e dados associados vinculados protege os registros quando os parâmetros seguem as normas.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 40)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Criptografia e serviços de confiança: controles
@@ -1190,6 +1374,14 @@ Controles sem evidências falham nas auditorias. O controle duplo se desgasta se
 ### Síntese
 
 Controles de gerenciamento de chaves priorizados, com segregação, controle duplo e evidências documentadas, tornam os serviços de confiança auditáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 40)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1233,6 +1425,14 @@ Códigos de exemplo muitas vezes contêm chaves ou nonces fixos para demonstraç
 
 O trabalho de laboratório comprova as escolhas de projeto com testes, e relatórios honestos registram tanto os bugs quanto os limites.
 
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 40)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Criptografia e serviços de confiança: métodos II
@@ -1274,6 +1474,14 @@ As assinaturas são inúteis se as chaves privadas vazarem ou se as chaves públ
 ### Síntese
 
 As assinaturas digitais provam publicamente a origem e a integridade; o projeto determinístico do Ed25519 evita uma falha clássica do ECDSA.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 40)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -1317,6 +1525,14 @@ Os scanners deixam passar falhas de validação no nível da aplicação; teste-
 
 A verificação após as mudanças, os testes diretos de validação e os relatórios baseados em evidências mantêm honestas as configurações criptográficas.
 
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 40)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Criptografia e serviços de confiança: análise de falhas
@@ -1358,6 +1574,14 @@ A verificação de revogação é desigual entre os clientes, então as validade
 ### Síntese
 
 A análise de falhas do comprometimento de chaves se concentra nas causas de processo e combina ações corretivas com ações preventivas.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 40)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -1430,6 +1654,14 @@ A automação falha silenciosamente sem alertas. A rotação precisa manter leg�
 
 A renovação automatizada com alertas e a rotação testada tornam as operações criptográficas rotineiras, em vez de emergências.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 40)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório II
@@ -1471,6 +1703,14 @@ As chaves públicas precisam ser autenticadas, por exemplo comparando as impress
 ### Síntese
 
 A cifração e as assinaturas de chave pública eliminam a transferência de segredos compartilhados, desde que as chaves sejam autenticadas e os dois lados concordem sobre o que é assinado.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 40)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
@@ -1514,6 +1754,14 @@ Os prazos da migração pós-quântica são incertos; evite tanto o pânico quan
 
 A criptografia avançada deve vir depois de fundamentos sólidos e chegar por meio de fornecedores avaliados, adequados à capacidade da organização.
 
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 40)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-32"></a>
 
 ## Capítulo 32 — Criptografia e serviços de confiança: interfaces interdisciplinares
@@ -1555,6 +1803,14 @@ Os requisitos jurídicos diferem conforme a jurisdição; consulte assessores qu
 ### Síntese
 
 A criptografia encontra o direito, as políticas e as pessoas; uma linguagem precisa e projetos usáveis a tornam eficaz entre as disciplinas.
+
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 40)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
@@ -1598,6 +1854,14 @@ Amostras pequenas dão estimativas instáveis. Contextos simulados podem não re
 
 Estudos pequenos podem orientar a prática quando os resultados vêm com sua incerteza e com as ameaças discutidas abertamente.
 
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 40)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-34"></a>
 
 ## Capítulo 34 — Projeto comparativo
@@ -1639,6 +1903,14 @@ Testes curtos deixam passar problemas de longo prazo. Abordagens mistas acrescen
 ### Síntese
 
 Comparar as opções com critérios compartilhados e evidências de teste produz recomendações rastreáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 40)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
@@ -1682,6 +1954,14 @@ Varrer além dos hosts autorizados não é permitido, nem mesmo com bons propós
 
 Uma proposta de trabalho de conclusão com objetivo, escopo, entregas, avaliação e autorização claros prepara um projeto útil e viável.
 
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 40)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-36"></a>
 
 ## Capítulo 36 — Prática de campo ou comunitária
@@ -1723,6 +2003,14 @@ Uma ajuda pessoal bem-intencionada pode expor os dados dos participantes. As dem
 ### Síntese
 
 A prática comunitária transforma o conhecimento criptográfico em segurança prática para o público, dentro de limites claros.
+
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 40)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
@@ -1766,6 +2054,14 @@ Evidências amplamente repetidas não são necessariamente fortes. Dados locais 
 
 A revisão crítica pesa as evidências pela qualidade e pelo caráter direto, produzindo conclusões equilibradas com ressalvas declaradas.
 
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 40)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Implementação do trabalho de conclusão
@@ -1807,6 +2103,14 @@ O tratamento do tempo causa erros sutis; armazene em UTC. As varreduras precisam
 ### Síntese
 
 Uma implementação testada contra dados semeados e um gerenciamento disciplinado do escopo entregam um trabalho de conclusão confiável.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 40)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
@@ -1850,6 +2154,14 @@ Dois meses é pouco para avaliar a confiabilidade. Ferramentas sem mantenedores 
 
 Uma avaliação honesta mede os resultados, a adoção e os limites e leva a próximos passos modestos e sustentáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 40)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tese e apresentação
@@ -1891,6 +2203,14 @@ Teses que vão além das evidências perdem credibilidade. As apresentações pr
 ### Síntese
 
 Uma tese de bacharelado fundamentada em evidências, apresentada com honestidade a cada público, encerra quatro anos de aprendizagem com impacto prático.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 40)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

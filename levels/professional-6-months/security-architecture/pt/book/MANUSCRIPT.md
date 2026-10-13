@@ -80,6 +80,14 @@ Definições em linguagem simples simplificam. As listas de encaminhamento preci
 
 Os profissionais começam ligando os objetivos de segurança a serviços reais e conhecendo os limites da sua competência.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: contexto de serviços e partes interessadas
@@ -126,6 +134,14 @@ Entrevistas curtas deixam detalhes de fora. Os responsáveis podem não prever t
 
 Mapear serviços, donos e necessidades permite que os desenhos protejam o que mais importa, mantendo os serviços utilizáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e manuseio de evidências
@@ -171,6 +187,14 @@ As autorizações podem ser vagas. Os checksums provam a integridade, e não a c
 ### Síntese
 
 Trabalho autorizado, tratamento cuidadoso das evidências e o mínimo de dados pessoais protegem tanto a organização quanto o profissional.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -240,6 +264,14 @@ Notas multiplicadas sugerem uma falsa precisão. Os modelos deixam de fora canai
 
 A modelagem, o STRIDE e uma classificação simples transformam um serviço em uma lista priorizada de ameaças.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Arquitetura e engenharia de segurança: ferramentas e interpretação
@@ -286,6 +318,14 @@ Os rótulos de severidade são genéricos. As lacunas de cobertura das ferrament
 
 A saída das ferramentas precisa ser interpretada no contexto, com notas claras sobre o que cada ferramenta mede e o que deixa passar.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Arquitetura e engenharia de segurança: fluxo operacional
@@ -331,6 +371,14 @@ As cláusulas contratuais dependem de cobrança. A expiração automática pode 
 ### Síntese
 
 A segurança funciona melhor entrelaçada aos fluxos de trabalho existentes, com a automação mantendo o esforço sustentável.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -403,6 +451,14 @@ As contas de teste podem não refletir o volume real de dados. As configuraçõe
 
 Os controles se tornam confiáveis quando são escritos como requisitos testáveis e verificados com resultados registrados.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura e engenharia de segurança: análise de caso supervisionada
@@ -448,6 +504,14 @@ Casos históricos têm evidências faltantes. As retenções podem atrasar reemb
 ### Síntese
 
 A análise de casos supervisionada encontra as causas de desenho por trás dos incidentes e as transforma em mudanças aceitas.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -495,6 +559,14 @@ Os resumos podem omitir ressalvas importantes. Relatar preocupações pode tensi
 
 O reporte profissional é claro para quem decide, ético no tratamento das preocupações e honesto quanto à incerteza.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Arquitetura e engenharia de segurança: qualidade e solução de problemas
@@ -540,6 +612,14 @@ As exceções podem ser abusadas se as verificações enfraquecerem. Três meses
 ### Síntese
 
 A revisão de qualidade e a resolução ágil de problemas aprimoram os controles sem abandonar o seu propósito protetor.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -613,6 +693,14 @@ As definições de papéis podem estar erradas. O acesso fora do sistema continu
 
 Uma revisão de acessos cuidadosa define primeiro as necessidades, classifica o excesso por sensibilidade e relata respeitando os dados pessoais.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
@@ -658,6 +746,14 @@ Os portfólios podem exagerar a contribuição individual. Os resultados de curt
 ### Síntese
 
 Um portfólio de trabalhos comentados, uma revisão honesta dos resultados e um plano de crescimento completam a preparação profissional.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

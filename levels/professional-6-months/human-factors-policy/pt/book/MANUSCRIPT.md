@@ -79,6 +79,14 @@ As funções podem derivar para a fiscalização. As metas precisam ser revisita
 
 Os profissionais traduzem as ideias de segurança em termos humanos e capacitam, em vez de policiar.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: contexto de serviços e partes interessadas
@@ -125,6 +133,14 @@ As entrevistas refletem poucas vozes. As preocupações mudam.
 
 O contexto dos serviços e das partes interessadas mostra onde as pessoas decidem e o que as preocupa.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e manuseio de evidências
@@ -170,6 +186,14 @@ Os mandatos precisam de atualização. O manuseio de evidências precisa do apoi
 ### Síntese
 
 A prática autorizada estabelece limites, trata as evidências com segurança e protege a privacidade.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -235,6 +259,14 @@ Viés de autodeclaração. Oito conversas são poucas.
 
 Questionários simples e conversas estruturadas produzem prioridades fundamentadas na experiência da equipe.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Fatores humanos e política cibernética: ferramentas e interpretação
@@ -296,6 +328,14 @@ Números pequenos variam. Os scripts precisam ser conferidos depois de mudanças
 
 Ferramentas simples fornecem medidas úteis quando interpretadas com cuidado e de forma justa.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Fatores humanos e política cibernética: fluxo operacional
@@ -342,6 +382,14 @@ A revisão duas vezes ao dia pode ser lenta durante campanhas. As reservas preci
 
 Um fluxo de trabalho claro, com metas, donos e planos para os picos, mantém o reporte confiável.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fatores humanos e política cibernética: controles e verificação
@@ -387,6 +435,14 @@ Os roteiros podem soar frios. Os registros dos prestadores podem estar desatuali
 ### Síntese
 
 Os controles eliminam julgamentos difíceis, e a verificação com retorno os aprimora.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -451,6 +507,14 @@ Os conjuntos de quase-incidentes são pequenos. Histórias de sucesso podem ince
 
 A análise sem culpados mostra as defesas em camadas funcionando e transforma quase-incidentes em aprendizado.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatórios
@@ -496,6 +560,14 @@ As mensagens mensais podem virar rotina. A atenção do conselho varia.
 ### Síntese
 
 Uma comunicação sem medo, decisões cuidadosas sobre simulações e um reporte honesto sustentam a confiança.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -561,6 +633,14 @@ As amostras podem deixar passar problemas. Os logs precisam de revisão.
 
 Verificações de qualidade e um registro de melhorias transformam correções em melhorias duradouras do serviço.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
@@ -621,6 +701,14 @@ Amostra pequena. Os voluntários conheciam a tarefa.
 
 Testes pequenos e justos sustentam melhorias baratas quando acompanhados de dados reais.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
@@ -666,6 +754,14 @@ Os portfólios podem ser seletivos. Seis meses é pouco.
 ### Síntese
 
 Um portfólio mostra raciocínio e resultados, e o desenvolvimento contínuo sustenta a prática.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

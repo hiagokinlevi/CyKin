@@ -122,6 +122,14 @@ As buscas perdem trabalhos indexados com outras palavras, e a literatura cinzent
 
 Uma pergunta estreita com uma unidade justa, uma busca reproduzível e um registro completo de decisões são a base de um estudo de mestrado crível.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: seminário avançado
@@ -217,6 +225,14 @@ Uma amostra de oito linhas ilustra; ela não estima uma taxa. As datas de valida
 
 Os certificados são afirmações assinadas e limitadas no tempo que o TLS impõe com rigor; são as operações do ciclo de vida, e não a criptografia, que decidem se eles continuam válidos.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -306,6 +322,14 @@ Coortes observacionais não conseguem descartar a confusão; só conseguem medir
 
 Um desenho observacional honesto, pseudônimos com chave mantidos pelo parceiro e um pacote de reprodutibilidade testado tornam um estudo de campo ao mesmo tempo ético e verificável.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Criptografia e serviços de confiança: explicações concorrentes
@@ -393,6 +417,14 @@ Contagens sem denominadores enganam; sempre converta em taxas. Estratificar por 
 
 Explicações rivais preveem padrões diferentes; testá-las exige taxas, estratificação por fatores de confusão medidos e franqueza sobre o que continua sem medida.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
@@ -448,6 +480,14 @@ Um piloto curto demais não consegue estimar taxas e não deve tentar. Mudar as 
 ### Síntese
 
 Uma proposta específica, somada a um piloto voltado para falhas de extração, torna o conjunto de dados completo consistente antes que qualquer taxa seja calculada.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -537,6 +577,14 @@ Intervalos por bootstrap a partir de pouquíssimos eventos são instáveis; com 
 
 Taxas, intervalos e estratos, juntos, mostram uma associação robusta entre a automação e menos expirações, e revelam a propriedade e o monitoramento como alavancas independentes.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -593,6 +641,14 @@ Recomendar mais do que as evidências sustentam é a falha mais comum das disser
 
 Uma estrutura guiada pela afirmação, limitações específicas e recomendações graduadas pelas evidências transformam a análise numa dissertação em que os leitores podem confiar e com base na qual podem agir.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -648,6 +704,14 @@ Respostas defensivas que repetem conclusões não convencem ninguém; mostre as 
 ### Síntese
 
 Uma nova execução independente, respostas serenas sobre a sensibilidade, a divulgação aos profissionais e uma destruição deliberada de chaves completam um estudo de mestrado que outros podem verificar e usar.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -109,6 +109,18 @@ Example (synthetic): "*Because* the clinic's appointment PCs share one password 
 
 Good risk sentences name a real consequence (people, time, service), not just "data loss". They also make it obvious **who should own** the problem: here, the practice manager, not the person who noticed it.
 
+### Visual 1 — a risk statement that leads to a decision
+
+```mermaid
+flowchart LR
+    A[Cause or weakness] --> B[Possible event]
+    B --> C[Consequence for people or service]
+    C --> D[Named owner reviews the report]
+    D --> E[Authorized response]
+```
+
+**Text alternative:** describe a cause, then a possible event, then the harm to people or service. Report that chain to the owner, who decides on an authorized response. Sam does not perform the response merely because Sam noticed the risk.
+
 ### 1.5 The newcomer's three decisions
 
 As a beginner you are not expected to fix security. You are expected to **notice**, to **report** through the right channel, and to **leave the fix to the owner**. Faced with something that looks wrong, ask:
@@ -216,6 +228,19 @@ Two consequences follow:
 - **Good intentions are not authorization.** "I was only checking whether it was safe" is not a defence. Many countries treat accessing a computer system without authorization as a crime, whatever the motive, and employers treat it as misconduct.
 
 Professional security testers work under written rules of engagement for exactly this reason; NIST's guide to technical security testing describes planning, rules and approvals before any test begins ([NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)). That level of testing is not part of this course.
+
+### Visual 2 — the permission boundary
+
+```mermaid
+flowchart TD
+    A[Idea to inspect or change a service] --> B{Is there owner authorization for this exact action?}
+    B -- No or unknown --> C[Do not act; report the observation]
+    B -- Yes --> D{Are system, time and method inside scope?}
+    D -- No or unknown --> C
+    D -- Yes --> E[Only the authorized team follows the approved procedure]
+```
+
+**Text alternative:** an intention to inspect or change a service passes through two checks: explicit owner permission and exact scope. If either is absent or unclear, stop and report; only the authorized team acts within the approved procedure. A login or good intention does not satisfy either check.
 
 ### 2.2 Why "just checking" is dangerous here
 
@@ -424,6 +449,22 @@ Sam is asked by H. Novak to list, for a staff meeting, what the clinic needs to 
 
 Sam marks three questions, not conclusions: Is LinkNet a single point of failure? Is there a paper fallback for MedBook? Who else knows the fridge alarm? These go to H. Novak — the owner — who decides what, if anything, to change.
 
+### Visual 3 — the clinic's dependencies (synthetic)
+
+```mermaid
+flowchart LR
+    P[Grid power] --> C[Clinic]
+    G[Diesel generator] -. backup for power only .-> C
+    F[Fuel delivery] --> G
+    N[LinkNet phones and internet] --> C
+    W[Clean water] --> C
+    M[MedBook appointment service] --> C
+    S[Clinic staff] --> C
+    C --> T[Patients and pharmacy]
+```
+
+**Text alternative:** power, LinkNet, water, MedBook and staff feed the clinic, which serves patients and the pharmacy. The generator is only a power backup and itself needs fuel delivery. A question mark remains over the other dependencies' backups; this sketch does not prove a real clinic would fail in the same way.
+
 ### 3.7 Practical activity
 
 Choose a public essential service near you (or the Larkfield Water plant described above). Using only public information and common sense, draw a simple dependency sketch: the service in the middle, upstream dependencies on the left, downstream dependants on the right. Circle anything shared, star any possible single point of failure, and write one question you would ask the owner. Do not contact or probe the service.
@@ -500,6 +541,21 @@ This chapter applies everything so far: consequence first (Chapter 1), safe prac
 When one service fails and others that depend on it fail in turn, the failure **cascades**. Cascades are why critical infrastructure is treated as a connected system rather than a list of separate organizations, and why national lists group services into functions that depend on one another ([CISA, National Critical Functions Set](https://www.cisa.gov/national-critical-functions-set)). The Ukrainian outages and the pipeline ransomware incident in earlier chapters both had effects far beyond the first organization hit.
 
 You can reason about cascades with a pencil: draw each service, draw an arrow to each thing it needs, then "switch off" one box and follow the arrows backwards. A few lines of code can do the same bookkeeping without mistakes, which is what Lab 4 does.
+
+### Visual 4 — why a power backup may not save the clinic (synthetic)
+
+```mermaid
+flowchart LR
+    P[Grid power fails] --> N[Phone network fails]
+    P --> W[Water pumps fail]
+    N --> C[Clinic cannot operate]
+    W --> C
+    G[Diesel generator works] --> L[Clinic has local power]
+    L -. insufficient without phones and water .-> C
+    C --> PH[Pharmacy loses an upstream service]
+```
+
+**Text alternative:** in Lab 4's synthetic map, losing grid power also removes the phone network and water pumps. The generator preserves local electricity, but the clinic still cannot operate without phones and water, and the pharmacy then loses the clinic. The model omits time, partial failures and manual workarounds; confirm real dependencies with the service owner.
 
 ### 4.2 Lab 4 — what else fails? (synthetic)
 

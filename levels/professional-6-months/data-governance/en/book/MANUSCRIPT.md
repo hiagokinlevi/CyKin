@@ -75,6 +75,14 @@ Treating a small organisation's data as too simple to govern leaves sensitive re
 - **EX004 — Family figures.** What went wrong when trustees asked about families helped? *Rubric:* 3 = food banks used different definitions;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX005 — Measurable goal.** Give the course's example of a measurable goal. *Rubric:* 3 = all six food banks use one household definition;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 12)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Why governance matters for a charity
@@ -116,6 +124,14 @@ Presenting governance only as compliance misses its value for decisions and trus
 - **EX008 — Decision example.** Name one decision good data support. *Rubric:* 3 = where to open a distribution point;; 2 = one;; 1 = vague;; 0 = none.
 - **EX009 — Highest risks.** Which risks ranked highest? *Rubric:* 3 = client data on paper and phones;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX010 — Trustee case.** What did Grace use to explain the need for governance? *Rubric:* 3 = her ranked risk list;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 12)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ Copying large-company role structures into a small charity creates unfilled post
 - **EX014 — Lead reporting time.** How quickly must leads report problems? *Rubric:* 3 = within a day;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX015 — Embedding roles.** Name one routine that embeds roles. *Rubric:* 3 = volunteer induction or monthly meetings;; 2 = one;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 12)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — A data inventory
@@ -201,6 +225,14 @@ Building inventories from descriptions alone misses informal practices.
 - **EX019 — Review cycle.** How often is the inventory reviewed? *Rubric:* 3 = every six months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX020 — Notice use.** What document does the inventory help write? *Rubric:* 3 = the privacy notice;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 12)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Chapter 5 — Policy essentials
@@ -242,6 +274,14 @@ Banning a practice without an alternative leads people to keep doing it quietly.
 - **EX023 — Rule count.** How many rules does the guide have? *Rubric:* 3 = ten;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX024 — Phone alternative.** What replaced personal phones for collections? *Rubric:* 3 = a shared charity phone at each food bank;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Board request.** What did the board ask for after approval? *Rubric:* 3 = a progress report in three months;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 12)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -307,6 +347,14 @@ Exact-match duplicate checks miss differences in case and spacing.
 - **EX028 — Exact check result.** What did an exact duplicate check find? *Rubric:* 3 = nothing; all 1,684 distinct as written;; 2 = nothing, without the reason;; 1 = vague;; 0 = no answer.
 - **EX029 — Supplier change.** What did the supplier enable? *Rubric:* 3 = storing emails in lowercase automatically;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX030 — Check duration.** How long should each check take? *Rubric:* 3 = less than an hour;; 2 = partly correct;; 1 = wrong;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 12)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -375,6 +423,14 @@ Treating any yes as valid consent ignores the need to show when and how it was g
 - **EX034 — Receipt basis.** What basis supports sending receipts? *Rubric:* 3 = contract or legal obligation;; 2 = partly correct;; 1 = consent;; 0 = none.
 - **EX035 — New form fields.** What do new forms record automatically? *Rubric:* 3 = date, wording shown and source;; 2 = all;; 1 = some;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 12)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Security essentials
@@ -416,6 +472,14 @@ Leaving former volunteers' access in place exposes data long after they leave.
 - **EX038 — Phone settings.** Which settings do charity phones have? *Rubric:* 3 = screen lock, encryption and remote wipe;; 2 = all;; 1 = some;; 0 = none.
 - **EX039 — Former access.** How many former volunteers could still read the donor database? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX040 — Supplier checks.** What did Grace check with the database supplier? *Rubric:* 3 = encryption, backups, logs and contract terms;; 2 = most;; 1 = few;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 12)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -459,6 +523,14 @@ Accepting full case notes when a short form would do collects more sensitive dat
 - **EX044 — Referral channel.** How do partners send forms now? *Rubric:* 3 = through a secure portal;; 2 = partly correct;; 1 = email;; 0 = none.
 - **EX045 — Leaver timing.** How soon is leaving volunteers' access removed? *Rubric:* 3 = within a week;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 12)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Chapter 10 — Retention and individual rights
@@ -500,6 +572,14 @@ Deleting a donor who objects to marketing risks re-adding them from old lists; s
 - **EX048 — Access search.** Where did Grace search for the former client's data? *Rubric:* 3 = case system, referral mailbox and charity phone;; 2 = all;; 1 = some;; 0 = none.
 - **EX049 — Objection handling.** How was the donor's objection handled? *Rubric:* 3 = marked no marketing, not deleted;; 2 = partly correct;; 1 = deleted;; 0 = none.
 - **EX050 — Correction scope.** Where was the wrong address corrected? *Rubric:* 3 = database and newsletter service;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 12)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -543,6 +623,14 @@ Blaming volunteers for reported mistakes discourages future reporting.
 - **EX054 — Root cause.** Why were the forms taken home? *Rubric:* 3 = the charity phone was busy;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX055 — Trustee decision.** What did trustees fund? *Rubric:* 3 = more charity phones;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 12)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Chapter 12 — Action plan and next steps
@@ -584,6 +672,14 @@ Governance that depends on one person's memory stops when they leave.
 - **EX058 — Transition length.** How long is the dual-recording transition? *Rubric:* 3 = three months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX059 — Plan test.** What exercise does the plan include? *Rubric:* 3 = a practice incident exercise;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Continuity tool.** Where are routines documented? *Rubric:* 3 = a governance calendar;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 12)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -100,6 +100,14 @@ O pré-registro não impede todo viés. O kappa depende da prevalência na amost
 
 O trabalho de doutorado sobre comportamento de segurança precisa de um resultado falseável, ética rigorosa para simulações e concordância medida sobre como os resultados são codificados.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: fronteira da pesquisa
@@ -148,6 +156,14 @@ Mapas da literatura refletem as escolhas de quem lê. As orientações de polít
 
 A fronteira passou de culpar os usuários a projetar para eles; uma contribuição precisa preenche uma lacuna mensurável sem exagerá-la.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
@@ -195,6 +211,14 @@ Doze clusters dão poder estatístico limitado. Desenhos escalonados podem ser p
 
 Uma proposta forte randomiza o que pode, mede o que importa, planeja os riscos éticos e convida à contestação antes da coleta de dados.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -241,6 +265,14 @@ Pilotos com voluntários não são representativos. Períodos de linha de base p
 ### Síntese
 
 A replicação fixa a linha de base e um piloto encontra problemas práticos, mas nenhum dos dois deve ser confundido com evidência de efeito.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -325,6 +357,14 @@ Desfechos por departamento escondem a variação individual. Replicações em ou
 
 Um estudo escalonado com verificações de fidelidade, inferência por permutação e validação independente sustenta uma afirmação estreita e crível.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -371,6 +411,14 @@ Achados exploratórios podem ser ruído. Algumas preocupações dos revisores n�
 ### Síntese
 
 Uma boa revisão testa alternativas, reconhece limites, separa o trabalho confirmatório do exploratório e relata a ética abertamente.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -440,6 +488,14 @@ Digests provam que os arquivos não mudaram, não que estão corretos. A agrega�
 
 A síntese de uma tese declara contribuições e incógnitas, e um arquivo atento à privacidade permite que outras pessoas verifiquem e reutilizem o trabalho.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -486,6 +542,14 @@ Recomendações de política generalizam para além de uma ou duas prefeituras. 
 ### Síntese
 
 Uma defesa de doutorado separa evidência de especulação, transforma as descobertas em políticas éticas e define as próximas perguntas de pesquisa.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -75,6 +75,14 @@ Descrever os problemas em termos técnicos, e não pelo efeito no negócio, faz 
 - **EX004 — Risco de quem está dentro.** Que risco corre quem pesquisa a própria organização? *Rubrica:* 3 = não ver o que quem está de fora vê e hesitar em questionar;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX005 — Formulação dos problemas.** Como os problemas devem ser descritos? *Rubrica:* 3 = pelo efeito no negócio;; 2 = parcialmente correto;; 1 = em termos técnicos;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Modelo operacional de governança
@@ -116,6 +124,14 @@ Lançar a governança sobre todos os dados de uma vez espalha o esforço demais.
 - **EX008 — Presidência do grupo.** Quem preside o grupo de governança? *Rubrica:* 3 = o diretor de operações;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX009 — Associação do mandato.** A que três atividades Lucía associou o mandato? *Rubrica:* 3 = avaliar, dirigir, monitorar;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 - **EX010 — Primeiro conjunto de dados.** Que conjunto de dados vem primeiro? *Rubrica:* 3 = o rastreamento das remessas;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ Atribuir a titularidade a quem mais usa os dados ignora quem controla sua criaç
 - **EX014 — Pergunta de teste.** Que pergunta de teste Lucía usou? *Rubrica:* 3 = se vendas pode compartilhar históricos de rastreamento com uma seguradora;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Assinatura.** Quem assina as declarações de titularidade? *Rubrica:* 3 = os donos;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Gestão da qualidade dos dados de remessas
@@ -200,6 +224,14 @@ Medir a qualidade sem corrigir as causas apenas documenta o declínio.
 - **EX018 — Causa na transportadora.** Por que faltavam os comprovantes de uma transportadora? *Rubrica:* 3 = anotações em papel digitalizadas dias depois;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX019 — Correção dos dispositivos.** Como os dispositivos da Corran foram corrigidos? *Rubrica:* 3 = guardando os comprovantes sem conexão e enviando-os depois;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX020 — Valor do ciclo.** Onde está o valor do ciclo da qualidade? *Rubrica:* 3 = na etapa de correção;; 2 = parcialmente correto;; 1 = na medição;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -263,6 +295,14 @@ Comparar parceiros sem considerar suas condições pode ser injusto.
 - **EX024 — Causa real.** Que causa a Transportadora C revelou? *Rubrica:* 3 = o envio dos eventos em lotes a cada meia hora;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX025 — Mudança nos acordos.** O que foi acrescentado aos acordos em renovação? *Rubrica:* 3 = metas de pontualidade;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Metadados, linhagem e catálogo
@@ -304,6 +344,14 @@ Excluir registros com eventos ausentes infla os números de desempenho.
 - **EX028 — Plataforma do catálogo.** Onde Lucía montou as entradas de catálogo? *Rubrica:* 3 = na wiki da empresa;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 - **EX029 — Período de transição.** Por quanto tempo os dois números foram mostrados? *Rubrica:* 3 = três meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX030 — Nome da medida antiga.** Como a medida antiga foi renomeada? *Rubrica:* 3 = entrega no mesmo dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -373,6 +421,14 @@ Limpezas sem mudança de processo se degradam depressa.
 - **EX034 — Mudança na solicitação.** Como a TI mudou o processo de solicitação? *Rubrica:* 3 = novos acessos exigem aprovação registrada do dono;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Controle dos desligamentos.** Como são tratadas as contas de quem sai? *Rubrica:* 3 = desativadas pelo processo de desligamento do RH;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Privacidade e dados de motoristas
@@ -414,6 +470,14 @@ Novos usos de dados de empregados sem aviso violam a limitação da finalidade.
 - **EX038 — Objeção dos motoristas.** A que os motoristas se opuseram? *Rubrica:* 3 = ao monitoramento minuto a minuto dos descansos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Salvaguarda disciplinar.** Que salvaguarda se aplica ao uso disciplinar? *Rubrica:* 3 = revisão de um segundo gestor, com a presença do representante;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX040 — Dados fora do expediente.** O que acontece com a localização fora do horário de trabalho? *Rubrica:* 3 = é desligada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -457,6 +521,14 @@ Contratos negociados apenas em termos comerciais muitas vezes omitem as obrigaç
 - **EX044 — Três meses de descumprimento.** O que acontece depois de três meses de metas não cumpridas? *Rubrica:* 3 = um plano conjunto de melhoria;; 2 = parcialmente correto;; 1 = penalidades;; 0 = nenhuma.
 - **EX045 — Verificação de saída.** O que Lucía confirmou ao trocar de fornecedor de cartões de combustível? *Rubrica:* 3 = a confirmação escrita da eliminação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Métricas, relatórios e o conselho
@@ -498,6 +570,14 @@ Reivindicar todo o crédito por melhorias com várias causas prejudica a credibi
 - **EX048 — Outra causa.** Que outro fator pode reduzir as disputas? *Rubrica:* 3 = um novo modelo de contrato com os clientes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX049 — Aprovações do conselho.** O que o conselho aprovou? *Rubrica:* 3 = financiamento para os dados mestres de clientes e uma política de aprovação de compartilhamentos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX050 — Propósito do relatório.** O que transformou o relatório em ação? *Rubrica:* 3 = pedir decisões específicas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -541,6 +621,14 @@ Avaliar sem uma linha de base torna impossível mostrar melhora.
 - **EX054 — Mudança coincidente.** Que mudança coincidente Lucía encontrou? *Rubrica:* 3 = uma queda sazonal de volume;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX055 — Método de validação.** Como os endereços são validados na entrada? *Rubrica:* 3 = com uma consulta de CEP;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Apresentação do projeto final e próximos passos
@@ -582,6 +670,14 @@ Projetos finais que terminam sem um responsável por sustentar as mudanças se a
 - **EX058 — Olhar retrospectivo.** O que Lucía faria diferente? *Rubrica:* 3 = verificar a estrutura de locais dos clientes antes de desenhar as regras;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Nova função.** Que função Lucía assume em seguida? *Rubrica:* 3 = líder de governança de dados;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 - **EX060 — Extensão proposta.** Que dados serão governados em seguida? *Rubrica:* 3 = os dados de faturas;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

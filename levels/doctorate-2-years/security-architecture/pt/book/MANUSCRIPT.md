@@ -108,6 +108,14 @@ O kappa depende da prevalência das classes e pode enganar quando uma classe dom
 
 A pesquisa de doutorado em arquitetura começa com uma pergunta falseável, um desenho capaz de separar as explicações rivais, regras de integridade fixadas de antemão e uma medida de resultado confiável.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: fronteira da pesquisa
@@ -166,6 +174,14 @@ As buscas na literatura deixam passar a literatura cinzenta e os trabalhos fora 
 
 A fronteira em arquitetura de segurança é rica em princípios e frameworks, mas pobre em evidências de resultado, o que define onde o trabalho de doutorado pode contribuir.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
@@ -222,6 +238,14 @@ O poder simulado depende da variação suposta entre as equipes. Os checklists d
 
 Uma proposta forte fixa por escrito hipóteses, intervenção, plano amostral e ameaças à validade antes que os dados de resultado sejam vistos.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -277,6 +301,14 @@ Um piloto com equipes voluntárias pode ser mais motivado do que as equipes típ
 ### Síntese
 
 Replicar a linha de base e pilotar os procedimentos expõe erros de medição antes que eles possam se passar por efeitos.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -366,6 +398,14 @@ As tendências paralelas podem valer antes da adoção e falhar depois. As verif
 
 Um estudo principal ganha credibilidade com grupos de comparação, medição cega, validação independente e incerteza relatada com clareza.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -421,6 +461,14 @@ A ausência da assinatura de uma objeção não prova que ela esteja errada. Rev
 ### Síntese
 
 A crítica é mais valiosa quando convidada de opositores, ordenada por consequência e respondida com testes e afirmações mais estreitas.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -500,6 +548,14 @@ Os conjuntos de dados sintéticos podem omitir correlações que importam para a
 
 A síntese de uma tese argumenta de forma proporcional a partir de evidências encadeadas e deixa um arquivo verificado e anonimizado com responsabilidade.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -555,6 +611,14 @@ Os prazos de publicação são incertos; os planos não devem atrasar o comparti
 ### Síntese
 
 Uma defesa e um plano de publicação dão certo quando reconhecem limites reais, ordenam as produções por dependência e se recusam a deixar que os resultados sejam exagerados.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

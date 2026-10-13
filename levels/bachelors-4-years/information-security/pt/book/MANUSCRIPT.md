@@ -75,6 +75,14 @@ Tratar a segurança como algo puramente técnico ignora as pessoas, as regras e 
 
 - **EX003 — Hábito semanal.** Que hábito de diário o Dr. Carrow aconselha? *Rubrica:* 3 = uma ideia de segurança por semana aplicada à Ashfield;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 40)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — O que é segurança da informação
@@ -116,6 +124,14 @@ Maximizar um objetivo pode prejudicar os outros.
 - **EX005 — Objetivo dos saldos.** Que objetivo importa mais para os saldos? *Rubrica:* 3 = integridade;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX006 — Rastreabilidade dos empréstimos.** Que propriedade torna rastreáveis as aprovações de empréstimos? *Rubrica:* 3 = responsabilização;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 40)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ Ignorar o papel e as pastas compartilhadas deixa muita informação sem proteç�
 
 - **EX009 — Propósito da ordenação.** O que a ordenação pelo dano orienta? *Rubrica:* 3 = onde gastar o esforço de segurança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 40)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Computadores e sistemas operacionais
@@ -200,6 +224,14 @@ O uso diário de contas de administrador dá ao malware direitos de administrado
 - **EX011 — Atraso nas atualizações.** Por que alguns computadores estão atrasados nas atualizações? *Rubrica:* 3 = os funcionários adiam as reinicializações;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Vias do malware.** Cite uma forma pela qual o malware chega. *Rubrica:* 3 = anexos de e-mail;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 40)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -243,6 +275,14 @@ As exceções antigas de firewall muitas vezes continuam abertas muito depois de
 
 - **EX015 — Rede sem fio dos associados.** Como a rede sem fio dos associados é protegida? *Rubrica:* 3 = separada das redes da equipe;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 40)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Python para verificações de segurança
@@ -284,6 +324,14 @@ Os relatórios de segurança vazados podem ajudar os atacantes.
 - **EX017 — Datas faltantes.** Como o script trata as datas faltantes? *Rubrica:* 3 = as registra separadamente;; 2 = parcialmente correto;; 1 = trava;; 0 = nenhuma.
 
 - **EX018 — Risco de vazamento.** Por que uma lista de contas inativas poderia ajudar os atacantes? *Rubrica:* 3 = ela mostra logins sem monitoramento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 40)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -327,6 +375,14 @@ Comparar contagens brutas entre grupos de tamanhos diferentes engana.
 
 - **EX021 — Comparação justa.** Como as agências são comparadas de forma justa? *Rubrica:* 3 = incidentes por cem funcionários;; 2 = parcialmente correto;; 1 = contagens brutas;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 40)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Escrevendo sobre segurança
@@ -368,6 +424,14 @@ Citar uma norma sem sua edição deixa os leitores sem saber que versão se apli
 - **EX023 — Versão para o conselho.** O que a versão para o conselho enfatiza? *Rubrica:* 3 = ex-funcionários poderiam acessar os registros;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX024 — Citação da edição.** Por que citar a edição de uma norma? *Rubrica:* 3 = as normas mudam;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 40)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -411,6 +475,14 @@ Testar sistemas sem autorização por escrito pode ser crime.
 
 - **EX027 — Lacuna do contrato.** O que faltava no contrato com o processador de cartões? *Rubrica:* 3 = direitos de auditoria;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 40)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança
@@ -452,6 +524,14 @@ Usar um acesso autorizado por curiosidade pessoal é uma quebra de confiança.
 - **EX029 — Abordagem de divulgação.** Como a fraqueza encontrada deve ser tratada? *Rubrica:* 3 = comunicada em particular pelo contato publicado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX030 — Grupo bloqueado.** Quem é afetado injustamente pelos bloqueios de logins do exterior? *Rubrica:* 3 = os associados no exterior;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 40)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -495,6 +575,14 @@ Os relatórios ao conselho cheios de contagens técnicas raramente apoiam as dec
 
 - **EX033 — Efeito do apetite.** Que gasto se justifica mais facilmente? *Rubrica:* 3 = evitar a exposição de dados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 40)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Papéis e responsabilização
@@ -536,6 +624,14 @@ Os controles que ninguém possui tendem a parar sem que ninguém perceba.
 - **EX035 — Conflito de acesso.** Que conflito o gerente de TI tem? *Rubrica:* 3 = cria e aprova contas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — Controle compensatório.** O que compensa a segregação limitada? *Rubrica:* 3 = registro das ações de administrador com revisão semanal;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 40)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -579,6 +675,14 @@ Colocar detalhes técnicos nas políticas obriga o conselho a aprovar mudanças 
 
 - **EX039 — Política desatualizada.** O que a política de uso aceitável omitia? *Rubrica:* 3 = o armazenamento em nuvem;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 40)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Avaliação de riscos
@@ -620,6 +724,14 @@ O seguro transfere parte da perda financeira, mas não o dano à reputação.
 - **EX041 — Principais riscos.** Cite um dos três principais riscos. *Rubrica:* 3 = pedidos de pagamento falsos;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX042 — Tratamento dos pagamentos.** Como o risco de pagamentos falsos é reduzido? *Rubrica:* 3 = verificação por retorno de ligação para números conhecidos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 40)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -663,6 +775,14 @@ Os esquemas de classificação complexos muitas vezes são ignorados.
 
 - **EX045 — Manutenção do inventário.** Como o inventário é mantido atualizado? *Rubrica:* 3 = ligação às compras e aos descartes, conferência semestral;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 40)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Controle de acesso
@@ -705,6 +825,14 @@ Copiar o acesso de um colega muitas vezes concede direitos desnecessários.
 
 - **EX048 — Administrador compartilhado.** Quem compartilha a conta de administrador? *Rubrica:* 3 = os funcionários de TI e um fornecedor;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 40)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Autenticação
@@ -746,6 +874,14 @@ Os controles fortes de login são contornados se a recuperação da conta for fr
 - **EX050 — Risco do código por mensagem.** Como os códigos por mensagem de texto podem ser roubados? *Rubrica:* 3 = tomada do número de celular;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX051 — Fraqueza da recuperação.** Que verificação fraca de recuperação as agências usavam? *Rubrica:* 3 = data de nascimento e endereço;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 40)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -818,6 +954,14 @@ As revisões baseadas na memória dos gerentes deixam passar desligados e direit
 
 - **EX054 — Administrador em excesso.** Quantos deles tinham acesso de administrador? *Rubrica:* 3 = seis;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 40)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Fundamentos de criptografia
@@ -860,6 +1004,14 @@ Guardar as chaves ao lado dos dados cifrados anula a cifração.
 
 - **EX057 — Chave do backup.** Onde a chave do backup estava guardada? *Rubrica:* 3 = na mesma pasta que os backups;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 40)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Conscientização em segurança
@@ -901,6 +1053,14 @@ Culpar os funcionários pelos cliques desestimula as comunicações que detectam
 - **EX059 — Valor da comunicação.** O que a comunicação de uma caixa revelou? *Rubrica:* 3 = várias agências receberam a mesma ligação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX060 — Cautela com os cliques.** Por que evitar usar apenas as taxas de cliques? *Rubrica:* 3 = dependem da dificuldade da simulação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 40)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -972,6 +1132,14 @@ Priorizar apenas pela gravidade ignora a exposição e a exploração ativa.
 
 - **EX063 — Total de atrasados.** Quantos achados estão atrasados no total? *Rubrica:* 3 = 89 de 400;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 40)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Configuração segura
@@ -1013,6 +1181,14 @@ As senhas padrão publicadas nos manuais dão aos atacantes um acesso fácil.
 - **EX065 — Item da linha de base.** Cite uma configuração da linha de base dos computadores de mesa. *Rubrica:* 3 = cifração de disco habilitada;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX066 — Solução do bloqueio de tela.** Que meio-termo é acordado para o bloqueio de tela? *Rubrica:* 3 = um tempo de espera mais longo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 40)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1056,6 +1232,14 @@ Os logs guardados apenas onde os administradores podem alterá-los são evidênc
 
 - **EX069 — Sincronização dos relógios.** Por que sincronizar os relógios? *Rubrica:* 3 = para ordenar os eventos entre os sistemas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 40)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Resposta a incidentes
@@ -1098,6 +1282,14 @@ Um plano de incidentes que nunca é exercitado costuma conter lacunas.
 
 - **EX072 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = quem decide contatar o banco para sustar um pagamento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 40)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Backup e recuperação
@@ -1139,6 +1331,14 @@ Os backups alcançáveis pela rede podem ser destruídos por um ransomware.
 - **EX074 — Falhas na restauração.** Por que alguns arquivos não foram restaurados? *Rubrica:* 3 = estavam abertos durante o backup;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX075 — Objetivos do sistema central.** Quais são os objetivos do sistema bancário central? *Rubrica:* 3 = quinze minutos de dados, quatro horas para restaurar;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 40)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1206,6 +1406,14 @@ Armazenar senhas sem sal permite que os atacantes identifiquem senhas idênticas
 
 - **EX078 — Trocas forçadas.** Por que evitar as trocas forçadas frequentes? *Rubrica:* 3 = levam a padrões previsíveis;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 40)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Fornecedores e terceiros
@@ -1247,6 +1455,14 @@ A evidência de certificação só é útil se seu escopo abranger os serviços 
 - **EX080 — Cautela com o certificado.** Quando a certificação ISO/IEC 27001 é uma evidência útil? *Rubrica:* 3 = quando seu escopo abrange os serviços usados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX081 — Cláusulas faltantes.** O que faltava em dois contratos? *Rubrica:* 3 = cláusulas de eliminação de dados;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 40)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1290,6 +1506,14 @@ Uma chave pendurada ao lado da sua fechadura não oferece proteção alguma.
 
 - **EX084 — Medida para o subsolo.** O que se recomenda para os equipamentos do subsolo? *Rubrica:* 3 = elevá-los acima do piso;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 40)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Medindo a segurança
@@ -1331,6 +1555,14 @@ Contar os ataques bloqueados parece impressionante, mas diz pouco sobre o risco.
 - **EX086 — Linha de base dos desligados.** Qual é a linha de base dos desligados? *Rubrica:* 3 = dez contas ativas de desligados;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX087 — Formato do relatório.** O que o relatório ao conselho mostra para cada medida? *Rubrica:* 3 = valor, meta, tendência e comentário;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 40)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -1374,6 +1606,14 @@ Conferir que uma política existe não é o mesmo que conferir que ela é seguid
 
 - **EX090 — Ciclo de melhoria.** Que ciclo mantém a segurança sensível às mudanças? *Rubrica:* 3 = planejar, fazer, checar, agir;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 40)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Gestão de mudanças
@@ -1415,6 +1655,14 @@ As mudanças que pegam a equipe de surpresa muitas vezes geram soluções de con
 - **EX092 — Método alternativo.** O que é oferecido aos funcionários sem celulares adequados? *Rubrica:* 3 = tokens físicos;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX093 — Agência atrasada.** Por que uma agência se atrasou? *Rubrica:* 3 = seu multiplicador estava de férias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 40)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1458,6 +1706,14 @@ Apresentar benefícios incertos como economias precisas prejudica a credibilidad
 
 - **EX096 — Decisão do conselho.** O que o conselho aprova? *Rubrica:* 3 = um teste de um ano;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 40)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Projeto em grupo I: plano
@@ -1499,6 +1755,14 @@ O trabalho de coordenação pode se tornar invisível nos projetos em grupo.
 - **EX098 — Método do golpe.** Como os golpistas se passam pela Ashfield? *Rubrica:* 3 = ao telefone, pedindo códigos de uso único;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX099 — Papéis de Aisha.** Que papéis Aisha assume? *Rubrica:* 3 = coordenação, relatório e entrevistas com os associados;; 2 = parcialmente correto;; 1 = alguns;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 40)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1542,6 +1806,14 @@ Uma comparação de antes e depois não consegue, por si só, provar que uma cam
 
 - **EX102 — Valor para o cliente.** O que o cliente mais valorizou? *Rubrica:* 3 = o plano de medição;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 40)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Estágio
@@ -1583,6 +1855,14 @@ Compartilhar as fraquezas de um empregador, mesmo de forma casual, pode ajudar o
 - **EX104 — Contribuição no estágio.** Cite uma contribuição de Aisha. *Rubrica:* 3 = o procedimento simplificado de revisão de acessos;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX105 — Habilidade a desenvolver.** Cite uma habilidade que Aisha quer desenvolver. *Rubrica:* 3 = apresentar à alta gerência;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 40)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1626,6 +1906,14 @@ Mudar as definições das medidas depois de ver os dados enviesa os resultados.
 
 - **EX108 — Condição ética.** Cite uma condição ética. *Rubrica:* 3 = anonimização pela Ashfield;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 40)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Trabalho de conclusão I: proposta
@@ -1667,6 +1955,14 @@ Escolher as análises depois de ver os resultados abre espaço para o viés.
 - **EX110 — Lacuna na literatura.** Que lacuna Aisha encontra? *Rubrica:* 3 = poucos estudos medindo os tempos de remoção em organizações pequenas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX111 — Folga.** Qual é o tamanho da folga do cronograma? *Rubrica:* 3 = duas semanas;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 40)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1710,6 +2006,14 @@ Relatar apenas a mediana esconde as exceções que revelam lacunas de processo.
 
 - **EX114 — Rival da equipe.** Como a rival da equipe de TI é enfraquecida? *Rubrica:* 3 = as remoções foram feitas automaticamente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 40)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Trabalho de conclusão III: redação
@@ -1752,6 +2056,14 @@ Limitações vagas como são necessárias mais pesquisas acrescentam pouco.
 
 - **EX117 — Número de revisões.** Quantas vezes Aisha revisa? *Rubrica:* 3 = três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 40)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Apresentação e defesa oral
@@ -1793,6 +2105,14 @@ Exagerar os achados sob questionamento prejudica a credibilidade.
 - **EX119 — Resposta sobre a comparação.** Por que não houve uma organização de comparação? *Rubrica:* 3 = nenhuma estava disponível;; 2 = parcialmente correto;; 1 = vago;; 0 = sem resposta.
 
 - **EX120 — Recomendação adotada.** Que recomendação a Ashfield adota? *Rubrica:* 3 = datas de término nos contratos temporários;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 40)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

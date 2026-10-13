@@ -87,6 +87,14 @@ Unrecorded changes make later problems hard to trace.
 - **EX012 — Change log access.** Who can open the change log? *Rubric:* 3 = Sofia and Dr. Moss;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX013 — Why log changes.** Why record each change? *Rubric:* 3 = so problems can be traced;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 04)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Accounts, devices and sharing
@@ -169,6 +177,14 @@ Switching off updates to fix a printer leaves devices exposed long after the pri
 - **EX025 — Rota fix.** Where did the rota move? *Rubric:* 3 = into the practice system;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX026 — Default setting.** What default did the technician set? *Rubric:* 3 = clinic-only sharing for new shares;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 04)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Chapter 3 — Email, fraud and people
@@ -222,6 +238,14 @@ Calling the number in a suspicious message reaches the criminal, not the supplie
 - **EX037 — Owner's promise.** What did Dr. Moss promise staff? *Rubric:* 3 = no criticism for quick reports;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX038 — Typed password.** What did Sofia do about the typed password? *Rubric:* 3 = reset it and checked the account;; 2 = both;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 04)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Backups, incidents and the plan ahead
@@ -274,6 +298,14 @@ Assuming a cloud provider will recover your deleted or encrypted files can leave
 - **EX048 — Sensitive files.** How many sensitive files were closed off? *Rubric:* 3 = twelve;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX049 — Monthly routine.** Name two items in the monthly routine. *Rubric:* 3 = sharing check, leavers, session, restore test;; 2 = two;; 1 = one;; 0 = none.
 - **EX050 — Next step.** What course comes next and why? *Rubric:* 3 = data governance rapid, retention of old records;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 04)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

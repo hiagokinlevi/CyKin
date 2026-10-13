@@ -74,6 +74,14 @@ Assuming governance belongs only to managers overlooks the technician's daily ro
 - **EX003 — Workbook purpose.** Why keep a workbook? *Rubric:* 3 = evidence of work for employers and assessment;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX004 — Funding risk.** Why do passenger counts matter for funding? *Rubric:* 3 = the authority part-funds routes based on them;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 18)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data at a bus company
@@ -114,6 +122,14 @@ Ignoring how data are collected hides where errors begin.
 - **EX006 — Upload timing.** When do counts upload? *Rubric:* 3 = at night at the depot;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX007 — Missing count harm.** What harm could a missing count cause? *Rubric:* 3 = a busy trip cut or funding reduced;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX008 — Top error points.** Which error points did Marta rank highest? *Rubric:* 3 = faulty sensors and failed uploads;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 18)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -156,6 +172,14 @@ Free text for structured information makes analysis unreliable.
 - **EX011 — Stop list problem.** What problem did staff find with the stop list? *Rubric:* 3 = stops share names on different routes;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Calendar issue.** What was hard about the calendar? *Rubric:* 3 = using it on a phone;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 18)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Spreadsheets done safely
@@ -196,6 +220,14 @@ Mixing typed numbers with formulas hides manual changes.
 - **EX014 — Adjustment column.** Where do typed adjustments go? *Rubric:* 3 = a separate column with a reason;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Trip check.** What must the trip count match? *Rubric:* 3 = the timetable for the month;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX016 — Version benefit.** What do clear versions allow? *Rubric:* 3 = sending exactly the approved version;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 18)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -238,6 +270,14 @@ Trusting results before confirming the file read correctly risks wrong conclusio
 - **EX019 — Traceability addition.** What did Marta add to trace faults? *Rubric:* 3 = the bus number;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Script sharing.** How are scripts shared? *Rubric:* 3 = a shared folder with a readme;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 18)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data quality basics
@@ -278,6 +318,14 @@ Checking only validity misses missing or late data.
 - **EX022 — Consistency comparison.** What are counts compared with for consistency? *Rubric:* 3 = ticket sales;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX023 — Authority priority.** Which dimensions matter most to the authority? *Rubric:* 3 = completeness and accuracy;; 2 = both;; 1 = one;; 0 = none.
 - **EX024 — Planner priority.** Which dimension matters most to planners? *Rubric:* 3 = timeliness;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 18)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -344,6 +392,14 @@ Overall percentages hide routes where problems concentrate.
 - **EX027 — Route 7 cause.** What caused missing Route 7 counts? *Rubric:* 3 = sensors on two older buses;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX028 — Interim action.** What was done while sensors were repaired? *Rubric:* 3 = newer buses moved onto Route 7;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 18)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Names, codes and standards
@@ -407,6 +463,14 @@ Automatic normalising without review can merge different things.
 - **EX031 — List owner.** Who owns the official stop list? *Rubric:* 3 = Mr. Hughes;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX032 — New stop rule.** What must happen before a new stop appears? *Rubric:* 3 = it is added to the official list;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 18)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Chapter 9 — Personal data at work
@@ -447,6 +511,14 @@ Assuming staff data are less sensitive than customer data leads to careless shar
 - **EX034 — Common incident.** What causes most incidents at bus companies? *Rubric:* 3 = simple mistakes such as wrong email recipients;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Shift swap answer.** How should drivers swap shifts? *Rubric:* 3 = through the shift swap system;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX036 — Complaint deletion.** Which principle does deleting old complaint details apply? *Rubric:* 3 = keep data no longer than needed;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 18)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -489,6 +561,14 @@ Shared logins make it impossible to trace who changed data.
 - **EX039 — Phishing response.** What did Marta do with the practice phishing email? *Rubric:* 3 = reported it;; 2 = partly correct;; 1 = clicked;; 0 = none.
 - **EX040 — Memory stick.** What was on the found memory stick? *Rubric:* 3 = old rosters;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 18)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Chapter 11 — Sharing and requests
@@ -529,6 +609,14 @@ Small published counts can still identify individuals.
 - **EX042 — Response deadline.** How long does Linkway have to answer an access request? *Rubric:* 3 = a month;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX043 — Authority template.** What codes does the authority file use? *Rubric:* 3 = route codes from the official list;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX044 — Low-use stops.** What happened to very low-use stops in the newspaper list? *Rubric:* 3 = removed;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 18)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -571,6 +659,14 @@ Copying personal details into reports about deletion creates new copies to delet
 - **EX047 — Lost property.** How long are lost property records kept? *Rubric:* 3 = six months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX048 — Deletion record.** What is recorded in the deletion log? *Rubric:* 3 = date, number deleted and approval;; 2 = all;; 1 = some;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 18)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Chapter 13 — Reporting problems
@@ -611,6 +707,14 @@ Vague problem reports cause worry without action.
 - **EX050 — Log reviewer.** Who reviews the issue log each week? *Rubric:* 3 = Mr. Hughes;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX051 — Closing evidence.** How did Marta close the Route 7 issue? *Rubric:* 3 = reran the check and found few missing trips;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX052 — Pattern found.** What pattern did the log show? *Rubric:* 3 = issues from older buses' equipment;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 18)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -653,6 +757,14 @@ Procedures tested only by their writers miss obvious-seeming steps.
 - **EX055 — Contents page.** What does the contents page list? *Rubric:* 3 = each document, owner and last checked date;; 2 = all;; 1 = some;; 0 = none.
 - **EX056 — Portal fallback.** What extra case did the procedure cover? *Rubric:* 3 = the portal being unavailable;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 18)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Chapter 15 — Working with a steward
@@ -693,6 +805,14 @@ Technicians changing reported figures without the steward bypass accountability.
 - **EX058 — New check.** What new check did Ms. Price request? *Rubric:* 3 = counts much higher than usual;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — Route 4 decision.** What did Ms. Price decide about Route 4? *Rubric:* 3 = keep counts and add an explanatory note;; 2 = partly correct;; 1 = change;; 0 = none.
 - **EX060 — Decision record use.** How did the decision record help later? *Rubric:* 3 = Mr. Hughes found it quickly when the authority asked;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 18)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -735,6 +855,14 @@ Adjusting figures to pass checks hides real problems.
 - **EX063 — Driver approach.** How did Marta explain sensor faults to drivers? *Rubric:* 3 = not their fault and fixing protects route funding;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX064 — Improvement areas.** What two things will Marta improve? *Rubric:* 3 = estimating task time and shorter emails;; 2 = both;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 18)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Chapter 17 — Practical assessment
@@ -776,6 +904,14 @@ Filling gaps with guesses makes files look complete but less trustworthy.
 - **EX067 — Averages answer.** Why not fill missing counts with averages? *Rubric:* 3 = guesses could be wrong; steward and authority should decide;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX068 — Assessment result.** What result did Marta receive? *Rubric:* 3 = competent with merit;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 18)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Chapter 18 — Review and next steps
@@ -816,6 +952,14 @@ Treating course completion as the end of learning leaves skills to fade.
 - **EX070 — Praised behaviour.** What behaviour was praised? *Rubric:* 3 = careful checks and refusing to adjust figures;; 2 = both;; 1 = one;; 0 = none.
 - **EX071 — Ongoing questions.** Name one question Marta should keep asking. *Rubric:* 3 = who owns each decision;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Further study.** Which course might Marta take later? *Rubric:* 3 = the technologist course;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 18)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

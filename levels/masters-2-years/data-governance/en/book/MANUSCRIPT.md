@@ -77,6 +77,14 @@ Search terms shape what is found; test alternative terms before finalising.
 - **EX006 — Supervisor check.** What share of decisions did Dr. Solberg check? *Rubric:* 3 = a random tenth;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX007 — Literature gap.** What did the search find lacking? *Rubric:* 3 = studies that measure outcomes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 08)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data governance: advanced seminar
@@ -121,6 +129,14 @@ Models describe ideals; real councils mix them.
 - **EX013 — Peer challenge.** What competing explanation did peers raise? *Rubric:* 3 = council culture;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX014 — Testable condition.** What condition did Tomás derive? *Rubric:* 3 = stewards need decision rights and a propagation channel;; 2 = both;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 08)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
@@ -164,6 +180,14 @@ Parallel trends can hold before and fail after; watch for new events.
 - **EX019 — Ethics level.** At what level is performance analysed? *Rubric:* 3 = department level only;; 2 = partly correct;; 1 = individual;; 0 = none.
 - **EX020 — Importance threshold.** What threshold of practical importance was set? *Rubric:* 3 = five days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 08)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Data governance: competing explanations
@@ -206,6 +230,14 @@ Some rivals cannot be fully ruled out; report them as limits.
 - **EX024 — Culture measure.** How is culture operationalised? *Rubric:* 3 = prior informal sharing of corrections;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Contrary evidence.** Name one result that would weaken the hypothesis. *Rubric:* 3 = improvement only in low-volume months, equal in both groups, or only where sharing existed;; 2 = one;; 1 = vague;; 0 = none.
 - **EX026 — Falsifiability.** Why write contrary conditions in advance? *Rubric:* 3 = to avoid explaining away awkward results;; 2 = mentions bias;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 08)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -281,6 +313,14 @@ Aggressive normalisation can merge different addresses; check a sample by hand.
 - **EX031 — New outcome.** How was correction time redefined? *Rubric:* 3 = days until correct in all five systems;; 2 = partly correct;; 1 = ticket closure;; 0 = none.
 - **EX032 — Logged changes.** When were proposal changes logged? *Rubric:* 3 = before collecting real outcome data;; 2 = partly correct;; 1 = after;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 08)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
@@ -347,6 +387,14 @@ A bootstrap interval reflects sampling variation, not design bias.
 - **EX037 — Culture rival.** Why is the culture rival weakened? *Rubric:* 3 = council tax improved without prior sharing;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX038 — Mechanism.** What mechanism did interviews suggest? *Rubric:* 3 = single address standard and weekly propagation;; 2 = both;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 08)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Chapter 7 — Dissertation writing and limitations
@@ -390,6 +438,14 @@ Summaries tend to drop caveats; keep the main limit in the summary.
 - **EX043 — Recommendation example.** Name one recommendation. *Rubric:* 3 = extend stewardship, measure to last system, publish rules;; 2 = one;; 1 = vague;; 0 = none.
 - **EX044 — Consistency.** Why must summary and dissertation agree? *Rubric:* 3 = inconsistency damages credibility;; 2 = mentions credibility;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 08)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
@@ -432,6 +488,14 @@ Extensions to new departments may not reproduce pilot effects; evaluate them.
 - **EX048 — Board decision.** Which departments does stewardship extend to next? *Rubric:* 3 = libraries and parking;; 2 = both;; 1 = one;; 0 = none.
 - **EX049 — Social care.** Why does social care wait? *Rubric:* 3 = review of its legal duties;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Lasting value.** What may be the most useful part of Tomás's work? *Rubric:* 3 = the measurement definitions;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 08)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

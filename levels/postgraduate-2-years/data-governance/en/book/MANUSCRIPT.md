@@ -75,6 +75,14 @@ Describing problems technically rather than by business effect loses managers' a
 - **EX004 — Insider risk.** What risk do insiders face in research? *Rubric:* 3 = missing what outsiders see and hesitating to challenge;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX005 — Problem framing.** How should problems be described? *Rubric:* 3 = by business effect;; 2 = partly correct;; 1 = technical;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 12)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Governance operating model
@@ -116,6 +124,14 @@ Launching governance across all data at once spreads effort too thin.
 - **EX008 — Group chair.** Who chairs the governance group? *Rubric:* 3 = the chief operating officer;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX009 — Mandate mapping.** What three activities did Lucía map the mandate to? *Rubric:* 3 = evaluate, direct, monitor;; 2 = all;; 1 = some;; 0 = none.
 - **EX010 — First data set.** Which data set comes first? *Rubric:* 3 = shipment tracking;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 12)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ Assigning ownership to whoever uses data most ignores who controls its creation.
 - **EX014 — Test question.** What test question did Lucía use? *Rubric:* 3 = whether sales may share tracking histories with an insurer;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Signing.** Who signs ownership statements? *Rubric:* 3 = the owners;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 12)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Quality management for shipment data
@@ -200,6 +224,14 @@ Measuring quality without fixing causes only documents decline.
 - **EX018 — Carrier cause.** Why were a carrier's proofs missing? *Rubric:* 3 = paper notes scanned days later;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX019 — Device fix.** How were Corran devices fixed? *Rubric:* 3 = store proofs offline and send later;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Cycle value.** Where does the quality cycle's value lie? *Rubric:* 3 = the improve step;; 2 = partly correct;; 1 = measure;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 12)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -263,6 +295,14 @@ Comparing partners without considering conditions can be unfair.
 - **EX024 — Real cause.** What did Carrier C reveal as the cause? *Rubric:* 3 = batching events every half hour;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Agreement change.** What was added to renewing agreements? *Rubric:* 3 = timeliness targets;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 12)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Metadata, lineage and catalogue
@@ -304,6 +344,14 @@ Excluding records with missing events inflates performance figures.
 - **EX028 — Catalogue platform.** Where did Lucía build catalogue entries? *Rubric:* 3 = the company wiki;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX029 — Bridge period.** How long were both figures shown? *Rubric:* 3 = three months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX030 — Old measure name.** What was the old measure renamed? *Rubric:* 3 = same-day delivery;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 12)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -373,6 +421,14 @@ Clean-ups without process changes decay quickly.
 - **EX034 — Request change.** How did IT change the request process? *Rubric:* 3 = new access requires recorded owner approval;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Leaver control.** How are leavers' accounts handled? *Rubric:* 3 = disabled through the HR leaver process;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 12)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Privacy and driver data
@@ -414,6 +470,14 @@ New uses of employee data without notice breach purpose limitation.
 - **EX038 — Driver objection.** What did drivers object to? *Rubric:* 3 = minute-by-minute break monitoring;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX039 — Discipline safeguard.** What safeguard applies to disciplinary use? *Rubric:* 3 = second manager review with representative present;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX040 — Off-duty data.** What happens to location data outside working hours? *Rubric:* 3 = switched off;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 12)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -457,6 +521,14 @@ Contracts negotiated on commercial terms alone often omit data obligations.
 - **EX044 — Three-month miss.** What happens after three months of missed targets? *Rubric:* 3 = a joint improvement plan;; 2 = partly correct;; 1 = penalties;; 0 = none.
 - **EX045 — Exit check.** What did Lucía confirm when changing fuel card provider? *Rubric:* 3 = written confirmation of deletion;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 12)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Chapter 10 — Metrics, reporting and the board
@@ -498,6 +570,14 @@ Claiming full credit for improvements with several causes damages credibility.
 - **EX048 — Other cause.** What other factor might reduce disputes? *Rubric:* 3 = a new customer contract template;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX049 — Board approvals.** What did the board approve? *Rubric:* 3 = customer master data funding and a sharing approval policy;; 2 = both;; 1 = one;; 0 = none.
 - **EX050 — Report purpose.** What turned the report into action? *Rubric:* 3 = asking for specific decisions;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 12)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -541,6 +621,14 @@ Evaluating without a baseline makes improvement impossible to show.
 - **EX054 — Coinciding change.** What coinciding change did Lucía find? *Rubric:* 3 = a seasonal drop in volume;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX055 — Validation method.** How are addresses validated at entry? *Rubric:* 3 = a postcode lookup;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 12)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone presentation and next steps
@@ -582,6 +670,14 @@ Capstones that end without ownership for sustaining changes fade.
 - **EX058 — Hindsight.** What would Lucía do differently? *Rubric:* 3 = check customer site structures before designing rules;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — New role.** What role does Lucía take next? *Rubric:* 3 = data governance lead;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX060 — Proposed extension.** Which data are governed next? *Rubric:* 3 = invoice data;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 12)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

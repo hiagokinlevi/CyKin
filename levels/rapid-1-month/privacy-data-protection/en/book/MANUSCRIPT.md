@@ -87,6 +87,14 @@ Definitions are broad; when unsure whether data are personal, treat them as pers
 - **EX012 — Extra condition.** What does processing health data need beyond a lawful basis? *Rubric:* 3 = a specific Article 9 condition;; 2 = mentions condition;; 1 = vague;; 0 = none.
 - **EX013 — Checklist use.** How will Sofia use her principle sentences? *Rubric:* 3 = as a checklist for later decisions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 04)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Scope, permission and safe practice
@@ -141,6 +149,14 @@ Verbal permission is easily disputed; get scope changes in writing.
 - **EX025 — Review risk.** How can a review itself create risk? *Rubric:* 3 = notes and screenshots can spread;; 2 = mentions notes;; 1 = vague;; 0 = none.
 - **EX026 — Openness.** What encourages staff to mention problems? *Rubric:* 3 = understanding the aim is improvement, not blame;; 2 = mentions aim;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 04)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Chapter 3 — Privacy and data protection: systems, data and dependencies
@@ -193,6 +209,14 @@ A map drawn once becomes outdated; update it when systems change.
 - **EX036 — Retention benefit.** Why does storage limitation reduce breach damage? *Rubric:* 3 = less data held means less exposed;; 2 = mentions less data;; 1 = vague;; 0 = none.
 - **EX037 — Basis timing.** When should a lawful basis be chosen? *Rubric:* 3 = before processing starts;; 2 = partly correct;; 1 = after;; 0 = none.
 - **EX038 — Expectation marks.** What did Sofia mark on each flow besides contents? *Rubric:* 3 = whether customers would expect it;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 04)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -280,6 +304,14 @@ Purposes listed in a notice may be incomplete; ask the business whether any othe
 - **EX048 — Till export.** What does the till export contain now? *Rubric:* 3 = total spend and non-medicine categories;; 2 = partly correct;; 1 = medicines;; 0 = none.
 - **EX049 — Post-change check.** Why check after a change? *Rubric:* 3 = to confirm the plan worked;; 2 = mentions confirmation;; 1 = vague;; 0 = none.
 - **EX050 — Next study.** What does Sofia plan to study next? *Rubric:* 3 = governance, risk and compliance;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 04)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -73,6 +73,14 @@ Scripts kept outside version control become unexplainable processes.
 - **EX002 — Technologist role.** What do technologists build and run? *Rubric:* 3 = tools, checks and reports for governance;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX003 — First problem.** Which problem does Mrs. Okonjo ask students to start with? *Rubric:* 3 = quality of repair job records;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 30)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Data at a housing association
@@ -112,6 +120,14 @@ Treating safety records like routine data delays urgent action.
 - **EX004 — Linking entity.** What links most data sets? *Rubric:* 3 = the property identifier;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX005 — Handoff count.** How many handoffs did Ravi find in a repair? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX006 — Gas check frequency.** How often must gas checks happen? *Rubric:* 3 = every year;; 2 = partly correct;; 1 = wrong;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 30)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Conventions without guidance and checks are ignored.
 - **EX008 — Date order.** Why use year-month-day dates? *Rubric:* 3 = they sort correctly;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Call lists.** What did Ravi find in open folders? *Rubric:* 3 = old call lists with tenant names and phone numbers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 30)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — SQL for governance checks
@@ -192,6 +216,14 @@ Uncommented queries lose their purpose; state the question.
 - **EX010 — Orphan cause.** Why did orphan jobs exist? *Rubric:* 3 = properties sold and removed with open jobs;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX011 — Duplicate rule.** How did Ravi define a duplicate job? *Rubric:* 3 = same property and problem within two days;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX012 — Call centre fix.** What step did the call centre add? *Rubric:* 3 = check for open jobs at the property first;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 30)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ Scripts that continue quietly on bad input produce wrong results.
 - **EX014 — Missing column behaviour.** What does the script do when a column is missing? *Rubric:* 3 = stops and reports which one;; 2 = partly correct;; 1 = continues;; 0 = none.
 - **EX015 — Date confusion.** What date problem did Ravi find? *Rubric:* 3 = contractors used day-month and month-day order;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 30)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data formats and exchange
@@ -273,6 +313,14 @@ Accepting files without validation moves source errors into reports.
 - **EX017 — Failed file handling.** What happens to files failing validation? *Rubric:* 3 = held and contractor emailed a report;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX018 — Version two change.** What did version two of the specification allow? *Rubric:* 3 = an optional extra column;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 30)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Chapter 7 — Data quality concepts
@@ -312,6 +360,14 @@ One quality score for all uses hides what matters for each.
 - **EX019 — Consistency measure.** How is consistency measured? *Rubric:* 3 = share of jobs with matching status between systems;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Regulator focus.** Which dimensions matter for regulator reports? *Rubric:* 3 = completion dates and priorities;; 2 = both;; 1 = one;; 0 = none.
 - **EX021 — Best improvements.** Where did the best improvements come from? *Rubric:* 3 = small process changes at the source;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 30)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -378,6 +434,14 @@ Adding failure counts double-counts records failing several rules.
 - **EX023 — Lowercase cause.** Where does lowercase e come from? *Rubric:* 3 = a portal that does not convert case;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX024 — Date cause.** Why were some jobs completed before being raised? *Rubric:* 3 = emergency jobs created after the fix;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 30)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Chapter 9 — Fixing problems at the source
@@ -417,6 +481,14 @@ Silent downstream corrections hide recurring source errors.
 - **EX025 — Cleaning problem.** Why is nightly cleaning not enough? *Rubric:* 3 = the same errors recur and guesses may be wrong;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX026 — Emergency field.** What new field supports emergency jobs? *Rubric:* 3 = time the tenant first reported the problem;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX027 — Historical corrections.** How are historical corrections marked? *Rubric:* 3 = with a reason code;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 30)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -458,6 +530,14 @@ Deleting old codes breaks historical reports; end-date them.
 - **EX029 — Change order.** What order is followed for new job types? *Rubric:* 3 = master list first, then systems;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX030 — Merged types.** Which job types were merged? *Rubric:* 3 = plaster repair and wall repair;; 2 = both;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 30)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Chapter 11 — Tenant records and duplicates
@@ -497,6 +577,14 @@ Merging without review can combine different people's data.
 - **EX031 — Duplicate effects.** Name one effect of tenant duplicates. *Rubric:* 3 = repeated letters, split rent accounts or incomplete data requests;; 2 = one;; 1 = vague;; 0 = none.
 - **EX032 — Normalisation steps.** How are names normalised? *Rubric:* 3 = remove spaces and lowercase;; 2 = both;; 1 = one;; 0 = none.
 - **EX033 — Rejected share.** What share of possible matches were different people? *Rubric:* 3 = about a fifth;; 2 = partly correct;; 1 = wrong;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 30)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -538,6 +626,14 @@ Dictionaries without automated checks drift and lose trust.
 - **EX035 — Drift check.** How does Ravi keep the dictionary current? *Rubric:* 3 = a weekly script comparing schema and entries;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX036 — Regulator answer.** What did the dictionary help answer? *Rubric:* 3 = the definition of a completed emergency repair;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 30)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Chapter 13 — Lineage for reports
@@ -577,6 +673,14 @@ Date-only calculations distort time-based targets.
 - **EX037 — Undocumented exclusion.** What was excluded without documentation? *Rubric:* 3 = jobs without a completion time;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX038 — Timestamp issue.** Why should full timestamps be used? *Rubric:* 3 = date-only calculations misstate elapsed time;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX039 — Unknown handling.** How are jobs without completion times reported now? *Rubric:* 3 = separately as unknown;; 2 = partly correct;; 1 = late;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 30)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -618,6 +722,14 @@ Technologists making policy changes alone bypass accountability.
 - **EX041 — Leave cover.** Who decides when the steward is on leave? *Rubric:* 3 = the deputy;; 2 = partly correct;; 1 = technologist;; 0 = none.
 - **EX042 — Gas finding.** What did the gas record investigation find? *Rubric:* 3 = data entry errors, not missed checks;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 30)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Chapter 15 — Policies and procedures
@@ -658,6 +770,14 @@ Procedures written by experts skip steps newcomers need.
 - **EX044 — Stuck step.** Where did the tester get stuck? *Rubric:* 3 = step four, held file location;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Outdated risk.** Why can outdated procedures be harmful? *Rubric:* 3 = staff follow them confidently into errors;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 30)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Chapter 16 — Access control in practice
@@ -697,6 +817,14 @@ Owners approving lists without examining them makes reviews meaningless.
 - **EX046 — Masked access.** How do repairs analysts see tenant names? *Rubric:* 3 = through a masking view;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX047 — Log patterns.** What unusual patterns are reviewed? *Rubric:* 3 = large exports or out-of-hours access;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX048 — Finance view.** What did the finance view contain? *Rubric:* 3 = job identifiers, contractors and costs;; 2 = partly correct;; 1 = partial;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 30)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -758,6 +886,14 @@ Plain hashes without a key can be reversed by hashing known identifiers.
 - **EX050 — Key storage.** Where is the key stored? *Rubric:* 3 = the data team's restricted vault;; 2 = partly correct;; 1 = script;; 0 = none.
 - **EX051 — Legal status.** Are pseudonymised extracts still personal data? *Rubric:* 3 = yes;; 2 = partly correct;; 1 = no;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 30)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Chapter 18 — Privacy requests
@@ -797,6 +933,14 @@ Corrections made only in the main system leave outdated copies elsewhere.
 - **EX052 — Hidden data.** What hidden data did Ravi find for the access request? *Rubric:* 3 = a duplicate record and a complaint spreadsheet;; 2 = both;; 1 = one;; 0 = none.
 - **EX053 — Phone copy.** Where was a copy of the phone number? *Rubric:* 3 = the contractor portal;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX054 — Retained records.** Which records were kept despite erasure? *Rubric:* 3 = rent records for financial obligations;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 30)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -838,6 +982,14 @@ Disposal limited to live systems leaves data in extracts and backups.
 - **EX056 — Kept fields.** What is kept after repair job disposal? *Rubric:* 3 = property and job type;; 2 = both;; 1 = one;; 0 = none.
 - **EX057 — Backup expiry.** When do backups expire? *Rubric:* 3 = after ninety days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 30)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Chapter 20 — Contractor data
@@ -877,6 +1029,14 @@ Exporting whole tables sends contractors fields they do not need.
 - **EX058 — Contract gap.** What was missing from contractor contracts? *Rubric:* 3 = data quality requirements;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — Photo cause.** Why was one contractor's photo rate low? *Rubric:* 3 = its app crashed on large images;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Removed field.** Which field did Ravi remove from exports? *Rubric:* 3 = full date of birth;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 30)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -936,6 +1096,14 @@ Reporting only a share hides how late the late jobs are.
 - **EX062 — North median.** What was the north contractor's median time? *Rubric:* 3 = 7.2 hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX063 — Overnight cause.** What did the south contractor reveal? *Rubric:* 3 = only one emergency team overnight;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue studying — lesson 21 (chapter 21 of 30)
+
+[← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Chapter 22 — Dashboards and reporting
@@ -975,6 +1143,14 @@ Dashboards without quality indicators invite overconfidence in incomplete figure
 - **EX064 — Board view.** What does the board dashboard show? *Rubric:* 3 = twelve months of trends against targets;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX065 — Amber indicator.** When does the quality indicator turn amber? *Rubric:* 3 = quality below threshold;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX066 — Retired count.** How many unused dashboards were retired? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue studying — lesson 22 (chapter 22 of 30)
+
+[← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1016,6 +1192,14 @@ Using internal definitions for regulatory figures misreports performance.
 - **EX068 — Year difference cause.** What explained the change from last year? *Rubric:* 3 = a contractor's jobs missing from last year;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX069 — Signing owner.** Who signs off the repair figures? *Rubric:* 3 = the head of repairs;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue studying — lesson 23 (chapter 23 of 30)
+
+[← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Chapter 24 — Issue logs and root causes
@@ -1055,6 +1239,14 @@ Fixing symptoms without root causes lets issues recur.
 - **EX070 — Phone root cause.** What was the root cause of wrong phone numbers? *Rubric:* 3 = the system layout hid the phone field during calls;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX071 — Reopening measure.** What does the reopening rate show? *Rubric:* 3 = whether fixes really work;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Top causes.** Which causes produced most issues? *Rubric:* 3 = manual entry and partner data;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue studying — lesson 24 (chapter 24 of 30)
+
+[← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1096,6 +1288,14 @@ Delaying incident reports can miss legal deadlines.
 - **EX074 — Filter fix.** What did Ravi filter on instead? *Rubric:* 3 = the contractor allocation field;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX075 — Review style.** What do blameless reviews focus on? *Rubric:* 3 = how systems allowed the error;; 2 = partly correct;; 1 = who;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue studying — lesson 25 (chapter 25 of 30)
+
+[← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-26"></a>
 
 ## Chapter 26 — Automation and scheduling
@@ -1135,6 +1335,14 @@ Jobs that run regardless of failed predecessors publish incomplete figures.
 - **EX076 — Check time.** When do checks run? *Rubric:* 3 = three in the morning;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX077 — Slowdown fix.** How did Ravi fix the slowing check job? *Rubric:* 3 = added an index;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX078 — Change steps.** Name the change control steps. *Rubric:* 3 = test, review, log and deploy at a quiet time;; 2 = most;; 1 = few;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue studying — lesson 26 (chapter 26 of 30)
+
+[← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -1176,6 +1384,14 @@ Untested documentation hides gaps until someone needs it urgently.
 - **EX080 — Skills tracking.** How does Mrs. Okonjo track who can do tasks? *Rubric:* 3 = a skills matrix;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX081 — Documentation review.** How often is a sample of documents checked? *Rubric:* 3 = quarterly;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue studying — lesson 27 (chapter 27 of 30)
+
+[← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-28"></a>
 
 ## Chapter 28 — Work placement
@@ -1215,6 +1431,14 @@ Sending data to personal accounts bypasses security controls.
 - **EX082 — Process lesson.** What made Ravi appreciate approval processes? *Rubric:* 3 = a colleague's untested change broke a report;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX083 — Personal email response.** What did Ravi suggest instead of personal email? *Rubric:* 3 = the approved remote access system;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX084 — Project topic.** What is Ravi's applied project topic? *Rubric:* 3 = reducing delay between completion and system update;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue studying — lesson 28 (chapter 28 of 30)
+
+[← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -1256,6 +1480,14 @@ Projects that end without handover leave improvements unsupported.
 - **EX086 — Transfer change.** How often does the portal now send updates? *Rubric:* 3 = hourly;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX087 — Handover recipient.** Who receives the monitoring script? *Rubric:* 3 = the repairs steward;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue studying — lesson 29 (chapter 29 of 30)
+
+[← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Chapter 30 — Project review and next steps
@@ -1295,6 +1527,14 @@ Claiming effects synthetic data cannot show undermines credibility.
 - **EX088 — Seasonality answer.** How will seasonality be addressed? *Rubric:* 3 = the steward's monthly monitoring over a year;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX089 — Assessor suggestion.** What did assessors suggest? *Rubric:* 3 = involve contractors earlier;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX090 — Ravi's job.** What job does Ravi accept? *Rubric:* 3 = data technologist at Calder Valley;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue studying — lesson 30 (chapter 30 of 30)
+
+[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

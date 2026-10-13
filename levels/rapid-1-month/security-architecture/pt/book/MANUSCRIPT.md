@@ -103,6 +103,14 @@ Os princípios podem entrar em conflito, como a aceitabilidade contra a separaç
 
 A arquitetura de segurança é um plano escrito, fundamentado em alguns princípios duradouros e em decisões registradas.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 04)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
@@ -172,6 +180,14 @@ Os escopos podem excluir justamente onde estão os problemas. Os logs do fornece
 ### Síntese
 
 Escopo, permissão, manuseio seguro dos dados e condições de parada tornam as revisões úteis e seguras.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 04)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -266,6 +282,14 @@ Os mapas ficam desatualizados sem atualizações. As falhas de fornecedores pode
 
 Mapear sistemas, fluxos de dados e dependências mostra onde a proteção e os planos alternativos importam mais.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 04)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Arquitetura e engenharia de segurança: laboratório guiado e síntese aplicada
@@ -355,6 +379,14 @@ As baselines cobrem apenas as configurações listadas. As verificações trimes
 ### Síntese
 
 Uma verificação de linha de base guiada, correções priorizadas, verificação e um plano curto transformam um mês de aprendizado em prática duradoura.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 04)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

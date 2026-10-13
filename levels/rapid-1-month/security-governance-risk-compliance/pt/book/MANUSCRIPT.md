@@ -151,6 +151,14 @@ Complete o teste da estratégia em seis frases para a Northstar. Marque pelo men
 
 > **Caso sintético.** Todos os detalhes do caso da Northstar Community Services são fictícios. A lição estratégica extraída do relatório do GAO está explicitamente identificada como inferência.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 04)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
@@ -210,6 +218,14 @@ Escopos podem ser estreitos demais para mostrar as dependências reais. Uma perm
 ### Síntese
 
 Escopo por escrito, permissão explícita, manuseio cuidadoso dos dados, desenho seguro dos exercícios e um registro datado tornam o trabalho de governança confiável antes que qualquer achado seja feito.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 04)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -301,6 +317,14 @@ Mapas omitem ferramentas informais usadas pela equipe. As garantias dos forneced
 
 Um mapa de dependências transforma serviços nomeados em componentes compartilhados, donos, obrigações sobre dados, verificações de fornecedores e cenários apoiados em evidências.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 04)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: laboratório guiado e síntese aplicada
@@ -387,6 +411,14 @@ Um único exercício tranquilo e anunciado superestima a prontidão real. Os tem
 ### Síntese
 
 Um exercício seguro e cronometrado transforma um limite de serviço presumido em evidência, em uma decisão registrada e em uma estratégia de uma página mais precisa para o próximo trimestre.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 04)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 ## Fontes dos capítulos 2–4
 

@@ -73,6 +73,14 @@ Um primeiro inventário é incompleto; planeje revisitá-lo.
 - **EX002 — Lacuna do CFTV.** Que lacuna de governança o inventário mostrou? *Rubrica:* 3 = nenhum responsável central pelos gravadores de CFTV;; 2 = menciona CFTV;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Prática versus política.** Por que os tecnólogos importam para a privacidade? *Rubrica:* 3 = veem como os sistemas se comportam e podem conferir a prática diante da política;; 2 = menciona sistemas;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 30)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
@@ -112,6 +120,14 @@ As ferramentas do navegador mostram só as requisições web; os aplicativos pre
 - **EX004 — Risco da rede compartilhada.** Por que separar o CFTV do Wi-Fi de visitantes? *Rubrica:* 3 = visitantes poderiam alcançar os gravadores com as imagens;; 2 = menciona acesso;; 1 = está bem assim;; 0 = nenhuma.
 - **EX005 — Terceiros.** Como Aisha encontrou os serviços de terceiros? *Rubrica:* 3 = ferramentas de desenvolvedor do navegador com uma conta de teste;; 2 = menciona ferramentas;; 1 = adivinhou;; 0 = nenhuma.
 - **EX006 — Registros do Wi-Fi.** Que retenção Aisha recomendou para os registros de login do Wi-Fi? *Rubrica:* 3 = cerca de trinta dias, com transparência;; 2 = menciona limite;; 1 = indefinida;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 30)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Dados sintéticos podem deixar de fora peculiaridades reais; acrescente-as de pr
 - **EX008 — Conteúdo do log.** O que Aisha registra em log no lugar dos nomes? *Rubrica:* 3 = referências das reservas e contagens;; 2 = menciona referências;; 1 = nomes;; 0 = nenhuma.
 - **EX009 — Dados reais em teste.** Por que evitar dados reais de alunos nos testes? *Rubrica:* 3 = é uma causa comum de incidentes;; 2 = menciona risco;; 1 = não há problema;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 30)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
@@ -192,6 +216,14 @@ Faixas etárias ainda podem identificar pessoas em turmas pequenas; combine-as c
 - **EX010 — Natureza da frequência cardíaca.** Quando os dados de frequência cardíaca podem ser dados de saúde? *Rubrica:* 3 = quando usados para avaliar condicionamento ou saúde, pelo artigo 4(15);; 2 = menciona saúde;; 1 = nunca;; 0 = nenhuma.
 - **EX011 — Campos do consentimento.** Que campos a tabela de consentimento guarda? *Rubrica:* 3 = aluno, finalidade, versão do texto, data e situação;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 - **EX012 — Data de nascimento.** Por que substituir a data de nascimento por uma faixa etária no aplicativo? *Rubrica:* 3 = o aplicativo não precisa da data completa;; 2 = menciona necessidade;; 1 = manter;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 30)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ Os guias precisam ser atualizados à medida que as ameaças mudam.
 - **EX014 — Rapidez da comunicação.** Por que a equipe precisa comunicar depressa? *Rubrica:* 3 = o prazo de 72 horas começa quando a Quayside toma conhecimento;; 2 = menciona prazo;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Fotografar listas.** Que hábito arriscado o guia proíbe? *Rubrica:* 3 = fotografar listas de alunos com celulares pessoais;; 2 = menciona celulares;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 30)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
@@ -272,6 +312,14 @@ Atualizações automáticas podem quebrar o software das unidades; teste antes.
 - **EX016 — Limpeza dos downloads.** Por que limpar as pastas de downloads dos computadores da recepção? *Rubrica:* 3 = as exportações salvas contêm dados de alunos;; 2 = menciona exportações;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Isolamento da máquina virtual.** Por que dar ao banco de matrículas uma máquina virtual própria? *Rubrica:* 3 = o isolamento limita a propagação de um comprometimento;; 2 = menciona isolamento;; 1 = vago;; 0 = nenhuma.
 - **EX018 — Risco das cópias locais.** Por que as planilhas locais são arriscadas? *Rubrica:* 3 = escapam da retenção e dos controles de acesso;; 2 = menciona controle;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 30)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -313,6 +361,14 @@ Revisões feitas por gerentes ocupados podem virar carimbo; confira as respostas
 - **EX020 — Ex-funcionários.** Quantas contas de ex-funcionários estavam ativas? *Rubrica:* 3 = quarenta;; 2 = aproximadamente;; 1 = vago;; 0 = nenhuma.
 - **EX021 — Alcance da autenticação multifator.** Que contas recebem a autenticação multifator? *Rubrica:* 3 = sede e gerentes que podem exportar listas;; 2 = menciona gerentes;; 1 = todas;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 30)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
@@ -352,6 +408,14 @@ Os diagramas se afastam da realidade; revise-os depois de mudanças.
 - **EX022 — Segmento restrito.** Que repositórios ficam no segmento restrito? *Rubrica:* 3 = o banco de matrículas e o repositório de frequência cardíaca;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX023 — Camadas de controles.** Por que usar várias camadas de controles? *Rubrica:* 3 = reduz a dependência de uma medida isolada;; 2 = menciona camadas;; 1 = uma basta;; 0 = nenhuma.
 - **EX024 — Mapeamento dos fornecedores.** O que Aisha marca para cada fornecedor? *Rubrica:* 3 = se recebe dados pessoais e se há contrato;; 2 = um;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 30)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -393,6 +457,14 @@ As métricas podem deixar escapar o que não é medido.
 - **EX026 — CFTV desconhecido.** Como Aisha trata a situação desconhecida do CFTV? *Rubrica:* 3 = como uma lacuna a medir;; 2 = menciona lacuna;; 1 = ignora;; 0 = nenhuma.
 - **EX027 — Valor da linha de base.** Por que registrar uma linha de base? *Rubrica:* 3 = para mostrar o progresso mais tarde;; 2 = menciona comparação;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 30)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Privacidade e proteção de dados: orientação
@@ -433,6 +505,14 @@ A escolha da base legal depende dos fatos; revise-a com o jurídico.
 - **EX029 — Base do marketing.** Que base legal os e-mails de marketing usam? *Rubrica:* 3 = consentimento;; 2 = parcialmente correta;; 1 = contrato;; 0 = nenhuma.
 - **EX030 — Condição para a frequência cardíaca.** Que condição os dados de saúde de frequência cardíaca podem exigir? *Rubrica:* 3 = consentimento explícito pelo artigo 9;; 2 = menciona consentimento;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 30)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Privacidade e proteção de dados: ativos e contexto
@@ -472,6 +552,14 @@ Vinte voluntários não são representativos.
 - **EX031 — Classes de ativos.** Cite quatro classes de ativos. *Rubrica:* 3 = identidade, pagamento, treino, frequência cardíaca, CFTV, marketing;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Expectativa dos alunos.** O que a maioria dos voluntários esperava sobre os dados de treino? *Rubrica:* 3 = ficam no aplicativo e são excluídos na saída;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 - **EX033 — Prioridades.** Que ativos ficam no topo? *Rubrica:* 3 = frequência cardíaca e CFTV;; 2 = um;; 1 = errado;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 30)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -538,6 +626,14 @@ A inspeção de rede pode deixar escapar dados enviados mais tarde ou em lotes.
 - **EX035 — Lacuna do login social.** Que lacuna o login social tem? *Rubrica:* 3 = não tem contrato;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Regra para SDKs.** Que regra Aisha recomendou? *Rubrica:* 3 = nenhum SDK entra sem revisão de privacidade;; 2 = menciona revisão;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 30)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Privacidade e proteção de dados: cenários de risco
@@ -577,6 +673,14 @@ As classificações são subjetivas; discuta-as com os colegas.
 - **EX037 — Cenários mais altos.** Que cenários ficam no topo? *Rubrica:* 3 = vazamento da frequência cardíaca e sequestro de conta;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Tratamento do CFTV.** Que tratamento enfrenta o uso indevido do CFTV? *Rubrica:* 3 = registro de acessos;; 2 = menciona registro;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Valor dos cenários.** Por que usar cenários? *Rubrica:* 3 = ajudam quem não é especialista a entender os riscos;; 2 = menciona compreensão;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 30)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -642,6 +746,14 @@ As imagens de CFTV exigem a ocultação de outras pessoas antes da entrega.
 - **EX041 — Sistemas esquecidos.** Cite dois sistemas esquecidos. *Rubrica:* 3 = histórico de treinos, índice do CFTV, chat de atendimento, marketing;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX042 — Correção.** O que fechou a lacuna? *Rubrica:* 3 = lista de verificação baseada no inventário, com responsáveis pelas buscas;; 2 = menciona lista;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 30)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Privacidade e proteção de dados: laboratório guiado
@@ -701,6 +813,14 @@ O resultado de uma unidade pode não representar as quarenta.
 - **EX044 — Causa raiz.** Por que as imagens não eram excluídas? *Rubrica:* 3 = uma atualização de firmware desligou a exclusão automática;; 2 = menciona firmware;; 1 = vago;; 0 = nenhuma.
 - **EX045 — Verificação contínua.** Que controle contínuo Aisha acrescentou? *Rubrica:* 3 = uma verificação mensal da retenção;; 2 = menciona mensal;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 30)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Privacidade e proteção de dados: métodos II
@@ -740,6 +860,14 @@ As avaliações precisam ser atualizadas se a funcionalidade mudar.
 - **EX046 — Gatilho da DPIA.** Por que a funcionalidade precisa de uma avaliação? *Rubrica:* 3 = tratamento sistemático de dados de saúde em escala;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Mitigação principal.** Cite uma mitigação. *Rubrica:* 3 = tratamento no aparelho, nenhum compartilhamento, explicações claras;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Resultado da consulta.** O que os alunos pediram? *Rubrica:* 3 = um jeito fácil de desligar;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 30)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -810,6 +938,14 @@ Varredores por expressões regulares não captam o contexto nem formatos incomun
 - **EX050 — Dado não detectado.** O que o varredor deixou passar? *Rubrica:* 3 = a anotação de saúde sobre a lesão no joelho;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Destino do arquivo de cartão.** O que aconteceu com o arquivo de reembolsos? *Rubrica:* 3 = foi movido para o sistema de pagamentos;; 2 = menciona a mudança;; 1 = foi mantido;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 30)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Privacidade e proteção de dados: controles
@@ -849,6 +985,14 @@ Um controle mapeado não é necessariamente eficaz.
 - **EX052 — Princípio do CFTV.** Que princípio a exclusão do CFTV apoia? *Rubrica:* 3 = limitação da conservação;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX053 — Norma de referência.** Cite uma norma usada como referência. *Rubrica:* 3 = ISO/IEC 27701 ou NIST Privacy Framework;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX054 — Benefício do mapeamento.** Por que mapear os controles para os princípios? *Rubrica:* 3 = revela lacunas de cobertura;; 2 = menciona lacunas;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 30)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -890,6 +1034,14 @@ Alertas demais fazem as pessoas ignorá-los.
 - **EX056 — Tendência das contas.** Como mudaram as contas de ex-funcionários? *Rubrica:* 3 = de quarenta para duas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX057 — Finalidade do monitoramento.** Por que monitorar controles já corrigidos? *Rubrica:* 3 = as correções podem falhar em silêncio;; 2 = menciona falha;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 30)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Privacidade e proteção de dados: solução de problemas
@@ -930,6 +1082,14 @@ Corrigir só o sintoma convida a recorrência.
 - **EX059 — Correção.** Que correções Aisha acrescentou? *Rubrica:* 3 = um alerta e uma reconciliação semanal;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Princípio.** O que exige o artigo 7(3)? *Rubrica:* 3 = revogar tão facilmente quanto consentir;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 30)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Privacidade e proteção de dados: integração de serviços
@@ -969,6 +1129,14 @@ Os fornecedores mudam de suboperadores; acompanhe os avisos.
 - **EX061 — Artigo do contrato.** Que artigo rege os contratos com operadores? *Rubrica:* 3 = artigo 28;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX062 — Campos compartilhados.** Que dados são compartilhados? *Rubrica:* 3 = nome, número de matrícula, reservas;; 2 = a maioria;; 1 = saúde;; 0 = nenhuma.
 - **EX063 — Dados de teste.** Que dados foram usados nos testes? *Rubrica:* 3 = alunos sintéticos;; 2 = parcialmente correta;; 1 = reais;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 30)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -1027,6 +1195,14 @@ A exclusão precisa chegar, com o tempo, aos backups e aos fornecedores.
 - **EX065 — Retidas.** Por que 37 contas ficam retidas? *Rubrica:* 3 = dívida em aberto;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX066 — Verificação.** Como a exclusão é verificada? *Rubrica:* 3 = por amostragem em todos os sistemas;; 2 = menciona amostragem;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 30)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Privacidade e proteção de dados: avaliação
@@ -1066,6 +1242,14 @@ As melhorias podem refletir mudanças na forma de medir.
 - **EX067 — Melhoria.** Cite uma melhoria. *Rubrica:* 3 = contas esquecidas de quarenta para duas; retenção do CFTV cumprida; cobertura completa dos pedidos de acesso;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX068 — Lacuna restante.** Cite uma lacuna restante. *Rubrica:* 3 = anotações de saúde em texto livre; monitoramento manual dos fornecedores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX069 — Prioridade.** O que Aisha recomendou? *Rubrica:* 3 = treinamento dos trainers e verificações automáticas dos fornecedores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 30)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1107,6 +1291,14 @@ Amostras pequenas não permitem generalizar.
 - **EX071 — Ética.** Como os dados foram coletados de forma ética? *Rubrica:* 3 = com consentimento e sem identificadores;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Limite.** Cite um limite. *Rubrica:* 3 = amostra pequena e autosselecionada;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 30)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
@@ -1146,6 +1338,14 @@ As equipes podem deixar de lado a visão dos alunos; teste com alunos.
 - **EX073 — Projeto.** O que a equipe redesenhou? *Rubrica:* 3 = a página de configurações de privacidade;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX074 — Papéis.** Cite dois papéis. *Rubrica:* 3 = pesquisa, design, desenvolvimento, testes;; 2 = dois;; 1 = um;; 0 = nenhuma.
 - **EX075 — Resultado.** O que melhorou? *Rubrica:* 3 = a explicação do compartilhamento com as telas das aulas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 30)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1187,6 +1387,14 @@ Runbooks envelhecem; revise-os todo ano.
 - **EX077 — Treinamento.** Como Aisha confirmou que os responsáveis conseguiam executar as tarefas? *Rubrica:* 3 = observou-os executando cada tarefa;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX078 — Finalidade.** Por que fazer a transição? *Rubrica:* 3 = mantém os controles vivos depois do projeto;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 30)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
@@ -1226,6 +1434,14 @@ As implantações em etapas podem misturar versões.
 - **EX079 — Validação.** Como a validação é feita? *Rubrica:* 3 = contas sintéticas e inspeção de rede;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX080 — Reversão.** Por que ter um plano de reversão? *Rubrica:* 3 = para se recuperar de erros;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX081 — Resultado.** O que a validação confirmou? *Rubrica:* 3 = nenhum dado de frequência cardíaca vai para anunciantes;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 30)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1267,6 +1483,14 @@ As visitas são retratos de um momento.
 - **EX083 — Placas.** O que faltava em duas unidades? *Rubrica:* 3 = placas de CFTV;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX084 — Valor.** Por que as visitas de campo importam? *Rubrica:* 3 = encontram o que as verificações remotas deixam passar;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 30)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
@@ -1307,6 +1531,14 @@ Ferramentas precisam de responsáveis.
 - **EX086 — Documentação.** O que a documentação de cada script inclui? *Rubrica:* 3 = finalidade, entradas, saídas, limites;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 - **EX087 — Dados.** Que dados são usados nos testes? *Rubrica:* 3 = sintéticos;; 2 = parcialmente correta;; 1 = reais;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 30)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
@@ -1346,6 +1578,14 @@ A reflexão deve ser honesta sobre as falhas.
 - **EX088 — Banca.** Quem avaliou? *Rubrica:* 3 = o Sr. Reilly e o encarregado;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 - **EX089 — Limite perguntado.** Sobre que limite perguntaram? *Rubrica:* 3 = as anotações de saúde em texto livre;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX090 — Próximo passo.** O que Aisha planeja a seguir? *Rubrica:* 3 = estudar governança;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 30)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

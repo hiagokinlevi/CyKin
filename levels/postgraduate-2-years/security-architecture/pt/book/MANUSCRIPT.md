@@ -80,6 +80,14 @@ Os registros de decisão podem virar burocracia se ninguém os lê. As premissas
 
 Decisões avançadas melhoram quando fatos, premissas e valores são separados e o raciocínio é registrado para contestação posterior.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: prática atual
@@ -125,6 +133,14 @@ Três entrevistas não representam um setor. O alinhamento às orientações nã
 ### Síntese
 
 Comparar a prática real com as orientações revela lacunas específicas e ordenáveis, sobretudo na verificação.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -196,6 +212,14 @@ Os inventários deixam dispositivos de fora. Os modelos de alcançabilidade igno
 
 Evidências especializadas e modelos simples transformam configurações complexas em evidências proporcionais para a decisão.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco avançado e ética
@@ -241,6 +265,14 @@ As faixas podem ser largas demais para orientar a ação. Escalar sem evidência
 ### Síntese
 
 O trabalho avançado de risco declara a incerteza com honestidade, mantém a segurança física visível e situa as decisões no órgão responsável.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -311,6 +343,14 @@ As notas por atributo são julgamentos. Dois caminhos de acesso aumentam a carga
 
 Alternativas honestas, critérios por atributo e verificações de sensibilidade tornam os trade-offs explícitos, em vez de ocultos.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Arquitetura e engenharia de segurança: avaliação controlada
@@ -356,6 +396,14 @@ Amostras pequenas são frágeis. A equipe pode se comportar de outro modo quando
 ### Síntese
 
 Um piloto controlado com resultados definidos de antemão fornece evidências modestas, mas críveis, para uma decisão em etapas.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -403,6 +451,14 @@ A triagem pode deixar passar projetos arriscados que respondem não. Comitês r�
 
 A arquitetura perdura quando está incorporada ao sistema de gestão e a um processo de revisão rápido e previsível.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura e engenharia de segurança: casos difíceis
@@ -448,6 +504,14 @@ As exceções tendem a se tornar permanentes sem datas. Fusões escalonadas empe
 ### Síntese
 
 Casos difíceis são tratados com exceções documentadas, planos em etapas e risco visível, com dono e com data.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -514,6 +578,14 @@ As amostras de verificação podem deixar passar falhas. As métricas podem ser 
 
 A liderança de arquitetura delega por meio de princípios e oferece garantia com base em controles verificados, e não apenas projetados.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
@@ -559,6 +631,14 @@ As críticas podem ser mais duras com achados indesejados. O raciocínio sobre t
 ### Síntese
 
 A leitura crítica pergunta o que foi medido, como, e se os mecanismos se transferem, e pesa as falhas pelo seu efeito sobre as afirmações.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -627,6 +707,14 @@ As rubricas comprimem o julgamento em números. As semanas de descoberta acresce
 
 Um projeto aplicado está completo quando as surpresas são absorvidas, uma rubrica é comparada com honestidade e outras pessoas conseguem operar o resultado.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -672,6 +760,14 @@ A atribuição dos resultados é incerta. As afirmações de transferência prec
 ### Síntese
 
 O curso termina revisando os resultados com honestidade, transferindo os métodos com cautela quanto ao domínio e planejando o desenvolvimento do julgamento.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

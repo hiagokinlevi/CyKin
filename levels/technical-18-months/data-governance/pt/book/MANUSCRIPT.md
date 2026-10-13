@@ -74,6 +74,14 @@ Supor que a governança cabe só aos gestores ignora o papel diário do técnico
 - **EX003 — Finalidade do caderno.** Por que manter um caderno de atividades? *Rubrica:* 3 = evidência do trabalho para empregadores e para a avaliação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX004 — Risco ao financiamento.** Por que as contagens de passageiros importam para o financiamento? *Rubrica:* 3 = a autoridade financia parte das linhas com base nelas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 18)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Dados em uma empresa de ônibus
@@ -114,6 +122,14 @@ Ignorar como os dados são coletados esconde onde os erros começam.
 - **EX006 — Momento do envio.** Quando as contagens são enviadas? *Rubrica:* 3 = à noite, na garagem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX007 — Dano de uma contagem ausente.** Que dano uma contagem ausente pode causar? *Rubrica:* 3 = o corte de uma viagem cheia ou a redução do financiamento;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX008 — Principais pontos de erro.** Que pontos de erro Marta colocou no topo? *Rubrica:* 3 = sensores com defeito e envios que falham;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 18)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -156,6 +172,14 @@ Texto livre para informações estruturadas torna a análise pouco confiável.
 - **EX011 — Problema da lista de pontos.** Que problema os funcionários encontraram na lista de pontos? *Rubrica:* 3 = pontos com o mesmo nome em linhas diferentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Problema do calendário.** O que era difícil no calendário? *Rubrica:* 3 = usá-lo no celular;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 18)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Planilhas feitas com segurança
@@ -196,6 +220,14 @@ Misturar números digitados com fórmulas esconde as alterações manuais.
 - **EX014 — Coluna de ajustes.** Onde ficam os ajustes digitados? *Rubrica:* 3 = em uma coluna separada, com o motivo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Verificação das viagens.** Com o que o número de viagens deve bater? *Rubrica:* 3 = com a tabela de horários do mês;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX016 — Benefício das versões.** O que versões claras permitem? *Rubrica:* 3 = enviar exatamente a versão aprovada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 18)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -238,6 +270,14 @@ Confiar em resultados antes de confirmar que o arquivo foi bem lido arrisca conc
 - **EX019 — Acréscimo para rastrear.** O que Marta acrescentou para rastrear defeitos? *Rubrica:* 3 = o número do ônibus;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX020 — Compartilhamento de scripts.** Como os scripts são compartilhados? *Rubrica:* 3 = em uma pasta compartilhada com um leia-me;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 18)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Fundamentos de qualidade de dados
@@ -278,6 +318,14 @@ Conferir só a validade deixa passar dados ausentes ou atrasados.
 - **EX022 — Comparação de consistência.** Com o que as contagens são comparadas para a consistência? *Rubrica:* 3 = com as vendas de passagens;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX023 — Prioridade da autoridade.** Que dimensões mais importam para a autoridade? *Rubrica:* 3 = completude e exatidão;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 - **EX024 — Prioridade dos planejadores.** Que dimensão mais importa para os planejadores? *Rubrica:* 3 = a pontualidade;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 18)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -342,6 +390,14 @@ Porcentagens gerais escondem as linhas em que os problemas se concentram.
 - **EX027 — Causa na Linha 7.** O que causava as contagens ausentes na Linha 7? *Rubrica:* 3 = sensores de dois ônibus mais antigos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX028 — Ação provisória.** O que foi feito enquanto os sensores eram consertados? *Rubrica:* 3 = ônibus mais novos foram colocados na Linha 7;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 18)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Nomes, códigos e padrões
@@ -403,6 +459,14 @@ Normalizar automaticamente sem revisão pode juntar coisas diferentes.
 - **EX031 — Dono da lista.** Quem é o dono da lista oficial de pontos? *Rubrica:* 3 = o Sr. Hughes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX032 — Regra para pontos novos.** O que deve acontecer antes de um ponto novo aparecer? *Rubrica:* 3 = ele é acrescentado à lista oficial;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 18)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados pessoais no trabalho
@@ -443,6 +507,14 @@ Supor que os dados dos funcionários são menos sensíveis que os dos clientes l
 - **EX034 — Incidente comum.** O que causa a maioria dos incidentes em empresas de ônibus? *Rubrica:* 3 = erros simples, como destinatários de e-mail errados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Troca de turnos.** Como os motoristas devem trocar turnos? *Rubrica:* 3 = pelo sistema de troca de turnos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Eliminação das reclamações.** Que princípio a eliminação de reclamações antigas aplica? *Rubrica:* 3 = guardar os dados apenas pelo tempo necessário;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 18)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -485,6 +557,14 @@ Logins compartilhados tornam impossível rastrear quem alterou os dados.
 - **EX039 — Resposta ao phishing.** O que Marta fez com o e-mail de phishing simulado? *Rubrica:* 3 = denunciou;; 2 = parcialmente correto;; 1 = clicou;; 0 = nenhuma.
 - **EX040 — Pen drive.** O que havia no pen drive encontrado? *Rubrica:* 3 = escalas antigas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 18)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Compartilhamento e solicitações
@@ -525,6 +605,14 @@ Contagens pequenas publicadas ainda podem identificar pessoas.
 - **EX042 — Prazo de resposta.** Quanto tempo a Linkway tem para responder a um pedido de acesso? *Rubrica:* 3 = um mês;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX043 — Modelo da autoridade.** Que códigos o arquivo da autoridade usa? *Rubrica:* 3 = os códigos de linha da lista oficial;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Pontos de uso baixo.** O que aconteceu com os pontos de uso muito baixo na lista do jornal? *Rubrica:* 3 = foram retirados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 18)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -567,6 +655,14 @@ Copiar dados pessoais para relatórios sobre a eliminação cria novas cópias a
 - **EX047 — Achados e perdidos.** Por quanto tempo os registros de achados e perdidos são guardados? *Rubrica:* 3 = seis meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX048 — Registro da eliminação.** O que fica registrado no log de eliminação? *Rubrica:* 3 = data, número eliminado e aprovação;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 18)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Relatando problemas
@@ -607,6 +703,14 @@ Relatos vagos de problemas causam preocupação sem ação.
 - **EX050 — Quem revisa o registro.** Quem revisa o registro de problemas toda semana? *Rubrica:* 3 = o Sr. Hughes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX051 — Evidência do encerramento.** Como Marta encerrou o problema da Linha 7? *Rubrica:* 3 = repetiu a verificação e encontrou poucas viagens sem contagem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX052 — Padrão encontrado.** Que padrão o registro mostrou? *Rubrica:* 3 = problemas vindos dos equipamentos dos ônibus mais antigos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 18)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -649,6 +753,14 @@ Procedimentos testados apenas por quem os escreveu deixam passar passos que pare
 - **EX055 — Página de sumário.** O que a página de sumário lista? *Rubrica:* 3 = cada documento, seu dono e a data da última conferência;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 - **EX056 — Alternativa ao portal.** Que caso extra o procedimento cobriu? *Rubrica:* 3 = o portal fora do ar;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 18)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Trabalhando com um curador
@@ -689,6 +801,14 @@ Técnicos que alteram números informados sem a curadora contornam a responsabil
 - **EX058 — Nova verificação.** Que nova verificação a Sra. Price pediu? *Rubrica:* 3 = contagens muito mais altas que o normal;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Decisão sobre a Linha 4.** O que a Sra. Price decidiu sobre a Linha 4? *Rubrica:* 3 = manter as contagens e acrescentar uma nota explicativa;; 2 = parcialmente correto;; 1 = alterar;; 0 = nenhuma.
 - **EX060 — Uso do registro da decisão.** Como o registro da decisão ajudou depois? *Rubrica:* 3 = o Sr. Hughes o encontrou depressa quando a autoridade perguntou;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 18)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -731,6 +851,14 @@ Ajustar números para passar nas verificações esconde problemas reais.
 - **EX063 — Abordagem com os motoristas.** Como Marta explicou os defeitos dos sensores aos motoristas? *Rubrica:* 3 = não é culpa deles e consertar protege o financiamento da linha;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX064 — Pontos a melhorar.** Que duas coisas Marta vai melhorar? *Rubrica:* 3 = estimar o tempo das tarefas e escrever e-mails mais curtos;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 18)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Avaliação prática
@@ -772,6 +900,14 @@ Preencher lacunas com palpites deixa os arquivos com cara de completos, mas meno
 - **EX067 — Resposta sobre as médias.** Por que não preencher as contagens ausentes com médias? *Rubrica:* 3 = palpites podem estar errados; a curadora e a autoridade devem decidir;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX068 — Resultado da avaliação.** Que resultado Marta recebeu? *Rubrica:* 3 = competente com mérito;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 18)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Revisão e próximos passos
@@ -812,6 +948,14 @@ Tratar a conclusão do curso como o fim do aprendizado deixa as competências se
 - **EX070 — Comportamento elogiado.** Que comportamento foi elogiado? *Rubrica:* 3 = verificações cuidadosas e recusa em ajustar números;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX071 — Perguntas permanentes.** Cite uma pergunta que Marta deve continuar fazendo. *Rubrica:* 3 = quem é dono de cada decisão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Estudos futuros.** Que curso Marta pode fazer mais tarde? *Rubrica:* 3 = o curso de tecnólogo;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 18)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

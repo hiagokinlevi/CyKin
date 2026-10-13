@@ -75,6 +75,14 @@ Experience without structured methods makes decisions hard to defend.
 - **EX004 — Course addition.** What does the course add to Elena's experience? *Rubric:* 3 = frameworks, measurement and board communication;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX005 — Goal evidence.** What evidence shows the programme goal is met? *Rubric:* 3 = a board-approved programme document;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 12)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Security governance and the management system
@@ -116,6 +124,14 @@ Activities without records cannot show they happen consistently.
 - **EX008 — Board addition.** What limit does the board add? *Rubric:* 3 = no clinic unable to treat patients over half a day;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Excluded party.** What is excluded from scope? *Rubric:* 3 = the dental laboratory;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX010 — Overview standard.** Which standard gives the family overview? *Rubric:* 3 = ISO/IEC 27000:2026;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 12)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ Uncalibrated ratings vary widely between assessors.
 - **EX014 — Misuse treatment.** How is staff misuse treated? *Rubric:* 3 = access reviews and alerts on unusual viewing;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Transfer method.** What transfers some financial loss? *Rubric:* 3 = cyber insurance;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 12)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Asset and supplier inventory
@@ -200,6 +224,14 @@ Devices bought outside central purchasing often escape patching and backup.
 - **EX018 — Restricted data.** Which information is restricted? *Rubric:* 3 = clinical records, images and payment data;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX019 — Supplier fix.** What does Elena recommend for imaging supplier access? *Rubric:* 3 = individual accounts, MFA, session-only access;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Records owner.** Who owns patient records? *Rubric:* 3 = the clinical lead;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 12)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -273,6 +305,14 @@ An overall compliance figure can hide clinics with serious gaps.
 - **EX024 — Schedule fix.** How is update scheduling changed? *Rubric:* 3 = lunchtime with restarts outside appointments;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Imaging control.** How are unpatchable imaging computers protected? *Rubric:* 3 = isolated segment and restricted access;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 12)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Identity and access
@@ -314,6 +354,14 @@ Copying colleagues' access spreads excess rights across clinics.
 - **EX028 — Leftover access.** Which staff most often kept access? *Rubric:* 3 = locum dentists;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX029 — Admin factor.** What protects administrator accounts? *Rubric:* 3 = hardware security keys;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX030 — Supplier gateway.** How do suppliers connect? *Rubric:* 3 = managed gateway with MFA and recorded sessions;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 12)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -388,6 +436,14 @@ Lookalike domains pass a quick glance, so relying on staff spotting them fails.
 - **EX034 — Edit distance.** What does edit distance count? *Rubric:* 3 = single-character changes between strings;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Payment rule.** What is the payment change rule? *Rubric:* 3 = confirm by calling a known number;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 12)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Backup, ransomware and recovery
@@ -429,6 +485,14 @@ Backups reachable with everyday administrator credentials can be destroyed by ra
 - **EX038 — First test.** How long did the first restore take? *Rubric:* 3 = six hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX039 — Second test.** How long did the second test take? *Rubric:* 3 = three hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX040 — Missing forms.** What was missing in the continuity trial? *Rubric:* 3 = paper consent forms;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 12)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -472,6 +536,14 @@ Discovering notification deadlines late can turn an incident into a regulatory b
 - **EX044 — Exercise gap.** What gap did the exercise reveal? *Rubric:* 3 = supplier not required to notify promptly;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Review outcome.** Name one improvement from reviews. *Rubric:* 3 = locum account expiry;; 2 = one;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 12)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Chapter 10 — Metrics, reporting and the board
@@ -513,6 +585,14 @@ Measures that never change decisions waste attention.
 - **EX048 — Report length.** How long is the board report? *Rubric:* 3 = two pages;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX049 — Imaging decision.** What decision follows the imaging question? *Rubric:* 3 = pressure the supplier jointly with other groups;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Pruning.** What does Elena propose for unused measures? *Rubric:* 3 = stop them;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 12)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -556,6 +636,14 @@ Claiming a project proves resilience against real attacks overstates evidence.
 - **EX054 — Final recovery.** How long did the final recovery take? *Rubric:* 3 = three hours ten minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX055 — Next step.** What does Elena recommend next? *Rubric:* 3 = an independent incident response test;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 12)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Chapter 12 — Capstone presentation and next steps
@@ -597,6 +685,14 @@ Leading with technical detail loses a board audience.
 - **EX058 — Capstone result.** What result does Elena achieve? *Rubric:* 3 = distinction;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX059 — Board adoption.** What does the board adopt? *Rubric:* 3 = Elena's measures as quarterly reporting;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Certification driver.** Why consider ISO/IEC 27001 certification? *Rubric:* 3 = insurers have begun to request it;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 12)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

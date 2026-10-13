@@ -73,6 +73,14 @@ Linear growth is an assumption; revisit it when meter roll-out plans change.
 - **EX002 — Feed failure.** What might a sudden drop in the reading rate mean? *Rubric:* 3 = a failed data feed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX003 — Aggregation effect.** What does aggregating to daily totals after two years do? *Rubric:* 3 = greatly reduces storage;; 2 = mentions reduction;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 50)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
@@ -112,6 +120,14 @@ Formal rules can still encode the wrong requirement; validate them with data own
 - **EX004 — Empty set rule.** Which set should be empty? *Rubric:* 3 = meters with readings but no linked premise;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX005 — Function check.** How many meters mapped to two premises? *Rubric:* 3 = twelve;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX006 — Graph use.** What does following edges backwards from a report show? *Rubric:* 3 = every source it relies on;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 50)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Calibration reduces but does not remove uncertainty; report it.
 - **EX008 — Unit error.** What did the unit confusion do to one district? *Rubric:* 3 = inflated demand a thousandfold;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Metadata fields.** Name three sensor metadata fields. *Rubric:* 3 = identifier, location, type, unit, accuracy, installation, calibration, owner;; 2 = three;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 50)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Programming I
@@ -192,6 +216,14 @@ Validation rules in code drift from written rules; review both together.
 - **EX010 — Rejects file.** Why write a rejects file instead of dropping rows? *Rubric:* 3 = gives owners evidence to fix sources;; 2 = mentions evidence;; 1 = vague;; 0 = none.
 - **EX011 — Error policy.** What does fail loudly for structure, softly for content mean? *Rubric:* 3 = stop on missing columns, record bad rows and continue;; 2 = both;; 1 = one;; 0 = none.
 - **EX012 — Review find.** What did the code review find? *Rubric:* 3 = an off-by-one timestamp error;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 50)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ Short summaries can lose caveats; keep the main limitation visible.
 - **EX014 — Manager decision.** What decision did the manager make? *Rubric:* 3 = approve unit validation for every feed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Record contents.** What does a decision record contain? *Rubric:* 3 = date, decision, maker, options, evidence;; 2 = most;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 50)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Calculus II
@@ -272,6 +312,14 @@ The trapezoidal rule assumes smooth flow between samples; spikes break it.
 - **EX016 — Integration agreement.** How closely did the trapezoidal estimate match the bulk meter? *Rubric:* 3 = within half a percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX017 — Hourly error.** What error did hourly sampling produce? *Rubric:* 3 = about two percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX018 — Reconciliation components.** What does the supplied-minus-billed difference contain? *Rubric:* 3 = leakage, measurement error, timing differences;; 2 = all;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 50)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -313,6 +361,14 @@ Control limits assume stable processes; recalculate after known changes.
 - **EX020 — Target judgement.** Why can the owner not claim the 3 percent target is met? *Rubric:* 3 = interval includes values above 3 percent;; 2 = mentions interval;; 1 = vague;; 0 = none.
 - **EX021 — Control signal.** What caused the out-of-limit day? *Rubric:* 3 = a firmware update on a batch of meters;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 50)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Computer architecture
@@ -352,6 +408,14 @@ Checksums detect accidents, not tampering; use authentication for origin.
 - **EX022 — Seven-day limit.** When does a meter lose readings? *Rubric:* 3 = outage longer than its storage period;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX023 — Daylight saving.** What problem does daylight saving create? *Rubric:* 3 = apparent duplicate or missing hours;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX024 — Checksum limit.** What does a checksum not prove? *Rubric:* 3 = who sent the data;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 50)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -393,6 +457,14 @@ Tests cover only cases someone thought of; add cases from real incidents.
 - **EX026 — Test catch.** What did the unit test reveal? *Rubric:* 3 = rule wrongly rejected meter replacements;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX027 — Domain review.** What did the metering engineer point out? *Rubric:* 3 = older meters report only daily;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 50)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Chapter 10 — Engineering ethics and safety
@@ -432,6 +504,14 @@ Ethical pressure is often subtle; record decisions and reasons.
 - **EX028 — Safety example.** Give a safety consequence of bad data. *Rubric:* 3 = wrong pressure reading leaves a hospital without water;; 2 = mentions harm;; 1 = vague;; 0 = none.
 - **EX029 — Register care.** What did Kofi recommend for the priority register? *Rubric:* 3 = yearly confirmation and strict access;; 2 = both;; 1 = one;; 0 = none.
 - **EX030 — Competence.** Why did Kofi refer the water quality change? *Rubric:* 3 = lacked chemistry competence;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 50)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -473,6 +553,14 @@ Flow documents age quickly; review them after network changes.
 - **EX032 — Industrial gap.** What gap did Kofi find on the industrial network? *Rubric:* 3 = no protocol authentication;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX033 — Late data.** When do late arrivals cluster? *Rubric:* 3 = around storms;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 50)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Chapter 12 — Operating systems
@@ -512,6 +600,14 @@ Permissions drift after emergency fixes; check them regularly.
 - **EX034 — Permission fix.** What did Kofi change about the extract directory? *Rubric:* 3 = readable only by the processing account and data team;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Job chaining.** How are jobs now protected from bad inputs? *Rubric:* 3 = each checks its predecessor succeeded with expected counts;; 2 = mentions predecessor;; 1 = vague;; 0 = none.
 - **EX036 — Patch catch.** What did the staging test catch? *Rubric:* 3 = a change in timestamp parsing;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 50)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -553,6 +649,14 @@ Constraints can block urgent fixes; define a controlled override process.
 - **EX038 — District lists.** How many versions of the district list existed? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX039 — History purpose.** Why keep valid-from and valid-to dates? *Rubric:* 3 = to explain past bills with facts at the time;; 2 = mentions past;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 50)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Chapter 14 — Software engineering
@@ -592,6 +696,14 @@ Tolerances set too wide hide real changes; review them with owners.
 - **EX040 — Testable requirement.** Give one testable pipeline requirement. *Rubric:* 3 = accepted readings have valid meter and unit; rejects reported within an hour; totals reconcile;; 2 = one;; 1 = vague;; 0 = none.
 - **EX041 — Data test catch.** What did data tests catch? *Rubric:* 3 = a vendor file with a new column order;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX042 — Hard-coded values.** What replaced hard-coded thresholds? *Rubric:* 3 = configuration values reviewed by owners;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 50)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -633,6 +745,14 @@ Pseudonymised data remain personal data; protect them accordingly.
 - **EX044 — Shared account.** What warehouse problem did Kofi fix? *Rubric:* 3 = shared analyst account replaced by named accounts;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Extract rules.** Name two rules for future extracts. *Rubric:* 3 = owner approval, minimal fields, encryption, expiry;; 2 = two;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 50)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Chapter 16 — Systems engineering
@@ -672,6 +792,14 @@ Interface documents fail if partners are not bound by them; reference them in co
 - **EX046 — Distant symptom.** How can a meter firmware issue appear? *Rubric:* 3 = as a billing complaint;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX047 — Interface fields.** What does an interface control document define? *Rubric:* 3 = fields, units, formats, timing, error handling, contacts;; 2 = most;; 1 = few;; 0 = none.
 - **EX048 — Weakest stage.** Which life cycle stage was least defined? *Rubric:* 3 = deletion;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 50)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -713,6 +841,14 @@ Too many targets overwhelm owners; keep loops focused.
 - **EX050 — Oscillation fix.** How did Kofi stop thresholds swinging? *Rubric:* 3 = weekly reject data and small steps;; 2 = both;; 1 = one;; 0 = none.
 - **EX051 — Loop speed.** How fast were actions recorded after naming owners? *Rubric:* 3 = one week instead of three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 50)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Chapter 18 — Security architecture
@@ -752,6 +888,14 @@ Tags are only as good as their maintenance; audit them.
 - **EX052 — Test data rule.** What rule did Kofi propose for test environments? *Rubric:* 3 = production personal data never enter test;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX053 — Tag-driven controls.** Why tie controls to metadata tags? *Rubric:* 3 = protections apply automatically and scale;; 2 = mentions automatic;; 1 = vague;; 0 = none.
 - **EX054 — Tag owner.** Who approves classification tags? *Rubric:* 3 = data owners at registration;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 50)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -793,6 +937,14 @@ Keyed hashes resist outsiders but not anyone holding the key.
 - **EX056 — Pseudonym status.** Are keyed-hash pseudonyms anonymous? *Rubric:* 3 = no, they remain personal data;; 2 = partly correct;; 1 = yes;; 0 = none.
 - **EX057 — Key location fix.** Where was a key wrongly stored? *Rubric:* 3 = in a script file;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 50)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Chapter 20 — Data governance: engineering context
@@ -833,6 +985,14 @@ Role charts do not create authority; confirm it in job descriptions.
 - **EX059 — Steward duty.** What do stewards do? *Rubric:* 3 = maintain rules and definitions day to day;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Focus indicator.** Which indicator do later chapters follow? *Rubric:* 3 = the leakage indicator reported to the regulator;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 50)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-21"></a>
 
 ## Chapter 21 — Data governance: requirements
@@ -872,6 +1032,14 @@ A threshold without a measurement method is not testable; define both.
 - **EX061 — Timeliness requirement.** What timeliness statement did Kofi write? *Rubric:* 3 = feed by 06:00 on at least 95% of days;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX062 — Street conflict.** How was the street-level conflict resolved? *Rubric:* 3 = district aggregation with at least fifty properties;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX063 — Top ranks.** Which requirements ranked highest? *Rubric:* 3 = owner assignment, reconciliation and timeliness;; 2 = most;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue studying — lesson 21 (chapter 21 of 50)
+
+[← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -943,6 +1111,14 @@ Static lineage misses runtime dependencies; compare with logs.
 - **EX065 — Unowned nodes.** Which nodes had no owner? *Rubric:* 3 = field_app.manual_read and sensors.flow_raw;; 2 = both;; 1 = one;; 0 = none.
 - **EX066 — Drift check.** How does Kofi find dependencies missing from the model? *Rubric:* 3 = quarterly comparison with query logs;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue studying — lesson 22 (chapter 22 of 50)
+
+[← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-23"></a>
 
 ## Chapter 23 — Data governance: threat and failure analysis
@@ -982,6 +1158,14 @@ Scores agreed by one person are guesses; agree them with owners.
 - **EX067 — Top risk.** Which failure ranked highest? *Rubric:* 3 = a stuck flow sensor;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX068 — Shared symptoms.** Why should detection serve threats and failures? *Rubric:* 3 = they often produce the same symptoms;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX069 — Sensor mitigation.** What mitigation targets stuck sensors? *Rubric:* 3 = a flat-line detector owned by network operations;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue studying — lesson 23 (chapter 23 of 50)
+
+[← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1023,6 +1207,14 @@ Thresholds copied from another utility ignore local conditions.
 - **EX071 — Accuracy method.** How is sensor accuracy checked? *Rubric:* 3 = against a portable reference meter during maintenance;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Validity limit.** What can validity rules not catch? *Rubric:* 3 = plausible but wrong values;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue studying — lesson 24 (chapter 24 of 50)
+
+[← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Chapter 25 — Design studio I
@@ -1062,6 +1254,14 @@ Defending a design instead of listening wastes critique.
 - **EX073 — Central weakness.** What weakness did the panel see in the central service? *Rubric:* 3 = single point of failure;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX074 — Alert change.** How were owner notifications changed? *Rubric:* 3 = alerts only on breaches plus weekly summary;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX075 — Underweighted.** What had Kofi underweighted? *Rubric:* 3 = failure and human behaviour;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue studying — lesson 25 (chapter 25 of 50)
+
+[← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1103,6 +1303,14 @@ Fashionable architectures may not fit; score against your requirements.
 - **EX077 — Chosen option.** Which architecture was chosen? *Rubric:* 3 = the hybrid;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX078 — Revisit condition.** Give one condition for revisiting the decision. *Rubric:* 3 = domain teams reaching agreed skill levels;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue studying — lesson 26 (chapter 26 of 50)
+
+[← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Chapter 27 — Data governance: control design
@@ -1142,6 +1350,14 @@ Controls without evidence cannot be shown to work.
 - **EX079 — Corrective example.** Give one corrective control. *Rubric:* 3 = re-requesting files, approved corrections or restating figures;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX080 — Catalogue size.** How many controls are in the catalogue? *Rubric:* 3 = thirty-one;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX081 — Testing method.** How are controls tested each quarter? *Rubric:* 3 = injecting synthetic errors in test;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue studying — lesson 27 (chapter 27 of 50)
+
+[← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1216,6 +1432,14 @@ Averaging rule rates overstates quality; report the all-rules rate.
 - **EX083 — Below-previous cause.** What mainly caused readings below the previous value? *Rubric:* 3 = meter replacements starting at zero;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX084 — Miss handling.** How did Kofi handle missing the target? *Rubric:* 3 = reported it honestly with causes and fixes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue studying — lesson 28 (chapter 28 of 50)
+
+[← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Chapter 29 — Data governance: measurement
@@ -1275,6 +1499,14 @@ Averages hide clusters; plot daily values.
 - **EX086 — Cluster cause.** What caused the late week? *Rubric:* 3 = an upgrade's backup job running before the export;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX087 — Scattered days.** How many late days fell outside that week? *Rubric:* 3 = four;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue studying — lesson 29 (chapter 29 of 50)
+
+[← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
@@ -1315,6 +1547,14 @@ Passing injected tests does not prove completeness; state limits.
 - **EX089 — Swapped fix.** What check catches swapped columns? *Rubric:* 3 = comparing each column's distribution with history;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX090 — Verification versus validation.** What does verification answer? *Rubric:* 3 = whether controls were built right;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue studying — lesson 30 (chapter 30 of 50)
+
+[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Chapter 31 — Data governance: implementation II
@@ -1354,6 +1594,14 @@ Badges can mislead if rules are weak; link to rule descriptions.
 - **EX091 — Automated fields.** Which metadata are pulled automatically? *Rubric:* 3 = schema details, refresh times and quality results;; 2 = most;; 1 = one;; 0 = none.
 - **EX092 — Inheritance rule.** What classification does a derived table get? *Rubric:* 3 = never lower than its inputs;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX093 — Badge effect.** How did badges change engineers' behaviour? *Rubric:* 3 = they check badges and ask owners about poor scores;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue studying — lesson 31 (chapter 31 of 50)
+
+[← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1418,6 +1666,14 @@ Reconciling a system with itself proves nothing; use independent records.
 - **EX095 — Missing reads effect.** How do missing reads affect leakage? *Rubric:* 3 = they overstate it;; 2 = partly correct;; 1 = understate;; 0 = none.
 - **EX096 — Mismatch owner.** Who owns value mismatches? *Rubric:* 3 = billing;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue studying — lesson 32 (chapter 32 of 50)
+
+[← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Chapter 33 — Data governance: safety and resilience
@@ -1457,6 +1713,14 @@ Treating safety data like business data underestimates harm.
 - **EX097 — Extra reviewer.** Who else reviews changes to safety-relevant data? *Rubric:* 3 = the operations safety engineer;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX098 — Dashboard dependency.** Why must incident response not rely on the leakage dashboard? *Rubric:* 3 = it depends on a single warehouse server;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX099 — Tabletop finding.** What did operators point out? *Rubric:* 3 = manual readings need standard forms and units;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue studying — lesson 33 (chapter 33 of 50)
+
+[← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1498,6 +1762,14 @@ Component tests passing does not mean the system works.
 - **EX101 — End-to-end finding.** What did the first end-to-end run reveal? *Rubric:* 3 = reconciliation results did not reach the catalogue;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX102 — Integration owner.** Who owns the end-to-end test? *Rubric:* 3 = the data governance lead;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue studying — lesson 34 (chapter 34 of 50)
+
+[← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Chapter 35 — Design studio II
@@ -1537,6 +1809,14 @@ Vendor assurances need verification; check specifications.
 - **EX103 — New component.** What new component did Kofi add? *Rubric:* 3 = a model card for the leak algorithm;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX104 — Audio check.** Do the loggers record audio? *Rubric:* 3 = no, only frequency summaries;; 2 = partly correct;; 1 = yes;; 0 = none.
 - **EX105 — Panel praise.** What improvement did the panel note? *Rubric:* 3 = anticipating failure and people's concerns;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue studying — lesson 35 (chapter 35 of 50)
+
+[← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1578,6 +1858,14 @@ Retiring silent controls without testing them may remove needed protection.
 - **EX107 — Efficiency change.** Name one efficiency change. *Rubric:* 3 = incremental processing, district partitions or ingestion checks;; 2 = one;; 1 = vague;; 0 = none.
 - **EX108 — Silent controls.** What did Kofi do before retiring silent controls? *Rubric:* 3 = tested them by injection;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue studying — lesson 36 (chapter 36 of 50)
+
+[← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Chapter 37 — Data governance: operations
@@ -1617,6 +1905,14 @@ Sending estimates silently damages trust; communicate delays.
 - **EX109 — Triage time.** By when do stewards triage alerts? *Rubric:* 3 = nine in the morning;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX110 — Reporting-day failure.** What did the incident lead do when an extract failed on reporting day? *Rubric:* 3 = told the regulator figures would be a day late;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX111 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a steward who did not write them follows them on a synthetic incident;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue studying — lesson 37 (chapter 37 of 50)
+
+[← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1658,6 +1954,14 @@ User satisfaction alone does not show effectiveness; combine with outcome measur
 - **EX113 — Operations fix.** How did Kofi reach operations staff? *Rubric:* 3 = key catalogue information on the control room display;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX114 — Causal caution.** What did Prof. Varga warn against? *Rubric:* 3 = claiming governance caused better leak finding without stronger evidence;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue studying — lesson 38 (chapter 38 of 50)
+
+[← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Chapter 39 — Data governance: maintainability
@@ -1697,6 +2001,14 @@ Governance relying on a few enthusiasts is fragile; plan for turnover.
 - **EX115 — Steward departure.** What happened when the billing steward left? *Rubric:* 3 = tariff reference data went unupdated for two months;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX116 — Leaver trigger.** What triggers successor assignment? *Rubric:* 3 = directory links that remind the governance lead;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX117 — Effort risk.** What risk did concentrated effort create? *Rubric:* 3 = burnout and single points of failure;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue studying — lesson 39 (chapter 39 of 50)
+
+[← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
@@ -1738,6 +2050,14 @@ Testing only the main path misses side routes into governed data.
 - **EX119 — Contact fix.** What replaced the outdated contact list? *Rubric:* 3 = links to the on-call rota;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX120 — Side-route lesson.** Where did both failures come from? *Rubric:* 3 = components outside the main path;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue studying — lesson 40 (chapter 40 of 50)
+
+[← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-41"></a>
 
 ## Chapter 41 — Data governance: system optimization
@@ -1777,6 +2097,14 @@ Optimising one team's measure can hurt the system; measure the chain.
 - **EX121 — Billing shortcut.** What did billing's shortcut cause? *Rubric:* 3 = errors pushed to slower reconciliation;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX122 — Bottleneck.** What was the bottleneck? *Rubric:* 3 = manual approval of corrections by one supervisor;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX123 — Chain measures.** Name the three chain measures. *Rubric:* 3 = reading-to-figure time, on-schedule share and restatements;; 2 = all;; 1 = some;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-41 -->
+### Continue studying — lesson 41 (chapter 41 of 50)
+
+[← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
@@ -1818,6 +2146,14 @@ Recovering a planted effect does not prove a real one.
 - **EX125 — Synthetic purpose.** Why use synthetic data with known answers? *Rubric:* 3 = to check the method can find a real effect;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX126 — Alternative explanation.** Name one alternative explanation to check. *Rubric:* 3 = district size;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-42 -->
+### Continue studying — lesson 42 (chapter 42 of 50)
+
+[← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-43"></a>
 
 ## Chapter 43 — Industry or public-service practice
@@ -1857,6 +2193,14 @@ Bypassing controls under deadline pressure erodes them; raise concerns.
 - **EX127 — Owner time.** How did Kofi respect the metering manager's time? *Rubric:* 3 = a monthly batch review of rule changes;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX128 — Regulator question.** What did the regulator's reviewer ask? *Rubric:* 3 = how Tidewater knows flow sensors are accurate;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX129 — Unapproved edit.** How did Kofi handle the unapproved edit? *Rubric:* 3 = raised it privately and the edit went for approval;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-43 -->
+### Continue studying — lesson 43 (chapter 43 of 50)
+
+[← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
@@ -1898,6 +2242,14 @@ Unclear scope is the most common capstone failure; write it down.
 - **EX131 — Synthetic risk response.** How will Kofi check synthetic pressure data? *Rubric:* 3 = validate patterns with an operations engineer early;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX132 — Audience criterion.** Who must understand the demonstration? *Rubric:* 3 = an operations audience;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Continue studying — lesson 44 (chapter 44 of 50)
+
+[← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
@@ -1937,6 +2289,14 @@ Hiding known weaknesses wastes reviewers' time.
 - **EX133 — Threshold finding.** What did reviewers say about thresholds? *Rubric:* 3 = critical sensors need tighter thresholds;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX134 — Ownership change.** How was ownership split? *Rubric:* 3 = operations manager for critical sites, district managers for others;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX135 — Why review.** Why are independent reviewers valuable? *Rubric:* 3 = they lack the designer's assumptions;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Continue studying — lesson 45 (chapter 45 of 50)
+
+[← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
@@ -1978,6 +2338,14 @@ Demonstrations that hide failures mislead; show the test log.
 - **EX137 — Fix for late detection.** What fixed it? *Rubric:* 3 = hourly completeness checks for critical sites;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX138 — Stated limits.** Name one limit Kofi stated. *Rubric:* 3 = synthetic data or untested long-term operation;; 2 = one;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Continue studying — lesson 46 (chapter 46 of 50)
+
+[← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
@@ -2017,6 +2385,14 @@ Declaring recovery when systems restart ignores lost data; reconcile first.
 - **EX139 — Instruction problem.** Where were recovery instructions stored? *Rubric:* 3 = on the failed server;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX140 — Data gap cause.** What caused the data gap? *Rubric:* 3 = a buffer filled and overwrote older data;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX141 — Recovery definition.** When is recovery complete? *Rubric:* 3 = when data are reconciled;; 2 = partly correct;; 1 = restart;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Continue studying — lesson 47 (chapter 47 of 50)
+
+[← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
@@ -2058,6 +2434,14 @@ Claims without evidence weaken the whole dossier; remove or support them.
 - **EX143 — Retention gap.** What did the retention claim reveal? *Rubric:* 3 = the rule was never configured for pressure data;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX144 — Navigation test.** How was navigation tested? *Rubric:* 3 = an unfamiliar classmate found evidence for random claims;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Continue studying — lesson 48 (chapter 48 of 50)
+
+[← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-49"></a>
 
 ## Chapter 49 — Engineering thesis
@@ -2098,6 +2482,14 @@ Theses organised as diaries hide the argument; organise around claims.
 - **EX146 — Future work.** Name one future work item. *Rubric:* 3 = real anonymised data, comparison with other utilities or long-term costs;; 2 = one;; 1 = vague;; 0 = none.
 - **EX147 — Feedback change.** How did feedback change the drafts? *Rubric:* 3 = reorganised around the argument;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Continue studying — lesson 49 (chapter 49 of 50)
+
+[← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
@@ -2137,6 +2529,14 @@ Defending an overstated claim damages credibility; correct it.
 - **EX148 — Emergency question.** How do safety procedures handle emergencies? *Rubric:* 3 = emergency actions stay independent of approval but are recorded;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX149 — Accuracy challenge.** What did the regulator challenge? *Rubric:* 3 = accuracy was claimed but consistency was shown;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX150 — Valued habits.** Which habits does Kofi value most? *Rubric:* 3 = evidence, review and honesty about limits;; 2 = all;; 1 = some;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Continue studying — lesson 50 (chapter 50 of 50)
+
+[← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

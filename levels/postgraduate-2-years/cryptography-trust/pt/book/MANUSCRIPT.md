@@ -83,6 +83,14 @@ Estruturas de decisão não substituem o julgamento; elas o tornam visível. Pre
 
 Decisões criptográficas em escala organizacional melhoram quando fatos, premissas e valores são separados e cada decisão usa uma regra explícita e registrada.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: prática atual
@@ -165,6 +173,14 @@ Inventários feitos por varredura deixam passar serviços apenas internos e conf
 
 A prática atual é definida pelas normas; um inventário a traduz em lacunas específicas, com donos, ordenadas por exposição.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Criptografia e serviços de confiança: evidências especializadas
@@ -245,6 +261,14 @@ Os tamanhos sozinhos não determinam o desempenho; a computação e a memória t
 
 Evidências especializadas, vindas das normas e de testes locais e avaliadas com honestidade, mostram onde a migração pós-quântica vai doer e onde não vai.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco avançado e ética
@@ -294,6 +318,14 @@ Os prazos quânticos são incertos; os cenários precisam ser revisitados. Uma d
 ### Síntese
 
 O trabalho avançado de risco governa as premissas incertas por meio de cenários e trata os deveres éticos para com os parceiros como parte das decisões criptográficas.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -374,6 +406,14 @@ Matrizes ponderadas escondem o julgamento nos pesos; teste sempre a sensibilidad
 
 Comparar alternativas de gerenciamento de chaves com pesos testados e compromissos explícitos expõe os juízos de valor que os conselhos precisam assumir.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Criptografia e serviços de confiança: avaliação controlada
@@ -451,6 +491,14 @@ Desenhos de antes e depois sem controles são vulneráveis a mudanças simultân
 
 Avaliações pareadas pré-registradas, com ameaças e custos, transformam uma linha de base promissora em evidência para decisões em toda a organização.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Criptografia e serviços de confiança: integração organizacional
@@ -500,6 +548,14 @@ Normas sem donos se degradam. Questionários de compras precisam de orientação
 ### Síntese
 
 A criptografia se torna prática organizacional quando as normas conduzem os processos, existem responsáveis em todas as unidades e as mudanças são gerenciadas quanto à compatibilidade.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -551,6 +607,14 @@ Os proxies de inspeção se tornam alvos de alto valor. A pressão durante os in
 
 Os casos difíceis forçam compromissos entre segurança, operações e lei; procedimentos documentados e um raciocínio visível mantêm as decisões defensáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Criptografia e serviços de confiança: liderança e garantia
@@ -600,6 +664,14 @@ Métricas relatadas sem narrativa convidam a leituras erradas. Uma garantia limi
 ### Síntese
 
 A liderança transforma os planos criptográficos em mudanças entregues, e métricas honestas com garantia independente dão aos conselhos e aos reguladores uma confiança justificada.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -651,6 +723,14 @@ As manchetes exageram; leia o artigo. Os benchmarks raramente se transferem entr
 
 Os profissionais leem pesquisas em busca de afirmações, modelos de ameaça e condições e depois traduzem apenas o que muda o risco da organização.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Projeto aplicado
@@ -701,6 +781,14 @@ Prazos rígidos sem apoio prejudicam os pequenos parceiros; as exceções precis
 
 Os projetos aplicados dão certo quando a mudança técnica vem acompanhada de apoio aos parceiros, funcionamento em paralelo monitorado e registros honestos de risco residual.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -750,6 +838,14 @@ Declarar vitória esconde os atrasos; relate-os. Transferências sem período de
 ### Síntese
 
 Encerrar um programa significa resultados honestos, transferências testadas, um plano de melhoria contínua e uma reflexão que forma o próximo líder.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

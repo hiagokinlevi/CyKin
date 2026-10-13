@@ -75,6 +75,14 @@ O enquadramento de negócio pode simplificar demais a tecnologia. As listas de a
 
 Fundamentos de segurança enquadrados em termos de negócio mostram onde a governança agrega valor.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: contexto de serviços e partes interessadas
@@ -116,6 +124,14 @@ As visões das partes interessadas mudam. As declarações de finalidade podem s
 ### Síntese
 
 O contexto das partes interessadas define o que o programa de GRC precisa alcançar e evidenciar.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ A independência é relativa em equipes pequenas. O manuseio de evidências toma
 
 Uma prática autorizada, segura e independente torna as evidências de GRC confiáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: métodos centrais
@@ -200,6 +224,14 @@ As oficinas dependem de quem participa. As declarações de apetite podem ser va
 ### Síntese
 
 Um processo estabelecido e ligado ao apetite transforma a análise de risco em decisões registradas.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -263,6 +295,14 @@ Amostras pequenas de controles. Os revisores podem ser rigorosos demais.
 
 A autoavaliação engaja os donos, mas a revisão independente mostra onde o otimismo esconde fraquezas.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Governança, riscos e compliance de segurança: fluxo operacional
@@ -304,6 +344,14 @@ As metas podem estimular encerramentos falsos. Os comitês podem não agir.
 ### Síntese
 
 Um fluxo de achados com metas realistas e relatórios focados em ações mantém a correção em andamento.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -364,6 +412,14 @@ A amostragem aleatória deixa passar abusos direcionados. Os logs podem estar in
 
 Amostras dimensionadas sustentam conclusões delimitadas e claramente limitadas sobre a operação dos controles.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Governança, riscos e compliance de segurança: análise de caso supervisionada
@@ -406,6 +462,14 @@ Casos isolados podem não se generalizar. A visão retrospectiva faz as falhas p
 
 A análise de casos revela falhas em vários níveis e padrões relevantes para a própria organização.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatórios
@@ -447,6 +511,14 @@ Relatórios honestos podem desgastar relações. O engajamento dos conselhos var
 ### Síntese
 
 Um reporte honesto e focado em decisões, junto com a resistência à pressão, sustenta a confiança em GRC.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -511,6 +583,14 @@ Números pequenos. As entrevistas podem ser defensivas.
 
 Dados de envelhecimento apontam achados parados, e as conversas revelam causas distintas a corrigir.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
@@ -553,6 +633,14 @@ Os relatórios têm escopo limitado. As bridge letters dão garantia limitada.
 
 A leitura crítica de relatórios de garantia encontra lacunas de escopo, exceções e deveres deixados a cargo do cliente.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
@@ -594,6 +682,14 @@ Os portfólios mostram trabalhos selecionados. Os planos mudam com as funções.
 ### Síntese
 
 Um portfólio de prática demonstra competência e dá direção à prática contínua de GRC.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

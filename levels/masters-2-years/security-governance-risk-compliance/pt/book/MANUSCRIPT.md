@@ -81,6 +81,14 @@ Desenhos observacionais não provam causa. Logs de busca deixam escapar a litera
 
 Uma pergunta precisa e respondível e uma busca reproduzível vêm antes de quaisquer dados.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: seminário avançado
@@ -154,6 +162,14 @@ Percentuais de cobertura escondem a qualidade dos controles. Os frameworks mudam
 
 Os frameworks se sobrepõem; uma cobertura demonstrável exige evidências, e não apenas mapeamentos.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -201,6 +217,14 @@ Fatores de confusão medidos não eliminam os não medidos. A qualidade do catá
 
 Desenhos observacionais precisam de fatores de confusão registrados, aprovações e um plano pré-registrado.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: explicações concorrentes
@@ -247,6 +271,14 @@ Algumas rivais não podem ser testadas. As medidas de diligência são grosseira
 ### Síntese
 
 Listar e verificar explicações rivais é o núcleo da pesquisa observacional honesta.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -323,6 +355,14 @@ A amostragem não detecta falhas sistemáticas raras. As taxas toleráveis são 
 
 Os pilotos definem tamanhos de amostra realistas e aprimoram as definições antes do estudo principal.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
@@ -395,6 +435,14 @@ A diligência continua sendo uma rival parcial. A relação custo-benefício dep
 
 Uma análise pré-registrada produz uma diferença incerta, mas real, relatada junto com as explicações rivais e o custo.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -442,6 +490,14 @@ Resumos para profissionais podem simplificar demais. As ligações com os framew
 
 Boas dissertações tornam as afirmações rastreáveis, os limites consequentes e os resumos justos.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -488,6 +544,14 @@ A reprodução confere o código, não a verdade. Os resultados do estudo seguin
 ### Síntese
 
 Reprodução independente, defesa franca e acompanhamento planejado completam um estudo de mestrado.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

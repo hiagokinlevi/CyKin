@@ -109,6 +109,18 @@ Exemplo (sintético): "*Como* os PCs de agendamento da clínica compartilham uma
 
 Boas frases de risco nomeiam uma consequência real (pessoas, tempo, serviço), e não apenas "perda de dados". Elas também deixam óbvio **quem deve ser o dono** do problema: aqui, a gerente administrativa, e não a pessoa que o percebeu.
 
+### Visual 1 — da frase de risco à decisão
+
+```mermaid
+flowchart LR
+    A[Causa ou fragilidade] --> B[Evento possível]
+    B --> C[Consequência para pessoas ou serviço]
+    C --> D[Responsável recebe o relato]
+    D --> E[Resposta autorizada]
+```
+
+**Alternativa textual:** descreva a causa, o evento possível e o dano a pessoas ou ao serviço. Relate essa cadeia ao responsável, que decide a resposta autorizada. Sam não executa a correção só porque percebeu o risco.
+
 ### 1.5 As três decisões do iniciante
 
 Como iniciante, não se espera que você conserte a segurança. Espera-se que você **perceba**, **relate** pelo canal certo e **deixe a correção com o dono**. Diante de algo que parece errado, pergunte:
@@ -216,6 +228,19 @@ Disso decorrem duas consequências:
 - **Boas intenções não são autorização.** "Eu só estava verificando se era seguro" não é defesa. Muitos países tratam o acesso a um sistema de computador sem autorização como crime, qualquer que seja o motivo, e os empregadores o tratam como falta grave.
 
 Os testadores profissionais de segurança trabalham sob regras de engajamento escritas exatamente por isso; o guia do NIST para testes técnicos de segurança descreve planejamento, regras e aprovações antes do início de qualquer teste ([NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)). Esse nível de teste não faz parte deste curso.
+
+### Visual 2 — o limite da autorização
+
+```mermaid
+flowchart TD
+    A[Ideia de inspecionar ou alterar um serviço] --> B{Há autorização do responsável para esta ação exata?}
+    B -- Não ou incerto --> C[Não agir; relatar a observação]
+    B -- Sim --> D{Sistema, momento e método estão no escopo?}
+    D -- Não ou incerto --> C
+    D -- Sim --> E[Só a equipe autorizada segue o procedimento aprovado]
+```
+
+**Alternativa textual:** uma proposta de inspeção ou alteração exige permissão explícita do responsável e escopo exato. Se faltar qualquer um dos dois, pare e relate; somente a equipe autorizada age dentro do procedimento. Ter login ou boa intenção não substitui essas condições.
 
 ### 2.2 Por que "só dar uma conferida" é perigoso aqui
 
@@ -424,6 +449,22 @@ H. Novak pede a Sam que liste, para uma reunião da equipe, o que a clínica pre
 
 Sam marca três perguntas, e não conclusões: a LinkNet é um ponto único de falha? Existe uma alternativa em papel para a MedBook? Quem mais conhece o alarme da geladeira? Elas vão para H. Novak — a dona —, que decide o que mudar, se for o caso.
 
+### Visual 3 — dependências da clínica (sintético)
+
+```mermaid
+flowchart LR
+    P[Energia da rede] --> C[Clínica]
+    G[Gerador a diesel] -. reserva apenas de energia .-> C
+    F[Entrega de combustível] --> G
+    N[Telefonia e internet LinkNet] --> C
+    W[Água potável] --> C
+    M[Agenda MedBook] --> C
+    S[Equipe da clínica] --> C
+    C --> T[Pacientes e farmácia]
+```
+
+**Alternativa textual:** energia, LinkNet, água, MedBook e equipe alimentam a clínica, que atende pacientes e a farmácia. O gerador é reserva somente de energia e precisa de combustível. As reservas das demais dependências ainda são perguntas; o desenho não demonstra que uma clínica real falharia da mesma maneira.
+
 ### 3.7 Atividade prática
 
 Escolha um serviço essencial público perto de você (ou a estação da Larkfield Water descrita acima). Usando apenas informações públicas e bom senso, desenhe um esboço simples de dependências: o serviço no meio, as dependências a montante à esquerda, os dependentes a jusante à direita. Circule tudo o que for compartilhado, marque com uma estrela qualquer possível ponto único de falha e escreva uma pergunta que você faria ao dono. Não contate nem sonde o serviço.
@@ -500,6 +541,21 @@ Este capítulo aplica tudo o que veio antes: a consequência em primeiro lugar (
 Quando um serviço falha e outros que dependem dele falham em seguida, a falha **se propaga em cascata**. As cascatas são a razão pela qual a infraestrutura crítica é tratada como um sistema interligado, e não como uma lista de organizações separadas, e pela qual as listas nacionais agrupam os serviços em funções que dependem umas das outras ([CISA, National Critical Functions Set](https://www.cisa.gov/national-critical-functions-set)). Os apagões na Ucrânia e o incidente de ransomware no oleoduto, vistos nos capítulos anteriores, tiveram efeitos muito além da primeira organização atingida.
 
 Você pode raciocinar sobre cascatas com um lápis: desenhe cada serviço, trace uma seta para cada coisa de que ele precisa e então "desligue" uma caixa e siga as setas de trás para frente. Algumas linhas de código fazem a mesma contabilidade sem erros, e é isso que o Laboratório 4 faz.
+
+### Visual 4 — por que o gerador pode não salvar a clínica (sintético)
+
+```mermaid
+flowchart LR
+    P[Falta energia da rede] --> N[Telefonia falha]
+    P --> W[Bombas de água param]
+    N --> C[Clínica não consegue operar]
+    W --> C
+    G[Gerador funciona] --> L[Clínica tem energia local]
+    L -. insuficiente sem telefonia e água .-> C
+    C --> PH[Farmácia perde um serviço anterior]
+```
+
+**Alternativa textual:** no mapa sintético do Laboratório 4, a falta de energia interrompe telefonia e bombas de água. O gerador preserva energia local, mas a clínica não opera sem telefonia e água; a farmácia também perde a clínica. O modelo omite tempo, falhas parciais e alternativas manuais; confirme dependências reais com o responsável.
 
 ### 4.2 Laboratório 4 — o que mais falha? (sintético)
 

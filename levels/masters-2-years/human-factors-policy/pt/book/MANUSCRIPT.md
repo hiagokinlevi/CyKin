@@ -81,6 +81,14 @@ Buscas em bases de dados deixam de fora a literatura cinzenta. Documentos de ori
 
 Uma pergunta focada e uma busca registrada e repetível dão a uma dissertação um ponto de partida defensável.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: seminário avançado
@@ -129,6 +137,14 @@ Modelos simplificam o comportamento. Medidas de atitude por questionário são i
 
 Teorias comportamentais são úteis quando fazem previsões distintas e testáveis sobre uma mudança real de política.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -175,6 +191,14 @@ Séries temporais interrompidas podem ser confundidas por outras mudanças simul
 ### Síntese
 
 Métodos mistos, com ética cuidadosa e um plano de reprodutibilidade honesto, são adequados à pesquisa sobre o comportamento de segurança da equipe.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -249,6 +273,14 @@ Comparações entre departamentos são confundidas pelas escolhas de adoção. S
 
 Listar e verificar explicações concorrentes permite que um estudo ordene as suas conclusões com honestidade pela força das evidências.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
@@ -295,6 +327,14 @@ Pilotos pequenos deixam passar problemas raros. Revisões feitas após o piloto 
 ### Síntese
 
 Os pilotos testam se os instrumentos significam o que o pesquisador pretende, e revisões registradas mostram aos examinadores que eles foram testados.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -367,6 +407,14 @@ Pesquisas anônimas repetidas comparam grupos, não indivíduos. Julgamentos de 
 ### Síntese
 
 Combinar contagens, variação em questionários e temas de entrevistas dá um retrato mais completo e mais honesto do que qualquer método isolado.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -441,6 +489,14 @@ Verificações de robustez cobrem apenas as alternativas escolhidas. As implica�
 
 Verificações de robustez e limitações direcionais tornam as conclusões de uma dissertação críveis e com o escopo correto.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -487,6 +543,14 @@ Os parceiros ainda podem exagerar os achados. O desempenho na defesa depende da 
 ### Síntese
 
 Revisão independente, uma defesa fundamentada e comunicação cuidadosa levam as descobertas de uma dissertação à prática com responsabilidade.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

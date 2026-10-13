@@ -83,6 +83,14 @@ Uma pergunta sobre se os funcionários estão seguros não pode ser respondida c
 
 - **EX007 — Número de incluídos.** Quantos estudos são incluídos? *Rubrica:* 3 = vinte e três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Segurança da informação: seminário avançado
@@ -133,6 +141,14 @@ Presumir que um controle funciona porque uma norma o exige confunde ter com func
 
 - **EX014 — Tamanho esperado.** Que tamanho de efeito Priya espera? *Rubrica:* 3 = alguns pontos percentuais;; 2 = parcialmente correto;; 1 = grande;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -181,6 +197,14 @@ Usar os resultados das simulações para punir funcionários mina a confiança e
 
 - **EX020 — Método da incerteza.** Como a incerteza é estimada? *Rubrica:* 3 = bootstrap com mil reamostragens e semente fixa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Segurança da informação: explicações concorrentes
@@ -228,6 +252,14 @@ Ignorar uma queda nos relatos esconderia um efeito colateral prejudicial.
 - **EX025 — Acréscimo do orientador.** Que resultado enfraquecedor o Dr. Bello acrescenta? *Rubrica:* 3 = queda apenas nos modelos repetidos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX026 — Propósito do registro antecipado.** Por que registrar de antemão os resultados enfraquecedores? *Rubrica:* 3 = impede a reinterpretação posterior;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -306,6 +338,14 @@ Contar cliques do scanner como cliques humanos infla o risco medido.
 
 - **EX032 — Novo desfecho.** Qual é o novo desfecho primário? *Rubrica:* 3 = taxa de cliques humanos excluindo os cliques em até dois segundos;; 2 = parcialmente correto;; 1 = bruta;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Coleta e análise de dados
@@ -381,6 +421,14 @@ Tratar uma taxa de cliques em simulação como taxa de violações exagera o ach
 
 - **EX038 — Limite do indicador.** Por que não afirmar que o feedback previne violações? *Rubrica:* 3 = os cliques em simulações são um indicador indireto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -429,6 +477,14 @@ Ressalvas genéricas não ajudam os leitores a julgar um resultado.
 
 - **EX044 — Redação revisada.** Que redação foi revisada? *Rubrica:* 3 = frases que sugeriam descuido;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -476,6 +532,14 @@ Apresentar um resultado de três departamentos como definitivo exagera a certeza
 - **EX049 — Pedido ao fornecedor.** O que o comitê pede ao fornecedor? *Rubrica:* 3 = endereços do scanner nas exportações;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX050 — Artigo para profissionais.** O que o Dr. Bello recomenda para um artigo voltado a profissionais? *Rubrica:* 3 = o achado do scanner;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

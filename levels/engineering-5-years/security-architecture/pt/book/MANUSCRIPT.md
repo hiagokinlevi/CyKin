@@ -97,6 +97,14 @@ O crescimento real raramente é suave; a implantação de novos dispositivos cau
 
 O cálculo permite aos arquitetos ver com que rapidez as cargas de trabalho de segurança crescem e evitar planos lineares para sistemas exponenciais.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 50)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
@@ -169,6 +177,14 @@ O fecho supõe que as participações estão atualizadas; dados desatualizados e
 
 Relações, fechamento e testes de conjuntos transformam regras de acesso emaranhadas em enunciados precisos e verificáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 50)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
@@ -210,6 +226,14 @@ O risco de side channel depende do acesso e da habilidade do atacante; nem todo 
 ### Síntese
 
 A física molda tanto as ameaças aos dispositivos quanto as restrições aos desenhos de arquitetura segura.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 50)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -253,6 +277,14 @@ As allow-lists precisam de manutenção quando os formatos mudam. Os logs intern
 
 Os primeiros programas ensinam segurança quando validam as entradas, mantêm internos os detalhes de erro e se apoiam em funções de bibliotecas avaliadas.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 50)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
@@ -294,6 +326,14 @@ Os registros de decisão ficam desatualizados se não forem revistos quando as d
 ### Síntese
 
 Registros claros, diagramas revisáveis e explicações simples dos trade-offs tornam as decisões de segurança visíveis e passíveis de prestação de contas.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 50)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -362,6 +402,14 @@ Integrais de taxas estimadas herdam os erros das estimativas. A aproximação n 
 
 A integração e as séries transformam taxas e pequenos riscos repetidos em totais que justificam as escolhas de arquitetura.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 50)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
@@ -423,6 +471,14 @@ Taxas do fornecedor medidas em outros dados podem não valer na Corvia. As premi
 
 O raciocínio probabilístico sobre taxas de base transforma afirmações impressionantes sobre detectores em desenhos realistas de alertas.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 50)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
@@ -464,6 +520,14 @@ As proteções de hardware já tiveram falhas que exigiram correções de microc
 ### Síntese
 
 Camadas de hardware, mecanismos de privilégio e raízes de confiança formam a base sobre a qual se apoia todo controle de segurança de nível superior.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 50)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -507,6 +571,14 @@ Os testes mostram a presença de verificações, não a ausência de todos os bu
 
 Desenho modular, testes negativos e dependências gerenciadas tornam os programas mais fáceis de confiar e de manter confiáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 50)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
@@ -548,6 +620,14 @@ Os códigos de ética variam por país e por órgão. Levantar uma preocupação
 ### Síntese
 
 A engenharia ética coloca a segurança pública em primeiro lugar, adapta os padrões ao contexto de segurança física e torna os riscos visíveis por escrito.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 50)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -591,6 +671,14 @@ Mapas de rede ficam desatualizados rapidamente. As regras de segmentação preci
 
 A arquitetura de rede posiciona protocolos e segmentação onde o tráfego atravessa fronteiras de confiança, e não apenas onde atravessa a internet.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 50)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
@@ -632,6 +720,14 @@ Baselines podem quebrar software legado; teste antes de implantar. Logs centrais
 ### Síntese
 
 O isolamento do sistema operacional, as linhas de base reforçadas e os logs protegidos fornecem a base da arquitetura de segurança no nível do host.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 50)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -699,6 +795,14 @@ A agregação ainda pode permitir a reidentificação em grupos pequenos. As reg
 
 A arquitetura de dados classifica antes de projetar, mantém a entrada como dado e armazena apenas o necessário pelo tempo necessário.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 50)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
@@ -740,6 +844,14 @@ Revisões leves deixam passar problemas fora do diagrama. As ferramentas produze
 ### Síntese
 
 A segurança cabe em todas as fases do ciclo de vida, com revisões de desenho curtas e verificações humanas e automatizadas combinadas detectando falhas diferentes.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 50)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -783,6 +895,14 @@ O vocabulário varia entre as normas; defina os termos em cada documento. Os pri
 
 Vocabulário preciso, princípios explícitos e tipos de controle equilibrados formam os fundamentos que toda decisão de arquitetura utiliza.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 50)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
@@ -824,6 +944,14 @@ Tabelas de rastreabilidade ficam onerosas se forem detalhadas demais. Os modelos
 ### Síntese
 
 A engenharia de sistemas distribui a segurança por todo o ciclo de vida e mantém ligadas necessidades, desenhos e evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 50)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -895,6 +1023,14 @@ Modelos proporcionais simples ignoram a adaptação do atacante. Os resultados d
 
 A automação de segurança é um sistema de realimentação e precisa de ajuste e de limites para evitar atraso e oscilação.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 50)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
@@ -936,6 +1072,14 @@ As visões em camadas simplificam preocupações transversais. Os rastreamentos 
 ### Síntese
 
 A arquitetura de segurança liga atributos de negócio a controles em todas as camadas, para que lacunas e trade-offs se tornem visíveis.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 50)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -979,6 +1123,14 @@ Passkeys e certificados ainda dependem de processos de recuperação que podem s
 
 Identidade e criptografia são serviços arquiteturais cujos fluxos, posicionamentos e ciclos de vida de chaves precisam ser projetados e ter donos.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 50)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Arquitetura e engenharia de segurança: contexto de engenharia
@@ -1020,6 +1172,14 @@ A interpretação jurídica exige aconselhamento qualificado. O contexto muda ao
 ### Síntese
 
 O contexto de engenharia define as obrigações, as partes interessadas e as restrições que toda decisão de arquitetura precisa respeitar.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 50)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -1063,6 +1223,14 @@ Os requisitos podem entrar em conflito, como logging versus privacidade. Os cat�
 
 Bons requisitos de segurança são verificáveis, fundamentados em casos de abuso e conferidos com catálogos, com justificativa.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 50)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Arquitetura e engenharia de segurança: modelos de sistema e de dados
@@ -1104,6 +1272,14 @@ Os modelos abstraem detalhes onde falhas podem se esconder. Os fluxos observados
 ### Síntese
 
 Modelos precisos de sistemas e de dados, com fronteiras e classificações, são a base da análise de ameaças e das respostas a auditorias.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 50)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1171,6 +1347,14 @@ As probabilidades das árvores de falhas muitas vezes são palpites; sua ordena�
 
 A modelagem de ameaças e as árvores de falhas, juntas, revelam quais mitigações reduzem tanto as falhas maliciosas quanto as acidentais.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 50)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Arquitetura e engenharia de segurança: métodos I
@@ -1212,6 +1396,14 @@ As escalas de risco significam coisas diferentes para pessoas diferentes, a meno
 ### Síntese
 
 Métodos de risco sólidos combinam uma classificação rápida com estimativas explícitas e colocam as decisões nas mãos de donos responsáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 50)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1255,6 +1447,14 @@ Os projetos de ateliê não têm o detalhamento de produção; restrições reai
 
 Um ateliê de projeto ensina arquitetura por meio de opções, questões em aberto tratadas com honestidade e revisões que respondem explicitamente à crítica.
 
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 50)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Arquitetura e engenharia de segurança: alternativas de arquitetura
@@ -1296,6 +1496,14 @@ A pontuação ponderada pode esconder divergências por trás das médias. Dados
 ### Síntese
 
 Comparar várias alternativas com pesos explícitos e análise de sensibilidade torna as decisões de arquitetura transparentes e revisáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 50)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -1339,6 +1547,14 @@ Chaves fixadas complicam a rotação de emergência. Os controles detectivos dep
 
 Um bom desenho de controles liga cada controle a um requisito, sobrepõe em camadas controles que falham de forma independente e os especifica com precisão.
 
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 50)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Arquitetura e engenharia de segurança: implementação I
@@ -1380,6 +1596,14 @@ Os repositórios de segredos se tornam dependências críticas que precisam de a
 ### Síntese
 
 A implementação honra a arquitetura quando as tarefas remontam aos requisitos, os segredos ficam fora do código e as descobertas retornam ao desenho.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 50)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -1446,6 +1670,14 @@ As métricas medem indicadores indiretos, não a segurança em si. Denominadores
 ### Síntese
 
 As métricas de segurança devem seguir os objetivos, mostrar os denominadores e vir em pares, para recompensar a melhoria real.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 50)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -1521,6 +1753,14 @@ Os ambientes de laboratório diferem da produção em escala e em tempo. Testes 
 
 A verificação testa os controles em relação às suas especificações com casos positivos e negativos e registra evidências honestas sobre o escopo.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 50)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Arquitetura e engenharia de segurança: implementação II
@@ -1562,6 +1802,14 @@ O enrolment automatizado se torna um alvo de alto valor. A conciliação depende
 ### Síntese
 
 A implementação II fecha as lacunas medidas por meio de automação e integração, enquanto gerencia com honestidade as exceções legadas.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 50)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1628,6 +1876,14 @@ As premissas de independência superestimam os benefícios do paralelo quando as
 
 A engenharia de confiabilidade se aplica aos serviços de segurança, e as escolhas entre falhar aberto ou falhar fechado precisam decorrer dos ativos e das ameaças.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 50)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Arquitetura e engenharia de segurança: segurança e resiliência
@@ -1669,6 +1925,14 @@ Procedimentos manuais se deterioram sem prática. A própria degradação pode c
 ### Síntese
 
 Uma arquitetura resiliente presume que a prevenção pode falhar e projeta formas seguras e ensaiadas de a missão continuar.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 50)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1712,6 +1976,14 @@ Os gateways se tornam pontos únicos de falha e precisam ser resilientes. Os con
 
 A integração segura combina, nos gateways, credenciais com escopo e de curta duração com responsabilidade compartilhada por escrito.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 50)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
@@ -1753,6 +2025,14 @@ Os acordos do ateliê podem não sobreviver a negociações reais. A completude 
 ### Síntese
 
 Grandes desenhos dão certo quando as necessidades por trás de requisitos conflitantes vêm à tona e o resultado é empacotado para revisão independente.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 50)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1818,6 +2098,14 @@ As medições de laboratório podem não refletir o hardware de produção. Os c
 
 Medidas de segurança escaláveis controlam custos, dimensionam limites a partir do tráfego real e documentam os trade-offs de distribuir os controles.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 50)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Arquitetura e engenharia de segurança: operações
@@ -1859,6 +2147,14 @@ Os limiares de detecção precisam de ajuste depois do lançamento. Os processos
 ### Síntese
 
 A segurança operacional é projetada junto com a arquitetura, com detecção derivada das ameaças e um controle de mudanças que protege as propriedades de segurança.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 50)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1902,6 +2198,14 @@ Os exercícios de red team cobrem apenas os caminhos tentados. Usuários observa
 
 A validação testa se a arquitetura atende a necessidades reais e resiste a atacantes reais, revelando lacunas de requisitos que a verificação não consegue revelar.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 50)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Arquitetura e engenharia de segurança: manutenibilidade
@@ -1943,6 +2247,14 @@ A agilidade acrescenta complexidade e riscos de downgrade se algoritmos antigos 
 ### Síntese
 
 Uma segurança sustentável planeja mudanças em algoritmos, componentes e regras e mantém visível a dívida de segurança.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 50)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
@@ -2006,6 +2318,14 @@ As exportações de configuração podem não refletir as regras em vigor. As ma
 ### Síntese
 
 A comparação automatizada das configurações com os fluxos aprovados transforma a segmentação em uma arquitetura verificada continuamente.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 50)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
@@ -2073,6 +2393,14 @@ A redução de risco aditiva é irrealista quando os controles se sobrepõem. Os
 
 A otimização enquadra com clareza o investimento em segurança, mas estimativas incertas e que interagem fazem do seu resultado um conselho, e não um veredito.
 
+<!-- cyberabc:chapter-navigation:start ch-41 -->
+### Continue estudando — aula 41 (capítulo 41 de 50)
+
+[← Capítulo 40](#ch-40) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Arquitetura e engenharia de segurança: pesquisa aplicada
@@ -2114,6 +2442,14 @@ Desenhos antes e depois não conseguem excluir mudanças simultâneas. Contagens
 ### Síntese
 
 A pesquisa aplicada transforma mudanças de engenharia em afirmações testadas quando perguntas, tratamento de dados e limites são explícitos.
+
+<!-- cyberabc:chapter-navigation:start ch-42 -->
+### Continue estudando — aula 42 (capítulo 42 de 50)
+
+[← Capítulo 41](#ch-41) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
@@ -2157,6 +2493,14 @@ Revisões proporcionais podem deixar passar problemas; seus limites precisam ser
 
 A prática profissional aplica os métodos do curso de forma proporcional, registra os limites e depende tanto da facilitação quanto da técnica.
 
+<!-- cyberabc:chapter-navigation:start ch-43 -->
+### Continue estudando — aula 43 (capítulo 43 de 50)
+
+[← Capítulo 42](#ch-42) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
@@ -2198,6 +2542,14 @@ Os critérios de sucesso podem ser manipulados se forem estreitos demais. Os esp
 ### Síntese
 
 Um projeto final começa com um problema delimitado, critérios de sucesso mensuráveis, uma trilha de evidências planejada e um termo de abertura assinado.
+
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Continue estudando — aula 44 (capítulo 44 de 50)
+
+[← Capítulo 43](#ch-43) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
@@ -2241,6 +2593,14 @@ Um único revisor tem pontos cegos; projetos importantes se beneficiam de vário
 
 A revisão independente é mais valiosa quando é guiada, respondida com correções ou evidências e praticada nos dois sentidos.
 
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Continue estudando — aula 45 (capítulo 45 de 50)
+
+[← Capítulo 44](#ch-44) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
@@ -2282,6 +2642,14 @@ Assurance cases podem dar falsa confiança se as evidências forem fracas. As ex
 ### Síntese
 
 Um projeto final se torna convincente quando implementação, verificação e um caso de garantia ligam cada afirmação a evidências dentro de um escopo protegido.
+
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Continue estudando — aula 46 (capítulo 46 de 50)
+
+[← Capítulo 45](#ch-45) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
@@ -2350,6 +2718,14 @@ Os ensaios de laboratório omitem o estresse e os problemas de coordenação do 
 
 Testes de recuperação substituem estimativas otimistas por tempos medidos e impulsionam melhorias concretas nos procedimentos de recuperação.
 
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Continue estudando — aula 47 (capítulo 47 de 50)
+
+[← Capítulo 46](#ch-46) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
@@ -2414,6 +2790,14 @@ Os manifestos detectam alterações, mas não se a evidência original era sóli
 
 Um dossiê de evidências torna o caso de garantia auditável, à prova de adulteração e compreensível em normas conhecidas.
 
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Continue estudando — aula 48 (capítulo 48 de 50)
+
+[← Capítulo 47](#ch-47) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
@@ -2456,6 +2840,14 @@ Padrões abstraídos de um único caso podem não se transferir. Os resultados d
 
 Uma tese de engenharia argumenta a partir de evidências, explica a justificativa com honestidade e deixa padrões reutilizáveis para a prática.
 
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Continue estudando — aula 49 (capítulo 49 de 50)
+
+[← Capítulo 48](#ch-48) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
@@ -2497,6 +2889,14 @@ O desempenho na defesa não é o mesmo que a qualidade do projeto. As correçõe
 ### Síntese
 
 Uma defesa final mostra domínio ao explicar decisões, reconhecer limites com precisão e transformar o estudo em prática profissional.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Continue estudando — aula 50 (capítulo 50 de 50)
+
+[← Capítulo 49](#ch-49) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

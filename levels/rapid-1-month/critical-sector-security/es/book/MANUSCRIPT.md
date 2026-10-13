@@ -109,6 +109,18 @@ Ejemplo (sintético): «*Como* los PC de citas del centro de salud comparten una
 
 Las buenas frases de riesgo nombran una consecuencia real (personas, tiempo, servicio), no solo «pérdida de datos». También dejan claro **quién debería ser dueño** del problema: aquí, la gerencia del centro, no la persona que se dio cuenta.
 
+### Visual 1 — de la frase de riesgo a la decisión
+
+```mermaid
+flowchart LR
+    A[Causa o debilidad] --> B[Evento posible]
+    B --> C[Consecuencia para personas o servicio]
+    C --> D[Responsable recibe el aviso]
+    D --> E[Respuesta autorizada]
+```
+
+**Alternativa textual:** describa la causa, el posible evento y el daño a las personas o al servicio. Informe de esa cadena al responsable, quien decide la respuesta autorizada. Sam no realiza el cambio solo por haber detectado el riesgo.
+
 ### 1.5 Las tres decisiones del recién llegado
 
 Como principiante no se espera que arregle la seguridad. Se espera que **se dé cuenta**, que lo **comunique** por el canal adecuado y que **deje la corrección en manos del dueño**. Ante algo que parece ir mal, pregúntese:
@@ -212,6 +224,19 @@ La **autorización** es el permiso, otorgado por la persona u organización due�
 - **Las buenas intenciones no son una autorización.** «Solo estaba comprobando si era seguro» no es una defensa. Muchos países consideran delito el acceso no autorizado a un sistema informático, sea cual sea el motivo, y los empleadores lo consideran una falta.
 
 Los profesionales de las pruebas de seguridad trabajan con reglas de enfrentamiento escritas precisamente por esta razón; la guía del NIST sobre pruebas técnicas de seguridad describe la planificación, las reglas y las aprobaciones previas a cualquier prueba ([NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)). Ese nivel de pruebas no forma parte de este curso.
+
+### Visual 2 — el límite del permiso
+
+```mermaid
+flowchart TD
+    A[Idea de inspeccionar o cambiar un servicio] --> B{¿Existe autorización del responsable para esta acción exacta?}
+    B -- No o incierto --> C[No actuar; informar de la observación]
+    B -- Sí --> D{¿Sistema, momento y método están dentro del alcance?}
+    D -- No o incierto --> C
+    D -- Sí --> E[Solo el equipo autorizado sigue el procedimiento aprobado]
+```
+
+**Alternativa textual:** para inspeccionar o cambiar un servicio se necesitan permiso explícito del responsable y alcance exacto. Si falta cualquiera de ellos, deténgase e informe; solo actúa el equipo autorizado. Tener acceso o buena intención no reemplaza estos requisitos.
 
 ### 2.2 Por qué «solo comprobar» es peligroso aquí
 
@@ -416,6 +441,22 @@ H. Novak pide a Sam que enumere, para una reunión de personal, lo que necesita 
 
 Sam señala tres preguntas, no conclusiones: ¿es LinkNet un punto único de fallo? ¿Hay una alternativa en papel para MedBook? ¿Quién más conoce la alarma del frigorífico? Estas preguntas van a H. Novak, la persona dueña, que decide qué cambiar, si es que hay que cambiar algo.
 
+### Visual 3 — dependencias del centro de salud (sintético)
+
+```mermaid
+flowchart LR
+    P[Red eléctrica] --> C[Centro de salud]
+    G[Generador diésel] -. respaldo solo de electricidad .-> C
+    F[Entrega de combustible] --> G
+    N[Teléfono e internet LinkNet] --> C
+    W[Agua limpia] --> C
+    M[Agenda MedBook] --> C
+    S[Personal del centro] --> C
+    C --> T[Pacientes y farmacia]
+```
+
+**Alternativa textual:** electricidad, LinkNet, agua, MedBook y personal alimentan el centro de salud, que atiende a pacientes y a la farmacia. El generador solo respalda la electricidad y necesita combustible. Los respaldos de las demás dependencias siguen sin confirmarse; el dibujo no demuestra que un centro real fallaría del mismo modo.
+
 ### 3.7 Actividad práctica
 
 Elija un servicio esencial público cercano (o la planta de Larkfield Water descrita antes). Usando solo información pública y sentido común, dibuje un esquema sencillo de dependencias: el servicio en el centro, las dependencias aguas arriba a la izquierda y los dependientes aguas abajo a la derecha. Rodee con un círculo todo lo compartido, marque con una estrella cualquier posible punto único de fallo y escriba una pregunta que haría al dueño. No contacte con el servicio ni lo sondee. Compare su esquema con la tabla de dependencias del centro de Sam: ¿se acordó de las personas y los proveedores, además de la electricidad y el agua? Si eligió Larkfield Water, su esquema debería mostrar el centro de salud y los hogares aguas abajo y tratar LinkNet como compartida. Formule su pregunta al dueño de modo que pueda responderse con un sí o un no.
@@ -490,6 +531,21 @@ Este capítulo aplica todo lo visto: primero la consecuencia (capítulo 1), prá
 Cuando falla un servicio y, a su vez, fallan otros que dependen de él, el fallo se propaga **en cascada**. Las cascadas son la razón por la que las infraestructuras críticas se tratan como un sistema conectado y no como una lista de organizaciones separadas, y por la que las listas nacionales agrupan los servicios en funciones que dependen unas de otras ([CISA, National Critical Functions Set](https://www.cisa.gov/national-critical-functions-set)). Los apagones de Ucrania y el incidente de *ransomware* del oleoducto de los capítulos anteriores tuvieron efectos mucho más allá de la primera organización afectada.
 
 Puede razonar sobre las cascadas con un lápiz: dibuje cada servicio, trace una flecha hacia cada cosa que necesita y, después, «apague» una caja y siga las flechas hacia atrás. Unas pocas líneas de código pueden llevar esa misma contabilidad sin errores, que es lo que hace el Lab 4.
+
+### Visual 4 — por qué el generador puede no salvar el servicio (sintético)
+
+```mermaid
+flowchart LR
+    P[Falla la red eléctrica] --> N[Falla la red telefónica]
+    P --> W[Se detienen las bombas de agua]
+    N --> C[El centro no puede operar]
+    W --> C
+    G[Funciona el generador] --> L[Hay electricidad local]
+    L -. insuficiente sin teléfono y agua .-> C
+    C --> PH[La farmacia pierde un servicio anterior]
+```
+
+**Alternativa textual:** en el mapa sintético del Laboratorio 4, perder la electricidad también detiene la red telefónica y las bombas de agua. El generador mantiene la electricidad local, pero el centro no puede operar sin teléfono ni agua; la farmacia también pierde ese servicio. El modelo omite tiempos, fallos parciales y alternativas manuales; confirme dependencias reales con el responsable.
 
 ### 4.2 Lab 4: ¿qué más falla? (sintético)
 

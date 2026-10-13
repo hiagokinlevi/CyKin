@@ -73,6 +73,14 @@ Tratar a governança como a compra de um software ignora as decisões e as respo
 - **EX002 — Problema do e-mail.** O que deu errado com um e-mail de marketing? *Rubrica:* 3 = foi enviado a membros que pediram para não ser contatados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Quarta meta.** Que meta o tutor acrescentou? *Rubrica:* 3 = aprender a julgar evidências;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 40)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — O que são dados
@@ -112,6 +120,14 @@ Supor que rótulos idênticos significam definições idênticas gera disputas.
 - **EX004 — Exemplo de conhecimento.** Dê o exemplo de conhecimento usado no curso. *Rubrica:* 3 = as vendas de leite sobem antes dos feriados, então encomenda-se mais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX005 — Divergência de vendas.** Por que os relatórios de vendas divergiam? *Rubrica:* 3 = o financeiro inclui impostos, as lojas os excluem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX006 — Exemplo não estruturado.** Cite um exemplo de dado não estruturado na Harbourline. *Rubrica:* 3 = e-mails de clientes, contratos ou fotografias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 40)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Culpar a equipe que percebe um problema ignora sua origem.
 - **EX008 — Códigos genéricos.** Por que os funcionários digitam códigos de produto genéricos? *Rubrica:* 3 = para a fila andar quando o código de barras falha;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX009 — Recurso compartilhado.** O que as regras de governança equilibram? *Rubrica:* 3 = a conveniência local e as necessidades mais amplas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 40)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Planilhas e seus riscos
@@ -192,6 +216,14 @@ Totais arrumados não provam que as fórmulas estão corretas; concilie com as f
 - **EX010 — Loja ausente.** Por que a loja mais nova ficou de fora? *Rubrica:* 3 = um intervalo de fórmula terminava uma linha antes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX011 — Célula de verificação.** O que a célula de verificação compara? *Rubrica:* 3 = o total do resumo com o total do relatório de origem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Processo transferido.** Que processo sai das planilhas? *Rubrica:* 3 = o resumo de vendas do conselho;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 40)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ Contar linhas quando a pergunta pede pessoas distintas dá respostas erradas.
 - **EX014 — Problema do texto livre.** O que os nomes de lojas em texto livre causaram? *Rubrica:* 3 = uma loja dividida em várias nos relatórios;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Contrapartida da normalização.** O que a normalização pode dificultar? *Rubrica:* 3 = as consultas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 40)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Python para verificação de dados
@@ -272,6 +312,14 @@ Relatar contagens sem totais esconde a escala dos problemas.
 - **EX016 — Problema de codificação.** O que aconteceu sem a codificação especificada? *Rubrica:* 3 = os nomes com acentos ficaram embaralhados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Regra do ano de nascimento.** Que intervalo a verificação do ano de nascimento usou? *Rubrica:* 3 = de 1910 a 2010;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX018 — Ordem do relatório.** Que ordem um relatório deve seguir? *Rubrica:* 3 = o que foi verificado, quanto falhou, por que importa, o que vem a seguir;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 40)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -313,6 +361,14 @@ Amostras escolhidas a dedo superestimam os problemas; sorteie as amostras.
 - **EX020 — Viés da amostra.** Por que não escolher os registros que parecem suspeitos? *Rubrica:* 3 = eles não são típicos e superestimam os problemas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX021 — Afirmação sobre a fidelidade.** Por que a afirmação sobre os gastos dos membros pode estar errada? *Rubrica:* 3 = clientes habituais podem ter mais propensão a aderir;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 40)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Escrevendo sobre dados
@@ -352,6 +408,14 @@ Eixos truncados exageram as diferenças; comece as barras do zero.
 - **EX022 — Constatação principal.** Qual foi a constatação de Amara em uma frase? *Rubrica:* 3 = cerca de um em cada cinco registros não tem e-mail;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX023 — Correção do gráfico.** Como Amara corrigiu o gráfico? *Rubrica:* 3 = começou o eixo do zero e acrescentou a contagem de membros;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX024 — Substituição do jargão.** O que substituiu razão de completude? *Rubrica:* 3 = parcela de registros com endereço de e-mail;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 40)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -393,6 +457,14 @@ Consentimento embutido não é livre; separe-o.
 - **EX026 — Problema dos direitos.** Que problema Amara encontrou nos pedidos de exercício de direitos? *Rubrica:* 3 = não havia registro central, e alguns ficaram sem resposta;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX027 — Dados de recolhimento.** Que dados sustentam os recolhimentos por segurança dos alimentos? *Rubrica:* 3 = os dados de fornecedores e de lotes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 40)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e dados
@@ -432,6 +504,14 @@ Legal não significa aceitável; pergunte se os usos são justos e esperados.
 - **EX028 — Alternativa à inferência.** O que substituiu o plano de inferir gravidez? *Rubrica:* 3 = descontos para membros que escolhem o interesse família;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX029 — Correção do desconto no aplicativo.** Como Amara tratou o desconto exclusivo do aplicativo? *Rubrica:* 3 = cupons impressos nos caixas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Momento da revisão.** Quando a revisão ética funciona melhor? *Rubrica:* 3 = cedo, antes de as campanhas serem desenhadas;; 2 = parcialmente correto;; 1 = tarde;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 40)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -473,6 +553,14 @@ Copiar um modelo completo para uma organização pequena cria burocracia sem uso
 - **EX032 — Cinco domínios.** Cite os cinco domínios de Khatri e Brown. *Rubrica:* 3 = princípios, qualidade, metadados, acesso, ciclo de vida;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 - **EX033 — Prática de acesso.** Como o acesso era concedido na Harbourline? *Rubrica:* 3 = pela TI, a pedido, sem aprovação de um dono;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 40)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Papéis e responsabilização
@@ -512,6 +600,14 @@ Nomear curadores sem reservar tempo faz o papel desaparecer.
 - **EX034 — Dono da fidelidade.** Quem é dono dos dados de fidelidade? *Rubrica:* 3 = o diretor de marketing;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX035 — Limite da delegação.** O que não pode ser delegado à TI? *Rubrica:* 3 = a responsabilização;; 2 = parcialmente correto;; 1 = as tarefas;; 0 = nenhuma.
 - **EX036 — Falha comum.** Qual é a falha mais comum dos papéis? *Rubrica:* 3 = nomear curadores sem lhes dar tempo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 40)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -553,6 +649,14 @@ Políticas longas que misturam níveis não são lidas; separe e encurte.
 - **EX038 — Tamanho da política.** Qual era o tamanho da política de Amara? *Rubrica:* 3 = duas páginas;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX039 — Sinalização de revisão.** Quando os documentos são sinalizados? *Rubrica:* 3 = sem revisão há dois anos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 40)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Dimensões da qualidade de dados
@@ -592,6 +696,14 @@ Campos obrigatórios podem produzir valores falsos; considere o comportamento.
 - **EX040 — Base da pesquisa.** De que visão Wang e Strong partiram? *Rubrica:* 3 = a dos consumidores de dados;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 - **EX041 — Dimensão mais difícil.** Que dimensão é a mais difícil de medir? *Rubrica:* 3 = a exatidão;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 - **EX042 — Abordagem do e-mail.** Como a Harbourline deve incentivar o cadastro de e-mails? *Rubrica:* 3 = oferecendo um benefício claro, como recibos digitais;; 2 = parcialmente correto;; 1 = obrigatoriedade;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 40)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -633,6 +745,14 @@ FAIR não significa aberto; dados restritos ainda podem ser localizáveis.
 - **EX044 — Início do catálogo.** Que ferramenta Amara usou primeiro? *Rubrica:* 3 = uma tabela compartilhada simples;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 - **EX045 — Significado de FAIR.** O que significa FAIR? *Rubrica:* 3 = localizável, acessível, interoperável, reutilizável;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 40)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Dados de referência e dados mestres
@@ -673,6 +793,14 @@ Fusões automáticas sem revisão podem juntar pessoas diferentes.
 - **EX047 — Salvaguarda da fusão.** Que salvaguarda se aplica antes da fusão? *Rubrica:* 3 = a revisão dos possíveis pares por um curador;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX048 — E-mail sobrevivente.** Que e-mail sobrevive? *Rubrica:* 3 = o confirmado mais recentemente;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 40)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Noções de arquitetura de dados
@@ -712,6 +840,14 @@ Amara mapeia os sistemas e sinaliza as exportações manuais, adverte que *data 
 - **EX049 — Fluxos frágeis.** Onde os dados mais se perdem? *Rubrica:* 3 = nas exportações manuais;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX050 — Constatação sobre devoluções.** O que a linhagem revelou? *Rubrica:* 3 = uma exclusão de devoluções não documentada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Recomendação para o data lake.** O que qualquer *data lake* deve ter desde o primeiro dia? *Rubrica:* 3 = entradas de catálogo, donos e regras de retenção;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 40)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -777,6 +913,14 @@ A completude por campo superestima as linhas utilizáveis; informe também a com
 - **EX053 — Linhas completas.** Quantos registros estão completos em todos os campos? *Rubrica:* 3 = 2.594;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX054 — Ação sobre o ano de nascimento.** O que foi decidido sobre o ano de nascimento? *Rubrica:* 3 = não buscá-lo para todos, pois só é necessário para as ofertas por idade;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 40)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-19"></a>
 
 ## Capítulo 19 — Regras de qualidade de dados
@@ -817,6 +961,14 @@ Regras que nunca mudam acabam rejeitando dados válidos.
 - **EX056 — Violação de um mês.** Quem revisa os problemas que ficam abaixo do limiar por um mês? *Rubrica:* 3 = o grupo de governança;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX057 — Mudança do CEP.** Por que a regra do CEP mudou? *Rubrica:* 3 = uma nova região usava outro formato;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 40)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Gestão de problemas
@@ -856,6 +1008,14 @@ Encerrar problemas sem verificar as correções deixa os problemas voltarem.
 - **EX058 — Causa dos pontos.** O que causou a falta de pontos de fidelidade? *Rubrica:* 3 = uma configuração do caixa para manter os dados do cartão sem conexão estava desligada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Evidência de encerramento.** Que evidência encerrou o problema dos pontos? *Rubrica:* 3 = as compras sem conexão de duas semanas receberam pontos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Padrões do registro.** A que a maioria dos problemas do registro se referia? *Rubrica:* 3 = códigos de loja e membros duplicados;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 40)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -919,6 +1079,14 @@ Mapear códigos errados mais adiante sem corrigir as origens cria uma limpeza se
 - **EX062 — Causa do S41.** Por que o S41 apareceu? *Rubrica:* 3 = uma loja nova abriu antes de entrar na lista;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX063 — Causa do S00.** O que produziu o S00? *Rubrica:* 3 = um caixa de teste deixado na rede de produção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 40)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Segurança de dados para a governança
@@ -958,6 +1126,14 @@ Equipes de segurança que decidem o acesso sem conhecer os dados fazem escolhas 
 - **EX064 — Constatação sobre o acesso.** O que Amara descobriu sobre o acesso à fidelidade? *Rubrica:* 3 = todos os funcionários da sede viam os dados completos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX065 — Causa do incidente.** Por que aconteceu o incidente da planilha enviada por e-mail? *Rubrica:* 3 = falta de um meio aprovado de trabalho remoto e extrações fáceis;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX066 — Revisão de acesso.** Com que frequência os donos revisam as listas de acesso? *Rubrica:* 3 = a cada trimestre;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 40)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -999,6 +1175,14 @@ Coletar dados por precaução aumenta o risco sem trazer benefício.
 - **EX068 — Redesenho da parceria.** Como a proposta da padaria foi alterada? *Rubrica:* 3 = a própria Harbourline envia as ofertas aos membros que consentem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX069 — Banco esquecido.** O que o inventário encontrou? *Rubrica:* 3 = um antigo banco de dados de pesquisa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 40)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Acordos de compartilhamento de dados
@@ -1039,6 +1223,14 @@ Arranjos informais de compartilhamento se desviam de sua finalidade original.
 - **EX071 — Exportação esquecida.** O que o monitoramento encontrou? *Rubrica:* 3 = um fornecedor recebendo um arquivo cinco meses depois do fim do contrato;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Cláusulas do modelo.** Cite três cláusulas do modelo. *Rubrica:* 3 = finalidade, campos, segurança, retenção, notificação de incidentes, auditoria;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 40)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ciclo de vida e documentos
@@ -1078,6 +1270,14 @@ Tabelas de temporalidade sem rotinas de eliminação são apenas promessas.
 - **EX073 — Etapas negligenciadas.** Que etapas do ciclo de vida eram negligenciadas? *Rubrica:* 3 = o arquivamento e a eliminação;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 - **EX074 — Retenção da fidelidade.** Por quanto tempo os dados de fidelidade são guardados depois da última atividade? *Rubrica:* 3 = três anos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX075 — Onde eliminar.** Além dos sistemas em produção, aonde a eliminação precisa chegar? *Rubrica:* 3 = às cópias de segurança e às extrações;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 40)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1139,6 +1339,14 @@ Eliminar sem verificar as dependências pode apagar registros ainda exigidos por
 - **EX077 — Verificação prévia.** O que Amara confirmou primeiro com o financeiro? *Rubrica:* 3 = que nenhum registro fiscal existe apenas na fidelidade;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX078 — Efeito no marketing.** O que o marketing perdeu? *Rubrica:* 3 = um segmento de reconquista;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 40)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Análise de dados e governança
@@ -1178,6 +1386,14 @@ Relatórios de autosserviço sem certificação multiplicam números conflitante
 - **EX079 — Fragilidade do modelo.** Onde o modelo de evasão tem desempenho pior? *Rubrica:* 3 = nas lojas rurais;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX080 — Problema do segmento.** Por que o segmento sub-representava os clientes mais velhos? *Rubrica:* 3 = usava o ano de nascimento, que muitas vezes falta;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX081 — Base do autosserviço.** O que os relatórios de autosserviço devem usar? *Rubrica:* 3 = conjuntos de dados certificados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 40)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1219,6 +1435,14 @@ Notas de questionário, sozinhas, não mostram mudança de comportamento; confir
 - **EX083 — Duração das sessões.** Quanto duram as sessões? *Rubrica:* 3 = cerca de trinta minutos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX084 — Comparação mais justa.** O que o tutor sugeriu para uma comparação mais justa? *Rubrica:* 3 = escalonar o treinamento entre as lojas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 40)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Medindo a governança
@@ -1258,6 +1482,14 @@ Premiar números isolados convida à manipulação; use várias medidas.
 - **EX085 — Mais significativas.** Que grupo de medidas importa mais? *Rubrica:* 3 = as medidas de resultado;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX086 — Correção da distorção.** Como a medida de problemas encerrados foi alterada? *Rubrica:* 3 = encerrados com evidência verificada, mais a taxa de reabertura;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX087 — Foco do conselho.** Em que se concentra o resumo para o conselho? *Rubrica:* 3 = nos resultados e nos riscos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 40)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -1299,6 +1531,14 @@ Mirar a maturidade máxima em tudo desperdiça recursos em organizações pequen
 - **EX089 — Metas acordadas.** Que metas foram acordadas? *Rubrica:* 3 = nível três em tudo e quatro para a qualidade, em dois anos;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX090 — Redução do viés.** Como o viés da avaliação pode ser reduzido? *Rubrica:* 3 = incluindo alguém de fora da equipe de dados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 40)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Gestão da mudança
@@ -1338,6 +1578,14 @@ Tratar a resistência como obstrução deixa escapar os problemas de desenho que
 - **EX091 — Correção da lista suspensa.** O que acabou com as reclamações sobre a lista suspensa? *Rubrica:* 3 = ordenar pelo nome da loja, com os códigos ao lado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX092 — Papel do multiplicador.** O que fazem os multiplicadores de dados? *Rubrica:* 3 = respondem às dúvidas localmente e repassam as sugestões aos curadores;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX093 — Sugestão dos multiplicadores.** O que a primeira reunião dos multiplicadores sugeriu? *Rubrica:* 3 = um guia plastificado dos códigos comuns para os caixas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 40)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1379,6 +1627,14 @@ Tratar o tempo das pessoas como gratuito subestima os custos da governança.
 - **EX095 — Propósito da sensibilidade.** Por que mostrar a sensibilidade às premissas? *Rubrica:* 3 = os leitores veem que a justificativa não depende de otimismo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX096 — Item questionado.** Que estimativa o diretor financeiro questionou? *Rubrica:* 3 = o risco de incidentes;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 40)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Projeto em grupo I: planejamento
@@ -1418,6 +1674,14 @@ Começar as regras antes do inventário leva a retrabalho.
 - **EX097 — Responsabilidades de Amara.** Por quais entregas Amara é responsável? *Rubrica:* 3 = regras de qualidade e retenção;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 - **EX098 — Primeira entrega.** Por que o inventário precisa vir primeiro? *Rubrica:* 3 = as outras entregas dependem de saber que dados existem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX099 — Resposta ao risco de requisitos.** Como o grupo vai lidar com requisitos pouco claros? *Rubrica:* 3 = confirmando os requisitos por escrito depois das reuniões com o cliente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 40)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1459,6 +1723,14 @@ Seções escritas separadamente se afastam umas das outras; acorde os nomes prim
 - **EX101 — Tokens de pagamento.** Quem deve guardar os *tokens* de pagamento? *Rubrica:* 3 = apenas o processador de pagamentos;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX102 — Mudança para a próxima vez.** O que Amara faria diferente? *Rubrica:* 3 = começar um glossário no primeiro dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 40)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Estágio
@@ -1498,6 +1770,14 @@ Recusar ou atender automaticamente a pedidos incomuns traz risco de erro nos doi
 - **EX103 — Método de convencimento.** Como Amara conseguiu a atenção do diretor comercial? *Rubrica:* 3 = um resumo de uma página ligando os erros aos preços nas gôndolas e às reclamações;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX104 — Condição da lista de reclamações.** Que condição se aplicou à lista de reclamações? *Rubrica:* 3 = contato apenas sobre a própria reclamação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX105 — Ideia de trabalho de conclusão.** Que ideia de trabalho de conclusão surgiu? *Rubrica:* 3 = se os multiplicadores de dados melhoram a qualidade dos lançamentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 40)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1539,6 +1819,14 @@ Comparações antes e depois, sozinhas, não separam os efeitos das tendências 
 - **EX107 — Ameaça de seleção.** Qual é a ameaça de seleção aqui? *Rubrica:* 3 = as lojas voluntárias podem já ser mais cuidadosas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX108 — Exigências dos dados reais.** O que os dados reais exigiriam? *Rubrica:* 3 = aprovação ética e autorização da Harbourline;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 40)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Trabalho de conclusão I: proposta
@@ -1578,6 +1866,14 @@ Planejar a análise depois de ver os dados convida a escolhas enviesadas.
 - **EX109 — Lacuna na literatura.** Que lacuna Amara encontrou? *Rubrica:* 3 = pouca pesquisa sobre redes de multiplicadores de dados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX110 — Desenho das lojas.** Quantas lojas recebem multiplicadores? *Rubrica:* 3 = dez de vinte;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX111 — Pré-registro.** Por que escrever o plano antes de gerar os dados? *Rubrica:* 3 = para evitar ajustar a análise em direção a um resultado preferido;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 40)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1619,6 +1915,14 @@ Recuperar um efeito embutido mostra que o método funciona, não que o efeito é
 - **EX113 — Cenário de melhora mais rápida.** O que acontece se as lojas com multiplicadores já melhoravam mais rápido? *Rubrica:* 3 = o método superestima o efeito;; 2 = parcialmente correto;; 1 = subestima;; 0 = nenhuma.
 - **EX114 — Recomendação.** O que Amara recomendou à Harbourline? *Rubrica:* 3 = introduzir os multiplicadores em etapas para uma avaliação real;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 40)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Trabalho de conclusão III: redação
@@ -1659,6 +1963,14 @@ Citações não conferidas trazem risco de erro e de má conduta; confira cada u
 - **EX116 — Apoio à reprodutibilidade.** Como Amara apoiou a reprodutibilidade? *Rubrica:* 3 = com a geração documentada e o código comentado em um apêndice;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX117 — Identificadores das citações.** O que ela incluiu nos artigos, quando disponível? *Rubrica:* 3 = os identificadores de objeto digital (DOI);; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 40)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Apresentação e defesa oral
@@ -1698,6 +2010,14 @@ Respostas defensivas a perguntas válidas enfraquecem um estudo forte.
 - **EX118 — Resposta ao viés de relato.** Como Amara tratou o viés de relato? *Rubrica:* 3 = regras automatizadas aplicadas igualmente a todas as lojas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX119 — Sugestão dos examinadores.** O que os examinadores sugeriram? *Rubrica:* 3 = explorar os efeitos sobre diferentes tipos de lançamentos inválidos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX120 — Próxima função.** Que função Amara vai assumir? *Rubrica:* 3 = curadora na equipe de dados da Harbourline;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 40)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

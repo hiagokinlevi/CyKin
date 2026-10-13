@@ -79,6 +79,14 @@ As três metas simplificam; alguns mecanismos servem a várias ao mesmo tempo. O
 
 Os profissionais julgam cada controle criptográfico pela meta a que ele serve e pelo seu peso real entre todos os controles de um cliente.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: contexto de serviços e partes interessadas
@@ -124,6 +132,14 @@ As tabelas de donos ficam desatualizadas quando os fornecedores mudam. A linguag
 ### Síntese
 
 Os achados criptográficos só importam quando o dono certo os entende, então os profissionais mapeiam as partes interessadas e escrevem para cada uma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -171,6 +187,14 @@ A autorização não elimina a necessidade de cuidado em produção. As regras d
 
 O manuseio de evidências autorizado, mínimo e cuidadoso mantém um trabalho dentro da lei e impede que ele crie nova exposição.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Criptografia e serviços de confiança: métodos centrais
@@ -216,6 +240,14 @@ Sistemas reais combinam métodos; o próprio TLS usa os quatro blocos. Um hash s
 ### Síntese
 
 Escolher entre cifração, hashes, MACs, assinaturas e certificados conforme a necessidade é a habilidade criptográfica central do profissional.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -298,6 +330,14 @@ As linhas de base ficam atrás das novas orientações; revise-as anualmente. A 
 
 As ferramentas produzem sinalizações; os profissionais as transformam em achados confirmando-as, acrescentando contexto e declarando os limites.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Criptografia e serviços de confiança: fluxo operacional
@@ -343,6 +383,14 @@ Ciclos mensais deixam passar problemas de curta duração entre as execuções. 
 ### Síntese
 
 Um fluxo repetível, com encerramento verificado e repasses claros, transforma as verificações mensais em melhorias duradouras.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -413,6 +461,14 @@ Verificações da lógica em laboratório não provam que o código de produçã
 
 A verificação prova um comportamento específico sob testes específicos, e declarações honestas dizem exatamente que casos foram testados.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Criptografia e serviços de confiança: análise de caso supervisionada
@@ -459,6 +515,14 @@ A verificação de revogação é inconsistente entre os clientes, então a revo
 
 Chaves expostas são tratadas como comprometidas, recuperadas por reemissão e revogação e explicadas com uma linha do tempo clara e uma incerteza honesta.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatórios
@@ -504,6 +568,14 @@ Escalas de três pontos escondem nuances; as justificativas carregam o detalhe. 
 ### Síntese
 
 Estrutura clara, classificações consistentes e ética honesta tornam os relatórios criptográficos confiáveis e acionáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -576,6 +648,14 @@ Os tempos do laboratório variam conforme a máquina; mostram o custo relativo, 
 
 A qualidade vem de verificar as correções com métodos sólidos e de revisões e retrospectivas constantes.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
@@ -621,6 +701,14 @@ Os laboratórios não conseguem reproduzir todas as diferenças da produção, c
 ### Síntese
 
 Ensaiar mudanças num laboratório contido reduz o risco em produção, desde que o laboratório seja encerrado de forma limpa depois.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -690,6 +778,14 @@ Seis meses de um único cliente são uma amostra pequena para tendências. Os po
 ### Síntese
 
 Um portfólio, um resumo de tendências e uma reflexão honesta transformam seis meses de prática numa base profissional crível.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

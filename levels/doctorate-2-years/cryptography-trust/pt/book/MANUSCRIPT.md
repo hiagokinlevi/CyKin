@@ -131,6 +131,14 @@ O kappa resume a concordância, mas esconde onde está a discordância; sempre t
 
 Um estudo defensável sobre uso indevido de criptografia começa com um livro de códigos preciso, concordância medida entre os codificadores, regras explícitas de sobreposição e um tratamento rigoroso, aprovado pela ética, das fraquezas em sistemas em produção.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 08)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: fronteira da pesquisa
@@ -219,6 +227,14 @@ A fórmula do aniversário é uma aproximação válida apenas para nonces aleat
 
 A fronteira não está em novas primitivas, mas no comportamento medido em torno delas; os limites de uso das normas transformam esse comportamento em números que um estudo de campo pode testar.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 08)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
@@ -274,6 +290,14 @@ O registro não conserta uma medida de desfecho fraca, e um número pequeno de c
 ### Síntese
 
 Um plano registrado com hipóteses falseáveis, um desfecho cego e definido mecanicamente e um desenho ajustado aos conglomerados disponíveis transformam uma boa pergunta num teste.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 08)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -360,6 +384,14 @@ Uma amostra histórica de um ano pode subcontar o uso indevido que os auditores 
 ### Síntese
 
 Uma linha de base replicada estabelece expectativas realistas, e um piloto que caça falhas de procedimento, e não efeitos, torna o estudo principal confiável.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 08)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -449,6 +481,14 @@ Um valor-p pequeno não mede quão grande ou importante é um efeito, e um estud
 
 Um teste pré-registrado, cego e randomizado por conglomerados sustenta o efeito do checklist; a reconfirmação independente e as ameaças declaradas com honestidade mantêm a afirmação proporcional.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 08)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -504,6 +544,14 @@ Análises de sensibilidade rodadas depois de abrir o cegamento são exploratóri
 ### Síntese
 
 A leitura hostil estruturada, as verificações de sensibilidade rotuladas como exploratórias e uma carta de resposta rastreável tornam um resultado mais forte ao expor onde ele cede.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 08)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -593,6 +641,14 @@ Um digest detecta mudanças, mas não consegue dizer se o conteúdo original era
 
 Uma tese é uma única afirmação defendida capítulo por capítulo; um arquivo com hashes, documentado e cuidadosamente expurgado permite que outros a verifiquem sem expor o parceiro.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 08)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -648,6 +704,14 @@ Uma defesa não se vence com certeza; afirmações além das evidências convida
 ### Síntese
 
 Uma defesa forte nomeia os limites da afirmação antes que a banca o faça, e um plano de publicação coordenado com o parceiro transforma as evidências em prática mais segura sem expor sistemas em produção.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 08)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

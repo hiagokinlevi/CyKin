@@ -73,6 +73,14 @@ As listas de ativos deixam escapar aparelhos comprados localmente. Os mapas de s
 
 Conhecer os sistemas, os ativos e os serviços que eles sustentam é onde a governança começa.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 30)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
@@ -112,6 +120,14 @@ Os levantamentos em campo podem deixar escapar mudanças. As verificações de c
 ### Síntese
 
 Mapas de rede revelam por onde os dados trafegam sem proteção e onde a segmentação é necessária.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 30)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Os scripts dependem de entradas corretas. Datas antigas podem ser erros nos dado
 
 Scripts simples com saída clara tornam as verificações de governança repetíveis e acionáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 30)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
@@ -192,6 +216,14 @@ Os modelos precisam de manutenção. Os códigos também podem ser digitados err
 ### Síntese
 
 Tabelas relacionadas, com chaves e validação, mantêm os dados de governança consistentes.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 30)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ As palestras se apagam sem reforço. Os recursos precisam de configuração.
 
 O letramento em segurança liga as ameaças comuns a controles simples já existentes e a uma comunicação respeitosa.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 30)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
@@ -272,6 +312,14 @@ Os relatórios podem estar atrasados em relação à realidade. Os termos de res
 ### Síntese
 
 As configurações impõem a política, mas as exceções e as responsabilidades compartilhadas precisam de governança explícita.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 30)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -313,6 +361,14 @@ As datas de término podem cortar um acesso necessário. Os sistemas de crachá 
 
 A governança de identidades lida com equipes temporárias, acesso baseado em funções e alternativas utilizáveis às contas compartilhadas.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 30)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
@@ -352,6 +408,14 @@ Os padrões ficam atrás dos novos aparelhos. As medidas compensatórias podem s
 ### Síntese
 
 Desenhos padronizados, com proteção em camadas e um registro de desvios, mantêm consistente a segurança em várias unidades.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 30)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -416,6 +480,14 @@ Evidências atuais ainda podem ser fracas. Os limites são decisões de julgamen
 
 Regras de atualidade das evidências mantêm a garantia em dia e destacam o que precisa ser renovado.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 30)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Governança, riscos e compliance de segurança: orientação
@@ -455,6 +527,14 @@ As obrigações legais exigem orientação profissional. Os papéis mudam com o 
 ### Síntese
 
 A orientação em GRC conecta direção, gestão de riscos e obrigações por meio de papéis claros.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 30)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -496,6 +576,14 @@ Os critérios envolvem julgamento. As classificações são aplicadas de forma e
 
 Contexto, classificação e critérios acordados tornam as avaliações de risco consistentes e relevantes.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 30)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Governança, riscos e compliance de segurança: fluxos de dados
@@ -536,6 +624,14 @@ Os mapas deixam escapar fluxos informais, como fotos tiradas no celular. Os cont
 
 Mapas de fluxo de dados revelam riscos de terceiros e de minimização que as listas de ativos não percebem.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 30)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Governança, riscos e compliance de segurança: cenários de risco
@@ -575,6 +671,14 @@ Os cenários refletem os limites da imaginação. A seleção envolve julgamento
 ### Síntese
 
 Cenários concretos ligam as causas à prevenção e as consequências à resposta.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 30)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -636,6 +740,14 @@ As estimativas dos gestores são aproximadas. As médias escondem desfechos grav
 
 A perda esperada coloca cenários diferentes em uma mesma escala, mas precisa ser lida junto com a sua incerteza.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 30)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Governança, riscos e compliance de segurança: laboratório guiado
@@ -676,6 +788,14 @@ As oficinas refletem quem comparece. Os prazos escorregam.
 
 Oficinas guiadas, com visões independentes e donos acordados, produzem registros acionáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 30)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Governança, riscos e compliance de segurança: métodos II
@@ -715,6 +835,14 @@ As estimativas residuais são incertas. As condições do seguro limitam a cober
 ### Síntese
 
 As escolhas de tratamento, as estimativas residuais e a aceitação formal completam o processo de risco.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 30)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -792,6 +920,14 @@ Quatro clínicas são um piloto pequeno. Aprovado ou reprovado perde detalhes.
 
 Ferramentas simples resumem os resultados e revelam padrões entre unidades que apontam para as causas-raiz.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 30)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Governança, riscos e compliance de segurança: controles
@@ -831,6 +967,14 @@ Os registros envelhecem. Os mapeamentos podem exagerar a cobertura.
 ### Síntese
 
 Controles documentados e mapeados para as obrigações mostram para que serve cada controle e o que significa a sua falha.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 30)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -893,6 +1037,14 @@ Os limiares são decisões de julgamento. Os indicadores podem ser manipulados.
 
 Os indicadores só alertam quando os donos os acompanham e ações acordadas se seguem às violações.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 30)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Governança, riscos e compliance de segurança: solução de problemas
@@ -933,6 +1085,14 @@ Os contornos podem esconder uso malicioso. Os sistemas de crachá precisam de su
 
 Resolver problemas em controles significa diagnosticar separadamente os problemas de desenho, de operação e de evidências.
 
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 30)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Governança, riscos e compliance de segurança: integração de serviços
@@ -972,6 +1132,14 @@ Os campos dos chamados são pulados. As ligações exigem disciplina.
 ### Síntese
 
 Integrar GRC à gestão de serviços faz com que o trabalho diário produza evidências de governança.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 30)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -1033,6 +1201,14 @@ Divergências de nomes causam falsos achados. Relatórios não lidos anulam a au
 
 A automação deve fazer a comparação repetitiva, enquanto as pessoas tomam as decisões que dependem de contexto.
 
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 30)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Governança, riscos e compliance de segurança: avaliação
@@ -1072,6 +1248,14 @@ Um ano é pouco tempo. As respostas da pesquisa podem ser educadas demais.
 ### Síntese
 
 A avaliação com várias fontes mostra o progresso e aponta melhorias específicas.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 30)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1113,6 +1297,14 @@ Tempo autodeclarado. Sete clínicas por grupo.
 
 Estudos aplicados pequenos e bem desenhados sustentam decisões quando os seus limites são declarados.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 30)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
@@ -1152,6 +1344,14 @@ A dinâmica das equipes varia. Os pedidos do cliente podem ampliar o escopo.
 ### Síntese
 
 Projetos em equipe dão certo com papéis claros, revisão por pares e capacidade de resposta aos clientes.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 30)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1193,6 +1393,14 @@ Os runbooks envelhecem. Os substitutos podem não ter prática.
 
 Os repasses dão certo quando os runbooks são testados pelos novos donos e o suporte tem um fim claro.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 30)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
@@ -1232,6 +1440,14 @@ A validação é uma fotografia de um momento. Os fornecedores podem religar apa
 ### Síntese
 
 Validar os controles antes da entrada em produção dá à gestão uma base clara e baseada em evidências para seguir em frente.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 30)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1273,6 +1489,14 @@ A qualidade dos estágios varia. A pressão pode ser sutil.
 
 A prática de campo mostra que o trabalho de GRC é constante, moldado pelo desenho e fundamentado em registros honestos.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 30)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
@@ -1313,6 +1537,14 @@ Os painéis podem ser ignorados. A qualidade dos dados de origem limita o valor.
 
 Uma ferramenta de projeto final precisa ser testada com usuários e documentada para que outras pessoas possam mantê-la.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 30)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
@@ -1352,6 +1584,14 @@ As avaliações amostram competências. As melhorias relatadas têm várias caus
 ### Síntese
 
 Uma avaliação de projeto final confirma o valor prático e reflete sobre o crescimento como tecnólogo de GRC.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 30)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

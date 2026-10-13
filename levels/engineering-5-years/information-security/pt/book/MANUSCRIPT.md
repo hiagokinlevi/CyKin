@@ -75,6 +75,14 @@ Tratar uma fonte de logs silenciosa como segura pode esconder um encaminhador de
 
 - **EX003 — Risco do resumo.** Qual é o risco de resumir logs antigos? *Rubrica:* 3 = perder detalhes de que os investigadores precisam;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 50)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
@@ -116,6 +124,14 @@ Uma regra formal ainda pode codificar a política errada; confirme-a com os dono
 - **EX005 — Contas compartilhadas.** Por que as contas compartilhadas prejudicam a responsabilização? *Rubrica:* 3 = as ações não podem ser rastreadas até uma pessoa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX006 — Cortando caminhos.** Como muitos caminhos de ataque podem ser cortados de uma vez? *Rubrica:* 3 = remover algumas arestas de confiança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 50)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -159,6 +175,14 @@ Excluir arquivos não remove os dados da mídia de armazenamento.
 
 - **EX009 — Autonomia do nobreak.** Que autonomia o nobreak dá com a carga atual? *Rubrica:* 3 = menos de dez minutos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 50)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Programação I
@@ -200,6 +224,14 @@ Bloquear entradas ruins conhecidas é mais fraco do que permitir apenas entradas
 - **EX011 — Lista de permissões.** Como o código de depósito é validado? *Rubrica:* 3 = contra os doze códigos válidos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Correção da injeção.** Como o script de redefinição deve chamar os comandos? *Rubrica:* 3 = passar os argumentos como uma lista;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 50)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -243,6 +275,14 @@ Um achado sem dono e sem ação claros raramente é corrigido.
 
 - **EX015 — Resposta do registro.** Por que a pasta foi movida em vez de excluída? *Rubrica:* 3 = as carteiras são retidas para verificações do seguro;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 50)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Cálculo II
@@ -284,6 +324,14 @@ Uma única taxa média de fechamento esconde o tratamento lento dos achados crí
 - **EX017 — Estado estacionário.** Qual é a fórmula do acúmulo estacionário? *Rubrica:* 3 = entrada dividida pela taxa de fechamento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Reduzir a entrada.** Como a entrada pode ser reduzida? *Rubrica:* 3 = remover software sem uso;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 50)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -327,6 +375,14 @@ Um detector que parece preciso ainda pode produzir alertas em sua maioria falsos
 
 - **EX021 — Fator de confusão dos notebooks.** O que poderia explicar menos detecções com notebooks novos? *Rubrica:* 3 = depósitos maiores com equipe de TI;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 50)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
@@ -368,6 +424,14 @@ O firmware e as controladoras de gerenciamento muitas vezes ficam com as credenc
 - **EX023 — Lacuna do secure boot.** Por que o secure boot estava desativado em alguns notebooks? *Rubrica:* 3 = um driver antigo;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX024 — Chave de assinatura.** Para onde a chave de assinatura de código deve ir? *Rubrica:* 3 = um token de hardware ou um serviço gerenciado de chaves;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 50)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -411,6 +475,14 @@ Uma senha incluída no código deve ser tratada como exposta e trocada.
 
 - **EX027 — Escolha do interpretador.** Por que escrever o próprio interpretador? *Rubrica:* 3 = formato simples, biblioteca sem manutenção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 50)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
@@ -452,6 +524,14 @@ Testar um sistema em produção sem autorização não é aceitável, mesmo para
 - **EX029 — Lacuna do aviso.** O que o aviso de monitoramento omitia? *Rubrica:* 3 = o registro da navegação na web;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
 
 - **EX030 — Ligação com a segurança física.** Por que os registros de temperatura importam para a segurança das pessoas? *Rubrica:* 3 = a adulteração poderia permitir que medicamentos estragados chegassem aos pacientes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 50)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -495,6 +575,14 @@ Uma rede plana permite que um único dispositivo comprometido alcance tudo.
 
 - **EX033 — Valor da segmentação.** O que a segmentação limita principalmente? *Rubrica:* 3 = até onde os atacantes se movem;; 2 = parcialmente correto;; 1 = a entrada;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 50)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
@@ -536,6 +624,14 @@ Logs guardados apenas no servidor podem ser apagados por um atacante que o contr
 - **EX035 — Logs centrais.** Por que encaminhar os logs a um coletor central? *Rubrica:* 3 = os atacantes não podem apagar as evidências locais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — Atualizações em etapas.** O que Lindiwe propõe para as atualizações? *Rubrica:* 3 = primeiro um grupo de teste, depois a promoção após uma semana;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 50)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -579,6 +675,14 @@ Um backup acessível e excluível a partir da rede principal pode não sobrevive
 
 - **EX039 — Cópia de backup.** Que cópia de backup extra ela recomenda? *Rubrica:* 3 = uma que não possa ser alterada por um período definido;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 50)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
@@ -620,6 +724,14 @@ Esconder um botão na interface não impede os pedidos ao servidor.
 - **EX041 — Verificação das dependências.** Com que frequência as dependências são conferidas? *Rubrica:* 3 = semanalmente;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX042 — Proteção do build.** Cite uma proteção do build que ela recomenda. *Rubrica:* 3 = pacotes assinados;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 50)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -663,6 +775,14 @@ Chamar uma vulnerabilidade de risco ignora a ameaça e o impacto.
 
 - **EX045 — Defesa em profundidade.** O que é a defesa em profundidade? *Rubrica:* 3 = vários controles independentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 50)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
@@ -704,6 +824,14 @@ Servidores desativados e esquecidos muitas vezes mantêm dados antigos e vulnera
 - **EX047 — Requisitos sem teste.** Quantos requisitos não tinham teste? *Rubrica:* 3 = dois;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX048 — Lista de desativação.** O que a lista de verificação de desativação cobre? *Rubrica:* 3 = exclusão dos dados, remoção das contas, desconexão;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 50)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -747,6 +875,14 @@ Bloqueios automáticos agressivos podem se tornar uma negação de serviço.
 
 - **EX051 — Métricas do laço.** Que estatísticas ela relata? *Rubrica:* 3 = medianas e o décimo mais lento;; 2 = parcialmente correto;; 1 = médias;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 50)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
@@ -788,6 +924,14 @@ Depender de uma porta não documentada é obscuridade, não proteção.
 - **EX053 — Opção escolhida.** Que opção os desenvolvedores escolhem? *Rubrica:* 3 = o serviço intermediário;; 2 = parcialmente correto;; 1 = direta;; 0 = nenhuma.
 
 - **EX054 — Projeto aberto.** De que a ferramenta de transferência dependia? *Rubrica:* 3 = uma porta não documentada;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 50)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -831,6 +975,14 @@ Os avisos de aprovação por aplicativo podem ser aceitos por usuários que não
 
 - **EX057 — Indisponibilidades por certificados.** Por que os certificados expiraram? *Rubrica:* 3 = a renovação dependia da memória;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 50)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Segurança da informação: contexto de engenharia
@@ -873,6 +1025,14 @@ Implementar apenas as orientações da ISO/IEC 27002 não torna uma organizaçã
 
 - **EX060 — Funções do CSF.** Cite as seis funções do CSF 2.0. *Rubrica:* 3 = Governar, Identificar, Proteger, Detectar, Responder, Recuperar;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 50)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Segurança da informação: requisitos
@@ -914,6 +1074,14 @@ Um requisito sem um limiar mensurável não pode ser verificado.
 - **EX062 — Requisito de correções.** Com que rapidez as correções críticas devem ser aplicadas? *Rubrica:* 3 = em até catorze dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX063 — Conflito de retenção.** Como se resolve o conflito de retenção de logs? *Rubrica:* 3 = um ano, com acesso restrito e campos minimizados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 50)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -980,6 +1148,14 @@ Um inventário de ativos que nunca é conciliado dá uma falsa confiança.
 
 - **EX066 — Dono das câmeras.** Quem se torna o dono do sistema de câmeras? *Rubrica:* 3 = o gerente do depósito;; 2 = parcialmente correto;; 1 = TI;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 50)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Segurança da informação: análise de ameaças e falhas
@@ -1021,6 +1197,14 @@ Modelar apenas um adversário poderoso deixa passar as ameaças comuns e mais si
 - **EX068 — Falha silenciosa.** Que falha passaria despercebida por horas? *Rubrica:* 3 = uma fila de mensagens cheia;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 - **EX069 — Lacuna aberta.** Que ameaça não tem um controle adequado? *Rubrica:* 3 = pessoas internas que exportam listas de clientes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 50)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1064,6 +1248,14 @@ Misturar observações com conclusões torna os relatórios mais difíceis de ve
 
 - **EX072 — Erro corrigido.** Que erro factual é corrigido? *Rubrica:* 3 = uma porta com fechadura com código que ela não tinha visto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 50)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto I
@@ -1105,6 +1297,14 @@ Um projeto de autenticação forte sem um processo de recuperação falha na pri
 - **EX074 — Desvantagem da VPN.** Que desvantagem a opção de VPN tem? *Rubrica:* 3 = acesso amplo à rede depois de conectada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX075 — Processo de recuperação.** Que processo de recuperação é acrescentado? *Rubrica:* 3 = segunda chave em casa e ligação verificada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 50)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1148,6 +1348,14 @@ Ir para um serviço em nuvem não transfere a responsabilidade pelas contas e pe
 
 - **EX078 — Responsabilidade na nuvem.** O que continua sendo responsabilidade da Saltmarsh na nuvem? *Rubrica:* 3 = contas, configuração e dados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 50)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Segurança da informação: projeto de controles
@@ -1189,6 +1397,14 @@ Um controle que não deixa evidências não pode ser mostrado em funcionamento.
 - **EX080 — Parcela direcionada.** Aproximadamente que parcela dos pedidos ultrapassa o limite? *Rubrica:* 3 = cerca de cinco por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX081 — Testes plantados.** Como o controle é testado apesar da raridade das fraudes? *Rubrica:* 3 = encenando mudanças suspeitas sintéticas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 50)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1260,6 +1476,14 @@ Relatar cada regra sozinha pode esconder quantos servidores falham em pelo menos
 - **EX083 — Taxa de correções.** Que parcela está corrigida dentro de trinta dias? *Rubrica:* 3 = 253, 84,3 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX084 — As três.** Quantos servidores passam nas três regras? *Rubrica:* 3 = 216, 72,0 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 50)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -1340,6 +1564,14 @@ Ordenar pelo total de falhas confunde clientes quebrados com ataques.
 
 - **EX087 — Ponto cego.** O que a medida por janela deixa passar? *Rubrica:* 3 = a adivinhação lenta e paciente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 50)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Laboratório de verificação I
@@ -1382,6 +1614,14 @@ Os casos-limite não testados muitas vezes revelam discordância entre a defini�
 
 - **EX090 — Testes permanentes.** Por que manter os casos plantados de forma permanente? *Rubrica:* 3 = para conferir rapidamente as mudanças futuras;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 50)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Segurança da informação: implementação II
@@ -1423,6 +1663,14 @@ As exceções sem data de expiração se tornam fraquezas permanentes.
 - **EX092 — Método do armazém.** Como a equipe do armazém faz login? *Rubrica:* 3 = aproximação do crachá com um código pessoal;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX093 — Medidas de adoção.** Que três medidas de adoção são acompanhadas? *Rubrica:* 3 = parcela cadastrada, logins com segundo fator, exceções abertas;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 50)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1492,6 +1740,14 @@ Uma rotina de backup bem-sucedida não prova que os dados podem ser restaurados 
 
 - **EX096 — Objetivos do despacho.** Quais são os objetivos de recuperação do despacho? *Rubrica:* 3 = perder no máximo uma hora, voltar em até quatro horas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 50)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Segurança da informação: segurança e resiliência
@@ -1533,6 +1789,14 @@ Um plano de resiliência que nunca foi exercitado costuma conter detalhes desatu
 - **EX098 — Descoberta do exercício.** O que o exercício revelou? *Rubrica:* 3 = o local desconhecido das listas impressas e contatos desatualizados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX099 — Evidência de temperatura.** Como a evidência de temperatura é protegida? *Rubrica:* 3 = registradores independentes lidos na entrega;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 50)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1576,6 +1840,14 @@ Uma credencial compartilhada entre parceiros não pode ser revogada para um sem 
 
 - **EX102 — Sinal de uso indevido.** O que sugeriria o uso indevido da credencial de um varejista? *Rubrica:* 3 = um aumento repentino nas requisições de endereços;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 50)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
@@ -1617,6 +1889,14 @@ Projetar o monitoramento sem estimar o volume de alertas leva a equipes com pess
 - **EX104 — Modelo híbrido.** O que é o modelo híbrido? *Rubrica:* 3 = serviço externo à noite, equipe da Saltmarsh de dia;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX105 — Revelação dos pseudônimos.** Quem pode revelar as identidades pseudônimas? *Rubrica:* 3 = um gerente de plantão da Saltmarsh;; 2 = parcialmente correto;; 1 = os analistas;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 50)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1660,6 +1940,14 @@ Os sistemas de segurança que descartam dados silenciosamente sob carga dão uma
 
 - **EX108 — Eventos mantidos.** Que eventos são mantidos completos? *Rubrica:* 3 = os eventos de autenticação e de administração;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 50)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Segurança da informação: operações
@@ -1701,6 +1989,14 @@ Recompensar menos alertas pode estimular o desligamento da detecção.
 - **EX110 — Ações no incidente.** Cite uma ação de contenção tomada. *Rubrica:* 3 = bloquear a conta;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX111 — Causa raiz.** Por que a conta não tinha autenticação multifator? *Rubrica:* 3 = uma exceção prorrogada duas vezes sem revisão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 50)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1744,6 +2040,14 @@ Um controle pode ser construído corretamente e ainda assim não atender à nece
 
 - **EX114 — Estado do controle de endereço.** Qual é o estado do controle de mudança de endereço? *Rubrica:* 3 = verificado, mas ainda não validado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 50)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Segurança da informação: manutenibilidade
@@ -1785,6 +2089,14 @@ As ferramentas cujos autores saem sem fazer a passagem ficam sem manutenção.
 - **EX116 — Teste dos runbooks.** Como os runbooks são testados? *Rubrica:* 3 = um colega segue cada um deles;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX117 — Substitutos.** Por que acrescentar substitutos? *Rubrica:* 3 = os controles param quando uma pessoa está ausente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 50)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
@@ -1828,6 +2140,14 @@ Mostrar apenas os testes finais aprovados esconde como os controles foram melhor
 
 - **EX120 — Antes e depois.** Por que registrar os resultados de antes e de depois da correção? *Rubrica:* 3 = mostra a melhoria e sua causa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 50)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-41"></a>
 
 ## Capítulo 41 — Segurança da informação: otimização do sistema
@@ -1869,6 +2189,14 @@ Remover uma ferramenta sem conferir a cobertura pode abrir lacunas despercebidas
 - **EX122 — Listas de contas.** Como as três listas de contas são produzidas depois da mudança? *Rubrica:* 3 = a partir da fonte única de identidades;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX123 — Compra mal colocada.** Que investimento fica mal colocado? *Rubrica:* 3 = um produto de análise avançada;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-41 -->
+### Continue estudando — aula 41 (capítulo 41 de 50)
+
+[← Capítulo 40](#ch-40) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
@@ -1912,6 +2240,14 @@ Contagens pequenas de incidentes não sustentam conclusões confiantes.
 
 - **EX126 — Força da evidência.** Quão forte é a evidência? *Rubrica:* 3 = favorável, mas fraca;; 2 = parcialmente correto;; 1 = forte;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-42 -->
+### Continue estudando — aula 42 (capítulo 42 de 50)
+
+[← Capítulo 41](#ch-41) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-43"></a>
 
 ## Capítulo 43 — Prática na indústria ou no serviço público
@@ -1953,6 +2289,14 @@ Apresentar controles incompletos como implementados engana os auditores.
 - **EX128 — Evidências incompletas.** Como os dois controles incompletos são apresentados? *Rubrica:* 3 = como em andamento, com datas;; 2 = parcialmente correto;; 1 = completos;; 0 = nenhuma.
 
 - **EX129 — Efeito da ausência de culpa.** O que o tratamento sem culpa estimulou? *Rubrica:* 3 = comunicação mais rápida na vez seguinte;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-43 -->
+### Continue estudando — aula 43 (capítulo 43 de 50)
+
+[← Capítulo 42](#ch-42) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
@@ -1996,6 +2340,14 @@ As dependências não documentadas tornam a recuperação muito mais lenta do qu
 
 - **EX132 — Decisão de escopo.** O que é feito em relação à folha de pagamento? *Rubrica:* 3 = documentar apenas as dependências;; 2 = parcialmente correto;; 1 = recuperação completa;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Continue estudando — aula 44 (capítulo 44 de 50)
+
+[← Capítulo 43](#ch-43) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-45"></a>
 
 ## Capítulo 45 — Revisão independente de projeto
@@ -2037,6 +2389,14 @@ Um ambiente de recuperação que compartilha as credenciais da produção pode s
 - **EX134 — Backups mais antigos.** Que teste foi acrescentado para os backups mais antigos? *Rubrica:* 3 = restaurar a partir de backups de uma semana;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX135 — Decisão de recuperação.** Quem autoriza a recuperação? *Rubrica:* 3 = o líder de segurança e o diretor de operações;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Continue estudando — aula 45 (capítulo 45 de 50)
+
+[← Capítulo 44](#ch-44) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
@@ -2080,6 +2440,14 @@ Um único ensaio de recuperação bem-sucedido não prova que a recuperação é
 
 - **EX138 — Passo lento restante.** Qual continua sendo o passo mais lento? *Rubrica:* 3 = a restauração do banco de dados;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Continue estudando — aula 46 (capítulo 46 de 50)
+
+[← Capítulo 45](#ch-45) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-47"></a>
 
 ## Capítulo 47 — Ensaio de falha e recuperação
@@ -2121,6 +2489,14 @@ Os ensaios de recuperação que testam apenas a tecnologia deixam passar as falh
 - **EX140 — Atraso das credenciais.** Quanto tempo se perdeu procurando as credenciais? *Rubrica:* 3 = vinte minutos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX141 — Papel de coordenador.** Por que acrescentar um papel de coordenador? *Rubrica:* 3 = duas pessoas executaram o mesmo script;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Continue estudando — aula 47 (capítulo 47 de 50)
+
+[← Capítulo 46](#ch-46) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
@@ -2164,6 +2540,14 @@ Incluir afirmações sem evidências mina o dossiê inteiro.
 
 - **EX144 — Amostra do auditor.** Quantas afirmações o auditor examinou na amostra? *Rubrica:* 3 = cinco;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Continue estudando — aula 48 (capítulo 48 de 50)
+
+[← Capítulo 47](#ch-47) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
@@ -2206,6 +2590,14 @@ Citar as fontes como decoração, e não para pontos específicos, enfraquece um
 
 - **EX147 — Achado principal.** Que achado principal diz respeito aos ambientes de recuperação? *Rubrica:* 3 = precisam estar isolados das credenciais da produção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Continue estudando — aula 49 (capítulo 49 de 50)
+
+[← Capítulo 48](#ch-48) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
@@ -2247,6 +2639,14 @@ Responder além das próprias evidências mina uma defesa.
 - **EX149 — Armazenamento do manifesto.** Onde o manifesto das somas de verificação é guardado? *Rubrica:* 3 = de forma imutável, junto com os backups;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX150 — Resultado da defesa.** Qual é o resultado da defesa? *Rubrica:* 3 = aprovação com louvor;; 2 = parcialmente correto;; 1 = reprovação;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Continue estudando — aula 50 (capítulo 50 de 50)
+
+[← Capítulo 49](#ch-49) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

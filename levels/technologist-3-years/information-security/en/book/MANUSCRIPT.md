@@ -73,6 +73,14 @@ Practising on real systems without permission is unsafe and may be illegal.
 - **EX002 — Riverbend size.** How many staff does Riverbend employ? *Rubric:* 3 = about 350;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX003 — Notebook purpose.** Why keep a laboratory notebook? *Rubric:* 3 = to repeat and explain work;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 30)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Information at a leisure trust
@@ -112,6 +120,14 @@ Scanned sensitive forms often end up in folders everyone can open.
 - **EX004 — Health users.** Who uses health questionnaires? *Rubric:* 3 = instructors;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX005 — Bank details risk.** Which objective matters most for bank details? *Rubric:* 3 = integrity;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX006 — Folder fix.** What happens to the questionnaire folder? *Rubric:* 3 = restricted to instructors and managers;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 30)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Automatic administrator logins give any malware full control.
 - **EX008 — Reception risk.** What risk do reception computers have? *Rubric:* 3 = automatic administrator login;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Service reduction.** What does disabling unneeded services do? *Rubric:* 3 = shrinks the attack surface;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 30)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Networks in practice
@@ -192,6 +216,14 @@ Scanning without written permission is unacceptable, even on a friendly network.
 - **EX010 — Payment label.** Which devices must be labelled specially? *Rubric:* 3 = those handling payment data;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX011 — Camera finding.** What did the scan find on the camera recorder? *Rubric:* 3 = a default password;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Proposed segments.** Name the four proposed segments. *Rubric:* 3 = tills, staff, cameras, guests;; 2 = all;; 1 = some;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 30)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ Scripts that silently skip bad input give false reassurance.
 - **EX014 — Bad lines.** How does the script handle bad lines? *Rubric:* 3 = skips and reports them;; 2 = partly correct;; 1 = ignore;; 0 = none.
 - **EX015 — Traceability.** What does each report include for tracing? *Rubric:* 3 = script version and input file name;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 30)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Logs and log formats
@@ -273,6 +313,14 @@ Unsynchronised clocks make events from different systems impossible to order.
 - **EX017 — Clock error.** How slow is the camera recorder clock? *Rubric:* 3 = eleven minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX018 — Log retention.** How long should central logs be kept? *Rubric:* 3 = ninety days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 30)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Chapter 7 — Security concepts in practice
@@ -312,6 +360,14 @@ Controls that ignore real work needs get bypassed.
 - **EX019 — Overview standard.** Which standard gives the family overview? *Rubric:* 3 = ISO/IEC 27000:2026;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX020 — Compromise limit.** How does least privilege limit compromise? *Rubric:* 3 = attacker inherits limited rights;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX021 — USB alternative.** What USB alternative does Jamal suggest? *Rubric:* 3 = Riverbend-issued encrypted devices only;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 30)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -379,6 +435,14 @@ Reporting each item separately can hide how many machines fail at least one.
 - **EX023 — Combined rate.** How many meet all four items? *Rubric:* 3 = 129, 61.4 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX024 — First priority.** Which failures come first? *Rubric:* 3 = laptops without encryption;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 30)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Chapter 9 — Patch management
@@ -418,6 +482,14 @@ Deploying untested updates everywhere at once can break every centre.
 - **EX025 — Priority updates.** Which updates get priority? *Rubric:* 3 = those for actively exploited flaws;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX026 — Test group.** How many workstations are in the test group? *Rubric:* 3 = five;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX027 — Pool controller.** How is the pool controller protected? *Rubric:* 3 = isolated segment without internet;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 30)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -459,6 +531,14 @@ Assuming a fix worked without rescanning leaves weaknesses in place.
 - **EX029 — False positive.** What is a false positive? *Rubric:* 3 = a reported weakness that is not present;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX030 — Remaining finding.** Why did one finding remain after fixing? *Rubric:* 3 = a second installation of the tool;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 30)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Chapter 11 — Account administration
@@ -498,6 +578,14 @@ Copying a colleague's account to create a new one spreads unneeded access.
 - **EX031 — Seasonal access.** What access do seasonal staff need? *Rubric:* 3 = booking system and rota only;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX032 — Leaver report.** What source lists leavers weekly? *Rubric:* 3 = the payroll system;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX033 — Old service account.** Which service account is disabled? *Rubric:* 3 = one used by an old backup tool;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 30)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -539,6 +627,14 @@ A weak recovery procedure lets attackers bypass multi-factor authentication.
 - **EX035 — First system.** Which system gets multi-factor authentication first? *Rubric:* 3 = email;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX036 — Old phones.** What alternative suits staff with old phones? *Rubric:* 3 = text message codes;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 30)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Chapter 13 — Passwords and secrets
@@ -578,6 +674,14 @@ A password written in a script is exposed to anyone who can read it.
 - **EX037 — Old rule effect.** What did monthly forced changes cause? *Rubric:* 3 = adding a number to the same word;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX038 — Spreadsheet replacement.** What replaces the password spreadsheet? *Rubric:* 3 = a password manager;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX039 — Document findings.** What did the document search find? *Rubric:* 3 = camera passwords and router credentials;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 30)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -655,6 +759,14 @@ An allow-any rule above the final deny makes the deny useless.
 - **EX041 — Unreachable deny.** Why does rule 12 have zero hits? *Rubric:* 3 = rule 11 matches first;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX042 — Supplier rule.** What does unused rule 6 allow? *Rubric:* 3 = supplier remote desktop to tills;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 30)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Chapter 15 — Wireless security
@@ -694,6 +806,14 @@ Shared wireless passwords remain known to former staff.
 - **EX043 — Shared password problem.** Why is the shared staff wireless password a problem? *Rubric:* 3 = known to former staff;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX044 — Rogue access point.** Who installed the unauthorised access point? *Rubric:* 3 = the café supplier;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX045 — Weak mode.** Why was a weak encryption mode enabled? *Rubric:* 3 = for an old printer;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 30)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -735,6 +855,14 @@ Endpoint protection protects only the machines it is installed on.
 - **EX047 — Finance alert.** What did the finance alert show? *Rubric:* 3 = a script from an invoice attachment;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX048 — Allow-listing.** Where is allow-listing most effective? *Rubric:* 3 = single-purpose machines like tills;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 30)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Chapter 17 — Email security
@@ -774,6 +902,14 @@ Technical filters alone cannot stop well-crafted payment fraud.
 - **EX049 — Incomplete records.** What risk did incomplete authentication records create? *Rubric:* 3 = fake messages using Riverbend's domain delivered;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Gift card scam.** How many centres received the gift card message? *Rubric:* 3 = five;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX051 — Bank change rule.** How must bank detail changes be confirmed? *Rubric:* 3 = by phone using a number on file;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 30)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -815,6 +951,14 @@ A backup job that reports success may still be missing data.
 - **EX053 — Restore failure.** Why did a folder fail to restore? *Rubric:* 3 = excluded after a rename;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX054 — Supplier retention.** How long does the booking supplier keep backups? *Rubric:* 3 = fourteen days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 30)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-19"></a>
 
 ## Chapter 19 — Encryption in practice
@@ -855,6 +999,14 @@ Losing encryption keys can make data unrecoverable.
 - **EX056 — Internal page.** What did the unencrypted internal page show? *Rubric:* 3 = member names;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX057 — Renewal reminder.** When are manual renewal reminders set? *Rubric:* 3 = thirty days before expiry;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 30)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Chapter 20 — Physical and device security
@@ -894,6 +1046,14 @@ Discarded devices often still hold readable data.
 - **EX058 — Cupboard misuse.** How was one network cupboard misused? *Rubric:* 3 = storing cleaning supplies;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — Terminal check.** How do staff check terminals daily? *Rubric:* 3 = compare with a photo and check seals;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Recorder screen.** What problem did one recorder screen have? *Rubric:* 3 = visible from reception;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 30)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -971,6 +1131,14 @@ Ranking failures without separating internal and external sources mixes mistypin
 - **EX062 — Top source.** Which address has the most failures? *Rubric:* 3 = 203.0.113.45 with 412;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX063 — External share.** What share of failures came from external sources? *Rubric:* 3 = 80.1 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue studying — lesson 21 (chapter 21 of 30)
+
+[← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Chapter 22 — Incident handling
@@ -1010,6 +1178,14 @@ Changing settings before recording them can destroy evidence.
 - **EX064 — Procedure basis.** Which CSF 2.0 functions shape the procedure? *Rubric:* 3 = Respond and Recover;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX065 — Forwarding rule.** What did Jamal find in the mailbox? *Rubric:* 3 = a rule forwarding mail externally;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX066 — Root cause.** What caused the incident? *Rubric:* 3 = delayed MFA enrolment;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue studying — lesson 22 (chapter 22 of 30)
+
+[← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1051,6 +1227,14 @@ A supplier certificate is useful evidence only if its scope covers the service u
 - **EX068 — Supplier access fix.** How is the camera company's access changed? *Rubric:* 3 = enabled only for scheduled work;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX069 — Cloud setting.** What default cloud setting is restricted? *Rubric:* 3 = external file sharing;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue studying — lesson 23 (chapter 23 of 30)
+
+[← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Chapter 24 — Policies and procedures
@@ -1090,6 +1274,14 @@ Policies that contradict practice create avoidable audit findings.
 - **EX070 — Procedure test.** How does Jamal test his procedures? *Rubric:* 3 = the technician follows them without help;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX071 — Archive rule.** What happens to old procedure versions? *Rubric:* 3 = archived, not deleted;; 2 = partly correct;; 1 = deleted;; 0 = none.
 - **EX072 — Outdated policy.** Which policy is outdated? *Rubric:* 3 = the password policy;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue studying — lesson 24 (chapter 24 of 30)
+
+[← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1131,6 +1323,14 @@ Measuring individual click rates can discourage reporting.
 - **EX074 — Phishing clue.** Name one phishing clue Jamal shows. *Rubric:* 3 = slightly different sender address;; 2 = one;; 1 = vague;; 0 = none.
 - **EX075 — Lifeguard report.** What did the lifeguard report? *Rubric:* 3 = a scam text claiming to be from payroll;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue studying — lesson 25 (chapter 25 of 30)
+
+[← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-26"></a>
 
 ## Chapter 26 — Automation and scheduling
@@ -1170,6 +1370,14 @@ Automation that fails silently gives false confidence.
 - **EX076 — Automation choice.** Which tasks are automated first? *Rubric:* 3 = stable tasks with predictable inputs;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX077 — Heartbeat catch.** What did the heartbeat catch? *Rubric:* 3 = baseline check failing after a password change;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX078 — Sick leave.** Why should one inactive account stay enabled? *Rubric:* 3 = staff on long-term sick leave;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue studying — lesson 26 (chapter 26 of 30)
+
+[← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -1211,6 +1419,14 @@ Documentation tested only by its author often fails other users.
 - **EX080 — Restore document fix.** What was wrong in the restore procedure? *Rubric:* 3 = a changed server name;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX081 — Own access.** What happens to Jamal's access? *Rubric:* 3 = removed on his last day;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue studying — lesson 27 (chapter 27 of 30)
+
+[← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-28"></a>
 
 ## Chapter 28 — Work placement
@@ -1250,6 +1466,14 @@ Investigating outside one's remit without asking oversteps professional boundari
 - **EX082 — Placement interruptions.** What makes planning important on placement? *Rubric:* 3 = frequent urgent interruptions;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX083 — Notice board.** What does Jamal do about the notice board? *Rubric:* 3 = reports it to the centre manager;; 2 = partly correct;; 1 = remove;; 0 = none.
 - **EX084 — Development area.** Name one area to develop. *Rubric:* 3 = estimating task time;; 2 = one;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue studying — lesson 28 (chapter 28 of 30)
+
+[← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -1291,6 +1515,14 @@ A single external scan shows only what was reachable at that moment.
 - **EX086 — Extra path.** What extra path did the scan find? *Rubric:* 3 = an old router management page;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX087 — Path total.** How many paths were restricted or closed? *Rubric:* 3 = six;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue studying — lesson 29 (chapter 29 of 30)
+
+[← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-30"></a>
 
 ## Chapter 30 — Project review and next steps
@@ -1330,6 +1562,14 @@ Answers without records to support them weaken a project review.
 - **EX088 — New path detection.** How will new paths be detected? *Rubric:* 3 = scheduled scans and six-monthly firewall review;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX089 — Remote desktop kept.** Why keep remote desktop? *Rubric:* 3 = staff work from home;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX090 — Standing task.** What becomes a standing task? *Rubric:* 3 = the six-monthly remote access review;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue studying — lesson 30 (chapter 30 of 30)
+
+[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

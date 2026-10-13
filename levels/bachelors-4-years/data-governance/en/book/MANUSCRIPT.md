@@ -73,6 +73,14 @@ Treating governance as a software purchase ignores decisions and responsibilitie
 - **EX002 — Email problem.** What went wrong with a marketing email? *Rubric:* 3 = it went to members who asked not to be contacted;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX003 — Fourth goal.** What goal did the tutor add? *Rubric:* 3 = learn to judge evidence;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 40)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — What data are
@@ -112,6 +120,14 @@ Assuming identical labels mean identical definitions causes disputes.
 - **EX004 — Knowledge example.** Give the course's example of knowledge. *Rubric:* 3 = milk sales rise before holidays, so order more;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX005 — Sales disagreement.** Why did sales reports disagree? *Rubric:* 3 = finance includes tax, stores exclude it;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX006 — Unstructured example.** Name one unstructured data example at Harbourline. *Rubric:* 3 = customer emails, contracts or photographs;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 40)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -153,6 +169,14 @@ Blaming the team that notices a problem ignores its source.
 - **EX008 — Generic codes.** Why do staff key generic product codes? *Rubric:* 3 = to keep queues moving when barcodes fail;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Shared resource.** What do governance rules balance? *Rubric:* 3 = local convenience against wider needs;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 40)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Spreadsheets and their risks
@@ -192,6 +216,14 @@ Tidy totals do not prove correct formulas; reconcile with sources.
 - **EX010 — Missing store.** Why was the newest store excluded? *Rubric:* 3 = a formula range stopped one row short;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX011 — Check cell.** What does the check cell compare? *Rubric:* 3 = summary total with source report total;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Moved process.** Which process moves out of spreadsheets? *Rubric:* 3 = the board sales summary;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 40)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -233,6 +265,14 @@ Counting rows when the question asks for distinct people gives wrong answers.
 - **EX014 — Free-text problem.** What did free-text store names cause? *Rubric:* 3 = one store split into several in reports;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Normalisation trade-off.** What can normalisation make harder? *Rubric:* 3 = queries;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 40)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Python for data checks
@@ -272,6 +312,14 @@ Reporting counts without totals hides the scale of problems.
 - **EX016 — Encoding issue.** What happened without specifying encoding? *Rubric:* 3 = accented names were garbled;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX017 — Birth year rule.** What range did the birth year check use? *Rubric:* 3 = 1910 to 2010;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX018 — Report order.** What order should a report follow? *Rubric:* 3 = what was checked, how much failed, why it matters, what next;; 2 = partly correct;; 1 = partial;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 40)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -313,6 +361,14 @@ Hand-picked samples overstate problems; sample randomly.
 - **EX020 — Sample bias.** Why not pick suspicious-looking records? *Rubric:* 3 = they are not typical and overstate problems;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX021 — Loyalty claim.** Why might the loyalty spending claim be wrong? *Rubric:* 3 = regular shoppers may be more likely to join;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 40)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Writing about data
@@ -352,6 +408,14 @@ Truncated axes exaggerate differences; start bars at zero.
 - **EX022 — Main finding.** What was Amara's one-sentence finding? *Rubric:* 3 = about one in five records lacks an email;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX023 — Chart fix.** How did Amara fix the chart? *Rubric:* 3 = started the axis at zero and added member counts;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX024 — Jargon replacement.** What replaced completeness ratio? *Rubric:* 3 = share of records with an email address;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 40)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -393,6 +457,14 @@ Bundled consent is not freely given; separate it.
 - **EX026 — Rights problem.** What problem did Amara find with rights requests? *Rubric:* 3 = no central log, some unanswered;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX027 — Recall data.** Which data support food safety recalls? *Rubric:* 3 = supplier and batch data;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — lesson 09 (chapter 09 of 40)
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Chapter 10 — Ethics and data
@@ -432,6 +504,14 @@ Legal does not mean acceptable; ask whether uses are fair and expected.
 - **EX028 — Pregnancy alternative.** What replaced the pregnancy inference plan? *Rubric:* 3 = discounts for members choosing a family interest;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX029 — App discount fix.** How did Amara address the app-only discount? *Rubric:* 3 = printed vouchers at tills;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX030 — Review timing.** When does ethical review work best? *Rubric:* 3 = early, before campaigns are designed;; 2 = partly correct;; 1 = late;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — lesson 10 (chapter 10 of 40)
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -473,6 +553,14 @@ Copying a full framework into a small organisation creates unused bureaucracy.
 - **EX032 — Five domains.** Name Khatri and Brown's five domains. *Rubric:* 3 = principles, quality, metadata, access, life cycle;; 2 = all;; 1 = some;; 0 = none.
 - **EX033 — Access practice.** How was access granted at Harbourline? *Rubric:* 3 = by IT on request without owner approval;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — lesson 11 (chapter 11 of 40)
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Chapter 12 — Roles and accountability
@@ -512,6 +600,14 @@ Naming stewards without allocating time makes the role disappear.
 - **EX034 — Loyalty owner.** Who owns loyalty data? *Rubric:* 3 = the marketing director;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX035 — Delegation limit.** What cannot be delegated to IT? *Rubric:* 3 = accountability;; 2 = partly correct;; 1 = tasks;; 0 = none.
 - **EX036 — Common failure.** What is the most common role failure? *Rubric:* 3 = naming stewards without giving them time;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — lesson 12 (chapter 12 of 40)
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -553,6 +649,14 @@ Long policies mixing levels go unread; separate and shorten.
 - **EX038 — Policy length.** How long was Amara's policy? *Rubric:* 3 = two pages;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX039 — Review flag.** When are documents flagged? *Rubric:* 3 = not reviewed for two years;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — lesson 13 (chapter 13 of 40)
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Chapter 14 — Data quality dimensions
@@ -592,6 +696,14 @@ Mandatory fields can produce fake values; consider behaviour.
 - **EX040 — Research basis.** Whose views did Wang and Strong start from? *Rubric:* 3 = data consumers;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX041 — Hardest dimension.** Which dimension is hardest to measure? *Rubric:* 3 = accuracy;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX042 — Email approach.** How should Harbourline encourage emails? *Rubric:* 3 = offer a clear benefit such as digital receipts;; 2 = partly correct;; 1 = mandatory;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — lesson 14 (chapter 14 of 40)
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -633,6 +745,14 @@ FAIR does not mean open; restricted data can still be findable.
 - **EX044 — Catalogue start.** What tool did Amara use first? *Rubric:* 3 = a simple shared table;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX045 — FAIR meaning.** What does FAIR stand for? *Rubric:* 3 = findable, accessible, interoperable, reusable;; 2 = all;; 1 = some;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — lesson 15 (chapter 15 of 40)
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Chapter 16 — Reference and master data
@@ -673,6 +793,14 @@ Automatic merges without review can combine different people.
 - **EX047 — Merge safeguard.** What safeguard applies before merging? *Rubric:* 3 = steward review of possible matches;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX048 — Survivorship email.** Which email survives? *Rubric:* 3 = the most recently confirmed;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — lesson 16 (chapter 16 of 40)
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Chapter 17 — Data architecture basics
@@ -712,6 +840,14 @@ Lakes without catalogues and owners become unusable.
 - **EX049 — Weak flows.** Where do data most often go missing? *Rubric:* 3 = manual exports;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX050 — Refund finding.** What did lineage reveal? *Rubric:* 3 = an undocumented exclusion of refunds;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX051 — Lake recommendation.** What should any lake have from day one? *Rubric:* 3 = catalogue entries, owners and retention rules;; 2 = all;; 1 = some;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — lesson 17 (chapter 17 of 40)
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -777,6 +913,14 @@ Field completeness overstates usable rows; report row completeness too.
 - **EX053 — Complete rows.** How many records are complete on all fields? *Rubric:* 3 = 2,594;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX054 — Birth year action.** What was decided about birth year? *Rubric:* 3 = not chased for everyone, needed only for age offers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — lesson 18 (chapter 18 of 40)
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-19"></a>
 
 ## Chapter 19 — Data quality rules
@@ -817,6 +961,14 @@ Rules that never change eventually reject valid data.
 - **EX056 — Month-long breach.** Who reviews issues below threshold for a month? *Rubric:* 3 = the governance group;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX057 — Postcode change.** Why did the postcode rule change? *Rubric:* 3 = a new region used a different format;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue studying — lesson 19 (chapter 19 of 40)
+
+[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Chapter 20 — Issue management
@@ -856,6 +1008,14 @@ Closing issues without verifying fixes lets problems return.
 - **EX058 — Points cause.** What caused missing loyalty points? *Rubric:* 3 = a till setting to keep card details offline was off;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — Closing evidence.** What evidence closed the points issue? *Rubric:* 3 = offline purchases over two weeks received points;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX060 — Log patterns.** What did the log show most issues related to? *Rubric:* 3 = store codes and member duplicates;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue studying — lesson 20 (chapter 20 of 40)
+
+[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -919,6 +1079,14 @@ Mapping bad codes downstream without fixing sources creates endless cleaning.
 - **EX062 — S41 cause.** Why did S41 appear? *Rubric:* 3 = a new store opened before being added to the list;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX063 — S00 cause.** What produced S00? *Rubric:* 3 = a test till left on the live network;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue studying — lesson 21 (chapter 21 of 40)
+
+[← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Chapter 22 — Data security for governance
@@ -958,6 +1126,14 @@ Security teams deciding access without knowing data leads to poor choices.
 - **EX064 — Access finding.** What did Amara find about loyalty access? *Rubric:* 3 = all head office staff could see full details;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX065 — Incident cause.** Why did the emailed spreadsheet incident happen? *Rubric:* 3 = no approved remote working route and easy extracts;; 2 = both;; 1 = one;; 0 = none.
 - **EX066 — Access review.** How often do owners review access lists? *Rubric:* 3 = quarterly;; 2 = partly correct;; 1 = wrong;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue studying — lesson 22 (chapter 22 of 40)
+
+[← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -999,6 +1175,14 @@ Collecting data just in case increases risk without benefit.
 - **EX068 — Bakery redesign.** How was the bakery proposal changed? *Rubric:* 3 = Harbourline sends offers itself to consenting members;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX069 — Forgotten database.** What did the inventory find? *Rubric:* 3 = an old survey database;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue studying — lesson 23 (chapter 23 of 40)
+
+[← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Chapter 24 — Data sharing agreements
@@ -1039,6 +1223,14 @@ Informal sharing arrangements drift beyond their original purpose.
 - **EX071 — Stale export.** What did monitoring find? *Rubric:* 3 = a supplier receiving a file five months after contract end;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Template terms.** Name three template terms. *Rubric:* 3 = purpose, fields, security, retention, breach notice, audit;; 2 = three;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue studying — lesson 24 (chapter 24 of 40)
+
+[← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-25"></a>
 
 ## Chapter 25 — Life cycle and records
@@ -1078,6 +1270,14 @@ Retention schedules without deletion jobs are only promises.
 - **EX073 — Neglected stages.** Which life cycle stages were neglected? *Rubric:* 3 = archiving and deletion;; 2 = both;; 1 = one;; 0 = none.
 - **EX074 — Loyalty retention.** How long are loyalty data kept after last activity? *Rubric:* 3 = three years;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX075 — Deletion places.** Where else besides live systems must deletion reach? *Rubric:* 3 = backups and extracts;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue studying — lesson 25 (chapter 25 of 40)
+
+[← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1139,6 +1339,14 @@ Deleting without checking dependencies can remove records still legally required
 - **EX077 — Pre-deletion check.** What did Amara confirm with finance first? *Rubric:* 3 = no tax records exist only in loyalty;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX078 — Marketing effect.** What did marketing lose? *Rubric:* 3 = a win-back segment;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue studying — lesson 26 (chapter 26 of 40)
+
+[← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Chapter 27 — Analytics and governance
@@ -1178,6 +1386,14 @@ Uncertified self-service reports multiply conflicting figures.
 - **EX079 — Model weakness.** Where does the churn model perform worse? *Rubric:* 3 = rural stores;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX080 — Segment problem.** Why did the segment underrepresent older customers? *Rubric:* 3 = it used birth year, which is often missing;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX081 — Self-service basis.** What should self-service reports use? *Rubric:* 3 = certified data sets;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue studying — lesson 27 (chapter 27 of 40)
+
+[← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1219,6 +1435,14 @@ Quiz scores alone do not show changed behaviour; check data indicators.
 - **EX083 — Session length.** How long are the sessions? *Rubric:* 3 = about thirty minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX084 — Fairer comparison.** What did the tutor suggest for fairer comparison? *Rubric:* 3 = staggering training across stores;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue studying — lesson 28 (chapter 28 of 40)
+
+[← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Chapter 29 — Measuring governance
@@ -1258,6 +1482,14 @@ Rewarding single numbers invites gaming; use several measures.
 - **EX085 — Most meaningful.** Which measure group matters most? *Rubric:* 3 = outcome measures;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX086 — Distortion fix.** How was the issues-closed measure changed? *Rubric:* 3 = closed with verified evidence plus reopening rate;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX087 — Board focus.** What does the board summary focus on? *Rubric:* 3 = outcomes and risks;; 2 = both;; 1 = one;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue studying — lesson 29 (chapter 29 of 40)
+
+[← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -1299,6 +1531,14 @@ Aiming for top maturity everywhere wastes resources in small organisations.
 - **EX089 — Agreed targets.** What targets were agreed? *Rubric:* 3 = level three everywhere, four for quality, in two years;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX090 — Bias reduction.** How can assessment bias be reduced? *Rubric:* 3 = include someone outside the data team;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue studying — lesson 30 (chapter 30 of 40)
+
+[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Chapter 31 — Change management
@@ -1338,6 +1578,14 @@ Treating resistance as obstruction misses design problems it reveals.
 - **EX091 — Drop-down fix.** What fixed the drop-down complaints? *Rubric:* 3 = sorting by store name with codes alongside;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX092 — Champion role.** What do data champions do? *Rubric:* 3 = answer questions locally and pass feedback to stewards;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX093 — Champion suggestion.** What did the first champions meeting suggest? *Rubric:* 3 = a laminated guide to common codes for tills;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue studying — lesson 31 (chapter 31 of 40)
+
+[← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1379,6 +1627,14 @@ Treating staff time as free underestimates governance costs.
 - **EX095 — Sensitivity purpose.** Why show sensitivity to assumptions? *Rubric:* 3 = readers see the case does not rely on optimism;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX096 — Questioned item.** Which estimate did the finance director question? *Rubric:* 3 = breach risk;; 2 = partly correct;; 1 = other;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue studying — lesson 32 (chapter 32 of 40)
+
+[← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Chapter 33 — Group project I: plan
@@ -1418,6 +1674,14 @@ Starting rules before the inventory leads to rework.
 - **EX097 — Amara's leads.** Which deliverables does Amara lead? *Rubric:* 3 = quality rules and retention;; 2 = both;; 1 = one;; 0 = none.
 - **EX098 — First deliverable.** Why must the inventory come first? *Rubric:* 3 = other deliverables depend on knowing what data exist;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX099 — Requirement risk response.** How will the group handle unclear requirements? *Rubric:* 3 = confirm requirements in writing after client meetings;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue studying — lesson 33 (chapter 33 of 40)
+
+[← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1459,6 +1723,14 @@ Sections written separately drift apart; agree names first.
 - **EX101 — Payment tokens.** Who should hold payment tokens? *Rubric:* 3 = only the payment processor;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX102 — Next-time change.** What would Amara do differently? *Rubric:* 3 = start a glossary on day one;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue studying — lesson 34 (chapter 34 of 40)
+
+[← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Chapter 35 — Placement
@@ -1498,6 +1770,14 @@ Refusing or complying automatically with unusual requests both risk mistakes; as
 - **EX103 — Persuasion method.** How did Amara get the commercial director's attention? *Rubric:* 3 = a one-page summary linking errors to shelf prices and complaints;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX104 — Complaint list condition.** What condition applied to the complaint list? *Rubric:* 3 = contact only about the complaint itself;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX105 — Dissertation idea.** What dissertation idea emerged? *Rubric:* 3 = whether data champions improve entry quality;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue studying — lesson 35 (chapter 35 of 40)
+
+[← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1539,6 +1819,14 @@ Before-and-after comparisons alone cannot separate effects from general trends.
 - **EX107 — Selection threat.** What is the selection threat here? *Rubric:* 3 = volunteer stores may already be more careful;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX108 — Real data needs.** What would real data require? *Rubric:* 3 = ethics approval and Harbourline permission;; 2 = both;; 1 = one;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue studying — lesson 36 (chapter 36 of 40)
+
+[← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Chapter 37 — Dissertation I: proposal
@@ -1578,6 +1866,14 @@ Planning analysis after seeing data invites biased choices.
 - **EX109 — Literature gap.** What gap did Amara find? *Rubric:* 3 = little research on data champion networks;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX110 — Store design.** How many stores receive champions? *Rubric:* 3 = ten of twenty;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX111 — Pre-registration.** Why write the plan before generating data? *Rubric:* 3 = to avoid adjusting analysis toward a preferred result;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue studying — lesson 37 (chapter 37 of 40)
+
+[← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -1619,6 +1915,14 @@ Recovering a built-in effect shows the method works, not that the effect is real
 - **EX113 — Faster-improving scenario.** What happens if champion stores were already improving faster? *Rubric:* 3 = the method overstates the effect;; 2 = partly correct;; 1 = understates;; 0 = none.
 - **EX114 — Recommendation.** What did Amara recommend to Harbourline? *Rubric:* 3 = introduce champions in stages for real evaluation;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue studying — lesson 38 (chapter 38 of 40)
+
+[← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-39"></a>
 
 ## Chapter 39 — Dissertation III: writing
@@ -1659,6 +1963,14 @@ Unchecked citations risk errors and misconduct; verify each one.
 - **EX116 — Reproducibility support.** How did Amara support reproducibility? *Rubric:* 3 = documented generation and commented code in an appendix;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX117 — Citation identifiers.** What did she include for articles where available? *Rubric:* 3 = digital object identifiers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue studying — lesson 39 (chapter 39 of 40)
+
+[← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-40"></a>
 
 ## Chapter 40 — Presentation and viva
@@ -1698,6 +2010,14 @@ Defensive answers to valid questions weaken a strong study.
 - **EX118 — Reporting bias answer.** How did Amara address reporting bias? *Rubric:* 3 = automated rules applied equally to all stores;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX119 — Examiner suggestion.** What did examiners suggest? *Rubric:* 3 = explore effects on different invalid entry types;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX120 — Next role.** What role will Amara take? *Rubric:* 3 = steward in Harbourline's data team;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue studying — lesson 40 (chapter 40 of 40)
+
+[← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -77,6 +77,14 @@ Praticar em sistemas reais sem permissão pode causar dano e pode ser ilegal.
 
 - **EX004 — Hábito seguro.** Cite uma das três regras do Sr. Appiah. *Rubrica:* 3 = praticar apenas com permissão;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 18)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — A informação numa rede de centros de jardinagem
@@ -120,6 +128,14 @@ Listas impressas de clientes deixadas nos balcões podem ser lidas por qualquer 
 - **EX007 — Lista no balcão.** O que Chloe encontrou num balcão? *Rubrica:* 3 = uma lista impressa de entregas de clientes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX008 — Problema da pasta.** O que há de errado com a pasta compartilhada? *Rubrica:* 3 = todas as contas da equipe podem abri-la;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 18)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -165,6 +181,14 @@ Os logins compartilhados tornam impossível saber quem fez o quê.
 
 - **EX012 — Menor privilégio.** O que significa o menor privilégio? *Rubrica:* 3 = apenas o acesso necessário para a tarefa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 18)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Senhas e entrada nos sistemas
@@ -208,6 +232,14 @@ Redefinir uma senha sem confirmar a identidade pode deixar um atacante entrar.
 - **EX015 — Verificação na redefinição.** Como a identidade é confirmada antes de uma redefinição? *Rubrica:* 3 = ligação de volta para o número dos registros dos funcionários;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX016 — Bilhete adesivo.** Onde foi encontrada a senha de administração da loja? *Rubrica:* 3 = num bilhete adesivo no escritório;; 2 = parcialmente correto;; 1 = outro lugar;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 18)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -253,6 +285,14 @@ Scripts que pulam em silêncio as linhas ruins podem esconder problemas.
 
 - **EX020 — Saída restrita.** Por que manter restritas as listas de dispositivos? *Rubrica:* 3 = poderiam ajudar um atacante;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 18)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Noções básicas de segurança
@@ -296,6 +336,14 @@ Depender de um único controle não deixa proteção alguma quando ele falha.
 - **EX023 — Camada da loja.** Cite uma camada da loja on-line. *Rubrica:* 3 = entrada com múltiplos fatores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX024 — Princípio da usabilidade.** Que princípio diz que a segurança precisa ser fácil de usar? *Rubrica:* 3 = aceitabilidade psicológica;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 18)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -367,6 +415,14 @@ Os dispositivos de reserva mantidos desligados perdem as atualizações sem que 
 - **EX027 — Tablets de reserva.** Por que dois tablets estavam atrasados? *Rubrica:* 3 = ficavam numa gaveta como reserva;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX028 — Configuração noturna.** Que configuração o Sr. Doyle muda nos tablets? *Rubrica:* 3 = atualizações automáticas à noite durante a carga;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 18)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -443,6 +499,14 @@ Tratar uma regra simples como perfeita leva as pessoas a confiar nas mensagens q
 
 - **EX032 — Limiar mais baixo.** O que acontece se o limiar cair para um sinal? *Rubrica:* 3 = mais alarmes falsos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 18)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados pessoais no trabalho
@@ -486,6 +550,14 @@ Esconder um erro com dados impede a organização de limitar o dano.
 - **EX035 — Tratamento dos pedidos.** Quem trata os pedidos dos clientes sobre seus dados? *Rubrica:* 3 = a gerente do escritório;; 2 = parcialmente correto;; 1 = o caixa;; 0 = nenhuma.
 
 - **EX036 — Resposta ao erro.** O que a equipe deve fazer depois de um e-mail enviado ao destinatário errado? *Rubrica:* 3 = comunicá-lo imediatamente;; 2 = parcialmente correto;; 1 = escondê-lo;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 18)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -531,6 +603,14 @@ Presumir que uma mudança de permissão funcionou sem testá-la pode deixar dado
 
 - **EX040 — Configuração da tela.** Que configuração ajuda com as telas desbloqueadas? *Rubrica:* 3 = bloqueio automático depois de alguns minutos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 18)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Noções básicas de redes sem fio e de rede
@@ -574,6 +654,14 @@ Dispositivos de visitantes na rede da equipe podem alcançar os caixas e os tabl
 - **EX043 — Dispositivo desconhecido.** Qual era o dispositivo desconhecido? *Rubrica:* 3 = a caixa de som inteligente de um funcionário;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX044 — Senha padrão do roteador.** Por que trocar as senhas padrão dos roteadores? *Rubrica:* 3 = são publicadas na internet;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 18)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -619,6 +707,14 @@ Os arquivos salvos fora das pastas com backup se perdem se o dispositivo falhar.
 
 - **EX048 — Primeiro passo.** Qual é o primeiro passo se houver suspeita de ransomware? *Rubrica:* 3 = parar de usar o dispositivo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 18)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Comunicando problemas
@@ -662,6 +758,14 @@ Comunicações vagas atrasam as pessoas que precisam agir com base nelas.
 - **EX051 — Pedido no caixa.** O que um cliente pediu para fazer? *Rubrica:* 3 = ligar um celular num caixa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX052 — Acompanhamento.** Com que frequência Chloe confere as comunicações abertas? *Rubrica:* 3 = toda semana;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 18)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -707,6 +811,14 @@ Escrever senhas nos documentos as expõe a todos os leitores.
 
 - **EX056 — Datas nos documentos.** Por que acrescentar datas aos documentos? *Rubrica:* 3 = os leitores sabem se estão atualizados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 18)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Trabalhando com o responsável de TI
@@ -750,6 +862,14 @@ Conceder acesso sem aprovação pode dar às pessoas dados que elas não deveria
 - **EX059 — Aprovação necessária.** Cite uma ação que precisa de aprovação. *Rubrica:* 3 = dar acesso de administrador;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX060 — Meta do retorno.** Que meta Chloe define? *Rubrica:* 3 = avisá-lo em até um dia se uma tarefa atrasar;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 18)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -795,6 +915,14 @@ Deixar visitantes inesperados entrarem nas áreas da equipe sem verificação tr
 
 - **EX064 — Ponto a melhorar.** O que Chloe quer melhorar? *Rubrica:* 3 = o entendimento de redes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 18)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Avaliação prática
@@ -839,6 +967,14 @@ Desativar uma configuração de segurança sem aprovação para fazer algo funci
 
 - **EX068 — Teste oculto.** Qual era o teste oculto? *Rubrica:* 3 = desativar uma configuração de segurança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 18)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Revisão e próximos passos
@@ -882,6 +1018,14 @@ Depender de fontes antigas sem conferir as edições pode espalhar orientações
 - **EX071 — Ponto fraco.** Que área Chloe planeja fortalecer? *Rubrica:* 3 = redes;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 - **EX072 — Tema do próximo curso.** O que cobre o curso de governança de dados? *Rubrica:* 3 = quem decide como as informações são coletadas e usadas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 18)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -77,6 +77,14 @@ A question about whether staff are secure cannot be answered with any measure.
 - **EX006 — Logged reasons.** Give an exclusion reason Priya logs. *Rubric:* 3 = no behavioural measure;; 2 = one;; 1 = vague;; 0 = none.
 - **EX007 — Included count.** How many studies are included? *Rubric:* 3 = twenty-three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — lesson 01 (chapter 01 of 08)
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Information security: advanced seminar
@@ -121,6 +129,14 @@ Assuming a control works because a standard requires it confuses having with wor
 - **EX013 — Secondary outcome.** What secondary outcome is added? *Rubric:* 3 = reporting rates;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX014 — Expected size.** What effect size does Priya expect? *Rubric:* 3 = a few percentage points;; 2 = partly correct;; 1 = large;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — lesson 02 (chapter 02 of 08)
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Chapter 3 — Study design, ethics and reproducibility
@@ -164,6 +180,14 @@ Using simulation results to discipline staff undermines trust and reporting.
 - **EX019 — Reporting level.** At what level are results reported? *Rubric:* 3 = department level;; 2 = partly correct;; 1 = individual;; 0 = none.
 - **EX020 — Uncertainty method.** How is uncertainty estimated? *Rubric:* 3 = bootstrap with a thousand resamples and fixed seed;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — lesson 03 (chapter 03 of 08)
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Information security: competing explanations
@@ -206,6 +230,14 @@ Ignoring a fall in reporting would hide a harmful side effect.
 - **EX024 — Side effect.** What harmful side effect might feedback cause? *Rubric:* 3 = fewer reports of suspicious emails;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX025 — Supervisor addition.** What weakening result does Dr. Bello add? *Rubric:* 3 = fall only on repeated templates;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX026 — Advance purpose.** Why record weakening results in advance? *Rubric:* 3 = prevents reinterpretation afterwards;; 2 = partly correct;; 1 = vague;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — lesson 04 (chapter 04 of 08)
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -279,6 +311,14 @@ Counting scanner clicks as human clicks inflates measured risk.
 - **EX031 — Threshold test.** Which alternative threshold is tested? *Rubric:* 3 = five seconds;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX032 — New outcome.** What is the new primary outcome? *Rubric:* 3 = human click rate excluding two-second clicks;; 2 = partly correct;; 1 = raw;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — lesson 05 (chapter 05 of 08)
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-06"></a>
 
 ## Chapter 6 — Data collection and analysis
@@ -349,6 +389,14 @@ Treating a simulation click rate as a breach rate overstates the finding.
 - **EX037 — Reporting result.** What happened to report rates? *Rubric:* 3 = rose slightly in feedback departments;; 2 = partly correct;; 1 = fell;; 0 = none.
 - **EX038 — Proxy limit.** Why not claim feedback prevents breaches? *Rubric:* 3 = simulation clicks are a proxy;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — lesson 06 (chapter 06 of 08)
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Chapter 7 — Dissertation writing and limitations
@@ -392,6 +440,14 @@ Generic disclaimers do not help readers judge a result.
 - **EX043 — Summary length.** How long is the team summary? *Rubric:* 3 = two pages;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX044 — Revised wording.** What wording was revised? *Rubric:* 3 = sentences implying carelessness;; 2 = partly correct;; 1 = vague;; 0 = none.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — lesson 07 (chapter 07 of 08)
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Independent review and defense
@@ -434,6 +490,14 @@ Presenting a three-department result as definitive overstates certainty.
 - **EX048 — Committee decision.** What does the committee decide? *Rubric:* 3 = extend to two departments, keep one comparison;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX049 — Supplier request.** What does the committee ask the supplier for? *Rubric:* 3 = scanner addresses in exports;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Practitioner paper.** What does Dr. Bello recommend for a practitioner paper? *Rubric:* 3 = the scanner finding;; 2 = partly correct;; 1 = other;; 0 = none.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — lesson 08 (chapter 08 of 08)
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

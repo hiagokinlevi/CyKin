@@ -92,6 +92,14 @@ As estimativas de perda são incertas. As estimativas de horas podem omitir esfo
 
 Decisões avançadas enquadram opções, pesam perda e ônus e registram a justificativa abertamente.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 12)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: prática atual
@@ -133,6 +141,14 @@ Conversas com colegas são anedóticas. Orientação não é evidência de efeit
 ### Síntese
 
 A prática atual muitas vezes fica atrás das evidências, e as orientações ajudam a mapear as lacunas.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 12)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -192,6 +208,14 @@ A transferibilidade é um julgamento. Os estudos publicados favorecem resultados
 
 As evidências especializadas são avaliadas pelo desenho, lidas com incerteza e transferidas com julgamento explícito.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 12)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco avançado e ética
@@ -233,6 +257,14 @@ As bancas podem aprovar conteúdo limítrofe. As revisões éticas podem virar r
 ### Síntese
 
 O risco centrado nas pessoas aponta para controles de processo, e a governança torna a prática ética duradoura.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 12)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -298,6 +330,14 @@ As pontuações são subjetivas. Desenhos combinados podem sobrecarregar as equi
 ### Síntese
 
 Alternativas avaliadas com pesos acordados, com testes de sensibilidade, sustentam uma seleção robusta.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 12)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -369,6 +409,14 @@ Avaliações curtas não captam efeitos de longo prazo. Os escritórios diferem 
 
 Avaliações controladas podem ser justas, éticas e informativas quando a implantação é escalonada e randomizada.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 12)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fatores humanos e política cibernética: integração organizacional
@@ -411,6 +459,14 @@ A integração leva tempo. O mapeamento de frameworks pode virar papelada.
 
 A integração incorpora o programa a outras funções e trata a resistência como informação.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 12)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fatores humanos e política cibernética: casos difíceis
@@ -452,6 +508,14 @@ O apoio pode ser visto como leniência. O engajamento dos executivos pode se dis
 ### Síntese
 
 Casos difíceis exigem princípios consistentes que protejam quem reporta e corrijam as causas sistêmicas.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 12)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -513,6 +577,14 @@ O comprometimento dos campeões varia. Dados trimestrais são ruidosos.
 
 A liderança cria condições seguras, e a garantia relata as evidências com incerteza honesta.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 12)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
@@ -554,6 +626,14 @@ A crítica pode descambar para a busca de defeitos. As implicações podem estic
 ### Síntese
 
 A leitura crítica pesa o que os estudos conseguem sustentar e os traduz com cuidado para a prática.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 12)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -616,6 +696,14 @@ Períodos curtos enganam. A perda de chaves exige uma boa recuperação.
 
 Projetos aplicados entregam controles com os usuários, medem o ônus e relatam os limites.
 
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 12)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -657,6 +745,14 @@ As revisões podem ser autocomplacentes. Os guias de transferência simplificam 
 ### Síntese
 
 A revisão final conecta as partes, separa princípios de detalhes e se compromete com o aprendizado contínuo.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 12)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -91,6 +91,14 @@ Porcentagens escondem contagens pequenas. As taxas-base mudam com o tempo.
 
 Razões, taxas de base e aritmética conferida são as primeiras ferramentas para raciocinar sobre o comportamento de segurança.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue estudando — aula 01 (capítulo 01 de 40)
+
+[← Início do curso](../../README.md) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 02 →](#ch-02)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Sistemas computacionais
@@ -130,6 +138,14 @@ Mapas de jornada simplificam o trabalho real. Leitores de cartão custam dinheir
 ### Síntese
 
 A segurança vive nos pontos em que as pessoas interagem com os sistemas, e o encaixe com o trabalho é o que mais importa.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue estudando — aula 02 (capítulo 02 de 40)
+
+[← Capítulo 01](#ch-01) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -204,6 +220,14 @@ Linhas quebradas podem esconder problemas reais. Testes pequenos não provam a c
 
 Scripts simples e testados transformam registros em contagens que levantam perguntas úteis.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue estudando — aula 03 (capítulo 03 de 40)
+
+[← Capítulo 02](#ch-02) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Escrita acadêmica
@@ -244,6 +268,14 @@ Ressalvas podem virar imprecisão. Os relatórios atualizam seus números todo a
 
 A escrita acadêmica estrutura afirmações, cita com precisão e mantém a evidência separada da opinião.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue estudando — aula 04 (capítulo 04 de 40)
+
+[← Capítulo 03](#ch-03) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
@@ -283,6 +315,14 @@ As táticas evoluem. Na prática, as categorias se sobrepõem.
 ### Síntese
 
 O letramento em segurança abrange conscientização, táticas e a distância entre saber e fazer.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — aula 05 (capítulo 05 de 40)
+
+[← Capítulo 04](#ch-04) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -346,6 +386,14 @@ As rotas reais de reporte são informais. Tempos de ociosidade podem incomodar o
 
 Conjuntos, grafos e lógica expõem as diferenças entre as regras e rotas pretendidas e as reais.
 
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — aula 06 (capítulo 06 de 40)
+
+[← Capítulo 05](#ch-05) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redes e protocolos
@@ -385,6 +433,14 @@ As etiquetas passam a ser ignoradas se tudo for externo. As verificações depen
 ### Síntese
 
 Os limites dos protocolos deixam o julgamento para as pessoas; por isso, as interfaces precisam apoiá-lo.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — aula 07 (capítulo 07 de 40)
+
+[← Capítulo 06](#ch-06) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -456,6 +512,14 @@ Linhas puladas podem enviesar os resultados. As taxas de unidades pequenas são 
 
 Funções, leitura correta de CSV e premissas documentadas tornam as medidas confiáveis.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — aula 08 (capítulo 08 de 40)
+
+[← Capítulo 07](#ch-07) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Dados e bancos de dados
@@ -517,6 +581,14 @@ Remover os nomes impede alguns acompanhamentos. Os rótulos de categoria podem s
 
 Tabelas bem desenhadas, consultas simples e dados minimizados sustentam uma análise segura.
 
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — aula 09 (capítulo 09 de 40)
+
+[← Capítulo 08](#ch-08) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e prática autorizada
@@ -557,6 +629,14 @@ As regras podem ser ignoradas sob pressão. Organizações pequenas podem não t
 
 A prática ética exige consentimento, salvaguardas para o uso de engano e regras de simulação respeitosas.
 
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — aula 10 (capítulo 10 de 40)
+
+[← Capítulo 09](#ch-09) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Sistemas operacionais
@@ -596,6 +676,14 @@ Atualizações noturnas falham se os dispositivos estiverem desligados. Remover 
 ### Síntese
 
 As configurações do sistema operacional podem transferir o esforço de segurança das pessoas para os sistemas.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — aula 11 (capítulo 11 de 40)
+
+[← Capítulo 10](#ch-10) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -657,6 +745,14 @@ Os intervalos supõem respostas independentes. Uma simulação é um retrato ún
 
 As proporções precisam de intervalos, as comparações precisam de cuidado e os grupos pequenos precisam de proteção.
 
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — aula 12 (capítulo 12 de 40)
+
+[← Capítulo 11](#ch-11) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Identidade e acesso
@@ -697,6 +793,14 @@ Chaves podem ser perdidas. Acabar com as trocas forçadas exige detecção de co
 
 A autenticação utilizável combina fatores de formas que convêm à equipe e resistem ao engano.
 
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — aula 13 (capítulo 13 de 40)
+
+[← Capítulo 12](#ch-12) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Fundamentos de privacidade
@@ -736,6 +840,14 @@ Os procedimentos podem atrasar pedidos urgentes legítimos. Agregados ainda pode
 ### Síntese
 
 A privacidade protege associados e equipe, e os procedimentos tiram a pressão de quem atende no balcão.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — aula 14 (capítulo 14 de 40)
+
+[← Capítulo 13](#ch-13) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -791,6 +903,14 @@ As medidas de resultado podem ser ruidosas. Ataques não reportados são invisí
 
 Medidas de resultado válidas, coletadas com respeito, mostram se um programa ajuda.
 
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — aula 15 (capítulo 15 de 40)
+
+[← Capítulo 14](#ch-14) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura de segurança
@@ -830,6 +950,14 @@ As camadas acrescentam custo e complexidade. Os alertas precisam de pessoas para
 ### Síntese
 
 A arquitetura em camadas posiciona as pessoas de forma deliberada e absorve os seus erros inevitáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — aula 16 (capítulo 16 de 40)
+
+[← Capítulo 15](#ch-15) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -871,6 +999,14 @@ Ferramentas invisíveis podem esconder falhas. A criptografia central exige recu
 
 A criptografia protege melhor quando pede poucas decisões às pessoas.
 
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — aula 17 (capítulo 17 de 40)
+
+[← Capítulo 16](#ch-16) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Métodos de pesquisa I
@@ -910,6 +1046,14 @@ Voluntários podem diferir dos demais. Questionários dependem de autorrelato ho
 ### Síntese
 
 Perguntas claras, métodos adequados e ética cuidadosa fazem pequenos estudos valerem a pena.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — aula 18 (capítulo 18 de 40)
+
+[← Capítulo 17](#ch-17) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -951,6 +1095,14 @@ As teorias se sobrepõem. Os itens do questionário podem não capturar plenamen
 
 A teoria define o que procurar no comportamento de segurança e orienta a medição.
 
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — aula 19 (capítulo 19 de 40)
+
+[← Capítulo 18](#ch-18) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Fatores humanos e política cibernética: casos fundamentais
@@ -990,6 +1142,14 @@ Casos sintéticos podem deixar de fora detalhes reais. Regras simples têm exce�
 ### Síntese
 
 Os casos mostram que a engenharia social explora boas intenções e procedimentos ausentes.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — aula 20 (capítulo 20 de 40)
+
+[← Capítulo 19](#ch-19) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -1052,6 +1212,14 @@ As taxas das etapas são estimativas grosseiras. As etapas interagem.
 
 Um modelo do sistema mostra onde os reportes se perdem e qual etapa melhorar primeiro.
 
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — aula 21 (capítulo 21 de 40)
+
+[← Capítulo 20](#ch-20) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Fatores humanos e política cibernética: dados e dependências
@@ -1091,6 +1259,14 @@ Caixas postais compartilhadas precisam de responsáveis claros. Formulários em 
 ### Síntese
 
 Processos robustos evitam depender de pessoas únicas e minimizam os dados sensíveis.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — aula 22 (capítulo 22 de 40)
+
+[← Capítulo 21](#ch-21) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1150,6 +1326,14 @@ Viés de resposta no questionário. A codificação continua sendo interpretativ
 
 Os questionários mostram quão comuns são as barreiras, e as entrevistas explicam por que elas importam.
 
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — aula 23 (capítulo 23 de 40)
+
+[← Capítulo 22](#ch-22) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Fatores humanos e política cibernética: controles
@@ -1189,6 +1373,14 @@ As estimativas de ônus podem ser otimistas. Os nudges perdem força com a famil
 ### Síntese
 
 Controles rastreados até as evidências, incentivados de forma ética e verificados quanto ao ônus têm mais chance de perdurar.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — aula 24 (capítulo 24 de 40)
+
+[← Capítulo 23](#ch-23) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1245,6 +1437,14 @@ Os voluntários não são típicos. As condições do laboratório diferem das d
 
 Testes de usabilidade contidos mostram o efeito de pequenas mudanças de desenho e os seus limites.
 
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — aula 25 (capítulo 25 de 40)
+
+[← Capítulo 24](#ch-24) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Fatores humanos e política cibernética: métodos II
@@ -1300,6 +1500,14 @@ Grupos não aleatórios podem diferir. Um mês é pouco tempo.
 
 Dados de antes e depois exigem considerar os fatores de confusão e, sempre que possível, grupos de comparação.
 
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — aula 26 (capítulo 26 de 40)
+
+[← Capítulo 25](#ch-25) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Fatores humanos e política cibernética: verificação
@@ -1339,6 +1547,14 @@ As verificações mostram um momento no tempo. Mudanças de layout podem reintro
 ### Síntese
 
 A verificação confere os controles tanto do lado técnico quanto do lado do usuário e registra as evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — aula 27 (capítulo 27 de 40)
+
+[← Capítulo 26](#ch-26) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -1398,6 +1614,14 @@ As classes de fatores se sobrepõem. Cinco quase incidentes são um conjunto peq
 
 A análise de quase-incidentes sem culpados encontra fatores do sistema e transforma hábitos em regras.
 
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — aula 28 (capítulo 28 de 40)
+
+[← Capítulo 27](#ch-27) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Fatores humanos e política cibernética: operações
@@ -1437,6 +1661,14 @@ Os calendários escorregam sob pressão. Poucas simulações geram dados limitad
 ### Síntese
 
 Operações sustentáveis usam pequenas rotinas, simulações éticas limitadas e um tratamento ágil do retorno recebido.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — aula 29 (capítulo 29 de 40)
+
+[← Capítulo 28](#ch-28) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -1497,6 +1729,14 @@ Dados observacionais não provam causalidade. Os grupos podem diferir.
 
 A análise observacional, lida com cautela, pode sustentar mudanças baratas baseadas em evidências.
 
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — aula 30 (capítulo 30 de 40)
+
+[← Capítulo 29](#ch-29) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Fatores humanos e política cibernética: casos avançados
@@ -1536,6 +1776,14 @@ A proporcionalidade exige julgamento. Modelos abertos carregam risco residual.
 ### Síntese
 
 Respostas proporcionais ajustam o risco aos papéis e protegem a missão da organização.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — aula 31 (capítulo 31 de 40)
+
+[← Capítulo 30](#ch-30) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -1577,6 +1825,14 @@ A tradução pode simplificar demais. As reuniões podem ser dominadas pelas voz
 
 O trabalho com fatores humanos traduz entre disciplinas e cria entendimento compartilhado.
 
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — aula 32 (capítulo 32 de 40)
+
+[← Capítulo 31](#ch-31) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Métodos de pesquisa II
@@ -1616,6 +1872,14 @@ Comparações entre organizações sofrem com fatores de confusão. As práticas
 ### Síntese
 
 Estudos comparativos precisam de medidas consistentes, ameaças declaradas abertamente e análise planejada de antemão.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — aula 33 (capítulo 33 de 40)
+
+[← Capítulo 32](#ch-32) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -1675,6 +1939,14 @@ Seis meses é pouco tempo. As redes enfrentam ataques diferentes.
 
 As comparações devem ser interpretadas com cautela e concluídas com equilíbrio.
 
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — aula 34 (capítulo 34 de 40)
+
+[← Capítulo 33](#ch-33) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Proposta de trabalho de conclusão
@@ -1714,6 +1986,14 @@ O número de voluntários oscila. Amostras pequenas limitam a avaliação.
 ### Síntese
 
 Uma proposta de projeto final parte das descobertas, define objetivos mensuráveis e planeja a ética desde cedo.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — aula 35 (capítulo 35 de 40)
+
+[← Capítulo 34](#ch-34) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -1755,6 +2035,14 @@ O retorno informal não é representativo. Os voluntários variam em confiança.
 
 A prática comunitária estende as orientações de segurança ao público com respeito e atenção ao medo.
 
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — aula 36 (capítulo 36 de 40)
+
+[← Capítulo 35](#ch-35) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Seminário de revisão de evidências
@@ -1795,6 +2083,14 @@ As revisões podem deixar estudos de fora. As perguntas de qualidade são simple
 
 A revisão de evidências pesa a qualidade dos estudos e declara o que se sabe e o que não se sabe.
 
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — aula 37 (capítulo 37 de 40)
+
+[← Capítulo 36](#ch-36) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-38"></a>
 
 ## Capítulo 38 — Implementação do trabalho de conclusão
@@ -1834,6 +2130,14 @@ Contagens não mostram a leitura. Formulários podem ser mal utilizados.
 ### Síntese
 
 A implementação constrói, distribui e adapta, com cada mudança registrada.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — aula 38 (capítulo 38 de 40)
+
+[← Capítulo 37](#ch-37) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
@@ -1896,6 +2200,14 @@ Respondentes diferentes antes e depois. Efeitos sazonais.
 
 As avaliações comparam com critérios, analisam amostras pequenas com cuidado e relatam os limites.
 
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — aula 39 (capítulo 39 de 40)
+
+[← Capítulo 38](#ch-38) · [Índice das aulas](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continue para a próxima aula já escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-40"></a>
 
 ## Capítulo 40 — Tese e apresentação
@@ -1935,6 +2247,14 @@ Um único caso limita a generalização. A reflexão pode ser seletiva.
 ### Síntese
 
 Uma tese conecta perguntas, métodos e descobertas honestas, e a reflexão mostra o crescimento.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — aula 40 (capítulo 40 de 40)
+
+[← Capítulo 39](#ch-39) · [Índice das aulas](../SUBJECTS.md) · [Próximo curso pelo índice →](../SUBJECTS.md)
+
+O índice aponta para o próximo curso do percurso de estudos.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
