@@ -1410,7 +1410,7 @@ Because the balancer replaced client addresses with its own for some requests, t
 
 ### Worked example
 
-Amara proposes forwarding load-balancer logs and adding the original client address header to web logs. Paolo approves after checking that the header cannot be trusted from outside: the balancer overwrites any header a client sends, so the recorded address is reliable.
+Before that change goes in, Paolo approves it only after checking that the header cannot be trusted from outside: the balancer overwrites any header a client sends, so the recorded address is reliable.
 
 > **Synthetic case.** The architecture and zones are invented.
 
@@ -2270,7 +2270,7 @@ Reporting only the mean would suggest the team typically takes ten minutes, when
 
 Kokulu et al. (2019) found metric mismatches common in SOCs. Rewarding fast closure can produce careless closure. Pair speed metrics with quality checks, such as reviewed samples of closed alerts.
 
-Once a number becomes a target, people find ways to move it that do not reflect real improvement. If analysts are judged by alerts closed per hour, quick closures without investigation become rational. Sampling closed alerts for quality makes careless closure visible. Using several metrics together makes any single one harder to game.
+Once a number becomes a target, people find ways to move it that do not reflect real improvement. If analysts are judged by alerts closed per hour, quick closures without investigation become rational. Using several metrics together makes any single one harder to game. The sample of closed alerts is drawn at random each week, so analysts cannot predict which closures will be reviewed.
 
 ### 29.5 Context
 
@@ -2527,7 +2527,7 @@ Sources can report how many events they sent, and the SIEM knows how many it sto
 
 If availability falls below target, new features pause and reliability work takes priority until the budget recovers.
 
-A 99.5% target leaves 0.5% of time as an allowance for downtime. When that allowance is used up, reliability work takes priority over new rules and features. This gives a clear, pre-agreed rule for balancing new work against stability, instead of a fresh argument each time something breaks. The budget resets each quarter. Product managers and SOC leads agree this rule in advance, so pausing feature work when the budget is spent is routine rather than a dispute.
+A 99.5% target leaves 0.5% of time as an allowance for downtime. This gives a clear, pre-agreed rule for balancing new work against stability, instead of a fresh argument each time something breaks. The budget resets each quarter; at 99.5%, the allowance is about eleven hours per quarter. Product managers and SOC leads agree this rule in advance, so pausing feature work when the budget is spent is routine rather than a dispute.
 
 ### 32.7 Case
 
@@ -2909,7 +2909,7 @@ Confirming validity first avoids investigating alerts caused by broken parsing o
 
 Escalation paths name who to call for each alert type, with times. Analysts never hesitate to escalate; false escalations are reviewed without blame.
 
-Hesitation is dangerous: an analyst who waits to be sure may lose the time needed to contain an attack. Reviewing false escalations without blame keeps analysts willing to escalate. The review asks what information would have helped decide, which often leads to better enrichment or clearer playbooks. Contact lists are checked weekly. When a named person does not answer within the stated time, the path lists who comes next, so analysts never wait on a single phone.
+Hesitation is dangerous: an analyst who waits to be sure may lose the time needed to contain an attack. The review asks what information would have helped decide, which often leads to better enrichment or clearer playbooks. Contact lists are checked weekly. When a named person does not answer within the stated time, the path lists who comes next, so analysts never wait on a single phone.
 
 ### 37.4 Workload
 
@@ -3752,7 +3752,7 @@ The threshold of three times a five-minute gap gives fifteen minutes; with the c
 
 After forwarding restarts, buffered events arrive; reconciliation shows 99.2% of the hour's events recovered, with the rest lost when the local buffer filled.
 
-Local buffers hold events while forwarding is stopped and send them when it resumes. Recovering 99.2% shows the buffer worked for most of the hour. The 0.8% lost when it filled shows the buffer was too small for an hour's gap. Reconciliation counts make the loss measurable instead of a guess. Amara notes which events were lost by time range, so investigators know exactly which minutes are incomplete.
+Local buffers hold events while forwarding is stopped and send them when it resumes. The 0.8% lost when it filled shows the buffer was too small for an hour's gap. Reconciliation counts make the loss measurable instead of a guess. Amara notes which events were lost by time range, so investigators know exactly which minutes are incomplete. Her follow-up ticket asks for a larger buffer, sized from the event volume measured during that hour.
 
 ### 47.6 Improvements
 
@@ -3914,7 +3914,7 @@ Plain language makes the thesis accessible to both examiners. Defined terms prev
 
 A short appendix gives a reusable checklist for other SOCs with agentless sites.
 
-Other SOCs with agentless sites face the same problem. A checklist distils the project into steps they can follow: confirm boundary logging, link an approved list to inventory, test with timed injections, validate with purple-team simulations. It turns a thesis into something useful beyond the university. Each item names the evidence that showed it mattered at Lindqvist, so readers can judge whether it applies to their own sites. The checklist fits on one page and avoids product names, which keeps it useful regardless of tools.
+A checklist distils the project into steps they can follow: confirm boundary logging, link an approved list to inventory, test with timed injections, validate with purple-team simulations. It turns a thesis into something useful beyond the university. Each item names the evidence that showed it mattered at Lindqvist, so readers can judge whether it applies to their own sites. The checklist fits on one page and avoids product names, which keeps it useful regardless of tools.
 
 ### Writing schedule
 
@@ -3966,7 +3966,7 @@ The two examiners bring different perspectives: the academic checks method and r
 
 Problem and evidence of need; requirements; design and review; results against requirements; failures and fixes; remaining gaps; lessons.
 
-The order follows the thesis argument. Including failures and fixes shows learning, not only success. Remaining gaps and lessons show maturity. Amara rehearses with Paolo and a classmate, timing each part so she does not run out of time before the results. Slides carry few words and clear figures, such as the stacked stage-time bars, which the examiners can read quickly. Every result slide names its evidence ID so examiners can check the dossier during questions.
+The order follows the thesis argument. Including failures and fixes shows learning, not only success. Amara rehearses with Paolo and a classmate, timing each part so she does not run out of time before the results. Slides carry few words and clear figures, such as the stacked stage-time bars, which the examiners can read quickly. Every result slide names its evidence ID so examiners can check the dossier during questions.
 
 ### 50.3 Expected questions
 
