@@ -89,7 +89,9 @@ Pick one service you can legitimately describe (a home lab or the synthetic serv
 - Mapping servers but not identities and pipelines, which are the most common shared failure domains.
 - Listing a team as owner without a reachable person or rota.
 - Treating the map as finished; it decays with every change unless tied to change management (Chapter 21).
-- Recording "backed up" without a tested restore time. Each of these errors appeared in Fernmoor's first map. `svc-patch` was missing as a component, the load balancer had no named owner, and the database restore was recorded without a time. Correcting them took a few days of conversation with owners, far less than discovering them during a case at night.
+- Recording "backed up" without a tested restore time.
+
+Each of these errors appeared in Fernmoor's first map. `svc-patch` was missing as a component, the load balancer had no named owner, and the database restore was recorded without a time. Correcting them took a few days of conversation with owners, far less than discovering them during a case at night.
 
 ### Exercises — chapter 1
 
@@ -148,7 +150,9 @@ Analysis: the network evidence shows *volume, sequence and source*; it cannot sh
 - Treating an IP address as an identity.
 - Blocking at the narrowest point you can reach rather than the point with the best side-effect profile.
 - Forgetting that edge logs often rotate in hours; export first.
-- Relying on log times without knowing the clock source. The permit enumeration case avoided all four. The duty lead did not treat the source range as a single attacker, chose a rate limit for its side effects rather than its reach, exported the edge logs before rotation, and relied on synchronized clocks when lining up edge and application records. Each of those choices is recorded in the case so a reviewer can check it later.
+- Relying on log times without knowing the clock source.
+
+The permit enumeration case avoided all four. The duty lead did not treat the source range as a single attacker, chose a rate limit for its side effects rather than its reach, exported the edge logs before rotation, and relied on synchronized clocks when lining up edge and application records. Each of those choices is recorded in the case so a reviewer can check it later.
 
 ### Exercises — chapter 2
 
@@ -214,7 +218,9 @@ Tested first on a ten-line file containing one row with an empty `user`, the scr
 - Silently dropping malformed lines, which hides exactly the anomalies you need.
 - Mixing time zones when comparing timestamps.
 - Editing evidence in a spreadsheet that reformats dates and strips leading zeros.
-- Treating a script's output as fact without a test on known input. Fernmoor's own work shows how easy these are to make. Opening an identity export in a spreadsheet can convert timestamps to the workstation's local zone without warning, and a script that silently drops rows with an empty `user` would have hidden the malformed line the test caught. Keeping inputs read-only and printing skipped counts guards against both.
+- Treating a script's output as fact without a test on known input.
+
+Fernmoor's own work shows how easy these are to make. Opening an identity export in a spreadsheet can convert timestamps to the workstation's local zone without warning, and a script that silently drops rows with an empty `user` would have hidden the malformed line the test caught. Keeping inputs read-only and printing skipped counts guards against both.
 
 ### Exercises — chapter 3
 
@@ -281,7 +287,9 @@ raw           text     required  original line or JSON
 - Free-text fields for anything you will later count.
 - Display names as keys.
 - Dropping the raw record after normalization.
-- Converting times without recording the original zone or the correction applied. Each error damages counting or review. The severity spreadsheet showed what free text does to a monthly report: exact matching on "High" reported 3 high incidents where a hand re-coding found 11. Display names change when people marry or move; stable account ids do not. Keeping the raw record and the original zone lets anyone repeat a conversion and catch a mistake.
+- Converting times without recording the original zone or the correction applied.
+
+Each error damages counting or review. The severity spreadsheet showed what free text does to a monthly report: exact matching on "High" reported 3 high incidents where a hand re-coding found 11. Display names change when people marry or move; stable account ids do not. Keeping the raw record and the original zone lets anyone repeat a conversion and catch a mistake.
 
 ### Exercises — chapter 4
 
@@ -337,7 +345,9 @@ No single control is reliable. The example shows layers: a detection rule raised
 
 - Calling every alert an incident, which floods the case system, or calling nothing an incident until damage is proven, which delays response.
 - Using ATT&CK labels as conclusions rather than hypotheses to test.
-- Treating the lifecycle as strictly sequential; containment and investigation overlap. The impossible-travel case shows the balance. The analyst did not declare an incident, because no access was gained, but did open a low-severity case and reset the password, because someone else evidently knew it. That kept the case system honest while still responding to the risk. The ATT&CK label for password spraying stayed a hypothesis until the script showed the same pattern across many accounts.
+- Treating the lifecycle as strictly sequential; containment and investigation overlap.
+
+The impossible-travel case shows the balance. The analyst did not declare an incident, because no access was gained, but did open a low-severity case and reset the password, because someone else evidently knew it. That kept the case system honest while still responding to the risk. The ATT&CK label for password spraying stayed a hypothesis until the script showed the same pattern across many accounts.
 
 ### Exercises — chapter 5
 
@@ -399,7 +409,9 @@ Findings later showed an outbound connection to 203.0.113.77 on port 443 and a c
 - Rebooting "to be safe", losing memory and connections.
 - Treating an internal snapshot as preserved evidence without export and hash.
 - Running investigation tools from the compromised host's own binaries, which may be altered.
-- Collecting everything from every host, overwhelming storage and analysts; scope by hypothesis. The `permit-app-2` runbook guards against each of these. It forbids rebooting or rebuilding until the investigation lead releases the host, requires the hypervisor snapshot to be exported to the evidence store and hashed, and uses a pre-approved collection tool rather than the host's own binaries. Its scope came from the hypothesis that the web service user was compromised.
+- Collecting everything from every host, overwhelming storage and analysts; scope by hypothesis.
+
+The `permit-app-2` runbook guards against each of these. It forbids rebooting or rebuilding until the investigation lead releases the host, requires the hypervisor snapshot to be exported to the evidence store and hashed, and uses a pre-approved collection tool rather than the host's own binaries. Its scope came from the hypothesis that the web service user was compromised.
 
 ### Exercises — chapter 6
 
@@ -456,7 +468,9 @@ Sign-in logs (interactive and non-interactive), audit logs (role changes, method
 - Password reset alone, leaving sessions and methods intact.
 - Forgetting non-interactive sign-ins and service principals.
 - Destroying the attacker's artefacts (mailbox rule) without preserving them first.
-- Blaming the user for an approval-fatigue design weakness. Each error was avoided in the night-time MFA case. The analyst revoked sessions and deleted the new authenticator before resetting the password, preserved the forwarding rule as evidence before removing it, and treated the clerk's approval as a design weakness; number-matching and security keys were the response, not discipline. Service principals and non-interactive sign-ins were included in the log export.
+- Blaming the user for an approval-fatigue design weakness.
+
+Each error was avoided in the night-time MFA case. The analyst revoked sessions and deleted the new authenticator before resetting the password, preserved the forwarding rule as evidence before removing it, and treated the clerk's approval as a design weakness; number-matching and security keys were the response, not discipline. Service principals and non-interactive sign-ins were included in the log export.
 
 ### Exercises — chapter 7
 
@@ -518,7 +532,9 @@ Technologists rarely redesign a system; they make it respondable. Typical high-v
 - Drawing segments that exist on paper but not in firewall rules — verify with a connectivity test.
 - Assuming cloud resources are segmented by default.
 - Security changes without a rollback or owner.
-- Ignoring supplier connections as trust boundaries. The water-billing review met two of these directly. The billing VLAN had to be checked with a connectivity test, not just a diagram, and the nightly file transfer to the payment supplier was treated as a trust boundary whose logs had to be forwarded. Every proposed change had a named owner from the start, so none was left without someone to roll it back.
+- Ignoring supplier connections as trust boundaries.
+
+The water-billing review met two of these directly. The billing VLAN had to be checked with a connectivity test, not just a diagram, and the nightly file transfer to the payment supplier was treated as a trust boundary whose logs had to be forwarded. Every proposed change had a named owner from the start, so none was left without someone to roll it back.
 
 ### Exercises — chapter 8
 
@@ -610,7 +626,9 @@ Interpretation: the median (14 minutes) meets a 15-minute target, but only 4 of 
 - Reporting means of skewed times.
 - Hiding missing records instead of counting them.
 - Changing a definition mid-year without restating earlier figures.
-- Using service measures to blame individuals, which corrupts the data. Each of these misleads a different reader. A mean triage time can look acceptable while a few out-of-hours cases wait far too long; hidden missing records make completeness look perfect; a silent change of definition makes this year incomparable with last; and using the figures against named analysts makes them record times defensively. Fernmoor's report avoids all four by design.
+- Using service measures to blame individuals, which corrupts the data.
+
+Each of these misleads a different reader. A mean triage time can look acceptable while a few out-of-hours cases wait far too long; hidden missing records make completeness look perfect; a silent change of definition makes this year incomparable with last; and using the figures against named analysts makes them record times defensively. Fernmoor's report avoids all four by design.
 
 ### Exercises — chapter 9
 
@@ -670,7 +688,9 @@ One person may hold several roles in a small team, but a case always has exactly
 - A charter that grants no authority, so every action waits for a meeting.
 - Service levels without the staffing to meet them.
 - Roles named but not trained or rostered.
-- Scope ambiguity discovered during a crisis (OT, suppliers, residents' data held by a contractor). Fernmoor's charter answers each risk explicitly. The duty analyst may disable an account or isolate a workstation without waiting, service levels were set with the on-call rota in mind, and OT scope was formally excluded with a referral procedure rather than left vague. Training for each named role is scheduled in the sustainment calendar, so roles are practised before they are needed.
+- Scope ambiguity discovered during a crisis (OT, suppliers, residents' data held by a contractor).
+
+Fernmoor's charter answers each risk explicitly. The duty analyst may disable an account or isolate a workstation without waiting, service levels were set with the on-call rota in mind, and OT scope was formally excluded with a referral procedure rather than left vague. Training for each named role is scheduled in the sustainment calendar, so roles are practised before they are needed.
 
 ### Exercises — chapter 10
 
@@ -737,7 +757,9 @@ Automate discovery runs daily; create a work item for every unreconciled asset; 
 - Inventory without owners or services.
 - Forgetting identities, certificates and suppliers as assets.
 - Criticality set by IT alone without business owners.
-- Response documentation hosted only on systems that may be down. The restore-order case touched two of these. The runbooks lived on the tier-3 wiki, which was down with the other systems, and the team managed only because an offline copy existed. Identity components such as `idp-proxy` had to be in the inventory with their dependants, or nobody would have known to restore them first. Fernmoor now keeps an offline copy of the inventory with the runbooks.
+- Response documentation hosted only on systems that may be down.
+
+The restore-order case touched two of these. The runbooks lived on the tier-3 wiki, which was down with the other systems, and the team managed only because an offline copy existed. Identity components such as `idp-proxy` had to be in the inventory with their dependants, or nobody would have known to restore them first. Fernmoor now keeps an offline copy of the inventory with the runbooks.
 
 ### Exercises — chapter 11
 
@@ -803,7 +825,9 @@ The data-read flow was enabled for buckets holding personal data, with its stora
 - Assuming default logging captures data access.
 - Storing logs where an attacker with admin rights can delete them.
 - Never testing flows after onboarding.
-- Retention shorter than typical detection delay; intrusions are often found weeks later. The missing data-read logs case is the first error in practice: the team assumed storage logging covered reads, and when it did not, the case closed as unable to determine. Separate-account storage protects against the second, scheduled canaries against the third, and retention of 180 to 400 days in the flow matrix against the fourth.
+- Retention shorter than typical detection delay; intrusions are often found weeks later.
+
+The missing data-read logs case is the first error in practice: the team assumed storage logging covered reads, and when it did not, the case closed as unable to determine. Separate-account storage protects against the second, scheduled canaries against the third, and retention of 180 to 400 days in the flow matrix against the fourth.
 
 ### Exercises — chapter 12
 
@@ -867,7 +891,9 @@ Thresholds connect detections to actions: which alerts open a case automatically
 - Severity based on how alarming an alert *sounds* rather than criteria.
 - Never lowering severity, which exhausts the team.
 - Thresholds copied from a vendor default without reference to local scenarios.
-- Escalation triggers that depend on a judgement nobody is authorized to make. The three alerts in the worked example show the alternative. The 3,000 blocked login attempts sounded alarming but met the criteria for S4 only; the billing clerk's export sounded routine but met the criteria for S2; the blocked macro stayed at S4 unless a child process ran. In each case the criteria, not the tone of the alert, set the level, and the person authorized to escalate was named.
+- Escalation triggers that depend on a judgement nobody is authorized to make.
+
+The three alerts in the worked example show the alternative. The 3,000 blocked login attempts sounded alarming but met the criteria for S4 only; the billing clerk's export sounded routine but met the criteria for S2; the blocked macro stayed at S4 unless a child process ran. In each case the criteria, not the tone of the alert, set the level, and the person authorized to escalate was named.
 
 ### Exercises — chapter 13
 
@@ -926,7 +952,9 @@ When the Data Platform check showed that all three callers' addresses were in a 
 - Recording interpretations as observations ("phishing attack by criminals").
 - Vague scope ("investigate the phishing").
 - Merging cases before evidence connects them.
-- Unacknowledged reporters who stop reporting. FCS-221 avoided these errors. The intake form recorded what the resident saw, not a judgement about criminals; the scope statement named the impersonated domain, the date and the question to answer; the supplier link was recorded as a scope change with its evidence rather than by merging with another case; and the resident was told what Fernmoor would and would not do. Reporters who hear nothing back rarely report again, so acknowledgment is part of the case.
+- Unacknowledged reporters who stop reporting.
+
+FCS-221 avoided these errors. The intake form recorded what the resident saw, not a judgement about criminals; the scope statement named the impersonated domain, the date and the question to answer; the supplier link was recorded as a scope change with its evidence rather than by merging with another case; and the resident was told what Fernmoor would and would not do. Reporters who hear nothing back rarely report again, so acknowledgment is part of the case.
 
 ### Exercises — chapter 14
 
@@ -1019,7 +1047,9 @@ Each row: corrected UTC time, source, original timestamp, correction applied, ev
 - Assuming a log without a zone is UTC.
 - Ignoring measured skew because it is small.
 - Mixing interpretation into event descriptions.
-- Unbounded timelines that grow until nobody can read them. Each error can reverse an order of events. A log assumed to be UTC that was actually local time can move an event by hours; a two-minute skew can place a file access before the sign-in that caused it; interpretation in event descriptions makes the timeline argue rather than record; and an unbounded timeline hides its gaps. FCS-214's timeline avoided them by recording zones and offsets for each source.
+- Unbounded timelines that grow until nobody can read them.
+
+Each error can reverse an order of events. A log assumed to be UTC that was actually local time can move an event by hours; a two-minute skew can place a file access before the sign-in that caused it; interpretation in event descriptions makes the timeline argue rather than record; and an unbounded timeline hides its gaps. FCS-214's timeline avoided them by recording zones and offsets for each source.
 
 ### Exercises — chapter 15
 
@@ -1086,7 +1116,9 @@ Interviewing staff is part of investigation but involves people's rights and emp
 - Seeking only confirming evidence.
 - Unrecorded pivots that nobody can repeat.
 - Treating an address as one actor without checking shared infrastructure.
-- Concluding intent from technical evidence alone. FCS-214's hypothesis table guards against the first error by recording which evidence was inconsistent with each explanation, not only which fitted. Recorded pivots answer the second. The analysts checked whether 198.51.100.23 could be shared infrastructure before treating it as one actor, and the case concluded nothing about intent from the logs alone; that was left to the interview and to people with authority to judge it.
+- Concluding intent from technical evidence alone.
+
+FCS-214's hypothesis table guards against the first error by recording which evidence was inconsistent with each explanation, not only which fitted. Recorded pivots answer the second. The analysts checked whether 198.51.100.23 could be shared infrastructure before treating it as one actor, and the case concluded nothing about intent from the logs alone; that was left to the interview and to people with authority to judge it.
 
 ### Exercises — chapter 16
 
@@ -1150,7 +1182,9 @@ The failing criterion was accepted with a documented risk and a fix date; the go
 - Evidence on analysts' laptops or shared drives.
 - Hashes computed but never verified again.
 - Case tools whose administrators can silently edit history.
-- Choosing a tool for features rather than tested acceptance criteria. Fernmoor's acceptance tests targeted each of these. Object lock made deletion by a response role fail, the stored hash was compared with a local hash on ingest, and editing a closed case field left a history entry. The one failing criterion, the access-log delay, was accepted with a documented risk and a fix date, which is the honest way to go live with a known gap. Periodic hash verification is on the sustainment calendar.
+- Choosing a tool for features rather than tested acceptance criteria.
+
+Fernmoor's acceptance tests targeted each of these. Object lock made deletion by a response role fail, the stored hash was compared with a local hash on ingest, and editing a closed case field left a history entry. The one failing criterion, the access-log delay, was accepted with a documented risk and a fix date, which is the honest way to go live with a known gap. Periodic hash verification is on the sustainment calendar.
 
 ### Exercises — chapter 17
 
@@ -1213,7 +1247,9 @@ Results: recovery time 107 minutes on first run, 64 on retest, against a tier-2 
 - Containment that has never been tested and fails at 03:00.
 - "Backup succeeded" without a restore test.
 - Restoring into production before validating that the backup is clean.
-- Forgetting to verify containment; the attacker's second account still works. Fernmoor's restore test shows the second and third errors avoided: the database was restored to an isolated host, checked against row counts and checksums, and only then smoke-tested. The quarterly action tests address the first, and the verification step in each containment runbook addresses the fourth. The capstone's DNS sinkhole test, found 120 days old, shows how easily such tests slip.
+- Forgetting to verify containment; the attacker's second account still works.
+
+Fernmoor's restore test shows the second and third errors avoided: the database was restored to an isolated host, checked against row counts and checksums, and only then smoke-tested. The quarterly action tests address the first, and the verification step in each containment runbook addresses the fourth. The capstone's DNS sinkhole test, found 120 days old, shows how easily such tests slip.
 
 ### Exercises — chapter 18
 
@@ -1275,7 +1311,9 @@ Decisions: R-07 — add known corporate VPN egress as enrichment to cut benign T
 - Treating benign true positives as false positives, which leads to removing good rules.
 - Broad exclusions ("ignore the backup account") that create blind spots attackers can use.
 - Never labelling outcomes, so no rule is ever improved.
-- Counting alerts as a productivity measure. Fernmoor's register avoids these by design. R-19's benign alerts from the backup account were labelled correctly, the exclusion covered only the scheduled window and host, with an alert if the account read outside it, every closed case has an outcome label, and the register reports quality per rule rather than alert counts. R-12 was kept despite few alerts because all were meaningful.
+- Counting alerts as a productivity measure.
+
+Fernmoor's register avoids these by design. R-19's benign alerts from the backup account were labelled correctly, the exclusion covered only the scheduled window and host, with an alert if the account read outside it, every closed case has an outcome label, and the register reports quality per rule rather than alert counts. R-12 was kept despite few alerts because all were meaningful.
 
 ### Exercises — chapter 19
 
@@ -1312,7 +1350,9 @@ You will be able to (1) detect incomplete or contradictory case records systemat
 - **Missing:** no triage time, no closure reason, no owner for a period.
 - **Contradictory:** action time before decision time; status "closed" with open tasks; severity S4 but a regulator notification recorded.
 - **Inconsistent with evidence:** case says host isolated at 10:00; endpoint logs show it communicating at 10:30.
-- **Duplicated:** two cases for the same incident with diverging facts. The reception PC case was a defect of the third kind: the record said isolated at 10:02 while endpoint telemetry showed DNS queries at 10:27. Fernmoor's nightly checks are written to find each of the four kinds.
+- **Duplicated:** two cases for the same incident with diverging facts.
+
+The reception PC case was a defect of the third kind: the record said isolated at 10:02 while endpoint telemetry showed DNS queries at 10:27. Fernmoor's nightly checks are written to find each of the four kinds.
 
 ### 20.2 Finding defects
 
@@ -1335,7 +1375,9 @@ Never overwrite silently. Add a correction entry: field, old value, new value, s
 - Fixing records by hand without fixing the process that broke them.
 - Rewriting history to look tidy.
 - Trusting automation timestamps without knowing what event they record.
-- Checks so noisy that analysts ignore them. The reception PC case shows the remedy for each. The record was corrected with a visible entry rather than rewritten, the automation was fixed so the defect would not return, and the team learned exactly which event the timestamp recorded. The nightly checks were kept specific enough that analysts treat a flag as worth investigating, rather than background noise.
+- Checks so noisy that analysts ignore them.
+
+The reception PC case shows the remedy for each. The record was corrected with a visible entry rather than rewritten, the automation was fixed so the defect would not return, and the team learned exactly which event the timestamp recorded. The nightly checks were kept specific enough that analysts treat a flag as worth investigating, rather than background noise.
 
 ### Exercises — chapter 20
 
@@ -1392,7 +1434,9 @@ The response on-call rota should live in the same paging system as IT operations
 - Security cases closed by IT once the service is restored, before investigation ends.
 - Emergency changes without retrospective review.
 - Sensitive details in broadly visible tickets.
-- Separate paging systems that nobody watches at night. The ransomware outage avoided each. FCS-260 stayed open while IT closed the outage, CHG-3301 was reviewed at the next change board, the service desk saw only neutral wording, and paging went through the system IT operations already watched at night. The problem record about the shared credential kept the cause visible after the service was restored, so it could be fixed rather than forgotten.
+- Separate paging systems that nobody watches at night.
+
+The ransomware outage avoided each. FCS-260 stayed open while IT closed the outage, CHG-3301 was reviewed at the next change board, the service desk saw only neutral wording, and paging went through the system IT operations already watched at night. The problem record about the shared credential kept the cause visible after the service was restored, so it could be fixed rather than forgotten.
 
 ### Exercises — chapter 21
 
@@ -1477,7 +1521,9 @@ Internal notifications (page the on-call, inform the privacy officer at S2 with 
 - Automating a broken process, which produces wrong results faster.
 - Credentials embedded in scripts.
 - Silent partial failures.
-- Automations nobody owns after their author moves on. The stale-owner enrichment shows the first and fourth errors: the process of keeping owners current was already broken, and the automation multiplied its effect, while nobody noticed because the automation's author had moved to another project. Fernmoor now lists an owner for every automation in its register, stores credentials in the secrets manager, and makes partial failures stop and alert.
+- Automations nobody owns after their author moves on.
+
+The stale-owner enrichment shows the first and fourth errors: the process of keeping owners current was already broken, and the automation multiplied its effect, while nobody noticed because the automation's author had moved to another project. Fernmoor now lists an owner for every automation in its register, stores credentials in the secrets manager, and makes partial failures stop and alert.
 
 ### Exercises — chapter 22
 
@@ -1566,7 +1612,9 @@ For each finding, propose one change, an owner and a measure to check it: build 
 - Judging decisions by outcomes.
 - Only reporting totals or means.
 - Treating six cases as proof.
-- Measuring individuals instead of the system; people will game the fields. Fernmoor's evaluation was written with these in mind. A case that ended well despite a poor decision was still recorded as a decision finding; stage medians and percentiles replaced a single mean; conclusions from a handful of cases were labelled as tentative; and figures were reported by service stage, not by analyst. Analysts who expect blame learn to fill fields defensively.
+- Measuring individuals instead of the system; people will game the fields.
+
+Fernmoor's evaluation was written with these in mind. A case that ended well despite a poor decision was still recorded as a decision finding; stage medians and percentiles replaced a single mean; conclusions from a handful of cases were labelled as tentative; and figures were reported by service stage, not by analyst. Analysts who expect blame learn to fill fields defensively.
 
 ### Exercises — chapter 23
 
@@ -1632,7 +1680,9 @@ Walkthrough: team using B reached the first containment decision in 12 minutes v
 - Picking the longer playbook because it looks thorough.
 - Testing two playbooks on the same team back-to-back without noting learning effects.
 - Treating total scores as precise; read the criterion-level gaps.
-- Playbooks that duplicate runbook detail and go stale. The BEC comparison illustrates three of these. The vendor template was longer and looked thorough but scored lower overall; the totals of 7 and 11 hid that the shorter playbook missed bank contact; and the merged version took only the vendor template's evidence-preservation step and communications contacts, leaving runbook detail in the runbooks.
+- Playbooks that duplicate runbook detail and go stale.
+
+The BEC comparison illustrates three of these. The vendor template was longer and looked thorough but scored lower overall; the totals of 7 and 11 hid that the shorter playbook missed bank contact; and the merged version took only the vendor template's evidence-preservation step and communications contacts, leaving runbook detail in the runbooks.
 
 ### Exercises — chapter 24
 
@@ -1693,7 +1743,9 @@ Revision: added steps "preserve the file and portal access logs before removal" 
 - Workflows that end at containment and forget recovery, communication and review.
 - Critique that becomes personal or vague ("feels complicated").
 - Accepting all feedback without reasoning, producing a bloated workflow.
-- No inject run, so stalls stay hidden. Team Heron's first workflow had two of these: it ended at closing the case without asking whether residents downloaded the file, and its stall stayed hidden until an inject was run. The team also avoided the third by declining a suggestion to block all supplier uploads permanently, recording why, and naming malware scanning before publication as the compensating control.
+- No inject run, so stalls stay hidden.
+
+Team Heron's first workflow had two of these: it ended at closing the case without asking whether residents downloaded the file, and its stall stayed hidden until an inject was run. The team also avoided the third by declining a suggestion to block all supplier uploads permanently, recording why, and naming malware scanning before publication as the compensating control.
 
 ### Exercises — chapter 25
 
@@ -1750,7 +1802,9 @@ Day lead read back the pending decisions and accepted ownership at 07:12; the ca
 - Handoffs by chat message without acceptance.
 - Updates that mix facts and speculation.
 - Technologists speaking to media or residents directly.
-- Missing the start of a regulatory clock because awareness time was not recorded. The FCS-260 handoff avoided the first error by using a structured note and recording the day lead's acceptance at 07:12. Its assessment of the initial access route was labelled with moderate confidence, which keeps facts and speculation apart. The awareness time was recorded, so the regulatory clock was known to both leads.
+- Missing the start of a regulatory clock because awareness time was not recorded.
+
+The FCS-260 handoff avoided the first error by using a structured note and recording the day lead's acceptance at 07:12. Its assessment of the initial access route was labelled with moderate confidence, which keeps facts and speculation apart. The awareness time was recorded, so the regulatory clock was known to both leads.
 
 ### Exercises — chapter 26
 
@@ -1837,7 +1891,9 @@ Plan: train all duty analysts and leads with a one-hour walkthrough and two prac
 - Rules so strict that analysts work outside the tool.
 - Testing only the model, not the tool configuration.
 - Deploying without training or a rollback.
-- Before/after comparisons presented as proof without caveats. Fernmoor's pilot handled these. Two overrides were enough for real exceptions, so analysts kept working in the tool; the tool configuration was tested as well as the model; training and rollback came before the rollout; and the reported completeness gain was presented with the caveat that a previous quarter and an observed team make the comparison weaker. Completeness continues to be measured monthly.
+- Before/after comparisons presented as proof without caveats.
+
+Fernmoor's pilot handled these. Two overrides were enough for real exceptions, so analysts kept working in the tool; the tool configuration was tested as well as the model; training and rollback came before the rollout; and the reported completeness gain was presented with the caveat that a previous quarter and an observed team make the comparison weaker. Completeness continues to be measured monthly.
 
 ### Exercises — chapter 27
 
@@ -1900,7 +1956,9 @@ Improvement plan: reorder the identity runbook with an enforced "export complete
 - Exercising without written authorization or a stop mechanism.
 - Objectives that cannot be observed.
 - Blaming individuals in the after-action report.
-- Findings without owners and re-test dates. Quiet Meter had a signed authorization from the billing system owner and the director, a time window and a named scope. Each objective could be observed from case timestamps, console logs or an evaluator check. The after-action report described causes such as an unclear runbook order on mobile rather than blaming the analyst, and each finding had an owner and a re-test in the next quarter's exercise. Exercise control could stop play at any time.
+- Findings without owners and re-test dates.
+
+Quiet Meter had a signed authorization from the billing system owner and the director, a time window and a named scope. Each objective could be observed from case timestamps, console logs or an evaluator check. The after-action report described causes such as an unclear runbook order on mobile rather than blaming the analyst, and each finding had an owner and a re-test in the next quarter's exercise. Exercise control could stop play at any time.
 
 ### Exercises — chapter 28
 
@@ -1966,7 +2024,9 @@ Operating documentation: a service handbook (one page per component, owner, how 
 - Acceptance by assertion ("flows are configured") instead of evidence.
 - Demonstrating only the happy path.
 - Documentation that only the builder understands.
-- Treating a test environment demonstration as proof of production behaviour without production tests. Fernmoor's capstone avoided these by requiring evidence for every component, from scheduled query exports for flows to case history for the handoff. The deliberate canary failure tested more than the happy path, and the service handbook gave one page per component so others could operate it. Its dossier also states that test-environment results still need production checks before they count.
+- Treating a test environment demonstration as proof of production behaviour without production tests.
+
+Fernmoor's capstone avoided these by requiring evidence for every component, from scheduled query exports for flows to case history for the handoff. The deliberate canary failure tested more than the happy path, and the service handbook gave one page per component so others could operate it. Its dossier also states that test-environment results still need production checks before they count.
 
 ### Exercises — chapter 29
 
@@ -2031,7 +2091,9 @@ The dossier closes with the sustainment calendar, the owner list, open risks for
 - Reporting only successes.
 - Improvements without measures, so no one knows whether they worked.
 - No sustainment plan; the service degrades within a year.
-- Confidence claims that ignore small samples. Fernmoor's dossier guards against each. It lists supplier coordination as not met, gives a measure for every improvement, includes the sustainment calendar, and marks the out-of-hours triage figure as moderate confidence because it rests on 19 cases. It also lists what the evaluation could not show, such as the restore time of the untested permits share. Each of these makes the dossier more useful than a list of successes.
+- Confidence claims that ignore small samples.
+
+Fernmoor's dossier guards against each. It lists supplier coordination as not met, gives a measure for every improvement, includes the sustainment calendar, and marks the out-of-hours triage figure as moderate confidence because it rests on 19 cases. It also lists what the evaluation could not show, such as the restore time of the untested permits share. Each of these makes the dossier more useful than a list of successes.
 
 ### Exercises — chapter 30
 
