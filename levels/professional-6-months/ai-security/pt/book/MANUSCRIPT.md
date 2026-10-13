@@ -677,7 +677,7 @@ Corrija a causa e os fatores contribuintes mais importantes. Prefira controles q
 
 ### 8.5 Redigir o relato
 
-Resumo; linha do tempo; impacto; causas; fatores contribuintes; ações com responsáveis e datas; lições. Os estudos de caso do MITRE ATLAS mostram um estilo útil para descrever técnicas. O relato de Sofia sobre o caso da tempestade seguiu esse roteiro, com o impacto quantificado em 4.100 sinistros atrasados em dois dias, em média. Peça a um colega que não esteve envolvido que o leia para conferir a clareza antes que seja compartilhado. Escreva-o em até uma semana, enquanto os detalhes estão frescos. Comece com um resumo do impacto e das correções, depois a linha do tempo, depois as causas e os fatores contribuintes e então as ações com responsáveis e datas.
+Resumo; linha do tempo; impacto; causas; fatores contribuintes; ações com responsáveis e datas; lições. Os estudos de caso do MITRE ATLAS mostram um estilo útil para descrever técnicas. O relato de Sofia sobre o caso da tempestade seguiu esse roteiro, com o impacto quantificado em 4.100 sinistros atrasados em dois dias, em média. Peça a um colega que não esteve envolvido que o leia para conferir a clareza antes que seja compartilhado. Escreva-o em até uma semana, enquanto os detalhes estão frescos. Quantificar o impacto como Sofia fez, 4.100 sinistros atrasados em dois dias, dá aos leitores um número para conferir em vez de um adjetivo para discutir.
 
 ### 8.6 Exemplo resolvido (caso sintético da Meridian)
 

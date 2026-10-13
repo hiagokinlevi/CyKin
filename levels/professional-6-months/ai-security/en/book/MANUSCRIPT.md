@@ -783,7 +783,7 @@ For the FraudFlag case, the fixes were mapping the new field, adding the model t
 
 Summary; timeline; impact; causes; contributing factors; actions with owners and dates; lessons. MITRE ATLAS case studies show a useful style for describing techniques.
 
-Sofia's write-up of the storm case followed this outline, with impact quantified as 4,100 claims delayed by two days on average. Ask a colleague who was not involved to read it for clarity before it is shared. Write it within a week, while the details are fresh. Start with a summary of impact and fixes, then the timeline, then causes and contributing factors, then actions with owners and dates.
+Sofia's write-up of the storm case followed this outline, with impact quantified as 4,100 claims delayed by two days on average. Ask a colleague who was not involved to read it for clarity before it is shared. Write it within a week, while the details are fresh. Quantifying impact as Sofia did, 4,100 claims delayed by two days, gives readers a number to check rather than an adjective to argue about.
 
 ### 8.6 Worked example (synthetic Meridian case)
 
