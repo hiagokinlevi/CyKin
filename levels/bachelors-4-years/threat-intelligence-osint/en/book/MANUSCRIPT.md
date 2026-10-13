@@ -512,7 +512,7 @@ She keeps the original file unchanged and writes processed output to a new file,
 ### Lab — validating a feed
 
 ```python
-"""Lab 2 (ch 08): parse a synthetic CSV feed with the csv module and count accepted/rejected rows."""
+"""Lab 1 (ch 08): parse a synthetic CSV feed with the csv module and count accepted/rejected rows."""
 import csv, io
 data = """type,value,first_seen,tlp
 domain,portal-login.example,2026-09-01,TLP:GREEN
@@ -618,7 +618,7 @@ Status records whether an indicator is active, under review or expired. Amara ad
 ### Lab — querying the store
 
 ```python
-"""Lab 3 (ch 09): store synthetic indicators in an in-memory SQLite database and query by TLP and age."""
+"""Lab 2 (ch 09): store synthetic indicators in an in-memory SQLite database and query by TLP and age."""
 import sqlite3
 db = sqlite3.connect(":memory:")
 db.execute("create table ioc(value text primary key, type text, tlp text, last_seen text)")
@@ -843,7 +843,7 @@ Amara uses the team's scale in every product and adds it as a footnote, so reade
 ### Lab — checking estimative words
 
 ```python
-"""Lab 1 (ch 12): map estimative words to a published probability scale and flag misuse (synthetic)."""
+"""Lab 3 (ch 12): map estimative words to a published probability scale and flag misuse (synthetic)."""
 SCALE = {"almost no chance": (0, 5), "very unlikely": (5, 20), "unlikely": (20, 45),
          "roughly even chance": (45, 55), "likely": (55, 80), "very likely": (80, 95),
          "almost certainly": (95, 100)}
