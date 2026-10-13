@@ -48,9 +48,13 @@ Leah Morgan volunteers as the IT lead at the fictional Fenwick Community Food Ba
 
 You cannot protect what you do not know about. CIS Controls v8 starts with an inventory of devices for this reason. Leah makes a simple spreadsheet with one row per device: a short name, who uses it, model, serial number and where it normally lives. She finds the twelve laptops, the front desk PC and an old laptop in a cupboard that nobody uses, which is wiped and recycled.
 
+The serial number column answers the question the theft raised: with it, the food bank can tell the police and the insurer exactly which device was taken. The "where it lives" column matters for the same reason; a laptop that normally goes home in a volunteer's car carries more risk than one that stays in the office.
+
 ### 1.3 The quick check
 
 Leah checks five things on every laptop, because together they cover the most common harms: updates installed within fourteen days, disk encryption on, the user working in a standard account rather than an administrator, a screen lock, and files backed up in the last week. Each is a yes or no.
+
+Each check maps to a part of the stolen-laptop problem. Encryption decides whether a thief can read the disk. Backups decide whether the food bank loses work. Updates and a standard account make it harder for a harmful program to take over a laptop in the first place. A screen lock protects a laptop left open on the front desk. Recording yes or no keeps the check quick enough to repeat every month.
 
 ### Lab — Five-point quick check
 
@@ -81,9 +85,13 @@ laptops passing all five: 3/12; worst: FB07
 
 Only three of twelve laptops pass all five. Encryption and standard accounts are weakest at eight of twelve each. FB07 fails four checks: it is an old laptop used by a weekend volunteer. Screen lock is nearly everywhere already. This tells Leah where to spend her four weeks.
 
+The lab's per-laptop rows show where the gaps sit. FB02, FB06, FB07 and FB11 are not encrypted; FB02, FB04, FB07 and FB09 have users working as administrators; FB03 and FB07 are behind on updates; FB03, FB07 and FB10 have no recent backup; and only FB05 lacks a screen lock. FB01, FB08 and FB12 pass everything. Encryption comes first because it is exactly what nobody could confirm for the stolen laptop.
+
 ### 1.5 Getting updates working
 
 Two laptops are behind on updates. One has a full disk; the other has updates paused. Leah frees space, removes the pause and sets updates to install automatically with a restart outside opening hours. She also checks that the browser and PDF reader update themselves. NIST SP 800-40 Rev. 4 describes patching as preventive maintenance; for a small charity, that means making automatic updates work and checking them monthly.
+
+Both problems were invisible to the users: a laptop with paused updates keeps working normally until the day a known flaw is used against it. Fixing the cause matters more than installing the missing updates once. A full disk will fill again, so Leah moves old files to the cloud service as well as clearing space. By Friday all twelve laptops show updates within fourteen days.
 
 ### Worked example
 
@@ -97,19 +105,19 @@ Assuming a laptop is fine because it seems to work is how the stolen laptop's st
 
 ### Exercises
 
-- **EX001 — Inventory first.** Why does the course start with a device list? *Rubric:* 3 = cannot protect unknown devices, links to CIS;; 2 = knowing devices;; 1 = none;; 0 = none.
-- **EX002 — Spreadsheet columns.** List the columns of Leah's device spreadsheet. *Rubric:* 3 = five columns;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX003 — Cupboard laptop.** What should happen to an unused old laptop? *Rubric:* 3 = wipe and recycle with record;; 2 = remove;; 1 = keep;; 0 = none.
-- **EX004 — Five checks.** Name the five quick checks. *Rubric:* 3 = all five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX005 — Weakest checks.** Which checks scored lowest in the lab? *Rubric:* 3 = encryption and standard user, 8/12;; 2 = one;; 1 = wrong;; 0 = none.
-- **EX006 — All-five count.** How many laptops passed every check? *Rubric:* 3 = 3 of 12;; 2 = three;; 1 = wrong;; 0 = none.
-- **EX007 — Worst laptop.** Which laptop did worst and why might that be? *Rubric:* 3 = FB07, old weekend volunteer laptop;; 2 = FB07;; 1 = wrong;; 0 = none.
-- **EX008 — Full disk.** How can a full disk stop updates? *Rubric:* 3 = no space to download and install;; 2 = blocks;; 1 = none;; 0 = none.
-- **EX009 — Paused updates.** What should Leah do about paused updates? *Rubric:* 3 = remove pause, set automatic;; 2 = unpause;; 1 = none;; 0 = none.
-- **EX010 — Other software.** Besides Windows, what else needs updating? *Rubric:* 3 = browser and PDF reader with checking;; 2 = apps;; 1 = none;; 0 = none.
-- **EX011 — Restart timing.** When should automatic restarts happen at a food bank? *Rubric:* 3 = outside opening hours;; 2 = later;; 1 = anytime;; 0 = none.
-- **EX012 — Recording dates.** Why write the date beside each check? *Rubric:* 3 = shows when status was true, enables comparison;; 2 = tracking;; 1 = none;; 0 = none.
-- **EX013 — Stolen laptop lesson.** What did the stolen laptop reveal about the food bank? *Rubric:* 3 = unknown encryption and contents;; 2 = no records;; 1 = none;; 0 = none.
+- **EX001 — Inventory first.** Why does the course start with a device list? *Rubric:* 3 = cannot protect unknown devices, links to CIS; 2 = knowing devices; 1 = none; 0 = none.
+- **EX002 — Spreadsheet columns.** List the columns of Leah's device spreadsheet. *Rubric:* 3 = five columns; 2 = four; 1 = fewer; 0 = none.
+- **EX003 — Cupboard laptop.** What should happen to an unused old laptop? *Rubric:* 3 = wipe and recycle with record; 2 = remove; 1 = keep; 0 = none.
+- **EX004 — Five checks.** Name the five quick checks. *Rubric:* 3 = all five; 2 = four; 1 = fewer; 0 = none.
+- **EX005 — Weakest checks.** Which checks scored lowest in the lab? *Rubric:* 3 = encryption and standard user, 8/12; 2 = one; 1 = wrong; 0 = none.
+- **EX006 — All-five count.** How many laptops passed every check? *Rubric:* 3 = 3 of 12; 2 = three; 1 = wrong; 0 = none.
+- **EX007 — Worst laptop.** Which laptop did worst and why might that be? *Rubric:* 3 = FB07, old weekend volunteer laptop; 2 = FB07; 1 = wrong; 0 = none.
+- **EX008 — Full disk.** How can a full disk stop updates? *Rubric:* 3 = no space to download and install; 2 = blocks; 1 = none; 0 = none.
+- **EX009 — Paused updates.** What should Leah do about paused updates? *Rubric:* 3 = remove pause, set automatic; 2 = unpause; 1 = none; 0 = none.
+- **EX010 — Other software.** Besides Windows, what else needs updating? *Rubric:* 3 = browser and PDF reader with checking; 2 = apps; 1 = none; 0 = none.
+- **EX011 — Restart timing.** When should automatic restarts happen at a food bank? *Rubric:* 3 = outside opening hours; 2 = later; 1 = anytime; 0 = none.
+- **EX012 — Recording dates.** Why write the date beside each check? *Rubric:* 3 = shows when status was true, enables comparison; 2 = tracking; 1 = none; 0 = none.
+- **EX013 — Stolen laptop lesson.** What did the stolen laptop reveal about the food bank? *Rubric:* 3 = unknown encryption and contents; 2 = no records; 1 = none; 0 = none.
 
 ### Synthesis
 
@@ -131,21 +139,31 @@ You will (1) move everyone to standard accounts; (2) secure email sign-in with M
 
 Four laptops have users working as administrators. That means any harmful program they open can change anything on the laptop. Leah creates a separate admin account on each laptop, known only to her and the deputy manager and kept in the password manager, and changes the everyday accounts to standard users. Saltzer and Schroeder called this least privilege: give each user only the rights they need.
 
+The four were FB02, FB04, FB07 and FB09. For the volunteers, little changes day to day: they open the same apps and save to the same places. What changes is that a harmful attachment opened in a standard account cannot install itself system-wide or turn off Defender, so it does far less damage. Leah made the change in two evenings and checked each laptop afterwards by signing in as the everyday user.
+
 ### 2.2 Getting software without admin
 
 Volunteers sometimes need a new app. Instead of giving them admin rights, Leah installs approved apps herself, usually within a day. She keeps a short list of approved apps so requests are quick.
+
+The approved list grows from real requests: a volunteer who needs a PDF editor for donation receipts asks once, Leah checks the app's publisher and source, installs it, and adds it to the list so the next request takes minutes. The monthly routine checks that nobody has become an administrator again, which is the usual way this arrangement erodes.
 
 ### 2.3 Passwords and MFA
 
 The cloud email service holds client names and addresses. Leah turns on multi-factor authentication for every account, with an authenticator app on volunteers' phones and backup codes kept in the office safe. She asks everyone to use a long passphrase and a password manager. Shared logins, such as the front desk account, get their own strong password stored in a shared vault.
 
+This matters even with encrypted laptops: a stolen password could open the cloud email from anywhere, and encryption does nothing about that. In the worked example, two volunteers needed help setting up the authenticator app, which Leah gave in person on their next shift. Keeping backup codes in the office safe means a volunteer who loses a phone can still sign in after Leah checks who they are.
+
 ### 2.4 Key settings
 
 Leah applies a handful of settings from the CIS Benchmark that matter most: Windows firewall on, screen lock after five minutes of inactivity, guest account off, and Microsoft Defender with tamper protection on. She does this by hand on each laptop with a printed checklist, because twelve laptops do not justify a management system yet.
 
+Each setting has a reason in this case. The firewall blocks unexpected connections when laptops are used on other networks. The five-minute lock protects laptops left open between clients. The guest account is off so nobody can sign in without an account. Tamper protection stops a harmful program from switching off Defender. The printed checklist also records which laptops have been done, so the next one picks up where the last stopped.
+
 ### 2.5 Front desk PC
 
 The shared front desk PC is used by many volunteers. It gets a standard account that opens only the browser and the booking system, and the screen locks when unattended. Volunteers sign in to the booking system with their own accounts so actions are traceable.
+
+The front desk PC is the device most likely to be used by someone Leah has never met, which is why it is the most limited. Because it opens only the browser and the booking system, a volunteer cannot install software or browse to unrelated sites by habit. Personal booking accounts mean a wrong entry can be traced to the person and corrected with them, not blamed on "front desk".
 
 ### Worked example
 
@@ -159,19 +177,19 @@ Turning on MFA without backup codes can lock someone out if they lose their phon
 
 ### Exercises
 
-- **EX014 — Admin danger.** What can a harmful program do when its user is an administrator? *Rubric:* 3 = change anything, install, disable protection;; 2 = more damage;; 1 = none;; 0 = none.
-- **EX015 — Admin password storage.** Where should the separate admin passwords be kept? *Rubric:* 3 = password manager, limited people;; 2 = securely;; 1 = note;; 0 = none.
-- **EX016 — App requests.** How do volunteers get new apps without admin rights? *Rubric:* 3 = Leah installs from approved list;; 2 = ask;; 1 = none;; 0 = none.
-- **EX017 — MFA backup.** Why keep backup codes in the safe? *Rubric:* 3 = recovery if phone lost;; 2 = backup;; 1 = none;; 0 = none.
-- **EX018 — Email sensitivity.** Why does email need MFA at a food bank? *Rubric:* 3 = client personal data;; 2 = protection;; 1 = none;; 0 = none.
-- **EX019 — Shared login.** How should the front desk login be handled? *Rubric:* 3 = strong password in shared vault, personal booking accounts;; 2 = vault;; 1 = shared note;; 0 = none.
-- **EX020 — Four settings.** Name the four key settings applied. *Rubric:* 3 = all four;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX021 — Tamper protection.** What does tamper protection prevent? *Rubric:* 3 = turning off Defender;; 2 = disabling;; 1 = none;; 0 = none.
-- **EX022 — Checklist value.** Why use a printed checklist for settings? *Rubric:* 3 = consistency across laptops;; 2 = reminder;; 1 = none;; 0 = none.
-- **EX023 — Traceability.** Why do volunteers use personal booking accounts? *Rubric:* 3 = traceable actions;; 2 = accountability;; 1 = none;; 0 = none.
-- **EX024 — Passphrase advice.** What password advice did Leah give? *Rubric:* 3 = long passphrase with manager;; 2 = long;; 1 = none;; 0 = none.
-- **EX025 — In-person help.** Why help volunteers with MFA in person? *Rubric:* 3 = reduces lockouts and confusion;; 2 = support;; 1 = none;; 0 = none.
-- **EX026 — Week two result.** Summarise the state at the end of week two. *Rubric:* 3 = standard users, MFA, settings;; 2 = two;; 1 = one;; 0 = none.
+- **EX014 — Admin danger.** What can a harmful program do when its user is an administrator? *Rubric:* 3 = change anything, install, disable protection; 2 = more damage; 1 = none; 0 = none.
+- **EX015 — Admin password storage.** Where should the separate admin passwords be kept? *Rubric:* 3 = password manager, limited people; 2 = securely; 1 = note; 0 = none.
+- **EX016 — App requests.** How do volunteers get new apps without admin rights? *Rubric:* 3 = Leah installs from approved list; 2 = ask; 1 = none; 0 = none.
+- **EX017 — MFA backup.** Why keep backup codes in the safe? *Rubric:* 3 = recovery if phone lost; 2 = backup; 1 = none; 0 = none.
+- **EX018 — Email sensitivity.** Why does email need MFA at a food bank? *Rubric:* 3 = client personal data; 2 = protection; 1 = none; 0 = none.
+- **EX019 — Shared login.** How should the front desk login be handled? *Rubric:* 3 = strong password in shared vault, personal booking accounts; 2 = vault; 1 = shared note; 0 = none.
+- **EX020 — Four settings.** Name the four key settings applied. *Rubric:* 3 = all four; 2 = three; 1 = fewer; 0 = none.
+- **EX021 — Tamper protection.** What does tamper protection prevent? *Rubric:* 3 = turning off Defender; 2 = disabling; 1 = none; 0 = none.
+- **EX022 — Checklist value.** Why use a printed checklist for settings? *Rubric:* 3 = consistency across laptops; 2 = reminder; 1 = none; 0 = none.
+- **EX023 — Traceability.** Why do volunteers use personal booking accounts? *Rubric:* 3 = traceable actions; 2 = accountability; 1 = none; 0 = none.
+- **EX024 — Passphrase advice.** What password advice did Leah give? *Rubric:* 3 = long passphrase with manager; 2 = long; 1 = none; 0 = none.
+- **EX025 — In-person help.** Why help volunteers with MFA in person? *Rubric:* 3 = reduces lockouts and confusion; 2 = support; 1 = none; 0 = none.
+- **EX026 — Week two result.** Summarise the state at the end of week two. *Rubric:* 3 = standard users, MFA, settings; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
 
@@ -193,21 +211,31 @@ You will (1) turn on and verify disk encryption; (2) store recovery keys safely;
 
 If a laptop is stolen while switched off, disk encryption makes its contents unreadable. Had the stolen laptop been encrypted, the food bank could have said with confidence that client data were safe. Windows BitLocker or device encryption uses the laptop's TPM chip so users do not need an extra password at startup.
 
+The limit matters: encryption protects a laptop that is off or at its sign-in screen after a restart. A laptop stolen while unlocked and in use is protected only by the screen lock, which is why both checks are in the quick check.
+
 ### 3.2 Turning it on
 
 Four laptops are not encrypted. Leah checks that each has a TPM enabled, turns on BitLocker and saves the recovery key to the food bank's cloud account and a printed copy in the office safe. One older laptop has its TPM switched off in its firmware settings; with the volunteer's agreement, Leah enables it first.
+
+The recovery key matters because a firmware update or hardware change can make BitLocker ask for it at startup. Without the key, the volunteer's files would be locked away from the food bank too. Keeping one copy in the cloud account and a printed one in the safe means it is available even when the cloud service cannot be reached. By Thursday, all twelve laptops are encrypted.
 
 ### 3.3 Checking it worked
 
 Leah confirms each laptop shows encryption on and protection active, rather than assuming. She notes the date in the spreadsheet.
 
+Starting encryption is not the same as finishing it: a laptop can show encryption "in progress" for hours, or have it suspended after an update. Leah checks each of the four laptops she changed and the eight that were already encrypted, because the original problem was a laptop nobody had checked. The spreadsheet row for each device now records encryption status with the date it was confirmed, and the monthly routine repeats that check. If a laptop is stolen next year, the answer to "was it encrypted?" is a dated line, not a guess.
+
 ### 3.4 Backups
 
 Files are stored in the cloud file service, which keeps previous versions for thirty days. Three laptops still keep documents only on the desktop. Leah moves those folders into the cloud service so they are backed up, and shows volunteers where to save.
 
+The three were FB03, FB07 and FB10, which failed the backup check in the lab. Desktop-only files are the ones lost with a stolen laptop, encrypted or not: encryption keeps them away from the thief but does not give them back to the food bank. With the folders moved, a stolen laptop would cost the device and nothing else.
+
 ### 3.5 Testing a restore
 
 Leah deletes a test file and restores it from the cloud service's recycle bin, then restores an older version of a document. Both work. CIS Controls v8 Control 11 includes testing that data can be recovered, because backups that have never been restored may fail when needed.
+
+The thirty-day version history sets a limit: a file damaged and not noticed for six weeks could not be recovered this way. Leah records that limit for the trustees rather than claiming backups cover everything. She chose a test file and an old document version because these are the two situations volunteers actually face: a deleted file and an overwritten one.
 
 ### Worked example
 
@@ -221,18 +249,18 @@ A recovery key saved only on the laptop itself is useless if the laptop is locke
 
 ### Exercises
 
-- **EX027 — Off versus on.** When does disk encryption protect a stolen laptop? *Rubric:* 3 = when switched off or locked at startup;; 2 = when off;; 1 = always;; 0 = none.
-- **EX028 — TPM role.** What does the TPM do for BitLocker? *Rubric:* 3 = holds keys, no extra startup password;; 2 = keys;; 1 = none;; 0 = none.
-- **EX029 — Key locations.** Where did Leah store recovery keys? *Rubric:* 3 = cloud account and safe;; 2 = one;; 1 = laptop;; 0 = none.
-- **EX030 — Disabled TPM.** What did Leah do about a disabled TPM? *Rubric:* 3 = enabled in firmware with agreement;; 2 = enabled;; 1 = none;; 0 = none.
-- **EX031 — Verify step.** Why verify encryption after turning it on? *Rubric:* 3 = confirm protection active;; 2 = check;; 1 = none;; 0 = none.
-- **EX032 — Desktop files.** Why move desktop files into the cloud service? *Rubric:* 3 = backed up and versioned;; 2 = backup;; 1 = none;; 0 = none.
-- **EX033 — Version history.** How long are previous versions kept? *Rubric:* 3 = 30 days;; 2 = month;; 1 = none;; 0 = none.
-- **EX034 — Restore test.** Describe the two restore tests. *Rubric:* 3 = deleted file and older version;; 2 = one;; 1 = none;; 0 = none.
-- **EX035 — CIS backup control.** Which CIS Control covers data recovery? *Rubric:* 3 = Control 11;; 2 = 11;; 1 = wrong;; 0 = none.
-- **EX036 — Key mistake.** What is wrong with saving the key only on the laptop? *Rubric:* 3 = inaccessible when locked;; 2 = bad;; 1 = none;; 0 = none.
-- **EX037 — Answering trustees.** How would Leah now answer trustees after a theft? *Rubric:* 3 = encrypted, verified date, data safe;; 2 = encrypted;; 1 = none;; 0 = none.
-- **EX038 — Week three result.** Summarise week three's result. *Rubric:* 3 = encrypted 12/12, cloud, restores;; 2 = two;; 1 = one;; 0 = none.
+- **EX027 — Off versus on.** When does disk encryption protect a stolen laptop? *Rubric:* 3 = when switched off or locked at startup; 2 = when off; 1 = always; 0 = none.
+- **EX028 — TPM role.** What does the TPM do for BitLocker? *Rubric:* 3 = holds keys, no extra startup password; 2 = keys; 1 = none; 0 = none.
+- **EX029 — Key locations.** Where did Leah store recovery keys? *Rubric:* 3 = cloud account and safe; 2 = one; 1 = laptop; 0 = none.
+- **EX030 — Disabled TPM.** What did Leah do about a disabled TPM? *Rubric:* 3 = enabled in firmware with agreement; 2 = enabled; 1 = none; 0 = none.
+- **EX031 — Verify step.** Why verify encryption after turning it on? *Rubric:* 3 = confirm protection active; 2 = check; 1 = none; 0 = none.
+- **EX032 — Desktop files.** Why move desktop files into the cloud service? *Rubric:* 3 = backed up and versioned; 2 = backup; 1 = none; 0 = none.
+- **EX033 — Version history.** How long are previous versions kept? *Rubric:* 3 = 30 days; 2 = month; 1 = none; 0 = none.
+- **EX034 — Restore test.** Describe the two restore tests. *Rubric:* 3 = deleted file and older version; 2 = one; 1 = none; 0 = none.
+- **EX035 — CIS backup control.** Which CIS Control covers data recovery? *Rubric:* 3 = Control 11; 2 = 11; 1 = wrong; 0 = none.
+- **EX036 — Key mistake.** What is wrong with saving the key only on the laptop? *Rubric:* 3 = inaccessible when locked; 2 = bad; 1 = none; 0 = none.
+- **EX037 — Answering trustees.** How would Leah now answer trustees after a theft? *Rubric:* 3 = encrypted, verified date, data safe; 2 = encrypted; 1 = none; 0 = none.
+- **EX038 — Week three result.** Summarise week three's result. *Rubric:* 3 = encrypted 12/12, cloud, restores; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
 
@@ -254,21 +282,31 @@ You will (1) re-run the quick check; (2) set a monthly routine; (3) prepare simp
 
 Leah repeats the five-point quick check with the same method. All twelve laptops now pass all five, compared with three of twelve at the start. She records the result with the date and shares a one-page summary with the trustees: what was found, what was changed and what it cost, which was only her time.
 
+Using the same method matters: the before and after figures are comparable only because the five checks and their yes or no answers did not change. The summary also tells the trustees what the theft would mean now: an encrypted laptop with files in the cloud, a recovery key on record and a dated spreadsheet row.
+
 ### 4.2 A monthly routine
 
 Improvements fade without routine. Leah writes a fifteen-minute monthly checklist: run the quick check on each laptop, confirm updates are current, check that no one has become an administrator, look at the cloud service's sign-in alerts, and restore one file. A second volunteer is trained to do it when Leah is away.
+
+Each item checks that a fix has not quietly undone itself: updates paused again, a volunteer given admin rights in a hurry, a sign-in alert ignored, or a backup that no longer restores. Restoring one file a month keeps the skill fresh as well as testing the service. The trustees asked for a two-line update at each meeting, which the routine's record makes easy.
 
 ### 4.3 When something goes wrong
 
 Leah writes four short responses on one page. Lost or stolen laptop: tell Leah, who confirms encryption, signs the user out everywhere and changes their password. Suspicious email clicked: change the password, check MFA prompts and tell Leah. Antivirus warning: disconnect from Wi-Fi and call Leah. Account locked out: Leah verifies the person by phone before resetting. NIST SP 800-61 describes incident handling in detail, but a small charity needs simple first steps that anyone can follow.
 
+Each response is something a volunteer can do without IT knowledge, and each ends with Leah. For a stolen laptop, the first question is the one nobody could answer last month: was it encrypted? The spreadsheet now answers it at once.
+
 ### 4.4 Joiners and leavers
 
 New volunteers get a standard account, MFA set up in person and a two-minute talk on saving files to the cloud. Leavers return laptops, and their accounts are disabled the same day.
 
+The leavers step closes the gap the food bank had before: accounts that stay active after someone stops volunteering. Disabling the account on the same day means a returned laptop cannot be used to reach the email, and a laptop that is never returned is encrypted and has no working account behind it. Leah notes each joiner and leaver in the device spreadsheet against the laptop they used. The monthly routine checks the list of active accounts against current volunteers, so a missed leaver is caught within a month.
+
 ### 4.5 What remains
 
 Some things are beyond a month: replacing the oldest laptop, which will soon stop receiving updates, and considering a free device management service for charities. Leah lists them for the trustees with rough timings.
+
+FB07, the old laptop that failed four of the five checks at the start, is the kind of device this covers. Once the oldest laptop stops receiving updates, the quick check will fail it every month whatever Leah does, so replacing it is a budget decision for the trustees, not an IT task. A device management service would replace the printed checklist if the food bank grows beyond twelve laptops.
 
 ### Worked example
 
@@ -282,18 +320,18 @@ A routine kept in one person's head stops when they leave; write it down and tra
 
 ### Exercises
 
-- **EX039 — Before and after.** State the quick check result before and after. *Rubric:* 3 = 3/12 to 12/12;; 2 = one;; 1 = none;; 0 = none.
-- **EX040 — Routine length.** How long should the monthly routine take? *Rubric:* 3 = about fifteen minutes;; 2 = short;; 1 = none;; 0 = none.
-- **EX041 — Routine items.** List the five monthly routine items. *Rubric:* 3 = all five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX042 — Second volunteer.** Why train a second volunteer? *Rubric:* 3 = continuity;; 2 = backup;; 1 = none;; 0 = none.
-- **EX043 — Lost laptop steps.** What are the lost laptop steps? *Rubric:* 3 = confirm encryption, sign out, change password;; 2 = two;; 1 = one;; 0 = none.
-- **EX044 — Antivirus warning.** What should a volunteer do on an antivirus warning? *Rubric:* 3 = disconnect, call Leah;; 2 = call;; 1 = ignore;; 0 = none.
-- **EX045 — Lockout identity.** Before resetting a locked account, what does Leah do? *Rubric:* 3 = verify by phone;; 2 = verify;; 1 = none;; 0 = none.
-- **EX046 — New volunteer setup.** How is a new volunteer set up? *Rubric:* 3 = standard account, MFA in person, saving guidance;; 2 = account;; 1 = none;; 0 = none.
-- **EX047 — Leaver timing.** When are leaver accounts disabled? *Rubric:* 3 = same day;; 2 = soon;; 1 = later;; 0 = none.
-- **EX048 — Remaining items.** Name the two remaining items. *Rubric:* 3 = old laptop replacement and management service;; 2 = one;; 1 = none;; 0 = none.
-- **EX049 — Trustee update.** What did trustees ask for? *Rubric:* 3 = two-line update each meeting;; 2 = updates;; 1 = none;; 0 = none.
-- **EX050 — Main lesson.** In one sentence, what did the month achieve? *Rubric:* 3 = from unknown to known with routines;; 2 = improvement;; 1 = none;; 0 = none.
+- **EX039 — Before and after.** State the quick check result before and after. *Rubric:* 3 = 3/12 to 12/12; 2 = one; 1 = none; 0 = none.
+- **EX040 — Routine length.** How long should the monthly routine take? *Rubric:* 3 = about fifteen minutes; 2 = short; 1 = none; 0 = none.
+- **EX041 — Routine items.** List the five monthly routine items. *Rubric:* 3 = all five; 2 = four; 1 = fewer; 0 = none.
+- **EX042 — Second volunteer.** Why train a second volunteer? *Rubric:* 3 = continuity; 2 = backup; 1 = none; 0 = none.
+- **EX043 — Lost laptop steps.** What are the lost laptop steps? *Rubric:* 3 = confirm encryption, sign out, change password; 2 = two; 1 = one; 0 = none.
+- **EX044 — Antivirus warning.** What should a volunteer do on an antivirus warning? *Rubric:* 3 = disconnect, call Leah; 2 = call; 1 = ignore; 0 = none.
+- **EX045 — Lockout identity.** Before resetting a locked account, what does Leah do? *Rubric:* 3 = verify by phone; 2 = verify; 1 = none; 0 = none.
+- **EX046 — New volunteer setup.** How is a new volunteer set up? *Rubric:* 3 = standard account, MFA in person, saving guidance; 2 = account; 1 = none; 0 = none.
+- **EX047 — Leaver timing.** When are leaver accounts disabled? *Rubric:* 3 = same day; 2 = soon; 1 = later; 0 = none.
+- **EX048 — Remaining items.** Name the two remaining items. *Rubric:* 3 = old laptop replacement and management service; 2 = one; 1 = none; 0 = none.
+- **EX049 — Trustee update.** What did trustees ask for? *Rubric:* 3 = two-line update each meeting; 2 = updates; 1 = none; 0 = none.
+- **EX050 — Main lesson.** In one sentence, what did the month achieve? *Rubric:* 3 = from unknown to known with routines; 2 = improvement; 1 = none; 0 = none.
 
 ### Synthesis
 
