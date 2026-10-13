@@ -823,7 +823,7 @@ Production trip dumps are refused; redacted staging samples that show the issue 
 
 After any real stop, Sam files a short blameless note: trigger, time to halt, who was called, whether riders were affected, and one process change. NMT reviews stop notes quarterly. Teams that hide stops eventually cause larger outages; teams that record them get better kill switches and clearer ROEs. The looping-auth drill exists so the first stop is not also the first time Sam writes that note.
 
-Field discipline for failure modes is written stop conditions, rehearsed messages, secondary contact, and kill switch. ENG-512 does not rely on heroics when a loop starts. Failure-mode field discipline is stops written, messages rehearsed, secondary named, kill switch tested. Heroics are out of scope.
+Field discipline for failure modes is written stop conditions, rehearsed messages, secondary contact, and kill switch. ENG-512 does not rely on heroics when a loop starts. Each of the four is checked before the Saturday window opens, so none depends on someone improvising during a live loop.
 
 ### Worked example (synthetic NMT)
 
