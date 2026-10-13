@@ -497,7 +497,7 @@ You will (1) draw service diagrams with trust boundaries; (2) annotate flows wit
 
 Traffic crosses boundaries — internet to edge, edge to service mesh, service to database, office to cloud. TLS is often terminated and re-established at each hop: CDN, load balancer, ingress, sidecar. Each termination is a separate negotiation with its own algorithm choice; a hybrid group at the CDN says nothing about the CDN-to-origin hop.
 
-KLS counts five TLS terminations on the customer path alone, and each has a different owner. The diagram must therefore show every termination with its controller, because a hybrid group configured by the CDN provider says nothing about the ingress KLS runs.
+KLS counts five TLS terminations on the customer path alone, and each has a different owner. The diagram must therefore show every termination with its controller, because each owner configures and changes its own hop on its own schedule.
 
 ### 8.2 Annotated diagrams
 
@@ -521,7 +521,7 @@ The plan places the first changes where KLS controls both ends and the data is l
 
 Draw and annotate the path for KLS's partner SFTP and office VPN flows; mark termination points.
 
-For partner SFTP the path is short: partner client → internet → KLS bastion → SFTP host, with SSH terminating once, at the bastion or the host depending on the design. For the office VPN, show the office appliance, the internet, the cloud VPN gateway and the internal hop to services, noting that IPsec terminates at the gateway and traffic continues over the mesh. Annotate each hop with protocol, key exchange, authentication, data lifetime and controller. Mark any hop where you could not find the algorithm as unknown.
+For partner SFTP the path is short: partner client → internet → KLS bastion → SFTP host, with SSH terminating once, at the bastion or the host depending on the design. For the office VPN, show the office appliance, the internet, the cloud VPN gateway and the internal hop to services, noting that IPsec terminates at the gateway and traffic continues over the mesh. Give every hop the same five annotations as the diagram rule above. Mark any hop where you could not find the algorithm as unknown.
 
 ### 8.6 Common errors and limits
 
@@ -784,7 +784,7 @@ You will (1) trace data flows end to end across termination points; (2) build a 
 
 A flow is protected only as strongly as its weakest segment. Trace shipment data from a customer's system through the CDN, origin load balancer, ingress, service mesh, message queue, database replication and backup copy. At each segment record protocol, key exchange, authentication, data lifetime and controller.
 
-For KLS the trace of one shipment record has eight segments, and only the first was hybrid when the trace was drawn. The weakest-segment rule meant the flow was reported as classical, not as one-eighth migrated.
+For KLS the trace of one shipment record has seven segments, and only the first was hybrid when the trace was drawn. The weakest-segment rule meant the flow was reported as classical, not as one-seventh migrated.
 
 ### 12.2 The CBOM
 
@@ -989,11 +989,11 @@ The misordered case is the instructive one. Both clients supported the hybrid gr
 - Forgetting HelloRetryRequest latency.
 - Copying syntax from blog posts without checking versions.
 
-The first error is the portal case from Lab T: hybrid present, never chosen. The second shows up as latency: a client predicting only X25519 meets a hybrid-preferring server and pays an extra round trip, visible at the 99th percentile on mobile paths. The third bit KLS when a blog's group name for a draft hybrid was copied into a production profile; the library rejected it and the ingress failed to start in staging. Each is caught by checking negotiation, timing and version, not by reading configuration.
+The first error is the portal case that Lab T in Chapter 17 detects: hybrid present, never chosen. The second shows up as latency: a client predicting only X25519 meets a hybrid-preferring server and pays an extra round trip, visible at the 99th percentile on mobile paths. The third bit KLS when a blog's group name for a draft hybrid was copied into a production profile; the library rejected it and the ingress failed to start in staging. Each is caught by checking negotiation, timing and version, not by reading configuration.
 
 ### 14.7 Client-side configuration
 
-Servers are only half of the negotiation. Clients choose which key shares to send first; a client that predicts X25519 alone forces a HelloRetryRequest from a hybrid-preferring server, adding a round trip. Modern browsers and current libraries send the hybrid share by default. For KLS's own SDKs and internal clients, set the group list explicitly in code or configuration, test against the staging gateway, and record the library version in the release notes so customers know which SDK versions negotiate hybrid key exchange.
+Servers are only half of the negotiation. Clients choose which key shares to send first, and a wrong prediction costs the extra round trip described in Section 14.3. Modern browsers and current libraries send the hybrid share by default. For KLS's own SDKs and internal clients, set the group list explicitly in code or configuration, test against the staging gateway, and record the library version in the release notes so customers know which SDK versions negotiate hybrid key exchange.
 
 ### Exercises
 
@@ -1310,7 +1310,7 @@ KLS stores profiles in one repository with version numbers. Ingress manifests re
 
 For each service record what remains classical (usually authentication), what is unknown, and what depends on third parties, with owner and review date.
 
-KLS keeps residual notes in the inventory, one per tier-1 service. A typical entry: "API gateway: key exchange hybrid; certificate ECDSA P-256 (forge-later, awaiting public CA and browser ML-DSA support); payment-provider calls classical (vendor ticket open); owner Platform Team; review 1 March." The review date matters most, because residual notes without dates become permanent acceptance by default.
+KLS keeps residual notes in the inventory, one per tier-1 service. A typical entry: "API gateway: key exchange hybrid; certificate ECDSA P-256 (forge-later, awaiting public CA and browser ML-DSA support); payment-provider calls: hybrid support unknown (vendor ticket open); owner Platform Team; review 1 March." The review date matters most, because residual notes without dates become permanent acceptance by default.
 
 The gateway entry, for instance, carries a separate line "unknown: whether the payment provider's endpoint supports hybrid groups", owned by the Platform Team until the vendor ticket is answered; folding it into the classical line would have recorded a guess as an accepted risk.
 
@@ -1871,7 +1871,7 @@ Split by layer (network, platform, application, PKI) and by dependency: tasks th
 
 In the SFTP team the lab and inventory owner finished first because the configuration work needed both; the client-matrix owner prepared test clients in parallel. The shared board lists each task with owner, dependency and definition of done, so a blocked task shows what it waits on.
 
-When the client-matrix owner waited on a partner's test credentials, the board showed the dependency, and the SFTP team's one-working-day review rule moved the request to the partner manager at the next morning's stand-up.
+When the client-matrix owner waited on a partner's test credentials, the board showed the dependency, and the SFTP team's 24-hour blocker-escalation rule (Section 25.7) moved the request to the partner manager at the next morning's stand-up.
 
 ### 25.3 Reviews
 
@@ -1885,7 +1885,7 @@ Weekly status: done, next, blocked, risks. Blockers name what is needed and from
 
 A blocker reads like: "Need partner client image v3.2 from the partner manager by Thursday; without it the matrix lacks two client types." Risks name what could change the plan. A report saying "70 % done" tells the reader nothing about whether the flow will be ready, so studio reports never use percentages.
 
-Risks are written with a trigger and a response, so the reader knows what would change the plan and what the team would do.
+Each risk is written with a trigger and a response, so the reader also knows what the team would do.
 
 ### 25.5 Worked example
 
@@ -2284,7 +2284,7 @@ In KLS rehearsals the slowest step was usually rebuilding the lab after the CI g
 
 Before the assessment, score yourself against each criterion with evidence links, and note one weakness you would fix with more time. Examiners value candidates who see their own gaps; it shows the judgment that operations teams rely on. Include the self-assessment in the handover so future teams know where to start.
 
-For the SFTP capstone, a score of 3 on verification links to the 6,000-handshake run per condition, not just to the dashboard.
+For the SFTP capstone, a score of 3 on verification links to the 3,000-session evaluation run, not just to the dashboard.
 
 Name one weakness, the evidence that shows it and the fix you would make with another week. For the SFTP capstone a fair example is a client type tested only in emulation. Note the weakness openly; examiners treat it as judgment, not as a lost mark.
 
@@ -2397,7 +2397,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about KLS a
 
 **EX037.** Metric: hybrid share of handshakes on API gateway (5-minute window). Alert if < 90 % for 15 minutes or drop > 5 points in an hour; action: check last deployment and profile hash, follow runbook.
 
-**EX038.** Hold: upper bound 0.234 % exceeds 0.09 % budget with a real elevated rate; investigate proxy, exclude or fix that site, then re-run.
+**EX038.** Hold: upper bound 0.234 % exceeds the 0.09 % limit (baseline plus budget) with a real elevated rate; investigate proxy, exclude or fix that site, then re-run.
 
 **EX039.** KLS likely removed classical KEX (hybrid-only) and the partner's client lacks hybrid support; restore classical fallback and notify the partner to upgrade within the transition window.
 
@@ -2446,6 +2446,8 @@ Model answers; any answer meeting the rubric scores equally. Numbers about KLS a
 ## Thirty-subject teaching route
 
 This is the **technologist** course for implementers, following the synthetic **Kestrel Logistics Software (KLS)** from foundations to configured, automated, monitored and handed-over post-quantum services.
+
+<a id="references"></a>
 
 ## References
 
