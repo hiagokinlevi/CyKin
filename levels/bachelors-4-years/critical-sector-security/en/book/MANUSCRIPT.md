@@ -614,7 +614,7 @@ Use the state column of `ss` or `netstat`: a local address with a listening port
 - Confusing reply traffic with initiated connections when reading flow logs.
 - Treating a violation as proof of compromise rather than as a question.
 
-Lab 4 shows why: a port-only rule allowing 502 would have passed the field device that initiated Modbus to the SCADA server, a reversal of the normal direction. The corporate RDP connection into control is "internal" and still a violation. In flow logs, the SCADA server's replies on 502 are not new connections and must not be read as such. And each of the three violations goes to an owner as a question first.
+Lab 4 shows why: a port-only rule allowing 502 would have passed the field device that initiated Modbus to the SCADA server, a reversal of the normal direction. The corporate RDP connection into control is "internal" and still a violation. In flow logs, the field controllers' replies from port 502 to the SCADA server are not new connections and must not be read as such. And each of the three violations goes to an owner as a question first.
 
 ### Exercises — chapter 7
 
