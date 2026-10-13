@@ -30,6 +30,8 @@ This is one course. It has **one course skill** and **one principal book in each
 | 中文 (`zh`) | [Overview](zh/README.md) · [Materials](zh/MATERIALS.md) | [Chapter index](zh/SUBJECTS.md) | [Book plan](zh/book/PLAN.md) | Working outline; translation pending |
 | 日本語 (`ja`) | [Overview](ja/README.md) · [Materials](ja/MATERIALS.md) | [Chapter index](ja/SUBJECTS.md) | [Book plan](ja/book/PLAN.md) | Working outline; translation pending |
 
+**English manuscript editorial checkpoint (13 October 2026):** The single [four-chapter principal draft](en/book/MANUSCRIPT.md) now includes the formerly separate CH04 early corrections and the original R1X–R4X offline teaching units. In the final appendix, EX039 makes proposed receiver/read-back fields explicit; EX043 preserves the difference between a request and a received source copy; EX044 distinguishes a canonical 09:37 proposal from a separately recorded classroom approval. The draft contains **145,948 whitespace-separated words**, **50 uniquely numbered exercises and 50 corresponding worked answers**, and exactly four chapter-navigation blocks. This is **draft coverage**, not a completed book. The most recent user-supplied A4 rendering measured **343 pages only for earlier SHA-256 `1353d6f595a18018b315126f7791aa0e32767c097bb78cf26ad41fc498b8af64`** under A4/25 mm/11 pt/1.3. The current manuscript has changed and **must be rerendered**; its current page count is unknown. External specialist review, exhaustive lab/source verification, accessibility and rights checks remain open.
+
 ## English chapter sequence
 
 The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or authored draft. The book plan summarizes each chapter in full.
