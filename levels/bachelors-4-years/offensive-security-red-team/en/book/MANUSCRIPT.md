@@ -2686,57 +2686,85 @@ You will (1) chain findings ethically; (2) stop at minimum proof; (3) document c
 
 Only inside ROE; stop at impact proof.
 
+A chain is a sequence of allowed steps that together show how a low-privilege foothold can reach a higher-value asset. At Riverstone Transit Bank every link must already be permitted by the rules of engagement; inventing a new hop mid-engagement is out of bounds. The operator stops the moment an impact is proven, because further pivots add risk without adding evidence for the finding. Sam Ito keeps a short list of approved transitions on the method card so a late-night session cannot invent a creative shortcut that nobody signed. Chains that look impressive but rest on an unapproved step are discarded, not celebrated.
+
 ### 26.2 Minimum proof
 
 No extra pivoting "for fun".
+
+Minimum proof means the smallest set of steps that demonstrates the weakness with enough detail for the owner to reproduce it. Extra pivoting after that point is curiosity dressed as thoroughness, and it often expands blast radius without changing the finding. TrackScope records the proof steps; anything beyond them needs a new ticket and a fresh approval. Sam once stopped a junior who wanted to "just see" whether domain admin was reachable after a cross-user read was already on film. The junior's restraint became part of the coaching note, which is more useful than another screenshot of a shell.
 
 ### 26.3 Documentation
 
 Chain diagram in appendix with times.
 
+Every accepted chain ships with a diagram that names each hop, the asset identifiers from FindingsDesk, and the wall-clock time of each transition. Freehand hostnames once broke an appendix link and cost a day of repair; shared ids keep the appendix mechanically checkable. Times matter because detection goals ask whether the SOC saw the stages, and a diagram without clocks cannot answer that. Sam pastes the diagram into the engagement appendix before he files the finding, not after the debrief, so reviewers never chase a missing figure. The diagram is evidence, not decoration.
+
 ### 26.4 Detection goals
 
 Note whether SOC saw stages — purple synergy.
+
+Detection goals turn a red-team chain into purple-team feedback. For each stage Sam records whether PulseMap or the SOC console showed a hit, a miss or an unknown. Unknown is allowed only when no sensor covers that hop, and that gap itself becomes a backlog item. The note is short: technique id, stage name, seen or not, and a pointer to the log source that should have caught it. Purple synergy here is not a joint meeting; it is a habit of leaving the detection team something actionable instead of a victory lap.
 
 ### 26.5 Payment adjacency
 
 Extra approvals before anything payment-near.
 
+Anything that touches payment-adjacent systems at TRB needs a second signature before the chain continues. Payment adjacency includes the SWIFT gateway perimeter, settlement queues and the jump hosts that can reach them, even when the gateway itself stays out of scope. Sam treats "near" as a property of network path and shared credentials, not of the finding title. If a hop would land on a host that can talk to those queues, he pauses, files the request and waits. Skipping the pause once would be enough to end the engagement and the internship.
+
 ### 26.6 No exploit kit
 
 Course still provides no exploit development.
 
-### 26.7 26.7 Applied note
+The coursework teaches chaining with published weaknesses and approved tooling; it does not teach writing new exploits. Learners who ask for a kit are pointed back to the method cards and the impact catalogue. That boundary keeps the classroom honest about what a bank will authorize and what a university programme can safely supervise. Sam's own kits are limited to the pinned scripts whose hashes sit in the lab notebook. Building a custom payload for a graded chain is a fail, even if the payload would have worked.
+
+### 26.7 Asset ids in diagrams
 
 Chain diagrams use the same asset ids as FindingsDesk. Freehand hostnames caused a broken link in an appendix once; ids made the appendix mechanically checkable.
 
-### 26.8 26.8 Impact catalogue
+FindingsDesk assigns a stable identifier to every in-scope host and service. Diagrams that reuse those ids can be validated by a script that walks the appendix and confirms each box still exists in the inventory. When Sam used a nickname for a jump host, the appendix checker failed and the finding sat in review until the diagram was redrawn. The lesson stuck: pretty labels belong in the prose caption, not in the graph nodes. Juniors now copy ids from the inventory pane rather than typing from memory.
+
+### 26.8 Impact catalogue
 
 Allowed impact proofs for chains are catalogued (cross-user read, config change). "Domain admin" is not an allowed classroom impact at TRB.
 
-### 26.9 26.9 Stop-on-impact banner
+The impact catalogue is a short, signed list of proofs the classroom will accept. Cross-user read of a non-sensitive record and a reversible configuration change are on it; seizing domain admin, encrypting files or touching live payments are not. The catalogue exists so Sam does not have to invent the boundary under pressure. When a chain could continue toward a forbidden impact, the operator stops and files what is already proven. Ambition that exceeds the catalogue is redirected into a detection goal or a remediation note, not into a riskier hop.
+
+### 26.9 Stop-on-impact banner
 
 Method cards show a banner "stop when impact proven". Sam measures average steps after impact; fewer is better.
 
-### 26.10 26.11 Scene
+The banner sits at the top of every method card so it is the first line an operator sees when the card is open. Sam tracks how many actions people take after the impact screenshot is already saved. A falling average means the culture is working; a rising average triggers a coaching huddle. The metric is deliberately simple because complicated dashboards invite gaming. Operators who stop cleanly get credited in the engagement summary, which makes restraint visible to the people who write performance notes.
+
+### 26.10 Stop after cross-user read
 
 After impact proof on cross-user read, Sam's next action is stop, not pivot to admin. His chain appendix's last box is green "STOP — impact shown". Juniors copy the box into their cards.
 
-### 26.11 26.12 Extension
+The scene is the moment everyone remembers: the cross-user read is on screen, the finding draft already names the path, and the temptation to keep going is loud. Sam closes the session, pastes the green STOP box as the final node and archives the notebook. Juniors who watched him do it once start pasting the same box on their own cards. The ritual is small, but it turns an abstract rule into a habit people can imitate under fatigue.
+
+### 26.11 No ransomware simulations
 
 Impact catalogue forbids ransomware simulation on bank networks in coursework. Someone always asks; the catalogue answers before Sam must.
 
-### 26.12 26.14 Note 11
+Learners who come from capture-the-flag culture often assume encryption demos are fair game. At TRB they are not, even in the lab ranges that mirror production naming. The catalogue states the ban in one line so Sam can point at paper instead of arguing taste. Questions about "what if we only encrypt a test share" still get a no, because the classroom cannot afford a story that sounds like ransomware to an auditor. Safer impact proofs already teach the same privilege questions without that theatre.
+
+### 26.12 Green means restraint
 
 STOP boxes are green on purpose — restraint is success, not failure.
 
-### 26.13 26.16 Pad
+Red usually marks danger; here green marks the successful end of a chain. The colour choice is deliberate pedagogy: stopping is the outcome the programme rewards. Sam explains it once to each cohort and then lets the stickers do the talking. When a visitor asks why the last box is not red, an operator can answer without calling the supervisor. Colour coding that fights the culture fails; colour coding that matches the culture sticks.
+
+### 26.13 STOP stickers
 
 Green STOP boxes are stickers juniors put on printed cards. Culture is tactile.
 
-### 26.14 26.18 Final
+Printed method cards still circulate in the jump room because screens go dark and paper does not. Juniors peel a green STOP sticker onto the card the first time they complete a chain under supervision. The sticker is slightly ridiculous and that is the point: it makes the rule memorable and gives peers something to notice during reviews. Sam keeps a spare sheet in the drawer next to the badge printer. When the sheet runs out, someone has been practicing, which is a good problem.
+
+### 26.14 Impact-then-stop posters
 
 Chain ethics posters hang in the jump room: "Impact then stop". Visitors sometimes laugh; operators do not. Sam watches new contractors read the poster before their first chain.
+
+The poster is not ironic decoration. Contractors who skim it and joke about it still get a verbal brief, but Sam notes who paused long enough to read. People who treat the slogan as a joke tend to be the ones who ask for one more hop after proof. The jump room is where habits form, so the wall carries the same message as the method cards and the catalogue. Consistency across paper, screen and conversation is how the rule survives shift changes.
 
 ### Worked example (synthetic TRB)
 
@@ -2774,6 +2802,8 @@ You will (1) plan retests; (2) read coverage labs; (3) close only with evidence.
 
 Same methods, agreed window.
 
+A retest repeats the original proof steps inside a window the owner and the tester both accepted when the finding was filed. Changing the method mid-retest makes a FIXED claim dishonest, because the owner may have patched only the path that was demonstrated. Sam books the window when the finding lands, usually about two weeks out, so the calendar does not wait for panic. If the build under test has drifted, the retest records that drift instead of inventing a pass. The point of the exercise is truth about closure, not a green checkbox.
+
 ### 27.2 Coverage lab
 
 lab_coverage flags T1190 GAP.
@@ -2795,53 +2825,79 @@ T1190 detected 0/2 GAP
 T1566 detected 1/2 ok
 ```
 
+The lab walks a short list of synthetic purple-team runs and prints how often each technique was detected. Learners read the printed ratios before they argue about tooling. A technique that never hits is a gap story, not a reason to declare the SOC broken. Sam's coaching focuses on framing: small samples can still justify instrumentation when the log source already exists. Students who only celebrate high hit rates miss the engineering value of an honest miss.
+
 ### 27.3 Closure
 
 FIXED with evidence or accepted risk signed.
+
+Closure is either a FIXED status backed by a retest transcript or an accepted-risk signature from someone with authority to own the residual. Anything else leaves the ticket open. Sam refuses to mark FIXED from a verbal "we patched it" without the same request that proved the issue. Accepted risk is not a soft fail; it is a documented decision with an expiry and an owner. FindingsDesk will not let a ticket disappear into a vague "monitoring" state without one of those two endings.
 
 ### 27.4 Partial
 
 STILL OPEN keeps ticket alive.
 
+When a retest shows the path is narrowed but not closed, the status stays STILL OPEN and the ticket remains on the owner's queue. Partial progress is recorded in the notes so nobody pretends the work never happened, but progress is not closure. Sam once saw a team celebrate a WAF rule that blocked his old payload while a one-character variant still worked; the ticket stayed open and the celebration moved to the next patch. Honesty about partial states keeps leadership from declaring victory on a dashboard that lies.
+
 ### 27.5 Scope freeze
 
 No new hunt on retest day.
+
+Retest day is for verifying known findings, not for opening a fresh hunt. New leads go into a parking note for the next engagement window. The freeze protects the owner's change window and keeps the evidence file coherent. Sam has watched retests turn into sprawling discovery days that produced neither a clean FIXED nor a clean STILL OPEN. The rule is posted on the retest calendar invite so nobody claims they were surprised. If a critical new lead appears anyway, it becomes a separate emergency ticket with its own approvals rather than hitchhiking on the retest.
 
 ### 27.6 Communicate
 
 Same-day owner note.
 
-### 27.7 27.7 Applied note
+After a retest, the owner receives a same-day note that states FIXED, STILL OPEN or accepted-risk pending, with a link to the transcript. Waiting until the weekly report creates rumours and duplicate work. Sam writes the note before he shuts the laptop, even when the news is disappointing. The note names the method card hash so the owner can confirm the same build was tested. Speed here is courtesy, not pressure. A late note forces the owner to ask peers what happened, which is how incorrect status stories start.
+
+### 27.7 GAP stories for SOC
 
 GAP stories offered to SOC include log source, technique and a sample detection idea — not a demand to "buy a tool". Sam's T1190 note pointed at WAF and origin logs already licensed.
 
-### 27.8 27.8 Retest calendar
+A useful gap story tells the SOC what to look at with what they already own. Sam's T1190 write-up named the WAF bypass logs and the origin access logs, both already licensed, and sketched a detection idea that used those fields. Demanding a new product in a gap note usually stalls the conversation. Detection engineers respond faster when the ask is concrete and cheap. The backlog item that followed cited Sam's note verbatim.
+
+### 27.8 Retest calendar
 
 Retest windows are booked when findings file, not after owners panic. Sam's template suggests a date 14 days out.
 
-### 27.9 27.9 GAP to backlog
+Booking early turns retest from a crisis into a routine. The template proposes a fourteen-day offset, which gives owners time to patch without inventing urgency theatre. If the owner needs longer, they say so in the ticket and the calendar moves with a reason attached. Sam's admin once tried to stack five retests on one Friday; the calendar view made the overload obvious before anyone burned out. Predictable windows are how verification stays kind.
+
+### 27.9 GAP to backlog
 
 GAP rows create detection backlog items with technique ids. PulseMap links to those items.
 
-### 27.10 27.11 Scene
+Every GAP row in PulseMap must point at a detection backlog item that carries the same technique identifier. The link is bidirectional so grooming can find orphans in either direction. Sam files a platform defect when a GAP sits for a sprint without a backlog id. The defect is about process, not about blaming the analyst who filed the gap. Linking keeps purple-team output from becoming a graveyard of screenshots.
+
+### 27.10 T1190 gap becomes a spike
 
 T1190 GAP with n=2 becomes a detection spike story: "instrument WAF bypass logs". Two weeks later SOC has a rule in staging. Small n still can drive engineering if framed as a gap, not a doom claim.
 
-### 27.11 27.12 Extension
+Two misses would look weak in a slide about coverage percentages. Framed as a gap with a named log source, they became a two-week instrumentation spike that landed a rule in staging. Sam's write-up avoided words like "blind" and "critical failure" and stuck to what was missing. The SOC lead later said the tone is why the story moved. Evidence size and evidence usefulness are different questions.
+
+### 27.11 Method hash in invites
 
 Retest calendar invites include the method card hash so owners prepare the same build. Version skew is the enemy of honest FIXED.
 
-### 27.12 27.14 Note 11
+Owners sometimes patch a different build than the one Sam tested. Putting an eight-character SHA-256 prefix in the invite forces the mismatch into the open before the session starts. If the hashes differ, the retest either retargets or records the skew explicitly. Sam would rather reschedule than stamp FIXED on a cousin of the vulnerable build. Version honesty is part of verification ethics.
+
+### 27.12 Bidirectional GAP links
 
 Detection backlog items link both ways to PulseMap GAP rows.
 
-### 27.13 27.16 Pad
+A one-way link dies quietly when someone renames a ticket. Bidirectional links let either side notice a break during grooming. Sam's weekly check is a five-minute query for GAP rows without backlog ids and backlog items whose PulseMap link 404s. Fixing those breaks is dull and necessary. Purple-team value is mostly in the plumbing that keeps signals attached to work. When both directions resolve, a detection engineer can walk from a miss to a ticket without asking Sam where the screenshot went.
+
+### 27.13 Hash prefixes in invites
 
 Method card hashes in invites are SHA-256 prefixes of eight hex chars — enough to spot skew.
 
-### 27.14 27.18 Final
+Eight hex characters are short enough to paste into a calendar field and long enough to make accidental collisions unlikely inside one engagement. Full digests live in the notebook for anyone who wants to recompute. Sam once caught a skew because the prefix in the invite no longer matched the card on the share. The owner had rebuilt overnight and forgotten to say so. Short prefixes earn their keep when they prevent a false FIXED.
+
+### 27.14 Backlog grooming with PulseMap
 
 Detection backlog grooming includes PulseMap once a sprint. GAP rows without backlog ids are defects in the grooming, not in the SOC. Sam files those defects against the platform process.
+
+Grooming that ignores PulseMap slowly invents a shadow backlog of screenshots. Including the GAP view once a sprint keeps the two lists honest. When Sam finds an orphan GAP, he files against the process that should have linked it, not against the analyst who was busy that week. Process defects are cheaper to fix than cultural blame. The sprint ends with every open GAP pointing somewhere real.
 
 ### Worked example (synthetic TRB)
 
@@ -2879,57 +2935,85 @@ You will (1) classify tool/process/people causes; (2) run blameless reviews; (3)
 
 Tool misconfig, process gaps, unclear ROE, skill gaps — rarely "bad people".
 
+Failure analysis at TRB starts by sorting causes into tool misconfiguration, process gaps, unclear rules of engagement and skill gaps. Personal blame is the last hypothesis, not the first. Sam has seen reviews waste an hour on who clicked what while a dropdown default kept inviting the same error. Naming the systemic bucket early keeps the room useful. When a cause really is individual negligence, the write-up still separates that from the platform and process fixes that would have made the mistake harder.
+
 ### 28.2 Timeline
 
 Facts first.
+
+A failure timeline lists observable facts with clocks before anyone offers motives. Logs, chat stamps and TrackScope events come first; interpretations wait. Sam refuses to let a review open with a story about who was careless. Once the facts are ordered, disagreements about cause become disagreements about evidence rather than about character. The timeline is pasted into the review notes so later readers can rebuild the argument. If a fact cannot be timed, it is marked uncertain instead of rounded into a neat narrative.
 
 ### 28.3 Blameless
 
 Seek systemic fixes.
 
+Blameless review means the primary output is a change to tools, defaults, checklists or training materials, not a performance note. Sam still coaches individuals, but the review ticket cannot close on coaching alone unless the template's justification box is filled. Teams that skip systemic fixes repeat the same incident with a new name attached. The practice is borrowed from operations culture and adapted to offensive engagements where shame travels fast. People tell the truth faster when the room is hunting broken systems.
+
 ### 28.4 Drift vs attack
 
 Decide with evidence.
+
+Some messy outcomes look like attacks when they are configuration drift, and the reverse is also true. The review asks what evidence would distinguish the two before it picks a label. Sam once chased an "intrusion" that was an overnight CMDB import of stale hosts. PulseMap and change tickets usually settle the question faster than intuition. Mislabeling drift as attack wastes SOC time; mislabeling attack as drift delays containment. The decision is written with the evidence that tipped it.
 
 ### 28.5 Actions
 
 Owner + date per cause.
 
+Every accepted cause leaves the review with a named owner and a due date. Actions without owners are wishes. Sam's template blocks "the team will improve" as an owner string; it wants a person or a queue. Dates are short enough to matter and long enough to be real. When an action slips, the slip is visible on the same board as engagement findings. Closure of the failure review waits until each action is done or explicitly deferred with a signature.
+
 ### 28.6 Platform
 
 TrackScope bugs get engineering tickets too.
 
-### 28.7 28.7 Applied note
+If the platform invited the mistake, engineering gets a ticket with the same seriousness as a finding. Sam files those tickets with the confusing control's screenshot and the review id. Platform on-call is invited to failure reviews even when the room thinks the error was human, because the UI often coached the click. Fixing TrackScope once prevents a generation of retraining. Operators learn to treat tooling defects as first-class outcomes of a review. A silent bugfix is still a bug fix.
+
+### 28.7 Platform on-call in reviews
 
 Failure reviews invite the platform on-call even when the mistake looks human. Often the UI invited the error. Sam's TrackScope copy change after one review cut a class of scope mis-clicks.
 
-### 28.8 28.8 UI affordances
+Inviting on-call changes the conversation from "who misfired" to "what did the screen suggest". After one review, Sam's one-line copy change on a scope control removed a whole class of mis-clicks the following month. The on-call engineer would not have heard the pattern from a training ticket alone. Reviews that exclude platform staff tend to produce slide decks nobody ships. The invite is automatic on the review calendar template.
+
+### 28.8 UI affordances
 
 If three analysts make the same TrackScope mistake, UX changes before more training. Sam files UX tickets with screenshots of the confusing control.
 
-### 28.9 28.9 Five whys cap
+Repeated identical mistakes are a design smell. Training the fourth person is slower and less reliable than changing the control. Sam's UX tickets always include a before screenshot and a proposed after state so designers are not guessing. The threshold of three is a heuristic, not magic; two can be enough when the blast radius is high. Affordances beat sermons when the clock is short and the UI is loud.
+
+### 28.9 Five whys cap
 
 Reviews stop at five whys or first actionable systemic fix. Endless why theatre is cut.
 
-### 28.10 28.11 Scene
+Five whys is a tool, not a ritual. Sam stops the chain when the room reaches a fix someone can own this sprint, even if that is why number three. Endless questioning becomes theatre that exhausts people without shipping change. The facilitator watches for the first actionable systemic answer and parks deeper philosophy for a separate design review. Caps keep failure analysis shorter than the incident it studies.
+
+### 28.10 Stale inventory five whys
 
 Five whys on the stale inventory stop at "CMDB API had no schema version field". Action: add schema version and a TrackScope checksum. Training the intern who imported the stale file is not the primary action.
 
-### 28.11 28.12 Extension
+The room could have blamed the intern who clicked import. Instead the fifth why landed on a missing schema version field and a checksum TrackScope never verified. Those two engineering actions became the review's primary output; the intern received a calm coaching note as a side item. Sam keeps this scene in the facilitator guide because it shows what blameless looks like when a junior is in the blast radius. Systems that cannot detect stale imports will keep hiring scapegoats.
+
+### 28.11 Dropdown default to deny
 
 UX ticket from failure review changed a dropdown default from "allow" to "deny". Mis-clicks dropped the following month. Defaults are destiny.
 
-### 28.12 28.14 Note 11
+The control looked identical after the change; only the default option moved. Mis-clicks that had plagued scope selection fell sharply the next month without a new training module. Sam cites this when someone argues that UX work is cosmetic. Defaults silently authorise or block thousands of future clicks. Failure reviews that never touch defaults leave the same trap armed.
+
+### 28.12 Before and after screenshots
 
 UX tickets require a before/after screenshot of the control that confused people.
 
-### 28.13 28.16 Pad
+Words like "the dropdown is confusing" do not survive hand-off to a designer who was not in the room. Before and after screenshots make the request concrete and reviewable. Sam stores them under a ux- prefix in the same vault path as engagement evidence so access control stays familiar. Tickets lacking the pair bounce from triage. The discipline also forces the reporter to propose a clearer state instead of only complaining.
+
+### 28.13 UX evidence path
 
 Before/after UX screenshots live in the same vault path as engagement evidence with a ux- prefix.
 
-### 28.14 28.18 Final
+A separate unofficial folder becomes a junk drawer nobody audits. Using the engagement vault with a clear prefix keeps retention, access reviews and legal holds consistent. Sam can point counsel at one tree when questions arise about what was captured during a messy week. The prefix also lets automation skip UX images when packing customer-facing evidence bundles. Small naming rules prevent large discovery headaches.
+
+### 28.14 Platform-or-process checkbox
 
 Failure review templates force a "platform or process change?" checkbox. If neither is checked, the review is incomplete. Training-only outcomes need explicit justification.
+
+The checkbox is a speed bump against the lazy ending where everyone agrees to try harder. Leaving both boxes unchecked fails the template validation Sam wired into TrackScope. Training-only outcomes are allowed when justified in writing, for example a willful policy violation with no tooling gap. Most reviews should ship at least one platform or process change. The forced choice makes the culture visible in the data.
 
 ### Worked example (synthetic TRB)
 
@@ -2967,65 +3051,97 @@ You will (1) run day-of workflow; (2) coordinate SOC; (3) hand over between shif
 
 Confirm ROE, contacts, window.
 
+Kickoff is a short, boring meeting that confirms the rules of engagement, the named contacts and the exact time window before anyone touches a keyboard. Sam treats boredom as a feature: surprises belong in findings, not in authorisation. Each participant says aloud the stop conditions and the SOC channel they will use. If a contact is on leave, the backup is named before the window opens. A kickoff that skips confirmation is how overtime arguments and out-of-scope hops begin.
+
 ### 29.2 Logging
 
 Contemporaneous activity log.
+
+Operators write what they did while they did it, not from memory the next morning. The activity log sits beside the method card and takes timestamps from the same clock the SOC uses. Sam has watched reconstructed logs invent confidence that the raw session never earned. Contemporaneous notes also protect the operator when an alert looks worse than the action taken. The log is part of the evidence pack, so slang and jokes stay out of it.
 
 ### 29.3 SOC
 
 Start/stop messages; expect alert noise coordination.
 
+The SOC receives a start message when the window opens and a stop message when it closes, even if the session was quiet. Alert noise is expected; coordination is how trust survives a noisy evening. Sam pastes the engagement id into both messages so analysts can filter without guessing. Mid-window surprises still get a ping, not a silent hope that nobody notices. Teams that skip stop messages leave the SOC watching ghosts after the work is done.
+
 ### 29.4 Handover
 
 Log + vault beats verbal notes.
+
+Shift handovers use the written activity log and the vault paths, not a hallway summary. Verbal notes evaporate and mutate. Sam's five-line paste template forces the outgoing operator to name unfinished cards, open approvals and the next safe action. The incoming operator should be productive within a few minutes. Handovers that need a novel usually hid a mess that should have been a stop. A handover that needs a whiteboard drawing usually needed an earlier stop.
 
 ### 29.5 End
 
 Hard stop at window end.
 
+When the window ends, work ends. Unfinished cards move to the next authorised window; they do not earn five more minutes. Sam practices a cable-pull drill on the jump host so muscle memory beats negotiation. Arguments about needing overtime belong in the next ROE discussion, not in the last minutes of this one. Hard stops keep the calendar honest for the SOC and for the people who sleep after the shift. The SOC should never have to guess whether the noisy session is still authorised.
+
 ### 29.6 On-call hygiene
 
 Sleep and spare credentials matter on multi-day tests.
 
-### 29.7 29.7 Applied note
+Multi-day engagements fail in ordinary ways: exhausted operators, expired tokens and a laptop that will not unlock. Sam packs spare credentials in the vault, not on sticky notes, and protects sleep as an operational control. A tired operator who keeps going is a risk amplifier, not a hero. On-call hygiene also means knowing who covers if someone falls ill mid-window. The programme grades sustainability alongside technical skill. Burned-out operators produce findings that later need embarrassing corrections.
+
+### 29.7 Cable-pull hard stop
 
 Hard-stop drills include pulling the network cable on the jump host at T-minus zero. Sam's muscle memory is to stop typing before arguing for five more minutes. Arguments happen in the next ROE, not in overtime.
 
-### 29.8 29.8 Channel etiquette
+The drill feels theatrical until the first time someone reaches for "just one more request" and the cable is already out. Sam wants the hands to stop before the debate starts. Overtime negotiations are recorded as ROE change requests with signatures, which kills casual extensions. Operators who hate the drill usually admit later that it saved them from a messy morning report. Theatre that enforces a real boundary is still useful theatre.
+
+### 29.8 Channel etiquette
 
 Engagement chat forbids joke screenshots of customer data. Sam moderates with a pinned rule and one warning.
 
-### 29.9 29.9 Hours counter
+Humor leaks into chat when people are tired, and customer data does not belong in jokes. The pinned rule is blunt and the first warning is the last warning. Sam removes offending posts and files a note if needed. The rule protects the bank, the programme and the operator who would otherwise become a cautionary tale. Channels that tolerate "harmless" screenshots eventually produce a screenshot that is not harmless.
+
+### 29.9 Hours counter
 
 A bot announces hours worked in-window. Crossing the max posts a stop reminder.
 
-### 29.10 29.11 Scene
+The hours bot is a dull accountant that does not care about momentum. At the configured maximum it posts a stop reminder into the engagement channel where everyone can see it. Sam treats the reminder as authoritative, not advisory. Hidden overtime becomes impossible when the clock speaks publicly. People who disable the bot lose the privilege of running unsupervised windows. Public clocks beat private promises when fatigue starts editing judgment.
+
+### 29.10 Unfinished card at 16:55
 
 At 16:55 Sam's unfinished card is written as "next window". At 17:00 the cable-pull drill begins. He has already hit save. The drill is boring when preparation is good.
 
-### 29.11 29.12 Extension
+The interesting part of the scene is the five minutes before the drill, when Sam chooses to write the unfinished card instead of racing the clock. Boring drills are the goal; drama means someone waited too long. Juniors watching learn that save-and-stop is a skill. The next window inherits a clear card rather than a mystery. Preparation turns a hard stop from a cliff into a curb.
+
+### 29.11 Wind-down posts
 
 Hours counter at 9.5 hours posts "wind down". At 10 it posts "hard stop approaching". Sam winds down. Machismo is out of policy.
 
-### 29.12 29.14 Note 11
+The early wind-down post exists so people can finish notes and close sessions without a panic stop. Sam uses that half hour to park work cleanly. Operators who ignore wind-down and sprint into the hard stop create messy handovers. Machismo about lasting longest is coached out of the culture. The programme would rather lose a half hour of testing than gain an hour of cleanup and distrust.
+
+### 29.12 Wind-down template link
 
 Wind-down posts include a link to the unfinished-card template.
 
-### 29.13 29.16 Pad
+A reminder without a tool still leaves people improvising under time pressure. The unfinished-card template is one click from the bot message, so the path of least resistance is the correct path. Sam reviews whether operators actually used the template when handovers look thin. Links in operational alerts are part of designing for tired humans. If the link breaks, fixing it is an ops ticket, not a shrug. Tired people follow the nearest link; put the right one nearest.
+
+### 29.13 ROE id on unfinished cards
 
 Unfinished-card template includes ROE id so next window inherits authorization context.
 
-### 29.14 29.18 Final
+An unfinished card without its ROE identifier is a puzzle for the next operator and a risk if the wrong window picks it up. The template field is required and validated. Sam has rejected cards that said "continue yesterday's thing" with no id. Authorization context must travel with the work. Inheritance without identity is how scope drift returns through the side door. Clear lineage from ROE to card is how multi-day tests stay defensible.
+
+### 29.14 Five-line handover paste
 
 Shift handovers use a five-line paste template. Sam rejects freeform novels. The next operator should be productive in three minutes, not thirty.
 
-### 29.15 29.19 Boost
+Long prose handovers hide uncertainty inside paragraphs. Five lines force choices: what is open, what is blocked, what is next, where the vault is, who to call. Sam returns novels with a polite request to use the template. New contractors sometimes feel the template is cold; they warm to it after the first clean takeover. Brevity here is respect for the incoming shift.
+
+### 29.15 Thank early stops
 
 Hard-stop culture includes thanking people who stop early with unfinished work. Sam's retrospective shout-outs name the unfinished cards that respected the clock. Overtime heroes are coached, not praised. The difference shows up in fewer emergency change tickets after test weeks and in SOC analysts who still trust the engagement calendar.
 
-### 29.16 29.20 Extra
+Praise teaches the room what to repeat. Thanking clean stops makes unfinished work socially safe. Praising overtime heroes teaches people to hide the clock. Sam's retrospectives make the distinction audible every time. Trust from the SOC is a lagging indicator that the culture is working, and it is worth protecting with awkward thank-yous.
+
+### 29.16 Newsletter shout-outs
 
 Shout-outs for early stops appear in the monthly ops newsletter.
+
+Public recognition outside the team channel shows leadership that restraint is valued. Sam sends one or two names with the unfinished-card titles, never with customer detail. People who only hear about dramatic late saves start to believe drama is the job. The newsletter item is short on purpose. Culture that never leaves the jump room dies when the jump room changes. Quiet professionalism deserves ink as much as loud saves do.
 
 ### Worked example (synthetic TRB)
 
@@ -3063,6 +3179,8 @@ You will (1) run ranking and retest labs; (2) pass a stop drill; (3) file a mini
 
 lab_rank + lab_retest + one-page report.
 
+Laboratory II asks learners to rank findings with lab_rank, retest them with lab_retest and write a one-page report that a busy owner could act on. The build is intentionally small so honesty and stop discipline stay visible. Sam fails flashy reports that hide a STILL OPEN item behind confident prose. Scripts are pinned; learners do not bring private forks. The lab rewards coherent closure language more than clever pivoting. Owners should finish the page knowing what to patch first and what remains open.
+
 ### 30.2 Stop drill
 
 Compliant message within two minutes.
@@ -3083,57 +3201,85 @@ F4 open -> closed FIXED
 fixed 2 of 3
 ```
 
+The stop drill times how quickly a learner can send the compliant stop message when the facilitator calls time. Two minutes is the bar; fumbling for the template fails the drill even if the technical work was strong. Sam wants the message to be muscle memory before real windows begin. Learners who argue during the drill practice the wrong skill. Speed here is about respect for the clock, not about typing contests.
+
 ### 30.3 Honesty
 
 Leave STILL OPEN open.
+
+If lab_retest still shows an open path, the report must say STILL OPEN and explain what remains. Closing on hope or on an owner's verbal assurance fails the lab. Sam's automated check looks for the status words when the synthetic after-state is open. Learners sometimes feel honesty costs them a grade; in this course honesty is the grade. The habit transfers to real tickets where false FIXED claims are expensive. A painful STILL OPEN today prevents a false FIXED in next week's audit pack.
 
 ### 30.4 Peer pressure
 
 Refuse mismatched evidence.
 
+Peers may offer a screenshot whose hash is "only off by one character" or a log from a different build. The correct move is to refuse and re-capture. Sam scripts this pressure into the lab so refusal gets practiced out loud. Close-enough evidence is how trust dies in front of auditors and regulators. Learners who accept mismatched files fail even if their prose is polished. Saying no in front of peers is the skill the script is really grading.
+
 ### 30.5 Time box
 
 Two hours.
+
+The lab fits in two hours including the stop drill and the report. Scope creep inside the exercise is a self-inflicted fail. Sam watches for learners who chase a fourth finding instead of finishing the page. Time boxes teach prioritization the same way engagement windows do. Finishing cleanly inside the box beats a brilliant draft that misses the clock. Learners who finish early help peers with wording, not with extra hunting. Leaving with a coherent page beats leaving with unfinished brilliance.
 
 ### 30.6 Pass bar
 
 Stop + honesty + coherent report.
 
-### 30.7 30.7 Applied note
+Passing requires a timely stop, honest statuses and a report an owner could use without calling the learner. Clever chains that miss any of the three still fail. Sam publishes the bar before the lab so nobody discovers it in the debrief. The bar mirrors production expectations at TRB in miniature. Technical theatre without operational discipline does not clear the course. Facilitators score the three legs separately so a dazzling chain cannot hide a soft stop.
+
+### 30.7 Hash mismatch refusal
 
 Lab II peer pressure scripts include "the hash is only off by one character". Sam's refused answer is always re-capture. Close-enough hashes are how evidence loses court and regulator trust.
 
-### 30.8 30.8 Report skeleton
+The scripted line sounds reasonable under time pressure, which is why it is taught. Sam's model answer is short: re-capture, do not patch the hash. Learners rehearse the sentence until it feels ordinary. Evidence integrity is not a vibe; it is a digest that matches. Courses that never practice refusal produce polite people who accept bad files.
+
+### 30.8 Report skeleton
 
 Lab II reports use a skeleton with REQUIRED markers. Missing STILL OPEN explanation fails the automated check Sam wrote.
 
-### 30.9 30.9 Skeleton CI
+The skeleton removes debates about formatting so attention stays on content. REQUIRED markers make omissions obvious to both humans and CI. Sam's checker fails empty sections rather than guessing intent. Learners who delete a marker to hide a gap learn that the pipeline notices. Structure is an honesty aid, not bureaucracy for its own sake. Empty REQUIRED blocks fail loudly before a human ever opens the file.
+
+### 30.9 Skeleton CI
 
 PRs of Lab II reports fail CI if REQUIRED sections are empty. Sam likes mechanical honesty.
 
-### 30.10 30.11 Scene
+Continuous integration on prose feels odd until the first time it catches a missing status. Sam would rather a bot reject the pull request than rely on a tired facilitator alone. Mechanical honesty scales across cohorts without losing its temper. Learners can iterate until the check passes, which teaches revision under a clear rule. Facilitators still read for quality; CI only enforces presence. The pipeline is a patient tutor that repeats the same standard every time.
+
+### 30.10 CI rejects owner-said-so
 
 Lab II CI rejects a report that marks F3 closed with comment "owner said so". Sam's error message quotes the course rule. Mechanical enforcement beats sermonising.
 
-### 30.11 30.12 Extension
+The scene is funny the first time and sobering the second. Verbal assurance is not retest evidence, and the checker knows the difference. Sam's error text cites the handbook rule so appeals are about the rule, not about the bot's mood. Learners update the status to STILL OPEN and write what remains. Sermons fade; failing checks teach.
+
+### 30.11 STILL OPEN when retest open
 
 Skeleton CI looks for the string STILL OPEN when lab_retest would show open items. Students cannot hide openness by omission.
 
-### 30.12 30.14 Note 11
+Omission is the softest form of false closure. The checker compares the synthetic after-state to the report text and demands the uncomfortable words when paths remain. Sam tuned the check after a cohort quietly dropped open items from the page. Hiding work does not fix systems. Making openness mechanically required keeps the lab aligned with production ethics. Forced words on the page become forced honesty in the learner's next real ticket.
+
+### 30.12 Rule numbers in CI
 
 CI message quotes the rule number from the course handbook.
 
-### 30.13 30.16 Pad
+Error messages that only say "invalid report" invite arguments with the tool. Quoting the handbook rule lets a learner look up the expectation and fix the work. Sam keeps rule numbers stable across terms so old threads still make sense. Appeals cite the rule; they do not petition the facilitator to override a clear miss. Transparent automation earns grudging respect. Clear citations turn a red X into a study guide instead of a dead end.
+
+### 30.13 Appeals cite the rule
 
 Handbook rule numbers in CI make appeals easy: cite the rule, do not argue with the bot.
 
-### 30.14 30.18 Final
+A clean appeal path reduces heat in the room. Learners who disagree must show how the rule was misapplied, which is rarer than they expect. Sam would rather debate handbook language in a curriculum meeting than debate every failing check ad hoc. The bot is not the villain; unclear rules would be. Numbered expectations keep both sides honest. Process fairness matters as much as technical correctness in a graded lab.
+
+### 30.14 Best refusal of the day
 
 Laboratory II debriefs vote on the best refusal of the day. The winner explains their wording. Celebrating refusal makes the next one easier.
 
-### 30.15 30.20 Extra
+Refusal is socially awkward, so the course celebrates it on purpose. The winning learner reads the exact sentence they used when evidence did not match. Peers steal good wording the way they steal good payloads in other cultures. Sam wants refusal to feel like craft. A room that cheers a clean no will produce cleaner evidence packs.
+
+### 30.15 Refusal example card
 
 Best-refusal vote winners get to update the refusal example card.
+
+The example card in the lab pack is a living document owned by recent winners. Updating it keeps the language current and gives recognition without grades inflation. Sam reviews edits for tone and accuracy before they ship. Learners take the card more seriously when peers wrote the lines. Ownership of small artifacts builds the culture faster than posters alone. Peer-authored examples travel farther than facilitator lectures after the term ends.
 
 ### Worked example (synthetic TRB)
 
