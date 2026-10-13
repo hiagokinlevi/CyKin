@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Bacharelado
 
 - Idioma: português do Brasil (`pt`); bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 40 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–40 (EX073–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de segurança e de computação em geral.
 - Relação com os livros vizinhos: o [livro de engenharia](../../../../engineering-5-years/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a construção de plataformas de avaliação; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a implementação. **Este livro une teoria, casos, laboratórios e um projeto final.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,7 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
-
-Capítulos 25–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -66,11 +64,11 @@ Sam Ito, estagiário de engenharia na equipe da plataforma de avaliação autori
 
 Os capítulos posteriores sobre probabilidade, arquitetura e avaliação reutilizam a mesma linguagem cuidadosa. Uma linguagem de escopo descuidada produz testes descuidados. A fração de cobertura de 1.3 volta como uma proporção com intervalo no Capítulo 12, e a expressão de conjuntos de 1.1 vira a função de pertinência do TrackScope nos laboratórios. Aprender o vocabulário uma vez, com cuidado, significa que cada ferramenta posterior tem uma especificação precisa por trás, em vez de um hábito. O caderno de Sam deste capítulo é o primeiro artefato que seu mentor revisa. Uma definição vaga custa pouco para corrigir no caderno, mas a mesma imprecisão no TrackScope poderia colocar um host SWIFT no escopo.
 
-### 1.7 1.7 Nota aplicada
+### 1.7 Nota aplicada
 
 Sam pratica a tradução de parágrafos das ROE em testes de pertinência no papel antes de abrir o TrackScope. Quando uma frase diz "VLAN web, exceto gateways de pagamento", ele escreve a expressão de conjuntos e lista todos os endereços de gateway conhecidos a partir do registro de ativos. Só então ele carrega o arquivo de escopo. Terceirizados que pulam a etapa do papel propõem com frequência hosts que ficam ao lado do SWIFT "porque o ping funcionou". A etapa do papel é mais lenta e evita incidentes de jornal. A lista do registro de ativos serve também como evidência depois. Os auditores podem casar cada carga do arquivo de escopo com a lista assinada do registro, de modo que qualquer host acrescentado depois se destaca.
 
-### 1.8 1.8 Aritmética de conjuntos resolvida
+### 1.8 Aritmética de conjuntos resolvida
 
 Dada a VLAN V e as exclusões E, Sam calcula V\E e depois faz a interseção com a lista proposta do dia, P. Só P∩(V\E) pode ser carregado. Ele testa a calculadora com o SWIFT dentro de V e confirma que ele nunca aparece na saída. Um segundo teste coloca em P um endereço fora de V e confirma que ele também é rejeitado. Juntos, os dois testes cobrem as duas formas pelas quais o escopo falha: hosts excluídos vazando de volta e hosts fora da faixa chegando numa planilha amigável. A saída da calculadora é salva com a data, para que a lista carregada no dia possa ser reproduzida depois.
 
@@ -134,15 +132,15 @@ Projetos de nuvem acrescentam tenants mais depressa do que os diagramas são atu
 
 Sam nunca presume a camada de um host só pelo nome; ele confere o registro de ativos. Um host chamado web-test-03 pode, na verdade, estar na camada do razão depois de uma migração, e um host chamado ledger-legacy pode ter sido desativado. Só o registro, com o dono e a camada nomeados, decide como o TrackScope trata um host. Quando o registro e o nome discordam, Sam pergunta ao dono e registra a resposta antes de testar. Palpites baseados no nome são registrados como quase-acidentes quando detectados. A resposta do dono é copiada para os comentários do arquivo de escopo.
 
-### 2.7 2.7 Nota aplicada
+### 2.7 Nota aplicada
 
 A regra de falha fechada do PulseMap é testada na CI apagando o arquivo de escopo e verificando que toda API retorna negação. Sam acrescentou esse teste depois que uma configuração errada em staging serviu brevemente listas de permissão vazias. Painéis que não conseguem negar são piores que nenhum painel. Ele demonstra o caminho de negação a todo estagiário novo na primeira semana. O teste de CI também cobre um arquivo corrompido, não só um ausente. Os dois caminhos precisam retornar negação em todos os endpoints, incluindo o health check, antes que o build possa passar.
 
-### 2.8 2.8 Zoneamento da plataforma
+### 2.8 Zoneamento da plataforma
 
 TrackScope, FindingsDesk e PulseMap ficam numa zona de avaliação com conduítes controlados apenas para staging. Sam revisa esses conduítes a cada trimestre da mesma forma que revisa os fluxos de negócio do TRB — porque a plataforma pode ferir o banco se estiver mal ligada. Um conduíte da zona de avaliação para a produção deixaria um job mal configurado enviar tráfego a sistemas vivos; por isso, sua ausência é verificada, não presumida. Cada revisão registra quais conduítes existem, quem os aprovou e quando foram usados pela última vez. Conduítes sem uso são removidos em vez de ficarem abertos por conveniência.
 
-### 2.9 2.9 Bug do denominador
+### 2.9 Bug do denominador
 
 Um bug do PulseMap certa vez fazia n assumir 1 por padrão. O teste de regressão de Sam define n=0 e espera um bloco de erro, não 100%. Com n igual a 1 por padrão, um único host tocado teria aparecido como 100% de cobertura, exatamente a porcentagem enganosa contra a qual o Capítulo 1 alerta. O teste de regressão agora roda em todo build, e o PulseMap se recusa a desenhar um bloco de cobertura sem um denominador explícito vindo do arquivo de escopo. Um bloco de erro é honesto; um número confiante construído sobre um valor padrão não é. A correção saiu com uma entrada no changelog que nomeia o bug.
 
@@ -206,15 +204,15 @@ Fixe a semente da aleatoriedade e as versões do interpretador para que as demon
 
 Os laboratórios deste livro seguem essas regras e incorporam saídas reais. Cada laboratório deste livro roda offline com a biblioteca padrão do Python 3, usa endereços de faixas de documentação e arquivos sintéticos e imprime uma saída capturada de uma execução real. Se a sua saída diferir da impressa, a diferença é informação: uma entrada alterada, um interpretador diferente ou um bug. Trate-a como Sam trata uma regressão do PulseMap, encontrando a causa antes de confiar em qualquer um dos resultados. Nenhum dos laboratórios precisa de acesso à rede, então eles podem rodar num notebook com a rede desligada.
 
-### 3.7 3.7 Nota aplicada
+### 3.7 Nota aplicada
 
 A saída do dry-run é colada no canal do engajamento antes que qualquer modo de escrita rode. Os colegas têm dois minutos para objetar. Sam certa vez pegou um path traversal para dentro de um arquivo de evidências porque um colega leu o dry-run com cuidado. A revisão social vence a esperteza solitária em scripts operacionais. Dois minutos é curto o bastante para não atrasar uma janela e longo o bastante para um leitor cuidadoso. A saída colada lista todo endereço-alvo, o cartão de método e os caminhos de escrita que o script vai tocar, para que o leitor possa comparar cada linha com a /26 assinada e com a exclusão do SWIFT. A objeção de qualquer leitor pausa a execução até ser resolvida e anotada no log da janela.
 
-### 3.8 3.8 Política de dados de teste
+### 3.8 Política de dados de teste
 
 Clientes sintéticos nos fixtures usam documentos de identidade obviamente falsos. Sam rejeita fixtures que reutilizam números pessoais com aparência real, mesmo quando não são usados em produção. A transferência de hábito importa. Um fixture parecido com um número de identidade real pode ser copiado para um teste contra a produção por alguém com pressa. Valores obviamente falsos não podem ser confundidos com dados de clientes, e o hábito se estende a todo engajamento posterior. Um revisor que vê num fixture um número de identidade plausível pergunta de onde ele veio; um valor como FAKE-000-001 encerra a pergunta imediatamente e não pode ser confundido com um cliente durante um incidente.
 
-### 3.9 3.9 Varredura de segredos na CI
+### 3.9 Varredura de segredos na CI
 
 Os repositórios da plataforma falham na CI se strings de alta entropia parecem chaves. Sam coloca na lista de permissão apenas fixtures de teste claramente marcados como FAKE. Uma chave de aparência real num arquivo de teste ainda treina as pessoas a ignorar o aviso; por isso, a marcação é obrigatória. Cada fixture permitido é listado com seu dono e o motivo pelo qual é seguro, e a lista é revisada sempre que as regras de CI mudam. Permitir pelo marcador, e não pelo caminho do arquivo, significa que uma chave real colada numa pasta de fixtures continua sendo pega. Quando a CI bloqueia um commit, o desenvolvedor rotaciona a string mesmo que ela só tenha existido localmente.
 
@@ -282,15 +280,15 @@ Sumário, escopo/métodos, achados, pontos positivos, limitações, apêndices. 
 
 A revisão por pares pega jargão e afirmações exageradas antes que o CISO veja o rascunho. O revisor de Sam lê procurando duas coisas: palavras que um não especialista não entenderia e frases que afirmam mais do que a evidência mostra, como "atacantes podem movimentar dinheiro" no lugar da conexão observada com o ledger-db. Cada comentário é respondido no histórico do rascunho, de modo que o relatório final mostra o que mudou e por quê antes que o CISO o receba. Comentários não resolvidos bloqueiam a liberação; os resolvidos continuam visíveis. O CISO recebe apenas a versão revisada, então rascunhos exagerados como "atacantes podem movimentar dinheiro" nunca chegam ao CISO.
 
-### 4.7 4.7 Nota aplicada
+### 4.7 Nota aplicada
 
 Os exercícios de citação exigem abrir a página viva do NIST ou do PTES, não o resumo de um blog. Sam reprovou um rascunho inicial por citar uma paráfrase de segunda mão do SP 800-115 que inventava uma cláusula. Só fontes primárias — a mesma regra de nunca inventar DOIs. A página do NIST também mostra o status e a data do documento. Sam agora registra, ao lado de cada citação no rascunho, a data em que abriu a página primária e a seção em que se apoiou. Os revisores podem então conferir uma afirmação contra a mesma página, em vez de confiar na memória dele.
 
-### 4.8 4.8 Passagem pelo público
+### 4.8 Passagem pelo público
 
 Antes de enviar, Sam lê o sumário executivo em voz alta para alguém de fora da segurança. Se a pessoa não consegue reformular a decisão pedida, ele reescreve. Jargão que sobrevive a essa passagem é um defeito. A reformulação do ouvinte é anotada no histórico do rascunho para comparação posterior. No relatório da conta de administrador compartilhada, um ouvinte de finanças reformulou o pedido como "pagar por contas nominais no sistema de empréstimos", o que bateu. Um rascunho anterior tinha produzido "alguma coisa sobre senhas", o que o mandou de volta para reescrita. O ouvinte de finanças foi escolhido de propósito.
 
-### 4.9 4.9 Auditoria da voz passiva
+### 4.9 Auditoria da voz passiva
 
 Achados que escondem os agentes na voz passiva são reescritos. "Senhas foram reutilizadas" vira "A conta de administrador de empréstimos usava a mesma senha da VPN", quando isso é conhecido. Nomear o sistema torna o achado acionável e testável. Quando o agente não é conhecido, a frase diz isso claramente, por exemplo "os logs não mostram qual administrador mudou a configuração". Isso mantém o achado honesto sem inventar um culpado e aponta direto para a lacuna de logs como uma segunda questão a corrigir. Corrigir o rascunho "os desenvolvedores ignoraram a segurança" exigiu apenas uma frase reescrita que nomeava o sistema e o log ausente.
 
@@ -358,15 +356,15 @@ SP 800-115 (planejamento), PTES (etapas), WSTG (web), ATT&CK (técnicas), TIBER-
 
 O dano ao cliente e a integridade dos pagamentos estão acima da curiosidade e das capturas de tela para o currículo. Na prática, essa ordem decide escolhas reais. Se um teste puder corromper um registro de pagamento, ele para, por mais interessante que fosse o resultado. Se uma captura de tela mostrar dados de clientes, ela não é feita, nem para um portfólio. Sam escreve o impacto esperado no cliente de cada cartão de método antes de uma janela, e qualquer cartão com possível impacto na integridade dos pagamentos precisa da aprovação nominal do dono do razão. A curiosidade é satisfeita no laboratório sintético, onde nada real pode ser prejudicado.
 
-### 5.7 5.7 Nota aplicada
+### 5.7 Nota aplicada
 
 O roteiro de recusa é ensaiado numa encenação em que um funcionário faz o papel de um diretor impaciente. Sam precisa manter o tom respeitoso sem ceder. As revisões em vídeo mostram se ele sorri nervosamente até concordar; esses clipes são apagados depois da orientação, mas a lição fica. Na encenação, o diretor pede a Sam que "só dê uma olhada rápida" num host fora da /26. O roteiro de Sam nomeia a cláusula das ROE, oferece levar uma mudança de escopo ao dono e dá um prazo realista para a aprovação. Praticar as palavras exatas as torna disponíveis sob pressão real.
 
-### 5.8 5.8 Flashcards de frameworks
+### 5.8 Flashcards de frameworks
 
 O baralho de Sam tem um cartão por framework: SP 800-115, PTES, WSTG, ATT&CK, TIBER-EU, CBEST — propósito e o que ele não é. Usar o CBEST como lista de verificação web é uma resposta comum no verso dos cartões. O cartão do TIBER-EU, por exemplo, diz que ele enquadra red teaming orientado por inteligência de ameaças para entidades financeiras e não é um padrão de varredura de vulnerabilidades. Escrever o lado "o que não é" obriga Sam a entender o propósito de cada framework, e não o seu nome, e o baralho é revisado sempre que um framework publica uma nova versão.
 
-### 5.9 5.9 Fronteira do laboratório doméstico
+### 5.9 Fronteira do laboratório doméstico
 
 O laboratório doméstico de Sam usa RFC1918 e nunca o DNS do TRB. Misturar a VPN com o dever de casa é um quase-acidente relatado, se acontecer. As faixas privadas RFC1918 em casa não podem colidir com o endereçamento do TRB se Sam nunca conectar a VPN do banco enquanto experimenta. Usar o DNS do TRB em casa vazaria nomes internos e poderia mandar tráfego do laboratório para o banco. Se houver uma confusão, ele a relata como quase-acidente, para que a regra de fronteira possa ser melhorada, em vez de torcer em silêncio para que ninguém tenha notado.
 
@@ -434,15 +432,15 @@ A classificação de severidade usa pontuações ordenadas; os empates são desf
 
 Os grafos omitem a engenharia social, a menos que as ROE a incluam. Um grafo de arestas de rede e de autenticação não diz nada sobre um funcionário de agência que poderia ser convencido por telefone a aprovar um pagamento. Se as ROE excluem a engenharia social, Sam declara que o grafo cobre apenas caminhos técnicos, para que o conselho não leia "nenhum caminho encontrado" como "nenhuma forma de entrar". A limitação fica no mesmo slide do grafo, em palavras simples. A engenharia social, se autorizada depois, acrescentaria novas arestas ao mesmo grafo.
 
-### 6.7 6.7 Nota aplicada
+### 6.7 Nota aplicada
 
 Os grafos de alcançabilidade anotam as arestas com "autenticada" ou "só de rede". Uma aresta só de rede para hosts vizinhos do razão eleva a severidade mesmo sem credenciais, porque um roubo de credenciais em outro lugar completa o caminho. Os primeiros grafos de Sam não tinham essa anotação e subclassificaram um achado. Depois da correção, toda aresta para um nó vizinho dos pagamentos traz sua anotação, e o lab_rank dá mais peso às arestas só de rede para a camada do razão. O achado antes subclassificado foi repontuado e reenviado com uma nota explicando a mudança, para que os leitores da primeira versão não ficassem com a classificação mais baixa.
 
-### 6.8 6.8 Conjuntos de corte
+### 6.8 Conjuntos de corte
 
 Para os nós vizinhos dos pagamentos, Sam procura conjuntos de corte de arestas cuja remoção os isolaria da Internet. Essas arestas se tornam prioridades de monitoramento e controle mesmo quando não são "vulneráveis" no sentido de um scanner. Para o ledger-db, o conjunto de corte acabou sendo de duas arestas: a conexão direta da camada web e o acesso administrativo que contornava o jump host. Remover essas duas isola o razão dos caminhos voltados para a internet. Monitorá-las custa muito menos do que vigiar todo host. Essas duas arestas são também as que o F3 e a regra do jump host tratam.
 
-### 6.9 6.9 Evidência das arestas
+### 6.9 Evidência das arestas
 
 Cada aresta crítica do grafo cita a fonte de inventário ou de varredura sob as ROE. Arestas sem fonte são removidas. Uma fonte pode ser uma entrada do registro de ativos, uma exportação de regras de firewall ou um resultado de varredura autorizada com sua data. Uma aresta desenhada de memória ou por suposição não pode ser verificada; por isso, não pode sustentar um achado, e deixá-la faria o grafo inteiro parecer mais certo do que é. Quando falta uma fonte, Sam pergunta ao dono e só devolve a aresta ao grafo com evidência.
 
@@ -510,15 +508,15 @@ Capturas de pacotes precisam de cláusulas nas ROE; elas frequentemente contêm 
 
 A T1190 Exploit Public-Facing Application descreve o abuso de serviços voltados para a internet — nomeada para o desenho de detecções, não como um tutorial. Ligar um achado à T1190 diz à equipe de monitoramento quais detecções verificar, como erros ou requisições incomuns no front-end do internet banking, sem descrever como a fraqueza foi acionada. Sam acrescenta o ID da técnica no FindingsDesk para que o PulseMap possa mostrar a cobertura por técnica, e o relatório nunca inclui passos. Os donos das detecções podem então testar suas regras contra requisições sintéticas em staging.
 
-### 7.7 7.7 Nota aplicada
+### 7.7 Nota aplicada
 
 As cláusulas de captura das ROE especificam as horas de retenção e quem pode rodar o wireshark. O pedido padrão de Sam é "configurações e logs primeiro; pacotes só se esses falharem". A maioria dos achados web do TRB nunca precisa de pacotes; quando precisa, a cláusula já está escrita. Escrever a cláusula com antecedência significa que um pedido urgente de captura durante uma janela não leva a uma decisão improvisada sobre dados de clientes. A cláusula também nomeia quem apaga os arquivos quando as horas de retenção expiram. A pessoa nomeada confirma a exclusão no ticket da captura quando as horas de retenção expiram, para que ninguém presuma que os arquivos sumiram.
 
-### 7.8 7.8 Humildade diante dos banners
+### 7.8 Humildade diante dos banners
 
 Banners alimentam o inventário, não o teatro de severidade. Sam registra a exposição de versão como baixa, a menos que esteja associada a um caminho vulnerável alcançável sob as ROE — que este curso, ainda assim, não vai explorar no mundo real. Um banner que mostra uma versão antiga pode ter sido corrigido por um backport do fornecedor; por isso, a versão sozinha não prova uma fraqueza. Registrá-la como inventário permite aos donos planejar atualizações sem inflar um relatório com achados alarmantes, mas não verificados. Se uma fraqueza alcançável for confirmada depois sob as ROE, a severidade é repontuada com essa evidência.
 
-### 7.9 7.9 Lint de faixas de documentação
+### 7.9 Lint de faixas de documentação
 
 Os exemplos na documentação passam por um lint que garante que os IPs sejam de faixas de documentação. O lint de Sam reprovou o rascunho de um post de blog que usava um endereço real do TRB; boa captura. O endereço real teria revelado parte do layout de rede do TRB e poderia ter convidado os leitores a sondá-lo. O lint roda em toda mudança de documentação e bloqueia a publicação até que o endereço seja substituído por um exemplo de faixa de documentação, como um da 198.51.100.0/24. O rascunho do blog foi corrigido e o endereço original foi relatado ao dono da rede.
 
@@ -586,15 +584,15 @@ A importação de achados por CSV faz primeiro um dry-run e limita o número de 
 
 O bloqueio otimista impede que dois analistas sobrescrevam silenciosamente o mesmo ticket. Cada ticket carrega um número de versão. Quando um analista salva, o FindingsDesk confere que a versão não mudou desde que o ticket foi aberto; se um colega salvou primeiro, o segundo salvamento é recusado e o analista vê as duas versões. Sem isso, a mudança de severidade de um analista poderia apagar silenciosamente a nova evidência de outro, e ninguém saberia qual visão do achado era a atual. O analista recusado mescla as duas versões à mão, e a mesclagem é registrada.
 
-### 8.7 8.7 Nota aplicada
+### 8.7 Nota aplicada
 
 A importação em lote tem teto de 500 linhas e exige um segundo aprovador acima de 100. Sam viu um analista quase importar um dump de scanner que incluía hosts fora do escopo como "informativos". Tetos e aprovadores são chatos de propósito. Um host fora do escopo "informativo" ainda é evidência de que alguém testou fora das ROE; por isso, ele precisa de revisão, não de armazenamento silencioso. O segundo aprovador confere o resumo do dry-run contra o escopo assinado antes que importações maiores prossigam. O aprovador nunca é a pessoa que rodou a varredura, para que a verificação seja independente.
 
-### 8.8 8.8 Exercícios de migração
+### 8.8 Exercícios de migração
 
 As migrações de esquema rodam numa cópia, com checksums antes e depois. Sam registra a contagem de linhas. Uma migração que muda as contagens silenciosamente reprova no exercício. Checksums e contagens de linhas na cópia mostram se uma migração preservou todo achado e toda referência de evidência. Se as contagens diferem, a migração é corrigida e rodada de novo numa cópia nova; a produção nunca é usada como teste. Sam guarda os números de antes e depois com o script de migração, para que um revisor possa confirmar que o exercício passou.
 
-### 8.9 8.9 Escritas idempotentes
+### 8.9 Escritas idempotentes
 
 As atualizações de tickets são idempotentes por id do achado. Entregas duplicadas vindas de redes instáveis não conseguem criar F1s duplicados. Como cada atualização é indexada pelo ID do achado, aplicar a mesma requisição duas vezes deixa o ticket no mesmo estado que aplicá-la uma vez. Uma criação repetida do F1 atualiza o F1 em vez de inserir um segundo registro. Isso importa no TRB, onde os links de VPN para a zona de avaliação caem com frequência, e achados duplicados inflariam as contagens nos relatórios ao conselho. Por isso, as contagens para o conselho continuam verdadeiras mesmo nos dias de rede ruim.
 
@@ -1989,7 +1987,7 @@ Estouros do orçamento de ruído disparam uma flag automática de pausa do cart�
 
 As flags de pausa só são liberadas com a contra-assinatura do SOC. Sam não pode liberar o próprio estouro de ruído. A autoliberação faria da pausa automática um teatro. A contra-assinatura do SOC é uma segunda pessoa afirmando que o ambiente aguenta mais carga. Às vezes, ela recusa e pede uma continuação mais silenciosa no dia seguinte. Essa recusa é um controle bem-sucedido. Registrar quem liberou uma pausa, e quando, também ajuda as revisões posteriores a entender por que um cartão ruidoso continuou depois de um estouro.
 
-Promessas informais não sobrevivem ao próximo ciclo de lançamentos. Uma confirmação registrada sobrevive porque pode ser auditada quando alguém pergunta quem aceitou o risco.
+Quando o analista do SOC libera uma flag, o TrackScope registra no próprio cartão o nome dele, a contagem de alertas no momento da liberação e o novo orçamento. A auditoria seguinte do cartão pode então comparar essa extensão com os alertas que o PulseMap atribuiu ao engajamento depois disso.
 
 ### 23.14 Auditorias rotativas dos cartões
 
@@ -2126,11 +2124,1490 @@ Os controles correspondem aos achados; a classificação dirige o financiamento;
 
 [← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
 
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar os laboratórios de escopo, Wilson e fluxos sob supervisão; (2) fazer a verificação por pares; (3) recusar evidências ruins.
+
+### 25.1 Caderno
+
+Saídas de lab_scope, lab_wilson e lab_flows com as iniciais.
+
+O caderno de laboratório é a evidência de que o estudante executou as ferramentas, e não de que leu sobre elas. Cada saída exigida é colada ou anexada com as iniciais do estudante e o horário. As iniciais importam porque capturas de tela compartilhadas circulam. Um caderno sem saídas é reprovado, por mais polido que seja o texto. Os supervisores conferem se os números colados correspondem ao que as versões fixadas dos scripts produzem, e é por isso que os hashes dos scripts aparecem mais adiante no capítulo.
+
+### 25.2 Verificação por pares
+
+Comparar as classificações de escopo. Depois de executar o lab_scope, os estudantes trocam os cadernos e reclassificam a mesma lista de alvos sem olhar as respostas um do outro. As divergências são discutidas com base no arquivo de escopo escrito, e não na memória. A verificação por pares pega leituras erradas sistemáticas, como tratar a exclusão do SWIFT como opcional, e treina o hábito de ter uma segunda pessoa confirmando as decisões de escopo antes de uma janela real. Uma verificação por pares limpa faz parte dos critérios de aprovação do laboratório. Quando os pares continuam discordando depois de ler o arquivo, o supervisor decide e a linha ambígua é enviada ao autor do escopo como correção de redação.
+
+### 25.3 Falha plantada
+
+Recusar evidência com hash divergente. Um arquivo de evidência no pacote do laboratório tem um hash que não corresponde à nota que o acompanha. Os estudantes que o arquivam mesmo assim são reprovados nessa estação. A questão é emocional, além de técnica. Recusar uma evidência dá a sensação de desacelerar, e num laboratório cronometrado essa pressão é proposital. A ação correta é parar, registrar a divergência e solicitar uma nova captura. Levar essa recusa para os engajamentos reais é o hábito que a estação existe para construir.
+
+### 25.4 Tempo limitado
+
+Duas horas, com parada obrigatória. Janelas reais terminam. O laboratório também termina, mesmo que uma estação esteja inacabada. Os estudantes praticam escrever o que concluíram, o que não concluíram e o que fariam em seguida, que é a mesma disciplina que Sam usa quando uma noite de testes fica sem tempo. Estender o laboratório para os estudantes com dificuldade ensinaria a lição errada. O tempo limitado também mantém justas as verificações por pares: todos têm o mesmo relógio. Os supervisores avaliam a nota de passagem com a mesma seriedade das estações concluídas, porque uma lista honesta do trabalho inacabado é o que permite a um colega retomar com segurança na noite seguinte.
+
+### 25.5 Sem produção
+
+Varrer o TRB em produção reprova no laboratório. O ambiente do laboratório usa endereços de faixas de documentação e dados sintéticos. Qualquer tentativa de apontar ferramentas para sistemas reais do TRB, mesmo por entusiasmo, é reprovação automática e uma conversa com o supervisor. A regra protege o banco e o estudante. A autorização para o laboratório é autorização para o laboratório. A curiosidade sobre a produção pertence a um engajamento planejado com escopo assinado, e não a um exercício de sala de aula. A rede do laboratório não tem rota para as faixas do TRB, então a regra também é imposta tecnicamente, e qualquer tentativa bloqueada aparece no log do firewall do laboratório que o supervisor revisa.
+
+### 25.6 Aprovação
+
+O supervisor aprova pela disciplina, não pela novidade. Um laboratório aprovado mostra verificações de escopo cuidadosas, hashing honesto, cadernos completos e respeito às paradas. Técnicas extras sofisticadas que não foram pedidas não aumentam a nota, e podem reduzi-la se violarem uma regra. Os supervisores assinam uma rubrica curta: escopo correto, recusa por hash demonstrada, saídas presentes, nenhum contato com a produção. A novidade é bem-vinda nos capítulos posteriores de pesquisa. O Laboratório I recompensa a disciplina. Um estudante que terminou todas as estações, mas arquivou a evidência divergente, não é aprovado, enquanto um que a recusou e ficou sem tempo numa estação posterior normalmente é.
+
+### 25.7 A exclusão do SWIFT que sumiu
+
+Entre as falhas plantadas do Laboratório I há um arquivo de escopo com o SWIFT removido das exclusões. Os estudantes que não percebem são reprovados. Sam foi reprovado nessa variante uma vez, quando era estudante, e hoje escreve as exclusões primeiro, todas as vezes. A variante funciona porque os estudantes costumam conferir se as faixas em escopo parecem corretas e esquecem de conferir se as exclusões continuam presentes. O hábito duradouro que Sam tirou dessa reprovação é ler a lista de exclusões antes da lista de inclusões. O laboratório mantém a variante porque a falha é barata numa sala de aula e cara numa janela real.
+
+### 25.8 Fixando as versões dos scripts do laboratório
+
+Os cadernos de laboratório incluem os hashes dos scripts usados. A divergência de versões é uma desculpa comum que Sam elimina fixando os hashes. Sem hashes, um estudante cujos números diferem do gabarito pode alegar que executou outra versão do script, e o supervisor não consegue verificar com facilidade. Com hashes, o caderno mostra exatamente quais bytes foram executados. Fixar versões também protege os estudantes. Se os mantenedores do laboratório mudarem um script no meio do período, a divergência de hash explica um resultado surpreendente, em vez de parecer erro do estudante. A lista de hashes fica no topo do caderno, e a primeira verificação do supervisor é recalcular um hash antes de ler qualquer resultado.
+
+### 25.9 Rodízio das variantes plantadas
+
+A variante de escopo plantada passa por rodízio para que a notícia não se espalhe entre as turmas. Sam mantém três variantes. Se todas as turmas vissem a mesma linha do SWIFT faltando, a turma da tarde ficaria sabendo no almoço. Três variantes mantêm honesta a verificação por pares: exclusão ausente, exclusão renomeada e exclusão apenas num apêndice. Os estudantes são avisados de que existem variantes, então decorar uma resposta é obviamente inútil. Os facilitadores sorteiam a variante de um envelope lacrado no início de cada turma. As variantes diferem apenas em onde o problema da exclusão se esconde, de modo que todos os estudantes enfrentam a mesma habilidade sob um disfarce diferente e as notas continuam comparáveis.
+
+### 25.10 Exclusões pelo id do ativo
+
+A variante B do Laboratório I esconde uma exclusão renomeando o SWIFT para "pay-gw-01". Os estudantes que só buscam a string "SWIFT" são reprovados. Sam ensina a exclusão pelo id do ativo, não pelo nome comercial. Inventários reais renomeiam as coisas. Um gateway que a equipe chama de SWIFT pode aparecer no registro de ativos com um hostname. Conferir as exclusões pelos nomes que as pessoas usam na conversa deixa essas linhas passarem. A variante renomeada do laboratório torna esse modo de falha pessoal. Os estudantes que passam por ela saem com o hábito de casar identificadores de ativos, e não slogans.
+
+### 25.11 Exclusões escondidas em apêndices
+
+A variante C usa uma exclusão listada apenas numa tabela de apêndice. Os estudantes que pulam os apêndices são reprovados. Sam adora a disciplina com apêndices. Documentos de escopo enterram linhas importantes em apêndices com mais frequência do que qualquer um admite. A variante C é um pouco cruel e muito realista. A correção é uma ordem de leitura: folha de rosto, apêndice de exclusões e, depois, faixas de inclusão. Os estudantes que adotam essa ordem deixam de ser reprovados na C e deixam de perder exclusões em regras de engajamento reais. A variante do apêndice também ensina que a estrutura de um documento de escopo faz parte do seu significado; uma tabela no fim pode ter tanta autoridade quanto a folha de rosto.
+
+### 25.12 Lembretes plastificados de ids de ativos
+
+As exclusões por id de ativo estão impressas no cartão plastificado da bancada do laboratório. O cartão lista os três identificadores que precisam aparecer em toda verificação de escopo do banco fictício do laboratório. É um apoio para o hábito, não um substituto para a leitura do arquivo de escopo. Os estudantes podem usá-lo durante o Laboratório I e espera-se que trabalhem sem ele nos laboratórios seguintes. A plastificação sobrevive a café derramado, um risco de laboratório mais comum do que os instrutores admitem. Os estudantes registram no caderno se usaram o cartão, o que permite aos supervisores ver quem está pronto para dispensar o apoio.
+
+### 25.13 Invalidando cartões plastificados antigos
+
+Os cartões plastificados têm versão; os antigos são furados para marcar que estão invalidados. Um cartão desatualizado é pior do que nenhum cartão, porque os estudantes confiam nele. Quando os identificadores de ativos mudam, novos cartões são emitidos e os antigos são furados para que não possam ser reutilizados por descuido. O número de versão do cartão corresponde à versão do pacote do laboratório. Os facilitadores conferem essa correspondência antes de cada turma, como parte da abertura da sala. Os cartões invalidados vão para uma caixa na mesa do facilitador, que serve também como um histórico rápido de quantas vezes os identificadores do laboratório mudaram.
+
+### 25.14 Mostrando um caderno reprovado de verdade
+
+As instruções iniciais do Laboratório I mostram um caderno reprovado de um ano anterior (com permissão) em que o hashing foi pulado. Ver uma reprovação real convence mais do que um item da rubrica. Sam agradece ao ex-aluno que permitiu o compartilhamento anonimizado. A permissão e a anonimização são obrigatórias; o que importa é o hash ausente, não a pessoa. Os estudantes que veem a reprovação fazem perguntas melhores sobre os próprios cadernos. Os itens da rubrica descrevem o padrão. Uma falha real faz o padrão ser sentido. Sempre que possível, cada nova turma vê uma reprovação anonimizada diferente, para que o exemplo não vire uma história conhecida que todos ignoram.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam recusa a evidência ruim plantada e pega um colega marcando o SWIFT como em escopo.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX073 — Laboratórios usados.** Quais três laboratórios estão no caderno? *Rubrica:* 3 = scope, wilson, flows; 2 = dois; 1 = um; 0 = nenhum.
+- **EX074 — Condição de reprovação.** O que reprova no Laboratório I imediatamente? *Rubrica:* 3 = varredura ao vivo/em produção; 2 = parcial; 1 = terminar cedo; 0 = nada.
+- **EX075 — Erro do SWIFT.** O que se deve dizer a um colega que marca o SWIFT como em escopo? *Rubrica:* 3 = EXCLUDED; remover; 2 = parcial; 1 = ok; 0 = nada.
+
+### Síntese
+
+O Laboratório I avalia a disciplina de autorização e a integridade da evidência.
+
+### Continue estudando — capítulo 25 de 40
+
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) encadear achados de forma ética; (2) parar na prova mínima; (3) documentar as cadeias.
+
+### 26.1 Encadeamento
+
+Somente dentro das ROE; parar na prova de impacto. Uma cadeia é uma sequência de passos permitidos que, juntos, mostram como um ponto de apoio de baixo privilégio pode chegar a um ativo de maior valor. No Riverstone Transit Bank, cada elo já precisa estar permitido pelas regras de engajamento; inventar um novo salto no meio do engajamento está fora dos limites. O operador para no momento em que um impacto é provado, porque pivôs adicionais acrescentam risco sem acrescentar evidência ao achado. Sam Ito mantém uma lista curta de transições aprovadas no cartão de método, para que uma sessão de madrugada não invente um atalho criativo que ninguém assinou. Cadeias que parecem impressionantes, mas se apoiam num passo não aprovado, são descartadas, e não celebradas.
+
+### 26.2 Prova mínima
+
+Nada de pivôs extras "por diversão". Prova mínima significa o menor conjunto de passos que demonstra a fraqueza com detalhe suficiente para que o responsável a reproduza. Pivôs extras depois desse ponto são curiosidade disfarçada de rigor e, muitas vezes, ampliam o raio de impacto sem mudar o achado. O TrackScope registra os passos da prova; qualquer coisa além deles exige um novo ticket e uma nova aprovação. Sam certa vez deteve um júnior que queria "só ver" se o domain admin era alcançável depois que uma leitura entre usuários já estava registrada em vídeo. A contenção do júnior entrou na nota de orientação, o que é mais útil do que mais uma captura de tela de um shell.
+
+### 26.3 Documentação
+
+Diagrama da cadeia no apêndice, com horários. Toda cadeia aceita é entregue com um diagrama que nomeia cada salto, os identificadores de ativos do FindingsDesk e o horário de relógio de cada transição. Hostnames escritos à mão já quebraram um link de apêndice e custaram um dia de conserto; ids compartilhados mantêm o apêndice verificável mecanicamente. Os horários importam porque as metas de detecção perguntam se o SOC viu as etapas, e um diagrama sem relógios não consegue responder a isso. Sam cola o diagrama no apêndice do engajamento antes de registrar o achado, e não depois do debrief, para que os revisores nunca precisem correr atrás de uma figura ausente. O diagrama é evidência, não decoração.
+
+### 26.4 Metas de detecção
+
+Anotar se o SOC viu as etapas — sinergia purple. As metas de detecção transformam uma cadeia de red team em retorno para o purple team. Para cada etapa, Sam registra se o PulseMap ou o console do SOC mostrou um acerto, uma falha ou um desconhecido. Desconhecido só é permitido quando nenhum sensor cobre aquele salto, e essa lacuna vira, ela própria, um item do backlog. A nota é curta: id da técnica, nome da etapa, visto ou não, e um ponteiro para a fonte de log que deveria tê-la capturado. Aqui, sinergia purple não é uma reunião conjunta; é o hábito de deixar para a equipe de detecção algo acionável, em vez de uma volta olímpica.
+
+### 26.5 Proximidade de pagamentos
+
+Aprovações extras antes de qualquer coisa perto de pagamentos. Qualquer coisa que toque sistemas adjacentes a pagamentos no TRB precisa de uma segunda assinatura antes de a cadeia continuar. A proximidade de pagamentos inclui o perímetro do gateway SWIFT, as filas de liquidação e os jump hosts que conseguem alcançá-las, mesmo quando o próprio gateway continua fora do escopo. Sam trata "perto" como uma propriedade do caminho de rede e das credenciais compartilhadas, e não do título do achado. Se um salto cairia num host capaz de falar com essas filas, ele pausa, registra o pedido e espera. Pular a pausa uma única vez bastaria para encerrar o engajamento e o estágio.
+
+### 26.6 Sem kit de exploit
+
+O curso continua sem oferecer desenvolvimento de exploits. O curso ensina encadeamento com fraquezas publicadas e ferramentas aprovadas; não ensina a escrever novos exploits. Os estudantes que pedem um kit são remetidos de volta aos cartões de método e ao catálogo de impactos. Esse limite mantém a sala de aula honesta sobre o que um banco autorizará e o que um programa universitário consegue supervisionar com segurança. Os próprios kits de Sam se limitam aos scripts fixados cujos hashes ficam no caderno de laboratório. Construir um payload personalizado para uma cadeia avaliada é reprovação, mesmo que o payload tivesse funcionado.
+
+### 26.7 Ids de ativos nos diagramas
+
+Os diagramas de cadeia usam os mesmos ids de ativos do FindingsDesk. Hostnames escritos à mão já causaram um link quebrado num apêndice; os ids tornaram o apêndice verificável mecanicamente. O FindingsDesk atribui um identificador estável a cada host e serviço em escopo. Diagramas que reutilizam esses ids podem ser validados por um script que percorre o apêndice e confirma que cada caixa ainda existe no inventário. Quando Sam usou um apelido para um jump host, o verificador do apêndice falhou e o achado ficou parado em revisão até o diagrama ser refeito. A lição ficou: rótulos bonitos pertencem à legenda em prosa, não aos nós do grafo. Os juniores agora copiam os ids do painel de inventário em vez de digitá-los de memória.
+
+### 26.8 Catálogo de impactos
+
+As provas de impacto permitidas para cadeias estão catalogadas (leitura entre usuários, mudança de configuração). "Domain admin" não é um impacto permitido em sala de aula no TRB. O catálogo de impactos é uma lista curta e assinada das provas que a sala de aula aceita. A leitura entre usuários de um registro não sensível e uma mudança de configuração reversível estão nela; tomar o domain admin, criptografar arquivos ou tocar pagamentos reais, não. O catálogo existe para que Sam não precise inventar o limite sob pressão. Quando uma cadeia poderia continuar rumo a um impacto proibido, o operador para e registra o que já está provado. A ambição que excede o catálogo é redirecionada para uma meta de detecção ou uma nota de remediação, e não para um salto mais arriscado.
+
+### 26.9 Banner de parar no impacto
+
+Os cartões de método mostram um banner "pare quando o impacto estiver provado". Sam mede a média de passos depois do impacto; quanto menos, melhor. O banner fica no topo de cada cartão de método, para ser a primeira linha que o operador vê ao abrir o cartão. Sam acompanha quantas ações as pessoas executam depois que a captura de tela do impacto já foi salva. Uma média em queda significa que a cultura está funcionando; uma média em alta dispara uma conversa rápida de orientação. A métrica é deliberadamente simples, porque painéis complicados convidam à manipulação. Os operadores que param de forma limpa recebem crédito no resumo do engajamento, o que torna a contenção visível para quem escreve as notas de desempenho.
+
+### 26.10 Parar depois da leitura entre usuários
+
+Depois da prova de impacto por leitura entre usuários, a próxima ação de Sam é parar, e não pivotar para admin. A última caixa do apêndice da cadeia dele é verde: "STOP — impacto demonstrado". Os juniores copiam a caixa nos próprios cartões. A cena é o momento de que todos se lembram: a leitura entre usuários está na tela, o rascunho do achado já nomeia o caminho e a tentação de continuar fala alto. Sam encerra a sessão, cola a caixa verde STOP como nó final e arquiva o caderno. Os juniores que o viram fazer isso uma vez começam a colar a mesma caixa nos próprios cartões. O ritual é pequeno, mas transforma uma regra abstrata num hábito que as pessoas conseguem imitar quando estão cansadas.
+
+### 26.11 Sem simulações de ransomware
+
+O catálogo de impactos proíbe simulação de ransomware em redes bancárias no curso. Alguém sempre pergunta; o catálogo responde antes que Sam precise. Estudantes vindos da cultura de capture-the-flag costumam supor que demonstrações de criptografia são permitidas. No TRB elas não são, nem nas faixas do laboratório que espelham os nomes da produção. O catálogo declara a proibição numa linha, para que Sam possa apontar para o papel em vez de discutir gosto. Perguntas como "e se criptografarmos só um compartilhamento de teste" continuam recebendo um não, porque a sala de aula não pode se dar ao luxo de uma história que soe como ransomware para um auditor. Provas de impacto mais seguras já ensinam as mesmas questões de privilégio sem esse teatro.
+
+### 26.12 Verde significa contenção
+
+As caixas STOP são verdes de propósito — a contenção é sucesso, não fracasso. O vermelho costuma marcar perigo; aqui, o verde marca o fim bem-sucedido de uma cadeia. A escolha da cor é pedagogia deliberada: parar é o resultado que o programa recompensa. Sam explica isso uma vez a cada turma e depois deixa os adesivos falarem. Quando um visitante pergunta por que a última caixa não é vermelha, um operador consegue responder sem chamar o supervisor. Códigos de cor que brigam com a cultura fracassam; códigos de cor que combinam com a cultura pegam.
+
+### 26.13 Adesivos STOP
+
+As caixas verdes STOP são adesivos que os juniores colam nos cartões impressos. A cultura é tátil. Cartões de método impressos ainda circulam na sala dos jump hosts, porque telas se apagam e o papel não. Os juniores colam um adesivo verde STOP no cartão na primeira vez que concluem uma cadeia sob supervisão. O adesivo é um pouco ridículo, e é justamente essa a ideia: torna a regra memorável e dá aos colegas algo para notar durante as revisões. Sam guarda uma folha extra na gaveta ao lado da impressora de crachás. Quando a folha acaba, alguém andou praticando, o que é um bom problema.
+
+### 26.14 Pôsteres de impacto e parada
+
+Pôsteres de ética de encadeamento ficam pendurados na sala dos jump hosts: "Impacto, depois pare". Os visitantes às vezes riem; os operadores, não. Sam observa os novos terceirizados lerem o pôster antes da primeira cadeia. O pôster não é decoração irônica. Os terceirizados que passam os olhos por ele e fazem piada ainda recebem uma orientação verbal, mas Sam anota quem parou o suficiente para ler. Quem trata o slogan como piada tende a ser quem pede mais um salto depois da prova. A sala dos jump hosts é onde os hábitos se formam, então a parede carrega a mesma mensagem dos cartões de método e do catálogo. A coerência entre papel, tela e conversa é o que faz a regra sobreviver às trocas de turno.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam encadeia um fluxo não aprovado e um controle de sessão fraco para mostrar o risco de leitura entre usuários e, então, para.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX076 — Prova mínima.** O que significa prova mínima? *Rubrica:* 3 = parar assim que o impacto é demonstrado; nenhum pivô extra; 2 = parcial; 1 = tomada completa sempre; 0 = nada.
+- **EX077 — Perto de pagamentos.** Que passo extra vem antes de testes adjacentes a pagamentos? *Rubrica:* 3 = aprovações extras/verificação das ROE; 2 = parcial; 1 = nenhum; 0 = nada.
+- **EX078 — Documentação da cadeia.** O que pertence ao apêndice da cadeia? *Rubrica:* 3 = passos/horários/links de evidência; 2 = parcial; 1 = nada; 0 = nada.
+
+### Síntese
+
+As cadeias ficam dentro das ROE, provam o impacto de forma mínima e são documentadas com clareza.
+
+### Continue estudando — capítulo 26 de 40
+
+[← Capítulo 25 (rascunho)](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (rascunho) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar retestes; (2) ler os laboratórios de cobertura; (3) encerrar somente com evidência.
+
+### 27.1 Reteste
+
+Mesmos métodos, janela acordada. Um reteste repete os passos originais da prova dentro de uma janela que o responsável e o testador aceitaram quando o achado foi registrado. Mudar o método no meio do reteste torna desonesta uma alegação de FIXED, porque o responsável pode ter corrigido apenas o caminho que foi demonstrado. Sam reserva a janela quando o achado chega, normalmente para cerca de duas semanas depois, para que a agenda não espere o pânico. Se o build testado tiver mudado, o reteste registra essa mudança em vez de inventar uma aprovação. O objetivo do exercício é a verdade sobre o encerramento, não uma caixa de seleção verde.
+
+### 27.2 Laboratório de cobertura
+
+O lab_coverage marca a T1190 como GAP.
+
+```python
+"""Lab 27: summarise synthetic purple-team results per ATT&CK technique."""
+runs = [("T1078",True),("T1078",True),("T1078",False),("T1566",True),("T1566",False),("T1190",False),("T1190",False)]
+from collections import defaultdict
+d = defaultdict(lambda:[0,0])
+for t, hit in runs: d[t][1]+=1; d[t][0]+=hit
+for t in sorted(d): k,n=d[t]; print(f"{t} detected {k}/{n} {'GAP' if k/n<0.5 else 'ok'}")
+```
+
+Execute com `python3 lab_coverage.py`. Saída verificada:
+
+```text
+T1078 detected 2/3 ok
+T1190 detected 0/2 GAP
+T1566 detected 1/2 ok
+```
+
+O laboratório percorre uma lista curta de execuções sintéticas de purple team e imprime com que frequência cada técnica foi detectada. Os estudantes leem as proporções impressas antes de discutir ferramentas. Uma técnica que nunca é detectada é uma história de lacuna, e não um motivo para declarar que o SOC está quebrado. A orientação de Sam se concentra no enquadramento: amostras pequenas ainda podem justificar instrumentação quando a fonte de log já existe. Os estudantes que só celebram taxas altas de detecção perdem o valor de engenharia de uma falha honesta.
+
+### 27.3 Encerramento
+
+FIXED com evidência ou risco aceito assinado. O encerramento é um status FIXED sustentado pela transcrição de um reteste ou uma assinatura de risco aceito de alguém com autoridade para assumir o risco residual. Qualquer outra coisa deixa o ticket aberto. Sam se recusa a marcar FIXED a partir de um "corrigimos" verbal sem a mesma requisição que provou o problema. Risco aceito não é uma reprovação branda; é uma decisão documentada, com prazo de validade e um responsável. O FindingsDesk não deixa um ticket desaparecer num vago estado de "monitoramento" sem um desses dois finais.
+
+### 27.4 Parcial
+
+STILL OPEN mantém o ticket vivo. Quando um reteste mostra que o caminho foi estreitado, mas não fechado, o status continua STILL OPEN e o ticket permanece na fila do responsável. O progresso parcial é registrado nas notas, para que ninguém finja que o trabalho não aconteceu, mas progresso não é encerramento. Sam certa vez viu uma equipe comemorar uma regra de WAF que bloqueava o payload antigo dele enquanto uma variante com um caractere diferente ainda funcionava; o ticket continuou aberto e a comemoração passou para a correção seguinte. A honestidade sobre estados parciais impede que a liderança declare vitória num painel que mente.
+
+### 27.5 Congelamento do escopo
+
+Nenhuma nova caçada no dia do reteste. O dia do reteste serve para verificar achados conhecidos, e não para abrir uma nova caçada. Novas pistas vão para uma nota de estacionamento destinada à próxima janela de engajamento. O congelamento protege a janela de mudanças do responsável e mantém coerente o arquivo de evidências. Sam já viu retestes virarem dias de descoberta espalhados que não produziram nem um FIXED limpo nem um STILL OPEN limpo. A regra é publicada no convite de agenda do reteste, para que ninguém alegue surpresa. Se mesmo assim surgir uma pista nova crítica, ela vira um ticket de emergência separado, com as próprias aprovações, em vez de pegar carona no reteste.
+
+### 27.6 Comunicar
+
+Nota ao responsável no mesmo dia. Depois de um reteste, o responsável recebe no mesmo dia uma nota que declara FIXED, STILL OPEN ou risco aceito pendente, com um link para a transcrição. Esperar o relatório semanal cria boatos e trabalho duplicado. Sam escreve a nota antes de fechar o notebook, mesmo quando a notícia é decepcionante. A nota nomeia o hash do cartão de método, para que o responsável confirme que o mesmo build foi testado. Rapidez, aqui, é cortesia, não pressão. Uma nota atrasada obriga o responsável a perguntar aos colegas o que aconteceu, e é assim que começam as histórias erradas sobre status.
+
+### 27.7 Histórias de GAP para o SOC
+
+As histórias de GAP oferecidas ao SOC incluem fonte de log, técnica e uma ideia de detecção de exemplo — e não uma exigência de "comprar uma ferramenta". A nota de Sam sobre a T1190 apontava para os logs do WAF e da origem, já licenciados. Uma história de lacuna útil diz ao SOC o que observar com o que ele já possui. O texto de Sam sobre a T1190 nomeava os logs de bypass do WAF e os logs de acesso da origem, ambos já licenciados, e esboçava uma ideia de detecção que usava esses campos. Exigir um novo produto numa nota de lacuna costuma travar a conversa. Os engenheiros de detecção respondem mais rápido quando o pedido é concreto e barato. O item de backlog que veio em seguida citou a nota de Sam literalmente.
+
+### 27.8 Agenda de retestes
+
+As janelas de reteste são reservadas quando os achados são registrados, e não depois que os responsáveis entram em pânico. O modelo de Sam sugere uma data 14 dias depois. Reservar cedo transforma o reteste de uma crise numa rotina. O modelo propõe um intervalo de catorze dias, que dá aos responsáveis tempo para corrigir sem inventar um teatro de urgência. Se o responsável precisar de mais tempo, ele diz isso no ticket e a agenda muda com um motivo anexado. O administrador de Sam certa vez tentou empilhar cinco retestes numa só sexta-feira; a visão da agenda deixou a sobrecarga evidente antes que alguém se esgotasse. Janelas previsíveis são a forma de a verificação continuar gentil.
+
+### 27.9 Do GAP ao backlog
+
+As linhas GAP criam itens no backlog de detecção com ids de técnica. O PulseMap aponta para esses itens. Toda linha GAP no PulseMap precisa apontar para um item do backlog de detecção que carregue o mesmo identificador de técnica. O link é bidirecional, para que o refinamento encontre órfãos em qualquer direção. Sam registra um defeito de plataforma quando um GAP passa uma sprint sem id de backlog. O defeito é sobre o processo, e não sobre culpar o analista que registrou a lacuna. Os links impedem que o resultado do purple team vire um cemitério de capturas de tela.
+
+### 27.10 A lacuna da T1190 vira um spike
+
+O GAP da T1190 com n=2 vira uma história de spike de detecção: "instrumentar os logs de bypass do WAF". Duas semanas depois, o SOC tem uma regra em homologação. Um n pequeno ainda pode impulsionar a engenharia se for enquadrado como lacuna, e não como profecia de desastre. Duas falhas pareceriam fracas num slide sobre porcentagens de cobertura. Enquadradas como uma lacuna com uma fonte de log nomeada, elas viraram um spike de instrumentação de duas semanas que levou uma regra para homologação. O texto de Sam evitou palavras como "cego" e "falha crítica" e se ateve ao que estava faltando. O líder do SOC disse depois que o tom foi o motivo de a história ter andado. O tamanho da evidência e a utilidade da evidência são perguntas diferentes.
+
+### 27.11 Hash do método nos convites
+
+Os convites de agenda de reteste incluem o hash do cartão de método, para que os responsáveis preparem o mesmo build. A divergência de versões é inimiga de um FIXED honesto. Os responsáveis às vezes corrigem um build diferente daquele que Sam testou. Colocar um prefixo de oito caracteres do SHA-256 no convite força a divergência a aparecer antes de a sessão começar. Se os hashes diferirem, o reteste ou muda de alvo ou registra a divergência explicitamente. Sam prefere remarcar a carimbar FIXED num primo do build vulnerável. A honestidade sobre versões faz parte da ética da verificação.
+
+### 27.12 Links bidirecionais de GAP
+
+Os itens do backlog de detecção apontam nos dois sentidos para as linhas GAP do PulseMap. Um link de mão única morre em silêncio quando alguém renomeia um ticket. Links bidirecionais permitem que qualquer um dos lados perceba uma quebra durante o refinamento. A verificação semanal de Sam é uma consulta de cinco minutos por linhas GAP sem id de backlog e por itens de backlog cujo link para o PulseMap dá 404. Consertar essas quebras é tedioso e necessário. O valor do purple team está, em grande parte, no encanamento que mantém os sinais ligados ao trabalho. Quando os dois sentidos resolvem, um engenheiro de detecção consegue ir de uma falha até um ticket sem perguntar a Sam para onde foi a captura de tela.
+
+### 27.13 Prefixos de hash nos convites
+
+Os hashes dos cartões de método nos convites são prefixos SHA-256 de oito caracteres hexadecimais — o suficiente para perceber divergências. Oito caracteres hexadecimais são curtos o bastante para colar num campo de agenda e longos o bastante para tornar improváveis colisões acidentais dentro de um engajamento. Os digests completos ficam no caderno para quem quiser recalculá-los. Sam certa vez pegou uma divergência porque o prefixo no convite já não correspondia ao cartão no compartilhamento. O responsável tinha refeito o build durante a noite e esquecido de avisar. Prefixos curtos se pagam quando evitam um falso FIXED.
+
+### 27.14 Refinamento do backlog com o PulseMap
+
+O refinamento do backlog de detecção inclui o PulseMap uma vez por sprint. Linhas GAP sem ids de backlog são defeitos do refinamento, e não do SOC. Sam registra esses defeitos contra o processo da plataforma. Um refinamento que ignora o PulseMap vai inventando aos poucos um backlog paralelo de capturas de tela. Incluir a visão de GAP uma vez por sprint mantém honestas as duas listas. Quando Sam encontra um GAP órfão, ele registra o defeito contra o processo que deveria tê-lo vinculado, e não contra o analista que estava ocupado naquela semana. Defeitos de processo são mais baratos de corrigir do que a culpa cultural. A sprint termina com todo GAP aberto apontando para algum lugar real.
+
+### Exemplo resolvido (TRB sintético)
+
+O laboratório no estilo PulseMap mostra a T1190 com 0/2, GAP; o SOC prioriza a engenharia de detecção voltada ao público.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX079 — Linha de GAP.** O que o laboratório imprime para a T1190? *Rubrica:* 3 = detected 0/2 GAP; 2 = parcial; 1 = ok; 0 = nada.
+- **EX080 — T1078.** A T1078 é GAP ou ok no laboratório? *Rubrica:* 3 = ok (2/3); 2 = GAP; 1 = ausente; 0 = nada.
+- **EX081 — Regra de encerramento.** Quando um achado pode ser encerrado como FIXED? *Rubrica:* 3 = a evidência do reteste mostra que está fechado; 2 = parcial; 1 = apenas e-mail do responsável; 0 = nada.
+
+### Síntese
+
+A verificação combina a honestidade do reteste com as lacunas de cobertura de detecção.
+
+### Continue estudando — capítulo 27 de 40
+
+[← Capítulo 26 (rascunho)](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 (rascunho) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) classificar causas de ferramenta, de processo e de pessoas; (2) conduzir revisões sem culpa; (3) transformar causas em correções.
+
+### 28.1 Causas
+
+Má configuração de ferramenta, lacunas de processo, ROE pouco claras, lacunas de habilidade — raramente "pessoas ruins". A análise de falhas no TRB começa separando as causas em má configuração de ferramenta, lacunas de processo, regras de engajamento pouco claras e lacunas de habilidade. A culpa pessoal é a última hipótese, não a primeira. Sam já viu revisões desperdiçarem uma hora discutindo quem clicou em quê enquanto o valor padrão de um menu suspenso continuava convidando ao mesmo erro. Nomear cedo a categoria sistêmica mantém a sala útil. Quando uma causa realmente é negligência individual, o relatório ainda separa isso das correções de plataforma e de processo que teriam tornado o erro mais difícil.
+
+### 28.2 Linha do tempo
+
+Fatos primeiro. Uma linha do tempo de falha lista fatos observáveis com horários antes que alguém ofereça motivações. Logs, carimbos de horário do chat e eventos do TrackScope vêm primeiro; as interpretações esperam. Sam se recusa a deixar uma revisão começar com uma história sobre quem foi descuidado. Depois que os fatos estão ordenados, as divergências sobre a causa viram divergências sobre a evidência, e não sobre o caráter. A linha do tempo é colada nas notas da revisão, para que leitores posteriores possam reconstruir o argumento. Se um fato não puder ter horário, ele é marcado como incerto em vez de ser arredondado numa narrativa arrumada.
+
+### 28.3 Sem culpa
+
+Buscar correções sistêmicas. Revisão sem culpa significa que o principal resultado é uma mudança em ferramentas, valores padrão, checklists ou materiais de treinamento, e não uma nota de desempenho. Sam continua orientando indivíduos, mas o ticket da revisão não pode ser encerrado só com orientação, a menos que a caixa de justificativa do modelo esteja preenchida. Equipes que pulam as correções sistêmicas repetem o mesmo incidente com outro nome. A prática vem emprestada da cultura de operações e é adaptada a engajamentos ofensivos, em que a vergonha viaja rápido. As pessoas dizem a verdade mais depressa quando a sala está caçando sistemas quebrados.
+
+### 28.4 Deriva ou ataque
+
+Decidir com evidência. Alguns resultados confusos parecem ataques quando são deriva de configuração, e o inverso também acontece. A revisão pergunta que evidência distinguiria os dois antes de escolher um rótulo. Sam certa vez perseguiu uma "intrusão" que era uma importação noturna de hosts desatualizados na CMDB. O PulseMap e os tickets de mudança costumam resolver a questão mais rápido do que a intuição. Rotular deriva como ataque desperdiça o tempo do SOC; rotular ataque como deriva atrasa a contenção. A decisão é escrita junto com a evidência que a definiu.
+
+### 28.5 Ações
+
+Responsável e data para cada causa. Toda causa aceita sai da revisão com um responsável nomeado e uma data de vencimento. Ações sem responsável são desejos. O modelo de Sam bloqueia "a equipe vai melhorar" como responsável; ele quer uma pessoa ou uma fila. As datas são curtas o bastante para importar e longas o bastante para serem reais. Quando uma ação atrasa, o atraso fica visível no mesmo quadro dos achados do engajamento. O encerramento da revisão de falha espera até que cada ação esteja concluída ou explicitamente adiada com assinatura.
+
+### 28.6 Plataforma
+
+Bugs do TrackScope também geram tickets de engenharia. Se a plataforma convidou ao erro, a engenharia recebe um ticket com a mesma seriedade de um achado. Sam registra esses tickets com a captura de tela do controle confuso e o id da revisão. O plantão da plataforma é convidado para as revisões de falha mesmo quando a sala acha que o erro foi humano, porque a interface muitas vezes induziu o clique. Corrigir o TrackScope uma vez evita uma geração de retreinamentos. Os operadores aprendem a tratar defeitos de ferramenta como resultados de primeira classe de uma revisão. Uma correção silenciosa de bug continua sendo uma correção de bug.
+
+### 28.7 O plantão da plataforma nas revisões
+
+As revisões de falha convidam o plantão da plataforma mesmo quando o erro parece humano. Muitas vezes, a interface convidou ao erro. A mudança de texto que Sam fez no TrackScope depois de uma revisão eliminou uma classe de cliques errados no escopo. Convidar o plantão muda a conversa de "quem errou o disparo" para "o que a tela sugeriu". No mês seguinte, o plantão mediu a queda dos cliques errados no mesmo controle e trouxe o gráfico para a retrospectiva da plataforma. O engenheiro de plantão não teria ouvido falar do padrão só por um ticket de treinamento. Revisões que excluem a equipe da plataforma tendem a produzir apresentações que ninguém coloca em produção. O convite é automático no modelo de agenda da revisão.
+
+### 28.8 Affordances da interface
+
+Se três analistas cometem o mesmo erro no TrackScope, a UX muda antes de mais treinamento. Sam registra tickets de UX com capturas de tela do controle confuso. Erros idênticos repetidos são um sinal de problema de design. Treinar a quarta pessoa é mais lento e menos confiável do que mudar o controle. Os tickets de UX de Sam sempre incluem uma captura de tela do antes e um estado proposto para o depois, para que os designers não fiquem adivinhando. O limite de três é uma heurística, não mágica; dois podem bastar quando o raio de impacto é alto. As affordances vencem os sermões quando o relógio é curto e a interface fala alto.
+
+### 28.9 Limite de cinco porquês
+
+As revisões param em cinco porquês ou na primeira correção sistêmica acionável. O teatro interminável de porquês é cortado. Os cinco porquês são uma ferramenta, não um ritual. Sam interrompe a cadeia quando a sala chega a uma correção que alguém pode assumir nesta sprint, mesmo que seja no terceiro porquê. O questionamento interminável vira um teatro que esgota as pessoas sem entregar mudança. O facilitador fica atento à primeira resposta sistêmica acionável e estaciona a filosofia mais profunda para uma revisão de design separada. Os limites mantêm a análise de falha mais curta do que o incidente que ela estuda.
+
+### 28.10 Cinco porquês do inventário desatualizado
+
+Os cinco porquês do inventário desatualizado param em "a API da CMDB não tinha campo de versão de schema". Ação: adicionar a versão de schema e um checksum no TrackScope. Treinar o estagiário que importou o arquivo desatualizado não é a ação principal. A sala poderia ter culpado o estagiário que clicou em importar. Em vez disso, o quinto porquê caiu num campo de versão de schema ausente e num checksum que o TrackScope nunca verificava. Essas duas ações de engenharia se tornaram o principal resultado da revisão; o estagiário recebeu uma nota de orientação tranquila como item secundário. Sam mantém essa cena no guia do facilitador porque ela mostra como é a ausência de culpa quando um júnior está no raio de impacto. Sistemas que não conseguem detectar importações desatualizadas vão continuar contratando bodes expiatórios.
+
+### 28.11 Valor padrão do menu em negar
+
+Um ticket de UX saído de uma revisão de falha mudou o valor padrão de um menu suspenso de "allow" para "deny". Os cliques errados caíram no mês seguinte. Os valores padrão são o destino. O controle parecia idêntico depois da mudança; só a opção padrão mudou. Os cliques errados que atormentavam a seleção de escopo caíram bruscamente no mês seguinte, sem um novo módulo de treinamento. Sam cita esse caso quando alguém argumenta que o trabalho de UX é cosmético. Os valores padrão autorizam ou bloqueiam silenciosamente milhares de cliques futuros. Revisões de falha que nunca tocam nos valores padrão deixam a mesma armadilha armada.
+
+### 28.12 Capturas de tela de antes e depois
+
+Os tickets de UX exigem uma captura de tela de antes e depois do controle que confundiu as pessoas. Frases como "o menu suspenso é confuso" não sobrevivem à passagem para um designer que não estava na sala. Capturas de tela de antes e depois tornam o pedido concreto e revisável. Sam as guarda com o prefixo ux- no mesmo caminho do cofre usado para a evidência dos engajamentos, para que o controle de acesso continue familiar. Tickets sem o par voltam da triagem. A disciplina também obriga quem reporta a propor um estado mais claro, em vez de apenas reclamar.
+
+### 28.13 Caminho da evidência de UX
+
+As capturas de tela de UX de antes e depois ficam no mesmo caminho do cofre da evidência dos engajamentos, com o prefixo ux-. Uma pasta extraoficial separada vira uma gaveta de bagunça que ninguém audita. Usar o cofre do engajamento com um prefixo claro mantém coerentes a retenção, as revisões de acesso e as retenções legais. Sam pode apontar uma única árvore ao jurídico quando surgem perguntas sobre o que foi capturado durante uma semana confusa. O prefixo também permite que a automação pule as imagens de UX ao montar os pacotes de evidência destinados ao cliente. Pequenas regras de nomenclatura evitam grandes dores de cabeça na fase de descoberta.
+
+### 28.14 Caixa de seleção de plataforma ou processo
+
+Os modelos de revisão de falha obrigam uma caixa de seleção "mudança de plataforma ou de processo?". Se nenhuma estiver marcada, a revisão está incompleta. Resultados apenas de treinamento precisam de justificativa explícita. A caixa de seleção é um quebra-molas contra o final preguiçoso em que todos concordam em se esforçar mais. Deixar as duas caixas desmarcadas reprova na validação do modelo que Sam integrou ao TrackScope. Resultados apenas de treinamento são permitidos quando justificados por escrito, por exemplo, uma violação deliberada de política sem lacuna de ferramenta. A maioria das revisões deveria entregar pelo menos uma mudança de plataforma ou de processo. A escolha forçada torna a cultura visível nos dados.
+
+### Exemplo resolvido (TRB sintético)
+
+O rastreamento de um falso acerto em produção mostra um feed de inventário desatualizado; Sam registra ações para a plataforma e para a CMDB.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX082 — Sem culpa.** O que uma revisão sem culpa busca? *Rubrica:* 3 = correções sistêmicas, não punição; 2 = parcial; 1 = bode expiatório; 0 = nada.
+- **EX083 — Formato da ação.** Quais dois campos toda ação corretiva precisa ter? *Rubrica:* 3 = responsável e data; 2 = um; 1 = nenhum; 0 = nada.
+- **EX084 — Feed desatualizado.** Por que um inventário desatualizado pode causar um acerto em produção? *Rubrica:* 3 = host errado classificado como em escopo; 2 = parcial; 1 = não pode; 0 = nada.
+
+### Síntese
+
+A análise de falhas produz correções sistêmicas com responsáveis, inclusive na plataforma.
+
+### Continue estudando — capítulo 28 de 40
+
+[← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir o fluxo de trabalho do dia; (2) coordenar com o SOC; (3) fazer a passagem entre turnos.
+
+### 29.1 Abertura
+
+Confirmar ROE, contatos e janela. A abertura é uma reunião curta e tediosa que confirma as regras de engajamento, os contatos nomeados e a janela exata de tempo antes que alguém toque num teclado. Sam trata o tédio como uma qualidade: surpresas pertencem aos achados, não à autorização. Cada participante diz em voz alta as condições de parada e o canal do SOC que vai usar. Se um contato estiver de folga, o substituto é nomeado antes de a janela abrir. Uma abertura que pula a confirmação é como começam as discussões sobre hora extra e os saltos fora do escopo.
+
+### 29.2 Registro
+
+Log de atividades contemporâneo. Os operadores escrevem o que fizeram enquanto faziam, e não de memória na manhã seguinte. O log de atividades fica ao lado do cartão de método e usa os horários do mesmo relógio que o SOC usa. Sam já viu logs reconstruídos inventarem uma confiança que a sessão bruta nunca conquistou. As notas contemporâneas também protegem o operador quando um alerta parece pior do que a ação executada. O log faz parte do pacote de evidências, então gírias e piadas ficam de fora.
+
+### 29.3 SOC
+
+Mensagens de início e de fim; esperar coordenação do ruído de alertas. O SOC recebe uma mensagem de início quando a janela abre e uma mensagem de fim quando ela fecha, mesmo que a sessão tenha sido silenciosa. O ruído de alertas é esperado; a coordenação é o que faz a confiança sobreviver a uma noite barulhenta. Sam cola o id do engajamento nas duas mensagens, para que os analistas possam filtrar sem adivinhar. Surpresas no meio da janela ainda recebem um aviso, e não a esperança silenciosa de que ninguém perceba. Equipes que pulam a mensagem de fim deixam o SOC vigiando fantasmas depois que o trabalho acabou.
+
+### 29.4 Passagem de turno
+
+Log e cofre valem mais que notas verbais. As passagens de turno usam o log de atividades escrito e os caminhos do cofre, e não um resumo no corredor. Notas verbais evaporam e se transformam. O modelo de colagem de cinco linhas de Sam obriga o operador que sai a nomear os cartões inacabados, as aprovações em aberto e a próxima ação segura. O operador que entra deve estar produtivo em poucos minutos. Passagens que precisam de um romance normalmente escondiam uma bagunça que deveria ter sido uma parada. No TRB, o operador que entra abre o caminho do cofre indicado na passagem antes de tocar em qualquer cartão, para que um caminho errado ou vazio apareça antes de o trabalho recomeçar, e não no reteste seguinte.
+
+### 29.5 Fim
+
+Parada obrigatória no fim da janela. Quando a janela termina, o trabalho termina. Os cartões inacabados passam para a próxima janela autorizada; não ganham mais cinco minutos. Sam pratica um exercício de puxar o cabo no jump host, para que a memória muscular vença a negociação. As discussões sobre a necessidade de hora extra pertencem à próxima conversa sobre as ROE, e não aos últimos minutos desta. As paradas obrigatórias mantêm a agenda honesta para o SOC e para as pessoas que vão dormir depois do turno. O SOC nunca deveria precisar adivinhar se a sessão barulhenta ainda está autorizada.
+
+### 29.6 Higiene do plantão
+
+Sono e credenciais reserva importam em testes de vários dias. Engajamentos de vários dias falham de jeitos comuns: operadores exaustos, tokens expirados e um notebook que não desbloqueia. Sam guarda credenciais reserva no cofre, e não em post-its, e protege o sono como um controle operacional. Um operador cansado que continua é um amplificador de risco, não um herói. A higiene do plantão também significa saber quem cobre se alguém adoecer no meio da janela. O programa avalia a sustentabilidade junto com a habilidade técnica. Operadores esgotados produzem achados que depois precisam de correções constrangedoras.
+
+### 29.7 Parada obrigatória com o cabo puxado
+
+Os exercícios de parada obrigatória incluem puxar o cabo de rede do jump host no instante zero. A memória muscular de Sam é parar de digitar antes de argumentar por mais cinco minutos. As discussões acontecem nas próximas ROE, não na hora extra. O exercício parece teatral até a primeira vez em que alguém tenta "só mais uma requisição" e o cabo já está fora. Sam quer que as mãos parem antes de o debate começar. As negociações de hora extra são registradas como pedidos de mudança das ROE, com assinaturas, o que mata as extensões casuais. Os operadores que odeiam o exercício normalmente admitem depois que ele os salvou de um relatório matinal confuso. Um teatro que impõe um limite real continua sendo um teatro útil.
+
+### 29.8 Etiqueta do canal
+
+O chat do engajamento proíbe capturas de tela de dados de clientes como piada. Sam modera com uma regra fixada e um único aviso. O humor vaza para o chat quando as pessoas estão cansadas, e dados de clientes não pertencem a piadas. A regra fixada é direta e o primeiro aviso é o último. Sam remove as postagens problemáticas e registra uma nota, se necessário. A regra protege o banco, o programa e o operador que, de outro modo, viraria um caso de advertência. Canais que toleram capturas de tela "inofensivas" acabam produzindo uma captura que não é inofensiva.
+
+### 29.9 Contador de horas
+
+Um bot anuncia as horas trabalhadas na janela. Ultrapassar o máximo publica um lembrete de parada. O bot de horas é um contador entediante que não liga para o embalo. No máximo configurado, ele publica um lembrete de parada no canal do engajamento, onde todos podem vê-lo. Sam trata o lembrete como determinante, e não como sugestão. A hora extra escondida se torna impossível quando o relógio fala em público. Quem desativa o bot perde o privilégio de conduzir janelas sem supervisão. Relógios públicos vencem promessas privadas quando o cansaço começa a editar o julgamento.
+
+### 29.10 Cartão inacabado às 16:55
+
+Às 16:55, o cartão inacabado de Sam é registrado como "próxima janela". Às 17:00, começa o exercício de puxar o cabo. Ele já salvou. O exercício é entediante quando a preparação é boa. A parte interessante da cena são os cinco minutos antes do exercício, quando Sam escolhe registrar o cartão inacabado em vez de correr contra o relógio. Exercícios entediantes são o objetivo; drama significa que alguém esperou demais. Os juniores que observam aprendem que salvar e parar é uma habilidade. A próxima janela herda um cartão claro, e não um mistério. A preparação transforma uma parada obrigatória de um precipício num meio-fio.
+
+### 29.11 Avisos de desaceleração
+
+Com 9,5 horas, o contador publica "desacelere". Com 10, publica "parada obrigatória se aproximando". Sam desacelera. Machismo está fora da política. O aviso antecipado de desaceleração existe para que as pessoas terminem as notas e fechem as sessões sem uma parada em pânico. Sam usa essa meia hora para estacionar o trabalho de forma limpa. Os operadores que ignoram a desaceleração e disparam até a parada obrigatória criam passagens de turno confusas. O machismo de quem aguenta mais tempo é eliminado da cultura por meio de orientação. O programa prefere perder meia hora de testes a ganhar uma hora de limpeza e desconfiança.
+
+### 29.12 Link do modelo nos avisos de desaceleração
+
+Os avisos de desaceleração incluem um link para o modelo de cartão inacabado. Um lembrete sem uma ferramenta ainda deixa as pessoas improvisando sob pressão de tempo. O modelo de cartão inacabado fica a um clique da mensagem do bot, então o caminho de menor resistência é o caminho correto. Sam revisa se os operadores realmente usaram o modelo quando as passagens de turno parecem magras. Links em alertas operacionais fazem parte de projetar para humanos cansados. Se o link quebrar, consertá-lo é um ticket de operações, e não um dar de ombros. Pessoas cansadas seguem o link mais próximo; coloque o certo mais perto.
+
+### 29.13 Id das ROE nos cartões inacabados
+
+O modelo de cartão inacabado inclui o id das ROE, para que a próxima janela herde o contexto de autorização. Um cartão inacabado sem o identificador das ROE é um quebra-cabeça para o próximo operador e um risco se a janela errada o pegar. O campo do modelo é obrigatório e validado. Sam já rejeitou cartões que diziam "continuar aquilo de ontem" sem id. O contexto de autorização precisa viajar com o trabalho. Herança sem identidade é como a deriva de escopo volta pela porta lateral. Uma linhagem clara das ROE até o cartão é o que mantém defensáveis os testes de vários dias.
+
+### 29.14 Colagem de passagem em cinco linhas
+
+As passagens de turno usam um modelo de colagem de cinco linhas. Sam rejeita romances em texto livre. O próximo operador deve estar produtivo em três minutos, não em trinta. Passagens longas em prosa escondem a incerteza dentro de parágrafos. Cinco linhas forçam escolhas: o que está aberto, o que está bloqueado, o que vem em seguida, onde está o cofre, para quem ligar. Sam devolve os romances com um pedido educado para usar o modelo. Novos terceirizados às vezes acham o modelo frio; eles se afeiçoam a ele depois da primeira assunção limpa. A brevidade, aqui, é respeito pelo turno que entra.
+
+### 29.15 Agradecer as paradas antecipadas
+
+A cultura da parada obrigatória inclui agradecer a quem para cedo com trabalho inacabado. Os reconhecimentos de Sam nas retrospectivas nomeiam os cartões inacabados que respeitaram o relógio. Os heróis da hora extra recebem orientação, não elogios. A diferença aparece em menos tickets de mudança emergencial depois das semanas de teste e em analistas do SOC que continuam confiando na agenda dos engajamentos. O elogio ensina à sala o que repetir. Agradecer as paradas limpas torna o trabalho inacabado socialmente seguro. Elogiar os heróis da hora extra ensina as pessoas a esconder o relógio. As retrospectivas de Sam tornam a distinção audível todas as vezes. A confiança do SOC é um indicador defasado de que a cultura está funcionando, e vale a pena protegê-la com agradecimentos constrangedores.
+
+### 29.16 Reconhecimentos no boletim
+
+Os reconhecimentos pelas paradas antecipadas aparecem no boletim mensal de operações. O reconhecimento público fora do canal da equipe mostra à liderança que a contenção é valorizada. Sam envia um ou dois nomes com os títulos dos cartões inacabados, nunca com detalhes de clientes. Pessoas que só ouvem falar de salvamentos dramáticos de última hora passam a acreditar que o drama é o trabalho. O item do boletim é curto de propósito. Uma cultura que nunca sai da sala dos jump hosts morre quando a sala muda. O profissionalismo discreto merece tinta tanto quanto os salvamentos barulhentos.
+
+### Exemplo resolvido (TRB sintético)
+
+A parada de Sam às 17:00 deixa um cartão inacabado agendado somente para a próxima janela autorizada.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX085 — Mensagem de início.** Cite quatro fatos de uma mensagem de início. *Rubrica:* 3 = id, escopo, janela, contato; 2 = três; 1 = um; 0 = nada.
+- **EX086 — Parada obrigatória.** E se restar trabalho no fim da janela? *Rubrica:* 3 = parar; reagendar uma janela autorizada; 2 = parar; 1 = estourar o horário; 0 = nada.
+- **EX087 — Meio da passagem.** Quais dois artefatos tornam segura uma passagem de turno? *Rubrica:* 3 = log de atividades e evidência no cofre; 2 = um; 1 = apenas verbal; 0 = nada.
+
+### Síntese
+
+Operações são abertura, trabalho registrado, visibilidade para o SOC e paradas obrigatórias.
+
+### Continue estudando — capítulo 29 de 40
+
+[← Capítulo 28 (rascunho)](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 (rascunho) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar os laboratórios de classificação e de reteste; (2) passar num exercício de parada; (3) entregar um minirrelatório.
+
+### 30.1 Montagem
+
+lab_rank + lab_retest + relatório de uma página. O Laboratório II pede aos estudantes que classifiquem achados com o lab_rank, os retestem com o lab_retest e escrevam um relatório de uma página com base no qual um responsável ocupado consiga agir. A montagem é intencionalmente pequena, para que a honestidade e a disciplina de parada continuem visíveis. Sam reprova relatórios vistosos que escondem um item STILL OPEN atrás de uma prosa confiante. Os scripts são fixados; os estudantes não trazem forks particulares. O laboratório recompensa uma linguagem de encerramento coerente mais do que pivôs engenhosos. Os responsáveis devem terminar a página sabendo o que corrigir primeiro e o que continua aberto.
+
+### 30.2 Exercício de parada
+
+Mensagem conforme em até dois minutos.
+
+```python
+"""Lab 30: compare synthetic before/after statuses for a TRB retest."""
+before={"F1":"open","F3":"open","F4":"open"}; after={"F1":"closed","F3":"open","F4":"closed"}
+for k in sorted(before): print(k, before[k], "->", after[k], "FIXED" if after[k]=="closed" else "STILL OPEN")
+print("fixed", sum(after[k]=="closed" for k in before), "of", len(before))
+```
+
+Execute com `python3 lab_retest.py`. Saída verificada:
+
+```text
+F1 open -> closed FIXED
+F3 open -> open STILL OPEN
+F4 open -> closed FIXED
+fixed 2 of 3
+```
+
+O exercício de parada cronometra a rapidez com que um estudante consegue enviar a mensagem de parada conforme quando o facilitador anuncia o fim do tempo. Dois minutos é a meta; procurar o modelo atrapalhado reprova no exercício, mesmo que o trabalho técnico tenha sido forte. Sam quer que a mensagem seja memória muscular antes de começarem as janelas reais. Os estudantes que discutem durante o exercício praticam a habilidade errada. A rapidez, aqui, é respeito pelo relógio, e não um concurso de digitação.
+
+### 30.3 Honestidade
+
+Deixar aberto o que está STILL OPEN. Se o lab_retest ainda mostrar um caminho aberto, o relatório precisa dizer STILL OPEN e explicar o que resta. Encerrar com base na esperança ou na garantia verbal de um responsável reprova no laboratório. A verificação automatizada de Sam procura as palavras de status quando o estado posterior sintético está aberto. Os estudantes às vezes sentem que a honestidade lhes custa nota; neste curso, a honestidade é a nota. O hábito se transfere para tickets reais, em que alegações falsas de FIXED saem caras. Um STILL OPEN doloroso hoje evita um falso FIXED no pacote de auditoria da semana que vem.
+
+### 30.4 Pressão dos colegas
+
+Recusar evidência divergente. Os colegas podem oferecer uma captura de tela cujo hash está "errado só em um caractere" ou um log de outro build. O movimento correto é recusar e capturar de novo. Sam roteiriza essa pressão no laboratório para que a recusa seja praticada em voz alta. Evidência quase certa é como a confiança morre diante de auditores e reguladores. Os estudantes que aceitam arquivos divergentes são reprovados, mesmo que a prosa esteja polida. Dizer não diante dos colegas é a habilidade que o roteiro de fato avalia.
+
+### 30.5 Tempo limitado
+
+Duas horas. O laboratório cabe em duas horas, incluindo o exercício de parada e o relatório. A expansão de escopo dentro do exercício é uma reprovação autoinfligida. Sam observa os estudantes que correm atrás de um quarto achado em vez de terminar a página. O tempo limitado ensina a priorizar da mesma forma que as janelas de engajamento. Terminar de forma limpa dentro do prazo vale mais do que um rascunho brilhante que perde o relógio. Os estudantes que terminam cedo ajudam os colegas com a redação, e não com caçadas extras. Sair com uma página coerente vale mais do que sair com um brilho inacabado.
+
+### 30.6 Critério de aprovação
+
+Parada + honestidade + relatório coerente. A aprovação exige uma parada no tempo certo, status honestos e um relatório que um responsável consiga usar sem ligar para o estudante. Cadeias engenhosas que falham em qualquer um dos três continuam reprovadas. Sam publica o critério antes do laboratório, para que ninguém o descubra no debrief. O critério espelha em miniatura as expectativas da produção no TRB. Teatro técnico sem disciplina operacional não aprova no curso. Os facilitadores pontuam os três pilares separadamente, para que uma cadeia deslumbrante não esconda uma parada frouxa.
+
+### 30.7 Recusa por divergência de hash
+
+Os roteiros de pressão dos colegas do Laboratório II incluem "o hash está errado só em um caractere". A resposta de recusa de Sam é sempre capturar de novo. Hashes quase certos são como a evidência perde a confiança de tribunais e reguladores. A fala roteirizada soa razoável sob pressão de tempo, e é por isso que ela é ensinada. A resposta modelo de Sam é curta: capturar de novo, não remendar o hash. Os estudantes ensaiam a frase até ela parecer comum. A integridade da evidência não é uma impressão; é um digest que confere. Cursos que nunca praticam a recusa produzem pessoas educadas que aceitam arquivos ruins.
+
+### 30.8 Esqueleto do relatório
+
+Os relatórios do Laboratório II usam um esqueleto com marcadores REQUIRED. A falta da explicação do STILL OPEN reprova na verificação automatizada que Sam escreveu. O esqueleto elimina os debates sobre formatação, para que a atenção fique no conteúdo. Os marcadores REQUIRED tornam as omissões evidentes tanto para humanos quanto para a CI. O verificador de Sam reprova seções vazias em vez de adivinhar a intenção. Os estudantes que apagam um marcador para esconder uma lacuna aprendem que o pipeline percebe. A estrutura é um auxílio à honestidade, e não burocracia por si mesma. Blocos REQUIRED vazios falham ruidosamente antes de um humano abrir o arquivo.
+
+### 30.9 CI do esqueleto
+
+Os PRs dos relatórios do Laboratório II falham na CI se as seções REQUIRED estiverem vazias. Sam gosta de honestidade mecânica. Integração contínua sobre prosa parece estranha até a primeira vez em que pega um status ausente. Sam prefere que um bot rejeite o pull request a depender só de um facilitador cansado. A honestidade mecânica escala entre turmas sem perder a paciência. Os estudantes podem iterar até a verificação passar, o que ensina a revisar sob uma regra clara. Os facilitadores continuam lendo pela qualidade; a CI só impõe a presença. O pipeline é um tutor paciente que repete o mesmo padrão todas as vezes.
+
+### 30.10 A CI rejeita o "o responsável disse"
+
+A CI do Laboratório II rejeita um relatório que marca F3 como encerrado com o comentário "owner said so". A mensagem de erro de Sam cita a regra do curso. A imposição mecânica vence o sermão. A cena é engraçada na primeira vez e séria na segunda. A garantia verbal não é evidência de reteste, e o verificador conhece a diferença. O texto de erro de Sam cita a regra do manual, para que as contestações sejam sobre a regra, e não sobre o humor do bot. Os estudantes atualizam o status para STILL OPEN e escrevem o que resta. Os sermões se apagam; as verificações que falham ensinam.
+
+### 30.11 STILL OPEN quando o reteste está aberto
+
+A CI do esqueleto procura a string STILL OPEN quando o lab_retest mostraria itens abertos. Os estudantes não conseguem esconder o que está aberto por omissão. A omissão é a forma mais branda de falso encerramento. O verificador compara o estado posterior sintético com o texto do relatório e exige as palavras desconfortáveis quando restam caminhos. Sam ajustou a verificação depois que uma turma retirou discretamente da página os itens abertos. Esconder trabalho não corrige sistemas. Tornar mecanicamente obrigatório o registro do que está aberto mantém o laboratório alinhado com a ética da produção. Palavras forçadas na página viram honestidade forçada no próximo ticket real do estudante.
+
+### 30.12 Números de regra na CI
+
+A mensagem da CI cita o número da regra do manual do curso. Mensagens de erro que só dizem "relatório inválido" convidam a discutir com a ferramenta. Citar a regra do manual permite ao estudante consultar a expectativa e corrigir o trabalho. Sam mantém os números de regra estáveis entre os períodos, para que as discussões antigas continuem fazendo sentido. As contestações citam a regra; não pedem ao facilitador que passe por cima de uma falha clara. A automação transparente conquista um respeito relutante. Citações claras transformam um X vermelho num guia de estudo, e não num beco sem saída.
+
+### 30.13 As contestações citam a regra
+
+Os números de regra do manual na CI facilitam as contestações: cite a regra, não discuta com o bot. Um caminho de contestação limpo reduz a temperatura na sala. Os estudantes que discordam precisam mostrar como a regra foi mal aplicada, o que é mais raro do que eles esperam. Sam prefere debater a redação do manual numa reunião de currículo a debater cada verificação reprovada caso a caso. O bot não é o vilão; regras pouco claras seriam. Expectativas numeradas mantêm os dois lados honestos. A justiça do processo importa tanto quanto a correção técnica num laboratório avaliado.
+
+### 30.14 A melhor recusa do dia
+
+Os debriefs do Laboratório II votam na melhor recusa do dia. O vencedor explica a redação que usou. Celebrar a recusa facilita a próxima. A recusa é socialmente constrangedora, então o curso a celebra de propósito. O estudante vencedor lê a frase exata que usou quando a evidência não conferia. Os colegas roubam boas formulações do jeito que, em outras culturas, roubam bons payloads. Sam quer que a recusa pareça um ofício. Uma sala que aplaude um não limpo vai produzir pacotes de evidência mais limpos.
+
+### 30.15 Cartão de exemplo de recusa
+
+Os vencedores da votação da melhor recusa podem atualizar o cartão de exemplo de recusa. O cartão de exemplo no pacote do laboratório é um documento vivo, mantido pelos vencedores recentes. Atualizá-lo mantém a linguagem atual e dá reconhecimento sem inflar as notas. Sam revisa as edições quanto ao tom e à exatidão antes de publicá-las. Os estudantes levam o cartão mais a sério quando foram colegas que escreveram as frases. Ser dono de pequenos artefatos constrói a cultura mais rápido do que só os pôsteres. Exemplos escritos pelos colegas vão mais longe do que as aulas do facilitador depois que o período termina.
+
+### Exemplo resolvido (TRB sintético)
+
+O lab_retest mostra F1/F4 FIXED e F3 STILL OPEN; o relatório de Sam mantém o F3 aberto.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX088 — Contagens do reteste.** Quantos FIXED e quantos STILL OPEN? *Rubrica:* 3 = 2 FIXED, 1 STILL OPEN; 2 = parcial; 1 = todos corrigidos; 0 = nada.
+- **EX089 — Limite da parada.** Qual é o limite de tempo da mensagem de parada? *Rubrica:* 3 = dois minutos; 2 = rápido; 1 = no dia seguinte; 0 = nada.
+- **EX090 — Tratamento do F3.** O relatório pode encerrar o F3 sem evidência? *Rubrica:* 3 = não; 2 = não; 1 = sim; 0 = nada.
+
+### Síntese
+
+O Laboratório II enfatiza parar rápido e relatar com honestidade os resultados do reteste.
+
+### Continue estudando — capítulo 30 de 40
+
+[← Capítulo 29 (rascunho)](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (rascunho) →](#ch-31)
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos com vários achados; (2) priorizar sob pressão do conselho; (3) manter a ética quando a imagem e a integridade colidem.
+
+### 31.1 Pacote
+
+Achados classificados, reteste inacabado e o conselho pedindo para enterrar o F3 antes da divulgação de resultados. O pacote do caso avançado acumula pressão de propósito: uma lista classificada de achados, um reteste ainda aberto e um pedido do conselho para enterrar o F3 antes da teleconferência de resultados. Os estudantes precisam manter o achado visível enquanto redigem respostas da gestão que ficam ao lado dele, e não por cima. Sam recusa qualquer edição que apague o F3 da tabela classificada. O pacote treina a resistência com artefatos, e não com slogans. Os estudantes saem sabendo como é, no papel, um pedido para enterrar um achado.
+
+### 31.2 Ética
+
+Os achados ficam; respostas da gestão são permitidas ao lado deles. A ética, aqui, é concreta: o achado permanece no arquivo do engajamento, e a liderança pode anexar uma resposta explicando o prazo ou os controles compensatórios. Apagar não é responder. Sam ensina a diferença entre contextualizar o risco e escondê-lo. Trabalhos avaliados que apagam discretamente o F3 são reprovados, por mais eloquentes que sejam. A regra protege o banco do autoengano mais do que protege o ego do testador. Uma resposta que defende adiar a correção ainda pode ser honesta se a linha do próprio achado nunca se mover. Os estudantes marcam onde a resposta começa, para que ela não seja confundida com uma edição do achado.
+
+### 31.3 Priorização
+
+Primeiro, os fluxos adjacentes a pagamentos e os fluxos não aprovados do razão. Quando tudo parece urgente, a ordem ainda começa pelo dinheiro em movimento e pela integridade dos livros, não pelo volume de e-mails. A rubrica de classificação de Sam pondera o raio de impacto na direção da movimentação de dinheiro e da integridade dos livros contábeis. Achados cosméticos esperam, mesmo que um vice-presidente mande e-mail duas vezes. Os estudantes praticam dizer qual item vem primeiro e por quê, numa linguagem que um executivo consiga ouvir. Priorizar sem a lente do dinheiro é teatro num banco. Os empates se resolvem a favor do item que ainda não tem um controle compensatório em produção. A classificação falada é registrada nas notas do caso para o debrief.
+
+### 31.4 Comunicação
+
+Preparar versões para executivos e para engenheiros. Um achado precisa de duas leituras: uma versão executiva que declara a decisão, a data e o risco residual, e uma versão para engenheiros que traz os detalhes de reprodução e de correção. Sam gera as duas a partir dos mesmos campos do FindingsDesk, para que as palavras de severidade não possam derivar. Os estudantes que inventam uma pontuação executiva mais branda reprovam na verificação de coerência. Traduzir não é maquiar. Versões duplas claras impedem que resumos de corredor reescrevam o risco. As duas versões carregam o mesmo identificador de achado, para que ninguém possa alegar que descreviam problemas diferentes. A revisão por pares compara as duas páginas lado a lado antes de qualquer envio.
+
+### 31.5 Jurídico
+
+Envolver o jurídico se puder haver dever de divulgação — Sam escala, não decide sozinho. Quando um achado pode disparar deveres de divulgação, Sam escala para o jurídico com os fatos e não inventa uma conclusão jurídica. Estagiários e juniores, em especial, não podem negociar em particular com gerentes de produto sobre silêncio. O caminho de escalonamento está escrito no quadro de métodos. Os cenários avaliados punem a negociação solitária. O jurídico ainda pode dizer que nenhum dever se aplica; a questão é que não é Sam quem decide. As notas de escalonamento se atêm a horários, sistemas tocados e classes de dados envolvidas. Se o jurídico pedir mais detalhes, Sam acrescenta caminhos de evidência, e não opiniões.
+
+### 31.6 Registro
+
+Manter o pedido para enterrar o achado no arquivo do engajamento. Os e-mails de pressão pertencem ao arquivo, com um cabeçalho factual, mesmo quando a resposta é um não firme. Apagar o pedido protege sentimentos e destrói a história. Sam encaminha as tentativas de enterrar achados para o alias do CISO, para que a resposta vire memória institucional. Os estudantes praticam arquivar sem editorializar. As futuras aulas de ética precisam de artefatos, não de lendas. A redação de trechos sensíveis para as cópias de ensino acontece depois; o próprio arquivo do engajamento continua completo. Os cabeçalhos incluem o id do achado e o horário em que a mensagem chegou.
+
+### 31.7 Encaminhar a pressão ao CISO
+
+Os e-mails de pressão são encaminhados ao alias do CISO com um cabeçalho factual curto. Sam não discute calendários de divulgação de resultados sozinho com gerentes de produto. A resposta do alias vira o registro. Discutir sozinho convida a um meio-termo que nunca chega à governança. O alias força a conversa para um canal com retenção e testemunhas. O cabeçalho de Sam declara o que foi pedido e qual achado é o alvo, sem adjetivos. Os gerentes de produto aprendem que calendários de resultados não editam tabelas classificadas. A resposta, seja ela qual for, é o artefato com que o programa depois ensina.
+
+### 31.8 SLA de escalonamento
+
+Os e-mails com pressão para enterrar achados recebem uma confirmação no mesmo dia do alias do CISO, mesmo que a resposta completa espere. O silêncio parece consentimento. Confirmação não é concordância; é a prova de que a mensagem foi vista. Sam acompanha a mediana do tempo de confirmação nos slides de ética, porque o silêncio lento ensina a lição errada. As respostas no mesmo dia podem ser curtas: recebido, em análise, não alterem o achado enquanto isso. A análise completa pode levar mais tempo. A cultura morre no intervalo em que ninguém responde. A cobertura reserva do alias é escalada sempre que o titular está viajando. O modelo de confirmação fica ao lado das outras macros do engajamento.
+
+### 31.9 Imagem versus integridade
+
+Os slides de treinamento incluem um pedido anterior, anonimizado, para enterrar um achado e a resposta do CISO apoiando o testador. A cultura se ensina com artefatos. Slides que só dizem "aja com integridade" perdem para uma troca de e-mails real com trechos ocultados. A apresentação de Sam mostra o pedido, o encaminhamento e a resposta de apoio. Os estudantes veem que a recusa pode ser respaldada de cima. A pressão pela imagem passa a ser discutível, em vez de mítica. Os artefatos duram mais que os slogans quando chega a próxima temporada de resultados. A cada período, Sam confere se as ocultações ainda escondem pessoas vivas e tickers reais. Ocultações quebradas tiram o slide da apresentação até serem corrigidas.
+
+### 31.10 A troca de e-mails impressa
+
+O e-mail com o pedido para enterrar o achado e a resposta do CISO são impressos (com ocultações) na aula de ética. Os estudantes veem que a recusa tem apoio. Cultura é evidência, não slogans. Passar o papel de mão em mão muda a sala. Pessoas que supunham que os testadores ficam sozinhos leem uma frase do CISO que respalda o arquivo. Sam observa a mudança de postura mais do que escuta os pontos da discussão. A evidência de apoio é, ela própria, um controle contra pressões futuras. Aulas que só falam sobre coragem produzem uma coragem mais tímida. As cópias impressas são recolhidas no fim, para que digitalizações descontroladas não circulem. Uma folha de retirada registra qual mesa ficou com qual cópia durante o exercício.
+
+### 31.11 Votar e depois ler a resposta
+
+A aula de ética vota se teria recusado; depois, lê a resposta do CISO. A maioria muda o voto. Os artefatos ensinam. A votação vem primeiro para que seja possível ser honesto sobre o medo. Depois que a resposta é lida, muitos que votaram por atender ao pedido mudam de lado, e essa é a lição: o apoio se tornou imaginável quando o viram. Sam não envergonha ninguém pelo primeiro voto. Ele quer que as pessoas percebam como os artefatos reescrevem o que parece possível. Ensinar sem o segundo momento mediria apenas a ansiedade de base.
+
+### 31.12 Logs de acesso da pasta de ética
+
+Os artefatos de pressão com ocultações ficam na pasta de ética, com logs de acesso. Material de ensino sensível ainda precisa de responsabilização. Os logs de acesso mostram quem abriu a troca de e-mails ocultada e quando. Sam revisa os leitores inesperados a cada período com o líder do programa. Os logs desestimulam a fofoca empacotada e apoiam investigações se algo vazar. A transparência sobre o acesso faz parte de tratar os artefatos com respeito. Contas que só precisam dos slides da aula nunca recebem direitos sobre a pasta. As contas de serviço usadas para backup ficam listadas, para que não pareçam bisbilhoteiras.
+
+### 31.13 Revisão de acesso a cada período
+
+Os logs de acesso da pasta de ética são revisados a cada período em busca de leitores inesperados. Uma pasta sem revisão vira uma fábrica de boatos com senha. As verificações a cada período pegam credenciais compartilhadas e curiosidade ociosa de contas que não deveriam navegar por casos de pressão. Sam registra as esquisitices como notas de processo, e não como acusações públicas. A maioria das anomalias são erros banais; a revisão importa mesmo assim. A governança dos materiais de ensino espelha a governança da evidência dos engajamentos. As constatações da revisão alimentam o checklist de controle de acesso do período seguinte. O checklist é curto o bastante para que líderes ocupados de fato o concluam.
+
+### 31.14 Medir o tempo de resposta do CISO
+
+O tempo de resposta do alias do CISO é medido. Os slides de ética de Sam incluem a mediana do tempo de resposta aos e-mails de pressão. O silêncio lento é acompanhado como um risco para a cultura. O que é medido ganha equipe. Publicar a mediana mantém a liderança ciente de que o silêncio tem um custo além de um e-mail constrangedor. Sam toma o cuidado de nunca publicar conteúdo, apenas tempos. Quando a mediana piora, o programa pede cobertura reserva para o alias. O risco cultural pertence a um painel ao lado do risco técnico. Uma mediana em alta dispara uma conversa sobre equipe antes da próxima janela de resultados. A métrica é zerada a cada trimestre, para que crises antigas não escondam atrasos novos.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam se recusa a retirar o F3, oferece um parágrafo de resposta da gestão e informa o supervisor e o CISO.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX091 — Pedido para enterrar.** Qual é a resposta correta a "retirem o F3 até a divulgação de resultados"? *Rubrica:* 3 = recusar; oferecer resposta da gestão; escalar; 2 = recusar; 1 = retirar; 0 = nada.
+- **EX092 — Primeira prioridade.** Que classe de achado fica acima das mensagens de erro verbosas antes da divulgação de resultados? *Rubrica:* 3 = problemas adjacentes a pagamentos / de fluxo do razão; 2 = parcial; 1 = banners; 0 = nada.
+- **EX093 — Registro.** Por que registrar o pedido para enterrar o achado? *Rubrica:* 3 = trilha de ética/auditoria; 2 = parcial; 1 = não é necessário; 0 = nada.
+
+### Síntese
+
+Os casos avançados testam a ética sob pressão da imagem tanto quanto a habilidade técnica.
+
+### Continue estudando — capítulo 31 de 40
+
+[← Capítulo 30 (rascunho)](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 (rascunho) →](#ch-32)
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar com jurídico, RH, SOC e desenvolvedores; (2) traduzir achados; (3) respeitar as restrições das outras profissões.
+
+### 32.1 Jurídico
+
+Contratos, divulgação, privacidade — Sam leva fatos, não conclusões jurídicas. Os parceiros do jurídico precisam de um pacote factual limpo: sistemas tocados, classes de dados, horários e se dados de clientes saíram do banco. Sam se recusa a redigir conclusões sobre estatutos de notificação de incidentes; essa é a faixa do advogado. A interface funciona quando os red teamers falam com precisão e ficam dentro da evidência. Adjetivos vagos obrigam os advogados a reinvestigar o que o testador já sabia. Uma folha de fatos de uma página anexada ao ticket vale mais do que um longo e-mail narrativo. Folhas de fatos viajam melhor entre as rotações do jurídico do que a memória heroica.
+
+### 32.2 RH
+
+Simulações que afetam a equipe precisam de caminhos pelo RH. Exercícios de phishing ou sociais que podem tocar registros de funcionários ou percepções de desempenho exigem um caminho pelo RH antes do lançamento. O checklist de Sam pergunta quem verá os nomes, quanto tempo os identificadores vivem e como as reclamações serão tratadas. Pular o RH uma vez criou uma queixa que durou mais do que o achado. O caminho é um contato nomeado e um limite de consentimento escrito, e não um aceno amigável no corredor. Achados que implicam a conduta de uma pessoa passam por revisão de linguagem do RH antes da distribuição ampla. Trabalho que impacta pessoas sem um caminho pelo RH é tratado como um defeito de escopo.
+
+### 32.3 SOC
+
+A engenharia de detecção consome tags ATT&CK e linhas do tempo. Os engenheiros do SOC só conseguem usar a saída do red team quando as tags de técnica e os horários das etapas estão presentes. Os diagramas de cadeia de Sam alimentam itens do backlog de detecção com esses campos já preenchidos. Uma captura de tela sem id de técnica é uma história; uma linha do tempo etiquetada é uma ordem de serviço. A sinergia purple falha quando os red teamers despejam lore e esperam que os analistas inventem a estrutura. As importações do PulseMap são rejeitadas se as tags obrigatórias estiverem em branco. Linhas do tempo etiquetadas são como o trabalho de detecção começa, e não como as discussões começam.
+
+### 32.4 Desenvolvedores
+
+Querem reprodução e padrões seguros de correção. Os desenvolvedores pedem passos exatos de reprodução e um padrão de correção que não derrube os pagamentos. Sam inclui uma requisição mínima, a resposta esperada e uma guarda sugerida que fica dentro das regras de mudança do serviço. Relatórios heroicos de exploit sem um formato seguro de correção desperdiçam sprints de engenharia. Os modelos do FindingsDesk obrigam um bloco de reprodução antes que um achado possa sair do rascunho. Quando a correção não está clara, Sam agenda uma conversa rápida de quinze minutos em vez de adivinhar na prosa. Passos reproduzíveis são a cortesia de que os desenvolvedores se lembram no trimestre seguinte.
+
+### 32.5 Executivos
+
+Querem decisões e datas. Os executivos precisam da decisão exigida, da data em que ela é necessária e do residual se esperarem. Sam mantém as notas executivas com menos de meia página e aponta para o detalhe mais profundo em vez de colá-lo. Briefings cheios de metáforas perdem para uma tabela com três linhas. A interface falha quando os testadores encenam expertise em vez de habilitar uma escolha. Toda nota executiva termina com uma única decisão pedida em texto simples, e as datas são datas de calendário. Um pedido claro é mais gentil do que uma digressão brilhante quando as agendas estão cheias.
+
+### 32.6 Atrito
+
+Compras e janelas de mudança são reais; planeje para elas. Achados brilhantes morrem quando a correção precisa de uma mudança de fornecedor durante um congelamento. Sam pergunta cedo quais remédios exigem compras ou uma janela de mudança e registra essas restrições ao lado do achado. Planejar para o atrito não é baixar a severidade; é sequenciar o trabalho que o banco realmente consegue fazer. As aberturas de engajamento incluem uma varredura de cinco minutos das restrições com o responsável. Congelamentos surpresa ainda acontecem; restrições documentadas tornam a remarcação mais calma. Alfabetização de calendário faz parte da maturidade técnica em empresas reguladas.
+
+### 32.7 Pacotes de tradução gerados
+
+Os pacotes de tradução são gerados a partir dos campos do FindingsDesk, para que os textos para executivos e para engenheiros não possam discordar sobre pontuações no estilo CVSS ou ids de ativos. Sam certa vez encontrou uma deriva nas palavras de severidade entre e-mails; os modelos a removeram. Os pacotes gerados puxam severidade, ids de ativos e títulos das mesmas linhas que o ticket usa. A reformulação manual é permitida para clareza, mas não para mudanças de pontuação. O incidente de deriva de Sam ensinou à equipe que o copia-e-cola entre públicos inventa duas verdades. Os modelos tornaram as versões duplas entediantes e coerentes. Os revisores conferem por amostragem se os números gerados batem com o ticket antes do envio. Uma fonte de números de severidade vale mais do que duas paráfrases inteligentes.
+
+### 32.8 Glossário para leitores do jurídico
+
+Um miniglossário mapeia "conduit", "control" e "finding" para leitores do jurídico. Sam o anexa quando o jurídico entra tarde. Palavras compartilhadas escondem significados diferentes entre as profissões. O miniglossário cabe numa tela e viaja como anexo, e não como palestra. Sam o atualiza quando um novo mal-entendido aparece numa conversa. O jurídico que entra tarde recebe o glossário no primeiro pacote, para que a segunda reunião seja mais curta. Discutir definições no meio de uma crise é como os prazos escorregam. Definições compartilhadas encurtam cada reunião seguinte em minutos que se acumulam ao longo de um trimestre.
+
+### 32.9 Campos RACI do achado
+
+Cada achado importante carrega um RACI minúsculo: quem corrige, quem verifica, quem aceita. Sam o preenche nos campos do FindingsDesk. Achados sem dono envelhecem e viram folclore. O RACI minúsculo fica no ticket, para que a responsabilização fique visível sem um ritual separado de gestão de programa. Sam não move um achado importante para em andamento sem os três nomes. Quem aceita precisa ter autoridade para assumir o risco residual; amigos da equipe não se qualificam. Campos RACI vazios bloqueiam as transições de status no fluxo de trabalho. Papéis nomeados transformam achados em trabalho agendado, em vez de culpa ambiente.
+
+### 32.10 Confirmar a sugestão automática do RACI
+
+Os campos RACI sugerem automaticamente os responsáveis a partir do registro de ativos. Sam ainda confirma com um humano. A sugestão automática sem confirmação certa vez enviou um achado a um ex-funcionário. A sugestão automática é uma conveniência que pode virar um incidente de confidencialidade. A ligação de confirmação de Sam é curta e registrada com um horário no ticket. O e-mail ao ex-funcionário virou um caso de ensino sobre confiar em diretórios depois de eventos de RH. Os humanos ainda vencem grafos desatualizados quando o que está em jogo inclui detalhes privados de vulnerabilidade. A confirmação é obrigatória mesmo quando a sugestão parece obviamente correta. A confirmação humana é um seguro barato contra o apodrecimento do diretório.
+
+### 32.11 Quase incidente do responsável desativado
+
+A sugestão automática do RACI certa vez escolheu um usuário desativado; a ligação de confirmação pegou o erro. Sam mantém a ligação mesmo quando está ocupado. Usuários desativados que ficam no registro de ativos são um modo de falha silencioso. A ligação de confirmação pegou o erro antes de o e-mail ser mesclado. Sam se recusa a pular a ligação em dias cheios, porque dias cheios são quando os atalhos se concentram. Uma verificação ao vivo de dois minutos vale mais do que um dia de recall. Os tickets da plataforma agora marcam em vermelho os responsáveis desativados ao lado da sugestão. Quase incidentes que mudam tanto a interface quanto o hábito são as revisões que valem a pena manter.
+
+### 32.12 Horários de confirmação do responsável
+
+As ligações de confirmação são registradas como "owner confirmed 15:04" no ticket. Uma caixa de seleção nua dizendo "confirmado" envelhece mal quando os auditores perguntam quem falou. A linha do log nomeia o ato e o relógio, para que leitores posteriores possam reconstruir a diligência. Sam cola a linha imediatamente depois da ligação, enquanto a memória está fresca. Tickets sem a linha voltam da revisão por pares. O formato é entediante de propósito, para que as pessoas de fato o usem. A diligência com horário sobrevive de forma limpa às trocas de equipe e impede que os auditores fiquem adivinhando. A disciplina parece pequena até a primeira vez em que evita um recall confuso.
+
+### 32.13 Regra de confirmação em horário comercial
+
+Os horários de "owner confirmed" precisam estar dentro do horário comercial, a menos que o plantão seja anotado. Confirmações noturnas acontecem, mas precisam de uma nota de plantão, para que ninguém assuma um sim acidental e sonolento. O validador de Sam avisa quando o horário cai fora do horário comercial sem a nota. A regra protege os responsáveis tanto quanto protege o processo. As notas de plantão nomeiam a rotação e o ticket que autorizou o contato fora do horário. A falsa urgência fica mais fácil de perceber quando o relógio é disciplinado. Regras de relógio tornam as alegações de urgência mais fáceis de auditar depois, quando as memórias discordam.
+
+### 32.14 Plantão mensal com o jurídico
+
+O plantão interdisciplinar convida o jurídico mensalmente. Sam leva um achado e pergunta como eles formulariam os deveres de divulgação. A tradução mútua se acumula. O plantão mensal vence o contato só em emergência. Sam leva um único achado ao vivo, sem drama, e pergunta ao jurídico como enquadrariam os deveres. O jurídico traz perguntas sobre a evidência que gostaria que os testadores capturassem mais cedo. Os dois lados saem com modelos mais afiados. A presença é curta e recorrente, para que a confiança se acumule. A prática recorrente de baixo risco vence a tradução rara de alto risco sob o calor do prazo.
+
+### Exemplo resolvido (TRB sintético)
+
+O pacote do F3 de Sam inclui uma proposta de regra de firewall para a rede e um checklist de negação no lado do código para a segurança da aplicação.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+### Exercícios
+
+- **EX094 — Papel do jurídico.** O que Sam leva ao jurídico? *Rubrica:* 3 = fatos/evidência/linha do tempo, não conclusões jurídicas; 2 = parcial; 1 = aconselhamento jurídico; 0 = nada.
+- **EX095 — Pacote duplo.** Por que tanto a regra de firewall quanto o checklist da aplicação para o F3? *Rubrica:* 3 = precisa de controles de rede e de aplicação; 2 = parcial; 1 = só um é necessário; 0 = nada.
+- **EX096 — Caminho do RH.** Quando o RH precisa ser envolvido? *Rubrica:* 3 = simulações/exercícios de phishing que afetam a equipe; 2 = parcial; 1 = nunca; 0 = nada.
+
+### Síntese
+
+O trabalho interdisciplinar traduz um achado nos artefatos de cada profissão.
+
+### Continue estudando — capítulo 32 de 40
+
+[← Capítulo 31 (rascunho)](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 (rascunho) →](#ch-33)
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar resultados de purple team; (2) respeitar as ameaças à validade; (3) relatar a incerteza.
+
+### 33.1 Análise
+
+Usar intervalos; evitar p-hacking trocando métricas a posteriori. Os planos de análise nomeiam a métrica e o intervalo antes de a coleta de dados começar. Sam rejeita rascunhos de estudo que guardam três métricas reserva na gaveta para um slide mais bonito. Os intervalos comunicam a incerteza; as estimativas pontuais sozinhas convidam a uma precisão falsa. Trocas a posteriori só são permitidas como notas exploratórias claramente rotuladas como tal. O modelo de relatório do laboratório tem uma caixa de métricas travada que não pode ser editada depois que os dados chegam. O pré-compromisso é o que mantém honestos os estudos de sala de aula quando os resultados decepcionam.
+
+### 33.2 Validade
+
+Homologação, fadiga de alertas e contas compartilhadas ameaçam a generalização. As seções de validade precisam nomear ameaças que de fato se aplicam a ambientes no estilo do TRB. Homologação sem o ruído da produção, analistas afogados em alertas e contas de administrador compartilhadas distorcem o que uma pontuação de detecção significa. A rubrica de Sam desconta relatórios que só mencionam o tamanho da amostra. As ameaças vêm acompanhadas de uma mitigação ou de um limite explícito às alegações. O leitor deve saber até onde o resultado pode viajar. Alegar demais a partir de um laboratório arrumado é uma falha de validade, e não uma vitória de marketing.
+
+### 33.3 Avaliação adaptativa
+
+Os adversários se adaptam; conjuntos estáticos de testes envelhecem. Uma avaliação que nunca se renova vira um museu dos truques do ano passado. Sam registra quando atacantes ou sistemas internos mudam o suficiente para envelhecer um teste estático. A avaliação adaptativa agenda gatilhos de renovação, e não apenas revisões anuais. Uma pontuação perfeita num conjunto congelado pode esconder um ponto cego que se abriu no mês passado. O grupo de pesquisa trata o envelhecimento como um risco de primeira classe. Oponentes vivos exigem testes vivos se a linguagem de asseguração for significar alguma coisa. Os gatilhos de renovação pertencem ao plano, e não a um remorso culpado.
+
+### 33.4 Divulgação dos limites
+
+Todo estudo lista os limites no resumo. Limites enterrados na página doze é quase como se não existissem para leitores ocupados. Sam exige pelo menos três limites no resumo: ambiente, amostra e adaptação do adversário. A geração do PDF falha se a lista for mais curta. Nomear os limites cedo é uma qualidade que constrói confiança com revisores céticos. Estudantes que escondem limites para parecer fortes perdem pontos por educação científica. Resumos que admitem fraqueza ensinam melhor julgamento do que resumos que se gabam. Colocar os limites na frente treina o leitor a confiar no restante da página.
+
+### 33.5 Compartilhamento de dados
+
+Conjuntos sintéticos são preferidos para compartilhar. Logs brutos do TRB não saem do banco para um artigo de sala de aula. O padrão de Sam é um conjunto sintético com geradores documentados e verdade de referência conhecida. Quando traços reais forem essenciais, o jurídico e a privacidade aprovam uma versão fortemente sanitizada com um prazo de retenção. Compartilhar o gerador costuma ensinar mais do que compartilhar um dump. Os estudantes aprendem a publicar o suficiente para a reprodução sem exportar a vida do cliente. Conjuntos sintéticos também permitem plantar falhas conhecidas que os logs reais raramente rotulam com limpeza.
+
+### 33.6 Revisita à ética
+
+Reconferir as aprovações se os métodos se expandirem no meio do estudo. A expansão de escopo nos métodos pode ultrapassar a aprovação ética original. Sam pausa a coleta quando aparece uma técnica nova e registra uma emenda antes de continuar. Estudantes ansiosos para "só mais um salto" são o motivo de a regra existir. A emenda nomeia o que mudou e quem aprovou a expansão. Continuar sem ela transforma um estudo cuidadoso numa coleta fora do escopo. Revisitar a ética não é burocracia; é como a autorização acompanha a curiosidade. Uma pausa curta evita um projeto longo que ninguém pode defender.
+
+### 33.7 Três ameaças à validade
+
+As seções de validade listam pelo menos três ameaças todas as vezes: ambiente, tamanho da amostra e adaptação do adversário. O modelo de Sam não gera o PDF do relatório se a lista tiver menos de três. O mínimo de três ameaças impede o teatro vazio de validade. Ambiente cobre as diferenças entre homologação e produção que os estudantes adoram ignorar. Tamanho da amostra cobre a tentação de tratar n=2 como destino. Adaptação do adversário cobre o envelhecimento que os conjuntos estáticos sofrem. O travamento do modelo torna a lista um hábito, e não um item opcional. Relatórios que passam na verificação ainda precisam de prosa que ligue cada ameaça a um limite de alegação.
+
+### 33.8 Log de adaptação
+
+Quando atacantes ou sistemas mudam, Sam registra quais testes estáticos envelheceram. O log alimenta o desenho do próximo ensaio. O log de adaptação é uma lista datada do que mudou e de quais testes isso fere. Sam o revisa antes de propor um novo ensaio, para que o desenho não finja que o mundo parou. Entradas citam tickets de mudança ou notas de inteligência quando existem. Um log vazio num trimestre movimentado é, ele próprio, um sinal de alerta. O desenho do próximo ensaio começa perguntando o que o log tornou obsoleto. Renovações sem um log viram adivinhação vestida de metodologia.
+
+### 33.9 Data de envelhecimento do teste
+
+Os testes carregam uma data de revisão. Testes vencidos não podem sustentar alegações de asseguração até serem renovados. Todo teste empacotado tem uma data de revisão ao lado do nome. Testes vencidos ainda podem rodar para treinamento, mas não podem ser citados na linguagem de asseguração. O verificador de asseguração de Sam recusa citações cujos ids estão vencidos. A data força uma conversa sobre renovação antes que alguém cole um resultado antigo num slide do conselho. Treinamento e asseguração usam os mesmos artefatos sob regras diferentes. Separar esses usos evita que a prática de sala de aula se apresente como cobertura.
+
+### 33.10 Idades dos testes no semáforo
+
+As datas de envelhecimento dos testes ficam laranja aos trinta dias e vermelhas aos noventa. Testes vermelhos não podem ser citados em declarações de asseguração até serem reexecutados. Sam gosta mais de semáforos do que de parágrafos de política. A cor no painel vence um PDF de política que ninguém abre. Laranja significa agendar uma renovação; vermelho significa que a citação está bloqueada. Sam mostrou as luzes à liderança uma vez e a discussão sobre política encurtou. Os operadores entendem o vermelho sem um memorando. O código de cores torna o envelhecimento impossível de ignorar educadamente. As cores mudam automaticamente a partir das datas de revisão, para que ninguém precise lembrar de pintar o risco à mão.
+
+### 33.11 Laranja agenda, vermelho bloqueia
+
+Testes laranja são agendados; testes vermelhos bloqueiam citações. O checklist de asseguração de Sam pergunta literalmente "algum teste vermelho citado?" com uma caixa de não obrigatória. Agendar é a resposta construtiva ao laranja; bloquear é a resposta dura ao vermelho. A caixa de não do checklist é uma pausa forçada antes que alguém cole uma pontuação antiga. Sam trata uma caixa de não desmarcada como uma falha de construção, e não como um detalhe de formatação. O bloqueio protege o conselho de asseguração vintage. Agendar mantém o trabalho de renovação visível ao lado dos engajamentos. As duas respostas juntas transformam o envelhecimento de um sermão num fluxo de trabalho.
+
+### 33.12 API do semáforo nas gerações
+
+A API do semáforo é consultada pela geração do relatório; citações vermelhas fazem a geração falhar. As gerações de relatório chamam o serviço do semáforo e falham fechadas em citações vermelhas. Os autores veem qual id de teste derrubou a geração e precisam renovar ou remover a alegação. Sam prefere uma geração vermelha a um PDF polido com evidência podre. A verificação da API remove debates sobre se alguém "realmente citou" um teste velho. A falha mecânica ensina mais rápido do que a orientação depois do fato. Os autores aprendem a consultar as luzes antes de escrever a frase de asseguração.
+
+### 33.13 Gerações offline falham fechadas
+
+As gerações de relatório chamam a API do semáforo; as gerações offline falham fechadas. Gerações de conveniência em notebooks sem rede costumavam pular a verificação. Essa omissão era um buraco grande o bastante para uma alegação envelhecida passar. Sam mudou o padrão para falhar fechado offline, para que o caminho conveniente não seja o perigoso. Autores que precisam trabalhar em trânsito pré-buscam o estado do semáforo enquanto ainda estão online. A regra chateia as pessoas uma vez e depois evita surpresas constrangedoras. Falhar fechado offline alinha o laptop com o mesmo hábito da plataforma.
+
+### 33.14 Proibição de "provar" sem limiar
+
+O plantão de pesquisa proíbe a palavra "provar" a menos que um limiar pré-registrado seja citado. Sam toca um pequeno sino. A sala se autocorrige na terceira semana. O discurso casual de prova infla o que um estudo de sala de aula consegue carregar. O sino é um pouco ridículo e extremamente eficaz para interromper o hábito. Os palestrantes precisam citar o limiar pré-registrado ou reformular como suporte, sugestão ou lacuna. Na terceira semana, os colegas tocam o sino uns para os outros. Sam quer precisão linguística antes que os slides cheguem a patrocinadores que ouvem "provado" como certeza. Hábitos pequenos e barulhentos vencem memorandos silenciosos sobre modestia.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam relata o GAP da T1190 com n=2 e se recusa a alegar "detecção zero para sempre".
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX097 — A posteriori.** Por que não mudar a métrica de sucesso depois de ver os dados? *Rubrica:* 3 = p-hacking / alegação viesada; 2 = parcial; 1 = tudo bem; 0 = nada.
+- **EX098 — n=2.** Como Sam deveria falar de um GAP com n=2? *Rubrica:* 3 = incerteza honesta de amostra pequena; 2 = parcial; 1 = prova de zero para sempre; 0 = nada.
+- **EX099 — Adaptativo.** Por que conjuntos estáticos de testes envelhecem? *Rubrica:* 3 = adversários e sistemas mudam; 2 = parcial; 1 = não envelhecem; 0 = nada.
+
+### Síntese
+
+A pesquisa une análise com intervalos, ameaças à validade nomeadas e limites honestos.
+### Continue estudando — capítulo 33 de 40
+
+[← Capítulo 32 (rascunho)](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 (rascunho) →](#ch-34)
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar duas abordagens de avaliação; (2) usar os critérios do TRB; (3) recomendar uma combinação.
+
+### 34.1 Opções
+
+Teste web trimestral no estilo WSTG versus exercício anual de cenário guiado por ameaças. O projeto comparativo coloca duas opções reais uma contra a outra, e não contra a fantasia de orçamento infinito. Os testes web trimestrais que seguem um método no estilo WSTG enfatizam a cobertura de regressão nas aplicações. Os exercícios anuais de cenário guiado por ameaças enfatizam caminhos realistas e o aprendizado do SOC. Sam proíbe uma terceira opção mágica que faz as duas coisas sem custo. A comparação só é honesta quando as opções cabem no calendário e na equipe que o banco realmente tem. Escolher entre alternativas concretas treina o julgamento que os slides de marketing evitam.
+
+### 34.2 Critérios
+
+Custo, cobertura, aprendizado de detecção, risco operacional e expectativas dos examinadores. Os critérios são fixados antes de as pontuações serem preenchidas, para que a resposta não possa dirigir a rubrica. O custo inclui horas da equipe e faturas de fornecedores; a cobertura pergunta quais classes de ativos são tocadas; o aprendizado de detecção pergunta o que o SOC leva embora; o risco operacional pergunta o quanto a produção é agitada; as expectativas dos examinadores perguntam o que os revisores externos já pediram. Sam trava a lista de critérios no apêndice. Critérios que mudam depois das pontuações são só teatro. Uma rubrica pré-registrada é o que transforma preferência em argumento.
+
+### 34.3 Evidência
+
+Usar resultados sintéticos do passado e intervalos de Wilson. A evidência da comparação vem de resultados sintéticos do passado, com intervalos de Wilson em torno das taxas de detecção e de cobertura. Estimativas pontuais sem intervalos fazem opções fracas parecerem certezas. Sam exige o mesmo tratamento de intervalo nas duas linhas, para que uma opção não ganhe por formato. Os dados sintéticos são rotulados como sintéticos em cada slide. Leitores que querem precisão falsa são remetidos de volta aos intervalos. Intervalos são como opções honestas sobrevivem ao contato com patrocinadores ansiosos.
+
+### 34.4 Recomendação
+
+Combinação: manter os testes web trimestrais; financiar o exercício guiado por ameaças a cada dois anos. A combinação recomendada mantém os testes web trimestrais para uma cobertura estável e financia um cenário guiado por ameaças a cada dois anos. O exercício anual guiado por ameaças pontuou bem em aprendizado e mal em capacidade de execução. Sam mostra a linha de capacidade antes da linha de aprendizado, para que o charme não vença a aritmética. A recomendação nomeia o que é cortado quando o orçamento aperta. Combinações sem um plano de corte são desejos. Uma recomendação que sobrevive a um corte de orçamento é uma recomendação que a finança consegue financiar.
+
+### 34.5 Não objetivos
+
+Não recomendar zero testes. Um não objetivo explícito é recomendar zero testes como medida de economia. Outro é fingir que slides de marketing de fornecedores são evidência. Sam imprime os não objetivos ao lado da recomendação, para que o atalho barato fique visível. Patrocinadores às vezes pedem a opção zero em particular; o slide responde em público. Nomear o que a análise se recusa a concluir é parte do desenho. Não objetivos mantêm a comparação longe de conclusões que o briefing nunca deveria alcançar.
+
+### 34.6 Apresentação
+
+Dez slides, decisões por último. A apresentação é limitada a dez slides, com a decisão no último. Colocar o teatro na frente e esconder o pedido é avaliado como falha. A orientação de Sam é declarar a combinação pedida no slide um numa frase e passar o restante justificando. Executivos que precisam caçar o pedido em metáforas perdem a paciência. O limite de slides também bloqueia apêndices disfarçados de narrativa. Clareza sobre a decisão é o produto; os slides são só o veículo.
+
+### 34.7 Linha de capacidade de execução
+
+As tabelas de comparação incluem uma linha de "capacidade de execução". O exercício guiado por ameaças todo ano pontua alto em aprendizado e baixo em capacidade — a menos que a equipe cresça. As pontuações de aprendizado seduzem os patrocinadores; as de capacidade mantêm os programas reais. A tabela de Sam fez a opção anual guiada por ameaças parecer excelente até a linha de capacidade ficar vermelha. Capacidade pergunta se as mesmas pessoas conseguem entregar sem abandonar os testes web. Sam se recusa a fingir que o heroísmo cobre um déficit de horas. A linha força uma conversa de contratação ou uma cadência mais lenta. Aprendizado sem capacidade é um programa que existe só nos slides.
+
+### 34.8 Honestidade sobre o custo
+
+As tabelas de comparação incluem horas da equipe, não só faturas de fornecedores. O trabalho web trimestral interno não é de graça só porque nenhum fornecedor enviou boleto. Custeamento só por fatura faz o trabalho interno parecer gratuito e enviesa a tabela na direção de ocupação que a equipe já não consegue terminar. Sam converte horas em custo com uma taxa publicada acordada com a finança. Horas internas aparecem na mesma coluna que as faturas. A honestidade evita a ilusão de que "fazer internamente" remove o custo. Patrocinadores merecem ver o preço completo. Custos ocultos de pessoal voltam como burnout e como janelas perdidas.
+
+### 34.9 Dados da linha de capacidade
+
+A linha de capacidade usa horas exportadas do controle de ponto, não palpites. Palpites comprimem projetos dolorosos e inflam os arrumados. O export encerra discussões sobre se o ano passado foi mesmo tão pesado. Sam mantém a história da subcontagem à mão para lembrar a sala por que a memória não é uma planilha. Os exports são hasheados no apêndice ao lado das pontuações. Capacidade sem um arquivo de horas é opinião. Dados que sobrevivem a um desafio da finança precisam de um arquivo, não de uma lembrança.
+
+### 34.10 Cena da aritmética das horas
+
+Linha de capacidade: no ano passado, o exercício guiado por ameaças consumiu 1.200 horas. Os testes web trimestrais consumiram 400. A opção a cada dois anos cabe; a anual não cabe sem contratação. A cena é um momento quieto de planilha, e não um discurso dramático. Mil e duzentas horas ao lado de quatrocentas fazem a escolha bienal guiada por ameaças parecer inevitável. Sam deixa a aritmética falar antes da retórica. Quem ainda quer a cadência anual precisa apontar para novas contratações, e não para entusiasmo. Aritmética é como as recomendações evitam o teatro do heroísmo. Números que cabem num slide ainda precisam caber num calendário.
+
+### 34.11 Export do controle de ponto
+
+O arquivo de horas é exportado do controle de ponto, não lembrado. A primeira estimativa feita à mão por Sam ficou 30% abaixo e quase aprovou uma cadência impossível. A memória comprime projetos dolorosos e infla os arrumados. O export encerra discussões sobre se o ano passado foi mesmo tão pesado. Sam mantém a história da subcontagem porque ela quase aprovou um plano que teria quebrado a equipe. Estimativas feitas à mão voltam pela porta lateral quando as pessoas estão com pressa. O export é chato e decisivo. Um arquivo chato venceu um plano carismático e impossível.
+
+### 34.12 Export de horas no apêndice
+
+O export hasheado de horas fica no apêndice comparativo. Pontuações sem o arquivo convidam a refazer a aritmética a partir de anedotas. O hash prova qual export sustentou a tabela. Sam aponta o apêndice quando alguém alega um total de horas diferente na sala. Transparência aqui é uma defesa, e não uma performance. A finança consegue refazer a linha de capacidade sem ligar para Sam à meia-noite. Apêndices que carregam os arquivos transformam discussões em verificações. O apêndice também declara quais códigos de controle de ponto foram contados como teste, porque as horas de relatório e de reteste são fáceis de deixar de fora por acidente.
+
+### 34.13 Recusar estimativas de horas feitas à mão
+
+Os apêndices comparativos se recusam a aceitar estimativas de horas feitas à mão sem um export do controle de ponto. A recusa é mecânica: sem hash, sem alegação de capacidade. Sam prefere atrasar uma data do conselho a abençoar uma linha chutada. Números feitos à mão voltam pela porta lateral quando as agendas apertam. A regra protege tanto os estudantes quanto os patrocinadores. Capacidade é um fato de arquivo ou não é um fato. Recusas mecânicas economizam discussões que a memória sempre perde.
+
+### 34.14 O que você cortaria primeiro
+
+As defesas do projeto comparativo perguntam "o que você cortaria primeiro se o orçamento cair pela metade?". Sam responde com qual trimestre de testes web encolhe e qual ano guiado por ameaças desliza. A pergunta do corte revela se o estudante entendeu a capacidade ou só decorou o slogan da combinação. A resposta nomeia o trimestre web que encolhe e o ano guiado por ameaças que desliza, com horas ao lado. Respostas que dizem "cortaríamos a qualidade um pouco em tudo" falham. Cortes nomeados são como as recomendações sobrevivem ao contato com a finança. Um plano de corte é parte da recomendação, e não uma pergunta surpresa. Estudantes que conseguem cortar com honestidade conseguem defender a combinação sob pressão.
+
+### 34.15 Visual do calendário de dois anos
+
+Ao apresentar a recomendação da combinação, Sam leva um calendário de uma página para dois anos, com o trimestre guiado por ameaças sombreado. Um calendário torna óbvias as colisões com congelamentos e visitas de examinadores. Sombrear o trimestre guiado por ameaças evita a reserva silenciosa em dobro das mesmas pessoas. Linguagem abstrata de combinação esconde essas colisões. Sam treina os estudantes a apontar para o sombreado quando alguém pede "só mais um exercício este ano". Calendários são evidência de capacidade. Uma página que mostra quando as pessoas estão ocupadas vence um slide que só afirma ambição.
+
+### 34.16 PDF do calendário para a finança
+
+O PDF do calendário de dois anos é o artefato que os conselhos encaminham à finança. A finança raramente encaminha apresentações com as metáforas intactas. O PDF do calendário de uma página sobrevive às cadeias de encaminhamento e ainda mostra quando dinheiro e pessoas são necessários. Sam gera o PDF a partir da mesma planilha da linha de capacidade. Artefatos que viajam sem o apresentador precisam carregar a aritmética sozinhos. O calendário é a combinação em forma de agenda. Se a finança só puder guardar um arquivo, que seja esse.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam recomenda testes web trimestrais mais um exercício guiado por ameaças a cada dois anos, citando a linha de capacidade.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX100 — Maior regressão.** Qual abordagem captura melhor as regressões web a cada trimestre? *Rubrica:* 3 = trimestral no estilo WSTG; 2 = só guiado por ameaças; 1 = nenhuma; 0 = nada.
+- **EX101 — Aprendizado de detecção.** Qual tende a ensinar mais ao SOC sobre caminhos realistas? *Rubrica:* 3 = exercícios de cenário guiados por ameaças; 2 = varreduras de banner; 1 = nenhuma; 0 = nada.
+- **EX102 — Combinação.** Que combinação Sam recomenda? *Rubrica:* 3 = web trimestral + guiado por ameaças a cada dois anos; 2 = parcial; 1 = zero testes; 0 = nada.
+
+### Síntese
+
+A comparação pré-registrada critérios, evidencia com intervalos e recomenda uma combinação executável.
+### Continue estudando — capítulo 34 de 40
+
+[← Capítulo 33 (rascunho)](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 (rascunho) →](#ch-35)
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) delimitar um projeto final de ferramenta de escopo; (2) declarar não objetivos e métricas; (3) planejar riscos e ética.
+
+### 35.1 Escopo
+
+Construir uma ferramenta de diff de escopo para o TrackScope, com testes e uma avaliação curta em inventários sintéticos. O projeto final constrói uma ferramenta de diff de escopo que compara inventários do TrackScope ao longo do tempo e sinaliza deriva. Os entregáveis são a ferramenta, testes automatizados e uma avaliação curta em inventários sintéticos com falhas plantadas. Sam delimita o escopo para que um estudante consiga terminar em um período. Ambição sem limite vira uma coleção de conectores pela metade. A proposta nomeia o usuário — operadores que carregam inventários — e o trabalho que eles precisam fazer mais rápido. Um escopo estreito com propriedades de controle claras vence um sonho amplo sem testes.
+
+### 35.2 Não objetivos
+
+Sem integração com todo sistema de tickets; sem módulos de exploit. Os não objetivos impedem que a construção vire uma carreira em conectores. Sem integração com todo sistema de tickets, sem módulos de exploit e sem sumarizador de LLM na versão um. Sam imprime os não objetivos em negrito na capa. Amigos vão sugerir recursos na semana de construção; a capa responde sem um novo debate. Não objetivos são parte do desenho, e não uma desculpa. Uma proposta que não consegue dizer não ainda não está pronta para construção.
+
+### 35.3 Métricas
+
+Precision/recall em derivas de inventário plantadas; falhar fechado em arquivos corrompidos. As métricas de avaliação são precision e recall nas derivas de inventário plantadas, mais um resultado duro de falhar fechado em arquivos corrompidos. Painéis bonitos que engolem arquivos ruins não passam. Sam pré-registra as métricas na proposta, para que resultados decepcionantes não possam trocar o critério. Precision sem recall esconde perdas; recall sem precision esconde ruído. Falhar fechado é uma propriedade binária, e não uma média. Métricas que medem controle e precisão mantêm o projeto final honesto.
+
+### 35.4 Riscos
+
+Tempo, acesso a dados e disponibilidade de revisores. Os riscos principais são o tempo de calendário, o acesso a geradores sintéticos realistas e a disponibilidade de revisores para os checkpoints. Sam lista mitigações: um corte vertical cedo, geradores versionados no repositório do curso e horários de checkpoint pré-reservados. Riscos sem mitigações são preocupações, não um plano. A proposta trata a agenda do orientador como uma dependência. Esperar que a sorte resolva a fila de revisão é um plano de falha. Riscos nomeados com donos sobrevivem à primeira semana movimentada.
+
+### 35.5 Orientador
+
+Checkpoints a cada duas semanas. Checkpoints com o orientador a cada duas semanas mantêm a construção honesta. Cada checkpoint demonstra uma propriedade de controle, como falhar fechado, e não só telas novas. Sam reserva os horários na proposta, para que não sejam aspiracionais. Checkpoints perdidos disparam uma nota de risco, e não um silêncio educado. O orientador está ali para julgar propriedades, não para aplaudir o cromado. Cadência sem propriedades é só teatro de status. Cada demonstração abre com um arquivo corrompido antes de qualquer caminho feliz, e checkpoints perdidos disparam uma nota de risco em vez de um silêncio educado.
+
+### 35.6 Ética
+
+Somente inventários sintéticos. O projeto final usa somente inventários sintéticos; exportações reais do TRB ficam fora dos notebooks dos estudantes. Os geradores documentam como o realismo foi aproximado, para que os avaliadores não sejam enganados. Sam trata um CSV vivo colado "só para testar" como uma falha ética. A proposta cita o limite em inventário sintético na seção de ética e de novo nos não objetivos. Fronteiras repetidas são mais difíceis de "esquecer" na semana de construção. Ética aqui é escolha de dados, e não um parágrafo genérico.
+
+### 35.7 Não objetivos em negrito na capa
+
+Os não objetivos são impressos na capa da proposta em negrito. O orientador de Sam avalia se o estudante consegue apontar para eles sob pressão. O constrangimento é um controle subestimado. Quando um amigo sugere um sumarizador de LLM, Sam aponta para a linha em negrito em vez de inventar um argumento novo. Os orientadores perguntam pelos não objetivos de propósito nos checkpoints. Uma capa que esconde os não objetivos ensina a pessoa errada. Visibilidade é o que faz os limites funcionarem quando o entusiasmo sobe. Negrito na capa é barato; debates na semana de construção são caros.
+
+### 35.8 Demonstrações nos checkpoints
+
+A cada duas semanas, Sam demonstra falhar fechado, não cromado novo de interface. Os orientadores avaliam propriedades de controle. O cromado é sedutor; as propriedades de controle são a nota. O roteiro de demonstração de Sam abre com um arquivo corrompido e mostra a recusa antes de qualquer caminho feliz. Orientadores que só veem telas novas perdem regressões. Sam quer que a primeira impressão de cada checkpoint seja uma propriedade. Demonstrações que começam com o caminho feliz enterram as falhas. Controlar a ordem da demonstração é parte de controlar o produto.
+
+### 35.9 Pôsteres de não objetivos na mesa
+
+As impressoras do laboratório reimprimem pôsteres de não objetivos para a mesa de Sam durante a semana de construção. Um pôster na altura dos olhos vence um PDF enterrado numa pasta. A semana de construção é quando as ideias tentadoras batem o pico, então a impressora roda nessa hora de propósito. Visitantes que fazem piada do pôster ainda o leram. Sam aponta para ele sem precisar abrir o laptop. Artefatos físicos alcançam momentos que os arquivos perdem. Uma mesa que mostra os limites precisa de menos palestras.
+
+### 35.10 Sugestão de LLM recusada
+
+No meio da construção, um amigo sugere acrescentar sumarização de achados por LLM. Sam aponta para a capa e estaciona a ideia. A cena é comum, e é por isso que importa. Em vez de discutir a qualidade do modelo, ele deixa a capa da proposta falar e anota a ideia na lista da v2. O amigo não está errado sobre a utilidade em geral; está errado sobre o escopo desta versão. Estacionar com um ponteiro vence um debate longo que atrasa os testes. A proposta ganha quando diz não sem drama. Recusas calmas protegem o calendário melhor do que discussões brilhantes.
+
+### 35.11 Sem LLM na v1 no pôster
+
+O pôster de não objetivos inclui "nenhum recurso de LLM na v1". Os visitantes riem; Sam aponta para a proposta assinada. O riso costuma saudar proibições explícitas de ferramentas na moda. Sam trata o riso como prova de que o limite está visível. A proposta assinada respalda o pôster quando alguém alega que a regra era só informal. Versão um é permitida ser estreita. Moda que espera a versão dois ainda pode ser boa engenharia. Um pôster que sobrevive ao riso está fazendo o trabalho.
+
+### 35.12 Foto do pôster no README
+
+O README inclui uma foto do pôster de não objetivos na mesa. Examinadores remotos não veem a mesa física. A foto torna o limite auditável no repositório. Sam tira a foto na semana de construção, não num dia arrumado de antes. O README que só alega disciplina sem evidência é fraco. Uma imagem datada fecha o espaço entre o pôster e o arquivo. Documentação que mostra o ambiente de construção ajuda quem não esteve na sala. Leitores futuros que clonam o repositório veem o que a v1 recusou sem caçar e-mail, e Sam rejeita edições do README que cortam os não objetivos da imagem.
+
+### 35.13 Fotografia datada do pôster
+
+A fotografia do README dos não objetivos precisa estar datada dentro da semana de construção. Uma foto sem data poderia ser teatro de outro período. Sam exige a data da câmera ou um papel datado visível no enquadramento. Datar na semana de construção liga o limite ao tempo em que as tentações estavam altas. Orientadores conferem a data nos checkpoints. Teatro de outro período não conta. Evidência que carrega sua própria data resiste a desafios educados. Fotos antigas de outro período não contam, e os orientadores conferem a data nos checkpoints para que teatro de outro termo não passe.
+
+### 35.14 Quiz de não objetivos nos checkpoints
+
+Os checkpoints da proposta incluem um quiz de não objetivos: o orientador nomeia um recurso tentador; Sam deve recusar apontando para a capa. O quiz é curto e um pouco constrangedor de propósito. Dizer não em voz alta sob os olhos do orientador prepara Sam para amigos e patrocinadores. Atrasos de merge soam duros até alguém lembrar o custo de um desvio. O quiz transforma os não objetivos de texto em músculo. Orientadores que pulam o quiz perdem um ensaio barato. Praticar a recusa é parte de avaliar a proposta.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam propõe uma ferramenta de diff de escopo com métricas de precision/recall e falhar fechado, e não objetivos em negrito na capa.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX103 — Não objetivo.** Cite um não objetivo válido da proposta. *Rubrica:* 3 = sem módulos de exploit (ou sem varredura ao vivo do TRB; ou sem integração com todo sistema de tickets); 2 = parcial; 1 = construir tudo; 0 = nada.
+- **EX104 — Métrica.** Cite uma métrica de avaliação. *Rubrica:* 3 = precision e recall em derivas plantadas, ou comportamento de falhar fechado em arquivos de escopo corrompidos; 2 = parcial; 1 = "parece bom"; 0 = nada.
+- **EX105 — Ética dos dados.** Que inventários o projeto final pode usar? *Rubrica:* 3 = somente inventários sintéticos; 2 = parcial; 1 = exportações reais do TRB; 0 = nada.
+
+### Síntese
+
+A proposta trava escopo, não objetivos, métricas, riscos e ética antes da construção.
+### Continue estudando — capítulo 35 de 40
+
+[← Capítulo 34 (rascunho)](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 (rascunho) →](#ch-36)
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) concluir uma reflexão no estilo de estágio; (2) sanitizar relatórios; (3) traduzir métodos acadêmicos para operações.
+
+### 36.1 Estágio
+
+Acompanhar as operações de avaliação do TRB (sintéticas neste curso). A prática de campo neste curso usa um estágio sintético nas operações de avaliação do TRB, para que os estudantes nunca toquem sistemas reais de clientes. Acompanhar significa observar a entrada, o escopo, as janelas de teste e as passagens de turno com um caderno de perguntas. O diário de estágio de Sam proíbe inventar histórias de guerra que não aconteceram na faixa sintética. O objetivo são os modos operacionais, não técnicas secretas. Sintético não significa casual; as mesmas regras de sanitização e de brindes ainda valem. Cada dia de acompanhamento termina com Sam registrando qual decisão ele viu sendo tomada e quem tinha autoridade para tomá-la.
+
+### 36.2 Sanitizar
+
+Nenhum identificador de cliente nos textos acadêmicos. Os textos acadêmicos não podem conter identificadores de clientes, números de conta, IPs brutos nem hostnames que embutam nomes pessoais. Sam executa um checklist e um colega o rubrica com as iniciais antes de qualquer script de upload aceitar o arquivo. Um único sobrenome num hostname quase escapou uma vez; a captura do colega virou almoço e um slide de ensino. A sanitização é avaliada com o mesmo rigor do conteúdo técnico. Dados de cidadãos não têm lugar em espelhos acadêmicos, mesmo quando a história parece educativa. Capturas de tela são o artefato mais arriscado: o título de uma aba do navegador ou um prompt de terminal podem carregar o nome de um cliente mesmo quando o painel principal parece limpo.
+
+### 36.3 Tradução
+
+Intervalos de Wilson viram frases utilizáveis pelo conselho. O trabalho de estágio inclui traduzir intervalos de Wilson em frases que um conselho possa financiar sem perder a incerteza. Sam pratica formulações que mantêm a faixa visível em vez de colapsar num percentual heroico. Diretores que só ouvem estimativas pontuais aprovam programas frágeis. Os exercícios de tradução usam os mesmos resultados sintéticos do projeto comparativo. A cautela estatística que não consegue ser dita em voz alta não vai sobreviver à sala do conselho. Um exercício típico transforma "detectado 4 de 7, intervalo aproximadamente 25 a 84 por cento" em "pegamos cerca da metade, e a taxa verdadeira pode estar em qualquer ponto entre um quarto e a maior parte". Os diretores então perguntam quantas execuções a mais estreitaríam a faixa, que é a pergunta certa.
+
+### 36.4 Conflitos
+
+Políticas de brindes e jantares de fornecedores — seguir as regras do TRB. Eventos comunitários e de fornecedores seguem as políticas de brindes do TRB, sem exceções especiais para estudantes. Sam recusa jantares que pareceriam errados numa revisão posterior, mesmo quando parecem normais em blogs do setor. As regras de conflito fazem parte da prática de campo, e não de um apêndice de RH que ninguém lê. Quando tem dúvida, ele pergunta ao supervisor do estágio antes de aceitar qualquer coisa de valor. A aparência de influência é tratada com a mesma seriedade da influência real. Sam registra no diário de estágio qualquer hospitalidade de fornecedor que recusa, para que uma revisão posterior veja que o limite foi aplicado, e não assumido. Itens pequenos com marca seguem o mesmo limiar das refeições.
+
+### 36.5 Diário
+
+Semanal: aprendizado, premissa quebrada, pergunta. O diário semanal tem três linhas obrigatórias: o que foi aprendido, qual premissa quebrou e que pergunta resta. Diários só de vitórias ensinam vaidade; premissas quebradas ensinam operações. O supervisor de Sam lê a linha da pergunta e, muitas vezes, atribui a partir dela o próximo horário de acompanhamento. As entradas ficam livres de identificadores de clientes como qualquer outro artefato acadêmico. Um diário curto e honesto vale mais do que um diário longo e polido que esconde a confusão. Uma linha típica de premissa quebrada diz: "Eu assumi que o SOC viu nossa mensagem de início; ela foi para um alias sem monitoramento." Essa linha virou uma correção de runbook na semana seguinte, que é exatamente para o que o diário serve.
+
+### 36.6 Saída útil
+
+Deixar para trás uma melhoria de runbook. Todo estágio precisa deixar uma melhoria concreta de runbook que o anfitrião possa manter. O que Sam deixou foi um modelo esclarecido de mensagem de parada que os técnicos de fato colavam. Turismo com crachá termina quando a árvore de arquivos do anfitrião permanece inalterada. As melhorias são pequenas de propósito, para que possam ser revisadas e mescladas. A utilidade se mede pelo que permanece depois que o crachá do estudante deixa de funcionar. A mudança de Sam tinha três linhas: o id do engajamento, o horário de fim da janela e o alias do SOC, colocadas no topo do modelo, onde mãos cansadas olham primeiro. O anfitrião a mesclou depois de uma revisão e ainda a usa, que é a evidência de que o estágio importou.
+
+### 36.7 Cronômetro do que se deixa
+
+O teste do que se deixa usa um cronômetro: o técnico anfitrião ganha quinze minutos sozinho. Sam pode responder perguntas de esclarecimento, mas não tocar no teclado. Tocar no teclado significa que o que se deixou falhou. O cronômetro é duro e esclarecedor. Se o técnico não consegue terminar sem as mãos de Sam, a documentação falhou mesmo que a ferramenta funcione. Respostas de esclarecimento são permitidas; assunção silenciosa do controle, não. Sam observa o relógio mais do que a tela durante o teste. O sucesso sem as mãos é a única nota do que se deixa que conta. As falhas são registradas como defeitos de documentação, com o passo exato em que o técnico travou.
+
+### 36.8 Checklist de sanitização
+
+Antes do upload acadêmico, Sam executa um checklist: nomes, números de conta, IPs, hostnames. Um colega o rubrica com as iniciais. O checklist é entediante de propósito, para que seja concluído. As iniciais do colega criam responsabilização sem uma segunda reunião completa de revisão. Sam nunca rubrica o próprio formulário. A automação de upload procura o campo das iniciais antes de aceitar o PDF. Dois humanos e um script vencem um autor apressado com boas intenções. A ordem do checklist importa: nomes primeiro, porque se escondem nos lugares mais variados; depois números de conta; depois identificadores de rede. Hostnames vêm por último porque precisam da leitura mais lenta, letra por letra, contra a lista de clientes.
+
+### 36.9 Caixa de iniciais do colega
+
+Formulários de sanitização sem as iniciais do colega são rejeitados pelo script de upload acadêmico. A rejeição mecânica elimina discussões sobre se um amigo vai rubricar depois. Sam aprendeu a reservar o tempo do colega antes do prazo de upload, e não depois. Caixas de iniciais em branco são tratadas como assinaturas ausentes em achados. A grosseria do script é um controle de privacidade. Se a caixa estiver vazia, o arquivo simplesmente não sai da estação de trabalho. O script confere se as iniciais diferem das do autor e se o colega está na lista da turma atual, então uma caixa emprestada ou autoassinada ainda falha.
+
+### 36.10 Captura do sobrenome no hostname
+
+As iniciais do colega na sanitização certa vez pegaram um hostname contendo o sobrenome de um cliente. Sam paga o almoço do colega. Checklists com dentes tornam a gentileza fácil. A captura foi pequena e enorme. Um hostname que parecia técnico ainda carregava uma pessoa. O almoço foi agradecimento e um sinal público de que capturas são bem-vindas. Checklists sem dentes produzem heróis solitários; checklists com dentes produzem almoço. Celebrar a captura ensina o próximo colega a olhar com atenção. O hostname seguia um hábito antigo de nomenclatura em que servidores de agência carregavam o sobrenome do gerente de conta. Depois da captura, Sam acrescentou uma linha de padrão de hostname ao checklist, e a equipe anfitriã abriu um ticket para aposentar essa convenção.
+
+### 36.11 Escolher colegas rigorosos
+
+O colega de sanitização certa vez foi o crítico mais rigoroso de Sam. Ele escolhe colegas rigorosos de propósito. Colegas gentis perdem sobrenomes em hostnames. Gentileza e rigor são serviços diferentes. Sam agenda o crítico quando o arquivo mais importa. Revisões de amizade ainda acontecem para o tom; a sanitização quer olhos afiados. Colegas rigorosos são agradecidos de forma específica, para que continuem dizendo sim. Selecionar pela severidade na revisão é uma escolha profissional, não uma falha social. Sam mantém uma lista curta de quem pegou o quê em revisões anteriores e reserva a pessoa cujas capturas combinam com o risco do artefato: hostnames vão para o colega que achou o sobrenome, e tabelas vão para quem enxerga dígitos de conta soltos.
+
+### 36.12 Juramento de privacidade e portões do formulário
+
+As iniciais do colega na sanitização são um campo obrigatório do formulário PDF; em branco, o upload falha. Sam escolhe colegas que já pegaram erros dele, não amigos que passam os olhos. O script de upload rejeita formulários com menos de 10 KB como provavelmente em branco. A pedanteria de processo protege cidadãos cujos nomes nunca devem entrar em espelhos acadêmicos. Essa frase é o juramento de privacidade do capítulo. Existem vários portões porque qualquer portão sozinho acaba falhando. Quem já capturou erros tem prioridade quando Sam escolhe um colega. Arquivos minúsculos são suspeitos mesmo quando os campos parecem preenchidos numa captura de tela. A frase do juramento é assinada de novo no cartão do foyer do cofre. A pedanteria, aqui, é lealdade a pessoas que nunca vão ler a tese.
+
+### 36.13 Portão de tamanho de formulário em branco
+
+O portão de tamanho de formulário em branco certa vez pegou um colega que enviou a foto de uma tabela vazia. A pedanteria vence. A fotografia de uma tabela vazia é um truque antigo contra validadores fracos. O portão de tamanho mais a validação dos campos o impediu. Sam documentou a tentativa para que o próximo autor do validador não removesse a verificação como paranoia. Histórias de processo pertencem ao guia do facilitador ao lado do caminho feliz. A preguiça adversária dentro do curso ainda é útil para endurecer os uploads. O limiar foi definido medindo formulários genuinamente preenchidos, que nunca caíam abaixo do limite.
+
+### 36.14 Cartão do juramento de privacidade no foyer
+
+A frase do juramento de privacidade é assinada no cartão do foyer do cofre. O cartão do foyer fica visível para quem recolhe um crachá para trabalho no cofre. Assinar é rápido e um pouco solene, o que ajuda a memória. Sam observa os novos estagiários assinarem antes do primeiro dia de acompanhamento. Os cartões são arquivados por período, para que o ritual tenha um registro. A assinatura pública liga os modos de privacidade à entrada, e não a uma página não lida do manual. Quem se recusa a assinar não recebe acesso ao cofre naquele período; na prática, a pergunta que isso levanta é uma conversa, e não um confronto.
+
+### Exemplo resolvido (TRB sintético)
+
+A reflexão sanitizada de Sam descreve um exercício de parada sem nomear clientes ou funcionários reais.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX106 — Sanitizar.** O que os textos acadêmicos precisam remover? *Rubrica:* 3 = identificadores de clientes / especificidades sensíveis; 2 = parcial; 1 = nada; 0 = nada.
+- **EX107 — Trio do diário.** Quais três linhas vão no diário semanal? *Rubrica:* 3 = aprendizado, premissa quebrada, pergunta; 2 = duas; 1 = uma; 0 = nada.
+- **EX108 — O que se deixa.** Cite algo útil para deixar. *Rubrica:* 3 = melhoria de runbook / checklist; 2 = parcial; 1 = malware; 0 = nada.
+
+### Síntese
+
+A prática de campo é reflexão sanitizada mais algo que o anfitrião conserva.
+### Continue estudando — capítulo 36 de 40
+
+[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar evidência sob cronômetro; (2) criticar com checklist; (3) capturar ações datadas.
+
+### 37.1 Formato
+
+20 minutos de apresentação, 20 de crítica, 10 de ações. O relógio do seminário é rígido: vinte minutos para apresentar a evidência, vinte para criticar e dez para capturar ações datadas. Aplausos que comem a faixa das ações são uma falha de facilitação. Sam cronometra com um timer visível, para que ninguém discuta o limite. Apresentações que estouram o tempo perdem a faixa de crítica, e não ganham minutos extras. A disciplina do relógio é parte do que o seminário ensina sobre engajamentos reais. Uma sala que respeita o relógio produz notas que os examinadores conseguem ler.
+
+### 37.2 Checklist
+
+Clareza de escopo, hashes de evidência, racional da severidade, privacidade, overclaim. Os revisores trabalham a partir de um checklist que cobre clareza de escopo, hashes de evidência, racional da severidade, privacidade e overclaim. Revisões de vibe em texto livre perdem os mesmos buracos todas as vezes. Sam imprime o checklist nas mesas. Itens sem marca viram a primeira onda de feedback. Checklists tornam a crítica comparável entre apresentadores. Um checklist compartilhado também ensina os apresentadores o que preparar antes de subir ao palco.
+
+### 37.3 Feedback
+
+Referências específicas a linhas; sugerir correções. Feedback útil cita números de linha ou ids de figura e sugere um formato de correção. Comentários como "aperte isso" não ensinam nada acionável antes do próximo rascunho. Sam modela o hábito apontando para a linha e propondo uma frase substituta. Elogios sem âncora são gentis e inúteis para a revisão. A crítica específica é um presente disfarçado de desconforto. Apresentadores que pedem exemplos de redação avançam mais rápido do que os que só defendem o texto atual.
+
+### 37.4 Receber
+
+Escrever ações; evitar debater cada ponto ao vivo. Receber crítica significa escrever ações, e não vencer a sala. Debater ao vivo cada ponto queima a janela de dez minutos das ações. A orientação de Sam é marcar concordo, discordo ou preciso pensar, e seguir em frente. Debates pertencem a threads depois do seminário, com links profundos. Uma lista de ações no fim é o produto; um debate vitorioso não é. Apresentadores que escutam com a caneta na mão terminam com um quadro mais limpo.
+
+### 37.5 Comparar
+
+Opcionalmente comparar com um checklist de metodologia publicado (PTES/WSTG), não com o Instagram. Comparações opcionais usam checklists de metodologia publicados, como trechos de PTES ou WSTG fornecidos no pacote do curso. Lore do Instagram e mitos de corredor estão fora dos limites. Sam traz a página do checklist quando alguém alega que "todo mundo pula hashes". Metodologia publicada ancora a crítica em algo que sobrevive ao semestre. Comparar com a moda ensina o hábito errado. Fontes que os examinadores reconhecem mantêm o seminário auditável.
+
+### 37.6 Registro
+
+Nota do seminário arquivada com o projeto final. A nota do seminário é arquivada ao lado dos materiais do projeto final, para que os examinadores vejam a trilha de crítica. As notas incluem marcas do checklist, ações com responsáveis e quaisquer recusas. Sam trata uma nota ausente como um buraco no pacote de evidência do projeto final. Memória não é um arquivo de seminário. Examinadores que perguntam o que mudou depois da crítica merecem um artefato. Notas curtas e datadas vencem paráfrases longas escritas uma semana depois.
+
+### 37.7 Recusar com motivo
+
+Feedback recusado no seminário exige um motivo escrito que o apresentador aceita. "Não gostei" não fecha o item. Recusar é permitido; recusar sem explicação não é encerramento. Escrever o motivo muitas vezes revela se o comentário estava certo. A história de Sam das seis abertas é contada para mostrar o custo de limbos educados. Recusas entram na máquina de estados ao lado de corrigido e risco aceito. Motivos tornam as recusas revisáveis pelo orientador. Um motivo fraco costuma virar uma correção dois dias depois.
+
+### 37.8 Validade das ações
+
+Ações do seminário com mais de catorze dias sem mudança de estado acionam um aviso a Sam. Ações envelhecidas não são progresso. A validade transforma o limbo educado num aviso que exige mudança de estado. Sam prefere recusar de forma limpa a fingir que uma ação ainda está viva. Catorze dias combinam com a cadência dos checkpoints do projeto final. Avisos incluem o link profundo, para que a ação possa recomeçar em segundos. Progresso é mudança de estado, não intenção. Quadros que envelhecem em silêncio ensinam que a crítica era só teatro.
+
+### 37.9 Máquina de estados dos comentários
+
+Os estados dos comentários são aberto, corrigido, recusado, risco aceito. O rastreador de Sam proíbe outros. Status em texto livre inventam mentiras reconfortantes como "meio pronto". Os quatro estados permitidos cobrem resultados honestos sem poesia. Risco aceito exige uma autoridade, não um colega. Sam agradece ao software pedante quando ele rejeita criatividade à meia-noite. Máquinas de estado pequenas mantêm os seminários honestos em escala. Estados que não existem não podem esconder trabalho. Risco aceito exige uma nota de autoridade do mesmo jeito que os achados, e a validação da API rejeita outras strings na criação.
+
+### 37.10 Cena do aviso no dia dez
+
+Comentários abertos do seminário avisam Sam no dia 10. Ele recusa um com o motivo "fora do escopo do projeto final" e corrige dois no mesmo dia. A cena é operação comum num quadro de comentários. O dia dez é cedo o bastante para agir e tarde o bastante para sentir a pressão. A recusa fora de escopo de Sam é específica, para que o crítico não precise adivinhar. Corrigir dois no mesmo dia mostra que o aviso funciona. Limbo educado termina quando o relógio fala. Apresentadores aprendem a limpar o quadro antes que o aviso se torne um hábito.
+
+### 37.11 Sem status "meio pronto"
+
+A API da máquina de estados rejeita "kinda done". Sam agradece ao software pedante quando está cansado. "Meio pronto" é como o trabalho se esconde parecendo progressista. A rejeição na API significa que a interface nunca oferece a mentira. Sam já tentou digitá-lo à meia-noite e foi salvo pela grosseria. Cansaço é quando status dishonestos parecem razoáveis. Pedanteria protege o eu futuro que terá de explicar o quadro. APIs que se recusam a mentir ensinam melhor do que cartazes sobre honestidade.
+
+### 37.12 Links profundos nas mensagens de aviso
+
+As mensagens de aviso incluem links profundos para a thread do comentário. Um aviso sem link cria uma caça ao tesouro por canais antigos. Links profundos abrem o comentário exato, para que a ação possa começar em segundos. Sam proíbe "veja a thread" sem links. Fadiga mais ambiguidade produz comentários esquecidos. O caminho de menor resistência deve ser o comentário certo. Avisos que carregam o URL respeitam pessoas cansadas. Sam proíbe o atalho "veja a thread" no texto do aviso, e links quebrados são tratados como defeitos de ferramentas que precisam de ticket.
+
+### 37.13 Links profundos do comentário exato
+
+Os links profundos abrem o comentário exato; Sam proíbe "veja a thread" sem links. "Veja a thread" é ambíguo quando um canal mudou ou foi renomeado. Links exatos removem discussões sobre qual observação era a pretendida. O modelo de Sam cola a URL automaticamente a partir do rastreador. Facilidade de uso aqui é ética de evidência. Críticos merecem saber que sua observação foi a que recebeu a ação. Ambiguidade é como o trabalho bom se perde entre as mensagens. O modelo de Sam cola a URL automaticamente a partir do rastreador, e revisores que omitem o link veem a mensagem rejeitada antes do envio.
+
+### 37.14 Semana de higiene dos comentários
+
+A semana de higiene dos comentários a cada período fecha threads envelhecidas. Sam curte o quadro limpo. A semana de higiene é agendada como um lançamento, e não improvisada por culpa. As equipes encerram, recusam ou aceitam o risco do que resta. Sam trata um quadro limpo como um resultado de produto. Higiene que depende de vergonha falha no meio do período. Ritual torna a limpeza comum em vez de heroica. Períodos que pulam a higiene herdam fantasmas que assustam os examinadores.
+
+### 37.15 Pressão da CSV de abertos
+
+O rastreador de seminário de Sam exporta uma CSV semanal de comentários abertos por apresentador. Contagens públicas sem humilhação mantêm a pressão gentil. Visibilidade sem humilhação é um desenho delicado. As contagens são por itens abertos do apresentador, não ataques pessoais no chat. Notas de agradecimento fazem do zero um estado celebrado. Sam revisa o tom da CSV antes de publicar. Pressão que parece placar envenena a sala. Contagens que parecem higiene mantêm o seminário gentil e honesto. Lembretes raivosos já tinham sido tentados e aumentavam a vergonha sem limpar o quadro, então Sam revisa o tom da CSV antes de publicar.
+
+### 37.16 Notas pessoais de agradecimento
+
+As notas de agradecimento por zero abertos são modeladas, mas enviadas pessoalmente. Os modelos mantêm a barra coerente; o envio pessoal mantém o agradecimento humano. Sam escreve uma frase específica sobre uma thread fechada, para que não pareça automatizado. Agradecimentos genéricos ensinam as pessoas a ignorar o elogio. Específicos ensinam o que repetir. Cultura que agradece o encerramento produz mais encerramentos. Uma frase verdadeira vence um parágrafo de modelo que poderia ter ido para qualquer um. As pessoas encaminham essas notas para si mesmas como prova de que o encerramento importa, e agradecimentos genéricos ensinam a ignorar o elogio.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam apresenta o pacote do F3, aceita uma crítica sobre o denominador ausente e registra uma ação para acrescentá-lo.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX109 — Checklist.** Cite itens do checklist do seminário. *Rubrica:* 3 = clareza de escopo, hashes de evidência, racional da severidade e privacidade (overclaim também); 2 = parcial; 1 = um; 0 = nada.
+- **EX110 — Bom feedback.** O que torna o feedback útil? *Rubrica:* 3 = aponta linhas específicas e sugere uma correção concreta; 2 = parcial; 1 = "aperte isso"; 0 = nada.
+- **EX111 — Overclaim.** Por que porcentagens sem denominadores são um problema? *Rubrica:* 3 = enganam quem decide; 2 = parcial; 1 = são boas; 0 = nada.
+
+### Síntese
+
+O seminário transforma crítica em ações com estado, prazo e links profundos.
+### Continue estudando — capítulo 37 de 40
+
+[← Capítulo 36 (rascunho)](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 (rascunho) →](#ch-38)
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o diff de inventário; (2) falhar fechado; (3) entregar testes, docs e passagem.
+
+### 38.1 Construção
+
+Fazer o diff de dois inventários sintéticos; sinalizar only-in-docs / only-on-network / conflito de tipo. A implementação faz o diff de dois inventários sintéticos e sinaliza hosts só nos documentos, só na rede, ou presentes nos dois com tipos conflitantes. Sam mantém a lógica do diff pequena o bastante para testar. Relatórios vistosos sem classes de conflito falham na avaliação. A ferramenta imprime ids de ativos, não apelidos. Construção aqui significa propriedades, e não um dashboard. Operadores deveriam terminar uma execução sabendo o que investigar a seguir.
+
+### 38.2 Falhar fechado
+
+YAML corrompido → negar com motivo. YAML corrompido precisa negar com uma string de motivo na qual um humano consiga agir. Devolver uma lista vazia de allow na falha de parse é tratado como um bug crítico. O teste de propriedade de Sam procura esse caminho vazio de propósito. Motivos citam o caminho do arquivo e a classe do erro de parse. Falhar fechado é a primeira demonstração em todo checkpoint. Uma negação educada é melhor engenharia do que um silêncio educado. Os testes de propriedade de Sam invertem bits até a negação disparar em cada mutação, e motivos citam o caminho do arquivo e a classe do erro de parse.
+
+### 38.3 Testes
+
+Fixtures douradas; sem rede. Os testes usam fixtures douradas e nunca tocam a rede. As fixtures incluem inventários felizes, quase-correspondências, arquivos truncados e encodings errados. Sam nomeia as fixtures corrompidas de forma que os testes de propriedade as encontrem. Testes que precisam de rede falham na CI de propósito. Fixtures douradas tornam as regressões óbvias. Avaliação sem rede mantém o projeto final alinhado com a disciplina do laboratório. Sam nomeia as fixtures corrompidas com o prefixo corrupt- para que a CI as descubra, e testes que precisam de rede falham na CI de propósito.
+
+### 38.4 Docs
+
+README do operador com exemplos. O README do operador mostra exemplos que se pode copiar e colar para os casos comuns de conflito. Sam escreve o README como se o leitor nunca tivesse visto seus aliases de shell. Exemplos incluem a negação em arquivo corrompido e o caminho de reconhecimento fuzzy. Documentação que só funciona na cabeça de Sam falha no dia do operador. Exemplos são testes para humanos. Um README que um estranho consegue executar é parte da nota. Os exemplos incluem o caminho de negação para que os operadores pratiquem a falha, e um README que um estranho consegue executar é parte da nota.
+
+### 38.5 Congelamento
+
+Congelamento de recursos antes da semana de avaliação. Congelar a construção também mantém as derivas plantadas e os casos de falhar fechado medindo o mesmo código que o orientador aprovou na nota de pré-registro. Sam estaciona ideias na versão dois. Congelamentos quebrados invalidam as métricas. A semana de avaliação não é para recursos heroicos de última hora. Congelar é como a honestidade da avaliação sobrevive ao entusiasmo. Ideias estacionadas ainda podem ser boas; só não são desta nota. Sam estaciona ideias numa lista da v2 em vez de mesclar cromado, e congelamentos quebrados invalidam as métricas da semana de avaliação.
+
+### 38.6 Passagem
+
+Acompanhar um operador executando sozinho. Passagem significa acompanhar um operador que executa a ferramenta sozinho numa conta nova. Sam pode responder perguntas, mas não pode digitar. Se o operador precisar do histórico do shell de Sam, o README falhou. A passagem é cronometrada e anotada. Sucesso sem as mãos é o critério. Uma ferramenta que só o autor consegue operar ainda não foi entregue. Se o operador precisar do histórico do shell cheio de aliases de Sam, a documentação falhou, e sucesso sem as mãos é o critério da passagem.
+
+### 38.7 Fixtures douradas difíceis
+
+As fixtures douradas incluem um escopo deliberadamente corrompido e um inventário de quase-correspondência que não deve ser mesclado por padrão. Mesclas prestativas são como hosts distintos viram um registro confuso. A fixture de quase-correspondência existe para punir a fuzzy padrão. Os testes de Sam falham se os conflitos desaparecerem sem um reconhecimento. Padrões que mesclam em silêncio são bugs de produto. Fixtures que parecem chatas pegam falhas caras. Quase-correspondências são onde inventários mentem com educação. Os testes de Sam falham se os conflitos desaparecerem sem --ack-fuzzy, e escopo corrompido precisa negar em vez de ser "consertado" em silêncio.
+
+### 38.8 Flag de correspondência fuzzy
+
+Nomes de inventário quase correspondentes exigem --ack-fuzzy para mesclar. O padrão é listá-los como conflitos. A flag força uma escolha intencional antes de os inventários colapsarem. A listagem padrão de conflitos impede que gêmeos de homologação e de produção se mesclem em silêncio. Sam registra os reconhecimentos fuzzy no log de auditoria. Conveniência que esconde risco não é conveniência. O padrão protege operadores cansados de si mesmos. Mesclar continua possível; só deixa de ser o caminho de menor resistência. Sam registra o uso da flag com o nome de usuário para perguntas posteriores de auditoria, e mesclar continua possível sem ser o caminho de menor resistência.
+
+### 38.9 Nomes das fixtures corrompidas
+
+Fixtures nomeadas corrupt-*.yaml precisam negar. Um teste de propriedade na CI gera corrupção aleatória além das fixtures nomeadas. Convenções de nomenclatura permitem que os testes de propriedade descubram fixtures sem um manifesto frágil. A corrupção aleatória cresce a cada período conforme os parsers endurecem. Sam exige que cada mutação nova tenha nome e intenção. Fixtures sem o padrão de nome são invisíveis para a propriedade. Descoberta por convenção escala melhor do que listas feitas à mão. Parsers endurecem quando a corrupção se recusa a ficar previsível.
+
+### 38.10 Teste de propriedade com bit-flip
+
+O teste de propriedade de corrupção aleatória inverte bits no YAML até a negação disparar. Sam assiste para o caminho vazio de allow nunca voltar. O caminho vazio de allow teria parecido um escopo vazio limpo na produção. Grosseria nos testes é bem-vinda quando a alternativa é cegueira educada. Sam acrescentou o teste depois de um quase incidente em homologação. Bit-flips encontram classes de bugs que fixtures felizes perdem. Propriedades que caçam o silêncio protegem falhar fechado. Uma suite educada demais deixa passar o pior bug.
+
+### 38.11 Fixtures de truncamento e encoding
+
+As fixtures corrompidas incluem arquivos truncados e encodings errados. A negação precisa disparar nos dois. Truncamento no meio do documento e encodings surpresa são comuns em exportações reais. A negação não pode depender de um único estilo de corrupção. A mutação nova de cada período é registrada com nome. Sam se recusa a tratar UTF-16 inesperado como um caminho feliz. Robustez significa negar estranheza sem travar. Exportações do mundo real não respeitam os exemplos do tutorial. A mutação nova de cada período é registrada com uma intenção de uma linha para legibilidade na CI, e Sam se recusa a tratar UTF-16 inesperado como caminho feliz.
+
+### 38.12 Mutações nomeadas
+
+Cada mutação nova no teste de propriedade ganha um nome e uma intenção de uma linha. Nomes como trunc-mid-yaml tornam as falhas legíveis nos logs da CI. Linhas de intenção impedem que estudantes futuros apaguem uma mutação que não entendem. Sam revisa os nomes nos checkpoints. Mutações anônimas viram dívida. Clareza nos testes é parte da clareza do produto. Uma falha que nomeia a mutação ensina o conserto. Sam revisa os nomes quanto à clareza do mesmo jeito que revisa achados, e uma falha que nomeia a mutação ensina o conserto na semana de avaliação.
+
+### 38.13 Nomes legíveis de mutação
+
+Os nomes das mutações parecem "trunc-mid-yaml", para que as falhas se leiam com clareza na CI. Hashes opacos como ids de mutação desperdiçam minutos na semana de avaliação. O guia de estilo de testes de Sam proíbe nomes engraçados que escondem a intenção. Nomes claros também ajudam os orientadores a auditar a cobertura. Legibilidade é uma propriedade de controle para humanos. Testes que explicam a si mesmos sobrevivem às trocas de turma. Avaliação anda mais rápido quando os logs já contam a história.
+
+### 38.14 Dia do operador com conta nova
+
+O dia do operador usa uma conta nova, sem aliases de Sam no histórico do shell. Se o operador precisar dos aliases, o README falhou. Shells tribais compartilhados mentem sobre a prontidão. Contas novas retiram o conforto de docs incompletos. Sam observa sem digitar e toma notas para consertos no README. Aliases são dívida disfarçada de velocidade. Passagem que depende da memória muscular do autor não é passagem. O dia do operador é onde a documentação encontra a verdade. Aliases que voltam pelos dotfiles são tratados como falhas da passagem, e contas novas retiram o conforto de documentação incompleta de propósito.
+
+### 38.15 Reconhecimento digitado da mescla
+
+Reconhecimentos de correspondência fuzzy exigem digitar a frase "I accept merge risk" exatamente. Diálogos de um clique treinam a cegueira; frases digitadas criam uma pausa. Copiar e colar da wiki ainda força os olhos a passar pelas palavras. Os logs de auditoria guardam quem digitou a frase. Sam quer atrito antes de inventários colapsarem. Uma frase que as pessoas precisam digitar é um controle, não um ornamento. Atrito no momento certo evita recalls caros depois. Os logs de auditoria guardam quem digitou a frase e quando, e remover a frase por conveniência é tratado como um defeito de produto.
+
+### 38.16 Log de auditoria do reconhecimento
+
+A frase de reconhecimento digitada é registrada no log de auditoria com o nome de usuário. Os logs apoiam perguntas posteriores quando uma mescla ruim é descoberta. Os nomes de usuário vêm do contexto autenticado do operador, e não de uma caixa de texto livre. Os runbooks de Sam ensinam a consultar o log antes de culpar a ferramenta. Auditoria sem identidade é teatro. Registros que nomeiam a pessoa tornam o risco aceito real. Mesclas ruins merecem uma trilha, não uma lenda.
+
+### Exemplo resolvido (TRB sintético)
+
+A ferramenta de Sam sinaliza only-in-docs, only-on-network e type-conflict, e nega YAML corrompido com motivo.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX112 — Flags.** Quais classes o diff sinaliza? *Rubrica:* 3 = only-in-docs, only-on-network e type-conflict (e match); 2 = parcial; 1 = uma; 0 = nada.
+- **EX113 — Falhar fechado.** O que acontece com YAML corrompido? *Rubrica:* 3 = falhar fechado com motivo claro e código de saída diferente de zero; 2 = parcial; 1 = lista vazia de allow; 0 = nada.
+- **EX114 — Rede.** A ferramenta pode exigir rede? *Rubrica:* 3 = não; precisa rodar offline em arquivos locais; 2 = parcial; 1 = sim; 0 = nada.
+
+### Síntese
+
+A implementação entrega propriedades de controle, fixtures douradas e uma passagem sem as mãos do autor.
+### Continue estudando — capítulo 38 de 40
+
+[← Capítulo 37 (rascunho)](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 (rascunho) →](#ch-39)
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar contra métricas pré-registradas; (2) executar testes independentes; (3) declarar o risco residual.
+
+### 39.1 Plano
+
+Precision/recall em derivas plantadas; casos de falhar fechado. O plano de avaliação trava precision e recall nas derivas plantadas mais os casos de falhar fechado antes de qualquer execução começar. Sam congela as definições das métricas numa nota curta de pré-registro que o orientador assina. Inclusões, remoções e conflitos de tipo plantados fornecem a verdade de referência que o script consegue pontuar. Casos de falhar fechado são pontuados como passa ou falha, nunca como crédito parcial brando. Planos que inventam métricas depois de ver as pontuações reprovam no padrão do curso. Sam planta vinte derivas no par de inventários (oito inclusões, sete remoções e cinco conflitos de tipo), para que cada classe tenha casos suficientes para um intervalo significar alguma coisa.
+
+### 39.2 Independência
+
+Outro estudante executa o script de avaliação. Outro estudante executa o script de avaliação enquanto Sam fica longe do teclado. Independência é um protocolo social tanto quanto técnico. O executor assina uma declaração de uma linha de que Sam não editou os logs da execução. As declarações ficam no apêndice ao lado das saídas brutas. Execuções treinadas são tratadas como má conduta acadêmica, e não como colaboração prestativa. O executor recebe apenas o README, o script congelado e o pacote de fixtures; se travar, registra a pergunta por escrito, e a própria pergunta vira dado de avaliação sobre a documentação.
+
+### 39.3 Efeitos colaterais
+
+Tempo de usabilidade; carga de falsos alarmes. As medidas de efeitos colaterais incluem o tempo de usabilidade e a carga de falsos alarmes para os operadores. Uma ferramenta precisa que inundar os operadores de ruído não será adotada. Sam cronometra a triagem de conflitos na primeira vez num par fixo de inventários. Falsos alarmes são contados e discutidos mesmo quando a precision parece lisonjeira. Os efeitos colaterais pertencem ao relatório ao lado das pontuações de destaque. A primeira medição de Sam mostrou operadores gastando a maior parte do tempo em conflitos de tipo que eram variantes inofensivas de nomenclatura. Ele relatou esse custo com honestidade em vez de ajustá-lo para longe antes de a avaliação fechar, e a constatação entrou na lista da v2.
+
+### 39.4 Risco residual
+
+A ferramenta ajuda a higiene do inventário; não substitui a disciplina das ROE. As declarações de risco residual dizem com clareza que a ferramenta ajuda a higiene do inventário e não substitui a disciplina das ROE. Sam recusa linguagem de marketing que implica que o teste autorizado pode ser automatizado. Leitores que pulam este parágrafo são os mais propensos a usar mal a ferramenta. A declaração é obrigatória tanto no resumo do relatório quanto no slide final. Auxílios de higiene continuam subordinados aos limites humanos de autorização. Um exemplo concreto ajuda: a ferramenta pode dizer que um host falta no escopo documentado, mas não pode dizer se testar esse host está autorizado. Esse julgamento permanece com o responsável pelas ROE.
+
+### 39.5 Relatório
+
+Resultados versus pré-registro; sem trocas de métrica a posteriori. O relatório compara os resultados ao pré-registro e proíbe trocas de métrica a posteriori. Análises exploratórias só são permitidas num apêndice claramente rotulado. O modelo de Sam destaca qualquer métrica que não foi pré-registrada. Trocas de volta olímpica são reprovação mesmo que a métrica nova pareça mais gentil. A honestidade sobre falhas faz parte da ciência avaliada. Onde uma classe de deriva plantada pontuou mal, o relatório mostra as falhas pelo nome da fixture, para que os leitores possam inspecioná-las. O resultado mais baixo de Sam, nos conflitos de tipo, aparece no resumo, e não na última página.
+
+### 39.6 Recomendação
+
+Adotar primeiro em homologação. A recomendação é adoção em homologação primeiro, com responsáveis nomeados e um checklist de trinta dias. Ferramentas sem planos de adoção são hobbies, por mais engenhosas que sejam. Sam escreve como é o sucesso em homologação antes de alguém falar de produção. A promoção para produção espera evidência de execuções solo de operadores. Recomendações que pulam a homologação são rejeitadas pelo orientador. No plano de Sam, sucesso em homologação significa duas execuções solo de operadores sem ajuda do autor, sem regressões de falhar fechado e falsos alarmes abaixo do nível que os operadores disseram tolerar no estudo de tempo. Só então começa uma discussão de produção, com o responsável pelo serviço a presidindo.
+
+### 39.7 Declaração de independência
+
+Avaliadores independentes assinam uma declaração de uma linha de que Sam não editou os logs da execução. A declaração fica no apêndice. Avaliação confiável é um protocolo social tanto quanto um script. Scripts sozinhos não conseguem provar independência quando os autores ficam por perto. A linha assinada torna a regra social visível para os examinadores. Sam mantém distância durante as execuções mesmo quando a curiosidade coça. Declarações ausentes bloqueiam o encerramento do capítulo de avaliação. Ciência confiável é, em parte, papelada feita sem ressentimento. A redação é fixa, para que os executores não possam amaciá-la para "quase sem edição".
+
+### 39.8 Plano de adoção em homologação
+
+Os relatórios de avaliação incluem um plano de homologação de trinta dias com responsáveis. Ferramentas sem planos de adoção são hobbies. O plano de trinta dias nomeia datas, responsáveis e a evidência esperada em cada portão. Sam rejeita planos que só dizem monitorar em homologação. Checklists viram tickets, para que o trabalho não se esconda em marcadores de e-mail. Energia de hobby é bem-vinda nos laboratórios e indesejada nas alegações de adoção. Planos com equipe são como as ferramentas saem da tese e entram nas operações. O plano de Sam tem três portões: uma primeira execução solo até o dia dez, uma segunda até o dia vinte e uma revisão dos relatórios de quebra e das contagens de falsos alarmes no dia trinta. Cada portão nomeia o arquivo de evidência que prova que ele passou.
+
+### 39.9 Responsáveis pela adoção
+
+A adoção em homologação nomeia um responsável pelo serviço e um pela plataforma. Um nome só é insuficiente. Responsáveis pelo serviço sentem a dor operacional; responsáveis pela plataforma sentem a dor da ferramenta. Um nome só costuma significar que o estudante ainda é dono de tudo oficiosamente. Sam exige os dois papéis antes de o plano de homologação poder ser aprovado. A propriedade dividida evita o abandono silencioso quando o período termina. Nomenclatura insuficiente é tratada como uma recomendação incompleta. Na prática, o responsável pelo serviço decide se uma lista de conflitos é boa o bastante para agir, enquanto o da plataforma corrige problemas de parser e de empacotamento. Quando esses dois trabalhos compartilham um nome, reclamações operacionais tendem a ficar sem resposta porque a mesma pessoa também está ocupada corrigindo código.
+
+### 39.10 Mira e Sam na adoção
+
+O plano de adoção nomeia Mira para a propriedade do serviço e Sam para o suporte da plataforma. O checklist de trinta dias inclui duas execuções solo de operadores. Sem o nome de Mira, o plano seria ficção. O nome de Mira torna o plano real porque ela pode recusar trabalho que não está pronto. Duas execuções solo pegam lacunas de documentação que os testes unitários perdem. O papel de plataforma de Sam permanece de apoio, e não possessivo. Planos de ficção só com nomes de estudantes são um modo de falha conhecido. A cena é usada no treinamento de orientadores como um exemplo positivo.
+
+### 39.11 Execução solo encontra lacuna de DNS
+
+A segunda execução solo falhou porque o DNS diferia no perfil do operador. O README ganhou um preâmbulo de DNS. Execuções solo encontram bugs de documentação que as ferramentas perdem. Diferenças de perfil são entediantes até quebrarem um operador cuidadoso. Sam agradeceu a falha na retrospectiva em vez de culpar o operador. O texto do preâmbulo de DNS agora faz parte dos exemplos dourados do README. Execuções solo são testes de documentação vestidos de roupa operacional. Ferramentas podem passar nos testes unitários e ainda assim falhar com humanos no primeiro dia. O resolvedor do operador devolvia nomes curtos onde a fixture esperava nomes totalmente qualificados.
+
+### 39.12 Itens do checklist como tickets
+
+Os itens do checklist de trinta dias são tickets, não marcadores num e-mail. Tickets carregam responsáveis, datas de vencimento e anexos de evidência. Marcadores de e-mail evaporam quando as caixas de entrada rotacionam. O modelo de adoção de Sam abre tickets automaticamente a partir do checklist. Tickets encerrados sem evidência são reabertos por política. Tickets são como trinta dias se tornam responsabilizáveis em vez de aspiracionais. O checklist de Sam produz seis tickets: duas execuções solo, a revisão de falsos alarmes, uma revisão das mensagens de negação, a atualização do README e a retrospectiva do dia trinta. Cada um tem um responsável do plano de adoção e uma data de vencimento dentro dos trinta dias, para que o atraso fique visível no quadro antes de a janela fechar.
+
+### 39.13 Evidência para autoencerramento
+
+Tickets dos itens do checklist só se autoencerram quando a evidência da execução solo está anexada. Autoencerrar sem evidência recria o teatro de conclusão no papel. Sam configura a regra para que a conveniência não apague a exigência de prova. Os operadores aprendem a anexar as saídas enquanto a execução está fresca. Anexos ausentes mantêm o ticket barulhento de propósito. Encerramento com portão de evidência é higiene de adoção. A evidência aceitável é específica: o arquivo de saída de conflitos, a linha de comando do operador e o hash da versão da ferramenta. Uma captura de tela sozinha não conta, porque não consegue mostrar qual build rodou. Quando a evidência falta, o ticket continua aberto e avisa o responsável todas as manhãs.
+
+### 39.14 Reescrever partes ignoradas do README
+
+As retrospectivas de adoção no dia 30 perguntam aos operadores o que ignoraram no README. Seções ignoradas são apagadas ou reescritas, não defendidas. Defender parágrafos não lidos desperdiça a única atenção que os operadores ofereceram. Sam prefere encolher a documentação a dar palestra por quem passa os olhos. Ignorado significa que a escrita falhou no ambiente em que entrou. Retrospectivas que reescrevem são mais gentis do que retrospectivas que culpam. Atenção é o recurso escasso que a adoção precisa orçar. Na primeira retrospectiva, os operadores admitiram pular por completo a longa visão geral de arquitetura. Sam a cortou para três frases e moveu o exemplo do caminho de negação para o topo, já que era a parte de que as pessoas realmente precisavam na primeira execução.
+
+### 39.15 Relatórios intencionais de quebra
+
+A verificação de adoção do dia dez pede aos operadores que quebrem a ferramenta de propósito e registrem a quebra. Sam prefere ouvir a dor cedo a um silêncio educado. Dois relatórios intencionais de quebra na primeira turma melhoraram as mensagens de negação mais do que um mês de polimento especulativo teria. O silêncio educado é um antipadrão de adoção. Convidar quebras legitima más notícias cedo. Melhorias nas mensagens de negação a partir de confusão real vencem o polimento imaginado de UX. Sam trata os relatórios de quebra como entrada valorizada, e não como reclamações. Dor cedo é mais barata do que abandono quieto.
+
+### 39.16 Tipo de ticket BREAK-ADOPT
+
+Os relatórios intencionais de quebra têm o próprio tipo de ticket: BREAK-ADOPT. Um tipo distinto mantém a dor da adoção pesquisável depois. Sam revisa os tickets BREAK-ADOPT semanalmente durante a janela de homologação. Misturar quebras com bugs comuns as esconde sob o ruído do backlog. Tipagem torna o convito para quebrar operacionalmente real. Dor pesquisável vira melhoria; dor misturada vira lenda. Cada relatório registra o que o operador tentou, o que a ferramenta fez e o que ele esperava; a primeira turma achou mensagem vaga em inventário vazio, o que virou um conserto específico.
+
+### Exemplo resolvido (TRB sintético)
+
+A avaliação independente mostra precision e recall nas derivas plantadas; Sam recomenda adoção primeiro em homologação, com Mira como responsável pelo serviço.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX115 — Independência.** Quem executa o script de avaliação? *Rubrica:* 3 = outro estudante ou testador independente; 2 = parcial; 1 = só Sam; 0 = nada.
+- **EX116 — Risco residual.** O que a ferramenta não substitui? *Rubrica:* 3 = a disciplina das ROE ou as verificações de autorização; 2 = parcial; 1 = tudo; 0 = nada.
+- **EX117 — Pré-registro.** As métricas podem mudar depois das pontuações? *Rubrica:* 3 = não; as métricas ficam como pré-registradas; 2 = parcial; 1 = sim; 0 = nada.
+
+### Síntese
+
+A avaliação trava métricas, exige independência e declara o risco residual sem substituir a disciplina das ROE.
+### Continue estudando — capítulo 39 de 40
+
+[← Capítulo 38 (rascunho)](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 (rascunho) →](#ch-40)
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Tese e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) afirmar só o que a avaliação mostrou; (2) ensaiar perguntas difíceis; (3) posicionar o trabalho com ética.
+
+### 40.1 Afirmação
+
+A ferramenta offline de diff de escopo atinge precision/recall definidos em inventários sintéticos e falha fechada em entradas corrompidas. A afirmação da tese nomeia a ferramenta, as métricas, os dados e a propriedade de falhar fechado sem enfeites. Sam recusa adjetivos que a avaliação não mediu. Afirmações que prometem proteção à produção excedem a evidência. O orientador aplica o teste do resumo: um leitor deve saber exatamente o que foi mostrado. Modéstia aqui é precisão científica. Uma afirmação estreita e verdadeira vence uma ampla que a banca precisa desmontar.
+
+### 40.2 Posicionamento
+
+Não é um framework de red-team exploit. O posicionamento declara o que o trabalho não é, tão alto quanto o que ele é. Leituras do trabalho como framework de exploit são tratadas como falhas de comunicação a corrigir, e não como hype lisonjeiro. Os slides repetem a frase de posicionamento perto da afirmação. Posicionamento claro protege os limites legais e éticos do programa. A frase de posicionamento também governa o vocabulário: a tese diz deriva de inventário, conflito e negar, e evita palavras de ataque que convidariam à leitura errada.
+
+### 40.3 Apresentação
+
+12 minutos + perguntas; disciplina de tempo. A apresentação tem doze minutos mais perguntas, com disciplina rígida de tempo. Sam ensaia com um timer visível e para no meio da frase no ensaio, se precisar. Estourar o tempo rouba a faixa de perguntas, onde acontece o exame de verdade. As bancas notam quem respeita o relógio. Brevidade sob observação faz parte da habilidade profissional avaliada. Os doze minutos de Sam se dividem em dois na afirmação e no posicionamento, quatro no método, três nos resultados com intervalos, dois nos limites e na ética, e um na decisão que ele pede à banca que aceite. O tempo de demonstração ao vivo sai do bloco do método, e não das perguntas.
+
+### 40.4 Perguntas prováveis
+
+Demonstrações de falhar fechado; ética; por que não varredura ao vivo; ameaças à validade. Ele mantém cada resposta ensaiada com menos de três frases e a liga a uma página da tese, para que os membros da banca possam conferir em vez de confiar. Sam publica seu banco de perguntas depois da defesa, para que a próxima turma ensaie melhor. A recusa da demonstração em site público está no banco de propósito. Respostas de ensaio são curtas, citadas e calmas. Perguntas surpresa ainda acontecem; bancos reduzem o pânico evitável. Para "por que não varredura ao vivo", a resposta de Sam é que a afirmação diz respeito à comparação de inventários, dados sintéticos bastaram para testá-la, e uma varredura ao vivo teria precisado de autorização que o curso não pode conceder.
+
+### 40.5 Próximos passos
+
+Integrar tickets do FindingsDesk; estudar métricas de detecção guiadas por ameaças. Os próximos passos mencionam a integração de tickets do FindingsDesk e estudos de métricas de detecção guiadas por ameaças. Permanecem claramente rotulados como trabalho futuro, e não como alegações avaliadas incompletas. Sam resiste a enfiar nos próximos passos recursos banidos pelos não objetivos. Ambição só pertence aqui quando não reescreve a afirmação da tese. Os examinadores não deveriam precisar adivinhar o que foi entregue versus sonhado. A integração de tickets é listada com o próprio risco, que é que conflitos poderiam inundar o FindingsDesk com itens de baixo valor, então um estudo futuro precisaria primeiro de um limiar de triagem. Métricas guiadas por ameaças são enquadradas como uma pergunta de pesquisa separada, não como um recurso da ferramenta.
+
+### 40.6 Reprodutibilidade
+
+Apêndice com dados sintéticos e scripts. O apêndice de reprodutibilidade inclui dados sintéticos e scripts suficientes para regenerar as pontuações. Sam fixa os hashes dos scripts e as versões dos geradores ao lado das tabelas de resultados. Alegações sem apêndices executáveis são avaliadas como ciência incompleta. Dados sintéticos mantêm a reprodução dentro da política do curso. Estudantes futuros deveriam conseguir reexecutar sem pedir arquivos privados a Sam. Uma execução de reprodução numa máquina nova do laboratório faz parte da verificação de submissão: um assistente do orientador segue as instruções do apêndice e confirma que as figuras de precision e recall batem com o relatório até a casa decimal declarada. Qualquer divergência bloqueia a submissão até o apêndice ser corrigido.
+
+### 40.7 Recusa de demonstração hostil
+
+O ensaio com examinador hostil inclui um pedido de demonstração ao vivo contra o site público de um banco. A recusa de Sam cita a lei e os limites do currículo. Os colegas avaliam a clareza da recusa sob estresse. O ensaio é desconfortável de propósito. Clareza sob estresse é a habilidade, não agressão. Sam cita a lei e o currículo em vez de preferência pessoal. Os colegas pontuam a redação para que o feedback seja específico. Recusas que divagam ensinam às bancas a lição errada sobre limites. A frase ensaiada de Sam é curta: "Não estou autorizado a testar esse site, e o currículo proíbe; aqui está o mesmo comportamento na fixture sintética." Depois ele segue em frente.
+
+### 40.8 Banco de perguntas depois da defesa
+
+Sam publica sua lista de perguntas prováveis depois da defesa, para que a turma do ano seguinte ensaie melhor. O banco inclui a recusa da demonstração em site público. Publicar depois da defesa evita vazar respostas para o evento avaliado. Incluir a recusa normaliza o limite para os novatos. Sam atualiza o banco quando novos padrões hostis aparecem. Turmas que ensaiam a partir de bancos reais ficam mais calmas sob o calor da banca. Generosidade com perguntas faz parte da administração do programa. Cada entrada emparelha a pergunta com a resposta que Sam deu e uma nota sobre o que ele diria melhor agora. A nota costuma ser a parte mais útil para os estudantes do ano seguinte.
+
+### 40.9 Autorrevisão em áudio da recusa
+
+As recusas de ensaio são gravadas em áudio para autorrevisão e depois apagadas em até 24 horas. Sam confere a voz em busca de hesitação. A retenção curta equilibra a melhoria com o armazenamento desnecessário de áudio de estresse. Sam ouve em busca de hesitação, empilhamento de desculpas e citações perdidas. A exclusão é registrada, para que a prática não vire vigilância. A autorrevisão pega hábitos que os colegas são educados demais para nomear. A voz sob pressão é um instrumento treinável. A primeira gravação de Sam tinha três desculpas antes da recusa de fato. No terceiro ensaio, não tinha nenhuma, e os colegas avaliaram a versão posterior como mais calma e mais firme. Ele guarda uma nota escrita dessa mudança depois que o áudio é apagado.
+
+### 40.10 Fechando o laptop hostil
+
+No ensaio, o examinador hostil abre um laptop numa página de login pública de banco. Sam fecha a tampa com gentileza, cita o limite e continua com a demonstração de falhar fechado. Os colegas pontuam a gentileza e a firmeza separadamente. Gentileza sem firmeza é rendição; firmeza sem gentileza é teatro. Fechar a tampa com gentileza mantém a sala aprendendo o limite, e não o susto. Sam continua na demonstração de falhar fechado, para que a fala não trave na recusa. Pontuações separadas impedem que o carisma esconda nãos trêmulos. A cena é o momento de ensaio mais recontado do curso.
+
+### 40.11 Calma e firmeza ambas obrigatórias
+
+A pontuação de gentileza importa: bater o laptop assustaria a sala na lição errada. Firme e calmo é a habilidade sob exame. Bater ensina medo; o medo ensina a imitação errada. Firme e calmo é mais difícil e mais profissional. Sam pratica o movimento da tampa até ele ficar entediante. Colegas que recompensam a energia de bater são corrigidos no debrief. A habilidade sob exame é estabelecer limites, não exibir domínio. Firme significa que o limite não se move quando o examinador empurra uma segunda vez. Calmo significa que voz, ritmo e mãos permanecem firmes enquanto ele se mantém. Examinadores de ensaio empurram de propósito duas vezes, porque o segundo empurrão é onde a maioria dos estudantes ou cede ou fica cortante.
+
+### 40.12 Pontuações da rubrica calma/firme
+
+Os colegas pontuam calma e firmeza numa rubrica de 0–3; Sam mira 3/3 nas duas. Rubricas numéricas tornam comparável o feedback barulhento do ensaio. Metas de três e três mantêm o padrão visível. Sam aceita dois como sinais de orientação, e não como ataques pessoais. As âncoras da rubrica incluem descrições breves de cada pontuação. Pontuações comparáveis ajudam os facilitadores a acompanhar a melhoria ao longo das noites. Na escala de firmeza, zero significa que o estudante concordou com a demonstração, um significa que hesitou, dois significa que recusou mas convidou mais negociação, e três significa um não claro com o limite citado. A escala de calma usa voz, ritmo, desculpas e postura como âncoras.
+
+### 40.13 Clipes âncora da rubrica
+
+As âncoras da rubrica calma/firme incluem clipes de vídeo de exemplo de boas recusas (somente internos). Clipes internos mantêm os exemplos concretos sem publicar performances de estresse. Sam revisa os clipes quanto a consentimento e ocultação antes de entrarem no pacote. Adjetivos abstratos derivam; clipes seguram o padrão. O acesso aos clipes segue os mesmos modos da pasta de ética dos artefatos de pressão. Âncoras são ferramentas de ensino, não entretenimento. Cada clipe tem menos de um minuto e vem emparelhado com sua pontuação e um motivo de uma linha, para que um facilitador novo possa se calibrar em poucos minutos antes da noite de ensaio. Clipes de recusas fracas são reencenados pela equipe em vez de tirados de estudantes reais, para poupar alguém do constrangimento.
+
+### 40.14 Lista do que eu ainda recuso
+
+Depois da defesa, Sam publica uma lista de uma página "o que eu ainda recusaria" ao lado do PDF da tese. A lista inclui demonstrações ao vivo em bancos públicos, kits de exploit e dumps não verificados de scanners como evidência. Estudantes futuros veem que o limite sobrevive à formatura. Os orientadores citam a lista quando novos estudantes pedem atalhos. Fantasias de formatura não aposentam limites. Listar recusas ao lado do PDF as torna difíceis de perder. Os orientadores ganham um artefato durável para conversas sobre atalhos. Dumps não verificados de scanners como evidência permanecem na lista de recusa por motivos de integridade. Limites que sobrevivem são a sequência quieta de uma defesa bem-sucedida.
+
+### 40.15 Lista de recusa no caminho de estudo
+
+A lista do que eu ainda recuso é linkada a partir do STUDY_PATH perto do curso 111. A descobribilidade importa quando novos estudantes caçam atalhos em chats privados. Sam confere o link a cada período, para que a podridão não esconda a lista. A colocação no caminho de estudo trata as recusas como currículo, e não como folclore. Leitores do curso 111 encontram o limite antes de a pressão do projeto final bater o pico. Recusas linkadas duram mais do que avisos de corredor. Colocar o link perto do curso 111 é deliberado: esse curso apresenta a proposta do projeto final, que é quando os estudantes sentem pela primeira vez a tentação de prometer uma demonstração ao vivo. Ver a lista de recusa de um formado nesse momento faz o limite parecer uma norma profissional, e não uma regra da equipe.
+
+### Exemplo resolvido (TRB sintético)
+
+O resumo de Sam declara exatamente o que foi mostrado: acurácia offline do diff de escopo em inventários sintéticos e comportamento de falhar fechado — nada mais.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX118 — Posicionamento.** O que a tese não é? *Rubrica:* 3 = não é um framework de exploit; 2 = parcial; 1 = um kit de malware; 0 = nada.
+- **EX119 — Teste do resumo.** Qual é o teste do resumo do orientador? *Rubrica:* 3 = o leitor sabe exatamente o que foi mostrado; 2 = parcial; 1 = palavras da moda; 0 = nada.
+- **EX120 — Próxima área.** Cite um tema de próximo passo que Sam lista. *Rubrica:* 3 = integração com o FindingsDesk ou métricas de detecção guiadas por ameaças; 2 = vago; 1 = kits de exploit; 0 = nada.
+
+### Síntese
+
+A tese alega apenas o que a avaliação mostrou e ensaia as perguntas difíceis.
+### Continue estudando — capítulo 40 de 40
+
+[← Capítulo 39 (rascunho)](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções ↓](#worked-results) · [Próximo curso pelo índice de capítulos →](../SUBJECTS.md)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX072 (as de EX073–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Riverstone Transit Bank, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. O Riverstone Transit Bank, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O conjunto dentro do escopo é o conjunto de endereços da VLAN menos o conjunto unitário que contém o gateway SWIFT.
 
@@ -2275,6 +3752,102 @@ Respostas-modelo para EX001–EX072 (as de EX073–EX120 estão na edição em i
 **EX071.** Restringir a administração aos jump hosts e exigir MFA enquanto as senhas se tornam únicas.
 
 **EX072.** Pontuação 6, faixa high.
+
+**EX073.** lab_scope, lab_wilson e lab_flows.
+
+**EX074.** Tentar varrer sistemas reais do TRB.
+
+**EX075.** O SWIFT está EXCLUDED e precisa ser removido do plano.
+
+**EX076.** Demonstrar o impacto com a menor ação e, então, parar.
+
+**EX077.** Aprovações extras explícitas e confirmação das ROE.
+
+**EX078.** Passos ordenados com horários e links de evidência.
+
+**EX079.** `T1190 detected 0/2 GAP`
+
+**EX080.** ok — detected 2/3.
+
+**EX081.** Quando a evidência do reteste mostra que o problema está fechado.
+
+**EX082.** Correções sistêmicas em vez de culpa individual.
+
+**EX083.** Responsável e data de vencimento.
+
+**EX084.** Um host de produção pode ser marcado erroneamente como em escopo se o inventário estiver desatualizado.
+
+**EX085.** Id do engajamento, lembrete de escopo, janela e contato do testador.
+
+**EX086.** Parar e reagendar para uma nova janela autorizada.
+
+**EX087.** O log de atividades e o índice de evidência no cofre.
+
+**EX088.** F1 e F4 FIXED; F3 STILL OPEN (corrigidos 2 de 3).
+
+**EX089.** Dois minutos.
+
+**EX090.** Não. O F3 permanece aberto.
+
+**EX091.** Recusar removê-lo, oferecer uma resposta da gestão ao lado e escalar o pedido.
+
+**EX092.** Achados adjacentes a pagamentos e de fluxo não aprovado do razão.
+
+**EX093.** Cria uma trilha de auditoria se a pressão voltar e protege a integridade do processo de asseguração.
+
+**EX094.** Fatos, evidência e linha do tempo — não conclusões jurídicas.
+
+**EX095.** O acesso web→razão não aprovado pode precisar tanto de imposição na rede quanto de negação na camada da aplicação.
+
+**EX096.** Quando as simulações afetam a equipe (por exemplo, exercícios de phishing).
+
+**EX097.** Enviesa as alegações (p-hacking) e viola o pré-registro.
+
+**EX098.** Como uma lacuna de amostra pequena que precisa de mais ensaios, não como prova de detecção zero permanente.
+
+**EX099.** Adversários e sistemas mudam, então testes antigos perdem comportamentos novos.
+
+**EX100.** Testes web trimestrais no estilo WSTG.
+
+**EX101.** Exercícios de cenário guiados por ameaças.
+
+**EX102.** Manter os testes web trimestrais e financiar exercícios guiados por ameaças a cada dois anos.
+
+**EX103.** Sem módulos de exploit (ou sem varredura ao vivo do TRB; ou sem integração com todo sistema de tickets).
+
+**EX104.** Precision e recall em derivas de inventário plantadas, ou comportamento de falhar fechado em arquivos de escopo corrompidos.
+
+**EX105.** Somente inventários sintéticos.
+
+**EX106.** Identificadores de clientes e outras especificidades sensíveis.
+
+**EX107.** Um aprendizado, uma premissa quebrada e uma pergunta para o supervisor.
+
+**EX108.** Uma melhoria de runbook ou um checklist que a equipe possa usar sem Sam.
+
+**EX109.** Clareza de escopo, hashes de evidência, racional da severidade e privacidade (overclaim também).
+
+**EX110.** Aponta linhas específicas e sugere uma correção concreta.
+
+**EX111.** Porcentagens sem denominadores enganam quem decide.
+
+**EX112.** only-in-docs, only-on-network e type-conflict (e match).
+
+**EX113.** Falhar fechado com um motivo claro e um código de saída diferente de zero.
+
+**EX114.** Não. Precisa rodar offline em arquivos locais.
+
+**EX115.** Outro estudante ou testador independente.
+
+**EX116.** A ferramenta não substitui a disciplina das ROE nem as verificações de autorização.
+
+**EX117.** Não. As métricas permanecem como pré-registradas.
+
+**EX118.** Não é um framework de exploit de red team.
+
+**EX119.** Um leitor deve saber exatamente o que foi mostrado e o que não foi.
+
+**EX120.** Integrar tickets do FindingsDesk ou estudar métricas de detecção guiadas por ameaças.
 
 <a id="references"></a>
 ## Referências

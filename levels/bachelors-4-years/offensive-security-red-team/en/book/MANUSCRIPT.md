@@ -64,11 +64,11 @@ Sam Ito, engineering intern on TRB's authorized assessment platform team, transl
 
 Later chapters on probability, architecture and evaluation reuse the same careful language. Sloppy scope language produces sloppy tests. The coverage fraction from 1.3 returns as a proportion with an interval in Chapter 12, and the set expression from 1.1 becomes the TrackScope membership function in the labs. Learning the vocabulary once, carefully, means each later tool has a precise specification behind it rather than a habit. Sam's notebook from this chapter is the first artefact his mentor reviews. A vague definition costs little to fix in the notebook, but the same vagueness in TrackScope could put a SWIFT host in scope.
 
-### 1.7 1.7 Applied note
+### 1.7 Applied note
 
 Sam practices translating ROE paragraphs into membership tests on paper before opening TrackScope. When a sentence says "web VLAN except payment gateways", he writes the set expression and lists every known gateway address from the asset register. Only then does he load the scope file. Contractors who skip the paper step regularly propose hosts that sit beside SWIFT "because the ping worked". The paper step is slower and prevents newspaper incidents. The asset register list doubles as evidence afterwards. Auditors can match each scope-file load to the signed register list, so any host added later stands out.
 
-### 1.8 1.8 Worked set arithmetic
+### 1.8 Worked set arithmetic
 
 Given VLAN V and exclusions E, Sam computes V\E and then intersects with the day's proposed list P. Only P∩(V\E) may be loaded. He unit-tests the calculator with SWIFT inside V and confirms it never appears in output. A second test puts an address outside V into P and confirms it is rejected too. Together the two tests cover the two ways scope fails: excluded hosts leaking back in, and out-of-range hosts arriving in a friendly spreadsheet. The calculator's output is saved with the date so the day's loaded list can be reproduced later.
 
@@ -132,15 +132,15 @@ Cloud projects add tenants faster than diagrams update. Authorized testing again
 
 Sam never assumes a hostname's layer from its name alone; he checks the asset register. A host called web-test-03 may in fact sit in the ledger tier after a migration, and a host called ledger-legacy may have been retired. Only the register, with its named owner and layer, decides how TrackScope treats a host. When the register and the name disagree, Sam asks the owner and records the answer before testing. Name-based guesses are logged as near-misses when caught. The owner's answer is copied into the scope file's comments.
 
-### 2.7 2.7 Applied note
+### 2.7 Applied note
 
 PulseMap's fail-closed rule is tested in CI by deleting the scope file and asserting every API returns deny. Sam added that test after a staging misconfiguration briefly served empty allow lists. Dashboards that cannot deny are worse than no dashboards. He demos the deny path to every new intern in their first week. The CI test also covers a corrupted file, not just a missing one. Both paths must return deny on every endpoint, including the health check, before the build is allowed to pass.
 
-### 2.8 2.8 Platform zoning
+### 2.8 Platform zoning
 
 TrackScope, FindingsDesk and PulseMap sit in an assessment zone with controlled conduits to staging only. Sam reviews those conduits each quarter the same way he reviews TRB business flows — because the platform can hurt the bank if miswired. A conduit from the assessment zone to production would let a misconfigured job send traffic to live systems, so its absence is checked, not assumed. Each review records which conduits exist, who approved them and when they were last used. Unused conduits are removed rather than left open for convenience.
 
-### 2.9 2.9 Denominator bug
+### 2.9 Denominator bug
 
 A PulseMap bug once defaulted n to 1. Sam's regression test sets n=0 and expects an error tile, not 100%. With n defaulting to 1, a single touched host would have shown as 100% coverage, exactly the misleading percentage Chapter 1 warns against. The regression test now runs on every build, and PulseMap refuses to draw a coverage tile without an explicit denominator from the scope file. An error tile is honest; a confident number built on a default is not. The fix shipped with a changelog entry naming the bug.
 
@@ -204,15 +204,15 @@ Seed randomness and pin interpreter versions so PulseMap demos are reproducible.
 
 Labs in this book follow these rules and embed real outputs. Each lab in this book runs offline on the Python 3 standard library, uses documentation-range addresses and synthetic files, and prints output that was captured from a real run. If your output differs from the printed one, the difference is information: a changed input, a different interpreter or a bug. Treat it the way Sam treats a PulseMap regression, by finding the cause before trusting either result. None of the labs needs network access, so they can be run on a laptop with networking switched off.
 
-### 3.7 3.7 Applied note
+### 3.7 Applied note
 
 Dry-run output is pasted into the engagement channel before any write mode runs. Peers have two minutes to object. Sam once caught a path traversal into an evidence archive because a teammate read the dry-run carefully. Social review beats solitary cleverness for operational scripts. Two minutes is short enough not to delay a window and long enough for a careful reader. The pasted output lists every target address, the method card and the write paths the script will touch, so a reader can compare each line with the signed /26 and the SWIFT exclusion. Any reader's objection pauses the run until it is resolved and noted in the window log.
 
-### 3.8 3.8 Test data policy
+### 3.8 Test data policy
 
 Synthetic customers in fixtures use obviously fake national IDs. Sam rejects fixtures that reuse real-looking personal numbers even when unused in production. Habit transfer matters. A fixture that resembles a real identity number can be copied into a test against production by someone in a hurry. Obviously fake values cannot be mistaken for customer data, and the habit carries into every later engagement. A reviewer who sees a plausible identity number in a fixture asks where it came from; a value like FAKE-000-001 ends the question immediately and cannot be confused with a customer during an incident.
 
-### 3.9 3.9 Secret scanning in CI
+### 3.9 Secret scanning in CI
 
 Platform repos fail CI if high-entropy strings look like keys. Sam whitelists only test fixtures clearly marked FAKE. A real-looking key in a test file still trains people to ignore the warning, so marking is mandatory. Each whitelisted fixture is listed with its owner and the reason it is safe, and the list is reviewed whenever CI rules change. Whitelisting by marker rather than by file path means a real key pasted into a fixtures folder is still caught. When CI blocks a commit, the developer rotates the string even if it was only ever local.
 
@@ -280,15 +280,15 @@ Summary, scope/methods, findings, positives, limitations, appendices. The order 
 
 Peer review catches jargon and overclaim before the CISO sees the draft. Sam's reviewer reads for two things: words a non-specialist would not understand, and sentences that claim more than the evidence shows, such as 'attackers can move money' in place of the observed connection to ledger-db. Each comment is answered in the draft history, so the final report shows what changed and why before the CISO receives it. Unresolved comments block release; resolved ones stay visible. The CISO receives only the reviewed version, so overstated drafts such as 'attackers can move money' never reach the CISO.
 
-### 4.7 4.7 Applied note
+### 4.7 Applied note
 
 Citation drills require opening the live NIST or PTES page, not a blog summary. Sam failed an early draft for citing a second-hand SP 800-115 paraphrase that invented a clause. Primary sources only — the same rule as never inventing DOIs. The NIST page also shows the document's status and date. Sam now records, beside each citation in his draft, the date he opened the primary page and the section he relied on. Reviewers can then check a claim against the same page instead of trusting his memory of it.
 
-### 4.8 4.8 Audience pass
+### 4.8 Audience pass
 
 Before sending, Sam reads the executive summary aloud to someone outside security. If they cannot restate the decision asked, he rewrites. Jargon surviving that pass is a defect. The listener's restatement is noted in the draft history for later comparison. For the shared admin account report, a listener from finance restated the ask as 'pay for named accounts on the loan system', which matched. An earlier draft had produced 'something about passwords', which sent it back for rewriting. The finance listener was chosen deliberately.
 
-### 4.9 4.9 Passive voice audit
+### 4.9 Passive voice audit
 
 Findings that hide actors in passive voice are rewritten. "Passwords were reused" becomes "The loan admin account used the same password as VPN" when known. Naming the system makes the finding actionable and testable. When the actor is not known, the sentence says so plainly, for example 'logs do not show which administrator changed the setting'. That keeps the finding honest without inventing a culprit, and it points straight at the logging gap as a second issue to fix. Fixing the 'developers ignored security' draft needed only one rewritten sentence naming the system and the missing log.
 
@@ -356,15 +356,15 @@ SP 800-115 (planning), PTES (stages), WSTG (web), ATT&CK (techniques), TIBER-EU/
 
 Customer harm and payment integrity outrank curiosity and resume screenshots. In practice the ordering decides real choices. If a test might corrupt a payment record, it stops, however interesting the result would be. If a screenshot would show customer data, it is not taken, even for a portfolio. Sam writes the expected customer impact of each method card before a window, and any card with possible payment-integrity impact needs the ledger owner's named approval. Curiosity is satisfied in the synthetic lab, where nothing real can be harmed.
 
-### 5.7 5.7 Applied note
+### 5.7 Applied note
 
 The refusal script is role-played with a staff member playing an impatient director. Sam must keep tone respectful while not yielding. Video reviews show whether he smiles nervously into agreement; those clips are deleted after coaching but the lesson stays. The director in the role-play asks Sam to 'just quickly check' a host outside the /26. Sam's script names the ROE clause, offers to raise a scope change with the owner and gives a realistic time for approval. Practising the exact words makes them available under real pressure.
 
-### 5.8 5.8 Framework flashcards
+### 5.8 Framework flashcards
 
 Sam's deck has one card per framework: SP 800-115, PTES, WSTG, ATT&CK, TIBER-EU, CBEST — purpose and what it is not. Misusing CBEST as a web checklist is a common card-back answer. The card for TIBER-EU, for instance, says it frames threat-intelligence-led red teaming for financial entities and is not a vulnerability scanning standard. Writing the 'what it is not' side forces Sam to understand each framework's purpose rather than its name, and the deck is reviewed whenever a framework publishes a new version.
 
-### 5.9 5.9 Home lab boundary
+### 5.9 Home lab boundary
 
 Sam's home lab uses RFC1918 and never TRB DNS. Mixing VPN into homework is a reported near-miss if it happens. Private RFC1918 ranges at home cannot collide with TRB's addressing if Sam never connects the bank VPN while experimenting. Using TRB DNS from home would leak internal names and could send lab traffic toward the bank. If a mix-up happens, he reports it as a near-miss so the boundary rule can be improved rather than quietly hoping no one noticed.
 
@@ -432,15 +432,15 @@ Severity ranking uses ordered scores; ties break by finding id for determinism (
 
 Graphs omit social engineering unless the ROE includes it. A graph of network and authentication edges says nothing about a branch employee who could be persuaded to approve a payment by phone. If the ROE excludes social engineering, Sam states that the graph covers technical paths only, so the board does not read 'no path found' as 'no way in'. The limitation sits on the same slide as the graph, in plain words. Social engineering, if later authorized, would add new edges to the same graph.
 
-### 6.7 6.7 Applied note
+### 6.7 Applied note
 
 Reachability graphs annotate edges with "authenticated" or "network-only". A network-only edge to ledger-adjacent hosts raises severity even without credentials, because credential theft elsewhere completes the path. Sam's first graphs missed that annotation and under-ranked a finding. After the correction, every edge to a payments-adjacent node carries its annotation, and lab_rank weights network-only edges to the ledger tier more heavily. The earlier under-ranked finding was re-scored and re-sent with a note explaining the change, so readers of the first version were not left with the lower rank.
 
-### 6.8 6.8 Cut sets
+### 6.8 Cut sets
 
 For payments-adjacent nodes, Sam looks for cut sets of edges whose removal would isolate them from the Internet. Those edges become monitoring and control priorities even when not "vulnerable" in a scanner sense. For ledger-db, the cut set turned out to be two edges: the direct web-tier connection and admin access that bypassed the jump host. Removing those two isolates the ledger from internet-facing paths. Monitoring them costs far less than watching every host. Those two edges are also the ones F3 and the jump-host rule address.
 
-### 6.9 6.9 Edge evidence
+### 6.9 Edge evidence
 
 Each critical graph edge cites the inventory or scan source under ROE. Edges without sources are removed. A source might be an asset register entry, a firewall rule export or an authorized scan result with its date. An edge drawn from memory or assumption cannot be checked, so it cannot support a finding, and leaving it in would make the whole graph look more certain than it is. When a source is missing, Sam asks the owner and adds the edge back only with evidence.
 
@@ -508,15 +508,15 @@ Packet captures need ROE clauses; they often contain customer data. A capture on
 
 T1190 Exploit Public-Facing Application describes abuse of internet-facing services — named for detection design, not as a how-to. Linking a finding to T1190 tells the monitoring team which detections to check, such as unusual errors or requests on the online banking front end, without describing how the weakness was triggered. Sam adds the technique ID in FindingsDesk so PulseMap can show coverage by technique, and the report never includes steps. Detection owners can then test their rules against synthetic requests in staging.
 
-### 7.7 7.7 Applied note
+### 7.7 Applied note
 
 Capture ROE clauses specify retention hours and who may run wireshark. Sam's default ask is "configs and logs first; packets only if those fail". Most TRB web findings never need packets; when they do, the clause is already written. Writing the clause in advance means an urgent capture request during a window does not lead to an improvised decision about customer data. The clause also names who deletes the files when the retention hours expire. The named person confirms deletion in the capture ticket when the retention hours expire, so nobody assumes the files are gone.
 
-### 7.8 7.8 Banner humility
+### 7.8 Banner humility
 
 Banners feed inventory, not severity theatre. Sam files version exposure as low unless paired with a reachable vulnerable path under ROE — which this course still will not exploit in the wild. A banner showing an old version may be patched by the vendor's backport, so the version alone does not prove a weakness. Recording it as inventory lets owners plan upgrades without inflating a report with alarming but unverified findings. If a reachable weakness is later confirmed under ROE, severity is re-scored with that evidence.
 
-### 7.9 7.9 Doc-range lint
+### 7.9 Doc-range lint
 
 Examples in docs are linted to ensure IPs are documentation ranges. Sam's lint failed a blog draft using a real TRB address; good catch. The real address would have revealed part of TRB's network layout and could have invited readers to probe it. The lint runs on every documentation change and blocks publication until the address is replaced with a documentation-range example, such as one from 198.51.100.0/24. The blog draft was corrected and the original address reported to the network owner.
 
@@ -584,15 +584,15 @@ CSV import of findings dry-runs first and caps row counts. A dry run shows what 
 
 Optimistic locking prevents two analysts overwriting the same ticket silently. Each ticket carries a version number. When an analyst saves, FindingsDesk checks that the version has not changed since the ticket was opened; if a colleague saved first, the second save is refused and the analyst sees both versions. Without this, one analyst's severity change could silently erase another's new evidence, and nobody would know which view of the finding was current. The refused analyst merges the two versions by hand, and the merge is logged.
 
-### 8.7 8.7 Applied note
+### 8.7 Applied note
 
 Bulk import caps at 500 rows and requires a second approver above 100. Sam saw an analyst almost import a scanner dump that included out-of-scope hosts as "informational". Caps and approvers are boring on purpose. An 'informational' out-of-scope host is still evidence that someone tested outside the ROE, so it needs review, not quiet storage. The second approver checks the dry-run summary against the signed scope before larger imports proceed. The approver is never the person who ran the scan, so the check is independent.
 
-### 8.8 8.8 Migration drills
+### 8.8 Migration drills
 
 Schema migrations run on a copy with checksums before and after. Sam records row counts. A migration that changes counts silently fails the drill. Checksums and row counts on the copy show whether a migration preserved every finding and evidence reference. If counts differ, the migration is fixed and rerun on a fresh copy; production is never used as the test. Sam keeps the before and after figures with the migration script so a reviewer can confirm the drill passed.
 
-### 8.9 8.9 Idempotent writes
+### 8.9 Idempotent writes
 
 Ticket updates are idempotent by finding id. Double delivery from flaky networks cannot create duplicate F1s. Because each update is keyed by finding ID, applying the same request twice leaves the ticket in the same state as applying it once. A retried create for F1 updates F1 rather than inserting a second record. This matters at TRB, where VPN links to the assessment zone drop often, and duplicate findings would inflate counts in board reports. Board counts therefore stay true even on bad network days.
 
@@ -2393,7 +2393,7 @@ Pause flags clear only with SOC countersign. Sam cannot clear his own noise over
 
 Self-clearing would make the automatic pause theatre. The SOC countersign is a second person asserting that the environment can take more load. Sometimes they refuse and ask for a quieter continuation tomorrow. That refusal is a successful control. Recording who cleared a pause, and when, also helps later reviews understand why a noisy card continued after an overrun.
 
-Informal promises do not survive the next release train. A recorded acknowledgement survives because it can be audited when someone asks who accepted the risk.
+When the SOC analyst clears a flag, TrackScope stores their name, the alert count at the moment of clearing and the new budget on the card itself. The next card audit can then compare that extension with the alerts PulseMap attributed to the engagement afterwards.
 
 ### 23.14 Rotating card audits
 
@@ -3069,7 +3069,7 @@ The SOC receives a start message when the window opens and a stop message when i
 
 Log + vault beats verbal notes.
 
-Shift handovers use the written activity log and the vault paths, not a hallway summary. Verbal notes evaporate and mutate. Sam's five-line paste template forces the outgoing operator to name unfinished cards, open approvals and the next safe action. The incoming operator should be productive within a few minutes. Handovers that need a novel usually hid a mess that should have been a stop. A handover that needs a whiteboard drawing usually needed an earlier stop.
+Shift handovers use the written activity log and the vault paths, not a hallway summary. Verbal notes evaporate and mutate. Sam's five-line paste template forces the outgoing operator to name unfinished cards, open approvals and the next safe action. The incoming operator should be productive within a few minutes. Handovers that need a novel usually hid a mess that should have been a stop. The incoming operator at TRB opens the vault path from the handover before touching any card, so a wrong or empty path surfaces before work resumes rather than at the next retest.
 
 ### 29.5 End
 
