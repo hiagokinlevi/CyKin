@@ -367,7 +367,7 @@ Seja B(t) o número de achados abertos. Os achados chegam à taxa a e são fecha
 
 ### 6.3 Quando o contínuo basta
 
-Debates sobre a ROE costumam precisar de uma ordem de grandeza, não de uma forma fechada. "Uma varredura a 5 req/s por 30 minutos vai produzir cerca de 9.000 requisições?" Sim: 5 × 1.800 = 9.000. Reserve o cálculo exato para agendas com picos (§1) e para modelos que o cliente vai auditar. A aritmética de ordem de grandeza resolve a maioria dos debates sobre a ROE em minutos. Agendas exatas com picos precisam do tratamento mais completo do primeiro capítulo de cálculo, e são essas que Sam leva a um cliente que vai auditar os números. Para uma varredura plana, multiplicar a taxa pela duração basta, e escrever o produto ao lado do limite de volume mostra a conformidade num relance. Se o produto fica perto do limite, ele passa para a verificação da agenda exata em vez de torcer para que as rajadas fiquem pequenas.
+Debates sobre a ROE costumam precisar de uma ordem de grandeza, não de uma forma fechada. "Uma varredura a 5 req/s por 30 minutos vai produzir cerca de 9.000 requisições?" Sim: 5 × 1.800 = 9.000. Reserve o cálculo exato para agendas com picos (§1) e para modelos que o cliente vai auditar. Agendas exatas com picos precisam do tratamento mais completo do primeiro capítulo de cálculo, e são essas que Sam leva a um cliente que vai auditar os números. Para uma varredura plana, multiplicar a taxa pela duração basta, e escrever o produto ao lado do limite de volume mostra a conformidade num relance. Se o produto fica perto do limite, ele passa para a verificação da agenda exata em vez de torcer para que as rajadas fiquem pequenas.
 
 > **Caso sintético — Riverstone Transit.** O FindingsDesk mostrava um backlog de 28 achados médios, com duas remediações por dia. O modelo B′ de Sam previu 14 dias para zerar se não houvesse novas chegadas; o gestor financiou um terceiro engenheiro para aquela quinzena.
 
@@ -825,7 +825,7 @@ Imagens completas de disco têm alto impacto: tiram sistemas do ar, contêm dado
 
 ### 12.4b Registrando mudanças nos hosts
 
-Qualquer configuração que quem testa muda num host, mesmo um nível de log temporário, é escrita no log do engajamento com horário, motivo e o comando usado para revertê-la. No encerramento, Sam percorre essa lista com o dono do sistema, para que nenhum host da Riverstone Transit fique num estado que ninguém se lembra de ter criado. Mudanças temporárias de nível de log continuam sendo mudanças. Um comando de reversão escrito na hora sobrevive à rotatividade da equipe e aos plantões de fim de semana. Percorrer a lista com o dono transforma o encerramento numa lista de verificação compartilhada, em vez de um teste de memória. Sam se recusa a marcar um engajamento como concluído enquanto restar na lista qualquer mudança não revertida.
+Qualquer configuração que quem testa muda num host, mesmo um nível de log temporário, é escrita no log do engajamento com horário, motivo e o comando usado para revertê-la. No encerramento, Sam percorre essa lista com o dono do sistema, para que nenhum host da Riverstone Transit fique num estado que ninguém se lembra de ter criado. Um comando de reversão escrito na hora sobrevive à rotatividade da equipe e aos plantões de fim de semana. Percorrer a lista com o dono transforma o encerramento numa lista de verificação compartilhada, em vez de um teste de memória. Sam se recusa a marcar um engajamento como concluído enquanto restar na lista qualquer mudança não revertida.
 
 ### Exercícios
 
@@ -917,11 +917,11 @@ As tags de versão podem se afastar do que os operadores de fato rodam; registre
 
 ### 14.3b Trens de release vs. hotfixes
 
-As melhorias normais seguem num trem de release com os Laboratórios I/II. Hotfixes de segurança podem pular funcionalidades, mas não a verificação: um pacote mínimo de regressão de falha fechada é obrigatório. Marque os hotfixes com clareza, para que um engajamento possa fixar o build do trem ou o SHA do hotfix de olhos abertos. Correções de segurança ainda precisam provar o comportamento de falha fechada, mesmo quando as funcionalidades esperam. Tags claras impedem que um engajamento misture silenciosamente um build do trem com um hotfix feito num notebook. Fixar de olhos abertos significa que o cliente sabe qual binário produziu a evidência. Sam mantém o pacote de regressão pequeno, para que os hotfixes continuem rápidos sem pulá-lo.
+As melhorias normais seguem num trem de release com os Laboratórios I/II. Hotfixes de segurança podem pular funcionalidades, mas não a verificação: um pacote mínimo de regressão de falha fechada é obrigatório. Marque os hotfixes com clareza, para que um engajamento possa fixar o build do trem ou o SHA do hotfix de olhos abertos. Correções de segurança ainda precisam provar o comportamento de falha fechada, mesmo quando as funcionalidades esperam. Fixar de olhos abertos significa que o cliente sabe qual binário produziu a evidência. Sam mantém o pacote de regressão pequeno, para que os hotfixes continuem rápidos sem pulá-lo.
 
 ### 14.1b Modelo de branches
 
-Use branches de vida curta com CI obrigatória sobre fixtures sintéticos. Branches de funcionalidade de vida longa se afastam das correções de segurança na main e recriam merges que falham abertos. Proteja a main com revisores obrigatórios e verificações de status nomeadas segundo as linhas de segurança do Laboratório I. Branches curtas recebem as correções de segurança da main em vez de reinventá-las semanas depois. Branches longas são o caminho pelo qual merges que falham abertos voltam depois de terem sido corrigidos. Verificações obrigatórias nomeadas segundo as linhas do Laboratório I tornam impossível pular a suíte de segurança com uma aprovação casual. Sam apaga branches abandonadas toda semana, para que a divergência não possa se esconder.
+Use branches de vida curta com CI obrigatória sobre fixtures sintéticos. Branches de funcionalidade de vida longa se afastam das correções de segurança na main e recriam merges que falham abertos. Proteja a main com revisores obrigatórios e verificações de status nomeadas segundo as linhas de segurança do Laboratório I. Branches curtas recebem as correções de segurança da main em vez de reinventá-las semanas depois. Verificações obrigatórias nomeadas segundo as linhas do Laboratório I tornam impossível pular a suíte de segurança com uma aprovação casual. Sam apaga branches abandonadas toda semana, para que a divergência não possa se esconder. Uma branch que fica mais de uma semana atrás da main precisa ser rebaseada e passar de novo nas verificações do Laboratório I antes da revisão.
 
 ### Nota de prática
 
@@ -973,7 +973,7 @@ Todo achado deve citar qual propriedade (C, I ou A) é afetada principalmente e 
 
 ### 15.1b Da propriedade ao teste
 
-Se um achado alega impacto na confidencialidade, o plano de validação precisa incluir uma verificação de confidencialidade (quem ainda consegue ler). Se alega impacto na disponibilidade, a validação inclui um canário ou uma sondagem sintética — não um novo ataque. Alinhe a propriedade, o achado e o método de reteste num único parágrafo do ticket. Uma alegação de confidencialidade sem uma verificação de quem consegue ler não pode ser encerrada com honestidade. Alegações de disponibilidade precisam de um canário suave, não de uma nova inundação. Um parágrafo que amarra propriedade, achado e reteste mantém o ticket coerente depois da passagem de bastão. Sam cola esse parágrafo no campo do plano de validação antes de o achado sair do rascunho.
+Se um achado alega impacto na confidencialidade, o plano de validação precisa incluir uma verificação de confidencialidade (quem ainda consegue ler). Se alega impacto na disponibilidade, a validação inclui um canário ou uma sondagem sintética — não um novo ataque. Alinhe a propriedade, o achado e o método de reteste num único parágrafo do ticket. Alegações de disponibilidade precisam de um canário suave, não de uma nova inundação. Um parágrafo que amarra propriedade, achado e reteste mantém o ticket coerente depois da passagem de bastão. Sam cola esse parágrafo no campo do plano de validação antes de o achado sair do rascunho.
 
 ### Exercícios
 
@@ -1069,7 +1069,7 @@ A realimentação pressupõe que o sensor é honesto. Um logger quebrado parece 
 
 ### 17.2b Escolhendo o intervalo de amostragem
 
-Um sensor que amostra uma vez por hora pode perder uma rajada de cinco minutos fora do escopo. Amostre pelo menos duas vezes mais rápido que a menor janela de condição de parada que você prometeu ao cliente. Se o kill switch precisa agir em 30 segundos, consulte a cada 10–15 segundos. O custo é baixo comparado com explicar uma parada perdida no relatório. O raciocínio ao estilo de Nyquist se aplica: amostre mais rápido que o evento que você precisa pegar. Um kill switch de trinta segundos com consultas de hora em hora é teatro. Dez a quinze segundos deixam margem para discos lentos e líderes ocupados. Sam registra o intervalo escolhido ao lado do texto da condição de parada, para que os auditores vejam que eles batem.
+Um sensor que amostra uma vez por hora pode perder uma rajada de cinco minutos fora do escopo. Amostre pelo menos duas vezes mais rápido que a menor janela de condição de parada que você prometeu ao cliente. Se o kill switch precisa agir em 30 segundos, consulte a cada 10–15 segundos. O custo é baixo comparado com explicar uma parada perdida no relatório. O raciocínio ao estilo de Nyquist se aplica: amostre mais rápido que o evento que você precisa pegar. Dez a quinze segundos deixam margem para discos lentos e líderes ocupados. Sam registra o intervalo escolhido ao lado do texto da condição de parada, para que os auditores vejam que eles batem.
 
 ### 17.3b Onde colocar a pessoa na malha
 
@@ -1103,11 +1103,11 @@ Você vai (1) posicionar as ferramentas de avaliação num modelo de zonas; (2) 
 
 ### 18.1 Zonas
 
-Os notebooks de avaliação, o TrackScope, o FindingsDesk e os ativos do cliente ficam em zonas de confiança diferentes. O tráfego da zona de avaliação para os ativos do cliente é apenas o que a ROE permite; o tráfego de volta leva as evidências para um repositório que o cliente pode auditar. Não coloque o repositório de evidências na mesma VLAN dos alvos "por conveniência". Separar o repositório de evidências dos alvos significa que um host de teste comprometido não consegue reescrever a história em silêncio. O tráfego no formato da ROE é o único caminho até os ativos do cliente; todo o resto é descartado e registrado. VLANs de conveniência são o modo como evidências e alvos passam a compartilhar o mesmo destino. O kickoff de Sam inclui um traceroute do TrackScope até o repositório e até um alvo de exemplo, para provar as zonas.
+Os notebooks de avaliação, o TrackScope, o FindingsDesk e os ativos do cliente ficam em zonas de confiança diferentes. O tráfego da zona de avaliação para os ativos do cliente é apenas o que a ROE permite; o tráfego de volta leva as evidências para um repositório que o cliente pode auditar. Não coloque o repositório de evidências na mesma VLAN dos alvos "por conveniência". Separar o repositório de evidências dos alvos significa que um host de teste comprometido não consegue reescrever a história em silêncio. O tráfego no formato da ROE é o único caminho até os ativos do cliente; todo o resto é descartado e registrado. O kickoff de Sam inclui um traceroute do TrackScope até o repositório e até um alvo de exemplo, para provar as zonas.
 
 ### 18.2 Fronteiras de confiança
 
-Cruzar uma fronteira exige autenticação, autorização e registro. Um estudante que exporta achados para um drive pessoal cruza uma fronteira sem controle — proíba isso na ROE e na política da ferramenta. Drives pessoais ficam fora de todos os controles do cliente. Uma política de ferramenta que bloqueia a exportação é mais forte que um parágrafo que ninguém lê sob prazo. Autenticação, autorização e registro são o trio mínimo em cada travessia. Sam trata uma exportação bloqueada como um controle bem-sucedido, não como um atrito a remover. Ele demonstra o bloqueio no kickoff para que ninguém peça uma exceção depois.
+Cruzar uma fronteira exige autenticação, autorização e registro. Um estudante que exporta achados para um drive pessoal cruza uma fronteira sem controle — proíba isso na ROE e na política da ferramenta. Drives pessoais ficam fora de todos os controles do cliente. Uma política de ferramenta que bloqueia a exportação é mais forte que um parágrafo que ninguém lê sob prazo. Sam trata uma exportação bloqueada como um controle bem-sucedido, não como um atrito a remover. Ele demonstra o bloqueio no kickoff para que ninguém peça uma exceção depois. Exportações para o cliente passam pelo FindingsDesk, que registra quem exportou quais achados e quando.
 
 ### 18.3 Ambientes isolados
 
@@ -1214,7 +1214,7 @@ Prefira SHA-256 ou mais forte para os manifestos de evidências; evite MD5/SHA-1
 
 ### 19.1b Inventário de certificados
 
-Para ativos com TLS exposto, registre os certificados apresentados (titular, emissor, notAfter) mediante autorização. Certificados expirados ou divergentes são achados sobre a integridade das operações; não transforme o exercício num ataque a TLS de nível de pesquisa. Titular, emissor e notAfter, lidos mediante autorização, bastam para sinalizar expiração e divergência de nome. Esses são achados de integridade e de operações, não um convite a ataques de protocolo de nível de pesquisa. Sam guarda a impressão digital do PEM no ticket para que um reteste veja se o certificado mudou. As execuções de inventário são agendadas, não improvisadas durante uma varredura ruidosa.
+Para ativos com TLS exposto, registre os certificados apresentados (titular, emissor, notAfter) mediante autorização. Certificados expirados ou divergentes são achados sobre a integridade das operações; não transforme o exercício num ataque a TLS de nível de pesquisa. Titular, emissor e notAfter, lidos mediante autorização, bastam para sinalizar expiração e divergência de nome. Sam guarda a impressão digital do PEM no ticket para que um reteste veja se o certificado mudou. As execuções de inventário são agendadas, não improvisadas durante uma varredura ruidosa. Certificados que vencem dentro da janela do engajamento são comunicados ao contato do cliente no mesmo dia, em vez de esperarem o relatório final.
 
 ### Exercícios
 
@@ -1240,7 +1240,7 @@ Você vai (1) situar a engenharia de red team entre o PTES, o NIST SP 800-115 e 
 
 ### 20.1 Mapa da disciplina
 
-O NIST SP 800-115 enquadra testes e avaliações. O PTES encadeia as etapas, do pré-engajamento ao relatório. O ATT&CK nomeia técnicas para planejamento e cobertura — não como uma pontuação de risco residual. O TIBER-EU e o CBEST acrescentam supervisão guiada por ameaças em certos contextos financeiros. Os engenheiros constroem as plataformas que tornam esses frameworks operáveis: verificadores de escopo, sistemas de achados, relatórios de cobertura, repositórios de evidências. Os frameworks descrevem o ciclo de vida do engajamento; o ATT&CK rotula técnicas para o planejamento. Nenhum deles é, sozinho, uma pontuação de risco residual. O trabalho de engenharia é transformar verificações de escopo, achados e relatórios de cobertura em sistemas reais que os operadores consigam rodar. Sam cita a versão do framework em cada ADR que implementa um controle exigido por ele.
+O NIST SP 800-115 enquadra testes e avaliações. O PTES encadeia as etapas, do pré-engajamento ao relatório. O ATT&CK nomeia técnicas para planejamento e cobertura — não como uma pontuação de risco residual. O TIBER-EU e o CBEST acrescentam supervisão guiada por ameaças em certos contextos financeiros. Os engenheiros constroem as plataformas que tornam esses frameworks operáveis: verificadores de escopo, sistemas de achados, relatórios de cobertura, repositórios de evidências. Os frameworks descrevem o ciclo de vida do engajamento; o ATT&CK rotula técnicas para o planejamento. O trabalho de engenharia é transformar verificações de escopo, achados e relatórios de cobertura em sistemas reais que os operadores consigam rodar. Sam cita a versão do framework em cada ADR que implementa um controle exigido por ele.
 
 ### 20.2 O que construímos
 
@@ -1292,7 +1292,7 @@ Você vai (1) levantar requisitos a partir da ROE e dos operadores; (2) separar 
 
 ### 21.1 Fontes de requisitos
 
-Os operadores querem menos bloqueios falsos; a assessoria jurídica quer uma trilha de auditoria; o cliente quer achados claros. As entrevistas de levantamento produzem declarações com "deve" marcadas pela fonte. Os conflitos (velocidade vs. etapas de aprovação) são registrados, não escondidos. Fontes marcadas tornam os conflitos discutíveis: velocidade contra etapas de aprovação vira um trade-off registrado, com um dono. Escondê-lo produz uma ferramenta em que ninguém confia. As entrevistas terminam em declarações com "deve", não em impressões. Sam mantém o log de conflitos ao lado do arquivo de requisitos, para que um novo líder veja as discussões antigas sem precisar repeti-las.
+Os operadores querem menos bloqueios falsos; a assessoria jurídica quer uma trilha de auditoria; o cliente quer achados claros. As entrevistas de levantamento produzem declarações com "deve" marcadas pela fonte. Os conflitos (velocidade vs. etapas de aprovação) são registrados, não escondidos. Fontes marcadas tornam os conflitos discutíveis: velocidade contra etapas de aprovação vira um trade-off registrado, com um dono. Escondê-lo produz uma ferramenta em que ninguém confia. Sam mantém o log de conflitos ao lado do arquivo de requisitos, para que um novo líder veja as discussões antigas sem precisar repeti-las. Cada entrada de conflito registra quem o levantou e qual declaração com "deve" o resolveu.
 
 ### 21.2 Três famílias
 
@@ -1511,7 +1511,7 @@ Copiar a lista de métodos de outra pessoa sem a autorização correspondente é
 
 ### 24.2b Métodos silenciosos vs. ruidosos
 
-Métodos silenciosos (leituras autenticadas, exportação de configuração) cabem em janelas diurnas em sistemas compartilhados. Métodos ruidosos (enumeração ampla de serviços) precisam de limites de taxa mais apertados e, muitas vezes, de horários fora de pico. O campo "ruidoso?" do cartão de método comanda a agenda; deixá-lo em branco é o modo como as janelas de despacho da manhã ficam congestionadas. Sistemas compartilhados durante o dia precisam de cartões silenciosos; a enumeração ampla precisa de horário fora de pico e taxas mais apertadas. O indicador de ruído comanda o calendário automaticamente quando preenchido. Indicadores em branco são o modo como as janelas de despacho entopem. Sam bloqueia a publicação da agenda enquanto qualquer cartão ainda tiver o campo de ruído em branco.
+Métodos silenciosos (leituras autenticadas, exportação de configuração) cabem em janelas diurnas em sistemas compartilhados. Métodos ruidosos (enumeração ampla de serviços) precisam de limites de taxa mais apertados e, muitas vezes, de horários fora de pico. O campo "ruidoso?" do cartão de método comanda a agenda; deixá-lo em branco é o modo como as janelas de despacho da manhã ficam congestionadas. O indicador de ruído comanda o calendário automaticamente quando preenchido. Indicadores em branco são o modo como as janelas de despacho entopem. Sam bloqueia a publicação da agenda enquanto qualquer cartão ainda tiver o campo de ruído em branco. Os cartões são revisados com o contato do cliente antes de a janela ser publicada, porque o cliente sabe quais sistemas compartilhados ficam ocupados de manhã.
 
 ### 24.3b Congelamento de métodos
 
@@ -1519,7 +1519,7 @@ Durante uma janela de engajamento, acrescentar um novo método em pleno voo exig
 
 ### 24.1b Dependências entre métodos
 
-Alguns métodos exigem as saídas de outros (inventário antes da revisão autenticada). Codifique as dependências no plano para que a linha do tempo não agende a revisão no primeiro dia contra uma lista de ativos vazia. O PulseMap pode mostrar ligações de bloqueado-por para as técnicas planejadas. Uma revisão no primeiro dia contra um inventário vazio desperdiça a janela e convida a atalhos. Dependências codificadas fazem o planejador recusar ordens impossíveis. As ligações de bloqueado-por do PulseMap mostram por que uma técnica espera. Sam exibe o grafo de dependências no kickoff para que o cliente veja o caminho crítico.
+Alguns métodos exigem as saídas de outros (inventário antes da revisão autenticada). Codifique as dependências no plano para que a linha do tempo não agende a revisão no primeiro dia contra uma lista de ativos vazia. O PulseMap pode mostrar ligações de bloqueado-por para as técnicas planejadas. Uma revisão no primeiro dia contra um inventário vazio desperdiça a janela e convida a atalhos. Dependências codificadas fazem o planejador recusar ordens impossíveis. Sam exibe o grafo de dependências no kickoff para que o cliente veja o caminho crítico. Se uma dependência atrasa, o planejador move o método dependente em vez de deixá-lo rodar antes da hora sobre dados parciais.
 
 ### 24.4b Revisando um cartão de método
 
@@ -1557,7 +1557,7 @@ A política como dados permite que as atualizações da ROE sejam entregues sem 
 
 ### 25.3 Registro de decisão
 
-Uma página: contexto, opções, decisão, consequências, data, donos. Guarde-a ao lado do código. Uma página vence uma apresentação de slides que ninguém compara entre versões. Consequências e donos tornam a decisão revisitável. Guardá-la ao lado do código significa que os revisores a veem no mesmo pull request. Sam vincula o ADR a partir do README do serviço que ele afeta. Os links do README usam o nome do arquivo do ADR, então uma renomeação sem atualização quebra o build da documentação e é notada.
+Uma página: contexto, opções, decisão, consequências, data, donos. Guarde-a ao lado do código. Uma página vence uma apresentação de slides que ninguém compara entre versões. Guardá-la ao lado do código significa que os revisores a veem no mesmo pull request. Sam vincula o ADR a partir do README do serviço que ele afeta. Os links do README usam o nome do arquivo do ADR, então uma renomeação sem atualização quebra o build da documentação e é notada.
 
 > **Caso sintético — Riverstone Transit.** O ateliê escolheu a política como JSON assinado, caminho síncrono para as negações e lote assíncrono para as permissões. O ADR-004 registra isso.
 
@@ -1633,7 +1633,7 @@ Uma análise de alternativas termina com uma decisão, as opções rejeitadas co
 
 ### 26.1b Modelos de custo
 
-Inclua o custo anual aproximado (computação, licenças por usuário, tempo da equipe para a aprovação dupla). Uma alternativa que precisa de seis pessoas em tempo integral para operar com falha fechada não é gratuita só porque a licença era barata. O custo pertence ao registro de decisão, ao lado da segurança. O tempo da equipe para a aprovação dupla é um custo anual real. Licenças baratas que exigem seis pessoas em tempo integral reprovam no critério de operabilidade. A planilha de Sam fica ao lado do ADR, não numa pasta particular. Quando os custos disparam, o próximo líder abre a mesma planilha e vê qual premissa quebrou, sem uma caça ao tesouro.
+Inclua o custo anual aproximado (computação, licenças por usuário, tempo da equipe para a aprovação dupla). Uma alternativa que precisa de seis pessoas em tempo integral para operar com falha fechada não é gratuita só porque a licença era barata. O custo pertence ao registro de decisão, ao lado da segurança. Licenças baratas que exigem seis pessoas em tempo integral reprovam no critério de operabilidade. A planilha de Sam fica ao lado do ADR, não numa pasta particular. Quando os custos disparam, o próximo líder abre a mesma planilha e vê qual premissa quebrou, sem uma caça ao tesouro. Cada linha de custo traz a data e a fonte da estimativa, para que números desatualizados sejam fáceis de identificar.
 
 ### Nota de prática
 
@@ -1723,7 +1723,7 @@ Pilhas de controles compensatórios sem dono viram alertas ignorados. Pilhas de 
 
 ### 27.2b Dono do controle
 
-Todo controle tem um dono, que recebe seus alertas, e uma data de revisão. Controles detectivos órfãos viram ruído; controles preventivos órfãos viram folclore que ninguém ousa mudar. Coloque o dono e a data de revisão no mesmo repositório que o código do controle. Dono mais data de revisão no repositório vencem um wiki que ninguém atualiza. Alertas sem dono são ruído; o folclore preventivo bloqueia mudanças necessárias. O CODEOWNERS de Sam mapeia os caminhos dos controles para as pessoas que recebem os acionamentos. Remapear donos é uma mudança de configuração revisada, com uma semana de acionamentos acompanhados antes de o dono antigo sair.
+Todo controle tem um dono, que recebe seus alertas, e uma data de revisão. Controles detectivos órfãos viram ruído; controles preventivos órfãos viram folclore que ninguém ousa mudar. Coloque o dono e a data de revisão no mesmo repositório que o código do controle. Dono mais data de revisão no repositório vencem um wiki que ninguém atualiza. O CODEOWNERS de Sam mapeia os caminhos dos controles para as pessoas que recebem os acionamentos. Remapear donos é uma mudança de configuração revisada, com uma semana de acionamentos acompanhados antes de o dono antigo sair.
 
 ### 27.3b Testando controles
 
@@ -1731,7 +1731,7 @@ Cada controle precisa de um teste negativo: remova-o ou quebre-o num laboratóri
 
 ### 27.1b Detectando o contorno de controles
 
-Registre quando um operador usa o acesso de emergência (break-glass) para pular a aprovação dupla. Break-glass sem detecção é só um controle individual escondido. A revisão semanal dos eventos de break-glass faz parte do desenho do controle. Break-glass sem logs é um controle individual escondido. A revisão semanal mantém os caminhos de emergência excepcionais. Sam plota a contagem de break-glass ao lado do volume de engajamentos. As revisões de design dos caminhos de controle duplo convidam um representante do cliente quando as contagens sobem por duas semanas seguidas. Duas semanas é tempo suficiente para ver um padrão e curto o bastante para agir antes da próxima janela.
+Registre quando um operador usa o acesso de emergência (break-glass) para pular a aprovação dupla. Break-glass sem detecção é só um controle individual escondido. A revisão semanal dos eventos de break-glass faz parte do desenho do controle. A revisão semanal mantém os caminhos de emergência excepcionais. Sam plota a contagem de break-glass ao lado do volume de engajamentos. As revisões de design dos caminhos de controle duplo convidam um representante do cliente quando as contagens sobem por duas semanas seguidas. Duas semanas é tempo suficiente para ver um padrão e curto o bastante para agir antes da próxima janela. Cada registro de break-glass anota quem o usou, qual aprovação foi pulada e por quê.
 
 ### Nota de prática
 
@@ -1769,39 +1769,39 @@ Um arquivo de teste por cláusula: cidr, lista de exclusão, porta, horário, co
 
 ```python
 """Check proposed engagement targets against a written scope (synthetic)."""
-SCOPE_CIDRS = [("10.20.0.0", 16), ("192.168.50.0", 24)]  # inclusive synthetic ranges
+SCOPE_CIDRS = [("10.20.0.0", 16), ("192.168.50.0", 24)] # inclusive synthetic ranges
 SCOPE_PORTS = {22, 80, 443, 8080}
-DENY_HOSTS = {"10.20.0.1", "192.168.50.1"}  # out-of-scope infra
+DENY_HOSTS = {"10.20.0.1", "192.168.50.1"} # out-of-scope infra
 
 def ip_int(s):
-    a,b,c,d = map(int, s.split("."))
-    return (a<<24)|(b<<16)|(c<<8)|d
+a,b,c,d = map(int, s.split("."))
+return (a<<24)|(b<<16)|(c<<8)|d
 
 def in_cidr(ip, net, bits):
-    mask = (0xFFFFFFFF << (32-bits)) & 0xFFFFFFFF
-    return (ip_int(ip) & mask) == (ip_int(net) & mask)
+mask = (0xFFFFFFFF << (32-bits)) & 0xFFFFFFFF
+return (ip_int(ip) & mask) == (ip_int(net) & mask)
 
 def check(host, port):
-    reasons = []
-    if host in DENY_HOSTS:
-        reasons.append("deny-list")
-    if not any(in_cidr(host, n, b) for n,b in SCOPE_CIDRS):
-        reasons.append("outside-cidr")
-    if port not in SCOPE_PORTS:
-        reasons.append("port-not-in-scope")
-    return ("ALLOW" if not reasons else "DENY"), reasons
+reasons = []
+if host in DENY_HOSTS:
+reasons.append("deny-list")
+if not any(in_cidr(host, n, b) for n,b in SCOPE_CIDRS):
+reasons.append("outside-cidr")
+if port not in SCOPE_PORTS:
+reasons.append("port-not-in-scope")
+return ("ALLOW" if not reasons else "DENY"), reasons
 
 tests = [
-    ("10.20.1.10", 443),
-    ("10.20.0.1", 443),
-    ("192.168.50.20", 22),
-    ("192.168.50.20", 3389),
-    ("8.8.8.8", 80),
-    ("192.168.1.10", 80),
+("10.20.1.10", 443),
+("10.20.0.1", 443),
+("192.168.50.20", 22),
+("192.168.50.20", 3389),
+("8.8.8.8", 80),
+("192.168.1.10", 80),
 ]
 for h,p in tests:
-    v, r = check(h,p)
-    print(f"target={h}:{p} decision={v} reasons={','.join(r) or '-'}")
+v, r = check(h,p)
+print(f"target={h}:{p} decision={v} reasons={','.join(r) or '-'}")
 ```
 
 Saída esperada:
@@ -1815,7 +1815,7 @@ target=8.8.8.8:80 decision=DENY reasons=outside-cidr
 target=192.168.1.10:80 decision=DENY reasons=outside-cidr
 ```
 
-Arquivos por cláusula mostram qual regra regrediu. Uma mutação que quebra uma cláusula precisa fazer a CI falhar, ou a suíte é teatro. Fixtures sintéticos mantêm as redes dos clientes de fora. A revisão de Sam verifica se cada cláusula da ROE tem um arquivo. Cláusulas não implementadas bloqueiam os trens de release mesmo quando uma demonstração manual passou num build de notebook. Demonstrações em notebook podem ser anexadas como extras, mas nunca liberam um trem sozinhas.
+Arquivos por cláusula mostram qual regra regrediu. Fixtures sintéticos mantêm as redes dos clientes de fora. A revisão de Sam verifica se cada cláusula da ROE tem um arquivo. Cláusulas não implementadas bloqueiam os trens de release mesmo quando uma demonstração manual passou num build de notebook. Demonstrações em notebook podem ser anexadas como extras, mas nunca liberam um trem sozinhas. Cada arquivo de cláusula nomeia o id da cláusula da ROE que testa, para que um teste que falha aponte direto para o texto assinado.
 
 ### 28.3 Registro em log
 
@@ -1908,7 +1908,7 @@ Conjuntos planejados fazem do denominador uma promessa, não uma caça ao tesour
 
 ### 29.2 Atividade vs. resultado
 
-Atividade: ferramentas iniciadas, pacotes enviados. Resultado: remediações verificadas, violações de SLA encerradas, sondagens fora de escopo. Conduza pelos resultados; use a atividade só para o planejamento de capacidade. Pacotes e ferramentas iniciadas enchem gráficos de capacidade; não provam que os passageiros estão mais seguros. Resultados como violações de SLA encerradas e remediações verificadas são o que a liderança deveria financiar. Sam mantém as métricas de atividade num painel separado, rotulado como só capacidade, para que ninguém confunda estar ocupado com progredir. Quando a liderança da Riverstone pergunta o quanto a equipe trabalhou no mês passado, Sam mostra as horas de ferramenta no painel de capacidade e as remediações verificadas no painel de resultados, nunca um único gráfico que misture os dois.
+Atividade: ferramentas iniciadas, pacotes enviados. Resultado: remediações verificadas, violações de SLA encerradas, sondagens fora de escopo. Conduza pelos resultados; use a atividade só para o planejamento de capacidade. Pacotes e ferramentas iniciadas enchem gráficos de capacidade; não provam que os passageiros estão mais seguros. Sam mantém as métricas de atividade num painel separado, rotulado como só capacidade, para que ninguém confunda estar ocupado com progredir. Quando a liderança da Riverstone pergunta o quanto a equipe trabalhou no mês passado, Sam mostra as horas de ferramenta no painel de capacidade e as remediações verificadas no painel de resultados, nunca um único gráfico que misture os dois.
 
 ### 29.3 Erro de um lado só
 
@@ -2010,7 +2010,7 @@ Hosts sintéticos mantêm o laboratório dentro da fronteira de segurança do cu
 
 ### 30.3 Relatório
 
-Um relatório de laboratório de uma página: versão do ambiente, tabela de resultados, bloqueadores abertos, aprovação. Anexe os hashes. Uma página com versões, resultados, bloqueadores e aprovação basta para uma etapa de release. Hashes vencem capturas de tela que não podem ser reverificadas. A falha de política ausente que parou uma release mostra por que a lista de bloqueadores do relatório importa. Sam anexa o relatório sob a mesma tag do binário. Quando o Laboratório I reprovou na linha de política ausente, o relatório devolvido voltou pela mesma fila de revisão de um pacote novo, com o id do ticket bloqueador impresso no topo, para que os gerentes de release não deixassem de ver por que o trem parou.
+Um relatório de laboratório de uma página: versão do ambiente, tabela de resultados, bloqueadores abertos, aprovação. Anexe os hashes. Hashes vencem capturas de tela que não podem ser reverificadas. A falha de política ausente que parou uma release mostra por que a lista de bloqueadores do relatório importa. Sam anexa o relatório sob a mesma tag do binário. Quando o Laboratório I reprovou na linha de política ausente, o relatório devolvido voltou pela mesma fila de revisão de um pacote novo, com o id do ticket bloqueador impresso no topo, para que os gerentes de release não deixassem de ver por que o trem parou.
 
 > **Caso sintético — Riverstone Transit.** O Laboratório I reprovou uma vez na linha de política ausente; a release ficou parada até que o S-3 fosse corrigido (Capítulo 21).
 
@@ -2020,11 +2020,11 @@ Laboratórios em clientes compartilhados colidem; reserve o ambiente sintético.
 
 ### 30.2b Fixtures de referência
 
-Mantenha um diretório selado de fixtures sintéticos com decisões esperadas conhecidas. As execuções de laboratório precisam bater por hash com o conjunto de fixtures antes de contar como evidência de release. Fixtures derivam quando alguém os "corrige" para combinar com uma construção com bug — proteja-os com CODEOWNERS. CODEOWNERS nos fixtures impede edições silenciosas que escondem bugs. Bater o hash antes de contar uma execução como evidência de release mantém honesto o conjunto selado. O processo de mudança de fixtures de Sam exige uma atualização pareada das decisões esperadas e um segundo revisor que não seja autor da construção sob teste, para que um binário com bug não possa ser escondido editando discretamente as respostas de referência.
+Mantenha um diretório selado de fixtures sintéticos com decisões esperadas conhecidas. As execuções de laboratório precisam bater por hash com o conjunto de fixtures antes de contar como evidência de release. Fixtures derivam quando alguém os "corrige" para combinar com uma construção com bug — proteja-os com CODEOWNERS. CODEOWNERS nos fixtures impede edições silenciosas que escondem bugs. O processo de mudança de fixtures de Sam exige uma atualização pareada das decisões esperadas e um segundo revisor que não seja autor da construção sob teste, para que um binário com bug não possa ser escondido editando discretamente as respostas de referência.
 
 ### 30.3b Executor independente
 
-O Laboratório I é executado por alguém que não implementou a mudança sob teste. Trabalhar em par é bom para depurar depois; o aprovado registrado precisa de uma lista de verificação verde independente. Autores depurando depois tudo bem; o verde registrado precisa vir de outra pessoa. Independência é questão de incentivos, não de desconfiança da competência. Sam designa executores a partir de uma escala rotativa publicada toda sexta-feira para a semana seguinte, e o líder do laboratório resolve conflitos para que o autor de uma mudança nunca seja o executor registrado dessa mudança.
+O Laboratório I é executado por alguém que não implementou a mudança sob teste. Trabalhar em par é bom para depurar depois; o aprovado registrado precisa de uma lista de verificação verde independente. Independência é questão de incentivos, não de desconfiança da competência. Sam designa executores a partir de uma escala rotativa publicada toda sexta-feira para a semana seguinte, e o líder do laboratório resolve conflitos para que o autor de uma mudança nunca seja o executor registrado dessa mudança. O nome de quem executou fica registrado no relatório do laboratório, ao lado do hash do binário.
 
 ### 30.1b Retenção dos dados do laboratório
 
@@ -2117,7 +2117,7 @@ Um PATCH que permite mudar a severidade sem referências de evidência convida a
 
 ### 31.3b Importação em lote
 
-A importação em lote de achados vindos de scanners precisa passar pela mesma validação de esquema da criação interativa, incluindo as verificações de campos proibidos e a idempotência por impressão digital. Um caminho separado de "importação confiável" é por onde os payloads entram escondidos no repositório. Caminhos de importação confiável são como os scanners contornam o esquema. A mesma validação da criação interativa mantém coerentes as impressões digitais e os campos proibidos. O job de importação de Sam registra o id do scanner como evidência, nunca como motivo para pular verificações. Pular verificações por causa da marca de um scanner é registrado como wontfix, com um link para esta regra.
+A importação em lote de achados vindos de scanners precisa passar pela mesma validação de esquema da criação interativa, incluindo as verificações de campos proibidos e a idempotência por impressão digital. Um caminho separado de "importação confiável" é por onde os payloads entram escondidos no repositório. O job de importação de Sam registra o id do scanner como evidência, nunca como motivo para pular verificações. Pular verificações por causa da marca de um scanner é registrado como wontfix, com um link para esta regra. Importações que falham na validação vão para quarentena com o arquivo do scanner guardado como recebido, para que o fornecedor veja exatamente qual campo foi rejeitado. A mesma impressão digital chegando duas vezes atualiza o achado existente em vez de criar um duplicado.
 
 ### 31.1b Concorrência otimista
 
@@ -2209,7 +2209,7 @@ Quando a fila de rascunhos passa de um limite, pare de iniciar novos métodos de
 
 ### 32.3b Caos só no ambiente sintético
 
-Experimentos de confiabilidade (matar pods, particionar redes) rodam no ambiente sintético. Nunca faça teste de caos durante uma janela assinada de um cliente. Registre os ids de experimento separados dos ids de engajamento, para que as métricas não se misturem. Janelas assinadas são para avaliação autorizada, não para experimentos. Ids de experimento separados mantêm as métricas de caos fora dos relatórios de engajamento. Os scripts de caos de Sam se recusam a rodar se houver um id de engajamento definido no ambiente. A CI define de propósito um id de engajamento falso e espera uma saída diferente de zero, provando que a proteção não pode ser pulada por um export esquecido num perfil de shell.
+Experimentos de confiabilidade (matar pods, particionar redes) rodam no ambiente sintético. Nunca faça teste de caos durante uma janela assinada de um cliente. Registre os ids de experimento separados dos ids de engajamento, para que as métricas não se misturem. Janelas assinadas são para avaliação autorizada, não para experimentos. Os scripts de caos de Sam se recusam a rodar se houver um id de engajamento definido no ambiente. A CI define de propósito um id de engajamento falso e espera uma saída diferente de zero, provando que a proteção não pode ser pulada por um export esquecido num perfil de shell.
 
 ### 32.1b Verificações de saúde das dependências
 
@@ -2248,7 +2248,7 @@ Você vai (1) escrever condições de parada como verificações executáveis; (
 
 ### 33.1 Paradas executáveis
 
-Condições de parada são código: lista de exclusão, canário de latência, arquivo de interruptor de emergência do cliente. Pessoas também mandam parar; o software não pode discordar de uma parada humana. Código que pode discordar de uma parada humana é um perigo. Arquivos de interruptor de emergência, listas de exclusão e canários precisam respeitar a mesma interrupção. A API de parada de Sam muda uma única flag que todo método consulta dentro do limite de tempo da ROE. Os intervalos de consulta são afirmados num teste unitário amarrado ao limite de tempo da ROE. Alongar a consulta além desse limite sem uma edição correspondente da ROE reprova a CI, e foi isso que barrou um pull request que tentava "economizar CPU" consultando a cada dois minutos diante de uma promessa de interruptor de emergência de trinta segundos.
+Condições de parada são código: lista de exclusão, canário de latência, arquivo de interruptor de emergência do cliente. Pessoas também mandam parar; o software não pode discordar de uma parada humana. Arquivos de interruptor de emergência, listas de exclusão e canários precisam respeitar a mesma interrupção. A API de parada de Sam muda uma única flag que todo método consulta dentro do limite de tempo da ROE. Os intervalos de consulta são afirmados num teste unitário amarrado ao limite de tempo da ROE. Alongar a consulta além desse limite sem uma edição correspondente da ROE reprova a CI, e foi isso que barrou um pull request que tentava "economizar CPU" consultando a cada dois minutos diante de uma promessa de interruptor de emergência de trinta segundos.
 
 ### 33.2 Rollback
 
@@ -2262,15 +2262,15 @@ Percorra a linha do tempo das 11:10: quem é chamado, o que é dito, o que é re
 
 ### 33.4 Erros e limites
 
-Teatro de resiliência é um fichário que ninguém abre. Treine uma vez por período. Fichários que ninguém abre são piores que nenhum fichário, porque criam uma falsa garantia. Uma parada treinada uma vez por período é o mínimo. Sam marca o período como incompleto no registro de treinamento até que a medição do treino seja arquivada, e se recusa a escalar como líder alguém que não participou de um treino no período atual. Quem monta a escala lê esses registros de treinamento diretamente, para que um substituto possa provar que está pronto sem perguntar pela sala na manhã de uma janela.
+Teatro de resiliência é um fichário que ninguém abre. Treine uma vez por período. Fichários que ninguém abre são piores que nenhum fichário, porque criam uma falsa garantia. Sam marca o período como incompleto no registro de treinamento até que a medição do treino seja arquivada, e se recusa a escalar como líder alguém que não participou de um treino no período atual. Quem monta a escala lê esses registros de treinamento diretamente, para que um substituto possa provar que está pronto sem perguntar pela sala na manhã de uma janela. Um exercício planejado mas não realizado conta como perdido.
 
 ### 33.2b Modelos de comunicação
 
-Escreva de antemão o SMS/e-mail de parada, de retomada e de rollback. Sob estresse, as pessoas improvisam e omitem a versão da ROE ou o horário do próximo ponto de controle. Os modelos ficam no runbook e são testados no exercício de mesa. Os modelos carregam a versão da ROE e o próximo ponto de controle, para que o estresse não possa omiti-los. Testá-los no exercício de mesa encontra campos ausentes. Sam guarda os modelos ao lado do runbook, com o mesmo caminho de revisão do código. A revisão dos modelos usa o mesmo caminho de CODEOWNERS do código de segurança do TrackScope.
+Escreva de antemão o SMS/e-mail de parada, de retomada e de rollback. Sob estresse, as pessoas improvisam e omitem a versão da ROE ou o horário do próximo ponto de controle. Os modelos ficam no runbook e são testados no exercício de mesa. Testá-los no exercício de mesa encontra campos ausentes. Sam guarda os modelos ao lado do runbook, com o mesmo caminho de revisão do código. A revisão dos modelos usa o mesmo caminho de CODEOWNERS do código de segurança do TrackScope. Cada modelo deixa em branco só o horário, o motivo e o remetente, para que todo o resto já esteja correto quando a parada for acionada. As mensagens de retomada também nomeiam o papel que autorizou a retomada.
 
 ### 33.3b Autoridade de retomada
 
-Quem pode retomar depois de uma parada? Nomeie o papel na ROE. O TrackScope deve exigir um token de retomada amarrado a esse papel e à ScopeVersion, não um Booleano que qualquer pessoa no jumphost possa alternar. Um Booleano no jumphost não é autorização. Tokens de retomada amarrados ao papel e à ScopeVersion correspondem à forma como a parada foi concedida. O token de Sam expira rápido, para que uma retomada esquecida não sobreviva à decisão. Tokens de retomada expirados registram uma negação com o motivo `resume-expired`. O PulseMap os mostra num gráfico ao lado dos acertos comuns da lista de exclusão toda semana; um pico depois de um exercício de mesa costuma significar que alguém tentou reutilizar um token esquecido em vez de pedir uma retomada nova.
+Quem pode retomar depois de uma parada? Nomeie o papel na ROE. O TrackScope deve exigir um token de retomada amarrado a esse papel e à ScopeVersion, não um Booleano que qualquer pessoa no jumphost possa alternar. Um Booleano no jumphost não é autorização. O token de Sam expira rápido, para que uma retomada esquecida não sobreviva à decisão. Tokens de retomada expirados registram uma negação com o motivo `resume-expired`. O PulseMap os mostra num gráfico ao lado dos acertos comuns da lista de exclusão toda semana; um pico depois de um exercício de mesa costuma significar que alguém tentou reutilizar um token esquecido em vez de pedir uma retomada nova.
 
 ### 33.1b Contatos secundários
 
@@ -2327,15 +2327,15 @@ A diferença de relógio entre hosts embaralha as linhas do tempo; prefira hora 
 
 ### 34.2b Eventos envenenados
 
-Os consumidores precisam validar o esquema e rejeitar eventos com carimbos de tempo no futuro, versões de política desconhecidas ou alvos que reprovam nas verificações de formato. Um fluxo de eventos envenenado deve ir para quarentena, não criar achados contra hosts aleatórios. A quarentena vence criar achados contra hosts sem sentido. Carimbos de tempo no futuro e versões de política desconhecidas são motivos de rejeição. Sam aciona alertas quando a quarentena cresce, da mesma forma que aciona em picos de negação. Os alertas de quarentena incluem o nome do serviço produtor. O runbook de rollback abre nesse nome a partir do conteúdo do alerta, para que um operador diante de um fluxo envenenado de eventos com carimbo no futuro possa parar o produtor sem adivinhar qual serviço derrubar.
+Os consumidores precisam validar o esquema e rejeitar eventos com carimbos de tempo no futuro, versões de política desconhecidas ou alvos que reprovam nas verificações de formato. Um fluxo de eventos envenenado deve ir para quarentena, não criar achados contra hosts aleatórios. A quarentena vence criar achados contra hosts sem sentido. Sam aciona alertas quando a quarentena cresce, da mesma forma que aciona em picos de negação. Os alertas de quarentena incluem o nome do serviço produtor. O runbook de rollback abre nesse nome a partir do conteúdo do alerta, para que um operador diante de um fluxo envenenado de eventos com carimbo no futuro possa parar o produtor sem adivinhar qual serviço derrubar.
 
 ### 34.3b Treino de evolução de esquema
 
-Pratique acrescentar um campo opcional de ponta a ponta num ensaio: produtor, consumidor, fixture, documentação. Equipes que só evoluem esquemas em emergências inventam atalhos incompatíveis. Atalhos surgem quando a única prática são as emergências. Campos opcionais de ponta a ponta mantêm honesta a memória muscular. Sam agenda um treino a cada período, com um nome de campo descartável. Os campos descartáveis são apagados no fim do período com uma nota de migração que cita a equipe dona. Essa equipe precisa confirmar a nota no repositório do contrato antes que o campo desapareça, para que um campo de ensaio não suma enquanto um consumidor ainda o lê.
+Pratique acrescentar um campo opcional de ponta a ponta num ensaio: produtor, consumidor, fixture, documentação. Equipes que só evoluem esquemas em emergências inventam atalhos incompatíveis. Campos opcionais de ponta a ponta mantêm honesta a memória muscular. Sam agenda um treino a cada período, com um nome de campo descartável. Os campos descartáveis são apagados no fim do período com uma nota de migração que cita a equipe dona. Essa equipe precisa confirmar a nota no repositório do contrato antes que o campo desapareça, para que um campo de ensaio não suma enquanto um consumidor ainda o lê.
 
 ### 34.1b Filas de mensagens mortas
 
-Eventos que reprovam na validação vão para uma fila de mensagens mortas com um alerta — não para `/dev/null` e não para os achados. Os operadores reproduzem depois de corrigir o produtor. Descartes invisíveis recriam o repúdio. Descartes invisíveis recriam o repúdio. Alertas sobre mensagens mortas forçam os operadores a reproduzir depois das correções. O runbook de Sam proíbe filtrar alertas dessa fila sem uma nota AUTH. Notas AUTH para filtros de alerta expiram depois de sete dias, a menos que sejam renovadas com a mesma aprovação dupla da nota original. Filtros expirados se rearmam automaticamente; essa regra pegou um filtro esquecido que tinha silenciado os alertas de mensagens mortas por nove dias durante um período tranquilo de provas.
+Eventos que reprovam na validação vão para uma fila de mensagens mortas com um alerta — não para `/dev/null` e não para os achados. Os operadores reproduzem depois de corrigir o produtor. Descartes invisíveis recriam o repúdio. O runbook de Sam proíbe filtrar alertas dessa fila sem uma nota AUTH. Notas AUTH para filtros de alerta expiram depois de sete dias, a menos que sejam renovadas com a mesma aprovação dupla da nota original. Filtros expirados se rearmam automaticamente; essa regra pegou um filtro esquecido que tinha silenciado os alertas de mensagens mortas por nove dias durante um período tranquilo de provas.
 
 ### Nota de prática
 
@@ -2352,7 +2352,7 @@ A idade das mensagens mortas é um gráfico de SLO ao lado da latência do camin
 
 ### 34.4b Propriedade do contrato de eventos
 
-Cada tipo de evento no barramento tem uma equipe dona que aprova as mudanças. O PulseMap consome eventos do FindingsDesk, mas não pode alterar seu esquema; em vez disso, abre uma solicitação, o que mantém o contrato estável para todos os outros consumidores. Uma equipe dona por tipo de evento impede mudanças incompatíveis de passagem. As aprovações ficam registradas no repositório do contrato. Sam bloqueia merges que mexem num tipo sem a revisão da equipe dona. Os aliases das equipes donas são endereços de grupo, como `trackscope-contract@riverstone.example`, para que a propriedade sobreviva quando pessoas saem do esquadrão da plataforma e toda mudança de esquema ainda chegue a alguém de plantão.
+Cada tipo de evento no barramento tem uma equipe dona que aprova as mudanças. O PulseMap consome eventos do FindingsDesk, mas não pode alterar seu esquema; em vez disso, abre uma solicitação, o que mantém o contrato estável para todos os outros consumidores. As aprovações ficam registradas no repositório do contrato. Sam bloqueia merges que mexem num tipo sem a revisão da equipe dona. Os aliases das equipes donas são endereços de grupo, como `trackscope-contract@riverstone.example`, para que a propriedade sobreviva quando pessoas saem do esquadrão da plataforma e toda mudança de esquema ainda chegue a alguém de plantão.
 
 ### Exercícios
 
@@ -2400,7 +2400,7 @@ Métricas que subestimam ainda precisam ser legíveis: letra grande para a fraç
 
 ### 35.3b A exportação como fonte da verdade
 
-Se a interface e a exportação em CSV discordarem, a exportação vence para o relatório. Construa as exportações primeiro; trate a interface como uma visão. Isso acaba com discussões sobre o que "71%" queria dizer numa captura de tela. Se a interface discordar da exportação, a exportação vence e a interface tem bug. Os revisores conferem os números a partir do arquivo. A lista de verificação de release de Sam compara as legendas da interface com os cabeçalhos da exportação. Diferenças entre legendas e cabeçalhos que reprovam a CI bloqueiam a candidata a release. Não se pode criar tags enquanto essas diferenças estiverem vermelhas, o que mantém a exportação em CSV — a fonte da verdade para o número de 71% — alinhada com o que a interface afirma.
+Se a interface e a exportação em CSV discordarem, a exportação vence para o relatório. Construa as exportações primeiro; trate a interface como uma visão. Isso acaba com discussões sobre o que "71%" queria dizer numa captura de tela. Os revisores conferem os números a partir do arquivo. A lista de verificação de release de Sam compara as legendas da interface com os cabeçalhos da exportação. Não se pode criar tags enquanto essas diferenças estiverem vermelhas, o que mantém a exportação em CSV — a fonte da verdade para o número de 71% — alinhada com o que a interface afirma. Uma captura de tela num relatório precisa trazer o nome e o hash do arquivo de exportação de onde foi tirada.
 
 ### 35.1b Exportações narrativas
 
@@ -2507,7 +2507,7 @@ Buckets separados para métodos silenciosos e barulhentos, para que um enumerado
 
 ### 36.4b Testes de carga que respeitam o cliente
 
-Os testes de desempenho do TrackScope e dos executores de métodos usam só alvos sintéticos. As taxas medidas ali viram o teto permitido nos engajamentos, sempre abaixo do limite acordado com o cliente, para que ganhos de velocidade nunca se traduzam em mais tráfego nos sistemas do cliente do que foi assinado. A velocidade medida em alvos sintéticos só vira o teto do engajamento depois de conferida contra o limite assinado com o cliente. Uma construção do TrackScope que ficou mais rápida não pode, em silêncio, mandar mais pacotes contra a API de tarifas do que a ROE de segunda-feira permitia. O relatório de teste de carga de Sam lista os dois números lado a lado antes de qualquer aumento do tamanho do pool.
+Os testes de desempenho do TrackScope e dos executores de métodos usam só alvos sintéticos. As taxas medidas ali viram o teto permitido nos engajamentos, sempre abaixo do limite acordado com o cliente, para que ganhos de velocidade nunca se traduzam em mais tráfego nos sistemas do cliente do que foi assinado. Uma construção do TrackScope que ficou mais rápida não pode, em silêncio, mandar mais pacotes contra a API de tarifas do que a ROE de segunda-feira permitia. O relatório de teste de carga de Sam lista os dois números lado a lado antes de qualquer aumento do tamanho do pool. Se os dois números chegarem a se cruzar, o teto fica no limite do cliente e a velocidade extra fica sem uso.
 
 ### Exercícios
 
@@ -2593,7 +2593,7 @@ As janelas de engajamento ficam num calendário compartilhado, com a versão da 
 
 ### 37.1b Itens de reserva
 
-Os kits de operações incluem imagens reserva do jump host, cartões de contato impressos e cópias offline da ROE. Quando o SSO cai, o engajamento ainda precisa de um caminho de parada documentado. Quando o SSO morre, o engajamento ainda precisa de um caminho de parada que não dependa do provedor de identidade. Imagens reserva do jump host, contatos impressos e uma ROE offline são o que torna isso real. Sam confere o kit na manhã da janela, não depois do primeiro login que falhou. A lista de verificação do kit também é um item de encerramento, para que as imagens emprestadas sejam restauradas antes do próximo cliente.
+Os kits de operações incluem imagens reserva do jump host, cartões de contato impressos e cópias offline da ROE. Quando o SSO morre, o engajamento ainda precisa de um caminho de parada que não dependa do provedor de identidade. Sam confere o kit na manhã da janela, não depois do primeiro login que falhou. A lista de verificação do kit também é um item de encerramento, para que as imagens emprestadas sejam restauradas antes do próximo cliente. Os cartões de contato impressos listam o contato de parada do cliente e o líder do engajamento, com telefones que não dependem do diretório corporativo. As cópias offline da ROE trazem o mesmo número de versão do PDF assinado, para que ninguém trabalhe com um escopo antigo. As imagens reserva são reconstruídas a partir da imagem de referência no início de cada período.
 
 ### Nota de prática
 
@@ -2610,7 +2610,7 @@ A passagem de turno inclui ler em voz alta para o líder que entra as últimas d
 
 ### 37.4b Medir o runbook
 
-Depois de cada engajamento, o líder anota quais passos do runbook foram pulados, ficaram confusos ou estavam desatualizados. Sam soma essas anotações ao longo de um trimestre; os passos pulados com mais frequência são reescritos ou removidos, e o histórico de revisões do runbook mostra cada mudança com o seu motivo. Os passos pulados com mais frequência estão errados ou são difíceis demais sob estresse. As contagens trimestrais transformam reclamações em edições com motivos no histórico de revisões. A última reescrita de Sam removeu um passo que pedia uma captura de tela de uma página que o jump host não conseguia abrir, e que tinha sido pulado em quatro engajamentos seguidos.
+Depois de cada engajamento, o líder anota quais passos do runbook foram pulados, ficaram confusos ou estavam desatualizados. Sam soma essas anotações ao longo de um trimestre; os passos pulados com mais frequência são reescritos ou removidos, e o histórico de revisões do runbook mostra cada mudança com o seu motivo. Os passos pulados com mais frequência estão errados ou são difíceis demais sob estresse. A última reescrita de Sam removeu um passo que pedia uma captura de tela de uma página que o jump host não conseguia abrir, e que tinha sido pulado em quatro engajamentos seguidos.
 
 ### Exercícios
 
@@ -2931,7 +2931,7 @@ Benchmarks em laptops não preveem os links dos pátios (Capítulo 3). Um link g
 
 ### 41.2b Descarte de carga
 
-Sob sobrecarga, descarte trabalho de descoberta antes de descartar a avaliação de negação. Usuários podem esperar por uma varredura; não podem esperar por uma negação que nunca chega. Implemente as filas de prioridade de acordo. Filas de prioridade que descartam a avaliação de negação sob carga invertem o modelo de segurança. A descoberta pode esperar; uma negação que nunca chega é um allow. Os testes de descarte de Sam empurram carga sintética até as filas de descoberta crescerem e então verificam que todo predicado ainda roda e retorna dentro do orçamento de latência. Descartar descoberta aparece como um aumento de planejado-mas-não-visto no PulseMap, o que é preferível a um allow silencioso.
+Sob sobrecarga, descarte trabalho de descoberta antes de descartar a avaliação de negação. Usuários podem esperar por uma varredura; não podem esperar por uma negação que nunca chega. Implemente as filas de prioridade de acordo. Filas de prioridade que descartam a avaliação de negação sob carga invertem o modelo de segurança. Os testes de descarte de Sam empurram carga sintética até as filas de descoberta crescerem e então verificam que todo predicado ainda roda e retorna dentro do orçamento de latência. Descartar descoberta aparece como um aumento de planejado-mas-não-visto no PulseMap, o que é preferível a um allow silencioso. A ordem de descarte fica escrita no ADR, para que um ajuste posterior não possa invertê-la em silêncio.
 
 ### 41.3b Folga de capacidade
 
@@ -3000,11 +3000,11 @@ Projetos de curso não são trabalho com seres humanos blindado por comitê de �
 
 ### 42.2b Pré-registro
 
-Escreva a hipótese, a medida primária e as regras de exclusão antes de olhar os dados de resultado. Registre-os no repositório. Mudar a medida depois de ver os resultados é como pontuações vazias voltam pela porta da pesquisa. Mudar a medida primária depois de ver os resultados é como pontuações vazias entram escondidas pela pesquisa. Registrar hipótese, medida e exclusões primeiro torna essa jogada visível como um desvio. O estudo de aprovação dupla de Sam manteve a taxa de reabertura como primária mesmo quando uma métrica secundária parecia mais lisonjeira. Desvios exigem uma nota datada no apêndice, não uma edição discreta no notebook.
+Escreva a hipótese, a medida primária e as regras de exclusão antes de olhar os dados de resultado. Registre-os no repositório. Mudar a medida depois de ver os resultados é como pontuações vazias voltam pela porta da pesquisa. Registrar hipótese, medida e exclusões primeiro torna essa jogada visível como um desvio. O estudo de aprovação dupla de Sam manteve a taxa de reabertura como primária mesmo quando uma métrica secundária parecia mais lisonjeira. Desvios exigem uma nota datada no apêndice, não uma edição discreta no notebook. O commit do registro é datado antes de qualquer dado de resultado ser extraído, o que os revisores podem conferir no histórico.
 
 ### 42.3b Publicabilidade de resultados negativos
 
-Pesquisa aplicada publicável inclui resultados negativos ("a aprovação dupla não mudou as taxas de reabertura nesta amostra"). Esconder os negativos enviesa os desenhos da próxima turma rumo a uma confiança vazia. Um resultado negativo sobre aprovação dupla ainda ensina à próxima turma a não supor que o controle funciona sem evidência. Escondê-lo empurraria confiança vazia para o ateliê de desenho. O relato de Sam abre com o negativo e discute o tamanho da amostra antes de sugerir uma continuação. Turmas que só veem relatos positivos continuam lançando controles não medidos. Os enunciados do ateliê agora incluem um exemplo de resultado negativo tirado do relato de Sam.
+Pesquisa aplicada publicável inclui resultados negativos ("a aprovação dupla não mudou as taxas de reabertura nesta amostra"). Esconder os negativos enviesa os desenhos da próxima turma rumo a uma confiança vazia. Um resultado negativo sobre aprovação dupla ainda ensina à próxima turma a não supor que o controle funciona sem evidência. O relato de Sam abre com o negativo e discute o tamanho da amostra antes de sugerir uma continuação. Turmas que só veem relatos positivos continuam lançando controles não medidos. Os enunciados do ateliê agora incluem um exemplo de resultado negativo tirado do relato de Sam. Resultados negativos são relatados com os mesmos intervalos que os positivos.
 
 ### 42.1b Acordos de compartilhamento de dados
 
@@ -3073,11 +3073,11 @@ Anfitriões do serviço público podem levar meses para aprovar um novo SaaS. De
 
 ### 43.3b Conflito de interesses
 
-Se o seu anfitrião de estágio vende scanners, o seu relatório de prática precisa declarar isso e ainda assim recusar pontuações vazias. Apresentações de marketing não são medição. Se o anfitrião vende scanners, declare isso e ainda assim recuse pontuações vazias no relatório de prática. Apresentações de marketing são citações de alegações, não medições. O parágrafo de declaração de Sam ficava acima das métricas, para que os leitores vissem a relação antes dos números. Pontuações vazias numa apresentação do anfitrião são citadas como alegações a testar, não como resultados a copiar. Os avaliadores leem a declaração antes de pontuar a parte de medição.
+Se o seu anfitrião de estágio vende scanners, o seu relatório de prática precisa declarar isso e ainda assim recusar pontuações vazias. Apresentações de marketing não são medição. O parágrafo de declaração de Sam ficava acima das métricas, para que os leitores vissem a relação antes dos números. Pontuações vazias numa apresentação do anfitrião são citadas como alegações a testar, não como resultados a copiar. Os avaliadores leem a declaração antes de pontuar a parte de medição. A declaração também informa quem pagou por qualquer licença usada no trabalho, para que os leitores saibam quais ferramentas vieram do anfitrião. Comparações entre o produto do anfitrião e outros scanners rodam nos mesmos alvos sintéticos e são relatadas com os mesmos denominadores.
 
 ### 43.1b Credenciamento e necessidade de saber
 
-Estágios no serviço público podem envolver credenciamentos de segurança. Os artefatos do curso ficam na menor sensibilidade: reconstruções sintéticas. Nunca cole texto classificado ou restrito no GitHub. Texto restrito no GitHub de um estudante é um incidente. Reconstruções sintéticas na menor sensibilidade são os únicos artefatos do curso. O hook de pre-commit do repositório de Sam procura os codinomes internos de projetos do anfitrião e bloqueia o commit. Hooks que só avisam não bastam; o commit precisa falhar fechado. Commits barrados são registrados para o supervisor do estágio no mesmo dia.
+Estágios no serviço público podem envolver credenciamentos de segurança. Os artefatos do curso ficam na menor sensibilidade: reconstruções sintéticas. Nunca cole texto classificado ou restrito no GitHub. O hook de pre-commit do repositório de Sam procura os codinomes internos de projetos do anfitrião e bloqueia o commit. Hooks que só avisam não bastam; o commit precisa falhar fechado. Commits barrados são registrados para o supervisor do estágio no mesmo dia. Antes de o estágio começar, Sam e o mentor do anfitrião combinam por escrito quais detalhes podem aparecer nos artefatos do curso. O que não está nessa lista fica fora do repositório, mesmo em forma sintética. A lista de codinomes do hook vem desse acordo e é atualizada quando o anfitrião inicia novos projetos.
 
 ### Nota de prática
 
@@ -3120,7 +3120,7 @@ Você vai (1) propor um projeto final que entregue uma melhoria mensurável na p
 
 ### 44.1 Proposta
 
-Problema, usuários, requisitos (segurança primeiro), esboço de arquitetura, marcos, plano do laboratório de verificação, parágrafo de ética. Projetos finais que precisam de trabalho de exploit são rejeitados. Requisitos de segurança em primeiro lugar e um parágrafo de ética são portões, não enfeites. Propostas centradas em exploits voltam sem leitura. O modelo de Sam abre com os usuários e os requisitos de falha fechada antes de qualquer esboço de arquitetura, e é por isso que rascunhos de "auto-pwn" nunca passaram do primeiro ponto de controle. Esboços de arquitetura sem usuários e requisitos de falha fechada são devolvidos no mesmo ponto de controle. Os requisitos de segurança são numerados e rastreados até linhas do Laboratório II no mesmo documento.
+Problema, usuários, requisitos (segurança primeiro), esboço de arquitetura, marcos, plano do laboratório de verificação, parágrafo de ética. Projetos finais que precisam de trabalho de exploit são rejeitados. Requisitos de segurança em primeiro lugar e um parágrafo de ética são portões, não enfeites. Propostas centradas em exploits voltam sem leitura. O modelo de Sam abre com os usuários e os requisitos de falha fechada antes de qualquer esboço de arquitetura, e é por isso que rascunhos de "auto-pwn" nunca passaram do primeiro ponto de controle. Os requisitos de segurança são numerados e rastreados até linhas do Laboratório II no mesmo documento. Propostas que falham nessa verificação voltam com a seção ausente indicada.
 
 ### 44.2 Não objetivos
 
@@ -3128,7 +3128,7 @@ Liste explicitamente o que você não vai construir (módulos de exploit, varred
 
 ### 44.3 Marco 1
 
-Algo demonstrável com dados sintéticos na semana 3: p. ex., kill switch respeitado em ≤30 s, com um teste. Um kill switch respeitado em ≤30 s com dados sintéticos é demonstrável e relevante para a segurança. "Spikes de pesquisa" vagos não são. O vídeo do marco 1 de Sam mostra o controle de parada, o tempo de parada medido e a cláusula das ROE que ele satisfaz, que é o padrão que avançou enquanto o "auto-pwn" era devolvido. Vídeos sem um tempo de parada medido reprovam no ponto de controle, mesmo que a interface pareça polida.
+Algo demonstrável com dados sintéticos na semana 3: p. ex., kill switch respeitado em ≤30 s, com um teste. "Spikes de pesquisa" vagos não são. O vídeo do marco 1 de Sam mostra o controle de parada, o tempo de parada medido e a cláusula das ROE que ele satisfaz, que é o padrão que avançou enquanto o "auto-pwn" era devolvido. Vídeos sem um tempo de parada medido reprovam no ponto de controle, mesmo que a interface pareça polida.
 
 > **Caso sintético — Riverstone Transit.** Propostas do Projeto Final I que mencionavam "auto-pwn" foram devolvidas; "distribuição de política assinada com falha fechada" avançou.
 
@@ -3138,15 +3138,15 @@ O aumento de escopo é o principal assassino de projetos finais — congele os n
 
 ### 44.2b Registro de riscos do projeto final
 
-Liste os riscos do projeto: aumento de escopo, atraso de dependências, indisponibilidade de revisores, confusão sobre a fronteira ética. Cada risco tem um alerta antecipado e uma mitigação. Revise o registro toda semana no ateliê. Alertas antecipados valem mais que heroísmo na semana onze. Indisponibilidade de revisores e confusão ética precisam de mitigações antes de acontecerem. O registro de Sam sinalizou uma viagem do orientador na semana seis e antecipou o ponto de controle; a mitigação foi uma demo gravada, não um atraso silencioso. O ateliê semanal abre com o registro antes das demos de funcionalidades. Riscos sem alertas antecipados são reescritos antes do fim da reunião.
+Liste os riscos do projeto: aumento de escopo, atraso de dependências, indisponibilidade de revisores, confusão sobre a fronteira ética. Cada risco tem um alerta antecipado e uma mitigação. Revise o registro toda semana no ateliê. Alertas antecipados valem mais que heroísmo na semana onze. O registro de Sam sinalizou uma viagem do orientador na semana seis e antecipou o ponto de controle; a mitigação foi uma demo gravada, não um atraso silencioso. Riscos sem alertas antecipados são reescritos antes do fim da reunião. Cada mitigação nomeia quem age e até qual semana. Riscos encerrados ficam no registro com a data de encerramento, para que o relatório final mostre quais alertas dispararam e o que foi feito.
 
 ### 44.3b Pontos de controle com o orientador
 
-O Projeto Final I tem pontos de controle obrigatórios: proposta aceita, demo do marco 1, verificação ética intermediária. Perder um ponto de controle congela a codificação até a recuperação — a deriva silenciosa produz pilhas impossíveis de revisar. A deriva silenciosa produz pilhas que ninguém consegue revisar. Perder um ponto de controle congela a codificação até que o portão seja aprovado. A verificação ética no meio do projeto final de Sam pegou um plano de usar hostnames anonimizados, mas ainda internos do anfitrião; a codificação ficou congelada até que o conjunto sintético fosse substituído. A codificação congelada fica visível no quadro, para que colegas não façam merge de trabalho dependente. PRs dependentes de colegas ficam em rascunho enquanto o congelamento vale.
+O Projeto Final I tem pontos de controle obrigatórios: proposta aceita, demo do marco 1, verificação ética intermediária. Perder um ponto de controle congela a codificação até a recuperação — a deriva silenciosa produz pilhas impossíveis de revisar. A verificação ética no meio do projeto final de Sam pegou um plano de usar hostnames anonimizados, mas ainda internos do anfitrião; a codificação ficou congelada até que o conjunto sintético fosse substituído. A codificação congelada fica visível no quadro, para que colegas não façam merge de trabalho dependente. PRs dependentes de colegas ficam em rascunho enquanto o congelamento vale. Recuperar um ponto de controle perdido significa reunir-se com o orientador e obter a assinatura do portão, não apenas mandar um pedido de desculpas.
 
 ### 44.1b Métricas de sucesso do projeto final
 
-Defina duas métricas que você vai mostrar na defesa (p. ex., tempo até negar tudo, percentual de merges com tickets AUTH). Se você não consegue nomeá-las no Projeto Final I, a proposta não está pronta. Tempo até negar tudo e percentual de merges com tickets AUTH são exemplos de métricas que uma defesa pode mostrar como artefatos. Se o Projeto Final I não consegue nomear duas, a proposta não está pronta. Sam escreveu "negar tudo ≤30 s após perda da política" e "100% das ampliações de escopo têm tickets AUTH" na primeira página da sua proposta.
+Defina duas métricas que você vai mostrar na defesa (p. ex., tempo até negar tudo, percentual de merges com tickets AUTH). Se você não consegue nomeá-las no Projeto Final I, a proposta não está pronta. Sam escreveu "negar tudo ≤30 s após perda da política" e "100% das ampliações de escopo têm tickets AUTH" na primeira página da sua proposta. Cada métrica precisa de um método de medição e de uma meta que possa ser verificada com dados sintéticos antes da defesa. Metas vagas como "mais segurança" são devolvidas no ponto de controle da proposta. Sam também indicou como mediria cada uma: uma execução cronometrada do Laboratório II para o negar tudo e uma consulta ao histórico de merges para os tickets AUTH. As duas foram medidas uma vez com dados sintéticos antes de a proposta ser entregue, para que se soubesse que as metas eram alcançáveis.
 
 ### Nota de prática
 
@@ -3167,7 +3167,7 @@ Propostas sem o mapeamento para linhas do laboratório são devolvidas antes que
 
 ### 44.4b Delimitar o projeto final com honestidade
 
-A proposta do projeto final declara o que será construído no tempo disponível — uma ferramenta de diff de escopo para o TrackScope, com testes e uma avaliação curta — e o que não será, como a integração com o sistema de tickets de cada cliente. Os orientadores julgam o projeto contra o escopo declarado, não contra um escopo maior imaginado. Os orientadores avaliam o escopo declarado, não um sistema maior imaginado. Uma ferramenta de diff de escopo com testes e uma avaliação curta basta, se for real. Os não objetivos de Sam incluíam "o sistema de tickets de cada cliente", o que impediu uma correria tardia para adicionar o Jira durante o congelamento.
+A proposta do projeto final declara o que será construído no tempo disponível — uma ferramenta de diff de escopo para o TrackScope, com testes e uma avaliação curta — e o que não será, como a integração com o sistema de tickets de cada cliente. Os orientadores julgam o projeto contra o escopo declarado, não contra um escopo maior imaginado. Os não objetivos de Sam incluíam "o sistema de tickets de cada cliente", o que impediu uma correria tardia para adicionar o Jira durante o congelamento. Os não objetivos ficam listados na proposta ao lado dos objetivos, para que as revisões de congelamento confiram novos pedidos contra eles. Uma funcionalidade que não aparece em nenhuma das listas volta ao orientador antes de qualquer código ser escrito. O orientador assina a lista no ponto de controle da proposta.
 
 ### Exercícios
 
@@ -3193,7 +3193,7 @@ Você vai (1) conduzir uma revisão que pode rejeitar; (2) usar uma lista de ver
 
 ### 45.1 Direitos de revisão
 
-Os revisores podem bloquear o merge por caminhos de falha aberta, testes ausentes ou pontuações vazias na interface. "LGTM" sem rodar a lista de verificação é inválido. O LGTM sem lista de verificação é como a falha aberta volta sob prazo. Revisores que bloqueiam por pontuações vazias ou testes ausentes estão fazendo o trabalho. O PR do selo de cobertura de Sam recebeu dois bloqueios sob essa regra antes que a interface honesta fosse lançada. Um terceiro bloqueio teria sido aceitável; velocidade não é motivo para pular a lista de verificação. Os autores não podem marcar as caixas da própria lista de verificação; os revisores precisam marcá-las.
+Os revisores podem bloquear o merge por caminhos de falha aberta, testes ausentes ou pontuações vazias na interface. "LGTM" sem rodar a lista de verificação é inválido. O LGTM sem lista de verificação é como a falha aberta volta sob prazo. O PR do selo de cobertura de Sam recebeu dois bloqueios sob essa regra antes que a interface honesta fosse lançada. Um terceiro bloqueio teria sido aceitável; velocidade não é motivo para pular a lista de verificação. Os autores não podem marcar as caixas da própria lista de verificação; os revisores precisam marcá-las. Um bloqueio precisa nomear o item da lista de verificação que falhou, para que o autor saiba o que corrigir.
 
 ### 45.2 Lista de verificação
 
@@ -3244,7 +3244,7 @@ Pulos repetidos da lista de verificação pelo mesmo revisor disparam uma conver
 
 ### 45.4b Encerrar comentários de revisão
 
-Todo comentário de revisão termina em um de três estados: corrigido, com link para a mudança; recusado, com um motivo que o revisor aceita; ou carregado como risco conhecido, com um dono. O desenho de Sam só é aprovado quando nenhum comentário permanece aberto sem um desses estados. Comentários abertos sem estado de corrigido/recusado/risco significam que o desenho não está aprovado. Riscos carregados precisam de donos. A aprovação de Sam para a interface honesta de cobertura esperou até que todo comentário relacionado ao selo estivesse corrigido ou recusado com um motivo que o revisor aceitou.
+Todo comentário de revisão termina em um de três estados: corrigido, com link para a mudança; recusado, com um motivo que o revisor aceita; ou carregado como risco conhecido, com um dono. O desenho de Sam só é aprovado quando nenhum comentário permanece aberto sem um desses estados. Riscos carregados precisam de donos. A aprovação de Sam para a interface honesta de cobertura esperou até que todo comentário relacionado ao selo estivesse corrigido ou recusado com um motivo que o revisor aceitou. Comentários mantidos como riscos conhecidos são copiados para o registro de riscos com seu dono e uma data de revisão.
 
 ### Exercícios
 
@@ -3329,15 +3329,15 @@ Mágica de demo num laptop com a falha fechada explicada no gogó não passa. No
 
 ### 46.2b Acompanhamento do operador
 
-Antes de declarar pronto, um segundo engenheiro segue o runbook a frio, com dados sintéticos, enquanto o autor fica em silêncio. Os pontos onde ele empaca viram correções na documentação. O Projeto Final II não está pronto até que a execução silenciosa tenha sucesso. O silêncio do autor durante a execução a frio é o que revela passos ausentes. Os pontos de empaque viram correções na documentação antes que alguém declare pronto. A sessão de acompanhamento de Sam empacou no caminho do kill switch até que a página do fichário nomeasse a localização do arquivo que o exercício de mesa tinha encontrado antes. As notas de empaque são registradas como tickets de documentação antes que o script de aceitação seja tentado.
+Antes de declarar pronto, um segundo engenheiro segue o runbook a frio, com dados sintéticos, enquanto o autor fica em silêncio. Os pontos onde ele empaca viram correções na documentação. O Projeto Final II não está pronto até que a execução silenciosa tenha sucesso. O silêncio do autor durante a execução a frio é o que revela passos ausentes. A sessão de acompanhamento de Sam empacou no caminho do kill switch até que a página do fichário nomeasse a localização do arquivo que o exercício de mesa tinha encontrado antes. As notas de empaque são registradas como tickets de documentação antes que o script de aceitação seja tentado. O engenheiro que acompanha assina o log da execução quando a execução silenciosa finalmente passa.
 
 ### 46.3b Roteiro da demo
 
-A demo do Projeto Final II segue um roteiro sobre dados sintéticos: mostrar a falha fechada, mostrar o denominador da cobertura, mostrar uma ação interrompida. Demos improvisadas pulam a segurança. Registre o roteiro ao lado do relatório do laboratório. Demos improvisadas pulam a falha fechada e os denominadores sob pressão de tempo. Um roteiro que mostra a negação com a política ausente, uma exportação de cobertura 5/7 e uma ação interrompida mantém a defesa honesta. Sam registrou o roteiro ao lado do relatório do Laboratório II, para que os examinadores pudessem pedir o mesmo caminho. Os examinadores podem pedir para pausar o roteiro e inspecionar ao vivo o código de motivo da negação.
+A demo do Projeto Final II segue um roteiro sobre dados sintéticos: mostrar a falha fechada, mostrar o denominador da cobertura, mostrar uma ação interrompida. Demos improvisadas pulam a segurança. Registre o roteiro ao lado do relatório do laboratório. Um roteiro que mostra a negação com a política ausente, uma exportação de cobertura 5/7 e uma ação interrompida mantém a defesa honesta. Sam registrou o roteiro ao lado do relatório do Laboratório II, para que os examinadores pudessem pedir o mesmo caminho. Os examinadores podem pedir para pausar o roteiro e inspecionar ao vivo o código de motivo da negação.
 
 ### 46.1b Passagem para operações
 
-Código de projeto final sem um dono em operações no merge está inacabado. Nomeie o esquadrão dono no README e no CODEOWNERS antes da aprovação do Laboratório II. Propriedade no CODEOWNERS e no README antes da aprovação do Laboratório II impede projetos finais órfãos. Um esquadrão de operações que nunca concordou não pode ser surpreendido no plantão. O README de Sam nomeou o esquadrão de plataforma e a escala de plantão antes que o script de aceitação rodasse. A ciência de operações é uma caixa de seleção no formulário de aprovação do Laboratório II. Sem a ciência de operações, a aprovação do Laboratório II continua vermelha. A aprovação vermelha fica visível no quadro do Projeto Final II ao lado do Laboratório II.
+Código de projeto final sem um dono em operações no merge está inacabado. Nomeie o esquadrão dono no README e no CODEOWNERS antes da aprovação do Laboratório II. Propriedade no CODEOWNERS e no README antes da aprovação do Laboratório II impede projetos finais órfãos. Um esquadrão de operações que nunca concordou não pode ser surpreendido no plantão. O README de Sam nomeou o esquadrão de plataforma e a escala de plantão antes que o script de aceitação rodasse. A ciência de operações é uma caixa de seleção no formulário de aprovação do Laboratório II. A aprovação vermelha fica visível no quadro do Projeto Final II ao lado do Laboratório II.
 
 ### Nota de prática
 
@@ -3362,7 +3362,7 @@ A revisão do orientador assiste à gravação da execução silenciosa a 1,5x e
 
 ### 46.4b Teste final de aceitação
 
-Antes que o projeto final seja entregue, um operador que não o construiu roda sozinho o script de aceitação, usando apenas a documentação. Duas etapas falharam na primeira tentativa de Sam porque a documentação supunha um conhecimento que ele tinha; ambas foram reescritas, e a segunda execução do operador passou. Conhecimento suposto na documentação é um defeito que o operador a frio vai encontrar. As duas etapas que falharam na primeira tentativa de Sam foram reescritas; a segunda execução passou. Essa reescrita faz parte da evidência do projeto final, não é um constrangimento a esconder. As etapas reescritas e a segunda execução verde são ambas seladas no dossiê.
+Antes que o projeto final seja entregue, um operador que não o construiu roda sozinho o script de aceitação, usando apenas a documentação. Duas etapas falharam na primeira tentativa de Sam porque a documentação supunha um conhecimento que ele tinha; ambas foram reescritas, e a segunda execução do operador passou. Conhecimento suposto na documentação é um defeito que o operador a frio vai encontrar. Essa reescrita faz parte da evidência do projeto final, não é um constrangimento a esconder. As etapas reescritas e a segunda execução verde são ambas seladas no dossiê.
 
 ### Exercícios
 
@@ -3549,15 +3549,15 @@ Dossiês em contas pessoais de nuvem violam a residência e a retenção. Contas
 
 ### 48.2b Legibilidade para terceiros
 
-Entregue o dossiê a alguém de fora do projeto para um exercício de recálculo de hashes. Se essa pessoa não encontrar o manifesto ou a versão das ROE, o dossiê reprova, por mais arrumado que pareça aos seus autores. Os autores sabem onde esconderam o manifesto; quem é de fora não sabe. Um exercício de recálculo de hashes feito por alguém de fora do projeto é o teste de legibilidade. O último exercício de Sam falhou quando o PDF das ROE estava aninhado três pastas abaixo sem um ponteiro na página da lista de verificação; o layout mudou antes da selagem. As revisões de layout usam o orçamento de dez minutos como um portão rígido.
+Entregue o dossiê a alguém de fora do projeto para um exercício de recálculo de hashes. Se essa pessoa não encontrar o manifesto ou a versão das ROE, o dossiê reprova, por mais arrumado que pareça aos seus autores. Os autores sabem onde esconderam o manifesto; quem é de fora não sabe. O último exercício de Sam falhou quando o PDF das ROE estava aninhado três pastas abaixo sem um ponteiro na página da lista de verificação; o layout mudou antes da selagem. As revisões de layout usam o orçamento de dez minutos como um portão rígido. A pessoa de fora registra quanto tempo a busca levou e onde ela travou.
 
 ### 48.3b Log de redação
 
-Ao redigir trechos, mantenha um log de redação (o quê, por quê, quem) dentro do armazenamento selado. Leitores futuros precisam saber que um espaço em branco foi intencional, não evidência truncada. Um espaço em branco sem log parece truncamento ou adulteração. O quê, por quê e quem, dentro do armazenamento selado, explicam a lacuna. O log de redação de Sam para uma captura de tela que mostrava o nome de exibição de um funcionário registra os limites em pixels, o motivo de privacidade e o seu id de usuário. Truncamento sem uma linha de log reprova no script de selagem. Os scripts de selagem tratam um espaço em branco sem log como o equivalente a um hash divergente.
+Ao redigir trechos, mantenha um log de redação (o quê, por quê, quem) dentro do armazenamento selado. Leitores futuros precisam saber que um espaço em branco foi intencional, não evidência truncada. Um espaço em branco sem log parece truncamento ou adulteração. O log de redação de Sam para uma captura de tela que mostrava o nome de exibição de um funcionário registra os limites em pixels, o motivo de privacidade e o seu id de usuário. Os scripts de selagem tratam um espaço em branco sem log como o equivalente a um hash divergente. O registro é escrito no momento da redação, não reconstruído depois.
 
 ### 48.1b Lista de verificação do leitor
 
-Inclua no topo uma página de "como verificar este dossiê": instalar as versões das ferramentas, rodar `sha256sum -c manifest`, abrir as ROE, conferir por amostragem um achado. Se os leitores precisam de um guia turístico, o dossiê está incompleto. Dossiês que exigem guia turístico reprovam com avaliadores ocupados. Uma página que nomeia as versões das ferramentas, `sha256sum -c manifest`, a abertura das ROE e a conferência por amostragem de um achado é o padrão. O avaliador de Sam completou esse caminho em menos de dez minutos no dossiê v3, o que virou o orçamento de tempo das revisões de layout. Layouts que estouram o orçamento são redesenhados antes que o líder assine o manifesto.
+Inclua no topo uma página de "como verificar este dossiê": instalar as versões das ferramentas, rodar `sha256sum -c manifest`, abrir as ROE, conferir por amostragem um achado. Se os leitores precisam de um guia turístico, o dossiê está incompleto. O avaliador de Sam completou esse caminho em menos de dez minutos no dossiê v3, o que virou o orçamento de tempo das revisões de layout. Layouts que estouram o orçamento são redesenhados antes que o líder assine o manifesto. A página nomeia as versões exatas das ferramentas, para que um leitor meses depois possa instalar as mesmas. Se um passo precisa de uma ferramenta que não está mais disponível, a página diz qual versão foi usada e onde fica uma cópia arquivada.
 
 ### Nota de prática
 
@@ -3608,7 +3608,7 @@ Uma frase: o que você construiu/mediu e para quem. Exemplo: "A distribuição d
 
 ### 49.2 Corpo
 
-Trabalhos relacionados (SP 800-115, PTES, ATT&CK, Albrecht & Jensen), desenho, verificação, resultados com intervalos, limitações, ética. Trabalhos relacionados, desenho, verificação, resultados cronometrados, limites e ética são a espinha dorsal. Os intervalos ficam junto dos resultados, para que pontuações únicas vazias não dominem. O capítulo de resultados de Sam abre com os tempos até negar tudo e notas de confiança antes de qualquer elogio qualitativo. Elogios qualitativos sem números vão para um apêndice ou são apagados. Apêndices que só elogiam ferramentas sem dados são removidos antes da entrega. Elogios sem dados são um hábito comum em rascunhos e são pegos na revisão do orientador.
+Trabalhos relacionados (SP 800-115, PTES, ATT&CK, Albrecht & Jensen), desenho, verificação, resultados com intervalos, limitações, ética. Os intervalos ficam junto dos resultados, para que pontuações únicas vazias não dominem. O capítulo de resultados de Sam abre com os tempos até negar tudo e notas de confiança antes de qualquer elogio qualitativo. Elogios qualitativos sem números vão para um apêndice ou são apagados. Apêndices que só elogiam ferramentas sem dados são removidos antes da entrega. Elogios sem dados são um hábito comum em rascunhos e são pegos na revisão do orientador. Cada tabela de resultados informa o número de ensaios e as datas em que rodaram.
 
 ### 49.3 Citações
 
@@ -3622,7 +3622,7 @@ Uma tese que avalia habilidade de exploração está fora do escopo do programa.
 
 ### 49.2b Ameaças à validade
 
-Discuta a validade de construto (a cobertura mede o que você afirma?), a validade interna (fatores de confusão no ensaio) e a validade externa (outras organizações). Uma tese que pula esta seção afirma demais por omissão. Pular as validades de construto, interna e externa é afirmar demais por omissão. A cobertura precisa ser defendida como cobertura de técnicas planejadas, não como risco residual. A parte de ameaças à validade de Sam declara que um único anfitrião de transporte e injeções sintéticas limitam a generalização para outros setores. Os limites de setor são declarados no resumo, não apenas enterrados no capítulo nove. O resumo e o capítulo nove passam por um lint que exige a mesma frase de limite.
+Discuta a validade de construto (a cobertura mede o que você afirma?), a validade interna (fatores de confusão no ensaio) e a validade externa (outras organizações). Uma tese que pula esta seção afirma demais por omissão. A cobertura precisa ser defendida como cobertura de técnicas planejadas, não como risco residual. A parte de ameaças à validade de Sam declara que um único anfitrião de transporte e injeções sintéticas limitam a generalização para outros setores. Os limites de setor são declarados no resumo, não apenas enterrados no capítulo nove. O resumo e o capítulo nove passam por um lint que exige a mesma frase de limite. Cada ameaça vem acompanhada do que foi feito para reduzi-la ou do motivo de não ter sido possível reduzi-la.
 
 ### 49.3b Apêndice de reprodutibilidade
 
@@ -3630,7 +3630,7 @@ Entregue o suficiente para repetir os ensaios sintéticos: hashes dos fixtures, 
 
 ### 49.1b Honestidade nos trabalhos relacionados
 
-Cite os frameworks que você realmente usou. Encher os trabalhos relacionados com artigos não lidos é descoberto rapidamente nas perguntas da defesa. Fino e exato vale mais que grosso e falso. Citações não lidas desmoronam diante das perguntas da defesa. Listas finas dos frameworks realmente usados valem mais que bibliografias infladas. Sam cita SP 800-115, PTES, ATT&CK e Albrecht e Jensen porque cada um aparece numa escolha de desenho ou de medição que ele consegue apontar. Um framework citado nos trabalhos relacionados, mas não usado no desenho, é removido. A remoção é preferível a uma vaga alegação de "inspirado em".
+Cite os frameworks que você realmente usou. Encher os trabalhos relacionados com artigos não lidos é descoberto rapidamente nas perguntas da defesa. Fino e exato vale mais que grosso e falso. Citações não lidas desmoronam diante das perguntas da defesa. Sam cita SP 800-115, PTES, ATT&CK e Albrecht e Jensen porque cada um aparece numa escolha de desenho ou de medição que ele consegue apontar. Um framework citado nos trabalhos relacionados, mas não usado no desenho, é removido. A remoção é preferível a uma vaga alegação de "inspirado em". Cada citação nomeia a edição ou versão que foi usada.
 
 ### Nota de prática
 
@@ -3659,7 +3659,7 @@ Os examinadores leem essa página primeiro.
 
 ### 49.4b Estrutura do argumento
 
-A tese de Sam declara sua afirmação no primeiro parágrafo, apresenta a evidência na ordem em que um leitor cético a exigiria e termina cada capítulo declarando o que aquele capítulo estabeleceu e o que continua incerto. O teste do orientador é se o resumo sozinho diz a um leitor exatamente o que foi mostrado. Terminar cada capítulo com o que foi estabelecido e o que continua incerto treina o resumo a ser preciso. O teste do orientador — o resumo sozinho declara o que foi mostrado — é o padrão. Sam reescreveu o resumo três vezes até que ele nomeasse a medida de negar tudo e o limite de um único anfitrião sem adjetivos. Adjetivos como robusto e transparente são banidos do resumo pelo mesmo lint usado no texto da interface. O lint do resumo roda no CI sobre o Markdown da tese.
+A tese de Sam declara sua afirmação no primeiro parágrafo, apresenta a evidência na ordem em que um leitor cético a exigiria e termina cada capítulo declarando o que aquele capítulo estabeleceu e o que continua incerto. O teste do orientador é se o resumo sozinho diz a um leitor exatamente o que foi mostrado. Terminar cada capítulo com o que foi estabelecido e o que continua incerto treina o resumo a ser preciso. Sam reescreveu o resumo três vezes até que ele nomeasse a medida de negar tudo e o limite de um único anfitrião sem adjetivos. Adjetivos como robusto e transparente são banidos do resumo pelo mesmo lint usado no texto da interface. O lint do resumo roda no CI sobre o Markdown da tese.
 
 ### Exercícios
 
@@ -3748,11 +3748,11 @@ Arquive a apresentação ao lado do dossiê, com hashes correspondentes. Anote o
 
 ### 50.3b Pacote dos examinadores
 
-Entregue aos examinadores, com um dia de antecedência, a frase da afirmação, o resumo do Laboratório II, a medida do ensaio de falha e o parágrafo de ética. Apresentações surpresa desperdiçam o tempo da defesa que deveria testar o seu julgamento. Afirmação, resumo do Laboratório II, medida do ensaio de falha e parágrafo de ética com um dia de antecedência reservam a hora para o julgamento. Apresentações surpresa queimam tempo. O pacote de Sam tinha cinco páginas e seguia a ordem da apresentação, para que os examinadores pudessem fazer anotações antes que ele falasse. As páginas do pacote são numeradas de acordo com os números dos slides, para agilizar as anotações. A agilidade nas anotações importa quando a banca tem só cinco minutos para se preparar.
+Entregue aos examinadores, com um dia de antecedência, a frase da afirmação, o resumo do Laboratório II, a medida do ensaio de falha e o parágrafo de ética. Apresentações surpresa desperdiçam o tempo da defesa que deveria testar o seu julgamento. Apresentações surpresa queimam tempo. O pacote de Sam tinha cinco páginas e seguia a ordem da apresentação, para que os examinadores pudessem fazer anotações antes que ele falasse. As páginas do pacote são numeradas de acordo com os números dos slides, para agilizar as anotações. A agilidade nas anotações importa quando a banca tem só cinco minutos para se preparar. O pacote traz a mesma tag de versão do dossiê, para que os examinadores saibam que estão lendo o texto final.
 
 ### 50.1b Disciplina de tempo
 
-Vinte minutos significam ensaiar com um cronômetro. Cortar o slide de limites para ganhar tempo é o corte errado — os examinadores precisam mais da sua honestidade do que de um quarto clique na demo. Ensaiar com um cronômetro é o que protege o slide de limites. Cortar a honestidade para caber um quarto clique na demo é a troca errada. O ensaio de Sam cortou dois slides de arquitetura e manteve os limites e a história do ensaio de 45 s para 30 s. A história do ensaio é cronometrada em noventa segundos, para que as perguntas ainda caibam. Os noventa segundos são ensaiados com um cronômetro visível no laptop do apresentador.
+Vinte minutos significam ensaiar com um cronômetro. Cortar o slide de limites para ganhar tempo é o corte errado — os examinadores precisam mais da sua honestidade do que de um quarto clique na demo. O ensaio de Sam cortou dois slides de arquitetura e manteve os limites e a história do ensaio de 45 s para 30 s. A história do ensaio é cronometrada em noventa segundos, para que as perguntas ainda caibam. Os noventa segundos são ensaiados com um cronômetro visível no laptop do apresentador. Cada ensaio registra o tempo real de cada seção, e qualquer seção que passa do tempo é cortada no ensaio seguinte, nunca o slide de limites.
 
 ### Nota de prática
 
