@@ -52,17 +52,25 @@ Lena Fischer is a computer science student at the fictional Hollowbrook Universi
 
 Security rules are logical statements. "Only staff may change menu prices" can be written: if a user changes a price, then the user is staff. Writing rules this way exposes ambiguity: does "staff" include student volunteers who run the café till? CampusEats decides they are a separate role, "volunteer", without price rights.
 
+Each rule in the CampusEats design notes is now written in this if-then form, with every role named. Ambiguous words such as "staff" are defined once in a glossary, so developers, café managers and reviewers read the rule the same way and tests can be written directly from it.
+
 ### 1.3 Implication and negation
 
 The contrapositive of "if price change then staff" is "if not staff then no price change". Tests check the contrapositive: a volunteer tries a price change and must be refused. Negating a rule correctly matters: the opposite of "all requests are logged" is "some request is not logged", not "no requests are logged".
+
+Lena writes one refusal test for each rule, and a careful negation for each logging claim, so that a single missing log entry is enough to fail the check.
 
 ### 1.4 Gaps and contradictions
 
 Two rules "volunteers may issue refunds up to £5" and "only staff may issue refunds" contradict each other. Lena's table of roles and actions makes such conflicts visible before code is written.
 
+The table has roles as rows and actions as columns, and each cell says allowed, refused or undecided. Undecided cells are gaps: nobody has said what should happen. Contradictions show up as two rules putting different answers in the same cell. The society resolves the refund conflict by letting volunteers refund up to the small limit and requiring staff for anything larger, then rewrites both rules so they agree.
+
 ### 1.5 Quantifiers
 
 "Every dependency has an owner" is a universal statement; one counterexample disproves it. Lena checks the CampusEats dependency list and finds three packages with no named owner.
+
+An existential statement works the other way: "some package is unmaintained" is proved by one example. Lena's finding turns the universal rule into a task list. Each of the three packages is either given a named owner from the society or scheduled for removal, and the rule is rechecked after each change so that the statement "every dependency has an owner" is true again before the next release.
 
 ### Worked example
 
@@ -100,25 +108,37 @@ You will (1) describe the parts of a web application system; (2) trace a request
 
 CampusEats has a browser front end, a web server running application code, a database, a payment provider and a hosting platform. Its code depends on dozens of open-source packages fetched at build time.
 
+Lena draws these parts as boxes and the connections between them as arrows, labelling each arrow with the data it carries, such as orders, sessions or payment requests. The diagram is small, but it is the first map of where things can go wrong, and every later chapter adds detail to it, from network protocols to the build pipeline and its dependencies.
+
 ### 2.2 Following a request
 
 A student taps "order": the browser sends a request over HTTPS; the server checks the session, validates the order, writes to the database, calls the payment provider and returns a confirmation page. Each step is a place where data could be altered, exposed or lost.
+
+For each step Lena writes down what could fail and which check prevents it. The session check stops strangers placing orders in someone else's name, validation stops impossible orders, and the payment call must not run twice if the student taps again. Lena marks these on her diagram.
 
 ### 2.3 Third-party code
 
 Third-party code runs in three places: packages bundled into the browser code, packages on the server, and services such as payments. A flaw in any of them affects CampusEats even though the society did not write it.
 
+Bundled packages run in every visitor's browser, so a malicious update could reach every student who orders food. Server packages can read the database and secrets. Services hold data CampusEats cannot inspect directly. Lena notes which category each dependency falls into, because the right control differs: pinning and integrity checks for packages, contracts and configuration for services.
+
 ### 2.4 Build and deploy
 
 Code goes from the repository to a build service that installs dependencies, runs tests and creates a deployable bundle. The integrity check that stopped the build in Lena's first week sits at the install step.
+
+If any step fails, nothing is deployed, which is why the hash mismatch stopped the build. Lena adds the build steps to her diagram as a second chain of boxes, from commit to deployed bundle, since an attacker who changes something in that chain changes what runs in production without touching the source code the developers review.
 
 ### 2.5 Responsibilities
 
 The society owns its code and configuration; the hosting platform owns servers; the payment provider owns payments. The university's security office sets policy and helps with reviews.
 
+Lena writes these owners next to each box on her diagram. Where an owner is missing, such as for the build service, which a former student set up and nobody now maintains, she marks it as an open question. The society agrees to name an owner for every part before the next term, and the security office checks the list at its annual review.
+
 ### 2.6 Shared responsibility
 
 When responsibilities overlap or are unclear, gaps appear; Lena lists who owns each part.
+
+A typical gap at CampusEats is the payment token itself: the provider issues it, the society stores it and the hosting platform injects it at runtime, so each assumed one of the others was watching it. The leak showed that nobody was. Lena's list now names the society's treasurer as owner of the token, responsible for rotation, and the hosting platform for protecting it at runtime.
 
 ### Inventory
 
@@ -160,21 +180,31 @@ You will (1) write readable functions with clear inputs and outputs; (2) handle 
 
 Lena writes order_total(items) that adds prices from the menu table, never from the browser, because prices sent by the browser can be changed. Business values come from trusted sources.
 
+The browser sends only item identifiers and quantities. A test sends a request with an altered price and checks that the total still matches the menu table, which proves the rule rather than assuming it. The same principle applies to discounts and delivery fees: anything that affects money is computed on the server from data the society controls.
+
 ### 3.2 Errors
 
 If an item is not on the menu, the function raises an error and the order is refused. Silent defaults, like treating unknown items as free, are dangerous.
+
+Lena's function lists every case explicitly: a known item with a positive quantity is added, an unknown item raises an error, and a zero or negative quantity is refused. Each case has a test. Refusing early keeps bad data out of the database and the payment request, where it would be harder to spot and fix.
 
 ### 3.3 Secrets do not belong in code
 
 The leaked token began as a hard-coded test value in a configuration file. Secrets belong in environment variables or a secrets manager, never in the repository, even for "test" keys, because repositories are copied and kept forever. OWASP Top 10:2021 A05 Security Misconfiguration and A07 Identification and Authentication Failures both relate to mishandled credentials.
 
+The society now keeps example configuration files with placeholder values in the repository and the real values only in the hosting platform's secret store. New members are shown both during onboarding.
+
 ### 3.4 Version control
 
 Each change is a commit with a clear message. A ".gitignore" file excludes local configuration files. Removing a secret in a later commit does not remove it from history; the secret must be revoked.
 
+This is why the leaked token was revoked within hours rather than simply deleted. Lena's team also reviews the ignore file whenever a new tool is added, since new tools often create their own local configuration files that could hold credentials and would otherwise be committed by accident.
+
 ### 3.5 Pre-commit checks
 
 A pre-commit hook scans changes for secret-like strings before they leave the developer's machine.
+
+If the scan finds a match, the commit is stopped and the developer sees which line triggered it. False positives happen, for example with long random test identifiers, so the hook allows a marked exception that a reviewer must approve. A hook can be bypassed on one machine, so the same scan also runs on the shared repository, which is where the leaked token was caught. Together they give two chances to stop a secret.
 
 ### Code review
 
@@ -216,25 +246,37 @@ You will (1) write clear, evidence-based academic text on security topics; (2) c
 
 An academic essay states a question, reviews evidence, argues and concludes. Lena's first essay asks: "Why do secrets leak into source repositories?"
 
+She narrows it to student projects like CampusEats, plans one part of the argument per cause, and drafts the conclusion first so that every paragraph has a clear job. The essay has a word limit, so each paragraph must earn its place by supporting the answer. Each paragraph opens with its claim and then gives the evidence for it.
+
 ### 4.2 Evidence
 
 She cites the OWASP Top 10:2021 for categories of failure and NIST SP 800-218 (SSDF) practice PS.1 on protecting code from unauthorised access and tampering. She uses the CampusEats incident as a case, with permission and without the token value.
+
+Each source is chosen for a different purpose: OWASP for the categories, the SSDF for the expected practice and the incident for a concrete example. She notes the limits of each, such as the incident being a single case. She also avoids claims she cannot support, such as how often leaks happen nationally.
 
 ### 4.3 Accurate citation
 
 Every claim with a source has a citation with author, year and title; quotations are marked. Lena checks each reference against the original.
 
+She keeps a reference list as she reads, not afterwards, and records where each claim came from. A citation that cannot be traced is removed rather than guessed. When she paraphrases, she checks that the meaning matches the source, since a careless paraphrase can change a cautious claim into a strong one. Grace treats a wrong citation as seriously as a wrong fact.
+
 ### 4.4 Responsible detail
 
 Security writing describes weaknesses, effects and fixes, not instructions for misuse. Lena's essay explains why the token was dangerous without describing how anyone could use it.
+
+The same applies to the hash mismatch: she describes what the check protected and why the build stopped, not how a tampered package could be made. Readers learn enough to fix the problem and recognise it elsewhere, which is the purpose of the essay. Grace reviews any security essay that uses CampusEats details before it is shared outside the course.
 
 ### 4.5 Clarity
 
 Short sentences, defined terms, one idea per paragraph.
 
+Lena rewrites her longest paragraph into three shorter ones and defines "token" and "hash" the first time they appear. She reads the essay aloud to find sentences that are hard to follow. A reader outside security, such as a café manager, should be able to understand the main argument. Clarity is not simplification: the technical points stay, but each is stated once, in plain words, where it is needed. She keeps a short glossary.
+
 ### 4.6 Feedback
 
 Grace comments that the essay's best paragraph is the one explaining why "test keys" are still dangerous: they often share infrastructure with live systems.
+
+Grace also asks Lena to cut a paragraph on general password advice that does not answer the question. Lena revises, keeps a record of the changes and notes which comments she disagreed with and why. Feedback is most useful when it changes the next draft, so she schedules the revision within a week. She also asks a classmate to read it.
 
 ### Sources to read
 
@@ -280,21 +322,31 @@ You will (1) explain core security concepts for applications; (2) describe the O
 
 Confidentiality protects student details and order history; integrity protects prices, orders and the code itself; availability keeps ordering working at lunchtime.
 
+Lena applies the three properties to each part of her diagram. The leaked token threatened confidentiality of payment access and could have led to fraudulent charges. The hash mismatch protected the integrity of the code. A lunchtime outage would harm availability most, since that is when nearly all orders are placed. Ranking the properties for each part helps the society choose where to spend effort first.
+
 ### 5.2 OWASP Top 10:2021
 
 The ten categories are Broken Access Control, Cryptographic Failures, Injection, Insecure Design, Security Misconfiguration, Vulnerable and Outdated Components, Identification and Authentication Failures, Software and Data Integrity Failures, Security Logging and Monitoring Failures, and Server-Side Request Forgery. The token leak relates to misconfiguration and authentication; the hash mismatch to software and data integrity.
+
+Lena uses the list to tag each finding in the CampusEats issue tracker, which shows which categories recur. After one term, misconfiguration is the most frequent tag, which tells the society to review its deployment settings before writing new features. Categories are a vocabulary for sorting problems, not a checklist that proves an application is secure.
 
 ### 5.3 Supply chain risks
 
 Ohm et al. (2020) reviewed real cases of malicious open-source packages; Ladisa et al. (2023) organised attacks on open-source supply chains into a taxonomy from source to distribution. Consumers like CampusEats face both known vulnerabilities in honest packages and, more rarely, deliberately malicious ones.
 
+The first is far more common. Lena's reading shows that most malicious packages rely on simple tricks, such as names close to popular packages, so careful review of new dependencies catches many of them. Known vulnerabilities need a different control: keeping track of which versions CampusEats uses and updating when a fix appears.
+
 ### 5.4 Reading advisories
 
 An advisory names the package, affected versions, fixed versions, severity and a description. A CVE identifier allows cross-referencing.
 
+Lena practises on an advisory for a package CampusEats uses. She checks whether the installed version falls in the affected range, whether the vulnerable feature is actually used, and whether the fixed version can be installed without breaking anything. She records her answer in the issue tracker with a link to the advisory, so that the decision can be reviewed later. Severity alone does not decide urgency; exposure does.
+
 ### 5.5 Weakness names
 
 The CWE Top 25 names common weaknesses like cross-site scripting (CWE-79) and SQL injection (CWE-89).
+
+Weakness names describe the kind of mistake rather than a specific product, so they connect advisories with the code review checklist. When Lena finds a place where CampusEats builds a database query from text, she links it to CWE-89, and the fix follows a known pattern. Using the same names across reviews, advisories and training helps the society see which mistakes it makes most often. It also aids training.
 
 ### Severity
 
@@ -340,9 +392,13 @@ You will (1) represent version ranges as sets; (2) compare versions as ordered t
 
 Semantic versions such as 1.10.2 have three numbers: major, minor and patch. They are ordered as tuples: compare major first, then minor, then patch. As text, "1.10.2" sorts before "1.4.7" because the character "1" comes before "4", which is wrong.
 
+Lena writes a small comparison function that splits a version into its three numbers and compares them in order. Comparing tuples gives the right order in every case, including versions with numbers of different lengths. She tests it against the examples in the lab and adds the case of equal versions, which must compare as neither older nor newer. The function is later reused in the society's dependency report.
+
 ### 6.2 Ranges as sets
 
 A caret range ^1.4.0 means the set of versions at least 1.4.0 and below 2.0.0. Package managers pick the highest version in the set that is available. Understanding the set tells you which fixes you receive automatically and which need a manual change.
+
+For CampusEats, a caret range on a payment library means patch and minor releases arrive automatically at the next install, while a new major version needs a deliberate upgrade and testing. Some teams prefer narrower tilde ranges, which allow only patches, trading automatic fixes for fewer surprises.
 
 ### Lab — Lab — version ranges
 
@@ -369,13 +425,19 @@ text sort would pick: 1.4.7
 
 Of six versions, three satisfy ^1.4.0: 1.4.0, 1.4.7 and 1.10.2. The highest, chosen correctly by tuple order, is 1.10.2. Text sorting would wrongly pick 1.4.7, which could leave a project on an older, possibly vulnerable version.
 
+Lena adds the six versions as a test case so the comparison cannot regress unnoticed. She also adds a case with a pre-release version, since such versions usually sit outside a normal range and are a common source of confusion when a fix is published first as a test release.
+
 ### 6.4 Why it matters
 
 If a fix is released in 1.10.2 and a tool sorts as text, it would think 1.4.7 is newest and report the project as up to date. Kula et al. (2018) showed that many projects already lag behind fixes; errors like this make it worse.
 
+Lena checks the society's dependency report and finds it uses proper version comparison. It also adds a test that fails if version strings are ever sorted as text, so a future change to the tool cannot reintroduce the mistake. A report that wrongly says a project is current is worse than no report, because it discourages anyone from checking.
+
 ### 6.5 Lockfiles
 
 A lockfile records the exact version chosen, so builds are repeatable. Ranges decide what may be chosen; lockfiles record what was chosen.
+
+CampusEats commits its lockfile, and the build installs exactly the locked versions. Updating a dependency is then a visible change in review: the lockfile diff shows which versions moved. The integrity check in Lena's first week depended on this too, since the lockfile also records the expected hash of each package, and the build refused a download that did not match it.
 
 ### Pre-releases
 
