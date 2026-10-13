@@ -237,7 +237,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 ### Exercícios
 
 - **EX007 — Regra do socket.** Por que o lab_scope não pode abrir sockets? *Rubrica:* 3 = apenas offline/sintético; nenhuma varredura acidental; 2 = parcial; 1 = sockets não têm problema; 0 = nada.
-- **EX008 — Dois padrões inseguros.** Nomeie dois padrões de script proibidos na equipe da plataforma. *Rubrica:* 3 = dois entre segredos, TLS desligado, shell não sanitizado, novas tentativas sem limite; 2 = um; 1 = nenhum; 0 = nada.
+- **EX008 — Dois padrões inseguros.** Nomeie dois padrões de script proibidos na equipe da plataforma. *Rubrica:* 3 = dois entre segredos, TLS desligado, shell não sanitizado, novas tentativas sem limite; 2 = um; 1 = vago; 0 = nada.
 - **EX009 — Segundo leitor.** O que o segundo leitor procura? *Rubrica:* 3 = erros no caminho do escopo e segredos; 2 = um; 1 = só estilo; 0 = nada.
 
 ### Síntese
@@ -1555,7 +1555,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX052 — Pergunta ruim.** Por que "a segurança é boa?" é uma pergunta de pesquisa ruim? *Rubrica:* 3 = não é mensurável/específica; 2 = parcial; 1 = tudo bem; 0 = nada.
 - **EX053 — Pré-registro.** O que deve ser escrito antes dos resultados? *Rubrica:* 3 = métrica e limiar (e desenho); 2 = parcial; 1 = vago; 0 = nada.
-- **EX054 — Phishing com funcionários.** Que aprovações são necessárias antes de um phishing simulado? *Rubrica:* 3 = CISO/RH (e ROE); 2 = uma; 1 = nenhuma; 0 = nada.
+- **EX054 — Phishing com funcionários.** Que aprovações são necessárias antes de um phishing simulado? *Rubrica:* 3 = CISO/RH (e ROE); 2 = uma; 1 = vago; 0 = nada.
 
 ### Síntese
 
@@ -2289,7 +2289,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 ### Exercícios
 
 - **EX076 — Prova mínima.** O que significa prova mínima? *Rubrica:* 3 = parar assim que o impacto é demonstrado; nenhum pivô extra; 2 = parcial; 1 = tomada completa sempre; 0 = nada.
-- **EX077 — Perto de pagamentos.** Que passo extra vem antes de testes adjacentes a pagamentos? *Rubrica:* 3 = aprovações extras/verificação das ROE; 2 = parcial; 1 = nenhum; 0 = nada.
+- **EX077 — Perto de pagamentos.** Que passo extra vem antes de testes adjacentes a pagamentos? *Rubrica:* 3 = aprovações extras/verificação das ROE; 2 = parcial; 1 = vago; 0 = nada.
 - **EX078 — Documentação da cadeia.** O que pertence ao apêndice da cadeia? *Rubrica:* 3 = passos/horários/links de evidência; 2 = parcial; 1 = vago; 0 = nada.
 
 ### Síntese
@@ -2482,7 +2482,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 ### Exercícios
 
 - **EX082 — Sem culpa.** O que uma revisão sem culpa busca? *Rubrica:* 3 = correções sistêmicas, não punição; 2 = parcial; 1 = bode expiatório; 0 = nada.
-- **EX083 — Formato da ação.** Quais dois campos toda ação corretiva precisa ter? *Rubrica:* 3 = responsável e data; 2 = um; 1 = nenhum; 0 = nada.
+- **EX083 — Formato da ação.** Quais dois campos toda ação corretiva precisa ter? *Rubrica:* 3 = responsável e data; 2 = um; 1 = vago; 0 = nada.
 - **EX084 — Feed desatualizado.** Por que um inventário desatualizado pode causar um acerto em produção? *Rubrica:* 3 = host errado classificado como em escopo; 2 = parcial; 1 = não pode; 0 = nada.
 
 ### Síntese

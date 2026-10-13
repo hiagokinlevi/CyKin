@@ -182,7 +182,7 @@ Os inventários deixam dispositivos de fora. Os modelos de alcançabilidade igno
 
 ### Exercícios
 
-- **EX011 — Conhecimento especializado.** O que os engenheiros clínicos sabiam que os arquitetos muitas vezes não sabem? *Rubrica:* 3 = quais dispositivos não podem receber patches e de quais conexões de fornecedores precisam;; 2 = dispositivos;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Conhecimento especializado.** O que os engenheiros clínicos sabiam que os arquitetos muitas vezes não sabem? *Rubrica:* 3 = quais dispositivos não podem receber patches e de quais conexões de fornecedores precisam;; 2 = dispositivos;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Caminho atual.** Como os notebooks administrativos conseguiam alcançar os dispositivos clínicos sob as regras atuais? *Rubrica:* 3 = pelo servidor de impressão compartilhado;; 2 = servidor de impressão;; 1 = diretamente;; 0 = nenhuma.
 
@@ -665,7 +665,7 @@ A atribuição dos resultados é incerta. As afirmações de transferência prec
 
 - **EX058 — Métodos que se transferem.** Cite dois métodos que se transferem para a empresa de saneamento. *Rubrica:* 3 = registros de decisão, critérios por atributo, modelos de alcançabilidade, implantações escalonadas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX059 — O que muda na transferência.** O que muda ao passar para a empresa de saneamento? *Rubrica:* 3 = os pesos dos atributos e janelas de mudança mais raras;; 2 = pesos;; 1 = nada;; 0 = nenhuma.
+- **EX059 — O que muda na transferência.** O que muda ao passar para a empresa de saneamento? *Rubrica:* 3 = os pesos dos atributos e janelas de mudança mais raras;; 2 = pesos;; 1 = vago;; 0 = nenhuma.
 
 - **EX060 — Fazer crescer o julgamento.** Segundo a Dra. Voss, como o julgamento cresce? *Rubrica:* 3 = revendo com honestidade as decisões passadas;; 2 = revisão;; 1 = frameworks;; 0 = nenhuma.
 

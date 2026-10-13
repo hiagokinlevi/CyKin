@@ -302,7 +302,7 @@ Verificações de duplicatas por correspondência exata deixam passar diferença
 
 - **EX026 — Distintos após normalizar.** Quantos endereços distintos restam após a normalização? *Rubrica:* 3 = 1.500;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX027 — Duplicatas reveladas.** Quantos registros duplicados a normalização revelou? *Rubrica:* 3 = 184;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX028 — Resultado da verificação exata.** O que uma verificação exata de duplicatas encontrou? *Rubrica:* 3 = nada; todos os 1.684 eram distintos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Resultado da verificação exata.** O que uma verificação exata de duplicatas encontrou? *Rubrica:* 3 = nada; todos os 1.684 eram distintos;; 2 = correto;; 1 = vago;; 0 = sem resposta.
 - **EX029 — Mudança do fornecedor.** O que o fornecedor ativou? *Rubrica:* 3 = o armazenamento automático dos e-mails em minúsculas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Duração das verificações.** Quanto tempo cada verificação deve levar? *Rubrica:* 3 = menos de uma hora;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 

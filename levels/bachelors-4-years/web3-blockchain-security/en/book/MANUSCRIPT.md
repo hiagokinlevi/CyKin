@@ -376,7 +376,7 @@ Silently rounding amounts hides input errors that should be refused and reported
 
 ### Exercises
 
-- **EX022 — Double reward guard.** What prevents a shift being rewarded twice? *Rubric:* 3 = a set of rewarded shifts checked before issuing;; 2 = a set;; 1 = nothing;; 0 = none.
+- **EX022 — Double reward guard.** What prevents a shift being rewarded twice? *Rubric:* 3 = a set of rewarded shifts checked before issuing;; 2 = a set;; 1 = vague;; 0 = none.
 - **EX023 — Review finding.** What did the classmate find? *Rubric:* 3 = silent rounding of decimal amounts;; 2 = rounding;; 1 = no tests;; 0 = none.
 - **EX024 — Checklist item.** Name one checklist question. *Rubric:* 3 = could the same action happen twice;; 2 = are inputs validated;; 1 = is it fast;; 0 = none.
 
@@ -598,7 +598,7 @@ Treating a blockchain address as a person ignores that whoever holds the key con
 
 - **EX037 — Authentication on-chain.** How does a member authenticate on the ledger? *Rubric:* 3 = by signing a transaction with their private key;; 2 = signing;; 1 = password;; 0 = none.
 - **EX038 — Custody trade-off.** What is the risk of custodial wallets? *Rubric:* 3 = risk concentrates with the cooperative;; 2 = concentration;; 1 = vague;; 0 = none.
-- **EX039 — Administrator safeguard.** What protects the administrator role? *Rubric:* 3 = a timelock that makes changes visible first;; 2 = timelock;; 1 = nothing;; 0 = none.
+- **EX039 — Administrator safeguard.** What protects the administrator role? *Rubric:* 3 = a timelock that makes changes visible first;; 2 = timelock;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1111,7 +1111,7 @@ Assuming an untested control works can fail exactly when it is first needed.
 
 - **EX070 — Key controls.** Name one key control. *Rubric:* 3 = hardware devices;; 2 = 2-of-3 multisig;; 1 = shared password;; 0 = none.
 - **EX071 — Batch change.** Why move to a weekly batch? *Rubric:* 3 = volunteer keyholders can plan, avoiding delays;; 2 = usability;; 1 = cheaper gas;; 0 = none.
-- **EX072 — Test discovery.** What did monthly signing tests reveal? *Rubric:* 3 = a keyholder device needed a firmware update;; 2 = firmware;; 1 = nothing;; 0 = none.
+- **EX072 — Test discovery.** What did monthly signing tests reveal? *Rubric:* 3 = a keyholder device needed a firmware update;; 2 = firmware;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1532,7 +1532,7 @@ Ignoring incentives misses behaviour that technical analysis alone cannot predic
 ### Exercises
 
 - **EX094 — Voucher classification.** How are the vouchers classified? *Rubric:* 3 = a membership benefit redeemable only at the shop;; 2 = membership benefit;; 1 = an investment;; 0 = none.
-- **EX095 — Incentive control.** What limits the incentive to record extra shifts? *Rubric:* 3 = the weekly cap and coordinator approval;; 2 = cap;; 1 = nothing;; 0 = none.
+- **EX095 — Incentive control.** What limits the incentive to record extra shifts? *Rubric:* 3 = the weekly cap and coordinator approval;; 2 = cap;; 1 = vague;; 0 = none.
 - **EX096 — Member feedback.** What feedback did members give? *Rubric:* 3 = the recovery process was confusing;; 2 = recovery;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -1577,7 +1577,7 @@ Claiming a change caused an improvement ignores other changes happening at the s
 
 - **EX097 — Mismatch count.** How many mismatch events were found in the year? *Rubric:* 3 = 14;; 2 = fourteen;; 1 = 52;; 0 = none.
 - **EX098 — Coding agreement.** On how many events did the classifiers agree? *Rubric:* 3 = 12 of 14;; 2 = 12;; 1 = all;; 0 = none.
-- **EX099 — Confounder.** What confounds the improvement after hourly reconciliation? *Rubric:* 3 = new coordinator training at the same time;; 2 = training;; 1 = nothing;; 0 = none.
+- **EX099 — Confounder.** What confounds the improvement after hourly reconciliation? *Rubric:* 3 = new coordinator training at the same time;; 2 = training;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

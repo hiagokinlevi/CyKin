@@ -134,7 +134,7 @@ Treating guidance as a checklist ignores local constraints that determine how ch
 - **EX007 — ROA purpose.** What does a Route Origin Authorisation state? *Rubric:* 3 = which AS may originate a prefix;; 2 = origin;; 1 = path;; 0 = none.
 - **EX008 — BCP 38 incentive.** Why has ingress filtering adoption been uneven? *Rubric:* 3 = costs filterer, benefits others;; 2 = incentives;; 1 = technical;; 0 = none.
 - **EX009 — Strengths in gap analysis.** Why list strengths in a gap analysis? *Rubric:* 3 = build on them, prioritise realistic changes;; 2 = build;; 1 = politeness;; 0 = none.
-- **EX010 — Peer experience value.** What did the neighbouring providers' experience add? *Rubric:* 3 = practical detail on exceptions and partner communication;; 2 = detail;; 1 = nothing;; 0 = none.
+- **EX010 — Peer experience value.** What did the neighbouring providers' experience add? *Rubric:* 3 = practical detail on exceptions and partner communication;; 2 = detail;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -356,7 +356,7 @@ Moving straight to rejection without knowing error rates risks dropping legitima
 - **EX022 — Maximum length case.** Why is the /25 announcement invalid? *Rubric:* 3 = more specific than ROA maximum length /24;; 2 = too specific;; 1 = wrong AS;; 0 = none.
 - **EX023 — Not found meaning.** What does "not found" mean for an announcement? *Rubric:* 3 = no ROA covers the prefix;; 2 = no record;; 1 = invalid;; 0 = none.
 - **EX024 — Own records review.** Why review the provider's own published authorisations? *Rubric:* 3 = errors would make others reject its routes;; 2 = own reachability;; 1 = vague;; 0 = none.
-- **EX025 — Rejection criteria.** What should be decided before moving to rejection? *Rubric:* 3 = success criteria and reversal procedure;; 2 = criteria;; 1 = nothing;; 0 = none.
+- **EX025 — Rejection criteria.** What should be decided before moving to rejection? *Rubric:* 3 = success criteria and reversal procedure;; 2 = criteria;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -538,7 +538,7 @@ Granting exceptions without verification turns a filter into a formality.
 
 - **EX036 — Backup arrangement fix.** How is the customer's backup arrangement accommodated? *Rubric:* 3 = add verified second prefix to allowed sources;; 2 = add prefix;; 1 = exempt;; 0 = none.
 - **EX037 — Ownership verification.** How is the customer's prefix ownership verified? *Rubric:* 3 = letter of authorisation and registry check;; 2 = letter;; 1 = trust;; 0 = none.
-- **EX038 — Staging benefit shown.** What did the content network incident show about staging? *Rubric:* 3 = rejection would have cut access; lower preference avoided impact;; 2 = avoided outage;; 1 = nothing;; 0 = none.
+- **EX038 — Staging benefit shown.** What did the content network incident show about staging? *Rubric:* 3 = rejection would have cut access; lower preference avoided impact;; 2 = avoided outage;; 1 = vague;; 0 = none.
 - **EX039 — Contact template.** List three items in the contact template. *Rubric:* 3 = prefix, result, time or request;; 2 = two;; 1 = one;; 0 = none.
 - **EX040 — Rejected exception list.** Why was an exception list for important destinations rejected? *Rubric:* 3 = weakens protection where attackers might aim;; 2 = weakens;; 1 = cost;; 0 = none.
 
@@ -753,7 +753,7 @@ Projects that end without formal transfer leave controls unowned.
 ### Exercises
 
 - **EX056 — Staging limit.** When does lower preference not protect customers? *Rubric:* 3 = invalid route is the only path;; 2 = only path;; 1 = never;; 0 = none.
-- **EX057 — Formal acceptance.** What does each owner's acceptance list? *Rubric:* 3 = documentation, open items, review dates;; 2 = documentation;; 1 = nothing;; 0 = none.
+- **EX057 — Formal acceptance.** What does each owner's acceptance list? *Rubric:* 3 = documentation, open items, review dates;; 2 = documentation;; 1 = vague;; 0 = none.
 - **EX058 — Improvement items.** Name two items in the improvement plan. *Rubric:* 3 = rejection decision, new sites, business filtering review, reciprocal review;; 2 = two;; 1 = one;; 0 = none.
 - **EX059 — Transferable lesson.** State one lesson for other small providers. *Rubric:* 3 = stage and measure, communicate, integrate with owners;; 2 = one;; 1 = vague;; 0 = none.
 - **EX060 — Practice change.** How did Marta's judgement of changes evolve? *Rubric:* 3 = beyond technical correctness to risk, evidence and durability;; 2 = broader;; 1 = unchanged;; 0 = none.

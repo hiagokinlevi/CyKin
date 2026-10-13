@@ -165,9 +165,9 @@ A permissão não torna seguro um trabalho descuidado. As regras sobre dados pes
 
 - **EX016 — Verificações permitidas.** Liste duas verificações que Leo pode fazer. *Rubrica:* 3 = duas entre: ler o certificado do site, conferir a cifração de disco dos notebooks, revisar a política de senhas;; 2 = uma;; 1 = varrer a rede;; 0 = nenhuma.
 
-- **EX017 — Ações proibidas.** Cite duas ações fora do escopo de Leo. *Rubrica:* 3 = duas entre: varredura, testar senhas, sistemas do fornecedor, equipamentos de Wi-Fi da prefeitura;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Ações proibidas.** Cite duas ações fora do escopo de Leo. *Rubrica:* 3 = duas entre: varredura, testar senhas, sistemas do fornecedor, equipamentos de Wi-Fi da prefeitura;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX018 — Benefício do escopo pequeno.** O que um escopo pequeno dá a um iniciante? *Rubrica:* 3 = uma primeira tarefa segura e possível de terminar;; 2 = segura;; 1 = nada;; 0 = nenhuma.
+- **EX018 — Benefício do escopo pequeno.** O que um escopo pequeno dá a um iniciante? *Rubrica:* 3 = uma primeira tarefa segura e possível de terminar;; 2 = segura;; 1 = vago;; 0 = nenhuma.
 
 - **EX019 — Registro de associado visto.** O que Leo deve fazer se o registro de um associado aparecer na tela? *Rubrica:* 3 = olhar só o que a tarefa exige, fechá-lo e não copiá-lo;; 2 = fechá-lo;; 1 = copiá-lo;; 0 = nenhuma.
 
@@ -179,9 +179,9 @@ A permissão não torna seguro um trabalho descuidado. As regras sobre dados pes
 
 - **EX023 — Fraqueza na plataforma.** Como deve ser tratada uma fraqueza na plataforma de e-books? *Rubrica:* 3 = divulgação coordenada ao fornecedor por meio da biblioteca;; 2 = fornecedor;; 1 = publicar on-line;; 0 = nenhuma.
 
-- **EX024 — Nome da divulgação coordenada.** Como se chama o caminho de relato que começa em particular? *Rubrica:* 3 = divulgação coordenada;; 2 = nomeado;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Nome da divulgação coordenada.** Como se chama o caminho de relato que começa em particular? *Rubrica:* 3 = divulgação coordenada;; 2 = nomeado;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Risco do quiosque.** Que dispositivo frágil uma varredura não aprovada poderia perturbar? *Rubrica:* 3 = o velho quiosque de autoatendimento;; 2 = quiosque;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Risco do quiosque.** Que dispositivo frágil uma varredura não aprovada poderia perturbar? *Rubrica:* 3 = o velho quiosque de autoatendimento;; 2 = quiosque;; 1 = vago;; 0 = nenhuma.
 
 - **EX026 — Proteção ao pedir.** A quem protege pedir permissão? *Rubrica:* 3 = a biblioteca, seus associados e Leo;; 2 = dois;; 1 = ninguém;; 0 = nenhuma.
 
@@ -270,9 +270,9 @@ Uma senha de Wi-Fi compartilhada dá proteção limitada entre os usuários. As 
 
 - **EX036 — Causa da indisponibilidade passada.** Por que o site da biblioteca mostrou avisos no ano passado? *Rubrica:* 3 = a renovação automática do provedor falhou silenciosamente e o certificado expirou;; 2 = expirou;; 1 = invadido;; 0 = nenhuma.
 
-- **EX037 — Propósito da expiração.** Dê um motivo pelo qual os certificados expiram. *Rubrica:* 3 = limita o uso de uma chave roubada ou força a atualização das configurações;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Propósito da expiração.** Dê um motivo pelo qual os certificados expiram. *Rubrica:* 3 = limita o uso de uma chave roubada ou força a atualização das configurações;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Lembretes do calendário.** Com quanta antecedência Inês configura os lembretes de expiração? *Rubrica:* 3 = um mês;; 2 = mês;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Lembretes do calendário.** Com quanta antecedência Inês configura os lembretes de expiração? *Rubrica:* 3 = um mês;; 2 = mês;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -349,15 +349,15 @@ Uma impressão digital vinda do mesmo site que o arquivo prova apenas que os doi
 
 - **EX045 — Ação após divergência.** O que Leo deve fazer após uma divergência? *Rubrica:* 3 = parar, não instalar, baixar de novo do site oficial, avisar Inês se falhar de novo;; 2 = parar;; 1 = instalar assim mesmo;; 0 = nenhuma.
 
-- **EX046 — Instalação em etapas.** Por que a ferramenta é instalada primeiro em um notebook? *Rubrica:* 3 = uma correspondência não prova que o software é seguro;; 2 = cautela;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Instalação em etapas.** Por que a ferramenta é instalada primeiro em um notebook? *Rubrica:* 3 = uma correspondência não prova que o software é seguro;; 2 = cautela;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Achados anteriores.** Liste os três achados anteriores no resumo de Leo. *Rubrica:* 3 = senha no post-it, calendário de expiração, alerta sobre avisos de certificado;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Achados anteriores.** Liste os três achados anteriores no resumo de Leo. *Rubrica:* 3 = senha no post-it, calendário de expiração, alerta sobre avisos de certificado;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Desconhecidos admitidos.** Cite dois temas que Leo sabe que ainda não aprendeu. *Rubrica:* 3 = dois entre: negociação de chaves do TLS, emissão de certificados, gerenciamento de chaves a longo prazo;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Desconhecidos admitidos.** Cite dois temas que Leo sabe que ainda não aprendeu. *Rubrica:* 3 = dois entre: negociação de chaves do TLS, emissão de certificados, gerenciamento de chaves a longo prazo;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Leitura gratuita.** Que referência com capítulos gratuitos on-line Inês recomenda? *Rubrica:* 3 = Handbook of Applied Cryptography, de Menezes, van Oorschot e Vanstone;; 2 = título;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Leitura gratuita.** Que referência com capítulos gratuitos on-line Inês recomenda? *Rubrica:* 3 = Handbook of Applied Cryptography, de Menezes, van Oorschot e Vanstone;; 2 = título;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Próximo curso.** Que curso Inês sugere em seguida? *Rubrica:* 3 = o curso profissional;; 2 = nomeado;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Próximo curso.** Que curso Inês sugere em seguida? *Rubrica:* 3 = o curso profissional;; 2 = nomeado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

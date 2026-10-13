@@ -728,7 +728,7 @@ Checklists can become box-ticking; reviewers must understand each item. Pinning 
 
 - **EX040 — Testable requirement.** Give an example of a cryptographic requirement written as a backlog item. *Rubric:* 3 = every reading authenticated with a per-meter key (or firmware accepted only with valid signature), with acceptance test;; 2 = example without test;; 1 = vague;; 0 = none.
 - **EX041 — Dependency rule.** What did the team agree about forum code? *Rubric:* 3 = never copy cryptographic code from forums; use a maintained library or raise in design review;; 2 = avoid;; 1 = allowed;; 0 = none.
-- **EX042 — Checklist catch.** What did the checklist catch in its first month? *Rubric:* 3 = a test helper disabling certificate verification about to enter production;; 2 = TLS issue;; 1 = nothing;; 0 = none.
+- **EX042 — Checklist catch.** What did the checklist catch in its first month? *Rubric:* 3 = a test helper disabling certificate verification about to enter production;; 2 = TLS issue;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -771,7 +771,7 @@ Threat models age; revisit them when systems change. Strong authentication with 
 ### Exercises
 
 - **EX043 — Why confidentiality.** Why does meter reading confidentiality matter? *Rubric:* 3 = consumption patterns reveal when homes are empty;; 2 = privacy;; 1 = no reason;; 0 = none.
-- **EX044 — Out of scope.** What did Aiyana place out of scope and why state it? *Rubric:* 3 = nation-state hardware attacks; explicit scope makes claims meaningful;; 2 = scope stated;; 1 = nothing;; 0 = none.
+- **EX044 — Out of scope.** What did Aiyana place out of scope and why state it? *Rubric:* 3 = nation-state hardware attacks; explicit scope makes claims meaningful;; 2 = scope stated;; 1 = vague;; 0 = none.
 - **EX045 — Authorisation fix.** What check fixed the authorisation flaw? *Rubric:* 3 = binding each key to one meter identifier so meters submit only their own readings;; 2 = binding;; 1 = encryption;; 0 = none.
 
 ### Synthesis
@@ -860,7 +860,7 @@ Thresholds set without baselines create noise. Automated revocation without hyst
 
 - **EX049 — Health signals.** Name three cryptographic health signals Aiyana measures. *Rubric:* 3 = verification failures, certificate days to expiry, key ages;; 2 = two;; 1 = one;; 0 = none.
 - **EX050 — Missing signal alert.** Why alert on the absence of renewal attempts? *Rubric:* 3 = silent failures such as broken renewal clients cause outages;; 2 = silence;; 1 = not needed;; 0 = none.
-- **EX051 — Hysteresis use.** What does hysteresis prevent here? *Rubric:* 3 = oscillating alerts or repeated revoke/re-provision for flaky meters;; 2 = flapping;; 1 = nothing;; 0 = none.
+- **EX051 — Hysteresis use.** What does hysteresis prevent here? *Rubric:* 3 = oscillating alerts or repeated revoke/re-provision for flaky meters;; 2 = flapping;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1019,7 +1019,7 @@ Success measures can be gamed if they ignore quality; pair each with a review. S
 ### Exercises
 
 - **EX058 — Problem constraints.** Name three constraints in the problem statement. *Rubric:* 3 = three of battery life, radio bandwidth, budget, availability during outages;; 2 = two;; 1 = one;; 0 = none.
-- **EX059 — Technician insight.** What did technicians reveal and why does it matter? *Rubric:* 3 = meters swapped between addresses during repairs, affecting key-identity binding;; 2 = swapping;; 1 = nothing;; 0 = none.
+- **EX059 — Technician insight.** What did technicians reveal and why does it matter? *Rubric:* 3 = meters swapped between addresses during repairs, affecting key-identity binding;; 2 = swapping;; 1 = vague;; 0 = none.
 - **EX060 — Firmware measure.** State the firmware success measure. *Rubric:* 3 = 99 percent of meters updated within thirty days;; 2 = 99 percent;; 1 = always;; 0 = none.
 
 ### Synthesis
@@ -1107,7 +1107,7 @@ Inventories decay without automated discovery. A state model is only enforced if
 ### Exercises
 
 - **EX064 — No key material.** What must a key record never contain? *Rubric:* 3 = the key material itself;; 2 = secrets;; 1 = metadata;; 0 = none.
-- **EX065 — Inventory finding.** What did building the inventory reveal? *Rubric:* 3 = three keys in old scripts that nobody had recorded;; 2 = unrecorded keys;; 1 = nothing;; 0 = none.
+- **EX065 — Inventory finding.** What did building the inventory reveal? *Rubric:* 3 = three keys in old scripts that nobody had recorded;; 2 = unrecorded keys;; 1 = vague;; 0 = none.
 - **EX066 — Deactivated key.** What may a deactivated key still do and not do? *Rubric:* 3 = verify old data but not create new tags or signatures;; 2 = verify only;; 1 = everything;; 0 = none.
 
 ### Synthesis
@@ -2197,7 +2197,7 @@ Capstones often over-scope; firm exclusions protect delivery. Evidence planned l
 ### Exercises
 
 - **EX130 — Capstone goal.** What must the revocation pipeline achieve? *Rubric:* 3 = revocation reaches every verifier within one minute and is auditable;; 2 = one minute;; 1 = vague;; 0 = none.
-- **EX131 — Exclusion.** What did Aiyana exclude from scope and why? *Rubric:* 3 = meter firmware changes, needing vendor involvement beyond the time available;; 2 = firmware;; 1 = nothing;; 0 = none.
+- **EX131 — Exclusion.** What did Aiyana exclude from scope and why? *Rubric:* 3 = meter firmware changes, needing vendor involvement beyond the time available;; 2 = firmware;; 1 = vague;; 0 = none.
 - **EX132 — Project risk.** Name one project risk and its mitigation. *Rubric:* 3 = e.g. key service upgrade conflict mitigated by early meeting;; 2 = risk only;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -2286,7 +2286,7 @@ Staging performance may differ from production. Handover without operator practi
 
 - **EX136 — Revocation message.** What fields does a revocation message contain? *Rubric:* 3 = key identifier, reason, time, sequence number, signed;; 2 = three;; 1 = one;; 0 = none.
 - **EX137 — Timing results.** Report median and maximum revocation times. *Rubric:* 3 = four seconds median, thirty-eight seconds maximum;; 2 = one;; 1 = wrong;; 0 = none.
-- **EX138 — Handover condition.** What did operations do before accepting the system? *Rubric:* 3 = ran a revocation exercise themselves;; 2 = exercise;; 1 = nothing;; 0 = none.
+- **EX138 — Handover condition.** What did operations do before accepting the system? *Rubric:* 3 = ran a revocation exercise themselves;; 2 = exercise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

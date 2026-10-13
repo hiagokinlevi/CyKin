@@ -155,7 +155,7 @@ A check never tested with known bad data may silently fail to detect anything.
 
 ### Exercises
 
-- **EX007 — Comment purpose.** What should comments explain? *Rubric:* 3 = why each part does what it does;; 2 = why;; 1 = nothing;; 0 = none.
+- **EX007 — Comment purpose.** What should comments explain? *Rubric:* 3 = why each part does what it does;; 2 = why;; 1 = vague;; 0 = none.
 - **EX008 — Missing fields.** How are missing JSON fields handled? *Rubric:* 3 = defaults and warnings rather than crashing;; 2 = warnings;; 1 = crash;; 0 = none.
 - **EX009 — Synthetic day result.** How many bookings matched on the synthetic day? *Rubric:* 3 = 64;; 2 = sixty-four;; 1 = 46;; 0 = none.
 
@@ -332,7 +332,7 @@ Forgotten accounts of departed volunteers remain a route to unauthorised access.
 ### Exercises
 
 - **EX019 — Ledger limitation.** What can the ledger not tell? *Rubric:* 3 = whether the right person holds the key;; 2 = who holds the key;; 1 = the balance;; 0 = none.
-- **EX020 — Inventory finding.** What did the inventory reveal? *Rubric:* 3 = an account of a volunteer who left;; 2 = old account;; 1 = nothing;; 0 = none.
+- **EX020 — Inventory finding.** What did the inventory reveal? *Rubric:* 3 = an account of a volunteer who left;; 2 = old account;; 1 = vague;; 0 = none.
 - **EX021 — Grant signing.** Who signs credit grants on the ledger? *Rubric:* 3 = a 2-of-3 multisig of staff;; 2 = multisig;; 1 = one leader;; 0 = none.
 
 ### Synthesis
@@ -376,7 +376,7 @@ Removing a control without knowing why it was added can reopen a risk it address
 ### Exercises
 
 - **EX022 — Boundary example.** Name one trust boundary Lucas marks. *Rubric:* 3 = database to issuing service;; 2 = service to ledger;; 1 = inside the database;; 0 = none.
-- **EX023 — Contract control.** What does the contract enforce? *Rubric:* 3 = a monthly cap on credits per member;; 2 = cap;; 1 = nothing;; 0 = none.
+- **EX023 — Contract control.** What does the contract enforce? *Rubric:* 3 = a monthly cap on credits per member;; 2 = cap;; 1 = vague;; 0 = none.
 - **EX024 — Design note use.** How did a design note help? *Rubric:* 3 = it explained the batch summary followed a near miss;; 2 = preserved reasoning;; 1 = it did not;; 0 = none.
 
 ### Synthesis
@@ -508,7 +508,7 @@ Protecting assets in the order they come to mind wastes effort on low-impact ite
 ### Exercises
 
 - **EX031 — Inventory field.** Name one field recorded for each asset. *Rubric:* 3 = current protection;; 2 = owner;; 1 = colour;; 0 = none.
-- **EX032 — Signer concern.** What do signers worry about? *Rubric:* 3 = signing something wrong;; 2 = mistakes;; 1 = nothing;; 0 = none.
+- **EX032 — Signer concern.** What do signers worry about? *Rubric:* 3 = signing something wrong;; 2 = mistakes;; 1 = vague;; 0 = none.
 - **EX033 — Top priority.** What are the top protection priorities? *Rubric:* 3 = signer keys and the issuing service;; 2 = keys and service;; 1 = the website;; 0 = none.
 
 ### Synthesis
@@ -553,7 +553,7 @@ A calculation step with no independent check can pass errors straight to signing
 
 - **EX034 — Unchecked step.** Which step had no independent check? *Rubric:* 3 = the credit calculation;; 2 = calculation;; 1 = signing;; 0 = none.
 - **EX035 — Timing issue.** What timing problem could occur? *Rubric:* 3 = reading partial data mid-update;; 2 = partial reads;; 1 = vague;; 0 = none.
-- **EX036 — Post-grant check.** What happens after credits are granted? *Rubric:* 3 = a script compares events with the batch;; 2 = event comparison;; 1 = nothing;; 0 = none.
+- **EX036 — Post-grant check.** What happens after credits are granted? *Rubric:* 3 = a script compares events with the batch;; 2 = event comparison;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1134,7 +1134,7 @@ Evaluating only with problems monitoring was designed for hides the gaps it cann
 
 - **EX067 — Lag detection time.** How quickly was node lag detected? *Rubric:* 3 = three minutes;; 2 = 3 minutes;; 1 = an hour;; 0 = none.
 - **EX068 — Missed case.** Which seeded case was missed? *Rubric:* 3 = a grant matched to the wrong member;; 2 = wrong member;; 1 = unmatched grant;; 0 = none.
-- **EX069 — Gap fix.** What is recommended to close the gap? *Rubric:* 3 = match member identity as well as workshop;; 2 = identity matching;; 1 = nothing;; 0 = none.
+- **EX069 — Gap fix.** What is recommended to close the gap? *Rubric:* 3 = match member identity as well as workshop;; 2 = identity matching;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1353,7 +1353,7 @@ Looking up member data out of curiosity breaches the principle of access for nee
 ### Exercises
 
 - **EX082 — Maintenance timing.** When does Lucas schedule maintenance? *Rubric:* 3 = quiet mornings;; 2 = mornings;; 1 = busy evenings;; 0 = none.
-- **EX083 — Stolen phone response.** How are a member's credits protected after phone theft? *Rubric:* 3 = verified in person and moved to a new address by signers;; 2 = moved;; 1 = nothing;; 0 = none.
+- **EX083 — Stolen phone response.** How are a member's credits protected after phone theft? *Rubric:* 3 = verified in person and moved to a new address by signers;; 2 = moved;; 1 = vague;; 0 = none.
 - **EX084 — Declined request.** What did Lucas decline? *Rubric:* 3 = looking up another member's booking history;; 2 = curiosity lookup;; 1 = a raise;; 0 = none.
 
 ### Synthesis

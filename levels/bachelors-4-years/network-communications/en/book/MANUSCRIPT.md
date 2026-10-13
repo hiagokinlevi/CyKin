@@ -824,7 +824,7 @@ Zones defined by building location rather than trust and purpose tend to mix dev
 
 ### Exercises
 
-- **EX046 — Layer failure.** What still protects clinical devices if guest separation is misconfigured? *Rubric:* 3 = host firewalls and logging;; 2 = host firewall;; 1 = nothing;; 0 = none.
+- **EX046 — Layer failure.** What still protects clinical devices if guest separation is misconfigured? *Rubric:* 3 = host firewalls and logging;; 2 = host firewall;; 1 = vague;; 0 = none.
 - **EX047 — Default deny basis.** Which publication guides default-deny firewall policy here? *Rubric:* 3 = NIST SP 800-41r1;; 2 = NIST;; 1 = vague;; 0 = none.
 - **EX048 — Management zone purpose.** Why must management interfaces be in their own zone? *Rubric:* 3 = reaching them allows changing the network, undoing controls;; 2 = protect;; 1 = convenience;; 0 = none.
 
@@ -1223,7 +1223,7 @@ Requirements written as solutions, such as "buy a firewall", cannot be tested an
 
 - **EX067 — Requirement form.** Rewrite "install a firewall" as a testable requirement. *Rubric:* 3 = states outcome such as inter-group traffic denied unless listed;; 2 = outcome;; 1 = keeps solution;; 0 = none.
 - **EX068 — Gap detection.** How does threat analysis reveal missing requirements? *Rubric:* 3 = threats without matching requirement;; 2 = unmatched threats;; 1 = vague;; 0 = none.
-- **EX069 — False assumption effect.** What changed when the cart assumption proved false? *Rubric:* 3 = infected cart risk raised; priorities revisited;; 2 = risk up;; 1 = nothing;; 0 = none.
+- **EX069 — False assumption effect.** What changed when the cart assumption proved false? *Rubric:* 3 = infected cart risk raised; priorities revisited;; 2 = risk up;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1293,7 +1293,7 @@ Broad allow rules added for convenience quietly undo segmentation.
 ### Exercises
 
 - **EX070 — Shadowed rule meaning.** Why does rule 3 never take effect? *Rubric:* 3 = rule 1 denies all guest traffic first;; 2 = earlier deny;; 1 = order;; 0 = none.
-- **EX071 — Broad staff rule.** What is wrong with rule 5? *Rubric:* 3 = staff-to-anything defeats separation;; 2 = too broad;; 1 = nothing;; 0 = none.
+- **EX071 — Broad staff rule.** What is wrong with rule 5? *Rubric:* 3 = staff-to-anything defeats separation;; 2 = too broad;; 1 = vague;; 0 = none.
 - **EX072 — DNS rule narrowing.** How should the any-to-any DNS rule be narrowed? *Rubric:* 3 = only to clinic DNS servers;; 2 = specific servers;; 1 = remove;; 0 = none.
 
 ### Synthesis
@@ -1582,7 +1582,7 @@ A rollback plan that was never practised often fails when needed.
 
 ### Exercises
 
-- **EX088 — Rehearsal timing value.** What did timing the rehearsal tell the clinics? *Rubric:* 3 = required change window length;; 2 = window;; 1 = nothing;; 0 = none.
+- **EX088 — Rehearsal timing value.** What did timing the rehearsal tell the clinics? *Rubric:* 3 = required change window length;; 2 = window;; 1 = vague;; 0 = none.
 - **EX089 — Rollback decision point.** What is the purpose of a decision point in the window? *Rubric:* 3 = revert calmly if tests not passed;; 2 = stop;; 1 = vague;; 0 = none.
 - **EX090 — Report audience.** Who is the lab report written for? *Rubric:* 3 = IT lead and tutor;; 2 = IT lead;; 1 = tutor only;; 0 = none.
 
@@ -1775,7 +1775,7 @@ Choosing weights after seeing scores lets analysts steer results.
 ### Exercises
 
 - **EX100 — Option A weakness.** Why did option A rank last? *Rubric:* 3 = limited logging failed detection needs;; 2 = logging;; 1 = cost;; 0 = none.
-- **EX101 — Sensitivity purpose.** What does the sensitivity analysis show managers? *Rubric:* 3 = choice depends on their priorities;; 2 = dependence on weights;; 1 = nothing;; 0 = none.
+- **EX101 — Sensitivity purpose.** What does the sensitivity analysis show managers? *Rubric:* 3 = choice depends on their priorities;; 2 = dependence on weights;; 1 = vague;; 0 = none.
 - **EX102 — Revisit trigger.** When might option C be reconsidered? *Rubric:* 3 = more reliable links or growth;; 2 = later;; 1 = never;; 0 = none.
 
 ### Synthesis
@@ -2082,7 +2082,7 @@ Theses that hide limitations invite harder questioning than those that state the
 
 - **EX118 — Two audiences.** How did the two presentations differ? *Rubric:* 3 = examiners method and evidence; managers outcomes and costs;; 2 = audiences;; 1 = same;; 0 = none.
 - **EX119 — Sanitising detail.** Give two details removed before submission. *Rubric:* 3 = real names, addresses, firewall models or passphrase policy;; 2 = two;; 1 = one;; 0 = none.
-- **EX120 — Reflection lesson.** What did Priya find harder than the technical work? *Rubric:* 3 = people, suppliers, trust and data handling;; 2 = people;; 1 = nothing;; 0 = none.
+- **EX120 — Reflection lesson.** What did Priya find harder than the technical work? *Rubric:* 3 = people, suppliers, trust and data handling;; 2 = people;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

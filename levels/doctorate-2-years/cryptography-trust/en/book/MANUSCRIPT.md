@@ -570,7 +570,7 @@ A digest detects change but cannot say whether the original content was honest. 
 ### Exercises
 
 - **EX039 — Thesis claim.** State Nadia's synthesised thesis claim. *Rubric:* 3 = checklist+lint cut confirmed misuse per ten changes in one firm over a quarter, modest time cost, mainly key-handling;; 2 = effect only;; 1 = universal claim;; 0 = none.
-- **EX040 — Archive exclusions.** What does the archive exclude and why? *Rubric:* 3 = diffs, repository names, anything identifying Meridian systems, per data agreement;; 2 = partial;; 1 = nothing;; 0 = none.
+- **EX040 — Archive exclusions.** What does the archive exclude and why? *Rubric:* 3 = diffs, repository names, anything identifying Meridian systems, per data agreement;; 2 = partial;; 1 = vague;; 0 = none.
 - **EX041 — Manifest roots.** Report the root before and after the edit. *Rubric:* 3 = 4ed0159418d1b231 then 1fcc81b868bef821, match False;; 2 = one root;; 1 = "changed";; 0 = none.
 - **EX042 — Hash versus signature.** What does the manifest prove and what does it not? *Rubric:* 3 = integrity against edits, not authorship; a signature such as Ed25519 (RFC 8032) proves origin;; 2 = one side;; 1 = confused;; 0 = none.
 - **EX043 — Ordering pitfall.** Why must sorting be documented? *Rubric:* 3 = different file order gives a different root for identical content;; 2 = reproducibility;; 1 = style;; 0 = none.

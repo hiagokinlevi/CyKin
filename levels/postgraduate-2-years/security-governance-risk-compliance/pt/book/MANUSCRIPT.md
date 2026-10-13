@@ -66,10 +66,10 @@ Os rótulos de viés podem ser usados para descartar opiniões. Os registros do 
 ### Exercícios
 
 - **EX001 — Boa decisão.** Como uma boa decisão de segurança deve ser julgada? *Rubrica:* 3 = pelo sentido da escolha diante das informações, dos valores e do tempo;; 2 = raciocínio;; 1 = resultado;; 0 = nenhuma.
-- **EX002 — Pulo com sorte.** Por que elogiar a revisão de fornecedor pulada foi um erro? *Rubrica:* 3 = premiou a sorte, não o raciocínio;; 2 = sorte;; 1 = nada;; 0 = nenhuma.
+- **EX002 — Pulo com sorte.** Por que elogiar a revisão de fornecedor pulada foi um erro? *Rubrica:* 3 = premiou a sorte, não o raciocínio;; 2 = sorte;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Excesso de confiança.** O que o excesso de confiança faz com as faixas dos especialistas? *Rubrica:* 3 = deixa-as estreitas demais;; 2 = estreitas;; 1 = largas;; 0 = nenhuma.
 - **EX004 — Fonte da calibração.** Que fonte descreve o treinamento de calibração para estimativas de segurança? *Rubrica:* 3 = Hubbard e Seiersen (2016);; 2 = Hubbard;; 1 = Cox;; 0 = nenhuma.
-- **EX005 — Defesa contra o viés.** Cite uma defesa prática contra o viés. *Rubrica:* 3 = registrar as premissas e pedir faixas;; 2 = estrutura;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Defesa contra o viés.** Cite uma defesa prática contra o viés. *Rubrica:* 3 = registrar as premissas e pedir faixas;; 2 = estrutura;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -108,10 +108,10 @@ As listas de tendências envelhecem depressa. A autoavaliação pode ser generos
 ### Exercícios
 
 - **EX006 — Estrutura do conselho.** Que framework estrutura os relatórios ao conselho da Halbrook? *Rubrica:* 3 = NIST CSF 2.0;; 2 = CSF;; 1 = COBIT;; 0 = nenhuma.
-- **EX007 — Problema da matriz.** Por que o conselho tem dificuldade com a matriz cinco por cinco? *Rubrica:* 3 = é difícil compará-la com os riscos financeiros;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX008 — Fraqueza com fornecedores.** O que há de fraco na supervisão de fornecedores? *Rubrica:* 3 = questionários lentos, raramente lidos a fundo;; 2 = questionários;; 1 = nada;; 0 = nenhuma.
-- **EX009 — Cautela com tendências.** Por que pesar as tendências contra a maturidade? *Rubrica:* 3 = métodos sem dados ou competências podem piorar a governança;; 2 = maturidade;; 1 = nada;; 0 = nenhuma.
-- **EX010 — Combinar frameworks.** Por que as organizações maduras combinam frameworks? *Rubrica:* 3 = cada um responde a uma pergunta diferente;; 2 = complementares;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Problema da matriz.** Por que o conselho tem dificuldade com a matriz cinco por cinco? *Rubrica:* 3 = é difícil compará-la com os riscos financeiros;; 2 = comparabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Fraqueza com fornecedores.** O que há de fraco na supervisão de fornecedores? *Rubrica:* 3 = questionários lentos, raramente lidos a fundo;; 2 = questionários;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Cautela com tendências.** Por que pesar as tendências contra a maturidade? *Rubrica:* 3 = métodos sem dados ou competências podem piorar a governança;; 2 = maturidade;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Combinar frameworks.** Por que as organizações maduras combinam frameworks? *Rubrica:* 3 = cada um responde a uma pergunta diferente;; 2 = complementares;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -178,11 +178,11 @@ As estimativas dependem das faixas dos especialistas. Os modelos omitem eventos 
 
 ### Exercícios
 
-- **EX011 — Decomposição do FAIR.** Em que dois fatores o FAIR decompõe o risco? *Rubrica:* 3 = frequência de eventos de perda e magnitude da perda;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX012 — Perda média.** Que perda anual média o laboratório relatou? *Rubrica:* 3 = cerca de 170 mil;; 2 = 170;; 1 = nada;; 0 = nenhuma.
-- **EX013 — Anos tranquilos.** Em que proporção dos anos não houve perda? *Rubrica:* 3 = 68%;; 2 = 0,68;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Chance da cauda.** Qual é a chance de passar de um milhão num ano? *Rubrica:* 3 = cerca de 4%;; 2 = 0,041;; 1 = nada;; 0 = nenhuma.
-- **EX015 — Persuasão.** O que torna as evidências especializadas convincentes para os comitês? *Rubrica:* 3 = tradução em termos familiares e incerteza visível;; 2 = tradução;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Decomposição do FAIR.** Em que dois fatores o FAIR decompõe o risco? *Rubrica:* 3 = frequência de eventos de perda e magnitude da perda;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX012 — Perda média.** Que perda anual média o laboratório relatou? *Rubrica:* 3 = cerca de 170 mil;; 2 = 170;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Anos tranquilos.** Em que proporção dos anos não houve perda? *Rubrica:* 3 = 68%;; 2 = 0,68;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Chance da cauda.** Qual é a chance de passar de um milhão num ano? *Rubrica:* 3 = cerca de 4%;; 2 = 0,041;; 1 = vago;; 0 = nenhuma.
+- **EX015 — Persuasão.** O que torna as evidências especializadas convincentes para os comitês? *Rubrica:* 3 = tradução em termos familiares e incerteza visível;; 2 = tradução;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -220,11 +220,11 @@ Os julgamentos éticos podem ser contestados. Conflitos declarados ainda influen
 
 ### Exercícios
 
-- **EX016 — Números mal usados.** Como os números podem ser mal usados na quantificação de riscos? *Rubrica:* 3 = entradas otimistas ou pessimistas escolhidas para justificar uma conclusão;; 2 = manipulação;; 1 = nada;; 0 = nenhuma.
-- **EX017 — Interesses ausentes.** Os interesses de quem raramente aparecem nos modelos de perda? *Rubrica:* 3 = das pessoas afetadas, como os segurados;; 2 = segurados;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Medidas contra conflitos.** O que Daniel propôs para lidar com seus conflitos? *Rubrica:* 3 = revisão pela auditoria, declaração, decisores orçamentários separados;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX019 — Posição sobre a notificação.** Por que Daniel se opôs a estreitar os incidentes notificáveis? *Rubrica:* 3 = prejudicaria os segurados e conflitaria com os deveres legais;; 2 = dano;; 1 = nada;; 0 = nenhuma.
-- **EX020 — Mínimo do compliance.** Como cumprir a lei deve ser visto do ponto de vista ético? *Rubrica:* 3 = como um mínimo, não a medida completa;; 2 = mínimo;; 1 = nada;; 0 = nenhuma.
+- **EX016 — Números mal usados.** Como os números podem ser mal usados na quantificação de riscos? *Rubrica:* 3 = entradas otimistas ou pessimistas escolhidas para justificar uma conclusão;; 2 = manipulação;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Interesses ausentes.** Os interesses de quem raramente aparecem nos modelos de perda? *Rubrica:* 3 = das pessoas afetadas, como os segurados;; 2 = segurados;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Medidas contra conflitos.** O que Daniel propôs para lidar com seus conflitos? *Rubrica:* 3 = revisão pela auditoria, declaração, decisores orçamentários separados;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Posição sobre a notificação.** Por que Daniel se opôs a estreitar os incidentes notificáveis? *Rubrica:* 3 = prejudicaria os segurados e conflitaria com os deveres legais;; 2 = dano;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Mínimo do compliance.** Como cumprir a lei deve ser visto do ponto de vista ético? *Rubrica:* 3 = como um mínimo, não a medida completa;; 2 = mínimo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -262,11 +262,11 @@ Os pesos dos critérios são subjetivos. A qualidade dos serviços de ratings va
 
 ### Exercícios
 
-- **EX021 — Abordagem atual.** Como a Halbrook supervisiona hoje seus fornecedores? *Rubrica:* 3 = um único questionário longo para os trezentos;; 2 = questionário;; 1 = nada;; 0 = nenhuma.
-- **EX022 — Evidências dos níveis.** Em que evidências se apoiam as revisões profundas? *Rubrica:* 3 = relatórios SOC 2 tipo 2 ou certificados ISO/IEC 27001:2022 mais perguntas direcionadas;; 2 = relatórios de garantia;; 1 = nada;; 0 = nenhuma.
-- **EX023 — Limite dos ratings.** Qual é a limitação do serviço de ratings? *Rubrica:* 3 = a visão de fora para dentro não enxerga os controles internos;; 2 = de fora para dentro;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Definição de sucesso.** Como se define o sucesso dos níveis? *Rubrica:* 3 = revisões mais rápidas sem perder profundidade nos críticos;; 2 = critérios;; 1 = nada;; 0 = nenhuma.
-- **EX025 — Avaliar primeiro.** Por que avaliar antes da implantação completa? *Rubrica:* 3 = mantém a organização aberta às evidências e reduz o custo do erro;; 2 = evidências;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Abordagem atual.** Como a Halbrook supervisiona hoje seus fornecedores? *Rubrica:* 3 = um único questionário longo para os trezentos;; 2 = questionário;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Evidências dos níveis.** Em que evidências se apoiam as revisões profundas? *Rubrica:* 3 = relatórios SOC 2 tipo 2 ou certificados ISO/IEC 27001:2022 mais perguntas direcionadas;; 2 = relatórios de garantia;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Limite dos ratings.** Qual é a limitação do serviço de ratings? *Rubrica:* 3 = a visão de fora para dentro não enxerga os controles internos;; 2 = de fora para dentro;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Definição de sucesso.** Como se define o sucesso dos níveis? *Rubrica:* 3 = revisões mais rápidas sem perder profundidade nos críticos;; 2 = critérios;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Avaliar primeiro.** Por que avaliar antes da implantação completa? *Rubrica:* 3 = mantém a organização aberta às evidências e reduz o custo do erro;; 2 = evidências;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -328,10 +328,10 @@ Amostras pequenas. O cegamento pode ser imperfeito se os revisores reconhecerem 
 
 ### Exercícios
 
-- **EX026 — Sorteio.** Por que as revisões foram sorteadas? *Rubrica:* 3 = para tornar os grupos comparáveis em média;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
-- **EX027 — Durações médias.** Quais foram as durações médias? *Rubrica:* 3 = antigo 39,3 dias, com níveis 26,5 dias;; 2 = diferença de 12,8;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Sorteio.** Por que as revisões foram sorteadas? *Rubrica:* 3 = para tornar os grupos comparáveis em média;; 2 = comparabilidade;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Durações médias.** Quais foram as durações médias? *Rubrica:* 3 = antigo 39,3 dias, com níveis 26,5 dias;; 2 = diferença de 12,8;; 1 = vago;; 0 = nenhuma.
 - **EX028 — p da permutação.** Que p-valor unilateral o teste de permutação deu? *Rubrica:* 3 = cerca de 0,0002;; 2 = 0,0002;; 1 = 0,05;; 0 = nenhuma.
-- **EX029 — Pontuação cega.** Por que o auditor não soube que processo foi usado? *Rubrica:* 3 = para evitar viés nas notas de profundidade;; 2 = cegamento;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Pontuação cega.** Por que o auditor não soube que processo foi usado? *Rubrica:* 3 = para evitar viés nas notas de profundidade;; 2 = cegamento;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Resultado de profundidade.** Os níveis perderam profundidade? *Rubrica:* 3 = não, foram um pouco melhores nos de nível alto;; 2 = não;; 1 = sim;; 0 = nenhuma.
 
 ### Síntese
@@ -370,11 +370,11 @@ Os formulários de entrada podem ser manipulados. Os modelos de linhas variam en
 
 ### Exercícios
 
-- **EX031 — Barreira na entrada.** O que impede que fornecedores de nível alto sejam aprovados sem revisão? *Rubrica:* 3 = o formulário de entrada das compras define o nível e bloqueia a aprovação;; 2 = barreira;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Barreira na entrada.** O que impede que fornecedores de nível alto sejam aprovados sem revisão? *Rubrica:* 3 = o formulário de entrada das compras define o nível e bloqueia a aprovação;; 2 = barreira;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Primeira linha.** Quem gerencia o risco de fornecedores na primeira linha? *Rubrica:* 3 = compras e donos de negócio;; 2 = donos;; 1 = auditoria;; 0 = nenhuma.
-- **EX033 — Confusão entre linhas.** O que enfraquece a garantia entre as linhas? *Rubrica:* 3 = a equipe de riscos fazer revisões que deveria questionar;; 2 = confusão;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Causa da resistência.** Por que algumas unidades resistiram aos níveis? *Rubrica:* 3 = as revisões de nível alto atrasavam os contratos;; 2 = atraso;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Solução da resistência.** Como a resistência foi reduzida? *Rubrica:* 3 = engajamento antecipado e tempos de revisão publicados;; 2 = engajamento;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Confusão entre linhas.** O que enfraquece a garantia entre as linhas? *Rubrica:* 3 = a equipe de riscos fazer revisões que deveria questionar;; 2 = confusão;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Causa da resistência.** Por que algumas unidades resistiram aos níveis? *Rubrica:* 3 = as revisões de nível alto atrasavam os contratos;; 2 = atraso;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Solução da resistência.** Como a resistência foi reduzida? *Rubrica:* 3 = engajamento antecipado e tempos de revisão publicados;; 2 = engajamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -412,11 +412,11 @@ Os controles compensatórios podem mascarar o risco. O escalonamento pode desgas
 
 ### Exercícios
 
-- **EX036 — Exceção no SOC 2.** Que exceção o relatório do fornecedor mostrou? *Rubrica:* 3 = revisões de acesso não feitas durante dois trimestres;; 2 = revisão de acesso;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Exceção no SOC 2.** Que exceção o relatório do fornecedor mostrou? *Rubrica:* 3 = revisões de acesso não feitas durante dois trimestres;; 2 = revisão de acesso;; 1 = vago;; 0 = nenhuma.
 - **EX037 — Plano para o fornecedor crítico.** O que Daniel recomendou para o fornecedor crítico? *Rubrica:* 3 = plano de remediação, monitoramento extra e avaliação de saída em paralelo;; 2 = três;; 1 = substituir imediatamente;; 0 = nenhuma.
-- **EX038 — Dúvida de escopo.** Por que o certificado do provedor era insuficiente? *Rubrica:* 3 = o escopo não incluía claramente o serviço de análise;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
-- **EX039 — Exposição limitada.** Como Daniel limitou a exposição enquanto reunia evidências? *Rubrica:* 3 = piloto com dados sintéticos e direitos de auditoria;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
-- **EX040 — Memorando de escalonamento.** O que continha o memorando de Daniel? *Rubrica:* 3 = decisão necessária, opções, risco e recomendação;; 2 = memorando;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Dúvida de escopo.** Por que o certificado do provedor era insuficiente? *Rubrica:* 3 = o escopo não incluía claramente o serviço de análise;; 2 = escopo;; 1 = vago;; 0 = nenhuma.
+- **EX039 — Exposição limitada.** Como Daniel limitou a exposição enquanto reunia evidências? *Rubrica:* 3 = piloto com dados sintéticos e direitos de auditoria;; 2 = piloto;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Memorando de escalonamento.** O que continha o memorando de Daniel? *Rubrica:* 3 = decisão necessária, opções, risco e recomendação;; 2 = memorando;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -475,11 +475,11 @@ As curvas combinadas dependem de premissas de correlação. Os limiares de apeti
 
 ### Exercícios
 
-- **EX041 — Exemplo de apetite.** Dê o exemplo de limite de excedência. *Rubrica:* 3 = no máximo 5% de chance de passar de 1 milhão;; 2 = 5% em 1 milhão;; 1 = nada;; 0 = nenhuma.
-- **EX042 — Dentro do apetite.** Em que pontos a estimativa está dentro do apetite? *Rubrica:* 3 = 250 mil e 500 mil;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Violação em um milhão.** Qual é a estimativa em um milhão em relação ao apetite? *Rubrica:* 3 = 8% contra 5%;; 2 = excede;; 1 = nada;; 0 = nenhuma.
+- **EX041 — Exemplo de apetite.** Dê o exemplo de limite de excedência. *Rubrica:* 3 = no máximo 5% de chance de passar de 1 milhão;; 2 = 5% em 1 milhão;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Dentro do apetite.** Em que pontos a estimativa está dentro do apetite? *Rubrica:* 3 = 250 mil e 500 mil;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Violação em um milhão.** Qual é a estimativa em um milhão em relação ao apetite? *Rubrica:* 3 = 8% contra 5%;; 2 = excede;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Onde ocorre a violação.** Que parte da curva viola o apetite? *Rubrica:* 3 = a cauda;; 2 = cauda;; 1 = ano típico;; 0 = nenhuma.
-- **EX045 — Resposta sobre confiança.** Como Daniel respondeu se as estimativas eram confiáveis? *Rubrica:* 3 = explicou as entradas, a revisão da auditoria e as faixas;; 2 = transparência;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Resposta sobre confiança.** Como Daniel respondeu se as estimativas eram confiáveis? *Rubrica:* 3 = explicou as entradas, a revisão da auditoria e as faixas;; 2 = transparência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -517,11 +517,11 @@ Os resumos simplificam as fontes. Os contextos diferem do da Halbrook.
 
 ### Exercícios
 
-- **EX046 — Campos de leitura.** O que Daniel registra para cada fonte? *Rubrica:* 3 = pergunta, método, dados, afirmação principal, limites;; 2 = cinco;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Campos de leitura.** O que Daniel registra para cada fonte? *Rubrica:* 3 = pergunta, método, dados, afirmação principal, limites;; 2 = cinco;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Evidência de Cox.** Que tipo de evidência Cox (2008) oferece? *Rubrica:* 3 = análise lógica das propriedades das matrizes;; 2 = analítica;; 1 = empírica;; 0 = nenhuma.
-- **EX048 — Método de Spears.** Que método Spears e Barki (2010) usam? *Rubrica:* 3 = dados de survey e entrevistas com gestores;; 2 = survey;; 1 = nada;; 0 = nenhuma.
-- **EX049 — Gordon-Loeb na prática.** Como o trabalho de Gordon e Loeb se aplica na Halbrook? *Rubrica:* 3 = comparar investimentos com a redução esperada de perdas;; 2 = investimento;; 1 = nada;; 0 = nenhuma.
-- **EX050 — Lacuna de pesquisa.** Que lacuna a avaliação de Daniel preenche? *Rubrica:* 3 = nenhuma estudou diretamente a supervisão de fornecedores de seguradoras;; 2 = evidência local;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Método de Spears.** Que método Spears e Barki (2010) usam? *Rubrica:* 3 = dados de survey e entrevistas com gestores;; 2 = survey;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Gordon-Loeb na prática.** Como o trabalho de Gordon e Loeb se aplica na Halbrook? *Rubrica:* 3 = comparar investimentos com a redução esperada de perdas;; 2 = investimento;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Lacuna de pesquisa.** Que lacuna a avaliação de Daniel preenche? *Rubrica:* 3 = nenhuma estudou diretamente a supervisão de fornecedores de seguradoras;; 2 = evidência local;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -559,11 +559,11 @@ Seis meses é pouco tempo. Os ganhos de calibração podem se dissipar.
 
 ### Exercícios
 
-- **EX051 — Resultado do tempo de revisão.** Como mudou o tempo médio de revisão? *Rubrica:* 3 = de cerca de trinta e nove para vinte e quatro dias;; 2 = quase pela metade;; 1 = nada;; 0 = nenhuma.
-- **EX052 — Revisões de nível alto.** Quantos fornecedores de nível alto concluíram revisões profundas? *Rubrica:* 3 = quarenta e dois;; 2 = 42;; 1 = nada;; 0 = nenhuma.
-- **EX053 — Exceções encontradas.** Quantos fornecedores de nível alto tinham exceções significativas? *Rubrica:* 3 = três;; 2 = 3;; 1 = nada;; 0 = nenhuma.
-- **EX054 — Parcialmente cumprido.** Que objetivo foi apenas quase cumprido? *Rubrica:* 3 = reduzir à metade o tempo de revisão;; 2 = tempo de revisão;; 1 = nada;; 0 = nenhuma.
-- **EX055 — Recomendação de dados.** Que dados Daniel recomenda coletar? *Rubrica:* 3 = dados internos de custo de incidentes;; 2 = custos de incidentes;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Resultado do tempo de revisão.** Como mudou o tempo médio de revisão? *Rubrica:* 3 = de cerca de trinta e nove para vinte e quatro dias;; 2 = quase pela metade;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Revisões de nível alto.** Quantos fornecedores de nível alto concluíram revisões profundas? *Rubrica:* 3 = quarenta e dois;; 2 = 42;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Exceções encontradas.** Quantos fornecedores de nível alto tinham exceções significativas? *Rubrica:* 3 = três;; 2 = 3;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Parcialmente cumprido.** Que objetivo foi apenas quase cumprido? *Rubrica:* 3 = reduzir à metade o tempo de revisão;; 2 = tempo de revisão;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Recomendação de dados.** Que dados Daniel recomenda coletar? *Rubrica:* 3 = dados internos de custo de incidentes;; 2 = custos de incidentes;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -601,11 +601,11 @@ A autoavaliação pode ser generosa. A transferência exige teste local.
 
 ### Exercícios
 
-- **EX056 — Resposta sobre a continuidade.** Como Daniel mostrou que a quantificação sobreviveria à sua saída? *Rubrica:* 3 = passagem de bastão, colega treinado e revisão da auditoria;; 2 = continuidade;; 1 = nada;; 0 = nenhuma.
-- **EX057 — Fazer diferente.** O que Daniel faria diferente? *Rubrica:* 3 = coletar dados de custo de incidentes desde o início e envolver os corretores mais cedo;; 2 = retrospectiva;; 1 = nada;; 0 = nenhuma.
-- **EX058 — Condição de transferência.** Quando os métodos se transferem melhor? *Rubrica:* 3 = quando as premissas são explícitas;; 2 = premissas;; 1 = nada;; 0 = nenhuma.
-- **EX059 — Pequenas beneficentes.** Que ajuste os relatórios de excedência de perda podem exigir em pequenas organizações beneficentes? *Rubrica:* 3 = simplificação;; 2 = mais simples;; 1 = nada;; 0 = nenhuma.
-- **EX060 — Hábitos duradouros.** Que hábitos continuarão úteis quando os frameworks mudarem? *Rubrica:* 3 = leitura crítica, avaliação controlada, relato transparente;; 2 = hábitos;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Resposta sobre a continuidade.** Como Daniel mostrou que a quantificação sobreviveria à sua saída? *Rubrica:* 3 = passagem de bastão, colega treinado e revisão da auditoria;; 2 = continuidade;; 1 = vago;; 0 = nenhuma.
+- **EX057 — Fazer diferente.** O que Daniel faria diferente? *Rubrica:* 3 = coletar dados de custo de incidentes desde o início e envolver os corretores mais cedo;; 2 = retrospectiva;; 1 = vago;; 0 = nenhuma.
+- **EX058 — Condição de transferência.** Quando os métodos se transferem melhor? *Rubrica:* 3 = quando as premissas são explícitas;; 2 = premissas;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Pequenas beneficentes.** Que ajuste os relatórios de excedência de perda podem exigir em pequenas organizações beneficentes? *Rubrica:* 3 = simplificação;; 2 = mais simples;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Hábitos duradouros.** Que hábitos continuarão úteis quando os frameworks mudarem? *Rubrica:* 3 = leitura crítica, avaliação controlada, relato transparente;; 2 = hábitos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

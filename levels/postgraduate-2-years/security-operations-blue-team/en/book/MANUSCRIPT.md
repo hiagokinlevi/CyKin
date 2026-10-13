@@ -108,7 +108,7 @@ Probabilities in SOC decisions are judgements; state them as ranges and update t
 
 - **EX001 — Expected cost.** Define expected cost for a response option. *Rubric:* 3 = probability-weighted sum of costs if malicious and if benign; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Lab values.** Give the three expected costs at p = 0.30. *Rubric:* 3 = 11.6k, 42.4k, 180.0k; 2 = two; 1 = one; 0 = none.
-- **EX003 — Switching point.** What changes at p = 0.05, and why does it matter? *Rubric:* 3 = monitoring becomes cheapest; best option depends on probability; evidence valuable; 2 = partial; 1 = nothing; 0 = none.
+- **EX003 — Switching point.** What changes at p = 0.05, and why does it matter? *Rubric:* 3 = monitoring becomes cheapest; best option depends on probability; evidence valuable; 2 = partial; 1 = vague; 0 = none.
 - **EX004 — Limits of numbers.** Why does expected cost not replace judgement? *Rubric:* 3 = hard-to-price harms; legal duties not trade-offs; 2 = partial; 1 = it does; 0 = none.
 - **EX005 — Decision record.** What should a decision record contain? *Rubric:* 3 = decision, probability, evidence, decider, time; 2 = three; 1 = one; 0 = none.
 
@@ -551,7 +551,7 @@ Integration depends on people; turnover can break paths that look fine on paper.
 - **EX031 — Govern link.** How does CSF 2.0 Govern relate to the SOC? *Rubric:* 3 = places SOC within enterprise risk management; 2 = partial; 1 = vague; 0 = none.
 - **EX032 — Escalation routes.** List the escalation routes for claims alerts. *Rubric:* 3 = claims ops, IT, legal/DPO, HR only after review; 2 = three; 1 = one; 0 = none.
 - **EX033 — Risk language.** How does the SOC report to the risk committee? *Rubric:* 3 = business terms: likelihood, impact, trends, treatments; 2 = partial; 1 = technical; 0 = none.
-- **EX034 — First escalation.** What did the first night escalation reveal? *Rubric:* 3 = note lacked source network; template updated; 2 = partial; 1 = nothing; 0 = none.
+- **EX034 — First escalation.** What did the first night escalation reveal? *Rubric:* 3 = note lacked source network; template updated; 2 = partial; 1 = vague; 0 = none.
 - **EX035 — Quarterly meetings.** Why meet business leads quarterly? *Rubric:* 3 = relationships make incident calls smoother; 2 = partial; 1 = reporting only; 0 = none.
 
 ### Synthesis
@@ -838,7 +838,7 @@ Two real cases and six tests are few; the effect estimate is uncertain.
 - **EX052 — Interventions.** List the three interventions. *Rubric:* 3 = 24/7 directory, automated confirmation request, immediate export suspension with review; 2 = two; 1 = one; 0 = none.
 - **EX053 — Risk mitigation.** How was wrongful suspension risk limited? *Rubric:* 3 = fast review; suspend export rights only; 2 = partial; 1 = vague; 0 = none.
 - **EX054 — Outcome.** Report the outcome measures. *Rubric:* 3 = median 22 min over 2 real + 6 tests; 1 wrongful suspension 40 min; 2 = partial; 1 = one; 0 = none.
-- **EX055 — Procurement role.** What did procurement change? *Rubric:* 3 = added 24/7 contact clause to contracts; 2 = partial; 1 = nothing; 0 = none.
+- **EX055 — Procurement role.** What did procurement change? *Rubric:* 3 = added 24/7 contact clause to contracts; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -904,7 +904,7 @@ Reflection is partial; colleagues' feedback adds views one cannot see alone.
 - **EX057 — Transfer example.** Where did Daniel transfer controlled evaluation? *Rubric:* 3 = provider escalation quality before/after template change; 2 = partial; 1 = vague; 0 = none.
 - **EX058 — Sustainability.** What makes improvements survive staff changes? *Rubric:* 3 = documented playbooks, owners, automated metrics, scheduled reviews; 2 = three; 1 = one; 0 = none.
 - **EX059 — Fairness signals.** How would Daniel know insider monitoring had become unfair? *Rubric:* 3 = flags concentrated without business reason; complaints via representatives; 2 = partial; 1 = vague; 0 = none.
-- **EX060 — Differently.** What would Daniel do differently? *Rubric:* 3 = measure baselines before incidents force it; 2 = partial; 1 = nothing; 0 = none.
+- **EX060 — Differently.** What would Daniel do differently? *Rubric:* 3 = measure baselines before incidents force it; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

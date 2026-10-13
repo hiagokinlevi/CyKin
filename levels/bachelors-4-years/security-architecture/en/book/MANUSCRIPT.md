@@ -859,7 +859,7 @@ Overviews simplify; details live in supporting documents. Attributes need revisi
 
 - **EX046 — Not a product list.** Why is a security architecture not a product list? *Rubric:* 3 = it describes principles, attributes, services, connections and owners;; 2 = structure;; 1 = it is;; 0 = none.
 - **EX047 — Attribute use.** How does the attribute map help when someone proposes cutting a service? *Rubric:* 3 = it shows which business value would weaken;; 2 = value;; 1 = vague;; 0 = none.
-- **EX048 — Board effect.** What did the overview change for Fernway's board? *Rubric:* 3 = they saw security as a coherent design rather than purchases;; 2 = coherent;; 1 = nothing;; 0 = none.
+- **EX048 — Board effect.** What did the overview change for Fernway's board? *Rubric:* 3 = they saw security as a coherent design rather than purchases;; 2 = coherent;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -991,7 +991,7 @@ Principles can conflict, such as least privilege versus acceptability. Judgement
 
 - **EX055 — Fail-safe default.** How does Fernway apply fail-safe defaults? *Rubric:* 3 = new staff accounts start with no access;; 2 = no access;; 1 = open access;; 0 = none.
 - **EX056 — Acceptability.** Why does psychological acceptability matter in stores? *Rubric:* 3 = controls that do not fit routines are bypassed;; 2 = bypass;; 1 = vague;; 0 = none.
-- **EX057 — Rota app finding.** What did the principles reveal about the rota app? *Rubric:* 3 = every manager could see all stores, breaking least privilege;; 2 = least privilege;; 1 = nothing;; 0 = none.
+- **EX057 — Rota app finding.** What did the principles reveal about the rota app? *Rubric:* 3 = every manager could see all stores, breaking least privilege;; 2 = least privilege;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1149,7 +1149,7 @@ Dependency maps miss fourth parties, the suppliers of suppliers. Classifications
 
 ### Exercises
 
-- **EX064 — Mixed folder.** What was wrong with the misc folder? *Rubric:* 3 = confidential staff records next to public images, readable by marketing;; 2 = mixed classes;; 1 = nothing;; 0 = none.
+- **EX064 — Mixed folder.** What was wrong with the misc folder? *Rubric:* 3 = confidential staff records next to public images, readable by marketing;; 2 = mixed classes;; 1 = vague;; 0 = none.
 - **EX065 — Widest dependency.** Which services supported the most functions in the lab? *Rubric:* 3 = identity and hosting, 5 functions each;; 2 = identity;; 1 = price feed;; 0 = none.
 - **EX066 — Accepting a dependency.** Why keep a single payment provider? *Rubric:* 3 = a second would cost more than the risk; covered by contract and a plan;; 2 = cost;; 1 = must remove;; 0 = none.
 
@@ -1194,7 +1194,7 @@ Qualitative scales hide uncertainty. Small teams may share blind spots despite i
 ### Exercises
 
 - **EX067 — Why a store manager.** Why did Lucas involve a store manager? *Rubric:* 3 = people who run the process know where it fails;; 2 = local knowledge;; 1 = vague;; 0 = none.
-- **EX068 — Rating differences.** What did comparing independent ratings reveal? *Rubric:* 3 = past collection mistakes known only to the store manager;; 2 = new information;; 1 = nothing;; 0 = none.
+- **EX068 — Rating differences.** What did comparing independent ratings reveal? *Rubric:* 3 = past collection mistakes known only to the store manager;; 2 = new information;; 1 = vague;; 0 = none.
 - **EX069 — Wrong-person treatment.** How was wrong-person collection treated? *Rubric:* 3 = a text collection code checked at the counter;; 2 = code;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -1560,7 +1560,7 @@ Synthetic data rarely matches real noise. VPNs and travel apps can confuse locat
 
 - **EX088 — First rule problem.** What was wrong with flagging all foreign sign-ins? *Rubric:* 3 = buyers on trips caused many false alarms;; 2 = false positives;; 1 = vague;; 0 = none.
 - **EX089 — Window choice.** Why keep two hours rather than one? *Rubric:* 3 = one hour missed three of four attacks;; 2 = miss;; 1 = faster;; 0 = none.
-- **EX090 — Rule blind spot.** What does the rule miss? *Rubric:* 3 = attackers signing in from the user's own country;; 2 = same country;; 1 = nothing;; 0 = none.
+- **EX090 — Rule blind spot.** What does the rule miss? *Rubric:* 3 = attackers signing in from the user's own country;; 2 = same country;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

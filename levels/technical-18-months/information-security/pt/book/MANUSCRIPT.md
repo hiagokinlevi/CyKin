@@ -75,7 +75,7 @@ Praticar em sistemas reais sem permissão pode causar dano e pode ser ilegal.
 
 - **EX003 — Responsável de TI.** Quem é o responsável de TI da Westfield? *Rubrica:* 3 = o Sr. Sam Doyle;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX004 — Hábito seguro.** Cite uma das três regras do Sr. Appiah. *Rubrica:* 3 = praticar apenas com permissão;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX004 — Hábito seguro.** Cite uma das três regras do Sr. Appiah. *Rubrica:* 3 = praticar apenas com permissão;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -117,9 +117,9 @@ Listas impressas de clientes deixadas nos balcões podem ser lidas por qualquer 
 
 - **EX006 — Objetivo dos dados bancários.** Qual objetivo importa mais para os dados bancários dos fornecedores? *Rubrica:* 3 = exatidão;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX007 — Lista no balcão.** O que Chloe encontrou num balcão? *Rubrica:* 3 = uma lista impressa de entregas de clientes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Lista no balcão.** O que Chloe encontrou num balcão? *Rubrica:* 3 = uma lista impressa de entregas de clientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Problema da pasta.** O que há de errado com a pasta compartilhada? *Rubrica:* 3 = todas as contas da equipe podem abri-la;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Problema da pasta.** O que há de errado com a pasta compartilhada? *Rubrica:* 3 = todas as contas da equipe podem abri-la;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -157,13 +157,13 @@ Os logins compartilhados tornam impossível saber quem fez o quê.
 
 ### Exercícios
 
-- **EX009 — Login dos caixas.** O que os caixas usam atualmente? *Rubrica:* 3 = um login compartilhado por centro;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Login dos caixas.** O que os caixas usam atualmente? *Rubrica:* 3 = um login compartilhado por centro;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX010 — Risco dos notebooks.** Por que as contas de administrador são arriscadas no trabalho diário? *Rubrica:* 3 = anexos nocivos ganham controle total;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Risco dos notebooks.** Por que as contas de administrador são arriscadas no trabalho diário? *Rubrica:* 3 = anexos nocivos ganham controle total;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX011 — Contas dos temporários.** O que Chloe encontrou sobre os temporários? *Rubrica:* 3 = contas ainda ativas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX011 — Contas dos temporários.** O que Chloe encontrou sobre os temporários? *Rubrica:* 3 = contas ainda ativas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX012 — Menor privilégio.** O que significa o menor privilégio? *Rubrica:* 3 = apenas o acesso necessário para a tarefa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Menor privilégio.** O que significa o menor privilégio? *Rubrica:* 3 = apenas o acesso necessário para a tarefa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -201,11 +201,11 @@ Redefinir uma senha sem confirmar a identidade pode deixar um atacante entrar.
 
 ### Exercícios
 
-- **EX013 — Perigo da reutilização.** Por que usar senhas diferentes para cada serviço? *Rubrica:* 3 = senhas vazadas são testadas em outros lugares;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Perigo da reutilização.** Por que usar senhas diferentes para cada serviço? *Rubrica:* 3 = senhas vazadas são testadas em outros lugares;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Motivo dos chaveiros.** Por que são fornecidos chaveiros? *Rubrica:* 3 = alguns funcionários recusam aplicativos nos celulares pessoais;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX014 — Motivo dos chaveiros.** Por que são fornecidos chaveiros? *Rubrica:* 3 = alguns funcionários recusam aplicativos nos celulares pessoais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX015 — Verificação na redefinição.** Como a identidade é confirmada antes de uma redefinição? *Rubrica:* 3 = ligação de volta para o número dos registros dos funcionários;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Verificação na redefinição.** Como a identidade é confirmada antes de uma redefinição? *Rubrica:* 3 = ligação de volta para o número dos registros dos funcionários;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX016 — Bilhete adesivo.** Onde foi encontrada a senha de administração da loja? *Rubrica:* 3 = num bilhete adesivo no escritório;; 2 = correto;; 1 = outro lugar;; 0 = nenhuma.
 
@@ -245,13 +245,13 @@ Scripts que pulam em silêncio as linhas ruins podem esconder problemas.
 
 ### Exercícios
 
-- **EX017 — Primeira contagem.** O que o primeiro script conta? *Rubrica:* 3 = os dispositivos de cada tipo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Primeira contagem.** O que o primeiro script conta? *Rubrica:* 3 = os dispositivos de cada tipo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Valores ausentes.** Como o script trata os valores ausentes? *Rubrica:* 3 = imprime um aviso;; 2 = correto;; 1 = parar;; 0 = nenhuma.
 
-- **EX019 — Teste da saída.** Como Chloe testa a clareza da saída? *Rubrica:* 3 = explica-a a um colega;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Teste da saída.** Como Chloe testa a clareza da saída? *Rubrica:* 3 = explica-a a um colega;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX020 — Saída restrita.** Por que manter restritas as listas de dispositivos? *Rubrica:* 3 = poderiam ajudar um atacante;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX020 — Saída restrita.** Por que manter restritas as listas de dispositivos? *Rubrica:* 3 = poderiam ajudar um atacante;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -289,11 +289,11 @@ Depender de um único controle não deixa proteção alguma quando ele falha.
 
 ### Exercícios
 
-- **EX021 — Exemplo de fraqueza.** Dê um exemplo de fraqueza. *Rubrica:* 3 = uma senha num bilhete adesivo;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Exemplo de fraqueza.** Dê um exemplo de fraqueza. *Rubrica:* 3 = uma senha num bilhete adesivo;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Controles para tablets.** Quais controles servem para tablets furtados? *Rubrica:* 3 = bloqueio de tela e apagamento remoto;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Controles para tablets.** Quais controles servem para tablets furtados? *Rubrica:* 3 = bloqueio de tela e apagamento remoto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX023 — Camada da loja.** Cite uma camada da loja on-line. *Rubrica:* 3 = entrada com múltiplos fatores;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Camada da loja.** Cite uma camada da loja on-line. *Rubrica:* 3 = entrada com múltiplos fatores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX024 — Princípio da usabilidade.** Que princípio diz que a segurança precisa ser fácil de usar? *Rubrica:* 3 = aceitabilidade psicológica;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -362,11 +362,11 @@ Os dispositivos de reserva mantidos desligados perdem as atualizações sem que 
 
 - **EX025 — Tablets atrasados.** Quantos tablets estão atrasados? *Rubrica:* 3 = 4 de 24, 16,7 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX026 — Caixas atrasados.** Quantos caixas estão atrasados? *Rubrica:* 3 = nenhum;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX026 — Caixas atrasados.** Quantos caixas estão atrasados? *Rubrica:* 3 = nenhum;; 2 = correto;; 1 = errado;; 0 = sem resposta.
 
-- **EX027 — Tablets de reserva.** Por que dois tablets estavam atrasados? *Rubrica:* 3 = ficavam numa gaveta como reserva;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Tablets de reserva.** Por que dois tablets estavam atrasados? *Rubrica:* 3 = ficavam numa gaveta como reserva;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX028 — Configuração noturna.** Que configuração o Sr. Doyle muda nos tablets? *Rubrica:* 3 = atualizações automáticas à noite durante a carga;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Configuração noturna.** Que configuração o Sr. Doyle muda nos tablets? *Rubrica:* 3 = atualizações automáticas à noite durante a carga;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -439,9 +439,9 @@ Tratar uma regra simples como perfeita leva as pessoas a confiar nas mensagens q
 
 - **EX030 — Alarmes falsos.** Quantos e-mails genuínos são sinalizados? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX031 — Mensagem que passou.** Por que um e-mail de phishing passou? *Rubrica:* 3 = mostrava apenas um sinal;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Mensagem que passou.** Por que um e-mail de phishing passou? *Rubrica:* 3 = mostrava apenas um sinal;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Limiar mais baixo.** O que acontece se o limiar cair para um sinal? *Rubrica:* 3 = mais alarmes falsos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Limiar mais baixo.** O que acontece se o limiar cair para um sinal? *Rubrica:* 3 = mais alarmes falsos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -479,9 +479,9 @@ Esconder um erro com dados impede a organização de limitar o dano.
 
 ### Exercícios
 
-- **EX033 — Exemplo de dado pessoal.** Dê um exemplo de dado pessoal. *Rubrica:* 3 = o endereço de e-mail de um cliente;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Exemplo de dado pessoal.** Dê um exemplo de dado pessoal. *Rubrica:* 3 = o endereço de e-mail de um cliente;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX034 — Solução para os motoristas.** O que Chloe sugere para os motoristas? *Rubrica:* 3 = um aplicativo que mostre apenas as próprias entregas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Solução para os motoristas.** O que Chloe sugere para os motoristas? *Rubrica:* 3 = um aplicativo que mostre apenas as próprias entregas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX035 — Tratamento dos pedidos.** Quem trata os pedidos dos clientes sobre seus dados? *Rubrica:* 3 = a gerente do escritório;; 2 = correto;; 1 = o caixa;; 0 = nenhuma.
 
@@ -523,13 +523,13 @@ Presumir que uma mudança de permissão funcionou sem testá-la pode deixar dado
 
 ### Exercícios
 
-- **EX037 — Conta de teste.** Como Chloe confirma a mudança na pasta? *Rubrica:* 3 = entrando com uma conta de teste de caixa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Conta de teste.** Como Chloe confirma a mudança na pasta? *Rubrica:* 3 = entrando com uma conta de teste de caixa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX038 — Notebooks sem criptografia.** Quantos notebooks não estavam criptografados? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX039 — Serviço de compartilhamento.** O que Chloe recomenda para enviar arquivos? *Rubrica:* 3 = o serviço aprovado com links que expiram;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Serviço de compartilhamento.** O que Chloe recomenda para enviar arquivos? *Rubrica:* 3 = o serviço aprovado com links que expiram;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX040 — Configuração da tela.** Que configuração ajuda com as telas desbloqueadas? *Rubrica:* 3 = bloqueio automático depois de alguns minutos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Configuração da tela.** Que configuração ajuda com as telas desbloqueadas? *Rubrica:* 3 = bloqueio automático depois de alguns minutos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -569,11 +569,11 @@ Dispositivos de visitantes na rede da equipe podem alcançar os caixas e os tabl
 
 - **EX041 — Dispositivos de pagamento.** Quais dispositivos lidam com pagamentos com cartão? *Rubrica:* 3 = caixas e terminais de pagamento;; 2 = correto;; 1 = outros;; 0 = nenhuma.
 
-- **EX042 — Problema da rede sem fio.** O que estava errado num centro? *Rubrica:* 3 = visitantes e equipe compartilhavam rede e senha;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Problema da rede sem fio.** O que estava errado num centro? *Rubrica:* 3 = visitantes e equipe compartilhavam rede e senha;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX043 — Dispositivo desconhecido.** Qual era o dispositivo desconhecido? *Rubrica:* 3 = a caixa de som inteligente de um funcionário;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX044 — Senha padrão do roteador.** Por que trocar as senhas padrão dos roteadores? *Rubrica:* 3 = são publicadas na internet;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Senha padrão do roteador.** Por que trocar as senhas padrão dos roteadores? *Rubrica:* 3 = são publicadas na internet;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -611,13 +611,13 @@ Os arquivos salvos fora das pastas com backup se perdem se o dispositivo falhar.
 
 ### Exercícios
 
-- **EX045 — Significado de ransomware.** O que o ransomware faz? *Rubrica:* 3 = bloqueia os arquivos e exige pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Significado de ransomware.** O que o ransomware faz? *Rubrica:* 3 = bloqueia os arquivos e exige pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX046 — Frequência dos testes.** Com que frequência as restaurações devem ser testadas? *Rubrica:* 3 = a cada três meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX047 — Lacuna no backup.** Quais arquivos estavam fora dos backups? *Rubrica:* 3 = planilhas na área de trabalho da gerente do escritório;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Lacuna no backup.** Quais arquivos estavam fora dos backups? *Rubrica:* 3 = planilhas na área de trabalho da gerente do escritório;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Primeiro passo.** Qual é o primeiro passo se houver suspeita de ransomware? *Rubrica:* 3 = parar de usar o dispositivo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Primeiro passo.** Qual é o primeiro passo se houver suspeita de ransomware? *Rubrica:* 3 = parar de usar o dispositivo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -657,9 +657,9 @@ Comunicações vagas atrasam as pessoas que precisam agir com base nelas.
 
 - **EX049 — Conteúdo da comunicação.** O que uma boa comunicação deve incluir? *Rubrica:* 3 = o quê, onde, quando, quem é afetado, ações tomadas;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 
-- **EX050 — Comunicação reescrita.** Que detalhes Chloe acrescentou? *Rubrica:* 3 = horário, centro e mensagem de pagamento;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Comunicação reescrita.** Que detalhes Chloe acrescentou? *Rubrica:* 3 = horário, centro e mensagem de pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX051 — Pedido no caixa.** O que um cliente pediu para fazer? *Rubrica:* 3 = ligar um celular num caixa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Pedido no caixa.** O que um cliente pediu para fazer? *Rubrica:* 3 = ligar um celular num caixa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX052 — Acompanhamento.** Com que frequência Chloe confere as comunicações abertas? *Rubrica:* 3 = toda semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -699,13 +699,13 @@ Escrever senhas nos documentos as expõe a todos os leitores.
 
 ### Exercícios
 
-- **EX053 — Tarefas documentadas.** Cite uma tarefa que Chloe documenta. *Rubrica:* 3 = redefinir o código de um funcionário do caixa;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Tarefas documentadas.** Cite uma tarefa que Chloe documenta. *Rubrica:* 3 = redefinir o código de um funcionário do caixa;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX054 — Teste das instruções.** Quem testa as instruções do tablet? *Rubrica:* 3 = uma gerente de centro;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
 
-- **EX055 — Uso do log de mudanças.** Que pergunta o log de mudanças responde? *Rubrica:* 3 = por que uma gerente perdeu o acesso às faturas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Uso do log de mudanças.** Que pergunta o log de mudanças responde? *Rubrica:* 3 = por que uma gerente perdeu o acesso às faturas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX056 — Datas nos documentos.** Por que acrescentar datas aos documentos? *Rubrica:* 3 = os leitores sabem se estão atualizados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Datas nos documentos.** Por que acrescentar datas aos documentos? *Rubrica:* 3 = os leitores sabem se estão atualizados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -745,11 +745,11 @@ Conceder acesso sem aprovação pode dar às pessoas dados que elas não deveria
 
 - **EX057 — Lista semanal.** Quando o Sr. Doyle passa as tarefas? *Rubrica:* 3 = toda segunda-feira;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX058 — Como pedir ajuda.** O que Chloe faz antes de ligar pedindo ajuda? *Rubrica:* 3 = tenta os passos documentados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Como pedir ajuda.** O que Chloe faz antes de ligar pedindo ajuda? *Rubrica:* 3 = tenta os passos documentados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX059 — Aprovação necessária.** Cite uma ação que precisa de aprovação. *Rubrica:* 3 = dar acesso de administrador;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Aprovação necessária.** Cite uma ação que precisa de aprovação. *Rubrica:* 3 = dar acesso de administrador;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Meta do retorno.** Que meta Chloe define? *Rubrica:* 3 = avisá-lo em até um dia se uma tarefa atrasar;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Meta do retorno.** Que meta Chloe define? *Rubrica:* 3 = avisá-lo em até um dia se uma tarefa atrasar;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-16"></a>
 
@@ -789,9 +789,9 @@ Deixar visitantes inesperados entrarem nas áreas da equipe sem verificação tr
 
 - **EX061 — Formato do estágio.** Quanto dura o estágio? *Rubrica:* 3 = dez semanas, dois dias por semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX062 — Pedido de fidelidade.** Como Chloe trata um pedido de pontos de fidelidade? *Rubrica:* 3 = encaminha o cliente à equipe do caixa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Pedido de fidelidade.** Como Chloe trata um pedido de pontos de fidelidade? *Rubrica:* 3 = encaminha o cliente à equipe do caixa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX063 — Resposta ao visitante.** O que Chloe faz com o visitante inesperado? *Rubrica:* 3 = pede que espere e liga para o Sr. Doyle;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Resposta ao visitante.** O que Chloe faz com o visitante inesperado? *Rubrica:* 3 = pede que espere e liga para o Sr. Doyle;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX064 — Ponto a melhorar.** O que Chloe quer melhorar? *Rubrica:* 3 = o entendimento de redes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
@@ -833,11 +833,11 @@ Desativar uma configuração de segurança sem aprovação para fazer algo funci
 
 - **EX065 — Tempo da avaliação.** Quanto dura a avaliação? *Rubrica:* 3 = três horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX066 — Mensagem incerta.** O que Chloe faz com um e-mail incerto? *Rubrica:* 3 = anota-o e explica por quê;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Mensagem incerta.** O que Chloe faz com um e-mail incerto? *Rubrica:* 3 = anota-o e explica por quê;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX067 — Restauração com falha.** O que ela faria se uma restauração falhasse? *Rubrica:* 3 = registrar, comunicar, manter o backup original;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX067 — Restauração com falha.** O que ela faria se uma restauração falhasse? *Rubrica:* 3 = registrar, comunicar, manter o backup original;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX068 — Teste oculto.** Qual era o teste oculto? *Rubrica:* 3 = desativar uma configuração de segurança;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Teste oculto.** Qual era o teste oculto? *Rubrica:* 3 = desativar uma configuração de segurança;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-18"></a>
 
@@ -877,11 +877,11 @@ Depender de fontes antigas sem conferir as edições pode espalhar orientações
 
 - **EX069 — Resultado do curso.** Que resultado Chloe obtém? *Rubrica:* 3 = aprovação com mérito;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX070 — Oferta da Westfield.** O que a Westfield oferece a Chloe? *Rubrica:* 3 = uma função de suporte em meio período;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX070 — Oferta da Westfield.** O que a Westfield oferece a Chloe? *Rubrica:* 3 = uma função de suporte em meio período;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX071 — Ponto fraco.** Que área Chloe planeja fortalecer? *Rubrica:* 3 = redes;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX072 — Tema do próximo curso.** O que cobre o curso de governança de dados? *Rubrica:* 3 = quem decide como as informações são coletadas e usadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Tema do próximo curso.** O que cobre o curso de governança de dados? *Rubrica:* 3 = quem decide como as informações são coletadas e usadas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

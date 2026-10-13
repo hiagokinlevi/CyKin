@@ -182,7 +182,7 @@ Inventories miss devices. Reachability models ignore application-layer paths not
 
 ### Exercises
 
-- **EX011 — Specialist knowledge.** What did clinical engineers know that architects often lack? *Rubric:* 3 = which devices cannot be patched and which vendor connections they need;; 2 = devices;; 1 = nothing;; 0 = none.
+- **EX011 — Specialist knowledge.** What did clinical engineers know that architects often lack? *Rubric:* 3 = which devices cannot be patched and which vendor connections they need;; 2 = devices;; 1 = vague;; 0 = none.
 - **EX012 — Current path.** How could administrative laptops reach clinical devices under current rules? *Rubric:* 3 = through the shared print server;; 2 = print server;; 1 = directly;; 0 = none.
 - **EX013 — Proposed path.** What can reach clinical devices under the proposed rules? *Rubric:* 3 = only the clinical engineering jump host;; 2 = jump host;; 1 = everything;; 0 = none.
 - **EX014 — Recording dates.** Why record each source's date? *Rubric:* 3 = inventories are often incomplete, so currency must be shown;; 2 = currency;; 1 = vague;; 0 = none.
@@ -662,7 +662,7 @@ Attribution of outcomes is uncertain. Transfer claims need testing in the new do
 - **EX056 — Remaining risk.** What concentration of risk remained at Corvane? *Rubric:* 3 = the identity provider;; 2 = identity;; 1 = vague;; 0 = none.
 - **EX057 — Attribution care.** Which outcome might have happened anyway? *Rubric:* 3 = reduced outages from a vendor's own improvements;; 2 = vendor;; 1 = vague;; 0 = none.
 - **EX058 — Methods that transfer.** Name two methods that transfer to the water utility. *Rubric:* 3 = decision records, attribute criteria, reachability models, staged rollouts;; 2 = one;; 1 = vague;; 0 = none.
-- **EX059 — What changes in transfer.** What changes when moving to the utility? *Rubric:* 3 = attribute weights and rarer change windows;; 2 = weights;; 1 = nothing;; 0 = none.
+- **EX059 — What changes in transfer.** What changes when moving to the utility? *Rubric:* 3 = attribute weights and rarer change windows;; 2 = weights;; 1 = vague;; 0 = none.
 - **EX060 — Growing judgement.** How does judgement grow, according to Dr Voss? *Rubric:* 3 = by honestly reviewing past decisions;; 2 = review;; 1 = frameworks;; 0 = none.
 
 ### Synthesis

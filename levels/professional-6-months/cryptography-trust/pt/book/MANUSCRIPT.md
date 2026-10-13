@@ -69,7 +69,7 @@ As três metas simplificam; alguns mecanismos servem a várias ao mesmo tempo. O
 
 - **EX002 — Assinatura e sigilo.** Uma assinatura digital numa fatura a mantém confidencial? *Rubrica:* 3 = não; dá integridade e autenticidade, não confidencialidade;; 2 = diz que não;; 1 = diz que sim;; 0 = nenhuma.
 
-- **EX003 — Dano à disponibilidade.** Dê uma forma pela qual a criptografia pode reduzir a disponibilidade. *Rubrica:* 3 = certificado expirado ou chave de cifração perdida;; 2 = um exemplo;; 1 = nada;; 0 = nenhuma.
+- **EX003 — Dano à disponibilidade.** Dê uma forma pela qual a criptografia pode reduzir a disponibilidade. *Rubrica:* 3 = certificado expirado ou chave de cifração perdida;; 2 = um exemplo;; 1 = vago;; 0 = nenhuma.
 
 - **EX004 — Maior incidente.** Qual foi o maior incidente recente da Bayside, e o que ele ensina? *Rubrica:* 3 = phishing; a criptografia é um controle entre muitos;; 2 = cita o phishing;; 1 = cita uma cifra;; 0 = nenhuma.
 
@@ -113,7 +113,7 @@ As tabelas de donos ficam desatualizadas quando os fornecedores mudam. A linguag
 
 - **EX006 — Preocupação dos pacientes.** Com o que os pacientes mais se importam na criptografia do site de agendamento? *Rubrica:* 3 = privacidade e nenhum aviso do navegador;; 2 = um;; 1 = custo;; 0 = nenhuma.
 
-- **EX007 — Duas perguntas práticas.** A que duas perguntas a tabela de donos responde? *Rubrica:* 3 = quem precisa aprovar uma mudança e quem pode fazê-la;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Duas perguntas práticas.** A que duas perguntas a tabela de donos responde? *Rubrica:* 3 = quem precisa aprovar uma mudança e quem pode fazê-la;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX008 — Dia desperdiçado.** Por que Dana certa vez desperdiçou um dia com um certificado? *Rubrica:* 3 = só a agência podia renová-lo e ela não tinha registrado o fornecedor;; 2 = fornecedor;; 1 = azar;; 0 = nenhuma.
 
@@ -292,7 +292,7 @@ As linhas de base ficam atrás das novas orientações; revise-as anualmente. A 
 
 - **EX024 — Confirmação manual.** Como Dana confirma uma sinalização antes de relatá-la? *Rubrica:* 3 = conecta com openssl s_client ou lê o certificado com openssl x509;; 2 = ferramenta citada;; 1 = confia no scanner;; 0 = nenhuma.
 
-- **EX025 — Credibilidade.** O que um achado obviamente errado faz com um relatório? *Rubrica:* 3 = faz o cliente duvidar de todos os outros achados;; 2 = dúvida;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Credibilidade.** O que um achado obviamente errado faz com um relatório? *Rubrica:* 3 = faz o cliente duvidar de todos os outros achados;; 2 = dúvida;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -330,11 +330,11 @@ Ciclos mensais deixam passar problemas de curta duração entre as execuções. 
 
 ### Exercícios
 
-- **EX026 — Propósito da etapa três.** Por que consultar os logs de transparência no fluxo mensal? *Rubrica:* 3 = para encontrar certificados emitidos para domínios do cliente que não estão no inventário;; 2 = certificados não listados;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Propósito da etapa três.** Por que consultar os logs de transparência no fluxo mensal? *Rubrica:* 3 = para encontrar certificados emitidos para domínios do cliente que não estão no inventário;; 2 = certificados não listados;; 1 = vago;; 0 = nenhuma.
 
 - **EX027 — Regra de encerramento.** Quando um achado pode passar a encerrado? *Rubrica:* 3 = só depois que Dana verifica a correção ela mesma;; 2 = verificação;; 1 = quando o dono diz;; 0 = nenhuma.
 
-- **EX028 — Meia correção.** Que meia correção o novo teste de Dana pegou? *Rubrica:* 3 = intermediária ainda ausente num dos dois servidores com balanceamento de carga;; 2 = um servidor;; 1 = nada;; 0 = nenhuma.
+- **EX028 — Meia correção.** Que meia correção o novo teste de Dana pegou? *Rubrica:* 3 = intermediária ainda ausente num dos dois servidores com balanceamento de carga;; 2 = um servidor;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Repasse dos notebooks.** Quem recebe um achado de cifração de disco dos notebooks? *Rubrica:* 3 = a equipe de desktops da Copperleaf;; 2 = equipe de desktops;; 1 = agência;; 0 = nenhuma.
 
@@ -399,7 +399,7 @@ Verificações da lógica em laboratório não provam que o código de produçã
 
 ### Exercícios
 
-- **EX031 — Janela de replay.** Que limite de idade o verificador impõe às notificações? *Rubrica:* 3 = cinco minutos (300 segundos);; 2 = cinco minutos;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Janela de replay.** Que limite de idade o verificador impõe às notificações? *Rubrica:* 3 = cinco minutos (300 segundos);; 2 = cinco minutos;; 1 = vago;; 0 = nenhuma.
 
 - **EX032 — Valor alterado.** O que o laboratório relatou para a notificação com valor alterado? *Rubrica:* 3 = rejeitada (False) porque a tag deixou de corresponder;; 2 = rejeitada;; 1 = aceita;; 0 = nenhuma.
 
@@ -407,7 +407,7 @@ Verificações da lógica em laboratório não provam que o código de produçã
 
 - **EX034 — Estação de imagens.** O que Dana faz quanto à estação de imagens que não pode ser testada? *Rubrica:* 3 = registra a lacuna com honestidade em vez de presumir;; 2 = registra a lacuna;; 1 = presume que está bem;; 0 = nenhuma.
 
-- **EX035 — Palavras proibidas.** Que palavras Marcus procura nas declarações, e por quê? *Rubrica:* 3 = seguro ou conforme, porque afirmam mais do que os testes mostram;; 2 = palavras citadas;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Palavras proibidas.** Que palavras Marcus procura nas declarações, e por quê? *Rubrica:* 3 = seguro ou conforme, porque afirmam mais do que os testes mostram;; 2 = palavras citadas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -495,7 +495,7 @@ Escalas de três pontos escondem nuances; as justificativas carregam o detalhe. 
 
 - **EX042 — Classificação do RSA-1024 interno.** Por que a chave RSA-1024 interna é classificada como médio, e não alto? *Rubrica:* 3 = fraqueza real, mas a exploração exige acesso à rede interna;; 2 = acesso necessário;; 1 = classificada como baixo;; 0 = nenhuma.
 
-- **EX043 — Verificação entre clientes.** O que Marcus confere nas classificações entre clientes? *Rubrica:* 3 = achados semelhantes receberam classificações semelhantes;; 2 = consistência;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Verificação entre clientes.** O que Marcus confere nas classificações entre clientes? *Rubrica:* 3 = achados semelhantes receberam classificações semelhantes;; 2 = consistência;; 1 = vago;; 0 = nenhuma.
 
 - **EX044 — Erro próprio.** Como Dana deve relatar uma fraqueza introduzida pela própria Copperleaf? *Rubrica:* 3 = exatamente como qualquer outro achado, sem escondê-la;; 2 = relatar;; 1 = escondê-la;; 0 = nenhuma.
 
@@ -562,7 +562,7 @@ Os tempos do laboratório variam conforme a máquina; mostram o custo relativo, 
 
 ### Exercícios
 
-- **EX046 — Fraqueza sem salt.** Cite dois problemas do armazenamento de senhas com SHA-256 sem salt. *Rubrica:* 3 = rápido de adivinhar e senhas idênticas compartilham hashes;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Fraqueza sem salt.** Cite dois problemas do armazenamento de senhas com SHA-256 sem salt. *Rubrica:* 3 = rápido de adivinhar e senhas idênticas compartilham hashes;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX047 — Senhas iguais no laboratório.** O que o laboratório de PBKDF2 mostrou para dois funcionários com a mesma senha? *Rubrica:* 3 = os valores armazenados diferiram porque os salts diferiram;; 2 = diferiram;; 1 = iguais;; 0 = nenhuma.
 
@@ -570,7 +570,7 @@ Os tempos do laboratório variam conforme a máquina; mostram o custo relativo, 
 
 - **EX049 — Ressalva de produção.** O que o laboratório não prova sobre a correção da agência? *Rubrica:* 3 = que o código de produção a implementa corretamente; precisa de revisão;; 2 = revisão de código;; 1 = prova tudo;; 0 = nenhuma.
 
-- **EX050 — Regra da retrospectiva.** Que regra saiu da retrospectiva? *Rubrica:* 3 = testar endpoints com balanceamento de carga uma vez por backend;; 2 = regra;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Regra da retrospectiva.** Que regra saiu da retrospectiva? *Rubrica:* 3 = testar endpoints com balanceamento de carga uma vez por backend;; 2 = regra;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -610,13 +610,13 @@ Os laboratórios não conseguem reproduzir todas as diferenças da produção, c
 
 - **EX051 — O que espelhar.** O que mais importa espelhar no laboratório, e por quê? *Rubrica:* 3 = a configuração, como caminhos, ordem da cadeia e comportamento ao recarregar, onde está o risco da renovação;; 2 = configuração;; 1 = conteúdo;; 0 = nenhuma.
 
-- **EX052 — Falha deliberada.** Que falha Dana reproduziu de propósito? *Rubrica:* 3 = a cadeia instalada na ordem errada;; 2 = ordem da cadeia;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Falha deliberada.** Que falha Dana reproduziu de propósito? *Rubrica:* 3 = a cadeia instalada na ordem errada;; 2 = ordem da cadeia;; 1 = vago;; 0 = nenhuma.
 
-- **EX053 — Tempo da renovação.** Quanto tempo levou a renovação ensaiada, e quanto foi risco durante o recarregamento? *Rubrica:* 3 = doze minutos, dois minutos de risco durante o recarregamento;; 2 = um número;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Tempo da renovação.** Quanto tempo levou a renovação ensaiada, e quanto foi risco durante o recarregamento? *Rubrica:* 3 = doze minutos, dois minutos de risco durante o recarregamento;; 2 = um número;; 1 = vago;; 0 = nenhuma.
 
 - **EX054 — Apagar a chave do laboratório.** Por que apagar a chave privada da autoridade de laboratório no encerramento? *Rubrica:* 3 = para que ninguém possa emitir certificados que uma máquina que ainda confia na raiz aceitaria;; 2 = risco de confiança;; 1 = arrumação;; 0 = nenhuma.
 
-- **EX055 — Lição levada adiante.** Cite uma lição registrada para a mudança real. *Rubrica:* 3 = conferir explicitamente a ordem da cadeia;; 2 = lição;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Lição levada adiante.** Cite uma lição registrada para a mudança real. *Rubrica:* 3 = conferir explicitamente a ordem da cadeia;; 2 = lição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -681,11 +681,11 @@ Seis meses de um único cliente são uma amostra pequena para tendências. Os po
 
 - **EX057 — Categoria mais comum.** Segundo o laboratório de tendências, que categoria teve mais achados? *Rubrica:* 3 = expiry/chain, como impresso na execução;; 2 = categoria;; 1 = errada;; 0 = nenhuma.
 
-- **EX058 — Aberto há mais tempo.** Que achado ficou aberto por mais tempo, e por quê? *Rubrica:* 3 = o achado de chave fraca, que exigia a substituição de um servidor;; 2 = achado;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Aberto há mais tempo.** Que achado ficou aberto por mais tempo, e por quê? *Rubrica:* 3 = o achado de chave fraca, que exigia a substituição de um servidor;; 2 = achado;; 1 = vago;; 0 = nenhuma.
 
-- **EX059 — Lacunas admitidas.** Cite duas lacunas que Dana admite na revisão. *Rubrica:* 3 = duas entre: não conduziu incidentes, depende do mentor para classificações incomuns, pouco conhecimento de PQC;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Lacunas admitidas.** Cite duas lacunas que Dana admite na revisão. *Rubrica:* 3 = duas entre: não conduziu incidentes, depende do mentor para classificações incomuns, pouco conhecimento de PQC;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Normas PQC.** Que normas pós-quânticas do NIST seu plano inclui? *Rubrica:* 3 = FIPS 203, 204 e 205;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Normas PQC.** Que normas pós-quânticas do NIST seu plano inclui? *Rubrica:* 3 = FIPS 203, 204 e 205;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

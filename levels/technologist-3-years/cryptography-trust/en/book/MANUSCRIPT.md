@@ -569,7 +569,7 @@ Ratings are judgements and should be reviewed. Inventories built once and never 
 
 - **EX031 — Stale certificate.** What wasteful asset did Rosa discover? *Rubric:* 3 = certificate for a retired events website still auto-renewing;; 2 = stale cert;; 1 = vague;; 0 = none.
 - **EX032 — Critical assets.** Which two assets were rated critical and why? *Rubric:* 3 = document-signing key (forged decisions) and internal CA key (mint any identity);; 2 = one;; 1 = vague;; 0 = none.
-- **EX033 — Ten-year context.** What does the ten-year requirement imply for signing? *Rubric:* 3 = need timestamps and archived validation data for long-term verification;; 2 = timestamps;; 1 = nothing;; 0 = none.
+- **EX033 — Ten-year context.** What does the ten-year requirement imply for signing? *Rubric:* 3 = need timestamps and archived validation data for long-term verification;; 2 = timestamps;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

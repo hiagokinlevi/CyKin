@@ -258,10 +258,10 @@ A pilot with volunteer teams may be more motivated than typical teams. Regressio
 ### Exercises
 
 - **EX021 — Baseline discrepancy.** What explained the gap between 3.6 and 4.1? *Rubric:* 3 = duplicate tickets for the same defect across teams in the reported figure;; 2 = duplicates;; 1 = coding error;; 0 = none.
-- **EX022 — Inflated comparison risk.** What would have happened if the inflated figure were used as baseline? *Rubric:* 3 = the intervention would appear to work even without real change;; 2 = false success;; 1 = nothing;; 0 = none.
+- **EX022 — Inflated comparison risk.** What would have happened if the inflated figure were used as baseline? *Rubric:* 3 = the intervention would appear to work even without real change;; 2 = false success;; 1 = vague;; 0 = none.
 - **EX023 — Pilot not effect.** Why was the pilot not used to estimate the effect? *Rubric:* 3 = three teams over three months yield too few defects;; 2 = too few;; 1 = it was;; 0 = none.
 - **EX024 — Missed ticket.** Why was one synthetic ticket missed, and how was it fixed? *Rubric:* 3 = filed under a renamed project; fixed the project mapping;; 2 = cause;; 1 = vague;; 0 = none.
-- **EX025 — Test ticket analogy.** What do the synthetic tickets resemble in cryptographic practice? *Rubric:* 3 = known-answer test vectors;; 2 = test vectors;; 1 = nothing;; 0 = none.
+- **EX025 — Test ticket analogy.** What do the synthetic tickets resemble in cryptographic practice? *Rubric:* 3 = known-answer test vectors;; 2 = test vectors;; 1 = vague;; 0 = none.
 - **EX026 — Large changes.** How was the protocol revised for large changes? *Rubric:* 3 = allowed splitting into two sessions;; 2 = split;; 1 = shortened;; 0 = none.
 
 ### Synthesis
@@ -480,7 +480,7 @@ Synthetic datasets can omit correlations that matter for some analyses. Manifest
 - **EX040 — Graded contributions.** Which contribution did Amara grade as weak and exploratory? *Rubric:* 3 = association between fidelity and effect;; 2 = named;; 1 = effect estimate;; 0 = none.
 - **EX041 — Archive manifest result.** What did the lab report after one archived file was altered? *Rubric:* 3 = the altered file failed verification and others passed;; 2 = failure noted;; 1 = all passed;; 0 = none.
 - **EX042 — Synthetic data role.** Why does the archive contain synthetic rather than real data? *Rubric:* 3 = real defect records are confidential and could reveal live vulnerabilities;; 2 = confidential;; 1 = not needed;; 0 = none.
-- **EX043 — Script comment.** What did Tessaro's review find in the archive? *Rubric:* 3 = a script comment naming an internal system, then removed;; 2 = comment;; 1 = nothing;; 0 = none.
+- **EX043 — Script comment.** What did Tessaro's review find in the archive? *Rubric:* 3 = a script comment naming an internal system, then removed;; 2 = comment;; 1 = vague;; 0 = none.
 - **EX044 — Specific limitation.** Rewrite results may not generalise specifically. *Rubric:* 3 = Tessaro has a central architecture board and mature tracking; organisations without these may differ;; 2 = specific;; 1 = vague;; 0 = none.
 
 ### Synthesis

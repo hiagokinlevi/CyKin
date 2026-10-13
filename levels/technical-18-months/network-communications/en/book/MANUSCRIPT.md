@@ -73,7 +73,7 @@ Service maps drawn without checking real paths often miss shared subnets.
 - **EX001 — Service description.** Describe a service in the terms network rules need. *Rubric:* 3 = users, location, ports or access path;; 2 = some terms;; 1 = name only;; 0 = none.
 - **EX002 — Weak spot found.** What weakness did the service map reveal? *Rubric:* 3 = guest wireless can reach housing system via shared subnet;; 2 = guest access;; 1 = vague;; 0 = none.
 - **EX003 — Path controls.** Name two controls already protecting Castleford paths. *Rubric:* 3 = office VPN, firewall, HTTPS;; 2 = two;; 1 = one;; 0 = none.
-- **EX004 — Supervision rule.** What must happen before Amina touches real Castleford systems? *Rubric:* 3 = Rosa's approval;; 2 = approval;; 1 = nothing;; 0 = none.
+- **EX004 — Supervision rule.** What must happen before Amina touches real Castleford systems? *Rubric:* 3 = Rosa's approval;; 2 = approval;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -122,7 +122,7 @@ Assuming a firewall filters traffic inside one subnet leads to false confidence.
 - **EX005 — Usable addresses.** How many usable addresses does a /24 provide? *Rubric:* 3 = 254, explaining network and broadcast;; 2 = 254;; 1 = 256;; 0 = none.
 - **EX006 — Same-subnet traffic.** Why can't the firewall block guest-to-housing traffic today? *Rubric:* 3 = same subnet, never reaches gateway;; 2 = same subnet;; 1 = misconfigured;; 0 = none.
 - **EX007 — Encrypted admin protocol.** Which protocol provides encrypted remote administration? *Rubric:* 3 = SSH;; 2 = SSH, without explanation;; 1 = Telnet;; 0 = none.
-- **EX008 — Diagram check.** What did checking the diagram against configurations reveal? *Rubric:* 3 = missing switch;; 2 = missing device;; 1 = nothing;; 0 = none.
+- **EX008 — Diagram check.** What did checking the diagram against configurations reveal? *Rubric:* 3 = missing switch;; 2 = missing device;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -170,7 +170,7 @@ Shared administrator accounts make logs meaningless and leavers hard to remove.
 
 - **EX009 — Field laptop risk.** Why are field officers' laptops a priority for hardening? *Rubric:* 3 = travel, connect to untrusted networks;; 2 = travel;; 1 = expensive;; 0 = none.
 - **EX010 — Local admin removal.** Why remove local administrator rights from staff? *Rubric:* 3 = limits spread of mistakes and malware;; 2 = least privilege;; 1 = speed;; 0 = none.
-- **EX011 — Shared admin replacement.** What replaces the support company's shared admin account? *Rubric:* 3 = named accounts per engineer;; 2 = named;; 1 = nothing;; 0 = none.
+- **EX011 — Shared admin replacement.** What replaces the support company's shared admin account? *Rubric:* 3 = named accounts per engineer;; 2 = named;; 1 = vague;; 0 = none.
 - **EX012 — MFA rollout order.** Who gets multi-factor authentication first, and why? *Rubric:* 3 = administrators and field officers, most exposed;; 2 = admins;; 1 = everyone at once;; 0 = none.
 
 ### Synthesis
@@ -268,7 +268,7 @@ Testing live systems without specific approval can disrupt services and breach t
 
 - **EX017 — Out-of-scope area.** Name one area outside Amina's scope. *Rubric:* 3 = tenant data or housing system internals;; 2 = one;; 1 = vague;; 0 = none.
 - **EX018 — Test approval.** What approval does a test against Castleford need? *Rubric:* 3 = Rosa's explicit approval for activity and time;; 2 = approval;; 1 = vague;; 0 = none.
-- **EX019 — Evidence label.** What should label each piece of evidence? *Rubric:* 3 = date, system and provider;; 2 = date;; 1 = nothing;; 0 = none.
+- **EX019 — Evidence label.** What should label each piece of evidence? *Rubric:* 3 = date, system and provider;; 2 = date;; 1 = vague;; 0 = none.
 - **EX020 — Conflicting sources.** What should Amina do when two sources conflict? *Rubric:* 3 = report the conflict;; 2 = report;; 1 = pick one;; 0 = none.
 
 ### Synthesis
@@ -620,7 +620,7 @@ Recording configured rather than negotiated VPN settings can hide fallback to we
 - **EX041 — Orphan rule.** What rule without a flow did Amina find? *Rubric:* 3 = staff to decommissioned server;; 2 = orphan;; 1 = vague;; 0 = none.
 - **EX042 — Negotiated settings.** Why record negotiated VPN settings? *Rubric:* 3 = gateway may fall back to weaker options;; 2 = fallback;; 1 = duplicate;; 0 = none.
 - **EX043 — TLS finding.** Which service accepted TLS 1.0? *Rubric:* 3 = intranet;; 2 = intranet, without explanation;; 1 = VPN;; 0 = none.
-- **EX044 — Classmate finding.** What did the independent check find? *Rubric:* 3 = wrong zone name for printers;; 2 = zone error;; 1 = nothing;; 0 = none.
+- **EX044 — Classmate finding.** What did the independent check find? *Rubric:* 3 = wrong zone name for printers;; 2 = zone error;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -691,10 +691,10 @@ Running labs connected to real networks risks affecting live systems.
 
 ### Exercises
 
-- **EX045 — Expired certificate effect.** What would the expired wireless authentication certificate cause? *Rubric:* 3 = staff unable to connect to staff wireless;; 2 = wireless failure;; 1 = nothing;; 0 = none.
+- **EX045 — Expired certificate effect.** What would the expired wireless authentication certificate cause? *Rubric:* 3 = staff unable to connect to staff wireless;; 2 = wireless failure;; 1 = vague;; 0 = none.
 - **EX046 — Renewal priority.** Which certificate is renewed first, and why? *Rubric:* 3 = wireless authentication, already expired, highest impact;; 2 = wireless;; 1 = VPN;; 0 = none.
 - **EX047 — Planned renewals.** How many certificates need planned renewal within sixty days? *Rubric:* 3 = two (intranet, printer-ui);; 2 = two;; 1 = four;; 0 = none.
-- **EX048 — Lab isolation check.** What does Amina check before each lab session? *Rubric:* 3 = no connection to real networks;; 2 = isolation;; 1 = nothing;; 0 = none.
+- **EX048 — Lab isolation check.** What does Amina check before each lab session? *Rubric:* 3 = no connection to real networks;; 2 = isolation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -743,7 +743,7 @@ Broad changes made under pressure to fix one user's problem often weaken control
 - **EX049 — Narrowing questions.** List three questions that narrow a VPN problem report. *Rubric:* 3 = device, location, time, error or others affected;; 2 = two;; 1 = one;; 0 = none.
 - **EX050 — VPN cause.** What caused the field officer's VPN failure? *Rubric:* 3 = new phone without authenticator moved;; 2 = MFA;; 1 = gateway;; 0 = none.
 - **EX051 — Scan cause.** Why did branch scans stop? *Rubric:* 3 = new rule used wrong port;; 2 = wrong port;; 1 = DNS;; 0 = none.
-- **EX052 — Checklist update.** What was added to the verification checklist? *Rubric:* 3 = confirm ports for scan flows;; 2 = ports;; 1 = nothing;; 0 = none.
+- **EX052 — Checklist update.** What was added to the verification checklist? *Rubric:* 3 = confirm ports for scan flows;; 2 = ports;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -966,7 +966,7 @@ Assuming backups are complete without verifying them leads to failed recoveries.
 
 - **EX065 — Verification results.** Summarise the backup verification results. *Rubric:* 3 = 2 ok, 1 mismatch, 1 missing, 1 not in manifest;; 2 = most;; 1 = all ok;; 0 = none.
 - **EX066 — Digest purpose.** What does matching a SHA-256 digest confirm? *Rubric:* 3 = file unchanged since export;; 2 = integrity;; 1 = encrypted;; 0 = none.
-- **EX067 — Mismatch cause.** What was wrong with the second switch's backup? *Rubric:* 3 = missing guest VLAN line;; 2 = incomplete;; 1 = nothing;; 0 = none.
+- **EX067 — Mismatch cause.** What was wrong with the second switch's backup? *Rubric:* 3 = missing guest VLAN line;; 2 = incomplete;; 1 = vague;; 0 = none.
 - **EX068 — Recovery time.** How long did the lab firewall recovery take? *Rubric:* 3 = twenty-five minutes;; 2 = 25 min;; 1 = unknown;; 0 = none.
 
 ### Synthesis

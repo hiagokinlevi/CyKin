@@ -159,7 +159,7 @@ Linking public addresses to named donors in shared documents can expose donors' 
 ### Exercises
 
 - **EX011 — Scope exclusion.** Name one activity excluded from scope. *Rubric:* 3 = moving real funds;; 2 = contacting donors;; 1 = reviewing configuration;; 0 = none.
-- **EX012 — Urgent contact.** What does the authorisation name for urgent findings? *Rubric:* 3 = who to contact;; 2 = a contact;; 1 = nothing;; 0 = none.
+- **EX012 — Urgent contact.** What does the authorisation name for urgent findings? *Rubric:* 3 = who to contact;; 2 = a contact;; 1 = vague;; 0 = none.
 - **EX013 — Evidence integrity.** How are exported files protected? *Rubric:* 3 = storing a SHA-256 hash of each;; 2 = hashing;; 1 = emailing;; 0 = none.
 - **EX014 — Reconciliation data.** What data does Marcus use for reconciliation? *Rubric:* 3 = receipt numbers, amounts and references;; 2 = receipts;; 1 = donor names;; 0 = none.
 - **EX015 — Public ledger risk.** Why avoid linking addresses to names? *Rubric:* 3 = it could expose donors' other activity;; 2 = privacy;; 1 = cost;; 0 = none.
@@ -603,7 +603,7 @@ Counting approvals from departed signers lets an outdated list override policy.
 
 - **EX051 — Departed signer warning.** Which signer triggers a warning? *Rubric:* 3 = former-cfo;; 2 = the departed CFO;; 1 = director;; 0 = none.
 - **EX052 — P-32 status.** Why is P-32 not ready? *Rubric:* 3 = large amount needs 3 approvals, has 2;; 2 = needs three;; 1 = wrong destination;; 0 = none.
-- **EX053 — P-33 problems.** What is wrong with P-33? *Rubric:* 3 = destination not allow-listed and only one active approval;; 2 = two failures;; 1 = nothing;; 0 = none.
+- **EX053 — P-33 problems.** What is wrong with P-33? *Rubric:* 3 = destination not allow-listed and only one active approval;; 2 = two failures;; 1 = vague;; 0 = none.
 - **EX054 — Ready count.** How many proposals are ready? *Rubric:* 3 = none;; 2 = zero;; 1 = all;; 0 = no answer.
 - **EX055 — Allow-list addition.** Why not just add P-33's destination to the allow-list? *Rubric:* 3 = adding destinations is a controlled change needing verification;; 2 = controlled change;; 1 = no reason;; 0 = none.
 

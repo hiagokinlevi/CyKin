@@ -801,7 +801,7 @@ Coverage self-assessments are optimistic; test detections with safe simulations 
 - **EX052 — Low-frequency item.** Why did T1190 rank high despite low frequency? *Rubric:* 3 = customs portal exposure; 2 = partial; 1 = random; 0 = none.
 - **EX053 — Absorbable backlog.** Why agree capacity with the operations lead? *Rubric:* 3 = realistic delivery; ignored items waste effort; 2 = partial; 1 = unnecessary; 0 = none.
 - **EX054 — Success measures.** Give two measurable success criteria for the project. *Rubric:* 3 = items implemented, coverage change, time to requirement; 2 = one; 1 = vague; 0 = none.
-- **EX055 — Academic version.** What must be removed from the academic report? *Rubric:* 3 = restricted FPSC/TLP content; sensitive NLG detail; 2 = partial; 1 = nothing; 0 = none.
+- **EX055 — Academic version.** What must be removed from the academic report? *Rubric:* 3 = restricted FPSC/TLP content; sensitive NLG detail; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

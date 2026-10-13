@@ -215,7 +215,7 @@ Calling the number in a suspicious message reaches the criminal, not the supplie
 - **EX030 — Bank rule.** What is the bank detail change rule? *Rubric:* 3 = phone a known number, second approval;; 2 = both;; 1 = one;; 0 = none.
 - **EX031 — Why it works.** Why does the phone-back rule stop fraud? *Rubric:* 3 = the criminal cannot answer the real supplier's phone;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX032 — Fake invoice.** Which supplier did the fake email impersonate? *Rubric:* 3 = the equipment supplier;; 2 = correct;; 1 = other;; 0 = none.
-- **EX033 — Outcome.** How much did the clinic pay to the new account? *Rubric:* 3 = nothing;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX033 — Outcome.** How much did the clinic pay to the new account? *Rubric:* 3 = nothing;; 2 = correct;; 1 = wrong;; 0 = no answer.
 - **EX034 — Training length.** How long is each staff session? *Rubric:* 3 = ten minutes;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX035 — Topic source.** How are monthly topics chosen? *Rubric:* 3 = from staff questions;; 2 = correct;; 1 = other;; 0 = none.
 - **EX036 — Report route.** How do staff report something suspicious? *Rubric:* 3 = forward to Sofia or tell her;; 2 = correct;; 1 = partial;; 0 = none.

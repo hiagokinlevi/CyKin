@@ -205,7 +205,7 @@ Protocol names and ports vary by installation; confirm with the integrator. A dr
 ### Exercises
 
 - **EX011 — Two layers.** Describe the field and supervisory layers of a BMS. *Rubric:* 3 = sensors/actuators wired to controllers; controllers and server on building network; 2 = partial; 1 = one; 0 = none.
-- **EX012 — BACnet trust.** What can a laptop on VLAN 300 typically do with BACnet/IP controllers? *Rubric:* 3 = read points and often write setpoints without authentication; 2 = read only; 1 = nothing; 0 = none.
+- **EX012 — BACnet trust.** What can a laptop on VLAN 300 typically do with BACnet/IP controllers? *Rubric:* 3 = read points and often write setpoints without authentication; 2 = read only; 1 = vague; 0 = none.
 - **EX013 — Dual-homed workstation.** Why is BMS-WS's second network card a risk? *Rubric:* 3 = bridges corporate to building network bypassing firewall; compromise reaches controllers; 2 = partial; 1 = speed; 0 = none.
 - **EX014 — Meeting points.** Name three places where Millbrook building networks may meet other networks. *Rubric:* 3 = dual-homed workstation, contractor remote access, lift cellular link (or similar); 2 = two; 1 = one; 0 = none.
 - **EX015 — No scanning.** Give two reasons Aisha does not scan building controllers to map them. *Rubric:* 3 = old controllers can crash; not authorised/risk to clinical areas; better sources exist; 2 = one; 1 = "slow"; 0 = none.
@@ -366,7 +366,7 @@ ETSI EN 303 645 targets consumer IoT; for industrial-grade building controllers,
 - **EX021 — Why integrator passwords matter.** Explain the risk of one integrator password reused across many hospitals. *Rubric:* 3 = one leak or ex-employee opens every site; 2 = partial; 1 = vague; 0 = none.
 - **EX022 — Traceable changes.** How do named BMS accounts help after an unexpected setpoint change? *Rubric:* 3 = trend/audit log shows who changed it; supports investigation; 2 = partial; 1 = vague; 0 = none.
 - **EX023 — Contract questions.** Turn three ETSI EN 303 645 provisions into purchase-contract questions. *Rubric:* 3 = three accurate questions (defaults, disclosure, updates/encryption); 2 = two; 1 = one; 0 = none.
-- **EX024 — Contractor leaver.** A contractor engineer who knew Millbrook passwords leaves the firm. What happens? *Rubric:* 3 = change affected passwords in vault, review access, record; 2 = some; 1 = nothing; 0 = none.
+- **EX024 — Contractor leaver.** A contractor engineer who knew Millbrook passwords leaves the firm. What happens? *Rubric:* 3 = change affected passwords in vault, review access, record; 2 = some; 1 = vague; 0 = none.
 - **EX025 — Right standard.** Which standard fits an industrial BMS controller better than ETSI EN 303 645, and why? *Rubric:* 3 = IEC 62443-4-2; component requirements for industrial automation; 2 = name only; 1 = wrong; 0 = none.
 
 ### Synthesis
@@ -793,7 +793,7 @@ Some controllers fail to safe defaults that differ from normal operation; know t
 
 - **EX051 — First question.** What is the first question after BMS-WS shows a ransom message, and who answers it? *Rubric:* 3 = is any clinical area unsafe; site manager/estates; 2 = question only; 1 = IT question; 0 = none.
 - **EX052 — Why isolation is acceptable.** Explain why blocking the BMS zone conduits did not stop ventilation. *Rubric:* 3 = controllers run local schedules without server; 2 = partial; 1 = it did stop; 0 = none.
-- **EX053 — Manual monitoring.** What replaces BMS monitoring while it is isolated? *Rubric:* 3 = estates patrols reading local values, staff checks of alarms; 2 = partial; 1 = nothing; 0 = none.
+- **EX053 — Manual monitoring.** What replaces BMS monitoring while it is isolated? *Rubric:* 3 = estates patrols reading local values, staff checks of alarms; 2 = partial; 1 = vague; 0 = none.
 - **EX054 — Reconnecting.** Describe how conduits are restored after recovery. *Rubric:* 3 = one at a time with point checks against local readings; 2 = partial; 1 = all at once; 0 = none.
 - **EX055 — Safe defaults.** Why must Aisha know controllers' fail-safe behaviour before recommending isolation? *Rubric:* 3 = some defaults change operation (e.g. fans off/full), could affect patients; 2 = partial; 1 = no need; 0 = none.
 

@@ -82,7 +82,7 @@ Spending the first week comparing paid products delays free steps that remove mo
 ### Exercises
 
 - **EX001 — Shop size.** How many staff does the florist have? *Rubric:* 3 = six, one shop;; 2 = six;; 1 = sixty;; 0 = none.
-- **EX002 — Admin takeover harm.** What could someone do in the online shop admin? *Rubric:* 3 = change prices or redirect payments;; 2 = payments;; 1 = nothing;; 0 = none.
+- **EX002 — Admin takeover harm.** What could someone do in the online shop admin? *Rubric:* 3 = change prices or redirect payments;; 2 = payments;; 1 = vague;; 0 = none.
 - **EX003 — Authentication meaning.** What is authentication? *Rubric:* 3 = proving who you are;; 2 = proof;; 1 = username;; 0 = none.
 - **EX004 — Authorisation meaning.** What is authorisation? *Rubric:* 3 = what you may do once signed in;; 2 = permissions;; 1 = password;; 0 = none.
 - **EX005 — Shared login problem.** Which idea does a shared login break? *Rubric:* 3 = identification;; 2 = who did it;; 1 = speed;; 0 = none.
@@ -148,15 +148,15 @@ Collecting staff passwords to "check" them exposes them and breaks trust.
 ### Exercises
 
 - **EX014 — Rosa's changes.** Which changes must Rosa make herself? *Rubric:* 3 = anything involving payments;; 2 = payments;; 1 = vague;; 0 = none.
-- **EX015 — Permission value.** Why does permission protect Mia? *Rubric:* 3 = she can show she acted as asked;; 2 = proof;; 1 = nothing;; 0 = none.
+- **EX015 — Permission value.** Why does permission protect Mia? *Rubric:* 3 = she can show she acted as asked;; 2 = proof;; 1 = vague;; 0 = none.
 - **EX016 — Password rule.** What must Mia never ask staff? *Rubric:* 3 = to tell her their passwords;; 2 = passwords;; 1 = names;; 0 = none.
 - **EX017 — Manager meaning.** What is a password manager? *Rubric:* 3 = an app that stores passwords securely;; 2 = app;; 1 = notebook;; 0 = none.
 - **EX018 — Till note risk.** Why is a password note by the till risky? *Rubric:* 3 = anyone who sees it can sign in;; 2 = visible;; 1 = messy;; 0 = none.
-- **EX019 — Shared fallback.** What if a service cannot give separate accounts? *Rubric:* 3 = store in manager, change when anyone leaves;; 2 = change on leave;; 1 = nothing;; 0 = none.
+- **EX019 — Shared fallback.** What if a service cannot give separate accounts? *Rubric:* 3 = store in manager, change when anyone leaves;; 2 = change on leave;; 1 = vague;; 0 = none.
 - **EX020 — Fake signs.** Name one sign of a fake message. *Rubric:* 3 = urgent language;; 2 = mismatched link;; 1 = greeting;; 0 = none.
 - **EX021 — Safest habit.** What is the safest sign-in habit? *Rubric:* 3 = open the site directly, not from email links;; 2 = bookmark;; 1 = click links;; 0 = none.
 - **EX022 — Leaver habit.** Why tell Rosa when someone leaves? *Rubric:* 3 = so their access can be removed;; 2 = removal;; 1 = party;; 0 = none.
-- **EX023 — Lock habit.** What should staff do when stepping away from the till? *Rubric:* 3 = lock the computer;; 2 = lock;; 1 = nothing;; 0 = none.
+- **EX023 — Lock habit.** What should staff do when stepping away from the till? *Rubric:* 3 = lock the computer;; 2 = lock;; 1 = vague;; 0 = none.
 - **EX024 — Stop cases.** Name one situation where Mia stops and tells Rosa. *Rubric:* 3 = suspected account break-in;; 2 = wrong payment;; 1 = lunch;; 0 = none.
 - **EX025 — Who escalates.** Who contacts the provider or bank? *Rubric:* 3 = Rosa;; 2 = owner;; 1 = Mia;; 0 = none.
 - **EX026 — Habit length.** Why keep the habits list short? *Rubric:* 3 = so staff remember it;; 2 = memorable;; 1 = cheap;; 0 = none.

@@ -177,7 +177,7 @@ Accepting a vendor's full control of points and nodes without an exit plan leave
 - **EX028 — Node operator.** Who runs the three nodes? *Rubric:* 3 = the vendor;; 2 = vendor;; 1 = Copperleaf;; 0 = none.
 - **EX029 — Concentration concern.** What concentration worries Elena? *Rubric:* 3 = one company controls points and nodes;; 2 = vendor control;; 1 = too many cafés;; 0 = none.
 - **EX030 — Off-ledger data.** What stays off the ledger? *Rubric:* 3 = names, emails and purchase details;; 2 = personal data;; 1 = balances;; 0 = none.
-- **EX031 — Linkage remedy.** What does the vendor offer against linkage? *Rubric:* 3 = a new address on request;; 2 = new address;; 1 = nothing;; 0 = none.
+- **EX031 — Linkage remedy.** What does the vendor offer against linkage? *Rubric:* 3 = a new address on request;; 2 = new address;; 1 = vague;; 0 = none.
 - **EX032 — Deletion reason.** Why keep personal data off the ledger? *Rubric:* 3 = so it can be corrected or deleted under privacy law;; 2 = deletable;; 1 = cost;; 0 = none.
 - **EX033 — Exit requirement.** What exit protections does Elena ask for? *Rubric:* 3 = a monthly balance export and contractual exit plan;; 2 = export and exit plan;; 1 = vague;; 0 = none.
 - **EX034 — Compiler question.** What does she ask about the compiler? *Rubric:* 3 = its version and review history;; 2 = version;; 1 = its price;; 0 = none.
@@ -265,7 +265,7 @@ Reading a checklist percentage without weighting gaps can hide the most serious 
 - **EX040 — Timelock gap.** Which timelock gap is found? *Rubric:* 3 = admin changes lack a 48-hour timelock;; 2 = no timelock;; 1 = too long;; 0 = none.
 - **EX041 — Access review gap.** What access gap is found? *Rubric:* 3 = vendor access not reviewed in 90 days;; 2 = access review;; 1 = too many users;; 0 = none.
 - **EX042 — Monitoring gap.** What monitoring gap is found? *Rubric:* 3 = role changes and pauses unmonitored;; 2 = no monitoring;; 1 = too many alerts;; 0 = none.
-- **EX043 — Gap theme.** What do the three gaps share? *Rubric:* 3 = control over the system's rules;; 2 = privileged control;; 1 = nothing;; 0 = none.
+- **EX043 — Gap theme.** What do the three gaps share? *Rubric:* 3 = control over the system's rules;; 2 = privileged control;; 1 = vague;; 0 = none.
 - **EX044 — Percentage caution.** Why can the percentage mislead? *Rubric:* 3 = one missing privileged control outweighs minor items;; 2 = weighting;; 1 = it cannot;; 0 = none.
 - **EX045 — Pilot scope.** What pilot does Elena approve? *Rubric:* 3 = three months in one café;; 2 = one café;; 1 = all cafés now;; 0 = none.
 - **EX046 — Pilot condition.** Name one pilot condition. *Rubric:* 3 = gaps fixed and verified by the contractor;; 2 = exit plan in contract;; 1 = free coffee;; 0 = none.

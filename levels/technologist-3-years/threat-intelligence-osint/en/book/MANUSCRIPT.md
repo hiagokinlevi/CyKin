@@ -1534,7 +1534,7 @@ Fixed limits are crude; a still-active campaign may justify keeping an old indic
 
 - **EX055 — Lab expiry.** Which items did the lab flag for review, and why? *Rubric:* 3 = address 42>30; update-svc 113>90; 2 = one; 1 = wrong; 0 = none.
 - **EX056 — Address ageing.** Why do addresses get the shortest limit? *Rubric:* 3 = reassigned quickly, esp. cloud; innocent parties; 2 = partial; 1 = random; 0 = none.
-- **EX057 — Silent source.** What did the weekly health report catch, and what followed? *Rubric:* 3 = library resolver silent 3 days; disk full fixed; rerun; gap noted; 2 = partial; 1 = nothing; 0 = none.
+- **EX057 — Silent source.** What did the weekly health report catch, and what followed? *Rubric:* 3 = library resolver silent 3 days; disk full fixed; rerun; gap noted; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2337,7 +2337,7 @@ A capstone proves design on synthetic inputs; production needs validation on rea
 ### Exercises
 
 - **EX085 — Module chain.** List the pipeline stages in order. *Rubric:* 3 = import, refang/validate, dedupe, store, match, expiry, report/export; 2 = most; 1 = few; 0 = none.
-- **EX086 — Export filter.** What does the export filter refuse? *Rubric:* 3 = anything not CLEAR/GREEN and unknown labels; 2 = one; 1 = nothing; 0 = none.
+- **EX086 — Export filter.** What does the export filter refuse? *Rubric:* 3 = anything not CLEAR/GREEN and unknown labels; 2 = one; 1 = vague; 0 = none.
 - **EX087 — Failing test.** What caused the end-to-end test failure and how was it recorded? *Rubric:* 3 = new log column misread; parser fixed; logged; 2 = partial; 1 = ignored; 0 = none.
 
 ### Synthesis

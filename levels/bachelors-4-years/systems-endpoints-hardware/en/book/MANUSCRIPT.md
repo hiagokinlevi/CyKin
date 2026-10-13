@@ -2532,7 +2532,7 @@ Removing services without asking users can break workflows.
 ### Exercises
 
 - **EX088 — Lab result.** How many unneeded services and where? *Rubric:* 3 = 4: file (2), finance (1), old app (1); 2 = two; 1 = one; 0 = none.
-- **EX089 — Verification.** What did the re-run show? *Rubric:* 3 = zero; 2 = partial; 1 = vague; 0 = none.
+- **EX089 — Verification.** What did the re-run show? *Rubric:* 3 = zero; 2 = partial; 1 = vague; 0 = no answer.
 - **EX090 — Finance.** How was web-admin replaced? *Rubric:* 3 = remote access via admin workstation; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis

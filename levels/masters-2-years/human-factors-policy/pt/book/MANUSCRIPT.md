@@ -69,12 +69,12 @@ Buscas em bases de dados deixam de fora a literatura cinzenta. Documentos de ori
 
 ### Exercícios
 
-- **EX001 — Pergunta de pesquisa.** Que pergunta de pesquisa Sofia formulou? *Rubrica:* 3 = depois do fim das trocas obrigatórias e da oferta de um gerenciador, as redefinições caíram e os relatos de reutilização diminuíram?;; 2 = dois desfechos;; 1 = nada;; 0 = nenhuma.
-- **EX002 — Relevância de Adams e Sasse.** Por que Adams e Sasse (1999) é relevante? *Rubrica:* 3 = regras exigentes levavam a anotar e reutilizar senhas;; 2 = contornos;; 1 = nada;; 0 = nenhuma.
-- **EX003 — Registro da busca.** O que Sofia registra para cada busca? *Rubrica:* 3 = data, base, string de busca e número de resultados;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX004 — Itens excluídos.** Por que manter uma tabela de itens excluídos? *Rubrica:* 3 = para que a busca possa ser repetida e não pareça seletiva;; 2 = transparência;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Pergunta de pesquisa.** Que pergunta de pesquisa Sofia formulou? *Rubrica:* 3 = depois do fim das trocas obrigatórias e da oferta de um gerenciador, as redefinições caíram e os relatos de reutilização diminuíram?;; 2 = dois desfechos;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Relevância de Adams e Sasse.** Por que Adams e Sasse (1999) é relevante? *Rubrica:* 3 = regras exigentes levavam a anotar e reutilizar senhas;; 2 = contornos;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Registro da busca.** O que Sofia registra para cada busca? *Rubrica:* 3 = data, base, string de busca e número de resultados;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Itens excluídos.** Por que manter uma tabela de itens excluídos? *Rubrica:* 3 = para que a busca possa ser repetida e não pareça seletiva;; 2 = transparência;; 1 = vago;; 0 = nenhuma.
 - **EX005 — Orientação como contexto.** Por que tratar orientações oficiais como contexto, e não como evidência? *Rubrica:* 3 = declaram posições, e não efeitos medidos;; 2 = posições;; 1 = evidência;; 0 = nenhuma.
-- **EX006 — Lacuna encontrada.** Que lacuna Sofia registrou? *Rubrica:* 3 = poucos estudos medem efeitos em um hospital depois de uma mudança desse tipo;; 2 = hospital;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Lacuna encontrada.** Que lacuna Sofia registrou? *Rubrica:* 3 = poucos estudos medem efeitos em um hospital depois de uma mudança desse tipo;; 2 = hospital;; 1 = vago;; 0 = nenhuma.
 - **EX007 — O argumento de Herley.** Que fonte argumenta que os usuários rejeitam racionalmente conselhos custosos? *Rubrica:* 3 = Herley (2009);; 2 = Herley;; 1 = Whitten;; 0 = nenhuma.
 
 ### Síntese
@@ -117,13 +117,13 @@ Modelos simplificam o comportamento. Medidas de atitude por questionário são i
 
 ### Exercícios
 
-- **EX008 — Fatores do comportamento planejado.** Que três fatores moldam a intenção no comportamento planejado? *Rubrica:* 3 = atitudes, normas sociais e controle percebido;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX009 — Previsão do orçamento.** O que o orçamento de compliance prevê depois do fim das trocas obrigatórias? *Rubrica:* 3 = o esforço liberado pode aumentar o cumprimento de outras regras;; 2 = esforço liberado;; 1 = nada;; 0 = nenhuma.
-- **EX010 — Lacuna entre intenção e ação.** Qual é uma fraqueza conhecida do comportamento planejado? *Rubrica:* 3 = explica melhor as intenções do que as ações;; 2 = intenção-ação;; 1 = nada;; 0 = nenhuma.
-- **EX011 — Fracasso das campanhas.** Por que as campanhas fracassam, segundo Bada et al.? *Rubrica:* 3 = presumem que a informação sozinha muda o comportamento;; 2 = informação;; 1 = nada;; 0 = nenhuma.
+- **EX008 — Fatores do comportamento planejado.** Que três fatores moldam a intenção no comportamento planejado? *Rubrica:* 3 = atitudes, normas sociais e controle percebido;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Previsão do orçamento.** O que o orçamento de compliance prevê depois do fim das trocas obrigatórias? *Rubrica:* 3 = o esforço liberado pode aumentar o cumprimento de outras regras;; 2 = esforço liberado;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Lacuna entre intenção e ação.** Qual é uma fraqueza conhecida do comportamento planejado? *Rubrica:* 3 = explica melhor as intenções do que as ações;; 2 = intenção-ação;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Fracasso das campanhas.** Por que as campanhas fracassam, segundo Bada et al.? *Rubrica:* 3 = presumem que a informação sozinha muda o comportamento;; 2 = informação;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Teoria para políticas.** Quando a teoria ajuda as políticas, na visão de Sofia? *Rubrica:* 3 = quando gera previsões mensuráveis;; 2 = previsões;; 1 = sempre;; 0 = nenhuma.
-- **EX013 — Duas previsões.** Cite as duas previsões baseadas em modelos que ela acrescenta. *Rubrica:* 3 = adoção do gerenciador por atitudes e normas; mais bloqueio de tela pelo esforço liberado;; 2 = uma;; 1 = nada;; 0 = nenhuma.
-- **EX014 — Medir o orçamento.** Por que o orçamento de compliance é difícil de testar? *Rubrica:* 3 = é difícil de medir diretamente;; 2 = medição;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Duas previsões.** Cite as duas previsões baseadas em modelos que ela acrescenta. *Rubrica:* 3 = adoção do gerenciador por atitudes e normas; mais bloqueio de tela pelo esforço liberado;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Medir o orçamento.** Por que o orçamento de compliance é difícil de testar? *Rubrica:* 3 = é difícil de medir diretamente;; 2 = medição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -165,10 +165,10 @@ Séries temporais interrompidas podem ser confundidas por outras mudanças simul
 
 ### Exercícios
 
-- **EX015 — Três partes.** Quais são as três partes do estudo de Sofia? *Rubrica:* 3 = série temporal das redefinições, questionário anônimo e entrevistas;; 2 = duas;; 1 = nada;; 0 = nenhuma.
-- **EX016 — Limites do questionário.** O que o questionário não pergunta? *Rubrica:* 3 = nomes ou senhas reais;; 2 = senhas;; 1 = nada;; 0 = nenhuma.
-- **EX017 — Recrutar colegas.** Por que evitar recrutar colegas diretos? *Rubrica:* 3 = poderiam se sentir incapazes de recusar;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Redação que normaliza.** Como Sofia reduz as respostas socialmente desejáveis? *Rubrica:* 3 = redação que normaliza a reutilização e pergunta a frequência;; 2 = redação;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Três partes.** Quais são as três partes do estudo de Sofia? *Rubrica:* 3 = série temporal das redefinições, questionário anônimo e entrevistas;; 2 = duas;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Limites do questionário.** O que o questionário não pergunta? *Rubrica:* 3 = nomes ou senhas reais;; 2 = senhas;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Recrutar colegas.** Por que evitar recrutar colegas diretos? *Rubrica:* 3 = poderiam se sentir incapazes de recusar;; 2 = pressão;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Redação que normaliza.** Como Sofia reduz as respostas socialmente desejáveis? *Rubrica:* 3 = redação que normaliza a reutilização e pergunta a frequência;; 2 = redação;; 1 = vago;; 0 = nenhuma.
 - **EX019 — Comparar níveis.** Por que comparar antes e depois em vez de confiar nos níveis absolutos? *Rubrica:* 3 = a reutilização tende a ser sub-relatada de forma consistente;; 2 = relativo;; 1 = absoluto;; 0 = nenhuma.
 - **EX020 — Transcrições não compartilhadas.** O que é compartilhado no lugar das transcrições das entrevistas? *Rubrica:* 3 = o esquema de codificação e as contagens;; 2 = esquema de codificação;; 1 = transcrições;; 0 = nenhuma.
 
@@ -238,11 +238,11 @@ Comparações entre departamentos são confundidas pelas escolhas de adoção. S
 
 ### Exercícios
 
-- **EX021 — Lista de explicações.** Cite três explicações para a queda das redefinições. *Rubrica:* 3 = fim das trocas obrigatórias, gerenciador de senhas, autoatendimento, quadro de pessoal, mudança de registro;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Lista de explicações.** Cite três explicações para a queda das redefinições. *Rubrica:* 3 = fim das trocas obrigatórias, gerenciador de senhas, autoatendimento, quadro de pessoal, mudança de registro;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 - **EX022 — Verificação do autoatendimento.** Como Sofia tratou a ferramenta de autoatendimento? *Rubrica:* 3 = somou as contagens de autoatendimento às do service desk;; 2 = combinar;; 1 = ignorar;; 0 = nenhuma.
-- **EX023 — Verificação do quadro de pessoal.** Como ela controlou as mudanças no quadro de pessoal? *Rubrica:* 3 = dividiu as redefinições pelas contas ativas;; 2 = taxa;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Verificação do quadro de pessoal.** Como ela controlou as mudanças no quadro de pessoal? *Rubrica:* 3 = dividiu as redefinições pelas contas ativas;; 2 = taxa;; 1 = vago;; 0 = nenhuma.
 - **EX024 — Mudança de nível no laboratório.** O que o laboratório estimou no ponto da mudança? *Rubrica:* 3 = queda de nível de 18,8 redefinições por 1.000 contas, mudança de inclinação de +0,09;; 2 = queda de nível;; 1 = aumento;; 0 = nenhuma.
-- **EX025 — Momento do registro.** Por que a mudança de registro não pode explicar a queda imediata? *Rubrica:* 3 = aconteceu quatro meses depois;; 2 = momento;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Momento do registro.** Por que a mudança de registro não pode explicar a queda imediata? *Rubrica:* 3 = aconteceu quatro meses depois;; 2 = momento;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Afirmação mais fraca.** Que explicação é apenas fracamente sustentada? *Rubrica:* 3 = a de que o gerenciador de senhas contribuiu;; 2 = gerenciador;; 1 = trocas obrigatórias;; 0 = nenhuma.
 
 ### Síntese
@@ -285,12 +285,12 @@ Pilotos pequenos deixam passar problemas raros. Revisões feitas após o piloto 
 
 ### Exercícios
 
-- **EX027 — O que conta contra.** Que resultados contariam contra a mudança de política? *Rubrica:* 3 = nenhuma queda nas redefinições por 1.000 ou mais relatos de anotação de senhas;; 2 = qualquer um;; 1 = nada;; 0 = nenhuma.
-- **EX028 — Revisão da proposta.** O que o Dr. Nakamura pediu que ela acrescentasse? *Rubrica:* 3 = um registro de riscos para atrasos no acesso aos dados;; 2 = registro de riscos;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Termo ambíguo.** Que termo os funcionários interpretaram de formas diferentes? *Rubrica:* 3 = gerenciador de senhas;; 2 = gerenciador;; 1 = nada;; 0 = nenhuma.
-- **EX030 — Ajuste da entrevista.** Como o roteiro de entrevista foi reordenado? *Rubrica:* 3 = começar por uma experiência recente e específica, depois opiniões mais amplas;; 2 = específico primeiro;; 1 = nada;; 0 = nenhuma.
+- **EX027 — O que conta contra.** Que resultados contariam contra a mudança de política? *Rubrica:* 3 = nenhuma queda nas redefinições por 1.000 ou mais relatos de anotação de senhas;; 2 = qualquer um;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Revisão da proposta.** O que o Dr. Nakamura pediu que ela acrescentasse? *Rubrica:* 3 = um registro de riscos para atrasos no acesso aos dados;; 2 = registro de riscos;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Termo ambíguo.** Que termo os funcionários interpretaram de formas diferentes? *Rubrica:* 3 = gerenciador de senhas;; 2 = gerenciador;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Ajuste da entrevista.** Como o roteiro de entrevista foi reordenado? *Rubrica:* 3 = começar por uma experiência recente e específica, depois opiniões mais amplas;; 2 = específico primeiro;; 1 = vago;; 0 = nenhuma.
 - **EX031 — Uso dos dados do piloto.** Os dados do piloto entram na análise principal? *Rubrica:* 3 = não;; 2 = excluídos;; 1 = sim;; 0 = nenhuma.
-- **EX032 — Palavras compartilhadas.** Que problema comum os pilotos revelam na pesquisa em segurança? *Rubrica:* 3 = pesquisadores e participantes usam as palavras de modos diferentes;; 2 = significado;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Palavras compartilhadas.** Que problema comum os pilotos revelam na pesquisa em segurança? *Rubrica:* 3 = pesquisadores e participantes usam as palavras de modos diferentes;; 2 = significado;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -357,12 +357,12 @@ Pesquisas anônimas repetidas comparam grupos, não indivíduos. Julgamentos de 
 
 ### Exercícios
 
-- **EX033 — Perguntas comparáveis.** Por que Sofia pôde comparar as respostas de antes e depois? *Rubrica:* 3 = uma pesquisa anônima anterior usou a mesma redação;; 2 = mesma redação;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Números de respostas.** Quantos funcionários responderam antes e depois? *Rubrica:* 3 = 390 antes e 412 depois;; 2 = números;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Perguntas comparáveis.** Por que Sofia pôde comparar as respostas de antes e depois? *Rubrica:* 3 = uma pesquisa anônima anterior usou a mesma redação;; 2 = mesma redação;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Números de respostas.** Quantos funcionários responderam antes e depois? *Rubrica:* 3 = 390 antes e 412 depois;; 2 = números;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Resultado do bootstrap.** O que o laboratório encontrou sobre a anotação de senhas? *Rubrica:* 3 = 21,0% antes, 15,0% depois; diferença de -6,0 pontos, intervalo abaixo de zero;; 2 = queda;; 1 = aumento;; 0 = nenhuma.
-- **EX036 — Comparação entre grupos.** Por que a comparação do questionário é apenas entre grupos? *Rubrica:* 3 = pesquisas anônimas não ligam as mesmas pessoas;; 2 = anonimato;; 1 = nada;; 0 = nenhuma.
-- **EX037 — Motivo da baixa adoção.** Por que a adoção do gerenciador de senhas foi baixa, segundo as entrevistas? *Rubrica:* 3 = foi introduzido sem treinamento;; 2 = treinamento;; 1 = nada;; 0 = nenhuma.
-- **EX038 — Apoio à teoria.** A previsão sobre o ônus de qual teoria a evidência sustentou? *Rubrica:* 3 = o orçamento de compliance;; 2 = orçamento;; 1 = nada;; 0 = nenhuma.
+- **EX036 — Comparação entre grupos.** Por que a comparação do questionário é apenas entre grupos? *Rubrica:* 3 = pesquisas anônimas não ligam as mesmas pessoas;; 2 = anonimato;; 1 = vago;; 0 = nenhuma.
+- **EX037 — Motivo da baixa adoção.** Por que a adoção do gerenciador de senhas foi baixa, segundo as entrevistas? *Rubrica:* 3 = foi introduzido sem treinamento;; 2 = treinamento;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Apoio à teoria.** A previsão sobre o ônus de qual teoria a evidência sustentou? *Rubrica:* 3 = o orçamento de compliance;; 2 = orçamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -430,12 +430,12 @@ Verificações de robustez cobrem apenas as alternativas escolhidas. As implica�
 
 ### Exercícios
 
-- **EX039 — Ordem de redação.** Quais capítulos Sofia escreve primeiro e por último? *Rubrica:* 3 = métodos primeiro, introdução por último;; 2 = ordem;; 1 = nada;; 0 = nenhuma.
-- **EX040 — Deixar um de fora.** O que testa retirar cada mês por vez? *Rubrica:* 3 = se um mês atípico determina o resultado;; 2 = influência;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Ordem de redação.** Quais capítulos Sofia escreve primeiro e por último? *Rubrica:* 3 = métodos primeiro, introdução por último;; 2 = ordem;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Deixar um de fora.** O que testa retirar cada mês por vez? *Rubrica:* 3 = se um mês atípico determina o resultado;; 2 = influência;; 1 = vago;; 0 = nenhuma.
 - **EX041 — Faixa robusta.** Que faixa o laboratório mostrou ao deixar um mês de fora? *Rubrica:* 3 = mudança de nível entre -19,3 e -17,8;; 2 = estreita;; 1 = larga;; 0 = nenhuma.
 - **EX042 — Desfecho ausente.** Que desfecho de segurança não foi medido? *Rubrica:* 3 = comprometimento de contas;; 2 = comprometimento;; 1 = redefinições;; 0 = nenhuma.
-- **EX043 — Implicações para o hospital.** O que Sofia recomendou ao hospital? *Rubrica:* 3 = manter a mudança, treinar no gerenciador e acompanhar comprometimentos;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Três níveis.** Em quais três níveis as implicações são declaradas? *Rubrica:* 3 = hospital, outros hospitais e políticas;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Implicações para o hospital.** O que Sofia recomendou ao hospital? *Rubrica:* 3 = manter a mudança, treinar no gerenciador e acompanhar comprometimentos;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Três níveis.** Em quais três níveis as implicações são declaradas? *Rubrica:* 3 = hospital, outros hospitais e políticas;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -477,12 +477,12 @@ Os parceiros ainda podem exagerar os achados. O desempenho na defesa depende da 
 
 ### Exercícios
 
-- **EX045 — Tabela de comparabilidade.** O que Sofia acrescentou depois da revisão independente? *Rubrica:* 3 = uma tabela das proporções de grupos de funcionários nas duas pesquisas;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Tabela de comparabilidade.** O que Sofia acrescentou depois da revisão independente? *Rubrica:* 3 = uma tabela das proporções de grupos de funcionários nas duas pesquisas;; 2 = comparabilidade;; 1 = vago;; 0 = nenhuma.
 - **EX046 — Sem randomização.** Por que um ensaio randomizado era impossível? *Rubrica:* 3 = a política valeu para o hospital inteiro de uma vez;; 2 = hospital inteiro;; 1 = custo;; 0 = nenhuma.
-- **EX047 — Crítica segura.** Como ela ajudou os entrevistados a se sentirem seguros para criticar a TI? *Rubrica:* 3 = recrutamento neutro e citações apenas pela função;; 2 = neutro;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Crítica segura.** Como ela ajudou os entrevistados a se sentirem seguros para criticar a TI? *Rubrica:* 3 = recrutamento neutro e citações apenas pela função;; 2 = neutro;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Afirmação correta.** O que o hospital deve dizer sobre segurança? *Rubrica:* 3 = o ônus caiu; os desfechos de segurança não foram medidos;; 2 = ônus;; 1 = a segurança melhorou;; 0 = nenhuma.
 - **EX049 — Decisão do hospital.** O que o grupo de governança decidiu? *Rubrica:* 3 = manter a política e financiar o treinamento no gerenciador;; 2 = os dois;; 1 = reverter;; 0 = nenhuma.
-- **EX050 — Habilidade principal.** Que habilidade Sofia mais valoriza? *Rubrica:* 3 = separar o que a evidência mostra do que as pessoas esperam;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Habilidade principal.** Que habilidade Sofia mais valoriza? *Rubrica:* 3 = separar o que a evidência mostra do que as pessoas esperam;; 2 = evidência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

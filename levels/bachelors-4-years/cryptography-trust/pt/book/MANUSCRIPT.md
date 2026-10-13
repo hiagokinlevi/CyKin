@@ -99,7 +99,7 @@ O sigilo perfeito só vale para chaves verdadeiramente aleatórias, nunca reutil
 
 - **EX002 — Identidades do XOR.** Enuncie duas identidades do XOR que fazem a decifração funcionar. *Rubrica:* 3 = x XOR x = 0 e x XOR 0 = x (com a associatividade);; 2 = uma;; 1 = errada;; 0 = nenhuma.
 
-- **EX003 — Resultado da reutilização do pad.** O que o laboratório recuperou, e por quê? *Rubrica:* 3 = FINE PAID 0938, porque c1 XOR c2 = p1 XOR p2 e p1 era conhecida;; 2 = a mensagem;; 1 = nada;; 0 = nenhuma.
+- **EX003 — Resultado da reutilização do pad.** O que o laboratório recuperou, e por quê? *Rubrica:* 3 = FINE PAID 0938, porque c1 XOR c2 = p1 XOR p2 e p1 era conhecida;; 2 = a mensagem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -183,7 +183,7 @@ Hashes não escondem dados e não autenticam por si sós. Erros de codificação
 
 - **EX008 — Conferência do vetor de teste.** Como Priya confirmou que usou o SHA-256 corretamente? *Rubrica:* 3 = coincidiu com o digest do exemplo "abc" do FIPS 180-4, que começa com ba7816bf;; 2 = vetor coincidiu;; 1 = adivinhou;; 0 = nenhuma.
 
-- **EX009 — Limite da ferramenta de integridade.** Que limite o verificador de integridade tem? *Rubrica:* 3 = um atacante que modifica os arquivos e a lista de digests esconde as mudanças; a lista precisa ser protegida ou assinada;; 2 = proteger a lista;; 1 = nenhum;; 0 = nenhuma.
+- **EX009 — Limite da ferramenta de integridade.** Que limite o verificador de integridade tem? *Rubrica:* 3 = um atacante que modifica os arquivos e a lista de digests esconde as mudanças; a lista precisa ser protegida ou assinada;; 2 = proteger a lista;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -351,7 +351,7 @@ Varrer sistemas sem permissão é antiético e pode ser ilegal. Um certificado v
 
 - **EX020 — Verificações do navegador.** Liste três verificações que o navegador faz num certificado. *Rubrica:* 3 = três entre cadeia até raiz confiável, correspondência do nome, datas de validade, revogação;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
-- **EX021 — Achado da varredura.** O que a varredura autorizada de Priya encontrou? *Rubrica:* 3 = a wiki da equipe aceitando TLS 1.0;; 2 = TLS antigo;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Achado da varredura.** O que a varredura autorizada de Priya encontrou? *Rubrica:* 3 = a wiki da equipe aceitando TLS 1.0;; 2 = TLS antigo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -393,7 +393,7 @@ As APIs de alto nível ainda precisam de um gerenciamento de chaves correto. Os 
 
 - **EX023 — Exceção genérica.** Por que unprotect lança uma única exceção genérica? *Rubrica:* 3 = para que quem chama ou atacantes não saibam por que um token falhou;; 2 = esconder o motivo;; 1 = mais simples;; 0 = nenhuma.
 
-- **EX024 — Teste de nonce novo.** O que proteger os mesmos dados duas vezes testa? *Rubrica:* 3 = os tokens diferem, confirmando nonces novos;; 2 = nonces;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Teste de nonce novo.** O que proteger os mesmos dados duas vezes testa? *Rubrica:* 3 = os tokens diferem, confirmando nonces novos;; 2 = nonces;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -502,7 +502,7 @@ A disponibilidade pública de dados vazados não torna ético o seu uso. Divulga
 
 ### Exercícios
 
-- **EX028 — Conteúdo da autorização.** O que o escopo assinado por Grace listava? *Rubrica:* 3 = hosts, datas e ferramentas permitidas;; 2 = dois;; 1 = nenhum;; 0 = nenhuma.
+- **EX028 — Conteúdo da autorização.** O que o escopo assinado por Grace listava? *Rubrica:* 3 = hosts, datas e ferramentas permitidas;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Bancos de dados vazados.** Por que os estudantes não podem usar bancos de dados reais de senhas vazadas? *Rubrica:* 3 = eles contêm segredos de pessoas reais, mesmo sendo públicos;; 2 = privacidade;; 1 = permitido;; 0 = nenhuma.
 
@@ -815,9 +815,9 @@ Camadas que compartilham uma fraqueza, como uma única conta de administrador qu
 
 - **EX046 — Fronteira de confiança.** Cite duas fronteiras de confiança na arquitetura da Tidewell. *Rubrica:* 3 = duas entre internet-portal, portal-banco de dados, consórcio-provedor;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Bug no portal.** O que um atacante ainda enfrentaria depois de explorar um bug no portal? *Rubrica:* 3 = as permissões do banco de dados e a cifração dos campos;; 2 = uma camada;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Bug no portal.** O que um atacante ainda enfrentaria depois de explorar um bug no portal? *Rubrica:* 3 = as permissões do banco de dados e a cifração dos campos;; 2 = uma camada;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Chaves ausentes.** O que os documentos de arquitetura anteriores omitiam, e por que isso importava? *Rubrica:* 3 = a localização das chaves; não era possível avaliar a rotação nem o acesso à decifração;; 2 = chaves;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Chaves ausentes.** O que os documentos de arquitetura anteriores omitiam, e por que isso importava? *Rubrica:* 3 = a localização das chaves; não era possível avaliar a rotação nem o acesso à decifração;; 2 = chaves;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -933,7 +933,7 @@ As simulações podem não refletir o comportamento real sob pressão. Estudos c
 
 - **EX053 — Tabela de fontes.** O que Priya registra para cada estudo? *Rubrica:* 3 = população, método, achados (e laboratório versus navegação real);; 2 = dois;; 1 = só a citação;; 0 = nenhuma.
 
-- **EX054 — Pedido do comitê.** O que o comitê de ética pediu que Priya acrescentasse? *Rubrica:* 3 = garantir que os gerentes nunca vejam resultados individuais;; 2 = anonimato;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Pedido do comitê.** O que o comitê de ética pediu que Priya acrescentasse? *Rubrica:* 3 = garantir que os gerentes nunca vejam resultados individuais;; 2 = anonimato;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -975,7 +975,7 @@ Confiar em muitas raízes amplia o risco. As assinaturas provam a aprovação de
 
 - **EX056 — Fraqueza das raízes.** Qual é a principal fraqueza da confiança delegada? *Rubrica:* 3 = qualquer raiz confiável pode emitir para qualquer nome, então uma autoridade ruim mina todas;; 2 = qualquer raiz;; 1 = vago;; 0 = nenhuma.
 
-- **EX057 — Mal-entendido do contrato.** O que a equipe entendeu mal sobre o PDF assinado? *Rubrica:* 3 = supôs que a assinatura cobria os termos de um anexo não assinado;; 2 = cobertura;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Mal-entendido do contrato.** O que a equipe entendeu mal sobre o PDF assinado? *Rubrica:* 3 = supôs que a assinatura cobria os termos de um anexo não assinado;; 2 = cobertura;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1057,7 +1057,7 @@ Os modelos simplificam; confira-os contra as configurações reais. Os pontos ú
 
 - **EX061 — Afirmação da licença.** O que os tokens de empréstimo assinados da Tidewell afirmam ao servidor de licenças? *Rubrica:* 3 = que um leitor pode emprestar um título por catorze dias;; 2 = permissão de empréstimo;; 1 = identidade;; 0 = nenhuma.
 
-- **EX062 — Risco da autoridade interna.** O que um atacante poderia fazer com a chave de assinatura da autoridade interna? *Rubrica:* 3 = criar certificados de dispositivos da equipe;; 2 = se passar por dispositivos;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Risco da autoridade interna.** O que um atacante poderia fazer com a chave de assinatura da autoridade interna? *Rubrica:* 3 = criar certificados de dispositivos da equipe;; 2 = se passar por dispositivos;; 1 = vago;; 0 = nenhuma.
 
 - **EX063 — Separação da administração.** Que separação Priya recomendou para a administração? *Rubrica:* 3 = separar a administração do serviço de chaves da administração dos logs de auditoria;; 2 = separação;; 1 = unificar;; 0 = nenhuma.
 
@@ -1097,7 +1097,7 @@ Os inventários se degradam sem varreduras regulares de descoberta. As respostas
 
 ### Exercícios
 
-- **EX064 — Achados do inventário.** O que o inventário revelou? *Rubrica:* 3 = dois certificados esquecidos e uma chave de backup numa pasta compartilhada;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Achados do inventário.** O que o inventário revelou? *Rubrica:* 3 = dois certificados esquecidos e uma chave de backup numa pasta compartilhada;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX065 — Ferramenta com SHA-1.** O que Priya decidiu sobre a ferramenta de relatórios com SHA-1, e que orientação sustenta isso? *Rubrica:* 3 = agendar a substituição; orientação de transição do SP 800-131A;; 2 = substituir;; 1 = manter;; 0 = nenhuma.
 
@@ -1141,7 +1141,7 @@ A reutilização de nonces quebra o GCM gravemente. Os dados associados precisam
 
 - **EX067 — Dados associados.** Por que incluir o identificador do registro como dado associado? *Rubrica:* 3 = para impedir que registros cifrados sejam trocados entre leitores sem detecção;; 2 = vinculação;; 1 = cifra o identificador;; 0 = nenhuma.
 
-- **EX068 — Limite dos nonces aleatórios.** Que limite se aplica aos nonces aleatórios de 96 bits do GCM? *Rubrica:* 3 = cerca de 2^32 cifrações por chave;; 2 = limite;; 1 = nenhum;; 0 = nenhuma.
+- **EX068 — Limite dos nonces aleatórios.** Que limite se aplica aos nonces aleatórios de 96 bits do GCM? *Rubrica:* 3 = cerca de 2^32 cifrações por chave;; 2 = limite;; 1 = vago;; 0 = nenhuma.
 
 - **EX069 — Origem dos parâmetros.** Por que Priya diz que verificar os parâmetros é o ponto? *Rubrica:* 3 = os engenheiros devem verificar, não inventar, os parâmetros; as receitas escolhem a maioria;; 2 = verificar;; 1 = inventar;; 0 = nenhuma.
 
@@ -1183,7 +1183,7 @@ Controles sem evidências falham nas auditorias. O controle duplo se desgasta se
 
 - **EX070 — Chaves prioritárias.** Que chaves Priya priorizou para os controles? *Rubrica:* 3 = a autoridade interna e as chaves de backup;; 2 = uma;; 1 = todas por igual;; 0 = nenhuma.
 
-- **EX071 — Exemplo de controle duplo.** Dê um controle duplo que Priya aplicou. *Rubrica:* 3 = restaurar as chaves de backup exige dois administradores;; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
+- **EX071 — Exemplo de controle duplo.** Dê um controle duplo que Priya aplicou. *Rubrica:* 3 = restaurar as chaves de backup exige dois administradores;; 2 = exemplo;; 1 = vago;; 0 = nenhuma.
 
 - **EX072 — Lacuna da auditoria.** Que lacuna a auditoria encontrou, e como foi corrigida? *Rubrica:* 3 = evidências no e-mail pessoal; transferidas para armazenamento compartilhado com controle de acesso;; 2 = lacuna;; 1 = vago;; 0 = nenhuma.
 
@@ -1225,7 +1225,7 @@ Códigos de exemplo muitas vezes contêm chaves ou nonces fixos para demonstraç
 
 - **EX073 — Cinco testes.** Liste três dos cinco testes. *Rubrica:* 3 = três entre decifração correta, adulteração falha, dados associados trocados falham, chave errada falha, saídas diferentes;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
-- **EX074 — Bug do nonce.** Que bug os testes revelaram? *Rubrica:* 3 = um nonce fixo copiado de um trecho de exemplo, tornando idênticas as cifrações repetidas;; 2 = nonce fixo;; 1 = nenhum;; 0 = nenhuma.
+- **EX074 — Bug do nonce.** Que bug os testes revelaram? *Rubrica:* 3 = um nonce fixo copiado de um trecho de exemplo, tornando idênticas as cifrações repetidas;; 2 = nonce fixo;; 1 = vago;; 0 = nenhuma.
 
 - **EX075 — Limitações do relatório.** Cite uma limitação do relatório. *Rubrica:* 3 = transferência manual da chave ou falta de revisão de canais laterais;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
@@ -1269,7 +1269,7 @@ As assinaturas são inúteis se as chaves privadas vazarem ou se as chaves públ
 
 - **EX077 — Assinatura de scripts.** O que os servidores das unidades fazem com os scripts, e onde fica a chave de assinatura? *Rubrica:* 3 = recusam scripts não assinados; a chave fica no serviço de chaves, com solicitações aprovadas;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
-- **EX078 — Vantagem do Ed25519.** Que modo de falha o Ed25519 evita? *Rubrica:* 3 = o segredo por assinatura é derivado de forma determinística, evitando nonces reutilizados/vazados que expõem chaves;; 2 = nonce;; 1 = nenhum;; 0 = nenhuma.
+- **EX078 — Vantagem do Ed25519.** Que modo de falha o Ed25519 evita? *Rubrica:* 3 = o segredo por assinatura é derivado de forma determinística, evitando nonces reutilizados/vazados que expõem chaves;; 2 = nonce;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1504,9 +1504,9 @@ Os prazos da migração pós-quântica são incertos; evite tanto o pânico quan
 
 ### Exercícios
 
-- **EX091 — Colher agora.** O que significa "colher agora, decifrar depois"? *Rubrica:* 3 = o tráfego gravado é decifrado mais tarde, quando existirem computadores quânticos grandes;; 2 = decifração futura;; 1 = nada;; 0 = nenhuma.
+- **EX091 — Colher agora.** O que significa "colher agora, decifrar depois"? *Rubrica:* 3 = o tráfego gravado é decifrado mais tarde, quando existirem computadores quânticos grandes;; 2 = decifração futura;; 1 = vago;; 0 = nenhuma.
 
-- **EX092 — Custo da E2E.** Cite dois custos das mensagens com cifração de ponta a ponta para os leitores. *Rubrica:* 3 = dois entre perda de mensagens com os dispositivos, dificuldade com caixas compartilhadas, nenhuma verificação de abuso;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX092 — Custo da E2E.** Cite dois custos das mensagens com cifração de ponta a ponta para os leitores. *Rubrica:* 3 = dois entre perda de mensagens com os dispositivos, dificuldade com caixas compartilhadas, nenhuma verificação de abuso;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX093 — Conselho de prioridade.** O que Priya aconselhou antes de adotar as opções avançadas? *Rubrica:* 3 = terminar primeiro os controles básicos (inventário, renovação, cifração dos backups);; 2 = o básico;; 1 = apressar;; 0 = nenhuma.
 
@@ -1548,7 +1548,7 @@ Os requisitos jurídicos diferem conforme a jurisdição; consulte assessores qu
 
 - **EX094 — Digital versus eletrônica.** Distinga uma assinatura digital de uma assinatura eletrônica. *Rubrica:* 3 = a digital é um mecanismo criptográfico; a eletrônica é um conceito jurídico que pode incluir nomes digitados;; 2 = parcial;; 1 = iguais;; 0 = nenhuma.
 
-- **EX095 — Propósito do carimbo de tempo.** Por que acrescentar carimbos de tempo confiáveis aos contratos assinados? *Rubrica:* 3 = para que as assinaturas possam ser validadas depois que o certificado de assinatura expirar;; 2 = longo prazo;; 1 = nenhum;; 0 = nenhuma.
+- **EX095 — Propósito do carimbo de tempo.** Por que acrescentar carimbos de tempo confiáveis aos contratos assinados? *Rubrica:* 3 = para que as assinaturas possam ser validadas depois que o certificado de assinatura expirar;; 2 = longo prazo;; 1 = vago;; 0 = nenhuma.
 
 - **EX096 — Ligação com a usabilidade.** Por que a usabilidade faz parte da segurança? *Rubrica:* 3 = uma segurança confusa leva a soluções de contorno inseguras;; 2 = soluções de contorno;; 1 = não tem relação;; 0 = nenhuma.
 
@@ -1634,7 +1634,7 @@ Testes curtos deixam passar problemas de longo prazo. Abordagens mistas acrescen
 
 - **EX101 — Critérios.** Liste quatro dos critérios de Priya. *Rubrica:* 3 = quatro entre resistência ao phishing, esforço da equipe, esforço administrativo, custo, computadores compartilhados, recuperação;; 2 = três;; 1 = um;; 0 = nenhuma.
 
-- **EX102 — Mudar de opinião.** O que mudaria a recomendação de Priya? *Rubrica:* 3 = preços menores das chaves de segurança (ou mudança semelhante nas evidências);; 2 = condição;; 1 = nada;; 0 = nenhuma.
+- **EX102 — Mudar de opinião.** O que mudaria a recomendação de Priya? *Rubrica:* 3 = preços menores das chaves de segurança (ou mudança semelhante nas evidências);; 2 = condição;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1674,7 +1674,7 @@ Varrer além dos hosts autorizados não é permitido, nem mesmo com bons propós
 
 - **EX103 — Objetivo do trabalho de conclusão.** Enuncie o objetivo do trabalho de conclusão. *Rubrica:* 3 = todo certificado e toda chave no escopo listados com dono; nenhuma expiração sem alertas aos 30 e aos 7 dias;; 2 = objetivo;; 1 = vago;; 0 = nenhuma.
 
-- **EX104 — Fora do escopo.** O que está fora do escopo? *Rubrica:* 3 = as chaves de segurança da equipe e as chaves mantidas por fornecedores;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+- **EX104 — Fora do escopo.** O que está fora do escopo? *Rubrica:* 3 = as chaves de segurança da equipe e as chaves mantidas por fornecedores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX105 — Medida acrescentada.** Que mudança o Dr. Echeverría exigiu? *Rubrica:* 3 = acrescentar uma medida de alertas falsos;; 2 = alertas falsos;; 1 = vago;; 0 = nenhuma.
 
@@ -1798,7 +1798,7 @@ O tratamento do tempo causa erros sutis; armazene em UTC. As varreduras precisam
 
 ### Exercícios
 
-- **EX112 — Lacuna da descoberta.** O que a descoberta deixou passar de início, e como isso foi corrigido? *Rubrica:* 3 = dois certificados em portas incomuns; portas autorizadas acrescentadas ao perfil de varredura;; 2 = deixou passar;; 1 = nada;; 0 = nenhuma.
+- **EX112 — Lacuna da descoberta.** O que a descoberta deixou passar de início, e como isso foi corrigido? *Rubrica:* 3 = dois certificados em portas incomuns; portas autorizadas acrescentadas ao perfil de varredura;; 2 = deixou passar;; 1 = vago;; 0 = nenhuma.
 
 - **EX113 — Causa do alerta falso.** O que causou o alerta falso? *Rubrica:* 3 = um erro de fuso horário, corrigido armazenando as datas em UTC;; 2 = fuso horário;; 1 = bug;; 0 = nenhuma.
 
@@ -1844,7 +1844,7 @@ Dois meses é pouco para avaliar a confiabilidade. Ferramentas sem mantenedores 
 
 - **EX116 — Encaminhamento dos alertas.** Por que os alertas foram transferidos para uma caixa compartilhada? *Rubrica:* 3 = os voluntários ignoravam os alertas enviados aos endereços pessoais;; 2 = ignorados;; 1 = preferência;; 0 = nenhuma.
 
-- **EX117 — Valor do segundo alerta.** O que mostrou o valor do lembrete de sete dias? *Rubrica:* 3 = um alerta só foi atendido depois do lembrete de sete dias;; 2 = lembrete;; 1 = nada;; 0 = nenhuma.
+- **EX117 — Valor do segundo alerta.** O que mostrou o valor do lembrete de sete dias? *Rubrica:* 3 = um alerta só foi atendido depois do lembrete de sete dias;; 2 = lembrete;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

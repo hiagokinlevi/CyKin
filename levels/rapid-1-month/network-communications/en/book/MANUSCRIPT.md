@@ -162,8 +162,8 @@ Changing a payment provider's device without permission can break payments and c
 - **EX022 — Notes storage.** Where are Leo's notes kept? *Rubric:* 3 = skills centre secure storage, not personal phone;; 2 = secure storage;; 1 = phone;; 0 = none.
 - **EX023 — End of course data.** What happens to Leo's notes when the course ends? *Rubric:* 3 = deleted as agreed;; 2 = deleted;; 1 = kept;; 0 = none.
 - **EX024 — Third-party change route.** How should changes to a provider's equipment be handled? *Rubric:* 3 = Ellen contacts the provider;; 2 = provider;; 1 = Leo changes it;; 0 = none.
-- **EX025 — Scope benefit.** What does a written scope make easy? *Rubric:* 3 = checking whether a task is allowed;; 2 = clarity;; 1 = nothing;; 0 = none.
-- **EX026 — Safe practice test.** What should Leo test after each change? *Rubric:* 3 = tills and card payments work;; 2 = payments;; 1 = nothing;; 0 = none.
+- **EX025 — Scope benefit.** What does a written scope make easy? *Rubric:* 3 = checking whether a task is allowed;; 2 = clarity;; 1 = vague;; 0 = none.
+- **EX026 — Safe practice test.** What should Leo test after each change? *Rubric:* 3 = tills and card payments work;; 2 = payments;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -247,7 +247,7 @@ Assuming every connected device is known misses equipment added by staff or visi
 - **EX029 — Export timing.** Why export leases after closing? *Rubric:* 3 = customer phones gone, fewer unknowns to sort;; 2 = clarity;; 1 = speed;; 0 = none.
 - **EX030 — Unknown device outcome.** What were the two unknown devices? *Rubric:* 3 = smart speaker and delivery scanner;; 2 = identified;; 1 = malware;; 0 = none.
 - **EX031 — Separate network reason.** Why move the speaker and scanner off the business network? *Rubric:* 3 = share network with tills, non-business;; 2 = separation;; 1 = speed;; 0 = none.
-- **EX032 — Internet failure effect.** What stops if the internet fails? *Rubric:* 3 = online orders, possibly some card payments;; 2 = orders;; 1 = nothing;; 0 = none.
+- **EX032 — Internet failure effect.** What stops if the internet fails? *Rubric:* 3 = online orders, possibly some card payments;; 2 = orders;; 1 = vague;; 0 = none.
 - **EX033 — Card data path.** Where does card payment data go? *Rubric:* 3 = reader straight to payment provider, encrypted;; 2 = provider;; 1 = office PC;; 0 = none.
 - **EX034 — Most protected items.** Which three items need most protection? *Rubric:* 3 = office computer, email account, order platform login;; 2 = two;; 1 = one;; 0 = none.
 - **EX035 — Monthly check.** How often should Ellen check the device list? *Rubric:* 3 = monthly after closing;; 2 = monthly;; 1 = yearly;; 0 = none.
@@ -346,13 +346,13 @@ Making several router changes at once during opening hours risks stopping card p
 - **EX041 — UPnP reason.** Why turn off UPnP? *Rubric:* 3 = lets devices open ports automatically;; 2 = ports;; 1 = speed;; 0 = none.
 - **EX042 — Guest isolation test.** How is guest isolation tested? *Rubric:* 3 = phone on guest reaches internet not office PC, with permission;; 2 = test;; 1 = vague;; 0 = none.
 - **EX043 — Password storage.** Where is the new router password stored? *Rubric:* 3 = Ellen's password manager;; 2 = manager;; 1 = note;; 0 = none.
-- **EX044 — After-change test.** What is tested after each change? *Rubric:* 3 = tills, card reader, office PC and test payment;; 2 = payments;; 1 = nothing;; 0 = none.
+- **EX044 — After-change test.** What is tested after each change? *Rubric:* 3 = tills, card reader, office PC and test payment;; 2 = payments;; 1 = vague;; 0 = none.
 - **EX045 — Final checklist.** How many checks pass after changes? *Rubric:* 3 = 7 of 7;; 2 = all;; 1 = six;; 0 = none.
 - **EX046 — Firmware habit.** How often should Ellen check for firmware updates? *Rubric:* 3 = every three months;; 2 = quarterly;; 1 = never;; 0 = none.
 - **EX047 — Guest passphrase habit.** When should the guest passphrase change? *Rubric:* 3 = every few months and after staff leave;; 2 = periodically;; 1 = never;; 0 = none.
 - **EX048 — Report contents.** List four parts of Leo's report. *Rubric:* 3 = findings, changes, before/after, recommendations or habits;; 2 = three;; 1 = fewer;; 0 = none.
 - **EX049 — Morning check.** Why call Ellen the next morning? *Rubric:* 3 = confirm opening went smoothly;; 2 = verify;; 1 = courtesy;; 0 = none.
-- **EX050 — Key reflection.** What did Leo find mattered most besides technical steps? *Rubric:* 3 = permission, timing, records, stopping to ask;; 2 = habits;; 1 = nothing;; 0 = none.
+- **EX050 — Key reflection.** What did Leo find mattered most besides technical steps? *Rubric:* 3 = permission, timing, records, stopping to ask;; 2 = habits;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

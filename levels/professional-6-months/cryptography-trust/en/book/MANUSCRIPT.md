@@ -288,7 +288,7 @@ Baselines lag new guidance; review them yearly. Manual sampling may miss rare mi
 - **EX022 — Lab flag count.** How many endpoints did the lab flag and how many were clean? *Rubric:* 3 = four flagged, one clean;; 2 = count of one side;; 1 = wrong;; 0 = none.
 - **EX023 — Printer context.** Why is the printer's TLS 1.0 flag rated lower? *Rubric:* 3 = it is isolated and only the server reaches it;; 2 = isolation;; 1 = flag false;; 0 = none.
 - **EX024 — Manual confirmation.** How does Dana confirm a flag before reporting it? *Rubric:* 3 = connects with openssl s_client or reads the certificate with openssl x509;; 2 = tool named;; 1 = trusts scanner;; 0 = none.
-- **EX025 — Credibility.** What does one obviously wrong finding do to a report? *Rubric:* 3 = makes the client doubt every other finding;; 2 = doubt;; 1 = nothing;; 0 = none.
+- **EX025 — Credibility.** What does one obviously wrong finding do to a report? *Rubric:* 3 = makes the client doubt every other finding;; 2 = doubt;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -493,7 +493,7 @@ Three-point scales hide nuance; justifications carry the detail. Informal notes 
 
 - **EX041 — Summary placement.** Why write the executive summary last? *Rubric:* 3 = findings must be confirmed first and the summary leads with action;; 2 = confirmed;; 1 = first;; 0 = none.
 - **EX042 — Internal RSA-1024 rating.** Why is the internal RSA-1024 key rated medium rather than high? *Rubric:* 3 = real weakness but exploitation needs internal network access;; 2 = access needed;; 1 = rated low;; 0 = none.
-- **EX043 — Cross-client check.** What does Marcus check across clients' ratings? *Rubric:* 3 = similar findings received similar ratings;; 2 = consistency;; 1 = nothing;; 0 = none.
+- **EX043 — Cross-client check.** What does Marcus check across clients' ratings? *Rubric:* 3 = similar findings received similar ratings;; 2 = consistency;; 1 = vague;; 0 = none.
 - **EX044 — Own mistake.** How should Dana report a weakness Copperleaf itself introduced? *Rubric:* 3 = exactly like any other finding, without hiding it;; 2 = report;; 1 = hide it;; 0 = none.
 - **EX045 — Supplier product flaw.** What should happen if Dana finds a flaw in a widely used supplier product? *Rubric:* 3 = coordinated disclosure through Copperleaf, not public posting;; 2 = disclosure;; 1 = post publicly;; 0 = none.
 

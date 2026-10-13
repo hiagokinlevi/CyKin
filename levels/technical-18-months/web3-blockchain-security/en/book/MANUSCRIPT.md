@@ -158,7 +158,7 @@ Shared administrator accounts make actions untraceable to individuals.
 
 - **EX009 — Personal accounts benefit.** Why use personal administrator accounts? *Rubric:* 3 = actions are recorded against a person;; 2 = traceability;; 1 = speed;; 0 = none.
 - **EX010 — Credential location.** Where should credentials be stored? *Rubric:* 3 = the server's protected secret store;; 2 = secret store;; 1 = configuration file;; 0 = none.
-- **EX011 — Review finding.** What did the first access review find? *Rubric:* 3 = a contractor account three months after work ended;; 2 = old contractor;; 1 = nothing;; 0 = none.
+- **EX011 — Review finding.** What did the first access review find? *Rubric:* 3 = a contractor account three months after work ended;; 2 = old contractor;; 1 = vague;; 0 = none.
 - **EX012 — Review frequency.** How often are access reviews run? *Rubric:* 3 = quarterly;; 2 = every quarter;; 1 = yearly;; 0 = none.
 
 ### Synthesis
@@ -339,7 +339,7 @@ Polling nodes too heavily for telemetry can slow the service being monitored.
 - **EX025 — Telemetry source.** Name one telemetry source. *Rubric:* 3 = node metrics such as block height;; 2 = ledger events;; 1 = weather data;; 0 = none.
 - **EX026 — Collection frequency.** How often are node metrics collected? *Rubric:* 3 = every minute;; 2 = each minute;; 1 = yearly;; 0 = none.
 - **EX027 — Detail retention.** How long are detailed events kept? *Rubric:* 3 = ninety days;; 2 = 90 days;; 1 = forever;; 0 = none.
-- **EX028 — Log protection.** How are logs protected from alteration? *Rubric:* 3 = daily hashes;; 2 = hashing;; 1 = nothing;; 0 = none.
+- **EX028 — Log protection.** How are logs protected from alteration? *Rubric:* 3 = daily hashes;; 2 = hashing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -473,7 +473,7 @@ Changing controls on several nodes at once risks taking the ledger offline.
 
 - **EX037 — Interface restriction.** Who may reach node programming interfaces? *Rubric:* 3 = only the deposit service;; 2 = deposit service;; 1 = everyone;; 0 = none.
 - **EX038 — Service limit.** What can the deposit service not do? *Rubric:* 3 = issue tokens;; 2 = cannot issue;; 1 = read data;; 0 = none.
-- **EX039 — Drift found.** What did the first comparison find? *Rubric:* 3 = node one logs kept for thirty days instead of ninety;; 2 = log retention;; 1 = nothing;; 0 = none.
+- **EX039 — Drift found.** What did the first comparison find? *Rubric:* 3 = node one logs kept for thirty days instead of ninety;; 2 = log retention;; 1 = vague;; 0 = none.
 - **EX040 — Check schedule.** When does the comparison run? *Rubric:* 3 = weekly and after every maintenance;; 2 = weekly;; 1 = never;; 0 = none.
 
 ### Synthesis
@@ -735,7 +735,7 @@ Untracked dependencies become outdated unnoticed until a problem forces an urgen
 - **EX057 — Load conflict.** What conflict did Aiko find? *Rubric:* 3 = accounting export reading nodes during backups;; 2 = export timing;; 1 = vague;; 0 = none.
 - **EX058 — Dependency example.** Name one tracked dependency. *Rubric:* 3 = hardware wallet firmware;; 2 = ledger client;; 1 = office chairs;; 0 = none.
 - **EX059 — Update path.** How are routine updates applied? *Rubric:* 3 = tested, then one component at a time through tickets;; 2 = tested and staged;; 1 = all at once;; 0 = none.
-- **EX060 — Urgent fix path.** What does the urgent path require? *Rubric:* 3 = the manager's approval;; 2 = approval;; 1 = nothing;; 0 = none.
+- **EX060 — Urgent fix path.** What does the urgent path require? *Rubric:* 3 = the manager's approval;; 2 = approval;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -779,7 +779,7 @@ Out-of-date runbooks are trusted and followed even when their steps are wrong.
 
 - **EX061 — Runbook test.** How are runbooks tested? *Rubric:* 3 = another trainee follows them;; 2 = peer follows;; 1 = not tested;; 0 = none.
 - **EX062 — Restart warning.** What does the restart runbook warn? *Rubric:* 3 = never restart two nodes at once;; 2 = one at a time;; 1 = restart all;; 0 = none.
-- **EX063 — Review trigger.** What prompts a document review? *Rubric:* 3 = a linked change ticket;; 2 = system change;; 1 = nothing;; 0 = none.
+- **EX063 — Review trigger.** What prompts a document review? *Rubric:* 3 = a linked change ticket;; 2 = system change;; 1 = vague;; 0 = none.
 - **EX064 — Outdated danger.** Why can outdated runbooks be dangerous? *Rubric:* 3 = people trust and follow wrong steps;; 2 = false trust;; 1 = they are not;; 0 = none.
 
 ### Synthesis

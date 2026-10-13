@@ -254,7 +254,7 @@ Os mapas ficam desatualizados sem atualizações. As falhas de fornecedores pode
 
 - **EX034 — Contingência do bureau.** Que contingência existe para o bureau de serviços? *Rubrica:* 3 = recuperação contratual e um procedimento manual de saque nas agências;; 2 = manual;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Aplicativo de orçamento.** O que o mapa revelou sobre o aplicativo de orçamento? *Rubrica:* 3 = um novo fornecedor com dados de transações e mais dependência da identidade;; 2 = novo fornecedor;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Aplicativo de orçamento.** O que o mapa revelou sobre o aplicativo de orçamento? *Rubrica:* 3 = um novo fornecedor com dados de transações e mais dependência da identidade;; 2 = novo fornecedor;; 1 = vago;; 0 = nenhuma.
 
 - **EX036 — Ação do conselho.** Como o conselho reagiu ao aplicativo de orçamento? *Rubrica:* 3 = fez perguntas de segurança ao fornecedor antes de assinar;; 2 = perguntas;; 1 = assinou;; 0 = nenhuma.
 

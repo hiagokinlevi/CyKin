@@ -344,7 +344,7 @@ Análises de sensibilidade testam apenas as alternativas escolhidas; outras pode
 - **EX033 — Crítica sobre nomes.** Que crítica dizia respeito aos nomes? *Rubrica:* 3 = a réplica pode subestimar a variação de nomes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX034 — Mudança na sensibilidade.** Como Nadia testou a variação de nomes? *Rubrica:* 3 = reduziu o m dos nomes de 0,95 para 0,85;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Resultado robusto.** O que permaneceu igual na análise de sensibilidade? *Rubrica:* 3 = a ordenação das decisões por efeito;; 2 = correto;; 1 = as magnitudes;; 0 = nenhuma.
-- **EX036 — Triangulação.** O que os documentos mostraram sobre revisões do limiar? *Rubrica:* 3 = nenhuma desde a escolha original; uma proposta nunca agendada;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX036 — Triangulação.** O que os documentos mostraram sobre revisões do limiar? *Rubrica:* 3 = nenhuma desde a escolha original; uma proposta nunca agendada;; 2 = ambos;; 1 = um;; 0 = sem resposta.
 - **EX037 — Redação estrutural.** Como Nadia reescreveu o texto sobre titularidade? *Rubrica:* 3 = uma lacuna estrutural, não falha pessoal;; 2 = correto;; 1 = culpa;; 0 = nenhuma.
 - **EX038 — Desenho de continuidade.** Que continuidade Nadia propôs? *Rubrica:* 3 = quatro divulgações documentadas contra uma série de comparação;; 2 = menciona comparação;; 1 = vago;; 0 = nenhuma.
 

@@ -599,7 +599,7 @@ Telemetry shows activity, not intent; interpret with care.
 - **EX025 — Retention check.** Why was the proxy silent about the 40-day-old domain? *Rubric:* 3 = 30-day retention; 2 = partial; 1 = no visits; 0 = none.
 - **EX026 — Minimal extract.** What should an evidence extract contain? *Rubric:* 3 = only matching lines with needed fields; 2 = partial; 1 = full logs; 0 = none.
 - **EX027 — Source coverage.** Which source covers all campus devices, and which only managed machines? *Rubric:* 3 = DNS all; endpoint managed only; 2 = one; 1 = wrong; 0 = none.
-- **EX028 — Technique matrix.** What does a technique-by-source matrix reveal? *Rubric:* 3 = blind spots where no telemetry covers a technique; 2 = partial; 1 = nothing; 0 = none.
+- **EX028 — Technique matrix.** What does a technique-by-source matrix reveal? *Rubric:* 3 = blind spots where no telemetry covers a technique; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -769,7 +769,7 @@ Lookalike names can be innocent, such as a student society site; check before ta
 - **EX033 — Lookalike tag.** Why tag the new lookalike with T1583 rather than T1566? *Rubric:* 3 = preparation, infrastructure acquired, no emails seen yet; 2 = partial; 1 = no difference; 0 = none.
 - **EX034 — Grade explanation.** Explain the B2 grade for the lookalike finding. *Rubric:* 3 = B reliable log source; 2 probably true impersonation; 2 = one; 1 = wrong; 0 = none.
 - **EX035 — Absence caution.** Why is absence from the platform not proof of absence? *Rubric:* 3 = platform only holds what was shared; 2 = partial; 1 = it is proof; 0 = none.
-- **EX036 — Innocent lookalike.** What should be checked before requesting takedown? *Rubric:* 3 = whether legitimate (e.g. student society); 2 = partial; 1 = nothing; 0 = none.
+- **EX036 — Innocent lookalike.** What should be checked before requesting takedown? *Rubric:* 3 = whether legitimate (e.g. student society); 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -854,7 +854,7 @@ Controls vary by product; read their documentation before formatting.
 ### Exercises
 
 - **EX037 — Expiry periods.** State expiry periods for addresses and domains and why they differ. *Rubric:* 3 = 30 vs 90 days; addresses reassigned faster; 2 = numbers; 1 = same; 0 = none.
-- **EX038 — Allow-list catch.** What did the allow-list check prevent? *Rubric:* 3 = blocking lecturer file-sharing service; 2 = partial; 1 = nothing; 0 = none.
+- **EX038 — Allow-list catch.** What did the allow-list check prevent? *Rubric:* 3 = blocking lecturer file-sharing service; 2 = partial; 1 = vague; 0 = none.
 - **EX039 — Macro intelligence.** Which control does T1204 macro intelligence support? *Rubric:* 3 = quarantine external macro documents; 2 = partial; 1 = firewall; 0 = none.
 - **EX040 — Exam timing.** Why avoid large list changes during exams? *Rubric:* 3 = disruption most harmful; 2 = partial; 1 = no reason; 0 = none.
 
@@ -945,7 +945,7 @@ Verification reduces errors but cannot remove them.
 ### Exercises
 
 - **EX041 — Withdrawn domain.** What evidence suggested the ESX domain was legitimate? *Rubric:* 3 = CDN, long history, no lookups, reputable certificate owner; 2 = two; 1 = one; 0 = none.
-- **EX042 — Ongoing lookups.** What do continued blocked lookups from one machine suggest? *Rubric:* 3 = machine may be infected; investigate; 2 = partial; 1 = nothing; 0 = none.
+- **EX042 — Ongoing lookups.** What do continued blocked lookups from one machine suggest? *Rubric:* 3 = machine may be infected; investigate; 2 = partial; 1 = vague; 0 = none.
 - **EX043 — Independence question.** What should Tomás ask to test independence? *Rubric:* 3 = what each report is based on; 2 = partial; 1 = dates; 0 = none.
 - **EX044 — Forbidden check.** Name one verification step that is never allowed. *Rubric:* 3 = visiting/downloading/scanning suspicious servers; 2 = vague; 1 = passive DNS; 0 = none.
 
@@ -1236,7 +1236,7 @@ Automation repeats mistakes quickly; test with tricky cases.
 
 - **EX053 — Auto-approval.** Which category may be auto-approved after a trial? *Rubric:* 3 = ESX GREEN domains graded B+; 2 = partial; 1 = all; 0 = none.
 - **EX054 — Kill switch.** Why must every job have a quick disable method? *Rubric:* 3 = stop harm fast without code edits; 2 = partial; 1 = unnecessary; 0 = none.
-- **EX055 — Trial catch.** What did the trial reveal about the weekly counts? *Rubric:* 3 = duplicate from re-sent item; dedupe by value; 2 = one; 1 = nothing; 0 = none.
+- **EX055 — Trial catch.** What did the trial reveal about the weekly counts? *Rubric:* 3 = duplicate from re-sent item; dedupe by value; 2 = one; 1 = vague; 0 = none.
 - **EX056 — Job document.** List five fields documenting a job. *Rubric:* 3 = five of purpose, schedule, inputs, outputs, owner, alerts, disable; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis

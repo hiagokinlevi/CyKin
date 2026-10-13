@@ -163,7 +163,7 @@ O fecho supõe que as participações estão atualizadas; dados desatualizados e
 
 - **EX005 — Teste de SoD.** Como a segregação de funções é expressa com conjuntos? *Rubrica:* 3 = os conjuntos de criadores e de aprovadores devem ser disjuntos; interseção vazia;; 2 = disjuntos;; 1 = união;; 0 = nenhuma.
 
-- **EX006 — Lacuna do conluio.** O que uma verificação de conjuntos disjuntos não consegue impedir? *Rubrica:* 3 = o conluio entre duas pessoas diferentes;; 2 = conluio;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Lacuna do conluio.** O que uma verificação de conjuntos disjuntos não consegue impedir? *Rubrica:* 3 = o conluio entre duas pessoas diferentes;; 2 = conluio;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -543,7 +543,7 @@ Os códigos de ética variam por país e por órgão. Levantar uma preocupação
 
 - **EX029 — Padrão das catracas.** Durante um alarme de incêndio, as catracas devem falhar abertas ou fechadas, e por quê? *Rubrica:* 3 = abertas, para que os passageiros possam evacuar; a segurança física prevalece sobre a proteção da tarifa;; 2 = abertas;; 1 = fechadas;; 0 = nenhuma.
 
-- **EX030 — Ação da estudante.** O que Sofia podia fazer quanto ao lançamento prematuro? *Rubrica:* 3 = registrar o risco específico por escrito a Daniel para escalonamento;; 2 = preocupação por escrito;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Ação da estudante.** O que Sofia podia fazer quanto ao lançamento prematuro? *Rubrica:* 3 = registrar o risco específico por escrito a Daniel para escalonamento;; 2 = preocupação por escrito;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -819,7 +819,7 @@ Tabelas de rastreabilidade ficam onerosas se forem detalhadas demais. Os modelos
 
 - **EX047 — Fluxo do SP 800-160.** Que cadeia o SP 800-160 Vol. 1 Rev. 1 enfatiza? *Rubrica:* 3 = necessidades de proteção para requisitos, para projeto, para garantia;; 2 = cadeia;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Valor da rastreabilidade.** O que a rastreabilidade mostra quando um requisito muda? *Rubrica:* 3 = quais elementos de projeto e testes são afetados;; 2 = itens afetados;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Valor da rastreabilidade.** O que a rastreabilidade mostra quando um requisito muda? *Rubrica:* 3 = quais elementos de projeto e testes são afetados;; 2 = itens afetados;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -931,7 +931,7 @@ As visões em camadas simplificam preocupações transversais. Os rastreamentos 
 
 - **EX053 — Lacuna encontrada.** Que lacuna a visão em camadas de Sofia expôs? *Rubrica:* 3 = nenhum responsável operacional pela gestão de chaves;; 2 = responsável;; 1 = vago;; 0 = nenhuma.
 
-- **EX054 — Remoção de um controle.** O que o rastreamento de atributos mostra quando uma mudança remove um controle? *Rubrica:* 3 = qual atributo de negócio é enfraquecido;; 2 = atributo;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Remoção de um controle.** O que o rastreamento de atributos mostra quando uma mudança remove um controle? *Rubrica:* 3 = qual atributo de negócio é enfraquecido;; 2 = atributo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1555,7 +1555,7 @@ O enrolment automatizado se torna um alvo de alto valor. A conciliação depende
 
 - **EX091 — Condição de enrolment.** O que precisa existir antes que um validador receba um certificado? *Rubrica:* 3 = um registro de ativo e um ticket de instalação aprovado;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX092 — Propósito da conciliação.** O que a conciliação diária capta? *Rubrica:* 3 = divergências entre certificados ativos e ativos em serviço causadas por eventos perdidos;; 2 = divergências;; 1 = nada;; 0 = nenhuma.
+- **EX092 — Propósito da conciliação.** O que a conciliação diária capta? *Rubrica:* 3 = divergências entre certificados ativos e ativos em serviço causadas por eventos perdidos;; 2 = divergências;; 1 = vago;; 0 = nenhuma.
 
 - **EX093 — Conteúdo da exceção.** O que cada exceção legada inclui? *Rubrica:* 3 = controles compensatórios, responsável e data de expiração ou substituição;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
@@ -2193,7 +2193,7 @@ Os critérios de sucesso podem ser manipulados se forem estreitos demais. Os esp
 
 - **EX131 — Fracasso comum.** Segundo Daniel, por que os projetos finais costumam fracassar? *Rubrica:* 3 = evidências produzidas tarde demais para corrigir o que revelam;; 2 = evidências atrasadas;; 1 = projeto ruim;; 0 = nenhuma.
 
-- **EX132 — Exclusão do termo.** O que o termo exclui? *Rubrica:* 3 = mudanças em produção; o trabalho acontece num espelho de laboratório;; 2 = produção;; 1 = nada;; 0 = nenhuma.
+- **EX132 — Exclusão do termo.** O que o termo exclui? *Rubrica:* 3 = mudanças em produção; o trabalho acontece num espelho de laboratório;; 2 = produção;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

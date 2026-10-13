@@ -65,10 +65,10 @@ Os mapas omitem ferramentas informais. Os donos podem não aceitar a responsabil
 
 ### Exercícios
 
-- **EX001 — Componente compartilhado.** Que componente sustenta tanto a loja on-line quanto as filiais? *Rubrica:* 3 = o banco de dados de estoque;; 2 = banco de estoque;; 1 = nada;; 0 = nenhuma.
-- **EX002 — Itens sem dono.** Que dois componentes não tinham dono? *Rubrica:* 3 = o serviço de roteirização e o Wi-Fi das filiais;; 2 = dois;; 1 = nada;; 0 = nenhuma.
-- **EX003 — Por que donos.** Por que atribuir donos cedo? *Rubrica:* 3 = componentes sem dono são onde os problemas passam despercebidos;; 2 = visibilidade;; 1 = nada;; 0 = nenhuma.
-- **EX004 — Lista de serviços.** Cite três serviços da Fenwick. *Rubrica:* 3 = vendas nas filiais, loja on-line, entregas;; 2 = serviços;; 1 = nada;; 0 = nenhuma.
+- **EX001 — Componente compartilhado.** Que componente sustenta tanto a loja on-line quanto as filiais? *Rubrica:* 3 = o banco de dados de estoque;; 2 = banco de estoque;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Itens sem dono.** Que dois componentes não tinham dono? *Rubrica:* 3 = o serviço de roteirização e o Wi-Fi das filiais;; 2 = dois;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Por que donos.** Por que atribuir donos cedo? *Rubrica:* 3 = componentes sem dono são onde os problemas passam despercebidos;; 2 = visibilidade;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Lista de serviços.** Cite três serviços da Fenwick. *Rubrica:* 3 = vendas nas filiais, loja on-line, entregas;; 2 = serviços;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -106,10 +106,10 @@ Os diagramas se desatualizam. Os formulários de mudança são pulados nas emerg
 
 ### Exercícios
 
-- **EX005 — Filial sem segmentação.** Que problema tinha a segunda filial? *Rubrica:* 3 = tudo num único switch, sem segmentos;; 2 = rede plana;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Filial sem segmentação.** Que problema tinha a segunda filial? *Rubrica:* 3 = tudo num único switch, sem segmentos;; 2 = rede plana;; 1 = vago;; 0 = nenhuma.
 - **EX006 — Conexões de pagamento.** De que conexões o segmento de pagamento precisa? *Rubrica:* 3 = gateway de pagamento e gestão de TI;; 2 = duas;; 1 = internet;; 0 = nenhuma.
-- **EX007 — Registro de mudança.** O que um registro de mudança deve capturar? *Rubrica:* 3 = o quê, por quê, quem aprovou e quando;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
-- **EX008 — Redução de escopo.** Como a segmentação ajuda no PCI DSS? *Rubrica:* 3 = reduz os sistemas no escopo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Registro de mudança.** O que um registro de mudança deve capturar? *Rubrica:* 3 = o quê, por quê, quem aprovou e quando;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Redução de escopo.** Como a segmentação ajuda no PCI DSS? *Rubrica:* 3 = reduz os sistemas no escopo;; 2 = escopo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -147,10 +147,10 @@ Retirar direitos pode quebrar softwares. O acesso por cartão exige hardware.
 
 ### Exercícios
 
-- **EX009 — Problema do caixa compartilhado.** Por que um login compartilhado no caixa é um problema? *Rubrica:* 3 = não dá para rastrear quem fez um estorno;; 2 = responsabilização;; 1 = nada;; 0 = nenhuma.
-- **EX010 — Risco dos direitos de administrador.** Por que retirar os direitos de administrador local? *Rubrica:* 3 = um malware poderia se instalar com controle total;; 2 = malware;; 1 = nada;; 0 = nenhuma.
-- **EX011 — Administrador separado.** Por que usar contas de administrador separadas? *Rubrica:* 3 = o comprometimento de uma conta do dia a dia não deve dar direitos de administrador;; 2 = separação;; 1 = nada;; 0 = nenhuma.
-- **EX012 — Testar primeiro.** Por que testar a retirada dos direitos primeiro em três computadores? *Rubrica:* 3 = para achar softwares que quebram;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Problema do caixa compartilhado.** Por que um login compartilhado no caixa é um problema? *Rubrica:* 3 = não dá para rastrear quem fez um estorno;; 2 = responsabilização;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Risco dos direitos de administrador.** Por que retirar os direitos de administrador local? *Rubrica:* 3 = um malware poderia se instalar com controle total;; 2 = malware;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Administrador separado.** Por que usar contas de administrador separadas? *Rubrica:* 3 = o comprometimento de uma conta do dia a dia não deve dar direitos de administrador;; 2 = separação;; 1 = vago;; 0 = nenhuma.
+- **EX012 — Testar primeiro.** Por que testar a retirada dos direitos primeiro em três computadores? *Rubrica:* 3 = para achar softwares que quebram;; 2 = piloto;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -217,10 +217,10 @@ As exportações podem estar desatualizadas. As linhas de base precisam de revis
 
 ### Exercícios
 
-- **EX013 — Vantagem do JSON.** Por que as exportações em JSON são úteis nas verificações? *Rubrica:* 3 = os campos nomeados são fáceis de ler em scripts;; 2 = estrutura;; 1 = nada;; 0 = nenhuma.
+- **EX013 — Vantagem do JSON.** Por que as exportações em JSON são úteis nas verificações? *Rubrica:* 3 = os campos nomeados são fáceis de ler em scripts;; 2 = estrutura;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Notebook conforme.** Que notebook atendeu à linha de base? *Rubrica:* 3 = FW-LT01;; 2 = LT01;; 1 = LT03;; 0 = nenhuma.
-- **EX015 — Dois desvios.** Que notebook teve dois desvios? *Rubrica:* 3 = FW-LT03, bloqueio de 30 minutos e administrador local;; 2 = LT03;; 1 = nada;; 0 = nenhuma.
-- **EX016 — Configuração mais rigorosa.** Por que o bloqueio de cinco minutos do FW-LT04 é aceitável? *Rubrica:* 3 = é mais rigoroso que a linha de base de dez minutos;; 2 = mais rigoroso;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Dois desvios.** Que notebook teve dois desvios? *Rubrica:* 3 = FW-LT03, bloqueio de 30 minutos e administrador local;; 2 = LT03;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Configuração mais rigorosa.** Por que o bloqueio de cinco minutos do FW-LT04 é aceitável? *Rubrica:* 3 = é mais rigoroso que a linha de base de dez minutos;; 2 = mais rigoroso;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -258,10 +258,10 @@ Os escopos podem ser pouco claros. As pastas de evidências precisam de controle
 
 ### Exercícios
 
-- **EX017 — Atividade excluída.** Que atividade estava fora do escopo de Amina? *Rubrica:* 3 = teste de vulnerabilidades em sistemas em produção;; 2 = teste;; 1 = nada;; 0 = nenhuma.
-- **EX018 — Registro de evidência.** O que um registro de evidência deve incluir? *Rubrica:* 3 = o quê, quando, quem, como e a saída original;; 2 = registro;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Atividade excluída.** Que atividade estava fora do escopo de Amina? *Rubrica:* 3 = teste de vulnerabilidades em sistemas em produção;; 2 = teste;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Registro de evidência.** O que um registro de evidência deve incluir? *Rubrica:* 3 = o quê, quando, quem, como e a saída original;; 2 = registro;; 1 = vago;; 0 = nenhuma.
 - **EX019 — Resposta fora do escopo.** O que fazer ao notar algo fora do escopo? *Rubrica:* 3 = relatar com a evidência já existente;; 2 = relatar;; 1 = testar;; 0 = nenhuma.
-- **EX020 — Armazenamento inalterável.** Por que guardar as evidências onde não podem ser alteradas? *Rubrica:* 3 = para que outros confiem que mostram exatamente o que foi visto;; 2 = integridade;; 1 = nada;; 0 = nenhuma.
+- **EX020 — Armazenamento inalterável.** Por que guardar as evidências onde não podem ser alteradas? *Rubrica:* 3 = para que outros confiem que mostram exatamente o que foi visto;; 2 = integridade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -299,10 +299,10 @@ As tabelas simplificam ligações complexas. Os papéis mudam.
 
 ### Exercícios
 
-- **EX021 — Finalidade da linha de base.** Por que uma verificação da linha de base não é trabalho inútil? *Rubrica:* 3 = apoia uma política, reduz um risco e produz evidências;; 2 = finalidade;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Finalidade da linha de base.** Por que uma verificação da linha de base não é trabalho inútil? *Rubrica:* 3 = apoia uma política, reduz um risco e produz evidências;; 2 = finalidade;; 1 = vago;; 0 = nenhuma.
 - **EX022 — Responsável.** Quem responde pela segurança na Fenwick? *Rubrica:* 3 = o diretor financeiro;; 2 = diretor financeiro;; 1 = líder de TI;; 0 = nenhuma.
-- **EX023 — Ligações do firewall.** Que política e que obrigação as revisões de firewall apoiam? *Rubrica:* 3 = a política de rede e as obrigações de pagamento com cartão;; 2 = ligações;; 1 = nada;; 0 = nenhuma.
-- **EX024 — Uso da tabela.** Como a tabela de tarefas ajuda os técnicos? *Rubrica:* 3 = a priorizar quando o tempo é curto;; 2 = prioridades;; 1 = nada;; 0 = nenhuma.
+- **EX023 — Ligações do firewall.** Que política e que obrigação as revisões de firewall apoiam? *Rubrica:* 3 = a política de rede e as obrigações de pagamento com cartão;; 2 = ligações;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Uso da tabela.** Como a tabela de tarefas ajuda os técnicos? *Rubrica:* 3 = a priorizar quando o tempo é curto;; 2 = prioridades;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -371,10 +371,10 @@ Limiares simples deixam passar ataques lentos. Os logs podem estar incompletos.
 
 ### Exercícios
 
-- **EX025 — Retenção de logs.** Por que a retenção de logs precisa ser planejada? *Rubrica:* 3 = a política e as regras de cartão costumam exigi-la;; 2 = requisitos;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Retenção de logs.** Por que a retenção de logs precisa ser planejada? *Rubrica:* 3 = a política e as regras de cartão costumam exigi-la;; 2 = requisitos;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Conta sinalizada.** Que conta foi sinalizada, e por quê? *Rubrica:* 3 = admin, 7 falhas acima de 5;; 2 = admin;; 1 = j.park;; 0 = nenhuma.
-- **EX027 — Leitura da j.park.** Como Amina interpretou as falhas da j.park? *Rubrica:* 3 = provável senha digitada errado, seguida de sucesso;; 2 = erro de digitação;; 1 = nada;; 0 = nenhuma.
-- **EX028 — Ações de resposta.** Que ações se seguiram ao alerta? *Rubrica:* 3 = bloquear o endereço e renomear a conta admin;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Leitura da j.park.** Como Amina interpretou as falhas da j.park? *Rubrica:* 3 = provável senha digitada errado, seguida de sucesso;; 2 = erro de digitação;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Ações de resposta.** Que ações se seguiram ao alerta? *Rubrica:* 3 = bloquear o endereço e renomear a conta admin;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -412,10 +412,10 @@ As listas deixam escapar falhas novas. As verificações também podem falhar.
 
 ### Exercícios
 
-- **EX029 — Falha de backup.** Como os arquivos que ficaram fora do backup seriam detectados? *Rubrica:* 3 = por testes de restauração;; 2 = restauração;; 1 = nada;; 0 = nenhuma.
-- **EX030 — Falhas silenciosas.** Por que as verificações precisam ser agendadas? *Rubrica:* 3 = algumas falhas ficam silenciosas até algo quebrar;; 2 = silenciosas;; 1 = nada;; 0 = nenhuma.
-- **EX031 — Dono dos certificados.** Quem é dono do modo de falha da expiração de certificados? *Rubrica:* 3 = o líder de TI;; 2 = líder de TI;; 1 = nada;; 0 = nenhuma.
-- **EX032 — Partes do modo de falha.** Que três coisas cada modo de falha descreve? *Rubrica:* 3 = o que dá errado, como aparece, impacto;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Falha de backup.** Como os arquivos que ficaram fora do backup seriam detectados? *Rubrica:* 3 = por testes de restauração;; 2 = restauração;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Falhas silenciosas.** Por que as verificações precisam ser agendadas? *Rubrica:* 3 = algumas falhas ficam silenciosas até algo quebrar;; 2 = silenciosas;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Dono dos certificados.** Quem é dono do modo de falha da expiração de certificados? *Rubrica:* 3 = o líder de TI;; 2 = líder de TI;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Partes do modo de falha.** Que três coisas cada modo de falha descreve? *Rubrica:* 3 = o que dá errado, como aparece, impacto;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -453,10 +453,10 @@ As pontuações escondem a gravidade. Os checklists deixam o contexto de fora.
 
 ### Exercícios
 
-- **EX033 — Limite do método.** Qual é um limite do método de multiplicar notas? *Rubrica:* 3 = eventos raros e graves podem parecer baixos;; 2 = gravidade;; 1 = nada;; 0 = nenhuma.
-- **EX034 — Item ausente.** O que o checklist revelou como ausente? *Rubrica:* 3 = um plano escrito de resposta a incidentes;; 2 = plano de incidentes;; 1 = nada;; 0 = nenhuma.
-- **EX035 — Escolha de ferramentas.** Que ferramentas Amina recomendou? *Rubrica:* 3 = chamados, planilhas com validação e scripts curtos;; 2 = ferramentas existentes;; 1 = nada;; 0 = nenhuma.
-- **EX036 — Marcação do checklist.** Como cada item do checklist é marcado? *Rubrica:* 3 = implantado, parcialmente implantado ou ausente, com evidência;; 2 = três estados;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Limite do método.** Qual é um limite do método de multiplicar notas? *Rubrica:* 3 = eventos raros e graves podem parecer baixos;; 2 = gravidade;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Item ausente.** O que o checklist revelou como ausente? *Rubrica:* 3 = um plano escrito de resposta a incidentes;; 2 = plano de incidentes;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Escolha de ferramentas.** Que ferramentas Amina recomendou? *Rubrica:* 3 = chamados, planilhas com validação e scripts curtos;; 2 = ferramentas existentes;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Marcação do checklist.** Como cada item do checklist é marcado? *Rubrica:* 3 = implantado, parcialmente implantado ou ausente, com evidência;; 2 = três estados;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -494,10 +494,10 @@ Os limiares precisam de ajuste fino. Os testes amostram só alguns arquivos.
 
 ### Exercícios
 
-- **EX037 — Escolha do limiar.** Que limiar de alerta Amina definiu? *Rubrica:* 3 = cinco falhas em dez minutos;; 2 = 5 em 10;; 1 = nada;; 0 = nenhuma.
-- **EX038 — Compromisso do limiar.** Por que não definir um limiar mais baixo? *Rubrica:* 3 = muitos alarmes falsos por senhas digitadas errado;; 2 = alarmes falsos;; 1 = nada;; 0 = nenhuma.
-- **EX039 — Testes antes e depois.** Por que testar antes e depois de uma mudança? *Rubrica:* 3 = mostra que o estado antigo funcionava e que a mudança não quebrou nada;; 2 = referência;; 1 = nada;; 0 = nenhuma.
-- **EX040 — Escopo do backup.** Que dados foram acrescentados às rotinas de backup? *Rubrica:* 3 = o banco de dados de estoque e os dados da loja on-line;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Escolha do limiar.** Que limiar de alerta Amina definiu? *Rubrica:* 3 = cinco falhas em dez minutos;; 2 = 5 em 10;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Compromisso do limiar.** Por que não definir um limiar mais baixo? *Rubrica:* 3 = muitos alarmes falsos por senhas digitadas errado;; 2 = alarmes falsos;; 1 = vago;; 0 = nenhuma.
+- **EX039 — Testes antes e depois.** Por que testar antes e depois de uma mudança? *Rubrica:* 3 = mostra que o estado antigo funcionava e que a mudança não quebrou nada;; 2 = referência;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Escopo do backup.** Que dados foram acrescentados às rotinas de backup? *Rubrica:* 3 = o banco de dados de estoque e os dados da loja on-line;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -558,9 +558,9 @@ As listas aprovadas podem estar erradas. A verificação é periódica.
 ### Exercícios
 
 - **EX041 — Contagem de não aprovadas.** Quantas regras não eram aprovadas? *Rubrica:* 3 = duas;; 2 = 2;; 1 = três;; 0 = nenhuma.
-- **EX042 — Regra urgente.** Que regra não aprovada era urgente? *Rubrica:* 3 = área de trabalho remota de qualquer origem para o segmento de pagamento;; 2 = RDP;; 1 = nada;; 0 = nenhuma.
-- **EX043 — Causa do RDP.** Por que a regra de área de trabalho remota existia? *Rubrica:* 3 = uma empresa de suporte a acrescentou para um reparo pontual;; 2 = suporte;; 1 = nada;; 0 = nenhuma.
-- **EX044 — Dois controles.** Por que são necessários tanto o controle de mudanças quanto a verificação? *Rubrica:* 3 = a verificação encontra o que o controle de mudanças deixou passar;; 2 = complementares;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Regra urgente.** Que regra não aprovada era urgente? *Rubrica:* 3 = área de trabalho remota de qualquer origem para o segmento de pagamento;; 2 = RDP;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Causa do RDP.** Por que a regra de área de trabalho remota existia? *Rubrica:* 3 = uma empresa de suporte a acrescentou para um reparo pontual;; 2 = suporte;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Dois controles.** Por que são necessários tanto o controle de mudanças quanto a verificação? *Rubrica:* 3 = a verificação encontra o que o controle de mudanças deixou passar;; 2 = complementares;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -598,10 +598,10 @@ Os laboratórios diferem da produção. Os cenários simplificam.
 
 ### Exercícios
 
-- **EX045 — Isolamento do laboratório.** Por que o laboratório é isolado? *Rubrica:* 3 = para não arriscar sistemas e dados reais;; 2 = segurança;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Isolamento do laboratório.** Por que o laboratório é isolado? *Rubrica:* 3 = para não arriscar sistemas e dados reais;; 2 = segurança;; 1 = vago;; 0 = nenhuma.
 - **EX046 — Resultado do laboratório.** Qual foi o resultado real do teste de desligamento? *Rubrica:* 3 = sinalizada, mas não desativada;; 2 = empacou;; 1 = desativada;; 0 = nenhuma.
-- **EX047 — Causa da lacuna.** Por que a conta não foi desativada? *Rubrica:* 3 = a aprovação manual exigida não foi dada;; 2 = aprovação;; 1 = nada;; 0 = nenhuma.
-- **EX048 — Recomendação.** O que Amina recomendou? *Rubrica:* 3 = escalonamento se a aprovação não vier em até um dia;; 2 = escalonamento;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Causa da lacuna.** Por que a conta não foi desativada? *Rubrica:* 3 = a aprovação manual exigida não foi dada;; 2 = aprovação;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Recomendação.** O que Amina recomendou? *Rubrica:* 3 = escalonamento se a aprovação não vier em até um dia;; 2 = escalonamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -639,9 +639,9 @@ As listas de hipóteses podem deixar causas de fora. Os relatórios de sucesso p
 
 ### Exercícios
 
-- **EX049 — Hipóteses.** Cite as três hipóteses que Amina listou. *Rubrica:* 3 = pasta errada, backup corrompido, procedimento de restauração errado;; 2 = três;; 1 = nada;; 0 = nenhuma.
-- **EX050 — Sucesso enganoso.** Por que o backup relatava sucesso? *Rubrica:* 3 = copiava uma pasta antiga e vazia;; 2 = alvo errado;; 1 = nada;; 0 = nenhuma.
-- **EX051 — Correção de processo.** Que mudança de processo Amina acrescentou? *Rubrica:* 3 = rever a cobertura do backup após atualizações de sistemas;; 2 = processo de mudanças;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Hipóteses.** Cite as três hipóteses que Amina listou. *Rubrica:* 3 = pasta errada, backup corrompido, procedimento de restauração errado;; 2 = três;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Sucesso enganoso.** Por que o backup relatava sucesso? *Rubrica:* 3 = copiava uma pasta antiga e vazia;; 2 = alvo errado;; 1 = vago;; 0 = nenhuma.
+- **EX051 — Correção de processo.** Que mudança de processo Amina acrescentou? *Rubrica:* 3 = rever a cobertura do backup após atualizações de sistemas;; 2 = processo de mudanças;; 1 = vago;; 0 = nenhuma.
 - **EX052 — Sentido do sucesso.** O que uma mensagem de sucesso do backup mostra? *Rubrica:* 3 = que uma rotina rodou, não que os dados certos foram protegidos;; 2 = rodou;; 1 = protegidos;; 0 = nenhuma.
 
 ### Síntese
@@ -703,10 +703,10 @@ As listas podem omitir certificados. Os chamados podem ser ignorados.
 
 ### Exercícios
 
-- **EX053 — Candidata à automação.** Por que a validade dos certificados é uma boa candidata à automação? *Rubrica:* 3 = simples, repetitiva e cara de esquecer;; 2 = adequação;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Candidata à automação.** Por que a validade dos certificados é uma boa candidata à automação? *Rubrica:* 3 = simples, repetitiva e cara de esquecer;; 2 = adequação;; 1 = vago;; 0 = nenhuma.
 - **EX054 — Certificado expirado.** Que certificado tinha expirado? *Rubrica:* 3 = vpn.fenwick.example, três dias antes;; 2 = VPN;; 1 = loja;; 0 = nenhuma.
 - **EX055 — Certificado em aviso.** Que certificado estava em aviso? *Rubrica:* 3 = o da loja, com 19 dias restantes;; 2 = loja;; 1 = e-mail;; 0 = nenhuma.
-- **EX056 — Caminho de entrega.** Como os resultados chegam aos donos? *Rubrica:* 3 = e-mail diário ao líder de TI e chamados para avisos e alertas;; 2 = chamados;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Caminho de entrega.** Como os resultados chegam aos donos? *Rubrica:* 3 = e-mail diário ao líder de TI e chamados para avisos e alertas;; 2 = chamados;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -745,9 +745,9 @@ Os relatórios de garantia têm escopo limitado. As contingências precisam de p
 ### Exercícios
 
 - **EX057 — Provedores críticos.** Que provedores são críticos para as vendas on-line? *Rubrica:* 3 = a plataforma da loja e o gateway de pagamento;; 2 = dois;; 1 = e-mail;; 0 = nenhuma.
-- **EX058 — Garantia ausente.** Que provedor não tinha garantia formal? *Rubrica:* 3 = a empresa de suporte de rede;; 2 = empresa de suporte;; 1 = nada;; 0 = nenhuma.
-- **EX059 — Contrato como complemento.** Como os contratos podem ajudar onde faltam relatórios formais? *Rubrica:* 3 = incluindo requisitos de segurança, como remover regras temporárias;; 2 = contratos;; 1 = nada;; 0 = nenhuma.
-- **EX060 — Contingência da loja.** Qual é a contingência se a plataforma da loja falhar? *Rubrica:* 3 = publicar um aviso e aceitar pedidos por telefone;; 2 = manual;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Garantia ausente.** Que provedor não tinha garantia formal? *Rubrica:* 3 = a empresa de suporte de rede;; 2 = empresa de suporte;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Contrato como complemento.** Como os contratos podem ajudar onde faltam relatórios formais? *Rubrica:* 3 = incluindo requisitos de segurança, como remover regras temporárias;; 2 = contratos;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Contingência da loja.** Qual é a contingência se a plataforma da loja falhar? *Rubrica:* 3 = publicar um aviso e aceitar pedidos por telefone;; 2 = manual;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -785,10 +785,10 @@ Os procedimentos envelhecem. As etapas podem ser puladas.
 
 ### Exercícios
 
-- **EX061 — Partes do procedimento.** O que cada procedimento lista? *Rubrica:* 3 = finalidade, pré-requisitos, etapas, resultados esperados, o que fazer se diferirem;; 2 = cinco;; 1 = nada;; 0 = nenhuma.
+- **EX061 — Partes do procedimento.** O que cada procedimento lista? *Rubrica:* 3 = finalidade, pré-requisitos, etapas, resultados esperados, o que fazer se diferirem;; 2 = cinco;; 1 = vago;; 0 = nenhuma.
 - **EX062 — Restauração segura.** Onde os dados devem ser restaurados primeiro? *Rubrica:* 3 = num local de teste, não por cima dos dados em produção;; 2 = local de teste;; 1 = produção;; 0 = nenhuma.
-- **EX063 — Perigo do desatualizado.** Por que procedimentos desatualizados podem ser piores do que nenhum? *Rubrica:* 3 = dão falsa confiança e levam a ações erradas;; 2 = falsa confiança;; 1 = nada;; 0 = nenhuma.
-- **EX064 — Momento do firewall.** Quando as mudanças de firewall devem ser agendadas? *Rubrica:* 3 = fora do horário comercial, após a aprovação;; 2 = momento;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Perigo do desatualizado.** Por que procedimentos desatualizados podem ser piores do que nenhum? *Rubrica:* 3 = dão falsa confiança e levam a ações erradas;; 2 = falsa confiança;; 1 = vago;; 0 = nenhuma.
+- **EX064 — Momento do firewall.** Quando as mudanças de firewall devem ser agendadas? *Rubrica:* 3 = fora do horário comercial, após a aprovação;; 2 = momento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -826,10 +826,10 @@ Sabe-se de antemão que haverá problemas injetados. Os laboratórios simplifica
 
 ### Exercícios
 
-- **EX065 — Problemas injetados.** Que dois problemas foram injetados? *Rubrica:* 3 = regra de compartilhamento a partir do Wi-Fi de visitantes e conta de teste reativada;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Problemas injetados.** Que dois problemas foram injetados? *Rubrica:* 3 = regra de compartilhamento a partir do Wi-Fi de visitantes e conta de teste reativada;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 - **EX066 — Etapa de aprovação.** O que Amina fez antes de fazer as mudanças? *Rubrica:* 3 = aguardou a aprovação;; 2 = aprovação;; 1 = agiu na hora;; 0 = nenhuma.
-- **EX067 — Conteúdo da nota.** O que a nota de incidente inclui? *Rubrica:* 3 = achado, momento, detecção, ações, aprovação e prevenção;; 2 = conteúdo;; 1 = nada;; 0 = nenhuma.
-- **EX068 — Ideia preventiva.** Que medida preventiva Amina sugeriu? *Rubrica:* 3 = bloquear por padrão o Wi-Fi de visitantes para os sistemas internos;; 2 = negar por padrão;; 1 = nada;; 0 = nenhuma.
+- **EX067 — Conteúdo da nota.** O que a nota de incidente inclui? *Rubrica:* 3 = achado, momento, detecção, ações, aprovação e prevenção;; 2 = conteúdo;; 1 = vago;; 0 = nenhuma.
+- **EX068 — Ideia preventiva.** Que medida preventiva Amina sugeriu? *Rubrica:* 3 = bloquear por padrão o Wi-Fi de visitantes para os sistemas internos;; 2 = negar por padrão;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -867,10 +867,10 @@ Seis semanas é pouco tempo. Alguns problemas dependem de fornecedores.
 
 ### Exercícios
 
-- **EX069 — Verificações do pacote.** Que quatro verificações o pacote roda? *Rubrica:* 3 = linha de base, verificação do firewall, validade dos certificados, conciliação de contas;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
-- **EX070 — Problemas encontrados.** Quantos problemas as verificações encontraram em seis semanas? *Rubrica:* 3 = onze;; 2 = 11;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Verificações do pacote.** Que quatro verificações o pacote roda? *Rubrica:* 3 = linha de base, verificação do firewall, validade dos certificados, conciliação de contas;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
+- **EX070 — Problemas encontrados.** Quantos problemas as verificações encontraram em seis semanas? *Rubrica:* 3 = onze;; 2 = 11;; 1 = vago;; 0 = nenhuma.
 - **EX071 — Chamados encerrados.** Quantos problemas foram encerrados em até duas semanas? *Rubrica:* 3 = nove;; 2 = 9;; 1 = onze;; 0 = nenhuma.
-- **EX072 — Prova de extensibilidade.** O que mostrou que o pacote podia ser ampliado? *Rubrica:* 3 = um técnico acrescentou uma nova verificação durante o treinamento;; 2 = ampliação;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Prova de extensibilidade.** O que mostrou que o pacote podia ser ampliado? *Rubrica:* 3 = um técnico acrescentou uma nova verificação durante o treinamento;; 2 = ampliação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

@@ -1054,7 +1054,7 @@ O mapeamento para os requisitos fundamentais mostra cobertura, não adequação.
 ### Exercícios
 
 - **EX052 — Mapeando a lista de permissões.** Qual requisito fundamental a lista de permissões de aplicações na HMI apoia? *Rubrica:* 3 = FR 3, integridade do sistema, com razão; 2 = só o FR; 1 = FR 4; 0 = nada.
-- **EX053 — Uma verificação de dia ruim.** Descreva o efeito de dia ruim das sessões supervisionadas e a sua mitigação. *Rubrica:* 3 = atraso à noite; aprovador de plantão; 2 = um; 1 = nenhum; 0 = nada.
+- **EX053 — Uma verificação de dia ruim.** Descreva o efeito de dia ruim das sessões supervisionadas e a sua mitigação. *Rubrica:* 3 = atraso à noite; aprovador de plantão; 2 = um; 1 = vago; 0 = nada.
 - **EX054 — Compensando o PLC-R2.** Liste dois controles compensatórios para a falta de autenticação do PLC-R2. *Rubrica:* 3 = restringir as origens a HMI-C/HIST; monitorar escritas vindas de outros hosts; 2 = um; 1 = "pôr uma senha"; 0 = nada.
 
 ### Síntese
@@ -1356,7 +1356,7 @@ Um teste aprovado mostra que o controle funcionou no momento do teste, para aque
 ### Exercícios
 
 - **EX067 — Escrevendo um teste.** Escreva o teste e o resultado esperado para "só a HMI-C e o HIST conseguem alcançar o PLC-R1". *Rubrica:* 3 = teste a partir de um host não aprovado mais um aprovado, resultados esperados, janela; 2 = um lado; 1 = vago; 0 = nada.
-- **EX068 — Interpretando uma contagem de antes/depois.** Os fluxos não aprovados caíram de 2 tipos para 0. Cite uma razão além dos controles. *Rubrica:* 3 = a janela de observação ou o posicionamento da captura mudou, ou uma atividade sazonal esteve ausente; 2 = vago; 1 = nenhuma; 0 = nada.
+- **EX068 — Interpretando uma contagem de antes/depois.** Os fluxos não aprovados caíram de 2 tipos para 0. Cite uma razão além dos controles. *Rubrica:* 3 = a janela de observação ou o posicionamento da captura mudou, ou uma atividade sazonal esteve ausente; 2 = vago; 1 = tentativa mínima; 0 = nada.
 - **EX069 — Reportando a falha.** Escreva a linha de avaliação da falha da regra das câmeras. *Rubrica:* 3 = teste, resultado, causa, ação corretiva, data do novo teste; 2 = três; 1 = "problema menor"; 0 = nada.
 
 ### Síntese
@@ -1587,7 +1587,7 @@ Os testes de bancada não conseguem reproduzir todos os comportamentos dos dispo
 
 - **EX079 — Ordenando os passos.** Ponha em ordem: validar, aplicar as regras novas, fazer backup das regras atuais, monitorar por 24 h. *Rubrica:* 3 = backup, aplicar, validar, monitorar; 2 = uma troca; 1 = aleatório; 0 = nada.
 - **EX080 — Por que o fluxo do HIST escapou.** Explique como o fluxo ausente passou pela matriz e como evitar isso da próxima vez. *Rubrica:* 3 = janela de observação/consulta do historiador não capturada; confirmar com os responsáveis e capturas mais longas; 2 = um; 1 = culpar alguém; 0 = nada.
-- **EX081 — Um critério de reversão.** Escreva o critério de reversão para a verificação do GW-LOG. *Rubrica:* 3 = envios falhando por > 10 minutos depois da mudança → reverter; 2 = tempo vago; 1 = nenhum; 0 = nada.
+- **EX081 — Um critério de reversão.** Escreva o critério de reversão para a verificação do GW-LOG. *Rubrica:* 3 = envios falhando por > 10 minutos depois da mudança → reverter; 2 = tempo vago; 1 = tentativa mínima; 0 = nada.
 
 ### Síntese
 
@@ -1639,7 +1639,7 @@ Os estágios de campo variam; siga as regras do anfitrião mesmo onde elas difer
 
 - **EX082 — Checklist antes da visita.** Liste quatro coisas que você precisa ter antes de entrar na casa de máquinas da NCS. *Rubrica:* 3 = integração, EPI, acompanhante/permissão, conhecimento de alarmes/ponto de encontro; 2 = três; 1 = laptop; 0 = nada.
 - **EX083 — Recusando o reset com educação.** Escreva o que Priya diz ao operador. *Rubrica:* 3 = recusa, explica o papel e a razão das evidências, oferece ajuda, chama a pessoa certa; 2 = parcial; 1 = recusa seca; 0 = reseta.
-- **EX084 — Uma entrada de reflexão.** Escreva a linha "o que eu faria diferente" para essa visita. *Rubrica:* 3 = melhoria específica e acionável; 2 = vaga; 1 = nenhuma; 0 = nada.
+- **EX084 — Uma entrada de reflexão.** Escreva a linha "o que eu faria diferente" para essa visita. *Rubrica:* 3 = melhoria específica e acionável; 2 = vaga; 1 = tentativa mínima; 0 = nada.
 
 ### Síntese
 
@@ -1689,7 +1689,7 @@ Combinar verificações multiplica as formas pelas quais os arquivos de entrada 
 
 ### Exercícios
 
-- **EX085 — Escolhendo os status de saída.** Quais estados devem fazer o verificador de deriva sair com status diferente de zero? *Rubrica:* 3 = UNAPPROVED, EXPIRED, VERSION-CONFLICT, no-data (qualquer problema); 2 = alguns; 1 = nenhum; 0 = nada.
+- **EX085 — Escolhendo os status de saída.** Quais estados devem fazer o verificador de deriva sair com status diferente de zero? *Rubrica:* 3 = UNAPPROVED, EXPIRED, VERSION-CONFLICT, no-data (qualquer problema); 2 = alguns; 1 = vago; 0 = nada.
 - **EX086 — Um fixture de teste.** Descreva um fixture que teste o limite de 30 dias da verificação de certificados. *Rubrica:* 3 = certificado a exatamente 30 dias espera renew-now, a 31 espera plan; 2 = um; 1 = vago; 0 = nada.
 - **EX087 — Por que sem remediação automática?** Justifique a decisão 5 em duas frases. *Rubrica:* 3 = ações em TO precisam de aprovação/contexto; erros automatizados poderiam parar a operação; 2 = um; 1 = vago; 0 = nada.
 
@@ -1741,7 +1741,7 @@ Demonstrações com dados escolhidos a dedo podem esconder fragilidades; inclua 
 
 ### Exercícios
 
-- **EX088 — Avaliando a honestidade.** Que evidência justificaria nota 3 em honestidade? *Rubrica:* 3 = seção de limitações explícita, com modos de falha específicos e áreas não testadas; 2 = ressalva breve; 1 = nenhuma; 0 = nada.
+- **EX088 — Avaliando a honestidade.** Que evidência justificaria nota 3 em honestidade? *Rubrica:* 3 = seção de limitações explícita, com modos de falha específicos e áreas não testadas; 2 = ressalva breve; 1 = vago; 0 = nada.
 - **EX089 — A pergunta do atacante.** Esboce uma resposta para "o que faria um atacante que conhece o verificador?". *Rubrica:* 3 = agir entre as execuções semanais ou envenenar a linha de base/o inventário; mitigações; 2 = parcial; 1 = nega; 0 = nada.
 - **EX090 — A correção de usabilidade.** Escreva o texto "o que fazer" para uma linha VERSION-CONFLICT. *Rubrica:* 3 = passos simples: confirmar no dispositivo com a empresa contratada, atualizar o inventário, verificar alertas; 2 = parcial; 1 = jargão; 0 = nada.
 

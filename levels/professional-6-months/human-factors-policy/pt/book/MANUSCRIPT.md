@@ -67,13 +67,13 @@ As funções podem derivar para a fiscalização. As metas precisam ser revisita
 
 - **EX001 — Exemplo de integridade.** Que exemplo da Ferngate ameaça a integridade? *Rubrica:* 3 = um e-mail falso que altera os dados bancários de um prestador;; 2 = alteração bancária;; 1 = notebook perdido;; 0 = nenhuma.
 
-- **EX002 — Posição da função.** Entre quem fica a função de Grace? *Rubrica:* 3 = funcionários, gestores e o fornecedor de TI;; 2 = três grupos;; 1 = nada;; 0 = nenhuma.
+- **EX002 — Posição da função.** Entre quem fica a função de Grace? *Rubrica:* 3 = funcionários, gestores e o fornecedor de TI;; 2 = três grupos;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Propósito da função.** Qual é o propósito da função de Grace? *Rubrica:* 3 = tornar o comportamento seguro fácil e bem-vindo;; 2 = apoio;; 1 = policiamento;; 0 = nenhuma.
 
 - **EX004 — Elo mais fraco.** O que Sasse, Brostoff e Weirich (2001) defenderam? *Rubrica:* 3 = a visão do elo mais fraco deve ser transformada pelo design;; 2 = design;; 1 = culpa;; 0 = nenhuma.
 
-- **EX005 — Portfólio.** O que o portfólio de Grace vai conter? *Rubrica:* 3 = procedimentos, análises e reflexões;; 2 = portfólio;; 1 = nada;; 0 = nenhuma.
+- **EX005 — Portfólio.** O que o portfólio de Grace vai conter? *Rubrica:* 3 = procedimentos, análises e reflexões;; 2 = portfólio;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -111,15 +111,15 @@ As entrevistas refletem poucas vozes. As preocupações mudam.
 
 ### Exercícios
 
-- **EX006 — Trabalho externo.** Como os agentes de habitação costumam trabalhar? *Rubrica:* 3 = fora do escritório, com tablets, visitando inquilinos;; 2 = móvel;; 1 = nada;; 0 = nenhuma.
+- **EX006 — Trabalho externo.** Como os agentes de habitação costumam trabalhar? *Rubrica:* 3 = fora do escritório, com tablets, visitando inquilinos;; 2 = móvel;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Exemplo da ligação.** O que queria o falso filho que ligou? *Rubrica:* 3 = o novo endereço de uma inquilina;; 2 = endereço;; 1 = nada;; 0 = nenhuma.
+- **EX007 — Exemplo da ligação.** O que queria o falso filho que ligou? *Rubrica:* 3 = o novo endereço de uma inquilina;; 2 = endereço;; 1 = vago;; 0 = nenhuma.
 
 - **EX008 — Preocupação dos funcionários.** Com o que os funcionários se preocupam? *Rubrica:* 3 = culpa e trabalho extra;; 2 = duas;; 1 = fraude;; 0 = nenhuma.
 
-- **EX009 — Preocupação dos inquilinos.** Sobre o que os inquilinos querem garantia? *Rubrica:* 3 = a Ferngate nunca pede dados bancários por e-mail;; 2 = e-mail;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Preocupação dos inquilinos.** Sobre o que os inquilinos querem garantia? *Rubrica:* 3 = a Ferngate nunca pede dados bancários por e-mail;; 2 = e-mail;; 1 = vago;; 0 = nenhuma.
 
-- **EX010 — Tabela de preocupações.** Por que registrar as preocupações das partes interessadas? *Rubrica:* 3 = para desenhar mudanças que as respondam;; 2 = insumo para o design;; 1 = nada;; 0 = nenhuma.
+- **EX010 — Tabela de preocupações.** Por que registrar as preocupações das partes interessadas? *Rubrica:* 3 = para desenhar mudanças que as respondam;; 2 = insumo para o design;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -159,13 +159,13 @@ Os mandatos precisam de atualização. O manuseio de evidências precisa do apoi
 
 - **EX011 — Limite do mandato.** Cite uma coisa que Grace não pode fazer. *Rubrica:* 3 = ler as caixas postais dos funcionários;; 2 = monitoramento;; 1 = revisar reportes;; 0 = nenhuma.
 
-- **EX012 — Manuseio seguro.** O que Grace nunca deve fazer com os itens reportados? *Rubrica:* 3 = clicar em links ou abrir anexos no seu computador;; 2 = não clicar;; 1 = nada;; 0 = nenhuma.
+- **EX012 — Manuseio seguro.** O que Grace nunca deve fazer com os itens reportados? *Rubrica:* 3 = clicar em links ou abrir anexos no seu computador;; 2 = não clicar;; 1 = vago;; 0 = nenhuma.
 
 - **EX013 — Incidente grave.** O que Grace faz se um reporte sugere um incidente grave? *Rubrica:* 3 = segue o plano de incidentes e a orientação do fornecedor;; 2 = plano;; 1 = investiga sozinha;; 0 = nenhuma.
 
-- **EX014 — Regra dos resumos.** O que fica de fora dos resumos para os gestores? *Rubrica:* 3 = quem reportou o quê;; 2 = identidade de quem reporta;; 1 = nada;; 0 = nenhuma.
+- **EX014 — Regra dos resumos.** O que fica de fora dos resumos para os gestores? *Rubrica:* 3 = quem reportou o quê;; 2 = identidade de quem reporta;; 1 = vago;; 0 = nenhuma.
 
-- **EX015 — Razão da privacidade.** Por que a privacidade incentiva o reporte? *Rubrica:* 3 = os funcionários não temem ser julgados;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
+- **EX015 — Razão da privacidade.** Por que a privacidade incentiva o reporte? *Rubrica:* 3 = os funcionários não temem ser julgados;; 2 = confiança;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -223,11 +223,11 @@ Viés de autodeclaração. Oito conversas são poucas.
 
 - **EX016 — Taxa de resposta.** Qual foi a taxa de resposta dos funcionários? *Rubrica:* 3 = 70%;; 2 = 126 de 180;; 1 = 126%;; 0 = nenhuma.
 
-- **EX017 — Barreira principal no laboratório.** Qual foi a principal barreira no laboratório? *Rubrica:* 3 = não ter certeza se vale reportar, 51 de 126;; 2 = incerteza;; 1 = nada;; 0 = nenhuma.
+- **EX017 — Barreira principal no laboratório.** Qual foi a principal barreira no laboratório? *Rubrica:* 3 = não ter certeza se vale reportar, 51 de 126;; 2 = incerteza;; 1 = vago;; 0 = nenhuma.
 
-- **EX018 — Perguntas uniformes.** Por que usar as mesmas perguntas em todas as conversas? *Rubrica:* 3 = para comparar as respostas entre as equipes;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX018 — Perguntas uniformes.** Por que usar as mesmas perguntas em todas as conversas? *Rubrica:* 3 = para comparar as respostas entre as equipes;; 2 = comparabilidade;; 1 = vago;; 0 = nenhuma.
 
-- **EX019 — Prioridade do telefone.** Que prioridade trata dos pedidos por telefone? *Rubrica:* 3 = um procedimento claro para pedidos telefônicos sobre inquilinos;; 2 = procedimento;; 1 = nada;; 0 = nenhuma.
+- **EX019 — Prioridade do telefone.** Que prioridade trata dos pedidos por telefone? *Rubrica:* 3 = um procedimento claro para pedidos telefônicos sobre inquilinos;; 2 = procedimento;; 1 = vago;; 0 = nenhuma.
 
 - **EX020 — Divulgação dos resultados.** Quando Grace compartilhou os principais resultados com os funcionários? *Rubrica:* 3 = em duas semanas;; 2 = duas semanas;; 1 = nunca;; 0 = nenhuma.
 
@@ -282,15 +282,15 @@ Números pequenos variam. Os scripts precisam ser conferidos depois de mudanças
 
 ### Exercícios
 
-- **EX021 — Conferência manual.** Por que conferir à mão a saída do script? *Rubrica:* 3 = para confirmar que a ferramenta funciona antes de compartilhar;; 2 = verificação;; 1 = nada;; 0 = nenhuma.
+- **EX021 — Conferência manual.** Por que conferir à mão a saída do script? *Rubrica:* 3 = para confirmar que a ferramenta funciona antes de compartilhar;; 2 = verificação;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Aumento dos reportes.** Que duas coisas um aumento nos reportes pode significar? *Rubrica:* 3 = mais ataques ou mais disposição;; 2 = duas causas;; 1 = nada;; 0 = nenhuma.
+- **EX022 — Aumento dos reportes.** Que duas coisas um aumento nos reportes pode significar? *Rubrica:* 3 = mais ataques ou mais disposição;; 2 = duas causas;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Excesso de reportes.** Como Alan vê o excesso de reportes num programa novo? *Rubrica:* 3 = como sinal saudável de que as pessoas se sentem seguras;; 2 = saudável;; 1 = problema;; 0 = nenhuma.
 
-- **EX024 — Tempos de veredito no laboratório.** Como mudou a mediana do tempo até o veredito com os modelos? *Rubrica:* 3 = 26 horas antes e 3 horas depois dos modelos;; 2 = mais rápido;; 1 = nada;; 0 = nenhuma.
+- **EX024 — Tempos de veredito no laboratório.** Como mudou a mediana do tempo até o veredito com os modelos? *Rubrica:* 3 = 26 horas antes e 3 horas depois dos modelos;; 2 = mais rápido;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Pergunta melhor.** Que pergunta Grace ofereceu no lugar de qual equipe é a pior? *Rubrica:* 3 = onde as pessoas precisam de mais apoio;; 2 = apoio;; 1 = nada;; 0 = nenhuma.
+- **EX025 — Pergunta melhor.** Que pergunta Grace ofereceu no lugar de qual equipe é a pior? *Rubrica:* 3 = onde as pessoas precisam de mais apoio;; 2 = apoio;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -328,15 +328,15 @@ A revisão duas vezes ao dia pode ser lenta durante campanhas. As reservas preci
 
 ### Exercícios
 
-- **EX026 — Tempo diário.** Quanto tempo leva o fluxo nos dias normais? *Rubrica:* 3 = cerca de vinte minutos;; 2 = 20 minutos;; 1 = nada;; 0 = nenhuma.
+- **EX026 — Tempo diário.** Quanto tempo leva o fluxo nos dias normais? *Rubrica:* 3 = cerca de vinte minutos;; 2 = 20 minutos;; 1 = vago;; 0 = nenhuma.
 
-- **EX027 — Meta de veredito.** Qual é a meta de veredito? *Rubrica:* 3 = em até um dia útil;; 2 = um dia;; 1 = nada;; 0 = nenhuma.
+- **EX027 — Meta de veredito.** Qual é a meta de veredito? *Rubrica:* 3 = em até um dia útil;; 2 = um dia;; 1 = vago;; 0 = nenhuma.
 
 - **EX028 — Reportes de pagamento.** Quem cuida dos reportes relacionados a pagamentos? *Rubrica:* 3 = o gerente financeiro;; 2 = financeiro;; 1 = Grace sozinha;; 0 = nenhuma.
 
-- **EX029 — Mensagem de pico.** O que Grace envia durante as campanhas? *Rubrica:* 3 = uma mensagem dizendo que o e-mail é conhecido e está sendo removido;; 2 = aviso a todos;; 1 = nada;; 0 = nenhuma.
+- **EX029 — Mensagem de pico.** O que Grace envia durante as campanhas? *Rubrica:* 3 = uma mensagem dizendo que o e-mail é conhecido e está sendo removido;; 2 = aviso a todos;; 1 = vago;; 0 = nenhuma.
 
-- **EX030 — Teste da reserva.** Como Grace testou o arranjo de reserva? *Rubrica:* 3 = tirando uma folga planejada e revisando depois;; 2 = ausência planejada;; 1 = nada;; 0 = nenhuma.
+- **EX030 — Teste da reserva.** Como Grace testou o arranjo de reserva? *Rubrica:* 3 = tirando uma folga planejada e revisando depois;; 2 = ausência planejada;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -374,15 +374,15 @@ Os roteiros podem soar frios. Os registros dos prestadores podem estar desatuali
 
 ### Exercícios
 
-- **EX031 — Regra do telefone.** O que os funcionários não podem compartilhar por telefone? *Rubrica:* 3 = endereço, contatos ou situação do inquilino;; 2 = dados do inquilino;; 1 = nada;; 0 = nenhuma.
+- **EX031 — Regra do telefone.** O que os funcionários não podem compartilhar por telefone? *Rubrica:* 3 = endereço, contatos ou situação do inquilino;; 2 = dados do inquilino;; 1 = vago;; 0 = nenhuma.
 
 - **EX032 — Número para retorno.** Que número é usado nos retornos de ligação? *Rubrica:* 3 = o número dos registros da Ferngate;; 2 = registros;; 1 = o do pedido;; 0 = nenhuma.
 
-- **EX033 — Princípios de pressão.** Que pressões o controle de retorno de ligação alivia? *Rubrica:* 3 = autoridade e urgência;; 2 = Cialdini;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Princípios de pressão.** Que pressões o controle de retorno de ligação alivia? *Rubrica:* 3 = autoridade e urgência;; 2 = Cialdini;; 1 = vago;; 0 = nenhuma.
 
 - **EX034 — Encenação.** Como o roteiro telefônico foi testado? *Rubrica:* 3 = encenação anunciada com um colega fazendo o papel de quem liga;; 2 = encenação;; 1 = teste secreto;; 0 = nenhuma.
 
-- **EX035 — Mudança no roteiro.** Por que o roteiro foi ajustado? *Rubrica:* 3 = soava ríspido para os parentes;; 2 = tom;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Mudança no roteiro.** Por que o roteiro foi ajustado? *Rubrica:* 3 = soava ríspido para os parentes;; 2 = tom;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -439,11 +439,11 @@ Os conjuntos de quase-incidentes são pequenos. Histórias de sucesso podem ince
 
 - **EX036 — O que barrou o pagamento.** O que barrou o pagamento falso? *Rubrica:* 3 = o sistema financeiro o bloqueou até o retorno de ligação;; 2 = retorno de ligação;; 1 = a assistente;; 0 = nenhuma.
 
-- **EX037 — História usada.** Que história a fatura falsa contava? *Rubrica:* 3 = um problema de fluxo de caixa que exigia pagamento no mesmo dia;; 2 = urgência;; 1 = nada;; 0 = nenhuma.
+- **EX037 — História usada.** Que história a fatura falsa contava? *Rubrica:* 3 = um problema de fluxo de caixa que exigia pagamento no mesmo dia;; 2 = urgência;; 1 = vago;; 0 = nenhuma.
 
 - **EX038 — Fator principal no laboratório.** Que fator apareceu nos quatro quase-incidentes do laboratório? *Rubrica:* 3 = urgência;; 2 = urgência, sem justificativa;; 1 = carga de trabalho;; 0 = nenhuma.
 
-- **EX039 — Problema da etiqueta.** Que problema a etiqueta de externo tinha? *Rubrica:* 3 = era fácil de não ver numa tela movimentada;; 2 = visibilidade;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Problema da etiqueta.** Que problema a etiqueta de externo tinha? *Rubrica:* 3 = era fácil de não ver numa tela movimentada;; 2 = visibilidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX040 — Forma de divulgação.** Como o caso será compartilhado? *Rubrica:* 3 = de forma anônima, como história de sucesso;; 2 = sucesso;; 1 = com culpa;; 0 = nenhuma.
 
@@ -485,11 +485,11 @@ As mensagens mensais podem virar rotina. A atenção do conselho varia.
 
 - **EX041 — Partes da mensagem.** O que cada mensagem mensal contém? *Rubrica:* 3 = um exemplo, uma ação e um agradecimento;; 2 = três;; 1 = avisos;; 0 = nenhuma.
 
-- **EX042 — Aviso aos inquilinos.** O que o aviso aos inquilinos promete? *Rubrica:* 3 = a Ferngate nunca pede dados bancários por e-mail ou mensagem de texto;; 2 = nunca;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Aviso aos inquilinos.** O que o aviso aos inquilinos promete? *Rubrica:* 3 = a Ferngate nunca pede dados bancários por e-mail ou mensagem de texto;; 2 = nunca;; 1 = vago;; 0 = nenhuma.
 
 - **EX043 — Recomendação sobre simulações.** O que Grace recomendou para o primeiro ano? *Rubrica:* 3 = nenhuma simulação;; 2 = nenhuma;; 1 = mensais;; 0 = sem resposta.
 
-- **EX044 — Temas de isca proibidos.** Que temas de isca são proibidos se houver simulações depois? *Rubrica:* 3 = salário, moradia ou saúde;; 2 = angústia;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Temas de isca proibidos.** Que temas de isca são proibidos se houver simulações depois? *Rubrica:* 3 = salário, moradia ou saúde;; 2 = angústia;; 1 = vago;; 0 = nenhuma.
 
 - **EX045 — Conteúdo dos relatórios.** O que os relatórios de Grace incluem? *Rubrica:* 3 = resultados, controles verificados, quase-incidentes e ônus;; 2 = resultados;; 1 = atividades;; 0 = nenhuma.
 
@@ -547,15 +547,15 @@ As amostras podem deixar passar problemas. Os logs precisam de revisão.
 
 ### Exercícios
 
-- **EX046 — Perguntas de qualidade.** Cite duas perguntas mensais de qualidade. *Rubrica:* 3 = rapidez e correção dos vereditos;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Perguntas de qualidade.** Cite duas perguntas mensais de qualidade. *Rubrica:* 3 = rapidez e correção dos vereditos;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 - **EX047 — Causa da queda.** O que causou a queda dos agentes de habitação? *Rubrica:* 3 = uma atualização dos tablets removeu o botão de reporte;; 2 = atualização;; 1 = menos ataques;; 0 = nenhuma.
 
-- **EX048 — Queda no laboratório.** Como variaram os reportes dos agentes de habitação ao longo dos seis meses? *Rubrica:* 3 = 14 e 16, depois 2 no mês quatro, depois 15;; 2 = queda e recuperação;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Queda no laboratório.** Como variaram os reportes dos agentes de habitação ao longo dos seis meses? *Rubrica:* 3 = 14 e 16, depois 2 no mês quatro, depois 15;; 2 = queda e recuperação;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Padrão encontrado.** Que padrão o log de melhorias revelou? *Rubrica:* 3 = atualizações que removem configurações;; 2 = atualizações;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Padrão encontrado.** Que padrão o log de melhorias revelou? *Rubrica:* 3 = atualizações que removem configurações;; 2 = atualizações;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Correção do fornecedor.** O que o fornecedor acrescentou? *Rubrica:* 3 = um checklist padrão pós-atualização;; 2 = checklist;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Correção do fornecedor.** O que o fornecedor acrescentou? *Rubrica:* 3 = um checklist padrão pós-atualização;; 2 = checklist;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -607,15 +607,15 @@ Amostra pequena. Os voluntários conheciam a tarefa.
 
 ### Exercícios
 
-- **EX051 — Versão B.** O que a versão B acrescenta? *Rubrica:* 3 = uma frase que explica a pista;; 2 = explicação;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Versão B.** O que a versão B acrescenta? *Rubrica:* 3 = uma frase que explica a pista;; 2 = explicação;; 1 = vago;; 0 = nenhuma.
 
-- **EX052 — Resultado do laboratório.** O que o laboratório mostrou para os julgamentos corretos? *Rubrica:* 3 = A 18 de 30, B 25 de 30;; 2 = B melhor;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Resultado do laboratório.** O que o laboratório mostrou para os julgamentos corretos? *Rubrica:* 3 = A 18 de 30, B 25 de 30;; 2 = B melhor;; 1 = vago;; 0 = nenhuma.
 
-- **EX053 — Cautela.** Por que os voluntários podem ter sido mais cuidadosos do que o normal? *Rubrica:* 3 = sabiam que julgariam mensagens;; 2 = consciência;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Cautela.** Por que os voluntários podem ter sido mais cuidadosos do que o normal? *Rubrica:* 3 = sabiam que julgariam mensagens;; 2 = consciência;; 1 = vago;; 0 = nenhuma.
 
-- **EX054 — Custo.** Quanto custa a versão B? *Rubrica:* 3 = uma frase por veredito;; 2 = pouco;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Custo.** Quanto custa a versão B? *Rubrica:* 3 = uma frase por veredito;; 2 = pouco;; 1 = vago;; 0 = nenhuma.
 
-- **EX055 — Acompanhamento.** Que acompanhamento Grace planejou? *Rubrica:* 3 = verificar o reporte repetido depois de três meses;; 2 = acompanhamento;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Acompanhamento.** Que acompanhamento Grace planejou? *Rubrica:* 3 = verificar o reporte repetido depois de três meses;; 2 = acompanhamento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -653,15 +653,15 @@ Os portfólios podem ser seletivos. Seis meses é pouco.
 
 ### Exercícios
 
-- **EX056 — Conferência do portfólio.** O que Alan conferiu no portfólio? *Rubrica:* 3 = ausência de dados pessoais e afirmações apoiadas;; 2 = qualidade;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Conferência do portfólio.** O que Alan conferiu no portfólio? *Rubrica:* 3 = ausência de dados pessoais e afirmações apoiadas;; 2 = qualidade;; 1 = vago;; 0 = nenhuma.
 
-- **EX057 — Resultado do tempo de veredito.** Como mudou a mediana do tempo até o veredito? *Rubrica:* 3 = de cerca de um dia para algumas horas;; 2 = mais rápido;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Resultado do tempo de veredito.** Como mudou a mediana do tempo até o veredito? *Rubrica:* 3 = de cerca de um dia para algumas horas;; 2 = mais rápido;; 1 = vago;; 0 = nenhuma.
 
-- **EX058 — Próximo controle.** Que próximo controle Grace sugeriu? *Rubrica:* 3 = retorno de ligação para pedidos de reembolso de inquilinos;; 2 = reembolsos;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Próximo controle.** Que próximo controle Grace sugeriu? *Rubrica:* 3 = retorno de ligação para pedidos de reembolso de inquilinos;; 2 = reembolsos;; 1 = vago;; 0 = nenhuma.
 
-- **EX059 — Mentoria.** De quem Grace será mentora? *Rubrica:* 3 = de um colega que atua como sua reserva;; 2 = reserva;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Mentoria.** De quem Grace será mentora? *Rubrica:* 3 = de um colega que atua como sua reserva;; 2 = reserva;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Lição da experiência.** Por que a experiência de Grace se mostrou útil? *Rubrica:* 3 = a segurança centrada nas pessoas depende de confiança e comunicação;; 2 = habilidades com pessoas;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Lição da experiência.** Por que a experiência de Grace se mostrou útil? *Rubrica:* 3 = a segurança centrada nas pessoas depende de confiança e comunicação;; 2 = habilidades com pessoas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

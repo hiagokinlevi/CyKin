@@ -598,7 +598,7 @@ Calling a weak password an authorisation problem leads to fixing permissions ins
 
 - **EX037 — Three steps names.** Name the three steps of identity and access. *Rubric:* 3 = identification, authentication, authorisation;; 2 = two;; 1 = one;; 0 = none.
 - **EX038 — Phishing-resistant choice.** Why is a security key more phishing-resistant than a text code? *Rubric:* 3 = key checks the website; code can be passed on;; 2 = checks site;; 1 = cheaper;; 0 = none.
-- **EX039 — Mover problem.** What goes wrong for movers at Greenhill? *Rubric:* 3 = they keep old access indefinitely;; 2 = old access;; 1 = nothing;; 0 = none.
+- **EX039 — Mover problem.** What goes wrong for movers at Greenhill? *Rubric:* 3 = they keep old access indefinitely;; 2 = old access;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -801,7 +801,7 @@ Assuming every supplier hashes passwords properly without asking leaves older sy
 
 - **EX049 — Hash meaning.** What is a password hash? *Rubric:* 3 = one-way function output stored instead of password;; 2 = one-way;; 1 = encryption;; 0 = none.
 - **EX050 — Passkey private key.** Where does a passkey's private key stay? *Rubric:* 3 = on the device;; 2 = device;; 1 = website;; 0 = none.
-- **EX051 — Certificate expiry risk.** What can an expired single sign-on certificate cause? *Rubric:* 3 = sign-in failure for every connected system;; 2 = outage;; 1 = nothing;; 0 = none.
+- **EX051 — Certificate expiry risk.** What can an expired single sign-on certificate cause? *Rubric:* 3 = sign-in failure for every connected system;; 2 = outage;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -844,7 +844,7 @@ Relying only on what people say can miss practices, such as shared tablet accoun
 ### Exercises
 
 - **EX052 — Specific question.** Why avoid a question like how to improve security? *Rubric:* 3 = too broad to answer in one study;; 2 = broad;; 1 = boring;; 0 = none.
-- **EX053 — Observation value.** What did observation add to interviews? *Rubric:* 3 = showed shared tablet accounts despite claims;; 2 = practice;; 1 = nothing;; 0 = none.
+- **EX053 — Observation value.** What did observation add to interviews? *Rubric:* 3 = showed shared tablet accounts despite claims;; 2 = practice;; 1 = vague;; 0 = none.
 - **EX054 — Consent elements.** Name two things participants are told. *Rubric:* 3 = purpose, voluntary, anonymity (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -935,7 +935,7 @@ Treating identity failures as stories about bad people distracts from the proces
 
 - **EX058 — Leaver lesson.** What is the main lesson of the forgotten leaver? *Rubric:* 3 = removal must be automatic from HR and checked everywhere;; 2 = automate;; 1 = villains;; 0 = none.
 - **EX059 — Shared account alternative.** What allows team access without sharing a password? *Rubric:* 3 = features such as shared mailboxes with individual accounts;; 2 = shared mailbox;; 1 = vague;; 0 = none.
-- **EX060 — Overpowered fix.** What addresses the overpowered helper? *Rubric:* 3 = regular reviews and removing old access on moves;; 2 = reviews;; 1 = nothing;; 0 = none.
+- **EX060 — Overpowered fix.** What addresses the overpowered helper? *Rubric:* 3 = regular reviews and removing old access on moves;; 2 = reviews;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1502,7 +1502,7 @@ Treating identity as purely an IT project leaves HR, finance and legal unaware o
 
 ### Exercises
 
-- **EX094 — HR benefit.** What does HR receive from the identity work? *Rubric:* 3 = monthly list of accounts without HR match;; 2 = list;; 1 = nothing;; 0 = none.
+- **EX094 — HR benefit.** What does HR receive from the identity work? *Rubric:* 3 = monthly list of accounts without HR match;; 2 = list;; 1 = vague;; 0 = none.
 - **EX095 — Legal decision.** What did legal confirm about logs? *Rubric:* 3 = one-year retention for security, documented;; 2 = one year;; 1 = forever;; 0 = none.
 - **EX096 — Glossary purpose.** Why does Elena keep a glossary? *Rubric:* 3 = different disciplines use different terms;; 2 = terms;; 1 = exam;; 0 = none.
 
@@ -1636,7 +1636,7 @@ Starting production changes without written approval blurs who decided and who i
 
 - **EX103 — Coverage objective.** What multi-factor coverage does the capstone target? *Rubric:* 3 = above 95 percent;; 2 = 95%;; 1 = 100%;; 0 = none.
 - **EX104 — Excluded item.** What does the capstone scope exclude? *Rubric:* 3 = future tenant portal;; 2 = tenants;; 1 = finance;; 0 = none.
-- **EX105 — Approval update.** What changed in Elena's permission letter? *Rubric:* 3 = covers supervised production changes by IT;; 2 = production;; 1 = nothing;; 0 = none.
+- **EX105 — Approval update.** What changed in Elena's permission letter? *Rubric:* 3 = covers supervised production changes by IT;; 2 = production;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

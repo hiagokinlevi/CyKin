@@ -249,7 +249,7 @@ ATT&CK mappings are aids, not proof of an intrusion. Severity without an agreed 
 - **EX029 — Evidence examples.** Name three kinds of evidence allowed in a typical authorized test. *Rubric:* 3 = three of screenshots, logs, configs, authorized tool output, policy excerpts; 2 = two; 1 = one; 0 = none.
 - **EX030 — ATT&CK for shared admin.** Which ATT&CK technique best fits a shared admin account on the grading system? *Rubric:* 3 = T1078 Valid Accounts; 2 = name only; 1 = wrong; 0 = none.
 - **EX031 — Likelihood × impact.** Using Maya's ratings for F3, what is the score and why is impact 3? *Rubric:* 3 = 6; impact high because grade integrity / student records; 2 = score only; 1 = wrong; 0 = none.
-- **EX032 — Overstating severity.** What goes wrong if every finding is labelled critical? *Rubric:* 3 = trust collapses; owners cannot prioritise; real criticals ignored; 2 = partial; 1 = nothing; 0 = none.
+- **EX032 — Overstating severity.** What goes wrong if every finding is labelled critical? *Rubric:* 3 = trust collapses; owners cannot prioritise; real criticals ignored; 2 = partial; 1 = vague; 0 = none.
 - **EX033 — Two audiences.** Write one sentence for the IT director and one for the application owner about F3. *Rubric:* 3 = director: risk/accountability; owner: shared account, logging, named accounts fix; 2 = one good; 1 = same jargon both; 0 = none.
 - **EX034 — Reproduction within rules.** What does "reproduce within the rules" mean? *Rubric:* 3 = steps that stay inside authorization and avoid harm; 2 = partial; 1 = full exploit; 0 = none.
 - **EX035 — Data minimisation.** Maya captured a screenshot with three student names visible. What should she do before filing it? *Rubric:* 3 = redact names / use synthetic sample; keep only what agreement allows; 2 = partial; 1 = file as-is; 0 = none.
@@ -349,7 +349,7 @@ A classroom ranking is not a full professional report. Real engagements need the
 - **EX043 — Clinic server note.** Why remove the medical clinic server from the draft? *Rubric:* 3 = out of college scope / authorization; possible separate legal duties; 2 = partial; 1 = keep it; 0 = none.
 - **EX044 — Decision request.** What decision does Maya ask of the IT director? *Rubric:* 3 = approve named grading accounts and portal password-reuse control within 30 days; 2 = partial; 1 = "fix security"; 0 = none.
 - **EX045 — Methods limitation.** Why must the summary say "no live exploitation"? *Rubric:* 3 = honest about methods; reader must not think systems were attacked; matches authorization; 2 = partial; 1 = hide it; 0 = none.
-- **EX046 — Evidence attachment.** What goes in the attachment rather than the one-pager? *Rubric:* 3 = detailed reproduction, screenshots/logs, full finding text; 2 = partial; 1 = nothing; 0 = none.
+- **EX046 — Evidence attachment.** What goes in the attachment rather than the one-pager? *Rubric:* 3 = detailed reproduction, screenshots/logs, full finding text; 2 = partial; 1 = vague; 0 = none.
 - **EX047 — Stop during synthesis.** The portal test page becomes slow during a permitted check. What does Maya do? *Rubric:* 3 = stop / pause; contact emergency contact; record time; 2 = partial; 1 = continue; 0 = none.
 - **EX048 — CVSS mention.** When might Maya mention CVSS in a beginner report? *Rubric:* 3 = if the organisation uses it and scores are agreed; else keep simple scale; 2 = partial; 1 = always invent scores; 0 = none.
 - **EX049 — Next course.** What does the next course in the curriculum cover? *Rubric:* 3 = AI security (course 020); 2 = vague; 1 = wrong; 0 = none.

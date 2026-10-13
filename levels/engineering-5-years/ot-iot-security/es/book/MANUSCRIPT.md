@@ -3042,8 +3042,8 @@ En la revisión independiente del diseño, una revisora externa de una empresa d
 ### Ejercicios — capítulo 45
 
 - **EX133 — Bloqueo.** Comentario de bloqueo para un reintento que falla de forma abierta. Rúbrica: 3 = cita el requisito de seguridad + pide la corrección; 2 = bloqueo vago; 1 = detalle menor; 0 = aprueba.
-- **EX134 — Lista de comprobación.** Añada un elemento para derivadores serie. Rúbrica: 3 = específico; 2 = vago; 1 = nada; 0 = nada.
-- **EX135 — Discrepancia.** Una frase de discrepancia registrada. Rúbrica: 3 = clara; 2 = con evasivas; 1 = nada; 0 = nada.
+- **EX134 — Lista de comprobación.** Añada un elemento para derivadores serie. Rúbrica: 3 = específico; 2 = vago; 1 = intento mínimo; 0 = nada.
+- **EX135 — Discrepancia.** Una frase de discrepancia registrada. Rúbrica: 3 = clara; 2 = con evasivas; 1 = vago; 0 = nada.
 
 ### Síntesis del capítulo
 
@@ -3231,8 +3231,8 @@ El escenario del ensayo: la lógica de PLC-A se corrompe (simulado cargando un p
 ### Ejercicios — capítulo 47
 
 - **EX139 — Inyección.** Una inyección y el comportamiento seguro esperado. Rúbrica: 3 = ambos; 2 = solo la inyección; 1 = vaga; 0 = insegura.
-- **EX140 — Medida.** Medida principal para la inyección de pérdida de la política. Rúbrica: 3 = tiempo hasta denegar las escrituras; 2 = disponibilidad vaga; 1 = nada; 0 = nada.
-- **EX141 — Acción.** Convierta un resultado de 45 s en el título de un ticket correctivo. Rúbrica: 3 = específico; 2 = vago; 1 = nada; 0 = nada.
+- **EX140 — Medida.** Medida principal para la inyección de pérdida de la política. Rúbrica: 3 = tiempo hasta denegar las escrituras; 2 = disponibilidad vaga; 1 = intento mínimo; 0 = nada.
+- **EX141 — Acción.** Convierta un resultado de 45 s en el título de un ticket correctivo. Rúbrica: 3 = específico; 2 = vago; 1 = intento mínimo; 0 = nada.
 
 ### Síntesis del capítulo
 
@@ -3458,7 +3458,7 @@ Un examinador pregunta: «Su compilador demuestra que la alcanzabilidad es igual
 
 - **EX148 — Esquema.** Esquema de la exposición en seis puntos. Rúbrica: 3 = afirmación, demostración, verificación, fallo, límites, preguntas; 2 = parcial; 1 = presentación comercial; 0 = nada.
 - **EX149 — Respuesta.** De 3 a 4 frases para responder «¿cuál es su puntuación de riesgo?». Rúbrica: 3 = rechaza la puntuación vacía + alternativas; 2 = parcial; 1 = inventa una puntuación; 0 = nada.
-- **EX150 — Error.** Un error real (de la historia sintética) y su corrección. Rúbrica: 3 = específico; 2 = vago; 1 = nada; 0 = nada.
+- **EX150 — Error.** Un error real (de la historia sintética) y su corrección. Rúbrica: 3 = específico; 2 = vago; 1 = intento mínimo; 0 = nada.
 
 ### Síntesis del capítulo
 

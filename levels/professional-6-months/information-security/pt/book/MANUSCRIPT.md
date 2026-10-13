@@ -121,7 +121,7 @@ Listar apenas os dados sensíveis deixa de fora os sistemas de que a empresa dep
 
 - **EX008 — Pico de disponibilidade.** Quando a disponibilidade importa mais? *Rubrica:* 3 = nas semanas antes dos prazos de entrega;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX009 — Quarto item.** O que a Sra. Pike acrescentou à lista? *Rubrica:* 3 = a reputação de discrição da firma;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX009 — Quarto item.** O que a Sra. Pike acrescentou à lista? *Rubrica:* 3 = a reputação de discrição da firma;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX010 — Lição da dependência.** Por que perguntar sobre a dependência além da sensibilidade? *Rubrica:* 3 = sistemas pouco sensíveis ainda podem parar a empresa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 

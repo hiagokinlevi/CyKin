@@ -102,7 +102,7 @@ Kappa summarises agreement but hides where disagreement lies; always inspect dis
 - **EX001 — Entitlement unit.** In Rhea's study, what is one entitlement? *Rubric:* 3 = one permission or group membership held by one account;; 2 = one permission;; 1 = one account;; 0 = none.
 - **EX002 — Toxic category.** Which category covers raising and approving the same payment? *Rubric:* 3 = toxic, a separation-of-duties breach;; 2 = toxic;; 1 = excess;; 0 = none.
 - **EX003 — Kappa value.** State the observed agreement and kappa from the lab. *Rubric:* 3 = 0.90 and 0.85 with meaning;; 2 = both numbers;; 1 = one;; 0 = none.
-- **EX004 — Chance correction.** What does kappa add beyond raw agreement? *Rubric:* 3 = removes agreement expected by chance from category frequencies;; 2 = chance;; 1 = nothing;; 0 = none.
+- **EX004 — Chance correction.** What does kappa add beyond raw agreement? *Rubric:* 3 = removes agreement expected by chance from category frequencies;; 2 = chance;; 1 = vague;; 0 = none.
 - **EX005 — Disagreement use.** How should the four disagreements be used? *Rubric:* 3 = sharpen decision rules and repeat on fresh items;; 2 = refine codebook;; 1 = ignore;; 0 = none.
 - **EX006 — Data boundary.** Name two protections in Rhea's data agreement. *Rubric:* 3 = pseudonyms, encrypted logged storage, no publication of identifying names;; 2 = two;; 1 = one;; 0 = none.
 - **EX007 — Internal validity threat.** Give one threat to attributing change to the review procedure. *Rubric:* 3 = staff turnover or system migration;; 2 = one threat;; 1 = vague;; 0 = none.
@@ -553,7 +553,7 @@ Preparing scripted answers instead of understanding the work leaves a candidate 
 
 - **EX045 — Opening contents.** What should the fifteen-minute opening state? *Rubric:* 3 = question, design, findings, limits, contribution;; 2 = most;; 1 = one;; 0 = none.
 - **EX046 — Honest unknown.** How should Rhea handle a question she cannot answer? *Rubric:* 3 = say so honestly and explain how it could be answered;; 2 = admit;; 1 = guess;; 0 = none.
-- **EX047 — Restart answer.** What would Rhea change if starting again? *Rubric:* 3 = longer study, two cycles to see if excess grows back;; 2 = longer;; 1 = nothing;; 0 = none.
+- **EX047 — Restart answer.** What would Rhea change if starting again? *Rubric:* 3 = longer study, two cycles to see if excess grows back;; 2 = longer;; 1 = vague;; 0 = none.
 - **EX048 — Paper split.** What are Rhea's two planned papers? *Rubric:* 3 = codebook and complexity; randomised review comparison;; 2 = two topics;; 1 = one;; 0 = none.
 - **EX049 — Deletion confirmation.** How is partner data handled at closure? *Rubric:* 3 = deleted on agreed date, confirmed in writing;; 2 = deleted;; 1 = kept;; 0 = none.
 - **EX050 — Reusable method.** Name the reusable parts of Rhea's method. *Rubric:* 3 = codebook, procedure, archive;; 2 = two;; 1 = one;; 0 = none.

@@ -307,7 +307,7 @@ Presenting a narrow scoring lead as decisive hides how sensitive the ranking is 
 - **EX021 — Design B content.** What does Design B include? *Rubric:* 3 = named admin accounts, keys, JIT via built-in features, vault for emergencies;; 2 = JIT;; 1 = suite;; 0 = none.
 - **EX022 — Top score.** Which design scores highest in the lab, and with what? *Rubric:* 3 = B, 2.35;; 2 = B;; 1 = C;; 0 = none.
 - **EX023 — Narrow margin.** How large is B's lead over A? *Rubric:* 3 = 0.05;; 2 = narrow;; 1 = large;; 0 = none.
-- **EX024 — Sensitivity finding.** What changes the B–A order? *Rubric:* 3 = weighting risk reduction lower;; 2 = weights;; 1 = nothing;; 0 = none.
+- **EX024 — Sensitivity finding.** What changes the B–A order? *Rubric:* 3 = weighting risk reduction lower;; 2 = weights;; 1 = vague;; 0 = none.
 - **EX025 — Suite weakness.** Why does Design C rank last? *Rubric:* 3 = poor operability and disruption for small team;; 2 = operability;; 1 = security;; 0 = none.
 
 ### Synthesis
@@ -423,7 +423,7 @@ Introducing just-in-time elevation without linking it to change management loses
 
 - **EX031 — Change link.** How is elevation linked to change management? *Rubric:* 3 = requests name the change ticket; windows auto-approve;; 2 = tickets;; 1 = vague;; 0 = none.
 - **EX032 — Leaver admin.** When are a leaving administrator's account and keys removed? *Rubric:* 3 = same day as HR records it;; 2 = same day;; 1 = month;; 0 = none.
-- **EX033 — Tabletop finding.** What did the tabletop exercise reveal? *Rubric:* 3 = nobody knew night-time vault release procedure;; 2 = vault;; 1 = nothing;; 0 = none.
+- **EX033 — Tabletop finding.** What did the tabletop exercise reveal? *Rubric:* 3 = nobody knew night-time vault release procedure;; 2 = vault;; 1 = vague;; 0 = none.
 - **EX034 — Owners named.** Name two owners in the design. *Rubric:* 3 = IT manager, security lead, HR, operations director (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX035 — Training contents.** Name two topics in administrator training. *Rubric:* 3 = why, how to request, what is monitored, lost keys (two);; 2 = one;; 1 = vague;; 0 = none.
 
@@ -523,7 +523,7 @@ Overclaiming to an insurer, such as saying all privileged access is just-in-time
 
 - **EX041 — Board figures.** Name two figures in the board report. *Rubric:* 3 = privilege-hours, key coverage, off-window reviews, residual risks (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX042 — Assurance meaning.** What is assurance? *Rubric:* 3 = confidence, based on evidence, that controls work;; 2 = evidence;; 1 = hope;; 0 = none.
-- **EX043 — Auditor recommendation.** What did the auditor recommend? *Rubric:* 3 = test vault emergency release twice a year;; 2 = testing;; 1 = nothing;; 0 = none.
+- **EX043 — Auditor recommendation.** What did the auditor recommend? *Rubric:* 3 = test vault emergency release twice a year;; 2 = testing;; 1 = vague;; 0 = none.
 - **EX044 — Overclaim example.** What overclaim does Marta warn against? *Rubric:* 3 = saying all privileged access is just-in-time;; 2 = all JIT;; 1 = vague;; 0 = none.
 - **EX045 — Ongoing assurance.** Why must assurance evidence be refreshed? *Rubric:* 3 = controls drift, people change, new systems arrive;; 2 = drift;; 1 = rules;; 0 = none.
 
@@ -627,7 +627,7 @@ Reporting only intended outcomes hides side effects that point to the next impro
 - **EX052 — Higher than pilot.** Why were rollout hours higher than the pilot estimate? *Rubric:* 3 = two incident weeks;; 2 = incidents;; 1 = error;; 0 = none.
 - **EX053 — Positive side effect.** What positive side effect did administrators report? *Rubric:* 3 = thinking twice caught two mistakes;; 2 = fewer mistakes;; 1 = vague;; 0 = none.
 - **EX054 — Night-shift fix.** What addresses night-shift key delays? *Rubric:* 3 = spare keys at each warehouse;; 2 = spare keys;; 1 = passwords;; 0 = none.
-- **EX055 — Hindsight.** What would Marta start earlier? *Rubric:* 3 = service account work;; 2 = service accounts;; 1 = nothing;; 0 = none.
+- **EX055 — Hindsight.** What would Marta start earlier? *Rubric:* 3 = service account work;; 2 = service accounts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -676,7 +676,7 @@ Ending a project without sustaining routines lets standing privilege creep back 
 - **EX056 — Post-rollout limit.** Name one limit Marta states in the final review. *Rubric:* 3 = eight weeks of data, one organisation, legacy system (one);; 2 = one;; 1 = vague;; 0 = none.
 - **EX057 — Register owner.** Who owns the residual risk register after transfer? *Rubric:* 3 = finance director;; 2 = director;; 1 = Marta;; 0 = none.
 - **EX058 — Sustaining routines.** Name two sustaining routines. *Rubric:* 3 = quarterly identity review, six-monthly vault test, yearly training, new-system check (two);; 2 = one;; 1 = vague;; 0 = none.
-- **EX059 — Creep warning.** What happens without sustaining routines? *Rubric:* 3 = standing privilege creeps back;; 2 = drift;; 1 = nothing;; 0 = none.
+- **EX059 — Creep warning.** What happens without sustaining routines? *Rubric:* 3 = standing privilege creeps back;; 2 = drift;; 1 = vague;; 0 = none.
 - **EX060 — Sharing plan.** How will Marta share her findings beyond Corran? *Rubric:* 3 = anonymised summary to a regional practitioner group;; 2 = practitioners;; 1 = vague;; 0 = none.
 
 ### Synthesis

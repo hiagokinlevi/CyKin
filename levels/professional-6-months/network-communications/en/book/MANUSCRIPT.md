@@ -184,7 +184,7 @@ Working on original evidence files risks altering them and weakening their relia
 
 - **EX011 — Not permitted.** Name two activities outside Grace's authorisation. *Rubric:* 3 = access case files, test live systems, contact clients;; 2 = two;; 1 = one;; 0 = none.
 - **EX012 — Digest purpose.** Why record a digest of an evidence file? *Rubric:* 3 = detect later changes;; 2 = integrity;; 1 = encryption;; 0 = none.
-- **EX013 — Custody log contents.** What does the custody log record? *Rubric:* 3 = who held evidence, when, where, why;; 2 = holders;; 1 = nothing;; 0 = none.
+- **EX013 — Custody log contents.** What does the custody log record? *Rubric:* 3 = who held evidence, when, where, why;; 2 = holders;; 1 = vague;; 0 = none.
 - **EX014 — Urgent finding route.** How are urgent findings reported? *Rubric:* 3 = phone to IT manager same day;; 2 = phone;; 1 = email later;; 0 = none.
 - **EX015 — Accidental exposure.** What should Grace do if she sees client data by accident? *Rubric:* 3 = report it;; 2 = report;; 1 = ignore;; 0 = none.
 
@@ -364,7 +364,7 @@ Without escalation criteria, serious events wait in the routine queue.
 ### Exercises
 
 - **EX026 — Daily checks.** List three daily routine checks. *Rubric:* 3 = alerts, tunnels, log arrival or help desk queue;; 2 = two;; 1 = one;; 0 = none.
-- **EX027 — Weekly value.** What do weekly checks catch that daily ones miss? *Rubric:* 3 = slow trends like rising denies;; 2 = trends;; 1 = nothing;; 0 = none.
+- **EX027 — Weekly value.** What do weekly checks catch that daily ones miss? *Rubric:* 3 = slow trends like rising denies;; 2 = trends;; 1 = vague;; 0 = none.
 - **EX028 — Ticket system reuse.** Why use the existing ticket system? *Rubric:* 3 = keeps work visible and fits current practice;; 2 = visibility;; 1 = cheaper;; 0 = none.
 - **EX029 — Escalation criterion.** Give one escalation criterion. *Rubric:* 3 = suspected compromise of case-file account, data leaving, deadline outage;; 2 = one;; 1 = vague;; 0 = none.
 - **EX030 — Compliance role.** Who decides on client and regulatory notifications? *Rubric:* 3 = compliance officer;; 2 = compliance;; 1 = IT;; 0 = none.
@@ -502,7 +502,7 @@ Blaming individuals for phishing distracts from control gaps that allowed harm.
 - **EX037 — MFA evidence.** What showed multi-factor authentication working? *Rubric:* 3 = admin login denied by MFA;; 2 = admin denied;; 1 = vague;; 0 = none.
 - **EX038 — Forwarded emails.** How many forwarded emails contained client material? *Rubric:* 3 = three of twelve;; 2 = three;; 1 = twelve;; 0 = none.
 - **EX039 — Root cause list.** List the three root causes. *Rubric:* 3 = phishing reached user, no MFA on email, external forwarding allowed;; 2 = two;; 1 = one;; 0 = none.
-- **EX040 — Facts versus inferences.** What did Sam ask Grace to improve? *Rubric:* 3 = separate confirmed facts from inferences;; 2 = clarity;; 1 = nothing;; 0 = none.
+- **EX040 — Facts versus inferences.** What did Sam ask Grace to improve? *Rubric:* 3 = separate confirmed facts from inferences;; 2 = clarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -609,7 +609,7 @@ Exempting users from controls to fix device problems leaves the most exposed acc
 - **EX046 — Tablet fix.** How was the partner's tablet problem fixed? *Rubric:* 3 = install supported mail app;; 2 = new app;; 1 = exemption;; 0 = none.
 - **EX047 — Exception scope.** What does the forwarding exception cover? *Rubric:* 3 = one mailbox to one destination, owner, review date;; 2 = narrow;; 1 = all;; 0 = none.
 - **EX048 — Quality check.** Give one weekly quality check. *Rubric:* 3 = accounts without MFA, exceptions, rules without owners;; 2 = one;; 1 = vague;; 0 = none.
-- **EX049 — Mistyped lesson.** What changed after the mistyped destination? *Rubric:* 3 = copy addresses from request, not retype;; 2 = copy;; 1 = nothing;; 0 = none.
+- **EX049 — Mistyped lesson.** What changed after the mistyped destination? *Rubric:* 3 = copy addresses from request, not retype;; 2 = copy;; 1 = vague;; 0 = none.
 - **EX050 — Exception necessity.** Why are narrow approved exceptions necessary? *Rubric:* 3 = otherwise control removed under pressure;; 2 = usability;; 1 = weakness;; 0 = none.
 
 ### Synthesis
@@ -734,7 +734,7 @@ Portfolios that claim credit for others' work undermine trust.
 ### Exercises
 
 - **EX056 — Portfolio cover note.** What does each cover note state? *Rubric:* 3 = what it shows and which outcome;; 2 = purpose;; 1 = title;; 0 = none.
-- **EX057 — Improvement named.** What would Grace do differently in the investigation? *Rubric:* 3 = check forwarding rules firm-wide sooner;; 2 = check others;; 1 = nothing;; 0 = none.
+- **EX057 — Improvement named.** What would Grace do differently in the investigation? *Rubric:* 3 = check forwarding rules firm-wide sooner;; 2 = check others;; 1 = vague;; 0 = none.
 - **EX058 — Outcome list.** Name three improvements at Oakline. *Rubric:* 3 = guest isolation, MFA, forwarding approval, change review, routines;; 2 = two;; 1 = one;; 0 = none.
 - **EX059 — Attribution.** Why avoid claiming credit for the IT team's work? *Rubric:* 3 = accuracy, relationships, credibility;; 2 = honesty;; 1 = modesty;; 0 = none.
 - **EX060 — Development item.** Name one item in Grace's development plan. *Rubric:* 3 = cloud email security, labs, reading, practitioners' group;; 2 = one;; 1 = vague;; 0 = none.

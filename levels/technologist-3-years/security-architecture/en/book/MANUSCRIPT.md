@@ -596,7 +596,7 @@ Diagrams age quickly. Portals add work for small retailers.
 
 - **EX034 — Sam's correction.** What did Sam correct in the diagram? *Rubric:* 3 = small retailers email spreadsheets uploaded by hand;; 2 = email manifests;; 1 = vague;; 0 = none.
 - **EX035 — Boundary checks.** What checks should each boundary crossing have? *Rubric:* 3 = sender authentication, encryption and content validation;; 2 = two;; 1 = vague;; 0 = none.
-- **EX036 — Fake manifest.** What could a criminal do with the emailed flow? *Rubric:* 3 = send a fake manifest to redirect parcels;; 2 = redirect;; 1 = nothing;; 0 = none.
+- **EX036 — Fake manifest.** What could a criminal do with the emailed flow? *Rubric:* 3 = send a fake manifest to redirect parcels;; 2 = redirect;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1305,7 +1305,7 @@ Runbooks age as systems change. Two-person teams are fragile during holidays.
 ### Exercises
 
 - **EX076 — Why handoff.** Why do controls decay without handoff? *Rubric:* 3 = nobody else knows why they exist or how to run them;; 2 = knowledge;; 1 = vague;; 0 = none.
-- **EX077 — Runbook test.** What did testing the restore runbook reveal? *Rubric:* 3 = a missing password location step;; 2 = gap;; 1 = nothing;; 0 = none.
+- **EX077 — Runbook test.** What did testing the restore runbook reveal? *Rubric:* 3 = a missing password location step;; 2 = gap;; 1 = vague;; 0 = none.
 - **EX078 — Measure of handoff.** How is a good handoff measured? *Rubric:* 3 = by how little the departing person is needed afterwards;; 2 = independence;; 1 = length;; 0 = none.
 
 ### Synthesis

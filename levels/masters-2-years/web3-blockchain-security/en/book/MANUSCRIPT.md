@@ -496,7 +496,7 @@ Writing vague limitations hides the specific weaknesses future researchers need 
 - **EX041 — Bias direction.** What does Tariq state for each limitation? *Rubric:* 3 = likely direction of bias;; 2 = direction;; 1 = cost;; 0 = none.
 - **EX042 — Weekend implication.** What did the pilot suggest about 48 hours? *Rubric:* 3 = may be too short over weekends;; 2 = weekends;; 1 = too long;; 0 = none.
 - **EX043 — Guidance relation.** How do findings relate to guidance? *Rubric:* 3 = consistent with but not independently proving it;; 2 = consistent;; 1 = contradict;; 0 = none.
-- **EX044 — Final rerun.** What was done two weeks before submission? *Rubric:* 3 = reran all scripts from a clean copy;; 2 = rerun;; 1 = nothing;; 0 = none.
+- **EX044 — Final rerun.** What was done two weeks before submission? *Rubric:* 3 = reran all scripts from a clean copy;; 2 = rerun;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -544,10 +544,10 @@ Disseminating protocol-level results could direct attackers to weakly controlled
 
 - **EX045 — Review checklist.** What does the independent review checklist ask? *Rubric:* 3 = question answered, reproducible, supported, honest limitations;; 2 = four checks;; 1 = style;; 0 = none.
 - **EX046 — Sensitivity analysis.** What sensitivity analysis was added? *Rubric:* 3 = treat reversed parameter change as non-incident;; 2 = reversed change;; 1 = vague;; 0 = none.
-- **EX047 — More-time answer.** What would Tariq do with more time? *Rubric:* 3 = larger multi-firm timelock study with notification times;; 2 = bigger study;; 1 = nothing;; 0 = none.
+- **EX047 — More-time answer.** What would Tariq do with more time? *Rubric:* 3 = larger multi-firm timelock study with notification times;; 2 = bigger study;; 1 = vague;; 0 = none.
 - **EX048 — Dissemination rule.** How are results disseminated? *Rubric:* 3 = aggregate only, no protocol named;; 2 = aggregate;; 1 = named;; 0 = none.
 - **EX049 — Security check.** Who checks the brief before sharing? *Rubric:* 3 = Lumen's security lead;; 2 = security lead;; 1 = nobody;; 0 = none.
-- **EX050 — Reflection change.** Name one thing Tariq would change. *Rubric:* 3 = start the pilot earlier;; 2 = second firm;; 1 = nothing;; 0 = none.
+- **EX050 — Reflection change.** Name one thing Tariq would change. *Rubric:* 3 = start the pilot earlier;; 2 = second firm;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

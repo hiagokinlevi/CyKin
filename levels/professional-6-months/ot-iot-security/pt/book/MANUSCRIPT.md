@@ -213,7 +213,7 @@ Os nomes dos protocolos e as portas variam conforme a instalação; confirme com
 ### Exercícios
 
 - **EX011 — Duas camadas.** Descreva as camadas de campo e de supervisão de um BMS. *Rubrica:* 3 = sensores/atuadores ligados por fio aos controladores; controladores e servidor na rede predial; 2 = parcial; 1 = uma; 0 = nenhum.
-- **EX012 — Confiança do BACnet.** O que um notebook na VLAN 300 normalmente consegue fazer com controladores BACnet/IP? *Rubrica:* 3 = ler pontos e muitas vezes escrever valores de referência sem autenticação; 2 = só ler; 1 = nada; 0 = nenhum.
+- **EX012 — Confiança do BACnet.** O que um notebook na VLAN 300 normalmente consegue fazer com controladores BACnet/IP? *Rubrica:* 3 = ler pontos e muitas vezes escrever valores de referência sem autenticação; 2 = só ler; 1 = vago; 0 = nenhum.
 - **EX013 — Estação em dupla conexão.** Por que a segunda placa de rede da BMS-WS é um risco? *Rubrica:* 3 = faz a ponte da rede corporativa para a predial, contornando o firewall; o comprometimento alcança os controladores; 2 = parcial; 1 = velocidade; 0 = nenhum.
 - **EX014 — Pontos de encontro.** Nomeie três lugares onde as redes prediais do Millbrook podem encontrar outras redes. *Rubrica:* 3 = estação em dupla conexão, acesso remoto de empreiteiros, conexão celular do elevador (ou semelhante); 2 = dois; 1 = um; 0 = nenhum.
 - **EX015 — Sem varredura.** Dê duas razões pelas quais Aisha não faz varreduras nos controladores prediais para mapeá-los. *Rubrica:* 3 = controladores antigos podem travar; não autorizado/risco para áreas clínicas; existem fontes melhores; 2 = uma; 1 = "lento"; 0 = nenhum.
@@ -382,7 +382,7 @@ A ETSI EN 303 645 tem como alvo a IoT de consumo; para controladores prediais de
 - **EX021 — Por que as senhas de integradores importam.** Explique o risco de uma senha de integrador reutilizada em muitos hospitais. *Rubrica:* 3 = um vazamento ou um ex-funcionário abre todas as instalações; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX022 — Mudanças rastreáveis.** Como as contas nominais do BMS ajudam depois de uma mudança inesperada de valor de referência? *Rubrica:* 3 = o registro de tendências/auditoria mostra quem a fez; apoia a investigação; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX023 — Perguntas contratuais.** Transforme três provisões da ETSI EN 303 645 em perguntas para o contrato de compra. *Rubrica:* 3 = três perguntas precisas (senhas padrão, divulgação, atualizações/criptografia); 2 = duas; 1 = uma; 0 = nenhum.
-- **EX024 — Saída de um funcionário do empreiteiro.** Um engenheiro do empreiteiro que conhecia senhas do Millbrook sai da empresa. O que acontece? *Rubrica:* 3 = trocar no cofre as senhas afetadas, revisar os acessos, registrar; 2 = parte; 1 = nada; 0 = nenhum.
+- **EX024 — Saída de um funcionário do empreiteiro.** Um engenheiro do empreiteiro que conhecia senhas do Millbrook sai da empresa. O que acontece? *Rubrica:* 3 = trocar no cofre as senhas afetadas, revisar os acessos, registrar; 2 = parte; 1 = vago; 0 = nenhum.
 - **EX025 — A norma certa.** Que norma se encaixa melhor do que a ETSI EN 303 645 num controlador industrial de BMS, e por quê? *Rubrica:* 3 = IEC 62443-4-2; requisitos de componentes para automação industrial; 2 = só o nome; 1 = errada; 0 = nenhum.
 
 ### Síntese
@@ -833,7 +833,7 @@ Alguns controladores falham para padrões seguros que diferem da operação norm
 
 - **EX051 — Primeira pergunta.** Qual é a primeira pergunta depois que a BMS-WS mostra uma mensagem de resgate, e quem a responde? *Rubrica:* 3 = alguma área clínica está insegura; gestor de plantão/manutenção; 2 = só a pergunta; 1 = pergunta de TI; 0 = nenhum.
 - **EX052 — Por que o isolamento é aceitável.** Explique por que bloquear os condutos da zona do BMS não parou a ventilação. *Rubrica:* 3 = os controladores rodam as agendas locais sem o servidor; 2 = parcial; 1 = parou sim; 0 = nenhum.
-- **EX053 — Monitoramento manual.** O que substitui o monitoramento do BMS enquanto ele está isolado? *Rubrica:* 3 = rondas da manutenção lendo valores locais, verificações de alarmes pela equipe; 2 = parcial; 1 = nada; 0 = nenhum.
+- **EX053 — Monitoramento manual.** O que substitui o monitoramento do BMS enquanto ele está isolado? *Rubrica:* 3 = rondas da manutenção lendo valores locais, verificações de alarmes pela equipe; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX054 — Reconectar.** Descreva como os condutos são restaurados depois da recuperação. *Rubrica:* 3 = um de cada vez, com verificação dos pontos em relação às leituras locais; 2 = parcial; 1 = todos de uma vez; 0 = nenhum.
 - **EX055 — Padrões seguros.** Por que Aisha precisa conhecer o comportamento de falha segura dos controladores antes de recomendar o isolamento? *Rubrica:* 3 = alguns padrões mudam a operação (por exemplo, ventiladores desligados/no máximo), podendo afetar pacientes; 2 = parcial; 1 = não precisa; 0 = nenhum.
 

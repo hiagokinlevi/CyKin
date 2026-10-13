@@ -1032,7 +1032,7 @@ Tests on synthetic data cannot prove behaviour on all partner data; keep samplin
 
 ### Exercises
 
-- **EX040 — Replay value.** What does the synthetic-feed replay in CI catch that unit tests may miss? *Rubric:* 3 = end-to-end behaviour changes across stages; 2 = integration bugs vaguely; 1 = nothing; 0 = none.
+- **EX040 — Replay value.** What does the synthetic-feed replay in CI catch that unit tests may miss? *Rubric:* 3 = end-to-end behaviour changes across stages; 2 = integration bugs vaguely; 1 = vague; 0 = none.
 - **EX041 — Rejected change.** Why was the decay-floor change rejected? *Rubric:* 3 = no requirement/owner agreement; large behavioural impact; 2 = one; 1 = tests failed; 0 = none.
 - **EX042 — Secret location.** Where do partner credentials live, and what does configuration hold? *Rubric:* 3 = vault; config holds references; 2 = vault only; 1 = in code; 0 = none.
 
@@ -3223,7 +3223,7 @@ Reviews by friends or managers who own the schedule are not independent. A revie
 
 - **EX133 — Finding grades.** Name the three finding grades. *Rubric:* 3 = must-fix, should-fix, observation; 2 = two; 1 = one; 0 = none.
 - **EX134 — Independence test.** Why can BEN's SOC manager not serve as an independent reviewer? *Rubric:* 3 = involved/owns outcome/schedule; conflict of interest; 2 = partial; 1 = can; 0 = none.
-- **EX135 — Condition link.** What must a "proceed with conditions" outcome reference? *Rubric:* 3 = specific must-fix findings with owners/dates; 2 = vague conditions; 1 = nothing; 0 = none.
+- **EX135 — Condition link.** What must a "proceed with conditions" outcome reference? *Rubric:* 3 = specific must-fix findings with owners/dates; 2 = vague conditions; 1 = vague; 0 = none.
 
 ### Synthesis
 

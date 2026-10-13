@@ -245,7 +245,7 @@ Ligar para o número de uma mensagem suspeita leva ao criminoso, e não ao forne
 
 - **EX032 — Fatura falsa.** De qual fornecedor o e-mail falso se fazia passar? *Rubrica:* 3 = o fornecedor de equipamentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX033 — Desfecho.** Quanto a clínica pagou à conta nova? *Rubrica:* 3 = nada;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX033 — Desfecho.** Quanto a clínica pagou à conta nova? *Rubrica:* 3 = nada;; 2 = correto;; 1 = errado;; 0 = sem resposta.
 
 - **EX034 — Duração do treinamento.** Quanto dura cada sessão com a equipe? *Rubrica:* 3 = dez minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
