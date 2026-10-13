@@ -312,11 +312,7 @@ You will (1) treat scanners as assistants not judges; (2) filter findings by con
 
 ### 5.1 Tools assist
 
-Scanners and checklists speed discovery. They mislabel, miss context and cannot judge business impact. Leo reads every kept item.
-
-When lab_severity keeps three of five items, Leo still opens each kept item and asks whether HCU should act. Scanners assist discovery; they do not judge member impact or write the recommendation.
-
-The two dropped items, dir-listing and trace-method, are noted in the method appendix so nobody wonders whether they were ignored. Items he cannot explain in plain words about member impact are sent back for more validation or dropped; scanners assist discovery, they do not judge member impact.
+Scanners and checklists speed discovery. They mislabel, miss context and cannot judge business impact. Leo reads every kept item: when lab_severity keeps three of five items, he still opens each kept item and asks whether HCU should act. Items he cannot explain in plain words about member impact are sent back for more validation or dropped. The two dropped items, dir-listing and trace-method, are noted in the method appendix so nobody wonders whether they were ignored. Scanners assist discovery; they do not judge member impact or write the recommendation.
 
 ### 5.2 Confidence floor
 
@@ -342,57 +338,31 @@ KEEP cookie-flag      confidence=0.85
 kept 3 of 5; dropped 2
 ```
 
-With FLOOR at 0.6, the lab keeps open-redirect (0.9), outdated-banner (0.7) and cookie-flag (0.85), and drops the rest. Raising the floor to 0.8 would drop the banner too. Leo states the floor in the method notes so readers know what was filtered.
-
-Dir-listing and trace-method fall below 0.6, so they stay in the raw output appendix rather than the findings list. Raising the floor to 0.8 would drop the banner too; Leo states the floor in the method notes, and unconfirmed items below the floor never appear in executive slides.
+With FLOOR at 0.6, the lab keeps open-redirect (0.9), outdated-banner (0.7) and cookie-flag (0.85), and drops the rest. Dir-listing and trace-method fall below 0.6, so they stay in the raw output appendix rather than the findings list, and unconfirmed items below the floor never appear in executive slides. Raising the floor to 0.8 would drop the banner too. Leo states the floor in the method notes so readers know what was filtered.
 
 ### 5.3 False positives and negatives
 
-A false positive wastes fixer time; a false negative leaves risk. Sampling and manual validation reduce both; neither reaches zero.
-
-Leo plans validation time from past false-positive rates and accepts that some risk may still be missed. He tells the CISO the report contains validated items, not that every possible issue was found.
-
-If the last review's false positives clustered in one scanner check, that check gets extra validation time in ENG-440. When in doubt, he validates more rather than shipping a longer list.
+A false positive wastes fixer time; a false negative leaves risk. Sampling and manual validation reduce both; neither reaches zero. Leo plans validation time from past false-positive rates and accepts that some risk may still be missed. If the last review's false positives clustered in one scanner check, that check gets extra validation time in ENG-440. When in doubt, he validates more rather than shipping a longer list. He tells the CISO the report contains validated items, not that every possible issue was found.
 
 ### 5.4 Versions and settings
 
-Record tool name, version and profile with the evidence so a retest can use the same setup.
-
-Leo's evidence for the cookie-flag finding names the scanner, its version and the profile used, so a retest after the fix can repeat the same check. Settings that change mid-engagement are logged.
-
-The profile name is stored on ticket T-15, so the retest after app-sec's fix uses the same scan settings Leo used. Without versions, a failed retest cannot tell whether the fix failed or the setup changed; settings that change mid-engagement are logged.
+Record tool name, version and profile with the evidence so a retest can use the same setup. Leo's evidence for the cookie-flag finding names the scanner, its version and the profile used, and the profile name is stored on ticket T-15, so the retest after app-sec's fix repeats the same check with the same scan settings. Without versions, a failed retest cannot tell whether the fix failed or the setup changed. Settings that change mid-engagement are logged with the time of the change, so the evidence still says which setup produced each result.
 
 ### 5.5 OWASP WSTG as a tool of thought
 
-Even without a scanner, WSTG gives a structured list of web checks so coverage is visible.
-
-Leo uses a WSTG-derived checklist for online banking staging so he can show which checks ran and which were out of scope. Coverage that is only in his head cannot be reviewed or retested.
-
-Rows are marked ran, not run or out of scope, and each ran row points to its evidence file in the vault. Empty rows on the checklist are honest gaps; inventing coverage helps nobody when examiners ask what was actually tested.
+Even without a scanner, WSTG gives a structured list of web checks so coverage is visible. Leo uses a WSTG-derived checklist for online banking staging so he can show which checks ran and which were out of scope. Rows are marked ran, not run or out of scope, and each ran row points to its evidence file in the vault. Coverage that is only in his head cannot be reviewed or retested. Empty rows on the checklist are honest gaps; inventing coverage helps nobody when examiners ask what was actually tested.
 
 ### 5.6 Interpreting banners
 
-An outdated banner is a clue, not a crisis. Leo checks whether the service is internet-facing, whether the version is truly vulnerable, and whether a WAF or access rule already limits exposure before he writes a high-severity finding.
-
-On HCU's staging tier, an outdated banner behind access rules may be low priority; the same banner on an internet-facing admin port would not. Context turns a clue into a proportional finding.
-
-For the ENG-440 banner, Leo records that staging sits behind access rules, which is why it is not rated high. He writes that reasoning into the finding so severity is not a mysterious label divorced from member impact.
+An outdated banner is a clue, not a crisis. Leo checks whether the service is internet-facing, whether the version is truly vulnerable, and whether a WAF or access rule already limits exposure before he writes a high-severity finding. On HCU's staging tier, an outdated banner behind access rules may be low priority; the same banner on an internet-facing admin port would not. For the ENG-440 banner, Leo records that staging sits behind access rules, which is why it is not rated high. He writes that reasoning into the finding so severity is not a mysterious label divorced from member impact; context turns a clue into a proportional finding.
 
 ### 5.7 Base rates
 
-If a scanner marks forty items and history shows thirty were false positives, Leo plans validation time accordingly. He does not promise the CISO "forty findings" before validation; he promises a validated set.
-
-Base rates protect the schedule. Promising forty findings before validation sets the wrong expectation and pressures the team to keep noise. Leo promises a validated set and a time box for confirmation.
-
-Forty raw items with a history of thirty false positives suggests roughly ten real findings, and Leo plans validation for that. Promising forty findings before validation sets the wrong expectation and pressures the team to keep noise; validation time is part of the engagement budget, not optional overtime, and Leo promises a validated set with a time box for confirmation.
+If a scanner marks forty items and history shows thirty were false positives, Leo plans validation time accordingly: forty raw items with that history suggest roughly ten real findings. Base rates protect the schedule. He does not promise the CISO "forty findings" before validation, because that sets the wrong expectation and pressures the team to keep noise. Validation time is part of the engagement budget, not optional overtime, and Leo promises a validated set with a time box for confirmation.
 
 ### 5.8 Manual spot checks
 
-For every five automated items kept, Leo manually validates at least the highest-severity one end-to-end with an authorized account. Spot checks catch systematic tool mistakes that a confidence score cannot.
-
-If open-redirect is the highest of the kept items, that is the one he walks through with an authorized account before the report is drafted. Systematic tool mistakes show up when a human repeats the path.
-
-In ENG-440 lab_severity keeps three items and open-redirect at 0.9 is the highest, so Leo walks that path first with an authorized account. A failed walkthrough of open-redirect at 0.9 means the other kept items get the same human path before the report drafts.
+For every five automated items kept, Leo manually validates at least the highest-severity one end-to-end with an authorized account. Spot checks catch systematic tool mistakes that a confidence score cannot, because those mistakes show up when a human repeats the path. In ENG-440 lab_severity keeps three items and open-redirect at 0.9 is the highest, so Leo walks that path first with an authorized account before the report is drafted. A failed walkthrough of open-redirect means the other kept items get the same human path before the report drafts.
 
 ### Worked example (synthetic HCU)
 
@@ -430,69 +400,35 @@ You will (1) describe the day-of workflow from kickoff to debrief; (2) keep a co
 
 ### 6.1 Day-of sequence
 
-Kickoff call confirms ROE and contacts; testers begin only inside the window; progress notes go to the engagement channel; mid-point check with the product owner if anything sensitive appears; end-of-day debrief; evidence vaulted.
-
-For ENG-440, Leo's Saturday sequence follows that order. Nothing starts before the kickoff confirms the ROE still matches the signed copy, and evidence is vaulted before he leaves for the day.
-
-For ENG-440, Leo's Saturday sequence follows kickoff confirmation that the ROE still matches the signed copy, then testing, then vaulting evidence before he leaves. Deviations from the sequence are logged with a reason so a later review can see why.
+Kickoff call confirms ROE and contacts; testers begin only inside the window; progress notes go to the engagement channel; mid-point check with the product owner if anything sensitive appears; end-of-day debrief; evidence vaulted. For ENG-440, Leo's Saturday sequence follows that order. Nothing starts before the kickoff confirms the ROE still matches the signed copy, and evidence is vaulted before he leaves for the day. Deviations from the sequence are logged with a reason so a later review can see why.
 
 ### 6.2 Activity log
 
-Every action gets a time, system, method and result. The log defends the team if an outage is blamed on testing and feeds the report.
-
-Leo's log line includes time, host, method and result, such as a pause when a hostname looked like production. If payday traffic slows, the log is what shows whether testing was involved.
-
-Each line uses the jump host clock, so log entries and SOC alerts can be lined up afterwards without guessing offsets. Logs are kept in the vault with the evidence, not only in chat history that scrolls away; if payday traffic slows, the log shows whether testing was involved.
+Every action gets a time, system, method and result. The log defends the team if an outage is blamed on testing and feeds the report. Leo's log line includes time, host, method and result, such as a pause when a hostname looked like production. Each line uses the jump host clock, so log entries and SOC alerts can be lined up afterwards without guessing offsets. Logs are kept in the vault with the evidence, not only in chat history that scrolls away. If payday traffic slows, the log is what shows whether testing was involved.
 
 ### 6.3 SOC coordination
 
-Send start and stop messages. If the SOC sees related alerts, they call the emergency contact rather than blocking Leo's access without notice.
-
-Leo's start message for ENG-440 names staging only. If the SOC calls about his IP, he confirms the ticket, shares the window and reduces rate or pauses if they ask. Silent testing against a watching SOC creates avoidable incidents.
-
-The start message goes out at 08:05 with the ENG-440 ticket id, the source IP and the 12:00 end time. Any rate change the SOC requests is written in the activity log with the time and the analyst's name. At 12:00 Leo posts stop to the engagement channel with the ticket id so the SOC can clear his IP from the watch list.
+Send start and stop messages. If the SOC sees related alerts, they call the emergency contact rather than blocking Leo's access without notice. Leo's start message for ENG-440 goes out at 08:05, names staging only and carries the ticket id, the source IP and the 12:00 end time. If the SOC calls about his IP, he confirms the ticket, shares the window and reduces rate or pauses if they ask; any rate change is written in the activity log with the time and the analyst's name. At 12:00 Leo posts stop to the engagement channel with the ticket id so the SOC can clear his IP from the watch list. Silent testing against a watching SOC creates avoidable incidents.
 
 ### 6.4 Mid-test questions
 
-New hostname discovered? Pause and ask. Do not "just include it."
-
-At 09:40 Leo finds a hostname that might be production; he pauses, asks the product owner, learns it is staging, logs the decision and continues. Guessing would have been out of scope.
-
-The product owner's reply confirming the host belongs to staging is pasted into the ticket before testing resumes. The pause costs minutes and prevents hours of unauthorized testing; guessing would have been out of scope.
-
-The 09:40 question to the product owner costs minutes; an unauthorized probe on a production-looking host would cost the engagement. The 09:40 hostname pause is logged with the product owner's answer so ENG-440 shows judgment under time pressure, not a lucky guess.
+New hostname discovered? Pause and ask. Do not "just include it." At 09:40 Leo finds a hostname that might be production; he pauses, asks the product owner, learns it is staging, logs the decision and continues. The product owner's reply confirming the host belongs to staging is pasted into the ticket before testing resumes, so ENG-440 shows judgment under time pressure, not a lucky guess. The question costs minutes; an unauthorized probe on a production-looking host would cost the engagement. Guessing would have been out of scope.
 
 ### 6.5 End state
 
-At stop time, stop. Unfinished checks become next-window work or explicit out-of-time notes — not silent overruns.
-
-At 12:00 Leo stops even if a WSTG check is half done. The unfinished item becomes an out-of-time note or next-window work. Silent overruns break the agreement the SOC and CISO relied on.
-
-The half-finished WSTG check is listed in the report with the step it reached, so the next window starts there. The SOC expects silence after the 12:00 stop message, so any later packet from Leo's IP would look like an attack. The 12:00 stop on ENG-440 is the same rule he practises on ENG-CLASS-11; member traffic does not get a silent overrun.
+At stop time, stop. Unfinished checks become next-window work or explicit out-of-time notes — not silent overruns. At 12:00 Leo stops even if a WSTG check is half done. The half-finished check is listed in the report with the step it reached, so the next window starts there. The SOC expects silence after the 12:00 stop message, so any later packet from Leo's IP would look like an attack. Silent overruns break the agreement the SOC and CISO relied on, and the 12:00 stop on ENG-440 is the same rule he practises on ENG-CLASS-11.
 
 ### 6.6 Handover between testers
 
-If Leo ends his shift and a colleague continues, the activity log and evidence vault are the handover. Verbal notes are not enough; the colleague must see what was already validated so they do not retest destructively or miss a stop condition.
-
-The colleague opening the vault should see validated findings, open questions and any stop conditions already hit. Retesting a fixed item destructively, or missing a pause that Leo already agreed, is what a written handover prevents.
-
-Handover notes name the next safe action and anything that must not be repeated. When a colleague picks up mid-window, the note plus the vault path is enough; Leo does not leave critical context only in his head.
+If Leo ends his shift and a colleague continues, the activity log and evidence vault are the handover. Verbal notes are not enough; the colleague must see what was already validated so they do not retest destructively or miss a stop condition. The colleague opening the vault should see validated findings, open questions and any stop conditions already hit. Handover notes name the next safe action and anything that must not be repeated, such as a pause Leo already agreed. When a colleague picks up mid-window, the note plus the vault path is enough; Leo does not leave critical context only in his head.
 
 ### 6.7 Communication channel discipline
 
-Engagement chat is for scope, stops and status — not for jokes about "hacking the bank". Casual language leaks into screenshots and damages trust if an examiner later reads the channel.
-
-Leo writes status in plain, professional words. Screenshots of the channel can appear in evidence or examiner review, so jokes about hacking the bank are never typed there.
-
-Screenshots for ENG-440 strip desktop clutter and unrelated tabs before they enter the vault under the ticket id. Communication stays in the engagement channel with ticket ids; personal chat is not an evidence store for ENG-440.
+Engagement chat is for scope, stops and status — not for jokes about "hacking the bank". Casual language leaks into screenshots and damages trust if an examiner later reads the channel. Leo writes status in plain, professional words, with ticket ids, because screenshots of the channel can appear in evidence or examiner review. Screenshots for ENG-440 strip desktop clutter and unrelated tabs before they enter the vault under the ticket id. Communication stays in the engagement channel; personal chat is not an evidence store for ENG-440.
 
 ### 6.8 Window extensions
 
-If work must continue past the window, Leo stops, requests a written extension from the CISO, and waits for confirmation before any further packet leaves his laptop. Verbal "sure, keep going" is not enough.
-
-If Saturday runs long, Leo's laptop sends no further packets until a written extension exists. A verbal sure from anyone, including the CISO on the phone, is not enough to reopen the window.
-
-A written extension names the new end time and is filed with the ROE before work resumes. Verbal agreements to go a little longer are refused; the SOC and emergency contact must see the same clock Leo uses.
+If work must continue past the window, Leo stops, requests a written extension from the CISO, and waits for confirmation before any further packet leaves his laptop. Verbal "sure, keep going" is not enough, even from the CISO on the phone. A written extension names the new end time and is filed with the ROE before work resumes. If Saturday runs long, Leo's laptop sends no further packets until that extension exists, because the SOC and emergency contact must see the same clock Leo uses.
 
 ### Worked example (synthetic HCU)
 
@@ -530,69 +466,35 @@ You will (1) suggest controls that match findings; (2) distinguish compensating 
 
 ### 7.1 Match control to finding
 
-A shared admin password finding wants named accounts and vaulting; an open redirect wants allow-listed destinations; a missing cookie flag wants the flag set and checked in CI.
-
-Leo writes each recommendation to match the finding: named VPN accounts and a vault for shared passwords; allow-listed destinations for an open redirect; Secure and HttpOnly flags checked in CI for the session cookie. Generic advice such as harden the app does not tell an owner what to change.
-
-App-sec owns Secure and HttpOnly for the cookie-flag finding; the recommendation line carries that name and a due date. Matching control to finding means Secure and HttpOnly for the cookie-flag item, not a vague harden sessions line.
+A shared admin password finding wants named accounts and vaulting; an open redirect wants allow-listed destinations; a missing cookie flag wants the flag set and checked in CI. Leo writes each recommendation to match the finding: named VPN accounts and a vault for shared passwords; allow-listed destinations for an open redirect; Secure and HttpOnly flags checked in CI for the session cookie. App-sec owns Secure and HttpOnly for the cookie-flag finding, and the recommendation line carries that name and a due date. Generic advice such as "harden the app" or "harden sessions" does not tell an owner what to change.
 
 ### 7.2 Compensating controls
 
-When the ideal fix is months away, a compensating control reduces risk now — for example, VPN admin paths restricted to jump hosts while password reuse is being eliminated.
-
-While password reuse is being eliminated, restricting VPN admin paths to jump hosts reduces exposure now. Leo records the compensating control as temporary, with an owner and a date to revisit the ideal fix, so it does not become permanent by neglect.
-
-After the banner is patched, temporary access rules come off the ticket with a retest note and a retire timestamp. Temporary network restrictions around an outdated banner are acceptable only with an owner and an end date; open-ended compensations become forgotten debt.
+When the ideal fix is months away, a compensating control reduces risk now — for example, VPN admin paths restricted to jump hosts while password reuse is being eliminated. Leo records the compensating control as temporary, with an owner and a date to revisit the ideal fix, so it does not become permanent by neglect. Temporary network restrictions around an outdated banner are acceptable on the same terms: after the banner is patched, the access rules come off the ticket with a retest note and a retire timestamp. Open-ended compensations become forgotten debt.
 
 ### 7.3 Retest design
 
-Retest only the agreed findings, with the same or equivalent method, after the owner says the fix is live. Record pass or fail with evidence.
-
-After the owner says the cookie flags are live on staging, Leo repeats the same check with the recorded tool version. Pass or fail goes on the ticket with a fresh screenshot. Retesting unrelated findings wastes the window.
-
-A retest that touches a host outside the original ENG-440 list waits for a written scope update before Leo runs it. Leo confirms hostnames, ports and build versions against the owner's change note before calling a retest a failure.
+Retest only the agreed findings, with the same or equivalent method, after the owner says the fix is live. Record pass or fail with evidence. After the owner says the cookie flags are live on staging, Leo repeats the same check with the recorded tool version, and pass or fail goes on the ticket with a fresh screenshot. He confirms hostnames, ports and build versions against the owner's change note before calling a retest a failure. A retest that touches a host outside the original ENG-440 list waits for a written scope update, and retesting unrelated findings wastes the window.
 
 ### 7.4 Verified means
 
-Verified means Leo reproduced the original symptom as fixed (or confirmed the compensating control works), not that the owner said they fixed it.
-
-Owner confirmation of deployment is necessary but not sufficient. Leo or another tester must see the original symptom gone, or the compensating control working, before the ticket is marked verified.
-
-Before-and-after cookie screenshots are hashed into the vault and linked from T-15 so verification is not verbal. Verified means evidence in the record, not a verbal assurance that someone thinks it is fixed.
+Verified means Leo reproduced the original symptom as fixed (or confirmed the compensating control works), not that the owner said they fixed it. Owner confirmation of deployment is necessary but not sufficient. Leo or another tester must see the original symptom gone, or the compensating control working, before the ticket is marked verified. Before-and-after cookie screenshots are hashed into the vault and linked from T-15, so verification is evidence in the record, not a verbal assurance that someone thinks it is fixed.
 
 ### 7.5 Tracking
 
-Findings become tickets with owners and dates; verification closes them.
-
-Each HCU finding becomes a ticket with an owner and a due date; verification evidence closes it. Tickets without owners or dates hide risk in the backlog, which is why lab_ticket flags incomplete fields.
-
-Every Friday Leo opens the tracker; blanks on owner or due date escalate the same week rather than waiting for exam season. lab_ticket marks T-15 incomplete for owner and verified, and T-18 incomplete for due date; those never count as closed-ready.
-
-Process fixes are how Harborline Credit Union keeps ticket quality from depending on heroes. T-15 and T-18 stay incomplete until owner, verified and due date are filled; weekly tracker review escalates blanks before they age into exam findings.
+Findings become tickets with owners and dates; verification closes them. Each HCU finding becomes a ticket with an owner and a due date, and verification evidence closes it. Tickets without owners or dates hide risk in the backlog, which is why Chapter 10's lab_ticket flags incomplete fields: it marks T-15 incomplete for owner and verified, and T-18 incomplete for due date, and those never count as closed-ready. Every Friday Leo opens the tracker, and blanks on owner or due date escalate the same week rather than aging into exam findings.
 
 ### 7.6 Partial fixes
 
-Sometimes owners fix one path and leave another open. Leo's retest checklist names each path from the original finding. A ticket is not closed until every listed path fails to reproduce the issue or an accepted compensating control is verified.
-
-For an open redirect, Leo lists each parameter and path from the original finding. Closing after fixing only one leaves members exposed on the others. Partial fixes stay open until the checklist is done.
-
-If one redirect path remains after a partial fix, the CISO accepts it in writing with an expiry or the ticket stays open. Partial fixes that leave one exposure path open stay open on the tracker until the residual is owned or removed.
+Sometimes owners fix one path and leave another open. Leo's retest checklist names each path from the original finding. A ticket is not closed until every listed path fails to reproduce the issue or an accepted compensating control is verified. For an open redirect, Leo lists each parameter and path from the original finding; closing after fixing only one leaves members exposed on the others. If one redirect path remains after a partial fix, the CISO accepts it in writing with an expiry or the ticket stays open on the tracker until the residual is owned or removed.
 
 ### 7.7 Verification owners
 
-The person who applies a fix should not be the only person who marks it verified. Leo or another tester retests; the owner confirms deployment. Separation keeps wishful closures out of the metrics.
-
-Wishful closures — fixed because I deployed it — do not survive a separate retest. Metrics that count verified tickets only after Leo signs keep the numbers honest for the CISO and examiners.
-
-A colleague verifies any compensating control Leo applied so closure never rests on the same hands that made the change. Verification owners are named so closure cannot depend on the same person who made the change.
+The person who applies a fix should not be the only person who marks it verified. Leo or another tester retests; the owner confirms deployment. Separation keeps wishful closures out of the metrics: "fixed because I deployed it" does not survive a separate retest. The same rule applies to Leo, so a colleague verifies any compensating control he applied and closure never rests on the same hands that made the change. Metrics that count verified tickets only after a separate tester signs keep the numbers honest for the CISO and examiners.
 
 ### 7.8 Regression watch
 
-After a fix, Leo asks whether related paths were checked by the owner. A patched open redirect that leaves a second parameter untouched is a common regression; the retest plan names siblings when they exist.
-
-When the owner patches one redirect parameter, Leo's retest plan already names the sibling parameters from the finding. Regressions are cheaper to catch in the same window than in the next exam cycle.
-
-Regression watch after ENG-440 checks that cookie flags and redirect fixes stay in later builds. A fix that vanishes in the next staging deploy reopens the ticket with the build id attached.
+After a fix, Leo asks whether related paths were checked by the owner. A patched open redirect that leaves a second parameter untouched is a common regression; the retest plan names siblings when they exist. When the owner patches one redirect parameter, Leo's retest plan already names the sibling parameters from the finding, and regressions are cheaper to catch in the same window than in the next exam cycle. Regression watch after ENG-440 also checks that cookie flags and redirect fixes stay in later builds. A fix that vanishes in the next staging deploy reopens the ticket with the build id attached.
 
 ### Worked example (synthetic HCU)
 
@@ -630,69 +532,35 @@ You will (1) analyse a synthetic HCU case file; (2) separate facts from guesses;
 
 ### 8.1 The case file
 
-A synthetic packet holds: ROE excerpt, three validated findings, activity log, and a note that a staff member reused the VPN password on a personal email (reported by the staff member).
-
-The packet is labelled ENG-440 and held in the vault. The password-reuse note is marked as staff-reported, not as something Leo discovered by touching personal email, which stays out of scope.
-
-The report goes to the CISO as a staff-awareness issue, because the reuse concerns accounts outside the engagement. The case file holds facts, guesses and actions in labelled lines.
+A synthetic packet holds: ROE excerpt, three validated findings, activity log, and a note that a staff member reused the VPN password on a personal email (reported by the staff member). The packet is labelled ENG-440 and held in the vault, and it holds facts, guesses and actions in labelled lines. The password-reuse note is marked as staff-reported, not as something Leo discovered by touching personal email, which stays out of scope. The report goes to the CISO as a staff-awareness issue, because the reuse concerns accounts outside the engagement.
 
 ### 8.2 Facts versus guesses
 
-Fact: password reuse was reported. Guess: an attacker already has the password. Leo labels guesses clearly.
-
-His case file says Fact for the report and Guess for any claim that an attacker already has the password. Guesses may drive next steps, but they are never written as confirmed findings.
-
-The case note's Guesses line reads none about external abuse yet, which is all the evidence supports. If SOC log review later shows unusual VPN sessions, the guess can move to Fact with the log extract attached.
+Fact: password reuse was reported. Guess: an attacker already has the password. Leo labels guesses clearly: his case file says Fact for the report and Guess for any claim that an attacker already has the password. Guesses may drive next steps, but they are never written as confirmed findings. The case note's Guesses line reads none about external abuse yet, which is all the evidence supports. If SOC log review later shows unusual VPN sessions, the guess can move to Fact with the log extract attached.
 
 ### 8.3 Next steps inside ROE
 
-Force VPN password reset for that account; check VPN logs for unusual sessions; do not touch personal email (out of scope).
-
-Leo requests a VPN password reset for that account and asks the SOC to check logs for unusual sessions. Personal email is out of scope, so he does not contact the provider or request that inbox's logs.
-
-The reset request goes through an IT service desk ticket linked to ENG-440, so the timeline stays in one place. The staff member who reported the reuse changes the personal password themselves; HCU never touches that account.
+Force VPN password reset for that account; check VPN logs for unusual sessions; do not touch personal email (out of scope). Leo requests a VPN password reset for that account and asks the SOC to check logs for unusual sessions. The reset request goes through an IT service desk ticket linked to ENG-440, so the timeline stays in one place. Personal email is out of scope, so he does not contact the provider or request that inbox's logs. The staff member who reported the reuse changes the personal password themselves; HCU never touches that account.
 
 ### 8.4 Escalation
 
-Member-data exposure risk and password reuse across personal services go to the CISO the same day.
-
-Same-day escalation gives the CISO time to order resets and communications before the risk spreads. Waiting for the weekly finding meeting would be too slow for member-data exposure.
-
-The CISO receives the note by phone and email before the end of the working day, not at the next scheduled meeting. He escalates with a one-page timeline of facts, not frustration alone.
-
-He escalates with a one-page timeline of facts, guesses labelled as guesses, and the next safe action. Same-day notice gives the CISO room to order VPN resets before member-data exposure spreads beyond the staff-reported reuse case.
+Member-data exposure risk and password reuse across personal services go to the CISO the same day. Same-day escalation gives the CISO time to order VPN resets and communications before the risk spreads beyond the staff-reported reuse case; waiting for the weekly finding meeting would be too slow for member-data exposure. The CISO receives the note by phone and email before the end of the working day. Leo escalates with a one-page timeline of facts, guesses labelled as guesses, and the next safe action, not frustration alone.
 
 ### 8.5 ATT&CK label
 
-Password reuse enabling VPN access maps to T1078 Valid Accounts for the SOC's detection search.
-
-Leo adds T1078 to the case note so the SOC can search with a shared name. The label describes the behaviour; it does not prove an external attacker was involved.
-
-The SOC uses the technique name to pull its existing T1078 detections for the VPN rather than writing new ones in a hurry. If the hunt finds nothing, the report says no unusual sessions were seen in the reviewed range, not that the account was never misused.
+Password reuse enabling VPN access maps to T1078 Valid Accounts for the SOC's detection search. Leo adds T1078 to the case note so the SOC can search with a shared name. The label describes the behaviour; it does not prove an external attacker was involved. The SOC uses the technique name to pull its existing T1078 detections for the VPN rather than writing new ones in a hurry. If the hunt finds nothing, the report says no unusual sessions were seen in the reviewed range, not that the account was never misused.
 
 ### 8.6 Writing for the case file
 
-Case notes use timestamps, ticket ids and labels Fact/Guess/Action. Free-form narrative is fine for the summary, but the labelled lines are what the CISO and auditors can scan in a minute during an incident.
-
-During the password-reuse incident, labelled lines let the CISO scan facts, guesses and actions without reading a long narrative first. Leo still writes a short summary for people who need the story.
-
-Each labelled line starts with a timestamp and the ENG-440 ticket id, so the CISO can sort the incident at a glance. The summary runs to three or four sentences and sits above the labelled lines, never in place of them.
+Case notes use timestamps, ticket ids and labels Fact/Guess/Action. Free-form narrative is fine for the summary, but the labelled lines are what the CISO and auditors can scan in a minute during an incident. During the password-reuse incident, each labelled line starts with a timestamp and the ENG-440 ticket id, so the CISO can sort facts, guesses and actions at a glance without reading a long narrative first. Leo still writes a short summary for people who need the story; it runs to three or four sentences and sits above the labelled lines, never in place of them.
 
 ### 8.7 Time to escalate
 
-Leo uses a simple rule: if member funds, large-scale personal data or safety systems might be affected, escalate within an hour. Lower-impact items follow the normal finding process.
-
-Password reuse that could open the VPN sits under that one-hour rule because member data might follow. A low-impact outdated banner on staging follows the normal finding process.
-
-The clock starts when Leo reads the staff report, and the CISO call is logged with its time against that start. The outdated banner on staging goes into the ENG-440 report with app-sec's normal due date, not to the CISO's phone.
+Leo uses a simple rule: if member funds, large-scale personal data or safety systems might be affected, escalate within an hour. Lower-impact items follow the normal finding process. Password reuse that could open the VPN sits under that one-hour rule because member data might follow. The clock starts when Leo reads the staff report, and the CISO call is logged with its time against that start. The low-impact outdated banner on staging goes into the ENG-440 report with app-sec's normal due date, not to the CISO's phone.
 
 ### 8.8 SOC collaboration on the case
 
-Leo shares the ATT&CK technique and account id with the SOC so they can hunt, but he does not paste member PII into the ticket. Hunt queries use account handles and time ranges.
-
-Hunt queries use the VPN account handle and time range from ENG-440. Member names, national ids and full account numbers stay out of the SOC ticket and out of chat screenshots.
-
-The SOC ticket holds the account handle, the time range and T1078, and nothing that identifies a member. Screenshots from the hunt are cropped to the session columns before they enter the vault.
+Leo shares the ATT&CK technique and account id with the SOC so they can hunt, but he does not paste member PII into the ticket. Hunt queries use the VPN account handle and time range from ENG-440. The SOC ticket holds the account handle, the time range and T1078, and nothing that identifies a member: names, national ids and full account numbers stay out of the SOC ticket and out of chat screenshots. Screenshots from the hunt are cropped to the session columns before they enter the vault.
 
 ### Worked example (synthetic HCU)
 
@@ -1234,7 +1102,7 @@ Model answers for EX001–EX060. Harborline Credit Union, Leo Okonkwo and all fi
 
 **EX031.** Allow-list the redirect destinations or remove user-controlled redirects.
 
-**EX032.** Restrict VPN admin interfaces to the jump host network and require MFA while passwords are uniqued.
+**EX032.** Restrict VPN admin interfaces to the jump host network and require MFA while shared passwords are replaced with unique ones.
 
 **EX033.** After the owner states the fix is deployed and within the retest window in the ticket.
 
