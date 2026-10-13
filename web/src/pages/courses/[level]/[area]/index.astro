@@ -17,16 +17,17 @@ const levelName = catalog.level_names[course.level].en;
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>
       <div class="eyebrow">COURSE {String(course.number).padStart(3, '0')} · <span>{levelName}</span></div>
       <h1>{course.title}</h1>
-      <p>One course, one book. Read its lessons in order, or open the full book. Each lesson keeps its exercises and worked answers together.</p>
+      <p>One course, one book. Use the daily study plan for Monday–Friday portions, explained examples and exercises, or read whole chapters below. Planned daily positions are not authored lessons.</p>
       <div class="course-heading-actions">
-        <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option></select></div>
+        <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
+        <a id="daily-study-link" class="button gold" href={`/daily/?level=${course.level}&area=${course.area}&lang=en`}>Daily study plan →</a>
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
         <a class="button secondary" href={levelPath(course.level)} data-language-link>All courses at this level →</a>
       </div>
       <p id="course-status" class="status" role="status">Loading this course…</p>
     </div></section>
     <section class="course-workspace shell">
-      <aside class="card course-sidebar" aria-label="Lessons in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE GUIDE</div><h2>Lessons in this course</h2><p>Choose a chapter to read on this page.</p></div><nav id="course-lessons" aria-label="Course lessons"></nav></aside>
+      <aside class="card course-sidebar" aria-label="Whole chapters in this course"><div class="course-sidebar-head"><div class="eyebrow">COURSE GUIDE</div><h2>Whole-chapter guide</h2><p>Read a complete subject-chapter here. Daily portions use the separate daily study plan.</p></div><nav id="course-lessons" aria-label="Course chapters"></nav></aside>
       <div class="card course-reader">
         <div id="course-kicker" class="reader-kicker">COURSE {String(course.number).padStart(3, '0')}</div>
         <h2 id="course-reader-title">{course.title}</h2>
@@ -34,7 +35,7 @@ const levelName = catalog.level_names[course.level].en;
         <div id="course-source" class="source-bar"></div>
         <article id="course-markdown" class="prose" hidden></article>
         <section id="course-answers" class="answer-section" hidden><details><summary>View worked answers</summary><div id="course-answer-markdown" class="prose"></div></details></section>
-        <section id="course-progress" class="progress-tools" hidden><div class="eyebrow">YOUR PROGRESS · OPTIONAL</div><h3>Save this lesson</h3><p>You can study without an account. With sign-in, mark lessons and save your answers.</p><div id="course-progress-action"></div><div id="course-exercise-forms"></div><p id="course-progress-status" role="status"></p></section>
+        <section id="course-progress" class="progress-tools" hidden><div class="eyebrow">YOUR PROGRESS · OPTIONAL</div><h3>Chapter progress — existing records</h3><p>This legacy control saves whole-chapter progress and exercise attempts. It does not mark the new daily lessons complete. Study never requires an account.</p><div id="course-progress-action"></div><div id="course-exercise-forms"></div><p id="course-progress-status" role="status"></p></section>
         <nav id="course-lesson-nav" class="lesson-nav" aria-label="Lesson navigation"></nav>
       </div>
     </section>
@@ -58,8 +59,9 @@ const levelName = catalog.level_names[course.level].en;
     const query = new URLSearchParams(location.search);
     const selector = $('course-language') as HTMLSelectElement;
     let language = query.get('lang') || siteLanguage();
-    if (!['en', 'pt', 'es'].includes(language)) language = 'en';
+    if (!['en', 'pt', 'es', 'he', 'fr', 'ru', 'de', 'zh', 'ja'].includes(language)) language = 'en';
     selector.value = language;
+    $('daily-study-link').setAttribute('href', '/daily/?' + new URLSearchParams({ level, area, lang: language }));
     let details: Details | null = null;
     let currentChapter: number | null = null;
     let requestId = 0;
