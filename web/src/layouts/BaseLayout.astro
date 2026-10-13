@@ -39,6 +39,7 @@ const path = Astro.url.pathname;
         </div>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="/#comece" aria-current={path === '/' ? 'page' : undefined}>Start here</a>
+          <a href="/calendar/" data-study-calendar-link aria-current={path === '/calendar/' ? 'page' : undefined}>Study calendar</a>
           <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
           <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
         </nav>
@@ -53,7 +54,7 @@ const path = Astro.url.pathname;
     <footer class="footer">
       <div class="shell footer-inner">
         <span>© CyKin · <span>Open learning library</span> · <span>Editorial responsibility: hiagokinlevi</span></span>
-        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a></div>
+        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/for-ai/">API & MCP</a><a href="/read/?path=RIGHTS.md">Rights</a></div>
       </div>
     </footer>
     <script>
@@ -70,6 +71,18 @@ const path = Astro.url.pathname;
       translatePage();
       for (const anchor of document.querySelectorAll<HTMLAnchorElement>('a[data-language-link]')) {
         const target = new URL(anchor.href); target.searchParams.set('lang', editionLanguage()); target.searchParams.set('ui', siteLanguage()); anchor.href = target.href;
+      }
+      for (const anchor of document.querySelectorAll<HTMLAnchorElement>('a[data-study-calendar-link]')) {
+        anchor.addEventListener('click', () => {
+          const current = new URL(location.href);
+          const course = current.pathname.match(/^\/courses\/([a-z0-9-]+)\/([a-z0-9-]+)\/?$/);
+          const target = new URL('/calendar/', location.origin);
+          const edition = (document.getElementById('course-language') as HTMLSelectElement | null)?.value || current.searchParams.get('lang') || editionLanguage();
+          target.searchParams.set('lang', edition); target.searchParams.set('ui', siteLanguage());
+          for (const key of ['level', 'area', 'start']) if (current.searchParams.has(key)) target.searchParams.set(key, current.searchParams.get(key)!);
+          if (course) { target.searchParams.set('level', course[1]); target.searchParams.set('area', course[2]); }
+          anchor.href = target.href;
+        });
       }
       initializeCourseMenus();
       const toggle = document.getElementById('theme-toggle');
