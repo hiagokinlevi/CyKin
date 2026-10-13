@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–35 de 50 já estão escritos em português, com os exercícios EX001–EX105 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 36–50 (EX106–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 36–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-36), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1380,11 +1380,232 @@ Os testes verificam o que conferem; caminhos não testados ainda podem falhar.
 - **EX089 — Lacuna na eliminação.** Que armazenamento manteve dados depois da eliminação na primeira execução? *Rubrica:* 3 = o armazenamento de análise, sob o pseudônimo;; 2 = cita a análise;; 1 = nenhum;; 0 = nenhuma.
 - **EX090 — Alegação versus evidência.** Diferencie alegação de evidência sobre a eliminação. *Rubrica:* 3 = a alegação diz que funciona; a evidência é um log de teste datado cobrindo todos os armazenamentos;; 2 = menciona logs;; 1 = equipara as duas;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Privacidade e proteção de dados: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar a portabilidade de dados; (2) integrar os sistemas de um fornecedor ao atendimento dos direitos; (3) implementar uma análise de uso que preserve a privacidade.
+
+### 31.1 Portabilidade
+
+O artigo 20 do GDPR dá aos pacientes o direito de receber os dados que forneceram, em formato estruturado, de uso corrente e legível por máquina, quando o tratamento se baseia no consentimento ou em contrato e é feito por meios automatizados; a LGPD prevê a portabilidade no art. 18, V. Zara implementa uma exportação em um formato JSON documentado, acompanhada de um resumo legível por pessoas. Ela inclui o histórico de consultas e os sintomas informados pelo paciente, e exclui as anotações dos médicos, que são cobertas pelo direito de acesso, mas não pela portabilidade. Ela documenta o raciocínio, porque a fronteira entre portabilidade e acesso costuma confundir os pacientes.
+
+### 31.2 Integração com o fornecedor
+
+A lacuna dos logs de chat encontrada no laboratório de verificação exige integração com o fornecedor. Zara projeta uma interface pela qual a Pellmore pode pedir os logs de chat de um paciente e a exclusão deles, recebendo de volta confirmações assinadas. O fornecedor aceita a interface como parte de suas obrigações de operador pelo artigo 28, que exige que ele auxilie o controlador no atendimento aos direitos dos titulares. Ela testa a interface com pacientes sintéticos e confirma que as exclusões são confirmadas dentro dos dois dias combinados e que a confirmação fica guardada como evidência para futuras auditorias.
+
+### 31.3 Novo projeto da análise de uso
+
+Com o SDK de análise removido, a Pellmore ainda precisa saber como o aplicativo é usado. Zara implementa um pipeline de análise no servidor que recebe eventos genéricos com pseudônimos específicos por destinatário, agrega-os diariamente e descarta os eventos brutos depois de sete dias. Os painéis mostram contagens por funcionalidade e por dia, com as contagens abaixo de dez suprimidas. Ela decide não coletar nenhum identificador de dispositivo. O projeto dá aos gerentes de produto a informação de que precisam e elimina o rastreamento que tinha feito do SDK original um risco alto na DPIA.
+
+### 31.4 Qualidade do código
+
+O trabalho de implementação aumenta o tamanho do código, e Zara revisa a qualidade. Ela encontra lógica de pseudonimização duplicada em três serviços e a consolida na biblioteca compartilhada. Acrescenta testes para casos extremos, como pacientes sem nenhuma consulta e históricos de chat muito longos. Também escreve a documentação do formato de exportação, para que pacientes e outros prestadores possam usá-lo. O Prof. Holm lembra que a manutenibilidade afeta a privacidade: lógicas duplicadas se distanciam com o tempo, e uma cópia esquecida pode quebrar em silêncio uma garantia que todos supõem continuar valendo.
+
+### Exemplo resolvido
+
+Zara implementa uma exportação de portabilidade em JSON, uma interface com o fornecedor com confirmações de exclusão assinadas e uma análise de uso no servidor com supressão de contagens pequenas, e consolida o código de pseudonimização.
+
+> **Caso sintético.** As interfaces e os dados são sintéticos; os artigos 20 e 28 do GDPR e o art. 18 da LGPD são reais.
+
+### Erros e limites
+
+Os formatos de portabilidade evoluem; versione o esquema e mantenha os leitores antigos funcionando.
+
+### Exercícios
+
+- **EX091 — Alcance da portabilidade.** O que a portabilidade inclui e exclui no projeto de Zara? *Rubrica:* 3 = inclui dados fornecidos pelo paciente, como consultas e sintomas; exclui as anotações dos médicos;; 2 = uma parte;; 1 = tudo;; 0 = nenhuma.
+- **EX092 — Auxílio do operador.** Que artigo obriga o fornecedor a ajudar com os pedidos de direitos? *Rubrica:* 3 = o artigo 28;; 2 = menciona contrato;; 1 = errado;; 0 = nenhuma.
+- **EX093 — Supressão de contagens pequenas.** Por que suprimir as contagens abaixo de dez nos painéis? *Rubrica:* 3 = contagens pequenas podem apontar para pessoas;; 2 = menciona privacidade;; 1 = sem motivo;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Privacidade e proteção de dados: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular a confiabilidade de uma eliminação em vários armazenamentos; (2) melhorar a confiabilidade com novas tentativas; (3) relacionar a confiabilidade ao cumprimento dos direitos.
+
+### 32.1 A eliminação como sistema em série
+
+A eliminação só é bem-sucedida se todos os armazenamentos excluírem os dados. Em termos de confiabilidade, os armazenamentos formam um sistema em série: a probabilidade de eliminação completa é o produto das probabilidades de sucesso de cada armazenamento. Zara estima pelos logs as taxas de sucesso na primeira tentativa: banco de agendamentos 0,995, prontuários 0,99, arquivo de vídeo 0,95, análise 0,90 e a marcação de exclusão nos backups 0,98. A multiplicação dá 0,825, então cerca de um pedido em seis deixaria dados em algum lugar na primeira tentativa. Ela apresenta isso como um problema de confiabilidade, e não como uma tecnicalidade jurídica. Cada sistema a mais multiplica a chance de falha, então reduzir as cópias melhora a confiabilidade tanto quanto corrigir qualquer exclusão isolada.
+
+### 32.2 Novas tentativas
+
+Muitas falhas são transitórias: tempos limite estourados, bloqueios, erros temporários de rede. Zara acrescenta uma nova tentativa automática por armazenamento. Se as falhas forem independentes, a probabilidade de um armazenamento falhar duas vezes é o quadrado de sua probabilidade de falha. Com uma nova tentativa, a probabilidade geral de eliminação completa sobe para 0,987. As eliminações incompletas esperadas por mil pedidos caem de 175 para 13. O laboratório confirma o cálculo. Ela observa que as falhas restantes tendem a ser problemas persistentes, que novas tentativas não resolvem e que exigem alertas. As falhas persistentes precisam de acompanhamento humano.
+
+### 32.3 Falhas persistentes
+
+Para as falhas restantes, Zara acrescenta uma fila de mensagens mortas: os pedidos que falham depois da nova tentativa são encaminhados a um operador com os detalhes do armazenamento que falhou. O operador investiga e conclui a exclusão manualmente, registrando o resultado. Ela fixa a meta de resolver todos esses casos em até sete dias, bem dentro do prazo de resposta de um mês do artigo 12(3). O projeto transforma uma falha silenciosa em uma tarefa visível, o que importa porque uma eliminação que falha em silêncio é pior que uma eliminação lenta: o paciente acredita que os dados sumiram.
+
+### 32.4 A hipótese de independência
+
+O cálculo das novas tentativas supõe falhas independentes, mas as falhas podem ser correlacionadas: se o armazenamento de análise estiver fora do ar, todos os pedidos falham ali ao mesmo tempo. Zara acrescenta monitoramento da disponibilidade dos armazenamentos e pausa a eliminação em um armazenamento durante uma queda, retomando depois. Ela também testa o sistema sob quedas simuladas. O Prof. Holm explica que a engenharia de confiabilidade aplicada à privacidade usa as mesmas ferramentas da segurança operacional: modelos em série e em paralelo, verificação da independência e injeção de falhas, e que os direitos garantidos em lei dependem desses detalhes técnicos. Ela testa as dependências compartilhadas.
+
+### Laboratório — Confiabilidade da eliminação em cinco armazenamentos
+
+```python
+# Erasure must reach five stores; each deletion job succeeds with its own probability. Effect of one retry.
+stores = {"booking DB": 0.995, "records": 0.99, "video archive": 0.95, "analytics": 0.90, "backups (flag)": 0.98}
+p1 = p2 = 1.0
+for s, p in stores.items():
+    p1 *= p; p2 *= 1 - (1 - p) ** 2
+print(f"all five complete on first attempt: {p1:.3f}")
+print(f"with one automatic retry per store:  {p2:.3f}")
+print(f"expected incomplete erasures per 1,000 requests: {1000*(1-p1):.0f} -> {1000*(1-p2):.0f}")
+```
+
+Execute com `python3 lab_erasure.py`. Saída verificada:
+
+```text
+all five complete on first attempt: 0.825
+with one automatic retry per store:  0.987
+expected incomplete erasures per 1,000 requests: 175 -> 13
+```
+
+### Exemplo resolvido
+
+Zara modela a eliminação como um sistema em série com 0,825 de sucesso na primeira tentativa, eleva esse valor para 0,987 com uma nova tentativa (de 175 para 13 incompletas por 1.000), encaminha as falhas persistentes a operadores e se protege contra quedas correlacionadas.
+
+> **Caso sintético.** As taxas de sucesso são sintéticas; o artigo 12(3) do GDPR é real.
+
+### Erros e limites
+
+Os logs podem superestimar o sucesso se as confirmações não forem conferidas; verifique a exclusão lendo os dados de volta.
+
+### Exercícios
+
+- **EX094 — Confiabilidade em série.** Por que a eliminação completa é um sistema em série? *Rubrica:* 3 = só tem sucesso se todos os armazenamentos excluírem, então as probabilidades se multiplicam;; 2 = menciona todos os armazenamentos;; 1 = em paralelo;; 0 = nenhuma.
+- **EX095 — Efeito da nova tentativa.** Como mudam as eliminações incompletas esperadas com uma nova tentativa? *Rubrica:* 3 = de 175 para 13 por 1.000;; 2 = só a direção;; 1 = errado;; 0 = nenhuma.
+- **EX096 — Falha silenciosa.** Por que uma falha silenciosa de eliminação é pior que uma lenta? *Rubrica:* 3 = o paciente acredita que os dados sumiram quando não sumiram;; 2 = menciona confiança;; 1 = são iguais;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Privacidade e proteção de dados: segurança operacional e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar para incidentes que afetem dados pessoais; (2) projetar uma resiliência que preserve a privacidade; (3) equilibrar disponibilidade e confidencialidade.
+
+### 33.1 Requisitos de resiliência
+
+O artigo 32 exige a capacidade de restabelecer a disponibilidade e o acesso aos dados pessoais em tempo hábil depois de um incidente. Na telemedicina, a indisponibilidade dos prontuários durante as consultas pode prejudicar os pacientes. Zara define objetivos de recuperação com os médicos: prontuários clínicos restabelecidos em até quatro horas, serviço de vídeo em até uma hora. Ela projeta backups e failover para cumpri-los e garante que as cópias de backup sejam cifradas e tenham acesso controlado. A resiliência, explica, é um requisito de privacidade além de operacional, porque perder o acesso aos dados prejudica os pacientes tanto quanto a divulgação indevida.
+
+### 33.2 Violações como incidentes
+
+O GDPR define a violação de dados pessoais de forma ampla, incluindo a perda de disponibilidade. Se um ransomware cifrar os prontuários e eles não puderem ser restabelecidos rapidamente, isso é uma violação mesmo que nenhum dado saia da Pellmore; a Resolução CD/ANPD nº 15/2024 também trata a disponibilidade entre os aspectos de um incidente de segurança. Zara trabalha com a equipe de segurança para alinhar a resposta a incidentes aos procedimentos de violação: todo incidente de segurança é avaliado quanto ao impacto sobre dados pessoais, e o encarregado é envolvido cedo. As Diretrizes 9/2022 do EDPB descrevem as violações de disponibilidade e a avaliação do risco, e ela as usa para treinar a equipe de incidentes.
+
+### 33.3 Privacidade durante a recuperação
+
+A recuperação pode criar riscos à privacidade. Restaurar um backup antigo poderia reintroduzir dados que os pacientes tinham pedido para eliminar ou que já tinham passado do prazo de retenção. Por isso, o runbook de recuperação de Zara reaplica o log de eliminações e a tabela de retenção depois de qualquer restauração, antes que o sistema volte ao serviço. Ela também limita quem pode acessar os backups durante a recuperação, já que as emergências tentam as equipes a compartilhar acessos amplamente. Ela testa o runbook em um exercício simulado e descobre que reaplicar as eliminações leva quarenta minutos, tempo que inclui no objetivo de tempo de recuperação.
+
+### 33.4 Degradação controlada
+
+Quando partes da plataforma falham, Zara quer que o sistema se degrade com segurança. Se o serviço de consentimento estiver fora do ar, os sistemas devem tratar o consentimento como ausente, em vez de supor que existe. Se o serviço de verificação de acesso estiver fora do ar, os médicos em consulta recebem acesso de emergência com registro reforçado e revisão posterior, em vez de ficarem sem acesso. Ela documenta essas regras de falha segura e de acesso de emergência (break-glass) e as combina com os médicos e com o encarregado. Projetar o comportamento em falha com antecedência evita decisões improvisadas durante uma queda.
+
+### Exemplo resolvido
+
+Zara define objetivos de recuperação com os médicos, trata a perda de disponibilidade como possível violação, reaplica as eliminações depois das restaurações (quarenta minutos) e define o consentimento com falha segura e o acesso de emergência.
+
+> **Caso sintético.** Os objetivos e os exercícios são sintéticos; o artigo 32 do GDPR, as Diretrizes 9/2022 do EDPB e a Resolução CD/ANPD nº 15/2024 são reais.
+
+### Erros e limites
+
+O acesso de emergência pode ser abusado; revise prontamente cada uso.
+
+### Exercícios
+
+- **EX097 — Violação de disponibilidade.** Um ransomware sem exfiltração pode ser uma violação de dados pessoais? *Rubrica:* 3 = sim; a perda de disponibilidade é uma violação;; 2 = sim, sem justificativa;; 1 = não;; 0 = nenhuma.
+- **EX098 — Risco da restauração.** Que risco à privacidade a restauração de um backup cria, e como é tratado? *Rubrica:* 3 = dados eliminados ou vencidos voltam; reaplicar o log de eliminações e a retenção antes do serviço;; 2 = uma parte;; 1 = nenhum;; 0 = nenhuma.
+- **EX099 — Consentimento com falha segura.** Como os sistemas devem se comportar se o serviço de consentimento cair? *Rubrica:* 3 = tratar o consentimento como ausente;; 2 = menciona cautela;; 1 = supor que existe;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Privacidade e proteção de dados: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar os controles de privacidade entre os serviços; (2) lidar com integrações de parceiros; (3) testar o comportamento integrado.
+
+### 34.1 Serviços compartilhados
+
+No quarto ano, as capacidades de privacidade da Pellmore estão espalhadas por vários serviços: verificações de acesso, consentimento, retenção, eliminação e análise de uso. Zara as integra por meio de uma plataforma de privacidade compartilhada com interfaces claras. Cada serviço de produto chama a plataforma, em vez de implementar sua própria lógica. A integração reduz a duplicação e a inconsistência, mas cria dependência: se a plataforma falhar, muitos serviços são afetados. Ela usa as regras de falha segura do Capítulo 33 e opera a plataforma com alta disponibilidade, tratando-a como infraestrutura crítica, e não como um projeto paralelo.
+
+### 34.2 Laboratório parceiro
+
+O laboratório parceiro da Pellmore recebe pedidos de exames e devolve os resultados. O parceiro é um controlador independente para seus próprios exames, como Zara concluiu usando as Diretrizes 07/2020 do EDPB. A integração precisa respeitar as obrigações das duas organizações. Zara projeta a interface para enviar só os dados necessários ao exame: um pseudônimo específico do destinatário, o tipo de exame, o identificador da amostra e os detalhes clinicamente necessários. Os resultados voltam sob o mesmo pseudônimo e são associados internamente. Ela documenta as responsabilidades em um acordo de compartilhamento de dados, incluindo quem responde a quais pedidos de direitos. O acordo é revisto todo ano.
+
+### 34.3 Testes de ponta a ponta
+
+Zara monta testes de ponta a ponta que atravessam serviços e parceiros usando pacientes sintéticos. Um paciente de teste agenda, faz a consulta, recebe um pedido de exame, obtém os resultados, pede acesso e depois a eliminação. O teste verifica se cada etapa produz os dados esperados e se a eliminação alcança todos os armazenamentos da Pellmore e dispara avisos ao parceiro para que ele trate o pedido do seu lado. A primeira execução revela que a mensagem de resultados do parceiro inclui o nome completo do paciente em um comentário de texto livre. A Pellmore e o parceiro combinam retirar os nomes dos comentários.
+
+### 34.4 Controle de mudanças
+
+Os sistemas integrados mudam o tempo todo. Zara estabelece a regra de que qualquer mudança em uma interface que transporte dados pessoais precisa de uma breve revisão de privacidade e de uma atualização do inventário. Ela automatiza a detecção: uma comparação de esquemas aponta campos novos nas mensagens das interfaces, e a revisão é disparada automaticamente. O Prof. Holm observa que é na integração que aparecem muitas falhas de privacidade, porque cada equipe supõe que outra cuida de determinada propriedade, e que a detecção automática de mudanças nas interfaces reduz a dependência de as pessoas lembrarem de perguntar.
+
+### Exemplo resolvido
+
+Zara centraliza as capacidades de privacidade em uma plataforma compartilhada, projeta uma interface mínima e pseudonimizada com o laboratório, encontra nomes nos comentários do parceiro por meio de testes de ponta a ponta e automatiza a revisão de privacidade das mudanças nas interfaces.
+
+> **Caso sintético.** O parceiro e os testes são sintéticos; as Diretrizes 07/2020 do EDPB são reais.
+
+### Erros e limites
+
+Uma plataforma compartilhada concentra as falhas; monitore e teste sua disponibilidade.
+
+### Exercícios
+
+- **EX100 — Trade-off da plataforma compartilhada.** Qual é o trade-off de uma plataforma de privacidade compartilhada? *Rubrica:* 3 = menos duplicação, mas dependência de um único serviço crítico;; 2 = uma parte;; 1 = nenhum trade-off;; 0 = nenhuma.
+- **EX101 — Papel do parceiro.** Por que o laboratório parceiro é um controlador independente? *Rubrica:* 3 = ele define as finalidades e os meios de seus próprios exames;; 2 = menciona independência;; 1 = operador;; 0 = nenhuma.
+- **EX102 — Detecção nas interfaces.** Como as mudanças nas interfaces são encaminhadas para revisão? *Rubrica:* 3 = uma comparação automática de esquemas aponta campos novos;; 2 = menciona automação;; 1 = só manual;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar um novo uso de dados com base na integridade contextual; (2) considerar grupos vulneráveis; (3) apresentar a uma banca diversa.
+
+### 35.1 O enunciado
+
+O enunciado do segundo ateliê pede que a equipe de Zara projete uma funcionalidade que permita a cuidadores da família ajudar pacientes idosos a gerenciar as consultas. Os cuidadores precisam de parte das informações, mas não de todas, e os pacientes podem ter motivos para manter algumas consultas em sigilo diante dos parentes. A equipe precisa projetar um compartilhamento que respeite a vontade do paciente. A integridade contextual de Nissenbaum orienta o trabalho: a informação compartilhada com um médico carrega normas de confidencialidade, e levá-la a um familiar exige uma escolha informada do paciente sobre o que circula e quando. Os pacientes escolhem por categoria.
+
+### 35.2 Compartilhamento granular
+
+A equipe projeta o compartilhamento por categoria: horários de consulta, lembretes de medicação e resultados de exames podem, cada um, ser compartilhados ou não. As anotações das consultas nunca são compartilhadas por padrão. Os pacientes escolhem as categorias na configuração inicial e podem mudá-las a qualquer momento. O cuidador vê um rótulo claro do que foi compartilhado. Zara garante que uma configuração de compartilhamento não possa ser alterada pelo cuidador, apenas pelo paciente ou, quando o paciente não tiver capacidade, por um representante legalmente autorizado, com essa autoridade verificada, e não apenas declarada.
+
+### 35.3 Pacientes vulneráveis
+
+A banca levanta casos de coerção: um parente controlador poderia pressionar o paciente a compartilhar tudo. A equipe acrescenta uma pergunta de revisão reservada: em momentos aleatórios, quando o paciente entra sozinho no aplicativo, ele pergunta se as configurações de compartilhamento ainda refletem a vontade do paciente, com uma opção discreta para alterá-las. A equipe também treina os médicos para perguntar sobre o compartilhamento durante as consultas. Zara observa que o WP248 lista os titulares vulneráveis como fator na avaliação do risco, e que projetar para usuários vulneráveis costuma melhorar a experiência de todos.
+
+### 35.4 Apresentação à banca
+
+A equipe apresenta o projeto a uma banca formada por uma médica, um cuidador, uma representante dos pacientes e um engenheiro. A representante dos pacientes pede textos mais simples; o cuidador pede avisos quando o compartilhamento mudar; a médica pergunta como as emergências são tratadas. A equipe acrescenta rótulos em linguagem simples e avisos, e esclarece que as emergências seguem os procedimentos clínicos, fora da funcionalidade de compartilhamento. Zara reflete que uma banca diversa encontra problemas que os engenheiros sozinhos deixariam passar, e que o projeto de privacidade fica mais forte quando as pessoas afetadas ajudam a moldá-lo.
+
+### Exemplo resolvido
+
+A equipe de Zara projeta um compartilhamento por categoria com os cuidadores, guiado pela integridade contextual, protege o controle do paciente, acrescenta perguntas reservadas contra a coerção e aprimora o projeto com uma banca diversa.
+
+> **Caso sintético.** A funcionalidade e a banca são sintéticas; Nissenbaum (2004) e o WP248 rev.01 são reais.
+
+### Erros e limites
+
+As perguntas reservadas podem alertar um parente controlador se forem vistas; projete a aparência delas com cuidado.
+
+### Exercícios
+
+- **EX103 — Anotações por padrão.** Por que as anotações das consultas nunca são compartilhadas por padrão? *Rubrica:* 3 = carregam normas de confidencialidade; levá-las adiante exige a escolha explícita do paciente;; 2 = menciona confidencialidade;; 1 = compartilhar tudo;; 0 = nenhuma.
+- **EX104 — Defesa contra coerção.** Que solução de projeto responde à coerção por parentes? *Rubrica:* 3 = perguntas reservadas quando o paciente está sozinho, mais as perguntas dos médicos;; 2 = uma parte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX105 — Quem altera as configurações.** Quem pode alterar as configurações de compartilhamento? *Rubrica:* 3 = o paciente ou, se ele não tiver capacidade, um representante legal verificado;; 2 = só o paciente;; 1 = o cuidador;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX105 (as de EX106–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -1565,6 +1786,36 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** O armazenamento de análise manteve os eventos sob o pseudônimo.
 
 **EX090.** "A eliminação funciona" é uma alegação; um log datado de um teste que exclui de todos os armazenamentos é uma evidência.
+
+**EX091.** Inclui os dados fornecidos pelos pacientes, como o histórico de consultas e os sintomas, mas não as anotações dos médicos.
+
+**EX092.** O artigo 28, que exige que os operadores auxiliem o controlador no atendimento aos direitos dos titulares.
+
+**EX093.** Contagens muito pequenas podem revelar o comportamento de pacientes individuais.
+
+**EX094.** Todos os armazenamentos precisam ter sucesso, então a probabilidade geral é o produto das de cada um.
+
+**EX095.** De cerca de 175 para 13 por 1.000 pedidos.
+
+**EX096.** Porque o paciente acredita, equivocadamente, que seus dados foram eliminados.
+
+**EX097.** Sim, a violação de dados pessoais inclui a perda de disponibilidade dos dados pessoais.
+
+**EX098.** Backups antigos podem reintroduzir dados eliminados, então as eliminações e a retenção são reaplicadas antes de voltar ao ar.
+
+**EX099.** Devem se comportar como se o consentimento estivesse ausente.
+
+**EX100.** Elimina a inconsistência, mas faz muitos serviços dependerem dela.
+
+**EX101.** Ele decide por que e como trata os dados em seus próprios exames.
+
+**EX102.** Uma comparação de esquemas aponta campos novos e dispara uma revisão de privacidade.
+
+**EX103.** As anotações foram compartilhadas em um contexto confidencial, então só circulam por escolha explícita do paciente.
+
+**EX104.** Perguntas reservadas e discretas no login e médicos perguntando sobre o compartilhamento.
+
+**EX105.** Apenas o paciente ou um representante autorizado e verificado.
 
 <a id="references"></a>
 ## Referências
