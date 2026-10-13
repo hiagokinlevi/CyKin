@@ -405,7 +405,7 @@ rule B: tp=4 fp=0 fn=2 precision=1.0 recall=0.67
 
 On twenty labelled synthetic items, rule A (broad keywords) finds all six relevant items but raises four false alarms: precision 0.6, recall 1.0. Rule B (match against NLG's asset inventory) raises no false alarms but misses two relevant items: precision 1.0, recall 0.67. Rule A wastes analyst time on items that do not matter to NLG, while rule B misses items that do.
 
-In NLG terms, rule A would send the operations centre four advisories about products NLG does not run for every twenty it reads, while rule B would silently drop two that concern a supplier's product. The labels were set by an analyst who did not know which rule had flagged each item.
+In NLG terms, rule A flags ten of the twenty items, and four of those ten would reach the operations centre as advisories about products NLG does not run, which is what precision 0.6 means here. Rule B flags four items, all relevant, but silently drops two that concern a supplier's product.
 
 ### 6.3 Which is better?
 
