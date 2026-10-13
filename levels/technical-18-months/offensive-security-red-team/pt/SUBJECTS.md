@@ -13,11 +13,11 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [01](book/PLAN.md#ch-01) | Arquitetura de computação e de serviços | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Redes e protocolos | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
 | 1 | [03](book/PLAN.md#ch-03) | Sistemas operacionais e identidades | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
-| 1 | [04](book/PLAN.md#ch-04) | Scripts e formatos de dados | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Plano](book/PLAN.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Escopo de segurança e evidências | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plano](book/PLAN.md#ch-06) |
-| 1 | [06](book/PLAN.md#ch-06) | Segurança ofensiva autorizada e red team: modelo de sistema | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plano](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Segurança ofensiva autorizada e red team: dados e telemetria | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Segurança ofensiva autorizada e red team: modos de falha | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
+| 1 | [04](book/PLAN.md#ch-04) | Scripts e formatos de dados | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 1 | [05](book/PLAN.md#ch-05) | Escopo de segurança e evidências | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 1 | [06](book/PLAN.md#ch-06) | Segurança ofensiva autorizada e red team: modelo de sistema | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Segurança ofensiva autorizada e red team: dados e telemetria | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Segurança ofensiva autorizada e red team: modos de falha | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Plano](book/PLAN.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Segurança ofensiva autorizada e red team: ferramentas e métodos | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Segurança ofensiva autorizada e red team: configuração de controles | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Segurança ofensiva autorizada e red team: verificação | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |

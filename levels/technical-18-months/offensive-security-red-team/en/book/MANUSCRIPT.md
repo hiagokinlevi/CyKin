@@ -335,11 +335,7 @@ You will (1) restate ROE checks for technicians; (2) hash evidence files; (3) re
 
 ### 5.1 Technician ROE
 
-Before any command, Sam confirms target host, method and window against the ROE sheet on his knee.
-
-Technician ROE for ENG-512 states staging web/API and VPN checks, Saturday window, emergency contact, and fare network excluded. Sam will not start if emergency_contact is empty; the checklist is the same habit taught in professional labs. Empty emergency_contact on the technician ROE cancels ENG-512 before tools start. Sam posts the cancel with the missing field named so the SOC does not expect traffic.
-
-Script headers without method-card ids are deleted from the Saturday job folder during code review the week before.
+Before any command, Sam confirms target host, method and window against the ROE sheet on his knee. The technician ROE for ENG-512 states the staging web/API and VPN checks, the Saturday window, the emergency contact, and the fare network as excluded. Sam will not start if emergency_contact is empty; the checklist is the same habit taught in professional labs. An empty emergency_contact cancels ENG-512 before tools start, and Sam posts the cancel with the missing field named so the SOC does not expect traffic that morning. The window is rescheduled only after the ROE owner fills the field and re-signs the sheet.
 
 ### 5.2 Hashing
 
@@ -366,61 +362,35 @@ shot1.png    b81db4df801a MISMATCH
 config.txt   44c91857f34b MATCH
 ```
 
-lab_hash prints shot1.png b81db4df801a MISMATCH and config.txt 44c91857f34b MATCH. Sam treats MISMATCH as a stop on that artefact until the file is re-exported or the expected hash is updated with two-person approval. lab_hash MISMATCH on shot1.png blocks that artefact until two people agree on a re-export or an updated expected hash. MATCH on config.txt is the pattern tickets should show after fixes.
+lab_hash prints shot1.png b81db4df801a MISMATCH and config.txt 44c91857f34b MATCH. Sam treats the MISMATCH as a stop on that artefact: shot1.png stays out of the finding until two people agree on a re-export or an updated expected hash. MATCH on config.txt is the pattern tickets should show after fixes.
 
 ### 5.3 Minimisation
 
-Blur rider faces and badge numbers in screenshots; keep the pixels that prove the issue.
-
-Minimisation means screenshots without rider names or card numbers. Evidence that proves a cookie flag or open port does not need a real journey history; Sam crops before hashing. Rider names and card numbers never appear in ENG-512 screenshots. Sam proves cookie or port issues with synthetic sessions and cropped UI chrome only.
-
-Unknown JSON keys that look payment-shaped are stripped before any log write leaves the jump host toward the vault. Three after-action improvements file before Lab II sign-off or the lab stays incomplete on the roster.
+Blur rider faces and badge numbers in screenshots; keep the pixels that prove the issue. Minimisation means that rider names and card numbers never appear in ENG-512 screenshots. Evidence that proves a cookie flag or an open port does not need a real journey history, so Sam proves those issues with synthetic sessions and cropped interface chrome only, and he crops before hashing. Unknown JSON keys that look payment-shaped are stripped before any log line leaves the jump host for the vault.
 
 ### 5.4 Evidence index
 
-Each file has an id, hash, time, collector and related finding id.
-
-The evidence index lists filename, sha256 prefix, ticket id and owner. An artefact not on the index is not in ENG-512; personal chat links do not count. Index rows carry filename, twelve-hex hash prefix, ENG-512 id and owner. Artefacts missing from the index are deleted as unverified copies.
-
-Peer reproduction aborts when notebook script hashes disagree so version fights do not masquerade as finding fights in retest. Failed stop drill blocks project start until the halt is rehearsed clean with a passing peer score.
+Each file has an id, hash, time, collector and related finding id. In ENG-512 the index rows carry the filename, a twelve-hex-character SHA-256 prefix, the ENG-512 ticket id and the owner. An artefact not on the index is not part of ENG-512; personal chat links do not count, and artefacts missing from the index are deleted as unverified copies. The index is what lets a reviewer match each finding in the report to the exact file and hash that supports it.
 
 ### 5.5 Integrity vs truth
 
-A matching hash proves the file is unchanged since hashing, not that the underlying system finding is still true.
-
-Integrity versus truth: a MATCH hash proves the file is unchanged, not that the finding is correct. Sam still validates impact with a method card before the report ships. A MATCH hash on a wrong screenshot still fails truth checks. Sam validates the finding path with the method card before calling evidence complete.
-
-Inventory CSV must open with name,ip,port,proto,approved or lab_ports refuses to run against the malformed file. Lab II stop text becomes the live ENG-512 halt template copied into the runbook for real windows.
+A matching hash proves the file is unchanged since hashing, not that the underlying system finding is still true. A MATCH on a wrong screenshot still fails the truth check. Sam therefore validates the finding path and its impact with the method card before calling the evidence complete and before the report ships. Integrity and truth are recorded as two separate ticks in the ENG-512 pack, so a reader can see that both were checked and by whom. A finding with only the integrity tick stays in draft.
 
 ### 5.6 Retention
 
-Follow NMT's engagement retention schedule; delete local caches after vaulting.
-
-Retention follows the ROE delete-within rule. Sam diaries deletion for ENG-512 evidence and confirms it; leftover PNGs on the jump host fail cleanup. Deletion diary entries for ENG-512 include date, path and witness. Leftover PNGs on the jump host fail the cleanup gate for portfolio credit.
-
-CI secret scanning failure rotates the exposed token before anyone reconsidering the merge presses approve on the pull request. Project packs include diagram, ROE checklist, lab_ports, hashes, FIXED/STILL OPEN and stop record on synthetic NMT only.
+Follow NMT's engagement retention schedule and delete local caches after vaulting. Retention for ENG-512 follows the ROE delete-within rule. Sam diaries the deletion of ENG-512 evidence and confirms it; each deletion diary entry records the date, the path and a witness. Leftover PNGs on the jump host fail the cleanup gate for portfolio credit. Retention cuts both ways: evidence is kept long enough for retest and dispute, and not a day longer than the ROE allows. The witness signs the diary entry, not Sam alone.
 
 ### 5.7 Photographing screens
 
-When a screenshot is required, Sam uses the jump host's tools, names the file with finding id and time, and hashes it before editing anything for redaction on a copy.
-
-Photographing screens with a phone is refused when the jump host can capture a redacted PNG. Phones leave NMT control; vaulted screenshots stay in the engagement path. Phone photos of screens are rejected in peer review. Jump-host capture with redaction is the only accepted screenshot path.
-
-Reviewers reject automation loops whose host patterns resemble fare subnets even when the author meant only staging ranges.
+When a screenshot is required, Sam uses the jump host's tools, names the file with finding id and time, and hashes it before editing anything; redaction is done on a copy. Photographing screens with a phone is refused when the jump host can capture a redacted PNG, because phones leave NMT control while vaulted screenshots stay in the engagement path. Phone photos of screens are rejected in peer review, and jump-host capture with redaction is the only accepted screenshot path.
 
 ### 5.8 Two-person evidence rule
 
-For high-impact findings, a second technician confirms the hash and the observation. Disagreement pauses filing.
+For high-impact findings, a second technician confirms the hash and the observation, and disagreement pauses filing. Under this rule a peer watches hash generation for high-impact items. The MISMATCH on shot1.png is reviewed by both people before anyone updates the expected hash, and the peer sits at the keyboard during the re-hash. Solo hash updates on shot1.png are refused. The peer's name is written beside the new hash in the evidence index, so the approval can be traced later.
 
-Two-person evidence rule means a peer watches hash generation for high-impact items. MISMATCH on shot1.png is reviewed by both before anyone updates the expected hash. High-impact MISMATCH events require a peer at the keyboard during re-hash. Solo hash updates on shot1.png are refused.
+### 5.9 Field discipline
 
-Row-cap trips print a clear error and exit code 2 rather than truncate the inventory quietly and hide listeners. Supervisor presentations lead with exclusions and open items before any evidence theatre or tool praise.
-
-### 5.9 5.x Field discipline
-
-Evidence disputes are expensive. Sam therefore hashes immediately after capture, writes the hash into the activity log line, and only then redacts a copy for the report appendix. If legal later asks whether a screenshot was altered, he can show the original digest and the redacted derivative. The MISMATCH result in the lab is the classroom version of that discipline — edited bytes must never silently replace originals.
-
-Field discipline for evidence is hash, minimise, index, retain, and two-person on mismatches. Sam's ENG-512 pack fails peer check if any of those five is missing. In the lab, MISMATCH on an edited file is the cue to call a second person, not to re-hash until it matches. Missing any one fails the ENG-512 pack.
+Evidence disputes are expensive. Sam therefore hashes immediately after capture, writes the hash into the activity log line, and only then redacts a copy for the report appendix. If legal later asks whether a screenshot was altered, he can show the original digest and the redacted derivative. The MISMATCH result in the lab is the classroom version of that discipline: edited bytes must never silently replace originals, and a MISMATCH is the cue to call a second person, not to re-hash until it matches. Field discipline for evidence is hash, minimise, index, retain, and two people on mismatches; Sam's ENG-512 pack fails peer check if any of those five is missing.
 
 ### Worked example (synthetic NMT)
 
@@ -457,73 +427,39 @@ You will (1) build a simple system model for the journey planner; (2) mark entry
 
 ### 6.1 Model elements
 
-Actors (rider, staff), entry points (web, API), trust zones, data stores (trip DB, logs), and external deps (map tiles).
-
-Model elements for NMT are rider → HTTPS → API → trip DB; staff → VPN → admin UI; map tiles as external; fare cloud crossed out. Sam's one-page model is the scope picture before tools run. Sam's one-page model crosses out fare cloud and map-tile vendor boxes with owners named on web, API and VPN only. Tools stay closed until that page is current.
-
-Scripts that exit zero while printing NOT APPROVED are fixed before the next Saturday job list is published to operators.
+A system model names actors (rider, staff), entry points (web, API), trust zones, data stores (trip DB, logs) and external dependencies (map tiles). For NMT the model reads rider → HTTPS → API → trip DB; staff → VPN → admin UI; map tiles as external; fare cloud crossed out. Sam's one-page model is the scope picture before tools run: the fare cloud and the map-tile vendor boxes are crossed out, and owners are named on web, API and VPN only. Tools stay closed until that page is current.
 
 ### 6.2 Entry points
 
-Each entry point gets a short list of WSTG themes: auth, session, access control, input handling.
-
-Entry points are the public website, journey planner API and staff VPN. Fare validators are not entry points for ENG-512; listing them as interesting is a model error. Entry-point lists that include fare validators are corrected before kickoff. Each of the three gets its own WSTG theme list, so VPN checks never borrow web input-handling tests.
-
-For the staff VPN the themes stop at authentication and session handling, because input handling belongs to the website and journey planner API. Keeping the lists separate also makes the coverage statement precise: the report can say which themes were exercised on which entry point and which were left out.
+Each entry point gets a short list of WSTG themes: auth, session, access control, input handling. At NMT the entry points are the public website, the journey planner API and the staff VPN. Fare validators are not entry points for ENG-512; listing them as interesting is a model error corrected before kickoff. Each of the three gets its own WSTG theme list, so VPN checks never borrow web input-handling tests. For the staff VPN the themes stop at authentication and session handling, because input handling belongs to the website and journey planner API. Keeping the lists separate also makes the coverage statement precise: the report can say which themes were exercised on which entry point and which were left out.
 
 ### 6.3 Assumptions
 
-Staging mirrors production auth is an assumption to validate, not a fact.
-
-Assumptions such as staging equals production config are written in the assumption log with an owner. Unwritten assumptions become scope fights mid-window. Each assumption log line names who believed it and the date last checked. Staging-mirrors-prod without a check date is marked invalid.
-
-Empty emergency_contact posts a cancel naming the missing field so the SOC does not expect ENG traffic that morning. Limits pages state fare out of scope, synthetic only and no real-system authority in plain examiner-facing words.
+"Staging mirrors production auth" is an assumption to validate, not a fact. Assumptions such as staging equals production config are written in the assumption log with an owner, because unwritten assumptions become scope fights mid-window. Each assumption log line names who believed it and the date it was last checked. A staging-mirrors-prod line without a check date is marked invalid until the owner compares the two configurations and dates the entry. Findings that depend on an invalid assumption are held back from the report until the comparison is done.
 
 ### 6.4 Data flows
 
-Note where personal data (saved journeys) flows so tests minimise exposure.
-
-Data flows show trip queries and staff admin actions; they do not show fare settlement. Sam refuses to draw fare flows into the ordinary model because drawing invites probing. Data-flow arrows stop at trip DB and staff admin UI. Drawing fare settlement into the ordinary model is a documentation defect Sam fixes before ENG-512.
-
-lab_hash MISMATCH on shot1.png needs two-person approval before anyone updates expected hashes in the evidence pack. Technologist course is next; this book ends at procedural ROE competence for technicians doing ENG-512 work.
+Note where personal data, such as saved journeys, flows, so that tests minimise exposure. NMT's data flows show trip queries and staff admin actions, and the arrows stop at the trip DB and the staff admin UI. They do not show fare settlement. Sam refuses to draw fare flows into the ordinary model because drawing invites probing; a fare settlement arrow in the ordinary model is a documentation defect he fixes before ENG-512. The saved-journey arrow is the one he marks for minimisation, so checks on it use synthetic accounts only.
 
 ### 6.5 Out of model
 
-Fare validators are omitted because they are out of scope.
-
-Out of model means fare network, radio and card processors. Those boxes stay black on the colour map; ENG-512 findings never claim coverage there. Black boxes for fare, radio and card processors carry the caption specialised ROE only. Ordinary findings never claim coverage there.
-
-MATCH on config.txt is the pattern after-fix tickets should show when cookie or sshd baselines finally land. Safety cover is repo page one with staging first, fare black, stops and retention rules before any code. Repos ban secrets and real inventories; README shows disable and stop instructions before a clone is used.
+Fare validators are omitted because they are out of scope. Out of model means the fare network, radio and card processors. Those boxes stay black on the colour map and carry the caption "specialised ROE only", and ENG-512 findings never claim coverage there. Leaving them visible but black matters: the reader sees that the systems exist and were excluded on purpose, rather than assuming they were forgotten or silently covered by the ordinary tests. Any request to test inside a black box goes back to the ROE owner as a separate engagement.
 
 ### 6.6 Living model
 
-Update the model when the API gains a new payment callback — even if payment is third-party.
-
-Living model updates when a CDN or gateway changes. Sam dates each revision beside the ROE; a model older than the last architecture change is invalid for the next window. Model revision dates sit beside the ROE hash. If architecture changed after the model date, Sam updates the picture before the window.
-
-Rider names never appear in ENG-512 screenshots because synthetic sessions prove cookie and port issues without PII. Supervisor feedback becomes runbook patches the same week rather than unread archives collecting dust.
+Update the model when the API gains a new payment callback, even if payment is third-party. The model is also updated when a CDN or gateway changes. Sam dates each revision and keeps the date beside the ROE hash; a model older than the last architecture change is invalid for the next window, so if architecture changed after the model date, he updates the picture before the window. The revision history shows reviewers which version of the model each window was planned against.
 
 ### 6.7 Trust zone colours
 
-Sam colours Internet red, staging amber, staff green and fare black (do not enter). Colour makes scope visible in reviews.
-
-Black is reserved for fare so it cannot be confused with any zone where testing is allowed. Colour makes scope visible in reviews when managers skim too fast to read exclusions. Colour maps are printed for the kickoff huddle: red Internet, amber staging, green staff, black fare. Managers who only skim text still see the exclusion.
-
-Evidence index rows carry filename, hash prefix, ticket id and owner or the unlisted file is deleted as unverified copy.
+Sam colours Internet red, staging amber, staff green and fare black (do not enter). Black is reserved for fare so it cannot be confused with any zone where testing is allowed. Colour makes scope visible in reviews when managers skim too fast to read exclusions. The colour map is printed for the kickoff huddle, so managers who only skim text still see the exclusion. A printed map in black and white loses the point, so the kickoff copy also labels each zone in words.
 
 ### 6.8 Assumption log
 
-A running list of assumptions sits under the model. Each is marked confirmed, rejected or open before the report is issued.
+A running list of assumptions sits under the model, and each one is marked confirmed, rejected or open before the report is issued. Entries name who believed, for example, that staging mirrored production and when that was checked. Failed assumptions become either ROE text or findings; Sam will not leave a broken staging-mirrors-prod belief as an unspoken footnote. Open entries at report time are listed in the limitations section, so readers know which conclusions rest on unconfirmed beliefs and who must close them.
 
-Assumption log entries name who believed staging mirrored prod and when that was checked. Failed assumptions become findings or ROE updates, not silent footnotes. Failed assumptions become either ROE text or findings. Sam will not leave a broken staging-mirrors-prod belief as an unspoken footnote.
+### 6.9 Field discipline
 
-MATCH integrity still needs method-card truth checks before findings are allowed into the report body for the CISO. Project field discipline is brief, limits, safety cover, clean repo and honest STILL OPEN scored together.
-
-### 6.9 6.x Field discipline
-
-Building the system model with the product owner takes an hour and prevents days of confusion. Sam projects a blank diagram, asks the owner to place boxes, and only then adds his own arrows. Owners correct mistaken assumptions about which database holds saved journeys and whether the admin UI shares authentication with the rider API. Those corrections change which WSTG themes matter most.
-
-Field discipline for modelling is dated diagram, coloured zones, assumption log, and fare black. Sam will not open ENG-512 tools until those four are current. The assumption log records each owner correction, such as which database holds saved journeys, with the date it was confirmed. Any gap delays tool start.
+Building the system model with the product owner takes an hour and prevents days of confusion. Sam projects a blank diagram, asks the owner to place boxes, and only then adds his own arrows. Owners correct mistaken assumptions about which database holds saved journeys and whether the admin UI shares authentication with the rider API, and those corrections change which WSTG themes matter most. The assumption log records each correction with the date it was confirmed. Field discipline for modelling is a dated diagram, coloured zones, the assumption log, and fare in black; Sam will not open ENG-512 tools until those four are current, and any gap delays tool start.
 
 ### Worked example (synthetic NMT)
 
@@ -560,73 +496,39 @@ You will (1) identify logs useful in testing and in detection; (2) request acces
 
 ### 7.1 Useful logs
 
-Web access logs, API auth failures, VPN authentications, WAF blocks, AD sign-ins.
-
-Useful logs for ENG-512 are WAF allow/deny, API auth failures, VPN session starts and jump-host commands. Full production dumps are refused; Sam asks for time-bounded samples around his window only. Sam requests WAF and API auth samples only for the ENG-512 clock window. Useful logs are those slices, not multi-day dumps.
-
-Retention diaries list date, path and witness for ENG-512 deletions on the diary day required by the signed ROE. Portfolio credit needs artefacts proving solo ENG-512 habits rather than intention statements without files.
+Logs useful in testing and in detection include web access logs, API auth failures, VPN authentications, WAF blocks and AD sign-ins. For ENG-512 the useful logs are WAF allow/deny, API auth failures, VPN session starts and jump-host commands. Full production dumps are refused; Sam requests WAF and API auth samples only for the ENG-512 clock window. Useful logs are those slices, not multi-day dumps. Asking for the slice in advance, with the window times written in the request, lets the SOC prepare it before Saturday instead of searching during the test.
 
 ### 7.2 Access path
 
-Sam requests read-only log access for the window via the ROE, not by sharing someone else's SIEM password.
-
-Access path to logs is read-only through the SOC ticket, not a personal admin role on prod. Sam's tst-sam-web account never becomes a log-admin shortcut. Read-only SOC ticket access is enough; elevating tst-sam-web to prod log admin is refused. Access path discipline protects blast radius.
-
-Phone photos of screens fail peer review because jump-host capture with redaction is the only accepted screenshot path. Appendices paste lab_ports and lab_hash outputs so examiners reproduce MATCH/MISMATCH without asking Sam questions.
+Sam requests read-only log access for the window through the ROE, not by sharing someone else's SIEM password. The access path to logs is read-only through the SOC ticket, not a personal admin role on production, and read-only access is enough. Elevating tst-sam-web to production log admin is refused, even when the SOC is slow to reply to the ticket; Sam's test account never becomes a log-admin shortcut. Access-path discipline limits the blast radius if the test account is ever misused.
 
 ### 7.3 No production dumps
 
-Exporting whole member tables for analysis is out of bounds. Use synthetic or minimised samples.
-
-No production dumps means no full table export of trip history to prove a finding. A redacted sample that shows the class of issue is enough for staging-focused ENG-512 work. Production trip-table dumps are never a teaching aid. Redacted staging samples that show the issue class are the maximum Sam will attach.
-
-High-impact re-hashes require a peer standing at the keyboard while the new digest is generated and spoken aloud. Diagram confirmation emails file under the ticket before lab_ports is allowed to run against inventory.
+Exporting whole member tables for analysis is out of bounds; use synthetic or minimised samples. No production dumps means no full-table export of trip history to prove a finding, and production trip-table dumps are never a teaching aid. A redacted sample that shows the class of issue is enough for staging-focused ENG-512 work, and it is the maximum Sam will attach. If an owner insists on a larger export, the request goes back to the ROE owner and the privacy contact rather than being settled in the engagement channel.
 
 ### 7.4 Confirming findings
 
-An access-control finding is stronger when logs show the unauthorized request succeeded.
-
-Confirming findings with logs means matching timestamps after clock sync. A 401 loop at 10:12 in the synthetic drill is confirmed when API logs show the same minute. Confirming the 10:12 loop means API logs and jump-host clock agree within two minutes. Without that, the stop message time is not evidence-grade.
-
-Evidence field discipline scores hash, minimise, index, retain and two-person mismatch handling as one pass-fail gate. Specialised fare engagements need separate funding and ROE rather than borrowed Saturday rights from ordinary ENG-512.
+An access-control finding is stronger when logs show the unauthorized request succeeded. Confirming findings with logs means matching timestamps after clock sync. In the synthetic drill, the 401 loop at 10:12 is confirmed when the API logs show the same minute and the jump-host clock agrees with the API hosts within two minutes. Without that agreement, the time in the stop message is not evidence-grade. The worked example below uses the same idea with a request id, which ties the log line to one specific test request.
 
 ### 7.5 Clock sync
 
-Note time zones and NTP status when correlating logs with activity notes.
-
-Clock sync between Sam's jump host and the API hosts is checked at kickoff. Skew larger than two minutes is fixed before evidence timestamps are trusted. Kickoff includes an NTP check on the jump host against the API VIP. Skew above two minutes is fixed before hashes and log compares.
-
-One-page models cross out fare cloud and map-tile vendors before any scanner process is started on Saturday. Written network-owner confirmation beats familiar-looking diagrams that may hide a new CDN edge.
+Note time zones and NTP status when correlating logs with activity notes. Clock sync between Sam's jump host and the API hosts is checked at kickoff with an NTP check against the API VIP. Skew larger than two minutes is fixed before evidence timestamps, hashes and log comparisons are trusted. Sam writes the measured skew in the activity log, so a reviewer can see that the check was done and how large the difference was. A time zone written beside every timestamp avoids a second class of mistakes when logs from different systems are compared.
 
 ### 7.6 Detection feedback
 
-Share technique names with the SOC so they can build detections after the test.
-
-Detection feedback to the SOC includes which method cards ran and when they stopped. Silence after ENG-512 start is a coordination failure, not a stealth goal. Detection feedback lists method cards run and the stop time. The SOC should never learn ENG-512 ended only from silence.
-
-Entry lists that mention validators are corrected at kickoff so ENG-512 cannot claim those surfaces by accident. AD upgrades re-check tst-sam-web groups and MFA before anyone reuses old ROE text from last quarter.
+Share technique names with the SOC so they can build detections after the test. Detection feedback for ENG-512 lists which method cards ran and the time they stopped. Silence after the ENG-512 start is a coordination failure, not a stealth goal; the SOC should never learn that ENG-512 ended only from silence. The feedback note also says which checks the SOC saw and which it missed, so the gaps become detection work rather than surprises in the next window. It is sent the same day the window closes.
 
 ### 7.7 Sample not full export
 
-When a log query returns thousands of lines, Sam exports a time-bounded sample around his test activity, not the whole day, unless the ROE asks for more.
-
-Sample not full export: Sam requests five minutes of API auth logs around a finding, not a day's dump. Smaller samples protect riders and still confirm the issue. Five-minute auth-log samples around a finding beat day-long exports for rider privacy and for Sam's review time.
-
-Assumption log lines without check dates are marked invalid until someone re-validates staging versus production beliefs. Owner contacts copy into SOC start messages so overnight responders need not call Sam's personal phone number.
+When a log query returns thousands of lines, Sam exports a time-bounded sample around his test activity, not the whole day, unless the ROE asks for more. For a finding he requests five minutes of API auth logs around it, not a day's dump. Smaller samples protect riders and still confirm the issue, and they also save review time, since a peer can read five minutes of lines in one sitting. The query that produced the sample is saved beside it so the same slice can be pulled again at retest.
 
 ### 7.8 PII in logs
 
-If logs contain rider phone numbers, he stores them in the restricted vault path and mentions PII presence in the evidence index.
+Logs can contain rider names, phone numbers, e-mails, card numbers and precise GPS positions. If a log Sam must keep contains rider phone numbers, he stores it in the restricted vault path and notes the presence of PII in the evidence index. Log redaction removes e-mails, card PANs and precise GPS before screenshots or extracts enter the vault. A log line with a rider e-mail fails minimisation even if the finding is about auth, and PII left in a teaching screenshot fails minimisation too.
 
-PII in logs — names, card numbers, precise GPS — is redacted before screenshots enter the vault. A log line with a rider email fails minimisation even if the finding is about auth. Log redaction removes emails, card PANs and precise GPS before vault entry. PII left in a teaching screenshot fails minimisation.
+### 7.9 Field discipline
 
-Data-flow arrows stop before fare settlement by design so a pretty drawing cannot invite unauthorized probing. Staging CDN additions open model-update tickets before new listeners are trusted inside the inventory file.
-
-### 7.9 7.x Field discipline
-
-Sam books SIEM access in the same ticket as the ROE, with an end date. When the engagement ends, he confirms his access is removed — leftover read access is itself a finding he would write about anyone else. During the window he saves queries, not raw dumps, so another technician can replay the investigation without holding excess rider data.
-
-Field discipline for telemetry is sample, redact, sync clocks, and tell the SOC. Sam's ENG-512 stop message after the 401 loop named the time and the system so detection could correlate.
+Sam books SIEM access in the same ticket as the ROE, with an end date. When the engagement ends, he confirms his access is removed; leftover read access is itself a finding he would write about anyone else. During the window he saves queries, not raw dumps, so another technician can replay the investigation without holding excess rider data. Field discipline for telemetry is to sample, redact, sync clocks and tell the SOC. Sam's ENG-512 stop message after the 401 loop named the time and the system so detection could correlate.
 
 ### Worked example (synthetic NMT)
 
@@ -663,19 +565,11 @@ You will (1) list how tests can harm transit IT; (2) map stop conditions; (3) de
 
 ### 8.1 Harm modes
 
-Account lockouts; staging crashes; accidental production hit; log storms; poisoned caches.
-
-Harm modes include API lockout, VPN saturation, and any touch of fare validators. Sam's method cards list which harm each check could cause so stop conditions are not invented under stress. Harm-mode lists on each method card include API lockout and VPN saturation. Cards without harm modes are incomplete for ENG-512.
-
-Black boxes read specialised ROE only and stay out of ordinary coverage claims in any board or exam language. Kickoff sheets list website, API and VPN with validators under do-not-touch in the same one-page view.
+Tests can harm transit IT through account lockouts, staging crashes, an accidental production hit, log storms and poisoned caches. For ENG-512 the harm modes include API lockout, VPN saturation and any touch of fare validators. Each of Sam's method cards lists which harm its check could cause, so stop conditions are not invented under stress. Cards without harm modes are incomplete for ENG-512 and stay off the Saturday list until the author adds them. A card's harm line also names who must be told first if that harm occurs, for example the API owner for a lockout.
 
 ### 8.2 Stop conditions
 
-Owner asks stop; unexplained outage; fare system alerts anywhere; personal data exposed in a ticket; tool loops.
-
-Each condition has a one-line stop message prepared on the ROE card, so Sam posts it without composing under stress. Any one is enough; Sam does not finish one more objective first. Fare system alerts anywhere — even unrelated — stop ENG-512 until operations clears the line. Sam does not argue correlation in the moment.
-
-Personal data turning up in a ticket is a stop even though nothing is broken, because the ticket system may be read by people the agreement never covered. A tool caught in a loop is a stop for a different reason: it can push traffic past the agreed rate before anyone notices.
+Stop conditions are: the owner asks to stop; an unexplained outage; fare system alerts anywhere; personal data exposed in a ticket; a tool loop. Each condition has a one-line stop message prepared on the ROE card, so Sam posts it without composing under stress. Any one is enough; Sam does not finish one more objective first. Fare system alerts anywhere, even apparently unrelated ones, stop ENG-512 until operations clears the line, and Sam does not argue correlation in the moment. Personal data turning up in a ticket is a stop even though nothing is broken, because the ticket system may be read by people the agreement never covered. A tool caught in a loop is a stop for a different reason: it can push traffic past the agreed rate before anyone notices.
 
 ### 8.3 Safe tool failure
 
@@ -691,11 +585,7 @@ The stop message goes to the engagement channel in a fixed shape: ENG-512 stop, 
 
 ### 8.5 Rehearsal
 
-Once per quarter Sam rehearses a stop message on the engagement channel with the SOC.
-
-Rehearsal of the stop message happens in Lab II before a real window. Sam practises posting the 10:12 pattern so the first live stop is not the first time he writes one. Lab II grades the rehearsal stop post before any live window. An unrehearsed first stop is a programme failure waiting to happen.
-
-Modelling field discipline delays tool start when dated diagram, colours, assumption log or fare black marking is stale.
+Once per quarter Sam rehearses a stop message on the engagement channel with the SOC, and the stop message is also rehearsed in Lab II before a real window. Sam practises posting the 10:12 pattern so the first live stop is not the first time he writes one, and Lab II grades the rehearsal stop post before any live window. An unrehearsed first stop is a programme failure waiting to happen. The SOC rehearses its side too: acknowledging the post and naming who decides.
 
 ### 8.6 No blame in the moment
 
@@ -705,25 +595,15 @@ No blame belongs in the moment. During ENG-512 the live channel carries only hal
 
 ### 8.7 Secondary contact
 
-If the primary emergency contact does not answer in five minutes, Sam calls the secondary named in the ROE. Waiting silently is not a plan.
-
-The five-minute mark is timed from the first unanswered call, and both call times go into the activity log. Sam's ROE lists both; calling only the primary is not a complete stop path. Secondary contact answers when primary misses the five-minute mark. Sam dials both numbers from the ROE card, not from memory.
-
-tst-sam-web never becomes a production log-admin shortcut even when the SOC is slow to reply to the ticket.
+If the primary emergency contact does not answer in five minutes, Sam calls the secondary named in the ROE; waiting silently is not a plan. The five-minute mark is timed from the first unanswered call, and both call times go into the activity log. Sam's ROE lists both contacts, and calling only the primary is not a complete stop path. He dials both numbers from the ROE card, not from memory. If neither answers, the halt stays in place and Sam keeps calling; the window does not resume by default.
 
 ### 8.8 Tool kill switch
 
-Every long-running script Sam starts has a known way to kill it (process group, container stop). He tests the kill switch once before the window.
+Every long-running script Sam starts has a known way to kill it, such as a process group or a container stop, and he tests the kill switch once before the window. For ENG-512 the kill switch is the script's disable flag plus the jump-host kill command practised in rehearsal, so Sam can stop his own jobs without waiting for a vendor support line. Kill-switch rehearsal is a Lab II checkbox, and an untested disable flag keeps automation off the Saturday list.
 
-Tool kill switch is the script's disable flag and the jump-host kill command practised in rehearsal. Sam can stop his own jobs without waiting for a vendor support line. Kill-switch rehearsal is a Lab II checkbox. An untested disable flag keeps automation off the Saturday list.
+### 8.9 Field discipline
 
-Production trip dumps are refused; redacted staging samples that show the issue class are the maximum attachable proof.
-
-### 8.9 8.x Field discipline
-
-After any real stop, Sam files a short blameless note: trigger, time to halt, who was called, whether riders were affected, and one process change. NMT reviews stop notes quarterly. Teams that hide stops eventually cause larger outages; teams that record them get better kill switches and clearer ROEs. The looping-auth drill exists so the first stop is not also the first time Sam writes that note.
-
-Field discipline for failure modes is written stop conditions, rehearsed messages, secondary contact, and kill switch. ENG-512 does not rely on heroics when a loop starts. Each of the four is checked before the Saturday window opens, so none depends on someone improvising during a live loop.
+After any real stop, Sam files a short blameless note: trigger, time to halt, who was called, whether riders were affected, and one process change. NMT reviews stop notes quarterly. Teams that hide stops eventually cause larger outages; teams that record them get better kill switches and clearer ROEs. The looping-auth drill exists so the first stop is not also the first time Sam writes that note. Field discipline for failure modes is written stop conditions, rehearsed messages, a secondary contact and a kill switch, each checked before the Saturday window opens, so ENG-512 does not rely on heroics or improvisation when a loop starts.
 
 ### Worked example (synthetic NMT)
 
