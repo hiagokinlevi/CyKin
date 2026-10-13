@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -364,7 +364,374 @@ Dibujar zonas y conductos como un grafo dirigido convierte los argumentos de seg
 
 ### Siga estudiando — capítulo 06 de 40
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redes y protocolos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) decodificar la cabecera MBAP de Modbus/TCP y el código de función a partir de bytes en bruto; (2) distinguir los códigos de función de lectura y de escritura; (3) explicar por qué Modbus no ofrece autenticación; y (4) enunciar lo que un decodificador de protocolos puede y no puede decirle a un analista.
+
+### 7.1 Modbus/TCP en una trama
+
+Modbus/TCP lleva una cabecera MBAP de siete bytes —identificador de transacción (2 bytes), identificador de protocolo (2, siempre cero), longitud (2) e identificador de unidad (1)— seguida de la unidad de datos del protocolo, que empieza con un código de función de un byte. La Modbus Application Protocol Specification V1.1b3 define los códigos: el 3 lee registros de retención, el 6 escribe un único registro y el 16 escribe varios registros. En el laboratorio del decodificador, la trama 2 lleva el código de función 6 y la trama 3 el código de función 16; ambas son escrituras, y por eso la lista de permitidos del capítulo 27 se fija en el código de función antes que en la dirección.
+
+### 7.2 Sin identidad en el protocolo
+
+Nada en la trama dice quién la envió. Cualquier equipo que pueda abrir el puerto TCP 502 de un controlador puede emitir una escritura si el dispositivo la acepta. La seguridad debe venir, por tanto, de la red (segmentación, listas de permitidos) o de una variante protegida como Modbus/TCP Security, que envuelve el protocolo en TLS con roles basados en certificados.
+
+```python
+"""Lab 07: decode synthetic Modbus/TCP request headers (offline bytes only)."""
+import struct
+FC = {1: "read coils", 3: "read holding registers", 4: "read input registers",
+      5: "write single coil", 6: "write single register", 16: "write multiple registers"}
+frames = ["000100000006010300640002", "00020000000601060064012c", "000300000006011000c80001"]
+for h in frames:
+    b = bytes.fromhex(h)
+    tid, pid, length, unit, fc = struct.unpack(">HHHBB", b[:8])
+    addr, val = struct.unpack(">HH", b[8:12])
+    kind = "WRITE" if fc in (5, 6, 15, 16) else "read"
+    print(f"tid={tid} unit={unit} fc={fc} ({FC[fc]}) addr={addr} arg={val} -> {kind}")
+```
+
+Ejecútelo con `python3 lab_modbus.py`. Salida verificada:
+
+```text
+tid=1 unit=1 fc=3 (read holding registers) addr=100 arg=2 -> read
+tid=2 unit=1 fc=6 (write single register) addr=100 arg=300 -> WRITE
+tid=3 unit=1 fc=16 (write multiple registers) addr=200 arg=1 -> WRITE
+```
+
+Para PLC-H, que no puede autenticar a los clientes Modbus, este es todo el argumento de los controles compensatorios del capítulo 24: la lista de permitidos del cortafuegos que nombra a HMI-1 y HIST-1 como únicos orígenes autorizados es la comprobación de identidad que le falta al protocolo. Un equipo de la VLAN de oficina que alcanza el puerto 502 es, para PLC-H, indistinguible de HMI-1.
+
+### 7.3 Leer la salida
+
+La trama 2 escribe el valor 300 en el registro 100; la trama 3 es una escritura de varios registros que empieza en el 200. Observe que el decodificador imprime la dirección inicial y el primer argumento, pero no sabe qué *significa* el registro 100: eso proviene del mapa de registros del PLC, que es documentación de la planta, no del protocolo. En el mapa de registros de LDHP, el registro 100 contiene el punto de consigna de la temperatura de impulsión en décimas de grado, así que el valor 300 significa 30,0 °C, muy por debajo del punto de funcionamiento de 90 °C. Esa es la diferencia entre «escribir un único registro» y «posible pérdida de calefacción». La nota de Maya añade una columna del mapa de registros precisamente por esta razón, y marca la escritura de varios registros de la trama 3 en el 200 como no explicada hasta que el mapa diga qué controlan los registros a partir del 200.
+
+### Ejemplo resuelto (LDHP sintética)
+
+En el mapa de registros de LDHP, el registro de retención 100 es el punto de consigna de la temperatura de impulsión en décimas de grado. Por tanto, la trama 2 fija 30,0 °C, muy por debajo del punto de funcionamiento de 90 °C. El decodificador de protocolos por sí solo habría informado «write single register, addr 100, value 300»; solo el mapa de registros lo convierte en «punto de consigna a 30 °C, posible pérdida de calefacción». Maya añade una columna de consulta del mapa de registros a su cuaderno de análisis precisamente por esta razón.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las tramas del laboratorio se compusieron a mano; no se contactó con ningún dispositivo ni red.
+
+### Errores y límites
+
+Algunos dispositivos usan direccionamiento desde cero y algunos documentos usan la numeración de estilo 40001; mezclarlos provoca errores de desfase en uno. Decodificar tráfico de una planta que usted no está autorizado a supervisar no es una práctica aceptable.
+
+### Ejercicios — capítulo 7
+
+- **EX019 — Decodificar una cuarta trama.** Decodifique `000400000006010400320004`. *Rúbrica:* 3 = tid 4, fc 4 lectura de registros de entrada, dirección 50, cantidad 4, lectura; 2 = código de función correcto; 1 = orden de bytes incorrecto; 0 = nada.
+- **EX020 — Lo que la trama no puede decir.** Dé dos hechos sobre la trama 2 que no pueden deducirse de sus bytes. *Rúbrica:* 3 = identidad/autorización del emisor y significado de ingeniería del registro 100; 2 = uno; 1 = enumera campos de la cabecera; 0 = nada.
+- **EX021 — Escalar una escritura de punto de consigna.** Con el escalado de LDHP en décimas de grado, ¿qué valor de registro fija 92,5 °C? *Rúbrica:* 3 = 925; 2 = 92 o 93 mencionando el escalado; 1 = 92,5; 0 = nada.
+
+### Síntesis del capítulo
+
+Un decodificador de protocolos le da la estructura; la documentación de la planta le da el significado; y la segmentación, no el protocolo, le da la identidad.
+
+### Siga estudiando — capítulo 07 de 40
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Programación II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) estructurar una herramienta de análisis como funciones puras con pruebas; (2) usar `unittest` de la biblioteca estándar; (3) hacer que las funciones fallen de forma cerrada; y (4) versionar un script para que un resultado pueda reproducirse meses después.
+
+### 8.1 Las funciones puras se pueden revisar
+
+Una función que recibe entradas y devuelve una decisión, sin leer la red ni el reloj, puede probarse de forma exhaustiva. En las herramientas de TO esto importa porque el revisor suele ser un ingeniero de control que solo aceptará una herramienta si se demuestra su comportamiento en los casos límite. Mantenga la entrada y la salida (archivos, impresión) en los bordes y la lógica de decisión en el centro. El clasificador de Maya está escrito así: `classify(code)` recibe un código de función y devuelve una palabra, de modo que un ingeniero de control puede leer la lista de pruebas y ver cada decisión sin ejecutar una captura.
+
+### 8.2 Fallar de forma cerrada
+
+Cuando una función de lista de permitidos recibe un origen desconocido, un código de función desconocido o una dirección mal formada, debería devolver «bloquear» en lugar de lanzar una excepción que quien la llama podría capturar e ignorar. Fallar de forma cerrada significa «marcar para revisión» en una herramienta de supervisión y «denegar» en un dispositivo de aplicación. Ninguno de los dos significa «suponer que está bien». El primer clasificador de Maya fallaba de forma abierta: todo lo que estaba fuera del conjunto de escrituras devolvía «read». Un revisor preguntó por el código 8, diagnóstico, cuyas subfunciones pueden reiniciar las comunicaciones, y la respuesta dejó al descubierto el fallo. Su corrección devuelve «unknown», que en un monitor sin conexión significa marcar para revisión.
+
+### 8.3 Las pruebas como documentación
+
+Una pequeña lista de casos de `unittest` se lee como una especificación:
+
+```python
+import unittest
+def classify(fc):
+    return "write" if fc in (5, 6, 15, 16) else ("read" if fc in (1, 2, 3, 4) else "unknown")
+class T(unittest.TestCase):
+    def test_codes(self):
+        self.assertEqual(classify(3), "read"); self.assertEqual(classify(16), "write")
+        self.assertEqual(classify(8), "unknown"); self.assertEqual(classify(43), "unknown")
+unittest.main(argv=["x"], exit=False)
+```
+
+Al ejecutarla se imprime `Ran 1 test` y `OK`. El código 43 (transporte de interfaz encapsulada, usado para identificar dispositivos) es deliberadamente «unknown» en lugar de «read», porque el autor de la herramienta no ha razonado sobre él.
+
+La lista de pruebas es también la especificación que firma un revisor: `classify(3)` es lectura, `classify(16)` es escritura, `classify(8)` y `classify(43)` son desconocidos. El fallo original de Maya lo habría detectado una sola aserción de que el código 8 devuelve «unknown»; esa aserción está ahora en la lista. Cuando aparece un nuevo código de función en una captura de LDHP, el primer cambio es una nueva aserción con la respuesta esperada, escrita antes de modificar el clasificador.
+
+### Ejemplo resuelto (LDHP sintética)
+
+El primer clasificador de Maya devolvía «read» para todo lo que no estaba en el conjunto de escrituras. Un revisor preguntó qué devolvería el código 8 (diagnóstico). La respuesta, «read», era incorrecta: algunas subfunciones de diagnóstico reinician las comunicaciones. Ella cambió el valor por defecto a «unknown» y añadió la prueba anterior.
+
+> **Caso sintético — Lakeside District Heating Plant.** El clasificador es una herramienta didáctica para capturas sin conexión, no un dispositivo de aplicación.
+
+### 8.4 Registrar las decisiones para revisarlas
+
+Cada decisión que toma la herramienta debería escribirse junto con la entrada que la produjo, la regla que se activó y la versión del script, por ejemplo `fc=8 -> unknown (rule: default) v=3f2a91c`. Un ingeniero de control que revise una semana de capturas puede entonces filtrar por «unknown» y decidir, caso por caso, si el clasificador necesita una regla nueva. Este registro es también lo que le permite demostrar más tarde que un resultado sorprendente provino de una versión conocida del código y no de una modificación hecha después.
+
+### Errores y límites
+
+Las pruebas demuestran los casos que usted escribió, no los que olvidó. Registre la versión del script (un hash de commit de git) junto a cada resultado que publique.
+
+### Ejercicios — capítulo 8
+
+- **EX022 — Clasificar el diagnóstico.** ¿Qué devuelve `classify(8)` en la versión final y por qué es preferible? *Rúbrica:* 3 = «unknown»; el diagnóstico puede cambiar el estado del dispositivo, así que no se debe suponer lectura; 2 = solo el valor; 1 = «read»; 0 = nada.
+- **EX023 — Un caso de prueba que faltaba.** Escriba una aserción adicional que habría detectado el fallo original de Maya. *Rúbrica:* 3 = assertEqual(classify(8), "unknown") o un código similar que no sea de lectura; 2 = prueba un código de escritura; 1 = prueba el código 3; 0 = nada.
+- **EX024 — Reproducir un resultado antiguo.** Nombre dos cosas que hay que registrar con un análisis publicado para que pueda reproducirse seis meses después. *Rúbrica:* 3 = hash de commit del script y hash/fecha exactos del archivo de entrada; 2 = una; 1 = «guardar la salida»; 0 = nada.
+
+### Síntesis del capítulo
+
+Las herramientas de TO revisables son puras, están probadas, fallan de forma cerrada y están versionadas: propiedades que permiten a un ingeniero escéptico confiar en su salida.
+
+### Siga estudiando — capítulo 08 de 40
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Datos y bases de datos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) modelar los datos del historiador como tiempo, etiqueta y valor; (2) agregar y filtrar con SQL en SQLite; (3) detectar huecos de muestreo; y (4) explicar por qué el historiador es a la vez un activo y un riesgo de seguridad.
+
+### 9.1 El papel del historiador
+
+Un historiador de proceso almacena series temporales de los controladores para tendencias, informes e investigaciones. Como se sitúa entre las redes de control y las de negocio, suele ser el puente que usa un intruso, y también el mejor registro del que dispone un investigador. NIST SP 800-82r3 recomienda colocar los datos que necesitan los usuarios de negocio en una copia en la DMZ, para que los usuarios corporativos nunca consulten directamente el historiador de la zona de control. En LDHP, HIST-1 está en el nivel 3 de Purdue. Los usuarios de facturación y analítica deberían leer una réplica en la DMZ, de modo que una cuenta de oficina comprometida nunca abra una sesión con el historiador que también recoge datos de PLC-H.
+
+### 9.2 Un esquema mínimo
+
+Tres columnas —marca de tiempo, etiqueta, valor— contienen la mayor parte del contenido de un historiador; los sistemas de producción añaden códigos de calidad y compresión. SQLite, integrado en Python, basta para aprender las consultas.
+
+```python
+"""Lab 09: query a synthetic historian in an in-memory SQLite database."""
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.execute("create table h(ts integer, tag text, v real)")
+rows = [(t, "TT-101", 90 + (t % 5)) for t in range(0, 60, 5)] + [(t, "PT-201", 9.5) for t in range(0, 60, 10)]
+rows.append((35, "TT-101", 128.0))
+db.executemany("insert into h values(?,?,?)", rows)
+for tag, n, mx, mean in db.execute("select tag,count(*),max(v),round(avg(v),2) from h group by tag order by tag"):
+    print(f"{tag}: n={n} max={mx} mean={mean}")
+print("excursions >120:", db.execute("select ts,v from h where tag='TT-101' and v>120").fetchall())
+print("gap check PT-201 samples:", [r[0] for r in db.execute("select ts from h where tag='PT-201' order by ts")])
+```
+
+Ejecútelo con `python3 lab_hist.py`. Salida verificada:
+
+```text
+PT-201: n=6 max=9.5 mean=9.5
+TT-101: n=13 max=128.0 mean=92.92
+excursions >120: [(35, 128.0)]
+gap check PT-201 samples: [0, 10, 20, 30, 40, 50]
+```
+
+La tabla del laboratorio contiene muestras de TT-101 y PT-201 con marcas de tiempo enteras, suficientes para responder las dos preguntas que más hace un operador: cuál fue el extremo y si falta algo. La respuesta de Maya sobre la sobretemperatura salió de una sola consulta sobre esta tabla: `select ts, v from h where tag='TT-101' and v > 120`, que devolvió una fila en t = 35, 128 °C, de 13 muestras examinadas. El panel de medias horarias no había mostrado nada inusual para el mismo turno.
+
+### 9.3 Los agregados ocultan eventos
+
+La media de TT-101, 92,92 °C, parece normal; el máximo de 128,0 °C en t = 35, no. Acompañe siempre una media con un extremo y un recuento. La comprobación de huecos confirma que PT-201 se muestreó cada 10 unidades de tiempo sin pérdidas; una marca de tiempo ausente en esa lista sería la primera señal de un fallo de recogida o de una supresión deliberada. El informe de Maya enuncia las tres cosas: una desviación a 128,0 °C en t = 35, 13 muestras examinadas, y que no se alcanzó el punto de disparo de SIS-H, supuesto en 135 °C. El panel de medias horarias había respondido «sin sobretemperatura» a la misma pregunta.
+
+### Ejemplo resuelto (LDHP sintética)
+
+A Maya le preguntan: «¿Hubo alguna sobretemperatura en el último turno?». Un panel con medias horarias dice que no. Su consulta `select ts, v from h where tag='TT-101' and v > 120` devuelve una desviación en t = 35, 128 °C. Ella la comunica con el recuento de muestras examinadas (13) y señala que no se alcanzó el punto de disparo de SIS-H (supuesto en 135 °C en esta planta sintética).
+
+> **Caso sintético — Lakeside District Heating Plant.** Los valores, las etiquetas y el punto de disparo de 135 °C son inventados con fines didácticos.
+
+### Errores y límites
+
+La compresión del historiador (banda muerta o puerta oscilante) puede descartar puntos que no cambiaron «lo suficiente», así que los picos breves pueden no aparecer. Las marcas de tiempo pueden provenir del historiador, no del controlador. Nunca conceda acceso de escritura a las tablas del historiador para trabajos de análisis.
+
+### Ejercicios — capítulo 9
+
+- **EX025 — Contar las muestras examinadas.** ¿Por qué el laboratorio informa n = 13 para TT-101 y no 12? *Rúbrica:* 3 = 12 muestras regulares (0–55 en pasos de 5) más la desviación insertada; 2 = menciona la fila extra; 1 = adivina; 0 = nada.
+- **EX026 — Consulta para un hueco de muestreo.** Escriba una consulta SQL que devuelva las marcas de tiempo de PT-201 en las que la muestra siguiente llega más de 10 unidades después. *Rúbrica:* 3 = función de ventana LEAD (o autounión) con diferencia de ts > 10; 2 = idea correcta, error de sintaxis; 1 = solo cuenta filas; 0 = nada.
+- **EX027 — Compresión por banda muerta y picos.** Explique cómo la compresión por banda muerta podría ocultar una desviación breve. *Rúbrica:* 3 = el punto solo se almacena ante un cambio mayor que la banda muerta o por excepción/latido, así que un pico corto entre puntos almacenados puede desaparecer; 2 = parcial; 1 = solo «la compresión pierde datos»; 0 = nada.
+
+### Síntesis del capítulo
+
+Pida al historiador extremos, recuentos y huecos, no solo medias, y trate su ubicación y sus permisos como diseño de seguridad.
+
+### Siga estudiando — capítulo 09 de 40
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética y práctica autorizada
+
+### Resultados de aprendizaje
+
+Usted podrá (1) distinguir la autorización del permiso de acceso; (2) enumerar los elementos de un permiso de trabajo escrito para pruebas de TO; (3) gestionar las vulnerabilidades descubiertas mediante divulgación coordinada; y (4) rechazar peticiones que pondrían en peligro a personas o excederían el alcance.
+
+### 10.1 La autorización viene del propietario
+
+Solo el propietario del activo —o alguien en quien el propietario haya delegado por escrito— puede autorizar pruebas sobre un sistema de TO. Un empleado de la planta que siente curiosidad, un proveedor que «ya tiene acceso de todos modos» o un profesor que quiere una demostración no pueden concederla. En el entorno industrial, la autorización también debe venir de operaciones: una prueba legal pero insegura sigue siendo inaceptable. Un compañero de clase de Maya le ofreció exactamente este tipo de autoridad falsa: la dirección IP de un controlador de calefacción «real» encontrado en un buscador y la sugerencia de leer un registro. Nadie que fuera propietario de ese controlador había dado su consentimiento, así que Maya se negó y sugirió comunicar la exposición al CERT nacional.
+
+### 10.2 El permiso de trabajo
+
+Una autorización sólida para pruebas de TO nombra los sistemas dentro del alcance, la ventana de tiempo, las técnicas permitidas (solo captura pasiva, consultas de solo lectura o pruebas en banco), las personas de guardia, las condiciones de parada («si se produce cualquier alarma de proceso, detenerse y avisar al jefe de turno») y el plan de reversión. La firman el propietario y el responsable de operaciones del área afectada. Para una captura pasiva en el conmutador de control de LDHP, la condición de parada podría decir: «cualquier alarma de HMI-1 o cualquier cambio en el tiempo de escaneo de PLC-H; detener la captura e informar al jefe de turno». La reversión consiste en eliminar la configuración del puerto espejo.
+
+### 10.3 Divulgación coordinada
+
+Si encuentra un fallo en un producto de un fabricante, comuníquelo al fabricante y, cuando proceda, a CISA, cuyos avisos de ICS publican correcciones coordinadas. La disposición 5.2 de ETSI EN 303 645 exige a los fabricantes de IoT de consumo publicar una política de divulgación de vulnerabilidades; muchos fabricantes industriales mantienen programas similares. Publicar detalles de explotación antes de que exista una corrección puede poner en riesgo a todas las plantas que usan ese producto. Si el trabajo sin conexión de Maya hubiera revelado un fallo real en el firmware de las pasarelas de contadores, la vía sería primero el contacto de divulgación del fabricante; MTR-C, en el capítulo 30, advierte de que algunos fabricantes no tienen ninguno, y en ese caso coordina el CERT nacional o CISA.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Un compañero de clase ofrece a Maya la dirección IP de un controlador de calefacción «real» encontrado en un buscador de internet y le sugiere «leer solo un registro para demostrar que funciona». Maya se niega: no hay autorización del propietario, no hay permiso y la consecuencia sobre el proceso es desconocida. En su lugar, anota la categoría de exposición (ATT&CK for ICS T0883) y sugiere a su compañero que comunique la exposición al CERT nacional, que puede contactar con el propietario.
+
+> **Caso sintético — Lakeside District Heating Plant.** El compañero de clase y el controlador expuesto son ficticios; lo que importa es el razonamiento.
+
+### Errores y límites
+
+«Solo lectura» no es automáticamente inofensivo: algunos dispositivos heredados se bloquean ante peticiones inesperadas. Los códigos éticos no sustituyen a la ley; quienes aprenden deben conocer la ley sobre uso indebido de sistemas informáticos de su jurisdicción.
+
+### Ejercicios — capítulo 10
+
+- **EX028 — Condición de parada del permiso.** Escriba una condición de parada para una captura de red pasiva en el conmutador de control de LDHP. *Rúbrica:* 3 = desencadenante observable más acción y a quién se avisa; 2 = solo el desencadenante; 1 = un vago «si hay problemas»; 0 = nada.
+- **EX029 — ¿Quién puede autorizar?** El jefe de proyecto de un contratista envía un correo: «adelante, escanead PLC-H». ¿Es suficiente? *Rúbrica:* 3 = no; hace falta la aprobación del propietario y de operaciones con alcance y ventana; 2 = no, sin motivo; 1 = sí, con salvedades; 0 = sí.
+- **EX030 — Divulgar un fallo de un fabricante.** Enumere los dos primeros pasos tras encontrar un fallo que bloquea un modelo de controlador en una unidad de banco. *Rúbrica:* 3 = conservar la evidencia en privado y contactar con el fabricante/PSIRT (y con CISA o el CERT nacional); 2 = uno; 1 = publicarlo en redes sociales; 0 = nada.
+
+### Síntesis del capítulo
+
+En TO, la práctica ética es operativa: la autorización escrita del propietario, las condiciones de parada explícitas y la divulgación coordinada protegen a las personas además de a las reputaciones.
+
+### Siga estudiando — capítulo 10 de 40
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operativos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) identificar dónde aparecen sistemas operativos de propósito general en una arquitectura de TO; (2) explicar por qué las matrices de soporte de los fabricantes limitan el bastionado; (3) aplicar listas de aplicaciones permitidas y control de soportes extraíbles; y (4) recoger evidencia de los equipos con el mínimo privilegio.
+
+### 11.1 Windows y Linux dentro de la planta
+
+Los PLC ejecutan firmware de tiempo real, pero los HMI, las estaciones de ingeniería, los historiadores y los servidores OPC ejecutan Windows o Linux. Estos equipos son donde aterrizan las cargas de phishing, las memorias USB infectadas y las herramientas de acceso remoto. NIST SP 800-82r3 los trata como activos de TO con restricciones de TO: puede que no se parcheen mensualmente, que ejecuten software certificado solo para una compilación antigua del sistema operativo y que se necesiten las veinticuatro horas. En LDHP son HMI-1, EWS-1 y HIST-1. EWS-1 es el que más importa, porque puede descargar lógica en PLC-H, y por eso la herramienta de AA22-103A que explota controladores de software es relevante incluso para una planta sin productos nombrados.
+
+### 11.2 Matrices de soporte
+
+El fabricante del HMI certifica una versión concreta del sistema operativo, un paquete de servicio y un producto antivirus. Aplicar un ajuste de bastionado no soportado —por ejemplo, desactivar un servicio que usa el entorno de ejecución del HMI— puede dejar a los operadores ante una pantalla en blanco durante una ola de frío. Por eso el bastionado sigue la secuencia de probar en banco, pasar por el comité de cambios y desplegar en una ventana, y las excepciones se documentan con controles compensatorios.
+
+Para HMI-1, Maya propuso usar la lista de permitidos en modo de auditoría durante dos semanas antes de aplicarla, y el fabricante lo confirmó; eliminar la cuenta de administrador local compartida requería una cuenta de servicio para el entorno de ejecución, que ella documentó como excepción en lugar de imponer el cambio. Esa secuencia es la matriz de soporte en la práctica.
+
+### 11.3 Listas de permitidos y control de soportes
+
+La lista de aplicaciones permitidas solo autoriza ejecutables conocidos, lo que encaja con los HMI porque su conjunto de software rara vez cambia. El control de soportes extraíbles —quioscos de análisis, bloqueo del almacenamiento USB, soportes de transferencia firmados— aborda la forma más común en que el malware cruza un espacio de aire. Ambos son controles de equipo que figuran entre los requisitos de sistema de IEC 62443-3-3 para la protección frente a código malicioso (SR 3.2). La propuesta de Maya para HMI-1 aplicaba ambos: lista de permitidos en modo de auditoría durante dos semanas y luego en aplicación, y el almacenamiento masivo USB bloqueado salvo a través del quiosco de análisis. El periodo de auditoría importa porque enumera cada ejecutable que el entorno de ejecución del HMI arranca realmente, incluidos los que la documentación del fabricante olvidó, antes de bloquear nada.
+
+### 11.4 Evidencia con el mínimo privilegio
+
+Para una investigación, prefiera exportar el registro de eventos, la lista de software instalado y la lista de procesos en ejecución con una cuenta de solo lectura antes que obtener una imagen del disco de un HMI en funcionamiento. La imagen puede requerir tiempo de inactividad y copia recetas propietarias. En LDHP, un inicio de sesión sospechoso en HMI-1 durante una noche de invierno se investigaría primero a partir de exportaciones: el registro de eventos de Windows para el inicio de sesión, la lista de procesos que muestra si se ejecutaba el entorno del HMI u otra cosa, y la lista de software instalado comparada con la compilación certificada por el fabricante. Una imagen completa de HMI-1 supondría quitar a los operadores su pantalla, lo que requiere el acuerdo del jefe de turno y un plan para operar la caldera desde los controles locales.
+
+### Ejemplo resuelto (LDHP sintética)
+
+HMI-1 de LDHP ejecuta una compilación de Windows certificada por su fabricante. Maya propone tres cambios: activar la lista de permitidos en modo de auditoría durante dos semanas y luego aplicarla; bloquear el almacenamiento masivo USB salvo a través del quiosco de análisis; y eliminar la cuenta de administrador local que usan todos los turnos y emitir cuentas nominativas. El fabricante confirma los dos primeros; el tercero requiere una cuenta de servicio para el entorno de ejecución, que ella documenta como excepción.
+
+> **Caso sintético — Lakeside District Heating Plant.** La respuesta del fabricante es inventada; los fabricantes reales publican sus propias guías de bastionado.
+
+### Errores y límites
+
+Un modo de auditoría que nunca pasa a aplicación es puro teatro. Los análisis antivirus durante la carga máxima pueden ralentizar un HMI; prográmelos.
+
+### Ejercicios — capítulo 11
+
+- **EX031 — ¿Por qué primero el modo de auditoría?** Explique el propósito de ejecutar la lista de permitidos en modo de auditoría antes de aplicarla en HMI-1. *Rúbrica:* 3 = descubrir los ejecutables legítimos sin bloquear las operaciones y después aplicar una lista revisada; 2 = parcial; 1 = «para probar»; 0 = nada.
+- **EX032 — Elegir un método de evidencia.** Ante una sospecha de infección en HMI-1, elija entre la exportación en vivo y la imagen de disco y justifíquelo. *Rúbrica:* 3 = primero exportación en vivo de solo lectura; imagen solo si está justificada, permitida y programada; 2 = solo la elección; 1 = imagen de inmediato; 0 = nada.
+- **EX033 — Documentar una excepción de bastionado.** Escriba el registro de excepción para la cuenta de servicio del entorno de ejecución. *Rúbrica:* 3 = motivo, control compensatorio, responsable, fecha de revisión; 2 = tres; 1 = solo el motivo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los equipos de propósito general son la capa más blanda de una planta: bastiónelos dentro del soporte del fabricante, controle qué se ejecuta y qué se conecta, e investíguelos con delicadeza.
+
+### Siga estudiando — capítulo 11 de 40
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidad y estadística
+
+### Resultados de aprendizaje
+
+Usted podrá (1) estimar una tasa de falsas alarmas con una cota de confianza; (2) usar la regla del tres cuando se observan cero eventos; (3) comparar los intervalos de Wilson con estimaciones puntuales ingenuas; y (4) evitar la falacia de la tasa base al evaluar alertas.
+
+### 12.1 Cero no es cero
+
+Un detector que no dio ninguna falsa alarma en 40 días tranquilos tiene una estimación puntual de 0, pero el enunciado honesto es una cota. La regla del tres da un límite superior aproximado al 95 % de 3/n cuando se observan cero eventos en n ensayos independientes; con n = 40, eso es un 7,5 %. Esta es la afirmación que hace el ingeniero de control en el ejemplo resuelto de este capítulo: un nuevo detector de temperatura de impulsión que «nunca da falsas alarmas». La primera pregunta de Maya fue por el denominador, 40 días, y su respuesta fue la cota: 0 de 40 es compatible con una tasa diaria real de falsas alarmas de hasta varios puntos porcentuales.
+
+### 12.2 Intervalos de Wilson
+
+El intervalo de puntuación de Wilson se comporta bien con recuentos pequeños y proporciones cercanas a 0 o 1, a diferencia de la aproximación normal de los manuales, que puede producir cotas inferiores negativas.
+
+```python
+"""Lab 12: false-alarm estimates and rule-of-three bounds (synthetic counts)."""
+import math
+def wilson_upper(k, n, z=1.96):
+    p = k / n; d = 1 + z*z/n
+    return (p + z*z/(2*n) + z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))) / d
+for k, n in [(0, 40), (0, 300), (3, 300)]:
+    r3 = 3 / n if k == 0 else float("nan")
+    print(f"k={k:2} n={n:3} point={k/n:.4f} wilson95_upper={wilson_upper(k,n):.4f} rule_of_three={r3:.4f}")
+```
+
+Ejecútelo con `python3 lab_rule3.py`. Salida verificada:
+
+```text
+k= 0 n= 40 point=0.0000 wilson95_upper=0.0876 rule_of_three=0.0750
+k= 0 n=300 point=0.0000 wilson95_upper=0.0126 rule_of_three=0.0100
+k= 3 n=300 point=0.0100 wilson95_upper=0.0290 rule_of_three=nan
+```
+
+Para el detector de LDHP, el intervalo de manual para 0 falsas alarmas en 40 días se reduce a un 0 % – 0 %, lo que afirma una certeza que los datos no respaldan. Wilson da un 0 % – 8,8 % para el mismo recuento, y ese extremo superior es lo que Maya escribió en su nota: «0 falsas alarmas en 40 días; cota superior al 95 % ≈ 8,8 % por día». El mismo método vuelve a aparecer en el capítulo 25 para las 0 de 40 ejecuciones con falsa alarma de CUSUM.
+
+### 12.3 Leer los números
+
+Para 0/40, la cota superior de Wilson (8,76 %) queda algo por encima de la regla del tres (7,5 %); para 0/300, ambas se reducen a aproximadamente un 1 %. Tres falsas alarmas en 300 dan una estimación puntual del 1 %, pero una cota superior cercana al 2,9 %. Reunir más días tranquilos es la única forma de estrechar el intervalo. Maya usó la segunda fila para responder al ingeniero de control: harían falta unos 300 días tranquilos para afirmar una tasa de falsas alarmas inferior a aproximadamente un 1 %. A razón de un día por cada día de operación, eso es casi un año, y por eso los estudios de simulación como el del capítulo 25 usan muchas ejecuciones con semilla.
+
+### 12.4 Tasas base
+
+Suponga que los ataques reales ocurren 1 día de cada 1.000 y que un detector detecta el 90 % de ellos, mientras da una falsa alarma en el 2 % de los días tranquilos. De 1.000 días, marca unos 0,9 verdaderos y 19,98 falsos, así que aproximadamente el 4 % de las alertas son reales. Los operadores que aprenden que la mayoría de las alertas son ruido empiezan a ignorarlas, y por eso la práctica de gestión de alarmas trata las tasas de alarmas molestas como una cuestión de seguridad funcional. En la sala de control de LDHP, donde un turno de noche ve tres o cuatro alarmas de proceso genuinas, un detector que produjera unas 20 falsas alarmas por cada una real se desactivaría en menos de una semana.
+
+### Ejemplo resuelto (LDHP sintética)
+
+El ingeniero de control dice que un nuevo detector de temperatura de impulsión «nunca da falsas alarmas». Maya pregunta por el denominador: 40 días. Escribe: «0 falsas alarmas en 40 días; cota superior al 95 % ≈ 8,8 % por día (Wilson); harían falta unos 300 días tranquilos para afirmar menos de aproximadamente un 1 %».
+
+> **Caso sintético — Lakeside District Heating Plant.** Los recuentos son inventados; los métodos son estándar.
+
+### 12.5 Expresarlo por turno para los operadores
+
+Los operadores piensan en turnos, no en proporciones. Una tasa de falsas alarmas del 2 % por día en un detector parece pequeña, pero cuarenta detectores así producen casi una alarma molesta al día. Convierta las tasas en «alarmas esperadas por turno» antes de pedir a una sala de control que acepte un detector nuevo. En LDHP, con dos turnos de doce horas al día, un único detector al 2 % por día produce una alarma molesta aproximadamente una vez cada 100 turnos, lo que los operadores tolerarán. Cuarenta detectores a esa tasa producen unas 0,8 al día, es decir, aproximadamente una cada dos o tres turnos. El detector de banda del capítulo 25, que dio falsas alarmas en 9 de 40 ejecuciones tranquilas, sería mucho peor en esa escala.
+
+### Errores y límites
+
+Las cotas suponen ensayos independientes; los días consecutivos con el mismo régimen meteorológico están correlacionados, así que la incertidumbre real es mayor.
+
+### Ejercicios — capítulo 12
+
+- **EX034 — Cota superior para cero en 150.** Aplique la regla del tres a 0 falsas alarmas en 150 días. *Rúbrica:* 3 = 2 % con «cota superior aproximada al 95 %»; 2 = solo el número; 1 = dice 0 %; 0 = nada.
+- **EX035 — Precisión de las alertas con una tasa base baja.** Con una tasa de días de ataque de 1 en 500, una detección del 95 % y un 1 % de falsas alarmas, ¿qué fracción de las alertas son reales? *Rúbrica:* 3 ≈ 16 % con el cálculo; 2 = método correcto, error aritmético; 1 = responde 95 %; 0 = nada.
+- **EX036 — Ensayos correlacionados.** ¿Por qué 40 días de invierno consecutivos sobrestiman la información de «0/40»? *Rúbrica:* 3 = los días comparten condiciones, así que no son independientes; el n efectivo es menor; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Publique siempre las afirmaciones de detección con un recuento, un denominador y una cota; y juzgue las alertas por la frecuencia con que aciertan, no solo por la frecuencia con que se detectan los ataques.
+
+### Siga estudiando — capítulo 12 de 40
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
 
 <a id="worked-results"></a>
 
@@ -407,6 +774,42 @@ Respuestas modelo para EX001–EX120. Lakeside District Heating Plant, Maya Chen
 **EX017.** No: tras el cambio, Control no tiene ningún conducto saliente, así que la nueva arista Internet→Control no alcanza SIS. Sin embargo, sí expone el control a nivel de PLC directamente a internet, lo que es un hallazgo grave por sí mismo.
 
 **EX018.** {(HIST-1, PLC-H, read), (HMI-1, PLC-H, read), (HMI-1, PLC-H, write)}.
+
+**EX019.** tid=4, protocolo 0, longitud 6, unidad 1, fc=4 (lectura de registros de entrada), dirección inicial 0x0032 = 50, cantidad 0x0004 = 4 → una lectura.
+
+**EX020.** Los bytes no muestran quién la envió ni si ese equipo estaba autorizado, y no muestran que el registro 100 sea el punto de consigna de impulsión en décimas de grado: ambas cosas provienen del contexto de red y del mapa de registros de la planta.
+
+**EX021.** 925 (0x039D), porque el registro contiene décimas de grado Celsius.
+
+**EX022.** «unknown». Las subfunciones de la función 8 incluyen reiniciar las comunicaciones o borrar contadores, así que etiquetarla como «read» subestimaría su efecto; «unknown» obliga a que una persona la revise.
+
+**EX023.** `self.assertEqual(classify(8), "unknown")`: con el código original esto devolvía «read» y la prueba fallaría.
+
+**EX024.** El hash de commit de git del script que produjo el resultado y un hash SHA-256 (más la fecha de captura) del archivo de entrada exacto; la versión de Python es un tercer elemento útil.
+
+**EX025.** Se insertan doce filas regulares de TT-101 para t = 0, 5, …, 55, y el script añade una fila extra (35, 128.0), lo que da 13.
+
+**EX026.** `select ts from (select ts, lead(ts) over (order by ts) as nxt from h where tag='PT-201') where nxt - ts > 10;` (SQLite ≥ 3.25 admite LEAD; una autounión sobre la siguiente marca de tiempo mayor también funciona). Con los datos del laboratorio no devuelve ninguna fila.
+
+**EX027.** Con compresión por banda muerta (por excepción), un valor nuevo solo se archiva cuando difiere del último valor archivado en más que la banda muerta; si un pico sube y baja entre dos puntos archivados —o el punto archivado posterior vuelve a caer dentro de la banda—, el máximo nunca se almacena, así que el historiador muestra una tendencia suave.
+
+**EX028.** «Si aparece cualquier alarma en el HMI de calderas de LDHP o el puerto del conmutador muestra errores durante la captura, detener la captura, retirar el derivador solo con el consentimiento del jefe de turno e informar de inmediato al jefe de turno y al ingeniero de control».
+
+**EX029.** No. El responsable de un contratista no es el propietario del activo; escanear requiere una autorización escrita de LDHP (o de su delegado) y del responsable de operaciones, que nombre PLC-H, la ventana, la técnica permitida y las condiciones de parada; además, el escaneo activo de un controlador en funcionamiento probablemente se rechazaría en favor de métodos pasivos.
+
+**EX030.** Registrar la versión del firmware, la entrada y la evidencia del bloqueo en el sistema de banco sin compartirlas públicamente; después, comunicarlo a través del PSIRT o de la política de divulgación del fabricante (y a CISA o al CERT nacional si el fabricante no responde), acordando un calendario de divulgación.
+
+**EX031.** El modo de auditoría registra cada ejecutable que se habría bloqueado sin detenerlo, de modo que el equipo puede construir durante las operaciones reales una lista completa de los binarios legítimos del HMI; aplicar una lista sin probar podría bloquear el entorno de ejecución del HMI y dejar a los operadores sin visión del proceso.
+
+**EX032.** Empezar con una exportación en vivo y de solo lectura de los registros de eventos, la lista de procesos, las conexiones de red y el software instalado, usando una cuenta de investigación nominativa; obtener una imagen de disco solo si la evidencia lo justifica, el propietario aprueba el tiempo de inactividad y un HMI de reserva o redundante mantiene a los operadores con visión de la planta.
+
+**EX033.** «Excepción HMI-1/SA-01: se conserva la cuenta de servicio local `hmirt` porque el entorno de ejecución del fabricante la requiere (carta del fabricante ref. V-221). Controles compensatorios: inicio de sesión interactivo denegado, contraseña guardada en bóveda y rotada trimestralmente, eventos de inicio de sesión reenviados al SIEM. Responsable: jefe de ingeniería de control. Revisión: 1 de marzo del año próximo».
+
+**EX034.** 3/150 = 0,02, así que aproximadamente una cota superior del 2 % por día con un 95 % de confianza aproximado; la estimación puntual de 0 no es una afirmación de imposibilidad.
+
+**EX035.** Por cada 500 días: 0,95 alertas verdaderas y 499 × 0,01 = 4,99 alertas falsas; precisión = 0,95 / 5,94 ≈ 0,16, así que solo alrededor del 16 % de las alertas son reales.
+
+**EX036.** Los días consecutivos comparten meteorología, carga y personal, así que el comportamiento de un detector el día 12 predice su comportamiento el día 13; las observaciones están positivamente correlacionadas y el tamaño muestral efectivo es menor que 40, lo que hace que la cota superior real sea mayor que el 7,5–8,8 %.
 
 <a id="references"></a>
 
