@@ -603,7 +603,7 @@ The two unreviewed vendor features would have been missed by an inventory of bui
 - Parallel AI processes nobody follows.
 - Metrics that count activity instead of risk reduction.
 
-Each error leaves risk unseen or unmanaged. An inventory of built systems alone would have missed Corvane's 11 vendor features and 9 shadow uses. A parallel AI process is easy for teams to ignore; adding questions to existing checklists reaches them. Counting activity, such as prompts filtered, says nothing about whether risk fell. Check your programme for all three. Fix any you find at the next review.
+Each error leaves risk unseen or unmanaged. An inventory of built systems alone would have missed Corvane's 11 vendor features and 9 shadow uses. A parallel AI process is easy for teams to ignore; adding questions to existing checklists reaches them. Counting activity, such as prompts filtered, says nothing about whether risk fell; track the share of high-tier systems with current adversarial evaluation instead. Check your programme for all three.
 
 ### Exercises
 
@@ -801,7 +801,7 @@ The decision request is supported by live evidence and states its weak point, so
 - Green dashboards hiding unknowns.
 - Red teams constrained to prompt lists.
 
-Each error makes assurance stale or misleading. A claim without conditions or dates may describe a model that no longer runs. Green dashboards hide what is unknown, such as the one high-tier system at Corvane still unevaluated. Red teams limited to prompt lists cannot find chained attacks that move money. Check your assurance cases and reports for all three each quarter. Fix any you find before the next report.
+Each error makes assurance stale or misleading. A claim without conditions or dates may describe a model that no longer runs. Green dashboards hide what is unknown, such as the one high-tier system at Corvane still unevaluated. Red teams limited to prompt lists cannot find chained attacks that move money; scope them on objectives such as moving money or extracting customer addresses. Check your assurance cases and reports for all three each quarter.
 
 ### Exercises
 
@@ -907,7 +907,7 @@ Tomás worked only on Corvane's isolated copy and logged each run with versions.
 
 ### 11.4 Evaluation
 
-Measure against the criteria agreed at scoping. Use held-out and adaptive cases and measure side effects. Report failures honestly.
+Measure against the criteria agreed at scoping, including side effects.
 
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'

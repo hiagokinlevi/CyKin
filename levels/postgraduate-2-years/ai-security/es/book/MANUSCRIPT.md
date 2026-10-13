@@ -571,7 +571,7 @@ Un inventario limitado a los sistemas construidos habría pasado por alto las do
 - Procesos de IA paralelos que nadie sigue.
 - Métricas que cuentan actividad en lugar de reducción del riesgo.
 
-Cada error deja riesgos sin ver o sin gestionar. Un inventario limitado a los sistemas construidos habría pasado por alto las 11 funciones de proveedores y los 9 usos en la sombra de Corvane. Un proceso de IA paralelo es fácil de ignorar para los equipos; añadir preguntas a las listas de comprobación existentes sí llega a ellos. Contar actividad, como los *prompts* filtrados, no dice nada sobre si el riesgo bajó. Revise su programa en busca de los tres. Corrija los que encuentre en la próxima revisión.
+Cada error deja riesgos sin ver o sin gestionar. Un inventario limitado a los sistemas construidos habría pasado por alto las 11 funciones de proveedores y los 9 usos en la sombra de Corvane. Un proceso de IA paralelo es fácil de ignorar para los equipos; añadir preguntas a las listas de comprobación existentes sí llega a ellos. Contar actividad, como los *prompts* filtrados, no dice nada sobre si el riesgo bajó; mida, en su lugar, la proporción de sistemas de nivel alto con una evaluación adversarial vigente. Revise su programa en busca de los tres.
 
 ### Ejercicios
 
@@ -755,7 +755,7 @@ La solicitud de decisión está respaldada por evidencia real e indica su punto 
 - Cuadros de mando en verde que ocultan lo desconocido.
 - Equipos rojos limitados a listas de *prompts*.
 
-Cada error hace que el aseguramiento quede obsoleto o resulte engañoso. Una afirmación sin condiciones ni fechas puede describir un modelo que ya no está en funcionamiento. Los cuadros de mando en verde ocultan lo que se desconoce, como el único sistema de nivel alto de Corvane que sigue sin evaluar. Los equipos rojos limitados a listas de *prompts* no pueden encontrar ataques encadenados que muevan dinero. Revise cada trimestre sus casos de aseguramiento y sus informes en busca de los tres. Corrija los que encuentre antes del siguiente informe.
+Cada error hace que el aseguramiento quede obsoleto o resulte engañoso. Una afirmación sin condiciones ni fechas puede describir un modelo que ya no está en funcionamiento. Los cuadros de mando en verde ocultan lo que se desconoce, como el único sistema de nivel alto de Corvane que sigue sin evaluar. Los equipos rojos limitados a listas de *prompts* no pueden encontrar ataques encadenados que muevan dinero; delimite su alcance por objetivos, como mover dinero o extraer direcciones de clientes. Revise cada trimestre sus casos de aseguramiento y sus informes en busca de los tres.
 
 ### Ejercicios
 
@@ -849,7 +849,7 @@ Trabaje con copias aisladas. Registre cada prueba. Deténgase y escale si encuen
 
 ### 11.4 Evaluación
 
-Mida frente a los criterios acordados al delimitar el alcance. Use casos reservados y adaptativos y mida los efectos secundarios. Comunique los fallos con honestidad.
+Mida frente a los criterios acordados al delimitar el alcance, incluidos los efectos secundarios.
 
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
