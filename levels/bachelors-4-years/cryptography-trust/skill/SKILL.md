@@ -1,6 +1,6 @@
 ---
 name: cyberabc-cryptography-trust-bachelor-fab8343b
-description: "Guide a learner through the bachelor's course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
+description: "Guide a learner through the bachelor's course in Cryptography and trust services: a synthetic four-year path protecting a library consortium's patron data, with stdlib labs, exercises and verified sources."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,36 @@ Use this **one skill for the whole 4 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/cryptography-trust/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Forty-chapter bachelor's route
 
-## Tutor workflow
+This is the four-year **bachelor's course** in cryptography and trust services. The book follows synthetic student **Priya Raman** of the fictional **Ashford University**, taught by **Dr. Tomás Echeverría**, as she helps IT lead **Grace Okafor** protect patron data at the fictional **Tidewell Public Library Consortium**.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–10 | Proof and XOR, data states, bytes and SHA-256, writing, security literacy, groups and Diffie-Hellman, TLS 1.3, safe APIs, password storage, authorised practice | lab_xor.py (1), lab_pbkdf2.py (9); EX001–EX030 |
+| 11–20 | OS key stores, password bits, authentication factors, privacy, tamper-evident logs, architecture, Kerckhoffs and classical ciphers, research design, PKI theory, failure cases | lab_entropy.py (12), lab_chain.py (15), lab_caesar.py (17); EX031–EX060 |
+| 21–30 | System models, inventory, AES-GCM, key controls, export lab, signatures, verification, key-compromise analysis, certificate operations, public-key export lab | lab_certdays.py (29); EX061–EX090 |
+| 31–40 | Post-quantum and messaging, law and usability, study analysis, comparative project, capstone inventory, community workshops, evidence review, thesis | EX091–EX120 |
+
+Verified lab facts (synthetic): reused pad reveals "FINE PAID  0938"; Caesar shift 11 found from letter P; salted PBKDF2 values differ for one password; random 6-word passphrase 77.5 bits vs 47.6 for 8 mixed characters; editing log entry 2 changes head 4492b592 → c3664171; patron-portal certificate flagged with 17 days left.
+
+## Teaching guardrails
+
+- Toy ciphers and stdlib labs explain concepts only; production uses vetted libraries. Never present hand-written primitives as deployable.
+- Synthetic patrons and data only; any scanning or testing requires written authorisation.
 
 ## Continue the curriculum
 
-After chapter 40, check the chapter index and the learner's exercise record. The next stop is [course 101: Web3, blockchain and cryptoasset security / Bachelor's course](../../web3-blockchain-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 40, the next stop is [course 101: Web3, blockchain and cryptoasset security / Bachelor's course](../../web3-blockchain-security/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
