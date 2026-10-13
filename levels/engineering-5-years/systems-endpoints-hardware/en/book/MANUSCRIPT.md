@@ -4086,21 +4086,31 @@ You will (1) complete implementation; (2) meet acceptance criteria; (3) prepare 
 
 Dashboard, firmware process and documentation are completed.
 
+The dashboard reuses the restore and inventory tables and now shows firmware versions by model, as the independent review asked. The firmware process covers testing on a lab unit, staged rollout, checking settings afterwards and the recovery steps if an update fails. The documentation brings the runbooks, design records and configuration guide up to date with what was actually built, including the changes made after the review and during the placement. Each item was checked against the work plan before Mateo declared the build complete.
+
 ### 46.2 Acceptance
 
 Ten requirements pass; restore within window for 30 nights; a new technician uses the docs successfully.
+
+Each criterion was checked against its evidence rather than declared. The requirement table shows ten passing tests with links to evidence. The restore record covers thirty consecutive nights, including the night affected by the power cut described in the worked example. The technician who tested the documentation had not worked on the project, and she followed the runbooks for a week without help. Marta and Dr Novak reviewed the evidence together before acceptance was signed.
 
 ### 46.3 Handover
 
 Mateo hands over to Marta and the technician with a walkthrough.
 
+The walkthrough covers each part of the handover pack in turn, on a lab PC and on the live dashboard. Marta and the technician perform each routine task themselves while Mateo watches, rather than watching him do it. Questions that come up are answered in the documents, not just in conversation, so the answers stay available after he leaves. The session takes a full day, split over two mornings so branch work can continue.
+
 ### 46.4 Residual risks
 
 Older hardware and dependence on vendor firmware support remain.
 
+Some PC models will lose vendor firmware support within two years, after which new flaws in their firmware will not be fixed. Replacing them depends on Fernhill's budget. The design also relies on vendors continuing to sign their updates and publish recovery tools. Both risks are recorded with Marta as owner, a review date and the early warning signs to watch, such as end-of-support notices from vendors. Marta reviews both risks every six months.
+
 ### 46.5 Sign-off
 
 Fernhill signs off acceptance.
+
+The signature comes from Marta as service owner, with the board's representative countersigning because the board approved the project at the start. Sign-off means Fernhill accepts the service as delivered and takes responsibility for running it. It does not mean the work is finished forever: maintenance, reviews and residual risks continue under Fernhill's ownership. The signed record is stored in the dossier. The board's next quarterly update reports the acceptance and the remaining risks, so its members know exactly what they have taken on.
 
 ### Handover pack
 
@@ -4184,21 +4194,31 @@ You will (1) run a full failure and recovery trial; (2) measure recovery; (3) le
 
 With Fernhill's agreement, a branch simulates a bad image release after closing time.
 
+The simulated bad release was a test image signed with a lab key and approved by the change board only for this branch and this night. Real patrons were not involved, since the branch was closed. Marta, the technician and Mateo were present, with the stop condition agreed in advance. The aim was to see whether detection, rollback and the people following the runbooks would work together as designed, not just in separate tests.
+
 ### 47.2 Detection
 
 Restore digests fail; the five-failure alert fires within minutes.
+
+The digest check after restore found that the policy files did not match the manifest of the approved release, so each PC reported failure. Because many PCs failed in the same night, the incident alert fired as the probability work had predicted for a shared cause. The time from the first failure to the alert was recorded. The technician then started the rollback runbook without waiting for further instructions. Every step was timed.
 
 ### 47.3 Recovery
 
 Rollback to the previous image completes for the branch in 40 minutes.
 
+Forty minutes covered the whole branch, with PCs rolling back in groups to avoid loading the network. Each PC verified the previous image's digests after rollback and reported success to the dashboard. No PC needed the manual restore described in the stop condition. The figure is longer than the ten minutes measured for a single lab PC, as expected for many PCs sharing one link. The dashboard showed every PC healthy before midnight.
+
 ### 47.4 Lessons
 
 The runbook lacked a step for confirming printer mappings after rollback.
 
+After rollback the printers worked on most PCs, but the runbook did not tell the technician to check them, and two PCs had lost their mapping. On a busy morning, patrons would have discovered the problem first. The gap was invisible in the technical tests because they checked the image, not the full patron journey. The debrief recorded it as the trial's main finding. Nobody had noticed it before the trial.
+
 ### 47.5 Improvement
 
 The step is added and tested.
+
+The new step tells the technician to print a test page from one PC in each room after rollback. Mateo tested the revised runbook on lab PCs with a synthetic rollback, then the technician followed it on her own. The change is recorded with the trial report that prompted it, and the runbook's date and version are updated. The next annual trial will check the step again under realistic conditions. Marta approved the revision.
 
 ### Trial safety
 
@@ -4286,21 +4306,31 @@ You will (1) assemble evidence for assessment; (2) link claims to evidence; (3) 
 
 Requirements, design records, test results, measurements, reviews, trials and operations data.
 
+Each type of evidence supports a different kind of claim. Requirements and design records show what was intended; test results and measurements show what happened; reviews and trials show how the system held up under scrutiny and stress; operations data show how it behaves in service. Mateo includes items that show problems, such as the failed remote logging test and the trial's printer gap, because leaving them out would make the dossier less believable.
+
 ### 48.2 Linking
 
 Each claim in the thesis links to dossier items.
+
+A claim such as availability rising to 0.9999 links to the lab output, the failure records and the measured repair times, so an assessor can check it in a few steps. Claims in the thesis that have no dossier link are either supported in another way, such as a citation, or removed. Mateo keeps a list of claims and links and checks it before submission. The list is part of the dossier, so assessors can use it as a map.
 
 ### 48.3 Privacy
 
 No patron data appear; operational data are aggregated.
 
+Every item was checked for patron information before it entered the dossier. Restore logs record PCs and times, not people. Help-desk data were stripped of names before analysis and are summarised as counts by category. Comment cards are quoted only where the patron could not be identified. Fernhill's data protection officer reviewed the index and agreed that nothing in it identifies a patron. Her review is recorded in the dossier with the date and the version of the index she checked.
+
 ### 48.4 Integrity
 
 Files carry digests so assessors can confirm they are unchanged.
 
+Each digest is computed when the item is added and listed in the index. An assessor can recompute the digest of any file and compare it with the index, which shows the file has not been changed since submission. Mateo uses the same hashing approach as the manifest work earlier in the course. Corrections after submission are added as new versions with their own digests, so the history stays visible.
+
 ### 48.5 Review
 
 Dr Novak checks a sample of links.
+
+Dr Novak picks twenty claims at random and follows each link to its evidence. Two links point to the wrong version of a file, which Mateo corrects before submission. Sampling like this cannot prove every link is right, but it shows whether the index is reliable enough for assessors to trust. Her checklist and results are stored with the dossier. Mateo then checks every remaining link himself, since the sample found errors, and records the result.
 
 ### Organising the dossier
 
@@ -4392,21 +4422,31 @@ You will (1) write the engineering thesis; (2) synthesise design, evidence and l
 
 Problem, requirements, design, implementation, verification, validation, operations, lessons.
 
+The order follows the life of the project, so a reader can see how each stage led to the next. Each chapter opens with a short summary and ends with links to evidence. Mateo keeps background material brief and refers to the course chapters for detail, so the thesis concentrates on what he did and what he found. Lessons come last because they draw on everything before. Appendices hold the procedures. Dr Novak approved the outline.
+
 ### 49.2 Key results
 
 Exposure reduced from about 294 to 21 PC-days per fortnight (estimate); availability 0.9999; help-desk breakdown calls halved.
+
+Mateo labels the exposure figure as an estimate because it comes from the model, not from counting exposure directly. The availability figure combines measured repair times with the baseline failure count. The call result comes from the research study and its limits apply. Each result in the thesis carries its label and its link to evidence, following his supervisor's request to separate estimates from measurements. Dr Novak checked the labels.
 
 ### 49.3 Lessons
 
 Audit before enforce; test restore scope; design recovery for the design.
 
+Each lesson comes from a specific moment in the project. Audit before enforce comes from the accessibility reader that the first audit week would otherwise have blocked. Testing restore scope comes from the temporary folder that survived the first restore test. Designing recovery for the design comes from the trial's printer gap and the review's finding on the signing key. Mateo explains each with its evidence. Each lesson is short.
+
 ### 49.4 Limitations
 
 One organisation; synthetic-structure figures; older hardware.
 
+One organisation means the results describe Fernhill's PCs, staff and patrons, and other networks may differ. Many figures were produced with synthetic data shaped to match Fernhill's records, so they show how the methods work rather than precise facts about the library. Older hardware may have made some results, such as restore times, worse than newer equipment would. Mateo states how each limit could change the conclusions. Readers can then judge how far the results apply to their own setting.
+
 ### 49.5 Contribution
 
 A tested, documented design for public PC services others can adapt.
+
+The design is written so another library or a school could adopt it: the requirements, the control specifications, the test procedures and the runbooks are all included and use standard tools. Mateo does not claim novelty for any single part, since each draws on published guidance. What the thesis offers is the combination, tested end to end in a real public service, with the evidence and the lessons. Fernhill agreed to share it.
 
 ### Writing process
 
@@ -4502,21 +4542,31 @@ You will (1) defend the thesis; (2) answer questions; (3) reflect on professiona
 
 Mateo presents in thirty minutes and answers questions.
 
+The presentation follows the thesis: problem, design, evidence, limits and lessons, with one slide for each. Mateo leaves more than half the time for questions, since that is where examiners test understanding. He brings a lab PC so he can show the out-of-service screen and a restore if asked. The rehearsals with classmates kept the talk within the time. He also prints the evidence index in case examiners want to check a claim during questions.
+
 ### 50.2 Questions
 
 Examiners ask about privacy, accessibility and long-term costs.
+
+The three topics reflect the project's main tensions. Privacy asks whether a design that monitors PCs also monitors people. Accessibility asks whether restrictions shut some patrons out. Long-term cost asks whether Fernhill can afford to keep the service running after the student leaves. The examiners also asked how firmware risk would be handled as models age. Mateo had prepared for all four during rehearsal, using questions his classmates and Marta had suggested, and kept a page reference ready for each.
 
 ### 50.3 Answers
 
 Logs hold no content; accessibility tools were protected by audit-first; costs are mainly staff time, which fell.
 
+Each answer points to evidence in the dossier: the list of logged fields approved by the data protection officer, the two audit weeks and the reader's addition, and the call study with the maintenance hours. Mateo keeps each answer short and offers the evidence rather than repeating it. When asked about firmware risk, he points to the residual risk register and the dashboard check for unapproved versions.
+
 ### 50.4 Reflection
 
 Mateo learned that users shape security designs as much as threats do.
 
+The clearest example was the accessibility reader: no threat analysis would have found that problem, but a week of audit data and a conversation with a librarian did. Patron needs also shaped the notices, the logoff warning and the saving guidance. Mateo now starts any design by asking who uses the system and what they need, before asking what could go wrong. Examiners asked for an example and he gave this one.
+
 ### 50.5 Next
 
 Fernhill hires him part-time to maintain the service.
+
+The part-time role continues the work under Marta's supervision while Mateo looks for a full-time post. He will run the annual review, the recovery trial and the maintenance tasks listed in the handover pack. Fernhill's decision is also a sign that the documentation works, since he is no longer the only person who can run the service. The course ends here, and the service carries on. Dr Novak remains a contact for advice.
 
 ### Preparing the defense
 
