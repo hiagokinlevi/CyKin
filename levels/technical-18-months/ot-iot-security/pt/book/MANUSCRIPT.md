@@ -182,7 +182,7 @@ Procure-os durante as vistorias: um pequeno switch dentro de um armário com mai
 
 Os dispositivos podem ter uma segunda placa de rede, uma porta serial ou um modem celular que não aparecem no desenho. Pergunte ao dono por todas as interfaces, não só pelo endereço principal.
 
-Registre cada interface no registro de ativos, não só o endereço IP principal. Um modem celular acrescentado por um fabricante de máquinas para suporte remoto é um exemplo comum, e ele pode contornar totalmente o FW-1. Se o dono não souber se um dispositivo tem outras interfaces, consulte o manual ou pergunte ao fornecedor antes de presumir que não tem.
+Registre cada uma no registro de ativos. Um modem celular acrescentado por um fabricante de máquinas para suporte remoto é um exemplo comum, e ele pode contornar totalmente o FW-1. Se o dono não souber se um dispositivo tem outras interfaces, consulte o manual ou pergunte ao fornecedor antes de presumir que não tem.
 
 ### Exemplo resolvido (HPFL sintética)
 
@@ -407,7 +407,7 @@ Na HPFL, quando Tomás encontrou a senha de administrador num bilhete adesivo, o
 
 ### Exemplo resolvido (HPFL sintética)
 
-Tomás repara num bilhete adesivo na HMI-1 com "admin / Harbor2024". Ele o fotografa como evidência, remove-o, avisa o supervisor e o engenheiro de controle e escreve um breve relatório. O engenheiro troca a senha de administrador na parada planejada seguinte e confere o registro de logins em busca de sessões de administrador inesperadas.
+Tomás repara num bilhete adesivo na HMI-1 com "admin / Harbor2024". Ele o fotografa como evidência, remove-o, avisa o supervisor e o engenheiro de controle e escreve um breve relatório.
 
 > **Caso sintético — HPFL.** O bilhete e a senha são inventados.
 
@@ -458,7 +458,7 @@ Na HPFL, a estação de varredura fica fora da linha, e os pen drives da instala
 
 Apenas o ENG-LT e os notebooks de fornecedores aprovados se conectam aos equipamentos da linha. Um notebook aprovado tem as correções aplicadas, roda antimalware, não tem software pessoal e é verificado antes de cada visita. O fornecedor cujo notebook não atenda a esse padrão usa, em vez dele, um notebook da instalação com as ferramentas do fornecedor instaladas.
 
-Mantenha no registro de ativos uma lista dos notebooks aprovados, com o responsável e a data da última verificação de cada um. Na HPFL, o ENG-LT é o único notebook da instalação autorizado a programar os CLPs. Um notebook de fornecedor que não possa ser verificado não se conecta; o fornecedor usa um notebook da instalação com as suas ferramentas.
+Mantenha no registro de ativos uma lista dos notebooks aprovados, com o responsável e a data da última verificação de cada um. Na HPFL, o ENG-LT é o único notebook da instalação autorizado a programar os CLPs. Um notebook cuja última verificação seja anterior à visita é verificado de novo antes de se conectar.
 
 ### 7.4 Transferir arquivos sem USB
 
@@ -529,7 +529,7 @@ Na HPFL, Tomás desabilitou a conta do fornecedor às 14:38, antes do fim da jan
 
 ### Exemplo resolvido (HPFL sintética)
 
-O fabricante da embaladora precisa ler um registro de falhas. O supervisor abre o chamado 4471 para 14:00–14:45. Tomás habilita a conta do fornecedor no gateway, acompanha o compartilhamento de tela, vê que o engenheiro apenas abre o visualizador de falhas e desabilita a conta às 14:38. Ele registra a sessão no chamado, com os horários de início e de fim.
+O fabricante da embaladora precisa ler um registro de falhas. O supervisor abre o chamado 4471 para 14:00–14:45. Tomás habilita a conta do fornecedor no gateway, acompanha o compartilhamento de tela, vê que o engenheiro apenas abre o visualizador de falhas e desabilita a conta às 14:38.
 
 > **Caso sintético — HPFL.** O chamado, o fornecedor e os horários são inventados.
 
@@ -568,7 +568,7 @@ Você vai (1) distinguir alarmes de processo de eventos relevantes para a segura
 
 As IHMs e os CLPs relatam alarmes de processo, como falta de filme ou um enrosco. Também registram logins, mudanças de configuração e downloads de programas. Os alarmes de processo são tratados pelos operadores; o segundo tipo diz quem fez o quê no sistema, e é ali que as pistas de segurança costumam aparecer.
 
-Na HPFL, os alarmes de falta de filme e de enrosco pertencem aos operadores. Os logins, as mudanças de setpoint e os downloads de programas são os registros a exportar e guardar. Separar os dois mantém a revisão de segurança curta o bastante para acontecer todos os dias.
+Os logins, as mudanças de setpoint e os downloads de programas são os registros a exportar e guardar. Separar os dois mantém a revisão de segurança curta o bastante para acontecer todos os dias. Os operadores ainda avisam o supervisor sobre um padrão estranho de alarmes de processo, porque ele pode ser o primeiro sinal visível de um problema de segurança.
 
 ### 9.2 Padrões que importam
 
@@ -974,7 +974,7 @@ Na HPFL, a divergência de temperatura era um sensor com defeito, e a mudança d
 
 Não reinicie dispositivos, não apague registros, não desconecte cabos nem "conserte" valores antes que o supervisor e o engenheiro concordem; você poderia destruir as evidências do que aconteceu ou criar um novo perigo.
 
-O supervisor decide se a linha continua funcionando; o engenheiro decide como examinar os dispositivos. A sua parte é fotografar, anotar o horário e ligar. Se um perigo exigir ação imediata, siga os procedimentos normais de segurança e registre o que fez. Na HPFL, Tomás fotografou as duas leituras de temperatura e ligou para o supervisor; não reinicializou o sensor. Essa contenção preservou as evidências que depois mostraram a causa.
+O supervisor decide se a linha continua funcionando; o engenheiro decide como examinar os dispositivos. A sua parte é fotografar, anotar o horário e ligar. Se um perigo exigir ação imediata, siga os procedimentos normais de segurança e registre o que fez. Na HPFL, Tomás não reinicializou o sensor. Essa contenção preservou as evidências que depois mostraram a causa.
 
 ### Exemplo resolvido (HPFL sintética)
 
@@ -1090,7 +1090,7 @@ Na HPFL, a HMI-1 foi reconstruída a partir da imagem do fornecedor, os dois pro
 
 Compare os programas restaurados dos CLPs com as cópias verificadas, confira se as telas da IHM mostram valores corretos em relação aos instrumentos locais, confirme que as regras do firewall correspondem à tabela aprovada e rode a linha vazia num ciclo de teste. A qualidade aprova antes que o produto passe.
 
-Na HPFL, o ciclo de teste rodou vazio por 30 minutos, e a qualidade aprovou às 11:20, antes de a produção ser retomada. Registre cada verificação e o seu resultado no arquivo do incidente. Se alguma verificação falhar, a linha não religa até que a causa seja entendida. Guarde os resultados das comparações com o arquivo do incidente.
+Na HPFL, o ciclo de teste rodou vazio por 30 minutos, e a qualidade aprovou às 11:20, antes de a produção ser retomada. Registre cada verificação e o seu resultado no arquivo do incidente. Se alguma verificação falhar, a linha não religa até que a causa seja entendida. O arquivo mostra então quem aprovou o religamento e com base em quais evidências.
 
 ### 16.3 Vigiar depois
 

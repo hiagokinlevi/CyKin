@@ -152,7 +152,7 @@ Los pequeños conmutadores no gestionados dentro de los armarios y los puentes i
 
 ### 3.5 Direcciones que no debe dar por supuestas
 
-Los dispositivos pueden tener una segunda tarjeta de red, un puerto serie o un módem celular que no aparecen en el plano. Pida al responsable todas las interfaces, no solo la dirección principal. Registre cada interfaz en el registro de activos, no solo la dirección IP principal. Un módem celular añadido por un fabricante de máquinas para el soporte remoto es un ejemplo habitual, y puede eludir FW-1 por completo. Si el responsable no sabe si un dispositivo tiene otras interfaces, consulte el manual o pregunte al proveedor antes de suponer que no las tiene.
+Los dispositivos pueden tener una segunda tarjeta de red, un puerto serie o un módem celular que no aparecen en el plano. Pida al responsable todas las interfaces, no solo la dirección principal. Registre cada una en el registro de activos. Un módem celular añadido por un fabricante de máquinas para el soporte remoto es un ejemplo habitual, y puede eludir FW-1 por completo. Si el responsable no sabe si un dispositivo tiene otras interfaces, consulte el manual o pregunte al proveedor antes de suponer que no las tiene.
 
 ### Ejemplo resuelto (HPFL sintética)
 
@@ -339,7 +339,7 @@ Notifíquelo; después, el responsable la cambia en un momento que no perturbe l
 
 ### Ejemplo resuelto (HPFL sintética)
 
-Tomás ve en HMI-1 una nota adhesiva que dice «admin / Harbor2024». La fotografía como evidencia, la retira, avisa al supervisor y al ingeniero de control y redacta un informe breve. El ingeniero cambia la contraseña de administrador en la siguiente parada planificada y revisa el registro de inicios de sesión en busca de sesiones de administrador inesperadas.
+Tomás ve en HMI-1 una nota adhesiva que dice «admin / Harbor2024». La fotografía como evidencia, la retira, avisa al supervisor y al ingeniero de control y redacta un informe breve.
 
 > **Caso sintético — HPFL.** La nota y la contraseña son inventadas.
 
@@ -382,7 +382,7 @@ En HPFL la estación de análisis está fuera de la línea y las memorias del em
 
 ### 7.3 Portátiles
 
-Solo ENG-LT y los portátiles de proveedores aprobados se conectan a los equipos de la línea. Un portátil aprobado tiene los parches al día, ejecuta antimalware, no tiene software personal y se revisa antes de cada visita. Si el portátil de un proveedor no puede cumplir esa norma, se usa en su lugar un portátil del emplazamiento con las herramientas del proveedor instaladas. Mantenga en el registro una lista de los portátiles aprobados con su responsable y la fecha de la última revisión de cada uno. En HPFL, ENG-LT es el único portátil del emplazamiento autorizado para programar los PLC. Un portátil de proveedor que no puede revisarse no se conecta; el proveedor usa en su lugar un portátil del emplazamiento con sus herramientas.
+Solo ENG-LT y los portátiles de proveedores aprobados se conectan a los equipos de la línea. Un portátil aprobado tiene los parches al día, ejecuta antimalware, no tiene software personal y se revisa antes de cada visita. Si el portátil de un proveedor no puede cumplir esa norma, se usa en su lugar un portátil del emplazamiento con las herramientas del proveedor instaladas. Mantenga en el registro una lista de los portátiles aprobados con su responsable y la fecha de la última revisión de cada uno. En HPFL, ENG-LT es el único portátil del emplazamiento autorizado para programar los PLC. Un portátil cuya última revisión sea anterior a la visita se revisa de nuevo antes de conectarse.
 
 ### 7.4 Transferir archivos sin USB
 
@@ -439,7 +439,7 @@ Cuando termina el trabajo, la cuenta se vuelve a desactivar, se deja constancia 
 
 ### Ejemplo resuelto (HPFL sintética)
 
-El fabricante de la envolvedora necesita leer un registro de averías. El supervisor abre el ticket 4471 para las 14:00–14:45. Tomás activa la cuenta del proveedor en la pasarela, vigila la pantalla compartida, ve que el ingeniero solo abre el visor de averías y desactiva la cuenta a las 14:38. Anota la sesión en el ticket con las horas de inicio y fin.
+El fabricante de la envolvedora necesita leer un registro de averías. El supervisor abre el ticket 4471 para las 14:00–14:45. Tomás activa la cuenta del proveedor en la pasarela, vigila la pantalla compartida, ve que el ingeniero solo abre el visor de averías y desactiva la cuenta a las 14:38.
 
 > **Caso sintético — HPFL.** El ticket, el proveedor y los horarios son inventados.
 
@@ -472,7 +472,7 @@ Usted podrá (1) distinguir las alarmas de proceso de los eventos relevantes par
 
 ### 9.1 Dos tipos de mensajes
 
-Las HMI y los PLC notifican alarmas de proceso, como falta de película o un atasco. También registran inicios de sesión, cambios de configuración y descargas de programas. Las alarmas de proceso las gestionan los operadores; el segundo tipo le dice quién hizo qué al sistema, y ahí es donde suelen aparecer las pistas de seguridad. En HPFL las alarmas de falta de película y de atasco corresponden a los operadores. Los inicios de sesión, los cambios de puntos de consigna y las descargas de programas son los registros que hay que exportar y conservar. Separar ambos tipos mantiene la revisión de seguridad lo bastante breve como para hacerla todos los días.
+Las HMI y los PLC notifican alarmas de proceso, como falta de película o un atasco. También registran inicios de sesión, cambios de configuración y descargas de programas. Las alarmas de proceso las gestionan los operadores; el segundo tipo le dice quién hizo qué al sistema, y ahí es donde suelen aparecer las pistas de seguridad. Los inicios de sesión, los cambios de puntos de consigna y las descargas de programas son los registros que hay que exportar y conservar. Separar ambos tipos mantiene la revisión de seguridad lo bastante breve como para hacerla todos los días. Los operadores siguen avisando al supervisor de un patrón extraño de alarmas de proceso, porque puede ser la primera señal visible de un problema de seguridad.
 
 ### 9.2 Patrones que importan
 
@@ -804,7 +804,7 @@ La mayoría de los eventos anómalos son averías o errores. Al principio eso no
 
 ### 14.5 Qué no hacer
 
-No reinicie dispositivos, borre registros, desconecte cables ni «arregle» valores antes de que el supervisor y el ingeniero estén de acuerdo; podría destruir la evidencia de lo ocurrido o crear un peligro nuevo. El supervisor decide si la línea sigue funcionando; el ingeniero decide cómo examinar los dispositivos. Su parte es fotografiar, anotar la hora y llamar. Si un peligro exige una acción inmediata, siga los procedimientos de seguridad habituales y anote lo que hizo. En HPFL, Tomás fotografió las dos lecturas de temperatura y llamó al supervisor; no restableció el sensor. Esa contención conservó la evidencia que después mostró la causa.
+No reinicie dispositivos, borre registros, desconecte cables ni «arregle» valores antes de que el supervisor y el ingeniero estén de acuerdo; podría destruir la evidencia de lo ocurrido o crear un peligro nuevo. El supervisor decide si la línea sigue funcionando; el ingeniero decide cómo examinar los dispositivos. Su parte es fotografiar, anotar la hora y llamar. Si un peligro exige una acción inmediata, siga los procedimientos de seguridad habituales y anote lo que hizo. En HPFL, Tomás no restableció el sensor. Esa contención conservó la evidencia que después mostró la causa.
 
 ### Ejemplo resuelto (HPFL sintética)
 
@@ -898,7 +898,7 @@ La recuperación la planifican el responsable del incidente, el ingeniero de con
 
 ### 16.2 Verificación antes de volver a arrancar
 
-Compare los programas restaurados de los PLC con las copias verificadas, compruebe que las pantallas de la HMI muestran valores correctos frente a los indicadores locales, confirme que las reglas del cortafuegos coinciden con la tabla aprobada y haga pasar la línea en vacío por un ciclo de prueba. Calidad da su conformidad antes de que se procese producto. En HPFL el ciclo de prueba funcionó en vacío durante 30 minutos y calidad dio su conformidad a las 11:20, antes de reanudar la producción. Anote cada comprobación y su resultado en el expediente del incidente. Si alguna comprobación falla, la línea no vuelve a arrancar hasta que se entienda la causa. Guarde los resultados de las comparaciones con el expediente del incidente.
+Compare los programas restaurados de los PLC con las copias verificadas, compruebe que las pantallas de la HMI muestran valores correctos frente a los indicadores locales, confirme que las reglas del cortafuegos coinciden con la tabla aprobada y haga pasar la línea en vacío por un ciclo de prueba. Calidad da su conformidad antes de que se procese producto. En HPFL el ciclo de prueba funcionó en vacío durante 30 minutos y calidad dio su conformidad a las 11:20, antes de reanudar la producción. Anote cada comprobación y su resultado en el expediente del incidente. Si alguna comprobación falla, la línea no vuelve a arrancar hasta que se entienda la causa. El expediente muestra entonces quién aprobó el rearranque y con qué evidencias.
 
 ### 16.3 Vigilar después
 
