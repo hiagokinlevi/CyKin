@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Especialista de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso de pós-graduação, dois anos; aproximadamente 600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 12 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções com rubricas de 0 a 3; os capítulos 5–12 (EX021–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 12 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–12 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: especialistas experientes que conduzem escolhas de testes autorizados em escala organizacional.
 - Relação com os livros vizinhos: o [livro do bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) constrói os fundamentos e um projeto final; o [livro do mestrado](../../../../masters-2-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) enfatiza o desenho de pesquisa. **Este livro enfatiza o julgamento do especialista, a leitura de testes guiados por ameaças e a liderança em garantia.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
 
-Capítulos 5–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+Capítulos 9–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -302,11 +302,318 @@ A ética na escala da compensação inclui o dano sistêmico, o impedimento, a r
 
 [← Capítulo 03 (rascunho)](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 (rascunho) →](#ch-05)
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Alternativas de desenho para programas de avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) gerar alternativas de programa; (2) pontuá-las em aprendizado, risco, custo e capacidade; (3) recomendar um portfólio; (4) documentar os não objetivos.
+
+### 5.1 Alternativas
+
+Amira escreve quatro alternativas para que os executivos vejam escolhas reais: A, apenas testes web trimestrais; B, apenas exercícios anuais guiados por ameaças; C, testes web trimestrais mais um exercício bienal guiado por ameaças; e D, teatro de varredura automatizada contínua. Ela não discute um pedido vago de "mais testes" enquanto ele não corresponder a uma dessas quatro, e um pedido que não corresponde é devolvido até que corresponda. A DEC-14 é o registro da escolha de C depois que A, B e D foram pontuadas. Escrever as alternativas lado a lado torna as opções rejeitadas tão visíveis quanto a escolhida, e é disso que um examinador futuro precisa.
+
+### 5.2 Pontuação
+
+Amira pontua cada alternativa em aprendizado de detecção, risco operacional, custo, capacidade da equipe e adequação ao examinador, cada critério de um a três. Os números brutos ficam visíveis, para que um diretor consiga recalcular a classificação à mão. D pontua alto em ruído e baixo em aprendizado. B vai bem em aprendizado, mas mal em capacidade da equipe, porque o trabalho anual guiado por ameaças exige dois ciclos completos do white team. C vence na Meridian Clearing House quando a capacidade é declarada com honestidade, e a planilha de pontuação anexada ao memorando de alternativas impede que a recomendação vire questão de gosto.
+
+### 5.3 Portfólio
+
+C costuma vencer em organizações como a MCH porque A sozinha treina pouco a detecção e B sozinha deixa passar as regressões comuns entre os anos de exercícios guiados por ameaças. A linguagem de portfólio significa a combinação de atividades, e não um único logotipo comprado nem um único engajamento milagroso. Amira continua mostrando as notas de A, B e D, para que os diretores entendam por que C venceu, em vez de aceitar a recomendação por confiança. Quando um diretor propõe mais tarde abandonar os testes web trimestrais para financiar um ano maior de exercícios guiados por ameaças, as mesmas notas mostram quanto aprendizado de detecção e quanta cobertura de regressões essa troca custaria.
+
+### 5.4 Não objetivos
+
+O memorando lista três não objetivos: nenhuma alegação de cobertura do SWIFT a partir dos testes web comuns; nenhuma demonstração pública de exploração; nenhuma hora extra não paga como plano de capacidade. Cada não objetivo corresponde a uma frase do catálogo sobre o que não pode ser alegado ou ao estatuto de ética, então nenhum deles é uma promessa nova inventada para o memorando. Amira os lê em voz alta no fim do memorando de alternativas, para que a hora extra não paga não vire discretamente o plano de capacidade. Antes de arquivar, ela confere cada recomendação com a escala de trabalho que os responsáveis de fato praticam; uma recomendação que só funciona se as pessoas trabalharem de madrugada não é executável.
+
+### 5.5 Sensibilidade
+
+Amira pontua de novo as alternativas sob choques, porque a recomendação deve continuar executável quando as condições pioram. Sua análise de sensibilidade reduz a capacidade pela metade e também dobra o custo dos fornecedores. Dobrar o custo dos fornecedores atinge mais a opção B, que contrata um provedor de exercícios guiados por ameaças todo ano, em vez de a cada dois anos. A opção C atual sobrevive à capacidade reduzida pela metade ao passar o exercício guiado por ameaças para cada três anos, com um líder do white team nomeado e uma data escrita. Se C desmoronasse sob os dois choques, ela nunca teria sido robusta; Amira recusa um plano que só funciona no melhor cenário.
+
+### 5.6 Resultado
+
+O resultado é um memorando de alternativas de duas páginas com a tabela de pontuação, os não objetivos, o resultado da sensibilidade e um gráfico de calendário. O gráfico sombreia os meses de preparação — coleta de inteligência, briefing do white team e aprovação do cenário, cada um em um tom diferente —, e não apenas a semana de execução. Certa vez, a área financeira financiou só a semana de execução e foi surpreendida pelo tempo de preparação da inteligência; as células sombreadas acabaram com essa surpresa. A última linha do memorando nomeia o CISO como responsável pela recomendação e a próxima revisão do catálogo como sua data de expiração. Amira não envia um memorando sem o gráfico de calendário, porque os executivos aprovariam um programa para o qual não reservaram pessoas.
+
+### 5.7 Narrativa
+
+Amira lê os não objetivos no início de cada oficina de alternativas, para que o brainstorming não reintroduza discretamente a opção teatral D, e de novo no fim, para que ninguém saia achando que a hora extra vai salvar o plano. Um memorando sem análise de sensibilidade está incompleto. Quando a capacidade cai pela metade, passar o exercício guiado por ameaças para cada três anos mantém um líder do white team nomeado e uma data escrita, em vez de um desejo. A própria mudança é arquivada como emenda a uma DEC, para que a alteração da cadência seja assumida da mesma forma que a escolha original de C.
+
+### 5.8 Líderes reservados a lápis
+
+O exercício guiado por ameaças a cada três anos continua tendo um líder do white team reservado a lápis com dois anos de antecedência; o lápis vence o desejo. Nomear o líder tão cedo dá ao white team tempo para organizar substitutos antes da data do exercício, e substitutos organizados em cima da hora viram o heroísmo que o estatuto de ética proíbe. Amira põe o nome no gráfico de calendário, e não apenas em um e-mail. O nome reservado é conferido em cada revisão do catálogo, e qualquer troca de pessoa é registrada como emenda a uma DEC. É assim que a Meridian Clearing House mantém executável o exercício guiado por ameaças a cada três anos.
+
+### 5.9 Calendário sombreado
+
+Cada mês de preparação sombreado no gráfico de calendário de Amira traz as iniciais do membro do white team reservado para ele, de modo que os executivos veem a carga real da equipe e as lacunas de cobertura aparecem como células em branco. Quando uma célula continua em branco, Amira leva a lacuna ao líder do white team antes de o mês começar, em vez de descobri-la na semana de execução. Ela reimprime o calendário depois de cada DEC que muda a cadência e guarda o hash do PDF ao lado da DEC-14, para que a versão aprovada por um diretor possa ser distinguida das revisões posteriores.
+
+### Exemplo resolvido (MCH sintética)
+
+O memorando de Amira escolhe C, mostra um calendário de dois anos e lista D como rejeitada por gerar falsa garantia.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX021 — Por que não D.** Por que rejeitar o teatro de varredura contínua? *Rubrica:* 3 = ruído sem aprendizado / falsa garantia; 2 = parcial; 1 = é a melhor; 0 = nada.
+- **EX022 — Por que C.** Por que C costuma vencer? *Rubrica:* 3 = regressões + aprendizado periódico guiado por ameaças; 2 = parcial; 1 = é a mais barata; 0 = nada.
+- **EX023 — Exemplo de não objetivo.** Dê um não objetivo do programa da MCH. *Rubrica:* 3 = nenhuma alegação sobre o SWIFT a partir de testes web / nenhuma exploração pública / nenhuma hora extra como capacidade; 2 = parcial; 1 = vago; 0 = nada.
+- **EX024 — Sensibilidade.** Qual choque de capacidade o memorando deve testar? *Rubrica:* 3 = capacidade reduzida pela metade / choque semelhante; 2 = parcial; 1 = vago; 0 = nada.
+- **EX025 — Calendário.** Que artefato ajuda os executivos a aprovar C? *Rubrica:* 3 = gráfico de calendário de dois anos; 2 = parcial; 1 = jargão; 0 = nada.
+
+### Síntese
+
+O desenho de programas é um portfólio pontuado com não objetivos, e não um único logotipo comprado.
+
+### Continue estudando — capítulo 05 de 12
+
+[← Capítulo 04 (rascunho)](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 (rascunho) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Avaliação controlada
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar avaliações de cenários e controles; (2) usar uma pontuação que equilibre aprendizado e risco; (3) fazer pré-registro; (4) relatar lacunas sem catastrofismo.
+
+### 6.1 Alvos da avaliação
+
+A escolha de cenários, a cobertura de controles, as regras de detecção e os resultados do programa precisam, cada um, de um desenho de avaliação diferente. Amira recusa uma nota única que finja medir tudo isso junto. A classificação de cenários do laboratório serve para escolher cenários; as regras de detecção precisam de medidas de purple team; os resultados do programa precisam de registros de decisão como a DEC-14. Misturar classificações de cenários, medidas de purple team e resultados da DEC-14 em uma só métrica daria ao conselho um número que não mede nenhum deles, e é assim que os materiais do conselho perdem o sentido. Por isso, cada alvo de avaliação mantém, no material dela, seu próprio desenho e sua própria medida.
+
+### 6.2 Laboratório de pontuação
+
+O lab_scenario classifica cenários sintéticos com score = 2×aprendizado − risco, para que surjam as opções de alto aprendizado e risco administrável.
+
+```python
+"""Lab 6: score synthetic TIBER-style scenario options by detection learning vs ops risk (1-3)."""
+opts = [("A","Stolen VPN + SWIFT-adjacent pivot",3,3),("B","Public web defacement only",1,1),
+        ("C","Supply-chain library in batch app",3,2),("D","Branch Wi-Fi rogue AP",2,2)]
+for i,t,learn,risk in sorted(opts, key=lambda x:(-(x[2]*2-x[3]), x[0])):
+    print(f"{i} score={learn*2-risk:+d} learn={learn} risk={risk} {t}")
+```
+
+Execute com `python3 lab_scenario.py`. Saída verificada:
+
+```text
+C score=+4 learn=3 risk=2 Supply-chain library in batch app
+A score=+3 learn=3 risk=3 Stolen VPN + SWIFT-adjacent pivot
+D score=+2 learn=2 risk=2 Branch Wi-Fi rogue AP
+B score=+1 learn=1 risk=1 Public web defacement only
+```
+
+A biblioteca da cadeia de suprimentos no aplicativo de lote (C) tem a maior nota, +4; a VPN roubada com pivô adjacente ao SWIFT (A) tem +3, mas carrega risco 3; o ponto de acesso falso no Wi-Fi da agência (D) tem +2; e a desfiguração do site público (B) tem só +1. A classificação é uma entrada, e não uma decisão de financiamento. Amira rebaixa uma nota alta do laboratório quando falta viabilidade do white team, e a viabilidade continua decidindo o financiamento depois da classificação do laboratório.
+
+### 6.3 Pré-registro
+
+Métricas e limiares recebem uma tag no git antes dos resultados, para que Amira não possa mudar as regras do jogo depois de ver as notas. O pré-registro declara a medida principal, o limiar e as exclusões, e é curto de propósito: um colega deve conseguir encontrar a tag e lê-la sem perguntar a ela. Mudar um limiar depois de ver as notas exige uma tag emendada e uma nota no log de decisões que diga o porquê. O pré-registro é como a Meridian Clearing House mantém a avaliação honesta quando os cenários favoritos têm desempenho fraco e a tentação de redefinir o sucesso é maior.
+
+### 6.4 Linguagem de GAP
+
+"T1190 0/2 GAP" agenda trabalho de engenharia; não alega cegueira permanente. T1190 0/2 significa que nenhuma das duas tentativas de exploração de aplicação exposta ao público foi detectada, uma amostra pequena demais para estimar uma taxa. Um chamado de engenharia com data é o companheiro honesto de um rótulo GAP. Dizer "estamos cegos para sempre" não é verdadeiro nem útil quando um chamado com data pode fechar a lacuna, e a linguagem catastrofista ensina os diretores a ignorar lacunas que a engenharia poderia fechar. Por isso, a linguagem de Amira nos achados e nos materiais do conselho fica na faixa em que um GAP agenda trabalho de engenharia.
+
+### 6.5 Independência
+
+O white team ou um colega aplica a pontuação às mesmas entradas. Na oficina de cenários, o colega recebe as quatro opções com suas notas de aprendizado e de risco, mas não a classificação de Amira. A independência não é cortesia opcional: é como a pontuação otimista dos cenários favoritos é apanhada antes que as decisões de financiamento se fixem. As divergências não são resolvidas por média; cada uma mantém as duas notas e uma justificativa de uma linha de cada avaliador, e vira uma nota de desenho com a tag FEASIBILITY para a oficina seguinte. Amira prefere perder um cenário preferido a manter uma nota que só ela consegue defender.
+
+### 6.6 Ética
+
+Cenários que precisam de impacto real sobre participantes são rejeitados na fase de desenho. Dano real aos participantes não é um preço aceitável por um exercício mais realista na Meridian Clearing House, e modelos sintéticos de compensação e ambientes isolados bastam para o aprendizado. Por isso, o pivô adjacente ao SWIFT do cenário A só é jogado contra um ambiente isolado, nunca contra sistemas que carregam tráfego real de compensação. A folha de rosto de ética diz "somente sintético" na primeira página de cada projeto, o que transforma o impacto real sobre participantes em rejeição na fase de desenho, e não em negociação no meio de um exercício.
+
+### 6.7 Narrativa
+
+A viabilidade faz parte da nota, e não é um detalhe posterior. A viabilidade do cenário C para o white team inclui um responsável pelo inventário de bibliotecas que possa interromper as implantações do aplicativo de lote dentro da janela do exercício, e não apenas aprovar um chamado depois. Sem esse responsável, Amira rebaixa C apesar da nota +4 no laboratório. A pontuação independente significa que ela sai da sala enquanto um colega aplica o lab_scenario às mesmas entradas. Quando a visão do white team se sobrepõe a uma nota do laboratório, como no cenário C, ela registra o motivo como nota de desenho arquivada ao lado da saída do laboratório, em vez de mudar a nota em silêncio.
+
+### 6.8 Notas de viabilidade
+
+As notas de desenho que surgem de divergências de pontuação recebem a tag FEASIBILITY, para aparecerem automaticamente na oficina de cenários seguinte, transformando uma disputa de pontuação em insumo para desenhar o próximo cenário. Cada nota registra a letra do cenário, as duas notas, o elemento de viabilidade que falta e quem precisa fornecê-lo antes da oficina. A falta do responsável pela biblioteca no cenário C foi arquivada assim e virou o primeiro item da oficina seguinte. Amira lê as notas com tag em voz alta, para que o colega que discordou veja seu argumento ser acolhido e os juniores aprendam que perder uma opção favorita é normal quando faltam responsáveis pela parada.
+
+### 6.9 Slide para o conselho
+
+Amira comunicou ao conselho o rebaixamento do cenário C por viabilidade como força, e não como indecisão. O título do slide dela foi "Recusamos um cenário de nota alta que não conseguiríamos parar", e ele punha a nota +4 de C no laboratório ao lado do responsável ausente pelo congelamento de implantações, de modo que o motivo cabia em uma linha. O conselho aplaudiu. A recusa foi registrada no log de decisões ao lado da nota do laboratório, para que o motivo sobreviva à reunião. Notas de laboratório sem responsáveis pela parada agora são rotuladas como provisórias em todo pacote que sai da mesa dela.
+
+### 6.10 Rótulos provisórios
+
+Os rótulos de "provisório" nas notas são laranja vivo na exportação em PDF, para que uma classificação provisória não possa ser citada como definitiva depois que o PDF sai da equipe. Só as notas com viabilidade confirmada pelo white team podem perder a marca laranja, e confirmação significa que o líder do white team assinou a linha de viabilidade, incluindo um responsável nomeado pela parada daquele cenário. Diretores já agradeceram a Amira pela cor laranja quando um fornecedor tentou citar uma classificação provisória como compromisso. O rótulo não custa nada para ser aplicado e impede que uma classificação seja tratada como aprovação.
+
+### Exemplo resolvido (MCH sintética)
+
+O lab_scenario classifica o cenário da biblioteca da cadeia de suprimentos como o mais alto dos quatro; ainda assim, Amira o submete à verificação de viabilidade pelo white team antes de financiá-lo.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX026 — Cenário do topo.** Qual opção fica em primeiro lugar no laboratório? *Rubrica:* 3 = C, cadeia de suprimentos; 2 = A; 1 = B; 0 = nada.
+- **EX027 — Fórmula da nota.** Qual é a fórmula de pontuação do laboratório? *Rubrica:* 3 = 2×aprendizado − risco; 2 = aprendizado×risco; 1 = só o risco; 0 = nada.
+- **EX028 — Por que não financiar automaticamente.** Por que não financiar C apenas pela classificação do laboratório? *Rubrica:* 3 = é preciso a viabilidade do white team / critérios mais amplos; 2 = parcial; 1 = sempre financiar automaticamente; 0 = nada.
+- **EX029 — Tom do GAP.** Como deve ser relatado um GAP com n pequeno? *Rubrica:* 3 = agenda engenharia, sem catastrofismo permanente; 2 = parcial; 1 = estamos cegos para sempre; 0 = nada.
+- **EX030 — Pré-registro.** Onde ficam as métricas antes dos resultados? *Rubrica:* 3 = tag datada no git / registro; 2 = parcial; 1 = depois dos resultados; 0 = nada.
+
+### Síntese
+
+A avaliação controlada pesa o aprendizado contra o risco e recusa a linguagem catastrofista para amostras pequenas.
+
+### Continue estudando — capítulo 06 de 12
+
+[← Capítulo 05 (rascunho)](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 (rascunho) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Integração organizacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar os testes ao SOC, à gestão de riscos, à área jurídica e aos participantes; (2) desenhar fluxos de informação; (3) evitar programas paralelos; (4) medir a saúde da integração.
+
+### 7.1 Mapa de integração
+
+Amira desenha quem recebe o quê: o SOC recebe tags do ATT&CK e linhas do tempo; a gestão de riscos recebe riscos residuais classificados; a área jurídica recebe os fatos relevantes para divulgação; os participantes recebem apenas o que os contratos permitem. Um achado marcado com técnicas do ATT&CK para o SOC é reescrito para a gestão de riscos como risco residual classificado antes de circular. Os avisos aos participantes usam apenas fatos permitidos pelo contrato, de modo que uma linha do tempo do SOC nunca chega a um membro da compensação por encaminhamento; compartilhar demais no canal errado é como se quebra a confiança dos participantes da compensação. O diagrama fica no manual de integração e é revisado sempre que surge uma nova parte interessada.
+
+### 7.2 Programas paralelos
+
+Unidades de negócio que contratam pequenas empresas de varredura sem ROE criam risco paralelo; integração significa um só catálogo e um só caminho de autorização. Uma varredura avulsa sem ROE não tem autoridade de parada nem lista de exclusões, então pode tocar hosts adjacentes ao SWIFT sem que ninguém perceba. A semana de anistia convida as unidades a declarar essas varreduras, para que as varreduras paralelas entrem no catálogo ou parem. As varreduras declaradas que continuam passam pelo mesmo caminho de autorização dos testes web trimestrais no estilo do WSTG conduzidos pela própria Amira, e, depois da semana de anistia, toda varredura externa entra pelo mesmo formulário de pedido usado pelos testes internos. Varreduras não declaradas descobertas depois viram achados de auditoria contra a unidade, e não exceções silenciosas.
+
+### 7.3 Cadência
+
+Amira faz uma sincronização trimestral com o SOC sobre os orçamentos de ruído, uma revisão mensal com a gestão de riscos sobre as expirações de aceitações e reuniões pontuais com a área jurídica sobre divulgação. A sincronização com o SOC combina quantos alertas cada teste planejado pode gerar, para que os analistas consigam separar o ruído dos testes de ataques reais. Ela mantém os convites de calendário recorrentes, para que a integração não dependa da memória. Uma sincronização perdida é registrada como dívida do programa, e não como falha pessoal, e a lista de dívidas é revista na revisão seguinte do catálogo, para que faltas repetidas levem a uma mudança de cadência, e não a culpados.
+
+### 7.4 Métricas de saúde
+
+A saúde da integração é medida pela porcentagem de achados com responsável, pela porcentagem de testes que estão no catálogo e pela mediana do tempo entre o achado e o chamado de detecção. A mediana do tempo até o chamado de detecção é o número lento no quadro de indicadores do exemplo resolvido, e por isso a ponte entre o PulseMap e o backlog foi financiada. Amira recusa contagens de vaidade de achados brutos sem validação; elas ficam fora dos slides da gestão. As três métricas de saúde aparecem ao lado das contagens da anistia na mesma família de slides, para que o conselho veja a higiene do programa, e não o volume.
+
+### 7.5 Cuidado com os participantes
+
+Os participantes da compensação são clientes da confiança, e uma frase errada em um aviso a um participante pode causar um ruído no mercado que nenhuma severidade de achado justifica. Por isso, os modelos de comunicação são pré-aprovados pela área jurídica e pela gestão de participantes, e são as únicas palavras que saem do prédio. Amira não inventa redação sob pressão quando um aviso é necessário. Os modelos têm versão, e o número da versão é registrado com cada aviso, para que a área jurídica consiga reconstruir exatamente o que um participante recebeu e quando. Durante incidentes ligados a testes que envolvem participantes, ela rejeita e-mails improvisados, mesmo quando vêm de pessoas seniores.
+
+### 7.6 Modo de falha
+
+A integração falha quando os testes são um evento anual heroico sem backlog para a engenharia do dia a dia; o heroísmo sem backlog produz os mesmos problemas no ano seguinte, e os examinadores percebem quando eles voltam. A ponte entre o PulseMap e o backlog existe para que cada lacuna de detecção encontrada nos testes vire um chamado comum de engenharia, e não um slide. Todo achado que precisa de correção deve ter um chamado na fila comum de engenharia antes que Amira declare a integração saudável. Um achado que só aparece em materiais do conselho é contado como não integrado, por melhor que tenha sido apresentado.
+
+### 7.7 Narrativa
+
+A semana de anistia dos programas paralelos convida as unidades de negócio a declarar varreduras avulsas. Cada declaração nomeia o fornecedor, os alvos varridos e o líder da unidade que encomendou o trabalho. As varreduras declaradas entram no catálogo ou param, e as não declaradas descobertas depois viram achados de auditoria contra o líder da unidade. As regras são publicadas antes de a semana começar, porque uma anistia sem consequências para a ocultação posterior é teatro. No encerramento da semana, a lista de declarações vai para a auditoria interna, para que descobertas posteriores possam ser conferidas com ela sem discussão sobre o que foi declarado.
+
+### 7.8 Slide da anistia
+
+As métricas da semana de anistia — declaradas, catalogadas, paradas — vão para o comitê de riscos do conselho em um só slide. Manter as três contagens juntas permite ao comitê ver se as declarações levaram de fato à parada das ferramentas. A contagem de paradas é impressa no mesmo tamanho da contagem de declarações e fica no corpo do slide, nunca em nota de rodapé, para que ninguém leia o slide como uma lista de aprovações e para que um desligamento travado não possa ser escondido. A transparência sobre a contagem de paradas é o que mostra que a anistia teve dentes.
+
+### 7.9 Resultados da anistia
+
+A semana de anistia produziu doze declarações: oito catalogadas e quatro paradas. As quatro varreduras paradas não puderam ser colocadas sob ROE com autoridade de parada, por isso foram encerradas em vez de entrar no catálogo. O slide para o comitê de riscos usou apenas esses três números; os nomes das unidades ficaram no catálogo, mantendo o comitê concentrado em saber se a anistia funcionou. Amira recusa narrativas de anistia sem contagens. As unidades que ficaram em silêncio e foram descobertas varrendo depois receberam achados com os responsáveis nomeados na ata, e esses achados trazem as datas da anistia, para que nenhuma unidade possa alegar que nunca ouviu falar da janela.
+
+### 7.10 Contagens arquivadas
+
+As contagens da anistia são arquivadas com o hash da ata assinada do comitê, para que um leitor futuro possa verificar que os números relatados foram os que o comitê viu. A entrada do arquivo guarda juntas as contagens doze, oito e quatro, o arquivo do slide e o hash da ata. Amira também registra o hash no registro de alterações do catálogo, para que o registro sobreviva a uma troca de secretário do comitê. Ela já usou essa verificação quando uma unidade contestou se havia declarado; apresentar o hash encerrou a disputa.
+
+### Exemplo resolvido (MCH sintética)
+
+O quadro de indicadores de integração de Amira mostra 100% de cobertura do catálogo, mas um tempo lento até o chamado de detecção; ela financia uma ponte entre o PulseMap e o backlog.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX031 — Destinatários.** Cite três grupos de destinatários e o que cada um recebe. *Rubrica:* 3 = três pares corretos; 2 = dois; 1 = um; 0 = nada.
+- **EX032 — Risco paralelo.** O que transforma uma varredura avulsa em um programa paralelo? *Rubrica:* 3 = estar fora das ROE, do catálogo ou do caminho de autorização; 2 = parcial; 1 = usar fornecedores; 0 = nada.
+- **EX033 — Métrica de saúde.** Dê duas métricas de saúde da integração. *Rubrica:* 3 = duas do capítulo; 2 = uma; 1 = contagem de vaidade de achados; 0 = nada.
+- **EX034 — Evento anual heroico.** Por que um evento heroico apenas anual fracassa na integração? *Rubrica:* 3 = sem backlog no dia a dia / sem melhoria contínua; 2 = parcial; 1 = é o ideal; 0 = nada.
+- **EX035 — Ponte.** Que ponte Amira financia no exemplo resolvido? *Rubrica:* 3 = do PulseMap para o backlog; 2 = parcial; 1 = mais varreduras; 0 = nada.
+
+### Síntese
+
+Integração é um só catálogo, destinatários nomeados e backlog no dia a dia — e não heroísmo anual.
+
+### Continue estudando — capítulo 07 de 12
+
+[← Capítulo 06 (rascunho)](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 (rascunho) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Casos difíceis
+
+### Objetivos de aprendizagem
+
+Você vai (1) lidar com escopo ambíguo; (2) lidar com achados sensíveis envolvendo pessoas internas; (3) lidar com a recusa de fornecedores; (4) manter registros sob estresse.
+
+### 8.1 Escopo ambíguo
+
+Quando um nome de host pode pertencer a um participante, Amira pausa e pede esclarecimento por escrito; adivinhar não é uma habilidade de especialista. Nomes de host de participantes são a causa habitual dessas pausas, porque podem parecer idênticos aos sistemas da Meridian Clearing House. No caso resolvido, os métodos relacionados pararam em quatro minutos e o white team recebeu a pergunta por e-mail. A pausa é registrada com o horário e a pergunta feita, e o esclarecimento escrito do white team ou do contato do participante é arquivado antes de qualquer nova sondagem; enquanto alguém com autoridade não responder por escrito, a sondagem espera.
+
+### 8.2 Sensíveis a pessoas internas
+
+Achados que sugerem má conduta de funcionários seguem pelos caminhos de RH com o mínimo de detalhe necessário; testar não é caça às bruxas. O achado nomeia o controle que falhou, como uma conta de administrador compartilhada, e deixa de fora quem a usou. Os nomes dos funcionários aparecem apenas no processo de RH, que os examinadores podem solicitar pela área jurídica, em vez de lê-los no FindingsDesk. O roteiro de uma página de Amira para o contato com o RH é ensaiado, para que a equipe não compartilhe demais em chamados que os examinadores possam ler depois. O mínimo de detalhe protege as pessoas envolvidas e mantém o achado centrado nos controles.
+
+### 8.3 Recusa do fornecedor
+
+Fornecedores que recusam testes autorizados razoáveis de seus componentes desencadeiam decisões de aceitação de risco ou de substituição — e não uma esperança silenciosa. Amira leva a recusa ao CISO como um objeto de decisão com três opções escritas: aceitar o risco residual com data de expiração, exigir em contrato o direito de testar ou substituir o componente. Esperar que o fornecedor coopere no ano que vem, sem data, é deriva com outro nome. A opção escolhida, seu responsável e sua expiração são arquivados no log de decisões, para que o componente recusado não saia de vista até a próxima renovação do contrato.
+
+### 8.4 Registro sob estresse
+
+Os casos difíceis geram mais e-mails de pressão, e todos vão para o endereço do CISO com cabeçalhos factuais. Amira não discute achados em conversas paralelas que os examinadores nunca verão. Qualquer divergência sobre um achado é respondida nesse endereço, com a evidência anexada. O endereço cria um registro que sobrevive a trocas de pessoal e a mudanças de humor, e os cabeçalhos factuais mantêm esse registro útil: um sucessor consegue acompanhar cada conversa sem os autores originais. Quando um examinador pergunta depois por que um achado não foi suavizado, a resposta já está no endereço do CISO.
+
+### 8.5 Tempo
+
+Os casos difíceis recebem limites de tempo explícitos, para que não possam consumir para sempre o trabalho comum do catálogo. Um limite típico é de duas semanas, definido quando o caso é aberto e escrito ao lado do nome do responsável pelo caso. Os limites de tempo aparecem no mesmo quadro dos achados de produto, de modo que investigações infinitas ficam visíveis como dívida. Amira só renova um limite com uma justificativa escrita e uma nova data final; o estrangulamento silencioso do trabalho do catálogo é recusado. Quando um limite expira sem renovação, o caso é encerrado com os achados obtidos até ali, em vez de seguir à deriva.
+
+### 8.6 Apoio
+
+Amira forma dupla entre juniores e uma pessoa sênior em qualquer caso que envolva RH ou participantes, porque juniores sozinhos sob esse estresse inventam processos que depois não resistem ao questionamento. A dupla é agendada com o nome da pessoa sênior no processo do caso, e não deixada para quem estiver livre por acaso. A pessoa sênior participa de toda ligação com o RH ou com participantes, o júnior fala a partir do roteiro de contato ensaiado, e a pessoa sênior aprova cada entrada de chamado que o júnior escreve, para que o excesso de detalhe seja apanhado antes que um examinador possa lê-lo. Os juniores saem de cada caso tendo praticado o roteiro sob supervisão.
+
+### 8.7 Narrativa
+
+O caso do host que talvez pertença a um participante mostra em uma manhã o padrão dos casos difíceis: quatro minutos para parar os métodos relacionados, um e-mail ao white team e retomada apenas com uma atualização de escopo por escrito. Os manuais para casos sensíveis a pessoas internas incluem o roteiro de uma página para o contato com o RH que Amira ensaia com a equipe. Os limites de tempo dos casos difíceis ficam no mesmo quadro dos achados de produto, e os juniores sempre trabalham em dupla com uma pessoa sênior quando há RH ou participantes envolvidos. Cada etapa deixa um registro que um examinador pode acompanhar depois sem perguntar a ninguém o que aconteceu.
+
+### 8.8 Controle do roteiro de RH
+
+O versionamento do roteiro de RH segue o mesmo controle de mudanças dos modelos de ROE; empatia improvisada não é um controle. Cada versão do roteiro tem um número, uma data de vigência e duas assinaturas, exatamente como cada modelo de ROE, para que uma mudança de redação bem-intencionada não chegue a um funcionário sem revisão. As versões aposentadas ficam no arquivo, para que a área jurídica possa mostrar qual redação um funcionário de fato ouviu em determinada data. Amira já rejeitou uma edição feita na mesma manhã sem a assinatura conjunta do RH; a entrevista da tarde esperou, em vez de se dobrar o processo.
+
+### 8.9 Assinatura conjunta no mesmo dia
+
+As mudanças no roteiro de RH exigem as assinaturas conjuntas do RH e de Amira no mesmo dia, para que um roteiro editado de manhã não chegue a uma entrevista à tarde sem a aprovação dos dois responsáveis. Uma assinatura ausente é uma parada, e não um atraso a negociar; os funcionários merecem palavras revisadas. A assinatura conjunta é registrada na linha de versão do roteiro, ao lado da data de vigência e das iniciais do RH. Uma edição que ainda espera assinatura continua sendo rascunho, e a entrevista usa a última versão assinada até que os dois responsáveis aprovem a nova.
+
+### Exemplo resolvido (MCH sintética)
+
+Um host que talvez pertença a um participante aparece no meio da janela; Amira para os métodos relacionados em 4 minutos, envia um e-mail ao white team e só retoma com uma atualização de escopo por escrito.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX036 — Regra da pausa.** O que Amira faz diante de uma propriedade ambígua? *Rubrica:* 3 = pausa; esclarecimento por escrito; 2 = pausa; 1 = adivinha; 0 = nada.
+- **EX037 — Caminho do RH.** Como são tratados os achados que sugerem má conduta de funcionários? *Rubrica:* 3 = caminho do RH; mínimo de detalhe; 2 = parcial; 1 = canal público; 0 = nada.
+- **EX038 — Recusa do fornecedor.** Que decisões seguem a recusa de um fornecedor em permitir testes? *Rubrica:* 3 = aceitação de risco ou substituição; 2 = uma; 1 = ignorar; 0 = nada.
+- **EX039 — E-mail de pressão.** Para onde vão os e-mails de pressão? *Rubrica:* 3 = endereço do CISO com cabeçalho factual; 2 = parcial; 1 = apagar; 0 = nada.
+- **EX040 — Tempo de parada.** Com que rapidez Amira parou no exemplo resolvido? *Rubrica:* 3 = cerca de 4 minutos / em minutos; 2 = no mesmo dia; 1 = na semana seguinte; 0 = nada.
+
+### Síntese
+
+Os casos difíceis param à espera de algo escrito, protegem as pessoas e deixam registros.
+
+### Continue estudando — capítulo 08 de 12
+
+[← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX020 (as de EX021–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). A Meridian Clearing House, Amira Hassan e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). A Meridian Clearing House, Amira Hassan e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Opções, evidências, incertezas, recomendação e responsável (as opções rejeitadas também contam).
 
@@ -347,6 +654,46 @@ Respostas-modelo para EX001–EX020 (as de EX021–EX060 estão na edição em i
 **EX019.** Autoridade escrita do white team para parar o exercício em minutos.
 
 **EX020.** O risco sistêmico para a liquidação mais o estatuto de ética, que exige um botão de parada.
+
+**EX021.** Ela gera ruído e falsa garantia sem aprendizado de detecção.
+
+**EX022.** Ela apanha as regressões web a cada trimestre e ainda financia o aprendizado periódico guiado por ameaças.
+
+**EX023.** Nenhuma alegação de cobertura do SWIFT a partir dos testes web comuns.
+
+**EX024.** Um cenário em que a capacidade da equipe cai pela metade (ou semelhante).
+
+**EX025.** Um calendário de dois anos que mostra quando cada atividade acontece.
+
+**EX026.** C — Biblioteca da cadeia de suprimentos no aplicativo de lote.
+
+**EX027.** score = 2×aprendizado − risco.
+
+**EX028.** A classificação informa; a viabilidade do white team e critérios mais amplos continuam decidindo o financiamento.
+
+**EX029.** Como uma lacuna que agenda trabalho de engenharia, e não como cegueira permanente.
+
+**EX030.** Em uma tag datada no git ou em um registro equivalente feito antes dos resultados.
+
+**EX031.** SOC: tags do ATT&CK e linhas do tempo; gestão de riscos: riscos residuais classificados; área jurídica: fatos relevantes para divulgação (participantes: comunicação limitada pelo contrato).
+
+**EX032.** Ela acontece fora do catálogo autorizado e do caminho das ROE.
+
+**EX033.** A porcentagem de achados com responsável e a mediana do tempo entre o achado e o chamado de detecção (a cobertura do catálogo também conta).
+
+**EX034.** Ele não deixa backlog para a engenharia do dia a dia.
+
+**EX035.** Uma ponte entre o PulseMap e o backlog de detecção.
+
+**EX036.** Pausar e pedir esclarecimento por escrito antes de continuar.
+
+**EX037.** Pelo RH, com apenas o mínimo de detalhe necessário.
+
+**EX038.** Aceitação formal do risco ou substituição do componente.
+
+**EX039.** Para o endereço do CISO, com um cabeçalho factual.
+
+**EX040.** Em minutos (cerca de quatro) depois de perceber a ambiguidade.
 
 <a id="references"></a>
 ## Referências
