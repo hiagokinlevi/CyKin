@@ -60,10 +60,10 @@ Toda afirmación factual sobre una ley, un estándar, un protocolo, un incidente
 7. [Fundamentos de identidad y acceso](#ch-07): cuentas, autenticación, privilegios y revisión de accesos.
 8. [Fundamentos de arquitectura de seguridad](#ch-08): zonas y conductos, defensa en profundidad y diseño para la operabilidad.
 9. [Evidencia y medición](#ch-09): métricas que dicen la verdad, denominadores y honestidad con muestras pequeñas.
-10. [Infraestructura crítica y seguridad sectorial: orientación](../../en/book/MANUSCRIPT.md#ch-10): qué hace crítico un servicio y en qué se diferencian los sectores.
-11. [Infraestructura crítica y seguridad sectorial: activos y contexto](../../en/book/MANUSCRIPT.md#ch-11): inventario, titularidad, dependencias y estado del soporte.
-12. [Infraestructura crítica y seguridad sectorial: flujos de datos](../../en/book/MANUSCRIPT.md#ch-12): registros de flujos, clasificación, conservación y verificación.
-13. [Infraestructura crítica y seguridad sectorial: escenarios de riesgo](../../en/book/MANUSCRIPT.md#ch-13): redactar escenarios y ordenarlos por su consecuencia.
+10. [Infraestructura crítica y seguridad sectorial: orientación](#ch-10): qué hace crítico un servicio y en qué se diferencian los sectores.
+11. [Infraestructura crítica y seguridad sectorial: activos y contexto](#ch-11): inventario, titularidad, dependencias y estado del soporte.
+12. [Infraestructura crítica y seguridad sectorial: flujos de datos](#ch-12): registros de flujos, clasificación, conservación y verificación.
+13. [Infraestructura crítica y seguridad sectorial: escenarios de riesgo](#ch-13): redactar escenarios y ordenarlos por su consecuencia.
 14. [Infraestructura crítica y seguridad sectorial: métodos I](../../en/book/MANUSCRIPT.md#ch-14): líneas base, bastionado y control de cambios como métodos diarios.
 15. [Infraestructura crítica y seguridad sectorial: laboratorio guiado](../../en/book/MANUSCRIPT.md#ch-15): construir el retransmisor autenticado con protección frente a la reproducción.
 16. [Infraestructura crítica y seguridad sectorial: métodos II](../../en/book/MANUSCRIPT.md#ch-16): gestión de vulnerabilidades y parches, copias de seguridad y recuperación.
@@ -1136,7 +1136,421 @@ Una medida es útil cuando indica su pregunta, población, numerador, denominado
 <!-- cyberabc:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 30
 
-[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Infraestructura crítica y seguridad sectorial: orientación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- explicar qué hace que un servicio sea **crítico**: la consecuencia de su pérdida para las personas, para otros servicios y para la sociedad;
+- describir en qué se diferencian el agua, la salud, la energía, el transporte y las finanzas en lo que protegen, en la rapidez con que llega el daño y en quién los regula;
+- identificar las **dependencias e interdependencias** que convierten un fallo local en uno regional;
+- situar su propio trabajo como implementador dentro de las obligaciones que asume un operador.
+
+Los capítulos 1 a 9 construyeron capacidades generales. A partir de aquí, el libro las aplica específicamente a los servicios críticos. Este capítulo es de orientación: la forma del campo, lo suficiente para entender por qué un tecnólogo de FSTS debe pensar de manera distinta en una estación de bombeo, un hospital y unas cocheras de autobuses aunque los servidores se parezcan.
+
+### 10.1 Qué hace que un servicio sea crítico
+
+Un servicio es crítico cuando su interrupción dañaría gravemente la salud, la seguridad, la protección, la actividad económica o el funcionamiento de la sociedad. Los gobiernos lo formalizan de maneras distintas. Estados Unidos describe **funciones críticas nacionales** (funciones tan vitales que su interrupción tendría un efecto debilitante) en lugar de limitarse a listas de sectores ([CISA National Critical Functions](https://www.cisa.gov/national-critical-functions-set)). La Directiva NIS2 de la Unión Europea establece obligaciones de gestión de riesgos de ciberseguridad y de notificación para entidades de sectores de alta criticidad ([Directive (EU) 2022/2555](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/)), y la Directiva CER aborda la resiliencia física y, en sentido amplio, de las entidades críticas ([Directive (EU) 2022/2557](https://eur-lex.europa.eu/eli/dir/2022/2557/oj)). Estos textos cambian; compruebe la versión vigente y cómo la aplica su jurisdicción. Este libro no ofrece asesoramiento jurídico.
+
+Para un implementador, el significado práctico es más sencillo: **la unidad de daño son las personas y el tiempo**, no solo los registros de datos o el dinero. «41.000 personas sin información fiable sobre el agua durante seis horas» es el tipo de afirmación que debería orientar las prioridades.
+
+### 10.2 En qué se diferencian los sectores
+
+| Sector (ejemplo sintético de Fallowmere) | Qué se protege primero | Con qué rapidez llega el daño | Tecnología típica |
+|---|---|---|---|
+| Agua (Fallowmere Water) | Agua potable segura, continuidad del suministro | De horas a días; el daño por calidad puede ser más rápido | PLC, RTU, SCADA, telemetría por enlaces de operador |
+| Salud (Community Hospital) | Seguridad del paciente, continuidad asistencial | Minutos en algunos sistemas clínicos | Dispositivos médicos, pasarelas clínicas, historias electrónicas |
+| Transporte (cocheras de transporte) | Seguridad de los pasajeros, continuidad del servicio | De minutos a horas | Sistemas de flota, venta de billetes, TI de las cocheras |
+| Energía (no gestionada por FSTS) | Estabilidad de la red, suministro | De segundos a horas | Relés de protección, centros de control |
+| Finanzas (no gestionadas por FSTS) | Integridad de las transacciones, disponibilidad | Minutos | Sistemas de pago, centros de datos |
+
+Las diferencias cambian las decisiones de implementación. Un parche en la pasarela de las bombas de infusión de un hospital necesita la conformidad de ingeniería clínica; un cambio de cortafuegos en una estación de bombeo puede necesitar una visita a la instalación y una ventana de corte; un quiosco de las cocheras normalmente puede reconstruirse el mismo día. Tratarlos todos con un único proceso de cambios de TI o bien ralentiza los cambios seguros, o bien precipita los peligrosos.
+
+### 10.3 Dependencias e interdependencias
+
+Los servicios críticos dependen unos de otros: el agua necesita electricidad para las bombas y telecomunicaciones para la telemetría; los hospitales necesitan agua, electricidad y telecomunicaciones; todos dependen de un número reducido de proveedores. El artículo clásico de Rinaldi y sus colegas clasifica las interdependencias en físicas, cibernéticas, geográficas y lógicas ([Rinaldi, Peerenboom and Kelly, 2001](https://doi.org/10.1109/37.969131)). En FSTS, la interdependencia más importante es organizativa: el mismo equipo reducido, el mismo servidor de salto y los mismos proveedores atienden a los tres operadores. Una sola cuenta de administrador de FSTS comprometida alcanza a la vez el agua, la salud y el transporte.
+
+### 10.4 Las obligaciones del operador y su parte en ellas
+
+Los operadores de servicios esenciales suelen asumir obligaciones de gestionar el riesgo cibernético, notificar los incidentes significativos en plazos establecidos, mantener planes de continuidad y cooperar con las autoridades. Marcos como el Cyber Assessment Framework del NCSC del Reino Unido las expresan como resultados que deben alcanzarse ([NCSC CAF](https://www.ncsc.gov.uk/collection/caf)); los objetivos intersectoriales de desempeño en ciberseguridad de CISA ofrecen una base de prácticas ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)). Un implementador rara vez es titular de estas obligaciones, pero produce la mayor parte de la evidencia que las respalda: listas de activos, revisiones de accesos, registros, resultados de pruebas, cronologías de incidentes. Si esa evidencia llega tarde o es errónea, la notificación del operador llega tarde o es errónea.
+
+### 10.5 Ejemplo resuelto: un fallo, tres clientes (sintético)
+
+A las 02:10 falla un disco del servidor de salto de FSTS. Operaciones de Agua pierde la administración remota de los retransmisores, pero conserva la telemetría (los retransmisores siguen funcionando). Los ingenieros clínicos del hospital no pueden acceder a la pasarela de las bombas de infusión para cargar una actualización de la biblioteca de fármacos programada para las 06:00. Las cocheras no pueden enviar un cambio de horarios a los quioscos. El mismo fallo tiene tres consecuencias distintas con tres plazos distintos. El tecnólogo de guardia que lo reconoce llama primero a Ingeniería Clínica, porque la actualización de las 06:00 tiene una finalidad de seguridad del paciente, aunque Agua sea el cliente más grande.
+
+### 10.6 Actividad práctica: tabla de consecuencias y plazos
+
+Para cada cliente de Fallowmere, enumere tres sistemas gestionados por FSTS. Para cada sistema, escriba: qué pierden las personas si se detiene, con qué rapidez esa pérdida se vuelve dañina, quién decide la acción de emergencia y de qué otro sistema depende. Guarde esta tabla; el capítulo 11 la convierte en un inventario con dependencias. Para Fallowmere Community Hospital, una fila podría decir: pasarela de las bombas de infusión; pérdida, no pueden cargarse las actualizaciones de la biblioteca de fármacos; dañina en cuestión de horas si se pierde una actualización programada como la de las 06:00; decide Ingeniería Clínica; depende del servidor de salto de FSTS. Esa fila es la razón por la que, en el ejemplo resuelto, el fallo del servidor de salto se escaló al hospital antes que a Agua.
+
+### 10.7 Errores frecuentes y límites
+
+- Tratar todos los sistemas que gestiona un equipo de TI como si tuvieran la misma consecuencia.
+- Medir el daño solo en datos o en dinero.
+- Ignorar como dependencias a las personas, las herramientas y los proveedores compartidos.
+- Citar la normativa de memoria; su alcance y sus plazos cambian y difieren según la jurisdicción.
+- Suponer que el implementador no tiene ningún papel en las obligaciones del operador.
+
+El fallo del servidor de salto muestra juntos el primer y el tercer error: un único equipo compartido de FSTS tuvo tres consecuencias con tres plazos.
+
+Medir el daño solo en dinero habría situado a Agua en primer lugar aquella noche, por ser el cliente más grande, y habría pasado por alto la actualización de la biblioteca de fármacos de las 06:00.
+
+### Ejercicios — capítulo 10
+
+**EX028 — La consecuencia en personas y tiempo.** *Objetivo:* expresar el daño en unidades de servicio. *Entradas:* el escenario del capítulo 10 («Ejemplo resuelto: un fallo, tres clientes»). *Restricciones:* solo cifras sintéticas; indique los supuestos. *Pasos:* para cada cliente, escriba una frase del tipo «N personas pierden X durante T, lo que se vuelve dañino al cabo de D porque…». *Evidencia esperada:* tres frases con supuestos. *Rúbrica:* 3 = tres afirmaciones concretas, verosímiles y con los supuestos señalados, que muestran plazos distintos e identifican el plazo de seguridad del paciente del hospital como el más temprano; 2 = una genérica; 1 = todo en dinero; 0 = nada.
+
+**EX029 — Mapa de dependencias compartidas.** *Objetivo:* encontrar las interdependencias que crea un servicio compartido. *Entradas:* FSTS gestiona un servidor de salto, un SIEM, un directorio de identidades y un sistema de copias de seguridad para los tres clientes; Kell suministra las RTU de agua, y BayTel transporta la telemetría del agua y la conexión a internet del hospital. *Restricciones:* use los cuatro tipos de Rinaldi. *Pasos:* (1) clasifique cada dependencia; (2) nombre el fallo único de efecto más amplio; (3) proponga un cambio para reducirlo. *Evidencia esperada:* tabla y párrafo. *Rúbrica:* 3 = los sistemas compartidos de FSTS como cibernéticos/lógicos, BayTel como operador común cibernético/físico, el personal como lógico; el compromiso del directorio de identidades o del servidor de salto identificado como el más amplio; un cambio práctico como niveles privilegiados por cliente o un segundo camino de operador para la telemetría; 2 = clasificación débil; 1 = solo una lista; 0 = nada.
+
+**EX030 — La evidencia que usted debe.** *Objetivo:* conectar el trabajo diario con las obligaciones del operador. *Entradas:* los CPG de CISA o el CAF del NCSC (elija uno; cite la versión que leyó). *Restricciones:* tres resultados u objetivos. *Pasos:* para cada uno, nombre la evidencia que produce un tecnólogo de FSTS, con qué frecuencia y dónde se guarda. *Evidencia esperada:* tabla con la cita. *Rúbrica:* 3 = tres resultados u objetivos citados correctamente (por ejemplo, inventario de activos, MFA, recogida de registros), cada uno con evidencia concreta producida con regularidad; 2 = evidencia vaga; 1 = sin cita; 0 = nada.
+
+### Síntesis del capítulo
+
+Un servicio es crítico por lo que su pérdida causa a las personas, medido en personas y tiempo. Los sectores se diferencian en lo que protegen primero y en la rapidez con que llega el daño, así que el mismo fallo técnico necesita respuestas distintas. Los servicios compartidos como FSTS crean interdependencias a través de las personas, las herramientas y los proveedores. Los operadores asumen las obligaciones legales; los implementadores producen la mayor parte de la evidencia que muestra que se cumplen.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Siga estudiando — capítulo 10 de 30
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Infraestructura crítica y seguridad sectorial: activos y contexto
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- construir y mantener un inventario de activos para un servicio mixto de TI/TO a partir de varias fuentes;
+- registrar para cada activo su **responsable, función, criticidad, ubicación, versión de software o firmware, estado del soporte y dependencias**;
+- usar métodos de descubrimiento **pasivos**, seguros para las redes operativas;
+- conciliar fuentes que discrepan y tratar la discrepancia como un hallazgo.
+
+El capítulo 4 mostró cómo modelar un inventario. Este capítulo trata de llenarlo con veracidad. Los objetivos intersectoriales de desempeño de CISA incluyen mantener un inventario de activos, también de los activos de TO ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)); no puede proteger, parchear ni monitorizar lo que no ha registrado.
+
+### 11.1 Qué registrar y por qué
+
+| Atributo | Por qué lo necesita un implementador |
+|---|---|
+| Identificador y ubicación | Para encontrarlo, físicamente y en la red. |
+| Función y criticidad | Para decidir la prioridad en parches, monitorización y respuesta. |
+| Responsable (una función, no una persona) | Alguien debe aprobar los cambios y aceptar el riesgo. |
+| Modelo y versión de firmware/software | Para cotejar avisos y correcciones del proveedor. |
+| Estado del soporte del proveedor | Los activos sin soporte necesitan controles compensatorios y planes de sustitución. |
+| Direcciones de red y zona | Para comprobar los flujos (capítulo 2). |
+| Dependencias | Para entender qué más falla con él (capítulo 10). |
+| Última verificación (fecha, método) | Para que los registros desfasados sean visibles. |
+
+### 11.2 Las fuentes y sus puntos ciegos
+
+Ninguna fuente es completa por sí sola. Los **registros de compras y contratos** saben qué se compró, pero no a dónde fue. Los **registros de gestión de la configuración o de ingeniería** conocen el diseño, pero pueden ir por detrás de la realidad. La **observación de la red** (tablas de los conmutadores, registros de flujo, un sensor pasivo) ve lo que habla, pero no lo que está en silencio. Los **reconocimientos en la instalación** ven lo que está físicamente presente, pero son caros y poco frecuentes. Los **portales de los proveedores** conocen las versiones de firmware de lo que soportan. Combine al menos dos fuentes y registre qué fuente dijo qué. PS-09 muestra por qué: solo los registros de flujo sabían que la estación se había quedado en silencio.
+
+### 11.3 Descubrimiento seguro en redes operativas
+
+El escaneo activo (enviar sondas a todas las direcciones) es rutinario en las redes de oficina y arriesgado en las redes de control: algunos controladores antiguos y dispositivos embebidos pueden comportarse mal o reiniciarse cuando se les sondea de forma inesperada. La guía de TO del NIST aconseja prudencia con el escaneo activo en entornos de TO y da preferencia a los métodos pasivos o a un trabajo activo cuidadosamente planificado y coordinado ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Para un implementador, la regla es: en la zona de estaciones, use fuentes pasivas (registros de flujo, tablas de los conmutadores, las exportaciones de configuración de los propios controladores realizadas por sus ingenieros), salvo que se haya acordado un método activo con operaciones, se haya probado en un equipo de repuesto y se haya programado.
+
+### 11.4 Conciliación
+
+Cuando las fuentes discrepan, la discrepancia es información. Un activo que figura en los registros de compras pero nunca se ha visto en la red puede estar en un armario, o conectado en algún lugar inesperado. Una dirección vista en los flujos pero ausente de todos los registros es un dispositivo desconocido. Una versión de firmware que difiere entre el registro de ingeniería y el portal del proveedor significa que uno de los dos es erróneo; y si lo es el registro de ingeniería, puede que se haya aplicado una corrección, o no, sin documentarla. Siga cada discrepancia como una incidencia con responsable hasta que se resuelva.
+
+### 11.5 Activos sin soporte
+
+Los servicios críticos suelen mantener equipos en funcionamiento después de que termine el soporte del proveedor, porque sustituirlos exige inversión, cortes y nueva certificación. El inventario debe hacerlo visible, con un plan de **controles compensatorios** para cada activo sin soporte: segmentación más estricta, listas de permitidos más rigurosas, monitorización adicional, repuestos y una fecha de sustitución a cargo de alguien con presupuesto. La RTU Kell R2 de PS-09, sin soporte desde el 2025-12-31 y todavía de criticidad 1, es el caso de Fallowmere. Su plan nombraría la entrada de la lista de permitidos del retransmisor y el conducto como los controles reforzados, la regla C como monitorización adicional, una RTU de repuesto en poder de Agua y una fecha de sustitución a cargo de Operaciones de Agua, que gestiona el presupuesto de inversión.
+
+### 11.6 Ejemplo resuelto: conciliar PS-09 (sintético)
+
+Tres fuentes describen la estación de bombeo PS-09. El registro de compras incluye una RTU Kell R2 comprada en 2017. El registro de ingeniería indica el firmware 1.1 y el responsable "Water Ops". Los registros de flujo muestran a 10.20.0.13 comunicándose con el retransmisor hasta hace tres semanas, y nada desde entonces (la estación en silencio del capítulo 2). El inventario (capítulo 4) no tiene responsable para PS09-RTU y registra que el soporte del proveedor terminó el 2025-12-31. Usted registra cuatro discrepancias: falta el responsable en el inventario, pero figura en el registro de ingeniería (corrija el registro, después de confirmarlo con Water Ops); soporte terminado (necesita un plan de controles compensatorios); estación en silencio (problema operativo, planteado a Operaciones de Agua el mismo día); y firmware no verificado de forma independiente (pida al ingeniero de Agua que exporte la configuración de la RTU en la próxima visita a la instalación; capítulo 28).
+
+### 11.7 Actividad práctica: conciliación de tres fuentes
+
+Con el inventario del Lab 4 y los flujos del Lab 2, enumere cada activo o dirección que aparece en una fuente pero no en la otra, y cada atributo que difiere. Para cada uno, escriba la siguiente acción y el responsable. No sondee ningún dispositivo para resolver una discrepancia; pregunte al responsable. Cuente con que la RTU de PS-09 en 10.20.0.13 aparezca en ambas fuentes, pero con discrepancias: presente en el inventario, en silencio en los flujos. Cuente también con que los flujos del Lab 2 muestren direcciones que faltan en el inventario, como la estación de trabajo corporativa 10.40.3.7; registre su responsable como una pregunta para Ingeniería de Agua, no como una suposición.
+
+### 11.8 Errores frecuentes y límites
+
+- Tratar una sola fuente como el inventario.
+- Hacer escaneos activos en redes de control «solo para asegurarse».
+- Registrar a una persona como responsable en lugar de una función.
+- Registrar el firmware una vez y no volver a verificarlo nunca.
+- Enumerar los activos sin soporte sin controles compensatorios ni responsable de la sustitución.
+- Ocultar las discrepancias para que el inventario parezca completo.
+
+Un inventario es un modelo de la realidad, siempre algo desactualizado. Su calidad se mide por lo reciente que es la verificación de cada registro y por la rapidez con que se cierran las discrepancias. El módem celular de PS-07, descubierto solo mediante una visita a la instalación, es el argumento contra fiarse de una sola fuente.
+
+### Ejercicios — capítulo 11
+
+**EX031 — Concilie.** *Objetivo:* encontrar discrepancias entre fuentes. *Entradas:* el inventario del Lab 4 y los flujos del Lab 2. *Restricciones:* solo las zonas de estaciones, del retransmisor y corporativa. *Pasos:* (1) enumere las direcciones de los flujos sin registro en el inventario (suponga que el inventario asigna PS04-PLC a 10.20.0.11, PS07-PLC a 10.20.0.12, PS09-RTU a 10.20.0.13, RLY-01 a 10.30.0.5 y HIST-01 a 10.40.8.20); (2) enumere los activos del inventario en esas zonas que nunca se vieron en los flujos; (3) indique una acción y un responsable para cada uno. *Evidencia esperada:* tabla. *Rúbrica:* 3 = 10.40.3.7 (estación de trabajo corporativa, ausente del extracto) identificada como no registrada y como origen del Modbus no declarado; SW-STN-04 no vista (lo esperable en un conmutador; explíquelo); PS09-RTU en silencio; acciones con responsable; 2 = parcial; 1 = solo una lista; 0 = nada.
+
+**EX032 — Controles compensatorios.** *Objetivo:* planificar para un activo sin soporte. *Entradas:* PS09-RTU, criticidad 1, soporte del proveedor terminado, presupuesto de sustitución disponible dentro de 14 meses. *Restricciones:* controles que FSTS y Agua pueden implementar sin correcciones del proveedor. *Pasos:* enumere cuatro controles compensatorios con evidencia para cada uno, y el responsable de la sustitución. *Evidencia esperada:* tabla. *Rúbrica:* 3 = conducto restringido solo al retransmisor y verificado, validación y cuarentena por rango en el retransmisor, alertas de silencio de estación y de valor inverosímil, unidad de repuesto o procedimiento manual probado, copia de seguridad de la configuración; sustitución a cargo de una función de Agua, con fecha; 2 = tres; 1 = «vigilarlo»; 0 = nada.
+
+**EX033 — Plan de descubrimiento.** *Objetivo:* planificar un descubrimiento seguro. *Entradas:* Operaciones de Agua quiere una lista completa de los dispositivos de las 14 estaciones en tres meses. *Restricciones:* ningún escaneo activo sin acuerdo; como máximo dos visitas a instalaciones por semana. *Pasos:* (1) enumere las fuentes pasivas que usará primero; (2) indique cuándo estaría justificado un método activo y cómo lo haría seguro; (3) dé un calendario. *Evidencia esperada:* plan de una página. *Rúbrica:* 3 = primero las fuentes pasivas (flujos, tablas de los conmutadores, exportaciones de ingeniería, registros de compras); método activo solo con acuerdo de operaciones, probado en un repuesto, con limitación de ritmo, dentro de una ventana y con alguien en la instalación; calendario realista; 2 = plan sólido pero vago en cuanto a seguridad; 1 = «escanear la subred»; 0 = nada.
+
+### Síntesis del capítulo
+
+Un inventario registra, para cada activo, qué es, dónde está, quién es su responsable, qué ejecuta, si tiene soporte, de qué depende y cuándo se verificó todo ello por última vez. Constrúyalo a partir de varias fuentes, haga el descubrimiento de forma segura en las redes de control, trate las discrepancias entre fuentes como hallazgos y dé a cada activo sin soporte controles compensatorios y un responsable de su sustitución.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Siga estudiando — capítulo 11 de 30
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Infraestructura crítica y seguridad sectorial: flujos de datos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- mantener un **registro de flujos de datos** que recoja, para cada flujo, su origen, destino, clase de datos, protección y conservación;
+- clasificar los datos de un servicio crítico: telemetría operativa, configuración, datos personales y vinculados a pacientes, registros de seguridad;
+- verificar el registro frente a lo que los sistemas realmente envían y conservan;
+- reconocer cuándo un flujo nuevo necesita una revisión de privacidad, contractual o de seguridad física antes de empezar.
+
+El capítulo 2 comparó los flujos de red con los conductos declarados. Un conducto dice que *un camino está permitido*; un registro de flujos de datos dice *qué datos viajan por él, cómo se protegen y cuánto tiempo se conservan en el otro extremo*. En los servicios compartidos, la segunda pregunta suele ser la que mete en problemas a una organización, porque los datos sobreviven al motivo por el que se recogieron.
+
+### 12.1 El registro
+
+Cada entrada del registro de LANTERN recoge: identificador; origen y destino (sistemas, no solo direcciones); **clase de datos**; si el flujo va cifrado en tránsito; cuánto tiempo conserva los datos el destino; el propósito; el responsable; y, para los datos personales, la base jurídica registrada por el responsable de los datos. El registro es un documento que las personas leen durante un incidente («¿qué salió de la pasarela clínica?») y ante una solicitud de privacidad («¿a dónde van los datos de la bomba de este paciente?»). DF5 es una entrada modelo: de la pasarela clínica a Halden Cloud, vinculada a pacientes, cifrada, 30 días registrados.
+
+### 12.2 Clases de datos
+
+Para un implementador, cuatro clases cubren la mayor parte de un servicio crítico compartido:
+
+- **Telemetría operativa**: lecturas y estados (niveles, caudales, cloro). Normalmente no es personal, pero su integridad es crítica y a veces es sensible en conjunto (revela cómo funciona la red).
+- **Datos de configuración e ingeniería**: programas de los controladores, diagramas de red, puntos de consigna, configuración del retransmisor. Muy sensibles: son un mapa para un atacante.
+- **Datos personales y vinculados a pacientes**: cualquier cosa sobre una persona identificable. En el hospital, los registros de eventos de las bombas de infusión vinculados a una planta y una hora pueden identificar a un paciente. Se aplica la legislación de protección de datos; en la UE, el RGPD ([Regulation (EU) 2016/679](https://eur-lex.europa.eu/eli/reg/2016/679/oj)) exige, entre otros principios, que los datos personales no se conserven más tiempo del necesario para su finalidad. *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia.
+- **Registros de seguridad**: autenticación, flujos, alertas. A menudo contienen datos personales (nombres de usuario, direcciones) y deben protegerse y conservarse según la política.
+
+El Marco de Privacidad del NIST ofrece una estructura para gestionar el riesgo de privacidad junto con el riesgo de ciberseguridad ([NIST Privacy Framework](https://www.nist.gov/privacy-framework)).
+
+### 12.3 Verificar el registro
+
+Los registros se degradan igual que los inventarios. Verifíquelos muestreando lo que ocurre de verdad: qué sistemas envían a cuáles (flujos), qué clase de datos va en las cargas útiles (muestreo de metadatos por parte del responsable de los datos, no leyendo historias de pacientes), si el transporte va cifrado y cuánto tiempo conserva realmente los datos el destino (su configuración de conservación y la antigüedad de sus registros más antiguos). Las diferencias son de tipos conocidos: flujos no registrados; flujos que envían una clase distinta de la registrada; cifrado registrado pero ausente; conservación más larga que la registrada.
+
+### 12.4 Los flujos nuevos necesitan revisión antes de empezar
+
+La mayoría de los problemas de flujos de datos empiezan con una petición razonable: un proveedor quiere telemetría para diagnóstico remoto; un equipo de informes quiere una copia de los eventos de la pasarela clínica. Antes de que empiece un flujo así, se redacta y se revisa la entrada del registro: la revisan el responsable de los datos, seguridad (protección y conducto) y, cuando hay datos personales, la función de privacidad. Si transporta datos de control o de configuración, se aplica la regla de arquitectura del capítulo 8. La petición de Kell de recibir telemetría horaria de los retransmisores es el caso de Fallowmere: la entrada debe redactarse y revisarse antes de que se envíe la primera hora.
+
+### 12.5 Ejemplo resuelto: el registro frente a la realidad (sintético)
+
+El Lab 12 compara cinco entradas del registro con siete flujos observados. Cuatro flujos registrados coinciden. Tres diferencias importan:
+
+1. **DF5 (de la pasarela clínica a Halden Cloud) conserva datos vinculados a pacientes durante 400 días frente a los 30 registrados.** El flujo está registrado y cifrado, pero la conservación en el destino no coincide. Es una cuestión de privacidad y de contrato; hay que informar al responsable de los datos del hospital y cotejar la configuración de conservación de Halden con el contrato.
+2. **Un flujo no registrado del historiador a un sistema de soporte del proveedor, en texto claro.** Transporta telemetría (no personal, pero sensible desde el punto de vista operativo) sin cifrado y sin que nadie lo haya aprobado.
+3. **Un flujo no registrado de la pasarela clínica al servidor de informes que transporta datos vinculados a pacientes.** Cifrado, pero nadie lo aprobó, y el servidor de informes está en la zona corporativa que usa el personal de agua.
+
+El tercero es el más grave pese a ir cifrado: los datos vinculados a pacientes han llegado a un sistema y a un público sin ninguna finalidad registrada. El cifrado en tránsito protege el trayecto, no el destino.
+
+### 12.6 Actividad práctica: comprobación del registro
+
+**Lab 12** (guárdelo como `lab12.py` y ejecútelo con `python3 lab12.py`):
+
+```python
+# Lab 12 - checking a data-flow register against what the service actually sends (offline, standard library only)
+# Synthetic: Fallowmere shared services. Each register entry: id, source, destination, data class, encrypted, retention days.
+register = [
+ ("DF1", "PS-*", "RLY-01", "telemetry", False, 0),
+ ("DF2", "RLY-01", "HIST-01", "telemetry", True, 730),
+ ("DF3", "HIST-01", "REPORTS", "telemetry-aggregate", True, 365),
+ ("DF4", "WARD-PUMPS", "CLIN-GW", "patient-linked", True, 30),
+ ("DF5", "CLIN-GW", "HALDEN-CLOUD", "patient-linked", True, 30),
+]
+observed = [  # source, destination, data class seen by sampling payload metadata, tls?, stored days at destination
+ ("PS-04", "RLY-01", "telemetry", False, 0), ("RLY-01", "HIST-01", "telemetry", True, 730),
+ ("HIST-01", "REPORTS", "telemetry-aggregate", True, 365), ("WARD-PUMPS", "CLIN-GW", "patient-linked", True, 30),
+ ("CLIN-GW", "HALDEN-CLOUD", "patient-linked", True, 400), ("HIST-01", "VENDOR-SUPPORT", "telemetry", False, None),
+ ("CLIN-GW", "REPORTS", "patient-linked", True, 365),
+]
+sensitive = {"patient-linked"}
+def match(src, dst):
+    for r in register:
+        if (r[1] == src or (r[1].endswith("*") and src.startswith(r[1][:-1]))) and r[2] == dst:
+            return r
+for src, dst, cls, enc, keep in observed:
+    r = match(src, dst)
+    if r is None:
+        sev = "HIGH" if cls in sensitive else "MED"
+        print(f"{sev:<4} unregistered flow {src}->{dst} ({cls}, encrypted={enc})")
+        continue
+    issues = []
+    if r[3] != cls: issues.append(f"class {cls} != registered {r[3]}")
+    if r[4] and not enc: issues.append("registered encrypted but sent clear")
+    if keep is not None and keep > r[5]: issues.append(f"kept {keep} d > registered {r[5]} d")
+    print(f"{'OK  ' if not issues else 'HIGH' if cls in sensitive else 'MED '} {r[0]} {src}->{dst} {'; '.join(issues)}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+OK   DF1 PS-04->RLY-01 
+OK   DF2 RLY-01->HIST-01 
+OK   DF3 HIST-01->REPORTS 
+OK   DF4 WARD-PUMPS->CLIN-GW 
+HIGH DF5 CLIN-GW->HALDEN-CLOUD kept 400 d > registered 30 d
+MED  unregistered flow HIST-01->VENDOR-SUPPORT (telemetry, encrypted=False)
+HIGH unregistered flow CLIN-GW->REPORTS (patient-linked, encrypted=True)
+```
+
+La salida reproduce las tres diferencias anteriores. Antes de actuar, decida quién recibe cada una: la conservación de 400 días de DF5 va al responsable de los datos del hospital y a quien gestione el contrato con Halden; el flujo en texto claro del historiador al sistema de soporte del proveedor va al responsable de los datos de Agua y a FSTS Security; y el flujo no registrado de datos vinculados a pacientes hacia el servidor de informes va primero a la función de privacidad del hospital, porque un público de la zona corporativa puede haber visto ya los datos.
+
+### 12.7 Errores frecuentes y límites
+
+- Registrar caminos (conductos), pero no clases de datos ni conservación.
+- Suponer que «cifrado» significa «aceptable».
+- Tratar la telemetría operativa como inofensiva porque no es personal.
+- Verificar las clases de datos leyendo usted mismo datos personales, en lugar de pedir al responsable de los datos que muestree metadatos.
+- Dejar que empiece un flujo de proveedor o de informes antes de revisar la entrada.
+
+El registro muestra lo que se conoce; los flujos que salen por rutas inesperadas (soportes extraíbles, el portátil de un proveedor) necesitan otros controles. El flujo no registrado de la pasarela clínica al servidor de informes es el segundo error en acción: cifrado y, aun así, inaceptable.
+
+### Ejercicios — capítulo 12
+
+**EX034 — Clasifique las diferencias por prioridad.** *Objetivo:* priorizar los hallazgos sobre flujos de datos. *Entradas:* la salida del Lab 12. *Restricciones:* una acción y un responsable por hallazgo. *Pasos:* (1) ordene los tres hallazgos; (2) indique la primera acción y el responsable; (3) indique cuál debe comunicarse a alguien ajeno a FSTS. *Evidencia esperada:* tabla. *Rúbrica:* 3 = CLIN-GW→REPORTS primero (datos vinculados a pacientes no aprobados ante un público equivocado: detener el flujo con el acuerdo del responsable de los datos del hospital, evaluar), la conservación de DF5 segundo (responsable de los datos del hospital y contrato con Halden), el texto claro hacia el soporte del proveedor tercero (detener o cifrar, registrar); reconoce que la necesidad de comunicarlo externamente la deciden el responsable de los datos y la función de privacidad; 2 = orden defendible, responsables vagos; 1 = ordena solo por cifrado; 0 = nada.
+
+**EX035 — Redacte una entrada del registro.** *Objetivo:* especificar un flujo nuevo antes de que empiece. *Entradas:* Kell Instruments pide telemetría horaria de PS-09 para diagnóstico remoto. *Restricciones:* todos los campos del capítulo 12 («El registro»); incluya el conducto y la protección. *Pasos:* redacte la entrada y enumere quién debe aprobarla. *Evidencia esperada:* entrada y aprobadores. *Rúbrica:* 3 = origen y destino concretos (exportación del retransmisor o del historiador, no la RTU directamente), clase de datos telemetría operativa, transporte cifrado, campos y frecuencia mínimos, conservación limitada y contractual, propósito, responsable, aprobaciones del responsable de los datos de Agua y de seguridad de FSTS, con fecha de caducidad; 2 = un campo débil; 1 = «enviar datos a Kell»; 0 = nada.
+
+**EX036 — Amplíe la comprobación.** *Objetivo:* añadir una comprobación a la herramienta. *Entradas:* el Lab 12. *Restricciones:* solo la biblioteca estándar. *Pasos:* (1) añada una comprobación que señale cualquier flujo de datos `patient-linked` cuyo destino no esté en una lista aprobada `{"CLIN-GW", "HALDEN-CLOUD"}`, aunque esté registrado; (2) registre `("DF6", "CLIN-GW", "REPORTS", "patient-linked", True, 365)` y vuelva a ejecutar; (3) explique por qué el mero registro no debería hacer aceptable ese flujo. *Evidencia esperada:* código, salida y explicación. *Rúbrica:* 3 = el flujo hacia REPORTS sigue señalado tras registrarlo; explicación de que el registro recoge decisiones, y de que un flujo registrado hacia un público no aprobado es una mala decisión que hay que revisar, no un resultado limpio; 2 = el código funciona, explicación escasa; 1 = no se ejecutó; 0 = nada.
+
+### Síntesis del capítulo
+
+Un registro de flujos de datos recoge qué datos viajan a dónde, cómo se protegen y cuánto tiempo se conservan. Clasifique los datos (telemetría, configuración, datos personales y vinculados a pacientes, registros de seguridad) y verifique el registro frente a lo que los sistemas realmente envían y conservan. El cifrado protege el trayecto, no el destino. Los flujos nuevos se revisan antes de empezar: los revisan el responsable de los datos, seguridad y, cuando hay datos personales, la función de privacidad.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Siga estudiando — capítulo 12 de 30
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Infraestructura crítica y seguridad sectorial: escenarios de riesgo
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- redactar un **escenario** de riesgo como una historia concreta: causa, camino, activo afectado, consecuencia para las personas y controles existentes;
+- asignar franjas de consecuencia y de probabilidad con motivos explícitos, midiendo la consecuencia en personas y tiempo;
+- ordenar los escenarios **primero por consecuencia** cuando interviene la seguridad física, y explicar por qué el producto probabilidad × consecuencia puede inducir a error;
+- convertir los escenarios principales en trabajo de implementación con responsables.
+
+La evaluación de riesgos puede hacerse con muchos niveles de profundidad; la guía del NIST describe un proceso completo para las organizaciones ([NIST SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final)). Este capítulo enseña la versión del implementador: redactar escenarios lo bastante precisos para que un tecnólogo pueda construir, probar y monitorizar los controles que implican.
+
+### 13.1 Escenarios, no categorías
+
+«Ransomware» es una categoría. Un escenario es: «Un ransomware entregado mediante un correo de phishing cifra HIST-01; los datos de las estaciones siguen llegando al retransmisor, que los almacena; los operadores pierden las pantallas de tendencias y los informes semanales de cumplimiento hasta que se restaura el historiador». Un buen escenario nombra la **causa**, el **camino**, el **activo afectado**, la **consecuencia** para las personas y el servicio, y los **controles existentes**. Así puede probarse («¿de verdad almacena el retransmisor? ¿durante cuánto tiempo?») y monitorizarse. R2 supera la prueba: credencial de proveedor robada, acceso remoto del proveedor, el punto de consigna de dosificación de PS-07, un cambio de cloro en el agua que bebe la gente.
+
+### 13.2 Primero la consecuencia
+
+La consecuencia describe lo que les ocurre a las personas: cuántas, durante cuánto tiempo y si alguien podría sufrir daños. Una clasificación por franjas sencilla usa personas × horas de interrupción, y cualquier efecto creíble sobre la seguridad física se sitúa en la franja más alta sean cuales sean las cifras. La **probabilidad** es una franja de juicio (de 1 a 5) basada en la exposición, las amenazas conocidas y el historial. Escriba el motivo de cada franja; una franja sin motivo no puede rebatirse.
+
+Muchos registros ordenan por el producto probabilidad × consecuencia. El producto es cómodo y peligroso: trata como iguales una molestia frecuente y una catástrofe rara si los productos coinciden, y deja que un problema visto a menudo pero recuperable supere a un escenario de seguridad física. Cuando la seguridad física está en juego, ordene primero por consecuencia y después por probabilidad dentro de la franja; use el producto, si acaso, solo dentro de una misma franja de consecuencia. Los métodos basados en la consecuencia desarrollados para la infraestructura crítica adoptan la misma perspectiva: partir de los resultados que no deben ocurrir ([INL CCE](https://inl.gov/national-security/cce/)).
+
+### 13.3 Controles existentes y riesgo residual
+
+Para cada escenario, registre los controles que ya lo reducen y si se han probado (capítulo 23). Un control sin probar es una esperanza, y no debería rebajar mucho la franja. El **riesgo residual** (lo que queda después de los controles) necesita un responsable que lo haya aceptado, identificado por su función, con una fecha de revisión. Para R1, el ransomware en el historiador, el control clave es que el retransmisor almacene los datos de las estaciones mientras HIST-01 está caído. Mientras ese almacenamiento no se haya probado deteniendo el historiador a propósito y comprobando cuántas horas aguanta el retransmisor, es una esperanza, y la franja baja de R1 descansa en ella. El responsable del riesgo residual de R1 sería Operaciones de Agua, porque los informes de cumplimiento son suyos.
+
+### 13.4 De los escenarios al trabajo
+
+El valor del registro es el trabajo que produce. Para cada uno de los escenarios principales, enumere las tareas de implementación que reducirían la consecuencia o la probabilidad, y la monitorización que lo detectaría mientras ocurre. Un registro que no produce tareas es un documento; uno que produce tareas con responsables es un plan. Para R3, el llenado del disco del retransmisor, el trabajo es concreto: averiguar qué conserva los datos de RLY-01 más allá de 30 días, configurar una alerta de disco antes de la alarma del 85 % y probar el comportamiento del búfer cuando el disco está lleno. Para R2, son los controles de la cuenta del proveedor y la alerta de cloro fuera de banda que aparecen como fichas de control en el capítulo 18.
+
+### 13.5 Ejemplo resuelto: seis escenarios de Fallowmere (sintético)
+
+El Lab 13 ordena seis escenarios. Dos llevan la marca de seguridad física (una credencial de proveedor robada que se usa para cambiar el punto de consigna de dosificación de PS-07, R2, y una caída de la pasarela clínica que impide actualizar la biblioteca de fármacos de las bombas de infusión, R4) y pasan a la franja de consecuencia 5. Ordenados primero por consecuencia, R2 y R4 van en cabeza, seguidos del llenado del disco del retransmisor (R3) y del corte del operador de telecomunicaciones (R6). Ordenados por el producto, R3 (16) y R6 (12) superan a ambos escenarios de seguridad física (10 cada uno). La ordenación por producto enviaría el esfuerzo del próximo trimestre a la capacidad de disco: útil, pero no donde es posible el daño a las personas.
+
+Fíjese también en R1, el ransomware en el historiador, al final con consecuencia 1. Eso refleja el diseño: la telemetría y el control continúan sin el historiador. No es un motivo para ignorar R1 (los informes de cumplimiento y las investigaciones dependen del historiador), sino un motivo para confiar en la propiedad de diseño del capítulo 8, *siempre que* se haya probado el almacenamiento del retransmisor.
+
+R2 merece una nota. LANTERN no transporta órdenes, así que el camino de R2 no pasa por LANTERN. Pasa por el acceso remoto del proveedor al sistema de control. El registro de riesgos de un tecnólogo debería incluir escenarios que el servicio *no causa*, pero que *debe detectar o apoyar*: la telemetría de LANTERN es la forma en que los operadores advertirían un cambio inesperado de dosificación.
+
+### 13.6 Actividad práctica: ordenación de escenarios
+
+**Lab 13** (guárdelo como `lab13.py` y ejecútelo con `python3 lab13.py`):
+
+```python
+# Lab 13 - a small risk-scenario register ranked by consequence first (offline, standard library only)
+# Synthetic: Fallowmere scenarios. Likelihood band 1-5 (judgement), consequence in service units.
+scenarios = [  # id, scenario, likelihood band, people affected, hours of disruption, safety flag
+ ("R1", "Ransomware encrypts historian; station data still reaches relay", 3, 0, 0, False),
+ ("R2", "Stolen vendor credential used to change PS-07 dosing setpoint", 2, 41000, 24, True),
+ ("R3", "Relay disk fills; telemetry dropped for remote stations", 4, 41000, 6, False),
+ ("R4", "Clinical gateway outage stops infusion-pump library updates", 2, 300, 72, True),
+ ("R5", "Depot kiosk defaced", 4, 0, 2, False),
+ ("R6", "Upstream carrier outage isolates 6 stations", 3, 18000, 8, False),
+]
+def consequence_band(people, hours, safety):
+    ph = people * hours
+    band = 1 if ph == 0 else 2 if ph < 10_000 else 3 if ph < 100_000 else 4 if ph < 1_000_000 else 5
+    return 5 if safety else band  # any credible safety effect goes to the top band
+rows = []
+for sid, text, lik, people, hours, safety in scenarios:
+    c = consequence_band(people, hours, safety)
+    rows.append((c, lik, sid, text, c * lik))
+print("ranked by consequence, then likelihood:")
+for c, lik, sid, text, prod in sorted(rows, key=lambda r: (-r[0], -r[1])):
+    print(f"  {sid} C{c} L{lik} CxL={prod:>2}  {text}")
+print("ranked by CxL product only:")
+print("  " + " ".join(sid for c, lik, sid, text, prod in sorted(rows, key=lambda r: -r[4])))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+ranked by consequence, then likelihood:
+  R2 C5 L2 CxL=10  Stolen vendor credential used to change PS-07 dosing setpoint
+  R4 C5 L2 CxL=10  Clinical gateway outage stops infusion-pump library updates
+  R3 C4 L4 CxL=16  Relay disk fills; telemetry dropped for remote stations
+  R6 C4 L3 CxL=12  Upstream carrier outage isolates 6 stations
+  R5 C1 L4 CxL= 4  Depot kiosk defaced
+  R1 C1 L3 CxL= 3  Ransomware encrypts historian; station data still reaches relay
+ranked by CxL product only:
+  R3 R6 R2 R4 R5 R1
+```
+
+Ejecútelo y compare las dos ordenaciones. Ordenados primero por consecuencia, R2 y R4 van en cabeza porque ambos llevan la marca de seguridad física en la franja 5. Ordenados por producto, R3 con 16 y R6 con 12 los adelantan, y R1 queda al final en ambos casos. Después cambie un dato de entrada que considere incierto, como la probabilidad de R2, y vea si desplaza a R2 por debajo de R3. Si la ordenación por consecuencia resiste su cambio y la ordenación por producto no, ese es el argumento que debe presentar a quienes asignan el trabajo del próximo trimestre.
+
+### 13.7 Errores frecuentes y límites
+
+- Redactar categorías en lugar de escenarios.
+- Franjas sin motivos.
+- Ordenar por producto cuando interviene la seguridad física.
+- Rebajar la probabilidad por controles que nunca se han probado.
+- Riesgo residual sin responsable.
+- Dejar fuera escenarios ajenos a su sistema que su sistema debe detectar.
+
+Las franjas son juicios. Su valor está en que hacen el razonamiento explícito y comparable, no en que midan el riesgo con precisión. El Lab 13 muestra el tercer error: ordenar por producto pone la capacidad de disco por encima de la dosificación de cloro.
+
+Dejar fuera R2 porque LANTERN no transporta órdenes sería el sexto error: la telemetría de LANTERN es la forma en que los operadores advierten un cambio inesperado de dosificación.
+
+### Ejercicios — capítulo 13
+
+**EX037 — Redacte dos escenarios.** *Objetivo:* redactar escenarios que puedan probarse. *Entradas:* el diseño de LANTERN de los capítulos 2 y 8. *Restricciones:* cada uno debe nombrar causa, camino, activo, consecuencia (personas y tiempo) y controles existentes. *Pasos:* redacte un escenario sobre el operador BayTel y otro sobre el servidor de salto de FSTS. *Evidencia esperada:* dos escenarios de 80 a 120 palabras. *Rúbrica:* 3 = concretos, comprobables, con consecuencias en personas y tiempo y controles nombrados con su estado de prueba; 2 = un elemento vago; 1 = categorías; 0 = nada.
+
+**EX038 — Producto frente a consecuencia.** *Objetivo:* explicar a un directivo una decisión de ordenación. *Entradas:* la salida del Lab 13. *Restricciones:* 150 palabras; sin jerga. *Pasos:* explique por qué R2 y R4 deberían abordarse antes que R3 aunque R3 puntúe más por producto, y qué sigue necesitando R3. *Evidencia esperada:* párrafo. *Rúbrica:* 3 = argumento claro sobre el posible daño a las personas, la irrecuperabilidad y el defecto del producto de dar el mismo peso a todo; reconoce que R3 sigue necesitando una acción de capacidad (capítulo 1) y que es barato de corregir; 2 = argumento parcial; 1 = solo «primero la seguridad»; 0 = nada.
+
+**EX039 — Del escenario al trabajo.** *Objetivo:* producir tareas de implementación. *Entradas:* R2 (credencial de proveedor usada para cambiar un punto de consigna de dosificación). *Restricciones:* tareas que FSTS o Agua puedan ejecutar; cada una con responsable y evidencia de que se completó. *Pasos:* enumere tres tareas de prevención o reducción y dos de detección. *Evidencia esperada:* tabla. *Rúbrica:* 3 = por ejemplo, acceso de proveedor limitado en el tiempo con MFA (capítulo 7), registro de sesiones, límites de los puntos de consigna del PLC diseñados por Agua, alerta de telemetría ante un cambio de cloro o de dosificación fuera de una ventana aprobada y comparación de los valores de los puntos de consigna con una línea base aprobada; responsables y evidencia nombrados; 2 = tareas genéricas; 1 = menos de tres; 0 = nada.
+
+### Síntesis del capítulo
+
+Redacte los riesgos como escenarios concretos (causa, camino, activo, consecuencia y controles) para que puedan probarse y monitorizarse. Mida la consecuencia en personas y tiempo, sitúe arriba los efectos creíbles sobre la seguridad física y ordene primero por consecuencia; el producto probabilidad × consecuencia puede hacer que las molestias superen al daño. Asigne un responsable al riesgo residual, incluya los escenarios que su servicio debe detectar y convierta el registro en tareas.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Siga estudiando — capítulo 13 de 30
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](../../en/book/MANUSCRIPT.md#ch-14)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1218,6 +1632,38 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX026 — Calcule la antigüedad de los elementos abiertos.** Valores de las estaciones: instaladas 64, 95, 140; antigüedades abiertas 20, 45, 70, 130, 200. Ordenados: 20, 45, 64, 70, 95, 130, 140, 200; mediana = (70 + 95) / 2 = 82,5 días. Es un límite inferior porque la latencia final de cada corrección abierta será al menos su antigüedad actual; la mediana real solo puede subir a medida que envejecen las correcciones abiertas. Difiere de la mediana calculada solo con las instaladas (95 días), aquí más baja porque varias correcciones abiertas son recientes, lo que muestra por qué deben comunicarse ambas juntas en lugar de elegir una.
 
 **EX027 — ¿Cuántos simulacros?** Al calcular el límite inferior de Wilson para n éxitos de n: 15/15 da alrededor de 0,796 y 16/16, alrededor de 0,806. Así que se necesitan 16 simulacros consecutivos con éxito: 16 meses a un simulacro por mes. Alternativas: hacer restauraciones parciales más pequeñas y frecuentes (una tabla o un día de datos cada semana), automatizar pruebas de restauración en una instancia de pruebas y mantener el simulacro completo cada trimestre; informe de cada tipo por separado para que la afirmación corresponda a la prueba.
+
+### Capítulo 10: EX028–EX030
+
+**EX028 — La consecuencia en personas y tiempo.** Supuestos señalados como sintéticos. Agua: «Unas 41.000 personas no pierden nada de inmediato (la telemetría continúa), pero FSTS no puede modificar los retransmisores mientras dure el corte; esto solo se vuelve dañino si se produce un fallo de un retransmisor antes de la reparación». Hospital: «Los pacientes con bombas de infusión de la planta 3 (unos 30 a la vez) pueden recibir el tratamiento con una biblioteca de fármacos desactualizada si se pierde la actualización de las 06:00; dañino a partir de las 06:00, porque la actualización corrige un límite de dosificación». Cocheras: «Los pasajeros ven un horario desactualizado en los quioscos desde el primer autobús de la mañana; molesto, no dañino». El plazo de seguridad del paciente de las 06:00 del hospital es el más temprano.
+
+**EX029 — Mapa de dependencias compartidas.** Servidor de salto, SIEM, directorio de identidades, sistema de copias de seguridad: interdependencias cibernéticas y lógicas entre los tres clientes. BayTel: un operador común cibernético/físico para la telemetría del agua y la conexión a internet del hospital; geográfica si ambos usan la misma central telefónica. Personal de FSTS: lógica. Fallo único de efecto más amplio: el compromiso del directorio de identidades (o de una cuenta privilegiada de FSTS en él), que da acceso a los sistemas de todos los clientes. Cambio: niveles privilegiados separados por cliente, con cuentas de administración separadas y MFA, de modo que una cuenta comprometida no abarque varios sectores; y un segundo camino de operador para la telemetría del agua.
+
+**EX030 — La evidencia que usted debe.** Ejemplo con los CPG de CISA (versión consultada y citada): objetivo de inventario de activos; evidencia: el inventario con fechas de última verificación y el informe mensual de conciliación (capítulo 11), guardados en el sistema de inventario. Objetivo de MFA; evidencia: salida trimestral de la revisión de accesos con el estado de MFA (capítulo 7), guardada con la incidencia de la revisión. Objetivo de recogida de registros; evidencia: informe diario de vigencia de las fuentes de registros y recuentos del normalizador (capítulos 17 y 19), guardado en el SIEM. La máxima puntuación cita la fuente y la versión e indica la frecuencia y el lugar.
+
+### Capítulo 11: EX031–EX033
+
+**EX031 — Concilie.** Direcciones de los flujos sin registro en el inventario: 10.40.3.7 (una estación de trabajo corporativa; también es el origen de los flujos Modbus no declarados; responsable, el equipo de puestos de trabajo de FSTS; regístrela y averigüe quién la usa). Activos del inventario en estas zonas que nunca se vieron en los flujos: SW-STN-04, lo esperable, porque un conmutador reenvía tráfico en lugar de originarlo en estos registros de flujo; verifíquelo en su lugar con los datos de gestión del conmutador; PS09-RTU, vista solo como origen declarado sin tráfico: la estación en silencio (Operaciones de Agua, el mismo día). HIST-01 (10.40.8.20) y los PLC concilian. La máxima puntuación explica por qué «no visto» significa cosas distintas para un conmutador y para una RTU.
+
+**EX032 — Controles compensatorios.** (1) Conducto restringido para que PS09-RTU solo pueda comunicarse con el retransmisor por tcp/502; evidencia: la regla del cortafuegos y la revisión mensual de flujos. (2) Validación y cuarentena por rango en el retransmisor para las etiquetas de PS-09; evidencia: pruebas al estilo del Lab 3 en el retransmisor. (3) Alertas de silencio de estación y de valor inverosímil para PS-09; evidencia: pruebas inyectadas (capítulo 23). (4) RTU de repuesto en el almacén o un procedimiento manual de lectura probado; evidencia: registro del almacén o registro del ejercicio. (5) Copia de seguridad de la configuración de la RTU por parte de Ingeniería de Agua; evidencia: exportación fechada. Sustitución a cargo del jefe de Ingeniería de Agua, con fecha objetivo dentro de 14 meses; los controles terminan cuando se verifica la sustitución.
+
+**EX033 — Plan de descubrimiento.** Semanas 1 a 3: fuentes pasivas (registros de flujo de los cortafuegos central y de las estaciones, tablas MAC/ARP de los conmutadores exportadas por el ingeniero de red de Agua, exportaciones de ingeniería de las configuraciones de PLC/RTU, registros de compras y mantenimiento); construya un inventario preliminar con columnas de «fuente». Semanas 4 a 12: dos visitas por semana (capítulo 28) a las estaciones con más discrepancias, para confirmar los dispositivos físicos y el firmware con el ingeniero de Agua. Un método activo solo está justificado si las fuentes pasivas no pueden ver un segmento; en ese caso: acordado con Operaciones de Agua, probado primero en un dispositivo de repuesto del mismo modelo, con limitación de ritmo, dentro de una ventana aprobada, con un ingeniero en la instalación y una condición de parada. Calendario realista: 14 estaciones a dos visitas por semana caben en siete semanas.
+
+### Capítulo 12: EX034–EX036
+
+**EX034 — Clasifique las diferencias por prioridad.** (1) CLIN-GW → REPORTS, vinculado a pacientes, no registrado: primera acción, informar al responsable de los datos del hospital y acordar detener el flujo mientras se evalúa; responsable: el responsable de los datos del hospital junto con FSTS Security. (2) Conservación de DF5 de 400 días frente a 30 en Halden: informar al responsable de los datos del hospital; cotejar la configuración de conservación de Halden con el contrato; responsable: el responsable de los datos del hospital junto con el gestor de proveedores de FSTS. (3) HIST-01 → VENDOR-SUPPORT, texto claro, no registrado: detenerlo o trasladarlo a un flujo cifrado y registrado; responsable: el responsable de los datos de Agua junto con FSTS Platform. Si alguno de los dos primeros debe comunicarse fuera de FSTS (por ejemplo, como violación de la seguridad de los datos personales) lo decide la función de protección de datos del hospital, no el tecnólogo.
+
+**EX035 — Redacte una entrada del registro.** DF7; origen: tarea de exportación de HIST-01 (no la RTU); destino: punto de acceso de diagnóstico remoto de Kell; clase de datos: telemetría operativa, solo las etiquetas LEVEL_M de PS-09, agregados horarios; cifrado: TLS 1.3; conservación en Kell: 30 días, según una cláusula del contrato; propósito: diagnóstico de fallos de la RTU durante el periodo de soporte; responsable: el jefe de Ingeniería de Agua; conducto: nuevo conducto declarado HIST-01 → punto de acceso de Kell por tcp/443; aprobaciones: responsable de los datos de Agua, FSTS Security; caducidad: 6 meses, renovable tras revisión. La máxima puntuación envía los datos desde un sistema de nivel superior en lugar de dejar que el proveedor alcance la estación.
+
+**EX036 — Amplíe la comprobación.** Añada `APPROVED_PATIENT_DESTS = {"CLIN-GW", "HALDEN-CLOUD"}` y, para cada flujo observado de clase `patient-linked` cuyo destino no esté en ese conjunto, añada la incidencia "patient-linked data to unapproved destination". Tras registrar DF6, la línea CLIN-GW → REPORTS pasa a ser `HIGH DF6 CLIN-GW->REPORTS patient-linked data to unapproved destination` en lugar de «no registrado». Explicación: el registro recoge decisiones; un flujo registrado puede seguir siendo una mala decisión. Registrarlo sin revisión haría que la comprobación se superara mientras los datos de los pacientes siguen en un sistema corporativo de informes que usa el personal de agua.
+
+### Capítulo 13: EX037–EX039
+
+**EX037 — Redacte dos escenarios.** BayTel: «Una avería en una central telefónica de BayTel corta durante ocho horas los enlaces de operador de seis estaciones (de PS-08 a PS-13). Las estaciones almacenan localmente; los operadores pierden las lecturas en vivo del área de suministro de unas 18.000 personas y deben enviar personal a tomar lecturas manuales. Controles existentes: almacenamiento en las estaciones (probado cada trimestre), alertas de silencio de estación (probadas, 8/8), procedimiento de lectura manual (ejercitado el año pasado). Franja de consecuencia 4». Servidor de salto: «El servidor de salto de FSTS se ve comprometido mediante una credencial de administrador robada; el atacante alcanza la administración del retransmisor y de la pasarela del hospital. Consecuencia: posible falsificación de la telemetría para 41.000 personas e interrupción de la pasarela clínica. Controles existentes: MFA (configurada; resistencia al phishing no probada), registro de sesiones (sin probar), alertas de deriva (probadas)». Ambos son concretos y nombran su estado de prueba.
+
+**EX038 — Producto frente a consecuencia.** «R3, el llenado del disco del retransmisor, ocurre con más frecuencia, así que puntúa más cuando multiplicamos lo probable que es por lo grave que es. Pero si ocurre R3, perdemos algunas lecturas durante unas horas y podemos recuperarlas. R2 y R4 podrían dañar a personas: una dosis de cloro errónea o un límite de fármaco erróneo en una bomba de infusión. Multiplicar trata «frecuente y recuperable» igual que «raro y dañino», y no es así como queremos repartir el esfuerzo. Por eso abordamos primero R2 y R4. R3 sigue necesitando una acción, y es barata: corregir este mes el fallo de conservación y configurar una alarma de capacidad más temprana».
+
+**EX039 — Del escenario al trabajo.** Prevención/reducción: (1) acceso de Kell limitado en el tiempo con MFA resistente al phishing; responsable: FSTS Security; evidencia: registros de habilitación y caducidad; (2) registro de las sesiones remotas del proveedor; FSTS Security; evidencia: revisión de una muestra de sesiones; (3) límites de los puntos de consigna de dosificación diseñados en el PLC de PS-07; Ingeniería de Agua; evidencia: registro de la prueba de ingeniería releído en la instalación. Detección: (4) alerta de LANTERN cuando el cloro sale de la banda aprobada o cambia más rápido que un ritmo fijado; monitorización de FSTS; evidencia: lectura de prueba inyectada; (5) comparación de los valores de los puntos de consigna del PLC con una línea base aprobada en cada exportación de ingeniería; Ingeniería de Agua; evidencia: comparación fechada.
 
 <a id="glossary"></a>
 
