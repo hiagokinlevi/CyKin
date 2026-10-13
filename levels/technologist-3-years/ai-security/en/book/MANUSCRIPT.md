@@ -1791,7 +1791,7 @@ Jonas compares the current prompt with a "separated sections" prompt on 200 held
 - Choosing sample sizes after seeing results.
 - Testing on cases used for tuning.
 
-Jonas's study avoids these: the question names prompt, measure and setting; the sample size was set before the run; and only held-out cases were used. Reusing tuning cases would have flattered the separated prompt, and a vague question would have left nothing to decide. These choices are recorded in the study's plan. Each choice is in the study plan, dated before the run, so anyone can check that nothing was changed after seeing the results.
+Jonas's study avoids these: the question names prompt, measure and setting; the sample size was set before the run; and only held-out cases were used. Reusing tuning cases would have flattered the separated prompt, and a vague question would have left nothing to decide. The five seeds and the pinned vendor model version were fixed at the same time. Each choice is in the study plan, dated before the run, so anyone can check that nothing was changed after seeing the results.
 
 ### 24.7 Sharing results inside the company
 
@@ -1924,7 +1924,7 @@ Jonas hands Ask Brightwell to the operations team. In the tabletop, a simulated 
 - Runbooks never rehearsed.
 - Security objectives no one measures.
 
-Jonas's handoff avoided these. Rollback procedures were rehearsed in the tabletop, which is how the slow index rollback came to light, and security objectives are reviewed monthly with service objectives. Without rehearsal, the 40-minute rollback would have been discovered during a real incident. The disable switch came directly from the rehearsal, and rehearsals are now scheduled each quarter with a different on-call engineer each time, so the runbooks are tested by people who did not write them. Objectives are reviewed monthly.
+Jonas's handoff avoided these. Rollback procedures were rehearsed in the tabletop, which is how the slow index rollback came to light, and security objectives are reviewed monthly with service objectives. Without rehearsal, the 40-minute rollback would have been discovered during a real incident. The disable switch came directly from the rehearsal, and rehearsals are now scheduled each quarter with a different on-call engineer each time, so the runbooks are tested by people who did not write them. A missed objective, such as a slow rollback, is given an owner at the next monthly review.
 
 ### Exercises
 
@@ -2008,7 +2008,7 @@ A placement agreement states your supervisor, the systems you may work on, what 
 
 ### 28.2 Typical work
 
-Placements often involve: updating the AI inventory; reviewing a vendor AI feature; adding cases to an evaluation suite; writing a runbook; investigating an alert with a senior colleague. Small, finished tasks build trust faster than ambitious unfinished ones, and they leave something useful behind when you go. Jonas's placement produced a finished task of this kind: a one-page guide on using the approved internal assistant instead of a public chatbot. It was small, but the team adopted it, and it left something useful behind.
+Placements often involve: updating the AI inventory; reviewing a vendor AI feature; adding cases to an evaluation suite; writing a runbook; investigating an alert with a senior colleague. Small, finished tasks build trust faster than ambitious unfinished ones, and they leave something useful behind when you go. Jonas's placement produced a finished task of this kind: a one-page guide on using the approved internal assistant instead of a public chatbot. It said which customer data may go into which tool and how agents request access to the approved assistant.
 
 ### 28.3 Practice log
 
@@ -2028,7 +2028,7 @@ Jonas's placement is with Brightwell's customer-service operations team. He disc
 - Confidential details in logs.
 - Blaming individuals for systemic problems.
 
-Jonas's placement avoided these. He stayed within the agreement, kept customer details out of his log, and treated shadow AI as a gap in tools and guidance rather than individual blame. Reporting individuals would likely have driven the practice underground rather than ending it, and the approved assistant solved the need agents had. Jonas's supervisor reviewed each log entry before it entered his portfolio. The guide named no individuals.
+Jonas's placement avoided these. He stayed within the agreement, kept customer details out of his log, and treated shadow AI as a gap in tools and guidance rather than individual blame. Reporting individuals would likely have driven the practice underground rather than ending it, and the approved assistant solved the need agents had. The approved assistant keeps conversations inside Brightwell's own systems, which is the part of the fix that protects the customer emails. The guide named no individuals.
 
 ### Exercises
 
@@ -2115,7 +2115,7 @@ Gift Card Help's evidence follows this chain: the same-owner requirement leads t
 
 ### 29.4b Supervisor check-ins
 
-Meet your supervisor every two weeks with the latest harness report, the backlog and the change log. Raise blockers early; a capstone that slips quietly is harder to rescue than one whose problems were visible. Jonas brought the harness report, backlog and change log to each check-in. The repeated-transfer finding was raised at the next meeting, and his supervisor agreed that the cap should be fixed before transfers grew further. Each check-in ended with a short written note of decisions and blockers. Raising the repeated-transfer finding early meant the cap was fixed while Gift Card Help's transfer volumes were still small.
+Meet your supervisor every two weeks with the latest harness report, the backlog and the change log. Raise blockers early; a capstone that slips quietly is harder to rescue than one whose problems were visible. Jonas brought the harness report, backlog and change log to each check-in. The repeated-transfer finding was raised at the next meeting, and his supervisor agreed that the cap should be fixed before transfers grew further. Each check-in ended with a short written note of decisions and blockers. The note from that meeting records the cap as a security defect blocking the next increment, matching the backlog entry.
 
 ### 29.5 Worked example (synthetic Brightwell case)
 
