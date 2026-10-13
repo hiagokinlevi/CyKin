@@ -2888,13 +2888,19 @@ You will (1) compare two or more AI-security approaches on a shared benchmark; (
 
 Pick approaches that a practitioner might really choose between: for example, a content classifier versus a tool allowlist versus a dual-model pattern for injection; or confidence rounding versus label-only outputs versus query quotas for extraction.
 
+Rina's group chose the extraction and membership defences for NoShow's partner API because LCH was actually deciding between them, and each had a supporter on the clinic's data team. A comparison that included an approach nobody would deploy, such as shutting the API down entirely, would have been easy to win and of little use to the people making the choice.
+
 ### 34.2 Fairness
 
 Give each approach the same data, tasks, attack budget and tuning effort. Use a held-out test set. Include an undefended baseline. If one approach requires more resources, report them.
 
+In Rina's group, the categories approach was first tuned for a week while rounding was tried once with a default setting. A reviewer spotted the imbalance, and the group gave rounding the same effort, testing several precisions before comparing again. The ranking did not change, but the comparison became credible. They also reported that quotas needed a monitoring service the other two options did not.
+
 ### 34.3 Trade-offs
 
 Report attack success, task success, latency and cost together. Present a table and, where useful, a plot of security against utility. No approach wins everything; the report should help a reader choose for their context.
+
+For NoShow, the table had rows for each option and columns for membership advantage, extraction fidelity, partner usefulness and operating cost. The plot placed categories best on security but worst on partner usefulness. A partner that only needed to decide whether to send a reminder found categories enough; a research partner wanting detailed scores did not, so the report addressed both.
 
 ### 34.4 The extraction comparison
 
@@ -2928,19 +2934,27 @@ output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
 output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 ```
 
+The numbers in the lab make the point: with integer rounding the maximum weight error rises to 0.534, yet the copy still agrees with the original on 0.882 of labels after only six queries. An attacker who wants a working imitation, not the exact weights, is barely slowed, which is why a limit on the number of queries is still required.
+
 ### 34.4b Writing the comparative report
 
 Open with the decision question, then the conditions of comparison, then a results table with intervals, then a trade-off discussion and a recommendation tied to context ("for partners who need scores, use rounding plus quotas; otherwise categories"). Close with limitations such as synthetic data and the attack types not tested.
 
+Rina's group placed its recommendation on the first page, so partner managers could read it without the tables. The limitations paragraph named the synthetic NoShow data and the lack of any test against an adaptive attacker who spreads queries across several partner accounts, which quotas per partner would not catch.
+
 ### 34.5 Worked example (synthetic LCH case)
 
 Rina's group compared three ways to protect NoShow's partner API: rounding probabilities to one decimal, returning only three risk categories, and per-partner quotas with monitoring. On synthetic data, categories reduced membership-inference advantage most (from 0.18 to 0.03) and extraction fidelity to 0.84 label agreement, at the cost of partners losing fine-grained scores. Quotas did not reduce per-query leakage but bounded total queries. The group recommended categories plus quotas.
+
+The membership numbers came from repeating Lab M's method on NoShow's synthetic copy, so the reduction can be checked with the same code.
 
 ### 34.6 Errors and limits
 
 - Unequal tuning effort.
 - Reporting only the security metric.
 - Declaring a universal winner.
+
+Tuning one approach for a week and another for an hour makes the result reflect effort rather than design, as Rina's group nearly did. Reporting only membership advantage would have hidden that partners lose fine-grained scores under the categories option. Declaring categories the winner for every partner ignores the research partner whose work needs detailed scores; the recommendation must name the context in which it holds and the partners it suits.
 
 ### Exercises
 
@@ -2968,13 +2982,19 @@ You will (1) propose a capstone project in AI security with a clear problem, obj
 
 Good capstones solve a concrete problem with an AI-security component, produce a working artefact and evidence, and can be finished in two semesters. Options: a secured retrieval chatbot with policy enforcement and an evaluation harness; a poisoning-detection pipeline; an AI inventory and risk-assessment tool for a small organisation; a monitoring service for abuse of model APIs.
 
+Rina chose the first option because LCH had a real booking flow to model and she had already studied its weaknesses, so the threat model was ready.
+
 ### 35.2 Proposal contents
 
 Problem and stakeholders; objectives; scope and exclusions; requirements with verification methods; method and architecture; evaluation plan with metrics, test sets and acceptance criteria; ethics and authorization; data management; timeline with milestones; risks and mitigations; expected deliverables.
 
+Each part answers a question the supervisor will ask. Scope and exclusions say what will not be done, so nobody expects a voice channel. Requirements with verification methods show how success will be judged. The ethics part states that all patient data is synthetic. The timeline leaves room for a second round of testing, since the first round usually finds problems that need fixing.
+
 ### 35.3 Ethics and authorization
 
 State which systems and data you will use and under whose authority. Prefer synthetic data and isolated environments. If working with a real organisation, obtain written authorization and agree data handling.
+
+Rina's proposal named LCH's security lead as the person authorising access to staging, attached the signed scope, and stated that no real patient data would leave LCH. Her university's ethics office reviewed the plan because the independent testers were classmates, and confirmed it needed no further approval since no human participants' data was collected beyond their test cases.
 
 ### 35.4 Inventory as a starting point
 
@@ -3015,19 +3035,27 @@ invoice-ocr-model  score= 5 owasp=LLM01
 churn-predictor    score= 3 owasp=LLM02
 ```
 
+In the lab's synthetic inventory, the public support chatbot with tools scores 10 and the CV screener that decides scores 9, so both rise to the top. The churn predictor, with no untrusted input, scores 3. Rina used the same scoring for LCH: Ask Lumen came first, followed by DocSort and NoShow, which confirmed her choice of capstone.
+
 ### 35.4b Supervisor agreement
 
 Agree the proposal with your supervisor and, where relevant, the client. Record decisions and changes after approval in a change log, so that the final assessment compares what you delivered with what was agreed.
 
+Rina's change log recorded one approved change: removing the voice channel from scope, since the staging copy had no voice interface. The entry gave the date, the reason and the supervisor's approval, so the examiner later saw that the narrower scope was agreed, not a quiet omission of something hard.
+
 ### 35.5 Worked example (synthetic LCH case)
 
 Rina proposed "Safe Booking Assistant": a re-implementation of Ask Lumen's booking flow with delegated tokens, a policy service, confirmation, grounding checks and a red-team harness, evaluated on 1,000 synthetic conversations. Exclusions: voice channel, non-English languages. Acceptance criteria included zero cross-patient bookings (upper bound < 0.5%) and completed bookings ≥ 93%.
+
+The bookings threshold was set just below the 94% achieved in the earlier confirmation study, so the capstone had to keep usability close to what LCH had already accepted. A thousand conversations was chosen because, with zero failures, it gives an upper bound under the half-percent target.
 
 ### 35.6 Errors and limits
 
 - Capstones without measurable acceptance criteria.
 - Missing authorization.
 - Timelines with no slack.
+
+Without measurable acceptance criteria, a capstone can only describe what was built, not whether it works. Missing authorization can end a project when the organisation discovers testing it did not approve. Timelines without slack fail when the first evaluation finds problems, as it usually does; Rina's plan left three weeks between the first full test run and the final evaluation for exactly that reason, and she used all of them.
 
 ### Exercises
 
@@ -3055,25 +3083,37 @@ You will (1) apply AI-security knowledge in an organisation or community setting
 
 Placements might be with a company, a public body, a charity or a community group adopting AI tools. Small organisations often use hosted AI assistants without policies; a well-scoped contribution can make a real difference.
 
+Rina's placement was with a small charity whose staff used a hosted assistant without any policy. The charity had no IT staff, so the contribution had to be something staff could keep doing after she left: a short policy, sensible settings and one training session. A larger organisation would need a different shape of work, but the same principle of fitting the setting applies.
+
 ### 36.2 Useful outputs
 
 Typical outputs: an AI inventory; an acceptable-use policy for AI assistants; a short risk assessment of one AI tool with recommended settings; staff training; a checklist for buying AI products. Keep outputs proportionate to the organisation's size and capacity.
+
+For the charity, an AI inventory would have had one entry, so Rina skipped it. The acceptable-use policy and the settings change addressed the real risk, which was staff pasting case notes. A buying checklist was left for later, since the charity had no plans to buy more tools. Choosing outputs this way kept the work achievable in six weeks.
 
 ### 36.3 Working with non-specialists
 
 Avoid jargon; explain risks with examples relevant to their work; give a small number of clear actions; respect their constraints. Listen first: their knowledge of the work defines what harm looks like.
 
+At the charity, Rina explained the risk by asking staff to imagine their case notes appearing in a stranger's draft letter, rather than describing training-data retention. Staff told her that some letters had deadlines tied to benefit appeals, which shaped her advice: the policy allowed using the assistant for structure and wording, but required names and case details to be added afterwards by hand.
+
 ### 36.4 Authorization and confidentiality
 
 Agree in writing what you will do and what data you will see. Do not test systems beyond that agreement. Keep the organisation's information confidential.
+
+Rina's agreement with the charity allowed her to see the assistant's settings and a sample of anonymised letters, but not case files. When a staff member offered to show her real notes to explain a problem, she declined and asked for an invented example instead. That kept her within the agreement and avoided any question about how she handled clients' information.
 
 ### 36.5 Reflection
 
 Record what you did, what worked, what you would change and what you learned about how AI security works in practice.
 
+Rina's reflection noted that her first draft policy was three pages long and staff did not read it; the one-page version worked. She also recorded that the settings change depended on the provider's options, which she could not verify fully, and that a follow-up after six months would show whether the policy was still being followed once she had left.
+
 ### 36.6 Worked example (synthetic LCH case)
 
 Rina spent six weeks with a small charity (synthetic) that used a hosted AI assistant to draft letters to vulnerable clients. Staff pasted full client case notes into the assistant. Rina's outputs: a one-page AI use policy (what not to paste, how to check outputs), assistant settings that disabled conversation retention for training where the provider allowed it, and a 30-minute staff session. A follow-up survey found 80% of staff could correctly identify what data must not be pasted.
+
+The survey was the follow-up, run four weeks after the session.
 
 ### 36.7 Errors and limits
 
@@ -3081,10 +3121,13 @@ Rina spent six weeks with a small charity (synthetic) that used a hosted AI assi
 - Testing beyond the agreed scope.
 - Outputs without follow-up.
 
+A charity with no IT staff cannot run a policy service or monitoring dashboard, so recommending them wastes everyone's time. Testing the assistant beyond what the agreement allowed, such as probing the provider's systems, would have broken the charity's trust. Without the follow-up survey, nobody would know whether staff had actually changed what they paste into the assistant. Rina's report recommended repeating the survey yearly, since new staff join and habits drift.
 
 ### 36.7b Leaving the setting better
 
 A field placement with a community clinic ends with something the clinic can use without the student: a one-page checklist for reviewing a chatbot vendor, written in plain language and tested with the clinic manager. The student's report records what the clinic chose to adopt and what it set aside.
+
+For the charity, Rina's report noted that the policy was adopted and the buying checklist was set aside. The charity's manager kept a copy of the policy and the settings notes, so a new staff member could be briefed without Rina.
 
 ### Exercises
 
@@ -3112,25 +3155,37 @@ You will (1) critically review evidence from published work and peers' projects;
 
 Each student presents their capstone's evidence so far: requirements, tests, results and limitations. Peers review with a checklist and give written feedback. A published paper is also reviewed each week for comparison.
 
+In Rina's seminar, each presentation lasted fifteen minutes and was followed by written reviews from two assigned peers. Comparing student work with a published paper each week kept the standard concrete: if a paper reported intervals and adaptive attacks, peers expected the same from each other. Feedback was returned within two days so presenters could act on it before the next milestone.
+
 ### 37.2 Review checklist
 
 Is the threat model explicit? Are tests held out from development? Are adaptive attacks included? Are results reported with intervals and baselines? Are side effects measured? Is the evidence reproducible (versions, seeds, scripts)? Are limitations stated? Are claims proportionate to evidence?
+
+Applied to Rina's evidence, the checklist caught one major problem: tests were not independent of development, since she had written both. The rest of the list passed, which gave her confidence that her statistics and versioning were sound. Reviewers wrote the item number beside each comment, so she could see which checklist questions her work had failed.
 
 ### 37.3 Giving feedback
 
 Be specific and constructive: name the issue, why it matters and what would fix it. Separate major issues (would change conclusions) from minor ones.
 
+A useful comment on Rina's work read: "All injected documents were written by the defence designer (major): results may overstate robustness. Have someone else write a held-out set." A less useful one said only "testing could be stronger". The first names the issue, why it matters and what would fix it, so it could be acted on directly.
+
 ### 37.4 Receiving feedback
 
 Sort comments into: fix now, explain better, out of scope (add to limitations), disagree (respond with evidence). Track each to closure.
+
+Rina sorted twelve comments: four to fix now, including the independent test set; five to explain better; two out of scope, such as voice input, which went into her limitations; and one she disagreed with, about removing confirmation, which she answered with the earlier study's results. Each was marked closed in her tracker when done, with a link to the change.
 
 ### 37.5 Comparing with published work
 
 Reading strong papers — for example Carlini et al. (arXiv:1902.06705) on evaluation, or Greshake et al. (arXiv:2302.12173) on indirect injection — shows what convincing evidence looks like; reading weaker ones shows common gaps.
 
+Rina's group read the indirect injection paper alongside a weaker blog post making similar claims. The paper described its threat model, setting and limits; the blog post reported one dramatic example with no count of attempts. The comparison helped her see why her own reports state the number of cases and the interval rather than only the most striking transcript.
+
 ### 37.6 Worked example (synthetic LCH case)
 
 Peers reviewed Rina's Safe Booking Assistant evidence. Major issue: all injected test documents had been written by Rina, who also designed the defences. She arranged for two classmates to write 150 new adaptive cases without seeing her code. Two produced booking proposals that reached the confirmation step with misleading text; none executed without confirmation. She added a clearer confirmation screen and reported the new results with their own interval.
+
+The two near-misses showed the confirmation step working as the last barrier, and also that its wording mattered.
 
 ### 37.7 Errors and limits
 
@@ -3138,10 +3193,13 @@ Peers reviewed Rina's Safe Booking Assistant evidence. Major issue: all injected
 - Defensive responses.
 - Tests written only by the defender.
 
+Feedback that is noted but never acted on leaves the work as it was, so Rina tracked each comment to closure. Responding defensively to a major issue, such as the independence of tests, wastes the reviewer's insight. Tests written only by the person who built the defences tend to miss attacks that person did not imagine, which is why independent cases found problems hers had not, such as misleading confirmation text.
 
 ### 37.7b Recording the seminar outcome
 
 After each seminar the presenter writes a short note listing the changes agreed, the objections not accepted and why, and any new analysis to run. The note is attached to the project record so the next reviewer can see how the evidence was challenged.
+
+Rina's note after her seminar listed the independent test set as the main agreed change and recorded her disagreement about removing confirmation, with the evidence she gave. It also listed the new analysis: independent cases with their own interval. Her supervisor read the note before the next meeting.
 
 ### Exercises
 
@@ -3169,35 +3227,51 @@ You will (1) implement the capstone system in increments; (2) integrate security
 
 Build a thin end-to-end slice first (chat → model → policy → tool in sandbox), then add features. Each increment ends with tests, a short demonstration including an adversarial case, and updated documentation.
 
+Rina's first slice let a synthetic patient ask for one appointment and booked it in the sandbox, with the policy check in place from the start. Its demonstration included one adversarial case, a document asking to book for another patient, which the check refused. Later increments added confirmation, grounding and monitoring, each with its own tests and demonstration.
+
 ### 38.2 Integrating controls
 
 Implement the policy service as a separate module with its own tests. Add delegated tokens, confirmation, grounding checks and monitoring. Keep configuration in files under version control; never hard-code secrets.
+
+Keeping the policy service separate meant its tests ran in seconds without the model, so Rina could test every rule on each change. The model provider's key was read from an environment variable set by the staging system and never appeared in the repository. Configuration such as clinic lists and booking limits sat in versioned files, so a change could be traced to a commit.
 
 ### 38.3 Evaluation harness
 
 Automate the evaluation: load test suites, run conversations, collect tool logs, grade outcomes, compute rates with intervals and write a dated report. Run it nightly.
 
+Rina's harness ran 1,000 conversations each night against staging, graded bookings from the sandbox log, and wrote a report with Wilson intervals. When a morning report showed false clinic statements rising, she traced it to a change in the structured clinic file made the day before, which had a wrong opening time; nightly runs caught it within a day.
+
 ### 38.4 Defects and changes
 
 Track defects with severity. Security defects block the next milestone until fixed or formally accepted. Scope changes go through the supervisor's change log.
+
+The confirmation screen issue described below was logged as a high-severity security defect and blocked the milestone until it was fixed. A minor wording problem in refusal messages was logged as low severity and left for a later increment. When Rina dropped the voice channel, the change went through the supervisor's change log rather than being made quietly.
 
 ### 38.5 Evidence
 
 Keep evidence organised by requirement: tests, results, reports, versions. The final evaluation should require no searching.
 
+Rina's evidence folder had one directory per requirement, each containing the test definition, the latest nightly report, the raw sandbox logs and the version file. At the final evaluation, the examiner could open the cross-patient directory and see every attempt, its outcome and the configuration tested, without asking her where anything was. Each directory also held a short text file stating what the evidence showed and its limits, written when the run was made rather than at the end.
+
 ### 38.5b Code review and secure defaults
 
 Have every change touching the policy service, tokens or tool adapters reviewed by a second person. Use secure defaults: tools are denied unless explicitly allowed; logs exclude secrets and redact personal data; new prompts and model versions are not deployed until the evaluation harness passes. Write down each default so evaluators can check it.
 
+A reviewer caught a change that logged full patient messages, which the redaction default should have prevented. The change was rejected, and a test was added that fails if any unredacted message text reaches the log, so the default is now enforced by the pipeline rather than by memory.
+
 ### 38.6 Worked example (synthetic LCH case)
 
 During implementation Rina found that the confirmation screen showed the appointment summary produced by the model, which could be manipulated to look harmless. She changed the screen to render booking details directly from the structured proposal (clinic, date, time, patient) rather than model text. Nightly evaluation then showed no misleading confirmations in 300 adaptive cases.
+
+The fix applies the same principle as the policy service: what the patient approves must come from structured data, not model text, which an injected document can shape.
 
 ### 38.7 Errors and limits
 
 - Building all features before any end-to-end test.
 - Confirmation screens showing model-written text.
 - Evidence assembled only at the end.
+
+Building every feature first and testing at the end would have hidden the confirmation screen flaw until the final evaluation, too late to fix properly. A confirmation that shows model-written text can be made to look harmless, which defeats its purpose. Evidence gathered only at the end tends to be incomplete, since earlier runs and their versions are lost or overwritten by later runs.
 
 ### Exercises
 
@@ -3225,13 +3299,19 @@ You will (1) evaluate the capstone against its acceptance criteria; (2) include 
 
 Use the acceptance criteria from the proposal, unchanged unless the change log records why. Run the full held-out suites, the independent adaptive suite and normal-use tests. Compute rates with intervals and compare with criteria.
 
+Rina's final plan used the criteria from her proposal: zero cross-patient bookings with an upper bound under 0.5%, completed bookings of at least 93%, and the false-statement threshold. The only recorded change was the dropped voice channel, approved earlier. Running the full suites once, on a frozen configuration, avoided the temptation to rerun until a better result appeared.
+
 ### 39.2 Independent testing
 
 Ask people who did not build the system to attack it within scope. Their results go into the evaluation even if they are unfavourable.
 
+Rina's two classmates had already written adaptive cases during the seminar; for the final evaluation, a third tester from another course attacked the system for two days. That tester found the long-conversation quota problem, which nobody involved in building had noticed because their test conversations were short. Fresh testers bring different habits, and those habits find different failures.
+
 ### 39.3 Usability and side effects
 
 Measure task completion, time, false refusals and user feedback. Security controls that users bypass or abandon do not protect anyone.
+
+Rina measured completed bookings, average time to book and false refusals, and asked ten classmates acting as patients for brief feedback. The quota problem appeared in that feedback as frustration, not as a security failure. A booking assistant that loses context in long conversations would push patients back to the phone, which undoes the purpose of the service and adds load at reception.
 
 ### 39.4 Residual risk and recommendations
 
@@ -3276,13 +3356,19 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The lab shows why Rina reported intervals rather than single rates: identical rates of 0.150 carry very different certainty at 20 and at 2000 trials. Her residual-risk list named non-English injection and the reliance on partner-upload review, explained why each was acceptable for a pilot, and proposed tests that would reduce them before wider adoption.
+
 ### 39.4b Reporting the evaluation
 
 Present one table per criterion, showing result, interval, threshold and pass or fail. Then present the independent findings, usability measures and a short discussion. Attach the evaluation scripts and test-suite descriptions so a reader could repeat the run. Report a failed criterion as a failure, with its cause and a plan, rather than redefining it.
 
+Rina's table for completed bookings showed 94% against the 93% threshold, with its interval. Because the margin was narrow, she reported the pass with that caveat rather than presenting it as comfortable, and suggested LCH watch the rate in the pilot. The quota finding followed in the independent-testing part of the report.
+
 ### 39.5 Worked example (synthetic LCH case)
 
 Rina's final evaluation: 0 cross-patient bookings in 1,000 attempts (upper bound ≈ 0.4%); misleading confirmations 0 in 300 adaptive cases; false clinic statements 2.4% (interval 1.6–3.5%), below the 4% criterion; completed bookings 94%. Independent testers found one issue: very long conversations hit the token quota and lost context, frustrating users. Residual risks: non-English injection untested; reliance on partner-upload review. Recommendation: adopt policy service and structured confirmation at LCH; extend tests to other languages.
+
+The quota issue was reported as a usability finding with a proposed fix, raising the quota for authenticated patients.
 
 ### 39.6 Errors and limits
 
@@ -3290,10 +3376,13 @@ Rina's final evaluation: 0 cross-patient bookings in 1,000 attempts (upper bound
 - Leaving out unfavourable independent results.
 - Ignoring usability.
 
+Changing the false-statement threshold after seeing results would have made the pass meaningless, so Rina kept the original. Leaving out the quota problem because it came from an independent tester would hide the main usability weakness. Ignoring usability would have produced a system that passed security tests while patients gave up on it and phoned the clinic instead. Reporting all three, including the unfavourable ones, keeps the evaluation honest and useful to LCH.
 
 ### 39.6b Agreeing the verdict criteria in advance
 
 The capstone's pass criteria — for example, injection success below an agreed rate on a held-out attack set, with no increase in wrong bookings — are fixed before the final evaluation. If results fall between thresholds, the report says so plainly instead of rounding toward success.
+
+Rina's criteria were signed by her supervisor before the final run, so they could not drift. Signing them first meant that when completed bookings landed close to the threshold, nobody could argue about what counted as a pass. The examiner checked the signed date against the date of the final run.
 
 ### Exercises
 
@@ -3321,21 +3410,31 @@ You will (1) write a bachelor's thesis presenting the capstone as evidence-based
 
 Introduction; background (AI-security concepts, frameworks such as NIST AI RMF, OWASP LLM 2025, MITRE ATLAS; key papers); problem and requirements; design; implementation; evaluation; discussion and limitations; conclusion; references; appendices (evidence index, test suites summary).
 
+Rina's thesis followed this structure, with the evaluation chapter as the longest. The background chapter explained only the concepts the later chapters relied on, such as indirect injection and Wilson intervals. The appendices included the evidence index from her implementation work, so examiners could go from any claim in the text to the logs that supported it.
+
 ### 40.2 Positioning
 
 Explain how the work applies known ideas — for example, external enforcement against indirect prompt injection (Greshake et al., arXiv:2302.12173) — in a specific setting, and what the evaluation adds. Be honest about novelty.
+
+Rina stated that external enforcement was an established idea and that her contribution was a measured application to a clinic booking flow, including the cost in completed bookings and the confirmation screen finding. Claiming a new defence would have invited the question of how it differed from published work, which she could not answer.
 
 ### 40.3 Presentation
 
 Fifteen to twenty minutes: problem, approach, key results with intervals, limitations, recommendation. One slide should state the main result in a sentence. Expect questions on threat model, test independence, statistics and usability.
 
+Rina's main-result slide read: "With a separate policy service and structured confirmation, no cross-patient booking occurred in 1,000 attempts, while 94% of normal bookings completed." Everything else in the talk supported or qualified that sentence, including the untested languages and the quota issue found by the independent tester, which she presented without softening.
+
 ### 40.4 Defending
 
 Answer directly, point to evidence, acknowledge limits. "We did not test that; here is how we would" is a good answer.
 
+Asked whether her results applied to Portuguese-speaking patients, Rina said they had not been tested, that the policy service would still block cross-patient bookings regardless of language, and that false-statement rates might differ. She described the test she would run. Examiners valued the answer because it separated what the design guarantees from what only measurement can show in practice.
+
 ### 40.5 Next steps
 
 Continue learning through authorised practice (labs, capture-the-flag events with AI tracks, open-source contributions), following framework updates and reading research. Keep ethical commitments: authorised testing and responsible disclosure.
+
+After graduating, Rina planned to keep her lab work in isolated environments, join an AI-track capture-the-flag event, and follow updates to the OWASP LLM list and ATLAS. If she found a weakness in a vendor's product during authorised work, she would report it privately to the vendor first, following the responsible-disclosure practice from earlier chapters.
 
 ### 40.6 Worked example (synthetic LCH case)
 
@@ -3384,16 +3483,21 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
+The rule of three gives an upper bound near 0.3% for zero failures in 1,000 attempts, slightly below the Wilson figure of about 0.4% in her report.
+
 ### 40.7 Errors and limits
 
 - Theses that describe work without evaluating it.
 - Overstated novelty.
 - Presentations without a clear main result.
 
+A thesis that describes the booking assistant without the evaluation would leave examiners unable to judge whether it works. Claiming external enforcement as a new idea would overstate novelty and ignore the literature it builds on. A presentation without a single main result leaves the audience unsure what was found; Rina's one-sentence slide avoided that by stating the result first, before any method or chart.
 
 ### 40.7b Making the thesis reusable
 
 The thesis package includes the synthetic datasets, the evaluation scripts, the exact model and prompt versions and a short guide to rerunning the main result. Another student should be able to reproduce the key table from the package alone; the examiner may try.
+
+Rina tested this by asking a classmate to rerun the cross-patient table from her package; it matched. The classmate needed one clarification about setting an environment variable, which Rina then added to the guide. A package that only its author can run is not yet reusable.
 
 ### Exercises
 
