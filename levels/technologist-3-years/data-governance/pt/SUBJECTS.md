@@ -1,44 +1,44 @@
-# Subjects and book chapters — Data governance / Technologist course / Português
+# Disciplinas e capítulos do livro — Governança de dados / Tecnólogo / Português
 
-**One course, one principal book, 30 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Um curso, um livro principal, 30 disciplinas e capítulos, uma skill do curso.** Apenas os links marcados como Rascunho levam a conteúdo didático escrito; um capítulo planejado é um resumo, não uma lição concluída.
 
-This is an English working index awaiting translation and review for this language.
+Edição em português do Brasil, escrita a partir da edição de referência em inglês; revisão técnica e linguística pendente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Início](../../../../README.md) · [Trilha de estudo completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md)
 
-**Course 072 of 207.** Read chapters 01–30 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 072 de 207.** Leia os capítulos 01–30 de cima para baixo. Para cada capítulo, use o link Rascunho; o link numerado do plano é apenas um resumo. Tente os exercícios antes de consultar as resoluções no fim do livro. A última linha leva ao próximo curso neste mesmo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plano | Disciplina | Horas | Páginas A4 previstas | Meta de exercícios | Estado didático | Próximo passo |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Computing systems | 80 | 30 | 3 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Networks and internet services | 80 | 30 | 3 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Programming foundations | 80 | 30 | 3 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 1 | [04](book/PLAN.md#ch-04) | Data models | 80 | 30 | 3 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Security literacy | 80 | 30 | 3 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Operating systems and virtualization | 80 | 30 | 3 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Identity and access foundations | 80 | 30 | 3 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Security architecture basics | 80 | 30 | 3 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Evidence and measurement | 80 | 30 | 3 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Data governance: orientation | 80 | 30 | 3 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Data governance: assets and context | 80 | 30 | 3 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Data governance: data flows | 80 | 30 | 3 | Planned | [13 · Plan](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Data governance: risk scenarios | 80 | 30 | 3 | Planned | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Data governance: methods I | 80 | 30 | 3 | Planned | [15 · Plan](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Data governance: guided lab | 80 | 30 | 3 | Planned | [16 · Plan](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Data governance: methods II | 80 | 30 | 3 | Planned | [17 · Plan](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Data governance: tooling | 80 | 30 | 3 | Planned | [18 · Plan](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Data governance: controls | 80 | 30 | 3 | Planned | [19 · Plan](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Data governance: monitoring | 80 | 30 | 3 | Planned | [20 · Plan](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Data governance: troubleshooting | 80 | 30 | 3 | Planned | [21 · Plan](book/PLAN.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Data governance: service integration | 80 | 30 | 3 | Planned | [22 · Plan](book/PLAN.md#ch-22) |
-| 5 | [22](book/PLAN.md#ch-22) | Data governance: automation | 80 | 30 | 3 | Planned | [23 · Plan](book/PLAN.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Data governance: evaluation | 80 | 30 | 3 | Planned | [24 · Plan](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Applied research methods | 80 | 30 | 3 | Planned | [25 · Plan](book/PLAN.md#ch-25) |
-| 5 | [25](book/PLAN.md#ch-25) | Team project studio | 80 | 30 | 3 | Planned | [26 · Plan](book/PLAN.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Data governance: operational handoff | 80 | 30 | 3 | Planned | [27 · Plan](book/PLAN.md#ch-27) |
-| 6 | [27](book/PLAN.md#ch-27) | Deployment and validation | 80 | 30 | 3 | Planned | [28 · Plan](book/PLAN.md#ch-28) |
-| 6 | [28](book/PLAN.md#ch-28) | Field practice | 80 | 30 | 3 | Planned | [29 · Plan](book/PLAN.md#ch-29) |
-| 6 | [29](book/PLAN.md#ch-29) | Capstone build | 80 | 30 | 3 | Planned | [30 · Plan](book/PLAN.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Capstone assessment | 80 | 30 | 3 | Planned | [Course 073 →](../../privacy-data-protection/pt/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Começando no Eastgate | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Dados em uma associação habitacional | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Higiene de planilhas e arquivos | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
+| 1 | [04](book/PLAN.md#ch-04) | SQL para verificações de governança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 1 | [05](book/PLAN.md#ch-05) | Fundamentos de scripts em Python | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Formatos e troca de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Conceitos de qualidade de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Validando ordens de reparo | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Corrigindo problemas na origem | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Códigos de referência e tabelas de consulta | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Plano](book/PLAN.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Registros de inquilinos e duplicatas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Metadados e dicionários de dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Linhagem para relatórios | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Papéis na prática | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Políticas e procedimentos | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Controle de acesso na prática | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Pseudonimização para extrações | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Solicitações de titulares | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Retenção e descarte | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plano](book/PLAN.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Dados das prestadoras | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
+| 5 | [21](book/PLAN.md#ch-21) | Medindo o desempenho das prestadoras | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
+| 5 | [22](book/PLAN.md#ch-22) | Painéis e relatórios | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plano](book/PLAN.md#ch-23) |
+| 5 | [23](book/PLAN.md#ch-23) | Relatórios regulatórios | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plano](book/PLAN.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Registros de problemas e causas-raiz | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plano](book/PLAN.md#ch-25) |
+| 5 | [25](book/PLAN.md#ch-25) | Incidentes com dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plano](book/PLAN.md#ch-26) |
+| 6 | [26](book/PLAN.md#ch-26) | Automação e agendamento | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plano](book/PLAN.md#ch-27) |
+| 6 | [27](book/PLAN.md#ch-27) | Documentação e passagem de trabalho | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plano](book/PLAN.md#ch-28) |
+| 6 | [28](book/PLAN.md#ch-28) | Estágio | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plano](book/PLAN.md#ch-29) |
+| 6 | [29](book/PLAN.md#ch-29) | Projeto aplicado | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plano](book/PLAN.md#ch-30) |
+| 6 | [30](book/PLAN.md#ch-30) | Revisão do projeto e próximos passos | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-30)) | [Curso 073 →](../../privacy-data-protection/pt/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
