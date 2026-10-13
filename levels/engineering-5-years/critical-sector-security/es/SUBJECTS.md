@@ -32,10 +32,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 4 | [20](book/PLAN.md#ch-20) | Infraestructura crítica y seguridad sectorial: contexto de ingeniería | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-20) | [21 · Borrador](book/MANUSCRIPT.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Infraestructura crítica y seguridad sectorial: requisitos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-21) | [22 · Borrador](book/MANUSCRIPT.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-22) | [23 · Borrador](book/MANUSCRIPT.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-23) | [24 · Plan](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Infraestructura crítica y seguridad sectorial: métodos I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plan](book/PLAN.md#ch-25) |
-| 5 | [25](book/PLAN.md#ch-25) | Taller de diseño I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plan](book/PLAN.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Infraestructura crítica y seguridad sectorial: alternativas de arquitectura | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plan](book/PLAN.md#ch-27) |
+| 5 | [23](book/PLAN.md#ch-23) | Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-23) | [24 · Borrador](book/MANUSCRIPT.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Infraestructura crítica y seguridad sectorial: métodos I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-24) | [25 · Borrador](book/MANUSCRIPT.md#ch-25) |
+| 5 | [25](book/PLAN.md#ch-25) | Taller de diseño I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-25) | [26 · Borrador](book/MANUSCRIPT.md#ch-26) |
+| 6 | [26](book/PLAN.md#ch-26) | Infraestructura crítica y seguridad sectorial: alternativas de arquitectura | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-26) | [27 · Plan](book/PLAN.md#ch-27) |
 | 6 | [27](book/PLAN.md#ch-27) | Infraestructura crítica y seguridad sectorial: diseño de controles | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plan](book/PLAN.md#ch-28) |
 | 6 | [28](book/PLAN.md#ch-28) | Infraestructura crítica y seguridad sectorial: implementación I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plan](book/PLAN.md#ch-29) |
 | 6 | [29](book/PLAN.md#ch-29) | Infraestructura crítica y seguridad sectorial: medición | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plan](book/PLAN.md#ch-30) |
