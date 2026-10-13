@@ -13,10 +13,10 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [01](book/PLAN.md#ch-01) | Integridade e métodos avançados de pesquisa | 200 | 75 | 7 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Infraestrutura crítica e segurança setorial: fronteira da pesquisa | 200 | 75 | 7 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
 | 2 | [03](book/PLAN.md#ch-03) | Proposta de contribuição original | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Replicação da linha de base e piloto | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Plano](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Estudo principal e validação independente | 200 | 75 | 6 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plano](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Crítica de pares e revisão | 200 | 75 | 6 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plano](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Síntese da tese e arquivo de reprodutibilidade | 200 | 75 | 6 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Defesa e plano de publicação | 200 | 75 | 6 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | End of route |
+| 2 | [04](book/PLAN.md#ch-04) | Replicação da linha de base e piloto | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Estudo principal e validação independente | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | Crítica de pares e revisão | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Síntese da tese e arquivo de reprodutibilidade | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Defesa e plano de publicação | 200 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-08) | End of route |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
