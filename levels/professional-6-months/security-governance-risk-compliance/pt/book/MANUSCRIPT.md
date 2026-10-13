@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso Profissional
 
 - Idioma: português do Brasil (`pt`); curso 028, curso profissional (6 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em atividade que migram para funções de GRC e precisam de métodos práticos para riscos, achados, testes de controles e garantia de fornecedores.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios comparam a autoavaliação com a revisão independente, calculam tamanhos de amostra com zero desvios e medem a idade dos achados abertos, sempre sobre dados sintéticos. O relatório SOC 2 revisado é fictício e não é uma atestação; as normas são citadas pela edição e parafraseadas, e nada aqui é aconselhamento jurídico. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27005:2022 e 27001:
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -283,11 +281,277 @@ As metas podem estimular encerramentos falsos. Os comitês podem não agir.
 - **EX029 — Abertura do relatório.** Por onde começa o relatório de Lena? *Rubrica:* 3 = pelos achados altos em atraso;; 2 = atrasados;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Caminho de escalonamento.** Para onde os achados em atraso são escalados? *Rubrica:* 3 = para o executivo a quem o dono responde;; 2 = executivo;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Governança, riscos e compliance de segurança: controles e verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher tamanhos de amostra para testar controles; (2) testar a operação de um controle; (3) enunciar as conclusões com seus limites.
+
+### 7.1 Tamanhos de amostra
+
+Lena precisa testar se a autenticação de novos favorecidos da Marston funciona em todos os pagamentos. Testar todos os pagamentos é inviável, então ela amostra. O laboratório calcula a menor amostra sem desvios que sustenta cada taxa de desvio tolerável com noventa e cinco por cento de confiança. Para dez por cento, bastam vinte e nove itens; para cinco por cento, cinquenta e nove; para três por cento, noventa e nove. Ela aprende que conclusões mais apertadas exigem amostras maiores, e que a taxa tolerável deve refletir a importância do controle. Cinquenta e nove é o tamanho que ela vai usar para a autenticação de novos favorecidos na seção seguinte.
+
+### Laboratório — Tamanhos de amostra com zero desvios para três taxas toleráveis
+
+```python
+"""Smallest zero-deviation sample whose 95% upper bound meets a tolerable rate: (1-t)^n <= 0.05."""
+from math import ceil, log
+for t in (0.10, 0.05, 0.03):
+    n = ceil(log(0.05)/log(1-t)); print(f"tolerable {t:.0%}: sample {n} with no deviations")
+```
+
+Execute com `python3 lab_n.py`. Saída verificada:
+
+```text
+tolerable 10%: sample 29 with no deviations
+tolerable 5%: sample 59 with no deviations
+tolerable 3%: sample 99 with no deviations
+```
+
+### 7.2 Testar
+
+Como a autenticação de novos favorecidos protege o dinheiro dos associados, Lena escolhe uma taxa tolerável de cinco por cento e sorteia cinquenta e nove pagamentos a novos favorecidos ao longo do trimestre. Para cada um, verifica se o log de autenticação mostra um segundo fator bem-sucedido antes do pagamento. Os cinquenta e nove mostram. Ela registra o método de amostragem, os itens selecionados, as verificações e os resultados, para que outra pessoa possa repetir o teste. O Sr. Reyes observa que o sorteio ao longo do trimestre inteiro importa, porque uma amostra de uma única semana poderia deixar de fora um período em que o controle falhou.
+
+### 7.3 Conclusões
+
+Lena conclui que, com noventa e cinco por cento de confiança, o controle falhou em no máximo cinco por cento dos pagamentos a novos favorecidos durante o trimestre. Ela anota os limites: o teste cobre só o canal do aplicativo, e não os pagamentos nas agências, e verifica que a autenticação aconteceu, e não que ela resistiria a todos os ataques. Aprende que conclusões claras, com limites declarados, valem mais do que afirmações amplas de que o controle funciona. Os pagamentos nas agências precisariam de uma amostra separada antes que se pudesse afirmar algo sobre todos os pagamentos a novos favorecidos.
+
+### Exemplo resolvido
+
+Lena calcula 29, 59 e 99 como tamanhos de amostra com zero desvios, testa 59 pagamentos sem desvios e enuncia uma conclusão delimitada.
+
+> **Caso sintético.** Os pagamentos e os resultados são sintéticos.
+
+### Erros e limites
+
+A amostragem aleatória deixa passar abusos direcionados. Os logs podem estar incompletos.
+
+### Exercícios
+
+- **EX031 — Amostra de cinco por cento.** Quantos itens sem desvios sustentam uma taxa tolerável de 5%? *Rubrica:* 3 = cinquenta e nove;; 2 = 59;; 1 = 29;; 0 = nenhuma.
+- **EX032 — Amostra de três por cento.** Quantos são necessários para 3%? *Rubrica:* 3 = noventa e nove;; 2 = 99;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Escolha da taxa.** Por que escolher aqui uma taxa tolerável de 5%? *Rubrica:* 3 = o controle protege o dinheiro dos associados;; 2 = importância;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Verificação feita.** O que Lena verificou em cada pagamento? *Rubrica:* 3 = um segundo fator bem-sucedido antes do pagamento, no log;; 2 = verificação do log;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Limites do teste.** Cite um limite da conclusão. *Rubrica:* 3 = cobre só o canal do aplicativo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Governança, riscos e compliance de segurança: análise de caso supervisionada
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um caso de governança sob supervisão; (2) identificar falhas de controle e de governança; (3) recomendar melhorias proporcionais.
+
+### 8.1 O caso
+
+O Sr. Reyes entrega a Lena um caso sintético de uma cooperativa de crédito congênere. Um fornecedor que administrava a plataforma de cartões sofreu uma violação, expondo dados de cartão de alguns associados. A cooperativa tinha um contrato com cláusulas de segurança e recebia um certificado anual, mas ninguém revisava o relatório de garantia do fornecedor, que apontava exceções na gestão de acessos. Depois da violação, o regulador perguntou por que as exceções não tinham sido acompanhadas. As exceções não lidas na gestão de acessos são exatamente o tipo de alerta que uma revisão do relatório de garantia teria pegado.
+
+### 8.2 Análise
+
+Lena identifica falhas em vários níveis. No nível do controle, a gestão de acessos do fornecedor tinha fraquezas conhecidas. No nível do processo, os relatórios de garantia eram recebidos, mas não lidos. No nível da governança, ninguém era dono do risco de fornecedores, e o conselho nunca viu esse risco relatado. Ela observa que o padrão espelha a lacuna da própria Marston na gestão de fornecedores, encontrada na autoavaliação. Aprende que os casos valem mais quando revelam padrões relevantes para a própria organização. A maior diferença da autoavaliação da Marston, a gestão de fornecedores com um vírgula trinta e três, vira por isso o foco de suas recomendações.
+
+### 8.3 Recomendações
+
+Lena recomenda que a Marston designe um dono para o risco de fornecedores, revise os relatórios de garantia dos fornecedores críticos com um checklist que destaque as exceções, acompanhe as exceções como achados e relate o risco de fornecedores ao conselho duas vezes por ano. Ela mantém as recomendações proporcionais ao porte da Marston. O Sr. Reyes pergunta como ela mediria o sucesso; ela propõe acompanhar a proporção de fornecedores críticos com relatórios revisados e o tempo de acompanhamento das exceções. As duas medidas podem ser relatadas na atualização semestral sobre o risco de fornecedores ao conselho.
+
+### Exemplo resolvido
+
+Lena analisa a violação num fornecedor de uma congênere, encontra falhas nos níveis de controle, processo e governança e recomenda melhorias proporcionais, com medidas.
+
+> **Caso sintético.** O caso é sintético.
+
+### Erros e limites
+
+Casos isolados podem não se generalizar. A visão retrospectiva faz as falhas parecerem óbvias.
+
+### Exercícios
+
+- **EX036 — Gatilho do caso.** O que motivou a pergunta do regulador? *Rubrica:* 3 = exceções não revisadas no relatório de garantia do fornecedor;; 2 = exceções;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Falha de processo.** Qual foi a falha no nível do processo? *Rubrica:* 3 = relatórios de garantia recebidos, mas não lidos;; 2 = não lidos;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Falha de governança.** Qual foi a falha no nível da governança? *Rubrica:* 3 = ninguém era dono do risco de fornecedores e o conselho nunca o viu;; 2 = propriedade;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Acompanhamento das exceções.** Como as exceções dos fornecedores devem ser tratadas? *Rubrica:* 3 = acompanhadas como achados;; 2 = achados;; 1 = ignoradas;; 0 = nenhuma.
+- **EX040 — Medida de sucesso.** Dê uma medida de sucesso que Lena propôs. *Rubrica:* 3 = proporção de fornecedores críticos com relatórios revisados;; 2 = medida;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Comunicação, ética e relatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever relatórios de governança para executivos e conselhos; (2) comunicar más notícias com honestidade; (3) lidar com pressões de forma ética.
+
+### 9.1 Relatórios ao conselho
+
+Lena redige o relatório trimestral de segurança da Marston ao conselho. Ele começa pelas decisões necessárias e segue com os principais riscos diante do apetite, os achados significativos e seu status, os incidentes e as lições aprendidas, e o risco de fornecedores. Usa linguagem simples e se limita a quatro páginas. Cada risco mostra uma tendência e um dono. Ela aprende que os relatórios ao conselho devem apoiar a supervisão: os conselheiros precisam saber o que está dando errado e o que se pede que decidam. Um conselheiro que leia só a primeira página ainda deve saber que decisões estão sendo pedidas ao conselho.
+
+### 9.2 Más notícias
+
+O relatório precisa incluir a fraqueza na gestão de fornecedores. Um executivo sugere descrevê-la como uma oportunidade de melhoria, e não como uma fraqueza. Lena explica que o conselho precisa de um retrato fiel, e que suavizar a linguagem poderia enganar conselheiros que têm deveres legais de supervisão. Ela aceita apresentar a questão junto com o plano de remediação e o progresso. Aprende que um enquadramento honesto, acompanhado de um plano, preserva a confiança melhor do que o eufemismo. Apresentar a fraqueza com seu plano de remediação permite ao conselho julgar o progresso, em vez de apenas tomar conhecimento de um problema.
+
+### 9.3 Ética
+
+Mais tarde, um gerente pede a Lena que adie o registro de um achado para depois da visita do regulador. Ela recusa, explicando que o achado precisa ser registrado quando identificado e que adiá-lo enganaria o regulador. Oferece-se para ajudar o gerente a preparar um plano de remediação para apresentar junto com o achado. Ela aprende que a ética profissional em GRC muitas vezes significa resistir a pequenas pressões para moldar o registro, e que oferecer ajuda torna a recusa mais fácil de aceitar. Registrar o achado quando identificado também protege o gerente, já que a descoberta posterior do adiamento abalaria a confiança do regulador.
+
+### Exemplo resolvido
+
+Lena escreve um relatório ao conselho centrado em decisões, apresenta uma fraqueza com honestidade e com um plano, e se recusa a adiar o registro de um achado.
+
+> **Caso sintético.** Os cenários são sintéticos.
+
+### Erros e limites
+
+Relatórios honestos podem desgastar relações. O engajamento dos conselhos varia.
+
+### Exercícios
+
+- **EX041 — Abertura do relatório.** Por onde começa o relatório de Lena ao conselho? *Rubrica:* 3 = pelas decisões necessárias;; 2 = decisões;; 1 = riscos;; 0 = nenhuma.
+- **EX042 — Risco de suavizar.** Por que não chamar a fraqueza de oportunidade de melhoria? *Rubrica:* 3 = poderia enganar conselheiros com deveres de supervisão;; 2 = honestidade;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Enquadramento honesto.** Como Lena apresentou a fraqueza? *Rubrica:* 3 = com o plano de remediação e o progresso;; 2 = plano;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Pedido de adiamento.** O que um gerente pediu a Lena? *Rubrica:* 3 = adiar o registro de um achado para depois da visita do regulador;; 2 = adiar;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Ajuda na recusa.** O que Lena ofereceu em troca? *Rubrica:* 3 = ajuda para preparar um plano de remediação;; 2 = ajuda;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Governança, riscos e compliance de segurança: qualidade e solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir a qualidade do processo de achados; (2) identificar problemas de envelhecimento; (3) investigar por que os achados empacam.
+
+### 10.1 Envelhecimento
+
+Lena verifica há quanto tempo os achados abertos estão pendentes em relação às metas de sua severidade. O laboratório examina oito achados abertos. Dos três altos, dois passaram da meta de trinta dias, com quarenta e oito e noventa e cinco dias. Dos três médios, um passou dos noventa dias, com cento e trinta. Dos dois baixos, um passou dos cento e oitenta dias, com duzentos. Quatro dos oito achados estão em atraso, metade de todos os itens abertos. O envelhecimento sozinho não explica por que esses quatro empacaram, e por isso ela se volta em seguida para os donos.
+
+### Laboratório — Envelhecimento dos achados abertos por severidade
+
+```python
+"""Ageing of open audit findings by severity (synthetic Marston data, days open)."""
+f = [("high", 12), ("high", 95), ("medium", 40), ("medium", 130), ("medium", 75), ("low", 200), ("low", 15), ("high", 48)]
+lim = {"high": 30, "medium": 90, "low": 180}
+for s in ("high", "medium", "low"):
+    a = [d for x, d in f if x == s]; over = [d for d in a if d > lim[s]]
+    print(f"{s}: open {len(a)}, past {lim[s]}-day target {len(over)} {over}")
+print(f"total open {len(f)}; overdue {sum(d > lim[s] for s, d in f)}")
+```
+
+Execute com `python3 lab_age.py`. Saída verificada:
+
+```text
+high: open 3, past 30-day target 2 [95, 48]
+medium: open 3, past 90-day target 1 [130]
+low: open 2, past 180-day target 1 [200]
+total open 8; overdue 4
+```
+
+### 10.2 Por que os achados empacam
+
+Lena entrevista os donos dos quatro achados em atraso. O achado alto de noventa e cinco dias depende de uma mudança no fornecedor, que este não priorizou. O achado alto de quarenta e oito dias tem uma correção pronta, à espera de uma janela de mudança. O dono do achado médio saiu da Marston e ninguém o assumiu. O achado baixo foi considerado sem importância e esquecido. Ela aprende que os dados de envelhecimento mostram onde olhar, mas as conversas revelam as causas, que são diferentes em cada achado. O achado médio órfão, por exemplo, precisa de uma correção de processo, enquanto a questão do fornecedor precisa de pressão contratual.
+
+### 10.3 Correções
+
+Lena propõe correções específicas: escalar a questão do fornecedor pela gestão de contratos, agendar uma janela de mudança extra para a correção pronta, reatribuir automaticamente os achados órfãos quando os donos saem e revisar os achados baixos a cada trimestre, para que sejam corrigidos ou formalmente aceitos. Ela também sugere acrescentar o motivo do atraso a cada achado em atraso no relatório ao comitê. Aprende que melhorar a qualidade do processo significa tratar causas distintas, em vez de aplicar um único empurrão genérico. Os motivos de atraso acrescentados também permitem ao comitê ver se a mesma causa se repete.
+
+### Exemplo resolvido
+
+Lena encontra quatro de oito achados em atraso, descobre quatro causas diferentes nas entrevistas e propõe uma correção específica para cada uma.
+
+> **Caso sintético.** Os achados e as causas são sintéticos.
+
+### Erros e limites
+
+Números pequenos. As entrevistas podem ser defensivas.
+
+### Exercícios
+
+- **EX046 — Contagem de atrasados.** Quantos achados abertos estavam em atraso? *Rubrica:* 3 = quatro de oito;; 2 = 4/8;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Altos em atraso.** Que achados altos estavam em atraso? *Rubrica:* 3 = os de 48 e 95 dias;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Causa do órfão.** Por que o achado médio empacou? *Rubrica:* 3 = o dono saiu e ninguém o assumiu;; 2 = órfão;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Correção dos órfãos.** Como os achados órfãos serão evitados? *Rubrica:* 3 = reatribuição automática quando os donos saem;; 2 = reatribuir;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Correção dos baixos.** Como os achados baixos devem ser tratados? *Rubrica:* 3 = revisados por trimestre, para corrigir ou aceitar formalmente;; 2 = trimestral;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Laboratório supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma revisão de garantia supervisionada de um fornecedor sintético; (2) ler um relatório de garantia com olhar crítico; (3) registrar os achados.
+
+### 11.1 A tarefa
+
+No laboratório supervisionado, Lena revisa um relatório SOC 2 tipo 2 sintético de um fornecedor fictício de processamento de cartões. O Sr. Reyes pede que ela determine se o relatório cobre os serviços que a Marston usa, se o período é atual, que exceções foram apontadas e que controles complementares a própria Marston precisa operar. Ela usa um checklist baseado nas categorias dos trust services criteria da AICPA, sem tratar o relatório sintético como uma atestação real. O Sr. Reyes acrescenta que cada uma dessas perguntas muda quanto a Marston pode confiar no relatório, então nenhuma pode ser pulada.
+
+### 11.2 Ler com olhar crítico
+
+Lena descobre que o relatório cobre o serviço de processamento de cartões, mas exclui o módulo de monitoramento de fraudes que a Marston também usa. O período terminou há nove meses. Aparecem duas exceções: a remoção atrasada dos acessos de desligados e uma varredura trimestral de vulnerabilidades não realizada. O relatório lista os controles complementares da entidade usuária (CUECs), entre eles o de que a Marston deve revisar o acesso dos próprios usuários ao portal do fornecedor. Ela observa que a Marston nunca fez essa revisão. Essa revisão do portal é um controle complementar da entidade usuária, então a lacuna está na Marston, e não no fornecedor.
+
+### 11.3 Achados
+
+Lena registra os achados: o módulo de fraudes está fora do escopo do relatório, então é preciso uma garantia separada; o período está envelhecendo, então deve ser pedida uma bridge letter; as duas exceções precisam de acompanhamento com o fornecedor; e a Marston precisa começar a revisar os próprios usuários do portal. O Sr. Reyes confirma a análise e observa que os controles complementares costumam ser esquecidos porque as organizações supõem que o fornecedor cuida de tudo. Cada um desses quatro itens é então registrado no seu fluxo de achados, com dono, severidade e data-alvo.
+
+### Exemplo resolvido
+
+Lena revisa um relatório SOC 2 sintético e encontra uma lacuna de escopo, um período envelhecido, duas exceções e um controle complementar nunca executado.
+
+> **Caso sintético.** O relatório e o fornecedor são sintéticos; os trust services criteria da AICPA são reais; isto não é uma atestação.
+
+### Erros e limites
+
+Os relatórios têm escopo limitado. As bridge letters dão garantia limitada.
+
+### Exercícios
+
+- **EX051 — Lacuna de escopo.** O que estava fora do escopo do relatório? *Rubrica:* 3 = o módulo de monitoramento de fraudes;; 2 = módulo de fraudes;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Período envelhecido.** Por que pedir uma bridge letter? *Rubrica:* 3 = o período do relatório terminou há nove meses;; 2 = envelhecimento;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Exceções.** Que duas exceções o relatório apontou? *Rubrica:* 3 = remoção atrasada de desligados e uma varredura de vulnerabilidades não realizada;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Controle complementar.** Que controle complementar a Marston nunca tinha executado? *Rubrica:* 3 = revisar o acesso dos próprios usuários ao portal do fornecedor;; 2 = revisão do portal;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Erro comum.** Por que os controles complementares costumam ser esquecidos? *Rubrica:* 3 = as organizações supõem que o fornecedor cuida de tudo;; 2 = suposição;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Portfólio de prática e revisão final
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um portfólio de prática; (2) refletir sobre as competências adquiridas; (3) planejar os próximos passos na prática de GRC.
+
+### 12.1 Portfólio
+
+Lena monta seu portfólio: o mapa de partes interessadas e a declaração de finalidade, a avaliação de riscos do aplicativo, a comparação das autoavaliações, o fluxo de achados e a análise de envelhecimento, o teste de controle por amostragem, o relatório ao conselho e a revisão do relatório do fornecedor. Para cada item, escreve uma nota curta sobre o que fez, que evidências o sustentam e o que aprendeu. Ela remove quaisquer dados reais de associados ou de funcionários, mantendo apenas material sintético ou anonimizado. Cada nota liga um artefato ao capítulo em que foi produzido, para que os avaliadores possam seguir seu raciocínio.
+
+### 12.2 Revisão final
+
+O Sr. Reyes e um segundo avaliador revisam o portfólio. Perguntam como ela lidaria com um regulador que questionasse o tamanho da sua amostra; ela explica a taxa tolerável e a confiança e se oferece para ampliar a amostra, se necessário. Perguntam o que ela achou mais difícil; ela responde que foi resistir às pressões para suavizar os relatórios mantendo boas relações. Eles a julgam competente e destacam sua força em ligar as evidências às conclusões. A pergunta sobre a amostra mostra por que ela registrou a taxa tolerável e a confiança ao fazer o teste no capítulo 7.
+
+### 12.3 Próximos passos
+
+Lena planeja seus próximos passos: assumir a responsabilidade pelo risco de fornecedores na Marston, aprofundar seu conhecimento da ISO/IEC 27001:2022 (ABNT NBR ISO/IEC 27001:2022) para apoiar uma possível certificação e ser mentora de uma colega júnior no manuseio de evidências. Ela se compromete a revisar seus métodos todo ano, à medida que as normas e as ameaças mudam. O Sr. Reyes lembra que a prática de GRC depende de julgamento, honestidade e acompanhamento constante, tanto quanto de frameworks. Assumir o risco de fornecedores também fecha a lacuna de governança que ela identificou no caso da cooperativa congênere.
+
+### Exemplo resolvido
+
+Lena monta um portfólio de sete itens, responde aos avaliadores sobre amostragem e pressões e planeja seus próximos passos.
+
+> **Caso sintético.** O portfólio é sintético; a ISO/IEC 27001:2022 é real.
+
+### Erros e limites
+
+Os portfólios mostram trabalhos selecionados. Os planos mudam com as funções.
+
+### Exercícios
+
+- **EX056 — Nota do portfólio.** Que nota acompanha cada item do portfólio? *Rubrica:* 3 = o que fez, as evidências que o sustentam, o que aprendeu;; 2 = nota;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Dados no portfólio.** Que dados Lena removeu do portfólio? *Rubrica:* 3 = dados reais de associados ou funcionários;; 2 = dados reais;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Questionamento da amostra.** Como Lena responderia a um regulador que questionasse o tamanho da amostra? *Rubrica:* 3 = explicaria a taxa tolerável e a confiança e se ofereceria para ampliar;; 2 = explicar;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Parte mais difícil.** O que Lena achou mais difícil? *Rubrica:* 3 = resistir às pressões para suavizar relatórios mantendo as relações;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Próxima função.** Que responsabilidade Lena vai assumir em seguida? *Rubrica:* 3 = o risco de fornecedores;; 2 = risco de fornecedores;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Lena Hoffmann, o Sr. Victor Reyes, a Ashby Professional Academy, a Marston Credit Union e todos os números são sintéticos; o relatório SOC 2 revisado é fictício. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Lena Hoffmann, o Sr. Victor Reyes, a Ashby Professional Academy, a Marston Credit Union e todos os números são sintéticos; o relatório SOC 2 revisado é fictício. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Confidencialidade e integridade.
 
@@ -348,6 +612,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** Os achados de alta severidade em atraso.
 
 **EX030.** Para o executivo a quem o dono responde.
+
+**EX031.** Cinquenta e nove.
+
+**EX032.** Noventa e nove.
+
+**EX033.** Porque a autenticação de novos favorecidos protege o dinheiro dos associados, então uma taxa apertada é adequada.
+
+**EX034.** Se o log de autenticação mostrava um segundo fator bem-sucedido antes do pagamento.
+
+**EX035.** Cobre só o canal do aplicativo (e mostra que a autenticação ocorreu, não que resiste a todos os ataques).
+
+**EX036.** Exceções no relatório de garantia do fornecedor que ninguém acompanhou.
+
+**EX037.** Os relatórios de garantia eram recebidos, mas não lidos.
+
+**EX038.** Ninguém era dono do risco de fornecedores e o conselho nunca o viu relatado.
+
+**EX039.** Acompanhadas como achados no fluxo.
+
+**EX040.** A proporção de fornecedores críticos com relatórios revisados (ou o tempo de acompanhamento das exceções).
+
+**EX041.** As decisões que se pede ao conselho que tome.
+
+**EX042.** Porque suavizar a linguagem poderia enganar conselheiros que têm deveres legais de supervisão.
+
+**EX043.** Junto com o plano de remediação e o progresso.
+
+**EX044.** Adiar o registro de um achado para depois da visita do regulador.
+
+**EX045.** Ajuda para preparar um plano de remediação a ser apresentado com o achado.
+
+**EX046.** Quatro de oito.
+
+**EX047.** Dois, com 48 e 95 dias.
+
+**EX048.** O dono saiu da Marston e ninguém o assumiu.
+
+**EX049.** Reatribuindo automaticamente os achados quando os donos saem.
+
+**EX050.** Revisados por trimestre, para que sejam corrigidos ou formalmente aceitos.
+
+**EX051.** O módulo de monitoramento de fraudes que a Marston também usa.
+
+**EX052.** Porque o período do relatório terminou nove meses antes.
+
+**EX053.** A remoção atrasada dos acessos de desligados e uma varredura trimestral de vulnerabilidades não realizada.
+
+**EX054.** Revisar o acesso dos próprios usuários ao portal do fornecedor.
+
+**EX055.** Porque as organizações supõem que o fornecedor cuida de tudo.
+
+**EX056.** O que ela fez, as evidências que o sustentam e o que aprendeu.
+
+**EX057.** Quaisquer dados reais de associados ou de funcionários, mantendo apenas material sintético ou anonimizado.
+
+**EX058.** Explicando a taxa tolerável e o nível de confiança e oferecendo-se para ampliar a amostra.
+
+**EX059.** Resistir às pressões para suavizar os relatórios mantendo boas relações.
+
+**EX060.** A responsabilidade pelo risco de fornecedores na Marston.
 
 <a id="references"></a>
 ## Referências
