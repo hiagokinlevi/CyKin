@@ -3909,57 +3909,85 @@ You will (1) complete a placement-style reflection; (2) sanitise reports; (3) tr
 
 Shadow TRB assessment operations (synthetic in this course).
 
+Field practice in this course uses a synthetic TRB assessment operations placement so students never touch live customer systems. Shadowing means watching intake, scoping, testing windows and handovers with a notebook of questions. Sam's placement journal forbids inventing war stories that did not happen in the synthetic lane. The goal is operational manners, not secret techniques. Synthetic does not mean casual; the same sanitisation and gift rules still bind. That habit is what host technicians remember after the placement ends. Peer pressure toward thorough sanitisation beats solo optimism every term.
+
 ### 36.2 Sanitise
 
 No customer identifiers in academic write-ups.
+
+Academic write-ups must contain no customer identifiers, account numbers, raw IPs or hostnames that embed personal names. Sam runs a checklist and a peer initials it before any upload script accepts the file. A single surname in a hostname once nearly escaped; the peer catch became lunch and a teaching slide. Sanitisation is graded as hard as technical content. Citizen data has no place in academic mirrors even when the story feels educational. Upload scripts that reject blank forms sound cruel until the first near miss.
 
 ### 36.3 Translation
 
 Wilson intervals become board-usable sentences.
 
+Placement work includes translating Wilson intervals into sentences a board can fund without losing the uncertainty. Sam practices phrases that keep the range visible instead of collapsing to a heroic percentage. Directors who only hear point estimates approve brittle programmes. Translation drills use the same synthetic results as the comparative project. Statistical caution that cannot be spoken aloud will not survive the boardroom. Leave-behind success is measured by untouched keyboards, not by praise. Board sentences that keep the interval meaning survive translation better. Gift-policy clarity keeps community practice from becoming a conflict case.
+
 ### 36.4 Conflicts
 
 Gift policies and vendor dinners — follow TRB rules.
+
+Community and vendor events follow TRB gift policies without special student exceptions. Sam declines dinners that would look wrong in an after-action review even when they look normal in industry blogs. Conflict rules are part of field practice, not a HR appendix nobody reads. When unsure, he asks the placement supervisor before accepting anything of value. Appearance of influence is treated as seriously as actual influence. Weekly journals that name broken assumptions teach faster than victory lists. Runbook edits left behind are the placement's real thank-you gift.
 
 ### 36.5 Journal
 
 Weekly: learned, broken assumption, question.
 
+The weekly journal has three forced lines: what was learned, which assumption broke and what question remains. Victory-only journals teach vanity; broken assumptions teach operations. Sam's supervisor reads the question line and often assigns the next shadow slot from it. Entries stay free of customer identifiers like any other academic artefact. A short honest journal beats a long polished diary that hides confusion. Stern peers catch surname hostnames that kind peers skim past. Privacy oaths on foyer cards sound ceremonial and still change behaviour. Fifteen-minute alone timers expose documentation that only works with the author present.
+
 ### 36.6 Useful output
 
 Leave a runbook improvement behind.
 
-### 36.7 36.7 Applied note
+Every placement must leave a concrete runbook improvement the host can keep. Sam's leave-behind was a clarified stop-message template the technicians actually pasted. Tourism with a badge ends when the host file tree is unchanged. Improvements are small on purpose so they can be reviewed and merged. Usefulness is measured by what remains after the student badge stops working. Initialled checklists create a second pair of eyes without a committee. Size gates on uploads catch empty photographs posing as completed forms. Lunch after a catch is cheaper than a regulator letter after a leak.
+
+### 36.7 Leave-behind timer
 
 Leave-behind testing uses a timer: the host technician gets fifteen minutes alone. Sam may answer clarifying questions but not touch the keyboard. Keyboard touches mean the leave-behind failed.
 
-### 36.8 36.8 Sanitisation checklist
+The timer is harsh and clarifying. If the technician cannot finish without Sam's hands, the documentation failed even if the tool works. Clarifying answers are allowed; silent takeover is not. Sam watches the clock more than the screen during the test. Hands-off success is the only leave-behind grade that counts. Choosing critics on purpose is a professional skill, not a personality quirk. Academic mirrors that never see citizen names are a design goal, not a slogan.
+
+### 36.8 Sanitisation checklist
 
 Before academic upload, Sam runs a checklist: names, account numbers, IPs, hostnames. A peer initials it.
 
-### 36.9 36.9 Peer initial box
+The checklist is boring on purpose so it gets finished. Peer initials create accountability without a second full review meeting. Sam never initials his own form. Upload automation looks for the initial field before accepting the PDF. Two humans and a script beat one hurried author with good intentions. Seminar clocks keep critique from eating the action-planning slot. Line-referenced feedback is usable; vibe feedback is theatre. Writing actions while quiet beats defending every comment in the moment.
+
+### 36.9 Peer initial box
 
 Sanitisation forms without peer initials are rejected by the academic upload script.
 
-### 36.10 36.11 Scene
+Mechanical rejection removes debates about whether a friend will initial later. Sam learned to book peer time before the upload deadline rather than after. Blank initial boxes are treated like missing signatures on findings. The script's rudeness is a privacy control. If the box is empty, the file simply does not leave the workstation. Methodology checklists outrank social-media lore when standards matter. Filing the seminar note with the capstone keeps the trail complete. Declined feedback with reasons closes threads; bare disagreement does not.
+
+### 36.10 Surname hostname catch
 
 Peer initials on sanitisation once caught a hostname containing a customer surname. Sam buys the peer lunch. Checklists with teeth make kindness easy.
 
-### 36.11 36.12 Extension
+The catch was small and enormous. A hostname that looked technical still carried a person. Lunch was thanks and a public signal that catches are welcome. Checklists without teeth produce lonely heroes; checklists with teeth produce lunch. Celebrating the catch teaches the next peer to look hard. Fourteen-day expiry turns polite stalling into a visible choice. Strict state strings stop tired people from inventing comforting statuses. Pagers at day ten are kinder than silent boards at day thirty.
+
+### 36.11 Choose stern peers
 
 Sanitisation peer once was Sam's sternest critic. He chooses stern peers on purpose. Kind peers miss surnames in hostnames.
 
-### 36.12 36.14 Note 11
+Kindness and thoroughness are different services. Sam schedules the critic when the file matters most. Friendship reviews still happen for tone; sanitisation wants sharp eyes. Stern peers are thanked specifically so they keep saying yes. Selecting for severity in review is a professional choice, not a social failure. Pedantic APIs are gifts on nights when judgment is thin. Deep links remove the scavenger hunt from comment closure. See-thread without a link is how actions get lost in scrollback.
+
+### 36.12 Privacy oath and form gates
 
 Sanitisation peer initials are a required PDF form field; blank fails upload. Sam chooses peers who previously caught his mistakes, not friends who skim. The upload script rejects forms under 10 KB as likely blank. Process pedantry protects citizens whose names must never enter academic mirrors. That sentence is the chapter's privacy oath.
 
-### 36.13 36.16 Pad
+Multiple gates exist because any one gate fails eventually. Prior catchers get priority when Sam picks a peer. Tiny files are suspicious even when fields look filled in a screenshot. The oath sentence is signed again on the vault foyer card. Pedantry here is loyalty to people who will never read the thesis.
+
+### 36.13 Blank-form size gate
 
 Blank-form size gate once caught a peer who uploaded a photo of a blank table. Pedantry wins.
 
-### 36.14 36.20 Extra
+A photograph of an empty table is an old trick against weak validators. The size gate plus field validation stopped it. Sam documented the attempt so the next validator author would not remove the check as paranoia. Process stories belong in the facilitator guide beside the happy path. Adversarial laziness inside the course is still useful for hardening uploads. Closure weeks make clean boards a cultural product, not an accident. Public open-counts apply gentle pressure without naming and shaming.
+
+### 36.14 Foyer privacy oath card
 
 Privacy oath sentence is signed on the vault foyer card.
+
+The foyer card is visible to anyone collecting a badge for vault work. Signing is quick and slightly solemn, which helps memory. Sam watches new placements sign before their first shadow day. Cards are archived by term so the ritual has a record. Public signing ties privacy manners to entry, not to an unread handbook chapter page. Personal thank-you notes beat automated trophies for zero-open streaks. Golden fixtures that try to trick the tool earn their keep in CI. Defaulting near-matches to conflict lists prevents silent host collapses.
 
 ### Worked example (synthetic TRB)
 
@@ -3997,65 +4025,97 @@ You will (1) critique a peer dossier; (2) give actionable feedback; (3) receive 
 
 20 minutes present, 20 critique, 10 actions.
 
+The seminar clock is strict: twenty minutes to present evidence, twenty to critique and ten to capture dated actions. Applause that eats the action slot is a facilitation failure. Sam's facilitator card shows the three colours of time remaining. Presenters who run long lose critique depth and then complain about shallow feedback. The format itself teaches closure manners. Time-boxed critique is how evidence review becomes a habit rather than a performance. Facilitators protect the action window as fiercely as the presentation slot. Rooms that honour the clock produce sharper comments in less wall time.
+
 ### 37.2 Checklist
 
 Scope clarity, evidence hashes, severity rationale, privacy, overclaim.
+
+Reviewers work from a checklist covering scope clarity, evidence hashes, severity rationale, privacy and overclaim. Freeform vibe reviews miss the same holes every term. Sam requires at least one note per checklist line even if the note is a clean pass. Overclaim catches are especially prized because they prevent board-level fiction. The checklist travels with the seminar note into the capstone file. Shared checklist language makes feedback comparable across presenters. Empty checklist lines are treated as incomplete reviews, not optional silence. Pass notes still prove the reviewer looked; silence does not.
 
 ### 37.3 Feedback
 
 Specific line references; suggest fixes.
 
+Useful feedback cites line numbers or figure ids and suggests a fix shape. Comments like tighten this teach nothing actionable before the next draft. Sam models one line-referenced fix in every seminar he facilitates. Presenters may ask clarifying questions but the default is to write actions quietly. Specificity is kindness under another name. If a comment cannot point to a place in the artefact, it is not ready to speak. Fix shapes can be rough as long as they point somewhere concrete in the draft. Presenters paste line anchors into the tracker so fixes navigate cleanly.
+
 ### 37.4 Receiving
 
 Write actions; avoid debating every point live.
+
+Receiving critique means writing actions, not winning the room. Live debate on every point burns the ten-minute action window. Sam's coaching is to mark agree, clarify later or decline with reason after the session. Ego defence during critique correlates with stale comment boards later. Quiet receiving is a graded professional skill. The seminar rewards people who leave with a clearer to-do list than when they entered. Later clarification threads beat courtroom energy in the seminar room. Action lists written in the room beat reconstructed lists the next morning.
 
 ### 37.5 Compare
 
 Optionally compare to a published methodology checklist (PTES/WSTG), not to Instagram lore.
 
+Optional comparisons use published methodology checklists such as PTES or WSTG excerpts provided in the course pack. Instagram lore and hallway myths are out of bounds as standards. Sam wants students to taste external yardsticks without worshipping any single brand. When a gap appears against the checklist, the action names which artefact will change. Lore comparisons are redirected to the pack. Published checklists keep critique anchored when opinions get loud. Course-pack excerpts keep everyone looking at the same external yardstick.
+
 ### 37.6 Record
 
 Seminar note filed with capstone.
 
-### 37.7 37.7 Applied note
+The seminar note is filed beside the capstone materials so examiners can see the critique trail. Notes include checklist marks, actions with owners and any declined comments with reasons. Sam rejects verbal-only seminars as incomplete education records. Filing happens the same day while memory is fresh. Missing notes block the capstone readiness checkbox. If it is not filed, the seminar did not count for the programme. Same-day filing stops the note from becoming a half-remembered myth. Readiness checkboxes that depend on filing keep incentives aligned.
+
+### 37.7 Decline with reason
 
 Seminar declined feedback requires a written reason the presenter accepts. "I disagree" without reason keeps the comment open. Sam's dossier once had six open comments; none remained after he wrote reasons or fixes.
 
-### 37.8 37.8 Action expiry
+Decline is allowed; unexplained decline is not closure. Writing the reason often reveals whether the comment was actually right. Sam's six-open story is told to show that clarity empties boards faster than stubbornness. Trackers keep declined-with-reason as a first-class state. Reasons turn disagreement into an auditable decision instead of a sulk. Accepted reasons are stored beside the comment so examiners can follow the choice.
+
+### 37.8 Action expiry
 
 Seminar actions older than fourteen days without state change page Sam. Stale actions are declined or done.
 
-### 37.9 37.9 State machine
+Expiry converts polite limbo into a ping that demands a state change. Sam would rather decline cleanly than pretend an action is still alive. Fourteen days matches the sprint-like rhythm of capstone work. Pagers feel rude until people notice how many threads they finish. Stale kindness is how comment boards become graveyards. A ping that forces done or declined is kinder than a forever-open card. Visible expiry dates remove the social awkwardness of nagging peers.
+
+### 37.9 Comment state machine
 
 Comment states are open, fixed, declined, risk-accepted. Sam's tracker forbids other strings.
 
-### 37.10 37.11 Scene
+Free-text statuses invent comforting lies like kinda done. The four allowed states cover honest outcomes without poetry. Risk-accepted requires an authority note the same way findings do. API validation rejects creative synonyms when people are tired. Pedantic state machines are a gift to future readers of the board. Synonym bans sound petty until they stop a midnight self-deception. Four states are enough for truth and few enough to learn cold.
+
+### 37.10 Day-ten pager scene
 
 Open seminar comments page Sam at day 10. He declines one with reason "out of scope for thesis" and fixes two. Day 14 board is clear. The pager teaches closure.
 
-### 37.11 37.12 Extension
+The scene is ordinary operations on a comment board. Day ten is early enough to act and late enough to feel pressure. Sam's out-of-scope decline is specific so the commenter can reuse the idea elsewhere. Clear boards by day fourteen are celebrated without fireworks. Pagers teach what posters only recommend. Early pressure leaves enough calendar to fix work before evaluation week. Clear boards are a quiet flex the programme is willing to name aloud.
+
+### 37.11 No kinda-done status
 
 State machine API rejects "kinda done". Sam is grateful for pedantic software when tired.
 
-### 37.12 37.14 Note 11
+Kinda done is how work hides while looking progressive. Rejection at the API means the UI never offers the lie. Sam has tried to type it at midnight and been saved by the error. Fatigue is exactly when soft statuses appear. Software that refuses fuzzy closure protects the human who wants to go home. Error messages that name the forbidden string teach the rule in the moment. Midnight authors need fences more than lectures.
+
+### 37.12 Deep links in pager messages
 
 Pager messages include deep links to the comment thread.
 
-### 37.13 37.16 Pad
+A pager without a link creates a scavenger hunt through old channels. Deep links open the exact comment so the action can start in seconds. Sam forbids see thread shorthand in pager text. Broken links are ops defects, not presenter defects. Frictionless jumps from alert to artefact are how closure stays likely. Seconds matter when the alternative is losing the thread in scrollback. Link hygiene is comment hygiene with a URL.
+
+### 37.13 Exact comment deep links
 
 Deep links open the exact comment; Sam forbids "see thread" without links.
 
-### 37.14 37.18 Final
+See thread is ambiguous when a channel moved or was renamed. Exact links remove arguments about which remark was meant. Sam's template pastes the URL automatically from the tracker. Reviewers who omit links have their pager messages bounced by a bot. Precision in pointers is part of comment hygiene. Bots that bounce incomplete pager text train better habits than memos do. Ambiguity about which remark was meant wastes the scarce action minutes.
+
+### 37.14 Comment hygiene week
 
 Comment hygiene week every term closes stale threads. Sam enjoys the clean board more than new features. Closure is a deliverable.
 
-### 37.15 37.19 Boost
+Hygiene week is scheduled like a release, not improvised guilt. Teams close, decline or risk-accept whatever remains. Sam treats a clean board as a product outcome worth mentioning in retros. New features wait if hygiene is behind. A culture that ships closure will also ship better tools. Retros that praise clean boards make hygiene socially profitable. Hygiene week on the calendar beats hygiene guilt in the hallway.
+
+### 37.15 Open-count CSV pressure
 
 Sam's seminar tracker exports a weekly CSV of open comments by presenter. Public (team-visible) open counts create gentle pressure without shame. Presenters with zero opens get a thank-you note. The social protocol closes more threads than any angry reminder ever did in prior terms.
 
-### 37.16 37.20 Extra
+Visibility without humiliation is a delicate design. Counts are by presenter open items, not personal attacks in chat. Thank-you notes make zero a celebrated state. Angry reminders had been tried; they created hiding, not closure. Social protocols can outperform scolding when the metric is fair and kind. Fair metrics plus kindness outperform fear as a closure engine.
+
+### 37.16 Personal thank-you notes
 
 Thank-you notes for zero opens are templated but personally sent.
+
+Templates keep the bar consistent; personal sending keeps the thanks human. Sam writes one specific sentence about a closed thread so it does not feel automated. People forward those notes to themselves on hard weeks. The cost is minutes; the effect on board hygiene is outsized. Recognition that names real work beats generic badges from a bot. One specific sentence of thanks is remembered longer than a leaderboard. Humans sending thanks keep the ritual from rotting into spam.
 
 ### Worked example (synthetic TRB)
 
@@ -4093,65 +4153,97 @@ You will (1) build the scope-diff tool; (2) test fail-closed paths; (3) document
 
 Diff two synthetic inventories; flag only-in-docs / only-on-network / type conflicts.
 
+The implementation diffs two synthetic inventories and flags hosts only in documents, only on the network, or present in both with conflicting types. Sam keeps the first vertical slice tiny: load, compare, print conflicts, exit non-zero on corruption. Pretty dashboards wait until the core comparison is tested. Inventory field lists are pinned in a config file rather than hard-coded magic. Operators should understand a conflict line without reading the source. A clear conflict list is the product; everything else is optional clothing. Shipping the boring diff first prevents a museum of unfinished interface work.
+
 ### 38.2 Fail closed
 
 Corrupt YAML → deny with reason.
+
+Corrupt YAML must deny with a reason string a human can act on. Returning an empty allow list on parse failure is treated as a critical bug. Sam's property tests flip bits until deny triggers on every mutation class. Reasons name the file and the failure class without dumping secrets. Fail-closed is the first demo at every checkpoint, not an afterthought. Parsers that helpfully skip bad documents are unsafe in this context. Denial with a reason is success when the input cannot be trusted. Deny paths earn trust when reasons stay actionable without leaking secrets.
 
 ### 38.3 Tests
 
 Golden fixtures; no network.
 
+Tests use golden fixtures and never touch the network. Fixtures include happy inventories, near-matches, truncated files and wrong encodings. Sam names corrupt fixtures with a corrupt- prefix so CI properties can find them. Network calls in the test tree fail the build on sight. Golden outputs are reviewed like findings: small, explicit and hashed. Offline tests keep evaluation honest on locked-down lab machines. Fixtures are the curriculum for the tool's future maintainers. Fixture work earns trust when hashes make quiet edits obvious to reviewers.
+
 ### 38.4 Docs
 
 Operator README with examples.
+
+The operator README shows copy-pasteable examples for the common conflict cases. Sam writes the README as if the reader has never seen his shell aliases. Examples include the deny path so operators practice failure, not only success. Screenshots are optional; commands and expected output are required. A README that only works beside Sam's laptop fails the handover exam. Docs are updated in the same pull request as behaviour changes. If an operator needs tribal knowledge, the README is unfinished. Documentation earns trust when strangers succeed without tribal aliases.
 
 ### 38.5 Freeze
 
 Feature freeze before evaluation week.
 
+Feature freeze before evaluation week protects metric integrity. Sam parks ideas on a v2 list rather than merging chrome during measurement. Freeze breaks are allowed only for fail-closed defects. The advisor enforces freeze with the same seriousness as a production change window. Students who keep coding features into evaluation week void their pre-registration. Calm measurement needs a still codebase. Freeze is how evaluation stays about the tool that was promised. Freeze discipline earns trust when measured builds match promised builds.
+
 ### 38.6 Handover
 
 Shadow an operator running it alone.
 
-### 38.7 38.7 Applied note
+Handover means shadowing an operator who runs the tool alone on a fresh account. Sam may answer questions but may not type. If the operator needs shell history full of Sam aliases, the docs failed. The session is timed and noted like the leave-behind test from field practice. Successful handover is a graded outcome, not a courtesy demo. Clean accounts tell the truth about documentation quality. Alone and successful is the only handover result that counts. Handover work earns trust when fresh accounts finish without author hands.
+
+### 38.7 Tricky golden fixtures
 
 Golden fixtures include a deliberately corrupt scope and a near-match inventory designed to trick fuzzy matching. Sam's tool must not "helpfully" merge near-matches without an explicit flag.
 
-### 38.8 38.8 Fuzzy match flag
+Helpful merges are how distinct hosts become one confused record. The near-match fixture exists to punish default fuzziness. Sam's tests fail if conflicts disappear without --ack-fuzzy. Corrupt scope fixtures must deny even when they look almost valid. Fixtures that try to trick you are acts of friendship to future operators. Default suspicion on near-matches is a safety feature, not a UX bug. Near-match fixtures earn trust when defaults refuse silent collapse.
+
+### 38.8 Fuzzy match flag
 
 Near-match inventory names require --ack-fuzzy to merge. Default is to list them separately as conflicts.
 
-### 38.9 38.9 Corrupt fixture names
+The flag forces an intentional choice before inventories collapse. Default conflict listing keeps staging and production twins from merging silently. Sam logs flag use with username for later audit questions. UI shortcuts that skip the flag are forbidden in v1. Operators who need merges often should fix naming hygiene, not weaken defaults. Friction before merge has already saved a production host from a staging note. Fuzzy flags earn trust when intentional merges leave an audit trail.
+
+### 38.9 Corrupt fixture names
 
 Fixtures named corrupt-*.yaml must deny. A CI property test generates random corruption.
 
-### 38.10 38.11 Scene
+Naming conventions let property tests discover fixtures without a fragile manifest. Random corruption grows each term as parsers harden. Sam requires every new mutation to have a short intent name in the test output. A fixture that allows under the corrupt- prefix fails CI hard. Convention plus properties beat hand-maintained allow lists of bad files. Discoverable unsafe fixtures keep the safety net from rotting. Corrupt prefixes earn trust when properties keep discovering new danger.
+
+### 38.10 Bit-flip property test
 
 Random corruption property test flips bits in YAML until deny triggers. Sam watches it find a parser path that returned empty allow. Property tests are rude and helpful.
 
-### 38.11 38.12 Extension
+The empty allow path would have looked like a clean empty scope in production. Rudeness in tests is welcome when the alternative is polite blindness. Sam added a regression fixture named after the mutation that found it. Watching the test work teaches more than a slide about fail-closed. Helpers that return empty on error are guilty until proven deny. Rude tests earn their keep the first time they embarrass a parser.
+
+### 38.11 Truncation and encoding fixtures
 
 Corrupt fixtures include truncated files and wrong encodings. Deny must trigger on all. Sam's property test grows a new mutation each term.
 
-### 38.12 38.14 Note 11
+Truncation mid-document and surprising encodings are common in real exports. Deny must not depend on a single corruption style. Each term's new mutation is recorded with a one-line intent for CI readability. Sam refuses to delete old mutations when new ones arrive. Growing the zoo is how confidence grows. Encoding traps belong beside bit flips in any serious parser suite. Encoding suites earn trust when deny does not depend on one mutation style.
+
+### 38.12 Named mutations
 
 Each new mutation in the property test gets a name and a one-line intent.
 
-### 38.13 38.16 Pad
+Names like trunc-mid-yaml make failures readable in CI logs. Intent lines stop future students from deleting a mutation they do not understand. Sam reviews names for clarity the same way he reviews finding titles. Unnamed mutations are rejected in code review. Readable failures shorten the loop from red CI to fixed parser. If the failure line needs a translator, the mutation is under-documented. Named mutations earn trust when CI failures explain themselves in plain words.
+
+### 38.13 Readable mutation names
 
 Mutation names look like "trunc-mid-yaml" so failures read clearly in CI.
 
-### 38.14 38.18 Final
+Opaque hashes as mutation ids waste minutes during evaluation week. Sam's style guide for tests bans cute names that hide intent. Clear names also help advisors grade whether the suite covers real risks. Renaming for clarity is an encouraged refactor. CI is a communication surface, not only a gate. People read failure lines under stress; write them for that reader. Readable names earn trust when advisors can grade coverage from log lines.
+
+### 38.14 Fresh account operator day
 
 Operator day uses a fresh account with no Sam aliases in shell history. If the operator needs history, docs failed. Clean accounts are honest tests.
 
-### 38.15 38.19 Boost
+Shared tribal shells lie about readiness. Fresh accounts strip the comfort of incomplete docs. Sam watches without typing and takes notes for README repairs. Aliases that sneak back via dotfiles are in scope for the honesty check. The awkwardness is the point of the exam. Honest handover tests are kinder than surprising a night operator later. Fresh accounts earn trust when honesty about docs survives social awkwardness.
+
+### 38.15 Typed merge acknowledgement
 
 Fuzzy-match acknowledgements require typing the phrase "I accept merge risk" exactly. Copy-paste from a wiki is fine; clicking through is not. Sam wants a moment of friction before inventories collapse distinct hosts into one. That friction has prevented at least one production host from inheriting a staging-only note.
 
-### 38.16 38.20 Extra
+Click-through dialogs train blindness; typed phrases create a pause. Wiki copy-paste still forces the eyes across the words. Audit logs store who typed the phrase and when. Removing the phrase for convenience is a product defect. Designed friction is an engineering control when merges are dangerous.
+
+### 38.16 Acknowledgement audit log
 
 Typed acknowledgement phrase is recorded in the audit log with username.
+
+Logs support later questions when a bad merge is discovered. Usernames come from the authenticated operator context, not from a free-text box. Sam's runbooks tell incident responders where to find the phrase events. Log retention follows the same vault rules as other engagement evidence. Without the log, the typed phrase is only theatre. Evidence of friction matters as much as the friction itself. Responders should reach the field names without asking Sam where he hid them. Acknowledgement logs earn trust when responders can find fields without asking.
 
 ### Worked example (synthetic TRB)
 
@@ -4189,65 +4281,97 @@ You will (1) evaluate against pre-registered metrics; (2) run independent tests;
 
 Precision/recall on planted drifts; fail-closed cases.
 
+The evaluation plan locks precision and recall on planted drifts plus fail-closed cases before any run begins. Sam freezes metric definitions in a short pre-registration note the advisor signs. Planted adds, removes and type conflicts provide ground truth the script can score. Fail-closed cases are scored as pass or fail, never as soft partial credit. Plans that invent metrics after seeing scores fail the course standard. Precision freezes stop post-score shopping for prettier yardsticks. Keyboard distance during runs is part of the grade, not a courtesy.
+
 ### 39.2 Independent
 
 Another student runs the evaluation script.
+
+Another student runs the evaluation script while Sam stays away from the keyboard. Independence is a social protocol as much as a technical one. The runner signs a one-line statement that Sam did not edit the run logs. Statements sit in the appendix beside the raw outputs. Coached runs are treated as academic misconduct, not as helpful collaboration. Stopwatches on first triage reveal whether scores will survive contact with people. ROE sentences in abstracts catch readers who only skim happy metrics. Labeled exploratory annexes keep curiosity from rewriting the contract.
 
 ### 39.3 Side effects
 
 Usability timing; false alarm burden.
 
+Side-effect measures include usability timing and false-alarm burden for operators. A precise tool that floods operators with noise will not be adopted. Sam times first-time conflict triage on a fixed inventory pair. False alarms are counted and discussed even when precision looks flattering. Side effects belong in the report beside the headline scores. Staging success criteria written early prevent production pep talks from jumping the queue. Signed distance pledges make lingering authors socially expensive. Monitor-only staging plans are returned with a request for dates and evidence. Unofficial eternal student ownership is the abandonment pattern advisors watch for.
+
 ### 39.4 Residual risk
 
 Tool helps inventory hygiene; does not replace ROE discipline.
+
+Residual risk statements say clearly that the tool helps inventory hygiene and does not replace ROE discipline. Sam refuses marketing language that implies authorised testing can be automated away. Readers who skip this paragraph are the ones most likely to misuse the tool. The statement is required in both the report abstract and the final slide. Hygiene aids remain subordinate to human authorisation boundaries. Refusal-capable service owners turn paper plans into real gates. Thanked failures that rewrite preambles are how docs catch up to reality.
 
 ### 39.5 Report
 
 Results vs pre-registration; no post hoc metric swaps.
 
+The report compares results to the pre-registration and forbids post hoc metric swaps. Exploratory analyses are allowed only in a clearly labeled appendix. Sam's template highlights any metric that was not pre-registered. Victory-lap swaps are a fail even if the new metric looks kinder. Honesty about misses is part of the graded science. Evaporating inbox bullets are why adoption work must live in tickets. Loud unfinished tickets are preferable to silently closed empty promises. Shrinking unread pages respects operators more than scolding their skimming.
+
 ### 39.6 Recommend
 
 Adopt in staging first.
 
-### 39.7 39.7 Applied note
+The recommendation is staging adoption first with named owners and a thirty-day checklist. Tools without adoption plans are hobbies, however clever. Sam writes what staging success looks like before anyone talks about production. Production promotion waits on evidence from solo operator runs. Recommendations that skip staging are rejected by the advisor. Valued break reports turn early confusion into deny-text improvements. Searchable adoption pain across cohorts is a curriculum asset. Limit-led openings make skeptical panels lean in rather than lean back. First-minute positioning corrections save entire Q&A threads from confusion.
+
+### 39.7 Independence statement
 
 Independent evaluators sign a one-line statement that Sam did not edit their run logs. The statement sits in the appendix. Trustworthy evaluation is a social protocol as much as a script.
 
-### 39.8 39.8 Staging adoption plan
+Scripts alone cannot prove independence when authors linger nearby. The signed line makes the social rule visible to examiners. Sam keeps distance during runs even when curiosity itches. Missing statements block the evaluation chapter from closing. Trustworthy science is partly paperwork done without resentment. Visible timers in rehearsal make overtime socially awkward before defence day. Banks that include refusals teach newcomers the boundary is normal.
+
+### 39.8 Staging adoption plan
 
 Evaluation reports include a thirty-day staging plan with owners. Tools without adoption plans are hobbies.
 
-### 39.9 39.9 Adoption owners
+The thirty-day plan names dates, owners and evidence expected at each gate. Sam rejects plans that only say monitor in staging. Checklists become tickets so work cannot hide in email bullets. Hobby energy is welcome in labs and unwelcome in adoption claims. Staffed plans are how tools leave the thesis and enter operations. Future-work fences keep dreams from contaminating delivered claims. Pinned generators let strangers regenerate scores without private favours. Stress clarity grades matter because rambled refusals sound like maybe.
+
+### 39.9 Adoption owners
 
 Staging adoption names a service owner and a platform owner. One name is insufficient.
 
-### 39.10 39.11 Scene
+Service owners feel the operational pain; platform owners feel the tooling pain. One name usually means the student still owns everything unofficially. Sam requires both roles before the staging plan can be approved. Split ownership prevents silent abandonment when the term ends. Insufficient naming is treated as an incomplete recommendation. Stewardship means giving next year the questions you wish you had. Logged deletion after self-review keeps improvement from becoming retention risk. Retold gentle-lid scenes spread the right imitation through the cohort.
+
+### 39.10 Mira and Sam on adoption
 
 Adoption plan names Mira for service ownership and Sam for platform support. Thirty-day checklist includes two operator solo runs. Without Mira's name the plan would be fiction.
 
-### 39.11 39.12 Extension
+Mira's name makes the plan real because she can refuse work that is not ready. Two solo runs catch documentation gaps unit tests miss. Sam's platform role stays supportive rather than possessive. Fiction plans with only student names are a known failure mode. The scene is used in advisor training as a positive example. Boring practiced lid motion beats improvisational toughness on the day. Dominance displays are corrected because they teach fear, not professionalism.
+
+### 39.11 Solo run finds DNS gap
 
 Solo run two failed because DNS differed in the operator's profile. README gained a DNS preamble. Solo runs find doc bugs tools miss.
 
-### 39.12 39.14 Note 11
+Profile differences are boring until they break a careful operator. Sam thanked the failure in the retro instead of blaming the operator. DNS preamble text is now part of the golden README examples. Solo runs are documentation tests wearing operational clothing. Tools can pass unit tests and still fail humans on day one. Multi-night numeric tracks show whether calm and firm actually improve. Still standards in clips beat drifting adjectives across facilitators.
+
+### 39.12 Checklist items as tickets
 
 Thirty-day checklist items are tickets, not bullets in an email.
 
-### 39.13 39.16 Pad
+Tickets carry owners, due dates and evidence attachments. Email bullets evaporate when inboxes rotate. Sam's adoption template opens tickets automatically from the checklist. Closed tickets without evidence are reopened by policy. Ticketing is how thirty days become accountable instead of aspirational. Durable refuse pages give advisors something stronger than hallway lore. Rot-checked study-path links keep boundaries findable under shortcut pressure. Planted drifts without frozen metrics are just vibes with a script wrapper. Misconduct bright lines around coaching protect the independence claim. False-alarm honesty keeps flattering precision from lying about adoptability.
+
+### 39.13 Evidence to auto-close
 
 Tickets for checklist items auto-close only when solo-run evidence is attached.
 
-### 39.14 39.18 Final
+Auto-close without evidence recreates paper completion theatre. Sam wires the rule so convenience cannot delete the proof requirement. Operators learn to attach outputs while the run is fresh. Missing attachments keep the ticket loud on purpose. Evidence-gated closure is adoption hygiene. Marketing automation fantasies are rewritten into subordinate hygiene language. Victory-lap metric swaps fail even when the new number looks kinder. Hobby energy belongs in labs, not in unstaffed adoption claims. Paperwork without resentment is still part of trustworthy evaluation. Email cannot carry due dates the way tickets can.
+
+### 39.14 Rewrite ignored README parts
 
 Adoption retros at day 30 ask operators what they ignored in the README. Ignored sections are deleted or rewritten, not defended.
 
-### 39.15 39.19 Boost
+Defending unread paragraphs wastes the only attention operators offered. Sam would rather shrink docs than lecture people for skimming. Ignored means the writing failed the environment it entered. Retros that rewrite are kinder than retros that blame. Attention is the scarce resource adoption must budget. Split ownership is how tools survive the student's graduation week. Advisor training reuses the Mira naming scene as a positive pattern. Day-one human failures are documentation tests in operational clothing.
+
+### 39.15 Intentional break reports
 
 Day-ten adoption check asks operators to break the tool on purpose and file the brokenness. Sam would rather hear early pain than polite silence. Two intentional break reports in the first cohort improved deny messages more than a month of speculative polish would have.
 
-### 39.16 39.20 Extra
+Polite silence is an adoption anti-pattern. Inviting breaks legitimises early bad news. Deny-message improvements from real confusion beat imagined UX polish. Sam tracks break reports as valued input, not as complaints. Early pain is cheaper than quiet abandonment. Policy reopens empty closures so proof remains non-optional. Attention budgets are the real constraint behind README length fights.
+
+### 39.16 BREAK-ADOPT ticket type
 
 Intentional break reports have their own ticket type: BREAK-ADOPT.
+
+A distinct type keeps adoption pain searchable later. Sam reviews BREAK-ADOPT trends each cohort for doc and deny gaps. Mixing breaks into generic bugs hides the adoption signal. Operators use the type without shame because it was requested. Searchable pain is how programmes learn across years. Quiet abandonment costs more than awkward early break tickets. Cohort trend reviews on BREAK-ADOPT shape the next term's doc drills. Ethics headings before next steps signal values ordering to examiners. Legal and ethical boundaries need slide ink, not only prose hopes.
 
 ### Worked example (synthetic TRB)
 
@@ -4285,61 +4409,91 @@ You will (1) structure the thesis; (2) defend limits; (3) state next steps.
 
 Claim, background, method, results, limits, ethics, next steps.
 
+The thesis structure is claim, background, method, results, limits, ethics and next steps. Sam leads with limits early enough that panels trust the results that follow. Ethics is not an appendix afterthought; it has its own heading before next steps. Next steps stay outside graded claims to avoid scope inflation. Readers should know what was asked before they judge what was found. Limit-led openings make skeptical panels lean in rather than lean back. First-minute positioning corrections save entire Q&A threads from confusion. Visible timers in rehearsal make overtime socially awkward before defence day.
+
 ### 40.2 Positioning
 
 Inventory hygiene tooling for authorized testing programmes — not a red-team exploit framework.
+
+Positioning states inventory hygiene tooling for authorised testing programmes, not a red-team exploit framework. Sam corrects misunderstandings in the first minute of the talk. Exploit-framework readings of the work are treated as communication failures to fix, not as flattering hype. Slides repeat the positioning sentence near the claim. Clear positioning protects the programme's legal and ethical boundaries. Banks that include refusals teach newcomers the boundary is normal. Future-work fences keep dreams from contaminating delivered claims. Pinned generators let strangers regenerate scores without private favours.
 
 ### 40.3 Presentation
 
 12 minutes + questions; time discipline.
 
+The presentation is twelve minutes plus questions, with hard time discipline. Sam rehearses with a visible timer and stops mid-sentence in practice if needed. Overtime steals question time where the real examination happens. Panels notice who respects the clock. Brevity under observation is part of the professional skill being graded. Stress clarity grades matter because rambled refusals sound like maybe. Stewardship means giving next year the questions you wish you had. Logged deletion after self-review keeps improvement from becoming retention risk. Retold gentle-lid scenes spread the right imitation through the cohort.
+
 ### 40.4 Likely questions
 
 Fail-closed demos; ethics; why no live scan; threats to validity.
+
+Likely questions cover fail-closed demos, ethics, why there is no live scan and threats to validity. Sam publishes his question bank after the defence so the next cohort rehearses better. The public-website demo refusal is in the bank on purpose. Rehearsal answers are short, cited and calm. Surprise questions still happen; banks reduce avoidable panic. Boring practiced lid motion beats improvisational toughness on the day. Dominance displays are corrected because they teach fear, not professionalism. Multi-night numeric tracks show whether calm and firm actually improve.
 
 ### 40.5 Next steps
 
 Integrate FindingsDesk tickets; study threat-led detection metrics.
 
+Next steps mention FindingsDesk ticket integration and studies of threat-led detection metrics. They remain clearly labeled as future work, not as incomplete graded claims. Sam resists stuffing next steps with features banned by non-goals. Ambition belongs here only when it does not rewrite the thesis claim. Examiners should not need to guess what was delivered versus dreamed. Still standards in clips beat drifting adjectives across facilitators. Durable refuse pages give advisors something stronger than hallway lore. Rot-checked study-path links keep boundaries findable under shortcut pressure.
+
 ### 40.6 Reproducibility
 
 Appendix with synthetic data and scripts.
 
-### 40.7 40.7 Applied note
+The reproducibility appendix includes synthetic data and scripts sufficient to regenerate the scores. Sam pins script hashes and generator versions beside the results tables. Claims without runnable appendices are graded as incomplete science. Synthetic data keeps reproduction inside course policy. Future students should be able to rerun without asking Sam for private files. Planted drifts without frozen metrics are just vibes with a script wrapper. Misconduct bright lines around coaching protect the independence claim. False-alarm honesty keeps flattering precision from lying about adoptability. Marketing automation fantasies are rewritten into subordinate hygiene language.
+
+### 40.7 Hostile demo refusal
 
 Hostile-examiner rehearsal includes a request for a live demo against a public bank website. Sam's refusal cites law and curriculum boundaries. Peers grade the refusal's clarity under stress.
 
-### 40.8 40.8 Question bank
+The rehearsal is uncomfortable on purpose. Clarity under stress is the skill, not aggression. Sam cites law and curriculum rather than personal preference. Peers score the wording so feedback is specific. Refusals that ramble teach panels the wrong lesson about boundaries. Victory-lap metric swaps fail even when the new number looks kinder. Hobby energy belongs in labs, not in unstaffed adoption claims. Paperwork without resentment is still part of trustworthy evaluation.
+
+### 40.8 Question bank after defence
 
 Sam publishes his likely-questions list after the defence so next year's cohort rehearses better. The bank includes the public-website demo refusal.
 
-### 40.9 40.9 Refusal recording
+Publishing after defence avoids leaking answers into the graded event. Including the refusal normalises the boundary for newcomers. Sam updates the bank when new hostile patterns appear. Cohorts that rehearse from real banks perform calmer under panel heat. Generosity with questions is part of programme stewardship. Email cannot carry due dates the way tickets can. Split ownership is how tools survive the student's graduation week. Advisor training reuses the Mira naming scene as a positive pattern.
+
+### 40.9 Refusal audio self-review
 
 Rehearsal refusals are audio-recorded for self-review then deleted within 24 hours. Sam checks his voice for hesitation.
 
-### 40.10 40.11 Scene
+Short retention balances improvement against unnecessary storage of stress audio. Sam listens for hesitation, apology stacking and lost citations. Deletion is logged so the practice does not become surveillance. Self-review catches habits peers are too polite to name. Voice under pressure is a trainable instrument. Day-one human failures are documentation tests in operational clothing. Policy reopens empty closures so proof remains non-optional. Attention budgets are the real constraint behind README length fights. Quiet abandonment costs more than awkward early break tickets.
+
+### 40.10 Closing the hostile laptop
 
 In rehearsal the hostile examiner opens a laptop to a public bank login. Sam closes the lid gently, cites the boundary, and continues with the fail-closed demo. Peers score the gentleness and the firmness separately.
 
-### 40.11 40.12 Extension
+Gentleness without firmness is surrender; firmness without gentleness is theatre. Closing the lid gently keeps the room learning the boundary, not the scare. Sam continues into the fail-closed demo so the talk does not stall on the refusal. Separate scores prevent charisma from hiding shaky no's. The scene is the course's most retold rehearsal moment. Cohort trend reviews on BREAK-ADOPT shape the next term's doc drills.
+
+### 40.11 Calm and firm both required
 
 Gentleness score matters: slamming the laptop would scare the room into the wrong lesson. Firm and calm is the skill under examination.
 
-### 40.12 40.14 Note 11
+Slamming teaches fear; fear teaches the wrong imitation. Firm and calm is harder and more professional. Sam practices the lid motion until it is boring. Peers who reward slam energy are corrected in the debrief. The skill under examination is boundary-setting, not dominance display. Ethics headings before next steps signal values ordering to examiners. Legal and ethical boundaries need slide ink, not only prose hopes. Stolen question time is stolen examination, which is why clocks matter.
+
+### 40.12 Calm/firm rubric scores
 
 Peers score calm and firm on a 0–3 rubric; Sam targets 3/3 on both.
 
-### 40.13 40.16 Pad
+Numeric rubrics make noisy rehearsal feedback comparable. Targets of three and three keep the standard visible. Sam accepts twos as coaching signals, not as personal attacks. Rubric anchors include brief descriptions of each score. Comparable scores help facilitators track improvement across nights. Calmer rehearsals from real banks show up as cleaner panel minutes. Examiners hate guessing which paragraphs were dreams. Policy-safe synthetic reruns keep reproduction inside the rules. Specific wording scores beat vague you did fine comments after refusal drills.
+
+### 40.13 Rubric anchor clips
 
 Calm/firm rubric anchors include sample video clips of good refusals (internal only).
 
-### 40.14 40.19 Boost
+Internal clips keep examples concrete without publishing stress performances. Sam reviews clips for consent and redaction before they enter the pack. Abstract adjectives drift; clips hold the standard still. Access to clips follows the same ethics-folder manners as pressure artefacts. Anchors are teaching tools, not entertainment. Normalised refusals reduce the sense that boundaries are personal quirks. Surveillance fears fade when deletion is prompt and logged. Scare-based teaching produces imitators who slam lids for show. Boundary-setting skill is the exam hiding inside the laptop scene.
+
+### 40.14 What-I-refuse list
 
 After the defence, Sam publishes a one-page "what I would still refuse" list next to the thesis PDF. The list includes live public-bank demos, exploit kits and unverified scanner dumps as evidence. Future students see that the boundary survives graduation. Advisors cite the list when new students ask for shortcuts.
 
-### 40.15 40.20 Extra
+Graduation costumes do not retire boundaries. Listing refusals beside the PDF makes them hard to miss. Advisors gain a durable artefact for shortcut conversations. Unverified scanner dumps as evidence stay on the refuse list for integrity reasons. Surviving boundaries are the quiet sequel to a successful defence.
+
+### 40.15 Refuse list on study path
 
 What-I-refuse list is linked from STUDY_PATH near course 111.
+
+Discoverability matters when new students hunt for shortcuts in private chats. Sam checks the link each term so rot does not hide the list. Study-path placement treats refusals as curriculum, not as folklore. Course 111 readers meet the boundary before capstone pressure peaks. Linked refusals outlast hallway warnings. Coaching-signal twos are data, not insults, on the calm-firm sheet. Entertainment uses of stress clips are out of bounds for the pack. Integrity keeps unverified dumps off the acceptable-evidence list. Pre-capstone readers who meet refusals early ask better shortcut questions.
 
 ### Worked example (synthetic TRB)
 
