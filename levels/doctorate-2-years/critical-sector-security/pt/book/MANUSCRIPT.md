@@ -266,10 +266,10 @@ A pergunta revisada passa a ser: *Em quedas da distribuição que exigem a resta
 
 ### 1.10 Atividade prática: as métricas de resiliência podem inverter classificações
 
-O laboratório offline a seguir calcula quatro resumos de três curvas de desempenho sintéticas. Execute-o com Python 3; nenhum pacote é necessário.
+O laboratório offline a seguir calcula três resumos de três curvas de desempenho sintéticas e indica se cada uma está censurada. Execute-o com Python 3; nenhum pacote é necessário.
 
 ```python
-# Lab 1 - resilience metrics on two synthetic performance curves (offline, standard library only)
+# Lab 1 - resilience metrics on three synthetic performance curves (offline, standard library only)
 # Q(t) = delivered fraction of normal service (1.0 = full), sampled hourly over a 48-hour window.
 def curve(drop_at, depth, hold, recover_hours, window=48):
     q = []
