@@ -149,6 +149,8 @@ The third item, raised casually, is the most consequential. Coordinators learn t
 
 Pick an essential service you know (your own employer, or a public one described in a news report). Write, in no more than one page: the function it delivers to people; three things it depends on; and one well-formed risk statement with cause, event and consequence. Mark which parts you know and which you assume.
 
+Then hand the page to a colleague and ask them to name the risk owner from your statement alone. If they cannot, the consequence or the affected service is probably too vague. Compare your function with the Kestrel Water sentence about safe water at adequate pressure for 180,000 people: it names who is served and what they need.
+
 ### 1.8 Common errors and limits
 
 - Treating "security" as the IT department's property. In an essential service, operations owns the consequence.
@@ -156,6 +158,9 @@ Pick an essential service you know (your own employer, or a public one described
 - Asking for a single risk score. Scores hide which service, which people and which decision.
 - Mistaking a framework profile for evidence that controls work.
 - This chapter simplifies: real risk methods (Chapter 4) need calibration, data and judgement, and laws differ between countries.
+
+- Signing off a change that belongs to someone else, as the coordinator avoided with the antivirus request for the control-room computers.
+- Treating a casual remark, such as a supplier who sometimes logs in from home, as small talk rather than a candidate risk.
 
 ### Exercises — chapter 1
 
@@ -255,6 +260,8 @@ The coordinator then marks "6 hours" as **assumed**, because she has not seen th
 
 Draw a dependency map for one essential service with at least five upstream, three downstream and one shared dependency. For each, name a contact and whether you have verified the information or assumed it.
 
+Use the hospital table as a model: for each dependency, record the answer, its source and whether you saw the evidence yourself. Any fact marked as assumed should become a task with a person to ask. Date the map and name who will review it, because suppliers, contacts and coping times change. A map with no shared dependency usually means you have not yet asked what else uses the carrier, the monitoring service or the one engineer who knows every station.
+
 ### 2.7 Common errors and limits
 
 - Mapping systems instead of functions — a list of servers is not a dependency map.
@@ -262,6 +269,9 @@ Draw a dependency map for one essential service with at least five upstream, thr
 - Treating "must be told" stakeholders as optional until an incident.
 - Speaking your own sector's jargon to another sector.
 - Dependency maps go stale; date them and set a review owner.
+
+- Accepting a critical customer's coping time without seeing the plan it comes from, as the coordinator avoided with the hospital's six hours.
+- Describing an outage in your own terms to another sector, instead of saying what it means for them, such as lower pressure from 14:00 to about 18:00 with water safe to drink.
 
 ### Exercises — chapter 2
 
@@ -378,6 +388,8 @@ On the day, M. Ilic asks to "quickly run a discovery tool to check versions". J.
 
 Take any routine supplier visit at an organization you know and write its authorization in the table format of 3.2. Mark which elements you could not fill in; those are the gaps in that organization's practice.
 
+Choose a visit that touches a system someone would worry about, such as a maintenance session on a controller, rather than a cleaner or a delivery. Write the stop conditions as events anyone on site could recognise. Then ask the person who would sign as service owner whether they agree with your scope and exclusions; their answer usually reveals a system you forgot. Keep your draft and their comments together as evidence of the gap you found.
+
 ### 3.8 Common errors and limits
 
 - "Verbal OK" from someone without authority over the service.
@@ -386,6 +398,9 @@ Take any routine supplier visit at an organization you know and write its author
 - Decision records written after the outcome is known.
 - Sending design information as ordinary email attachments.
 - TLP used as if it were a legal classification or to hide information from people who need it.
+
+- Letting the supplier redefine the work on the day, as ScadaCo's request to run a discovery tool would have done if J. Tan had not refused it.
+- Keeping no record of a refusal, so a later reviewer cannot see that the authorization was enforced.
 
 ### Exercises — chapter 3
 
@@ -455,6 +470,8 @@ The usual product, likelihood × consequence, is convenient but has two known pr
 ### 4.3 Ownership and hygiene
 
 A risk without an owner is a worry, not a managed risk. Register hygiene means each entry has: an owner with authority over the affected service; a treatment decision; a due date for the treatment; a last-review date; and a link to the evidence of progress. A coordinator checks hygiene regularly, because register decay is silent: nobody notices that a "high" risk was last reviewed eight months ago until something happens.
+
+In Lab 4, R02 shows all three failures at once: no owner, a review seven months old and an overdue treatment, on a level-5 risk.
 
 ### 4.4 Accepting risk
 
@@ -529,6 +546,8 @@ Note what the lab does not do. It does not tell you whether "likelihood 4" for R
 
 Change the ranking key in Lab 4 to sort by score alone and show the result to a colleague. Ask which order they would defend at a board meeting after a pressure failure at the hospital. Then write your organization's ranking rule in two sentences.
 
+Notice where R03 and R05 land in each order, because that is the argument you would face after an outage: a billing phishing risk ranked above loss of supply at a pumping station is hard to defend. Then add one invented risk with consequence 5 and likelihood 1 and check where it falls under each rule. Finally, run the hygiene checks with a different TODAY date, such as six months later, and see which reviews and treatments become stale or overdue without anyone noticing.
+
 ### 4.7 Common errors and limits
 
 - Scales without anchors, so "4" means different things to different people.
@@ -537,6 +556,9 @@ Change the ranking key in Lab 4 to sort by score alone and show the result to a 
 - Acceptances without expiry, which become permanent by default.
 - Registers that list technologies ("SCADA") instead of risk statements.
 - Treating the register as the goal; it is only the memory of decisions.
+
+- Letting a level-5 risk sit without an owner because nobody wants it, as R02 did for months.
+- Scoring likelihood without talking to the people who know the supplier or the threat, so the number reflects the coordinator's guess.
 
 ### Exercises — chapter 4
 
@@ -637,6 +659,8 @@ She reports to the executive: "*A self-assessment of corporate IT and the treatm
 
 Take any public dashboard or annual-report statement about cybersecurity (for example "100% of staff trained"). Apply the five questions and rewrite it as a decision-ready statement, noting what you would need to know.
 
+Write your rewrite in the same form as the coordinator's report on the CPG self-assessment: what was covered, how it was judged, what was left out and what decision follows. If the statement supports no decision, say so; that is a finding in itself. Keep the original figure, but put it after the context rather than at the front. Note the date of the statement and whether anything has changed since, such as a reorganisation or a new supplier.
+
 ### 5.7 Common errors and limits
 
 - Running several frameworks in parallel without mapping.
@@ -644,6 +668,10 @@ Take any public dashboard or annual-report statement about cybersecurity (for ex
 - Choosing metrics because data is easy to get.
 - Treating supplier marketing ("62443-compliant") as an assessment of your installation.
 - Forgetting that frameworks and baselines are revised; cite version and date.
+
+- Counting a goal as met because a policy exists, as the CPG self-assessment did, without asking whether it is in use or shown to work.
+- Leaving out part of the service, such as the twelve stations, and still reporting one figure for the whole utility.
+- Repeating an assessment result to the executive before asking when it was done and what has changed since.
 
 ### Exercises — chapter 5
 
@@ -722,6 +750,8 @@ The coordinator's interest is that security-relevant changes (new remote access,
 
 An escalation path answers, for each severity: who is called, by whom, how, within what time, and what happens if they do not answer. Write it as a table with deputies, test it (Chapter 11), and put it where night-shift operators can find it without a computer — a printed card in the control room — because the incident might have taken the computers.
 
+Kestrel Water's card lists the incident lead, the operations manager and the security lead with a named deputy for each, plus mobile numbers that do not depend on the corporate network.
+
 ### 6.5 Worked example: checking the incident RACI (synthetic)
 
 The coordinator drafts Kestrel Water's incident RACI and runs **Lab 6**, which applies the rules of 6.2.
@@ -785,6 +815,8 @@ The load line shows the operations manager carrying four R/A entries — during 
 
 Write a RACI for "onboard a new supplier with remote access" using at least five roles, then check it against the four rules by hand or by editing Lab 6.
 
+Include the supplier as a role and make sure it never approves its own access, which Lab 6 checks explicitly. Name who is accountable for creating the account, who checks that the contract has the security clauses, and who is informed when the account is enabled. Then count each person's R and A entries: if one name appears on nearly every line, onboarding will stall whenever that person is on leave. Show the result to the operations manager and ask whether anyone is missing.
+
 ### 6.7 Common errors and limits
 
 - Committees as accountable ("the security board").
@@ -792,6 +824,10 @@ Write a RACI for "onboard a new supplier with remote access" using at least five
 - Emergency changes never reviewed.
 - Escalation lists without deputies, or only stored on the network.
 - A RACI is a social contract: publish it, walk through it with each person, and update it after reorganisations.
+
+- Leaving the people who actually do the work off the matrix, as Lab 6 found with shift operators for manual operation.
+- Allowing a party to approve its own access, such as a supplier marked responsible for approving its remote session.
+- Giving one person so many R and A entries that the incident depends on them alone.
 
 ### Exercises — chapter 6
 
@@ -865,9 +901,13 @@ Higher levels cost more. A proportionate programme aims for **tested** on contro
 
 The coordinator usually designs the verification plan and runs second-line checks. Tests on operational systems must be authorized like any other work (Chapter 3), and in control environments a "test" is often a review of configuration and logs rather than an active attempt.
 
+Second-line checks should sample evidence directly rather than accept the owner's summary.
+
 ### 7.4 Exceptions
 
 Sometimes a control cannot be applied: an old station controller cannot support a second factor; a medical device cannot be patched without losing its certification. An **exception** is a recorded, owned decision to operate without the control, which is a form of risk acceptance (Chapter 4). It needs: the control and system concerned; the reason; compensating measures; the accepting authority; an expiry date; and a plan to remove the exception. An exception register is reviewed with the risk register.
+
+At Kestrel Water, the KW-10 controller exception went to the board with an expiry in March.
 
 ### 7.5 Worked example: verifying three controls (synthetic)
 
@@ -885,6 +925,8 @@ The verification plan that follows: fix C1 within 30 days (owner A. Mensah); sch
 
 Write control cards (objective, owner, operation, evidence, failure signal) for two controls at an organization you know, and assign each a current assurance level with justification.
 
+For each card, say what the failure signal would look like in practice, such as a supplier login with no second-factor event in the gateway log. Explain why you chose the assurance level, citing the evidence you actually saw. Then decide what level the control should reach, given the consequence it protects, and what one step would raise it, for example a restore test for a backup that has only been observed succeeding. Keep cards short enough that an owner will update them.
+
 ### 7.7 Common errors and limits
 
 - Equating "the job succeeded" with "the control works" (backups, patches).
@@ -892,6 +934,10 @@ Write control cards (objective, owner, operation, evidence, failure signal) for 
 - Active testing of operational systems without authorization and operations' agreement.
 - Exceptions without expiry, which silently become the design.
 - Reporting controls as "effective" without saying how that was established.
+
+- Treating a supplier's own statement that MFA is enabled as observed evidence, when only the gateway export shows it.
+- Verifying a control once and never again, so a later configuration change silently removes it.
+- Testing a spare or bench system and forgetting to confirm that production matches, as C3 did by checksum.
 
 ### Exercises — chapter 7
 
@@ -1021,6 +1067,8 @@ From the case, the coordinator drafts standard clauses for new supplier contract
 
 Present the case to your supervisor (here, E. Varga) in five parts: what was reviewed and under what authority; findings with evidence; decisions already taken and by whom; decisions requested from the supervisor (budget for MFA on ScadaCo's side, approval of contract clauses); and open questions with owners and dates.
 
+Keep each part short and label it, so the supervisor can stop you at any point and still know what is decided and what is asked. In the May review, the two unexplained Northgate sessions belong under open questions with their owner, not under findings. Bring the Lab 8 output and the authorization as attachments, and state plainly what was assumed, such as that the gateway export was complete. End by repeating the decisions requested and the date by which they are needed.
+
 ### 8.7 Common errors and limits
 
 - Treating unusual activity as proof of compromise — or ignoring it as "probably the project".
@@ -1028,6 +1076,9 @@ Present the case to your supervisor (here, E. Varga) in five parts: what was rev
 - Reviews using only one source (accounts without contracts or sessions).
 - Contract clauses that cannot be checked.
 - The lab models one gateway; real environments have several access paths (dial-up, cellular modems, supplier-installed remote tools) that the review must find.
+
+- Disabling an account for a supplier whose support is needed for a dosing problem in progress, without arranging an alternative.
+- Closing a review once the obvious findings are fixed, while two unexplained sessions remain open without an owner.
 
 ### Exercises — chapter 8
 
@@ -1077,6 +1128,8 @@ Two details decide whether you meet a clock: **what starts it** (detection, awar
 ### 9.2 Critical customers
 
 Hospitals, care homes, dialysis patients, other utilities and emergency services may need to act before the public does. Their needs are practical: what is affected, what they should do, for how long, when the next update comes, and whom to call. Agreements with them (Chapter 2) often promise a call within a short period. Keep their contacts tested and keep the message free of technical detail.
+
+Kestrel General Hospital's agreement promises a call within two hours of any event likely to affect supply or quality; its estates on-call, and out of hours the site duty manager, are the contacts.
 
 ### 9.3 Public communication
 
@@ -1146,9 +1199,13 @@ The coordinator records these facts in the decision log without blame, notifies 
 
 A short incident report for executives covers: what happened (facts, labelled confidence); impact on service and people; what has been done and decided; duties met and missed; risks now; decisions needed. Programme reports (monthly or quarterly) use the decision-driving metrics of Chapter 5 and the top consequence-ranked risks of Chapter 4.
 
+For the Saturday incident, the executive report would show that the hospital call was fifteen minutes late, the insurer was not told and the 72-hour notification was late, with the causes found rather than names. It would end with the two actions for the register and the approval deadlines, and ask the executive to confirm both. Keep it to one page and attach the clock calculations, so that a reader can check each time without trusting the summary.
+
 ### 9.7 Practical activity
 
 Draft a notification register for an organization you know with at least five duties. For each, write what starts the clock and who records it. Mark any duty whose source you have not verified.
+
+Include contracts and insurance as well as law, since the Saturday incident showed that an insurer's notice period can be missed simply because nobody listed it. For each duty, name an owner, set an internal deadline for approval ahead of the external one, and record the source document with its clause. Check whether two duties are started by the same moment; if so, agree who records that moment and in which time zone. Review the register whenever a contract or policy is renewed.
 
 ### 9.8 Common errors and limits
 
@@ -1157,6 +1214,10 @@ Draft a notification register for an organization you know with at least five du
 - Holding statements that promise "no impact" before evidence exists.
 - Naming individuals or suppliers prematurely.
 - Real legal duties vary; confirm yours with legal counsel and your regulator. This book's clocks are illustrative.
+
+- Leaving one call, such as the hospital briefing, to two people who each assume the other will make it.
+- Starting each clock from a different moment because nobody agreed what counts as aware.
+- Forgetting contractual and insurance duties because the register lists only regulators.
 
 ### Exercises — chapter 9
 
@@ -1286,9 +1347,13 @@ The coordinator's troubleshooting table:
 
 Lessons do not improve anything until they become actions with owners, dates and verification — and are closed. Track them in one place, review them at the risk committee, and verify each closure with evidence (the next exercise, a test, a document). A useful programme metric is the percentage of exercise actions closed and verified within their due date.
 
+In the DRY CREEK review, each fix has a matching verification: the next exercise inject on the hospital, a supplier register with a dependency column checked in the next access review, and a rerun of Lab 10 showing recorded rationales.
+
 ### 10.6 Practical activity
 
 Take a recent failure in any team you know (a missed deadline, a duplicated task). Fill the troubleshooting table without naming individuals and propose a fix with a verification method.
+
+Write the symptom as a precise fact with times or counts, as in the hospital example, rather than a judgement. List at least three hypotheses before looking for evidence, and note which evidence ruled each one out. Ask what made the action reasonable for the people involved at the time. Then choose a fix that changes a role, a tool or information, not one that asks people to try harder, and say how you will know it worked, for example in the next exercise or review.
 
 ### 10.7 Common errors and limits
 
@@ -1297,6 +1362,10 @@ Take a recent failure in any team you know (a missed deadline, a duplicated task
 - Fixes that are exhortations ("communicate better").
 - Actions without verification, closed on the owner's word.
 - Over-correcting with heavy process that slows real responses; keep fixes proportionate.
+
+- Fixing the symptom, such as reminding staff to call the hospital, while the RACI still lists two responsible people.
+- Counting a fast decision as good when no rationale was recorded, as with the KW-04 switch to manual in DRY CREEK.
+- Tracking actions in several places so that nobody can see which are overdue.
 
 ### Exercises — chapter 10
 
@@ -1359,9 +1428,13 @@ A design document has seven parts:
 
 Open with ground rules: this tests plans, not people; there are no trick questions; decide as you would in reality; say when you would need information you do not have. Keep the clock honest and resist rescuing players — if the team has no way to reach the hospital, the gap is the finding. Record decisions, not opinions about performance.
 
+In DRY CREEK the facilitator did not supply the missing hospital contact or assign the call when players hesitated; that silence produced the clearest finding of the exercise.
+
 ### 11.4 Evaluation and improvement
 
 Immediately after: a **hot wash** — each participant says what worked and what did not. Within two weeks: an **after-action report** (AAR) that rates each objective with evidence from the decision log, and an **improvement plan** that turns findings into owned, dated, verifiable actions (Chapter 10). The AAR is shared at the appropriate TLP level; it names gaps in plans and tools, not individuals.
+
+The DRY CREEK report rated O3 as not met and turned it into one action with an owner, a date and a re-test inject.
 
 ### 11.5 Worked example: exercise "DRY CREEK" (synthetic)
 
@@ -1395,9 +1468,13 @@ Immediately after: a **hot wash** — each participant says what worked and what
 | Evaluation | Criteria in advance; decision log; AAR and improvement plan with owners | Feelings-based debrief |
 | Ethics | Tests plans, not people; findings anonymised | Scores individuals |
 
+Use the rubric on the DRY CREEK design: its objectives are observable and time-bound, each inject maps to one.
+
 ### 11.7 Practical activity (supervised)
 
 Design a 90-minute tabletop for an essential service of your choice using the seven parts of 11.2, with at least four objectives and six injects. Ask your supervisor or a peer to score it against the rubric before you run it.
+
+Base the scenario on public threat information at a general level, as DRY CREEK used a stolen supplier laptop and an unusual remote session, and never on a real colleague's mistake. Map every inject to an objective with an expected decision, and name a safety officer with a stop phrase. Mark every written inject as an exercise. After scoring, revise the design and record what the reviewer changed, so the supervisor can see how feedback was used.
 
 ### 11.8 Common errors and limits
 
@@ -1407,6 +1484,9 @@ Design a 90-minute tabletop for an essential service of your choice using the se
 - Exercise injects that could be mistaken for real messages.
 - AARs that never become actions.
 - A tabletop shows whether plans and roles make sense; it does not show that procedures can be carried out at speed — that needs drills.
+
+- Choosing evaluators who are also players, so nobody observes the decisions independently.
+- Ignoring a hot-wash remark such as "we assumed comms had it", which in DRY CREEK pointed to the real cause.
 
 ### Exercises — chapter 11
 
@@ -1517,6 +1597,8 @@ Where the answer is "not yet", the chapter number tells you where to return.
 
 Assemble your portfolio from your exercise answers. Ask a peer to review it against the final rubric (EX060) and to try to verify three claims from your evidence alone.
 
+Choose claims that matter, such as "supplier MFA verified by test for two suppliers" or "historian restored in 19 hours", and see whether your peer can find the record, date and owner behind each from the portfolio alone. Where they cannot, fix the evidence rather than the wording. Mark every item clearly as course work on synthetic data, and remove anything that could identify a real organization or person before you share it.
+
 ### 12.7 Common errors and limits
 
 - Portfolios of certificates instead of work products.
@@ -1524,6 +1606,10 @@ Assemble your portfolio from your exercise answers. Ask a peer to review it agai
 - 90-day plans that start with tools.
 - Presenting synthetic course work as real organizational findings.
 - This course does not make you a technical OT specialist or a lawyer; know when to call one.
+
+- Reporting a claim to the board without a source in the portfolio, so nobody can check it later.
+- Asking the board for a decision without saying what happens if it declines, such as how long the KW-10 exception would otherwise run.
+- Updating the portfolio once and letting it go stale after the course ends.
 
 ### Exercises — chapter 12
 
