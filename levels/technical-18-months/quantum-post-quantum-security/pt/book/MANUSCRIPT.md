@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Operações Práticas para Equipes Técnicas
 
 - Idioma: português do Brasil (`pt`); curso técnico, 18 meses; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–9 de 18 já estão escritos em português, com os exercícios EX001–EX027 e suas resoluções; os capítulos 10–18 (EX028–EX054) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito; os exercícios EX001–EX054 (três por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: operadores técnicos — engenheiros de service desk, operadores de sistemas e de redes, administradores júnior — que precisam verificar, configurar, diagnosticar e confirmar configurações pós-quânticas em serviços reais, sob supervisão. Conhecimento de entrada: redes, sistemas operacionais, scripts e prática segura de laboratório.
 - Relação com os livros vizinhos: o [livro de tecnólogo](../../../../technologist-3-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) trata de integração e automação com mais profundidade; o [livro profissional](../../../../professional-6-months/quantum-post-quantum-security/en/book/MANUSCRIPT.md) trata da governança da migração. **Este livro é prático**: comandos, verificações, logs, mudanças de configuração, verificação e trabalho seguro em laboratório.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,8 +28,6 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 | Fundamentos | [1 Arquitetura de computação e de serviços](#ch-01) · [2 Redes e protocolos](#ch-02) · [3 Sistemas operacionais e identidades](#ch-03) · [4 Scripts e formatos de dados](#ch-04) · [5 Escopo de segurança e evidências](#ch-05) |
 | Operações PQC | [6 Modelo do sistema](#ch-06) · [7 Dados e telemetria](#ch-07) · [8 Modos de falha](#ch-08) · [9 Ferramentas e métodos](#ch-09) · [10 Configuração de controles](#ch-10) · [11 Verificação](#ch-11) · [12 Laboratório controlado I](#ch-12) |
 | Prática de operações | [13 Diagnóstico de problemas](#ch-13) · [14 Automação](#ch-14) · [15 Integração e dependências](#ch-15) · [16 Documentação técnica e segurança](#ch-16) · [17 Laboratório controlado II](#ch-17) · [18 Projeto técnico supervisionado](#ch-18) |
-
-Capítulos 10–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-10), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -749,16 +747,876 @@ Os operadores usam ferramentas de cliente atuais e validadas, registram versões
 <!-- cyberabc:chapter-navigation:start ch-09 -->
 ### Continue estudando — capítulo 09 de 18
 
-[← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (inglês) →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Segurança quântica e pós-quântica: configuração de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar a troca de chaves híbrida em servidores TLS e SSH num laboratório; (2) auditar configurações quanto à presença e à preferência; (3) manter o fallback clássico durante a transição; e (4) aplicar as mudanças por meio do controle de mudanças.
+
+### 10.1 Configuração do TLS
+
+Em servidores baseados em OpenSSL, defina a lista de grupos com o híbrido primeiro, por exemplo `X25519MLKEM768:X25519:secp256r1`. Os servidores web e os balanceadores de carga expõem isso por meio de uma diretiva ou de um perfil; consulte a documentação do seu produto para os nomes exatos. A ordem importa quando é o servidor que decide.
+
+No HHG, o balanceador de carga do portal do hóspede listava o X25519 primeiro, então a maioria dos clientes negociava clássico. Mantenha os grupos clássicos depois do híbrido, e não no lugar dele, e salve a string exata de grupos na linha de base, para que todos os listeners usem a mesma ordem.
+
+### 10.2 Configuração do SSH
+
+Na configuração do servidor OpenSSH, coloque `mlkem768x25519-sha256` primeiro em `KexAlgorithms`, seguido de `sntrup761x25519-sha512@openssh.com` e `curve25519-sha256` por compatibilidade. Recarregue o serviço e teste com `ssh -v` a partir de um cliente que suporte o híbrido.
+
+No HHG, essa é a mudança de que o servidor de troca de arquivos precisa após a atualização do seu OpenSSH. Salve a linha `KexAlgorithms` antes e depois da edição, verifique a sintaxe da configuração antes de recarregar e mantenha uma sessão existente aberta enquanto testa, para que um erro não o deixe trancado do lado de fora.
+
+### 10.3 Atividade prática — Laboratório T
+
+```python
+# Lab T (ch 10): audit synthetic TLS and SSH server configurations for post-quantum key exchange and preference order.
+configs = {  # service: ordered list of offered groups (server preference) - synthetic
+    "booking-api": ["X25519MLKEM768", "X25519", "secp256r1"],
+    "guest-portal": ["X25519", "X25519MLKEM768", "secp256r1"],
+    "channel-sftp": ["ecdh-sha2-nistp256"],
+    "ops-grafana": ["X25519", "secp384r1"]}
+HYBRID = {"X25519MLKEM768", "SecP256r1MLKEM768", "SecP384r1MLKEM1024"}
+for svc, groups in configs.items():
+    offered = [g for g in groups if g in HYBRID]
+    if not offered: verdict = "CLASSICAL ONLY"
+    elif groups[0] in HYBRID: verdict = "OK (hybrid preferred)"
+    else: verdict = "WARN hybrid offered but not preferred"
+    print(f"{svc:17s} {verdict}")
+```
+
+Saída esperada:
+
+```text
+booking-api       OK (hybrid preferred)
+guest-portal      WARN hybrid offered but not preferred
+channel-sftp      CLASSICAL ONLY
+ops-grafana       CLASSICAL ONLY
+```
+
+O portal do hóspede oferece híbrido, mas prefere o X25519 — o problema encontrado no Capítulo 5. O SFTP dos canais e o painel de operações são apenas clássicos.
+
+O script audita a lista ordenada de cada serviço quanto a duas propriedades: se algum método híbrido é oferecido e se um deles vem primeiro. A API de reservas passa nas duas verificações, enquanto o portal do hóspede falha na preferência e os outros dois falham na presença. Repare que a entrada de channel-sftp é um método SSH, que a lista TLS do script não conhece; uma auditoria de SSH precisa da sua própria lista de nomes híbridos, como `mlkem768x25519-sha256`. Estenda o script para tratar esse caso.
+
+### 10.4 Controle de mudanças
+
+Toda mudança em produção passa por um ticket de mudança: o quê, por quê, quando, risco, evidência de teste, reversão, aprovador. Faça a mudança na homologação, verifique, depois aplique em produção numa janela de baixo tráfego, verifique de novo e feche o ticket com evidências.
+
+No HHG, o ticket OPS-430 é um exemplo de registro completo. Anexe a evidência da homologação antes de pedir a aprovação e feche o ticket somente após a verificação em produção. No HHG, a mudança em produção do OPS-430 foi feita às 06:00 de uma terça-feira, um horário de baixo tráfego para o portal do hóspede. Registre o nome do aprovador.
+
+### 10.5 Caso resolvido
+
+Ticket OPS-430: reordenar os grupos no balanceador de carga do portal do hóspede para `X25519MLKEM768:X25519:secp256r1`. Teste na homologação: híbrido negociado pelos clientes atuais, X25519 por um cliente antigo. Mudança em produção na terça-feira às 06:00; a verificação às 06:10 mostra híbrido negociado; a proporção híbrida no painel sobe de 3 % para 85 % até o meio-dia. Plano de reversão (restaurar a ordem anterior) não necessário.
+
+O ticket segue todos os passos: teste na homologação com os dois tipos de cliente, uma janela de baixo tráfego, verificação imediata e um resultado mensurável. A reversão foi escrita com antecedência, embora não tenha sido usada. A subida da proporção híbrida também confirma a constatação do Capítulo 5.
+
+### 10.6 Atividade prática
+
+No laboratório, configure um servidor TLS e um servidor SSH com o híbrido primeiro; verifique com clientes; escreva o ticket de mudança que você abriria para a produção.
+
+Coloque o método híbrido primeiro e mantenha os métodos clássicos depois dele nos dois servidores. Verifique do lado do cliente com `openssl s_client` e `ssh -v`, e do lado do servidor com os logs. Teste também com um cliente antigo, para confirmar o fallback. Depois escreva o ticket de produção com o quê, por quê, quando, risco, evidência de teste, reversão e aprovador, usando o OPS-430 como modelo.
+
+### 10.7 Mantenha o fallback por ora
+
+Durante a transição, mantenha as opções clássicas depois do híbrido, para que os clientes mais antigos continuem se conectando. Removê-las é uma decisão separada e posterior, baseada num monitoramento que mostre poucos clientes clássicos restantes e no acordo com os responsáveis pelos serviços e com os parceiros.
+
+No HHG, quatro agências de viagem ainda usavam clientes SFTP antigos após a atualização, então remover os métodos clássicos as teria desconectado. Monitore a proporção clássica por serviço e por parceiro antes de propor a remoção, e registre a decisão e quem concordou com ela. A remoção não é uma decisão apenas do operador.
+
+### 10.8 Erros comuns e limites
+
+- Híbrido listado depois do clássico.
+- Remover o fallback cedo demais.
+- Mudanças sem tickets ou sem verificação.
+
+Cada erro enfraquece a proteção ou o controle. Listar o híbrido depois do clássico significa que a maioria dos clientes negocia clássico, como no portal do hóspede do HHG. Remover o fallback cedo demais desconecta clientes mais antigos, como as quatro agências com clientes SFTP antigos. Uma mudança sem ticket ou sem verificação não pode ser revisada, revertida de forma confiável nem comprovada. Confira cada mudança de configuração quanto aos três antes da aprovação. Corrija o que encontrar.
+
+### Exercícios
+
+- **EX028 — Linha do TLS.** Escreva uma lista de grupos com o híbrido primeiro e dois fallbacks clássicos. Rubrica: 3 = híbrido primeiro, nomes válidos.
+- **EX029 — Linha do SSH.** Escreva uma linha `KexAlgorithms` com o híbrido primeiro e fallbacks compatíveis. Rubrica: 3 = lista ordenada válida.
+- **EX030 — Ticket.** Escreva o ticket de mudança para habilitar o SSH híbrido no servidor SFTP dos canais. Rubrica: 3 = o quê, por quê, quando, risco, evidência de teste, reversão, aprovador.
+
+### Síntese
+
+Os operadores configuram o híbrido primeiro, com fallback clássico, no TLS e no SSH, auditam a preferência além da presença e fazem as mudanças por meio de tickets testados e verificados.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — capítulo 10 de 18
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Segurança quântica e pós-quântica: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar se as mudanças atingiram o seu objetivo; (2) executar testes de resposta conhecida e testes negativos no laboratório; (3) usar controles negativos; e (4) encerrar o trabalho com evidências.
+
+### 11.1 Verifique a negociação, não a configuração
+
+Uma configuração pode dizer híbrido enquanto as conexões negociam clássico. Verifique do lado do cliente (saída das ferramentas) e do lado do servidor (logs). No SSH, confira o algoritmo de KEX no `ssh -v`; nas VPNs, confira o status do túnel.
+
+Use os dois lados: a saída da ferramenta de cliente mostra o que um cliente obteve, e os logs do servidor mostram o que todos os clientes obtiveram. No HHG, a configuração do portal do hóspede listava o híbrido, mas os logs mostravam apenas 3 % de híbrido. Verifique com mais de um tipo de cliente, incluindo um cliente antigo, para confirmar que o fallback continua funcionando como pretendido.
+
+### 11.2 Atividade prática — Laboratório V
+
+```python
+# Lab V (ch 11): known-answer and negative tests - the habit behind validating PQC libraries.
+import hashlib
+KATS = [  # (function, input, expected hex prefix) - published test values for SHA-3 / SHAKE on empty input
+    ("sha3_256", b"", "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"),
+    ("shake_128/32", b"", "7f9c2ba4e88f827d616045507605853ed73b8093f6efbc88eb1a6eacfa66ef26"),
+]
+def run(name, data):
+    if name == "sha3_256": return hashlib.sha3_256(data).hexdigest()
+    return hashlib.shake_128(data).hexdigest(32)
+for name, data, want in KATS:
+    print(f"KAT {name:13s}", "PASS" if run(name, data) == want else "FAIL")
+SIZES = {"ML-KEM-512": 800, "ML-KEM-768": 1184, "ML-KEM-1024": 1568}   # encapsulation-key bytes, FIPS 203
+def validate_ek(param, ek):
+    if len(ek) != SIZES[param]: raise ValueError(f"{param}: expected {SIZES[param]} bytes, got {len(ek)}")
+    return True
+for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184)]:
+    try: validate_ek(param, bytes(n)); print(f"negative/positive test {param} len {n}: accepted")
+    except ValueError as e: print(f"negative/positive test {param} len {n}: rejected ({e})")
+```
+
+Saída esperada:
+
+```text
+KAT sha3_256      PASS
+KAT shake_128/32  PASS
+negative/positive test ML-KEM-768 len 1184: accepted
+negative/positive test ML-KEM-768 len 1183: rejected (ML-KEM-768: expected 1184 bytes, got 1183)
+negative/positive test ML-KEM-512 len 1184: rejected (ML-KEM-512: expected 800 bytes, got 1184)
+```
+
+Os testes de resposta conhecida verificam se as funções produzem as saídas publicadas; os testes negativos verificam se entradas com comprimento errado são rejeitadas.
+
+A primeira parte confere duas funções de hash contra as saídas publicadas para a entrada vazia; a segunda verifica se chaves de encapsulamento com comprimento errado para cada conjunto de parâmetros do ML-KEM são rejeitadas. Um PASS nas respostas conhecidas e as rejeições corretas mostram que as verificações funcionam. São os mesmos hábitos usados ao validar bibliotecas pós-quânticas reais: confirmar as saídas corretas e confirmar que entradas ruins são recusadas. Altere um byte de um valor esperado e confirme que o teste agora relata FAIL.
+
+### 11.3 Controles negativos
+
+Para confiar numa verificação, mostre que ela pode falhar: execute-a contra um servidor com o híbrido removido e confirme que ela relata clássico. Uma verificação que sempre diz "passou" é inútil.
+
+No HHG, após o OPS-430, o controle negativo na homologação mostrou 0 % de híbrido com o híbrido removido, provando que o painel mostraria uma falha se ela ocorresse. Execute o controle negativo na homologação ou no laboratório, nunca removendo a proteção em produção. Registre o resultado do controle negativo no ticket, com o horário e a configuração usada.
+
+### 11.4 Encerrando com evidências
+
+Anexe ao ticket as saídas, capturas de tela do painel com horários e a versão da configuração. Anote qualquer coisa inesperada, mesmo que a mudança tenha funcionado.
+
+No HHG, o ticket OPS-430 foi fechado com os resultados dos clientes, o número de 85 % dos logs do balanceador de carga e o controle negativo da homologação. Quem ler o ticket meses depois consegue ver o que foi verificado e quando. Evidência ausente significa que a mudança não está verificada, por melhor que ela pareça funcionar. Guarde as evidências na pasta combinada e vincule-as a partir do ticket, em vez de colar saídas grandes.
+
+### 11.5 Caso resolvido
+
+Após o OPS-430, o operador verifica: três tipos de cliente contra o portal de produção (dois híbridos, um cliente mais antigo clássico, como esperado); os logs do balanceador de carga mostram 85 % de híbrido; o controle negativo na homologação (híbrido removido) mostra corretamente 0 %. Evidências anexadas; ticket fechado.
+
+A verificação cobre os dois lados, inclui clientes antigos como o fallback esperado e acrescenta um controle negativo que prova que a verificação pode falhar. Cada resultado é anexado ao ticket. Um auditor conseguiria verificar o trabalho apenas pelo ticket, sem perguntar ao operador. Use-o como modelo.
+
+### 11.6 Atividade prática
+
+Verifique uma mudança de laboratório dos lados do cliente e do servidor e inclua um controle negativo.
+
+Use uma mudança do Capítulo 10, como a reordenação dos grupos. Registre os resultados dos clientes com as versões, as linhas de log do servidor e a versão da configuração. Para o controle negativo, remova o híbrido no laboratório, confirme que a verificação relata clássico e depois restaure-o. Anexe todas as saídas a um ticket de prática, como se fosse fechar uma mudança de produção, e anote qualquer coisa inesperada. Peça a um colega que o revise. Guarde o ticket com as suas anotações de laboratório.
+
+### 11.7 Verificando após outras mudanças
+
+A verificação não serve apenas para as suas próprias mudanças. Reverifique a negociação híbrida após qualquer atualização que mexa na pilha TLS ou SSH — patches do sistema operacional, firmware do balanceador de carga, reconstrução de imagens de contêiner —, porque essas atualizações podem redefinir a configuração. Uma verificação curta, em script, executada após cada janela de patches detecta regressões em poucas horas.
+
+No HHG, uma atualização de firmware do balanceador de carga redefiniu o perfil TLS da API de reservas; uma verificação em script após a janela de patches a teria encontrado no mesmo dia. Acrescente a verificação ao procedimento de patches.
+
+### 11.8 Erros comuns e limites
+
+- Verificar apenas a configuração.
+- Nenhum controle negativo.
+- Fechar tickets sem evidências.
+
+Cada erro deixa uma mudança sem comprovação. A configuração sozinha pode dizer híbrido enquanto os clientes negociam clássico, como no portal do hóspede do HHG antes do OPS-430. Uma verificação sem controle negativo pode relatar sucesso aconteça o que acontecer. Um ticket fechado sem evidências não pode ser auditado e não dá ao próximo operador nada com que comparar após uma atualização. Confira cada ticket fechado quanto aos três. Corrija o que encontrar antes que o ticket seja revisado. Anote o que você mudou.
+
+### 11.9 O que a verificação não mostra
+
+Uma negociação híbrida bem-sucedida mostra que a chave de sessão foi acordada com ML-KEM e X25519 juntos. Ela não mostra que o certificado do servidor é pós-quântico (provavelmente ainda é ECDSA ou RSA), que todos os outros saltos do caminho estão protegidos nem que a biblioteca está livre de falhas de implementação. Escreva esses limites no ticket, para que ninguém leia "verificado" como "o serviço inteiro é seguro contra o quântico". A qualidade da implementação vem do uso de bibliotecas avaliadas e atualizadas; falhas passadas, como o problema de tempo KyberSlash (Bernstein et al., 2024), foram corrigidas por atualizações de bibliotecas, não por configuração.
+
+Anote esses limites em todo ticket de verificação.
+
+### Exercícios
+
+- **EX031 — Dois lados.** Nomeie a evidência do lado do cliente e a do lado do servidor para a negociação híbrida no TLS. Rubrica: 3 = saída da ferramenta e logs do servidor.
+- **EX032 — Controle negativo.** Projete um controle negativo para a verificação do SSH híbrido. Rubrica: 3 = remover o híbrido, esperar clássico.
+- **EX033 — Verificação pós-patch.** Escreva três passos de uma verificação pós-patch. Rubrica: 3 = executar os clientes, conferir logs/painel, comparar com a linha de base.
+
+### Síntese
+
+A verificação confere a negociação real dos dois lados, inclui controles negativos, é repetida após outras atualizações e encerra o trabalho com evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 18
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório controlado I
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um laboratório isolado com TLS e SSH capazes de híbrido; (2) reproduzir uma implantação híbrida de ponta a ponta; (3) reproduzir uma falha comum; e (4) escrever um relatório de laboratório.
+
+### 12.1 Montagem do laboratório
+
+Use duas ou três máquinas virtuais ou contêineres numa rede isolada: um servidor com OpenSSL e OpenSSH atuais, um cliente com ferramentas atuais e, opcionalmente, um cliente antigo. Nada de dados de produção, nenhuma conexão com redes de produção, nenhuma credencial real.
+
+Registre as versões do OpenSSL, do OpenSSH e dos clientes, já que os resultados dependem delas. Use chaves de teste geradas e nomes de host de laboratório. No HHG, os trainees montam esse laboratório antes de mexer em qualquer serviço de homologação. Tire um snapshot assim que o laboratório funcionar.
+
+### 12.2 Exercícios no laboratório
+
+Configure o servidor com o híbrido primeiro; conecte com o cliente atual (espere híbrido) e com o cliente antigo (espere fallback clássico). Depois reordene os grupos para pôr o clássico primeiro e observe que o cliente atual agora negocia clássico — o fallback silencioso do Capítulo 8. Restaure a ordem correta.
+
+Salve a saída de cada execução com a configuração vigente no momento. O passo do fallback silencioso é o que mais importa: ele mostra que uma única edição pode remover a proteção híbrida sem que nada quebre, e é por isso que a ordem de preferência é verificada após cada mudança.
+
+### 12.3 Reproduzindo uma falha de tamanho
+
+Alguns laboratórios conseguem emular um dispositivo que descarta primeiras mensagens grandes, por exemplo um proxy configurado com um buffer pequeno. Observe timeouts com híbrido e sucesso sem ele. Isso mostra por que a correção está no dispositivo de rede, e não na remoção da proteção.
+
+No laboratório, registre o tamanho da primeira mensagem com e sem híbrido, para poder ligar os timeouts ao tamanho. No HHG, isso reproduziu o problema do firewall do Summit e embasou o pedido de uma correção de firmware em vez da remoção do híbrido do portal.
+
+### 12.4 Relatório de laboratório
+
+Declare o propósito, o ambiente (versões), os passos, os resultados, a interpretação e as lições. Inclua as saídas.
+
+Escreva-o de modo que outro operador possa repetir o laboratório apenas a partir do seu relatório. Mantenha a interpretação separada dos resultados e registre qualquer passo que não saiu como esperado, com o que você fez em seguida. Inclua a data e o snapshot de laboratório usado. Um relatório curto com versões e saídas completas é melhor do que um longo sem elas. Peça a um colega que repita um passo a partir dele antes de entregá-lo.
+
+### 12.5 Caso resolvido
+
+O relatório de laboratório de um trainee do HHG: servidor com OpenSSL 3.5.x e OpenSSH atual; o cliente atual negociou X25519MLKEM768 e `mlkem768x25519-sha256`; o cliente antigo recorreu ao clássico; os grupos reordenados causaram fallback silencioso; restaurado. Lição: sempre verificar a ordem de preferência após edições.
+
+O relatório é curto, mas completo: versões, resultados, a falha reproduzida e uma lição que muda a prática. Outro trainee conseguiria repeti-lo apenas a partir do relatório. A lição sobre a ordem de preferência é a mesma que o HHG aprendeu no portal do hóspede, então o laboratório confirma com segurança uma constatação de produção.
+
+### 12.6 Atividade prática
+
+Monte o laboratório e complete os passos; escreva o seu relatório.
+
+Siga os passos em ordem: monte o laboratório isolado, configure o híbrido primeiro, teste com clientes atuais e antigos, reproduza o fallback silencioso reordenando os grupos, restaure a ordem e, se o seu laboratório permitir, reproduza uma falha de tamanho. Salve todas as saídas. Depois escreva o relatório com propósito, ambiente e versões, passos, resultados, interpretação e lições, e peça a um colega que repita um passo apenas a partir do seu relatório. Guarde o relatório. Anote o que o colega achou pouco claro.
+
+### 12.7 Segurança do laboratório
+
+Mantenha a rede do laboratório separada das redes de casa ou do escritório; use chaves de teste geradas; destrua o laboratório ao terminar ou faça um snapshot dele com anotações. Nunca aponte ferramentas de laboratório para hosts de produção por engano: use nomes de host que não possam ser resolvidos fora do laboratório e confira duas vezes os alvos antes de executar comandos.
+
+Registre no relatório onde o laboratório rodou, o seu layout de rede e os nomes dos alvos, para que outras pessoas possam verificar que o laboratório ficou isolado. Se suspeitar que um comando atingiu um host real, pare e comunique.
+
+### 12.8 Erros comuns e limites
+
+- Laboratórios conectados à produção.
+- Pular o teste com o cliente antigo.
+- Relatórios sem versões.
+
+Cada erro enfraquece o laboratório ou o seu relatório. Um laboratório conectado à produção pode afetar serviços reais ou vazar tráfego de teste. Pular o teste com o cliente antigo esconde se o fallback funciona, e é exatamente disso que dependem os parceiros do HHG com clientes mais antigos. Um relatório sem versões não pode ser repetido nem comparado, porque os resultados dependem das versões das bibliotecas e dos clientes. Confira o seu laboratório e o seu relatório quanto aos três. Corrija-os antes de entregar.
+
+### 12.9 Ampliando o laboratório
+
+Quando o básico funcionar, amplie o laboratório um passo de cada vez: acrescente um segundo servidor atrás de um proxy reverso para mostrar que cada salto negocia separadamente; acrescente um parser de logs que conte as sessões híbridas e clássicas; ou acrescente um bastion SSH para praticar a configuração de SFTP do Capítulo 10. Cada ampliação deve terminar com uma nota curta no relatório, para que o laboratório se torne um ambiente de treinamento reutilizável pela equipe.
+
+Registre o propósito de cada ampliação. Anote também as suas versões.
+
+### Exercícios
+
+- **EX034 — Projeto do laboratório.** Liste as máquinas e as versões de software do laboratório. Rubrica: 3 = servidor, cliente atual, cliente antigo, versões.
+- **EX035 — Fallback silencioso.** Descreva como reproduzir o fallback silencioso no laboratório. Rubrica: 3 = reordenar os grupos, observar clássico com o cliente atual.
+- **EX036 — Relatório.** Liste as seis seções do relatório de laboratório. Rubrica: 3 = propósito, ambiente, passos, resultados, interpretação, lições.
+
+### Síntese
+
+Um laboratório controlado permite aos operadores reproduzir com segurança a implantação híbrida, o fallback silencioso e as falhas de tamanho, e documentar as lições.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 18
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Segurança quântica e pós-quântica: diagnóstico de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) seguir um método de diagnóstico passo a passo; (2) fazer a triagem de logs de falha em causas prováveis; (3) corrigir problemas comuns sem remover a proteção de forma ampla; e (4) registrar a causa e a correção.
+
+### 13.1 Método
+
+Reproduzir → isolar → formular hipótese → testar → corrigir → verificar → registrar. Reproduza com o mesmo cliente e o mesmo caminho no laboratório, se possível. Isole tentando um caminho direto, um cliente diferente ou o híbrido desligado numa única conexão de teste. Mude uma coisa de cada vez.
+
+No HHG, o timeout do Summit foi reproduzido no laboratório com o mesmo firmware de firewall antes que qualquer correção fosse escolhida. Anote cada hipótese e o teste que a confirmou ou descartou, para que o registro mostre como a causa foi encontrada.
+
+### 13.2 Atividade prática — Laboratório H
+
+```python
+# Lab H (ch 13): triage synthetic handshake failure logs into likely causes.
+import re, collections
+logs = """2026-10-01T10:00Z client=10.0.4.7 err=handshake_timeout size_clienthello=1530 path=proxy-b
+2026-10-01T10:01Z client=10.0.4.9 err=handshake_timeout size_clienthello=1530 path=proxy-b
+2026-10-01T10:02Z client=10.0.7.2 err=no_shared_group offered=x25519mlkem768
+2026-10-01T10:03Z client=10.0.4.8 err=handshake_timeout size_clienthello=1530 path=proxy-b
+2026-10-01T10:04Z client=10.0.9.1 err=bad_certificate alg=mldsa65
+2026-10-01T10:05Z client=10.0.4.3 err=handshake_timeout size_clienthello=300 path=direct""".splitlines()
+causes = collections.Counter()
+for line in logs:
+    f = dict(re.findall(r"(\w+)=(\S+)", line))
+    if f["err"] == "handshake_timeout" and int(f.get("size_clienthello", 0)) > 1400: c = "large ClientHello dropped (" + f["path"] + ")"
+    elif f["err"] == "no_shared_group": c = "client/server group mismatch"
+    elif f["err"] == "bad_certificate": c = "client cannot verify PQ certificate"
+    else: c = "other / investigate"
+    causes[c] += 1
+for c, n in causes.most_common(): print(f"{n}  {c}")
+```
+
+Saída esperada:
+
+```text
+3  large ClientHello dropped (proxy-b)
+1  client/server group mismatch
+1  client cannot verify PQ certificate
+1  other / investigate
+```
+
+Três timeouts compartilham um proxy e uma primeira mensagem grande: o proxy é a causa provável. A incompatibilidade de grupos e o erro de certificado precisam de tickets separados.
+
+O script lê seis linhas de log sintéticas e atribui cada uma a uma causa provável usando regras simples: um timeout com primeira mensagem acima de 1.400 bytes aponta para uma mensagem grande sendo descartada, enquanto os erros de grupo e de certificado se associam diretamente. O último timeout teve uma mensagem pequena num caminho direto, então fica para investigação. Repare como agrupar pelo caminho mostra que o proxy-b é o fator comum. Acrescente uma linha sua e confira o resultado.
+
+### 13.3 Correções típicas
+
+Proxy ou firewall descarta mensagens grandes → atualização de firmware ou correção de configuração nesse dispositivo; enquanto isso, encaminhe os usuários afetados para um listener compatível. Nenhum grupo compartilhado → restaure o fallback clássico no servidor ou atualize o cliente. Falha na verificação do certificado → acrescente a nova raiz ao repositório de confiança do cliente ou mantenha o certificado clássico para esse grupo de clientes. Fallback silencioso → corrija a ordem dos grupos e acrescente um alerta.
+
+Escolha a correção mais estreita que restaure o serviço e registre qualquer passo provisório como exceção com data de término. No HHG, o encaminhamento do Summit para um listener sem híbrido foi removido assim que o firmware do firewall foi atualizado.
+
+### 13.4 Registro
+
+Escreva os sintomas, as evidências, a causa, a correção, a verificação e o que ficar pendente. Vincule os tickets relacionados, para que os padrões fiquem visíveis: três unidades com o mesmo modelo de firewall devem virar um único caso com o fornecedor.
+
+No HHG, o ticket do Summit registrou os timeouts, a reprodução no laboratório, o encaminhamento provisório, a correção de firmware e a confirmação. Se outra unidade relatar os mesmos sintomas, os tickets vinculados mostram o padrão de imediato, e o caso com o fornecedor pode cobrir todos os sites afetados. Feche-o somente após a verificação.
+
+### 13.5 Caso resolvido
+
+Ticket: "A recepção do Summit não consegue carregar o portal do hóspede desde segunda-feira." Evidências: timeouts apenas a partir do Summit; uma triagem no estilo do Laboratório H mostra ClientHello grande através do firewall da unidade. Um teste de laboratório com o mesmo firmware de firewall a reproduz. Provisório: uma política encaminha a sub-rede da recepção do Summit para um listener sem o grupo híbrido, registrada como exceção. Correção: atualização do firmware do firewall na quinta-feira; exceção removida; negociações híbridas a partir do Summit confirmadas.
+
+O operador reproduziu a falha antes de corrigi-la e manteve a medida provisória estreita e registrada.
+
+### 13.6 Atividade prática
+
+Usando a saída do Laboratório H, escreva três tickets — um por causa distinta — com as primeiras verificações.
+
+Escreva um ticket para os timeouts do proxy-b, um para a incompatibilidade de grupos e um para o erro de certificado. Para cada um, informe os sintomas com as linhas de log, uma causa provável marcada como tal, as primeiras verificações para confirmá-la, a medida provisória estreita, se necessária, e o responsável. Anote separadamente o único timeout de caminho direto como item a investigar. Vincule os tickets se suspeitar de uma causa comum.
+
+### 13.7 Pedindo ajuda
+
+Escale quando a causa estiver fora do seu controle ou a correção exigir uma mudança que você não está autorizado a fazer. Inclua as evidências, o que você tentou e o que precisa. Bons escalonamentos são curtos, específicos e reproduzíveis; eles são respondidos mais rápido.
+
+No HHG, a correção do firewall do Summit precisava do Network Ops e do fornecedor do firewall, então o operador escalou com a reprodução de laboratório e a versão do firmware anexadas. Diga o que você já descartou, para que quem ajuda não repita as suas verificações. Combine quando você terá retorno.
+
+### 13.8 Erros comuns e limites
+
+- Desligar o híbrido em todos os lugares.
+- Mudar várias configurações de uma vez.
+- Correções sem verificação.
+
+Cada erro piora o diagnóstico. Desligar o híbrido em todos os lugares por causa de um caminho, como o firewall do Summit, remove a proteção de todas as outras unidades. Mudar várias configurações de uma vez significa que ninguém sabe qual mudança resolveu o problema ou causou um novo. Uma correção sem verificação pode não funcionar, e o ticket será reaberto. Confira todo ticket de diagnóstico quanto aos três antes de fechá-lo. Corrija o que encontrar.
+
+### Exercícios
+
+- **EX037 — Triagem.** No Laboratório H, qual causa você investigaria primeiro, e por quê? Rubrica: 3 = os timeouts do proxy, mais frequentes e com padrão comum.
+- **EX038 — Correção provisória.** Descreva uma correção provisória estreita para o problema do Summit. Rubrica: 3 = encaminhar a sub-rede para um listener compatível, com exceção e expiração.
+- **EX039 — Escalonamento.** Escreva um escalonamento de três linhas para o fornecedor do firewall. Rubrica: 3 = produto/versão, evidências, pedido.
+
+### Síntese
+
+O diagnóstico metódico, a triagem de logs e as correções provisórias estreitas resolvem problemas pós-quânticos mantendo a proteção para todos os demais.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 18
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Segurança quântica e pós-quântica: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar verificações rotineiras da negociação e da configuração; (2) usar limites de confiança para decidir quando uma etapa de implantação é segura; (3) agendar verificações após patches; e (4) manter os scripts fáceis de manter.
+
+### 14.1 Verificações rotineiras
+
+Agende scripts para: executar diariamente uma verificação de cliente contra cada serviço no escopo; analisar os logs quanto à proporção híbrida; auditar as exportações de configuração quanto à presença e à preferência. Envie os resultados ao painel e gere alertas quando houver mudanças.
+
+No HHG, o job noturno contra 14 endpoints é um exemplo. Guarde os resultados com datas, para que cada execução possa ser comparada com a anterior, e garanta que todo alvo esteja no escopo. Gere alertas apenas para mudanças que exijam ação. Mantenha os scripts sob controle de versão junto com a sua lista de alvos e revise os dois juntos.
+
+### 14.2 Atividade prática — Laboratório K
+
+```python
+# Lab K (ch 14): canary gate for enabling a hybrid group - promote only if failures stay within budget.
+import math
+def upper95(k, n):                      # Wilson upper bound
+    z = 1.96; p = k / n; d = 1 + z*z/n
+    return ((p + z*z/(2*n)) + z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))) / d
+baseline, budget = 5e-4, 4e-4            # baseline failure rate, allowed increase
+for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% canary (proxy site)", 96, 50000)]:
+    ub = upper95(k, n); ok = ub <= baseline + budget
+    print(f"{stage:24s} {k}/{n}  upper95={ub:.5f}  {'PROMOTE' if ok else 'HOLD'}")
+```
+
+Saída esperada:
+
+```text
+1% canary                3/5000  upper95=0.00176  HOLD
+10% canary               28/50000  upper95=0.00081  PROMOTE
+10% canary (proxy site)  96/50000  upper95=0.00234  HOLD
+```
+
+Quando uma mudança é implantada em etapas, a decisão de passar à etapa seguinte deve usar o limite superior de confiança da taxa de falhas, e não apenas a taxa observada. Uma amostra pequena pode parecer boa por sorte.
+
+O script calcula um limite superior de Wilson da taxa de falhas em cada etapa e promove apenas se ele ficar dentro da linha de base mais a margem. A primeira etapa fica retida porque 5.000 conexões são poucas para haver confiança, mesmo que a taxa observada esteja boa. A etapa de 10 % é promovida. O site com proxy fica retido porque a sua taxa de falhas está claramente acima da margem, o que aponta para uma falha. Mude as contagens e veja quando cada decisão muda.
+
+### 14.3 Após as janelas de patches
+
+Execute automaticamente o conjunto completo de verificações após cada janela de patches e compare com a execução anterior. As diferenças vão para o operador de plantão.
+
+No HHG, essa comparação encontrou dois endpoints que tinham passado de híbrido a clássico após um patch do balanceador de carga. Escreva a comparação de modo que uma diferença nomeie o endpoint, o resultado anterior e o novo, e inclua um link para o runbook. Guarde a saída completa de cada execução. Confira a saída antes da próxima janela de patches. Registre quem revisou cada diferença.
+
+### 14.4 Scripts fáceis de manter
+
+Controle de versão, um README, entradas e saídas claras, mensagens de erro que digam o que deu errado e um pequeno teste com entrada conhecida. Evite senhas embutidas no código; use o cofre de segredos aprovado.
+
+No HHG, o script de verificação noturna é mantido sob controle de versão junto com a sua lista de alvos e uma entrada de teste. Revise as mudanças nos scripts da mesma forma que as mudanças de configuração e registre quem mantém cada script. Escreva mensagens de erro que digam o que deu errado e onde, para que o operador de plantão possa agir sem ler o código.
+
+### 14.5 Caso resolvido
+
+O HHG agenda um job noturno que executa verificações com `openssl s_client` contra 14 endpoints de homologação e de produção no escopo, extrai o grupo negociado e grava um CSV. Um diff com a noite anterior sinaliza dois endpoints que passaram de híbrido a clássico após um patch do balanceador de carga; o operador da manhã restaura o perfil.
+
+O job encontrou uma regressão que não causou erros, e o operador da manhã pôde agir antes que hóspedes ou parceiros percebessem. O diff tornou a mudança óbvia sem que ninguém precisasse ler 14 conjuntos de saída.
+
+### 14.6 Atividade prática
+
+Escreva um script que leia uma lista de hosts de laboratório, execute uma verificação TLS em cada um e imprima o host e o grupo negociado.
+
+Leia os hosts de um arquivo, um por linha, e execute `openssl s_client` contra cada um com um timeout. Extraia o grupo negociado da saída, imprima o host e o grupo e marque o host como desconhecido se a verificação falhar. Imprima o número de hosts lidos. Teste-o apenas nos seus hosts de laboratório. Acrescente um pequeno arquivo de teste com a saída esperada, para que um colega possa verificar o script depois de alterá-lo.
+
+### 14.7 Automação e escopo
+
+Verificações automatizadas continuam sendo verificações: precisam estar dentro do escopo escrito, rodar em horários combinados e parar se um alvo se comportar de forma inesperada. Mantenha a lista de alvos no repositório, revisada como código, para que ninguém acrescente por acidente um host fora do escopo.
+
+No HHG, os 14 endpoints do job noturno estão na lista de alvos revisada, cada um com a sua referência de escopo. Revise a lista de alvos sempre que o escopo mudar e remova os hosts que não estiverem mais no escopo. Faça o job parar e alertar se um alvo responder de forma inesperada.
+
+### 14.8 Erros comuns e limites
+
+- Promover uma etapa com base numa amostra pequena e afortunada.
+- Scripts com segredos embutidos.
+- Listas de alvos não revisadas.
+
+Cada erro cria risco. Promover uma etapa com base numa amostra pequena pode deixar uma falha chegar a todos os usuários, e é por isso que o Laboratório K usa um limite superior. Segredos embutidos em scripts vazam pelo controle de versão e pelos logs. Uma lista de alvos não revisada pode acrescentar um host fora do escopo, e o job então o testará todas as noites. Confira a sua automação quanto aos três antes de agendá-la. Corrija-os primeiro.
+
+### 14.9 Qualidade dos alertas
+
+Um alerta que dispara todas as noites por uma exceção conhecida e aceita ensina os operadores a ignorar alertas. Suprima explicitamente as exceções conhecidas, com uma data de expiração que coincida com o registro da exceção, e revise as supressões todo mês. Cada alerta deve ter um link para o seu runbook, para que a pessoa acordada às 03:00 saiba o que fazer primeiro.
+
+No HHG, o listener provisório do Summit deve ser suprimido apenas até a sua exceção expirar. Registre cada supressão com o motivo e o responsável, e remova-a quando a exceção for encerrada. Conte a cada mês os alertas que não exigiram ação.
+
+### Exercícios
+
+- **EX040 — Decisão de etapa.** Usando o Laboratório K, explique por que o primeiro canário fica retido. Rubrica: 3 = limite superior acima da margem por causa da amostra pequena.
+- **EX041 — Alerta por diff.** Descreva como um diff noturno detecta o fallback silencioso. Rubrica: 3 = comparar o grupo negociado por host, alertar em híbrido→clássico.
+- **EX042 — Higiene de scripts.** Liste quatro características de um script de verificação fácil de manter. Rubrica: 3 = controle de versão, README, erros claros, teste.
+
+### Síntese
+
+A automação executa as verificações rotineiras, controla as etapas de implantação com limites de confiança, reverifica após patches e permanece dentro do escopo e fácil de manter.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 18
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Segurança quântica e pós-quântica: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) rastrear um fluxo por todos os saltos; (2) identificar quem controla cada salto; (3) preparar pedidos a fornecedores e parceiros; e (4) entender a agilidade por meio de política, e não de código.
+
+### 15.1 Todo salto conta
+
+Uma reserva de uma agência de viagem chega ao HHG pelo sistema da agência, pelo servidor de troca de arquivos, por um processador interno e pelo banco de dados de reservas. Cada salto negocia separadamente. Uma conexão híbrida num salto não diz nada sobre o seguinte.
+
+No fluxo de reservas das agências, verifique cada salto e registre a sua evidência separadamente. Um número do painel para o servidor SFTP não cobre o processador interno nem a conexão com o banco de dados. Desenhe o fluxo com todos os saltos e marque quais têm evidência de troca de chaves híbrida e quais não têm.
+
+### 15.2 Controladores
+
+Escreva quem controla cada salto: as operações do HHG, um fornecedor, um provedor de nuvem ou um parceiro. O HHG pode mudar os seus próprios servidores; para o resto, só pode pedir, exigir em contrato ou contornar.
+
+No fluxo de reservas dos canais, os clientes das agências são controlados pelos parceiros, o servidor SFTP e o processador interno pertencem ao HHG, e o banco de dados de reservas é um serviço gerenciado. Registre cada controlador com um contato e a via que o HHG pode usar para influenciá-lo. Mantenha a lista atualizada.
+
+### 15.3 Pedidos
+
+Um bom pedido a fornecedor ou parceiro nomeia o produto e a versão, pergunta quais algoritmos e protocolos pós-quânticos são suportados, a partir de qual versão e data, e pede um sistema de teste. Registre as respostas como evidência do fornecedor até que sejam verificadas.
+
+No HHG, o pedido ao provedor do banco de dados gerenciado nomearia o nível de serviço, perguntaria sobre a troca de chaves híbrida nas conexões de clientes e pediria datas e um endpoint de teste. Guarde uma cópia de cada pedido e defina uma data de acompanhamento. Classifique as respostas como evidência do fornecedor.
+
+### 15.4 Atividade prática — Laboratório A
+
+```python
+# Lab A (ch 15): crypto-agility through a policy-driven registry instead of hard-coded algorithms.
+import hashlib, hmac
+REGISTRY = {"hmac-sha256": lambda k, m: hmac.new(k, m, hashlib.sha256).digest(),
+            "hmac-sha3-256": lambda k, m: hmac.new(k, m, hashlib.sha3_256).digest()}
+POLICY = {"tag-algorithm": "hmac-sha256", "accept": ["hmac-sha256", "hmac-sha3-256"]}
+def protect(key, msg):
+    alg = POLICY["tag-algorithm"]; return alg, REGISTRY[alg](key, msg)
+def check(key, msg, alg, tag):
+    if alg not in POLICY["accept"]: return False            # algorithm identifier is authenticated by policy
+    return hmac.compare_digest(REGISTRY[alg](key, msg), tag)
+k, m = b"k" * 32, b"guest folio 42"
+a1, t1 = protect(k, m)
+POLICY["tag-algorithm"] = "hmac-sha3-256"                   # migration = one policy change
+a2, t2 = protect(k, m)
+print("old tag still verifies during transition:", check(k, m, a1, t1))
+print("new tag verifies:", check(k, m, a2, t2), "| algorithms:", a1, "->", a2)
+POLICY["accept"] = ["hmac-sha3-256"]                        # retire the old algorithm
+print("old tag after retirement:", check(k, m, a1, t1))
+```
+
+Saída esperada:
+
+```text
+old tag still verifies during transition: True
+new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
+old tag after retirement: False
+```
+
+Sistemas que leem as escolhas de algoritmo de uma política conseguem mudá-las sem alterar o código. Quando perguntar aos fornecedores sobre a prontidão, pergunte se os algoritmos são configuráveis.
+
+O script guarda o nome do algoritmo junto de cada tag e escolhe os algoritmos a partir de uma política, e não do código. Mudar a política faz as novas tags passarem a SHA3-256 enquanto as tags antigas continuam sendo verificadas, e remover o algoritmo antigo da lista de aceitos o aposenta de forma limpa. É isso que significa criptoagilidade na prática. Pergunte se o produto de um fornecedor funciona assim antes de comprá-lo.
+
+### 15.5 Caso resolvido
+
+O fluxo de SFTP dos canais: cliente da agência de viagem (parceiro) → servidor SFTP do HHG (HHG) → processador interno (HHG) → banco de dados de reservas (provedor do serviço gerenciado). Após atualizar o OpenSSH e habilitar o KEX híbrido, 5 de 9 agências negociam híbrido; quatro usam clientes antigos. O HHG envia a elas um aviso com um endpoint de teste e um prazo de doze meses.
+
+O fluxo mostra que uma atualização no HHG protege apenas parte do caminho. Cinco agências se beneficiam agora; as outras quatro dependem das atualizações dos seus próprios clientes. Cada salto e a sua evidência entram na lista de dependências.
+
+### 15.6 Atividade prática
+
+Rastreie um fluxo do HHG com todos os saltos e controladores e redija um pedido a fornecedor.
+
+Escolha um fluxo, como as reservas das agências ou os logins no portal do hóspede. Liste cada salto com o seu protocolo, controlador e evidência. Depois redija um pedido a fornecedor para um salto que o HHG não controla: nomeie o produto e a versão, pergunte quais algoritmos e protocolos pós-quânticos são suportados, a partir de qual versão e data, e peça um sistema de teste. Registre o tipo de resposta esperado. Confira-o com um colega.
+
+### 15.7 Acompanhando as dependências
+
+Mantenha uma lista de dependências simples: salto, controlador, pedido enviado, resposta, grau da evidência, próxima data de acompanhamento. Revise-a todo mês. Dependências que nunca recebem resposta são riscos a levar ao seu gestor, não tarefas a esquecer.
+
+Quando chegar uma resposta, atualize o grau da evidência e a CBOM juntos. No HHG, a lista inclui as quatro agências com clientes SFTP antigos, com as datas dos avisos e o prazo de doze meses, e o pedido ao provedor do banco de dados gerenciado. Remova uma entrada somente quando o salto estiver verificado ou a dependência for formalmente aceita.
+
+### 15.8 Erros comuns e limites
+
+- Julgar um fluxo por um único salto.
+- Tratar as alegações dos fornecedores como fatos.
+- Nenhum acompanhamento de pedidos sem resposta.
+
+Cada erro deixa riscos sem ser vistos. Julgar o fluxo das agências apenas pelo salto SFTP deixaria de fora o banco de dados gerenciado. A alegação de um fornecedor não é evidência até ser testada. Um pedido sem data de acompanhamento tende a ser esquecido, deixando o salto desprotegido sem que ninguém tenha decidido isso. Confira a sua lista de dependências quanto aos três todo mês. Corrija o que encontrar. Anote qualquer pedido que espere há mais de um mês.
+
+### 15.9 Contornando uma dependência
+
+Quando um controlador não puder ou não quiser mudar em breve, às vezes o HHG consegue proteger os dados de outra forma: mover a parte sensível de uma transferência para um canal que o HHG controla, reduzir o que é enviado ou terminar uma conexão híbrida num gateway do HHG próximo ao parceiro. Cada contorno precisa de aprovação e de uma entrada no registro de exceções, porque muda o desenho do serviço.
+
+Registre a data de término de cada contorno. No HHG, o listener provisório do Summit foi uma mudança desse tipo e ficou registrado como exceção até que o firewall fosse corrigido.
+
+### Exercícios
+
+- **EX043 — Lista de saltos.** Liste os saltos e controladores do fluxo do portal do hóspede. Rubrica: 3 = cliente, CDN/balanceador, aplicação, banco de dados, com os controladores.
+- **EX044 — Pedido a fornecedor.** Escreva um pedido de quatro perguntas ao fornecedor sobre o hub das fechaduras. Rubrica: 3 = algoritmos, protocolos, versão/data, sistema de teste.
+- **EX045 — Pergunta de agilidade.** Por que perguntar aos fornecedores se os algoritmos são configuráveis? Rubrica: 3 = mudança futura sem substituição.
+
+### Síntese
+
+Integração significa cada salto e o seu controlador; os operadores enviam pedidos precisos, acompanham as respostas e dão preferência a produtos configuráveis.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — capítulo 15 de 18
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever runbooks para as operações pós-quânticas; (2) documentar linhas de base de configuração; (3) seguir as regras de segurança e de autorização; e (4) manter a documentação atualizada.
+
+### 16.1 Runbooks
+
+Um runbook diz: quando usá-lo (sintomas), o que verificar, as ações seguras, a reversão, como confirmar, a quem ligar. Escreva runbooks para quedas da proporção híbrida, timeouts de handshakes grandes, ausência de grupo compartilhado e erros de verificação de certificado.
+
+No HHG, o runbook de queda da proporção híbrida é um exemplo. Mantenha cada runbook curto o bastante para ser seguido durante uma indisponibilidade e teste-o no laboratório antes de confiar nele. Nomeie um responsável por cada runbook e a data da última revisão. Vincule cada um aos alertas que devem acioná-lo.
+
+### 16.2 Linhas de base
+
+Uma linha de base de configuração lista as configurações aprovadas para cada tipo de serviço: versões do TLS, grupos e ordem, `KexAlgorithms` do SSH, tipos de certificado, campos de log. Guarde-a sob controle de versão; as mudanças passam por revisão.
+
+No HHG, a linha de base contém a ordem de grupos aprovada `X25519MLKEM768:X25519:secp256r1` para o TLS e o `KexAlgorithms` com o híbrido primeiro para o SSH. A reversão da API de reservas a usou. Compare regularmente as configurações em execução com a linha de base e trate qualquer diferença como constatação. Registre cada mudança na linha de base com o seu motivo.
+
+### 16.3 Segurança e autorização
+
+Nunca execute testes ativos em produção sem aprovação por escrito; nunca tente forçar downgrades fora do laboratório isolado; nunca manuseie chaves fora das ferramentas aprovadas; comunique imediatamente chaves expostas. Rotule os dados sintéticos como tal em todos os documentos e materiais de treinamento.
+
+No HHG, os testes de falha de tamanho foram feitos no laboratório isolado, não no firewall de produção do Summit. Se uma tarefa parecer exigir um teste ativo em produção, pare e peça primeiro a aprovação por escrito, e guarde a aprovação com as evidências. Comunique abertamente as violações dessas regras.
+
+### 16.4 Mantendo os documentos atualizados
+
+Revise os runbooks após cada incidente e cada mudança importante. Coloque no topo a data da "última revisão" e o responsável. Remova os passos que não se aplicam mais.
+
+No HHG, o incidente do Summit deve levar a uma revisão do runbook de handshakes grandes. Registre cada mudança com um motivo, para que os leitores saibam por que um passo existe. Um documento que ninguém revisou por um ano deve ser tratado como pouco confiável até ser verificado. Atribua cada revisão a um responsável nomeado e registre a data em que foi feita.
+
+### 16.5 Caso resolvido
+
+Runbook do HHG "Queda da proporção híbrida num serviço TLS": sintomas — alerta do painel, proporção híbrida abaixo de 50 %; verificações — última mudança no serviço, perfil TLS atual versus a linha de base; ações — reaplicar o perfil da linha de base no listener afetado; reversão — perfil anterior do controle de versão; confirmação — a proporção híbrida se recupera em até 30 minutos; contatos — plantão do Web Ops, depois o líder de plataforma. Última revisão em 2 de outubro; responsável: Web Ops.
+
+O runbook está completo: cada parte responde, em ordem, a uma pergunta que o operador de plantão terá. A confirmação em 30 minutos dá um ponto de parada claro.
+
+### 16.6 Atividade prática
+
+Escreva um runbook para "Nenhum grupo compartilhado no SFTP" usando o formato acima.
+
+Use os mesmos títulos: sintomas, verificações, ações, reversão, confirmação e a quem ligar. Baseie as verificações no que você aprendeu: o `KexAlgorithms` do servidor contra a linha de base, a versão do cliente e a última mudança. Mantenha a ação estreita, por exemplo restaurar o fallback clássico apenas no servidor SFTP. Acrescente um responsável e uma data de revisão, e teste o runbook no laboratório antes de entregá-lo. Peça a um colega que o siga.
+
+### 16.7 Escrevendo para o turno da noite
+
+Os runbooks são lidos sob pressão, muitas vezes à noite. Use passos curtos e numerados, comandos exatos, saídas esperadas e pontos de parada claros ("se a proporção não tiver se recuperado após o passo 4, ligue para o líder de plataforma"). Evite explicações longas nos passos; vincule o contexto em outro lugar.
+
+No HHG, o runbook de queda da proporção híbrida informa o ponto de confirmação de 30 minutos e nomeia a quem ligar em seguida. Teste cada runbook com alguém que não o escreveu, de preferência no laboratório ao fim de um turno, e corrija qualquer passo que tenha feito a pessoa hesitar.
+
+### 16.8 Erros comuns e limites
+
+- Runbooks sem reversão.
+- Linhas de base guardadas apenas na cabeça de alguém.
+- Documentos desatualizados.
+
+Cada erro deixa a equipe exposta. Um runbook sem reversão deixa o operador de plantão sem saída quando uma correção falha. Uma linha de base guardada na cabeça de alguém desaparece quando a pessoa está ausente, e as configurações se desviam. Um documento desatualizado pode levar as pessoas a passos que não funcionam mais ou são inseguros. Confira cada runbook e cada linha de base quanto aos três a cada revisão. Corrija o que encontrar. Registre quando cada um foi verificado pela última vez e por quem.
+
+### 16.9 Compartilhando a documentação
+
+Guarde os runbooks e as linhas de base onde a equipe de plantão consiga alcançá-los durante uma indisponibilidade — não apenas num sistema que possa ele mesmo estar fora do ar. Muitas equipes mantêm uma cópia somente leitura num segundo local. Marque os documentos que contêm detalhes sensíveis de configuração e restrinja-os de acordo, mantendo os procedimentos gerais amplamente legíveis.
+
+Revise o acesso aos documentos restritos quando as pessoas mudarem de função. No HHG, o runbook de queda da proporção híbrida seria necessário durante uma indisponibilidade do balanceador de carga, então uma cópia precisa ser alcançável sem ele. Teste o acesso ao segundo local duas vezes por ano.
+
+### Exercícios
+
+- **EX046 — Runbook.** Escreva o runbook de "nenhum grupo compartilhado". Rubrica: 3 = sintomas, verificações, ações, reversão, confirmação, contatos.
+- **EX047 — Linha de base.** Liste cinco itens de uma linha de base de TLS. Rubrica: 3 = versões, grupos/ordem, tipos de certificado, log, suítes de cifras.
+- **EX048 — Regra de segurança.** Explique por que os testes de downgrade pertencem apenas ao laboratório. Rubrica: 3 = risco para as sessões de produção, autorização.
+
+### Síntese
+
+Runbooks, linhas de base e regras de segurança transformam a habilidade individual em operações confiáveis da equipe; os documentos só continuam úteis quando têm responsável e são revisados.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — capítulo 16 de 18
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório controlado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um laboratório de múltiplos saltos com monitoramento; (2) injetar e diagnosticar falhas; (3) praticar runbooks sob pressão de tempo; e (4) fazer o debriefing e melhorar os documentos.
+
+### 17.1 Layout do laboratório
+
+Cliente → proxy reverso → servidor web, mais um servidor SSH, todos capazes de híbrido; um parser de logs alimentando um painel simples; um cliente "legado"; e um proxy que pode ser configurado para descartar primeiras mensagens grandes.
+
+Monte-o a partir do laboratório do Capítulo 12, acrescentando o proxy, o parser de logs e o painel. Registre todas as versões. O proxy que descarta mensagens grandes reproduz com segurança o problema do Summit do HHG. Tire um snapshot do laboratório funcionando, para poder restaurá-lo entre os cenários. Rotule claramente cada host de laboratório como laboratório.
+
+### 17.2 Cenários
+
+O instrutor (ou um colega de equipe) injeta uma falha de cada vez: reordenar os grupos no proxy; restringir o buffer do proxy; remover o fallback clássico no SSH; substituir o certificado do servidor por um emitido por uma raiz de laboratório não confiável. Você diagnostica com logs e ferramentas e corrige usando os runbooks.
+
+Cada cenário corresponde a um modo de falha do Capítulo 8: fallback silencioso, mensagem grande descartada, nenhum grupo compartilhado e falha de certificado. Registre os sintomas que você vê, o runbook que usou e se ele funcionou. Restaure o laboratório à sua linha de base antes do cenário seguinte.
+
+### 17.3 Tempos
+
+Registre o tempo para detectar, o tempo para diagnosticar e o tempo para corrigir. O objetivo não é a velocidade em si, mas descobrir quais passos do runbook o atrasaram.
+
+Meça desde o momento em que a falha foi injetada até quando você a percebeu, depois até quando você soube a causa, depois até quando o serviço foi restaurado e verificado. Um tempo de diagnóstico longo costuma significar uma verificação ausente ou um passo confuso no runbook. Compare os tempos entre as sessões. Anote qual passo levou mais tempo.
+
+### 17.4 Debriefing
+
+Após cada cenário: o que aconteceu, o que você fez, o que ajudou, o que mudar no runbook ou no painel. Atualize os documentos imediatamente.
+
+No HHG, o debriefing após o cenário do buffer do proxy acrescentou um passo e um painel de visualização. Mantenha os debriefings curtos e sem culpados, com foco nos documentos e nas ferramentas, e não em quem foi lento. Registre cada mudança com o cenário que a causou. Teste cada runbook atualizado na sessão seguinte para confirmar que ele ajuda. Compartilhe as mudanças com a equipe.
+
+### 17.5 Caso resolvido
+
+Cenário 2 (buffer do proxy): detecção em 3 minutos (timeouts nos logs), diagnóstico em 11 minutos (o operador suspeitou primeiro do servidor), correção em 2 minutos (configuração do proxy restaurada). Debriefing: acrescentar ao runbook "verificar o proxy antes do servidor quando aparecerem timeouts num único caminho"; acrescentar ao painel visualizações por caminho.
+
+O debriefing transformou um diagnóstico de 11 minutos em duas melhorias concretas. O operador suspeitou primeiro do servidor, o que custou tempo; o novo passo do runbook e as visualizações por caminho fazem do proxy a primeira coisa verificada. Registre os tempos, para que as sessões seguintes possam mostrar se as mudanças ajudaram.
+
+### 17.6 Atividade prática
+
+Execute os quatro cenários; registre os tempos e as notas do debriefing.
+
+Execute os quatro cenários em sequência: grupos reordenados no proxy, buffer do proxy restrito, fallback clássico removido no SSH e uma raiz de laboratório não confiável no servidor. Para cada um, registre os tempos para detectar, diagnosticar e corrigir, o runbook usado e o que o atrasou. Restaure o laboratório entre os cenários. Termine com uma lista de mudanças nos runbooks ou no painel e faça-as antes da sessão seguinte. Compartilhe a lista com o seu instrutor.
+
+### 17.7 Trabalhando em dupla
+
+Pratique em duplas: um operador conduz, o outro lê o runbook e registra os tempos e as observações. Troquem os papéis a cada cenário. O trabalho em dupla expõe rapidamente os passos pouco claros e espelha a forma como os incidentes são tratados nas escalas reais de plantão.
+
+Registre no debriefing as observações dos dois papéis. Quem lê deve seguir o runbook exatamente como está escrito, para que os passos pouco claros ou ausentes fiquem visíveis, em vez de serem completados de memória. Combinem antes de cada cenário quem conduz e quem lê, e registrem qualquer passo que o leitor teve de explicar.
+
+### 17.8 Erros comuns e limites
+
+- Pular os debriefings.
+- Corrigir sem diagnosticar.
+- Não atualizar os documentos após as lições.
+
+Cada erro desperdiça o exercício. Pular os debriefings significa que os mesmos passos vão atrasá-lo da próxima vez. Corrigir sem diagnosticar, por exemplo restaurar a configuração do proxy sem conferir os logs, não ensina nada e pode esconder uma segunda falha. Não atualizar os documentos deixa a lição na sua cabeça em vez de no runbook, onde o turno da noite precisa dela. Confira cada sessão quanto aos três. Corrija o que encontrar. Anote o que você mudou em cada runbook após a sessão.
+
+### 17.9 Registrando o exercício
+
+Mantenha um registro curto de cada sessão de laboratório — data, cenários, tempos, ações do debriefing e quem participou — no repositório da equipe. Ao longo de várias sessões, o registro mostra se os tempos de detecção e de correção estão melhorando e quais runbooks mudaram em consequência. Ele também é evidência, para supervisores e auditores, de que a equipe pratica os seus procedimentos em vez de apenas escrevê-los.
+
+Mantenha o registro factual e breve. Revise-o a cada trimestre. Compartilhe um resumo com a equipe após cada sessão, para que as lições cheguem aos operadores que não participaram.
+
+### Exercícios
+
+- **EX049 — Plano de cenário.** Projete um quinto cenário para o laboratório. Rubrica: 3 = injeção realista, sintoma esperado, correção.
+- **EX050 — Análise dos tempos.** No caso resolvido, qual fase levou mais tempo e como você a encurtaria? Rubrica: 3 = diagnóstico; ordem do runbook/visualizações.
+- **EX051 — Cenário de certificado.** Que sintoma e que correção você espera no cenário da raiz de laboratório não confiável? Rubrica: 3 = erro de verificação; acrescentar a raiz ou restaurar o certificado confiável.
+
+### Síntese
+
+Laboratórios de múltiplos saltos com falhas injetadas e prática de runbooks cronometrada e com debriefing formam operadores capazes de encontrar e corrigir problemas rapidamente e de melhorar as suas ferramentas.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — capítulo 17 de 18
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar e concluir um projeto de operações supervisionado; (2) aplicar verificações, configuração, verificação e documentação de ponta a ponta; (3) relatar os resultados com evidências; e (4) fazer a passagem para a equipe.
+
+### 18.1 Escolhas de projeto
+
+Exemplos: habilitar e verificar a troca de chaves híbrida num serviço, na homologação e na produção, sob supervisão; construir o painel de grupos negociados para um conjunto de serviços; escrever e testar runbooks para os modos de falha pós-quânticos; construir a CBOM de uma unidade.
+
+No HHG, o projeto do SFTP dos canais, no caso resolvido abaixo, é uma escolha típica. Escolha um projeto pequeno o bastante para terminar sob supervisão, com uma forma clara de verificar o seu resultado, e combine-o com o seu supervisor antes de começar. Anote o resultado esperado.
+
+### 18.2 Plano
+
+Escopo e autorização; passos com evidências para cada um; riscos e reversão; cronograma; pontos de controle com o supervisor.
+
+Escreva o plano em uma página. Nomeie a referência de escopo, liste os passos com a evidência que cada um vai produzir, declare os riscos e a reversão de cada mudança e defina datas para os pontos de controle com o supervisor. No projeto do SFTP dos canais, isso inclui a atualização na homologação, os testes de clientes, o ticket de produção e o aviso aos parceiros. Obtenha a aprovação por escrito antes de começar. Revise o plano se o escopo mudar. Guarde o plano aprovado com as suas evidências.
+
+### 18.3 Execução
+
+Siga o controle de mudanças; salve as evidências; verifique dos dois lados; atualize os documentos. Peça ajuda cedo quando estiver bloqueado.
+
+Mantenha um registro datado do que você fez e de quais evidências foram salvas. No HHG, o projeto do SFTP dos canais seguiu o controle de mudanças para a mudança em produção e verificou dos lados do cliente e do servidor. Atualize os runbooks e o painel à medida que avança, não no final. Se um passo falhar, pare e registre-o antes de tentar de novo. Peça ajuda cedo. Registre qualquer desvio do plano.
+
+### 18.4 Relatório e passagem
+
+Relatório: objetivo, o que foi feito, evidências, resultados, questões pendentes e recomendações. Passagem: runbooks, scripts, painéis e a lista de itens em aberto, cada um com um responsável.
+
+No HHG, a passagem do SFTP dos canais para o Network Ops listou as quatro agências como itens em aberto. Verifique se todo item em aberto tem um responsável e uma data antes da passagem e peça à equipe que recebe que confirme que aceita cada um. Mantenha o relatório factual e inclua a evidência por trás de cada resultado. Guarde uma cópia com as evidências do seu projeto.
+
+### 18.5 Caso resolvido
+
+Projeto (sintético): "SSH híbrido para o SFTP dos canais." Passos: atualizar o OpenSSH na homologação; configurar `KexAlgorithms`; testar seis tipos de cliente das agências; mudança em produção sob ticket; verificar; visualização no painel para a proporção de KEX; runbook de "nenhum grupo compartilhado"; aviso aos parceiros. Resultados: 5 de 9 agências em híbrido após um mês; quatro sob aviso. Passagem para o Network Ops com itens em aberto para as quatro agências.
+
+O projeto produziu resultados duradouros: configuração, uma visualização no painel, um runbook e um aviso aos parceiros. A passagem deixa claro quem acompanha as quatro agências.
+
+### 18.6 Atividade prática
+
+Escreva o plano do seu projeto e obtenha a aprovação do seu supervisor.
+
+Use o formato do plano: referência de escopo, passos com evidências, riscos e reversão, cronograma e pontos de controle com o supervisor. Escolha um projeto entre os exemplos ou proponha um de tamanho semelhante. Mantenha-o em uma página. Peça ao seu supervisor que o revise, registre os comentários e como você os tratou, e guarde a versão aprovada com as evidências do seu projeto. Revise-o uma vez após o retorno. Anote qual projeto você escolheu e por que ele cabe no tempo disponível.
+
+### 18.7 Refletindo sobre o projeto
+
+Termine com uma reflexão curta: o que saiu conforme o planejado, o que o surpreendeu, qual habilidade você mais usou e o que faria diferente. Compartilhe-a com o seu supervisor; muitas vezes ela é a contribuição mais útil para o projeto do próximo trainee.
+
+Mantenha-a curta e honesta, com exemplos. No HHG, uma reflexão sobre o projeto do SFTP dos canais poderia notar que quatro agências precisaram de mais tempo do que o esperado e que um contato mais cedo com os parceiros teria ajudado. Escreva-a logo depois de terminar, enquanto os detalhes estão frescos.
+
+### 18.8 Erros comuns e limites
+
+- Começar sem aprovação.
+- Relatórios sem evidências.
+- Passagens sem responsáveis.
+
+Cada erro compromete o projeto. Começar sem aprovação coloca as mudanças fora do escopo e pode encerrar a sua autorização. Um relatório sem evidências não consegue mostrar o que foi alcançado, por melhor que o trabalho tenha ido. Uma passagem sem responsáveis deixa itens em aberto, como as quatro agências com clientes antigos, sem ninguém para acompanhá-los. Confira o seu projeto quanto aos três antes de apresentá-lo. Corrija o que encontrar. Anote qualquer correção no relatório.
+
+### 18.9 Avaliação
+
+O seu supervisor vai avaliar o projeto quanto a: permanência dentro do escopo; qualidade das evidências; correção da configuração (híbrido preferido com fallback controlado); verificação dos dois lados com um controle negativo; utilidade da documentação; e a passagem. Antes da avaliação, confira cada item você mesmo e vincule as evidências. Saber mostrar onde está cada evidência faz parte da habilidade avaliada.
+
+Por fim, apresente o projeto à sua equipe em dez minutos: o problema, o que você mudou, as evidências, o que falta e quem é responsável. Apresentações curtas e factuais de trabalhos concluídos são a forma como os operadores constroem confiança com as equipes cujos sistemas eles alteram.
+
+### Exercícios
+
+- **EX052 — Plano.** Escreva um plano de uma página para o projeto do painel. Rubrica: 3 = escopo, passos com evidências, riscos, cronograma, pontos de controle.
+- **EX053 — Resultados.** Expresse "5 de 9 agências" como porcentagem e declare o que falta. Rubrica: 3 = 56 %, quatro agências sob aviso.
+- **EX054 — Lista de passagem.** Liste cinco itens de passagem. Rubrica: 3 = runbooks, scripts, painéis, itens em aberto, responsáveis.
+
+### Síntese
+
+Um projeto supervisionado reúne todas as habilidades práticas — escopo, configuração, verificação, documentação e passagem — e deixa a equipe mais bem equipada.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — capítulo 18 de 18
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre o HHG são sintéticos. Esta edição parcial traz as resoluções de EX001–EX027; as de EX028–EX054 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre o HHG são sintéticos.
 
 **EX001.** TLS do portal do hóspede: configuração (operações do HHG). SSH da troca de arquivos: atualização do pacote e depois configuração (operações do HHG). VPN de site: firmware do fornecedor (fornecedor de rede). POS para a processadora: atualização do fornecedor/da processadora. Assinatura do firmware das fechaduras: renovação de hardware (fornecedor das fechaduras).
 
@@ -813,6 +1671,64 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX026.** 15.524 / 1.290 ≈ 12 vezes.
 
 **EX027.** Confirmar o escopo; registrar a ferramenta e a versão; executar a verificação; salvar a saída; comparar com o esperado; registrar a constatação ou "conforme o esperado".
+
+**EX028.** `X25519MLKEM768:X25519:secp256r1`
+
+**EX029.** `KexAlgorithms mlkem768x25519-sha256,sntrup761x25519-sha512@openssh.com,curve25519-sha256`
+
+**EX030.** O quê: habilitar o KEX híbrido no channel-sftp. Por quê: dados de reservas de 7 anos, risco de gravar agora. Quando: terça-feira às 06:00. Risco: clientes antigos das agências — fallback mantido. Evidência de teste: saídas de `ssh -v` da homologação para seis clientes. Reversão: restaurar o sshd_config anterior do controle de versão e recarregar. Aprovador: líder do Network Ops.
+
+**EX031.** Cliente: saída da ferramenta mostrando o grupo negociado. Servidor: logs de acesso/TLS com o campo do grupo.
+
+**EX032.** Na homologação, remover `mlkem768x25519-sha256` de `KexAlgorithms`; a verificação precisa relatar clássico; restaurar e reverificar.
+
+**EX033.** Executar a verificação de cliente contra os serviços no escopo; conferir o painel/os logs quanto à proporção híbrida; comparar com a linha de base anterior ao patch e alertar sobre as diferenças.
+
+**EX034.** VM servidor (OpenSSL atual ≥ 3.5, OpenSSH atual); VM do cliente atual (idem); VM do cliente antigo (OpenSSL/OpenSSH mais antigos); rede isolada; versões registradas.
+
+**EX035.** Colocar o grupo clássico primeiro na lista do servidor (`X25519:X25519MLKEM768`); conectar com o cliente atual e observar o X25519 negociado, embora o híbrido seja oferecido.
+
+**EX036.** Propósito; ambiente; passos; resultados; interpretação; lições.
+
+**EX037.** Os timeouts do proxy: três das seis falhas, um caminho comum e um padrão claro (ClientHello grande), afetando um site inteiro.
+
+**EX038.** Encaminhar a sub-rede da recepção do Summit para um listener sem o grupo híbrido, registrado como exceção com responsável e expiração vinculada à atualização do firewall.
+
+**EX039.** "Produto: firewall modelo X, firmware 5.2.1 no Summit. Evidência: ClientHello TLS de 1.530 bytes descartado (reprodução de laboratório anexada). Pedido: correção ou orientação de configuração e data prevista de versão."
+
+**EX040.** 3/5.000 tem um limite superior de Wilson de cerca de 0,18 %, acima do limite de 0,09 % (linha de base mais margem); a amostra é pequena demais para mostrar segurança.
+
+**EX041.** Guardar o grupo negociado de cada noite por host; fazer o diff com a noite anterior; alertar quando algum host passar de híbrido a clássico.
+
+**EX042.** Controle de versão; README; mensagens de erro claras; um teste com entrada conhecida (também: nenhum segredo embutido).
+
+**EX043.** Dispositivo do hóspede (hóspede) → CDN ou balanceador de carga (HHG ou provedor de CDN) → aplicação do portal (HHG) → banco de dados de reservas (HHG/provedor gerenciado).
+
+**EX044.** Quais algoritmos o hub usa para a troca de chaves e para a assinatura do firmware? Ele suporta troca de chaves pós-quântica ou híbrida, e em qual protocolo? A partir de qual versão de firmware e data? Podemos obter uma unidade ou um sistema de teste?
+
+**EX045.** Produtos configuráveis podem trocar de algoritmo por política mais tarde (inclusive em mudanças futuras), evitando a troca de hardware ou mudanças de código.
+
+**EX046.** Sintomas: o parceiro relata "no shared group". Verificações: versão do cliente do parceiro; `KexAlgorithms` atual do sshd; mudanças recentes. Ações: restaurar a lista aprovada com fallback clássico. Reversão: configuração anterior. Confirmação: o parceiro se conecta; KEX nos logs. Contatos: plantão do Network Ops, contato do parceiro.
+
+**EX047.** Versões do TLS (1.3, 1.2 se necessário); grupos e ordem; tipo de certificado; campos de log (protocolo, cifra, grupo); suítes de cifras.
+
+**EX048.** Os testes de downgrade podem quebrar ou enfraquecer sessões reais de hóspedes e parceiros e exigem autorização explícita; um laboratório isolado evita danos.
+
+**EX049.** Exemplo: configurar o servidor como somente híbrido e conectar com o cliente legado — sintoma "no shared group"; correção: restaurar o fallback clássico.
+
+**EX050.** Diagnóstico (11 minutos); encurtar ordenando as verificações do runbook (proxy antes do servidor em timeouts de caminho único) e acrescentando visualizações por caminho ao painel.
+
+**EX051.** Sintoma: erro de verificação de certificado nos clientes; correção: acrescentar a raiz de laboratório ao repositório de confiança do cliente (se for o pretendido) ou restaurar o certificado confiável.
+
+**EX052.** Escopo: lista de serviços e fontes de log, aprovação. Passos: acrescentar os campos de log (evidência da homologação), parser, visualizações do painel, alertas. Riscos: volume de logs — implantação em etapas. Cronograma: quatro semanas. Pontos de controle: semanais com o supervisor.
+
+**EX053.** 5/9 ≈ 56 %; quatro agências continuam no clássico, sob aviso com prazo de doze meses.
+
+**EX054.** Runbooks; scripts; painéis; lista de itens em aberto; responsáveis nomeados para cada um.
+
+## Rota de ensino de dezoito disciplinas
+
+Este é o curso **técnico** para operadores práticos, que acompanha o **Halden Hotel Group (HHG)** sintético por verificações, configuração, verificação, diagnóstico de problemas, automação, documentação e laboratórios controlados.
 
 <a id="references"></a>
 
