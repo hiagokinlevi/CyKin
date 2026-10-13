@@ -1727,7 +1727,7 @@ O primeiro resumo do candidato terminava assim: *"Este estudo prova que os ataqu
 
 ### 7.10 Atividade prática: proveniência dos números
 
-O laboratório guarda os resultados do Laboratório 6 e um parágrafo de minuta escrito em parte de memória. Ele extrai todos os números do texto, verifica se cada um corresponde a um resultado registrado (admitindo arredondamento) e sinaliza a redação que exagera.
+O laboratório guarda os resultados do Laboratório 6 e um parágrafo de minuta escrito em parte de memória. Ele extrai todos os números do texto, verifica se cada um corresponde a um resultado registrado (admitindo arredondamento) e sinaliza a redação que exagera. Salve-o como `lab7_provenance.py`: a resposta resolvida do EX039 lê a minuta a partir desse arquivo.
 
 ```python
 # Lab 7 - every number in the results text must trace to the analysis output (offline)

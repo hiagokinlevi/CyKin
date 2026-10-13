@@ -1727,7 +1727,7 @@ The candidate's first abstract ended: *"This study proves that ransomware attack
 
 ### 7.10 Practical activity: number provenance
 
-The lab holds the results from Lab 6 and a draft paragraph written partly from memory. It extracts every number from the text, checks whether it matches a recorded result (allowing rounding), and flags wording that overstates.
+The lab holds the results from Lab 6 and a draft paragraph written partly from memory. It extracts every number from the text, checks whether it matches a recorded result (allowing rounding), and flags wording that overstates. Save it as `lab7_provenance.py`: the EX039 worked answer reads the draft from that file.
 
 ```python
 # Lab 7 - every number in the results text must trace to the analysis output (offline)
