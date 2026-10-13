@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Doctoral Research Track
 
 - Language: English (`en`); course 196, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral candidates researching systems and endpoint security who must produce original, reproducible evidence with partner organisations.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -47,13 +47,13 @@ Yusuf Adeyemi is a doctoral candidate at the fictional Calder University, superv
 
 ### 1.2 Why integrity first
 
-Endpoint data are messy: devices are offline, tickets are labelled inconsistently and outcomes can be chosen after seeing results. Yusuf pre-registers his hypotheses, primary outcomes (95th-percentile days to patch and failure rate) and analysis plan with his supervisor before collecting main-study data.
+Endpoint data are messy: devices are offline, tickets are labelled inconsistently and outcomes can be chosen after seeing results. Yusuf pre-registers his hypotheses, primary outcomes (95th-percentile days to patch and failure rate) and analysis plan with his supervisor before collecting main-study data. The pre-registration names the two sites, the six-month window, the primary outcomes and the bootstrap interval for the failure-rate difference. Prof. Solberg holds a dated copy, so any later change in outcome or method can be compared with what was planned, and the thesis reports such changes with reasons.
 
 ### 1.3 Coding failure tickets
 
-Failure reasons in help-desk tickets are free text. Yusuf writes a codebook with four labels: reboot problems, disk space, application breakage and network. Two coders label 80 synthetic tickets independently.
+Failure reasons in help-desk tickets are free text. Yusuf writes a codebook with four labels: reboot problems, disk space, application breakage and network. Two coders label 80 synthetic tickets independently. The four labels came from reading a separate set of tickets during the pilot, so the codebook reflects how Harrowgate's help desk actually describes failures. Each label has a short definition and an example, and the coders label without seeing each other's choices. Agreement on these 80 tickets decides whether the codebook is good enough for the main study, against the 0.6 kappa threshold set beforehand.
 
-### Lab — Lab — coder agreement
+### Lab — coder agreement
 
 ```python
 """Cohen's kappa for two coders labelling synthetic patch-failure tickets (stdlib only)."""
@@ -74,11 +74,11 @@ tickets 80, observed agreement 0.875, chance 0.296, kappa 0.822
 
 ### 1.4 Reading agreement
 
-Observed agreement is 0.875, chance agreement 0.296 and Cohen's kappa 0.822. By the bands of Landis and Koch (1977), this is almost perfect agreement. Disagreements cluster between reboot and application labels, so the codebook gains a rule: if the application fails only until a reboot, label it reboot.
+Observed agreement is 0.875, chance agreement 0.296 and Cohen's kappa 0.822. By the bands of Landis and Koch (1977), this is almost perfect agreement. Disagreements cluster between reboot and application labels, so the codebook gains a rule: if the application fails only until a reboot, label it reboot. The new rule resolves the commonest disagreement by naming a test a coder can apply from the ticket: did the application work again after a reboot? Yusuf records the rule in the codebook with its date, so the main-study coders use the revised version and the change is traceable.
 
 ### 1.5 Data ethics
 
-Ticket text can name staff and occasionally patients. The trust's information governance lead approves a process where tickets are redacted before leaving the trust, and Yusuf works only with redacted, synthetic-structure extracts.
+Ticket text can name staff and occasionally patients. The trust's information governance lead approves a process where tickets are redacted before leaving the trust, and Yusuf works only with redacted, synthetic-structure extracts. Redaction happens inside the trust, by trust staff, before any extract reaches Calder, so no patient or staff name ever leaves Harrowgate. The approval names the fields kept, such as ticket date, device category and failure text with names removed, and the retention period at Calder. Calder's own ethics committee reviewed the same process, which the thesis cites with its reference.
 
 ### Worked example
 
@@ -118,23 +118,23 @@ You will (1) survey research on patching, configuration and endpoint behaviour; 
 
 ### 2.1 Patch research
 
-Li and Paxson (2017) studied thousands of security patches across open-source projects, finding that security fixes are often smaller than other fixes and that vulnerabilities can stay in code for years. Nappa et al. (2015) measured patch deployment on client machines and showed that shared code across applications leaves some copies unpatched long after a fix is released. Both show that release is not deployment.
+Li and Paxson (2017) studied thousands of security patches across open-source projects, finding that security fixes are often smaller than other fixes and that vulnerabilities can stay in code for years. Nappa et al. (2015) measured patch deployment on client machines and showed that shared code across applications leaves some copies unpatched long after a fix is released. Both show that release is not deployment. For Yusuf, the second finding is the important one: if many endpoints remain unpatched long after release, the deployment process inside an organisation is where time is lost. His study measures that process at Harrowgate rather than at population scale.
 
 ### 2.2 Operators' view
 
-Dietrich et al. (2018) surveyed system operators about security misconfigurations, finding that many incidents come from configuration errors under time pressure and weak processes. Patch deployment is an operator process with the same pressures.
+Dietrich et al. (2018) surveyed system operators about security misconfigurations, finding that many incidents come from configuration errors under time pressure and weak processes. Patch deployment is an operator process with the same pressures. For Harrowgate, the same pressures appear in the monthly patch cycle: a small desktop team, clinical wards that resist reboots, and a policy deadline of 30 days. The survey supports Yusuf's framing of deployment as a process that can be improved by design, not only by effort. His interviews with the desktop lead are planned as context for the results, not as a separate outcome.
 
 ### 2.3 Hardware frontier
 
-Kocher et al. (2019) showed that speculative execution in processors can leak data across security boundaries; Kim et al. (2014) showed that repeatedly accessing DRAM rows can flip bits in neighbouring rows. Fixes for such flaws arrive as firmware, microcode and operating system updates, which increases the volume and risk of endpoint patching. NIST SP 800-193 sets out firmware resiliency principles: protect, detect and recover.
+Kocher et al. (2019) showed that speculative execution in processors can leak data across security boundaries; Kim et al. (2014) showed that repeatedly accessing DRAM rows can flip bits in neighbouring rows. Fixes for such flaws arrive as firmware, microcode and operating system updates, which increases the volume and risk of endpoint patching. NIST SP 800-193 sets out firmware resiliency principles: protect, detect and recover. For Harrowgate, these flaws mean that firmware and microcode updates now arrive alongside operating-system patches, and a failed firmware update on a ward device can be harder to recover than a failed application update. That is why Yusuf records firmware updates as their own category rather than mixing them into the main failure rate.
 
 ### 2.4 The gap
 
-The literature measures patch release and population-level deployment, but few studies compare deployment strategies inside one organisation with outcome data on both speed and breakage. Yusuf's study fits this gap.
+The literature measures patch release and population-level deployment, but few studies compare deployment strategies inside one organisation with outcome data on both speed and breakage. Yusuf's study fits this gap. The gap matters to practitioners because ring deployment is widely recommended but its effect on breakage and speed in a specific organisation is rarely measured. Yusuf's design measures both outcomes at the same two sites, over the same months, with baseline data. His contribution statement is written to match that gap and nothing wider.
 
 ### 2.5 Scope boundary
 
-The study observes deployment outcomes; it does not test or reproduce any vulnerability.
+The study observes deployment outcomes; it does not test or reproduce any vulnerability. The boundary keeps the study within the trust's approval and the ethical limits of this book. Yusuf collects deployment logs and redacted tickets; he never runs a proof of concept for any flaw, and he does not need to, because his outcomes are days to patch and failures, both of which the trust already records. The panel's question about hardware flaws was answered on these grounds. Firmware updates count as deployments, not as flaws under study.
 
 ### Worked example
 
@@ -174,23 +174,23 @@ You will (1) specify hypotheses, design and outcomes; (2) justify a quasi-experi
 
 ### 3.1 Hypotheses
 
-H1: ring-based deployment reduces the 95th-percentile days to patch. H2: ring-based deployment reduces the update failure rate. Both are directional and pre-registered.
+H1: ring-based deployment reduces the 95th-percentile days to patch. H2: ring-based deployment reduces the update failure rate. Both are directional and pre-registered. The 95th percentile was chosen because the slowest endpoints, not the average, decide how long a vulnerability stays exposed across a site. Directional hypotheses commit Yusuf to reporting a result in the opposite direction as evidence against them, not as an unexpected finding to explain away. Both measures can be computed from data the trust already collects. Each hypothesis has one test fixed in advance.
 
 ### 3.2 Design
 
-Harrowgate has two comparable hospital sites. With the trust's agreement, one site adopts rings for six months while the other continues flat deployment. Random assignment of individual endpoints is impossible because wards share devices and staff, so the design is a site-level quasi-experiment.
+Harrowgate has two comparable hospital sites. With the trust's agreement, one site adopts rings for six months while the other continues flat deployment. Random assignment of individual endpoints is impossible because wards share devices and staff, so the design is a site-level quasi-experiment. The choice of site was agreed with the trust before the baseline period, based on which site's desktop team could support the change. Yusuf records that choice and its reason, because a site chosen for its readiness might differ in ways that also affect outcomes.
 
 ### 3.3 Rings
 
-Ring 0 is 40 IT devices, patched first; ring 1 is 160 devices in pilot wards; ring 2 is the remaining 800. Each ring waits for the previous ring's failure signals before proceeding, following the staged approach discussed in SP 800-40r4.
+Ring 0 is 40 IT devices, patched first; ring 1 is 160 devices in pilot wards; ring 2 is the remaining 800. Each ring waits for the previous ring's failure signals before proceeding, following the staged approach discussed in SP 800-40r4. Ring 0 contains IT staff devices because their users can report problems precisely and tolerate disruption. Ring 1's pilot wards were chosen with the clinical leads to include common device types. If ring 0 or ring 1 shows failures, deployment to the next ring pauses until the cause is known.
 
 ### 3.4 Threats to validity
 
-Sites may differ in device age or staff habits. Yusuf collects baseline data from both sites for three months before the change, so differences can be measured. Seasonal workload affects both sites equally.
+Sites may differ in device age or staff habits. Yusuf collects baseline data from both sites for three months before the change, so differences can be measured. Seasonal workload affects both sites equally. The three-month baseline lets him see whether the sites already differed before rings began, and by how much. He also records device age and operating-system mix at each site, so any difference in failures can be compared with those factors. The analysis reports the effect both raw and after subtracting baseline.
 
 ### 3.5 Contribution
 
-The thesis contributes measured effects of a common but untested practice, a codebook for failure tickets and an open, synthetic-structure dataset with analysis code.
+The thesis contributes measured effects of a common but untested practice, a codebook for failure tickets and an open, synthetic-structure dataset with analysis code. Each contribution can be checked separately: the effect estimates against the published code and data, the codebook against its agreement figures, and the dataset against its digests. A practitioner can use the codebook alone even if the effect does not generalise to their organisation. The thesis states the boundary of the effect in the same paragraph as the claim.
 
 ### Power and sample
 
@@ -237,13 +237,13 @@ You will (1) replicate the trust's baseline measures; (2) run a ring pilot; (3) 
 
 ### 4.1 Replicating the baseline
 
-Before the pilot, Yusuf recomputes the trust's own patch-compliance report from raw deployment logs. His figures match the trust's to within one percentage point, confirming that he understands how the logs record installation and reboot.
+Before the pilot, Yusuf recomputes the trust's own patch-compliance report from raw deployment logs. His figures match the trust's to within one percentage point, confirming that he understands how the logs record installation and reboot. Agreement within one percentage point shows that Yusuf reads installation and reboot events the same way the trust does. Had it failed, any later difference between sites might reflect his reading of the logs rather than the deployment strategy. He keeps the recomputation script in the archive with its output.
 
 ### 4.2 Pilot
 
-One month at the intervention site tests the ring mechanics and the data pipeline.
+One month at the intervention site tests the ring mechanics and the data pipeline. The pilot is not part of the main analysis. It checks that rings advance as planned, that failure signals from ring 0 reach the desktop team in time, and that every endpoint's install and reboot events reach Yusuf's pipeline. Any change made during the pilot is recorded before the main study begins, so the six-month data run on fixed rules. The pilot ran at the intervention site only, so the comparison site's baseline was undisturbed.
 
-### Lab — Lab — pilot ring timings
+### Lab — pilot ring timings
 
 ```python
 """Median days-to-patch per deployment ring in a synthetic pilot (stdlib only)."""
@@ -265,15 +265,15 @@ ring2 (rest, 800): median 11.0 days, max 16
 
 ### 4.3 Reading the pilot
 
-Ring 0 reaches median 2 days (max 3), ring 1 median 6 (max 8) and ring 2 median 11 (max 16). The waits between rings work as designed, and the pipeline captures each endpoint's install and reboot times.
+Ring 0 reaches median 2 days (max 3), ring 1 median 6 (max 8) and ring 2 median 11 (max 16). The waits between rings work as designed, and the pipeline captures each endpoint's install and reboot times. Ring 2's maximum of 16 days stays within the trust's 30-day policy, which answered the desktop lead's worry about waiting too long. These are pilot figures for one month and are used only to confirm the mechanics, not to estimate the effect. The pilot also showed the shut-down devices that lacked reboot times, which the next fix addressed.
 
 ### 4.4 Pipeline fixes
 
-The pilot reveals that 3% of endpoints report no reboot time because they were shut down rather than restarted; Yusuf adds a rule treating the next boot as the reboot.
+The pilot reveals that 3% of endpoints report no reboot time because they were shut down rather than restarted; Yusuf adds a rule treating the next boot as the reboot. Without the rule, shut-down devices would have looked unpatched until someone restarted them, inflating days to patch at both sites. The rule is applied equally to both sites and recorded in the analysis log. Yusuf also counts how many endpoints it affects in the main study, so readers can judge its influence.
 
 ### 4.5 Configuration management
 
-The ring definitions are stored as configuration items following SP 800-128, so changes during the study are recorded.
+The ring definitions are stored as configuration items following SP 800-128, so changes during the study are recorded. Storing rings as configuration items means that moving a device between rings, or changing a wait period, leaves a record with a date and approver. If the desktop team had changed ring membership midway, the analysis could identify which endpoints were affected. Yusuf checks the change record monthly during the study, and the thesis lists every change made with its reason. The record shows no ring change went unlogged.
 
 ### Clock and identity checks
 
@@ -322,9 +322,9 @@ You will (1) analyse the main study; (2) estimate effects with uncertainty; (3) 
 
 ### 5.1 Main data
 
-Six months produce data on 1,000 endpoints at each site. The analysis follows the pre-registered plan.
+Six months produce data on 1,000 endpoints at each site. The analysis follows the pre-registered plan. Each site contributes about 1,000 endpoints across six monthly cycles, so each outcome is computed over thousands of update attempts. Endpoints that join or leave a site during the study are counted only for the months they were managed there. The main analysis script is the one written before data collection, run once on the full data. Missing reboot times are handled by the pilot rule, applied identically at both sites and counted in the results.
 
-### Lab — Lab — ring versus flat
+### Lab — ring versus flat
 
 ```python
 """Compare ring-based and flat patch deployment on synthetic endpoints with a bootstrap CI (stdlib only)."""
@@ -360,19 +360,19 @@ failure-rate difference 0.017, 95% CI [0.005, 0.029]
 
 ### 5.2 Reading the results
 
-At the ring site, the 95th percentile is 14.1 days and the failure rate 0.011; at the flat site, 20.7 days and 0.028. The failure-rate difference is 0.017 with a bootstrap 95% confidence interval from 0.005 to 0.029, which excludes zero. Both hypotheses are supported in this synthetic data.
+At the ring site, the 95th percentile is 14.1 days and the failure rate 0.011; at the flat site, 20.7 days and 0.028. The failure-rate difference is 0.017 with a bootstrap 95% confidence interval from 0.005 to 0.029, which excludes zero. Both hypotheses are supported in this synthetic data. The interval is wide relative to the point estimate, so Yusuf reports it in full rather than the difference alone. The phrase about synthetic data matters too: the published figures come from synthetic-structure data with the same distributions, not from the trust's raw records.
 
 ### 5.3 Baseline adjustment
 
-Baseline months showed the flat site was already about two days slower at the 95th percentile. Yusuf reports both the raw difference and the difference after subtracting baseline, which is smaller but still in favour of rings.
+Baseline months showed the flat site was already about two days slower at the 95th percentile. Yusuf reports both the raw difference and the difference after subtracting baseline, which is smaller but still in favour of rings. Reporting both figures lets readers judge how much of the raw difference the rings explain. The baseline-adjusted difference is the one Yusuf leads with in the abstract, because it accounts for a gap that existed before the intervention. The raw figure stays in the results table for completeness.
 
 ### 5.4 Independent validation
 
-A second analyst at Calder, given only the pre-registered plan and the data, reproduces the figures independently.
+A second analyst at Calder, given only the pre-registered plan and the data, reproduces the figures independently. The second analyst wrote her own code from the plan, so a bug in Yusuf's script would show up as a mismatch. Where her figures and his agree, the thesis says so; the comparison table is in an appendix with both scripts. This is the reproducibility check examiners will ask about first. She received no access to Yusuf's earlier outputs until her own run had finished.
 
 ### 5.5 Meaning
 
-Fewer failures matter because a failed update on a clinical endpoint can stop work on a ward; faster coverage reduces the window in which known vulnerabilities are exposed.
+Fewer failures matter because a failed update on a clinical endpoint can stop work on a ward; faster coverage reduces the window in which known vulnerabilities are exposed. For Harrowgate's managers, the practical meaning is in the examiner's conversion: even at the lower bound of the interval, rings would prevent dozens of failed updates a year across 1,000 endpoints. The faster 95th percentile matters for clinical endpoints that are hard to take offline, since they are often the last to be patched.
 
 ### Secondary outcomes
 
@@ -423,23 +423,23 @@ You will (1) respond to peer review; (2) revise claims; (3) strengthen limitatio
 
 ### 6.1 The critique
 
-A workshop reviewer argues that the ring site's IT team knew it was being studied and may have worked harder, a Hawthorne effect.
+A workshop reviewer argues that the ring site's IT team knew it was being studied and may have worked harder, a Hawthorne effect. The critique is fair: the ring site's desktop team made a visible change, met Yusuf regularly and knew their results would be reported. Extra effort could have reduced both days to patch and failures, independent of the ring design. Yusuf records the critique in his response table and treats it as a threat to validity to address with evidence rather than argument.
 
 ### 6.2 Response
 
-Yusuf checks help-desk staffing and overtime records: they did not differ between sites. He adds this check to the thesis and softens the claim to "consistent with" rather than "caused by".
+Yusuf checks help-desk staffing and overtime records: they did not differ between sites. He adds this check to the thesis and softens the claim to "consistent with" rather than "caused by". Prof. Solberg advised accepting the point openly, because equal staffing reduces the concern but cannot rule out other kinds of extra attention. The thesis therefore keeps the Hawthorne effect among the limitations, alongside the evidence that weakens it. The staffing comparison and its sources appear in an appendix, so examiners can check that the two sites were in fact alike.
 
 ### 6.3 Second critique
 
-Another reviewer asks whether failures were defined consistently. Yusuf re-codes a random 20% of main-study tickets with a new coder; kappa remains above the pre-registered threshold.
+Another reviewer asks whether failures were defined consistently. Yusuf re-codes a random 20% of main-study tickets with a new coder; kappa remains above the pre-registered threshold. The new coder had not seen the original labels and used the revised codebook with the reboot rule. The 20% sample was drawn at random by script, with the seed recorded, so nobody could choose easy tickets. Keeping kappa above the threshold shows that the failure rate does not depend on one coder's habits. The re-coding sample and its kappa are in the archive.
 
 ### 6.4 Revision
 
-The paper adds a limitations section on two sites, one sector and synthetic-structure data release.
+The paper adds a limitations section on two sites, one sector and synthetic-structure data release. Each limitation names its effect on the claim: two sites limit generalisation to other trusts, one sector limits it to organisations with similar device constraints, and synthetic-structure release means readers can rerun the analysis but not inspect real tickets. Stating them in the paper prevents readers from extending the result further than the evidence supports. Each limitation also points to the follow-up study that would address it, such as more trusts or randomised start dates.
 
 ### 6.5 Tone
 
-Responses thank reviewers and address each point with evidence.
+Responses thank reviewers and address each point with evidence. Yusuf replies to each reviewer in a table: the comment, the evidence gathered, the change made and its location in the paper. For the Hawthorne critique the reply cites the staffing records and the softened wording; for the coding critique it cites the re-coding sample and kappa. Where he disagrees, he explains why with evidence instead of dismissing the point, and the table goes into the archive. Reviewers saw the table first, so changes were easy to verify.
 
 ### Further review
 
@@ -492,13 +492,13 @@ You will (1) synthesise findings across chapters; (2) build a verifiable archive
 
 ### 7.1 Synthesis
 
-The thesis argues that staged deployment, a practice many organisations use without evidence, was associated with faster coverage and fewer failures at one trust, with a clear method others can repeat.
+The thesis argues that staged deployment, a practice many organisations use without evidence, was associated with faster coverage and fewer failures at one trust, with a clear method others can repeat. The phrasing "was associated with" follows the revision after the Hawthorne critique. The synthesis names the trust, the period and the outcomes, so a reader can see the scope at once. It also states what remains open: whether the effect holds at other trusts and whether firmware updates need a different deployment design.
 
 ### 7.2 Archive contents
 
-The archive holds synthetic-structure data, analysis code, the codebook, the pre-registration and a readme.
+The archive holds synthetic-structure data, analysis code, the codebook, the pre-registration and a readme. The readme lists the order in which scripts run and the expected output of each, so a reader can regenerate every table. The pre-registration is included so that anyone can compare the planned analysis with the published one. Each file has a SHA-256 digest in the manifest, and the archive's digests were recomputed by an archivist at Calder before publication. The readme also explains how the synthetic-structure data relate to the trust's records and what they cannot show.
 
-### Lab — Lab — archive manifest
+### Lab — archive manifest
 
 ```python
 """Build a SHA-256 manifest for a synthetic reproducibility archive (stdlib only)."""
@@ -522,15 +522,15 @@ files 4, total 101 bytes
 
 ### 7.3 Reading the manifest
 
-Four files totalling 101 bytes in this small synthetic example each have a SHA-256 digest. Anyone can recompute the digests to confirm files are unchanged.
+Four files totalling 101 bytes in this small synthetic example each have a SHA-256 digest. Anyone can recompute the digests to confirm files are unchanged. The small example demonstrates the method; the real archive applies the same check to every file. The line-ending mismatch the Calder archivist found shows why the check matters: a copy that looks identical can still differ in bytes, and only the digest reveals it. After the fix, Yusuf added a digest check to the copy process itself, so each future copy is verified before publication.
 
 ### 7.4 Data handling
 
-Real ticket text never enters the archive; only the synthetic-structure dataset with the same distributions is published, approved by the trust.
+Real ticket text never enters the archive; only the synthetic-structure dataset with the same distributions is published, approved by the trust. The synthetic-structure dataset reproduces the distributions of days to patch, failures and failure categories, so the analysis gives the same kind of results, but no row corresponds to a real device or ticket. The trust's information governance lead approved the release after comparing it with the original extract. That approval is cited in the readme. The redaction rules are archived for others to reuse.
 
 ### 7.5 Licensing
 
-Code and synthetic data are released under an open licence.
+Code and synthetic data are released under an open licence. An open licence lets other trusts and researchers rerun the analysis or apply the codebook to their own tickets without asking permission. Yusuf checked that no part of the archive contains material under restrictive terms, and the readme states the licence of each file. Calder's repository assigns the archive a persistent identifier, which the thesis and the paper both cite. The licence was chosen with Calder's repository office, which checked it against the trust's data agreement.
 
 ### Chapter links
 
@@ -585,27 +585,27 @@ You will (1) defend the thesis; (2) answer methodological questions; (3) plan pu
 
 ### 8.1 Defense
 
-Yusuf presents the problem, design, results, critiques and limits in forty minutes.
+Yusuf presents the problem, design, results, critiques and limits in forty minutes. The forty minutes follow the thesis's own order, with the design and the Hawthorne response given the most time because examiners were expected to press on them. Yusuf rehearsed with Prof. Solberg and kept one slide that converts the failure-rate interval into failed updates per year, the same conversion that answered the examiner's question about practical meaning. He ends with the limits, so the examiners' last view of the claim includes its boundary, and leaves the remaining time for questions.
 
 ### 8.2 Questions
 
-Examiners ask about generalisation, firmware updates and cost. He answers with evidence and admits where the study cannot answer.
+Examiners ask about generalisation, firmware updates and cost. He answers with evidence and admits where the study cannot answer. On generalisation, he explained that two sites at one trust cannot show the effect elsewhere, and proposed a multi-trust study with randomised start dates. On cost, he said the study measured outcomes, not staff hours, so he could not quantify it. Admitting these limits was more convincing than stretching the data to cover them. Firmware questions he answered from the separate firmware category, with the caution that its counts were small.
 
 ### 8.3 Firmware result
 
-Firmware updates had a higher failure rate in both arms, supporting SP 800-193's emphasis on recovery mechanisms.
+Firmware updates had a higher failure rate in both arms, supporting SP 800-193's emphasis on recovery mechanisms. Yusuf presents this as an observation within the study rather than a main finding, because firmware was a separate category with fewer updates. It supports the recovery principle in SP 800-193 but does not test any particular recovery mechanism, and he says so. The trust's response, adding recovery checks for firmware, follows from the observation rather than from a measured effect. Larger firmware samples would be needed to test it.
 
 ### 8.4 Publication plan
 
-One journal paper on the main effect, one practitioner report for health IT teams, and the open archive.
+One journal paper on the main effect, one practitioner report for health IT teams, and the open archive. Each output serves a different reader. The journal paper reports method, effects and intervals for researchers; the practitioner report explains rings, the codebook and the limits in plain terms for health IT teams; and the archive lets anyone rerun the analysis. All three use the same wording for the main claim, so no version says more than the others. Each output cites the archive's persistent identifier.
 
 ### 8.5 Practice impact
 
-Harrowgate keeps ring deployment and adds firmware-specific recovery checks.
+Harrowgate keeps ring deployment and adds firmware-specific recovery checks. The trust's decision came from its own managers after reading the practitioner report, not from Yusuf. Recovery checks for firmware respond to the higher failure rate seen in both arms. The trust also plans to keep collecting the same outcome measures, so it can tell whether the effect lasts beyond the study period. That continued measurement is the practical test the thesis could not provide. Recovery checks are tested before each firmware cycle, and failures feed back into the codebook.
 
 ### 8.6 Ethics reflection
 
-He reflects on balancing research with clinical service: no clinical system was changed solely for research.
+He reflects on balancing research with clinical service: no clinical system was changed solely for research. Every change during the study was one the trust had already planned, with clinical leads consulted on ring membership and timing. Yusuf's role was to measure, not to direct clinical IT. His reflection notes that this limited his design choices, such as randomising wards, but protected patients and staff from research-driven disruption. The ethics committee's conditions were met throughout, and the reflection is filed with the archive.
 
 ### Answering the cost question
 
