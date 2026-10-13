@@ -46,25 +46,65 @@ You will (1) map the computing estate of a municipal IT service; (2) identify wh
 
 Corvale Municipal Services runs desktops for council staff, library public-access computers, a permits portal, a payments portal, email, a directory, file servers and a backup system. Each serves residents or staff and each can be the target or the evidence source in an intrusion.
 
+Section one point one develops computing systems with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section one point one, MCX expects computing claims to carry owners and dates.
+
+Section one point one treats city's estate public-facing systems as testable only when evidence and ticket IDs are recorded.
+
 ### 1.2 Public-facing systems
 
 The permits and payments portals are reachable from the internet. Exploit Public-Facing Application (T1190) in MITRE ATT&CK describes attackers abusing weaknesses in such services. Intelligence about vulnerabilities in the portal software therefore has direct value to CMS.
+
+Section one point two develops computing systems with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section one point two, MCX expects computing claims to carry owners and dates.
+
+Section one point two treats city's estate public-facing systems as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Library computers
 
 Public-access machines are used by anyone. They are reset daily, have no staff accounts and sit on a separate network. Intelligence about malware spreading by USB matters here; intelligence about executive phishing does not.
 
+Section one point three develops computing systems with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section one point three, MCX expects computing claims to carry owners and dates.
+
+Section one point three treats city's estate public-facing systems as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Evidence holders
 
 Email gateway, web proxy, DNS resolver, directory and endpoint agents keep logs. Lena lists each, its retention period and who can query it, because an indicator nobody can search for is useless.
+
+Section one point four develops computing systems with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section one point four, MCX expects computing claims to carry owners and dates.
+
+Section one point four treats city's estate public-facing systems as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 The asset list
 
 A spreadsheet of product, version, owner and exposure (internet, internal, public-access) is enough to start. When MCX shares an advisory, Lena checks the product column first.
 
+Section one point five develops computing systems with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section one point five, MCX expects computing claims to carry owners and dates.
+
+Section one point five treats city's estate public-facing systems as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Corvale Municipal Services will not accept computing work without a written trail.
+
 ### 1.6 Keeping it current
 
 Every change ticket that adds or removes a system updates the list. Lena checks the list against the network team's scan results each quarter and flags differences to owners.
+
+Section one point six develops computing systems with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section one point six, MCX expects computing claims to carry owners and dates.
+
+Section one point six treats city's estate public-facing systems as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Corvale Municipal Services will not accept computing work without a written trail.
 
 ### Worked example
 
@@ -102,25 +142,63 @@ You will (1) explain how DNS, web and email services expose indicators; (2) read
 
 Residents reach CMS through the website, the permits portal and email. Each depends on DNS records that CMS publishes. Attackers imitate these names with lookalike domains to trick residents into paying fake fees.
 
+Section two point one develops networks and internet services with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section two point one, MCX expects networks claims to carry owners and dates.
+
+Section two point one treats services residents use resolver as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Resolver logs
 
 A resolver log line typically records time, client, queried name and answer. Lena reads lines such as "08:03 ws-114 pay-portal.example". The client tells her which machine asked; the name tells her whether it matches an indicator.
+
+Section two point two develops networks and internet services with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section two point two, MCX expects networks claims to carry owners and dates.
+
+Section two point two treats services residents use resolver as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Passive DNS data
 
 Some services publish historical DNS resolutions collected from many resolvers. Looking up a name there is passive: CMS does not contact the suspicious server. Lena may use services CMS has approved and whose terms allow this use.
 
+Section two point three develops networks and internet services with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section two point three, MCX expects networks claims to carry owners and dates.
+
+Section two point three treats services residents use resolver as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Mail flow
 
 Email enters through CMS's gateway, which logs sender, recipient, subject and attachment names. Phishing (T1566) indicators — sender domains, subjects, attachment hashes — are checked here.
+
+Section two point four develops networks and internet services with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section two point four, MCX expects networks claims to carry owners and dates.
+
+Section two point four treats services residents use resolver as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Corvale Municipal Services will not accept networks work without a written trail.
 
 ### 2.5 Documentation addresses
 
 This course uses the ranges 192.0.2.0/24, 198.51.100.0/24 and 203.0.113.0/24, which RFC 5737 reserves for documentation, and the .example domain. Real addresses never appear in teaching material, so nobody blocks or investigates an innocent party by copying an example.
 
+Section two point five develops networks and internet services with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section two point five, MCX expects networks claims to carry owners and dates.
+
+Section two point five treats services residents use resolver as testable only when evidence and ticket IDs are recorded.
+
 ### 2.6 Ports and protocols
 
 Web services use 443 (HTTPS); mail uses 25 between servers. Traffic from office desktops to unusual ports is worth noting, but council applications sometimes use odd ports legitimately — check with owners before treating it as suspicious.
+
+Section two point six develops networks and internet services with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section two point six, MCX expects networks claims to carry owners and dates.
+
+Section two point six treats services residents use resolver as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -158,6 +236,12 @@ You will (1) write small Python scripts that handle indicators as text; (2) refa
 
 Analysts write "pay-portal[.]example" or "hxxps://" so that links in reports cannot be clicked by accident. Scripts must convert these back to normal form — refang — before matching against logs, but only as text.
 
+Section three point one develops programming foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section three point one, MCX expects programming claims to carry owners and dates.
+
+Section three point one treats defanging reading the result as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — refang and classify
 
 ```python
@@ -188,21 +272,57 @@ notes -> notes [invalid]
 
 The defanged URL becomes host pay-portal.example, classified as a domain. 198.51.100[.]23 becomes a valid IPv4 address. update-svc[.]example is a domain. 203.0.113.300 is invalid because 300 exceeds the maximum octet value of 255; the `ipaddress` module rejects it. "notes" is a stray word and is marked invalid rather than guessed.
 
+Section three point two develops programming foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section three point two, MCX expects programming claims to carry owners and dates.
+
+Section three point two treats defanging reading the result as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 Text only
 
 The script never opens a connection. Refanging for matching is safe; refanging for clicking is not. Keep defanged forms in documents and refanged forms only inside matching code.
+
+Section three point three develops programming foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section three point three, MCX expects programming claims to carry owners and dates.
+
+Section three point three treats defanging reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Corvale Municipal Services will not accept programming work without a written trail.
 
 ### 3.4 Structure
 
 Small functions — refang, extract host, classify — are easier to test than one long block. Each has one job.
 
+Section three point four develops programming foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section three point four, MCX expects programming claims to carry owners and dates.
+
+Section three point four treats defanging reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Corvale Municipal Services will not accept programming work without a written trail.
+
 ### 3.5 Testing edges
 
 Test with values like trailing dots, capital letters and ports ("host.example:8443"). Each edge case either passes cleanly or produces a clear "invalid" so a human can look.
 
+Section three point five develops programming foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section three point five, MCX expects programming claims to carry owners and dates.
+
+Section three point five treats defanging reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Corvale Municipal Services will not accept programming work without a written trail.
+
 ### 3.6 Comments and names
 
 Name variables for what they hold — `host`, `kind` — not `x` and `y`. A one-line docstring at the top states the script's purpose and that it uses synthetic data, which helps reviewers and future maintainers.
+
+Section three point six develops programming foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section three point six, MCX expects programming claims to carry owners and dates.
+
+Section three point six treats defanging reading the result as testable only when evidence and ticket IDs are recorded.
 
 ### Version control
 
@@ -244,6 +364,12 @@ You will (1) explain the structure of STIX 2.1 objects; (2) read a bundle with P
 
 STIX 2.1 represents intelligence as typed JSON objects — indicator, attack-pattern, malware, threat-actor, report — each with an `id` made from its type and a unique identifier. Relationship objects connect them with a `source_ref`, a `target_ref` and a `relationship_type` such as "indicates" or "uses".
 
+Section four point one develops data models with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section four point one, MCX expects data claims to carry owners and dates.
+
+Section four point one treats objects and relationships reading as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — reading a bundle
 
 ```python
@@ -275,21 +401,57 @@ relationship--d indicates DANGLING target malware--z
 
 The bundle holds one indicator, one attack-pattern (Phishing, external identifier T1566) and two relationships. The first links the indicator to the attack pattern correctly. The second points to malware--z, which is not in the bundle — a dangling reference. It may exist in the sender's database, but CMS cannot use it without the object.
 
+Section four point two develops data models with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section four point two, MCX expects data claims to carry owners and dates.
+
 ### 4.3 Patterns
 
 An indicator's `pattern` field uses STIX patterning, such as matching a domain-name value. Lena extracts the value for matching but keeps the full pattern for reference.
+
+Section four point three develops data models with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section four point three, MCX expects data claims to carry owners and dates.
+
+Section four point three treats objects and relationships reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point three, Corvale Municipal Services will not accept data work without a written trail.
 
 ### 4.4 What to keep locally
 
 CMS's simple store keeps: indicator value, type, source, TLP marking, valid_from, and linked ATT&CK identifiers. Other fields are stored in the original JSON for reference.
 
+Section four point four develops data models with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section four point four, MCX expects data claims to carry owners and dates.
+
+Section four point four treats objects and relationships reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Corvale Municipal Services will not accept data work without a written trail.
+
 ### 4.5 Other formats
 
 Partners also send CSV and email lists. Mapping each to the same local fields lets all sources be searched together.
 
+Section four point five develops data models with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section four point five, MCX expects data claims to carry owners and dates.
+
+Section four point five treats objects and relationships reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Corvale Municipal Services will not accept data work without a written trail.
+
 ### 4.6 Timestamps
 
 STIX timestamps are in UTC with a trailing "Z". Keep them in UTC in storage and convert only when displaying to staff, so comparisons across sources stay correct.
+
+Section four point six develops data models with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section four point six, MCX expects data claims to carry owners and dates.
+
+Section four point six treats objects and relationships reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Corvale Municipal Services will not accept data work without a written trail.
 
 ### Worked example
 
@@ -327,25 +489,65 @@ You will (1) describe common threats to local government; (2) explain the CTI cy
 
 Local governments face payment fraud through lookalike portals, ransomware that disrupts services (Data Encrypted for Impact, T1486), credential phishing against staff, and defacement of public websites. Residents' trust makes even minor incidents newsworthy.
 
+Section five point one develops security literacy with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section five point one, MCX expects security claims to carry owners and dates.
+
+Section five point one treats threats to councils the as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 The cycle in a small team
 
 Direction from the security manager, collection from MCX and public advisories, processing in Lena's scripts, analysis with her supervisor, dissemination to owners and feedback at a weekly meeting. In a team of three, the cycle is informal but each stage still happens.
+
+Section five point two develops security literacy with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section five point two, MCX expects security claims to carry owners and dates.
+
+Section five point two treats threats to councils the as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 TLP 2.0
 
 TLP:CLEAR — no limit. TLP:GREEN — the community, not public. TLP:AMBER — the organisation and its clients, need to know. TLP:AMBER+STRICT — the organisation only. TLP:RED — named recipients only. FIRST's definitions are short; Lena keeps a copy beside her desk.
 
+Section five point three develops security literacy with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section five point three, MCX expects security claims to carry owners and dates.
+
+Section five point three treats threats to councils the as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Information versus intelligence
 
 A list of fraud domains is information. A note saying "residents are being targeted with fake permit-payment sites this month; we have asked the hosting provider to take two down and posted a warning on the council site" is intelligence: assessed and tied to action.
+
+Section five point four develops security literacy with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section five point four, MCX expects security claims to carry owners and dates.
+
+Section five point four treats threats to councils the as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Who acts
 
 Lena informs; owners act. The web team posts warnings; the network team blocks; the communications team speaks to residents.
 
+Section five point five develops security literacy with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section five point five, MCX expects security claims to carry owners and dates.
+
+Section five point five treats threats to councils the as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Corvale Municipal Services will not accept security work without a written trail.
+
 ### 5.6 Proportion
 
 Not every advisory is urgent. Lena labels each item as act now, act this week, or note only, so owners can plan.
+
+Section five point six develops security literacy with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section five point six, MCX expects security claims to carry owners and dates.
+
+Section five point six treats threats to councils the as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Corvale Municipal Services will not accept security work without a written trail.
 
 ### Worked example
 
@@ -383,25 +585,65 @@ You will (1) relate operating-system activity to ATT&CK techniques; (2) use virt
 
 Processes, services, scheduled tasks and accounts are where intrusions become visible. ATT&CK techniques such as Command and Scripting Interpreter (T1059) and Scheduled Task/Job (T1053) describe common behaviours. Endpoint logs recording process starts with command lines help confirm or rule out reported behaviour.
 
+Section six point one develops operating systems and virtualization with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section six point one, MCX expects operating claims to carry owners and dates.
+
+Section six point one treats operating-system activity virtual machines as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Virtual machines
 
 A virtual machine runs a separate operating system on shared hardware. Analysts use them to read reports, run scripts on synthetic data and open documents in an environment that can be reset. Snapshots capture a known-good state to return to.
+
+Section six point two develops operating systems and virtualization with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section six point two, MCX expects operating claims to carry owners and dates.
+
+Section six point two treats operating-system activity virtual machines as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Isolation limits
 
 Virtual machines reduce risk but are not perfect barriers. Network settings matter: a machine with internet access can still contact adversary servers. CMS's analysis VM has no network route except to the internal update server.
 
+Section six point three develops operating systems and virtualization with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section six point three, MCX expects operating claims to carry owners and dates.
+
+Section six point three treats operating-system activity virtual machines as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Suspicious files
 
 Technologist-level analysts do not run malware. If a suspicious attachment arrives, Lena records its hash and metadata, submits it through CMS's approved sandbox service if policy allows, and leaves deeper analysis to qualified staff.
+
+Section six point four develops operating systems and virtualization with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section six point four, MCX expects operating claims to carry owners and dates.
+
+Section six point four treats operating-system activity virtual machines as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Containers
 
 Containers share the host kernel and isolate less than virtual machines. They suit packaging scripts, not handling hostile files.
 
+Section six point five develops operating systems and virtualization with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section six point five, MCX expects operating claims to carry owners and dates.
+
+Section six point five treats operating-system activity virtual machines as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Corvale Municipal Services will not accept operating work without a written trail.
+
 ### 6.6 Patching the analysis environment
 
 Analysis machines need updates too; an outdated VM is an easy target. Lena refreshes the base image monthly and re-creates her snapshot afterwards.
+
+Section six point six develops operating systems and virtualization with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section six point six, MCX expects operating claims to carry owners and dates.
+
+Section six point six treats operating-system activity virtual machines as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Corvale Municipal Services will not accept operating work without a written trail.
 
 ### Worked example
 
@@ -439,25 +681,67 @@ You will (1) explain why stolen credentials are central to many intrusions; (2) 
 
 Phishing pages that imitate the council's single sign-on page collect staff passwords. Attackers then log in normally — Valid Accounts (T1078). Many intrusions involve no malware at all.
 
+Section seven point one develops identity and access foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seven point one, MCX expects identity claims to carry owners and dates.
+
+Section seven point one treats credentials as targets sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Corvale Municipal Services will not accept identity work without a written trail.
+
 ### 7.2 Sign-in logs
 
 The identity provider logs user, time, source address, application and result. When MCX shares addresses used in credential attacks against councils, Lena searches sign-in logs for successful logins from them.
+
+Section seven point two develops identity and access foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seven point two, MCX expects identity claims to carry owners and dates.
+
+Section seven point two treats credentials as targets sign-in as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Supporting controls
 
 Intelligence that councils face password-spraying justifies lockout thresholds and multi-factor authentication for all staff, including part-time library workers who were previously exempt.
 
+Section seven point three develops identity and access foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seven point three, MCX expects identity claims to carry owners and dates.
+
+Section seven point three treats credentials as targets sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Corvale Municipal Services will not accept identity work without a written trail.
+
 ### 7.4 Exposure notices
 
 Sometimes a partner reports CMS addresses found in a public credential dump. Lena never tests the passwords. She passes the list to the identity team through a restricted ticket; they force resets.
+
+Section seven point four develops identity and access foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seven point four, MCX expects identity claims to carry owners and dates.
+
+Section seven point four treats credentials as targets sign-in as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Shared accounts
 
 Shared logins on library staff desks make it impossible to tell who did what. Intelligence about account abuse strengthens the case for individual accounts.
 
+Section seven point five develops identity and access foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seven point five, MCX expects identity claims to carry owners and dates.
+
+Section seven point five treats credentials as targets sign-in as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Corvale Municipal Services will not accept identity work without a written trail.
+
 ### 7.6 Service accounts
 
 Accounts used by applications often have broad rights and passwords that never change. When intelligence describes attackers seeking such accounts, the identity team reviews their rights and rotates credentials first.
+
+Section seven point six develops identity and access foundations with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seven point six, MCX expects identity claims to carry owners and dates.
+
+Section seven point six treats credentials as targets sign-in as testable only when evidence and ticket IDs are recorded.
 
 ### Leavers and dormant accounts
 
@@ -499,25 +783,67 @@ You will (1) describe layered defences in a municipal network; (2) choose the ri
 
 Email gateway, DNS filter, web proxy, endpoint protection, identity provider, network segmentation and backups. Each layer can use some intelligence; none uses all of it.
 
+Section eight point one develops security architecture basics with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eight point one, MCX expects security claims to carry owners and dates.
+
+Section eight point one treats layers matching indicators to as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Corvale Municipal Services will not accept security work without a written trail.
+
 ### 8.2 Matching indicators to layers
 
 Sender domains go to the email gateway; malicious domains to DNS and proxy; file hashes to endpoint protection; addresses used in password attacks to identity-provider conditional access; ransomware technique intelligence to backup design.
+
+Section eight point two develops security architecture basics with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eight point two, MCX expects security claims to carry owners and dates.
+
+Section eight point two treats layers matching indicators to as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Segmentation
 
 Library public computers, staff desktops, servers and payment systems sit in separate zones. Intelligence about attackers moving between systems via remote services (T1021) supports keeping those zones strictly separated.
 
+Section eight point three develops security architecture basics with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eight point three, MCX expects security claims to carry owners and dates.
+
+Section eight point three treats layers matching indicators to as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Corvale Municipal Services will not accept security work without a written trail.
+
 ### 8.4 Collateral damage
 
 Blocking a shared hosting address can cut off a legitimate supplier. Blocking a popular file-sharing domain stops staff from receiving planning documents. Before blocking, Lena checks whether the indicator is shared or popular and asks the owner.
+
+Section eight point four develops security architecture basics with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eight point four, MCX expects security claims to carry owners and dates.
+
+Section eight point four treats layers matching indicators to as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Payment card systems
 
 The payments portal falls under card-industry rules. Changes there go through its own approval process; intelligence is passed to its owner, not applied directly.
 
+Section eight point five develops security architecture basics with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eight point five, MCX expects security claims to carry owners and dates.
+
+Section eight point five treats layers matching indicators to as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Corvale Municipal Services will not accept security work without a written trail.
+
 ### 8.6 Recording blocks
 
 Every block is recorded with its source, reason, date and review date. When a resident complains that a site is unreachable, the service desk can check the record and lift a mistaken block quickly.
+
+Section eight point six develops security architecture basics with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eight point six, MCX expects security claims to carry owners and dates.
+
+Section eight point six treats layers matching indicators to as testable only when evidence and ticket IDs are recorded.
 
 ### Backups and recovery
 
@@ -559,29 +885,75 @@ You will (1) record the provenance of each intelligence item; (2) separate what 
 
 For every item Lena records who sent it, when, how, under which TLP, and what the sender based it on. Without provenance, the same indicator copied by three newsletters looks like three confirmations.
 
+Section nine point one develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point one, MCX expects evidence claims to carry owners and dates.
+
+Section nine point one treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Observation and conclusion
 
 "The proxy logged ws-114 contacting pay-portal.example at 08:03" is an observation. "A staff member probably entered credentials" is a conclusion. Reports keep them in separate sentences so readers can judge each.
+
+Section nine point two develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point two, MCX expects evidence claims to carry owners and dates.
+
+Section nine point two treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Outcome counting
 
 "500 indicators imported" counts activity. "Two staff were stopped from reaching the fraud page by the DNS block" counts an outcome. Lena reports both but leads with outcomes in the monthly summary.
 
+Section nine point three develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point three, MCX expects evidence claims to carry owners and dates.
+
+Section nine point three treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Negative results
 
 "No matches" is useful only with its query, time range, data source and coverage. "No DNS lookups of the three domains in the last 30 days across all staff resolvers; library resolvers not included" lets the reader see what was and was not checked.
+
+Section nine point four develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point four, MCX expects evidence claims to carry owners and dates.
+
+Section nine point four treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Timeliness
 
 Record when intelligence arrived and when it was acted on. Long gaps point to process problems.
 
+Section nine point five develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point five, MCX expects evidence claims to carry owners and dates.
+
+Section nine point five treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Corvale Municipal Services will not accept evidence work without a written trail.
+
 ### 9.6 Keeping evidence
 
 Exported log extracts used in a finding are saved with the ticket, hashed, and kept under the retention rule. If the finding is challenged, the evidence can be shown exactly as it was.
 
+Section nine point six develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point six, MCX expects evidence claims to carry owners and dates.
+
+Section nine point six treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
+
 ### 9.7 Simple dashboards
 
 A one-page monthly table — items received, items acted on, blocks that stopped connections, median time to action — gives the manager a view of value without overwhelming detail.
+
+Section nine point seven develops evidence and measurement with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nine point seven, MCX expects evidence claims to carry owners and dates.
+
+Section nine point seven treats provenance observation and conclusion as testable only when evidence and ticket IDs are recorded.
+
+For section nine point seven, Corvale Municipal Services will not accept evidence work without a written trail.
 
 ### Worked example
 
@@ -619,25 +991,65 @@ You will (1) define CTI and OSINT for a technologist role; (2) place the role wi
 
 Cyber threat intelligence is analysed information about threats that supports defensive decisions. Open-source intelligence is intelligence derived from publicly available information collected lawfully. NIST SP 800-150 describes how organisations share threat information to strengthen defences.
 
+Section ten point one develops threat intelligence and osint orientation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section ten point one, MCX expects threat claims to carry owners and dates.
+
+Section ten point one treats definitions the technologist's role as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 The technologist's role
 
 Lena's tasks: collect from approved sources, validate and normalise indicators, match them against logs, maintain the indicator store, draft short notes and support analysts. She does not decide blocks on critical systems or publish attribution.
+
+Section ten point two develops threat intelligence and osint orientation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section ten point two, MCX expects threat claims to carry owners and dates.
+
+Section ten point two treats definitions the technologist's role as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Models
 
 The intrusion kill chain (Hutchins, Cloppert and Amin, 2011) splits intrusions into phases, showing where defenders can act. The Diamond Model (Caltagirone, Pendergast and Betz, 2013) describes each event by adversary, capability, infrastructure and victim. MITRE ATT&CK catalogues observed techniques.
 
+Section ten point three develops threat intelligence and osint orientation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section ten point three, MCX expects threat claims to carry owners and dates.
+
+Section ten point three treats definitions the technologist's role as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Standards
 
 STIX 2.1 is the data format; TAXII 2.1 the exchange protocol; FIRST TLP 2.0 the sharing labels.
+
+Section ten point four develops threat intelligence and osint orientation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section ten point four, MCX expects threat claims to carry owners and dates.
+
+Section ten point four treats definitions the technologist's role as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 10.5 OSINT rules
 
 Use only approved sources and methods. Follow each site's terms of service. Do not create fake accounts, join closed groups, or collect personal data beyond the need. Data-protection law applies to public personal data.
 
+Section ten point five develops threat intelligence and osint orientation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section ten point five, MCX expects threat claims to carry owners and dates.
+
+Section ten point five treats definitions the technologist's role as testable only when evidence and ticket IDs are recorded.
+
 ### 10.6 Where OSINT helps CMS
 
 Certificate-transparency logs for lookalike domains, public vulnerability advisories, official government alerts, and passive DNS through approved services. These answer CMS questions without touching adversaries.
+
+Section ten point six develops threat intelligence and osint orientation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section ten point six, MCX expects threat claims to carry owners and dates.
+
+Section ten point six treats definitions the technologist's role as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Career path
 
@@ -679,25 +1091,69 @@ You will (1) build a threat-relevance view of CMS assets; (2) link asset types t
 
 Lena adds two columns to the asset list: "services residents depend on" and "techniques of concern". The payments portal: fraud lookalikes and T1190. Staff email: T1566. File servers: T1486. This view lets her sort incoming intelligence quickly.
 
+Section eleven point one develops threat intelligence and osint assets with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eleven point one, MCX expects threat claims to carry owners and dates.
+
+Section eleven point one treats relevance view business impact as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Business impact
 
 Payments and permits affect residents directly and bring revenue; the intranet affects only staff. When two advisories arrive together, the one touching resident-facing services goes first.
+
+Section eleven point two develops threat intelligence and osint assets with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eleven point two, MCX expects threat claims to carry owners and dates.
+
+Section eleven point two treats relevance view business impact as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 11.3 Seasonal context
 
 Council tax deadlines and elections bring spikes in fraud and attention. Lena marks those dates on the team calendar so monitoring increases beforehand.
 
+Section eleven point three develops threat intelligence and osint assets with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eleven point three, MCX expects threat claims to carry owners and dates.
+
+Section eleven point three treats relevance view business impact as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 11.4 Owner conversations
 
 Owners know what spreadsheets say nothing about: that the permits portal will be replaced in spring, or that a supplier connects every night. Quarterly chats keep context fresh.
+
+Section eleven point four develops threat intelligence and osint assets with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eleven point four, MCX expects threat claims to carry owners and dates.
+
+Section eleven point four treats relevance view business impact as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 Dependencies
 
 The payments portal depends on an external payment provider. Intelligence about that provider matters to CMS even though CMS does not run it.
 
+Section eleven point five develops threat intelligence and osint assets with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eleven point five, MCX expects threat claims to carry owners and dates.
+
+Section eleven point five treats relevance view business impact as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 11.6 Writing context into notes
 
 Each intelligence note names the affected asset, its owner, its exposure and the relevant date context, so the reader understands why the item matters to CMS today.
+
+Section eleven point six develops threat intelligence and osint assets with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eleven point six, MCX expects threat claims to carry owners and dates.
+
+Section eleven point six treats relevance view business impact as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Crown jewels
 
@@ -739,6 +1195,12 @@ You will (1) trace intelligence from source to enforcement; (2) normalise and de
 
 MCX TAXII collection and email, a vendor list and public advisories arrive; Lena's scripts normalise and deduplicate them; the indicator store holds results; exports feed the DNS filter, proxy and endpoint tool; feedback returns via tickets.
 
+Section twelve point one develops threat intelligence and osint data with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twelve point one, MCX expects threat claims to carry owners and dates.
+
+Section twelve point one treats the flow at cms as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — normalise and deduplicate
 
 ```python
@@ -767,21 +1229,57 @@ update-svc.example ['vendor']
 
 Six raw rows collapse to three unique indicators after lower-casing and removing trailing dots. pay-portal.example was reported by MCX, the vendor and a public source; 198.51.100.23 by MCX and a public source; update-svc.example only by the vendor. The script keeps every source for each value.
 
+Section twelve point two develops threat intelligence and osint data with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twelve point two, MCX expects threat claims to carry owners and dates.
+
+Section twelve point two treats the flow at cms as testable only when evidence and ticket IDs are recorded.
+
 ### 12.3 Why keep provenance
 
 When the vendor later withdraws update-svc.example as a false positive, Lena can remove it confidently because no other source reported it. If she had discarded sources during deduplication, she could not tell.
+
+Section twelve point three develops threat intelligence and osint data with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twelve point three, MCX expects threat claims to carry owners and dates.
+
+Section twelve point three treats the flow at cms as testable only when evidence and ticket IDs are recorded.
 
 ### 12.4 Loss points
 
 Data is lost when spreadsheets reformat values, when exports truncate long fields, or when TLP labels are not carried into enforcement tools. Lena checks each hand-off.
 
+Section twelve point four develops threat intelligence and osint data with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twelve point four, MCX expects threat claims to carry owners and dates.
+
+Section twelve point four treats the flow at cms as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 12.5 Documentation
 
 A one-page diagram shows each source, script, store and export with owners and schedules. New staff learn the flow in minutes.
 
+Section twelve point five develops threat intelligence and osint data with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twelve point five, MCX expects threat claims to carry owners and dates.
+
+Section twelve point five treats the flow at cms as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 12.6 Normalisation rules
 
 Rules are written down: lower-case domains, strip trailing dots, keep addresses as written after validation, never alter hashes except to lower-case them. Unwritten rules drift between scripts.
+
+Section twelve point six develops threat intelligence and osint data with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twelve point six, MCX expects threat claims to carry owners and dates.
+
+Section twelve point six treats the flow at cms as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -819,29 +1317,81 @@ You will (1) write threat scenarios grounded in intelligence; (2) map scenarios 
 
 A scenario names the actor type, goal, entry route, key techniques, affected service and impact. Example: "Fraud group registers lookalike payment domains, sends texts to residents, collects card details; residents lose money and trust in CMS falls."
 
+Section thirteen point one develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point one, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point one treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Grounding
 
 Each scenario cites intelligence: MCX reports from other councils, public advisories, CMS incidents. Scenarios without evidence are speculation.
+
+Section thirteen point two develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point two, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point two treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 13.3 Mapping
 
 The ransomware scenario: phishing (T1566) for entry, valid accounts (T1078), remote services (T1021) to spread, encryption (T1486) for impact. Mapped to kill-chain phases: delivery, exploitation via credentials, actions on objectives.
 
+Section thirteen point three develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point three, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point three treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
 ### 13.4 Bands
 
 Likelihood: likely, roughly even, unlikely. Impact: minor, moderate, severe. Bands keep discussion honest when data is thin.
+
+Section thirteen point four develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point four, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point four treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 13.5 Controls
 
 Each scenario lists existing controls and gaps. The fraud scenario: CT-log monitoring exists; resident warnings exist; takedown process is slow — a gap.
 
+Section thirteen point five develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point five, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point five treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 13.6 Review rhythm
 
 Scenarios are reviewed every six months, or sooner if MCX reports a new pattern. Retired scenarios are archived, not deleted.
 
+Section thirteen point six develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point six, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point six treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 13.7 Audience
 
 Managers read scenarios to set priorities; engineers read them to choose detections. A short summary line and a technical table serve both.
+
+Section thirteen point seven develops threat intelligence and osint risk with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirteen point seven, MCX expects threat claims to carry owners and dates.
+
+Section thirteen point seven treats scenario structure grounding mapping as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Using the Diamond Model
 
@@ -883,29 +1433,81 @@ You will (1) triage incoming items consistently; (2) grade sources and informati
 
 Is it relevant to CMS assets? Is it timely? Is it actionable? Is the source known? Items failing relevance are logged and closed.
 
+Section fourteen point one develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point one, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point one treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 14.2 Grading
 
 The Admiralty scale grades source reliability A–F and information credibility 1–6. MCX, with a long accurate record, is usually B; an anonymous forum post is F. Information confirmed by CMS's own logs is 1.
+
+Section fourteen point two develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point two, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point two treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Tagging
 
 Lena tags each relevant item with ATT&CK identifiers supported by the text. "Attackers sent invoice emails with links" supports T1566; it does not support T1059 unless the text mentions scripts.
 
+Section fourteen point three develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point three, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point three treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
+
 ### 14.4 The three-line note
 
 Line one: what happened and where. Line two: relevance to CMS with confidence. Line three: recommended action and owner. Busy owners read three lines.
+
+Section fourteen point four develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point four, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point four treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 14.5 Consistency
 
 Lena and her supervisor triage the same ten items monthly and compare decisions, discussing differences.
 
+Section fourteen point five develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point five, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point five treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 14.6 Time budget
 
 Triage takes minutes per item. If an item needs more, it moves to analysis with a note explaining why.
 
+Section fourteen point six develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point six, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point six treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 14.7 Logging
 
 Every item, including closed ones, is logged with date, source, decision and reason, so patterns in irrelevant traffic can be spotted and sources tuned.
+
+Section fourteen point seven develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fourteen point seven, MCX expects threat claims to carry owners and dates.
+
+Section fourteen point seven treats triage questions grading tagging as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Calibrating with peers
 
@@ -947,6 +1549,12 @@ You will (1) match indicators against a synthetic DNS log; (2) summarise hits pe
 
 The lab uses a synthetic resolver log and two indicators. It runs offline in the course virtual machine with the standard library. Students must not paste real CMS logs into lab files.
 
+Section fifteen point one develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point one, MCX expects threat claims to carry owners and dates.
+
+Section fifteen point one treats lab setup reading the as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — matching a log
 
 ```python
@@ -977,25 +1585,63 @@ non-match kept for review: pay-portal.example.org (suffix differs)
 
 ws-114 looked up pay-portal.example once, first at 08:03 UTC. ws-207 looked up update-svc.example twice, first at 09:12. A lookup of pay-portal.example.org was not matched: it contains the indicator as a substring but is a different domain. The script prints it for review rather than ignoring it silently.
 
+Section fifteen point two develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point two, MCX expects threat claims to carry owners and dates.
+
 ### 15.3 Exact versus substring
 
 Substring matching would flag pay-portal.example.org and perhaps legitimate names. Exact matching on the full name, after normalisation, avoids false alarms. Separate rules can watch for lookalikes deliberately.
+
+Section fifteen point three develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point three, MCX expects threat claims to carry owners and dates.
+
+Section fifteen point three treats lab setup reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 15.4 Hand-off
 
 Responders need host, indicator, first and last time, count and source of the indicator with its TLP. They do not need the script.
 
+Section fifteen point four develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point four, MCX expects threat claims to carry owners and dates.
+
+Section fifteen point four treats lab setup reading the as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 15.5 What a hit means
 
 A DNS lookup shows that a machine asked for a name. It does not prove a connection succeeded or a user entered data. Proxy logs and user contact follow.
+
+Section fifteen point five develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point five, MCX expects threat claims to carry owners and dates.
+
+Section fifteen point five treats lab setup reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 15.6 Repeat lookups
 
 ws-207's two lookups a minute apart may be one browser retry or software checking repeatedly. Repeated automatic lookups over hours would suggest installed software rather than a single click.
 
+Section fifteen point six develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point six, MCX expects threat claims to carry owners and dates.
+
+Section fifteen point six treats lab setup reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 15.7 Lab report
 
 Students record inputs, the command run, the output, interpretation and one improvement they would make, such as reading last-seen times as well as first-seen.
+
+Section fifteen point seven develops threat intelligence and osint guided with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section fifteen point seven, MCX expects threat claims to carry owners and dates.
+
+Section fifteen point seven treats lab setup reading the as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -1033,29 +1679,81 @@ You will (1) pivot carefully from one indicator to related infrastructure using 
 
 From a fraud domain, an analyst may look at passive DNS (what addresses it used), certificate records (which other names shared the certificate), and registration timing. Each pivot can reveal related infrastructure — or mislead.
 
+Section sixteen point one develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point one, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point one treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Shared services
 
 Cloud hosting, content-delivery networks and privacy-protected registrations are shared by thousands of unrelated customers. Pivoting through them links innocent sites. Lena stops a pivot when the shared item serves many unrelated names.
+
+Section sixteen point two develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point two, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point two treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Certificate transparency
 
 Publicly trusted certificates appear in public logs. Searching for names containing "corvale" with payment words finds lookalikes early. This is passive and lawful through approved search services.
 
+Section sixteen point three develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point three, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point three treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 16.4 Confidence
 
 Write "likely related" only when two independent pivots agree, such as shared certificate and registration minutes apart. One weak link is "possibly related".
+
+Section sixteen point four develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point four, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point four treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 16.5 Recording pivots
 
 Each pivot step is logged: source, query, result and decision. Others can repeat or challenge it.
 
+Section sixteen point five develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point five, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point five treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 16.6 Stopping rules
 
 Set a limit — three pivots or 30 minutes — unless the supervisor extends it. Endless pivoting wastes time and drifts from CMS's question.
 
+Section sixteen point six develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point six, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point six treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 16.7 Registration data
 
 Public registration records are often redacted for privacy. Analysts do not try to uncover redacted registrant identities; the domain and its timing are enough for defence.
+
+Section sixteen point seven develops threat intelligence and osint methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section sixteen point seven, MCX expects threat claims to carry owners and dates.
+
+Section sixteen point seven treats pivoting shared services certificate as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Takedown requests
 
@@ -1097,29 +1795,79 @@ You will (1) describe the tools in a small CTI stack; (2) choose between scripts
 
 Lena's stack: standard-library Python scripts for parsing and matching, a small open-source threat intelligence platform that stores STIX 2.1 and pulls MCX's TAXII 2.1 collection, the log search tool owned by operations, and a shared ticket queue.
 
+Section seventeen point one develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point one, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point one treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
+
 ### 17.2 Scripts or platform
 
 Scripts are flexible and transparent but depend on their author. A platform offers storage, sharing, TLP marking and a web interface but needs maintenance. CMS uses the platform for storage and sharing and scripts for local checks.
+
+Section seventeen point two develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point two, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point two treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Securing tools
 
 The platform holds TLP:AMBER partner data, so it needs strong authentication, restricted access, updates and backups. A compromised CTI platform would leak partner trust.
 
+Section seventeen point three develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point three, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point three treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 17.4 API keys
 
 Keys for MCX's TAXII server live in the platform's secret store, not in scripts or tickets. Rotating them is a scheduled task.
+
+Section seventeen point four develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point four, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point four treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 17.5 Maintenance
 
 Each tool has an owner, an update schedule and documentation. Lena writes a README for every script: purpose, inputs, outputs, example run.
 
+Section seventeen point five develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point five, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point five treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 17.6 Choosing new tools
 
 Before adding a tool, ask what requirement it serves, who maintains it, what data it touches and how it will be retired. Many small teams accumulate tools nobody uses.
 
+Section seventeen point six develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point six, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point six treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
+
 ### 17.7 Licences
 
 Open-source licences and commercial terms both apply. Check before redistributing tool outputs or modifying code for partners.
+
+Section seventeen point seven develops threat intelligence and osint tooling with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section seventeen point seven, MCX expects threat claims to carry owners and dates.
+
+Section seventeen point seven treats the cms stack scripts as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Testing tool changes
 
@@ -1161,29 +1909,81 @@ You will (1) convert intelligence into control changes through owners; (2) write
 
 Intelligence becomes protection only when a control changes: a DNS block, an email rule, an endpoint rule, a configuration fix. Lena drafts; owners decide and implement through change management.
 
+Section eighteen point one develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point one, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point one treats from note to change as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Change request contents
 
 Intelligence summary with source and TLP, affected asset, proposed change, expected effect, possible side effects, verification method, rollback plan and review date.
+
+Section eighteen point two develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point two, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point two treats from note to change as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point two, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 18.3 Verification
 
 After a DNS block, a test lookup from an approved test machine should fail. After an email rule, a harmless test message matching the rule should be quarantined. Results are attached to the change.
 
+Section eighteen point three develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point three, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point three treats from note to change as testable only when evidence and ticket IDs are recorded.
+
 ### 18.4 Rollback
 
 If a block breaks a service, the owner removes it quickly. The plan says how and who approves.
+
+Section eighteen point four develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point four, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point four treats from note to change as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 18.5 Review dates
 
 Domain and address blocks are reviewed after a set period; techniques-based rules are reviewed when ATT&CK or the threat changes.
 
+Section eighteen point five develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point five, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point five treats from note to change as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 18.6 Avoiding overload
 
 Owners receive many requests. Lena bundles low-urgency indicator blocks into a weekly change and keeps single urgent changes for genuine emergencies.
 
+Section eighteen point six develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point six, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point six treats from note to change as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 18.7 Mitigation ideas from ATT&CK
 
 Technique pages list mitigations. For T1566, filtering and user training; for T1078, multi-factor authentication. These guide proposals but must be adapted to CMS tools.
+
+Section eighteen point seven develops threat intelligence and osint controls with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section eighteen point seven, MCX expects threat claims to carry owners and dates.
+
+Section eighteen point seven treats from note to change as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Measuring effect
 
@@ -1225,6 +2025,14 @@ You will (1) monitor indicator matches over time; (2) apply type-specific expiry
 
 Matching runs daily against new logs, not just once. A domain from last month can appear today when a staff member opens an old message.
 
+Section nineteen point one develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point one, MCX expects threat claims to carry owners and dates.
+
+Section nineteen point one treats continuous matching reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point one, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### Lab — expiry review
 
 ```python
@@ -1252,25 +2060,67 @@ ab12ab12ab12ab12ab12 sha256 269 keep
 
 With a reference date of 1 October 2026, the address last seen 42 days ago exceeds its 30-day limit and is flagged for review. The fraud domain at 42 days is within its 90-day limit and kept. update-svc.example at 113 days exceeds 90 and is flagged. The hash at 269 days is within its 365-day limit.
 
+Section nineteen point two develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point two, MCX expects threat claims to carry owners and dates.
+
 ### 19.3 Why limits differ
 
 Addresses are reassigned quickly, especially in cloud services, so stale address blocks hit innocent parties. Domains last longer; hashes identify exact files indefinitely, though the file may stop circulating. Bianco's Pyramid of Pain explains this ordering.
+
+Section nineteen point three develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point three, MCX expects threat claims to carry owners and dates.
+
+Section nineteen point three treats continuous matching reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 19.4 Review, not delete
 
 Flagged items go to review: check fresh sightings and source updates. Expired items are marked inactive with a date, keeping history.
 
+Section nineteen point four develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point four, MCX expects threat claims to carry owners and dates.
+
+Section nineteen point four treats continuous matching reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point four, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 19.5 Monitoring health
 
 Lena reports weekly: logs received from each source, matches, flagged expiries and any source that stopped sending. A silent log source is itself an alert.
+
+Section nineteen point five develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point five, MCX expects threat claims to carry owners and dates.
+
+Section nineteen point five treats continuous matching reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 19.6 Lookalike watch
 
 A daily certificate-transparency query for CMS-like names runs automatically and lists new matches for triage.
 
+Section nineteen point six develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point six, MCX expects threat claims to carry owners and dates.
+
+Section nineteen point six treats continuous matching reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 19.7 Thresholds
 
 Limits are set with owners and written down. Changing them is a recorded decision, not a script edit.
+
+Section nineteen point seven develops threat intelligence and osint monitoring with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section nineteen point seven, MCX expects threat claims to carry owners and dates.
+
+Section nineteen point seven treats continuous matching reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Alert fatigue
 
@@ -1312,29 +2162,77 @@ You will (1) diagnose failures in the intelligence pipeline methodically; (2) di
 
 Typical symptoms: no new indicators today; a spike of false-positive blocks; exports rejected by a tool; matches missing that should exist. Each starts a structured check rather than random fixes.
 
+Section twenty point one develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point one, MCX expects threat claims to carry owners and dates.
+
+Section twenty point one treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 Method
 
 Work from the source forward: did data arrive? Did parsing accept it? Did the store hold it? Did export send it? Did the tool load it? Check one hand-off at a time and record each result.
+
+Section twenty point two develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point two, MCX expects threat claims to carry owners and dates.
+
+Section twenty point two treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Fault types
 
 Data faults: a partner changed a column name or label spelling. Code faults: a script assumed lower-case labels. Configuration faults: an expired API key, a firewall rule blocking TAXII, a full disk.
 
+Section twenty point three develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point three, MCX expects threat claims to carry owners and dates.
+
+Section twenty point three treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Communicating
 
 If indicators stopped flowing, tell consumers: "Since 06:00 no new MCX indicators have reached the DNS filter; existing blocks remain; fix expected by noon." Silence makes people assume protection that is not there.
+
+Section twenty point four develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point four, MCX expects threat claims to carry owners and dates.
+
+Section twenty point four treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Preventing recurrence
 
 After the fix, add a check: a test that alerts when daily imports fall to zero, or when a new label value appears.
 
+Section twenty point five develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point five, MCX expects threat claims to carry owners and dates.
+
+Section twenty point five treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 20.6 Keeping a fault log
 
 Each fault gets an entry: symptom, cause, fix, prevention, time lost. Patterns appear over months — for example, most faults follow partner format changes.
 
+Section twenty point six develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point six, MCX expects threat claims to carry owners and dates.
+
+Section twenty point six treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 20.7 Asking for help
 
 Escalate when the fault sits in another team's system. Bring evidence of where the flow stops so they can act quickly.
+
+Section twenty point seven develops threat intelligence and osint troubleshooting with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty point seven, MCX expects threat claims to carry owners and dates.
+
+Section twenty point seven treats symptoms method fault types as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Partner format changes
 
@@ -1376,29 +2274,77 @@ You will (1) integrate CTI outputs with the service desk, operations and inciden
 
 The service desk receives resident and staff reports of suspicious messages. Operations runs monitoring tools. Incident response handles confirmed incidents. Communications warns the public. Each needs a different product.
 
+Section twenty-one point one develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point one, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point one treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 Service desk
 
 Lena gives the service desk a short weekly list of current scams with sample subject lines and what to tell callers. When reports come in, the desk forwards samples to the CTI queue, closing the loop.
+
+Section twenty-one point two develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point two, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point two treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Operations
 
 Operations receives indicators through the platform's export and technique notes for tuning alerts. Urgent items come by phone.
 
+Section twenty-one point three develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point three, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point three treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point three, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 21.4 Incident response
 
 During incidents, Lena searches for related indicators and checks MCX for similar cases, following the incident lead's priorities. NIST SP 800-61r3 places such intelligence support within incident response.
+
+Section twenty-one point four develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point four, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point four treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
 
 ### 21.5 Service levels
 
 Urgent items reviewed within four hours in working time; routine items within two days; weekly scam list every Monday.
 
+Section twenty-one point five develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point five, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point five treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 21.6 Feedback
 
 A two-question monthly form: what helped, what was noise. Answers adjust content.
 
+Section twenty-one point six develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point six, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point six treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 21.7 Routing table
 
 A table maps item types to teams: fraud against residents to communications and web; staff phishing to email and service desk; vulnerabilities to system owners; partner compromise to supervisor.
+
+Section twenty-one point seven develops threat intelligence and osint service with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-one point seven, MCX expects threat claims to carry owners and dates.
+
+Section twenty-one point seven treats consumers service desk operations as testable only when evidence and ticket IDs are recorded.
 
 ### Communications partnership
 
@@ -1440,29 +2386,83 @@ You will (1) choose which CTI tasks to automate; (2) design automation with huma
 
 Repetitive, rule-based tasks: importing feeds, normalising, deduplicating, matching logs, flagging expiries, producing weekly counts.
 
+Section twenty-two point one develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point one, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point one treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point one, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 22.2 Poor candidates
 
 Judgment tasks: deciding relevance of a novel report, grading new sources, writing assessments, blocking on critical systems.
+
+Section twenty-two point two develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point two, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point two treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 22.3 Human checkpoints
 
 Automation proposes; humans approve where impact is high. Lena's pipeline auto-exports indicators to the DNS filter only from MCX at TLP:GREEN or CLEAR with grade B or better; others wait for review.
 
+Section twenty-two point three develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point three, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point three treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
 ### 22.4 Logging
 
 Every automated action logs input, rule applied and output. When a block causes complaints, the log shows exactly why it happened.
+
+Section twenty-two point four develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point four, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point four treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 22.5 Unsafe automation
 
 Never automate contact with adversary infrastructure — automated visits, downloads or scans of suspicious sites. Never automate sharing of AMBER or RED data outward.
 
+Section twenty-two point five develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point five, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point five treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 22.6 Scheduling
 
 Jobs run at fixed times with alerts on failure. A job that fails silently is worse than none.
 
+Section twenty-two point six develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point six, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point six treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 22.7 Small steps
 
 Automate one task, run it alongside manual work for two weeks, compare results, then switch.
+
+Section twenty-two point seven develops threat intelligence and osint automation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-two point seven, MCX expects threat claims to carry owners and dates.
+
+Section twenty-two point seven treats good candidates poor candidates as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Maintaining automated jobs
 
@@ -1504,29 +2504,83 @@ You will (1) evaluate sources and products against requirements; (2) compute sim
 
 Sources (MCX, vendor list, public advisories) and products (weekly scam list, three-line notes, block requests). Each should serve a requirement.
 
+Section twenty-three point one develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point one, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point one treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point one, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 23.2 Source measures
 
 For each source over a quarter: items received, items relevant to CMS, items leading to action, false positives reported, median delay from first public appearance. A ratio of actionable to received gives a rough usefulness figure.
+
+Section twenty-three point two develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point two, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point two treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Product measures
 
 For products: did consumers read them, act on them, find them clear? The monthly feedback form and service-desk call reasons answer these.
 
+Section twenty-three point three develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point three, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point three treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point three, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 23.4 Comparing fairly
 
 Compare sources over the same period and against the same requirements. A source covering a different threat may look worse but fill a gap.
+
+Section twenty-three point four develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point four, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point four treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 23.5 Recommendations
 
 Keep, change (for example, filter by type) or drop. Each recommendation states evidence and cost.
 
+Section twenty-three point five develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point five, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point five treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 23.6 Small numbers
 
 A quarter may hold few actionable items; avoid strong claims from tiny counts and repeat next quarter.
 
+Section twenty-three point six develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point six, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point six treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point six, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 23.7 Writing the evaluation
 
 One page: question, method, table, interpretation, recommendation, limits. Managers read the recommendation first.
+
+Section twenty-three point seven develops threat intelligence and osint evaluation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-three point seven, MCX expects threat claims to carry owners and dates.
+
+Section twenty-three point seven treats what to evaluate source as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point seven, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Cost per useful item
 
@@ -1568,29 +2622,85 @@ You will (1) frame a practical research question for a CTI improvement; (2) coll
 
 "Does the weekly scam list reduce service-desk calls that need escalation?" is answerable with existing data. "Are councils safer with CTI?" is too broad.
 
+Section twenty-four point one develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point one, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point one treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point one, Corvale Municipal Services will not accept applied work without a written trail.
+
 ### 24.2 Data collection
 
 Use existing records — tickets, logs, feedback forms — where policy allows. Define what counts before collecting: an escalated call means one forwarded to the CTI queue.
+
+Section twenty-four point two develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point two, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point two treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point two, Corvale Municipal Services will not accept applied work without a written trail.
 
 ### 24.3 Coding
 
 When reading free-text tickets, use a small set of categories with examples. Code a sample twice, a week apart, to check your own consistency.
 
+Section twenty-four point three develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point three, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point three treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Corvale Municipal Services will not accept applied work without a written trail.
+
 ### 24.4 Simple analysis
 
 Counts before and after, by week, with a chart. Note other changes in the same period, such as a news story about scams, that could explain differences.
+
+Section twenty-four point four develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point four, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point four treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point four, Corvale Municipal Services will not accept applied work without a written trail.
 
 ### 24.5 Ethics
 
 Tickets contain residents' and staff's personal data. Use only what the question needs, remove names, store results securely and get the manager's and data-protection officer's approval.
 
+Section twenty-four point five develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point five, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point five treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point five, Corvale Municipal Services will not accept applied work without a written trail.
+
 ### 24.6 Reporting honestly
 
 State what changed, what else might explain it and how confident you are. A small improvement with honest caveats is more useful than an inflated claim.
 
+Section twenty-four point six develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point six, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point six treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, Corvale Municipal Services will not accept applied work without a written trail.
+
 ### 24.7 Literature
 
 Look for published guidance and studies on security awareness and CTI sharing; cite sources you actually read.
+
+Section twenty-four point seven develops applied research methods with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-four point seven, MCX expects applied claims to carry owners and dates.
+
+Section twenty-four point seven treats practical questions data collection as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point seven, Corvale Municipal Services will not accept applied work without a written trail.
 
 ### Choosing a time window
 
@@ -1632,29 +2742,83 @@ You will (1) plan and deliver a small CTI tool or process as a team; (2) divide 
 
 Teams of three build a "lookalike watch" for a fictional client council: generate candidate names, check them against a provided synthetic certificate-log extract, triage matches and produce a weekly report template.
 
+Section twenty-five point one develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point one, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point one treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
 ### 25.2 Roles
 
 One student owns the generator, one the matcher, one triage and reporting. Each reviews another's work. Roles rotate at mid-point so everyone learns all parts.
+
+Section twenty-five point two develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point two, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point two treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Corvale Municipal Services will not accept team work without a written trail.
 
 ### 25.3 Planning
 
 A simple board with to-do, doing and done columns. Weekly stand-ups: what I did, what I will do, what blocks me.
 
+Section twenty-five point three develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point three, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point three treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Corvale Municipal Services will not accept team work without a written trail.
+
 ### 25.4 Scope
 
 The client asks midway for SMS-scam monitoring. The team records it, estimates effort and agrees with the tutor to note it as future work.
+
+Section twenty-five point four develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point four, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point four treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Corvale Municipal Services will not accept team work without a written trail.
 
 ### 25.5 Quality
 
 Each component has tests on synthetic inputs. The final report includes a table of planted lookalikes found and missed.
 
+Section twenty-five point five develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point five, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point five treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Corvale Municipal Services will not accept team work without a written trail.
+
 ### 25.6 Ethics in the studio
 
 All data is synthetic. The team must not run the generator against live certificate services during the studio unless the tutor approves and terms allow.
 
+Section twenty-five point six develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point six, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point six treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point six, Corvale Municipal Services will not accept team work without a written trail.
+
 ### 25.7 Presentation
 
 Ten minutes to the client panel: problem, demo on synthetic data, results, limits, next steps.
+
+Section twenty-five point seven develops team project studio with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-five point seven, MCX expects team claims to carry owners and dates.
+
+Section twenty-five point seven treats the brief roles planning as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point seven, Corvale Municipal Services will not accept team work without a written trail.
 
 ### Handling disagreement
 
@@ -1696,33 +2860,95 @@ You will (1) hand over CTI duties between shifts or staff; (2) write a handover 
 
 Intelligence work spans days: an advisory awaits a patch, a takedown request awaits a reply, a fraud wave continues. Without handover, items stall when someone is away.
 
+Section twenty-six point one develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point one, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point one treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point one, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 26.2 Handover note
 
 Open items with status, owner and next step; scheduled jobs and their health; partner commitments such as promised MCX feedback; anything unusual seen this week. Each item keeps its TLP label.
+
+Section twenty-six point two develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point two, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point two treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Access
 
 The cover person needs platform access, the ticket queue and MCX portal access approved in advance. Sharing passwords is not handover; individual accounts are.
 
+Section twenty-six point three develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point three, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point three treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point three, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 26.4 Restricted items
 
 TLP:RED items go only to named recipients. If the cover person is not named, the item is noted as "restricted item pending; supervisor holds details".
+
+Section twenty-six point four develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point four, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point four treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 26.5 Verbal briefing
 
 A fifteen-minute conversation alongside the written note catches nuance: "the parks owner prefers phone calls".
 
+Section twenty-six point five develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point five, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point five treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 26.6 Return
 
 On return, the person reads the cover log and confirms each item's state before resuming.
+
+Section twenty-six point six develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point six, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point six treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point six, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### 26.7 Templates
 
 A fixed template with the same headings every time speeds writing and reading. Missing sections are visible at a glance.
 
+Section twenty-six point seven develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point seven, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point seven treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point seven, Corvale Municipal Services will not accept threat work without a written trail.
+
 ### 26.8 Long absence
 
 For absences over two weeks, the supervisor reassigns items formally rather than leaving them with temporary cover.
+
+Section twenty-six point eight develops threat intelligence and osint operational with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-six point eight, MCX expects threat claims to carry owners and dates.
+
+Section twenty-six point eight treats why handover matters handover as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point eight, Corvale Municipal Services will not accept threat work without a written trail.
 
 ### Handover in incidents
 
@@ -1764,33 +2990,95 @@ You will (1) deploy a CTI script or process into production safely; (2) validate
 
 A script that worked on synthetic data now meets real feeds and logs. Deployment moves it to a managed server, under a service account with minimum rights, scheduled and monitored.
 
+Section twenty-seven point one develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point one, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point one treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
 ### 27.2 Validation set
 
 Before go-live, run the script on a validation set: a sample of real past indicators and logs where results are already known — matches that were confirmed, near misses that were not. Outputs must agree.
+
+Section twenty-seven point two develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point two, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point two treats from lab to production as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Acceptance criteria
 
 Written beforehand: no missed known matches; false-positive rate no worse than the manual process; runtime under ten minutes; failure alerts reach the team.
 
+Section twenty-seven point three develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point three, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point three treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point three, Corvale Municipal Services will not accept deployment work without a written trail.
+
 ### 27.4 Staged rollout
 
 Run in report-only mode for two weeks, producing outputs humans check but no automatic exports. Then enable exports.
+
+Section twenty-seven point four develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point four, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point four treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Corvale Municipal Services will not accept deployment work without a written trail.
 
 ### 27.5 Rights
 
 The service account can read logs and write to the store; it cannot change firewall rules. Least privilege limits damage if the script misbehaves.
 
+Section twenty-seven point five develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point five, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point five treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point five, Corvale Municipal Services will not accept deployment work without a written trail.
+
 ### 27.6 Documentation
 
 A deployment record: version, date, configuration, validation results, approver.
+
+Section twenty-seven point six develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point six, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point six treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, Corvale Municipal Services will not accept deployment work without a written trail.
+
+Section twenty-seven point six fails closed if deployment evidence is missing rather than guessing.
 
 ### 27.7 Rollback
 
 Keep the previous version ready; if outputs go wrong, switch back and investigate.
 
+Section twenty-seven point seven develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point seven, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point seven treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point seven, Corvale Municipal Services will not accept deployment work without a written trail.
+
 ### 27.8 Privacy in validation
 
 Validation data comes from real logs, so it contains personal data. Keep it on the managed server, use only what is needed and delete the extract after acceptance.
+
+Section twenty-seven point eight develops deployment and validation with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-seven point eight, MCX expects deployment claims to carry owners and dates.
+
+Section twenty-seven point eight treats from lab to production as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point eight, Corvale Municipal Services will not accept deployment work without a written trail.
 
 ### Change approval
 
@@ -1832,33 +3120,97 @@ You will (1) work under supervision in a real CTI environment; (2) apply confide
 
 Lena spends six weeks with MCX's coordination desk under a confidentiality agreement. She sees how members' submissions are checked, labelled and redistributed.
 
+Section twenty-eight point one develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point one, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point one treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point one, Corvale Municipal Services will not accept field work without a written trail.
+
 ### 28.2 Confidentiality
 
 Everything seen on placement stays there unless released. Her coursework uses synthetic examples inspired by patterns, never real member details.
+
+Section twenty-eight point two develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point two, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point two treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Corvale Municipal Services will not accept field work without a written trail.
 
 ### 28.3 Tasks
 
 Normalising submissions, checking labels, drafting summaries for review, answering members' format questions. She does not approve releases.
 
+Section twenty-eight point three develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point three, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point three treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point three, Corvale Municipal Services will not accept field work without a written trail.
+
 ### 28.4 Journal
 
 Daily notes: what I did, what I learned, what I would ask. Notes contain no restricted details; they record lessons, not data.
+
+Section twenty-eight point four develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point four, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point four treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Corvale Municipal Services will not accept field work without a written trail.
 
 ### 28.5 Feedback
 
 Her mentor reviews every draft. Early feedback: "Your summaries bury the action at the end." Lena moves actions to the first line.
 
+Section twenty-eight point five develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point five, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point five treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, Corvale Municipal Services will not accept field work without a written trail.
+
 ### 28.6 Professional conduct
 
 Arrive prepared, ask questions, admit mistakes immediately. A wrong label caught early is a lesson; one hidden is a breach.
+
+Section twenty-eight point six develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point six, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point six treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point six, Corvale Municipal Services will not accept field work without a written trail.
 
 ### 28.7 Assessment
 
 The placement supervisor rates reliability, handling discipline, communication and learning; the journal shows reflection.
 
+Section twenty-eight point seven develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point seven, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point seven treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point seven, Corvale Municipal Services will not accept field work without a written trail.
+
 ### 28.8 After placement
 
 Contacts made are professional; requests to them go through proper channels, not personal favours for restricted data.
+
+Section twenty-eight point eight develops field practice with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-eight point eight, MCX expects field claims to carry owners and dates.
+
+Section twenty-eight point eight treats placement confidentiality tasks journal as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point eight, Corvale Municipal Services will not accept field work without a written trail.
 
 ### Learning from the desk
 
@@ -1900,33 +3252,93 @@ You will (1) build a capstone CTI pipeline end to end on synthetic data; (2) int
 
 Lena's capstone: an "MCX-to-CMS pipeline" that imports a synthetic STIX bundle, refangs and validates values, deduplicates with provenance, stores them with TLP labels, matches a synthetic DNS log, flags expiries and produces the weekly note and a TLP-filtered export for MCX feedback.
 
+Section twenty-nine point one develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point one, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point one treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
 ### 29.2 Integration
 
 Each earlier lab becomes a module with clear inputs and outputs. A single runner calls them in order and stops with a clear message if any stage fails.
+
+Section twenty-nine point two develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point two, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point two treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point two, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### 29.3 Tests
 
 Each module keeps its lab test cases; an end-to-end test checks the whole run against expected outputs: three unique indicators, two hosts with hits, two expiry flags, one dangling relationship reported.
 
+Section twenty-nine point three develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point three, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point three treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
 ### 29.4 Build log
 
 Daily entries: what was built, decisions and reasons, problems. The log becomes an appendix.
+
+Section twenty-nine point four develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point four, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point four treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### 29.5 Scope discipline
 
 Features beyond the brief — a web dashboard, a chat bot — go to a "later" list. The deadline holds.
 
+Section twenty-nine point five develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point five, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point five treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point five, Corvale Municipal Services will not accept capstone work without a written trail.
+
 ### 29.6 Safety rules
 
 No network calls, no real data, standard library only. The export filter refuses anything not CLEAR or GREEN and any unknown label.
+
+Section twenty-nine point six develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point six, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point six treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point six, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### 29.7 Code review
 
 The tutor and one peer review the code before submission, focusing on clarity, error handling and the export filter.
 
+Section twenty-nine point seven develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point seven, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point seven treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point seven, Corvale Municipal Services will not accept capstone work without a written trail.
+
 ### 29.8 Packaging
 
 A README explains how to run the pipeline and tests in one command each, so assessors can reproduce results.
+
+Section twenty-nine point eight develops capstone build with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section twenty-nine point eight, MCX expects capstone claims to carry owners and dates.
+
+Section twenty-nine point eight treats the capstone integration tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point eight, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### Error messages
 
@@ -1968,33 +3380,97 @@ You will (1) evaluate the capstone against its brief; (2) present results to ass
 
 Each requirement is checked: imports work, labels are preserved, matching is exact, expiries are flagged, export filter refuses restricted items, tests pass in one command.
 
+Section thirty point one develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point one, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point one treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Corvale Municipal Services will not accept capstone work without a written trail.
+
 ### 30.2 Evidence
 
 Assessors see test outputs, the build log, code review comments and a short demonstration on synthetic data.
+
+Section thirty point two develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point two, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point two treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point two, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### 30.3 Presentation
 
 Ten minutes: purpose, design diagram, demonstration, results, limits, next steps. A panel member from MCX asks about handling; Lena explains the fail-closed export.
 
+Section thirty point three develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point three, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point three treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, Corvale Municipal Services will not accept capstone work without a written trail.
+
 ### 30.4 Reflection
 
 What went well (modular design, tests); what was hard (format changes); what she would do differently (write the end-to-end test first).
+
+Section thirty point four develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point four, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point four treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### 30.5 Limits
 
 Synthetic data is cleaner than reality; the pipeline has not met real feeds; performance at scale is untested.
 
+Section thirty point five develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point five, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point five treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point five, Corvale Municipal Services will not accept capstone work without a written trail.
+
 ### 30.6 Transition plan
 
 To use it at CMS: validation on real past data, report-only run, change approval, service account, monitoring, owner and documentation — as in chapter 27.
+
+Section thirty point six develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point six, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point six treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point six, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### 30.7 Assessment criteria
 
 Correctness, safety, code quality, documentation, reflection and presentation, each scored with the published rubric.
 
+Section thirty point seven develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point seven, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point seven treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point seven, Corvale Municipal Services will not accept capstone work without a written trail.
+
 ### 30.8 Continuing
 
 Graduates move toward analyst roles; the next courses build analysis and leadership skills on these foundations.
+
+Section thirty point eight develops capstone assessment with a Corvale Municipal Services note Lena Park can demo offline.
+
+Under section thirty point eight, MCX expects capstone claims to carry owners and dates.
+
+Section thirty point eight treats against the brief evidence as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point eight, Corvale Municipal Services will not accept capstone work without a written trail.
 
 ### Feedback from the client panel
 
