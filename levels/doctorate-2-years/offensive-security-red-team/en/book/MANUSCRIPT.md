@@ -606,17 +606,25 @@ You will (1) solicit critique from methodology and practice experts; (2) separat
 
 Invite: a red-team practitioner (ecological validity), a measurement researcher (statistics), an ethicist or counsel (authorization), and a blue-team lead (whether your reports would help defenders). Share redacted materials.
 
+For Elena, each reviewer tests a different weak point. The practitioner asks whether NHUSTL's isolated 10.20.0.0/16 and 192.168.50.0/24 ranges resemble the networks where scope mistakes actually happen. The measurement researcher checks whether out-of-scope probes per engagement-hour, compared at 20 engagements per arm, supports the interval she reports. Counsel reads the authorization file, and the blue-team lead judges whether a deny-reason log would help defenders. Redacted materials still include the pre-registration, so each reviewer can see what she promised before the data arrived.
+
 ### 6.2 Major vs minor
 
 Major: the measure does not match the claim; independence is compromised; ethics gap; results driven by one operator. Minor: wording, figure layout, related-work gaps. Major issues change conclusions or require new data.
+
+Elena sorts every comment into one of these two lists before replying. The practitioner's point that NHUSTL's topology is too clean is major, because it bounds where the drop from 0.17 to 0.03 out-of-scope probes per hour can be claimed. A request to relabel a figure axis is minor. Sorting first stops her spending a week on presentation while a validity question waits, and the response trail shows reviewers that their major points received the larger share of revision effort.
 
 ### 6.3 Revision without switching
 
 You may clarify, add sensitivity analyses, or collect new data under an amended pre-registration. You may not redefine success after seeing results. If the primary fails, say so and discuss why.
 
+In Elena's case the pre-registered primary measure, out-of-scope probes per engagement-hour, stays fixed. She can add a sensitivity analysis that drops engagements aborted for infrastructure failure, because that exclusion was already named in the pre-registration. She cannot swap in time-to-stop as the headline if it happens to look stronger; it remains a secondary measure. The amendment log records each change with its date, so an examiner can compare the revised thesis against the plan filed before the main study.
+
 ### 6.4 Threat model of the study
 
 Attackers of your study include: operators who game the checker; lab infra that drifts; validators who share incentives. Document residual risks to validity.
+
+For NHUSTL, gaming the checker would mean operators splitting a probe across permitted ports or proposing actions the predicate cannot express, so that the checker records no violation while the behaviour still drifts. Lab drift would include a range renumbered mid-study, which would make an allowed CIDR silently cover new hosts. Validators who share Elena's supervisor share her incentive to find an effect. Each threat gets a recorded mitigation or is listed as a residual limit in the thesis.
 
 ```python
 """Password policy strength from synthetic samples (no cracking)."""

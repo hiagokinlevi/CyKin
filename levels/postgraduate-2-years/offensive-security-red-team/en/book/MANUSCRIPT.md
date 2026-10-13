@@ -136,7 +136,7 @@ Archive redlines of old packs are linked from the catalogue changelog; forgettin
 
 ### 2.9 2.9 Bit2
 
-Archive redlines of old packs are linked from the catalogue changelog; forgetting history is how swagger returns. She files a one-line note in ENG-MCH-2 after each use of this practice.
+Archive redlines of old packs are linked from the catalogue changelog; forgetting history is how swagger returns. Linking each redline to the changelog entry also shows reviewers which claim was softened and why.
 
 ### Worked example (synthetic MCH)
 
@@ -206,7 +206,7 @@ HSM funding used the seizure-drill fail as exhibit A in the budget memo; boring 
 
 ### 3.9 3.9 Bit2
 
-HSM funding used the seizure-drill fail as exhibit A in the budget memo; boring drills buy real controls. She files a one-line note in ENG-MCH-3 after each use of this practice.
+HSM funding used the seizure-drill fail as exhibit A in the budget memo; boring drills buy real controls. Treating a partial result as a fail is what made the drill credible evidence in that memo.
 
 ### 3.10 3.p9
 
@@ -214,7 +214,7 @@ Seizure-drill scores are pass/fail; partial hash recovery is a fail.
 
 ### 3.11 3.q10
 
-Seizure-drill scores are pass/fail; partial hash recovery is a fail. Context: this note is filed under MCH-P-3 and reviewed when the chapter's main artefact changes.
+Seizure-drill scores are pass/fail; partial hash recovery is a fail. A recovered fragment of a hash still proves the key material left the device, so the pass/fail rule has no middle grade.
 
 ### Worked example (synthetic MCH)
 
@@ -284,7 +284,7 @@ Calendar locks display "ethics charter" as the rejection reason when someone tri
 
 ### 4.9 4.9 Bit2
 
-Calendar locks display "ethics charter" as the rejection reason when someone tries to book over settlement peak. She files a one-line note in ENG-MCH-4 after each use of this practice.
+Calendar locks display "ethics charter" as the rejection reason when someone tries to book over settlement peak. Showing the charter as the reason tells the requester that the block is a policy decision, not a scheduling accident.
 
 ### 4.10 4.p9
 
@@ -292,7 +292,7 @@ Calendar lock rejection emails CC ethics charter maintainers automatically.
 
 ### 4.11 4.q10
 
-Calendar lock rejection emails CC ethics charter maintainers automatically. Context: this note is filed under MCH-P-4 and reviewed when the chapter's main artefact changes.
+Calendar lock rejection emails CC ethics charter maintainers automatically. Copying the maintainers means repeated attempts to book over settlement peak become visible to the people who own the charter.
 
 ### Worked example (synthetic MCH)
 
@@ -362,7 +362,7 @@ Every-third-year threat-led still has a named white-team lead pencilled two year
 
 ### 5.9 5.9 Bit2
 
-Every-third-year threat-led still has a named white-team lead pencilled two years out; pencils beat wishes. She files a one-line note in ENG-MCH-5 after each use of this practice.
+Every-third-year threat-led still has a named white-team lead pencilled two years out; pencils beat wishes. Naming the lead two years out gives the white team time to arrange cover before the threat-led exercise is due.
 
 ### 5.10 5.10 Story
 
@@ -453,7 +453,7 @@ Design notes from scoring disagreements are tagged FEASIBILITY so they appear in
 
 ### 6.9 6.9 Bit2
 
-Design notes from scoring disagreements are tagged FEASIBILITY so they appear in the next scenario workshop automatically. She files a one-line note in ENG-MCH-6 after each use of this practice.
+Design notes from scoring disagreements are tagged FEASIBILITY so they appear in the next scenario workshop automatically. Tagging disagreements this way turns a scoring dispute into an input for designing the next scenario.
 
 ### 6.10 6.10 Story
 
@@ -465,7 +465,7 @@ Provisional labels on scores are bright orange in the PDF export.
 
 ### 6.12 6.q11
 
-Provisional labels on scores are bright orange in the PDF export. Context: this note is filed under MCH-P-6 and reviewed when the chapter's main artefact changes.
+Provisional labels on scores are bright orange in the PDF export. The orange label keeps a provisional score from being quoted as final once the PDF leaves the team.
 
 ### Worked example (synthetic MCH)
 
@@ -535,7 +535,7 @@ Amnesty week metrics — declared, catalogued, stopped — go to the board risk 
 
 ### 7.9 7.9 Bit2
 
-Amnesty week metrics — declared, catalogued, stopped — go to the board risk committee in one slide. She files a one-line note in ENG-MCH-7 after each use of this practice.
+Amnesty week metrics — declared, catalogued, stopped — go to the board risk committee in one slide. Keeping the three counts on one slide lets the committee see whether declarations led to tools actually being stopped.
 
 ### 7.10 7.10 Story
 
@@ -547,7 +547,7 @@ Amnesty counts are archived with the committee minute hash.
 
 ### 7.12 7.q11
 
-Amnesty counts are archived with the committee minute hash. Context: this note is filed under MCH-P-7 and reviewed when the chapter's main artefact changes.
+Amnesty counts are archived with the committee minute hash. Tying the counts to the minute hash means a later reader can check that the reported figures were the ones the committee saw.
 
 ### Worked example (synthetic MCH)
 
@@ -617,7 +617,7 @@ HR script versioning follows the same change control as ROE templates; freelance
 
 ### 8.9 8.9 Bit2
 
-HR script versioning follows the same change control as ROE templates; freelanced empathy is not a control. She files a one-line note in ENG-MCH-8 after each use of this practice.
+HR script versioning follows the same change control as ROE templates; freelanced empathy is not a control. Putting the HR script under ROE-style change control means a well-meant wording change cannot reach an employee unreviewed.
 
 ### 8.10 8.p9
 
@@ -625,7 +625,7 @@ HR script changes require HR and Amira countersignatures the same day.
 
 ### 8.11 8.q10
 
-HR script changes require HR and Amira countersignatures the same day. Context: this note is filed under MCH-P-8 and reviewed when the chapter's main artefact changes.
+HR script changes require HR and Amira countersignatures the same day. Same-day countersignature prevents a script edited in the morning from being used in an afternoon interview without both owners' approval.
 
 ### Worked example (synthetic MCH)
 
@@ -711,7 +711,7 @@ Vendor warning letters enclose the forbidden list as Appendix A; some vendors up
 
 ### 9.9 9.9 Bit2
 
-Vendor warning letters enclose the forbidden list as Appendix A; some vendors update their marketing decks. She files a one-line note in ENG-MCH-9 after each use of this practice.
+Vendor warning letters enclose the forbidden list as Appendix A; some vendors update their marketing decks. Attaching the list makes the warning specific: the vendor sees exactly which claims the team will not accept.
 
 ### 9.10 9.10 Story
 
@@ -723,7 +723,7 @@ Before-and-after vendor decks are stored as evidence of influence, not of mocker
 
 ### 9.12 9.q11
 
-Before-and-after vendor decks are stored as evidence of influence, not of mockery. Context: this note is filed under MCH-P-9 and reviewed when the chapter's main artefact changes.
+Before-and-after vendor decks are stored as evidence of influence, not of mockery. Keeping both versions shows auditors that the warning changed vendor claims, which is the point of sending it.
 
 ### Worked example (synthetic MCH)
 
@@ -812,7 +812,7 @@ Silent-thirty metric tracks how long Amira stays quiet; the goal is longer each 
 
 ### 10.9 10.9 Bit2
 
-Silent-thirty metric tracks how long Amira stays quiet; the goal is longer each quarter as juniors lead. She files a one-line note in ENG-MCH-10 after each use of this practice.
+Silent-thirty metric tracks how long Amira stays quiet; the goal is longer each quarter as juniors lead. A rising silent-thirty number is evidence that juniors are running debriefs without waiting for Amira.
 
 ### 10.10 10.10 Story
 
@@ -824,7 +824,7 @@ Pre-check rate posters use cohort letters, never names.
 
 ### 10.12 10.q11
 
-Pre-check rate posters use cohort letters, never names. Context: this note is filed under MCH-P-10 and reviewed when the chapter's main artefact changes.
+Pre-check rate posters use cohort letters, never names. Cohort letters let teams compare pre-check rates without singling out any individual operator.
 
 ### Worked example (synthetic MCH)
 
@@ -894,7 +894,7 @@ Near-miss answers are stored anonymously when others share; Amira's own near-mis
 
 ### 11.9 11.9 Bit2
 
-Near-miss answers are stored anonymously when others share; Amira's own near-miss stays named to model candour. She files a one-line note in ENG-MCH-11 after each use of this practice.
+Near-miss answers are stored anonymously when others share; Amira's own near-miss stays named to model candour. Amira naming her own near-miss signals to juniors that admitting one carries no penalty.
 
 ### 11.10 11.10 Story
 
@@ -906,7 +906,7 @@ Sealed envelopes use wax stamps for theatre that reminds people the ROE is speci
 
 ### 11.12 11.q11
 
-Sealed envelopes use wax stamps for theatre that reminds people the ROE is special. Context: this note is filed under MCH-P-11 and reviewed when the chapter's main artefact changes.
+Sealed envelopes use wax stamps for theatre that reminds people the ROE is special. The ceremony is deliberate: opening a sealed ROE envelope should feel different from opening routine paperwork.
 
 ### Worked example (synthetic MCH)
 
@@ -976,7 +976,7 @@ Watcher for the open research question receives a quarterly calendar invite with
 
 ### 12.9 12.9 Bit2
 
-Watcher for the open research question receives a quarterly calendar invite with Amira optional — succession of curiosity. She files a one-line note in ENG-MCH-12 after each use of this practice.
+Watcher for the open research question receives a quarterly calendar invite with Amira optional — succession of curiosity. Leaving Amira optional on the invite tests whether the question survives without her steering it.
 
 ### 12.10 12.10 Story
 
@@ -988,7 +988,7 @@ Transfer form has a checkbox "SOC shadow completed" that blocks signature when e
 
 ### 12.12 12.q11
 
-Transfer form has a checkbox "SOC shadow completed" that blocks signature when empty. Context: this note is filed under MCH-P-12 and reviewed when the chapter's main artefact changes.
+Transfer form has a checkbox "SOC shadow completed" that blocks signature when empty. Blocking signature until the SOC shadow is done makes the shadow a precondition rather than a recommendation.
 
 ### Worked example (synthetic MCH)
 

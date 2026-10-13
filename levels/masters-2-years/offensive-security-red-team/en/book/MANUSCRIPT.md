@@ -465,25 +465,35 @@ You will (1) write a short proposal your supervisor can approve; (2) build repor
 
 Include question, rationale, design, measures, ethics, timeline and risks. Attach authorization for synthetic assessments and consent forms. State dual-use limits in one paragraph your supervisor can quote.
 
+For Noah, the question line reads: on CBM's synthetic segments, do ATT&CK-tagged findings reach a higher 30-day remediation rate than narrative-only findings? The design paragraph names between-findings randomisation on VLAN 40 with strata for severity and asset class. The risks section lists the planning sketch from chapter 3: if narrative completion sits near 40%, detecting a rise to 60% needs on the order of 100 findings per arm, so a slow assessment calendar is itself a risk to the timeline.
+
 
 ### 5.2 Templates
 
 Narrative template fields: title, asset, evidence reference, impact, recommendation. Tagged template: the same plus ATT&CK technique IDs and parent tactic. Both templates explicitly forbid exploit steps or credentials.
+
+Keeping every other field identical is what makes the comparison fair: if the tagged template also had a longer impact section, any difference in remediation could come from that extra text rather than from the ATT&CK fields. Noah therefore builds the tagged template by adding fields to the narrative one, never by rewriting it. The pinned ATT&CK version goes into the template footer, so a remediator opening a ticket months later sees the same technique definitions the writer used.
 
 
 ### 5.3 Pilot protocol
 
 Generate 40 synthetic findings from a training assessment on VLAN 40; randomise; deliver tickets; observe a 14-day early signal if 30 days exceeds the term calendar; audit tags for correctness.
 
+Forty findings is far below the roughly 100 per arm needed for the main comparison, so the pilot is not meant to answer the question. Its job is to show that randomisation produces balanced arms, that tickets arrive in CBM's system with the format flag recorded, that remediators can see the tag fields, and that the tag audit catches incorrect technique IDs. The 14-day signal is only an early check on variance for refining the sample-size sketch, never a preliminary result.
+
 
 ### 5.4 Instrument lock
 
 Freeze templates, ATT&CK version, remediation definition and randomisation code. Record versions in the methods chapter. After lock, changes require a supervisor-approved amendment.
 
+Locking matters most for the remediation definition. If Noah decided after seeing pilot tickets that a ticket closed as risk accepted counts as remediated, he could move the 30-day rate in either arm. With the lock in place, such a change becomes an amendment his supervisor must approve and that the methods chapter must report, so examiners can see whether any rule moved after data arrived.
+
 
 ### 5.5 Go / no-go
 
 Go if authorization holds, templates are usable in the ticket UI, and format is recorded per ticket. No-go or redesign if remediators cannot see tags without opening a hidden field.
+
+The hidden-field condition is not cosmetic. If remediators must click into a collapsed panel to see the technique IDs, many tagged tickets would in practice be read as narrative tickets, and the study would compare two arms that look the same to the people doing the work. A no-go here costs weeks; going ahead would cost the validity of the whole dissertation.
 
 
 ```python
@@ -718,6 +728,8 @@ Use: introduction; background (NIST SP 800-115, PTES, ATT&CK, WSTG, TIBER-EU/CBE
 
 In examples, show report fields and remediation outcomes. Never include working attack procedures. When quoting synthetic evidence, use hashes and ticket IDs. Severity language should match your scoring sheet, not marketing adjectives.
 
+For Noah, a finding example in the dissertation shows the ticket ID, the asset class, the severity from his scoring sheet, the ATT&CK technique ID where the tagged arm applies, the recommendation and the remediation outcome within 30 days. It never shows the request that triggered the issue or any credential. Quoting a hash of the synthetic evidence lets an examiner confirm the example matches the archive without the dissertation itself carrying anything an attacker could reuse.
+
 ```python
 """Score synthetic findings for report priority (no exploit details)."""
 # impact 0-3, exploitability 0-3, exposure 0-3  -> priority
@@ -759,6 +771,8 @@ State: synthetic segments; one organisation; volunteer remediators; imperfect AT
 
 Include scripts, templates, ATT&CK version pin, synthetic export and an analysis notebook that rebuilds the primary table. Hash the release so examiners can detect accidental edits.
 
+For CBM, the notebook should rebuild the primary result from the synthetic export: 110 tagged and 108 narrative findings, 62% against 44% remediated in 30 days, with the VLAN 40 rebuild week excluded and also shown kept in. An examiner who can regenerate that table on a clean machine does not need to trust Noah's summary, and any hash mismatch tells them a file changed after release.
+
 ```python
 """Verify integrity of a synthetic evidence package."""
 import hashlib, json
@@ -798,6 +812,8 @@ Two pages: how to add ATT&CK fields to tickets; how to audit tags; which metric 
 
 Noah's limitations page leads with synthetic scope. His appendix regenerates Table 1 from `tickets_synth.csv`. The findings lab style — priority without an exploit path — matches his templates. Hash verification catches a mistaken edit to the appendix sample before submission.
 
+The mistaken edit matters because the appendix exists so examiners can rebuild Table 1: an undetected change could have left their rebuilt numbers out of line with the 62% and 44% in the results chapter, and the mismatch would have cast doubt on the whole analysis rather than on one file.
+
 ### 7.7 Errors and limits
 
 - Methods chapters that omit ethics.
@@ -833,17 +849,25 @@ You will (1) prepare materials for independent review; (2) answer methods and et
 
 Share the dissertation, synthetic appendix and ethics package with an internal reviewer who did not supervise weekly. Ask them to check: measure–claim fit; blinding; tag audit; whether any section drifts into attack instruction.
 
+Choosing a reviewer who did not supervise weekly matters because a weekly supervisor has already accepted Noah's framing. A fresh reader is more likely to notice, for example, that the tag audit reached 96% agreement only after second-person review, and to ask how many tags were wrong before that check. The reviewer's written comments go into the response trail alongside Noah's replies.
+
 ### 8.2 Defence posture
 
 Open with question, design, primary result and conditions. Expect questions on randomisation, severity balance, why synthetic segments, and what would falsify the result. Bring a one-page methods cheat sheet.
+
+For Noah, the opening fits in about ninety seconds: does ATT&CK tagging raise 30-day remediation on CBM's synthetic segments; stratified randomisation by severity and asset class; 62% against 44%, a difference of about 18 points with an interval excluding zero; synthetic training segments, volunteer remediators and one organisation. The cheat sheet adds what would falsify the result, such as a tag audit showing that correct tags made no difference.
 
 ### 8.3 Dual-use challenges
 
 If asked to "show how the finding was exploited", refuse and show the report template fields instead. Reaffirm authorization boundaries and coordinated disclosure for any real issues encountered during placement.
 
+A demand for exploit detail at a defence is usually a test of judgement, not a request for data. Noah's answer has four parts: he declines; he shows the template field that deliberately has no exploit steps; he explains that his authorization covered synthetic training assessments only; and he notes that any real issue found during the placement would go through CBM's coordinated disclosure route, not into a dissertation.
+
 ### 8.4 Dissemination
 
 Submit a short paper to a measurement or SOUPS-like human-factors venue if appropriate; present the practitioner brief internally; release the synthetic appendix with hashes. Do not release client-identifying materials.
+
+Each output has its own exclusions. The short paper reports the 30-day comparison and its limits but no CBM identifiers. The internal brief may name CBM teams because it stays inside CBM. The public appendix contains only the synthetic export, scripts and templates, released with hashes so later readers can confirm they hold the same files the examiners checked.
 
 ```python
 """ATT&CK-style coverage matrix over synthetic authorized techniques (names only)."""
@@ -883,6 +907,8 @@ coverage=5/7 (71%)
 ### 8.5 Closing the placement
 
 Return access; confirm synthetic data only remains in the archive; thank remediators; leave the ticket templates behind if CBM wants them. Coverage language from the lab becomes a teaching reminder: planned-not-seen items wait for the next authorized plan.
+
+Closing cleanly is part of the evidence that the work was governed. Noah returns his assessment accounts on the last day, asks CBM to confirm their removal in writing, and checks that the archive holds only synthetic tickets. Offering the tagged templates is optional for CBM; adopting them in live work would need its own authorization, as the worked example below notes.
 
 ### 8.6 Worked example (synthetic CBM case)
 
