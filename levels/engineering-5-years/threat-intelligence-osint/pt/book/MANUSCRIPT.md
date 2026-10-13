@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–42 de 50 já estão escritos em português, com os exercícios EX001–EX126 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 43–50 (EX127–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; nove laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas vêm de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,11 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) |
-
-Capítulos 43–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-43), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
+| [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2607,11 +2609,510 @@ Faça perguntas operacionais, respeite o consentimento, teste os métodos com da
 
 [← Capítulo 41 (rascunho)](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 (rascunho) →](#ch-43)
 
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar dentro da governança de uma organização em operação; (2) contribuir de forma responsável com uma comunidade setorial de compartilhamento; (3) documentar as horas e as reflexões da prática profissional; (4) lidar com o material confidencial conhecido durante o estágio.
+
+### 43.1 Governança do estágio
+
+O estágio de Kofi na BEN é regido por um acordo que cobre confidencialidade, supervisão e aquilo sobre o que ele pode escrever. Os trabalhos da universidade se apoiam em reconstruções sintéticas, e não nos dados reais da BEN. O acordo lista o que Kofi pode descrever em seus trabalhos universitários, como métodos e lições gerais, e o que não pode, como nomes de parceiros ou detalhes de incidentes reais. Qualquer caso duvidoso vai para seu supervisor antes da entrega. Reconstruir um problema com dados inventados permite que ele escreva livremente, sem risco para a BEN ou seus parceiros, e é por isso que todos os casos deste livro são sintéticos.
+
+### 43.2 Contribuição com a comunidade
+
+Como engenheiro estagiário, ele participa das chamadas do ISAC do setor como observador. Aprende os hábitos de TLP da comunidade, como os membros descrevem incidentes e como a confiança é construída ao longo do tempo compartilhando informação útil e exata e reconhecendo as contribuições dos outros. Observar primeiro lhe permite ver como a comunidade funciona antes de falar. Membros que compartilham cedo e corrigem abertamente os próprios erros ganham mais confiança do que os que compartilham muito de pouco valor. Quando Kofi mais tarde apresentou ao grupo um resumo curto de um método sintético, deu crédito aos parceiros cujo retorno o havia moldado.
+
+### 43.3 Diário de prática
+
+Ele registra tarefas, horas, competências usadas e reflexões: o que deu certo, o que mudaria, o que aprendeu sobre ética. Os supervisores assinam o diário. Kofi escreve cada entrada no dia do trabalho, enquanto ainda se lembra do que foi difícil. As entradas de reflexão são curtas, mas específicas: uma registrou que ele quase compartilhou um boletim AMBER com um prestador de serviços e parou para conferir. Seu supervisor discutiu essa entrada com ele, e ela virou um exemplo de treinamento para o estagiário seguinte.
+
+### 43.4 Material confidencial
+
+Parte da informação que ele vê é TLP:RED ou comercialmente sensível. Ela nunca aparece em trabalhos do curso, em redes sociais ou em conversas fora da necessidade de saber. Na dúvida, ele pergunta ao supervisor. Kofi segue uma regra simples: se não ficaria à vontade vendo uma frase em um slide de uma conferência pública, ela não sai da BEN. Suas anotações das chamadas do ISAC ficam nos sistemas da BEN. Quando um professor pediu à turma que discutisse um incidente recente, ele falou apenas sobre o aviso público e disse que não podia acrescentar mais nada.
+
+### 43.5 Ambientes de serviço público
+
+Em um CERT nacional ou em um órgão regulador, valem regras adicionais: sigilo oficial, obrigações de acesso à informação e neutralidade política. A ênfase da ICD 203 na independência em relação a considerações políticas é uma referência útil para analistas em funções públicas. Kofi conversou com uma analista do CERT nacional durante um evento do setor. Ela contou que seus relatórios podem ser requisitados com base na lei de transparência, o que molda a forma como registram as fontes. Neutralidade política significa que o analista apresenta a evidência do mesmo jeito, seja o que for que um ministro espere ouvir. Estudantes que consideram funções públicas devem esperar esses deveres ao lado do trabalho técnico.
+
+### Nota de prática — fazer perguntas
+
+Profissionais experientes esperam que os estagiários perguntem. Perguntar antes de agir diante de regras de compartilhamento pouco claras evita o tipo de erro que encerra um estágio.
+
+### Encerrando o estágio
+
+No fim do estágio, Kofi devolve os equipamentos, tem suas contas desativadas e confirma por escrito que não guarda dados da BEN em dispositivos pessoais.
+
+### Exemplo resolvido
+
+Um colega de turma pergunta a Kofi qual fornecedor foi comprometido em um incidente recente de que ouviu falar na BEN. Ele se recusa, explica que a informação foi compartilhada como TLP:AMBER dentro da BEN e indica ao colega um aviso público CLEAR sobre a mesma campanha.
+
+> **Caso sintético.** A conversa é inventada.
+
+### Erros e limites
+
+A experiência de estágio é valiosa, mas estreita; reflita sobre como outras organizações diferem. Assinar um acordo de confidencialidade não se sobrepõe aos deveres legais de comunicação.
+
+### Exercícios
+
+- **EX127 — Fonte do trabalho do curso.** Kofi pode basear um trabalho universitário nos dados reais de incidentes da BEN? Explique. *Rubrica:* 3 = não; usar reconstruções sintéticas conforme o acordo; 2 = não; 1 = sim; 0 = nenhuma.
+- **EX128 — Entrada de reflexão.** Escreva uma reflexão curta para o diário de prática sobre uma decisão de compartilhamento. *Rubrica:* 3 = tarefa, o que deu certo/errado, lição ética; 2 = dois; 1 = só a tarefa; 0 = nenhuma.
+- **EX129 — Pedido do colega.** O que estava correto na resposta de Kofi ao colega de turma? *Rubrica:* 3 = recusou a informação restrita; citou o TLP; ofereceu uma alternativa pública; 2 = recusou; 1 = compartilhou; 0 = nenhuma.
+
+### Síntese
+
+Trabalhe dentro da governança, contribua para a confiança, registre e reflita, e mantenha o material restrito onde ele deve ficar.
+
+### Continue estudando — capítulo 43 de 50
+
+[← Capítulo 42 (rascunho)](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 (rascunho) →](#ch-44)
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) delimitar um projeto final que estenda o Lantern; (2) escrever um termo de abertura com requisitos, riscos e marcos; (3) formar uma equipe com papéis claros; (4) obter a aprovação ética para qualquer uso de dados.
+
+### 44.1 Escolhendo o escopo
+
+Projetos finais devem ser ambiciosos, mas possíveis de concluir em dois semestres. A equipe de Kofi escolhe: "Um serviço de vigilância de fornecedores de OT que transforma avisos dos fornecedores e relatórios dos parceiros em recomendações aprovadas e intertravadas para os engenheiros de OT da BEN." Ele toca requisitos, modelos de dados, controles, integração, validação e segurança operacional. A equipe ponderou outros dois escopos, uma ferramenta de triagem de phishing e um painel de qualidade dos parceiros, e rejeitou ambos, por serem estreitos demais ou já bem atendidos por produtos existentes. A vigilância de fornecedores partiu do pedido dos engenheiros de OT registrado durante o trabalho sobre o contexto de engenharia, então tinha um usuário real esperando por ela.
+
+### 44.2 Termo de abertura
+
+Enunciado do problema, partes interessadas, objetivos mensuráveis (por exemplo, alertas relevantes sobre fornecedores chegam à fila de OT em até 15 minutos, com menos de 10% irrelevantes), restrições (protótipos com a biblioteca padrão, dados sintéticos, nenhuma automação de OT), marcos, riscos e um plano de comunicação. Escrever o objetivo como um número sobre um conjunto de teste definido tornou possível dizer, ao final, se a equipe teve sucesso. A restrição contra automação de OT foi fixada pela própria equipe depois da discussão sobre segurança operacional, então o serviço apenas recomenda; nunca altera diretamente os sistemas de OT. O termo tem duas páginas e é assinado pelo supervisor.
+
+### 44.3 Papéis na equipe
+
+Engenheiro líder, modelador de dados, responsável por controles e segurança operacional, responsável pela validação. Os papéis se revezam em algumas tarefas, para que todos toquem o sistema inteiro. Kofi assumiu o papel de engenheiro líder e uma colega assumiu controles e segurança operacional, o que significava que ela tinha autoridade para barrar uma mudança que enfraquecesse um intertravamento. O rodízio veio por meio de tarefas em par: o modelador de dados e a responsável pela validação escreveram juntos os cenários de aceitação, para que cada um entendesse as restrições do outro. Os papéis estão escritos no termo, com um substituto nomeado para cada um, caso alguém adoeça perto de um prazo.
+
+### 44.4 Aprovação ética
+
+O projeto usa avisos sintéticos e listas sintéticas de ativos de OT. Se algum aviso real de fornecedor for usado, só documentos públicos CLEAR se qualificam, e seus termos são conferidos. A aprovação é arquivada com o termo de abertura. A aprovação saiu rápido porque o plano não continha dados pessoais nem sistemas em produção. Ainda assim, a equipe registrou a conferência dos termos de cada site de avisos públicos que planejava ler. A aprovação cobre o plano como escrito; qualquer mudança que traga dados reais exige um novo pedido antes de o trabalho começar.
+
+### 44.5 Registro de riscos
+
+Riscos: expansão do escopo, revisor de OT indisponível, nomes de fornecedores ambíguos, excesso de confiança na pontuação automatizada de relevância. Cada um tem responsável e mitigação. A equipe de Kofi pontuou cada risco no início e revisou o registro a cada duas semanas. O revisor indisponível se tornou real no meio do caminho, quando o engenheiro de OT saiu de licença; a mitigação, um segundo engenheiro nomeado de antemão, manteve o projeto andando. Os nomes ambíguos de fornecedores foram tratados com uma lista de sinônimos construída a partir de avisos sintéticos. O excesso de confiança na pontuação de relevância foi verificado com uma pessoa avaliando uma amostra toda semana.
+
+### Nota de prática — primeiro marco
+
+O primeiro marco é uma fatia fina de ponta a ponta — um aviso sintético fluindo até um chamado de OT — antes de qualquer componente ser refinado.
+
+### Ritmo com o supervisor
+
+A equipe se reúne com o supervisor a cada duas semanas com um status de uma página: progresso em relação aos marcos, riscos que mudaram e decisões necessárias. Encontros curtos e regulares pegam a expansão do escopo antes que ela custe um semestre.
+
+### Exemplo resolvido
+
+O primeiro rascunho do termo prometia "detectar todas as ameaças à OT". O supervisor o rejeita por não ser verificável. O objetivo revisado nomeia uma taxa de relevância e uma oportunidade mensuráveis sobre um conjunto de teste sintético definido.
+
+> **Caso sintético.** A equipe e o termo são inventados.
+
+### Erros e limites
+
+Projetos finais fracassam mais pelo escopo do que pela tecnologia. Dados reais de OT estão fora dos limites, a menos que formalmente aprovados.
+
+### Exercícios
+
+- **EX130 — Reescrita do objetivo.** Reescreva "detectar todas as ameaças à OT" como objetivo de projeto final. *Rubrica:* 3 = oportunidade/relevância mensuráveis sobre um conjunto de teste definido; 2 = mensurável, mas com conjunto vago; 1 = inalterado; 0 = nenhuma.
+- **EX131 — Fatia fina.** Por que construir primeiro uma fatia fina de ponta a ponta? *Rubrica:* 3 = expõe cedo os problemas de integração; prova o caminho; 2 = parcial; 1 = refinar primeiro; 0 = nenhuma.
+- **EX132 — Fonte dos avisos.** Quais documentos reais a equipe pode usar, se algum? *Rubrica:* 3 = avisos públicos TLP:CLEAR de fornecedores, depois de conferir os termos; 2 = só públicos; 1 = qualquer um; 0 = nenhuma.
+
+### Síntese
+
+Delimite para terminar, abra o projeto com objetivos mensuráveis, atribua papéis, arquive a aprovação ética e construa primeiro uma fatia fina.
+
+### Continue estudando — capítulo 44 de 50
+
+[← Capítulo 43 (rascunho)](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 (rascunho) →](#ch-45)
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um pacote de projeto para revisão independente; (2) responder aos achados da revisão com ações acompanhadas; (3) distinguir achados de correção obrigatória de recomendações; (4) registrar formalmente o resultado da revisão.
+
+### 45.1 Pacote
+
+Requisitos e rastreabilidade, arquitetura e ADRs, argumento de segurança, modelo de ameaças e FMEA, relatórios de verificação dos Capítulos 30 e 40, avaliação de privacidade e riscos em aberto. Os revisores o recebem com uma semana de antecedência. Enviar o pacote cedo permite aos revisores ler no próprio ritmo e chegar com perguntas, e não com primeiras impressões. A equipe de Kofi incluiu um guia de leitura que apontava as decisões de que estavam menos seguros. Os riscos em aberto foram listados com honestidade, incluindo dois que a equipe ainda não havia resolvido, porque os revisores acabam encontrando os problemas escondidos, e a confiança cai quando isso acontece.
+
+### 45.2 Revisores
+
+Um engenheiro externo de outra concessionária, um especialista em privacidade e um engenheiro de segurança operacional de OT. Nenhum trabalhou no projeto. A independência deles é o ponto central: nenhum responde ao gestor da BEN dono da data de entrega do Lantern. A equipe de Kofi pediu a cada revisor que declarasse qualquer conflito antes da revisão. A engenheira externa já havia trabalhado com um membro da equipe da BEN, o que foi registrado e considerado sem efeito sobre sua independência. Os revisores recebem agradecimento no registro, mas não são pagos pelo projeto.
+
+### 45.3 Achados
+
+Os achados são graduados: correção obrigatória antes da entrada em produção, correção recomendada dentro de um prazo definido e observações. Cada um recebe responsável e prazo. A graduação mantém a atenção no que importa. Um achado de correção obrigatória bloqueia a entrada em produção até ser fechado e conferido. Um item de correção recomendada tem data e responsável, mas não segura o lançamento. As observações são registradas para a equipe considerar. A equipe de Kofi recebeu dois achados de correção obrigatória, cinco de correção recomendada e várias observações, todos lançados no mesmo rastreador dos defeitos do projeto.
+
+### 45.4 Respostas
+
+A equipe responde por escrito: aceito com ação, aceito com alternativa ou contestado com evidências. As contestações são resolvidas pelo presidente da revisão. Cada resposta cita a evidência de sua posição. Quando a equipe contestou um achado sobre prazos de retenção, anexou o acordo com o parceiro que fixava o prazo. O presidente aceitou a evidência, e o achado foi fechado com uma nota. Outro achado que a equipe a princípio quis contestar se mostrou correto quando eles releram o próprio registro de decisão, e eles o aceitaram.
+
+### 45.5 Resultado
+
+O presidente registra a decisão: prosseguir, prosseguir com condições ou não prosseguir. As condições se ligam aos achados de correção obrigatória. A decisão é registrada com a data, a versão do pacote revisado e os nomes dos revisores. Prosseguir com condições significa que a entrada em produção só pode acontecer depois que cada condição for fechada e o presidente a tiver confirmado. No exemplo resolvido, a presidente conferiu pessoalmente o modelo de chamado alterado e o bloqueio de encerramento antes de dar o aval, o que levou uma reunião curta. O registro é arquivado com o pacote.
+
+### Nota de prática — preparando os revisores
+
+Um guia de leitura de uma página que aponta aos revisores as decisões mais arriscadas faz render o tempo limitado deles.
+
+### Logística da revisão
+
+A revisão dura meio dia: trinta minutos de visão geral, e depois os revisores questionam a equipe sobre as decisões mais arriscadas. Os achados são redigidos na mesma tarde, enquanto os detalhes estão frescos, e a equipe os recebe em até dois dias. A ata registra quem disse o quê, para que contestações posteriores possam ser conferidas com o registro.
+
+### Exemplo resolvido
+
+O revisor de segurança operacional de OT descobre que o serviço de vigilância de fornecedores pode criar chamados de OT com mudanças de firewall recomendadas, mas sem um lembrete explícito da regra das duas pessoas. Correção obrigatória: acrescentar a regra a toda recomendação e bloquear o encerramento do chamado sem as duas aprovações. A presidente concede "prosseguir com condições".
+
+> **Caso sintético.** A revisão e os achados são inventados.
+
+### Erros e limites
+
+Revisões feitas por amigos ou por gestores donos do cronograma não são independentes. Uma revisão é um retrato de um momento; mudanças grandes exigem outra.
+
+### Exercícios
+
+- **EX133 — Graus dos achados.** Cite os três graus de achado. *Rubrica:* 3 = correção obrigatória, correção recomendada, observação; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX134 — Teste de independência.** Por que o gerente do SOC da BEN não pode atuar como revisor independente? *Rubrica:* 3 = envolvido/dono do resultado/do cronograma; conflito de interesses; 2 = parcial; 1 = pode; 0 = nenhuma.
+- **EX135 — Ligação das condições.** O que um resultado "prosseguir com condições" precisa referenciar? *Rubrica:* 3 = achados específicos de correção obrigatória com responsáveis/prazos; 2 = condições vagas; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Empacote as evidências, use revisores de fato independentes, gradue e acompanhe os achados e registre um resultado formal.
+
+### Continue estudando — capítulo 45 de 50
+
+[← Capítulo 44 (rascunho)](#ch-44) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 46 (rascunho) →](#ch-46)
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) concluir a construção do projeto final conforme o termo de abertura; (2) fechar as condições da revisão; (3) validar com as partes interessadas em cenários sintéticos; (4) preparar a passagem para a operação.
+
+### 46.1 Concluindo a construção
+
+O serviço de vigilância de fornecedores ingere avisos sintéticos de fornecedores e relatórios de parceiros, marca fornecedores e produtos, pontua a relevância contra a lista sintética de ativos de OT da BEN e abre chamados de OT com recomendações, marcação TLP e a regra das duas pessoas. Cada etapa foi construída a partir da fatia fina que a equipe terminou no primeiro semestre. A pontuação de relevância compara os nomes de fornecedor e de produto de um aviso com a lista sintética de ativos, e a pontuação decide se um chamado é aberto. Nada no serviço pode alterar um sistema de OT; sua saída é sempre uma recomendação que um engenheiro lê e sobre a qual decide.
+
+### 46.2 Fechando as condições
+
+Cada achado de correção obrigatória é fechado com evidência: um teste, uma captura de tela do modelo de chamado, uma referência ao código. A presidente da revisão confirma o fechamento. Para a regra das duas pessoas, a evidência foi um teste que tenta encerrar um chamado com uma única aprovação e confere que o sistema recusa. Para o lembrete em cada recomendação, a evidência foi o próprio modelo de chamado e uma amostra de chamados gerados. A presidente leu cada item e registrou sua confirmação no arquivo da revisão. Nenhuma condição foi fechada apenas com uma declaração, por mais confiante que a equipe estivesse na correção.
+
+### 46.3 Validação com as partes interessadas
+
+Engenheiros de OT executam cinco cenários. Em quatro, as recomendações são relevantes e oportunas; em um, uma variante do nome de um fornecedor passou despercebida. A equipe acrescenta a variante ao dicionário de fornecedores e uma regra que sinaliza nomes desconhecidos para revisão por um analista. A variante perdida era uma forma abreviada do nome de um produto usada em um aviso. Um dicionário sozinho sempre deixaria escapar alguma forma nova, e é por isso que a regra para nomes desconhecidos importa mais que o acréscimo isolado. Os analistas agora revisam esses itens sinalizados, e cada variante confirmada entra no dicionário. A equipe executou de novo os cinco cenários depois da mudança, e todos passaram.
+
+### 46.4 Passagem
+
+Roteiros, notas de plantão, guia de configuração, problemas conhecidos e uma sessão de treinamento para a equipe de OT. A operação assina o aceite. A sessão de treinamento usou os mesmos avisos sintéticos dos cenários, para que os engenheiros de OT vissem os chamados que receberiam no uso real. A equipe de Kofi percorreu cada problema conhecido, incluindo a dependência do dicionário de fornecedores, e explicou a solução de contorno de cada um. A operação só assinou o aceite depois que um membro de sua própria equipe seguiu o roteiro para reiniciar o serviço sem ajuda. O formulário assinado faz parte do dossiê de evidências.
+
+### 46.5 Resultados medidos
+
+No conjunto de teste sintético de 200 itens: 96% dos itens relevantes geraram alerta em até 15 minutos; 7% dos alertas foram irrelevantes. Os dois números atendem aos objetivos do termo de abertura. Os dois números vêm do mesmo conjunto de teste definido que o termo nomeou, então a comparação é justa. O relatório de Kofi traz as contagens por trás dos percentuais e observa que um conjunto de duzentos itens não consegue mostrar como o serviço se comporta com tipos raros de aviso. O serviço atingiu seus objetivos nesse conjunto; se fará o mesmo com avisos reais é o que os primeiros meses de monitoramento vão mostrar.
+
+### Nota de prática — problemas conhecidos
+
+Listar com honestidade os problemas conhecidos na passagem gera confiança; a operação vai encontrá-los de qualquer jeito.
+
+### Monitoramento após o aceite
+
+No primeiro mês depois do aceite, a equipe revisa com os engenheiros de OT cada chamado de OT que o serviço cria, comparando os julgamentos de relevância do serviço com os deles. As divergências alimentam o dicionário de fornecedores e as regras de pontuação, e a taxa de concordância é relatada ao supervisor como uma primeira medida operacional.
+
+### Exemplo resolvido
+
+A demonstração final mostra um aviso que nomeia a "RelayCo" (sintética) fluindo até um chamado de OT em 6 minutos, com as técnicas do ATT&CK do aviso (por exemplo, T1190 Exploit Public-Facing Application) listadas como contexto e a aprovação por duas pessoas aplicada.
+
+> **Caso sintético.** A RelayCo e os resultados são inventados.
+
+### Erros e limites
+
+Conjuntos de teste sintéticos podem não refletir a diversidade real dos avisos; planeje revisar o desempenho com avisos públicos reais depois da entrada em produção. O aceite não é o fim da manutenção.
+
+### Exercícios
+
+- **EX136 — Variante perdida.** Como a equipe corrigiu a variante perdida do nome do fornecedor? *Rubrica:* 3 = acrescentar a variante + sinalizar nomes desconhecidos para revisão por analista; 2 = acrescentar a variante; 1 = ignorar; 0 = nenhuma.
+- **EX137 — Conferência dos objetivos.** 96% em até 15 min e 7% irrelevantes atendem ao termo de abertura? Explique. *Rubrica:* 3 = sim; ≥95% e <10%; 2 = sim; 1 = não; 0 = nenhuma.
+- **EX138 — Itens da passagem.** Liste quatro itens da passagem. *Rubrica:* 3 = quatro entre roteiros, notas de plantão, guia de configuração, problemas conhecidos, treinamento; 2 = dois; 1 = um; 0 = nenhuma.
+
+### Síntese
+
+Construa conforme o termo, feche as condições com evidências, valide com os usuários, faça a passagem com honestidade e meça em relação aos objetivos.
+
+### Continue estudando — capítulo 46 de 50
+
+[← Capítulo 45 (rascunho)](#ch-45) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 47 (rascunho) →](#ch-47)
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar objetivos de tempo e de ponto de recuperação para o Lantern; (2) executar exercícios de falha em homologação; (3) pontuar os exercícios em relação aos objetivos; (4) transformar as falhas em melhorias.
+
+### 47.1 RTO e RPO
+
+Objetivo de tempo de recuperação (RTO): quanto tempo o Lantern pode ficar fora do ar. Objetivo de ponto de recuperação (RPO): quanto dado pode ser perdido. Para a BEN, RTO de 60 minutos e RPO de 15 minutos para o armazenamento e a ingestão. Os dois objetivos respondem a perguntas diferentes, então são definidos separadamente. Uma hora fora do ar é aceitável porque o SOC pode recorrer a verificações manuais por pouco tempo. Perder mais de quinze minutos de dados significaria que os indicadores chegados nessa janela ficariam fora da aplicação até o parceiro enviá-los de novo, o que pode não acontecer. Os números foram acordados com o líder do SOC e escritos nos requisitos.
+
+### Laboratório 9 — pontuação dos exercícios
+
+```python
+"""Lab 9 (ch 47): score a synthetic failure-and-recovery drill against RTO/RPO targets."""
+RTO_MIN, RPO_MIN = 60, 15
+drills = [("D1 store failover", 42, 5), ("D2 TAXII outage", 75, 0), ("D3 corrupt enrich cache", 30, 25)]
+for name, recovery, dataloss in drills:
+    ok_rto, ok_rpo = recovery <= RTO_MIN, dataloss <= RPO_MIN
+    print(f"{name:26} RTO {'met' if ok_rto else 'MISSED'} ({recovery}m)  RPO {'met' if ok_rpo else 'MISSED'} ({dataloss}m)")
+```
+
+Execute com `python3 lab_drill.py`. Saída verificada:
+
+```text
+D1 store failover          RTO met (42m)  RPO met (5m)
+D2 TAXII outage            RTO MISSED (75m)  RPO met (0m)
+D3 corrupt enrich cache    RTO met (30m)  RPO MISSED (25m)
+```
+
+### 47.2 Lendo os exercícios
+
+D1, a comutação do armazenamento, cumpriu os dois objetivos. D2, uma simulação de indisponibilidade do TAXII, perdeu o RTO com 75 minutos porque o roteiro supunha uma credencial que havia sido rotacionada. D3, o cache de enriquecimento corrompido, se recuperou depressa, mas perdeu 25 minutos de estado de enriquecimento, descumprindo o RPO. Kofi apresenta primeiro as falhas em seu relatório, porque é para elas que os exercícios existem. Um exercício que passa em tudo talvez tenha sido fácil demais. Cada falha também tinha uma causa clara que podia ser corrigida, o que fez os exercícios valerem seu custo; a comutação do armazenamento, o caso que mais preocupava a BEN, funcionou como projetado.
+
+### 47.3 Melhorando
+
+D2: atualizar o roteiro e acrescentar uma verificação de validade das credenciais ao relatório diário de saúde. D3: tirar um instantâneo do cache a cada dez minutos ou tratar o cache como reconstruível e excluí-lo do RPO, documentando essa escolha. Kofi registrou a escolha para o cache como uma decisão com motivos: a reconstrução leva cerca de meia hora a partir dos provedores, dentro de seus limites de consulta, e nenhum dado de parceiro se perde. O líder do SOC concordou que o estado de enriquecimento não precisa da mesma proteção que o armazenamento. O exemplo resolvido então confirma que o exercício repetido passa com o escopo revisado.
+
+### 47.4 Segurança dos exercícios
+
+Os exercícios rodam em homologação com dados sintéticos. Os parceiros não são envolvidos, a menos que se acorde um exercício conjunto, e a aplicação em produção nunca é alterada por um exercício. O plano de exercícios de Kofi declara os limites por escrito, e o facilitador os confere antes de começar. O ambiente de homologação tem credenciais próprias, que não alcançam os firewalls de produção. Um exercício conjunto com um parceiro exigiria um acordo à parte cobrindo horário, escopo e como parar se algo inesperado acontecer. Sem esse cuidado, um exercício poderia causar a interrupção que deveria ensaiar.
+
+### 47.5 Ligação com incidentes
+
+O NIST SP 800-61 Rev. 3 enquadra a resposta a incidentes dentro da gestão de riscos de cibersegurança. Os planos de recuperação do Lantern se ligam ao plano de resposta a incidentes da BEN, para que uma interrupção durante um incidente real seja tratada de forma consistente. Na prática, isso significa que os roteiros do Lantern nomeiam o comandante do incidente como a pessoa que decide as prioridades se uma interrupção acontecer durante um incidente. A equipe de Kofi conferiu se os dois planos usam as mesmas listas de contatos e os mesmos níveis de severidade. Se o armazenamento falhar enquanto os analistas investigam uma campanha, restaurá-lo passa a fazer parte da resposta ao incidente, em vez de ser um esforço separado disputando as mesmas pessoas.
+
+### Nota de prática — elemento surpresa
+
+Alguns exercícios são anunciados apenas ao facilitador, testando a prontidão real dos engenheiros de plantão em vez de um desempenho ensaiado.
+
+### Registrando os exercícios
+
+Cada registro de exercício lista o cenário, os horários de início e fim, as ações tomadas, os desvios em relação ao roteiro e as ações de acompanhamento com responsáveis. Os registros são guardados para auditorias e para comparar a prontidão entre trimestres.
+
+### Exemplo resolvido
+
+Depois das correções, D2 é executado de novo: recuperação em 38 minutos. O cache de D3 é reclassificado como reconstruível; o RPO agora se aplica apenas ao armazenamento, que o cumpriu.
+
+> **Caso sintético.** Os resultados dos exercícios são inventados.
+
+### Erros e limites
+
+Redefinir objetivos para passar nos exercícios precisa ser uma decisão documentada, não uma conveniência. Exercícios em homologação deixam escapar alguns comportamentos da produção.
+
+### Exercícios
+
+- **EX139 — Falhas nos exercícios.** Qual exercício perdeu o RTO e qual perdeu o RPO? *Rubrica:* 3 = D2 RTO; D3 RPO; 2 = um; 1 = errado; 0 = nenhuma.
+- **EX140 — RTO vs RPO.** Defina RTO e RPO em uma linha cada. *Rubrica:* 3 = tempo máximo fora do ar; perda máxima de dados; 2 = um; 1 = trocados; 0 = nenhuma.
+- **EX141 — Reclassificar com honestidade.** Quando é legítimo reclassificar o cache como reconstruível? *Rubrica:* 3 = decisão documentada com justificativa de que a perda é inofensiva/reconstruível; 2 = documentada; 1 = para passar no exercício; 0 = nenhuma.
+
+### Síntese
+
+Defina RTO e RPO, faça exercícios com segurança, pontue com honestidade, corrija as causas e documente qualquer mudança nos objetivos.
+
+### Continue estudando — capítulo 47 de 50
+
+[← Capítulo 46 (rascunho)](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 (rascunho) →](#ch-48)
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê de evidências que sustente a afirmação de que o Lantern e sua extensão de vigilância de fornecedores são adequados ao propósito; (2) estruturar um argumento de garantia; (3) ligar cada afirmação a evidências com proteção de integridade; (4) declarar os riscos residuais e as hipóteses.
+
+### 48.1 Argumento de garantia
+
+Afirmação principal: "O Lantern entrega aos defensores de TI e OT da BEN inteligência oportuna, confiável e coletada legalmente, com risco aceitável." Subafirmações: oportunidade, exatidão, conformidade com o TLP e a privacidade, segurança das recomendações de OT, confiabilidade, manutenibilidade. Cada subafirmação cita evidências. Kofi desenhou o argumento como uma árvore, para que os leitores vissem como cada subafirmação sustenta a principal. O ramo da oportunidade aponta para os resultados de verificação e para um trimestre de métricas de produção; o ramo da segurança aponta para os testes dos intertravamentos e para a revisão de projeto. Um leitor que duvide de um ramo pode segui-lo até as evidências sem ler o resto.
+
+### 48.2 Tipos de evidência
+
+Relatórios de verificação, resultados de validação, registros de exercícios, resultados de revisões, métricas de um trimestre, avaliação de privacidade e retorno dos parceiros. Cada item tem data, autor, versão e hash SHA-256 registrados em um índice. O índice permite a um revisor confirmar que um item não mudou desde que foi citado, como mostra o exemplo resolvido. Kofi mantém as evidências em um armazenamento somente leitura e o índice no dossiê. Um item sem data ou autor não é aceito, porque ninguém poderia julgar se ainda é relevante.
+
+### 48.3 Hipóteses
+
+O argumento depende de hipóteses: os parceiros rotulam o TLP corretamente; o NTP é confiável; os engenheiros de OT seguem a regra das duas pessoas. As hipóteses são declaradas e, quando possível, monitoradas. Kofi lista como cada hipótese é conferida. TLP mal rotulado pelos parceiros aparece como rejeições na barreira e correções dos parceiros, contadas mensalmente. A sincronização de tempo é monitorada desde a falha de defasagem de relógio no laboratório de verificação. A adesão à regra das duas pessoas é conferida nos registros de aprovação. Uma hipótese que não pode ser monitorada é sinalizada como fraqueza do argumento.
+
+### 48.4 Riscos residuais
+
+Formatos de parceiros nunca vistos, envenenamento por adversários que imita padrões legítimos, rotatividade da equipe. Cada risco tem um responsável e a aceitação de um gestor responsável. Kofi escreve cada risco com o que aconteceria se ocorresse e com o que o reduz. O envenenamento que parece legítimo é o mais difícil, já que a lista de permissões só pega fornecedores conhecidos, uma lacuna que Kofi também admite na defesa final, no Capítulo 50. A rotatividade da equipe é reduzida pela documentação e pelo trabalho em par. O gestor responsável assina a aceitação, o que deixa claro que o risco é uma decisão de negócio, e não um descuido de engenharia.
+
+### 48.5 Público
+
+O dossiê serve ao comitê de riscos da BEN, aos auditores e aos futuros engenheiros. Um resumo de duas páginas vem na frente; as evidências completas ficam por trás dele. Cada público lê de um jeito. O comitê de riscos lê o resumo e os riscos residuais. Os auditores amostram as evidências e conferem os hashes. Os futuros engenheiros precisam das hipóteses e das razões de projeto, para saber o que precisa continuar verdadeiro se mudarem algo. Kofi pediu a um membro de cada grupo que lesse um rascunho e dissesse o que não conseguiu encontrar. Duas lacunas foram corrigidas assim.
+
+### Nota de prática — contraevidências
+
+O dossiê também inclui evidências contra as afirmações, como o exercício D2 que falhou e sua correção. Omitir as contraevidências faz um argumento parecer mais forte e ser mais fraco.
+
+### Mantendo o dossiê vivo
+
+Depois da entrada em produção, o dossiê é atualizado a cada trimestre com novas métricas e registros de exercícios. Afirmações cujas evidências passaram da data de revisão são marcadas como precisando de renovação até que cheguem evidências novas.
+
+### Exemplo resolvido
+
+O índice de Kofi lista 37 itens de evidência. Um revisor escolhe cinco ao acaso, recalcula seus hashes e descobre que todos batem. Uma subafirmação — a manutenibilidade — se apoia em um único teste de documentação; o revisor pede uma segunda evidência, e Kofi acrescenta a tendência do registro de dívida técnica.
+
+> **Caso sintético.** As contagens são inventadas.
+
+### Erros e limites
+
+Um argumento de garantia mostra razões para confiança, não uma prova de segurança. As evidências envelhecem; fixe datas de revisão.
+
+### Exercícios
+
+- **EX142 — Subafirmações.** Liste quatro subafirmações sob a afirmação principal do Lantern. *Rubrica:* 3 = quatro entre oportunidade, exatidão, TLP/privacidade, segurança de OT, confiabilidade, manutenibilidade; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX143 — Conferência por hash.** O que o recálculo dos hashes pelo revisor confirma? *Rubrica:* 3 = os arquivos de evidência não mudaram desde a indexação; 2 = integridade, de forma vaga; 1 = a evidência é verdadeira; 0 = nenhuma.
+- **EX144 — Contraevidência.** Por que incluir no dossiê o exercício D2 que falhou? *Rubrica:* 3 = honestidade; mostra a fraqueza e a correção; reforça a credibilidade; 2 = parcial; 1 = omitir; 0 = nenhuma.
+
+### Síntese
+
+Argumente com estrutura, indexe as evidências com hashes, declare hipóteses e riscos residuais e inclua as contraevidências.
+
+### Continue estudando — capítulo 48 de 50
+
+[← Capítulo 47 (rascunho)](#ch-47) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 49 (rascunho) →](#ch-49)
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de engenharia que relate projeto, implementação e avaliação; (2) situar o trabalho nos padrões e na literatura; (3) separar as contribuições do contexto; (4) apresentar com precisão as limitações e os trabalhos futuros.
+
+### 49.1 Estrutura
+
+Introdução (problema, objetivos, contribuições); fundamentação (conceitos de CTI, STIX/TAXII 2.1, ATT&CK, Diamond Model, kill chain, TLP 2.0, SP 800-150); requisitos; projeto; implementação; verificação e validação; evidências de operação; discussão; conclusão. Kofi seguiu a estrutura porque os examinadores a esperam e conseguem encontrar o que precisam. O capítulo de fundamentação cobre apenas o que os capítulos seguintes usam. O capítulo de evidências de operação é incomum em uma tese, mas central aqui, já que as afirmações dependem de como o serviço se comportou na prática, e não só nos testes. Os apêndices trazem os procedimentos de teste completos.
+
+### 49.2 Contribuições
+
+As contribuições de Kofi: um projeto intertravado de vigilância de fornecedores de OT; um procedimento de reajuste do modelo de decaimento a partir de dados de nova observação; uma avaliação da qualidade de feeds com conjuntos rotulados. Material de fundamentação — como o STIX funciona — não é contribuição, por mais longo que seja o capítulo. Kofi testou cada contribuição candidata perguntando se outro engenheiro poderia usá-la sem ler o resto da tese. O procedimento de reajuste passou: é um método curto com um exemplo resolvido. Uma descrição das tabelas do banco de dados do Lantern não passou, então foi para um apêndice.
+
+### 49.3 Usando as fontes
+
+Cite as especificações para as definições, os artigos para os modelos e os dados sintéticos ou agregados aprovados pela BEN para os resultados. Toda afirmação de fato tem uma citação ou uma referência de evidência. A lista de referências de Kofi inclui as especificações do STIX, do TAXII e do TLP, o artigo do Diamond Model e o artigo da kill chain. Os resultados citam itens de evidência do dossiê pelo número no índice. Seu supervisor conferiu uma amostra das citações contra as fontes e encontrou uma que apontava para a versão errada de uma especificação, que ele corrigiu.
+
+### 49.4 Limitações
+
+Conjuntos de teste sintéticos, o ambiente de uma única organização, período operacional curto, retorno dos usuários autodeclarado. Para cada uma, o efeito provável sobre as conclusões. Para os conjuntos de teste sintéticos, o efeito provável é que a taxa de relevância medida seja maior do que avisos reais produziriam, já que os itens de teste foram escritos para ser claros. Com o período operacional curto, não foi possível ver efeitos sazonais. Declarar esses efeitos permite aos examinadores julgar até onde as conclusões alcançam e protege Kofi de ser cobrado a defender mais do que as evidências sustentam.
+
+### 49.5 Trabalhos futuros
+
+Medição prospectiva dos incidentes evitados; comparação entre concessionárias, com consentimento; detecção automatizada de envenenamento de feeds. Cada item é escrito como uma pergunta com um método possível. Medir os incidentes evitados exigiria uma comparação com concessionárias semelhantes que não têm o serviço, o que requer o consentimento delas. Detectar o envenenamento automaticamente decorre diretamente do risco residual do dossiê e da lacuna admitida na defesa final. Kofi lista de que dados cada item precisaria, para que um sucessor possa julgar se é viável.
+
+### Nota de prática — figuras
+
+Cada figura responde a uma pergunta e é referenciada no texto. Os diagramas de arquitetura usam os mesmos nomes de componentes do código.
+
+### Processo de escrita
+
+Kofi redige primeiro os capítulos de resultados, enquanto as evidências estão frescas, e escreve a introdução por último, para que ela prometa exatamente o que a tese entrega. Cada capítulo vai para o supervisor com uma nota de apresentação listando as perguntas que ele quer ver respondidas, o que torna o retorno mais rápido e mais focado do que enviar rascunhos sem explicação.
+
+### Exemplo resolvido
+
+O supervisor de Kofi marca um parágrafo que afirma que o Lantern "elimina o risco de OT decorrente do comprometimento de fornecedores". Kofi reescreve: "Em testes sintéticos, o serviço entregou alertas relevantes sobre fornecedores em até 15 minutos para 96% dos itens; ele reduz, mas não pode eliminar, o tempo em que os engenheiros de OT desconhecem avisos relevantes."
+
+> **Caso sintético.** O texto da tese é inventado.
+
+### Erros e limites
+
+Afirmar demais é o defeito de tese mais comum. Material confidencial do estágio fica de fora.
+
+### Exercícios
+
+- **EX145 — Contribuição ou contexto.** Uma explicação dos endpoints do TAXII 2.1 é uma contribuição? Explique. *Rubrica:* 3 = não; contexto de fundamentação; 2 = não; 1 = sim; 0 = nenhuma.
+- **EX146 — Correção de exagero.** Reescreva com honestidade "o Lantern impede todo phishing". *Rubrica:* 3 = afirmação medida, delimitada e ressalvada; 2 = ressalvada, mas sem medida; 1 = inalterada; 0 = nenhuma.
+- **EX147 — Efeito da limitação.** Indique o efeito provável de avaliar no ambiente de uma única organização. *Rubrica:* 3 = limita a generalização; os resultados podem diferir em outros lugares; 2 = vago; 1 = tentativa mínima; 0 = nenhuma.
+
+### Síntese
+
+Estruture para o leitor, afirme apenas as contribuições reais, cite com precisão e delimite as conclusões com as limitações.
+
+### Continue estudando — capítulo 49 de 50
+
+[← Capítulo 48 (rascunho)](#ch-48) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 50 (rascunho) →](#ch-50)
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar a tese e o dossiê a uma banca examinadora; (2) responder a perguntas técnicas, éticas e de segurança operacional; (3) admitir os limites sem enfraquecer o trabalho; (4) refletir sobre o desenvolvimento profissional e os próximos passos.
+
+### 50.1 Apresentação
+
+Vinte minutos: problema e missão; principais decisões de projeto; intertravamentos de segurança; resultados da avaliação com incerteza; limitações; trabalhos futuros. Os slides mostram evidências, não decoração. Kofi ensaiou com um cronômetro e cortou tudo o que passava do tempo. Cada slide carrega um ponto e a evidência dele, como a taxa de relevância medida com sua contagem. Os intertravamentos de segurança ganham um slide próprio porque é o que a banca mais provavelmente vai sondar. Ele reserva os últimos minutos para as limitações, para que a banca as ouça primeiro dele.
+
+### 50.2 Perguntas esperadas
+
+Por que não há bloqueio automático em OT? Como você evita o envenenamento de feeds? O que acontece se um parceiro rotular mal o TLP? Por que deveríamos confiar nos seus rótulos de qualidade de feeds? O que você faria diferente? As respostas citam páginas e itens de evidência. Kofi preparou cada resposta com um número de página da tese e um item de evidência do dossiê. Para a pergunta sobre TLP mal rotulado, ele aponta a regra de falhar fechado da barreira e a contagem mensal de correções dos parceiros. A mesma disciplina vale para cada uma das outras perguntas da lista.
+
+### 50.3 Perguntas éticas
+
+As bancas perguntam o que Kofi se recusou a construir. Ele responde: coleta em redes sociais pessoais, raspagem contra os termos de uso, enriquecimento com endereços residenciais e automação de OT sem aprovação — cada uma com o motivo e a alternativa escolhida. Para cada recusa, Kofi apresenta o pedido, por que recusou e o que foi feito em seu lugar. O campo de endereço residencial foi removido com a concordância do encarregado de privacidade; a automação de OT foi substituída por recomendações com aprovação. As bancas valorizam isso porque mostra julgamento aplicado sob pressão real, e não só conhecimento das regras. Cada recusa está documentada.
+
+### 50.4 Admitindo os limites
+
+"Não sei", seguido de como se descobriria, é uma resposta forte. Defender uma afirmação sem sustentação é fraco. No exemplo resolvido, Kofi admite uma lacuna e aponta trabalhos futuros, em vez de esticar a cobertura da lista de permissões. Os examinadores costumam respeitar mais um limite honesto do que uma resposta confiante que desmorona na pergunta seguinte. Se precisa de um momento para pensar, ele o toma; uma pausa custa menos do que uma afirmação errada registrada nas anotações da banca.
+
+### 50.5 Próximos passos
+
+O livro não alega acreditação nem uma edição concluída de 300 páginas. A próxima parada na trilha de estudo é o curso de engenharia em segurança ofensiva autorizada e red team. Os próximos passos de Kofi depois da defesa são práticos: concluir as correções, atualizar o dossiê e passar as anotações restantes à equipe da BEN. A condição de rascunho do livro é declarada com clareza em seu início, e os leitores devem tratá-lo de acordo. Passar para a segurança ofensiva se apoia nos mesmos hábitos de evidência, autorização e contenção.
+
+### Nota de prática — depois da defesa
+
+As correções exigidas pela banca são concluídas, registradas e aprovadas antes da entrega final. O arquivo e o dossiê são atualizados para corresponder.
+
+### Reflexão
+
+Uma declaração reflexiva curta fecha o portfólio: quais competências cresceram, quais erros mais ensinaram e quais limites éticos foram testados durante o estágio e o projeto final.
+
+### Exemplo resolvido
+
+Um examinador pergunta se o Lantern teria pego um teste sintético recente de envenenamento que inseria o domínio de um fornecedor. Kofi mostra que o intertravamento da lista de permissões o bloqueou e depois admite que um envenenamento com um fornecedor pequeno, legítimo, mas desconhecido, passaria, e aponta trabalhos futuros em detecção de anomalias.
+
+> **Caso sintético.** A arguição é inventada.
+
+### Erros e limites
+
+Respostas ensaiadas que ignoram a pergunta real frustram os examinadores. Afirmar que a plataforma é "segura" convida ao fracasso.
+
+### Exercícios
+
+- **EX148 — Lista de recusas.** Cite três coisas que Kofi se recusou a construir e por quê. *Rubrica:* 3 = três entre coleta em redes sociais pessoais, raspagem que viola os termos, enriquecimento com endereços residenciais, automação de OT sem aprovação, cada uma com o motivo; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX149 — Lacuna de envenenamento.** Que caso de envenenamento Kofi admite que o Lantern deixaria passar? *Rubrica:* 3 = fornecedor pequeno legítimo fora da lista de permissões; 2 = lacuna vaga; 1 = tentativa mínima; 0 = nenhuma.
+- **EX150 — Próximo curso.** Qual é o próximo curso depois deste livro, e o que não pode ser alegado sobre o rascunho? *Rubrica:* 3 = curso 134, engenharia de RED + nenhuma alegação de acreditação/livro concluído; 2 = um; 1 = errado; 0 = nenhuma.
+
+### Síntese
+
+Apresente as evidências, responda com referências, assuma as recusas e os limites e saia com um próximo passo claro.
+
+### Continue estudando — capítulo 50 de 50
+
+[← Capítulo 49 (rascunho)](#ch-49) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções ↓](#worked-results) · [Próximo curso pelo índice de capítulos →](../SUBJECTS.md)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX126 (as de EX127–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -2864,6 +3365,54 @@ Respostas-modelo para EX001–EX126 (as de EX127–EX150 estão na edição em i
 **EX125.** Os dados sintéticos podem testar se o método e o código funcionam; não podem estabelecer fatos sobre o comportamento real dos adversários nem sobre o ambiente da BEN.
 
 **EX126.** Primeiro os parceiros, de forma agregada, depois fóruns mais amplos com a aprovação da BEN — porque os parceiros contribuíram com dados e precisam consentir com seu uso.
+
+**EX127.** Não. O acordo de estágio limita o uso dos dados da BEN; os trabalhos precisam usar reconstruções sintéticas.
+
+**EX128.** Exemplo: "Redigi um resumo GREEN de um boletim de parceiro; o supervisor notou um nome de parceiro que o tornava AMBER. Lição: conferir cada campo em busca de restrições herdadas antes de propor um rótulo."
+
+**EX129.** Ele se recusou a revelar informação TLP:AMBER, explicou por quê e indicou em seu lugar um aviso público CLEAR.
+
+**EX130.** Exemplo: "Em um conjunto sintético de 200 avisos, entregar alertas relevantes sobre fornecedores na fila de OT em até 15 minutos para 95% dos itens relevantes, com menos de 10% de alertas irrelevantes."
+
+**EX131.** Ela prova que o caminho inteiro funciona e expõe cedo os problemas de integração, antes de se gastar esforço refinando componentes que talvez precisem mudar.
+
+**EX132.** Apenas avisos públicos TLP:CLEAR de fornecedores cujos termos permitam esse uso; todo o resto continua sintético.
+
+**EX133.** Correção obrigatória antes da entrada em produção, correção recomendada dentro de um prazo definido e observação.
+
+**EX134.** O gerente do SOC é uma parte interessada que se beneficia da plataforma e pode ser dono de seu cronograma, um conflito de interesses que compromete a independência.
+
+**EX135.** Os achados específicos de correção obrigatória, cada um com responsável e prazo, que precisam ser fechados antes da entrada em produção.
+
+**EX136.** Acrescentaram a variante ao dicionário de fornecedores e uma regra que sinaliza nomes de fornecedor desconhecidos para revisão por um analista.
+
+**EX137.** Sim: 96% atende à meta de oportunidade de 95%, e 7% de irrelevantes fica abaixo do limite de 10%.
+
+**EX138.** Roteiros, notas de plantão, guia de configuração, lista de problemas conhecidos (a sessão de treinamento também conta).
+
+**EX139.** D2 (indisponibilidade do TAXII) perdeu o RTO com 75 minutos; D3 (cache de enriquecimento corrompido) perdeu o RPO com 25 minutos de perda.
+
+**EX140.** RTO: o tempo máximo aceitável em que o serviço pode ficar fora do ar. RPO: a quantidade máxima aceitável de perda de dados, medida em tempo.
+
+**EX141.** Quando é uma decisão documentada mostrando que o cache pode ser reconstruído a partir dos provedores de enriquecimento (cerca de meia hora, dentro de seus limites de consulta) sem perda de dados de parceiros, e não uma conveniência para passar no exercício.
+
+**EX142.** Oportunidade, exatidão, conformidade com o TLP e a privacidade, segurança das recomendações de OT (confiabilidade e manutenibilidade também contam).
+
+**EX143.** Que os arquivos de evidência amostrados são idênticos byte a byte às versões indexadas — não foram alterados depois da indexação.
+
+**EX144.** Mostra aos revisores uma fraqueza real e como ela foi corrigida, o que torna o argumento geral mais crível que um histórico só de sucessos.
+
+**EX145.** Não. Ela explica como funciona um padrão existente; as contribuições são os projetos, procedimentos e avaliações do próprio Kofi.
+
+**EX146.** Exemplo: "Durante o trimestre de avaliação, o Lantern bloqueou 82% dos domínios de phishing confirmados antes do primeiro contato interno; ele reduz, mas não impede, o phishing."
+
+**EX147.** Os resultados podem não se generalizar para concessionárias com redes, parceiros ou equipes diferentes; outros ambientes poderiam ter desempenho melhor ou pior.
+
+**EX148.** Coleta em redes sociais pessoais (privacidade e termos de uso), raspagem contra os termos das plataformas (questão legal e ética), enriquecimento com endereços residenciais (nenhuma decisão precisava dele; privacidade), bloqueio automático de OT sem aprovação (segurança operacional).
+
+**EX149.** Um envenenamento que liste um fornecedor pequeno e legítimo fora da lista de permissões de fornecedores críticos passaria pelo intertravamento.
+
+**EX150.** Curso 134, segurança ofensiva autorizada e red team (engenharia). O rascunho não pode ser apresentado como acreditado nem como um livro concluído de 300 páginas.
 
 <a id="references"></a>
 ## Referências
