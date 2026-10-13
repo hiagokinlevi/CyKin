@@ -48,9 +48,15 @@ Leah Morgan volunteers as the IT lead at the fictional Fenwick Community Food Ba
 
 You cannot protect what you do not know about. CIS Controls v8 starts with an inventory of devices for this reason. Leah makes a simple spreadsheet with one row per device: a short name, who uses it, model, serial number and where it normally lives. She finds the twelve laptops, the front desk PC and an old laptop in a cupboard that nobody uses, which is wiped and recycled.
 
+Section one point two develops week know your devices and with a Northgate Learning note Leah Morgan can demo offline.
+
 ### 1.3 The quick check
 
 Leah checks five things on every laptop, because together they cover the most common harms: updates installed within fourteen days, disk encryption on, the user working in a standard account rather than an administrator, a screen lock, and files backed up in the last week. Each is a yes or no.
+
+Section one point three develops week know your devices and with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section one point three, Leah Morgan expects week claims to carry owners and dates.
 
 ### Lab — Five-point quick check
 
@@ -81,9 +87,15 @@ laptops passing all five: 3/12; worst: FB07
 
 Only three of twelve laptops pass all five. Encryption and standard accounts are weakest at eight of twelve each. FB07 fails four checks: it is an old laptop used by a weekend volunteer. Screen lock is nearly everywhere already. This tells Leah where to spend her four weeks.
 
+Section one point four develops week know your devices and with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section one point four, Leah Morgan expects week claims to carry owners and dates.
+
 ### 1.5 Getting updates working
 
 Two laptops are behind on updates. One has a full disk; the other has updates paused. Leah frees space, removes the pause and sets updates to install automatically with a restart outside opening hours. She also checks that the browser and PDF reader update themselves. NIST SP 800-40 Rev. 4 describes patching as preventive maintenance; for a small charity, that means making automatic updates work and checking them monthly.
+
+Section one point five develops week know your devices and with a Northgate Learning note Leah Morgan can demo offline.
 
 ### Worked example
 
@@ -131,21 +143,41 @@ You will (1) move everyone to standard accounts; (2) secure email sign-in with M
 
 Four laptops have users working as administrators. That means any harmful program they open can change anything on the laptop. Leah creates a separate admin account on each laptop, known only to her and the deputy manager and kept in the password manager, and changes the everyday accounts to standard users. Saltzer and Schroeder called this least privilege: give each user only the rights they need.
 
+Section two point one develops week accounts and safer settings with a Northgate Learning note Leah Morgan can demo offline.
+
 ### 2.2 Getting software without admin
 
 Volunteers sometimes need a new app. Instead of giving them admin rights, Leah installs approved apps herself, usually within a day. She keeps a short list of approved apps so requests are quick.
+
+Section two point two develops week accounts and safer settings with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section two point two, Leah Morgan expects week claims to carry owners and dates.
+
+Section two point two treats standard accounts getting software as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Passwords and MFA
 
 The cloud email service holds client names and addresses. Leah turns on multi-factor authentication for every account, with an authenticator app on volunteers' phones and backup codes kept in the office safe. She asks everyone to use a long passphrase and a password manager. Shared logins, such as the front desk account, get their own strong password stored in a shared vault.
 
+Section two point three develops week accounts and safer settings with a Northgate Learning note Leah Morgan can demo offline.
+
 ### 2.4 Key settings
 
 Leah applies a handful of settings from the CIS Benchmark that matter most: Windows firewall on, screen lock after five minutes of inactivity, guest account off, and Microsoft Defender with tamper protection on. She does this by hand on each laptop with a printed checklist, because twelve laptops do not justify a management system yet.
 
+Section two point four develops week accounts and safer settings with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section two point four, Leah Morgan expects week claims to carry owners and dates.
+
 ### 2.5 Front desk PC
 
 The shared front desk PC is used by many volunteers. It gets a standard account that opens only the browser and the booking system, and the screen locks when unattended. Volunteers sign in to the booking system with their own accounts so actions are traceable.
+
+Section two point five develops week accounts and safer settings with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section two point five, Leah Morgan expects week claims to carry owners and dates.
+
+Section two point five treats standard accounts getting software as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -193,21 +225,49 @@ You will (1) turn on and verify disk encryption; (2) store recovery keys safely;
 
 If a laptop is stolen while switched off, disk encryption makes its contents unreadable. Had the stolen laptop been encrypted, the food bank could have said with confidence that client data were safe. Windows BitLocker or device encryption uses the laptop's TPM chip so users do not need an extra password at startup.
 
+Section three point one develops week encryption and backups with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section three point one, Leah Morgan expects week claims to carry owners and dates.
+
 ### 3.2 Turning it on
 
 Four laptops are not encrypted. Leah checks that each has a TPM enabled, turns on BitLocker and saves the recovery key to the food bank's cloud account and a printed copy in the office safe. One older laptop has its TPM switched off in its firmware settings; with the volunteer's agreement, Leah enables it first.
+
+Section three point two develops week encryption and backups with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section three point two, Leah Morgan expects week claims to carry owners and dates.
 
 ### 3.3 Checking it worked
 
 Leah confirms each laptop shows encryption on and protection active, rather than assuming. She notes the date in the spreadsheet.
 
+Section three point three develops week encryption and backups with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section three point three, Leah Morgan expects week claims to carry owners and dates.
+
+Section three point three treats why encryption turning it as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Northgate Learning will not accept week work without a written trail.
+
 ### 3.4 Backups
 
 Files are stored in the cloud file service, which keeps previous versions for thirty days. Three laptops still keep documents only on the desktop. Leah moves those folders into the cloud service so they are backed up, and shows volunteers where to save.
 
+Section three point four develops week encryption and backups with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section three point four, Leah Morgan expects week claims to carry owners and dates.
+
+Section three point four treats why encryption turning it as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Testing a restore
 
 Leah deletes a test file and restores it from the cloud service's recycle bin, then restores an older version of a document. Both work. CIS Controls v8 Control 11 includes testing that data can be recovered, because backups that have never been restored may fail when needed.
+
+Section three point five develops week encryption and backups with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section three point five, Leah Morgan expects week claims to carry owners and dates.
+
+Section three point five treats why encryption turning it as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -254,21 +314,43 @@ You will (1) re-run the quick check; (2) set a monthly routine; (3) prepare simp
 
 Leah repeats the five-point quick check with the same method. All twelve laptops now pass all five, compared with three of twelve at the start. She records the result with the date and shares a one-page summary with the trustees: what was found, what was changed and what it cost, which was only her time.
 
+Section four point one develops week keep it going and with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section four point one, Leah Morgan expects week claims to carry owners and dates.
+
 ### 4.2 A monthly routine
 
 Improvements fade without routine. Leah writes a fifteen-minute monthly checklist: run the quick check on each laptop, confirm updates are current, check that no one has become an administrator, look at the cloud service's sign-in alerts, and restore one file. A second volunteer is trained to do it when Leah is away.
+
+Section four point two develops week keep it going and with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section four point two, Leah Morgan expects week claims to carry owners and dates.
 
 ### 4.3 When something goes wrong
 
 Leah writes four short responses on one page. Lost or stolen laptop: tell Leah, who confirms encryption, signs the user out everywhere and changes their password. Suspicious email clicked: change the password, check MFA prompts and tell Leah. Antivirus warning: disconnect from Wi-Fi and call Leah. Account locked out: Leah verifies the person by phone before resetting. NIST SP 800-61 describes incident handling in detail, but a small charity needs simple first steps that anyone can follow.
 
+Section four point three develops week keep it going and with a Northgate Learning note Leah Morgan can demo offline.
+
 ### 4.4 Joiners and leavers
 
 New volunteers get a standard account, MFA set up in person and a two-minute talk on saving files to the cloud. Leavers return laptops, and their accounts are disabled the same day.
 
+Section four point four develops week keep it going and with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section four point four, Leah Morgan expects week claims to carry owners and dates.
+
+Section four point four treats re-running the check monthly as testable only when evidence and ticket IDs are recorded.
+
 ### 4.5 What remains
 
 Some things are beyond a month: replacing the oldest laptop, which will soon stop receiving updates, and considering a free device management service for charities. Leah lists them for the trustees with rough timings.
+
+Section four point five develops week keep it going and with a Northgate Learning note Leah Morgan can demo offline.
+
+Under section four point five, Leah Morgan expects week claims to carry owners and dates.
+
+Section four point five treats re-running the check monthly as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
