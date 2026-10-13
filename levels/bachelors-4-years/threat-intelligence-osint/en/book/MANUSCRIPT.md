@@ -931,25 +931,37 @@ You will (1) explain why credentials are a prime target; (2) connect identity in
 
 Cloud email and remote access mean a valid password can reach clinical systems from anywhere. Valid Accounts (T1078) and Phishing (T1566) often combine: phish the credential, then log in. CTI about credential phishing therefore leads to identity controls, not only email filters.
 
+Amara traces one HSSC phishing report to its likely effect at HCHT: a stolen password used to log in to cloud email from abroad. The recommended actions go to the identity team as well as email administrators, and the report names the sign-in patterns to watch for, so each team knows what it should check.
+
 ### 13.2 Multi-factor authentication
 
 MFA blocks most password-only attacks. Adversaries respond by repeatedly prompting users until one approves, or by stealing session tokens after login. Intelligence that such methods are active in the sector justifies number-matching prompts and conditional access.
+
+Amara drafts the recommendation with the identity team, explaining which methods were seen in the sector and how each change addresses one of them. Number matching makes blind approval of repeated prompts much harder, and conditional access can refuse logins from unmanaged devices. The team plans a staged rollout so that clinical staff on shared workstations are not locked out during a shift.
 
 ### 13.3 Credential exposure reports
 
 Sometimes a partner reports HCHT email addresses and passwords found in a public dump. Handle them as personal data: restrict access, never paste passwords into tickets, force resets via the identity team and inform the data protection officer.
 
+Amara's role is to pass the report on through the agreed channel and record that it was received, not to test whether the passwords still work. The identity team checks the accounts and forces resets; the officer decides whether the exposure must be reported. A short note records the source, the date and the actions taken, without any passwords in it.
+
 ### 13.4 Service and supplier accounts
 
 Shared supplier accounts are hard to attribute and often exempt from MFA. Intelligence about supplier compromise in the sector should trigger a review of these accounts first.
+
+Amara helps compile a list of supplier accounts with their owners, the systems they reach, whether MFA applies and when each was last used. Several accounts have not been used in months and are disabled after checking with their owners. Accounts that must stay shared are restricted to named addresses and logged in more detail, so their use can still be checked.
 
 ### 13.5 Measuring control effect
 
 After acting on intelligence, check whether the risky pattern declined: fewer successful logons from new countries, fewer approved repeated prompts.
 
+Amara compares the four weeks before and after the change, using the same queries and noting any other changes that could explain the difference, such as a holiday period with fewer logins. If the pattern did not decline, the intelligence or the control needs another look. Her short report includes the counts, the period and the limitations, and it goes to the identity team and HSSC's feedback form.
+
 ### 13.6 Least privilege and reviews
 
 Regular access reviews remove accounts of leavers and rights that are no longer needed. Intelligence that attackers in the sector are reusing dormant accounts turns a routine review into a priority: dormant privileged accounts are disabled first, with owners confirming any that must stay.
+
+Amara helps the identity team prepare the list and records each decision. Owners have two weeks to confirm an account is still needed; unconfirmed accounts are disabled and can be restored on request. The review is repeated each quarter, and the number of dormant privileged accounts is tracked as a measure of progress.
 
 ### Worked example
 
@@ -987,9 +999,13 @@ You will (1) identify personal data in intelligence products; (2) redact it befo
 
 Phishing samples contain recipients' names and addresses; incident notes mention staff; logs hold device owners. Under data-protection law these are personal data, and in a hospital some may relate to patients, which carries stricter duties.
 
+Amara keeps personal data out of her notes wherever she can, using roles such as "ward administrator" instead of names. When a name is needed, for example to contact a recipient, it stays in the incident ticket with restricted access rather than in intelligence notes that are shared more widely.
+
 ### 14.2 Redaction before sharing
 
 Before sending a sample to HSSC, remove staff emails, phone numbers and any patient identifiers. Replace them with labels so the analytic meaning survives: "[staff-email] received the message".
+
+Amara checks attachments and embedded links too, since a phishing message may include the recipient's name in a URL or a document. Redaction is reviewed by a second person before anything is sent, because once shared, information cannot be recalled from every member. Labels are consistent, so several samples can still be compared after redaction.
 
 ### Lab — redacting a sample
 
@@ -1017,17 +1033,25 @@ adversary address kept: True
 
 The staff email and phone number are replaced by placeholders. The adversary's sending address is kept, because it is the indicator other members need. The script reports "adversary address kept: True", confirming it did not over-redact.
 
+Amara adds tests for other personal details, such as names in greetings, to the script. Over-redaction would remove what HSSC members need; under-redaction would expose staff. Checking both directions is part of every change to the script, and a sample of each batch is still reviewed by a person.
+
 ### 14.4 Minimisation and retention
 
 Collect only what the question needs and keep it only as long as needed. A retention period for raw phishing samples — say 90 days — limits exposure if HCHT's own systems are breached.
+
+Amara's import deletes raw samples automatically when the period ends, keeping only the extracted indicators and a redacted summary. The retention period is agreed with the data protection officer and recorded in the team's procedures. If an investigation needs a sample for longer, the reason and the new date are recorded, so exceptions are visible.
 
 ### 14.5 Patient data
 
 Never share patient data through intelligence channels. If an incident involves patient records, the data protection officer leads, and notifications follow law, not CTI habits.
 
+Amara checks every sample for patient details before any other processing, and stops if she finds any. Intelligence work needs indicators and techniques, not patient records, so there is never a reason to send them to HSSC. If a phishing message contains patient information, the incident team and the officer handle it under HCHT's data-protection procedures, separately from the intelligence work.
+
 ### 14.6 Pseudonymisation versus anonymisation
 
 Replacing a name with a stable label is pseudonymisation: the data can still be linked back by whoever holds the key, so it remains personal data under GDPR. True anonymisation removes any reasonable means of re-identification. Most CTI sharing achieves only the former, so access controls still matter.
+
+Amara's redaction script uses fixed placeholders rather than stable labels, so HSSC members cannot link a placeholder to a person even across many samples. Where linkage matters, for instance to show that the same staff member was targeted twice, the key stays at HCHT and is shared with no one.
 
 ### Worked example
 
@@ -1065,25 +1089,37 @@ You will (1) distinguish observation, inference and assessment; (2) record prove
 
 An observation: "the proxy logged a connection to portal-login.example at 09:41". An inference: "the user probably clicked the phishing link". An assessment: "HCHT was likely targeted by the sector campaign". Each layer needs its own support, and reports should label which is which.
 
+Amara marks each sentence in her drafts as an observation, inference or assessment. Readers can then see which statements are facts from logs and which are judgments, and they can challenge the judgments without doubting the facts. When new evidence arrives, an inference may change while the observation stays the same.
+
 ### 15.2 Provenance
 
 For every item record who reported it, when, through which channel, under which TLP, and what it is based on. Without provenance, an indicator copied between feeds appears to have many sources when it has one — circular reporting.
+
+Amara's database stores provenance for every indicator, and her reports cite the original source rather than the feed that repeated it. When two HSSC members report the same domain, she checks whether both saw it independently or one copied the other's report. Only independent sightings raise confidence. Circular reporting has twice inflated confidence in HSSC summaries, which is why the community now asks members to state their original source.
 
 ### 15.3 Measuring intelligence
 
 Counting indicators ingested measures activity. Outcome measures ask: did intelligence lead to a block that stopped something, a hunt that found something, or a decision that changed? Fewer, better indicators can produce more value.
 
+Amara adds an outcome column to the indicator database: blocked, hunted with a result, hunted without a result, or no action. After a quarter, she can show which sources led to action and which only added volume. The figures help the team decide which feeds are worth the processing time and which could be dropped.
+
 ### 15.4 Feedback
 
 Consumers should tell producers what helped. HSSC's monthly feedback form asks members which items led to action. Amara fills it in honestly, including "no action needed".
+
+"No action needed" is useful feedback, because it tells HSSC that an item did not apply to members like HCHT. Amara adds a sentence explaining why, such as "we do not run the affected product". Honest feedback helps producers focus on what consumers can use. HSSC shares a summary of all members' feedback each quarter, which shows which report types are most useful.
 
 ### 15.5 Timeliness
 
 An indicator delivered after the campaign ended has little value. Record the time between first sighting and HCHT action.
 
+Amara records the first-sighting time from the source report and the time HCHT applied a block or completed a hunt. The median gap is reported each quarter. A long gap may come from a slow feed, a slow review or a slow change process, and the record shows which step took longest. Shortening the slowest step is the most effective improvement.
+
 ### 15.6 Precision and recall for blocks
 
 Precision asks what share of blocked items were truly malicious; recall asks what share of malicious items were blocked. A feed with high recall but poor precision floods the service desk with complaints; one with high precision but low recall misses campaigns. Track both rather than a single "hits" count.
+
+Amara measures both for the main feeds each quarter. Precision is checked by sampling blocked items and confirming each one; recall is harder, so she estimates it from incidents and HSSC reports that later proved malicious. Both figures are reported with their counts and their limits.
 
 ### Worked example
 
@@ -1121,25 +1157,37 @@ You will (1) describe defence in depth in a hospital network; (2) place CTI inpu
 
 Email filtering, web proxy, DNS filtering, endpoint protection, identity controls, segmentation and backups form layers. No single layer stops every attack; intelligence helps tune each.
 
+Amara maps each type of intelligence HCHT receives to the layer that can use it and the team that owns that layer. The map shows layers no intelligence reaches, such as backups, and intelligence no layer can use, such as indicators for systems HCHT does not run. Both gaps are discussed with the security lead.
+
 ### 16.2 CTI at each layer
 
 Sender domains feed email filters; malicious domains feed DNS and proxy; hashes feed endpoint tools; technique intelligence informs detection rules and hardening; ransomware intelligence (Data Encrypted for Impact, T1486) informs backup isolation.
+
+Amara routes each item to the right owner with a short explanation of what to do. Hash lists go to the endpoint team with the source and confidence; technique summaries go to the detection engineer with ideas for searches; ransomware intelligence goes to infrastructure with the specific backup risks. Each owner confirms what was done, which feeds the outcome measures.
 
 ### 16.3 Segmentation
 
 Clinical devices sit in separate network zones with tightly limited paths. Intelligence about lateral movement through remote services strengthens the case for blocking unnecessary paths between office and clinical zones.
 
+Amara collects sector reports where attackers moved from office systems to clinical ones and summarises the paths they used. The network team compares these with HCHT's firewall rules and finds two paths no longer needed, which are closed after checking with clinical engineering. The summary is kept as evidence for the change.
+
 ### 16.4 Choosing enforcement
 
 Block where the indicator is reliable and the blast radius is acceptable. A hash of a known malicious file is safe to block on endpoints. A shared cloud address is not safe to block at the firewall.
+
+Amara writes the reason for the chosen enforcement point next to each blocking recommendation. When reliability is uncertain, she recommends monitoring first and blocking later if the evidence grows. The same domain may be safe to block at the email gateway, where only messages are affected, but risky at DNS, where clinical systems could lose access to a supplier's service.
 
 ### 16.5 Architecture reviews
 
 When HCHT designs a new system, the CTI team summarises relevant techniques seen in the sector so architects can design against them from the start.
 
+The summary is short and lists techniques relevant to the system's type, such as remote access for a supplier portal or phishing for a new email workflow. Architects use it to check their design, and the CTI team checks the design afterwards for the listed techniques. Amara helped with the summary for a new laboratory system.
+
 ### 16.6 Backups as a CTI consumer
 
 Sector intelligence that ransomware groups seek and delete backups before encrypting (T1490 Inhibit System Recovery is a related ATT&CK technique) tells the infrastructure team what to protect: offline or immutable copies, separate credentials for backup administration and regular restore tests that prove recovery works.
+
+Amara's summary of the sector reports goes to the infrastructure team, who confirm which protections are in place. They also run a restore test after the summary, which shows that one backup set shares credentials with ordinary administration. The credentials are separated within the month, and the result is recorded as an outcome of the intelligence.
 
 ### Worked example
 
@@ -1177,25 +1225,37 @@ You will (1) explain hashing, encryption and signatures at concept level; (2) un
 
 A cryptographic hash such as SHA-256 maps a file to a fixed-length fingerprint. Identical files give identical hashes; changing one byte changes the hash completely. That makes hashes precise indicators — and fragile ones, because adversaries can alter files trivially. Bianco's Pyramid of Pain places hashes at the bottom: easy for defenders, trivial for attackers to change.
 
+Amara uses hashes for exact matches in endpoint searches but does not rely on them alone. When a report lists hashes, she also looks for the behaviour and techniques described, which last longer.
+
 ### 17.2 Encryption
 
 Encryption protects confidentiality. Ransomware abuses it (T1486). TLS protects web traffic, including adversaries' command traffic. Encryption therefore shapes what defenders can see.
+
+Amara notes that HCHT's proxy sees only server names for encrypted traffic, as decided by the privacy and legal staff. This means domain indicators are useful, but indicators based on full URLs often cannot be checked. Ransomware intelligence goes to backup protection, since encryption by attackers cannot be undone without the key. Each limitation is recorded so readers understand what a clean search result means.
 
 ### 17.3 Signatures and certificates
 
 Digital signatures show who signed data and that it was not altered. Certificates bind a domain name to a key. Free, automated certificates mean phishing sites routinely show a padlock; the padlock proves encryption, not legitimacy.
 
+Amara explains this in staff awareness material: the padlock means the connection is private, not that the site belongs to HCHT. Signed software from trusted suppliers is still checked, because a stolen signing key can make malicious code look legitimate. Sector reports of such thefts are passed to the endpoint team.
+
 ### 17.4 Certificate transparency
 
 Publicly trusted certificates are recorded in public logs. Searching them for names resembling HCHT's domains can reveal lookalike sites early — an ethical, passive OSINT method.
+
+Amara runs a weekly search for names close to HCHT's domains and its hospitals' names. New matches are checked by viewing public records only; live sites are not visited from HCHT laptops. Confirmed lookalikes are reported to the email team for blocking and, where appropriate, to the registrar for takedown, with the evidence recorded. Results are kept in the team's records.
 
 ### 17.5 Protecting intelligence
 
 HSSC distributes TLP:AMBER material through an encrypted portal. Downloading it to personal devices or forwarding by ordinary email breaks the sharing agreement.
 
+Amara reads AMBER material only on HCHT devices and stores any extracts in the team's restricted folder. When an AMBER item needs to reach another HCHT team, she sends a summary through the internal ticketing system, which is allowed under the agreement, rather than forwarding the original. The rules are explained in her onboarding notes. Breaches are reported to HSSC.
+
 ### 17.6 Fuzzy and partial matching
 
 Because one changed byte defeats an exact hash, some tools compute similarity hashes that score how alike two files are. They help group variants but produce scores, not proof; a high similarity between two benign installers is common. Treat them as leads for human review.
+
+Amara uses similarity scores only to choose which files to compare by hand. A high score leads to a closer look at both files, their sources and what they do; it is never enough on its own to label a file malicious or to add it to a blocklist. Amara records the score and the outcome of the review together.
 
 ### Worked example
 
@@ -1233,25 +1293,37 @@ You will (1) frame a researchable question; (2) choose qualitative or quantitati
 
 "Is CTI useful?" is too broad. "Which HSSC report types led members to take a defensive action in 2026?" names a population, a period and an outcome. Good questions can be answered with available, lawful data.
 
+Amara refines her own question several times with her supervisor before it is narrow enough. Each version is written down, so she can show how the question developed and why some broader versions were dropped. The final question can be answered from HSSC's feedback forms, which members have agreed may be used for research.
+
 ### 18.2 Methods
 
 Quantitative methods count — how many reports mention phishing. Qualitative methods interpret — how analysts describe confidence. Many CTI studies combine both: code reports, count codes, then interview analysts.
+
+Amara plans a mixed study: count report types and actions from the feedback forms, then interview a few analysts to understand why some types led to action. Each method covers a weakness of the other: counts show patterns, interviews explain them. Amara explains the choice in her research plan and lists what each method cannot show.
 
 ### 18.3 Coding scheme
 
 Define categories in advance with examples: "entry route: phishing (T1566), exploited public application (T1190), valid account (T1078), unknown". Two coders label the same reports and compare; disagreements refine the definitions.
 
+Amara writes the coding scheme with definitions and one example per code, and both coders practise on reports outside the study first. Agreement is measured before discussion, so it shows how clear the definitions are. Codes that cause repeated disagreement are rewritten or merged, and the changes are recorded with the reason.
+
 ### 18.4 Sampling
 
 Public reports are a biased sample — vendors publish what is interesting or marketable. State the bias rather than pretending the sample represents all incidents.
+
+Amara's study uses HSSC feedback forms, which have their own bias: members who fill them in may be more engaged than others. She states this and compares the number of responding members with the total. Readers can then judge how far the results may apply to the whole community and to other sectors with different sharing practices.
 
 ### 18.5 Ethics
 
 Interviews with analysts need informed consent and, in a university, ethics review. Do not ask participants to reveal TLP-restricted content.
 
+Amara's interview guide asks about practice in general terms, such as how analysts judge whether a report is relevant, without asking for report contents. Participants can stop at any time. Notes are anonymised and stored on university systems, and the ethics committee approves the plan before any interview takes place. HSSC's coordinator is informed but does not see individual answers.
+
 ### 18.6 Literature search
 
 Before collecting data, search for prior work: peer-reviewed papers, standards and reputable practitioner reports. Record search terms and databases so the review can be repeated, and note when a source is a vendor blog rather than reviewed research.
+
+Amara's search finds few studies on small sector communities. She records each search with the date, terms and databases, and lists the sources she included and excluded with reasons. Practitioner reports are kept but labelled, and their claims are checked against reviewed work where possible. The gap she finds in research on small communities becomes part of the justification for her study.
 
 ### Reliability between coders
 
