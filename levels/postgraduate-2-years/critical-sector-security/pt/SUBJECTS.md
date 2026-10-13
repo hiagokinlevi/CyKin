@@ -13,11 +13,11 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [01](book/PLAN.md#ch-01) | Tomada de decisão avançada em segurança | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Infraestrutura crítica e segurança setorial: prática atual | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
 | 1 | [03](book/PLAN.md#ch-03) | Infraestrutura crítica e segurança setorial: evidências especializadas | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Risco avançado e ética | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Plano](book/PLAN.md#ch-05) |
-| 2 | [05](book/PLAN.md#ch-05) | Infraestrutura crítica e segurança setorial: alternativas de projeto | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plano](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Infraestrutura crítica e segurança setorial: avaliação controlada | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plano](book/PLAN.md#ch-07) |
-| 3 | [07](book/PLAN.md#ch-07) | Infraestrutura crítica e segurança setorial: integração organizacional | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 3 | [08](book/PLAN.md#ch-08) | Infraestrutura crítica e segurança setorial: casos difíceis | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
+| 2 | [04](book/PLAN.md#ch-04) | Risco avançado e ética | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 2 | [05](book/PLAN.md#ch-05) | Infraestrutura crítica e segurança setorial: alternativas de projeto | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Infraestrutura crítica e segurança setorial: avaliação controlada | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 3 | [07](book/PLAN.md#ch-07) | Infraestrutura crítica e segurança setorial: integração organizacional | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 3 | [08](book/PLAN.md#ch-08) | Infraestrutura crítica e segurança setorial: casos difíceis | 50 | 35 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Plano](book/PLAN.md#ch-09) |
 | 3 | [09](book/PLAN.md#ch-09) | Infraestrutura crítica e segurança setorial: liderança e asseguração | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
 | 4 | [10](book/PLAN.md#ch-10) | Leitura e crítica de pesquisas | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
 | 4 | [11](book/PLAN.md#ch-11) | Projeto aplicado | 50 | 35 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
