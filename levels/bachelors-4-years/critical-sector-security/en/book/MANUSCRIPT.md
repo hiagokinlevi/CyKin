@@ -143,6 +143,8 @@ B: backup generator test programme: expected annual loss avoided = 9,600; worst 
 
 The lab assumes each option removes its scenarios completely. Real controls reduce probability or duration partially; Exercise EX002 asks you to model that.
 
+Two runs show what the lab is for. Halving B's 0.10 probability to 0.05 lowers its expected loss to £6,600, still above A's £4,320, so the ranking holds. Doubling A's 0.02 chance of a 48-hour outage to 0.04 raises A to £6,240, still below B. Because neither single change flips the order, the recommendation for the generator programme is robust to a factor of two in any one estimate, which is exactly the claim the worked example made.
+
 ### 1.6 Common errors and limits
 
 - Multiplying quantities with incompatible units (per-year by per-hour without converting).
@@ -150,6 +152,8 @@ The lab assumes each option removes its scenarios completely. Real controls redu
 - Ranking options by expected loss alone when harm to people depends on duration.
 - Forgetting that controls rarely remove a risk entirely.
 - Adding probabilities of events that are not mutually exclusive (Chapter 12 shows the correct rule).
+
+Each error has a Calder example. The EX001 colleague multiplied a per-year probability by hours and called the result pounds per hour. Writing "0.02 chance" with no source makes CEDC's guess look like a measured rate. Ranking A and B by expected loss alone would hide that B's £360,000 tail is 72 hours without reliable hospital power. And the lab's own assumption, that each option removes its scenarios entirely, is the fourth error built into a teaching model on purpose.
 
 ### Exercises — chapter 1
 
@@ -197,12 +201,16 @@ Security is decided long before an attack. At **procurement**, a buyer can requi
 
 Choose one device you use daily (a phone, a home router, a laptop). Without opening it or changing anything, find from the vendor's public pages: its firmware or OS version, whether it is still supported, and how updates are delivered. Write a five-line life-cycle note: procurement, installation, operation, end of support, disposal. Do the same for one *imagined* device in a critical service — a CVH infusion pump — and list what you would need to ask its vendor.
 
+For the pump, ask the vendor about the drug-library update process, the support end date for its firmware and who may install updates.
+
 ### 2.6 Common errors and limits
 
 - Assuming "it still works" means "it is still safe": unsupported devices accumulate unfixed vulnerabilities.
 - Treating OT like IT: rebooting a controller during operation, or scanning it aggressively, can disrupt the physical process.
 - Ignoring firmware: it is code, it has vulnerabilities, and it is rarely inventoried.
 - Forgetting people as a layer: most systems are configured by someone under time pressure.
+
+At CVH the four errors meet in IMG-01: it still works, so it stayed on the clinical network; its scanner certification makes it OT-like in its patch constraints; nobody listed its firmware; and the radiographers who use it chose the shared desktop settings. The limit of this chapter is that it names layers without measuring how many devices sit in each.
 
 ### Exercises — chapter 2
 
@@ -288,12 +296,16 @@ Interpretation: four clinical devices are unsupported, which is a replacement-pl
 
 Extend Lab 2: (1) add a row with an empty `os_end_of_support` and observe the error; (2) change the program so such rows are reported as "unknown — needs owner" rather than crashing or being skipped; (3) write one `assert` that checks the count of unsupported devices for the original eight rows is 5.
 
+Step (2) is the important one. A row reported as "unknown — needs owner" puts a name on a gap; a skipped row hides it, and a crash stops the report for everyone. The `assert` in step (3) is a test with a known answer: if a later change to the filter makes it print 4 or 6, the test fails before anyone reads a wrong report.
+
 ### 3.5 Common errors and limits
 
 - Comparing numbers stored as text (`"2025" < "2026"` happens to work; `"9" < "10"` does not).
 - Silently skipping malformed rows.
 - Hard-coding the current year so the report goes stale; read it from the clock, but keep it fixed in tests.
 - Treating an inventory export as the truth: it is only as good as the last person who updated it (Chapter 22).
+
+In Lab 2 the second error would have hidden VEN-01 in EX005, the third would have made the 2025 devices look supported again if the year were left at 2025, and the fourth applies to the whole export: ADM-02 appears on the clinical VLAN only because someone recorded its network correctly.
 
 ### Exercises — chapter 3
 
@@ -339,11 +351,13 @@ Cite a source whenever you state a fact you did not establish yourself, and cite
 
 Problems: an unsupported universal claim ("everyone knows"); a real incident used without a source or a precise lesson; "lots" and "high" without numbers; a recommendation that does not follow from the evidence (old computers are not fixed by a firewall).
 
-**Revised:** "The UK National Audit Office found that the 2017 WannaCry ransomware disrupted at least a third of NHS trusts in England, and that affected organisations had unpatched or unsupported Windows systems ([NAO, 2017](https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/)). CVH's sample inventory shows four of seven clinical devices past end of support (Chapter 3, Lab 2). We recommend isolating these devices to the connections they need and setting replacement dates, rather than relying on a perimeter firewall, because the NAO case shows harm spreading inside hospital networks. This recommendation assumes the sample is representative; a full inventory is needed to confirm it."
+**Revised:** "The UK National Audit Office found that the 2017 WannaCry ransomware disrupted at least a third of NHS trusts in England, and that affected organisations had unpatched or unsupported Windows systems ([NAO, 2017](https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/)). CVH's sample inventory shows four of five clinical devices past end of support (Chapter 3, Lab 2). We recommend isolating these devices to the connections they need and setting replacement dates, rather than relying on a perimeter firewall, because the NAO case shows harm spreading inside hospital networks. This recommendation assumes the sample is representative; a full inventory is needed to confirm it."
 
 ### 4.5 Practical activity
 
 Take a one-page news article about any infrastructure incident. Write a 250-word brief for a hospital director: three-sentence summary, what is known (with the article and any primary source it cites), what is uncertain, and one question CVH should ask itself. Mark each sentence R (reporting), I (inference) or C (recommendation).
+
+A good brief keeps the three kinds of sentence visibly apart. "The utility reported a six-hour outage (R)" is reporting; "the outage probably began in the billing system (I)" is inference and should name its basis; "CVH should check whether its own billing system can stop clinical work (C)" is a recommendation. Where the article cites a primary source, open it and cite that instead.
 
 ### 4.6 Common errors and limits
 
@@ -352,6 +366,8 @@ Take a one-page news article about any infrastructure incident. Write a 250-word
 - Words that hide quantities: "many", "significant", "critical" without a number or definition.
 - Recommendations that do not follow from the evidence presented.
 - Plagiarism, including close paraphrase without citation and unacknowledged AI-generated text.
+
+The weak paragraph in the worked example shows four of these at once: "everyone knows" hides a source, "lots of old computers" hides a count, "high risk" hides a definition, and "buy a new firewall" does not follow from unsupported devices. The fifth error is the one assessors check mechanically: a sentence close to the NAO report's wording without a citation is plagiarism even if the facts are right.
 
 ### Exercises — chapter 4
 
@@ -401,12 +417,16 @@ Extract: *asset* — the gateway and everything reachable through it; *vulnerabi
 
 Pick one recent advisory from [CISA's ICS advisories](https://www.cisa.gov/news-events/ics-advisories). Without testing anything, extract asset, vulnerability, affected versions, exploitation status, vendor fix and recommended mitigations. Then write two sentences on how the priority would change for an operator whose device is (a) internet-facing and (b) on an isolated network.
 
+Write the exposure answer as a change in priority with a reason, not a new score. Internet-facing plus exploited usually moves an advisory to emergency handling, as with CPN's VPN-G 9.1; the same flaw on a device reachable only from an isolated cell can wait for the next planned window if compensating controls are checked.
+
 ### 5.6 Common errors and limits
 
 - Using "threat", "vulnerability" and "risk" interchangeably.
 - Assuming confidentiality always comes first.
 - Treating every incident as an attack; many outages are accidents, and the response differs.
 - Learning attack techniques operationally without authorisation (Chapter 10).
+
+EX010 shows the first error: calling the cable cut a vulnerability confuses the threat (roadworks) with the weakness (a single cable route). The second makes a CW dosing controller look like a privacy problem when integrity is what protects customers. The third treats a cut cable or a failed update as an incident to investigate for an attacker, delaying repair. The fourth is why every lab here is offline.
 
 ### Exercises — chapter 5
 
@@ -494,12 +514,16 @@ Read the result carefully. The graph says *can be affected*, not *will fail*: it
 
 Add an edge you think is missing (for example, the hospital's water depends on the water-treatment works, which depends on the substation) and an alternative path (a second telecom exchange). Recompute reach. Write three sentences on what the change does and does not show.
 
+Adding "treatment works → hospital water" and "substation → treatment works" raises the substation's reach further, while a second exchange removes nothing from the plain reachability count: the search still marks every node that one path can reach. That is the limitation EX012 asks you to explain, and it is the reason to write AND and OR dependencies differently.
+
 ### 6.6 Common errors and limits
 
 - Confusing edge direction ("depends on" versus "supplies"); write the convention at the top of every diagram.
 - Treating reachability as certainty of failure.
 - Building a graph from one organisation's view: other operators know dependencies you do not.
 - Trying to enumerate state spaces that are exponentially large.
+
+In Lab 3 the convention line `edge u -> v means "v depends on u"` is what makes the 11-node reach of the substation readable; reversed, the same list would claim the substation depends on fuel retail. Reach of 11 means exposure, not failure, since the hospital has 72 hours of generator autonomy. The map is CRP's first view and lacks what CW and CPN engineers know. And the truth table argument scales the other way: 40 binary inputs give about a trillion rows.
 
 ### Exercises — chapter 6
 
@@ -581,12 +605,16 @@ Three violations, three different meanings. A remote-desktop connection (port 33
 
 On a computer you own, list your own active connections (for example with `netstat` or `ss`) and classify five as client or server, local or remote, and expected or unexpected. Do not scan any other system.
 
+Use the state column of `ss` or `netstat`: a local address with a listening port is a server; a connection to a remote port 443 is a client. Mark anything you cannot explain and find the program behind it with your operating system's tools on your own machine.
+
 ### 7.6 Common errors and limits
 
 - Writing allowlists by port alone, ignoring source and destination zones.
 - Assuming "internal" means "trusted".
 - Confusing reply traffic with initiated connections when reading flow logs.
 - Treating a violation as proof of compromise rather than as a question.
+
+Lab 4 shows why: a port-only rule allowing 502 would have passed the field device that initiated Modbus to the SCADA server, a reversal of the normal direction. The corporate RDP connection into control is "internal" and still a violation. In flow logs, the SCADA server's replies on 502 are not new connections and must not be read as such. And each of the three violations goes to an owner as a question first.
 
 ### Exercises — chapter 7
 
@@ -630,6 +658,8 @@ When validation fails, the program must do something defined: reject the command
 
 A **unit test** checks one function against known cases. Good test sets include **typical** values, **boundaries** (exactly 0.5 and 4.5), **just outside** boundaries (0.49, 4.51), **malformed** inputs (empty string, "abc", "1e309", "nan"), and **state-dependent** cases (a valid value that changes too fast). Python's built-in `unittest` module or plain `assert` statements are sufficient at this level. A test that has never failed has never been shown to work: run each new test once against a deliberately broken version.
 
+Run the seven listed tests against both versions as the practical activity asks.
+
 ### 8.5 Worked example: CW setpoint validator (synthetic)
 
 **This case is synthetic.** Calder Water's operator interface sends tank-level setpoints as text. Version 1 of the validator:
@@ -656,9 +686,13 @@ def accept_v2(text, current):
 
 Version 2 states what is acceptable rather than what is not. Tests: `("3.2", 3.0)` → True; `("4.5", 4.2)` → True; `("4.51", 4.2)` → False; `("nan", 3.0)` → False; `("inf", 3.0)` → False; `("abc", 3.0)` → False; `("2.0", 3.0)` → False (step too large).
 
+The `try` block turns a crash into a rejection, and `math.isfinite` removes NaN and infinity before any comparison. What v2 still does not do is say why it rejected: the operator interface should log which rule failed.
+
 ### 8.6 Practical activity
 
 Implement both versions and the seven tests above. Run the tests against v1 and record which fail; then against v2. Add two tests of your own that you think v2 might still get wrong (hint: whitespace, very long strings, a comma decimal separator) and decide whether the behaviour is acceptable.
+
+Against v1, expect the "nan" test to fail (it returns True) and "abc" to raise instead of returning False. Against v2 all seven should pass. For your own tests, " 3.2 " with spaces is accepted by Python's `float`, which is probably fine; "3,2" is rejected, which may surprise an operator using a comma decimal. Decide whether that rejection should produce a clear message rather than silent refusal.
 
 ### 8.7 Common errors and limits
 
@@ -667,6 +701,8 @@ Implement both versions and the seven tests above. Run the tests against v1 and 
 - Validation in the user interface only, not where the command is executed.
 - Tests that only cover typical values.
 - Believing validation makes a channel authentic: a valid-looking forged command still passes (Chapter 17 adds authentication).
+
+At CW the third error is the dangerous one: if only the operator interface checks setpoints, any other client that can reach the PLC over Modbus bypasses validation entirely, as Lab 4's field-zone conduit shows. The fifth error links to Lab 8: a well-formed 2.0 m setpoint passes v2 whether an operator or an intruder sent it.
 
 ### Exercises — chapter 8
 
@@ -705,6 +741,8 @@ Security questions combine facts held in different places: which assets exist, w
 ### 9.3 Injection
 
 If a program builds SQL by pasting user input into a string — `"... WHERE id = '" + user_input + "'"` — an input such as `x' OR '1'='1` changes the query's meaning. This is **SQL injection**, persistently among the most dangerous software weaknesses ([CWE Top 25](https://cwe.mitre.org/top25/)). The fix is structural: **parameterised queries** (`db.execute("... WHERE id = ?", (user_input,))`) send data separately from code, so input can never become SQL.
+
+In Lab 5 every query with an input, such as looking up one asset by ID, should use a `?` placeholder.
 
 ### 9.4 Worked example and Lab 5: CPN advisory matching (synthetic)
 
@@ -751,12 +789,16 @@ Two assets need action, the gateway first (this is the Chapter 5 advisory). HMI-
 
 (1) Change the join to a `LEFT JOIN` and list assets with no advisory record — is "no advisory" the same as "no vulnerability"? (2) Write a parameterised query that returns one asset by ID; then show, with a deliberately unsafe string-built query on your in-memory database only, how `' OR '1'='1` returns every row.
 
+The `LEFT JOIN` shows HMI-01 with nulls in the advisory columns. "No advisory" means no advisory in this feed for product HMI-S, not that the HMI has no flaw; it may have a vendor bulletin outside the feed or none published yet. For part (2), the unsafe query must only run against your in-memory database, never a real one.
+
 ### 9.6 Common errors and limits
 
 - Comparing versions, dates or numbers stored as text.
 - Inner joins that silently drop unmatched rows.
 - Building SQL with string concatenation.
 - Trusting product names to match exactly across vendor feeds and local inventories.
+
+Lab 5 contains two of these errors deliberately. The version comparison would treat "3.10" as older than "3.4" if done as text, wrongly marking an updated RTU as vulnerable. The inner join drops HMI-01 silently. And the product names "RTU-K" and "VPN-G" only join because the sample was typed consistently; real vendor feeds spell products differently and need a mapping table.
 
 ### Exercises — chapter 9
 
@@ -808,6 +850,8 @@ The ACM Code of Ethics asks computing professionals to contribute to society and
 
 Write a one-page RoE for Laboratory I (Chapter 25), which runs only the book's offline labs on your own computer. Even for a trivial scope, fill every heading: authoriser, scope, exclusions, window, methods, stop conditions, data handling and reporting.
 
+For the stop conditions, "any unexpected behaviour of my own computer, or any attempt by a script to reach the network" is specific and observable. Name yourself as authoriser and tester for the scope, and your tutor as the person told if a stop condition occurs.
+
 ### 10.7 Common errors and limits
 
 - "It was publicly reachable, so it was allowed."
@@ -816,11 +860,13 @@ Write a one-page RoE for Laboratory I (Chapter 25), which runs only the book's o
 - Keeping data found during a test after the engagement.
 - Treating ethics as a compliance checklist rather than a reasoning duty.
 
+The open-HMI worked example tests the first three. The page was publicly reachable, but nobody at CW authorised a visit; a classmate saying "go ahead" does not own the system; and clicking "just one more link" to check whether it is live is scope creep. The fourth would apply if the student kept the screenshot after reporting. The fifth is why the student also told the ethics adviser.
+
 ### Exercises — chapter 10
 
 **EX019 — Write the stop conditions.** *Objective:* protect a live service during an authorised test. *Inputs:* CPN authorises a passive network-traffic capture in its control room for one day. *Steps:* write five stop conditions and say who is called for each. *Expected evidence:* list. *Rubric:* 3 = five specific, observable conditions (process alarm, unexpected device behaviour, discovery of safety-system traffic outside scope, operator request, data of a sensitive type) with named roles; 2 = generic; 1 = fewer than three; 0 = none.
 
-**EX020 — The patch dilemma.** *Objective:* structure an ethical decision. *Inputs:* the ventilator-patch example in §10.4. *Steps:* list stakeholders and harms, two alternatives to "patch all now" or "patch none", and write a 150-word decision record naming who accepts the residual risk. *Expected evidence:* the analysis and record. *Rubric:* 3 = harms on both sides, credible alternatives (staged patching, isolation plus monitoring), clinical and security owners named; 2 = one side only; 1 = opinion without structure; 0 = none.
+**EX020 — The patch dilemma.** *Objective:* structure an ethical decision. *Inputs:* the ventilator-patch example in this chapter's discussion of professional codes. *Steps:* list stakeholders and harms, two alternatives to "patch all now" or "patch none", and write a 150-word decision record naming who accepts the residual risk. *Expected evidence:* the analysis and record. *Rubric:* 3 = harms on both sides, credible alternatives (staged patching, isolation plus monitoring), clinical and security owners named; 2 = one side only; 1 = opinion without structure; 0 = none.
 
 ### Chapter synthesis
 
@@ -866,6 +912,8 @@ On office IT, patching is routine. On an operator workstation or controller, a p
 
 On your own computer, list running processes and the account each runs as; find one service you do not use and find out how it could be disabled (do not disable anything you are unsure about). Write a five-item hardening checklist for a CEDC call-handling workstation, each item with how it would be verified.
 
+For the CEDC workstation, write items such as "call handlers log in with individual accounts without administrator rights; check: list local administrators monthly" or "USB storage blocked; check: insert a test drive during the quarterly review".
+
 ### 11.7 Common errors and limits
 
 - Running everything as administrator "to avoid permission problems".
@@ -873,9 +921,11 @@ On your own computer, list running processes and the account each runs as; find 
 - Applying office-IT patch cadence to OT without validation and rollback.
 - Assuming a device with no OS user interface has no OS.
 
+The CT signalling workstation shows the alternatives: allowlisting and three named accounts instead of administrator use, a quarterly vendor-validated bundle instead of the office's monthly cadence, and a review that checks allowlisting is still enforced. The fourth error covers CVH's infusion pumps, which run an RTOS that needs vendor updates.
+
 ### Exercises — chapter 11
 
-**EX021 — Patch decision.** *Objective:* apply the risk-based questions. *Inputs:* a remotely exploitable flaw in the web interface of a CVH BMS controller; the interface is reachable from the corporate network; the vendor fix needs a 30-minute controller restart; theatre ventilation depends on the BMS. *Steps:* answer the five questions in §11.4 and recommend. *Expected evidence:* answers and recommendation with interim controls. *Rubric:* 3 = restrict access to the interface immediately, schedule the restart with estates and theatres in a planned window, monitor; 2 = right outcome, weak interim controls; 1 = "patch immediately" with no consideration of ventilation; 0 = none.
+**EX021 — Patch decision.** *Objective:* apply the risk-based questions. *Inputs:* a remotely exploitable flaw in the web interface of a CVH BMS controller; the interface is reachable from the corporate network; the vendor fix needs a 30-minute controller restart; theatre ventilation depends on the BMS. *Steps:* answer the five risk-based patch questions of this chapter and recommend. *Expected evidence:* answers and recommendation with interim controls. *Rubric:* 3 = restrict access to the interface immediately, schedule the restart with estates and theatres in a planned window, monitor; 2 = right outcome, weak interim controls; 1 = "patch immediately" with no consideration of ventilation; 0 = none.
 
 **EX022 — Verifiable hardening.** *Objective:* make controls checkable. *Inputs:* three vague items: "secure the accounts", "turn on logging", "lock down USB". *Steps:* rewrite each as a specific, verifiable statement with the check. *Expected evidence:* three rewritten items. *Rubric:* 3 = specific, observable, with a check method; 2 = specific but no check; 1 = still vague; 0 = none.
 
@@ -913,9 +963,15 @@ A detector with a 95% **true-positive rate** and 1% **false-positive rate** soun
 
 If $n$ identical units are each available with probability $1-p$, independently, the number available follows a **binomial** distribution: $P(k \text{ available}) = \binom{n}{k}(1-p)^k p^{n-k}$. A pumping station that needs at least 10 of its 12 pumps can compute how often it meets demand.
 
+For the 12-pump station in Lab 6, with each pump unavailable 10 % of the time, the sum over 10, 11 and 12 available pumps gives 0.889. A shared maintenance crew or a single power feed breaks the independence assumption, so the real figure is lower. Adding a thirteenth pump raises the result to about 0.966, which is the kind of comparison a capital request needs.
+
 ### 12.4 Describing data
 
 Times to detect and recover from incidents are **skewed**: most are short, a few are very long. The **mean** is pulled up by the long tail; the **median** (middle value) is not; **percentiles** (the 90th percentile, p90) describe the tail. Report median and p90 together, with the sample size (Chapter 29, Lab 12).
+
+Lab 12 shows the effect: its mean time to detect is 27.2 hours while the median is 4.0.
+
+For a board, the sentence "half of incidents were detected within 4 hours; one in ten took more than about 56" carries more information than any single average.
 
 ### 12.5 Worked example and Lab 6 (synthetic)
 
@@ -956,6 +1012,8 @@ Fewer than 1 alert in 11 is real; analysts face about 200 false alerts a day. A 
 - Reporting a mean for skewed times without the median and tail.
 - Treating estimated inputs as exact; the outputs inherit their uncertainty.
 
+Lab 6 gives each a number: 95 % detection still yields a 0.087 chance that an alert is real; two generators sharing fuel fail together far more often than 0.05 squared (EX024); the 27.2-hour mean detection time in Lab 12 describes no incident; and the 0.002 daily backup failure rate is itself an estimate, so the 0.518 yearly figure inherits its uncertainty.
+
 ### Exercises — chapter 12
 
 **EX023 — Change the base rate.** *Objective:* see how prior and false-positive rate drive alert value. *Inputs:* Lab 6. *Steps:* compute $P(\text{malicious}\mid\text{alert})$ for prior 0.01 and, separately, for prior 0.001 with FPR 0.001. Explain which change helps more and what it means operationally. *Expected evidence:* two values and an explanation. *Rubric:* 3 = ≈ 0.490 and ≈ 0.487 with an explanation that lowering FPR (tuning, enrichment) is the lever analysts control; 2 = values only; 1 = one value; 0 = none.
@@ -994,9 +1052,13 @@ Passwords are guessed, reused and phished. One-time codes sent by text or typed 
 
 In **role-based access control** (RBAC), permissions attach to roles ("scada-operator", "payments-approve") and people receive roles. Roles make reviews tractable: one checks fifty roles, not fifty thousand individual permissions. **Separation of duties** forbids certain combinations: the person who creates a payment must not approve it; the engineer who changes control logic should not also control the firewall that logs the change. Expressed with sets (Chapter 6), a **toxic combination** $T$ is violated when $T \subseteq \text{roles}(u)$.
 
+In Lab 7, the two TOXIC sets encode exactly these rules.
+
 ### 13.4 The account life cycle and reviews
 
 Accounts are created when people join (**joiner**), changed when they move (**mover**) and removed when they leave (**leaver**). Failures accumulate at every step: movers keep old roles ("privilege creep"), leavers' accounts linger, vendors' accounts are created for a project and never removed, and shared operator accounts make actions untraceable. An **access review** compares accounts with an authoritative source (the HR system, the vendor contract register) and with usage.
+
+Lab 7 shows each failure: *ben* left but kept his account, *vendorx* has no HR owner and has not logged in for 304 days, and *ops1* is shared. Usage data matters as much as HR status: *dev* is active in HR but dormant for 214 days in a privileged role.
 
 ### 13.5 Worked example and Lab 7 (synthetic)
 
@@ -1046,6 +1108,8 @@ Actions: disable *ben* now (leaver); remove one of *chloe*'s payment roles; remo
 - Removing shared accounts in a control room without a workable alternative, so staff share passwords instead.
 - Forgetting service and vendor accounts, which have no HR record.
 
+In Lab 7 the script confirms that *ana*'s account is "ok" only in the sense that she is active and not dormant; whether she still needs `scada-operator` needs her manager. Removing *ops1* outright would lead the control room to share one person's password, which is worse. And *ops1* and *vendorx* both show "no HR owner", which is the signal that service and vendor accounts need a different authoritative source, such as the contract register.
+
 ### Exercises — chapter 13
 
 **EX025 — Design the roles.** *Objective:* apply least privilege and separation of duties. *Inputs:* CEDC needs call handlers, dispatchers, supervisors, a CAD administrator and a vendor support engineer. *Steps:* define five roles with key permissions and two toxic combinations. *Expected evidence:* role table and combinations. *Rubric:* 3 = sensible least-privilege roles, toxic pairs justified (e.g. CAD admin + audit-log admin; vendor support + permanent access); 2 = roles without combinations; 1 = vague; 0 = none.
@@ -1076,6 +1140,8 @@ After this chapter you can (1) explain the difference between security and priva
 
 Security protects systems and information from unauthorised access, change and loss. **Privacy** concerns whether the processing of information about people — even authorised processing — is appropriate, proportionate and fair. A perfectly secure hospital database can still violate privacy if it is used for a purpose patients were never told about. The [NIST Privacy Framework](https://www.nist.gov/privacy-framework) treats privacy risk as arising from data processing itself, overlapping with but distinct from cybersecurity risk.
 
+CT's clone detection is the example: secure storage of two years of taps would still be a privacy problem.
+
 ### 14.2 Principles
 
 The EU General Data Protection Regulation sets out principles that are widely mirrored elsewhere: lawfulness, fairness and transparency; purpose limitation; data minimisation; accuracy; storage limitation; integrity and confidentiality; and accountability ([Regulation (EU) 2016/679, Article 5](https://eur-lex.europa.eu/eli/reg/2016/679/oj)). Health data is a **special category** requiring additional conditions. You do not need to become a lawyer, but you must recognise when a design question is also a data-protection question and involve the organisation's data-protection officer — and you must never present this book's summary as legal advice for a specific case.
@@ -1088,6 +1154,8 @@ Critical services hold obvious personal data (patient records, bank accounts, em
 
 Security monitoring collects data about people by design. Privacy-protective practice: collect what the detection purpose needs, not everything available; restrict access to raw logs; set retention periods; pseudonymise where analysis does not need names; document the purpose and lawful basis; and, in an incident, share indicators (addresses, file hashes) rather than personal data where possible. During a breach involving personal data, notification duties may apply on short timescales, so incident plans include the data-protection officer from the start.
 
+CT's revised design applies four of these: 30-day detail, keyed pseudonyms, two named analysts and a stated purpose.
+
 ### 14.5 Worked example: CT ticketing analytics (synthetic)
 
 **This case is synthetic.** Calder Transit's security team wants to detect cloned transit cards by looking for the same card used at two stations too far apart in too short a time. The proposed design copies every card tap (card ID, station, time) for two years into the security analytics platform. A privacy review asks: is two years needed? (Clone detection needs minutes to days; retain full detail for 30 days, then aggregate.) Is the card ID needed in clear? (A keyed pseudonym suffices for matching; only confirmed cases are re-identified, by the fraud team.) Who can query it? (Two named analysts, logged.) Is passenger travel history being created as a side effect? (Yes — which is why the design limits retention and access.) The revised design meets the detection purpose with a fraction of the privacy risk.
@@ -1096,6 +1164,8 @@ Security monitoring collects data about people by design. Privacy-protective pra
 
 Choose one service you use (a transit card, a smart meter, a hospital app). From its public privacy notice, list the personal data collected, the stated purposes and retention. Identify one data item whose purpose is unclear and draft a question you could send the provider.
 
+Notice whether the notice states retention in days or years, or only "as long as necessary"; the latter is a question worth asking. Note whether security monitoring is listed as a purpose at all. Draft your question politely and specifically, for example asking how long journey-level data is kept before aggregation and who can access it.
+
 ### 14.7 Common errors and limits
 
 - "We are secure, therefore we are compliant."
@@ -1103,6 +1173,8 @@ Choose one service you use (a transit card, a smart meter, a hospital app). From
 - Calling pseudonymised data anonymous.
 - Forgetting staff data in logs.
 - Giving legal conclusions without the organisation's legal and data-protection advisers.
+
+Each appears in this chapter's examples. CT's original two-year tap copy was secure and still disproportionate. "In case it is useful" is how the full card ID ended up in the analytics platform. Keyed pseudonyms are reversible by the fraud team, so they are not anonymous. CVH's access-monitoring proposal in EX027 logs staff names, which is staff personal data. And none of these designs should be called lawful without the data-protection officer.
 
 ### Exercises — chapter 14
 
@@ -1142,6 +1214,8 @@ A **measurement** is a value obtained by a defined procedure (restore time in mi
 
 Most security evidence is uncertain: small samples (Chapter 12), estimates (Chapter 1), proxies. **Sensitivity analysis** asks how much the decision changes when an uncertain input changes. If a recommendation holds across the plausible range, the evidence is adequate for that decision even if imprecise. If it flips, either gather better evidence on that input or make the decision robust (choose the option that is acceptable across the range). This is a practical antidote to both false precision and paralysis.
 
+Lab 1 is the model: B stays ahead when any one probability is halved or doubled.
+
 ### 15.4 Worked example: is CEDC's dispatch restorable? (synthetic)
 
 **This case is synthetic.** CEDC's board asks: "Can we restore computer-aided dispatch within four hours after ransomware?" Available evidence:
@@ -1159,6 +1233,8 @@ Assessment: no evidence demonstrates the *claim* — a restore of the whole disp
 
 Take one claim about a service you use ("my phone backs up my photos"). List the evidence you have, classify each item by type, source, recency and independence, and design one test that would demonstrate the claim. Do not run anything on systems you do not own.
 
+For a phone backup, the strongest test is a restore of one photo to another device you own, timed, with the date recorded. A backup app's "last backup: today" is a measurement of the backup, not of the restore.
+
 ### 15.6 Common errors and limits
 
 - Treating backup success as restore evidence.
@@ -1166,6 +1242,8 @@ Take one claim about a service you use ("my phone backs up my photos"). List the
 - Denominators that silently exclude the hardest cases.
 - Ignoring the interest of the evidence's source.
 - Demanding precision a decision does not need, or accepting confidence it has not earned.
+
+CEDC's evidence table shows the first: 362 of 365 successful jobs say nothing about restoring the application. The second appears when a team reports number of backup jobs instead of tested restores. The third is the patch metric with hard systems left out. The fourth is the vendor's undated "under 3 hours". The fifth cuts both ways: the board does not need minutes, but it cannot accept "probably fine".
 
 ### Exercises — chapter 15
 
@@ -1209,6 +1287,8 @@ Critical-service operators commonly separate: the **enterprise** zone (email, of
 
 Vendors and engineers need remote access; uncontrolled remote access is one of the most common paths into OT. A defensible pattern: access terminates on a **jump host** in the DMZ, never directly in the control zone; **phishing-resistant multi-factor** authentication; **per-session approval** by the operator on shift for vendors; **time-limited** accounts; **session recording**; and an **off switch** the control room can use. Each element answers a specific failure.
 
+CPN's redesign uses every element; the remaining risk is the approved session itself.
+
 ### 16.5 Worked example: CPN's remote access (synthetic)
 
 **This case is synthetic.** CPN's current design: the internet-facing VPN-G gateway (Chapter 5) places users directly on the control network; three vendors have permanent accounts; passwords only. Redesign: VPN-G upgraded and moved to terminate on a DMZ jump host; vendor accounts disabled by default and enabled per ticket by the control-room supervisor for up to four hours; phishing-resistant MFA for staff; sessions recorded on a server the vendors cannot reach; a physical switch in the control room that disables the remote-access conduit. Residual risk, stated: an approved vendor session is still trusted during its window; recording supports detection and accountability but does not prevent misuse in real time.
@@ -1217,6 +1297,8 @@ Vendors and engineers need remote access; uncontrolled remote access is one of t
 
 Draw the Calder Water architecture from Chapter 7 with its zones and the three allowed conduits. Annotate each conduit with the principle it serves and the control enforcing it. Mark the one component whose compromise would hurt most and explain why.
 
+In CW's architecture each conduit serves a principle: the corporate-to-DMZ HTTPS view applies least privilege, the DMZ collector's OPC UA read applies complete mediation at the conduit, and the SCADA-to-field Modbus polling relies on fail-safe defaults by denying everything else. The SCADA server is a strong candidate for the component whose compromise hurts most, because it can both see and command every field controller.
+
 ### 16.7 Common errors and limits
 
 - Architecture diagrams that show intended, not actual, connections.
@@ -1224,9 +1306,11 @@ Draw the Calder Water architecture from Chapter 7 with its zones and the three a
 - Layers that share administrators, credentials or management tools.
 - Applying zero trust slogans to devices that cannot authenticate.
 
+In CW's case, the Lab 4 RDP connection from corporate directly into control is the first error: a path the diagram does not show. A dual-homed engineering laptop is the usual cause. CVH's management server that administers firewalls, endpoint protection and backups with one account (EX032) is the third. The fourth applies to RTUs and PLCs.
+
 ### Exercises — chapter 16
 
-**EX031 — Principle review.** *Objective:* use principles as review lenses. *Inputs:* CPN's original remote-access design in §16.5. *Steps:* name four Saltzer–Schroeder principles it violates and how. *Expected evidence:* four principle–violation pairs. *Rubric:* 3 = four correct (least privilege, fail-safe defaults, complete mediation, separation of privilege, or least common mechanism) with specific explanation; 2 = three; 1 = one or two; 0 = none.
+**EX031 — Principle review.** *Objective:* use principles as review lenses. *Inputs:* CPN's original remote-access design in this chapter's worked example. *Steps:* name four Saltzer–Schroeder principles it violates and how. *Expected evidence:* four principle–violation pairs. *Rubric:* 3 = four correct (least privilege, fail-safe defaults, complete mediation, separation of privilege, or least common mechanism) with specific explanation; 2 = three; 1 = one or two; 0 = none.
 
 **EX032 — Common mode.** *Objective:* find hidden shared dependencies. *Inputs:* CVH has segmentation firewalls, endpoint protection and backups — all administered from one management server using one domain-administrator account. *Steps:* explain the common-mode risk and propose two changes. *Expected evidence:* explanation and changes. *Rubric:* 3 = compromise of the account/server disables all three layers; changes such as separate admin tiers/credentials and offline backups; 2 = one change; 1 = vague; 0 = none.
 
@@ -1257,6 +1341,8 @@ A **cryptographic hash function** such as SHA-256 maps any input to a fixed-size
 ### 17.2 What control systems need
 
 For a breaker command, secrecy is rarely the point; **authenticity** (it came from the control centre), **integrity** (it was not altered) and **freshness** (it is not an old command replayed) are. A MAC provides the first two. Freshness needs a **sequence number** or timestamp inside the authenticated message, and a receiver that rejects anything not newer than the last accepted value. Without freshness, an attacker who recorded yesterday's valid "OPEN" can replay it today.
+
+Lab 8 demonstrates both: the altered breaker name fails the MAC, and sequence 41 is rejected once it has been accepted.
 
 ### 17.3 Keys are the hard part
 
@@ -1313,6 +1399,8 @@ The altered breaker name fails verification; the replayed sequence number is rej
 - One shared key for every device.
 - Believing encryption makes a compromised endpoint trustworthy.
 
+In Lab 8 a plain SHA-256 of the command would let anyone who changes it compute a new digest. The MAC without `seq=` would accept yesterday's OPEN. The lab uses `hmac.compare_digest` rather than `==`. One key on every RTU means one leaked key compromises the network. And encryption would not help if the control-centre HMI itself sends forged commands.
+
 ### Exercises — chapter 17
 
 **EX033 — Choose the primitive.** *Objective:* match needs to tools. *Inputs:* (a) firmware updates for CVH infusion pumps from the manufacturer; (b) commands from CPN's control centre to its own RTUs; (c) patient records on a lost laptop; (d) detecting edits to an audit log. *Steps:* choose a primitive for each and justify. *Expected evidence:* four choices. *Rubric:* 3 = signatures, MAC with freshness (or an authenticated channel), symmetric encryption with key protection, hash chain with external anchor; 2 = one wrong; 1 = two wrong; 0 = none.
@@ -1347,6 +1435,8 @@ After this chapter you can (1) turn a topic into a researchable question; (2) ch
 
 **Descriptive** studies say what is (an inventory survey; a count of advisories by sector). **Comparative** studies contrast groups or options using the same criteria. **Experimental** studies change one thing deliberately and measure the effect, ideally against a control (the detector threshold experiment of Chapter 27). **Case studies** examine one or a few cases in depth, using several sources; they explain how and why, but generalise cautiously. Choose the design that the question needs, not the one that seems most scientific.
 
+For the CEDC backup question, comparative is the fitting design: three strategies scored on the same criteria. An experiment would compare drills under controlled conditions, and a case study would examine one past restore in depth. Each answers a different question, so choose the design after writing the question.
+
 ### 18.3 Literature, systematically
 
 Searching for sources is itself a method and should be recorded: databases and sites searched, search terms, date, inclusion and exclusion criteria, numbers found and kept. Distinguish **primary** sources (an agency advisory, a regulator's report, a peer-reviewed study) from **secondary** (a news article or blog summarising them). Prefer primary, cite what you read (Chapter 4), and record why you excluded what you excluded so that someone else could repeat the screening. A simple spreadsheet — source, type, date, relevance, key finding, limits — is enough.
@@ -1363,6 +1453,8 @@ Four classic threats. **Construct validity**: does the measure capture the conce
 
 Write three research questions on one topic of your choice in critical-sector security: one descriptive, one comparative and one case-study question. For each, name the population, variables, time frame and the type of evidence you would need.
 
+For example, on unsupported medical devices: descriptive, "how many CVH clinical devices were past end of support in 2026?"; comparative, "which of three approaches reduces exposure most within a budget?"; case study, "how did one hospital manage its imaging workstations during a replacement delay?" Note for each whether the evidence is obtainable under authorisation.
+
 ### 18.7 Common errors and limits
 
 - Questions too broad to answer or too narrow to matter.
@@ -1370,6 +1462,8 @@ Write three research questions on one topic of your choice in critical-sector se
 - Over-generalising from one case.
 - Mistaking correlation in incident data for cause.
 - Collecting data about people or real systems without ethical approval and authorisation (Chapter 10).
+
+The CEDC backup plan avoids these by naming the population (CEDC's dispatch service), limiting the claim to three strategies, recording sources, and treating three drills as a small sample. A study of "ransomware in hospitals" would fail the first test. A student who interviewed CEDC administrators without consent would fail the fifth whatever the quality of the analysis.
 
 ### Exercises — chapter 18
 
@@ -1411,6 +1505,8 @@ The **functions view** is often more useful than the sector view. Calder Valley 
 
 Five features recur across sectors: **physical consequences** (harm to people and environment, not only data); **long-lived technology** (Chapter 2); **interdependency** (Chapter 22); **regulation and public accountability**; and **mixed ownership** — most infrastructure is privately operated but publicly relied upon, so incentives to invest in rare-event protection are weak. These features explain why "apply the enterprise IT playbook" fails and why sector-specific knowledge matters.
 
+At Calder these features are concrete: CVH's harm is physical (patients), CPN's RTUs last decades, the substation feeds four other services (Lab 3), each operator answers to its own regulator, and most are private companies whose failure harms county residents who are not their customers.
+
 ### 19.4 Worked example: profiling CEDC (synthetic)
 
 **This case is synthetic.** A sector profile of the County Emergency Dispatch Centre: *function* — receive emergency calls and dispatch ambulances, fire and police; *harm from loss* — delayed response within minutes; *dependencies* — telecom (calls and CAD data), power (UPS and generator), CAD vendor cloud services, staff; *regulatory context* — public-service duties and, depending on jurisdiction, cybersecurity obligations for essential entities (to be verified with counsel); *lenses* — risk: ransomware on CAD is the top scenario; resilience: the paper-and-radio fallback must sustain dispatch for hours; systems: a 2 a.m. switchover to paper is a human-factors problem as much as a technical one. The profile does not yet say what to do; it says what questions matter.
@@ -1419,12 +1515,16 @@ Five features recur across sectors: **physical consequences** (harm to people an
 
 Choose one real sector in your country. From official sources, find: who designates it as critical, which law or framework sets its cybersecurity obligations, which agency supervises it and which public guidance applies. Record each source with its date. Do not assume the EU, US or UK model applies elsewhere.
 
+Record the jurisdiction and the date of each source, because definitions change: the EU replaced its earlier network-security directive with NIS2, and national transposition dates differ. Where a framework applies only above a size threshold, note the threshold and whether the operator you chose meets it.
+
 ### 19.6 Common errors and limits
 
 - Equating "critical infrastructure" with "OT".
 - Reading a sector list as a list of independent sectors.
 - Using one lens and ignoring what the others reveal.
 - Stating legal obligations without checking the current text and jurisdiction.
+
+CEDC shows the first error: a dispatch centre has almost no OT and is still critical. Lab 3 shows the second: the substation, telecom and water entries depend on each other. Using only the risk lens on CEDC would miss the 2 a.m. paper-switchover problem. And the CEDC profile deliberately leaves its legal obligations "to be verified with counsel".
 
 ### Exercises — chapter 19
 
@@ -1456,6 +1556,8 @@ After this chapter you can (1) summarise six public cases that shaped the field 
 
 For each case, record: **date and sector**; **what happened to the service** (scope, duration, people affected); **initial access and spread** only as the source describes; **response**; **source type** (government advisory, audit report, peer-reviewed analysis, company statement, journalism); and **what remains uncertain**. Early reports are often wrong; later reports often correct them. A good analyst cites both.
 
+For Oldsmar this record has two dates: the 2021 advisory and the 2023 statement that revised it. Both belong in the record, with the advisory's account labelled as superseded rather than deleted.
+
 ### 20.2 Six cases
 
 **Ukraine power distribution, December 2015.** CISA's alert describes coordinated attacks on three regional distribution companies that caused outages affecting approximately 225,000 customers, with remote operation of breakers, destruction of some systems and disruption of call centres; power was restored by switching to manual operation ([CISA IR-ALERT-H-16-056-01](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01); see also the [E-ISAC/SANS analysis](https://nsarchive.gwu.edu/document/15331-sans-and-electricity-information-sharing-and)). *Lesson:* manual fallback and staff who can operate without automation were decisive.
@@ -1481,6 +1583,8 @@ For each case, record: **date and sector**; **what happened to the service** (sc
 | Colonial 2021 | Ransomware on IT | Precautionary OT shutdown | IT–OT business dependency |
 | CrowdStrike 2024 | Faulty update | Cross-sector outage | Shared-dependency concentration |
 
+The table compresses each case into one lesson so they can be compared; it is not a summary of what happened. Read across the "Cause" column: two of the six involve no targeted attack on the control system at all.
+
 ### 20.4 Worked example: lessons for CVH (synthetic application)
 
 **The application is synthetic; the cases are cited above.** For Calder Valley Hospital the transferable lessons are: (1) rehearse operation without IT (paper processes, as Ukraine's operators did without automation); (2) inventory and isolate unsupported devices (WannaCry); (3) confirm that a BMS compromise cannot stop theatre ventilation's local safety controls (TRITON's lesson about independent layers); (4) govern remote access to the BMS (Oldsmar); (5) map which clinical processes depend on business IT such as patient administration (Colonial); and (6) plan for mass failure of a shared endpoint product (CrowdStrike).
@@ -1492,9 +1596,11 @@ For each case, record: **date and sector**; **what happened to the service** (sc
 - Treating every case as an attack.
 - Turning a case study into an attack recipe.
 
+Common examples: claiming Oldsmar was "a hack" without the 2023 revision; repeating outage durations not in the cited source; calling CrowdStrike an attack; or describing Stuxnet's techniques when the lesson is the failed assumption. Each of the six summaries here stays at the level its source supports, and EX039 asks you to check one.
+
 ### Exercises — chapter 20
 
-**EX039 — Primary source check.** *Objective:* separate source from repetition. *Inputs:* one case from §20.2. *Steps:* read the cited source and list three facts it states, one commonly repeated claim it does not state (find one in a news article or blog), and how you would phrase the case for a report. *Expected evidence:* list and phrasing. *Rubric:* 3 = accurate facts with locations in the source, an unsupported claim identified, careful phrasing; 2 = facts only; 1 = facts from secondary sources; 0 = none.
+**EX039 — Primary source check.** *Objective:* separate source from repetition. *Inputs:* one of the six cases in this chapter. *Steps:* read the cited source and list three facts it states, one commonly repeated claim it does not state (find one in a news article or blog), and how you would phrase the case for a report. *Expected evidence:* list and phrasing. *Rubric:* 3 = accurate facts with locations in the source, an unsupported claim identified, careful phrasing; 2 = facts only; 1 = facts from secondary sources; 0 = none.
 
 **EX040 — Cross-sector lesson.** *Objective:* transfer a lesson. *Inputs:* Colonial Pipeline. *Steps:* apply its lesson to Calder Transit: which business IT systems could force a precautionary stop of rail operations, and what could prevent that? *Expected evidence:* two dependencies and two measures. *Rubric:* 3 = e.g. ticketing/revenue, crew scheduling, passenger information; measures such as pre-agreed degraded-operation rules and separating operational from business dependencies; 2 = one each; 1 = generic; 0 = none.
 
@@ -1540,12 +1646,16 @@ Operators care about services, not levels. Model a service as a chain of functio
 
 Draw the control loop and layered model for one Calder service other than water or power (rail signalling or hospital theatre ventilation). Label each component with its level, which of view/control/protection it supports, and one degraded mode.
 
+For theatre ventilation, the sensor might be a duct pressure or air-change sensor at level 0, the BMS controller at level 1, the estates workstation at level 2, and the BMS server at level 3. A degraded mode is local manual control of the air-handling units. Mark which component supports view, control or protection; a hard-wired minimum-airflow interlock, if present, is protection.
+
 ### 21.6 Common errors and limits
 
 - Treating the layered model as a description of real traffic.
 - Ignoring safety systems or assuming they are always independent.
 - Modelling assets without the service they support.
 - Assuming loss of SCADA means loss of the service.
+
+CPN's feeder model shows the first two: the relay sits at level 1 and acts without SCADA, but if it were networked with the HMI its independence would need evidence. The third error would list RTUs without saying they serve feeder restoration. The fourth ignores the degraded mode of dispatching a crew when an RTU link fails.
 
 ### Exercises — chapter 21
 
@@ -1616,6 +1726,10 @@ Interpretation: the shortest autonomies set the early story — pumps stop at on
 
 Every number above is an operator's claim. Generator autonomy depends on fuel actually in the tank, starting reliability (Chapter 12, EX024) and load. Battery autonomy degrades with age. Record the evidence behind each autonomy — a test, a design figure, an estimate — and run the model with pessimistic values. A dependency model is only as good as its least-checked number.
 
+In Lab 9, halving every autonomy (EX043) moves water treated storage into the 6-hour loss list.
+
+For CEDC's generator, the evidence would be the last load test date and the fuel level on the day of the survey.
+
 ### 22.5 Common errors and limits
 
 - Treating one inventory source as complete.
@@ -1623,6 +1737,8 @@ Every number above is an operator's claim. Generator autonomy depends on fuel ac
 - Taking autonomy figures from design documents without tests.
 - Forgetting second-order dependencies of backups (fuel, staff, roads).
 - Active scanning of OT without authorisation and operational agreement.
+
+Lab 9 illustrates the first three: a design autonomy of 72 hours for the hospital assumes a full tank, and exchange A's 4 hours assumes healthy batteries. The fourth is the refuelling question behind the dispatch centre's 24 hours. The fifth is why the CRP's inventory relied on passive observation and operator statements rather than scanning.
 
 ### Exercises — chapter 22
 
@@ -1670,6 +1786,8 @@ For critical services, likelihood is often the least knowable input: adversaries
 
 Take Calder Transit's light-rail signalling. Write one unacceptable consequence, three paths to it (at least one non-malicious), and one engineering mitigation that removes or bounds the consequence. Then rate the same scenario on a 5×5 matrix and compare what each approach told you.
 
+For signalling, an unacceptable consequence might be "two trains authorised into the same block". Paths include a corrupted interlocking configuration after maintenance (non-malicious), a forged command from a compromised control workstation, and a failed track circuit misread as clear. An engineering mitigation is the interlocking's own safety logic, independent of the control workstation. On a 5×5 matrix the same scenario may score 5 for impact and 1 for likelihood, giving a cell that understates it.
+
 ### 23.6 Common errors and limits
 
 - Multiplying ordinal labels as if they were measurements.
@@ -1677,6 +1795,8 @@ Take Calder Transit's light-rail signalling. Write one unacceptable consequence,
 - Treating "monitor" as a mitigation.
 - Consequence-first analysis that only lists consequences and never maps paths or mitigations.
 - Ignoring non-malicious paths to the same consequence.
+
+The chlorine example shows the third error directly: the matrix result "monitor" left the dangerous outcome possible. The first error produced its score of 10. The consequence analysis avoided the fourth by naming paths and mitigations, and the fifth by listing operator error and false sensor readings as paths beside compromise.
 
 ### Exercises — chapter 23
 
@@ -1720,6 +1840,8 @@ A control is only valuable against something. Build a **mapping** from scenarios
 
 Some controls standard in IT are risky or impossible in OT: endpoint agents that consume controller resources, automatic patching, active scanning, account lockout on an operator HMI during an emergency (locking out the operator may be more dangerous than the attacker). Alternatives include passive network monitoring, application allowlisting on stable workstations, read-only data diodes for one-way flows, physical key switches for programming modes, and procedural controls tied to the operator's shift log.
 
+CVH's BMS map in this chapter applies these alternatives.
+
 ### 24.5 Worked example: CVH BMS control map (synthetic)
 
 **This case is synthetic.**
@@ -1738,6 +1860,8 @@ The map turns a vague "BMS is a risk" into two specific actions: an engineering 
 - Counting controls instead of mapping them to scenarios.
 - Relying solely on detection for consequences that need prevention.
 - Importing IT controls into OT without considering operational safety.
+
+The CVH BMS map avoids each: it counts no controls, it maps them to three scenarios, it adds an engineering interlock where only detection existed, and it rejects IT controls such as automatic patching of the BMS controller. A framework score of "Protect: implemented" would have told the hospital nothing about theatre airflow.
 
 ### Exercises — chapter 24
 
@@ -1769,6 +1893,8 @@ After this laboratory you can (1) combine inventory, network-flow, vulnerability
 
 This laboratory is a contained assessment of the **synthetic** Calder operators using only the book's offline labs. Its rules of engagement (Chapter 10, practical activity) apply: your own computer, no network access to real systems, no real data. The skill being assessed is not running code — that is the easy part — but **assembling evidence into a defensible judgement** and documenting it so that another student could reproduce it.
 
+Your RoE from Chapter 10's practical activity is the authorisation document for this laboratory.
+
 ### 25.2 The task
 
 You are an intern for the County Resilience Partnership. Produce a 1,500-word **assessment note** answering: "Across the evidence available, what are the three highest-priority security improvements for Calder's operators, and how confident are we?" Use:
@@ -1778,9 +1904,13 @@ You are an intern for the County Resilience Partnership. Produce a 1,500-word **
 3. **Lab 5** (CPN advisories): vulnerable assets, ordered by exploitation and exposure.
 4. **Lab 7** (access review): orphaned, dormant, shared and toxic accounts.
 
+The question asks for three priorities across four operators, which forces comparison: a CW conduit violation and a CPN gateway flaw must be ranked against each other by consequence, not reported in separate lists.
+
 ### 25.3 Method and reproducibility
 
 Record for each lab: the file name and a SHA-256 hash of the script you ran (`python3 -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())" lab05.py`), the Python version, the exact output and any change you made. Reproducibility is evidence: a reader who reruns your script and gets the same output can trust your findings section without trusting you ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)).
+
+Hash the script you actually ran, after any edits.
 
 ### 25.4 Structure of the note
 
@@ -1791,6 +1921,8 @@ Record for each lab: the file name and a SHA-256 hash of the script you ran (`py
 5. **Recommendations** — each mapped to findings, with control type (Chapter 24) and owner.
 6. **Limits** — sample size, synthetic data, unverified claims.
 7. **Appendix** — hashes, versions, outputs.
+
+Keep findings and analysis apart, as the format requires.
 
 ### 25.5 Worked example: one priority, fully argued (synthetic)
 
@@ -1806,6 +1938,8 @@ Record for each lab: the file name and a SHA-256 hash of the script you ran (`py
 | Limits and confidence | Specific and honest | Generic | Token | Absent |
 | Reproducibility | Hashes, versions, outputs | Outputs only | Partial | None |
 
+The rubric rewards the same habits as the worked priority: every finding traced to output, consequences compared across operators, owners and dates on recommendations, honest limits and a reproducible appendix. A note that scores 3 on evidence but 1 on prioritisation has listed findings without judging them.
+
 ### 25.7 Common errors and limits
 
 - Listing every finding instead of prioritising.
@@ -1813,9 +1947,11 @@ Record for each lab: the file name and a SHA-256 hash of the script you ran (`py
 - Mixing facts and interpretations in the findings section.
 - Claiming certainty that synthetic data cannot provide.
 
+A note that lists all six Lab 4 flows, all five unsupported devices and every Lab 7 account has made the first error. Recommending MFA for CW without a finding about CW accounts is the second. Writing "the RDP connection is an intruder" in findings is the third. Claiming high confidence about real-world exploitation from synthetic data is the fourth.
+
 ### Exercises — chapter 25
 
-**EX049 — Priorities 2 and 3.** *Objective:* complete the assessment. *Inputs:* Labs 2, 4, 7. *Steps:* write priorities 2 and 3 in the format of §25.5. *Expected evidence:* two argued priorities. *Rubric:* use §25.6; 3 = e.g. CW corporate→control RDP and control→internet flows investigated and closed (Lab 4), and leaver/toxic/vendor accounts (Lab 7) or isolation of unsupported clinical devices (Lab 2), each with consequence reasoning, owner and confidence; lower scores per rubric.
+**EX049 — Priorities 2 and 3.** *Objective:* complete the assessment. *Inputs:* Labs 2, 4, 7. *Steps:* write priorities 2 and 3 in the format of the worked priority above. *Expected evidence:* two argued priorities. *Rubric:* use the laboratory's assessment rubric; 3 = e.g. CW corporate→control RDP and control→internet flows investigated and closed (Lab 4), and leaver/toxic/vendor accounts (Lab 7) or isolation of unsupported clinical devices (Lab 2), each with consequence reasoning, owner and confidence; lower scores per rubric.
 
 **EX050 — Reproducibility check.** *Objective:* verify a peer's work. *Inputs:* a classmate's appendix (or your own, exchanged). *Steps:* rerun each script, compare hashes and outputs, and write a 100-word verification statement. *Expected evidence:* the statement. *Rubric:* 3 = hashes and outputs compared, any discrepancy explained (e.g. edited script, Python version); 2 = outputs only; 1 = statement without rerunning; 0 = none.
 
@@ -1861,6 +1997,8 @@ A **tabletop exercise** walks a team through a scenario in discussion, step by s
 | STPA | Control structures, human and software interactions | Effortful; needs process knowledge |
 | Tabletop | Plans, roles, communication | Discussion is not execution |
 
+For CEDC, the table suggests STPA for dispatch control and a tabletop for the paper fallback, as the chapter does; a risk assessment then ranks the resulting work.
+
 ### 26.5 Worked example: STPA for CEDC dispatch (synthetic)
 
 **This case is synthetic.** Loss: delayed emergency response. Hazard: an ambulance is not dispatched to a life-threatening call within target time. Control structure: call handler → CAD → dispatcher → ambulance crew (via radio and mobile data terminals); feedback from vehicle location system to CAD. Control action: "assign nearest available ambulance". UCAs: *not provided* — CAD queue frozen after a failed update; *provided when unsafe* — CAD assigns a unit shown "available" because location feedback is stale or spoofed; *too late* — manual fallback adopted only after 20 minutes because nobody owns the decision; *stopped too soon* — a dispatcher cancels an assignment after a duplicate-call merge error. Each UCA leads to requirements: a CAD freeze alarm, staleness indicators on vehicle locations, a named fallback decision owner with a 5-minute trigger, and confirmation before cancelling a high-priority assignment. Note that two UCAs involve no attacker at all.
@@ -1871,6 +2009,8 @@ A **tabletop exercise** walks a team through a scenario in discussion, step by s
 - STPA reduced to a list of component failures.
 - Tabletops with no objectives or follow-up.
 - Picking the most impressive method rather than the one the question needs.
+
+The CEDC STPA avoided the second error by naming unsafe control actions, two without any attacker. A STRIDE review of the CW historian flow without marking the DMZ-to-control trust boundary would make the first. A tabletop without the objective "decide on paper dispatch" makes the third. And choosing STPA to impress when the question is "which backup strategy" makes the fourth.
 
 ### Exercises — chapter 26
 
@@ -1905,6 +2045,8 @@ After this chapter you can (1) distinguish verification ("built right") from val
 ### 27.2 Kinds of test
 
 **Configuration review** compares settings with a baseline. **Functional tests** exercise the control with expected and forbidden inputs (Chapter 8's boundary tests). **Flow tests** confirm that disallowed paths are blocked (Chapter 7, under authorisation). **Restore drills** verify recovery controls end to end (Chapter 15). **Detection tests** replay labelled synthetic or benign-but-suspicious activity to see whether monitoring alerts. In OT, testing on the live process is restricted; use test benches, offline replicas or planned windows agreed with operations.
+
+For CW's corporate-to-control rule, a flow test from an authorised corporate host to control addresses in a planned window is functional; a configuration review alone is not.
 
 ### 27.3 Evaluating detectors
 
@@ -1949,6 +2091,8 @@ At 0.5 the team catches 23 of 25 but wades through 215 false alerts; at 0.7 near
 - Evaluating on data that resembles training data more than reality.
 - Verifying in a lab and claiming validation in production.
 
+Lab 10 shows the second error numerically: never alerting scores 99.5 % accuracy. Choosing 0.5 or 0.7 without saying what a missed attack or an extra 215 false alerts cost is the third. A firewall rule tested only from the lab replica is the fifth. A test that would report "blocked" because the test host was switched off is the first.
+
 ### Exercises — chapter 27
 
 **EX053 — Make it falsifiable.** *Objective:* design a meaningful test. *Inputs:* claim "the CW firewall prevents corporate users from reaching the control zone". *Steps:* design a verification test and a validation test, each with a result that would show the claim false, and the authorisation needed. *Expected evidence:* two test designs. *Rubric:* 3 = rule-level test from a corporate host to control addresses on all ports in a planned window, plus validation looking for alternative paths (dual-homed hosts, remote access, wireless) via configuration and flow review; authorisation stated; 2 = one test; 1 = non-falsifiable; 0 = none.
@@ -1983,6 +2127,10 @@ A **fault tree** starts from an undesired **top event** and decomposes it into c
 
 **Failure modes and effects analysis** works bottom-up: for each component, list ways it can fail (fails to start, fails open, gives false reading), the effect on the system, how it would be detected, and existing controls; then rank. FMEA finds single-component problems well and interactions poorly, which is why it pairs with STPA (Chapter 26) and fault trees.
 
+EX056 applies FMEA to CW's dosing pump and analyser.
+
+A row for CW's dosing pump reads: component dosing pump; mode runs at maximum rate; effect over-chlorination at the outlet; detection outlet residual analyser alarm; existing control hard-wired maximum pump rate.
+
 ### 28.3 Worked example and Lab 11 (synthetic)
 
 **This case is synthetic.** Top event at CVH: "hospital loses mains-quality power to critical loads". Physically, this needs a grid outage AND failure of the backup (generator fails to start OR fuel contaminated OR automatic transfer switch fails). Separately, the hospital's BMS can command the essential-supply panel; a compromise of the BMS could shed critical loads regardless of the grid.
@@ -2016,12 +2164,16 @@ Under these synthetic numbers the physical design is good: two independent failu
 
 When failures happen, a **blameless review** asks how the system allowed a reasonable person's action to cause harm, not who to punish. Reason's model of organisational accidents describes defences as layers with holes that occasionally align ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)). Ask: what did people know at the time; what made their action seem right; which defences were absent or bypassed; what will we change in the system? Blame suppresses reporting, and unreported near-misses are lost evidence.
 
+In the Lab 11 case, a blameless review of a lost-power event would ask why the BMS could shed critical loads at all.
+
 ### 28.5 Common errors and limits
 
 - Multiplying probabilities of events with common causes (Chapter 12).
 - Treating adversary actions as random failures.
 - FMEA without interactions; fault trees without the human.
 - Reviews that end with "human error" and retraining.
+
+Lab 11 assumes independence of generator failure and fuel contamination; EX024 shows how a shared fuel tank breaks that. The BMS path is the second error made explicit: 0.002 is not a property of the BMS. The third appears if an FMEA of the generator ignores the operator who must start it manually. A review ending "estates engineer error; retrain" is the fourth.
 
 ### Exercises — chapter 28
 
@@ -2061,6 +2213,10 @@ NIST's incident-response recommendations, revised in 2025, place response within
 
 Common measures are **time to detect** (TTD: first malicious or faulty activity to detection) and **time to recover** (TTR: detection to restored service). Their distributions are skewed (Chapter 12): most incidents are handled quickly; a few take days. Report **median**, **90th percentile** and **sample size**, and inspect the outliers individually — the long tail is where lessons live. Beware of incentives: a TTD target can encourage logging the "detection" time generously.
 
+Lab 12's 15 records show why: mean 27.2 hours, median 4.
+
+Inspect the 240-hour detection individually; it was a slow credential misuse.
+
 ### 29.4 Worked example and Lab 12 (synthetic)
 
 **This case is synthetic.** CRP members pooled 15 sanitised incident records from the last two years.
@@ -2090,12 +2246,16 @@ The mean time to detect (27.2 h) describes no real incident: half were detected 
 
 *CPN playbook, step 3 — suspected compromise of an engineering workstation:* (1) Security analyst informs the control-room supervisor; supervisor confirms no switching operation depends on the workstation now. (2) Supervisor authorises isolation; analyst isolates the workstation's network port, leaving it powered (to preserve memory). (3) Engineer checks controller configurations the workstation could have changed, comparing with the last known-good backup. (4) Analyst records times, decisions and authorisers in the incident log. Each step names who decides and why the order matters.
 
+Without step (1), isolation could interrupt a switching operation.
+
 ### 29.6 Common errors and limits
 
 - Security teams acting on OT without operations' authorisation.
 - Pulling power or wiping systems before evidence is preserved.
 - Reporting mean times for skewed data.
 - Playbooks that exist only on the systems the incident has disabled.
+
+The CPN playbook avoids the first two by having the supervisor authorise isolation and leaving the workstation powered. Lab 12 shows the third. The fourth is why CRP members keep printed copies of playbooks in each control room, since an incident may disable the document system that holds them.
 
 ### Exercises — chapter 29
 
@@ -2127,13 +2287,19 @@ After this laboratory you can (1) run a contained, two-part exercise — a facil
 
 **This scenario is synthetic.** At 02:10 on a winter night, Calder Water's control room reports that pump station PS2's level setpoint changed from 4.1 m to 2.0 m at 01:52. Nobody admits to the change. At 02:30, CPN reports a fault on Substation North that will take 6 hours to repair. The CEDC duty manager asks whether hospital water supply is at risk. Teams of four play CW operations, CW security, CPN control and CVH estates; a facilitator delivers injects.
 
+The scenario combines two events that each operator could handle alone.
+
 ### 30.2 Part A — tabletop (90 minutes)
 
 Objectives: (1) decide within 20 minutes whether to move PS2 to local control; (2) produce a consolidated cross-operator status for CEDC by 03:00; (3) decide what evidence to preserve. Injects: 02:40 — CW security finds a vendor remote session was active 01:45–01:58; 02:55 — CVH estates reports 72 h generator fuel but asks about water; 03:20 — a local journalist calls CW. Observers record decision times, who decided and on what evidence.
 
+Observers should note the minute each decision was made, by whom and on what evidence, so the after-action report can compare times with the objectives. The 20-minute objective for PS2 starts at 02:10.
+
 ### 30.3 Part B — evidence analysis (offline)
 
 Using Lab 8's hash-chain function, teams receive three files: the operator log, the anchored head from the separate anchor server, and the vendor-session record. They recompute the chain, find which entry (if any) was altered, and align it with the session times. Using Lab 9's autonomy model (Chapter 22) with the 6-hour outage, they state which services are lost and when, and whether hospital water depends on PS2. Every result must be reproducible: script hash, Python version, output.
+
+Lab 9 gives 10 hours of treated storage.
 
 ### 30.4 Worked example: the timeline and its limits (synthetic)
 
@@ -2151,6 +2317,10 @@ Interpretation: the setpoint change coincides with the vendor session, and the l
 
 Structure: objectives and whether met (with times); what went well; what did not; root causes (systemic, blameless — Chapter 28); improvement actions with owners and dates; evidence appendix. Distinguish **exercise artefacts** (things that happened only because it was an exercise) from real findings.
 
+In this scenario, the journalist call at 03:20 tests a real procedure; a facilitator's late inject is an exercise artefact. Improvement actions follow from root causes, such as unmanaged vendor remote access, not from individual errors.
+
+Each action needs a verification step, as EX060 asks.
+
 ### 30.6 Assessment rubric
 
 | Criterion | 3 | 2 | 1 | 0 |
@@ -2160,9 +2330,11 @@ Structure: objectives and whether met (with times); what went well; what did not
 | Cross-sector reasoning | Interaction identified and quantified | Identified | Single-sector | None |
 | Report | Actions owned and dated; artefacts separated | Actions vague | Narrative only | None |
 
+A team that restores the setpoint quickly but cannot say who decided scores 2 for decisions. A timeline whose 01:52 row is marked high confidence despite the altered log entry scores 1. Cross-sector reasoning earns 3 only if the shortened water autonomy is estimated, not just mentioned.
+
 ### Exercises — chapter 30
 
-**EX059 — Confidence grading.** *Objective:* justify evidence weights. *Inputs:* the timeline in §30.4. *Steps:* explain the confidence of each row and what additional evidence would raise the 01:52 row to high. *Expected evidence:* explanations. *Rubric:* 3 = system records high; altered log entry medium because the time and value of the original entry are unknown; raising it needs PLC/controller event logs, historian trend of the setpoint, vendor-side session recording; 2 = partial; 1 = assertions; 0 = none.
+**EX059 — Confidence grading.** *Objective:* justify evidence weights. *Inputs:* the worked timeline in this laboratory. *Steps:* explain the confidence of each row and what additional evidence would raise the 01:52 row to high. *Expected evidence:* explanations. *Rubric:* 3 = system records high; altered log entry medium because the time and value of the original entry are unknown; raising it needs PLC/controller event logs, historian trend of the setpoint, vendor-side session recording; 2 = partial; 1 = assertions; 0 = none.
 
 **EX060 — Improvement plan.** *Objective:* turn findings into actions. *Inputs:* the scenario. *Steps:* write five improvement actions with owner, date and how completion will be verified. *Expected evidence:* table. *Rubric:* 3 = e.g. per-session vendor approval and recording, setpoint change alarms with limits, anchor on separate team's system, cross-operator status template, joint exercise with CPN; each verifiable; 2 = actions without verification; 1 = vague; 0 = none.
 
@@ -2210,6 +2382,8 @@ Every operator runs software and hardware built by others, often through long ch
 | Failed assumption | View = reality | SIS independence | Risk bounded by own systems |
 | Generic control | Independent measurement, physical limits | Physical SIS controls, segregation | Staged updates, concentration mapping, degraded modes |
 
+Read the "Failed assumption" row first; it is the transferable part. Each generic control addresses that assumption rather than the specific technique.
+
 ### 31.4 Worked example: concentration at Calder (synthetic)
 
 **This case is synthetic.** The CRP surveys its members: CVH, CEDC and Calder Mutual all use the same endpoint-security product, configured for automatic updates; CEDC and CT use the same CAD/scheduling cloud region; CW and CPN use the same OT integrator with remote access to both. Single events that could hit several sectors at once: a faulty endpoint update (hospital, dispatch, bank simultaneously); a cloud-region outage (dispatch and transit); a compromise of the integrator (water and power). Recommendations: stagger endpoint updates (a small canary group first, critical dispatch consoles last); confirm CEDC's paper-and-radio fallback does not need the cloud; require per-session approval and separate credentials for the integrator at each operator, and include it in the joint exercise. The point is not that these suppliers are bad; it is that the county's risk is shared and must be analysed jointly.
@@ -2221,11 +2395,15 @@ Every operator runs software and hardware built by others, often through long ch
 - Ignoring accidental shared-dependency failures because no adversary is involved.
 - Teaching techniques instead of failed assumptions.
 
+The Calder concentration example avoids these: it uses no technique detail, treats an accidental endpoint update as seriously as an integrator compromise, and does not assume a state actor. Repeating unsourced claims about Stuxnet's origin would be the first error.
+
+The fourth error would turn a TRITON lesson into a description of how to reach a safety controller.
+
 ### Exercises — chapter 31
 
 **EX061 — Find the assumption.** *Objective:* abstract a case. *Inputs:* the Ukraine 2015 case (Chapter 20). *Steps:* state two assumptions that failed and one assumption that held and helped recovery, with source support. *Expected evidence:* three assumptions. *Rubric:* 3 = e.g. remote access/operator workstations were trustworthy (failed), call centres would remain reachable (failed), manual operation was possible (held), each tied to the CISA alert; 2 = two; 1 = one; 0 = none.
 
-**EX062 — Concentration map.** *Objective:* identify shared dependencies. *Inputs:* §31.4. *Steps:* draw a bipartite map (suppliers ↔ operators), mark the supplier with the highest reach and propose one measure per supplier. *Expected evidence:* map and measures. *Rubric:* 3 = endpoint product reaches three operators across three sectors (highest), measures specific (staged updates, fallback independence, integrator controls); 2 = map without measures; 1 = list; 0 = none.
+**EX062 — Concentration map.** *Objective:* identify shared dependencies. *Inputs:* the Calder concentration survey in this chapter's worked example. *Steps:* draw a bipartite map (suppliers ↔ operators), mark the supplier with the highest reach and propose one measure per supplier. *Expected evidence:* map and measures. *Rubric:* 3 = endpoint product reaches three operators across three sectors (highest), measures specific (staged updates, fallback independence, integrator controls); 2 = map without measures; 1 = list; 0 = none.
 
 ### Chapter synthesis
 
@@ -2263,6 +2441,8 @@ Safety engineers have long practice in analysing hazards, independent protection
 
 Different audiences need different translations of the same finding. **Clinicians** need to know the effect on patient care and what to do differently. **Engineers** need the technical mechanism and constraints. **Finance** needs costs, avoided losses and options. **Lawyers** need facts, dates and obligations triggered. **The public** needs honest, timely information on the service and on what they should do — without details that help attackers. Agreed spokespeople and pre-approved message templates are part of incident preparation (Chapter 30's journalist inject).
 
+The four messages in this chapter's worked example apply this.
+
 ### 32.5 Worked example: one finding, four audiences (synthetic)
 
 **This case is synthetic.** Finding: CVH's theatre ventilation can be changed from the BMS, which is reachable from the corporate network with password-only authentication.
@@ -2278,6 +2458,8 @@ Different audiences need different translations of the same finding. **Clinician
 - Proposing controls without a funding argument.
 - Ignoring safety or clinical consequences of security controls.
 - One message for all audiences.
+
+The worked example avoids each: the legal message says what was checked and when it will be reassessed; the finance message gives a cost and its worst credible outcome; the theatre message names the clinical check; and four audiences receive four messages. A single technical email to all would have failed the theatre lead and finance.
 
 ### Exercises — chapter 32
 
@@ -2321,6 +2503,10 @@ A reproducible analysis keeps raw data unchanged, does all transformations in sc
 
 Quantitative evidence says **how much**; qualitative evidence says **how and why**. A mixed-methods design might count, across 30 public incident reports, how many mention a fallback to manual operation (quantitative), then interview four operators about what makes manual fallback work (qualitative). The combination is stronger than either, provided each part is done properly and the integration — how one informs the other — is explicit.
 
+State in advance how the parts connect.
+
+In the 30-report example, the count tells you how often reports mention manual fallback, and the interviews explain why fallback sometimes fails, for example because staff have not practised it. Integration means the interview guide asks about the conditions the count revealed.
+
 ### 33.5 Worked example: coding incident reports (synthetic data)
 
 **The data are synthetic.** Two students code 20 incident-report excerpts for the presence of the code "unclear decision owner". They agree on 16 of 20 ($p_o = 0.80$). Student A applied the code to 8 excerpts; student B to 6. Chance agreement: both "yes" $= (8/20)(6/20) = 0.12$; both "no" $= (12/20)(14/20) = 0.42$; $p_e = 0.54$. Kappa $= (0.80 - 0.54)/(1 - 0.54) = 0.26/0.46 \approx 0.57$ — moderate agreement. The students review the four disagreements, find that one coded "decision delayed" as "owner unclear" even when the owner was named, and tighten the definition: "applies only when the report states or shows that participants did not know who held the decision".
@@ -2332,6 +2518,8 @@ Quantitative evidence says **how much**; qualitative evidence says **how and why
 - Reporting percentage agreement as reliability.
 - Analysis steps done by hand and not recorded.
 - "Mixed methods" that are two separate studies never integrated.
+
+In the coding example, reporting 80 % agreement instead of kappa 0.57 would be the third error. Interviewing CRP engineers about remote access without consent and approval would be the first, and quoting a named operator's unpatched gateway would be the second. A spreadsheet edited by hand without a record would be the fourth.
 
 ### Exercises — chapter 33
 
@@ -2363,6 +2551,8 @@ After this project you can (1) compare three or more options against explicit cr
 
 Decisions about critical services involve several criteria that do not share a unit: consequence reduction, operational burden, cost, time to implement, strength of evidence that the option works. **Multi-criteria decision analysis** scores each option on each criterion, weights the criteria, and combines them — most simply as a weighted sum. Its value lies less in the final number than in making the criteria, scores and weights visible so that people can argue about them productively.
 
+Lab 13 shows this: the weights and scores are on the page and can be challenged.
+
 ### 34.2 Doing it honestly
 
 Define each criterion so that higher is better (invert costs and burdens). Score on an anchored scale ("5 = removes the worst credible consequence; 1 = no measurable effect"). Record the evidence behind each score (Chapter 15). Set weights *before* scoring, ideally with stakeholders, to avoid tuning weights to a favourite. Then run **sensitivity analysis**: vary the weights and see whether the winner changes. If it changes only under implausible weights, the decision is robust; if small changes flip it, report that the decision depends on a value judgement and name it.
@@ -2370,6 +2560,10 @@ Define each criterion so that higher is better (invert costs and burdens). Score
 ### 34.3 When a score is not enough
 
 Some considerations are **constraints**, not criteria: a legal obligation, a safety requirement, a minimum service level. An option that violates a constraint is excluded, whatever its score. Others are **vetoes** by people with authority (a clinical director's refusal of an option that disrupts theatres). Handle these explicitly before scoring.
+
+For CEDC, a regulator's four-hour restoration requirement is a constraint (EX068), excluding options that cannot demonstrate it.
+
+A clinical director's veto of an option that closes theatres for a week is handled the same way.
 
 ### 34.4 Worked example and Lab 13 (synthetic)
 
@@ -2415,6 +2609,10 @@ Backups with restore drills win under the agreed weights and remain ahead until 
 
 A 2,500-word comparative report on a question of your choice within the Calder case or a documented public topic (for example, three approaches to remote access, three backup strategies, three monitoring options): constraints, criteria with anchored scales, evidence per score, weights set in advance, sensitivity analysis, recommendation with reversal conditions, and limits.
 
+Use Lab 13's structure for your sensitivity analysis and report the weight at which the winner changes.
+
+State the reversal condition in words, as Lab 13's report does: the weight at which the recommendation would change and the value judgement that weight represents.
+
 ### 34.6 Common errors and limits
 
 - Scoring first and choosing weights afterwards.
@@ -2422,6 +2620,10 @@ A 2,500-word comparative report on a question of your choice within the Calder c
 - Ignoring constraints and vetoes.
 - Presenting a weighted total as objective truth.
 - Treating options as mutually exclusive when they can be combined.
+
+Lab 13 avoids the first by fixing weights at 0.4, 0.2, 0.2, 0.2 before scoring. The report also notes that segmentation and backups can be combined, avoiding the fifth error. A score of 4 for evidence strength needs the drill records behind it; without them it is the second error.
+
+Presenting 4.20 as proof would be the fourth.
 
 ### Exercises — chapter 34
 
@@ -2480,11 +2682,15 @@ Test each candidate against five questions. **Comparative?** Are there real alte
 - No fallback when a host withdraws.
 - Success criteria written after the results.
 
+The worked proposal avoids these: it compares three options, requests interviews but has a document fallback, and fixes success criteria before evidence collection.
+
+Each error has a typical symptom. A topic such as "the state of hospital device security" produces a description with nothing to recommend. An evidence plan that assumes host data before the host has agreed collapses in week six. A project without a fallback stalls when an interviewee withdraws. Success criteria written after the results always look met, which is why the worked proposal fixes them in week four.
+
 ### Exercises — chapter 35
 
 **EX069 — Topic triage.** *Objective:* apply the five tests. *Inputs:* three candidate topics: (a) "Is AI good for security?"; (b) "Compare three methods for detecting false sensor data in a water-tank model, using a synthetic dataset"; (c) "Test the firewall of my local water utility". *Steps:* apply the five questions to each and choose. *Expected evidence:* table and choice. *Rubric:* 3 = (a) not bounded or comparative as stated; (b) feasible, comparative, ethical; (c) unauthorised and unethical — reject; choose (b); 2 = right choice, weak reasoning; 1 = wrong choice; 0 = none.
 
-**EX070 — Evidence plan.** *Objective:* connect criteria to evidence. *Inputs:* the proposal in §35.4. *Steps:* for each of the four criteria, state the evidence, its source and one threat to its validity. *Expected evidence:* four rows. *Rubric:* 3 = specific evidence (lab exposure model output, interview data on disruption, published costs, quality grading of sources) with matching validity threats; 2 = three; 1 = vague; 0 = none.
+**EX070 — Evidence plan.** *Objective:* connect criteria to evidence. *Inputs:* the worked proposal outline in this chapter. *Steps:* for each of the four criteria, state the evidence, its source and one threat to its validity. *Expected evidence:* four rows. *Rubric:* 3 = specific evidence (lab exposure model output, interview data on disruption, published costs, quality grading of sources) with matching validity threats; 2 = three; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -2518,13 +2724,21 @@ Before starting, agree in writing with the host and your university: **superviso
 
 Most of your value as a student comes from **fresh eyes and time**: documenting what experienced staff no longer notice, tidying an inventory, drafting a procedure, comparing current practice with public guidance. Do not judge before understanding — a "bad practice" may be a workaround for a real constraint (the shared control-room login of Chapter 13). Ask why. Record your observations factually, separate them from interpretation, and check them with the person concerned.
 
+The week's log entry in this chapter shows this: the missing tickets were a slow tool at night, not carelessness.
+
 ### 36.4 Community practice
 
 Small organisations that support communities — a food bank, a rural clinic, a volunteer ambulance service — often depend on critical services and have little security capacity. A structured, low-risk contribution: an asset list, account and backup review against a simple published baseline, a one-page incident contact sheet, and a short staff session. The same authorisation and confidentiality rules apply; your duty of care is higher, not lower, when the organisation cannot judge your advice.
 
+Agree the contribution in writing with the organisation's lead.
+
 ### 36.5 Reflective log
 
 Keep a weekly log with four headings: **what I did**, **what I observed**, **what surprised me and why**, **what I would do differently**. Reflection turns experience into learning and provides evidence for assessment. Keep the log sanitised from the start: no system names, addresses, credentials or personal data — write "the remote-access gateway" not its hostname.
+
+Sanitising at writing time avoids a risky clean-up later.
+
+Write the log the same week, while the details are accurate, and keep it separate from host documents.
 
 ### 36.6 Worked example: a week's log entry (synthetic)
 
@@ -2536,6 +2750,10 @@ Keep a weekly log with four headings: **what I did**, **what I observed**, **wha
 - Taking photographs, files or notes that the host has not approved.
 - Judging practice before understanding constraints.
 - Reflective logs that describe activity but not learning.
+
+The CW log entry avoids all four: the placement had an agreement, the paper sheet proposal was approved before inclusion, the student asked why tickets were missing before judging, and the entry records a changed assumption. EX072 shows the second error in its most dangerous form: a recorded credential.
+
+Ask your site supervisor which notes may leave the site.
 
 ### Exercises — chapter 36
 
@@ -2609,12 +2827,18 @@ Both methods say the same thing in substance: 17 of 20 is consistent with a true
 
 Seminar groups exchange capstone evidence chapters. A useful review states what the work claims, what is convincing, the two or three most important problems (each with a suggested fix), and minor points. Review the work, not the person; be specific ("the restore-time claim rests on one drill in a test environment; can you add the drill's conditions and an interval?"). Authors respond point by point: accepted and changed, or declined with reasons.
 
+A good response quotes each point and states the change made or the reason declined.
+
 ### 37.5 Common errors and limits
 
 - Reporting a proportion without its sample size or interval.
 - Treating vendor benchmarks as independent evidence.
 - Reviews that only praise or only attack.
 - Ignoring how evaluation protocols can inflate results.
+
+Lab 14 shows the first: "85 %" without "of 20" and an interval hides that the true rate may be 64 %. A detector vendor's own benchmark (EX074) is the second. A review that says only "great work" helps nobody. The fourth is Kim and colleagues' point about evaluation protocols.
+
+Each review point should name the evidence it questions.
 
 ### Exercises — chapter 37
 
@@ -2646,6 +2870,8 @@ After this chapter you can (1) execute a capstone plan while controlling scope a
 
 Implementation turns the proposal (Chapter 35) into evidence. Keep three living documents. A **project log** (date, what you did, what you decided and why). An **evidence register** (item, source, date, type, how obtained, where stored, which criterion it supports — Chapter 15). A **change record** for any departure from the proposal, with your supervisor's agreement. Scope creep is the commonest capstone failure: new questions are interesting, but each must either replace something or wait for "future work".
 
+In the week-14 checkpoint, the declined interview is recorded as a change with supervisor approval.
+
 ### 38.2 Building the supporting model
 
 Most bachelor capstones need a small artefact: an exposure model, a dependency simulation, a detector comparison, a coded dataset. Build it with the habits of the labs: standard tools, fixed seeds, scripts not manual steps, outputs saved with the script hash, and **tests** that check the model on cases with known answers before you trust it on new ones (Chapter 8). Document what the model leaves out. A model that reproduces a hand-calculated simple case and states its assumptions is worth more than an elaborate one nobody can check.
@@ -2654,9 +2880,15 @@ Most bachelor capstones need a small artefact: an exposure model, a dependency s
 
 Interviews follow the approved protocol and consent (Chapter 33). Host documents are handled under the placement agreement (Chapter 36). Anything about a real operator's vulnerabilities is held securely and appears in the thesis only in sanitised, host-approved form. If access is withdrawn, use the fallback in your proposal and record the change; do not quietly substitute guesses for data.
 
+Record each item in the evidence register when it arrives.
+
+For the unsupported-devices capstone, interview notes are pseudonymised on the day, stored encrypted, and deleted on the schedule in the consent form. If the host withdraws its device list, the proposal's synthetic inventory replaces it, and the change record says so.
+
 ### 38.4 Surprising and negative results
 
 Results that contradict your expectation are evidence too. If restore drills in your lab model show that the option you expected to win cannot meet the objective, report it and investigate why — perhaps a dependency you had not modelled. Do not adjust parameters until the result "looks right"; if you change a parameter, record why and show both results. Honest negative findings are among the most useful outputs a capstone can produce for a host.
+
+The gateway finding in the week-14 checkpoint is a worked example.
 
 ### 38.5 Worked example: an implementation checkpoint (synthetic)
 
@@ -2669,11 +2901,15 @@ Results that contradict your expectation are evidence too. If restore drills in 
 - Tuning a model until it agrees with expectations.
 - Silent changes of scope or method.
 
+The week-14 checkpoint avoids each: the inventory script has a seed and hash, the model is tested on a hand-worked case, the gateway surprise is kept, and the interview substitution is recorded. Changing the vendor-gateway parameters until imaging exposure looked smaller would have been the third error.
+
+Each is fixed by the same habit: record the step when you take it.
+
 ### Exercises — chapter 38
 
-**EX075 — Evidence register.** *Objective:* make traceability concrete. *Inputs:* the checkpoint in §38.5. *Steps:* write five rows of the evidence register with all fields. *Expected evidence:* table. *Rubric:* 3 = five complete rows (inventory script output with hash, model test results, interview notes reference, two guidance documents) each linked to a criterion; 2 = missing fields; 1 = list; 0 = none.
+**EX075 — Evidence register.** *Objective:* make traceability concrete. *Inputs:* the week-14 checkpoint in this chapter. *Steps:* write five rows of the evidence register with all fields. *Expected evidence:* table. *Rubric:* 3 = five complete rows (inventory script output with hash, model test results, interview notes reference, two guidance documents) each linked to a criterion; 2 = missing fields; 1 = list; 0 = none.
 
-**EX076 — Report a surprise.** *Objective:* handle unexpected results honestly. *Inputs:* the gateway finding in §38.5. *Steps:* write a 150-word results paragraph that reports the finding, its cause, the variant tested and its limits. *Expected evidence:* paragraph. *Rubric:* 3 = clear finding, mechanism, variant result reported separately, limits (synthetic inventory, one model), no overclaiming; 2 = partial; 1 = hides or minimises the surprise; 0 = none.
+**EX076 — Report a surprise.** *Objective:* handle unexpected results honestly. *Inputs:* the gateway finding from the week-14 checkpoint. *Steps:* write a 150-word results paragraph that reports the finding, its cause, the variant tested and its limits. *Expected evidence:* paragraph. *Rubric:* 3 = clear finding, mechanism, variant result reported separately, limits (synthetic inventory, one model), no overclaiming; 2 = partial; 1 = hides or minimises the surprise; 0 = none.
 
 ### Chapter synthesis
 
@@ -2699,17 +2935,33 @@ After this chapter you can (1) evaluate your capstone's results against the succ
 
 Evaluation begins with the proposal's success criteria (Chapter 35). Were they met, partly met or not met? Report each honestly with evidence. Then evaluate the **comparison** itself: are the scores supported by the evidence register; would another person, using your anchored scales, give similar scores (ask one); did any constraint exclude an option?
 
+In the worked evaluation, practitioner input was only partly met.
+
+Asking a second person to score two options with your anchored scales is a quick reliability check; if their scores differ by more than one point on any criterion, your anchors need clearer wording before the thesis.
+
 ### 39.2 Sensitivity and robustness
 
 Re-run your comparison under plausible variations: different weights (Lab 13), pessimistic and optimistic evidence (Chapter 22's halved autonomy), alternative model assumptions (Chapter 38's archive variant). A **robust** recommendation holds across most variations; a **fragile** one depends on a specific assumption, which you must name. Present the result as a short table: variation, winner, comment.
+
+The worked table applies four such variations.
+
+The worked evaluation shows a fragile result: the gateway wins once cost weight exceeds 0.45, and accelerated replacement wins when isolation's monitoring is assumed not to work. Both are named in the conclusion as reversal conditions, so a reader can see which value judgement and which assumption the recommendation rests on.
 
 ### 39.3 Limitations with direction
 
 "The sample was small" is a weak limitation. A useful limitation says **what**, **why it matters** and **in which direction** it probably biases the result. For example: "The exposure model assumes every unsupported device is equally exploitable; in practice internet-adjacent devices are more exposed, so the model probably *understates* the benefit of isolation for imaging devices." Directional limitations let readers adjust your conclusions rather than discard them.
 
+The worked evaluation gives three directional limitations.
+
+Where the direction is genuinely unknown, as with the synthetic inventory, say so explicitly rather than leaving the limitation undirected by omission.
+
 ### 39.4 Independent review
 
 Before the thesis is final, ask someone outside your project — a peer from the seminar (Chapter 37), your host supervisor, an academic not involved — to review the evaluation chapter. Record their points and your responses. Independence is the weakest link in most evidence (Chapter 15); the capstone is where you practise strengthening it.
+
+The worked evaluation's reviewer changed the main table.
+
+In the worked evaluation the reviewer's point about unstaffed monitoring changed the main table: the pessimistic variation became a headline result, and the recommendation became conditional. Record the reviewer's role and independence beside each point, so an assessor can judge how much weight the review carries.
 
 ### 39.5 Worked example: evaluation table (synthetic)
 
@@ -2725,7 +2977,7 @@ Before the thesis is final, ask someone outside your project — a peer from the
 | Variation | Winner | Comment |
 |---|---|---|
 | Agreed weights | Isolation with monitoring | Baseline |
-| Cost weight 0.5 | Isolation with monitoring | Robust |
+| Cost weight 0.4 | Isolation with monitoring | Robust |
 | Cost weight 0.6 | Vendor gateway | Fragile above 0.45 |
 | Archive-side controls added to gateway | Isolation (narrowly) | Gateway gap partly closed |
 | Pessimistic evidence for isolation | Accelerated replacement | Depends on monitoring actually working |
@@ -2738,6 +2990,10 @@ Limitations (directional): synthetic inventory (direction unknown — stated as 
 - Sensitivity analysis on irrelevant parameters only.
 - Limitations without direction.
 - Reviews from people who helped produce the work.
+
+The worked evaluation avoids the first by using the proposal's criteria, varies the weights that matter, gives each limitation a direction, and uses a reviewer who did not help produce the work.
+
+The second error is common: varying the evidence-strength weight, which barely changes the ranking, while leaving cost untouched, which flips it. A limitation such as "one interview" with no direction leaves the reader unable to adjust the result. A reviewer who helped build the exposure model cannot provide independent review of it.
 
 ### Exercises — chapter 39
 
@@ -2784,9 +3040,15 @@ Write the method chapter first (you know it best), results second, introduction 
 
 A strong conclusion answers the question asked — not a broader one — and says how strongly. Compare: "Network isolation is the best way to secure medical devices" (overclaims) versus "For a mid-sized hospital with the synthetic inventory studied, isolation with monitored conduits reduced exposure most per pound, provided alerts are reviewed daily; the recommendation reverses if cost dominates the decision (weight above 0.45) or if monitoring is unstaffed." The second is narrower and far more useful.
 
+The conditional version names the reversal points from the evaluation table.
+
 ### 40.3 The presentation
 
 Twenty minutes for a mixed panel: problem and question (3 min), method (4), results (6), recommendation and limits (4), what you would do next (3). One idea per slide; show the comparison table and the sensitivity result; put details in backup slides. Rehearse aloud with a timer and with a non-specialist.
+
+Put the sensitivity table on its own slide.
+
+For the unsupported-devices capstone, the results minutes show the comparison table and the evaluation's variation table; the limits minutes name the staffing condition. Backup slides hold the evidence register and the model test. A rehearsal with a non-specialist usually reveals jargon such as "conduit" that needs one sentence of explanation.
 
 ### 40.4 Answering questions
 
@@ -2804,11 +3066,15 @@ Questions fall into families: *scope* ("why not include X?"), *method* ("why the
 - Defensive or invented answers to hard questions.
 - Disclosing host-identifying information in slides.
 
+The worked answer to the staffing question avoids the fourth error; it cites Table 6.3 and admits an untested assumption.
+
+A results chapter that says "isolation is clearly better" mixes interpretation into results. A conclusion about "medical devices" generally claims more than a 120-device synthetic inventory supports. Slides that reach the recommendation in minute 19 leave no time for limits. And a host's device names on a slide breach the placement agreement even if the thesis was sanitised.
+
 ### Exercises — chapter 40
 
 **EX079 — Write the abstract.** *Objective:* compress the capstone. *Inputs:* the synthetic capstone of Chapters 35–39. *Steps:* write a 200–250-word abstract with question, method, main result, recommendation with condition and one limitation. *Expected evidence:* abstract. *Rubric:* 3 = all five elements, numbers where relevant, no overclaiming; 2 = one missing; 1 = descriptive only; 0 = none.
 
-**EX080 — Question bank.** *Objective:* prepare for defence. *Inputs:* your capstone (or the synthetic one). *Steps:* write one question per family in §40.4 and a three-sentence answer to each. *Expected evidence:* six questions and answers. *Rubric:* 3 = realistic hard questions with honest, evidence-linked answers and at least one "I don't know, but…" answer; 2 = easy questions; 1 = questions only; 0 = none.
+**EX080 — Question bank.** *Objective:* prepare for defence. *Inputs:* your capstone (or the synthetic one). *Steps:* write one question per family listed under answering questions and a three-sentence answer to each. *Expected evidence:* six questions and answers. *Rubric:* 3 = realistic hard questions with honest, evidence-linked answers and at least one "I don't know, but…" answer; 2 = easy questions; 1 = questions only; 0 = none.
 
 ### Chapter synthesis
 
@@ -2984,7 +3250,7 @@ Answers are model results, not the only acceptable ones. Accept a different answ
 
 **EX078.** Model: "Accepted. The restore-time evidence comes from five drills in one test environment. I have added a Wilson 95% interval (0.38–0.96 for 4 of 5) and a table of differences between test and production (data volume, integrations, staff). Because production restores involve more data and integrations, the drills probably understate real restore times. I have lowered the confidence of the recommendation from high to medium and recommended an independently observed production-scale drill."
 
-**EX079.** Model (≈ 220 words): "Hospitals keep clinical devices whose software is no longer supported, because devices outlive their operating systems. This capstone asked which of three approaches — accelerated replacement, network isolation with monitoring, or vendor-managed secure gateways — best reduces exposure for a mid-sized hospital within a fixed budget. Using a synthetic inventory of 120 devices built from published categories, an exposure model tested against a hand-worked case, one practitioner interview and public guidance, the options were compared on consequence reduction, clinical disruption, cost and evidence strength with weights set in advance. Isolation with monitoring scored highest and remained preferred unless cost carried more than 45% of the decision weight, or monitoring alerts were not reviewed, in which case accelerated replacement of the most exposed imaging devices was preferred. Vendor gateways underperformed for imaging devices because archive connections bypass them. We recommend isolation with monitored conduits where daily alert review can be committed, and prioritised replacement elsewhere. The main limitation is the synthetic inventory and single interview, which probably make isolation's clinical disruption look smaller than it is."
+**EX079.** Model (≈ 220 words): "Hospitals keep clinical devices whose software is no longer supported, because devices outlive their operating systems. This capstone asked which of three approaches — accelerated replacement, network isolation with monitoring, or vendor-managed secure gateways — best reduces exposure for a mid-sized hospital within a fixed budget. Using a synthetic inventory of 120 devices built from published categories, an exposure model tested against a hand-worked case, one practitioner interview and public guidance, the options were compared on consequence reduction, clinical disruption, cost and evidence strength with weights set in advance. Isolation with monitoring scored highest and remained preferred unless cost carried more than 45% of the decision weight, in which case vendor gateways were preferred, or monitoring alerts were not reviewed, in which case accelerated replacement of the most exposed imaging devices was preferred. Vendor gateways underperformed for imaging devices because archive connections bypass them. We recommend isolation with monitored conduits where daily alert review can be committed, and prioritised replacement elsewhere. The main limitation is the synthetic inventory and single interview, which probably make isolation's clinical disruption look smaller than it is."
 
 **EX080.** Example questions: scope — "Why not include cloud-hosted imaging?" (out of scope by design; would change exposure; future work). Method — "Why these weights?" (set with the host before scoring; sensitivity shown; reversal at 0.45). Evidence — "How do you know isolation's disruption score?" (one interview plus guidance; acknowledged as weak; directional limitation). Validity — "Would this hold in a large teaching hospital?" ("I don't know; the inventory mix differs; I would test with their category distribution"). Ethics — "How did you protect the host?" (synthetic data, anonymised interview, host review). Application — "What should the hospital do on Monday?" (restrict and monitor the imaging conduits; start the replacement case for the top five exposed devices).
 
