@@ -1399,9 +1399,9 @@ Links HCU does not control need roadmaps from their owners.
 
 ### 22.4 Worked example
 
-HCU's mobile banking flow depends on: the phone OS TLS stack (platform vendor), the app's networking library (HCU developers), a CDN terminating TLS (CDN provider), the web gateway (HCU network team) and the core banking API (core vendor). Hybrid key exchange from phone to CDN depends on platform and CDN support; from CDN to gateway on CDN and HCU; from gateway to core on HCU and the core vendor. Three controlling parties, three different timelines.
+HCU's mobile banking flow depends on: the phone OS TLS stack (platform vendor), the app's networking library (HCU developers), a CDN terminating TLS (CDN provider), the web gateway (HCU network team) and the core banking API (core vendor). Hybrid key exchange from phone to CDN depends on platform and CDN support; from CDN to gateway on CDN and HCU; from gateway to core on HCU and the core vendor. Three segments, four controlling parties and four different timelines.
 
-The flow is recorded as migrated only when all three have moved, and HCU follows up each party separately.
+The flow is recorded as migrated only when all three segments have moved, and HCU follows up each party separately.
 
 ### 22.5 Common errors and limits
 
@@ -1532,7 +1532,7 @@ HCU monitors handshakes to detect silent fallback to classical-only groups. Each
 
 ### 24.5 Worked example
 
-HCU's control plan for the mortgage archive: (1) hybrid IKEv2 for branch transfers; (2) stop sending scanned documents nightly, sending them once on completion; (3) re-wrap archive keys with ML-KEM-based key transport inside the HSM when the HSM supports it; (4) residual risk: RSA-signed archive timestamps, owner Records Management, review annually.
+HCU's control plan for the mortgage archive: (1) hybrid IKEv2 for branch transfers; (2) stop sending scanned documents nightly, sending them once on completion; (3) re-wrap archive keys with ML-KEM-based key transport inside the HSM when the HSM supports it; (4) residual risk: RSA-signed archive timestamps, owner Head of Records Management, review annually.
 
 Item two is a data control that reduces exposure immediately and costs almost nothing. Item three depends on a vendor and is therefore dated by the HSM roadmap rather than by HCU. Item four names an owner for a risk that cannot yet be closed. Together they show that a credible plan mixes control families and admits what remains.
 
@@ -1637,8 +1637,12 @@ The developer also records where the vectors came from and when they were downlo
 - Treating KAT success as proof of security.
 - Harnesses that cannot fail.
 - Unrecorded versions, making results irreproducible.
+- Running only positive tests, so that malformed inputs are never exercised.
+- Downloading test vectors from an unofficial mirror without checking their origin.
+- Rerunning nothing after a library upgrade because the earlier run passed.
+- Testing a library in isolation and assuming the integration behaves the same, when the calling code may pass the wrong parameter set or mishandle errors.
 
-- Running only positive tests, so that malformed inputs are never exercised. - Downloading test vectors from an unofficial mirror without checking their origin. - Rerunning nothing after a library upgrade because the earlier run passed. - Testing a library in isolation and assuming the integration behaves the same, when the calling code may pass the wrong parameter set or mishandle errors. Each of these leaves a gap that the lab record should make visible rather than hide.
+Each of these leaves a gap that the lab record should make visible rather than hide.
 
 ### Exercises
 
@@ -1698,7 +1702,7 @@ The four keys share no visible pattern, which is the property a KDF should give.
 
 ### 26.3 Post-quantum signatures
 
-ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) is a lattice-based signature using the "Fiat–Shamir with aborts" technique: the signer repeatedly samples until the candidate signature reveals nothing about the key. Parameter sets ML-DSA-44, -65 and -87 have signatures of 2,420, 3,309 and 4,627 bytes. SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) relies only on hash functions; it has tiny public keys (32–64 bytes) but large signatures (7,856 to 49,856 bytes) and slower signing. LMS and XMSS are smaller and faster but stateful. FN-DSA, based on Falcon, promised compact signatures and was still in development.
+ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) is a lattice-based signature using the "Fiat–Shamir with aborts" technique: the signer repeatedly samples until the candidate signature reveals nothing about the key. Parameter sets ML-DSA-44, -65 and -87 have signatures of 2,420, 3,309 and 4,627 bytes. SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) relies only on hash functions; it has tiny public keys (32–64 bytes) but large signatures (7,856 to 49,856 bytes) and slower signing. LMS and XMSS are smaller and faster but stateful. FN-DSA, based on Falcon, promises compact signatures and is still in development.
 
 ### 26.4 Comparing options
 
@@ -1710,15 +1714,17 @@ HCU's own choices follow this pattern: ML-DSA for its gateway certificates, with
 
 HCU compares options for signing member statements, produced 500,000 times per month: ML-DSA-65 (3,309-byte signatures, fast signing) versus SLH-DSA-SHA2-128s (7,856-byte signatures, slow signing). The volume and PDF size favour ML-DSA-65; HCU records the residual assumption risk and plans to keep algorithm identifiers in each document so that a future change is possible.
 
-The comparison is recorded in the decision log together with the measured signing rate on HCU's statement servers, so it can be revisited if volumes change. Signing time on the existing servers was also measured, and SLH-DSA would have needed extra hardware to keep up.
+The comparison is recorded in the decision log together with the measured signing rate on HCU's statement servers, so it can be revisited if volumes change. The measurements showed that SLH-DSA would have needed extra hardware to keep up.
 
 ### 26.6 Common errors and limits
 
 - Combining secrets by XOR without context binding.
 - Choosing SLH-DSA for high-volume TLS without measuring cost.
 - Using stateful signatures where state cannot be protected.
-
-- Truncating the combined output below the strength needed for the session key. - Comparing signature schemes on signature size alone, ignoring the public key carried in each certificate. - Leaving the algorithm identifier out of signed documents, which makes a later migration hard. - Assuming a hybrid design is secure because each component is, without checking that the combiner binds both secrets and the context.
+- Truncating the combined output below the strength needed for the session key.
+- Comparing signature schemes on signature size alone, ignoring the public key carried in each certificate.
+- Leaving the algorithm identifier out of signed documents, which makes a later migration hard.
+- Assuming a hybrid design is secure because each component is, without checking that the combiner binds both secrets and the context.
 
 ### Exercises
 
@@ -1782,8 +1788,12 @@ Include at least one objective on fallback for legacy clients and one on logging
 - Verifying configuration instead of negotiation.
 - Testing only modern clients.
 - Running downgrade tests on production.
+- Treating a single passing handshake as proof for every site and client type.
+- Forgetting to recheck after a configuration change, so earlier evidence no longer matches what runs.
+- Reading the server's offer list as if it were the selected group.
+- Leaving untested objectives out of the report instead of marking them as not tested.
 
-- Treating a single passing handshake as proof for every site and client type. - Forgetting to recheck after a configuration change, so earlier evidence no longer matches what runs. - Reading the server's offer list as if it were the selected group. - Leaving untested objectives out of the report instead of marking them as not tested. Each of these makes a report look more complete than the evidence behind it.
+Each of these makes a report look more complete than the evidence behind it.
 
 ### Exercises
 
@@ -1870,8 +1880,12 @@ The FMEA is reviewed after each rollout stage, since measured results may change
 - Considering only availability failures, not silent security failures.
 - No plan for an algorithm break.
 - Transitional fallbacks with no exit criteria.
+- Scoring detectability too generously for failures that produce no error.
+- Writing rollback procedures that have never been rehearsed.
+- Ranking failure modes once and never revisiting them after the rollout produces real data.
+- Leaving key-management mismatches out of scope because they sit with a different team.
 
-- Scoring detectability too generously for failures that produce no error. - Writing rollback procedures that have never been rehearsed. - Ranking failure modes once and never revisiting them after the rollout produces real data. - Leaving key-management mismatches out of scope because they sit with a different team. Each one leaves a risk on the table that the analysis was supposed to expose.
+Each one leaves a risk on the table that the analysis was supposed to expose.
 
 ### Exercises
 
@@ -1949,8 +1963,12 @@ The excluded branch has its own exit date, after which it is reviewed again. The
 - Promoting on point estimates from small samples.
 - Monitoring only failures, not fallback.
 - Changing configuration without help-desk awareness.
+- Averaging all sites together, so one failing location is hidden.
+- Holding a stage without recording a reason or a new decision date.
+- Leaving an excluded site without an owner or a deadline, so it never rejoins the rollout.
+- Setting the failure budget after seeing the data rather than before.
 
-- Averaging all sites together, so one failing location is hidden. - Holding a stage without recording a reason or a new decision date. - Leaving an excluded site without an owner or a deadline, so it never rejoins the rollout. - Setting the failure budget after seeing the data rather than before. Each of these turns a measured, staged change into a rollout that nobody can fully explain later.
+Each of these turns a measured, staged change into a rollout that nobody can fully explain later.
 
 ### 29.7 Rollback in practice
 
@@ -2035,8 +2053,12 @@ The decision is to be revisited when browsers and client libraries support ML-DS
 - Equating bytes with latency.
 - Ignoring SCTs and intermediate certificates.
 - Comparing signature schemes only by signature size, not public key plus signature.
+- Assuming certificate compression will make up the difference.
+- Testing only on fast lab networks, where an extra round trip is invisible.
+- Choosing a larger parameter set than policy needs, adding bytes with no benefit.
+- Reporting a single byte figure without the chain depth and SCT count behind it.
 
-- Assuming certificate compression will make up the difference. - Testing only on fast lab networks, where an extra round trip is invisible. - Choosing a larger parameter set than policy needs, adding bytes with no benefit. - Reporting a single byte figure without the chain depth and SCT count behind it. Each makes the cost of post-quantum authentication look different from what users actually experience.
+Each makes the cost of post-quantum authentication look different from what users actually experience.
 
 ### 30.7 Trimming the chain
 
@@ -2809,7 +2831,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about HCU a
 
 **EX043.** Eight assets, three unknown: 3/8 = 37.5 % ≈ 38 %.
 
-**EX044.** HCU controls the gateway configuration and its app networking library choices; phone OS support, CDN support and core vendor support depend on others, so the phone→CDN and gateway→core segments need partner action.
+**EX044.** HCU controls the gateway configuration and its app networking library choices; phone OS support, CDN support and core vendor support depend on others, so every segment also needs another party: phone→CDN (platform and CDN provider), CDN→gateway (CDN provider) and gateway→core (core vendor).
 
 **EX045.** Without error, *b* = *As* is a linear system solvable by Gaussian elimination. With small error, elimination amplifies the noise and fails; recovering *s* becomes finding a close lattice point in high dimension, for which the best known classical and quantum algorithms take exponential time.
 
@@ -2817,7 +2839,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about HCU a
 
 **EX047.** A future quantum computer breaking the traditional component (X25519); an unexpected classical cryptanalytic or implementation break of the new PQ component.
 
-**EX048.** Family: algorithm + governance. Control: create an ML-DSA root, distribute to relying parties, issue PQ intermediates, shorten classical root validity. Effect: removes forge-later exposure once dependants migrate. Owner: PKI team. Residual: legacy clients unable to verify ML-DSA; review annually.
+**EX048.** Family: algorithm + governance. Control: create an ML-DSA root, distribute to relying parties, issue PQ intermediates, shorten classical root validity. Effect: removes forge-later exposure once dependants migrate. Owner: PKI lead. Residual: legacy clients unable to verify ML-DSA; review annually.
 
 **EX049.** Run the harness against a wrong implementation (e.g. SHA-256 instead of SHA3-256) or alter one hex digit of the expected value; the harness must print FAIL.
 
