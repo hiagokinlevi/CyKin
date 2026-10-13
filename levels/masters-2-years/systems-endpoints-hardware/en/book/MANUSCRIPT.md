@@ -45,21 +45,49 @@ You will (1) turn an operational problem into a researchable question; (2) searc
 
 Chloé Dubois is a master's student at the fictional Redbourne University, supervised by Dr Arjun Mehta. Her study partner is the fictional Halvorsen Engineering, a manufacturer with 600 Windows laptops managed centrally. Halvorsen applies a security baseline derived from the CIS Benchmarks and Microsoft's security baselines, yet its quarterly reports show that about a quarter of laptops drift away from it. The IT manager, Sven Halvorsen, wants to know why, because each explanation suggests a different fix.
 
+Section one point one develops research question and literature method with a Redbourne University note Chloé Dubois can demo offline.
+
 ### 1.2 The question
 
 Chloé asks: which device and user characteristics are associated with baseline drift on Halvorsen's laptops? She defines drift as any baseline setting differing from its required value at the monthly check.
+
+Section one point two develops research question and literature method with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section one point two, Dr Arjun Mehta expects research claims to carry owners and dates.
+
+Section one point two treats the problem the question as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Literature method
 
 She searches digital libraries with fixed terms, records the date and counts, screens titles and abstracts against inclusion criteria, and keeps a log so another person could repeat the search.
 
+Section one point three develops research question and literature method with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section one point three, Dr Arjun Mehta expects research claims to carry owners and dates.
+
+Section one point three treats the problem the question as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Key sources
 
 NIST SP 800-128 describes security-focused configuration management, including baselines and monitoring for unauthorised change. CIS Controls v8 lists secure configuration of enterprise assets as a core safeguard. Dietrich et al. (2018) show that operators often explain misconfigurations by time pressure and unclear responsibility.
 
+Section one point four develops research question and literature method with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section one point four, Dr Arjun Mehta expects research claims to carry owners and dates.
+
+Section one point four treats the problem the question as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Defining terms
 
 She distinguishes drift (a change after compliance) from never-compliant devices, which point to deployment problems rather than drift.
+
+Section one point five develops research question and literature method with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section one point five, Dr Arjun Mehta expects research claims to carry owners and dates.
+
+Section one point five treats the problem the question as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Redbourne University will not accept research work without a written trail.
 
 ### Scope
 
@@ -105,9 +133,19 @@ You will (1) examine endpoint baselines in depth; (2) measure drift on a small s
 
 A baseline is a documented set of settings. CIS Benchmarks give consensus recommendations, DISA STIGs give stricter requirements for defence systems, and Microsoft publishes Windows security baselines. Halvorsen's baseline selects six settings: disk encryption, firewall, SMB version 1 disabled, autorun disabled, a screen lock within ten minutes and no extra local administrator users.
 
+Section two point one develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section two point one, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
 ### 2.2 Why these settings
 
 Disk encryption protects lost laptops; the firewall limits network exposure; SMB1 is an old file-sharing protocol with known weaknesses; autorun can launch software from removable media; screen locks protect unattended devices; local administrators can change any setting.
+
+Section two point two develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section two point two, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section two point two treats baselines why these settings as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — baseline sample
 
@@ -145,9 +183,23 @@ laptops 6, fully compliant 3, drifted 3
 
 In six sample laptops, three comply fully and three drift. Extra local administrator users appear on all three drifted laptops; other failures appear once or twice.
 
+Section two point three develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section two point three, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section two point three treats baselines why these settings as testable only when evidence and ticket IDs are recorded.
+
+For section two point three, Redbourne University will not accept systems work without a written trail.
+
 ### 2.4 Seminar discussion
 
 The class discusses whether local administrator rights cause drift or whether people who need admin rights also change settings for work reasons. Both are plausible, which motivates chapter 4.
+
+Section two point four develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section two point four, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section two point four treats baselines why these settings as testable only when evidence and ticket IDs are recorded.
 
 ### Impact varies
 
@@ -193,21 +245,57 @@ You will (1) design an observational study; (2) address privacy and ethics; (3) 
 
 Chloé uses six months of monthly compliance records for all 600 laptops, linked to device attributes: local administrator flag, location (remote or office), department and last policy refresh.
 
+Section three point one develops study design ethics and reproducibility with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section three point one, Dr Arjun Mehta expects study claims to carry owners and dates.
+
+Section three point one treats design ethics reproducibility variables as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Ethics
 
 Records link devices to users. Chloé works with pseudonymised device IDs; department is the finest grouping reported; results are never used to assess individuals. Redbourne's ethics committee and Halvorsen's data protection lead approve the plan.
+
+Section three point two develops study design ethics and reproducibility with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section three point two, Dr Arjun Mehta expects study claims to carry owners and dates.
+
+Section three point two treats design ethics reproducibility variables as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Reproducibility
 
 The analysis plan is written before data access; code runs on the extract and produces every table.
 
+Section three point three develops study design ethics and reproducibility with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section three point three, Dr Arjun Mehta expects study claims to carry owners and dates.
+
+Section three point three treats design ethics reproducibility variables as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Redbourne University will not accept study work without a written trail.
+
 ### 3.4 Variables
 
 The outcome is drift during the six months; candidate explanations are local admin, remote working and department.
 
+Section three point four develops study design ethics and reproducibility with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section three point four, Dr Arjun Mehta expects study claims to carry owners and dates.
+
+Section three point four treats design ethics reproducibility variables as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Redbourne University will not accept study work without a written trail.
+
 ### 3.5 Bias
 
 Devices replaced during the study are excluded and counted, so exclusion is visible.
+
+Section three point five develops study design ethics and reproducibility with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section three point five, Dr Arjun Mehta expects study claims to carry owners and dates.
+
+Section three point five treats design ethics reproducibility variables as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Redbourne University will not accept study work without a written trail.
 
 ### Analysis plan contents
 
@@ -262,21 +350,59 @@ You will (1) state competing explanations with mechanisms; (2) predict observabl
 
 Users with local administrator rights can change any setting. Saltzer and Schroeder (1975) set out least privilege: each program and user should operate with the fewest privileges needed. Prediction: higher drift among admin devices.
 
+Section four point one develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section four point one, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section four point one treats explanation local admin explanation as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Explanation B: remote working
 
 Remote laptops may miss policy refreshes when off the corporate network. Prediction: higher drift among remote devices, especially those with old refresh dates.
+
+Section four point two develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section four point two, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section four point two treats explanation local admin explanation as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Redbourne University will not accept systems work without a written trail.
 
 ### 4.3 Explanation C: department needs
 
 Engineering software may require settings changes. Prediction: higher drift in the engineering department.
 
+Section four point three develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section four point three, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section four point three treats explanation local admin explanation as testable only when evidence and ticket IDs are recorded.
+
+For section four point three, Redbourne University will not accept systems work without a written trail.
+
 ### 4.4 Overlap
 
 Engineers are more often admins and more often remote, so explanations overlap. Chloé plans stratified comparisons.
 
+Section four point four develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section four point four, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section four point four treats explanation local admin explanation as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Redbourne University will not accept systems work without a written trail.
+
 ### 4.5 Settings pattern
 
 Each explanation predicts different settings: admins change many settings; missed refreshes leave settings that recently changed; engineering changes firewall rules for licence servers.
+
+Section four point five develops systems endpoints and hardware security with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section four point five, Dr Arjun Mehta expects systems claims to carry owners and dates.
+
+Section four point five treats explanation local admin explanation as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Redbourne University will not accept systems work without a written trail.
 
 ### Testing the predictions
 
@@ -331,9 +457,23 @@ You will (1) write a proposal with analysis plan; (2) pilot the data extract; (3
 
 The proposal sets out the question, three explanations with predictions, data, ethics terms and analysis: compare drift proportions across groups with risk ratios and chi-square tests, then stratify by department.
 
+Section five point one develops proposal and pilot with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section five point one, Dr Arjun Mehta expects proposal claims to carry owners and dates.
+
+Section five point one treats proposal pilot extract reading as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Pilot extract
 
 Halvorsen's IT team provides a pilot extract of 120 laptops for one month to test the pipeline.
+
+Section five point two develops proposal and pilot with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section five point two, Dr Arjun Mehta expects proposal claims to carry owners and dates.
+
+Section five point two treats proposal pilot extract reading as testable only when evidence and ticket IDs are recorded.
+
+For section five point two, Redbourne University will not accept proposal work without a written trail.
 
 ### Lab — Lab — pilot completeness
 
@@ -361,13 +501,35 @@ rows complete on all fields: 107/120 (89.2%)
 
 Local admin flag is complete (120/120). Last policy refresh is present for 111 (92.5%), location for 116 (96.7%) and department for 118 (98.3%). Some rows miss more than one field; 107 of 120 rows (89.2%) are complete on every field.
 
+Section five point three develops proposal and pilot with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section five point three, Dr Arjun Mehta expects proposal claims to carry owners and dates.
+
+Section five point three treats proposal pilot extract reading as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Fixing gaps
 
 Missing refresh dates come from laptops that had not checked in during the month. Rather than drop them, Chloé records them as "no refresh in month", which is itself relevant to Explanation B.
 
+Section five point four develops proposal and pilot with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section five point four, Dr Arjun Mehta expects proposal claims to carry owners and dates.
+
+Section five point four treats proposal pilot extract reading as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Revising the plan
 
 The plan now states how each missing field is handled.
+
+Section five point five develops proposal and pilot with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section five point five, Dr Arjun Mehta expects proposal claims to carry owners and dates.
+
+Section five point five treats proposal pilot extract reading as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Redbourne University will not accept proposal work without a written trail.
+
+Section five point five fails closed if proposal evidence is missing rather than guessing.
 
 ### Pipeline checks
 
@@ -428,6 +590,16 @@ You will (1) analyse drift across explanations; (2) interpret risk ratios and te
 
 Six months for 600 laptops: 138 drifted (23%), consistent with Halvorsen's reports.
 
+Section six point one develops data collection and analysis with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section six point one, Dr Arjun Mehta expects data claims to carry owners and dates.
+
+Section six point one treats main data reading results as testable only when evidence and ticket IDs are recorded.
+
+For section six point one, Redbourne University will not accept data work without a written trail.
+
+Section six point one fails closed if data evidence is missing rather than guessing.
+
 ### Lab — Lab — competing explanations
 
 ```python
@@ -456,17 +628,49 @@ engineering dept vs other: 41/150 (27.3%) vs 97/450 (21.6%), RR 1.27, chi2 2.1
 
 Local admin devices drifted 55.0% versus 15.0% (risk ratio 3.67, chi-square 86.7). Remote devices drifted 29.0% versus 20.0% (RR 1.45, chi-square 6.1). Engineering drifted 27.3% versus 21.6% (RR 1.27, chi-square 2.1, below the 3.84 threshold for p < 0.05 with one degree of freedom).
 
+Section six point two develops data collection and analysis with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section six point two, Dr Arjun Mehta expects data claims to carry owners and dates.
+
+Section six point two treats main data reading results as testable only when evidence and ticket IDs are recorded.
+
 ### 6.3 Stratification
 
 Within non-admin devices, remote and office drift rates are close; within admin devices, both are high. This suggests the remote effect partly reflects admin rights.
+
+Section six point three develops data collection and analysis with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section six point three, Dr Arjun Mehta expects data claims to carry owners and dates.
+
+Section six point three treats main data reading results as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Redbourne University will not accept data work without a written trail.
 
 ### 6.4 Settings pattern
 
 Admin devices drifted on many settings, matching Explanation A's prediction.
 
+Section six point four develops data collection and analysis with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section six point four, Dr Arjun Mehta expects data claims to carry owners and dates.
+
+Section six point four treats main data reading results as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Redbourne University will not accept data work without a written trail.
+
+Section six point four fails closed if data evidence is missing rather than guessing.
+
 ### 6.5 Conclusion
 
 Local admin rights are the strongest association; remote working adds little once admin rights are considered; department shows no clear association.
+
+Section six point five develops data collection and analysis with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section six point five, Dr Arjun Mehta expects data claims to carry owners and dates.
+
+Section six point five treats main data reading results as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Redbourne University will not accept data work without a written trail.
 
 ### Effect size and significance
 
@@ -529,21 +733,61 @@ You will (1) write findings clearly; (2) state limitations honestly; (3) connect
 
 The dissertation follows question, literature, design, results and discussion, with each figure traceable to code.
 
+Section seven point one develops dissertation writing and limitations with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section seven point one, Dr Arjun Mehta expects dissertation claims to carry owners and dates.
+
+Section seven point one treats structure linking literature limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Redbourne University will not accept dissertation work without a written trail.
+
 ### 7.2 Linking literature
 
 The admin finding supports least privilege (Saltzer and Schroeder, 1975) and CIS Controls v8 safeguards on administrative privileges; the operator perspective in Dietrich et al. (2018) helps explain why admin rights were granted widely.
+
+Section seven point two develops dissertation writing and limitations with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section seven point two, Dr Arjun Mehta expects dissertation claims to carry owners and dates.
+
+Section seven point two treats structure linking literature limitations as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Limitations
 
 One organisation; six months; observational design; monthly checks miss changes reverted within a month.
 
+Section seven point three develops dissertation writing and limitations with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section seven point three, Dr Arjun Mehta expects dissertation claims to carry owners and dates.
+
+Section seven point three treats structure linking literature limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Redbourne University will not accept dissertation work without a written trail.
+
 ### 7.4 Practice implications
 
 Halvorsen can reduce standing admin rights and should re-measure drift after six months.
 
+Section seven point four develops dissertation writing and limitations with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section seven point four, Dr Arjun Mehta expects dissertation claims to carry owners and dates.
+
+Section seven point four treats structure linking literature limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Redbourne University will not accept dissertation work without a written trail.
+
 ### 7.5 Writing style
 
 Chloé reports counts with percentages and avoids causal language.
+
+Section seven point five develops dissertation writing and limitations with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section seven point five, Dr Arjun Mehta expects dissertation claims to carry owners and dates.
+
+Section seven point five treats structure linking literature limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Redbourne University will not accept dissertation work without a written trail.
+
+Section seven point five fails closed if dissertation evidence is missing rather than guessing.
 
 ### Presenting results
 
@@ -610,21 +854,65 @@ You will (1) undergo independent review; (2) defend findings; (3) plan follow-up
 
 A second examiner re-runs the analysis from the code and extract and obtains the same tables.
 
+Section eight point one develops independent review and defense with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section eight point one, Dr Arjun Mehta expects independent claims to carry owners and dates.
+
+Section eight point one treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Redbourne University will not accept independent work without a written trail.
+
 ### 8.2 Defense questions
 
 Examiners ask about the remote result, missing data and generalisation.
+
+Section eight point two develops independent review and defense with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section eight point two, Dr Arjun Mehta expects independent claims to carry owners and dates.
+
+Section eight point two treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Redbourne University will not accept independent work without a written trail.
+
+Section eight point two fails closed if independent evidence is missing rather than guessing.
 
 ### 8.3 Answers
 
 Chloé explains the stratified comparison, the no-refresh coding and that results apply to centrally managed fleets similar to Halvorsen.
 
+Section eight point three develops independent review and defense with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section eight point three, Dr Arjun Mehta expects independent claims to carry owners and dates.
+
+Section eight point three treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Redbourne University will not accept independent work without a written trail.
+
 ### 8.4 Follow-up
 
 Halvorsen removes standing admin rights from 120 devices; a follow-up six months later will test whether drift falls.
 
+Section eight point four develops independent review and defense with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section eight point four, Dr Arjun Mehta expects independent claims to carry owners and dates.
+
+Section eight point four treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Redbourne University will not accept independent work without a written trail.
+
 ### 8.5 Reflection
 
 Pre-stated predictions kept the analysis focused.
+
+Section eight point five develops independent review and defense with a Redbourne University note Chloé Dubois can demo offline.
+
+Under section eight point five, Dr Arjun Mehta expects independent claims to carry owners and dates.
+
+Section eight point five treats independent review defense questions as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Redbourne University will not accept independent work without a written trail.
+
+Section eight point five fails closed if independent evidence is missing rather than guessing.
 
 ### What the examiners valued
 
