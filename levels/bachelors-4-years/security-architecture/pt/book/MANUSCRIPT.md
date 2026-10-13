@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 099, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–21 de 40 já estão escritos em português, com os exercícios EX001–EX063 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 22–40 (EX064–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 40 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–40 (EX085–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que aprendem a projetar, avaliar e operar a arquitetura de segurança de organizações reais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios avaliam lógica, buscam caminhos de ataque, calculam intervalos amostrais, pseudonimizam, medem cobertura, contam dependências, verificam o menor privilégio, ajustam uma regra de detecção, estimam uma diferença em diferenças e ponderam opções, tudo sobre dados sintéticos; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
 
-Capítulos 22–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-22), até a chegada dos próximos lotes.
+Capítulos 29–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -965,11 +965,331 @@ Os modelos envelhecem à medida que os sistemas mudam. O STRIDE encontra categor
 
 - **EX063 — Achado de repúdio.** Que lacuna de repúdio o STRIDE encontrou? *Rubrica:* 3 = as mudanças de preço não são registradas com o usuário;; 2 = logging;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-22"></a>
+
+## Capítulo 22 — Arquitetura e engenharia de segurança: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) classificar os dados da Fernway; (2) mapear as dependências de fornecedores e serviços; (3) identificar pontos únicos de falha.
+
+### 22.1 Classificar os dados
+
+Lucas propõe três classes de dados para a Fernway: públicos, como as descrições de produtos; internos, como os níveis de estoque e as escalas; e confidenciais, como os dados dos associados, os registros dos funcionários e os contratos com fornecedores. Cada classe tem regras de manuseio para armazenamento, compartilhamento e descarte. Ele mantém o esquema pequeno porque a equipe precisa aplicá-lo sem manuais de treinamento. Ele rotula os principais repositórios de dados com sua classe e descobre que uma pasta do drive compartilhado chamada "misc" guarda registros confidenciais de funcionários ao lado de imagens públicas de marketing, o que significa que qualquer pessoa com acesso de marketing pode ler os dados da folha de pagamento.
+
+### 22.2 Mapear as dependências
+
+Lucas lista todos os serviços externos dos quais a Fernway depende: hospedagem, pagamentos, e-mail, entregas, identidade, contabilidade e o feed de preços do fornecedor. Para cada um, registra os dados compartilhados, o responsável pelo contrato, se o fornecedor tem compromissos de segurança e o que acontece se o serviço falhar. O laboratório abaixo modela as dependências como um grafo e conta quantas funções de negócio cada serviço sustenta. A identidade e a hospedagem sustentam, cada uma, todas as funções online, então sua falha pararia quase tudo de uma vez, enquanto o feed de preços afeta só as atualizações de preços.
+
+### Laboratório — Contagem das funções afetadas por cada dependência
+
+```python
+# Count business functions depending on each service (synthetic map).
+deps = {"online sales": ["hosting", "identity", "payment", "email"],
+        "click-and-collect": ["hosting", "identity", "email"],
+        "delivery tracking": ["hosting", "identity", "delivery"],
+        "member accounts": ["hosting", "identity", "email"],
+        "pricing updates": ["hosting", "identity", "price feed"],
+        "month-end accounts": ["accounting"]}
+count = {}
+for f, svcs in deps.items():
+    for s in svcs: count[s] = count.get(s, 0) + 1
+for s, n in sorted(count.items(), key=lambda x: (-x[1], x[0])): print(f"{s:11} supports {n} function(s)")
+```
+
+Execute com `python3 lab_deps.py`. Saída verificada:
+
+```text
+hosting     supports 5 function(s)
+identity    supports 5 function(s)
+email       supports 3 function(s)
+accounting  supports 1 function(s)
+delivery    supports 1 function(s)
+payment     supports 1 function(s)
+price feed  supports 1 function(s)
+```
+
+### 22.3 Pontos únicos de falha
+
+A contagem de dependências mostra onde a resiliência mais importa. Lucas recomenda um procedimento manual de contingência documentado para a identidade, como uma conta break-glass lacrada, e a confirmação de que o plano do provedor de hospedagem inclui a recuperação numa segunda região. Para o provedor de pagamentos, ele indica um compromisso contratual em vez de redundância técnica, já que um segundo provedor de pagamentos custaria mais do que o risco justifica. Ele explica que nem todo ponto único de falha precisa ser eliminado; alguns são aceitos conscientemente, com um plano de recuperação e um responsável que acompanha o fornecedor.
+
+### Exemplo resolvido
+
+Lucas define três classes de dados, encontra registros confidenciais numa pasta misturada, mapeia sete dependências e as ordena pelas funções afetadas.
+
+> **Caso sintético.** Os dados, os serviços e as contagens são sintéticos.
+
+### Erros e limites
+
+Os mapas de dependências deixam de fora as quartas partes, os fornecedores dos fornecedores. As classificações derivam sem revisão periódica.
+
+### Exercícios
+
+- **EX064 — Pasta misturada.** O que havia de errado com a pasta misc? *Rubrica:* 3 = registros confidenciais de funcionários ao lado de imagens públicas, legíveis pelo marketing;; 2 = classes misturadas;; 1 = nada;; 0 = nenhuma.
+
+- **EX065 — Dependência mais ampla.** Que serviços sustentaram mais funções no laboratório? *Rubrica:* 3 = identidade e hospedagem, 5 funções cada;; 2 = identidade;; 1 = feed de preços;; 0 = nenhuma.
+
+- **EX066 — Aceitar uma dependência.** Por que manter um único provedor de pagamentos? *Rubrica:* 3 = um segundo custaria mais do que o risco; coberto por contrato e um plano;; 2 = custo;; 1 = precisa eliminar;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Arquitetura e engenharia de segurança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar um método de avaliação de risco a um projeto da Fernway; (2) estimar probabilidade e impacto de forma consistente; (3) documentar as decisões para revisão.
+
+### 23.1 Um método de avaliação de risco
+
+A Fernway planeja um serviço de click-and-collect (compra online com retirada na loja). Lucas conduz uma avaliação de risco usando a estrutura do NIST SP 800-30 Rev. 1: identificar fontes e eventos de ameaça, vulnerabilidades, probabilidade, impacto e o risco resultante. Ele a reduz para uma cooperativa, usando um modelo de uma página por risco. Os eventos de ameaça incluem alguém retirar o pedido de outro cliente e funcionários usarem indevidamente os números de telefone dos clientes. Ele envolve uma gerente de loja, porque as pessoas que operam o processo sabem onde ele pode dar errado de maneiras que um diagrama nunca mostra. O modelo cabe numa única página para que seja usado.
+
+### 23.2 Estimativas consistentes
+
+Lucas define escalas de probabilidade e de impacto com exemplos, para que pessoas diferentes classifiquem de forma consistente: probabilidade alta significa esperado várias vezes por ano na Fernway; impacto alto significa perda acima de um valor definido ou dano a muitos associados. Ele pede que Hannah e a gerente da loja classifiquem os mesmos cinco riscos de forma independente e depois compara as classificações. Elas divergem em dois, e a discussão revela que a gerente sabe de erros passados na retirada de que Hannah nunca tinha ouvido falar. Escalas consistentes ajudam, mas é na discussão das diferenças que surge a maior parte das informações.
+
+### 23.3 Documentar as decisões
+
+Para cada risco, Lucas registra a classificação, o tratamento proposto e quem decide. A retirada pela pessoa errada é tratada com um código de retirada enviado por SMS e conferido no balcão. O uso indevido dos números de telefone é tratado mascarando os números no aplicativo da loja depois da retirada. Um risco baixo, um e-mail de notificação atrasado, é aceito. Cada decisão tem uma data de revisão. O registro permite que auditores e futuros funcionários vejam por que as escolhas foram feitas, o que importa quando as pessoas saem e o raciocínio, de outro modo, se perderia.
+
+### Exemplo resolvido
+
+Lucas aplica ao click-and-collect uma avaliação no estilo do SP 800-30 com escalas definidas, compara classificações independentes e registra as decisões de tratamento.
+
+> **Caso sintético.** O projeto e as classificações são sintéticos; o SP 800-30 Rev. 1 é real.
+
+### Erros e limites
+
+As escalas qualitativas escondem a incerteza. Equipes pequenas podem compartilhar pontos cegos apesar da classificação independente.
+
+### Exercícios
+
+- **EX067 — Por que uma gerente de loja.** Por que Lucas envolveu uma gerente de loja? *Rubrica:* 3 = as pessoas que operam o processo sabem onde ele falha;; 2 = conhecimento local;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX068 — Diferenças de classificação.** O que a comparação das classificações independentes revelou? *Rubrica:* 3 = erros passados na retirada conhecidos só pela gerente da loja;; 2 = informação nova;; 1 = nada;; 0 = nenhuma.
+
+- **EX069 — Tratamento da retirada pela pessoa errada.** Como a retirada pela pessoa errada foi tratada? *Rubrica:* 3 = um código de retirada por SMS conferido no balcão;; 2 = código;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Arquitetura e engenharia de segurança: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) selecionar controles de um catálogo para a Fernway; (2) adaptar os controles a uma pequena organização; (3) ligar os controles a riscos e responsáveis.
+
+### 24.1 Usar um catálogo
+
+Lucas usa o NIST SP 800-53 Rev. 5 e a ISO/IEC 27002:2022 como catálogos, e não como checklists. Ele procura controles que tratem os riscos já registrados: controle de acesso, registro de auditoria, gestão de configuração, relacionamento com fornecedores e resposta a incidentes. Os catálogos o ajudam a não esquecer áreas inteiras, como o descarte de mídias, que a Fernway nunca havia considerado para os discos rígidos dos caixas antigos. Ele mantém uma lista curta de cerca de trinta controles que importam para a Fernway, em vez de tentar implementar centenas escritos para organizações muito maiores. A lista curta é revista todo ano.
+
+### 24.2 Adaptação
+
+Cada controle selecionado é adaptado ao tamanho da Fernway. O controle de revisão de auditoria do SP 800-53 vira uma revisão mensal de trinta minutos dos alertas de identidade feita por Hannah, e não um centro de operações de segurança. A gestão de configuração vira uma única baseline para os notebooks, gerenciada pela ferramenta de dispositivos. Os controles de fornecedores viram um questionário de uma página e uma cláusula contratual. Lucas registra os motivos da adaptação, para que um auditor veja que o controle foi considerado e adaptado deliberadamente. A adaptação é o modo como os frameworks se tornam utilizáveis por organizações sem grandes equipes de segurança.
+
+### 24.3 Ligar controles a riscos
+
+Lucas monta uma tabela que liga cada controle aos riscos que reduz, a seu responsável e à sua evidência, como um registro de revisão ou um relatório de configuração. Os controles sem risco ligado são questionados; dois se revelam resquícios das exigências de uma antiga seguradora e são aposentados. Os riscos sem controle ligado são sinalizados como lacunas. A tabela se torna a declaração da Fernway sobre como a segurança é alcançada e dá ao conselho uma forma de acompanhar o progresso sem ler detalhes técnicos. Ela também torna as auditorias posteriores mais rápidas.
+
+### Exemplo resolvido
+
+Lucas seleciona cerca de trinta controles do SP 800-53 e da ISO/IEC 27002, adapta-os ao tamanho da Fernway e liga cada um a riscos, responsáveis e evidências.
+
+> **Caso sintético.** A lista de controles da Fernway é sintética; o SP 800-53 Rev. 5 e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+A adaptação pode descambar para o enfraquecimento dos controles. A evidência precisa ser real, e não uma promessa.
+
+### Exercícios
+
+- **EX070 — Área esquecida.** Que área a Fernway nunca havia considerado? *Rubrica:* 3 = o descarte de mídias dos discos rígidos dos caixas antigos;; 2 = descarte;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX071 — Revisão de auditoria adaptada.** Como a revisão de auditoria foi adaptada? *Rubrica:* 3 = uma revisão mensal de trinta minutos dos alertas de identidade;; 2 = revisão mensal;; 1 = um centro de operações de segurança;; 0 = nenhuma.
+
+- **EX072 — Controles sem ligação.** O que aconteceu com os controles sem risco ligado? *Rubrica:* 3 = foram questionados; dois resquícios foram aposentados;; 2 = aposentados;; 1 = mantidos;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um pequeno verificador de controle de acesso; (2) testar o menor privilégio sobre dados sintéticos de papéis; (3) relatar os resultados com suas limitações.
+
+### 25.1 A tarefa
+
+O Dr. Bellini propõe um exercício de laboratório: escrever um programa em Python que leia as definições sintéticas de papéis e as atribuições de usuários da Fernway e encontre os usuários cujas permissões excedem as necessidades da sua função. Lucas define do que cada função deve precisar, como a equipe de caixa precisar de vendas, mas não de mudanças de preço, e compara isso com o que cada usuário de fato tem. O programa roda offline sobre dados sintéticos, para que possa ser compartilhado com os colegas sem expor contas reais. O objetivo é praticar a transformação de um princípio, o menor privilégio, numa verificação repetível.
+
+### Laboratório — Encontrar permissões além das necessidades da função
+
+```python
+# Find permissions beyond job needs (synthetic roles and users).
+need = {"till": {"sales"}, "store-manager": {"sales", "rota", "refunds"},
+        "warehouse": {"picking", "stock-read"}, "buyer": {"stock-read", "price-change"}}
+users = {"u01": ("till", {"sales"}), "u02": ("till", {"sales", "price-change"}),
+         "u03": ("till", {"sales", "price-change"}), "u04": ("store-manager", {"sales", "rota", "refunds"}),
+         "u05": ("warehouse", {"picking", "stock-read", "db-owner"}), "u06": ("buyer", {"stock-read", "price-change"}),
+         "u07": ("warehouse", {"picking", "stock-read"})}
+found = 0
+for u, (job, has) in sorted(users.items()):
+    extra = has - need[job]
+    if extra: found += 1; print(f"{u} ({job}) excess: {', '.join(sorted(extra))}")
+print(f"{found} of {len(users)} users exceed job needs")
+```
+
+Execute com `python3 lab_excess.py`. Saída verificada:
+
+```text
+u02 (till) excess: price-change
+u03 (till) excess: price-change
+u05 (warehouse) excess: db-owner
+3 of 7 users exceed job needs
+```
+
+### 25.2 Resultados
+
+O laboratório encontra três usuários com permissões em excesso. Dois funcionários de loja têm direitos de mudança de preço que sobraram de um projeto temporário de promoção, e um usuário do armazém tem direitos de dono do banco de dados concedidos durante uma correção urgente. Lucas confirma com Hannah que as definições das funções estão certas antes de chamar isso de achados, porque uma definição incorreta produziria alarmes falsos. Hannah remove os direitos da promoção na mesma semana e abre um ticket de mudança para substituir o direito de dono do banco por um papel mais restrito, depois que o desenvolvedor confirmar do que a tarefa do armazém precisa.
+
+### 25.3 Limitações
+
+Lucas lista os limites do seu verificador. Ele só conhece as permissões registradas na exportação, e não as que existem dentro de aplicações com listas de usuários próprias. As definições das funções são simplificadas e podem deixar de fora exceções legítimas. Ele encontra excessos, e não uso indevido. Ele sugere rodá-lo todo mês e acrescentar um campo para exceções aprovadas com datas de expiração, para que os direitos temporários fiquem visíveis em vez de esquecidos. O Dr. Bellini elogia a seção honesta de limitações, observando que os revisores confiam mais nas ferramentas quando seus autores dizem com clareza o que elas não conseguem fazer.
+
+### Exemplo resolvido
+
+Lucas escreve um verificador offline de menor privilégio, encontra três permissões em excesso, confirma as definições com Hannah e lista os limites do verificador.
+
+> **Caso sintético.** Os papéis e os usuários são sintéticos.
+
+### Erros e limites
+
+As permissões internas das aplicações são invisíveis para o verificador. As exceções precisam de expiração para continuarem honestas.
+
+### Exercícios
+
+- **EX073 — Excesso encontrado.** Quantos usuários tinham permissões em excesso, e por quê? *Rubrica:* 3 = três: dois resquícios da promoção e um direito de dono do banco de uma correção urgente;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX074 — Conferir as definições.** Por que confirmar as definições das funções antes de relatar? *Rubrica:* 3 = definições erradas causam alarmes falsos;; 2 = exatidão;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX075 — Campo de exceções.** Que melhoria Lucas sugeriu para as exceções? *Rubrica:* 3 = um campo de exceção aprovada com datas de expiração;; 2 = expiração;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Arquitetura e engenharia de segurança: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar árvores de ataque para analisar um objetivo; (2) comparar projetos pelo custo para o atacante; (3) combinar métodos para uma decisão de projeto.
+
+### 26.1 Árvores de ataque
+
+Lucas analisa o objetivo "obter o histórico de pedidos de um associado" com uma árvore de ataque, um método que Shostack (2014) descreve junto com o STRIDE. A raiz é o objetivo; os ramos são as maneiras de alcançá-lo: adivinhar ou roubar a senha do associado, abusar de uma conta da equipe, explorar a página de pedidos ou obter uma exportação antiga. Cada ramo se divide em etapas. Escrever a árvore o obriga a pensar como um atacante sobre caminhos, em vez de listar controles. Ele descobre que o ramo da exportação antiga, uma planilha velha enviada por e-mail a uma agência de marketing, não exige nenhuma habilidade técnica.
+
+### 26.2 Comparar projetos
+
+Lucas atribui níveis aproximados de esforço às etapas-folha e compara dois projetos para as contas dos associados: senhas com redefinição por e-mail, e passkeys com contingência por e-mail. Para cada projeto, o caminho mais barato até o objetivo mostra a rota provável do atacante. Com senhas, o credential stuffing é o mais barato. Com passkeys, a contingência por e-mail se torna a mais barata, então a força do projeto depende de proteger a redefinição por e-mail. A comparação mostra que acrescentar um método forte não ajuda muito se continuar existindo uma contingência fraca, uma lição que vale muito além da Fernway.
+
+### 26.3 Combinar métodos
+
+Lucas combina seus resultados do STRIDE, a árvore de ataque e as classificações de risco numa única recomendação: adotar passkeys, exigir um segundo fator para a contingência por e-mail e recolher a exportação antiga da agência, com um acordo de compartilhamento de dados para o futuro. Cada método contribuiu com algo diferente: o STRIDE deu amplitude, a árvore deu os caminhos do atacante e as classificações de risco deram a prioridade. O Dr. Bellini observa que arquitetos experientes combinam métodos rotineiramente, porque cada um tem pontos cegos que os outros cobrem em parte. Lucas registra qual método encontrou cada problema.
+
+### Exemplo resolvido
+
+Lucas constrói uma árvore de ataque para o roubo do histórico de pedidos, compara os projetos com senhas e com passkeys pelo caminho mais barato e combina métodos numa recomendação.
+
+> **Caso sintético.** A árvore e os projetos são sintéticos; Shostack (2014) é real.
+
+### Erros e limites
+
+As estimativas de esforço são julgamentos grosseiros. As árvores podem deixar de fora ramos que ninguém imaginou.
+
+### Exercícios
+
+- **EX076 — Ramo de baixa habilidade.** Que ramo não exigia nenhuma habilidade técnica? *Rubrica:* 3 = a exportação antiga enviada por e-mail a uma agência de marketing;; 2 = exportação antiga;; 1 = senha;; 0 = nenhuma.
+
+- **EX077 — Ponto fraco das passkeys.** O que se tornou o caminho mais barato com as passkeys? *Rubrica:* 3 = a contingência por e-mail;; 2 = contingência;; 1 = passkeys;; 0 = nenhuma.
+
+- **EX078 — Contribuições dos métodos.** Com o que contribuíram o STRIDE, a árvore e as classificações? *Rubrica:* 3 = amplitude, caminhos do atacante e prioridade;; 2 = dois dos três;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Arquitetura e engenharia de segurança: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar a verificação dos requisitos de segurança; (2) usar testes, revisões e varreduras de forma adequada; (3) registrar as evidências de verificação.
+
+### 27.1 Planejar a verificação
+
+Para o serviço de click-and-collect, Lucas escreve os requisitos de segurança como enunciados testáveis: deve ser exigido um código de retirada para liberar um pedido; os códigos devem expirar depois de catorze dias; as telas do aplicativo da equipe devem mascarar os números de telefone depois da retirada; e o serviço deve registrar cada liberação com a identidade do funcionário. Para cada requisito, ele nomeia um método de verificação e quem o executa. Requisitos escritos como objetivos vagos, como "o serviço deve ser seguro", não podem ser verificados e dão um falso conforto a todos que os leem.
+
+### 27.2 Escolher os métodos
+
+Lucas associa métodos aos requisitos. A expiração dos códigos é verificada por um teste automatizado com o relógio adiantado. O mascaramento é verificado por um revisor usando o aplicativo da equipe numa conta de teste. O logging é verificado fazendo uma liberação e lendo o log. Uma varredura de dependências procura bibliotecas com vulnerabilidades conhecidas, como recomenda o SP 800-218. Ele observa que as varreduras encontram problemas conhecidos, mas não falhas de lógica, como liberar um pedido sem código, que só um teste projetado para isso consegue captar. Cada método cobre o que pode.
+
+### 27.3 Registrar as evidências
+
+Toda verificação produz um registro: data, método, resultado e quem a executou. Um teste falha: os códigos não expiram porque a tarefa de expiração não foi agendada em produção. O desenvolvedor corrige, e Lucas roda o teste de novo. O registro mostra tanto a falha quanto a correção, o que convence mais um auditor do que uma folha impecável. Lucas acrescenta os testes ao checklist de release, para que as mudanças futuras sejam verificadas de novo, em vez de se supor que preservaram o comportamento.
+
+### Exemplo resolvido
+
+Lucas escreve quatro requisitos testáveis, associa cada um a um método de verificação, encontra uma tarefa de expiração não agendada e registra a falha e a correção.
+
+> **Caso sintético.** O serviço e os resultados são sintéticos; o SP 800-218 é real.
+
+### Erros e limites
+
+Os testes verificam apenas o que foram projetados para verificar. As evidências envelhecem a cada mudança.
+
+### Exercícios
+
+- **EX079 — Requisito não testável.** Por que "o serviço deve ser seguro" é um requisito ruim? *Rubrica:* 3 = não pode ser verificado;; 2 = não testável;; 1 = está bom;; 0 = nenhuma.
+
+- **EX080 — Limite da varredura.** O que uma varredura de dependências não consegue encontrar? *Rubrica:* 3 = falhas de lógica, como liberação sem código;; 2 = falhas de lógica;; 1 = tudo;; 0 = nenhuma.
+
+- **EX081 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = expiração dos códigos; a tarefa não estava agendada em produção;; 2 = expiração;; 1 = mascaramento;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Arquitetura e engenharia de segurança: análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma revisão sem culpados de um incidente da Fernway; (2) separar as causas em fatores de projeto, de processo e humanos; (3) produzir melhorias duradouras.
+
+### 28.1 O incidente
+
+Durante uma liquidação de fim de semana, a loja da Fernway mostrou alguns itens com preço zero por quarenta minutos, e vinte e três pedidos foram feitos. Hannah pede a Lucas que ajude a conduzir uma revisão sem culpados (blameless). Eles montam uma linha do tempo a partir dos logs e de entrevistas: um comprador enviou uma planilha de preços com uma coluna em branco, a importação tratou os campos em branco como zero, e nenhum alerta disparou porque o monitoramento observava a disponibilidade, e não os preços. Montar a linha do tempo antes de discutir as causas mantém a revisão ancorada no que de fato aconteceu, e não em suposições iniciais.
+
+### 28.2 Camadas de causas
+
+Lucas separa as causas contribuintes em camadas. Projeto: a importação aceitava campos em branco como zero, e o upload de planilha atravessava uma fronteira de confiança sem validação, como observado no capítulo 21. Processo: nenhuma segunda pessoa conferia grandes mudanças de preço antes das liquidações de fim de semana. Humana: o comprador estava com pressa para cumprir um prazo definido pelo marketing. Ele evita apontar o comprador como a causa, já que qualquer pessoa sob a mesma pressão e com as mesmas ferramentas poderia ter cometido o erro. O enquadramento sem culpados incentiva as pessoas a relatarem problemas cedo.
+
+### 28.3 Melhorias duradouras
+
+A revisão produz quatro melhorias: a importação rejeita campos em branco e qualquer mudança de preço acima de cinquenta por cento sem aprovação; um alerta no dashboard dispara quando muitos preços mudam de uma vez; é acrescentada uma conferência por uma segunda pessoa na preparação das liquidações; e os prazos para os preços das liquidações são antecipados em um dia. Cada uma tem um responsável e uma data. A Fernway honra os pedidos como gesto de boa vontade. Três meses depois, Lucas confere se as melhorias estão em vigor e descobre que o alerta já captou uma conversão de moeda equivocada antes que os clientes a vissem.
+
+### Exemplo resolvido
+
+Lucas ajuda a conduzir uma revisão sem culpados de um incidente de preço zero, separa as causas de projeto, de processo e humanas e confere depois quatro melhorias.
+
+> **Caso sintético.** O incidente e os números são sintéticos.
+
+### Erros e limites
+
+Sem culpados não significa sem responsáveis; os responsáveis pelas correções continuam sendo nomeados. Linhas do tempo feitas de memória precisam de confirmação nos logs.
+
+### Exercícios
+
+- **EX082 — Por que nenhum alerta.** Por que nenhum alerta disparou? *Rubrica:* 3 = o monitoramento observava a disponibilidade, e não os preços;; 2 = lacuna de monitoramento;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX083 — Não culpar o comprador.** Por que evitar apontar o comprador como a causa? *Rubrica:* 3 = qualquer pessoa sob a mesma pressão e com as mesmas ferramentas poderia errar;; 2 = sistema;; 1 = culpa;; 0 = nenhuma.
+
+- **EX084 — Prova posterior.** O que mostrou que as melhorias funcionaram? *Rubrica:* 3 = o alerta captou um erro de conversão de moeda;; 2 = alerta;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX063 (as de EX064–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX084 (as de EX085–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** M OR (S AND R), e (M OR S) AND R.
 
@@ -1096,6 +1416,48 @@ Respostas-modelo para EX001–EX063 (as de EX064–EX120 estão na edição em i
 **EX062.** Porque atravessa uma fronteira de confiança sem validação, de modo que um arquivo ruim poderia mudar preços em toda a loja.
 
 **EX063.** As mudanças de preço não são registradas com a identidade do usuário que as fez.
+
+**EX064.** Ela guardava registros confidenciais de funcionários ao lado de imagens públicas, de modo que os usuários de marketing podiam ler os dados da folha de pagamento.
+
+**EX065.** Identidade e hospedagem, cada uma sustentando todas as 5 funções online.
+
+**EX066.** Porque a redundância custaria mais do que o risco justifica, então ela é aceita com um contrato, um plano e um responsável.
+
+**EX067.** Porque as pessoas que operam o processo conhecem modos de falha que os diagramas não mostram.
+
+**EX068.** Que a gerente da loja sabia de erros passados na retirada de que Hannah não tinha ouvido falar.
+
+**EX069.** Com um código de retirada enviado por SMS e conferido no balcão.
+
+**EX070.** O descarte de mídias, especificamente dos discos rígidos dos caixas antigos.
+
+**EX071.** Como uma revisão mensal de trinta minutos dos alertas de identidade feita por Hannah.
+
+**EX072.** Foram questionados, e dois resquícios de uma antiga exigência de seguradora foram aposentados.
+
+**EX073.** Três: dois funcionários de loja com direitos que sobraram da promoção e um usuário do armazém com direitos de dono do banco de dados de uma correção urgente.
+
+**EX074.** Porque definições incorretas fariam o verificador relatar alarmes falsos.
+
+**EX075.** Acrescentar exceções aprovadas com datas de expiração, para que os direitos temporários continuem visíveis.
+
+**EX076.** A exportação antiga de planilha mantida por uma agência de marketing.
+
+**EX077.** A contingência por e-mail, que por isso precisava de um segundo fator.
+
+**EX078.** O STRIDE deu amplitude, a árvore de ataque deu os caminhos do atacante e as classificações de risco deram a prioridade.
+
+**EX079.** Porque não pode ser verificado, então dá um falso conforto.
+
+**EX080.** Falhas de lógica, como liberar um pedido sem código.
+
+**EX081.** A expiração dos códigos falhou porque a tarefa de expiração não estava agendada em produção.
+
+**EX082.** Porque o monitoramento observava a disponibilidade da loja, e não as mudanças de preço.
+
+**EX083.** Porque qualquer pessoa com a mesma pressão e as mesmas ferramentas poderia ter cometido o mesmo erro.
+
+**EX084.** O novo alerta captou uma conversão de moeda equivocada antes que os clientes a vissem.
 
 <a id="references"></a>
 ## Referências
