@@ -7,6 +7,8 @@
 - Authorship and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Rights: original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); cited sources retain their own rights.
 
+**Publication update — 2026-10-13:** The six early Chapter 2 correction units are integrated into this public principal manuscript, including their executable programs and matching worked results. The material is available for study now; no separate correction chapter is required. Review in this update is limited to sections 2.1–2.8 and the affected exercise/answer material. Full-volume technical, language, rights, accessibility and A4 verification remain pending under the [book standard](../../../../../BOOK_STANDARD.md); the book remains an editorial draft, not an approved complete edition. The earlier 337-page report must not be treated as a measurement of this changed source.
+
 [Course overview](../README.md) · [Four-subject chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md) · [Book plan](PLAN.md) · [Practice playbooks](../../../../../playbooks/incident-response-resilience/README.md)
 
 [Chapter 1](#ch-01) · [Chapter 2](#ch-02) · [Chapter 3](#ch-03) · [Chapter 4](#ch-04) · [Worked results](#answers)
@@ -2243,7 +2245,6 @@ assert case(verified_fresh_edit=True) == (
     "BLOCK_INVENTED_CANONICAL_EVENT"
 )
 
-# Independent input-contract controls, not additional R-series facts.
 controls = [
     ("EMPTY_SOURCE_SET", {**ROUND_A, "refs": (), "patron_report": False}),
     ("TEXT_FALSE", {**BASE, "variant": "False", "owner_state_check": True}),
@@ -2257,13 +2258,13 @@ for label, sample in controls:
 
 For the executed output, scenario interpretation and negative controls, read the [TRI2 worked result](#ir-rapid-ch02-tri2-result) in the final answer appendix. Predict the labels before opening the result.
 
-**Release-guard challenge:** After the baseline program, test three explicitly synthetic Round A variants: set `retention_notice=True` without R15, set `quiet_summary=True` without R14, and set `variant=True`, `approved_addendum=True`, `training_scope_verified_complete=True`, `addendum_names_b19=True`, `no_new_edits_verified=True` and `query_coverage_known=True` without R9/R10. The three results, respectively, must be `BLOCK_UNRELEASED_CLAIM:R15`, `BLOCK_UNRELEASED_CLAIM:R14` and `BLOCK_UNRELEASED_CLAIM:R9_R10`. No case becomes a new canonical R-series record. The 20 baseline conclusions are preserved; task-scope labels do not claim causal attribution. The guard checks the classroom release boundary; it does not authenticate a source or verify a real approval.
+**Release-guard challenge:** After the baseline program, test three explicitly synthetic Round A variants: set `retention_notice=True` without R15, set `quiet_summary=True` without R14, and set `variant=True`, `approved_addendum=True`, `training_scope_verified_complete=True`, `addendum_names_b19=True`, `no_new_edits_verified=True` and `query_coverage_known=True` without R9/R10. The three results, respectively, must be `BLOCK_UNRELEASED_CLAIM:R15`, `BLOCK_UNRELEASED_CLAIM:R14` and `BLOCK_UNRELEASED_CLAIM:R9_R10`. No case becomes a new canonical R-series record. The 20 baseline conclusions remain unchanged; the two former `CAUSE` tokens are now labeled `TASK_SCOPE` in the code and transcript. The guard checks the classroom release boundary; it does not authenticate a source or verify a real approval.
 
 The original three release-guard controls remain required. The five additional controls in the complete program test a different boundary: the input schema and the distinction between fixed canonical metadata and separately labeled variants. An empty reference list cannot claim that records were supplied. The text `"False"` is not a Boolean false value; accepting it as a variant marker would admit invented impact into what a reader might mistake for the canonical packet. R15 does not supply an anchor, R14 does not supply complete coverage, and R1–R16 do not report a failed custodian contact. Those altered premises must not silently enter the canonical case.
 
 `custodian_available=True` in the original baseline remains a **model default**, not a verified successful contact. The default produces no collection or hold receipt. Requiring a separately labeled variant for a failed-contact scenario does not authenticate the default; both real contact status and any real preservation result remain unmeasured.
 
-A declared variant can still contain an invented `owner_state_check=True` or source-safeguard flag. These guards do not verify those assertions. They validate classroom structure and provenance boundaries, not source truth, actual harm, probability, severity or permission. TRI2 remains an original CyberABC method rather than a NIST classification policy; [NIST CSF 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf) provides high-level outcomes, not these particular labels or thresholds.
+A declared variant can still contain an invented `owner_state_check=True` or source-safeguard flag. These guards do not verify those assertions. They validate classroom structure and provenance boundaries, not source truth, actual harm, probability, severity or permission. TRI2 remains an original CyberABC method rather than a NIST classification policy. The renamed `TASK_SCOPE` labels concern authorization of the task, not a demonstrated causal mechanism or human actor.
 
 #### Limitations and diagnostic negative tests
 
@@ -2273,7 +2274,7 @@ The result labels are educational and may be rejected or refined by an organizat
 
 **Further negative control:** Set `request_downgrade=True` while leaving `training_scope_verified_complete=False`. The expected flag is `DOWNGRADE_NOT_JUSTIFIED`. Do not remove the quiet-query or source-retention caveats merely because a respondent asks for lower priority. Restore the baseline after the exercise.
 
-**Required learner output:** Reproduce the 20 baseline lines and five input-contract control lines; record the three separate release-guard challenge results, classify each scenario's most consequential limitation, explain why preservation and containment urgency can move independently, and write two versioned notes—09:05 and 09:20—with the correct release boundaries, owner, next authorized request and review trigger.
+**Required learner output:** Reproduce the 20 baseline lines and five input-guard lines from the complete program, then test the three release-guard challenges separately. Classify each scenario's most consequential limitation, explain why preservation and containment urgency can move independently, and write two versioned notes—09:05 and 09:20—with the correct release boundaries, owner, next authorized request and review trigger.
 
 **Lab assessment, five points:** one point for exact output; one for three separate confidence layers; one for separating reported from verified impact; one for preservation versus containment review; and one for rejecting unsupported de-escalation, attribution and future-source use. This is supplementary assessment and creates **no numbered exercise ID**.
 
@@ -2562,9 +2563,9 @@ for label, text in (
 
 Predict the original three intervals and all four rejection reasons before running. None of the malformed-input controls is an R-series event. A chronological rejection calls for investigation of timestamp meaning and clock assumptions; it does not establish malicious activity. Keep ingestion, query execution and copy creation unknown when they have no separate evidence.
 
-**Procedure:** (1) Before running it, convert R10's offset time by hand and predict the three source-to-learner-release intervals. (2) Run the code in an authorized local scratch environment, or calculate the outputs from the shown values if Python is unavailable. (3) Make a three-row table with record ID, original timestamp including offset, normalized UTC source time and its kind, learner-release time, source-to-learner-release interval and whether the record was available at 09:05. (4) Draw the coverage interval from T1 as `09:00 ≤ event < 09:12 UTC` and put R9, the T1 end and the 09:20 review on it. (5) Write two sentences: the strongest conclusion supported by R14 with T1, and the next *authorized* check needed to assess activity after 09:12. Keep the R15 retention notice separate from any assumed deletion instant.
+**Procedure:** (1) Before running it, convert R10's offset time by hand and predict the three source-to-learner-release intervals. (2) Run the code in an authorized local scratch environment, or calculate the outputs from the shown values if Python is unavailable. (3) Make a three-row table with record ID, original timestamp including offset, normalized UTC source-card time and kind, learner-release time, source-to-learner-release interval and whether the record was available at 09:05. (4) Draw the coverage interval from T1 as `09:00 ≤ event < 09:12 UTC` and put R9, the T1 end and the 09:20 review on it. (5) Write two sentences: the strongest conclusion supported by R14 with T1, and the next *authorized* check needed to assess activity after 09:12. Keep the R15 retention notice separate from any assumed deletion instant.
 
-**Expected evidence:** R9 is 09:03 UTC and released to the learner 17 minutes later; R10 is 09:04 UTC and released 16 minutes later; R15 is 09:14 UTC and released six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 reports a 24-hour detailed-record policy with an authorized-copy provision; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
+**Expected evidence:** R9 is 09:03 UTC and released to the learner 17 minutes later; R10 is 09:04 UTC and released 16 minutes later; R15 is 09:14 UTC and released six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 reports a 24-hour detailed booking-audit policy with an authorized-copy provision; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
 
 **Assessment rubric:** one point each for correct R10 normalization, three correct source-to-learner-release intervals, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
 
@@ -8021,9 +8022,7 @@ R14_TOO_EARLY BLOCK_UNRELEASED_CLAIM:R14
 B19_WITHOUT_R9_R10 BLOCK_UNRELEASED_CLAIM:R9_R10
 ~~~
 
-The first two variants declare a later card's content in a 09:05 source set; the last tries to interpret B19's training scope without either relevant card. The guard refuses the unsupported claim rather than quietly adding missing cards. None changes the twenty baseline case results or proves authentic provenance outside this fixture.
-
-**Input-contract controls from the complete TRI2 program:**
+**Input-schema and canonical-premise controls:**
 
 ~~~text
 EMPTY_SOURCE_SET BLOCK_EMPTY_SOURCE_SET
@@ -8034,6 +8033,8 @@ CANONICAL_CONTACT BLOCK_INVENTED_CANONICAL_PREMISE
 ~~~
 
 The first result rejects a positive source-availability description with no cited records. The second rejects a string before Python truthiness can turn it into a supposed variant authorization. The remaining controls reject unsupported changes to the canonical retention, query-coverage and contact premises. A blocking result identifies an input inconsistency, not a deleted source, an observed attack or a production action. Preserve the five-point supplementary lab rubric: assess these controls within its existing evidence-boundary and unsupported-claim criterion. No EX identifier is added.
+
+In the separate three-line **release-guard** transcript above, the first two variants declare a later card's content in a 09:05 source set; the last tries to interpret B19's training scope without either relevant card. The guard refuses the unsupported claim rather than quietly adding missing cards. None changes the twenty baseline case results or proves authentic provenance outside this fixture.
 
 #### Interpretation of positive and negative controls
 
@@ -8066,7 +8067,7 @@ The first result rejects a positive source-availability description with no cite
 | Was the B19 room-change task within the approved training scope effective at 09:03? | R9 reports the room change; R10 lists B17/B18 but not B19 | Training owner supplies the complete applicable approved plan/version and any B19 addendum through the authorized case route | A valid, applicable B19 task approval strengthens the task-scope explanation; a confirmed complete set excluding B19 weakens it. Neither identifies the operator. |
 | What, if anything, is wrong with the selected B19 room and reported time representations? | R9 reports a room edit; R11 reports a time concern; R16 requests impact assessment | Service owner authorizes a narrow, field-specific comparison; application custodian supplies time-stamped authoritative values and the relevant view against approved targets | A supported match, mismatch or missing comparator changes the bounded impact assessment. Further bookings require justified scope; no population count or common cause follows automatically. |
 
-The first question tests task authorization; the second tests a bounded business-state comparison. Neither a missing addendum nor an empty narrow query proves the opposite claim without checking source completeness and coverage.
+The first question tests authorization; the second tests scope. Neither a missing addendum nor an empty narrow query proves the opposite claim without checking source completeness and coverage.
 
 **TRI2 evidence layers:** In row one, R9 supplies an edit and R10 omits B19 from the supplied plan. A dated, complete, approved task addendum that explicitly names B19 could narrow the *task-scope* concern; a complete approved list that excludes it would strengthen that concern. Neither identifies the human operator. In row two, R11 is a patron report and R16 asks for impact assessment. A service-owner-authorized comparison of current authoritative values with approved targets could establish a bounded booking mismatch or show that the selected booking is correct. It would not count every affected patron or settle the cause of an audit edit.
 
@@ -8326,7 +8327,7 @@ A completed-run model note must be populated from the learner's actual work: “
 
 ### Chapter 2 temporal-coverage lab — worked result
 
-The optional Python script prints the following seven lines for the supplied fixture and its independent controls:
+The optional Python script prints the following seven lines for the supplied fixture:
 
 ```text
 R9 source=09:03 UTC released=09:20 UTC interval=17 min
@@ -8357,9 +8358,9 @@ OMITTED_L2: L1
 
 Both runs use the same account filter and **09:00 ≤ event < 09:12 UTC** window. L1 qualifies in both. L2's event time is 09:10, so it belongs to that window, but its 09:18 ingestion time makes it invisible at the 09:12 query cutoff and visible at 09:20. L3 is excluded because its account is `helper-b`, even though its event and ingestion times are inside the interval. L4 is excluded because 09:12 is the *exclusive* end; its later ingestion time is not the reason it fails this particular selection.
 
-The first two lines are unchanged: the late L2 becomes visible without moving its 09:10 event time; L4 remains excluded at the 09:12 exclusive end. The next three lines demonstrate input rejection, not observed incident events. The last line comes from a separate packet lacking L2: its quiet result is compatible with missing input and cannot prove no matching event occurred. Source coverage requires independent, appropriately authorized evidence about the producer, collection/index path and selection, not just successful filtering of available rows.
-
 The strongest correction is: “At 09:12, the specified query showed no other visible matching edit after L1; this did not establish that the event-time interval was complete.” In the T2 replay, the repeated query would later reveal L2 and require a fresh assessment, but **L2 is not a canonical Harbor Library case fact**. The next request is to the fictional application/logging custodian: “Please confirm the exact source, `desk-a` account filter, half-open event interval, each query's run and ingestion cutoff, and whether collection or indexing lag could leave relevant rows unseen; provide a scoped follow-up result under the incident lead's approval.” The custodian's reply, not the newest event timestamp alone, would determine what completeness claim is defensible. None of the four L rows establishes the human operator or intent.
+
+The first two output lines are unchanged: the late L2 becomes visible without moving its 09:10 event time; L4 remains excluded at the 09:12 exclusive end. The next three lines demonstrate input rejection, not observed incident events. The last line comes from a separate packet lacking L2: its quiet result is compatible with missing input and cannot prove no matching event occurred. Source coverage requires independent, appropriately authorized evidence about the producer, collection/index path and selection, not just successful filtering of available rows.
 
 ### Chapter 2 evidence-package peer audit — worked result
 
