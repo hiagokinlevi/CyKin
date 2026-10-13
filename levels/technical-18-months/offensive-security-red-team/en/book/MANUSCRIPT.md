@@ -1795,7 +1795,7 @@ The limits page states that the fare network is out of scope, that all work used
 
 AI security (066) is next in the curriculum path.
 
-Within the red team track itself, the next book is the technologist level, which adds design and integration depth. This technical book ends at procedural competence under an ROE, so design-heavy work waits for that course. Before finishers move on, Sam tells them which habits transfer directly, such as stop discipline and evidence hashing, and which authority does not carry forward to any new engagement. The AI security book named above follows later on the wider curriculum path.
+Within the red team track itself, the next book is the technologist level, which adds design and integration depth. This technical book ends at procedural competence under an ROE, so design-heavy work waits for that course. Before finishers move on, Sam tells them which habits transfer directly, such as stop discipline and evidence hashing, and which authority does not carry forward to any new engagement. The AI security book named above remains the next title on the wider curriculum path, outside this track.
 
 ### 18.6 Safety cover sheet
 
