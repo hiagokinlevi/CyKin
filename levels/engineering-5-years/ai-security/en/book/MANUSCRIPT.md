@@ -1984,11 +1984,11 @@ The design works even if the classifier does worse in future: prevention carries
 - Controls with unmeasured side effects.
 - Adversarial training claimed to cover attacks outside its threat model.
 
-Keyword filters fail against the simplest variation, as the lab's mixed-case payloads show. Controls deployed without measuring false positives can block legitimate work until users find ways around them. Adversarial training protects within the norm and budget it was trained for, so claims about other attacks need their own tests. Sam's control register records, for each control, the attacks it was tested against and the side effects measured.
+Keyword filters fail as soon as attackers avoid the word, as the lab's invoices, which never say "ignore", show. Controls deployed without measuring false positives can block legitimate work until users find ways around them. Adversarial training protects within the norm and budget it was trained for, so claims about other attacks need their own tests. Sam's control register records, for each control, the attacks it was tested against and the side effects measured.
 
 ### Exercises
 
-- **EX079 — Lab reading.** Compare exfiltration calls for none, keyword, allowlist and separate defences, and explain the keyword result. Rubric: 3 = 17, 10, 0, 0; keyword only catches the "ignore" notes, not obfuscated memos or invoices; 2 = numbers only; 1 = vague; 0 = wrong.
+- **EX079 — Lab reading.** Compare exfiltration calls for none, keyword, allowlist and separate defences, and explain the keyword result. Rubric: 3 = 17, 10, 0, 0; keyword only catches the "ignore" notes, not the invoices; 2 = numbers only; 1 = vague; 0 = wrong.
 - **EX080 — Control set.** Design one preventive, detective and corrective control for TrackEye poisoning. Rubric: 3 = one of each, appropriate; 2 = two; 1 = one; 0 = none.
 - **EX081 — Side effects.** Name two side effects of adversarial training. Rubric: 3 = lower clean accuracy, higher training cost (and robustness only within the threat model); 2 = one; 1 = vague; 0 = wrong.
 
@@ -3978,7 +3978,7 @@ Model answers; any answer meeting the rubric scores equally. Northgate Rail Syst
 
 **EX078.** Hosted: provider's mature operations and patching; no need to secure GPU infrastructure. Self-hosted: data stays within your boundary; versions are fixed and testable under your own authority (also: no terms restricting testing).
 
-**EX079.** None 17, keyword 10, allowlist 0, separate 0. The keyword filter only blocks documents containing "ignore" (the note documents); invoices with plain ACTION lines and obfuscated memos pass, so 10 exfiltration calls remain.
+**EX079.** None 17, keyword 10, allowlist 0, separate 0. The keyword filter only blocks documents containing "ignore" (the note documents); the invoices with plain ACTION lines pass, so 10 exfiltration calls remain (the obfuscated memos are dropped by the stricter parser of the defended modes, not by the filter).
 
 **EX080.** Preventive: labelling contractor accounts can only add labels to assigned batches, and new labels are signed. Detective: sample 5% of contractor labels for expert review and test for trigger-like features. Corrective: retrain from the last verified dataset version and revoke the contractor's access.
 
