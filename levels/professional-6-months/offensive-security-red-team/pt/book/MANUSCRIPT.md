@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Guia para o Profissional
 
 - Idioma: português do Brasil (`pt`); curso profissional, seis meses; aproximadamente 360 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 12 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 5–12 (EX021–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 12 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–12 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: profissionais em início de carreira que entram na equipe de segurança de uma organização.
 - Relação com os livros vizinhos: o [livro do curso rápido](../../../../rapid-1-month/offensive-security-red-team/pt/book/MANUSCRIPT.md) é uma introdução em quatro capítulos; o [livro do técnico](../../../../technical-18-months/offensive-security-red-team/pt/book/MANUSCRIPT.md) se aprofunda em ferramentas e verificação. **Este livro é um guia compacto para o profissional.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
 
-Capítulos 5–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+Capítulos 9–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -302,11 +302,297 @@ Os métodos seguem a ordem do PTES e as ROE; a descoberta só vira constatação
 
 [← Capítulo 03 (rascunho)](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 (rascunho) →](#ch-05)
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Ferramentas e interpretação
+
+### Objetivos de aprendizagem
+
+Você vai (1) tratar scanners como assistentes, e não como juízes; (2) filtrar constatações por confiança e confirmação; (3) explicar falsos positivos e falsos negativos; (4) registrar as versões das ferramentas nas evidências.
+
+### 5.1 As ferramentas ajudam
+
+Scanners e checklists aceleram a descoberta. Eles rotulam errado, perdem o contexto e não conseguem julgar o impacto de negócio. Leo lê todo item mantido: quando o `lab_severity` mantém três de cinco itens, ele ainda abre cada item mantido e pergunta se a HCU deveria agir. Itens que ele não consegue explicar em palavras simples quanto ao impacto sobre os associados voltam para mais validação ou são descartados. Os dois itens descartados, dir-listing e trace-method, são anotados no apêndice de método, para que ninguém se pergunte se foram ignorados. Os scanners ajudam na descoberta; eles não julgam o impacto sobre os associados nem escrevem a recomendação.
+
+### 5.2 Piso de confiança
+
+A HCU descarta itens não confirmados abaixo de um piso de confiança, para que o relatório não seja inflado com ruído.
+
+```python
+"""Lab 5: filter a synthetic tool finding list, dropping noise below a confidence floor."""
+findings = [("open-redirect", 0.9, True), ("dir-listing", 0.4, False),
+            ("outdated-banner", 0.7, True), ("cookie-flag", 0.85, True), ("trace-method", 0.3, False)]
+FLOOR = 0.6
+kept = [(n, c) for n, c, confirmed in findings if c >= FLOOR and confirmed]
+for n, c in kept:
+    print(f"KEEP {n:16} confidence={c}")
+print(f"kept {len(kept)} of {len(findings)}; dropped {len(findings)-len(kept)}")
+```
+
+Execute com `python3 lab_severity.py`. Saída verificada:
+
+```text
+KEEP open-redirect    confidence=0.9
+KEEP outdated-banner  confidence=0.7
+KEEP cookie-flag      confidence=0.85
+kept 3 of 5; dropped 2
+```
+
+Com FLOOR em 0.6, o laboratório mantém open-redirect (0.9), outdated-banner (0.7) e cookie-flag (0.85) e descarta o resto. Dir-listing e trace-method ficam abaixo de 0.6, por isso permanecem no apêndice de saída bruta, e não na lista de constatações, e itens não confirmados abaixo do piso nunca aparecem nos slides executivos. Subir o piso para 0.8 descartaria também o banner. Leo declara o piso nas notas de método, para que os leitores saibam o que foi filtrado.
+
+### 5.3 Falsos positivos e negativos
+
+Um falso positivo desperdiça o tempo de quem corrige; um falso negativo deixa o risco. A amostragem e a validação manual reduzem os dois; nenhum chega a zero. Leo planeja o tempo de validação a partir das taxas históricas de falsos positivos e aceita que algum risco ainda possa escapar. Se os falsos positivos da última revisão se concentraram em uma verificação do scanner, essa verificação ganha tempo extra de validação no ENG-440. Na dúvida, ele valida mais em vez de entregar uma lista maior. Ele diz ao CISO que o relatório contém itens validados, e não que todos os problemas possíveis foram encontrados.
+
+### 5.4 Versões e configurações
+
+Registre o nome da ferramenta, a versão e o perfil junto com as evidências, para que um reteste possa usar a mesma configuração. As evidências de Leo para a constatação do cookie-flag nomeiam o scanner, sua versão e o perfil usado, e o nome do perfil fica registrado no ticket T-15, para que o reteste depois da correção da equipe de segurança de aplicações repita a mesma verificação com as mesmas configurações de varredura. Sem versões, um reteste que falha não consegue dizer se a correção falhou ou se a configuração mudou. Configurações que mudam no meio do engajamento são registradas com o horário da mudança, para que as evidências continuem dizendo qual configuração produziu cada resultado.
+
+### 5.5 O OWASP WSTG como ferramenta de raciocínio
+
+Mesmo sem scanner, o WSTG oferece uma lista estruturada de verificações web, para que a cobertura fique visível. Leo usa uma checklist derivada do WSTG para a homologação do internet banking, para mostrar quais verificações foram executadas e quais estavam fora do escopo. As linhas são marcadas como executada, não executada ou fora do escopo, e cada linha executada aponta para seu arquivo de evidência no cofre. A cobertura que existe só na cabeça dele não pode ser revisada nem retestada. Linhas vazias na checklist são lacunas honestas; inventar cobertura não ajuda ninguém quando os examinadores perguntam o que foi realmente testado.
+
+### 5.6 Interpretar banners
+
+Um banner desatualizado é uma pista, não uma crise. Leo verifica se o serviço está exposto à internet, se a versão é realmente vulnerável e se um WAF ou uma regra de acesso já limita a exposição antes de escrever uma constatação de severidade alta. Na camada de homologação da HCU, um banner desatualizado atrás de regras de acesso pode ter baixa prioridade; o mesmo banner em uma porta administrativa exposta à internet não teria. Para o banner do ENG-440, Leo registra que a homologação fica atrás de regras de acesso, e é por isso que ele não é classificado como alto. Ele escreve esse raciocínio na constatação, para que a severidade não seja um rótulo misterioso desligado do impacto sobre os associados; o contexto transforma uma pista em uma constatação proporcional.
+
+### 5.7 Taxas de base
+
+Se um scanner marca quarenta itens e o histórico mostra que trinta foram falsos positivos, Leo planeja o tempo de validação de acordo: quarenta itens brutos com esse histórico sugerem cerca de dez constatações reais. As taxas de base protegem o cronograma. Ele não promete ao CISO "quarenta constatações" antes da validação, porque isso cria a expectativa errada e pressiona a equipe a manter ruído. O tempo de validação faz parte do orçamento do engajamento, não é hora extra opcional, e Leo promete um conjunto validado com um prazo definido para a confirmação.
+
+### 5.8 Verificações manuais por amostragem
+
+A cada cinco itens automatizados mantidos, Leo valida manualmente, de ponta a ponta e com uma conta autorizada, pelo menos o de maior severidade. As verificações por amostragem detectam erros sistemáticos das ferramentas que uma pontuação de confiança não detecta, porque esses erros aparecem quando um humano repete o caminho. No ENG-440, o `lab_severity` mantém três itens e open-redirect, em 0.9, é o mais alto, por isso Leo percorre esse caminho primeiro, com uma conta autorizada, antes de o relatório ser redigido. Se o percurso do open-redirect falhar, os outros itens mantidos passam pelo mesmo caminho humano antes da redação do relatório.
+
+### Exemplo resolvido (HCU sintética)
+
+Leo filtra a lista sintética: open-redirect, outdated-banner e cookie-flag são mantidos; dir-listing e trace-method são descartados. Ele ainda valida manualmente os três itens mantidos antes que entrem no relatório.
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX021 — Contagem do laboratório.** Quantas constatações o laboratório mantém, e quais são descartadas? *Rubrica:* 3 = 3 mantidas; dir-listing e trace-method descartadas; 2 = só a contagem; 1 = errado; 0 = nada.
+- **EX022 — Subir o piso.** Se FLOOR passar a 0.8, quais itens permanecem? *Rubrica:* 3 = só open-redirect e cookie-flag; 2 = um; 1 = os três; 0 = nada.
+- **EX023 — Falso positivo.** Dê um exemplo de falso positivo na HCU. *Rubrica:* 3 = o scanner aponta um problema que a configuração da homologação mostra estar mitigado; 2 = parcial; 1 = vago; 0 = nada.
+- **EX024 — Falso negativo.** Dê um exemplo de falso negativo na HCU. *Rubrica:* 3 = o problema existe, mas a ferramenta não o detecta (por exemplo, falha na lógica de autenticação); 2 = parcial; 1 = vago; 0 = nada.
+- **EX025 — Nota de versão.** Escreva a linha sobre a ferramenta que Leo acrescenta às evidências. *Rubrica:* 3 = nome, versão, perfil/configurações; 2 = só o nome; 1 = vago; 0 = nada.
+
+### Síntese
+
+As ferramentas propõem; as pessoas decidem — filtrar, validar, registrar versões e só então relatar.
+
+### Continue estudando — capítulo 05 de 12
+
+[← Capítulo 04 (rascunho)](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 (rascunho) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Fluxo de trabalho operacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o fluxo de trabalho do dia do teste, do kickoff ao debrief; (2) manter um registro de atividades contemporâneo; (3) coordenar com o SOC; (4) lidar com uma dúvida de escopo no meio do teste.
+
+### 6.1 A sequência do dia
+
+A chamada de kickoff confirma as ROE e os contatos; os testadores começam apenas dentro da janela; as notas de progresso vão para o canal do engajamento; há uma verificação intermediária com o responsável de produto se algo sensível aparecer; há um debrief no fim do dia; as evidências vão para o cofre. No ENG-440, a sequência de sábado de Leo segue essa ordem. Nada começa antes que o kickoff confirme que as ROE ainda correspondem à cópia assinada, e as evidências vão para o cofre antes de ele ir embora. Desvios da sequência são registrados com um motivo, para que uma revisão posterior veja por quê.
+
+### 6.2 Registro de atividades
+
+Toda ação recebe horário, sistema, método e resultado. O registro defende a equipe se uma indisponibilidade for atribuída aos testes e alimenta o relatório. A linha de registro de Leo inclui horário, host, método e resultado, como uma pausa quando um nome de host parecia ser de produção. Cada linha usa o relógio do jump host, para que as entradas do registro e os alertas do SOC possam ser alinhados depois, sem adivinhar diferenças de horário. Os registros ficam no cofre com as evidências, e não apenas em um histórico de chat que vai rolando para longe. Se o tráfego do dia de pagamento ficar lento, é o registro que mostra se os testes estavam envolvidos.
+
+### 6.3 Coordenação com o SOC
+
+Envie mensagens de início e de fim. Se o SOC vir alertas relacionados, ele liga para o contato de emergência, em vez de bloquear o acesso de Leo sem aviso. A mensagem de início de Leo no ENG-440 sai às 08:05, menciona apenas a homologação e traz o identificador do ticket, o IP de origem e o horário de término, 12:00. Se o SOC ligar por causa do IP dele, ele confirma o ticket, compartilha a janela e reduz o ritmo ou pausa se pedirem; qualquer mudança de ritmo é escrita no registro de atividades com o horário e o nome do analista. Às 12:00, Leo publica o fim no canal do engajamento, com o identificador do ticket, para que o SOC retire o IP dele da lista de observação. Testar em silêncio diante de um SOC atento cria incidentes evitáveis.
+
+### 6.4 Dúvidas no meio do teste
+
+Descobriu um novo nome de host? Pause e pergunte. Não "inclua só desta vez". Às 09:40, Leo encontra um nome de host que pode ser de produção; ele pausa, pergunta ao responsável de produto, descobre que é de homologação, registra a decisão e continua. A resposta do responsável de produto confirmando que o host pertence à homologação é colada no ticket antes de os testes recomeçarem, para que o ENG-440 mostre julgamento sob pressão de tempo, e não um palpite de sorte. A pergunta custa minutos; uma sondagem não autorizada em um host com cara de produção custaria o engajamento. Adivinhar teria sido sair do escopo.
+
+### 6.5 Estado final
+
+Na hora de parar, pare. Verificações inacabadas viram trabalho para a próxima janela ou notas explícitas de falta de tempo — não extrapolações silenciosas. Às 12:00, Leo para, mesmo que uma verificação do WSTG esteja pela metade. A verificação inacabada é listada no relatório com a etapa a que chegou, para que a próxima janela comece dali. O SOC espera silêncio depois da mensagem de fim das 12:00, então qualquer pacote posterior vindo do IP de Leo pareceria um ataque. Extrapolações silenciosas quebram o acordo em que o SOC e o CISO confiaram, e a parada das 12:00 no ENG-440 é a mesma regra que ele pratica no ENG-CLASS-11.
+
+### 6.6 Passagem entre testadores
+
+Se Leo encerra o turno e um colega continua, o registro de atividades e o cofre de evidências são a passagem de bastão. Notas verbais não bastam; o colega precisa ver o que já foi validado, para não retestar de forma destrutiva nem perder uma condição de parada. O colega que abre o cofre deve ver as constatações validadas, as dúvidas em aberto e as condições de parada já atingidas. As notas de passagem nomeiam a próxima ação segura e o que não pode ser repetido, como uma pausa que Leo já acordou. Quando um colega assume no meio da janela, a nota mais o caminho no cofre bastam; Leo não deixa contexto crítico apenas na própria cabeça.
+
+### 6.7 Disciplina no canal de comunicação
+
+O chat do engajamento serve para escopo, paradas e status — não para piadas sobre "hackear o banco". A linguagem casual vaza para capturas de tela e prejudica a confiança se um examinador ler o canal mais tarde. Leo escreve o status em palavras simples e profissionais, com identificadores de ticket, porque capturas de tela do canal podem aparecer nas evidências ou na revisão dos examinadores. As capturas de tela do ENG-440 são limpas de bagunça da área de trabalho e de abas sem relação antes de entrarem no cofre sob o identificador do ticket. A comunicação fica no canal do engajamento; o chat pessoal não é repositório de evidências do ENG-440.
+
+### 6.8 Extensões de janela
+
+Se o trabalho precisar continuar além da janela, Leo para, pede uma extensão por escrito ao CISO e espera a confirmação antes que qualquer outro pacote saia do notebook dele. Um "claro, pode continuar" verbal não basta, nem mesmo vindo do CISO ao telefone. Uma extensão por escrito nomeia o novo horário de término e é arquivada com as ROE antes de o trabalho recomeçar. Se o sábado se estender, o notebook de Leo não envia mais nenhum pacote até que essa extensão exista, porque o SOC e o contato de emergência precisam ver o mesmo relógio que Leo usa.
+
+### Exemplo resolvido (HCU sintética)
+
+Às 08:05, Leo publica "ENG-440 start — staging only" (início do ENG-440, apenas homologação). Às 09:40, ele encontra um nome de host que pode ser de produção; pausa, pergunta ao responsável de produto, descobre que é de homologação, registra a decisão e continua.
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX026 — Mensagem de início.** Quais quatro fatos pertencem à mensagem de início de Leo? *Rubrica:* 3 = ticket/identificador, lembrete do escopo, janela, contato do testador; 2 = três; 1 = um; 0 = nada.
+- **EX027 — Linha de registro.** Escreva uma linha do registro de atividades para uma verificação de sessão do WSTG. *Rubrica:* 3 = horário, sistema, método, resultado; 2 = três; 1 = vago; 0 = nada.
+- **EX028 — Alerta do SOC.** O SOC liga por causa de alertas vindos do IP de Leo. O que ele faz? *Rubrica:* 3 = confirma o teste autorizado; compartilha janela/ticket; ajusta o ritmo se pedirem; 2 = parcial; 1 = ignora; 0 = nada.
+- **EX029 — Novo nome de host.** Qual é o processo correto quando aparece um novo nome de host? *Rubrica:* 3 = pausar; perguntar ao responsável; atualização de escopo por escrito, se necessário; 2 = parcial; 1 = testá-lo; 0 = nada.
+- **EX030 — Hora de parar.** A janela termina com uma verificação inacabada. O que Leo faz? *Rubrica:* 3 = para; anota o item inacabado para a próxima janela; 2 = para; 1 = extrapola; 0 = nada.
+
+### Síntese
+
+O fluxo de trabalho é kickoff, trabalho registrado, visibilidade para o SOC e pausar para perguntar — nunca ampliação silenciosa do escopo.
+
+### Continue estudando — capítulo 06 de 12
+
+[← Capítulo 05 (rascunho)](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 (rascunho) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Controles e verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) sugerir controles compatíveis com as constatações; (2) distinguir controles compensatórios; (3) planejar um reteste; (4) saber quando um controle está verificado.
+
+### 7.1 Associar o controle à constatação
+
+Uma constatação de senha de administrador compartilhada pede contas nominais e cofre de senhas; um open redirect pede destinos em lista de permissões; um atributo ausente no cookie pede o atributo configurado e verificado na CI. Leo escreve cada recomendação de acordo com a constatação: contas nominais na VPN e um cofre para senhas compartilhadas; destinos em lista de permissões para um open redirect; atributos Secure e HttpOnly verificados na CI para o cookie de sessão. A equipe de segurança de aplicações é responsável por Secure e HttpOnly na constatação do cookie-flag, e a linha da recomendação traz esse nome e um prazo. Conselhos genéricos como "endurecer a aplicação" ou "endurecer as sessões" não dizem a um responsável o que mudar.
+
+### 7.2 Controles compensatórios
+
+Quando a correção ideal está a meses de distância, um controle compensatório reduz o risco agora — por exemplo, caminhos administrativos da VPN restritos aos jump hosts enquanto a reutilização de senhas é eliminada. Leo registra o controle compensatório como temporário, com um responsável e uma data para rever a correção ideal, para que ele não se torne permanente por descuido. Restrições temporárias de rede em torno de um banner desatualizado são aceitáveis nos mesmos termos: depois que o banner recebe o patch, as regras de acesso saem do ticket com uma nota de reteste e um registro de horário de retirada. Compensações sem prazo viram dívida esquecida.
+
+### 7.3 Desenho do reteste
+
+Reteste apenas as constatações acordadas, com o mesmo método ou um equivalente, depois que o responsável disser que a correção está no ar. Registre aprovação ou reprovação com evidências. Depois que o responsável diz que os atributos do cookie estão no ar na homologação, Leo repete a mesma verificação com a versão de ferramenta registrada, e a aprovação ou reprovação vai para o ticket com uma captura de tela nova. Ele confere nomes de host, portas e versões de build com a nota de mudança do responsável antes de declarar que um reteste falhou. Um reteste que toque um host fora da lista original do ENG-440 espera uma atualização de escopo por escrito, e retestar constatações sem relação desperdiça a janela.
+
+### 7.4 O que significa verificado
+
+Verificado significa que Leo reproduziu o sintoma original e o viu corrigido (ou confirmou que o controle compensatório funciona), e não que o responsável disse que corrigiu. A confirmação de implantação pelo responsável é necessária, mas não suficiente. Leo ou outro testador precisa ver que o sintoma original sumiu, ou que o controle compensatório funciona, antes de o ticket ser marcado como verificado. As capturas de tela do cookie, de antes e depois, entram no cofre com hash e são vinculadas ao T-15, para que a verificação seja evidência no registro, e não uma garantia verbal de que alguém acha que está corrigido.
+
+### 7.5 Acompanhamento
+
+As constatações viram tickets com responsáveis e datas; a verificação os fecha. Cada constatação da HCU vira um ticket com um responsável e um prazo, e as evidências de verificação o fecham. Tickets sem responsáveis ou datas escondem risco no backlog, e é por isso que o `lab_ticket` do capítulo 10 sinaliza campos incompletos: ele marca o T-15 como incompleto em owner e verified, e o T-18 como incompleto em due date, e esses nunca contam como prontos para fechamento. Toda sexta-feira, Leo abre o rastreador, e campos de responsável ou prazo em branco são escalados na mesma semana, em vez de envelhecerem até virar constatações de exame.
+
+### 7.6 Correções parciais
+
+Às vezes, os responsáveis corrigem um caminho e deixam outro aberto. A checklist de reteste de Leo nomeia cada caminho da constatação original. Um ticket não é fechado até que nenhum dos caminhos listados reproduza o problema ou que um controle compensatório aceito seja verificado. Em um open redirect, Leo lista cada parâmetro e caminho da constatação original; fechar depois de corrigir apenas um deixa os associados expostos nos outros. Se um caminho de redirecionamento continuar aberto depois de uma correção parcial, o CISO o aceita por escrito, com prazo de expiração, ou o ticket permanece aberto no rastreador até que o risco residual tenha responsável ou seja eliminado.
+
+### 7.7 Responsáveis pela verificação
+
+Quem aplica uma correção não deve ser a única pessoa a marcá-la como verificada. Leo ou outro testador retesta; o responsável confirma a implantação. A separação mantém os fechamentos otimistas fora das métricas: "corrigido porque eu implantei" não sobrevive a um reteste separado. A mesma regra vale para Leo, então um colega verifica qualquer controle compensatório que ele tenha aplicado, e o fechamento nunca depende das mesmas mãos que fizeram a mudança. Métricas que contam tickets verificados só depois da assinatura de um testador separado mantêm os números honestos para o CISO e os examinadores.
+
+### 7.8 Vigilância de regressões
+
+Depois de uma correção, Leo pergunta se os caminhos relacionados foram verificados pelo responsável. Um open redirect corrigido que deixa um segundo parâmetro intocado é uma regressão comum; o plano de reteste nomeia os caminhos irmãos quando existem. Quando o responsável corrige um parâmetro de redirecionamento, o plano de reteste de Leo já nomeia os parâmetros irmãos da constatação, e regressões custam menos quando detectadas na mesma janela do que no próximo ciclo de exame. A vigilância de regressões depois do ENG-440 também verifica se os atributos do cookie e as correções de redirecionamento continuam nos builds seguintes. Uma correção que desaparece na próxima implantação da homologação reabre o ticket com o identificador do build anexado.
+
+### Exemplo resolvido (HCU sintética)
+
+Para a senha de administrador compartilhada da VPN, a HCU habilita MFA e contas nominais em duas semanas (ideal) e, enquanto isso, restringe os caminhos administrativos ao jump host (compensatório). Leo retesta os dois.
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX031 — Associação de controle.** Sugira um controle para um open redirect. *Rubrica:* 3 = lista de permissões para os destinos de redirecionamento / remover o parâmetro; 2 = parcial; 1 = "firewall"; 0 = nada.
+- **EX032 — Exemplo compensatório.** Dê um controle compensatório para a reutilização de senhas na administração da VPN. *Rubrica:* 3 = restringir a administração ao jump host / MFA / monitoramento; 2 = parcial; 1 = ignorar; 0 = nada.
+- **EX033 — Gatilho do reteste.** Quando o reteste começa? *Rubrica:* 3 = depois que o responsável confirma a correção no ar / na janela acordada; 2 = parcial; 1 = sempre imediatamente; 0 = nada.
+- **EX034 — Não verificado.** O responsável envia um e-mail dizendo "corrigimos" sem detalhes. Está verificado? *Rubrica:* 3 = não; são necessárias evidências de reteste; 2 = não; 1 = sim; 0 = nada.
+- **EX035 — Escopo do reteste.** Leo pode testar URLs novas sem relação durante o reteste? *Rubrica:* 3 = não; só as constatações acordadas, a menos que o escopo seja ampliado; 2 = não; 1 = sim; 0 = nada.
+
+### Síntese
+
+Os controles correspondem às constatações; os controles compensatórios compram tempo; a verificação é um reteste com evidências.
+
+### Continue estudando — capítulo 07 de 12
+
+[← Capítulo 06 (rascunho)](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 (rascunho) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Análise supervisionada de casos
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um dossiê de caso sintético da HCU; (2) separar fatos de suposições; (3) propor os próximos passos autorizados; (4) escalar quando necessário.
+
+### 8.1 O dossiê do caso
+
+Um pacote sintético contém: um trecho das ROE, três constatações validadas, o registro de atividades e uma nota de que um funcionário reutilizou a senha da VPN em um e-mail pessoal (relatado pelo próprio funcionário). O pacote é rotulado ENG-440 e guardado no cofre, e registra fatos, suposições e ações em linhas rotuladas. A nota sobre a reutilização de senha é marcada como relatada pelo funcionário, e não como algo que Leo descobriu mexendo no e-mail pessoal, que continua fora do escopo. O relatório vai para o CISO como uma questão de conscientização da equipe, porque a reutilização envolve contas fora do engajamento.
+
+### 8.2 Fatos versus suposições
+
+Fato: a reutilização de senha foi relatada. Suposição: um atacante já tem a senha. Leo rotula as suposições com clareza: seu dossiê diz Fato para o relato e Suposição para qualquer afirmação de que um atacante já tem a senha. As suposições podem orientar os próximos passos, mas nunca são escritas como constatações confirmadas. A linha de Suposições da nota do caso diz que ainda não há nenhuma sobre abuso externo, que é tudo o que as evidências sustentam. Se a revisão de logs do SOC mostrar mais tarde sessões incomuns na VPN, a suposição pode passar a Fato, com o trecho do log anexado.
+
+### 8.3 Próximos passos dentro das ROE
+
+Forçar a redefinição da senha da VPN dessa conta; verificar os logs da VPN em busca de sessões incomuns; não tocar no e-mail pessoal (fora do escopo). Leo solicita a redefinição da senha da VPN dessa conta e pede ao SOC que verifique os logs em busca de sessões incomuns. O pedido de redefinição passa por um ticket da central de serviços de TI vinculado ao ENG-440, para que a linha do tempo fique em um só lugar. O e-mail pessoal está fora do escopo, por isso ele não contata o provedor nem pede os logs dessa caixa de entrada. O funcionário que relatou a reutilização troca ele mesmo a senha pessoal; a HCU nunca toca nessa conta.
+
+### 8.4 Escalonamento
+
+O risco de exposição de dados de associados e a reutilização de senhas em serviços pessoais vão para o CISO no mesmo dia. O escalonamento no mesmo dia dá ao CISO tempo para ordenar redefinições de senha da VPN e comunicações antes que o risco se espalhe para além do caso de reutilização relatado pelo funcionário; esperar a reunião semanal de constatações seria lento demais para uma exposição de dados de associados. O CISO recebe a nota por telefone e por e-mail antes do fim do expediente. Leo escala com uma linha do tempo de uma página com os fatos, as suposições rotuladas como suposições e a próxima ação segura, e não apenas com frustração.
+
+### 8.5 Rótulo do ATT&CK
+
+A reutilização de senha que permite acesso à VPN corresponde a T1078 Valid Accounts na busca de detecções do SOC. Leo acrescenta T1078 à nota do caso para que o SOC possa pesquisar com um nome comum. O rótulo descreve o comportamento; ele não prova que um atacante externo esteve envolvido. O SOC usa o nome da técnica para puxar suas detecções de T1078 já existentes para a VPN, em vez de escrever novas às pressas. Se a busca não encontrar nada, o relatório diz que não foram vistas sessões incomuns no período revisado, e não que a conta nunca foi usada indevidamente.
+
+### 8.6 Escrever para o dossiê do caso
+
+As notas de caso usam registros de horário, identificadores de ticket e os rótulos Fato/Suposição/Ação. Uma narrativa livre serve para o resumo, mas são as linhas rotuladas que o CISO e os auditores conseguem percorrer em um minuto durante um incidente. Durante o incidente de reutilização de senha, cada linha rotulada começa com um registro de horário e o identificador do ticket ENG-440, para que o CISO ordene fatos, suposições e ações de relance, sem ler antes uma longa narrativa. Leo ainda escreve um resumo curto para quem precisa da história; ele tem três ou quatro frases e fica acima das linhas rotuladas, nunca no lugar delas.
+
+### 8.7 Hora de escalar
+
+Leo usa uma regra simples: se fundos de associados, dados pessoais em grande escala ou sistemas de segurança física puderem ser afetados, escale em até uma hora. Itens de menor impacto seguem o processo normal de constatações. A reutilização de senha que poderia abrir a VPN entra nessa regra de uma hora, porque dados de associados poderiam vir em seguida. O relógio começa quando Leo lê o relato do funcionário, e a ligação para o CISO é registrada com o horário em relação a esse início. O banner desatualizado de baixo impacto na homologação entra no relatório do ENG-440 com o prazo normal da equipe de segurança de aplicações, e não no telefone do CISO.
+
+### 8.8 Colaboração com o SOC no caso
+
+Leo compartilha a técnica do ATT&CK e o identificador da conta com o SOC, para que ele possa fazer a busca, mas não cola dados pessoais de associados no ticket. As consultas de busca usam o identificador da conta da VPN e o período do ENG-440. O ticket do SOC contém o identificador da conta, o período e T1078, e nada que identifique um associado: nomes, documentos de identidade e números completos de conta ficam fora do ticket do SOC e das capturas de tela de chat. As capturas de tela da busca são recortadas às colunas de sessão antes de entrarem no cofre.
+
+### Exemplo resolvido (HCU sintética)
+
+A nota de caso de Leo: "Fatos: relato de funcionário sobre a senha da VPN reutilizada no e-mail pessoal; constatações F1–F3 validadas. Suposições: ainda nenhuma sobre abuso externo. Ações: redefinição de senha, revisão de logs, briefing ao CISO. Fora do escopo: conteúdo do e-mail pessoal."
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX036 — Extrair fatos.** Liste dois fatos do dossiê do caso. *Rubrica:* 3 = dois itens claramente factuais; 2 = um; 1 = suposição tratada como fato; 0 = nada.
+- **EX037 — Rótulo de suposição.** Reescreva "os atacantes com certeza têm a senha" como uma suposição rotulada. *Rubrica:* 3 = incerteza rotulada; 2 = parcial; 1 = continua categórica; 0 = nada.
+- **EX038 — Ação fora do escopo.** Por que não ler o e-mail pessoal do funcionário? *Rubrica:* 3 = fora do escopo / sem autorização / privacidade; 2 = parcial; 1 = deveria ler; 0 = nada.
+- **EX039 — Escalar no mesmo dia.** O que dispara o escalonamento ao CISO no mesmo dia neste caso? *Rubrica:* 3 = risco da reutilização de credenciais para a VPN/serviços dos associados; 2 = parcial; 1 = vago; 0 = nada.
+- **EX040 — ATT&CK.** Qual nome de técnica ajuda o SOC a buscar detecções para este caso? *Rubrica:* 3 = T1078 Valid Accounts; 2 = só o nome; 1 = errado; 0 = nada.
+
+### Síntese
+
+O trabalho de caso separa fatos de suposições, age apenas dentro do escopo e escala o risco real no mesmo dia.
+
+### Continue estudando — capítulo 08 de 12
+
+[← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX020 (as de EX021–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). A Harborline Credit Union, Leo Okonkwo e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). A Harborline Credit Union, Leo Okonkwo e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Arquitetura, monitoramento de segurança e resposta a incidentes (aplicação de patches e treinamento da equipe também contam).
 
@@ -347,6 +633,46 @@ Respostas-modelo para EX001–EX020 (as de EX021–EX060 estão na edição em i
 **EX019.** Demonstrar o efeito de segurança com a menor ação necessária e parar — sem acessar sistemas ou dados adicionais.
 
 **EX020.** Permitido em "testes web autenticados" contra o sistema de homologação do internet banking, que está no escopo.
+
+**EX021.** Mantém 3 de 5; descarta dir-listing e trace-method.
+
+**EX022.** open-redirect (0.9) e cookie-flag (0.85); outdated-banner (0.7) é descartado.
+
+**EX023.** Um scanner relata listagem de diretório, mas o servidor de homologação devolve uma página de login para esse caminho quando verificado com uma conta autorizada.
+
+**EX024.** Uma falha de controle de acesso em uma página de transferência que nenhum scanner verifica, porque exige uma sessão válida de associado e etapas de negócio.
+
+**EX025.** "OWASP ZAP 2.15, perfil de varredura de API 'HCU-staging-auth', executado em 2026-10-18 por Leo Okonkwo."
+
+**EX026.** Identificador do engajamento, sistemas no escopo, janela de horário e um contato acessível do testador.
+
+**EX027.** "09:12 staging.examplebank.test — verificação de expiração de sessão do WSTG — cookie persistiu após o logout — evidência E14."
+
+**EX028.** Confirmar que se trata do ENG-440, compartilhar a janela das ROE e o ticket e reduzir o ritmo ou pausar se o SOC pedir.
+
+**EX029.** Pausar os testes desse nome, perguntar ao responsável de produto ou ao CISO e continuar só depois de uma decisão de escopo registrada.
+
+**EX030.** Parar no horário, registrar a verificação inacabada e agendá-la apenas dentro de uma nova janela autorizada.
+
+**EX031.** Colocar os destinos de redirecionamento em lista de permissões ou remover os redirecionamentos controlados pelo usuário.
+
+**EX032.** Restringir as interfaces administrativas da VPN à rede do jump host e exigir MFA enquanto as senhas compartilhadas são substituídas por senhas únicas.
+
+**EX033.** Depois que o responsável declara que a correção foi implantada e dentro da janela de reteste registrada no ticket.
+
+**EX034.** Não. A verificação exige as evidências do reteste de Leo, não apenas um e-mail.
+
+**EX035.** Não. O reteste fica nas constatações acordadas, a menos que uma extensão de escopo por escrito diga o contrário.
+
+**EX036.** As ROE excluem o e-mail pessoal; um funcionário relatou ter reutilizado a senha da VPN no e-mail pessoal.
+
+**EX037.** "Suposição (não confirmada): a senha também pode ser conhecida por outras pessoas se o e-mail pessoal tiver sido comprometido; ainda não há evidência nos logs da HCU."
+
+**EX038.** O e-mail pessoal está fora da autorização da HCU e dos limites de privacidade; a HCU pode redefinir as próprias credenciais de VPN sem lê-lo.
+
+**EX039.** Uma senha de VPN exposta fora da HCU poderia permitir que alguém alcançasse serviços da equipe; esse risco precisa de visibilidade imediata do CISO.
+
+**EX040.** T1078 Valid Accounts.
 
 <a id="references"></a>
 ## Referências
