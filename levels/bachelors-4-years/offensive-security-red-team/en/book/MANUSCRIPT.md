@@ -1959,57 +1959,89 @@ You will (1) analyse synthetic TRB cases; (2) separate fact/guess; (3) escalate 
 
 ROE excerpt, logs, findings draft, staff report of password reuse.
 
+A foundational case gives learners a closed world they can reason about without inventing facts. The packet contains only what the team would really have: a page of the rules of engagement, a slice of VPN and application logs, a draft finding and a short staff report that a password was reused. Nothing else is fair game. Learners must label what they know, what they guess and what they would do next, which trains the habit of not filling gaps with confident fiction. The same packet is reused across cohorts so facilitators can compare how different groups handle the same evidence.
+
 ### 20.2 Labels
 
 Fact / Guess / Action lines.
+
+Every statement in a case discussion is labelled as a Fact drawn from the packet, a Guess that goes beyond it, or an Action the team would take next. Facts can be checked against the packet. Guesses are allowed but capped, because an unlimited guess list becomes an attribution story. Actions must be ones the rules of engagement would permit. The labels slow the conversation down just enough to stop a room from sliding into unverified narrative. When two people disagree, they first check whether they are arguing about a Fact or a Guess.
 
 ### 20.3 Escalation
 
 Possible payment integrity impact → same-day CISO.
 
+Escalation criteria are written before the case starts, so urgency is not negotiated in the heat of discussion. At TRB, anything that could affect payment integrity, customer fund movement or the availability of online banking escalates to the CISO the same day, even if the evidence is still incomplete. The case packet includes a staff report of password reuse on a payments-adjacent jump host, which meets that bar. Learners practise writing the escalation note: what was observed, what is still unknown, what has been stopped and what decision is needed. Practising the note on a synthetic case makes the real one faster.
+
 ### 20.4 Out of scope
 
 Personal email content stays untouched.
+
+The staff report mentions that the reused password was also used for a personal mailbox. That detail is a temptation. Reading the personal mailbox might reveal more about the person, and it is outside every professional and legal boundary of the engagement. The case teaches the refusal explicitly. Learners may recommend that the staff member change personal passwords and may offer guidance, but they may not request or accept access to personal accounts. Writing that refusal into the Action lines is part of a passing case write-up.
 
 ### 20.5 ATT&CK
 
 Tag techniques for SOC hunting.
 
+When the case produces a finding, learners tag it with the ATT&CK techniques it demonstrates, such as Valid Accounts for the reused password on the jump host. The tags give the SOC a starting point for hunts: look for other logins with that account, or for lateral movement from that host after the login. Tags are not decoration. A finding without a technique tag is harder to turn into detection work. Facilitators check that tags match the evidence, not a favourite technique the learner wanted to mention.
+
 ### 20.6 Blameless
 
 Focus on systems and process.
 
-### 20.7 20.7 Applied note
+The staff member who reused a password made a mistake, and the useful questions are about the system that allowed that mistake to matter: was a shared admin password still in use, did the jump host accept password authentication, did leaver and rotator processes miss it. A blameless write-up names the person only as far as the packet requires and spends its energy on controls. Blame-centred write-ups produce defensive colleagues and unchanged systems. Facilitators redirect any Action line that starts with punishing someone toward an Action that changes a control.
+
+### 20.7 Banning untimed drama
 
 Facilitators ban timeline adjectives like "suddenly" unless a timestamp exists. Sam's case notes now lead with UTC times from logs, then narrative. Guess lines may not carry timestamps pretending to be facts.
 
-### 20.8 20.8 Case clock
+Words such as suddenly, immediately and eventually smuggle a timeline into the story without evidence. A log line at 21:14 and another at 21:47 support a gap of thirty-three minutes. Suddenly supports whatever the speaker feels. Leading with timestamps forces the narrative to fit the evidence. A Guess about what happened in the gap stays a Guess, without a fake clock attached.
+
+### 20.8 Stating the log timezone on page one
 
 Every case packet states the timezone of log lines on page one. Sam lost an hour once to silent UTC; the cover line prevents it.
 
-### 20.9 20.9 Guess budget
+Log lines that look local and are actually UTC, or the reverse, create phantom gaps and overlapping events that send a team down the wrong path. The cover line is boring and non-negotiable: all timestamps in this packet are UTC, or all are America/New_York. When two log sources use different zones, both are stated and one is converted in a working note, never silently in someone's head.
+
+### 20.9 A budget of three guesses
 
 Each case may carry at most three Guess lines. Excess guesses become homework to gather facts.
 
-### 20.10 20.11 Scene
+Unlimited guessing turns a case into creative writing. Three guesses are enough to capture the most important uncertainties without letting the discussion live there. When a fourth guess appears, the facilitator asks what Fact would resolve it and assigns that as homework: which log, which owner, which query. The budget trains people to notice when they are inventing, and to prefer a small investigation over a large story.
+
+### 20.10 Removing an unearned attribution
 
 Case night: a Guess line about "APT29" is removed for lack of evidence. The room groans and then writes better Fact lines about VPN logs. Attribution theatre is addictive; the bell helps.
 
-### 20.11 20.12 Extension
+Naming a well-known actor feels like expertise. Without matching tooling, infrastructure or intelligence reporting in the packet, it is a Guess that steals attention from what the logs actually show. Removing it is unpopular for a minute and productive afterwards. The VPN Facts that replace it usually matter more for the bank's next action than any actor name would have.
+
+### 20.11 Two facts instead of an APT guess
 
 Guess budget forced a team to replace an APT guess with two VPN log facts. The case got less cinematic and more true.
 
-### 20.12 20.14 Note 11
+The two Facts were that the account logged in from a new device fingerprint and that the same account then reached the jump host within four minutes. Those Facts support Actions: disable the account, review other logins from that device, check whether MFA was satisfied. The APT Guess supported only a feeling of importance. Less cinematic is the standard the bank needs when real money and real customers are involved.
+
+### 20.12 ISO-8601 on the cover
 
 Timestamp cover lines use ISO-8601 with offset; "morning" is banned.
 
-### 20.13 20.16 Pad
+Morning means different hours to different readers and disappears under timezones. An ISO-8601 timestamp with an offset, such as 2026-03-04T21:14:00Z, means one moment. The ban on vague time words applies to Guess and Action lines as well as Facts. If a learner does not know the time, they write that they do not know, which is itself useful information.
+
+If a learner only knows that something happened in the morning, the Fact line says the time is unknown and the Guess line, if any, stays clearly separate. Pretending precision is worse than admitting a gap.
+
+### 20.13 Checking cover lines in CI
 
 ISO-8601 cover lines are validated by a regex in the case packet CI.
 
-### 20.14 20.18 Final
+Packets live in a small repository. A continuous-integration check fails the build when page one lacks a line matching the timestamp pattern, or when banned words such as morning appear in Fact lines. The check is petty on purpose. Facilitators should spend their attention on reasoning quality, not on catching formatting drift. Automation handles the boring correctness.
+
+When the check fails, the error message shows the expected cover-line pattern and the list of banned words, so authors can fix the packet without asking a facilitator.
+
+### 20.14 Fact-line workshops
 
 Fact-line workshops ban adjectives for twenty minutes. Only nouns, verbs, numbers and timestamps. The constraint feels artificial and produces the cleanest case packets of the term. Sam keeps a trophy packet from last year as the standard.
+
+The constraint feels game-like and resets habits formed by thriller writing and incident movies. After twenty minutes the group usually produces a packet that a night-shift analyst could act on without asking what the adjectives meant. The trophy packet is reused as the bar for later cohorts.
 
 ### Worked example (synthetic TRB)
 
