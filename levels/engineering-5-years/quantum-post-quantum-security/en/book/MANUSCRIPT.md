@@ -818,27 +818,39 @@ You will (1) classify data by confidentiality lifetime; (2) distinguish encrypti
 
 The key input to quantum risk is how long data must stay secret. BPA's container manifests matter for weeks; customs declarations for 25 years; employee records for decades. Classify data by lifetime first; the migration order follows.
 
+Lifetime is set by the business and the law, not by IT. For customs declarations, the 25 years comes from retention and commercial sensitivity rules, so the data owner signs off the figure. Manifests that lose value after the ship sails can stay on current cryptography until the normal refresh, freeing effort for the long-lived classes. Recording the source of each lifetime makes later challenges easy to answer.
+
 ### 13.2 At rest, in transit, in backups
 
 Bulk data at rest is usually encrypted with symmetric algorithms (AES-GCM), which are not seriously threatened by quantum computers at 256-bit keys. The danger is in **how symmetric keys are protected**: if a data key is wrapped with RSA or transmitted over an ECDH-protected channel that an adversary recorded, the data inherits that vulnerability. Backups and archives copied to third parties extend exposure.
+
+Tracing each data key from creation to every place it is wrapped or sent is the way to find these hidden dependencies.
 
 ### 13.3 Envelope encryption
 
 Cloud key-management services encrypt data with a data key and wrap the data key with a master key. If the master key is symmetric and stays inside the service, quantum risk is low; if keys are exchanged between parties using RSA-OAEP or ECDH (as in many document-encryption formats), the wrap is the weak point. Post-quantum KEMs can replace those wraps — the CMS standard now has a [KEM-based mechanism](https://www.rfc-editor.org/rfc/rfc9629.html) (RFC 9629).
 
+The migration replaces only the wrap, so stored data does not need re-encryption.
+
 ### 13.4 Database and replication links
 
 Database replication across sites often runs over TLS. Recorded replication streams of a 25-year customs database are a prime harvest target, making replication links early hybrid-TLS candidates.
 
+Replication volume is large and steady, which makes it attractive to an adversary who can tap a single fibre route. Unlike browser traffic, both ends belong to BPA, so hybrid TLS can be enabled as soon as both database servers' libraries support it, with no partner coordination. The change is tested by checking the negotiated group on the replication session, then watching replication lag for a week to confirm the larger handshake has no operational effect.
+
 ### 13.5 Worked example
 
 BPA's customs archive: AES-256-GCM at rest (acceptable), data keys wrapped by an on-premises KMS with an AES master key (acceptable), nightly replication to a disaster-recovery site over TLS 1.2 with ECDHE (vulnerable to harvest), and exports to the national customs agency as RSA-encrypted files (vulnerable). Priorities: replication link and export format.
+
+The two priorities differ in who must act. The replication link is internal, so BPA can switch it to hybrid TLS within one maintenance window. The export format needs the customs agency to accept a new file format, for example CMS with ML-KEM under RFC 9629, which means a joint test plan and an agreed date. Starting that conversation now matters more than any internal change.
 
 ### 13.6 Common errors and limits
 
 - Replacing AES "because quantum" while leaving RSA key wraps.
 - Ignoring backup and export paths.
 - Not classifying data lifetime before prioritizing.
+
+AES-256 already resists Grover in practice, so replacing it spends money where there is no gap, while RSA-wrapped keys leave the actual gap open. BPA's own archive analysis found its two vulnerable paths in replication and exports, not in storage. Classifying data lifetime first avoids migrating month-long manifests ahead of 25-year customs records, and gives the data owners a figure they can defend in audit.
 
 ### Exercises
 
@@ -865,27 +877,39 @@ You will (1) manage requirements, design, implementation and testing in a migrat
 
 A migration is a software project: requirements (which functions must become quantum-resistant, by when), design (hybrid or pure PQC, which libraries), implementation, testing, staged release and maintenance. Cryptographic changes are high-impact and low-visibility: if wrong, they fail silently or catastrophically.
 
+Silent failure is the more dangerous of the two: a service that quietly falls back to classical key exchange looks healthy while recording continues to expose its traffic. For that reason BPA's requirements state measurable outcomes, such as the negotiated group logged per session, so testing can show the change actually took effect.
+
 ### 14.2 Review
 
 Every cryptographic change gets review by someone with cryptographic knowledge, plus tests for interoperability. Checklists ask: are algorithm identifiers from policy? Are lengths validated? Are comparisons constant-time? Is the library version pinned and supported?
+
+BPA keeps a small pool of reviewers who have completed cryptographic training, and every change touching the `Signer` or KEM interfaces requires one of them. The checklist is stored with the code, and each item maps to an automated test where possible, for example a test that fails when a key length is accepted without validation. Reviewers then spend their time on design questions that tests cannot answer.
 
 ### 14.3 SBOM and CBOM
 
 An SBOM lists components and versions. A CBOM extends this to cryptographic assets: algorithms, parameter sets, key lengths, protocols, certificates and where keys live. Formats such as CycloneDX support CBOM fields. A CBOM is the basis for answering "where do we use RSA?" in minutes rather than months.
 
+BPA generates the CBOM in the build pipeline, so every release carries a fresh inventory. A query for RSA across all CBOMs, filtered to keys with lifetimes over ten years, produced the first work items for signature migration.
+
 ### 14.4 Staged releases
 
 Use feature flags for algorithm choices, canary deployments with measured failure rates (Chapter 37) and rollback plans. Keep both old and new algorithms available during transition.
 
+A flag lets the team turn the hybrid group off for one path in minutes, as in the shipping-line portal case, without redeploying code. The canary step size starts small, such as 1% of traffic, and grows only after the failure bound from the rule of three falls under the agreed budget. Each step's data is kept, so a later incident can be compared against the baseline from the rollout.
+
 ### 14.5 Worked example
 
 BPA's portal team adds hybrid TLS behind a flag, runs interoperability tests against the top 50 partner clients, deploys to 1% of traffic, monitors failures and promotes in steps. The CBOM is updated automatically from build metadata so the inventory stays current.
+
+Choosing the top 50 partner clients covers most of the portal's traffic, so a fault there would show up quickly in the canary. Each promotion step needs a minimum number of connections without failure, which the team computes before rollout. The automated CBOM update meant the security office could report the change to the board the same week it reached full traffic.
 
 ### 14.6 Common errors and limits
 
 - Cryptographic changes merged without specialist review.
 - CBOMs built once by hand and never updated.
 - Big-bang releases without flags.
+
+Merges without review have shipped draft-era Kyber code into production in other organizations; BPA's rule that interface changes need a trained reviewer prevents that. Hand-made CBOMs are out of date within a release cycle, so the build generates them. Big-bang releases remove the chance to catch the middlebox faults that canaries find at 1% of traffic, and they make rollback an all-or-nothing choice.
 
 ### Engineering note
 
@@ -916,27 +940,39 @@ You will (1) apply confidentiality, integrity and availability to cryptographic 
 
 Confidentiality is threatened by recorded key exchanges; integrity and authenticity by future signature forgery on long-lived documents and firmware; availability by migration itself — oversized messages, incompatible clients, expired certificates. A plan that improves confidentiality but causes outages has failed on availability.
 
+BPA's plan therefore lists, for each change, which property it improves and which it puts at risk. Hybrid TLS on the portal improves confidentiality and risks availability through larger handshakes; ML-DSA on bills of lading improves long-term integrity and risks availability for partners whose software cannot yet verify it. Each risk gets a mitigation, such as a canary or a dual-signature period.
+
 ### 15.2 Security categories
 
 NIST defined five post-quantum security categories by comparison with the cost of breaking symmetric primitives: category 1 is at least as hard as key search on AES-128, category 3 as AES-192, category 5 as AES-256; categories 2 and 4 compare with SHA-256 and SHA-384 collisions. ML-KEM-512/768/1024 target categories 1/3/5 ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)). CNSA 2.0 requires the category-5 sets (ML-KEM-1024, ML-DSA-87) for national-security systems.
+
+BPA does not handle national-security systems, so category 3 is its default, with category 5 only where data lifetimes are longest. The extra bytes of the larger sets are paid only where they buy something.
 
 ### 15.3 Attack models
 
 **Passive recording now, decryption later** threatens confidentiality of anything protected by vulnerable key exchange today. **Active attacks with a quantum computer** — impersonating a server by forging signatures — require the CRQC to exist at the time of attack, so signature migration is less urgent for short-lived authentication but urgent for long-lived roots of trust. **Forgery of archived signatures** threatens documents whose signatures must remain meaningful for years.
 
+Matching each BPA system to these models sets priorities: customs replication falls under the first, partner TLS authentication under the second, and bills of lading under the third.
+
 ### 15.4 Defence in depth
 
 Hybrid key exchange is defence in depth across assumptions: an attacker must break both the traditional and the post-quantum component ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)). Agility is defence in depth across time: if one algorithm weakens, replace it quickly.
 
+The two forms work together. Hybrid key exchange protects BPA if a flaw is found in ML-KEM, because X25519 still holds against classical attackers. Agility protects BPA if both weaken over time, since the policy file can switch algorithms without code changes. Neither helps if keys are stored carelessly, so storage controls remain a separate layer.
+
 ### 15.5 Worked example
 
 BPA's bills of lading are signed with ECDSA and must be verifiable for 12 years. A CRQC within 12 years would allow forging a bill dated in the past unless the document carries a post-quantum signature or a trusted timestamp chain that is itself migrated. Priority: high — integrity of legal documents over long periods.
+
+A trusted timestamp proves the document existed before a given date, so even a later forgery cannot be backdated past the stamp. BPA's choice is to re-stamp archived bills with a post-quantum timestamp authority and to sign new bills with ML-DSA-65, whose 3,309-byte signatures fit easily within document files.
 
 ### 15.6 Common errors and limits
 
 - Treating PQC as confidentiality-only.
 - Choosing category 5 everywhere without considering size and performance.
 - Forgetting availability.
+
+Treating PQC as a confidentiality problem only leaves bills of lading and firmware open to future forgery. Category 5 everywhere adds bytes and computation, for example ML-KEM-1024's 1,568-byte key against 768's 1,184, without a matching need for most BPA data. Availability failures, such as a middlebox rejecting large handshakes, can undo the whole programme's credibility. A plan that names its availability risks and mitigations up front keeps the support of operations teams when the first incident happens.
 
 ### Exercises
 
@@ -963,27 +999,39 @@ You will (1) apply a systems lifecycle to a multi-year migration; (2) manage int
 
 A port-wide migration spans concept (why and what), requirements, architecture, implementation, integration, verification, validation, operation and retirement. Lifecycle standards such as ISO/IEC/IEEE 15288 describe these processes. Cryptographic migration differs from most system changes because it touches every interface at once and because partners outside the organization must change in step.
 
+For BPA, retirement is a real phase: RSA keys and certificates must be withdrawn and old algorithms disabled once every partner has moved, otherwise downgrade paths remain open indefinitely. Planning retirement from the start, with a target date per interface, keeps the programme from ending with both old and new algorithms permanently enabled.
+
 ### 16.2 Interfaces and dependencies
 
 BPA depends on shipping lines (VPN peers), the customs agency (export formats), vendors (appliances, HSMs, crane firmware) and browser makers (TLS clients). An interface control document lists, per interface, the current algorithms, the target, who must change and by when. Dependencies explain schedules better than effort estimates.
+
+For the customs export, the control document records RSA-OAEP today, CMS with ML-KEM-768 as target, the customs agency as the party that must change first, and a date agreed in a joint letter. A dependency like this sets the schedule regardless of how quickly BPA's own developers finish their part.
 
 ### 16.3 Trade studies
 
 A trade study compares options against weighted criteria. For BPA's VPN: (a) hybrid IKEv2 with ML-KEM now, (b) wait for vendor native support, (c) add a pre-shared-key layer as an interim mitigation. Criteria: security gain, availability risk, cost, partner readiness, standards conformance. Weights come from requirements, not preference.
 
+Fixing weights before scoring stops a team from adjusting them to favour the option it already prefers. BPA's team publishes the weights in the requirements review, scores each option independently, and then checks whether a modest change in any weight would change the winner. If it would, the result is recorded as close, and the decision cites the deciding factor explicitly.
+
 ### 16.4 V&V planning
 
 Verification asks "did we build it right?" (requirements met); validation asks "did we build the right thing?" (stakeholder needs met). Plan both before implementation: for example, verify that the VPN negotiates ML-KEM-768 or stronger in every tunnel, and validate that shipping-line operations continue without delay.
 
+Verification here is a log query: every tunnel's negotiated algorithm is recorded and any tunnel without ML-KEM-768 or stronger fails the check. Validation needs the shipping lines' operations staff, who confirm that document exchange times and connection setup are unchanged after cut-over. Writing both checks before implementation ensures the logging needed for verification is built in.
+
 ### 16.5 Worked example
 
 The trade study scores option (a) highest on security and standards, (b) highest on availability, (c) as a cheap interim. Decision: (c) immediately for the two highest-value partners, (a) in a pilot with one partner, (b) for others when vendors deliver — documented with review dates.
+
+Each option has a review date so the decision does not freeze: the pilot is reviewed after three months to decide whether (a) can extend to more partners, and the interim pre-shared keys are rotated and checked at the same time. Writing these dates down turns a compromise into a plan that moves forward.
 
 ### 16.6 Common errors and limits
 
 - Planning migration as an internal project when partners must change too.
 - Trade studies with weights chosen after scoring.
 - V&V invented after deployment.
+
+Partners own half of every external interface, so a plan with only internal tasks will stall at the first VPN or export format. Weights chosen after scoring make the trade study an argument for a decision already taken. V&V invented after deployment usually lacks the logs needed to verify anything, as the tunnel algorithm check showed.
 
 ### Engineering note
 
@@ -1014,27 +1062,39 @@ You will (1) model a migration programme as a feedback loop; (2) choose leading 
 
 A feedback loop measures output, compares it with a set point and adjusts input. In migration, the "output" is protected share of traffic and assets; the set point is the target trajectory; the input is engineering effort and rollout pace. Without measurement there is no control — only hope.
 
+BPA's set point is a trajectory, for example 50% of external key exchanges hybrid by the end of the first year and 90% by the end of the second. The monthly comparison of measured against planned share drives the next month's allocation of effort.
+
 ### 17.2 Indicators
 
 **Lagging** indicators show results: percentage of key exchanges negotiated with hybrid groups, share of certificates with post-quantum signatures, unknown-asset share. **Leading** indicators predict results: vendors with committed PQC roadmaps, CBOM coverage, test-environment readiness. A dashboard needs both.
+
+Lagging indicators confirm progress but arrive too late to change course; leading indicators warn early. If CBOM coverage stalls at 71%, the protected-share figure will look fine while unknown assets remain unmeasured. Pairing each lagging indicator with the leading one that drives it lets managers act before the result shows up. Every indicator has a definition and a data source written down, so two teams cannot report it differently.
 
 ### 17.3 Stability
 
 Over-correction causes oscillation: enabling hybrid groups everywhere after a good week, rolling back everywhere after a bad day. Control theory suggests damping — smaller steps, delays for measurement and hysteresis (different thresholds for promoting and rolling back).
 
+In practice, BPA promotes a rollout step only after a week of clean data and rolls back only if the failure bound exceeds twice the budget. The gap between those thresholds is the hysteresis: a single bad day inside the band triggers investigation, not a reversal. Faults are also scoped, so a problem on one path is handled on that path alone.
+
 ### 17.4 Rollout gates as controllers
 
 A canary gate is a simple controller: increase exposure when the failure rate's upper confidence bound is below budget, hold otherwise, roll back only when a higher threshold is crossed. Chapter 37 implements one.
 
+The thresholds come from the failure budget. With a budget of 10^-5 and the rule of three, a step needs about 300,000 clean connections before promotion. A rollback threshold set higher than the promotion threshold prevents the gate from switching back and forth when the measured rate hovers near the budget. Logging each decision with its data lets reviewers check the controller behaved as designed.
+
 ### 17.5 Worked example
 
 BPA's dashboard shows hybrid negotiation at 62% of portal traffic (lagging) and CBOM coverage at 71% of assets (leading). Unknown assets are 18%. The control action: raise inventory effort on unknown assets rather than push portal traffic higher, because the larger risk sits where nothing is measured.
+
+The 18% unknown assets could hold systems with 25-year data that no rollout touches, so finding them reduces more risk than pushing portal traffic from 62% to 80%. The next month's plan assigns two engineers to inventory and sets a target of halving the unknown share.
 
 ### 17.6 Common errors and limits
 
 - Dashboards with only lagging indicators.
 - Rolling back globally for local faults (over-correction).
 - Measuring configured rather than negotiated algorithms.
+
+A dashboard with only negotiation percentages cannot warn that inventory has stalled. Global rollbacks discard progress made on every healthy path. Measuring configured algorithms counts servers where hybrid is enabled but never negotiated, for example because clients do not offer it; BPA reads the negotiated group from session logs, which is the only figure that reflects real protection of traffic, and compares it each month with the configured share.
 
 ### Engineering note
 
@@ -1065,27 +1125,39 @@ You will (1) identify trust boundaries and where cryptography enforces them; (2)
 
 Draw every boundary where data crosses between trust domains: internet to portal, BPA to shipping line, terminal network to crane network, BPA to customs agency. At each boundary, list the cryptographic functions: key establishment, authentication, integrity, confidentiality at rest. That list is the architecture's skeleton.
 
+At the crane-network boundary, for instance, the list contains firmware signature verification and the VPN to the vendor's maintenance service. Writing it down revealed that the vendor link used a pre-shared key and RSA authentication, which the original inventory had missed because the link was managed by the vendor. Each boundary's list becomes a set of rows in the interface control document.
+
 ### 18.2 Cryptographic services
 
 Centralize where possible: a TLS termination layer, a PKI with an HSM-backed CA, a key-management service, a signing service for firmware and documents. Centralization turns migration of one service into migration for many consumers. Decentralized cryptography — each application with its own library and keys — multiplies the work.
+
+BPA's edge proxy terminates TLS for all its public services, so enabling the hybrid group there protected every one of them in one change. By contrast, internal services that each embed a library require a separate project apiece. The architecture direction is therefore to route new services through shared components and to record any exception with its reason and an expiry date.
 
 ### 18.3 Crypto-agility as architecture
 
 NIST's crypto-agility white paper ([CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1)) describes agility as the capability to replace algorithms in protocols, applications, software, hardware and infrastructure while preserving security and operations. Architecturally this means: algorithm choices in policy, not code; protocols that negotiate algorithms securely; certificate and key lifecycles short enough to rotate; and inventory that shows where everything is.
 
+Each element can be tested: a policy change should switch algorithms in a test environment without a code change; certificate lifetimes should be short enough to replace all of them within a planned window.
+
 ### 18.4 Hybrid placement
 
 Decide where hybrids apply: key exchange at every external TLS and VPN boundary first; signatures for long-lived roots and firmware next; internal service-to-service traffic by data lifetime. Record the decision and its review date.
 
+The order follows Mosca's inequality: external key exchange first because recorded traffic is exposed now, then long-lived signatures because roots and firmware must outlast a CRQC, and internal traffic last if it carries short-lived data. A service carrying customs records moves up the list even if it is internal. The review date forces a fresh look as libraries and partners become ready.
+
 ### 18.5 Worked example
 
 BPA's target architecture: hybrid TLS at the edge proxy and partner VPNs; a new PQC-capable HSM for the CA; LMS-signed crane firmware via a central signing service with state management; ML-DSA for bills of lading with timestamping; policy-driven algorithm selection in internal services.
+
+Each element maps to an earlier decision: hybrid TLS from the portal rollout, the HSM from the CA plan, LMS from the crane controller's 32 KB constraint and timestamped ML-DSA from the bills-of-lading analysis. Writing the architecture this way shows reviewers where each choice came from, and which earlier decision to revisit if a constraint changes.
 
 ### 18.6 Common errors and limits
 
 - Architecture diagrams with no cryptographic functions marked.
 - Each team choosing algorithms independently.
 - Agility claimed but key lifetimes of 20 years.
+
+Without cryptographic functions on the diagrams, the vendor VPN and the export format stay invisible until an incident. Independent choices produce several post-quantum libraries and parameter sets that must each be maintained. A 20-year key lifetime means agility exists only on paper, because rotation would take longer than the threat timeline allows. BPA caps new key lifetimes so that every key can be replaced within two years.
 
 ### Engineering note
 
@@ -1116,9 +1188,11 @@ You will (1) explain digital signatures, certificates and PKI hierarchies; (2) u
 
 A signature binds a message to a key; a certificate binds a key to an identity, signed by a certificate authority (CA); a chain leads to a root trusted by relying parties. Roots often live 20+ years, so a root key that a future CRQC could forge undermines every certificate beneath it.
 
+Leaf certificates last about a year and are replaced routinely, so their algorithm can change at the next renewal. The root is different: relying parties must receive and trust a new root before any certificate it issues is accepted, which takes years for partners and devices. That is why BPA creates its post-quantum root first.
+
 ### 19.2 Hash-based signatures from first principles
 
-A Lamport one-time signature publishes hashes of two random secrets per message-digest bit and reveals one secret per bit when signing. Security needs only a one-way hash. Using a key twice reveals both secrets at many positions, enabling forgery. Merkle trees combine many one-time keys under one public key; LMS and XMSS ([RFC 8554](https://www.rfc-editor.org/rfc/rfc8554.html), [RFC 8391](https://www.rfc-editor.org/rfc/rfc8391.html), [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) do this statefully; SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) avoids state by using a hypertree with few-time signatures at the leaves, at the cost of larger signatures.
+A Lamport one-time signature publishes hashes of two random secrets per message-digest bit and reveals one secret per bit when signing. Security needs only a one-way hash. Using a key twice reveals both secrets at many positions, cutting the forger's work sharply; a few more uses make forgery practical. Merkle trees combine many one-time keys under one public key; LMS and XMSS ([RFC 8554](https://www.rfc-editor.org/rfc/rfc8554.html), [RFC 8391](https://www.rfc-editor.org/rfc/rfc8391.html), [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) do this statefully; SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) avoids state by using a hypertree with few-time signatures at the leaves, at the cost of larger signatures.
 
 ### 19.3 Practical activity — Lab L
 
@@ -1140,7 +1214,7 @@ print("valid signature verifies:", verify(pk, b"firmware v1.0", s1))
 print("tampered message rejected:", not verify(pk, b"firmware v1.1", s1))
 s2 = sign(sk, b"firmware v1.1")          # KEY REUSE: never do this
 revealed = sum(1 for i in range(256) if bits_of(b"firmware v1.0")[i] != bits_of(b"firmware v1.1")[i])
-print(f"after one reuse, both secrets revealed at {revealed}/256 positions -> forgeries become feasible")
+print(f"after one reuse, both secrets revealed at {revealed}/256 positions -> forging needs ~2^{256 - revealed} hashes, not 2^256")
 print("signature size:", 256 * 32, "bytes; public key:", 2 * 256 * 32, "bytes")
 ```
 
@@ -1149,9 +1223,11 @@ Expected output:
 ```text
 valid signature verifies: True
 tampered message rejected: True
-after one reuse, both secrets revealed at 118/256 positions -> forgeries become feasible
+after one reuse, both secrets revealed at 118/256 positions -> forging needs ~2^138 hashes, not 2^256
 signature size: 8192 bytes; public key: 16384 bytes
 ```
+
+The output shows both the scheme's strength and its fragility. A valid signature verifies and a changed message fails, using nothing but SHA-256. After one reuse, the two digests differ at 118 positions, where both secrets are now public; a forger needs a message whose digest matches the 138 remaining positions, about 2^138 hashes. Each further reuse halves the unknown positions on average, so after three signatures roughly 64 remain, within reach of large computations. The sizes, 8 KB per signature, explain why practical schemes compress Lamport keys with Winternitz chains and Merkle trees.
 
 ### 19.4 The standardized options
 
@@ -1162,15 +1238,21 @@ signature size: 8192 bytes; public key: 16384 bytes
 | LMS, XMSS (SP 800-208) | Hashes, stateful | Small / ~1–3 kB typical | State must never repeat; firmware |
 | FN-DSA (Falcon) | NTRU lattices | ~900 / ~666 at level 1 | Standard (FIPS 206) in development |
 
+For BPA the table points to ML-DSA for general signing, LMS for firmware where state can be managed, and SLH-DSA where the signature size matters less than conservative assumptions. FN-DSA is noted for future use once FIPS 206 is final, since its small signatures suit constrained links. The choice for each use is recorded with the size figures from the table so later reviewers can check them.
+
 ### 19.5 Worked example
 
 BPA's PKI plan: a new ML-DSA-87 root (or a composite traditional+PQC root, depending on relying-party support) created now and distributed; intermediates migrated over the next certificate cycle; LMS for firmware signing with HSM-protected state; SLH-DSA considered for a rarely used offline root because of its conservative assumption.
+
+Distributing the new root takes time, so it is created before the intermediates need it; a root created in the first year can be in partners' trust stores by the time leaf certificates migrate. The offline root signs rarely, so SLH-DSA's large signatures matter little, while its reliance on hashes alone gives assurance if lattice schemes are weakened.
 
 ### 19.6 Common errors and limits
 
 - Reusing one-time or stateful keys (state rollback after a backup restore is a classic failure).
 - Migrating leaf certificates while leaving a vulnerable long-lived root.
 - Quoting FN-DSA as a final standard.
+
+Restoring a signing server from backup can reset the LMS counter, so the same one-time key signs two messages, exactly the reuse Lab L shows; BPA's HSM keeps the state and refuses to roll back. A post-quantum leaf under an RSA root still fails if the root can be forged. FN-DSA should be planned for, not deployed, until its standard is final.
 
 ### Exercises
 
@@ -1197,9 +1279,13 @@ You will (1) explain the quantum threat to deployed cryptography precisely; (2) 
 
 Shor's algorithm breaks RSA, finite-field Diffie–Hellman, DSA, ECDSA, EdDSA, ECDH and X25519 — every widely deployed public-key algorithm. Grover's algorithm weakens symmetric ciphers and hashes only modestly; AES-256 and SHA-384/SHA-512 remain conservative choices. So migration is about *public-key* cryptography: key establishment and digital signatures.
 
+This divides BPA's inventory into two lists. Every RSA, ECDSA, ECDH and X25519 use needs replacement or a hybrid. AES-256 and SHA-384 uses need no change, and AES-128 can move to AES-256 during routine refresh. Keeping the lists separate stops the programme spending its first year on symmetric changes that reduce little risk.
+
 ### 20.2 Prioritizing with Mosca
 
 For each system, estimate *x* (how long its data or signatures must remain secure), *y* (how long migration will take) and treat *z* (time until a CRQC) as a range. If *x* + *y* > *z* for plausible *z*, the system is already late ([Mosca 2018](https://doi.org/10.1109/MSP.2018.3761723)). BPA's customs data (*x* = 25) is late under any plausible range; the container-tracking feed (*x* ≈ 0.1) can follow the normal technology cycle.
+
+For customs data, x = 25 and migration may take y = 5 years, so any CRQC arriving before thirty years from now exposes some of today's records.
 
 ### 20.3 Standards and policy, with status
 
@@ -1209,15 +1295,21 @@ NIST published ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)), ML-DS
 
 The NCCoE's [Migration to Post-Quantum Cryptography project](https://www.nccoe.nist.gov/crypto-agility-considerations-migrating-post-quantum-cryptographic-algorithms) runs two workstreams with industry collaborators — cryptographic discovery (inventory tools that support risk-based prioritization) and interoperability testing of the standardized algorithms in common protocols. Engineering work packages for BPA: inventory (CBOM), requirements, architecture, vendor engagement, pilots, rollout, verification and agility.
 
+The work packages run partly in parallel: inventory and vendor engagement start immediately because they set the pace for everything else. Pilots begin as soon as one library and one partner are ready, while verification is planned from the start.
+
 ### 20.5 Worked example
 
 BPA's initial priority list: (1) customs replication and exports — confidentiality, *x* = 25; (2) partner VPNs — recorded traffic includes commercial terms, *x* = 10; (3) PKI root and firmware signing — long-lived trust; (4) public portal — hybrid TLS available cheaply; (5) internal short-lived telemetry — later.
+
+The order follows x: the 25-year customs data first, then the 10-year commercial terms on the VPNs. The PKI root ranks third despite less sensitive data because it must be distributed long before use. The portal ranks fourth only because hybrid TLS there is cheap and quick. Telemetry with short lifetimes waits for normal library updates.
 
 ### 20.6 Common errors and limits
 
 - Migrating symmetric cryptography first.
 - Treating policy dates as quantum forecasts.
 - Using vendor names ("Kyber") for final standards ("ML-KEM").
+
+Symmetric-first migration spends effort where Grover has little effect while Shor-vulnerable key exchange keeps leaking recorded traffic. Policy dates such as CNSA 2.0 deadlines reflect planning, not predictions of a CRQC, and should not be read as forecasts. Draft names cause interoperability errors because draft Kyber and final ML-KEM differ, so inventories record final names and the standard each refers to, such as FIPS 203 for ML-KEM.
 
 ### Exercises
 
