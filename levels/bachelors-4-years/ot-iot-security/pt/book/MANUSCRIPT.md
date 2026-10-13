@@ -461,10 +461,6 @@ Para o PLC-H, que não consegue autenticar clientes Modbus, esse é todo o argum
 
 O quadro 2 escreve o valor 300 no registrador 100; o quadro 3 é uma escrita de vários registradores começando em 200. Observe que o decodificador imprime o endereço inicial e o primeiro argumento, mas não sabe o que o registrador 100 *significa* — isso vem do mapa de registradores do CLP, que é documentação da planta, e não protocolo. No mapa de registradores da LDHP, o registrador 100 guarda o setpoint de temperatura de ida em décimos de grau, de modo que o valor 300 significa 30,0 °C, muito abaixo do ponto de operação de 90 °C. Essa é a diferença entre "escrever um único registrador" e "possível perda de calor". A nota de Maya acrescenta uma coluna de mapa de registradores exatamente por isso, e marca a escrita de vários registradores do quadro 3, em 200, como inexplicada até que o mapa diga o que os registradores a partir de 200 controlam.
 
-### Exemplo resolvido (LDHP sintética)
-
-No mapa de registradores da LDHP, o holding register 100 é o setpoint de temperatura de ida em décimos de grau. O quadro 2, portanto, define 30,0 °C — muito abaixo do ponto de operação de 90 °C. Sozinho, o decodificador de protocolo teria relatado "escrever um único registrador, endereço 100, valor 300"; só o mapa de registradores converte isso em "setpoint para 30 °C, possível perda de calor". Maya acrescenta uma coluna de consulta ao mapa de registradores no seu caderno de análise exatamente por esse motivo.
-
 > **Caso sintético — Lakeside District Heating Plant.** Os quadros do laboratório foram compostos à mão; nenhum dispositivo ou rede foi contatado.
 
 ### Erros e limites
@@ -1782,11 +1778,7 @@ A LDHP tem uma janela de manutenção mensal de quatro horas. Os patches são te
 
 ### 29.4 Exercícios de mesa
 
-Um exercício de mesa ensaia um cenário no papel: quem é chamado, o que é decidido, que informação está faltando. Ele revela lacunas sem arriscar o processo. O exercício de mesa da LDHP começou a partir de um alerta às 02:10 numa noite de janeiro: uma escrita Modbus no registrador 100 do PLC-H feita por 10.20.4.17 na VLAN do escritório. O analista ligou para o líder de turno às 02:12, o operador restabeleceu o setpoint para 90 °C às 02:15 e o líder de turno aprovou o bloqueio do endereço às 02:18. A lacuna encontrada foi banal e importante: ninguém tinha o telefone noturno do administrador do firewall. Um incidente real teria encontrado a mesma lacuna com menos tempo para corrigi-la.
-
-### Exemplo resolvido (LDHP sintética)
-
-Cenário do exercício de mesa: às 02:10 numa noite de janeiro, o monitor alerta "escrita Modbus no registrador 100 do PLC-H a partir de 10.20.4.17 (VLAN do escritório)". Roteiro: o analista liga para o líder de turno (02:12); o operador confirma que o setpoint de ida mudou para 30 °C e restabelece 90 °C (02:15); o líder de turno aprova o bloqueio de 10.20.4.17 no firewall (02:18); começa a coleta de evidências. Lacuna encontrada: ninguém tinha o telefone noturno do administrador do firewall.
+Um exercício de mesa ensaia um cenário no papel: quem é chamado, o que é decidido, que informação está faltando. Ele revela lacunas sem arriscar o processo. O exercício de mesa da LDHP começou a partir de um alerta às 02:10 numa noite de janeiro: uma escrita Modbus no registrador 100 do PLC-H feita por 10.20.4.17 na VLAN do escritório. O analista ligou para o líder de turno às 02:12, o operador confirmou que o setpoint de ida tinha mudado para 30 °C e restabeleceu 90 °C às 02:15, e o líder de turno aprovou o bloqueio do endereço às 02:18, depois do que começou a coleta de evidências. A lacuna encontrada foi banal e importante: ninguém tinha o telefone noturno do administrador do firewall. Um incidente real teria encontrado a mesma lacuna com menos tempo para corrigi-la.
 
 > **Caso sintético — Lakeside District Heating Plant.** Os horários, os endereços e a lacuna são inventados.
 
