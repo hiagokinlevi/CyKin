@@ -690,7 +690,7 @@ GW-LOG   -> PLC-R1    :502  UNAPPROVED
 approved but not seen: [('HMI-C', 'PLC-R2', 502)]
 ```
 
-O laboratório compara esses quatro fluxos aprovados com cinco conversas observadas. Os fluxos aprovados são a HMI-C para cada CLP, o historiador consultando o PLC-R1 e o GW-LOG para a nuvem na 443. O Capítulo 27 mostra depois que faltava na lista a consulta do historiador ao PLC-R2, um fluxo aprovado que ninguém tinha anotado.
+O laboratório compara esses quatro fluxos aprovados com cinco conversas observadas. As duas linhas não aprovadas, OFFICE-7 conversando com o PLC-R2 e GW-LOG alcançando o PLC-R1, são as primeiras a investigar, enquanto o fluxo HMI-C para PLC-R2 não visto pode simplesmente não ter ocorrido durante a captura. O Capítulo 27 mostra depois que faltava na lista a consulta do historiador ao PLC-R2, um fluxo aprovado que ninguém tinha anotado.
 
 ### 12.2 Fluxos não aprovados
 
