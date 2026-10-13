@@ -251,7 +251,7 @@ En Millbrook el expediente de entrega del contratista del BMS es el punto de par
 
 ### 4.6 Columna de consecuencia
 
-Escriba con palabras sencillas la consecuencia clínica de cada dispositivo, acordada con los responsables de mantenimiento y clínicos, para que las prioridades queden claras a quienes no son especialistas. Por ejemplo: AHU-OT1, el quirófano 1 pierde el control de presión; MGAS-PANEL, el personal no recibe aviso de un fallo en el suministro de oxígeno; LIFT-CTRL, traslados de pacientes entre plantas con retraso. La columna determina después el orden del trabajo en el informe de riesgos, así que su redacción debe ser clara para directivos que nunca han visto las instalaciones. Revise la redacción cada año.
+Escriba con palabras sencillas la consecuencia clínica de cada dispositivo, acordada con los responsables de mantenimiento y clínicos, para que las prioridades queden claras a quienes no son especialistas; como señala la sección 4.1, es el campo que indica la urgencia de un hallazgo. Por ejemplo: AHU-OT1, el quirófano 1 pierde el control de presión; MGAS-PANEL, el personal no recibe aviso de un fallo en el suministro de oxígeno; LIFT-CTRL, traslados de pacientes entre plantas con retraso. La columna determina después el orden del trabajo en el informe de riesgos, así que su redacción debe ser clara para directivos que nunca han visto las instalaciones. Revise la redacción cada año.
 
 ### Ejemplo resuelto (Millbrook sintético)
 
