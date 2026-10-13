@@ -2492,9 +2492,13 @@ You will (1) redesign CNHP's coverage UI against under-claim principles; (2) def
 
 Stakeholders want a big green percentage. Design a UI that shows planned/observed/not-seen and refuses a single security score.
 
+At ABP the plant manager first asked for one percentage that would show whether CNHP was working. Lena's team explained that any single figure would mix observed techniques, conduit drift and SIS-B reachability, which need different owners and different budgets. The resulting screen gives each measure its own line with its denominator visible, and the planned-but-not-seen techniques are listed by id so the manager can ask which ones matter before approving the next phase.
+
 ### 35.2 Copy
 
 71% of planned ICS techniques observed — not a residual-risk score. Button: export denominator. Show SIS reachable? as a separate yes/no.
+
+Lena's team tested this wording with the plant manager and two shift leads before release. One shift lead read an early draft that said only seventy-one percent and assumed the plant was seventy-one percent safe, which is exactly the misreading the caveat prevents. The export button produces the list of the 44 planned techniques with each marked observed or not seen, and the SIS-B line never shows a percentage, because reachability is either true or false on the day of the check.
 
 ### 35.3 Review
 
@@ -2502,9 +2506,13 @@ Reviewers try to force a red/yellow/green risk badge; studio must hold the line 
 
 > **Synthetic case — Ashford Batch Plant.** Studio II killed the badge; the dashboard lists planned-not-seen techniques by id and SIS reachability separately.
 
+Critics in the studio argued that executives would not read a list. Lena's team answered with the manager's actual decision: which conduits to fund and close next, which a colour cannot express. The removed badge also had no defined rule for turning yellow, so two reviewers had already disagreed about its colour on the same data. Replacing it with named items ended that argument and gave each item an owner.
+
 ### 35.4 Errors and limits
 
 Dark patterns (just for executives) reintroduce empty scores — reject in CODEOWNERS for UI.
+
+At ABP a later request asked for an executive-only summary view with a single coloured dial. Lena's team declined it during code review, citing the studio decision and the measurement rules, and offered instead a one-page export with the same three numbers and their denominators. Requiring a code owner to approve every change to the dashboard interface means this argument is settled by a named reviewer who knows the history, rather than reopened quietly by whoever edits the screen next.
 
 ### Practice note
 
@@ -2517,6 +2525,8 @@ Under-claiming metrics must still be readable: large type for the fraction, plai
 
 
 Narrative exports generated from the same query as the UI paste into reports without screenshot ambiguity. Hiding the caveat in a tooltip reintroduces the empty-score problem for anyone who does not hover.
+
+Lena checks every release against the export.
 
 ### Field note — CFO explain task
 
@@ -2577,9 +2587,13 @@ cycle budget 100 ms -> fits
 cycle budget 50 ms -> fits
 ```
 
+At ABP the RS-485 trunk to PLC-A runs a 21 ms polling cycle inside a 100 ms control cycle, and the stop condition fires if cycle time reaches 50 ms. Lena sizes the monitor so that tapping, decoding and logging add nothing to the wire time, because the tap is passive and the decoder runs on its own host. Load tests on the bench replay a full day of captured traffic at double speed to confirm the decoder never falls behind the trunk.
+
 ### 36.2 Assessment traffic
 
 When active methods are authorized, rate-limit them so they cannot starve control traffic. Prefer listen-only methods; when you must poll, share a global budget across scanners.
+
+During CNHP assessment windows at ABP, only one active tool may poll the trunk at a time, and its request rate is written in the permit before it starts. Passive discovery from the tap covers most of the inventory, so active polling is limited to the few devices that do not speak on their own. Each tool reports its rate to the shared budget, and the window lead can pause all active methods with one switch if cycle time rises.
 
 ### 36.3 Canaries
 
@@ -2587,9 +2601,13 @@ A synthetic canary request or cycle-time probe every minute tracks health; stop 
 
 > **Synthetic case — Ashford Batch Plant.** With 21 ms cycles on the RS-485 trunk, Lena left headroom under 50 ms so a decode spike would not trip the stop.
 
+The canary at ABP reads one harmless status register on PLC-A every minute and records the response time beside the trunk cycle time. If either moves toward its threshold, the window lead is paged before the stop condition is reached, which gives time to pause active work calmly instead of reacting to an automatic stop.
+
 ### 36.4 Errors and limits
 
 Distributed scanners need a coordinated global budget or they N× the limit.
+
+At ABP two scanners once ran from different hosts, each within its own rate, and together exceeded the trunk budget. Lena moved the budget to a single coordinator that grants tokens to every scanner, so the total stays within the permit no matter how many tools are running. A scanner that cannot reach the coordinator is not allowed to send anything, which keeps the failure safe rather than letting each tool fall back to its own limit.
 
 ### Practice note
 
@@ -2602,6 +2620,8 @@ When several methods share one budget, a noisy enumerator can starve a quiet con
 
 
 Document who may raise a rate limit and which AUTH ticket type is required. Separate budgets for quiet versus noisy methods so a hungry enumerator cannot starve config review work.
+
+Lena enforces both budgets in the coordinator.
 
 ### Field note — warm-up schedule
 
@@ -2638,9 +2658,13 @@ You will (1) write a window runbook; (2) hand over between shifts; (3) manage cl
 
 Contacts, work-permit pointer, tool versions, stop conditions, escalation tree, evidence paths. Keep it short enough to use under stress.
 
+Lena's ABP runbook fits on four printed pages. It names the window lead and the control engineer, links the work permit and lists the versions of each tool allowed. Stop conditions, including cycle time at 50 ms, are on the first page, followed by the escalation tree and the location of the evidence folder. Runbook v1.4 added the kill-switch file path after the tabletop found it missing, and every change since is recorded in the version history.
+
 ### 37.2 Handover
 
 Shift log: open findings, last event ids, pending approvals, kill-switch state, process alarms during the window. Verbal handover plus the log.
+
+At ABP the outgoing lead reads the shift log aloud to the incoming lead and both initial it. The log lists open findings with owners, the last event ids recorded by the monitor, any approvals still pending, whether the kill switch is armed, and any process alarms raised during the window. Speaking the items aloud catches entries one person thought obvious and the other had never seen, such as a temporary rule awaiting removal.
 
 ### 37.3 Close-out
 
@@ -2673,9 +2697,13 @@ deferred: ['historian DB patch']
 
 > **Synthetic case — Ashford Batch Plant.** Close-out caught the deferred historian patch still without a date — escalated before the retro.
 
+Lena's close-out checklist is run by two people and its result is stored with a hash. A historian patch had been deferred during the window with no date, so the checklist flagged it and the patch received an owner and a date before the retrospective met.
+
 ### 37.4 Errors and limits
 
 Runbooks in wikis nobody can access from the control room fail; keep an offline copy.
+
+At ABP the control room lost network access to the wiki during one window, and the lead needed the escalation tree immediately. Since then, the latest runbook is printed and kept in a folder beside HMI-1, and a copy sits on the engineering workstation for offline use. Each printed copy carries its version number, and the close-out checklist confirms the paper copy matches the current version, so an old procedure is not followed by mistake during an incident.
 
 ### Practice note
 
@@ -2688,6 +2716,8 @@ Windows belong on a shared calendar with work-permit version in the description.
 
 
 Store the close-out checklist result hash so incomplete close-outs cannot be marked done quietly. Handover includes reading the last ten monitor denies aloud to the incoming lead.
+
+Lena checks the calendar at every handover. Overlaps are logged as findings.
 
 ### Field note — offline kit
 
@@ -2728,9 +2758,13 @@ You will (1) validate fixes with re-tests; (2) avoid validation that reintroduce
 
 Same vantage, least privilege, same evidence standard. For an allow-list fix: confirm the write is denied on the bench; do not spray writes at the live PLC.
 
+When the HIST-1 allow-list was tightened at ABP, Lena re-tested from the same jump host and account used for the original finding. She replayed a function 16 write to the bench copy of PLC-A and confirmed the monitor denied it with the expected reason code. The live check was read-only: she compared the deployed allow-list version with the bench version rather than sending writes toward production equipment.
+
 ### 38.2 Negative results
 
 Still open is a valid validation outcome. Finding stores must accept it without forcing close.
+
+At ABP the re-test of shared engineering passwords found they were still in use on two workstations, so the finding stayed open with new evidence attached. Lena's finding store allows a re-test to record still open with a date and a reason, and the owner receives a new deadline. Forcing every re-test to close a finding would encourage reviewers to mark fixes done when they are only partly applied.
 
 ### 38.3 No new methods
 
@@ -2738,9 +2772,13 @@ Validation uses the method that found the issue, or a weaker read-only check —
 
 > **Synthetic case — Ashford Batch Plant.** Re-test of the L4 to L2 rule: reachability now excludes L1-SIS; ticket closed with export hash. A separate finding on shared eng passwords stayed open.
 
+Lena's validation plan names the original method in the ticket before the re-test starts. When a reviewer suggested trying a new fuzzing tool during validation, she logged it as a proposal for the next assessment instead.
+
 ### 38.4 Errors and limits
 
 Different environment (bench vs plant) means you validated the bench.
+
+At ABP, Lena's allow-list fix was first validated on the bench copy of PLC-A, and the ticket said so. A separate read-only check confirmed that the production monitor was running the same allow-list version, and only then was the finding marked fixed in production. Reports keep the two results apart, because a bench pass cannot show that the plant's configuration matches the bench, and some differences, such as firmware revisions, would change the result.
 
 ### Practice note
 
@@ -2753,6 +2791,8 @@ Validation tickets link to the original finding, the method used, the timestamp 
 
 
 When many similar findings share a root cause, re-test a sample plus the originally reported assets, and say so. Adjudicator decisions are final for the window and may only be appealed in the retrospective.
+
+Lena's tickets carry all four fields.
 
 ### Field note — sample re-test
 
