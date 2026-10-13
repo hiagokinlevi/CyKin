@@ -1025,25 +1025,37 @@ You will (1) use a development lifecycle that builds in security; (2) apply code
 
 Coastline plans, designs, builds, tests, releases and maintains ticket-web in two-week iterations. Security activities sit in each step rather than at the end.
 
+Spreading security across the steps means problems are caught where they are cheapest to fix. In planning, the team asks who may use a feature; in design, which trust boundaries it crosses; in building, whether review covered input handling; in testing, whether abuse cases were tried. Maintenance includes watching advisories for components already released. Two-week iterations keep each change small enough to review properly, and a flaw found late in one iteration can be fixed early in the next.
+
 ### 14.2 The SSDF
 
 NIST SP 800-218 (Souppaya et al., 2022) organises secure development practices into four groups: Prepare the Organization (PO), Protect the Software (PS), Produce Well-Secured Software (PW) and Respond to Vulnerabilities (RV). Kwame maps Coastline's activities to these groups to find gaps.
+
+The four groups cover more than coding. PO asks whether people, roles and tools are in place; PS whether source and releases are protected from tampering; PW whether design, review and testing produce sound code; RV whether flaws found after release are handled. Coastline's signed releases fall under PS, its review checklist under PW and its advisory check under RV. Activities with no group, or groups with no activity, both prompt questions.
 
 ### 14.3 Code review
 
 Every change is reviewed by another engineer. A checklist prompts reviewers to look at input handling, authorisation and new dependencies.
 
+A second engineer catches mistakes the author cannot see because they know what the code is meant to do. The checklist keeps reviews from focusing only on style. New dependencies are listed explicitly, because a single line in a manifest can bring in dozens of transitive packages, as the graph lab showed. Reviews of security-sensitive files, such as authorisation rules and pipeline configuration, require a reviewer from a named group of experienced engineers.
+
 ### 14.4 Continuous integration
 
 Each change runs tests, static analysis, the dependency name check (chapter 7) and an advisory check. Failures block merging.
+
+Running checks automatically on every change means they cannot be forgotten under deadline pressure. Blocking merges makes the result binding rather than advisory. The cost is occasional false alarms, which slow work if they are frequent, so the team tracks how often a failure turns out to be wrong and tunes the checks. A check that is regularly overridden is either fixed or removed, since ignored alarms train people to ignore real ones.
 
 ### 14.5 Dependency policy
 
 New dependencies need a reason, an owner and a check of maintenance activity. Kula et al. (2018) found that developers often do not update dependencies, so each dependency's owner is responsible for keeping it current.
 
+Maintenance activity is checked because an abandoned package will not receive fixes when flaws are found. The reason is recorded so that, years later, the team can tell whether the dependency is still needed. Owners receive the advisory alerts for their packages and plan upgrades. When an owner leaves Coastline, their packages are reassigned during the handover, so no dependency ends up without anyone responsible for it.
+
 ### 14.6 Release
 
 Releases are built by CI, signed, and recorded with their digests.
+
+Building releases only in CI means no artifact comes from a developer's laptop, where unreviewed changes or local tools could slip in. The signature lets deployment confirm that the artifact came from Coastline's pipeline. The recorded digest ties the release to the exact bytes built, which is what the mirror check compares against. Each release record also lists the source commit and the SBOM, so anyone can trace a running version back to the code and components it contains. A release lacking any of these records is not deployed.
 
 ### Definition of done
 
@@ -1089,21 +1101,31 @@ You will (1) explain confidentiality, integrity and availability for application
 
 Confidentiality keeps rider data private; integrity ensures tickets and prices are not altered and that deployed code is what was built; availability keeps ticket sales running. Supply-chain attacks are mainly integrity attacks on code.
 
+The three properties can conflict. Strict checks that stop every unsigned artifact protect integrity but may block an urgent release if signing is broken, harming availability. Teams decide in advance which property wins in which situation. For ticket-web, integrity of deployed code comes first, since a tampered release could harm every rider at once, while a short delay to a release affects nobody's safety.
+
 ### 15.2 Assets and threats
 
 Assets: payment tokens, rider accounts, the build pipeline, signing keys. Threats: criminals seeking payment data, fraudsters seeking free tickets, attackers targeting the pipeline to reach many riders.
+
+Listing assets first prevents the team from focusing only on threats they find interesting. The build pipeline and signing keys appear because they let an attacker reach every rider through one compromise. Each threat is linked to the assets it wants: criminals to payment tokens, fraudsters to ticket and price logic, pipeline attackers to signing keys. Motivation helps predict effort; fraudsters probing for free tickets are numerous but rarely sophisticated.
 
 ### 15.3 OWASP Top 10:2021
 
 The ten categories are Broken Access Control, Cryptographic Failures, Injection, Insecure Design, Security Misconfiguration, Vulnerable and Outdated Components, Identification and Authentication Failures, Software and Data Integrity Failures, Security Logging and Monitoring Failures, and Server-Side Request Forgery. The tmpl advisory relates to Vulnerable and Outdated Components (A06); the mirror mismatch to Software and Data Integrity Failures (A08).
 
+The categories are ranked by data from many organisations and include both specific mistakes and broad design problems. They are useful for training and for sorting findings, as Kwame's classification later shows. Each category links to further guidance, and the matching ASVS chapters give testable requirements.
+
 ### 15.4 Controls
 
 Preventive (validation, least privilege), detective (logs, advisory checks) and corrective (patching, rollback).
 
+Each type answers a different question. Preventive controls stop something happening, such as validation rejecting a bad zone. Detective controls tell the team it happened, such as the advisory check spotting a vulnerable component already deployed. Corrective controls restore a good state, such as rolling back to the previous signed release. A plan with only preventive controls has no answer when prevention fails, which it eventually will. For the tmpl advisory, Coastline used all three: review rules for template use, the daily advisory check and a fast upgrade.
+
 ### 15.5 Defence in depth
 
 No control is perfect; layers mean one failure does not lead to disaster.
+
+For ticket-web, the template flaw shows the idea. Escaping in tmpl failed for some attributes, but validation had already limited what users could put in most fields, and the web application firewall at the edge blocked some common attack patterns. None of these layers alone was complete. Together they meant that the flaw, although real, was much harder to misuse. Layers should fail for different reasons; three copies of the same check add little, because one bypass defeats all of them.
 
 ### Security requirements early
 
@@ -1149,25 +1171,37 @@ You will (1) treat an application and its pipeline as one system; (2) define sys
 
 ticket-web is not just code: it includes the source repository, CI, artifact storage, deployment, servers, third-party services (payments, maps) and the people who operate them. A weakness anywhere can affect riders. Systems engineering looks at all parts together and at how they connect.
 
+Treating the system as a whole reveals risks that no single team sees. The developers may write careful code while the deployment tool accepts any artifact, or the servers may be hardened while the CI system holds production credentials. Kwame's diagram shows people as well as machines, since an engineer with deployment rights is part of the path from source to rider.
+
 ### 16.2 Boundaries
 
 Kwame draws the system boundary: Coastline controls source, CI, mirror and servers; the payment provider and public registry are outside. Interfaces across the boundary (registry downloads, payment API calls) are where trust must be checked, because Coastline cannot inspect what happens beyond them.
+
+Drawing the line makes ownership clear: inside it, Coastline can inspect, test and change things; outside it, Coastline must rely on contracts, checks and evidence supplied by others. The public registry is a good example: Coastline cannot audit every maintainer, so it checks hashes, mirrors approved versions and watches advisories.
 
 ### 16.3 Interfaces
 
 Each interface has an owner and a contract: what is sent, how it is authenticated, what happens on failure. The registry interface's contract says downloads must match lockfile hashes; the payment interface's says requests are signed and responses verified.
 
+The failure clause matters most and is often forgotten. If the payment API times out, ticket-web must not issue a ticket as if payment had succeeded. If a lockfile hash does not match, the build stops rather than continuing with a warning. Owners update contracts when either side changes and confirm that tests still exercise each clause.
+
 ### 16.4 Traceability
 
 Requirements such as "only reviewed code is deployed" are traced to the components that enforce them (repository branch protection, CI policy, deployment check) and to tests that prove them. A requirement with no traced component is a gap.
+
+The table runs in both directions. From a requirement, the team finds the controls and tests; from a component, it finds the requirements that depend on it, which shows what is at risk if that component is changed or removed. Auditors use the same table to pick samples, so keeping it current saves effort during reviews.
 
 ### 16.5 Change management
 
 Changes to one part, such as a new CI runner, are checked for effects on others. A change board reviews changes to the pipeline itself, since a pipeline change can affect every future release.
 
+The board does not slow ordinary code changes, which go through normal review. Pipeline changes get extra scrutiny because they change how every later change is checked: a mistake in the CI policy could let unreviewed code through for weeks before anyone notices. Each approved pipeline change has a rollback plan.
+
 ### 16.6 Interfaces as risk
 
 Many supply-chain attacks in the Ladisa et al. (2023) taxonomy target interfaces between stages: source to build, build to distribution, distribution to install.
+
+At each handover, one stage trusts what the previous stage produced. If source is altered after review, the build compiles the altered code faithfully. If a build is compromised, distribution publishes the result. If a distribution channel is hijacked, installers receive the substitute. Checks at each interface, such as signed commits, provenance and signature verification at install, break this chain of assumed trust. Coastline's traceability work focuses on these handovers first, since an unchecked interface lets one compromise pass silently into every later stage.
 
 ### Worked example
 
@@ -1205,25 +1239,37 @@ You will (1) explain feedback loops in engineering; (2) apply feedback to securi
 
 A controller measures an output, compares it with a target and adjusts. A thermostat measures temperature and switches heating. Security processes are loops too: measure open advisories, compare with targets, adjust effort.
 
+Every loop has four parts: a sensor that measures, a target, a comparison and an actuator that changes something. If any part is missing, the loop does not work. A dashboard nobody reads has a sensor without comparison; a target nobody acts on has comparison without an actuator. Kwame checks each security process for all four parts.
+
 ### 17.2 The advisory loop
 
 Coastline's target: no critical advisory open more than 7 days. Each morning, the advisory check reports open items; the team adjusts priorities. The loop's sensor is the SBOM-based check (chapter 24); its actuator is engineering time.
+
+The target is simple enough that everyone knows whether it is being met. The daily report is the comparison, and the morning stand-up is where effort is adjusted. If the SBOM is wrong, the sensor misreads, and the loop steers confidently in the wrong direction, so SBOM accuracy is checked as part of the loop.
 
 ### 17.3 Delays
 
 Feedback with long delays causes trouble. If the advisory report were monthly, problems would be found late and fixes would come in bursts. Daily reports shorten the loop.
 
+Delay hides problems and also makes responses overshoot. With a monthly report, a team sees many advisories at once and rushes to fix them all, then has little to do until the next report. Daily reports spread the work evenly. The delay that matters is the whole path from advisory publication to the team noticing, not just how often the report runs.
+
 ### 17.4 Oscillation
 
 Overreacting causes swings: one week everyone drops features to fix low-severity items, the next week nothing gets fixed. Clear thresholds and steady capacity keep the loop stable.
+
+Swings waste effort and erode trust in the process. A threshold such as 'criticals first, highs within 30 days' tells everyone what deserves immediate attention, and reserved capacity, for example one engineer-day per week, means the work does not depend on the mood of the week. Kwame compares weekly fix counts to see whether swings shrink.
 
 ### 17.5 Positive feedback
 
 Some loops amplify: more noise leads to ignoring alerts, which leads to more unresolved items and more noise. Recognising such loops helps break them early.
 
+The cure is to break the loop at its weakest point. Removing duplicate and irrelevant alerts lowers noise, which makes people more willing to read the rest, which leads to more items being resolved. Good loops can amplify too: quick fixes build confidence, which encourages people to report problems early. Spotting which direction a loop is turning is the first step to steering it.
+
 ### 17.6 Measuring the loop
 
 The loop's performance is measured by time to remediate, studied in chapter 29.
+
+Remediation time shows whether the loop as a whole works, combining detection, decision and fix. It is measured from when an advisory applies to Coastline until the fix is deployed, not merely merged, since riders are only protected once production changes. Coastline tracks the median and the slowest cases separately, because an average can look healthy while a few critical advisories wait for weeks. Breaking the time into stages, such as noticing, deciding and deploying, shows which part of the loop to improve next.
 
 ### Setting targets
 
@@ -1265,25 +1311,37 @@ You will (1) design layered security for a web application and pipeline; (2) app
 
 Coastline's architecture has edge protection (a web application firewall and rate limits), the application (validation, authorisation, escaping), data (encryption, least privilege) and pipeline (reviewed source, isolated builds, signed artifacts, verified deployment).
 
+Each layer stops a different kind of attack. The firewall and rate limits slow automated probing; the application layer handles malicious input; the data layer limits what a successful attack can read; the pipeline layer protects against attackers who try to change the code itself. An attacker who passes one layer still faces the others.
+
 ### 18.2 Trust boundaries
 
 Boundaries separate zones of different trust: internet to web tier, web tier to database, CI to production. Every boundary has checks. Secrets for production are never available to pull-request builds from untrusted branches.
+
+Pull requests from untrusted branches may contain code written by anyone, and CI runs that code during tests. If production secrets were available, a single malicious pull request could steal them. Separating the build that tests contributions from the build that produces releases keeps secrets out of reach, at the cost of maintaining two pipeline configurations.
 
 ### 18.3 Pipeline architecture
 
 Source changes are reviewed; builds run on hosted, isolated runners; outputs are signed; provenance records who built what from which source; deployment verifies signature and provenance. This follows the SLSA v1.0 model of build provenance and in-toto's idea (Torres-Arias et al., 2019) of recording and checking each step.
 
+Each step produces evidence that the next step checks, so trust is not assumed at any handover. If someone bypasses review, the provenance shows source that did not pass branch protection, and deployment refuses it.
+
 ### 18.4 Signing
 
 Signing proves who published an artifact. Sigstore (Newman et al., 2022) offers signing with short-lived certificates tied to identities, avoiding long-lived keys that can leak.
+
+A signature also proves the artifact has not changed since signing. Long-lived signing keys are attractive targets: if one leaks, an attacker can sign malware that looks legitimate until the key is revoked. Short-lived certificates tied to the CI identity limit that window, and a public transparency log records each signing so unexpected signatures can be spotted.
 
 ### 18.5 Decisions
 
 Each choice has a decision record: options, trade-offs, chosen design.
 
+A decision record captures the context at the time: what problem was being solved, which options were considered, what each would cost, and why one was chosen. Coastline's record for signing compares long-lived keys with short-lived certificates and notes that the second was chosen to remove key-storage risk. When the context changes, for example a new regulation, the team reads the record before reopening the debate, which avoids repeating old arguments. Records are short, often one page, and are stored next to the code they affect.
+
 ### 18.6 Threat of the builder
 
 Thompson (1984) reminds architects that build tools themselves must be trusted; Coastline pins its build tools by digest and rebuilds them from known sources where possible.
+
+Thompson showed that a compiler could be altered to insert a backdoor into programs it compiled, including new copies of itself, so the source would look clean. Pinning tools by digest means a changed tool is noticed. Reproducible builds help further, because independent rebuilds that produce the same output make a hidden insertion in one toolchain visible.
 
 ### Network segmentation
 
