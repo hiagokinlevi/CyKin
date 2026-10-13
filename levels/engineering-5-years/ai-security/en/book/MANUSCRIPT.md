@@ -4122,6 +4122,7 @@ Model answers; any answer meeting the rubric scores equally. Northgate Rail Syst
 
 **EX150.** Quarterly: read NIST/OWASP/ATLAS updates and two papers a month; complete two authorised CTF or red-team exercises; publish one evaluation write-up in a portfolio; mentor a junior; keep a log of disclosures and ethical decisions; measure progress against these goals at year end.
 
+<a id="references"></a>
 ## References
 
 Links checked 12 October 2026; frameworks change, so re-verify. arXiv identifiers were opened and titles checked.
